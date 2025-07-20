@@ -1,0 +1,70 @@
+@use './fonts';
+
+:root {
+  // Colors -- Dark Theme
+  --primary: #905bff;
+  --selected: #323542;
+  --hover: #a378ff;
+  --secondary: #75767f;
+  --icons: #4a4d58;
+  --elements: #3b3e4a;
+  --surface_1: #161827;
+  --surface_2: #323542;
+  --main-first: #0f1121;
+  --main-second: #f1f2f9;
+  --accent: #e8e9ee;
+  --green: #27ae60;
+  --red: #eb5757;
+}
+
+html[data-theme='light'] {
+  // Colors -- Light Theme
+  --primary: #ffa600;
+  --selected: #323542;
+  --hover: #df7700;
+  --secondary: #75767f;
+  --icons: #c7c7c7;
+  --elements: #161827;
+  --surface_1: #eeeeee;
+  --surface_2: #e7e7e7;
+  --main-first: #ffffff;
+  --main-second: #0f1121;
+  --green: #27ae60;
+  --red: #eb5757;
+}
+
+body {
+  font-family: 'Mont', sans-serif;
+  background-color: var(--main-first);
+  color: var(--main-second);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.container {
+  max-width: 1200px;
+  min-width: 320px;
+  margin-inline: auto;
+}
+
+.app-icon {
+  transition: filter 0.3s ease;
+}
+
+.app-logo {
+  transition: filter 0.3s ease;
+}
+
+html[data-theme='light'] {
+  .app-icon {
+    filter: invert(1) hue-rotate(180deg);
+  }
+  .app-logo {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+
+button {
+  cursor: pointer;
+}

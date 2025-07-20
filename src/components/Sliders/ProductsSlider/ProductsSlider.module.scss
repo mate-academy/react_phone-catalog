@@ -1,0 +1,91 @@
+.slider {
+  max-width: calc(100vw - 16px);
+  margin: 0 auto;
+  overflow: hidden;
+
+  @media (min-width: 1136px) {
+    max-width: 1136px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-right: 16px;
+
+  @media (min-width: 640px) {
+    padding-right: 24px;
+  }
+
+  @media (min-width: 1024px) {
+    padding-right: 32px;
+  }
+}
+
+.sectionTitle {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  max-width: 50%;
+
+  @media (min-width: 640px) {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 128%;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--surface_2);
+  background-color: var(--surface_2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border-color: var(--color-text);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.sliderContainer {
+  overflow: visible;
+}
+
+.swiper {
+  overflow: hidden;
+}
+
+.slide {
+  width: 272px !important;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.skeletonWrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.width {
+  width: 272px;
+}

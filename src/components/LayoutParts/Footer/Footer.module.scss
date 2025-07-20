@@ -1,0 +1,134 @@
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 16px;
+  width: 100%;
+  gap: 32px;
+  border-top: 1px solid var(--elements);
+
+  .footerLogo {
+    width: 100%;
+
+    .logoImage {
+      height: 32px;
+      width: 89px;
+    }
+  }
+
+  .footerNavigation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+
+    .navLink {
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+  }
+
+  .backToTopGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+
+    .backToTopText {
+      color: var(--secondary);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 100%;
+      transition: color 0.5s ease;
+    }
+
+    .backToTopButton {
+      width: 32px;
+      height: 32px;
+      background-color: var(--selected);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .footerContent {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px;
+
+    .footerLogo,
+    .footerNavigation,
+    .backToTopGroup {
+      flex-grow: 1;
+      flex-basis: 0;
+      max-width: none;
+    }
+
+    .footerLogo {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      .logoImage {
+        object-fit: contain;
+      }
+    }
+
+    .footerNavigation {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+
+      .navLink {
+        transition: color 0.5s ease;
+        &:hover {
+          color: var(--primary);
+        }
+      }
+    }
+
+    .backToTopGroup {
+      justify-content: flex-end;
+      cursor: pointer;
+      &:hover {
+        .backToTopText {
+          color: var(--primary);
+        }
+        .backToTopButton {
+          background-color: var(--primary);
+        }
+      }
+
+      .backToTopButton {
+        transition: background-color 0.5s ease;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .footerContent {
+    padding: 32px 152px;
+
+    .logoImage {
+      height: 32px;
+      width: 89px;
+      object-fit: contain;
+    }
+
+    .footerNavigation {
+      justify-content: space-between;
+    }
+  }
+}

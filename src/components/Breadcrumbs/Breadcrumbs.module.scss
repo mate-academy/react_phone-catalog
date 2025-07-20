@@ -1,0 +1,64 @@
+.breadcrumbs {
+  background-color: var(--main-first);
+  color: var(--secondary);
+  font-size: 14px;
+  line-height: 1.2;
+
+  .breadcrumbList {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .breadcrumbItem {
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumbLink {
+    text-decoration: none;
+    color: var(--main-second);
+  }
+
+  .currentBreadcrumb {
+    color: var(--secondary);
+    font-weight: 600;
+    cursor: default;
+  }
+
+  .homeIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .breadcrumbSeparator {
+    display: flex;
+    align-items: center;
+    margin: 0 8px;
+
+    .arrowIcon {
+      width: 10px;
+      height: 10px;
+      color: var(--elements);
+    }
+  }
+
+  @media (max-width: 639px) {
+    .breadcrumbLink {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100px;
+    }
+
+    .currentBreadcrumb {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 130px;
+    }
+  }
+}

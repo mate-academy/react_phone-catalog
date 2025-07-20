@@ -1,0 +1,62 @@
+.pagination {
+  height: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationList {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.paginationItem {
+  margin: 0 4px;
+}
+
+.selected {
+  background-color: var(--primary);
+  color: var(--main-second);
+}
+
+.unselected {
+  background-color: var(--surface_1);
+  color: var(--main-second);
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.4s;
+
+  &:hover {
+    background: var(--primary);
+    color: var(--main-second);
+  }
+}
+
+.navButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--surface_2);
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: var(--primary);
+    color: var(--main-second);
+  }
+}
+
+.navButtonDisabled:hover {
+  background: var(--surface_2);
+}

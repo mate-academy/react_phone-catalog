@@ -1,0 +1,53 @@
+.techSpecsSection {
+  max-width: 100%;
+
+  @media (min-width: 1200px) {
+    width: 512px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 30px;
+
+    @media (min-width: 640px) {
+      margin-bottom: 25px;
+    }
+
+    .sectionTitle {
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 16px;
+
+      @media (min-width: 640px) {
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 140%;
+      }
+    }
+
+    .line {
+      height: 1px;
+      background-color: var(--icons);
+      width: 100%;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .textContainer {
+      display: flex;
+      justify-content: space-between;
+
+      .text {
+        font-weight: 700;
+        font-size: 12px;
+      }
+      .secondaryText {
+        color: var(--secondary);
+        font-size: 12px;
+      }
+    }
+  }
+}

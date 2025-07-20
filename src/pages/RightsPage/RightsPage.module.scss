@@ -1,0 +1,71 @@
+.rightsPage {
+  padding: 24px 16px 60px;
+
+  @media (min-width: 1200px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .back {
+    margin-bottom: 24px;
+
+    @media (min-width: 640px) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .title {
+    margin-bottom: 24px;
+
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @media (min-width: 640px) {
+      margin-bottom: 40px;
+
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  .subtitle {
+    margin-block: 24px;
+
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    color: var(--primary);
+
+    @media (min-width: 640px) {
+      margin-bottom: 18px;
+
+      font-size: 32px;
+      line-height: 56px;
+    }
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 40px;
+
+    @media (min-width: 640px) {
+      font-size: 16px;
+      line-height: 28px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .text {
+    color: var(--secondary);
+
+    @media (min-width: 640px) {
+      font-size: 14px;
+      line-height: 28px;
+    }
+  }
+}

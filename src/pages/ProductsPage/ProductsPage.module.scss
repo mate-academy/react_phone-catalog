@@ -1,0 +1,124 @@
+.page {
+  padding: 24px 16px 60px;
+
+  @media (min-width: 1200px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .title {
+    margin: 24px 0 8px;
+
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @media (min-width: 640px) {
+      margin-top: 40px;
+
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  .count {
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+
+    color: var(--secondary);
+  }
+
+  .selects {
+    margin: 32px 0 24px;
+
+    display: flex;
+    gap: 16px;
+
+    .selectWrapper {
+      display: flex;
+      flex-direction: column;
+
+      .selectLabel {
+        margin-bottom: 4px;
+
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: 0;
+        font-weight: 700;
+        color: var(--secondary);
+      }
+
+      .select {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
+        padding: 0 12px;
+        border: 1px solid var(--surface_1);
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0;
+        color: var(--main-second);
+        min-width: 136px;
+        background-color: var(--surface_1);
+        user-select: none;
+
+        @media (hover: hover) {
+          &:hover {
+            border: 1px solid var(--icons);
+          }
+        }
+
+        &[data-popup-open] {
+          border: 1px solid var(--primary);
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--color-blue);
+          outline-offset: -1px;
+        }
+
+        .selectIcon {
+          display: flex;
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+
+    .sortBy {
+      @media (min-width: 640px) {
+        width: 187px;
+      }
+      @media (min-width: 1200px) {
+        width: 176px;
+      }
+    }
+  }
+}
+
+.popup {
+  background-color: var(--main-first);
+  color: var(--secondary);
+  border: 1px solid var(--elements);
+
+  .item {
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    color: var(--secondary);
+    padding: 8px 12px;
+    min-width: var(--anchor-width);
+    align-items: center;
+    user-select: none;
+    scroll-margin-block: 16px;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--surface_2);
+      }
+    }
+  }
+}
