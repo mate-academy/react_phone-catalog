@@ -1,0 +1,265 @@
+@import '../../styles/main';
+
+.productDetails {
+  &__title {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  .id {
+    color: #89939a;
+    font-size: 14px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__galleryList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid #e2e6e9;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    &_selected {
+      border-color: #313237;
+    }
+  }
+
+  &__mainImage {
+    width: 400px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      span {
+        display: block;
+        font-size: 14px;
+        color: #89939a;
+        margin-bottom: 8px;
+      }
+
+      .colorDots {
+        display: flex;
+        gap: 8px;
+
+        div {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 1px solid #e2e6e9;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            border-color: #313237;
+          }
+
+          &.active {
+            border: 1px solid #313237;
+          }
+        }
+      }
+
+      .capacityOptions {
+        display: flex;
+        gap: 8px;
+
+        button {
+          padding: 8px 16px;
+          border: 1px solid #e2e6e9;
+          background-color: #fff;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+
+          &:hover {
+            border-color: #313237;
+          }
+
+          &.active {
+            border-color: #313237;
+            background-color: #f1f2f9;
+          }
+        }
+      }
+    }
+
+    .purchase {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .priceBlock {
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+
+        .price {
+          font-size: 32px;
+          font-weight: 700;
+        }
+
+        .oldPrice {
+          font-size: 20px;
+          color: #89939a;
+          text-decoration: line-through;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .addToCart {
+          font-size: 14px;
+          font-weight: 600;
+          padding: 13px 75px;
+          background-color: $accent-color;
+          color: #fff;
+          border: none;
+          border-radius: 24px;
+          cursor: pointer;
+
+          &:hover {
+            box-shadow: 0 3px 13px rgba(23, 32, 49, 0.25);
+          }
+
+          @include on-tablet {
+            padding: 13px 50px;
+          }
+        }
+
+        .favourite {
+          width: 45px;
+          height: 45px;
+          border: 1px solid #e2e6e9;
+          border-radius: 50%;
+          background: white;
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .shortSpecs {
+      list-style: none;
+      padding: 0;
+      border-top: 1px solid #e2e6e9;
+      margin-top: 16px;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        font-size: 14px;
+        color: #89939a;
+
+        span:last-child {
+          color: #313237;
+        }
+      }
+    }
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    .about {
+      flex: 1;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 24px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #313237;
+      }
+    }
+
+    .techSpecs {
+      flex: 1;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          display: flex;
+          justify-content: space-between;
+          padding: 8px 0;
+          border-bottom: 1px solid #e2e6e9;
+          font-size: 14px;
+          color: #313237;
+
+          span:first-child {
+            color: #89939a;
+          }
+        }
+      }
+    }
+  }
+}

@@ -59,18 +59,36 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
 
     fetch('/api/phones.json')
       .then(res => res.json())
-      .then(setPhones)
-      .catch(() => {});
+      .then(data => {
+        setPhones(data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setIsLoading(false);
+      });
 
     fetch('/api/tablets.json')
       .then(res => res.json())
-      .then(setTablets)
-      .catch(() => {});
+      .then(data => {
+        setTablets(data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setIsLoading(false);
+      });
 
     fetch('/api/accessories.json')
       .then(res => res.json())
-      .then(setAccessories)
-      .catch(() => {});
+      .then(data => {
+        setAccessories(data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setIsLoading(false);
+      });
   }, []);
 
   return (

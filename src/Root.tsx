@@ -9,6 +9,7 @@ import { HomePage } from './modules/HomePage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { DataProvider } from './context/DataContext';
 import { CatalogPage } from './modules/CatalogPage';
+import { ProductDetails } from './modules/ProductDetails/ProductDetails';
 
 export const Root = () => {
   return (
@@ -19,6 +20,7 @@ export const Root = () => {
             <Route index element={<HomePage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
             <Route path="/:category" element={<CatalogPage />} />
+            <Route path="/:category/:id" element={<ProductDetails />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
