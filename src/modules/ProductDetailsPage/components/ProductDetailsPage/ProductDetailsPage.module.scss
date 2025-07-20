@@ -10,9 +10,9 @@
   &__images {
     display: flex;
     height: 49px;
-    width: 288px;
     gap: 8px;
     justify-content: space-around;
+    width: 100%;
 
   }
 
@@ -32,34 +32,72 @@
     width: 288px;
     aspect-ratio: 3 / 4;
     object-fit: contain;
+    padding: 16px;
+    justify-self: center;
   }
 
   &__colors {
-    // &-text {
+    &-text {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      padding-top: 40px;
+    }
 
-    // }
+    &-available{
+      color: variables.$gray-color;
+    }
 
-    // &-available{
-
-    // }
-
-    // &-id{
-
-    // }
+    &-id{
+      color: variables.$gray-medium-color;
+    }
 
     &-container{
       display: flex;
       gap: 8px;
+      border-bottom: 1px solid variables.$gray-light-color;
+      padding-bottom: 24px;
     }
 
     &-circle {
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      border: 2px solid variables.$black-color;
+      border: 2px solid variables.$gray-light-color;
       outline: 2px solid variables.$white-color;
       outline-offset: -3px;
 
+      &--active {
+        border: 2px solid variables.$black-color;
+      }
+    }
+  }
+
+  &__capacity {
+
+
+    &-header {
+      color: variables.$gray-color;
+    }
+
+    &-container {
+      display: flex;
+      gap: 16px;
+      border-bottom: 1px solid variables.$gray-light-color;
+      padding-bottom: 40px;
+    }
+
+    &-memory {
+      border: 1px solid variables.$black-color;
+      width: 56px;
+      height: 32px;
+      align-content: center;
+      text-align: center;
+
+      &--active{
+        background-color: variables.$black-color;
+        color: variables.$white-color;
+      }
     }
   }
 }

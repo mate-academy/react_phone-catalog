@@ -23,6 +23,8 @@ export const ProductDetailsPage = ({ category }: Params) => {
   const [, setLoadError] = useState<LoadError>(LOAD_ERROR.noError);
   const { productId } = useParams();
   const [activeImgIndex, setActiveImgIndex] = useState<number>(0);
+  const [activeColor, setActiveColor] = useState<string>();
+  const [activeMemory, setActiveMemory] = useState<string>();
 
   const loadProducts = useCallback(() => {
     return getProduct(`/${category}.json`)
@@ -96,10 +98,35 @@ export const ProductDetailsPage = ({ category }: Params) => {
               {findProduct?.colorsAvailable.map(color => {
                 return (
                   <div
+                    onClick={() => setActiveColor(color)}
                     key={color}
-                    className={styles['details__colors-circle']}
+                    className={classNames(styles['details__colors-circle'], {
+                      [styles['details__colors-circle--active']]:
+                        activeColor === color,
+                    })}
                     style={{ backgroundColor: `${color}` }}
                   ></div>
+                );
+              })}
+            </div>
+          </div>
+          <div className={styles.details__capacity}>
+            <p className={styles['details__capacity-header']}>
+              Select capacity
+            </p>
+            <div className={styles['details__capacity-container']}>
+              {findProduct?.capacityAvailable.map(capacity => {
+                return (
+                  <div
+                    onClick={() => setActiveMemory(capacity)}
+                    key={capacity}
+                    className={classNames(styles['details__capacity-memory'], {
+                      [styles['details__capacity-memory--active']]:
+                        capacity === activeMemory,
+                    })}
+                  >
+                    {capacity}
+                  </div>
                 );
               })}
             </div>
