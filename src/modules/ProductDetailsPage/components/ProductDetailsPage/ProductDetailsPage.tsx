@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../../shared/utils/fetchClient';
 import { useCallback, useEffect, useState } from 'react';
-import { Phone } from '../../../shared/utils/types/apiTypes';
+import { Phone, Product } from '../../../shared/utils/types/apiTypes';
 import { Breadcrumbs } from '../../../shared/components/Breadcrumbs';
 import { STATUS, Status } from '../../../shared/utils/types/Status';
 import { LoadError, LOAD_ERROR } from '../../../shared/utils/types/LoadError';
@@ -10,6 +10,8 @@ import styles from './ProductDetailsPage.module.scss';
 import classNames from 'classnames';
 import { Button } from '../../../shared/components/Button';
 import { AddToFavourites } from '../../../shared/components/AddToFavourites';
+// eslint-disable-next-line max-len
+import { ProductSlider } from '../../../HomePage/components/ProductSlider/ProductSlider';
 
 classNames.bind(styles);
 
@@ -21,12 +23,17 @@ type Params = {
 
 export const ProductDetailsPage = ({ category }: Params) => {
   const [products, setProducts] = useState<Phone[] | undefined>();
+  const [sliderProducts, setSliderProducts] = useState<Product[]>();
   const [status, setStatus] = useState<Status>(STATUS.idle);
   const [, setLoadError] = useState<LoadError>(LOAD_ERROR.noError);
   const { productId } = useParams();
   const [activeImgIndex, setActiveImgIndex] = useState<number>(0);
   const [activeColor, setActiveColor] = useState<string>();
   const [activeMemory, setActiveMemory] = useState<string>();
+
+  const loadSliderProducts = useCallback(() => {
+    return getProduct('/products.json').then(data => setSliderProducts(data));
+  }, []);
 
   const loadProducts = useCallback(() => {
     return getProduct(`/${category}.json`)
@@ -44,7 +51,8 @@ export const ProductDetailsPage = ({ category }: Params) => {
   useEffect(() => {
     setStatus(STATUS.pending);
     loadProducts();
-  }, [loadProducts]);
+    loadSliderProducts();
+  }, [loadProducts, loadSliderProducts]);
 
   if (status === STATUS.resolved && products?.length === 0) {
     setLoadError(LOAD_ERROR.noProducts);
@@ -188,6 +196,10 @@ export const ProductDetailsPage = ({ category }: Params) => {
               );
             })}
           </div>
+          <ProductSlider
+            products={sliderProducts?.slice(0, 6)}
+            header="You may also like"
+          />
         </div>
       )}
     </div>

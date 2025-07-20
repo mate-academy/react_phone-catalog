@@ -2,6 +2,7 @@
 
 .details {
   padding: 24px 16px;
+  box-sizing: border-box;
 
   &__title {
     color: variables.$black-color
