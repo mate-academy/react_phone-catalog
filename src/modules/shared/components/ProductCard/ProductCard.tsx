@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { Button } from '../Button';
 import { AddToFavourites } from '../AddToFavourites';
@@ -26,10 +26,7 @@ export const ProductCard = ({
   id,
   category,
 }: Props) => {
-  const { productId } = useParams();
-
-  // eslint-disable-next-line no-console
-  console.log(productId);
+  // const { productId } = useParams();
 
   return (
     <div className={styles.card}>

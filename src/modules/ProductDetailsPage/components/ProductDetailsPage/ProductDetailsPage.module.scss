@@ -4,6 +4,15 @@
   padding: 24px 16px;
   box-sizing: border-box;
 
+  &__back {
+    all: unset;
+    color: variables.$gray-medium-color;
+    text-align: center;
+    display: flex;
+    gap: 8px;
+    padding: 16px 0;
+  }
+
   &__title {
     color: variables.$black-color
   }

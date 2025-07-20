@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getProduct } from '../../../shared/utils/fetchClient';
 import { useCallback, useEffect, useState } from 'react';
 import { Phone, Product } from '../../../shared/utils/types/apiTypes';
@@ -30,6 +30,7 @@ export const ProductDetailsPage = ({ category }: Params) => {
   const [activeImgIndex, setActiveImgIndex] = useState<number>(0);
   const [activeColor, setActiveColor] = useState<string>();
   const [activeMemory, setActiveMemory] = useState<string>();
+  const navigate = useNavigate();
 
   const loadSliderProducts = useCallback(() => {
     return getProduct('/products.json').then(data => setSliderProducts(data));
@@ -59,7 +60,6 @@ export const ProductDetailsPage = ({ category }: Params) => {
   }
 
   // eslint-disable-next-line no-console
-  console.log(productId);
   const findProduct = products?.find(product => productId === product.name);
   const changePicture = (i: number) => {
     setActiveImgIndex(i);
@@ -75,6 +75,10 @@ export const ProductDetailsPage = ({ category }: Params) => {
             firstPath={`${findProduct?.category}`}
             secondPath={findProduct?.name ?? ''}
           />
+          <button className={styles.details__back} onClick={() => navigate(-1)}>
+            <img src="/icons/ArrowLeft.svg" alt="back-arrow" />
+            Back
+          </button>
           <h1 className={styles.details__title}>{findProduct?.name}</h1>
           <img
             className={styles.details__image}
