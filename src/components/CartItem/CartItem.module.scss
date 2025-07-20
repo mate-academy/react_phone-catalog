@@ -78,9 +78,22 @@
   box-sizing: border-box;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: $color-icons;
+  }
+}
+
+.disabled {
+  background-color: $color-surface1;
+  border: 1px solid $color-elements;
+  cursor: default;
+
+  &:hover {
+    background-color: $color-surface1;
   }
 }
 

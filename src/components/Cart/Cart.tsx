@@ -1,23 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Cart.module.scss';
 import { CartItem } from '../CartItem';
-
-const product = {
-  id: 1,
-  category: 'phones',
-  itemId: 'apple-iphone-7-32gb-black',
-  name: 'Apple iPhone 7 32GB Black',
-  fullPrice: 400,
-  price: 375,
-  screen: "4.7' IPS",
-  capacity: '32GB',
-  color: 'black',
-  ram: '2GB',
-  year: 2016,
-  image: 'img/phones/apple-iphone-7/black/00.webp',
-};
+import { useContext } from 'react';
+import { CartandFavContext } from '../CartandFavProvider';
 
 export const Cart = () => {
+  const { cart: products } = useContext(CartandFavContext);
+  const itemsCounter = products.length;
+  const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
+  const productsWithoutDuplicates = products.filter(
+    (product, index, arr) => index === arr.findIndex(p => p.id === product.id),
+  );
+
   return (
     <main className={styles.page}>
       <div className={styles.pageContent}>
@@ -30,17 +24,27 @@ export const Cart = () => {
 
         <div className={styles.pageItems}>
           <div className={styles.pageItems_list}>
-            {[1, 2, 3].map(() => (
-              <CartItem key={product.id} product={product} />
-            ))}
+            {productsWithoutDuplicates.map(product => {
+              const counter = products.filter(
+                item => item.itemId === product.itemId,
+              ).length;
+
+              return (
+                <CartItem
+                  key={product.id}
+                  product={product}
+                  counter={counter}
+                />
+              );
+            })}
           </div>
           <div className={styles.pageItems_checkout}>
             <div className={styles.pageItems_checkout_info}>
               <span className={styles.pageItems_checkout_info_price}>
-                $2657
+                {`$${totalPrice}`}
               </span>
               <span className={styles.pageItems_checkout_info_text}>
-                Total for 3 items
+                {`Total for ${itemsCounter} items`}
               </span>
             </div>
             <div className={styles.pageItems_checkout_line}></div>

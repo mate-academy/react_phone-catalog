@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { BurgerMenu } from '../BurgerMenu';
 import classNames from 'classnames';
+import { CartandFavContext } from '../CartandFavProvider';
 
 const navLinks = [
   { id: 1, title: 'Home', to: '/' },
@@ -13,6 +14,7 @@ const navLinks = [
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { cart, fav } = useContext(CartandFavContext);
 
   return (
     <>
@@ -29,7 +31,7 @@ export const Header = () => {
                     to={link.to}
                     className={({ isActive }) =>
                       classNames(styles.navList_link, {
-                        [styles.navList_link_active]: isActive,
+                        [styles.activeLink]: isActive,
                       })
                     }
                   >
@@ -44,7 +46,7 @@ export const Header = () => {
           <NavLink
             className={({ isActive }) =>
               classNames(styles.iconLinks_link, {
-                [styles.iconLinks_link_active]: isActive,
+                [styles.activeLink]: isActive,
               })
             }
             to="/favourites"
@@ -54,11 +56,14 @@ export const Header = () => {
               alt="favourites"
               className={styles.icon}
             />
+            {fav.length > 0 && (
+              <div className={styles.counter}>{fav.length}</div>
+            )}
           </NavLink>
           <NavLink
             className={({ isActive }) =>
               classNames(styles.iconLinks_link, {
-                [styles.iconLinks_link_active]: isActive,
+                [styles.activeLink]: isActive,
               })
             }
             to="/cart"
@@ -68,6 +73,9 @@ export const Header = () => {
               alt="cart"
               className={styles.icon}
             />
+            {cart.length > 0 && (
+              <div className={styles.counter}>{cart.length}</div>
+            )}
           </NavLink>
           <button
             className={styles.iconLinks_link}

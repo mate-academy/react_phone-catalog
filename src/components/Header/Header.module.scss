@@ -6,6 +6,8 @@
   z-index: 10;
   box-shadow: 0 1px 0 0 $color-surface2;
 
+  font-family: $font-bold;
+
   background-color: $color-black;
   width: 100%;
   display: flex;
@@ -72,35 +74,24 @@
     text-transform: uppercase;
     color: $color-elements;
     text-decoration: none;
-    line-height: 11px;
     display: block;
-    font-family: $font-bold;
+
     font-size: 12px;
+    padding-block: 22px;
 
-    &_active {
-      color: $color-white;
-      position: relative;
-
-      &::after {
-        content: ' ';
-        display: block;
-        background-color: $color-white;
-
-        width: 100%;
-        height: 3px;
-        position: absolute;
-        bottom: -26px;
-
-        @media (max-width: $size-tablet) {
-          bottom: -18px;
-        }
-      }
+    @media (max-width: $size-tablet) {
+      padding-block: 14px;
     }
 
     &:hover {
       color: $color-white;
     }
   }
+}
+
+.activeLink {
+  color: $color-white;
+  border-bottom: 3px solid $color-white;
 }
 
 .iconLinks {
@@ -117,9 +108,7 @@
     justify-content: center;
     box-sizing: border-box;
 
-    &_active {
-      border-bottom: 3px solid $color-white;
-    }
+    position: relative;
 
     &:last-child {
       display: none;
@@ -145,4 +134,20 @@
 .icon {
   width: 16px;
   height: 16px;
+}
+
+.counter {
+  position: absolute;
+  background-color: $color-red;
+  border: 1px solid $color-black;
+  right: 16px;
+  top: 16px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-size: 9px;
 }

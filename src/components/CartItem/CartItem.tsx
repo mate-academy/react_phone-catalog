@@ -1,15 +1,49 @@
+import { useContext } from 'react';
 import { Product } from '../../types/Product';
 import styles from './CartItem.module.scss';
+import { CartandFavContext } from '../CartandFavProvider';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
+  counter: number;
 };
 
-export const CartItem = ({ product }: Props) => {
+export const CartItem = ({ product, counter }: Props) => {
+  const { cart, setCart } = useContext(CartandFavContext);
+
+  const handleDelete = () => {
+    setCart(prevCart =>
+      prevCart.filter(item => item.itemId !== product.itemId),
+    );
+  };
+
+  const handlePlusProduct = () => {
+    setCart(prevCart => [...prevCart, product]);
+  };
+
+  const handleMinusProduct = () => {
+    if (counter < 2) {
+      return;
+    }
+
+    const indexToRemove = cart.findIndex(
+      item => item.itemId === product.itemId,
+    );
+
+    setCart(prevCart => {
+      const newCart = [...prevCart];
+
+      newCart.splice(indexToRemove, 1);
+
+      return newCart;
+    });
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.row}>
-        <button className={styles.deleteButton}>
+        <button className={styles.deleteButton} onClick={handleDelete}>
           <img src="/img/icons/close.svg" alt="close" />
         </button>
         <div className={styles.productPhoto}>
@@ -25,11 +59,23 @@ export const CartItem = ({ product }: Props) => {
       </div>
       <div className={styles.row}>
         <div className={styles.countButtons}>
-          <button className={styles.countButton}>
-            <img src="/img/icons/minus.svg" alt="minus" />
+          <button
+            className={classNames(styles.countButton, {
+              [styles.disabled]: counter < 2,
+            })}
+            onClick={handleMinusProduct}
+          >
+            <img
+              src={
+                counter < 2
+                  ? '/img/icons/minus-disabled.svg'
+                  : '/img/icons/minus.svg'
+              }
+              alt="minus"
+            />
           </button>
-          <div className={styles.productCounter}>1</div>
-          <button className={styles.countButton}>
+          <div className={styles.productCounter}>{counter}</div>
+          <button className={styles.countButton} onClick={handlePlusProduct}>
             <img src="/img/icons/plus.svg" alt="plus" />
           </button>
         </div>

@@ -12,12 +12,18 @@
   padding: 32px;
 
   width: 272px;
+  height: 506px;
+  justify-content: space-between;
 
   @media (max-width: $size-tablet) {
     width: auto;
     min-width: 229px;
     max-width: 287px;
     flex: 1 1 0%;
+  }
+
+  @media (max-width: $size-mobile) {
+    height: 440px;
   }
 }
 
@@ -106,13 +112,21 @@
   font-family: $font-semibold;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0%;
   text-align: center;
   border: none;
   cursor: pointer;
 
   &:hover {
     background-color: #a378ff;
+  }
+}
+
+.addedToCart {
+  background-color: $color-surface2;
+  cursor: default;
+
+  &:hover {
+    background-color: $color-surface2;
   }
 }
 
@@ -130,4 +144,9 @@
   &:hover {
     background-color: $color-icons;
   }
+}
+
+.addedToFav {
+  background-color: $color-black;
+  border: 1px solid $color-elements;
 }

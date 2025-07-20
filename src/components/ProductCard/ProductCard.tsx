@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
+import { useContext } from 'react';
+import { CartandFavContext } from '../CartandFavProvider';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
@@ -8,6 +11,21 @@ type Props = {
 
 export const ProductCard = ({ product }: Props) => {
   const navigate = useNavigate();
+  const { cart, fav, setCart, setFav } = useContext(CartandFavContext);
+  const isInCart = cart.some(item => item.itemId === product.itemId);
+  const isInFav = fav.some(item => item.itemId === product.itemId);
+
+  const handleAddToCart = () => {
+    setCart(prevCart => [...prevCart, product]);
+  };
+
+  const handleAddToFav = () => {
+    if (!isInFav) {
+      setFav(prevFav => [...prevFav, product]);
+    } else {
+      setFav(prevFav => prevFav.filter(item => item.itemId !== product.itemId));
+    }
+  };
 
   return (
     <div
@@ -38,23 +56,34 @@ export const ProductCard = ({ product }: Props) => {
       <div className={styles.cardButtons}>
         <button
           type="button"
-          className={styles.cardAddButton}
+          className={classNames(styles.cardAddButton, {
+            [styles.addedToCart]: isInCart,
+          })}
           onClick={e => {
             e.stopPropagation();
-            // логика добавления в корзину
+            handleAddToCart();
           }}
         >
-          Add to a cart
+          {isInCart ? 'Added to cart' : 'Add to a cart'}
         </button>
         <button
           type="button"
-          className={styles.cardFavButton}
+          className={classNames(styles.cardFavButton, {
+            [styles.addedToFav]: isInFav,
+          })}
           onClick={e => {
             e.stopPropagation();
-            // логика добавления в корзину
+            handleAddToFav();
           }}
         >
-          <img src="/img/icons/favourite-default.svg" alt="favourites" />
+          <img
+            src={
+              isInFav
+                ? '/img/icons/favourite-selected.svg'
+                : '/img/icons/favourite-default.svg'
+            }
+            alt="favourites"
+          />
         </button>
       </div>
     </div>
