@@ -175,4 +175,52 @@
         text-align: right;
       }
     }
+
+    &__about {
+      padding-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+
+      &-header {
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid variables.$gray-medium-color;
+        padding-bottom: 16px;
+        font-family: Mont, Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-style: SemiBold;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+      }
+
+      &-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+      }
+
+      &-title {
+        margin: 0;
+        font-family: Mont, Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        font-style: SemiBold;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0%;
+      }
+
+      &-text {
+        margin: 0;
+        font-family: Mont, Arial, Helvetica, sans-serif;
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 21px;
+          letter-spacing: 0%;
+          color: variables.$gray-medium-color;
+      }
+    }
   }

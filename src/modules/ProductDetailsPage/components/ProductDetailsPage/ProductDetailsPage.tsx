@@ -177,6 +177,17 @@ export const ProductDetailsPage = ({ category }: Params) => {
               </p>
             </div>
           </div>
+          <div className={styles.details__about}>
+            <h3 className={styles['details__about-header']}>About</h3>
+            {findProduct?.description.map(({ title, text }) => {
+              return (
+                <div key={title} className={styles['details__about-container']}>
+                  <h4 className={styles['details__about-title']}>{title}</h4>
+                  <p className={styles['details__about-text']}>{text}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
