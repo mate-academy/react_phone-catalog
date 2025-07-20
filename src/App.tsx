@@ -6,6 +6,9 @@ import { HomePage } from './modules/HomePage/components/HomePage';
 import { PhonesPage } from './modules/PhonesPage/components/PhonesPage';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './modules/ProductDetailsPage/components/ProductDetailsPage/ProductDetailsPage';
+import { TabletsPage } from './modules/TabletsPage/components/TabletsPage';
+// eslint-disable-next-line max-len
+import { AccessoriesPage } from './modules/AccesoriesPage/components/AccesoriesPage';
 
 export const App = () => {
   return (
@@ -17,6 +20,16 @@ export const App = () => {
         <Route
           path="/phones/:productId"
           element={<ProductDetailsPage category="phones" />}
+        />
+        <Route path="/tablets" element={<TabletsPage />} />
+        <Route
+          path="/tablets/:productId"
+          element={<ProductDetailsPage category="tablets" />}
+        />
+        <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route
+          path="/accessories/:productId"
+          element={<ProductDetailsPage category="accessories" />}
         />
         <Route path="*" />
       </Routes>

@@ -4,7 +4,10 @@
 display: flex;
 flex-direction: column;
 gap: 4px;
-width: 136px;
+width: 100%;
+max-width: 136px;
+box-sizing: border-box;
+position: static;
 
   &__label {
     font-weight: 400;
@@ -14,11 +17,14 @@ width: 136px;
     color: $gray-color;
   }
 
+
+
   &__select {
+    width: 100%;
     appearance: none;
-    background-image: url('public/icons/ArrowDown.svg');
+    background-image: url('/icons/ArrowDown.svg');
     background-repeat: no-repeat;
-    background-position: 110px;
+    background-position: right 12px center;
     height: 40px;
     padding: 0 12px;
     border: 1px solid $gray-light-color;
@@ -27,6 +33,8 @@ width: 136px;
     font-size: 12px;
     line-height: 21px;
     letter-spacing: 0%;
+
+
 
   &__option {
     font-weight: 400;
