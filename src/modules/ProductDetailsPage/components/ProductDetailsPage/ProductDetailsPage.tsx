@@ -196,6 +196,61 @@ export const ProductDetailsPage = ({ category }: Params) => {
               );
             })}
           </div>
+          <div className={styles.details__tech}>
+            <h3 className={styles['details__tech-header']}>Tech specs</h3>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>Screen</p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.screen}
+              </p>
+            </div>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>
+                Resolution
+              </p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.resolution}
+              </p>
+            </div>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>Processor</p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.processor}
+              </p>
+            </div>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>RAM</p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.ram}
+              </p>
+            </div>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>
+                Built in memory
+              </p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.capacity}
+              </p>
+            </div>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>Camera</p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.camera}
+              </p>
+            </div>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>Zoom</p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.zoom}
+              </p>
+            </div>
+            <div className={styles['details__specification-container']}>
+              <p className={styles['details__specification-name']}>Cell</p>
+              <p className={styles['details__specification-details']}>
+                {findProduct?.cell.map(cell => `${cell} `)}
+              </p>
+            </div>
+          </div>
           <ProductSlider
             products={sliderProducts?.slice(0, 6)}
             header="You may also like"

@@ -224,4 +224,19 @@
           color: variables.$gray-medium-color;
       }
     }
+
+    &__tech {
+      padding: 40px 0;
+
+      &-header {
+        font-family: Mont, Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-style: SemiBold;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        border-bottom: 1px solid variables.$gray-medium-color;
+        padding-bottom: 36px;
+      }
+    }
   }
