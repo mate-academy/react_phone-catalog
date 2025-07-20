@@ -1,0 +1,21 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-bottom: 64px;
+
+  @media (min-width: 640px) {
+    padding-bottom: 80px;
+  }
+
+  .homeContent {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding-inline: 16px;
+
+    @media (min-width: 640px) {
+      padding-inline: 32px;
+    }
+  }
+}

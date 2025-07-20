@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "name": "Andrii Zakharov",
+    "role": "Team Leader | Project Structure Architect",
+    "description": [
+      "- Coordinated version control: reviewed pull requests, resolved merge conflicts, and managed branch strategies.",
+      "- Designed and implemented the Shop by Category section on the Home Page.",
+      "- Developed the Product Details page with responsive and accessible layout.",
+      "- Structured the project architecture for scalability and maintainability."
+    ],
+    "linkedin": "https://www.linkedin.com/in/andrii-zakharov-b10567368/",
+    "github": "https://github.com/AndSLASH",
+    "telegram": "https://t.me/AndriiSLASH",
+    "img": "/img/avatar/Andrii.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Yaroslava Lazurenko",
+    "role": "Product Manager | Asana Power User | Store Chief",
+    "description": [
+      "- Developed and maintained the project WBS and Asana workflows, including task assignment and follow-up.",
+      "- Designed product cards and implemented product sliders using Swiper.",
+      "- Developed “Add to Cart” and “Add to Favorites” functionality.",
+      "- Served as the team’s Zustand state-management expert."
+    ],
+    "linkedin": "https://www.linkedin.com/in/yaroslava-lazurenko-b719a6123/",
+    "github": "https://github.com/jasialazyrka",
+    "telegram": "https://t.me/Jasia_Lazurenko",
+    "img": "/img/avatar/Yaroslava.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Stanislav Snizhkovyi",
+    "role": "Guru Libraries",
+    "description": [
+      "- Implemented authentication with Firebase and React Hook Form.",
+      "- Performed CRUD with Firebase Realtime Database.",
+      "- Created custom React hooks for state and logic reuse.",
+      "- Used UI libraries: Tailwind, Base UI, Swiper, React-Toastify, React-Paginate, Skeleton.",
+      "- Built a catalog with sorting, pagination, and item count via URL query params.",
+      "- Deployed the project to Vercel"
+    ],
+    "linkedin": "https://www.linkedin.com/in/stanislav-snizhkovyi/",
+    "github": "https://github.com/stanislav-sn",
+    "telegram": "https://t.me/stan_sni",
+    "img": "/img/avatar/Stas.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Danil Dzirun",
+    "role": "Junior Frontend Dev",
+    "description": [
+      "- Modal for checkout.",
+      "- Thank you page.",
+      "- Breadcrumbs.",
+      "- 404 page"
+    ],
+    "linkedin": "https://www.linkedin.com/in/danil-dzirun-272879344/",
+    "github": "https://github.com/DanilAt191",
+    "telegram": "https://t.me/Dancho_Baldini",
+    "img": "/img/avatar/Dania.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Yurii Soroka",
+    "role": "UI stylist | UI/UX Implementer",
+    "description": [
+      "- Developed robust logic for the Favorites and Cart pages.",
+      "- Designed and built the Contact page from concept to implementation.",
+      "- Created the foundational Footer layout.",
+      "- Integrated the Cart page based on provided designs."
+    ],
+    "linkedin": "https://www.linkedin.com/in/yuriy-soroka-41b1342aa/",
+    "github": "https://github.com/Jimmi212",
+    "telegram": "https://t.me/Morjovani",
+    "img": "/img/avatar/Yurii.jpg"
+  }
+]

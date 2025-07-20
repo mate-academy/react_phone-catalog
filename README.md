@@ -1,143 +1,255 @@
-# React Product Catalog
+# Nice Gadgets Store 📱💻⌚
 
-Implement the catalog with a shopping cart and favorites page according to one of the next designs:
+A modern electronics store built with React, TypeScript, and Vite. The project offers a convenient and attractive interface for browsing and purchasing mobile phones, tablets, and accessories.
 
-- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
-- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
-- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
-- [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
-- [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+## 🔗 Demo
 
-You may also implement color theme switching!
+[**🚀 View Live Project**](https://nice-gadgets-store.vercel.app/)
 
-## If you work in a team
+## 🎨 Design
 
-Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
+Our design system is based on modern UI/UX principles with a focus on user experience and accessibility.
 
-## Project Setup from scratch
+### Figma Designs
 
-Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
+- **[📱 Original Dark Theme](<https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark>)** - Complete design system with dark theme mockups
+- **Design System**: Modern, clean interface with consistent spacing and typography
+- **Responsive Layout**: Mobile-first approach with tablet and desktop breakpoints
+- **Color Palette**: Carefully selected colors optimized for both light and dark themes
 
-## Data
+## 🚀 Key Features
 
-Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
+- **Product Catalog**: Browse products by categories (phones, tablets, accessories)
+- **Detailed Product Pages**: Complete product information with image gallery
+- **Shopping Cart**: Add products to cart with quantity management
+- **Favorites**: Save favorite products system
+- **Search & Filtering**: Sort products by various criteria
+- **Pagination**: Convenient navigation through large product lists
+- **Responsive Design**: Optimized for all device types
+- **Dark/Light Theme**: Toggle between theme modes
+- **Authentication**: User registration and login via Firebase
+- **Data Synchronization**: Save cart and favorites in the cloud
 
-## App
+## 🛠️ Technologies
 
-1. Put components into the `src/components` folder.
-   - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
-   - Use CSS modules.
-   - Keep `.module.scss` files together with their components.
-2. Advanced project structure:
-   - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
-   - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
-3. Add the sticky header with a logo, navigation, favorites, and cart.
-4. The footer with the link to the GitHub repo and `Back to top` button.
-   - The content should be limited to the same width as the page content;
-   - `Back to top` button should scroll to the top smoothly;
-5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
-6. All changes the hover effects should be smooth.
-7. Scale all image links by 10% on hover.
-8. Implement all form elements and icons according to the UI Kit.
+### Frontend
 
-## Home page
+- **React 18** - Main framework
+- **TypeScript** - Type safety and better DX
+- **Vite** - Fast build and development
+- **SCSS/CSS Modules** - Component styling
+- **TailwindCSS** - Utility-first CSS framework
 
-Implement Home page at available at `/`.
+### State Management & Hooks
 
-1. `<h1>Product Catalog</h1>` should be visually hidden.
-2. `PicturesSlider`:
-   - Find your own images to personalize the App;
-   - Change pictures automatically every 5 seconds;
-   - The next buttons should show the first image after the last one;
-   - Dashes at the bottom should allow choosing an exact picture.
-3. `ProductsSlider` for the `Hot prices` block:
-   - The products with a discount starting from the biggest absolute value;
-   - `<` and `>` buttons should scroll products.
-4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
-5. Add Brand new block using ProductsSlider with products that are the newest according to the year field.
+- **Zustand** - Lightweight state management
+- **React Hook Form** - Form handling
+- **Custom Hooks** - Custom logic hooks
 
-## Product pages
+### Navigation & UI
 
-There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
+- **React Router DOM** - Routing
+- **React Slick** - Product carousel
+- **Swiper** - Modern sliders
+- **React Paginate** - Pagination
+- **React Toastify** - Notifications
+- **React Aria Components** - UI accessibility
 
-1. Each page loads the data of the required `type`.
-2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required).
-3. Add `ProductsList` component showing all the `products`.
-4. Implement a `Loader` to show it while waiting for the data from the server.
-5. In case of a loading error show the something went wrong message with a reload button.
-6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required).
-7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or `price` (after discount).
-   - Save the sort value in the URL `?sort=age` and apply it after the page reload.
-8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
-   - It should limit the products you show to the user;
-   - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
-   - Hide pagination elements if they do not make sense;
-   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
+### Backend & Data
 
-## Product details page
+- **Firebase** - Backend as a Service
+- **JSON API** - REST API for products
 
-Create `ProductDetailsPage` available at `/product/:productId`.
+### Development Tools
 
-1. `ProductCard` image and title should be links to the product details page.
-2. Use `Loader` when fetching the product details.
-3. Show the details on the page:
-   - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
-   - `About` section should contain a subheader with description;
-   - Choose `Tech specs` you want to show.
-4. Add the ability to choose a picture.
-5. Implement `You may also like` block with products chosen randomly:
-   - Create `getSuggestedProducts` method fetching the suggested products.
-6. Add `Back` button working the same way as a Browser `Back` button.
-7. Add `Breadcrumbs` at the top with:
-   - A Home page link;
-   - A category page link (`Phones`, `Tablets`, `Accessories`);
-   - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Husky** - Git hooks
+- **Sass** - CSS preprocessor
 
-## Shopping Cart page
+## 📁 Project Structure
 
-Create a Cart page with a list of `CartItem`s at `/cart`.
-Each item should have an `id`, `quantity`, and a `product`.
-Use React Context or Redux to store Items.
+```
+src/
+├── components/           # React components
+│   ├── Breadcrumbs/     # Navigation breadcrumbs
+│   ├── Cart/            # Cart components
+│   ├── LayoutParts/     # Header, footer and other layout parts
+│   ├── Product/         # Product components
+│   ├── Sections/        # Page sections
+│   ├── Sliders/         # Slider components
+│   ├── UI/              # Base UI components
+│   └── ...
+├── pages/               # Application pages
+│   ├── HomePage/        # Home page
+│   ├── ProductsPage/    # Product catalog
+│   ├── ProductPage/     # Product detail page
+│   ├── CartPage/        # Shopping cart page
+│   └── ...
+├── hooks/               # Custom React hooks
+├── store/               # Zustand stores
+├── types/               # TypeScript types
+├── utils/               # Utility functions
+├── constants/           # Constants
+└── styles/              # Global styles
+```
 
-1. `Add to cart` button in the `ProductCard` should add a product to the `Cart`.
-2. If the product is already in the `Cart` the button should say `Added to cart` and do nothing.
-3. Add the ability to remove items from the `Cart` with an `x` button next to a `CartItem`.
-4. Add a message `Your cart is empty` when there are no products in the `Cart`.
-5. Add the ability to change the item quantity in the `Cart` with `-` and `+` buttons (it should be > 0).
-6. Total amount and quantity should be calculated automatically.
-7. Show the quantity at the `Cart` icon in the header.
-8. Save the `Cart` to `localStorage` on each change and read it on page load.
-9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
-   - Clear the Cart if the user confirms the order;
-   - Keep the Cart items and close the confirmation on cancel;
-   - Use the `confirm` function if you don't have a better solution.
+## 🏁 Quick Start
 
-## Favorites page
+### Prerequisites
 
-Create `Favorites` page with a `ProductsList` showing favorite products at `/favorites`.
+- Node.js (version 16 or higher)
+- npm or yarn
 
-1. Add/remove a product to favorites by pressing a heart button in the `ProductCard` element.
-2. The heart should be highlighted if the product is already added to the favorites.
-3. Use React Context or Redux to store the favorites.
-4. Show the number of favorites at the `Favorites` icon in the header.
-5. Save favorites to `localStorage` on each change and load them on page load.
+### Installation
 
-## Other tasks
+1. **Clone the repository**
 
-1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
-2. Implement the `Product was not found` state for the `ProductDetailsPage`.
+```bash
+git clone https://github.com/fs-apr25-group1-js-ninjas/nice-gadgets-store.git
+cd nice-gadgets-store
+```
 
-## (*) Advanced tasks
+2. **Install dependencies**
 
-- Implement color theme switching!
-- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.
-- Add the ability to change page language.
+```bash
+npm install
+```
 
-### Search
+3. **Set up environment variables**
 
-Show `input:search` in the header when a page contains a `ProductList` to search in.
+```bash
+# Create .env file and add Firebase configuration
+cp .env.example .env
+```
 
-1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
-2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
-3. Add `debounce` to the search field.
+4. **Start in development mode**
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
+
+## 📝 Available Scripts
+
+```bash
+# Development
+npm run dev              # Start dev server
+
+# Build
+npm run build           # Build for production
+npm run preview         # Preview production build
+
+# Code Quality
+npm run lint            # Run ESLint
+npm run format          # Format with Prettier
+npm run fix-style       # Format + lint
+
+# Deploy
+npm run predeploy       # Prepare for deployment
+```
+
+## 🔧 Core Functionalities
+
+### Product Catalog
+
+- Display products by categories
+- Sort by price, name, newest
+- Pagination with configurable items per page
+- Skeleton loaders during loading
+
+### Product Detail Page
+
+- Product image gallery
+- Color and memory capacity selection
+- Technical specifications
+- Product description
+- Recommended products
+
+### Shopping Cart
+
+- Add/remove products
+- Change product quantities
+- Calculate total amount
+- Server synchronization
+
+### Favorites
+
+- Add products to favorites
+- Save to localStorage and Firebase
+- Dedicated favorites page
+
+## 🎨 Design & UX
+
+- **Responsive Design**: Support for mobile devices, tablets, and desktops
+- **Accessibility**: Semantic markup and ARIA attributes
+- **Dark Theme**: Toggle between light and dark themes
+- **Animations**: Smooth transitions and hover effects
+- **Loading States**: Skeleton loaders and spinners
+
+## 🔐 Authentication
+
+The project uses Firebase Authentication for:
+
+- New user registration
+- User login
+- User data synchronization
+- Cart and favorites storage
+
+## 📱 API & Data
+
+### Local JSON Files
+
+- `products.json` - Main product catalog
+- `phones.json` - Mobile phones
+- `tablets.json` - Tablets
+- `accessories.json` - Accessories
+
+### Firebase Integration
+
+- Cart state storage
+- Favorites synchronization
+- User data
+
+## 🚀 Deployment
+
+The project is configured for deployment on various platforms:
+
+- **Vercel**: Automatic deployment from GitHub
+- **Netlify**: Alternative hosting platform
+- **GitHub Pages**: Static hosting
+
+## 👥 Development Team
+
+Project developed by **JS Ninjas** team:
+
+- Frontend developers
+- UI/UX designers
+- QA testers
+
+## 📄 License
+
+This project is created for educational purposes as part of a learning program.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make changes and add tests
+4. Ensure all tests pass
+5. Create a Pull Request
+
+## 📞 Contacts
+
+For questions and suggestions:
+
+- GitHub: [fs-apr25-group1-js-ninjas](https://github.com/fs-apr25-group1-js-ninjas)
+- LinkedIn:
+  - [Andrii Zakharov](https://www.linkedin.com/in/andrii-zakharov-b10567368/)
+  - [Yaroslava Lazurenko](https://www.linkedin.com/in/yaroslava-lazurenko-b719a6123/)
+  - [Stanislav Snizhkovyi](https://www.linkedin.com/in/stanislav-snizhkovyi/)
+  - [Danil Dzirun](https://www.linkedin.com/in/danil-dzirun-272879344/)
+  - [Yurii Soroka](https://www.linkedin.com/in/yuriy-soroka-41b1342aa/)
+
+---

@@ -1,0 +1,24 @@
+.main {
+  position: relative;
+  min-height: 85vh;
+
+  .buttonsBox {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    top: 87px;
+    right: 16px;
+    z-index: 10;
+
+    .themeSwitcherBox {
+      height: 40px;
+      width: 40px;
+    }
+
+    .UserMenuButtonBox {
+      height: 40px;
+      width: 40px;
+    }
+  }
+}

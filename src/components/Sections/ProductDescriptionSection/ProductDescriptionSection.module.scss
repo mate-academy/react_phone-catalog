@@ -1,0 +1,11 @@
+.productDescriptionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-inline: auto;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    gap: 64px;
+  }
+}

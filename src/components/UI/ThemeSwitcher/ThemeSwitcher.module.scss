@@ -1,0 +1,27 @@
+.themeSwitcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--primary);
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    background-color 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: var(--hover);
+  }
+
+  &:hover .themeIcon {
+    opacity: 0.7;
+  }
+
+  .themeIcon {
+    width: 24px;
+    height: 24px;
+  }
+}

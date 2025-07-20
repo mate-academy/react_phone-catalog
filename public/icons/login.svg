@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
+  <!-- Голова -->
+  <circle cx="12" cy="7" r="4"></circle>
+
+  <!-- Тіло -->
+  <path d="M4 21v-1c0-3.87 3.13-7 7-7h2c3.87 0 7 3.13 7 7v1H4z"></path>
+</svg>

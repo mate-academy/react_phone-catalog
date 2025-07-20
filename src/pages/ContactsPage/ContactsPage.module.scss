@@ -1,0 +1,39 @@
+.contactsPage {
+  margin: 40px auto;
+  padding: 0 20px;
+
+  .pageTitle {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: var(--main-second);
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .pageInfo {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--main-second);
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .teamGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  @media (min-width: 639px) {
+    .pageTitle {
+      font-size: 36px;
+    }
+
+    .pageInfo {
+      font-size: 20px;
+    }
+  }
+}

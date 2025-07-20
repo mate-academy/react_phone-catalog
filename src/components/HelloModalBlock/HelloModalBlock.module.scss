@@ -1,0 +1,84 @@
+.helloModalBlockOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0, 0%, 0%, 0.692);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 11;
+  overflow: hidden;
+}
+
+.helloModalBlock {
+  position: relative;
+  background-color: var(--main-first);
+  padding: 32px;
+  max-width: 600px;
+
+  .closeButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: var(--surface_1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--surface_2);
+    }
+
+    img {
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  .content {
+    text-align: center;
+
+    .title {
+      font-size: 32px;
+      line-height: 40px;
+      font-weight: 600;
+      color: var(--main-second);
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+
+    .description {
+      margin-bottom: 24px;
+    }
+
+    .signUp {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--primary);
+      color: var(--main-second);
+      font-weight: 700;
+      transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+
+      &:hover {
+        background-color: var(--hover);
+        transform: scale(1.05);
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+$mobile-breakpoint: 639px;
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.modalContent {
+  background-color: var(--main-first);
+  padding: 30px;
+  text-align: center;
+  max-width: 320px;
+  width: 90%;
+  transform: scale(0.9);
+  opacity: 0;
+  animation: scaleIn 0.3s ease-out 0.1s forwards;
+
+  @media (max-width: $mobile-breakpoint) {
+    padding: 20px;
+  }
+}
+
+.message {
+  font-size: 16px;
+  margin-bottom: 30px;
+  line-height: 1.4;
+  color: var(--main-second);
+
+  @media (max-width: $mobile-breakpoint) {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+
+  @media (max-width: $mobile-breakpoint) {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.confirmButton,
+.cancelButton {
+  padding: 10px 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 100%;
+  }
+}
+
+.confirmButton {
+  background-color: var(--primary);
+  color: var(--main-second);
+
+  &:hover {
+    background-color: var(--hover);
+  }
+}
+
+.cancelButton {
+  background-color: var(--icons);
+  color: var(--main-second);
+
+  &:hover {
+    background-color: var(--secondary);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

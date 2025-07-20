@@ -1,0 +1,134 @@
+.cartCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--surface_1);
+  width: 100%;
+
+  .itemHeader {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    .removeButton {
+      cursor: pointer;
+
+      .closeIcon {
+        display: block;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .containerItemImage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      width: 80px;
+
+      .itemImage {
+        height: 66px;
+        width: 66px;
+        object-fit: cover;
+      }
+    }
+
+    .itemName {
+      text-align: center;
+      width: 100%;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      white-space: normal;
+    }
+  }
+
+  .quantityControl {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+
+    .addAndSubtructButtons {
+      display: flex;
+      .minusBotton {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--icons);
+
+        &:hover {
+          border: 1px solid var(--secondary);
+        }
+
+        &:disabled {
+          opacity: 0.3;
+          pointer-events: none;
+        }
+      }
+
+      .quantity {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        line-height: 21px;
+        font-weight: 600;
+        font-family: 'Mont', sans-serif;
+      }
+
+      .plusBotton {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--icons);
+        cursor: pointer;
+
+        &:hover {
+          border: 1px solid var(--secondary);
+        }
+      }
+    }
+  }
+
+  .fullPrice {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    color: var(--main-second);
+    width: 80px;
+  }
+}
+
+@media (min-width: 640px) {
+  .cartCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+
+    .itemHeader {
+      gap: 24px;
+    }
+
+    .quantityControl {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      gap: 24px;
+    }
+  }
+}

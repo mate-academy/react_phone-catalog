@@ -1,0 +1,31 @@
+.button {
+  flex: 1;
+  background-color: var(--primary);
+  color: var(--main-second);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 40px;
+  width: 81px;
+  height: 40px;
+  padding: 0 9.5px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--hover);
+  }
+
+  &:active {
+    background-color: var(--green);
+  }
+}
+
+.added {
+  @extend .button;
+  background-color: var(--green);
+  color: var(--main-second);
+
+  &:hover {
+    background-color: var(--green);
+    cursor: default;
+  }
+}
