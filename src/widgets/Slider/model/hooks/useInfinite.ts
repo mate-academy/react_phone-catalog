@@ -7,6 +7,7 @@ type Params = {
   toggleTrackClass: (anim?: boolean) => void;
   translateRight: (arg: number) => void;
   getIndex: (arg?: number) => number;
+  rerender: React.DispatchWithoutAction;
 };
 
 export const useInfinite = ({
@@ -15,6 +16,7 @@ export const useInfinite = ({
   toggleTrackClass,
   translateRight,
   getIndex,
+  rerender,
 }: Params) => {
   const { CLONES, length, track, offset } = useSlContext();
   const trueLength = length - CLONES * 2;
@@ -61,10 +63,17 @@ export const useInfinite = ({
       setOffsetByIndex(updated);
       toggleTrackClass(false);
       translateRight(offset.current);
+      rerender();
     }
 
     return;
   };
 
-  return { infiniteHandler };
+  const initialOffset = useCallback(() => {
+    setOffsetByIndex(1);
+    toggleTrackClass(false);
+    translateRight(offset.current);
+  }, []);
+
+  return { infiniteHandler, initialOffset };
 };

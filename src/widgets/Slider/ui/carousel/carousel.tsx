@@ -1,14 +1,15 @@
 /* eslint-disable prettier/prettier */
 import { BannerSlide } from '@entities/bannerSlide';
-import { SliderType, VisualConfig } from '../../lib/types';
+import { SliderType } from '../../types/types';
 import { useSlContext } from '../../model/context/sliderContext';
-import { BannerData } from '@entities/bannerSlide/model/bannerSlide';
+import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
 import { ProductCard } from '@entities/prodCard';
 import { BaseProduct } from '@shared/types/APITypes';
 import styles from '../../styles/basicSlider.module.scss';
 
 type Props = {
-  visualConfig: VisualConfig;
+  gap: number;
+  animationSpeed: number;
   className: string;
   handlers: {
     onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
@@ -19,12 +20,13 @@ type Props = {
 };
 
 export const Carousel: React.FC<Props> = ({
-  visualConfig,
+  gap,
+  animationSpeed,
   className,
   handlers
 }) => {
   const { VP, track, trackElement, list, type } = useSlContext();
-  const { gap, animationSpeed } = visualConfig;
+  const conditionalStyles = type === SliderType.BANNER ? { width: '100%' } : {};
 
   return (
     <div className={`${className} ${styles.viewport}`} ref={VP} {...handlers}>
@@ -35,7 +37,8 @@ export const Carousel: React.FC<Props> = ({
           {
             '--gap': `${gap}px`,
             '--transition-duration': `${animationSpeed}ms`,
-          } as React.CSSProperties
+            ...conditionalStyles,
+          } as React.CSSProperties & Record<string, string>
         }
       >
         { type === SliderType.BANNER

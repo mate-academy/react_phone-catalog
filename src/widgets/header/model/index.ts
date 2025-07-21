@@ -1,2 +1,2 @@
-export { buttons } from './buttons';
+export { navButtons } from './buttons';
 export { linksList } from './links';

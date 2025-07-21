@@ -1,18 +1,18 @@
 import { BaseProduct } from '@shared/types/APITypes';
-import { BannerData } from '@entities/bannerSlide/model/bannerSlide';
+import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
 import {
-  AutoplayParams,
-  defaultConfig,
-  SliderConfig,
-} from './model/defaultConfig';
-import { HooksConfig, SliderType, VisualConfig } from './lib/types';
+  bannerConfig,
+  bannerHooksConfig,
+  prodConfig,
+  prodHooksConfig,
+} from './model/configs';
+import { SliderType } from './types/types';
 import { SliderProvider } from './model/context/sliderContext';
-import { FCSlider } from './ui';
+import { MainSlider } from './ui';
 import { useMemo } from 'react';
 
 type Props = {
   dataset: BannerData[] | BaseProduct[];
-  sliderConfig: SliderConfig;
   classNames: {
     viewport: string;
     pagination?: string;
@@ -22,39 +22,20 @@ type Props = {
   type: SliderType;
 };
 
-export const Slider: React.FC<Props> = ({
-  dataset,
-  sliderConfig,
-  classNames,
-  type,
-}) => {
-  const config = { ...defaultConfig, ...sliderConfig };
+//TODO: re-access CSS props (clamp), fix buttons, fix pagination
+export const Slider: React.FC<Props> = ({ dataset, classNames, type }) => {
+  const config = useMemo(() => {
+    return type === SliderType.BANNER ? bannerConfig : prodConfig;
+  }, []);
+
+  const hooksConfig = useMemo(() => {
+    return type === SliderType.BANNER ? bannerHooksConfig : prodHooksConfig;
+  }, []);
   const providerConfig = { dataset, mode: config.mode };
-
-  const hooksConfig: HooksConfig = useMemo(
-    () => ({
-      swipeCoeff: config.swipeCoeff as number,
-      threshold: config.threshold as number,
-      autoplay: config.autoplay as AutoplayParams,
-    }),
-    [],
-  );
-
-  const visualConfig: VisualConfig = useMemo(
-    () => ({
-      gap: config.gap as number,
-      animationSpeed: config.animationSpeed as number,
-    }),
-    [],
-  );
 
   return (
     <SliderProvider config={providerConfig} type={type}>
-      <FCSlider
-        classNames={classNames}
-        visualConfig={visualConfig}
-        hooksConfig={hooksConfig}
-      />
+      <MainSlider classNames={classNames} hooksConfig={hooksConfig} />
     </SliderProvider>
   );
 };

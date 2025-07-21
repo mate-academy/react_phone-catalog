@@ -1,0 +1,102 @@
+@use '@mixins/typography/bodyText' as *;
+@use '@mixins/buttons/blackenedButton' as *;
+@use '@mixins/buttons/regularButton' as *;
+@use '@constants/fonts' as *;
+@use '@constants/colors' as cl;
+@use '@constants/productCardSizes' as *;
+@use '@constants/breakpoint' as *;
+@use '@mixins/typography/smallText' as *;
+
+.container {
+  display: flex;
+  box-sizing: border-box;
+  width: $card-width;
+  height: $card-height;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+  border: 1px solid cl.$elements;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+}
+
+.name {
+  display: inline-block;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  margin: auto;
+
+  @include body-text;
+}
+
+.price {
+  width: 100%;
+  padding-bottom: 8px;
+  border-bottom: 1px solid cl.$elements;
+
+  font-size: $lg;
+  font-weight: $s-u;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+.full-price {
+  display: inline-block;
+  margin-left: 8px;
+  color: cl.$gray-secondary;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.pcWrapper {
+  display: flex;
+  width: 100%;
+  height: 129px;
+  justify-content: center;
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @media (min-width: $BREAKPOINT_TAB) {
+    height: 181px;
+  }
+
+  @media (min-width: $BREAKPOINT_WIDE) {
+    height: 196px;
+  }
+}
+
+.descr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 15px);
+  row-gap: 8px;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 77px;
+  padding: 8px 0;
+
+  @include small-text;
+
+  &__type {
+    color: cl.$gray-secondary;
+  }
+
+  &__val {
+    justify-self: end;
+  }
+}

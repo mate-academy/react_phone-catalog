@@ -1,1 +1,0 @@
-export { BannerSlide } from './ui';

@@ -1,13 +1,9 @@
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@ui/button';
-import { PCImage, Description } from './subcomponents';
-import { AriaNames, IconPath } from '@shared/types/ButtonProps';
 import { BaseProduct } from '@shared/types/APITypes';
-
-import styles from './productCard.module.scss';
-import blBtn from '@shared/styles/blackenedButton.module.scss';
-import regBtn from '@shared/styles/regularButton.module.scss';
+import styles from './styles/productCard.module.scss';
+import { useProdCard } from './model/useProdCard';
+import { CardButtons } from './ui/buttons';
 
 type Props = {
   product: BaseProduct;
@@ -15,15 +11,6 @@ type Props = {
 
 export const ProductCard = forwardRef<HTMLLIElement, Props>(
   ({ product }, ref) => {
-    const cartCN = {
-      main: blBtn['btn-blc'],
-      span: blBtn['btn-blc__span'],
-    };
-    const favCN = {
-      main: regBtn.button,
-      icon: regBtn.button__icon,
-    };
-
     const {
       image,
       name,
@@ -36,33 +23,41 @@ export const ProductCard = forwardRef<HTMLLIElement, Props>(
       category,
     } = product;
 
+    const { handleCart, handleFav, isInFav, isInCart } = useProdCard({
+      id: product.id,
+    });
+
     return (
       <li ref={ref} className={styles.container}>
         <Link to={`/${category}/${itemId}`} className={styles['product-card']}>
-          <PCImage image={image} />
+          <div className={styles.pcWrapper}>
+            <img className={styles.pcWrapper__image} src={image} alt={name} />
+          </div>
           <h3 className={styles.name}>{name}</h3>
-
-          <span
-            className={styles.price}
-            style={{ '--full-price': `"${fullPrice}$"` } as React.CSSProperties}
-          >
+          <span className={styles.price}>
             {`${price}$`}
+            {fullPrice && (
+              <span className={styles['full-price']}>{`${fullPrice}$`}</span>
+            )}
           </span>
 
-          <Description screen={screen} capacity={capacity} ram={ram} />
+          <dl className={styles.descr}>
+            <dt className={styles.descr__type}>Screen</dt>
+            <dd className={styles.descr__val}>{screen}</dd>
 
-          <div className={styles.btns}>
-            <Button
-              ariaName={AriaNames.AddCart}
-              text={AriaNames.AddCart}
-              className={cartCN}
-            />
-            <Button
-              ariaName={AriaNames.AddFav}
-              iconPath={IconPath.Fav}
-              className={favCN}
-            />
-          </div>
+            <dt className={styles.descr__type}>Capacity</dt>
+            <dd className={styles.descr__val}>{capacity}</dd>
+
+            <dt className={styles.descr__type}>RAM</dt>
+            <dd className={styles.descr__val}>{ram}</dd>
+          </dl>
+
+          <CardButtons
+            isInFav={isInFav}
+            isInCart={isInCart}
+            handleCart={handleCart}
+            handleFav={handleFav}
+          />
         </Link>
       </li>
     );

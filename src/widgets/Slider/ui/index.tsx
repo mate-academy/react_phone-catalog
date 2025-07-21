@@ -1,4 +1,4 @@
-import { HooksConfig, VisualConfig } from '../lib/types';
+import { HooksConfig } from '../types/types';
 import { SlButtons } from './button/sliderButton';
 import { Carousel } from './carousel/carousel';
 import { useSlider } from '../model/hooks/useSlider';
@@ -12,20 +12,14 @@ type Props = {
     buttonPrev?: string;
     buttonNext?: string;
   };
-  visualConfig: VisualConfig;
   hooksConfig: HooksConfig;
 };
 
-export const FCSlider: React.FC<Props> = ({
-  classNames,
-  visualConfig,
-  hooksConfig,
-}) => {
+export const MainSlider: React.FC<Props> = ({ classNames, hooksConfig }) => {
   const { viewport, buttonPrev, buttonNext, pagination } = classNames;
-  const { handlers, onButton, disableButton } = useSlider({
-    visualConfig,
-    hooksConfig,
-  });
+  const { gap, animationSpeed } = hooksConfig;
+  const { handlers, onButton, disableButton, paginationHandler, getIndex } =
+    useSlider({ hooksConfig });
   const { length } = useSlContext();
 
   return (
@@ -39,12 +33,18 @@ export const FCSlider: React.FC<Props> = ({
         />
       )}
       <Carousel
-        visualConfig={visualConfig}
+        gap={gap}
+        animationSpeed={animationSpeed}
         className={viewport}
         handlers={handlers}
       />
       {pagination && (
-        <SliderPagination length={length} className={pagination} />
+        <SliderPagination
+          length={length}
+          className={pagination}
+          onClick={paginationHandler}
+          getIndex={getIndex}
+        />
       )}
     </>
   );

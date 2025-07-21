@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
+import { useCallback } from 'react';
 import { useSlContext } from '../context/sliderContext';
 
 type Params = {
-  updateSizes: () => void;
   getIndex: (arg?: number) => number;
   setOffsetByIndex: (idx: number) => void;
   toggleTrackClass: (anim?: boolean) => void;
@@ -10,15 +9,19 @@ type Params = {
 };
 
 export const useResize = ({
-  updateSizes,
   getIndex,
   setOffsetByIndex,
   toggleTrackClass,
   translateRight,
 }: Params) => {
-  const { offset, VP } = useSlContext();
+  const { offset, VP, vpWidth, elWidth, trackElement } = useSlContext();
 
-  useEffect(() => {
+  const updateSizes = () => {
+    vpWidth.current = VP.current?.offsetWidth ?? 0;
+    elWidth.current = trackElement.current?.offsetWidth ?? 0;
+  };
+
+  const resize = useCallback(() => {
     const node = VP.current as HTMLDivElement;
 
     if (node === null) {
@@ -37,13 +40,7 @@ export const useResize = ({
     return () => {
       resizeObs.disconnect();
     };
-  }, [
-    VP,
-    getIndex,
-    setOffsetByIndex,
-    updateSizes,
-    toggleTrackClass,
-    offset,
-    translateRight,
-  ]);
+  }, [getIndex, setOffsetByIndex, toggleTrackClass, offset, translateRight]);
+
+  return { resize, updateSizes };
 };

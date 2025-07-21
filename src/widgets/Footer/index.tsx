@@ -1,18 +1,11 @@
 import { linksList } from './model';
 import styles from './styles/footer.module.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { NavigationLink } from '@ui/navLink';
-import btn from '@shared/styles/regularButton.module.scss';
-import { Button } from '@ui/button';
-import { AriaNames, IconPath } from '@shared/types/ButtonProps';
+import { ArrowIcon } from '@shared/icons';
 
 type Props = {
   className: string;
-};
-
-const buttonCN = {
-  main: btn.button,
-  icon: btn.button__icon,
 };
 
 const goToTop = () => {
@@ -37,14 +30,9 @@ export const Footer: React.FC<Props> = ({ className }) => {
           ))}
         </ul>
       </nav>
-      <div className={styles.footer__btns}>
-        <Link to={'#top'}>Back to top</Link>
-        <Button
-          ariaName={AriaNames.Top}
-          iconPath={IconPath.Up}
-          className={buttonCN}
-          fn={goToTop}
-        />
+      <div className={styles.buttons}>
+        <span>Back to top</span>
+        <button onClick={() => goToTop()}>{<ArrowIcon />}</button>
       </div>
     </footer>
   );

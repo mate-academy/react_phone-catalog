@@ -2,6 +2,7 @@
 @use '@constants/colors' as cl;
 @use '@constants/header-button-size' as bs;
 @use '@mixins/hoverDefault' as *;
+@use '@mixins/buttons/regularButton' as *;
 
 $logo-width-mob: 96px;
 $logo-width-wide: 128px;
@@ -67,6 +68,11 @@ $logo-width-wide: 128px;
 
   height: 48px;
 
+  > * {
+    width: 48px;
+    @include btn-reg;
+  }
+
   > :not(:first-child) {
     display: none;
   }
@@ -83,5 +89,9 @@ $logo-width-wide: 128px;
 
   @media (min-width: $BREAKPOINT_WIDE) {
     height: 64px;
+
+    > * {
+    width: 64px;
+    }
   }
 }

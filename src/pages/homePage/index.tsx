@@ -1,26 +1,27 @@
 import { BaseProduct, Category } from '@shared/types/APITypes';
 import { useEffect, useState } from 'react';
-import { fetchProducts } from '@shared/api/fetch';
-import { BannerData } from '@entities/bannerSlide/model/bannerSlide';
+import { fetchCategory, fetchBaseProducts } from '@shared/api/fetch';
+import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
 import { Slider } from '@widgets/Slider/';
-import { SliderType } from '@widgets/Slider/lib/types';
-import {
-  heroSliderConfig,
-  heroStyles,
-  prodSliderConfig,
-  prodStyles,
-} from './model';
+import { SliderType } from '@widgets/Slider/types/types';
+import { heroStyles, prodStyles, categories } from './model';
 import styles from './styles/HomePage.module.scss';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-//todo: styles of header/footer btns
+// todo: 3 presets for slider
+// separate mths from hooks
+// create reducer, api
+// create loader
+
 export const HomePage = () => {
   const [products, setProducts] = useState<BaseProduct[] | null>(null);
   const [bannerList, setBannerList] = useState<BannerData[] | null>(null);
 
   useEffect(() => {
     const load = async () => {
-      const data = await fetchProducts(Category.Products);
-      const banners = await fetchProducts(Category.Banners);
+      const data = await fetchBaseProducts();
+      const banners = await fetchCategory(Category.Banners);
 
       if (data) {
         setProducts(data);
@@ -35,7 +36,7 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <h1 className={styles['visually-hidden']}>Product Catalog</h1>
       <div className={styles.welcome}>
         <span className={styles.welcome__text}>
@@ -49,13 +50,12 @@ export const HomePage = () => {
             <Slider
               classNames={heroStyles}
               dataset={bannerList}
-              sliderConfig={heroSliderConfig}
               type={SliderType.BANNER}
             />
           </div>
         )}
       </div>
-      <main className={styles['home-catalogue']}>
+      <div className={styles['home-catalogue']}>
         <section
           className={`${styles.prodSwiper} ${styles['slider-container']}`}
         >
@@ -64,16 +64,43 @@ export const HomePage = () => {
             <Slider
               classNames={prodStyles}
               dataset={products as BaseProduct[]}
-              sliderConfig={prodSliderConfig}
               type={SliderType.PROD}
             />
           )}
         </section>
-        <section className={styles['home-catalogue__categories']}>
-          <h2 className={styles.prodSwiper__title}>Shop by category</h2>
+        <section
+          className={styles.categories}
+          style={{ '--fields-count': categories.length } as React.CSSProperties}
+        >
+          <h2 className={styles.categories__title}>Shop by category</h2>
+          {categories.map(el => (
+            <Link to={`/${el.link}`} key={el.id}>
+              <img
+                className={styles.categories__image}
+                src={`/src/shared/img/${el.src}`}
+              />
+              <h3
+                className={styles.categories__name}
+                style={{ '--amount': `"${el.amount}"` } as React.CSSProperties}
+              >
+                {el.name}
+              </h3>
+            </Link>
+          ))}
         </section>
-        <section className={styles['home-catalogue__hot-prices']}></section>
-      </main>
-    </div>
+        <section
+          className={`${styles.prodSwiper} ${styles['slider-container']}`}
+        >
+          <h2 className={styles.prodSwiper__title}>Hot prices</h2>
+          {products && (
+            <Slider
+              classNames={prodStyles}
+              dataset={products as BaseProduct[]}
+              type={SliderType.PROD}
+            />
+          )}
+        </section>
+      </div>
+    </main>
   );
 };

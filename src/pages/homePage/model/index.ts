@@ -1,2 +1,2 @@
-export { heroSliderConfig, prodSliderConfig } from './sliderData/sliderConfigs';
-export { heroStyles, prodStyles } from '../model/sliderData/sliderStyles';
+export { heroStyles, prodStyles } from './sliderData/sliderStyles';
+export { categories } from './categoriesData/categories';

@@ -1,18 +1,44 @@
+import { useSlContext } from '@widgets/Slider/model/context/sliderContext';
+import { Mode } from '@widgets/Slider/types/types';
+
 type Params = {
   length: number;
-  fn?: (arg?: unknown) => unknown;
+  onClick: (pos: number) => void;
   className: string;
+  getIndex: (arg?: number) => number;
 };
 
-export const SliderPagination = ({ length, fn, className }: Params) => {
-  const amount = Array.from({ length: length }, (_, i) => i);
+export const SliderPagination = ({
+  length,
+  onClick,
+  className,
+  getIndex,
+}: Params) => {
+  const { mode } = useSlContext();
+
+  const disabled = (val: number) => {
+    const currentIndex = getIndex();
+
+    return mode === Mode.INFINITE
+      ? currentIndex - 1 === val
+      : currentIndex === val;
+  };
+
+  const listLength = Mode.INFINITE ? length - 2 : length;
+
+  const amount = Array.from({ length: listLength }, (_, i) => i);
 
   return (
     <nav aria-label="Slider pagination" className={className}>
       {amount.map(dg => (
-        <div key={dg}>
-          <button onClick={fn} />
-        </div>
+        <button
+          onClick={() => onClick(mode === Mode.INFINITE ? dg + 1 : dg)}
+          disabled={disabled(dg)}
+          key={dg}
+          aria-label={`Go to slide # ${dg}`}
+        >
+          <div />
+        </button>
       ))}
     </nav>
   );

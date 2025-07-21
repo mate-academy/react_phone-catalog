@@ -1,9 +1,8 @@
-import { BannerData } from '@entities/bannerSlide/model/bannerSlide';
+import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
 import { BaseProduct } from '@shared/types/APITypes';
 import { createContext, ReactNode, useContext, useMemo, useRef } from 'react';
-import { Mode } from '../defaultConfig';
-import { listCreate } from '../../lib/helpers/listProcess';
-import { SliderType } from '@widgets/Slider/lib/types';
+import { listCreate } from '../helpers/listProcess';
+import { Mode, SliderType } from '@widgets/Slider/types/types';
 
 type SliderContextType = {
   VP: React.RefObject<HTMLDivElement>;
@@ -56,23 +55,20 @@ export const SliderProvider = ({ children, config, type }: Props) => {
   const vpWidth = useRef<number>(0);
   const elWidth = useRef<number>(0);
   // #endregion
-  const value = useMemo(
-    () => ({
-      VP,
-      track,
-      trackElement,
-      offset,
-      drag,
-      list,
-      length,
-      type,
-      vpWidth,
-      elWidth,
-      CLONES,
-      mode: config.mode,
-    }),
-    [list, length, type],
-  );
+  const value = {
+    VP,
+    track,
+    trackElement,
+    offset,
+    drag,
+    list,
+    length,
+    type,
+    vpWidth,
+    elWidth,
+    CLONES,
+    mode: config.mode,
+  };
 
   return <SlContext.Provider value={value}>{children}</SlContext.Provider>;
 };

@@ -1,17 +1,16 @@
-import btn from '@shared/styles/regularButton.module.scss';
 import styles from './styles/header.module.scss';
 import { NavLink } from 'react-router-dom';
 import { NavigationLink } from '@ui/navLink';
-import { Button } from '@ui/button';
-import { buttons, linksList } from './model';
+import { navButtons, linksList } from './model';
+import { BurgerMenuIcon } from '@shared/icons';
 
 type Props = {
   className: string;
 };
 
-export const Header = ({ className }: Props) => {
-  const ButtonCN = { main: `${btn.button}`, icon: `${btn.button__icon}` };
+//TODO: NavLink styles optimization
 
+export const Header = ({ className }: Props) => {
   return (
     <header className={`${styles.header} ${className}`}>
       <NavLink to="/">
@@ -24,7 +23,7 @@ export const Header = ({ className }: Props) => {
       </NavLink>
       <nav
         role="navigation"
-        aria-label="Main navigation"
+        aria-label="main navigation"
         style={{ display: 'flex' }}
       >
         <ul className={styles.header__nav}>
@@ -33,16 +32,23 @@ export const Header = ({ className }: Props) => {
           ))}
         </ul>
       </nav>
-      <div className={styles['buttons-container']}>
-        {buttons.map(bttn => (
-          <Button
-            key={bttn.ariaName}
-            ariaName={bttn.ariaName}
-            iconPath={bttn.iconPath}
-            className={ButtonCN}
-          />
-        ))}
-      </div>
+      <nav
+        aria-label="User actions menu"
+        className={styles['buttons-container']}
+      >
+        <button aria-label="Open menu">
+          <BurgerMenuIcon />
+        </button>
+        {navButtons.map(el => {
+          const IconComponent: React.ComponentType = el.icon;
+
+          return (
+            <NavLink key={el.ariaName} to={el.to} aria-label={el.ariaName}>
+              <IconComponent />
+            </NavLink>
+          );
+        })}
+      </nav>
     </header>
   );
 };

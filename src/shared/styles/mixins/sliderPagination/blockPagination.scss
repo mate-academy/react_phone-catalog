@@ -8,17 +8,26 @@
   justify-content: center;
   gap: 4px;
 
-  > * {
-    box-sizing: border-box;
-    display: flex;
-    padding: 10px 5px;
+  > button {
     width: 24px;
     height: 24px;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    &:first-child {
-      width: 100%;
-      height: 100%;
+    &:disabled {
+      > * {
+        background-color: $gray-primary;
+      }
+    }
+
+    > div {
+      width: 14px;
+      height: 4px;
       background-color: $elements;
     }
   }
 }
+

@@ -1,8 +1,8 @@
 import { Button } from '@ui/button';
 import styles from '@shared/styles/regularButton.module.scss';
 import { AriaNames, IconPath } from '@shared/types/ButtonProps';
-import { Mode } from '@widgets/Slider/model/defaultConfig';
 import { useSlContext } from '@widgets/Slider/model/context/sliderContext';
+import { Mode } from '@widgets/Slider/types/types';
 
 type Props = {
   classNamePrev: string;

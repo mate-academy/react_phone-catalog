@@ -10,6 +10,7 @@ const alias = {
   '@mixins': path.resolve(__dirname, 'src/shared/styles/mixins'),
   '@entities': path.resolve(__dirname, 'src/entities'),
   '@widgets': path.resolve(__dirname, 'src/widgets'),
+  '@features': path.resolve(__dirname, 'src/features'),
 };
 
 // https://vitejs.dev/config/

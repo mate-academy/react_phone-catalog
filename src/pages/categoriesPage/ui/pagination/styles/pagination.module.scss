@@ -1,0 +1,16 @@
+@use '@mixins/buttons/blackenedButton' as *;
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  align-self: center;
+}
+
+.button {
+  @include btn-blc;
+  
+  width: 32px;
+  height: 32px;
+}

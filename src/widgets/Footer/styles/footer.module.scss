@@ -1,6 +1,8 @@
 @use '@constants/breakpoint' as *;
 @use '@constants/colors' as cl;
-@use '@shared/styles/mixins/typography/uppercase' as *;
+@use '@mixins/typography/uppercase' as *;
+@use '@mixins/typography/smallText' as *;
+@use '@mixins/buttons/regularButton' as *;
 
 .footer {
   display: grid;
@@ -34,30 +36,7 @@
     height: 65px;
   }
 
-  &__btns {
-    display: flex;
-    height: 32px;
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-
-    box-sizing: border-box;
-
-    > :first-child {
-      @include uppercase;
-
-      display: inline-block;
-      line-height: 32px;
-
-      color: cl.$gray-secondary;
-    }
-
-    > :last-child {
-      width: 32px;
-    }
-  }
-
-  @media (min-width: $BREAKPOINT_TAB) {
+    @media (min-width: $BREAKPOINT_TAB) {
     grid-template-columns: 0.8fr 1fr 0.8fr;
     grid-template-rows: 1fr;
     justify-content: center;
@@ -83,3 +62,32 @@
     }
   }
 }
+
+.buttons {
+  display: flex;
+  height: 32px;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  > :first-child {
+    @include small-text;
+    
+    font-weight: 500;
+
+    display: inline-block;
+    line-height: 32px;
+
+    color: cl.$gray-secondary;
+  }
+
+  > :last-child {
+    width: 32px;
+    height: 32px;
+
+    @include btn-reg;
+  }
+}
+

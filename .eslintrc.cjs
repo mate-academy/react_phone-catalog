@@ -125,6 +125,7 @@ module.exports = {
           ['@shared', './src/shared'],
           ['@entities', './src/entities'],
           ['@widgets', './src/widgets']
+          ['@features', './src/features']
         ],
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
       },

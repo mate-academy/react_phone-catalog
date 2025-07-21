@@ -1,5 +1,5 @@
-const enum Category {
-  Accessories = 'acessories',
+enum Category {
+  Accessories = 'accessories',
   Phones = 'phones',
   Products = 'products',
   Tablets = 'tablets',

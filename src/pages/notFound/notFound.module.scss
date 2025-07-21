@@ -1,0 +1,23 @@
+@use '@mixins/pageLayout' as *;
+@use '@mixins/typography/h3' as *;
+@use '@mixins/typography/h1' as *;
+
+.container {
+  @include page-layout;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.sorry {
+  @include h3;
+
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.h1 {
+  @include h1;
+
+  align-self: center;
+}
