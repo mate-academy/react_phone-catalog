@@ -150,4 +150,9 @@
   justify-content: center;
   color: $color-white;
   font-size: 9px;
+
+  @media (max-width: $size-tablet) {
+    right: 8px;
+    top: 8px;
+  }
 }

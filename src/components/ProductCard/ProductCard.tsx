@@ -61,6 +61,10 @@ export const ProductCard = ({ product }: Props) => {
           })}
           onClick={e => {
             e.stopPropagation();
+            if (isInCart) {
+              return;
+            }
+
             handleAddToCart();
           }}
         >

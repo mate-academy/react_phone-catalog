@@ -24,3 +24,12 @@ export type CategoryProduct = {
   zoom?: string;
   cell?: string[];
 };
+
+export type CategoryProductTechSpecKeys =
+  | 'resolution'
+  | 'screen'
+  | 'processor'
+  | 'ram'
+  | 'camera'
+  | 'zoom'
+  | 'cell';

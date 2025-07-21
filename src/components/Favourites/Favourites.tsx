@@ -3,10 +3,15 @@ import styles from './Favourites.module.scss';
 import { ProductCard } from '../ProductCard';
 import { CartandFavContext } from '../CartandFavProvider';
 import { useContext } from 'react';
+import { EmptyPage } from '../EmptyPage';
 
 export const Favourites = () => {
   const { fav: products } = useContext(CartandFavContext);
   const itemsCounter = products.length;
+
+  if (itemsCounter === 0) {
+    return <EmptyPage title="Favourites" text="Favourites is empty" />;
+  }
 
   return (
     <main className={styles.page}>

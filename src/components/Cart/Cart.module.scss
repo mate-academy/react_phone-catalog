@@ -6,14 +6,16 @@
   color: $color-white;
   display: flex;
   justify-content: center;
-  min-height: calc(100vh - 253px);
+  min-height: calc(100vh - 160px);
 
   @media (max-width: $size-tablet) {
     padding: 40px 24px 64px;
+    min-height: calc(100vh - 144px);
   }
 
   @media (max-width: $size-mobile) {
     padding: 24px 16px 56px;
+    min-height: calc(100vh - 357px);
   }
 }
 
@@ -41,6 +43,17 @@
   }
 }
 
+.pageInfo_link {
+  text-decoration: none;
+  display: flex;
+  gap: 4px;
+  color: $color-white;
+  font-family: $font-semibold;
+  font-size: 12px;
+  line-height: 100%;
+  cursor: pointer;
+}
+
 .pageInfo_title {
   font-family: $font-bold;
   line-height: 56px;
@@ -58,6 +71,7 @@
 .pageItems {
   display: flex;
   gap: 16px;
+  position: relative;
 
   @media (max-width: $size-tablet) {
     flex-direction: column;
@@ -126,5 +140,67 @@
         background-color: #a378ff;
       }
     }
+  }
+}
+
+.modalBackGround {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.checkoutWindow {
+  background-color: $color-black;
+  font-family: $font-semibold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 40px;
+  padding: 24px;
+
+  max-width: 80%;
+  height: 30%;
+  border: 1px solid $color-elements;
+
+  &_buttons {
+    display: flex;
+    gap: 16px;
+    font-family: $font-regular;
+    color: $color-white;
+    width: 100%;
+    justify-content: center;
+  }
+
+  &_button {
+    background-color: $color-accent;
+    height: 32px;
+    width: 33%;
+    color: $color-white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: #a378ff;
+    }
+  }
+}
+
+.cancel {
+  background-color: $color-red;
+
+  &:hover {
+    background-color: #f08080;
   }
 }

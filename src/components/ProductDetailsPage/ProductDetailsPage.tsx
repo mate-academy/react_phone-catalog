@@ -1,12 +1,18 @@
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import { ModelsSlider } from '../ModelsSlider';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import { getData, getProducts } from '../../utils/fetchClient';
-import { CategoryProduct } from '../../types/CategoryProduct';
+import {
+  CategoryProduct,
+  CategoryProductTechSpecKeys,
+} from '../../types/CategoryProduct';
+import { EmptyPage } from '../EmptyPage';
+import { CartandFavContext } from '../CartandFavProvider';
+import classNames from 'classnames';
 
-const techSpecs = [
+const techSpecs: CategoryProductTechSpecKeys[] = [
   'screen',
   'resolution',
   'processor',
@@ -16,7 +22,7 @@ const techSpecs = [
   'cell',
 ];
 
-const colorMap = {
+const colorMap: Record<string, string> = {
   midnight: '#1e1e2f',
   gold: '#d4af37',
   graphite: '#4b4b4f',
@@ -40,14 +46,21 @@ const colorMap = {
   midnightgreen: '#004953',
   blue: '#007aff',
   pink: '#ff69b4',
-};
+} as const;
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
+  const { cart, fav, setCart, setFav } = useContext(CartandFavContext);
+
+  const isInCart = cart.some(item => item.itemId === productId);
+  const isInFav = fav.some(item => item.itemId === productId);
   const [randomProducts, setRandomProducts] = useState<Product[]>([]);
-  const [product, setProduct] = useState<CategoryProduct | undefined>(
-    undefined,
-  );
+  /* eslint-disable */
+  const [categoryProduct, setCategoryProduct] = useState<
+    CategoryProduct | undefined
+  >(undefined);
+  /* eslint-enable */
+  const [product, setProduct] = useState<Product | undefined>(undefined);
   const [color, setColor] = useState<string | undefined>(undefined);
   const [capacity, setCapacity] = useState<string | undefined>(undefined);
   const [mainImgSrc, setMainImgSrc] = useState<string | undefined>(undefined);
@@ -61,9 +74,13 @@ export const ProductDetailsPage = () => {
 
       setRandomProducts(random);
 
-      const category = productsFromServer.find(
+      const productFromServer = productsFromServer.find(
         p => p.itemId === productId,
-      )?.category;
+      );
+
+      setProduct(productFromServer);
+
+      const category = productFromServer?.category;
 
       getData<CategoryProduct[]>(`/${category}`).then(
         categoryProductsFromServer => {
@@ -71,7 +88,7 @@ export const ProductDetailsPage = () => {
             p => p.id === productId,
           );
 
-          setProduct(selectedProduct);
+          setCategoryProduct(selectedProduct);
           setMainImgSrc(selectedProduct?.images[0]);
           setColor(selectedProduct?.color);
           setCapacity(selectedProduct?.capacity);
@@ -80,36 +97,34 @@ export const ProductDetailsPage = () => {
     });
   }, [productId]);
 
-  if (!product) {
+  if (!categoryProduct) {
     return (
-      <main className={styles.page} style={{ height: '100vh' }}>
-        <h1 className={styles.pageInfo_title}> Product was not found</h1>
-      </main>
+      <EmptyPage title="Something went wrong :(" text="Product not found" />
     );
   }
 
   const handleColorChange = (newColor: string) => {
     setColor(newColor);
     const newId =
-      product.namespaceId +
+      categoryProduct.namespaceId +
       '-' +
-      product.capacity.toLowerCase() +
+      categoryProduct.capacity.toLowerCase() +
       '-' +
       newColor.replace(' ', '-');
 
-    navigate(`/${product.category}/product/${newId}`);
+    navigate(`/${categoryProduct.category}/product/${newId}`);
   };
 
   const handleCapacityChange = (newCapacity: string) => {
     setCapacity(newCapacity);
     const newId =
-      product.namespaceId +
+      categoryProduct.namespaceId +
       '-' +
       newCapacity.toLowerCase() +
       '-' +
-      product.color.replace(' ', '-');
+      categoryProduct.color.replace(' ', '-');
 
-    navigate(`/${product.category}/product/${newId}`);
+    navigate(`/${categoryProduct.category}/product/${newId}`);
   };
 
   const handleBack = () => {
@@ -117,6 +132,26 @@ export const ProductDetailsPage = () => {
       navigate(-1);
     } else {
       navigate('/');
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (!product || isInCart) {
+      return;
+    }
+
+    setCart(prevCart => [...prevCart, product]);
+  };
+
+  const handleAddToFav = () => {
+    if (!product) {
+      return;
+    }
+
+    if (!isInFav) {
+      setFav(prevFav => [...prevFav, product]);
+    } else {
+      setFav(prevFav => prevFav.filter(item => item.itemId !== product.itemId));
     }
   };
 
@@ -128,23 +163,27 @@ export const ProductDetailsPage = () => {
             <img src="/img/icons/home.svg" alt="home" />
           </NavLink>
           <span className={styles.pathHome_title}>&gt;</span>
-          <NavLink className={styles.pageInfo_link} to={`/${product.category}`}>
-            {product.category[0].toUpperCase() + product.category.slice(1, 20)}
+          <NavLink
+            className={styles.pageInfo_link}
+            to={`/${categoryProduct.category}`}
+          >
+            {categoryProduct.category[0].toUpperCase() +
+              categoryProduct.category.slice(1, 20)}
           </NavLink>
           <span className={styles.pathHome_title}>&gt;</span>
-          <span className={styles.pathHome_title}>{product.name}</span>
+          <span className={styles.pathHome_title}>{categoryProduct.name}</span>
         </div>
         <div className={styles.pageInfo}>
           <div className={styles.pageInfo_link} onClick={() => handleBack()}>
             <span>&lt;</span>
             <span>Back</span>
           </div>
-          <h1 className={styles.pageInfo_title}> {product.name}</h1>
+          <h1 className={styles.pageInfo_title}> {categoryProduct.name}</h1>
         </div>
         <div className={styles.pageItems}>
           <div className={styles.productMedia}>
             <div className={styles.productMedia_allImg}>
-              {product.images.map(image => (
+              {categoryProduct.images.map(image => (
                 <div
                   key={image}
                   className={styles.productMedia_allImg_wrap}
@@ -169,7 +208,7 @@ export const ProductDetailsPage = () => {
                   Available colors
                 </span>
                 <div className={styles.productMedia_card_options}>
-                  {product.colorsAvailable.map(col => (
+                  {categoryProduct.colorsAvailable.map(col => (
                     <div
                       style={{
                         backgroundColor:
@@ -199,7 +238,7 @@ export const ProductDetailsPage = () => {
                   Select capacity
                 </span>
                 <div className={styles.productMedia_card_options}>
-                  {product.capacityAvailable.map(cap => (
+                  {categoryProduct.capacityAvailable.map(cap => (
                     <div
                       className={styles.productMedia_card_options_cap}
                       key={cap}
@@ -216,16 +255,37 @@ export const ProductDetailsPage = () => {
                 </div>
               </div>
               <div className={styles.productMedia_card_price}>
-                <span>{`$${product.priceDiscount}`}</span>
+                <span>{`$${categoryProduct.priceDiscount}`}</span>
                 <span
                   className={styles.productMedia_card_price_full}
-                >{`$${product.priceRegular}`}</span>
+                >{`$${categoryProduct.priceRegular}`}</span>
               </div>
               <div className={styles.cardButtons}>
-                <button className={styles.cardAddButton}>Add to a cart</button>
-                <button className={styles.cardFavButton}>
+                <button
+                  type="button"
+                  className={classNames(styles.cardAddButton, {
+                    [styles.addedToCart]: isInCart,
+                  })}
+                  onClick={() => handleAddToCart()}
+                >
+                  {isInCart ? 'Added to cart' : 'Add to a cart'}
+                </button>
+                <button
+                  type="button"
+                  className={classNames(styles.cardFavButton, {
+                    [styles.addedToFav]: isInFav,
+                  })}
+                  onClick={e => {
+                    e.stopPropagation();
+                    handleAddToFav();
+                  }}
+                >
                   <img
-                    src="/img/icons/favourite-default.svg"
+                    src={
+                      isInFav
+                        ? '/img/icons/favourite-selected.svg'
+                        : '/img/icons/favourite-default.svg'
+                    }
                     alt="favourites"
                   />
                 </button>
@@ -234,7 +294,7 @@ export const ProductDetailsPage = () => {
                 <div className={styles.cardProperty}>
                   <span className={styles.productMedia_card_text}>Screen</span>
                   <span className={styles.cardPropertyValue}>
-                    {product.screen}
+                    {categoryProduct.screen}
                   </span>
                 </div>
                 <div className={styles.cardProperty}>
@@ -242,13 +302,13 @@ export const ProductDetailsPage = () => {
                     Capacity
                   </span>
                   <span className={styles.cardPropertyValue}>
-                    {product.capacity}
+                    {categoryProduct.capacity}
                   </span>
                 </div>
                 <div className={styles.cardProperty}>
                   <span className={styles.productMedia_card_text}>RAM</span>
                   <span className={styles.cardPropertyValue}>
-                    {product.ram}
+                    {categoryProduct.ram}
                   </span>
                 </div>
               </div>
@@ -257,7 +317,7 @@ export const ProductDetailsPage = () => {
           <div className={styles.productDescription}>
             <section className={styles.productDescription_section}>
               <h3 className={styles.productDescription_title}>About</h3>
-              {product.description.map(p => (
+              {categoryProduct.description.map(p => (
                 <div
                   className={styles.productDescription_paragraph}
                   key={p.title}
@@ -275,7 +335,7 @@ export const ProductDetailsPage = () => {
               <h3 className={styles.productDescription_title}>Tech specs</h3>
               <div className={styles.productDescription_techSpecs}>
                 {techSpecs
-                  .filter(techSpec => techSpec in product)
+                  .filter(techSpec => techSpec in categoryProduct)
                   .map(ts => (
                     <div
                       key={ts}
@@ -285,7 +345,9 @@ export const ProductDetailsPage = () => {
                         {ts}
                       </span>
                       <span>
-                        {ts !== 'cell' ? product[ts] : product[ts]?.join(', ')}
+                        {ts !== 'cell'
+                          ? categoryProduct[ts]
+                          : categoryProduct[ts]?.join(', ')}
                       </span>
                     </div>
                   ))}

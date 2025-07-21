@@ -30,9 +30,14 @@
 .cardImage {
   height: 196px;
   object-fit: contain;
+  transition: transform 0.3s ease;
 
   @media (max-width: $size-mobile) {
     height: 130px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 }
 

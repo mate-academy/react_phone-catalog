@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
 const navLinks = [
-  { id: 1, title: 'github', to: '/' },
+  { id: 1, title: 'github', to: 'https://github.com/Yuliia-Fil/' },
   { id: 2, title: 'contacts', to: '/' },
   { id: 3, title: 'rights', to: '/' },
 ];
@@ -25,9 +25,14 @@ export const Footer = () => {
           <ul className={styles.navList}>
             {navLinks.map(link => (
               <li key={link.id}>
-                <NavLink to={link.to} className={styles.navLink}>
+                <a
+                  target="_blank"
+                  href={link.to}
+                  rel="noreferrer"
+                  className={styles.navLink}
+                >
                   {link.title}
-                </NavLink>
+                </a>
               </li>
             ))}
           </ul>
