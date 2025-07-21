@@ -45,6 +45,8 @@ module.exports = {
     'max-len': ['error', {
       ignoreTemplateLiterals: true,
       ignoreComments: true,
+      ignoreStrings: true,
+      ignoreUrls: true,
     }],
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,
@@ -99,7 +101,7 @@ module.exports = {
       },
     ],
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.mts', 'src/vite-env.d.ts', 'cypress'],
   settings: {
     react: {
       version: 'detect',

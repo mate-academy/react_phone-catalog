@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@layer base {
+  @font-face {
+    font-family: Mont;
+    font-style: normal;
+    font-weight: 400;
+    src: url(/fonts/Mont-Regular.otf) format('opentype');
+  }
+
+  @font-face {
+    font-family: Mont;
+    font-style: normal;
+    font-weight: 600;
+    src: url(/fonts/Mont-SemiBold.otf) format('opentype');
+  }
+
+  @font-face {
+    font-family: Mont;
+    font-style: normal;
+    font-weight: 700;
+    src: url(/fonts/Mont-Bold.otf) format('opentype');
+  }
+
+  html {
+    @apply font-sans text-primary ;
+  }
+
+  h1 {
+    @apply font-bold text-[32px] md:text-[48px] leading-[41px] md:leading-[56px] tracking-[-0.01em];
+  }
+
+  h2 {
+    @apply font-bold text-[22px] md:text-[32px] leading-[31px] md:leading-[41px] tracking-[-0.01em];
+  }
+
+  h3 {
+    @apply font-semibold md:font-bold text-[20px] md:text-[22px] leading-[26px] md:leading-[31px];
+  }
+
+  h4 {
+    @apply font-semibold text-[16px] md:text-[20px] leading-[20px] md:leading-[26px];
+  }
+}
+
+@layer components {
+  .container {
+    @apply w-full px-4 md:px-6 lg:max-w-[1200px] lg:mx-auto lg:px-8;
+  }
+
+  .uppercase-text {
+    @apply uppercase font-bold text-[12px] leading-[11px] tracking-[0.04em];
+  }
+
+  .buttons-text {
+    @apply font-semibold text-[14px] leading-[21px];
+  }
+
+  .body-text {
+    @apply font-normal text-[14px] leading-[21px];
+  }
+
+  .small-text {
+    @apply font-semibold text-[12px] leading-[15px];
+  }
+
+  .header-nav-link {
+    @apply relative flex items-center hover:text-primary font-bold text-[12px] leading-[11px] tracking-[0.04em] uppercase transition after:content-[''] after:absolute after:bottom-0 after:h-[3px] after:w-full after:bg-primary;
+  }
+
+  .header-button-counter {
+    @apply absolute top-[-6px] right-[-6px] flex justify-center items-center size-[14px] rounded-full border border-white bg-red text-white text-[9px] font-semibold leading-[11.5px];
+  }
+
+  .footer-nav-link {
+    @apply ;
+  }
+}

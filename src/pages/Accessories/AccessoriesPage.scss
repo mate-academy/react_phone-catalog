@@ -1,0 +1,10 @@
+@import '../../styles';
+
+.accessories {
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+}

@@ -25,7 +25,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 ## App
 
 1. Put components into the `src/components` folder.
-   - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
+   - Each component should be a folder with `index.tsx`, `ComponentName.tsx`, `ComponentName.module.scss` files.
    - Use CSS modules.
    - Keep `.module.scss` files together with their components.
 2. Advanced project structure:
@@ -76,7 +76,7 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 
 ## Product details page
 
-Create `ProductDetailsPage` available at `/product/:productId`.
+Create `Index` available at `/product/:productId`.
 
 1. `ProductCard` image and title should be links to the product details page.
 2. Use `Loader` when fetching the product details.
@@ -126,7 +126,7 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 ## Other tasks
 
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
-2. Implement the `Product was not found` state for the `ProductDetailsPage`.
+2. Implement the `Product was not found` state for the `Index`.
 
 ## (*) Advanced tasks
 

@@ -1,0 +1,28 @@
+.icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--favourites {
+    background-image: url(/img/icons/favourites.svg);
+  }
+
+  &--favourites-filled {
+    background-image: url(/img/icons/favourites-filled.svg);
+  }
+
+  &--cart {
+    background-image: url(/img/icons/cart.svg);
+  }
+
+  &--menu {
+    background-image: url(/img/icons/menu.svg);
+  }
+
+  &--arrow-up {
+    background-image: url(/img/icons/arrow-up.svg);
+  }
+}
