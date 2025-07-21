@@ -10,6 +10,7 @@ import { NotFoundPage } from './modules/NotFoundPage';
 import { DataProvider } from './context/DataContext';
 import { CatalogPage } from './modules/CatalogPage';
 import { ProductDetails } from './modules/ProductDetails/ProductDetails';
+import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 
 export const Root = () => {
   return (
@@ -21,6 +22,7 @@ export const Root = () => {
             <Route path="/home" element={<Navigate to="/" replace />} />
             <Route path="/:category" element={<CatalogPage />} />
             <Route path="/:category/:id" element={<ProductDetails />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

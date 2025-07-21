@@ -10,7 +10,8 @@ type ContextType = {
   products: Product[];
   selectedProduct: Product | null;
   setSelectedProduct: (product: Product | null) => void;
-
+  favorites: Product[];
+  setFavorites: (favorites: Product[]) => void;
   phones: Phone[];
   tablets: Tablet[];
   accessories: Accessory[];
@@ -24,6 +25,8 @@ export const DataContext = createContext<ContextType>({
   products: [],
   selectedProduct: null,
   setSelectedProduct: () => {},
+  favorites: [],
+  setFavorites: () => {},
   phones: [],
   tablets: [],
   accessories: [],
@@ -37,11 +40,13 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
   const [error, setError] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [favorites, setFavorites] = useState<Product[]>([]);
 
   const [phones, setPhones] = useState<Phone[]>([]);
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [accessories, setAccessories] = useState<Accessory[]>([]);
 
+  // --- FETCH DATA ---
   useEffect(() => {
     setIsLoading(true);
     setError(null);
@@ -101,6 +106,8 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
         products,
         selectedProduct,
         setSelectedProduct,
+        favorites,
+        setFavorites,
         phones,
         tablets,
         accessories,

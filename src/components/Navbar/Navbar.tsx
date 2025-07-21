@@ -19,7 +19,8 @@ const menuLinks = [
 ];
 
 export const Navbar: React.FC = () => {
-  const { isMenuOpen, setIsMenuOpen } = useContext(DataContext);
+  const { isMenuOpen, setIsMenuOpen, favorites } = useContext(DataContext);
+  const favoritesAmount = favorites.length;
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -63,6 +64,11 @@ export const Navbar: React.FC = () => {
                 className={styles.navbarIcons__icon}
                 alt="Favorites"
               />
+              {favoritesAmount > 0 && (
+                <span className={styles.navbarIcons__amount}>
+                  {favoritesAmount}
+                </span>
+              )}
             </NavLink>
             <NavLink
               to={'/cart'}

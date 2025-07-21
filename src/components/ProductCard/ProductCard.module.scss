@@ -92,48 +92,51 @@
 
   &__buttons {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     column-gap: 8px;
     height: 40px;
   }
 
-  &__button_addToCart {
-    flex: 1 1 auto;
-    display: block;
+  &__addToCart {
+    flex-grow: 1;
+    height: 100%;
     font-size: 14px;
     font-weight: 600;
     color: #fff;
     border-radius: 48px;
     background-color: $accent-color;
     transition: all 0.3s;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
-      transform: scale(1.05);
       box-shadow: 0 3px 13px rgba(23, 32, 49, 0.25);
+      transform: scale(1.05);
     }
   }
 
-  &__button_favorites {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px;
+  &__addToFavorites {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
     border-radius: 50%;
     border: 1px solid $icons-color;
+    background-image: url('../../assets/icons/heart.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
     transition: all 0.3s;
 
     &:hover {
-      transform: scale(1.05);
       border-color: $primary-color;
+      transform: scale(1.05);
+    }
+
+    &_active {
+      background-image: url('../../assets/icons/heart-yellow.svg');
     }
   }
-}
-
-.heartIcon {
-  width: 16px;
-  height: 16px;
-}
-
-.emptyCart {
-  height: 10px;
-  width: 10px;
 }

@@ -5,7 +5,8 @@ import heart from '../../assets/icons/heart.svg';
 import cart from '../../assets/icons/cart.svg';
 import Logo from '../../assets/icons/Logo.svg';
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { DataContext } from '../../context/DataContext';
 
 type Props = {
   closeMenu: () => void;
@@ -19,6 +20,8 @@ export const BurgerMenu: React.FC<Props> = ({
   isMenuOpen,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const { favorites } = useContext(DataContext);
+  const favoritesAmount = favorites.length;
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -69,7 +72,7 @@ export const BurgerMenu: React.FC<Props> = ({
 
       <div className={styles.menu__footer}>
         <NavLink
-          to="/favourites"
+          to="/favorites"
           className={({ isActive }) =>
             classNames(styles.menu__footer_link, {
               [styles.active]: isActive,
@@ -78,6 +81,9 @@ export const BurgerMenu: React.FC<Props> = ({
           onClick={closeMenu}
         >
           <img src={heart} className={styles.menu__icon} alt="Favourites" />
+          {favoritesAmount > 0 && (
+            <span className={styles.menu__counter}>{favoritesAmount}</span>
+          )}
         </NavLink>
         <NavLink
           to="/cart"

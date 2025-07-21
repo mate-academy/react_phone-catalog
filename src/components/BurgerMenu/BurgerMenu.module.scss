@@ -87,6 +87,7 @@
     height: 64px;
 
     &_link {
+      position: relative;
       background: none;
       border: none;
       width: 50vw;
@@ -113,6 +114,22 @@
         }
       }
     }
+  }
+
+  &__counter {
+    position: absolute;
+    top: 25%;
+    right: 45%;
+    border: 2px solid $white;
+    border-radius: 50%;
+    font-size: 9px;
+    width: 16px;
+    height: 16px;
+    color: $white;
+    background-color: $accent-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__icon {

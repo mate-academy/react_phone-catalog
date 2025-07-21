@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
-import { useState } from 'react';
-import heart from '../../assets/icons/heart.svg';
+import { useContext, useState } from 'react';
+import { DataContext } from '../../context/DataContext';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
@@ -13,21 +14,30 @@ export const ProductCard: React.FC<Props> = ({
   product,
   showFullPrice = false,
 }) => {
-  const { name, category, capacity, fullPrice, price, screen, ram, image } =
-    product;
-
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const { favorites, setFavorites } = useContext(DataContext);
 
   const toggleCartItem = (cardProduct: Product) => {
     return cardProduct || selectedProduct;
   };
 
-  const toggleFavoritesItem = (cardProduct: Product) => {
-    return cardProduct;
+  const isInFavorites = (cardProduct: Product) => {
+    return favorites.some(fav => fav.id === cardProduct.id);
   };
 
+  const toggleFavoritesItem = (cardProduct: Product) => {
+    const newFavorites = isInFavorites(cardProduct)
+      ? favorites.filter(fav => fav.id !== cardProduct.id)
+      : [...favorites, cardProduct];
+
+    setFavorites(newFavorites);
+  };
+
+  const { name, category, capacity, fullPrice, price, screen, ram, image } =
+    product;
+
   return (
-    <li className={styles.productCard}>
+    <div className={styles.productCard}>
       <Link
         to={`/${category}/${product.itemId}`}
         className={styles.productCard__image}
@@ -66,7 +76,7 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className={styles.productCard__buttons}>
         <button
-          className={styles.productCard__button_addToCart}
+          className={`${styles.productCard__addToCart} ${styles.productCard__addToCart_active}`}
           onClick={() => toggleCartItem(product)}
           style={{
             backgroundColor: '#4219d0',
@@ -77,12 +87,13 @@ export const ProductCard: React.FC<Props> = ({
           {/* {isInCart ? 'Added' : 'Add to cart'} */}
         </button>
         <button
-          className={styles.productCard__button_favorites}
+          className={classNames(
+            styles.productCard__addToFavorites,
+            isInFavorites(product) && styles.productCard__addToFavorites_active,
+          )}
           onClick={() => toggleFavoritesItem(product)}
-        >
-          <img src={heart} alt="Icon-heart" className={styles.heartIcon} />
-        </button>
+        ></button>
       </div>
-    </li>
+    </div>
   );
 };
