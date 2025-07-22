@@ -5,6 +5,7 @@
 
   &__title {
     @include small-text;
+
     font-weight: $font-weight-regular;
     margin-bottom: 8px;
   }
@@ -36,7 +37,7 @@
     }
   }
 
-  &__link--capacity{
+  &__link--capacity {
     @include body-text;
 
     height: 32px;
@@ -56,12 +57,12 @@
     font-weight: $font-weight-regular;
     background-color: $color-white;
 
-    &--active{
+    &--active {
       background-color: $color-primary;
       color: $color-white;
     }
 
-    &:hover{
+    &:hover {
       border: 1px solid $color-primary;
     }
   }

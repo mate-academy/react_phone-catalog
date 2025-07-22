@@ -1,5 +1,4 @@
-import React from 'react';
-import { CartProduct } from '../types/CartProduct';
+import React, { useEffect } from 'react';
 import { Product } from '../types/Product';
 import { LocalKeys, setLocalStorage } from '../../utils/localStorage';
 
@@ -7,7 +6,13 @@ type Props = {
   children: React.ReactNode;
 };
 
-export interface State {
+export interface CartProduct {
+  id: number;
+  quantity: number;
+  product: Product;
+}
+
+interface State {
   favourites: Product[];
   addToFavourites: (product: Product) => void;
   cartProducts: CartProduct[];
@@ -71,10 +76,31 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   };
 
   const deleteFromCart = (id: number) => {
-    setCartProducts(prev => prev.filter(item => item.id !== id));
+    const newCartProducts = cartProducts.filter(pr => pr.id !== id);
+
+    setCartProducts(newCartProducts);
+    setLocalStorage(LocalKeys.Cart, JSON.stringify(newCartProducts));
+
+    return newCartProducts;
   };
 
   const increaseQuantity = (id: number) => {
+    setCartProducts(prev => {
+      const newCartItems = prev.map(item => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+
+        return item;
+      });
+
+      setLocalStorage(LocalKeys.Cart, JSON.stringify(newCartItems));
+
+      return newCartItems;
+    });
+  };
+
+  const decreaseQuantity = (id: number) => {
     const product = cartProducts.find(item => item.id === id);
     const newQuantity = (product?.quantity || 1) - 1;
 
@@ -84,27 +110,38 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       return;
     }
 
-    setCartProducts(prev =>
-      prev.map(item =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
-      ),
-    );
-  };
+    setCartProducts(prev => {
+      const newCartItems = prev.map(item => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
 
-  const decreaseQuantity = (id: number) => {
-    setCartProducts(prev =>
-      prev.map(item =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item,
-      ),
-    );
+        return item;
+      });
+
+      setLocalStorage(LocalKeys.Cart, JSON.stringify(newCartItems));
+
+      return newCartItems;
+    });
   };
 
   const clearCart = () => {
     setCartProducts([]);
     setLocalStorage(LocalKeys.Cart, JSON.stringify([]));
   };
+
+  useEffect(() => {
+    const cart = localStorage.getItem(LocalKeys.Cart);
+    const favs = localStorage.getItem(LocalKeys.Favs);
+
+    if (cart) {
+      setCartProducts(JSON.parse(cart));
+    }
+
+    if (favs) {
+      setFavourites(JSON.parse(favs));
+    }
+  }, []);
 
   return (
     <ProductsContext.Provider

@@ -12,6 +12,7 @@ import { TabletPage } from './Components/TabletPage/TabletPage';
 import { AccessoriesPage } from './Components/AccessoriesPage/AccessoriesPage';
 import { FavouritesPage } from './Components/FavouritesPage/FavouritesPage';
 import { ItemCard, ProductType } from './Components/ItemCard/ItemCard';
+import { CartPage } from './Components/CartPage/CartPage';
 
 export const Root = () => {
   return (
@@ -38,6 +39,7 @@ export const Root = () => {
           />
 
           <Route path="favourites" element={<FavouritesPage />} />
+          <Route path="cart" element={<CartPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>

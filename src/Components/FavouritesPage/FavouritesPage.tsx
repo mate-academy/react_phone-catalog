@@ -8,7 +8,7 @@ export const FavouritesPage = () => {
   return (
     <div className="favourites-page">
       <Catalog
-        title={'Accessories'}
+        title={'Favourites'}
         products={favourites}
         showFilter={false}
         showPagination={false}

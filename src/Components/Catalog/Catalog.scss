@@ -20,15 +20,15 @@
   gap: 40px 16px;
   margin-top: 24px;
 
-  @media (max-width: 868px) {
+ @media (max-width: 1199px) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 740px) {
+  @media (max-width: 1023px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 420px) {
-    grid-template-columns: repeat(1, 1fr);
+  @media (max-width: 639px) {
+    grid-template-columns: 1fr;
   }
 }

@@ -12,6 +12,7 @@
 
   &__title {
     @include small-text;
+
     color: $color-secondary;
     margin-bottom: 4px;
   }

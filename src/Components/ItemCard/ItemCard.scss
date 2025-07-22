@@ -13,15 +13,25 @@
     font-family: $font-family;
     font-size: 32px;
     font-weight: $font-weight-bolt;
+    margin-bottom: 40px;
 
     @media (max-width: $mobile) {
       font-size: 22px;
+    }
+
+    &--slider {
+      font-family: $font-family;
+      font-size: 32px;
+      font-weight: $font-weight-bolt;
+      margin: 0;
+      margin-bottom: 20px;
     }
   }
 
   &__details {
     display: flex;
     gap: 64px;
+    margin-bottom: 80px;
 
     @media (max-width: $tablet) {
       gap: 17px;
@@ -33,20 +43,15 @@
   }
 
   &__info {
-    margin-left: 64px;
-
+    width: 320px;
     @media (max-width: $mobile) {
       margin-left: 0;
     }
 
-    &--id{
-      @media(max-width: $mobile) {
-
-      }
-
-      &__value{
-
+    &--id {
+      &__value {
         @include small-text;
+
         margin-right: 32px;
       }
     }
@@ -91,6 +96,14 @@
       margin-bottom: 32px;
     }
   }
+
+  &__characteristic {
+    display: flex;
+    &--itemTech {
+      width: 512px;
+      margin-left: 64px;
+    }
+  }
 }
 
 .image-gallery {
@@ -104,6 +117,7 @@
     @media (max-width: $mobile) {
       height: 288px;
     }
+
     @media (max-width: $tablet) {
       height: 287px;
       width: 287px;
@@ -138,9 +152,9 @@
   margin-left: 20px;
 
   @media (max-width: $mobile) {
-      padding: 0;
-      margin: 0;
-    }
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .image-gallery-thumbnail-image {

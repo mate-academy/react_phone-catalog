@@ -13,6 +13,9 @@ import './ItemCard.scss';
 import { ButtonAddToCart } from '../ButtonAdd';
 import { ButtonFavourite } from '../ButtonFav';
 import { ItemTech } from '../ItemTech';
+import { Description } from '../ItemDescription';
+import { ProductsSlider } from '../ProductsSlider';
+import { getSuggestedProducts } from '../../utils/productsHelper';
 
 type Categories = 'phones' | 'tablets' | 'accessories';
 
@@ -278,7 +281,23 @@ export const ItemCard: FC<{ type: ProductType }> = ({ type }) => {
           {/* <div className="itemCard__info--id">
             <span className="itemCard__info--id__value">ID: 802390</span>
           </div> */}
-          
+        </div>
+        <div className="itemCard__characteristic">
+          <Description about={product.description} />
+          <div className="itemCard__characteristic--itemTech">
+            <ItemTech
+              itemTech={itemsTech}
+              headline={'Tech specs'}
+              variant="page"
+            />
+          </div>
+        </div>
+        <div className="item__slider container container--mobile">
+          <h2 className="itemCard__title--slider">You may also like</h2>
+          <ProductsSlider
+            products={getSuggestedProducts(productsFromServer)}
+            fullPrice={true}
+          />
         </div>
       </div>
     </div>

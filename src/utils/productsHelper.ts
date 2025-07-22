@@ -106,3 +106,13 @@ export function getProductsByCategory(category: string): Promise<Data[]> {
 
   return Promise.all(promises) as Promise<Data[]>;
 }
+
+export function getSuggestedProducts(prdcts: Product[], count = 10) {
+  const randomProducts: Product[] = [];
+
+  for (let i = 1; i <= count; i++) {
+    randomProducts.push(prdcts[Math.floor(Math.random() * prdcts.length)]);
+  }
+
+  return randomProducts;
+}
