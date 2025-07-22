@@ -122,17 +122,6 @@
     }
 
     &_wrap {
-      img {
-        object-fit: contain;
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        display: block;
-        transition: transform 0.3s ease;
-
-        &:hover {
-          transform: scale(1.05);
-        }
-      }
       aspect-ratio: 1 / 1;
       max-height: 80px;
       padding: 6px;
@@ -143,6 +132,18 @@
 
       @media (max-width: $size-tablet) {
         padding: 3px;
+      }
+
+      img {
+        object-fit: contain;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        display: block;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
   }

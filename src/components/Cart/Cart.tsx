@@ -24,7 +24,7 @@ export const Cart = () => {
   };
 
   if (itemsCounter === 0) {
-    return <EmptyPage title="Cart" text="Cart is empty" />;
+    return <EmptyPage title="Cart" text="Your cart is empty" />;
   }
 
   return (

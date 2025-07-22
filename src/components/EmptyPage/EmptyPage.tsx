@@ -2,11 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import styles from './EmptyPage.module.scss';
 
 type Props = {
-  title: string;
+  title?: string;
   text?: string;
 };
 
-export const EmptyPage = ({ title, text = '' }: Props) => {
+export const EmptyPage = ({ title = '', text = '' }: Props) => {
   const navigate = useNavigate();
   const handleBack = () => {
     if (window.history.length > 1) {

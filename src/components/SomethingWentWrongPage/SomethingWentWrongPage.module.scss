@@ -28,17 +28,6 @@
   max-width: 1136px;
 }
 
-.pageInfo_link {
-  text-decoration: none;
-  display: flex;
-  gap: 4px;
-  color: $color-white;
-  font-family: $font-semibold;
-  font-size: 12px;
-  line-height: 100%;
-  cursor: pointer;
-}
-
 .pageInfo_title {
   font-family: $font-bold;
   line-height: 56px;
@@ -55,4 +44,16 @@
 .pageInfo_text {
   font-family: $font-semibold;
   margin: 0;
+}
+
+.reloadButton {
+  background-color: $color-surface1;
+  border: none;
+  width: 15%;
+  height: 25%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-elements;
+  }
 }

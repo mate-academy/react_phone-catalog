@@ -1,5 +1,6 @@
-import { createContext, useState, SetStateAction, Dispatch } from 'react';
+import { createContext, SetStateAction, Dispatch } from 'react';
 import { Product } from '../../types/Product';
+import { useLocalStorage } from '../../utils/useLocalstorage';
 
 type CartandFavContextType = {
   cart: Product[];
@@ -20,8 +21,8 @@ export const CartandFavProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [cart, setCart] = useState<Product[]>([]);
-  const [fav, setFav] = useState<Product[]>([]);
+  const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
+  const [fav, setFav] = useLocalStorage<Product[]>('fav', []);
 
   return (
     <CartandFavContext.Provider value={{ cart, setCart, fav, setFav }}>

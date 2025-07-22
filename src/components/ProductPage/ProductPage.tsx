@@ -6,6 +6,9 @@ import { Category } from '../../types/Category';
 import { getProducts } from '../../utils/fetchClient';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
+import { EmptyPage } from '../EmptyPage';
+import { Loader } from '../Loader';
+import { SomethingWentWrongPage } from '../SomethingWentWrongPage';
 
 const sortOptions = [
   { value: 'age', label: 'Newest' },
@@ -31,19 +34,27 @@ type Props = {
 };
 
 export const ProductPage = ({ category }: Props) => {
-  const [searchParams] = useSearchParams();
-  const sortFromParams = searchParams.get('sort') || 'age';
-  const pageFromParams = searchParams.get('page') || '1';
-  const perPageFromParams = searchParams.get('perPage') || 'all';
+  const [searchParams, setSerchParams] = useSearchParams();
+  const sortField = searchParams.get('sort') || 'age';
+  const page = searchParams.get('page') || '1';
+  const perPage = searchParams.get('perPage') || 'all';
   const [products, setProducts] = useState<Product[]>([]);
-  const [sortField, setSortField] = useState(sortFromParams);
-  const [page] = useState(pageFromParams);
-  const [perPage, setPerPage] = useState(perPageFromParams);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    getProducts().then(productsFromServer =>
-      setProducts(productsFromServer.filter(p => p.category === category.name)),
-    );
+    setLoading(true);
+
+    const delay = new Promise(resolve => setTimeout(resolve, 2000));
+
+    Promise.all([getProducts(), delay])
+      .then(([productsFromServer]) => {
+        setProducts(
+          productsFromServer.filter(p => p.category === category.name),
+        );
+      })
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
   }, [category]);
 
   const prepareProducts = () => {
@@ -69,6 +80,23 @@ export const ProductPage = ({ category }: Props) => {
       currentPage * itemsPerPage,
     );
   };
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <SomethingWentWrongPage />;
+  }
+
+  if (products.length === 0) {
+    return (
+      <EmptyPage
+        title={category.title}
+        text={`There are no ${category.name} yet`}
+      />
+    );
+  }
 
   return (
     <main className={styles.page}>
@@ -100,7 +128,9 @@ export const ProductPage = ({ category }: Props) => {
                     label: 'Newest',
                   }
                 }
-                onChange={setSortField}
+                field={'sort'}
+                searchParams={searchParams}
+                setSearchParams={setSerchParams}
               />
             </div>
             <div className={styles.dropdown}>
@@ -115,7 +145,9 @@ export const ProductPage = ({ category }: Props) => {
                     label: 'All',
                   }
                 }
-                onChange={setPerPage}
+                field={'perPage'}
+                searchParams={searchParams}
+                setSearchParams={setSerchParams}
               />
             </div>
           </div>

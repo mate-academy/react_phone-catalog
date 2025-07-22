@@ -16,6 +16,7 @@
     "react-router-dom": "^6.25.1",
     "react-select": "^5.10.1",
     "react-slick": "^0.30.3",
+    "react-spinners": "^0.17.0",
     "react-transition-group": "^4.4.5",
     "redux": "^5.0.1",
     "slick-carousel": "^1.8.1",

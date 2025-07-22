@@ -4,13 +4,16 @@
   background-color: $color-black;
   padding: 24px 32px 80px;
   justify-items: center;
+  min-height: calc(100vh - 160px);
 
   @media (max-width: $size-tablet) {
-    padding: 24px 24px 64px;
+    padding: 40px 24px 64px;
+    min-height: calc(100vh - 144px);
   }
 
   @media (max-width: $size-mobile) {
     padding: 24px 16px 64px;
+    min-height: calc(100vh - 305px);
   }
 }
 
