@@ -5,22 +5,19 @@
   position: relative;
 }
 
-.slick-track {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  height: 100%;
-}
+// :global(.slick-slide) {
+//   min-width: 272px;
+//   margin-right: 16px;
 
-.slick-slide {
-  min-width: 272px;
+//   @media (max-width: $size-tablet) {
+//     min-width: 237px;
+//   }
 
-  @media (max-width: $size-tablet) {
-    min-width: 237px;
-  }
+//   @media (max-width: $size-mobile) {
+//     min-width: 212px;
+//   }
 
-  @media (max-width: $size-mobile) {
-    min-width: 212px;
-  }
-}
+//   &:last-child {
+//     margin-right: 0;
+//   }
+// }

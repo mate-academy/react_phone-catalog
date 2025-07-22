@@ -117,10 +117,12 @@ export const ProductDetailsPage = () => {
         setColor(selectedProduct.color);
         setCapacity(selectedProduct.capacity);
       } catch (e) {
-        if (e.message === 'not found') {
-          setErrorMessage('not found');
-        } else {
-          setErrorMessage('went wrong');
+        if (e instanceof Error) {
+          if (e.message === 'not found') {
+            setErrorMessage('not found');
+          } else {
+            setErrorMessage('went wrong');
+          }
         }
       } finally {
         setLoading(false);

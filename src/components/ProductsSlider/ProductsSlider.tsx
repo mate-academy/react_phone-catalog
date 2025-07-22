@@ -11,11 +11,11 @@ const images = [
   },
   {
     id: 2,
-    img: '/img/slider-2.png',
+    img: '/img/slider-22.png',
   },
   {
     id: 3,
-    img: '/img/slider-3.png',
+    img: '/img/slider-33.png',
   },
 ];
 

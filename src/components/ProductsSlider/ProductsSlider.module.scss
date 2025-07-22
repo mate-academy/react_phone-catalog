@@ -27,7 +27,7 @@
 .customSlide {
   width: calc(100% - 96px);
   aspect-ratio: 2.56 / 1;
-  object-fit: contain;
+  object-fit: fill;
 
   @media (max-width: $size-mobile) {
     width: 100%;
