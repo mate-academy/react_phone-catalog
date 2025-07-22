@@ -7,6 +7,7 @@ import './bannerSwiper.scss';
 
 export const ArrowLeft = () => {
   const swiper = useSwiper();
+  
   return (
     <button
       className="arrowLeft swiper-buttons"

@@ -1,0 +1,132 @@
+.phone-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+
+  width: 212px;
+  height: 439px;
+  border: 1px solid $border-color;
+  padding: 32px;
+  border-radius: 8px;
+
+  .photo-name-container {
+    text-decoration: none;
+    color: $text-main-color;
+
+    .device-photo {
+      display: flex;
+      width: 148px;
+      justify-content: center;
+      height: 129px;
+
+      .photo {
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.15);
+        }
+      }
+    }
+
+    .name {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+
+      height: 58px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+
+  .price {
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    height: 51px;
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    flex-direction: column;
+    padding: 16px 0 8px;
+    border-top: 1px solid $border-color;
+
+    .screen,
+    .capacity,
+    .ram {
+      display: flex;
+      justify-content: space-between;
+      height: 15px;
+      align-items: center;
+
+      .spec-name {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        color: $text-not-active-color;
+      }
+
+      .spec-value {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        color: $text-main-color;
+      }
+    }
+  }
+
+  .add-favourites-container {
+    display: flex;
+    justify-content: space-between;
+
+    .add-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+
+      height: 40px;
+      width: 100px;
+      background-color: rgba(33, 108, 255, 1);
+      border-radius: 8px;
+
+      transition: box-shadow 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 3px 10px rgba(23, 32, 49, 0.4);
+      }
+
+      .button-text {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+
+    .favourites-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      border: 1px solid $border-color;
+
+      transition: box-shadow 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+      }
+    }
+  }
+}

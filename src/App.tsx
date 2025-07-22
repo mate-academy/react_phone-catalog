@@ -4,6 +4,7 @@ import './App.scss';
 
 import { BannerSwiper } from './components/BannerSwiper';
 import { Header } from './components/Header';
+import { PhoneCard } from './components/PhoneCard';
 
 import './styles/style.scss';
 
@@ -17,6 +18,10 @@ export const App = () => {
         </div>
 
         <BannerSwiper />
+
+        {/* <BrendNewModels /> */}
+
+        <PhoneCard />
       </main>
 
       {/* <Routes> */}

@@ -14,7 +14,7 @@
     border: 1px solid $border-hover-color;
     cursor: pointer;
     background-color: $page-body-bg-color;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .icon {
@@ -23,6 +23,7 @@
 
   &:hover {
     background-color: $main-bg-color;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
 
     .icon {
       transform: scale(1.2);
