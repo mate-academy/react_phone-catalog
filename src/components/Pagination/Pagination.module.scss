@@ -1,0 +1,67 @@
+@import '../../styles/variables';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.customArrow {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $color-surface2;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+}
+
+.disabled {
+  background-color: $color-black;
+  border: 1px solid $color-elements;
+  cursor: default;
+
+  &:hover {
+    background-color: $color-black;
+  }
+}
+
+.pages {
+  display: flex;
+  gap: 8px;
+}
+
+.page {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: $color-white;
+  background-color: $color-surface1;
+  font-family: $font-regular;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-elements;
+  }
+}
+
+.active {
+  background-color: $color-accent;
+  cursor: default;
+
+  &:hover {
+    background-color: $color-accent;
+  }
+}

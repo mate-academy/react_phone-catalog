@@ -9,6 +9,7 @@ import { ProductCard } from '../ProductCard';
 import { EmptyPage } from '../EmptyPage';
 import { Loader } from '../Loader';
 import { SomethingWentWrongPage } from '../SomethingWentWrongPage';
+import { Pagination } from '../Pagination';
 
 const sortOptions = [
   { value: 'age', label: 'Newest' },
@@ -34,7 +35,7 @@ type Props = {
 };
 
 export const ProductPage = ({ category }: Props) => {
-  const [searchParams, setSerchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const sortField = searchParams.get('sort') || 'age';
   const page = searchParams.get('page') || '1';
   const perPage = searchParams.get('perPage') || 'all';
@@ -44,8 +45,9 @@ export const ProductPage = ({ category }: Props) => {
 
   useEffect(() => {
     setLoading(true);
+    setError(false);
 
-    const delay = new Promise(resolve => setTimeout(resolve, 2000));
+    const delay = new Promise(resolve => setTimeout(resolve, 500));
 
     Promise.all([getProducts(), delay])
       .then(([productsFromServer]) => {
@@ -130,7 +132,7 @@ export const ProductPage = ({ category }: Props) => {
                 }
                 field={'sort'}
                 searchParams={searchParams}
-                setSearchParams={setSerchParams}
+                setSearchParams={setSearchParams}
               />
             </div>
             <div className={styles.dropdown}>
@@ -147,7 +149,7 @@ export const ProductPage = ({ category }: Props) => {
                 }
                 field={'perPage'}
                 searchParams={searchParams}
-                setSearchParams={setSerchParams}
+                setSearchParams={setSearchParams}
               />
             </div>
           </div>
@@ -157,12 +159,13 @@ export const ProductPage = ({ category }: Props) => {
             ))}
           </div>
 
-          {/* <Pagination
-  total={products.length}
-  perPage={perPage}
-  currentPage={page}
-  onPageChange={(page) => { ... }}
-/> */}
+          <Pagination
+            total={products.length}
+            perPage={+perPage ? +perPage : products.length}
+            currentPage={+page}
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+          />
         </div>
       </div>
     </main>

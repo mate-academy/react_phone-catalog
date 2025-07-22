@@ -11,6 +11,8 @@ import {
 import { EmptyPage } from '../EmptyPage';
 import { CartandFavContext } from '../CartandFavProvider';
 import classNames from 'classnames';
+import { SomethingWentWrongPage } from '../SomethingWentWrongPage';
+import { Loader } from '../Loader';
 
 const techSpecs: CategoryProductTechSpecKeys[] = [
   'screen',
@@ -61,45 +63,90 @@ export const ProductDetailsPage = () => {
   >(undefined);
   /* eslint-enable */
   const [product, setProduct] = useState<Product | undefined>(undefined);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
   const [color, setColor] = useState<string | undefined>(undefined);
   const [capacity, setCapacity] = useState<string | undefined>(undefined);
   const [mainImgSrc, setMainImgSrc] = useState<string | undefined>(undefined);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getProducts().then(productsFromServer => {
-      const random = [...productsFromServer]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 8);
+    const loadProduct = async () => {
+      setLoading(true);
+      setErrorMessage('');
 
-      setRandomProducts(random);
+      const delay = new Promise(resolve => setTimeout(resolve, 300));
 
-      const productFromServer = productsFromServer.find(
-        p => p.itemId === productId,
-      );
+      try {
+        const productsFromServer = await getProducts();
 
-      setProduct(productFromServer);
+        const random = [...productsFromServer]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 8);
 
-      const category = productFromServer?.category;
+        setRandomProducts(random);
 
-      getData<CategoryProduct[]>(`/${category}`).then(
-        categoryProductsFromServer => {
-          const selectedProduct = categoryProductsFromServer.find(
-            p => p.id === productId,
-          );
+        const productFromServer = productsFromServer.find(
+          p => p.itemId === productId,
+        );
 
-          setCategoryProduct(selectedProduct);
-          setMainImgSrc(selectedProduct?.images[0]);
-          setColor(selectedProduct?.color);
-          setCapacity(selectedProduct?.capacity);
-        },
-      );
-    });
+        if (!productFromServer) {
+          throw new Error('not found');
+        }
+
+        setProduct(productFromServer);
+
+        const category = productFromServer.category;
+
+        const [categoryProductsFromServer] = await Promise.all([
+          getData<CategoryProduct[]>(`/${category}`),
+          delay,
+        ]);
+
+        const selectedProduct = categoryProductsFromServer.find(
+          p => p.id === productId,
+        );
+
+        if (!selectedProduct) {
+          throw new Error('not found');
+        }
+
+        setCategoryProduct(selectedProduct);
+        setMainImgSrc(selectedProduct.images[0]);
+        setColor(selectedProduct.color);
+        setCapacity(selectedProduct.capacity);
+      } catch (e) {
+        if (e.message === 'not found') {
+          setErrorMessage('not found');
+        } else {
+          setErrorMessage('went wrong');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProduct();
   }, [productId]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (errorMessage === 'went wrong') {
+    return <SomethingWentWrongPage />;
+  }
+
+  if (errorMessage === 'not found') {
+    return (
+      <EmptyPage title="Wrong id!" text="There is no product with this id" />
+    );
+  }
 
   if (!categoryProduct) {
     return (
-      <EmptyPage title="Something went wrong :(" text="Product not found" />
+      <EmptyPage title="Wrong id!" text="There is no product with this id" />
     );
   }
 

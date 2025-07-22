@@ -52,7 +52,7 @@ export const Header = () => {
             to="/favourites"
           >
             <img
-              src="/img/icons/Favourite_default.png"
+              src="/img/icons/favourite-default.svg"
               alt="favourites"
               className={styles.icon}
             />
@@ -69,7 +69,7 @@ export const Header = () => {
             to="/cart"
           >
             <img
-              src="/img/icons/Cart_default.png"
+              src="/img/icons/cart-default.png"
               alt="cart"
               className={styles.icon}
             />
