@@ -7,5 +7,8 @@
   "printWidth": 80,
   "semi": true,
   "bracketSpacing": true,
-  "bracketSameLine": false
+  "bracketSameLine": false,
+  "experimentalTernaries": false,
+  "quoteProps": "consistent",
+  "singleAttributePerLine": true
 }
