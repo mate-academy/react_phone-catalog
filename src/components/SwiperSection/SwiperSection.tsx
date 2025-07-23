@@ -1,66 +1,74 @@
-// import { PhoneCard } from '../PhoneCard';
-// import './swiperSection.scss';
-
-// export const SwiperSection: React.FC = () => {
-//   return (
-//     <div className="swiper-section-wrapper">
-//       <div className='title-swiper-container'>
-//         <h2>Brand new models</h2>
-//         <div className='mini-swiper'></div>
-//       </div>
-
-//       <div className="swiperSection">
-//         <PhoneCard />
-//       </div>
-//     </div>
-//   );
-// };
-
-import React, { useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useEffect, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
 
-import { PhoneCard } from '../PhoneCard'; // путь к твоему компоненту
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import { PhoneCard } from '../PhoneCard';
+import './swiperSection.scss';
+
+type ProductInfo = {
+  id: string;
+  name: string;
+  priceRegular: number;
+  capacity: string;
+  ram: string;
+  screen: string;
+  images: string[];
+};
 
 export const SwiperSection: React.FC = () => {
-  // ссылки на кастомные стрелки
-  const prevRef = useRef<HTMLDivElement>(null);
-  const nextRef = useRef<HTMLDivElement>(null);
+  const [phones, setPhones] = useState<ProductInfo[]>([]);
+
+  useEffect(() => {
+    fetch('/api/phones.json')
+      .then(res => res.json())
+      .then((data: ProductInfo[]) => {
+        const filtered = data.filter(phone => phone.id.includes('14-pro'));
+        setPhones(filtered);
+      })
+      .catch(err => console.error('Ошибка загрузки телефонов:', err));
+  }, []);
 
   return (
     <div className="swiper-section-wrapper">
-      <div className='title-swiper-container'>
+      <div className="title-swiper-container">
         <h2>Brand new models</h2>
 
-        <div className='mini-swiper'>
-          <div ref={prevRef} className="arrow arrow--left">←</div>
-          <div ref={nextRef} className="arrow arrow--right">→</div>
+        <div className="mini-swiper">
+          <div className="arrow arrow--left has-shadow-cursor">
+            <img
+              className="icon"
+              src="./img/icons/ArrowLeft.svg"
+              alt="Arrow Left"
+            />
+          </div>
+
+          <div className="arrow arrow--right has-shadow-cursor">
+            <img
+              className="icon"
+              src="./img/icons/ArrowRight.svg"
+              alt="Arrow Right"
+            />
+          </div>
         </div>
       </div>
 
       <Swiper
         modules={[Navigation]}
         spaceBetween={16}
-        slidesPerView={1}
+        slidesPerView="auto"
         navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-        }}
-        onBeforeInit={(swiper) => {
-          // Привязываем стрелки к swiper
-          if (swiper.params.navigation) {
-            (swiper.params.navigation as any).prevEl = prevRef.current;
-            (swiper.params.navigation as any).nextEl = nextRef.current;
-          }
+          prevEl: '.arrow--left',
+          nextEl: '.arrow--right',
         }}
         className="swiperSection"
       >
-        <SwiperSlide><PhoneCard /></SwiperSlide>
-        <SwiperSlide><PhoneCard /></SwiperSlide>
-        <SwiperSlide><PhoneCard /></SwiperSlide>
-        {/* Добавь столько карточек, сколько хочешь */}
+        {phones.map(phone => (
+          <SwiperSlide key={phone.id}>
+            <PhoneCard product={phone} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

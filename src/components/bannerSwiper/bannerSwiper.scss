@@ -1,6 +1,14 @@
 .slider-container {
   display: flex;
   margin-bottom: 8px;
+
+  @include onTablet {
+    padding-right: 24px;
+  }
+
+  @include onDesktop {
+    padding: 0;
+  }
 }
 
 .swiper-buttons {
@@ -12,7 +20,6 @@
     width: 32px;
     border-radius: 25px;
     border: 1px solid $border-hover-color;
-    cursor: pointer;
     background-color: $page-body-bg-color;
     transition: all 0.3s ease;
   }
@@ -23,7 +30,6 @@
 
   &:hover {
     background-color: $main-bg-color;
-    box-shadow: 0 3px 10px rgba(23, 32, 49, 0.4);
 
     .icon {
       transform: scale(1.2);

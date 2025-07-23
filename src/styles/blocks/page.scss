@@ -12,9 +12,7 @@
 }
 
 .main {
-  max-width: $main-max-width;
   margin: auto;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 56px;
@@ -24,11 +22,12 @@
   }
 
   @include onTablet {
-    padding: 0 24px;
+    padding: 0 0 0 24px;
     gap: 64px;
   }
 
   @include onDesktop {
+    max-width: $main-max-width;
     padding: 0;
     gap: 80px;
 
@@ -65,10 +64,18 @@ h2 {
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
-  height: 62px;
 
   @include onTablet {
     font-size: 32px;
     line-height: 41px;
+  }
+}
+
+.has-shadow-cursor {
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 10px rgba(23, 32, 49, 0.4);
   }
 }

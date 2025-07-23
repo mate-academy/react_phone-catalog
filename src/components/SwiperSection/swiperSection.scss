@@ -6,13 +6,56 @@
   }
 
   .title-swiper-container {
-    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 16px;
     margin-bottom: 24px;
+
+    @include onTablet {
+      padding-right: 24px;
+    }
+
+    @include onDesktop {
+      padding-right: 0;
+    }
   }
 
   .swiperSection {
     display: flex;
-    gap: 16px;
+
+    .swiper-slide {
+      width: 212px;
+      height: 439px;
+
+      @include onTablet {
+        width: 237px;
+        height: 512px;
+      }
+
+      @include onDesktop {
+        width: 272px;
+        height: 506px;
+      }
+    }
+  }
+}
+
+.mini-swiper {
+  display: flex;
+  justify-items: center;
+  width: 80px;
+  height: 32px;
+  gap: 16px;
+
+  .arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid $border-color;
   }
 }
 

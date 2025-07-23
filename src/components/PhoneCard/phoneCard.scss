@@ -6,7 +6,6 @@
   padding: 32px;
 
   flex-direction: column;
-  // justify-content: space-between;
 
   box-sizing: border-box;
   border: 1px solid $border-color;
@@ -25,7 +24,6 @@
   .photo-name-container {
     text-decoration: none;
     color: $text-main-color;
-
 
     .device-photo {
       display: flex;
@@ -126,12 +124,12 @@
       background-color: rgba(33, 108, 255, 1);
       border-radius: 8px;
 
-      cursor: pointer;
-      transition: box-shadow 0.3s ease;
+      // cursor: pointer;
+      // transition: box-shadow 0.3s ease;
 
-      &:hover {
-        box-shadow: 0 3px 10px rgba(23, 32, 49, 0.4);
-      }
+      // &:hover {
+      //   box-shadow: 0 3px 10px rgba(23, 32, 49, 0.4);
+      // }
 
       .button-text {
         font-weight: 700;
@@ -150,13 +148,6 @@
 
       border-radius: 50%;
       border: 1px solid $border-color;
-
-      cursor: pointer;
-      transition: box-shadow 0.3s ease;
-
-      &:hover {
-        box-shadow: 0 3px 10px rgba(23, 32, 49, 0.4);
-      }
     }
   }
 }
