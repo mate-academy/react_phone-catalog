@@ -8,7 +8,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 import mobilePageStyles from './MobilePhones.module.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ListOfGadgets from '../ListOfGadgets';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 import { useMenu } from '../../context/MenuContext';
@@ -19,7 +19,11 @@ interface Props {
 
 const MobilePhones: React.FC<Props> = ({ gadgets }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const sortBy = searchParams.get('sort');
+  const quantity = searchParams.get('quantity');
+
   const { isMenuOpen, setIsMenuOpen } = useMenu();
+  // const [sortParams, setSortParams] = useState(['newest', '16']);
   const search = useLocation();
 
   console.log(search.pathname);
@@ -30,12 +34,12 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
     newParams.set('quantity', '16');
     newParams.set('sort', 'newest');
     setSearchParams(newParams.toString());
-  }, [searchParams, setSearchParams]);
+  }, [search.pathname]);
 
-  function handleSortChange(sortBy: string) {
+  function handleSortChange(sort: string) {
     const newParams = new URLSearchParams(searchParams);
 
-    newParams.set('sort', sortBy);
+    newParams.set('sort', sort);
     setSearchParams(newParams.toString());
 
     console.log(newParams.toString());
@@ -59,7 +63,7 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
 
   // console.log(search.pathname);
   // console.log(gadgets);
-  // console.log(searchParams.toString);
+  console.log(searchParams.toString);
 
   return (
     <>
@@ -73,7 +77,7 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
           ></Link>
           <span className={mobilePageStyles['mobile-page__direction']}></span>
           <Link
-            to={`/${gadgets}`}
+            to={`/${gadgets}?quantity=16&sort=newest`}
             className={mobilePageStyles['mobile-page__current-page']}
           >
             {currentPage}
@@ -106,7 +110,7 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
               onChange={event => {
                 handleSortChange(event.target.value);
               }}
-              defaultValue={'newest'}
+              value={searchParams.get('sort') || 'newest'}
             >
               <option value="newest">Newest</option>
               <option value="alphabetically">Alphabetically</option>
@@ -129,7 +133,7 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
               onChange={event => {
                 handleItemsChange(event.target.value);
               }}
-              defaultValue={'16'}
+              value={searchParams.get('quantity') || '16'}
             >
               <option value="16">16</option>
               <option value="8">8</option>

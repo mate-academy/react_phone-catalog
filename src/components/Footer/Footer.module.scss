@@ -1,0 +1,112 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: 'Mont';
+}
+
+.footer__wrapper {
+  border-top: 1px solid #e2e6e9;
+  margin-top: 64px;
+
+  @include onTablet {
+    margin-top: 80px;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+
+  color: #89939a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0%;
+  line-height: 100%;
+  padding-block: 32px;
+  font-family: 'Mont';
+
+  @include contentMarginInline;
+
+  // padding-inline: 16px;
+
+  @include onTablet {
+    // padding-inline: 24px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  @include onBigScren {
+    width: 1136px;
+    // padding-inline: 32px;
+    margin-inline: auto;
+  }
+
+  &__navigation__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    // padding-inline-start: 32px;
+    // margin-block-start: 0;
+    padding-inline-start: 0;
+    // margin-block: 32px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+    }
+
+    @include onBigScren {
+      padding-inline-start: 48px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+    margin-right: 32px;
+  }
+
+  &__link {
+    font-family: 'Mont';
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: #89939a;
+
+    text-decoration: none;
+  }
+
+
+  &__backToTopContainer {
+    // padding: 16px;
+    // border-left: 1px solid #e2e6e9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // border-right: 1px solid #e2e6e9;
+
+    // @include onTablet {
+    //   padding: 32px;
+    // }
+  }
+
+  &__logo {
+    height: 22px;
+  }
+
+  &__logo-img {
+    // padding-top: 9px;
+    // padding-bottom: 11px;
+    width: 64px;
+    height: 22px;
+
+  }
+}

@@ -25,7 +25,7 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
           <Link
             to="/"
             className={topBatStyles['top-bar__logo']}
-            // onClick={() => setIsMenuOpen(false)}
+            onClick={() => setIsMenuOpen(false)}
           >
             <img
               src="public\img\gadgets-logo.png"
@@ -41,17 +41,26 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
               </Link>
             </li>
             <li className={topBatStyles['top-bar__item']}>
-              <Link className={topBatStyles['top-bar__link']} to="/phones">
+              <Link
+                className={topBatStyles['top-bar__link']}
+                to="/phones?quantity=16&sort=newest"
+              >
                 Phones
               </Link>
             </li>
             <li className={topBatStyles['top-bar__item']}>
-              <Link className={topBatStyles['top-bar__link']} to="/tablets">
+              <Link
+                className={topBatStyles['top-bar__link']}
+                to="/tablets?quantity=16&sort=newest"
+              >
                 tablets
               </Link>
             </li>
             <li className={topBatStyles['top-bar__item']}>
-              <Link className={topBatStyles['top-bar__link']} to="/accessories">
+              <Link
+                className={topBatStyles['top-bar__link']}
+                to="/accessories?quantity=16&sort=newest"
+              >
                 accessories
               </Link>
             </li>
@@ -75,7 +84,7 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
 
           <div className={iconStyles['icon--heart__wrapper']}>
             <Link
-              to="/"
+              to="/favorites"
               className={`${iconStyles['icon--heart']} ${iconStyles.icon}`}
             ></Link>
           </div>

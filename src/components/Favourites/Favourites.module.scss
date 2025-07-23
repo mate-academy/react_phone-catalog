@@ -3,78 +3,88 @@
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-family: 'Mont';
-  font-weight: 600;
-  font-style: normal;
 }
 
-@font-face {
-  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+.bag-page {
   font-family: 'Mont';
-  font-weight: 800;
-  font-style: normal;
-}
+  @include contentMarginInline;
 
-.swiper-slide {
-  height: auto;
-}
+  &__path-of-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 8px;
+    margin-top: 72px;
+  }
 
-.swiper-wrapper {
-  width: 10%;
-  margin-right: 16px;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  // margin-inline: 16px;
-}
+  &__go-home-icon {
+    background-image: url('./public/img/home.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
 
-.list {
-  margin: 0 auto;
-  font-family: 'Mont';
-  padding-top: 16px;
-  display: grid;
-  grid-template-columns: repeat(var(--column-count), 1fr);
+  &__direction {
+    background-image: url('./public/img/chevron-arrow-right.svg');
+    background-position: center;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
 
-  @include onTablet {
+  &__go-home {
+    color: #89939a;
+    text-decoration: none;
+  }
+
+  &__list {
+    margin: 0 auto;
+    font-family: 'Mont';
+    padding-top: 40px;
+    display: grid;
     grid-template-columns: repeat(var(--column-count), 1fr);
-  }
-
-  @include onMiddleScreen {
-    grid-template-columns: repeat(var(--column-count), 1fr);
-  }
-
-  @include onBigScren {
-    grid-template-columns: repeat(var(--column-count), 1fr);
-
-  }
-
-  justify-content: center;
-  gap: 40px 16px;
-  // align-items: center;
-
-  @include onTablet {
-    margin-inline: 24px;
-    --column-count: 2;
-  }
-
-  @include onMiddleScreen {
-    --column-count: 3;
-    margin-inline: 24px;
-  }
-
-  @include onBigScren {
-    --column-count: 4;
-    margin-inline: 32px;
-  }
-
-  &__title {
-    margin: 80px 10px 24px 16px;
 
     @include onTablet {
-      margin: 80px 10px 24px 24px;
+      grid-template-columns: repeat(var(--column-count), 1fr);
+    }
+
+    @include onMiddleScreen {
+      grid-template-columns: repeat(var(--column-count), 1fr);
     }
 
     @include onBigScren {
-      margin: 80px 10px 24px 32px;
+      grid-template-columns: repeat(var(--column-count), 1fr);
+    }
+
+    justify-content: center;
+    gap: 40px 16px;
+    // align-items: center;
+
+    @include onTablet {
+      // margin-inline: 24px;
+      --column-count: 2;
+    }
+
+    @include onMiddleScreen {
+      --column-count: 3;
+      // margin-inline: 24px;
+    }
+
+    @include onBigScren {
+      --column-count: 4;
+      // margin-inline: 32px;
+    }
+  }
+
+  &__title {
+    margin-block: 24px 8px;
+
+    @include onTablet {
+      margin-block: 40px 8px;
     }
   }
 
@@ -199,7 +209,7 @@
       // color: #f86800;
       // background-color: #fff;
 
-      
+
       transition: background-color 0.3s, color 0.3s;
       border: 1px solid #e2e6e9;
     }

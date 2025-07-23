@@ -39,7 +39,7 @@ const Sidebar: React.FC = () => {
             <li className={styles['sideMenu__nav-item']}>
               <Link
                 className={styles['sideMenu__nav-link']}
-                to="/phones"
+                to="/phones?quantity=16&sort=newest"
                 onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
               >
                 phones
@@ -48,7 +48,7 @@ const Sidebar: React.FC = () => {
             <li className={styles['sideMenu__nav-item']}>
               <Link
                 className={styles['sideMenu__nav-link']}
-                to="/tablets"
+                to="/tablets?quantity=16&sort=newest"
                 onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
               >
                 tablets
@@ -57,7 +57,7 @@ const Sidebar: React.FC = () => {
             <li className={styles['sideMenu__nav-item']}>
               <Link
                 className={styles['sideMenu__nav-link']}
-                to="/accessories"
+                to="/accessories?quantity=16&sort=newest"
                 onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
               >
                 accessories

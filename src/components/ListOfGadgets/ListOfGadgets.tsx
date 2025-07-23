@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSearchParams } from 'react-router-dom';
 import Pagination from '../Pagination';
+import { useCart } from '../../context/CartContext';
+import cn from 'classnames';
 
 interface Props {
   gadgets: string;
@@ -25,8 +27,10 @@ const ListOfGadgets: React.FC<Props> = ({ gadgets }) => {
   const [typeOfGadgets, setTypeOfGadgets] = useState<Products[] | []>([]);
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
+  const { lovelyProducts, setLovelyProducts } = useCart();
+  const { cartItems, setCartItems } = useCart();
 
-  console.log(gadgets);
+  // console.log(gadgets);
 
   const sort = searchParams.get('sort');
   const perItems = searchParams.get('quantity') || 16;
@@ -40,7 +44,7 @@ const ListOfGadgets: React.FC<Props> = ({ gadgets }) => {
           (item: Products) => item.category === gadgets,
         );
 
-        console.log(filtered);
+        // console.log(filtered);
 
         setTypeOfGadgets(filtered);
       })
@@ -51,9 +55,11 @@ const ListOfGadgets: React.FC<Props> = ({ gadgets }) => {
   // const pageQuantity = Math.ceil(typeOfGadgets.length / currentPage);
   const passedItems = +perItems * currentPage - +perItems;
 
-  console.log(passedItems);
+  // console.log(passedItems);
+  // console.log(currentPage);
+  // console.log(perItems);
 
-  console.log(typeOfGadgets);
+  // console.log(typeOfGadgets);
 
   let filteredGadgets: Products[] | [] = [];
 
@@ -75,13 +81,63 @@ const ListOfGadgets: React.FC<Props> = ({ gadgets }) => {
     });
   }
 
-  const renderCards = filteredGadgets.slice(
-    passedItems,
-    passedItems + +perItems,
+  let renderCards: Products[] | [] = JSON.parse(
+    JSON.stringify(filteredGadgets),
   );
 
-  console.log(renderCards);
-  console.log(sort);
+  if (perItems !== 'all') {
+    renderCards = filteredGadgets.slice(passedItems, passedItems + +perItems);
+  }
+
+  // console.log(renderCards);
+
+  const favoritesArray: Products[] | [] = JSON.parse(
+    localStorage.getItem('favorites') || '[]',
+  );
+
+  const addedArray: Products[] | [] = JSON.parse(
+    localStorage.getItem('added') || '[]',
+  );
+
+  const handleAddToCart = (product: Products) => {
+    if (cartItems.some(item => item.itemId === product.itemId)) {
+      const filteredProducts = cartItems.filter(
+        item => item.itemId !== product.itemId,
+      );
+
+      setCartItems(filteredProducts);
+
+      const updatedFavorites = addedArray.filter(
+        item => item.itemId !== product.itemId,
+      );
+
+      localStorage.setItem('added', JSON.stringify(updatedFavorites));
+    } else {
+      setCartItems(currentsProducts => [...currentsProducts, product]);
+      localStorage.setItem('added', JSON.stringify(lovelyProducts));
+    }
+  };
+
+  const addProductToLovely = (product: Products) => {
+    if (lovelyProducts.some(item => item.itemId === product.itemId)) {
+      const filteredProducts = lovelyProducts.filter(
+        item => item.itemId !== product.itemId,
+      );
+
+      setLovelyProducts(filteredProducts);
+
+      const updatedFavorites = favoritesArray.filter(
+        item => item.itemId !== product.itemId,
+      );
+
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    } else {
+      setLovelyProducts(currentsProducts => [...currentsProducts, product]);
+      localStorage.setItem('favorites', JSON.stringify(lovelyProducts));
+    }
+  };
+
+  console.log(favoritesArray);
 
   return (
     <>
@@ -113,9 +169,23 @@ const ListOfGadgets: React.FC<Props> = ({ gadgets }) => {
                 </div>
 
                 <div className={listStyle.list__buttons}>
-                  <button className={listStyle.list__add}>Add to cart</button>
+                  <button
+                    className={listStyle.list__add}
+                    onClick={() => handleAddToCart(gadget)}
+                  >
+                    Add to cart
+                  </button>
 
-                  <a href="#" className={listStyle['list__lovely-choice']}></a>
+                  <button
+                    // style={}
+                    className={cn(listStyle['list__lovely-choice'], {
+                      [listStyle['list__lovely-choice--active']]:
+                        lovelyProducts.some(
+                          item => item.itemId === gadget.itemId,
+                        ),
+                    })}
+                    onClick={() => addProductToLovely(gadget)}
+                  ></button>
                 </div>
               </div>
 

@@ -1,0 +1,71 @@
+import { Link } from 'react-router-dom';
+import footerStyles from './Footer.module.scss';
+import iconStyles from './icon.module.scss';
+
+const Footer: React.FC = () => {
+  // const location = useLocation();
+  // const currentPath = location.pathname;
+
+  return (
+    <div className={footerStyles.footer__wrapper}>
+      <div className={footerStyles.footer}>
+        <div className={footerStyles.footer__navigation__wrapper}>
+          <Link
+            to="/"
+            className={footerStyles.footer__logo}
+          // onClick={() => setIsMenuOpen(false)}
+          >
+            <img
+              src="public\img\gadgets-logo.png"
+              alt="img-logo"
+              className={footerStyles['footer__logo-img']}
+            />
+          </Link>
+        </div>
+
+        <ul className={footerStyles.footer__list}>
+          <li className={footerStyles.footer__item}>
+            <Link className={footerStyles.footer__link} to="/">
+              Github
+            </Link>
+          </li>
+          <li className={footerStyles.footer__item}>
+            <Link
+              className={footerStyles.footer__link}
+              to="/phones?quantity=16&sort=newest"
+            >
+              Contacts
+            </Link>
+          </li>
+          <li className={footerStyles.footer__item}>
+            <Link
+              className={footerStyles.footer__link}
+              to="/tablets?quantity=16&sort=newest"
+            >
+              rights
+            </Link>
+          </li>
+        </ul>
+        <div className={footerStyles.footer__backToTopContainer}>
+          <span
+            className={`${iconStyles['icon--heart']} ${iconStyles.icon}`}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            Back to top
+          </span>
+          <button
+            className={`${iconStyles['icon--arrow']} ${iconStyles.icon}`}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          ></button>
+
+          {/* <div className={iconStyles['icon--bag__wrapper']}>
+
+          <span className={iconStyles.badge}>12</span>
+        </div> */}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;
