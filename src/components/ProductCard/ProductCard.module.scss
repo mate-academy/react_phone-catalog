@@ -116,6 +116,12 @@
       box-shadow: 0 3px 13px rgba(23, 32, 49, 0.25);
       transform: scale(1.05);
     }
+
+    &_active {
+      background-color: $white;
+      border: 1px solid $accent-color;
+      color: $accent-color;
+    }
   }
 
   &__addToFavorites {

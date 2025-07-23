@@ -9,8 +9,9 @@ import { HomePage } from './modules/HomePage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { DataProvider } from './context/DataContext';
 import { CatalogPage } from './modules/CatalogPage';
+import { CartPage } from './modules/CartPage';
+import { FavoritesPage } from './modules/FavoritesPage';
 import { ProductDetails } from './modules/ProductDetails/ProductDetails';
-import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 
 export const Root = () => {
   return (
@@ -23,6 +24,7 @@ export const Root = () => {
             <Route path="/:category" element={<CatalogPage />} />
             <Route path="/:category/:id" element={<ProductDetails />} />
             <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/cart" element={<CartPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

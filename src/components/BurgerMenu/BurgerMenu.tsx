@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
 import closeMenuIcon from '../../assets/icons/close.svg';
 import heart from '../../assets/icons/heart.svg';
-import cart from '../../assets/icons/cart.svg';
+import cartIcon from '../../assets/icons/cart.svg';
 import Logo from '../../assets/icons/Logo.svg';
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
@@ -20,8 +20,9 @@ export const BurgerMenu: React.FC<Props> = ({
   isMenuOpen,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const { favorites } = useContext(DataContext);
+  const { favorites, cart } = useContext(DataContext);
   const favoritesAmount = favorites.length;
+  const cartAmount = cart.length;
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -94,7 +95,10 @@ export const BurgerMenu: React.FC<Props> = ({
           }
           onClick={closeMenu}
         >
-          <img src={cart} className={styles.menu__icon} alt="Cart" />
+          <img src={cartIcon} className={styles.menu__icon} alt="Cart" />
+          {cartAmount > 0 && (
+            <span className={styles.menu__counter}>{cartAmount}</span>
+          )}
         </NavLink>
       </div>
     </div>

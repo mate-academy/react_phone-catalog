@@ -17,7 +17,9 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(272px, max-content));
+
+    justify-content: flex-start;
     gap: 40px 16px;
   }
 }

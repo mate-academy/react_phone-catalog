@@ -1,8 +1,8 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 import styles from './ProductDetails.module.scss';
-import { Accessory, Phone, Tablet } from '../../types/ProductDetails';
+import { useContext } from 'react';
 import { DataContext } from '../../context/DataContext';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Accessory, Phone, Tablet } from '../../types/ProductDetails';
 
 type Category = 'phones' | 'tablets' | 'accessories';
 

@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { Product } from '../types/Product';
 import { Phone, Tablet, Accessory } from '../types/ProductDetails';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type ContextType = {
   isMenuOpen: boolean;
@@ -12,6 +13,8 @@ type ContextType = {
   setSelectedProduct: (product: Product | null) => void;
   favorites: Product[];
   setFavorites: (favorites: Product[]) => void;
+  cart: Product[];
+  setCart: (cart: Product[]) => void;
   phones: Phone[];
   tablets: Tablet[];
   accessories: Accessory[];
@@ -27,6 +30,8 @@ export const DataContext = createContext<ContextType>({
   setSelectedProduct: () => {},
   favorites: [],
   setFavorites: () => {},
+  cart: [],
+  setCart: () => {},
   phones: [],
   tablets: [],
   accessories: [],
@@ -40,8 +45,8 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
   const [error, setError] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [favorites, setFavorites] = useState<Product[]>([]);
-
+  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
+  const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
   const [phones, setPhones] = useState<Phone[]>([]);
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [accessories, setAccessories] = useState<Accessory[]>([]);
@@ -108,6 +113,8 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
         setSelectedProduct,
         favorites,
         setFavorites,
+        cart,
+        setCart,
         phones,
         tablets,
         accessories,

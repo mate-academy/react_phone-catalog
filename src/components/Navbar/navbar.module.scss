@@ -94,10 +94,6 @@
     padding: 16px;
     box-shadow: -1px 0 0 $elements-color;
 
-    &:last-child {
-      padding-right: 0;
-    }
-
     @include on-desktop {
       padding: 24px;
     }
@@ -122,6 +118,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include on-desktop {
+      top: 16px;
+      right: 16px;
+    }
   }
 }
 

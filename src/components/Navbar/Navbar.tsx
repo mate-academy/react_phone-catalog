@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Logo from '../../assets/icons/Logo.svg';
 import burgerMenu from '../../assets/icons/burger.svg';
 import heart from '../../assets/icons/heart.svg';
-import cart from '../../assets/icons/cart.svg';
+import cartIcon from '../../assets/icons/cart.svg';
 
 import styles from './Navbar.module.scss';
 import { BurgerMenu } from '../BurgerMenu';
@@ -19,8 +19,10 @@ const menuLinks = [
 ];
 
 export const Navbar: React.FC = () => {
-  const { isMenuOpen, setIsMenuOpen, favorites } = useContext(DataContext);
+  const { isMenuOpen, setIsMenuOpen, favorites, cart } =
+    useContext(DataContext);
   const favoritesAmount = favorites.length;
+  const cartAmount = cart.length;
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -75,7 +77,14 @@ export const Navbar: React.FC = () => {
               aria-label="Cart"
               className={styles.navbarIcons__item}
             >
-              <img src={cart} className={styles.navbarIcons__icon} alt="Cart" />
+              <img
+                src={cartIcon}
+                className={styles.navbarIcons__icon}
+                alt="Cart"
+              />
+              {cartAmount > 0 && (
+                <span className={styles.navbarIcons__amount}>{cartAmount}</span>
+              )}
             </NavLink>
           </div>
 
