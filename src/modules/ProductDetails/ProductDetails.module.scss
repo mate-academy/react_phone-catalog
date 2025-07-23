@@ -145,41 +145,6 @@
           text-decoration: line-through;
         }
       }
-
-      .buttons {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-
-        .addToCart {
-          font-size: 14px;
-          font-weight: 600;
-          padding: 13px 75px;
-          background-color: $accent-color;
-          color: #fff;
-          border: none;
-          border-radius: 24px;
-          cursor: pointer;
-
-          &:hover {
-            box-shadow: 0 3px 13px rgba(23, 32, 49, 0.25);
-          }
-
-          @include on-tablet {
-            padding: 13px 50px;
-          }
-        }
-
-        .favourite {
-          width: 45px;
-          height: 45px;
-          border: 1px solid #e2e6e9;
-          border-radius: 50%;
-          background: white;
-          font-size: 20px;
-          cursor: pointer;
-        }
-      }
     }
 
     .shortSpecs {
@@ -260,6 +225,64 @@
           }
         }
       }
+    }
+  }
+}
+
+.productCard {
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 8px;
+    height: 40px;
+  }
+
+  &__addToCart {
+    flex-grow: 1;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 48px;
+    background-color: $accent-color;
+    transition: all 0.3s;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.25);
+      transform: scale(1.05);
+    }
+
+    &_active {
+      background-color: $white;
+      border: 1px solid $accent-color;
+      color: $accent-color;
+    }
+  }
+
+  &__addToFavorites {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid $icons-color;
+    background-image: url('../../assets/icons/heart.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $primary-color;
+      transform: scale(1.05);
+    }
+
+    &_active {
+      background-image: url('../../assets/icons/heart-yellow.svg');
     }
   }
 }

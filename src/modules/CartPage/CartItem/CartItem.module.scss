@@ -8,6 +8,11 @@
   padding: 16px;
   border-radius: 16px;
   border: 1px solid $elements-color;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 
   @include on-tablet {
     flex-direction: row;
@@ -21,9 +26,9 @@
 
   &__remove {
     cursor: pointer;
-    transition: all 0.2s;
     width: 16px;
     height: 16px;
+    transition: all 0.2s;
 
     &:hover {
       transform: scale(1.1);

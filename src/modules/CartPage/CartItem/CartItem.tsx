@@ -57,7 +57,9 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             className={styles.cartItem__img}
           />
         </Link>
-        <p className={styles.cartItem__title}>{product.name}</p>
+        <Link to={`/${product.category}/${product.itemId}`}>
+          <p className={styles.cartItem__title}>{product.name}</p>
+        </Link>
       </div>
       <div className={styles.cartItem__bottom}>
         <div className={styles.cartItem__amountWrapper}>

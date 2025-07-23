@@ -4,6 +4,7 @@ import { ProductCard } from '../../components/ProductCard';
 import { DataContext } from '../../context/DataContext';
 import styles from './CatalogPage.module.scss';
 import { Pagination } from '../../components/Pagination';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 const CATEGORIES = ['phones', 'tablets', 'accessories'] as const;
 
@@ -114,6 +115,14 @@ export const CatalogPage = () => {
   return (
     <section className={styles.catalog}>
       <div className="container">
+        <Breadcrumbs
+          items={[
+            {
+              label: category.charAt(0).toUpperCase() + category.slice(1),
+              path: `/${category}`,
+            },
+          ]}
+        />
         <h1 className="text-2xl font-bold capitalize">
           {category.charAt(0).toUpperCase() + category.slice(1)}
         </h1>

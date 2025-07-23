@@ -1,16 +1,18 @@
 import styles from './ProductDetails.module.scss';
 import { useContext } from 'react';
 import { DataContext } from '../../context/DataContext';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Accessory, Phone, Tablet } from '../../types/ProductDetails';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import classNames from 'classnames';
 
 type Category = 'phones' | 'tablets' | 'accessories';
 
 type DetailedProduct = Phone | Tablet | Accessory;
 
 export const ProductDetails = () => {
+  const { favorites, setFavorites, cart, setCart } = useContext(DataContext);
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const { products, phones, tablets, accessories } = useContext(DataContext);
   const product = products.find(p => p.itemId === id);
@@ -37,6 +39,32 @@ export const ProductDetails = () => {
     return <h1 className={styles.notFound}>Product was not found</h1>;
   }
 
+  // --- FAVORITES LOGIC ---
+  const isInFavorites = () => {
+    return favorites.some(fav => fav.id === product.id);
+  };
+
+  const toggleFavoritesItem = () => {
+    const newFavorites = isInFavorites()
+      ? favorites.filter(fav => fav.id !== product.id)
+      : [...favorites, product];
+
+    setFavorites(newFavorites);
+  };
+
+  // --- CART LOGIC ---
+  const isInCart = () => {
+    return cart.some(item => item.id === product.id);
+  };
+
+  const toggleCartItem = () => {
+    if (isInCart()) {
+      setCart(cart.filter(item => item.id !== product.id));
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
+  };
+
   const {
     name,
     capacity,
@@ -57,9 +85,17 @@ export const ProductDetails = () => {
   return (
     <div className={styles.productDetailsPage}>
       <div className="container">
-        <button onClick={() => navigate(-1)} className={styles.backButton}>
-          ← Back
-        </button>
+        <Breadcrumbs
+          items={[
+            {
+              label:
+                selectedProduct.category.slice(0, 1).toUpperCase() +
+                selectedProduct.category.slice(1),
+              path: `/${selectedProduct.category}`,
+            },
+            { label: name },
+          ]}
+        />
 
         <section className={styles.productDetails}>
           {/* Назва продукту */}
@@ -116,9 +152,24 @@ export const ProductDetails = () => {
                   <span className={styles.price}>${priceDiscount}</span>
                   <span className={styles.oldPrice}>${priceRegular}</span>
                 </div>
-                <div className={styles.buttons}>
-                  <button className={styles.addToCart}>Add to cart</button>
-                  <button className={styles.favourite}>♡</button>
+                <div className={styles.productCard__buttons}>
+                  <button
+                    className={classNames(
+                      styles.productCard__addToCart,
+                      isInCart() && styles.productCard__addToCart_active,
+                    )}
+                    onClick={() => toggleCartItem()}
+                  >
+                    {isInCart() ? 'Added' : 'Add to cart'}
+                  </button>
+                  <button
+                    className={classNames(
+                      styles.productCard__addToFavorites,
+                      isInFavorites() &&
+                        styles.productCard__addToFavorites_active,
+                    )}
+                    onClick={() => toggleFavoritesItem()}
+                  ></button>
                 </div>
               </div>
 

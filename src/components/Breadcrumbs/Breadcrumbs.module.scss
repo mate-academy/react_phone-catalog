@@ -1,0 +1,44 @@
+@import '../../styles/main';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: $secondary-color;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  .separator {
+    margin: 0 8px;
+    color: $icons-color;
+  }
+
+  .link {
+    text-decoration: none;
+    color: $secondary-color;
+  }
+
+  .current {
+    font-weight: 600;
+    color: $primary-color;
+  }
+}
