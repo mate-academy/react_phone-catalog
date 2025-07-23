@@ -4,7 +4,8 @@ import './App.scss';
 
 import { BannerSwiper } from './components/BannerSwiper';
 import { Header } from './components/Header';
-import { PhoneCard } from './components/PhoneCard';
+import { SwiperSection } from './components/SwiperSection';
+// import { PhoneCard } from './components/PhoneCard';
 
 import './styles/style.scss';
 
@@ -13,15 +14,17 @@ export const App = () => {
     <div className="App">
       <Header />
       <main className="main">
-        <div className="title-section">
-          <h1 className="title">Welcome to Nice Gadgets store!</h1>
-        </div>
+        <div className='section'>
+          <div className="title-section">
+            <h1 className="title">Welcome to Nice Gadgets store!</h1>
+          </div>
 
-        <BannerSwiper />
+          <BannerSwiper />
+        </div>
 
         {/* <BrendNewModels /> */}
 
-        <PhoneCard />
+        <SwiperSection />
       </main>
 
       {/* <Routes> */}

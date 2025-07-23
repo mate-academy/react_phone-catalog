@@ -3,6 +3,7 @@
   height: 48px;
   border-bottom: 1px solid $border-color;
   position: sticky;
+  top: 0;
   z-index: 10;
 
   @include onDesktop {

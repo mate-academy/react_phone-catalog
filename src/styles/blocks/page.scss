@@ -14,13 +14,27 @@
 .main {
   max-width: $main-max-width;
   margin: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  > *:last-child {
+    margin-bottom: 64px;
+  }
 
   @include onTablet {
     padding: 0 24px;
+    gap: 64px;
   }
 
   @include onDesktop {
-    padding: 0 32px;
+    padding: 0;
+    gap: 80px;
+
+    > *:last-child {
+      margin-bottom: 80px;
+    }
   }
 }
 
@@ -44,5 +58,17 @@
       font-size: 48px;
       line-height: 56px;
     }
+  }
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  height: 62px;
+
+  @include onTablet {
+    font-size: 32px;
+    line-height: 41px;
   }
 }

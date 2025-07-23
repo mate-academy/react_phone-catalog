@@ -1,0 +1,18 @@
+.swiper-section-wrapper {
+  padding-left: 16px;
+
+  @include onTablet {
+    padding-left: 0px;
+  }
+
+  .title-swiper-container {
+    width: 50%;
+    margin-bottom: 24px;
+  }
+
+  .swiperSection {
+    display: flex;
+    gap: 16px;
+  }
+}
+

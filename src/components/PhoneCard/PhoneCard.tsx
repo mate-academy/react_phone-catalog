@@ -45,10 +45,6 @@ export const PhoneCard: React.FC = () => {
       });
   }, []);
 
-  // if (!products) {
-  //   return null;
-  // }
-
   const arrModel14Pro = products.filter(model => model.id.includes('14-pro'));
 
   return (
