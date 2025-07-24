@@ -33,9 +33,6 @@
 
   &__text {
     @include body-text;
-    @media(max-width: $mobile) {
-      
-    }
   }
 
   &__close-button {

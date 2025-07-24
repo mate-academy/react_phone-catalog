@@ -1,6 +1,6 @@
 @import '../../utils/';
 
-.cartItem{
+.cartItem {
   display: flex;
   justify-content: space-between;
   gap: 24px;
@@ -8,16 +8,16 @@
   background-color: $color-white;
   padding: 24px;
 
-  @media(max-width: $mobile) {
+  @media (max-width: $mobile) {
     flex-direction: column;
   }
 
-  &__product{
+  &__product {
     display: flex;
     align-items: center;
     gap: 24px;
     width: 100%;
-    &--button{
+    &--button {
       width: 16px;
       height: 16px;
       background-color: transparent;
@@ -25,41 +25,42 @@
       padding: 0;
       cursor: pointer;
 
-      &__img{
+      &__img {
         width: 9px;
         height: 9px;
       }
     }
 
-    &--image{
+    &--image {
       width: 80px;
       height: 80px;
       object-fit: contain;
     }
 
-    &--name{
+    &--name {
       @include body-text;
+
       text-decoration: none;
 
       color: $color-primary;
     }
   }
 
-  &__count{
+  &__count {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
     gap: 24px;
 
-    &--buttons{
+    &--buttons {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 96px;
     }
 
-    &--button{
+    &--button {
       width: 32px;
       height: 32px;
       padding-bottom: 3px;
@@ -70,16 +71,16 @@
       font-size: 20px;
       color: $color-primary;
 
-      &:hover{
+      &:hover {
         border: 1px solid $color-primary;
       }
     }
 
-    &--quantity{
+    &--quantity {
       @include body-text;
     }
 
-    &--price{
+    &--price {
       font-family: $font-family;
       font-weight: $font-weight-bolt;
       font-size: 22px;
