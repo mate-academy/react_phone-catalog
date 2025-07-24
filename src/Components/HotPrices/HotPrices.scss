@@ -5,11 +5,14 @@
 
   &__title {
     margin: 0;
+
     @include title-of-blocks;
   }
+
   @media (max-width: $tablet) {
     margin-bottom: 64px;
   }
+
   @media (max-width: $mobile) {
     margin-bottom: 56px;
   }
