@@ -88,6 +88,7 @@
   display: flex;
   gap: 8px;
   position: relative;
+  margin-bottom: 16px;
 
   &__price {
     font-family: Mont, sans-serif;
@@ -108,7 +109,7 @@
     content: '';
     position: absolute;
     left: 0;
-    top: 64px;
+    top: 40px;
     width: 100%;
     height: 1px;
     background-color: rgba(59, 62, 74, 1);

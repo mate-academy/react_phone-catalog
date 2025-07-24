@@ -1,0 +1,30 @@
+.header {
+  margin-bottom: 32px;
+
+  @media (min-width: 640px) {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    color: rgba(241, 242, 249, 1);
+    margin-bottom: 8px;
+    text-transform: capitalize;
+
+    @media (min-width: 640px) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__counts {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(117, 118, 127, 1);
+  }
+}

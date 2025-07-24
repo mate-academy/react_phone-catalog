@@ -10,12 +10,51 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
 import { ProductsContext } from './context/ProductContext';
 import { Catalog } from './components/Catalog';
+import { Favorites } from './components/Favorites';
+import { getLikes, handleLike } from './utils/like';
+import { Cart } from './components/Cart';
+import {
+  addToCart,
+  changeCounter,
+  clearCart,
+  deleteFromCart,
+  getProductsFromCart,
+} from './utils/cart';
 
 export const App = () => {
   const [products, setProducts] = useState<Products[]>([]);
   const [phones, setPhones] = useState<Phones[]>([]);
   const [tablets, setTablets] = useState<Tablets[]>([]);
   const [accessories, setAccessories] = useState<Accessories[]>([]);
+  const [favoritesProducts, setFavoritesProducts] = useState(getLikes());
+  const [addedCartProducts, setAddedCartProduct] = useState(
+    getProductsFromCart(),
+  );
+
+  function onToggleLike(id: string) {
+    handleLike(id);
+    setFavoritesProducts(getLikes());
+  }
+
+  function onAddProduct(id: string) {
+    addToCart(id);
+    setAddedCartProduct(getProductsFromCart());
+  }
+
+  function onDeleteProduct(id: string) {
+    deleteFromCart(id);
+    setAddedCartProduct(getProductsFromCart());
+  }
+
+  function onChangeCounter(action: string, id: string) {
+    changeCounter(action, id);
+    setAddedCartProduct(getProductsFromCart());
+  }
+
+  function onClearCart() {
+    clearCart();
+    setAddedCartProduct(getProductsFromCart());
+  }
 
   useEffect(() => {
     fetch('api/products.json')
@@ -28,30 +67,36 @@ export const App = () => {
   useEffect(() => {
     fetch('api/phones.json')
       .then(res => res.json())
-      .then(setPhones)
-      .catch(() => {})
-      .finally(() => {});
+      .then(setPhones);
   }, []);
 
   useEffect(() => {
     fetch('api/tablets.json')
       .then(res => res.json())
-      .then(setTablets)
-      .catch(() => {})
-      .finally(() => {});
+      .then(setTablets);
   }, []);
 
   useEffect(() => {
     fetch('api/accessories.json')
       .then(res => res.json())
-      .then(setAccessories)
-      .catch(() => {})
-      .finally(() => {});
+      .then(setAccessories);
   }, []);
 
   return (
     <ProductsContext.Provider
-      value={{ products, phones, tablets, accessories }}
+      value={{
+        products,
+        phones,
+        tablets,
+        accessories,
+        favoritesProducts,
+        addedCartProducts,
+        onAddProduct,
+        onDeleteProduct,
+        onChangeCounter,
+        onClearCart,
+        onToggleLike,
+      }}
     >
       <div className="App">
         <NavBar />
@@ -60,6 +105,10 @@ export const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="/phones" element={<Catalog />} />
+          <Route path="/tablets" element={<Catalog />} />
+          <Route path="/accessories" element={<Catalog />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
 
         <Footer />

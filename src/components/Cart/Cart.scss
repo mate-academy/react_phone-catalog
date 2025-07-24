@@ -1,0 +1,21 @@
+.cart {
+  min-height: 100vh;
+  padding: 24px 16px 56px;
+
+  @media (min-width: 640px) {
+    padding: 40px 24px 64px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 40px 32px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__context {
+    @media (min-width: 1200px) {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}

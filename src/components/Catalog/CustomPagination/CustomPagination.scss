@@ -1,0 +1,66 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: rgba(22, 24, 39, 1);
+    color: rgba(241, 242, 249, 1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(59, 62, 74, 1);
+    }
+
+    &:disabled {
+      border: 1px solid rgba(59, 62, 74, 1);
+      background-color: transparent;
+      cursor: not-allowed;
+
+      .svg-left,
+      .svg-right {
+        color: rgba(74, 77, 88, 1);
+      }
+    }
+
+    &--active {
+      background-color: rgba(144, 91, 255, 1);
+    }
+
+    &--nav {
+      background-color: rgba(50, 53, 66, 1);
+      margin-left: 8px;
+      margin-right: 8px;
+
+      .svg-left,
+      .svg-right {
+        width: 6px;
+        height: 10px;
+        color: rgba(241, 242, 249, 1);
+        transition: color 0.2s ease;
+      }
+
+      &:hover:not(:disabled) {
+        background-color: rgba(74, 77, 88, 1);
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

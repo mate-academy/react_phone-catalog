@@ -1,0 +1,46 @@
+.cart {
+  &__navigation {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-bottom: 24px;
+
+    @media (min-width: 640px) {
+      padding-bottom: 16px;
+    }
+  }
+
+  &__left-arrow {
+    color: rgba(241, 242, 249, 1);
+  }
+
+  &__link-back {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    text-decoration: none;
+    color: rgba(241, 242, 249, 1);
+  }
+
+  &__header {
+    padding-bottom: 32px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 41px;
+    color: rgba(241, 242, 249, 1);
+
+    @media (min-width: 640px) {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-style: Bold;
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+}

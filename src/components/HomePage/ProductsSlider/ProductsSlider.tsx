@@ -10,6 +10,8 @@ import { ProductsContext } from '../../../context/ProductContext';
 
 export const ProductsSlider: React.FC = () => {
   const { products } = useContext(ProductsContext);
+  const { onToggleLike, favoritesProducts } = useContext(ProductsContext);
+  const { onAddProduct, addedCartProducts } = useContext(ProductsContext);
 
   const newProducts = [...products]
     .sort((a: Products, b: Products) => b.year - a.year)
@@ -165,9 +167,36 @@ export const ProductsSlider: React.FC = () => {
                   </div>
 
                   <div className="product-card__actions">
-                    <button className="product-card__add">Add to cart</button>
-                    <button className="product-card__like">
-                      <img src="./icons/like.svg" alt="like" />
+                    <button
+                      className={classNames('product-card__add', {
+                        'product-card__add--active': addedCartProducts.some(
+                          a => {
+                            return a.productId === prod.itemId;
+                          },
+                        ),
+                      })}
+                      onClick={() => {
+                        onAddProduct(prod.itemId);
+                      }}
+                    >
+                      {addedCartProducts.some(a => {
+                        return a.productId === prod.itemId;
+                      })
+                        ? 'Added to cart'
+                        : 'Add to cart'}
+                    </button>
+                    <button
+                      className="product-card__like"
+                      onClick={() => {
+                        onToggleLike(prod.itemId);
+                      }}
+                    >
+                      {!favoritesProducts.includes(prod.itemId) && (
+                        <img src="./icons/like.svg" alt="like" />
+                      )}
+                      {favoritesProducts.includes(prod.itemId) && (
+                        <img src="./icons/liked.svg" alt="like" />
+                      )}
                     </button>
                   </div>
                 </div>

@@ -16,6 +16,8 @@ export const HotPriceSlider: React.FC = () => {
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+  const { onToggleLike, favoritesProducts } = useContext(ProductsContext);
+  const { onAddProduct, addedCartProducts } = useContext(ProductsContext);
 
   useEffect(() => {
     if (newProducts.length > 1) {
@@ -140,9 +142,34 @@ export const HotPriceSlider: React.FC = () => {
                 </div>
 
                 <div className="product-card__actions">
-                  <button className="product-card__add">Add to cart</button>
-                  <button className="product-card__like">
-                    <img src="./icons/like.svg" alt="like" />
+                  <button
+                    className={classNames('product-card__add', {
+                      'product-card__add--active': addedCartProducts.some(a => {
+                        return a.productId === prod.itemId;
+                      }),
+                    })}
+                    onClick={() => {
+                      onAddProduct(prod.itemId);
+                    }}
+                  >
+                    {addedCartProducts.some(a => {
+                      return a.productId === prod.itemId;
+                    })
+                      ? 'Added to cart'
+                      : 'Add to cart'}
+                  </button>
+                  <button
+                    className="product-card__like"
+                    onClick={() => {
+                      onToggleLike(prod.itemId);
+                    }}
+                  >
+                    {!favoritesProducts.includes(prod.itemId) && (
+                      <img src="./icons/like.svg" alt="like" />
+                    )}
+                    {favoritesProducts.includes(prod.itemId) && (
+                      <img src="./icons/liked.svg" alt="like" />
+                    )}
                   </button>
                 </div>
               </div>

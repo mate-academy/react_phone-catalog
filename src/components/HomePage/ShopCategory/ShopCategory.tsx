@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import './ShopCategory.scss';
 import { ProductsContext } from '../../../context/ProductContext';
+import { Link } from 'react-router-dom';
 
 export const ShopCategory: React.FC = () => {
   const { phones, tablets, accessories } = useContext(ProductsContext);
@@ -9,14 +10,14 @@ export const ShopCategory: React.FC = () => {
     <section className="category-section">
       <h2 className="category-section__title">Shop by category</h2>
       <div className="category-section__blocks">
-        <div>
+        <Link className="category-section__link" to={'/phones'}>
           <div className="category-section__mobile-block">
             <img src="./images/mobile_category.png" alt="phones-banner" />
           </div>
           <h4 className="category-section__block-title">Mobile phones</h4>
           <p className="category-section__block-text">{phones.length} models</p>
-        </div>
-        <div>
+        </Link>
+        <Link className="category-section__link" to={'/tablets'}>
           <div className="category-section__tablets-block">
             <img src="./images/tablets_category.png" alt="tablets-banner" />
           </div>
@@ -24,8 +25,8 @@ export const ShopCategory: React.FC = () => {
           <p className="category-section__block-text">
             {tablets.length} models
           </p>
-        </div>
-        <div>
+        </Link>
+        <Link className="category-section__link" to={'/accessories'}>
           <div className="category-section__accessories-block">
             <img
               src="./images/accessories_category.png"
@@ -36,7 +37,7 @@ export const ShopCategory: React.FC = () => {
           <p className="category-section__block-text">
             {accessories.length} models
           </p>
-        </div>
+        </Link>
       </div>
     </section>
   );

@@ -1,0 +1,134 @@
+.cart {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    width: 100%;
+    background-color: rgba(22, 24, 39, 1);
+
+    @media (min-width: 640px) {
+      padding: 24px 24px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 1200px) {
+      max-width: 752px;
+    }
+  }
+
+  &__card-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @media (min-width: 640px) {
+      gap: 24px;
+      flex: 1;
+    }
+  }
+
+  &__card-close-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__card-image-block {
+    width: 66px;
+    height: 66px;
+
+    @media (min-width: 640px) {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__card-name {
+    font-family: Mont, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(241, 242, 249, 1);
+
+    // @media (min-width: 640px) {
+    //   width: 176px;
+    // }
+  }
+
+  &__card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (min-width: 640px) {
+      justify-content: flex-end;
+      gap: 53px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__card-counter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background-color: rgba(50, 53, 66, 1);
+
+    &--disabled {
+      background-color: transparent;
+      border: 1px solid rgba(59, 62, 74, 1);
+      pointer-events: none;
+      cursor: progress;
+    }
+  }
+
+  &__button-svg {
+    color: rgba(241, 242, 249, 1);
+
+    &--disabled {
+      color: rgba(74, 77, 88, 1);
+    }
+  }
+
+  &__card-counter-text {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(241, 242, 249, 1);
+  }
+
+  &__price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: rgba(241, 242, 249, 1);
+  }
+}

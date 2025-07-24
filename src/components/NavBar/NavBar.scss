@@ -6,6 +6,7 @@
   height: 48px;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(59, 62, 74, 1);
+  position: relative;
 
   @media (min-width: 1200px) {
     height: 64px;
@@ -41,6 +42,29 @@
     font-size: 12px;
     text-decoration: none;
     color: rgba(117, 118, 127, 1);
+  }
+
+  &__active-link {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    text-decoration: none;
+    color: rgba(241, 242, 249, 1);
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: -15px;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: rgba(241, 242, 249, 1);
+
+      @media (min-width: 1200px) {
+        bottom: -22px;
+      }
+    }
   }
 
   &__icons {
@@ -80,6 +104,7 @@
   }
 
   &__like-block {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,9 +118,48 @@
       width: 64px;
       height: 64px;
     }
+
+    &--active::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 3px;
+      background-color: rgba(241, 242, 249, 1);
+      left: 0;
+      bottom: 0;
+    }
+  }
+
+  &__like-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 100%;
+    width: 14px;
+    height: 14px;
+    background-color: rgba(235, 87, 87, 1);
+    color: rgba(241, 242, 249, 1);
+    border-radius: 50%;
+    top: 28%;
+    left: 50%;
+
+    @media (min-width: 640px) {
+      top: 22%;
+      left: 48%;
+    }
+
+    @media (min-width: 1200px) {
+      top: 28%;
+      left: 50%;
+    }
   }
 
   &__shop-block {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -108,6 +172,44 @@
     @media (min-width: 1200px) {
       width: 64px;
       height: 64px;
+    }
+
+    &--active::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 3px;
+      background-color: rgba(241, 242, 249, 1);
+      left: 0;
+      bottom: 0;
+    }
+  }
+
+  &__shop-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 100%;
+    width: 14px;
+    height: 14px;
+    background-color: rgba(235, 87, 87, 1);
+    color: rgba(241, 242, 249, 1);
+    border-radius: 50%;
+    top: 28%;
+    left: 50%;
+
+    @media (min-width: 640px) {
+      top: 22%;
+      left: 48%;
+    }
+
+    @media (min-width: 1200px) {
+      top: 28%;
+      left: 50%;
     }
   }
 }

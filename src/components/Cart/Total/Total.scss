@@ -1,0 +1,131 @@
+.cart {
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    border: 1px solid rgba(59, 62, 74, 1);
+
+    @media (min-width: 1200px) {
+      width: 368px;
+      height: 206px;
+    }
+  }
+
+  &__total-sum {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    color: rgba(241, 242, 249, 1);
+  }
+
+  &__total-count {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(117, 118, 127, 1);
+    padding-bottom: 32px;
+  }
+
+  &__total-button {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(241, 242, 249, 1);
+
+    width: 100%;
+    height: 48px;
+    border: 0;
+    background-color: rgba(144, 91, 255, 1);
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: rgba(59, 62, 74, 1);
+      left: 0;
+      top: -16px;
+    }
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 16px;
+}
+
+.modal {
+  background: #1f2937;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #374151;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal p {
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  color: rgba(241, 242, 249, 1);
+  line-height: 1.5;
+  margin: 0 0 24px 0;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-buttons button {
+  font-family: Mont, sans-serif;
+  flex: 1;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid #374151;
+}
+
+.modal-buttons button:first-child {
+  background: #dc2626;
+  color: white;
+  border-color: #dc2626;
+}
+
+.modal-buttons button:first-child:hover {
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.modal-buttons button:last-child {
+  background: #374151;
+  color: #f9fafb;
+  border-color: #4b5563;
+}
+
+.modal-buttons button:last-child:hover {
+  background: #4b5563;
+  border-color: #6b7280;
+}
