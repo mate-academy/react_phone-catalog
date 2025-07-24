@@ -23,7 +23,7 @@ export const BreadCrumbs: React.FC<Props> = ({ currentProduct }) => {
         <div className="breadCrumbs__logo">
           <Link to="/" className="breadCrumbs__logo_link">
             <img
-              src="src\images\logo\home.svg"
+              src="../../images/logo/home.svg"
               alt="home"
               className="breadCrumbs__logo_img"
             />
