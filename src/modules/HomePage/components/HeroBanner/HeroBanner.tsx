@@ -19,6 +19,8 @@ export const HeroBanner: React.FC = () => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
 
+  const isDesktop = window.innerWidth >= 640;
+
   useEffect(() => {
     if (
       swiperRef.current &&
@@ -41,44 +43,46 @@ export const HeroBanner: React.FC = () => {
         <h1 className={styles.banner__title}>Welcome to Nice Gadgets store!</h1>
       </div>
 
-      <div className={styles.sliderWrapper}>
-        {/* Left button */}
-        <button ref={prevRef} className={`${styles.button} ${styles.prev}`}>
-          <img src={iconArrowRight} alt="Previous" />
-        </button>
+      <div className={isDesktop ? 'container' : ''}>
+        <div className={styles.sliderWrapper}>
+          {/* Left button */}
+          <button ref={prevRef} className={`${styles.button} ${styles.prev}`}>
+            <img src={iconArrowRight} alt="Previous" />
+          </button>
 
-        {/* Swiper */}
-        <Swiper
-          onSwiper={swiper => {
-            swiperRef.current = swiper;
-          }}
-          modules={[Navigation, Pagination, Autoplay]}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 5000 }}
-          loop
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
-          className={styles.banner__swiper}
-        >
-          {banners.map((url, index) => (
-            <SwiperSlide key={index}>
-              <div className={styles.banner__slider}>
-                <img
-                  src={url.src}
-                  alt="Ad"
-                  className={styles.banner__sliderImage}
-                />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          {/* Swiper */}
+          <Swiper
+            onSwiper={swiper => {
+              swiperRef.current = swiper;
+            }}
+            modules={[Navigation, Pagination, Autoplay]}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000 }}
+            loop
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            }}
+            className={styles.banner__swiper}
+          >
+            {banners.map((url, index) => (
+              <SwiperSlide key={index}>
+                <div className={styles.banner__slider}>
+                  <img
+                    src={url.src}
+                    alt="Ad"
+                    className={styles.banner__sliderImage}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-        {/* Right button */}
-        <button ref={nextRef} className={`${styles.button} ${styles.next}`}>
-          <img src={iconArrowRight} alt="Next" />
-        </button>
+          {/* Right button */}
+          <button ref={nextRef} className={`${styles.button} ${styles.next}`}>
+            <img src={iconArrowRight} alt="Next" />
+          </button>
+        </div>
       </div>
     </section>
   );
