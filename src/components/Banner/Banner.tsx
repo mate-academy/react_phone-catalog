@@ -3,6 +3,7 @@ import './Banner.scss';
 import accessories from '../../images/banner/banner-accessories.png';
 import phones from '../../images/banner/banner-phones.png';
 import tablets from '../../images/banner/banner-tablets.png';
+import sliderArrow from '../../images/logo/sliderArrow.svg';
 import classNames from 'classnames';
 
 export const Banner: React.FC = () => {
@@ -46,7 +47,7 @@ export const Banner: React.FC = () => {
     <div className="banner">
       <div className="banner__content">
         <div className="banner__button" onClick={handlePrevClick}>
-          <img src="src\images\logo\sliderArrow.svg" alt="previus_banner" />
+          <img src={sliderArrow} alt="previus_banner" />
         </div>
         <div className="banner__img" ref={bannerRef}>
           <ul className="banner__img__list">
@@ -68,7 +69,7 @@ export const Banner: React.FC = () => {
           className="banner__button banner__button--right"
           onClick={handleNextClick}
         >
-          <img src="src\images\logo\sliderArrow.svg" alt="previus_banner" />
+          <img src={sliderArrow} alt="previus_banner" />
         </div>
       </div>
 
