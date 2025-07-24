@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { ProductDetails } from '../../types/ProductDetails';
 import React from 'react';
+import home from '../../images/logo/home.svg';
 
 type Props = {
   currentProduct?: ProductDetails;
@@ -22,11 +23,7 @@ export const BreadCrumbs: React.FC<Props> = ({ currentProduct }) => {
       <div className="breadCrumbs__container">
         <div className="breadCrumbs__logo">
           <Link to="/" className="breadCrumbs__logo_link">
-            <img
-              src="../../images/logo/home.svg"
-              alt="home"
-              className="breadCrumbs__logo_img"
-            />
+            <img src={home} alt="home" className="breadCrumbs__logo_img" />
           </Link>
         </div>
 
