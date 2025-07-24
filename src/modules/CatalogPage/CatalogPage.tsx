@@ -123,14 +123,18 @@ export const CatalogPage = () => {
             },
           ]}
         />
-        <h1 className="text-2xl font-bold capitalize">
+        <h1 className={styles.catalog__title}>
           {category.charAt(0).toUpperCase() + category.slice(1)}
         </h1>
+        <p className={styles.catalog__count}>{filteredProducts.length} items</p>
 
         <div className={styles.catalog__controls}>
-          <label>
-            Sort by:
+          <div className={styles.catalog__sort}>
+            <label className={styles.catalog__label} htmlFor="sort">
+              Sort by:
+            </label>
             <select
+              name="sort"
               value={sortParam}
               onChange={handleSortChange}
               className={styles.catalog__select}
@@ -141,11 +145,14 @@ export const CatalogPage = () => {
                 </option>
               ))}
             </select>
-          </label>
+          </div>
 
-          <label>
-            Items per page:
+          <div className={styles.catalog__perPage}>
+            <label className={styles.catalog__label} htmlFor="perPage">
+              Items per page:
+            </label>
             <select
+              name="perPage"
               value={perPageParam}
               onChange={handlePerPageChange}
               className={styles.catalog__select}
@@ -155,7 +162,7 @@ export const CatalogPage = () => {
               <option value="16">16</option>
               <option value="all">All</option>
             </select>
-          </label>
+          </div>
         </div>
 
         <div className={styles.catalog__list}>

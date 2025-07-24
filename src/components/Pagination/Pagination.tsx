@@ -30,6 +30,33 @@ export const Pagination: React.FC<Props> = ({ currentPage, totalPages }) => {
     }
   };
 
+  const getVisiblePages = (): number[] => {
+    const pages: number[] = [];
+
+    if (totalPages <= 4) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 2) {
+        pages.push(1, 2, 3, 4);
+      } else if (currentPage >= totalPages - 1) {
+        pages.push(totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      } else {
+        pages.push(
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          currentPage + 2,
+        );
+      }
+    }
+
+    return pages.filter(p => p >= 1 && p <= totalPages);
+  };
+
+  const visiblePages = getVisiblePages();
+
   return (
     <div className={styles.pagination}>
       <button
@@ -44,20 +71,15 @@ export const Pagination: React.FC<Props> = ({ currentPage, totalPages }) => {
         />
       </button>
 
-      {[...Array(totalPages)].map((_, i) => {
-        const pageNum = i + 1;
-        const isActive = pageNum === currentPage;
-
-        return (
-          <button
-            key={pageNum}
-            onClick={() => goToPage(pageNum)}
-            className={`${styles.pageButton} ${isActive ? styles.active : ''}`}
-          >
-            {pageNum}
-          </button>
-        );
-      })}
+      {visiblePages.map(pageNum => (
+        <button
+          key={pageNum}
+          onClick={() => goToPage(pageNum)}
+          className={`${styles.pageButton} ${pageNum === currentPage ? styles.active : ''}`}
+        >
+          {pageNum}
+        </button>
+      ))}
 
       <button
         onClick={() => goToPage(currentPage + 1)}

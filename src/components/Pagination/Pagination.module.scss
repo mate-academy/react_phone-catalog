@@ -10,15 +10,17 @@
 .pageButton {
   padding: 6px 12px;
   font-size: 14px;
-  border: 1px solid #ccc;
+  border: 1px solid $elements-color;
   background-color: white;
   cursor: pointer;
   border-radius: 48px;
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: $bg-color;
-    color: $primary-color;
+    font-weight: bold;
+    border-color: $primary-color;
+    background-color: $primary-color;
+    color: white;
   }
 }
 
