@@ -24,7 +24,8 @@ export const App = () => {
 
         {/* <BrendNewModels /> */}
 
-        <SwiperSection />
+        <SwiperSection title="Brand New Models"/>
+        <SwiperSection title="Hot prices"/>
       </main>
 
       {/* <Routes> */}

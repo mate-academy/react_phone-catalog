@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -6,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { PhoneCard } from '../PhoneCard';
 import './swiperSection.scss';
+
 
 type ProductInfo = {
   id: string;
@@ -17,7 +19,11 @@ type ProductInfo = {
   images: string[];
 };
 
-export const SwiperSection: React.FC = () => {
+type Props = {
+  title: string;
+}
+
+export const SwiperSection: React.FC<Props> = ({title}) => {
   const [phones, setPhones] = useState<ProductInfo[]>([]);
 
   useEffect(() => {
@@ -33,7 +39,10 @@ export const SwiperSection: React.FC = () => {
   return (
     <div className="swiper-section-wrapper">
       <div className="title-swiper-container">
-        <h2>Brand new models</h2>
+        <div className='section-title'>
+
+        <h2>{title}</h2>
+        </div>
 
         <div className="mini-swiper">
           <div className="arrow arrow--left has-shadow-cursor">
@@ -61,6 +70,7 @@ export const SwiperSection: React.FC = () => {
         navigation={{
           prevEl: '.arrow--left',
           nextEl: '.arrow--right',
+          disabledClass: 'arrow--disabled',
         }}
         className="swiperSection"
       >

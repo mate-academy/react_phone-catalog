@@ -5,6 +5,10 @@
     padding-left: 0px;
   }
 
+  .section-title {
+    width: 50%;
+  }
+
   .title-swiper-container {
     display: flex;
     justify-content: space-between;
@@ -43,7 +47,6 @@
 
 .mini-swiper {
   display: flex;
-  justify-items: center;
   width: 80px;
   height: 32px;
   gap: 16px;
@@ -54,8 +57,17 @@
     align-items: center;
     height: 32px;
     width: 32px;
+    
     border-radius: 50%;
     border: 1px solid $border-color;
+    transition: opacity 0.3s ease;
+  }
+
+  .arrow--disabled {
+    opacity: 0.3;
+
+    img {
+      filter: grayscale(100%);
+    }
   }
 }
-
