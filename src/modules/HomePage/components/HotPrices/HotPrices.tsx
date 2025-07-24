@@ -4,7 +4,6 @@ import { ProductCard } from '../../../../components/ProductCard';
 import { Product } from '../../../../types/Product';
 import styles from './HotPrices.module.scss';
 import { useState } from 'react';
-import iconArrowRight from '../../../../assets/icons/arrow-right.svg';
 
 type Props = {
   products: Product[];
@@ -24,16 +23,10 @@ export const HotPrices: React.FC<Props> = ({ products }) => {
             <button
               className={`${styles.brandNewModels__button} ${styles.brandNewModels__button_prev} brandNewModelsPrev`}
               disabled={isBeginning}
-              style={{
-                backgroundImage: `url(${iconArrowRight})`,
-              }}
             ></button>
             <button
               className={`${styles.brandNewModels__button} ${styles.brandNewModels__button_next} brandNewModelsNext`}
               disabled={isEnd}
-              style={{
-                backgroundImage: `url(${iconArrowRight})`,
-              }}
             ></button>
           </div>
         </div>

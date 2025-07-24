@@ -34,6 +34,7 @@
     align-items: center;
     background-color: $bg-color;
     border: 1px solid $icons-color;
+    background-image: url('../../../../assets/icons/arrow-right.svg');
     background-repeat: no-repeat;
     background-position: center;
     width: 32px;
@@ -44,6 +45,7 @@
 
     &:disabled {
       pointer-events: none;
+      opacity: 0.5;
     }
 
     &:first-child {
