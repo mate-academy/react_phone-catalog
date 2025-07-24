@@ -71,9 +71,8 @@ export const Pagination = ({
   return (
     <div className={styles.pagination}>
       <button
-        className={classNames(styles.customArrow, {
-          [styles.disabled]: currentPage === 1,
-        })}
+        className={styles.customArrow}
+        disabled={currentPage === 1}
         onClick={() => handleLeft()}
       >
         <img
@@ -98,9 +97,8 @@ export const Pagination = ({
         ))}
       </div>
       <button
-        className={classNames(styles.customArrow, {
-          [styles.disabled]: currentPage === numberOfPages,
-        })}
+        className={styles.customArrow}
+        disabled={currentPage === numberOfPages}
         onClick={() => handleRight()}
       >
         <img

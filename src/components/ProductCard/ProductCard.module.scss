@@ -12,6 +12,7 @@
   padding: 32px;
 
   width: 272px;
+  min-width: 272px;
   height: 506px;
   justify-content: space-between;
 
@@ -23,6 +24,7 @@
   }
 
   @media (max-width: $size-mobile) {
+    min-width: 212px;
     height: 440px;
   }
 }
@@ -124,14 +126,10 @@
   &:hover {
     background-color: #a378ff;
   }
-}
 
-.addedToCart {
-  background-color: $color-surface2;
-  cursor: default;
-
-  &:hover {
+  &:disabled {
     background-color: $color-surface2;
+    pointer-events: none;
   }
 }
 

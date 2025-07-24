@@ -1,6 +1,5 @@
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
-import { ModelsSlider } from '../ModelsSlider';
 import { useContext, useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import { getData, getProducts } from '../../utils/fetchClient';
@@ -13,6 +12,7 @@ import { CartandFavContext } from '../CartandFavProvider';
 import classNames from 'classnames';
 import { SomethingWentWrongPage } from '../SomethingWentWrongPage';
 import { Loader } from '../Loader';
+import { MySlider } from '../MySlider';
 
 const techSpecs: CategoryProductTechSpecKeys[] = [
   'screen',
@@ -312,22 +312,18 @@ export const ProductDetailsPage = () => {
               <div className={styles.cardButtons}>
                 <button
                   type="button"
-                  className={classNames(styles.cardAddButton, {
-                    [styles.addedToCart]: isInCart,
-                  })}
+                  className={styles.cardAddButton}
+                  disabled={isInCart}
                   onClick={() => handleAddToCart()}
                 >
-                  {isInCart ? 'Added to cart' : 'Add to a cart'}
+                  {isInCart ? 'Added to cart' : 'Add to cart'}
                 </button>
                 <button
                   type="button"
                   className={classNames(styles.cardFavButton, {
                     [styles.addedToFav]: isInFav,
                   })}
-                  onClick={e => {
-                    e.stopPropagation();
-                    handleAddToFav();
-                  }}
+                  onClick={() => handleAddToFav()}
                 >
                   <img
                     src={
@@ -404,13 +400,7 @@ export const ProductDetailsPage = () => {
             </section>
           </div>
         </div>
-        <div className={styles.pageSlider}>
-          <h2 className={styles.pageSlider_title}>You may also like</h2>
-          <ModelsSlider
-            products={randomProducts}
-            arrowClassName="modelsSliderArrow"
-          />
-        </div>
+        <MySlider products={randomProducts} title="You may also like" />
       </div>
     </main>
   );

@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import styles from './HomePage.module.scss';
 import { ProductSlider } from '../ProductsSlider';
-import { ModelsSlider } from '../ModelsSlider';
 import { useEffect, useState } from 'react';
 import { getProducts } from '../../utils/fetchClient';
 import { Product } from '../../types/Product';
 import { Category } from '../../types/Category';
+import { MySlider } from '../MySlider';
 
 const categories: {
   title: string;
@@ -50,7 +50,7 @@ export const HomePage = () => {
 
   const newModelsProducts = products
     .sort((p1, p2) => p2.year - p1.year)
-    .slice(0, 15);
+    .slice(0, 8);
 
   const hotPriceProducts = products
     .sort((p1, p2) => {
@@ -59,7 +59,7 @@ export const HomePage = () => {
 
       return discount2 - discount1;
     })
-    .slice(0, 15);
+    .slice(0, 8);
 
   return (
     <main className={styles.page}>
@@ -68,11 +68,7 @@ export const HomePage = () => {
         <ProductSlider />
       </section>
       <section className={styles.pageContent}>
-        <h2 className={styles.sectionTitle}>Brand new models</h2>
-        <ModelsSlider
-          products={newModelsProducts}
-          arrowClassName="modelsSliderArrow"
-        />
+        <MySlider title="Brand new models" products={newModelsProducts} />
       </section>
       <section className={styles.pageContent}>
         <h2 className={styles.sectionTitle}>Shop by category</h2>
@@ -99,11 +95,7 @@ export const HomePage = () => {
         </div>
       </section>
       <section className={styles.pageContent}>
-        <h2 className={styles.sectionTitle}>Hot prices</h2>
-        <ModelsSlider
-          products={hotPriceProducts}
-          arrowClassName="modelsSliderArrow"
-        />
+        <MySlider title="Hot prices" products={hotPriceProducts} />
       </section>
     </main>
   );

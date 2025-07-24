@@ -32,7 +32,10 @@ export const ProductCard = ({ product }: Props) => {
       onClick={() => navigate(`/${product.category}/product/${product.itemId}`)}
       className={styles.card}
     >
-      <img src={product.image} className={styles.cardImage}></img>
+      <img
+        src={`..\\..\\..\\public\\${product.image}`}
+        className={styles.cardImage}
+      ></img>
       <p className={styles.cardTitle}>{`${product.name} (iMT9G2FS/A)`}</p>
       <div className={styles.cardPrice}>
         <span>{`$${product.price}`}</span>
@@ -56,9 +59,8 @@ export const ProductCard = ({ product }: Props) => {
       <div className={styles.cardButtons}>
         <button
           type="button"
-          className={classNames(styles.cardAddButton, {
-            [styles.addedToCart]: isInCart,
-          })}
+          className={styles.cardAddButton}
+          disabled={isInCart}
           onClick={e => {
             e.stopPropagation();
             if (isInCart) {
@@ -68,7 +70,7 @@ export const ProductCard = ({ product }: Props) => {
             handleAddToCart();
           }}
         >
-          {isInCart ? 'Added to cart' : 'Add to a cart'}
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
           type="button"

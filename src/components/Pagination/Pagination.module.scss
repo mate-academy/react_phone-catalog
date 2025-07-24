@@ -22,15 +22,11 @@
   &:hover {
     background-color: $color-icons;
   }
-}
 
-.disabled {
-  background-color: $color-black;
-  border: 1px solid $color-elements;
-  cursor: default;
-
-  &:hover {
+  &:disabled {
     background-color: $color-black;
+    border: 1px solid $color-elements;
+    pointer-events: none;
   }
 }
 
