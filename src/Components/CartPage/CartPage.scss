@@ -23,10 +23,10 @@
   }
 
   &__title {
-    @include title-main;
-
     margin-top: 16px;
     margin-bottom: 32px;
+
+    @include title-main;
   }
 
   &__total {
@@ -45,7 +45,7 @@
       max-width: none;
     }
 
-    &--price{
+    &--price {
       font-family: $font-family;
       font-size: 32px;
       font-weight: $font-weight-bolt;
@@ -53,7 +53,7 @@
       margin: 0;
     }
 
-    &--items{
+    &--items {
       @include body-text;
 
       width: 100%;
@@ -70,7 +70,7 @@
       }
     }
 
-    &--button{
+    &--button {
       font-family: $font-family;
       color: $color-white;
 

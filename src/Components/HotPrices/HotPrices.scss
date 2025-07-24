@@ -1,11 +1,12 @@
 @import '../../utils/';
 
 .hot-prices {
+  margin-bottom: 80px;
+
   &__title {
     margin: 0;
     @include title-of-blocks;
   }
-  margin-bottom: 80px;
   @media (max-width: $tablet) {
     margin-bottom: 64px;
   }

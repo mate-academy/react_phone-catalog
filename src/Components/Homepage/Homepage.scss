@@ -1,11 +1,11 @@
 @import '../../utils/';
 @import '../../layout/container';
 
-.home-page{
-  &__title{
-    @include title-main;
-  }
-
+.home-page {
   margin-top: 56px;
   margin-bottom: 56px;
+
+  &__title {
+    @include title-main;
+  }
 }
