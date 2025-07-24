@@ -1,10 +1,16 @@
 import './BreadCrumbs.scss';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { ProductDetails } from '../../types/ProductDetails';
+import React from 'react';
 
-export const BreadCrumbs = () => {
+type Props = {
+  currentProduct?: ProductDetails;
+};
+
+export const BreadCrumbs: React.FC<Props> = ({ currentProduct }) => {
   const { pathname } = useLocation();
-  const productName = pathname.slice(1).split('/')[1];
+  const productName = currentProduct?.name;
   const categoryName = pathname.slice(1).split('/')[0];
 
   function capitalizedName(name: string) {
@@ -55,9 +61,7 @@ export const BreadCrumbs = () => {
               />
             </span>
 
-            <p className="breadCrumbs__category-product">
-              {capitalizedName(productName.slice(1))}
-            </p>
+            <p className="breadCrumbs__category_product">{productName}</p>
           </>
         )}
       </div>

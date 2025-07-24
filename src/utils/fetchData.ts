@@ -1,4 +1,4 @@
-const BASE_URL = './api';
+const BASE_URL = 'src/api';
 
 export function fetchData<T>(url: string): Promise<T> {
   return fetch(BASE_URL + url).then(response => {

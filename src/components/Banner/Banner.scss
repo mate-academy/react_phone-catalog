@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 
   @include on-tablet {
       width: 100%;
@@ -14,7 +13,7 @@
 
     @include on-desktop {
       width: 1136px;
-      height: 400px;
+      height: 100%;
     }
 
 
@@ -26,8 +25,6 @@
     justify-content: space-between;
     gap: 16px;
     box-sizing: border-box;
-
-
   }
 
   &__button {

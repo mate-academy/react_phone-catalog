@@ -9,6 +9,11 @@
   align-items: center;
   filter: blur(1px);
 
+  @include on-desktop {
+    width: 125vh;
+    height: 75vh;
+  }
+
   &__content {
     width: 100px;
     height: 100px;

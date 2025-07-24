@@ -8,6 +8,7 @@ import {
 import { addToCart, removeFromCart } from '../../expansions/cart';
 import classNames from 'classnames';
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 type Props = {
@@ -32,32 +33,34 @@ export const ProductCard: React.FC<Props> = React.memo(
     };
 
     const handleProductInFavorites = (currentProduct: Product) => {
-      if (favorites.some(item => item.id === currentProduct.id)) {
+      if (favorites.some(item => item && item.id === currentProduct.id)) {
         dispatch(removeProductFromFavorites(currentProduct));
       } else {
         dispatch(addProductToFavorites(currentProduct));
       }
     };
 
-    const isProductInFavorites = favorites.some(item => item.id === product.id);
+    const isProductInFavorites = favorites.some(
+      item => item && item.id === product.id,
+    );
     const isProductInCart = productsInCart.some(item => item.id === product.id);
 
     return (
       <div className="productCard">
         <div className="productCard__content">
-          <a
-            href={`/${product.category}/:${product.itemId}`}
+          <Link
+            to={`/${product.category}/:${product.itemId}`}
             className="productCard__link"
           >
             <img src={image} alt={name} className="productCard__link_img" />
-          </a>
+          </Link>
 
-          <a
-            href={`/${product.category}/:${product.itemId}`}
+          <Link
+            to={`/${product.category}/:${product.itemId}`}
             className="productCard__title"
           >
             {name}
-          </a>
+          </Link>
           <div className="productCard__block_prices">
             <p className="productCard__price">{`$${price}`}</p>
             {discount && (

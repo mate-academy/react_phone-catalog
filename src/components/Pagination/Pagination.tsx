@@ -81,8 +81,8 @@ export const Pagination: React.FC<Props> = ({ itemsCount }) => {
   };
 
   useEffect(() => {
-    searchParams.set('transform', `${0}`);
     searchParams.set('page', `${1}`);
+    searchParams.set('transform', `${0}`);
     setTransformValue(0);
   }, [itemsPerPage]);
 
@@ -100,7 +100,7 @@ export const Pagination: React.FC<Props> = ({ itemsCount }) => {
         disabled={!canComeBack}
       >
         <img
-          src="src\images\logo\arrowLeft.svg"
+          src="src\images\logo\sliderArrow.svg"
           alt="ArrowLeft"
           className="pagination__button_img"
         />
@@ -135,7 +135,7 @@ export const Pagination: React.FC<Props> = ({ itemsCount }) => {
         disabled={!canContinue}
       >
         <img
-          src="src\images\logo\arrowRight.svg"
+          src="src\images\logo\sliderArrow.svg"
           alt="ArrowRight"
           className="pagination__button_img"
         />

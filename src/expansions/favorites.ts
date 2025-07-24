@@ -24,7 +24,7 @@ const favoritesSlice = createSlice({
     removeProductFromFavorites: (state, action: PayloadAction<Product>) => {
       // eslint-disable-next-line no-param-reassign
       state.favorites = state.favorites.filter(
-        item => item.id !== action.payload.id,
+        item => item !== null && item.id !== action.payload.id,
       );
       updatedLocalStorage(state.favorites);
     },

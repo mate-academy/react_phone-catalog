@@ -6,6 +6,8 @@ import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { HomePage } from './pages/HomePage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const AppRoutes = () => {
   return (
@@ -17,12 +19,15 @@ export const AppRoutes = () => {
           </Route>
           <Route path="/phones">
             <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
           </Route>
           <Route path="/tablets">
             <Route index element={<TabletsPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
           </Route>
           <Route path="/accessories">
             <Route index element={<AccessoriesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
           </Route>
           <Route path="/burger_menu" element={<App />} />
           <Route path="/favorites">
@@ -31,6 +36,16 @@ export const AppRoutes = () => {
           <Route path="/cart">
             <Route index element={<CartPage />} />
           </Route>
+
+          <Route
+            path="*"
+            element={
+              <NotFoundPage
+                title="Ooops...Page not found"
+                image="src\images\page-not-found.png"
+              />
+            }
+          />
         </Route>
       </Routes>
     </Router>

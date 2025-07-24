@@ -20,7 +20,6 @@
   }
 
   &__category {
-    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 12px;
     line-height: 12px;
@@ -29,6 +28,14 @@
 
     &-active {
       color: $whiteColor;
+    }
+
+    &_product {
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      font-weight: 700;
+      color: $secondaryColor;
     }
   }
 

@@ -2,6 +2,16 @@
 
 .slider {
   width: 100%;
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
 
   &__title {
     font-weight: 800;
@@ -27,6 +37,7 @@
     width: 32px;
     background-color: $surface2Color;
     border: 2px solid $surface2Color;
+    border-radius: 20px;
     cursor: pointer;
 
     &:hover {
