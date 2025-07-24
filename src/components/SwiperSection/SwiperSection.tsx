@@ -13,6 +13,7 @@ type ProductInfo = {
   id: string;
   name: string;
   priceRegular: number;
+  priceDiscount: number;
   capacity: string;
   ram: string;
   screen: string;
@@ -21,20 +22,23 @@ type ProductInfo = {
 
 type Props = {
   title: string;
+  phones: ProductInfo[];
+  showDiscount?: boolean;
 }
 
-export const SwiperSection: React.FC<Props> = ({title}) => {
-  const [phones, setPhones] = useState<ProductInfo[]>([]);
+export const SwiperSection: React.FC<Props> = ({ title, phones, showDiscount }) => {
+  const id = title.toLowerCase().replace(/\s/g, '-');
+  // const [phones, setPhones] = useState<ProductInfo[]>([]);
 
-  useEffect(() => {
-    fetch('/api/phones.json')
-      .then(res => res.json())
-      .then((data: ProductInfo[]) => {
-        const filtered = data.filter(phone => phone.id.includes('14-pro'));
-        setPhones(filtered);
-      })
-      .catch(err => console.error('Ошибка загрузки телефонов:', err));
-  }, []);
+  // useEffect(() => {
+  //   fetch('/api/phones.json')
+  //     .then(res => res.json())
+  //     .then((data: ProductInfo[]) => {
+  //       const filtered = data.filter(phone => phone.id.includes('14-pro'));
+  //       setPhones(filtered);
+  //     })
+  //     .catch(err => console.error('Ошибка загрузки телефонов:', err));
+  // }, []);
 
   return (
     <div className="swiper-section-wrapper">
@@ -45,7 +49,7 @@ export const SwiperSection: React.FC<Props> = ({title}) => {
         </div>
 
         <div className="mini-swiper">
-          <div className="arrow arrow--left has-shadow-cursor">
+          <div className={`arrow arrow--left arrow--left-${id} has-shadow-cursor`}>
             <img
               className="icon"
               src="./img/icons/ArrowLeft.svg"
@@ -53,7 +57,7 @@ export const SwiperSection: React.FC<Props> = ({title}) => {
             />
           </div>
 
-          <div className="arrow arrow--right has-shadow-cursor">
+          <div className={`arrow arrow--right arrow--right-${id} has-shadow-cursor`}>
             <img
               className="icon"
               src="./img/icons/ArrowRight.svg"
@@ -68,15 +72,15 @@ export const SwiperSection: React.FC<Props> = ({title}) => {
         spaceBetween={16}
         slidesPerView="auto"
         navigation={{
-          prevEl: '.arrow--left',
-          nextEl: '.arrow--right',
+          prevEl: `.arrow--left-${id}`,
+          nextEl: `.arrow--right-${id}`,
           disabledClass: 'arrow--disabled',
         }}
         className="swiperSection"
       >
         {phones.map(phone => (
           <SwiperSlide key={phone.id}>
-            <PhoneCard product={phone} />
+            <PhoneCard product={phone} showDiscount={showDiscount}/>
           </SwiperSlide>
         ))}
       </Swiper>

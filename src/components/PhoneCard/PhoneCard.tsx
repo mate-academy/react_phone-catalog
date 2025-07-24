@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import './phoneCard.scss';
 
@@ -6,6 +5,7 @@ type ProductInfo = {
   id: string;
   name: string;
   priceRegular: number;
+  priceDiscount: number;
   capacity: string;
   ram: string;
   screen: string;
@@ -14,31 +14,40 @@ type ProductInfo = {
 
 type Props = {
   product: ProductInfo;
+  showDiscount?: boolean;
 };
 
-export const PhoneCard: React.FC<Props> = ({ product }) => {
+export const PhoneCard: React.FC<Props> = ({ product, showDiscount }) => {
   const screen = product.screen.split(' ').slice(0, 2).join(' ');
   const capacity = product.capacity.replace(/(\d)([A-Za-z])/g, '$1 $2');
   const ram = product.ram.replace(/(\d)([A-Za-z])/g, '$1 $2');
   const titleModelPhoto = product.images[0];
   const modelName = product.name;
-  const modelPriceRegular = `$${product.priceRegular}`;
+  const priceRegular = `$${product.priceRegular}`;
+  const priceDiscount = `$${product.priceDiscount}`;
   const modelId = product.id;
 
   return (
     <div className="phone-card-container" key={modelId}>
-      <Link to='/' className="photo-name-container">
+      <Link to="/" className="photo-name-container">
         <div className="device-photo">
-          <img
-            className="photo"
-            src={titleModelPhoto}
-            alt="device photo"
-          />
+          <img className="photo" src={titleModelPhoto} alt="device photo" />
         </div>
-        <div className="name">{modelName}</div>
+        <div className='name-container'>
+          <div className="name">{modelName}</div>
+        </div>
       </Link>
 
-      <div className="price">{modelPriceRegular}</div>
+      <div className="price-container">
+        {showDiscount ? (
+          <>
+            <div className="regular-price">{priceRegular}</div>
+            <div className="discount-price">{priceDiscount}</div>
+          </>
+        ) : (
+          <div className="regular-price">{priceRegular}</div>
+        )}
+      </div>
 
       <div className="info">
         <div className="screen">
@@ -61,7 +70,7 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
         <div className="add-button has-shadow-cursor">
           <div className="button-text">Add to card</div>
         </div>
-        
+
         <div className="favourites-button has-shadow-cursor">
           <img
             className="icon"

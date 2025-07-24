@@ -67,14 +67,30 @@
     }
   }
 
-  .price {
+  .price-container {
     display: flex;
-    align-items: center;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 140%;
-    height: 51px;
+    gap: 8px;
+
+    .discount-price {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      text-decoration: line-through;
+      color: $text-not-active-color;
+    }
+
+    .regular-price {
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      height: 51px;
+    }
   }
+
 
   .info {
     display: flex;
