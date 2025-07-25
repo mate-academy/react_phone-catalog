@@ -1,7 +1,6 @@
 @import './utils/index';
 
-// @import './layout/container.scss';
-
+@import './layout/container.scss';
 
 .App {
   padding-top: 64px; // todo should be variable related to header
@@ -11,6 +10,10 @@
   flex-direction: column;
   background-color: $color-background;
   scroll-behavior: smooth;
+
+  @media (max-width: $mobile) {
+    padding-top: 49px;
+  }
 }
 
 .main-content {

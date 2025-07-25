@@ -86,4 +86,10 @@
       }
     }
   }
+
+  &__empty--img {
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
 }

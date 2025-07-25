@@ -9,13 +9,21 @@
   z-index: 1010;
   background-color: $color-white;
 
-  &_container{
+  @media (max-width: $mobile) {
+    height: $header-height-tablet;
+  }
+
+  &_container {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     height: $header-height;
     border-bottom: 1px solid $color-elements;
+
+    @media (max-width: $mobile) {
+      height: $header-height-tablet;
+    }
   }
 
   &__nav {
@@ -33,7 +41,7 @@
     height: 100%;
 
     @media (max-width: $mobile) {
-        display: none;
-      }
+      display: none;
+    }
   }
 }

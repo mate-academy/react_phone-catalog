@@ -22,6 +22,6 @@
   color: $color-white;
 
   @media (max-width: $mobile) {
-    right: 43%;
+    display: none;
   }
 }
