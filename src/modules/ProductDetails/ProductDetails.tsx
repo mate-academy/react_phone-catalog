@@ -1,7 +1,7 @@
 import styles from './ProductDetails.module.scss';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../context/DataContext';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Accessory, Phone, Tablet } from '../../types/ProductDetails';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import classNames from 'classnames';
@@ -11,12 +11,28 @@ type Category = 'phones' | 'tablets' | 'accessories';
 type DetailedProduct = Phone | Tablet | Accessory;
 
 export const ProductDetails = () => {
-  const { favorites, setFavorites, cart, setCart } = useContext(DataContext);
+  const {
+    favorites,
+    setFavorites,
+    cart,
+    setCart,
+    products,
+    phones,
+    tablets,
+    accessories,
+  } = useContext(DataContext);
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [mainImage, setMainImage] = useState<string>('');
 
-  const { products, phones, tablets, accessories } = useContext(DataContext);
-  const product = products.find(p => p.itemId === id);
   let selectedProduct: DetailedProduct | null = null;
+  const product = products.find(p => p.itemId === id);
+
+  useEffect(() => {
+    if (selectedProduct) {
+      setMainImage(selectedProduct.images[0]);
+    }
+  }, [selectedProduct, product]);
 
   if (product) {
     switch (product.category as Category) {
@@ -82,6 +98,52 @@ export const ProductDetails = () => {
     description,
   } = selectedProduct;
 
+  const selectedCategoryArr =
+    selectedProduct.category === 'phones'
+      ? phones
+      : selectedProduct.category === 'tablets'
+        ? tablets
+        : accessories;
+
+  const handleChangeCapacity = (selectedCapacity: string) => {
+    const variant = selectedCategoryArr.find(
+      p =>
+        p.capacity === selectedCapacity &&
+        p.color === selectedProduct.color &&
+        p.namespaceId === selectedProduct.namespaceId,
+    );
+
+    if (variant) {
+      navigate(`/${variant.category}/${variant.id}`);
+    }
+  };
+
+  const handleChangeColor = (selectedColor: string) => {
+    const variant = selectedCategoryArr.find(
+      p =>
+        p.capacity === selectedProduct.capacity &&
+        p.color === selectedColor &&
+        p.namespaceId === selectedProduct.namespaceId,
+    );
+
+    if (variant) {
+      navigate(`/${variant.category}/${variant.id}`);
+    }
+  };
+
+  const getVisualColor = (visualColor: string) => {
+    switch (visualColor) {
+      case 'midnight':
+        return '#4C4C4C';
+      case 'rosegold':
+        return 'rosybrown';
+      case 'spacegray':
+        return '#3b3e4a';
+      default:
+        return visualColor;
+    }
+  };
+
   return (
     <div className={styles.productDetailsPage}>
       <div className="container">
@@ -107,6 +169,9 @@ export const ProductDetails = () => {
           <div className={styles.productDetails__content}>
             {/* Зображення */}
             <div className={styles.productDetails__gallery}>
+              <div className={styles.productDetails__mainImage}>
+                <img src={`/${mainImage}`} alt="main" />
+              </div>
               <div className={styles.productDetails__galleryList}>
                 {/* Превʼю */}
                 {images.map((image: string) => (
@@ -115,11 +180,9 @@ export const ProductDetails = () => {
                     src={`/${image}`}
                     alt="thumb"
                     className={`${styles.productDetails__thumbnail} ${styles.productDetails__thumbnail_selected}`}
+                    onClick={() => setMainImage(image)}
                   />
                 ))}
-              </div>
-              <div className={styles.productDetails__mainImage}>
-                <img src={`/${images[0]}`} alt="main" />
               </div>
             </div>
 
@@ -129,10 +192,24 @@ export const ProductDetails = () => {
                 {/* Колір */}
                 <div className={styles.colors}>
                   <span>Available colors</span>
+                  {/* <span className={styles.id}>ID: 802390</span> */}
                   <div className={styles.colorDots}>
                     {/* кола з кольорами */}
+                    {selectedProduct.colorsAvailable.map((color: string) => (
+                      <div
+                        key={color}
+                        className={classNames(styles.colorDots__wrapper, {
+                          [styles.active]: color === selectedProduct.color,
+                        })}
+                        onClick={() => handleChangeColor(color)}
+                      >
+                        <div
+                          className={styles.colorDots__dot}
+                          style={{ backgroundColor: getVisualColor(color) }}
+                        ></div>
+                      </div>
+                    ))}
                   </div>
-                  <span className={styles.id}>ID: 802390</span>
                 </div>
 
                 {/* Памʼять */}
@@ -140,7 +217,13 @@ export const ProductDetails = () => {
                   <span>Select capacity</span>
                   <div className={styles.capacityOptions}>
                     {capacityAvailable.map((item: string) => (
-                      <button key={item}>{item}</button>
+                      <button
+                        key={item}
+                        onClick={() => handleChangeCapacity(item)}
+                        className={item === capacity ? styles.active : ''}
+                      >
+                        {item}
+                      </button>
                     ))}
                   </div>
                 </div>
