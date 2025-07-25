@@ -1,6 +1,5 @@
 @import './utils/index';
-
-@import './layout/container.scss';
+@import './layout/container';
 
 .App {
   padding-top: 64px; // todo should be variable related to header

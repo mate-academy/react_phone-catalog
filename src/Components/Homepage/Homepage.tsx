@@ -10,7 +10,7 @@ export const Homepage = () => {
       <div className="container">
         <h1 className="home-page__title">
           {/* Welcome to Nice Gadgets store! */}
-          Welcome to Nice Gadgets store!
+          Product Catalog
         </h1>
 
         <Banner />
