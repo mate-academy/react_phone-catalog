@@ -1,0 +1,29 @@
+@use '../../../styles/utils/typography' as *;
+@use '../../../styles/utils/colors' as *;
+
+.price {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+
+  &__new {
+    @include h2-mobile;
+
+    &--detail {
+      font-size: 32px;
+    }
+
+    &--old {
+      text-decoration: line-through;
+      color: $color-link-navigation;
+
+      @include price-old;
+
+      &-detail {
+        font-weight: 500;
+      }
+    }
+  }
+}

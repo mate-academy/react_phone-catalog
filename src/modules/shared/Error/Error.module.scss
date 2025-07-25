@@ -1,0 +1,28 @@
+@use '../../../styles/utils/colors' as *;
+@use '../../../styles/utils/typography' as *;
+
+.error {
+  padding: 32px;
+  text-align: center;
+  background-color: $color-error;
+  border: 1px solid $color-error-border;
+  border-radius: 8px;
+  margin-top: 32px;
+
+  &__message {
+    color: $color-error-message;
+    margin-bottom: 16px;
+
+    @include h4-desktop;
+  }
+
+  &__retryButton {
+    background-color: $color-error-message;
+    color: $color-white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+}

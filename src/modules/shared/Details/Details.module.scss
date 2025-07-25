@@ -1,0 +1,26 @@
+@use '../../../styles/utils/typography' as *;
+@use '../../../styles/utils/colors' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding-bottom: 8px;
+
+  &--margin {
+    margin-top: 32px;
+  }
+}
+
+.productDescription {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include small-text;
+
+  &__label{
+    color: $color-link-navigation;
+  }
+}
