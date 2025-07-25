@@ -1,11 +1,13 @@
 import styles from './CartPage.module.scss';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DataContext } from '../../context/DataContext';
 import { CartItem } from './CartItem';
 import { useNavigate } from 'react-router-dom';
 import arrowRight from '../../assets/icons/arrow-right.svg';
+import { CartModal } from './CartModal';
 
 export const CartPage = () => {
+  const [showModal, setShowModal] = useState(false);
   const { cart } = useContext(DataContext);
   const navigate = useNavigate();
 
@@ -44,12 +46,16 @@ export const CartPage = () => {
               </p>
             </div>
             <div className={styles.cartTotal__divider}></div>
-            <button className={styles.cartTotal__checkout} onClick={() => {}}>
+            <button
+              className={styles.cartTotal__checkout}
+              onClick={() => setShowModal(true)}
+            >
               Checkout
             </button>
           </div>
         </div>
       </div>
+      {showModal && <CartModal onClick={setShowModal} />}
     </div>
   );
 };
