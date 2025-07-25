@@ -56,7 +56,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsLoading(true);
     setError(null);
 
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => res.json())
       .then(data => {
         setProducts(data);
@@ -67,7 +67,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
         setIsLoading(false);
       });
 
-    fetch('/api/phones.json')
+    fetch('api/phones.json')
       .then(res => res.json())
       .then(data => {
         setPhones(data);
@@ -78,7 +78,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
         setIsLoading(false);
       });
 
-    fetch('/api/tablets.json')
+    fetch('api/tablets.json')
       .then(res => res.json())
       .then(data => {
         setTablets(data);
@@ -89,7 +89,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
         setIsLoading(false);
       });
 
-    fetch('/api/accessories.json')
+    fetch('api/accessories.json')
       .then(res => res.json())
       .then(data => {
         setAccessories(data);
