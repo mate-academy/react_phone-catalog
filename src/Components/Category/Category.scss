@@ -42,6 +42,7 @@
           height: 187px;
           width: 187px;
         }
+
         @media (max-width: $mobile) {
           height: 288px;
           width: 100%;
@@ -67,6 +68,7 @@
 
     &--count {
       @include body-text;
+
       color: $color-secondary;
       margin: 0;
     }
