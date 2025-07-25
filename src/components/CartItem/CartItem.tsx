@@ -10,16 +10,20 @@ type Props = {
 };
 
 export const CartItem = ({ product, counter }: Props) => {
-  const { cart, setCart } = useContext(CartandFavContext);
+  const { setCart } = useContext(CartandFavContext);
 
   const handleDelete = () => {
-    setCart(prevCart =>
-      prevCart.filter(item => item.itemId !== product.itemId),
-    );
+    setCart(prevCart => prevCart.filter(item => item.id !== product.itemId));
   };
 
   const handlePlusProduct = () => {
-    setCart(prevCart => [...prevCart, product]);
+    setCart(prevCart =>
+      prevCart.map(item =>
+        item.id === product.itemId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item,
+      ),
+    );
   };
 
   const handleMinusProduct = () => {
@@ -27,17 +31,13 @@ export const CartItem = ({ product, counter }: Props) => {
       return;
     }
 
-    const indexToRemove = cart.findIndex(
-      item => item.itemId === product.itemId,
+    setCart(prevCart =>
+      prevCart.map(item =>
+        item.id === product.itemId
+          ? { ...item, quantity: item.quantity - 1 }
+          : item,
+      ),
     );
-
-    setCart(prevCart => {
-      const newCart = [...prevCart];
-
-      newCart.splice(indexToRemove, 1);
-
-      return newCart;
-    });
   };
 
   return (

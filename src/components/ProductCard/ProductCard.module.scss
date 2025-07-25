@@ -4,7 +4,6 @@
   background-color: $color-surface1;
   color: $color-white;
   box-sizing: border-box;
-  cursor: pointer;
 
   display: flex;
   flex-direction: column;
@@ -33,6 +32,7 @@
   height: 196px;
   object-fit: contain;
   transition: transform 0.3s ease;
+  cursor: pointer;
 
   @media (max-width: $size-mobile) {
     height: 130px;
@@ -50,6 +50,11 @@
   letter-spacing: 0%;
   padding-top: 16px;
   margin: 0;
+  cursor: pointer;
+
+  &:hover {
+    font-family: $font-semibold;
+  }
 }
 
 .cardPrice {

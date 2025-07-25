@@ -6,12 +6,15 @@ import { CartandFavContext } from '../CartandFavProvider';
 import { EmptyPage } from '../EmptyPage';
 
 export const Cart = () => {
-  const { cart: products, setCart } = useContext(CartandFavContext);
-  const itemsCounter = products.length;
-  const totalPrice = products.reduce((acc, product) => acc + product.price, 0);
-  const productsWithoutDuplicates = products.filter(
-    (product, index, arr) => index === arr.findIndex(p => p.id === product.id),
+  const { cart, setCart } = useContext(CartandFavContext);
+  const itemsCounter = cart
+    .map(item => item.quantity)
+    .reduce((acc, quant) => acc + quant, 0);
+  const totalPrice = cart.reduce(
+    (acc, item) => acc + item.quantity * item.product.price,
+    0,
   );
+
   const navigate = useNavigate();
   const [openedCheckout, setOpenedCheckout] = useState(false);
 
@@ -63,16 +66,12 @@ export const Cart = () => {
             </div>
           )}
           <div className={styles.pageItems_list}>
-            {productsWithoutDuplicates.map(product => {
-              const counter = products.filter(
-                item => item.itemId === product.itemId,
-              ).length;
-
+            {cart.map(item => {
               return (
                 <CartItem
-                  key={product.id}
-                  product={product}
-                  counter={counter}
+                  key={item.id}
+                  product={item.product}
+                  counter={item.quantity}
                 />
               );
             })}

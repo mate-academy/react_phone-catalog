@@ -35,10 +35,16 @@
 .deleteButton {
   background-color: $color-surface1;
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 16px;
   height: 16px;
   border: none;
   cursor: pointer;
+
+  &:hover {
+    background-color: $color-icons;
+  }
 }
 
 .productPhoto {

@@ -1,11 +1,12 @@
 import { createContext, SetStateAction, Dispatch } from 'react';
 import { Product } from '../../types/Product';
 import { useLocalStorage } from '../../utils/useLocalstorage';
+import { CartItem } from '../../types/CartItem';
 
 type CartandFavContextType = {
-  cart: Product[];
+  cart: CartItem[];
   fav: Product[];
-  setCart: Dispatch<SetStateAction<Product[]>>;
+  setCart: Dispatch<SetStateAction<CartItem[]>>;
   setFav: Dispatch<SetStateAction<Product[]>>;
 };
 
@@ -21,7 +22,7 @@ export const CartandFavProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
+  const [cart, setCart] = useLocalStorage<CartItem[]>('cart', []);
   const [fav, setFav] = useLocalStorage<Product[]>('fav', []);
 
   return (

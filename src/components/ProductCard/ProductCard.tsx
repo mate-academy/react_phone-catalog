@@ -12,11 +12,17 @@ type Props = {
 export const ProductCard = ({ product }: Props) => {
   const navigate = useNavigate();
   const { cart, fav, setCart, setFav } = useContext(CartandFavContext);
-  const isInCart = cart.some(item => item.itemId === product.itemId);
+  const isInCart = cart.some(item => item.id === product.itemId);
   const isInFav = fav.some(item => item.itemId === product.itemId);
 
   const handleAddToCart = () => {
-    setCart(prevCart => [...prevCart, product]);
+    const newCartItem = {
+      id: product.itemId,
+      quantity: 1,
+      product: product,
+    };
+
+    setCart(prevCart => [...prevCart, newCartItem]);
   };
 
   const handleAddToFav = () => {
@@ -28,15 +34,20 @@ export const ProductCard = ({ product }: Props) => {
   };
 
   return (
-    <div
-      onClick={() => navigate(`/${product.category}/product/${product.itemId}`)}
-      className={styles.card}
-    >
+    <div className={styles.card}>
       <img
         src={`..\\..\\..\\public\\${product.image}`}
         className={styles.cardImage}
+        onClick={() =>
+          navigate(`/${product.category}/product/${product.itemId}`)
+        }
       ></img>
-      <p className={styles.cardTitle}>{`${product.name} (iMT9G2FS/A)`}</p>
+      <p
+        className={styles.cardTitle}
+        onClick={() =>
+          navigate(`/${product.category}/product/${product.itemId}`)
+        }
+      >{`${product.name} (iMT9G2FS/A)`}</p>
       <div className={styles.cardPrice}>
         <span>{`$${product.price}`}</span>
         <span className={styles.cardPrice_full}>{`$${product.fullPrice}`}</span>
@@ -61,14 +72,7 @@ export const ProductCard = ({ product }: Props) => {
           type="button"
           className={styles.cardAddButton}
           disabled={isInCart}
-          onClick={e => {
-            e.stopPropagation();
-            if (isInCart) {
-              return;
-            }
-
-            handleAddToCart();
-          }}
+          onClick={() => handleAddToCart()}
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
@@ -77,10 +81,7 @@ export const ProductCard = ({ product }: Props) => {
           className={classNames(styles.cardFavButton, {
             [styles.addedToFav]: isInFav,
           })}
-          onClick={e => {
-            e.stopPropagation();
-            handleAddToFav();
-          }}
+          onClick={() => handleAddToFav()}
         >
           <img
             src={

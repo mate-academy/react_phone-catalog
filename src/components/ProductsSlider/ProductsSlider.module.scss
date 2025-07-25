@@ -42,3 +42,35 @@
   height: 4px;
   background-color: $color-elements;
 }
+
+.customArrow {
+  height: 100%;
+  width: 32px;
+
+  background-color: $color-surface2;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 2;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+
+  @media (max-width: $size-mobile) {
+    display: none;
+  }
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}

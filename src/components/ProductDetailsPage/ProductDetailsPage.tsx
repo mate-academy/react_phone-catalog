@@ -54,7 +54,7 @@ export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const { cart, fav, setCart, setFav } = useContext(CartandFavContext);
 
-  const isInCart = cart.some(item => item.itemId === productId);
+  const isInCart = cart.some(item => item.id === productId);
   const isInFav = fav.some(item => item.itemId === productId);
   const [randomProducts, setRandomProducts] = useState<Product[]>([]);
   /* eslint-disable */
@@ -185,11 +185,17 @@ export const ProductDetailsPage = () => {
   };
 
   const handleAddToCart = () => {
-    if (!product || isInCart) {
+    if (!product) {
       return;
     }
 
-    setCart(prevCart => [...prevCart, product]);
+    const newCartItem = {
+      id: product.itemId,
+      quantity: 1,
+      product: product,
+    };
+
+    setCart(prevCart => [...prevCart, newCartItem]);
   };
 
   const handleAddToFav = () => {

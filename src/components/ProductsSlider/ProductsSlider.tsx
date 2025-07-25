@@ -1,8 +1,9 @@
 import Slider from 'react-slick';
+import { CustomArrowProps } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './ProductsSlider.module.scss';
-import { CustomArrow } from '../CustomArrow';
+import classNames from 'classnames';
 
 const images = [
   {
@@ -24,15 +25,30 @@ type ImageData = {
   img: string;
 };
 
-type Props = {
+type SlideProps = {
   image: ImageData;
 };
 
-const CustomSlide = ({ image }: Props) => {
+const CustomSlide = ({ image }: SlideProps) => {
   const { id, img } = image;
 
   return (
     <img className={styles.customSlide} src={img} alt={`slider-img-${id}`} />
+  );
+};
+
+type ArrowProps = {
+  direction: 'right' | 'left';
+} & CustomArrowProps;
+
+const CustomArrow = ({ onClick, direction }: ArrowProps) => {
+  return (
+    <button
+      className={classNames(styles.customArrow, styles[direction])}
+      onClick={onClick}
+    >
+      <img src={`img/icons/arrow-${direction}.svg`} />
+    </button>
   );
 };
 
@@ -46,12 +62,8 @@ export const ProductSlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     pauseOnDotsHover: true,
-    nextArrow: (
-      <CustomArrow direction="right" arrowClassName="welcomeSliderArrow" />
-    ),
-    prevArrow: (
-      <CustomArrow direction="left" arrowClassName="welcomeSliderArrow" />
-    ),
+    nextArrow: <CustomArrow direction="right" />,
+    prevArrow: <CustomArrow direction="left" />,
 
     customPaging: () => <div className={styles.customDot}></div>,
   };
