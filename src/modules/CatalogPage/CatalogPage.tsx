@@ -35,7 +35,7 @@ export const CatalogPage = () => {
 
   if (error) {
     return (
-      <div>
+      <div className="container">
         <p>Something went wrong</p>
         <button onClick={() => window.location.reload()}>Reload</button>
       </div>
