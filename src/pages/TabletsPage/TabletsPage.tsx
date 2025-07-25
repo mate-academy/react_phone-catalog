@@ -58,12 +58,6 @@ export const TabletsPage: React.FC = () => {
       });
   }, [dispatch, searchParams]);
 
-  // if (!itemsOnPage.length && !isloading) {
-  //   return (
-  //     <NotFoundProductPage title={t('tabletsPage.notFoundProduct.tablets')} />
-  //   );
-  // }
-
   return (
     <div className="tabletsPage" id="tablets">
       <BreadCrumbs />

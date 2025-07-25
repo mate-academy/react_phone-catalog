@@ -3,6 +3,11 @@ import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { useAppSelector } from '../../customHooks/customHooks';
+import logo from '../../images/logo/headerLogo.png';
+import favoritesImg from '../../images/logo/favorites.svg';
+import cartImg from '../../images/logo/shopingBagLogo.png';
+import burgerMenu from '../../images/logo/burgerMenuLogo.png';
+import closeImg from '../../images/logo/closeIcon.png';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,11 +31,7 @@ export const Header = () => {
           <div className="header__top-bar_left-side">
             <div className="header__logo">
               <Link to="/">
-                <img
-                  src="src\images\logo\headerLogo.png"
-                  alt=""
-                  className="header__logo_img"
-                />
+                <img src={logo} alt="" className="header__logo_img" />
               </Link>
             </div>
 
@@ -71,7 +72,7 @@ export const Header = () => {
                 }
               >
                 <img
-                  src="src\images\logo\favorites.svg"
+                  src={favoritesImg}
                   alt="Favorites"
                   className="header__icons__favorites__img"
                 />
@@ -91,7 +92,7 @@ export const Header = () => {
                 }
               >
                 <img
-                  src="src\images\logo\shopingBagLogo.png"
+                  src={cartImg}
                   alt="Cart"
                   className="header__icons__cart__img"
                 />
@@ -110,7 +111,7 @@ export const Header = () => {
             onClick={() => setIsOpen(true)}
           >
             <img
-              src="src\images\logo\burgerMenuLogo.png"
+              src={burgerMenu}
               alt="Menu"
               className="header__burger_menu_img"
             />
@@ -123,11 +124,7 @@ export const Header = () => {
           <div className="burger_menu__top">
             <div className="burger_menu__logo">
               <a href="#/">
-                <img
-                  src="src\images\logo\headerLogo.png"
-                  alt="Logo"
-                  className="burger_menu__logo_img"
-                />
+                <img src={logo} alt="Logo" className="burger_menu__logo_img" />
               </a>
             </div>
             <a
@@ -136,7 +133,7 @@ export const Header = () => {
               onClick={() => setIsOpen(false)}
             >
               <img
-                src="src\images\logo\closeIcon.png"
+                src={closeImg}
                 alt="Close"
                 className="burger_menu__icon_img"
               />
@@ -193,7 +190,7 @@ export const Header = () => {
               onClick={() => setIsOpen(false)}
             >
               <img
-                src="src\images\logo\favorites.svg"
+                src={favoritesImg}
                 alt="Favorites"
                 className="burger_menu__bottom_icon__img"
               />
@@ -210,7 +207,7 @@ export const Header = () => {
               onClick={() => setIsOpen(false)}
             >
               <img
-                src="src\images\logo\shopingBagLogo.png"
+                src={cartImg}
                 alt="Cart"
                 className="burger_menu__bottom_icon__img"
               />

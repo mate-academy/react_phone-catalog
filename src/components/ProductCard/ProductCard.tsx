@@ -9,7 +9,8 @@ import { addToCart, removeFromCart } from '../../expansions/cart';
 import classNames from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
+import favoritesImg from '../../images/logo/favorites.svg';
+import addedToFavorites from '../../images/logo/addedInFavorites.svg';
 
 type Props = {
   product: Product;
@@ -104,11 +105,7 @@ export const ProductCard: React.FC<Props> = React.memo(
               onClick={() => handleProductInFavorites(product)}
             >
               <img
-                src={
-                  isProductInFavorites
-                    ? 'src/images/logo/addedInFavorites.svg'
-                    : 'src/images/logo/favorites.svg'
-                }
+                src={isProductInFavorites ? addedToFavorites : favoritesImg}
                 alt="Favorites"
                 className="productCard__buttons_favorites_img"
               />

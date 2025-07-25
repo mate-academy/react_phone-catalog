@@ -3,6 +3,7 @@ import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { PorductsList } from '../../components/ProductsList';
 import { useAppSelector } from '../../customHooks/customHooks';
 import { useEffect } from 'react';
+import emptyFavorites from '../../images/product-not-found.png';
 
 export const FavoritesPage: React.FC = () => {
   const { favorites } = useAppSelector(state => state.favorites);
@@ -26,7 +27,7 @@ export const FavoritesPage: React.FC = () => {
             Add some products in your Favorites
           </p>
           <img
-            src="src\images\product-not-found.png"
+            src={emptyFavorites}
             alt="Emptyfavourites"
             className="favorites__empty_img"
           />

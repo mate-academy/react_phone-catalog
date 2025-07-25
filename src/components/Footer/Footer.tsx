@@ -1,4 +1,6 @@
 import './Footer.scss';
+import logo from '../../images/logo/headerLogo.png';
+import arrowUp from '../../images/logo/arrowUp.svg';
 
 export const Footer: React.FC = () => {
   return (
@@ -7,11 +9,7 @@ export const Footer: React.FC = () => {
         <div className="footer__content">
           <div className="footer__logo">
             <a href="/" className="footer__logo_link">
-              <img
-                className="footer__logo_img"
-                src="src\images\logo\headerLogo.png"
-                alt="Logo"
-              />
+              <img className="footer__logo_img" src={logo} alt="Logo" />
             </a>
           </div>
 
@@ -37,11 +35,7 @@ export const Footer: React.FC = () => {
               className="footer__button_link"
               onClick={() => window.scrollTo({ top: 0 })}
             >
-              <img
-                src="src/images/logo/arrowUp.svg"
-                alt="ArrowUp"
-                className="footer__button_img"
-              />
+              <img src={arrowUp} alt="ArrowUp" className="footer__button_img" />
             </button>
           </div>
         </div>

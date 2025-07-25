@@ -4,6 +4,10 @@ import { useAppDispatch } from '../../customHooks/customHooks';
 import { decrement, increment, removeFromCart } from '../../expansions/cart';
 import React, { useState } from 'react';
 import classNames from 'classnames';
+import closeGrey from '../../images/logo/closeGray.svg';
+import minusLight from '../../images/logo/minusLight.svg';
+import minusDisabled from '../../images/logo/minusDisabled.svg';
+import plus from '../../images/logo/plus.svg';
 
 type Props = {
   product: ProductInCart;
@@ -36,7 +40,7 @@ export const CartProduct: React.FC<Props> = React.memo(({ product }) => {
           className="cartProduct__image_section_remove"
           onClick={() => dispatch(removeFromCart(product.id))}
         >
-          <img src="src\images\logo\closeGray.svg" alt="Remove" />
+          <img src={closeGrey} alt="Remove" />
         </div>
 
         <div className="cartProduct__image_section__product_image">
@@ -59,11 +63,7 @@ export const CartProduct: React.FC<Props> = React.memo(({ product }) => {
             onClick={() => handleDelete(product.id)}
           >
             <img
-              src={
-                product.quantity === 1
-                  ? 'src/images/logo/minusDisabled.svg'
-                  : 'src/images/logo/minusLight.svg'
-              }
+              src={product.quantity === 1 ? minusDisabled : minusLight}
               alt="Minus"
               className="count__button__minus_img"
             />
@@ -72,11 +72,7 @@ export const CartProduct: React.FC<Props> = React.memo(({ product }) => {
           <div className="count__quantity">{product.quantity}</div>
 
           <div className="count__button" onClick={() => handleAdd(product.id)}>
-            <img
-              src="src\images\logo\plus.svg"
-              alt="Plus"
-              className="count__button_plus"
-            />
+            <img src={plus} alt="Plus" className="count__button_plus" />
           </div>
         </div>
         <div className="cartProduct__info_section__price">{`$${price}`}</div>

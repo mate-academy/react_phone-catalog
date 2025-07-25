@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import './DropdownPerPage.scss';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import arrowUp from '../../images/logo/arrowUp.svg';
 
 export const DropdownPerPage = () => {
   const options = ['4', '8', '16', 'All'];
@@ -72,7 +73,7 @@ export const DropdownPerPage = () => {
           {isPerPage ? searchParams.get('perPage') : options[3]}
         </p>
         <img
-          src="src\images\logo\arrowUp.svg"
+          src={arrowUp}
           alt="Arrow"
           className={classNames('dropdownPerPage__dropdown_img', {
             'dropdownPerPage__dropdown_img-active': isActive,

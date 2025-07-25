@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../customHooks/customHooks';
 import { CartProduct } from '../../components/CartProduct';
 import { Modal } from '../../components/Modal';
+import arrowLeft from '../../images/logo/arrowLeft.svg';
+import emptyCart from '../../images/cart-is-empty.png';
 
 export const CartPage: React.FC = () => {
   const { productsInCart } = useAppSelector(state => state.cart);
@@ -37,11 +39,7 @@ export const CartPage: React.FC = () => {
   return (
     <section className="cart">
       <button className="cart__back_button" onClick={() => navigate(-1)}>
-        <img
-          src="src\images\logo\arrowLeft.svg"
-          alt="Back"
-          className="cart__back_button__img"
-        />
+        <img src={arrowLeft} alt="Back" className="cart__back_button__img" />
         <p className="cart__back_button__text">Back</p>
       </button>
       <h1 className="cart__title">Cart</h1>
@@ -82,11 +80,7 @@ export const CartPage: React.FC = () => {
         ) : (
           <div className="cart__empty">
             <p className="cart__empty_title">Your Cart is empty</p>
-            <img
-              src="src/images/cart-is-empty.png"
-              alt="EmptyCart"
-              className="cart__empty_img"
-            />
+            <img src={emptyCart} alt="EmptyCart" className="cart__empty_img" />
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
 import './NotFoundPage.scss';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import backArrow from '../../images/logo/sliderArrow.svg';
 
 type Props = {
   title: string;
@@ -17,7 +18,7 @@ export const NotFoundPage: React.FC<Props> = ({ title, image }) => {
         onClick={() => navigate(-1)}
       >
         <img
-          src="src\images\logo\sliderArrow.svg"
+          src={backArrow}
           alt="Back-button"
           className="notFoundPage__back_button__img"
         />

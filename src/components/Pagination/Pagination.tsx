@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getNumbers } from '../../utils/getNumbers';
 import classNames from 'classnames';
 import { useEffect, useMemo, useState } from 'react';
+import sliderArrow from '../../images/logo/sliderArrow.svg';
 
 type Props = {
   itemsCount: number;
@@ -100,7 +101,7 @@ export const Pagination: React.FC<Props> = ({ itemsCount }) => {
         disabled={!canComeBack}
       >
         <img
-          src="src\images\logo\sliderArrow.svg"
+          src={sliderArrow}
           alt="ArrowLeft"
           className="pagination__button_img"
         />
@@ -135,7 +136,7 @@ export const Pagination: React.FC<Props> = ({ itemsCount }) => {
         disabled={!canContinue}
       >
         <img
-          src="src\images\logo\sliderArrow.svg"
+          src={sliderArrow}
           alt="ArrowRight"
           className="pagination__button_img"
         />

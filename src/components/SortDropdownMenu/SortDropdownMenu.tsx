@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import './SortDropdownMenu.scss';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import arrowUp from '../../images/logo/arrowUp.svg';
 
 export const SortDropdownMenu = () => {
   const options = ['Newest', 'Alphabetically', 'Cheapest'];
@@ -67,7 +68,7 @@ export const SortDropdownMenu = () => {
           {isSort ? searchParams.get('sort') : 'Select an option'}
         </p>
         <img
-          src="src\images\logo\arrowUp.svg"
+          src={arrowUp}
           alt="Arrow"
           className={classNames('sortDropdownMenu__dropdown_img', {
             'sortDropdownMenu__dropdown_img-active': isActive,

@@ -4,6 +4,8 @@ import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import classNames from 'classnames';
 import { Skeleton } from '../Skeleton';
+import arrowLeft from '../../images/logo/arrowLeft.svg';
+import sliderArrow from '../../images/logo/sliderArrow.svg';
 
 type Props = {
   products: Product[];
@@ -59,11 +61,7 @@ export const Slider: React.FC<Props> = ({ products, title, isLoading }) => {
               onClick={handlePrevClick}
             >
               <img
-                src={
-                  itemIndex === firstItemIndex
-                    ? 'src/images/logo/arrowLeft.svg'
-                    : 'src/images/logo/sliderArrow.svg'
-                }
+                src={itemIndex === firstItemIndex ? arrowLeft : sliderArrow}
                 alt="Previous"
               />
             </div>
@@ -74,11 +72,7 @@ export const Slider: React.FC<Props> = ({ products, title, isLoading }) => {
               onClick={handleNextClick}
             >
               <img
-                src={
-                  itemIndex === lastItemIndex - 3
-                    ? 'src/images/logo/arrowLeft.svg'
-                    : 'src/images/logo/sliderArrow.svg'
-                }
+                src={itemIndex === lastItemIndex - 3 ? arrowLeft : sliderArrow}
                 alt="Next"
               />
             </div>

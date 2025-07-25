@@ -58,12 +58,6 @@ export const AccessoriesPage: React.FC = () => {
       });
   }, [dispatch, searchParams]);
 
-  // if (!itemsOnPage.length && !isloading) {
-  //   return (
-  //     <NotFoundProductPage title={t('tabletsPage.notFoundProduct.tablets')} />
-  //   );
-  // }
-
   return (
     <div className="accessoriesPage" id="accessories">
       <BreadCrumbs />

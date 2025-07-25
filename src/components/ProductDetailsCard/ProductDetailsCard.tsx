@@ -12,6 +12,8 @@ import {
 } from '../../expansions/favorites';
 import classNames from 'classnames';
 import { getColor } from '../../utils/getColor';
+import favoritesImg from '../../images/logo/favorites.svg';
+import addedToFavorites from '../../images/logo/addedInFavorites.svg';
 
 type Props = {
   products: Product[];
@@ -96,10 +98,6 @@ export const ProductDetailsCard: React.FC<Props> = React.memo(
       setSelectedImage(bigImage);
     }, [currentProductsDetails]);
 
-    // if (!currentProductsDetails?.id) {
-    //   return <NotFoundProductPage title="Product was not found" />;
-    // }
-
     return (
       <div className="productDetailsCard">
         <div className="productDetailsCard__content">
@@ -151,7 +149,6 @@ export const ProductDetailsCard: React.FC<Props> = React.memo(
                     {colors.map(colorAvailable => {
                       return (
                         <div
-                          // to={`/${currentProductsDetails?.category}/:${currentProductsDetails?.namespaceId}-${normalizedCapacity}-${color}`}
                           className={classNames('border', {
                             'border-active': color === colorAvailable,
                           })}
@@ -232,11 +229,7 @@ export const ProductDetailsCard: React.FC<Props> = React.memo(
                   onClick={() => handleFavoritesInDetails(id)}
                 >
                   <img
-                    src={
-                      isProductInFavorites
-                        ? 'src/images/logo/addedInFavorites.svg'
-                        : 'src/images/logo/favorites.svg'
-                    }
+                    src={isProductInFavorites ? addedToFavorites : favoritesImg}
                     alt="Favorites"
                     className="productDetailsCard__buttons_favorites_img"
                   />

@@ -11,6 +11,8 @@ import { Loader } from '../../components/Loader';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { Slider } from '../../components/Slider';
 import { NotFoundPage } from '../NotFoundPage';
+import productNotFoundImg from '../../images/product-not-found.png';
+import sliderArrow from '../../images/logo/sliderArrow.svg';
 
 export const ProductDetailsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -72,7 +74,7 @@ export const ProductDetailsPage: React.FC = () => {
     return (
       <NotFoundPage
         title={'Ooops...Product not found!'}
-        image="src\images\product-not-found.png"
+        image={productNotFoundImg}
       />
     );
   }
@@ -86,7 +88,7 @@ export const ProductDetailsPage: React.FC = () => {
         onClick={() => navigate(-1)}
       >
         <img
-          src="src\images\logo\sliderArrow.svg"
+          src={sliderArrow}
           alt="Back-button"
           className="productDetailsPage__back_button__img"
         />

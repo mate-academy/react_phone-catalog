@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { ProductDetails } from '../../types/ProductDetails';
 import React from 'react';
 import home from '../../images/logo/home.svg';
+import arrow from '../../images/logo/arrowRight.svg';
 
 type Props = {
   currentProduct?: ProductDetails;
@@ -28,11 +29,7 @@ export const BreadCrumbs: React.FC<Props> = ({ currentProduct }) => {
         </div>
 
         <span className="breadCrumbs__arrow">
-          <img
-            src="src\images\logo\arrowRight.svg"
-            alt="arrow"
-            className="breadCrumbs__arrow_img"
-          />
+          <img src={arrow} alt="arrow" className="breadCrumbs__arrow_img" />
         </span>
 
         {!productName ? (
@@ -51,11 +48,7 @@ export const BreadCrumbs: React.FC<Props> = ({ currentProduct }) => {
             </Link>
 
             <span className="breadCrumbs__arrow">
-              <img
-                src="src\images\logo\arrowRight.svg"
-                alt="Arrow"
-                className="breadCrumbs__arrow_img"
-              />
+              <img src={arrow} alt="Arrow" className="breadCrumbs__arrow_img" />
             </span>
 
             <p className="breadCrumbs__category_product">{productName}</p>
