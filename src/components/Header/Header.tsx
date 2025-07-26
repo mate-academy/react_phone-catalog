@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import { BurgerMenu } from '../BurgerMenu';
 import classNames from 'classnames';
 import { CartandFavContext } from '../CartandFavProvider';
+import Logo from '../../../public/img/Logo.svg';
 
 const navLinks = [
   { id: 1, title: 'Home', to: '/' },
@@ -21,7 +22,11 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.logoAndNav}>
           <NavLink className={styles.logo} to="/">
-            <img src="/img/Logo.svg" alt="Nice_Gadgets_logo" />
+            <img
+              src={`${import.meta.env.BASE_URL}/img/Logo.svg`}
+              alt="Nice_Gadgets_logo"
+            />
+            <img src={Logo} alt="Nice_Gadgets_logo" />
           </NavLink>
           <nav>
             <ul className={styles.navList}>
