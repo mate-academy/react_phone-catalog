@@ -21,6 +21,8 @@ export const CartItem = ({
 }: CartItemProps) => {
   const { state } = useAppContext();
 
+  const totalPrice = product.product.price * product.quantity;
+
   return (
     <div key={product.id} className={styles.product}>
       <div className={styles.product__item}>
@@ -86,7 +88,7 @@ export const CartItem = ({
             />
           </button>
         </div>
-        <p className={styles.price}>{`$${product.product.price}`}</p>
+        <p className={styles.price}>{`$${totalPrice}`}</p>
       </div>
     </div>
   );

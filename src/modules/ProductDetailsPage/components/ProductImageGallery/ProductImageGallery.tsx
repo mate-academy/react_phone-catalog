@@ -7,10 +7,12 @@ type GalleryProps = {
 };
 export const ProductImageGallery = ({ images, name }: GalleryProps) => {
   const [currentImage, setCurrentImage] = useState(images[0]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleImage = (image: string) => {
+  const handleImage = (image: string, index: number) => {
     if (image !== currentImage) {
       setCurrentImage(image);
+      setActiveIndex(index);
     }
   };
 
@@ -24,11 +26,11 @@ export const ProductImageGallery = ({ images, name }: GalleryProps) => {
         />
       </div>
       <div className={styles.wrapperSmallImg}>
-        {images.map(image => (
+        {images.map((image, index) => (
           <div
-            onClick={() => handleImage(image)}
+            onClick={() => handleImage(image, index)}
             key={image}
-            className={styles.smallImg}
+            className={`${styles.smallImg} ${activeIndex === index ? styles.active : ''}`}
           >
             <img className={styles.smallImg__item} src={image} alt={name} />
           </div>

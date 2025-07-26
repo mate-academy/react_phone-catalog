@@ -76,7 +76,6 @@
 
 .productQuantity {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 13px;
 
@@ -105,11 +104,16 @@
 
   &__value {
     @include body-text;
+    min-width: 23px;
+    text-align: center;
+    flex-shrink: 0;
   }
 }
 
 .price {
   @include h3-desktop;
+  min-width: 90px;
+  text-align: right;
 
   @include for-tablet {
     margin-left: 29px;
