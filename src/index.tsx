@@ -8,7 +8,7 @@ const root = createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <CartandFavProvider>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <App />
     </BrowserRouter>
