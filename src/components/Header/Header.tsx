@@ -26,6 +26,7 @@ export const Header = () => {
               src={`${import.meta.env.BASE_URL}/img/Logo.svg`}
               alt="Nice_Gadgets_logo"
             />
+            TEST
             <img src={Logo} alt="Nice_Gadgets_logo" />
           </NavLink>
           <nav>
