@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -28,17 +28,6 @@ type Props = {
 
 export const SwiperSection: React.FC<Props> = ({ title, phones, showDiscount }) => {
   const id = title.toLowerCase().replace(/\s/g, '-');
-  // const [phones, setPhones] = useState<ProductInfo[]>([]);
-
-  // useEffect(() => {
-  //   fetch('/api/phones.json')
-  //     .then(res => res.json())
-  //     .then((data: ProductInfo[]) => {
-  //       const filtered = data.filter(phone => phone.id.includes('14-pro'));
-  //       setPhones(filtered);
-  //     })
-  //     .catch(err => console.error('Ошибка загрузки телефонов:', err));
-  // }, []);
 
   return (
     <div className="swiper-section-wrapper">

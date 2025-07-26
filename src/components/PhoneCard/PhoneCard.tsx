@@ -41,11 +41,11 @@ export const PhoneCard: React.FC<Props> = ({ product, showDiscount }) => {
       <div className="price-container">
         {showDiscount ? (
           <>
-            <div className="regular-price">{priceRegular}</div>
-            <div className="discount-price">{priceDiscount}</div>
+            <div className="price">{priceDiscount}</div>
+            <div className="price old-price">{priceRegular}</div>
           </>
         ) : (
-          <div className="regular-price">{priceRegular}</div>
+          <div className="price">{priceRegular}</div>
         )}
       </div>
 

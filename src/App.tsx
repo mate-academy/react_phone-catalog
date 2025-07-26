@@ -4,20 +4,46 @@ import './App.scss';
 
 import { BannerSwiper } from './components/BannerSwiper';
 import { Header } from './components/Header';
+import { ShopByCategorySection } from './components/ShopByCategorySection';
 import { SwiperSection } from './components/SwiperSection';
 // import { PhoneCard } from './components/PhoneCard';
 
 import './styles/style.scss';
 
+// type ProductInfo = {
+//   id: string;
+//   name: string;
+//   priceRegular: number;
+//   priceDiscount: number;
+//   capacity: string;
+//   ram: string;
+//   screen: string;
+//   images: string[];
+// };
+
 type ProductInfo = {
-  id: string;
-  name: string;
-  priceRegular: number;
-  priceDiscount: number;
-  capacity: string;
-  ram: string;
-  screen: string;
-  images: string[];
+  id: string;                     // Уникальный ID устройства
+  category: string;               // Категория товара (например, "tablets")
+  namespaceId: string;            // Общий ID модели (без цвета и памяти)
+  name: string;                   // Полное имя устройства
+  capacityAvailable: string[];    // Список доступных объемов памяти
+  capacity: string;               // Текущий объем памяти
+  priceRegular: number;           // Обычная цена
+  priceDiscount: number;          // Цена со скидкой
+  colorsAvailable: string[];      // Список доступных цветов
+  color: string;                  // Текущий цвет
+  images: string[];               // Пути к изображениям
+  description: {
+    title: string;                // Заголовок блока описания
+    text: string[];               // Текстовые абзацы в этом блоке
+  }[];
+  screen: string;                 // Тип экрана
+  resolution: string;             // Разрешение
+  processor: string;              // Процессор
+  ram: string;                    // Оперативная память
+  camera: string;                 // Камера
+  zoom: string;                   // Зум
+  cell: string[];                 // Сотовая связь (если есть)
 };
 
 export const App = () => {
@@ -30,6 +56,7 @@ export const App = () => {
       .then((data: ProductInfo[]) => {
         const newModels = data.filter(phone => phone.id.includes('14-pro'));
         const hotPrices = data.filter(phone => phone.id.includes('13-pro'));
+        // const allPhones = datf.filter(phone => )
 
         setNewPhones(newModels);
         setDiscountedPhones(hotPrices);
@@ -49,9 +76,9 @@ export const App = () => {
           <BannerSwiper />
         </div>
 
-        {/* <BrendNewModels /> */}
-
         <SwiperSection title="Brand New Models" phones={newPhones} />
+
+        <ShopByCategorySection title="Shop By Category"/>
 
         <SwiperSection
           title="Hot Prices"

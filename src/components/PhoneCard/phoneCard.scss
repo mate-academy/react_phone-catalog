@@ -1,11 +1,10 @@
 .phone-card-container {
   display: flex;
+  flex-direction: column;
   width: 212px;
   height: 439px;
-  gap: 8px;
   padding: 32px;
-
-  flex-direction: column;
+  gap: 8px;
 
   box-sizing: border-box;
   border: 1px solid $border-color;
@@ -24,24 +23,25 @@
   .photo-name-container {
     text-decoration: none;
     color: $text-main-color;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    min-height: 0;
 
     .device-photo {
+      flex-grow: 1;
+      flex-shrink: 1;
       display: flex;
       justify-content: center;
-      width: 148px;
-      height: 129px;
-
-      @include onTablet {
-        width: 173px;
-        height: 202px;
-      }
-
-      @include onDesktop {
-        width: 208px;
-        height: 196px;
-      }
+      align-items: center;
+      min-height: 0;
 
       .photo {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: contain;
         transition: transform 0.3s ease;
 
         &:hover {
@@ -50,54 +50,40 @@
       }
     }
 
-    .name {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+    .name-container {
+      flex-shrink: 0;
+      padding-top: 16px;
 
-      height: 58px;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 21px;
-
-      // @include onTablet {
-      //   width: 173px;
-      //   height: 181px;
-      // }
+      .name {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+      }
     }
   }
 
   .price-container {
     display: flex;
     gap: 8px;
+    align-items: center;
 
-    .discount-price {
-      display: flex;
-      align-items: center;
-      font-weight: 600;
+    .price {
+      height: 31px;
+      font-weight: 800;
       font-size: 22px;
-      line-height: 100%;
+    }
+
+    .old-price {
+      font-weight: 600;
       text-decoration: line-through;
       color: $text-not-active-color;
     }
-
-    .regular-price {
-      display: flex;
-      align-items: center;
-      font-weight: 800;
-      font-size: 22px;
-      line-height: 140%;
-      height: 51px;
-    }
   }
-
 
   .info {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
     padding: 16px 0 8px;
-
     gap: 8px;
     border-top: 1px solid $border-color;
 
@@ -112,14 +98,12 @@
       .spec-name {
         font-weight: 700;
         font-size: 12px;
-        line-height: 100%;
         color: $text-not-active-color;
       }
 
       .spec-value {
         font-weight: 700;
         font-size: 12px;
-        line-height: 100%;
         color: $text-main-color;
       }
     }
@@ -133,25 +117,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
       height: 40px;
       width: 100px;
-
       background-color: rgba(33, 108, 255, 1);
       border-radius: 8px;
-
-      // cursor: pointer;
-      // transition: box-shadow 0.3s ease;
-
-      // &:hover {
-      //   box-shadow: 0 3px 10px rgba(23, 32, 49, 0.4);
-      // }
 
       .button-text {
         font-weight: 700;
         font-size: 14px;
         line-height: 21px;
-        color: rgba(255, 255, 255, 1);
+        color: #fff;
       }
     }
 
@@ -161,7 +136,6 @@
       justify-content: center;
       height: 40px;
       width: 40px;
-
       border-radius: 50%;
       border: 1px solid $border-color;
     }

@@ -1,0 +1,62 @@
+.category-block {
+  padding: 0 16px;
+
+  @include onTablet {
+    padding: 0 24px 0 0;
+  }
+
+  @include onDesktop {
+    padding: 0;
+  }
+
+  .section-link-block {
+    display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    .link-container {
+      flex: 1;
+
+      .category-link {
+        display: flex;
+        aspect-ratio: 1 / 1;
+        margin: 24px 0;
+        overflow: hidden;
+        position: relative;
+        border-radius: 8px;
+
+        .category-link-img {
+          position: absolute;
+          width: 100%;
+
+          top: 18%;
+          left: 18%;
+          transition: all 0.3s linear;
+          object-fit: cover;
+
+          filter: drop-shadow(-6px -6px 10px rgba(0, 0, 0, 0.4));
+        }
+
+        &:hover .category-link-img {
+          top: 10%;
+          left: 10%;
+        }
+      }
+
+      .bg-phone {
+        background-color: rgba(109, 100, 116, 1)
+      }
+      .bg-tablets {
+        background-color: rgba(141, 141, 146, 1)
+      }
+      .bg-accessories {
+        background-color: rgba(213, 60, 81, 1)
+      }
+    }
+  }
+}
