@@ -32,6 +32,8 @@ export const DropdownPerPage = () => {
 
       default:
         params.set('perPage', option);
+        params.set('page', `${1}`);
+        params.set('transform', `${0}`);
     }
 
     setSearchParams(params);

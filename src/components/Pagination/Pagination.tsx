@@ -82,8 +82,6 @@ export const Pagination: React.FC<Props> = ({ itemsCount }) => {
   };
 
   useEffect(() => {
-    searchParams.set('page', `${1}`);
-    searchParams.set('transform', `${0}`);
     setTransformValue(0);
   }, [itemsPerPage]);
 
