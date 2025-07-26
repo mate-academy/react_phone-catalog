@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
-import { Button } from '../Button';
-import { AddToFavourites } from '../AddToFavourites';
+import { useCart } from '../../../CartPage/context/CartContext';
+// eslint-disable-next-line max-len
+import { useFavourite } from '../../../FavouritesPage/context/FavouritesContext';
+// eslint-disable-next-line max-len
 
 type Props = {
   name: string;
@@ -26,7 +28,10 @@ export const ProductCard = ({
   id,
   category,
 }: Props) => {
-  // const { productId } = useParams();
+  const { addItem, cartItems } = useCart();
+  const { addFavourite, removeFavourite, favouriteItems } = useFavourite();
+
+  const checkIfInCart = cartItems.find(item => item?.id === id);
 
   return (
     <div className={styles.card}>
@@ -63,8 +68,46 @@ export const ProductCard = ({
         </div>
       </div>
       <div className={styles.card__buttons}>
-        <Button text={'Add to cart'} />
-        <AddToFavourites />
+        <button
+          disabled={checkIfInCart !== undefined}
+          onClick={() => {
+            addItem({
+              id: id,
+              name: name,
+              price: priceDiscount ?? 0,
+              quantity: 1,
+              image: images,
+            });
+          }}
+        >
+          {checkIfInCart !== undefined ? 'Added to cart' : 'Add to cart'}
+        </button>
+        <button className={styles.card__favourites}>
+          <img
+            onClick={() => {
+              const findFav = favouriteItems.find(fav => fav?.id === id);
+
+              if (findFav === undefined) {
+                addFavourite({
+                  name,
+                  images,
+                  priceDiscount,
+                  priceRegular,
+                  screen,
+                  ram,
+                  capacity,
+                  id,
+                  category,
+                });
+              } else {
+                removeFavourite(id);
+              }
+            }}
+            className={styles.card__heart}
+            src="public/icons/Favourite.svg"
+            alt="heart-icon"
+          />
+        </button>
       </div>
     </div>
   );

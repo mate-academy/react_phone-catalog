@@ -8,18 +8,17 @@ import { LoadError, LOAD_ERROR } from '../../../shared/utils/types/LoadError';
 import { Loader } from '../../../PhonesPage/components/Loader/Loader';
 import styles from './ProductDetailsPage.module.scss';
 import classNames from 'classnames';
-import { Button } from '../../../shared/components/Button';
-import { AddToFavourites } from '../../../shared/components/AddToFavourites';
 // eslint-disable-next-line max-len
 import { ProductSlider } from '../../../HomePage/components/ProductSlider/ProductSlider';
+import { useCart } from '../../../CartPage/context/CartContext';
+// eslint-disable-next-line max-len
+import { useFavourite } from '../../../FavouritesPage/context/FavouritesContext';
 
 classNames.bind(styles);
 
 type Params = {
   category: string;
 };
-
-// type Products = Phone | Accessories | Tablet | Product;
 
 export const ProductDetailsPage = ({ category }: Params) => {
   const [products, setProducts] = useState<Phone[] | undefined>();
@@ -31,6 +30,8 @@ export const ProductDetailsPage = ({ category }: Params) => {
   const [activeColor, setActiveColor] = useState<string>();
   const [activeMemory, setActiveMemory] = useState<string>();
   const navigate = useNavigate();
+  const { addItem } = useCart();
+  const { addFavourite, removeFavourite, favouriteItems } = useFavourite();
 
   const loadSliderProducts = useCallback(() => {
     return getProduct('/products.json').then(data => setSliderProducts(data));
@@ -64,6 +65,10 @@ export const ProductDetailsPage = ({ category }: Params) => {
   const changePicture = (i: number) => {
     setActiveImgIndex(i);
   };
+
+  const findCartProduct = sliderProducts?.find(
+    product => product.itemId === findProduct?.id,
+  );
 
   return (
     <div className={styles.details}>
@@ -158,8 +163,51 @@ export const ProductDetailsPage = ({ category }: Params) => {
             </p>
           </div>
           <div className={styles.details__buttons}>
-            <Button text="Add to cart" />
-            <AddToFavourites />
+            <button
+              onClick={() => {
+                if (findCartProduct) {
+                  addItem({
+                    id: findCartProduct?.id.toString(),
+                    name: findCartProduct.name,
+                    price: findCartProduct.price,
+                    quantity: 1,
+                    image: findCartProduct.image,
+                  });
+                }
+              }}
+            >
+              Add to cart
+            </button>
+            <button className={styles.card__favourites}>
+              <img
+                onClick={() => {
+                  if (findProduct) {
+                    const findFav = favouriteItems.find(
+                      fav => fav.id === findProduct.id,
+                    );
+
+                    if (findFav !== undefined) {
+                      removeFavourite(findProduct.id);
+                    } else {
+                      addFavourite({
+                        name: findProduct.name,
+                        images: findProduct.images[0],
+                        priceDiscount: findProduct.priceDiscount,
+                        priceRegular: findProduct.priceRegular,
+                        screen: findProduct.screen,
+                        ram: findProduct.ram,
+                        capacity: findProduct.capacity,
+                        id: findProduct.id,
+                        category: findProduct.category,
+                      });
+                    }
+                  }
+                }}
+                className={styles.card__heart}
+                src="public/icons/Favourite.svg"
+                alt="heart-icon"
+              />
+            </button>
           </div>
           <div className={styles.details__specification}>
             <div className={styles['details__specification-container']}>

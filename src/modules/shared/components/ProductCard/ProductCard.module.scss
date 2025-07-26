@@ -93,6 +93,23 @@
     gap: 8px;
     width: 223px;
   }
+
+  &__favourites {
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      background-color: $white-color;
+      border: 1px solid $gray-color;
+      justify-items: center;
+    }
+
+  &__heart {
+    color: $black-color;
+    object-fit: contain;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 }
 
 @media screen and (min-width: 640px) {

@@ -9,6 +9,9 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage/components/Prod
 import { TabletsPage } from './modules/TabletsPage/components/TabletsPage';
 // eslint-disable-next-line max-len
 import { AccessoriesPage } from './modules/AccesoriesPage/components/AccesoriesPage';
+import { CartPage } from './modules/CartPage/components/CartPage';
+// eslint-disable-next-line max-len
+import { FavouritesPage } from './modules/FavouritesPage/components/FavouritesPage';
 
 export const App = () => {
   return (
@@ -28,9 +31,11 @@ export const App = () => {
         />
         <Route path="/accessories" element={<AccessoriesPage />} />
         <Route
-          path="/accessories/:productId"
+          path="/tablets/:productId"
           element={<ProductDetailsPage category="accessories" />}
         />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/favourites" element={<FavouritesPage />} />
         <Route path="*" />
       </Routes>
       <Footer />
