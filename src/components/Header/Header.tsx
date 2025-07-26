@@ -5,6 +5,10 @@ import { BurgerMenu } from '../BurgerMenu';
 import classNames from 'classnames';
 import { CartandFavContext } from '../CartandFavProvider';
 import Logo from '../../../public/img/Logo.svg';
+import Fav from '../../../public/img/icons/favourite-default.svg';
+import Cart from '../../../public/img/icons/cart-default.png';
+import Close from '../../../public/img/icons/close.svg';
+import Burger from '../../../public/img/icons/burger-menu.svg';
 
 const navLinks = [
   { id: 1, title: 'Home', to: '/' },
@@ -22,11 +26,6 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.logoAndNav}>
           <NavLink className={styles.logo} to="/">
-            <img
-              src={`${import.meta.env.BASE_URL}/img/Logo.svg`}
-              alt="Nice_Gadgets_logo"
-            />
-            TEST
             <img src={Logo} alt="Nice_Gadgets_logo" />
           </NavLink>
           <nav>
@@ -57,11 +56,7 @@ export const Header = () => {
             }
             to="/favourites"
           >
-            <img
-              src="/img/icons/favourite-default.svg"
-              alt="favourites"
-              className={styles.icon}
-            />
+            <img src={Fav} alt="favourites" className={styles.icon} />
             {fav.length > 0 && (
               <div className={styles.counter}>{fav.length}</div>
             )}
@@ -74,11 +69,7 @@ export const Header = () => {
             }
             to="/cart"
           >
-            <img
-              src="/img/icons/cart-default.png"
-              alt="cart"
-              className={styles.icon}
-            />
+            <img src={Cart} alt="cart" className={styles.icon} />
             {cart.length > 0 && (
               <div className={styles.counter}>{cart.length}</div>
             )}
@@ -88,17 +79,9 @@ export const Header = () => {
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? (
-              <img
-                src="/img/icons/close.svg"
-                alt="close"
-                className={styles.icon}
-              />
+              <img src={Close} alt="close" className={styles.icon} />
             ) : (
-              <img
-                src="/img/icons/burger-menu.svg"
-                alt="burger-menu"
-                className={styles.icon}
-              />
+              <img src={Burger} alt="burger-menu" className={styles.icon} />
             )}
           </button>
         </div>

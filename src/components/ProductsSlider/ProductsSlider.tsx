@@ -33,7 +33,11 @@ const CustomSlide = ({ image }: SlideProps) => {
   const { id, img } = image;
 
   return (
-    <img className={styles.customSlide} src={img} alt={`slider-img-${id}`} />
+    <img
+      className={styles.customSlide}
+      src={`${import.meta.env.BASE_URL}/${img}`}
+      alt={`slider-img-${id}`}
+    />
   );
 };
 
@@ -47,7 +51,9 @@ const CustomArrow = ({ onClick, direction }: ArrowProps) => {
       className={classNames(styles.customArrow, styles[direction])}
       onClick={onClick}
     >
-      <img src={`img/icons/arrow-${direction}.svg`} />
+      <img
+        src={`${import.meta.env.BASE_URL}/img/icons/arrow-${direction}.svg`}
+      />
     </button>
   );
 };

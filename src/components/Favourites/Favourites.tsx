@@ -4,6 +4,7 @@ import { ProductCard } from '../ProductCard';
 import { CartandFavContext } from '../CartandFavProvider';
 import { useContext } from 'react';
 import { EmptyPage } from '../EmptyPage';
+import Home from '../../../public/img/icons/home.svg';
 
 export const Favourites = () => {
   const { fav: products } = useContext(CartandFavContext);
@@ -18,7 +19,7 @@ export const Favourites = () => {
       <div className={styles.pageContent}>
         <div className={styles.pathHome}>
           <NavLink to="/">
-            <img src="/img/icons/home.svg" alt="home" />
+            <img src={Home} alt="home" />
           </NavLink>
           <span className={styles.pathHome_title}>&gt;</span>
           <span className={styles.pathHome_title}>Favourites</span>

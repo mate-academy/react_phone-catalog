@@ -44,7 +44,10 @@ export const CartItem = ({ product, counter }: Props) => {
     <div className={styles.card}>
       <div className={styles.row}>
         <button className={styles.deleteButton} onClick={handleDelete}>
-          <img src="/img/icons/close.svg" alt="close" />
+          <img
+            src={`${import.meta.env.BASE_URL}/img/icons/close.svg`}
+            alt="close"
+          />
         </button>
         <div className={styles.productPhoto}>
           <img
@@ -68,15 +71,18 @@ export const CartItem = ({ product, counter }: Props) => {
             <img
               src={
                 counter < 2
-                  ? '/img/icons/minus-disabled.svg'
-                  : '/img/icons/minus.svg'
+                  ? `${import.meta.env.BASE_URL}/img/icons/minus-disabled.svg`
+                  : `${import.meta.env.BASE_URL}/img/icons/minus.svg`
               }
               alt="minus"
             />
           </button>
           <div className={styles.productCounter}>{counter}</div>
           <button className={styles.countButton} onClick={handlePlusProduct}>
-            <img src="/img/icons/plus.svg" alt="plus" />
+            <img
+              src={`${import.meta.env.BASE_URL}/img/icons/plus.svg`}
+              alt="plus"
+            />
           </button>
         </div>
         <span className={styles.productPrice}>{`${product.price}$`}</span>

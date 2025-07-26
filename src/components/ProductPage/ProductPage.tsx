@@ -10,6 +10,7 @@ import { EmptyPage } from '../EmptyPage';
 import { Loader } from '../Loader';
 import { SomethingWentWrongPage } from '../SomethingWentWrongPage';
 import { Pagination } from '../Pagination';
+import Home from '../../../public/img/icons/home.svg';
 
 const sortOptions = [
   { value: 'age', label: 'Newest' },
@@ -105,7 +106,7 @@ export const ProductPage = ({ category }: Props) => {
       <div className={styles.pageContent}>
         <div className={styles.pathHome}>
           <NavLink to="/">
-            <img src="/img/icons/home.svg" alt="home" />
+            <img src={Home} alt="home" />
           </NavLink>
           <span className={styles.pathHome_title}>&gt;</span>
           <span className={styles.pathHome_title}>{category.pathTitle}</span>

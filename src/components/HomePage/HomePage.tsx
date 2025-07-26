@@ -80,7 +80,7 @@ export const HomePage = () => {
               key={category.name}
             >
               <img
-                src={category.img}
+                src={`${import.meta.env.BASE_URL}/${category.img}`}
                 alt={category.name}
                 className={styles.categoryImg}
               />

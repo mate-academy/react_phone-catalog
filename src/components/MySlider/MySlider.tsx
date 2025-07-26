@@ -72,8 +72,8 @@ export const MySlider = ({ title, products }: Props) => {
             <img
               src={
                 !canScrollLeft
-                  ? `..\\..\\..\\public\\img/icons/arrow-left-disabled.svg`
-                  : `..\\..\\..\\public\\img/icons/arrow-left.svg`
+                  ? `${import.meta.env.BASE_URL}/img/icons/arrow-left-disabled.svg`
+                  : `${import.meta.env.BASE_URL}/img/icons/arrow-left.svg`
               }
             />
           </button>
@@ -85,8 +85,8 @@ export const MySlider = ({ title, products }: Props) => {
             <img
               src={
                 !canScrollRight
-                  ? `..\\..\\..\\public\\img/icons/arrow-right-disabled.svg`
-                  : `..\\..\\..\\public\\img/icons/arrow-right.svg`
+                  ? `${import.meta.env.BASE_URL}/img/icons/arrow-right-disabled.svg`
+                  : `${import.meta.env.BASE_URL}/img/icons/arrow-right.svg`
               }
             />
           </button>

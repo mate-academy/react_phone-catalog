@@ -13,6 +13,9 @@ import classNames from 'classnames';
 import { SomethingWentWrongPage } from '../SomethingWentWrongPage';
 import { Loader } from '../Loader';
 import { MySlider } from '../MySlider';
+import Home from '../../../public/img/icons/home.svg';
+import Fav from '../../../public/img/icons/favourite-default.svg';
+import FavSelected from '../../../public/img/icons/favourite-selected.svg';
 
 const techSpecs: CategoryProductTechSpecKeys[] = [
   'screen',
@@ -215,7 +218,7 @@ export const ProductDetailsPage = () => {
       <div className={styles.pageContent}>
         <div className={styles.pathHome}>
           <NavLink to="/">
-            <img src="/img/icons/home.svg" alt="home" />
+            <img src={Home} alt="home" />
           </NavLink>
           <span className={styles.pathHome_title}>&gt;</span>
           <NavLink
@@ -250,12 +253,12 @@ export const ProductDetailsPage = () => {
                         : '1px solid #3B3E4A',
                   }}
                 >
-                  <img src={`..\\..\\..\\public\\${image}`}></img>
+                  <img src={`${import.meta.env.BASE_URL}/${image}`}></img>
                 </div>
               ))}
             </div>
             <div className={styles.productMedia_mainImg}>
-              <img src={`..\\..\\..\\public\\${mainImgSrc}`}></img>
+              <img src={`${import.meta.env.BASE_URL}/${mainImgSrc}`}></img>
             </div>
             <div className={styles.productMedia_card}>
               <div className={styles.productMedia_card_section}>
@@ -331,14 +334,7 @@ export const ProductDetailsPage = () => {
                   })}
                   onClick={() => handleAddToFav()}
                 >
-                  <img
-                    src={
-                      isInFav
-                        ? '/img/icons/favourite-selected.svg'
-                        : '/img/icons/favourite-default.svg'
-                    }
-                    alt="favourites"
-                  />
+                  <img src={isInFav ? FavSelected : Fav} alt="favourites" />
                 </button>
               </div>
               <div className={styles.cardProperties}>

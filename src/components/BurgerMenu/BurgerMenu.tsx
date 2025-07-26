@@ -3,6 +3,8 @@ import styles from './BurgerMenu.module.scss';
 import classNames from 'classnames';
 import { useContext } from 'react';
 import { CartandFavContext } from '../CartandFavProvider';
+import Fav from '../../../public/img/icons/favourite-default.svg';
+import Cart from '../../../public/img/icons/cart-default.png';
 
 const navLinks = [
   { id: 1, title: 'Home', to: '/' },
@@ -51,7 +53,7 @@ export const BurgerMenu = ({ menuOpen, setMenuOpen }: Props) => {
           onClick={() => setMenuOpen(false)}
         >
           <img
-            src="/img/icons/Favourite_default.png"
+            src={Fav}
             alt="favourites"
             className={styles.iconLinks_link_icon}
           />
@@ -66,11 +68,7 @@ export const BurgerMenu = ({ menuOpen, setMenuOpen }: Props) => {
           to="/cart"
           onClick={() => setMenuOpen(false)}
         >
-          <img
-            src="/img/icons/Cart_default.png"
-            alt="cart"
-            className={styles.iconLinks_link_icon}
-          />
+          <img src={Cart} alt="cart" className={styles.iconLinks_link_icon} />
           {cart.length > 0 && (
             <div className={styles.counter}>{cart.length}</div>
           )}

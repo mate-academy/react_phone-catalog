@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
+import Logo from '../../../public/img/Logo.svg';
+import ArrowTop from '../../../public/img/icons/arrow-top.svg';
 
 const navLinks = [
   { id: 1, title: 'github', to: 'https://github.com/Yuliia-Fil/' },
@@ -19,7 +21,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <NavLink style={{ width: '33%' }} to="/">
-          <img src="/img/Logo.svg" alt="Nice_Gadgets_logo" />
+          <img src={Logo} alt="Nice_Gadgets_logo" />
         </NavLink>
         <nav style={{ width: '33%' }}>
           <ul className={styles.navList}>
@@ -41,7 +43,7 @@ export const Footer = () => {
         <div className={styles.toTop}>
           <span className={styles.toTopTitle}>Back to top</span>
           <button className={styles.toTopButton} onClick={scrollToTop}>
-            <img src="/img/icons/arrow-top.svg" alt="to_top" />
+            <img src={ArrowTop} alt="to_top" />
           </button>
         </div>
       </div>

@@ -4,6 +4,8 @@ import styles from './ProductCard.module.scss';
 import { useContext } from 'react';
 import { CartandFavContext } from '../CartandFavProvider';
 import classNames from 'classnames';
+import Fav from '../../../public/img/icons/favourite-default.svg';
+import FavSelected from '../../../public/img/icons/favourite-selected.svg';
 
 type Props = {
   product: Product;
@@ -36,7 +38,7 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <div className={styles.card}>
       <img
-        src={`..\\..\\..\\public\\${product.image}`}
+        src={`${import.meta.env.BASE_URL}/${product.image}`}
         className={styles.cardImage}
         onClick={() =>
           navigate(`/${product.category}/product/${product.itemId}`)
@@ -83,14 +85,7 @@ export const ProductCard = ({ product }: Props) => {
           })}
           onClick={() => handleAddToFav()}
         >
-          <img
-            src={
-              isInFav
-                ? '/img/icons/favourite-selected.svg'
-                : '/img/icons/favourite-default.svg'
-            }
-            alt="favourites"
-          />
+          <img src={isInFav ? FavSelected : Fav} alt="favourites" />
         </button>
       </div>
     </div>
