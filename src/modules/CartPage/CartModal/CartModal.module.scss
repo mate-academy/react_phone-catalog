@@ -1,3 +1,5 @@
+@import '../../../styles/main';
+
 .cartModal {
   position: fixed;
   top: 50%;
@@ -16,7 +18,7 @@
 .cartModal__notification {
   font-size: 18px;
   margin-bottom: 24px;
-  color: #333;
+  color: $primary-color;
 }
 
 .cartModal__buttons {
@@ -37,17 +39,17 @@
 }
 
 .cartModal__button_confirm {
-  background-color: #0070f3;
+  background-color: $accent-color;
   color: white;
 
   &:hover {
-    background-color: #0056c7;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.25);
   }
 }
 
 .cartModal__button_cancel {
   background-color: #e0e0e0;
-  color: #333;
+  color: $primary-color;
 
   &:hover {
     background-color: #c4c4c4;

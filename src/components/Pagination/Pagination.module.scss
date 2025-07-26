@@ -14,11 +14,10 @@
   background-color: white;
   cursor: pointer;
   border-radius: 48px;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
 
   &:hover {
     font-weight: bold;
-    border-color: $primary-color;
     background-color: $primary-color;
     color: white;
   }

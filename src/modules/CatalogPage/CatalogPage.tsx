@@ -5,6 +5,8 @@ import { DataContext } from '../../context/DataContext';
 import styles from './CatalogPage.module.scss';
 import { Pagination } from '../../components/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { Loader } from '../../components/Loader';
 
 const CATEGORIES = ['phones', 'tablets', 'accessories'] as const;
 
@@ -30,16 +32,11 @@ export const CatalogPage = () => {
   const filteredProducts = products.filter(p => p.category === category);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (error) {
-    return (
-      <div className="container">
-        <p>Something went wrong</p>
-        <button onClick={() => window.location.reload()}>Reload</button>
-      </div>
-    );
+    return <ErrorMessage />;
   }
 
   if (filteredProducts.length === 0) {
