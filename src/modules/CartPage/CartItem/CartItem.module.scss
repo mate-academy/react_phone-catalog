@@ -47,10 +47,10 @@
   }
 
   &__bottom {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 80px;
     align-items: center;
-    gap: 53px;
+    gap: 24px;
   }
 
   &__amountWrapper {
@@ -74,6 +74,8 @@
   }
 
   &__price {
+    justify-self: end;
+
     font-weight: 700;
     font-size: 22px;
   }

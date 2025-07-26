@@ -29,6 +29,11 @@
     object-fit: cover;
     margin-bottom: 24px;
     min-height: 288px;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.02);
+    }
 
     @include on-tablet {
       min-height: 187px;

@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Accessory, Phone, Tablet } from '../../types/ProductDetails';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import classNames from 'classnames';
+import { AlsoLike } from './components/AlsoLike';
 
 type Category = 'phones' | 'tablets' | 'accessories';
 
@@ -160,41 +161,41 @@ export const ProductDetails = () => {
         />
 
         <section className={styles.productDetails}>
-          {/* Назва продукту */}
+          {/* Product title */}
           <h2 className={`section-title ${styles.productDetails__title}`}>
             {name}
           </h2>
 
-          {/* Головний контент */}
+          {/* Main content */}
           <div className={styles.productDetails__content}>
-            {/* Зображення */}
+            {/* Images */}
             <div className={styles.productDetails__gallery}>
               <div className={styles.productDetails__mainImage}>
-                <img src={`/${mainImage}`} alt="main" />
+                <img src={`${mainImage}`} alt="main" />
               </div>
               <div className={styles.productDetails__galleryList}>
-                {/* Превʼю */}
+                {/* Preview images */}
                 {images.map((image: string) => (
                   <img
                     key={image}
-                    src={`/${image}`}
+                    src={`${image}`}
                     alt="thumb"
-                    className={`${styles.productDetails__thumbnail} ${styles.productDetails__thumbnail_selected}`}
+                    className={styles.productDetails__thumbnail}
                     onClick={() => setMainImage(image)}
                   />
                 ))}
               </div>
             </div>
 
-            {/* Інфо панель */}
+            {/* Info  */}
             <div className={styles.productDetails__info}>
               <div className={styles.options}>
-                {/* Колір */}
+                {/* Color */}
                 <div className={styles.colors}>
                   <span>Available colors</span>
                   {/* <span className={styles.id}>ID: 802390</span> */}
                   <div className={styles.colorDots}>
-                    {/* кола з кольорами */}
+                    {/* Color circles */}
                     {selectedProduct.colorsAvailable.map((color: string) => (
                       <div
                         key={color}
@@ -212,7 +213,7 @@ export const ProductDetails = () => {
                   </div>
                 </div>
 
-                {/* Памʼять */}
+                {/* Capacity */}
                 <div className={styles.capacity}>
                   <span>Select capacity</span>
                   <div className={styles.capacityOptions}>
@@ -229,7 +230,7 @@ export const ProductDetails = () => {
                 </div>
               </div>
 
-              {/* Ціна + кнопки */}
+              {/* Price and buttons */}
               <div className={styles.purchase}>
                 <div className={styles.priceBlock}>
                   <span className={styles.price}>${priceDiscount}</span>
@@ -256,7 +257,7 @@ export const ProductDetails = () => {
                 </div>
               </div>
 
-              {/* Короткі характеристики */}
+              {/* Characteristics */}
               <ul className={styles.shortSpecs}>
                 <li>
                   <span>Screen</span>
@@ -278,7 +279,7 @@ export const ProductDetails = () => {
             </div>
           </div>
 
-          {/* Опис */}
+          {/* Description */}
           <div className={styles.description}>
             <div className={styles.about}>
               <h2>About</h2>
@@ -334,6 +335,8 @@ export const ProductDetails = () => {
           </div>
         </section>
       </div>
+
+      <AlsoLike products={products} />
     </div>
   );
 };

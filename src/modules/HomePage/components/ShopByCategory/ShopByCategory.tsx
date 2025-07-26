@@ -33,7 +33,9 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
                   <img src={img} alt={name} className={styles.category__img} />
                 </Link>
 
-                <h4 className={styles.category__name}>{label}</h4>
+                <Link to={name} className={styles.category__link}>
+                  <h4 className={styles.category__name}>{label}</h4>
+                </Link>
                 <p className={`${styles.category__amount} body-text`}>
                   {amount} models
                 </p>

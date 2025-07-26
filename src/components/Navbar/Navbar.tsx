@@ -22,7 +22,7 @@ export const Navbar: React.FC = () => {
   const { isMenuOpen, setIsMenuOpen, favorites, cart } =
     useContext(DataContext);
   const favoritesAmount = favorites.length;
-  const cartAmount = cart.length;
+  const cartAmount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);

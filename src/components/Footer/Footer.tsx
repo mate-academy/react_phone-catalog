@@ -4,9 +4,12 @@ import Logo from '../../assets/icons/Logo.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 
 const footerLinks = [
-  { to: '/', label: 'Github' },
-  { to: '/', label: 'Contacts' },
-  { to: '/', label: 'Rights' },
+  {
+    to: 'https://github.com/Mitlosh/react_phone-catalog/tree/develop',
+    label: 'Github',
+  },
+  { to: 'https://github.com/Mitlosh', label: 'Contacts' },
+  { to: 'https://github.com/Mitlosh', label: 'Rights' },
 ];
 
 export const Footer = () => {
@@ -21,7 +24,11 @@ export const Footer = () => {
           <ul className={styles.menuList}>
             {footerLinks.map(({ to, label }) => (
               <li key={label} className={styles.menuList__item}>
-                <NavLink to={to} className={styles.menuList__link}>
+                <NavLink
+                  to={to}
+                  className={styles.menuList__link}
+                  target="_blank"
+                >
                   {label}
                 </NavLink>
               </li>

@@ -16,6 +16,8 @@ export const CartPage = () => {
     0,
   );
 
+  const totalCartQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <div className={styles.cart}>
       <div className="container">
@@ -42,7 +44,7 @@ export const CartPage = () => {
                 className={styles.cartTotal__value}
               >{`$${totalCartPrice}`}</h2>
               <p className={styles.cartTotal__amountItems}>
-                {`Total for ${cart.length} items`}
+                {`Total for ${totalCartQuantity} items`}
               </p>
             </div>
             <div className={styles.cartTotal__divider}></div>

@@ -1,6 +1,16 @@
 @import '../../styles/main';
 
 .productDetails {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
   &__title {
     margin-bottom: 32px;
 
@@ -62,6 +72,7 @@
     border: $primary-color 1px solid;
     border-radius: 4px;
     cursor: pointer;
+    object-fit: contain;
 
     @include on-tablet {
       width: 35px;
@@ -71,10 +82,6 @@
     @include on-desktop {
       width: 80px;
       height: 80px;
-    }
-
-    & img {
-      object-fit: contain;
     }
   }
 

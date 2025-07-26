@@ -18,8 +18,6 @@
   }
 
   @include on-desktop {
-    max-width: 1260px;
-    margin-inline: auto;
     padding-inline: 32px;
   }
 }
@@ -28,33 +26,7 @@
   @include content-padding-inline;
 
   @include on-desktop {
-    max-width: 1260px;
+    max-width: 1200px;
     margin-inline: auto;
-    padding-inline: 120px;
   }
 }
-
-// @mixin hover($property, $toValue) {
-//   transition: #{$property} 0.3s;
-//   &:hover {
-//     #{$property}: $toValue;
-//   }
-// }
-
-// @mixin display-grid {
-//   --columns: 2;
-
-//   display: grid;
-//   gap: 20px;
-//   grid-template-columns: repeat(var(--columns), 1fr);
-
-//   @include on-tablet {
-//     gap: 24px;
-
-//     --columns: 6;
-//   }
-
-//   @include on-desktop {
-//     --columns: 12;
-//   }
-// }
