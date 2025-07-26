@@ -8,6 +8,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { HomePage } from './pages/HomePage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import notFoundPageImg from '../src/images/page-not-found.png';
 
 export const AppRoutes = () => {
   return (
@@ -42,7 +43,7 @@ export const AppRoutes = () => {
             element={
               <NotFoundPage
                 title="Ooops...Page not found"
-                image="src\images\page-not-found.png"
+                image={notFoundPageImg}
               />
             }
           />
