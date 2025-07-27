@@ -42,7 +42,7 @@ export const ProductSlider = ({ products, header }: Props) => {
   return (
     <div className={styles.slider}>
       <div className={styles.slider__header}>
-        <h1>{header}</h1>
+        <h2>{header}</h2>
         <div className={styles.slider__buttons}>
           <button
             onClick={() => handleScrool(-ITEM_WIDTH)}
