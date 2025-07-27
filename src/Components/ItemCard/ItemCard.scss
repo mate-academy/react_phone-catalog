@@ -2,6 +2,9 @@
 @import 'react-image-gallery/styles/css/image-gallery.css';
 
 .itemCard {
+  &__container {
+    margin-bottom: 80px;
+  }
   &__navigation {
     display: flex;
     flex-direction: column;
@@ -104,6 +107,10 @@
       width: 512px;
       margin-left: 64px;
     }
+
+    // @media (max-width: $tablet) {
+    //   flex-direction: column;
+    // }
   }
 }
 

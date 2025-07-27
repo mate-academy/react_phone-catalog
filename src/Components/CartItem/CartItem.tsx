@@ -23,7 +23,7 @@ export const CartItem: React.FC<Props> = ({ cartProduct, quantity }) => {
           }}
         >
           <img
-            src="/public/img/icons/Close.svg"
+            src="/img/icons/Close.svg"
             alt="delete button"
             className="cartItem__product--button__img"
           />
