@@ -2,15 +2,57 @@
 
 .header {
   font-family: Mont, Arial, Helvetica, sans-serif;
-  display: flex;
   max-width: 100vw;
   height: 48px;
   align-items: center;
-  justify-content: space-between;
   box-shadow: 0 1px 0 0 $gray-light-color;
   position: sticky;
   top: 0;
   background-color: $white-color;
+  display: flex;
+  padding-left: 16px;
+  z-index: 1;
+
+  &__nav {
+    display: flex;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    justify-self: left;
+  }
+
+  &__burger {
+    display: flex;
+  }
+
+  &__list  {
+    list-style: none;
+
+
+    &-link {
+      text-decoration: none;
+      color: $gray-color;
+      position: relative;
+      transition: all 0.4s;
+
+
+      &:hover,
+      :active {
+        color: $black-color;
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 30px;
+            width: 100%;
+            height: 3px;
+            background-color: $black-color;
+            pointer-events: none;
+          }
+      }
+    }
+  }
 
 
   &__logo {
@@ -18,7 +60,6 @@
     height: 20px;
     display: block;
     object-fit: contain;
-    padding: 16px;
   }
 
   &__links {
@@ -26,10 +67,25 @@
     width: 100%;
     align-items: center;
     gap: 32px;
-    justify-content: space-between;
   }
 
+
   &__button {
+    box-shadow: -1px 0 0 0 $gray-light-color;
+    height: 48px;
+    width: 48px;
+    justify-items: center;
+    align-content: center;
+    cursor: pointer;
+
+    &-image {
+      width: 14px;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__cart {
     box-shadow: -1px 0 0 0 $gray-light-color;
     height: 48px;
     width: 48px;
@@ -38,9 +94,93 @@
 
     &-image {
       width: 14px;
-      height: auto;
-      display: block;
+        height: auto;
+        display: block;
+    }
+  }
+
+  &__fav {
+    box-shadow: -1px 0 0 0 $gray-light-color;
+    height: 48px;
+    width: 48px;
+    justify-items: center;
+    align-content: center;
+
+    &-image {
+      width: 14px;
+        height: auto;
+        display: block;
+    }
+  }
+}
+
+
+@media (max-width: 639px) {
+  .header {
+
+    &__burger {
+      position: fixed;
+      background-color: $white-color;
+      top: calc(100vh - 100px);;
+      left: 0;
+      width: 100%;
+      padding: 32px 0 25px;
+      justify-content: center;
+      row-gap: 24px;
+      transform: translateX(0);
+      transition: all 0.4s;
+
+      &-active {
+        transform: translateX(100%);
+      }
     }
 
+    &__fav {
+      height: 68px;
+      width: 100%;
+      border: 1px solid $gray-medium-color;
+    }
+
+    &__cart {
+      height: 68px;
+      width: 100%;
+      border: 1px solid $gray-medium-color;
+    }
+
+    &__nav {
+      background-color: $white-color;
+      position: fixed;
+      top: 48px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 60px);
+      padding: 32px 0 25px;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 24px;
+      transform: translateX(0);
+      transition: all 0.4s;
+
+      &-active {
+        transform: translateX(100%);
+      }
+    }
+
+    &__list {
+
+      &-link {
+        font-size: 12px;
+      }
+    }
+
+  }
+}
+
+@media (min-width: 640px) {
+  .header {
+
+    &__button {
+      display: none;
+    }
   }
 }

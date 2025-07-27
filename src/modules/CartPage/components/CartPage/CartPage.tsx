@@ -27,7 +27,7 @@ export const CartPage = () => {
   };
 
   // eslint-disable-next-line no-console
-  console.log(totalItemsCount());
+  console.log(cartItems);
 
   return (
     <div className={styles.cart}>

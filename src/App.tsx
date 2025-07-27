@@ -31,7 +31,7 @@ export const App = () => {
         />
         <Route path="/accessories" element={<AccessoriesPage />} />
         <Route
-          path="/tablets/:productId"
+          path="/accessories/:productId"
           element={<ProductDetailsPage category="accessories" />}
         />
         <Route path="/cart" element={<CartPage />} />

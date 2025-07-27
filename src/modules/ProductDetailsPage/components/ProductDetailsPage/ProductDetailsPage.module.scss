@@ -46,6 +46,23 @@
     justify-self: center;
   }
 
+    &__favourites {
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      background-color: variables.$white-color;
+      border: 1px solid variables.$gray-color;
+      justify-items: center;
+    }
+
+    &__heart {
+      color: variables.$black-color;
+      object-fit: contain;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
   &__colors {
 
     &-text {

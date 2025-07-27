@@ -70,6 +70,8 @@ export const ProductDetailsPage = ({ category }: Params) => {
     product => product.itemId === findProduct?.id,
   );
 
+  const findFav = favouriteItems.find(fav => fav.id === findProduct?.id);
+
   return (
     <div className={styles.details}>
       {status === STATUS.pending ? (
@@ -176,18 +178,14 @@ export const ProductDetailsPage = ({ category }: Params) => {
                 }
               }}
             >
-              Add to cart
+              {findCartProduct !== undefined ? 'Added to cart' : 'Add to cart'}
             </button>
-            <button className={styles.card__favourites}>
+            <button className={styles.details__favourites}>
               <img
                 onClick={() => {
                   if (findProduct) {
-                    const findFav = favouriteItems.find(
-                      fav => fav.id === findProduct.id,
-                    );
-
                     if (findFav !== undefined) {
-                      removeFavourite(findProduct.id);
+                      removeFavourite(findFav.id);
                     } else {
                       addFavourite({
                         name: findProduct.name,
@@ -203,8 +201,12 @@ export const ProductDetailsPage = ({ category }: Params) => {
                     }
                   }
                 }}
-                className={styles.card__heart}
-                src="public/icons/Favourite.svg"
+                className={styles.details__heart}
+                src={
+                  findFav?.id === findProduct?.id
+                    ? '/icons/FavouritesFilled.svg'
+                    : '/icons/Favourite.svg'
+                }
                 alt="heart-icon"
               />
             </button>

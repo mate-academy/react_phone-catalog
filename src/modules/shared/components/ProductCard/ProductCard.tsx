@@ -32,6 +32,7 @@ export const ProductCard = ({
   const { addFavourite, removeFavourite, favouriteItems } = useFavourite();
 
   const checkIfInCart = cartItems.find(item => item?.id === id);
+  const findFav = favouriteItems.find(fav => fav.id === id);
 
   return (
     <div className={styles.card}>
@@ -85,12 +86,10 @@ export const ProductCard = ({
         <button className={styles.card__favourites}>
           <img
             onClick={() => {
-              const findFav = favouriteItems.find(fav => fav?.id === id);
-
               if (findFav === undefined) {
                 addFavourite({
-                  name,
-                  images,
+                  name: name,
+                  images: images,
                   priceDiscount,
                   priceRegular,
                   screen,
@@ -104,7 +103,11 @@ export const ProductCard = ({
               }
             }}
             className={styles.card__heart}
-            src="public/icons/Favourite.svg"
+            src={
+              findFav?.id === id
+                ? '/icons/FavouritesFilled.svg'
+                : '/icons/Favourite.svg'
+            }
             alt="heart-icon"
           />
         </button>
