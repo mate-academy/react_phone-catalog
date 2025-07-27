@@ -21,6 +21,7 @@
   &__buttons {
     display: flex;
     gap: 16px;
+
   }
 
   &__button {
@@ -31,6 +32,11 @@
     background-color: $white-color;
     border: 1px solid $gray-color;
     cursor: pointer;
+    transition: all 0.4s;
+
+    &:hover {
+        transform: scale(1.2);
+      }
 
     & img {
       display: block;

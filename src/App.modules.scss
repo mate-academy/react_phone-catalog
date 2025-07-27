@@ -31,7 +31,8 @@ html {
   font-size: $base-font-size;
   align-items: center;
   box-sizing: border-box;
-
+  transition: all 0.4s;
+  scroll-behavior: smooth;
 }
 
 // .main {

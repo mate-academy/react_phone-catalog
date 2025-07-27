@@ -36,20 +36,22 @@ export const CartPage = () => {
         Back
       </button>
       <h2 className={styles.cart__title}>Cart</h2>
-      {cartItems.length === 0
-        ? 'Your cart is empty'
-        : cartItems.map(item => {
-            return (
-              <CartProduct
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                price={item.price}
-                quantity={item.quantity}
-                image={item.image}
-              />
-            );
-          })}
+      <div className={styles.cart__container}>
+        {cartItems.length === 0
+          ? 'Your cart is empty'
+          : cartItems.map(item => {
+              return (
+                <CartProduct
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  price={item.price}
+                  quantity={item.quantity}
+                  image={item.image}
+                />
+              );
+            })}
+      </div>
 
       <div className={styles.cart__checkout}>
         <div>

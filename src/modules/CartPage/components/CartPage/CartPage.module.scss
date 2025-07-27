@@ -51,3 +51,15 @@
     border-bottom: 1px solid variables.$gray-medium-color;
   }
 }
+
+@media (min-width: 640px) {
+  .cart {
+
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+}

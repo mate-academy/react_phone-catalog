@@ -1,12 +1,32 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import cn from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useCart } from '../../../CartPage/context/CartContext';
+// eslint-disable-next-line max-len
+import { useFavourite } from '../../../FavouritesPage/context/FavouritesContext';
 
 cn.bind(styles);
 
 export const Header = () => {
   const [menuActive, setMenuActive] = useState(true);
+  const location = useLocation();
+  const { cartItems } = useCart();
+  const { favouriteItems } = useFavourite();
+
+  const totalItemsCount = () => {
+    const itemArr: number[] = [];
+
+    cartItems.map(item => itemArr.push(item.quantity));
+
+    return itemArr.reduce((acc, curr) => acc + curr, 0);
+  };
+
+  const favCount = favouriteItems.length;
+
+  useEffect(() => {
+    setMenuActive(true);
+  }, [location.pathname]);
 
   return (
     <>
@@ -53,6 +73,7 @@ export const Header = () => {
               src="./icons/Favourite.svg"
               alt="favourite-image"
             />
+            <span className={styles['header__fav-counter']}>{favCount}</span>
           </Link>
           <Link className={styles.header__cart} to="/cart">
             <img
@@ -60,6 +81,9 @@ export const Header = () => {
               src="./icons/Cart.svg"
               alt="cart-image"
             />
+            <span className={styles['header__cart-counter']}>
+              {totalItemsCount()}
+            </span>
           </Link>
         </div>
         <Link

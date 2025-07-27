@@ -83,25 +83,27 @@ export const ProductCard = ({
         >
           {checkIfInCart !== undefined ? 'Added to cart' : 'Add to cart'}
         </button>
-        <button className={styles.card__favourites}>
+        <button
+          onClick={() => {
+            if (findFav === undefined) {
+              addFavourite({
+                name: name,
+                images: images,
+                priceDiscount,
+                priceRegular,
+                screen,
+                ram,
+                capacity,
+                id,
+                category,
+              });
+            } else {
+              removeFavourite(id);
+            }
+          }}
+          className={styles.card__favourites}
+        >
           <img
-            onClick={() => {
-              if (findFav === undefined) {
-                addFavourite({
-                  name: name,
-                  images: images,
-                  priceDiscount,
-                  priceRegular,
-                  screen,
-                  ram,
-                  capacity,
-                  id,
-                  category,
-                });
-              } else {
-                removeFavourite(id);
-              }
-            }}
             className={styles.card__heart}
             src={
               findFav?.id === id

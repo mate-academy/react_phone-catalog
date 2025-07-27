@@ -13,6 +13,10 @@
     letter-spacing: 0%;
     text-decoration: none;
     align-content: center;
+
+    &:hover {
+      color: $black-color;
+    }
   }
 
   &__link {

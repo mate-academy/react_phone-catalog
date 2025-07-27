@@ -94,8 +94,24 @@
 
     &-image {
       width: 14px;
-        height: auto;
-        display: block;
+      height: auto;
+      display: block;
+      position: relative;
+    }
+
+    &-counter {
+      position: absolute;
+      border: 1px solid $red-color;
+      background-color: $red-color;
+      color: $white-color;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+      text-align: center;
+      justify-items: center;
+      top: 10px;
+      right: 10px;
+      font-size: 10px;
     }
   }
 
@@ -108,9 +124,25 @@
 
     &-image {
       width: 14px;
-        height: auto;
-        display: block;
+      height: auto;
+      display: block;
+      position: relative;
     }
+
+      &-counter {
+        position: absolute;
+        border: 1px solid $red-color;
+        background-color: $red-color;
+        color: $white-color;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        text-align: center;
+        justify-items: center;
+        top: 10px;
+        right: 60px;
+        font-size: 10px;
+      }
   }
 }
 
@@ -139,12 +171,20 @@
       height: 68px;
       width: 100%;
       border: 1px solid $gray-medium-color;
+
+      &-counter {
+        display: none;
+      }
     }
 
     &__cart {
       height: 68px;
       width: 100%;
       border: 1px solid $gray-medium-color;
+
+      &-counter {
+          display: none;
+        }
     }
 
     &__nav {

@@ -25,6 +25,12 @@
     line-height: 11px;
     letter-spacing: 4%;
     text-transform: uppercase;
+    transition: all 0.4s;
+
+    &:hover {
+      color: $black-color;
+      transform: scale(1.2);
+    }
   }
 
   &__back-to-top {
@@ -32,6 +38,8 @@
     justify-content: center;
     height: 32px;
     gap: 16px;
+
+
 
     &--paragraph {
       color: $gray-color;
@@ -49,7 +57,28 @@
       object-fit: cover;
       justify-items: center;
       align-content: center;
-      border: 1px solid $gray-light-color
+      border: 1px solid $gray-light-color;
+      cursor: pointer;
+      transition: all 0.4s;
+
+      &:hover {
+        color: $black-color;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+
+@media (min-width: 640px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 32px;
+
+    &__container {
+      display: flex;
+      gap: 32px;
     }
   }
 }
