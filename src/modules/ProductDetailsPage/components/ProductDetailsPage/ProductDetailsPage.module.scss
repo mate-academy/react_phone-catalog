@@ -26,10 +26,12 @@
 
   }
 
+
   &__picture {
     display: block;
     width: 40px;
     aspect-ratio: 3 / 4;
+    padding: 4px;
     border: 1px solid variables.$gray-light-color;
 
     &--active {
@@ -266,3 +268,36 @@
       }
     }
   }
+
+
+@media (min-width: 640px) {
+  .details {
+    padding: 48px;
+
+    &__image {
+      display: block;
+      width: 440px;
+      aspect-ratio: 3 / 4;
+      object-fit: contain;
+      padding: 16px;
+      justify-self: center;
+      }
+
+    &__images {
+      flex-direction: column;
+      height: auto;
+    }
+
+    &__container {
+      padding: 32px;
+      display: flex;
+      justify-content: space-around;
+      gap: 32px;
+
+      &-primary {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}

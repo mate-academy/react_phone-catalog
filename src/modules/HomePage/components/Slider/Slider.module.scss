@@ -61,3 +61,31 @@
     }
   }
 }
+
+
+@media (min-width: 640px) {
+  .slider {
+    justify-items: center;
+
+    &__buttons {
+      display: block;
+      background-color: $white-color;
+      width: 32px;
+      border: 1px solid $gray-medium-color;
+      justify-items: center;
+
+      &-image {
+        display: block;
+      }
+    }
+
+    &__container {
+      height: 432px;
+      max-width: 100%;
+    }
+
+    &__image {
+      aspect-ratio: 9 / 16;
+    }
+  }
+}

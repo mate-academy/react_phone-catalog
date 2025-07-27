@@ -1,5 +1,13 @@
 @use '../../../shared/utils/mixins';
 
-.home {
-  // @include mixins.low-resolution-grid;
+@media (min-width: 640px) {
+  .home {
+      padding: 32px;
+
+      &__title {
+        padding: 16px;
+      }
+    }
 }
+
+

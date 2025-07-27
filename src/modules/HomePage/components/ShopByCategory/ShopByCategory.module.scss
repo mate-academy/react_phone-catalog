@@ -1,13 +1,28 @@
 .catalog {
-  display: flex;
-  flex-direction: column;
   gap: 16px;
   padding: 16px;
-  justify-content: center;
-  align-items: center;
+
 
   &__header {
     margin: 0;
-    align-self: flex-start;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+@media (min-width: 640px) {
+  .catalog {
+    padding: 32px;
+
+    &__container {
+      flex-direction: row;
+      padding: 16px 0;
+    }
   }
 }

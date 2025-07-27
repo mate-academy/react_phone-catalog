@@ -87,129 +87,140 @@ export const ProductDetailsPage = ({ category }: Params) => {
             Back
           </button>
           <h1 className={styles.details__title}>{findProduct?.name}</h1>
-          <img
-            className={styles.details__image}
-            src={findProduct?.images[activeImgIndex]}
-            alt="main-image"
-          />
-          <div className={styles.details__images}>
-            {findProduct?.images?.map((image, i) => {
-              return (
-                <div key={i}>
-                  <img
-                    className={classNames(styles.details__picture, {
-                      [styles['details__picture--active']]:
-                        activeImgIndex === i,
-                    })}
-                    onClick={() => changePicture(i)}
-                    src={image}
-                    alt="images"
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.details__colors}>
-            <div className={styles['details__colors-text']}>
-              <p className={styles['details__colors-available']}>
-                Available colors
-              </p>
-
-              <p className={styles['details__colors-id']}>ID: 802390</p>
-            </div>
-
-            <div className={styles['details__colors-container']}>
-              {findProduct?.colorsAvailable.map(color => {
-                return (
-                  <div
-                    onClick={() => setActiveColor(color)}
-                    key={color}
-                    className={classNames(styles['details__colors-circle'], {
-                      [styles['details__colors-circle--active']]:
-                        activeColor === color,
-                    })}
-                    style={{ backgroundColor: `${color}` }}
-                  ></div>
-                );
-              })}
-            </div>
-          </div>
-          <div className={styles.details__capacity}>
-            <p className={styles['details__capacity-header']}>
-              Select capacity
-            </p>
-            <div className={styles['details__capacity-container']}>
-              {findProduct?.capacityAvailable.map(capacity => {
-                return (
-                  <div
-                    onClick={() => setActiveMemory(capacity)}
-                    key={capacity}
-                    className={classNames(styles['details__capacity-memory'], {
-                      [styles['details__capacity-memory--active']]:
-                        capacity === activeMemory,
-                    })}
-                  >
-                    {capacity}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className={styles.details__price}>
-            <p className={styles['details__price-discount']}>
-              {`$${findProduct?.priceDiscount}`}
-            </p>
-
-            <p className={styles['details__price-regular']}>
-              {`$${findProduct?.priceRegular}`}
-            </p>
-          </div>
-          <div className={styles.details__buttons}>
-            <button
-              onClick={() => {
-                if (findCartProduct) {
-                  addItem({
-                    id: findCartProduct?.id.toString(),
-                    name: findCartProduct.name,
-                    price: findCartProduct.price,
-                    quantity: 1,
-                    image: findCartProduct.image,
-                  });
-                }
-              }}
-            >
-              {findCartProduct !== undefined ? 'Added to cart' : 'Add to cart'}
-            </button>
-            <button className={styles.details__favourites}>
+          <div className={styles.details__container}>
+            <div className={styles['details__container-primary']}>
               <img
-                onClick={() => {
-                  if (findProduct) {
-                    if (findFav !== undefined) {
-                      removeFavourite(findFav.id);
-                    } else {
-                      addFavourite({
-                        name: findProduct.name,
-                        images: findProduct.images[0],
-                        priceDiscount: findProduct.priceDiscount,
-                        priceRegular: findProduct.priceRegular,
-                        screen: findProduct.screen,
-                        ram: findProduct.ram,
-                        capacity: findProduct.capacity,
-                        id: findProduct.id,
-                        category: findProduct.category,
+                className={styles.details__image}
+                src={findProduct?.images[activeImgIndex]}
+                alt="main-image"
+              />
+              <div className={styles.details__images}>
+                {findProduct?.images?.map((image, i) => {
+                  return (
+                    <div key={i}>
+                      <img
+                        className={classNames(styles.details__picture, {
+                          [styles['details__picture--active']]:
+                            activeImgIndex === i,
+                        })}
+                        onClick={() => changePicture(i)}
+                        src={image}
+                        alt="images"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className={styles['details__container-secondary']}>
+              <div className={styles.details__colors}>
+                <div className={styles['details__colors-text']}>
+                  <p className={styles['details__colors-available']}>
+                    Available colors
+                  </p>
+                  <p className={styles['details__colors-id']}>ID: 802390</p>
+                </div>
+                <div className={styles['details__colors-container']}>
+                  {findProduct?.colorsAvailable.map(color => {
+                    return (
+                      <div
+                        onClick={() => setActiveColor(color)}
+                        key={color}
+                        className={classNames(
+                          styles['details__colors-circle'],
+                          {
+                            [styles['details__colors-circle--active']]:
+                              activeColor === color,
+                          },
+                        )}
+                        style={{ backgroundColor: `${color}` }}
+                      ></div>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className={styles.details__capacity}>
+                <p className={styles['details__capacity-header']}>
+                  Select capacity
+                </p>
+                <div className={styles['details__capacity-container']}>
+                  {findProduct?.capacityAvailable.map(capacity => {
+                    return (
+                      <div
+                        onClick={() => setActiveMemory(capacity)}
+                        key={capacity}
+                        className={classNames(
+                          styles['details__capacity-memory'],
+                          {
+                            [styles['details__capacity-memory--active']]:
+                              capacity === activeMemory,
+                          },
+                        )}
+                      >
+                        {capacity}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className={styles.details__price}>
+                <p className={styles['details__price-discount']}>
+                  {`$${findProduct?.priceDiscount}`}
+                </p>
+                <p className={styles['details__price-regular']}>
+                  {`$${findProduct?.priceRegular}`}
+                </p>
+              </div>
+              <div className={styles.details__buttons}>
+                <button
+                  onClick={() => {
+                    if (findCartProduct) {
+                      addItem({
+                        id: findCartProduct?.id.toString(),
+                        name: findCartProduct.name,
+                        price: findCartProduct.price,
+                        quantity: 1,
+                        image: findCartProduct.image,
                       });
                     }
-                  }
-                }}
-                className={styles.details__heart}
-                src={
-                  findFav?.id === findProduct?.id
-                    ? './icons/FavouritesFilled.svg'
-                    : './icons/Favourite.svg'
-                }
-                alt="heart-icon"
-              />
-            </button>
+                  }}
+                >
+                  {findCartProduct !== undefined
+                    ? 'Added to cart'
+                    : 'Add to cart'}
+                </button>
+                <button className={styles.details__favourites}>
+                  <img
+                    onClick={() => {
+                      if (findProduct) {
+                        if (findFav !== undefined) {
+                          removeFavourite(findFav.id);
+                        } else {
+                          addFavourite({
+                            name: findProduct.name,
+                            images: findProduct.images[0],
+                            priceDiscount: findProduct.priceDiscount,
+                            priceRegular: findProduct.priceRegular,
+                            screen: findProduct.screen,
+                            ram: findProduct.ram,
+                            capacity: findProduct.capacity,
+                            id: findProduct.id,
+                            category: findProduct.category,
+                          });
+                        }
+                      }
+                    }}
+                    className={styles.details__heart}
+                    src={
+                      findFav?.id === findProduct?.id
+                        ? './icons/FavouritesFilled.svg'
+                        : './icons/Favourite.svg'
+                    }
+                    alt="heart-icon"
+                  />
+                </button>
+              </div>
+            </div>
           </div>
           <div className={styles.details__specification}>
             <div className={styles['details__specification-container']}>

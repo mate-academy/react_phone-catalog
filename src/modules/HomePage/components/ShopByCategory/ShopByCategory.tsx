@@ -12,24 +12,26 @@ export const ShopByCategory = () => {
   return (
     <div className={styles.catalog}>
       <h2 className={styles.catalog__header}>Shop by category</h2>
-      <CategoryItem
-        linkTo={'/phones'}
-        header={'Mobile phones'}
-        image={'./img/category-phones.png'}
-        productsCount={phonesCount}
-      />
-      <CategoryItem
-        linkTo={'/tablets'}
-        header={'Tablets'}
-        image={'./img/category-tablets.png'}
-        productsCount={tabletsCount}
-      />
-      <CategoryItem
-        linkTo={'/accessories'}
-        header={'Accessories'}
-        image={'./img/category-accessories.png'}
-        productsCount={accessoriesCount}
-      />
+      <div className={styles.catalog__container}>
+        <CategoryItem
+          linkTo={'/phones'}
+          header={'Mobile phones'}
+          image={'./img/category-phones.png'}
+          productsCount={phonesCount}
+        />
+        <CategoryItem
+          linkTo={'/tablets'}
+          header={'Tablets'}
+          image={'./img/category-tablets.png'}
+          productsCount={tabletsCount}
+        />
+        <CategoryItem
+          linkTo={'/accessories'}
+          header={'Accessories'}
+          image={'./img/category-accessories.png'}
+          productsCount={accessoriesCount}
+        />
+      </div>
     </div>
   );
 };

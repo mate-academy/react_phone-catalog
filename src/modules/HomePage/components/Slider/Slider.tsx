@@ -45,7 +45,10 @@ export const Slider = () => {
       <div className={styles.slider}>
         <div className={styles.slider__container}>
           <button onClick={previousImage} className={styles.slider__buttons}>
-            <img src="./icons/ArrowLeft.svg" />
+            <img
+              className={styles['slider__buttons-image']}
+              src="./icons/ArrowLeft.svg"
+            />
           </button>
           <div className={styles['slider__image-container']}>
             {images.map(image => {
@@ -73,7 +76,10 @@ export const Slider = () => {
             })}
           </div>
           <button onClick={nextImage} className={styles.slider__buttons}>
-            <img src="./icons/ArrowRight.svg" />
+            <img
+              className={styles['slider__buttons-image']}
+              src="./icons/ArrowRight.svg"
+            />
           </button>
         </div>
         <div className={styles.slider__navigation}>
