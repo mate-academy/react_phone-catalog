@@ -1,0 +1,9 @@
+{
+  "sortByLabel": "Sort by",
+  "sortNewest": "Newest",
+  "sortPrice": "Price",
+  "sortName": "Name",
+  "itemsOnPageLabel": "Items on page",
+  "allItemsLabel": "All",
+  "modelsCount": "{{count}} models"
+}

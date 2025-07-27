@@ -1,6 +1,12 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "compilerOptions": {
-    "sourceMap": false
-  }
+    "sourceMap": false,
+    "types": ["cypress", "node"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  },
+  "include": ["./**/*"]
 }

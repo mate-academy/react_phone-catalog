@@ -1,0 +1,8 @@
+{
+  "title": "Кошик",
+  "emptyMessage": "Ваш кошик порожній",
+  "totalLabel": "Усього за {{count}} товар",
+  "totalLabel_plural": "Усього за {{count}} товари",
+  "checkoutButton": "Оформити замовлення",
+  "orderConfirmed": "Замовлення підтверджено! Дякуємо за покупку!"
+}

@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import './typography.css';
+@config '../../tailwind.config.js';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  display: block;
+}
+
+#root {
+  margin: 0 auto;
+}
+
+.app {
+  width: 100%;
+  margin: 0 auto;
+}
+
+ul,
+ol {
+  list-style: none;
+}
