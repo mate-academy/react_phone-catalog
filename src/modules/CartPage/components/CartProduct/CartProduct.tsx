@@ -18,7 +18,7 @@ export const CartProduct = ({ id, name, price, quantity, image }: Props) => {
         <img
           className={styles.product__remove}
           onClick={() => removeItem(id)}
-          src="/icons/Close.svg"
+          src="./icons/Close.svg"
           alt="close"
         />
         <img

@@ -47,7 +47,7 @@ export const Pagination = ({ total, getPages }: Props) => {
           >
             <img
               className={styles.paggination__arrows}
-              src="public/icons/ArrowLeft.svg"
+              src="./icons/ArrowLeft.svg"
               alt="arrow back"
             />
           </button>
@@ -107,7 +107,7 @@ export const Pagination = ({ total, getPages }: Props) => {
           >
             <img
               className={styles.paggination__arrows}
-              src="public/icons/ArrowRight.svg"
+              src="./icons/ArrowRight.svg"
               alt="arrow forward"
             />
           </button>

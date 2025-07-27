@@ -48,14 +48,14 @@ export const ProductSlider = ({ products, header }: Props) => {
             onClick={() => handleScrool(-ITEM_WIDTH)}
             className={styles.slider__button}
           >
-            <img src="public/icons/ArrowLeft.svg" alt="" />
+            <img src="./icons/ArrowLeft.svg" alt="" />
           </button>
 
           <button
             onClick={() => handleScrool(ITEM_WIDTH)}
             className={styles.slider__button}
           >
-            <img src="public/icons/ArrowRight.svg" alt="" />
+            <img src="./icons/ArrowRight.svg" alt="" />
           </button>
         </div>
       </div>

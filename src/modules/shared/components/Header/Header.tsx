@@ -50,14 +50,14 @@ export const Header = () => {
           <Link className={styles.header__fav} to="/favourites">
             <img
               className={styles['header__fav-image']}
-              src="/icons/Favourite.svg"
+              src="./icons/Favourite.svg"
               alt="favourite-image"
             />
           </Link>
           <Link className={styles.header__cart} to="/cart">
             <img
               className={styles['header__cart-image']}
-              src="/icons/Cart.svg"
+              src="./icons/Cart.svg"
               alt="cart-image"
             />
           </Link>
@@ -73,7 +73,7 @@ export const Header = () => {
         >
           <img
             className={styles['header__button-image']}
-            src="public/icons/Menu.svg"
+            src="./icons/Menu.svg"
             alt="menu button"
           />
         </Link>

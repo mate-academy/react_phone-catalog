@@ -15,19 +15,19 @@ export const ShopByCategory = () => {
       <CategoryItem
         linkTo={'/phones'}
         header={'Mobile phones'}
-        image={'public/img/category-phones.png'}
+        image={'./img/category-phones.png'}
         productsCount={phonesCount}
       />
       <CategoryItem
         linkTo={'/tablets'}
         header={'Tablets'}
-        image={'public/img/category-tablets.png'}
+        image={'./img/category-tablets.png'}
         productsCount={tabletsCount}
       />
       <CategoryItem
         linkTo={'/accessories'}
         header={'Accessories'}
-        image={'public/img/category-accessories.png'}
+        image={'./img/category-accessories.png'}
         productsCount={accessoriesCount}
       />
     </div>

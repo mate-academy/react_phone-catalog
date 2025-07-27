@@ -83,7 +83,7 @@ export const ProductDetailsPage = ({ category }: Params) => {
             secondPath={findProduct?.name ?? ''}
           />
           <button className={styles.details__back} onClick={() => navigate(-1)}>
-            <img src="/icons/ArrowLeft.svg" alt="back-arrow" />
+            <img src="./icons/ArrowLeft.svg" alt="back-arrow" />
             Back
           </button>
           <h1 className={styles.details__title}>{findProduct?.name}</h1>
@@ -204,8 +204,8 @@ export const ProductDetailsPage = ({ category }: Params) => {
                 className={styles.details__heart}
                 src={
                   findFav?.id === findProduct?.id
-                    ? '/icons/FavouritesFilled.svg'
-                    : '/icons/Favourite.svg'
+                    ? './icons/FavouritesFilled.svg'
+                    : './icons/Favourite.svg'
                 }
                 alt="heart-icon"
               />

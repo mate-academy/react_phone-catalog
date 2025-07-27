@@ -32,7 +32,7 @@ export const CartPage = () => {
   return (
     <div className={styles.cart}>
       <button className={styles.cart__back} onClick={() => navigate(-1)}>
-        <img src="/icons/ArrowLeft.svg" alt="back-arrow" />
+        <img src="./icons/ArrowLeft.svg" alt="back-arrow" />
         Back
       </button>
       <h2 className={styles.cart__title}>Cart</h2>

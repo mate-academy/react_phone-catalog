@@ -105,8 +105,8 @@ export const ProductCard = ({
             className={styles.card__heart}
             src={
               findFav?.id === id
-                ? '/icons/FavouritesFilled.svg'
-                : '/icons/Favourite.svg'
+                ? './icons/FavouritesFilled.svg'
+                : './icons/Favourite.svg'
             }
             alt="heart-icon"
           />

@@ -10,15 +10,15 @@ export const Breadcrumbs = ({ firstPath, secondPath }: Props) => {
   return (
     <div className={styles.breadcrumbs}>
       <Link className={styles.breadcrumbs__link} to={'/'}>
-        <img src="public/icons/Home.svg" alt="home icon" />
+        <img src="./icons/Home.svg" alt="home icon" />
       </Link>
-      <img src="public/icons/ArrowRight.svg" alt="arrow right icon" />
+      <img src="./icons/ArrowRight.svg" alt="arrow right icon" />
       <Link to={`/${firstPath}`} className={styles.breadcrumbs__text}>
         {firstPath}
       </Link>
       {secondPath ? (
         <>
-          <img src="public/icons/ArrowRight.svg" alt="arrow right icon" />
+          <img src="./icons/ArrowRight.svg" alt="arrow right icon" />
           <p className={styles.breadcrumbs__text}>{secondPath}</p>
         </>
       ) : null}
