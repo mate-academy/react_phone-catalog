@@ -29,7 +29,7 @@ const FavouriteContext = createContext<FavouriteContextType | undefined>(
   undefined,
 );
 
-const LOCAL_STORAGE_KEY = 'cartItems';
+const LOCAL_STORAGE_KEY = 'favItems';
 
 export const FavouriteProvider = ({ children }: { children: ReactNode }) => {
   const [favouriteItems, setFavouriteItems] = useState<FavouriteItem[]>(() => {
