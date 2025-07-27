@@ -87,9 +87,21 @@
     }
   }
 
-  &__empty--img {
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+
+    &--img {
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+
     @media (max-width: $tablet) {
       display: none;
     }
+  }
   }
 }

@@ -32,7 +32,7 @@ export const Pagination: React.FC<Props> = ({
             'pagination__link--disabled': isPrevDisabled,
           })}
         >
-          <img src="../../public/img/icons/SliderLeft.png" alt="Prev" />
+          <img src="/img/icons/SliderLeft.svg" alt="Prev" />
         </button>
       </li>
 
@@ -87,7 +87,7 @@ export const Pagination: React.FC<Props> = ({
             'pagination__link--disabled': isNextDisabled,
           })}
         >
-          <img src="../../public/img/icons/SliderRight.png" alt="Next" />
+          <img src="/img/icons/SliderRight.svg" alt="Next" />
         </button>
       </li>
     </ul>
