@@ -13,7 +13,7 @@ export const Header = () => {
       <div className={styles.header}>
         <div className={styles.header__links}>
           <Link to="/">
-            <img className={styles.header__logo} src="icons/Logo.svg" />
+            <img className={styles.header__logo} src="/image/Logo.svg" />
           </Link>
           <ul
             className={cn(styles.header__nav, {
