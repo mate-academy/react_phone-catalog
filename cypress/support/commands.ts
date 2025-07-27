@@ -1,63 +1,32 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+/// <reference types="jquery" />
 
-export {};
-
+// Типи для автодоповнення
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
-    interface Chainable<Subject> {
-      getByDataCy(selector: string): Chainable<JQuery<HTMLElement>>;
-      byDataCy(name: string): Chainable<JQuery<HTMLElement>>;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    interface Chainable<Subject = unknown> {
+      getByDataCy(selector: string): Chainable<unknown>;
+      byDataCy(name: string): Chainable<unknown>;
     }
   }
 }
 
+// @ts-expect-error - ігноруємо TypeScript помилки для команд
 Cypress.Commands.add('getByDataCy', selector => {
-  cy.get(`[data-cy="${selector}"]`);
+  return cy.get(`[data-cy="${selector}"]`);
 });
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 Cypress.Commands.add(
   'byDataCy',
   { prevSubject: 'optional' },
-
-  (subject, name) => {
+  (subject: JQuery<HTMLElement> | undefined, name: string) => {
     const selector = `[data-cy="${name}"]`;
-
     return subject ? cy.wrap(subject).find(selector) : cy.get(selector);
   },
 );
+
+export {};

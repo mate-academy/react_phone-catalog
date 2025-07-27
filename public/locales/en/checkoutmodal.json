@@ -1,0 +1,9 @@
+{
+  "title": "Checkout",
+  "totalLabel": "Total for {{count}} item",
+  "totalLabel_plural": "Total for {{count}} items",
+  "message": "Are you ready to proceed with your order?",
+  "confirm": "Confirm Order",
+  "clear": "Clear Cart",
+  "cancel": "Cancel"
+}
