@@ -1,0 +1,188 @@
+@use '../../styles/variables/colors/colors' as colors;
+
+.btn-reset {
+  all: unset;
+}
+
+.sort {
+  width: 136px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+
+  @media (min-width: 640px) {
+    width: 187px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 176px;
+  }
+
+  &-content {
+    width: 136px;
+    box-sizing: border-box;
+    padding-block: 8px;
+
+    @media (min-width: 640px) {
+      width: 187px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 176px;
+    }
+  }
+}
+
+.paginator {
+  width: 136px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+
+  @media (min-width: 1200px) {
+    width: 128px;
+  }
+
+  &-content {
+    width: 136px;
+    box-sizing: border-box;
+    padding-block: 8px;
+
+    @media (min-width: 1200px) {
+      width: 128px;
+    }
+  }
+}
+
+.language {
+  width: 44px;
+  height: 20px;
+  font-size: 12px;
+
+  &-content {
+    font-size: 12px;
+    padding-block: 2px;
+  }
+}
+
+.dropdown__name {
+  color: colors.$color-secondary;
+}
+
+.SelectTrigger {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 0 12px;
+  gap: 5px;
+  box-shadow: 0 2px 10px var(--black-a7);
+}
+.SelectTrigger--light {
+  background-color: colors.$color-bg-app-light-mode;
+  color: colors.$color-primary;
+  border: 1px solid colors.$color-icons;
+
+  span {
+    color: colors.$color-primary;
+  }
+
+  &:hover {
+    border: 1px solid colors.$color-secondary;
+  }
+
+  &:focus {
+    border: 1px solid colors.$color-primary;
+  }
+}
+
+.SelectTrigger--dark {
+  background-color: colors.$color-added-button-dark-mode;
+
+  span {
+    color: colors.$color-primary-dark-mode;
+  }
+
+  &:hover {
+    border: 1px solid colors.$color-secondary;
+  }
+
+  &:focus {
+    border: 1px solid colors.$color-accent-dark-mode;
+  }
+}
+
+.SelectTrigger[data-placeholder] {
+  color: var(--violet-9);
+}
+
+.icon-chewron-down {
+  background-image: url(../../images/icons/chevron_arrow_down.svg);
+  height: 16px;
+  width: 16px;
+}
+
+.icon-chewron-up {
+  background-image: url(../../images/icons/chevron_arrow_up.svg);
+  height: 16px;
+  width: 16px;
+}
+
+.SelectContent {
+  margin-top: 4px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow:
+    0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+    0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  z-index: 9999;
+}
+
+.SelectContent--light {
+  background-color: colors.$color-bg-app-light-mode;
+  border: 1px solid colors.$color-icons;
+}
+
+.SelectContent--dark {
+  border: 1px solid colors.$color-added-button-dark-mode;
+  background-color: colors.$color-bg-app-dark-mode;
+  color: colors.$color-primary-dark-mode;
+}
+
+.SelectItem {
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  user-select: none;
+}
+
+.SelectItem[data-disabled] {
+  pointer-events: none;
+}
+.SelectItem[data-highlighted] {
+  outline: none;
+}
+
+.SelectItem--light {
+  color: colors.$color-secondary;
+
+  &:hover {
+    color: colors.$color-primary;
+    background-color: colors.$color-hover-bg;
+  }
+}
+
+.SelectItem--dark {
+  color: colors.$color-primary-dark-mode;
+
+  &:hover {
+    color: colors.$color-primary-dark-mode;
+    background-color: colors.$color-button-arrow-hover-dark-mode;
+  }
+}

@@ -1,0 +1,110 @@
+@use '../../styles/variables/colors' as colors;
+
+.product-image-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: 1/-1;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: flex-start;
+    grid-column: 1/7;
+  }
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    align-items: flex-start;
+    grid-column: 1/12;
+  }
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    @media (min-width: 640px) {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  &__thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border: 1px solid colors.$color-elements;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &.selected {
+      border-color: colors.$color-primary;
+    }
+
+    &.light {
+      background: colors.$color-bg-app-light-mode;
+    }
+    &.dark {
+      background: colors.$color-bg-app-dark-mode;
+    }
+
+    img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+    }
+  }
+
+  &__main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #fff;
+    &.light {
+      background: #fff;
+    }
+    &.dark {
+      background: colors.$color-bg-app-dark-mode;
+    }
+  }
+}
+
+.product-image-slider--light {
+  .product-image-slider__main-img,
+  .product-image-slider__thumbnail {
+    background: colors.$color-bg-app-light-mode;
+  }
+  .product-image-slider__thumbnail {
+    border: 1px solid colors.$color-elements;
+    &.selected {
+      border-color: colors.$color-primary;
+    }
+  }
+}
+
+.product-image-slider--dark {
+  .product-image-slider__main-img,
+  .product-image-slider__thumbnail {
+    background: colors.$color-bg-app-dark-mode;
+  }
+  .product-image-slider__thumbnail {
+    border: 1px solid #3b3e4a;
+    &.selected {
+      border-color: colors.$color-text-button-dark-mode;
+    }
+  }
+}
+
+.product-image-slider__thumbnails {
+  order: 2;
+}
+
+@media (min-width: 640px) {
+  .product-image-slider__main,
+  .product-image-slider__thumbnails {
+    order: unset;
+  }
+}

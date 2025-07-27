@@ -1,0 +1,37 @@
+@use '../../styles/variables/colors/colors' as color;
+
+.header__logo {
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  img.logo {
+    width: 80px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header__logo {
+    padding: 13px 16px;
+
+    img.logo {
+      width: 64px;
+      height: 22px;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .header__logo {
+    padding: 13px 16px;
+
+    img.logo {
+      width: 64px;
+      height: 22px;
+    }
+  }
+}

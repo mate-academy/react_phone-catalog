@@ -1,0 +1,66 @@
+@use '../../styles/variables/colors/colors' as color;
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+
+  &__item {
+    display: flex;
+  }
+
+  &__number {
+    font-family: inherit;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    text-align: center;
+
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--light {
+      border: 1px solid color.$color-icons;
+      color: color.$color-primary;
+
+      &:hover {
+        border: 1px solid color.$color-primary;
+      }
+    }
+
+    &--dark {
+      background-color: color.$color-bg-card-dark-mode;
+      color: color.$color-text-button-dark-mode;
+
+      &:hover {
+        background-color: color.$color-button-pagination-dark-mode;
+      }
+    }
+
+    &--active--light {
+      background-color: color.$color-primary;
+      color: color.$color-bg-app-light-mode;
+    }
+
+    &--active--dark {
+      background-color: color.$color-accent-dark-mode;
+    }
+  }
+}

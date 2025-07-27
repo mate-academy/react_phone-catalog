@@ -1,0 +1,46 @@
+@use '../../styles/variables/colors/colors' as colors;
+
+.techspecs {
+  padding-top: 25px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  &__name {
+    text-align: left;
+  }
+
+  &__value {
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.techspecs.product-info-page--light {
+  .techspecs__name {
+    color: colors.$color-secondary;
+  }
+  .techspecs__value {
+    color: colors.$color-primary;
+  }
+}
+
+.techspecs--dark {
+  .techspecs__name {
+    color: colors.$color-secondary-dark-mode;
+  }
+  .techspecs__value {
+    color: colors.$color-primary-dark-mode;
+  }
+}

@@ -1,0 +1,10 @@
+.url-back {
+  display: flex;
+  gap: 4px;
+
+  &__icon-arrow {
+    background-image: url('../../images/icons/chevron_arrow_left.svg');
+    height: 16px;
+    width: 16px;
+  }
+}

@@ -1,0 +1,58 @@
+@use '../../styles/variables/colors/colors' as colors;
+
+.icon-container {
+  position: relative;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  padding-inline: 24px;
+  pointer-events: none;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-image: url('../../images/icons/shopping_bag_cart.svg');
+
+  &__counter-header {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 9px;
+    text-align: center;
+    bottom: 50%;
+    left: 50%;
+  }
+}
+
+.icon-container--light {
+  .icon__counter-header {
+    background-color: colors.$color-accent;
+  }
+}
+
+.icon__favorites {
+  background-image: url('../../images/icons/favourites_heart_like.svg');
+}
+
+.icon__card {
+  background-image: url('../../images/icons/shopping_bag_cart.svg');
+}
+
+.icon-container--dark {
+  .icon__counter-header {
+    background-color: colors.$color-red;
+  }
+
+  .icon__favorites {
+    background-image: url('../../images/icons/Favourites_dark_mode.svg');
+  }
+
+  .icon__card {
+    background-image: url('../../images/icons/shoping_bag_dark.svg');
+  }
+}

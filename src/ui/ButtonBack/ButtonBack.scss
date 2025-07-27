@@ -1,0 +1,19 @@
+@use '../../styles/variables/colors' as colors;
+
+.button {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: none;
+  background-color: #fff;
+
+  &__title {
+    color: colors.$color-secondary;
+
+    &:hover {
+      color: colors.$color-primary;
+    }
+  }
+}

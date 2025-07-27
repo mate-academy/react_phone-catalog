@@ -1,0 +1,65 @@
+@use '../../styles/variables/colors/colors' as color;
+
+.navigation-categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+
+  li {
+    height: 100%;
+  }
+
+  @media (max-width: 1199px) and (min-width: 685px) {
+    gap: 32px;
+  }
+
+  @media (max-width: 684px) and (min-width: 639px) {
+    gap: 16px;
+  }
+}
+
+.navigation-categories-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+
+  li {
+    height: 27px;
+  }
+}
+
+.link {
+  display: flex;
+  text-transform: uppercase;
+  color: color.$color-secondary;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 4%;
+  font-size: 12px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.navigation--light {
+  .link {
+    color: color.$color-secondary;
+
+    &__active {
+      color: color.$color-primary;
+      border-bottom: 3px solid color.$color-primary;
+    }
+  }
+}
+
+.navigation--dark {
+  .link {
+    &__active {
+      color: color.$color-primary-dark-mode;
+      border-bottom: 3px solid color.$color-primary-dark-mode;
+    }
+  }
+}

@@ -1,1 +1,108 @@
-// not empty
+@use './styles/variables/colors/colors' as colors;
+
+html {
+  scroll-behavior: smooth;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  grid-auto-rows: max-content;
+  padding-inline: 16px;
+  margin-top: 64px;
+  box-sizing: border-box;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(24, 32px);
+    justify-content: center;
+  }
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  font-family: 'Mont', sans-serif;
+
+  &--light {
+    background-color: colors.$color-bg-app-light-mode;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: colors.$color-primary;
+    }
+
+    p {
+      color: colors.$color-primary;
+    }
+
+    span {
+      color: colors.$color-secondary;
+    }
+
+    footer {
+      box-shadow: 0 -1px 0 0 colors.$color-elements;
+
+      a {
+        color: colors.$color-secondary;
+        font-weight: 800;
+
+        letter-spacing: 0.04em;
+
+        &:hover {
+          color: colors.$color-primary;
+        }
+      }
+    }
+
+    hr {
+      border: 1px solid colors.$color-elements;
+    }
+  }
+
+  &--dark {
+    background-color: colors.$color-bg-app-dark-mode;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: colors.$color-primary-dark-mode;
+    }
+
+    p {
+      color: colors.$color-primary-dark-mode;
+    }
+
+    span {
+      color: colors.$color-secondary-dark-mode;
+    }
+
+    footer {
+      border-top: 1px solid #3b3e4a;
+
+      a {
+        letter-spacing: 0.04em;
+        font-weight: 800;
+
+        color: #f1f2f9;
+      }
+    }
+    hr {
+      border: 1px solid #3b3e4a;
+    }
+  }
+}
+
+.section {
+  flex: 1 0 auto;
+}

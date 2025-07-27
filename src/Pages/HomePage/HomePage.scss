@@ -1,0 +1,19 @@
+.slider-for-product,
+.categories,
+.banner-slider,
+.page-title {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.page-title {
+  margin-block: 56px;
+
+  @media (max-width: 1199px) {
+    margin-block: 32px;
+  }
+
+  @media (max-width: 639px) {
+    margin-block: 24px;
+  }
+}

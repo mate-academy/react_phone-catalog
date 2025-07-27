@@ -1,0 +1,34 @@
+@use '../../../styles/variables/colors' as colors;
+@use '../../../styles/variables/fonts' as fonts;
+
+.pagination-btn {
+  font-family: 'Mont', sans-serif;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid colors.$color-elements;
+  color: colors.$color-primary;
+  background-color: transparent;
+  transition: all 0.5s ease;
+  cursor: pointer;
+
+  &:hover {
+    border-color: colors.$color-primary;
+    color: colors.$color-primary;
+  }
+
+  &--selected {
+    background-color: colors.$color-primary;
+    color: colors.$color-hover-bg;
+    border: none;
+
+    &:hover {
+      color: colors.$color-hover-bg;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

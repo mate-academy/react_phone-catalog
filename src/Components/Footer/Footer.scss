@@ -1,0 +1,70 @@
+@use '../../styles/variables/colors/colors' as color;
+
+.footer {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  grid-auto-rows: max-content;
+  padding-inline: 16px;
+  margin-top: 56px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 24px;
+    margin-top: 64px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(24, 32px);
+    justify-content: center;
+    margin-top: 80px;
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    margin-block: 32px;
+    grid-column: 1/-1;
+
+    @media (min-width: 640px) {
+      flex-direction: row;
+      gap: 0;
+      align-items: center;
+      & > * {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+
+    @media (min-width: 640px) {
+      flex-direction: row;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  &__to-top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @media (min-width: 640px) {
+      justify-content: flex-end;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Vitalii Storcheus",
+    "role": "Team Lead & Frontend Developer",
+    "info": "To me, clean code isn’t just a habit — it’s a culture. I lead teams not by controlling, but by guiding: with patience, precision, and purpose. Every pull request is a chance to raise the bar — and I make sure we never lower it.",
+    "linkedin": "https://www.linkedin.com/in/vitalii-storcheus-057663368/",
+    "photo": "img/authors/vitalii.webp"
+  },
+  {
+    "id": 2,
+    "name": "Viktoriia Zabolotnia",
+    "role": "PM & Frontend Developer",
+    "info": "Can connect anything you need to localStorage. Advocates for clean code and clear structure. Always thinking about the team and the user.",
+    "linkedin": "https://www.linkedin.com/in/viktorija-z-38a5b4208/",
+    "photo": "img/authors/viktoriia.webp"
+  },
+  {
+    "id": 3,
+    "name": "Roman Osadko",
+    "role": "Frontend Developer",
+    "info": "Implements any element without unnecessary words or panic. Passionate about frontend and always able to inspire others.",
+    "linkedin": "https://www.linkedin.com/in/%D1%80%D0%BE%D0%BC%D0%B0%D0%BD-%D0%BE%D1%81%D0%B0%D0%B4%D1%8C%D0%BA%D0%BE-a92568368/",
+    "photo": "img/authors/roman.webp"
+  },
+  {
+    "id": 4,
+    "name": "Yaroslav Rudenko",
+    "role": "Frontend Developer",
+    "info": "Able to find countless ways to reuse components. Has a strong understanding of how to make app logic simpler and more comfortable for the user.",
+    "linkedin": "https://www.linkedin.com/in/%D1%8F%D1%80%D0%BE%D1%81%D0%BB%D0%B0%D0%B2-%D1%80%D1%83%D0%B4%D0%B5%D0%BD%D0%BA%D0%BE-a6aa541aa/",
+    "photo": "img/authors/yaroslav.webp"
+  }
+]
