@@ -1,19 +1,9 @@
 import { Link } from 'react-router-dom';
+import { PhoneInfoType } from '../../types/PhoneInfoType';
 import './phoneCard.scss';
 
-type ProductInfo = {
-  id: string;
-  name: string;
-  priceRegular: number;
-  priceDiscount: number;
-  capacity: string;
-  ram: string;
-  screen: string;
-  images: string[];
-};
-
 type Props = {
-  product: ProductInfo;
+  product: PhoneInfoType;
   showDiscount?: boolean;
 };
 
@@ -33,7 +23,7 @@ export const PhoneCard: React.FC<Props> = ({ product, showDiscount }) => {
         <div className="device-photo">
           <img className="photo" src={titleModelPhoto} alt="device photo" />
         </div>
-        <div className='name-container'>
+        <div className="name-container">
           <div className="name">{modelName}</div>
         </div>
       </Link>
@@ -68,7 +58,7 @@ export const PhoneCard: React.FC<Props> = ({ product, showDiscount }) => {
 
       <div className="add-favourites-container">
         <div className="add-button has-shadow-cursor">
-          <div className="button-text">Add to card</div>
+          <p className="button-text">Add to card</p>
         </div>
 
         <div className="favourites-button has-shadow-cursor">

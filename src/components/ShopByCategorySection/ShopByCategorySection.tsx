@@ -4,11 +4,19 @@ import './shopByCategorySection.scss';
 
 type Props = {
   title: string;
+  totalPhoneModels: number;
+  totalTabletsModels: number;
+  totalAccessoriesModels: number;
 };
 
-export const ShopByCategorySection: React.FC<Props> = ({ title }) => {
+export const ShopByCategorySection: React.FC<Props> = ({
+  title,
+  totalPhoneModels,
+  totalTabletsModels,
+  totalAccessoriesModels,
+}) => {
   return (
-    <div className='category-block'>
+    <div className="category-block">
       <h2>{title}</h2>
 
       <div className="section-link-block">
@@ -21,9 +29,13 @@ export const ShopByCategorySection: React.FC<Props> = ({ title }) => {
             />
           </Link>
 
-          <h4>Mobile phones</h4>
+          <div className='category-properties'>
+            <h4>Mobile phones</h4>
 
-          <div className="total-models"></div>
+            <p className='main-body-text-14'>
+              {totalPhoneModels} mldels
+            </p>
+          </div>
         </div>
 
         <div className="link-container">
@@ -34,10 +46,13 @@ export const ShopByCategorySection: React.FC<Props> = ({ title }) => {
               alt="category tablets"
             />
           </Link>
+          <div className='category-properties'>
+            <h4>Tablets</h4>
 
-          <h4>Tablets</h4>
-
-          <div className="total-models"></div>
+            <p className='main-body-text-14'>
+              {totalTabletsModels} mldels
+            </p>
+          </div>
         </div>
 
         <div className="link-container">
@@ -48,10 +63,13 @@ export const ShopByCategorySection: React.FC<Props> = ({ title }) => {
               alt="category accessories"
             />
           </Link>
+          <div className='category-properties'>
+            <h4>Accessories</h4>
 
-          <h4>Accessories</h4>
-
-          <div className="total-models"></div>
+            <p className='main-body-text-14'>
+              {totalAccessoriesModels} models
+            </p>
+          </div>
         </div>
       </div>
     </div>

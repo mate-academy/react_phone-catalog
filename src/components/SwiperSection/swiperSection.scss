@@ -57,10 +57,14 @@
     align-items: center;
     height: 32px;
     width: 32px;
-    
+
     border-radius: 50%;
     border: 1px solid $border-color;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: $main-bg-color;
+    }
   }
 
   .arrow--disabled {

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,38 +6,32 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { PhoneCard } from '../PhoneCard';
 import './swiperSection.scss';
-
-
-type ProductInfo = {
-  id: string;
-  name: string;
-  priceRegular: number;
-  priceDiscount: number;
-  capacity: string;
-  ram: string;
-  screen: string;
-  images: string[];
-};
+import { PhoneInfoType } from '../../types/PhoneInfoType';
 
 type Props = {
   title: string;
-  phones: ProductInfo[];
+  phones: PhoneInfoType[];
   showDiscount?: boolean;
-}
+};
 
-export const SwiperSection: React.FC<Props> = ({ title, phones, showDiscount }) => {
+export const SwiperSection: React.FC<Props> = ({
+  title,
+  phones,
+  showDiscount,
+}) => {
   const id = title.toLowerCase().replace(/\s/g, '-');
 
   return (
     <div className="swiper-section-wrapper">
       <div className="title-swiper-container">
-        <div className='section-title'>
-
-        <h2>{title}</h2>
+        <div className="section-title">
+          <h2>{title}</h2>
         </div>
 
         <div className="mini-swiper">
-          <div className={`arrow arrow--left arrow--left-${id} has-shadow-cursor`}>
+          <div
+            className={`arrow arrow--left arrow--left-${id} has-shadow-cursor`}
+          >
             <img
               className="icon"
               src="./img/icons/ArrowLeft.svg"
@@ -46,7 +39,9 @@ export const SwiperSection: React.FC<Props> = ({ title, phones, showDiscount }) 
             />
           </div>
 
-          <div className={`arrow arrow--right arrow--right-${id} has-shadow-cursor`}>
+          <div
+            className={`arrow arrow--right arrow--right-${id} has-shadow-cursor`}
+          >
             <img
               className="icon"
               src="./img/icons/ArrowRight.svg"
@@ -69,7 +64,7 @@ export const SwiperSection: React.FC<Props> = ({ title, phones, showDiscount }) 
       >
         {phones.map(phone => (
           <SwiperSlide key={phone.id}>
-            <PhoneCard product={phone} showDiscount={showDiscount}/>
+            <PhoneCard product={phone} showDiscount={showDiscount} />
           </SwiperSlide>
         ))}
       </Swiper>

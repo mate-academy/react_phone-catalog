@@ -5,6 +5,7 @@
   height: 439px;
   padding: 32px;
   gap: 8px;
+  background-color: $main-bg-color;
 
   box-sizing: border-box;
   border: 1px solid $border-color;
@@ -26,6 +27,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    // gap: 8px;
 
     min-height: 0;
 
@@ -45,7 +47,7 @@
         transition: transform 0.3s ease;
 
         &:hover {
-          transform: scale(1.15);
+          transform: scale(1.1);
         }
       }
     }
@@ -112,26 +114,20 @@
   .add-favourites-container {
     display: flex;
     justify-content: space-between;
+    gap: 8px;
 
     .add-button {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 40px;
-      width: 100px;
+      width: 100%;
       background-color: rgba(33, 108, 255, 1);
       border-radius: 8px;
-
-      .button-text {
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 21px;
-        color: #fff;
-      }
     }
 
     .favourites-button {
       display: flex;
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
       height: 40px;

@@ -74,7 +74,20 @@ h2 {
 h4 {
   font-weight: 700;
   font-size: 20px;
-  line-height: 100%;
+}
+
+.main-body-text-14 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $text-not-active-color;
+}
+
+.button-text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #fff;
 }
 
 .has-shadow-cursor {

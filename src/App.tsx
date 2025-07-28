@@ -6,60 +6,63 @@ import { BannerSwiper } from './components/BannerSwiper';
 import { Header } from './components/Header';
 import { ShopByCategorySection } from './components/ShopByCategorySection';
 import { SwiperSection } from './components/SwiperSection';
-// import { PhoneCard } from './components/PhoneCard';
+import { PhoneInfoType } from './types/PhoneInfoType';
+import { TabletInfoType } from './types/TabletInfoType';
+import { AccessoryInfoType } from './types/AccessoryInfoType';
 
 import './styles/style.scss';
-
-// type ProductInfo = {
-//   id: string;
-//   name: string;
-//   priceRegular: number;
-//   priceDiscount: number;
-//   capacity: string;
-//   ram: string;
-//   screen: string;
-//   images: string[];
-// };
-
-type ProductInfo = {
-  id: string;                     // Уникальный ID устройства
-  category: string;               // Категория товара (например, "tablets")
-  namespaceId: string;            // Общий ID модели (без цвета и памяти)
-  name: string;                   // Полное имя устройства
-  capacityAvailable: string[];    // Список доступных объемов памяти
-  capacity: string;               // Текущий объем памяти
-  priceRegular: number;           // Обычная цена
-  priceDiscount: number;          // Цена со скидкой
-  colorsAvailable: string[];      // Список доступных цветов
-  color: string;                  // Текущий цвет
-  images: string[];               // Пути к изображениям
-  description: {
-    title: string;                // Заголовок блока описания
-    text: string[];               // Текстовые абзацы в этом блоке
-  }[];
-  screen: string;                 // Тип экрана
-  resolution: string;             // Разрешение
-  processor: string;              // Процессор
-  ram: string;                    // Оперативная память
-  camera: string;                 // Камера
-  zoom: string;                   // Зум
-  cell: string[];                 // Сотовая связь (если есть)
-};
+import { Footer } from './components/Footer';
 
 export const App = () => {
-  const [newPhones, setNewPhones] = useState<ProductInfo[]>([]);
-  const [discountedPhones, setDiscountedPhones] = useState<ProductInfo[]>([]);
+  const [newPhones, setNewPhones] = useState<PhoneInfoType[]>([]);
+  const [discountedPhones, setDiscountedPhones] = useState<PhoneInfoType[]>([]);
+  const [totalPhoneModels, setTotalPhoneModels] = useState(0);
+
+  const [tablets, setTablets] = useState<TabletInfoType[]>([]);
+  const [totalTabletsModels, setTotalTabletsModels] = useState(0);
+
+  const [accessories, setAccessories] = useState<AccessoryInfoType[]>([]);
+  const [totalAccessoriesModels, setTotalAccessoriesModels] = useState(0);
 
   useEffect(() => {
     fetch('/api/phones.json')
       .then(res => res.json())
-      .then((data: ProductInfo[]) => {
+      .then((data: PhoneInfoType[]) => {
         const newModels = data.filter(phone => phone.id.includes('14-pro'));
         const hotPrices = data.filter(phone => phone.id.includes('13-pro'));
-        // const allPhones = datf.filter(phone => )
+        const allPhoneModels = data.length;
 
         setNewPhones(newModels);
         setDiscountedPhones(hotPrices);
+        setTotalPhoneModels(allPhoneModels);
+      })
+      .catch(err => console.error('Ошибка загрузки телефонов:', err));
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/tablets.json')
+      .then(res => res.json())
+      .then((data: TabletInfoType[]) => {
+        const tablets = data.filter(tablet => tablet.category === 'tablets');
+        const allTabletModels = data.length;
+
+        setTotalTabletsModels(allTabletModels);
+        setTablets(tablets);
+      })
+      .catch(err => console.error('Ошибка загрузки телефонов:', err));
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/accessories.json')
+      .then(res => res.json())
+      .then((data: AccessoryInfoType[]) => {
+        const accessories = data.filter(
+          accessory => accessory.category === 'accessories',
+        );
+        const allAccessoriesModels = data.length;
+
+        setTotalAccessoriesModels(allAccessoriesModels);
+        setAccessories(accessories);
       })
       .catch(err => console.error('Ошибка загрузки телефонов:', err));
   }, []);
@@ -78,7 +81,12 @@ export const App = () => {
 
         <SwiperSection title="Brand New Models" phones={newPhones} />
 
-        <ShopByCategorySection title="Shop By Category"/>
+        <ShopByCategorySection
+          title="Shop By Category"
+          totalPhoneModels={totalPhoneModels}
+          totalTabletsModels={totalTabletsModels}
+          totalAccessoriesModels={totalAccessoriesModels}
+        />
 
         <SwiperSection
           title="Hot Prices"
@@ -86,6 +94,8 @@ export const App = () => {
           showDiscount={true}
         />
       </main>
+
+      <Footer/>
 
       {/* <Routes> */}
       {/* <Route path="/" element={<BurgerNavigation />} /> */}
