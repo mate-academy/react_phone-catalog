@@ -1,4 +1,7 @@
-@use "./utils" as *;
-@use "./Base/" as *
+@import './utils/extends';
+@import './utils/font.module';
+@import './utils/mexin.module';
+@import './utils/reset.module';
+@import './utils/varibles';
 
 

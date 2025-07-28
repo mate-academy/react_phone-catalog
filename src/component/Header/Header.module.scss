@@ -11,7 +11,7 @@ text-decoration: none;
   top: 0;
   left: 0;
 
-  background-color: #fff;
+  background-color: vars.$background-color;
   box-shadow: 0 1px 0 0 vars.$color-elements;
 
   &_hidden{
@@ -45,7 +45,7 @@ text-decoration: none;
       padding: 18px 24px;
     }
 
-    @include on-desktop-extra {
+    @include on-big-desktop {
       width: 128px;
       height: 64px;
       padding: 18px 24px;
@@ -66,7 +66,7 @@ text-decoration: none;
       height: 28px;
     }
 
-    @include on-desktop-extra {
+    @include on-big-desktop  {
       width: 80px;
       height: 28px;
     }
@@ -85,7 +85,7 @@ text-decoration: none;
       margin-left: 24px;
     }
 
-    @include on-desktop-extra {
+    @include on-big-desktop{
       display: block;
       margin-left: 24px;
     }
@@ -105,7 +105,7 @@ text-decoration: none;
       margin-left: 64px;
     }
 
-    @include on-desktop-extra {
+    @include on-big-desktop {
       margin-left: 64px;
     }
   }
@@ -117,7 +117,7 @@ text-decoration: none;
     font-weight: 700;
     line-height: 48px;
     transition: color 0.3s linear;
-    color:  vars.$color-secondary;
+    color:  vars.$color-grey;
     text-transform: uppercase;
     letter-spacing: 0.48px;
 
@@ -125,7 +125,7 @@ text-decoration: none;
       line-height: 64px;
     }
 
-    @include on-desktop-extra {
+    @include on-big-desktop {
       line-height: 64px;
     }
 
@@ -182,7 +182,7 @@ text-decoration: none;
       height: 64px;
     }
 
-    @include on-desktop-extra {
+    @include on-big-desktop {
       width: 64px;
       height: 64px;
     }
@@ -214,7 +214,7 @@ text-decoration: none;
       height: 64px;
     }
 
-    @include on-desktop-extra {
+    @include on-big-desktop {
       width: 64px;
       height: 64px;
     }
@@ -247,7 +247,7 @@ text-decoration: none;
       right: 17px;
     }
 
-    @include on-desktop-extra {
+    @include on-big-desktop {
       top: 17px;
       right: 17px;
     }

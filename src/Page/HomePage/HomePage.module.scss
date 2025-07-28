@@ -1,0 +1,33 @@
+@use './../../component/style//utils/mexin.module' as *;
+@use './../../component/style/utils/varibles' as *;
+
+.home__page {
+  margin: 25px 0 64px;
+
+  @include on-desktop {
+    margin: 56px 0 80px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    @include padding-inline;
+
+    @include on-desktop {
+      gap: 56px;
+    }
+  }
+  &__title {
+    @include on-tablet {
+      font-size: 48px;
+    }
+
+    &-break {
+      @include on-desktop {
+        display: none;
+      }
+    }
+  }
+}
