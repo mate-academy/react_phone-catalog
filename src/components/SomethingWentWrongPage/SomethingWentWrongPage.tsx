@@ -26,11 +26,7 @@ export const SomethingWentWrongPage = () => {
       <div className={styles.pageContent}>
         <h1 className={styles.pageInfo_title}>Something went wrong...</h1>
         <h2 className={styles.pageInfo_text}>Do you want to try again?</h2>
-        <button
-          className={styles.reloadButton}
-          // onClick={() => window.location.reload()}
-          onClick={() => navigate(0)}
-        >
+        <button className={styles.reloadButton} onClick={() => navigate(0)}>
           <ReloadIcon />
         </button>
       </div>
