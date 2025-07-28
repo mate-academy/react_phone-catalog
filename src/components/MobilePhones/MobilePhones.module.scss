@@ -80,6 +80,40 @@ select,
     }
   }
 
+  &__input-wrapper {
+
+  }
+
+  &__input {
+    margin-top: 4px;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    width: 136px;
+    height: 40px;
+    border-radius: 8px;
+    border-color: #b4bdc3;
+    color: #0f0f11;
+    border: 1px solid #b4bdc3;
+
+    font-weight: 700;
+    font-size: 14px;
+    padding-left: 8px;
+
+    &:hover {
+      background-color: #e7e7e7;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #0F0F11;
+    }
+
+    @media (min-width: 640px) {
+      width: 187px;
+    }
+  }
+
   &__items-sort {
     color: #89939a;
   }

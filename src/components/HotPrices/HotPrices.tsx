@@ -2,20 +2,36 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Products } from '../../types/types';
 import { useEffect, useState } from 'react';
 import hotPricesStyles from './HotPrices.module.scss';
+import { Navigation } from 'swiper/modules';
+import { useCart } from '../../context/CartContext';
+import cn from 'classnames';
+import Loader from '../Loader';
 
 const HotPrices = () => {
   const [gadgets, setGadgets] = useState<Products[] | []>([]);
   const [loading, setLoading] = useState(true);
+  const {
+    cartItems,
+    setCartItems,
+    lovelyProducts,
+    setLovelyProducts,
+    addToCart,
+    addProductToLovely,
+  } = useCart();
 
   useEffect(() => {
     fetch('/api/products.json')
       .then(res => res.json())
       .then(data => setGadgets(data))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      });
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   console.log(gadgets.length);
@@ -30,11 +46,27 @@ const HotPrices = () => {
   return (
     <>
       <div className={hotPricesStyles.brand}>
-        <h1 className={hotPricesStyles.brand__title}>Hot prices</h1>
+        <div className={hotPricesStyles.brand__top}>
+          <h1 className={hotPricesStyles.brand__title}>Hot prices</h1>
+          <div className={hotPricesStyles.brand__navigation}>
+            <button
+              className={`${hotPricesStyles.brand__left} ${hotPricesStyles.brand__vectors} navigation-button-prev`}
+            ></button>
+            <button
+              className={`${hotPricesStyles.brand__right} ${hotPricesStyles.brand__vectors} navigation-button-next`}
+            ></button>
+          </div>
+        </div>
+
         <Swiper
+          modules={[Navigation]}
           spaceBetween={16}
           slidesPerView={'auto'}
           className={hotPricesStyles.brand__swiper}
+          navigation={{
+            nextEl: '.navigation-button-next',
+            prevEl: '.navigation-button-prev',
+          }}
         >
           {hotProducts.map(product => {
             return (
@@ -76,14 +108,28 @@ const HotPrices = () => {
                 </div>
 
                 <div className={hotPricesStyles.brand__buttons}>
-                  <button className={hotPricesStyles.brand__add}>
-                    Add to cart
+                  <button
+                    className={cn(hotPricesStyles.brand__add, {
+                      [hotPricesStyles.brand__added]: cartItems.some(
+                        item => item.itemId === product.itemId,
+                      ),
+                    })}
+                    onClick={() => addToCart(product)}
+                  >
+                    {cartItems.some(item => item.itemId === product.itemId)
+                      ? 'Added to cart'
+                      : 'Add to cart'}
                   </button>
 
-                  <a
-                    href="#"
-                    className={hotPricesStyles['brand__lovely-choice']}
-                  ></a>
+                  <button
+                    className={cn(hotPricesStyles['brand__lovely-choice'], {
+                      [hotPricesStyles['brand__lovely-choice--active']]:
+                        lovelyProducts.some(
+                          item => item.itemId === product.itemId,
+                        ),
+                    })}
+                    onClick={() => addProductToLovely(product)}
+                  ></button>
                 </div>
               </SwiperSlide>
             );

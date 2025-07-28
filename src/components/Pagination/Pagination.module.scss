@@ -1,6 +1,33 @@
+@import '../../styles/mixins.module';
+
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: 'Mont';
+}
+
 .pagination {
+  font-family: "Mont";
+
+  // padding-inline: 16px;
+  padding-top: 24px;
+  width: fit-content;
+
+  @include onTablet {
+    padding-top: 40px;
+  }
+
+  @include onBigScren {
+    padding-top: 40px;
+  }
+
+  // @include contentMarginInline();
+
+
+  margin-inline: auto;
+
   &__button-simple {
-    margin-inline-start: 8px;
+    margin-inline-start: 16px;
+    margin-block: 8px;
     border: 1px solid #e2e6e9;
     background-color: #fff;
     border-radius: 50%;

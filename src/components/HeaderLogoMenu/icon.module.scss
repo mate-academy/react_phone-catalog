@@ -15,9 +15,30 @@
   // background-repeat: no-repeat;
   background-size: cover;
   margin: 16px;
+  
 
   @include onTablet {
     display: none;
+  }
+}
+
+.icon--active {
+  @include onTablet {
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      // right: 49px;
+      // top: 2.5px;
+      background-color: #0f0f11;
+      height: 3px;
+      width: 48px;
+      transition: transform 0.3s;
+      transform: scale(1);
+      transform-origin: left;
+    }
   }
 }
 
@@ -39,8 +60,12 @@
     background-size: cover;
 
     &__wrapper {
-      padding: 16px;
       border-right: 1px solid #e2e6e9;
+      position: relative;
+    }
+
+    &__content {
+      padding: 16px;
     }
   }
 }
@@ -49,9 +74,8 @@
   // display: none;
   width: 0;
   height: 0;
-
   @include onTablet {
-    background-image: url("public/img/shopping-bag-cart.svg"); //public\img\shopping-bag-cart.svg
+    background-image: url("public/img/shopping-bag-cart.svg");
     width: 16px;
     height: 16px;
     // display: inline-block;
@@ -59,6 +83,10 @@
     // margin: 16px;
 
     &__wrapper {
+      position: relative;
+    }
+
+    &__content {
       padding: 16px;
     }
   }
@@ -69,7 +97,7 @@
 
   @include onTablet {
     position: absolute;
-    top: 14px;
+    top: 13px;
     right: 10px;
     background: #3b6ef6; // або ваш колір
     color: #fff;
@@ -83,6 +111,5 @@
     width: 14px;
     height: 14px;
     box-sizing: border-box;
-
   }
 }

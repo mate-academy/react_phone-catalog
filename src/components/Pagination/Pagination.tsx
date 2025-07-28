@@ -1,13 +1,17 @@
 import { useSearchParams } from 'react-router-dom';
 import paginationStyle from './Pagination.module.scss';
+import Footer from '../Footer';
+import { Products } from '../../types/types';
 
 interface Props {
+  filteredGadgets: Products[] | [];
   itemsLength: number;
   currentPage: number;
   setCurrentPage: (arg: number) => void;
 }
 
 const Pagination: React.FC<Props> = ({
+  filteredGadgets,
   itemsLength,
   currentPage,
   setCurrentPage,
@@ -15,7 +19,9 @@ const Pagination: React.FC<Props> = ({
   const [searchParams] = useSearchParams();
 
   const perItems = searchParams.get('quantity') || 16;
-  const pageQuantity = Math.ceil(itemsLength / +perItems);
+  const pageQuantity = Math.ceil(filteredGadgets.length / +perItems);
+
+  console.log(filteredGadgets.length);
 
   return (
     <>

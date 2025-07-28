@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import brandStyles from './NewBrand.module.scss';
-import { Iphones, Tablets } from '../../types/types';
+import cn from 'classnames';
+import { Iphones, Products, Tablets } from '../../types/types';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Scrollbar, Navigation, Autoplay } from 'swiper/modules';
@@ -8,185 +9,167 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { useEffect, useState } from 'react';
-
-// interface Iphones {
-//   camera: string;
-//   capacity: string;
-//   capacityAvailable: number;
-//   category: string;
-//   cell: string[];
-//   color: string;
-//   colorsAvailable: string[];
-//   description: string[];
-//   id: string;
-//   images: string[];
-//   name: string;
-//   namespaceId: string;
-//   priceDiscount: number;
-//   priceRegular: number;
-//   processor: string;
-//   ram: string;
-//   resolution: string;
-//   screen: string;
-//   zoom: string;
-// }
-
-// interface Tablets {
-//   id: string;
-//   category: string;
-//   namespaceId: string;
-//   name: string;
-//   capacityAvailable: string[];
-//   capacity: string;
-//   priceRegular: number;
-//   priceDiscount: number;
-//   colorsAvailable: string[];
-//   color: string;
-//   images: string[];
-//   description: string[];
-//   screen: string;
-//   resolution: string;
-//   processor: string;
-//   ram: string;
-//   camera: string;
-//   zoom: string;
-//   cell: string[];
-// }
+import { useCart } from '../../context/CartContext';
+import Loader from '../Loader';
 
 const NewBrand = () => {
-  const [phones, setPhones] = useState<Iphones[] | []>([]);
-  const [tablets, setTablets] = useState<Tablets[] | []>([]);
+  const [products, setProducts] = useState<Products[] | []>([]);
+  // const [tablets, setTablets] = useState<Tablets[] | []>([]);
   const [loading, setLoading] = useState(true);
+  const {
+    cartItems,
+    setCartItems,
+    lovelyProducts,
+    setLovelyProducts,
+    addToCart,
+    addProductToLovely,
+  } = useCart();
 
   useEffect(() => {
-    fetch('/api/phones.json')
+    fetch('/api/products.json')
       .then(res => res.json())
-      .then(data => setPhones(data))
-      .finally(() => setLoading(false));
+      .then(data => setProducts(data))
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      });
   }, []);
 
-  console.log(tablets);
-
-  useEffect(() => {
-    fetch('/api/tablets.json')
-      .then(res => res.json())
-      .then(data => setTablets(data))
-      .finally(() => setLoading(false));
-  }, [setTablets]);
-
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
-  const brandNewModels = phones.filter(product => {
-    return product.name.includes('iPhone 14');
-  });
+  console.log(products);
 
-  const newTablets = tablets.filter(product => {
-    return product.id.includes('apple-ipad-mini-6th-gen');
-  });
+  const maxYear = Math.max(...products.map(product => product.year));
+  const brandNewProducts = products.filter(product => product.year === maxYear);
 
-  const allColors = new Set(brandNewModels.map(product => product.color));
-
-  const allColorsTblets = new Set(newTablets.map(product => product.color));
-
-  console.log(brandNewModels);
-  console.log(allColors);
-
+  const allColors = new Set(brandNewProducts.map(product => product.color));
   const arrayColorsIphones = Array.from(allColors);
-  const arrayColorsTablets = Array.from(allColorsTblets);
 
-  let indexIm = 0;
+  console.log(brandNewProducts);
 
-  const allGadgetsColor = [...arrayColorsIphones, ...arrayColorsTablets];
-  const allAsortiment = [...brandNewModels, ...newTablets];
+  // const finallyAsortiment = brandNewProducts.filter(item => {
+  //   const singleIphoneColor = arrayColorsIphones.find(
+  //     color => color === item.color,
+  //   );
 
-  console.log(allGadgetsColor);
+  //   const allTypesProducts = arrayColorsIphones.filter(color => {
+  //     return color === item.color;
+  //   });
+
+  //   const index = arrayColorsIphones.findIndex(color => color === item.color);
+
+  //   if (index !== -1) {
+  //     arrayColorsIphones[index] = '';
+  //   }
+
+  //   return true;
+  // });
+
+  console.log(brandNewProducts);
+
+  const objProducts = {
+    phones: brandNewProducts.filter(model => model.category === 'phones'),
+    tablets: brandNewProducts.filter(model => model.category === 'tablets'),
+    accessories: brandNewProducts.filter(
+      model => model.category === 'accessories',
+    ),
+  };
+
+  console.log(objProducts);
 
   return (
     <>
       <div className={brandStyles.brand}>
-        <h1 className={brandStyles.brand__title}>Brand new models</h1>
+        <div className={brandStyles.brand__top}>
+          <h1 className={brandStyles.brand__title}>Brand new models</h1>
+
+          <div className={brandStyles.brand__navigation}>
+            <button
+              className={`${brandStyles.brand__left} ${brandStyles.brand__vectors} navigation-button-prev`}
+            ></button>
+            <button
+              className={`${brandStyles.brand__right} ${brandStyles.brand__vectors} navigation-button-next`}
+            ></button>
+          </div>
+        </div>
 
         <Swiper
           spaceBetween={16}
+          modules={[Navigation]}
           slidesPerView={'auto'}
           className={brandStyles.brand__swiper}
+          navigation={{
+            nextEl: '.navigation-button-next',
+            prevEl: '.navigation-button-prev',
+          }}
         >
-          {allAsortiment.map(phone => {
-            const singleIphoneColor = allGadgetsColor.find(
-              color => color === phone.color,
+          {brandNewProducts.map(phone => {
+            return (
+              <SwiperSlide className={brandStyles.brand__card} key={phone.id}>
+                <a
+                  href="#"
+                  style={{ backgroundImage: `url('${phone.image}')` }}
+                  className={brandStyles.brand__image}
+                ></a>
+
+                {/* <div className={brandStyles.brand__imageWrapper}>
+                            </div> */}
+
+                <div className={brandStyles.brand__data}>
+                  <div className={brandStyles.brand__name}>{phone.name}</div>
+                  <div className={brandStyles.brand__price}>
+                    ${phone.fullPrice}
+                  </div>
+                </div>
+
+                <div className={brandStyles.brand__deteils}>
+                  <div className={brandStyles.brand__info}>
+                    <div>Screen</div>
+                    <div>{phone.screen}</div>
+                  </div>
+                  <div className={brandStyles.brand__info}>
+                    <div>Capacity</div>
+                    <div className={brandStyles.brand__gb}>128 GB</div>
+                  </div>
+                  <div className={brandStyles.brand__info}>
+                    <div>RAM</div>
+                    <div>6 GB</div>
+                  </div>
+                </div>
+
+                <div className={brandStyles.brand__buttons}>
+                  <button
+                    className={cn(brandStyles.brand__add, {
+                      [brandStyles.brand__added]: cartItems.some(
+                        item => item.itemId === phone.itemId,
+                      ),
+                    })}
+                    onClick={() => addToCart(phone)}
+                  >
+                    {cartItems.some(item => item.itemId === phone.itemId)
+                      ? 'Added to cart'
+                      : 'Add to cart'}
+                  </button>
+
+                  <button
+                    // className={brandStyles['brand__lovely-choice']}
+                    className={cn(brandStyles['brand__lovely-choice'], {
+                      [brandStyles['brand__lovely-choice--active']]:
+                        lovelyProducts.some(
+                          item => item.itemId === phone.itemId,
+                        ),
+                    })}
+                    onClick={() => addProductToLovely(phone)}
+                  ></button>
+                </div>
+              </SwiperSlide>
             );
-
-            if (singleIphoneColor) {
-              allGadgetsColor.forEach((color, i) => {
-                const isColor = color === singleIphoneColor ? '' : color;
-
-                allGadgetsColor[i] = isColor;
-              });
-
-              const screenValue = phone.screen.split(' ');
-
-              const validScreenValue = screenValue[0] + ' ' + screenValue[1];
-
-              // console.log(arrayColorsIphones);
-              console.log(validScreenValue);
-
-              indexIm++;
-
-              return (
-                <SwiperSlide className={brandStyles.brand__card} key={phone.id}>
-                  <a
-                    href="#"
-                    style={{ backgroundImage: `url('${phone.images[0]}')` }}
-                    className={brandStyles.brand__image}
-                  ></a>
-
-                  {/* <div className={brandStyles.brand__imageWrapper}>
-                </div> */}
-
-                  <div className={brandStyles.brand__data}>
-                    <div className={brandStyles.brand__name}>{phone.name}</div>
-                    <div className={brandStyles.brand__price}>
-                      ${phone.priceRegular}
-                    </div>
-                  </div>
-
-                  <div className={brandStyles.brand__deteils}>
-                    <div className={brandStyles.brand__info}>
-                      <div>Screen</div>
-                      <div>{validScreenValue}</div>
-                    </div>
-                    <div className={brandStyles.brand__info}>
-                      <div>Capacity</div>
-                      <div className={brandStyles.brand__gb}>128 GB</div>
-                    </div>
-                    <div className={brandStyles.brand__info}>
-                      <div>RAM</div>
-                      <div>6 GB</div>
-                    </div>
-                  </div>
-
-                  <div className={brandStyles.brand__buttons}>
-                    <button className={brandStyles.brand__add}>
-                      Add to cart
-                    </button>
-
-                    <a
-                      href="#"
-                      className={brandStyles['brand__lovely-choice']}
-                    ></a>
-                  </div>
-                </SwiperSlide>
-              );
-            }
-
-            return;
           })}
         </Swiper>
       </div>
-
-      {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem illum nisi a dolorum doloremque ad delectus eum perspiciatis quis, quos est explicabo perferendis reprehenderit, enim rerum facere obcaecati? Consequatur cum alias laudantium quos sapiente eos molestias ipsa animi, ratione architecto expedita dolores rem qui esse. */}
     </>
   );
 };

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import topBatStyles from './TopBar.module.scss';
 import iconStyles from './icon.module.scss';
 import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
+import cn from 'classnames';
 
 interface SidebarProps {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -10,13 +12,13 @@ interface SidebarProps {
 
 const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
   const iconReference = isOpen ? 'burger-menu' : '';
-
+  const { lovelyProducts, cartItems } = useCart();
   const location = useLocation();
   const currentPath = location.pathname;
 
   console.log(currentPath);
-  console.log(isOpen);
-  console.log(iconReference);
+  // console.log(isOpen);
+  // console.log(iconReference);
 
   return (
     <div className={topBatStyles.header}>
@@ -36,13 +38,22 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
 
           <ul className={topBatStyles['top-bar__list']}>
             <li className={topBatStyles['top-bar__item']}>
-              <Link className={topBatStyles['top-bar__link']} to="/">
+              <Link
+                className={cn(topBatStyles['top-bar__link'], {
+                  [topBatStyles['top-bar__link--current-page']]:
+                    currentPath === '/',
+                })}
+                to="/"
+              >
                 home
               </Link>
             </li>
             <li className={topBatStyles['top-bar__item']}>
               <Link
-                className={topBatStyles['top-bar__link']}
+                className={cn(topBatStyles['top-bar__link'], {
+                  [topBatStyles['top-bar__link--current-page']]:
+                    currentPath === '/phones',
+                })}
                 to="/phones?quantity=16&sort=newest"
               >
                 Phones
@@ -50,7 +61,10 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
             </li>
             <li className={topBatStyles['top-bar__item']}>
               <Link
-                className={topBatStyles['top-bar__link']}
+                className={cn(topBatStyles['top-bar__link'], {
+                  [topBatStyles['top-bar__link--current-page']]:
+                    currentPath === '/tablets',
+                })}
                 to="/tablets?quantity=16&sort=newest"
               >
                 tablets
@@ -58,7 +72,10 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
             </li>
             <li className={topBatStyles['top-bar__item']}>
               <Link
-                className={topBatStyles['top-bar__link']}
+                className={cn(topBatStyles['top-bar__link'], {
+                  [topBatStyles['top-bar__link--current-page']]:
+                    currentPath === '/accessories',
+                })}
                 to="/accessories?quantity=16&sort=newest"
               >
                 accessories
@@ -83,19 +100,33 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
           )}
 
           <div className={iconStyles['icon--heart__wrapper']}>
-            <Link
-              to="/favorites"
-              className={`${iconStyles['icon--heart']} ${iconStyles.icon}`}
-            ></Link>
+            <div
+              className={cn(iconStyles['icon--heart__content'], {
+                [iconStyles['icon--active']]: currentPath === '/favorites',
+              })}
+            >
+              <Link
+                to="/favorites"
+                className={`${iconStyles['icon--heart']} ${iconStyles.icon}`}
+              ></Link>
+            </div>
+
+            <span className={iconStyles.badge}>{lovelyProducts.length}</span>
           </div>
 
           <div className={iconStyles['icon--bag__wrapper']}>
-            <Link
-              to="/cart"
-              className={`${iconStyles['icon--bag']} ${iconStyles.icon}`}
-            ></Link>
+            <div
+              className={cn(iconStyles['icon--bag__content'], {
+                [iconStyles['icon--active']]: currentPath === '/cart',
+              })}
+            >
+              <Link
+                to="/cart"
+                className={`${iconStyles['icon--bag']} ${iconStyles.icon}`}
+              ></Link>
+            </div>
 
-            <span className={iconStyles.badge}>12</span>
+            <span className={iconStyles.badge}>{cartItems.length}</span>
           </div>
         </div>
       </div>

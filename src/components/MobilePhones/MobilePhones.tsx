@@ -19,6 +19,8 @@ interface Props {
 
 const MobilePhones: React.FC<Props> = ({ gadgets }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [currentPagePag, setCurrentPagePag] = useState<number>(1);
+
   const sortBy = searchParams.get('sort');
   const quantity = searchParams.get('quantity');
 
@@ -26,6 +28,8 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
   // const [sortParams, setSortParams] = useState(['newest', '16']);
   const search = useLocation();
 
+  console.log(search.pathname);
+  console.log(search.pathname);
   console.log(search.pathname);
 
   useEffect(() => {
@@ -63,7 +67,23 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
 
   // console.log(search.pathname);
   // console.log(gadgets);
+  function handleQueryChange(param: string) {
+    setCurrentPagePag(1);
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('query', param);
+    setSearchParams(newParams);
+
+    if (newParams.get('query') === '') {
+      newParams.delete('query');
+      setSearchParams(newParams);
+    }
+  }
+
+  const currentParams = new URLSearchParams(searchParams);
+
   console.log(searchParams.toString);
+  console.log(currentParams.get('query') || '');
 
   return (
     <>
@@ -95,7 +115,31 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
           95 models
         </span>
 
-        <div className={mobilePageStyles['mobile-page__select-wrapper']}>
+        <div className={mobilePageStyles['mobile-page__select-wrapper']} >
+          {/* <p className={mobilePageStyles['mobile-page__input-wrapper']}>
+          </p> */}
+          <div className="">
+            <label
+              htmlFor="gadgets-seek-for"
+              className={mobilePageStyles['mobile-page__items-sort']}
+            >
+              Seek for
+            </label>
+            <input
+              name="search"
+              id="gadgets-seek-for"
+              data-cy="NameFilter"
+              type="search"
+              className={mobilePageStyles['mobile-page__input']}
+              placeholder="Search"
+              onChange={e => handleQueryChange(e.target.value)}
+            />
+          </div>
+
+          {/* <span className="icon is-left">
+              <i className="fas fa-search" aria-hidden="true" />
+            </span> */}
+
           <div>
             <label
               htmlFor="gadgets-sort"
@@ -144,7 +188,11 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
         </div>
       </div>
 
-      <ListOfGadgets gadgets={gadgets} />
+      <ListOfGadgets
+        gadgets={gadgets}
+        setCurrentPage={setCurrentPagePag}
+        currentPage={currentPagePag}
+      />
     </>
   );
 };

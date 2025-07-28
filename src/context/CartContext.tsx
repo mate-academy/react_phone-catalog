@@ -1,13 +1,21 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  useMemo,
+} from 'react';
 import { Products } from '../types/types';
 
-// type CartItem = Products & { quantity: number };
+type CartItem = Products & { quantity: number };
 
 interface CartContextProps {
-  cartItems: Products[];
-  setCartItems: React.Dispatch<React.SetStateAction<Products[]>>;
+  cartItems: CartItem[];
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   lovelyProducts: Products[];
   setLovelyProducts: React.Dispatch<React.SetStateAction<Products[]>>;
+  addToCart: (product: Products) => void;
+  addProductToLovely: (product: Products) => void;
 }
 
 export const CartContext = createContext<CartContextProps | undefined>(
@@ -27,8 +35,12 @@ export const useCart = () => {
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cartItems, setCartItems] = useState<Products[]>([]);
-  const [lovelyProducts, setLovelyProducts] = useState<Products[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>(
+    JSON.parse(localStorage.getItem('added') || '[]'),
+  );
+  const [lovelyProducts, setLovelyProducts] = useState<Products[]>(
+    JSON.parse(localStorage.getItem('favorites') || '[]'),
+  );
 
   useEffect(() => {
     const favoritesFromStorage = localStorage.getItem('favorites');
@@ -40,8 +52,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       if (addedProducts.length > 0) {
         setLovelyProducts(addedProducts);
       }
-
-      console.log(lovelyProducts);
     }
 
     if (favoritesFromStorage) {
@@ -50,16 +60,65 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       if (favorites.length > 0) {
         setLovelyProducts(favorites);
       }
-
-      console.log(lovelyProducts);
     }
   }, []);
 
-  return (
-    <CartContext.Provider
-      value={{ cartItems, setCartItems, lovelyProducts, setLovelyProducts }}
-    >
-      {children}
-    </CartContext.Provider>
+  const addToCart = (product: Products) => {
+    const existing = cartItems.find(item => item.itemId === product.itemId);
+
+    if (existing) {
+      const filteredProducts = cartItems.filter(
+        item => item.itemId !== product.itemId,
+      );
+
+      setCartItems(filteredProducts);
+
+      localStorage.setItem('added', JSON.stringify(filteredProducts));
+    } else {
+      const newProduct = { ...product, quantity: 1 };
+      const allGadgets = [...cartItems, newProduct];
+
+      setCartItems(allGadgets);
+      localStorage.setItem('added', JSON.stringify(allGadgets));
+    }
+  };
+
+  const addProductToLovely = (product: Products) => {
+    const favoritesArray: Products[] | [] = JSON.parse(
+      localStorage.getItem('favorites') || '[]',
+    );
+
+    if (lovelyProducts.some(item => item.itemId === product.itemId)) {
+      const filteredProducts = lovelyProducts.filter(
+        item => item.itemId !== product.itemId,
+      );
+
+      setLovelyProducts(filteredProducts);
+
+      const updatedFavorites = favoritesArray.filter(
+        item => item.itemId !== product.itemId,
+      );
+
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    } else {
+      setLovelyProducts(currentsProducts => [...currentsProducts, product]);
+      const allGadgets = [...lovelyProducts, product];
+
+      localStorage.setItem('favorites', JSON.stringify(allGadgets));
+    }
+  };
+
+  const values = useMemo(
+    () => ({
+      cartItems,
+      setCartItems,
+      lovelyProducts,
+      setLovelyProducts,
+      addToCart,
+      addProductToLovely,
+    }),
+    [cartItems, lovelyProducts],
   );
+
+  return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
 };

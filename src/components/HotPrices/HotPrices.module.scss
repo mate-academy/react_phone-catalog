@@ -46,6 +46,47 @@
   //   }
   // }
 
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    padding-top: 56px;
+
+    @include onTablet {
+      padding-top: 64px;
+    }
+
+    @include onBigScren {
+      padding-top: 80px;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__vectors {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    border: 1px solid #e2e6e9;
+    border-radius: 50%;
+  }
+
+  &__left {
+    background-image: url('public/img/chevron-arrow_left.svg');
+    margin-right: 16px;
+  }
+
+  &__right {
+    background-image: url('public/img/chevron-arrow-right.svg');
+  }
+
   &__card{
     display: flex;
     align-items: center;
@@ -151,14 +192,18 @@
     border-radius: 8px;
     width: 100%;
     height: 40px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: box-shadow 0.3s, color 0.3s;
 
     &:hover {
-      background-color: #fff;
-      color: #f86800;
-      border: 1px solid #e2e6e9;
-      transition: background-color 0.3s, color 0.3s;
+      transition: box-shadow 0.3s, color 0.3s;
+      box-shadow: 2px 2px 3px 3px #17203166;
     }
+  }
+
+  &__added {
+    background-color: #fff;
+    border: 1px solid #e2e6e9;
+    color: #f86800;
   }
 
   &__lovely-choice {
@@ -167,7 +212,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     display: block;
-    width: 40px;
+    width: 49px;
     height: 40px;
     margin-left: 8px;
     border: 1px solid transparent;
@@ -183,5 +228,30 @@
     &:hover {
       background-image: url('/public/img/add-to-fovourites-hover.png');
     }
+
+    &--active {
+      background-image: url('public/img/add-to-fovourites-added.png');
+
+      transition: transform 0.3s ease-in-out;
+
+      &:hover {
+        background-image: url('public/img/add-to-fovourites-added.png');
+        transform: scale(1.1);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+
+    background-color: #fff;
   }
+}
+
+
+button:disabled.brand__left {
+  background-image: url('public/img/chevron-(arrow-down).svg');
+  transform: rotate(90deg);
+}
+
+button:disabled.brand__right {
+  background-image: url('public/img/chevron-(arrow-down).svg');
+  transform: rotate(-90deg);
 }
