@@ -1,0 +1,143 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../../public/fonts/Mont-Bold.otf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+.home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__welcome {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: #313237;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    height: 130px;
+  }
+
+  &__slider {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+
+    &--screen {
+      width: 100vw;
+      height: 100vw;
+      margin: 0 -16px;
+      background-image: url('../../../public/img/slider.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    &--arrow {
+      display: none;
+    }
+  }
+
+  &__markers {
+    width: 100%;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--marker {
+      width: 14px;
+      height: 4px;
+      margin: 0 9px;
+      background-color: #E2E6E9;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .home {
+    &__welcome {
+      font-size: 48px;
+      line-height: 56px;
+
+      height: 176px;
+    }
+
+    &__slider {
+      display: flex;
+      width: 100%;
+
+      &--screen {
+        width: 100%;
+        height: 29.5vw;
+        margin: 0 19px;
+        background-image: url('../../../public/img/slider-big.png');
+      }
+
+      &--arrow {
+        width: 32px;
+        height: 29.5vw;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: 1px solid lightgrey;
+        box-sizing: border-box;
+        color: #313237;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .home {
+    &__welcome {
+      height: 168px;
+
+      &--break {
+        display: none;
+      }
+    }
+
+    &__slider {
+      display: flex;
+      width: 100%;
+
+      &--screen {
+        width: 100%;
+        height: 29.5vw;
+        margin: 0 19px;
+        background-image: url('../../../public/img/slider-big.png');
+      }
+
+      &--arrow {
+        width: 32px;
+        height: 29.5vw;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: 1px solid lightgrey;
+        box-sizing: border-box;
+        color: #313237;
+      }
+    }
+  }
+}
+
+.marker-active {
+  background-color: #313237;
+}
