@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './SomethingWentWrongPage.module.scss';
 
 const ReloadIcon = () => (
@@ -18,6 +19,8 @@ const ReloadIcon = () => (
 );
 
 export const SomethingWentWrongPage = () => {
+  const navigate = useNavigate();
+
   return (
     <main className={styles.page}>
       <div className={styles.pageContent}>
@@ -25,7 +28,8 @@ export const SomethingWentWrongPage = () => {
         <h2 className={styles.pageInfo_text}>Do you want to try again?</h2>
         <button
           className={styles.reloadButton}
-          onClick={() => window.location.reload()}
+          // onClick={() => window.location.reload()}
+          onClick={() => navigate(0)}
         >
           <ReloadIcon />
         </button>

@@ -20,6 +20,7 @@ const navLinks = [
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { cart, fav } = useContext(CartandFavContext);
+  const cartCounter = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <>
@@ -71,7 +72,7 @@ export const Header = () => {
           >
             <img src={Cart} alt="cart" className={styles.icon} />
             {cart.length > 0 && (
-              <div className={styles.counter}>{cart.length}</div>
+              <div className={styles.counter}>{cartCounter}</div>
             )}
           </NavLink>
           <button

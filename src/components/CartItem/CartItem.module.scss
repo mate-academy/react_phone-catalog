@@ -69,7 +69,9 @@
   font-family: $font-bold;
   font-size: 22px;
   line-height: 140%;
-  margin-left: 30px;
+  display: inline-block;
+  width: 80px;
+  text-align: end;
 }
 
 .countButtons {

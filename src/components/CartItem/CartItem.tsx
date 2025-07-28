@@ -11,6 +11,7 @@ type Props = {
 
 export const CartItem = ({ product, counter }: Props) => {
   const { setCart } = useContext(CartandFavContext);
+  const totalPrice = product.price * counter;
 
   const handleDelete = () => {
     setCart(prevCart => prevCart.filter(item => item.id !== product.itemId));
@@ -85,7 +86,7 @@ export const CartItem = ({ product, counter }: Props) => {
             />
           </button>
         </div>
-        <span className={styles.productPrice}>{`${product.price}$`}</span>
+        <span className={styles.productPrice}>{`${totalPrice}$`}</span>
       </div>
     </div>
   );

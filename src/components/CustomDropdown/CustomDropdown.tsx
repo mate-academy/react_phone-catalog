@@ -24,6 +24,8 @@ export const CustomDropdown = ({
   const handleChange = (value: string) => {
     const params = new URLSearchParams(searchParams);
 
+    params.delete('page');
+
     if (value === 'all') {
       params.delete(field);
     } else {

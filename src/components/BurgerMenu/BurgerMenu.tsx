@@ -20,6 +20,7 @@ type Props = {
 
 export const BurgerMenu = ({ menuOpen, setMenuOpen }: Props) => {
   const { cart, fav } = useContext(CartandFavContext);
+  const cartCounter = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <main className={`${styles.page} ${menuOpen ? styles.open : ''}`}>
@@ -70,7 +71,7 @@ export const BurgerMenu = ({ menuOpen, setMenuOpen }: Props) => {
         >
           <img src={Cart} alt="cart" className={styles.iconLinks_link_icon} />
           {cart.length > 0 && (
-            <div className={styles.counter}>{cart.length}</div>
+            <div className={styles.counter}>{cartCounter}</div>
           )}
         </NavLink>
       </div>
