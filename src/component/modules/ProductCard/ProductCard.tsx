@@ -38,7 +38,7 @@ export const ProductCard: React.FC<Props> = ({ products }) => {
   return (
     <div>
       <Link to={path} onClick={scrollToTop} state={{ from: location.pathname }}>
-        <img src={image} alt={name} className={style.img} />
+        <img src={image} alt={name} className={style.img_Card} />
       </Link>
 
       <div>
