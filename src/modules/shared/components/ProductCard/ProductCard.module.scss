@@ -14,6 +14,13 @@
   gap: 8px;
   place-self: center;
 
+  &__container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 341px;
+  }
+
   &__image {
       justify-self: center;
       object-fit: contain;

@@ -36,15 +36,17 @@ export const ProductCard = ({
 
   return (
     <div className={styles.card}>
-      <Link to={`/${category}/${id}`}>
-        <img className={styles.card__image} src={images} loading="lazy"></img>
-      </Link>
-      <Link className={styles.card__title} to={`/${category}/${id}`}>
-        {name}
-      </Link>
-      <div className={styles.card__price}>
-        <p className={styles['card__price-current']}>${priceDiscount}</p>
-        <p className={styles['card__price-before']}>${priceRegular}</p>
+      <div className={styles.card__container}>
+        <Link to={`/${category}/${id}`}>
+          <img className={styles.card__image} src={images} loading="lazy"></img>
+        </Link>
+        <Link className={styles.card__title} to={`/${category}/${id}`}>
+          {name}
+        </Link>
+        <div className={styles.card__price}>
+          <p className={styles['card__price-current']}>${priceDiscount}</p>
+          <p className={styles['card__price-before']}>${priceRegular}</p>
+        </div>
       </div>
       <div className={styles.card__divider}></div>
       <div className={styles.card__specifications}>
