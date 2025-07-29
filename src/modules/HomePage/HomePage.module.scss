@@ -12,12 +12,20 @@
   white-space: nowrap !important;
 }
 
-// .homeContent {
-//   @include container;
-// }
+.homeContent {
+  padding-block: 24px 64px;
+
+  @include onTablet {
+    padding-top: 32px;
+  }
+
+  @include onDesktop {
+    padding-block: 56px 80px;
+  }
+}
 
 .homeTitle {
-  padding-block: 24px;
+  margin-bottom: 24px;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;

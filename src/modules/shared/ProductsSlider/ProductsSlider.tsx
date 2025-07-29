@@ -43,7 +43,7 @@ export const ProductsSlider: FC<Props> = ({ title, products, priceType }) => {
           nextEl: '.my-slider__button--next',
         }}
         spaceBetween={16}
-        slidesPerView={'auto'}
+        slidesPerView="auto"
         slidesPerGroup={2}
         speed={500}
         className="my-slider__body"
