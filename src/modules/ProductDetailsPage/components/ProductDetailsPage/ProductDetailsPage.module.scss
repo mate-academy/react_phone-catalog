@@ -313,7 +313,10 @@
 
     &__images {
       flex-direction: column;
+      gap: 48px;
       height: auto;
+      width: auto;
+      justify-content: center;
     }
 
     &__container {

@@ -62,6 +62,7 @@ export const ProductDetailsPage = ({ category }: Params) => {
 
   // eslint-disable-next-line no-console
   const findProduct = products?.find(product => productId === product.name);
+
   const changePicture = (i: number) => {
     setActiveImgIndex(i);
   };
@@ -69,6 +70,11 @@ export const ProductDetailsPage = ({ category }: Params) => {
   const findCartProduct = sliderProducts?.find(
     product => product.itemId === findProduct?.id,
   );
+
+  useEffect(() => {
+    setActiveColor(findProduct?.color);
+    setActiveMemory(findProduct?.capacity);
+  }, [findProduct?.capacity, findProduct?.color]);
 
   const findFav = favouriteItems.find(fav => fav.id === findProduct?.id);
 
