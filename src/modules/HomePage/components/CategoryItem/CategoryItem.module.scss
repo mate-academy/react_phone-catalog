@@ -16,10 +16,10 @@
   }
 
   &__image {
-    // border-radius: 3%;
     display: block;
     object-fit: contain;
     object-position: 100% 100%;
+    height: 100%;
     width: 100%;
     aspect-ratio: 1 / 1;
     background: linear-gradient( to right bottom, $purple-descent 35%, $gray-color 75%)
@@ -46,3 +46,14 @@
 
 }
 
+@media (min-width: 640px) {
+  .card {
+    width: 100%;
+    height: auto;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

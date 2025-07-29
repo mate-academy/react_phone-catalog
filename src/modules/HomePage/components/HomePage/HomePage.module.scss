@@ -2,6 +2,7 @@
 
 @media (min-width: 640px) {
   .home {
+      box-sizing: border-box;
       padding: 32px;
 
       &__title {

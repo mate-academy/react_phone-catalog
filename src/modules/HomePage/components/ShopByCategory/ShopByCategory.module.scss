@@ -23,6 +23,8 @@
     &__container {
       flex-direction: row;
       padding: 16px 0;
+      justify-content: space-between;
+      height: auto;
     }
   }
 }
