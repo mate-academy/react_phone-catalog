@@ -25,7 +25,7 @@ export const FavouritesPageLazy = lazy(async () => {
 });
 
 export const ShoppingCartPageLazy = lazy(async () => {
-  const { ShoppingCartPage } = await import('../modules/ShoppingCartPage');
+  const { ShoppingCartPage } = await import('../modules/ShoppingCardPage');
 
   return { default: ShoppingCartPage };
 });

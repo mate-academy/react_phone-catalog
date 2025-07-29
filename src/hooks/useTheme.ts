@@ -3,15 +3,15 @@ import { useLocalStorage } from './useLocalStorage';
 import { Theme } from '../types/Theme';
 
 export const useTheme = () => {
-  const [theme, setTheme] = useLocalStorage<Theme>('theme', 'light');
+  const [theme, setTheme] = useLocalStorage<Theme>('theme', 'dark');
 
   useEffect(() => {
-    document.documentElement.classList.toggle('theme-dark', theme === 'dark');
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(theme);
   }, [theme]);
 
   const toggleTheme = useCallback(() => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setTheme(currentTheme => (currentTheme === 'light' ? 'dark' : 'light'));
   }, [theme]);
 
   return { theme, toggleTheme };

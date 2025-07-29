@@ -1,0 +1,285 @@
+@import '/src/styles/main.scss';
+
+.pageBody {
+  position: relative;
+  padding-block: 24px 56px;
+
+  @include onTablet {
+    @include grid;
+
+    padding-bottom: 64px;
+  }
+}
+
+.loader {
+  @include onTablet {
+    grid-column: 1 / -1;
+  }
+}
+
+.errorMessage {
+  @include errorMessage;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+  }
+}
+
+.breadcrumbs {
+  margin-bottom: 24px;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+  }
+}
+
+.backButton {
+  margin-bottom: 16px;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+  }
+}
+
+.pageTitle {
+  margin-bottom: 32px;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+  }
+}
+
+.imagesSlider {
+  margin-bottom: 40px;
+
+  @include onTablet {
+    grid-column: span 7;
+  }
+
+  @include onDesktop {
+    grid-column: span 12;
+  }
+}
+
+.mainControls {
+  margin-bottom: 56px;
+
+  @include onTablet {
+    grid-column: span 5;
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    grid-column: 14 / 21;
+  }
+}
+
+.optionsWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  margin-bottom: 32px;
+}
+
+.options {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--elements-color);
+}
+
+.optionsLabel {
+  @extend .small-text;
+
+  display: flex;
+  justify-content: space-between;
+  color: var(--secondary-color);
+  margin-bottom: 8px;
+}
+
+.productId {
+  position: absolute;
+  right: 0;
+}
+
+.optionsList {
+  display: flex;
+  column-gap: 8px;
+  flex-wrap: wrap;
+}
+
+.optionsColorLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--elements-color);
+  border-radius: 50%;
+}
+
+.optionsColorLink {
+  border-color: var(--text-color);
+}
+
+.optionsIcon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--bg-color);
+  border-radius: 50%;
+}
+
+.optionsCapacityLink {
+  display: block;
+  padding: 7px 8px 4px;
+  border: 1px solid var(--icon-placeholder-color);
+}
+
+.optionsCapacityLinkActive {
+  color: var(--bg-color);
+  border-color: transparent;
+  background-color: var(--text-color);
+}
+
+.priceWrapper {
+  margin-bottom: 16px;
+}
+
+.priceRegular {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.priceDiscount {
+  margin-left: 8px;
+  font-size: 22px;
+  line-height: 100%;
+  text-decoration: line-through;
+  color: var(--secondary-color);
+}
+
+.buttons {
+  display: flex;
+  column-gap: 8px;
+  padding-bottom: 32px;
+}
+
+.btnAdd {
+  flex: 1 1 auto;
+  padding-block: 14px;
+  background-color: var(--accent-color);
+  cursor: pointer;
+
+  @include onHover {
+    @include buttonOnHover;
+  }
+}
+
+.btnAdd.btnAddActive {
+  cursor: auto;
+  background-color: var(--surface2-color);
+
+  @include onHover {
+    background-color: var(--surface2-color);
+    box-shadow: none;
+    margin: 0;
+  }
+}
+
+.btnFav {
+  padding: 16px;
+  background-color: var(--surface2-color);
+  cursor: pointer;
+
+  @include onHover {
+    background-color: var(--icon-placeholder-color);
+  }
+}
+
+.iconFav {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url(/public/img/icons/favourite.svg) center / cover no-repeat;
+}
+
+.iconFavActive {
+  background-image: url(/public/img/icons/favourite-added.svg);
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.specsItem {
+  @extend .small-text;
+  display: flex;
+  justify-content: space-between;
+}
+
+.specsItemProp {
+  color: var(--secondary-color);
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  margin-bottom: 56px;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    grid-column: span 12;
+  }
+}
+
+.aboutTitle {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--elements-color);
+}
+
+.aboutItemTitle {
+  margin-bottom: 16px;
+}
+
+.aboutItemText {
+  color: #89939a;
+}
+
+.techSpecs {
+  margin-bottom: 56px;
+
+  @include onTablet {
+    grid-column: 1 / -1;
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    grid-column: 14 / -1;
+  }
+}
+
+.specsTitle {
+  margin-bottom: 30px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--elements-color);
+}
+
+.suggestedProductsSlider {
+  @include onTablet {
+    grid-column: 1 / -1;
+  }
+}

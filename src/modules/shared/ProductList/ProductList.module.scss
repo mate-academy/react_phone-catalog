@@ -1,0 +1,27 @@
+@import '/src/styles/main.scss';
+
+.list {
+  @include grid;
+
+  row-gap: 40px;
+
+  @include onTablet {
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  }
+
+  @include onDesktop {
+    @include grid;
+  }
+}
+
+.item {
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: auto;
+  }
+
+  @include onDesktop {
+    grid-column: span 6;
+  }
+}

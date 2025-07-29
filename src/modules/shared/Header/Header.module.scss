@@ -1,0 +1,212 @@
+@import '/src/styles/main';
+
+.content {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 16px;
+
+  border-bottom: 1px solid var(--elements-color);
+
+  background-color: var(--bg-color);
+
+  @include onDesktop {
+    column-gap: 24px;
+  }
+}
+
+.logoLink {
+  position: relative;
+  padding: 13px 16px;
+
+  @include onDesktop {
+    padding: 18px 24px;
+  }
+}
+
+.logoImg {
+  width: 64px;
+  height: 22px;
+
+  @include onDesktop {
+    width: 80px;
+    height: 28px;
+  }
+}
+
+.buttonMenu {
+  padding: 16px;
+  border-left: 1px solid var(--elements-color);
+
+  @include onTablet {
+    display: none;
+  }
+
+  @include onHover {
+    background-color: var(--elements-color);
+  }
+}
+
+.nav {
+  display: none;
+
+  @include onTablet {
+    display: block;
+  }
+}
+
+.navList {
+  display: flex;
+  flex-direction: row;
+  column-gap: 32px;
+
+  @include onDesktop {
+    column-gap: 64px;
+  }
+}
+
+.navLink {
+  display: block;
+  padding-block: 18px;
+  border-bottom: 3px solid transparent;
+
+  color: var(--secondary-color);
+
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  @include onDesktop {
+    padding-block: 26px;
+  }
+
+  @include onHover {
+    color: var(--text-color);
+    border-color: var(--text-color);
+  }
+}
+
+.navLinkActive {
+  color: var(--text-color);
+  border-color: var(--text-color);
+}
+
+.themeSwitcher {
+  width: 48px;
+
+  @include onHover {
+    transform: scale(1.2);
+  }
+}
+
+.icons {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.iconLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-left: 1px solid var(--elements-color);
+  border-bottom: 3px solid transparent;
+
+  @include onDesktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  @include onHover {
+    background-color: var(--elements-color);
+  }
+}
+
+.iconLinkActive {
+  border-bottom-color: var(--text-color);
+}
+
+.iconMenu {
+  @extend .icon;
+
+  background-image: url('/public/img/icons/menu.svg');
+}
+
+.iconMenuLight {
+  @extend .icon;
+
+  background-image: url('/public/img/icons/menu-light-theme.svg');
+}
+
+.iconFavourite {
+  @extend .icon;
+
+  background-image: url('/public/img/icons/favourite.svg');
+}
+
+.iconCart {
+  @extend .icon;
+
+  background-image: url('/public/img/icons/cart.svg');
+}
+
+.iconFavouriteLight {
+  @extend .icon;
+
+  background-image: url('/public/img/icons/favourite-light-mode.svg');
+}
+
+.iconCartLight {
+  @extend .icon;
+
+  background-image: url('/public/img/icons/cart-light-theme.svg');
+}
+
+.itemsAmount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--bg-color);
+  border-radius: 50%;
+  background-color: $red;
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 100%;
+  text-align: center;
+}

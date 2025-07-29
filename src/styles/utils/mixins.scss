@@ -1,0 +1,67 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin grid {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 16px;
+
+  @include onTablet {
+    --columns: 12;
+  }
+
+  @include onDesktop {
+    --columns: 24;
+  }
+}
+
+@mixin onHover {
+  transition: all $transition-duration;
+
+  &:hover {
+    @content;
+  }
+}
+
+@mixin container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 16px;
+
+  @include onTablet {
+    padding-inline: 24px;
+  }
+}
+
+@mixin photoOnHover {
+  scale: 1.05;
+  padding: 10px;
+  box-shadow:
+    inset 0 -3em 3em var(--surface2-color),
+    0 0 0 2px var(--secondary-color),
+    0.3em 0.3em 1em var(--btn-hover-color);
+}
+
+@mixin buttonOnHover {
+  box-shadow: 4px 4px 6px 0px var(--text-color);
+  margin: -1px;
+}
+
+@mixin errorMessage {
+  padding-block: 50px 20px;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.5;
+  color: var(--accent-color);
+}

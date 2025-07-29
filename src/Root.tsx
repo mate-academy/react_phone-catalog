@@ -9,15 +9,28 @@ import {
 } from './utils/lazyLoading';
 import { App } from './App';
 import { Suspense } from 'react';
+import { Loader } from './modules/shared/Loader';
 
 export const Root = () => (
   <Router>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Suspense fallback={<Loader />}>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<App />}>
           <Route index element={<HomePageLazy />} />
 
-          <Route path=":productType">
+          <Route path="phones">
+            <Route index element={<ProductPageLazy />} />
+
+            <Route path=":productId" element={<ProductDetailsPageLazy />} />
+          </Route>
+
+          <Route path="tablets">
+            <Route index element={<ProductPageLazy />} />
+
+            <Route path=":productId" element={<ProductDetailsPageLazy />} />
+          </Route>
+
+          <Route path="accessories">
             <Route index element={<ProductPageLazy />} />
 
             <Route path=":productId" element={<ProductDetailsPageLazy />} />
@@ -28,8 +41,8 @@ export const Root = () => (
           <Route path="cart" element={<ShoppingCartPageLazy />} />
 
           <Route path="*" element={<NotFoundPageLazy />} />
-        </Suspense>
-      </Route>
-    </Routes>
+        </Route>
+      </Routes>
+    </Suspense>
   </Router>
 );

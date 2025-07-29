@@ -1,22 +1,25 @@
 import { Outlet } from 'react-router-dom';
 
 import { Header } from './modules/shared/Header';
-import { BurgerMenu } from './modules/shared/BurgerMenu';
 import { Footer } from './modules/shared/Footer';
-import './App.scss';
+import styles from './App.module.scss';
 
 export const App = () => (
-  <div className="App">
-    <h1 hidden>Product Catalog</h1>
+  <div className={styles.content}>
+    <header className={styles.header}>
+      <Header />
+    </header>
 
-    <Header />
-
-    <BurgerMenu />
-
-    <main>
-      <Outlet />
+    <main className={styles.main}>
+      <div className={styles.limitContainer}>
+        <Outlet />
+      </div>
     </main>
 
-    <Footer />
+    <footer className={styles.footer}>
+      <div className={styles.limitContainer}>
+        <Footer />
+      </div>
+    </footer>
   </div>
 );

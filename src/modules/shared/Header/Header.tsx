@@ -2,34 +2,38 @@ import { FC } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
-import classNames from 'classnames';
+import cn from 'classnames';
 import { useGlobalState } from '../../../context/store';
-import { LINKS } from '../../../variables/navLinks';
+import { navLinks } from '../../../constants/navLinks';
 import { BurgerMenu } from '../BurgerMenu';
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
-  classNames(styles.navLink, { [styles.navLinkActive]: isActive });
+  cn(styles.navLink, { [styles.navLinkActive]: isActive });
 
 const getIconLinkClass = ({ isActive }: { isActive: boolean }) =>
-  classNames(styles.iconLink, { [styles.iconLinkActive]: isActive });
+  cn(styles.iconLink, { [styles.iconLinkActive]: isActive });
 
 export const Header: FC = () => {
-  const { toggleMenu, carts, favourites } = useGlobalState();
+  const { toggleMenu, cart, favourites, theme, toggleTheme } = useGlobalState();
 
   return (
-    <header className={styles.header}>
-      <div className={styles.logo}>
-        <Link to="/" className={styles.logoLink}>
-          <img src="../../../../../public/img/icons/logo-icon.svg" alt="logo" />
-        </Link>
-      </div>
-
-      <button onClick={toggleMenu} className={styles.iconBurger}></button>
+    <div className={styles.content}>
+      <Link to="/" className={styles.logoLink}>
+        <img
+          src={
+            theme === 'dark'
+              ? '/img/icons/logo.svg'
+              : '/img/icons/logo-light-theme.svg'
+          }
+          alt="logo"
+          className={styles.logoImg}
+        />
+      </Link>
 
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          {LINKS.map(link => (
-            <li key={link.title} className={styles.navListItem}>
+          {navLinks.map(link => (
+            <li key={link.title} className={styles.navItem}>
               <NavLink to={link.path} className={getNavLinkClass}>
                 {link.title}
               </NavLink>
@@ -38,23 +42,53 @@ export const Header: FC = () => {
         </ul>
       </nav>
 
-      <div className={styles.iconsWrapper}>
-        <div className={styles.icon}>
-          <NavLink to="/favourites" className={getIconLinkClass}></NavLink>
+      <div>
+        <button onClick={toggleTheme} className={styles.themeSwitcher}>
+          {theme === 'dark' ? '🌞' : '🌜'}
+        </button>
 
-          {favourites.length > 0 && (
-            <span className={styles.itemsAmount}></span>
-          )}
-        </div>
+        <button onClick={toggleMenu} className={styles.buttonMenu}>
+          <span
+            className={cn(styles.iconMenu, {
+              [styles.iconMenuLight]: theme === 'light',
+            })}
+          ></span>
+        </button>
+      </div>
 
-        <div className={styles.icon}>
-          <NavLink to="/carts" className={getIconLinkClass}></NavLink>
+      <div className={styles.icons}>
+        <NavLink to="/favourites" className={getIconLinkClass}>
+          <div className={styles.iconWrapper}>
+            <span
+              className={cn({
+                [styles.iconFavourite]: theme === 'dark',
+                [styles.iconFavouriteLight]: theme === 'light',
+              })}
+            ></span>
 
-          {carts.length > 0 && <span className={styles.itemsAmount}></span>}
-        </div>
+            {favourites.length > 0 && (
+              <span className={styles.itemsAmount}>{favourites.length}</span>
+            )}
+          </div>
+        </NavLink>
+
+        <NavLink to="/cart" className={getIconLinkClass}>
+          <div className={styles.iconWrapper}>
+            <span
+              className={cn({
+                [styles.iconCart]: theme === 'dark',
+                [styles.iconCartLight]: theme === 'light',
+              })}
+            ></span>
+
+            {cart.length > 0 && (
+              <span className={styles.itemsAmount}>{cart.length}</span>
+            )}
+          </div>
+        </NavLink>
       </div>
 
       <BurgerMenu />
-    </header>
+    </div>
   );
 };

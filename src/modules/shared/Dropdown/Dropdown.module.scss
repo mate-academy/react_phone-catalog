@@ -1,0 +1,80 @@
+@import '/src/styles/main.scss';
+
+.dropdown {
+  position: relative;
+}
+
+.label {
+  @extend .small-text;
+
+  display: block;
+  margin-bottom: 4px;
+  color: var(--secondary-color);
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--surface2-color);
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  @include onHover {
+    border-color: var(--icon-placeholder-color);
+  }
+
+  &:active {
+    border-color: var(--accent-color);
+  }
+}
+
+.buttonText {
+  font-weight: 700;
+}
+
+.buttonIcon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url('/public/img/icons/arrow-down-dark.svg') center / cover
+    no-repeat;
+  transition: all $transition-duration;
+}
+
+.buttonIconOpen {
+  transform: rotate(180deg);
+}
+
+.list {
+  position: absolute;
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-block: 8px;
+  border: 1px solid var(--elements-color);
+  box-shadow: 0px 2px 15px 0px #0000000d;
+  background: var(--bg-color);
+  transition: all $transition-duration;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.listOpen {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(4px);
+}
+
+.listLink {
+  display: block;
+  padding: 6px 12px;
+  color: var(--secondary-color);
+
+  @include onHover {
+    color: var(--text-color);
+    background: var(--surface2-color);
+  }
+}

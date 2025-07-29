@@ -1,0 +1,83 @@
+@import '/src/styles/main.scss';
+
+.container {
+  padding-block: 24px 64px;
+
+  @include onDesktop {
+    padding-bottom: 80px;
+  }
+}
+
+.breadcrumbs {
+  margin-bottom: 24px;
+
+  @include onTablet {
+    margin-bottom: 40px;
+  }
+}
+
+.pageTitle {
+  margin-bottom: 8px;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.productsAmount {
+  margin-bottom: 32px;
+  color: var(--secondary-color);
+}
+
+.dropdowns {
+  @include grid;
+
+  margin-bottom: 24px;
+}
+
+.dropdownSort {
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: span 4;
+  }
+}
+
+.dropdownPerPage {
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: span 3;
+  }
+}
+
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errorMessage {
+  @include errorMessage;
+}
+
+.reloadButton {
+  width: 175px;
+  height: 40px;
+  font-weight: 700;
+  background: var(--accent-color);
+  cursor: pointer;
+
+  @include onHover {
+    background: var(--btn-hover-color);
+  }
+
+  &:active {
+    background: var(--surface2-color);
+  }
+}
+
+.productList {
+  margin-bottom: 24px;
+}

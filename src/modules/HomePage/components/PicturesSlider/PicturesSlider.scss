@@ -1,0 +1,143 @@
+@import '/src/styles/main.scss';
+
+.slider {
+  &__content {
+    margin-inline: -16px;
+
+    @include onTablet {
+      margin-inline: 0;
+    }
+  }
+
+  &__body {
+    margin-bottom: 8px;
+
+    @include onTablet {
+      display: flex;
+      column-gap: 20px;
+    }
+
+    @include onDesktop {
+      column-gap: 16px;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--surface2-color);
+
+      @include onHover {
+        background-color: var(--icon-placeholder-color);
+      }
+
+      &--prev::after {
+        content: url('/img/icons/arrow-left.svg');
+        width: 32px;
+      }
+
+      &--next::after {
+        content: url('/img/icons/arrow-right.svg');
+        width: 32px;
+      }
+    }
+  }
+
+  &__wrapper {
+    min-height: 320px;
+    aspect-ratio: 1 / 1;
+
+    @include onTablet {
+      min-height: 190px;
+      aspect-ratio: 2.5;
+    }
+
+    @include onDesktop {
+      height: 400px;
+      aspect-ratio: auto;
+    }
+  }
+
+  &__slide {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &--phones {
+      background-image: url('/img/pictures-slider/phones.jpg');
+    }
+    &--tablets {
+      background-image: url('/img/pictures-slider/tablets.jpg');
+    }
+    &--accessories {
+      background-image: url('/img/pictures-slider/accessories.png');
+    }
+
+    @include onHover {
+      opacity: 0.8;
+    }
+
+    @include onDesktop {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  &__slide-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 200px;
+    margin-bottom: 50px;
+    font-weight: 700;
+    text-align: center;
+    background-color: var(--accent-color);
+
+    @include onHover {
+      background-color: var(--btn-hover-color);
+    }
+
+    &:active {
+      background-color: var(--surface2-color);
+    }
+
+    @include onDesktop {
+      width: 300px;
+      margin-bottom: 70px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 12px;
+    height: 24px;
+
+    .swiper-pagination-bullet {
+      width: 14px;
+      height: 4px;
+      background-color: var(--elements-color);
+      cursor: pointer;
+
+      @include onHover {
+        opacity: 0.5;
+      }
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: var(--text-color);
+    }
+  }
+}

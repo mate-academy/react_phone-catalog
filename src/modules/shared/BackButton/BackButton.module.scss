@@ -1,0 +1,20 @@
+@import '/src/styles/main.scss';
+
+.button {
+  @extend .small-text;
+
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url('/public/img/icons/arrow-left.svg');
+}
+
+.iconLight {
+  background: url('/public/img/icons/arrow-left-disabled.svg');
+}

@@ -1,0 +1,176 @@
+@import './utils/fonts';
+@import './utils/varibles';
+@import './utils/mixins';
+
+//#region reset&normalize
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  vertical-align: baseline;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  appearance: none;
+}
+
+button {
+  cursor: pointer;
+}
+//#endregion
+
+//#region theme colors
+:root.dark, html.dark {
+  --text-color: #f1f2f9;
+  --bg-color: #0f1121;
+  --elements-color: #3b3e4a;
+  --secondary-color: #75767f;
+  --surface1-color: #161827;
+  --surface2-color: #323542;
+  --icon-placeholder-color: #4a4d58;
+  --accent-color: #905bff;
+  --btn-hover-color: #a378ff;
+}
+
+:root.light, html.light {
+  --text-color: #0f1121;
+  --bg-color: #f0ddc0;
+  --elements-color: #925607;
+  --secondary-color: #89939a;
+  --surface1-color: #e5cdad;
+  --surface2-color: #909295;
+  --icon-placeholder-color: #b4bdc3;
+  --accent-color: #27ae60;
+  --btn-hover-color: #92d8b0;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Automatically apply light colors if user has dark mode enabled */
+  :root {
+    --text-color: #0f1121;
+    --bg-color: #f0ddc0;
+    --elements-color: #925607;
+    --secondary-color: #89939a;
+    --surface1-color: #e5cdad;
+    --surface2-color: #909295;
+    --icon-placeholder-color: #b4bdc3;
+    --accent-color: #27ae60;
+    --btn-hover-color: #92d8b0;
+  }
+}
+//#endregion
+
+html {
+  min-width: 320px;
+  height: 100vh;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100vh;
+}
+
+//#region typography
+h1 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+@include onTablet {
+  h1 {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.4;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+}
+
+.small-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+//#endregion
