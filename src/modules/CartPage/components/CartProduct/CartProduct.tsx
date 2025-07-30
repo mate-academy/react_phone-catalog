@@ -2,7 +2,6 @@ import React from 'react';
 
 import styles from './CartProduct.module.scss';
 
-import { Cart } from '../../../../shared/store/CartProvider';
 import { ProductLoader } from '../../../../shared/components/ProductLoader';
 import { Link } from 'react-router-dom';
 
@@ -12,6 +11,7 @@ import CartMinus from '../../../../assets/icons/cart-icons/cart-minus-icon.svg';
 // eslint-disable-next-line
 import CartMinusActive from '../../../../assets/icons/cart-icons/cart-minus-icon-active.svg';
 import CartPlus from '../../../../assets/icons/cart-icons/cart-plus-icon.svg';
+import { Cart } from '../../../../store/cartSlice/cartSlice';
 
 type Props = {
   cartProduct: Cart;
