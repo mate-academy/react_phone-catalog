@@ -1,0 +1,15 @@
+@import '../../../utils/main';
+
+.container {
+  @include content-padding-inline;
+}
+
+.phonesPage{
+  margin: 24px 0 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+

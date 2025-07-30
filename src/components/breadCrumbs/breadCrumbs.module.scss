@@ -1,0 +1,35 @@
+@import '../../utils/main';
+
+.container {
+  @include content-padding-inline;
+}
+
+.breadCrumbs{
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.breadCrumbsItems {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 8px;
+  padding: 0;
+}
+
+.breadCrumbsList {
+  display: flex;
+  align-items: center;
+}
+
+.breadCrumbsLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+}

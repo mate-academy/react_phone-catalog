@@ -1,0 +1,34 @@
+@import '../../utils/main';
+
+.container {
+   @include content-padding-inline;
+}
+
+
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 24px;
+  background: #FAFBFC;
+  height: calc(100vh - 49px);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+
+
+.menuBottom {
+  display: grid;
+  height: 64px;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid #E2E6E9;
+}
+
+.button {
+  @include button;
+}
