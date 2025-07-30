@@ -1,19 +1,58 @@
-// HotPriceSlider.tsx
-import React, { useState, useEffect, useContext } from 'react';
-import './HotPriceSlider.scss';
+/* eslint-disable prettier/prettier */
+import React, { useContext, useEffect, useState } from 'react';
+import './ProductDetailsSlider.scss';
+import { ProductsContext } from '../../../context/ProductContext';
+import classNames from 'classnames';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import classNames from 'classnames';
-import { ProductsContext } from '../../../context/ProductContext';
 import { Link } from 'react-router-dom';
+import { getSuggestedProducts } from '../../../utils/recommendations';
+import { Phones } from '../../../types/Phones';
+import { Tablets } from '../../../types/Tablets';
+import { Accessories } from '../../../types/Accessories';
 
-export const HotPriceSlider: React.FC = () => {
-  const { products } = useContext(ProductsContext);
-  const newProducts = [...products]
-    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-    .slice(0, 10);
+type Props = {
+  currentId: string
+  modelName: string;
+  modelCapacity: string;
+  modelColor: string;
+  category: string;
+};
+
+export const ProductDetailsSlider: React.FC<Props> = ({
+  currentId,
+  modelName,
+  modelCapacity,
+  modelColor,
+  category,
+}) => {
+  const { phones, tablets, accessories } = useContext(ProductsContext);
+  // eslint-disable-next-line max-len
+  const [products, setProducts] = useState<Phones[] | Tablets[] | Accessories[]>([]);
+
+  useEffect(() => {
+    if (category === 'phones') {
+      setProducts(phones);
+    }
+
+    if (category === 'tablets') {
+      setProducts(tablets);
+    }
+
+    if (category === 'accessories') {
+      setProducts(accessories);
+    }
+  }, [category]);
+
+  const newProducts = getSuggestedProducts(
+    products,
+    currentId,
+    modelName,
+    modelColor,
+    modelCapacity,
+  );
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -31,13 +70,13 @@ export const HotPriceSlider: React.FC = () => {
   }, [newProducts.length]);
 
   return (
-    <section className="hot-slider">
-      <div className="hot-slider__header">
-        <h2 className="hot-slider__title">Hot prices</h2>
+    <section className="rec-slider">
+      <div className="rec-slider__header">
+        <h2 className="rec-slider__title">You may also like</h2>
 
-        <div className="hot-slider__controls">
+        <div className="rec-slider__controls">
           <div
-            className={classNames('hot-slider__nav-prev', {
+            className={classNames('rec-slider__nav-prev', {
               'is-disabled': isBeginning,
             })}
           >
@@ -58,7 +97,7 @@ export const HotPriceSlider: React.FC = () => {
             </svg>
           </div>
           <div
-            className={classNames('hot-slider__nav-next', {
+            className={classNames('rec-slider__nav-next', {
               'is-disabled': isEnd,
             })}
           >
@@ -81,7 +120,7 @@ export const HotPriceSlider: React.FC = () => {
         </div>
       </div>
 
-      <div className="hot-slider__container">
+      <div className="rec-slider__container">
         <Swiper
           modules={[Navigation]}
           observer={true}
@@ -97,8 +136,8 @@ export const HotPriceSlider: React.FC = () => {
             setIsEnd(swiper.isEnd);
           }}
           navigation={{
-            nextEl: '.hot-slider__nav-next',
-            prevEl: '.hot-slider__nav-prev',
+            nextEl: '.rec-slider__nav-next',
+            prevEl: '.rec-slider__nav-prev',
           }}
           slidesPerView={1.5}
           spaceBetween={1}
@@ -112,7 +151,7 @@ export const HotPriceSlider: React.FC = () => {
             1200: {
               slidesPerView: 4,
               slidesOffsetBefore: 0,
-              spaceBetween: 0,
+              spaceBetween: 2,
             },
           }}
         >
@@ -120,19 +159,19 @@ export const HotPriceSlider: React.FC = () => {
             <SwiperSlide key={prod.id}>
               <div className="product-card">
                 <Link
-                  to={`/phones/${prod.itemId}`}
+                  to={`/${category}/${prod.id}`}
                   className="card__link-product-id"
                 >
                   <img
                     className="product-card__image"
-                    src={prod.image}
+                    src={prod.images[0]}
                     alt={prod.name}
                   />
                   <p className="product-card__name">{prod.name}</p>
                 </Link>
                 <div className="hot-prices">
-                  <p className="hot-prices__price">${prod.price}</p>
-                  <p className="hot-prices__full_price">${prod.fullPrice}</p>
+                  <p className="hot-prices__price">${prod.priceDiscount}</p>
+                  <p className="hot-prices__full_price">${prod.priceRegular}</p>
                 </div>
                 <div className="product-card__spec">
                   <p className="product-card__label">Screen</p>
@@ -151,15 +190,15 @@ export const HotPriceSlider: React.FC = () => {
                   <button
                     className={classNames('product-card__add', {
                       'product-card__add--active': addedCartProducts.some(a => {
-                        return a.productId === prod.itemId;
+                        return a.productId === prod.id;
                       }),
                     })}
                     onClick={() => {
-                      onAddProduct(prod.itemId);
+                      onAddProduct(prod.id);
                     }}
                   >
                     {addedCartProducts.some(a => {
-                      return a.productId === prod.itemId;
+                      return a.productId === prod.id;
                     })
                       ? 'Added to cart'
                       : 'Add to cart'}
@@ -167,13 +206,13 @@ export const HotPriceSlider: React.FC = () => {
                   <button
                     className="product-card__like"
                     onClick={() => {
-                      onToggleLike(prod.itemId);
+                      onToggleLike(prod.id);
                     }}
                   >
-                    {!favoritesProducts.includes(prod.itemId) && (
+                    {!favoritesProducts.includes(prod.id) && (
                       <img src="./icons/like.svg" alt="like" />
                     )}
-                    {favoritesProducts.includes(prod.itemId) && (
+                    {favoritesProducts.includes(prod.id) && (
                       <img src="./icons/liked.svg" alt="like" />
                     )}
                   </button>

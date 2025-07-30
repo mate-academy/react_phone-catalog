@@ -83,10 +83,9 @@
   font-family: Mont, sans-serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 21px;
   color: rgba(241, 242, 249, 1);
   line-height: 1.5;
-  margin: 0 0 24px 0;
+  margin: 0 0 24px;
 }
 
 .modal-buttons {
@@ -114,15 +113,15 @@
   border-color: #dc2626;
 }
 
-.modal-buttons button:first-child:hover {
-  background: #b91c1c;
-  border-color: #b91c1c;
-}
-
 .modal-buttons button:last-child {
   background: #374151;
   color: #f9fafb;
   border-color: #4b5563;
+}
+
+.modal-buttons button:first-child:hover {
+  background: #b91c1c;
+  border-color: #b91c1c;
 }
 
 .modal-buttons button:last-child:hover {

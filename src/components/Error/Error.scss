@@ -1,6 +1,7 @@
 .error-container {
   text-align: center;
-  max-width: 400px;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 0 2rem;
 }
 
@@ -18,7 +19,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  animation: errorPulse 2s ease-in-out infinite;
+  animation: error-pulse 2s ease-in-out infinite;
 }
 
 .error-icon::before,
@@ -79,7 +80,7 @@
   transform: translateY(0);
 }
 
-@keyframes errorPulse {
+@keyframes error-pulse {
   0%,
   100% {
     transform: scale(1);

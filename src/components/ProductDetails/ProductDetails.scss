@@ -1,0 +1,14 @@
+.details {
+  padding: 24px 16px 56px;
+  min-height: 100vh;
+
+  @media (min-width: 640px) {
+    padding: 24px 24px 64px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 24px 32px 81px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}

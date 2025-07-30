@@ -21,25 +21,6 @@
     font-size: 14px;
     line-height: 21px;
 
-    &:hover:not(:disabled) {
-      background-color: rgba(59, 62, 74, 1);
-    }
-
-    &:disabled {
-      border: 1px solid rgba(59, 62, 74, 1);
-      background-color: transparent;
-      cursor: not-allowed;
-
-      .svg-left,
-      .svg-right {
-        color: rgba(74, 77, 88, 1);
-      }
-    }
-
-    &--active {
-      background-color: rgba(144, 91, 255, 1);
-    }
-
     &--nav {
       background-color: rgba(50, 53, 66, 1);
       margin-left: 8px;
@@ -61,6 +42,25 @@
         width: 16px;
         height: 16px;
       }
+    }
+
+    &:disabled {
+      border: 1px solid rgba(59, 62, 74, 1);
+      background-color: transparent;
+      cursor: not-allowed;
+
+      .svg-left,
+      .svg-right {
+        color: rgba(74, 77, 88, 1);
+      }
+    }
+
+    &:hover:not(:disabled) {
+      background-color: rgba(59, 62, 74, 1);
+    }
+
+    &--active {
+      background-color: rgba(144, 91, 255, 1);
     }
   }
 }

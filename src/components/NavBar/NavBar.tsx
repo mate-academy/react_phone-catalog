@@ -1,14 +1,20 @@
 import { Link, NavLink } from 'react-router-dom';
 import './NavBar.scss';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ProductsContext } from '../../context/ProductContext';
+import { Aside } from '../Aside';
 
 export const NavBar = () => {
   const { favoritesProducts, addedCartProducts } = useContext(ProductsContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const sumOfCounters = addedCartProducts.reduce((acc, value) => {
     return acc + value.quantity;
   }, 0);
+
+  const handleMenuClose = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="nav">
@@ -51,7 +57,12 @@ export const NavBar = () => {
           </NavLink>
         </div>
       </div>
-      <div className="nav__burger-block">
+      <div
+        className="nav__burger-block"
+        onClick={() => {
+          setIsMenuOpen(true);
+        }}
+      >
         <img className="nav__burger" src="icons/burger.svg" alt="burger_icon" />
       </div>
       <div className="nav__icons">
@@ -84,6 +95,7 @@ export const NavBar = () => {
           )}
         </NavLink>
       </div>
+      <Aside isMenuOpen={isMenuOpen} handleMenuClose={handleMenuClose} />
     </nav>
   );
 };

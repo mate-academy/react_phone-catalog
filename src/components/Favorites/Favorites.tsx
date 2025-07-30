@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import './Favorites.scss';
 import { useLocation } from 'react-router-dom';
 import { ListOfFavorite } from './ListOfFavorite';
 import { ProductsContext } from '../../context/ProductContext';

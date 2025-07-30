@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Header.scss';
 
 export const HeaderCart = () => {
+  const navigate = useNavigate();
+
+  function handleBack() {
+    navigate(-1);
+  }
+
   return (
     <>
       <div className="cart__navigation">
@@ -21,9 +27,14 @@ export const HeaderCart = () => {
             fill="currentColor"
           />
         </svg>
-        <Link className="cart__link-back" to="/">
+        <div
+          className="cart__link-back"
+          onClick={() => {
+            handleBack();
+          }}
+        >
           Back
-        </Link>
+        </div>
       </div>
       <div className="cart__header">
         <h1 className="cart__title">Cart</h1>

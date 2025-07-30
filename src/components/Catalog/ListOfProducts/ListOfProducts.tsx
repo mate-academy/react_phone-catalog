@@ -6,6 +6,8 @@ import { Tablets } from '../../../types/Tablets';
 import './ListOfProducts.scss';
 import { ProductsContext } from '../../../context/ProductContext';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+
 type Props = {
   visibleProducts: Phones[] | Tablets[] | Accessories[];
 };
@@ -20,8 +22,14 @@ export const ListOfProducts: React.FC<Props> = ({ visibleProducts }) => {
       {visibleProducts.map(item => {
         return (
           <div className="card" key={item.id}>
-            <img className="card__image" src={item.images[0]} alt={item.name} />
-            <p className="card__name">{item.name}</p>
+            <Link to={`${item.id}`} className="card__link-product-id">
+              <img
+                className="card__image"
+                src={item.images[0]}
+                alt={item.name}
+              />
+              <p className="card__name">{item.name}</p>
+            </Link>
 
             <div className="card__prices">
               <p className="card__price--discount">${item.priceDiscount}</p>

@@ -5,7 +5,12 @@ export const Footer = () => (
     <div className="footer">
       <img className="footer__logo" src="logo/logo.svg" alt="logo" />
       <div className="footer__nav">
-        <a className="footer__nav-link" href="#">
+        <a
+          className="footer__nav-link"
+          href="https://github.com/ivsasha"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Github
         </a>
         <a className="footer__nav-link" href="#">
@@ -15,7 +20,10 @@ export const Footer = () => (
           Rights
         </a>
       </div>
-      <div className="footer__back">
+      <div
+        className="footer__back"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
         <p className="footer__back-title">Back to top</p>
         <button className="footer__back-button">
           <svg

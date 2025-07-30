@@ -1,0 +1,39 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  @media (min-width: 640px) {
+    margin-bottom: 40px;
+  }
+
+  &__right-vector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: rgba(117, 118, 127, 1);
+    text-decoration: none;
+    text-transform: capitalize;
+
+    &--not_active {
+      color: rgba(241, 242, 249, 1);
+    }
+
+    &--elips {
+      white-space: nowrap;
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+    }
+  }
+}

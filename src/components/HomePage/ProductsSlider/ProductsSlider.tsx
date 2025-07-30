@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import classNames from 'classnames';
 import { ProductsContext } from '../../../context/ProductContext';
+import { Link } from 'react-router-dom';
 
 export const ProductsSlider: React.FC = () => {
   const { products } = useContext(ProductsContext);
@@ -145,12 +146,17 @@ export const ProductsSlider: React.FC = () => {
             return (
               <SwiperSlide key={prod.id}>
                 <div className="product-card">
-                  <img
-                    className="product-card__image"
-                    src={prod.image}
-                    alt={prod.name}
-                  />
-                  <p className="product-card__name">{prod.name}</p>
+                  <Link
+                    to={`/phones/${prod.itemId}`}
+                    className="card__link-product-id"
+                  >
+                    <img
+                      className="product-card__image"
+                      src={prod.image}
+                      alt={prod.name}
+                    />
+                    <p className="product-card__name">{prod.name}</p>
+                  </Link>
                   <p className="product-card__price">${prod.price}</p>
 
                   <div className="product-card__spec">

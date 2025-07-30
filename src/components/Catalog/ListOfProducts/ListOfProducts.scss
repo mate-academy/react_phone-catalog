@@ -8,18 +8,15 @@
   @media (min-width: 640px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 40px;
-    column-gap: 16px;
+    gap: 40px 16px;
     margin-bottom: 40px;
   }
 
   @media (min-width: 1200px) {
     display: flex;
-    flex-direction: row;
     justify-content: start;
-    row-gap: 40px;
-    column-gap: 16px;
-    flex-wrap: wrap;
+    gap: 40px 16px;
+    flex-flow: row wrap;
   }
 }
 
@@ -41,6 +38,12 @@
   @media (min-width: 1200px) {
     height: 506px;
     width: 272px;
+  }
+
+  &__link-product-id {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
   }
 
   &__image {

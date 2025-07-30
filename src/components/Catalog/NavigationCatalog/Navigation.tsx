@@ -1,8 +1,11 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './Navigation.scss';
 
-export const HeaderFavorites = () => {
-  const location = useLocation().pathname.replace('/', '');
+type Props = {
+  location: string;
+};
 
+export const NavigationCatalog: React.FC<Props> = ({ location }) => {
   return (
     <div className="navigation">
       <div className="navigation__right-vector">
