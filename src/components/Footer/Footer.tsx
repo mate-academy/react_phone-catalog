@@ -4,7 +4,7 @@ import logoLight from '../img/logo-light.svg';
 import arrowUp from '../img/arrowUp.svg';
 import './Footer.scss';
 import { useContext } from 'react';
-import { ThemeSwitching } from '../Themes/Themes';
+import { ThemeContext } from '../Themes/Themes';
 
 export const Footer = () => {
   const scrollTop = () => {
@@ -14,16 +14,16 @@ export const Footer = () => {
     });
   };
 
-  const { theme } = useContext(ThemeSwitching);
+  const { theme } = useContext(ThemeContext);
 
-  const basicDark = theme === 'dark';
+  const isBasicDark = theme === 'dark';
 
   return (
     <footer className="footer">
       <nav role="navigation" aria-label="footer navigation">
         <div className="footer__container">
           <NavLink className="footer__logo" to="/">
-            <img src={basicDark ? logo : logoLight} alt="Logo" />
+            <img src={isBasicDark ? logo : logoLight} alt="Logo" />
           </NavLink>
           <ul className="footer-links">
             <NavLink
@@ -47,6 +47,7 @@ export const Footer = () => {
             <h3 className="footer__buttonsName">Back to top</h3>
             <button className="fotter_btn" onClick={scrollTop}>
               <img src={arrowUp} alt="Scroll to top" />
+              {/* theme changes are not take into calculation*/}
             </button>
           </div>
         </div>
