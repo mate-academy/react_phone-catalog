@@ -14,7 +14,7 @@ export const Logo = ({ withPaddingLeft = false }: LogoProps) => (
     })}
   >
     <img
-      src="/img/logo/Logo-mobile.png"
+      src="./img/logo/Logo-mobile.png"
       alt="Nice-gadgets-logo"
       className={styles.logoImg}
     />

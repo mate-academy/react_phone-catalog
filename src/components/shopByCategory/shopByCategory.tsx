@@ -23,7 +23,7 @@ export const ShopByCategory = () => {
         <div className={styles.categories}>
           <div className={styles.category}>
             <img
-              src="/img/category-phones.png"
+              src="./img/category-phones.png"
               alt="category-phones"
               className={styles.categoryImg}
             />
@@ -32,7 +32,7 @@ export const ShopByCategory = () => {
           </div>
           <div className={styles.category}>
             <img
-              src="/img/category-tablets.png"
+              src="./img/category-tablets.png"
               alt="category-tablets"
               className={styles.categoryImg}
             />
@@ -41,7 +41,7 @@ export const ShopByCategory = () => {
           </div>
           <div className={styles.category}>
             <img
-              src="/img/category-accessories.png"
+              src="./img/category-accessories.png"
               alt="category-accessories"
               className={styles.categoryImg}
             />
