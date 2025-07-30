@@ -1,0 +1,72 @@
+@use '../../styles/variables/colors/colors' as color;
+
+.navigation-cart {
+  display: flex;
+  height: 100%;
+}
+
+.navigation-cart-aside {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 64px;
+  width: 100%;
+  border-top: 1px solid color.$color-elements;
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    a {
+      width: 100%;
+    }
+  }
+}
+
+.link-cart {
+  display: flex;
+  font-size: 12px;
+  height: 100%;
+  width: 64px;
+
+  align-items: center;
+  justify-content: center;
+  &__active {
+    border-bottom: 3px solid color.$color-primary;
+  }
+}
+
+.navigation-cart--light {
+  .navigation-cart__item {
+    border-inline: 1px solid color.$color-elements;
+  }
+  .link-cart {
+    background-color: color.$color-bg-app-light-mode;
+
+    &__active {
+      border-bottom-color: color.$color-primary;
+      color: color.$color-primary;
+      border-bottom: 3px solid color.$color-primary;
+    }
+  }
+
+  .navigation-cart__item {
+    border-color: color.$color-elements;
+  }
+}
+
+.navigation-cart--dark {
+  .navigation-cart__item {
+    border-inline: 1px solid color.$color-added-button-dark-mode;
+  }
+  .link-cart {
+    background-color: color.$color-bg-app-dark-mode;
+
+    &__active {
+      border-bottom-color: color.$color-primary-dark-mode;
+      color: color.$color-primary-dark-mode;
+      border-bottom: 3px solid color.$color-primary-dark-mode;
+    }
+  }
+}

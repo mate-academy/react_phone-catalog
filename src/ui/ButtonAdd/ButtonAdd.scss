@@ -1,0 +1,56 @@
+@use '../../styles/variables/colors' as colors;
+
+.buttonAdd {
+  flex: 1;
+  width: 176px;
+  height: 40px;
+
+  border-radius: 48px;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+
+  transition: box-shadow 0.3s;
+
+  &:active,
+  &--active {
+    background-color: #fff;
+    color: colors.$color-accent;
+    border: 1px solid colors.$color-elements;
+    box-shadow: none;
+  }
+
+  &__light {
+    background-color: colors.$color-accent;
+    color: colors.$color-bg-app-light-mode;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(23, 32, 49, 0.4);
+    }
+
+    &--active {
+      background-color: colors.$color-bg-app-light-mode;
+      color: colors.$color-accent;
+      border: 1px solid colors.$color-elements;
+      box-shadow: none;
+    }
+  }
+
+  &__dark {
+    background-color: colors.$color-accent-dark-mode;
+    color: colors.$color-text-button-dark-mode;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(23, 32, 49, 0.4);
+      background-color: colors.$color-button-hover-dark-mode;
+    }
+
+    &--active {
+      background-color: colors.$color-added-button-dark-mode;
+      color: colors.$color-primary-dark-mode;
+      box-shadow: none;
+    }
+  }
+}

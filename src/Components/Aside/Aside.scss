@@ -1,0 +1,26 @@
+@use '../../styles/variables/colors/colors' as color;
+
+.aside {
+  display: flex;
+  justify-content: center;
+  top: 64px;
+  width: 100vw;
+  height: calc(100vh - 64px);
+  position: fixed;
+  z-index: 1000;
+  background-color: color.$color-bg-app-light-mode;
+  overflow-y: auto;
+
+  &--dark {
+    background-color: color.$color-bg-app-dark-mode;
+  }
+
+  &__nav-bar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+}

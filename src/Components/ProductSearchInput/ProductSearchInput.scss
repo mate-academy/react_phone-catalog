@@ -1,0 +1,91 @@
+@use '../../styles/variables/colors/colors' as colors;
+
+.product-search-container {
+  position: relative;
+  width: 300px;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: width 0.3s;
+
+  &:focus-within {
+    width: 450px;
+  }
+
+  .product-search-input {
+    box-sizing: border-box;
+    height: 40px;
+    width: 100%;
+    color: colors.$color-secondary;
+
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid colors.$color-icons;
+    transition: border 0.3s;
+    &:focus {
+      border: 1px solid colors.$color-primary;
+      color: colors.$color-primary;
+    }
+
+    :hover {
+      border: 1px solid colors.$color-primary;
+    }
+  }
+
+  .product-search-dropdown {
+    position: absolute;
+    top: 125%;
+    left: 0;
+    width: 100%;
+    background: colors.$color-hover-bg;
+    width: 450px;
+    border-radius: 4px;
+    z-index: 1001;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .product-search-item {
+    border-radius: 6px;
+    transition: background 0.15s;
+    &:hover,
+    &:focus {
+      background: colors.$color-hover-bg;
+    }
+  }
+
+  @media (max-width: 1199px) {
+  }
+  @media (max-width: 639px) {
+    .product-search-dropdown {
+      width: 100vw;
+      min-width: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.product-search-container-dark .product-search-input {
+  background-color: colors.$color-bg-app-dark-mode;
+  color: colors.$color-primary-dark-mode;
+}
+
+.product-search-container-dark .product-search-input::placeholder {
+  color: colors.$color-secondary-dark-mode;
+}
+
+.product-search-container-dark .product-search-input:focus {
+  background-color: colors.$color-added-button-dark-mode;
+  border-color: colors.$color-secondary-dark-mode;
+  color: colors.$color-primary-dark-mode;
+}
+
+.product-search-container-dark .product-search-dropdown {
+  background-color: colors.$color-bg-app-dark-mode;
+}

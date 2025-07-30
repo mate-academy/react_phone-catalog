@@ -1,0 +1,119 @@
+@use '../../styles/variables/colors/colors' as colors;
+
+.make-your-choice {
+  grid-column: 1/ -1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 100vh;
+
+  text-align: center;
+
+  &--light {
+    background-color: colors.$color-bg-app-light-mode;
+    color: colors.$color-primary;
+
+    .make-your-choice__button--back {
+      background-color: #d32f2f;
+      color: white;
+
+      &:hover {
+        background-color: #b71c1c;
+      }
+    }
+
+    .make-your-choice__button--help {
+      background-color: #43a047;
+      color: white;
+
+      &:hover {
+        background-color: #388e3c;
+      }
+    }
+  }
+
+  &--dark {
+    background-color: colors.$color-bg-app-dark-mode;
+    color: colors.$color-primary-dark-mode;
+
+    .make-your-choice__button--back {
+      background-color: #9a1b1b;
+      color: white;
+
+      &:hover {
+        background-color: #7f1616;
+      }
+    }
+
+    .make-your-choice__button--help {
+      background-color: #2e7d32;
+      color: white;
+
+      &:hover {
+        background-color: #1b5e20;
+      }
+    }
+  }
+
+  &__content {
+    max-width: 1199px;
+    width: 100%;
+    padding: 160px 30px 150px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px colors.$color-product-card-hove-dark-mode;
+
+    &--light {
+      background-color: colors.$color-bg-app-light-mode;
+
+      .make-your-choice__buttons a {
+        // background-color: colors.$color-accent-dark-mode;
+        // color: colors.$color-text-button-dark-mode;
+        // background-color: #e53935;
+        // color: colors.$color-text-button-dark-mode;
+      }
+    }
+
+    &--dark {
+      background-color: colors.$color-bg-app-dark-mode;
+
+      // .make-your-choice__buttons a {
+      //   background-color: colors.$color-accent-dark-mode;
+      //   color: colors.$color-text-button-dark-mode;
+      // }
+    }
+  }
+
+  &__message {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    a {
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+
+      // background-color: colors.$color-accent-dark-mode;
+      // color: colors.$color-text-button-dark-mode;
+
+      &:hover {
+        background-color: colors.$color-button-hover-dark-mode;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

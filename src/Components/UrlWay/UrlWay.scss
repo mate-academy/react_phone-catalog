@@ -1,0 +1,34 @@
+@use '../../styles/variables/colors/colors' as colors;
+
+.url-way {
+  display: flex;
+  gap: 8px;
+
+  &__icon-home {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+
+    &--light {
+      background-image: url('../../images/icons/home.svg');
+    }
+
+    &--dark {
+      background-image: url('../../images/icons/Home-white.svg');
+    }
+  }
+
+  &__icon-arrow {
+    background-image: url('../../images/icons/chevron_arrow_right.svg');
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.title-grey {
+  color: colors.$color-secondary;
+}
+
+.url-way--dark .category {
+  color: colors.$color-text-button-dark-mode;
+}

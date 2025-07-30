@@ -1,0 +1,33 @@
+@use '../../styles/variables/colors/colors' as colors;
+
+.description-block {
+  width: 560px;
+
+  &__title {
+    color: colors.$color-primary;
+    padding-bottom: 16px;
+    padding-top: 25px;
+  }
+
+  &__text {
+    color: colors.$color-secondary;
+    padding-bottom: 16px;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 1199px) {
+  .description-block {
+    width: 100%;
+  }
+}
+
+@media (max-width: 639px) {
+  .description-block {
+    width: 100%;
+  }
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+}

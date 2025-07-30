@@ -1,0 +1,32 @@
+@use '../variables/colors/colors' as colors;
+@use '../variables/fonts/fonts' as fonts;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Mont', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li,
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}

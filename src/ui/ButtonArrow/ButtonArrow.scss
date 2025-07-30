@@ -1,0 +1,111 @@
+@use '../../styles/variables/colors' as colors;
+
+.button-icon {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+
+  &--light {
+    border: 1px solid colors.$color-icons;
+    border-radius: 50%;
+
+    &:hover {
+      border-color: colors.$color-primary;
+    }
+  }
+
+  &--dark {
+    background-color: colors.$color-added-button-dark-mode;
+
+    &:hover {
+      background-color: colors.$color-button-arrow-hover-dark-mode;
+      border-color: colors.$color-primary;
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &.button-icon--arrow:not(.is-disabled) .button-icon__icon {
+    background-image: url('../../images/icons/chevron_arrow_ennable.svg');
+  }
+
+  &.button-icon--arrow.is-disabled .button-icon__icon {
+    background-image: url('../../images/icons/chevron_arrow_left.svg');
+  }
+
+  &.button-icon--arrow.button-icon--dark:not(.is-disabled) .button-icon__icon {
+    background-image: url('../../images/icons/chevron_arrow_ennable_dark.svg');
+  }
+
+  &.button-icon--arrow.button-icon--dark.is-disabled .button-icon__icon {
+    background-image: url('../../images/icons/chevron_arrow_disabled_dark_mode.svg');
+  }
+
+  &.button-icon--plus:not(.is-disabled) .button-icon__icon {
+    background-image: url('../../images/icons/plus.svg');
+  }
+
+  &.button-icon--plus.is-disabled .button-icon__icon {
+    background-image: url('../../images/icons/Plus-dark.png');
+  }
+
+  &.button-icon--plus.button-icon--dark:not(.is-disabled) .button-icon__icon {
+    background-image: url('../../images/icons/Plus_dark_mode.svg');
+  }
+
+  &.button-icon--plus.button-icon--dark.is-disabled .button-icon__icon {
+    background-image: url('../../images/icons/plus.svg');
+  }
+
+  &.button-icon--minus:not(.is-disabled) .button-icon__icon {
+    background-image: url('../../images/icons/minus.svg');
+  }
+
+  &.button-icon--minus.is-disabled .button-icon__icon {
+    background-image: url('../../images/icons/minus-gray.svg');
+  }
+
+  &.button-icon--minus.button-icon--dark:not(.is-disabled) .button-icon__icon {
+    background-image: url('../../images/icons/minus_dark_mode_ennable.svg');
+  }
+
+  &.button-icon--minus.button-icon--dark.is-disabled .button-icon__icon {
+    background-image: url('../../images/icons/minus_dark_mode_disabled.svg');
+  }
+
+  &.right .button-icon__icon {
+    transform: rotate(180deg);
+  }
+
+  &.left .button-icon__icon {
+    transform: rotate(0deg);
+  }
+
+  &.up .button-icon__icon {
+    transform: rotate(90deg);
+  }
+
+  &.down .button-icon__icon {
+    transform: rotate(-90deg);
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+    border: 1px solid colors.$color-elements;
+
+    &.button-icon--dark {
+      border: none;
+    }
+  }
+}

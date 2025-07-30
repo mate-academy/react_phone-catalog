@@ -1,0 +1,27 @@
+@use '../../styles/variables/colors/colors' as colors;
+
+.favorites {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-top: 24px;
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 8px;
+
+    @media (min-width: 640px) {
+      margin-top: 40px;
+    }
+  }
+
+  &__count {
+    display: block;
+    margin-bottom: 32px;
+
+    @media (min-width: 640px) {
+      margin-bottom: 40px;
+    }
+  }
+}

@@ -1,0 +1,60 @@
+@use '../../styles/variables/colors/colors' as color;
+
+.notFoundPage {
+  min-height: 60vh;
+  width: 60vw;
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+
+  @media (max-width: 1199px) {
+    width: 80vw;
+  }
+
+  @media (max-width: 639px) {
+    width: 100vw;
+  }
+
+  &--ligth {
+    background-color: color.$color-bg-app-light-mode;
+    color: color.$color-primary;
+  }
+
+  &--dark {
+    background-color: color.$color-bg-app-dark-mode;
+    color: color.$color-primary-dark-mode;
+  }
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+
+  &__desc {
+    font-size: 1.25rem;
+    margin-bottom: 32px;
+    color: inherit;
+  }
+
+  &__button {
+    padding: 12px 32px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: color.$color-accent;
+    color: #fff;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: color.$color-hover-bg;
+      color: color.$color-accent;
+      border: 1px solid color.$color-accent;
+    }
+  }
+}

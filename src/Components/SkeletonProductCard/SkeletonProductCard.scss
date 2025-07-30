@@ -1,0 +1,48 @@
+@use '../../styles/variables/colors' as colors;
+
+.skeletonCard {
+  grid-column: 1 / -1;
+
+  @media (min-width: 640px) and (max-width: 782px) {
+    grid-column: span 6;
+  }
+
+  @media (min-width: 782px) and (max-width: 1200px) {
+    grid-column: span 4;
+  }
+
+  @media (min-width: 1200px) {
+    grid-column: span 6;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 32px;
+  box-sizing: border-box;
+  height: 506px;
+  border-radius: 5px;
+  transition:
+    box-shadow 0.3s,
+    border 0.3s;
+  border: 1px solid colors.$color-elements;
+
+  &__image,
+  &__title,
+  &__price,
+  &__specs {
+    width: 100%;
+  }
+
+  &__divider {
+    border: none;
+    height: 1px;
+    background-color: colors.$color-elements;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+}

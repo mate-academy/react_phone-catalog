@@ -1,0 +1,137 @@
+@use '../../styles/variables/colors/colors' as color;
+
+.header {
+  display: flex;
+  box-sizing: border-box;
+  padding-left: 24px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 64px;
+  position: fixed;
+  z-index: 1100;
+
+  &--light {
+    background-color: color.$color-bg-app-light-mode;
+    color: color.$color-secondary;
+    box-shadow: 0 4px 6px -1px color.$color-elements;
+
+    .menu-close {
+      background-image: url('../../images/icons/menu.svg');
+    }
+
+    .menu-open {
+      background-image: url('../../images/icons/close.svg');
+    }
+  }
+
+  &--dark {
+    background-color: color.$color-bg-app-dark-mode;
+    color: color.$color-primary-dark-mode;
+    box-shadow: 0 4px 6px -1px color.$color-added-button-dark-mode;
+
+    .menu-close {
+      background-image: url('../../images/icons/menu_burger_dark.svg');
+    }
+
+    .menu-open {
+      background-image: url('../../images/icons/close_dark.svg');
+    }
+  }
+
+  @media (min-width: 640px) {
+    > *:first-child {
+      margin-right: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    justify-content: space-between;
+  }
+
+  &__nav-bar {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    height: 100%;
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+  }
+
+  &__right-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .menu-close,
+    .menu-open {
+      display: none;
+    }
+
+    @media (max-width: 640px) {
+      gap: 8px;
+
+      .menu-close,
+      .menu-open {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 64px;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.menu-close {
+  display: none;
+
+  @media (max-width: 640px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.menu-open {
+  display: none;
+
+  @media (max-width: 640px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../images/icons/close.svg');
+    width: 48px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.user-comfort {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding-right: 40px;
+
+  @media (max-width: 640px) {
+    order: 0;
+    padding-right: 0;
+  }
+}

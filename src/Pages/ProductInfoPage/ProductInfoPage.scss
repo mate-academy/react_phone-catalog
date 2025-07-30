@@ -1,0 +1,222 @@
+@use '../../styles/variables/colors/colors' as colors;
+
+.product-info-page {
+  .product-info-top {
+    padding-top: 40px;
+    padding-bottom: 16px;
+
+    @media (max-width: 639px) {
+      padding-top: 24px;
+    }
+  }
+
+  .product-info-title {
+    margin-bottom: 40px;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .product-info-main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    grid-auto-rows: max-content;
+    padding-inline: 16px;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(24, 32px);
+      margin-top: 64px;
+    }
+
+    .product-info-aside {
+      display: flex;
+      flex-direction: column;
+      grid-column: 1 / -1;
+
+      @media (min-width: 640px) {
+        grid-column: 7 / -1;
+      }
+      @media (min-width: 1200px) {
+        grid-column: 14 / 20;
+      }
+
+      .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 9px;
+        margin-top: 9px;
+
+        @media (min-width: 640px) {
+          margin-top: 0;
+        }
+      }
+
+      .divider {
+        width: 100%;
+        height: 1px;
+        background-color: colors.$color-elements;
+        margin: 16px 0;
+      }
+
+      .capacities {
+        display: flex;
+        margin-top: 9px;
+        gap: 8px;
+        flex-wrap: wrap;
+        button {
+          min-width: 56px;
+          height: 32px;
+          border-radius: 4px;
+          border: 1px solid colors.$color-icons;
+          background: transparent;
+          font-size: 14px;
+          cursor: pointer;
+          &.selected {
+            background: colors.$color-primary;
+            color: #fff;
+            border: none;
+          }
+        }
+      }
+
+      .capacity-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .price-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+        h2 {
+          margin: 0;
+        }
+        .old {
+          font-size: 18px;
+          text-decoration: line-through;
+          color: colors.$color-secondary;
+        }
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 32px;
+      }
+
+      .shortspecs {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 14px;
+        div {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      .shortspecs-row {
+        gap: 8px;
+      }
+
+      .shortspecs-value {
+        color: colors.$color-primary;
+      }
+    }
+  }
+
+  @media (max-width: 639px) {
+    .id-desktop {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    .id-desktop {
+      display: none;
+    }
+  }
+
+  .product-info-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    grid-auto-rows: max-content;
+    padding-inline: 16px;
+    margin-top: 64px;
+    margin-bottom: 56px;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(12, 1fr);
+      padding-inline: 24px;
+      margin-bottom: 64px;
+    }
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(24, 32px);
+      justify-content: center;
+      margin-bottom: 80px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background-color: colors.$color-elements;
+      margin-top: 16px;
+    }
+  }
+}
+
+.id-desktop {
+  white-space: nowrap;
+}
+
+.product-info-page--dark {
+  .shortspecs-value {
+    color: colors.$color-primary-dark-mode !important;
+  }
+  .capacities {
+    color: colors.$color-primary-dark-mode;
+    .capacity-button.selected {
+      color: colors.$color-primary !important;
+      background: colors.$color-primary-dark-mode !important;
+    }
+  }
+}
+
+.div-for-grid-first {
+  grid-column: 1/-1;
+
+  @media (min-width: 1199px) {
+    grid-column: 1/13;
+  }
+}
+
+.div-for-grid-second {
+  grid-column: 1/-1;
+  margin-top: 56px;
+
+  @media (min-width: 1199px) {
+    grid-column: 14/-1;
+  }
+
+  @media (min-width: 640px) {
+    margin-top: 64px;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 0;
+  }
+}
+
+.id-mobile {
+  @media (min-width: 1200px) {
+    display: none;
+  }
+}

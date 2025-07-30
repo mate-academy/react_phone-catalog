@@ -2,22 +2,29 @@ name: Lint
 
 on:
   pull_request:
-    branches: [ master ]
+    types: [opened, synchronize, reopened]
 
 jobs:
-  run_linter:
-
+  fix-style:
+    name: Run fix-style on PR
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20.x]
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm run lint
+          node-version: '20' # Adjust Node.js version as needed
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Run Linter and Prettier
+      - name: Run fix-style
+        run: npm run fix-style
