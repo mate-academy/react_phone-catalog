@@ -1,5 +1,5 @@
 import { BaseProduct } from '@shared/types/APITypes';
-import { useStore } from '@features/user-store/model/useStore';
+import { useStoreContext } from '@features/user-store/model/storeContext';
 
 type Props = {
   id: BaseProduct['id'];
@@ -13,21 +13,17 @@ export const useProdCard = ({ id }: Props) => {
     handleRemoveFromCart,
     getItemInFavs,
     getItemInCart,
-  } = useStore();
+  } = useStoreContext();
 
-  const handleCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const subject = { item: id, amount: 1 };
-
+  const resolveCart = () => {
     if (getItemInCart(id) === true) {
-      handleRemoveFromCart(subject);
+      handleRemoveFromCart({ item: id, amount: 1 });
     } else {
-      handleAddCart(subject);
+      handleAddCart({ item: id, amount: 1 });
     }
   };
 
-  const handleFav = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const resolveFav = () => {
     if (getItemInFavs(id) === true) {
       handleRemoveFavorite(id);
     } else {
@@ -35,9 +31,16 @@ export const useProdCard = ({ id }: Props) => {
     }
   };
 
+  const handler = (e: React.MouseEvent, fn: () => void) => {
+    e.preventDefault();
+    e.stopPropagation();
+    fn();
+    (e.currentTarget as HTMLElement).blur();
+  };
+
   return {
-    handleCart,
-    handleFav,
+    handleCart: (e: React.MouseEvent) => handler(e, resolveCart),
+    handleFav: (e: React.MouseEvent) => handler(e, resolveFav),
     isInFav: getItemInFavs(id),
     isInCart: getItemInCart(id),
   };

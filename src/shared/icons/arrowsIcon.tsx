@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 type Props = {
-  direction?: 'right' | 'down' | 'left';
+  direction?: 'right' | 'down' | 'left' | null;
 };
 
 export const ArrowIcon = ({ direction }: Props) => {

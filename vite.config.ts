@@ -11,6 +11,7 @@ const alias = {
   '@entities': path.resolve(__dirname, 'src/entities'),
   '@widgets': path.resolve(__dirname, 'src/widgets'),
   '@features': path.resolve(__dirname, 'src/features'),
+  '@server': path.resolve(__dirname, 'src/serverMock'),
 };
 
 // https://vitejs.dev/config/

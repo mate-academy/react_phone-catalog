@@ -124,8 +124,9 @@ module.exports = {
           ['@mixins', './src/shared/styles/mixins'],
           ['@shared', './src/shared'],
           ['@entities', './src/entities'],
-          ['@widgets', './src/widgets']
-          ['@features', './src/features']
+          ['@widgets', './src/widgets'],
+          ['@features', './src/features'],
+          ['@server', './src/serverMock'],
         ],
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
       },

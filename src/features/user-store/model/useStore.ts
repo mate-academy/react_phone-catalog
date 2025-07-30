@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { CartItem, initialState, State, storeReducer } from './storeReducer';
 import { BaseProduct } from '@shared/types/APITypes';
 
@@ -14,6 +14,17 @@ export const useStore = () => {
   };
 
   const [state, dispatch] = useReducer(storeReducer, null, getInitialState);
+
+  const getCartAmount = () => {
+    return state.cart.reduce((total, cartItem) => total + cartItem.amount, 0);
+  };
+
+  const getFavAmount = () => {
+    return state.favorites.length;
+  };
+
+  const [cartAmount, setCartAmount] = useState(getCartAmount());
+  const [favAmount, setFavAmount] = useState(getFavAmount());
 
   const handleAddFavorite = (id: BaseProduct['id']) => {
     dispatch({ type: 'ADD_TO_FAV', payload: id });
@@ -40,6 +51,14 @@ export const useStore = () => {
   };
 
   useEffect(() => {
+    setCartAmount(getCartAmount());
+  }, [state]);
+
+  useEffect(() => {
+    setFavAmount(getFavAmount());
+  }, [state]);
+
+  useEffect(() => {
     try {
       localStorage.setItem('userStore', JSON.stringify(state));
     } catch (error) {
@@ -55,5 +74,7 @@ export const useStore = () => {
     handleRemoveFromCart,
     getItemInFavs,
     getItemInCart,
+    cartAmount,
+    favAmount,
   };
 };

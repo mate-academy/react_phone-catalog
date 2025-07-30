@@ -1,5 +1,5 @@
 import { BaseProduct } from '@shared/types/APITypes';
-import { ItemsAmount, Order } from '@shared/types/filterEnums';
+import { ItemsAmount, Order } from '@shared/types/filterTypes';
 
 type State = {
   items: BaseProduct[];
@@ -10,9 +10,6 @@ type State = {
 
 export const initialState: State = {
   items: [],
-  order: Order.Newest,
-  itemsOnPage: ItemsAmount.sixteen,
-  page: 1,
 };
 
 type Action =

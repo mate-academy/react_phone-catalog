@@ -70,6 +70,7 @@ $logo-width-wide: 128px;
 
   > * {
     width: 48px;
+    position: relative;
     @include btn-reg;
   }
 
@@ -94,4 +95,13 @@ $logo-width-wide: 128px;
     width: 64px;
     }
   }
+}
+
+.counter {
+  position: absolute;
+  bottom: 49%;
+  left: 49%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

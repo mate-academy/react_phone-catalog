@@ -1,0 +1,75 @@
+@use '@constants/colors' as *;
+@use '@mixins/typography/bodyText' as *;
+
+.container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  color: $gray-secondary;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 12px;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  border: 1px solid $icons;
+
+  &:hover {
+    border-color: $gray-secondary;
+  }
+
+  &:focus {
+    border-color: $gray-primary;
+  }
+
+  svg {
+    margin: 12px;;
+    width: 16px !important;
+    > path {
+      fill: $icons;
+    }
+  }
+}
+
+.options {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  top: calc(100% + 4px);
+  flex-direction: column;
+  padding: 8px 0;
+  border: 1px solid $elements;
+  align-items: flex-start;
+  z-index: 20;
+  background-color: #fff;
+  cursor: pointer;
+  pointer-events: all;
+
+  &__item {
+    display: inline-block;
+    line-height: 32px;
+    margin: 6px auto 5px 12px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    @include body-text;
+    
+    color: $gray-secondary
+
+    &--active {
+      color: $gray-primary;
+      background-color: $hover-bg;
+    }
+  }
+}
+

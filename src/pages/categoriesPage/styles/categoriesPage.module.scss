@@ -1,6 +1,7 @@
 @use '@mixins/pageLayout' as *;
 @use '@mixins/typography/h1' as *;
 @use '@mixins/typography/buttonText' as *;
+@use '@mixins/typography/smallText' as *;
 @use '@constants/colors' as *;
 @use '@constants/breakpoint' as *;
 @use '@constants/productCardSizes' as *;
@@ -68,15 +69,27 @@
   }
 }
 
-.filter {
+.filter-container {
   display: flex;
-  height: 40px;
+  gap: 16px;
+  margin-bottom: -16px;
 
-  @include button-text;
+  @include small-text;
 
-  &__sort {
-    border: 1px solid $icons;
-    color: $icons;
+  > div {
+    width: 136px;
+  }
+
+  @media (min-width: $BREAKPOINT_TAB) {
+    :first-child {
+      width: 187px;
+    }
+  }
+
+  @media (min-width: $BREAKPOINT_WIDE) {
+    :first-child {
+      width: 176px;
+    }
   }
 }
 

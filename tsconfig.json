@@ -16,6 +16,7 @@
       "@entities/*":   ["src/entities/*"],
       "@widgets/*":   ["src/widgets/*"],
       "@features/*":   ["src/features/*"],
+      "@server/*":   ["src/serverMock/*"],
     }
   }
 }

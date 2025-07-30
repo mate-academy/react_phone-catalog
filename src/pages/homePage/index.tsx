@@ -1,6 +1,5 @@
-import { BaseProduct, Category } from '@shared/types/APITypes';
+import { BaseProduct } from '@shared/types/APITypes';
 import { useEffect, useState } from 'react';
-import { fetchCategory, fetchBaseProducts } from '@shared/api/fetch';
 import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
 import { Slider } from '@widgets/Slider/';
 import { SliderType } from '@widgets/Slider/types/types';
@@ -8,6 +7,8 @@ import { heroStyles, prodStyles, categories } from './model';
 import styles from './styles/HomePage.module.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { upload, uploadCatalogue } from '@server/api/mockApi';
+import { Sort } from '@server/types/types';
 
 // todo: 3 presets for slider
 // separate mths from hooks
@@ -20,16 +21,15 @@ export const HomePage = () => {
 
   useEffect(() => {
     const load = async () => {
-      const data = await fetchBaseProducts();
-      const banners = await fetchCategory(Category.Banners);
+      const banners = await upload('banner');
 
-      if (data) {
-        setProducts(data);
-      }
+      const params = {
+        sort: Sort.FULL_PRICE_DECS_PROMO,
+      };
+      const prod = await uploadCatalogue(params);
 
-      if (banners) {
-        setBannerList(banners);
-      }
+      setBannerList(banners);
+      setProducts(prod.dataArray);
     };
 
     load();
