@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import styles from './SideMenu.module.scss';
-
-import { FavoritesStateContext } from '../../store/FavoritesProvider';
-import { CartStateContext } from '../../store/CartProvider';
 
 // eslint-disable-next-line
 import FavoritesIcon from '../../../assets/icons/aside-icons/favorites-icon.svg';
 import CartIcon from '../../../assets/icons/aside-icons/cart-icon.svg';
 import { getClassLink } from '../../utils/activeClassName';
+import { useAppSelector } from '../../../store/hooks';
 
 type Props = {
   isOpenSide: boolean;
@@ -17,8 +15,8 @@ type Props = {
 };
 
 export const SideMenu: React.FC<Props> = ({ isOpenSide, setIsOpenSide }) => {
-  const favoritesProduct = useContext(FavoritesStateContext);
-  const cartsProduct = useContext(CartStateContext);
+  const cartsProduct = useAppSelector(state => state.cart);
+  const favoritesProduct = useAppSelector(state => state.favorites);
 
   const totalItems =
     Array.isArray(cartsProduct) &&

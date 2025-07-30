@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { App } from './App';
+
 import { HomePage } from './modules/HomePage';
 import { ProductPage } from './modules/ProductPage';
 import { FavoritesPage } from './modules/FavoritesPage';
@@ -13,48 +14,44 @@ import { CartPage } from './modules/CartPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { ScrollToTop } from './shared/components/ScrollToTop';
-import { GlobalProvider } from './shared/store/GlobalProvider';
-import { FavoritesProvider } from './shared/store/FavoritesProvider';
-import { CartProvider } from './shared/store/CartProvider';
+
+import { Provider } from 'react-redux';
+import { store } from './store/rootReducer';
 
 export const Root = () => {
   return (
     <Router>
-      <GlobalProvider>
-        <FavoritesProvider>
-          <CartProvider>
-            <ScrollToTop />
+      <Provider store={store}>
+        <ScrollToTop />
 
-            <Routes>
-              <Route path="/" element={<App />}>
-                <Route index element={<HomePage />} />
-                <Route path="home" element={<Navigate to="/" replace />} />
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+            <Route path="home" element={<Navigate to="/" replace />} />
 
-                <Route path="phones">
-                  <Route index element={<ProductPage />} />
-                  <Route path=":slug?" element={<ProductDetailsPage />} />
-                </Route>
+            <Route path="phones">
+              <Route index element={<ProductPage />} />
+              <Route path=":slug?" element={<ProductDetailsPage />} />
+            </Route>
 
-                <Route path="tablets">
-                  <Route index element={<ProductPage />} />
-                  <Route path=":slug?" element={<ProductDetailsPage />} />
-                </Route>
+            <Route path="tablets">
+              <Route index element={<ProductPage />} />
+              <Route path=":slug?" element={<ProductDetailsPage />} />
+            </Route>
 
-                <Route path="accessories">
-                  <Route index element={<ProductPage />} />
-                  <Route path=":slug?" element={<ProductDetailsPage />} />
-                </Route>
+            <Route path="accessories">
+              <Route index element={<ProductPage />} />
+              <Route path=":slug?" element={<ProductDetailsPage />} />
+            </Route>
 
-                <Route path="favorites" element={<FavoritesPage />} />
+            <Route path="favorites" element={<FavoritesPage />} />
 
-                <Route path="cart" element={<CartPage />} />
+            <Route path="cart" element={<CartPage />} />
 
-                <Route path="*" element={<NotFoundPage />} />
-              </Route>
-            </Routes>
-          </CartProvider>
-        </FavoritesProvider>
-      </GlobalProvider>
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </Provider>
     </Router>
   );
 };

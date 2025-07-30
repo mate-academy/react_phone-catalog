@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './FavoritesPage.module.scss';
 
 import { CurrentPage } from '../../shared/components/CurrentPage';
 import { ProductCard } from '../../shared/components/ProductCard';
-import { FavoritesStateContext } from '../../shared/store/FavoritesProvider';
 import { useLocation } from 'react-router-dom';
 import { SkeletonProduct } from '../../shared/components/SkeletonProduct';
+import { useAppSelector } from '../../store/hooks';
 
 export const FavoritesPage = () => {
-  const favoritesProduct = useContext(FavoritesStateContext);
+  const favoritesProduct = useAppSelector(state => state.favorites);
   const [isLoading, setIsLoading] = useState(true);
   const { pathname } = useLocation();
 

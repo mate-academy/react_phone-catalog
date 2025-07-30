@@ -1,12 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import styles from './CartPage.module.scss';
 
-import {
-  CartDispatchContext,
-  CartStateContext,
-} from '../../shared/store/CartProvider';
 import { Dialog } from './components/Dialog';
 import { CartProduct } from './components/CartProduct';
 import { CartTotalPrice } from './components/CartTotalPrice';
@@ -14,14 +10,20 @@ import { CartTotalPrice } from './components/CartTotalPrice';
 import CartArrow from '../../assets/icons/cart-icons/cart-arrow-icon.svg';
 import { CartSkeleton } from './components/CartSkeleton';
 import { CartTotalSkeleton } from './components/CartTotalSkeleton';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import {
+  deleteCartProduct,
+  updateCartProductQuantity,
+} from '../../store/cartSlice/cartSlice';
 
 export const CartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const cartsProduct = useContext(CartStateContext);
-  const dispatchCart = useContext(CartDispatchContext);
   const [loadingByIds, setLoadingByIds] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { pathname } = useLocation();
+
+  const cartsProduct = useAppSelector(state => state.cart);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const timer = new Promise(resolve => setTimeout(resolve, 600));
@@ -42,14 +44,11 @@ export const CartPage = () => {
 
     await new Promise(resolve => setTimeout(resolve, 300));
 
-    dispatchCart({ type: 'deleteCartProduct', payload: id });
+    dispatch(deleteCartProduct(id));
   };
 
   const handleChangeQuantity = (id: number, amount: number) => {
-    dispatchCart({
-      type: 'updateCartProductQuantity',
-      payload: { id, amount },
-    });
+    dispatch(updateCartProductQuantity({ id, amount }));
   };
 
   return (

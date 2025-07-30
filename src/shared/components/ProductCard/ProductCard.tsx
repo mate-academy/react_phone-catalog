@@ -1,21 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './ProductCard.module.scss';
 import { AllProducts } from '../../types/AllProducts/AllProducts';
-import {
-  FavoritesDispatchContext,
-  FavoritesStateContext,
-} from '../../store/FavoritesProvider';
-import {
-  CartDispatchContext,
-  CartStateContext,
-} from '../../store/CartProvider';
 
 // eslint-disable-next-line
 import FavoriteIcon from '../../../assets/icons/favorites-icon/favorites-icon.svg';
 // eslint-disable-next-line
 import FavoriteAddedIcon from '../../../assets/icons/favorites-icon/favorites-icon-added.svg';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { addCartProduct } from '../../../store/cartSlice/cartSlice';
+import {
+  addFavoritesProduct,
+  deleteFavoritesProduct,
+} from '../../../store/favoritesSlice/favoritesSlice';
 
 type Props = {
   product: AllProducts;
@@ -23,10 +21,9 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, isHotPrice }) => {
-  const favoritesProduct = useContext(FavoritesStateContext);
-  const cartsProduct = useContext(CartStateContext);
-  const dispatchFavorites = useContext(FavoritesDispatchContext);
-  const dispatchCart = useContext(CartDispatchContext);
+  const favoritesProduct = useAppSelector(state => state.favorites);
+  const cartsProduct = useAppSelector(state => state.cart);
+  const dispatch = useAppDispatch();
 
   const handleFavoritesProducts = (value: AllProducts) => {
     const isFavorites = favoritesProduct.some(
@@ -34,9 +31,9 @@ export const ProductCard: React.FC<Props> = ({ product, isHotPrice }) => {
     );
 
     if (isFavorites) {
-      dispatchFavorites({ type: 'deleteFavoritesProduct', payload: value.id });
+      dispatch(deleteFavoritesProduct(value.id));
     } else {
-      dispatchFavorites({ type: 'addFavoritesProduct', payload: value });
+      dispatch(addFavoritesProduct(value));
     }
   };
 
@@ -47,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({ product, isHotPrice }) => {
       product: value,
     };
 
-    dispatchCart({ type: 'addCartProduct', payload: newCartItem });
+    dispatch(addCartProduct(newCartItem));
   };
 
   const isFavorites = (id: number) => {

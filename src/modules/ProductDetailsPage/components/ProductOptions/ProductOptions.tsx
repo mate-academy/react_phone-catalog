@@ -1,18 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './ProductOptions.module.scss';
 
 import { Product } from '../../../../shared/types/Product/Product';
-import {
-  FavoritesDispatchContext,
-  FavoritesStateContext,
-} from '../../../../shared/store/FavoritesProvider';
-import { ProductContext } from '../../../../shared/store/GlobalProvider';
-import {
-  CartDispatchContext,
-  CartStateContext,
-} from '../../../../shared/store/CartProvider';
+
 // eslint-disable-next-line
 import { AllProducts } from '../../../../shared/types/AllProducts/AllProducts';
 import { generateProductUrl } from '../../utils/generateProductUrl';
@@ -22,17 +14,22 @@ import { getClassLink } from '../../../../shared/utils/activeClassName';
 import FavoritesIcon from '../../../../assets/icons/favorites-icon/favorites-icon.svg';
 // eslint-disable-next-line
 import FavoritesAddedIcon from '../../../../assets/icons/favorites-icon/favorites-icon-added.svg';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { addCartProduct } from '../../../../store/cartSlice/cartSlice';
+import {
+  addFavoritesProduct,
+  deleteFavoritesProduct,
+} from '../../../../store/favoritesSlice/favoritesSlice';
 
 type Props = {
   product: Product;
 };
 
 export const ProductOptions: React.FC<Props> = ({ product }) => {
-  const { data } = useContext(ProductContext);
-  const favoritesProduct = useContext(FavoritesStateContext);
-  const dispatchFavorites = useContext(FavoritesDispatchContext);
-  const cartsProduct = useContext(CartStateContext);
-  const dispatchCart = useContext(CartDispatchContext);
+  const data = useAppSelector(state => state.products.data);
+  const favoritesProduct = useAppSelector(state => state.favorites);
+  const cartsProduct = useAppSelector(state => state.cart);
+  const dispatch = useAppDispatch();
 
   const findProduct = data.find(el => el.itemId === product.id);
 
@@ -42,12 +39,9 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
     );
 
     if (isFavorites) {
-      dispatchFavorites({
-        type: 'deleteFavoritesProduct',
-        payload: findProduct?.id as number,
-      });
+      dispatch(deleteFavoritesProduct(findProduct?.id as number));
     } else {
-      dispatchFavorites({ type: 'addFavoritesProduct', payload: findProduct! });
+      dispatch(addFavoritesProduct(findProduct!));
     }
   };
 
@@ -62,7 +56,7 @@ export const ProductOptions: React.FC<Props> = ({ product }) => {
       product: findProduct as AllProducts,
     };
 
-    dispatchCart({ type: 'addCartProduct', payload: newCartItem });
+    dispatch(addCartProduct(newCartItem));
   };
 
   const isCart = cartsProduct.some(

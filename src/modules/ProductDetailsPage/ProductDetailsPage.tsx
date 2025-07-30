@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import styles from './ProductDetailsPage.module.scss';
 
-import { ProductContext } from '../../shared/store/GlobalProvider';
 import { CurrentPage } from '../../shared/components/CurrentPage';
 import { ProductsSlider } from '../../shared/components/ProductsSlider';
 import { ProductInfo } from './components/ProductInfo';
@@ -19,9 +18,10 @@ import { getRandomProduct } from './utils/randomProduct';
 import { getAllProducts } from '../../shared/services/apiServices';
 import { getProduct } from './utils/currentProduct';
 import { ProductNotFound } from './components/ProductNotFound';
+import { useAppSelector } from '../../store/hooks';
 
 export const ProductDetailsPage = () => {
-  const { data } = useContext(ProductContext);
+  const data = useAppSelector(state => state.products.data);
   const [products, setProduct] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { pathname } = useLocation();

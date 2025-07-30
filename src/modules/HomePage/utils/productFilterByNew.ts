@@ -5,5 +5,5 @@ export const productFilterByNew = (products: AllProducts[]): AllProducts[] => {
     return [];
   }
 
-  return products.sort((a, b) => b.year - a.year).slice(0, 70);
+  return [...products].sort((a, b) => b.year - a.year).slice(0, 70);
 };

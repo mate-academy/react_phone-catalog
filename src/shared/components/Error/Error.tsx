@@ -1,11 +1,9 @@
-import { useContext } from 'react';
-
 import styles from './Error.module.scss';
 
-import { ProductContext } from '../../store/GlobalProvider';
+import { useAppSelector } from '../../../store/hooks';
 
 export const Error = () => {
-  const { error } = useContext(ProductContext);
+  const error = useAppSelector(state => state.products.error);
 
   const handleReload = () => {
     window.location.reload();

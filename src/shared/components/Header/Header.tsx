@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
 import { getClassLink } from '../../utils/activeClassName';
-import { FavoritesStateContext } from '../../store/FavoritesProvider';
-import { CartStateContext } from '../../store/CartProvider';
 
 import LogoIcon from '../../../assets/icons/header-icons/logo-icon.svg';
 // eslint-disable-next-line
@@ -14,6 +12,7 @@ import CartIcon from '../../../assets/icons/header-icons/cart-icon.svg';
 // eslint-disable-next-line
 import HamburgerIcon from '../../../assets/icons/header-icons/hamburger-icon.svg';
 import CloseIcon from '../../../assets/icons/aside-icons/aside-close-icon.svg';
+import { useAppSelector } from '../../../store/hooks';
 
 type Props = {
   isOpenSide: boolean;
@@ -21,8 +20,8 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ isOpenSide, setIsOpenSide }) => {
-  const favoritesProduct = useContext(FavoritesStateContext);
-  const cartsProduct = useContext(CartStateContext);
+  const favoritesProduct = useAppSelector(state => state.favorites);
+  const cartsProduct = useAppSelector(state => state.cart);
 
   const totalItems =
     Array.isArray(cartsProduct) &&

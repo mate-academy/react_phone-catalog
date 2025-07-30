@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
-import { CartStateContext } from '../../../../shared/store/CartProvider';
+import React from 'react';
 import styles from './CartTotalPrice.module.scss';
+import { useAppSelector } from '../../../../store/hooks';
 
 type Props = {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const CartTotalPrice: React.FC<Props> = ({ setIsModalOpen }) => {
-  const cartsProduct = useContext(CartStateContext);
+  const cartsProduct = useAppSelector(state => state.cart);
 
   const totalPrice =
     Array.isArray(cartsProduct) &&

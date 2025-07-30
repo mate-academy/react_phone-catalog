@@ -1,17 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import styles from './Dialog.module.scss';
-import { CartDispatchContext } from '../../../../shared/store/CartProvider';
+
+import { useAppDispatch } from '../../../../store/hooks';
+import { clearCart } from '../../../../store/cartSlice/cartSlice';
 
 type Props = {
   setIsModalOpen: (value: boolean) => void;
 };
 
 export const Dialog: React.FC<Props> = ({ setIsModalOpen }) => {
-  const dispatchCart = useContext(CartDispatchContext);
+  const dispatch = useAppDispatch();
 
   const handleConfirm = () => {
-    dispatchCart({ type: 'clearCart' });
+    dispatch(clearCart());
     setIsModalOpen(false);
   };
 

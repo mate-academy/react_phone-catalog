@@ -1,20 +1,19 @@
-import { useContext } from 'react';
-
 import styles from './HomePage.module.scss';
 
 import { ProductsSlider } from '../../shared/components/ProductsSlider';
 import { CategoryCards } from './components/CategoryCards';
 import { HomePageSlider } from './components/HomePageSlider';
 
-import { ProductContext } from '../../shared/store/GlobalProvider';
 import { SectionTitles } from '../../shared/constants/sectionTitles';
 import { SliderId } from '../../shared/constants/sliderId';
 import { productFilterByNew } from './utils/productFilterByNew';
 // eslint-disable-next-line
 import { getHotProductsWithDiscount } from './utils/getHotProductsWithDiscount';
 
+import { useAppSelector } from '../../store/hooks';
+
 export const HomePage = () => {
-  const { data } = useContext(ProductContext);
+  const data = useAppSelector(state => state.products.data);
 
   const newProducts = productFilterByNew(data);
   const productsWithHotPrice = getHotProductsWithDiscount(data);
