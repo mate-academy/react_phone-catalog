@@ -1,7 +1,3 @@
-@import '../../styles/mixins';
-@import '../../styles/variables';
-@import '../../styles/base';
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -63,7 +59,7 @@
 }
 
 .iconHeart {
-  background-image: url(../../../public/img/icons/Heart.svg);
+  background-image: url(/img/icons/Heart.svg);
   background-repeat: no-repeat;
   background-position: center;
   width: 15.34px;
@@ -71,7 +67,7 @@
 }
 
 .iconMyProducts {
-  background-image: url(../../../public/img/icons/Package.svg);
+  background-image: url(/img/icons/Package.svg);
   background-repeat: no-repeat;
   background-position: center;
   width: 13.33px;
@@ -79,7 +75,7 @@
 }
 
 .iconBurgerMenu {
-  background-image: url(../../../public/img/icons/Union.svg);
+  background-image: url(/img/icons/Union.svg);
   background-repeat: no-repeat;
   background-position: center;
   width: 14px;

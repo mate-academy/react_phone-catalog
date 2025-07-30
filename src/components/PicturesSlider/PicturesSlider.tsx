@@ -22,7 +22,7 @@ export const PicturesSlider: React.FC = () => {
           onClick={() => handleArrowClick('left')}
         >
           <img
-            src="../../../../public/img/icons/Arrow-left.svg"
+            src="/img/icons/Arrow-left.svg"
             alt="Arrow"
             className={styles.img}
           />
@@ -37,7 +37,7 @@ export const PicturesSlider: React.FC = () => {
           onClick={() => handleArrowClick('right')}
         >
           <img
-            src="../../../../public/img/icons/Arrow-right.svg"
+            src="/img/icons/Arrow-right.svg"
             alt="Arrow"
             className={styles.img}
           />

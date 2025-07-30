@@ -10,7 +10,7 @@ export const Logo: React.FC = () => {
     >
       <img 
         className={styles.img} 
-        src="../../../public/img/icons/Logo.svg" 
+        src="/img/icons/Logo.svg" 
         alt="Logo" 
       />
     </NavLink>
