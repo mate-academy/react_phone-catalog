@@ -1,0 +1,23 @@
+@import '../../styles/mixins';
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 100%;
+
+  @include on-desktop {
+    width: 128px;
+  }
+}
+
+.img {
+  height: 20.8px;
+  width: 64px;
+
+  @include on-desktop{
+    height: 26.47px;
+    width: 80px;
+  }
+}

@@ -1,0 +1,116 @@
+@import 'variables';
+@import 'mixins';
+
+body {
+  font-family: $font-family-mont-regular;
+  font-size: $base-rem-size; 
+  color: var(--text-color-dark);
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--text-color-light);
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+a:hover {
+  color: var(--text-color-dark);
+}
+
+.activeLink {
+  color: var(--text-color-dark);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  color: var(--text-color-dark);
+}
+
+h1 {
+  font-size: $h1-font-size-mobile;
+  line-height: $h1-line-height-mobile;
+  letter-spacing: $h1-letter-spacing-mobile;
+}
+
+h2 {
+  font-size: $h2-font-size-mobile;
+  line-height: $h2-line-height-mobile;
+  letter-spacing: $h2-letter-spacing-mobile;
+}
+
+h3 {
+  font-size: $h3-font-size-mobile;
+  line-height: $h3-line-height-mobile;
+  letter-spacing: $h3-letter-spacing-mobile;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: $h4-font-size-mobile;
+  line-height: $h4-line-height-mobile;
+  letter-spacing: $h4-letter-spacing-mobile;
+}
+
+p {
+  font-weight: 400;
+  font-size: $body-font-size-dt;
+  line-height: $body-line-height-dt;
+  color: var(--text-color-dark);
+}
+
+small {
+  font-weight: 600;
+  font-size: $small-text-font-size-dt;
+  line-height: $small-text-line-height-dt;
+  letter-spacing: $small-text-letter-spacing-dt;
+  color: var(--text-color-light);
+}
+
+.uppercaseText {
+  font-weight: 800;
+  font-size: $uppercase-font-size-dt;
+  line-height: $uppercase-line-height-dt;
+  letter-spacing: $uppercase-letter-spacing-dt;
+  text-transform: uppercase;
+}
+
+.button {
+  font-weight: 600;
+  font-size: $button-font-size-dt;
+  line-height: $button-line-height-dt;
+  letter-spacing: $button-letter-spacing-dt;
+}
+
+@media (min-width: $tablet-min-width) {
+  h1 {
+    font-size: $h1-font-size-dt;
+    line-height: $h1-line-height-dt;
+    letter-spacing: $h1-letter-spacing-dt;
+  }
+
+  h2 {
+    font-size: $h2-font-size-dt;
+    line-height: $h2-line-height-dt;
+    letter-spacing: $h2-letter-spacing-dt;
+  }
+
+  h3 {
+    font-size: $h3-font-size-dt;
+    line-height: $h3-line-height-dt;
+    letter-spacing: $h3-letter-spacing-dt;
+  }
+
+  h4 {
+    font-size: $h4-font-size-dt;
+    line-height: $h4-line-height-dt;
+    letter-spacing: $h4-letter-spacing-dt;
+  }
+
+}

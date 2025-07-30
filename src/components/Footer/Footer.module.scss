@@ -1,0 +1,23 @@
+@import '../../styles/mixins';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 16px;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 32px 0 0;
+  margin: 0;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

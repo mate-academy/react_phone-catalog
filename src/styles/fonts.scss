@@ -1,0 +1,12 @@
+@import 'mixins';
+@import '../../public/fonts/Mont-Bold.otf';
+@import '../../public/fonts/Mont-Regular.otf';
+@import '../../public/fonts/Mont-SemiBold.otf';
+
+h1, h2 {
+  font-family: 'Mont-Bold';
+};
+
+h3, h4 {
+  font-family: 'Mont-SemiBold';
+};

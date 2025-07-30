@@ -1,0 +1,105 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/base';
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 48px;
+  gap: 16px;
+  border: 1px solid var(--color-elements);
+
+  @include on-desktop {
+    height: 64px;
+    gap: 24px;
+  }
+}
+
+.list {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: start;
+  list-style: none;
+  gap: 32px;
+  padding: 0;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.icons {
+  height: 100%;
+  display: flex;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  height: 100%;
+  width: 48px;
+  cursor: pointer;
+
+  @include on-desktop {
+    width: 64px;
+  }
+}
+
+.iconHeart {
+  background-image: url(../../../public/img/icons/Heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 15.34px;
+  height: 13.55px;
+}
+
+.iconMyProducts {
+  background-image: url(../../../public/img/icons/Package.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 13.33px;
+  height: 14.67px;
+}
+
+.iconBurgerMenu {
+  background-image: url(../../../public/img/icons/Union.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 14px;
+  height: 8.5px;
+}
+
+.phone {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.tablet {
+  display: none;
+
+  @include on-tablet {
+    display: inherit;
+  }
+}

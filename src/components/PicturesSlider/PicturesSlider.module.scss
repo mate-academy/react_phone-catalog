@@ -1,0 +1,84 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.slider {
+  @include page-padding-inline;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 320px;
+  width: 100%;
+  transition: 1s;
+
+  @include on-tablet {
+    height: 189px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.dashes {
+  display: flex;
+  gap: 10px;
+  height: 32px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.dash {
+  height: 4px;
+  width: 14px;
+  background-color: var(--color-elements);
+}
+
+.activeDash {
+  background-color: var(--color-primary);
+}
+
+.isTablet {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.isPhone {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.carousel {
+  display: flex;
+  height: 320px;
+  width: 100%;
+
+  @include on-tablet {
+
+  }
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 32px;
+  height: 100%;
+  border: 1px solid var(--color-icons);
+  background-color: var(--color-white);
+}
+
+.img {
+  width: 16px;
+  height: 16px;
+}
