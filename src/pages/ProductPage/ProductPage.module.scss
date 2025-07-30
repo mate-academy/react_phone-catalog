@@ -1,0 +1,48 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.product_page {
+  &__list {
+    @include flex(row, space-between, stretch);
+    @include page-grid;
+
+    gap: 16px;
+
+    row-gap: 40px;
+
+    margin-block: 40px;
+
+    @include on-mobile {
+      margin-block: 32px 24px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    grid-column: span 6;
+
+    @include on-mobile {
+      grid-column: span 4;
+      margin: 0 auto;
+    }
+  }
+
+  &__content {
+    &_title {
+      margin-bottom: 8px;
+    }
+
+    &_total {
+      color: $regent-gray-color;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__filters {
+    @include flex($direction: row);
+
+    gap: 16px;
+  }
+}

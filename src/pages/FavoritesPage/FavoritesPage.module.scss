@@ -1,0 +1,43 @@
+@import '@styles/utils/mixins';
+@import '@styles/utils/vars';
+
+.favourite_page {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    color: $regent-gray-color;
+  }
+
+  &__list {
+    @include flex(row, space-between, stretch);
+    @include page-grid;
+
+    gap: 16px;
+
+    row-gap: 40px;
+
+    margin-block: 40px 80px;
+
+    @include on-tablet {
+      margin-block: 40px 64px;
+    }
+
+    @include on-mobile {
+      margin-block: 32px 56px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    grid-column: span 6;
+
+    @include on-mobile {
+      grid-column: span 4;
+      margin: 0 auto;
+    }
+  }
+}
