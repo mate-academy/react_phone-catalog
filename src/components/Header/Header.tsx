@@ -4,16 +4,19 @@ import { Link } from 'react-router-dom';
 
 import { BurgerNavigation } from '../BurgerNavigation';
 import { HeaderNavigation } from '../HeaderNavigation';
+import { useCurrentPath } from '../contexts/PathContext';
 
 export const Header = () => {
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
+
+  const currentPath = useCurrentPath();
 
   return (
     <>
       <div className="header">
         <div className="header__container">
           <div className="header__logo">
-            <Link to="#" className="header__link">
+            <Link to="/" className="header__link">
               <img
                 src="/img/logo/logo.svg"
                 alt="Company logo"
@@ -39,7 +42,7 @@ export const Header = () => {
         </div>
       </div>
 
-      <BurgerNavigation isBurgerMenu={isBurgerMenu} />
+      <BurgerNavigation isBurgerMenu={isBurgerMenu} onClose={() => setIsBurgerMenu(false)}/>
     </>
   );
 };

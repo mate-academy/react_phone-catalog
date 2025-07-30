@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom';
+import { AllProductsType } from '../../types/AllProductsType';
 import { PhoneInfoType } from '../../types/PhoneInfoType';
 import './phoneCard.scss';
 
 type Props = {
-  product: PhoneInfoType;
+  product: AllProductsType;
   showDiscount?: boolean;
+  // phone: PhoneInfoType;
 };
 
-export const PhoneCard: React.FC<Props> = ({ product, showDiscount }) => {
+export const PhoneCard: React.FC<Props> = ({ product, showDiscount}) => {
   const screen = product.screen.split(' ').slice(0, 2).join(' ');
   const capacity = product.capacity.replace(/(\d)([A-Za-z])/g, '$1 $2');
   const ram = product.ram.replace(/(\d)([A-Za-z])/g, '$1 $2');
-  const titleModelPhoto = product.images[0];
+  const titleModelPhoto = product.image;
   const modelName = product.name;
-  const priceRegular = `$${product.priceRegular}`;
-  const priceDiscount = `$${product.priceDiscount}`;
+  const priceRegular = `$${product.fullPrice}`;
+
+  const priceDiscount = `$${product.price}`;
   const modelId = product.id;
 
   return (
@@ -23,6 +26,7 @@ export const PhoneCard: React.FC<Props> = ({ product, showDiscount }) => {
         <div className="device-photo">
           <img className="photo" src={titleModelPhoto} alt="device photo" />
         </div>
+        
         <div className="name-container">
           <div className="name">{modelName}</div>
         </div>

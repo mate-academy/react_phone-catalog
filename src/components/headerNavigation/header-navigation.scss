@@ -54,6 +54,14 @@
         }
 
         &:hover::after {
+          background-color: $text-not-active-color;
+        }
+      }
+
+      .is-active {
+        color: $text-main-color;
+
+        &::after {
           background-color: $text-main-color;
         }
       }

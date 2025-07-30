@@ -1,12 +1,16 @@
 import './header-navigation.scss'
 import { Link } from 'react-router-dom';
+import { useCurrentPath } from '../contexts/PathContext';
+import cn from 'classnames';
 
 export const HeaderNavigation: React.FC = () => {
+  const currentPath = useCurrentPath();
+
   const pages = [
     { title: 'HOME', path: '/' },
-    { title: 'PHONES', path: '/' },
-    { title: 'TABLETS', path: '/' },
-    { title: 'ACCESSORIES', path: '/' },
+    { title: 'PHONES', path: '/phones' },
+    { title: 'TABLETS', path: '/tablets' },
+    { title: 'ACCESSORIES', path: '/accessories' },
   ];
 
   return (
@@ -15,7 +19,9 @@ export const HeaderNavigation: React.FC = () => {
         <ul className="header-list">
           {pages.map(({ title, path }) => (
             <li className="header-list-item" key={title}>
-              <Link className="header-link" to={path}>
+              {/* <Link className="header-link" to={path}> */}
+              <Link className={cn("header-link", { 'is-active': path === currentPath })} to={path}>
+
                 {title}
               </Link>
             </li>

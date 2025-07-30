@@ -1,16 +1,21 @@
 import './burger-navigation.scss'
 import { Link } from 'react-router-dom';
+import { useCurrentPath } from '../contexts/PathContext';
+import cn from 'classnames';
 
 type Props = {
   isBurgerMenu: boolean;
+  onClose: () => void;
 };
 
-export const BurgerNavigation: React.FC<Props> = ({ isBurgerMenu }) => {
+export const BurgerNavigation: React.FC<Props> = ({ isBurgerMenu, onClose }) => {
+  const currentPath = useCurrentPath();
+
   const pages = [
     { title: 'HOME', path: '/' },
-    { title: 'PHONES', path: '/' },
-    { title: 'TABLETS', path: '/' },
-    { title: 'ACCESSORIES', path: '/' },
+    { title: 'PHONES', path: '/phones' },
+    { title: 'TABLETS', path: '/tablets' },
+    { title: 'ACCESSORIES', path: '/accessories' },
   ];
 
   return (
@@ -19,7 +24,8 @@ export const BurgerNavigation: React.FC<Props> = ({ isBurgerMenu }) => {
         <ul className="burger-list">
           {pages.map(({ title, path }) => (
             <li className="burger-list-item" key={title}>
-              <Link className="burger-link" to={path}>
+              {/* <Link className="burger-link" to={path}> */}
+              <Link className={cn("burger-link", { 'is-active': path === currentPath })} to={path} onClick={onClose}>
                 {title}
               </Link>
             </li>

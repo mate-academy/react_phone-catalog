@@ -1,0 +1,28 @@
+.category-page {
+  padding-left: 16px;
+
+  @include onTablet {
+    padding-left: 0;
+  }
+
+  .title-models-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 32px;
+
+    @include onTablet {
+      padding-bottom: 40px;
+    }
+
+    .category-title {
+      font-weight: 800;
+      font-size: 32px;
+
+      @include onTablet {
+        font-size: 48px;
+      }
+    }
+  }
+}
+

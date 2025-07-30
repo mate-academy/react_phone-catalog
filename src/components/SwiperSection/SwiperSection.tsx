@@ -7,10 +7,11 @@ import { Navigation } from 'swiper/modules';
 import { PhoneCard } from '../PhoneCard';
 import './swiperSection.scss';
 import { PhoneInfoType } from '../../types/PhoneInfoType';
+import { AllProductsType } from '../../types/AllProductsType';
 
 type Props = {
   title: string;
-  phones: PhoneInfoType[];
+  phones: AllProductsType[];
   showDiscount?: boolean;
 };
 
