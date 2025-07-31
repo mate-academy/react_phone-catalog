@@ -1,0 +1,30 @@
+name: Lint
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  fix-style:
+    name: Run fix-style on PR
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Adjust Node.js version as needed
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Run Linter and Prettier
+      - name: Run fix-style
+        run: npm run fix-style
