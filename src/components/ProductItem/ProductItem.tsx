@@ -5,8 +5,8 @@ import heart from '../../img/heart.svg';
 import liked from '../../img/heartRed.svg';
 
 import './ProductItem.scss';
-import { useFavourites } from '../Favourites/FavouritesBase';
-import { useCart } from '../BoughtCard/CartBase';
+import { useFavourites } from '../Favourites/FavouritesContext';
+import { useCart } from '../BoughtCard/CartContext';
 
 interface Props {
   product: Product;
