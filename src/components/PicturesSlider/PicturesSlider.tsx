@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./PicturesSlider.module.scss";
+import { Arrow } from "../Arrow";
 
 export const PicturesSlider: React.FC = () => {
   function handleArrowClick(direction: 'left' | 'right') {
@@ -17,31 +18,21 @@ export const PicturesSlider: React.FC = () => {
   return (
     <div className={styles.slider}>
       <div className={styles.carousel}>
-        <button 
-          className={`${styles.arrow} ${styles.isTablet}`}
+        <Arrow
+          direction="left"
+          height="100%"
           onClick={() => handleArrowClick('left')}
-        >
-          <img
-            src="/img/icons/Arrow-left.svg"
-            alt="Arrow"
-            className={styles.img}
-          />
-        </button>
+        />
         <div className={styles.products}>
           <ul>
             <li></li>
           </ul>
         </div>
-        <button 
-          className={`${styles.arrow} ${styles.isTablet}`}
+        <Arrow
+          direction="right"
+          height="100%"
           onClick={() => handleArrowClick('right')}
-        >
-          <img
-            src="/img/icons/Arrow-right.svg"
-            alt="Arrow"
-            className={styles.img}
-          />
-        </button>
+        />
       </div>
 
       <div className={styles.dashes}>

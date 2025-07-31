@@ -10,6 +10,7 @@
   height: 48px;
   gap: 16px;
   border: 1px solid var(--color-elements);
+  background-color: var(--color-white);
 
   @include on-desktop {
     height: 64px;
@@ -98,4 +99,8 @@
   @include on-tablet {
     display: inherit;
   }
+}
+
+.activeLink {
+  color: var(--color-primary);
 }

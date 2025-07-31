@@ -1,3 +1,14 @@
 .newModels {
   @include page-padding-inline;
 }
+
+.arrows {
+  display: flex;
+  gap: 16px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -5,11 +5,8 @@ import { Footer } from './components/Footer';
 
 export const App = () => (
   <div className="App">
-    <h1 className='requiredTitle'>Product Catalog</h1>
     <Navbar />
-    <main>
-      <Outlet />
-    </main>
+    <Outlet />
     <Footer />
   </div>
 );

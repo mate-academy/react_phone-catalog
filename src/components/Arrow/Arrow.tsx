@@ -1,0 +1,34 @@
+import styles from './Arrow.module.scss';
+
+type Props = {
+  direction: 'left' | 'right' | 'up';
+  onClick: () => void;
+  isDisabled?: boolean;
+  height?: string;
+  width?: string;
+}
+
+export const Arrow: React.FC<Props> = ({
+  direction,
+  height = '32px',
+  width = '32px',
+  isDisabled = false,
+  onClick,
+}) => {
+  return (
+    <button
+      disabled={isDisabled}
+      className={`
+        ${styles.arrow} 
+        ${styles.isTablet}
+      `}
+      style={{ height, width }}
+      onClick={() => onClick()}
+    >
+      <img
+        src={`/img/icons/arrow-${direction}${isDisabled ? '-disabled' : ''}.svg`}
+        alt={`Arrow ${direction}`}
+      />
+    </button>
+  );
+}

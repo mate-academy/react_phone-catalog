@@ -12,21 +12,6 @@
   }
 }
 
-@mixin page-grid {
-  --columns: 4;
-
-  display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
-
-  @include on-tablet {
-    --columns: 12;
-  }
-
-  @include on-desktop {
-    --columns: 24;
-  }
-}
-
 @mixin page-padding-inline {
   padding-inline: 16px;
 
@@ -36,5 +21,23 @@
 
   @include on-desktop {
     padding-inline: 32px;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  box-sizing: border-box;
+  gap: 16px;
+
+  @include on-tablet {
+    @include page-padding-inline;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin-inline: auto;
+    grid-template-columns: repeat(24, 1fr);
   }
 }
