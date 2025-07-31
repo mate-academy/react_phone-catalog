@@ -2,6 +2,7 @@ import { createContext, useContext, ReactNode } from 'react';
 import { Category } from '@shared/types/APITypes';
 import { useSearchParams } from 'react-router-dom';
 import { UrlParams } from '../../types';
+import { UrlParamValues } from '../../types/contextTypes';
 
 type CategoriesContextType = {
   category: Category;
@@ -28,13 +29,13 @@ export const CategoriesProvider = ({
   const page = searchParams.get('page') || '';
   const perPage = searchParams.get('perPage') || '';
 
-  const setFilter = (param: UrlParams, value: string) => {
+  const setFilter = (param: UrlParams, value: UrlParamValues | string) => {
     setSearchParams(url => {
       {
         if (value === '') {
           url.delete(param);
         } else {
-          url.set(param, value);
+          url.set(param, value as string);
         }
 
         return url;
