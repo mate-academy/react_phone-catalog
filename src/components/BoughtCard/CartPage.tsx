@@ -1,18 +1,22 @@
 import { useState } from 'react';
+import { CheckoutCelebration } from '../Reward/Reward';
 import back from '../../img/arrowLeft.svg';
-import Empty from '../../../public/img/cart-is-empty.png'
+import Empty from '../../../public/img/cart-is-empty.png';
 import { BoughtCardItem } from '../BoughtCardItem/BoughtCardItem';
 import { useInfoHook } from '../ProductInfo/useInfoHook';
 import './CartPage.scss';
 import { useCart } from './CartContext';
-import { useReward } from 'react-rewards';
-import { setTimeout } from 'timers/promises';
 
 export const CartPage = () => {
   const { navigate } = useInfoHook();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCheckoutConfirmed, setIsCheckoutConfirmed] = useState(false);
-  const { clearCart, updatedQuantity, removeFromCart, cart } = useCart();
+  const {
+    clearCart,
+    updateQuantity: updateQuantity,
+    removeFromCart,
+    cart,
+  } = useCart();
 
   const totalCartPrice = cart.reduce((acc, item) => {
     const itemPrice = item.fullPrice * (item.quantity || 1);
@@ -60,7 +64,7 @@ export const CartPage = () => {
                 key={product.id}
                 product={product}
                 onDelete={removeFromCart}
-                onUpdate={updatedQuantity}
+                onUpdate={updateQuantity}
               />
             ))}
           </div>
@@ -98,7 +102,9 @@ export const CartPage = () => {
           </div>
         </div>
       )}
-      {isCheckoutConfirmed && <></>}
+      {isCheckoutConfirmed && (
+        <CheckoutCelebration trigger={isCheckoutConfirmed} />
+      )}
     </main>
   );
 };
