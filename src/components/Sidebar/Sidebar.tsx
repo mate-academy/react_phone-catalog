@@ -59,6 +59,27 @@ export const Sidebar: React.FC<SidebarProps> = ({ openMenu, setOpenMenu }) => {
           </NavLink>
         </nav>
       </div>
+      <div className="sidebar__icons">
+        <NavLink
+          className="sidebar__favourite"
+          to="/favourites"
+          onClick={setOpenMenu}
+        >
+          <img src={isBasicDark ? DarkFav : LightFav} alt="heart" />
+          {favourites.length > 0 && (
+            <span className="badge-2">{favourites.length}</span>
+          )}
+        </NavLink>
+
+        <NavLink className="sidebar__bought" to="/cart">
+          <img
+            src={isBasicDark ? DarkBag : LightBag}
+            alt="bought"
+            onClick={setOpenMenu}
+          />
+          {cart.length > 0 && <span className="badge">{totalCount}</span>}
+        </NavLink>
+      </div>
     </aside>
   );
 };
