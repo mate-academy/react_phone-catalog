@@ -1,4 +1,6 @@
+import { getProducts } from '../../modules/shared/services/productService';
 import { Arrow } from '../Arrow';
+import { Card } from '../Card';
 import styles from './NewModels.module.scss';
 
 export const NewModels: React.FC = () => {
@@ -7,18 +9,18 @@ export const NewModels: React.FC = () => {
   }
 
   return (
-    <section>
-      <div className={`${styles.newModels} ${styles.head}`}>
-        <h2 className={` homeTitle`}>Brand new models</h2>
+    <section className={styles.section}>
+      <div className={styles.head}>
+        <h2 className={`homeTitle`}>Brand new models</h2>
 
         <div className={styles.arrows}>
           <Arrow
-            direction="left"
-            isDisabled={true}
+            direction='left'
+            isDisabled={false}
             onClick={() => handleArrowClick('left')}
           />
           <Arrow
-            direction="right"
+            direction='right'
             isDisabled={false}
             onClick={() => handleArrowClick('right')}
           />
@@ -26,6 +28,9 @@ export const NewModels: React.FC = () => {
       </div>
 
       <div className={styles.content}>
+        {getProducts().filter(item => item.name.includes('14')).map((product) => (
+          <Card card={product} />
+        ))}
       </div>
     </section>
   );

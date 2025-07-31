@@ -1,9 +1,9 @@
 .footer {
   display: flex;
   flex-direction: column;
-  align-items: start;
   padding: 16px;
-  width: 100%;
+
+  @include page-padding-inline;
 }
 
 .list {

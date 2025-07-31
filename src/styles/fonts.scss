@@ -36,7 +36,7 @@ h2 {
   letter-spacing: 0;
 
   @include on-tablet {
-    font-family: 'Mont-Regular';
+    font-family: 'Mont-SemiBold';
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -1%;
@@ -44,7 +44,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Mont-Regular';
+  font-family: 'Mont-Bold';
   font-weight: 800;
   font-size: 22px;
   line-height: 140%;
@@ -66,6 +66,7 @@ h4 {
   line-height: 100%;
   letter-spacing: 0;
   text-align: right;
+  color: var(--color-primary);
 }
 
 .bodyText {
@@ -82,6 +83,7 @@ h4 {
   font-size: 12px;
   line-height: 100%;
   letter-spacing: 0;
+  color: var(--color-secondary);
 }
 
 .uppercaseText {
@@ -91,4 +93,13 @@ h4 {
   line-height: 11px;
   letter-spacing: 4%;
   text-transform: uppercase;
+}
+
+.buttonText {
+  font-family: 'Mont-Regular';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: var(--color-white);
 }

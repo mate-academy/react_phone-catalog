@@ -1,4 +1,4 @@
-.newModels {
+.section {
   @include page-padding-inline;
 }
 
@@ -11,4 +11,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+  overflow: scroll;
 }

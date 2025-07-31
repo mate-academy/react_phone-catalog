@@ -19,7 +19,7 @@ export const PicturesSlider: React.FC = () => {
     <div className={styles.slider}>
       <div className={styles.carousel}>
         <Arrow
-          direction="left"
+          direction='left'
           height="100%"
           onClick={() => handleArrowClick('left')}
         />
@@ -29,7 +29,7 @@ export const PicturesSlider: React.FC = () => {
           </ul>
         </div>
         <Arrow
-          direction="right"
+          direction='right'
           height="100%"
           onClick={() => handleArrowClick('right')}
         />

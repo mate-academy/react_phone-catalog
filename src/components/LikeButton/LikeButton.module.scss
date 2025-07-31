@@ -1,0 +1,19 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  min-width: 40px;
+  border: 1px solid var(--color-icons);
+  background-color: var(--color-white);
+
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: var(--color-primary);
+}
+
+.is-selected {
+  border-color: var(--color-elements);
+}
