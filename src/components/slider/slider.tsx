@@ -79,7 +79,7 @@ export const Slider = () => {
                   <br />
                   in our store!
                   <img
-                    src="/img/icons/favicon.png"
+                    src="./img/icons/favicon.png"
                     alt="okHand"
                     className={styles.captionImg}
                   />

@@ -12,6 +12,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [products, setProduct] = useState<Product[]>([]);
+  const [openMenu, setOpenMenu] = useState(false);
 
   return (
     <ProductContext.Provider
@@ -22,6 +23,8 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
         setErrorMessage,
         isLoading,
         setIsLoading,
+        openMenu,
+        setOpenMenu,
       }}
     >
       {children}

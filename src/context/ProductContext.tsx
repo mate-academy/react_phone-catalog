@@ -8,6 +8,8 @@ type ProductContextType = {
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   errorMessage: string;
   setErrorMessage: React.Dispatch<React.SetStateAction<string>>;
+  openMenu: boolean;
+  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ProductContext = createContext<ProductContextType>({
@@ -17,4 +19,6 @@ export const ProductContext = createContext<ProductContextType>({
   setIsLoading: () => {},
   errorMessage: '',
   setErrorMessage: () => {},
+  openMenu: false,
+  setOpenMenu: () => {},
 });

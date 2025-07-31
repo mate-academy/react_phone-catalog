@@ -4,18 +4,16 @@ import { Nav } from '../nav';
 import styles from './top-bar.module.scss';
 import { Icon } from '../icons';
 import { icons } from '../../constants/icons';
+import { useContext } from 'react';
+import { ProductContext } from '../../context/ProductContext';
 
 type Props = {
-  openMenu: boolean;
-  setOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
   isMobile: boolean;
 };
 
-export const TopBar: React.FC<Props> = ({
-  openMenu,
-  setOpenMenu,
-  isMobile,
-}) => {
+export const TopBar: React.FC<Props> = ({ isMobile }) => {
+  const { openMenu, setOpenMenu } = useContext(ProductContext);
+
   return (
     <div className={styles.topBar}>
       {!isMobile && (

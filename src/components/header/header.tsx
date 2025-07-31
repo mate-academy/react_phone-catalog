@@ -1,21 +1,18 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Menu } from '../../components/menu';
 import { TopBar } from '../../components/top-bar';
 import { useMediaQuery } from 'react-responsive';
 import styles from './header.module.scss';
+import { ProductContext } from '../../context/ProductContext';
 
 export const Header = () => {
-  const [openMenu, setOpenMenu] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 639 });
+  const { openMenu } = useContext(ProductContext);
 
   return (
     <header className={styles.header}>
-      <TopBar
-        setOpenMenu={setOpenMenu}
-        openMenu={openMenu}
-        isMobile={isMobile}
-      />
-      {isMobile && openMenu && <Menu openMenu={openMenu} />}
+      <TopBar isMobile={isMobile} />
+      {isMobile && openMenu && <Menu />}
     </header>
   );
 };

@@ -1,15 +1,14 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Nav } from '../nav';
 import styles from './menu.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Icon } from '../icons';
 import { icons } from '../../constants/icons';
+import { ProductContext } from '../../context/ProductContext';
 
-type Props = {
-  openMenu: boolean;
-};
+export const Menu = () => {
+  const { openMenu } = useContext(ProductContext);
 
-export const Menu: React.FC<Props> = ({ openMenu }) => {
   useEffect(() => {
     document.body.style.overflow = openMenu ? 'hidden' : 'auto';
 
