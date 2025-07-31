@@ -8,9 +8,7 @@ import { AllProductsType } from '../../types/AllProductsType';
 
 export const MobilePhonesPage: React.FC = ({}) => {
   const [newPhones, setNewPhones] = useState<AllProductsType[]>([]);
-  const [discountedPhones, setDiscountedPhones] = useState<AllProductsType[]>(
-    [],
-  );
+  const [discountedPhones, setDiscountedPhones] = useState<AllProductsType[]>([]);
   const [totalPhoneModels, setTotalPhoneModels] = useState(0);
   const [phones, setPhones] = useState<AllProductsType[]>([]);
 

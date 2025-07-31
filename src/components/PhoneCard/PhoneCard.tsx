@@ -15,6 +15,7 @@ export const PhoneCard: React.FC<Props> = ({ product, showDiscount}) => {
   const ram = product.ram.replace(/(\d)([A-Za-z])/g, '$1 $2');
   const titleModelPhoto = product.image;
   const modelName = product.name;
+
   const priceRegular = `$${product.fullPrice}`;
 
   const priceDiscount = `$${product.price}`;
@@ -26,7 +27,7 @@ export const PhoneCard: React.FC<Props> = ({ product, showDiscount}) => {
         <div className="device-photo">
           <img className="photo" src={titleModelPhoto} alt="device photo" />
         </div>
-        
+
         <div className="name-container">
           <div className="name">{modelName}</div>
         </div>
