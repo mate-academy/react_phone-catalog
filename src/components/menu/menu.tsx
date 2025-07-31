@@ -10,6 +10,18 @@ export const Menu = () => {
   const { openMenu } = useContext(ProductContext);
 
   useEffect(() => {
+    const setVh = () => {
+      document.documentElement.style.setProperty(
+        '--vh',
+        `${window.innerHeight * 0.01}px`,
+      );
+    };
+
+    window.addEventListener('resize', setVh);
+    setVh();
+  });
+
+  useEffect(() => {
     document.body.style.overflow = openMenu ? 'hidden' : 'auto';
 
     return () => {
