@@ -21,76 +21,108 @@
 
   &__grid {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     flex-direction: column;
     gap: 32px;
 
     @include on-tablet {
       flex-direction: row;
-      gap: 16px;
+      gap: 24px;
+      justify-content: space-between;
+    }
+
+    @include on-desktop {
+      gap: 32px;
     }
   }
 
   &__imgContainer {
     position: relative;
-    width: 288px;
-    aspect-ratio: 1;
     margin-bottom: 24px;
     border-radius: 8px;
+    cursor: pointer;
+    width: 368px;
+    height: 368px;
     overflow: hidden;
-
-    @include on-tablet {
-      width: 188px;
-    }
-
-    @include on-desktop {
-      width: 368px;
-    }
+    transition: all 0.3s ease-in-out;
 
     &--phones {
       background-color: #6d6474;
+      transition: background-color 0.3s ease-in-out;
+
+      &:hover {
+        background-color: #d9b3ff;
+      }
     }
 
     &--tablets {
       background-color: #8d8d92;
+      transition: background-color 0.3s ease-in-out;
+
+      &:hover {
+        background-color: #ccf;
+      }
     }
 
     &--accessories {
       background-color: #973d5f;
+      transition: background-color 0.3s ease-in-out;
+
+      &:hover {
+        background-color: #ffb3da;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      border-top-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow:
+        0 25px 20px -20px rgba(0, 0, 0, 0.45),
+        25px 0 20px -20px rgba(0, 0, 0, 0.45);
     }
   }
 
   &__img {
     position: absolute;
-    height: auto;
-    top: 5%;
-    left: 15%;
+    object-fit: cover;
+    top: 60px;
+    left: 60px;
+    transition: all 0.3s ease-in-out;
 
     &--phones {
-      width: 100%;
+      width: 120%;
+      top: 50px;
+      left: 20px;
     }
 
     &--tablets {
-      width: 120%;
+      width: 110%;
+      top: 40px;
+      left: 40px;
     }
 
     &--accessories {
-      width: 200%;
+      width: 100%;
+      top: 5px;
+      left: 0;
     }
 
-    @include hover(transform, scale(1.1));
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__categoryName {
     font-size: 20px;
     font-weight: 600;
-    color: $primary-color;
+    color: var(--primary-color);
     margin-bottom: 4px;
   }
 
   &__categoryCount {
     font-size: 14px;
     font-weight: 400;
-    color: $secondary-color;
+    color: var(--secondary-color);
   }
 }

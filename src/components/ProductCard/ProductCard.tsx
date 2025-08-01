@@ -16,7 +16,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.productCard}>
       <Link to={`/${category}/${id}`} className={styles.productCard__link}>
-      
+
         <div className={styles.productCard__imgContainer}>
           <img src={image} alt={product.name} />
         </div>
@@ -33,7 +33,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <div className={styles.productCard__detail}>
           <p className={styles.productCard__detailLabel}>Screen</p>
           <p className={styles.productCard__detailValue}>
-            {product.screen.length > 15 ? `${product.screen.slice(0, 15)}...` : product.screen}
+            {product.screen && product.screen.length > 15 ? `${product.screen.slice(0, 15)}...` : product.screen}
           </p>
         </div>
         <div className={styles.productCard__detail}>

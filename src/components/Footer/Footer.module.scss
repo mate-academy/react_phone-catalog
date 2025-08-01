@@ -5,7 +5,8 @@
   flex-direction: column;
   gap: 32px;
   padding: 32px $padding-mobile;
-  border: 1px solid $elements-color;
+  border: 1px solid var(--elements-color);
+  background-color: var(--white-color);
 
   @include on-tablet {
     padding: 32px;
@@ -46,11 +47,11 @@
     font-size: 12px;
     font-weight: 800;
     line-height: 11px;
-    color: $secondary-color;
+    color: var(--secondary-color);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.04em;
 
-    @include hover(color, $primary-color);
+    @include hover(color, var(--primary-color));
   }
 }

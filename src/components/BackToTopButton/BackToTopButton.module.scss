@@ -10,20 +10,21 @@
   &__text {
     font-size: 12px;
     font-weight: 600;
-    color: $secondary-color;
+    color: var(--secondary-color);
     transition: color 0.3s ease;
 
-    @include hover(color, $primary-color);
+    @include hover(color, var(--primary-color));
   }
+}
 
-  &__imgIcon {
+
+.icon {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid $icons-color;
+    border: 1px solid var(--icons-color);
     padding: 8px;
     transition: border-color 0.3s ease;
 
-    @include hover(border-color, $primary-color);
+    @include hover(border-color, var(--primary-color));
   }
-}

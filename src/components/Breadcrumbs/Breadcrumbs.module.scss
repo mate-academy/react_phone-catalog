@@ -18,22 +18,22 @@
     display: flex;
     width: 16px;
     height: 16px;
-    background-image: url('/public/img/icons/arrow-right-grey.svg');
+    background-image: url('/img/icons/arrow-right-grey.svg');
   }
 
   &__icon {
     width: 16px;
     height: 16px;
-    background: center no-repeat url('/public/img/icons/icon-home.svg');
+    background: center no-repeat url('/img/icons/icon-home.svg');
   }
 
   &__item {
     font-weight: 600;
-    color: $primary-color;
+    color: var(--primary-color);
 
     &--active {
       font-weight: 400;
-      color: $secondary-color;
+      color: var(--secondary-color);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

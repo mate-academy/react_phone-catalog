@@ -4,6 +4,7 @@ import { useFavourites } from '../../context/FavouritesContext';
 import { useProducts } from '../../context/ProductsContext';
 import { getProductId } from '../../utils/getProductId';
 import styles from './FavouritesPage.module.scss';
+import noFavourites from '../../../public/img/product-not-found.png';
 
 export const FavouritesPage = () => {
   const { favouriteIds, favouritesCount } = useFavourites();
@@ -23,7 +24,10 @@ export const FavouritesPage = () => {
       <h1 className={styles.page__title}>Favourites</h1>
 
       {favouritesCount === 0 ? (
-        <p className={styles.page__error}>No favourite items found</p>
+        <div className={styles.page__empty}>
+          <p className={styles.page__error}>No favourite items found</p>
+          <img className={styles.page__image} src={noFavourites} alt="no favourite items found" />
+        </div>
       ) : (
         <>
           <p className={styles.page__itemsAmount}>{favouritesCount} items</p>

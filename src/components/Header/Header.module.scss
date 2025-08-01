@@ -22,8 +22,8 @@
     justify-content: space-between;
     height: 48px;
     padding: 0 $padding-mobile;
-    border-bottom: 1px solid $elements-color;
-    background-color: $white-color;
+    border-bottom: 1px solid var(--elements-color);
+    background-color: var(--white-color);
 
     @include on-desktop {
       height: 64px;
@@ -56,7 +56,7 @@
     height: 100%;
     padding-left: 16px;
     border: none;
-    border-left: 1px solid $elements-color;
+    border-left: 1px solid var(--elements-color);
     background-color: transparent;
 
     @include on-tablet {
@@ -100,13 +100,13 @@
     padding-block: 8px;
     font-size: 12px;
     font-weight: 800;
-    color: $secondary-color;
+    color: var(--secondary-color);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     border-bottom: 2px solid transparent;
 
-    @include hover (color, $primary-color);
+    @include hover (color, var(--primary-color));
 
     @include on-tablet {
       display: flex;
@@ -115,8 +115,8 @@
     }
 
     &--active {
-      border-bottom-color: $primary-color;
-      color: black;
+      border-bottom-color: var(--primary-color);
+      color: var(--primary-color);
     }
   }
 }
@@ -132,7 +132,7 @@
   transform: translateX(100%);
   justify-content: space-between;
   height: 100dvh;
-  background-color: $white-color;
+  background-color: var(--white-color);
   transition: transform 0.3s ease-in-out;
   padding-bottom: env(safe-area-inset-bottom, 20px);
 
@@ -142,7 +142,7 @@
     flex-direction: row;
     height: 48px;
     padding-bottom: 0;
-    border-bottom: 1px solid $elements-color;
+    border-bottom: 1px solid var(--elements-color);
   }
 
   @include on-desktop {
@@ -159,7 +159,7 @@
     height: 64px;
     width: 100%;
     bottom: 0;
-    border-top: 1px solid $elements-color;
+    border-top: 1px solid var(--elements-color);
 
     @include on-tablet {
       position: static;
@@ -178,13 +178,13 @@
       justify-content: center;
       width: 50%;
 
-      @include hover(border-bottom, 2px solid $primary-color);
+      @include hover(border-bottom, 2px solid var(--primary-color));
 
       &:first-child {
-        border-right: 1px solid $elements-color;
+        border-right: 1px solid var(--elements-color);
 
         @include on-tablet {
-          border-left: 1px solid $elements-color;
+          border-left: 1px solid var(--elements-color);
         }
       }
 
@@ -209,19 +209,19 @@
   background-size: contain;
 
   &--menu {
-    background-image: url('../../../public/img/icons/menu-icon.svg');
+    background-image: url('/img/icons/menu-icon.svg');
   }
 
   &--close {
-    background-image: url('../../../public/img/icons/close-icon.svg');
+    background-image: url('/img/icons/close-icon.svg');
   }
 
   &--heart {
-    background-image: url('../../../public/img/icons/favourites-icon.svg');
+    background-image: url('/img/icons/favourites-icon.svg');
   }
 
   &--cart {
-    background-image: url('../../../public/img/icons/cart-icon.svg');
+    background-image: url('/img/icons/cart-icon.svg');
   }
 
   .itemAmount {
@@ -232,9 +232,25 @@
     width: 14px;
     height: 14px;
     transform: translate(70%, -50%);
-    border: 1px solid $white-color;
+    border: 1px solid var(--accent);
     border-radius: 50%;
-    color: $white-color;
-    background-color: $accent;
+    color: var(--white-color);
+    background-color: var(--accent);
   }
 }
+
+// Dark theme styles for item amount circles
+body.dark .itemAmount {
+  color: var(--page-color);
+}
+
+// Dark theme styles for icons in header
+body.dark .icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+body.dark .icon .itemAmount {
+  filter: none !important;
+}
+
+

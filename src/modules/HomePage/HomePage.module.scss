@@ -1,6 +1,7 @@
 @import '../../shared/index';
 
 .homeContainer {
+  background-color: var(--page-color);
   margin: 24px auto 64px;
 
   @include on-tablet {
@@ -39,7 +40,7 @@
       padding-inline: $padding-tablet;
       margin-bottom: $margin-bottom-tablet;
     }
-    
+
     @include on-desktop {
       padding-inline: 0;
       margin-bottom: $margin-bottom-desktop;
@@ -52,6 +53,18 @@
   }
 
   .brandModelsContainer {
+    margin-bottom: $margin-bottom-mobile;
+
+    @include on-tablet {
+      margin-bottom: $margin-bottom-tablet;
+    }
+
+    @include on-desktop {
+      margin-bottom: $margin-bottom-desktop;
+    }
+  }
+
+  .shopByCategoryContainer {
     margin-bottom: $margin-bottom-mobile;
 
     @include on-tablet {

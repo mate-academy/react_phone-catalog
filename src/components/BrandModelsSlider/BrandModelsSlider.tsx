@@ -6,6 +6,7 @@ import { ProductDetailed } from '../../types/ProductDetailed';
 import { useLoading } from '../../context/LoadingContext';
 import { Loader } from '../Loader';
 import 'swiper/css';
+import 'swiper/css/navigation';
 import './BrandModelsSlider.scss';
 
 type Props = {
@@ -25,11 +26,11 @@ export const BrandModelsSlider: React.FC<Props> = ({ title, products }) => {
 
         <div className="slider-controls">
           <button
-            className={`swiper-button swiper-button--prev swiper-button--prev-${sliderId}`}
+            className={`swiper-button icon swiper-button--prev swiper-button--prev-${sliderId}`}
             aria-label="Previous slide"
           ></button>
           <button
-            className={`swiper-button swiper-button--next swiper-button--next-${sliderId}`}
+            className={`swiper-button icon swiper-button--next swiper-button--next-${sliderId}`}
             aria-label="Next slide"
           ></button>
         </div>
@@ -49,6 +50,7 @@ export const BrandModelsSlider: React.FC<Props> = ({ title, products }) => {
           speed={500}
           slidesPerView={'auto'}
           slidesPerGroup={2}
+          style={{ paddingRight: 16 }}
         >
           {products.map(product => (
             <SwiperSlide key={product.id} className="slider-item">

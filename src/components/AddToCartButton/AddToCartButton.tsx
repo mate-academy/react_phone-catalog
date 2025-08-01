@@ -41,7 +41,6 @@ export const AddToCartButton: React.FC<Props> = ({ product }) => {
       option={isAlreadyInCard ? 'outline' : 'primary'}
       className={styles.button}
       onClick={handleAddToCart}
-      disabled={!matchedProduct}
     >
       {isAlreadyInCard ? 'Added' : 'Add to cart'}
     </Button>

@@ -21,7 +21,7 @@ export const FavouriteButton: React.FC<Props> = ({ product }) => {
 
   return (
     <button
-      className={`${styles.favouriteButton} ${isItemFavourite ? styles['favouriteButton--filled'] : ''}`}
+      className={`${styles.icon} ${isItemFavourite ? styles['icon--filled'] : ''}`}
       onClick={handleClick}
     ></button>
   );

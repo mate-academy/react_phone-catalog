@@ -4,7 +4,7 @@
   display: flex;
   font-size: 12px;
   font-weight: 600;
-  color: $secondary-color;
+  color: var(--secondary-color);
 
   &::before {
     content: '';

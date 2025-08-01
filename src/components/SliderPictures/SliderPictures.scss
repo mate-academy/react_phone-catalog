@@ -40,7 +40,7 @@
     @include on-tablet {
       display: block;
       width: 32px;
-      border: 1px solid $icons-color;
+      border: 1px solid var(--icons-color);
       border-radius: 48px;
       background-repeat: no-repeat;
       background-position: center;
@@ -53,7 +53,7 @@
         background-image: url('/img/icons/arrow-right-black.svg');
       }
 
-      @include hover('border-color', $primary-color);
+      @include hover('border-color', var(--primary-color));
     }
   }
 
@@ -70,11 +70,11 @@
       height: 4px;
       border-radius: 2px;
       opacity: 0.5;
-      background-color: $primary-color;
+      background-color: var(--primary-color);
 
       &.swiper-pagination-bullet-active {
         opacity: 1;
-        background-color: $primary-color;
+        background-color: var(--primary-color);
       }
     }
   }

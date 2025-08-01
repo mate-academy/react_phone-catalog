@@ -5,7 +5,7 @@
   border: 1px solid transparent;
   border-radius: 48px;
   font-weight: 500;
-  color: $white-color;
+  color: var(--white-color);
   text-align: center;
   transition:
     background-color 0.3s ease-in-out,
@@ -25,16 +25,16 @@
   }
 
   &--primary {
-    background-color: $accent;
+    background-color: var(--accent);
   }
 
   &--secondary {
-    background-color: $secondary-color;
+    background-color: var(--secondary-color);
   }
 
   &--outline {
     background-color: transparent;
-    color: $accent;
-    border-color: $accent;
+    color: var(--accent);
+    border-color: var(--accent);
   }
 }

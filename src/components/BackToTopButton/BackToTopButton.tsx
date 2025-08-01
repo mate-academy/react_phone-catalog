@@ -10,7 +10,7 @@ export const BackToTopButton: React.FC = () => {
   return (
     <button className={styles.button} onClick={scrollToTop} aria-label="Scroll to top">
       <span className={styles.button__text}>Back to top</span>
-      <img className={styles.button__imgIcon} src={img} alt="Go Up Button" />
+      <img className={styles.icon} src={img} alt="Go Up Button" />
     </button>
   );
 };

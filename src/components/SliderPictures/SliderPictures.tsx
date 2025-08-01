@@ -38,7 +38,7 @@ export const SliderPictures: React.FC = () => {
         <div className="banner__wrapper">
           <button
             ref={prevRef}
-            className={`banner__button banner__button--prev`}
+            className={`banner__button icon banner__button--prev`}
             aria-label="Previous picture"
           ></button>
           <Swiper
@@ -66,7 +66,7 @@ export const SliderPictures: React.FC = () => {
           </Swiper>
           <button
             ref={nextRef}
-            className={`banner__button banner__button--next`}
+            className={`banner__button icon banner__button--next`}
             aria-label="Next picture"
           ></button>
         </div>

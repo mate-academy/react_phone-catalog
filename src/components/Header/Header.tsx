@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 import { useFavourites } from '../../context/FavouritesContext';
 import { useCart } from '../../context/CartContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -25,6 +26,7 @@ export const Header = () => {
 
   const { favouritesCount } = useFavourites();
   const { cartTotalItemsCount } = useCart();
+  const { theme, toggleTheme } = useTheme();
 
   useLockBodyScroll(isMenuOpen);
 
@@ -40,6 +42,10 @@ export const Header = () => {
             <Link className={styles.logoLink} to="/">
               <img src={logoUrl} alt="Logo" />
             </Link>
+
+            <button onClick={toggleTheme} className={styles.toggleThemeMobile}>
+              {theme === 'light' ? '🌙' : '☀️'}
+            </button>
 
             <button onClick={toggleMenu} className={styles.toggleButton} aria-label="Toggle menu">
               <span className={classNames(styles.icon, styles['icon--menu'])} />
@@ -62,7 +68,11 @@ export const Header = () => {
             <ul className={styles.nav__list}>
               {navItems.map(({ to, label }) => (
                 <li key={to} className={styles.nav__item}>
-                  <NavLink to={to} className={getLinkClassName}>
+                  <NavLink
+                    to={to}
+                    className={getLinkClassName}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     {label}
                   </NavLink>
                 </li>
@@ -71,6 +81,9 @@ export const Header = () => {
           </nav>
 
           <div className={styles.menu__icons}>
+            <button onClick={toggleTheme} className={styles.toggleThemeDesktop}>
+              {theme === 'light' ? '🌙' : '☀️'}
+            </button>
             <NavLink
               to="/favourites"
               onClick={() => setIsMenuOpen(false)}
@@ -86,7 +99,9 @@ export const Header = () => {
             <NavLink to="/cart" onClick={() => setIsMenuOpen(false)} className={getLinkClassName}>
               <span className={classNames(styles.icon, styles['icon--cart'])}>
                 {cartTotalItemsCount > 0 && (
-                  <span className={styles.itemAmount}>{cartTotalItemsCount}</span>
+                  <span className={classNames(styles.itemAmount, styles.icon)}>
+                    {cartTotalItemsCount}
+                  </span>
                 )}
               </span>
             </NavLink>

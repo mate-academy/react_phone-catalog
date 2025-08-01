@@ -1,11 +1,12 @@
 @import '../../shared/index';
 
 .lineBeforePrice {
-  border: 1px solid $elements-color;
+  border: 1px solid var(--elements-color);
   margin-bottom: 32px;
 }
 
 .productDetailsPage {
+  background-color: var(--page-color);
   padding-inline: $padding-mobile;
   margin-bottom: $margin-bottom-mobile;
 
@@ -50,11 +51,13 @@
     @include on-tablet {
       display: flex;
       justify-content: space-between;
+      gap: 16px;
       margin-bottom: $margin-bottom-tablet;
     }
 
     @include on-desktop {
       margin-bottom: $margin-bottom-desktop;
+      gap: 64px;
     }
 
     .imagesContainer {
@@ -112,11 +115,11 @@
         width: 50px;
         height: 50px;
         object-fit: contain;
-        border: 1px solid $elements-color;
+        border: 1px solid var(--elements-color);
         border-radius: 4px;
 
         &--active {
-          border: 1px solid $primary-color;
+          border: 1px solid var(--primary-color);
         }
 
         @include on-tablet {
@@ -150,12 +153,12 @@
 
         &__text {
           font-size: 12px;
-          color: $secondary-color;
+          color: var(--secondary-color);
         }
 
         &__idText {
           font-size: 12px;
-          color: $icons-color;
+          color: var(--icons-color);
         }
 
         &__options {
@@ -167,12 +170,12 @@
           border-radius: 50px;
           border: 1px solid #e2e6e9;
 
-          @include hover(border-color, $icons-color);
+          @include hover(border-color, var(--icons-color));
 
           &--active {
-            border-color: $primary-color;
+            border-color: var(--primary-color);
 
-            @include hover(border-color, $primary-color);
+            @include hover(border-color, var(--primary-color));
           }
         }
 
@@ -180,12 +183,12 @@
           width: 30px;
           height: 30px;
           border-radius: 50px;
-          border: 2px solid $white-color;
+          border: 2px solid var(--white-color);
         }
       }
 
       .line {
-        border: 1px solid $elements-color;
+        border: 1px solid var(--elements-color);
         margin-bottom: 24px;
       }
 
@@ -194,7 +197,7 @@
 
         &__text {
           font-size: 12px;
-          color: $secondary-color;
+          color: var(--secondary-color);
           margin-bottom: 8px;
         }
 
@@ -205,15 +208,15 @@
 
         &__capacityBox {
           border-radius: 4px;
-          border: 1px solid $icons-color;
+          border: 1px solid var(--icons-color);
           padding: 6px 8px;
 
           &--active {
-            color: $white-color;
-            background-color: $primary-color;
+            color: var(--white-color);
+            background-color: var(--primary-color);
           }
 
-          @include hover(border-color, $primary-color);
+          @include hover(border-color, var(--primary-color));
         }
       }
 
@@ -233,7 +236,7 @@
           position: relative;
           display: inline-block;
           font-size: 22px;
-          color: $secondary-color;
+          color: var(--secondary-color);
 
           &::before {
             content: '';
@@ -266,12 +269,12 @@
 
         &__name {
           font-size: 12px;
-          color: $secondary-color;
+          color: var(--secondary-color);
         }
 
         &__value {
           font-size: 12px;
-          color: $primary-color;
+          color: var(--primary-color);
         }
       }
     }
@@ -336,13 +339,13 @@
       &__text {
         font-size: 14px;
         line-height: 21px;
-        color: $secondary-color;
+        color: var(--secondary-color);
         padding-top: 16px;
       }
     }
 
     .lineBeforePrice {
-      border: 1px solid $elements-color;
+      border: 1px solid var(--elements-color);
       margin-bottom: 32px;
     }
 
@@ -378,7 +381,7 @@
         font-size: 14px;
         line-height: 21px;
         font-weight: 400;
-        color: $secondary-color;
+        color: var(--secondary-color);
       }
 
       &__value {

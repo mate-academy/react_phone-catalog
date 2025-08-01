@@ -1,15 +1,12 @@
-import { NavLink } from 'react-router-dom';
 import { BrandModelsSlider } from '../../components/BrandModelsSlider/BrandModelsSlider';
 import { SliderPictures } from '../../components/SliderPictures/SliderPictures';
 import { useProducts } from '../../context/ProductsContext';
 import styles from './HomePage.module.scss';
-import { useLoading } from '../../context/LoadingContext';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react'
 import { ShopByCategory } from '../../components/ShopByCategory';
 
 export const HomePage: React.FC = () => {
   const { products, isLoading, error } = useProducts();
-  const { setIsLoading } = useLoading();
 
   const brandNewProduct = useMemo(() => {
     return [...products]
@@ -36,12 +33,14 @@ export const HomePage: React.FC = () => {
         <BrandModelsSlider title={'Brand new models'} products={brandNewProduct} />
       </div>
 
-      <ShopByCategory products={products} />
+      <div className={styles.shopByCategoryContainer}>
+        <ShopByCategory products={products} />
+      </div>
 
       <div className={styles.hotPricesContainer}>
 
         <BrandModelsSlider title={'Hot prices'} products={hotPricesProduct} />
-        
+
       </div>
     </div>
   );

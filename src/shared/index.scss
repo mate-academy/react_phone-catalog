@@ -2,6 +2,70 @@
 @import './mixins';
 @import './fonts';
 
+:root, .light {
+  --page-color: #FAFBFC;
+  --primary-color: #0F0F11;
+  --secondary-color: #89939A;
+  --elements-color: #e2e6e9;
+  --accent: #4219d0;
+  --icons-color: #B4BDC3;
+  --white-color: #FFF;
+}
+
+.dark {
+  --page-color: #181A1B;
+  --primary-color: #F3F3F3;
+  --secondary-color: #a5a8aa;
+  --elements-color: #23272A;
+  --accent: #beb0f0;
+  --icons-color: #fff;
+  --white-color: #393d42;
+}
+
+// Global dark theme styles for icons
+body.dark .icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+// Exclude itemAmount from icon filter
+body.dark .icon .itemAmount {
+  filter: none !important;
+}
+
+// Dark theme styles for Material-UI Pagination
+body.dark .MuiPagination-root {
+  .MuiPaginationItem-root {
+    color: var(--primary-color) !important;
+    border: 1px solid var(--elements-color) !important;
+  }
+
+  .MuiPaginationItem-page {
+    color: var(--primary-color) !important;
+    border: 1px solid var(--elements-color) !important;
+  }
+
+  .MuiPaginationItem-page.Mui-selected {
+    background-color: var(--accent) !important;
+    color: var(--page-color) !important;
+    border: 1px solid var(--accent) !important;
+  }
+
+  .MuiPaginationItem-page:hover {
+    background-color: var(--elements-color) !important;
+    border: 1px solid var(--primary-color) !important;
+  }
+
+  // Navigation buttons (Previous/Next)
+  .MuiPaginationItem-previousNext {
+    color: var(--primary-color) !important;
+    border: 1px solid var(--elements-color) !important;
+  }
+
+  .MuiPaginationItem-previousNext:hover {
+    background-color: var(--elements-color) !important;
+    border: 1px solid var(--primary-color) !important;
+  }
+}
 
 .main-container {
   padding: 0 16px;

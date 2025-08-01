@@ -1,11 +1,11 @@
-@import './shared/variables';
+@import './shared/index';
 @import './shared/mixins';
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: var($primary-color);
+  color: var(--primary-color);
 }
 
 body {
@@ -15,6 +15,7 @@ body {
     BlinkMacSystemFont,
     'Segoe UI',
     sans-serif;
+  background-color: var(--page-color);
 }
 
 a {
@@ -96,7 +97,3 @@ button {
 img {
   display: block;
 }
-
-// .content {
-//   // background-color: $hover-bg;
-// }
