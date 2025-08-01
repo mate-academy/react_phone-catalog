@@ -1,79 +1,125 @@
-
 import React, { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import './dropdown.scss';
 
-export const Dropdown: React.FC = () => {
-  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('Newest');
-  const [searchParams, setSearchParams] = useSearchParams();
-  const dropdownRef = useRef<HTMLDivElement>(null);
+type Props = {
+  sort: string;
+  updateSort: (value: string) => void;
+  perPage: number;
+  updatePerPage: (value: number) => void;
+};
 
-  const options = ['Newest', 'Alphabetically', 'Cheapest'];
+export const Dropdown: React.FC<Props> = ({ sort, updateSort, perPage, updatePerPage }) => {
+  const [isOpenSort, setIsOpenSort] = useState(false);
+  const [isOpenPerPage, setIsOpenPerPage] = useState(false);
 
-  const handleSelect = (value: string) => {
-    setSelectedValue(value);
-    setIsOpenDropdown(false);
+  const sortRef = useRef<HTMLDivElement>(null);
+  const perPageRef = useRef<HTMLDivElement>(null);
 
-    const sortValue =
-      value === 'Newest' ? 'age'
-      : value === 'Alphabetically' ? 'name'
-      : value === 'Cheapest' ? 'price'
-      : '';
-
-    searchParams.set('sort', sortValue);
-    setSearchParams(searchParams);
+  const sortToLabel = (value: string) => {
+    switch (value) {
+      case 'name':
+        return 'Alphabetically';
+      case 'price':
+        return 'Cheapest';
+      case 'age':
+      default:
+        return 'Newest';
+    }
   };
 
-  const toggleDropdown = () => {
-    setIsOpenDropdown(prev => !prev);
+  const labelToSort = (label: string) => {
+    switch (label) {
+      case 'Alphabetically':
+        return 'name';
+      case 'Cheapest':
+        return 'price';
+      case 'Newest':
+      default:
+        return 'age';
+    }
+  };
+
+  const [selectedValue, setSelectedValue] = useState(sortToLabel(sort));
+  const [selectedPerPage, setSelectedPerPage] = useState(perPage.toString());
+
+  const options = ['Newest', 'Alphabetically', 'Cheapest'];
+  const perPageOptions = ['8', '16', '32'];
+
+  const handleSelect = (label: string) => {
+    setSelectedValue(label);
+    setIsOpenSort(false);
+    updateSort(labelToSort(label));
+  };
+
+  const handlePerPageSelect = (value: string) => {
+    setSelectedPerPage(value);
+    setIsOpenPerPage(false);
+    updatePerPage(parseInt(value, 10));
   };
 
   useEffect(() => {
+    setSelectedValue(sortToLabel(sort));
+  }, [sort]);
+
+  useEffect(() => {
+    setSelectedPerPage(perPage.toString());
+  }, [perPage]);
+
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpenDropdown(false);
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+        setIsOpenSort(false);
+      }
+      if (perPageRef.current && !perPageRef.current.contains(event.target as Node)) {
+        setIsOpenPerPage(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
-  useEffect(() => {
-    const sortParam = searchParams.get('sort');
-
-    if (sortParam === 'name') setSelectedValue('Alphabetically');
-    else if (sortParam === 'price') setSelectedValue('Cheapest');
-    else setSelectedValue('Newest');
-  }, [searchParams]);
-
   return (
-    <div className="dropdown" ref={dropdownRef}>
-      <div className="dropdown-trigger" onClick={toggleDropdown}>
-        {selectedValue}
+    <>
+      <div className="dropdown" ref={sortRef}>
+        <div className="dropdown-trigger" onClick={() => setIsOpenSort(prev => !prev)}>
+          {selectedValue}
+        </div>
+        <div className={cn('dropdown-content', { active: isOpenSort })}>
+          <ul className="content">
+            {options.map(option => (
+              <li
+                key={option}
+                onClick={() => handleSelect(option)}
+                className={cn({ selected: selectedValue === option })}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <div className={cn('dropdown-content', { active: isOpenDropdown })}>
-        <ul className="content">
-          {options.map(option => (
-            <li
-              key={option}
-              onClick={() => handleSelect(option)}
-              className={cn({ selected: selectedValue === option })}
-            >
-              {option}
-            </li>
-          ))}
-        </ul>
+      <div className="dropdown" ref={perPageRef}>
+        <div className="dropdown-trigger" onClick={() => setIsOpenPerPage(prev => !prev)}>
+          {selectedPerPage}
+        </div>
+        <div className={cn('dropdown-content', { active: isOpenPerPage })}>
+          <ul className="content">
+            {perPageOptions.map(value => (
+              <li
+                key={value}
+                onClick={() => handlePerPageSelect(value)}
+                className={cn({ selected: selectedPerPage === value })}
+              >
+                {value}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

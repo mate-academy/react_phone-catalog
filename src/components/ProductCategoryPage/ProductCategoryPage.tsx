@@ -1,12 +1,13 @@
-
 import './productCategoryPage.scss';
+import { usePagination } from '../../hooks/usePagination';
 import { useEffect, useState } from 'react';
-import { useParams, Navigate, useSearchParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 
 import { BreadcrumbsNav } from '../BreadcrumbsNav';
 import { ProductCard } from '../ProductCard';
 import { AllProductsType } from '../../types/AllProductsType';
 import { Dropdown } from '../Dropdown';
+import { PaginationControls } from '../PaginationControls/PaginationControls';
 
 const validCategories = ['phones', 'tablets', 'accessories'];
 
@@ -18,12 +19,12 @@ const categoryTitles: Record<string, string> = {
 
 export const ProductCategoryPage: React.FC = () => {
   const { category } = useParams<{ category: string }>();
+  const { page, perPage, sort, updatePage, updatePerPage, updateSort } =
+    usePagination(category);
 
   const [products, setProducts] = useState<AllProductsType[]>([]);
   const [totalModels, setTotalModels] = useState(0);
 
-  const [searchParams] = useSearchParams();
-  const sortBy = searchParams.get('sort');
 
   useEffect(() => {
     if (!category || !validCategories.includes(category)) return;
@@ -31,26 +32,30 @@ export const ProductCategoryPage: React.FC = () => {
     fetch('/api/products.json')
       .then(res => res.json())
       .then((data: AllProductsType[]) => {
-        const filteredProducts = data.filter(
+        let filteredProducts = data.filter(
           product => product.category === category,
         );
 
-        if (sortBy === 'name') {
+        if (sort === 'name') {
           filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-        } else if (sortBy === 'age') {
+        } else if (sort === 'age') {
           filteredProducts.sort((a, b) => b.year - a.year);
-        } else if (sortBy === 'price') {
+        } else if (sort === 'price') {
           filteredProducts.sort((a, b) => a.price - b.price);
         }
 
-        setProducts(filteredProducts);
         setTotalModels(filteredProducts.length);
+
+        const startIndex = (page - 1) * perPage;
+        const endIndex = startIndex + perPage;
+        const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
+        setProducts(paginatedProducts);
       })
       .catch(err => console.error('Ошибка загрузки продуктов:', err));
-  }, [category, sortBy]);
+  }, [category, sort, page, perPage]);
 
   if (!category || !validCategories.includes(category)) {
-    // Можно заменить на свой компонент 404 или редирект
     return <Navigate to="/not-found" />;
   }
 
@@ -58,19 +63,34 @@ export const ProductCategoryPage: React.FC = () => {
     <div className="category-page">
       <BreadcrumbsNav />
 
-      <Dropdown />
+      <Dropdown
+        perPage={perPage}
+        updatePerPage={updatePerPage}
+        sort={sort}
+        updateSort={updateSort}
+      />
 
       <div className="title-models-block">
         <div className="category-title">{categoryTitles[category]}</div>
-
         <p className="main-body-text-14">{totalModels} models</p>
       </div>
 
       <div className="category-models">
         {products.map(product => (
-          <ProductCard key={product.id} product={product} showDiscount={product.year < 2021 ? true : false} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            showDiscount={product.year < 2021}
+          />
         ))}
       </div>
+
+      <PaginationControls
+        totalItems={totalModels}
+        perPage={perPage}
+        currentPage={page}
+        onPageChange={updatePage}
+      />
     </div>
   );
 };

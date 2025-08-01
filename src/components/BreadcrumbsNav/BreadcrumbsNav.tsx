@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useCurrentPath } from '../contexts/PathContext';
 import './breadcrumbsNav.scss';
 
 export const BreadcrumbsNav: React.FC = () => {
   const currentPath = useCurrentPath();
+  const location = useLocation();
 
   const parts = currentPath.split('/');
   const back = `/${parts[1]}`;
+
+  const backWithSearch = `${back}${location.search}`;
 
   const pageCategory = parts[1]?.replace(/^./, l => l.toUpperCase());
 
@@ -29,7 +32,7 @@ export const BreadcrumbsNav: React.FC = () => {
 
         <img src="/img/icons/NotActiveArrowRight.svg" alt="arrow icon" />
 
-        <Link to={back} className="breadcrumbs-link">
+        <Link to={backWithSearch} className="breadcrumbs-link">
           {pageCategory}
         </Link>
 
@@ -42,11 +45,11 @@ export const BreadcrumbsNav: React.FC = () => {
 
 
       <div className="button-back-block">
-        <Link to={back} className="icon">
+        <Link to={backWithSearch} className="icon">
           <img src="/img/icons/ArrowLeft.svg" alt="arrow icon" className='icon' />
         </Link>
 
-        <Link to={back} className="breadcrumbs-link">
+        <Link to={backWithSearch} className="breadcrumbs-link">
           <div className='back-text'>Back</div>
         </Link>
       </div>
