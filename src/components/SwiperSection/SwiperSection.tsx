@@ -4,20 +4,20 @@ import 'swiper/css/navigation';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { PhoneCard } from '../PhoneCard';
+import { ProductCard } from '../ProductCard';
 import './swiperSection.scss';
 import { PhoneInfoType } from '../../types/PhoneInfoType';
 import { AllProductsType } from '../../types/AllProductsType';
 
 type Props = {
   title: string;
-  phones: AllProductsType[];
+  products: AllProductsType[];
   showDiscount?: boolean;
 };
 
 export const SwiperSection: React.FC<Props> = ({
   title,
-  phones,
+  products,
   showDiscount,
 }) => {
   const id = title.toLowerCase().replace(/\s/g, '-');
@@ -63,9 +63,9 @@ export const SwiperSection: React.FC<Props> = ({
         }}
         className="swiperSection"
       >
-        {phones.map(phone => (
-          <SwiperSlide key={phone.id}>
-            <PhoneCard product={phone} showDiscount={showDiscount} />
+        {products.map(product => (
+          <SwiperSlide key={product.id}>
+            <ProductCard product={product} showDiscount={showDiscount} />
           </SwiperSlide>
         ))}
       </Swiper>

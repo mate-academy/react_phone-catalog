@@ -1,0 +1,36 @@
+.dropdown {
+  position: relative;
+
+  // .dropdown-trigger {
+
+  // }
+
+  .dropdown-content {
+    background-color: yellow;
+    position: absolute;
+
+
+    overflow: hidden;
+    // height: 0;
+
+    transform-origin: top center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: opacity .3s, transform .3s ease;
+
+    // .content {
+
+    // }
+
+
+
+    &.active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+}
+

@@ -1,10 +1,12 @@
 import './header-navigation.scss'
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useCurrentPath } from '../contexts/PathContext';
 import cn from 'classnames';
 
 export const HeaderNavigation: React.FC = () => {
   const currentPath = useCurrentPath();
+  const [searchParams] = useSearchParams();
+  const currentParams = searchParams.toString();
 
   const pages = [
     { title: 'HOME', path: '/' },
@@ -19,8 +21,12 @@ export const HeaderNavigation: React.FC = () => {
         <ul className="header-list">
           {pages.map(({ title, path }) => (
             <li className="header-list-item" key={title}>
-              {/* <Link className="header-link" to={path}> */}
-              <Link className={cn("header-link", { 'is-active': path === currentPath })} to={path}>
+              <Link
+                className={cn("header-link", {
+                  'is-active': path === '/' ? currentPath === '/' : currentPath.startsWith(path),
+                })}
+                to={{ pathname: path, search: currentParams }}
+              >
 
                 {title}
               </Link>

@@ -1,41 +1,18 @@
 import { useEffect, useState } from 'react';
-import { AccessoryInfoType } from '../../types/AccessoryInfoType';
+// import { AccessoryInfoType } from '../../types/AccessoryInfoType';
+// import { PhoneInfoType } from '../../types/PhoneInfoType';
+// import { TabletInfoType } from '../../types/TabletInfoType';
 
 import { AllProductsType } from '../../types/AllProductsType';
-import { PhoneInfoType } from '../../types/PhoneInfoType';
-import { TabletInfoType } from '../../types/TabletInfoType';
 import { BannerSwiper } from '../BannerSwiper';
 import { ShopByCategorySection } from '../ShopByCategorySection';
 import { SwiperSection } from '../SwiperSection';
 
-import { useCurrentPath } from '../contexts/PathContext';
-
-// type HomePageProps = {
-//   newPhones: PhoneInfoType[];
-//   discountedPhones: PhoneInfoType[];
-//   totalPhoneModels: number;
-//   totalTabletsModels: number;
-//   totalAccessoriesModels: number;
-// };
-
-// export type AllProductsType = {
-//   id: number;                 // Уникальный числовой ID
-//   category: string;    // Категория (в данном случае всегда accessories)
-//   itemId: string;             // Уникальный string ID (можно использовать как slug или ключ)
-//   name: string;               // Название продукта
-//   fullPrice: number;          // Полная цена без скидки
-//   price: number;              // Цена со скидкой
-//   screen: string;             // Характеристика экрана
-//   capacity: string;           // Вместимость или размер (например, 44mm)
-//   color: string;              // Цвет
-//   ram: string;                // Объем оперативной памяти
-//   year: number;               // Год выпуска
-//   image: string;              // Путь к изображению
-// };
+// import { useCurrentPath } from '../contexts/PathContext';
 
 export const HomePage: React.FC = () => {
   const [newPhones, setNewPhones] = useState<AllProductsType[]>([]);
-  const [discountedPhones, setDiscountedPhones] = useState<AllProductsType[]>(
+  const [discountedProducts, setDiscountedProducts] = useState<AllProductsType[]>(
     [],
   );
   const [totalPhoneModels, setTotalPhoneModels] = useState(0);
@@ -43,22 +20,23 @@ export const HomePage: React.FC = () => {
   const [totalTabletsModels, setTotalTabletsModels] = useState(0);
   const [totalAccessoriesModels, setTotalAccessoriesModels] = useState(0);
 
-  const currentPath = useCurrentPath();
+  // const currentPath = useCurrentPath();
 
   useEffect(() => {
     fetch('/api/products.json')
       .then(res => res.json())
       .then((data: AllProductsType[]) => {
-        // const newModels = data.filter(phone => phone.itemId.includes('14-pro'));
+
         const newModels = data
           .filter(phone => phone.year === 2022)
           .sort(() => Math.random() - 0.5)
           .slice(0, 12);
-        // const hotPrices = data.filter(phone => phone.itemId.includes('13-pro'));
+
         const hotPrices = data
-          .filter(phone => phone.year < 2022)
+          .filter(models => models.year < 2021)
           .sort(() => Math.random() - 0.5)
           .slice(0, 12);
+
         const allPhoneModels = data.filter(
           phone => phone.category === 'phones',
         ).length;
@@ -71,7 +49,7 @@ export const HomePage: React.FC = () => {
         ).length;
 
         setNewPhones(newModels);
-        setDiscountedPhones(hotPrices);
+        setDiscountedProducts(hotPrices);
         setTotalPhoneModels(allPhoneModels);
 
         setTotalTabletsModels(allTabletsModels);
@@ -80,42 +58,6 @@ export const HomePage: React.FC = () => {
       .catch(err => console.error('Ошибка загрузки:', err));
   }, []);
 
-  // useEffect(() => {
-  //   fetch('/api/phones.json')
-  //     .then(res => res.json())
-  //     .then((data) => {
-  //       const newModels = data.filter(phone => phone.id.includes('14-pro'));
-  //       const hotPrices = data.filter(phone => phone.id.includes('13-pro'));
-  //       const allPhoneModels = data.length;
-
-  //       setNewPhones(newModels);
-  //       setDiscountedPhones(hotPrices);
-  //       setTotalPhoneModels(allPhoneModels);
-  //     })
-  //     .catch(err => console.error('Ошибка загрузки телефонов:', err));
-  // }, []);
-
-  // useEffect(() => {
-  //   fetch('/api/tablets.json')
-  //     .then(res => res.json())
-  //     .then((data: TabletInfoType[]) => {
-  //       const allTabletModels = data.length;
-
-  //       setTotalTabletsModels(allTabletModels);
-  //     })
-  //     .catch(err => console.error('Ошибка загрузки ПЛАНШЕТОВ:', err));
-  // }, []);
-
-  // useEffect(() => {
-  //   fetch('/api/accessories.json')
-  //     .then(res => res.json())
-  //     .then((data: AccessoryInfoType[]) => {
-  //       const allAccessoriesModels = data.length;
-
-  //       setTotalAccessoriesModels(allAccessoriesModels);
-  //     })
-  //     .catch(err => console.error('Ошибка загрузки АКЦЕССУАРЫ:', err));
-  // }, []);
   return (
     <>
       <div className="section">
@@ -126,7 +68,7 @@ export const HomePage: React.FC = () => {
         <BannerSwiper />
       </div>
 
-      <SwiperSection title="Brand New Models" phones={newPhones} />
+      <SwiperSection title="Brand New Models" products={newPhones} />
 
       <ShopByCategorySection
         title="Shop By Category"
@@ -137,7 +79,7 @@ export const HomePage: React.FC = () => {
 
       <SwiperSection
         title="Hot Prices"
-        phones={discountedPhones}
+        products={discountedProducts}
         showDiscount={true}
       />
     </>
