@@ -1,0 +1,44 @@
+@use '../../utils/mixins.scss';
+@use '../../utils/variables.scss';
+
+$themes: (
+  dark: (
+    colorSwiperBG: $color-surf-2,
+    colorSwiperText: $color-white,
+    colorCart: $color-surf-1,
+    colorHeaderFooter: $color-black,
+    colorText: $color-white,
+    colorBG: $color-black,
+    colorPaginActiv: $color-white,
+    colorPagination: $color-elem-text,
+  ),
+  light: (
+    colorSwiperBG: $color-white,
+    colorSwiperText: $color-surf-2,
+    colorCart: $color-white,
+    colorHeaderFooter: $color-white,
+    colorText: $color-black,
+    colorBG: $color-white,
+    colorPaginActiv: #313237,
+    colorPagination: #E2E6E9,
+  ),
+);
+
+@mixin themy($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
