@@ -1,5 +1,5 @@
 import { BackButton } from '../../components/BackButton';
-import styles from './ShoppingCart.module.scss';
+import styles from './ShoppingCartPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import {
@@ -13,7 +13,7 @@ import { Modal } from '../../components/Modal';
 import { motion } from 'motion/react';
 import { fadeInDown } from '../../animations/animations';
 
-export const ShoppingCart = () => {
+export const ShoppingCartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);

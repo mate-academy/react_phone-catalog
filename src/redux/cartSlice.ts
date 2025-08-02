@@ -29,6 +29,7 @@ const cartSlice = createSlice({
     },
 
     removeFromCart: (state, action: PayloadAction<string>) => {
+      // eslint-disable-next-line no-param-reassign
       state.items = state.items.filter(
         item => item.product.id !== action.payload,
       );
@@ -51,6 +52,7 @@ const cartSlice = createSlice({
     },
 
     clearCart: state => {
+      // eslint-disable-next-line no-param-reassign
       state.items = [];
     },
   },

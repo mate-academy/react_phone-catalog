@@ -38,20 +38,6 @@ body,
    dl
  ):where([class]) {
   margin-block: 0;
-}
-
-:where(
-   h1,
-   h2,
-   h3,
-   h4,
-   h5,
-   h6,
-   p,
-   ul,
-   ol,
-   dl
- ):where([class]) {
   margin-inline: 0;
 }
 
@@ -82,19 +68,10 @@ body,
    avoid interaction with more complex selectors.
  */
 p {
-  --paragraphMarginBottom: 24px;
+  --paragraph-margin-bottom: 20px;
 
   margin-block: 0;
 }
-
-/**
-  Bottom margin for a paragraph without a class attribute,
-   that is not the last among its sibling elements.
- */
-p:where(:not([class]):not(:last-child)) {
-  margin-bottom: var(--paragraphMarginBottom);
-}
-
 
 /**
   Simplify handling of images and videos.
@@ -122,6 +99,7 @@ html {
   (e.g., when you need to "stick" the footer to the bottom of the page).
    */
   height: 100%;
+
   /**
     Remove the horizontal shift of the interface
      when the scrollbar appears/disappears.
@@ -143,6 +121,7 @@ body {
     (e.g., when you need to "stick" the footer to the bottom of the page).
    */
   min-height: 100%;
+
   /**
     Unified line height.
    */

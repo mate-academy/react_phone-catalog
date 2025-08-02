@@ -26,12 +26,11 @@
 .slider {
   display: flex;
   gap: 16px;
-  overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
   margin-bottom: -42px;
   padding-inline: 0;
-  overflow-y: hidden;
+  overflow: auto hidden;
 
   &::-webkit-scrollbar {
     display: none;

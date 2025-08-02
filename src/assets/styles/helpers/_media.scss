@@ -1,3 +1,4 @@
+/* stylelint-disable media-feature-range-notation */
 @use './functions' as *;
 
 $desktop: 1199;
@@ -47,7 +48,7 @@ $mobile: 319;
     }
   }
 
-  @if ($hasActiveEffectOnMobile) {
+  @if $hasActiveEffectOnMobile {
     @media (any-hover: none) {
       &:active {
         @content;

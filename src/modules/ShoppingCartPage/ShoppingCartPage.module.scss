@@ -138,7 +138,7 @@
 }
 
 .button {
-  color: #ffffff;
+  color: #fff;
   padding-block: 14px;
   border: none;
   background-color: var(--color-primary);
@@ -146,6 +146,5 @@
 
 .empty {
   display: flex;
-  align-self: center;
-  justify-self: center;
+  place-self: center;
 }

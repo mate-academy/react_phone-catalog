@@ -1,4 +1,4 @@
-import { AnimatePresence, motion} from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import styles from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
@@ -42,7 +42,7 @@ export const Header = () => {
     <nav className={styles.header}>
       <div className={styles.left}>
         <div className={styles.logo}>
-          <img src="/icons/logo.png" alt="Logo" width="80" height="28" />
+          <img src="./icons/logo.png" alt="Logo" width="80" height="28" />
         </div>
         <ul className={styles.list}>
           {navLinks.map(({ path, label }) => (

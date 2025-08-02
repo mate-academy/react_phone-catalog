@@ -16,17 +16,17 @@ h6, .h6 {
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  font-family: 'Mont';
+  font-family: Mont, serif;
   font-weight: 700;
 }
 
 p {
-  font-family: 'Mont';
+  font-family: Mont, serif;
   font-size: 12px;
 }
 
 .uppercase {
-  font-family: 'Mont';
+  font-family: Mont, serif;
   font-weight: 800;
   font-size: 12px;
   line-height: 11px;
@@ -35,21 +35,16 @@ p {
 }
 
 .bodytext {
-  font-family: 'Mont';
+  font-family: Mont, serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
 }
 
-h4, .h4 {
-  font-family: 'Mont';
-  font-weight: 500;
-  color: var(--color-primary);
-}
-
 h1, .h1 {
   @include fluid-text(48, 32);
+
   @include tablet-above {
     line-height: 56px;
   }
@@ -59,6 +54,7 @@ h1, .h1 {
 
 h2, .h2 {
   @include fluid-text(32, 22);
+
   @include tablet-above {
     line-height: 41px;
   }
@@ -68,6 +64,7 @@ h2, .h2 {
 
 h3, .h3 {
   @include fluid-text(22, 20);
+
   @include tablet-above {
     line-height: 31px;
   }
@@ -76,12 +73,16 @@ h3, .h3 {
 }
 
 h4, .h4 {
+  font-family: Mont, serif;
+  font-weight: 500;
+  color: var(--color-primary);
+  line-height: 20px;
+
   @include fluid-text(20, 16);
+
   @include tablet-above {
     line-height: 26px;
   }
-
-  line-height: 20px;
 }
 
 a,

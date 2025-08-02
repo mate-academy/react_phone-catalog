@@ -7,7 +7,7 @@ import { HomePage } from './modules/HomePage';
 import { PhonePage } from './modules/PhonesPage';
 import { TabletsPage } from './modules/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage';
-import { ShoppingCart } from './modules/ShoppingCartPage';
+import { ShoppingCartPage } from './modules/ShoppingCartPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { PageNotFound } from './modules/PageNotFound';
@@ -22,7 +22,7 @@ const Root = () => (
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
-          <Route path="shopping-cart" element={<ShoppingCart />} />
+          <Route path="shopping-cart" element={<ShoppingCartPage />} />
 
           <Route path=":category/:productId" element={<ProductDetailsPage />} />
 
