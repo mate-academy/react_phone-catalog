@@ -1,0 +1,123 @@
+@use '../../assets/styles/helpers/index' as *;
+
+.slider {
+  width: 100%;
+  max-width: 100%;
+
+  // На мобільних пристроях виходимо за межі контейнера
+  @media (max-width: 639px) {
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.main {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @media (max-width: 767px) {
+    height: 100vw;
+    gap: 0;
+    position: relative;
+  }
+
+  @include tablet-above {
+    height: 189px;
+  }
+
+  @include desktop-above {
+    height: 400px;
+  }
+}
+
+.button {
+  display: none;
+  width: 32px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border: var(--border);
+  background-color: #ffffff;
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover {
+    border: var(--border-hover);
+  }
+
+  @include tablet-above {
+    display: flex;
+  }
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+
+  @media (max-width: 767px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  gap: 8px;
+
+  @media (max-width: 767px) {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    z-index: 2;
+  }
+}
+
+.indicator {
+  width: 12px;
+  height: 4px;
+  background-color: var(--color-elements);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+
+  @media (max-width: 767px) {
+    background-color: rgba(255, 255, 255, 0.6);
+
+    &.active {
+      background-color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+.active {
+  background-color: var(--color-primary);
+}

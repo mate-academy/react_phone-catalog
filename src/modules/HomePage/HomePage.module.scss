@@ -1,0 +1,47 @@
+@use 'src/assets/styles/helpers' as *;
+
+.container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include tablet-above {
+    gap: 64px;
+  }
+
+  @include desktop-above {
+    gap: 80px;
+  }
+}
+
+.list {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include tablet-above {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.photo {
+  @include mobile {
+    height: 288px;
+    width: 288px;
+  }
+}
+
+.title {
+  margin: 0;
+}
+

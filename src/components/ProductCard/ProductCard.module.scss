@@ -1,0 +1,80 @@
+@use '../../assets/styles/helpers/index' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-self: center;
+  row-gap: 8px;
+  padding: 32px;
+  border: var(--border);
+  height: 506px;
+  max-width: 288px;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001A;
+
+    .image {
+      scale: 110%;
+    }
+  }
+}
+
+.title {
+  margin: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap:8px;
+}
+
+.image {
+  align-self: center;
+  height: 196px;
+  width: 208px;
+  object-fit: contain;
+  transition-duration: 0.3s;
+}
+
+.name {
+  padding-top: 16px;
+  font-size: 14px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  border-top: var(--border);
+  padding-bottom: 8px;
+}
+
+.category {
+  font-family: 'Mont';
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+  color: var(--color-secondary);
+}
+
+.data {
+  font-family: 'Mont';
+  font-weight: 500;
+  font-size: 14px;
+  text-align: end;
+}
+
+.buttons {
+  display: flex;
+  column-gap: 8px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+}

@@ -1,0 +1,53 @@
+.button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: var(--border-dark);
+  padding: 12px;
+
+  &:hover {
+    border: var(--border-hover);
+  }
+}
+
+.icon {
+  position: relative;
+  width: 16px;
+  height: 14px;
+}
+
+.path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: center;
+}
+
+.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+.path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: center;
+}
+
+.black {
+  fill: var(--color-primary);
+}
+
+.red {
+  fill: var(--color-red);
+}

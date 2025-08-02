@@ -1,0 +1,11 @@
+.list {
+  display: grid;
+  gap: 16px;
+  padding-top: 24px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.selects {
+  display: flex;
+  gap: 16px;
+}

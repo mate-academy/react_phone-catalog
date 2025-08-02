@@ -1,0 +1,24 @@
+.button {
+  line-height: 21px;
+  padding-inline: 0;
+  width: 100%;
+  border: none;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 700;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 var(--color-primary);
+  }
+}
+
+.disabled {
+  cursor: default;
+  padding: 0;
+  width: 100%;
+  background-color: transparent;
+  border: var(--border);
+  color: var(--color-green);
+  font-weight: 700;
+  transition-duration: var(--transition-duration);
+}
