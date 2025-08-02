@@ -7,9 +7,9 @@
     cursor: pointer;
     opacity: 0;
     transform: translateX(-20px);
-    animation: slideInLeft 0.6s ease-out 0.2s both;
+    animation: slide-in-left 0.6s ease-out 0.2s both;
 
-    @keyframes slideInLeft {
+    @keyframes slide-in-left {
       from {
         opacity: 0;
         transform: translateX(-20px);
@@ -17,19 +17,6 @@
       to {
         opacity: 1;
         transform: translateX(0);
-      }
-    }
-
-    &:hover {
-      transform: translateX(2px);
-
-      .cart__left-arrow {
-        color: rgba(144, 91, 255, 1);
-        transform: translateX(-2px);
-      }
-
-      .cart__link-back {
-        color: rgba(144, 91, 255, 1);
       }
     }
 
@@ -42,9 +29,9 @@
     color: rgba(241, 242, 249, 1);
     transition: all 0.3s ease;
     opacity: 0;
-    animation: fadeIn 0.4s ease-out 0.4s both;
+    animation: fade-in 0.4s ease-out 0.4s both;
 
-    @keyframes fadeIn {
+    @keyframes fade-in {
       from {
         opacity: 0;
       }
@@ -63,16 +50,30 @@
     color: rgba(241, 242, 249, 1);
     transition: all 0.3s ease;
     opacity: 0;
-    animation: fadeIn 0.4s ease-out 0.5s both;
+    animation: fade-in 0.4s ease-out 0.5s both;
+  }
+
+  // Hover states - higher specificity, placed after base selectors
+  &__navigation:hover {
+    transform: translateX(2px);
+
+    .cart__left-arrow {
+      color: rgba(144, 91, 255, 1);
+      transform: translateX(-2px);
+    }
+
+    .cart__link-back {
+      color: rgba(144, 91, 255, 1);
+    }
   }
 
   &__header {
     padding-bottom: 32px;
     opacity: 0;
     transform: translateY(-20px);
-    animation: slideInFromTop 0.6s ease-out 0.3s both;
+    animation: slide-in-from-top 0.6s ease-out 0.3s both;
 
-    @keyframes slideInFromTop {
+    @keyframes slide-in-from-top {
       from {
         opacity: 0;
         transform: translateY(-20px);

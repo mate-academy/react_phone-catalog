@@ -6,9 +6,9 @@
   background-color: transparent;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 0.6s ease-out 0.8s both;
+  animation: fade-in-up 0.6s ease-out 0.8s both;
 
-  @keyframes fadeInUp {
+  @keyframes fade-in-up {
     from {
       opacity: 0;
       transform: translateY(20px);
@@ -35,7 +35,7 @@
     font-size: 14px;
     line-height: 21px;
     opacity: 0;
-    animation: buttonFadeIn 0.3s ease-out both;
+    animation: button-fade-in 0.3s ease-out both;
 
     &:nth-child(1) {
       animation-delay: 0.2s;
@@ -62,7 +62,7 @@
       animation-delay: 0.55s;
     }
 
-    @keyframes buttonFadeIn {
+    @keyframes button-fade-in {
       from {
         opacity: 0;
       }

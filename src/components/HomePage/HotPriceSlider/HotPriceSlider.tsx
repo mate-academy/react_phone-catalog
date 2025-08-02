@@ -1,4 +1,3 @@
-// HotPriceSlider.tsx
 import React, { useState, useEffect, useContext } from 'react';
 import './HotPriceSlider.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -101,12 +100,23 @@ export const HotPriceSlider: React.FC = () => {
             prevEl: '.hot-slider__nav-prev',
           }}
           slidesPerView={1.5}
-          spaceBetween={1}
+          spaceBetween={0}
           slidesOffsetBefore={16}
           loop={false}
           breakpoints={{
             640: {
               slidesPerView: 2.5,
+              spaceBetween: 0,
+              slidesOffsetBefore: 24,
+            },
+            768: {
+              slidesPerView: 2.8,
+              spaceBetween: 0,
+              slidesOffsetBefore: 24,
+            },
+            992: {
+              slidesPerView: 3.5,
+              spaceBetween: 0,
               slidesOffsetBefore: 24,
             },
             1200: {

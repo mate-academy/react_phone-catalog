@@ -17,55 +17,6 @@ $timeAnimation: 0.3s ease;
   transform: translateX(100%);
   transition: all $timeAnimation;
 
-  &--open {
-    opacity: 1;
-    pointer-events: all;
-    transform: translateX(0);
-
-    .menu__nav {
-      animation: slideInDown 0.4s ease-out 0.1s both;
-    }
-
-    .menu__logo {
-      animation: fadeInLeft 0.5s ease-out 0.3s both;
-    }
-
-    .menu__close {
-      animation: rotateIn 0.5s ease-out 0.2s both;
-    }
-
-    .menu__navs-link {
-      animation: fadeInUp 0.4s ease-out both;
-
-      &:nth-child(1) {
-        animation-delay: 0.5s;
-      }
-      &:nth-child(2) {
-        animation-delay: 0.6s;
-      }
-      &:nth-child(3) {
-        animation-delay: 0.7s;
-      }
-      &:nth-child(4) {
-        animation-delay: 0.8s;
-      }
-      &:nth-child(5) {
-        animation-delay: 0.9s;
-      }
-    }
-
-    .menu__footer {
-      animation: slideInUp 0.5s ease-out 1s both;
-    }
-
-    .menu__like-notification,
-    .menu__shop-notification {
-      animation:
-        bounceIn 0.6s ease-out 1.2s both,
-        pulse 2s ease-in-out 1.8s infinite;
-    }
-  }
-
   &__nav {
     display: flex;
     justify-content: space-between;
@@ -82,15 +33,15 @@ $timeAnimation: 0.3s ease;
     opacity: 0;
     transform: translateX(-20px);
 
-    &:hover {
-      transform: scale(1.1) rotate(5deg);
-      filter: brightness(1.2);
-    }
-
     img {
       width: 64px;
       height: 20px;
       transition: all 0.3s ease;
+    }
+
+    &:hover {
+      transform: scale(1.1) rotate(5deg);
+      filter: brightness(1.2);
     }
   }
 
@@ -112,18 +63,32 @@ $timeAnimation: 0.3s ease;
       background-color: rgba(235, 87, 87, 0.1);
       transform: rotate(90deg) scale(1.1);
     }
+  }
 
-    svg {
-      color: rgba(241, 242, 249, 1);
-      width: 9px;
-      height: 9px;
-      transition: all 0.3s ease;
+  // Base svg styles - ordered by specificity (lowest to highest)
+  svg {
+    transition: all 0.3s ease;
+  }
 
-      &:hover {
-        transform: scale(1.2);
-        color: rgba(235, 87, 87, 1);
-      }
-    }
+  &__close svg {
+    color: rgba(241, 242, 249, 1);
+    width: 9px;
+    height: 9px;
+    transition: all 0.3s ease;
+  }
+
+  &__like svg {
+    transition: all 0.3s ease;
+  }
+
+  &__shop svg {
+    transition: all 0.3s ease;
+  }
+
+  // Hover states - highest specificity last
+  &__close svg:hover {
+    transform: scale(1.2);
+    color: rgba(235, 87, 87, 1);
   }
 
   &__main {
@@ -205,17 +170,13 @@ $timeAnimation: 0.3s ease;
         left: 0;
         bottom: 2px;
         background-color: rgba(241, 242, 249, 1);
-        animation: expandWidth 0.3s ease-out;
+        animation: expand-width 0.3s ease-out;
       }
 
       svg {
         transform: scale(1.2);
         color: rgba(235, 87, 87, 1);
       }
-    }
-
-    svg {
-      transition: all 0.3s ease;
     }
   }
 
@@ -271,17 +232,13 @@ $timeAnimation: 0.3s ease;
         left: 0;
         bottom: 2px;
         background-color: rgba(241, 242, 249, 1);
-        animation: expandWidth 0.3s ease-out;
+        animation: expand-width 0.3s ease-out;
       }
 
       svg {
         transform: scale(1.2);
         color: rgba(144, 91, 255, 1);
       }
-    }
-
-    svg {
-      transition: all 0.3s ease;
     }
   }
 
@@ -315,10 +272,58 @@ $timeAnimation: 0.3s ease;
       left: 50%;
     }
   }
+
+  &--open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+
+    .menu__nav {
+      animation: slide-in-down 0.4s ease-out 0.1s both;
+    }
+
+    .menu__logo {
+      animation: fade-in-left 0.5s ease-out 0.3s both;
+    }
+
+    .menu__close {
+      animation: rotate-in 0.5s ease-out 0.2s both;
+    }
+
+    .menu__navs-link {
+      animation: fade-in-up 0.4s ease-out both;
+
+      &:nth-child(1) {
+        animation-delay: 0.5s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.6s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.7s;
+      }
+      &:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+      &:nth-child(5) {
+        animation-delay: 0.9s;
+      }
+    }
+
+    .menu__footer {
+      animation: slide-in-up 0.5s ease-out 1s both;
+    }
+
+    .menu__like-notification,
+    .menu__shop-notification {
+      animation:
+        bounceIn 0.6s ease-out 1.2s both,
+        pulse 2s ease-in-out 1.8s infinite;
+    }
+  }
 }
 
-/* Keyframe animations */
-@keyframes slideInDown {
+@keyframes slide-in-down {
   from {
     opacity: 0;
     transform: translateY(-20px);
@@ -329,7 +334,7 @@ $timeAnimation: 0.3s ease;
   }
 }
 
-@keyframes fadeInLeft {
+@keyframes fade-in-left {
   from {
     opacity: 0;
     transform: translateX(-20px);
@@ -340,7 +345,7 @@ $timeAnimation: 0.3s ease;
   }
 }
 
-@keyframes rotateIn {
+@keyframes rotate-in {
   from {
     opacity: 0;
     transform: rotate(-90deg) scale(0.8);
@@ -351,7 +356,7 @@ $timeAnimation: 0.3s ease;
   }
 }
 
-@keyframes fadeInUp {
+@keyframes fade-in-up {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -362,7 +367,7 @@ $timeAnimation: 0.3s ease;
   }
 }
 
-@keyframes slideInUp {
+@keyframes slide-in-up {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -373,7 +378,7 @@ $timeAnimation: 0.3s ease;
   }
 }
 
-@keyframes bounceIn {
+@keyframes bounce-in {
   0% {
     opacity: 0;
     transform: scale(0);
@@ -409,7 +414,7 @@ $timeAnimation: 0.3s ease;
   }
 }
 
-@keyframes expandWidth {
+@keyframes expand-width {
   from {
     width: 0;
   }

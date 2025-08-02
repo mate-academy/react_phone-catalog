@@ -5,13 +5,13 @@
   position: relative;
   opacity: 0;
   transform: translateY(40px);
-  animation: fadeInUp 0.8s ease-out both;
+  animation: fade-in-up 0.8s ease-out both;
 
   @media (min-width: 1200px) {
     padding-left: 32px;
   }
 
-  @keyframes fadeInUp {
+  @keyframes fade-in-up {
     from {
       opacity: 0;
       transform: translateY(40px);
@@ -28,7 +28,7 @@
     align-items: center;
     padding: 0 16px 24px;
     opacity: 0;
-    animation: slideInFromTop 0.6s ease-out 0.3s both;
+    animation: slide-in-from-top 0.6s ease-out 0.3s both;
 
     @media (min-width: 640px) {
       padding: 0 24px 24px;
@@ -39,7 +39,7 @@
       padding-left: 0;
     }
 
-    @keyframes slideInFromTop {
+    @keyframes slide-in-from-top {
       from {
         opacity: 0;
         transform: translateY(-20px);
@@ -59,14 +59,14 @@
     color: rgba(241, 242, 249, 1);
     margin: 0;
     transform: translateX(-20px);
-    animation: slideInLeft 0.6s ease-out 0.5s both;
+    animation: slide-in-left 0.6s ease-out 0.5s both;
 
     @media (min-width: 640px) {
       font-size: 32px;
       line-height: 41px;
     }
 
-    @keyframes slideInLeft {
+    @keyframes slide-in-left {
       from {
         transform: translateX(-20px);
         opacity: 0;
@@ -87,9 +87,9 @@
     display: flex;
     gap: 16px;
     transform: translateX(20px);
-    animation: slideInRight 0.6s ease-out 0.7s both;
+    animation: slide-in-right 0.6s ease-out 0.7s both;
 
-    @keyframes slideInRight {
+    @keyframes slide-in-right {
       from {
         transform: translateX(20px);
         opacity: 0;
@@ -105,9 +105,9 @@
     position: relative;
     width: 100%;
     opacity: 0;
-    animation: fadeIn 0.8s ease-out 0.6s both;
+    animation: fade-in 0.8s ease-out 0.6s both;
 
-    @keyframes fadeIn {
+    @keyframes fade-in {
       from {
         opacity: 0;
       }
@@ -180,7 +180,6 @@
   box-sizing: border-box;
   padding: 32px;
   width: 100%;
-  max-width: 212px;
   flex-shrink: 0;
   height: 440px;
   background-color: rgba(22, 24, 39, 1);
@@ -190,15 +189,22 @@
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px) scale(0.95);
-  animation: cardFadeIn 0.6s ease-out both;
+  animation: card-fade-in 0.6s ease-out both;
 
   @media (min-width: 640px) {
-    max-width: 237px;
     height: 512px;
   }
 
+  @media (min-width: 768px) {
+    height: 520px;
+  }
+
+  @media (min-width: 992px) {
+    height: 506px;
+  }
+
   @media (min-width: 1200px) {
-    max-width: 272px;
+    width: 272px;
     height: 506px;
   }
 
@@ -218,7 +224,7 @@
     animation-delay: 1.2s;
   }
 
-  @keyframes cardFadeIn {
+  @keyframes card-fade-in {
     from {
       opacity: 0;
       transform: translateY(30px) scale(0.95);
@@ -262,12 +268,13 @@
   &__image {
     width: auto;
     height: 129px;
+    max-width: 100%;
     align-self: center;
     flex-shrink: 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     transform: scale(0.8);
-    animation: imageZoomIn 0.6s ease-out 0.3s both;
+    animation: image-zoom-in 0.6s ease-out 0.3s both;
 
     @media (min-width: 640px) {
       height: 202px;
@@ -277,7 +284,7 @@
       height: 196px;
     }
 
-    @keyframes imageZoomIn {
+    @keyframes image-zoom-in {
       from {
         opacity: 0;
         transform: scale(0.8);
@@ -304,9 +311,9 @@
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(10px);
-    animation: slideUp 0.4s ease-out 0.5s both;
+    animation: slide-up 0.4s ease-out 0.5s both;
 
-    @keyframes slideUp {
+    @keyframes slide-up {
       from {
         opacity: 0;
         transform: translateY(10px);
@@ -333,7 +340,7 @@
     position: relative;
     transition: all 0.3s ease;
     opacity: 0;
-    animation: slideUp 0.4s ease-out 0.6s both;
+    animation: slide-up 0.4s ease-out 0.6s both;
 
     &::after {
       content: '';
@@ -345,10 +352,10 @@
       background-color: rgba(59, 62, 74, 1);
       transform: scaleX(0);
       transform-origin: left;
-      animation: expandLine 0.6s ease-out 0.8s both;
+      animation: expand-line 0.6s ease-out 0.8s both;
     }
 
-    @keyframes expandLine {
+    @keyframes expand-line {
       from {
         transform: scaleX(0);
       }
@@ -374,7 +381,7 @@
     margin-bottom: 8px;
     opacity: 0;
     transform: translateX(-10px);
-    animation: slideInSpec 0.4s ease-out both;
+    animation: slide-in-spec 0.4s ease-out both;
 
     &:nth-of-type(1) {
       animation-delay: 0.7s;
@@ -386,7 +393,7 @@
       animation-delay: 0.8s;
     }
 
-    @keyframes slideInSpec {
+    @keyframes slide-in-spec {
       from {
         opacity: 0;
         transform: translateX(-10px);
@@ -428,15 +435,15 @@
   }
 
   &__actions {
-    align-self: center;
+    align-self: stretch;
     display: flex;
-    gap: 17.5px;
+    gap: 16px;
     margin-top: auto;
     opacity: 0;
     transform: translateY(20px);
-    animation: actionsSlideUp 0.5s ease-out 0.9s both;
+    animation: actions-slide-up 0.5s ease-out 0.9s both;
 
-    @keyframes actionsSlideUp {
+    @keyframes actions-slide-up {
       from {
         opacity: 0;
         transform: translateY(20px);
@@ -449,7 +456,7 @@
   }
 
   &__add {
-    width: 100px;
+    flex: 1;
     height: 40px;
     color: rgba(241, 242, 249, 1);
     background-color: rgba(144, 91, 255, 1);
@@ -460,11 +467,8 @@
     overflow: hidden;
     transform: scale(1);
 
-    @media (min-width: 640px) {
-      width: 125px;
-    }
-
     @media (min-width: 1200px) {
+      flex: none;
       width: 160px;
     }
 
@@ -506,6 +510,7 @@
     align-items: center;
     justify-content: center;
     width: 40px;
+    min-width: 40px;
     height: 40px;
     background-color: rgba(50, 53, 66, 1);
     border: 0;
@@ -544,7 +549,7 @@
     &--active {
       background-color: transparent;
       border: 1px solid rgba(59, 62, 74, 1);
-      animation: heartBeat 0.6s ease-out;
+      animation: heart-beat 0.6s ease-out;
 
       &::before {
         background-color: rgba(235, 87, 87, 0.1);
@@ -555,7 +560,7 @@
         background-color: rgba(235, 87, 87, 0.1);
       }
 
-      @keyframes heartBeat {
+      @keyframes heart-beat {
         0% {
           transform: scale(1);
         }
@@ -580,9 +585,9 @@
   width: 100%;
   height: auto;
   opacity: 0;
-  animation: swiperFadeIn 0.8s ease-out 0.8s both;
+  animation: swiper-fade-in 0.8s ease-out 0.8s both;
 
-  @keyframes swiperFadeIn {
+  @keyframes swiper-fade-in {
     from {
       opacity: 0;
     }
@@ -595,6 +600,18 @@
 .swiper-slide {
   height: auto;
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 0 8px 0 8px !important;
   transition: all 0.3s ease;
+
+  &:first-child {
+    padding-left: 0 !important;
+  }
+
+  &:last-child {
+    padding-right: 0 !important;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 !important;
+  }
 }

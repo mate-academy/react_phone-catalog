@@ -146,12 +146,23 @@ export const ProductDetailsSlider: React.FC<Props> = ({
           breakpoints={{
             640: {
               slidesPerView: 2.5,
+              spaceBetween: 0,
+              slidesOffsetBefore: 24,
+            },
+            768: {
+              slidesPerView: 2.8,
+              spaceBetween: 0,
+              slidesOffsetBefore: 24,
+            },
+            992: {
+              slidesPerView: 3.5,
+              spaceBetween: 0,
               slidesOffsetBefore: 24,
             },
             1200: {
               slidesPerView: 4,
               slidesOffsetBefore: 0,
-              spaceBetween: 2,
+              spaceBetween: 0,
             },
           }}
         >

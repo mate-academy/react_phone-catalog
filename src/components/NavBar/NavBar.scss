@@ -13,9 +13,9 @@
     height: 64px;
   }
 
-  animation: slideDown 0.6s ease-out;
+  animation: slide-down 0.6s ease-out;
 
-  @keyframes slideDown {
+  @keyframes slide-down {
     from {
       transform: translateY(-100%);
       opacity: 0;
@@ -31,13 +31,13 @@
     justify-content: center;
     align-items: center;
     gap: 32px;
-    animation: fadeInRight 0.8s ease-out 0.2s both;
+    animation: fade-in-right 0.8s ease-out 0.2s both;
 
     @media (min-width: 1200px) {
       gap: 48px;
     }
 
-    @keyframes fadeInRight {
+    @keyframes fade-in-right {
       from {
         transform: translateX(30px);
         opacity: 0;
@@ -55,14 +55,14 @@
     @media (min-width: 640px) {
       display: flex;
       gap: 32px;
-      animation: fadeInUp 0.8s ease-out 0.3s both;
+      animation: fade-in-up 0.8s ease-out 0.3s both;
     }
 
     @media (min-width: 1200px) {
       gap: 64px;
     }
 
-    @keyframes fadeInUp {
+    @keyframes fade-in-up {
       from {
         transform: translateY(20px);
         opacity: 0;
@@ -131,14 +131,14 @@
       height: 3px;
       width: 100%;
       background-color: rgba(241, 242, 249, 1);
-      animation: expandLine 0.6s ease-out 0.5s both;
+      animation: expand-line 0.6s ease-out 0.5s both;
 
       @media (min-width: 1200px) {
         bottom: -22px;
       }
     }
 
-    @keyframes expandLine {
+    @keyframes expand-line {
       from {
         transform: scaleX(0);
         transform-origin: left;
@@ -170,7 +170,7 @@
     height: 20.8px;
     padding-left: 16px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeInLeft 0.8s ease-out both;
+    animation: fade-in-left 0.8s ease-out both;
 
     &:hover {
       transform: scale(1.1) rotate(2deg);
@@ -186,7 +186,7 @@
       height: 26px;
     }
 
-    @keyframes fadeInLeft {
+    @keyframes fade-in-left {
       from {
         transform: translateX(-30px);
         opacity: 0;
@@ -296,10 +296,10 @@
       left: 0;
       bottom: 0;
       transform: scaleX(0);
-      animation: expandActive 0.5s ease-out both;
+      animation: expand-active 0.5s ease-out both;
     }
 
-    @keyframes expandActive {
+    @keyframes expand-active {
       to {
         transform: scaleX(1);
       }
@@ -323,7 +323,7 @@
     top: 28%;
     left: 50%;
     transform: scale(0);
-    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s both;
+    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.8s both;
 
     @media (min-width: 640px) {
       top: 22%;
@@ -335,7 +335,7 @@
       left: 50%;
     }
 
-    @keyframes bounceIn {
+    @keyframes bounce-in {
       0% {
         transform: scale(0);
       }
@@ -425,7 +425,7 @@
       left: 0;
       bottom: 0;
       transform: scaleX(0);
-      animation: expandActive 0.5s ease-out both;
+      animation: expand-active 0.5s ease-out both;
     }
   }
 
@@ -446,7 +446,7 @@
     top: 28%;
     left: 50%;
     transform: scale(0);
-    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1s both;
+    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) 1s both;
 
     @media (min-width: 640px) {
       top: 22%;

@@ -127,12 +127,23 @@ export const ProductsSlider: React.FC = () => {
             prevEl: '.slider-nav-prev',
           }}
           slidesPerView={1.5}
-          spaceBetween={1}
+          spaceBetween={0}
           slidesOffsetBefore={16}
           loop={false}
           breakpoints={{
             640: {
               slidesPerView: 2.5,
+              spaceBetween: 0,
+              slidesOffsetBefore: 24,
+            },
+            768: {
+              slidesPerView: 2.8,
+              spaceBetween: 0,
+              slidesOffsetBefore: 24,
+            },
+            992: {
+              slidesPerView: 3.5,
+              spaceBetween: 0,
               slidesOffsetBefore: 24,
             },
             1200: {
