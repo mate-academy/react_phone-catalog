@@ -42,7 +42,12 @@ export const Header = () => {
     <nav className={styles.header}>
       <div className={styles.left}>
         <div className={styles.logo}>
-          <img src="./icons/logo.png" alt="Logo" width="80" height="28" />
+          <img
+            src="./../../../public/icons/logo.png"
+            alt="Logo"
+            width="80"
+            height="28"
+          />
         </div>
         <ul className={styles.list}>
           {navLinks.map(({ path, label }) => (
@@ -62,7 +67,10 @@ export const Header = () => {
       <ul className={styles.right}>
         <button className={styles.burger} onClick={toggleMenu}>
           {isMenuOpen ? (
-            <img src="/icons/close-icon.svg" alt="close button" />
+            <img
+              src="./../../../public/icons/close-icon.svg"
+              alt="close button"
+            />
           ) : (
             <img src="/icons/burger-button.svg" alt="menu" />
           )}

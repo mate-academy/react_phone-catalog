@@ -42,7 +42,7 @@ export const FavoritesPage = () => {
       {favItems.length === 0 && (
         <img
           className={styles.empty}
-          src="/phots/11329060.png"
+          src="/phots/empty-fav-1.png"
           alt="Empty cart"
         />
       )}
