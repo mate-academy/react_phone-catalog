@@ -18,11 +18,11 @@
     height: 32px;
     border-radius: 50%;
     border: 1px solid $color-header-border;
-    background-color: transparent;
+    background-color: var($color-primary-button);
     cursor: pointer;
 
     &--active {
-      background-color: $color-hover-nav;
+      background-color: $color-primary-button;
       color: $color-white;
       border: none;
     }
@@ -32,7 +32,7 @@
     }
 
     &:active {
-      background-color: $color-hover-nav;
+      background-color: $color-primary-button;
       color: $color-white;
     }
   }
