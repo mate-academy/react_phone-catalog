@@ -1,5 +1,6 @@
 import { useReward } from 'react-rewards';
 import { useEffect } from 'react';
+import styles from './Reward.module.scss';
 
 export const CheckoutCelebration = ({ trigger }: { trigger: boolean }) => {
   const rewardId = 'checkout-reward';
@@ -9,12 +10,7 @@ export const CheckoutCelebration = ({ trigger }: { trigger: boolean }) => {
     if (trigger) {
       reward();
     }
-  }, [trigger]);
+  }, [trigger, reward]);
 
-  return (
-    <span
-      id={rewardId}
-      style={{ width: 1, height: 1, display: 'inline-block' }}
-    />
-  );
+  return <span id={rewardId} className={styles.checkoutReward} />;
 };
