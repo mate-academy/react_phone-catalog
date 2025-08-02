@@ -19,8 +19,7 @@ export const Arrow: React.FC<Props> = ({
     <button
       disabled={isDisabled}
       className={`
-        ${styles.arrow} 
-        ${styles.isTablet}
+        ${styles.arrow}
       `}
       style={{ height, width }}
       onClick={() => onClick()}

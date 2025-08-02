@@ -1,13 +1,15 @@
 import { Categories } from "../../components/Categories";
 import { Header } from "../../components/Header";
-import { NewModels } from "../../components/NewModels";
+import { ProductsSlider } from "../../components/ProductsSlider";
+import styles from './HomePage.module.scss';
 
 export const HomePage: React.FC = () => {
   return (
-    <main>
+    <main className={styles.main}>
       <Header />
-      <NewModels />
+      <ProductsSlider title={'Brand new models'} filter={item => item.name.includes('14')}/>
       <Categories />
+      <ProductsSlider title={'Hot prices'} filter={item => item}/>
     </main>
   );
 }

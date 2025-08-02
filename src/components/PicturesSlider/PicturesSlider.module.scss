@@ -3,10 +3,14 @@
 }
 
 .products {
-  height: 100%;
   width: 100%;
   border: 1px solid red;
   overflow: hidden;
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    aspect-ratio: none;
+  }
 }
 
 .dashes {
@@ -30,7 +34,6 @@
 
 .carousel {
   display: flex;
-  height: 320px;
   width: 100%;
 
   @include on-tablet {
@@ -47,4 +50,12 @@
 .img {
   width: 16px;
   height: 16px;
+}
+
+.onTablet {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
 }

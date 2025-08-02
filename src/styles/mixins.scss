@@ -25,13 +25,14 @@
 }
 
 @mixin page-grid {
+  @include page-padding-inline;
+
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   box-sizing: border-box;
   gap: 16px;
 
   @include on-tablet {
-    @include page-padding-inline;
     grid-template-columns: repeat(12, 1fr);
   }
 

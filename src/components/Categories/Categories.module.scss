@@ -1,3 +1,50 @@
 .section {
-  @include page-padding-inline;
+  grid-column: 1 / -1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+}
+
+.banner {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background-color: var(--color-white);
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.bannerPhones {
+  background-color: #6d6474;
+}
+
+.bannerTablets {
+  background-color: #8d8d92;
+}
+
+.bannerAccessories {
+  background-color: #d53c51;
 }

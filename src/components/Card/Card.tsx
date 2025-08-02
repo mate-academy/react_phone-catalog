@@ -1,12 +1,51 @@
 import styles from './Card.module.scss';
 import type { Card as CardItem } from '../../types/Card';
 import { LikeButton } from '../LikeButton/LikeButton';
+import {
+  getCartProducts,
+  getFavouriteProducts,
+  saveCartProducts,
+  saveFavouriteProducts
+} from '../../modules/shared/services/localStorage';
+import { useEffect, useState } from 'react';
+import { AddToCart } from './AddToCart';
 
 type Props = {
   card: CardItem;
 }
 
 export const Card: React.FC<Props> = ({ card }) => {
+  const [favouriteProducts, setFavouriteProducts] = useState(getFavouriteProducts());
+  const [cartProducts, setCartProducts] = useState(getCartProducts());
+
+  useEffect(() => {
+    setFavouriteProducts(getFavouriteProducts());
+    setCartProducts(getCartProducts());
+  }, [getFavouriteProducts(), getCartProducts()]);
+
+  function generateProductCode(name: string): string {
+    return name.includes('14') ? name + ` (MQ023)` : name + ' (iMT9G2FS/A)';
+  }
+
+  function toggleFavouriteCard() {
+    if (favouriteProducts.includes(card.id)) {
+      saveFavouriteProducts(favouriteProducts.filter((id: number) => id !== card.id));
+      return;
+    }
+
+    saveFavouriteProducts([...favouriteProducts, card.id]);
+  }
+
+  function toggleAddToCart() {
+    if (cartProducts.includes(card.id)) {
+      saveCartProducts(cartProducts.filter((id: number) => id !== card.id));
+      setCartProducts(cartProducts.filter((id: number) => id !== card.id));
+      return;
+    }
+
+    saveCartProducts([...cartProducts, card.id]);
+  }
+
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -18,8 +57,10 @@ export const Card: React.FC<Props> = ({ card }) => {
       </div>
 
       <div className={styles.about}>
-        <p className="bodyText">{card.name}</p>
-        <h3>${card.price}</h3>
+        <p className={`bodyText ${styles.name}`}>
+          {generateProductCode(card.name)}
+        </p>
+        <h3 className={styles.price}>${card.price}</h3>
 
         <div className={styles.line}></div>
 
@@ -39,10 +80,13 @@ export const Card: React.FC<Props> = ({ card }) => {
       </div>
 
       <div className={styles.buttons}>
-        <button className={`buttonText ${styles.button}`}>
-          Add to cart
-        </button>
-        <LikeButton />
+        <AddToCart
+          isActive={cartProducts.includes(card.id)}
+          onClick={toggleAddToCart}
+        />
+        <LikeButton
+          isSelected={getFavouriteProducts().includes(card.id)}
+          onClick={toggleFavouriteCard} />
       </div>
     </div>
   );

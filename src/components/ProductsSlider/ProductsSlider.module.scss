@@ -1,5 +1,5 @@
 .section {
-  @include page-padding-inline;
+  grid-column: 1/ -1 ;
 }
 
 .arrows {

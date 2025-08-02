@@ -5,7 +5,7 @@ import styles from './Navbar.module.scss';
 export const Navbar: React.FC = () => {
   return (
     <nav className={styles.navbar}>
-      <Logo />
+      <Logo location='navbar' />
       <ul className={`${styles.list} ${styles.tablet}`}>
         <li className={`${styles.item} uppercaseText`}>
           <NavLink

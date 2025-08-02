@@ -18,21 +18,25 @@ export const PicturesSlider: React.FC = () => {
   return (
     <div className={styles.slider}>
       <div className={styles.carousel}>
-        <Arrow
-          direction='left'
-          height="100%"
-          onClick={() => handleArrowClick('left')}
-        />
+        <div className={styles.onTablet}>
+          <Arrow
+            direction='left'
+            height="100%"
+            onClick={() => handleArrowClick('left')}
+          />
+        </div>
         <div className={styles.products}>
           <ul>
             <li></li>
           </ul>
         </div>
-        <Arrow
-          direction='right'
-          height="100%"
-          onClick={() => handleArrowClick('right')}
-        />
+        <div className={styles.onTablet}>
+          <Arrow
+            direction='right'
+            height="100%"
+            onClick={() => handleArrowClick('right')}
+          />
+        </div>
       </div>
 
       <div className={styles.dashes}>

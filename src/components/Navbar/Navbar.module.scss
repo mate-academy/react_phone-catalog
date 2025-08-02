@@ -104,3 +104,10 @@
 .activeLink {
   color: var(--color-primary);
 }
+
+.activeLink::after {
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: black;
+}

@@ -14,8 +14,8 @@ body {
   }
 }
 
-header {
-  @include page-grid;
+main {
+  min-height: 73.18vh;
 }
 
 a {

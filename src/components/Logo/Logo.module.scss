@@ -2,20 +2,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 96px;
   height: 100%;
-
-  @include on-desktop {
-    width: 128px;
-  }
 }
 
-.img {
+.navbarImg {
   height: 20.8px;
   width: 64px;
 
-  @include on-desktop{
+  @include on-desktop {
     height: 26.47px;
     width: 80px;
   }
+}
+
+.navbarLogo {
+  padding-inline: 16px;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+}
+
+.footerImg {
+  width: 89px;
+  height: 30.25px;
 }
