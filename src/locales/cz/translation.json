@@ -1,0 +1,83 @@
+{
+  "welcomeMessage": "Vítejte v naší aplikaci",
+  "languageSelector": "Vyberte svůj jazyk",
+  "navigation": {
+    "logo": "LOGO",
+    "home": "Domů",
+    "phones": "Chytré telefony",
+    "tablets": "Tablety",
+    "accessories": "Příslušenství",
+    "favorites": "Oblíbené",
+    "cart": "Košík",
+    "about": "O nás",
+    "contact": "Kontakt",
+    "services": "Služby",
+    "search_placeholder": "Hledat"
+  },
+  "theme": {
+    "title": "Vyberte téma",
+    "theme0": "Originální",
+    "theme1": "Originální tmavé",
+    "theme2": "Zaoblené modré",
+    "theme3": "Zaoblené fialové",
+    "theme4": "Zaoblené oranžové"
+  },
+  "home": {
+    "title": "Vítejte v obchodě iSupply!",
+    "subtitle": "Objevte naše funkce",
+    "description": "Toto je příklad vícejazyčné aplikace s Reactem, Reduxem a i18next.",
+    "shop_by_cat": "Nakupovat podle kategorií",
+    "phones": "Mobilní telefony",
+    "tablets": "Tablety",
+    "accessories": "Příslušenství",
+    "models": "modely"
+  },
+  "footer": {
+    "copyright": "© 2025 Vaše společnost. Všechna práva vyhrazena.",
+    "privacyPolicy": "Zásady ochrany osobních údajů",
+    "termsOfService": "Podmínky používání",
+    "contacts": "kontakty",
+    "rights": "právní informace",
+    "back_to_top": "Zpět nahoru"
+  },
+  "form": {
+    "name": "Jméno",
+    "email": "E-mail",
+    "message": "Zpráva",
+    "submit": "Odeslat"
+  },
+  "recommended": {
+    "brand_new_models": "Nejnovější modely",
+    "hot_prices": "Skvělé slevy",
+    "may_like": "Mohlo by se vám také líbit"
+  },
+  "specs": {
+    "screen": "Displej",
+    "capacity": "Paměť",
+    "ram": "RAM",
+    "cpu": "Procesor",
+    "select": "Vyberte",
+    "colors": "Dostupné barvy",
+    "title": "Technické parametry",
+    "resolution": "Rozlišení",
+    "built_memory": "Vnitřní paměť",
+    "camera": "Fotoaparát",
+    "zoom": "Zoom fotoaparátu",
+    "cell": "Standardy připojení",
+    "about": "O produktu"
+  },
+  "btn": {
+    "in_cart": "V košíku",
+    "add_to_cart": "Přidat do košíku",
+    "checkout": "Přejít k pokladně"
+  },
+  "favorites": {
+    "fav_title": "Oblíbené",
+    "items": "položky"
+  },
+  "cart": {
+    "cart": "košík",
+    "back": "zpět",
+    "total_for": "Celkem za"
+  }
+}

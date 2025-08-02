@@ -35,7 +35,7 @@ export const Recommended: React.FC<Props> = ({ title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { isInCart, isInFavorites } = useProductState();
   const dispatch = useDispatch();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const windowWidth = useWindowWidth();
 
   const cardSize = () => {
@@ -106,7 +106,7 @@ export const Recommended: React.FC<Props> = ({ title }) => {
 
       setItems(filteredItems);
     }
-  }, [title, t, i18n.language]);
+  }, [title]);
 
 
   return (

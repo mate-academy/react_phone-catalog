@@ -44,6 +44,36 @@ const LanguageSwitcher = () => {
         >
           Deutsch
         </button>
+        <button
+          onClick={() => changeLanguage('fr')}
+          className={currentLanguage === 'fr' ? 'active' : ''}
+        >
+          Français
+        </button>
+        <button
+          onClick={() => changeLanguage('es')}
+          className={currentLanguage === 'es' ? 'active' : ''}
+        >
+          Español
+        </button>
+        <button
+          onClick={() => changeLanguage('it')}
+          className={currentLanguage === 'it' ? 'active' : ''}
+        >
+          Italiano
+        </button>
+        <button
+          onClick={() => changeLanguage('cz')}
+          className={currentLanguage === 'cz' ? 'active' : ''}
+        >
+          Čeština
+        </button>
+        <button
+          onClick={() => changeLanguage('cn')}
+          className={currentLanguage === 'cn' ? 'active' : ''}
+        >
+          中文
+        </button>
       </div>
     </div>
   );

@@ -57,6 +57,7 @@
   text-decoration: none;
   color: $color-secondary-grey;
   @include font-small;
+  text-transform: capitalize;
 }
 
 .cart__cards-collection {
@@ -243,6 +244,7 @@
   background-color: $color-primary-black;
   color: $color-white;
   @include font-buttons;
+  text-transform: capitalize;
 
   height: 48px;
 

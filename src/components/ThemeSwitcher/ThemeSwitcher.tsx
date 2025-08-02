@@ -1,11 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
 import { setTheme } from '../../redux/themeSlice';
 import './ThemeSwitcher.scss';
 import { useEffect } from 'react';
 
 const ThemeSwitcher = () => {
   const dispatch = useDispatch();
+  const { i18n, t } = useTranslation();
   const currentTheme = useAppSelector(
     (state: { theme: { current: string; }; }) => state.theme.current);
 
@@ -22,7 +24,7 @@ const ThemeSwitcher = () => {
 
   return (
     <div className="theme-selector">
-      <label htmlFor="theme-select">Оберіть тему:</label>
+      <label htmlFor="theme-select">{t('theme.title')}:</label>
       <br/>
       <select
         id="theme-select"
@@ -34,11 +36,11 @@ const ThemeSwitcher = () => {
         }}
         className="theme-select"
       >
-        <option value="theme0">Original</option>
-        <option value="theme1">Original Dark</option>
-        <option value="theme2">Rounded Blue</option>
-        <option value="theme3">Rounded Purple</option>
-        <option value="theme4">Rounded Orange</option>
+        <option value="theme0">{t('theme.theme0')}</option>
+        <option value="theme1">{t('theme.theme1')}</option>
+        <option value="theme2">{t('theme.theme2')}</option>
+        <option value="theme3">{t('theme.theme3')}</option>
+        <option value="theme4">{t('theme.theme4')}</option>
       </select>
     </div>
   );

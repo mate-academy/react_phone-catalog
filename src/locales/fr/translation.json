@@ -1,0 +1,83 @@
+{
+  "welcomeMessage": "Bienvenue dans notre application",
+  "languageSelector": "Choisissez votre langue",
+  "navigation": {
+    "logo": "LOGO",
+    "home": "Accueil",
+    "phones": "Smartphones",
+    "tablets": "Tablettes",
+    "accessories": "Accessoires",
+    "favorites": "Favoris",
+    "cart": "Panier",
+    "about": "À propos de nous",
+    "contact": "Contacts",
+    "services": "Services",
+    "search_placeholder": "Recherche"
+  },
+  "theme": {
+    "title": "Choisir un thème",
+    "theme0": "Original",
+    "theme1": "Original Sombre",
+    "theme2": "Arrondi Bleu",
+    "theme3": "Arrondi Violet",
+    "theme4": "Arrondi Orange"
+  },
+  "home": {
+    "title": "Bienvenue dans la boutique iSupply !",
+    "subtitle": "Découvrez nos fonctionnalités",
+    "description": "Ceci est un exemple d'application multilingue utilisant React, Redux et i18next.",
+    "shop_by_cat": "Acheter par catégories",
+    "phones": "Téléphones portables",
+    "tablets": "Tablettes",
+    "accessories": "Accessoires",
+    "models": "modèles"
+  },
+  "footer": {
+    "copyright": "© 2025 Votre entreprise. Tous droits réservés.",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "contacts": "contacts",
+    "rights": "informations légales",
+    "back_to_top": "Haut de page"
+  },
+  "form": {
+    "name": "Nom",
+    "email": "E-mail",
+    "message": "Message",
+    "submit": "Envoyer"
+  },
+  "recommended": {
+    "brand_new_models": "Les tout derniers modèles",
+    "hot_prices": "Promotions en cours",
+    "may_like": "Vous pourriez aussi aimer"
+  },
+  "specs": {
+    "screen": "Écran",
+    "capacity": "Stockage",
+    "ram": "RAM",
+    "cpu": "Processeur",
+    "select": "Sélectionner",
+    "colors": "Couleurs disponibles",
+    "title": "Caractéristiques techniques",
+    "resolution": "Résolution",
+    "built_memory": "Mémoire intégrée",
+    "camera": "Appareil photo",
+    "zoom": "Zoom de l'appareil photo",
+    "cell": "Normes de réseau",
+    "about": "À propos du produit"
+  },
+  "btn": {
+    "in_cart": "Dans le panier",
+    "add_to_cart": "Ajouter au panier",
+    "checkout": "Passer à la caisse"
+  },
+  "favorites": {
+    "fav_title": "Favoris",
+    "items": "articles"
+  },
+  "cart": {
+    "cart": "panier",
+    "back": "retour",
+    "total_for": "Total pour"
+  }
+}

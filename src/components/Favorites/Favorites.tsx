@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { emptyHeart, filledHeart, homeIcon } from '../../../public/img/icons/svg_icons';
 import { useProductState } from '../Phones/Phones';
+import { useTranslation } from 'react-i18next';
 
 export const Favorites: React.FC = () => {
   const favItems = useAppSelector(currentFavoriteItems);
@@ -14,6 +15,7 @@ export const Favorites: React.FC = () => {
   const currentTheme = useAppSelector(
     (state: { theme: { current: string; }; }) => state.theme.current);
   const { isInCart, isInFavorites } = useProductState();
+  const { t } = useTranslation();
 
   return (
     <div className={`fav-container ${currentTheme}`}>
@@ -38,16 +40,16 @@ export const Favorites: React.FC = () => {
         </svg>
 
         <div className="fav--link-legend">
-          {'Favorites'}
+          {t('favorites.fav_title')}
         </div>
       </div>
 
       <div className="custom_h1">
-        Favorites
+        {t('favorites.fav_title')}
       </div>
 
       <div className="fav--items-counter">
-        {favsQuantity} items
+        {favsQuantity} {t('favorites.items')}
       </div>
 
       <div className="fav__items-wrapper">
@@ -75,15 +77,20 @@ export const Favorites: React.FC = () => {
             </div>
             <div className="rec__specs">
               <div className="rec__specs-spec">
-                Screen<div className="rec__specs-value">{item.screen}</div>
+                {t('specs.screen')}
+                <div className="rec__specs-value">{item.screen}</div>
               </div>
               <div className="rec__specs-spec">
-                Capacity<div className="rec__specs-value">
-                  {item.capacity.replace('GB', ' GB')}</div>
+                {t('specs.capacity')}
+                <div className="rec__specs-value">
+                  {item.capacity.replace('GB', ' GB').replace('TB', ' TB')}
+                </div>
               </div>
               <div className="rec__specs-spec">
-                RAM<div className="rec__specs-value">
-                  {item.ram.replace('GB', ' GB')}</div>
+                {t('specs.ram')}
+                <div className="rec__specs-value">
+                  {item.ram.replace('GB', ' GB').replace('MB', ' MB')}
+                </div>
               </div>
             </div>
             <div className="rec__item-buttons fav__buttons">
@@ -91,7 +98,7 @@ export const Favorites: React.FC = () => {
                 onClick={() => isInCart(item?.id)
                   ? dispatch(removeFromCart(item?.id))
                   : dispatch(addToCart(item))
-                }>{`${isInCart(item?.id) ? 'In cart' : 'Add to cart'}`}</button>
+                }>{`${isInCart(item?.id) ? `${t('btn.in_cart')}` : `${t('btn.add_to_cart')}`}`}</button>
               <button className={`rec__item-to-fav ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
                 onClick={() => isInFavorites(item?.id)
                   ? dispatch(removeFromFavorites(item?.id))

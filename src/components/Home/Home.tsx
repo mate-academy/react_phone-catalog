@@ -25,11 +25,11 @@ export const Home: React.FC = () => {
 
   return (
     <div className="home-main">
-      <h1>Welcome to iSupply store!</h1>
+      <div className="home__title-greeting">{t('home.title')}</div>
       <SliderDemo />
       <Recommended title='brand_new_models' />
       <div className="home__shop-container">
-        <div className="home__subtitle">Shop by category</div>
+        <div className="home__subtitle">{t('home.shop_by_cat')}</div>
         <div className="home__shop-categories">
           <div className="home__shop_card">
             <Link
@@ -48,7 +48,7 @@ export const Home: React.FC = () => {
                   to={'/phones'}
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                Mobile phones{/*{t('navigation.phones')}*/}
+                  {t('home.phones')}{/*{t('navigation.phones')}*/}
                 </Link>
               </div>
               <div className="home__card-desc-qty">
@@ -57,7 +57,7 @@ export const Home: React.FC = () => {
                   to={'/phones'}
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                  {`${phonesQty} models`}
+                  {`${phonesQty} ${t('home.models')}`}
                 </Link>
               </div>
             </div>
@@ -80,7 +80,7 @@ export const Home: React.FC = () => {
                   to={'/tablets'}
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                Tablets{/*{t('navigation.tablets')}*/}
+                  {t('home.tablets')}{/*{t('navigation.tablets')}*/}
                 </Link>
               </div>
               <div className="home__card-desc-qty">
@@ -89,7 +89,7 @@ export const Home: React.FC = () => {
                   to={'/tablets'}
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                  {`${tabletsQty} models`}
+                  {`${tabletsQty} ${t('home.models')}`}
                 </Link>
               </div>
             </div>
@@ -112,7 +112,7 @@ export const Home: React.FC = () => {
                   to={'/accessories'}
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                Accessories{/*{t('navigation.accessories')}*/}
+                  {t('home.accessories')}{/*{t('navigation.accessories')}*/}
                 </Link>
               </div>
               <div className="home__card-desc-qty">
@@ -121,7 +121,7 @@ export const Home: React.FC = () => {
                   to={'/accessories'}
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                  {`${acsQty} models`}
+                  {`${acsQty} ${t('home.models')}`}
                 </Link>
               </div>
             </div>

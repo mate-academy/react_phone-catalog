@@ -58,7 +58,7 @@ export const Accessories: React.FC = () => {
           </svg>
 
           <div className="acc--link-legend">
-            {'Accessories'}
+            {t('navigation.accessories')}
           </div>
         </div>
       </div>

@@ -71,6 +71,7 @@
   @include font-small;
   color: $color-secondary-grey;
   line-height: 16px;
+  text-transform: capitalize;
 }
 
 .fav--items-counter {

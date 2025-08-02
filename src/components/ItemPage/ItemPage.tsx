@@ -167,7 +167,7 @@ export const ItemPage: React.FC = () => {
           navigate(-1);
         }}
       >
-        {arrowRight}Back
+        {arrowRight}{t('cart.back')}
       </a>
       <br/>
       <div className="ipage__mtitle">
@@ -205,7 +205,7 @@ export const ItemPage: React.FC = () => {
         </div>
 
         <div className="ipage__block3">
-          <div className="ipage__avcolttl avColors">Available colors:</div>
+          <div className="ipage__avcolttl avColors">{t('specs.colors')}:</div>
           <br />
           <div className="ipage__avcolglry">
             {additionalInfo?.colorsAvailable.map((color: string) => {
@@ -242,7 +242,9 @@ export const ItemPage: React.FC = () => {
 
           <div className="ipage__dvdr"></div>
 
-          <div className="ipage__avcolttl">Select capacity:</div>
+          <div className="ipage__avcolttl">
+            {t('specs.select')} {t('specs.capacity').toLocaleLowerCase()}:
+          </div>
           <div className="ipage__avcolglry avcapglry">
             {additionalInfo?.capacityAvailable.map((cap: string) => {
               if (cap.toLowerCase() === additionalInfo?.capacity
@@ -285,7 +287,7 @@ export const ItemPage: React.FC = () => {
               onClick={() => isInCart(item?.id)
                 ? dispatch(removeFromCart(item?.id))
                 : dispatch(addToCart(item))
-              }>{`${isInCart(item?.id) ? 'In cart' : 'Add to cart'}`}</button>
+              }>{`${isInCart(item?.id) ? `${t('btn.in_cart')}` : `${t('btn.add_to_cart')}`}`}</button>
             <button className={`rec__item-to-fav ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
               onClick={() => isInFavorites(item?.id)
                 ? dispatch(removeFromFavorites(item?.id))
@@ -299,25 +301,25 @@ export const ItemPage: React.FC = () => {
 
           <div className="rec__specs ipage__specs">
             <div className="rec__specs-spec">
-              Screen
+              {t('specs.screen')}
               <div className="rec__specs-value">
                 {additionalInfo?.screen}
               </div>
             </div>
             <div className="rec__specs-spec">
-              Resolution
+              {t('specs.capacity')}
               <div className="rec__specs-value">
                 {additionalInfo?.resolution}
               </div>
             </div>
             <div className="rec__specs-spec">
-              Processor
+              {t('specs.cpu')}
               <div className="rec__specs-value">
                 {additionalInfo?.processor}
               </div>
             </div>
             <div className="rec__specs-spec">
-              RAM
+              {t('specs.ram')}
               <div className="rec__specs-value">
                 {additionalInfo?.ram.replace('GB', ' GB')}
               </div>
@@ -403,7 +405,7 @@ export const ItemPage: React.FC = () => {
       <div className="ipage__btmcnt">
 
         <div className="ipage__abt-wrpr">
-          <div className="ipage__mntitle ipage__abt">About</div>
+          <div className="ipage__mntitle ipage__abt">{t('specs.about')}</div>
 
           {additionalInfo?.description.map((paragraph: any, ind: number) => (
             <div key={`${additionalInfo?.description}${ind}`}>
@@ -418,52 +420,54 @@ export const ItemPage: React.FC = () => {
         </div>
 
         <div className="ipage__techspecwrpr">
-          <div className="ipage__mntitle ipage_tecspecttl">Tech specs</div>
+          <div className="ipage__mntitle ipage_tecspecttl">
+            {t('specs.title')}
+          </div>
           <div className="rec__specs ipage__techspec">
             <div className="rec__specs-spec ipage__spcs-spc">
-              Screen
+              {t('specs.screen')}
               <div className="rec__specs-value">
                 {additionalInfo?.screen}
               </div>
             </div>
             <div className="rec__specs-spec ipage__spcs-spc">
-              Resolution
+              {t('specs.resolution')}
               <div className="rec__specs-value">
                 {additionalInfo?.resolution}
               </div>
             </div>
             <div className="rec__specs-spec ipage__spcs-spc">
-              Processor
+              {t('specs.cpu')}
               <div className="rec__specs-value">
                 {additionalInfo?.processor}
               </div>
             </div>
             <div className="rec__specs-spec ipage__spcs-spc">
-              RAM
+              {t('specs.ram')}
               <div className="rec__specs-value">
                 {additionalInfo?.ram.replace('GB', ' GB')}
               </div>
             </div>
             <div className="rec__specs-spec ipage__spcs-spc">
-              Built in memory
+              {t('specs.built_memory')}
               <div className="rec__specs-value">
                 {additionalInfo?.capacity.replace('GB', ' GB')}
               </div>
             </div>
             <div className="rec__specs-spec ipage__spcs-spc">
-              Camera
+              {t('specs.camera')}
               <div className="rec__specs-value">
                 {additionalInfo?.camera || 'n / a'}
               </div>
             </div>
             <div className="rec__specs-spec ipage__spcs-spc">
-              Zoom
+              {t('specs.zoom')}
               <div className="rec__specs-value">
                 {additionalInfo?.zoom || 'n / a'}
               </div>
             </div>
             <div className="rec__specs-spec ipage__spcs-spc">
-              Cell
+              {t('specs.cell')}
               <div className="rec__specs-value ipage__cells">
                 {additionalInfo?.cell.map((cel: string) => (
                   `${cel}`

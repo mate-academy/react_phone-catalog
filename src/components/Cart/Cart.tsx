@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Cart.scss';
 import { useDispatch } from 'react-redux';
 import { crossIcon, homeIcon, minusIcon, plusIcon } from '../../../public/img/icons/svg_icons';
+import { useTranslation } from 'react-i18next';
 
 export const Cart: React.FC = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export const Cart: React.FC = () => {
   const dispatch = useDispatch();
   const currentTheme = useAppSelector(
     (state: { theme: { current: string; }; }) => state.theme.current);
+  const { t } = useTranslation();
 
   const updateQuantityHelper = (item, qty) => {
     if (qty < 1) {
@@ -47,13 +49,13 @@ export const Cart: React.FC = () => {
           </svg>
 
           <div className="cart__link-legend">
-            Back
+            {t('cart.back')}
           </div>
         </a>
       </div>
 
       <div className="cart__h1">
-        cart
+        {t('cart.cart')}
       </div>
 
       <div className="cart__content-container">{/* this is to separate total later*/}
@@ -114,7 +116,7 @@ export const Cart: React.FC = () => {
               {`$${totalPrice}`}
             </div>
             <div className="cart__total-numbers-qty">
-              {`Total for ${totalQuantity} items`}
+              {`${t('cart.total_for')} ${totalQuantity} ${t('favorites.items')}`}
             </div>
           </div>
           <div className="cart__total-divider">
@@ -122,7 +124,7 @@ export const Cart: React.FC = () => {
           </div>
           <div className="cart__total-checkout">
             <button className="cart__total-check-button">
-              Checkout
+              {t('btn.checkout')}
             </button>
           </div>
         </div>

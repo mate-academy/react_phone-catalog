@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import './Footer.scss';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <nav
       data-cy="footer"
@@ -41,7 +44,7 @@ export const Footer: React.FC = () => {
                 { 'has-background-grey-lighter': isActive },
               )}
             >
-              CONTACTS
+              {t('footer.contacts')}
             </NavLink>
 
             <NavLink
@@ -51,7 +54,7 @@ export const Footer: React.FC = () => {
                 { 'has-background-grey-lighter': isActive },
               )}
             >
-              RIGHTS
+              {t('footer.rights')}
             </NavLink>
           </div>
 
@@ -62,7 +65,7 @@ export const Footer: React.FC = () => {
             onClick={() => window
               .scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
           >
-            Back to top
+            {t('footer.back_to_top')}
             <button
               className="rec__arrow rec__arrow__footer"
               onClick={() => window

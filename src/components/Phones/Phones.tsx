@@ -11,6 +11,7 @@ import { Tablet } from '../Tablets/Tablets';
 import { useAppSelector } from '../../redux/store';
 import { useTranslation } from 'react-i18next';
 import { SearchResults } from '../SearchResults/SearchResults';
+import { homeIcon } from '../../../public/img/icons/svg_icons';
 
 export type Phone = {
   id: string;
@@ -52,15 +53,32 @@ export const Phones: React.FC = () => {
   return (
     <>
       <div className={`phones_page ${currentTheme}`}>
-        <Link
-          to={'/'}
-        >
-          🏠
-        </Link> -{'> '}
-        <Link
-          to={'/phones'}
-        >{t('navigation.phones')}
-        </Link>
+        <div className="acc-toplwrpr">
+          <div className="acc--nav-legend">
+            <Link
+              to={'/'}
+              className='acc-homeIcon'
+            >
+              {homeIcon}
+            </Link>
+
+            <svg
+              className='arrow-right'
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+
+            <div className="acc--link-legend">
+              {t('navigation.phones')}
+            </div>
+          </div>
+        </div>
 
         <SearchResults itemsCategory="phones" />
 

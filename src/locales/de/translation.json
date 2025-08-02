@@ -1,5 +1,5 @@
 {
-  "welcomeMessage": "Willkommen in unserer Anwendung",
+  "welcomeMessage": "Willkommen in unserer App",
   "languageSelector": "Wählen Sie Ihre Sprache",
   "navigation": {
     "logo": "LOGO",
@@ -12,22 +12,72 @@
     "about": "Über uns",
     "contact": "Kontakt",
     "services": "Dienstleistungen",
-    "search_placeholder": "suchen"
+    "search_placeholder": "Suche"
+  },
+  "theme": {
+    "title": "Thema auswählen",
+    "theme0": "Original",
+    "theme1": "Original Dunkel",
+    "theme2": "Abgerundet Blau",
+    "theme3": "Abgerundet Lila",
+    "theme4": "Abgerundet Orange"
   },
   "home": {
-    "title": "Unsere erstaunliche Anwendung",
-    "subtitle": "Entdecken Sie unsere Funktionen",
-    "description": "Dies ist ein Beispiel für eine mehrsprachige Anwendung mit React, Redux und i18next."
+    "title": "Willkommen im iSupply-Shop!",
+    "subtitle": "Erfahren Sie mehr über unsere Funktionen",
+    "description": "Dies ist ein Beispiel für eine mehrsprachige App mit React, Redux und i18next.",
+    "shop_by_cat": "Nach Kategorien einkaufen",
+    "phones": "Handys",
+    "tablets": "Tablets",
+    "accessories": "Zubehör",
+    "models": "Modelle"
   },
   "footer": {
-    "copyright": "© 2025 Ihre Firma. Alle Rechte vorbehalten.",
+    "copyright": "© 2025 Ihr Unternehmen. Alle Rechte vorbehalten.",
     "privacyPolicy": "Datenschutzrichtlinie",
-    "termsOfService": "Nutzungsbedingungen"
+    "termsOfService": "Nutzungsbedingungen",
+    "contacts": "Kontakt",
+    "rights": "Rechtliche Hinweise",
+    "back_to_top": "Nach oben"
   },
   "form": {
     "name": "Name",
     "email": "E-Mail",
     "message": "Nachricht",
-    "submit": "Absenden"
+    "submit": "Senden"
+  },
+  "recommended": {
+    "brand_new_models": "Neueste Modelle",
+    "hot_prices": "Heiße Angebote",
+    "may_like": "Das könnte Ihnen auch gefallen"
+  },
+  "specs": {
+    "screen": "Bildschirm",
+    "capacity": "Speicher",
+    "ram": "RAM",
+    "cpu": "Prozessor",
+    "select": "Auswählen",
+    "colors": "Verfügbare Farben",
+    "title": "Technische Daten",
+    "resolution": "Auflösung",
+    "built_memory": "Interner Speicher",
+    "camera": "Kamera",
+    "zoom": "Kamera-Zoom",
+    "cell": "Mobilfunkstandards",
+    "about": "Über das Produkt"
+  },
+  "btn": {
+    "in_cart": "Im Warenkorb",
+    "add_to_cart": "In den Warenkorb",
+    "checkout": "Zur Kasse"
+  },
+  "favorites": {
+    "fav_title": "Favoriten",
+    "items": "Artikel"
+  },
+  "cart": {
+    "cart": "Warenkorb",
+    "back": "Zurück",
+    "total_for": "Summe für"
   }
 }

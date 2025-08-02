@@ -354,14 +354,17 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
 
             <div className="rec__specs">
               <div className="rec__specs-spec">
-                Screen<div className="rec__specs-value">{item.screen}</div>
+                {t('specs.screen')}
+                <div className="rec__specs-value">{item.screen}</div>
               </div>
               <div className="rec__specs-spec">
-                Capacity<div className="rec__specs-value">
-                  {item.capacity.replace('GB', ' GB')}</div>
+                {t('specs.capacity')}
+                <div className="rec__specs-value">
+                  {item.capacity.replace('GB', ' GB')}
+                </div>
               </div>
               <div className="rec__specs-spec">
-                RAM<div className="rec__specs-value">
+                {t('specs.ram')}<div className="rec__specs-value">
                   {item.ram.replace('GB', ' GB')}</div>
               </div>
             </div>
@@ -370,7 +373,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                 onClick={() => isInCart(convertItemObject(item).id)
                   ? dispatch(removeFromCart(convertItemObject(item).id))
                   : dispatch(addToCart(convertItemObject(item)))
-                }>{`${isInCart(convertItemObject(item).id) ? 'In cart' : 'Add to cart'}`}</button>
+                }>{`${isInCart(convertItemObject(item).id) ? `${t('btn.in_cart')}` : `${t('btn.add_to_cart')}`}`}</button>
               <button className={`rec__item-to-fav ${isInFavorites(convertItemObject(item).id) ? 'in-favorites' : ''}`}
                 onClick={() => isInFavorites(convertItemObject(item).id)
                   ? dispatch(removeFromFavorites(convertItemObject(item).id))
