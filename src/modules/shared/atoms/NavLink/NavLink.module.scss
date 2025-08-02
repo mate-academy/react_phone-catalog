@@ -1,0 +1,31 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.navlink {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  box-sizing: border-box;
+
+  padding-block: 8px;
+
+  @include underline-animate;
+
+  &__text {
+    transition: color var(--animation_duration, 0.3s);
+  }
+
+  &:hover &__text {
+    color: var(--buttons-text-color-primary);
+  }
+
+  &--active::after,
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  @include focus-visible;
+}

@@ -1,0 +1,5 @@
+@use '@shared/styles/buttons' as *;
+
+.arrow {
+  @include control-button;
+}

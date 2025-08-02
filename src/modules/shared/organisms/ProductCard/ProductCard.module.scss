@@ -1,0 +1,52 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--surface1-color);
+
+  @include hover(transform, scale(1.1));
+
+  @include focus-visible;
+
+  &__content {
+    flex: 1;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--field-gap, 8px);
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 1;
+
+    aspect-ratio: 1/1;
+  }
+
+  &__description {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--field-gap, 8px);
+  }
+
+  &__title {
+    padding-top: 16px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    gap: 8px;
+    padding-block: 8px;
+  }
+}

@@ -1,0 +1,29 @@
+@use '@shared/styles/utils/mixins' as *;
+
+.main {
+  flex: 1;
+
+  &__content {
+    margin-inline: auto;
+
+    max-width: 1200px;
+
+    @include content-padding-inline;
+    padding-top: 24px;
+    padding-bottom: 56px;
+
+    @include on-tablet {
+      padding-bottom: 64px;
+    }
+
+    @include on-small-desktop {
+      padding-bottom: 80px;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

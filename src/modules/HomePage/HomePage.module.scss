@@ -1,0 +1,59 @@
+@use '@shared/styles/utils/mixins' as *;
+
+.page {
+  @include on-tablet {
+    padding-top: 8px;
+  }
+
+  @include on-small-desktop {
+    padding-top: 32px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+
+    @include on-small-desktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: fadeIn var(--animation_duration, 0.3s) ease forwards;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.home_content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-small-desktop {
+    gap: 80px;
+  }
+
+  &__item:first-of-type {
+    margin-inline: -16px;
+
+    @include on-tablet {
+      margin-inline: 0;
+    }
+  }
+}

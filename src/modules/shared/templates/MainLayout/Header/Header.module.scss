@@ -1,0 +1,133 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  height: 48px;
+  background-color: var(--main-background-color);
+  border-bottom: 1px solid var(--elements-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  // overflow: hidden;
+
+  @include on-small-desktop {
+    height: 64px;
+  }
+
+  &__logo {
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    height: 100%;
+    width: min(100%, var(--maxwidth_header_footer, 100%));
+  }
+
+  &__icon {
+    aspect-ratio: 1;
+
+    height: 100%;
+
+    background-color: unset;
+
+    &--theme {
+      @include underline-animate;
+    }
+  }
+
+  & &__hideable {
+    display: none;
+
+    height: 100%;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  & &__menu {
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__icons {
+    height: 100%;
+    display: flex;
+
+    & > :not(:first-child) {
+      border-left: 1px solid var(--elements-color);
+    }
+  }
+
+  & &__language {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+}
+
+.nav {
+  display: none;
+
+  flex-grow: 1;
+
+  height: 100%;
+
+  @include on-tablet {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+.list {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @include on-small-desktop {
+    gap: 64px;
+  }
+}
+
+.item {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    height: 48px;
+  }
+
+  @include on-small-desktop {
+    height: 64px;
+  }
+}
+
+.link {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}

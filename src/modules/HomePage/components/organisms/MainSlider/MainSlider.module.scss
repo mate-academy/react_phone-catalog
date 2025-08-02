@@ -1,0 +1,52 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.slider {
+  @include page-grid;
+
+  row-gap: 18px;
+
+  & .sliderButton {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__pagination {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    --swiper-pagination-bullet-width: 14px !important;
+    --swiper-pagination-bullet-height: 4px;
+    --swiper-pagination-bullet-border-radius: 0;
+    --swiper-pagination-bullet-horizontal-gap: 0;
+    --swiper-pagination-color: var(--main-text-color-primary);
+    --swiper-pagination-bullet-inactive-color: var(--elements-color);
+
+    &__bullet {
+      display: block;
+      cursor: pointer;
+      transition: background-color var(--animation_duration, 0.3s);
+    }
+  }
+}
+
+.sliderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 2 / -2;
+  }
+}
+
+.swiper {
+  width: 100%;
+}

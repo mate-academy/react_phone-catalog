@@ -1,0 +1,34 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.back {
+  height: 16px;
+
+  &__button {
+    position: relative;
+
+    background-color: unset;
+
+    padding: 0;
+
+    &:hover .hover_effect {
+      color: var(--buttons-background-active);
+      cursor: pointer;
+    }
+
+    .hover_effect {
+      transition: color var(--animation_duration, 0.3s);
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      inset: -8px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+}
