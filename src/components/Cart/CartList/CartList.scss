@@ -4,6 +4,20 @@
     flex-direction: column;
     gap: 16px;
     margin-bottom: 32px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease-out 0.5s both;
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   }
 
   &__card {
@@ -13,6 +27,65 @@
     padding: 16px;
     width: 100%;
     background-color: rgba(22, 24, 39, 1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: cardFadeIn 0.4s ease-out both;
+
+    &:nth-child(1) {
+      animation-delay: 0.7s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.9s;
+    }
+    &:nth-child(4) {
+      animation-delay: 1s;
+    }
+    &:nth-child(5) {
+      animation-delay: 1.1s;
+    }
+
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(241, 242, 249, 0.05),
+        transparent
+      );
+      transition: left 0.8s ease;
+    }
+
+    &:hover {
+      background-color: rgba(26, 28, 43, 1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+      &::before {
+        left: 100%;
+      }
+    }
 
     @media (min-width: 640px) {
       padding: 24px;
@@ -30,6 +103,19 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    opacity: 0;
+    animation: slideInLeft 0.4s ease-out 0.3s both;
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
     @media (min-width: 640px) {
       gap: 24px;
@@ -43,11 +129,44 @@
     justify-content: center;
     width: 16px;
     height: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgb(57, 57, 57);
+    opacity: 0;
+    animation: fadeIn 0.3s ease-out 0.4s both;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.3) rotate(90deg);
+      color: rgba(235, 87, 87, 1);
+    }
   }
 
   &__card-image-block {
     width: 66px;
     height: 66px;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: imageZoomIn 0.4s ease-out 0.5s both;
+
+    @keyframes imageZoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
     @media (min-width: 640px) {
       width: 80px;
@@ -59,6 +178,11 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    transition: all 0.3s ease;
+
+    .cart__card:hover & {
+      transform: scale(1.05) rotate(1deg);
+    }
   }
 
   &__card-name {
@@ -67,16 +191,45 @@
     font-size: 14px;
     line-height: 21px;
     color: rgba(241, 242, 249, 1);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slideUp 0.4s ease-out 0.6s both;
+    transition: all 0.3s ease;
 
-    // @media (min-width: 640px) {
-    //   width: 176px;
-    // }
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cart__card:hover & {
+      color: rgba(241, 242, 249, 0.9);
+    }
   }
 
   &__card-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideInRight 0.4s ease-out 0.7s both;
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
     @media (min-width: 640px) {
       justify-content: flex-end;
@@ -98,18 +251,59 @@
     width: 32px;
     height: 32px;
     border: 0;
+    cursor: pointer;
     background-color: rgba(50, 53, 66, 1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background-color: rgba(241, 242, 249, 0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      background-color: rgba(74, 77, 88, 1);
+      transform: scale(1.1);
+
+      &::before {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
 
     &--disabled {
       background-color: transparent;
       border: 1px solid rgba(59, 62, 74, 1);
       pointer-events: none;
-      cursor: progress;
+      cursor: not-allowed;
+      opacity: 0.5;
+
+      &::before {
+        display: none;
+      }
     }
   }
 
   &__button-svg {
     color: rgba(241, 242, 249, 1);
+    transition: all 0.3s ease;
+
+    .cart__button:hover & {
+      transform: scale(1.1);
+    }
 
     &--disabled {
       color: rgba(74, 77, 88, 1);
@@ -122,6 +316,14 @@
     font-size: 14px;
     line-height: 21px;
     color: rgba(241, 242, 249, 1);
+    transition: all 0.3s ease;
+    min-width: 20px;
+    text-align: center;
+
+    .cart__card:hover & {
+      color: rgba(144, 91, 255, 1);
+      transform: scale(1.05);
+    }
   }
 
   &__price {
@@ -130,5 +332,11 @@
     font-size: 22px;
     line-height: 140%;
     color: rgba(241, 242, 249, 1);
+    transition: all 0.3s ease;
+
+    .cart__card:hover & {
+      color: rgba(144, 91, 255, 1);
+      transform: scale(1.05);
+    }
   }
 }

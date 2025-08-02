@@ -59,7 +59,11 @@ export const ListOfFavorite: React.FC<Props> = ({
                   : 'Add to cart'}
               </button>
               <button
-                className="card__button--like"
+                className={classNames('card__button--like', {
+                  'card__button--like--active': favoritesProducts.includes(
+                    item.itemId,
+                  ),
+                })}
                 onClick={() => {
                   onToggleLike(item.itemId);
                 }}

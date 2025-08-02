@@ -165,7 +165,11 @@ export const HotPriceSlider: React.FC = () => {
                       : 'Add to cart'}
                   </button>
                   <button
-                    className="product-card__like"
+                    className={classNames('product-card__like', {
+                      'product-card__like--active': favoritesProducts.includes(
+                        prod.itemId,
+                      ),
+                    })}
                     onClick={() => {
                       onToggleLike(prod.itemId);
                     }}

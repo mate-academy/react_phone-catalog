@@ -52,9 +52,14 @@
     justify-content: center;
     cursor: pointer;
     border: 0;
+    transition: all 0.3s ease;
 
     .slider-icon {
       color: rgba(241, 242, 249, 1);
+    }
+
+    &:hover {
+      background-color: rgba(74, 77, 88, 1);
     }
 
     &::after {
@@ -68,6 +73,11 @@
 
     .slider-icon {
       color: rgba(74, 77, 88, 1);
+    }
+
+    &:hover {
+      background-color: transparent;
+      cursor: not-allowed;
     }
 
     &::after {
