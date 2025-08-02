@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./PhonesPage.module.scss";
+import React from 'react';
+import styles from './PhonesPage.module.scss';
 
 export const PhonesPage: React.FC = () => {
   return (

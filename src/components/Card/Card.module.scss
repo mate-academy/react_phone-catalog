@@ -1,47 +1,56 @@
 .card {
+  padding: 32px;
+  border: 1px solid var(--color-elements);
+  max-width: 272px;
+  max-height: 506px;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 32px;
   gap: 8px;
-
-  height: 439px;
+  align-items: center;
   width: 212px;
-  border: 1px solid var(--color-elements);
+  height: 439px;
+  padding: 0;
+  margin: 0;
 
   @include on-tablet {
-    min-width: 237px;
-    min-height: 512px;
-    max-width: 237px;
-    max-height: 512px;
+    max-width: 208px;
+    max-height: 476px;
   }
 
   @include on-desktop {
-    max-width: 272px;
-    max-height: 506px;
+    max-width: 208px;
+    max-height: 476px;
   }
 }
 
 .name {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .price {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .card:hover {
-  box-shadow: 0px 2px 16px 0px #0000001a;
+  box-shadow: 0 2px 16px 0 #0000001a;
 }
 
 .about {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 8px;
   flex-grow: 1;
+  gap: 8px;
+  justify-content: center;
+  width: 208px;
+  margin: 0;
+  padding: 0;
 }
 
 .description {
@@ -51,33 +60,40 @@
 
 .imageContainer {
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  width: 148px;
+  justify-content: center;
+  max-height: 35%;
+  width: 100%;
 
   @include on-tablet {
+    max-height: 50%;
     width: 173px;
   }
+
   @include on-desktop {
     width: 208px;
   }
 }
 
 .image {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
 .line {
-  border: 1px solid var(--color-elements);
   width: 100%;
+  max-width: 208px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--color-elements);
+  box-sizing: border-box;
 }
 
 .buttons {
   display: flex;
-  width: 100%;
   gap: 8px;
+  width: 100%;
   margin-top: auto;
+  max-width: 208px;
 }

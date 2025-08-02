@@ -6,12 +6,12 @@
 }
 
 .navbarImg {
-  height: 20.8px;
   width: 64px;
+  height: 20.8px;
 
   @include on-desktop {
-    height: 26.47px;
     width: 80px;
+    height: 26.47px;
   }
 }
 

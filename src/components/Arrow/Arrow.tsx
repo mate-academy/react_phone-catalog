@@ -6,7 +6,7 @@ type Props = {
   isDisabled?: boolean;
   height?: string;
   width?: string;
-}
+};
 
 export const Arrow: React.FC<Props> = ({
   direction,
@@ -30,4 +30,4 @@ export const Arrow: React.FC<Props> = ({
       />
     </button>
   );
-}
+};

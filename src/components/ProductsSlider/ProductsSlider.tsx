@@ -9,7 +9,10 @@ interface ProductsSliderProps {
   filter: (product: any) => boolean;
 }
 
-export const ProductsSlider: React.FC<ProductsSliderProps> = ({ title, filter }) => {
+export const ProductsSlider: React.FC<ProductsSliderProps> = ({
+  title,
+  filter,
+}) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   function handleArrowClick(direction: 'left' | 'right') {
     setScrollPosition(prev => {
@@ -28,12 +31,12 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ title, filter })
 
         <div className={styles.arrows}>
           <Arrow
-            direction='left'
+            direction="left"
             isDisabled={scrollPosition === 0}
             onClick={() => handleArrowClick('left')}
           />
           <Arrow
-            direction='right'
+            direction="right"
             isDisabled={false}
             onClick={() => handleArrowClick('right')}
           />
@@ -41,10 +44,12 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ title, filter })
       </div>
 
       <div className={styles.content}>
-        {getProducts().filter(filter).map((product) => (
-          <Card key={product.id} card={product} />
-        ))}
+        {getProducts()
+          .filter(filter)
+          .map(product => (
+            <Card key={product.id} card={product} />
+          ))}
       </div>
     </section>
   );
-}
+};

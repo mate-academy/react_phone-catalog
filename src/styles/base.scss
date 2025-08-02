@@ -3,19 +3,13 @@
 @use 'fonts' as *;
 
 body {
-  font-family: $font-family-mont-regular;
-  font-size: $base-rem-size;
-  color: var(--text-color-dark);
   margin: 0;
   padding-top: 48px;
+  color: var(--text-color-dark);
 
   @include on-desktop{
     padding-top: 64px;
   }
-}
-
-main {
-  min-height: 73.18vh;
 }
 
 a {

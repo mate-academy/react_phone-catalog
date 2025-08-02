@@ -1,7 +1,7 @@
-import products from '../../../../public/api/products.json'
-import phones from '../../../../public/api/phones.json'
-import tablets from '../../../../public/api/tablets.json'
-import accessories from '../../../../public/api/accessories.json'
+import products from '../../../../public/api/products.json';
+import phones from '../../../../public/api/phones.json';
+import tablets from '../../../../public/api/tablets.json';
+import accessories from '../../../../public/api/accessories.json';
 
 export function getProducts() {
   return products;
@@ -33,4 +33,8 @@ export function findTablet(key: string, value: string | number) {
 
 export function findAccessory(key: string, value: string | number) {
   return getAccessories().find((accessory: any) => accessory[key] === value);
+}
+
+export function getCardById(id: number) {
+  return getProducts().find((product: any) => product.id === id);
 }

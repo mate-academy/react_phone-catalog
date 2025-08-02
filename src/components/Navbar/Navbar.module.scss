@@ -1,32 +1,37 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
-  left: 0;
   top: 0;
   right: 0;
+  left: 0;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
   width: 100%;
   height: 48px;
-  gap: 16px;
   border: 1px solid var(--color-elements);
+
   background-color: var(--color-white);
 
   @include on-desktop {
-    height: 64px;
     gap: 24px;
+    height: 64px;
   }
 }
 
 .list {
   display: flex;
-  width: 100%;
-  height: 100%;
+  gap: 32px;
   align-items: center;
   justify-content: start;
-  list-style: none;
-  gap: 32px;
+
+  width: 100%;
+  height: 100%;
   padding: 0;
+
+  list-style: none;
 
   @include on-desktop {
     gap: 64px;
@@ -35,52 +40,65 @@
 
 .item {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
 }
 
 .icons {
-  height: 100%;
   display: flex;
+  height: 100%;
 }
 
 .iconContainer {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 1px solid var(--color-elements);
+  position: relative;
 
-  height: 100%;
   width: 48px;
-  cursor: pointer;
+  height: 100%;
+  background-color: var(--color-white);
+  border: none;
+  border-left: 1px solid var(--color-elements);
 
   @include on-desktop {
     width: 64px;
   }
 }
 
-.iconHeart {
-  background-image: url(/img/icons/Heart.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 15.34px;
-  height: 13.55px;
-}
+.counter {
+  position: absolute;
+  top: 8px;
+  right: 7px;
+  z-index: 2;
 
-.iconMyProducts {
-  background-image: url(/img/icons/Package.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 13.33px;
-  height: 14.67px;
-}
+  @include on-desktop {
+    top: 18px;
+    right: 15px;
+  }
 
-.iconBurgerMenu {
-  background-image: url(/img/icons/Union.svg);
-  background-repeat: no-repeat;
-  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 14px;
-  height: 8.5px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--color-white);
+  background-color: var(--color-red);
+  color: var(--color-white);
+
+  font-family: Mont-Regular, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0;
+
+  &:hover {
+    color: var(--color-white);
+  }
 }
 
 .phone {
@@ -101,13 +119,41 @@
   }
 }
 
-.activeLink {
-  color: var(--color-primary);
+.link {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-grow: 1;
+
+  min-width: 48px;
+  height: 100%;
+  background-color: var(--color-white);
+  border: none;
+  border-left: 1px solid var(--color-elements);
+
+  @include on-desktop {
+    min-width: 64px;
+  }
 }
 
-.activeLink::after {
-  content: "";
+.activeLink {
+  color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100%;
   width: 100%;
-  height: 5px;
-  background-color: black;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-primary);
+    position: absolute;
+    bottom: 0;
+  }
 }

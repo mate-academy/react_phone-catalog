@@ -1,4 +1,8 @@
-import { getAccessories, getPhones, getTablets } from '../../modules/shared/services/productService';
+import {
+  getAccessories,
+  getPhones,
+  getTablets,
+} from '../../modules/shared/services/productService';
 import styles from './Categories.module.scss';
 
 export const Categories: React.FC = () => {
@@ -18,7 +22,7 @@ export const Categories: React.FC = () => {
 
           <div className={styles.details}>
             <h4 className={styles.title}>Mobile phones</h4>
-            <span className='bodyText'>{getPhones().length} models</span>
+            <span className="bodyText">{getPhones().length} models</span>
           </div>
         </article>
 
@@ -33,7 +37,7 @@ export const Categories: React.FC = () => {
 
           <div className={styles.details}>
             <h4 className={styles.title}>Tablets</h4>
-            <span className='bodyText'>{getTablets().length} models</span>
+            <span className="bodyText">{getTablets().length} models</span>
           </div>
         </article>
 
@@ -48,10 +52,10 @@ export const Categories: React.FC = () => {
 
           <div className={styles.details}>
             <h4 className={styles.title}>Accessories</h4>
-            <span className='bodyText'>{getAccessories().length} models</span>
+            <span className="bodyText">{getAccessories().length} models</span>
           </div>
         </article>
       </div>
     </section>
   );
-}
+};

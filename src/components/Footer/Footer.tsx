@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
-import { Arrow } from "../Arrow";
-import { Logo } from "../Logo";
-import styles from "./Footer.module.scss";
+import { Link } from 'react-router-dom';
+import { Arrow } from '../Arrow';
+import { Logo } from '../Logo';
+import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => (
   <div className={styles.footerWrapper}>
     <footer className={styles.footer}>
       <div className={styles.logo}>
-        <Logo location='footer' />
+        <Logo location="footer" />
       </div>
 
       <ul className={styles.list}>
@@ -25,12 +25,15 @@ export const Footer: React.FC = () => (
       <div className={styles.backToTop}>
         <p className="smallText">Back to top</p>
 
-        <Arrow direction="up" onClick={() => {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          });
-        }} />
+        <Arrow
+          direction="up"
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }}
+        />
       </div>
     </footer>
   </div>

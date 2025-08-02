@@ -1,8 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styles from "./Logo.module.scss";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styles from './Logo.module.scss';
 
-export const Logo: React.FC<{ location: 'navbar' | 'footer' }> = ({ location }) => {
+export const Logo: React.FC<{ location: 'navbar' | 'footer' }> = ({
+  location,
+}) => {
   return (
     <NavLink
       to="/"

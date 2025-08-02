@@ -1,3 +1,23 @@
 .main {
-  @include page-padding-inline;
+  @include page-grid;
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0;
+}
+
+.counter {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0;
+}
+
+.cards {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  row-gap: 40px;
 }

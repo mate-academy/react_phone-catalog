@@ -3,7 +3,7 @@ import styles from './AddToCart.module.scss';
 type Props = {
   isActive: boolean;
   onClick: () => void;
-}
+};
 
 export const AddToCart: React.FC<Props> = ({ onClick, isActive }) => (
   <button
@@ -16,4 +16,4 @@ export const AddToCart: React.FC<Props> = ({ onClick, isActive }) => (
   >
     {isActive ? 'Added' : 'Add to cart'}
   </button>
-)
+);

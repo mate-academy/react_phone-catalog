@@ -29,16 +29,19 @@
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  box-sizing: border-box;
   gap: 16px;
+  row-gap: 56px;
+  box-sizing: border-box;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
+    row-gap: 64px;
   }
 
   @include on-desktop {
-    max-width: 1136px;
-    margin-inline: auto;
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: repeat(24, 32px);
+    row-gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }

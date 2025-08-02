@@ -1,12 +1,3 @@
 .main {
   @include page-grid;
-  gap: 56px;
-
-  @include on-tablet {
-    gap: 64px;
-  }
-
-  @include on-desktop {
-    gap: 80px;
-  }
 }

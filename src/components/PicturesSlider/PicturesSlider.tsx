@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import styles from "./PicturesSlider.module.scss";
-import { Arrow } from "../Arrow";
+import React, { useState } from 'react';
+import styles from './PicturesSlider.module.scss';
+import { Arrow } from '../Arrow';
 
 export const PicturesSlider: React.FC = () => {
   function handleArrowClick(direction: 'left' | 'right') {
@@ -20,7 +20,7 @@ export const PicturesSlider: React.FC = () => {
       <div className={styles.carousel}>
         <div className={styles.onTablet}>
           <Arrow
-            direction='left'
+            direction="left"
             height="100%"
             onClick={() => handleArrowClick('left')}
           />
@@ -32,7 +32,7 @@ export const PicturesSlider: React.FC = () => {
         </div>
         <div className={styles.onTablet}>
           <Arrow
-            direction='right'
+            direction="right"
             height="100%"
             onClick={() => handleArrowClick('right')}
           />
@@ -43,18 +43,15 @@ export const PicturesSlider: React.FC = () => {
         <div
           onClick={() => setCurrentPicture(0)}
           className={`${styles.dash} ${currentPicture === 0 ? styles.activeDash : ''}`}
-        >
-        </div>
+        ></div>
         <div
           onClick={() => setCurrentPicture(1)}
           className={`${styles.dash} ${currentPicture === 1 ? styles.activeDash : ''}`}
-        >
-        </div>
+        ></div>
         <div
           onClick={() => setCurrentPicture(2)}
           className={`${styles.dash} ${currentPicture === 2 ? styles.activeDash : ''}`}
-        >
-        </div>
+        ></div>
       </div>
     </div>
   );

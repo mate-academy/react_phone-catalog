@@ -1,13 +1,15 @@
 .button {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  min-width: 40px;
-  border: 1px solid var(--color-icons);
-  background-color: var(--color-white);
 
-  cursor: pointer;
+  min-width: 40px;
+  min-height: 40px;
+  border: 1px solid var(--color-icons);
+
+  background-color: var(--color-white);
 }
 
 .button:hover {

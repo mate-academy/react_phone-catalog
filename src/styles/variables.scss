@@ -1,6 +1,5 @@
 $tablet-min-width: 640px;
 $desktop-min-width: 1200px;
-$max-page-width: 1200px;
 $content-padding-mobile: 16px;
 $content-padding-tablet: 24px;
 $content-padding-desktop: 40px;
@@ -11,7 +10,7 @@ $content-padding-desktop: 40px;
   --color-icons: #B4BDC3;
   --color-elements: #E2E6E9;
   --color-hover-bg: #F8FBFC;
-  --color-white: #FFFFFF;
+  --color-white: #FFF;
   --color-green: #27AE60;
   --color-red: #EB5757;
   --text-color-dark: var(--color-primary);
@@ -25,56 +24,3 @@ $content-padding-desktop: 40px;
   --button-primary-text: var(--color-white);
   --button-hover-bg: var(--color-secondary);
 }
-
-$font-family-mont-bold: 'Mont-Bold', sans-serif;
-$font-family-mont-semibold: 'Mont-SemiBold', sans-serif;
-$font-family-mont-regular: 'Mont-Regular', sans-serif;
-$base-rem-size: 1rem;
-
-$h1-font-size-dt: 4.8rem;
-$h1-line-height-dt: 5.6rem;
-$h1-letter-spacing-dt: -0.01em;
-
-$h2-font-size-dt: 3.2rem;
-$h2-line-height-dt: 4.1rem;
-$h2-letter-spacing-dt: 0;
-
-$h3-font-size-dt: 2rem;
-$h3-line-height-dt: 3.1rem;
-$h3-letter-spacing-dt: 0;
-
-$h4-font-size-dt: 1.25rem;
-$h4-line-height-dt: 2.2rem;
-$h4-letter-spacing-dt: 0;
-
-$uppercase-font-size-dt: 12px;
-$uppercase-line-height-dt: 11px;
-$uppercase-letter-spacing-dt: 4%;
-
-$button-font-size-dt: 1rem;
-$button-line-height-dt: 2rem;
-$button-letter-spacing-dt: 0;
-
-$body-font-size-dt: 1rem;
-$body-line-height-dt: 2.4rem;
-$body-letter-spacing-dt: 0;
-
-$small-text-font-size-dt: 0.875rem;
-$small-text-line-height-dt: 1.6rem;
-$small-text-letter-spacing-dt: 0;
-
-$h1-font-size-mobile: 3.2rem;
-$h1-line-height-mobile: 4rem;
-$h1-letter-spacing-mobile: 0;
-
-$h2-font-size-mobile: 3.2rem;
-$h2-line-height-mobile: 3.1rem;
-$h2-letter-spacing-mobile: 0;
-
-$h3-font-size-mobile: 2rem;
-$h3-line-height-mobile: 2.5rem;
-$h3-letter-spacing-mobile: 0;
-
-$h4-font-size-mobile: 1rem;
-$h4-line-height-mobile: 1.25rem;
-$h4-letter-spacing-mobile: 0;
