@@ -1,0 +1,54 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.error {
+  padding-top: 20px;
+  box-sizing: border-box;
+  min-height: calc(100vh - 64px - 64px - 96px - 96px);
+  flex-grow: 1;
+  overflow: hidden;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__image {
+    max-width: 268px;
+    aspect-ratio: 1;
+    display: block;
+    flex-shrink: 1;
+
+    object-fit: contain;
+  }
+
+  &__message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+
+    color: var(--purple-accent-color);
+
+    &__text {
+      text-wrap: balance;
+      text-align: center;
+    }
+  }
+
+  &__button {
+    width: 260px;
+
+    background-color: var(--buttons-background-active);
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--buttons-background-active-hover);
+    }
+
+    &__text {
+      color: var(--buttons-text-color-primary-active);
+    }
+  }
+}

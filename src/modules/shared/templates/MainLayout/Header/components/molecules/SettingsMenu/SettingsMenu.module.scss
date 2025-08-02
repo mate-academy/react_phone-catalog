@@ -1,0 +1,29 @@
+@use '@shared/styles/utils/mixins.scss' as *;
+
+.icon {
+  background-color: transparent;
+
+  margin-left: -24px;
+
+  @include underline-animate;
+
+  &--active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+.settingsmenu {
+  position: fixed;
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  padding: 8px;
+
+  background-color: var(--surface1-color);
+  border: 1px solid var(--elements-color);
+}

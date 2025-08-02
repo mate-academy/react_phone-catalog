@@ -1,0 +1,100 @@
+$bold-weight: 800;
+$semibold-weight: 600;
+$regular-weight: 400;
+
+@use './../../styles/utils/mixins.scss' as *;
+
+.typography {
+  letter-spacing: 0;
+  margin: 0;
+  text-wrap: balance;
+
+  &--h1 {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    font-weight: $bold-weight;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+  &--h2 {
+    font-weight: $bold-weight;
+
+    font-size: 22px;
+    line-height: 31px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+  &--h3 {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: $semibold-weight;
+
+    @include on-tablet {
+      font-size: 22px;
+      line-height: 31px;
+      font-weight: $bold-weight;
+    }
+  }
+  &--h4 {
+    font-weight: $semibold-weight;
+
+    font-size: 16px;
+    line-height: 20px;
+
+    @include on-tablet {
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+  &--uppercase {
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    font-weight: $bold-weight;
+    text-transform: uppercase;
+  }
+  &--buttons {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: $semibold-weight;
+  }
+  &--body {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: $regular-weight;
+  }
+  &--small {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: $semibold-weight;
+  }
+  &--label {
+    font-size: 12px;
+    font-weight: $semibold-weight;
+  }
+  &--color {
+    &--primary {
+      color: var(--main-text-color-primary);
+    }
+    &--secondary {
+      color: var(--main-text-color-secondary);
+    }
+    &--success {
+      color: var(--success-color);
+    }
+    &--error {
+      color: var(--error-color);
+    }
+    &--inherit {
+      color: inherit;
+    }
+  }
+}

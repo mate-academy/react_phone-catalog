@@ -1,0 +1,26 @@
+:root[data-theme='light'] {
+  --icons-color: #6b6f7a;
+  --secondary-color: #9a9ba3;
+  --white-accent-color: #f1f2f9;
+  --purple-accent-color: #905bff;
+  --purple-hover-color: #a378ff;
+  --green-accent-color: #27ae60;
+  --red-accent-color: #eb5757;
+
+  --main-background-color: #f7f8fc;
+  --buttons-text-color-primary: #2c2d33;
+  --buttons-text-color-primary-active: var(--white-accent-color);
+  --buttons-text-color-secondary: #6b6f7a;
+  --main-text-color-primary: #2c2d33;
+  --main-text-color-secondary: #6b6f7a;
+  --surface1-color: #ffffff;
+  --surface2-color: #e2e6e9;
+  --elements-color: #d9dbe0;
+  --buttons-background-active: var(--purple-accent-color);
+  --buttons-background-active-hover: var(--purple-hover-color);
+
+  --success-color: var(--green-accent-color);
+  --error-color: var(--red-accent-color);
+
+  --a11y-focus-color: var(--purple-hover-color);
+}

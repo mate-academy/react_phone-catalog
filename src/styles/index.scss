@@ -1,0 +1,35 @@
+@use './utils/font.scss';
+@use 'normalize-scss' as *;
+@use './themes/light';
+@use './themes/dark';
+@use './themes/variables';
+@use './utils/normalize.scss';
+
+@include normalize();
+
+:root {
+  font-family: 'Mont', system-ui, Ubuntu, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  line-height: 1.5;
+
+  &__body {
+    min-height: 100vh;
+    min-width: 320px;
+
+    justify-content: center;
+
+    background-color: var(--main-background-color);
+
+    &[data-modal-open='true'],
+    // &[data-settings-open='true'],
+    &[data-menu-open='true'] {
+      overflow: hidden;
+    }
+  }
+}

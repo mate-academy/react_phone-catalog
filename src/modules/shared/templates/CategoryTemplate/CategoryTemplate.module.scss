@@ -1,0 +1,13 @@
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  opacity: 0;
+  animation: fadeIn var(--animation_duration, 0.3s) ease forwards;
+}

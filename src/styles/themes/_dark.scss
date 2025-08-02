@@ -1,0 +1,26 @@
+:root {
+  --icons-color: #4a4d58;
+  --secondary-color: #75767f;
+  --white-accent-color: #f1f2f9;
+  --purple-accent-color: #905bff;
+  --purple-hover-color: #a378ff;
+  --green-accent-color: #27ae60;
+  --red-accent-color: #eb5757;
+
+  --main-background-color: #0f1121;
+  --buttons-text-color-primary: #f1f2f9;
+  --buttons-text-color-primary-active: var(--white-accent-color);
+  --buttons-text-color-secondary: #75767f;
+  --main-text-color-primary: #f1f2f9;
+  --main-text-color-secondary: #75767f;
+  --surface1-color: #161827;
+  --surface2-color: #323542;
+  --elements-color: #3b3e4a;
+  --buttons-background-active: var(--purple-accent-color);
+  --buttons-background-active-hover: var(--purple-hover-color);
+
+  --success-color: var(--green-accent-color);
+  --error-color: var(--red-accent-color);
+
+  --a11y-focus-color: var(--purple-hover-color);
+}

@@ -1,0 +1,34 @@
+.price {
+  display: flex;
+  gap: var(--field-gap, 8px);
+  align-items: center;
+
+  &__value {
+    &::before {
+      content: '$';
+    }
+
+    isolation: isolate;
+
+    &--strikethrough {
+      position: relative;
+
+      font-weight: 600;
+
+      &::after {
+        content: '';
+
+        position: absolute;
+        left: 0;
+        top: 50%;
+
+        height: 0.1rem;
+        width: 100%;
+
+        mix-blend-mode: difference;
+
+        background-color: var(--main-text-color-secondary);
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  &--color {
+    &--primary {
+      color: var(--buttons-text-color-primary);
+    }
+    &--secondary {
+      color: var(--icons-color);
+    }
+    &--inherit {
+      color: inherit;
+    }
+  }
+  &--arrow-left {
+    transform: rotate(0deg);
+  }
+  &--arrow-up {
+    transform: rotate(90deg);
+  }
+  &--arrow-right {
+    transform: rotate(180deg);
+  }
+  &--arrow-down {
+    transform: rotate(270deg);
+  }
+}

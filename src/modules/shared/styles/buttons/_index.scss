@@ -1,0 +1,14 @@
+@mixin control-button {
+  background-color: var(--surface2-color);
+  color: var(--icons-color);
+
+  &:hover {
+    background-color: var(--icons-color);
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border: 1px solid var(--elements-color);
+    color: var(--icons-color);
+  }
+}
