@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { Modal } from '../../components/Modal';
 import { motion } from 'motion/react';
 import { fadeInDown } from '../../animations/animations';
+import { empty_cart } from '../../assets/images';
 
 export const ShoppingCartPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -159,11 +160,7 @@ export const ShoppingCartPage = () => {
           </>
         </div>
       ) : (
-        <img
-          className={styles.empty}
-          src="/phots/empty-cart-1.png"
-          alt="Empty cart"
-        />
+        <img className={styles.empty} src={empty_cart} alt="Empty cart" />
       )}
     </div>
   );

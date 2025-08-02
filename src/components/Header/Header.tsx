@@ -6,6 +6,13 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useEffect, useState } from 'react';
 import { mobileMenuSlide } from '../../animations/animations';
+import {
+  burger_button,
+  close_icon,
+  fav_icon,
+  logo,
+  shopping_bag_icon,
+} from '../../assets/images';
 
 const navLinks = [
   { path: '/', label: 'HOME' },
@@ -42,12 +49,7 @@ export const Header = () => {
     <nav className={styles.header}>
       <div className={styles.left}>
         <div className={styles.logo}>
-          <img
-            src="./../../../public/icons/logo.png"
-            alt="Logo"
-            width="80"
-            height="28"
-          />
+          <img src={logo} alt="Logo" width="80" height="28" />
         </div>
         <ul className={styles.list}>
           {navLinks.map(({ path, label }) => (
@@ -67,12 +69,9 @@ export const Header = () => {
       <ul className={styles.right}>
         <button className={styles.burger} onClick={toggleMenu}>
           {isMenuOpen ? (
-            <img
-              src="./../../../public/icons/close-icon.svg"
-              alt="close button"
-            />
+            <img src={close_icon} alt="close button" />
           ) : (
-            <img src="/icons/burger-button.svg" alt="menu" />
+            <img src={burger_button} alt="menu" />
           )}
         </button>
 
@@ -82,7 +81,7 @@ export const Header = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <div className={styles.wrapper}>
-            <img src="/icons/favorite-icon.svg" alt="Favorite Page" />
+            <img src={fav_icon} alt="Favorite Page" />
             {favItems.length > 0 && (
               <span className={styles.badge}>{favItems.length}</span>
             )}
@@ -94,7 +93,7 @@ export const Header = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <div className={styles.wrapper}>
-            <img src="/icons/shopping_bag-icon.svg" alt="Shopping Cart" />
+            <img src={shopping_bag_icon} alt="Shopping Cart" />
             {cartItems.length > 0 && (
               <span className={styles.badge}>{cartItems.length}</span>
             )}
@@ -138,7 +137,7 @@ export const Header = () => {
                 }}
               >
                 <div className={styles.wrapper}>
-                  <img src="/icons/favorite-icon.svg" alt="Favorite Page" />
+                  <img src={fav_icon} alt="Favorite Page" />
                   {favItems.length > 0 && (
                     <span className={styles.badge}>{favItems.length}</span>
                   )}
@@ -154,7 +153,7 @@ export const Header = () => {
                 }}
               >
                 <div className={styles.wrapper}>
-                  <img src="/icons/shopping_bag-icon.svg" alt="Shopping Cart" />
+                  <img src={shopping_bag_icon} alt="Shopping Cart" />
                   {cartItems.length > 0 && (
                     <span className={styles.badge}>{cartItems.length}</span>
                   )}

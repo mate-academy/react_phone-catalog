@@ -5,12 +5,16 @@ import { CardSlider } from '../../components/CardSlider';
 import { NavLink } from 'react-router-dom';
 import { ImageSlider } from '../../components/ImageSlider';
 import { fadeInDown } from '../../animations/animations';
+import {
+  accessories_cat,
+  first_banner,
+  phone_cat,
+  second_banner,
+  tablet_cat,
+  third_banner,
+} from '../../assets/images';
 
-const banners = [
-  '/public/img/banner-homepage.png',
-  '/public/img/banner-accessories.png',
-  '/public/img/banner-phones.png',
-];
+const banners = [first_banner, second_banner, third_banner];
 
 export const HomePage = () => {
   return (
@@ -42,7 +46,7 @@ export const HomePage = () => {
               <NavLink to="/phones">
                 <img
                   className={styles.photo}
-                  src="./../../../public/phots/Phones.png"
+                  src={phone_cat}
                   alt="category-phones"
                 />
               </NavLink>
@@ -63,7 +67,7 @@ export const HomePage = () => {
               <NavLink to="/tablets">
                 <img
                   className={styles.photo}
-                  src="./../../../public/phots/Tablets.png"
+                  src={tablet_cat}
                   alt="category-tablets"
                 />
               </NavLink>
@@ -84,7 +88,7 @@ export const HomePage = () => {
               <NavLink to="/accessories">
                 <img
                   className={styles.photo}
-                  src="./../../../public/phots/Accessories.png"
+                  src={accessories_cat}
                   alt="category-accessories"
                 />
               </NavLink>

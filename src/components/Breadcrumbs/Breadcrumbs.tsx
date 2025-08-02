@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 import { Product } from '../../types/product';
+import { arrow_right, home_icon } from '../../assets/images';
 
 type Props = {
   product?: Product;
@@ -18,9 +19,9 @@ export const Breadcrumbs: React.FC<Props> = ({ product }) => {
     return (
       <div className={styles.breadcrumbs}>
         <Link to={`/`}>
-          <img src="/icons/home.svg" alt="home" />
+          <img src={home_icon} alt="home" />
         </Link>
-        <img src="/icons/arrow-right.svg" alt="path" />
+        <img src={arrow_right} alt="path" />
         <Link to={`/${category}`}>
           <p className={styles.text}>{capitalize(category)}</p>
         </Link>
@@ -31,13 +32,13 @@ export const Breadcrumbs: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.breadcrumbs}>
       <Link to={`/`}>
-        <img src="/icons/home.svg" alt="home" />
+        <img src={home_icon} alt="home" />
       </Link>
-      <img src="/icons/arrow-right.svg" alt="path" />
+      <img src={arrow_right} alt="path" />
       <Link to={`/${product.category}`}>
         <p className={styles.category}>{capitalize(product.category)}</p>
       </Link>
-      <img src="/icons/arrow-right.svg" alt="path" />
+      <img src={arrow_right} alt="path" />
       <p className={styles.text}>{product.name}</p>
     </div>
   );

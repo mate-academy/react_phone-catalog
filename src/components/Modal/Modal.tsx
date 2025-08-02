@@ -1,6 +1,7 @@
 import styles from './Modal.module.scss';
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { close_icon } from '../../assets/images';
 
 type Props = {
   open: boolean;
@@ -26,7 +27,7 @@ export const Modal: React.FC<Props> = ({ onClose, open, onApprove }) => {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             <button className={styles.icon} onClick={() => onClose(false)}>
-              <img src="/icons/close-icon.svg" alt="Close modal" />
+              <img src={close_icon} alt="Close modal" />
             </button>
             <h3 className={styles.title}>
               CHECKOUT IS NOT IMPLEMENTED YET <br />

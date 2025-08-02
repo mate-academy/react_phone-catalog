@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { motion } from 'motion/react';
 import { fadeInDown } from '../../animations/animations';
+import { empty_fav } from '../../assets/images';
 
 export const FavoritesPage = () => {
   const favItems = useSelector((state: RootState) => state.favorites.items);
@@ -40,11 +41,7 @@ export const FavoritesPage = () => {
       </motion.div>
 
       {favItems.length === 0 && (
-        <img
-          className={styles.empty}
-          src="/phots/empty-fav-1.png"
-          alt="Empty cart"
-        />
+        <img className={styles.empty} src={empty_fav} alt="Empty cart" />
       )}
     </div>
   );
