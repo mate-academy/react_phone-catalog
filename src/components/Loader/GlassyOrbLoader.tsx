@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import './GlassyOrbLoader.scss';
 
-const GlassyOrbLoader = () => {
+export const GlassyOrbLoader = () => {
   const [angle, setAngle] = useState(0);
 
   useEffect(() => {
@@ -53,4 +53,4 @@ const GlassyOrbLoader = () => {
   );
 };
 
-export default GlassyOrbLoader;
+// export default GlassyOrbLoader;
