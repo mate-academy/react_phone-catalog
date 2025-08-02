@@ -45,16 +45,16 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid $color-header-border;
-    background-color: $color-white;
+    border: 1px solid transparent;
+    background-color: var(--color-phone);
     padding: 2px;
 
     &--active {
-      border-color: $color-select;
+      border-color: var(--color-select);
     }
 
     &:hover {
-      border-color: $color-select;
+      border-color: var(--color-select);
     }
   }
 
