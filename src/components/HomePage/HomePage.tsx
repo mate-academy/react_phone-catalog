@@ -1,5 +1,5 @@
 import './HomePage.scss';
-import { Swiper } from '../Swiper/Swiper';
+import { SliderSwiper } from '../Swiper/Swiper';
 import { Category } from '../Category';
 import { ProductSlider } from '../ProductCard';
 import { useEffect, useState } from 'react';
@@ -64,7 +64,7 @@ export const HomePage = () => {
 
       {!loading && !error && (
         <>
-          <Swiper />
+          <SliderSwiper />
           <div className="homepage__product">
             <ProductSlider products={phones} title={NameSlider.Brand} />
           </div>
