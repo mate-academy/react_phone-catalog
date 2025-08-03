@@ -14,11 +14,12 @@ export const Card: React.FC<Props> = ({ card }) => {
     toggleFavouriteCard,
     toggleAddToCart,
     favouriteProductsIds,
-    cartProductsIds
+    cartProductsIds,
+    refCardWidth,
   } = useAppContext();
 
   return (
-    <div className={styles.card}>
+    <div ref={refCardWidth} className={styles.card}>
       <div className={styles.wrapper}>
         <div className={styles.imageContainer}>
           <img className={styles.image} src={card.image} alt={card.name} />

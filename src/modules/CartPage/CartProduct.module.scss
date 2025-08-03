@@ -1,0 +1,112 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 288px;
+  height: 160px;
+  padding: 16px;
+  border: 1px solid var(--color-elements);
+
+  background-color: var(--color-white);
+
+  @include on-tablet {
+    flex-direction: row;
+    width: 592px;
+    height: 128px;
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.wrapper {
+  width: 80px;
+  height: 80px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.price {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+}
+
+.counterButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border: 1px solid var(--color-icons);
+
+  color: #000;
+
+  background-color: var(--color-white);
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  color: #000;
+}
+
+.disabled {
+  border-color: var(--color-elements);
+  color: var(--color-icons);
+}
+
+.name {
+  color: var(--color-primary);
+}
+
+.close {
+  cursor: pointer;
+
+  width: 16px;
+  height: 16px;
+  border: none;
+
+  background-color: var(--color-white);
+  background-image: url(/public/img/icons/Close.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &:hover {
+    background-image: url(/public/img/icons/Close-hover.svg);
+  }
+}

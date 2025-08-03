@@ -1,13 +1,15 @@
 .burgerMenu {
-  height: 100vh;
-  width: 100%;
   position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
+  transform: translateX(100%);
+
+  width: 100%;
+  height: 100vh;
+
   background-color: var(--color-white);
 
-  transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -16,50 +18,56 @@
 }
 
 .icons {
-  display: flex;
-  width: 100%;
   position: fixed;
   bottom: 0;
+  display: flex;
+  width: 100%;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   width: 100%;
+  height: 100vh;
 }
 
 .topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 48px;
   overflow: hidden;
-  border: 1px solid var(--color-elements);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 48px;
   margin-bottom: 24px;
+  border: 1px solid var(--color-elements);
 }
 
 .crossContainer {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 48px;
   height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-white);
   border: none;
   border-left: 1px solid var(--color-elements);
-  cursor: pointer;
+
+  background-color: var(--color-white);
 }
 
 .link {
-  flex-grow: 1;
+  position: relative;
+
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+
   height: 64px;
   border-top: 1px solid var(--color-elements);
-  position: relative;
 }
 
 .item {
@@ -68,25 +76,30 @@
 }
 
 .list {
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 24px;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
 }
 
 .activeLink {
-  color: var(--color-primary);
   position: relative;
+  color: var(--color-primary);
 
   &::after {
+    content: '';
+
     position: absolute;
     bottom: 0;
-    content: '';
+
     display: block;
+
     width: 100%;
     height: 3px;
+
     background-color: var(--color-primary);
   }
 }
@@ -97,14 +110,9 @@
 
 .counter {
   position: absolute;
+  z-index: 2;
   top: 26%;
   right: 44%;
-  z-index: 2;
-
-  @include on-desktop {
-    top: 18px;
-    right: 15px;
-  }
 
   display: flex;
   align-items: center;
@@ -112,18 +120,24 @@
 
   width: 14px;
   height: 14px;
-  border-radius: 50%;
   border: 1px solid var(--color-white);
-  background-color: var(--color-red);
-  color: var(--color-white);
+  border-radius: 50%;
 
   font-family: Mont-Regular, sans-serif;
   font-size: 9px;
   font-weight: 600;
   line-height: 100%;
+  color: var(--color-white);
   letter-spacing: 0;
+
+  background-color: var(--color-red);
 
   &:hover {
     color: var(--color-white);
+  }
+
+  @include on-desktop {
+    top: 18px;
+    right: 15px;
   }
 }

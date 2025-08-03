@@ -1,5 +1,6 @@
 .section {
-  grid-column: 1/ -1 ;
+  grid-column: 1/ -1;
+  transition: transform 1s ease-in-out;
 }
 
 .arrows {
@@ -14,7 +15,11 @@
 }
 
 .content {
-  overflow: scroll;
   display: flex;
   gap: 16px;
+  transition: transform 1s ease-in-out;
+}
+
+.wrapper {
+  overflow: hidden,
 }

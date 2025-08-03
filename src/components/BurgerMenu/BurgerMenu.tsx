@@ -14,15 +14,9 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
   return (
     <header className={`${styles.burgerMenu} ${isMenuOpen ? styles.open : ''}`}>
       <div className={styles.topbar}>
-        <Logo location='navbar' />
-        <button
-          onClick={onClose}
-          className={styles.crossContainer}
-        >
-          <img
-            className={styles.img}
-            src="/img/icons/cross.svg" alt="Cross"
-          />
+        <Logo location="navbar" />
+        <button onClick={onClose} className={styles.crossContainer}>
+          <img className={styles.img} src="/img/icons/cross.svg" alt="Cross" />
         </button>
       </div>
 
@@ -86,13 +80,12 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
           >
             <img
               className={styles.img}
-              src="/img/icons/Heart.svg" alt="Heart"
+              src="/img/icons/Heart.svg"
+              alt="Heart"
             />
 
             {favouriteProductsIds.length > 0 && (
-              <NavLink
-                to={'/favourite'}
-                className={styles.counter}>
+              <NavLink to={'/favourite'} className={styles.counter}>
                 {favouriteProductsIds.length}
               </NavLink>
             )}
@@ -104,15 +97,10 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
               `${styles.link} ${isActive ? `${styles.activeLink}` : ''}`
             }
           >
-            <img
-              className={styles.img}
-              src="/img/icons/Cart.svg" alt="Cart"
-            />
+            <img className={styles.img} src="/img/icons/Cart.svg" alt="Cart" />
 
             {cartProductsIds.length > 0 && (
-              <NavLink
-                to={'/cart'}
-                className={styles.counter}>
+              <NavLink to={'/cart'} className={styles.counter}>
                 {cartProductsIds.length}
               </NavLink>
             )}

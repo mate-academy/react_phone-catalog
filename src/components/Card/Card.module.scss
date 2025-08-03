@@ -1,10 +1,10 @@
 .card {
-  padding: 32px;
-  border: 1px solid var(--color-elements);
+  box-sizing: border-box;
   max-width: 272px;
   max-height: 506px;
-  box-sizing: border-box;
   margin: 0;
+  padding: 32px;
+  border: 1px solid var(--color-elements);
 }
 
 .wrapper {
@@ -12,17 +12,13 @@
   flex-direction: column;
   gap: 8px;
   align-items: center;
+
   width: 212px;
   height: 439px;
-  padding: 0;
   margin: 0;
+  padding: 0;
 
   @include on-tablet {
-    max-width: 208px;
-    max-height: 476px;
-  }
-
-  @include on-desktop {
     max-width: 208px;
     max-height: 476px;
   }
@@ -48,6 +44,7 @@
   flex-grow: 1;
   gap: 8px;
   justify-content: center;
+
   width: 208px;
   margin: 0;
   padding: 0;
@@ -59,15 +56,17 @@
 }
 
 .imageContainer {
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-height: 35%;
+
   width: 100%;
+  max-height: 35%;
 
   @include on-tablet {
-    max-height: 50%;
     width: 173px;
+    max-height: 50%;
   }
 
   @include on-desktop {
@@ -82,18 +81,19 @@
 }
 
 .line {
+  box-sizing: border-box;
   width: 100%;
   max-width: 208px;
   margin: 0;
   padding: 0;
   border: 1px solid var(--color-elements);
-  box-sizing: border-box;
 }
 
 .buttons {
   display: flex;
   gap: 8px;
+
   width: 100%;
-  margin-top: auto;
   max-width: 208px;
+  margin-top: auto;
 }

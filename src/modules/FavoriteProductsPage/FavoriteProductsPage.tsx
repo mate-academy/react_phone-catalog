@@ -9,7 +9,8 @@ export const FavoriteProductsPage: React.FC = () => {
   const { favouriteProductsIds } = useAppContext();
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>Favourites</h1>
+      <h1 className={`${styles.title}`}>Favourites</h1>
+
       <p className={`${styles.counter} bodyText`}>
         {favouriteProductsIds.length === 1
           ? '1 item'

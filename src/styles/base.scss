@@ -4,6 +4,11 @@
 
 body {
   margin: 0;
+  padding: 0;
+  color: var(--text-color-dark);
+}
+
+main {
   padding-top: 48px;
   color: var(--text-color-dark);
 
@@ -25,10 +30,14 @@ li {
   list-style: none;
 }
 
-.homeTitle {
-  margin-bottom: 24px;
-}
+.pageTitle {
+  margin-block: 24px;
 
-.requiredTitle {
-  display: none;
+  @include on-tablet {
+    margin-block: 32px;
+  }
+
+  @include on-desktop {
+    margin-block: 56px;
+  }
 }

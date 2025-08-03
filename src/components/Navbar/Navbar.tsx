@@ -5,7 +5,8 @@ import { useAppContext } from '../../contexts/AppContext';
 import { BurgerMenu } from '../BurgerMenu';
 
 export const Navbar: React.FC = () => {
-  const { favouriteProductsIds, cartProductsIds, isMenuOpen, setIsMenuOpen } = useAppContext();
+  const { favouriteProductsIds, cartProductsIds, isMenuOpen, setIsMenuOpen } =
+    useAppContext();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -58,34 +59,25 @@ export const Navbar: React.FC = () => {
               `${isActive ? styles.activeLink : ''} ${styles.link}`
             }
           >
-            <img
-              className={styles.img}
-              src="./img/icons/Heart.svg"
-              alt=""
-            />
+            <img className={styles.img} src="./img/icons/Heart.svg" alt="" />
 
             {favouriteProductsIds.length > 0 && (
-              <NavLink
-                to={'/favorites'}
-                className={styles.counter}>
+              <NavLink to={'/favorites'} className={styles.counter}>
                 {favouriteProductsIds.length}
               </NavLink>
             )}
           </NavLink>
 
-          <NavLink to={'/cart'} className={({ isActive }) =>
-            `${isActive ? styles.activeLink : ''} ${styles.link}`
-          }>
-            <img
-              className={styles.img}
-              src="./img/icons/Cart.svg"
-              alt=""
-            />
+          <NavLink
+            to={'/cart'}
+            className={({ isActive }) =>
+              `${isActive ? styles.activeLink : ''} ${styles.link}`
+            }
+          >
+            <img className={styles.img} src="./img/icons/Cart.svg" alt="" />
 
             {cartProductsIds.length > 0 && (
-              <NavLink
-                to={'/cart'}
-                className={styles.counter}>
+              <NavLink to={'/cart'} className={styles.counter}>
                 {cartProductsIds.length}
               </NavLink>
             )}
@@ -98,7 +90,8 @@ export const Navbar: React.FC = () => {
             className={`
           ${styles.iconContainer} 
           ${styles.item}
-        `}>
+        `}
+          >
             <img src="/img/icons/burger-menu.svg" alt="Burger menu" />
           </button>
         </div>

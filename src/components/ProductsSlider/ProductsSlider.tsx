@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getProducts } from '../../modules/shared/services/productService';
 import { Arrow } from '../Arrow';
 import { Card } from '../Card';
 import styles from './ProductsSlider.module.scss';
+import { useAppContext } from '../../contexts/AppContext';
 
 interface ProductsSliderProps {
   title: string;
@@ -14,20 +15,50 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   filter,
 }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(0);
+  const { refCardWidth, refSliderWidth } = useAppContext();
+  const products = getProducts().filter(filter);
+  const gap = 16;
+
+  useEffect(() => {
+    if (refCardWidth.current && refSliderWidth.current) {
+      const cardWidth = refCardWidth.current.offsetWidth;
+      const sliderWidth = refSliderWidth.current.offsetWidth;
+      const calculatedVisibleCards = Math.floor(
+        (sliderWidth + gap) / (cardWidth + gap),
+      );
+      setVisibleCards(calculatedVisibleCards);
+    }
+  }, [
+    refCardWidth.current?.offsetWidth,
+    refSliderWidth.current?.offsetWidth,
+    gap,
+  ]);
+
+  const maxScrollPosition = Math.max(0, products.length - visibleCards);
+
+  function findAbleScrollStep() {
+    if (!refCardWidth.current) {
+      return 0;
+    }
+    const cardWidth = refCardWidth.current.offsetWidth;
+    return (cardWidth + gap) * scrollPosition;
+  }
+
   function handleArrowClick(direction: 'left' | 'right') {
     setScrollPosition(prev => {
       if (direction === 'left') {
-        return Math.max(prev - 1, 0);
+        return Math.max(prev - visibleCards, 0);
       } else {
-        return prev + 1;
+        return Math.min(prev + visibleCards, maxScrollPosition);
       }
     });
   }
 
   return (
-    <section className={styles.section}>
+    <section ref={refSliderWidth} className={styles.section}>
       <div className={styles.head}>
-        <h2 className={`homeTitle`}>{title}</h2>
+        <h2 className={`pageTitle`}>{title}</h2>
 
         <div className={styles.arrows}>
           <Arrow
@@ -37,18 +68,23 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
           />
           <Arrow
             direction="right"
-            isDisabled={false}
+            isDisabled={scrollPosition >= maxScrollPosition}
             onClick={() => handleArrowClick('right')}
           />
         </div>
       </div>
 
-      <div className={styles.content}>
-        {getProducts()
-          .filter(filter)
-          .map(product => (
+      <div className={styles.wrapper}>
+        <div
+          className={styles.content}
+          style={{
+            transform: `translateX(-${findAbleScrollStep()}px)`,
+          }}
+        >
+          {products.map(product => (
             <Card key={product.id} card={product} />
           ))}
+        </div>
       </div>
     </section>
   );
