@@ -80,7 +80,7 @@ export const CartPage = () => {
         <div className="none">
           <img
             className="product__empty"
-            src="img\cart-is-empty.png"
+            src="img/cart-is-empty.png"
             alt="Favourites have not been choosen"
           />
         </div>

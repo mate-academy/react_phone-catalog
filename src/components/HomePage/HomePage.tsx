@@ -50,8 +50,7 @@ export const HomePage = () => {
       {error && (
         <div className="error__container">
           <p className="error-message">
-            Something went wrong...
-            <br>Please, check your connection and try again later.</br>
+            Something is wrong. Please check your connection or try again later.
           </p>
         </div>
       )}
