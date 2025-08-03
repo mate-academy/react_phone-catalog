@@ -6,15 +6,18 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useCart } from '../BoughtCard/CartContext';
 import { useFavourites } from '../Favourites/FavouritesContext';
 
-
 export const useInfoHook = () => {
   const { productId, category } = useParams<{
     productId: string;
     category: string;
   }>();
   const [phonesInfo, setPhonesInfo] = useState<ProductDetails[]>([]);
-  const [selectedPhone, setSelectedPhone] = useState<ProductDetails | null>(null);
-  const [selectedPProducts, setSelectedPProducts] = useState<Product | null>(null);
+  const [selectedPhone, setSelectedPhone] = useState<ProductDetails | null>(
+    null,
+  );
+  const [selectedPProducts, setSelectedPProducts] = useState<Product | null>(
+    null,
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -46,10 +49,11 @@ export const useInfoHook = () => {
         .finally(() => {
           setLoading(false);
         });
-      }, 500);
-      return () => {
-        clearTimeout(timeout);
-      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [productId]);
 
   useEffect(() => {
@@ -57,11 +61,15 @@ export const useInfoHook = () => {
       try {
         const data = await fetchProducts();
 
-        const filteredProducts = data.filter((p: Product) => p.category === category);
+        const filteredProducts = data.filter(
+          (p: Product) => p.category === category,
+        );
 
         setProducts(filteredProducts);
 
-        const product = filteredProducts.find((item: Product) => item.itemId === productId);
+        const product = filteredProducts.find(
+          (item: Product) => item.itemId === productId,
+        );
 
         setSelectedPProducts(product || null);
       } catch {
@@ -83,7 +91,9 @@ export const useInfoHook = () => {
   useEffect(() => {
     if (selectedPhone) {
       setIsAdded(cart.some(item => String(item.itemId) === selectedPhone.id));
-      setIsFav(favourites.some(item => String(item.itemId) === selectedPhone.id));
+      setIsFav(
+        favourites.some(item => String(item.itemId) === selectedPhone.id),
+      );
     }
   }, [selectedPhone, cart, favourites]);
 
@@ -96,7 +106,9 @@ export const useInfoHook = () => {
     let updatedCart;
 
     if (isAdded) {
-      updatedCart = savedCart.filter((item: ProductDetails) => String(item.id) !== selectedPhone.id);
+      updatedCart = savedCart.filter(
+        (item: ProductDetails) => String(item.id) !== selectedPhone.id,
+      );
     } else {
       updatedCart = [...savedCart, selectedPhone];
     }
@@ -151,6 +163,59 @@ export const useInfoHook = () => {
   };
 
   const handleMemoryChange = (memory: string) => {
-    
-  }
-}
+    if (!selectedColor || !selectedPhone) {
+      return;
+    }
+
+    setSelectedMemory(memory);
+
+    const newPhone = phonesInfo.find(
+      phone =>
+        phone.capacity === memory &&
+        phone.namespaceId === selectedPhone?.namespaceId &&
+        phone.color === selectedColor,
+    );
+
+    if (newPhone) {
+      setSelectedPhone(newPhone);
+      setMainImg(newPhone.images[0]);
+    }
+
+    updateUrl(selectedPhone!.namespaceId, selectedColor!, memory);
+  };
+
+  const techInfo = selectedPhone
+    ? [
+        { title: 'Screen', value: selectedPhone.screen },
+        { title: 'Resolution', value: selectedPhone.resolution },
+        { title: 'Processor', value: selectedPhone.processor },
+        { title: 'RAM', value: selectedPhone.ram },
+        { title: 'Built in memory', value: selectedPhone.capacity },
+        { title: 'Camera', value: selectedPhone.camera || null },
+        { title: 'Zoom', value: selectedPhone.zoom || null },
+        { title: 'Cell', value: selectedPhone.cell },
+      ].filter(item => item.value)
+    : [];
+
+  return {
+    productId,
+    navigate,
+    selectedPhone,
+    mainImg,
+    loading,
+    selectedMemory,
+    selectedColor,
+    handleMemoryChange,
+    handleColorChange,
+    setMainImg,
+    techInfo,
+    setSelectedPhone,
+    setError,
+    error,
+    products,
+    isFav,
+    isAdded,
+    handleToggleFavourite,
+    handleToggleCart,
+  };
+};
