@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
-import { getCatalogueItems } from '@server/services/catalogService';
-import { getBanners, getProduct } from '../services';
+import { getBanners, getProduct, getCatalogueItems } from '../services';
 import { RequestType, ValidResponse } from '../types';
 import { validateParams } from '../validation';
 
