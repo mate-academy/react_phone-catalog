@@ -9,6 +9,17 @@
 select,
 ::picker(select) {
   appearance: base-select;
+  border-radius: 8px;
+  color: #89939a;
+  margin-top: 4px;
+}
+
+option:checked {
+  color: #0f0f11;
+}
+
+option::checkmark {
+  content: "";
 }
 
 .mobile-page {
@@ -17,12 +28,15 @@ select,
   display: flex;
   flex-direction: column;
 
-  @include onTablet {
-    margin-inline: 24px;
-  }
+  @include contentMarginInline();
+
+  // @include onTablet {
+  //   margin-inline: 24px;
+  // }
 
   @include onBigScren {
-    margin-inline: 32px;
+    width: 1136px;
+    margin: auto;
   }
 
   &__go-home {
@@ -76,12 +90,16 @@ select,
     justify-content: space-between;
 
     @include onTablet {
-      justify-content: left
+      justify-content: left;
     }
   }
 
   &__input-wrapper {
-
+    // width: 100%;
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+    }
   }
 
   &__input {
@@ -114,8 +132,17 @@ select,
     }
   }
 
+  &__sort-wrapper {
+    margin-top: 5px;
+
+    @include onTablet {
+      margin-top: 0;
+    }
+  }
+
   &__items-sort {
     color: #89939a;
+    // padding-top: 4px;
   }
 
   &__items-options {
@@ -128,6 +155,11 @@ select,
       height: 16px;
       font-size: 14px;
     }
+
+    &:checked {
+      background-color: #0f0f11;
+    }
+
     margin-top: 4px;
     margin-right: 16px;
     display: flex;

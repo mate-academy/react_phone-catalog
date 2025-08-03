@@ -25,7 +25,7 @@ const ListOfGadgets: React.FC<Props> = ({
   const { lovelyProducts, setLovelyProducts } = useCart();
   const { cartItems, setCartItems } = useCart();
 
-  // console.log(gadgets);
+  console.log(gadgets);
 
   const sort = searchParams.get('sort');
   const perItems = searchParams.get('quantity') || 16;
@@ -176,7 +176,7 @@ const ListOfGadgets: React.FC<Props> = ({
         {renderCards.map(gadget => {
           return (
             <Link
-              to={`/product/${gadget.itemId}`}
+              to={`/${gadgets}/${gadget.itemId}`}
               key={gadget.id}
               className={listStyle.list__reference}
             >

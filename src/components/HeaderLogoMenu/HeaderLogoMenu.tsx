@@ -4,17 +4,19 @@ import iconStyles from './icon.module.scss';
 import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import cn from 'classnames';
+import { useMenu } from '../../context/MenuContext';
 
 interface SidebarProps {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
 }
 
-const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
-  const iconReference = isOpen ? 'burger-menu' : '';
+const HeaderLogoMenu: React.FC<SidebarProps> = () => {
   const { lovelyProducts, cartItems } = useCart();
   const location = useLocation();
   const currentPath = location.pathname;
+  const { isMenuOpen, setIsMenuOpen } = useMenu();
+  const iconReference = isMenuOpen ? 'burger-menu' : '';
 
   console.log(currentPath);
   // console.log(isOpen);
@@ -85,7 +87,7 @@ const HeaderLogoMenu: React.FC<SidebarProps> = ({ setIsMenuOpen, isOpen }) => {
         </div>
 
         <div className={topBatStyles['top-bar__icon-1']}>
-          {isOpen === true ? (
+          {isMenuOpen === true ? (
             <button
               // href={`/${iconReference}`}
               className={`${iconStyles.icon} ${iconStyles['icon--close']}`} // ${topBatStyles['top-bar__icon--menu']}

@@ -35,13 +35,15 @@
     padding-inline-start: 32px;
     position: relative;
 
-    @include onBigScren {
-      padding-inline-start: 48px;
-    }
-
     @include onTablet {
       display: flex;
       flex-direction: row;
+      margin-block: 18px;
+    }
+
+    @include onBigScren {
+      margin-block: 26px;
+      padding-inline-start: 48px;
     }
   }
 
@@ -72,6 +74,11 @@
         left: 0;
         right: 0;
         top: 2.5px;
+
+        @include onBigScren {
+          top: 10.5px;
+        }
+
         background-color: #0f0f11;
         height: 3px;
         width: 100%;

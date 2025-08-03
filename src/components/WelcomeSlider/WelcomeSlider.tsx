@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import welcomeStyles from './WelcomeSlider.module.scss';
 import paginationStyle from './PaginationStyle.module.scss';
 import navigationStyle from './Navigation.module.scss';
-import { useWindowResize } from './WindowResize';
+import { useWindowResize } from './windowResize';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Sidebar from '../Sidebar';
@@ -134,16 +134,25 @@ const WelcomeSlider: React.FC = () => {
           loop={true}
         >
           <SwiperSlide>
-            <a href="#">
+            <Link to="/phones?quantity=16&sort=newest">
               <img
                 src={`${currentImagePath[0]}`}
                 className={`${welcomeStyles['header__swiper-2']} ${welcomeStyles.header__swiper}`}
               />
-            </a>
+            </Link>
           </SwiperSlide>
 
           <SwiperSlide>
-            <a href="#">
+            <Link to="tablets?quantity=16&sort=newest">
+              <img
+                src={`${currentImagePath[2]}`}
+                className={`${welcomeStyles['header__swiper-1']} ${welcomeStyles.header__swiper}`}
+              />
+            </Link>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Link to="accessories?quantity=16&sort=newest">
               <img
                 // src="public\img\banner-mobil-3.88470ad4d90a78897a60.png"
                 src={`${currentImagePath[1]}`}
@@ -152,16 +161,7 @@ const WelcomeSlider: React.FC = () => {
                 // }}
                 className={`${welcomeStyles['header__swiper-0']} ${welcomeStyles.header__swiper}`}
               />
-            </a>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <a href="#">
-              <img
-                src={`${currentImagePath[2]}`}
-                className={`${welcomeStyles['header__swiper-1']} ${welcomeStyles.header__swiper}`}
-              />
-            </a>
+            </Link>
           </SwiperSlide>
         </Swiper>
 

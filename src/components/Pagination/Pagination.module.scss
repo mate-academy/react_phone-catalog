@@ -33,5 +33,22 @@
     border-radius: 50%;
     width: 32px;
     height: 32px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+
+    &-current {
+      background-color: #0f0f11;
+      color: #fff;
+    }
+  }
+
+  &__button-left {
+    background-image: url('public/img/chevron-arrow_left.svg');
+  }
+
+  &__button-right {
+    background-image: url('public/img/chevron-arrow-right.svg');
   }
 }

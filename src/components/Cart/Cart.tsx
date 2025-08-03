@@ -40,14 +40,51 @@ const Cart = () => {
   // }, [localStorage.getItem('added')]);
 
   const addQuantiy = (product: Products) => {
-    const choosen = cartItems.find(cart => cart.id === product.id);
-    const quantity = choosen!.quantity++;
+    setCartItems(prevItems =>
+      prevItems.map(item => {
+        if (item.id === product.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
 
-    console.log(quantity);
+        return item;
+      }),
+    );
   };
 
-  console.log(addedArray);
-  console.log(cartItems);
+  const minusQuantiy = (product: Products) => {
+    const chosenCart = cartItems.find(cart => cart.id === product.id);
+
+    if (chosenCart?.quantity === 1) {
+      return;
+    }
+
+    setCartItems(prevItems =>
+      prevItems.map(item => {
+        if (item.id === product.id) {
+          return {
+            ...item,
+            quantity: item.quantity - 1,
+          };
+        }
+
+        return item;
+      }),
+    );
+  };
+
+  // console.log(addedArray);
+  // console.log(cartItems);
+
+  const totalPrice = cartItems.reduce((sum, item) => {
+    console.log(item.fullPrice);
+
+    return sum + item.fullPrice * item.quantity;
+  }, 0);
+
+  console.log(totalPrice);
 
   return (
     <>
@@ -68,7 +105,7 @@ const Cart = () => {
         )}
 
         <div className={cartStyle['cart__content-wrapper']}>
-          <div className={cartStyle.lol}>
+          <div className={cartStyle.cart__list}>
             {cartItems.map(item => {
               return (
                 <div className={cartStyle.cart__cart} key={item.itemId}>
@@ -93,6 +130,7 @@ const Cart = () => {
                       ></button>
                       <span>{item.quantity}</span>
                       <button
+                        onClick={() => minusQuantiy(item)}
                         className={`${cartStyle['cart__button-get-out']} ${cartStyle.cart__buttons}`}
                       ></button>
                     </div>
@@ -106,7 +144,7 @@ const Cart = () => {
           <div className={cartStyle['cart__desicion-border']}>
             <div className={cartStyle['cart__items-info']}>
               <div className={cartStyle['cart__items-price']}>
-                ${cartItems.reduce((sum, item) => sum + item.price, 0)}
+                ${totalPrice}
               </div>
               <div className={cartStyle['cart__items-qauntity']}>
                 Total for{' '}

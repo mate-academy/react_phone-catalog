@@ -13,24 +13,28 @@ import ListOfGadgets from '../ListOfGadgets';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 import { useMenu } from '../../context/MenuContext';
 
-interface Props {
-  gadgets: string;
-}
-
-const MobilePhones: React.FC<Props> = ({ gadgets }) => {
+const MobilePhones: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentPagePag, setCurrentPagePag] = useState<number>(1);
+  const location = useLocation();
+
+  console.log(location);
+
+  const gadgets = location.pathname.split('/')[1];
+
+  console.log(gadgets);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [currentPagePag]);
 
   const sortBy = searchParams.get('sort');
   const quantity = searchParams.get('quantity');
 
   const { isMenuOpen, setIsMenuOpen } = useMenu();
-  // const [sortParams, setSortParams] = useState(['newest', '16']);
-  const search = useLocation();
-
-  console.log(search.pathname);
-  console.log(search.pathname);
-  console.log(search.pathname);
 
   useEffect(() => {
     const newParams = new URLSearchParams(location.search);
@@ -38,7 +42,7 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
     newParams.set('quantity', '16');
     newParams.set('sort', 'newest');
     setSearchParams(newParams.toString());
-  }, [search.pathname]);
+  }, [location.pathname, location.search, setSearchParams]);
 
   function handleSortChange(sort: string) {
     const newParams = new URLSearchParams(searchParams);
@@ -115,52 +119,54 @@ const MobilePhones: React.FC<Props> = ({ gadgets }) => {
           95 models
         </span>
 
-        <div className={mobilePageStyles['mobile-page__select-wrapper']} >
+        <div className={mobilePageStyles['mobile-page__select-wrapper']}>
           {/* <p className={mobilePageStyles['mobile-page__input-wrapper']}>
           </p> */}
-          <div className="">
-            <label
-              htmlFor="gadgets-seek-for"
-              className={mobilePageStyles['mobile-page__items-sort']}
-            >
-              Seek for
-            </label>
-            <input
-              name="search"
-              id="gadgets-seek-for"
-              data-cy="NameFilter"
-              type="search"
-              className={mobilePageStyles['mobile-page__input']}
-              placeholder="Search"
-              onChange={e => handleQueryChange(e.target.value)}
-            />
+          <div className={mobilePageStyles['mobile-page__input-wrapper']}>
+            <div>
+              <label
+                htmlFor="gadgets-seek-for"
+                className={mobilePageStyles['mobile-page__items-sort']}
+              >
+                Seek for
+              </label>
+              <input
+                name="search"
+                id="gadgets-seek-for"
+                data-cy="NameFilter"
+                type="search"
+                className={mobilePageStyles['mobile-page__input']}
+                placeholder="Search"
+                onChange={e => handleQueryChange(e.target.value)}
+              />
+            </div>
+
+            <div className={mobilePageStyles['mobile-page__sort-wrapper']}>
+              <label
+                htmlFor="gadgets-sort"
+                className={mobilePageStyles['mobile-page__items-sort']}
+              >
+                Sort by
+              </label>
+              <select
+                name="gadgets"
+                id="gadgets-sort"
+                className={`${mobilePageStyles['mobile-page__items-options']} ${mobilePageStyles['mobile-page__items-options--hot']}`}
+                onChange={event => {
+                  handleSortChange(event.target.value);
+                }}
+                value={searchParams.get('sort') || 'newest'}
+              >
+                <option value="newest">Newest</option>
+                <option value="alphabetically">Alphabetically</option>
+                <option value="cheapest">Cheapest</option>
+              </select>
+            </div>
           </div>
 
           {/* <span className="icon is-left">
               <i className="fas fa-search" aria-hidden="true" />
             </span> */}
-
-          <div>
-            <label
-              htmlFor="gadgets-sort"
-              className={mobilePageStyles['mobile-page__items-sort']}
-            >
-              Sort by
-            </label>
-            <select
-              name="gadgets"
-              id="gadgets-sort"
-              className={`${mobilePageStyles['mobile-page__items-options']} ${mobilePageStyles['mobile-page__items-options--hot']}`}
-              onChange={event => {
-                handleSortChange(event.target.value);
-              }}
-              value={searchParams.get('sort') || 'newest'}
-            >
-              <option value="newest">Newest</option>
-              <option value="alphabetically">Alphabetically</option>
-              <option value="cheapest">Cheapest</option>
-            </select>
-          </div>
 
           <div>
             <label

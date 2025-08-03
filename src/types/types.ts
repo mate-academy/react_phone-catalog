@@ -1,12 +1,17 @@
+interface ProductDescription {
+  title: string;
+  text: string[];
+}
+
 export interface Iphones {
   camera: string;
   capacity: string;
-  capacityAvailable: number;
+  capacityAvailable: string[];
   category: string;
   cell: string[];
   color: string;
   colorsAvailable: string[];
-  description: string[];
+  description: ProductDescription[];
   id: string;
   images: string[];
   name: string;

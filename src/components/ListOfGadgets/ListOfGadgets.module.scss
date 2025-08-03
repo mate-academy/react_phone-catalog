@@ -37,6 +37,7 @@ a {
   padding-top: 16px;
   display: grid;
   grid-template-columns: repeat(var(--column-count), 1fr);
+  @include contentMarginInline();
 
   @include onTablet {
     grid-template-columns: repeat(var(--column-count), 1fr);
@@ -48,7 +49,11 @@ a {
 
   @include onBigScren {
     grid-template-columns: repeat(var(--column-count), 1fr);
+  }
 
+  @include onBigScren {
+    width: 1136px;
+    margin: auto;
   }
 
   justify-content: center;
@@ -57,18 +62,18 @@ a {
   --column-count: 1;
 
   @include onTablet {
-    margin-inline: 24px;
+    // margin-inline: 24px;
     --column-count: 2;
   }
 
   @include onMiddleScreen {
     --column-count: 3;
-    margin-inline: 24px;
+    // margin-inline: 24px;
   }
 
   @include onBigScren {
     --column-count: 4;
-    margin-inline: 32px;
+    // margin-inline: 32px;
   }
 
   &__title {

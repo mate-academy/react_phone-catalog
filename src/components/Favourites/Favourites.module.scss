@@ -9,12 +9,17 @@
   font-family: 'Mont';
   @include contentMarginInline;
 
+  @include onBigScren {
+    width: 1136px;
+    margin: auto;
+  }
+
   &__path-of-user {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-right: 8px;
-    margin-top: 72px;
+    margin-top: 78px;
   }
 
   &__go-home-icon {

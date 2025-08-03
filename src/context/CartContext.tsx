@@ -6,6 +6,7 @@ import React, {
   useMemo,
 } from 'react';
 import { Products } from '../types/types';
+import useLocalStorage from '../components/Cart/UseLocalStorage';
 
 type CartItem = Products & { quantity: number };
 
@@ -35,11 +36,13 @@ export const useCart = () => {
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(
-    JSON.parse(localStorage.getItem('added') || '[]'),
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+    'cartItems',
+    [],
   );
-  const [lovelyProducts, setLovelyProducts] = useState<Products[]>(
-    JSON.parse(localStorage.getItem('favorites') || '[]'),
+  const [lovelyProducts, setLovelyProducts] = useLocalStorage<Products[]>(
+    'favorites',
+    [],
   );
 
   useEffect(() => {

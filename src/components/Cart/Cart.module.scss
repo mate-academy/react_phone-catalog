@@ -11,6 +11,12 @@
   }
 
   @include contentMarginInline();
+
+  @include onBigScren {
+    margin-inline: auto;
+    width: 1136px;
+  }
+
   font-family: 'Mont';
 
   &__cart {
@@ -68,13 +74,14 @@
 
   &__content-wrapper {
     @include onBigScren {
-      display: flex;
-      flex-direction: row;
-      width: 368px;
-      height: 206px;
-      justify-content: space-between;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(24, 1fr); /* Створює 24 рівні колонки */
+      gap: 10px;
     }
+  }
+
+  &__list {
+    grid-column: 1 / 17;
   }
 
   &__icon-close {
@@ -143,13 +150,16 @@
   &__desicion-border {
     border: 1px solid #e2e6e9;
     border-radius: 16px;
-    box-sizing: border-box;
-    width: 100%;
+    // box-sizing: border-box;
     padding-inline: 24px;
     margin-top: 32px;
+    padding-bottom: 24px;
+    grid-column: 17 / 26;
 
     @include onBigScren {
       width: auto;
+      height: fit-content;
+      margin-top: 0;
     }
   }
 
@@ -183,8 +193,6 @@
   &__button-checkout {
     box-sizing: border-box;
     width: 100%;
-    min-width: 240px;
-    min-width: 544px;
     display: block;
     height: 48px;
     color: #fff;

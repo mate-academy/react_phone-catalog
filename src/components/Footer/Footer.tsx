@@ -30,12 +30,14 @@ const Footer: React.FC = () => {
             </Link>
           </li>
           <li className={footerStyles.footer__item}>
-            <Link
+            <a
               className={footerStyles.footer__link}
-              to="/phones?quantity=16&sort=newest"
+              href="https://www.linkedin.com/feed/"
+              target="_blank"
+              rel="noreferrer"
             >
               Contacts
-            </Link>
+            </a>
           </li>
           <li className={footerStyles.footer__item}>
             <Link
