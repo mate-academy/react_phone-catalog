@@ -25,7 +25,10 @@ export const Arrow: React.FC<Props> = ({
       onClick={() => onClick()}
     >
       <img
-        src={`/img/icons/arrow-${direction}${isDisabled ? '-disabled' : ''}.svg`}
+        src={isDisabled ?
+          `/img/icons/arrow-${direction}-disabled.svg` :
+          `/img/icons/arrow-${direction}.svg`
+        }
         alt={`Arrow ${direction}`}
       />
     </button>
