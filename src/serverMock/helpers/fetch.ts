@@ -1,6 +1,9 @@
 import { ApiEndpoint } from '@server/static/endPoints';
+import { BannerData, BaseProduct, Product } from '@server/types';
 
-export const apiFetch = async (endpoint: ApiEndpoint) => {
+export const apiFetch = async (
+  endpoint: ApiEndpoint,
+): Promise<BaseProduct[] | BannerData[] | Product[]> => {
   try {
     const response = await window.fetch(endpoint);
 

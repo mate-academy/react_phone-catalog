@@ -1,14 +1,17 @@
-/* eslint-disable prettier/prettier */
+import { apiFetch } from '@server/helpers';
+import { ApiEndpoint } from '@server/static';
 import {
-  CatalogParams,
+  CategoryParams,
   ItemsOnPage,
-  Sort,
-  type Response,
-} from '@server/types/types';
-import { BaseProduct } from '@shared/types/APITypes';
+  OrderParams,
+  ValidCatalogueParams,
+  BaseProduct,
+  ValidResponse,
+} from '@server/types';
 
-const defaultParams: CatalogParams = {
-  sort: Sort.AGE,
+const defaultParams: ValidCatalogueParams = {
+  itemType: CategoryParams.ALL,
+  sortOrder: OrderParams.NONE,
   itemsOnPage: ItemsOnPage.ALL,
   page: 1,
 };
@@ -16,48 +19,43 @@ const defaultParams: CatalogParams = {
 // Mutation is essential, because this is server mock,
 // I do not have DB and instruments to imply it full usage.
 
+async function getCatalogueItems(
+  initParams?: ValidCatalogueParams,
+): Promise<Omit<ValidResponse, 'status'>> {
+  const params = { ...defaultParams, ...initParams } as ValidCatalogueParams;
+  const { itemType, sortOrder, itemsOnPage, page } = params;
+  let initialArray = (await apiFetch(ApiEndpoint.PRODUCTS)) as BaseProduct[];
 
-//todo: validation and map of internal and external values!
-export const prepareArray = (
-  data: BaseProduct[],
-  initParams: Partial<CatalogParams> = { ...defaultParams },
-): Response => {
-  const params = { ...defaultParams, ...initParams };
-
-  const { itemType, sort, itemsOnPage, page } = params;
-  const initData = itemType
-    ? [...data].filter((el: BaseProduct) =>
-      el.category === itemType,
-    )
-    : [...data];
-
-  const length = initData.length;
-
-  const result: Response = {
-    totalPages: 0,
-    length: length,
-    dataArray: [],
-    currentPage: 0,
+  const response = {
+    data: [] as BaseProduct[],
+    currentPage: page as number,
+    pages: 1,
   };
 
-  switch (sort) {
-    case Sort.TITLE:
-      result.dataArray = [...initData].sort(
-        (a: BaseProduct, b: BaseProduct) => a.name.localeCompare(b.name),
+  if (itemType && itemType !== CategoryParams.ALL) {
+    initialArray = initialArray.filter(
+      (el: BaseProduct) => el.category === itemType,
+    );
+  }
+
+  switch (sortOrder) {
+    case OrderParams.AGE:
+      initialArray = initialArray.sort(
+        (a: BaseProduct, b: BaseProduct) => a.year - b.year,
       );
       break;
-    case Sort.AGE:
-      result.dataArray = [...initData].sort(
-        (a: BaseProduct, b: BaseProduct) => b.year - a.year,
+    case OrderParams.TITLE:
+      initialArray = initialArray.sort((a: BaseProduct, b: BaseProduct) =>
+        a.name.localeCompare(b.name),
       );
       break;
-    case Sort.PRICE_ASC:
-      result.dataArray = [...initData].sort(
+    case OrderParams.PRICE_ASC:
+      initialArray = initialArray.sort(
         (a: BaseProduct, b: BaseProduct) => a.price - b.price,
       );
       break;
-    case Sort.FULL_PRICE_DECS_PROMO:
-      result.dataArray = [...initData]
+    case OrderParams.FULL_PRICE_DECS_PROMO:
+      initialArray = initialArray
         .filter(el => el.fullPrice && el.fullPrice !== el.price)
         .sort((a: BaseProduct, b: BaseProduct) => b.fullPrice - a.fullPrice);
       break;
@@ -66,15 +64,22 @@ export const prepareArray = (
   }
 
   if (itemsOnPage === ItemsOnPage.ALL) {
-    return result;
+    response.data = initialArray;
+  } else {
+    response.pages = Math.ceil(
+      initialArray.length /
+        +(itemsOnPage as Omit<ItemsOnPage, ItemsOnPage.ALL>),
+    );
+
+    const start =
+      ((page as number) - 1) *
+      +(itemsOnPage as Omit<ItemsOnPage, ItemsOnPage.ALL>);
+    const end = start + +(itemsOnPage as Omit<ItemsOnPage, ItemsOnPage.ALL>);
+
+    response.data = initialArray.slice(start, end);
   }
 
-  result.totalPages = Math.ceil(length / +itemsOnPage);
-  result.currentPage = page;
-  const start = (page - 1) * +itemsOnPage;
-  const end = start + +itemsOnPage;
+  return response as Omit<ValidResponse, 'status'>;
+}
 
-  result.dataArray = [...result.dataArray].slice(start, end);
-
-  return result;
-};
+export { getCatalogueItems };

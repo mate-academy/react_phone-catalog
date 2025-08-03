@@ -1,67 +1,113 @@
-import { GlobalValidNameSpaceIDs } from '@server/static/IDvalidationData';
+import { GlobalValidNameSpaceIDs } from '@server/static';
 import {
   CategoryParams,
+  ErrorObject,
   ItemsOnPage,
-  MethodType,
   OrderParams,
   RequestType,
-  ValidParams,
+  ValidCatalogueParams,
+  ValidProdParams,
 } from '@server/types';
 
-function validateMethod(method: string): method is MethodType {
-  return Object.values(MethodType).some(el => el === method);
+interface ValidParams {
+  status: true;
+  request: RequestType;
+  params?: ValidCatalogueParams | ValidProdParams;
 }
 
-function validateRequest(req: string): req is RequestType {
-  return Object.values(RequestType).some(el => el === req);
+export const getErrorObject = (msg: string): ErrorObject => {
+  const errorObject: ErrorObject = {
+    status: false,
+    message: msg,
+  };
+
+  // eslint-disable-next-line no-console
+  console.warn(msg);
+
+  return errorObject;
+};
+
+const getValidParams = (
+  req: RequestType,
+  prm?: ValidCatalogueParams | ValidProdParams,
+): ValidParams => {
+  const validParams: ValidParams = {
+    status: true,
+    request: req,
+  };
+
+  if (prm) {
+    validParams.params = prm;
+  }
+
+  return validParams;
+};
+
+function validateRequest(req: string): true | ErrorObject {
+  if (!Object.values(RequestType).some(el => el === req)) {
+    return getErrorObject(`Unreckognized request: ${req}`);
+  }
+
+  return true;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function validateParams(params: any): params is ValidParams {
-  const { request } = params;
+function validateParams(request: any, params?: any): ValidParams | ErrorObject {
+  const validatedRequest = validateRequest(request);
 
-  if (!validateRequest(request)) {
-    return false;
+  if (validatedRequest !== true) {
+    return validatedRequest;
   }
 
   switch (request) {
     case RequestType.BANNER:
-      return Object.keys(params).length === 1;
+      if (params) {
+        return getErrorObject(`Unreckognized parameters: ${params}`);
+      }
+
+      return getValidParams(RequestType.BANNER);
     case RequestType.PRODUCT:
-      return (
+      const trueParams =
         Object.values(GlobalValidNameSpaceIDs).some(
           el => el === params.itemId,
         ) &&
         params.category !== CategoryParams.ALL &&
-        Object.values(CategoryParams).some(el => el === params.category)
-      );
+        Object.values(CategoryParams).some(el => el === params.category);
+
+      if (!trueParams) {
+        return getErrorObject(`Unreckognized parameters: ${params}`);
+      }
+
+      return getValidParams(RequestType.PRODUCT, params);
     case RequestType.CATALOGUE:
+      const error = getErrorObject(`Unreckognized parameters: ${params}`);
+
       if (
         params.itemType &&
         !Object.values(CategoryParams).some(el => el === params.itemType)
       ) {
-        return false;
+        return error;
       }
 
       if (
         params.sortOrder &&
         !Object.values(OrderParams).some(el => el === params.sortOrder)
       ) {
-        return false;
+        return error;
       }
 
       if (
         params.itemsOnPage &&
         !Object.values(ItemsOnPage).some(el => el === params.itemsOnPage)
       ) {
-        return false;
+        return error;
       }
 
-      return true;
+      return getValidParams(RequestType.CATALOGUE, params);
 
     default:
-      return false;
+      return getErrorObject('Something went wrong');
   }
 }
 
-export { validateMethod, validateParams };
+export { validateParams, validateRequest };

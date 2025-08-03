@@ -1,28 +1,28 @@
 import { apiFetch } from '@server/helpers';
-import { CategoryParams, ValidProdParams } from '@server/serverMock';
 import { ApiEndpoint } from '@server/static';
+import { CategoryParams, Product, ValidProdParams } from '@server/types';
 
-async function getProduct(params: ValidProdParams) {
-  let selector;
+async function getProduct(params: ValidProdParams): Promise<Product[]> {
+  let endpoint;
   const { category, itemId } = params;
 
   switch (category) {
     case CategoryParams.ACCESSORIES:
-      selector = ApiEndpoint.ACCESSORIES;
+      endpoint = ApiEndpoint.ACCESSORIES;
       break;
     case CategoryParams.PHONES:
-      selector = ApiEndpoint.PHONES;
+      endpoint = ApiEndpoint.PHONES;
       break;
     case CategoryParams.TABLETS:
-      selector = ApiEndpoint.TABLETS;
+      endpoint = ApiEndpoint.TABLETS;
       break;
     default:
-      return false;
+      throw new Error('Error in productService');
   }
 
-  const data = await apiFetch(selector as ApiEndpoint);
-
-  return data.filter(el => el.namespaceId === itemId);
+  return ((await apiFetch(endpoint)) as Product[]).filter(
+    (el: Product) => el.namespaceId === itemId,
+  );
 }
 
 export { getProduct };

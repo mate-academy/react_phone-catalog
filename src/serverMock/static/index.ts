@@ -1,2 +1,8 @@
 export { ApiEndpoint } from './endPoints';
-export { entryPoints, type EntryPointValue } from './entryPoints';
+export {
+  catalogueValidIDs,
+  PhoneValidNameSpaceIDs,
+  TabletValidNameSpaceIDs,
+  AccessoriesValidNameSpaceIDs,
+  GlobalValidNameSpaceIDs,
+} from './IDvalidationData';

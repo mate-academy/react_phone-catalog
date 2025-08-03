@@ -1,11 +1,20 @@
 export {
-  MethodType,
-  RequestType,
-  CategoryParams,
-  OrderParams,
-  ItemsOnPage,
   type ValidCatalogueParams,
-  type ValidBannerParams,
   type ValidProdParams,
   type ValidParams,
+  type ErrorObject,
+  type ValidResponse,
 } from './APIReqTypes';
+
+export {
+  OrderParams,
+  ItemsOnPage,
+  RequestType,
+  CategoryParams,
+} from './APIEnums';
+
+export {
+  type BaseProduct,
+  type Product,
+  type BannerData,
+} from './respDataTypes';
