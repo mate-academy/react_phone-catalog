@@ -23,13 +23,17 @@ export const HomePage = () => {
         );
         setError(null);
         {
-          /*it should be checked later*/
+          /* some interesting idea */
         }
-      } catch (er: any) {
-        if (er.message === 'No internet connection') {
-          setError('No internet connection. Please, check your network.');
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          if (err.message === 'No internet connection') {
+            setError('No internet connection. Please, check your network.');
+          } else {
+            setError('Server is not responding. Please, try again later.');
+          }
         } else {
-          setError('Server is not responding. Please, try again later.');
+          setError('An unexpected error occured.');
         }
       } finally {
         setLoading(false);
