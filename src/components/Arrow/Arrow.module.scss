@@ -21,6 +21,18 @@
   border-color: var(--color-primary);
 }
 
+.left {
+  transform: rotate(-90deg);
+}
+
+.right {
+  transform: rotate(90deg);
+}
+
+.down {
+  transform: rotate(180deg);
+}
+
 .isTablet {
   display: none;
 

@@ -1,7 +1,7 @@
 import styles from './Arrow.module.scss';
 
 type Props = {
-  direction: 'left' | 'right' | 'up';
+  direction: 'left' | 'right' | 'up' | 'down';
   onClick: () => void;
   isDisabled?: boolean;
   height?: string;
@@ -25,9 +25,10 @@ export const Arrow: React.FC<Props> = ({
       onClick={() => onClick()}
     >
       <img
+        className={styles[direction]}
         src={isDisabled ?
-          `/img/icons/arrow-${direction}-disabled.svg` :
-          `/img/icons/arrow-${direction}.svg`
+          `/img/icons/arrow-disabled.svg` :
+          `/img/icons/arrow.svg`
         }
         alt={`Arrow ${direction}`}
       />
