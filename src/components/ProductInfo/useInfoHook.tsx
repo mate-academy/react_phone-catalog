@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { useState, useEffect } from 'react';
 import { Product, ProductDetails } from '../../types/ProductTipes';
 import './ProductInfo.scss';
