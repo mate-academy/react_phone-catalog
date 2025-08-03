@@ -1,6 +1,6 @@
-import phone from '../../../public/img/category-phones.png';
-import tablet from '../../../public/img/category-tablets.png';
-import accessories from '../../../public/img/category-accessories.png';
+import phone from '../../../public/img/ph-1.svg';
+import tablet from '../../../public/img/ph-2.svg';
+import accessories from '../../../public/img/ph-3.svg';
 
 export const categories = [
   {
