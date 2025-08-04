@@ -1,0 +1,283 @@
+@import '../../utils/core.scss';
+
+.productInfo {
+  margin: 0 32px;
+
+  &__wrapper {
+    display: block;
+    gap: 64px;
+
+    @include onTablet {
+      display: flex;
+      gap: 17px;
+    }
+
+    @include onDesktop {
+      display: flex;
+      gap: 64px; //is it really needed here?
+    }
+  }
+
+  &__wrapperPhone {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__Image {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    border: 1px solid $color-elem-text;
+    cursor: pointer;
+
+    &.active {
+      border-color: #4721c5d8;
+      transform: scale(1.05);
+      box-shadow: 0 0 8px rgba(120, 64, 204, 0.918);
+    }
+
+    &:hover {
+      border-color: rgba(133, 18, 183, 0.781);
+    }
+
+    @include onDesktop {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__mainImage {
+    width: 287px;
+    height: 287px;
+    object-fit: contain;
+
+    @include onTablet {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+  }
+
+  &__contentTitle {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: $color-second-title;
+    margin: 0 0 8px 0;
+  }
+
+  &__color {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 8px 24px 0;
+    border: 2px solid $color-elem-text;
+
+    &.selected {
+      border: 2px solid rgba(200, 0, 255, 0.356);
+    }
+  }
+
+  &__line {
+    border: 2px solid $color-elem-text;
+  }
+
+  &__memory {
+    margin-top: 24px;
+  }
+
+  &__btnAdd {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: none;
+    border: 1px solid $color-accent;
+    background-color: $color-accent;
+    color: $color-white;
+    width: 263px;
+    height: 48px;
+    text-align: center;
+    cursor: pointer;
+
+    @include onTablet {
+      width: 180px;
+    }
+
+    // @include onDesktop {
+    //   width: 263px; //is it really needed?
+    // }
+  }
+
+  &__btnLike {
+    width: 48px;
+    height: 48px;
+    border: 1px solid $color-surf-2;
+    background-color: $color-surf-2;
+    color: $color-white;
+    cursor: pointer;
+  }
+
+  &__info {
+    margin-top: 32px;
+  }
+
+  &__infoAll {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__screenTitle,
+  &__techScreenTitle {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: $color-second-title;
+  }
+
+  &__screenDescription,
+  &__techScreenDecript {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: $color-white;
+
+    @include themy($themes) {
+      color: themed('colorText');
+    }
+  }
+
+  &__wrapperAboutTech {
+    margin-top: 80px;
+    display: block;
+    gap: 64px;
+
+    @include onDesktop {
+      display: flex;
+    }
+  }
+
+  &__paragraph,
+  &__wrapperTech {
+    width: 100%;
+
+    @include onDesktop {
+      width: 50%;
+    }
+  }
+
+  &__about {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: $color-white;
+    margin: 0 0 16px 0;
+  }
+
+  &__content {
+    margin: 32px 0 0 0;
+  }
+
+  &__itemTitle {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    color: $color-white;
+
+    @include themy($themes) {
+      color: themed('colorText');
+    }
+  }
+
+  &__description {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-second-title;
+  }
+
+  &__techInfAll {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+}
+
+.productInfo__memories {
+  margin: 0 8px 24px 0;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid $color-elem-text;
+  color: $color-white;
+  cursor: pointer;
+
+  @include themy($themes) {
+    color: themed('colorText');
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #2a2c36;
+    border: 1px solid $color-second-title;
+    color: $color-white;
+  }
+
+  &:active {
+    background-color: #1e2028;
+    border: 1px solid $color-white;
+    color: $color-white;
+  }
+}
+
+.productInfolink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px 0;
+
+  &__title,
+  &__backTitle {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-second-title;
+    align-items: center;
+    text-decoration: none;
+    //display: flex;
+    //gap: 8px;
+  }
+
+  // &__back,
+  // &__btn {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 8px;
+  // }
+}
+
+.Image {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.Main__Image {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
