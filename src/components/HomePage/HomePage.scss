@@ -1,9 +1,9 @@
-@import '../../utils/core.scss';
+@import '../../utils/core';
 
 .main__homepage {
-  margin-top: 56px;
-  max-width: 1200px;
   margin: 0 auto;
+  max-width: 1200px;
+  margin-top: 56px; // attention!
 }
 
 .page__title {
@@ -34,9 +34,9 @@
 }
 
 .category__wrapper {
-  margin-top: 56px;
-  max-width: 1200px;
   margin: 0 20px;
+  max-width: 1200px;
+  margin-top: 56px; // attention!
 }
 
 .category__title {
@@ -46,7 +46,7 @@
   line-height: 41px;
   letter-spacing: -1px;
   width: 100%;
-  margin: 56px 0 40px 0;
+  margin: 56px 0 40px;
 
   @include themy($themes) {
     color: themed('colorText');
@@ -56,9 +56,9 @@
 .homepage__product,
 .homepage__category,
 .homepage__hotproduct {
-  margin: 0 16px 0 16px;
+  margin: 0 16px;
 
   @include onTablet {
-    margin: 0 32px 0 32px;
+    margin: 0 32px;
   }
 }

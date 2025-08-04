@@ -1,5 +1,6 @@
-@import '../../utils/mixins.scss';
-@import '../../utils/variables.scss';
+/* stylelint-disable scss/no-global-function-names */
+@import '../../utils/mixins';
+@import '../../utils//variables';
 
 $themes: (
   dark: (
@@ -28,11 +29,13 @@ $themes: (
   @each $theme, $map in $themes {
     .theme-#{$theme} & {
       $theme-map: () !global;
+
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), '#{$key}');
         $theme-map: map-merge($theme-map, ($key: $value)) !global;
       }
       @content;
+
       $theme-map: null !global;
     }
   }
@@ -41,4 +44,4 @@ $themes: (
 @function themed($key) {
   @return map-get($theme-map, $key);
 }
-
+/* stylelint-enable scss/no-global-function-names */

@@ -1,4 +1,4 @@
-@import '../../utils/core.scss';
+@import '../../utils/core';
 
 .productInfo {
   margin: 0 32px;
@@ -14,7 +14,7 @@
 
     @include onDesktop {
       display: flex;
-      gap: 64px; //is it really needed here?
+      gap: 64px; // is it really needed here?
     }
   }
 
@@ -33,11 +33,11 @@
     &.active {
       border-color: #4721c5d8;
       transform: scale(1.05);
-      box-shadow: 0 0 8px rgba(120, 64, 204, 0.918);
+      box-shadow: 0 0 8px rgba(120, 64, 204, 0.92);
     }
 
     &:hover {
-      border-color: rgba(133, 18, 183, 0.781);
+      border-color: rgba(133, 18, 183, 0.78);
     }
 
     @include onDesktop {
@@ -67,7 +67,7 @@
     font-size: 12px;
     line-height: 100%;
     color: $color-second-title;
-    margin: 0 0 8px 0;
+    margin: 0 0 8px;
   }
 
   &__color {
@@ -79,7 +79,7 @@
     border: 2px solid $color-elem-text;
 
     &.selected {
-      border: 2px solid rgba(200, 0, 255, 0.356);
+      border: 2px solid rgba(200, 0, 255, 0.36);
     }
   }
 
@@ -181,11 +181,11 @@
     font-size: 22px;
     line-height: 140%;
     color: $color-white;
-    margin: 0 0 16px 0;
+    margin: 0 0 16px;
   }
 
   &__content {
-    margin: 32px 0 0 0;
+    margin: 32px 0 0;
   }
 
   &__itemTitle {
@@ -247,7 +247,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 24px 0 40px 0;
+  margin: 24px 0 40px;
 
   &__title,
   &__backTitle {
@@ -258,8 +258,9 @@
     color: $color-second-title;
     align-items: center;
     text-decoration: none;
-    //display: flex;
-    //gap: 8px;
+
+    // display: flex;
+    // gap: 8px;
   }
 
   // &__back,
