@@ -20,10 +20,17 @@ section {
 
   text-decoration: none;
   list-style: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
 }
 
 input,
 textarea,
 button {
   outline: none;
+  background: none;
 }
