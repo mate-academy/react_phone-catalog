@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './ProductCard.scss';
 import { ProductItem } from '../ProductItem/ProductItem';
-import arrLeft from '../../img/arrowLeft.svg';
+import back from '../../img/arrowLeft.svg';
+import goto from '../../img/arrowRight.svg';
 import { Product } from '../../types/ProductTipes';
 import { useSwipeable } from 'react-swipeable';
 
@@ -65,7 +66,14 @@ export const ProductSlider: React.FC<Props> = ({
             onClick={handlePrev}
             disabled={currentIndex === 0}
           >
-            <img src={arrLeft} alt="previous" />
+            <img src={back} alt="previous" />
+          </button>
+          <button
+            className="nextBtn"
+            onClick={handleNext}
+            disabled={currentIndex + itemsPerPage >= products.length}
+          >
+            <img src={goto} alt="Goto" />
           </button>
         </div>
       </div>
