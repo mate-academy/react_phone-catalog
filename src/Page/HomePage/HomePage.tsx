@@ -4,9 +4,9 @@ import style from './HomePage.module.scss';
 
 export const HomePage = () => {
   const slides = [
-    './../../../public/img/Logo/baner-header.png',
-    './../../../public/img/Logo/baner-header.png',
-    './../../../public/img/Logo/baner-header.png',
+    '/img/Logo/baner-header.png',
+    '/img/Logo/baner-header.png',
+    '/img/Logo/baner-header.png',
   ];
 
   return (
