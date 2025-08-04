@@ -2,7 +2,8 @@ import React from 'react';
 import style from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import Logo from './../../../public/img/Logo/Logo.png';
+import Logo from '../../../public/img/Logo/Logo.png';
+import FavoritesIcon from '../../../public/img/Logo/favorites-icon.svg';
 
 type GetClassNameParams = {
   isActive: boolean;
@@ -102,7 +103,7 @@ export const Headers: React.FC = () => {
               }}
             >
               <img
-                src="/public/img/Logo/favorites-icon.svg"
+                src={FavoritesIcon}
                 alt="Відкрити улюблені товари"
                 className={style.header__favoritesImg}
               />
