@@ -2,17 +2,17 @@ import styles from './Arrow.module.scss';
 
 type Props = {
   direction: 'left' | 'right' | 'up' | 'down';
-  onClick: () => void;
   isDisabled?: boolean;
   height?: string;
   width?: string;
+  onClick: () => void;
 };
 
 export const Arrow: React.FC<Props> = ({
   direction,
+  isDisabled = false,
   height = '32px',
   width = '32px',
-  isDisabled = false,
   onClick,
 }) => {
   return (
@@ -22,7 +22,7 @@ export const Arrow: React.FC<Props> = ({
         ${styles.arrow}
       `}
       style={{ height, width }}
-      onClick={() => onClick()}
+      onClick={onClick}
     >
       <img
         className={styles[direction]}

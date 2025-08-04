@@ -14,10 +14,9 @@
 }
 
 .footerWrapper {
-  @include page-grid;
-
   margin-top: 64px;
-
+  
+  @include page-grid;
   @include on-tablet {
     margin-top: 80px;
   }

@@ -1,0 +1,1 @@
+export type ProductsSortType = 'Newest' | 'Alphabetically' | 'Chepest';

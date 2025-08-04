@@ -1,0 +1,93 @@
+.main {
+  @include page-grid;
+}
+
+.title {
+  grid-column: 1 / -1;
+}
+
+.counter {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  grid-column: 1 / -1;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  row-gap: 40px;
+}
+
+.sorters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sorter {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dropdown {
+  position: relative;
+  min-width: 128px;
+
+  &Trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 40px;
+    width: 100%;
+    padding-inline: 12px;
+
+    background-color: var(--color-white);
+    border: 1px solid var(--color-icons);
+  }
+
+  &Menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    border: 1px solid var(--color-elements);
+    background-color: var(--color-white);
+    box-shadow: 0px 2px 15px 0px #0000000D;
+    padding-block: 8px;
+  }
+
+  &Item {
+    display: flex;
+    align-items: center;
+    color: var(--color-secondary);
+    height: 32px;
+    max-width: 100%;
+    padding-inline: 12px;
+
+    &:hover {
+      background-color: #FAFBFC;
+      color: var(--color-primary);
+    }
+  }
+}
+
+.arrowContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+}
+
+.down {
+  transform: rotate(180deg);
+}

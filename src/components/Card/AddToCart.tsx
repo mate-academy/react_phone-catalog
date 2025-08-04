@@ -14,6 +14,6 @@ export const AddToCart: React.FC<Props> = ({ onClick, isActive }) => (
     `}
     onClick={onClick}
   >
-    {isActive ? 'Added' : 'Add to cart'}
+    {isActive ? 'Added to cart' : 'Add to cart'}
   </button>
 );
