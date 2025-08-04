@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import favouritesStyles from './Favourites.module.scss';
-import { useMenu } from '../../context/MenuContext';
 import { useCart } from '../../context/CartContext';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 // import { useState } from 'react';
@@ -12,7 +11,6 @@ interface CartProps {
 }
 
 const Favourites: React.FC<CartProps> = ({ product }) => {
-  const { isMenuOpen, setIsMenuOpen } = useMenu();
   const { lovelyProducts, setLovelyProducts } = useCart();
   // const [chosenProduct, setChosenProduct] = useState<>([]);
 
@@ -45,7 +43,7 @@ const Favourites: React.FC<CartProps> = ({ product }) => {
 
   return (
     <>
-      <HeaderLogoMenu isOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <HeaderLogoMenu />
 
       <div className={favouritesStyles['bag-page']}>
         <div className={favouritesStyles['bag-page__path-of-user']}>

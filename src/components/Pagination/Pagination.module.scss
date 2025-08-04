@@ -7,23 +7,23 @@
 
 .pagination {
   font-family: "Mont";
-
   // padding-inline: 16px;
   padding-top: 24px;
   width: fit-content;
+  display: flex;
+  justify-content: center;
 
   @include onTablet {
     padding-top: 40px;
   }
 
+  @include contentMarginInline();
+
   @include onBigScren {
     padding-top: 40px;
+    width: 1136px;
+    margin: auto;
   }
-
-  // @include contentMarginInline();
-
-
-  margin-inline: auto;
 
   &__button-simple {
     margin-inline-start: 16px;
@@ -36,7 +36,7 @@
 
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 16px 16px;
+    // background-size: 16px 16px;
 
     &-current {
       background-color: #0f0f11;
@@ -46,9 +46,18 @@
 
   &__button-left {
     background-image: url('public/img/chevron-arrow_left.svg');
+    // display: flex;
+    // justify-self: center;
+    // align-items: center;
+    // flex-direction: row;
+    // margin: auto;
   }
 
   &__button-right {
     background-image: url('public/img/chevron-arrow-right.svg');
+    // display: flex;
+    // justify-self: center;
+    // align-items: center;
+    // flex-direction: row;
   }
 }

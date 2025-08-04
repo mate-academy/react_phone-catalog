@@ -7,6 +7,7 @@ import Pagination from '../Pagination';
 import { useCart } from '../../context/CartContext';
 import cn from 'classnames';
 import Footer from '../Footer';
+import AddToCardButton from '../AddToCardButton/AddToCardButton';
 
 interface Props {
   gadgets: string;
@@ -168,7 +169,7 @@ const ListOfGadgets: React.FC<Props> = ({
   // console.log(favoritesArray);
   // console.log(addedArray);
   // console.log(cartItems);
-  // console.log(lovelyProducts);
+  console.log(renderCards);
 
   return (
     <>
@@ -212,7 +213,7 @@ const ListOfGadgets: React.FC<Props> = ({
                   </div>
 
                   <div className={listStyle.list__buttons}>
-                    <button
+                    {/* <button
                       className={cn(listStyle.list__add, {
                         [listStyle.list__added]: cartItems.some(
                           item => item.itemId === gadget.itemId,
@@ -226,7 +227,9 @@ const ListOfGadgets: React.FC<Props> = ({
                       {cartItems.some(item => item.itemId === gadget.itemId)
                         ? 'Added to cart'
                         : 'Add to cart'}
-                    </button>
+                    </button> */}
+
+                    <AddToCardButton gadget={gadget} />
 
                     <button
                       // style={}

@@ -88,7 +88,7 @@ const Cart = () => {
 
   return (
     <>
-      <HeaderLogoMenu isOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <HeaderLogoMenu />
 
       <div className={cartStyle.cart}>
         <div className={cartStyle['cart__path-of-user']}>
@@ -100,63 +100,63 @@ const Cart = () => {
 
         <h1 className={cartStyle.cart__title}>Cart</h1>
 
-        {cartItems.length === 0 && (
+        {cartItems.length === 0 ? (
           <img src="public/img/cart-is-empty.png" alt="epty bag" />
-        )}
-
-        <div className={cartStyle['cart__content-wrapper']}>
-          <div className={cartStyle.cart__list}>
-            {cartItems.map(item => {
-              return (
-                <div className={cartStyle.cart__cart} key={item.itemId}>
-                  <div className={cartStyle['cart__gadget-info']}>
-                    <button
-                      className={cartStyle['cart__icon-close']}
-                      onClick={() => addToCart(item)}
-                    ></button>
-                    <img
-                      src={item.image}
-                      alt="image"
-                      className={cartStyle.cart__image}
-                    />
-                    <div className={cartStyle.cart__name}>{item.name}</div>
-                  </div>
-
-                  <div className={cartStyle['cart__gadget-deteils']}>
-                    <div className={cartStyle['cart__change-quantity']}>
+        ) : (
+          <div className={cartStyle['cart__content-wrapper']}>
+            <div className={cartStyle.cart__list}>
+              {cartItems.map(item => {
+                return (
+                  <div className={cartStyle.cart__cart} key={item.itemId}>
+                    <div className={cartStyle['cart__gadget-info']}>
                       <button
-                        onClick={() => addQuantiy(item)}
-                        className={`${cartStyle['cart__button-add']} ${cartStyle.cart__buttons}`}
+                        className={cartStyle['cart__icon-close']}
+                        onClick={() => addToCart(item)}
                       ></button>
-                      <span>{item.quantity}</span>
-                      <button
-                        onClick={() => minusQuantiy(item)}
-                        className={`${cartStyle['cart__button-get-out']} ${cartStyle.cart__buttons}`}
-                      ></button>
+                      <img
+                        src={item.image}
+                        alt="image"
+                        className={cartStyle.cart__image}
+                      />
+                      <div className={cartStyle.cart__name}>{item.name}</div>
                     </div>
-                    <div>${item.fullPrice}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
 
-          <div className={cartStyle['cart__desicion-border']}>
-            <div className={cartStyle['cart__items-info']}>
-              <div className={cartStyle['cart__items-price']}>
-                ${totalPrice}
-              </div>
-              <div className={cartStyle['cart__items-qauntity']}>
-                Total for{' '}
-                {cartItems.reduce((sum, item) => sum + item.quantity, 0)} items
-              </div>
+                    <div className={cartStyle['cart__gadget-deteils']}>
+                      <div className={cartStyle['cart__change-quantity']}>
+                        <button
+                          onClick={() => addQuantiy(item)}
+                          className={`${cartStyle['cart__button-add']} ${cartStyle.cart__buttons}`}
+                        ></button>
+                        <span>{item.quantity}</span>
+                        <button
+                          onClick={() => minusQuantiy(item)}
+                          className={`${cartStyle['cart__button-get-out']} ${cartStyle.cart__buttons}`}
+                        ></button>
+                      </div>
+                      <div>${item.fullPrice}</div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <button className={cartStyle['cart__button-checkout']}>
-              Checkout
-            </button>
+            <div className={cartStyle['cart__desicion-border']}>
+              <div className={cartStyle['cart__items-info']}>
+                <div className={cartStyle['cart__items-price']}>
+                  ${totalPrice}
+                </div>
+                <div className={cartStyle['cart__items-qauntity']}>
+                  Total for{' '}
+                  {cartItems.reduce((sum, item) => sum + item.quantity, 0)} items
+                </div>
+              </div>
+
+              <button className={cartStyle['cart__button-checkout']}>
+                Checkout
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

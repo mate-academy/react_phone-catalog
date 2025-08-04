@@ -23,7 +23,7 @@ const Sidebar: React.FC = () => {
   return (
     <>
       <aside className={styles.sideMenu} id="burger-menu">
-        <HeaderLogoMenu setIsMenuOpen={setIsMenuOpen} isOpen={isMenuOpen} />
+        <HeaderLogoMenu />
 
         <nav className={styles.sideMenu__nav}>
           <ul className={styles['sideMenu__nav-list']}>

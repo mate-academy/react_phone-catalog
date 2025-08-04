@@ -376,7 +376,7 @@
   &__about-title {
     font-weight: 700;
     font-style: SemiBold;
-    font-size: 20px;
+    font-size: 22px;
     padding-bottom: 16px;
     border-bottom: 1px solid #e2e6e9;
     margin-bottom: 32px;
@@ -385,6 +385,7 @@
   &__describe-title {
     margin-bottom: 16px;
     color: #0f0f11;
+    font-size: 20px;
   }
 
   &__describe {
@@ -401,6 +402,7 @@
     padding-bottom: 16px;
     margin-bottom: 30px;
     border-bottom: 1px solid #e2e6e9;
+    font-size: 22px;
 
     @include onTablet {
       margin-bottom: 25px;

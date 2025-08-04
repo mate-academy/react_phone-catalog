@@ -1,0 +1,30 @@
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: 'Mont';
+}
+
+.button__add {
+  background-color: #f86800;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  width: 100%;
+  height: 40px;
+  transition: box-shadow 0.3s, color 0.3s;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  font-weight: 700;
+  font-family: 'Mont';
+
+  &:hover {
+    transition: box-shadow 0.3s, color 0.3s;
+    box-shadow: 2px 2px 3px 3px rgba(23, 32, 49, 0.4);
+  }
+}
+
+.button__added {
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
+  color: #f86800;
+}

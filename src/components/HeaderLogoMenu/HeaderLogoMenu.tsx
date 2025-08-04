@@ -11,7 +11,7 @@ interface SidebarProps {
   isOpen: boolean;
 }
 
-const HeaderLogoMenu: React.FC<SidebarProps> = () => {
+const HeaderLogoMenu: React.FC = () => {
   const { lovelyProducts, cartItems } = useCart();
   const location = useLocation();
   const currentPath = location.pathname;

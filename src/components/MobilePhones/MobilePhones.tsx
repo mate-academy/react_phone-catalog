@@ -36,13 +36,13 @@ const MobilePhones: React.FC = () => {
 
   const { isMenuOpen, setIsMenuOpen } = useMenu();
 
-  useEffect(() => {
-    const newParams = new URLSearchParams(location.search);
+  // useEffect(() => {
+  //   const newParams = new URLSearchParams(location.search);
 
-    newParams.set('quantity', '16');
-    newParams.set('sort', 'newest');
-    setSearchParams(newParams.toString());
-  }, [location.pathname, location.search, setSearchParams]);
+  //   newParams.set('quantity', '16');
+  //   newParams.set('sort', 'newest');
+  //   setSearchParams(newParams.toString());
+  // }, [location.pathname, location.search, setSearchParams]);
 
   function handleSortChange(sort: string) {
     const newParams = new URLSearchParams(searchParams);
@@ -88,10 +88,12 @@ const MobilePhones: React.FC = () => {
 
   console.log(searchParams.toString);
   console.log(currentParams.get('query') || '');
+  console.log(currentParams.get('sort') || '');
+  console.log(currentParams.get('quantity') || 16);
 
   return (
     <>
-      <HeaderLogoMenu isOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <HeaderLogoMenu />
 
       <div className={mobilePageStyles['mobile-page']}>
         <div className={mobilePageStyles['mobile-page__path-of-user']}>
@@ -183,7 +185,7 @@ const MobilePhones: React.FC = () => {
               onChange={event => {
                 handleItemsChange(event.target.value);
               }}
-              value={searchParams.get('quantity') || '16'}
+              value={currentParams.get('quantity') || '16'}
             >
               <option value="16">16</option>
               <option value="8">8</option>

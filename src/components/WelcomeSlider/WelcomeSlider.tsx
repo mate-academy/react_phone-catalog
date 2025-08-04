@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import welcomeStyles from './WelcomeSlider.module.scss';
 import paginationStyle from './PaginationStyle.module.scss';
 import navigationStyle from './Navigation.module.scss';
-import { useWindowResize } from './windowResize';
+import { useWindowResize } from '../../windowResize';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Sidebar from '../Sidebar';
@@ -92,7 +92,7 @@ const WelcomeSlider: React.FC = () => {
 
   return (
     <div id="#" className={welcomeStyles.header}>
-      <HeaderLogoMenu setIsMenuOpen={setIsMenuOpen} isOpen={isMenuOpen} />
+      <HeaderLogoMenu />
 
       <div className={welcomeStyles.header__title}>
         Welcome to Nice Gadgets store!
