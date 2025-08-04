@@ -4,10 +4,12 @@ import { BackButton } from '../shared/BackButton';
 import { useGlobalState } from '../../context/store';
 import { CheckoutModal } from './components/CheckoutModal/CheckoutModal';
 import { CardItem } from './components/CardItem';
+import { useTranslation } from 'react-i18next';
 
 export const ShoppingCartPage: FC = () => {
   //#region state & handlers
   const { cart } = useGlobalState();
+  const { t } = useTranslation();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -36,7 +38,7 @@ export const ShoppingCartPage: FC = () => {
 
       {cart.length ? (
         <div className={styles.cardContent}>
-          <h1 className={styles.cardTitle}>Card</h1>
+          <h1 className={styles.cardTitle}>{t('cardTitle')}</h1>
 
           <ul className={styles.items}>
             {cart.map(item => (
@@ -59,7 +61,7 @@ export const ShoppingCartPage: FC = () => {
               onClick={() => setIsModalOpen(true)}
               className={styles.checkoutBtn}
             >
-              Checkout
+              {t('checkoutBtn')}
             </button>
 
             {isModalOpen && <CheckoutModal setIsModalOpen={setIsModalOpen} />}

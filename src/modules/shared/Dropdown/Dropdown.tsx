@@ -5,7 +5,7 @@ import { SearchLink } from '../SearchLink';
 import cn from 'classnames';
 
 type Props = {
-  label: 'Sort by' | 'Items on page';
+  label: string;
   value: string;
   options: string[];
   paramsToUpdate: (value: string) => {

@@ -78,21 +78,6 @@ button {
   --accent-color: #27ae60;
   --btn-hover-color: #92d8b0;
 }
-
-@media (prefers-color-scheme: dark) {
-  /* Automatically apply light colors if user has dark mode enabled */
-  :root {
-    --text-color: #0f1121;
-    --bg-color: #f0ddc0;
-    --elements-color: #925607;
-    --secondary-color: #89939a;
-    --surface1-color: #e5cdad;
-    --surface2-color: #909295;
-    --icon-placeholder-color: #b4bdc3;
-    --accent-color: #27ae60;
-    --btn-hover-color: #92d8b0;
-  }
-}
 //#endregion
 
 html {

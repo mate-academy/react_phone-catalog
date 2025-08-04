@@ -63,7 +63,6 @@
   }
 
   &__slide {
-    display: flex;
     justify-content: center;
     align-items: flex-end;
     background-position: center;
@@ -140,4 +139,8 @@
       background-color: var(--text-color);
     }
   }
+}
+
+.slider .swiper-slide {
+  display: flex;
 }

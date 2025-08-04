@@ -50,41 +50,8 @@
   }
 }
 
-.photoWrapper {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 1;
+.categoryPhoto {
   margin-bottom: 24px;
-  background: #6d6474;
-}
-
-.photoWrapperTablets {
-  background: #8d8d92;
-}
-
-.photoWrapperAccessories {
-  background: #973d5f;
-}
-
-.photoPhones {
-  position: absolute;
-  top: 20%;
-  left: 20%;
-  width: 90%;
-}
-
-.photoTablets {
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  width: 150%;
-}
-
-.photoAccessories {
-  position: absolute;
-  top: 18%;
-  left: 12%;
-  width: 178%;
 }
 
 .categoryTitle {

@@ -144,3 +144,46 @@
 .iconFavActive {
   background-image: url(/public/img/icons/favourite-added.svg);
 }
+
+.skeleton {
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.imgWrapper.skeleton {
+  width: 148px;
+  height: 129px;
+  margin: auto;
+}
+
+.title.skeleton {
+  height: 24px;
+  width: 80%;
+  margin: 16px auto 0 auto;
+}
+
+.priceWrapper.skeleton {
+  height: 28px;
+  width: 60%;
+  margin: 0 auto 8px auto;
+}
+
+.specsItem.skeleton {
+  height: 16px;
+  width: 90%;
+  margin: 4px auto;
+}
+
+.btnAdd.skeleton,
+.btnFav.skeleton {
+  height: 40px;
+  width: 48%;
+  margin: 0 4px;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}

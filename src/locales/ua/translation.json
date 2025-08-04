@@ -1,0 +1,42 @@
+{
+  "homeTitle": "Запрошуємо до Nice Gadgets!",
+  "nav": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
+  },
+  "category": {
+    "phones": "Замов телефони зараз",
+    "tablets": "Замов планшети зараз",
+    "accessories": "Замов аксесуари зараз"
+  },
+  "newModels": "Нові моделі",
+  "hotPrices": "Гарячі ціни",
+  "sectionTitle": "Купівля за категорією",
+  "categoryTitle": {
+    "phones": "Мобільні телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
+  },
+  "models": "моделей",
+  "specsItemProp": {
+    "screen": "Екран",
+    "capacity": "Ємність",
+    "ram": "ОЗП"
+  },
+  "productAdd": "Додати до кошика",
+  "productAdded": "Додано",
+  "dropdownLabel": {
+    "sort": "Сортування за",
+    "items": "Товарів на сторінці"
+  },
+  "footerNav": {
+    "contacts": "Контакти",
+    "rights": "Права"
+  },
+  "backBtn": "Вгору",
+  "favouritesTitle": "Улюблені",
+  "cardTitle": "Кошик",
+  "checkoutBtn": "Оформити замовлення"
+}

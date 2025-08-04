@@ -3,9 +3,11 @@ import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 import { backToTop } from '../../../utils/backToTop';
 import { useGlobalState } from '../../../context/store';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: FC = () => {
   const { theme } = useGlobalState();
+  const { t } = useTranslation();
 
   return (
     <div className={styles.content}>
@@ -35,20 +37,20 @@ export const Footer: FC = () => {
 
           <li className={styles.navItem}>
             <Link to="/contacts" className={styles.navLink}>
-              Contacts
+              {t('footerNav.contacts')}
             </Link>
           </li>
 
           <li className={styles.navItem}>
             <Link to="/rights" className={styles.navLink}>
-              Rights
+              {t('footerNav.rights')}
             </Link>
           </li>
         </ul>
       </nav>
 
       <button className={styles.btn} onClick={backToTop}>
-        <span className={styles.btnText}>Back to top</span>
+        <span className={styles.btnText}>{t('backBtn')}</span>
 
         <div className={styles.btnIcon}>
           <img

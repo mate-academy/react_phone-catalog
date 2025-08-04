@@ -4,9 +4,12 @@ import { PicturesSlider } from './components/PicturesSlider';
 import { useGlobalState } from '../../context/store';
 import { ProductsSlider } from '../shared/ProductsSlider/ProductsSlider';
 import { ShopByCategory } from './components/ShopByCategory';
+import { HomePageSkeleton } from './HomePageSkeleton';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage: FC = () => {
-  const { products } = useGlobalState();
+  const { products, isLoading } = useGlobalState();
+  const { t } = useTranslation();
 
   const newestPhones = useMemo(
     () =>
@@ -27,17 +30,21 @@ export const HomePage: FC = () => {
     [products],
   );
 
+  if (isLoading) {
+    return <HomePageSkeleton />;
+  }
+
   return (
     <div className={styles.homeContent}>
       <h1 className={styles.visuallyHidden}>Product Catalog</h1>
 
-      <h2 className={styles.homeTitle}>Welcome to Nice Gadgets store!</h2>
+      <h2 className={styles.homeTitle}>{t('homeTitle')}</h2>
 
       <div className={styles.homeBody}>
         <PicturesSlider />
 
         <ProductsSlider
-          title="Brand new models"
+          title={t('newModels')}
           products={newestPhones}
           priceType="regular"
         />
@@ -45,7 +52,7 @@ export const HomePage: FC = () => {
         <ShopByCategory />
 
         <ProductsSlider
-          title="Hot prices"
+          title={t('hotPrices')}
           products={discountPhones}
           priceType="discount"
         />

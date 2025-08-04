@@ -14,6 +14,7 @@ import { Cart } from '../types/Cart';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { Product } from '../types/Product';
 import { getProducts } from '../services/product.service';
+import { useLocation } from 'react-router-dom';
 
 type GlobalContextType = {
   products: Product[];
@@ -74,11 +75,28 @@ export const GlobalProvider: FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const location = useLocation();
+
+  // const fetchProducts = async () => {
+  //   setErrorMessage('');
+
+  //   const delayTimer = setTimeout(() => setIsLoading(true), 200);
+
+  //   try {
+  //     const data = await getProducts();
+
+  //     setProducts(data);
+  //   } catch (err) {
+  //     setErrorMessage('Failed to load products');
+  //   } finally {
+  //     clearTimeout(delayTimer);
+  //     setTimeout(() => setIsLoading(false), 500);
+  //   }
+  // };
 
   const fetchProducts = async () => {
     setErrorMessage('');
-
-    const delayTimer = setTimeout(() => setIsLoading(true), 200);
+    setIsLoading(true);
 
     try {
       const data = await getProducts();
@@ -87,14 +105,15 @@ export const GlobalProvider: FC<Props> = ({ children }) => {
     } catch (err) {
       setErrorMessage('Failed to load products');
     } finally {
-      clearTimeout(delayTimer);
-      setTimeout(() => setIsLoading(false), 500);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
     }
   };
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [location.pathname]);
   //#endregion
 
   //#region MENU

@@ -19,6 +19,19 @@
   }
 }
 
+.leftPart {
+  display: flex;
+  column-gap: 16px;
+
+  @include onDesktop {
+    column-gap: 24px;
+  }
+}
+
+.rightPart {
+  display: flex;
+}
+
 .logoLink {
   position: relative;
   padding: 13px 16px;
@@ -29,6 +42,7 @@
 }
 
 .logoImg {
+  object-fit: contain;
   width: 64px;
   height: 22px;
 
@@ -62,7 +76,7 @@
 .navList {
   display: flex;
   flex-direction: row;
-  column-gap: 32px;
+  column-gap: 12px;
 
   @include onDesktop {
     column-gap: 64px;
@@ -97,12 +111,35 @@
   border-color: var(--text-color);
 }
 
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .themeSwitcher {
   width: 48px;
 
   @include onHover {
     transform: scale(1.2);
   }
+}
+
+.changeLang {
+  padding-inline: 16px;
+  font-size: 12px;
+}
+
+.iconUK {
+  @extend .icon;
+
+  background: url(/public/img/icons/uk-flag.svg);
+}
+
+.iconUA {
+  @extend .icon;
+
+  background: url(/public/img/icons/ukraine-flag.svg);
 }
 
 .icons {

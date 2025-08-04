@@ -6,8 +6,6 @@ import { Navigation } from 'swiper/modules';
 import { Product } from '../../../types/Product';
 import './ProductsSlider.scss';
 import { ProductCard } from '../ProductCard';
-import { useGlobalState } from '../../../context/store';
-import { Loader } from '../Loader';
 
 type Props = {
   title: string;
@@ -16,8 +14,6 @@ type Props = {
 };
 
 export const ProductsSlider: FC<Props> = ({ title, products, priceType }) => {
-  const { isLoading } = useGlobalState();
-
   return (
     <section className="my-slider">
       <div className="my-slider__top">
@@ -48,14 +44,11 @@ export const ProductsSlider: FC<Props> = ({ title, products, priceType }) => {
         speed={500}
         className="my-slider__body"
       >
-        {isLoading && <Loader />}
-
-        {!isLoading &&
-          products.map(product => (
-            <SwiperSlide key={product.id} className="my-slider__slide">
-              <ProductCard product={product} priceType={priceType} />
-            </SwiperSlide>
-          ))}
+        {products.map(product => (
+          <SwiperSlide key={product.id} className="my-slider__slide">
+            <ProductCard product={product} priceType={priceType} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

@@ -10,10 +10,12 @@ import { SortOptions } from '../../types/SortOptions';
 import { Dropdown } from '../shared/Dropdown/Dropdown';
 import { PerPageOptions } from '../../types/PerPageOptions';
 import { Pagination } from '../shared/Pagination';
-import { Loader } from '../shared/Loader';
+import { ProductPageSkeleton } from './ProductPageSkeleton';
+import { useTranslation } from 'react-i18next';
 
 export const ProductPage: FC = () => {
   const { products, isLoading, errorMessage, fetchProducts } = useGlobalState();
+  const { t } = useTranslation();
 
   const [searchParams] = useSearchParams();
   const sort = (searchParams.get('sort') as SortOptions) || SortOptions.Newest;
@@ -58,7 +60,7 @@ export const ProductPage: FC = () => {
 
   return (
     <div className={styles.container}>
-      {isLoading && <Loader />}
+      {isLoading && <ProductPageSkeleton />}
 
       {!isLoading && errorMessage && (
         <div className={styles.errorWrapper}>
@@ -92,12 +94,12 @@ export const ProductPage: FC = () => {
 
           <div
             className={styles.productsAmount}
-          >{`${categoryProducts.length} models`}</div>
+          >{`${categoryProducts.length} ${t('models')}`}</div>
 
           <div className={styles.dropdowns}>
             <div className={styles.dropdownSort}>
               <Dropdown
-                label="Sort by"
+                label={t('dropdownLabel.sort')}
                 value={sort}
                 options={Object.values(SortOptions)}
                 paramsToUpdate={value => ({ sort: value })}
@@ -106,7 +108,7 @@ export const ProductPage: FC = () => {
 
             <div className={styles.dropdownPerPage}>
               <Dropdown
-                label="Items on page"
+                label={t('dropdownLabel.items')}
                 value={perPage}
                 options={Object.values(PerPageOptions)}
                 paramsToUpdate={value => ({ perPage: value })}

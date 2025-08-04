@@ -71,19 +71,16 @@
       content: url(/public/img/icons/arrow-right-disabled.svg);
     }
   }
+}
 
-  &__slide {
-    width: 212px;
-    height: 439px;
+.my-slider .swiper-slide {
+  width: 212px;
 
-    @include onTablet {
-      width: 237px;
-      height: 512px;
-    }
+  @include onTablet {
+    width: 237px;
+  }
 
-    @include onDesktop {
-      width: 272px;
-      height: 506px;
-    }
+  @include onDesktop {
+    width: 272px;
   }
 }

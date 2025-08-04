@@ -3,9 +3,11 @@ import { FC, useMemo } from 'react';
 import styles from './ShopByCategory.module.scss';
 import { Link } from 'react-router-dom';
 import { useGlobalState } from '../../../../context/store';
+import { useTranslation } from 'react-i18next';
 
 export const ShopByCategory: FC = () => {
   const { products } = useGlobalState();
+  const { t } = useTranslation();
 
   const { phonesAmount, tabletsAmount, accessoriesAmount } = useMemo(() => {
     const phones = products.filter(
@@ -30,65 +32,65 @@ export const ShopByCategory: FC = () => {
   return (
     <section className={styles.container}>
       <div className={styles.content}>
-        <h3 className={styles.sectionTitle}>Shop by category</h3>
+        <h3 className={styles.sectionTitle}>{t('sectionTitle')}</h3>
 
         <div className={styles.categories}>
           <Link to="/phones" className={styles.link}>
             <article className={styles.category}>
-              <div className={styles.photoWrapper}>
-                <img
-                  src="/img/category-phones.webp"
-                  alt="category photo"
-                  className={styles.photoPhones}
-                />
-              </div>
+              <img
+                src="/img/shop-by-category/phones.png"
+                alt="category photo"
+                className={styles.categoryPhoto}
+              />
 
               <div className={styles.info}>
-                <h4 className={styles.categoryTitle}>Mobile phones</h4>
+                <h4 className={styles.categoryTitle}>
+                  {t('categoryTitle.phones')}
+                </h4>
 
-                <div className={styles.amount}>{`${phonesAmount} models`}</div>
+                <div
+                  className={styles.amount}
+                >{`${phonesAmount} ${t('models')}`}</div>
               </div>
             </article>
           </Link>
 
           <Link to="/tablets" className={styles.link}>
             <article className={styles.category}>
-              <div
-                className={`${styles.photoWrapper} ${styles.photoWrapperTablets}`}
-              >
-                <img
-                  src="/img/category-tablets.png"
-                  alt="category photo"
-                  className={styles.photoTablets}
-                />
-              </div>
+              <img
+                src="/img/shop-by-category/tablets.png"
+                alt="category photo"
+                className={styles.categoryPhoto}
+              />
 
               <div className={styles.info}>
-                <h4 className={styles.categoryTitle}>Tablets</h4>
+                <h4 className={styles.categoryTitle}>
+                  {t('categoryTitle.tablets')}
+                </h4>
 
-                <div className={styles.amount}>{`${tabletsAmount} models`}</div>
+                <div className={styles.amount}>
+                  {`${tabletsAmount} ${t('models')}`}
+                </div>
               </div>
             </article>
           </Link>
 
           <Link to="/accessories" className={styles.link}>
             <article className={styles.category}>
-              <div
-                className={`${styles.photoWrapper} ${styles.photoWrapperAccessories}`}
-              >
-                <img
-                  src="/img/category-accessories.png"
-                  alt="category photo"
-                  className={styles.photoAccessories}
-                />
-              </div>
+              <img
+                src="/img/shop-by-category/accessories.png"
+                alt="category photo"
+                className={styles.categoryPhoto}
+              />
 
               <div className={styles.info}>
-                <h4 className={styles.categoryTitle}>Accessories</h4>
+                <h4 className={styles.categoryTitle}>
+                  {t('categoryTitle.accessories')}
+                </h4>
 
                 <div
                   className={styles.amount}
-                >{`${accessoriesAmount} models`}</div>
+                >{`${accessoriesAmount} ${t('models')}`}</div>
               </div>
             </article>
           </Link>

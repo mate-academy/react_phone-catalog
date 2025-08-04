@@ -5,6 +5,7 @@ import { useGlobalState } from '../../../context/store';
 import { Product } from '../../../types/Product';
 import styles from './ProductCard.module.scss';
 import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product;
@@ -19,6 +20,7 @@ export const ProductCard: FC<Props> = memo(({ product, priceType }) => {
 
   const { isInCart, addToCart, isInFavourites, toggleFavourites } =
     useGlobalState();
+  const { t } = useTranslation();
 
   return (
     <article className={styles.productCard}>
@@ -50,19 +52,23 @@ export const ProductCard: FC<Props> = memo(({ product, priceType }) => {
 
       <div className={styles.specs}>
         <span className={styles.specsItem}>
-          <span className={styles.specsItemProp}>Screen</span>
+          <span className={styles.specsItemProp}>
+            {t('specsItemProp.screen')}
+          </span>
 
           <span className={styles.specsItemValue}>{screen}</span>
         </span>
 
         <span className={styles.specsItem}>
-          <span className={styles.specsItemProp}>Capacity</span>
+          <span className={styles.specsItemProp}>
+            {t('specsItemProp.capacity')}
+          </span>
 
           <span className={styles.specsItemValue}>{capacity}</span>
         </span>
 
         <span className={styles.specsItem}>
-          <span className={styles.specsItemProp}>RAM</span>
+          <span className={styles.specsItemProp}>{t('specsItemProp.ram')}</span>
 
           <span className={styles.specsItemValue}>{ram}</span>
         </span>
@@ -75,7 +81,7 @@ export const ProductCard: FC<Props> = memo(({ product, priceType }) => {
             [styles.btnAddActive]: isInCart(product),
           })}
         >
-          {isInCart(product) ? 'Added' : 'Add to cart'}
+          {isInCart(product) ? t('productAdded') : t('productAdd')}
         </button>
 
         <button
