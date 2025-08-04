@@ -1,0 +1,64 @@
+@import '../../utils/core.scss';
+
+.main__homepage {
+  margin-top: 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page__title {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1px;
+  width: 100%;
+  margin: 56px 0;
+  padding: 0 20px;
+  color: $color-white;
+
+  @include onTablet {
+    width: 80%;
+    margin: 32px 24px;
+  }
+
+  @include onMobile {
+    width: 82%;
+    font-size: 32px;
+    margin: 24px 0;
+  }
+
+  @include themy($themes) {
+    color: themed('colorText');
+  }
+}
+
+.category__wrapper {
+  margin-top: 56px;
+  max-width: 1200px;
+  margin: 0 20px;
+}
+
+.category__title {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1px;
+  width: 100%;
+  margin: 56px 0 40px 0;
+
+  @include themy($themes) {
+    color: themed('colorText');
+  }
+}
+
+.homepage__product,
+.homepage__category,
+.homepage__hotproduct {
+  margin: 0 16px 0 16px;
+
+  @include onTablet {
+    margin: 0 32px 0 32px;
+  }
+}
