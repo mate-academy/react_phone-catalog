@@ -7,9 +7,21 @@ type Props = {
   price: number;
   quantity: number;
   image: string;
+  color: string;
+  capacity: string;
+  category: string;
 };
 
-export const CartProduct = ({ id, name, price, quantity, image }: Props) => {
+export const CartProduct = ({
+  id,
+  name,
+  price,
+  quantity,
+  image,
+  color,
+  capacity,
+  category,
+}: Props) => {
   const { addItem, removeItem, decreaseItemQuantity } = useCart();
 
   return (
@@ -44,8 +56,11 @@ export const CartProduct = ({ id, name, price, quantity, image }: Props) => {
                 id: id,
                 name: name,
                 price: price,
-                quantity: quantity,
+                quantity: 1,
                 image: image,
+                color: color,
+                capacity: capacity,
+                category: category,
               })
             }
             className={styles.product__button}

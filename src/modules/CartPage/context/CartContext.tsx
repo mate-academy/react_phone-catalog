@@ -13,6 +13,9 @@ type CartItem = {
   price: number;
   quantity: number;
   image: string;
+  color: string;
+  capacity: string;
+  category: string;
 };
 
 interface CartContextType {

@@ -48,6 +48,9 @@ export const CartPage = () => {
                   price={item.price}
                   quantity={item.quantity}
                   image={item.image}
+                  color={item.color}
+                  capacity={item.capacity}
+                  category={item.category}
                 />
               );
             })}

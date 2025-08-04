@@ -180,13 +180,35 @@ export const ProductDetailsPage = ({ category }: Params) => {
               <div className={styles.details__buttons}>
                 <button
                   onClick={() => {
-                    if (findCartProduct) {
+                    if (findCartProduct && findProduct) {
+                      const words = findProduct.name.split(' ');
+
+                      const capacities = findProduct.capacityAvailable.map(c =>
+                        c.toLowerCase(),
+                      );
+                      const colors = findProduct.colorsAvailable.flatMap(c =>
+                        c.toLowerCase().split(' '),
+                      );
+
+                      const baseNameWords = words.filter(word => {
+                        const lower = word.toLowerCase();
+
+                        return (
+                          !capacities.includes(lower) && !colors.includes(lower)
+                        );
+                      });
+
+                      const baseName = baseNameWords.join(' ');
+
                       addItem({
-                        id: findCartProduct?.id.toString(),
-                        name: findCartProduct.name,
+                        id: `${findCartProduct.id}-${activeColor}-${activeMemory}`,
+                        name: `${baseName} ${activeMemory} ${activeColor}`,
                         price: findCartProduct.price,
                         quantity: 1,
                         image: findCartProduct.image,
+                        color: activeColor || findProduct.color,
+                        capacity: activeMemory || findProduct.capacity,
+                        category: findProduct.category,
                       });
                     }
                   }}
@@ -195,6 +217,7 @@ export const ProductDetailsPage = ({ category }: Params) => {
                     ? 'Added to cart'
                     : 'Add to cart'}
                 </button>
+
                 <button className={styles.details__favourites}>
                   <img
                     onClick={() => {
