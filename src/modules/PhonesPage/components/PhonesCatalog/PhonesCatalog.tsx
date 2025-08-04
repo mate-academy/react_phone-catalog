@@ -55,83 +55,36 @@ export const PhonesCatalog = () => {
     return [...Array(totalPages)].map((_, i) => i);
   };
 
-  let totalPages: number;
-
-  if (phonesCounter === undefined || itemsPerPage === 'all' || !itemsPerPage) {
-    totalPages = 0;
-  } else {
-    totalPages = Math.ceil(phonesCounter / +itemsPerPage);
-  }
-
-  const pages = getPages(totalPages);
-
-  console.log(`totalPages: ${totalPages}`, pages);
-
-  const filterItemsOnPage = (
-    page: number[],
-    product: Product[] | undefined,
-    actualPage: number,
-    phonesPerPage: number,
-  ) => {
-    const items = page;
-    let elements = product;
-
-    items.forEach((_, i) => {
-      let startPosition = 0;
-      let endPosition = 0;
-
-      if (i === 0) {
-        startPosition = 0;
-        endPosition = phonesPerPage;
-      } else {
-        startPosition = i * phonesPerPage - 1;
-        endPosition = startPosition + phonesPerPage;
-      }
-
-      if (i === actualPage) {
-        elements = elements?.slice(startPosition, endPosition);
-      }
-
-      startPosition += phonesPerPage;
-      endPosition += phonesPerPage;
-
-      return elements;
-    });
-
-    return elements;
-  };
-
   const sortedPhones = useMemo(() => {
-    let sorted = phones;
+    if (!phones) {
+      return [];
+    }
+
+    const cloned = [...phones];
+
+    const sorted = cloned;
 
     if (sortParam === 'age') {
-      sorted = sorted?.sort((a, b) => b.year - a.year);
+      sorted.sort((a, b) => b.year - a.year);
     }
 
     if (sortParam === 'price') {
-      sorted = sorted?.sort((a, b) => a.price - b.price);
+      sorted.sort((a, b) => a.price - b.price);
     }
 
     if (sortParam === 'title') {
-      sorted = sorted?.sort((a, b) => a.name.localeCompare(b.name));
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
     }
 
-    switch (itemsPerPage) {
-      case '4':
-        sorted = filterItemsOnPage(pages, sorted, +currentPage, +itemsPerPage);
-        break;
-      case '8':
-        sorted = filterItemsOnPage(pages, sorted, +currentPage, +itemsPerPage);
-        break;
-      case '16':
-        sorted = filterItemsOnPage(pages, sorted, +currentPage, +itemsPerPage);
-        break;
-      default:
-        return sorted;
+    if (itemsPerPage && ['4', '8', '16'].includes(itemsPerPage)) {
+      const start = (+currentPage - 1) * +itemsPerPage;
+      const end = start + +itemsPerPage;
+
+      return sorted.slice(start, end);
     }
 
     return sorted;
-  }, [currentPage, itemsPerPage, pages, phones, sortParam]);
+  }, [currentPage, itemsPerPage, phones, sortParam]);
 
   return (
     <>
