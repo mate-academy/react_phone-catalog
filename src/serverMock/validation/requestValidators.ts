@@ -62,7 +62,9 @@ function validateParams(request: any, params?: any): ValidParams | ErrorObject {
   switch (request) {
     case RequestType.BANNER:
       if (params) {
-        return getErrorObject(`Unreckognized parameters: ${params}`);
+        return getErrorObject(
+          `Unreckognized parameters: ${JSON.stringify(params)}`,
+        );
       }
 
       return getValidParams(RequestType.BANNER);
@@ -80,27 +82,25 @@ function validateParams(request: any, params?: any): ValidParams | ErrorObject {
 
       return getValidParams(RequestType.PRODUCT, params);
     case RequestType.CATALOGUE:
-      const error = getErrorObject(`Unreckognized parameters: ${params}`);
-
       if (
         params.itemType &&
         !Object.values(CategoryParams).some(el => el === params.itemType)
       ) {
-        return error;
+        return getErrorObject(`Invalid itemType: ${params.itemType}`);
       }
 
       if (
         params.sortOrder &&
         !Object.values(OrderParams).some(el => el === params.sortOrder)
       ) {
-        return error;
+        return getErrorObject(`Invalid sortOrder: ${params.sortOrder}`);
       }
 
       if (
         params.itemsOnPage &&
         !Object.values(ItemsOnPage).some(el => el === params.itemsOnPage)
       ) {
-        return error;
+        return getErrorObject(`Invalid itemsOnPage: ${params.itemsOnPage}`);
       }
 
       return getValidParams(RequestType.CATALOGUE, params);

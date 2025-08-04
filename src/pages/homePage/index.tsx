@@ -5,9 +5,10 @@ import { heroStyles, prodStyles, categories } from './model';
 import styles from './styles/HomePage.module.scss';
 import { Link } from 'react-router-dom';
 import { useHomePage } from './model/useHomepage';
+import { Spinner } from '@ui/spinner';
 
 export const HomePage = () => {
-  const { newest, hotPrice, bannerList } = useHomePage();
+  const { newest, hotPrice, bannerList, loading } = useHomePage();
 
   return (
     <main className={styles.container}>
@@ -17,16 +18,20 @@ export const HomePage = () => {
           Welcome to Nice Gadgets store!
         </span>
 
-        {bannerList && (
-          <div
-            className={`${styles['hero-slider']} ${styles['slider-container']}`}
-          >
-            <Slider
-              classNames={heroStyles}
-              dataset={bannerList}
-              type={SliderType.BANNER}
-            />
-          </div>
+        {loading.banners === true ? (
+          <Spinner />
+        ) : (
+          bannerList && (
+            <div
+              className={`${styles['hero-slider']} ${styles['slider-container']}`}
+            >
+              <Slider
+                classNames={heroStyles}
+                dataset={bannerList}
+                type={SliderType.BANNER}
+              />
+            </div>
+          )
         )}
       </div>
       <div className={styles['home-catalogue']}>
@@ -34,12 +39,16 @@ export const HomePage = () => {
           className={`${styles.prodSwiper} ${styles['slider-container']}`}
         >
           <h2 className={styles.prodSwiper__title}>Brand new Models</h2>
-          {newest && (
-            <Slider
-              classNames={prodStyles}
-              dataset={newest}
-              type={SliderType.PROD}
-            />
+          {loading.newest === true ? (
+            <Spinner />
+          ) : (
+            newest && (
+              <Slider
+                classNames={prodStyles}
+                dataset={newest}
+                type={SliderType.PROD}
+              />
+            )
           )}
         </section>
         <section
@@ -66,12 +75,16 @@ export const HomePage = () => {
           className={`${styles.prodSwiper} ${styles['slider-container']}`}
         >
           <h2 className={styles.prodSwiper__title}>Hot prices</h2>
-          {hotPrice && (
-            <Slider
-              classNames={prodStyles}
-              dataset={hotPrice}
-              type={SliderType.PROD}
-            />
+          {loading.hotPrice === true ? (
+            <Spinner />
+          ) : (
+            hotPrice && (
+              <Slider
+                classNames={prodStyles}
+                dataset={hotPrice}
+                type={SliderType.PROD}
+              />
+            )
           )}
         </section>
       </div>

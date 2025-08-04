@@ -1,20 +1,19 @@
-/* eslint-disable no-console */
 import { getBanners, getProduct, getCatalogueItems } from '../services';
 import { RequestType, ValidResponse } from '../types';
 import { validateParams } from '../validation';
 
 async function getRequest(conf: string): Promise<string> {
+  await new Promise(resolve => setTimeout(resolve, 800));
   const config = JSON.parse(conf);
   const request = config.request;
-  let params;
+  let params = null;
 
   if (config.body) {
     params = config.body;
   }
 
-  const validated = params
-    ? validateParams(request, params)
-    : validateParams(request);
+  const validated =
+    params !== null ? validateParams(request, params) : validateParams(request);
 
   if (validated.status === false) {
     return JSON.stringify(validated);

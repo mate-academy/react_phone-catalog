@@ -1,7 +1,7 @@
 import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
-import { get } from '@shared/api/API';
+import { get } from '@shared/api/';
 import { BaseProduct } from '@shared/types/APITypes';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Conf, ErrorState, LoadState } from '../types';
 import { DATA_LOAD_CONFIGS } from '../config';
 
@@ -58,11 +58,17 @@ export const useHomePage = () => {
     }
   };
 
-  useEffect(() => {
-    loadCatalogs({ ...DATA_LOAD_CONFIGS.NEWEST, setter: setNewest });
-    loadCatalogs({ ...DATA_LOAD_CONFIGS.HOT_PRICE, setter: setHotPrice });
-    loadBanners();
+  const loadAllData = useCallback(async () => {
+    await Promise.all([
+      loadCatalogs({ ...DATA_LOAD_CONFIGS.NEWEST, setter: setNewest }),
+      loadCatalogs({ ...DATA_LOAD_CONFIGS.HOT_PRICE, setter: setHotPrice }),
+      loadBanners(),
+    ]);
   }, []);
+
+  useEffect(() => {
+    loadAllData();
+  }, [loadAllData]);
 
   return { loading, newest, hotPrice, bannerList, errors };
 };

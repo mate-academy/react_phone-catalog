@@ -1,5 +1,4 @@
-import { Order } from '@shared/api/typesAndEnums';
-import { get } from '@shared/api/API';
+import { Order, get } from '@shared/api/';
 
 const CATALOGUE_CONFIGS = {
   NEWEST: {

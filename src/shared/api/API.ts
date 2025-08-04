@@ -21,7 +21,7 @@ function handleError(message: string): never {
 const get = {
   banners: async (): Promise<BannerData[]> => {
     const banners: BasicResponse<BannerData[]> | ErrorMessage = JSON.parse(
-      await getRequest(JSON.stringify(Request.BANNER)),
+      await getRequest(JSON.stringify({ request: Request.BANNER })),
     );
 
     if (banners.status === false) {
