@@ -1,39 +1,13 @@
-import { BaseProduct } from '@shared/types/APITypes';
-import { useEffect, useState } from 'react';
-import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
+import React from 'react';
 import { Slider } from '@widgets/Slider/';
 import { SliderType } from '@widgets/Slider/types/types';
 import { heroStyles, prodStyles, categories } from './model';
 import styles from './styles/HomePage.module.scss';
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { upload, uploadCatalogue } from '@server/api/mockApi';
-import { Sort } from '@server/types/types';
-
-// todo: 3 presets for slider
-// separate mths from hooks
-// create reducer, api
-// create loader
+import { useHomePage } from './model/useHomepage';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<BaseProduct[] | null>(null);
-  const [bannerList, setBannerList] = useState<BannerData[] | null>(null);
-
-  useEffect(() => {
-    const load = async () => {
-      const banners = await upload('banner');
-
-      const params = {
-        sort: Sort.FULL_PRICE_DECS_PROMO,
-      };
-      const prod = await uploadCatalogue(params);
-
-      setBannerList(banners);
-      setProducts(prod.dataArray);
-    };
-
-    load();
-  }, []);
+  const { newest, hotPrice, bannerList } = useHomePage();
 
   return (
     <main className={styles.container}>
@@ -60,10 +34,10 @@ export const HomePage = () => {
           className={`${styles.prodSwiper} ${styles['slider-container']}`}
         >
           <h2 className={styles.prodSwiper__title}>Brand new Models</h2>
-          {products && (
+          {newest && (
             <Slider
               classNames={prodStyles}
-              dataset={products as BaseProduct[]}
+              dataset={newest}
               type={SliderType.PROD}
             />
           )}
@@ -92,10 +66,10 @@ export const HomePage = () => {
           className={`${styles.prodSwiper} ${styles['slider-container']}`}
         >
           <h2 className={styles.prodSwiper__title}>Hot prices</h2>
-          {products && (
+          {hotPrice && (
             <Slider
               classNames={prodStyles}
-              dataset={products as BaseProduct[]}
+              dataset={hotPrice}
               type={SliderType.PROD}
             />
           )}

@@ -1,9 +1,8 @@
 enum Category {
   Accessories = 'accessories',
   Phones = 'phones',
-  Products = 'products',
+  Products = 'all',
   Tablets = 'tablets',
-  Banners = 'banners',
 }
 
 const enum Processors {

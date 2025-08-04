@@ -41,7 +41,7 @@ async function getCatalogueItems(
   switch (sortOrder) {
     case OrderParams.AGE:
       initialArray = initialArray.sort(
-        (a: BaseProduct, b: BaseProduct) => a.year - b.year,
+        (a: BaseProduct, b: BaseProduct) => b.year - a.year,
       );
       break;
     case OrderParams.TITLE:
