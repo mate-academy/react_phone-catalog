@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import Logo from './../../../public/img/Logo/Logo.png';
 
 type GetClassNameParams = {
   isActive: boolean;
@@ -26,7 +27,7 @@ export const Headers: React.FC = () => {
         <div className={style.header__container}>
           <h1 className={style.header_hidden}>Product Catalog</h1>
           <a href="/" className={style.header__logoLink}>
-            <img src="/img/Logo/Logo.png" className={style.header__logo} />
+            <img src={Logo} className={style.header__logo} />
           </a>
           <nav className={style.header__nav}>
             <ul className={style.header__list}>

@@ -18,7 +18,6 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
         {products.map(product => (
           <ProductCard key={product.id} products={product} />
         ))}
-
         <GridFavourites products={products} />
       </div>
     </div>

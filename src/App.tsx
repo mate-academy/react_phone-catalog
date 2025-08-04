@@ -4,7 +4,8 @@ import { Headers } from './component/Header/Header';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './Page/HomePage/HomePage';
 import { PhonesPage } from './Page/PhonesPage/PhonesPage';
-import { TabletsPage } from './Page/TabletsPage/TabletsPage';
+import { TabletsPage } from './Page/TabletsPage';
+import { AccessoriesPage } from './Page/AccessoriesPage';
 
 export const App = () => {
   return (
@@ -19,6 +20,8 @@ export const App = () => {
           <Route path="/phones" element={<PhonesPage />} />
 
           <Route path="/tablets" element={<TabletsPage />} />
+
+          <Route path="/accessories" element={<AccessoriesPage />} />
         </Routes>
 
         <Footer />

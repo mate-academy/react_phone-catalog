@@ -4,23 +4,23 @@ import { Products } from './../../types/Products';
 
 import { useState, useEffect } from 'react';
 
-export const TabletsPage = () => {
-  const [tablets, setTablets] = useState<Products[]>([]);
+export const AccessoriesPage = () => {
+  const [accessories, setAccessories] = useState<Products[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
     setLoading(true);
-    getProductsByCategory('tablets')
-      .then(setTablets)
+    getProductsByCategory('accessories')
+      .then(setAccessories)
       .catch(() => setError('Something went wrong!'))
       .finally(() => setLoading(false));
   }, []);
 
   return (
     <ProductList
-      title="tablets"
-      products={tablets}
+      title="accessories"
+      products={accessories}
       loading={loading}
       error={error}
     />
