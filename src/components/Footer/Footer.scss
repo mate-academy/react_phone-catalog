@@ -1,0 +1,107 @@
+@import '../../utils/core.scss';
+
+.footer {
+  padding-top: 80px;
+  border: none;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  @include themy($themes) {
+    background: themed('colorHeaderFooter');
+  }
+
+  &__container {
+    height: 257px;
+    border-top: 1px solid $color-elem-text;
+
+    @include onTablet {
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    margin: 32px 0 16px 16px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    cursor: pointer;
+
+    @include onTablet {
+      margin: 32px 0 32px 32px;
+    }
+  }
+
+  &__button {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 32px;
+    gap: 16px;
+
+    @include onTablet {
+      margin: 0 32px 0 0;
+      justify-content: space-between;
+    }
+  }
+
+  &__buttonsName {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-surf-2;
+  }
+
+  &__btn {
+    color: $color-white;
+    width: 32px;
+    height: 32px;
+    background-color: $color-surf-2;
+    border: 1px solid $color-surf-2;
+    cursor: pointer;
+  }
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 32px 0 0 16px;
+
+  @include onTablet {
+    margin: 0;
+    flex-direction: row;
+    gap: 13px;
+    justify-content: space-between;
+  }
+
+  @include onDesktop {
+    gap: 106px;
+  }
+}
+
+.footer-item {
+  font-family: Mont-Bold, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  counter-reset: $color-white;
+  align-items: center;
+
+  @include themy($themes) {
+    color: themed('colorText');
+  }
+
+  &:hover {
+    color: #969595;
+  }
+}
