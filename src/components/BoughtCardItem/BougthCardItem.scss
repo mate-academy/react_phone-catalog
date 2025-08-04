@@ -1,0 +1,98 @@
+@import '../Themes/Themes.scss';
+@import '../../utils/mixins.scss';
+
+.bought {
+  margin-bottom: 17px;
+
+  &__item {
+    background-color: $color-surf-1;
+    display: block;
+    align-items: center;
+    border: 1px solid $color-surf-1;
+    padding: 24px;
+    justify-content: space-between;
+
+    @include themy($themes) {
+      background: themed('colorCart');
+    }
+
+    // @include onTablet {
+    //   display: block;
+    // }
+
+    @include onDesktop {
+      display: flex;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 16px;
+
+    @include onDesktop {
+      padding-bottom: 0;
+    }
+  }
+
+  &__wrapper2 {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+
+    @include onDesktop {
+      gap: 24px;
+    }
+  }
+
+  &__deleteIcon {
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    @include themy($themes) {
+      color: themed('colorText');
+    }
+  }
+
+  &__price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 70px;
+
+    @include themy($themes) {
+      color: themed('colorText');
+    }
+  }
+
+  &__num {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include themy($themes) {
+      color: themed('colorText');
+    }
+  }
+
+  &__button {
+    display: flex;
+  }
+}
