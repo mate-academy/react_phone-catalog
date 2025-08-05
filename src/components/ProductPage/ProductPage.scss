@@ -1,0 +1,125 @@
+@import '../../utils/core';
+
+.main__phonepage {
+  margin: 0 16px;
+
+  @include onTablet {
+    margin: 0 24px;
+  }
+
+  @include onDesktop {
+    margin: 0 32px;
+  }
+}
+
+.mobilelink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px;
+
+  &__title {
+    font-family: Mont-SemiBold, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-second-title;
+    align-items: center; // display: flex; gap: 8px;
+  }
+}
+
+.mobile__models {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #e3e7eaca;
+  margin: 0 0 8px;
+}
+
+.mobile__dropdown {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.mobile__cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 24px;
+
+  @include onTablet {
+    grid-template-columns: repeat(auto-fit, minmax(272px, 2fr));
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    gap: 40px 16px;
+  }
+}
+
+.mobile__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 8px;
+}
+
+.sortby,
+.item__page {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #e3e7eaca;
+  margin: 0 0 4px;
+}
+
+.mobile__buttonsPrev,
+.mobile__buttonNext {
+  font-family: Mont-Bold, sans-serif;
+  background-color: transparent;
+  border: 1px solid $color-elem-text;
+  color: $color-icon-btn;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-surf-2;
+    border: 1px solid $color-surf-2;
+    color: $color-white;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.mobile__pagination {
+  font-family: Mont-Bold, sans-serif;
+  background-color: $color-surf-1;
+  border: 1px solid $color-surf-1;
+  color: $color-icon-btn;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-accent-hover;
+    border: 1px solid $color-accent-hover;
+    color: $color-white;
+  }
+
+  &.active {
+    background-color: $color-accent;
+    color: $color-white;
+    font-weight: bold;
+  }
+}
