@@ -26,7 +26,7 @@ export const FavPage = () => {
         <div className="none">
           <img
             className="product__empty"
-            src="img/page-not-found.png"
+            src="img/product-not-found.png"
             alt="Favourites have not been chosen"
           />
         </div>
