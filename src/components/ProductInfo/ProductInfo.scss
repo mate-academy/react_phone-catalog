@@ -260,12 +260,12 @@
     text-decoration: none;
   }
 
-  // &__back,
-  // &__btn {
-  //   display: flex;
-  //   align-items: center;
-  //   gap: 8px;
-  // }
+  &__back,
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 }
 
 .Image {
