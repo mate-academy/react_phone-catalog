@@ -3,7 +3,11 @@ import { Categories } from './../../component/Categories';
 import style from './HomePage.module.scss';
 
 export const HomePage = () => {
-  const slides = ['./img/....', '/img/Logo/baner-header.png', '/img/.....'];
+  const slides = [
+    'img/Logo/baner-header.png',
+    '/img/Logo/baner-header.png',
+    './img/Logo/baner-header.png',
+  ];
 
   return (
     <section className={style.home__page}>
