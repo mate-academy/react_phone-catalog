@@ -31,7 +31,7 @@
     cursor: pointer;
 
     &.active {
-      border-color: #4721c5d8;
+      border-color: $color-after;
       transform: scale(1.05);
       box-shadow: 0 0 8px rgba(120, 64, 204, 0.92);
     }
