@@ -17,27 +17,29 @@ export const App = () => {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<PhonesPage />} />
-        <Route
-          path="/phones/:productId"
-          element={<ProductDetailsPage category="phones" />}
-        />
-        <Route path="/tablets" element={<TabletsPage />} />
-        <Route
-          path="/tablets/:productId"
-          element={<ProductDetailsPage category="tablets" />}
-        />
-        <Route path="/accessories" element={<AccessoriesPage />} />
-        <Route
-          path="/accessories/:productId"
-          element={<ProductDetailsPage category="accessories" />}
-        />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/favourites" element={<FavouritesPage />} />
-        <Route path="*" />
-      </Routes>
+      <div className="main">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/phones" element={<PhonesPage />} />
+          <Route
+            path="/phones/:productId"
+            element={<ProductDetailsPage category="phones" />}
+          />
+          <Route path="/tablets" element={<TabletsPage />} />
+          <Route
+            path="/tablets/:productId"
+            element={<ProductDetailsPage category="tablets" />}
+          />
+          <Route path="/accessories" element={<AccessoriesPage />} />
+          <Route
+            path="/accessories/:productId"
+            element={<ProductDetailsPage category="accessories" />}
+          />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
+          <Route path="*" />
+        </Routes>
+      </div>
       <Footer />
     </>
   );

@@ -33,13 +33,16 @@ html {
   box-sizing: border-box;
   transition: all 0.4s;
   scroll-behavior: smooth;
+
 }
 
-// .main {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 40px;
-//   justify-content: center;
-//   align-items: center;
-//   max-width: 100vw;
-// }
+@media (min-width: 1200px) {
+  .main {
+    justify-self: center;
+      width: 100%;
+      height: 100%;
+      max-width: 1140px;
+    }
+}
+
+
