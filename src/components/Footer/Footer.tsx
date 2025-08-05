@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import logo from '../img/logo.svg';
-import logoLight from '../img/logo-light.svg';
-import arrowUp from '../img/arrowUp.svg';
+import logo from '../../img/logo.svg';
+import logoLight from '../../img/logoLight.svg';
+import arrowUp from '../../img/arrowUp.svg';
 import './Footer.scss';
 import { useContext } from 'react';
 import { ThemeContext } from '../Themes/Themes';
