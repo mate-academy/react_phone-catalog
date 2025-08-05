@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Product } from '../../types/ProductTipes';
 import { useNavigate } from 'react-router-dom';
 import heart from '../../img/heart.svg';
 import liked from '../../img/heartRed.svg';
-
+import heartLight from '../../img/heartLight.svg';
 import './ProductItem.scss';
 import { useFavourites } from '../Favourites/FavouritesContext';
 import { useCart } from '../BoughtCard/CartContext';
+import { ThemeContext } from '../Themes';
 
 interface Props {
   product: Product;
@@ -24,6 +25,17 @@ export const ProductItem: React.FC<Props> = ({
   const isInCart = cart.some(item => item.id === product.id);
   const productPath = `/${product.category}/${product.itemId}`;
   const navigate = useNavigate();
+
+  const { theme } = useContext(ThemeContext);
+  const isBasicDark = theme === 'dark';
+
+  const getLikeIcon = (isDark: boolean, isFav: boolean) => {
+    if (isDark) {
+      return isFav ? liked : heart;
+    }
+
+    return isFav ? liked : heartLight;
+  };
 
   const handleToggleCart = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -77,7 +89,7 @@ export const ProductItem: React.FC<Props> = ({
           {isInCart ? 'Remove' : 'Add to cart'}
         </button>
         <button className="button__like" onClick={handleToggleFavourite}>
-          <img src={isFavourite ? liked : heart} alt="like" />
+          <img src={getLikeIcon(isBasicDark, isFavourite)} alt="like" />
         </button>
       </div>
     </div>

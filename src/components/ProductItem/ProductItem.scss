@@ -148,6 +148,14 @@
   &:hover {
     background-color: $color-accent-hover;
     border: 1px solid $color-accent-hover;
+
+    @include themy($themes) {
+    background: themed('colorVioletHover');
+  }
+  }
+
+  @include themy($themes) {
+    background: themed('colorViolet');
   }
 }
 
@@ -165,5 +173,9 @@
 
   &:hover {
     background-color: $color-icon-btn;
+  }
+
+  @include themy($themes) {
+    background: themed('colorHeaderFooter');
   }
 }

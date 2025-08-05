@@ -12,6 +12,8 @@ $themes: (
     colorBG: $color-black,
     colorPaginActiv: $color-white,
     colorPagination: $color-elem-text,
+    colorViolet: $color-accent,
+    colorVioletHover: $color-accent-hover,
   ),
   light: (
     colorSwiperBG: $color-white,
@@ -22,6 +24,8 @@ $themes: (
     colorBG: $color-white,
     colorPaginActiv: #313237,
     colorPagination: #E2E6E9,
+    colorViolet: $color-surf-2,
+    colorVioletHover: $color-icon-btn,
   ),
 );
 
