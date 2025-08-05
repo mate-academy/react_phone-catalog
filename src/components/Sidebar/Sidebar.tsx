@@ -67,7 +67,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ openMenu, setOpenMenu }) => {
         >
           <img src={isBasicDark ? DarkFav : LightFav} alt="heart" />
           {favourites.length > 0 && (
-            <span className="badge-2">{favourites.length}</span>
+            <span className="badge2">{favourites.length}</span>
           )}
         </NavLink>
 

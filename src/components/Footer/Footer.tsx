@@ -25,7 +25,7 @@ export const Footer = () => {
           <NavLink className="footer__logo" to="/">
             <img src={isBasicDark ? logo : logoLight} alt="Logo" />
           </NavLink>
-          <ul className="footer-links">
+          <ul className="footer-brand">
             <NavLink
               className="footer-item"
               to="https://github.com/tina-moskvinova"
