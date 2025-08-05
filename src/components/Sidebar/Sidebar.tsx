@@ -18,7 +18,7 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ openMenu, setOpenMenu }) => {
   const getLinkActive = ({ isActive }: { isActive: boolean }) =>
-    classNames('navbar-item', { 'active-link': isActive });
+    classNames('sidebar-item', { 'active-link': isActive }); // sidebar className...
 
   const { theme } = useContext(ThemeContext);
   const isBasicDark = theme === 'dark';
