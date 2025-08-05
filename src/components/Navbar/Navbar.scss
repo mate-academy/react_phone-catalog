@@ -21,7 +21,7 @@
   margin: 0 auto;
   height: 48px;
 
-  @include onDesktop {
+  @include on-desktop {
     height: 64px;
   }
 }
@@ -30,7 +30,7 @@
   display: flex;
   gap: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 16px;
   }
 }
@@ -39,12 +39,12 @@
   display: none;
   gap: 64px;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
     gap: 26px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     display: flex;
     gap: 64px;
   }
@@ -109,11 +109,11 @@
   position: relative;
   border: 1px solid $color-surf-2;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     display: flex;
   }
 }
@@ -123,11 +123,11 @@
   position: relative;
   border: 1px solid $color-surf-2;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     display: flex;
   }
 }
@@ -136,11 +136,11 @@
   display: flex;
   border: 1px solid $color-surf-2;
 
-  @include onTablet {
+  @include on-tablet {
     display: none;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     display: none;
   }
 }
@@ -149,7 +149,7 @@
   display: flex;
   border: 1px solid $color-surf-2;
 
-  @include onDesktop {
+  @include on-desktop {
     display: none;
   }
 }
@@ -170,12 +170,12 @@
   justify-content: center;
   align-items: center;
 
-  @include onTablet {
+  @include on-tablet {
     top: 11px;
     left: 35px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     top: 17px;
     left: 34px;
   }

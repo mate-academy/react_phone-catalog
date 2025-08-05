@@ -7,12 +7,12 @@
     display: block;
     gap: 64px;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       gap: 17px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       display: flex;
       gap: 64px; // is it really needed here?
     }
@@ -40,7 +40,7 @@
       border-color: rgba(133, 18, 183, 0.78);
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 80px;
       height: 80px;
     }
@@ -51,7 +51,7 @@
     height: 287px;
     object-fit: contain;
 
-    @include onTablet {
+    @include on-tablet {
       width: 464px;
       height: 464px;
     }
@@ -105,11 +105,11 @@
     text-align: center;
     cursor: pointer;
 
-    @include onTablet {
+    @include on-tablet {
       width: 180px;
     }
 
-    // @include onDesktop {
+    // @include on-desktop {
     //   width: 263px; //is it really needed?
     // }
   }
@@ -161,7 +161,7 @@
     display: block;
     gap: 64px;
 
-    @include onDesktop {
+    @include on-desktop {
       display: flex;
     }
   }
@@ -170,7 +170,7 @@
   &__wrapperTech {
     width: 100%;
 
-    @include onDesktop {
+    @include on-desktop {
       width: 50%;
     }
   }

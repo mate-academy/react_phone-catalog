@@ -10,12 +10,12 @@
     transform: scale(1.05);
   }
 
-  @include onTablet {
+  @include on-tablet {
     width: 592px;
     height: 221px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     width: 1040px;
     height: 400px;
   }
@@ -35,12 +35,12 @@
   width: 320px;
   height: 320px;
 
-  @include onTablet {
+  @include on-tablet {
     width: 592px;
     height: 221px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     width: 1040px;
     height: 400px;
   }
@@ -68,7 +68,7 @@
     color: themed('colorSwiperText');
   }
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
     align-items: center;
     justify-content: center;

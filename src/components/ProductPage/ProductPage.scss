@@ -3,11 +3,11 @@
 .main__phonepage {
   margin: 0 16px;
 
-  @include onTablet {
+  @include on-tablet {
     margin: 0 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     margin: 0 32px;
   }
 }
@@ -50,11 +50,11 @@
   justify-content: center;
   margin-top: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     grid-template-columns: repeat(auto-fit, minmax(272px, 2fr));
   }
 
-  @include onDesktop {
+  @include on-desktop {
     grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
     gap: 40px 16px;
   }

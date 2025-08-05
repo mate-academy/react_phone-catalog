@@ -14,12 +14,12 @@
     background: themed('colorHeaderFooter');
   }
 
-  @include onTablet {
+  @include on-tablet {
     flex: 0 0 33.33%;
     margin: 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     flex: 0 0 calc(50% / 4);
     margin: 0;
   }

@@ -13,7 +13,7 @@
     transition: transform 0.3s ease-in-out;
     overflow: hidden;
 
-    @include onDesktop {
+    @include on-desktop {
       justify-content: center;
     }
   }

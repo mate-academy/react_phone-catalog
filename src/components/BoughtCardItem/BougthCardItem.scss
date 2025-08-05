@@ -15,7 +15,7 @@
       background: themed('colorCart');
     }
 
-    @include onDesktop {
+    @include on-desktop {
       display: flex;
     }
   }
@@ -26,7 +26,7 @@
     gap: 24px;
     padding-bottom: 16px;
 
-    @include onDesktop {
+    @include on-desktop {
       padding-bottom: 0;
     }
   }
@@ -36,7 +36,7 @@
     align-items: center;
     gap: 60px;
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 24px;
     }
   }

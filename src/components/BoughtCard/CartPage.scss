@@ -18,11 +18,11 @@
     min-width: 25%;
   }
 
-  @include onTablet {
+  @include on-tablet {
     display: block;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     display: flex;
     min-width: 368px;
   }

@@ -17,7 +17,7 @@
     height: 257px;
     border-top: 1px solid $color-elem-text;
 
-    @include onTablet {
+    @include on-tablet {
       height: 96px;
       display: flex;
       align-items: center;
@@ -32,7 +32,7 @@
     display: flex;
     cursor: pointer;
 
-    @include onTablet {
+    @include on-tablet {
       margin: 32px 0 32px 32px;
     }
   }
@@ -44,7 +44,7 @@
     margin-top: 32px;
     gap: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       margin: 0 32px 0 0;
       justify-content: space-between;
     }
@@ -75,14 +75,14 @@
   padding: 0;
   margin: 32px 0 0 16px;
 
-  @include onTablet {
+  @include on-tablet {
     margin: 0;
     flex-direction: row;
     gap: 13px;
     justify-content: space-between;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     gap: 106px;
   }
 }

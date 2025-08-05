@@ -17,12 +17,12 @@
   padding: 0 20px;
   color: $color-white;
 
-  @include onTablet {
+  @include on-tablet {
     width: 80%;
     margin: 32px 24px;
   }
 
-  @include onMobile {
+  @include on-mobile {
     width: 82%;
     font-size: 32px;
     margin: 24px 0;
@@ -58,7 +58,7 @@
 .homepage__hotproduct {
   margin: 0 16px;
 
-  @include onTablet {
+  @include on-tablet {
     margin: 0 32px;
   }
 }

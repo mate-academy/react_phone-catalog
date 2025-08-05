@@ -9,7 +9,7 @@
   gap: 16px;
   padding-top: 50px;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
     justify-content: center;
   }
@@ -20,12 +20,12 @@
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
 
-    @include onTablet {
+    @include on-tablet {
       width: 187px;
       height: 187px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 368px;
       height: 368px;
     }

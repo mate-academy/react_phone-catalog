@@ -7,51 +7,52 @@
   }
 }
 
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin onDesktop {
+@mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
-@mixin onMobile {
+@mixin on-mobile {
   @media (min-width: $mobile-min-width) {
     @content;
   }
 }
 
-@mixin contentPaddingInline {
+@mixin content-padding-inline {
   padding-inline: 20px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-inline: 41px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     margin-inline: auto;
     max-width: 1020px;
     padding-inline: 54px;
   }
 }
 
-@mixin pageGrid {
+@mixin page-grid {
   --colums: 2;
 
   display: grid;
   column-gap: 20px;
   grid-template-columns: repeat(var(--colums), 1fr);
 
-  @include onTablet {
+  @include on-tablet {
     --colums: 6;
+    
     column-gap: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     --colums: 12;
   }
 }
