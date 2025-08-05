@@ -30,104 +30,104 @@
     border: 1px solid transparent;
     border-image: initial;
   }
+}
 
-  &__container {
-    display: flex;
-    height: 281px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.product__container {
+  display: flex;
+  height: 281px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.product__image {
+  height: 281px;
+  object-fit: cover;
+  transition: all 1s ease;
+
+  &:hover {
+    transform: scale(1.05);
   }
+}
 
-  &__image {
-    height: 281px;
-    object-fit: cover;
-    transition: all 1s ease;
+.product__name {
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $color-white;
+  min-height: 44px;
+  width: 100%;
+  text-transform: uppercase;
+  margin: 24px 0 0;
+  overflow: hidden;
+  cursor: pointer;
 
-    &:hover {
-      transform: scale(1.05);
-    }
+  @include themy($themes) {
+    color: themed('colorText');
   }
+}
 
-  &__name {
-    display: -webkit-box;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    font-family: Mont, sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    color: $color-white;
-    min-height: 44px;
-    width: 100%;
-    text-transform: uppercase;
-    margin: 24px 0 0;
-    overflow: hidden;
-    cursor: pointer;
+.product__discount {
+  display: flex;
+  gap: 8px;
+}
 
-    @include themy($themes) {
-      color: themed('colorText');
-    }
+.product__price {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  color: $color-white;
+  margin: 8px 0 0; // there was a suggestion about 56px 0;
+
+  @include themy($themes) {
+    color: themed('colorText');
   }
+}
 
-  &__discount {
-    display: flex;
-    gap: 8px;
-  }
+.product__fullprice {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  color: $color-second-title;
+  margin: 8px 0 0;
+  text-decoration: line-through;
+}
 
-  &__price {
-    font-family: Mont-Bold, sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 31px;
-    color: $color-white;
-    margin: 8px 0 0; // there was a suggestion about 56px 0;
+.product__line {
+  border: 1px solid $color-elem-text;
+  margin: 8px 0 0;
+}
 
-    @include themy($themes) {
-      color: themed('colorText');
-    }
-  }
+.product__information {
+  padding: 8px 0 0;
+}
 
-  &__fullprice {
-    font-family: Mont-Bold, sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 31px;
-    color: $color-second-title;
-    margin: 8px 0 0;
-    text-decoration: line-through;
-  }
+.product__informationFull {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  height: 15px;
+  padding-bottom: 8px;
+}
 
-  &__line {
-    border: 1px solid $color-elem-text;
-    margin: 8px 0 0;
-  }
+.product__screenTitle {
+  color: $color-second-title;
+}
 
-  &__information {
-    padding: 8px 0 0;
-  }
+.product__screenDescription {
+  text-decoration: none;
+  color: $color-white;
 
-  &__informationFull {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    justify-content: space-between;
-    height: 15px;
-    padding-bottom: 8px;
-  }
-
-  &__screenTitle {
-    color: $color-second-title;
-  }
-
-  &__screenDescription {
-    text-decoration: none;
-    color: $color-white;
-
-    @include themy($themes) {
-      color: themed('colorText');
-    }
+  @include themy($themes) {
+    color: themed('colorText');
   }
 }
 
