@@ -63,6 +63,11 @@ export const ProductCategoryPage: React.FC = () => {
     <div className="category-page">
       <BreadcrumbsNav />
 
+      <div className="title-models-block">
+        <div className="category-title">{categoryTitles[category]}</div>
+        <p className="main-body-text-14">{totalModels} models</p>
+      </div>
+      
       <Dropdown
         perPage={perPage}
         updatePerPage={updatePerPage}
@@ -70,10 +75,6 @@ export const ProductCategoryPage: React.FC = () => {
         updateSort={updateSort}
       />
 
-      <div className="title-models-block">
-        <div className="category-title">{categoryTitles[category]}</div>
-        <p className="main-body-text-14">{totalModels} models</p>
-      </div>
 
       <div className="category-models">
         {products.map(product => (

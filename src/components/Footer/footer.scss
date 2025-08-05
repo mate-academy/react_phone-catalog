@@ -5,7 +5,6 @@
   background-color: $main-bg-color;
   border-top: 1px solid $border-color;
   justify-content: center;
-  // bottom: 0;
 
   @include onTablet {
     padding: 32px;
@@ -36,7 +35,6 @@
           width: 89px;
           height: 32px;
         }
-
       }
     }
 
@@ -72,10 +70,21 @@
       gap: 16px;
       align-items: center;
 
+
+      .button-box {
+        &:hover .button-name {
+          color: $text-main-color;
+          cursor: pointer;
+        }
+
+      }
+
+
       .button-name {
         font-weight: 700;
         font-size: 12px;
         color: $text-not-active-color;
+        transition: all 0.5s ease;
       }
 
       .button {
