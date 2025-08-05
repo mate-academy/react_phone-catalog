@@ -26,9 +26,9 @@ const WelcomeSlider: React.FC = () => {
   ]);
 
   const updateImageBasedOnWidth = () => {
-    let newPathFirstImage = 'img/mobile-banner.svg'; // Дефолтне значення
+    let newPathFirstImage = 'img/mobile-banner.svg';
     let newPathSecondImage = 'public/img/banner-3.0faf6182921a87c68d96.png';
-    let newPathThirdImage = 'public/img/banner-2.9b3f155545f266760333.png'; //
+    let newPathThirdImage = 'public/img/banner-2.9b3f155545f266760333.png';
 
     if (window.innerWidth >= 640) {
       newPathFirstImage = 'public/img/face-banner.svg';
