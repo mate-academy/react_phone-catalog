@@ -48,9 +48,9 @@ export const ShopByCategory: FC = () => {
                   {t('categoryTitle.phones')}
                 </h4>
 
-                <div
-                  className={styles.amount}
-                >{`${phonesAmount} ${t('models')}`}</div>
+                <div className={styles.amount}>
+                  {t('models', { count: phonesAmount })}
+                </div>
               </div>
             </article>
           </Link>
@@ -69,7 +69,7 @@ export const ShopByCategory: FC = () => {
                 </h4>
 
                 <div className={styles.amount}>
-                  {`${tabletsAmount} ${t('models')}`}
+                  {t('models', { count: tabletsAmount })}
                 </div>
               </div>
             </article>
@@ -88,9 +88,9 @@ export const ShopByCategory: FC = () => {
                   {t('categoryTitle.accessories')}
                 </h4>
 
-                <div
-                  className={styles.amount}
-                >{`${accessoriesAmount} ${t('models')}`}</div>
+                <div className={styles.amount}>
+                  {t('models', { count: accessoriesAmount })}
+                </div>
               </div>
             </article>
           </Link>

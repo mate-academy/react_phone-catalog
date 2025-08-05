@@ -19,7 +19,8 @@
     "tablets": "Tablets",
     "accessories": "Accessories"
   },
-  "models": "models",
+  "models_one": "{{count}} model",
+  "models_other": "{{count}} models",
   "specsItemProp": {
     "screen": "Screen",
     "capacity": "Capacity",

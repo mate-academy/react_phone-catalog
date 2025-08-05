@@ -19,7 +19,10 @@
     "tablets": "Планшети",
     "accessories": "Аксесуари"
   },
-  "models": "моделей",
+  "models_one": "{{count}} модель",
+  "models_few": "{{count}} моделі",
+  "models_many": "{{count}} моделей",
+  "models_zero": "{{count}} моделей",
   "specsItemProp": {
     "screen": "Екран",
     "capacity": "Ємність",
