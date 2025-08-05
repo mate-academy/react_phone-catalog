@@ -9,6 +9,11 @@ export const AccessoriesPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const AccessoriesPageCategory = {
+    path: '/accessories',
+    category: 'accessories',
+  };
+
   useEffect(() => {
     setLoading(true);
     getProductsByCategory('accessories')
@@ -23,6 +28,7 @@ export const AccessoriesPage = () => {
       products={accessories}
       loading={loading}
       error={error}
+      category={AccessoriesPageCategory}
     />
   );
 };

@@ -17,12 +17,18 @@ export const TabletsPage = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  const TabletsCategory = {
+    path: '/tablets',
+    category: 'tablets',
+  };
+
   return (
     <ProductList
       title="tablets"
       products={tablets}
       loading={loading}
       error={error}
+      category={TabletsCategory}
     />
   );
 };

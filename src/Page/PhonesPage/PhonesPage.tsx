@@ -17,11 +17,17 @@ export const PhonesPage = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  const mobileCategory = {
+    path: '/phones',
+    category: 'phones',
+  };
+
   return (
     <ProductList
       title="Mobile phones"
       products={phones}
       loading={loading}
+      category={mobileCategory}
       error={error}
     />
   );
