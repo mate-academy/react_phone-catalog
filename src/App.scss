@@ -19,7 +19,7 @@ body {
   @include themy($themes) {
     background: themed('colorHeaderFooter');
   }
-  
+
   display: flex;
   flex-direction: column;
   background-color: $color-black;
@@ -39,7 +39,8 @@ body {
 
 .container__page {
   background-color: $color-black;
-  max-width: 1200px;
+  
+  // max-width: 1200px;
   margin: 0 auto;
 
   @include themy($themes) {

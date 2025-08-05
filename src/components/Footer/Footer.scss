@@ -12,61 +12,72 @@
   @include themy($themes) {
     background: themed('colorHeaderFooter');
   }
+}
 
-  &__container {
-    height: 257px;
-    border-top: 1px solid $color-elem-text;
+.footer__container {
+  height: 257px;
+  border-top: 1px solid $color-elem-text;
 
-    @include on-tablet {
-      height: 96px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-  }
-
-  &__logo {
-    margin: 32px 0 16px 16px;
+  @include on-tablet {
+    height: 96px;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    display: flex;
-    cursor: pointer;
-
-    @include on-tablet {
-      margin: 32px 0 32px 32px;
-    }
-  }
-
-  &__button {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    margin-top: 32px;
-    gap: 16px;
-
-    @include on-tablet {
-      margin: 0 32px 0 0;
-      justify-content: space-between;
-    }
-  }
-
-  &__buttonsName {
-    font-family: Mont-SemiBold, sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 15px;
-    color: $color-surf-2;
-  }
-
-  &__btn {
-    color: $color-white;
-    width: 32px;
-    height: 32px;
-    background-color: $color-surf-2;
-    border: 1px solid $color-surf-2;
-    cursor: pointer;
   }
 }
+
+.footer__logo {
+  margin: 32px 0 16px 16px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  cursor: pointer;
+
+  @include on-tablet {
+    margin: 32px 0 32px 32px;
+  }
+}
+
+.footer__button {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 32px;
+  gap: 16px;
+
+  @include on-tablet {
+    margin: 0 32px 0 0;
+    justify-content: space-between;
+  }
+}
+
+.footer__buttonsName {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: $color-surf-2;
+}
+
+.footer__btn {
+  color: $color-white;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-surf-2;
+  background-color: $color-surf-2;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: $color-surf-1;
+  }
+
+  @include themy($themes) {
+    background: themed('colorSwiperBG');
+  }
+}
+
+
 
 .footer-brand {
   display: flex;

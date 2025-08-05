@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.svg';
 import logoLight from '../../img/logoLight.svg';
-import arrowUp from '../../img/arrowUp.svg';
+import up from '../../img/arrowUp.svg';
 import './Footer.scss';
 import { useContext } from 'react';
 import { ThemeContext } from '../Themes/Themes';
@@ -45,9 +45,8 @@ export const Footer = () => {
           </ul>
           <div className="footer__button">
             <h3 className="footer__buttonsName">Back to top</h3>
-            <button className="fotter_btn" onClick={scrollTop}>
-              <img src={arrowUp} alt="Scroll to top" />
-              {/* theme changes are not take into calculation*/}
+            <button className="footer__btn" onClick={scrollTop}>
+              <img className="btn-img" src={up} alt="up" />
             </button>
           </div>
         </div>
