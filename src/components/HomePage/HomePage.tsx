@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 // import { TabletInfoType } from '../../types/TabletInfoType';
 
 import { AllProductsType } from '../../types/AllProductsType';
-import { BannerSwiper } from '../BBBBBBannerSwiper';
+import { BannerSwiper } from '../BannerSwiper';
 import { ShopByCategorySection } from '../ShopByCategorySection';
 import { SwiperSection } from '../SwiperSection';
 

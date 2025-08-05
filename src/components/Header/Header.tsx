@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { BurgerNavigation } from '../BurgerNavigation';
-import { HeaderNavigation } from '../HHHHHHeaderNavigation';
+import { HeaderNavigation } from '../HeaderNavigation';
 import { useCurrentPath } from '../contexts/PathContext';
 
 export const Header = () => {
