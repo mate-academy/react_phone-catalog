@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 // import { TabletInfoType } from '../../types/TabletInfoType';
 
 import { AllProductsType } from '../../types/AllProductsType';
-import { BannerSwiper } from '../BannerSwiper';
+import { BannerSwiper } from '../BBBBBBannerSwiper';
 import { ShopByCategorySection } from '../ShopByCategorySection';
 import { SwiperSection } from '../SwiperSection';
 
@@ -12,9 +12,9 @@ import { SwiperSection } from '../SwiperSection';
 
 export const HomePage: React.FC = () => {
   const [newPhones, setNewPhones] = useState<AllProductsType[]>([]);
-  const [discountedProducts, setDiscountedProducts] = useState<AllProductsType[]>(
-    [],
-  );
+  const [discountedProducts, setDiscountedProducts] = useState<
+    AllProductsType[]
+  >([]);
   const [totalPhoneModels, setTotalPhoneModels] = useState(0);
 
   const [totalTabletsModels, setTotalTabletsModels] = useState(0);
@@ -26,7 +26,6 @@ export const HomePage: React.FC = () => {
     fetch('/api/products.json')
       .then(res => res.json())
       .then((data: AllProductsType[]) => {
-
         const newModels = data
           .filter(phone => phone.year === 2022)
           .sort(() => Math.random() - 0.5)

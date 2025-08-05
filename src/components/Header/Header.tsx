@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { BurgerNavigation } from '../BurgerNavigation';
-import { HeaderNavigation } from '../HeaderNavigation';
+import { HeaderNavigation } from '../HHHHHHeaderNavigation';
 import { useCurrentPath } from '../contexts/PathContext';
 
 export const Header = () => {
@@ -42,7 +42,10 @@ export const Header = () => {
         </div>
       </div>
 
-      <BurgerNavigation isBurgerMenu={isBurgerMenu} onClose={() => setIsBurgerMenu(false)}/>
+      <BurgerNavigation
+        isBurgerMenu={isBurgerMenu}
+        onClose={() => setIsBurgerMenu(false)}
+      />
     </>
   );
 };
