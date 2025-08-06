@@ -39,6 +39,12 @@
     color: $text-main-color;
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.60);
   }
+
+  .not-active {
+    pointer-events: none;
+    opacity: 0.5; // визуально покажет, что кнопка "неактивна"
+    cursor: default;
+  }
 }
 
 

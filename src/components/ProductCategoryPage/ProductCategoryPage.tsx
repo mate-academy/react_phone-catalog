@@ -33,7 +33,7 @@ export const ProductCategoryPage: React.FC = () => {
       .then(res => res.json())
       .then((data: AllProductsType[]) => {
         let filteredProducts = data.filter(
-          product => product.category === category,
+          product => product.category.toLowerCase() === category.toLowerCase(),
         );
 
         if (sort === 'name') {
@@ -67,7 +67,7 @@ export const ProductCategoryPage: React.FC = () => {
         <div className="category-title">{categoryTitles[category]}</div>
         <p className="main-body-text-14">{totalModels} models</p>
       </div>
-      
+
       <Dropdown
         perPage={perPage}
         updatePerPage={updatePerPage}
