@@ -3,23 +3,23 @@
   transition: transform 1s ease-in-out;
 }
 
-.arrows {
-  display: flex;
-  gap: 16px;
-}
-
 .head {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.arrows {
+  display: flex;
+  gap: 16px;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
 .content {
   display: flex;
   gap: 16px;
   transition: transform 1s ease-in-out;
-}
-
-.wrapper {
-  overflow: hidden,
 }

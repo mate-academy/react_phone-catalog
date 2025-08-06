@@ -2,6 +2,21 @@
   grid-column: 1 / -1;
 }
 
+.carousel {
+  display: flex;
+  width: 100%;
+
+  @include on-tablet {
+    gap: 19px;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+    height: 400px;
+  }
+}
+
 .products {
   overflow: hidden;
   aspect-ratio: 1 / 1;
@@ -31,26 +46,6 @@
 
 .activeDash {
   background-color: var(--color-primary);
-}
-
-.carousel {
-  display: flex;
-  width: 100%;
-
-  @include on-tablet {
-    gap: 19px;
-    height: 189px;
-  }
-
-  @include on-desktop {
-    gap: 16px;
-    height: 400px;
-  }
-}
-
-.img {
-  width: 16px;
-  height: 16px;
 }
 
 .onTablet {

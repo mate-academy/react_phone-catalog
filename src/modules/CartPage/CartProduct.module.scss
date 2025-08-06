@@ -1,14 +1,15 @@
 .product {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 
   width: 288px;
-  height: 160px;
   padding: 16px;
   border: 1px solid var(--color-elements);
 
   background-color: var(--color-white);
+
+  box-sizing: border-box;
 
   @include on-tablet {
     flex-direction: row;
@@ -24,12 +25,11 @@
 
 .details {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
   align-items: center;
+  gap: 16px;
 
   @include on-tablet {
-    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
@@ -46,9 +46,16 @@
 
 .price {
   display: flex;
-  gap: 24px;
   align-items: center;
   justify-content: space-between;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.priceTitle {
+  margin: 0;
 }
 
 .counter {

@@ -17,11 +17,12 @@ export const Navbar: React.FC = () => {
     <>
       <nav className={styles.navbar}>
         <Logo location="navbar" />
+  
         <ul className={`${styles.list} ${styles.tablet}`}>
           <li className={`${styles.item} uppercaseText`}>
             <NavLink
               to="/"
-              className={({ isActive }) => (isActive ? styles.activeLink : '')}
+              className={({ isActive }) => (isActive ? `${styles.activeLink}` : '')}
             >
               home
             </NavLink>

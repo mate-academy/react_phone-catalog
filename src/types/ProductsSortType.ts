@@ -1,1 +1,1 @@
-export type ProductsSortType = 'Newest' | 'Alphabetically' | 'Chepest';
+export type ProductsSortType = 'age' | 'title' | 'price';

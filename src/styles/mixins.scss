@@ -25,22 +25,18 @@
 }
 
 @mixin page-grid {
-  
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 56px 16px;
   
   box-sizing: border-box;
   
   @include page-padding-inline;
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
-    row-gap: 64px;
   }
 
   @include on-desktop {
     grid-template-columns: repeat(24, 32px);
-    row-gap: 80px;
     max-width: 1200px;
     margin: 0 auto;
   }

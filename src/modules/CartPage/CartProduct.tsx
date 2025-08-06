@@ -5,15 +5,17 @@ import { useAppContext } from '../../contexts/AppContext';
 
 type CartProductProps = {
   product: Card;
+  onProductCountChange: (price: number, action: '+' | '-') => void;
 };
 
-export const CartProduct: React.FC<CartProductProps> = ({ product }) => {
+export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCountChange }) => {
   const { cartProductsIds, generateProductCode, setCartProductsIds } =
     useAppContext();
   const [counterValue, setCounterValue] = useState<number>(1);
 
   function handleCounterChange(action: '+' | '-') {
     if (action === '+') {
+      onProductCountChange(product.price, '+');
       setCounterValue(prev => prev + 1);
       return;
     }
@@ -22,6 +24,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product }) => {
       return;
     }
 
+    onProductCountChange(product.price, '-');
     setCounterValue(prev => prev - 1);
   }
 

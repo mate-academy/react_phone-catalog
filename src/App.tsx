@@ -7,7 +7,7 @@ import { useAppContext } from './contexts/AppContext';
 export const App = () => {
   const { isMenuOpen } = useAppContext();
   return (
-    <div style={{ overflow: isMenuOpen ? 'hidden' : 'scroll' }}>
+    <div className="wrapper" style={{ overflow: isMenuOpen ? 'hidden' : 'auto' }}>
       <Navbar />
       <Outlet />
       <Footer />

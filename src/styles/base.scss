@@ -3,18 +3,19 @@
 @use 'fonts' as *;
 
 body {
-  margin: 0;
-  padding: 0;
-  color: var(--text-color-dark);
-}
+  height: 100%;
 
-main {
-  padding-top: 48px;
   color: var(--text-color-dark);
+  margin: 0;
+  padding-top: 48px;
 
   @include on-desktop{
     padding-top: 64px;
   }
+}
+
+main {
+  color: var(--text-color-dark);
 }
 
 a {

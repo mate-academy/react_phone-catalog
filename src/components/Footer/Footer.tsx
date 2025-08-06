@@ -4,8 +4,8 @@ import { Logo } from '../Logo';
 import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => (
-  <div className={styles.footerWrapper}>
-    <footer className={styles.footer}>
+  <div className={styles.footer}>
+    <footer className={styles.footerContent}>
       <div className={styles.logo}>
         <Logo location="footer" />
       </div>
