@@ -6,7 +6,11 @@ import 'swiper/css/pagination';
 import './Swiper.scss';
 import back from '../../img/arrowLeft.svg';
 import goto from '../../img/arrowRight.svg';
+import backLight from '../../img/arLeftLight.svg';
+import gotoLight from '../../img/arRightLight.svg';
 import { useMediaQuery } from 'react-responsive';
+import { ThemeContext } from '../Themes';
+import { useContext } from 'react';
 
 const desktopImg = [
   'img/banner-dt-av.png',
@@ -23,12 +27,15 @@ const mobImg = [
 export const SliderSwiper = () => {
   const isMobile = useMediaQuery({ maxWidth: 550 });
   const images = isMobile ? mobImg : desktopImg;
+  const { theme } = useContext(ThemeContext);
+
+  const isBasicDark = theme === 'dark';
 
   return (
     <div>
       <div className="slider__wrapper">
         <button className="custom-prev">
-          <img src={back} alt="<" />
+          <img src={isBasicDark ? backLight : back} alt="<" />
         </button>
         <Swiper
           modules={[Autoplay, Navigation, Pagination]}
@@ -53,7 +60,7 @@ export const SliderSwiper = () => {
           ))}
         </Swiper>
         <button className="custom-next">
-          <img src={goto} alt=">" />
+          <img src={isBasicDark ? gotoLight : goto} alt=">" />
         </button>
       </div>
       <div id="pagination" className="custom-pagination"></div>

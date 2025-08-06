@@ -52,7 +52,7 @@
         background-color: $color-after;
 
         @include themy($themes) {
-          background-color: themed('colorBG');
+          background-color: themed('colorPaginHover');
         }
 
         &::after {

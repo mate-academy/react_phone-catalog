@@ -52,7 +52,7 @@
 }
 
 .custom-next,
-.custtom-prev {
+.custom-prev {
   display: none;
   color: $color-white;
   width: 32px;
@@ -60,6 +60,7 @@
   border: 1px solid $color-surf-2;
 
   &:hover {
+    color: $color-white;
     background-color: $color-icon-btn;
   }
 
@@ -87,23 +88,18 @@
   margin-top: 10px;
 
   .swiper-pagination-bullet {
-    background-color: gray;
+    background-color: rgb(114, 112, 112);
     opacity: 0.7;
     margin: 0 5px;
-
-    // width: 10px;   also there could be 14px
-    // height: 10px;       and 4px here
-
-    border-radius: 0; // 50% earlier
-    transition: background-color 0.3s ease; // was replaced here
+    width: 20px;
+    height: 5px;
+    margin-top: 20px;
+    border-radius: 0;
 
     &-active {
-      background-color: black;
+      background-color: rgb(245, 243, 243);
+      border: 1px solid gray;
       opacity: 1;
-    }
-
-    @include themy($themes) { // was replaced here
-      background-color: themed('colorPagination');
     }
   }
 }
