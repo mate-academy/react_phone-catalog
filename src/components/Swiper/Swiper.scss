@@ -58,6 +58,7 @@
   width: 32px;
   background-color: $color-surf-2;
   border: 1px solid $color-surf-2;
+  cursor: pointer;
 
   &:hover {
     color: $color-white;
@@ -65,7 +66,7 @@
   }
 
   @include themy($themes) {
-    background-color: themed('colorSwiperBG');
+    background-color: themed('colorPagination');
     color: themed('colorSwiperText');
   }
 
@@ -74,12 +75,6 @@
     align-items: center;
     justify-content: center;
   }
-}
-
-.swiper-pagination-bullet {
-  width: 14px;
-  height: 4px;
-  border: none;
 }
 
 .custom-pagination {
@@ -93,13 +88,16 @@
     margin: 0 5px;
     width: 20px;
     height: 5px;
-    margin-top: 20px;
+    margin-top: 40px;
     border-radius: 0;
 
     &-active {
-      background-color: rgb(245, 243, 243);
-      border: 1px solid gray;
+      background-color: rgb(14, 14, 14);
       opacity: 1;
+
+      @include themy($themes) {
+        background-color: themed('colorPaginActive');
+      }
     }
   }
 }
@@ -109,5 +107,3 @@
     background-color: themed('colorPaginActive');
   }
 }
-
-
