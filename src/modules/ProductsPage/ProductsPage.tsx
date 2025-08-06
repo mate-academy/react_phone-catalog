@@ -138,7 +138,13 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
       let sorted = [...prev];
       switch (sortType) {
         case 'age':
-          sorted.sort((a, b) => b.year - a.year);
+          sorted.sort((a, b) => {
+            if (a.year === b.year) {
+              return b.name.localeCompare(a.name);
+            } else {
+              return b.year - a.year;
+            }
+          });
           break;
         case 'title':
           sorted.sort((a, b) => a.name.localeCompare(b.name));

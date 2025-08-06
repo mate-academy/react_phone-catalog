@@ -37,6 +37,7 @@
 
   @include on-desktop {
     grid-template-columns: repeat(24, 32px);
+    gap: 16px;
     max-width: 1200px;
     margin: 0 auto;
   }
