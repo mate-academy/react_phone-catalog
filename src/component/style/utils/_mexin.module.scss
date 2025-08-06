@@ -48,10 +48,6 @@
   }
 }
 
-@mixin shake {
-  animation: shake 0.3s ease-in-out infinite alternate;
-}
-
 
 @mixin column {
   --columns:4;
@@ -76,6 +72,10 @@
 
     column-gap: 16px;
   }
+}
+
+@mixin shake {
+  animation: shake 0.3s ease-in-out infinite alternate;
 }
 
 @keyframes shake {
