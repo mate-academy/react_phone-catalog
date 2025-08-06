@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './BurgerMenu.module.scss';
 import { Logo } from '../Logo';
 import { NavLink } from 'react-router-dom';
@@ -10,6 +10,14 @@ type Props = {
 
 export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
   const { isMenuOpen, cartProductsIds, favouriteProductsIds } = useAppContext();
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isMenuOpen]);
 
   return (
     <header className={`${styles.burgerMenu} ${isMenuOpen ? styles.open : ''}`}>

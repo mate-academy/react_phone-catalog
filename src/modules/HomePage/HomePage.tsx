@@ -12,7 +12,7 @@ export const HomePage: React.FC = () => {
         filter={item => item.name.includes('14')}
       />
       <Categories />
-      <ProductsSlider title={'Hot prices'} filter={item => item} />
+      <ProductsSlider title={'Hot prices'} filter={item => item.price > 1000} />
     </main>
   );
 };

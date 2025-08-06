@@ -1,0 +1,39 @@
+.modal {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  padding: 15px 20px;
+  display: none;
+}
+
+.title {
+  margin: 0 0 25px 0;
+  font-family: Mont-Regular, sans-serif;
+}
+
+.open {
+  display: block;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  color: var(--color-primary);
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}

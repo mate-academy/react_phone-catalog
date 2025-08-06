@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './CartPage.module.scss';
 import { useAppContext } from '../../contexts/AppContext';
 import { CartProduct } from './CartProduct';
 import { getCardById } from '../shared/services/productService';
 import { Card } from '../../types/Card';
+import { ModalWindow } from './ModalWindow';
 
 export const CartPage: React.FC = () => {
   const { cartProductsIds } = useAppContext();
@@ -17,11 +18,12 @@ export const CartPage: React.FC = () => {
       }
     });
 
-    return sum
+    return sum;
   }
 
   const [totalSum, setTotalSum] = useState(countTotal());
   const [totalItems, setTotalItems] = useState(cartProductsIds.length);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleProductCountChange(price: number, action: '+' | '-') {
     if (action === '+') {
@@ -34,8 +36,21 @@ export const CartPage: React.FC = () => {
     setTotalItems(prev => prev - 1);
   }
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isModalOpen]);
+
   return (
-    <main className={styles.main}>
+    <main
+      className={`
+        ${styles.main} 
+        ${isModalOpen ? styles.isModalOpen : ''}
+      `}
+    >
       {cartProductsIds.length > 0 && (
         <>
           <h1 className={styles.title}>Cart</h1>
@@ -61,11 +76,26 @@ export const CartPage: React.FC = () => {
 
               <div className={styles.line}></div>
 
-              <button className={`${styles.button} buttonText`}>Checkout</button>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className={`${styles.button} buttonText`}
+              >Checkout</button>
             </div>
           </div>
         </>
       )}
+
+      <div
+        className={styles.overlay}
+        style={{ display: isModalOpen ? 'block' : 'none' }}
+        onClick={() => setIsModalOpen(false)}
+      ></div>
+
+      <ModalWindow
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+
 
       {cartProductsIds.length === 0 && (
         <img className={styles.emptyCart} src="/img/cart-is-empty.png" alt="Cart is empty" />
