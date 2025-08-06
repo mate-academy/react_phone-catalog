@@ -1,8 +1,4 @@
-@use '@constants/breakpoint' as *;
-@use '@constants/colors' as cl;
-@use '@mixins/typography/uppercase' as *;
-@use '@mixins/typography/smallText' as *;
-@use '@mixins/buttons/regularButton' as *;
+@use '@shared/styles' as s;
 
 .footer {
   display: grid;
@@ -15,7 +11,7 @@
   height: 257px;
   padding: 32px 16px;
 
-  box-shadow: inset 0 0 0 1px cl.$elements;
+  box-shadow: inset 0 0 0 1px s.$c-elements;
 
   > :first-child {
     display: flex;
@@ -36,7 +32,7 @@
     height: 65px;
   }
 
-    @media (min-width: $BREAKPOINT_TAB) {
+    @media (min-width: s.$c-BREAKPOINT_TAB) {
     grid-template-columns: 0.8fr 1fr 0.8fr;
     grid-template-rows: 1fr;
     justify-content: center;
@@ -54,7 +50,7 @@
     }
   }
 
-  @media (min-width: $BREAKPOINT_WIDE) {
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
     grid-template-columns: 360px 420px 360px;
 
     &__nav {
@@ -73,21 +69,25 @@
   box-sizing: border-box;
 
   > :first-child {
-    @include small-text;
-    
-    font-weight: 500;
+    @include s.t-small-text;
+
+    font-weight: s.$c-r;
 
     display: inline-block;
     line-height: 32px;
 
-    color: cl.$gray-secondary;
+    color: s.$c-grey-secondary;
   }
 
   > :last-child {
     width: 32px;
     height: 32px;
 
-    @include btn-reg;
+    @include s.m-btn-btn-menu;
+
+    &:hover {
+      @include s.m-btn-hover-reg;
+    }
   }
 }
 

@@ -1,17 +1,10 @@
-@use '@mixins/typography/bodyText' as *;
-@use '@mixins/buttons/blackenedButton' as *;
-@use '@mixins/buttons/regularButton' as *;
-@use '@constants/fonts' as *;
-@use '@constants/colors' as cl;
-@use '@constants/productCardSizes' as *;
-@use '@constants/breakpoint' as *;
-@use '@mixins/typography/smallText' as *;
+@use '@shared/styles' as s;
 
 .container {
   display: flex;
   box-sizing: border-box;
-  width: $card-width;
-  height: $card-height;
+  width: s.$c-card-width;
+  height: s.$c-card-height;
 }
 
 .product-card {
@@ -19,7 +12,7 @@
   flex-direction: column;
   gap: 8px;
   justify-content: space-between;
-  border: 1px solid cl.$elements;
+  border: 1px solid s.$c-elements;
 
   box-sizing: border-box;
   width: 100%;
@@ -35,16 +28,16 @@
   height: auto;
   margin: auto;
 
-  @include body-text;
+  @include s.t-body-text;
 }
 
 .price {
   width: 100%;
   padding-bottom: 8px;
-  border-bottom: 1px solid cl.$elements;
+  border-bottom: 1px solid s.$c-elements;
 
-  font-size: $lg;
-  font-weight: $s-u;
+  font-size: s.$c-lg;
+  font-weight: s.$c-s-u;
   line-height: 140%;
   letter-spacing: 0;
 }
@@ -52,7 +45,7 @@
 .full-price {
   display: inline-block;
   margin-left: 8px;
-  color: cl.$gray-secondary;
+  color: s.$c-grey-secondary;
   text-decoration: line-through;
   font-weight: 600;
 }
@@ -63,11 +56,11 @@
   height: 129px;
   justify-content: center;
 
-  @media (min-width: $BREAKPOINT_TAB) {
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
     height: 181px;
   }
 
-  @media (min-width: $BREAKPOINT_WIDE) {
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
     height: 196px;
   }
 }
@@ -89,10 +82,10 @@
   width: 100%;
   padding: 8px 0;
 
-  @include small-text;
+  @include s.t-small-text;
 
   &__type {
-    color: cl.$gray-secondary;
+    color: s.$c-grey-secondary;
   }
 
   &__val {

@@ -1,99 +1,55 @@
-@use '@constants/breakpoint' as *;
-@use '@constants/colors' as cl;
-@use '@constants/header-button-size' as bs;
-@use '@mixins/hoverDefault' as *;
-@use '@mixins/buttons/regularButton' as *;
+@use '@shared/styles' as s;
 
 $logo-width-mob: 96px;
 $logo-width-wide: 128px;
+$button-width: 48px;
+$button-width-wide: 64px;
 
 .header {
   display: grid;
-  grid-template-columns: $logo-width-mob 1fr 0 bs.$button-width;
+  grid-template-columns: $logo-width-mob 1fr 0 $button-width;
   column-gap: 16px;
-
+  background-color: s.$c-white;
   width: 100%;
   height: 48px;
-  border-bottom: 1px solid cl.$elements;
-
-  background-color: cl.$white;
+  border-bottom: 1px solid s.$c-elements;
+  box-sizing: border-box;
 
   > :first-child {
-    left: 0;
-
     display: flex;
-
-    box-sizing: border-box;
     padding: 13px 16px;
   }
+}
 
-  &__nav {
-    display: none;
-  }
+.logo-image {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
 
-  @media (min-width: $BREAKPOINT_TAB) {
-    grid-template-columns: $logo-width-mob 329px 1fr calc(bs.$button-width * 2);
-
-    &__nav {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-      justify-content: flex-start;
-
-      height: 100%;
-    }
-  }
-
-  @media (min-width: $BREAKPOINT_WIDE) {
-    grid-template-columns: $logo-width-wide 425px 1fr calc(
-        bs.$button-width-wide * 2
-      );
-    column-gap: 24px;
-    height: 64px;
-
-    > :first-child {
-      padding: 18px 24px;
-    }
-
-    &__nav {
-      gap: 64px;
-    }
-  }
+.main-navigation {
+  display: none;
 }
 
 .buttons-container {
   display: flex;
   flex-direction: row;
   grid-column: 4;
-
   height: 48px;
 
   > * {
     width: 48px;
-    position: relative;
-    @include btn-reg;
+    height: 100%;
+
+    @include s.m-btn-btn-reg;
+
+    &:hover {
+      @include s.m-btn-hover-reg;
+    }
   }
 
   > :not(:first-child) {
     display: none;
-  }
-
-  @media (min-width: $BREAKPOINT_TAB) {
-    > :first-child {
-      display: none;
-    }
-
-    > :not(:first-child) {
-      display: flex;
-    }
-  }
-
-  @media (min-width: $BREAKPOINT_WIDE) {
-    height: 64px;
-
-    > * {
-    width: 64px;
-    }
   }
 }
 
@@ -104,4 +60,57 @@ $logo-width-wide: 128px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (min-width: s.$c-BREAKPOINT_TAB) {
+  .header {
+    grid-template-columns: $logo-width-mob 329px 1fr calc($button-width * 2);
+  }
+
+  .main-navigation {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      justify-content: flex-start;
+      box-sizing: border-box;
+      height: 100%;
+  }
+
+  .buttons-container {
+    > * {
+      border-top: 0;
+      border-right: 0;
+    }
+    > :first-child {
+      display: none;
+    }
+
+    > :not(:first-child) {
+      display: flex;
+    }
+  }
+}
+
+@media (min-width: s.$c-BREAKPOINT_WIDE) {
+  .header {
+    grid-template-columns: $logo-width-wide 425px 1fr calc($button-width-wide * 2);
+    column-gap: 24px;
+    height: 64px;
+
+    > :first-child {
+      padding: 18px 24px;
+    }
+  }
+
+  .main-navigation {
+    gap: 64px;
+  }
+
+  .buttons-container {
+    height: 64px;
+
+    > * {
+    width: 64px;
+    }
+  }
 }

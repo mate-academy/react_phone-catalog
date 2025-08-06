@@ -4,17 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { NavigationLink } from '@ui/navLink';
 import { ArrowIcon } from '@shared/icons';
 
-type Props = {
-  className: string;
-};
-
 const goToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-export const Footer: React.FC<Props> = ({ className }) => {
+export const Footer: React.FC = () => {
   return (
-    <footer className={`${styles.footer} ${className}`}>
+    <footer className={styles.footer}>
       <NavLink to="/">
         <img
           src="/src/shared/icons/logo.svg"

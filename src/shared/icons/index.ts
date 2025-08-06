@@ -3,4 +3,4 @@ export { CartIcon } from './cartIcon';
 export { HomeIcon } from './homeIcon';
 export { HeartIcon } from './heartIcon';
 export { BurgerMenuIcon } from './burger-menu';
-export { ItemsIndex } from './itemsIndexCircle';
+export { ItemsCounter } from './itemsCounter';

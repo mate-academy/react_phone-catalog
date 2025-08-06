@@ -1,29 +1,27 @@
-@use '@shared/styles/normalize';
-@use '@constants/colors' as cl;
-
+@use '@shared/styles' as s;
 @import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap';
 
 * {
   font-family: Montserrat, sans-serif;
-  color: cl.$gray-primary;
+  color: s.$c-grey-primary;
 }
 
 .App {
   display: flex;
   flex-direction: column;
-
+  position: relative;
   width: 100%;
   min-height: 100vh;
 
-  background-color: cl.$white;
+  background-color: s.$c-white;
 
-  &__header {
+  & > header {
     position: sticky;
-    z-index: 100;
+    z-index: s.$c-header;
     top: 0;
   }
 
-  &__footer {
+  & > footer {
     margin-top: auto;
   }
 }

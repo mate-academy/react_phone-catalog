@@ -119,14 +119,13 @@ module.exports = {
       alias: {
         map: [
           ['@app', './src/app'],
-          ['@constants', './src/shared/constants'],
           ['@ui', './src/shared/ui'],
-          ['@mixins', './src/shared/styles/mixins'],
           ['@shared', './src/shared'],
           ['@entities', './src/entities'],
           ['@widgets', './src/widgets'],
           ['@features', './src/features'],
           ['@server', './src/serverMock'],
+          ['@pages', './src/pages'],
         ],
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
       },

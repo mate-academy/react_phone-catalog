@@ -1,6 +1,4 @@
-@use '@mixins/buttons/regularButton' as rb;
-@use '@mixins/buttons/blackenedButton' as bb;
-@use '@constants/colors' as *;
+@use '@shared/styles' as s;
 
 .container {
   display: grid;
@@ -11,17 +9,17 @@
 }
 
 .fav-button {
-  @include rb.btn-reg;
+  @include s.m-btn-btn-reg;
 }
 
 .cart-button {
-  @include bb.btn-blc;
+  @include s.m-btn-btn-blc;
 
   height: 40px;
 
   &__active {
-    @include rb.btn-reg;
-    
-    color: $green;
+    @include s.m-btn-btn-reg;
+
+    color: s.$c-green;
   }
 }

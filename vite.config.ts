@@ -5,13 +5,12 @@ import path from 'node:path';
 const alias = {
   '@app': path.resolve(__dirname, 'src/app'),
   '@shared':path.resolve(__dirname, 'src/shared'),
-  '@constants': path.resolve(__dirname, 'src/shared/constants'),
   '@ui': path.resolve(__dirname, 'src/shared/ui'),
-  '@mixins': path.resolve(__dirname, 'src/shared/styles/mixins'),
   '@entities': path.resolve(__dirname, 'src/entities'),
   '@widgets': path.resolve(__dirname, 'src/widgets'),
   '@features': path.resolve(__dirname, 'src/features'),
   '@server': path.resolve(__dirname, 'src/serverMock'),
+  '@pages': path.resolve(__dirname, 'src/pages'),
 };
 
 // https://vitejs.dev/config/

@@ -1,4 +1,4 @@
-@use '@shared/constants/breakpoint' as *;
+@use '@shared/styles' as s;
 
 .container {
   display: flex;
@@ -7,7 +7,7 @@
   aspect-ratio: 1 / 1;
   width: 100%;
 
-  @media (min-width: $BREAKPOINT_TAB) {
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
     aspect-ratio: 3 / 1;
   }
 }

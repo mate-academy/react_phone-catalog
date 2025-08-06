@@ -1,0 +1,68 @@
+@use '@shared/styles/typography/bodyTexts.scss' as t;
+@use '@shared/styles/constants/' as c;
+
+$primary-grey-border: 1px solid c.$grey-primary;
+
+// #region Base
+@mixin button-base {
+  display: flex;
+  position: relative;
+  z-index: c.$regular;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  outline: none;
+
+  @include t.button-text;
+
+  &:hover {
+    outline: none;
+    z-index: c.$attention;
+  }
+
+  &:active {
+    outline: none;
+  }
+}
+// #endregion
+
+// #region Buttons
+@mixin btn-blc {
+  background-color: c.$grey-primary;
+  color: c.$white;
+
+  @include button-base;
+}
+
+@mixin btn-reg {
+  border: 1px solid c.$elements;
+
+  @include button-base;
+}
+
+@mixin btn-menu {
+  border: 1px solid c.$icons;
+
+  @include button-base;
+}
+// #endregion
+
+// #region Hover
+@mixin hover-reg {
+  border: $primary-grey-border;
+}
+
+@mixin hover-black {
+  box-shadow: 0 3px 13px #17203166;
+}
+// #endregion
+
+// #region Active
+@mixin active-green {
+  color: c.$green;
+  border: c.$elements;
+  background-color: c.$white;
+  box-shadow: none;
+}
+// #endregion
+

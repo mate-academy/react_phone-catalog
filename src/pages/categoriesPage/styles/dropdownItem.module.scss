@@ -1,5 +1,4 @@
-@use '@constants/colors' as *;
-@use '@mixins/typography/bodyText' as *;
+@use '@shared/styles' as s;
 
 .container {
   display: flex;
@@ -9,7 +8,7 @@
 }
 
 .title {
-  color: $gray-secondary;
+  color: s.$c-grey-secondary;
 }
 
 .button {
@@ -20,21 +19,21 @@
   height: 40px;
   line-height: 40px;
   width: 100%;
-  border: 1px solid $icons;
+  border: 1px solid s.$c-icons;
 
   &:hover {
-    border-color: $gray-secondary;
+    border-color: s.$c-grey-secondary;
   }
 
   &:focus {
-    border-color: $gray-primary;
+    border-color: s.$c-grey-primary;
   }
 
   svg {
     margin: 12px;;
     width: 16px !important;
     > path {
-      fill: $icons;
+      fill: s.$c-icons;
     }
   }
 }
@@ -47,7 +46,7 @@
   top: calc(100% + 4px);
   flex-direction: column;
   padding: 8px 0;
-  border: 1px solid $elements;
+  border: 1px solid s.$c-elements;
   align-items: flex-start;
   z-index: 20;
   background-color: #fff;
@@ -63,12 +62,12 @@
     box-sizing: border-box;
 
     @include body-text;
-    
-    color: $gray-secondary
+
+    color: s.$c-grey-secondary
 
     &--active {
-      color: $gray-primary;
-      background-color: $hover-bg;
+      color: s.$c-grey-primary;
+      background-color: s.$c-hover-bg;
     }
   }
 }

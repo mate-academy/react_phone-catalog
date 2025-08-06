@@ -1,4 +1,4 @@
-@use '@constants/colors' as *;
+@use '@shared/styles' as s;
 
 .container {
   display: flex;
@@ -20,7 +20,7 @@
 
 .text {
   z-index: 30;
-  color: $white;
+  color: s.$c-white;
   font-weight: 600;
   font-size: 9px;
   position: relative;

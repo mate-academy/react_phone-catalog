@@ -1,0 +1,52 @@
+@use '@constants/breakpoint' as br;
+@use '@constants/fonts' as f;
+
+@mixin h1 {
+  font-size: f.$xlg;
+  font-weight: f.$s-u;
+  line-height: f.$lh-xxl;
+  letter-spacing: f.$neg;
+
+  @media (min-width: br.$BREAKPOINT_TAB) {
+    font-size: f.$xxlg;
+    line-height: f.$lh-xxxl;
+  }
+}
+
+@mixin h2 {
+  font-size: f.$lg;
+  font-weight: f.$b;
+  line-height: f.$lh-xl;
+  letter-spacing: f.$null;
+
+  @media (min-width: br.$BREAKPOINT_TAB) {
+    font-size: f.$xlg;
+    line-height: f.$lh-xxl;
+    letter-spacing: f.$neg;
+  }
+}
+
+@mixin h3 {
+  font-size: f.$mid;
+  font-weight: f.$s-u;
+  line-height: f.$lh-l;
+  letter-spacing: f.$null;
+
+  @media (min-width: br.$BREAKPOINT_TAB) {
+    font-size: f.$lg;
+    font-weight: f.$b;
+    line-height: f.$lh-xl;
+  }
+}
+
+@mixin h4 {
+  font-size: f.$sm;
+  font-weight: f.$s-u;
+  line-height: f.$lh-s;
+  letter-spacing: f.$null;
+
+  @media (min-width: br.$BREAKPOINT_TAB) {
+    font-size: f.$mid;
+    line-height: f.$lh-l;
+  }
+}

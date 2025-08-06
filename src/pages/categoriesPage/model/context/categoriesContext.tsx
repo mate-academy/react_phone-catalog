@@ -1,8 +1,9 @@
-import { createContext, useContext, ReactNode } from 'react';
+import { createContext, ReactNode } from 'react';
 import { Category } from '@shared/types/APITypes';
 import { useSearchParams } from 'react-router-dom';
 import { UrlParams } from '../../types';
 import { UrlParamValues } from '../../types/contextTypes';
+import { createContextHook } from '@shared/helpers/contextProvider';
 
 type CategoriesContextType = {
   category: Category;
@@ -19,7 +20,7 @@ interface CategoriesProviderProps {
   category: Category;
 }
 
-export const CategoriesProvider = ({
+const CategoriesProvider = ({
   children,
   category,
 }: CategoriesProviderProps) => {
@@ -58,12 +59,6 @@ export const CategoriesProvider = ({
   );
 };
 
-export const useCategoriesContext = () => {
-  const context = useContext(CategoriesContext);
+const useCategoriesContext = createContextHook(CategoriesContext);
 
-  if (!context) {
-    throw new Error('useStoreContext must be used within StoreProvider');
-  }
-
-  return context;
-};
+export { CategoriesProvider, useCategoriesContext };

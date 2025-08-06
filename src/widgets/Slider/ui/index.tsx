@@ -1,5 +1,4 @@
 import { HooksConfig } from '../types/types';
-import { SlButtons } from './button/sliderButton';
 import { Carousel } from './carousel/carousel';
 import { useSlider } from '../model/hooks/useSlider';
 import { SliderPagination } from './pagination/sliderPagination';
@@ -24,14 +23,6 @@ export const MainSlider: React.FC<Props> = ({ classNames, hooksConfig }) => {
 
   return (
     <>
-      {buttonPrev && buttonNext && (
-        <SlButtons
-          classNamePrev={buttonPrev}
-          classNameNext={buttonNext}
-          onClick={onButton}
-          disableButton={disableButton}
-        />
-      )}
       <Carousel
         gap={gap}
         animationSpeed={animationSpeed}

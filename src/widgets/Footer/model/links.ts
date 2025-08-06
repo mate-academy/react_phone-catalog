@@ -1,24 +1,24 @@
-import { NavigationItem } from '@shared/types/NavLinkProps';
 import {
-  FooterLabelProp,
-  FooterNavName,
-  FooterRoutePath,
-} from '../types/footerLinks';
+  NavAriaLabels,
+  NavElementName,
+  NavLinkProps,
+  RoutePath,
+} from '@shared/types';
 
-export const linksList: NavigationItem[] = [
+export const linksList: NavLinkProps[] = [
   {
-    name: FooterNavName.Github,
-    path: FooterRoutePath.Github,
-    labelProp: FooterLabelProp.Github,
+    title: NavElementName.Github,
+    path: RoutePath.Github,
+    ariaLabel: NavAriaLabels.Github,
   },
   {
-    name: FooterNavName.Contacts,
-    path: FooterRoutePath.Contacts,
-    labelProp: FooterLabelProp.Contacts,
+    title: NavElementName.Contacts,
+    path: RoutePath.Contacts,
+    ariaLabel: NavAriaLabels.Contacts,
   },
   {
-    name: FooterNavName.Rights,
-    path: FooterRoutePath.Rights,
-    labelProp: FooterLabelProp.Rights,
+    title: NavElementName.Rights,
+    path: RoutePath.Rights,
+    ariaLabel: NavAriaLabels.Rights,
   },
 ];

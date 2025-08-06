@@ -1,29 +1,45 @@
-import { NavigationItem } from '@shared/types/NavLinkProps';
+import { CartIcon, HeartIcon } from '@shared/icons';
 import {
-  HeaderLabelProp,
-  HeaderNavName,
-  HeaderRoutePath,
-} from '../types/headerLinks';
+  NavAriaLabels,
+  NavElementName,
+  NavLinkProps,
+  RoutePath,
+} from '@shared/types';
 
-export const linksList: NavigationItem[] = [
+const navLinksList: NavLinkProps[] = [
   {
-    name: HeaderNavName.Home,
-    path: HeaderRoutePath.Home,
-    labelProp: HeaderLabelProp.Home,
+    title: NavElementName.Home,
+    path: RoutePath.Home,
+    ariaLabel: NavAriaLabels.Home,
   },
   {
-    name: HeaderNavName.Phones,
-    path: HeaderRoutePath.Phones,
-    labelProp: HeaderLabelProp.Phones,
+    title: NavElementName.Phones,
+    path: RoutePath.Phones,
+    ariaLabel: NavAriaLabels.Phones,
   },
   {
-    name: HeaderNavName.Tablets,
-    path: HeaderRoutePath.Tablets,
-    labelProp: HeaderLabelProp.Tablets,
+    title: NavElementName.Tablets,
+    path: RoutePath.Tablets,
+    ariaLabel: NavAriaLabels.Tablets,
   },
   {
-    name: HeaderNavName.Accessories,
-    path: HeaderRoutePath.Accessories,
-    labelProp: HeaderLabelProp.Accessories,
+    title: NavElementName.Accessories,
+    path: RoutePath.Accessories,
+    ariaLabel: NavAriaLabels.Accessories,
   },
 ];
+
+const uiLinksList = [
+  {
+    ariaName: NavAriaLabels.Favorites,
+    to: RoutePath.Favorites,
+    icon: HeartIcon,
+  },
+  {
+    ariaName: NavAriaLabels.Cart,
+    to: RoutePath.Cart,
+    icon: CartIcon,
+  },
+];
+
+export { navLinksList, uiLinksList };

@@ -1,38 +1,31 @@
 import styles from './styles/header.module.scss';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { NavigationLink } from '@ui/navLink';
-import { linksList } from './model';
-import { BurgerMenuIcon, ItemsIndex } from '@shared/icons';
-import { navButtons } from './model';
+import { navLinksList } from './model';
+import { BurgerMenuIcon } from '@shared/icons';
 import { useStoreContext } from '@features/user-store/model/storeContext';
+import { NavAriaLabels } from '@shared/types';
+import { uiLinksList } from './model/links';
 
-type Props = {
-  className: string;
-};
+//todo: add burger onclick;
 
-//TODO: NavLink styles optimization
-
-export const Header = ({ className }: Props) => {
+export const Header: React.FC = () => {
   const { cartAmount, favAmount } = useStoreContext();
 
   return (
-    <header className={`${styles.header} ${className}`}>
-      <NavLink to="/">
+    <header className={styles.header}>
+      <Link to="/">
         <img
           src="/src/shared/icons/logo.svg"
           alt=""
           aria-hidden="true"
-          style={{ width: '100%', height: '100%' }}
+          className={styles['logo-image']}
         />
-      </NavLink>
-      <nav
-        role="navigation"
-        aria-label="main navigation"
-        style={{ display: 'flex' }}
-      >
-        <ul className={styles.header__nav}>
-          {linksList.map(link => (
-            <NavigationLink key={link.name} data={link} />
+      </Link>
+      <nav aria-label="main navigation">
+        <ul className={styles['main-navigation']}>
+          {navLinksList.map(link => (
+            <NavigationLink key={link.title} data={link} />
           ))}
         </ul>
       </nav>
@@ -40,20 +33,15 @@ export const Header = ({ className }: Props) => {
         aria-label="User actions menu"
         className={styles['buttons-container']}
       >
-        <button aria-label="Open menu">
+        <button aria-label={NavAriaLabels.Menu}>
           <BurgerMenuIcon />
         </button>
-        {navButtons(favAmount, cartAmount).map(el => {
+        {uiLinksList.map(el => {
           const IconComponent: React.ComponentType = el.icon;
 
           return (
             <NavLink key={el.ariaName} to={el.to} aria-label={el.ariaName}>
-              <IconComponent />
-              {el.amount > 0 && (
-                <div className={styles.counter}>
-                  <ItemsIndex amount={el.amount} />
-                </div>
-              )}
+              <IconComponent icon={el.icon} />
             </NavLink>
           );
         })}

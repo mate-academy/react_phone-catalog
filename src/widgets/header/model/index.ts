@@ -1,2 +1,1 @@
-export { linksList } from './links';
-export { navButtons } from './buttons';
+export { navLinksList } from './links';

@@ -1,4 +1,4 @@
-@use '@shared/styles/constants' as c;
+@use '@constants/colors' as *;
 
 body,
 a,
@@ -13,7 +13,7 @@ main,
 
 button {
   border: 0;
-  background-color: c.$white;
+  background-color: $white;
 }
 
 ul,
