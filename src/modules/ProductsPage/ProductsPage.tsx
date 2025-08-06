@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './ProductsPage.module.scss';
 import { getProducts } from '../shared/services/productService';
-import { Card } from '../../components/Card';
 import { ItemsPerPage } from '../../types/ItemsPerPage';
 import { ProductsSortType } from '../../types/ProductsSortType';
 import { Card as CardType } from '../../types/Card';
 import { Arrow } from '../../components/Arrow';
+import { ProductsList } from '../../components/ProductsList';
+import { useAppContext } from '../../contexts/AppContext';
 
 type Props = {
   type: 'phones' | 'tablets' | 'accessories';
@@ -14,25 +15,38 @@ type Props = {
 
 export const ProductsPage: React.FC<Props> = ({ type }) => {
   const [products, setProducts] = useState<CardType[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [currentPages, setCurrentPages] = useState<number[]>([]);
+  const { searchParams } = useAppContext();
+  const sortDropDownRef = React.useRef<HTMLDivElement>(null);
+  const perPageDropDownRef = React.useRef<HTMLDivElement>(null);
 
-  const [currentPage, setCurrentPage] = useState<number>(
-    searchParams.get('page')
-      ? parseInt(searchParams.get('page') as string)
-      : 1
-  );
+  function getPerPageFromParams() {
+    const value = searchParams.get('perPage');
+    if (value === null) return 'All';
+    if (value === 'All') return 'All';
+    const num = Number(value);
+    if ([4, 8, 16].includes(num)) return num as ItemsPerPage;
+    return 'All';
+  };
 
-  const [perPageValue, setPerPageValue] = useState<ItemsPerPage>(
-    searchParams.get('perPage')
-      ? searchParams.get('perPage') as ItemsPerPage
-      : 'All'
-  );
+  function getSortTypeFromParams() {
+    const value = searchParams.get('sort');
+    if (value === 'title' || value === 'price' || value === 'age') {
+      return value as ProductsSortType;
+    }
+    return 'age';
+  };
 
-  const [sortType, setSortType] = useState<ProductsSortType>(
-    searchParams.get('sort')
-      ? searchParams.get('sort') as ProductsSortType
-      : 'age'
-  );
+  function getPageFromParams() {
+    const value = searchParams.get('page');
+    if (!value) return 1;
+    const num = parseInt(value, 10);
+    return isNaN(num) || num < 1 ? 1 : num;
+  };
+
+  const [currentPage, setCurrentPage] = useState<number>(getPageFromParams());
+  const [perPageValue, setPerPageValue] = useState<ItemsPerPage>(getPerPageFromParams());
+  const [sortType, setSortType] = useState<ProductsSortType>(getSortTypeFromParams());
 
   const [isPerPageDropdownOpen, setIsPerPageDropdownOpen] = useState<boolean>(false);
   const [isSortTypeDropdownOpen, setIsSortTypeDropdownOpen] = useState<boolean>(false);
@@ -40,54 +54,76 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   const sortValues = ['Newest', 'Alphabetically', 'Chepest'];
   const perPageValues = ['All', 4, 8, 16];
 
-  function changeSearchParams(params: URLSearchParams, key: any, value?: any) {
-    const newSearchParams = new URLSearchParams(params);
+  // function changeSearchParams(params: URLSearchParams, key: any, value?: any) {
+  //   const newSearchParams = new URLSearchParams(params);
 
-    if (value) {
-      newSearchParams.set(key.toString(), value.toString());
-    } else {
-      newSearchParams.delete(key.toString());
+  //   if (value !== undefined && value !== null) {
+  //     params.set(key.toString(), value.toString());
+  //   } else {
+  //     params.delete(key.toString());
+  //   }
+
+  //   setSearchParams(newSearchParams);
+  // }
+
+  function createPagination(items: number, from = 1) {
+    const to = Math.ceil(products.length / items);
+    const pages: number[] = [];
+
+    for (let i = from; i <= Math.min(from + 4, to); i++) {
+      pages.push(i);
     }
 
-    setSearchParams(newSearchParams);
+    setCurrentPages(pages);
   }
 
-  function handlePageChange(value: number) {
-    if (value <= 1) {
-      setCurrentPage(1);
-      changeSearchParams(searchParams, 'page');
+  function handlePageChange(value?: number) {
+    if (typeof perPageValue === 'string') return;
+
+    if (!value) {
+      createPagination(
+        perPageValue,
+        currentPages[currentPages.length - 1] + 1,
+      );
+      setCurrentPage(currentPages[currentPages.length - 1] + 1);
+      return;
+    }
+
+    if (currentPages[currentPages.length - 1] < value) {
+      createPagination(perPageValue, value);
+      setCurrentPage(value);
+      return;
+    }
+
+    if (currentPages[0] > value) {
+      createPagination(perPageValue, Math.max(value - 4, 1));
+      setCurrentPage(value);
       return;
     }
 
     setCurrentPage(value);
-    changeSearchParams(searchParams, 'page', value);
   }
 
   function handlePerPageChange(value: ItemsPerPage) {
     if (value === 'All') {
       setPerPageValue('All');
-      changeSearchParams(searchParams, 'perPage');
       setIsPerPageDropdownOpen(false);
       return;
     }
 
     setPerPageValue(value);
-    changeSearchParams(searchParams, 'perPage', value);
     setIsPerPageDropdownOpen(false);
   }
 
   function handleSortTypeChange(value: string) {
     switch (value) {
       case 'Newest':
-        changeSearchParams(searchParams, 'sort', 'age');
         setSortType('age');
         break;
       case 'Alphabetically':
-        changeSearchParams(searchParams, 'sort', 'title');
         setSortType('title');
         break;
       case 'Chepest':
-        changeSearchParams(searchParams, 'sort', 'price');
         setSortType('price');
         break;
       default:
@@ -130,15 +166,19 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     }
   }
 
-  function createPagination(itemsPerPage: number): number[] {
-    const totalPages = Math.ceil(products.length / itemsPerPage);
-    const pages = [];
+  function hasNextPaginationPage(): boolean {
+    if (typeof perPageValue === 'string') return false;
 
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(i);
+    if (
+      currentPages[currentPages.length - 1] ===
+      Math.ceil(products.length / perPageValue)
+    ) {
+      return false;
     }
 
-    return pages;
+    if (currentPages.length < 5) return false;
+
+    return true;
   }
 
   useEffect(() => {
@@ -147,14 +187,15 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
         .filter(product => product.category === type)
     );
     sortProducts();
-    setPerPageValue('All');
-    setSortType('age');
-    setCurrentPage(1);
   }, [type]);
 
   useEffect(() => {
     sortProducts();
     setCurrentPage(1);
+
+    if (typeof perPageValue === 'number') {
+      createPagination(perPageValue);
+    }
   }, [perPageValue, sortType]);
 
   return (
@@ -188,7 +229,10 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
           <div className={`${styles.sortType} ${styles.sorter}`}>
             <span className='smallText'>Sort by</span>
 
-            <div className={styles.dropdown}>
+            <div
+              ref={sortDropDownRef}
+              className={styles.dropdown}
+            >
               <button
                 onClick={() => setIsSortTypeDropdownOpen(prev => !prev)}
                 className={`
@@ -222,7 +266,10 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
           <div className={`${styles.perPageItems} ${styles.sorter}`}>
             <span className='smallText'>Items on page</span>
-            <div className={styles.dropdown}>
+            <div
+              ref={perPageDropDownRef}
+              className={styles.dropdown}
+            >
               <button
                 onClick={() => setIsPerPageDropdownOpen(prev => !prev)}
                 className={`
@@ -258,22 +305,29 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
         </div>
       </div>
 
-      <div className={styles.products}>
-        {products.map(product => (
-          <Card key={product.id} card={product} />
-        ))}
-      </div>
+      <ProductsList
+        products={
+          perPageValue === 'All'
+            ? products
+            : products.slice(
+              (currentPage - 1) * Number(perPageValue),
+              currentPage * Number(perPageValue)
+            )
+        }
+      />
 
       {perPageValue !== 'All' && (
         <div className={styles.pagination}>
           <Arrow
             direction="left"
+            isDisabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
           />
 
           <div className={styles.pages}>
-            {createPagination(perPageValue as number).map(page => (
+            {currentPages.map(page => (
               <button
+                key={page}
                 onClick={() => handlePageChange(page)}
                 className={`
                   ${styles.page}
@@ -283,10 +337,22 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
                 {page}
               </button>
             ))}
+
+            {hasNextPaginationPage() && (
+              <button
+                onClick={() => handlePageChange()}
+                className={`
+                ${styles.page}
+              `}
+              >
+                ...
+              </button>
+            )}
           </div>
 
           <Arrow
             direction="right"
+            isDisabled={currentPage === Math.ceil(products.length / perPageValue)}
             onClick={() => handlePageChange(currentPage + 1)}
           />
         </div>

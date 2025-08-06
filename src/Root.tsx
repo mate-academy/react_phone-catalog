@@ -14,20 +14,20 @@ import { AppProvider } from './contexts/AppContext';
 import { ProductsPage } from './modules/ProductsPage/ProductsPage';
 
 export const Root = () => (
-  <AppProvider>
-    <Router>
+  <Router>
+    <AppProvider>
       <Routes>
         <Route element={<App />}>
           <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="/" element={<HomePage />} />
-          <Route path="/phones" element={<ProductsPage type='phones'/>} />
-          <Route path="/tablets" element={<ProductsPage type='tablets'/>} />
-          <Route path="/accessories" element={<ProductsPage type='accessories'/>} />
+          <Route path="/phones" element={<ProductsPage type='phones' />} />
+          <Route path="/tablets" element={<ProductsPage type='tablets' />} />
+          <Route path="/accessories" element={<ProductsPage type='accessories' />} />
           <Route path="/favorites" element={<FavoriteProductsPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </Router>
-  </AppProvider>
+    </AppProvider>
+  </Router>
 );

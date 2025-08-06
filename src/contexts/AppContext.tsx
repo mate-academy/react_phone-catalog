@@ -13,6 +13,7 @@ import {
   saveCartProducts,
   saveFavouriteProducts,
 } from '../modules/shared/services/localStorage';
+import { useSearchParams } from 'react-router-dom';
 
 type AppContextType = {
   favouriteProductsIds: number[];
@@ -26,6 +27,8 @@ type AppContextType = {
   toggleAddToCart: (cardId: number) => void;
   refCardWidth: React.MutableRefObject<HTMLDivElement | null>;
   refSliderWidth: React.MutableRefObject<HTMLDivElement | null>;
+  searchParams: URLSearchParams;
+  setSearchParams: (params: URLSearchParams) => void;
 };
 
 export const AppContext = createContext<AppContextType>({
@@ -40,6 +43,8 @@ export const AppContext = createContext<AppContextType>({
   toggleAddToCart: () => {},
   refCardWidth: { current: null },
   refSliderWidth: { current: null },
+  searchParams: new URLSearchParams(),
+  setSearchParams: () => {},
 });
 
 type Props = {
@@ -56,6 +61,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const refCardWidth = useRef<HTMLDivElement | null>(null);
   const refSliderWidth = useRef<HTMLDivElement | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   function generateProductCode(name: string): string {
     return name.includes('14') ? name + ` (MQ023)` : name + ' (iMT9G2FS/A)';
@@ -110,6 +116,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       toggleAddToCart,
       refCardWidth,
       refSliderWidth,
+      searchParams,
+      setSearchParams,
     }),
     [favouriteProductsIds, cartProductsIds, isMenuOpen],
   );

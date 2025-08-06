@@ -29,7 +29,12 @@ export const Card: React.FC<Props> = ({ card }) => {
           <p className={`bodyText ${styles.name}`}>
             {generateProductCode(card.name)}
           </p>
-          <h3 className={styles.price}>${card.price}</h3>
+          <h3 className={styles.price}>
+            ${card.price}{' '}
+            <span className={styles.fullPrice}>
+              ${card.fullPrice}
+            </span>
+          </h3>
 
           <div className={styles.line}></div>
 
