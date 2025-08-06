@@ -22,7 +22,9 @@ export const Navbar: React.FC = () => {
           <li className={`${styles.item} uppercaseText`}>
             <NavLink
               to="/"
-              className={({ isActive }) => (isActive ? `${styles.activeLink}` : '')}
+              className={({ isActive }) =>
+                `${styles.item} ${isActive ? styles.activeLink : ''}`
+              }
             >
               home
             </NavLink>
@@ -30,7 +32,9 @@ export const Navbar: React.FC = () => {
           <li className={`${styles.item} uppercaseText`}>
             <NavLink
               to="/phones"
-              className={({ isActive }) => (isActive ? styles.activeLink : '')}
+              className={({ isActive }) =>
+                `${styles.item} ${isActive ? styles.activeLink : ''}`
+              }
             >
               phones
             </NavLink>
@@ -38,7 +42,9 @@ export const Navbar: React.FC = () => {
           <li className={`${styles.item} uppercaseText`}>
             <NavLink
               to="/tablets"
-              className={({ isActive }) => (isActive ? styles.activeLink : '')}
+              className={({ isActive }) =>
+                `${styles.item} ${isActive ? styles.activeLink : ''}`
+              }
             >
               tablets
             </NavLink>
@@ -46,7 +52,9 @@ export const Navbar: React.FC = () => {
           <li className={`${styles.item} uppercaseText`}>
             <NavLink
               to="/accessories"
-              className={({ isActive }) => (isActive ? styles.activeLink : '')}
+              className={({ isActive }) =>
+                `${styles.item} ${isActive ? styles.activeLink : ''}`
+              }
             >
               accessories
             </NavLink>
