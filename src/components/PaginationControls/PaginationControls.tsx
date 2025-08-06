@@ -2,8 +2,6 @@ import React from 'react';
 import './paginationControls.scss';
 import cn from 'classnames';
 
-// import { useState } from 'react';
-
 type Props = {
   totalItems: number;
   perPage: number;
@@ -45,13 +43,13 @@ export const PaginationControls: React.FC<Props> = ({
   return (
     <div className="pagination">
       <button
-        className="pagination-step-button p-buttons"
+        className={cn('pagination-step-button p-buttons', {
+          'not-active': currentPage === 1,
+        })}
         onClick={() => {
-          onPageChange(currentPage - 1);
+          onPageChange(currentPage - 1 > 0 ? currentPage - 1 : 1);
           window.scrollTo({ top: 0, behavior: 'smooth' });
-          // window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
-        disabled={currentPage === 1}
       >
         <img src="./img/icons/ArrowLeft.svg" alt="arrow left" />
       </button>
@@ -61,7 +59,6 @@ export const PaginationControls: React.FC<Props> = ({
           key={page}
           onClick={() => {
             onPageChange(page);
-            // window.scrollTo({ top: 0, behavior: 'smooth' });
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           className={cn('paginations-page-button p-buttons', {
@@ -73,22 +70,20 @@ export const PaginationControls: React.FC<Props> = ({
       ))}
 
       <button
-
-        className={cn("pagination-step-button p-buttons", { 'not-active': currentPage === totalPages })}
-
+        className={cn('pagination-step-button p-buttons', {
+          'not-active': currentPage === totalPages,
+        })}
         onClick={() => {
-          onPageChange(currentPage + 1);
           window.scrollTo({ top: 0, behavior: 'smooth' });
 
-
-          // window.scrollTo({
-          //   top: window.outerHeight,
-          //   behavior: 'smooth',
-          // });
+          setTimeout(() => {
+            onPageChange(
+              currentPage + 1 < totalPages ? currentPage + 1 : totalPages,
+            );
+          }, 250);
         }}
-        // disabled={currentPage === totalPages}
       >
-        <img src="./img/icons/ArrowRight.svg" alt="arrow left" />
+        <img src="./img/icons/ArrowRight.svg" alt="arrow right" />
       </button>
     </div>
   );

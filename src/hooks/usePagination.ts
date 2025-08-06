@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import { useCallback, useMemo, useEffect, useRef } from 'react';
 
-export const usePagination = (category?: string) => {   // <-- добавлен параметр category
+export const usePagination = (category?: string) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const prevCategoryRef = useRef<string | undefined>(undefined);

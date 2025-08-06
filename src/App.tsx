@@ -34,15 +34,12 @@ export const App = () => {
         <Header />
         <main className="main">
           <Routes>
-            <Route path="/" element={<HomePage />} >
+            <Route path="/" element={<HomePage />} />
 
-              <Route path="/:category" >
-                <Route index element={<ProductCategoryPage />} />
+            <Route path=":category">
+              <Route index element={<ProductCategoryPage />} />
 
-                <Route path="/:productId" element={<ProductInfoPage />} />
-
-              </Route>
-
+              <Route path=":productId" element={<ProductInfoPage />} />
             </Route>
           </Routes>
         </main>
