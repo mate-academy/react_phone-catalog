@@ -87,8 +87,9 @@ export const CartPage = () => {
                       <p className={styles.cart__item_name}>{product.name}</p>
                     </Link>
                   </div>
+
                   <div className={styles.cart__actions}>
-                    <div className={styles.cart__quantity_controls}>
+                    <div className={styles.cart__quantity_block}>
                       <button
                         className={cn(styles.cart__minus, 'button-icon', {
                           disabled: quantity === 1,
@@ -98,9 +99,9 @@ export const CartPage = () => {
                       >
                         <MinusIcon disabled={quantity === 1} />
                       </button>
-
-                      <span>{quantity}</span>
-
+                      <span className={styles.cart__quantity_value}>
+                        {quantity}
+                      </span>
                       <button
                         className={cn(styles.cart__plus, 'button-icon')}
                         onClick={() => updateQuantity(id, quantity + 1)}
@@ -108,7 +109,10 @@ export const CartPage = () => {
                         <PlusIcon />
                       </button>
                     </div>
-                    <h3 className="three-title">${product.price}</h3>
+
+                    <div className={styles.cart__price_block}>
+                      ${product.price * quantity}
+                    </div>
                   </div>
                 </li>
               ))}

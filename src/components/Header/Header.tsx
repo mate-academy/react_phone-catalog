@@ -81,7 +81,9 @@ export const Header = () => {
               styles['mobile__menu--active'],
             )}
           >
-            <CartIcon count={cart.length} />
+            <CartIcon
+              count={cart.reduce((sum, item) => sum + item.quantity, 0)}
+            />
           </NavLink>
 
           <BurgerMenu isOpen={isMenuOpen} onClick={toggleMenu} />
