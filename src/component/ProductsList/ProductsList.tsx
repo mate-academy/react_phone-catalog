@@ -83,7 +83,15 @@ export const ProductList: React.FC<Props> = ({ title, products, category }) => {
     <div className={style['product-list']}>
       <div>
         <h1 className={style['product-list__title']}>{title}</h1>
-        <p className={style['product-list__text']}> {count} models</p>
+        {category && (
+          <p className={style['product-list__text']}>
+            {category.category} ({count})
+          </p>
+        )}
+        <p className={style['product-list__text']}>
+          {' '}
+          {finishedProducts.length} models
+        </p>
       </div>
       <div className={style['product-list__select']}>
         {finishedProducts.length ? (
