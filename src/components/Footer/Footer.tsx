@@ -4,8 +4,8 @@ import { Logo } from '../Logo';
 import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => (
-  <div className={styles.footer}>
-    <footer className={styles.footerContent}>
+  <footer className={styles.footer}>
+    <div className={styles.footerContent}>
       <div className={styles.logo}>
         <Logo location="footer" />
       </div>
@@ -35,6 +35,6 @@ export const Footer: React.FC = () => (
           }}
         />
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 );
