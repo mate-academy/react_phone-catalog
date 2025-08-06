@@ -83,7 +83,7 @@
   margin-top: 10px;
 
   .swiper-pagination-bullet {
-    background-color: rgb(114, 112, 112);
+    background-color: $color-surf-2;
     opacity: 0.7;
     margin: 0 5px;
     width: 20px;
@@ -96,14 +96,8 @@
       opacity: 1;
 
       @include themy($themes) {
-        background-color: themed('colorPaginActive');
+        background-color: themed('colorPaginActive'); // does not work...
       }
     }
-  }
-}
-
-.custom-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  @include themy($themes) {
-    background-color: themed('colorPaginActive');
   }
 }
