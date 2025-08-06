@@ -2,21 +2,15 @@ import { useUpdateSearchParams } from '../../hooks/UpdateSearchParams';
 import { GridFavourites } from '../modules/GridFavourites/GridFavourites';
 import { Products } from './../../types/Products';
 import style from './ProductsList.module.scss';
-import { useCategoryCount } from '../../hooks/UseCategoryCount';
 type Props = {
   products: Products[];
   title: string;
   loading: boolean;
   error: string;
-  category?: {
-    category: string;
-    path: string;
-  };
 };
 
-export const ProductList: React.FC<Props> = ({ title, products, category }) => {
+export const ProductList: React.FC<Props> = ({ title, products }) => {
   const { searchParams } = useUpdateSearchParams();
-  const { count } = useCategoryCount(category);
 
   const sortPerPage = [
     { name: '4', value: '4' },
@@ -83,13 +77,7 @@ export const ProductList: React.FC<Props> = ({ title, products, category }) => {
     <div className={style['product-list']}>
       <div>
         <h1 className={style['product-list__title']}>{title}</h1>
-        {category && (
-          <p className={style['product-list__text']}>
-            {category.category} ({count})
-          </p>
-        )}
         <p className={style['product-list__text']}>
-          {' '}
           {finishedProducts.length} models
         </p>
       </div>

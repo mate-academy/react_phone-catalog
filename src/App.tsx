@@ -14,8 +14,6 @@ export const App = () => {
         <Headers />
 
         <Routes>
-          <Route path="/" element={<App />}></Route>
-
           <Route index element={<HomePage />} />
           <Route path="/phones" element={<PhonesPage />} />
 
