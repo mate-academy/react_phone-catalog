@@ -15,9 +15,9 @@ export const Cart: React.FC = () => {
   const [amountItems, setAmountItems] = useState(0);
 
   useEffect(() => {
-    const findOrders = () => {
-      const orders: ProductDemo[] = [];
+    const orders: ProductDemo[] = [];
 
+    const findOrders = () => {
       products.forEach(product => {
         const orderInStorage = localStorage.getItem(`cart_${product.itemId}`);
 

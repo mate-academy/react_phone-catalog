@@ -53,7 +53,10 @@ export const BurgerMenu: React.FC = () => {
               setIsMenuOpen(false);
             }}
           >
-            <img src="img/Additional images/icons/white cart.svg" alt="cart" />
+            <img
+              src="img/Additional images/icons/Shopping cart.svg"
+              alt="cart"
+            />
           </Link>
         </div>
       </div>
