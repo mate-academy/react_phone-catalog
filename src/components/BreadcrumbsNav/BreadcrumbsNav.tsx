@@ -1,32 +1,31 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useCurrentPath } from '../contexts/PathContext';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import './breadcrumbsNav.scss';
 
 export const BreadcrumbsNav: React.FC = () => {
-  const currentPath = useCurrentPath();
+  const { category, itemId } = useParams();
   const location = useLocation();
 
-  const parts = currentPath.split('/');
-  const back = `/${parts[1]}`;
+  const backSearch = location.state?.search || location.search;
+  const backPath = `/${category || ''}`;
+  const backWithSearch = `${backPath}${backSearch}`;
 
-  const backWithSearch = `${back}${location.search}`;
+  const pageCategory = category
+    ? category.charAt(0).toUpperCase() + category.slice(1)
+    : '';
 
-  const pageCategory = parts[1]?.replace(/^./, l => l.toUpperCase());
-
-  const modelName = parts[2]
+  const modelName = itemId
     ?.split('-')
     .map(word => {
-      if (word.toLowerCase().endsWith('gb')) {
-        return word.toUpperCase();
-      }
-      return word.charAt(0).toUpperCase() + word.slice(1);
+      return word.toLowerCase().endsWith('gb')
+        ? word.toUpperCase()
+        : word.charAt(0).toUpperCase() + word.slice(1);
     })
     .join(' ');
 
   return (
     <div className="breadcrumbsNav-block">
       <div className="breadcrumbs-navigation">
-        <Link to={'/'} className="homeLinck icon">
+        <Link to="/" className="homeLink icon">
           <img src="/img/icons/Home.svg" alt="Home Page icon" />
         </Link>
 
@@ -37,23 +36,24 @@ export const BreadcrumbsNav: React.FC = () => {
         </Link>
 
         {modelName && (
-          <img src="/img/icons/NotActiveArrowRight.svg" alt="arrow icon" />
-          )}
-
-        {modelName && <div className="model-name">{modelName}</div>}
+          <>
+            <img src="/img/icons/NotActiveArrowRight.svg" alt="arrow icon" />
+            <div className="model-name">{modelName}</div>
+          </>
+        )}
       </div>
 
+      {modelName && (
+        <div className="button-back-block">
+          <Link to={backWithSearch} className="icon">
+            <img src="/img/icons/ArrowLeft.svg" alt="arrow icon" className="icon" />
+          </Link>
 
-      <div className="button-back-block">
-        <Link to={backWithSearch} className="icon">
-          <img src="/img/icons/ArrowLeft.svg" alt="arrow icon" className='icon' />
-        </Link>
-
-        <Link to={backWithSearch} className="breadcrumbs-link">
-          <div className='back-text'>Back</div>
-        </Link>
-      </div>
-
+          <Link to={backWithSearch} className="breadcrumbs-link">
+            <div className="back-text">Back</div>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

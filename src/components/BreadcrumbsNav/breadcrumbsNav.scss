@@ -2,6 +2,7 @@
 
   .breadcrumbs-navigation {
     display: flex;
+    align-items: center;
     gap: 8px;
     padding: 24px 0;
 
@@ -9,9 +10,9 @@
       padding: 24px 0 40px;
     }
 
-    .homeLinck {
+    // .homeLink {
 
-    }
+    // }
 
     .model-name {
 
@@ -19,6 +20,10 @@
       overflow: hidden; // скрытие лишнего текста, выходящего за границы
       text-overflow: ellipsis;// добавление троеточия в конце
       max-width: 100%;
+
+      font-weight: 600;
+      font-size: 12px;
+      color: $text-not-active-color;
     }
   }
 

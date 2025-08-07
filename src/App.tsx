@@ -39,7 +39,7 @@ export const App = () => {
             <Route path=":category">
               <Route index element={<ProductCategoryPage />} />
 
-              <Route path=":productId" element={<ProductInfoPage />} />
+              <Route path=":itemId" element={<ProductInfoPage />} />
             </Route>
           </Routes>
         </main>

@@ -1,13 +1,26 @@
-import { createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const PathContext = createContext<string>('');
+type PathContextType = {
+  pathname: string;
+  search: string;
+};
+
+const PathContext = createContext<PathContextType>({
+  pathname: '',
+  search: '',
+});
 
 export const PathProvider = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
 
   return (
-    <PathContext.Provider value={location.pathname}>
+    <PathContext.Provider
+      value={{
+        pathname: location.pathname,
+        search: location.search,
+      }}
+    >
       {children}
     </PathContext.Provider>
   );

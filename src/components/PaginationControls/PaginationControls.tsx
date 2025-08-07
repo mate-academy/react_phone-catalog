@@ -80,7 +80,7 @@ export const PaginationControls: React.FC<Props> = ({
             onPageChange(
               currentPage + 1 < totalPages ? currentPage + 1 : totalPages,
             );
-          }, 250);
+          }, 900);
         }}
       >
         <img src="./img/icons/ArrowRight.svg" alt="arrow right" />
