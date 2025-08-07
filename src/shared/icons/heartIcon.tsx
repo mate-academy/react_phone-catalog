@@ -1,8 +1,5 @@
 /* eslint-disable max-len */
-type Props = {
-  filled?: boolean;
-};
-export const HeartIcon: React.FC<Props> = ({ filled = false }) => {
+export const HeartIcon = ({ filled = false }) => {
   return (
     <svg
       width="16"

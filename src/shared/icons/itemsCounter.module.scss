@@ -1,5 +1,14 @@
 @use '@shared/styles' as s;
 
+.counter {
+  position: absolute;
+  bottom: 49%;
+  left: 49%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   display: flex;
   z-index: 20;

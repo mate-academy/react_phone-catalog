@@ -1,0 +1,20 @@
+@use '@shared/styles' as s;
+
+.main-navigation {
+  display: none;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    gap: 64px;
+  }
+}
+
+

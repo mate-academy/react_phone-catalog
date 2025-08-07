@@ -19,80 +19,12 @@ $button-width-wide: 64px;
     display: flex;
     padding: 13px 16px;
   }
-}
 
-.logo-image {
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-}
-
-.main-navigation {
-  display: none;
-}
-
-.buttons-container {
-  display: flex;
-  flex-direction: row;
-  grid-column: 4;
-  height: 48px;
-
-  > * {
-    width: 48px;
-    height: 100%;
-
-    @include s.m-btn-btn-reg;
-
-    &:hover {
-      @include s.m-btn-hover-reg;
-    }
-  }
-
-  > :not(:first-child) {
-    display: none;
-  }
-}
-
-.counter {
-  position: absolute;
-  bottom: 49%;
-  left: 49%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (min-width: s.$c-BREAKPOINT_TAB) {
-  .header {
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
     grid-template-columns: $logo-width-mob 329px 1fr calc($button-width * 2);
   }
 
-  .main-navigation {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-      justify-content: flex-start;
-      box-sizing: border-box;
-      height: 100%;
-  }
-
-  .buttons-container {
-    > * {
-      border-top: 0;
-      border-right: 0;
-    }
-    > :first-child {
-      display: none;
-    }
-
-    > :not(:first-child) {
-      display: flex;
-    }
-  }
-}
-
-@media (min-width: s.$c-BREAKPOINT_WIDE) {
-  .header {
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
     grid-template-columns: $logo-width-wide 425px 1fr calc($button-width-wide * 2);
     column-gap: 24px;
     height: 64px;
@@ -101,16 +33,10 @@ $button-width-wide: 64px;
       padding: 18px 24px;
     }
   }
+}
 
-  .main-navigation {
-    gap: 64px;
-  }
-
-  .buttons-container {
-    height: 64px;
-
-    > * {
-    width: 64px;
-    }
-  }
+.logo-image {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }

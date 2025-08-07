@@ -29,7 +29,13 @@ const navLinksList: NavLinkProps[] = [
   },
 ];
 
-const uiLinksList = [
+type UiLink = {
+  ariaName: NavAriaLabels;
+  to: RoutePath;
+  icon: ({ filled }: { filled?: boolean | undefined }) => JSX.Element;
+};
+
+const uiLinksList: UiLink[] = [
   {
     ariaName: NavAriaLabels.Favorites,
     to: RoutePath.Favorites,
@@ -42,4 +48,4 @@ const uiLinksList = [
   },
 ];
 
-export { navLinksList, uiLinksList };
+export { navLinksList, uiLinksList, type UiLink };
