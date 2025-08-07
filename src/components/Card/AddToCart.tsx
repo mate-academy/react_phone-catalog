@@ -2,7 +2,7 @@ import styles from './AddToCart.module.scss';
 
 type Props = {
   isActive: boolean;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const AddToCart: React.FC<Props> = ({ onClick, isActive }) => (

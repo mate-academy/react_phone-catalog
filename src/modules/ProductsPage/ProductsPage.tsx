@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './ProductsPage.module.scss';
 import { getProducts } from '../shared/services/productService';
 import { ItemsPerPage } from '../../types/ItemsPerPage';
@@ -8,6 +7,7 @@ import { Card as CardType } from '../../types/Card';
 import { Arrow } from '../../components/Arrow';
 import { ProductsList } from '../../components/ProductsList';
 import { useAppContext } from '../../contexts/AppContext';
+import { Breadcrumb } from '../../components/Breadcrumb';
 
 type Props = {
   type: 'phones' | 'tablets' | 'accessories';
@@ -207,19 +207,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   return (
     <main className={styles.main}>
       <div className={styles.head}>
-        <div className={styles.path}>
-          <Link to='/'>
-            <img src="/img/icons/Home.svg" alt="Home" />
-          </Link>
-
-          <img
-            className={styles.right}
-            src="/img/icons/arrow-disabled.svg"
-            alt="Arrow right"
-          />
-
-          <span className={`${styles.pathItem} smallText`}>{type}</span>
-        </div>
+        <Breadcrumb />
 
         <div className={styles.headContent}>
           <h1 className={styles.title}>

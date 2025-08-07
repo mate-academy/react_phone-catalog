@@ -1,0 +1,24 @@
+.path {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pageName {
+  margin: 2px 0 0 0;
+  text-transform: capitalize;
+}
+
+.lastItem {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.arrow {
+  transform: rotate(90deg);
+}
+
+.home {
+  max-height: 16px;
+}

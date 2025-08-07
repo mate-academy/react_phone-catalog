@@ -3,6 +3,7 @@ import type { Card as CardItem } from '../../types/Card';
 import { LikeButton } from '../LikeButton/LikeButton';
 import { AddToCart } from './AddToCart';
 import { useAppContext } from '../../contexts/AppContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   card: CardItem;
@@ -18,8 +19,24 @@ export const Card: React.FC<Props> = ({ card }) => {
     refCardWidth,
   } = useAppContext();
 
+  function handleAddToCartClick(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    event.stopPropagation();
+    toggleAddToCart(card.id);
+  }
+
+  function handleAddToFavouriteClick(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    event.stopPropagation();
+    toggleFavouriteCard(card.id);
+  }
+
   return (
-    <div ref={refCardWidth} className={styles.card}>
+    <Link
+      to={`/${card.category}/${card.itemId}`}
+      ref={refCardWidth as React.Ref<HTMLAnchorElement>}
+      className={styles.card}
+    >
       <div className={styles.wrapper}>
         <div className={styles.imageContainer}>
           <img className={styles.image} src={card.image} alt={card.name} />
@@ -56,14 +73,14 @@ export const Card: React.FC<Props> = ({ card }) => {
         <div className={styles.buttons}>
           <AddToCart
             isActive={cartProductsIds.includes(card.id)}
-            onClick={() => toggleAddToCart(card.id)}
+            onClick={handleAddToCartClick}
           />
           <LikeButton
             isSelected={favouriteProductsIds.includes(card.id)}
-            onClick={() => toggleFavouriteCard(card.id)}
+            onClick={handleAddToFavouriteClick}
           />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

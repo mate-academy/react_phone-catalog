@@ -17,17 +17,6 @@
   gap: 8px;
 }
 
-.path {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.pathItem {
-  color: var(--color-secondary);
-  text-transform: capitalize;
-}
-
 .title {
   margin: 0;
   text-transform: capitalize;
@@ -113,11 +102,6 @@
 
 .down {
   transform: rotate(180deg);
-}
-
-.right {
-  transform: rotate(90deg);
-  margin-bottom: 2px;
 }
 
 .pagination {

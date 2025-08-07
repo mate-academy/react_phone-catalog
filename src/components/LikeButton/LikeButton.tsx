@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './LikeButton.module.scss';
 
 type Props = {
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   isSelected: boolean;
 };
 

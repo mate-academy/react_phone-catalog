@@ -10,7 +10,6 @@ export const Navbar: React.FC = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    console.log('Is menu open:', !isMenuOpen);
   };
 
   return (

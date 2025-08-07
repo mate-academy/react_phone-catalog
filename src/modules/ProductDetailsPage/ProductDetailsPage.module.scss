@@ -1,0 +1,8 @@
+.main {
+  @include page-grid;
+}
+
+.head {
+  grid-column: 1 / -1;
+  margin-top: 24px;
+}
