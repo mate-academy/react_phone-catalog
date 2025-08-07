@@ -142,4 +142,4 @@ Show `input:search` in the header when a page contains a `ProductList` to search
 2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
 3. Add `debounce` to the search field.
 
-[DEMO LINK](https://github.com/tina-moskvinova/react_phone-catalog/)
+[DEMO LINK] (https://tina-moskvinova.github.io/react_phone-catalog/)
