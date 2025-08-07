@@ -1,4 +1,4 @@
-import { Category } from '@shared/types/APITypes';
+import { Category } from '@shared/types/APIReturnTypes';
 import { CategoriesProvider } from './model';
 import { CategoriesContent } from './ui/CategoriesContent';
 

@@ -1,43 +1,53 @@
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
-import { BaseProduct } from '@shared/types/APITypes';
 import styles from './styles/productCard.module.scss';
-import { useProdCard } from './model/useProdCard';
 import { CardButtons } from './ui/buttons';
+import { CatalogueProduct, Item } from '@shared/types';
 
 type Props = {
-  product: BaseProduct;
+  product: CatalogueProduct;
+  isIn: {
+    fav: (itemId: string) => boolean;
+    cart: (itemId: string) => boolean;
+  };
+  stateHandlers: {
+    toggleCart: (e: React.MouseEvent, item: Item) => void;
+    toggleFav: (e: React.MouseEvent, item: Item) => void;
+  };
 };
 
 export const ProductCard = forwardRef<HTMLLIElement, Props>(
-  ({ product }, ref) => {
+  ({ product, isIn, stateHandlers }, ref) => {
     const {
-      image,
+      category,
+      id,
       name,
-      price,
-      fullPrice,
+      priceRegular,
+      priceDiscount,
       screen,
       capacity,
       ram,
-      itemId,
-      category,
+      images,
     } = product;
+    const { fav, cart } = isIn;
+    const { toggleCart, toggleFav } = stateHandlers;
 
-    const { handleCart, handleFav, isInFav, isInCart } = useProdCard({
-      id: product.id,
-    });
+    const item = {
+      id: id,
+      category: category,
+    };
 
     return (
       <li ref={ref} className={styles.container}>
-        <Link to={`/${category}/${itemId}`} className={styles['product-card']}>
+        <Link to={`/${category}/${id}`} className={styles['product-card']}>
           <div className={styles['image-wrapper']}>
-            <img className={styles.image} src={image} alt={name} />
+            <img className={styles.image} src={images[0]} alt={name} />
           </div>
           <h3 className={styles.name}>{name}</h3>
           <span className={styles.price}>
-            {`${price}$`}
-            {fullPrice && (
-              <span className={styles['full-price']}>{`${fullPrice}$`}</span>
+            {`${priceDiscount}$`}
+            {priceRegular && (
+              <span className={styles['full-price']}>{`${priceRegular}$`}</span>
             )}
           </span>
 
@@ -53,10 +63,11 @@ export const ProductCard = forwardRef<HTMLLIElement, Props>(
           </dl>
 
           <CardButtons
-            isInFav={isInFav}
-            isInCart={isInCart}
-            handleCart={handleCart}
-            handleFav={handleFav}
+            item={item}
+            isInFav={fav(id)}
+            isInCart={cart(id)}
+            handleCart={toggleCart}
+            handleFav={toggleFav}
           />
         </Link>
       </li>

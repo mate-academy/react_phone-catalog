@@ -1,17 +1,5 @@
 import { GlobalValidNameSpaceIDs } from '@server/static';
-import {
-  CategoryParams,
-  ItemsOnPage,
-  OrderParams,
-  BaseProduct,
-  Product,
-  BannerData,
-} from '.';
-
-interface ErrorObject {
-  status: false;
-  message: string;
-}
+import { CategoryParams, ItemsOnPage, OrderParams } from '.';
 
 interface ValidCatalogueParams {
   itemType?: CategoryParams;
@@ -27,17 +15,4 @@ interface ValidProdParams {
 
 type ValidParams = ValidCatalogueParams | ValidProdParams;
 
-interface ValidResponse {
-  status: true;
-  data: BaseProduct[] | Product[] | BannerData[];
-  currentPage?: number;
-  pages?: number;
-}
-
-export {
-  type ValidCatalogueParams,
-  type ValidProdParams,
-  type ValidParams,
-  type ErrorObject,
-  type ValidResponse,
-};
+export { type ValidCatalogueParams, type ValidProdParams, type ValidParams };

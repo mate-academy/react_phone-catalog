@@ -2,8 +2,6 @@ export {
   type ValidCatalogueParams,
   type ValidProdParams,
   type ValidParams,
-  type ErrorObject,
-  type ValidResponse,
 } from './APIReqTypes';
 
 export {
@@ -17,4 +15,6 @@ export {
   type BaseProduct,
   type Product,
   type BannerData,
+  type ErrorObject,
+  type ValidResponse,
 } from './respDataTypes';

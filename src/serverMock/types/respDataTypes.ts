@@ -1,52 +1,47 @@
-import { catalogueValidIDs, GlobalValidNameSpaceIDs } from '@server/static';
 import {
+  catalogueValidIDs,
+  GlobalValidNameSpaceIDs,
   Cameras,
   Capacity,
-  Category,
   Cells,
   Colors,
   Description,
+  PhoneZoom,
   Processors,
   Ram,
   Resolutions,
   Screens,
-} from './itemsEnums';
-import { CategoryParams } from './APIEnums';
+} from '@server/static';
+import { CategoryParams } from '.';
 
-interface BaseProduct {
-  id: (typeof catalogueValidIDs)[number];
-  category: Omit<CategoryParams, CategoryParams.ALL>;
-  itemId: GlobalValidNameSpaceIDs;
-  name: string;
-  capacity: Capacity;
-  fullPrice: number;
-  price: number;
-  color: Colors;
-  image: string;
-  screen: Screens;
-  ram: Ram;
-  year: number;
-}
-
-interface Product {
+interface Base {
   id: string;
-  category: Category;
-  namespaceId: GlobalValidNameSpaceIDs;
   name: string;
-  capacityAvailable: Capacity[];
-  capacity: Capacity;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: Colors[];
-  color: Colors;
-  images: string[];
-  description: Description[];
   screen: Screens;
+  capacity: Capacity;
+  color: Colors;
+  ram: Ram;
+  images: string[];
+}
+
+interface BaseProduct extends Base {
+  key: (typeof catalogueValidIDs)[number];
+  year: number;
+  category: Omit<CategoryParams, CategoryParams.ALL>;
+}
+
+interface Product extends Base {
+  namespaceId: GlobalValidNameSpaceIDs;
+  capacityAvailable: Capacity[];
+  colorsAvailable: Colors[];
+  description: Description[];
   resolution: Resolutions;
   processor: Processors;
-  ram: Ram;
-  cell: Cells[];
+  cell?: Cells[];
   camera?: Cameras;
+  zoom?: PhoneZoom;
 }
 
 interface BannerData {
@@ -55,4 +50,22 @@ interface BannerData {
   href: string;
 }
 
-export { type BaseProduct, type Product, type BannerData };
+interface ErrorObject {
+  status: false;
+  message: string;
+}
+
+interface ValidResponse {
+  status: true;
+  data: BaseProduct[] | Product[] | BannerData[];
+  currentPage?: number;
+  pages?: number;
+}
+
+export {
+  type BaseProduct,
+  type Product,
+  type BannerData,
+  type ErrorObject,
+  type ValidResponse,
+};

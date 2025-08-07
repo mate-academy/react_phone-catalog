@@ -1,32 +1,30 @@
-import { createContext, ReactNode, useEffect, useReducer } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useReducer,
+} from 'react';
 import { appReducer, CartItem, init, initialState, Item } from './appReducer';
 import { createContextHook } from '@shared/helpers/contextProvider';
 
-type GlobalContextType = {
+type GlobalDataType = {
   itemsInFav: Item[];
   itemsInCart: CartItem[];
   favAmount: number;
   cartAmount: number;
+};
+
+type GlobalActionsType = {
   toggleFav: (arg: Item) => void;
   setCart: (arg: CartItem) => void;
 };
 
-const GlobalContext = createContext<GlobalContextType | null>(null);
+const GlobalDataContext = createContext<GlobalDataType | null>(null);
+const GlobalActionsContext = createContext<GlobalActionsType | null>(null);
 
 const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(appReducer, initialState, init);
-  const cartAmount = state.itemsInCart.reduce(
-    (sum, { amount }) => sum + amount,
-    0,
-  );
-
-  const toggleFav = (arg: Item) => {
-    dispatch({ type: 'TOGGLE_FAV', payload: arg });
-  };
-
-  const setCart = (arg: CartItem) => {
-    dispatch({ type: 'UPDATE_CART_ITEM', payload: arg });
-  };
 
   useEffect(() => {
     if (typeof localStorage !== 'undefined') {
@@ -35,20 +33,41 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [state.itemsInFav, state.itemsInCart]);
 
-  const value = {
-    itemsInFav: state.itemsInFav,
-    itemsInCart: state.itemsInCart,
-    favAmount: state.itemsInFav.length,
-    cartAmount,
-    toggleFav,
-    setCart,
-  };
+  const data = useMemo(
+    () => ({
+      itemsInFav: state.itemsInFav,
+      itemsInCart: state.itemsInCart,
+      favAmount: state.itemsInFav.length,
+      cartAmount: state.itemsInCart.reduce(
+        (sum, { amount }) => sum + amount,
+        0,
+      ),
+    }),
+    [state.itemsInCart, state.itemsInFav],
+  );
+
+  const actions = useMemo(
+    () => ({
+      toggleFav: (arg: Item) => {
+        dispatch({ type: 'TOGGLE_FAV', payload: arg });
+      },
+      setCart: (arg: CartItem) => {
+        dispatch({ type: 'UPDATE_CART_ITEM', payload: arg });
+      },
+    }),
+    [],
+  );
 
   return (
-    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
+    <GlobalDataContext.Provider value={data}>
+      <GlobalActionsContext.Provider value={actions}>
+        {children}
+      </GlobalActionsContext.Provider>
+    </GlobalDataContext.Provider>
   );
 };
 
-const useGlobalProvider = createContextHook(GlobalContext);
+const useGlobalData = createContextHook(GlobalDataContext);
+const useGlobalActions = createContextHook(GlobalActionsContext);
 
-export { useGlobalProvider, GlobalProvider };
+export { useGlobalData, useGlobalActions, GlobalProvider };

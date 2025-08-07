@@ -4,8 +4,9 @@ import { SliderType } from '../../types/types';
 import { useSlContext } from '../../model/context/sliderContext';
 import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
 import { ProductCard } from '@entities/prodCard';
-import { BaseProduct } from '@shared/types/APITypes';
+import { CatalogueProduct } from '@shared/types/APIReturnTypes';
 import styles from '../../styles/basicSlider.module.scss';
+import { useProdCard } from '@entities/prodCard/model/useProdCard';
 
 type Props = {
   gap: number;
@@ -26,6 +27,7 @@ export const Carousel: React.FC<Props> = ({
   handlers
 }) => {
   const { VP, track, trackElement, list, type } = useSlContext();
+  const {stateHandlers, isIn } = useProdCard();
   const conditionalStyles = type === SliderType.BANNER ? { width: '100%' } : {};
 
   return (
@@ -54,7 +56,9 @@ export const Carousel: React.FC<Props> = ({
           : list.map( el =>
             <ProductCard
               key={el.idx}
-              product={el as BaseProduct}
+              product={el as CatalogueProduct}
+              isIn={isIn}
+              stateHandlers={stateHandlers}
               ref={el.idx === 1 ? trackElement : undefined}
             />
           )}

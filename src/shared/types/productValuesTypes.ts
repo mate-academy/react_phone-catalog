@@ -1,9 +1,3 @@
-enum Category {
-  Accessories = 'accessories',
-  Phones = 'phones',
-  Tablets = 'tablets',
-}
-
 enum Processors {
   S3 = 'Apple S3',
   S4 = 'Apple S4',
@@ -38,7 +32,7 @@ enum Resolutions {
   Res16 = '2778x1284',
 }
 
-enum Ram {
+const enum Ram {
   R07 = '768MB',
   R1 = '1GB',
   R075 = '0.75GB',
@@ -140,10 +134,13 @@ enum Capacity {
   mm44 = '44mm',
 }
 
-type Description = {
-  title: string;
-  text: string;
-};
+enum PhoneZoom {
+  'Digital, 5x',
+  'Digital, 10x / Optical, 2x',
+  'Digital 5x, Optical 2x',
+  'Optical, 2x; Digital, 5x',
+  'Optical, 3x; Digital, up to 15x',
+}
 
 export {
   Processors,
@@ -152,8 +149,7 @@ export {
   Colors,
   Screens,
   Cells,
-  Capacity,
   Cameras,
-  Category,
-  type Description,
+  Capacity,
+  PhoneZoom,
 };

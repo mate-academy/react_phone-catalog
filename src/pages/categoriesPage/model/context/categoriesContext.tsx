@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from 'react';
-import { Category } from '@shared/types/APITypes';
+import { Category } from '@shared/types/APIReturnTypes';
 import { useSearchParams } from 'react-router-dom';
 import { UrlParams } from '../../types';
 import { UrlParamValues } from '../../types/contextTypes';

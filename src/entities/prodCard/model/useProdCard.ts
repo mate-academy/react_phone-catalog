@@ -1,47 +1,54 @@
-import { BaseProduct } from '@shared/types/APITypes';
-import { useStoreContext } from '@features/user-store/model/storeContext';
+import { useGlobalActions, useGlobalData } from '@app/appContext';
+import { Item } from '@shared/types';
+import { useMemo } from 'react';
 
-type Props = {
-  id: BaseProduct['id'];
-};
+export const useProdCard = () => {
+  const { itemsInFav, itemsInCart } = useGlobalData();
+  const { toggleFav, setCart } = useGlobalActions();
 
-export const useProdCard = ({ id }: Props) => {
-  const {
-    handleAddFavorite,
-    handleAddCart,
-    handleRemoveFavorite,
-    handleRemoveFromCart,
-    getItemInFavs,
-    getItemInCart,
-  } = useStoreContext();
-
-  const resolveCart = () => {
-    if (getItemInCart(id) === true) {
-      handleRemoveFromCart({ item: id, amount: 1 });
-    } else {
-      handleAddCart({ item: id, amount: 1 });
-    }
+  const items = {
+    favorites: useMemo(
+      () => new Set(itemsInFav.map(el => el.id)),
+      [itemsInFav],
+    ),
+    cart: useMemo(() => new Set(itemsInCart.map(el => el.id)), [itemsInCart]),
   };
 
-  const resolveFav = () => {
-    if (getItemInFavs(id) === true) {
-      handleRemoveFavorite(id);
-    } else {
-      handleAddFavorite(id);
-    }
+  const isIn = {
+    fav: (itemId: string) => {
+      return items.favorites.has(itemId);
+    },
+    cart: (itemId: string) => {
+      return items.cart.has(itemId);
+    },
   };
 
-  const handler = (e: React.MouseEvent, fn: () => void) => {
+  const toggleCatCart = (item: Item) => {
+    const amount = +!isIn.cart(item.id);
+
+    setCart({ ...item, amount });
+  };
+
+  const handler = (
+    e: React.MouseEvent,
+    fn: (item: Item) => void,
+    item: Item,
+  ) => {
     e.preventDefault();
     e.stopPropagation();
-    fn();
+    fn(item);
     (e.currentTarget as HTMLElement).blur();
   };
 
+  const stateHandlers = {
+    toggleCart: (e: React.MouseEvent, item: Item) =>
+      handler(e, toggleCatCart, item),
+    toggleFav: (e: React.MouseEvent, item: Item) => handler(e, toggleFav, item),
+  };
+
   return {
-    handleCart: (e: React.MouseEvent) => handler(e, resolveCart),
-    handleFav: (e: React.MouseEvent) => handler(e, resolveFav),
-    isInFav: getItemInFavs(id),
-    isInCart: getItemInCart(id),
+    stateHandlers,
+    items,
+    isIn,
   };
 };

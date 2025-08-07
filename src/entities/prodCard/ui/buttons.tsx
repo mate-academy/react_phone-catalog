@@ -2,15 +2,18 @@
 import { AriaNames } from '@shared/types/ButtonProps';
 import styles from '../styles/buttons.module.scss';
 import { HeartIcon } from '@shared/icons';
+import { Item } from '@shared/types';
 
 type Props = {
+  item: Item;
   isInFav: boolean;
   isInCart: boolean;
-  handleCart: (e: React.MouseEvent) => void;
-  handleFav: (e: React.MouseEvent) => void;
+  handleCart: (e: React.MouseEvent, item: Item) => void;
+  handleFav: (e: React.MouseEvent, item: Item) => void;
 };
 
 export const CardButtons: React.FC<Props> = ({
+  item,
   isInFav,
   isInCart,
   handleCart,
@@ -35,14 +38,14 @@ export const CardButtons: React.FC<Props> = ({
       <button
         className={cartParams.style}
         aria-label={cartParams.aria}
-        onClick={handleCart}
+        onClick={e => handleCart(e, item)}
       >
         {cartParams.text}
       </button>
       <button
         className={styles['fav-button']}
         aria-label={favNames}
-        onClick={handleFav}
+        onClick={e => handleFav(e, item)}
       >
         <HeartIcon filled={isInFav} />
       </button>

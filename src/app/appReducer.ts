@@ -1,13 +1,4 @@
-import { Product } from '@shared/types/APITypes';
-
-interface Item {
-  id: Pick<Product, 'id'>;
-  category: Pick<Product, 'category'>;
-}
-
-interface CartItem extends Item {
-  amount: number;
-}
+import { CartItem, Item } from '@shared/types';
 
 type State = {
   itemsInFav: Item[];

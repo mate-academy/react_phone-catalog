@@ -1,4 +1,4 @@
-import { BaseProduct } from '@shared/types/APITypes';
+import { BaseProduct } from '@shared/types/APIReturnTypes';
 import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
 import {
   bannerConfig,

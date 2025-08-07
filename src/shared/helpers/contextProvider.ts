@@ -3,7 +3,7 @@ import { useContext } from 'react';
 const useProvider = <T>(context: React.Context<T | null>) => {
   const contextValue = useContext(context);
 
-  if (!context) {
+  if (!contextValue) {
     throw new Error('Context must be used within relative Provider');
   }
 

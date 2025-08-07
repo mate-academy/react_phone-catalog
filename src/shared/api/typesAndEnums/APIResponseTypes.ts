@@ -1,4 +1,4 @@
-import { BaseProduct } from '@shared/types/APITypes';
+import { CatalogueProduct } from '@shared/types';
 
 interface ErrorMessage {
   status: false;
@@ -11,7 +11,7 @@ interface BasicResponse<T = any> {
   data: T;
 }
 
-interface CatalogueResponse extends BasicResponse<BaseProduct[]> {
+interface CatalogueResponse extends BasicResponse<CatalogueProduct[]> {
   currentPage: number;
   pages: number;
 }

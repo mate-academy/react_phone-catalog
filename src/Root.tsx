@@ -1,7 +1,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { App } from './app/App';
 import { HomePage, NotFoundPage, CategoriesPage } from './pages';
-import { Category } from '@shared/types/APITypes';
+import { Category } from '@shared/types/APIReturnTypes';
 
 export const Root = () => (
   <HashRouter>

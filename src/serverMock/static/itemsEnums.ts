@@ -1,11 +1,10 @@
 enum Category {
   Accessories = 'accessories',
   Phones = 'phones',
-  Products = 'all',
   Tablets = 'tablets',
 }
 
-const enum Processors {
+enum Processors {
   S3 = 'Apple S3',
   S4 = 'Apple S4',
   S5 = 'Apple S5',
@@ -20,7 +19,7 @@ const enum Processors {
   M1 = 'Apple M1',
 }
 
-const enum Resolutions {
+enum Resolutions {
   Res1 = '272x340',
   Res2 = '324x394',
   Res3 = '368x448',
@@ -39,7 +38,7 @@ const enum Resolutions {
   Res16 = '2778x1284',
 }
 
-const enum Ram {
+enum Ram {
   R07 = '768MB',
   R1 = '1GB',
   R075 = '0.75GB',
@@ -51,7 +50,7 @@ const enum Ram {
   R16 = '16GB',
 }
 
-const enum Colors {
+enum Colors {
   sg = 'spacegray',
   sg1 = 'space-gray',
   sg2 = 'space gray',
@@ -76,7 +75,7 @@ const enum Colors {
   grp = 'graphite',
 }
 
-const enum Screens {
+enum Screens {
   OLED_13 = "1.3' OLED",
   OLED_157 = "1.57' OLED",
   OLED_178 = "1.78' OLED",
@@ -98,7 +97,7 @@ const enum Screens {
   SUP_RET_67 = "6.7' Super Retina XDR display",
 }
 
-const enum Cells {
+enum Cells {
   GPRS = 'GPRS',
   EDGE = 'EDGE',
   WCDMA = 'WCDMA',
@@ -114,7 +113,7 @@ const enum Cells {
   NA = 'Not applicable',
 }
 
-const enum Cameras {
+enum Cameras {
   mn8 = '8MP',
   mn12 = '12MP',
   tr12_12_12 = '12 Mp + 12 Mp + 12 Mp',
@@ -127,7 +126,7 @@ const enum Cameras {
   qd48_12_12_12 = '48 Mp + 12 Mp + 12MP + 12Mp',
 }
 
-const enum Capacity {
+enum Capacity {
   g32 = '32GB',
   g64 = '64GB',
   g128 = '128GB',
@@ -146,51 +145,24 @@ type Description = {
   text: string;
 };
 
-interface BaseProduct {
-  id: number;
-  category: Category;
-  itemId: string;
-  name: string;
-  capacity: Capacity;
-  fullPrice: number;
-  price: number;
-  color: Colors;
-  image: string;
-  screen: Screens;
-  ram: Ram;
-  year: number;
+enum PhoneZoom {
+  'Digital, 5x',
+  'Digital, 10x / Optical, 2x',
+  'Digital 5x, Optical 2x',
+  'Optical, 2x; Digital, 5x',
+  'Optical, 3x; Digital, up to 15x',
 }
 
-interface Product {
-  id: string;
-  category: Category;
-  namespaceId: string;
-  name: string;
-  capacityAvailable: Capacity[];
-  capacity: Capacity;
-  priceRegular: number;
-  priceDiscount: number;
-  colorsAvailable: Colors[];
-  color: Colors;
-  images: string[];
-  description: Description[];
-  screen: Screens;
-  resolution: Resolutions;
-  processor: Processors;
-  ram: Ram;
-  cell: Cells[];
-  camera?: Cameras;
-}
 export {
-  Category,
   Processors,
   Resolutions,
   Ram,
   Colors,
   Screens,
   Cells,
-  Cameras,
   Capacity,
+  Cameras,
+  Category,
+  type Description,
+  PhoneZoom,
 };
-
-export { type Description, type BaseProduct, type Product };

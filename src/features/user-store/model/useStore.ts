@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useState } from 'react';
 import { CartItem, initialState, State, storeReducer } from './storeReducer';
-import { BaseProduct } from '@shared/types/APITypes';
+import { BaseProduct } from '@shared/types/APIReturnTypes';
 
 export const useStore = () => {
   const getInitialState = (): State => {

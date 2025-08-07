@@ -1,17 +1,15 @@
+import { Link } from 'react-router-dom';
 import styles from './styles/header.module.scss';
-import { Link, NavLink } from 'react-router-dom';
-import { NavigationLink } from '@ui/navLink';
 import { navLinksList } from './model';
+import { NavigationLink } from '@ui/navLink';
 import { BurgerMenuIcon } from '@shared/icons';
-import { useStoreContext } from '@features/user-store/model/storeContext';
 import { NavAriaLabels } from '@shared/types';
 import { uiLinksList } from './model/links';
+import { HeaderUINavLink } from './ui/headerUINavLink';
 
 //todo: add burger onclick;
 
 export const Header: React.FC = () => {
-  const { cartAmount, favAmount } = useStoreContext();
-
   return (
     <header className={styles.header}>
       <Link to="/">
@@ -33,18 +31,20 @@ export const Header: React.FC = () => {
         aria-label="User actions menu"
         className={styles['buttons-container']}
       >
-        <button aria-label={NavAriaLabels.Menu}>
+        <button
+          aria-label={NavAriaLabels.Menu}
+          className={styles['burger-button']}
+        >
           <BurgerMenuIcon />
         </button>
-        {uiLinksList.map(el => {
-          const IconComponent: React.ComponentType = el.icon;
-
-          return (
-            <NavLink key={el.ariaName} to={el.to} aria-label={el.ariaName}>
-              <IconComponent icon={el.icon} />
-            </NavLink>
-          );
-        })}
+        {uiLinksList.map(el => (
+          <HeaderUINavLink
+            key={el.to}
+            ariaName={el.ariaName}
+            to={el.to}
+            icon={el.icon}
+          />
+        ))}
       </nav>
     </header>
   );

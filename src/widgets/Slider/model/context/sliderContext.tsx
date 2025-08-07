@@ -1,5 +1,5 @@
 import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
-import { BaseProduct } from '@shared/types/APITypes';
+import { BaseProduct } from '@shared/types/APIReturnTypes';
 import { createContext, ReactNode, useContext, useMemo, useRef } from 'react';
 import { listCreate } from '../helpers/listProcess';
 import { Mode, SliderType } from '@widgets/Slider/types/types';

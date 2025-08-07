@@ -1,4 +1,4 @@
-import { BaseProduct } from '@shared/types/APITypes';
+import { BaseProduct } from '@shared/types/APIReturnTypes';
 import { ItemsAmount, Order } from '@shared/types/filterTypes';
 
 type State = {

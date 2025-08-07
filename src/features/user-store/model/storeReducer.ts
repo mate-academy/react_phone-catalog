@@ -1,4 +1,4 @@
-import { BaseProduct } from '@shared/types/APITypes';
+import { BaseProduct } from '@shared/types/APIReturnTypes';
 
 export type CartItem = {
   item: BaseProduct['id'];

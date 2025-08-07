@@ -10,8 +10,8 @@ import {
   type ProductConf,
   type CatalogueConf,
 } from './typesAndEnums';
-import { BaseProduct, Product } from '@shared/types/APITypes';
 import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
+import { CatalogueProduct, ItemProduct } from '@shared/types';
 
 function handleError(message: string): never {
   console.warn(`Unable to load data, error: ${message}`);
@@ -31,13 +31,13 @@ const get = {
     return banners.data;
   },
 
-  product: async (conf: ProductConf): Promise<Product[]> => {
+  product: async (conf: ProductConf): Promise<ItemProduct[]> => {
     const itemConf: ProductRequest = {
       request: Request.PRODUCT,
       body: { ...conf },
     };
 
-    const item: BasicResponse<Product[]> | ErrorMessage = JSON.parse(
+    const item: BasicResponse<ItemProduct[]> | ErrorMessage = JSON.parse(
       await getRequest(JSON.stringify(itemConf)),
     );
 
@@ -50,7 +50,7 @@ const get = {
   catalogue: async (
     conf: CatalogueConf,
   ): Promise<{
-    data: BaseProduct[];
+    data: CatalogueProduct[];
     currentPage: number;
     pages: number;
   }> => {

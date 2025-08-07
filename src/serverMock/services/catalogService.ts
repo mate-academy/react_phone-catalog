@@ -51,13 +51,15 @@ async function getCatalogueItems(
       break;
     case OrderParams.PRICE_ASC:
       initialArray = initialArray.sort(
-        (a: BaseProduct, b: BaseProduct) => a.price - b.price,
+        (a: BaseProduct, b: BaseProduct) => a.priceDiscount - b.priceDiscount,
       );
       break;
     case OrderParams.FULL_PRICE_DECS_PROMO:
       initialArray = initialArray
-        .filter(el => el.fullPrice && el.fullPrice !== el.price)
-        .sort((a: BaseProduct, b: BaseProduct) => b.fullPrice - a.fullPrice);
+        .filter(el => el.priceRegular && el.priceRegular !== el.priceDiscount)
+        .sort(
+          (a: BaseProduct, b: BaseProduct) => b.priceRegular - a.priceRegular,
+        );
       break;
     default:
       break;

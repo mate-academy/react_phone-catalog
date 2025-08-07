@@ -1,6 +1,6 @@
 import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
 import { get } from '@shared/api/';
-import { BaseProduct } from '@shared/types/APITypes';
+import { BaseProduct } from '@shared/types/APIReturnTypes';
 import { useCallback, useEffect, useState } from 'react';
 import { Conf, ErrorState, LoadState } from '../types';
 import { DATA_LOAD_CONFIGS } from '../config';

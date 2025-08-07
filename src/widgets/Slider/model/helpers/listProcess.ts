@@ -1,5 +1,5 @@
 import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
-import { BaseProduct } from '@shared/types/APITypes';
+import { BaseProduct } from '@shared/types/APIReturnTypes';
 import { Mode } from '@widgets/Slider/types/types';
 
 // TODO: clone number => props;
