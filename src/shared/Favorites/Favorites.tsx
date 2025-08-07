@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Favorites .module.scss';
 import { NavBar } from '../NavBar';
-import { useMyContext } from '../../Contexts.tsx/ProductContexts';
+import { useMyContext } from '../../Context/ProductContexts';
 import { ProductList } from '../ProductList';
 import { Footer } from '../../modules/Footer';
 import { Direction } from '../Direction/Direction';

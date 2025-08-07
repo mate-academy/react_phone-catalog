@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './NavBar.module.scss';
-import { useMyContext } from '../../Contexts.tsx/ProductContexts';
+import { useMyContext } from '../../Context/ProductContexts';
 
 export const NavBar: React.FC = () => {
   const { isMenuOpen, setIsMenuOpen } = useMyContext();

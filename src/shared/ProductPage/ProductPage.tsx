@@ -6,7 +6,7 @@ import { Footer } from '../../modules/Footer';
 import { NavBar } from '../NavBar';
 import { client } from '../../fetch/fetchGoods';
 import { ProductList } from '../ProductList';
-import { useMyContext } from '../../Contexts.tsx/ProductContexts';
+import { useMyContext } from '../../Context/ProductContexts';
 import { BurgerMenu } from '../BurgerMenu';
 import { Loader } from '../Loader';
 import { ErrorMessage } from '../ErrorMessage';

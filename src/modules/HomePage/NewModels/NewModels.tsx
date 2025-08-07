@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import styles from './NewModels.module.scss';
-import { useMyContext } from '../../../Contexts.tsx/ProductContexts';
+import { useMyContext } from '../../../Context/ProductContexts';
 import { ProductList } from '../../../shared/ProductList';
 import { ProductDemo } from '../../../types/ProductDemo';
 

@@ -1,5 +1,5 @@
 import styles from './HomePage.module.scss';
-import { useMyContext } from '../../Contexts.tsx/ProductContexts';
+import { useMyContext } from '../../Context/ProductContexts';
 import { MainContent } from '../MainContent';
 import { BurgerMenu } from '../../shared/BurgerMenu';
 

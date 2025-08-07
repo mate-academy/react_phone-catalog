@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ShopByCategory.module.scss';
-import { useMyContext } from '../../../Contexts.tsx/ProductContexts';
+import { useMyContext } from '../../../Context/ProductContexts';
 import { Link } from 'react-router-dom';
 
 export const ShopByCategory: React.FC = () => {

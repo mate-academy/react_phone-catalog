@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useMyContext } from '../../Contexts.tsx/ProductContexts';
+import { useMyContext } from '../../Context/ProductContexts';
 import { NavBar } from '../../shared/NavBar';
 import { ProductList } from '../../shared/ProductList';
 import { Footer } from '../Footer';

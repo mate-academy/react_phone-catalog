@@ -4,7 +4,7 @@ import { Footer } from '../../modules/Footer';
 import { HotPrices } from '../../modules/HomePage/HotPrices';
 import { NavBar } from '../NavBar';
 import styles from './ProductDetailsPage.module.scss';
-import { useMyContext } from '../../Contexts.tsx/ProductContexts';
+import { useMyContext } from '../../Context/ProductContexts';
 import { useEffect, useState } from 'react';
 import { ProductFullInfo } from '../../types/ProductFullInfo';
 import { ProductDemo } from '../../types/ProductDemo';

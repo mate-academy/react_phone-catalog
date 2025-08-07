@@ -1,5 +1,5 @@
 import useEmblaCarousel from 'embla-carousel-react';
-import { useMyContext } from '../../../Contexts.tsx/ProductContexts';
+import { useMyContext } from '../../../Context/ProductContexts';
 import styles from './HotPrices.module.scss';
 import { useEffect, useState } from 'react';
 import { ProductList } from '../../../shared/ProductList';

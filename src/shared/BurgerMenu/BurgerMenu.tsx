@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
-import { useMyContext } from '../../Contexts.tsx/ProductContexts';
+import { useMyContext } from '../../Context/ProductContexts';
 import { NavBar } from '../NavBar';
 
 export const BurgerMenu: React.FC = () => {
