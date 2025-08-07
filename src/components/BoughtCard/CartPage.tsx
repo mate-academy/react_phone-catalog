@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CheckoutCelebration } from '../Reward/Reward';
 import back from '../../img/arrowLeft.svg';
+import empty from '../../../public/img/cart-is-empty.png';
 import { BoughtCardItem } from '../BoughtCardItem/BoughtCardItem';
 import { useInfoHook } from '../ProductInfo/useInfoHook';
 import './CartPage.scss';
@@ -80,7 +81,7 @@ export const CartPage = () => {
         <div className="none">
           <img
             className="product__empty"
-            src="img/cart-is-empty.png"
+            src={empty}
             alt="Favourites have not been choosen"
           />
         </div>

@@ -1,6 +1,7 @@
 import './Favourites.scss';
 import goto from '../../img/arrowRight.svg';
 import home from '../../img/home.svg';
+import notFound from '../../../public/img/product-not-found.png';
 import { useFavourites } from './FavouritesContext';
 import { ProductItem } from '../ProductItem/ProductItem';
 import { NavLink } from 'react-router-dom';
@@ -26,7 +27,7 @@ export const FavPage = () => {
         <div className="none">
           <img
             className="product__empty"
-            src="img/product-not-found.png"
+            src={notFound}
             alt="Favourites have not been chosen"
           />
         </div>

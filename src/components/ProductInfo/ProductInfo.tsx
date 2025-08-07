@@ -4,6 +4,7 @@ import './ProductInfo.scss';
 import home from '../../img/home.svg';
 import goto from '../../img/arrowRight.svg';
 import back from '../../img/arrowLeft.svg';
+import notFound from '../../../public/img/product-not-found.png';
 import { GlassyOrbLoader } from '../Loader';
 import heart from '../../img/heart.svg';
 import like from '../../img/heartRed.svg';
@@ -241,11 +242,7 @@ export const ProductInfo: React.FC = () => {
             Something went wrong...
             <br>Please, reload the page or try again later</br>
           </h2>
-          <img
-            src="public/img/product-not-found.png"
-            alt="not-found"
-            className="error__img"
-          />
+          <img src={notFound} alt="not-found" className="error__img" />
         </div>
       )}
     </main>
