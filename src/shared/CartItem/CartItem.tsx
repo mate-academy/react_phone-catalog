@@ -4,89 +4,82 @@ import styles from './CartItem.module.scss';
 
 type OrderCardProps = {
   product: ProductDemo;
+  setQuantityChanged?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const CartItem: React.FC<OrderCardProps> = ({ product }) => {
-  const [currentItem, setCurrentItem] = useState<ProductDemo | null>(null);
+const getStoredItem = (itemId: string): ProductDemo | null => {
+  const json = localStorage.getItem(`cart_${itemId}`);
+
+  return json ? JSON.parse(json) : null;
+};
+
+const setStoredItem = (item: ProductDemo) => {
+  localStorage.setItem(`cart_${item.itemId}`, JSON.stringify(item));
+};
+
+const removeStoredItem = (itemId: string) => {
+  localStorage.removeItem(`cart_${itemId}`);
+};
+
+export const CartItem: React.FC<OrderCardProps> = ({
+  product,
+  setQuantityChanged,
+}) => {
+  const [quantity, setQuantity] = useState<number>(1);
 
   useEffect(() => {
-    const currentItemJson = localStorage.getItem(`cart_${product.itemId}`);
+    const storedItem = getStoredItem(product.itemId);
 
-    if (currentItemJson) {
-      setCurrentItem(JSON.parse(currentItemJson));
+    if (storedItem?.quantity) {
+      setQuantity(storedItem.quantity);
     }
-  }, [product]);
+  }, [product.itemId]);
 
-  const quantity = currentItem?.quantity || 1;
-
-  const setQuantity = (newQuantity: number) => {
+  const handleQuantityChange = (newQuantity: number) => {
     if (newQuantity < 1) {
-      localStorage.removeItem(`cart_${product.itemId}`);
-
-      return;
+      removeStoredItem(product.itemId);
+    } else {
+      setStoredItem({ ...product, quantity: newQuantity });
     }
 
-    const updatedItem = { ...product, quantity: newQuantity };
-
-    localStorage.removeItem(`cart_${product.itemId}`);
-    localStorage.setItem(
-      `cart_${updatedItem.itemId}`,
-      JSON.stringify(updatedItem),
-    );
-
-    setCurrentItem(updatedItem);
+    setQuantity(newQuantity);
+    setQuantityChanged?.(prev => !prev);
   };
 
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
-  };
+  const increment = () => handleQuantityChange(quantity + 1);
 
-  const decreaseQuantity = () => {
-    setQuantity(quantity - 1);
-  };
+  const decrement = () => handleQuantityChange(quantity - 1);
 
-  const deleteItem = () => {
-    localStorage.removeItem(`cart_${product.itemId}`);
-    setCurrentItem(null);
+  const deleteOrder = () => {
+    removeStoredItem(product.itemId);
+    setQuantityChanged?.(prev => !prev);
   };
 
   return (
     <div className={styles.embla__slide}>
       <li className={styles.card}>
         <div className={styles.item}>
-          <button className={styles.item_close} onClick={deleteItem}>
+          <button className={styles.item_close} onClick={deleteOrder}>
             <img src="img/Additional images/icons/gray cross.svg" alt="close" />
           </button>
           <img
             className={styles.item_image}
-            src={`${product.image}`}
-            alt="item"
+            src={product.image}
+            alt={product.name}
           />
           <span className={styles.item_name}>{product.name}</span>
         </div>
 
         <div className={styles.orderInfo}>
           <div className={styles.orderInfo_quantity}>
-            <button
-              className={styles.orderInfo_button}
-              onClick={() => {
-                if (quantity === 1) {
-                  deleteItem();
-                } else {
-                  decreaseQuantity();
-                }
-              }}
-            >
-              <img src="img/Buttons/Icons/white minus.svg" alt="" />
+            <button className={styles.orderInfo_button} onClick={decrement}>
+              <img src="img/Buttons/Icons/white minus.svg" alt="minus" />
             </button>
 
             <span>{quantity}</span>
 
-            <button
-              className={styles.orderInfo_button}
-              onClick={increaseQuantity}
-            >
-              <img src="img/Buttons/Icons/white plus.svg" alt="" />
+            <button className={styles.orderInfo_button} onClick={increment}>
+              <img src="img/Buttons/Icons/white plus.svg" alt="plus" />
             </button>
           </div>
 

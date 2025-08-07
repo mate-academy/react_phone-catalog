@@ -10,6 +10,7 @@ type ProductListProps = {
   emblaRef?: (node: HTMLElement | null) => void;
   showFullPrice?: boolean;
   toCart?: boolean;
+  setQuantityChanged?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ProductList: React.FC<ProductListProps> = ({
@@ -17,6 +18,7 @@ export const ProductList: React.FC<ProductListProps> = ({
   emblaRef,
   showFullPrice,
   toCart,
+  setQuantityChanged,
 }) => {
   const location = useLocation();
 
@@ -39,7 +41,11 @@ export const ProductList: React.FC<ProductListProps> = ({
         >
           {toCart
             ? data.map(product => (
-                <CartItem product={product} key={product.id} />
+                <CartItem
+                  product={product}
+                  key={product.id}
+                  setQuantityChanged={setQuantityChanged}
+                />
               ))
             : data.map(product => (
                 <ProductCard

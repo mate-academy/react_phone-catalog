@@ -70,11 +70,18 @@
     transition: all 0.3s ease;
 
     &:hover {
-      background-color: #A378FF;
+      background-color: #a378ff;
     }
 
     &:active {
       background-color: #323542;
     }
   }
+}
+
+.empty {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
 }

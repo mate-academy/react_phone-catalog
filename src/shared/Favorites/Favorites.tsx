@@ -12,7 +12,6 @@ export const Favorites: React.FC = () => {
   const { isMenuOpen, products } = useMyContext();
   const [currentList, setCurrentList] = useState<ProductDemo[]>([]);
 
-  console.log(products);
   useEffect(() => {
     const getFavorite = () => {
       const favoriteList: ProductDemo[] = [];
@@ -28,7 +27,7 @@ export const Favorites: React.FC = () => {
     };
 
     getFavorite();
-  }, [products]);
+  }, []);
 
   return (
     <div className={styles.page}>
@@ -45,7 +44,7 @@ export const Favorites: React.FC = () => {
 
             <span
               className={styles.page_quantity}
-            >{`${currentList.length} items`}</span>
+            >{`${currentList.length > 0 ? currentList.length : 'There is no'} items`}</span>
 
             <div className={styles.list}>
               <ProductList data={currentList} />

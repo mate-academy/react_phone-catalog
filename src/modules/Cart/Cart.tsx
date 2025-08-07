@@ -7,40 +7,47 @@ import styles from './Cart.module.scss';
 import { Direction } from '../../shared/Direction/Direction';
 import { BurgerMenu } from '../../shared/BurgerMenu';
 import { ProductDemo } from '../../types/ProductDemo';
+import { spawn } from 'child_process';
 
 export const Cart: React.FC = () => {
   const { products, isMenuOpen } = useMyContext();
   const [orderList, setOrderList] = useState<ProductDemo[]>([]);
   const [amountPrice, setAmountPrice] = useState(0);
   const [amountItems, setAmountItems] = useState(0);
+  const [quantityChanged, setQuantityChanged] = useState<boolean>(false);
 
   useEffect(() => {
-    const orders: ProductDemo[] = [];
+    const orders = products.filter(item => {
+      const orderInStorage = localStorage.getItem(`cart_${item.itemId}`);
 
-    const findOrders = () => {
-      products.forEach(product => {
-        const orderInStorage = localStorage.getItem(`cart_${product.itemId}`);
+      return Boolean(orderInStorage);
+    });
 
-        if (orderInStorage) {
-          orders.push(product);
-        }
-      });
+    setOrderList(orders);
+  }, [products, quantityChanged]);
 
-      const price = orders.reduce((total, item) => {
-        return total + item.price * (item.quantity || 1);
-      }, 0);
+  useEffect(() => {
+    let totalPrice = 0;
+    let totalItems = 0;
 
-      const sumOfItems = orders.reduce((total, item) => {
-        return total + (item.quantity || 1);
-      }, 0);
+    orderList.forEach(product => {
+      const jsonItem = localStorage.getItem(`cart_${product.itemId}`);
 
-      setOrderList(orders);
-      setAmountPrice(price);
-      setAmountItems(sumOfItems);
-    };
+      if (!jsonItem) {
+        return;
+      }
 
-    findOrders();
-  }, [products]);
+      const storedItem: ProductDemo = JSON.parse(jsonItem);
+      const quantity = storedItem.quantity || 1;
+      const price = storedItem.price;
+
+      totalItems += quantity;
+      totalPrice += quantity * price;
+    });
+
+    setAmountItems(totalItems);
+    setAmountPrice(totalPrice);
+  }, [orderList]);
 
   return (
     <div className={styles.container}>
@@ -56,15 +63,26 @@ export const Cart: React.FC = () => {
             <h2 className={styles.content_title}>Cart</h2>
 
             <div className={styles.shopping}>
-              <ProductList data={orderList} toCart={true} />
+              <ProductList
+                data={orderList}
+                toCart={true}
+                setQuantityChanged={setQuantityChanged}
+              />
             </div>
 
             <div className={styles.total}>
               <div className={styles.total_purchaseAmount}>
-                <span className={styles.total_price}>{`$${amountPrice}`}</span>
-                <span
-                  className={styles.total_quantity}
-                >{`Total for ${amountItems} items`}</span>
+                {orderList.length > 0 ? (
+                  <>
+                    <span className={styles.total_price}>${amountPrice}</span>
+                    <span className={styles.total_quantity}>
+                      Total for {amountItems} items
+                    </span>
+                  </>
+                ) : (
+                  <span className={styles.empty}>Your cart is empty</span>
+                )}
+
                 {/*----------- */}
               </div>
               <div className={styles.total_underline}></div>
