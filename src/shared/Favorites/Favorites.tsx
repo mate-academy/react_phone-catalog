@@ -9,25 +9,25 @@ import { BurgerMenu } from '../BurgerMenu';
 import { ProductDemo } from '../../types/ProductDemo';
 
 export const Favorites: React.FC = () => {
-  const { isMenuOpen, products } = useMyContext();
+  const { isMenuOpen, products, heartIsPressed } = useMyContext();
   const [currentList, setCurrentList] = useState<ProductDemo[]>([]);
 
   useEffect(() => {
     const getFavorite = () => {
-      const favoriteList: ProductDemo[] = [];
+      const favoriteItems: ProductDemo[] = [];
 
       products.forEach(product => {
         const existInStorage = localStorage.getItem(product.itemId);
 
         if (existInStorage) {
-          favoriteList.push(product);
+          favoriteItems.push(product);
         }
       });
-      setCurrentList(favoriteList);
+      setCurrentList(favoriteItems);
     };
 
     getFavorite();
-  }, []);
+  }, [products, heartIsPressed]);
 
   return (
     <div className={styles.page}>

@@ -3,6 +3,7 @@ import styles from './ProductCard.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { ProductDemo } from '../../types/ProductDemo';
 import React, { useEffect, useState } from 'react';
+import { useMyContext } from '../../Context/ProductContexts';
 
 type ProductCardProps = {
   product: ProductDemo;
@@ -11,6 +12,7 @@ type ProductCardProps = {
 
 export const ProductCard = React.memo(
   ({ product, showFullPrice }: ProductCardProps) => {
+    const {setHeartIsPressed} = useMyContext();
     const location = useLocation();
     const [activeHeart, setActiveHeart] = useState(false);
     const [activeAdd, setActiveAdd] = useState(false);
@@ -26,6 +28,7 @@ export const ProductCard = React.memo(
             return;
           } else {
             localStorage.setItem(`cart_${productId}`, JSON.stringify(item));
+
             setActiveAdd(true);
           }
 
@@ -35,10 +38,14 @@ export const ProductCard = React.memo(
 
           if (existingProduct) {
             localStorage.removeItem(productId);
+
             setActiveHeart(false);
+            setHeartIsPressed(prev => !prev);
           } else {
             localStorage.setItem(productId, JSON.stringify(item));
+
             setActiveHeart(true);
+            setHeartIsPressed(prev => !prev);
           }
 
           break;
@@ -46,7 +53,6 @@ export const ProductCard = React.memo(
     };
 
     useEffect(() => {
-      console.log('RENDERED:', product.name);
       const checkTheStorage = () => {
         const favoriteInStorage = localStorage.getItem(product.itemId);
 

@@ -26,6 +26,10 @@ type MyContextType = {
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   isError: boolean;
   setIsError: React.Dispatch<React.SetStateAction<boolean>>;
+  heartIsPressed: boolean;
+  setHeartIsPressed: React.Dispatch<React.SetStateAction<boolean>>;
+  addIsPressed: boolean;
+  setAddIsPressed: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const MyContext = createContext<MyContextType | null>(null);
@@ -39,6 +43,8 @@ export const MyProvider = ({ children }: { children: ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
+  const [heartIsPressed, setHeartIsPressed] = useState<boolean>(false);
+  const [addIsPressed, setAddIsPressed] = useState<boolean>(false);
 
   useEffect(() => {
     const makeProductsList = async () => {
@@ -53,6 +59,10 @@ export const MyProvider = ({ children }: { children: ReactNode }) => {
 
     makeProductsList();
   }, []);
+  //----------
+
+  //-----------
+  console.log('render');
 
   return (
     <MyContext.Provider
@@ -73,6 +83,10 @@ export const MyProvider = ({ children }: { children: ReactNode }) => {
         setIsLoading,
         isError,
         setIsError,
+        heartIsPressed,
+        setHeartIsPressed,
+        addIsPressed,
+        setAddIsPressed,
       }}
     >
       {children}

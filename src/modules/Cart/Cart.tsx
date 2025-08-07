@@ -7,14 +7,12 @@ import styles from './Cart.module.scss';
 import { Direction } from '../../shared/Direction/Direction';
 import { BurgerMenu } from '../../shared/BurgerMenu';
 import { ProductDemo } from '../../types/ProductDemo';
-import { spawn } from 'child_process';
 
 export const Cart: React.FC = () => {
-  const { products, isMenuOpen } = useMyContext();
+  const { products, isMenuOpen, addIsPressed } = useMyContext();
   const [orderList, setOrderList] = useState<ProductDemo[]>([]);
   const [amountPrice, setAmountPrice] = useState(0);
   const [amountItems, setAmountItems] = useState(0);
-  const [quantityChanged, setQuantityChanged] = useState<boolean>(false);
 
   useEffect(() => {
     const orders = products.filter(item => {
@@ -24,7 +22,7 @@ export const Cart: React.FC = () => {
     });
 
     setOrderList(orders);
-  }, [products, quantityChanged]);
+  }, [products, addIsPressed]);
 
   useEffect(() => {
     let totalPrice = 0;
@@ -63,11 +61,7 @@ export const Cart: React.FC = () => {
             <h2 className={styles.content_title}>Cart</h2>
 
             <div className={styles.shopping}>
-              <ProductList
-                data={orderList}
-                toCart={true}
-                setQuantityChanged={setQuantityChanged}
-              />
+              <ProductList data={orderList} toCart={true} />
             </div>
 
             <div className={styles.total}>

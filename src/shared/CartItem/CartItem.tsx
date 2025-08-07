@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { ProductDemo } from '../../types/ProductDemo';
 import styles from './CartItem.module.scss';
+import { useMyContext } from '../../Context/ProductContexts';
 
 type OrderCardProps = {
   product: ProductDemo;
-  setQuantityChanged?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const getStoredItem = (itemId: string): ProductDemo | null => {
@@ -21,10 +21,8 @@ const removeStoredItem = (itemId: string) => {
   localStorage.removeItem(`cart_${itemId}`);
 };
 
-export const CartItem: React.FC<OrderCardProps> = ({
-  product,
-  setQuantityChanged,
-}) => {
+export const CartItem: React.FC<OrderCardProps> = ({ product }) => {
+  const { setAddIsPressed } = useMyContext();
   const [quantity, setQuantity] = useState<number>(1);
 
   useEffect(() => {
@@ -43,7 +41,7 @@ export const CartItem: React.FC<OrderCardProps> = ({
     }
 
     setQuantity(newQuantity);
-    setQuantityChanged?.(prev => !prev);
+    setAddIsPressed(prev => !prev);
   };
 
   const increment = () => handleQuantityChange(quantity + 1);
@@ -52,7 +50,7 @@ export const CartItem: React.FC<OrderCardProps> = ({
 
   const deleteOrder = () => {
     removeStoredItem(product.itemId);
-    setQuantityChanged?.(prev => !prev);
+    setAddIsPressed(prev => !prev);
   };
 
   return (
