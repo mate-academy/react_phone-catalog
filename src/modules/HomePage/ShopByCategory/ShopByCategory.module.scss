@@ -1,0 +1,78 @@
+.shopByCategory {
+  margin-block: 56px;
+  margin-inline: 16px;
+}
+
+.shop_title {
+  margin-bottom: 24px;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &_good {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: fit-content;
+
+    &:hover .good_image{
+      transform: scale(1.1);
+    }
+  }
+}
+
+.good {
+  &_iphone {
+    display: flex;
+    flex-direction: column;
+    background-color: #6d6474;
+    margin-bottom: 24px;
+  }
+
+  &_tablet {
+    display: flex;
+    flex-direction: column;
+    background-color: #8d8d92;
+    margin-bottom: 24px;
+  }
+
+  &_accessorie {
+    display: flex;
+    flex-direction: column;
+    background-color: #d53c51;
+    margin-bottom: 24px;
+  }
+
+  &_title {
+    margin-bottom: 4px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+  }
+
+  &_quantity {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #75767f;
+  }
+
+  &_product{
+    width: 288px;
+    height: 288px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &_image{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    transition: transform 0.3s ease;
+  }
+}

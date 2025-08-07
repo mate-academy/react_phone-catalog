@@ -1,0 +1,35 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  padding-inline: 16px;
+  padding-block: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: center;
+  overflow: hidden;
+  background-image: url('/public/img/product-not-found.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #905bff;
+  width: 100px;
+  height: 30px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #a378ff;
+  }
+}

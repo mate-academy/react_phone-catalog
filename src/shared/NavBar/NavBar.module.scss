@@ -1,0 +1,46 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #3b3e4a;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 48px;
+  background-color: #0f1121;
+}
+
+.logo {
+  margin-inline: 16px;
+  margin-block: 14px;
+
+  &_image {
+    width: 64px;
+    height: 22px;
+    display: block;
+  }
+
+  &_link:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+}
+
+.burger {
+  all:unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0F1121;
+
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid #3b3e4a;
+
+  &:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+}

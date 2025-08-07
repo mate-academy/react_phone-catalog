@@ -1,0 +1,145 @@
+.page {
+  display: flex;
+  flex-direction: column;
+
+  &_title {
+    display: block;
+
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  &_quantity {
+    display: block;
+    margin-top: 8p;
+    margin-bottom: 32px;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}
+
+.content {
+  margin-inline: 16px;
+}
+
+.sort {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  &_type {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 4px;
+  }
+
+  &_label {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: #89939a;
+  }
+
+  &_selector {
+    width: 100%;
+    height: 40px;
+    padding-inline: 12px;
+    appearance: none;
+
+    background-image: url('img/Buttons/Icons/gray down.svg');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+
+    background-color: #323542;
+
+    color: #f1f2f9;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+.list {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  width: auto;
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  display: flex;
+  justify-content: center;
+
+  &_button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    transition:
+      background-color 0.3s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+    &:disabled {
+      border: 1px solid #3b3e4a;
+      background-color: #0f1121;
+    }
+  }
+}
+
+.pages {
+  display: flex;
+  gap: 8px;
+  margin-inline: 16px;
+
+  &_page {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #161827;
+    transition:
+      background-color 0.3s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+  }
+
+  &_active {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #905bff;
+    transition:
+      background-color 0.3s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+  }
+}

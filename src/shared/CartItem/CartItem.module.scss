@@ -1,0 +1,92 @@
+.embla__slide {
+  flex: 0 0 auto;
+}
+
+.card {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  background-color: #161827;
+  width: 288px;
+  height: 160px;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 23px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &_close {
+    all: unset;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    background-color: #161827;
+  }
+
+  &_image {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+
+  &_name {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+  }
+}
+
+.orderInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &_quantity {
+    width: 96px;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    transition:
+      background-color 0.3s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+    &:disabled {
+      border: 1px solid #3b3e4a;
+      background-color: #0f1121;
+    }
+  }
+
+  &_price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}

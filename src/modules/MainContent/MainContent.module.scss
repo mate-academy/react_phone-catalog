@@ -1,0 +1,12 @@
+.header {
+  &_title {
+    display: block;
+
+    margin-inline: 16px;
+    margin-block: 24px;
+
+    font-size: 32px;
+    font-style: bold;
+    line-height: 41px;
+  }
+}
