@@ -4,7 +4,7 @@ import { Header } from '../Header';
 export const HomePage: React.FC = () => {
   return (
     <>
-    <Header />
+      <Header />
       <h1>Welcome to Nice Gadgets store!</h1>
     </>
   );

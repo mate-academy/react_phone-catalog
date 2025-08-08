@@ -5,7 +5,7 @@ import './Header.scss';
 export const Header: React.FC = () => {
   return (
     <header className="header">
-      <img className='header__logo' src="/img/logo-img.svg" alt="logo image" />
+      <img className="header__logo" src="/img/logo-img.svg" alt="logo image" />
       <div className="header__container">
         <nav className="header__nav">
           <Link to="/" className="header__link">

@@ -1,8 +1,8 @@
-@import '../src/styles/fonts.scss';
-@import '../src/styles/reset.scss';
+@import '../src/styles/fonts';
+@import '../src/styles/reset';
 
 .App {
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   background-color: #0F1121;
   color: #F1F2F9;
 }
