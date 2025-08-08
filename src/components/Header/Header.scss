@@ -30,11 +30,11 @@
     display: flex;
     flex-direction: row;
     height: 100%;
+    gap: 64px;
   }
 
   &__link {
     cursor: pointer;
-    margin-inline: 32px;
     text-decoration: none;
 
     color: #75767f;
@@ -47,6 +47,10 @@
     &:hover {
       color: #f1f2f9;
       border-bottom: 3px solid #f1f2f9;
+    }
+
+    &--home {
+      margin-left: 24px;
     }
   }
 
