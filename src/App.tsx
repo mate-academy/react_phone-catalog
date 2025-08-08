@@ -1,7 +1,11 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.scss';
+import { HomePage } from './components/HomePage';
 
 export const App = () => (
   <div className="App">
-    <h1>Product Catalog</h1>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+    </Routes>
   </div>
 );
