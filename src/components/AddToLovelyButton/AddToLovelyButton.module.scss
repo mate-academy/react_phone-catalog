@@ -1,0 +1,40 @@
+@import 'src/styles/_vars.scss';
+
+.list {
+  &__lovely-choice {
+    background-image: url('/public/img/add-to-favourites.svg');
+
+    &:hover {
+      background-image: url('public/img/add-to-fovourites-hover.svg');
+      width: 49px;
+      height: 49px;
+    }
+
+    &--active {
+      background-image: url('public/img/add-to-fovourites-added.svg');
+
+      transition: transform$effectDuration ease-in-out;
+
+      &:hover {
+        background-image: url('public/img/add-to-fovourites-added.svg');
+        transform: scale(1.1);
+        transition: transform$effectDuration ease-in-out;
+      }
+    }
+
+    padding: 0;
+    border: none;
+    color: $White;
+    background-color: $White;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    width: 49px;
+    height: 49px;
+    margin-left: 8px;
+    border: 1px solid$NoneBackground;
+    // padding-left: 8px;
+    // padding-right: 2px;
+  }
+}

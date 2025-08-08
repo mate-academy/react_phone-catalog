@@ -1,4 +1,5 @@
 @import '../../styles/mixins.module';
+@import 'src/styles/_vars.scss';
 
 .icon {
   // width: 16px;
@@ -40,7 +41,7 @@
 
     &__wrapper {
       padding: 16px;
-      // border-right: 1px solid #e2e6e9;
+      // border-right: 1px solid$Elements;
     }
   }
 }
@@ -54,8 +55,8 @@
   height: 32px;
   border-radius: 50%;
   color: black;
-  background-color: #fff;
-  border: 1px solid #b4bdc3;
+  background-color: $White;
+  border: 1px solid $Icons;
   background-position: center;
   background-size: 16px 16px;
 
@@ -76,8 +77,8 @@
     position: absolute;
     top: 14px;
     right: 10px;
-    background: #3b6ef6; // або ваш колір
-    color: #fff;
+    background: $Secondary-Accent; // або ваш колір
+    color: $White;
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 9px;

@@ -5,9 +5,15 @@
   font-family: 'Mont';
 }
 
+@import 'src/styles/_vars.scss';
+
 .footer__wrapper {
-  border-top: 1px solid #e2e6e9;
+  border-top: 1px solid $Elements;
+  position: relative;
+  bottom: 0;
+
   margin-top: 64px;
+  margin-bottom: 0;
 
   @include onTablet {
     margin-top: 80px;
@@ -18,7 +24,7 @@
   display: flex;
   flex-direction: column;
 
-  color: #89939a;
+  color:$Secondary;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0%;
@@ -26,12 +32,7 @@
   padding-block: 32px;
   font-family: 'Mont';
 
-  @include contentMarginInline;
-
-  // padding-inline: 16px;
-
   @include onTablet {
-    // padding-inline: 24px;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
@@ -39,7 +40,6 @@
 
   @include onBigScren {
     width: 1136px;
-    // padding-inline: 32px;
     margin-inline: auto;
   }
 
@@ -50,12 +50,11 @@
   }
 
   &__list {
+    margin-block: 32px;
     display: flex;
     flex-direction: column;
-    // padding-inline-start: 32px;
-    // margin-block-start: 0;
+    gap: 16px;
     padding-inline-start: 0;
-    // margin-block: 32px;
 
     @include onTablet {
       display: flex;
@@ -79,23 +78,21 @@
     line-height: 11px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
-    color: #89939a;
+    color:$Secondary;
 
     text-decoration: none;
   }
 
 
   &__backToTopContainer {
-    // padding: 16px;
-    // border-left: 1px solid #e2e6e9;
     display: flex;
     flex-direction: row;
     align-items: center;
-    // border-right: 1px solid #e2e6e9;
+    margin: auto;
 
-    // @include onTablet {
-    //   padding: 32px;
-    // }
+    @include onTablet {
+      margin: 0;
+    }
   }
 
   &__logo {
@@ -103,10 +100,7 @@
   }
 
   &__logo-img {
-    // padding-top: 9px;
-    // padding-bottom: 11px;
     width: 64px;
     height: 22px;
-
   }
 }

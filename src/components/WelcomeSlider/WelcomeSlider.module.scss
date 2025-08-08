@@ -23,23 +23,21 @@ body {
   }
 
   &__title {
+    padding-bottom: 24px;
+    padding-top: 72px;
+
+    @include contentMarginInline();
+
     font-family: 'Mont';
     font-weight: 800;
     font-size: 48px;
     font-style: bold;
     line-height: 56px;
     letter-spacing: -0.32px;
-    // padding-inline: 16px;
-    padding-bottom: 24px;
-    padding-top: 72px;
-    margin: auto;
-
-    @include onTablet {
-      margin: 32px 24px 32px 24px;
-    }
 
     @include onBigScren {
       margin: 0;
+      padding-top: 120px;
     }
   }
 
@@ -50,12 +48,7 @@ body {
     @include onTablet {
       border-radius: 8px;
     }
-
-    // @include onBigScren {
-    //   width: 1040px;
-    //   height: 400px;
-    // }
-    // height: 100%;
+    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

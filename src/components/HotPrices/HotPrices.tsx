@@ -3,21 +3,12 @@ import { Products } from '../../types/types';
 import { useEffect, useState } from 'react';
 import hotPricesStyles from './HotPrices.module.scss';
 import { Navigation } from 'swiper/modules';
-import { useCart } from '../../context/CartContext';
-import cn from 'classnames';
 import Loader from '../Loader';
+import ViewCart from '../ViewCart';
 
 const HotPrices = () => {
   const [gadgets, setGadgets] = useState<Products[] | []>([]);
   const [loading, setLoading] = useState(true);
-  const {
-    cartItems,
-    setCartItems,
-    lovelyProducts,
-    setLovelyProducts,
-    addToCart,
-    addProductToLovely,
-  } = useCart();
 
   useEffect(() => {
     fetch('/api/products.json')
@@ -30,18 +21,14 @@ const HotPrices = () => {
       });
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
-
-  console.log(gadgets.length);
-
   const hotProducts = gadgets
     .filter(p => p.price < p.fullPrice)
     .filter((p, i, arr) => arr.findIndex(x => x.color === p.color) === i)
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
 
-  console.log(hotProducts);
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -74,63 +61,11 @@ const HotPrices = () => {
                 className={hotPricesStyles.brand__card}
                 key={product.id}
               >
-                <a
-                  href="#"
-                  style={{ backgroundImage: `url('${product.image}')` }}
-                  className={hotPricesStyles.brand__image}
-                ></a>
-
-                {/* <div className={hotPricesStyles.brand__imageWrapper}>
-            </div> */}
-
-                <div className={hotPricesStyles.brand__data}>
-                  <div className={hotPricesStyles.brand__name}>
-                    {product.name}
-                  </div>
-                  <div className={hotPricesStyles.brand__price}>
-                    ${product.fullPrice}
-                  </div>
-                </div>
-
-                <div className={hotPricesStyles.brand__deteils}>
-                  <div className={hotPricesStyles.brand__info}>
-                    <div>Screen</div>
-                    <div>{product.screen}</div>
-                  </div>
-                  <div className={hotPricesStyles.brand__info}>
-                    <div>Capacity</div>
-                    <div className={hotPricesStyles.brand__gb}>128 GB</div>
-                  </div>
-                  <div className={hotPricesStyles.brand__info}>
-                    <div>RAM</div>
-                    <div>6 GB</div>
-                  </div>
-                </div>
-
-                <div className={hotPricesStyles.brand__buttons}>
-                  <button
-                    className={cn(hotPricesStyles.brand__add, {
-                      [hotPricesStyles.brand__added]: cartItems.some(
-                        item => item.itemId === product.itemId,
-                      ),
-                    })}
-                    onClick={() => addToCart(product)}
-                  >
-                    {cartItems.some(item => item.itemId === product.itemId)
-                      ? 'Added to cart'
-                      : 'Add to cart'}
-                  </button>
-
-                  <button
-                    className={cn(hotPricesStyles['brand__lovely-choice'], {
-                      [hotPricesStyles['brand__lovely-choice--active']]:
-                        lovelyProducts.some(
-                          item => item.itemId === product.itemId,
-                        ),
-                    })}
-                    onClick={() => addProductToLovely(product)}
-                  ></button>
-                </div>
+                <ViewCart
+                  gadget={product}
+                  gadgets={product.category}
+                  key={product.id}
+                />
               </SwiperSlide>
             );
           })}

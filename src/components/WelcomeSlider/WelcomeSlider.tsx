@@ -9,7 +9,7 @@ import Sidebar from '../Sidebar';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 
 import { Pagination, Scrollbar, Navigation, Autoplay } from 'swiper/modules';
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import 'swiper/css';
 import 'swiper/scss/navigation';
@@ -18,7 +18,7 @@ import 'swiper/css/pagination';
 import { useMenu } from '../../context/MenuContext';
 
 const WelcomeSlider: React.FC = () => {
-  const { isMenuOpen, setIsMenuOpen } = useMenu();
+  const { isMenuOpen } = useMenu();
   const [currentImagePath, setCurrentImagePath] = useState<string[]>([
     'public/img/Banner-mobile.5ab4e0f94787219dc791.png',
     '/img/banner-mobil-3.88470ad4d90a78897a60.png',
@@ -63,11 +63,6 @@ const WelcomeSlider: React.FC = () => {
 
   const { width } = useWindowResize();
 
-  console.log(currentImagePath);
-
-  console.log(isMenuOpen);
-  console.log(width);
-
   let widthSwiper = '';
 
   if (width < 1200 && width >= 640) {
@@ -88,8 +83,6 @@ const WelcomeSlider: React.FC = () => {
 
   widthSwiper = widthSwiper === 'auto' ? 'auto' : `${widthSwiper}px`;
 
-  console.log(widthSwiper);
-
   return (
     <div id="#" className={welcomeStyles.header}>
       <HeaderLogoMenu />
@@ -99,7 +92,7 @@ const WelcomeSlider: React.FC = () => {
       </div>
 
       <div className={welcomeStyles.header__wrapper}>
-        <div className="navigation-button-prev">
+        <div className="navigation-button-prev-1">
           <div
             className={`${navigationStyle['navigation-button']} ${navigationStyle['navigation-button--left']}`}
           >
@@ -127,8 +120,8 @@ const WelcomeSlider: React.FC = () => {
             disableOnInteraction: false,
           }}
           navigation={{
-            nextEl: '.navigation-button-next',
-            prevEl: '.navigation-button-prev',
+            nextEl: '.navigation-button-next-1',
+            prevEl: '.navigation-button-prev-1',
           }}
           scrollbar={{ draggable: true }}
           loop={true}
@@ -154,18 +147,14 @@ const WelcomeSlider: React.FC = () => {
           <SwiperSlide>
             <Link to="accessories?quantity=16&sort=newest">
               <img
-                // src="public\img\banner-mobil-3.88470ad4d90a78897a60.png"
                 src={`${currentImagePath[1]}`}
-                // style={{
-                //   backgroundImage: `url('public/img/banner-mobil-3.88470ad4d90a78897a60.png')`,
-                // }}
                 className={`${welcomeStyles['header__swiper-0']} ${welcomeStyles.header__swiper}`}
               />
             </Link>
           </SwiperSlide>
         </Swiper>
 
-        <div className="navigation-button-next">
+        <div className="navigation-button-next-1">
           <div
             className={`${navigationStyle['navigation-button']} ${navigationStyle['navigation-button--right']}`}
           >

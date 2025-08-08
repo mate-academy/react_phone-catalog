@@ -3,14 +3,16 @@
   font-family: 'Mont';
 }
 
+@import 'src/styles/_vars.scss';
+
 .button__add {
-  background-color: #f86800;
-  color: #fff;
-  border: 1px solid transparent;
+  background-color: $Accent;
+  color: $White;
+  border: 1px solid$NoneBackground;
   border-radius: 8px;
   width: 100%;
   height: 40px;
-  transition: box-shadow 0.3s, color 0.3s;
+  transition: box-shadow$effectDuration, color$effectDuration;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
@@ -18,13 +20,13 @@
   font-family: 'Mont';
 
   &:hover {
-    transition: box-shadow 0.3s, color 0.3s;
-    box-shadow: 2px 2px 3px 3px rgba(23, 32, 49, 0.4);
+    transition: box-shadow$effectDuration, color$effectDuration;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.12);
   }
 }
 
 .button__added {
-  background-color: #fff;
-  border: 1px solid #e2e6e9;
-  color: #f86800;
+  background-color: $White;
+  border: 1px solid $Elements;
+  color: $Accent;
 }

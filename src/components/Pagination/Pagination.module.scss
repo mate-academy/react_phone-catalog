@@ -5,13 +5,15 @@
   font-family: 'Mont';
 }
 
+@import 'src/styles/_vars.scss';
+
 .pagination {
   font-family: "Mont";
-  // padding-inline: 16px;
   padding-top: 24px;
   width: fit-content;
   display: flex;
   justify-content: center;
+  gap: 8px;
 
   @include onTablet {
     padding-top: 40px;
@@ -26,38 +28,26 @@
   }
 
   &__button-simple {
-    margin-inline-start: 16px;
-    margin-block: 8px;
-    border: 1px solid #e2e6e9;
-    background-color: #fff;
+    border: 1px solid $Elements;
+    background-color: $White;
     border-radius: 50%;
     width: 32px;
     height: 32px;
 
     background-repeat: no-repeat;
     background-position: center;
-    // background-size: 16px 16px;
 
     &-current {
-      background-color: #0f0f11;
-      color: #fff;
+      background-color: $Primary;
+      color: $White;
     }
   }
 
   &__button-left {
     background-image: url('public/img/chevron-arrow_left.svg');
-    // display: flex;
-    // justify-self: center;
-    // align-items: center;
-    // flex-direction: row;
-    // margin: auto;
   }
 
   &__button-right {
     background-image: url('public/img/chevron-arrow-right.svg');
-    // display: flex;
-    // justify-self: center;
-    // align-items: center;
-    // flex-direction: row;
   }
 }

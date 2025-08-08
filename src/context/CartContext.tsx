@@ -1,9 +1,10 @@
 import React, {
   createContext,
-  useState,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
+  useState,
 } from 'react';
 import { Products } from '../types/types';
 import useLocalStorage from '../components/Cart/UseLocalStorage';
@@ -45,6 +46,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     [],
   );
 
+  const [products, setProducts] = useState<Products[]>([]);
+
+  useEffect(() => {
+    fetch('/api/products.json')
+      .then(res => res.json())
+      .then(data => setProducts(data));
+  }, []);
+
   useEffect(() => {
     const favoritesFromStorage = localStorage.getItem('favorites');
     const addedFromStorage = localStorage.getItem('added');
@@ -64,52 +73,58 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         setLovelyProducts(favorites);
       }
     }
-  }, []);
+  }, [setLovelyProducts]);
 
-  const addToCart = (product: Products) => {
-    const existing = cartItems.find(item => item.itemId === product.itemId);
+  const addToCart = useCallback(
+    (product: Products) => {
+      const existing = cartItems.find(item => item.itemId === product.itemId);
 
-    if (existing) {
-      const filteredProducts = cartItems.filter(
-        item => item.itemId !== product.itemId,
+      if (existing) {
+        const filteredProducts = cartItems.filter(
+          item => item.itemId !== product.itemId,
+        );
+
+        setCartItems(filteredProducts);
+
+        localStorage.setItem('added', JSON.stringify(filteredProducts));
+      } else {
+        const newProduct = { ...product, quantity: 1 };
+        const allGadgets = [...cartItems, newProduct];
+
+        setCartItems(allGadgets);
+        localStorage.setItem('added', JSON.stringify(allGadgets));
+      }
+    },
+    [cartItems, setCartItems],
+  );
+
+  const addProductToLovely = useCallback(
+    (product: Products) => {
+      const favoritesArray: Products[] | [] = JSON.parse(
+        localStorage.getItem('favorites') || '[]',
       );
 
-      setCartItems(filteredProducts);
+      if (lovelyProducts.some(item => item.itemId === product.itemId)) {
+        const filteredProducts = lovelyProducts.filter(
+          item => item.itemId !== product.itemId,
+        );
 
-      localStorage.setItem('added', JSON.stringify(filteredProducts));
-    } else {
-      const newProduct = { ...product, quantity: 1 };
-      const allGadgets = [...cartItems, newProduct];
+        setLovelyProducts(filteredProducts);
 
-      setCartItems(allGadgets);
-      localStorage.setItem('added', JSON.stringify(allGadgets));
-    }
-  };
+        const updatedFavorites = favoritesArray.filter(
+          item => item.itemId !== product.itemId,
+        );
 
-  const addProductToLovely = (product: Products) => {
-    const favoritesArray: Products[] | [] = JSON.parse(
-      localStorage.getItem('favorites') || '[]',
-    );
+        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      } else {
+        const allGadgets = [...lovelyProducts, product];
 
-    if (lovelyProducts.some(item => item.itemId === product.itemId)) {
-      const filteredProducts = lovelyProducts.filter(
-        item => item.itemId !== product.itemId,
-      );
-
-      setLovelyProducts(filteredProducts);
-
-      const updatedFavorites = favoritesArray.filter(
-        item => item.itemId !== product.itemId,
-      );
-
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-    } else {
-      setLovelyProducts(currentsProducts => [...currentsProducts, product]);
-      const allGadgets = [...lovelyProducts, product];
-
-      localStorage.setItem('favorites', JSON.stringify(allGadgets));
-    }
-  };
+        setLovelyProducts(allGadgets);
+        localStorage.setItem('favorites', JSON.stringify(allGadgets));
+      }
+    },
+    [lovelyProducts, setLovelyProducts],
+  );
 
   const values = useMemo(
     () => ({
@@ -119,8 +134,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       setLovelyProducts,
       addToCart,
       addProductToLovely,
+      products,
     }),
-    [cartItems, lovelyProducts],
+    [
+      addProductToLovely,
+      addToCart,
+      cartItems,
+      lovelyProducts,
+      products,
+      setCartItems,
+      setLovelyProducts,
+    ],
   );
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;

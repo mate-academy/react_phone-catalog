@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import productStyles from './ProductDetailsPage.module.scss';
-import { Iphones } from '../../types/types';
+import { Iphones, Products } from '../../types/types';
 import cn from 'classnames';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
+import Loader from '../Loader';
+import Footer from '../Footer';
+import SliderCarts from '../SliderCarts';
+import { useCart } from '../../context/CartContext';
+import getSuggestedProducts from '../YouMayAlsoLike/getSuggestedProducts';
 
 const ProductDetailsPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState<Iphones[] | []>([]);
   const [numberOfImage, setNumberOfImage] = useState<number>(0);
-  const [numberOfColor, setNumberOfColor] = useState<number>(0);
   const [viewProduct, setViewProduct] = useState<Iphones | undefined>(
     undefined,
   );
-
   const location = useLocation();
+  const { addToCart, addProductToLovely, products, cartItems, lovelyProducts } =
+    useCart();
   const navigate = useNavigate();
 
   const gadget = location.pathname.split('/')[2];
   const typeOfGadget = location.pathname.split('/')[1];
-
-  console.log(gadget);
-  console.log(typeOfGadget);
 
   useEffect(() => {
     fetch(`public/api/${typeOfGadget}.json`)
@@ -33,24 +35,16 @@ const ProductDetailsPage: React.FC = () => {
         });
 
         setProduct(chosenProdust);
-
-        console.log(foundProduct);
-
         setViewProduct(foundProduct);
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      });
   }, [gadget, setProduct, typeOfGadget]);
 
-  // const foundProduct1 = product.find((item: Iphones) => item.id === gadget);
-
-  // setViewProduct(foundProduct1);
-
-  console.log(typeOfGadget);
-  console.log(product);
-
   const onChangeColor = (color: string) => {
-    console.log(color);
-
     const foundProductGroup = product.filter(good => {
       return good.color === color;
     });
@@ -60,8 +54,6 @@ const ProductDetailsPage: React.FC = () => {
     });
 
     const newPath = `/${typeOfGadget}/${foundProduct?.id}`;
-
-    console.log(foundProduct);
 
     navigate(newPath, { replace: true });
     setViewProduct(foundProduct);
@@ -78,15 +70,36 @@ const ProductDetailsPage: React.FC = () => {
 
     const newPath = `/${typeOfGadget}/${foundProduct?.id}`;
 
-    console.log(foundProduct);
-
     navigate(newPath, { replace: true });
 
     setViewProduct(foundProduct);
   };
 
-  console.log(viewProduct);
-  console.log(numberOfImage);
+  const arr = getSuggestedProducts(viewProduct?.category || '');
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (!viewProduct) {
+    return (
+      <>
+        <HeaderLogoMenu />
+        <div>
+          <div className={productStyles['no-product']}>
+            <h1 style={{ marginTop: '120px' }}>Proudct not found</h1>
+            <img
+              src="public/img/product-not-found.png"
+              alt=""
+              className={productStyles['no-product__image']}
+            />
+          </div>
+
+          <Footer />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -105,6 +118,7 @@ const ProductDetailsPage: React.FC = () => {
           >
             {typeOfGadget}
           </Link>
+          <span className={productStyles['product-page__direction']}></span>
           <Link
             to={`/${typeOfGadget}/${gadget}`}
             className={productStyles['product-page__current-page']}
@@ -114,10 +128,16 @@ const ProductDetailsPage: React.FC = () => {
         </div>
 
         <div className={productStyles['product-page__return']}>
-          <div className={productStyles['product-page__arrow']}></div>
-          <Link className={productStyles['product-page__back']} to={'/'}>
+          <div
+            className={productStyles['product-page__arrow']}
+            onClick={() => navigate(-1)}
+          ></div>
+          <span
+            className={productStyles['product-page__back']}
+            onClick={() => navigate(-1)}
+          >
             Back
-          </Link>
+          </span>
         </div>
 
         <h1 className={productStyles['product-page__title']}>
@@ -158,17 +178,13 @@ const ProductDetailsPage: React.FC = () => {
             <div className={productStyles['product-page__colors']}>
               <div>
                 <div>Available colors</div>
-                {/* <div>{product?.resolution}</div> */}
               </div>
 
               <div className={productStyles['product-page__wrapper-colors']}>
-                {viewProduct?.colorsAvailable.map((color, i) => {
-                  console.log(color);
-
+                {viewProduct?.colorsAvailable.map(color => {
                   return (
                     <>
                       <div
-                        // onClick={() => onChangeColor(color)}
                         className={cn(
                           productStyles['product-page__some-color-wrapper'],
                           {
@@ -183,7 +199,6 @@ const ProductDetailsPage: React.FC = () => {
                           style={{ backgroundColor: `${color}` }}
                           onClick={() => {
                             onChangeColor(color);
-                            setNumberOfColor(i);
                           }}
                           className={cn(
                             productStyles['product-page__some-color'],
@@ -237,11 +252,42 @@ const ProductDetailsPage: React.FC = () => {
               </div>
 
               <div className={productStyles['product-page__button-list']}>
-                <button className={productStyles['product-page__button-add']}>
-                  Add to cart
+                <button
+                  className={cn(productStyles['product-page__button-add'], {
+                    [productStyles['product-page__button-added']]:
+                      cartItems.some(
+                        (item: Products) => item.itemId === viewProduct.id,
+                      ),
+                  })}
+                  onClick={() =>
+                    addToCart(
+                      products.find(
+                        (it: Products) => it.itemId === viewProduct?.id,
+                      ),
+                    )
+                  }
+                >
+                  {cartItems.some(item => item.itemId === viewProduct.id)
+                    ? 'Added to cart'
+                    : 'Add to cart'}
                 </button>
                 <button
-                  className={productStyles['product-page__button-favorites']}
+                  onClick={() =>
+                    addProductToLovely(
+                      products.find(
+                        (it: Products) => it.itemId === viewProduct?.id,
+                      ),
+                    )
+                  }
+                  className={cn(
+                    productStyles['product-page__button-favorites'],
+                    {
+                      [productStyles['product-page__button-favorites--active']]:
+                        lovelyProducts.some(
+                          item => item.itemId === viewProduct?.id,
+                        ),
+                    },
+                  )}
                 ></button>
               </div>
 
@@ -279,11 +325,8 @@ const ProductDetailsPage: React.FC = () => {
             </h2>
 
             <div>
-              {/* <h3>{viewProduct?.description}</h3> */}
               <div>
                 {viewProduct?.description.map(item => {
-                  console.log(item);
-
                   return (
                     <>
                       <h3
@@ -377,6 +420,15 @@ const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
         </div>
+
+        <SliderCarts
+          products={arr}
+          title="Brand new models"
+          loading={loading}
+          isSugested={true}
+        />
+
+        <Footer />
       </div>
     </>
   );

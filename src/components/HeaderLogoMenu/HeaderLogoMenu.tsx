@@ -1,26 +1,15 @@
-import { useState } from 'react';
 import topBatStyles from './TopBar.module.scss';
 import iconStyles from './icon.module.scss';
-import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import cn from 'classnames';
 import { useMenu } from '../../context/MenuContext';
-
-interface SidebarProps {
-  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  isOpen: boolean;
-}
 
 const HeaderLogoMenu: React.FC = () => {
   const { lovelyProducts, cartItems } = useCart();
   const location = useLocation();
   const currentPath = location.pathname;
   const { isMenuOpen, setIsMenuOpen } = useMenu();
-  const iconReference = isMenuOpen ? 'burger-menu' : '';
-
-  console.log(currentPath);
-  // console.log(isOpen);
-  // console.log(iconReference);
 
   return (
     <div className={topBatStyles.header}>

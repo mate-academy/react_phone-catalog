@@ -1,36 +1,18 @@
 @import '../../styles/mixins.module';
-
-.swiper {
-  // @include onTablet {
-  //   width: 490px;
-  // }
-
-  // @include onBigScren {
-  //   width: 1040px;
-  // }
-}
+@import 'src/styles/_vars.scss';
 
 .swiper-custom-pagination-bullet {
   height: 4px;
   width: 14px;
   display: block;
-  color: #e2e6e9;
-  background-color: #0f0f11;
-  // border-radius: 2px;
-  // margin: 0 2px;
-  // cursor: pointer;
-  // transition: background-color 0.3s ease;
+  color: $Elements;
+  background-color: $Primary;
 }
 .swiper-custom-pagination-bullet--active {
   height: 4px;
   width: 14px;
   display: block;
-  // color: #0f0f11;
-  background-color: #e2e6e9;
-  // border-radius: 2px;
-  // margin-bottom: -65px;
-  // cursor: pointer;
-
+  background-color: $Elements;
 }
 
 .pagination {
@@ -43,30 +25,3 @@
   justify-content: center;
   align-items: center;
 }
-
-// .container :nth-child(1) {
-//   font-weight: bold;
-//   color: blue;
-// }
-
-// /* 2. Стилізувати ДРУГУ дитину будь-якого типу всередині .container */
-// .container :nth-child(2) {
-//   background-color: yellow;
-// }
-
-// /* 3. Стилізувати ТРЕТЮ дитину будь-якого типу всередині .container */
-// .container :nth-child(3) {
-//   font-style: italic;
-//   color: green;
-// }
-// :global(.swiper-pagination-bullets) {
-//   display: none !important;
-// }
-// :global(.swiper-pagination-horizontal) {
-//   // Зазвичай це контейнер для стандартних булетів, його також можна приховати
-//   display: none !important;
-// }
-// :global(.swiper-button-prev),
-// :global(.swiper-button-next) {
-//   display: none !important;
-// }

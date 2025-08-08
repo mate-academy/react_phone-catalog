@@ -3,9 +3,9 @@
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-family: 'Mont';
-  font-weight: 600;
-  font-style: normal;
 }
+
+@import 'src/styles/_vars.scss';
 
 .categories {
   font-family: 'Mont';
@@ -17,6 +17,26 @@
   // @include onBigScren {
   //   margin-inline: 32px;
   // }
+
+  &__title {
+    margin-top: 56px;
+    margin-bottom: 24px;
+
+    font-family: 'Mont';
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @include onTablet {
+      margin-top: 64px;
+    }
+
+    @include onBigScren {
+      margin-top: 80px;
+    }
+  }
+
   @include onTablet {
     margin-inline: 24px;
   }
@@ -116,17 +136,17 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform$effectDuration ease-in-out;
 
     &:hover {
       transform: scale(1.1);
-      transition: transform 0.3s ease-in-out;
+      transition: transform$effectDuration ease-in-out;
     }
   }
 
   &__image {
     background-size: cover;
-    transition: transform 0.3s ease-in-out;
+    transition: transform$effectDuration ease-in-out;
     z-index: 1;
     width: 100%;
     aspect-ratio: 1/1;
@@ -195,7 +215,7 @@
   }
 
   &__name {
-    color: #0f0f11;
+    color: $Primary;
     font-weight: 700;
     font-size: 20px;
     line-height: 100%;
@@ -203,7 +223,7 @@
   }
 
   &__gadgets__info {
-    color: #89939a;
+    color:$Secondary;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;

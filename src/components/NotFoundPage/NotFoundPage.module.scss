@@ -1,0 +1,29 @@
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: 'Mont';
+}
+
+@import '../../styles/mixins.module';
+
+.page {
+  font-family: "Mont";
+  @include contentMarginInline();
+
+  @include onBigScren {
+    margin: auto;
+    width: 1136px;
+  }
+
+  &__title {
+    margin-top: 120px;
+    width: auto;
+  }
+
+  &__image {
+    padding-top: 72px;
+    display: block;
+    margin: auto;
+    height: 600px;
+    width: auto;
+  }
+}

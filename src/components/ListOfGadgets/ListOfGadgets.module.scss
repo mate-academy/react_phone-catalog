@@ -3,16 +3,9 @@
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-family: 'Mont';
-  font-weight: 600;
-  font-style: normal;
 }
 
-@font-face {
-  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
-  font-weight: 800;
-  font-style: normal;
-}
+@import 'src/styles/_vars.scss';
 
 .swiper-slide {
   height: auto;
@@ -24,7 +17,6 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  // margin-inline: 16px;
 }
 
 a {
@@ -39,18 +31,6 @@ a {
   grid-template-columns: repeat(var(--column-count), 1fr);
   @include contentMarginInline();
 
-  @include onTablet {
-    grid-template-columns: repeat(var(--column-count), 1fr);
-  }
-
-  @include onMiddleScreen {
-    grid-template-columns: repeat(var(--column-count), 1fr);
-  }
-
-  @include onBigScren {
-    grid-template-columns: repeat(var(--column-count), 1fr);
-  }
-
   @include onBigScren {
     width: 1136px;
     margin: auto;
@@ -58,209 +38,17 @@ a {
 
   justify-content: center;
   gap: 40px 16px;
-  // align-items: center;
   --column-count: 1;
 
   @include onTablet {
-    // margin-inline: 24px;
     --column-count: 2;
   }
 
   @include onMiddleScreen {
     --column-count: 3;
-    // margin-inline: 24px;
   }
 
   @include onBigScren {
     --column-count: 4;
-    // margin-inline: 32px;
-  }
-
-  &__title {
-    margin: 80px 10px 24px 16px;
-
-    @include onTablet {
-      margin: 80px 10px 24px 24px;
-    }
-
-    @include onBigScren {
-      margin: 80px 10px 24px 32px;
-    }
-  }
-
-  &__card{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // width: 287px;
-    min-width: 229px;
-    max-width: 100%;
-    height: 506px;
-    color: #0f0f11;
-    // margin-inline: 16px;
-
-    @include onTablet {
-      // margin-inline: 24px;
-      // min-width: 229px;
-      // width: 288px;
-      // width: 229px !important;
-    }
-
-    @include onMiddleScreen {
-      // width: 229px;
-    }
-
-    @include onBigScren {
-      // width: 272px;
-      // margin-inline: 32px;
-    }
-
-    // height: 579px;
-    border: 1px solid #e2e6e9;
-    border-radius: 8px;
-
-    display: flex;
-    // justify-content: center;
-
-    flex-direction: column;
-    align-content: center;
-  }
-
-  &__image {
-    box-sizing: border-box;
-    width: 75%;
-    height: 75%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    margin-top: 32px;
-    border: none;
-    display: block;
-    transition: transform 0.3s ease-in-out;
-
-    &:hover {
-      transition: transform 0.3s ease-in-out;
-      transform: scale(1.1);
-    }
-  }
-
-  &__data {
-    margin-top: 32px;
-    margin-inline: 32px;
-  }
-
-  &__name {
-    font-family: 'Mont';
-    font-weight: 600;
-    font-style: normal;
-    line-height: 21px;
-    font-size: 14px;
-    letter-spacing: 0;
-  }
-
-  &__price {
-    font-family: 'Mont';
-    font-weight: 800;
-    font-size: 22px;
-    font-style: normal;
-    line-height: 140%;
-    margin-top: 8px;
-  }
-
-  &__deteils {
-    // margin-top: 20px;
-    // margin-inline: 32px;
-    width: 173px;
-    margin-bottom: 16px;
-  }
-
-  &__info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 8px;
-    width: 100%;
-  }
-
-  &__gadget-parameters {
-    color: #89939a;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 100%;
-  }
-
-  &__gb {
-    font-size: 12px;
-  }
-
-  &__buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-    margin-top: 8px;
-    // width: 173px;
-  }
-
-  &__add {
-    background-color: #f86800;
-    color: #fff;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    width: 100%;
-    height: 40px;
-    transition: box-shadow 0.3s, color 0.3s;
-
-    &:hover {
-      // color: #f86800;
-      // background-color: #fff;
-
-
-      transition: box-shadow 0.3s, color 0.3s;
-      box-shadow: 2px 2px 3px 3px #17203166;
-    }
-  }
-
-  &__added {
-    background-color: #fff;
-    border: 1px solid #e2e6e9;
-    color: #f86800;
-  }
-
-  &__lovely-choice {
-    background-image: url('/public/img/add-to-fovourites-default.png');
-
-    &:hover {
-      background-image: url('/public/img/add-to-fovourites-hover.png');
-    }
-
-    &--active {
-      background-image: url('public/img/add-to-fovourites-added.png');
-
-      transition: transform 0.3s ease-in-out;
-
-      &:hover {
-        background-image: url('public/img/add-to-fovourites-added.png');
-        transform: scale(1.1);
-        transition: transform 0.3s ease-in-out;
-      }
-    }
-
-    padding: 0;
-    border: none;
-    color: #fff;
-    background-color: #fff;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: block;
-    width: 49px;
-    height: 40px;
-    margin-left: 8px;
-    border: 1px solid transparent;
-    // padding-left: 8px;
-    // padding-right: 2px;
   }
 }

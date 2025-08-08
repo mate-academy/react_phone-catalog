@@ -12,11 +12,16 @@ import { useEffect, useState } from 'react';
 import ListOfGadgets from '../ListOfGadgets';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 import { useMenu } from '../../context/MenuContext';
+import { debounce } from '../ListOfGadgets/debounce';
+import { Products } from '../../types/types';
 
 const MobilePhones: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentPagePag, setCurrentPagePag] = useState<number>(1);
   const location = useLocation();
+  const [apliedQuery, setApliedQuery] = useState('');
+  const [typeOfGadgets, setTypeOfGadgets] = useState<Products[] | []>([]);
+  const aplyQuery = debounce(setApliedQuery, 1000);
 
   console.log(location);
 
@@ -30,6 +35,21 @@ const MobilePhones: React.FC = () => {
       behavior: 'smooth',
     });
   }, [currentPagePag]);
+
+  useEffect(() => {
+    fetch('/api/products.json')
+      .then(res => res.json())
+      .then(data => {
+        // Фільтруємо тільки потрібну категорію
+        const filtered = data.filter(
+          (item: Products) => item.category === gadgets,
+        );
+
+        // console.log(filtered);
+
+        setTypeOfGadgets(filtered);
+      });
+  }, [gadgets]);
 
   const sortBy = searchParams.get('sort');
   const quantity = searchParams.get('quantity');
@@ -72,6 +92,9 @@ const MobilePhones: React.FC = () => {
   // console.log(search.pathname);
   // console.log(gadgets);
   function handleQueryChange(param: string) {
+    console.log(param);
+
+    aplyQuery(param);
     setCurrentPagePag(1);
     const newParams = new URLSearchParams(searchParams);
 
@@ -81,6 +104,7 @@ const MobilePhones: React.FC = () => {
     if (newParams.get('query') === '') {
       newParams.delete('query');
       setSearchParams(newParams);
+      // aplyQuery(newParams.toString());
     }
   }
 
@@ -118,7 +142,7 @@ const MobilePhones: React.FC = () => {
         )}
 
         <span className={mobilePageStyles['mobile-page__quantity-mobils']}>
-          95 models
+          {typeOfGadgets.length} models
         </span>
 
         <div className={mobilePageStyles['mobile-page__select-wrapper']}>
@@ -139,6 +163,7 @@ const MobilePhones: React.FC = () => {
                 type="search"
                 className={mobilePageStyles['mobile-page__input']}
                 placeholder="Search"
+                value={currentParams.get('query') || ''}
                 onChange={e => handleQueryChange(e.target.value)}
               />
             </div>
@@ -200,6 +225,7 @@ const MobilePhones: React.FC = () => {
         gadgets={gadgets}
         setCurrentPage={setCurrentPagePag}
         currentPage={currentPagePag}
+        apliedQuery={apliedQuery}
       />
     </>
   );

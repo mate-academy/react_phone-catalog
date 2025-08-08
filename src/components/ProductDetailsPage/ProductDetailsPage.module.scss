@@ -5,6 +5,39 @@
   font-family: 'Mont';
 }
 
+@import 'src/styles/_vars.scss';
+
+body {
+  height: 100vh;
+}
+
+.no-product {
+  font-family: "Mont";
+  height: 100vh;
+
+  @include contentMarginInline();
+
+  @include onBigScren {
+    width: 1136px;
+    margin: auto;
+  }
+
+  &__image {
+    display: block;
+    margin: auto;
+
+    width: 250px;
+
+    @include onTablet {
+      width: 450px;
+    }
+
+    @include onBigScren {
+      width: 600px;
+    }
+  }
+}
+
 .product-page {
   text-transform: capitalize;
   margin-inline: 16px;
@@ -12,13 +45,9 @@
   display: flex;
   flex-direction: column;
   font-family: 'Mont';
-  color: #0f0f11;
+  color: $Primary;
 
   @include contentMarginInline();
-
-  // @include onTablet {
-  //   margin-inline: 24px;
-  // }
 
   @include onBigScren {
     width: 1136px;
@@ -29,17 +58,18 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    // justify-content: center;
-    margin-bottom: 24px;
-    margin-top: 78px;
+    margin-top: 72px;
     gap: 8px;
+
+    @include onBigScren {
+      margin-top: 88px;
+    }
   }
 
   &__go-home {
     background-image: url('./public/img/home.svg');
     display: block;
     background-position: center;
-    // margin-right: 8px;
     width: 16px;
     height: 16px;
   }
@@ -50,16 +80,15 @@
     display: block;
     width: 16px;
     height: 16px;
-    // margin-right: 8px;
   }
 
   &__previous-page {
-    color: #0f0f11;
+    color: $Primary;
   }
 
   &__current-page {
     text-decoration: none;
-    color: #89939a;
+    color: $Secondary;
   }
 
   &__return {
@@ -84,17 +113,13 @@
   }
 
   &__back {
-    color: #89939a;
+    color: $Secondary;
   }
 
   &__title {
     font-weight: 800;
     font-size: 32px;
     margin-bottom: 32px;
-
-    @include onTablet {
-      margin-top: 40px;
-    }
   }
 
   &__technical-specifications {
@@ -113,7 +138,6 @@
   }
 
   &__photos {
-    // position: relative;
     display: flex;
     flex-direction: column-reverse;
 
@@ -148,11 +172,11 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid #c4c4c4;
+    border: 1px solid $Elements;
     border-radius: 8px;
 
     &--active {
-      border: 1px solid #0f0f11;
+      border: 1px solid $Primary;
       border-radius: 8px;
     }
   }
@@ -164,7 +188,6 @@
     background-repeat: no-repeat;
     background-position: center;
     margin: auto;
-    // position: absolute;
 
     @include onTablet {
       width: 287px;
@@ -190,7 +213,7 @@
   }
 
   &__colors {
-    color: #89939a;
+    color: $Secondary;
   }
 
   &__wrapper-colors {
@@ -198,24 +221,28 @@
     gap: 9px;
     margin-top: 9px;
     padding-bottom: 24px;
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $Elements;
   }
 
   &__some-color-wrapper {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid #e2e6e9;
+    border: 1px solid $Elements;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:hover {
-      border-color: #b4bdc3;
+      border-color: $Icons;
     }
 
     &--active {
-      border-color: #0f0f11;
+      border-color: $Primary;
+
+      &:hover {
+        border-color: $Primary;
+      }
     }
   }
 
@@ -224,12 +251,10 @@
     height: 26px;
     border-radius: 50%;
     border: none;
-    // margin: 6px 6px 6px 6px;
-    // margin: auto;
   }
 
   &__capacity {
-    color: #89939a;
+    color: $Secondary;
     margin-top: 24px;
     margin-bottom: 8px;
   }
@@ -238,19 +263,19 @@
     display: flex;
     gap: 8px;
     padding-bottom: 24px;
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $Elements;
   }
 
   &__capacity-button {
-    background-color: transparent;
+    background-color:$NoneBackground;
     border-radius: 4px;
-    border: 1px solid #b4bdc3;
+    border: 1px solid $Icons;
     width: 63px;
     height: 32px;
 
     &--active {
-      color: #fff;
-      background-color: #0f0f11;
+      color: $White;
+      background-color: $Primary;
     }
   }
 
@@ -263,7 +288,7 @@
     margin-bottom: 16px;
 
     &-discount {
-      color: #0f0f11;
+      color: $Primary;
       font-weight: 800;
       font-size: 32px;
       line-height: 41px;
@@ -286,10 +311,16 @@
 
   &__button-add {
     width: 100%;
-    background-color: #f86800;
+    background-color: $Accent;
     border-radius: 8px;
     border: none;
-    color: #fff;
+    color: $White;
+  }
+
+  &__button-added {
+    background-color: $White;
+    border: 1px solid $Elements;
+    color: $Accent;
   }
 
   &__button-favorites {
@@ -298,8 +329,8 @@
     width: 48px;
     height: 48px;
     border: none;
-    background-color: transparent;
-    transition: transform ease-in-out 0.2s;
+    background-color:$NoneBackground;
+    transition: transform ease-in-out $effectDuration;
     margin: 0;
     background-position: center;
     background-size: contain;
@@ -307,8 +338,17 @@
     display: block;
 
     &:hover {
-      transform: scale(1.1);
-      transition: transform ease-in-out 0.2s;
+      background-image: url('public/img/add-to-fovourites-hover.svg');
+      // transform: scale($scale);
+      // transition: transform ease-in-out $effectDuration;
+    }
+
+    &--active {
+      background-image: url('public/img/add-to-fovourites-added.svg');
+
+      &:hover {
+        background-image: url('public/img/add-to-fovourites-added.svg');
+      }
     }
   }
 
@@ -331,7 +371,7 @@
       font-size: 14px;
       line-height: 21px;
       font-weight: 800;
-      color: #89939a;
+      color: $Secondary;
     }
   }
 
@@ -340,11 +380,10 @@
     flex-direction: column;
     justify-content: flex-end;
     gap: 8px;
-    color: #0f0f11;
+    color: $Primary;
   }
 
   &__tech-meaning {
-    // width: fit-content;
     display: flex;
     flex-direction: row-reverse;
 
@@ -378,20 +417,20 @@
     font-style: SemiBold;
     font-size: 22px;
     padding-bottom: 16px;
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $Elements;
     margin-bottom: 32px;
   }
 
   &__describe-title {
     margin-bottom: 16px;
-    color: #0f0f11;
+    color: $Primary;
     font-size: 20px;
   }
 
   &__describe {
     text-decoration: none;
     margin-top: 32px;
-    color: #89939a;
+    color: $Secondary;
   }
 
   &__tech-specs {
@@ -401,7 +440,7 @@
   &__tech-specs-title {
     padding-bottom: 16px;
     margin-bottom: 30px;
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $Elements;
     font-size: 22px;
 
     @include onTablet {

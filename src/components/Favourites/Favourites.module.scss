@@ -5,7 +5,10 @@
   font-family: 'Mont';
 }
 
+@import 'src/styles/_vars.scss';
+
 .bag-page {
+  height: 100vh;
   font-family: 'Mont';
   @include contentMarginInline;
 
@@ -42,7 +45,7 @@
   }
 
   &__go-home {
-    color: #89939a;
+    color: $Secondary;
     text-decoration: none;
   }
 
@@ -120,7 +123,7 @@
     }
 
     // height: 579px;
-    border: 1px solid #e2e6e9;
+    border: 1px solid $Elements;
     border-radius: 8px;
 
     display: flex;
@@ -137,14 +140,14 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: transparent;
+    background-color:$NoneBackground;
     margin-top: 32px;
     border: none;
     display: block;
-    transition: transform 0.3s ease-in-out;
+    transition: transform$effectDuration ease-in-out;
 
     &:hover {
-      transition: transform 0.3s ease-in-out;
+      transition: transform$effectDuration ease-in-out;
       transform: scale(1.1);
     }
   }
@@ -173,8 +176,6 @@
   }
 
   &__deteils {
-    // margin-top: 20px;
-    // margin-inline: 32px;
     width: 173px;
     margin-bottom: 16px;
   }
@@ -202,21 +203,17 @@
   }
 
   &__add {
-    background-color: #f86800;
-    color: #fff;
-    border: 1px solid transparent;
+    background-color: $Accent;
+    color: $White;
+    border: 1px solid$NoneBackground;
     border-radius: 8px;
     width: 100%;
     height: 40px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color$effectDuration, color$effectDuration;
 
     &:hover {
-      // color: #f86800;
-      // background-color: #fff;
-
-
-      transition: background-color 0.3s, color 0.3s;
-      border: 1px solid #e2e6e9;
+      transition: background-color$effectDuration, color$effectDuration;
+      border: 1px solid $Elements;
     }
   }
 
@@ -231,17 +228,17 @@
     &--active {
       background-image: url('public/img/add-to-fovourites-added.png');
 
-      transition: transform 0.3s ease-in-out;
+      transition: transform$effectDuration ease-in-out;
 
       &:hover {
         background-image: url('public/img/add-to-fovourites-added.png');
         transform: scale(1.1);
-        transition: transform 0.3s ease-in-out;
+        transition: transform$effectDuration ease-in-out;
       }
     }
 
-    color: #fff;
-    background-color: #fff;
+    color: $White;
+    background-color: $White;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -249,7 +246,7 @@
     width: 49px;
     height: 40px;
     margin-left: 8px;
-    border: 1px solid transparent;
+    border: 1px solid$NoneBackground;
     // padding-left: 8px;
     // padding-right: 2px;
   }

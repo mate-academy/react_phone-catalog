@@ -5,10 +5,12 @@
   font-family: 'Mont';
 }
 
+@import 'src/styles/_vars.scss';
+
 .header {
   position: fixed;
   opacity: 1;
-  background-color: #fff;
+  background-color: $White;
   top: 0;
   left: 0;
   right: 0;
@@ -21,7 +23,7 @@
   align-items: center;
   padding-left: 16px;
   // margin-block: 13px;
-  border-bottom: 1px solid #e2e6e9;
+  border-bottom: 1px solid $Elements;
   font-family: 'Mont';
 
   &__navigation__wrapper {
@@ -60,10 +62,10 @@
     line-height: 11px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
-    color: #89939a;
+    color: $Secondary;
     text-decoration: none;
     display: block;
-    transition: transform 0.3s;
+    transition: transform $effectDuration;
 
     &--current-page {
       &::after {
@@ -79,10 +81,10 @@
           top: 10.5px;
         }
 
-        background-color: #0f0f11;
+        background-color: $Primary;
         height: 3px;
         width: 100%;
-        transition: transform 0.3s;
+        transition: transform$effectDuration;
         transform: scale(1);
         transform-origin: left;
         z-index: 1200;
@@ -94,10 +96,10 @@
 
   &__icon-1 {
     // padding: 16px;
-    border-left: 1px solid #e2e6e9;
+    border-left: 1px solid $Elements;
     display: flex;
     flex-direction: row;
-    // border-right: 1px solid #e2e6e9;
+    // border-right: 1px solid$Elements;
 
     // @include onTablet {
     //   padding: 32px;

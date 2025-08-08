@@ -1,14 +1,22 @@
+@font-face {
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-family: 'Mont';
+}
+
+@import 'src/styles/_vars.scss';
+
 body:has(.sideMenu :target) {
   overflow: hidden;
 }
 
 .sideMenu {
+  font-family: "Mont";
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: $White;
 
   z-index: 15;
 
@@ -29,16 +37,13 @@ body:has(.sideMenu :target) {
   }
 
   &__nav-link {
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
     font-weight: 700;
     font-size: 13px;
     line-height: 19.5px;
     letter-spacing: 3px;
     text-transform: capitalize;
-
     text-decoration: none;
-    color: #89939a;
-
+    color: $Secondary;
     position: relative;
   }
 }
@@ -49,18 +54,15 @@ body:has(.sideMenu :target) {
   bottom: 0;
   width: 100%;
   left: 0;
-  border-top: 1px solid #e2e6e9;
-
+  border-top: 1px solid $Elements;
   display: flex;
-  // flex-direction: column;
 }
 
 .heartWrapper {
   box-sizing: border-box;
   width: 50%;
   height: 64px;
-  border-right: 1px solid #e2e6e9;
-  border-bottom: 2px solid #313237;
+  border-right: 1px solid $Elements;
   display: flex;
   align-items: center;
   justify-content: center;

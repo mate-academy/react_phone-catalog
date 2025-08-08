@@ -5,17 +5,18 @@
   font-family: 'Mont';
 }
 
+@import 'src/styles/_vars.scss';
 
 select,
 ::picker(select) {
   appearance: base-select;
   border-radius: 8px;
-  color: #89939a;
+  color: $Secondary;
   margin-top: 4px;
 }
 
 option:checked {
-  color: #0f0f11;
+  color: $Primary;
 }
 
 option::checkmark {
@@ -59,7 +60,7 @@ option::checkmark {
 
   &__current-page {
     text-decoration: none;
-    color: #89939a;
+    color: $Secondary;
   }
 
   &__title {
@@ -78,7 +79,7 @@ option::checkmark {
   &__quantity-mobils {
     font-size: 14px;
     font-weight: 600;
-    color: #89939a;
+    color: $Secondary;
     line-height: 21px;
     letter-spacing: 0;
   }
@@ -110,9 +111,9 @@ option::checkmark {
     width: 136px;
     height: 40px;
     border-radius: 8px;
-    border-color: #b4bdc3;
-    color: #0f0f11;
-    border: 1px solid #b4bdc3;
+    border-color: $Icons;
+    color: $Primary;
+    border: 1px solid $Icons;
 
     font-weight: 700;
     font-size: 14px;
@@ -124,7 +125,7 @@ option::checkmark {
 
     &:focus {
       outline: none;
-      border-color: #0F0F11;
+      border-color: $Primary;
     }
 
     @media (min-width: 640px) {
@@ -141,13 +142,12 @@ option::checkmark {
   }
 
   &__items-sort {
-    color: #89939a;
-    // padding-top: 4px;
+    color: $Secondary;
   }
 
   &__items-options {
     &::picker-icon{
-      color: transparent;
+      color:$NoneBackground;
       background-image: url("public/img/chevron-(arrow-down).svg");
       background-repeat: no-repeat;
       background-size: cover;
@@ -157,7 +157,7 @@ option::checkmark {
     }
 
     &:checked {
-      background-color: #0f0f11;
+      background-color: $Primary;
     }
 
     margin-top: 4px;
@@ -167,8 +167,8 @@ option::checkmark {
     width: 136px;
     height: 40px;
     border-radius: 8px;
-    border-color: #b4bdc3;
-    color: #0f0f11;
+    border-color: $Icons;
+    color: $Primary;
 
     &--hot {
       @include onTablet {

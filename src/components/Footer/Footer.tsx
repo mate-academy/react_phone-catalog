@@ -10,11 +10,7 @@ const Footer: React.FC = () => {
     <div className={footerStyles.footer__wrapper}>
       <div className={footerStyles.footer}>
         <div className={footerStyles.footer__navigation__wrapper}>
-          <Link
-            to="/"
-            className={footerStyles.footer__logo}
-          // onClick={() => setIsMenuOpen(false)}
-          >
+          <Link to="/" className={footerStyles.footer__logo}>
             <img
               src="public\img\gadgets-logo.png"
               alt="img-logo"

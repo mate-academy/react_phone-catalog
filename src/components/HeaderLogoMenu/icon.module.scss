@@ -1,10 +1,12 @@
 @import '../../styles/mixins.module';
+@import 'src/styles/_vars.scss';
 
 .icon {
   width: 16px;
   height: 16px;
   display: block;
-
+  border: none;
+  background-color:$NoneBackground;
   // @include onTablet {
   //   padding: 16px;
   // }
@@ -12,11 +14,8 @@
 
 .icon--menu {
   background-image: url("/img/burger-menu.svg");
-  // background-repeat: no-repeat;
   background-size: cover;
   margin: 16px;
-  border: none;
-  background-color: transparent;
 
   @include onTablet {
     display: none;
@@ -31,13 +30,11 @@
       display: block;
       bottom: 0;
       left: 0;
-      // right: 49px;
-      // top: 2.5px;
-      background-color: #0f0f11;
+      background-color: $Primary;
       height: 3px;
       width: 100%;
-      transition: transform 0.3s;
-      transform: scale(1);
+      // transition: transform $effectDuration;
+      // transform: scale($scale);
       transform-origin: left;
     }
   }
@@ -50,7 +47,6 @@
 }
 
 .icon--heart {
-  // display: none;
   width: 0;
   height: 0;
 
@@ -61,7 +57,7 @@
     background-size: cover;
 
     &__wrapper {
-      border-right: 1px solid #e2e6e9;
+      border-right: 1px solid$Elements;
       position: relative;
     }
 
@@ -78,7 +74,6 @@
 }
 
 .icon--bag {
-  // display: none;
   width: 0;
   height: 0;
 
@@ -86,9 +81,7 @@
     background-image: url("public/img/shopping-bag-cart.svg");
     width: 16px;
     height: 16px;
-    // display: inline-block;
     background-size: cover;
-    // margin: 16px;
 
     &__wrapper {
       position: relative;
@@ -113,8 +106,8 @@
     position: absolute;
     top: 13px;
     right: 10px;
-    background: #3b6ef6; // або ваш колір
-    color: #fff;
+    background: $Secondary-Accent;
+    color: $White;
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 9px;

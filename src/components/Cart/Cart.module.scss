@@ -5,7 +5,12 @@
   font-family: 'Mont';
 }
 
+@import 'src/styles/_vars.scss';
+
 .cart {
+  text-decoration: none;
+  color: $Primary;
+
   &__reference {
     text-decoration: none;
   }
@@ -25,7 +30,7 @@
       align-items: center;
     }
     margin-bottom: 16px;
-    border: 1px solid #e2e6e9;
+    border: 1px solid$Elements;
     border-radius: 16px;
   }
 
@@ -57,7 +62,13 @@
 
   &__where {
     text-decoration: none;
-    color: #89939a;
+    color:$Secondary;
+    border: none;
+    background-color: $NoneBackground;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    height: 15px;
   }
 
   &__title {
@@ -87,15 +98,15 @@
   &__icon-close {
     background-image: url('public/img/close.svg');
     background-position: center;
-    background-color: #fff;
+    background-color: $White;
     border: none;
     width: 16px;
     height: 16px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform$effectDuration ease-in-out;
 
     &:hover {
-      transform: scale(1.1);
-      transition: transform 0.3s ease-in-out;
+      transform: scale($scale);
+      transition: transform$effectDuration ease-in-out;
     }
   }
 
@@ -103,22 +114,27 @@
     width: 66px;
     height: auto;
     margin-inline: 16px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform$effectDuration ease-in-out;
 
     @include onTablet {
       margin: 24px;
     }
 
     &:hover {
-      transform: scale(1.1);
-      transition: transform 0.3s ease-in-out;
+      transform: scale($scale);
+      transition: transform$effectDuration ease-in-out;
     }
+  }
+
+  &__name {
+    color: $Primary;
   }
 
   &__gadget-deteils {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: $Primary;
   }
 
   &__change-quantity {
@@ -137,6 +153,10 @@
     background-image: url('public/img/minus.svg');
   }
 
+  &__single-price {
+    color: $Primary;
+  }
+
   &__buttons {
     width: 32px;
     height: 32px;
@@ -148,7 +168,7 @@
   }
 
   &__desicion-border {
-    border: 1px solid #e2e6e9;
+    border: 1px solid $Elements;
     border-radius: 16px;
     // box-sizing: border-box;
     padding-inline: 24px;
@@ -164,7 +184,7 @@
   }
 
   &__items-info {
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid$Elements;
     margin-top: 24px;
     margin-bottom: 16px;
     padding-bottom: 16px;
@@ -179,13 +199,13 @@
     font-weight: 800;
     font-size: 32px;
     line-height: 41px;
-    color: #0f0f11;
+    color: $Primary;
   }
 
   &__items-qauntity {
     font-weight: 600;
     font-size: 14px;
-    color: #89939a;
+    color:$Secondary;
     line-height: 21px;
     width: fit-content;
   }
@@ -195,10 +215,10 @@
     width: 100%;
     display: block;
     height: 48px;
-    color: #fff;
+    color: $White;
     border: none;
     border-radius: 8px;
-    background-color: #f86800;
+    background-color: $Accent;
     margin-top: 16px;
     margin-bottom: 24px;
   }

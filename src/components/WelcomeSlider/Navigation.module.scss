@@ -1,9 +1,10 @@
 @import '../../styles/mixins.module';
+@import 'src/styles/_vars.scss';
 
 .navigation-button {
   height: 100%;
   width: 32px;
-  border: 1px solid #000;
+  border: 1px solid $Icons;
   border-radius: 16px;
 
   display: none;

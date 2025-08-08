@@ -4,13 +4,11 @@ import MobilePhones from './components/MobilePhones';
 import Favourites from './components/Favourites';
 import Cart from './components/Cart/Cart';
 import { useCart } from './context/CartContext';
-import Footer from './components/Footer';
 import ProductDetailsPage from './components/ProductDetailsPage';
+import NotFoundPage from './components/NotFoundPage';
 
 export const Root = () => {
   const { lovelyProducts } = useCart();
-
-  console.log(lovelyProducts);
 
   return (
     <>
@@ -33,6 +31,8 @@ export const Root = () => {
           path="/accessories/:productId"
           element={<ProductDetailsPage />}
         />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

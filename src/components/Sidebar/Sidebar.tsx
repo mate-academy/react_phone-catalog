@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './style.module.scss';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 import { useMenu } from '../../context/MenuContext';
@@ -14,11 +14,6 @@ const Sidebar: React.FC = () => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
-
-  const validIcon = isMenuOpen ? 'icon--close' : 'icon--menu';
-
-  console.log(validIcon);
-  console.log(isMenuOpen);
 
   return (
     <>
@@ -68,15 +63,21 @@ const Sidebar: React.FC = () => {
 
         <div className={styles.actionsContainer}>
           <div className={styles.heartWrapper}>
-            <a href="#">
+            <Link
+              to="favorites"
+              onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
+            >
               <img src="public\img\favourites-(heart-like).svg" alt="heart" />
-            </a>
+            </Link>
           </div>
 
           <div className={styles.bagWrapper}>
-            <a href="#">
+            <Link
+              to="cart"
+              onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
+            >
               <img src="public\img\shopping-bag-cart.svg" alt="bag" />
-            </a>
+            </Link>
           </div>
         </div>
       </aside>
