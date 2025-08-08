@@ -1,0 +1,76 @@
+@use '../../index' as *;
+
+.footer {
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+  padding-block: 32px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logo-wraper {
+    width: 33%;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      width: 33%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    @extend %uppercase;
+
+    display: flex;
+    text-decoration: none;
+    color: $text-color;
+
+    @include hover(color, $main-text-color);
+  }
+
+  &__top-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    border-color: $icon-border-hover-color;
+    color: $main-text-color;
+
+    @include on-tablet {
+      width: 33%;
+      justify-content: flex-end;
+    }
+  }
+
+  &__top-button-text {
+    @extend %small-text;
+
+    color: $text-color;
+
+    @include hover(color, inherit);
+  }
+
+  &__top-button-icon {
+    transform: rotate(-90deg);
+  }
+}

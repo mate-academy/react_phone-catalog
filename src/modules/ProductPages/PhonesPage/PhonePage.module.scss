@@ -1,0 +1,5 @@
+@use '../../shared/index' as *;
+
+.phones-page {
+  @include page-style;
+}

@@ -1,0 +1,8 @@
+@use '../../../shared/index' as *;
+
+.tech-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  padding: 8px 0;
+}

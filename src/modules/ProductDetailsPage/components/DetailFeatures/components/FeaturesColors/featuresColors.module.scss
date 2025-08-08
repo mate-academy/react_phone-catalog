@@ -1,0 +1,21 @@
+@use '../../../../../shared/index' as *;
+
+.color {
+  border: 1px solid $elements;
+  border-radius: 100%;
+  cursor: pointer;
+
+  @include hover(border-color, $primery);
+
+  &--selected {
+    border-color: $primery;
+  }
+
+  &__circle {
+    box-sizing: border-box;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    border: 2px solid $gray;
+  }
+}

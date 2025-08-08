@@ -1,0 +1,93 @@
+@use '../../../shared/index' as *;
+
+.carousel {
+  position: relative;
+  padding-bottom: 18px !important;
+
+  &__link {
+    display: block;
+    position: relative;
+    height: 100%;
+
+    &--active {
+      @include on-tablet {
+        margin-inline: 51px;
+      }
+    }
+  }
+
+  &__img {
+    object-fit: contain;
+    width: 100%;
+    aspect-ratio: 1/1;
+
+    @include on-tablet {
+      object-fit: fill;
+
+      height: 40vh;
+    }
+
+    @include on-desktop {
+      height: 50vh;
+    }
+  }
+
+  &__nav {
+    display: none;
+    position: absolute;
+    height: 40vh;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    padding-inline: 16px;
+    border: 1px solid $icon-border-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 50;
+    background-color: $nav-bg-color;
+    cursor: pointer;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-desktop {
+      height: 50vh;
+    }
+
+    &--prev {
+      left: 0;
+      background-image: url('src/assets/nav-prev.svg');
+    }
+
+    &--next {
+      right: 0;
+      background-image: url('src/assets/nav-next.svg');
+    }
+  }
+
+  :global(.swiper-pagination) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    width: 14px;
+    height: 4px;
+    background-color: $pagination-bg-color;
+    border-radius: 2px;
+    opacity: 1;
+    transition: background-color 0.3s ease;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background-color: $pagination-bg-color-active;
+    width: 20px;
+  }
+}

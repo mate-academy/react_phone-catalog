@@ -1,0 +1,25 @@
+@use '../../../shared/index' as *;
+
+.detail-techlist {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+
+  @include on-tablet {
+    row-gap: 25px;
+  }
+
+  @include on-desktop {
+    row-gap: 28px;
+  }
+
+  &__title-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  &__title {
+    @extend %h3;
+  }
+}

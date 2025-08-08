@@ -1,0 +1,23 @@
+@use '../../../shared/index' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  column-gap: 16px;
+
+  &__nav {
+    &--prev {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__pages {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__page {
+    width: 32px;
+    height: 32px;
+  }
+}

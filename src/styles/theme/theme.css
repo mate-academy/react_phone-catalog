@@ -1,0 +1,56 @@
+:root {
+  --red: #eb5757;
+  --green: #27ae60;
+  --gray: #fff;
+  --primery: #313237;
+  --secondary: #89939a;
+  --elements: #e2e6e9;
+  --icons: #b4bdc3;
+  --main-bg-color: #fff;
+  --main-text-color: #313237;
+  --text-color: #89939a;
+
+  /* 1 */
+  --menu-bg-color: var(--main-bg-color);
+  --menu-active-text-color: var(--primery);
+
+  /* 2 */
+  --nav-bg-color: var(--main-bg-color);
+
+  /* 3 */
+  --pagination-bg-color: var(--elements);
+  --pagination-bg-color-active: var(--primery);
+
+  /* 4 */
+  --card-bg-color: var(--main-bg-color);
+  --card-border-color: var(--elements);
+
+  /* 4 */
+  --arrow-color: var(--primery);
+
+  /* 5 */
+  --button-color: var(--main-bg-color);
+  --button-bg-color: var(--primery);
+
+  /* 6 */
+  --icon-border-color: var(--icons);
+  --icon-border-hover-color: var(--primery);
+  --icon-border-disabled-color: var(--elements);
+
+  /* 7 */
+  --category-phone-bg: #6d6474;
+  --category-accessory-bg: #973d5f;
+  --category-tablet-bg: #8d8d92;
+
+  /* 8 */
+  --select-border-color: var(--icon-border-color);
+  --select-border-hover-color: var(--secondary);
+  --select-border-focus-color: var(--primery);
+  --select-option-bg-color: #fff;
+  --select-option-focus-bg-color: #fafbfc;
+}
+
+[data-theme='dark'] {
+  --main-bg-color: #121212;
+  --text-color: #fff;
+}

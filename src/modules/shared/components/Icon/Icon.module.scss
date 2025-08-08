@@ -1,0 +1,120 @@
+@use '../../index' as *;
+
+@mixin reset {
+  padding: 0;
+  aspect-ratio: 1/1;
+  box-shadow: none;
+
+  &:hover {
+    &::after {
+      content: '';
+      display: none;
+    }
+  }
+}
+
+.icon {
+  @include link-padding;
+  @include link-bottom-line-action('hover');
+
+  width: 16px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: -1px 0 0 0 #e2e6e9;
+
+  &--active {
+    @include link-bottom-line-action('active');
+  }
+
+  &--home {
+    @include reset;
+
+    background-image: url('src/assets/Home.svg');
+  }
+
+  &--delete {
+    @include reset;
+
+    mask: url(src/assets/Close.svg) no-repeat center;
+    background-color: $icons;
+  }
+
+  &--arrow {
+    @include reset;
+
+    background-image: url(src/assets/arrow.svg);
+  }
+
+  &--burger {
+    background-image: url('src/assets/Burger.svg');
+
+    @include on-tablet {
+      display: none;
+      position: absolute;
+    }
+  }
+
+  &--close {
+    background-image: url('src/assets/Close.svg');
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &--favorites {
+    position: relative;
+    display: none;
+    background-image: url('src/assets/Favorites.svg');
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &--cart {
+    display: none;
+    background-image: url('src/assets/Cart.svg');
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &--menu {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 50%;
+    padding: 24px 0;
+    transform: translateY(-2px);
+  }
+
+  &__counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 14px;
+    aspect-ratio: 1/1;
+
+    font-family: $font-family-general;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    border: 1px solid #fff;
+    border-radius: 100%;
+    background: $red;
+    color: white;
+
+    transform: translateY(-25%) translateX(50%);
+
+    &--menu {
+      top: 50%;
+      left: 50%;
+      transform: translateY(-100%);
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@use '../../../shared/index' as *;
+
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    @extend %h2;
+  }
+
+  &__categories {
+    @include page-grid;
+
+    row-gap: 32px;
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    grid-column: 1/-1;
+
+    text-decoration: none;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 1/1;
+
+    background-position: 76px 62px;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &--phone {
+      background-color: $category-phone-bg;
+      background-image: url('public/img/category-phones.webp');
+    }
+
+    &--tablet {
+      background-color: $category-tablet-bg;
+      background-image: url('public/img/category-tablets.webp');
+    }
+
+    &--accessory {
+      background-color: $category-accessory-bg;
+      background-image: url('public/img/category-accessories.webp');
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    column-gap: 4px;
+  }
+
+  &__text {
+    @extend %h4-tb;
+
+    color: $main-text-color;
+  }
+
+  &__subtitle {
+    @extend %body-text;
+
+    color: $text-color;
+  }
+}

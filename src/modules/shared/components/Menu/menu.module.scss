@@ -1,0 +1,44 @@
+@use '../../index' as *;
+@use '../Navbar/Navbar.module.scss' as *;
+
+.nav {
+  color: #000;
+  border: 1px solid red;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: -webkit-fill-available;
+
+  font-weight: 400;
+  z-index: 100;
+  background-color: $main-bg-color;
+
+  position: fixed;
+  top: 50px;
+
+  opacity: 0;
+  transition: all 0.3s;
+  transform: translateX(-100%);
+  pointer-events: none;
+
+  &--active {
+    opacity: 1;
+    transform: translateX(0) translateY(2px);
+    pointer-events: all;
+
+    @include on-tablet {
+      opacity: 0;
+      transition: all 0.3s;
+      transform: translateX(-100%);
+      pointer-events: none;
+    }
+  }
+
+  &__content {
+    margin: 24px 0;
+  }
+}

@@ -1,0 +1,23 @@
+@use '../../../shared/index' as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__content {
+    position: relative;
+
+    @include on-tablet {
+      @include layout-container;
+
+      // height: 40vh;
+      // padding: 40%;
+      height: auto;
+    }
+  }
+}

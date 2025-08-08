@@ -1,0 +1,1 @@
+export { DetailGallery } from './DetailGallery';

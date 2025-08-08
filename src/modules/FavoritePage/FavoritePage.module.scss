@@ -1,0 +1,35 @@
+@use '../shared/index' as *;
+
+.fav-page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  @include on-tablet {
+    row-gap: 40px;
+  }
+
+  &__title-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__text {
+    @extend %body-text;
+
+    color: $text-color;
+  }
+
+  &__heart-broken {
+    height: 50vh;
+    background-image: url(src/assets/heart-broken.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

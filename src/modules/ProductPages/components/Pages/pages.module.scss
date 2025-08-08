@@ -1,0 +1,16 @@
+@use '../../../shared/index' as *;
+
+.pages {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  &__search-sortBar {
+    display: flex;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+}

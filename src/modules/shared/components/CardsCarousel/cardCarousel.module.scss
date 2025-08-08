@@ -1,0 +1,97 @@
+@use '../../../shared/index' as *;
+
+.card-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    @extend %h2;
+  }
+
+  &__nav-content {
+    display: flex;
+    width: fit-content;
+    position: relative;
+    column-gap: 16px;
+  }
+
+  &__nav-wrapper {
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 1px solid $icon-border-color;
+    padding: 8px;
+
+    @include hover(border-color, $icon-border-hover-color);
+
+    &--disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+      border-color: $icon-border-disabled-color;
+    }
+  }
+
+  &__nav {
+    &--prev {
+      transform: rotate(180deg);
+    }
+
+    &--disabled {
+      background-color: $arrow-disabled-color;
+    }
+  }
+
+  &__swiper-container {
+    @include layout-container;
+
+    margin-right: 0;
+
+    @include on-tablet {
+      margin-right: 0;
+    }
+  }
+
+  &__swiper {
+    @include page-grid;
+
+    --gap: 16px;
+    --width-column: 60px;
+
+    gap: 16px;
+
+    @include on-tablet {
+      --width-column: 35px;
+    }
+
+    @include on-desktop {
+      --width-column: 32px;
+    }
+  }
+
+  &__swiper-item {
+    --span: 3;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    width: calc(
+      var(--span) * var(--width-column) + (var(--span) - 1) * var(--gap)
+    ) !important;
+    flex-shrink: 0;
+
+    @include on-tablet {
+      --span: 5;
+    }
+
+    @include on-desktop {
+      --span: 6;
+    }
+  }
+}

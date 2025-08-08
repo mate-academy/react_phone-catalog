@@ -1,1 +1,10 @@
 // not empty
+.App {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  &__main {
+    margin-bottom: 64px;
+  }
+}

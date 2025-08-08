@@ -1,0 +1,26 @@
+@use '../../index' as *;
+
+.go-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__icon {
+    width: 16px;
+    aspect-ratio: 1/1;
+    background-color: $icons;
+    mask: url(src/assets/arrow.svg);
+    mask-repeat: no-repeat;
+  }
+  &__link {
+    text-decoration: none;
+    color: $main-text-color;
+    cursor: pointer;
+
+    &--disabled {
+      color: $text-color;
+      pointer-events: none;
+      cursor: none;
+    }
+  }
+}

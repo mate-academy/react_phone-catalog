@@ -1,0 +1,100 @@
+@use '../../index' as *;
+
+@mixin normalise {
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.icon-button {
+  @include hover(border-color, $icon-border-hover-color);
+
+  --icon-bg: var(--primery);
+  --icon-border: var(--icons);
+
+  border: 1px solid var(--icon-border);
+  cursor: pointer;
+
+  &--disabled {
+    --icon-bg: var(--icons);
+    --icon-border: var(--elements);
+
+    cursor: none;
+    pointer-events: none;
+  }
+
+  &--filling {
+    --filling-color: #000;
+    --filling-bg: var(--gray);
+    --filling-border: var(--elements);
+
+    color: var(--filling-color);
+    background-color: var(--filling-bg);
+    border-color: var(--filling-border);
+  }
+
+  &--filling-active {
+    --filling-color: var(--gray);
+    --filling-bg: var(--primery);
+
+    border: none;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-color: var(--icon-bg);
+
+    &--arrow {
+      mask: url(src/assets/arrow.svg);
+      padding: 8px;
+
+      @include normalise;
+    }
+
+    &--favorites {
+      mask: url(src/assets/favorites.svg);
+      padding: 12px;
+
+      @include normalise;
+    }
+
+    &--fav-active {
+      mask: url(src/assets/Favorites-active.svg);
+      background-color: $red;
+
+      @include normalise;
+    }
+
+    &--minus {
+      mask: url(src/assets/Minus.svg);
+      padding: 8px;
+
+      @include normalise;
+    }
+
+    &--plus {
+      mask: url(src/assets/Plus.svg);
+      padding: 8px;
+
+      @include normalise;
+    }
+  }
+
+  &__filling {
+    @extend %body-text;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: inherit;
+    aspect-ratio: 1/1;
+    width: 100%;
+
+    &--capacity {
+      box-sizing: border-box;
+      height: 32px;
+      padding-inline: 8px;
+    }
+  }
+}

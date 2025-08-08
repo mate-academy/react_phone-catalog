@@ -1,0 +1,22 @@
+@use '../../index' as *;
+
+.back-button {
+  @extend %small-text;
+
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+  color: $text-color;
+  cursor: pointer;
+
+  @include hover(color, $main-text-color);
+
+  &__icon {
+    display: flex;
+    transform: rotate(180deg);
+  }
+
+  &__text {
+    align-self: flex-end;
+  }
+}

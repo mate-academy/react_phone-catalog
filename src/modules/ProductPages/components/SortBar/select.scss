@@ -1,0 +1,65 @@
+@use '../../../shared/index' as *;
+
+.select {
+  &:focus {
+    border-color: $select-border-focus-color;
+  }
+
+  &__control {
+    border: 1px solid $select-border-color;
+    box-shadow: none;
+
+    @include hover(border-color, $select-border-hover-color);
+
+    .select__indicator {
+      transform: rotate(0deg);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &--is-focused {
+      border-color: $select-border-focus-color;
+    }
+
+    &--menu-is-open {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      .select__indicator {
+        opacity: 1;
+        transform: rotate(180deg);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+  }
+
+  &__single-value {
+    @extend %buttom;
+
+    color: $main-text-color;
+  }
+
+  &__menu {
+    box-shadow: 0 2px 15px 0 #0000000d;
+    transition: opacity 0.3s ease;
+  }
+
+  &__option {
+    @extend %body-text;
+
+    color: $secondary;
+    background-color: $select-option-bg-color;
+
+    @include hover(background-color, $select-option-focus-bg-color);
+    @include hover(color, $main-text-color);
+
+    &--is-selected {
+      @extend %buttom;
+
+      background-color: $select-option-focus-bg-color !important;
+      color: $main-text-color !important;
+    }
+
+    &--is-focused {
+      background-color: $select-option-focus-bg-color !important;
+    }
+  }
+}

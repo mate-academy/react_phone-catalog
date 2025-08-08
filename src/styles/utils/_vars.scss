@@ -1,0 +1,65 @@
+@import '../theme/theme.css';
+
+// breakpoints
+$mobile-width: 320px;
+$tablet-width: 640px;
+$desktop-width: 1200px;
+$large-desktop-width: 1440px;
+
+// text color
+
+$main-text-color: var(--primery);
+$text-color: var(--secondary);
+$green: var(--green);
+$gray: var(--gray);
+$red: var(--red);
+$primery: var(--primery);
+$secondary: var(--secondary);
+$elements: var(--elements);
+$icons: var(--icons);
+
+// background color
+$main-bg-color: var(--main-bg-color);
+$menu-bg-color: var(--menu-bg-color);
+$card-bg-color: var(--card-bg-color);
+$category-phone-bg: var(--category-phone-bg);
+$category-accessory-bg: var(--category-accessory-bg);
+$category-tablet-bg: var(--category-tablet-bg);
+
+// sort-bar
+$select-border-color: var(--select-border-color);
+$select-border-hover-color: var(--select-border-hover-color);
+$select-border-focus-color: var(--select-border-focus-color);
+$select-option-bg-color: var(--select-option-bg-color);
+$select-option-focus-bg-color: var(--select-option-focus-bg-color);
+
+// card
+$card-border-color: var(--card-border-color);
+
+// button color
+$button-color: var(--button-color);
+$button-bg-color: var(--button-bg-color);
+
+// icon color
+$icon-border-color: var(--icon-border-color);
+$icon-border-hover-color: var(--icon-border-hover-color);
+$icon-border-disabled-color: var(--icon-border-disabled-color);
+
+// shadow color
+
+// font family
+$font-family-general: Montserrat, Roboto, sans-serif;
+
+// font size
+$root-font-size: 16px;
+
+// carousel
+$arrow-color: var(--arrow-color);
+$arrow-disabled-color: var(--icons);
+
+// $nav-bg-color: #fff;
+$nav-bg-color: var(--nav-bg-color);
+
+// $icon-border-hover-color: var(--nav-border-hover-color);
+$pagination-bg-color: var(pagination-bg-color);
+$pagination-bg-color-active: var(--pagination-bg-color-active);
