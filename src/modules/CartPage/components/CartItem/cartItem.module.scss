@@ -78,11 +78,11 @@
     }
 
     &--minus {
-      mask: url(src/assets/Minus.svg) no-repeat center;
+      mask: url(/assets/Minus.svg) no-repeat center;
     }
 
     &--plus {
-      mask: url(src/assets/Plus.svg) no-repeat center;
+      mask: url(/assets/Plus.svg) no-repeat center;
     }
 
     &--disabled {

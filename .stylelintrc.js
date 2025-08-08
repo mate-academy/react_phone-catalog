@@ -1,4 +1,8 @@
 module.exports = {
   extends: "@mate-academy/stylelint-config",
-  rules: {}
+  rules: {
+    "selector-pseudo-class-no-unknown": [true, {
+      ignorePseudoClasses: ["global"],
+    }],
+  },
 };

@@ -45,35 +45,35 @@
     background-color: var(--icon-bg);
 
     &--arrow {
-      mask: url(src/assets/arrow.svg);
+      mask: url(/assets/arrow.svg);
       padding: 8px;
 
       @include normalise;
     }
 
     &--favorites {
-      mask: url(src/assets/favorites.svg);
+      mask: url(/assets/Favorites.svg);
       padding: 12px;
 
       @include normalise;
     }
 
     &--fav-active {
-      mask: url(src/assets/Favorites-active.svg);
+      mask: url(/assets/Favorites-active.svg);
       background-color: $red;
 
       @include normalise;
     }
 
     &--minus {
-      mask: url(src/assets/Minus.svg);
+      mask: url(/assets/Minus.svg);
       padding: 8px;
 
       @include normalise;
     }
 
     &--plus {
-      mask: url(src/assets/Plus.svg);
+      mask: url(/assets/Plus.svg);
       padding: 8px;
 
       @include normalise;

@@ -9,7 +9,7 @@
     width: 16px;
     aspect-ratio: 1/1;
     background-color: $icons;
-    mask: url(src/assets/arrow.svg);
+    mask: url(/assets/arrow.svg);
     mask-repeat: no-repeat;
   }
   &__link {

@@ -28,13 +28,13 @@
   }
 
   &--home {
-    background-image: url('src/assets/Home.svg');
+    background-image: url('/assets/Home.svg');
 
     @include reset;
   }
 
   &--delete {
-    mask: url(src/assets/Close.svg) no-repeat center;
+    mask: url(/assets/Close.svg) no-repeat center;
     background-color: $icons;
 
     @include reset;
@@ -43,11 +43,11 @@
   &--arrow {
     @include reset;
 
-    background-image: url(src/assets/arrow.svg);
+    background-image: url(/assets/arrow.svg);
   }
 
   &--burger {
-    background-image: url('src/assets/Burger.svg');
+    background-image: url('/assets/Burger.svg');
 
     @include on-tablet {
       display: none;
@@ -56,7 +56,7 @@
   }
 
   &--close {
-    background-image: url('src/assets/Close.svg');
+    background-image: url('/assets/Close.svg');
 
     @include on-tablet {
       display: none;
@@ -66,7 +66,7 @@
   &--favorites {
     position: relative;
     display: none;
-    background-image: url('src/assets/Favorites.svg');
+    background-image: url('/assets/Favorites.svg');
 
     @include on-tablet {
       display: block;
@@ -75,7 +75,7 @@
 
   &--cart {
     display: none;
-    background-image: url('src/assets/Cart.svg');
+    background-image: url('/assets/Cart.svg');
 
     @include on-tablet {
       display: block;
