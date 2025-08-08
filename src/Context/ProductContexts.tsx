@@ -62,7 +62,6 @@ export const MyProvider = ({ children }: { children: ReactNode }) => {
   //----------
 
   //-----------
-  console.log('render');
 
   return (
     <MyContext.Provider

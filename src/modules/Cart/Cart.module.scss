@@ -27,6 +27,9 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding: 24px;
+
+  border: 1px solid #3b3e4a;
 
   &_purchaseAmount {
     display: flex;
@@ -84,4 +87,140 @@
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -1%;
+}
+
+.submit {
+  /* Контейнер для кнопки, чтобы не прыгал контент, когда она сменит позиционирование */
+  &_container {
+    align-items: center;
+    justify-content: center;
+  }
+  /* Кнопка для открытия */
+  &_container summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    text-decoration: none;
+    position: relative;
+    color: #fff;
+    text-transform: uppercase;
+    background: #905bff;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+  }
+  &_container summary:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -50px;
+    bottom: 0;
+    left: 0;
+    border-right: 50px solid transparent;
+    border-top: 50px solid #a378ff;
+    transition: transform 0.5s;
+    transform: translateX(-100%);
+    z-index: -1;
+  }
+  &_container summary:hover:before,
+  &_container summary:active:before,
+  &_container summary:focus:before {
+    transform: translateX(0);
+  }
+  /* Кнопка при открытом окне переходит на весь экран */
+  &_container details[open] summary {
+    display: none;
+  }
+  /* Контейнер, который затемняет страницу */
+  &_container details .cmc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &_container details[open] .cmc {
+    pointer-events: none;
+    z-index: 4;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    animation: bg 0.5s ease;
+    background: rgba(31, 37, 52, 0.7);
+  }
+  /* Модальное окно */
+  &_container details .cmt {
+    font-size: 16px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 70%;
+    transition: 0.5s;
+    border: 1px solid #fff;
+    border-radius: 12px;
+    background: #323542;
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.2),
+      0 16px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    overflow: auto;
+  }
+  &_container details[open] .cmt {
+    animation: scale 0.5s ease;
+    z-index: 4;
+    pointer-events: auto;
+  }
+
+  &_buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  &_button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #905bff;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #A378FF;
+    }
+  }
+}
+
+/* Анимации */
+@keyframes scale {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes move {
+  0% {
+    right: -80px;
+  }
+  100% {
+    right: 20px;
+  }
+}
+@keyframes bg {
+  0% {
+    background: rgba(15, 17, 33, 0);
+  }
+  100% {
+    background: rgba(15, 17, 33, 0.7);
+  }
 }

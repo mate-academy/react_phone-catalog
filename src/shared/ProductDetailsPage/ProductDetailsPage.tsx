@@ -156,7 +156,7 @@ export const ProductDetailsPage: React.FC = () => {
                   >{`id: ${chosedItem?.namespaceId}`}</span>
                 </section>
 
-                <line className={styles.underline}></line>
+                <div className={styles.underline}></div>
 
                 {/* Сapacity selection */}
 
@@ -186,7 +186,7 @@ export const ProductDetailsPage: React.FC = () => {
                   </div>
                 </section>
 
-                <line className={styles.underline}></line>
+                <div className={styles.underline}></div>
               </div>
               {/* Confirm order */}
 
@@ -277,7 +277,7 @@ export const ProductDetailsPage: React.FC = () => {
               <section className={styles.description}>
                 <h3 className={styles.description_title}>About</h3>
 
-                <line className={styles.underline}></line>
+                <div className={styles.underline}></div>
 
                 <div className={styles.description_sections}>
                   {chosedItem?.description.map(article => (

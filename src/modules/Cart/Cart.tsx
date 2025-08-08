@@ -7,12 +7,38 @@ import styles from './Cart.module.scss';
 import { Direction } from '../../shared/Direction/Direction';
 import { BurgerMenu } from '../../shared/BurgerMenu';
 import { ProductDemo } from '../../types/ProductDemo';
+import { Loader } from '../../shared/Loader';
 
 export const Cart: React.FC = () => {
-  const { products, isMenuOpen, addIsPressed } = useMyContext();
+  const {
+    products,
+    isMenuOpen,
+    addIsPressed,
+    isLoading,
+    setIsLoading,
+    setIsError,
+  } = useMyContext();
   const [orderList, setOrderList] = useState<ProductDemo[]>([]);
   const [amountPrice, setAmountPrice] = useState(0);
   const [amountItems, setAmountItems] = useState(0);
+  const [checkout, setCheckout] = useState(false);
+
+  const confirmModal = () => {
+    products.forEach(product => {
+      localStorage.removeItem(`cart_${product.itemId}`);
+    });
+    setCheckout(prev => !prev);
+
+    const details = document.querySelector('details');
+
+    details?.removeAttribute('open');
+  };
+
+  const closeModal = () => {
+    const details = document.querySelector('details');
+
+    details?.removeAttribute('open');
+  };
 
   useEffect(() => {
     const orders = products.filter(item => {
@@ -22,7 +48,7 @@ export const Cart: React.FC = () => {
     });
 
     setOrderList(orders);
-  }, [products, addIsPressed]);
+  }, [products, addIsPressed, checkout]);
 
   useEffect(() => {
     let totalPrice = 0;
@@ -59,29 +85,67 @@ export const Cart: React.FC = () => {
             <Direction page="cart" />
 
             <h2 className={styles.content_title}>Cart</h2>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <>
+                <div className={styles.shopping}>
+                  <ProductList data={orderList} toCart={true} />
+                </div>
 
-            <div className={styles.shopping}>
-              <ProductList data={orderList} toCart={true} />
-            </div>
+                <div className={styles.total}>
+                  <div className={styles.total_purchaseAmount}>
+                    {orderList.length > 0 ? (
+                      <>
+                        <span className={styles.total_price}>
+                          ${amountPrice}
+                        </span>
+                        <span className={styles.total_quantity}>
+                          Total for {amountItems} items
+                        </span>
+                      </>
+                    ) : products.length === 0 ? (
+                      <Loader />
+                    ) : (
+                      <span className={styles.empty}>Your cart is empty</span>
+                    )}
 
-            <div className={styles.total}>
-              <div className={styles.total_purchaseAmount}>
-                {orderList.length > 0 ? (
-                  <>
-                    <span className={styles.total_price}>${amountPrice}</span>
-                    <span className={styles.total_quantity}>
-                      Total for {amountItems} items
-                    </span>
-                  </>
-                ) : (
-                  <span className={styles.empty}>Your cart is empty</span>
-                )}
+                    {/*----------- */}
+                  </div>
+                  <div className={styles.total_underline}></div>
 
-                {/*----------- */}
-              </div>
-              <div className={styles.total_underline}></div>
-              <button className={styles.total_submit}>Checkout</button>
-            </div>
+                  <div className={styles.submit_container}>
+                    <details>
+                      <summary>Checkout</summary>
+                      <div className={styles.cmc}>
+                        <div className={styles.cmt}>
+                          <p>
+                            Checkout is not implemented yet. Do you want to
+                            clear the Cart?
+                          </p>
+                          <div className={styles.submit_buttons}>
+                            <button
+                              className={styles.submit_button}
+                              id="confirmBtn"
+                              onClick={confirmModal}
+                            >
+                              Yes, clear
+                            </button>
+                            <button
+                              className={styles.submit_button}
+                              id="cancelBtn"
+                              onClick={closeModal}
+                            >
+                              No, keep it
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           <Footer />
