@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
+import { ProductInfoUnionType } from '../ProductInfoPage';
 import './breadcrumbsNav.scss';
 
 export const BreadcrumbsNav: React.FC = () => {
@@ -13,14 +15,16 @@ export const BreadcrumbsNav: React.FC = () => {
     ? category.charAt(0).toUpperCase() + category.slice(1)
     : '';
 
-  const modelName = itemId
-    ?.split('-')
-    .map(word => {
-      return word.toLowerCase().endsWith('gb')
-        ? word.toUpperCase()
-        : word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(' ');
+  const [modelName, setModelName] = useState<string>('');
+
+  useEffect(() => {
+    fetch(`/api/${category}.json`)
+      .then(res => res.json())
+      .then(data => {
+        const found = data.find((product: ProductInfoUnionType) => product.id === itemId);
+        setModelName(found?.name || '');
+      });
+  }, [itemId]);
 
   return (
     <div className="breadcrumbsNav-block">

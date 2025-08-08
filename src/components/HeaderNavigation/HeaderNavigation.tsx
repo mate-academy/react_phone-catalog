@@ -1,4 +1,3 @@
-
 import './header-navigation.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { useCurrentPath } from '../contexts/PathContext';

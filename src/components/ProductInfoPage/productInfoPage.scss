@@ -1,0 +1,231 @@
+.product-info-page {
+  padding: 0 16px;
+
+  @include onTablet {
+    padding: 0 24px 0 0;
+  }
+
+  .small-text-12 {
+    color: $border-hover-color;
+  }
+  .full-name {
+    padding-bottom: 32px;
+  }
+
+  .modelsPhoto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+
+    .mainPhoto {
+      display: flex;
+      height: 288px;
+      width: 288px;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 0;
+
+      background-color: $main-bg-color;
+      border-radius: 8px;
+      border: 1px solid $border-color;
+
+      .main-img {
+        height: 100%;
+        border-radius: 8px;
+      }
+
+      @include onTablet {
+        order: 2;
+      }
+
+      @include onDesktop {
+        height: 464px;
+        width: 464px;
+      }
+    }
+
+    .smallPhoto-container {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding-bottom: 40px;
+
+      @include onTablet {
+        flex-direction: column;
+        padding-bottom: 0;
+      }
+
+      @include onDesktop {
+        gap: 16px;
+      }
+
+
+
+      .smallPhoto-box {
+        height: 50px;
+        width: 50px;
+        border: 1px solid $border-color;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        background-color: $main-bg-color;
+        border-radius: 8px;
+
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+
+        @include onTablet {
+          height: 35px;
+          width: 35px;
+        }
+
+        @include onDesktop {
+          height: 80px;
+          width: 80px;
+        }
+
+        .mini-img {
+          padding: 3px;
+          height: 100%;
+        }
+
+        &.is-active {
+          border-color: rgb(170, 158, 158);
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+
+          transform: scale(1.1);
+        }
+
+        &:hover {
+          border-color: $border-hover-color;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+        }
+      }
+    }
+  }
+
+  .main-controls {
+    .colors-id-box {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid $border-color;
+
+      .colors-box {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .models-colors {
+          display: flex;
+          gap: 8px;
+
+          .border-color {
+            transition:
+              transform 0.3s ease,
+              box-shadow 0.3s ease;
+            border: 1px solid $border-color;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            padding: 2px;
+            cursor: pointer;
+
+            &:hover {
+              border-color: $border-hover-color;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+            }
+          }
+
+          .is-active {
+            border-color: rgb(170, 158, 158);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            transform: scale(1.1);
+          }
+
+          .color {
+            height: 100%;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      // .id-box {
+
+      // }
+    }
+
+    .select-capacity-container {
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid $border-color;
+
+      .info-copacity-box {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .capacity-list {
+          display: flex;
+          gap: 8px;
+
+          .capacity {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            height: 32px;
+            padding: 0 8px;
+
+            border-radius: 8px;
+            background-color: $main-bg-color;
+            border: 1px solid $border-color;
+            cursor: pointer;
+
+            .main-body-text-14 {
+              color: $text-main-color;
+            }
+
+            // .main-body-text-14 {
+            //   color: $text-white-color;
+            // }
+
+            // background-color: $bg-color-black;
+
+            transition:
+              transform 0.3s ease,
+              box-shadow 0.3s ease;
+            &.is-active {
+              border-color: rgb(170, 158, 158);
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+
+              background-color: $border-hover-color;
+
+              // background: linear-gradient(to top right, $border-hover-color,white);
+
+              background: linear-gradient(
+                to top right,
+                $border-hover-color 30%,
+                $main-bg-color 75%
+              );
+
+              transform: scale(1.1);
+            }
+
+            &:hover {
+              border-color: $border-hover-color;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+            }
+          }
+        }
+      }
+    }
+  }
+}
