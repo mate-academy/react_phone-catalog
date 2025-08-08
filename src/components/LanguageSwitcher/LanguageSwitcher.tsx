@@ -11,6 +11,9 @@ const LanguageSwitcher = () => {
   const dispatch = useDispatch();
   const currentLanguage = useAppSelector(
     (state: { language: { current: string; }; }) => state.language.current);
+  const currentTheme = useAppSelector(
+    (state: { theme: { current: string }; }) => state.theme.current
+  );
 
   useEffect(() => {
     // Synchronize i18n with redux state when component mounts
@@ -23,9 +26,9 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="language-switcher">
+    <div className={`language-switcher ${currentTheme}`}>
       {t('languageSelector')}
-      <div className="language-buttons">
+      <div className={`language-buttons ${currentTheme}`}>
         <button
           onClick={() => changeLanguage('en')}
           className={currentLanguage === 'en' ? 'active' : ''}

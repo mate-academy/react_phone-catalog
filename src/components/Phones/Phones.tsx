@@ -57,7 +57,7 @@ export const Phones: React.FC = () => {
           <div className="acc--nav-legend">
             <Link
               to={'/'}
-              className='acc-homeIcon'
+              className={`acc-homeIcon ${currentTheme}`}
             >
               {homeIcon}
             </Link>

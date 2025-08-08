@@ -1,3 +1,4 @@
+@import '../../App.scss';
 $--tablet-width: 640px;
 
 .slider-wrapper {
@@ -93,6 +94,12 @@ $--tablet-width: 640px;
   z-index: 5;
   transition: background-color 0.3s;
 
+  &.theme1 {
+    color: $theme-dark-white;
+    background-color: $theme-dark-surface2;
+    border-color: $theme-dark-surface2;
+  }
+
   @media (min-width: 1200px) {
     position: relative;
     height: 400px;
@@ -161,10 +168,18 @@ $--tablet-width: 640px;
   padding: 0;
   border-radius: 2px;
   margin: 0 3px;
+
+  &.theme1 {
+    background-color: $theme-dark-elements;
+  }
 }
 
 .slider__bullet--active {
   background-color: black;
+
+  &.theme1 {
+    background-color: $theme-dark-white;
+  }
 }
 
 /* Styling for the demo content */

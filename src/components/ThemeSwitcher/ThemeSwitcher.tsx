@@ -24,7 +24,11 @@ const ThemeSwitcher = () => {
 
   return (
     <div className="theme-selector">
-      <label htmlFor="theme-select">{t('theme.title')}:</label>
+      <label
+        htmlFor="theme-select"
+        className={`theme-select-title ${currentTheme}`}>
+        {t('theme.title')}:
+      </label>
       <br/>
       <select
         id="theme-select"
@@ -34,7 +38,7 @@ const ThemeSwitcher = () => {
 
           changeTheme(newTheme);
         }}
-        className="theme-select"
+        className={`theme-select ${currentTheme}`}
       >
         <option value="theme0">{t('theme.theme0')}</option>
         <option value="theme1">{t('theme.theme1')}</option>

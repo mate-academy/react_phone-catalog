@@ -111,6 +111,17 @@ $color-white: #FFFFFF;
 $color-green: #27AE60;
 $color-red: #EB5757;
 
+$theme-dark-black: #0F1121;
+$theme-dark-secondary: #75767F;
+$theme-dark-white: #F1F2F9;
+$theme-dark-surface2: #323542;
+$theme-dark-surface1: #161827;
+$theme-dark-elements: #3B3E4A;
+$theme-dark-icons: #4A4D58;
+$theme-dark-accent: #905BFF;
+
+$theme-3-primary: #110f0f;
+
 $screen-tablet: 640px;
 
 body {
@@ -138,4 +149,3 @@ body {
     @include font-h1;
   }
 }
-

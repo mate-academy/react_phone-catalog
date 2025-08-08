@@ -8,11 +8,12 @@ import { loadComponentStyles, setTheme } from '../../redux/themeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import './Navbar.scss';
-import { emptyHeart } from '../Recommended/Recommended';
 import { currentCartItems, currentCartTotalQuantity } from '../../redux/cartSlice';
 import { currentFavoriteItems } from '../../redux/favoritesSlice';
-import { shoppingBagIcon, crossIcon, burgerIcon, settingsIcon, searchGlass }
+import { shoppingBagIcon, crossIcon, burgerIcon, settingsIcon, searchGlass, emptyHeart }
   from '../../../public/img/icons/svg_icons';
+import iLogo from '../../../public/img/icons/iSupply_logo.png';
+import iLogo_inverted from '../../../public/img/icons/iSupply_logo_inverted.png';
 
 type ThemeType = 'theme0' | 'theme1' | 'theme2' | 'theme3' | 'theme4';
 
@@ -133,7 +134,11 @@ const FullNavbar: React.FC = () => {
         <NavLink
           to='/'
         >
-          <img src="img/icons/iSupply_logo.png" alt="" />
+          <img
+            src={currentTheme === 'theme1'
+              ? iLogo_inverted
+              : iLogo}
+            alt='' />
         </NavLink>
         <div className="navbar-burger-icon"
           onClick={() => setSidebarOpen(true)}
@@ -146,20 +151,25 @@ const FullNavbar: React.FC = () => {
       >
 
 
-        <div className="navbar-item navbar-links-block">
+        <div className={`navbar-item navbar-links-block ${currentTheme}`}>
           <NavLink
             to="/"
             className={() => classNames(
-              'navbar-item', 'navbar-logo',
+              'navbar-item', 'navbar-logo', `${currentTheme}`,
             )}
           >
-            <img src="img/icons/iSupply_logo.png" alt="" />
+            <img
+              src={currentTheme === 'theme1'
+                ? iLogo_inverted
+                : iLogo}
+              alt=""
+            />
           </NavLink>
 
           <NavLink
             to="/"
             className={({ isActive }) => classNames(
-              'navbar-item',
+              'navbar-item', currentTheme,
               { 'has-background-grey-lighter': isActive },
             )}
           >
@@ -169,7 +179,7 @@ const FullNavbar: React.FC = () => {
           <NavLink
             to="/phones"
             className={({ isActive }) => classNames(
-              'navbar-item',
+              'navbar-item', currentTheme,
               { 'has-background-grey-lighter': isActive },
             )}
           >
@@ -179,7 +189,7 @@ const FullNavbar: React.FC = () => {
           <NavLink
             to="/tablets"
             className={({ isActive }) => classNames(
-              'navbar-item navbar-tablets',
+              'navbar-item navbar-tablets', currentTheme,
               { 'has-background-grey-lighter': isActive },
             )}
           >
@@ -189,7 +199,7 @@ const FullNavbar: React.FC = () => {
           <NavLink
             to="/accessories"
             className={({ isActive }) => classNames(
-              'navbar-item',
+              'navbar-item', currentTheme,
               { 'has-background-grey-lighter': isActive },
             )}
           >
@@ -224,7 +234,7 @@ const FullNavbar: React.FC = () => {
           {t('navigation.cart')}
         </NavLink> */}
 
-        <div className="bottom-button desktop"
+        <div className={`bottom-button desktop ${currentTheme}`}
           onClick={() => {
             setSearchbarOpen(true);
             focusOnSearch();
@@ -236,7 +246,7 @@ const FullNavbar: React.FC = () => {
         <NavLink
           to="/favorites"
           className={({ isActive }) => classNames(
-            'bottom-button desktop',
+            'bottom-button desktop', currentTheme,
             { 'link-active has-background-grey-lighter': isActive },
           )}
         >
@@ -248,7 +258,7 @@ const FullNavbar: React.FC = () => {
         <NavLink
           to="/cart"
           className={({ isActive }) => classNames(
-            'bottom-button desktop',
+            'bottom-button desktop', currentTheme,
             { 'link-active has-background-grey-lighter': isActive },
           )}
         >
@@ -258,13 +268,13 @@ const FullNavbar: React.FC = () => {
           </div>
         </NavLink>
 
-        <div className="bottom-button desktop settingsIcon"
+        <div className={`bottom-button desktop settingsIcon ${currentTheme}`}
           onClick={() => setTopBarOpen(true)}
         >
           {settingsIcon}
         </div>
 
-        <div className={`navbar-sliding-settings ${topbarOpen ? 'visible' : ''}`}
+        <div className={`navbar-sliding-settings ${currentTheme} ${topbarOpen ? 'visible' : ''}`}
           onClick={() => setTopBarOpen(false)}
           ref={topbarRef}
         >

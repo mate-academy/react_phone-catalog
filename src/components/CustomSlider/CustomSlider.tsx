@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef, TouchEvent } from 'react';
 import './CustomSlider.scss';
 import '../../../public/img/square_banner.png';
+import { useAppSelector } from '../../redux/store';
 
 const ImageSlider = ({ slides = [], autoRotateTime = 5000 }) => {
+  const currentTheme = useAppSelector(
+    (state: { theme: { current: string }; }) => state.theme.current);
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef(null);
   // const sliderRef = useRef(null);
@@ -99,7 +102,7 @@ const ImageSlider = ({ slides = [], autoRotateTime = 5000 }) => {
     <div className='slider-wrapper'>
       <div className="slider-wrapper-row row1">
         <button
-          className="slider__arrow slider__arrow--left"
+          className={`slider__arrow slider__arrow--left ${currentTheme}`}
           onClick={goToPrevious}
           aria-label="Previous slide"
         >
@@ -136,7 +139,7 @@ const ImageSlider = ({ slides = [], autoRotateTime = 5000 }) => {
         </div>
 
         <button
-          className="slider__arrow slider__arrow--right"
+          className={`slider__arrow slider__arrow--right ${currentTheme}`}
           onClick={goToNext}
           aria-label="Next slide"
         >
@@ -151,7 +154,7 @@ const ImageSlider = ({ slides = [], autoRotateTime = 5000 }) => {
           {slideContent.map((_, index) => (
             <button
               key={index}
-              className={`slider__bullet ${index === currentIndex ? 'slider__bullet--active' : ''}`}
+              className={`slider__bullet ${currentTheme} ${index === currentIndex ? 'slider__bullet--active' : ''}`}
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
             />

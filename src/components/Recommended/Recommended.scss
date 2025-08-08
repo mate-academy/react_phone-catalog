@@ -28,6 +28,11 @@
       width: 272px;
       height: 506px;
     }
+
+  &.theme1 {
+    border-color: #161827;
+    background-color: #161827;
+  }
 }
 
 .rec__link {
@@ -48,6 +53,10 @@
   color: $color-primary-black;
   margin-top: 24px;
   min-height: 42px;
+
+    &.theme1 {
+      color: $theme-dark-white;
+    }
   }
 
   &-price {
@@ -55,6 +64,10 @@
     @include font-h2-mob;
     color: $color-primary-black;
     margin-bottom: 8px;
+
+    &.theme1 {
+      color: $theme-dark-white;
+    }
   }
 
   &-buttons {
@@ -75,14 +88,25 @@
     border: none;
     transition: box-shadow 0.3s ease;
 
+    &.theme1 {
+      color: $theme-dark-white;
+      background-color: $theme-dark-accent;
+    }
+
     &:hover {
       box-shadow: 0px 3px 13px 0px #17203166;
     }
 
-    &.in-cart {
+    &.in-cart.in-cart {
       background-color: $color-white;
       color: $color-green;
       border: 1px solid $color-icons;
+
+      &.theme1 {
+        background-color: $theme-dark-surface2;
+        border-color: $theme-dark-surface2;
+        color: $theme-dark-white;
+      }
     }
   }
 
@@ -98,8 +122,19 @@
     transition: box-shadow 0.3s ease;
     background-color: $color-white;
 
-    &.in-favorites {
+    &.theme1 {
+      background-color: $theme-dark-surface2;
+      border-color: $theme-dark-surface2;
+      color: $theme-dark-white;
+    }
+
+    &.in-favorites.in-favorites {
       background-color: $color-white;
+
+      &.theme1 {
+        background-color: #ffffff00;
+        border-color: $theme-dark-surface2;
+      }
     }
 
     &:hover {
@@ -110,13 +145,22 @@
 
 .rec__specs {
   @include font-small;
+  font-family: "montRegular";
   color: $color-secondary-grey;
   padding: 8px 0;
   border-top: 1px solid $color-elements;
 
+  &.theme1 {
+    border-color: $theme-dark-elements;
+  }
+
   &-spec {
     display: flex;
     margin-top: 8px;
+
+    &.theme1 {
+      color: $theme-dark-secondary;
+    }
   }
 
   &-value {
@@ -124,6 +168,10 @@
     display: inline-block;
     margin-left: auto;
     text-align: end;
+
+    &.theme1 {
+      color: $theme-dark-white;
+    }
   }
 }
 
@@ -165,6 +213,18 @@
   background-color: #ffffff00;
   border: 1px solid $color-icons;
 
+  &.theme1 {
+    color: $theme-dark-white;
+    background-color: $theme-dark-surface2;
+    border-color: $theme-dark-surface2;
+
+    &:disabled {
+      color: $theme-dark-icons;
+      border-color: $theme-dark-icons;
+      background-color: #ffffff00;
+    }
+  }
+
   & svg {
     display: flex;
     justify-self: center;
@@ -186,7 +246,14 @@
 
 .rec__mini-title {
   display: inline-block;
-
-  @include font-h2-mob;
+  @include font-h2;
   color: $color-primary-black;
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+
+  @media (max-width: 699px) {
+    @include font-h2-mob;
+  }
 }

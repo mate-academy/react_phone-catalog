@@ -20,3 +20,9 @@
   color: $color-secondary-grey;
   line-height: 16px;
 }
+
+.acc-homeIcon {
+  &.theme1 svg {
+    color: $theme-dark-white;
+  }
+}

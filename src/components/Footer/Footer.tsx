@@ -2,15 +2,20 @@ import { NavLink } from 'react-router-dom';
 import './Footer.scss';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '../../redux/store';
+import iLogo from '../../../public/img/icons/iSupply_logo.png';
+import iLogo_inverted from '../../../public/img/icons/iSupply_logo_inverted.png';
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation();
+  const currentTheme = useAppSelector(
+    (state: { theme: { current: string }; }) => state.theme.current);
 
   return (
     <nav
       data-cy="footer"
       aria-label="main footer"
-      className="nav-footer-container"
+      className={`nav-footer-container ${currentTheme}`}
     >
       <div className="footer-container">
         <div className="footer-brand">
@@ -20,7 +25,12 @@ export const Footer: React.FC = () => {
               'Footer-item', 'navbar-logo', 'footer-logo',
             )}
           >
-            <img src="img/icons/iSupply_logo.png" alt="" />
+            <img
+              src={currentTheme === 'theme1'
+                ? iLogo_inverted
+                : iLogo}
+              alt=""
+            />
           </NavLink>
 
           <div className="footer-links-wrapper">
@@ -30,7 +40,7 @@ export const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={({ isActive }) => classNames(
-                'Footer-item',
+                'Footer-item', currentTheme,
                 { 'has-background-grey-lighter': isActive },
               )}
             >
@@ -40,7 +50,7 @@ export const Footer: React.FC = () => {
             <NavLink
               to="/contacts"
               className={({ isActive }) => classNames(
-                'Footer-item',
+                'Footer-item', currentTheme,
                 { 'has-background-grey-lighter': isActive },
               )}
             >
@@ -50,7 +60,7 @@ export const Footer: React.FC = () => {
             <NavLink
               to="/rights"
               className={({ isActive }) => classNames(
-                'Footer-item',
+                'Footer-item', currentTheme,
                 { 'has-background-grey-lighter': isActive },
               )}
             >
@@ -61,19 +71,19 @@ export const Footer: React.FC = () => {
 
 
           <div
-            className="totop Footer-item"
+            className={`totop Footer-item ${currentTheme}`}
             onClick={() => window
               .scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
           >
             {t('footer.back_to_top')}
             <button
-              className="rec__arrow rec__arrow__footer"
+              className={`rec__arrow rec__arrow__footer ${currentTheme}`}
               onClick={() => window
                 .scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
               aria-label="Next slide"
             >
               <svg
-                className='footer-svg'
+                className={`footer-svg ${currentTheme}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"

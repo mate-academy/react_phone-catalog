@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useWindowWidth } from '../Navbar/Navbar';
 import { emptyHeart, filledHeart, arrowLeft, arrowRight } from '../../../public/img/icons/svg_icons';
+import { useAppSelector } from '../../redux/store';
 
 interface SearchResultsProps {
   itemsCategory?: 'phones' | 'tablets' | 'accessories';
@@ -36,6 +37,8 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const windowWidth = useWindowWidth();
+  const currentTheme = useAppSelector(
+    (state: { theme: { current: string; }; }) => state.theme.current);
 
   // Визначаємо тип сторінки
   const isSearchPage = !itemsCategory;
@@ -190,7 +193,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
           key='sr__pgnntbtnfirstpage'
           onClick={() => updateSearchParam('page', '1')}
           disabled={page === 1}
-          className='sr__pbtn rec__item-to-fav'
+          className={`sr__pbtn rec__item-to-fav numeric ${currentTheme}`}
         >{'1'}</button>,
       );
     }
@@ -199,7 +202,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       buttonList.push(
         <button
           key='sr__pgnntbtnprev3dot'
-          className='sr__pbtn rec__item-to-fav'
+          className={`sr__pbtn rec__item-to-fav numeric ${currentTheme}`}
         >{page == 4 ? '2' : '...'}</button>,
       );
     }
@@ -209,7 +212,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
         <button
           key='sr__pgnntbtnprevpage'
           onClick={() => updateSearchParam('page', `${page - 1}`)}
-          className='sr__pbtn rec__item-to-fav'
+          className={`sr__pbtn rec__item-to-fav numeric ${currentTheme}`}
         >{windowWidth >= 360 ? page - 1 : arrowLeft}</button>,
       );
     }
@@ -218,7 +221,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       buttonList.push(
         <button
           key='sr__pgnntbtnmainpage'
-          className='sr__pbtn rec__item-to-fav'
+          className={`sr__pbtn rec__item-to-fav numeric ${currentTheme}`}
           disabled
         >{page}</button>,
       );
@@ -229,7 +232,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
         <button
           key='sr__pgnntbtnnextpage'
           onClick={() => updateSearchParam('page', `${page + 1}`)}
-          className='sr__pbtn rec__item-to-fav'
+          className={`sr__pbtn rec__item-to-fav numeric ${currentTheme}`}
         >{windowWidth >= 360 ? page + 1 : arrowRight}</button>,
       );
     }
@@ -238,7 +241,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       buttonList.push(
         <button
           key='sr__pgnntbtnlast3dot'
-          className='sr__pbtn rec__item-to-fav'
+          className={`sr__pbtn rec__item-to-fav numeric ${currentTheme}`}
         >{lastPI - page > 3 ? '...' : lastPI - 1}</button>,
       );
     }
@@ -249,7 +252,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
           key='sr__pgnntbtnlastpage'
           onClick={() => updateSearchParam('page', `${lastPI}`)}
           disabled={page === lastPI}
-          className='sr__pbtn page-back rec__item-to-fav'
+          className={`sr__pbtn rec__item-to-fav numeric ${currentTheme}`}
         >{lastPI}</button>,
       );
     }
@@ -261,7 +264,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
             key='sr__hlprbuttnleft'
             onClick={() => updateSearchParam('page', `${page - 1}`)}
             disabled={page === 1}
-            className='sr__pbtn page-back rec__item-to-fav'
+            className={`sr__pbtn page-back rec__item-to-fav ${currentTheme}`}
           >{arrowLeft}</button>
         )}
         <div className="sr__pg-btns">
@@ -272,7 +275,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
             key='sr__hlprbuttnright'
             onClick={() => updateSearchParam('page', `${page + 1}`)}
             disabled={page === Math.ceil(serResQty / perPage)}
-            className='sr__pbtn page-forward rec__item-to-fav'
+            className={`sr__pbtn page-forward rec__item-to-fav ${currentTheme}`}
           >{arrowRight}</button>
         )}
       </div>
@@ -287,6 +290,17 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
           <h2>Search results for: &quot;{query}&quot;</h2>
           <p>Search res quantity - {serResQty}</p>
         </div>
+      )}
+
+      {!isSearchPage && (
+        <>
+          <div className={`search-header ${currentTheme}`}>
+            {t(`navigation.${itemsCategory}`)}
+          </div>
+          <div className={`search-subheader ${currentTheme}`}>
+            {serResQty} {t('home.models')}
+          </div>
+        </>
       )}
 
       {/* Для категорійних сторінок показуємо інформацію про кількість товарів */}
@@ -327,7 +341,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
         {filteredItems().map(item => (
           <div
             key={`${item.id}+`}
-            className={'rec__card fav_card sr__icrd'}
+            className={`rec__card fav_card sr__icrd ${currentTheme}`}
 
           >
             <Link
@@ -339,42 +353,42 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                 src={`../../../public/${item.images[0]}`}
                 alt="here should be an image"
               />
-              <div className="rec__item-name">
+              <div className={`rec__item-name ${currentTheme}`}>
                 {item.name}
               </div>
             </Link>
             <div className="sr__prcnt">
-              <div className="rec__item-price">
+              <div className={`rec__item-price ${currentTheme}`}>
                 {`$${item.priceDiscount}  `}
               </div>
-              <div className="rec__item-price price-regular">
+              <div className={`rec__item-price price-regular ${currentTheme}`}>
                 {`$${item.priceRegular}  `}
               </div>
             </div>
 
-            <div className="rec__specs">
+            <div className={`rec__specs ${currentTheme}`}>
               <div className="rec__specs-spec">
                 {t('specs.screen')}
-                <div className="rec__specs-value">{item.screen}</div>
+                <div className={`rec__specs-value ${currentTheme}`}>{item.screen}</div>
               </div>
               <div className="rec__specs-spec">
                 {t('specs.capacity')}
-                <div className="rec__specs-value">
+                <div className={`rec__specs-value ${currentTheme}`}>
                   {item.capacity.replace('GB', ' GB')}
                 </div>
               </div>
               <div className="rec__specs-spec">
-                {t('specs.ram')}<div className="rec__specs-value">
+                {t('specs.ram')}<div className={`rec__specs-value ${currentTheme}`}>
                   {item.ram.replace('GB', ' GB')}</div>
               </div>
             </div>
             <div className="rec__item-buttons fav__buttons">
-              <button className={`rec__item-to-cart ${isInCart(convertItemObject(item).id) ? 'in-cart' : ''}`}
+              <button className={`rec__item-to-cart ${currentTheme} ${isInCart(convertItemObject(item).id) ? 'in-cart' : ''}`}
                 onClick={() => isInCart(convertItemObject(item).id)
                   ? dispatch(removeFromCart(convertItemObject(item).id))
                   : dispatch(addToCart(convertItemObject(item)))
                 }>{`${isInCart(convertItemObject(item).id) ? `${t('btn.in_cart')}` : `${t('btn.add_to_cart')}`}`}</button>
-              <button className={`rec__item-to-fav ${isInFavorites(convertItemObject(item).id) ? 'in-favorites' : ''}`}
+              <button className={`rec__item-to-fav ${currentTheme} ${isInFavorites(convertItemObject(item).id) ? 'in-favorites' : ''}`}
                 onClick={() => isInFavorites(convertItemObject(item).id)
                   ? dispatch(removeFromFavorites(convertItemObject(item).id))
                   : dispatch(addToFavorites(convertItemObject(item)))

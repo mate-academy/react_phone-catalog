@@ -6,10 +6,25 @@
   height: fit-content;
 
   color: $color-secondary-grey;
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
 }
 
 .language-buttons {
   margin-top: 8px;
+
+  &.theme1 {
+    & button {
+      color: $theme-dark-white;
+      border-color: $theme-dark-elements;
+
+      &:hover {
+        color: $theme-dark-accent;
+      }
+    }
+  }
 
   & button {
     @include font-small;

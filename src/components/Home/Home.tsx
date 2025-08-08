@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { loadComponentStyles } from '../../redux/themeSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { RootState, useAppSelector } from '../../redux/store';
 import SomeSwiperino from '../Swiper/Swiper';
 import SliderDemo from '../CustomSlider/CustomSlider';
 import './Home.scss';
@@ -14,8 +14,8 @@ import { Link } from 'react-router-dom';
 
 
 export const Home: React.FC = () => {
-  const { currentTheme } = useSelector((state: RootState) =>
-    state.theme);
+  const currentTheme = useAppSelector(
+    (state: { theme: { current: string }; }) => state.theme.current);
   const componentName = 'Home';
   const dispatch = useDispatch();
   const phonesQty = products.filter(el => el.category === 'phones').length;
@@ -25,11 +25,11 @@ export const Home: React.FC = () => {
 
   return (
     <div className="home-main">
-      <div className="home__title-greeting">{t('home.title')}</div>
+      <div className={`home__title-greeting ${currentTheme}`}>{t('home.title')}</div>
       <SliderDemo />
       <Recommended title='brand_new_models' />
       <div className="home__shop-container">
-        <div className="home__subtitle">{t('home.shop_by_cat')}</div>
+        <div className={`home__subtitle ${currentTheme}`}>{t('home.shop_by_cat')}</div>
         <div className="home__shop-categories">
           <div className="home__shop_card">
             <Link
@@ -42,7 +42,7 @@ export const Home: React.FC = () => {
               </div>
             </Link>
             <div className="home__card-desc">
-              <div className="home__card-desc-title">
+              <div className={`home__card-desc-title ${currentTheme}`}>
                 <Link
                   className='link'
                   to={'/phones'}
@@ -51,7 +51,7 @@ export const Home: React.FC = () => {
                   {t('home.phones')}{/*{t('navigation.phones')}*/}
                 </Link>
               </div>
-              <div className="home__card-desc-qty">
+              <div className={`home__card-desc-qty ${currentTheme}`}>
                 <Link
                   className='link'
                   to={'/phones'}
@@ -74,7 +74,7 @@ export const Home: React.FC = () => {
               </div>
             </Link>
             <div className="home__card-desc">
-              <div className="home__card-desc-title">
+              <div className={`home__card-desc-title ${currentTheme}`}>
                 <Link
                   className='link'
                   to={'/tablets'}
@@ -83,7 +83,7 @@ export const Home: React.FC = () => {
                   {t('home.tablets')}{/*{t('navigation.tablets')}*/}
                 </Link>
               </div>
-              <div className="home__card-desc-qty">
+              <div className={`home__card-desc-qty ${currentTheme}`}>
                 <Link
                   className='link'
                   to={'/tablets'}
@@ -106,7 +106,7 @@ export const Home: React.FC = () => {
               </div>
             </Link>
             <div className="home__card-desc">
-              <div className="home__card-desc-title">
+              <div className={`home__card-desc-title ${currentTheme}`}>
                 <Link
                   className='link'
                   to={'/accessories'}
@@ -115,7 +115,7 @@ export const Home: React.FC = () => {
                   {t('home.accessories')}{/*{t('navigation.accessories')}*/}
                 </Link>
               </div>
-              <div className="home__card-desc-qty">
+              <div className={`home__card-desc-qty ${currentTheme}`}>
                 <Link
                   className='link'
                   to={'/accessories'}

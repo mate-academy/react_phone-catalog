@@ -11,6 +11,11 @@
   @media (min-width: 1200px) {
     margin-top: 80px;
   }
+
+  &.theme1 {
+    background-color: $theme-dark-black;
+    border-color: $theme-dark-elements;
+  }
 }
 
 .footer-container {
@@ -83,6 +88,20 @@
   }
 }
 
+.Footer-item {
+  @include font-uppercase;
+  font-family: "montRegular";
+  font-weight: 800;
+
+  &.theme1 {
+    color: $theme-dark-white;
+
+    &:hover {
+      color: $theme-dark-accent;
+    }
+  }
+}
+
 .totop {
   display: flex;
   align-items: center;
@@ -92,8 +111,17 @@
   @include font-small;
   transition: color 0.3s ease-in-out;
 
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
+
   &:hover {
     color: $color-primary-black;
+
+    & button {
+      background-color: $theme-dark-accent;
+      border-color: $theme-dark-accent;
+    }
   }
 }
 
@@ -102,9 +130,18 @@
   height: 32px;
   background-color: #ffffff00;
   border: 1px solid $color-icons;
-  transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  cursor: pointer;
 
   margin-left: 16px;
+
+  &.theme1 {
+    background-color: $theme-dark-elements;
+
+    &:hover {
+      background-color: $theme-dark-accent;
+    }
+  }
 
   &:hover {
     border-color: $color-primary-black;
@@ -115,7 +152,13 @@
     display: flex;
     justify-self: center;
     height: 60%;
+    color: black;
     stroke: black;
     transform: rotate(-90deg);
     cursor: pointer;
+
+    &.theme1 {
+      color: $theme-dark-white;
+      stroke: $theme-dark-white;
+    }
 }

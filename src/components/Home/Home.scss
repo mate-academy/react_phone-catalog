@@ -3,6 +3,10 @@
 #root {
   background-color: $color-white;
   overflow-x: hidden;
+
+  &.theme1 {
+    background-color: $theme-dark-black;
+  }
 }
 
 .link, .link:visited, .link:hover, link:active {
@@ -27,12 +31,31 @@
   @include font-h1;
   color: $color-primary-black;
   letter-spacing: 0;
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+
+
 }
 
 .home__subtitle {
   margin-bottom: 24px;
   color: $color-primary-black;
   @include font-h2-mob;
+
+  @media (min-width: 640px) {
+    @include font-h2;
+  }
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
 }
 
 .home__shop-container {
@@ -60,11 +83,19 @@
   &-title {
     @include font-h3-mob;
     color: $color-primary-black;
+
+    &.theme1 {
+      color: $theme-dark-white;
+    }
   }
 
   &-qty {
     @include font-body;
     color: $color-secondary-grey;
+
+    &.theme1 {
+      color: $theme-dark-secondary;
+    }
   }
 }
 

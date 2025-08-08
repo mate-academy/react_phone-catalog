@@ -49,6 +49,30 @@ body.sidebar-open {
   height: 48px;
   transition: color 0.3s ease-in-out;
 
+  &.theme0 {
+    color: $color-secondary-grey;
+  }
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+
+    &:hover {
+      color: $theme-dark-white;
+    }
+  }
+
+  &.theme2 {
+    color: $color-secondary-grey;
+  }
+
+  &.theme3 {
+    color: $color-secondary-grey;
+  }
+
+  &.theme4 {
+    color: $color-secondary-grey;
+  }
+
   @media (min-width: 1200px) {
     height: 64px;
   }
@@ -57,9 +81,20 @@ body.sidebar-open {
     color: $color-primary-black;
   }
 
+  &.has-background-grey-lighter {
+    color: $theme-3-primary;
+
+    &.theme0 {
+      color: $color-primary-black;
+    }
+
+    &.theme1 {
+      color: $theme-dark-white;
+    }
+  }
+
   @media (min-width: $screen-tablet) {
     margin: 0 auto;
-    color: $color-secondary-grey;
     text-decoration: none;
     @include font-uppercase;
     line-height: 48px;
@@ -72,9 +107,17 @@ body.sidebar-open {
   @media (min-width: 1200px) {
     line-height: 64px;
   }
+
+
+
+
 }
 
 .bottom-button.desktop {
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+
   @media (min-width: $screen-tablet) {
     min-width: 0;
     height: 48px;
@@ -84,6 +127,10 @@ body.sidebar-open {
     align-items: center;
     border-left: 1px solid $color-elements;
     cursor: pointer;
+
+    &.theme1 {
+      border-left-color: $theme-dark-surface2;
+    }
 
     @media (min-width: 1200px) {
       height: 64px;
@@ -108,6 +155,10 @@ body.sidebar-open {
 
 .has-background-grey-lighter {
   border-bottom: 4px solid $color-primary-black;
+
+  &.theme1 {
+    border-bottom-color: $theme-dark-white;
+  }
 }
 
 .navbar-sliding-settings {
@@ -121,6 +172,11 @@ body.sidebar-open {
   background-color: $color-white;
   transform: translateY(-100%);
   transition: transform 0.3s ease-in-out;
+
+  &.theme1 {
+    background-color: $theme-dark-black;
+    color: $theme-dark-white;
+  }
 
   &.visible {
     transform: translateY(0);
@@ -165,6 +221,9 @@ body.sidebar-open {
   @media (min-width: $screen-tablet) {
     border-bottom: 1px solid $color-elements;
 
+    &.theme1 {
+      border-bottom-color: $theme-dark-surface2;
+    }
   }
 
   &.theme0 {
@@ -172,7 +231,7 @@ body.sidebar-open {
   }
 
   &.theme1 {
-    background-color: rgb(0, 207, 138);
+    background-color: $theme-dark-black;
   }
 
   &.theme2 {
