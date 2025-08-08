@@ -24,21 +24,20 @@
     align-items: center;
     flex: 1;
     height: 100%;
-
   }
 
   &__nav {
-  display: flex;
-  flex-direction: row; 
-  height: 100%;
-}
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
 
   &__link {
     cursor: pointer;
     margin-inline: 32px;
     text-decoration: none;
 
-    color: #75767F;
+    color: #75767f;
 
     display: flex;
     flex-direction: row;
@@ -46,8 +45,8 @@
     height: 100%;
 
     &:hover {
-      color: #F1F2F9;
-      border-bottom: 3px solid #F1F2F9;
+      color: #f1f2f9;
+      border-bottom: 3px solid #f1f2f9;
     }
   }
 
@@ -56,7 +55,7 @@
 
     &-link {
       align-items: center;
-      justify-content: center; 
+      justify-content: center;
       width: 16px;
       height: 16px;
       padding: 24px;

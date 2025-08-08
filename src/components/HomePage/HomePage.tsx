@@ -1,12 +1,11 @@
 import React from 'react';
-import { Header } from '../Header';
 import { ProductCard } from '../ProductCard';
+import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
   return (
     <>
-      <Header />
-      <h1>Welcome to Nice Gadgets store!</h1>
+      <h1 className="title">Welcome to Nice Gadgets store!</h1>
 
       <ProductCard />
     </>
