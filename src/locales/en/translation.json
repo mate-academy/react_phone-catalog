@@ -20,6 +20,9 @@
     "accessories": "Accessories"
   },
   "models_one": "{{count}} model",
+  "models_few": "{{count}} models",
+  "models_many": "{{count}} models",
+  "models_zero": "{{count}} models",
   "models_other": "{{count}} models",
   "specsItemProp": {
     "screen": "Screen",

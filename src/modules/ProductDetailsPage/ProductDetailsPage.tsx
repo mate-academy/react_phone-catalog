@@ -93,7 +93,7 @@ export const ProductDetailsPage: FC = () => {
 
         setTimeout(() => {
           setDetailsIsLoading(false);
-        }, 300);
+        }, 100);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory, productId]);

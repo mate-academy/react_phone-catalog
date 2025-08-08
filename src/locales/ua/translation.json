@@ -23,6 +23,7 @@
   "models_few": "{{count}} моделі",
   "models_many": "{{count}} моделей",
   "models_zero": "{{count}} моделей",
+  "models_other": "{{count}} моделей",
   "specsItemProp": {
     "screen": "Екран",
     "capacity": "Ємність",

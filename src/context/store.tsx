@@ -107,7 +107,7 @@ export const GlobalProvider: FC<Props> = ({ children }) => {
     } finally {
       setTimeout(() => {
         setIsLoading(false);
-      }, 300);
+      }, 100);
     }
   };
 

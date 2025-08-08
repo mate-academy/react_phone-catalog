@@ -6,6 +6,8 @@ import { ProductsSlider } from '../shared/ProductsSlider/ProductsSlider';
 import { ShopByCategory } from './components/ShopByCategory';
 import { HomePageSkeleton } from './HomePageSkeleton';
 import { useTranslation } from 'react-i18next';
+import { InView } from 'react-intersection-observer';
+import classNames from 'classnames';
 
 export const HomePage: FC = () => {
   const { products, isLoading } = useGlobalState();
@@ -14,19 +16,16 @@ export const HomePage: FC = () => {
   const newestPhones = useMemo(
     () =>
       products
-        .filter(product => product.category === 'phones')
-        .toSorted((phone1, phone2) => phone2.year - phone1.year),
+        .filter(p => p.category === 'phones')
+        .sort((a, b) => b.year - a.year),
     [products],
   );
 
   const discountPhones = useMemo(
     () =>
       products
-        .filter(product => product.category === 'phones')
-        .toSorted(
-          (phone1, phone2) =>
-            phone2.fullPrice - phone2.price - (phone1.fullPrice - phone1.price),
-        ),
+        .filter(p => p.category === 'phones')
+        .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price)),
     [products],
   );
 
@@ -34,28 +33,50 @@ export const HomePage: FC = () => {
     return <HomePageSkeleton />;
   }
 
-  return (
-    <div className={styles.homeContent}>
-      <h1 className={styles.visuallyHidden}>Product Catalog</h1>
-
-      <h2 className={styles.homeTitle}>{t('homeTitle')}</h2>
-
-      <div className={styles.homeBody}>
-        <PicturesSlider />
-
+  const sections = [
+    { key: 'slider', element: <PicturesSlider /> },
+    {
+      key: 'newest',
+      element: (
         <ProductsSlider
           title={t('newModels')}
           products={newestPhones}
           priceType="regular"
         />
-
-        <ShopByCategory />
-
+      ),
+    },
+    { key: 'categories', element: <ShopByCategory /> },
+    {
+      key: 'discounts',
+      element: (
         <ProductsSlider
           title={t('hotPrices')}
           products={discountPhones}
           priceType="discount"
         />
+      ),
+    },
+  ];
+
+  return (
+    <div className={styles.homeContent}>
+      <h1 className={styles.visuallyHidden}>Product Catalog</h1>
+      <h2 className={styles.homeTitle}>{t('homeTitle')}</h2>
+      <div className={styles.homeBody}>
+        {sections.map(({ key, element }) => (
+          <InView key={key} rootMargin="-100px 0px" initialInView>
+            {({ inView, ref }) => (
+              <div
+                ref={ref}
+                className={classNames(styles.fadeSection, {
+                  [styles.fadeSectionActive]: inView,
+                })}
+              >
+                {element}
+              </div>
+            )}
+          </InView>
+        ))}
       </div>
     </div>
   );
