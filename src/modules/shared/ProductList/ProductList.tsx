@@ -15,12 +15,7 @@ export const ProductList: FC<Props> = memo(({ products }) => {
   return (
     <ul className={styles.list}>
       {products.map(product => (
-        <InView
-          key={product.id}
-          triggerOnce
-          rootMargin="-100px 0px"
-          initialInView
-        >
+        <InView key={product.id} triggerOnce rootMargin="-100px 0px">
           {({ inView, ref }) => (
             <li
               ref={ref}

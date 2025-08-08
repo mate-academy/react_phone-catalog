@@ -64,7 +64,7 @@ export const HomePage: FC = () => {
       <h2 className={styles.homeTitle}>{t('homeTitle')}</h2>
       <div className={styles.homeBody}>
         {sections.map(({ key, element }) => (
-          <InView key={key} rootMargin="-100px 0px" initialInView>
+          <InView key={key} rootMargin="75px 0px">
             {({ inView, ref }) => (
               <div
                 ref={ref}
