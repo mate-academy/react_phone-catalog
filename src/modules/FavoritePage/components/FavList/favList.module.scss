@@ -2,10 +2,9 @@
 
 .fav-list {
   display: flex;
+  row-gap: 40px;
 
   @include page-grid;
-
-  row-gap: 40px;
 
   &__item {
     grid-column: 1/-1;

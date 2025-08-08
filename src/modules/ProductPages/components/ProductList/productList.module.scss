@@ -1,9 +1,9 @@
 @use '../../../shared/index' as *;
 
 .product-list {
-  @include page-grid;
-
   row-gap: 40px;
+
+  @include page-grid;
 
   &__title {
     @extend %h3;

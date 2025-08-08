@@ -14,30 +14,30 @@
 }
 
 .icon {
-  @include link-padding;
-  @include link-bottom-line-action('hover');
-
   width: 16px;
   display: inline-block;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: -1px 0 0 0 #e2e6e9;
 
+  @include link-padding;
+  @include link-bottom-line-action('hover');
+
   &--active {
     @include link-bottom-line-action('active');
   }
 
   &--home {
-    @include reset;
-
     background-image: url('src/assets/Home.svg');
+
+    @include reset;
   }
 
   &--delete {
-    @include reset;
-
     mask: url(src/assets/Close.svg) no-repeat center;
     background-color: $icons;
+
+    @include reset;
   }
 
   &--arrow {

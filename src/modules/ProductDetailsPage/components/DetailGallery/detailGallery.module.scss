@@ -1,6 +1,8 @@
 @use '../../../shared/index' as *;
 
 .detail-gallery {
+  
+  /* stylelint-disable selector-pseudo-class-no-unknown */
   :global {
     .image-gallery-slide-wrapper {
       margin-bottom: 16px;

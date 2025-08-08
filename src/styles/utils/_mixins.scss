@@ -51,7 +51,9 @@
 }
 
 @mixin link-bottom-line {
-  position: relative;
+  & {
+    position: relative;
+  }
 
   &::after {
     content: '';

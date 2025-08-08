@@ -48,9 +48,9 @@
   }
 
   &__swiper-container {
-    @include layout-container;
-
     margin-right: 0;
+
+    @include layout-container;
 
     @include on-tablet {
       margin-right: 0;
@@ -58,12 +58,13 @@
   }
 
   &__swiper {
-    @include page-grid;
-
     --gap: 16px;
     --width-column: 60px;
 
     gap: 16px;
+
+    @include page-grid;
+
 
     @include on-tablet {
       --width-column: 35px;

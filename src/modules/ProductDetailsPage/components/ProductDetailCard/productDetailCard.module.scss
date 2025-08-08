@@ -1,9 +1,9 @@
 @use '../../../shared/index' as *;
 
 .detail-card {
-  @include page-grid;
-
   row-gap: 56px;
+
+  @include page-grid;
 
   @include on-tablet {
     row-gap: 64px
@@ -14,10 +14,10 @@
   }
 
   &__top {
-    @include page-grid;
-
     grid-column: 1/-1;
     row-gap: 40px;
+
+    @include page-grid;
   }
 
   &__gallery {

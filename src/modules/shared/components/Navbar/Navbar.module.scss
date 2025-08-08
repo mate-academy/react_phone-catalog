@@ -43,7 +43,6 @@
   }
 
   &__link {
-    @include link-bottom-line-action('hover');
     @extend %uppercase;
 
     display: flex;
@@ -52,18 +51,22 @@
     box-sizing: border-box;
     color: $text-color;
 
+    @include link-bottom-line-action('hover');
+
     &--active {
       color: $main-text-color;
+
       @include link-bottom-line-action('active');
     }
 
     &--menu {
-      @include link-padding;
-
       padding-inline: 0;
+
+      @include link-padding;
 
       &--active {
         color: $main-text-color;
+
         @include link-bottom-line-action('active');
       }
     }

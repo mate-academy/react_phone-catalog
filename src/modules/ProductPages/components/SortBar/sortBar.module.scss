@@ -1,9 +1,9 @@
 @use '../../../shared/index' as *;
 
 .sort-bar {
-  @include page-grid;
-
   row-gap: 24px;
+
+  @include page-grid;
 
   &__select-content {
     display: flex;

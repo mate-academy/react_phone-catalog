@@ -16,9 +16,10 @@
   }
 
   &__content {
+    row-gap: 32px;
+  
     @include page-grid;
 
-    row-gap: 32px;
   }
 
   &__cart-list {
