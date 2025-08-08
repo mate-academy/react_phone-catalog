@@ -78,7 +78,6 @@
     z-index: 10;
   }
 
-  /* stylelint-disable selector-pseudo-class-no-unknown */
   :global(.swiper-pagination-bullet) {
     width: 14px;
     height: 4px;
@@ -88,7 +87,6 @@
     transition: background-color 0.3s ease;
   }
 
-  /* stylelint-disable selector-pseudo-class-no-unknown */
   :global(.swiper-pagination-bullet-active) {
     background-color: $pagination-bg-color-active;
     width: 20px;
