@@ -2,6 +2,7 @@ import React from 'react';
 import { ProductCard } from '../ProductCard';
 import './HomePage.scss';
 import { Banner } from '../Banner';
+import { CategorySelectCard } from '../CategorySelectCard';
 
 export const HomePage: React.FC = () => {
   return (
@@ -15,6 +16,8 @@ export const HomePage: React.FC = () => {
       <ProductCard />
 
       <h2 className="title-2">Shop by category</h2>
+
+      <CategorySelectCard />
 
       <h2 className="title-2">Hot prices</h2>
     </>

@@ -1,0 +1,36 @@
+.select-category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__image-wrapper {
+    width: 368px; 
+    height: 368px;
+    overflow: hidden; 
+    position: relative;
+    background-color: #6D6474;
+  }
+
+  &__image {
+    position: absolute;
+    bottom: -50px;
+    right: -25px;
+    width: 80%; 
+    height: auto;
+  }
+
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100%;
+    padding-bottom: 4px;
+  }
+
+  &__models {
+    color: #75767f;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}
