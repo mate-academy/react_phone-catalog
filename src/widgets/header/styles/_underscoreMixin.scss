@@ -1,0 +1,12 @@
+@use '@shared/styles' as s;
+
+@mixin underscore {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: s.$c-grey-primary;
+  }
+}

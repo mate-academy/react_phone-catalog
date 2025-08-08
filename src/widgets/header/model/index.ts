@@ -1,12 +1,7 @@
 import { CartIcon, HeartIcon } from '@shared/icons';
-import {
-  NavAriaLabels,
-  NavElementName,
-  NavLinkProps,
-  RoutePath,
-} from '@shared/types';
+import { NavAriaLabels, NavElementName, RoutePath } from '@shared/types';
 
-const navLinksList: NavLinkProps[] = [
+const navLinksList = [
   {
     title: NavElementName.Home,
     path: RoutePath.Home,

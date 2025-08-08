@@ -1,9 +1,4 @@
-export {
-  RoutePath,
-  NavElementName,
-  NavAriaLabels,
-  type NavLinkProps,
-} from './navLinksTypes';
+export { RoutePath, NavElementName, NavAriaLabels } from './navLinksTypes';
 export {
   Category,
   type CatalogueProduct,

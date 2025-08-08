@@ -23,7 +23,6 @@
     ├── buttonNavigation.module.scss  # styles for UI buttons
     └── mainNavigation.module.scss    # styles for main nav block
 
-|@shared/ui/NavLink                   # NavLinks elements & shared styles (due to repeating in Footer element)
 |@shared/icons/                       # Icons for UIMenu and menuButton (heart, cart, burger-menu, counter for fav&cart, cross)
 
 ### How it works:

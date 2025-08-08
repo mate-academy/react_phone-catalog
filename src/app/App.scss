@@ -5,13 +5,13 @@
 * {
   font-family: Montserrat, sans-serif;
   color: s.$c-grey-primary;
-
 }
 
 .App {
+  position: relative;
+  
   display: flex;
   flex-direction: column;
-  position: relative;
   width: 100%;
   min-height: 100vh;
   background-color: s.$c-white;

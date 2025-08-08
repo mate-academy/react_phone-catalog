@@ -1,0 +1,39 @@
+@use '@shared/styles' as s;
+@use './headerConst' as lc;
+@use './underscoreMixin' as *;
+
+.nav-link {
+  @include s.m-btn-btn-reg;
+
+  width: 100%;
+  height: 100%;
+  border-bottom: 0;
+
+  &:hover {
+    @include s.m-btn-hover-reg;
+
+    border-bottom: 0;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    display: flex;
+
+    @include s.m-btn-btn-reg;
+
+    border-top: 0;
+
+    &:hover {
+      @include s.m-btn-hover-reg;
+
+      border-top: 0;
+    }
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    width: lc.$button-size-wide;
+  }
+
+  &--is-active {
+    @include underscore;
+  }
+}

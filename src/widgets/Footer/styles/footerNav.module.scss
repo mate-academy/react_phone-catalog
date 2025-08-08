@@ -1,0 +1,36 @@
+@use '@shared/styles' as s;
+
+.container {
+  display: block;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    width: 45vw;
+    flex-direction: row;
+    gap: auto;
+    height: 100%;
+  }
+}
+
+.nav-item {
+  display: flex;
+}
+
+.link {
+  @include s.t-uppercase;
+
+  color: s.$c-grey-secondary;
+
+  display: inline-block;
+  padding: 16px 16px 8px;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    padding: 0;
+    padding: 42px 0;
+  }
+}

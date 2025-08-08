@@ -11,7 +11,6 @@ export const HeaderButtonNavigation = () => {
           ariaName={el.ariaName}
           to={el.to}
           icon={el.icon}
-          className={styles.active}
         />
       ))}
     </nav>

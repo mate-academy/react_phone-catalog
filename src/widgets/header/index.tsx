@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className={getClassName()}>
-      <Link to="/" className={styles['header-logo']}>
+      <Link to="/" className={styles['header-logo']} aria-hidden="true">
         <img
           src="/src/shared/icons/logo.svg"
           alt=""

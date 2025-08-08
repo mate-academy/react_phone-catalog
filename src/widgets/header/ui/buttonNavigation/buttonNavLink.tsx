@@ -3,19 +3,18 @@ import { ItemsCounter } from '@shared/icons';
 import { NavAriaLabels, RoutePath } from '@shared/types';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
+import styles from '../../styles/buttonLink.module.scss';
 
 type Props = {
   ariaName: NavAriaLabels;
   to: RoutePath;
   icon: React.ComponentType;
-  className: string;
 };
 
 export const HeaderButtonNavLink: React.FC<Props> = ({
   ariaName,
   to,
   icon,
-  className,
 }) => {
   const { cartAmount, favAmount } = useGlobalData();
   const IconComponent: React.ComponentType = icon;
@@ -25,7 +24,11 @@ export const HeaderButtonNavLink: React.FC<Props> = ({
     <NavLink
       to={to}
       aria-label={ariaName}
-      className={({ isActive }) => classNames({ [`${className}`]: isActive })}
+      className={({ isActive }) =>
+        classNames([styles['nav-link']], {
+          [styles['nav-link--is-active']]: isActive,
+        })
+      }
     >
       <IconComponent />
       {amount > 0 && <ItemsCounter amount={amount} />}

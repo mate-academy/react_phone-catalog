@@ -1,7 +1,7 @@
 import './App.scss';
 import { Header } from '@widgets/header';
 import { Outlet } from 'react-router-dom';
-import { Footer } from '@widgets/Footer';
+import { Footer } from '@widgets/footer';
 import { StoreProvider } from '@features/user-store/model/storeContext';
 import { GlobalProvider } from './appContext';
 

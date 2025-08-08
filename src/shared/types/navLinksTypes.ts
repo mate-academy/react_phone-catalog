@@ -34,10 +34,4 @@ enum NavAriaLabels {
   Rights = 'Go to rights and policies page',
 }
 
-interface NavLinkProps {
-  title: NavElementName;
-  path: RoutePath;
-  ariaLabel: NavAriaLabels;
-}
-
-export { RoutePath, NavElementName, NavAriaLabels, type NavLinkProps };
+export { RoutePath, NavElementName, NavAriaLabels };
