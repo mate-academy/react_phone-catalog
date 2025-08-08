@@ -22,6 +22,7 @@ enum NavElementName {
 
 enum NavAriaLabels {
   Menu = 'Open navigation menu',
+  CloseMenu = 'Close navigation menu',
   Home = 'Go to homepage',
   Phones = 'Go to phones catalog page',
   Tablets = 'Go to tablets catalog page',

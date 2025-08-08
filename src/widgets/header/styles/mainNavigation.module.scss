@@ -1,18 +1,41 @@
 @use '@shared/styles' as s;
 
 .main-navigation {
-  display: none;
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+  margin-top: 24px;
+
+  > li {
+    margin: 0 auto;
+    height: 27px;
+    box-sizing: border-box;
+
+    > a {
+      height: 100%;
+    }
+  }
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
-    display: flex;
-    gap: 32px;
-    align-items: center;
-    justify-content: flex-start;
-    box-sizing: border-box;
+    flex-direction: row;
     height: 100%;
+    border-bottom: 1px solid s.$c-elements;
+    margin: auto 0;
+    padding-left: 16px;
+    gap: 32px;
+    justify-items: start;
+    justify-content: start;
+    box-sizing: border-box;
+
+    > li {
+      margin: 0;
+      height: 100%;
+    }
   }
 
   @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    padding-left: 24px;
     gap: 64px;
   }
 }

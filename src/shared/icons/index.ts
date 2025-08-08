@@ -4,3 +4,4 @@ export { HomeIcon } from './homeIcon';
 export { HeartIcon } from './heartIcon';
 export { BurgerMenuIcon } from './burger-menu';
 export { ItemsCounter } from './itemsCounter';
+export { CrossIcon } from './CrossIcon';
