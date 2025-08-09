@@ -30,7 +30,7 @@ export const Footer: React.FC = React.memo(() => {
       <div className={cn(footerClass.footer__content, 'container')}>
         <div className={cn(footerClass['footer__logo-wraper'])}>
           <img
-            src="public/img/Logo.png"
+            src="img/Logo.png"
             alt="image logo"
             loading="lazy"
             className={cn(footerClass.footer__logo)}

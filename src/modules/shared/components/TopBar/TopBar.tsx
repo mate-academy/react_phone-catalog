@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { Icon } from '../Icon';
 import { Navbar } from '../Navbar';
 import topBarStyle from './TopBar.module.scss';
@@ -29,7 +30,7 @@ export const TopBar = () => {
             to={PagesType.home}
           >
             <img
-              src="public/img/Logo.png"
+              src="img/Logo.png"
               className={topBarStyle['top-bar__logo-img']}
               alt="Nice gadget logo"
             />
@@ -61,3 +62,4 @@ export const TopBar = () => {
     </>
   );
 };
+/* eslint-enable @typescript-eslint/indent */
