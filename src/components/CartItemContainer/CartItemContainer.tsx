@@ -12,15 +12,15 @@ export const CartItemContainer: React.FC<Props> = ({ item }) => {
 
   const handleDecrement = () => {
     changeQuantity(item.product?.itemId, item.amount - 1);
-  }
+  };
 
   const handleIncrement = () => {
     changeQuantity(item.product?.itemId, item.amount + 1);
-  }
+  };
 
   const handleRemove = () => {
     removeFromCart(item.product?.itemId);
-  }
+  };
 
   return (
     <div className={styles.cart}>
@@ -40,13 +40,19 @@ export const CartItemContainer: React.FC<Props> = ({ item }) => {
       </div>
       <div className={styles.cartButtom}>
         <div className={styles.cartButtom__count}>
-          <button className={styles.cartButtom__countButtonDecrement} onClick={handleDecrement}>
-          </button>
+          <button
+            className={styles.cartButtom__countButtonDecrement}
+            onClick={handleDecrement}
+          ></button>
           <span className={styles.cartButtom__countNumber}>{item.amount}</span>
-          <button className={styles.cartButtom__countButtonIncrement} onClick={handleIncrement}>
-          </button>
+          <button
+            className={styles.cartButtom__countButtonIncrement}
+            onClick={handleIncrement}
+          ></button>
         </div>
-        <span className={styles.cartButtom__price}>${item.product ? item.product.price * item.amount : 0}</span>
+        <span className={styles.cartButtom__price}>
+          ${item.product ? item.product.price * item.amount : 0}
+        </span>
       </div>
     </div>
   );

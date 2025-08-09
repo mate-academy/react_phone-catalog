@@ -2,7 +2,7 @@ import { BrandModelsSlider } from '../../components/BrandModelsSlider/BrandModel
 import { SliderPictures } from '../../components/SliderPictures/SliderPictures';
 import { useProducts } from '../../context/ProductsContext';
 import styles from './HomePage.module.scss';
-import { useMemo } from 'react'
+import { useMemo } from 'react';
 import { ShopByCategory } from '../../components/ShopByCategory';
 
 export const HomePage: React.FC = () => {
@@ -38,9 +38,7 @@ export const HomePage: React.FC = () => {
       </div>
 
       <div className={styles.hotPricesContainer}>
-
         <BrandModelsSlider title={'Hot prices'} products={hotPricesProduct} />
-
       </div>
     </div>
   );
