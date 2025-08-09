@@ -1,15 +1,16 @@
 @import './../../style/index';
 
-.product-swiper {
+.swiper-product {
   margin-top: 50px;
+
+
 
   @include padding-inline;
 
-  &__header{
+  &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
   }
 
   &__title {
@@ -20,24 +21,23 @@
     }
   }
 
-  &__buttons {
+  &__button {
     display: flex;
     gap: 16px;
-    background-color: $background-color;;
+    background-color: $background-color;
   }
 
   &__btn {
     width: 32px;
     height: 32px;
-    border: none;
+    background-color: #323542;
     border-radius: 50%;
-    background-color: #E2E6E9;
+    border: none;
 
     &:disabled {
-      border: 1px solid #89939A;
+      border: 1px solid $color-primary;
       background-color: $background-color;
     }
-
 
     &--prev,
     &--next {
@@ -53,7 +53,7 @@
       }
     }
 
-    &--next {
+    &--prev , &--next,  {
       &:hover {
         @include hover-button;
       }
@@ -63,6 +63,7 @@
   &__wrapp {
     margin-top: 24px;
     overflow: hidden;
+
   }
 
   &__list {
@@ -79,4 +80,3 @@
     }
   }
 }
-

@@ -13,33 +13,33 @@ interface Props {
 
 export const SwiperProduct: React.FC<Props> = ({ products, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleProducts, setVisibleProducts] = useState(3);
+  const [visibleCardsCount, setVisibleCardsCount] = useState(3);
 
-  const updateVisibleProducts = () => {
+  const updateVisibleCardsCount = () => {
     const width = window.innerWidth;
 
     switch (true) {
       case width < 440:
-        setVisibleProducts(1);
+        setVisibleCardsCount(1);
         break;
       case width < 640:
-        setVisibleProducts(2);
+        setVisibleCardsCount(2);
         break;
       case width < 1200:
-        setVisibleProducts(3);
+        setVisibleCardsCount(3);
         break;
       default:
-        setVisibleProducts(4);
+        setVisibleCardsCount(4);
         break;
     }
   };
 
   useEffect(() => {
-    updateVisibleProducts();
-    window.addEventListener('resize', updateVisibleProducts);
+    updateVisibleCardsCount();
+    window.addEventListener('resize', updateVisibleCardsCount);
 
     return () => {
-      window.removeEventListener('resize', updateVisibleProducts);
+      window.removeEventListener('resize', updateVisibleCardsCount);
     };
   }, []);
 
@@ -56,46 +56,50 @@ export const SwiperProduct: React.FC<Props> = ({ products, title }) => {
   };
 
   return (
-    <section className={style['product-swiper']}>
-      <div className={style['product-swiper__header']}>
-        <h2 className={style['product-swiper__title']}>{title}</h2>
+    <section className={style['swiper-product']}>
+      <div className={style['swiper-product__header']}>
+        <h2 className={style['swiper-product__title']}>{title}</h2>
 
-        <div className={style['product-swiper__buttons']}>
+        <div className={style['swiper-product__button']}>
           <button
             onClick={prevSlide}
             disabled={currentIndex === 0}
-            className={`${style['product-swiper__btn']}
-                        ${style['product-swiper__btn--prev']}`}
+            className={`
+              ${style['swiper-product__btn']}
+              ${style['swiper-product__btn--prev']}
+            `}
           >
             <img
               src={ArrowLeft}
+              className={style['swiper-product__btn-icon']}
               alt="PrevImage"
-              className={style['product-swiper__icon']}
             />
           </button>
 
           <button
             onClick={nextSlide}
-            disabled={currentIndex === products.length - visibleProducts}
-            className={`${style['product-swiper__btn']}
-                        ${style['product-swiper__btn--next']}`}
+            disabled={currentIndex === products.length - visibleCardsCount}
+            className={`
+              ${style['swiper-product__btn']}
+              ${style['swiper-product__btn--next']}
+            `}
           >
             <img
               src={ArrowRight}
+              className={style['swiper-product__btn-icon']}
               alt="NextImage"
-              className={style['product-swiper__icon']}
             />
           </button>
         </div>
       </div>
 
-      <div className={style['product-swiper__wrapper']}>
-        <div className={style['product-swiper__list']}>
+      <div className={style['swiper-product__wrapp']}>
+        <div className={style['swiper-product__list']}>
           {products.map(product => {
             return (
               <div
                 key={product.id}
-                className={style['product-swiper__item']}
+                className={style['swiper-product__item']}
                 style={{
                   transform: `translateX(calc(-${currentIndex * 100}% - ${currentIndex * 16}px))`,
                 }}

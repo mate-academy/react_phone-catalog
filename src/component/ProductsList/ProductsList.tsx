@@ -81,7 +81,8 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
           {finishedProducts.length} models
         </p>
       </div>
-      <div className={style['product-list__select']}>
+      <div>
+        <div className={style['product-list__select']}></div>
         {finishedProducts.length ? (
           <GridFavourites products={visibleProducts} />
         ) : (
