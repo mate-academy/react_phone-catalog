@@ -17,13 +17,26 @@ export type ProductInfoUnionType =
 
 export const ProductInfoPage: React.FC = () => {
   const [foundItem, setFoundItem] = useState<ProductInfoUnionType | null>(null);
+
+  const [foundProduct, setFoundProduct] = useState<AllProductsType | null>(
+    null,
+  );
+
   const [foundId, setFoundId] = useState(null);
 
   const [mainPhoto, setMainPhoto] = useState<string | undefined>(undefined);
 
-  const [selectedColor, setSelectedColor] = useState<string | null>(foundItem?.color || null);
+  const [selectedColor, setSelectedColor] = useState<string | null>(
+    foundItem?.color || null,
+  );
 
-  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(foundItem?.capacity || null);
+  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(
+    foundItem?.capacity || null,
+  );
+
+  // const [showDiscount, setShowDiscount] = useState<boolean | null>(
+  //   foundItem.,
+  // );
 
   const { category, itemId } = useParams<{
     category: string;
@@ -65,22 +78,22 @@ export const ProductInfoPage: React.FC = () => {
         setFoundItem(found);
         setMainPhoto(found?.images[0]);
         setSelectedColor(found?.color);
-        setSelectedCapacity(found?.capacity)
+        setSelectedCapacity(found?.capacity);
       });
   }, [category, itemId]);
 
   console.log('-----selectedCapacity-----', selectedCapacity);
 
-
   useEffect(() => {
     fetch(`/api/products.json`)
       .then(res => res.json())
       .then(data => {
-        const foundId = data.find(
+        const foundProduct = data.find(
           (product: AllProductsType) => product.itemId === itemId,
         );
 
-        setFoundId(foundId.id);
+        setFoundId(foundProduct.id);
+        setFoundProduct(foundProduct);
       });
   }, [itemId]);
 
@@ -123,7 +136,6 @@ export const ProductInfoPage: React.FC = () => {
             <p className="small-text-12-600">Available colors</p>
 
             <div className="models-colors">
-
               {foundItem?.colorsAvailable.map(color => {
                 const safeColor = getSafeColor(color);
 
@@ -150,40 +162,42 @@ export const ProductInfoPage: React.FC = () => {
           </div>
         </div>
 
-
-        <div className='select-capacity-container'>
-          <div className='info-copacity-box'>
-            <p className='small-text-12-600'>
-              Select capacity
-            </p>
+        <div className="select-capacity-container">
+          <div className="info-copacity-box">
+            <p className="small-text-12-600">Select capacity</p>
 
             <div className="capacity-list">
               {foundItem?.capacityAvailable.map(capacity => {
-
                 return (
-                  <div key={capacity}
+                  <div
+                    key={capacity}
                     // className="capacity"
 
                     className={cn('capacity', {
                       'is-active': selectedCapacity === capacity,
                     })}
                     onClick={() => setSelectedCapacity(capacity)}
-
-
-
-
                   >
-                    <p className='main-body-text-14'>
-                      {capacity}
-                    </p>
+                    <p className="main-body-text-14">{capacity}</p>
                   </div>
-                )
+                );
               })}
             </div>
-
           </div>
         </div>
 
+        <div className="price-container">
+          {foundProduct ? (
+            foundProduct.year < 2021 ? (
+              <>
+                <div className="price">{foundProduct.price}</div>
+                <div className="price old-price">{foundProduct.fullPrice}</div>
+              </>
+            ) : (
+              <div className="price">{foundProduct.fullPrice}</div>
+            )
+          ) : null}
+        </div>
       </div>
 
       {/* <div className='grey-line'></div> */}
