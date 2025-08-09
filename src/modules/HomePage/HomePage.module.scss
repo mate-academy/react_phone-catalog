@@ -10,3 +10,20 @@
     row-gap: 80px;
   }
 }
+
+.header {
+  grid-column: 1 / -1;
+}
+
+.title {
+  margin-block: 24px;
+
+  @include on-tablet {
+    margin-block: 32px;
+  }
+
+  @include on-desktop {
+    margin-block: 56px;
+  }
+}
+

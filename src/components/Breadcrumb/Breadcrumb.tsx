@@ -1,21 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumb.module.scss';
-import { findProduct } from '../../modules/shared/services/productService';
-import { useAppContext } from '../../contexts/AppContext';
+import { getFormattedPathname } from '../../modules/shared/utils/formatPathname';
 
 export const Breadcrumb: React.FC = () => {
   const { pathname } = useLocation();
-  const {generateProductCode} = useAppContext();
-
-  function formatPathname(pathname: string) {
-    const path = pathname.split('/').filter(item => item !== '');
-
-    if (path.length > 1) {
-      const product = findProduct('itemId', path[1]);
-      path[1] = product ? generateProductCode(product.name) : path[1];
-    }
-    return path;
-  }
 
   return (
     <div 
@@ -28,7 +16,7 @@ export const Breadcrumb: React.FC = () => {
         />
       </Link>
 
-      {formatPathname(pathname).map((item, i) => [
+      {getFormattedPathname(pathname).map((item, i, arr) => [
         <img
           key={`arrow-${i}`}
           className={styles.arrow}
@@ -39,7 +27,8 @@ export const Breadcrumb: React.FC = () => {
           key={`link-${i}`}
           to={`/${i === 0 ? item : `${pathname.slice(1)}`}`}
           className={`
-            ${i !== 0 && styles.lastItem}
+            ${i === 0 && arr.length > 1 ? styles.firstItem : ''}
+            ${i !== 0 ? styles.lastItem : ''}
             ${styles.pageName} smallText`}>
           {item}
         </Link>

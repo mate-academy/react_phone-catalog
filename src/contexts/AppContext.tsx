@@ -2,7 +2,6 @@ import {
   useState,
   createContext,
   ReactNode,
-  useMemo,
   useEffect,
   useContext,
   useRef,
@@ -14,15 +13,18 @@ import {
   saveFavouriteProducts,
 } from '../modules/shared/services/localStorage';
 import { useSearchParams } from 'react-router-dom';
+import { Card } from '../types/Card';
+import { getProducts } from '../modules/shared/services/productService';
 
 type AppContextType = {
   favouriteProductsIds: number[];
   cartProductsIds: number[];
   isMenuOpen: boolean;
+  products: Card[];
+  setProducts: (products: Card[]) => void;
   setIsMenuOpen: (isOpen: boolean) => void;
   setFavouriteProductsIds: (ids: number[]) => void;
   setCartProductsIds: (ids: number[]) => void;
-  generateProductCode: (name: string) => string;
   toggleFavouriteCard: (cardId: number) => void;
   toggleAddToCart: (cardId: number) => void;
   refCardWidth: React.MutableRefObject<HTMLDivElement | null>;
@@ -35,16 +37,17 @@ export const AppContext = createContext<AppContextType>({
   favouriteProductsIds: [],
   cartProductsIds: [],
   isMenuOpen: false,
-  setIsMenuOpen: () => {},
-  setFavouriteProductsIds: () => {},
-  setCartProductsIds: () => {},
-  generateProductCode: () => '',
-  toggleFavouriteCard: () => {},
-  toggleAddToCart: () => {},
+  products: [],
+  setProducts: () => { },
+  setIsMenuOpen: () => { },
+  setFavouriteProductsIds: () => { },
+  setCartProductsIds: () => { },
+  toggleFavouriteCard: () => { },
+  toggleAddToCart: () => { },
   refCardWidth: { current: null },
   refSliderWidth: { current: null },
   searchParams: new URLSearchParams(),
-  setSearchParams: () => {},
+  setSearchParams: () => { },
 });
 
 type Props = {
@@ -62,37 +65,36 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const refCardWidth = useRef<HTMLDivElement | null>(null);
   const refSliderWidth = useRef<HTMLDivElement | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [products, setProducts] = useState<Card[]>([]);
 
-  function generateProductCode(name: string): string {
-    return name.includes('14') ? name + ` (MQ023)` : name + ' (iMT9G2FS/A)';
-  }
+  useEffect(() => {
+    getProducts().then((data) => {
+      setProducts(data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, []);
 
   function toggleFavouriteCard(cardId: number) {
     if (favouriteProductsIds.includes(cardId)) {
-      const updatedFavourites = favouriteProductsIds.filter(
+      const updatedFavourites: number[] = favouriteProductsIds.filter(
         (id: number) => id !== cardId,
       );
-      saveFavouriteProducts(updatedFavourites);
       setFavouriteProductsIds(updatedFavourites);
       return;
     }
 
-    const updatedFavourites = [...favouriteProductsIds, cardId];
-    saveFavouriteProducts(updatedFavourites);
-    setFavouriteProductsIds(updatedFavourites);
+    setFavouriteProductsIds([...favouriteProductsIds, cardId]);
   }
 
   function toggleAddToCart(cardId: number) {
     if (cartProductsIds.includes(cardId)) {
       const updatedCart = cartProductsIds.filter((id: number) => id !== cardId);
-      saveCartProducts(updatedCart);
       setCartProductsIds(updatedCart);
       return;
     }
 
-    const updatedCart = [...cartProductsIds, cardId];
-    saveCartProducts(updatedCart);
-    setCartProductsIds(updatedCart);
+    setCartProductsIds([...cartProductsIds, cardId]);
   }
 
   useEffect(() => {
@@ -103,24 +105,22 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     saveCartProducts(cartProductsIds);
   }, [cartProductsIds]);
 
-  const value = useMemo<AppContextType>(
-    () => ({
-      favouriteProductsIds,
-      cartProductsIds,
-      isMenuOpen,
-      setIsMenuOpen,
-      setFavouriteProductsIds,
-      setCartProductsIds,
-      generateProductCode,
-      toggleFavouriteCard,
-      toggleAddToCart,
-      refCardWidth,
-      refSliderWidth,
-      searchParams,
-      setSearchParams,
-    }),
-    [favouriteProductsIds, cartProductsIds, isMenuOpen],
-  );
+  const value = {
+    favouriteProductsIds,
+    cartProductsIds,
+    isMenuOpen,
+    products,
+    setProducts,
+    setIsMenuOpen,
+    setFavouriteProductsIds,
+    setCartProductsIds,
+    toggleFavouriteCard,
+    toggleAddToCart,
+    refCardWidth,
+    refSliderWidth,
+    searchParams,
+    setSearchParams,
+  }
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

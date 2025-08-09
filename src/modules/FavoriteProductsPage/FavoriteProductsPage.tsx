@@ -1,13 +1,11 @@
 import React from 'react';
 import { Card } from '../../components/Card';
-import { getCardById } from '../shared/services/productService';
-import { Card as CardItem } from '../../types/Card';
 import styles from './FavoriteProductsPage.module.scss';
 import { useAppContext } from '../../contexts/AppContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
 
 export const FavoriteProductsPage: React.FC = () => {
-  const { favouriteProductsIds } = useAppContext();
+  const { favouriteProductsIds, products } = useAppContext();
 
   return (
     <main className={styles.main}>
@@ -25,8 +23,10 @@ export const FavoriteProductsPage: React.FC = () => {
       </div>
 
       <div className={styles.cards}>
-        {favouriteProductsIds.map((productId: number) => (
-          <Card key={productId} card={getCardById(productId) as CardItem} />
+        {favouriteProductsIds.map((id) => (
+          <Card key={id} card={
+            products.find((product) => product.id === id)
+          } />
         ))}
       </div>
     </main>

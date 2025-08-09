@@ -2,39 +2,70 @@ import products from '../../../../public/api/products.json';
 import phones from '../../../../public/api/phones.json';
 import tablets from '../../../../public/api/tablets.json';
 import accessories from '../../../../public/api/accessories.json';
+import { Card } from '../../../types/Card';
+import { ProductDetails } from '../../../types/ProductDetails';
+import { AccessoryDetals } from '../../../types/AccessoryDetails';
 
-export function getProducts() {
-  return products;
+function simulateAsync<T>(data: T, delay: number): Promise<T> {
+  return new Promise(resolve => setTimeout(() => resolve(data), delay));
 }
 
-export function getPhones() {
-  return phones;
+export function getProducts(): Promise<Card[]> {
+  let data: Card[] = [];
+  if (Array.isArray(products)) {
+    data = products;
+  } else if (products) {
+    data = [products];
+  }
+  return simulateAsync(data, 1000);
 }
 
-export function getTablets() {
-  return tablets;
+export function getPhones(): Promise<ProductDetails[]> {
+  let data: ProductDetails[] = [];
+  if (Array.isArray(phones)) {
+    data = phones;
+  } else if (phones) {
+    data = [phones];
+  }
+  return simulateAsync(data, 3000);
 }
 
-export function getAccessories() {
-  return accessories;
+export function getTablets(): Promise<ProductDetails[]> {
+  let data: ProductDetails[] = [];
+  if (Array.isArray(tablets)) {
+    data = tablets;
+  } else if (tablets) {
+    data = [tablets];
+  }
+  return simulateAsync(data, 3000);
 }
 
-export function findProduct(key: string, value: string | number) {
-  return getProducts().find((phone: any) => phone[key] === value);
+export function getAccessories(): Promise<AccessoryDetals[]> {
+  let data: AccessoryDetals[] = [];
+  if (Array.isArray(accessories)) {
+    data = accessories;
+  } else if (accessories) {
+    data = [accessories];
+  }
+  return simulateAsync(data, 3000);
 }
 
-export function findPhone(key: string, value: string | number) {
-  return getPhones().find((phone: any) => phone[key] === value);
+export async function findProduct(key: string, value: string | number) {
+  const products = await getProducts();
+  return products.find((item: any) => item[key] === value);
 }
 
-export function findTablet(key: string, value: string | number) {
-  return getTablets().find((tablet: any) => tablet[key] === value);
+export async function findPhone(key: string, value: string | number) {
+  const phones = await getPhones();
+  return phones.find((item: any) => item[key] === value);
 }
 
-export function findAccessory(key: string, value: string | number) {
-  return getAccessories().find((accessory: any) => accessory[key] === value);
+export async function findTablet(key: string, value: string | number) {
+  const tablets = await getTablets();
+  return tablets.find((item: any) => item[key] === value);
 }
 
-export function getCardById(id: number) {
-  return getProducts().find((product: any) => product.id === id);
+export async function findAccessory(key: string, value: string | number) {
+  const accessories = await getAccessories();
+  return accessories.find((item: any) => item[key] === value);
 }

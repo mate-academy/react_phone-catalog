@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './PicturesSlider.module.scss';
-import { Arrow } from '../Arrow';
+import { Arrow } from '../../../components/Arrow';
 
 export const PicturesSlider: React.FC = () => {
   const [currentPicture, setCurrentPicture] = useState(0);

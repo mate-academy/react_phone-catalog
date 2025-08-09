@@ -5,7 +5,9 @@ import { Footer } from './components/Footer';
 
 export const App = () => (
   <div>
-    <Navbar />
+    <header>
+      <Navbar />
+    </header>
     <Outlet />
     <Footer />
   </div>

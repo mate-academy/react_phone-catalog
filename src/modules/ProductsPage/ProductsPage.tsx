@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './ProductsPage.module.scss';
-import { getProducts } from '../shared/services/productService';
 import { ItemsPerPage } from '../../types/ItemsPerPage';
 import { ProductsSortType } from '../../types/ProductsSortType';
-import { Card as CardType } from '../../types/Card';
 import { Arrow } from '../../components/Arrow';
 import { ProductsList } from '../../components/ProductsList';
 import { useAppContext } from '../../contexts/AppContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
+import { Card } from '../../types/Card';
 
 type Props = {
   type: 'phones' | 'tablets' | 'accessories';
 }
 
 export const ProductsPage: React.FC<Props> = ({ type }) => {
-  const [products, setProducts] = useState<CardType[]>([]);
   const [currentPages, setCurrentPages] = useState<number[]>([]);
-  const { searchParams } = useAppContext();
-  const sortDropDownRef = React.useRef<HTMLDivElement>(null);
-  const perPageDropDownRef = React.useRef<HTMLDivElement>(null);
+  const { searchParams, products } = useAppContext();
+  const sortDropDownRef = useRef<HTMLDivElement>(null);
+  const perPageDropDownRef = useRef<HTMLDivElement>(null);
 
   function getPerPageFromParams() {
     const value = searchParams.get('perPage');
@@ -44,9 +42,33 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     return isNaN(num) || num < 1 ? 1 : num;
   };
 
+  const [sortType, setSortType] = useState<ProductsSortType>(getSortTypeFromParams());
+
+  function sorter(a: Card, b: Card) {
+    switch (sortType) {
+      case 'age':
+        if (a.year === b.year) {
+          return b.name.localeCompare(a.name);
+        } else {
+          return b.year - a.year;
+        }
+      case 'title':
+        return a.name.localeCompare(b.name);
+      case 'price':
+        return a.price - b.price;
+      default:
+        return 0;
+    }
+  }
+
+  const [currentProducts, setCurrentProducts] = useState<Card[]>(
+    products
+      .filter(product => product.category === type)
+      .sort(sorter)
+  );
+
   const [currentPage, setCurrentPage] = useState<number>(getPageFromParams());
   const [perPageValue, setPerPageValue] = useState<ItemsPerPage>(getPerPageFromParams());
-  const [sortType, setSortType] = useState<ProductsSortType>(getSortTypeFromParams());
 
   const [isPerPageDropdownOpen, setIsPerPageDropdownOpen] = useState<boolean>(false);
   const [isSortTypeDropdownOpen, setIsSortTypeDropdownOpen] = useState<boolean>(false);
@@ -67,7 +89,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   // }
 
   function createPagination(items: number, from = 1) {
-    const to = Math.ceil(products.length / items);
+    const to = Math.ceil(currentProducts.length / items);
     const pages: number[] = [];
 
     for (let i = from; i <= Math.min(from + 4, to); i++) {
@@ -133,32 +155,6 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     setIsSortTypeDropdownOpen(false);
   }
 
-  function sortProducts() {
-    setProducts(prev => {
-      let sorted = [...prev];
-      switch (sortType) {
-        case 'age':
-          sorted.sort((a, b) => {
-            if (a.year === b.year) {
-              return b.name.localeCompare(a.name);
-            } else {
-              return b.year - a.year;
-            }
-          });
-          break;
-        case 'title':
-          sorted.sort((a, b) => a.name.localeCompare(b.name));
-          break;
-        case 'price':
-          sorted.sort((a, b) => a.price - b.price);
-          break;
-        default:
-          break;
-      }
-      return sorted;
-    });
-  }
-
   function getSortTypeValue(type: ProductsSortType): string {
     switch (type) {
       case 'age':
@@ -177,7 +173,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
     if (
       currentPages[currentPages.length - 1] ===
-      Math.ceil(products.length / perPageValue)
+      Math.ceil(currentProducts.length / perPageValue)
     ) {
       return false;
     }
@@ -188,15 +184,18 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   }
 
   useEffect(() => {
-    setProducts(
-      getProducts()
+    if (true) {
+      const filtered = products
         .filter(product => product.category === type)
-    );
-    sortProducts();
-  }, [type]);
+        .sort(sorter);
+
+      setCurrentProducts(filtered);
+      setCurrentPage(1);
+    }
+  }, [type, products]);
 
   useEffect(() => {
-    sortProducts();
+    setCurrentProducts(prevProducts => [...prevProducts].sort(sorter));
     setCurrentPage(1);
 
     if (typeof perPageValue === 'number') {
@@ -216,7 +215,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
           <span
             className={`${styles.counter} smallText`}
-          >{products.length} models</span>
+          >{currentProducts.length} models</span>
         </div>
 
         <div className={styles.sorters}>
@@ -302,8 +301,10 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
       <ProductsList
         products={
           perPageValue === 'All'
-            ? products
-            : products.slice(
+            ? currentProducts.length > 0
+              ? currentProducts
+              : Array(15).fill(undefined)
+            : currentProducts.slice(
               (currentPage - 1) * Number(perPageValue),
               currentPage * Number(perPageValue)
             )
@@ -346,7 +347,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
           <Arrow
             direction="right"
-            isDisabled={currentPage === Math.ceil(products.length / perPageValue)}
+            isDisabled={currentPage === Math.ceil(currentProducts.length / perPageValue)}
             onClick={() => handlePageChange(currentPage + 1)}
           />
         </div>

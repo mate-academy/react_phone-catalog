@@ -4,18 +4,18 @@ import { Card } from '../../types/Card';
 import { useAppContext } from '../../contexts/AppContext';
 
 type CartProductProps = {
-  product: Card;
+  product: Card | undefined;
   onProductCountChange: (price: number, action: '+' | '-') => void;
 };
 
 export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCountChange }) => {
-  const { cartProductsIds, generateProductCode, setCartProductsIds } =
+  const { cartProductsIds, setCartProductsIds } =
     useAppContext();
   const [counterValue, setCounterValue] = useState<number>(1);
 
   function handleCounterChange(action: '+' | '-') {
     if (action === '+') {
-      onProductCountChange(product.price, '+');
+      onProductCountChange(product!.price, '+');
       setCounterValue(prev => prev + 1);
       return;
     }
@@ -24,7 +24,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
       return;
     }
 
-    onProductCountChange(product.price, '-');
+    onProductCountChange(product!.price, '-');
     setCounterValue(prev => prev - 1);
   }
 
@@ -35,7 +35,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
     setCartProductsIds(updatedCart);
   }
 
-  return (
+  return product !== undefined ? (
     <div className={styles.product}>
       <div className={styles.details}>
         <button
@@ -50,7 +50,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
         </div>
 
         <div className={`${styles.name} bodyText`}>
-          {generateProductCode(product.name)}
+          {product.name}
         </div>
       </div>
 
@@ -80,6 +80,47 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
           </button>
         </div>
         <h3 className={styles.priceTitle}>${product.price * counterValue}</h3>
+      </div>
+    </div>
+  ) : (
+    <div className={styles.product}>
+      <div className={styles.details}>
+        <button
+          className={`
+            ${styles.img} 
+            ${styles.close}
+          `}
+        ></button>
+        <div className={styles.wrapper}>
+          <div className={styles.image}></div>
+        </div>
+
+        <div className={styles.name}>
+        </div>
+      </div>
+
+      <div className={styles.price}>
+        <div className={styles.counter}>
+          <button
+            className={`
+              ${styles.counterButton} 
+              ${counterValue === 1 && styles.disabled}
+            `}
+          >
+            <div
+              className={styles.img}
+            ></div>
+          </button>
+
+          <div className={styles.value}></div>
+
+          <button
+            className={styles.counterButton}
+          >
+            <div className={styles.img}></div>
+          </button>
+        </div>
+        <div className={styles.priceTitle}></div>
       </div>
     </div>
   );

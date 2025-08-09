@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { getProducts } from '../../modules/shared/services/productService';
 import { Arrow } from '../Arrow';
 import { Card } from '../Card';
 import styles from './ProductsSlider.module.scss';
@@ -16,8 +15,11 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
 }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [visibleCards, setVisibleCards] = useState(0);
-  const { refCardWidth, refSliderWidth } = useAppContext();
-  const products = getProducts().filter(filter);
+  const {
+    refCardWidth,
+    refSliderWidth,
+    products,
+  } = useAppContext();
   const gap = 16;
 
   useEffect(() => {
@@ -81,9 +83,17 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             transform: `translateX(-${findAbleScrollStep()}px)`,
           }}
         >
-          {products.map(product => (
-            <Card key={product.id} card={product} />
-          ))}
+          {products.length > 0 ? (
+            products
+              .filter(filter)
+              .map(product => (
+                <Card key={product.id} card={product ? product : product} />
+              ))
+          ) : (
+            Array(4).fill(undefined).map((product, i) => (
+              <Card key={i} card={product} />
+            ))
+          )}
         </div>
       </div>
     </section>

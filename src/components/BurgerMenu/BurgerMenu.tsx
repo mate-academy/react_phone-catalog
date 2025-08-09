@@ -93,9 +93,9 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
             />
 
             {favouriteProductsIds.length > 0 && (
-              <NavLink to={'/favourite'} className={styles.counter}>
+              <div className={styles.counter}>
                 {favouriteProductsIds.length}
-              </NavLink>
+              </div>
             )}
           </NavLink>
           <NavLink
@@ -108,9 +108,9 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
             <img className={styles.img} src="/img/icons/Cart.svg" alt="Cart" />
 
             {cartProductsIds.length > 0 && (
-              <NavLink to={'/cart'} className={styles.counter}>
+              <div className={styles.counter}>
                 {cartProductsIds.length}
-              </NavLink>
+              </div>
             )}
           </NavLink>
         </div>

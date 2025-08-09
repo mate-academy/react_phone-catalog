@@ -2,22 +2,19 @@ import React, { useEffect, useState } from 'react';
 import styles from './CartPage.module.scss';
 import { useAppContext } from '../../contexts/AppContext';
 import { CartProduct } from './CartProduct';
-import { getCardById } from '../shared/services/productService';
-import { Card } from '../../types/Card';
 import { ModalWindow } from './ModalWindow';
 
 export const CartPage: React.FC = () => {
-  const { cartProductsIds } = useAppContext();
+  const { cartProductsIds, products } = useAppContext();
 
   function countTotal() {
     let sum = 0;
-    cartProductsIds.forEach(id => {
-      const product = getCardById(id);
+    for (const id of cartProductsIds) {
+      const product = products.find(product => product.id === id);
       if (product) {
         sum += product.price;
       }
-    });
-
+    }
     return sum;
   }
 
@@ -27,12 +24,18 @@ export const CartPage: React.FC = () => {
 
   function handleProductCountChange(price: number, action: '+' | '-') {
     if (action === '+') {
-      setTotalSum(prev => prev + price);
+      setTotalSum(prevPromise => {
+        const prev = prevPromise;
+        return prev + price;
+      });
       setTotalItems(prev => prev + 1);
       return;
     }
 
-    setTotalSum(prev => prev - price);
+    setTotalSum(prevPromise => {
+      const prev = prevPromise;
+      return prev - price;
+    });
     setTotalItems(prev => prev - 1);
   }
 
@@ -60,7 +63,9 @@ export const CartPage: React.FC = () => {
               {cartProductsIds.map(id => (
                 <CartProduct
                   key={id}
-                  product={getCardById(id) as Card}
+                  product={
+                    products.find(product => product.id === id)
+                  }
                   onProductCountChange={handleProductCountChange}
                 />
               ))}

@@ -10,8 +10,8 @@ type Props = {
 export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
     <div className={styles.products}>
-      {products.map(product => (
-        <Card key={product.id} card={product} />
+      {products.map((product, i) => (
+        <Card key={product === undefined ? i : product.id} card={product} />
       ))}
     </div>
   )

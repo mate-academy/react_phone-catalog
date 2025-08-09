@@ -70,9 +70,9 @@ export const Navbar: React.FC = () => {
             <img className={styles.img} src="./img/icons/Heart.svg" alt="" />
 
             {favouriteProductsIds.length > 0 && (
-              <NavLink to={'/favorites'} className={styles.counter}>
+              <div className={styles.counter}>
                 {favouriteProductsIds.length}
-              </NavLink>
+              </div>
             )}
           </NavLink>
 
@@ -85,9 +85,9 @@ export const Navbar: React.FC = () => {
             <img className={styles.img} src="./img/icons/Cart.svg" alt="" />
 
             {cartProductsIds.length > 0 && (
-              <NavLink to={'/cart'} className={styles.counter}>
+              <div className={styles.counter}>
                 {cartProductsIds.length}
-              </NavLink>
+              </div>
             )}
           </NavLink>
         </div>

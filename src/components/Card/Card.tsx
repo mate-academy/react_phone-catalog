@@ -6,12 +6,11 @@ import { useAppContext } from '../../contexts/AppContext';
 import { Link } from 'react-router-dom';
 
 type Props = {
-  card: CardItem;
+  card: CardItem | undefined;
 };
 
 export const Card: React.FC<Props> = ({ card }) => {
   const {
-    generateProductCode,
     toggleFavouriteCard,
     toggleAddToCart,
     favouriteProductsIds,
@@ -22,16 +21,20 @@ export const Card: React.FC<Props> = ({ card }) => {
   function handleAddToCartClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     event.stopPropagation();
-    toggleAddToCart(card.id);
+    if (card) {
+      toggleAddToCart(card.id);
+    }
   }
 
   function handleAddToFavouriteClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     event.stopPropagation();
-    toggleFavouriteCard(card.id);
+    if (card) {
+      toggleFavouriteCard(card.id);
+    }
   }
 
-  return (
+  return card !== undefined ? (
     <Link
       to={`/${card.category}/${card.itemId}`}
       ref={refCardWidth as React.Ref<HTMLAnchorElement>}
@@ -44,7 +47,7 @@ export const Card: React.FC<Props> = ({ card }) => {
 
         <div className={styles.about}>
           <p className={`bodyText ${styles.name}`}>
-            {generateProductCode(card.name)}
+            {card.name}
           </p>
           <h3 className={styles.price}>
             ${card.price}{' '}
@@ -82,5 +85,42 @@ export const Card: React.FC<Props> = ({ card }) => {
         </div>
       </div>
     </Link>
+  ) : (
+    <div
+      ref={refCardWidth as React.Ref<HTMLDivElement>}
+      className={`${styles.card} ${styles.isLoading}`}
+    >
+      <div className={styles.wrapper}>
+        <div className={styles.imageContainer}>
+          <div className={styles.image}></div>
+        </div>
+
+        <div className={styles.about}>
+          <p className={`bodyText ${styles.name}`}>
+          </p>
+          <div className={styles.price}>
+          </div>
+
+          <div className={styles.description}>
+            <div className={styles.keys}>
+              <div className={styles.key}></div>
+              <div className={styles.key}></div>
+              <div className={styles.key}></div>
+            </div>
+
+            <div className={styles.values}>
+              <div className={styles.value}></div>
+              <div className={styles.value}></div>
+              <div className={styles.value}></div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.buttons}>
+          <div className={styles.button}></div>
+          <div className={styles.button}></div>
+        </div>
+      </div>
+    </div>
   );
 };
