@@ -31,9 +31,7 @@ export const HomePage: React.FC = () => {
 
       <Banner />
 
-      <h2 className="title-2">Brand new models</h2>
-
-      <ProductsList products={newModels} />
+      <ProductsList title="Brand new models" products={newModels} />
 
       <h2 className="title-2">Shop by category</h2>
 
