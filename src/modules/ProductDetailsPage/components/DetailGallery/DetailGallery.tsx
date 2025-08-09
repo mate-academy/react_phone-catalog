@@ -3,6 +3,7 @@ import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { useMediaQuery } from 'react-responsive';
+import 'react-image-gallery/styles/css/image-gallery.css';
 import style from './detailGallery.module.scss';
 import cn from 'classnames';
 
@@ -12,15 +13,20 @@ interface Props {
 
 export const DetailGallery: React.FC<Props> = React.memo(({ images }) => {
   const isTabletOrLarger = useMediaQuery({ query: '(min-width: 640px)' });
+  const baseUrlRaw = import.meta.env.BASE_URL;
 
-  // Використовуємо BASE_URL з Vite для коректного формування шляху
-  const baseUrl = import.meta.env.BASE_URL;
+  const baseUrl = baseUrlRaw.endsWith('/')
+    ? baseUrlRaw.slice(0, -1)
+    : baseUrlRaw;
 
-  const galleryImages = images.map(imgPath => ({
-    // Шляхи тепер формуються з BASE_URL
-    original: `${baseUrl}${imgPath}`,
-    thumbnail: `${baseUrl}${imgPath}`,
-  }));
+  const galleryImages = images.map(imgPath => {
+    const cleanPath = imgPath.startsWith('/') ? imgPath.slice(1) : imgPath;
+
+    return {
+      original: `${baseUrl}/${cleanPath}`,
+      thumbnail: `${baseUrl}/${cleanPath}`,
+    };
+  });
 
   return (
     <ImageGallery
@@ -29,6 +35,7 @@ export const DetailGallery: React.FC<Props> = React.memo(({ images }) => {
       showFullscreenButton={false}
       showNav={false}
       thumbnailPosition={isTabletOrLarger ? 'left' : 'bottom'}
+      // slideOnThumbnailOver={true}
       lazyLoad={true}
       additionalClass={cn(style['detail-gallery'])}
     />
