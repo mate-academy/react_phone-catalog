@@ -42,17 +42,17 @@
 
     &--phone {
       background-color: $category-phone-bg;
-      background-image: url('img/category-phones.webp');
+      background-image: url('/img/category-phones.webp');
     }
 
     &--tablet {
       background-color: $category-tablet-bg;
-      background-image: url('img/category-tablets.webp');
+      background-image: url('/img/category-tablets.webp');
     }
 
     &--accessory {
       background-color: $category-accessory-bg;
-      background-image: url('img/category-accessories.webp');
+      background-image: url('/img/category-accessories.webp');
     }
   }
 
