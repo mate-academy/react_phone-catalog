@@ -1,33 +1,36 @@
 import React from 'react';
 import './ProductCard.scss';
+import { Product } from '../../utils/Product';
 
-export const ProductCard: React.FC = () => {
+type Props = {
+  product: Product;
+};
+
+export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="product">
       <div className="product__characteristics">
         <img
           className="product__image"
-          src="/img/phones/apple-iphone-14-pro/gold/00.webp"
+          src={product.image}
           alt="product image"
         />
-        <p className="product__description">
-          Apple iPhone 14 Pro 128GB Silver (MQ023)
-        </p>
-        <p className="product__price">$999</p>
+        <p className="product__description">{product.name}</p>
+        <p className="product__price">${product.fullPrice}</p>
       </div>
 
       <div className="product__details">
         <div className="product__details-row">
           <div className="product__details-name">Screen</div>
-          <div className="product__details-value">6.1” OLED</div>
+          <div className="product__details-value">{product.screen}</div>
         </div>
         <div className="product__details-row">
           <div className="product__details-name">Capacity</div>
-          <div className="product__details-value">128 GB</div>
+          <div className="product__details-value">{product.capacity}</div>
         </div>
         <div className="product__details-row">
           <div className="product__details-name">RAM</div>
-          <div className="product__details-value">6 GB</div>
+          <div className="product__details-value">{product.ram}</div>
         </div>
       </div>
 

@@ -1,1 +1,1 @@
-export {CategorySelectCard} from './CategorySelectCard';
+export { CategorySelectCard } from './CategorySelectCard';

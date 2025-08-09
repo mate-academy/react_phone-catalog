@@ -1,9 +1,10 @@
 import React from 'react';
 import './CategorySelectCard.scss';
+import { Link } from 'react-router-dom';
 
 export const CategorySelectCard: React.FC = () => {
   return (
-    <div className="select-category">
+    <Link to="/" className="select-category">
       <div className="select-category__image-wrapper">
         <img
           className="select-category__image"
@@ -15,6 +16,6 @@ export const CategorySelectCard: React.FC = () => {
         <p className="select-category__title">Mobile phones</p>
         <p className="select-category__models">95 models</p>
       </div>
-    </div>
+    </Link>
   );
 };
