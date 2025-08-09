@@ -18,6 +18,7 @@ interface CartContextProps {
   setLovelyProducts: React.Dispatch<React.SetStateAction<Products[]>>;
   addToCart: (product: Products) => void;
   addProductToLovely: (product: Products) => void;
+  products: Products[];
 }
 
 export const CartContext = createContext<CartContextProps | undefined>(
