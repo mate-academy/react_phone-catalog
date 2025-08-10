@@ -19,7 +19,7 @@ const Categories = () => {
                 className={categoriesStyle.categories__link}
               >
                 <img
-                  src="./img/phone-category.png"
+                  src="../img/phone-category.png"
                   alt=""
                   className={`${categoriesStyle.categories__image} ${categoriesStyle['categories__image--1']}`}
                 />
@@ -43,7 +43,7 @@ const Categories = () => {
                 className={categoriesStyle.categories__link}
               >
                 <img
-                  src="./img/tablets-category.png"
+                  src="../img/tablets-category.png"
                   alt=""
                   className={`${categoriesStyle.categories__image} ${categoriesStyle['categories__image--2']}`}
                 />
@@ -67,7 +67,7 @@ const Categories = () => {
                 className={categoriesStyle.categories__link}
               >
                 <img
-                  src="./img/accessories-category.b914f4124f0dab3439fb.png"
+                  src="../img/accessories-category.b914f4124f0dab3439fb.png"
                   alt=""
                   className={`${categoriesStyle.categories__image} ${categoriesStyle['categories__image--3']}`}
                 />

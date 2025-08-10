@@ -68,12 +68,12 @@
   }
 
   &__left {
-    background-image: url('./img/chevron-arrow_left.svg');
+    background-image: url('../img/chevron-arrow_left.svg');
     margin-right: 16px;
   }
 
   &__right {
-    background-image: url('./img/chevron-arrow-right.svg');
+    background-image: url('../img/chevron-arrow-right.svg');
 
   }
 
@@ -89,15 +89,15 @@
 
 
 .swiper-button-disabled {
-  background-image: url('./img/chevron-(arrow-down).svg');
+  background-image: url('../img/chevron-(arrow-down).svg');
 }
 
 button:disabled.brand__left {
-  background-image: url('./img/chevron-(arrow-down).svg');
+  background-image: url('../img/chevron-(arrow-down).svg');
   transform: rotate(90deg);
 }
 
 button:disabled.brand__right {
-  background-image: url('./img/chevron-(arrow-down).svg');
+  background-image: url('../img/chevron-(arrow-down).svg');
   transform: rotate(-90deg);
 }

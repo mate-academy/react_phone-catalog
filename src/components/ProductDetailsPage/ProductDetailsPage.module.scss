@@ -66,7 +66,7 @@ body {
   }
 
   &__go-home {
-    background-image: url('./img/home.svg');
+    background-image: url('../img/home.svg');
     display: block;
     background-position: center;
     width: 16px;
@@ -74,7 +74,7 @@ body {
   }
 
   &__direction {
-    background-image: url('./img/chevron-arrow-right.svg');
+    background-image: url('../img/chevron-arrow-right.svg');
     background-position: center;
     display: block;
     width: 16px;
@@ -105,7 +105,7 @@ body {
   }
 
   &__arrow {
-    background-image: url('./img/chevron-arrow_left.svg');
+    background-image: url('../img/chevron-arrow_left.svg');
     background-size: 16px 16px;
     width: 16px;
     height: 16px;
@@ -324,7 +324,7 @@ body {
   }
 
   &__button-favorites {
-    background-image: url('./img/add-to-favourites.svg');
+    background-image: url('../img/add-to-favourites.svg');
     width: 48px;
     height: 48px;
     border: none;
@@ -337,14 +337,14 @@ body {
     display: block;
 
     &:hover {
-      background-image: url('./img/add-to-fovourites-hover.svg');
+      background-image: url('../img/add-to-fovourites-hover.svg');
     }
 
     &--active {
-      background-image: url('./img/add-to-fovourites-added.svg');
+      background-image: url('../img/add-to-fovourites-added.svg');
 
       &:hover {
-        background-image: url('./img/add-to-fovourites-added.svg');
+        background-image: url('../img/add-to-fovourites-added.svg');
       }
     }
   }

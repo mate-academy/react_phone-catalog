@@ -55,7 +55,7 @@
   }
 
   &__arrow-left {
-    background-image: url('./img/chevron-arrow_left.svg');
+    background-image: url('../img/chevron-arrow_left.svg');
     display: block;
     width: 16px;
     height: 16px;
@@ -87,7 +87,7 @@
   &__content-wrapper {
     @include on-big-screen {
       display: grid;
-      grid-template-columns: repeat(24, 1fr); /* Створює 24 рівні колонки */
+      grid-template-columns: repeat(24, 1fr);
       gap: 10px;
     }
   }
@@ -97,17 +97,17 @@
   }
 
   &__icon-close {
-    background-image: url('./img/close.svg');
+    background-image: url('../img/close.svg');
     background-position: center;
     background-color: $White;
     border: none;
     width: 16px;
     height: 16px;
-    transition: transform$effectDuration ease-in-out;
+    transition: transform $effectDuration ease-in-out;
 
     &:hover {
       transform: scale($scale);
-      transition: transform$effectDuration ease-in-out;
+      transition: transform $effectDuration ease-in-out;
     }
   }
 
@@ -115,7 +115,7 @@
     width: 66px;
     height: auto;
     margin-inline: 16px;
-    transition: transform$effectDuration ease-in-out;
+    transition: transform $effectDuration ease-in-out;
 
     @include on-tablet {
       margin: 24px;
@@ -147,11 +147,11 @@
   }
 
   &__button-add {
-    background-image: url('./img/plus.svg');
+    background-image: url('../img/plus.svg');
   }
 
   &__button-get-out {
-    background-image: url('./img/minus.svg');
+    background-image: url('../img/minus.svg');
   }
 
   &__single-price {

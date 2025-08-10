@@ -20,18 +20,18 @@ import { useMenu } from '../../context/MenuContext';
 const WelcomeSlider: React.FC = () => {
   const { isMenuOpen } = useMenu();
   const [currentImagePath, setCurrentImagePath] = useState<string[]>([
-    './img/Banner-mobile.5ab4e0f94787219dc791.png',
+    '../img/Banner-mobile.5ab4e0f94787219dc791.png',
     '/img/banner-mobil-3.88470ad4d90a78897a60.png',
     '/img/banner-mobile-2.00d157dda3b7eb6a4ac1.png',
   ]);
 
   const updateImageBasedOnWidth = () => {
     let newPathFirstImage = 'img/mobile-banner.svg';
-    let newPathSecondImage = './img/banner-3.0faf6182921a87c68d96.png';
-    let newPathThirdImage = './img/banner-2.9b3f155545f266760333.png';
+    let newPathSecondImage = '../img/banner-3.0faf6182921a87c68d96.png';
+    let newPathThirdImage = '../img/banner-2.9b3f155545f266760333.png';
 
     if (window.innerWidth >= 640) {
-      newPathFirstImage = './img/face-banner.svg';
+      newPathFirstImage = '../img/face-banner.svg';
       setCurrentImagePath([
         newPathFirstImage,
         newPathSecondImage,
@@ -40,7 +40,7 @@ const WelcomeSlider: React.FC = () => {
     }
 
     if (window.innerWidth <= 640) {
-      newPathFirstImage = './img/Banner-mobile.5ab4e0f94787219dc791.png';
+      newPathFirstImage = '../img/Banner-mobile.5ab4e0f94787219dc791.png';
       newPathSecondImage = '/img/banner-mobil-3.88470ad4d90a78897a60.png';
       newPathThirdImage = '/img/banner-mobile-2.00d157dda3b7eb6a4ac1.png';
       setCurrentImagePath([
@@ -96,7 +96,7 @@ const WelcomeSlider: React.FC = () => {
           <div
             className={`${navigationStyle['navigation-button']} ${navigationStyle['navigation-button--left']}`}
           >
-            <img src="./img/chevron-arrow_left.svg" alt="img" />
+            <img src="../img/chevron-arrow_left.svg" alt="img" />
           </div>
         </div>
 
@@ -158,7 +158,7 @@ const WelcomeSlider: React.FC = () => {
           <div
             className={`${navigationStyle['navigation-button']} ${navigationStyle['navigation-button--right']}`}
           >
-            <img src="./img/chevron-arrow-right.svg" alt="arrow rigth" />
+            <img src="../img/chevron-arrow-right.svg" alt="arrow rigth" />
           </div>
         </div>
       </div>

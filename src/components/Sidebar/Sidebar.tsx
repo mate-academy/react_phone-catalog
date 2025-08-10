@@ -67,7 +67,7 @@ const Sidebar: React.FC = () => {
               to="favorites"
               onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
             >
-              <img src="./img/favourites-(heart-like).svg" alt="heart" />
+              <img src="../img/favourites-(heart-like).svg" alt="heart" />
             </Link>
           </div>
 
@@ -76,7 +76,7 @@ const Sidebar: React.FC = () => {
               to="cart"
               onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
             >
-              <img src="./img/shopping-bag-cart.svg" alt="bag" />
+              <img src="../img/shopping-bag-cart.svg" alt="bag" />
             </Link>
           </div>
         </div>

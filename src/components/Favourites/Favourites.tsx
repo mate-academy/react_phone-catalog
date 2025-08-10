@@ -34,7 +34,7 @@ const Favourites: React.FC<CartProps> = ({ product }) => {
         {product.length === 0 ? (
           <>
             <h3>Favorites list is empty</h3>
-            <img src="./img/cart-is-empty.png" alt="" />
+            <img src="../img/cart-is-empty.png" alt="" />
           </>
         ) : (
           <div className={favouritesStyles['bag-page__list']}>
