@@ -5,6 +5,7 @@
   background-color: $main-bg-color;
   border-top: 1px solid $border-color;
   justify-content: center;
+  
 
   @include onTablet {
     padding: 32px;

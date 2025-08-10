@@ -4,7 +4,19 @@
   scroll-behavior: smooth;
   height: 100vh;
   background-color: $page-body-bg-color;
+  
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+// .app {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+// }
 
 .page__body {
   margin: 0;
@@ -12,8 +24,19 @@
 }
 
 .main {
+  flex: 1;
+  width: 100%;
+  // flex: 1;
+  // width: 100%;
+
+
+
+
+
   margin: auto;
+
   display: flex;
+
   flex-direction: column;
   gap: 56px;
 
@@ -116,3 +139,5 @@ h4 {
     box-shadow: 0 3px 10px rgba(23, 32, 49, 0.4);
   }
 }
+
+

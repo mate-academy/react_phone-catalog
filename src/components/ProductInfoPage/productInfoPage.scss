@@ -12,220 +12,311 @@
     padding-bottom: 32px;
   }
 
-  .modelsPhoto {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
+  .photo-control-box {
 
     @include onTablet {
-      flex-direction: row;
+      display: flex;
+      gap: 17px;
     }
 
-    .mainPhoto {
+    .modelsPhoto {
       display: flex;
-      height: 288px;
-      width: 288px;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 5px 0;
-
-      background-color: $main-bg-color;
-      border-radius: 8px;
-      border: 1px solid $border-color;
-
-      .main-img {
-        height: 100%;
-        border-radius: 8px;
-      }
+      gap: 16px;
 
       @include onTablet {
-        order: 2;
+        width: 55%;
+        flex-direction: row;
+
+        align-items: start;
       }
 
-      @include onDesktop {
-        height: 464px;
-        width: 464px;
-      }
-    }
-
-    .smallPhoto-container {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      padding-bottom: 40px;
-
-      @include onTablet {
-        flex-direction: column;
-        padding-bottom: 0;
-      }
-
-      @include onDesktop {
-        gap: 16px;
-      }
-
-
-
-      .smallPhoto-box {
-        height: 50px;
-        width: 50px;
-        border: 1px solid $border-color;
+      .mainPhoto {
         display: flex;
+        height: 288px;
+        width: 288px;
         justify-content: center;
-        cursor: pointer;
+        align-items: center;
+        padding: 5px 0;
+
         background-color: $main-bg-color;
         border-radius: 8px;
+        border: 1px solid $border-color;
 
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
+        .main-img {
+          height: 100%;
+          border-radius: 8px;
+        }
 
         @include onTablet {
-          height: 35px;
-          width: 35px;
+          order: 2;
         }
 
         @include onDesktop {
-          height: 80px;
-          width: 80px;
-        }
-
-        .mini-img {
-          padding: 3px;
-          height: 100%;
-        }
-
-        &.is-active {
-          border-color: rgb(170, 158, 158);
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-
-          transform: scale(1.1);
-        }
-
-        &:hover {
-          border-color: $border-hover-color;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+          height: 464px;
+          width: 464px;
         }
       }
-    }
-  }
 
-  .main-controls {
-    .colors-id-box {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 24px;
-      margin-bottom: 24px;
-      border-bottom: 1px solid $border-color;
-
-      .colors-box {
+      .smallPhoto-container {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         gap: 8px;
+        padding-bottom: 40px;
 
-        .models-colors {
+        @include onTablet {
+          flex-direction: column;
+          padding-bottom: 0;
+        }
+
+        @include onDesktop {
+          gap: 16px;
+        }
+
+
+
+        .smallPhoto-box {
+          height: 50px;
+          width: 50px;
+          border: 1px solid $border-color;
           display: flex;
-          gap: 8px;
+          justify-content: center;
+          cursor: pointer;
+          background-color: $main-bg-color;
+          border-radius: 8px;
 
-          .border-color {
-            transition:
-              transform 0.3s ease,
-              box-shadow 0.3s ease;
-            border: 1px solid $border-color;
-            height: 32px;
-            width: 32px;
-            border-radius: 50%;
-            padding: 2px;
-            cursor: pointer;
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
 
-            &:hover {
-              border-color: $border-hover-color;
-              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
-            }
+          @include onTablet {
+            height: 35px;
+            width: 35px;
           }
 
-          .is-active {
+          @include onDesktop {
+            height: 80px;
+            width: 80px;
+          }
+
+          .mini-img {
+            padding: 3px;
+            height: 100%;
+          }
+
+          &.is-active {
             border-color: rgb(170, 158, 158);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+
             transform: scale(1.1);
           }
 
-          .color {
-            height: 100%;
-            border-radius: 50%;
+          &:hover {
+            border-color: $border-hover-color;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
           }
         }
       }
-
-      // .id-box {
-
-      // }
     }
 
-    .select-capacity-container {
-      padding-bottom: 24px;
-      margin-bottom: 32px;
-      border-bottom: 1px solid $border-color;
+    .main-controls {
 
-      .info-copacity-box {
+      @include onTablet {
+      width: 45%
+    }
+
+      .colors-id-box {
         display: flex;
-        flex-direction: column;
-        gap: 8px;
+        justify-content: space-between;
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid $border-color;
 
-        .capacity-list {
+        .colors-box {
           display: flex;
+          flex-direction: column;
           gap: 8px;
 
-          .capacity {
+          .models-colors {
             display: flex;
-            align-items: center;
-            width: fit-content;
-            height: 32px;
-            padding: 0 8px;
+            gap: 8px;
 
-            border-radius: 8px;
-            background-color: $main-bg-color;
-            border: 1px solid $border-color;
-            cursor: pointer;
+            .border-color {
+              transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+              border: 1px solid $border-color;
+              height: 32px;
+              width: 32px;
+              border-radius: 50%;
+              padding: 2px;
+              cursor: pointer;
 
-            .main-body-text-14 {
-              color: $text-main-color;
+              &:hover {
+                border-color: $border-hover-color;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+              }
             }
 
-            // .main-body-text-14 {
-            //   color: $text-white-color;
-            // }
-
-            // background-color: $bg-color-black;
-
-            transition:
-              transform 0.3s ease,
-              box-shadow 0.3s ease;
-            &.is-active {
+            .is-active {
               border-color: rgb(170, 158, 158);
-              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-
-              background-color: $border-hover-color;
-
-              // background: linear-gradient(to top right, $border-hover-color,white);
-
-              background: linear-gradient(
-                to top right,
-                $border-hover-color 30%,
-                $main-bg-color 75%
-              );
-
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
               transform: scale(1.1);
             }
 
-            &:hover {
-              border-color: $border-hover-color;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+            .color {
+              height: 100%;
+              border-radius: 50%;
+            }
+          }
+        }
+
+        // .id-box {
+
+        // }
+      }
+
+      .select-capacity-container {
+        padding-bottom: 24px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid $border-color;
+
+        .info-copacity-box {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .capacity-list {
+            display: flex;
+            gap: 8px;
+
+            .capacity {
+              display: flex;
+              align-items: center;
+              width: fit-content;
+              height: 32px;
+              padding: 0 8px;
+
+              border-radius: 8px;
+              background-color: $main-bg-color;
+              border: 1px solid $border-color;
+              cursor: pointer;
+
+              .main-body-text-14 {
+                color: $text-main-color;
+              }
+
+              // .main-body-text-14 {
+              //   color: $text-white-color;
+              // }
+
+              // background-color: $bg-color-black;
+
+              transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+              &.is-active {
+                border-color: rgb(170, 158, 158);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+
+                background-color: $border-hover-color;
+
+                // background: linear-gradient(to top right, $border-hover-color,white);
+
+                background: linear-gradient(
+                  to top right,
+                  $border-hover-color 30%,
+                  $main-bg-color 75%
+                );
+
+                transform: scale(1.1);
+              }
+
+              &:hover {
+                border-color: $border-hover-color;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+              }
             }
           }
         }
       }
+
+      .price-container {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding-bottom: 32px;
+
+        .price {
+          font-weight: 800;
+          font-size: 22px;
+        }
+
+        .old-price {
+          font-weight: 600;
+          text-decoration: line-through;
+          color: $text-not-active-color;
+        }
+      }
+
+      .add-favourites-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        // max-width: 360px;
+        // margin: auto;
+
+        .add-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          background-color: rgba(33, 108, 255, 1);
+          border-radius: 8px;
+        }
+
+        .favourites-button {
+          display: flex;
+          flex-shrink: 0;
+          align-items: center;
+          justify-content: center;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          border: 1px solid $border-color;
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        padding: 32px 0 56px;
+        gap: 8px;
+
+        .spec-name-value-box {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 15px;
+
+          .spec-name {
+            font-weight: 700;
+            font-size: 12px;
+            color: $text-not-active-color;
+          }
+
+          .spec-value {
+            font-weight: 700;
+            font-size: 12px;
+            color: $text-main-color;
+          }
+        }
+      }
+
+
     }
   }
+
 }

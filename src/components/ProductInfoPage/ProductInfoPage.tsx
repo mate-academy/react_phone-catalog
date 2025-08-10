@@ -1,5 +1,5 @@
 import './productInfoPage.scss';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { BreadcrumbsNav } from '../BreadcrumbsNav';
 import { useEffect, useState } from 'react';
 
@@ -16,6 +16,7 @@ export type ProductInfoUnionType =
   | AccessoryInfoType;
 
 export const ProductInfoPage: React.FC = () => {
+  const navigate = useNavigate();
   const [foundItem, setFoundItem] = useState<ProductInfoUnionType | null>(null);
 
   const [foundProduct, setFoundProduct] = useState<AllProductsType | null>(
@@ -34,10 +35,6 @@ export const ProductInfoPage: React.FC = () => {
     foundItem?.capacity || null,
   );
 
-  // const [showDiscount, setShowDiscount] = useState<boolean | null>(
-  //   foundItem.,
-  // );
-
   const { category, itemId } = useParams<{
     category: string;
     itemId: string;
@@ -48,10 +45,18 @@ export const ProductInfoPage: React.FC = () => {
     midnightgreen: '#4e5851',
     sierrablue: '#9BB5CE',
     spaceblack: '#1F1F1F',
-    // midnight: 'black',
+    spacegray: '#4A4A4A',
   };
 
+  const specs = [
+    { name: 'Screen', value: foundItem?.screen },
+    { name: 'Resolution', value: foundItem?.resolution },
+    { name: 'Processor', value: foundItem?.processor },
+    { name: 'RAM', value: foundItem?.ram },
+  ];
+
   const DEFAULT_COLOR = 'gray';
+  // const DEFAULT_COLOR = 'red';
 
   const getSafeColor = (color: string): string => {
     const lowerColor = color.toLowerCase();
@@ -75,10 +80,15 @@ export const ProductInfoPage: React.FC = () => {
           (product: ProductInfoUnionType) => product.id === itemId,
         );
 
+        if (!found) {
+          navigate('/product-not-found');
+          return;
+        }
+
         setFoundItem(found);
-        setMainPhoto(found?.images[0]);
-        setSelectedColor(found?.color);
-        setSelectedCapacity(found?.capacity);
+        setMainPhoto(found.images[0]);
+        setSelectedColor(found.color);
+        setSelectedCapacity(found.capacity);
       });
   }, [category, itemId]);
 
@@ -91,6 +101,11 @@ export const ProductInfoPage: React.FC = () => {
         const foundProduct = data.find(
           (product: AllProductsType) => product.itemId === itemId,
         );
+
+        if (!foundProduct) {
+          navigate('/product-not-found');
+          return;
+        }
 
         setFoundId(foundProduct.id);
         setFoundProduct(foundProduct);
@@ -106,97 +121,123 @@ export const ProductInfoPage: React.FC = () => {
 
       <h2 className="full-name">{modelName}</h2>
 
-      <div className="modelsPhoto">
-        <div className="mainPhoto">
-          <img className="main-img" src={mainPhoto} alt="main photo" />
+      <div className='photo-control-box'>
+
+        <div className="modelsPhoto">
+          <div className="mainPhoto">
+            <img className="main-img" src={mainPhoto} alt="main photo" />
+          </div>
+
+          <div className="smallPhoto-container">
+            {modelPhoto?.map((photo, index) => (
+              <div
+                key={index}
+                className={cn('smallPhoto-box', {
+                  'is-active': mainPhoto === photo,
+                })}
+              >
+                <img
+                  src={`/${photo}`}
+                  alt={`Product thumbnail ${index + 1}`}
+                  onClick={() => setMainPhoto(photo)}
+                  className="mini-img"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="smallPhoto-container">
-          {modelPhoto?.map((photo, index) => (
-            <div
-              key={index}
-              className={cn('smallPhoto-box', {
-                'is-active': mainPhoto === photo,
-              })}
-            >
+        <div className="main-controls">
+          <div className="colors-id-box">
+            <div className="colors-box">
+              <p className="small-text-12-600">Available colors</p>
+
+              
+
+              <div className="models-colors">
+                {foundItem?.colorsAvailable.map(color => {
+                  const safeColor = getSafeColor(color);
+
+                  return (
+                    <div
+                      key={color}
+                      className={cn('border-color', {
+                        'is-active': selectedColor === color,
+                      })}
+                      onClick={() => setSelectedColor(color)}
+                    >
+                      <div
+                        className="color"
+                        style={{ backgroundColor: safeColor }}
+                      ></div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="id-box">
+              <p className="small-text-12">ID: {foundId}</p>
+            </div>
+          </div>
+
+          <div className="select-capacity-container">
+            <div className="info-copacity-box">
+              <p className="small-text-12-600">Select capacity</p>
+
+              <div className="capacity-list">
+                {foundItem?.capacityAvailable.map(capacity => {
+                  return (
+                    <div
+                      key={capacity}
+                      className={cn('capacity', {
+                        'is-active': selectedCapacity === capacity,
+                      })}
+                      onClick={() => setSelectedCapacity(capacity)}
+                    >
+                      <p className="main-body-text-14">{capacity}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <div className="price-container">
+            {foundProduct ? (
+              foundProduct.year < 2021 ? (
+                <>
+                  <div className="price">${foundProduct.price}</div>
+                  <div className="price old-price">${foundProduct.fullPrice}</div>
+                </>
+              ) : (
+                <div className="price">${foundProduct.fullPrice}</div>
+              )
+            ) : null}
+          </div>
+
+          <div className="add-favourites-container">
+            <div className="add-button has-shadow-cursor">
+              <p className="button-text">Add to card</p>
+            </div>
+
+            <div className="favourites-button has-shadow-cursor">
               <img
-                src={`/${photo}`}
-                alt={`Product thumbnail ${index + 1}`}
-                onClick={() => setMainPhoto(photo)}
-                className="mini-img"
+                className="icon"
+                src="/img/icons/Heart.svg"
+                alt="favourites img"
               />
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="main-controls">
-        <div className="colors-id-box">
-          <div className="colors-box">
-            <p className="small-text-12-600">Available colors</p>
-
-            <div className="models-colors">
-              {foundItem?.colorsAvailable.map(color => {
-                const safeColor = getSafeColor(color);
-
-                return (
-                  <div
-                    key={color}
-                    className={cn('border-color', {
-                      'is-active': selectedColor === color,
-                    })}
-                    onClick={() => setSelectedColor(color)}
-                  >
-                    <div
-                      className="color"
-                      style={{ backgroundColor: safeColor }}
-                    ></div>
-                  </div>
-                );
-              })}
-            </div>
           </div>
 
-          <div className="id-box">
-            <p className="small-text-12">ID: {foundId}</p>
+          <div className="info">
+            {specs.map(({ name, value }) => (
+              <div className="spec-name-value-box" key={name}>
+                <div className="spec-name">{name}</div>
+                <div className="spec-value">{value}</div>
+              </div>
+            ))}
           </div>
-        </div>
-
-        <div className="select-capacity-container">
-          <div className="info-copacity-box">
-            <p className="small-text-12-600">Select capacity</p>
-
-            <div className="capacity-list">
-              {foundItem?.capacityAvailable.map(capacity => {
-                return (
-                  <div
-                    key={capacity}
-                    // className="capacity"
-
-                    className={cn('capacity', {
-                      'is-active': selectedCapacity === capacity,
-                    })}
-                    onClick={() => setSelectedCapacity(capacity)}
-                  >
-                    <p className="main-body-text-14">{capacity}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        <div className="price-container">
-          {foundProduct ? (
-            foundProduct.year < 2021 ? (
-              <>
-                <div className="price">{foundProduct.price}</div>
-                <div className="price old-price">{foundProduct.fullPrice}</div>
-              </>
-            ) : (
-              <div className="price">{foundProduct.fullPrice}</div>
-            )
-          ) : null}
         </div>
       </div>
 

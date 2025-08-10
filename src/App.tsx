@@ -15,6 +15,7 @@ import { ProductCategoryPage } from './components/ProductCategoryPage';
 import { ProductInfoPage } from './components/ProductInfoPage';
 
 import { PathProvider } from './components/contexts/PathContext';
+import { ProductNotFoundPage } from './components/ProductNotFoundPage/ProductNotFoundPage';
 
 // import { useLocation, useSearchParams } from 'react-router-dom';
 
@@ -30,8 +31,9 @@ export const App = () => {
 
   return (
     <PathProvider>
-      <div className="App">
+      <div className="app">
         <Header />
+
         <main className="main">
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -41,6 +43,8 @@ export const App = () => {
 
               <Route path=":itemId" element={<ProductInfoPage />} />
             </Route>
+
+            <Route path="/product-not-found" element={<ProductNotFoundPage />} />
           </Routes>
         </main>
 
