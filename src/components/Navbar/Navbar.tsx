@@ -246,8 +246,9 @@ const FullNavbar: React.FC = () => {
         <NavLink
           to="/favorites"
           className={({ isActive }) => classNames(
-            'bottom-button desktop', currentTheme,
+            'bottom-button desktop',
             { 'link-active has-background-grey-lighter': isActive },
+            currentTheme,
           )}
         >
           {emptyHeart}
@@ -287,21 +288,24 @@ const FullNavbar: React.FC = () => {
           </div>
         </div>
 
-        <div className={`navbar-searchbar ${searchbarOpen ? 'visible' : ''}`}
+        <div className={`navbar-searchbar ${currentTheme} ${searchbarOpen ? 'visible' : ''}`}
           ref={searchbarRef}
         >
-          <div className="navbar-item navbar-search">
+          <div className={`navbar-item navbar-search navbar-search--desktop ${currentTheme}`}>
             <input
               ref={searchInputRef}
               type="text"
               placeholder={t('navigation.search_placeholder')}
-              className='navigation-searchbar'
+              className={`navigation-searchbar ${currentTheme}`}
               value={query}
               onClick={(e) => e.stopPropagation()}
               onChange={e => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
             />
-            <button onClick={handleSearch}>🔍</button>
+            <button
+              onClick={handleSearch}
+              className={`navigation-searchglassicon ${currentTheme}`}
+            >{searchGlass}</button>
           </div>
         </div>
 

@@ -22,13 +22,13 @@ export const Favorites: React.FC = () => {
       <div className="fav--nav-legend">
         <Link
           to={'/'}
-          className='fav-homeIcon'
+          className={`fav-homeIcon ${currentTheme}`}
         >
           {homeIcon}
         </Link>
 
         <svg
-          className='arrow-right'
+          className={`arrow-right ${currentTheme} fav-arrowright`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="none"
@@ -39,16 +39,16 @@ export const Favorites: React.FC = () => {
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
 
-        <div className="fav--link-legend">
+        <div className={`fav--link-legend ${currentTheme}`}>
           {t('favorites.fav_title')}
         </div>
       </div>
 
-      <div className="custom_h1">
+      <div className={`custom_h1 ${currentTheme}`}>
         {t('favorites.fav_title')}
       </div>
 
-      <div className="fav--items-counter">
+      <div className={`fav--items-counter ${currentTheme}`}>
         {favsQuantity} {t('favorites.items')}
       </div>
 
@@ -56,7 +56,7 @@ export const Favorites: React.FC = () => {
         {favItems.map(item => (
           <div
             key={`${item.itemId}+`}
-            className={'rec__card fav_card'}
+            className={`rec__card fav_card ${currentTheme}`}
 
           >
             <Link
@@ -68,38 +68,38 @@ export const Favorites: React.FC = () => {
                 src={`../../../public/${item.image}`}
                 alt="here should be an image"
               />
-              <div className="rec__item-name">
+              <div className={`rec__item-name ${currentTheme}`}>
                 {item.name}
               </div>
             </Link>
-            <div className="rec__item-price">
+            <div className={`rec__item-price ${currentTheme}`}>
               {`$${item.price}  `}
             </div>
-            <div className="rec__specs">
-              <div className="rec__specs-spec">
+            <div className={`rec__specs ${currentTheme}`}>
+              <div className={`rec__specs-spec ${currentTheme}`}>
                 {t('specs.screen')}
-                <div className="rec__specs-value">{item.screen}</div>
+                <div className={`rec__specs-value ${currentTheme}`}>{item.screen}</div>
               </div>
-              <div className="rec__specs-spec">
+              <div className={`rec__specs-spec ${currentTheme}`}>
                 {t('specs.capacity')}
-                <div className="rec__specs-value">
+                <div className={`rec__specs-value ${currentTheme}`}>
                   {item.capacity.replace('GB', ' GB').replace('TB', ' TB')}
                 </div>
               </div>
-              <div className="rec__specs-spec">
+              <div className={`rec__specs-spec ${currentTheme}`}>
                 {t('specs.ram')}
-                <div className="rec__specs-value">
+                <div className={`rec__specs-value ${currentTheme}`}>
                   {item.ram.replace('GB', ' GB').replace('MB', ' MB')}
                 </div>
               </div>
             </div>
             <div className="rec__item-buttons fav__buttons">
-              <button className={`rec__item-to-cart ${isInCart(item?.id) ? 'in-cart' : ''}`}
+              <button className={`rec__item-to-cart ${currentTheme} ${isInCart(item?.id) ? 'in-cart' : ''}`}
                 onClick={() => isInCart(item?.id)
                   ? dispatch(removeFromCart(item?.id))
                   : dispatch(addToCart(item))
                 }>{`${isInCart(item?.id) ? `${t('btn.in_cart')}` : `${t('btn.add_to_cart')}`}`}</button>
-              <button className={`rec__item-to-fav ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
+              <button className={`rec__item-to-fav ${currentTheme} ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
                 onClick={() => isInFavorites(item?.id)
                   ? dispatch(removeFromFavorites(item?.id))
                   : dispatch(addToFavorites(item))

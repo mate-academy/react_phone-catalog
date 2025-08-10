@@ -50,6 +50,14 @@
     margin-right: 4px;
     flex-shrink: 0;
   }
+
+  &.theme1 {
+    color: $theme-dark-white;
+
+    & svg {
+      color: $theme-dark-white;
+    }
+  }
 }
 
 .ipage__nin {
@@ -57,6 +65,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: $color-secondary-grey;
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
 }
 
 .ipage__mnav {
@@ -69,6 +81,26 @@
     color: $color-icons;
     flex-shrink: 0;
   }
+
+  &.theme1 {
+    & svg {
+      color: $theme-dark-icons;
+    }
+  }
+}
+
+.ipage__navcat.ipage__navcat {
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+}
+
+.ipage__hmicn {
+  &.theme1 {
+    & svg {
+      color: $theme-dark-white;
+    }
+  }
 }
 
 .ipage__mtitle {
@@ -76,6 +108,10 @@
 
   @media (min-width: $screen-tablet) {
     @include font-h2;
+  }
+
+  &.theme1 {
+    color: $theme-dark-white;
   }
 }
 
@@ -155,9 +191,22 @@
     height: 100%; // to Have Fun => remove this
     aspect-ratio: 1 / 1;
     border: 1px solid $color-elements;
+    transition: border-color 0.3s ease-in-out;
+
+    &.theme1 {
+      border-color: $theme-dark-elements;
+
+      &:hover {
+        border-color: $theme-dark-secondary;
+      }
+    }
 
     &.currentImg {
       border: 1px solid $color-primary-black;
+
+      &.theme1 {
+        border-color: $theme-dark-white;
+      }
     }
 
     & img {
@@ -172,6 +221,10 @@
   @include font-small;
   color: $color-secondary-grey;
 
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
+
   &.avColors {
     margin-top: 16px;
   }
@@ -183,9 +236,22 @@
   border-radius: 50%;
   outline: 1px solid $color-elements;
   outline-offset: 2px;
+  transition: outline-color 0.3s ease-in-out;
+
+  &.theme1 {
+    outline-color: $theme-dark-elements;
+
+    &:hover {
+      outline-color: $theme-dark-secondary;
+    }
+  }
 
   &.non-linkable {
     outline: 1px solid $color-primary-black;
+
+    &.theme1 {
+      outline-color: $theme-dark-white;
+    }
   }
 }
 
@@ -206,11 +272,27 @@
       padding: 0 8px;
       border: 1px solid $color-icons;
       color: $color-primary-black;
+      transition: background-color 0.3s ease-in-out;
+
+      &.theme1 {
+        color: $theme-dark-white;
+        border-color: $theme-dark-icons;
+
+        &:hover {
+          background-color: $theme-dark-elements;
+        }
+      }
 
       &.non-linkable-color {
         background-color: $color-primary-black;
         border-color: $color-primary-black;
         color: $color-white;
+
+        &.theme1 {
+          background-color: $theme-dark-white;
+          color: $theme-dark-black;
+          border-color: $theme-dark-white;
+        }
       }
     }
   }
@@ -222,6 +304,10 @@
   width: 100%;
   background-color: $color-elements;
   margin: 27px auto 24px;
+
+  &.theme1 {
+    background-color: $theme-dark-elements;
+  }
 
   &.dvdr2 {
     margin: 24px auto 32px;
@@ -237,6 +323,20 @@
 
 .ipage__cur-pr {
   @include font-h2;
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
+}
+
+.ipage__2cartbtn.ipage__2cartbtn {
+  &.theme1 {
+    background-color: $theme-dark-accent;
+
+    &.in-cart {
+      background-color: $theme-dark-surface2;
+    }
+  }
 }
 
 .ipage__old-pr {
@@ -244,6 +344,10 @@
   color: $color-secondary-grey;
   @include font-h3;
   font-family: 'montRegular';
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
 }
 
 .ipage__specs {
@@ -254,6 +358,11 @@
 .ipage__mntitle {
   @include font-h3-mob;
   margin-bottom: 16px;
+
+  &.theme1 {
+    color: $theme-dark-white;
+    border-bottom-color: $theme-dark-elements;
+  }
 }
 
 .ipage__spcs-spc {
@@ -267,6 +376,10 @@
 
 .ipage__techspec {
   margin-bottom: 56px;
+
+  &.theme1 {
+    border-top-color: $theme-dark-elements;
+  }
 }
 
 .ipage_tecspecttl {
@@ -288,11 +401,19 @@
   @include font-h4-mob;
   margin-bottom: 16px;
   margin-top: 32px;
+
+  &.theme1 {
+    color: $theme-dark-white;
+  }
 }
 
 .ipage__mcrtxt {
   @include font-body;
   color: $color-secondary-grey;
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
 }
 
 .ipage__btmcnt {
@@ -301,5 +422,6 @@
     grid-template-columns: 560px 1fr;
     gap: 64px;
     margin-top: 80px;
+    margin-bottom: 80px;
   }
 }

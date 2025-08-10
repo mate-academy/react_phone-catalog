@@ -19,6 +19,7 @@ import { useTranslation } from 'react-i18next';
 import { Recommended } from '../Recommended/Recommended';
 import { arrowRight, emptyHeart, filledHeart, homeIcon } from '../../../public/img/icons/svg_icons';
 import productsJSON from '../../../public/api/products.json';
+import { useAppSelector } from '../../redux/store';
 
 export const ItemPage: React.FC = () => {
   const products = JSON.parse(JSON.stringify(productsJson));
@@ -37,6 +38,8 @@ export const ItemPage: React.FC = () => {
   const { t } = useTranslation();
   const [itemColor, setItemColor] = useState<string>('');
   const [itemMemory, setItemMemory] = useState<string>('');
+  const currentTheme = useAppSelector(
+    (state: { theme: { current: string }; }) => state.theme.current);
 
   const allColors = () => {
     let res = [];
@@ -141,19 +144,21 @@ export const ItemPage: React.FC = () => {
   return (
     <div className="itemBody" key={item?.id}>
 
-      <div className="ipage__mnav">
+      <div className={`ipage__mnav ${currentTheme}`}>
         <Link
           to={'/'}
+          className={`ipage__hmicn ${currentTheme}`}
         >
           {homeIcon}
         </Link>
         {arrowRight}
         <Link
           to={`/${topLink}`}
+          className={`ipage__navcat ${currentTheme}`}
         >{t(`navigation.${topLink}`)}
         </Link>
         {arrowRight}
-        <div className="ipage__nin">
+        <div className={`ipage__nin ${currentTheme}`}>
           {item?.name}
         </div>
       </div>
@@ -161,7 +166,7 @@ export const ItemPage: React.FC = () => {
       <br/>
       <a
         href="#"
-        className="ipage__back-link"
+        className={`ipage__back-link ${currentTheme}`}
         onClick={(e) => {
           e.preventDefault();
           navigate(-1);
@@ -170,7 +175,7 @@ export const ItemPage: React.FC = () => {
         {arrowRight}{t('cart.back')}
       </a>
       <br/>
-      <div className="ipage__mtitle">
+      <div className={`ipage__mtitle ${currentTheme}`}>
         {item?.name}
       </div>
 
@@ -191,7 +196,7 @@ export const ItemPage: React.FC = () => {
             {additionalInfo?.images.map((pic: string) => (
               <div
                 key={`${item.id}-miniimg-${pic}`}
-                className={`ipage__mnGC ${pic === mainImg ? 'currentImg' : ''}`}
+                className={`ipage__mnGC ${currentTheme} ${pic === mainImg ? 'currentImg' : ''}`}
                 onClick={() => setMainImg(pic)}
               >
                 <img
@@ -214,7 +219,7 @@ export const ItemPage: React.FC = () => {
                 return (
                   <div key={`${color}${item?.id}`}>
                     <div
-                      className="ipage__color1 non-linkable"
+                      className={`ipage__color1 non-linkable ${currentTheme}`}
                       title={color}
                       style={convertColor(color)}
                     ></div>
@@ -230,7 +235,7 @@ export const ItemPage: React.FC = () => {
                 >
                   <div key={`${color}${item?.id}`}>
                     <div
-                      className="ipage__color1"
+                      className={`ipage__color1 ${currentTheme}`}
                       title={color}
                       style={convertColor(color)}
                     ></div>
@@ -240,9 +245,9 @@ export const ItemPage: React.FC = () => {
             })}
           </div>
 
-          <div className="ipage__dvdr"></div>
+          <div className={`ipage__dvdr ${currentTheme}`}></div>
 
-          <div className="ipage__avcolttl">
+          <div className={`ipage__avcolttl ${currentTheme}`}>
             {t('specs.select')} {t('specs.capacity').toLocaleLowerCase()}:
           </div>
           <div className="ipage__avcolglry avcapglry">
@@ -251,7 +256,7 @@ export const ItemPage: React.FC = () => {
                 .toLowerCase()) {
                 return (
                   <div key={`${cap}++${item?.id}`}>
-                    <div key={`${cap}${item?.id}`} className='non-linkable-color ipage__icap'>{cap}</div>
+                    <div key={`${cap}${item?.id}`} className={`non-linkable-color ipage__icap ${currentTheme}`}>{cap}</div>
                   </div>
                 );
               }
@@ -261,7 +266,7 @@ export const ItemPage: React.FC = () => {
                   key={`${cap} ${item?.id}`}
                   to={`/${topLink}/${`${item?.itemId}`.replace(item.capacity.toLowerCase(), cap.toLowerCase())}`}
                   onClick={() => window.scrollTo(0, 0)}
-                  className='ipage__icap'
+                  className={`ipage__icap ${currentTheme}`}
                 >
                   {cap}
                 </Link>
@@ -271,24 +276,24 @@ export const ItemPage: React.FC = () => {
 
 
 
-          <div className="ipage__dvdr dvdr2"></div>
+          <div className={`ipage__dvdr dvdr2 ${currentTheme}`}></div>
 
           <div className="ipage__pr-cont">
-            <div className="ipage__cur-pr">
+            <div className={`ipage__cur-pr ${currentTheme}`}>
               ${additionalInfo?.priceDiscount}{'  '}
             </div>
-            <div className="ipage__old-pr">
+            <div className={`ipage__old-pr ${currentTheme}`}>
               ${additionalInfo?.priceRegular}
             </div>
           </div>
 
           <div className="rec__item-buttons">
-            <button className={`rec__item-to-cart ${isInCart(item?.id) ? 'in-cart' : ''}`}
+            <button className={`ipage__2cartbtn rec__item-to-cart ${currentTheme} ${isInCart(item?.id) ? 'in-cart' : ''}`}
               onClick={() => isInCart(item?.id)
                 ? dispatch(removeFromCart(item?.id))
                 : dispatch(addToCart(item))
               }>{`${isInCart(item?.id) ? `${t('btn.in_cart')}` : `${t('btn.add_to_cart')}`}`}</button>
-            <button className={`rec__item-to-fav ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
+            <button className={`rec__item-to-fav ${currentTheme} ${isInFavorites(item?.id) ? 'in-favorites' : ''}`}
               onClick={() => isInFavorites(item?.id)
                 ? dispatch(removeFromFavorites(item?.id))
                 : dispatch(addToFavorites(item))
@@ -300,27 +305,27 @@ export const ItemPage: React.FC = () => {
           </div>
 
           <div className="rec__specs ipage__specs">
-            <div className="rec__specs-spec">
+            <div className={`rec__specs-spec ${currentTheme}`}>
               {t('specs.screen')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.screen}
               </div>
             </div>
-            <div className="rec__specs-spec">
+            <div className={`rec__specs-spec ${currentTheme}`}>
               {t('specs.capacity')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.resolution}
               </div>
             </div>
-            <div className="rec__specs-spec">
+            <div className={`rec__specs-spec ${currentTheme}`}>
               {t('specs.cpu')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.processor}
               </div>
             </div>
-            <div className="rec__specs-spec">
+            <div className={`rec__specs-spec ${currentTheme}`}>
               {t('specs.ram')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.ram.replace('GB', ' GB')}
               </div>
             </div>
@@ -405,14 +410,14 @@ export const ItemPage: React.FC = () => {
       <div className="ipage__btmcnt">
 
         <div className="ipage__abt-wrpr">
-          <div className="ipage__mntitle ipage__abt">{t('specs.about')}</div>
+          <div className={`ipage__mntitle ipage__abt ${currentTheme}`}>{t('specs.about')}</div>
 
           {additionalInfo?.description.map((paragraph: any, ind: number) => (
             <div key={`${additionalInfo?.description}${ind}`}>
-              <div key={paragraph?.title} className='ipage__mcrttl'>
+              <div key={paragraph?.title} className={`ipage__mcrttl ${currentTheme}`}>
                 {paragraph?.title}
               </div>
-              <div className='ipage__mcrtxt'>
+              <div className={`ipage__mcrtxt ${currentTheme}`}>
                 {paragraph?.text}
               </div><br/>
             </div>
@@ -420,55 +425,55 @@ export const ItemPage: React.FC = () => {
         </div>
 
         <div className="ipage__techspecwrpr">
-          <div className="ipage__mntitle ipage_tecspecttl">
+          <div className={`ipage__mntitle ipage_tecspecttl ${currentTheme}`}>
             {t('specs.title')}
           </div>
-          <div className="rec__specs ipage__techspec">
-            <div className="rec__specs-spec ipage__spcs-spc">
+          <div className={`rec__specs ipage__techspec ${currentTheme}`}>
+            <div className={`rec__specs-spec ipage__spcs-spc ${currentTheme}`}>
               {t('specs.screen')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.screen}
               </div>
             </div>
-            <div className="rec__specs-spec ipage__spcs-spc">
+            <div className={`rec__specs-spec ipage__spcs-spc ${currentTheme}`}>
               {t('specs.resolution')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.resolution}
               </div>
             </div>
-            <div className="rec__specs-spec ipage__spcs-spc">
+            <div className={`rec__specs-spec ipage__spcs-spc ${currentTheme}`}>
               {t('specs.cpu')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.processor}
               </div>
             </div>
-            <div className="rec__specs-spec ipage__spcs-spc">
+            <div className={`rec__specs-spec ipage__spcs-spc ${currentTheme}`}>
               {t('specs.ram')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.ram.replace('GB', ' GB')}
               </div>
             </div>
-            <div className="rec__specs-spec ipage__spcs-spc">
+            <div className={`rec__specs-spec ipage__spcs-spc ${currentTheme}`}>
               {t('specs.built_memory')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.capacity.replace('GB', ' GB')}
               </div>
             </div>
-            <div className="rec__specs-spec ipage__spcs-spc">
+            <div className={`rec__specs-spec ipage__spcs-spc ${currentTheme}`}>
               {t('specs.camera')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.camera || 'n / a'}
               </div>
             </div>
-            <div className="rec__specs-spec ipage__spcs-spc">
+            <div className={`rec__specs-spec ipage__spcs-spc ${currentTheme}`}>
               {t('specs.zoom')}
-              <div className="rec__specs-value">
+              <div className={`rec__specs-value ${currentTheme}`}>
                 {additionalInfo?.zoom || 'n / a'}
               </div>
             </div>
-            <div className="rec__specs-spec ipage__spcs-spc">
+            <div className={`rec__specs-spec ipage__spcs-spc ${currentTheme}`}>
               {t('specs.cell')}
-              <div className="rec__specs-value ipage__cells">
+              <div className={`rec__specs-value ipage__cells ${currentTheme}`}>
                 {additionalInfo?.cell.map((cel: string) => (
                   `${cel}`
                 )).join(', ')}
@@ -480,7 +485,7 @@ export const ItemPage: React.FC = () => {
 
 
 
-
+      
       <Recommended title={`may_like ${item?.name}`} />
 
     </div>

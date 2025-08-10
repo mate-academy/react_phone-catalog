@@ -141,6 +141,10 @@ body.sidebar-open {
   &.link-active {
     border-bottom: none;
     box-shadow: inset 0 -4px 0 $color-primary-black;
+
+    &.theme1 {
+      box-shadow: inset 0 -4px 0 $theme-dark-white;
+    }
   }
 
   &.settingsIcon {
@@ -200,6 +204,44 @@ body.sidebar-open {
 
   &.visible {
     transform: translateY(0);
+  }
+
+  &.theme1 {
+    background-color: $theme-dark-black;
+  }
+}
+
+.navbar-search--desktop { // container for desk search
+  display: flex;
+  align-items: center;
+}
+
+.navigation-searchbar { // input field, naming is dumb
+  height: 40px;
+  font-size: 25px;
+
+  &.theme1 {
+    background-color: $theme-dark-black;
+    color: $theme-dark-white;
+    border-color: $theme-dark-elements;
+  }
+}
+
+.navigation-searchglassicon {
+  height: 40px;
+  width: 40px;
+
+  &.theme1 {
+    background-color: $theme-dark-black;
+
+    & svg {
+      color: $theme-dark-white;
+    }
+  }
+
+  & svg {
+    height: 25px;
+    width: 25px;
   }
 }
 

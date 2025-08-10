@@ -27,7 +27,7 @@ export const Cart: React.FC = () => {
 
   return (
     <div className={`cart__container ${currentTheme}`}>
-      <div className="cart__nav-back">
+      <div className={`cart__nav-back ${currentTheme}`}>
         <a
           href="#"
           className="cart__back-link-container"
@@ -48,13 +48,13 @@ export const Cart: React.FC = () => {
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
 
-          <div className="cart__link-legend">
+          <div className={`cart__link-legend ${currentTheme}`}>
             {t('cart.back')}
           </div>
         </a>
       </div>
 
-      <div className="cart__h1">
+      <div className={`cart__h1 ${currentTheme}`}>
         {t('cart.cart')}
       </div>
 
@@ -75,7 +75,7 @@ export const Cart: React.FC = () => {
                   />
                 </div>
 
-                <div className="cart__name-wrap">
+                <div className={`cart__name-wrap ${currentTheme}`}>
                   {item.name}
                 </div>
 
@@ -91,7 +91,7 @@ export const Cart: React.FC = () => {
                     }
                     disabled={item.quantity === 1}
                   >{minusIcon}</button>
-                  <div className="cart__item-qty">
+                  <div className={`cart__item-qty ${currentTheme}`}>
                     {`${item.quantity}`}
                   </div>
 
@@ -102,7 +102,7 @@ export const Cart: React.FC = () => {
                       ))
                     }>{plusIcon}</button>
                 </div>
-                <div className="cart__price-wrap">
+                <div className={`cart__price-wrap ${currentTheme}`}>
                   {` $${item.price * item.quantity} `}
                 </div>
               </div>
@@ -110,20 +110,20 @@ export const Cart: React.FC = () => {
           ))}
 
         </div>
-        <div className="cart__total-wrap">
+        <div className={`cart__total-wrap ${currentTheme}`}>
           <div className="cart__total-numbers">
-            <div className="cart__total-numbers-price">
+            <div className={`cart__total-numbers-price ${currentTheme}`}>
               {`$${totalPrice}`}
             </div>
             <div className="cart__total-numbers-qty">
               {`${t('cart.total_for')} ${totalQuantity} ${t('favorites.items')}`}
             </div>
           </div>
-          <div className="cart__total-divider">
+          <div className={`cart__total-divider ${currentTheme}`}>
 
           </div>
           <div className="cart__total-checkout">
-            <button className="cart__total-check-button">
+            <button className={`cart__total-check-button ${currentTheme}`}>
               {t('btn.checkout')}
             </button>
           </div>

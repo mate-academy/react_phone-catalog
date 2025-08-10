@@ -5,9 +5,17 @@
   max-width: 1200px;
   margin: 0 auto;
 
-  & h1 {
-    @include font-h1-mob;
+  & .custom_h1 {
+    @include font-h1;
     color: $color-primary-black;
+
+    @media (max-width: 639px) {
+      @include font-h1-mob;
+    }
+
+    &.theme1 {
+      color: $theme-dark-white;
+    }
   }
 
   &.theme0 {
@@ -62,8 +70,20 @@
   margin: 0 8px;
 }
 
+.fav-arrowright {
+  &.theme1 {
+    color: $theme-dark-icons;
+  }
+}
+
 .fav-homeIcon svg {
   color: $color-primary-black;
+}
+
+.fav-homeIcon {
+  &.theme1 svg {
+    color: $theme-dark-white;
+  }
 }
 
 .fav--link-legend {
@@ -72,12 +92,20 @@
   color: $color-secondary-grey;
   line-height: 16px;
   text-transform: capitalize;
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
 }
 
 .fav--items-counter {
   @include font-body;
   color: $color-secondary-grey;
   margin-bottom: 32px;
+
+  &.theme1 {
+    color: $theme-dark-secondary;
+  }
 }
 
 .fav-itemCard {
