@@ -18,7 +18,7 @@ interface CartContextProps {
   setLovelyProducts: React.Dispatch<React.SetStateAction<Products[]>>;
   addToCart: (product: Products) => void;
   addProductToLovely: (product: Products) => void;
-  products: Products[];
+  products: Products[] | [];
 }
 
 export const CartContext = createContext<CartContextProps | undefined>(
@@ -47,10 +47,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     [],
   );
 
-  const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<Products[] | []>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => res.json())
       .then(data => setProducts(data));
   }, []);

@@ -87,7 +87,7 @@ const Cart = () => {
           {cartItems.length === 0 ? (
             <>
               <h3>Cart list is empty</h3>
-              <img src="public/img/cart-is-empty.png" alt="epty bag" />
+              <img src="./img/cart-is-empty.png" alt="epty bag" />
             </>
           ) : (
             <div className={cartStyle['cart__content-wrapper']}>

@@ -26,7 +26,7 @@ const ProductDetailsPage: React.FC = () => {
   const typeOfGadget = location.pathname.split('/')[1];
 
   useEffect(() => {
-    fetch(`public/api/${typeOfGadget}.json`)
+    fetch(`./api/${typeOfGadget}.json`)
       .then(res => res.json())
       .then((data: Iphones[]) => {
         const foundProduct = data.find((item: Iphones) => item.id === gadget);
@@ -89,7 +89,7 @@ const ProductDetailsPage: React.FC = () => {
           <div className={productStyles['no-product']}>
             <h1 style={{ marginTop: '120px' }}>Proudct not found</h1>
             <img
-              src="public/img/product-not-found.png"
+              src="./img/product-not-found.png"
               alt=""
               className={productStyles['no-product__image']}
             />
@@ -259,26 +259,30 @@ const ProductDetailsPage: React.FC = () => {
                         (item: Products) => item.itemId === viewProduct.id,
                       ),
                   })}
-                  onClick={() =>
-                    addToCart(
-                      products.find(
-                        (it: Products) => it.itemId === viewProduct?.id,
-                      ),
-                    )
-                  }
+                  onClick={() => {
+                    const goodAdded = products?.find(
+                      it => it.itemId === viewProduct?.id,
+                    );
+
+                    if (goodAdded) {
+                      addToCart(goodAdded);
+                    }
+                  }}
                 >
                   {cartItems.some(item => item.itemId === viewProduct.id)
                     ? 'Added to cart'
                     : 'Add to cart'}
                 </button>
                 <button
-                  onClick={() =>
-                    addProductToLovely(
-                      products.find(
-                        (it: Products) => it.itemId === viewProduct?.id,
-                      ),
-                    )
-                  }
+                  onClick={() => {
+                    const goodAdded = products?.find(
+                      it => it.itemId === viewProduct?.id,
+                    );
+
+                    if (goodAdded) {
+                      addProductToLovely(goodAdded);
+                    }
+                  }}
                   className={cn(
                     productStyles['product-page__button-favorites'],
                     {

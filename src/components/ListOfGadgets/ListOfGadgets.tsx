@@ -28,7 +28,7 @@ const ListOfGadgets: React.FC<Props> = ({
   const perItems = searchParams.get('quantity') || 16;
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => res.json())
       .then(data => {
         const filtered = data.filter(

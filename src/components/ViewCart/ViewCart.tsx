@@ -13,6 +13,7 @@ const ViewCart: React.FC<Props> = ({ gadget, gadgets }) => {
   return (
     <>
       <Link
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         to={`/${gadgets}/${gadget.itemId}`}
         key={gadget.id}
         className={viewCartStyle.list__reference}

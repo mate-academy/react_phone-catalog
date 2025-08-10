@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <div className={footerStyles.footer__navigation__wrapper}>
           <Link to="/" className={footerStyles.footer__logo}>
             <img
-              src="public\img\gadgets-logo.png"
+              src="./img/gadgets-logo.png"
               alt="img-logo"
               className={footerStyles['footer__logo-img']}
             />

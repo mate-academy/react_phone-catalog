@@ -10,7 +10,7 @@
 }
 
 .icon--menu {
-  background-image: url("/img/burger-menu.svg");
+  background-image: url("./img/burger-menu.svg");
   background-size: cover;
   margin: 16px;
 
@@ -36,7 +36,7 @@
 }
 
 .icon--close {
-  background-image: url("public/img/icon-close.png");
+  background-image: url("./img/icon-close.png");
   background-size: cover;
   margin: 16px;
 }
@@ -46,7 +46,7 @@
   height: 0;
 
   @include on-tablet {
-    background-image: url("public/img/favourites-(heart-like).svg");
+    background-image: url("./img/favourites-(heart-like).svg");
     width: 16px;
     height: 16px;
     background-size: cover;
@@ -73,7 +73,7 @@
   height: 0;
 
   @include on-tablet {
-    background-image: url("public/img/shopping-bag-cart.svg");
+    background-image: url("./img/shopping-bag-cart.svg");
     width: 16px;
     height: 16px;
     background-size: cover;

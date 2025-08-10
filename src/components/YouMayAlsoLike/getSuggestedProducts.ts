@@ -28,7 +28,7 @@ const getSuggestedProducts = (category: string) => {
   const [typeOfGadgets, setTypeOfGadgets] = useState<Products[] | []>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => res.json())
       .then(data => {
         const filtered = data.filter(

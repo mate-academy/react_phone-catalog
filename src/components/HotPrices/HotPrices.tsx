@@ -11,7 +11,7 @@ const HotPrices = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => res.json())
       .then(data => setGadgets(data))
       .finally(() => {
