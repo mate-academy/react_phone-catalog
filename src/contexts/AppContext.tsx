@@ -31,6 +31,8 @@ type AppContextType = {
   refSliderWidth: React.MutableRefObject<HTMLDivElement | null>;
   searchParams: URLSearchParams;
   setSearchParams: (params: URLSearchParams) => void;
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
 export const AppContext = createContext<AppContextType>({
@@ -48,6 +50,8 @@ export const AppContext = createContext<AppContextType>({
   refSliderWidth: { current: null },
   searchParams: new URLSearchParams(),
   setSearchParams: () => { },
+  isLoading: false,
+  setIsLoading: () => { },
 });
 
 type Props = {
@@ -66,13 +70,20 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const refSliderWidth = useRef<HTMLDivElement | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Card[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    getProducts().then((data) => {
-      setProducts(data);
-    }).catch((err) => {
-      console.log(err);
-    });
+    setIsLoading(true);
+    getProducts()
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((err) => {
+        throw new Error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   function toggleFavouriteCard(cardId: number) {
@@ -120,6 +131,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     refSliderWidth,
     searchParams,
     setSearchParams,
+    isLoading,
+    setIsLoading,
   }
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

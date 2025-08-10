@@ -11,6 +11,10 @@
 
   box-sizing: border-box;
 
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
+  }
+
   @include on-tablet {
     flex-direction: row;
     width: 592px;
@@ -20,6 +24,51 @@
 
   @include on-desktop {
     width: 752px;
+  }
+}
+
+.isLoading {
+  .image,
+  .name,
+  .price {
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    animation: 1.5s shine linear infinite;
+    background-size: 200% 100%;
+    border-radius: 5%;
+  }
+
+  .close {
+    background-image: none;
+  }
+
+  .price,
+  .priceTitle,
+  .counter {
+    min-height: 20px;
+    min-width: 50px;
+  }
+
+  .price {
+    margin: 10px 25px;
+  }
+
+  .name {
+    min-height: 25px;
+    min-width: 150px;
+
+    @include on-tablet {
+      min-width: 230px;
+    }
+  }
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
   }
 }
 

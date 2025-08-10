@@ -27,7 +27,7 @@ export function getPhones(): Promise<ProductDetails[]> {
   } else if (phones) {
     data = [phones];
   }
-  return simulateAsync(data, 3000);
+  return simulateAsync(data, 1000);
 }
 
 export function getTablets(): Promise<ProductDetails[]> {
@@ -37,7 +37,7 @@ export function getTablets(): Promise<ProductDetails[]> {
   } else if (tablets) {
     data = [tablets];
   }
-  return simulateAsync(data, 3000);
+  return simulateAsync(data, 1000);
 }
 
 export function getAccessories(): Promise<AccessoryDetals[]> {
@@ -47,7 +47,7 @@ export function getAccessories(): Promise<AccessoryDetals[]> {
   } else if (accessories) {
     data = [accessories];
   }
-  return simulateAsync(data, 3000);
+  return simulateAsync(data, 1000);
 }
 
 export async function findProduct(key: string, value: string | number) {

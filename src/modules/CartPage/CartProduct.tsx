@@ -83,14 +83,14 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
       </div>
     </div>
   ) : (
-    <div className={styles.product}>
+    <div className={`${styles.product} ${styles.isLoading}`}>
       <div className={styles.details}>
-        <button
+        <div
           className={`
             ${styles.img} 
             ${styles.close}
           `}
-        ></button>
+        ></div>
         <div className={styles.wrapper}>
           <div className={styles.image}></div>
         </div>
@@ -101,24 +101,27 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
 
       <div className={styles.price}>
         <div className={styles.counter}>
-          <button
+          {/* <div
             className={`
               ${styles.counterButton} 
-              ${counterValue === 1 && styles.disabled}
+              ${styles.disabled}
             `}
           >
             <div
               className={styles.img}
             ></div>
-          </button>
+          </div> */}
 
           <div className={styles.value}></div>
 
-          <button
-            className={styles.counterButton}
+          {/* <div
+            className={`
+              ${styles.counterButton} 
+              ${styles.disabled}
+            `}
           >
             <div className={styles.img}></div>
-          </button>
+          </div> */}
         </div>
         <div className={styles.priceTitle}></div>
       </div>

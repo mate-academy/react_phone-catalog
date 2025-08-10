@@ -19,7 +19,7 @@ export const Root = () => (
     <AppProvider>
       <Routes>
         <Route element={<App />}>
-          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="home" element={<Navigate to="/" replace />} />
           <Route index element={<HomePage />} />
           <Route path="phones" element={<ProductsPage type="phones" />} />
           <Route path="phones/:productId" element={<ProductDetailsPage />} />

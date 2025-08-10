@@ -5,7 +5,7 @@ import { CartProduct } from './CartProduct';
 import { ModalWindow } from './ModalWindow';
 
 export const CartPage: React.FC = () => {
-  const { cartProductsIds, products } = useAppContext();
+  const { cartProductsIds, products, isLoading } = useAppContext();
 
   function countTotal() {
     let sum = 0;
@@ -46,6 +46,10 @@ export const CartPage: React.FC = () => {
       document.body.style.overflow = 'auto';
     }
   }, [isModalOpen]);
+
+  useEffect(() => {
+    setTotalSum(countTotal());
+  }, [isLoading]);
 
   return (
     <main

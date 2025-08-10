@@ -1,17 +1,20 @@
-import {
-  getAccessories,
-  getPhones,
-  getTablets,
-} from '../../modules/shared/services/productService';
+import { Link } from 'react-router-dom';
+import { useAppContext } from '../../contexts/AppContext';
+
 import styles from './Categories.module.scss';
 
 export const Categories: React.FC = () => {
+  const { products } = useAppContext();
+
   return (
     <section className={styles.section}>
       <h2>Shop by categoty</h2>
 
       <div className={styles.wrapper}>
-        <article className={`${styles.article}`}>
+        <Link
+          to="/phones"
+          className={`${styles.category}`}
+        >
           <div className={`${styles.banner} ${styles.bannerPhones}`}>
             {/* <img
               className={`${styles.img} ${styles.imgPhones}`}
@@ -22,11 +25,14 @@ export const Categories: React.FC = () => {
 
           <div className={styles.details}>
             <h4 className={styles.title}>Mobile phones</h4>
-            <span className="bodyText">{getPhones().length} models</span>
+            <span className="bodyText">{products.filter(product => product.category === 'phones').length} models</span>
           </div>
-        </article>
+        </Link>
 
-        <article className={`${styles.article}`}>
+        <Link
+          to="/tablets"
+          className={`${styles.category}`}
+        >
           <div className={`${styles.banner} ${styles.bannerTablets}`}>
             {/* <img
               className={`${styles.img} ${styles.imgTablets}`}
@@ -37,11 +43,14 @@ export const Categories: React.FC = () => {
 
           <div className={styles.details}>
             <h4 className={styles.title}>Tablets</h4>
-            <span className="bodyText">{getTablets().length} models</span>
+            <span className="bodyText">{products.filter(product => product.category === 'tablets').length} models</span>
           </div>
-        </article>
+        </Link>
 
-        <article className={`${styles.article}`}>
+        <Link
+          to="/accessories"
+          className={`${styles.category}`}
+        >
           <div className={`${styles.banner} ${styles.bannerAccessories}`}>
             {/* <img
               className={`${styles.img} ${styles.imgAccessories}`}
@@ -52,9 +61,9 @@ export const Categories: React.FC = () => {
 
           <div className={styles.details}>
             <h4 className={styles.title}>Accessories</h4>
-            <span className="bodyText">{getAccessories().length} models</span>
+            <span className="bodyText">{products.filter(product => product.category === 'accessories').length} models</span>
           </div>
-        </article>
+        </Link>
       </div>
     </section>
   );

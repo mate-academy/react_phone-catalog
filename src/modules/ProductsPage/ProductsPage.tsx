@@ -14,7 +14,7 @@ type Props = {
 
 export const ProductsPage: React.FC<Props> = ({ type }) => {
   const [currentPages, setCurrentPages] = useState<number[]>([]);
-  const { searchParams, products } = useAppContext();
+  const { searchParams, products, isLoading } = useAppContext();
   const sortDropDownRef = useRef<HTMLDivElement>(null);
   const perPageDropDownRef = useRef<HTMLDivElement>(null);
 
@@ -43,6 +43,8 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   };
 
   const [sortType, setSortType] = useState<ProductsSortType>(getSortTypeFromParams());
+  const [currentPage, setCurrentPage] = useState<number>(getPageFromParams());
+  const [perPageValue, setPerPageValue] = useState<ItemsPerPage>(getPerPageFromParams());
 
   function sorter(a: Card, b: Card) {
     switch (sortType) {
@@ -66,9 +68,6 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
       .filter(product => product.category === type)
       .sort(sorter)
   );
-
-  const [currentPage, setCurrentPage] = useState<number>(getPageFromParams());
-  const [perPageValue, setPerPageValue] = useState<ItemsPerPage>(getPerPageFromParams());
 
   const [isPerPageDropdownOpen, setIsPerPageDropdownOpen] = useState<boolean>(false);
   const [isSortTypeDropdownOpen, setIsSortTypeDropdownOpen] = useState<boolean>(false);
@@ -184,13 +183,17 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   }
 
   useEffect(() => {
-    if (true) {
+    if (!isLoading) {
       const filtered = products
         .filter(product => product.category === type)
         .sort(sorter);
 
       setCurrentProducts(filtered);
       setCurrentPage(1);
+      setSortType('age');
+      setPerPageValue('All');
+      setIsPerPageDropdownOpen(false);
+      setIsSortTypeDropdownOpen(false);
     }
   }, [type, products]);
 
@@ -301,9 +304,9 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
       <ProductsList
         products={
           perPageValue === 'All'
-            ? currentProducts.length > 0
-              ? currentProducts
-              : Array(15).fill(undefined)
+            ? isLoading
+              ? Array(8).fill(undefined)
+              : currentProducts
             : currentProducts.slice(
               (currentPage - 1) * Number(perPageValue),
               currentPage * Number(perPageValue)

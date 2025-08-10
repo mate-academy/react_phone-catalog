@@ -96,7 +96,7 @@ export const Card: React.FC<Props> = ({ card }) => {
         </div>
 
         <div className={styles.about}>
-          <p className={`bodyText ${styles.name}`}>
+          <p className={styles.name}>
           </p>
           <div className={styles.price}>
           </div>
