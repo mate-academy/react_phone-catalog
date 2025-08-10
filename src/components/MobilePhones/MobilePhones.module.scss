@@ -37,7 +37,7 @@ option::checkmark {
   }
 
   &__go-home {
-    background-image: url('../img/home.svg');
+    background-image: url('./img/home.svg');
     display: block;
     background-position: center;
     margin-right: 8px;
@@ -46,7 +46,7 @@ option::checkmark {
   }
 
   &__direction {
-    background-image: url('../img/chevron-arrow-right.svg');
+    background-image: url('./img/chevron-arrow-right.svg');
     background-position: center;
     display: block;
     width: 16px;
@@ -140,7 +140,7 @@ option::checkmark {
   &__items-options {
     &::picker-icon{
       color:$NoneBackground;
-      background-image: url("../img/chevron-(arrow-down).svg");
+      background-image: url("./img/chevron-(arrow-down).svg");
       background-repeat: no-repeat;
       background-size: cover;
       width: 16px;

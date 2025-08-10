@@ -89,7 +89,7 @@ const ProductDetailsPage: React.FC = () => {
           <div className={productStyles['no-product']}>
             <h1 style={{ marginTop: '120px' }}>Proudct not found</h1>
             <img
-              src="../img/product-not-found.png"
+              src="./img/product-not-found.png"
               alt=""
               className={productStyles['no-product__image']}
             />

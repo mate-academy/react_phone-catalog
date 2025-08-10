@@ -55,7 +55,7 @@
   }
 
   &__arrow-left {
-    background-image: url('../img/chevron-arrow_left.svg');
+    background-image: url('./img/chevron-arrow_left.svg');
     display: block;
     width: 16px;
     height: 16px;
@@ -97,7 +97,7 @@
   }
 
   &__icon-close {
-    background-image: url('../img/close.svg');
+    background-image: url('./img/close.svg');
     background-position: center;
     background-color: $White;
     border: none;
@@ -147,11 +147,11 @@
   }
 
   &__button-add {
-    background-image: url('../img/plus.svg');
+    background-image: url('./img/plus.svg');
   }
 
   &__button-get-out {
-    background-image: url('../img/minus.svg');
+    background-image: url('./img/minus.svg');
   }
 
   &__single-price {

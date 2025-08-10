@@ -21,7 +21,7 @@ const HeaderLogoMenu: React.FC = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             <img
-              src="../img/gadgets-logo.png"
+              src="./img/gadgets-logo.png"
               alt="img-logo"
               className={topBatStyles['top-bar__logo-img']}
             />
