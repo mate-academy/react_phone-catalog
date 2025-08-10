@@ -1,0 +1,35 @@
+import { ProductType } from './phones';
+import { Product } from './Product';
+
+export type ContextType = {
+  phones: ProductType[];
+  setPhones: (phones: ProductType[]) => void;
+  tablets: ProductType[];
+  setTablets: (tablets: ProductType[]) => void;
+  accessories: ProductType[];
+  setAccessories: (accessories: ProductType[]) => void;
+  products: Product[];
+  setProducts: (products: Product[]) => void;
+  slidePages: number;
+  slideDots: number;
+  setSlideDots: (slideDots: number) => void;
+  setSlidePages: (slidePages: number) => void;
+  pageNumber: number;
+  setPageNumber: (pageNumber: number) => void;
+  favouriteItems: Product[];
+  setFavouriteItems: (favouriteItems: Product[]) => void;
+  addedItems: Product[];
+  setAddedItems: (addedItems: Product[]) => void;
+  totalPrice: number;
+  setTotalPrice: (totalPrice: number) => void;
+  totalModels: number;
+  setTotalModels: (totalModels: number) => void;
+  visibleItems: Product[];
+  setVisibleItems: (visibleItems: Product[]) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
+  themeSwitcher: boolean;
+  setThemeSwitcher: (themeSwitcher: boolean) => void;
+  error: boolean;
+  setError: (error: boolean) => void;
+};

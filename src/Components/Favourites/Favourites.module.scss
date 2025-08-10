@@ -1,0 +1,129 @@
+@import '../styles/main';
+
+  .emptycard {
+    background-color: var(--favourite-background);
+    height: 80vh;
+    &image {
+    background-image: url('../../img/product-not-found.png');
+    background-repeat: no-repeat;
+    background-size: 100% 400px;
+    background-position: 50%;
+    height: 100%;
+    width: 100%;
+    &ONDARK {
+      background-color: rgb(28, 27, 27);
+      padding-top: 100px;
+    background-image: url('../../../public/img/product-not-found-ondark.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100% 400px;
+    height: 100%;
+    width: 100%;
+    }
+    }
+
+    &title {
+      background-color: var(--favourite-background);
+      color: var(--primary-font-color);
+font-family: Mont-bold, sans-serif;
+font-size: 48px;
+font-weight: 800;
+line-height: 110px;
+height: 110px;
+letter-spacing: -0.01em;
+
+    }
+  }
+
+  .favourites {
+    background-color: var(--background-color);
+  }
+
+  .breadcrumbs {
+    display: flex;
+    margin-left: 16px;
+    padding-top: 25px;
+    &__home {
+      &ONDARK {
+        background-image: url('../../img/Home-white.svg');
+      background-repeat: no-repeat;
+      background-position: 0% 1%;
+      background-size: 16px 16px;
+      width: 26px;
+      height: 32px;
+      transform: scale(1);
+      transition: 0.3s ease-in transform;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.3s ease-in transform;
+      }
+      }
+
+      background-image: url('../../img/Home.svg');
+      background-repeat: no-repeat;
+      background-position: 0% 1%;
+      background-size: 16px 16px;
+      width: 26px;
+      height: 32px;
+      transform: scale(1);
+      transition: 0.3s ease-in transform;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.3s ease-in transform;
+      }
+    }
+   &__text {
+    color: var(--primary-font-color);
+    margin-top: 2px;
+    font-family: Mont,sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: left;
+    transform: scale(1);
+    transition: 0.3s ease-in transform;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease-in transform;
+      color: var(--breadcrumbs-hover);
+    }
+   }
+  }
+
+  .title {
+    color: var(--primary-font-color);
+font-family: Mont-bold, sans-serif;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+letter-spacing: -0.01em;
+text-align: left;
+margin-left: 16px;
+  }
+
+  .amountofitems {
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: left;
+color:  var(--secondary-font-color);
+margin-left: 16px;
+  }
+
+  .content {
+    display: flex;
+    flex-flow: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 40px;
+    padding-bottom: 40px;
+
+    @include on-desktop {
+      width: 1200px;
+      margin: 50px auto 0;
+    }
+    }

@@ -1,0 +1,256 @@
+@font-face {
+  font-family: Mont-normal;
+  src: url('../../../public//fonts/Mont-SemiBold.otf');
+}
+
+@font-face {
+  font-family: Mont-bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+@import '../styles/main';
+
+.productcard {
+  border: 1px solid #B4BDC3;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 212px;
+  border-radius: 8px;
+  background-color: var(--background-color);
+
+  @include on-tablet {
+    width: 230px;
+  }
+
+  @include on-desktop {
+    width: 278px;
+  }
+}
+
+  .container {
+    margin-top: 20px;
+  }
+
+  .image {
+    margin-top: 10px;
+    height: 148px;
+    width: 129px;
+    transform: scale(1);
+    transition: 0.3s ease transform;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease transform;
+    }
+    &link {
+      display: flex;
+      justify-content: center;
+    }
+
+    @include on-tablet {
+      margin: 5px 41px 0;
+    }
+
+    @include on-desktop {
+      width: 158px;
+      height: 196px;
+      margin: 0 30px;
+    }
+  }
+
+  .name {
+    color: var(--primary-font-color);
+    height: 42px;
+font-family: Mont-normal, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: center;
+margin: 0 32px;
+
+@include on-tablet {
+  margin: 0 32px;
+}
+
+@include on-desktop {
+  margin: 0 32px;
+}
+  }
+
+  .prices {
+    display: flex;
+  }
+
+  .price {
+    color: var(--primary-font-color);
+font-family: Mont-bold, sans-serif;
+font-size: 22px;
+font-weight: 800;
+line-height: 30.8px;
+text-align: left;
+margin: 0 5px 0 40px;
+
+@include on-tablet {
+  margin-top: 10px;
+}
+
+@include on-desktop {
+  margin-left: 40px;
+}
+
+  }
+
+  .fullprice {
+    color: #89939A;
+font-family: Mont, sans-serif;
+font-size: 22px;
+font-weight: 800;
+line-height: 30.8px;
+text-align: left;
+margin: 0;
+
+@include on-tablet {
+  margin-top: 10px;
+}
+  }
+
+  .pricediscount {
+    color: var(--primary-font-color);
+    font-family: Mont-bold, sans-serif;
+font-size: 22px;
+font-weight: 800;
+line-height: 30.8px;
+text-align: left;
+  }
+
+  .line {
+    height: 0;
+    border: 1px solid #E2E6E9;
+}
+
+.description {
+  color: var(--primary-font-color);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.data {
+  color: var(--primary-font-color);
+  display: flex;
+  justify-content: space-between;
+
+  @include on-tablet {
+    margin-top: 10px;
+  }
+
+  @include on-desktop {
+    margin: 0;
+  }
+}
+
+.title {
+  margin-left: 40px;
+font-family: Mont, sans-serif;
+font-size: 12px;
+line-height: 15.34px;
+text-align: left;
+color:  var(--secondary-font-color);
+}
+
+.value {
+  margin-right: 40px;
+  font-family: Mont-normal, sans-serif;
+font-size: 12px;
+line-height: 15.34px;
+text-align: right;
+
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  gap: 4px;
+  margin-bottom: 10px;
+
+
+  @include on-tablet {
+    margin: 10px 0;
+  }
+
+}
+
+.addingbutton {
+  width: 158px;
+  height: 40px;
+border-radius: 8px;
+border: 0;
+background-color: #216CFF;
+color: white;
+font-family: Mont-normal, sans-serif;
+font-size: 10px;
+line-height: 21px;
+text-align: center;
+
+&isactive {
+  background-color: var(--active-button);
+  color: var(--text-active-button);
+  border: 1px solid var#216CFF;
+}
+&:hover {
+  background-color: var(--active-button);
+  color: var(--text-active-button);
+  border: 3px solid #216CFF;
+}
+
+}
+
+.heart {
+  width: 40px;
+height: 40px;
+border-radius: 48px;
+background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
+background-repeat: no-repeat;
+background-position: center;
+background-color: white !important;
+border: 1px solid #B4BDC3;
+&:hover {
+  background-image: url('../../img/Add\ to\ favorites-hover.svg');
+}
+&isactive {
+  width: 40px;
+height: 40px;
+border-radius: 100%;
+border: 1px solid #E2E6E9;
+background-repeat: no-repeat;
+background-position: center;
+background-color: white;
+  background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
+}
+&ONDARK {
+  width: 40px;
+height: 40px;
+border-radius: 48px;
+background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
+background-repeat: no-repeat;
+background-position: center;
+background-color: black !important;
+border: 1px solid #B4BDC3;
+&ISACTIVE {
+  width: 40px;
+  height: 40px;
+  border-radius: 48px;
+  background-image: url('../../img/favourites-active-on-dark.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #E2E6E9 !important;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+}
+&:hover {
+  background-image: url('../../img/favourites-hover-black.svg');
+}
+}
+  }
+
