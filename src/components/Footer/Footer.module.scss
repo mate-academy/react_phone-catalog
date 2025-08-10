@@ -2,10 +2,10 @@
 
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .footer__wrapper {
   border-top: 1px solid $Elements;
@@ -15,7 +15,7 @@
   margin-top: 64px;
   margin-bottom: 0;
 
-  @include onTablet {
+  @include on-tablet {
     margin-top: 80px;
   }
 }
@@ -30,15 +30,15 @@
   letter-spacing: 0%;
   line-height: 100%;
   padding-block: 32px;
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 
-  @include onTablet {
+  @include on-tablet {
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
   }
 
-  @include onBigScren {
+  @include on-big-screen {
     width: 1136px;
     margin-inline: auto;
   }
@@ -56,12 +56,12 @@
     gap: 16px;
     padding-inline-start: 0;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       flex-direction: row;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       padding-inline-start: 48px;
     }
   }
@@ -72,7 +72,7 @@
   }
 
   &__link {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 12px;
     line-height: 11px;
@@ -90,7 +90,7 @@
     align-items: center;
     margin: auto;
 
-    @include onTablet {
+    @include on-tablet {
       margin: 0;
     }
   }

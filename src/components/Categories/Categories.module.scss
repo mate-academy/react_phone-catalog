@@ -2,46 +2,39 @@
 
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .categories {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   margin-inline: 16px;
-  // @include onTablet {
-  //   margin-inline: 24px;
-  // }
-
-  // @include onBigScren {
-  //   margin-inline: 32px;
-  // }
 
   &__title {
     margin-top: 56px;
     margin-bottom: 24px;
 
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
 
-    @include onTablet {
+    @include on-tablet {
       margin-top: 64px;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       margin-top: 80px;
     }
   }
 
-  @include onTablet {
+  @include on-tablet {
     margin-inline: 24px;
   }
 
-  @include onBigScren {
+  @include on-big-screen {
     width: 1136px;
     margin: 0 auto;
   }
@@ -50,27 +43,17 @@
     width: 100%;
     height: auto;
     margin: auto;
-    // width: fit-content;
 
-    @include onTablet {
-      // display: flex;
+    @include on-tablet {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
-      // width: 100%;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       grid-template-columns: repeat(24, 1fr);
       gap: 16px;
     }
-    // flex-direction: column;
-    // align-items: center;
-
-
-    // @include onTablet {
-    //   flex-direction: row;
-    // }
   }
 
   &__link {
@@ -80,34 +63,34 @@
   }
 
   &__content {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
 
     &--1 {
-      @include onTablet {
+      @include on-tablet {
         grid-column: 1 / 5;
       }
 
-      @include onBigScren {
+      @include on-big-screen {
         grid-column: 1 / 9;
       }
     }
 
     &--2 {
-      @include onTablet {
+      @include on-tablet {
         grid-column: 5 / 9;
       }
 
-      @include onBigScren {
+      @include on-big-screen {
         grid-column: 9 / 17;
       }
     }
 
       &--3 {
-        @include onTablet {
+        @include on-tablet {
           grid-column: 9 / 13;
         }
 
-        @include onBigScren {
+        @include on-big-screen {
           grid-column: 17 / 25;
         }
       }
@@ -117,7 +100,6 @@
   &__image-wrapper {
     width: 100%;
     height: auto;
-    border-radius: 8px;
 
     &--1 {
       z-index: 1;
@@ -147,69 +129,9 @@
   &__image {
     background-size: cover;
     transition: transform$effectDuration ease-in-out;
-    z-index: 1;
     width: 100%;
     aspect-ratio: 1/1;
     border-radius: 8px;
-
-    // &--1 {
-    //   top: 65px;
-    //   left: 65px;
-    //   width: 85%;
-    //   // height: auto;
-
-    //   @include onTablet {
-    //     top: 35px;
-    //     left: 18px;
-    //     width: 110%;
-    //     height: 110%;
-    //   }
-
-    //   @include onBigScren {
-    //     width: 115%;
-    //     height: 115%;
-    //     top: 60px;
-    //   }
-    // }
-
-    z-index: 3;
-
-    // &--2 {
-    //   top: 30px;
-    //   left: 30px;
-    //   width: 140%;
-
-    //   @include onTablet {
-    //     top: 14px;
-    //     left: 14px;
-    //     width: 143%;
-    //     height: 143%;
-    //   }
-
-    //   @include onBigScren {
-    //     width: 150%;
-    //     height: 150%;
-    //   }
-    // }
-
-    z-index: 5;
-
-    // &--3 {
-    //   top: 50px;
-    //   left: 23px;
-    //   width: 185%;
-
-    //   @include onTablet {
-    //     width: 189%;
-    //     height: 189%;
-    //     top: -63px;
-    //   }
-
-    //   @include onBigScren {
-    //     top: -140px;
-    //   }
-    // }
-
     object-fit: contain;
     z-index: 1;
   }

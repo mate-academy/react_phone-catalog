@@ -3,9 +3,6 @@ import footerStyles from './Footer.module.scss';
 import iconStyles from './icon.module.scss';
 
 const Footer: React.FC = () => {
-  // const location = useLocation();
-  // const currentPath = location.pathname;
-
   return (
     <div className={footerStyles.footer__wrapper}>
       <div className={footerStyles.footer}>

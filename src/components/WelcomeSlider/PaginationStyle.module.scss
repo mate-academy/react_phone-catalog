@@ -1,5 +1,5 @@
 @import '../../styles/mixins.module';
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .swiper-custom-pagination-bullet {
   height: 4px;
@@ -8,6 +8,7 @@
   color: $Elements;
   background-color: $Primary;
 }
+
 .swiper-custom-pagination-bullet--active {
   height: 4px;
   width: 14px;

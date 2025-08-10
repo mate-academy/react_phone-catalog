@@ -2,10 +2,10 @@
 
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .swiper-slide {
   height: auto;
@@ -25,30 +25,32 @@ a {
 
 .list {
   margin: 0 auto;
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   padding-top: 16px;
   display: grid;
   grid-template-columns: repeat(var(--column-count), 1fr);
-  @include contentMarginInline();
 
-  @include onBigScren {
+  @include content-margin-inline;
+
+  @include on-big-screen {
     width: 1136px;
     margin: auto;
   }
 
   justify-content: center;
   gap: 40px 16px;
+  
   --column-count: 1;
 
-  @include onTablet {
+  @include on-tablet {
     --column-count: 2;
   }
 
-  @include onMiddleScreen {
+  @include on-middle-screen {
     --column-count: 3;
   }
 
-  @include onBigScren {
+  @include on-big-screen {
     --column-count: 4;
   }
 }

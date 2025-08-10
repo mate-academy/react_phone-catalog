@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import { useEffect, useState } from 'react';
 import { Products } from './types/types';
 import SliderCarts from './components/SliderCarts';
-// import { Routes, Route } from 'react-router-dom';
 
 export const App = () => {
   const [products, setProducts] = useState<Products[] | []>([]);

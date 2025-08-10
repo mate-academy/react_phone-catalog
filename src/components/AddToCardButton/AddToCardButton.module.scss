@@ -1,9 +1,9 @@
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .button__add {
   background-color: $Accent;
@@ -12,16 +12,16 @@
   border-radius: 8px;
   width: 100%;
   height: 40px;
-  transition: box-shadow$effectDuration, color$effectDuration;
+  transition: box-shadow$effectDuration, color $effectDuration;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
   font-weight: 700;
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 
   &:hover {
     transition: box-shadow$effectDuration, color$effectDuration;
-    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.12);
+    box-shadow: 0 0 2px 2px rgba(0,0,0,0.12);
   }
 }
 

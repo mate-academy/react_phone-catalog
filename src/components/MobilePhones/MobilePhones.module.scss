@@ -2,10 +2,10 @@
 
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 select,
 ::picker(select) {
@@ -25,17 +25,13 @@ option::checkmark {
 
 .mobile-page {
   margin-inline: 16px;
-  font-family: "Mont";
+  font-family: Mont, sans-serif;
   display: flex;
   flex-direction: column;
 
-  @include contentMarginInline();
+  @include content-margin-inline;
 
-  // @include onTablet {
-  //   margin-inline: 24px;
-  // }
-
-  @include onBigScren {
+  @include on-big-screen {
     width: 1136px;
     margin: auto;
   }
@@ -71,7 +67,6 @@ option::checkmark {
     display: flex;
     flex-direction: row;
     align-items: center;
-    // justify-content: center;
     margin-bottom: 24px;
     margin-top: 78px;
   }
@@ -86,18 +81,16 @@ option::checkmark {
 
   &__select-wrapper {
     margin-top: 32px;
-    // margin-bottom: 24px;
     display: flex;
     justify-content: space-between;
 
-    @include onTablet {
+    @include on-tablet {
       justify-content: left;
     }
   }
 
   &__input-wrapper {
-    // width: 100%;
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       flex-direction: row;
     }
@@ -111,7 +104,6 @@ option::checkmark {
     width: 136px;
     height: 40px;
     border-radius: 8px;
-    border-color: $Icons;
     color: $Primary;
     border: 1px solid $Icons;
 
@@ -136,7 +128,7 @@ option::checkmark {
   &__sort-wrapper {
     margin-top: 5px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-top: 0;
     }
   }
@@ -171,7 +163,7 @@ option::checkmark {
     color: $Primary;
 
     &--hot {
-      @include onTablet {
+      @include on-tablet {
         width: 187px;
       }
     }

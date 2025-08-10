@@ -2,22 +2,22 @@
 
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 body {
   height: 100vh;
 }
 
 .no-product {
-  font-family: "Mont";
+  font-family: Mont, sans-serif;
   height: 100vh;
 
-  @include contentMarginInline();
+  @include content-margin-inline;
 
-  @include onBigScren {
+  @include on-big-screen {
     width: 1136px;
     margin: auto;
   }
@@ -28,11 +28,11 @@ body {
 
     width: 250px;
 
-    @include onTablet {
+    @include on-tablet {
       width: 450px;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       width: 600px;
     }
   }
@@ -41,15 +41,14 @@ body {
 .product-page {
   text-transform: capitalize;
   margin-inline: 16px;
-  font-family: "Mont";
   display: flex;
   flex-direction: column;
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   color: $Primary;
 
-  @include contentMarginInline();
+  @include content-margin-inline;
 
-  @include onBigScren {
+  @include on-big-screen {
     width: 1136px;
     margin: auto;
   }
@@ -61,7 +60,7 @@ body {
     margin-top: 72px;
     gap: 8px;
 
-    @include onBigScren {
+    @include on-big-screen {
       margin-top: 88px;
     }
   }
@@ -97,10 +96,10 @@ body {
     align-items: center;
     gap: 4px;
 
-    margin-top: 24xp;
+    margin-top: 24px;
     margin-bottom: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-top: 40px;
     }
   }
@@ -126,13 +125,13 @@ body {
     display: flex;
     flex-direction: column;
 
-    @include onTablet {
+    @include on-tablet {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       grid-template-columns: repeat(24, 1fr);
     }
   }
@@ -141,12 +140,12 @@ body {
     display: flex;
     flex-direction: column-reverse;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 1 / 7;
       flex-direction: row;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       grid-column: 1 / 13;
     }
   }
@@ -156,11 +155,12 @@ body {
     flex-direction: row;
     margin: auto;
 
-    @include onTablet {
+    @include on-tablet {
       margin-right: 16px;
       margin-left: 0;
       flex-direction: column;
     }
+    
     gap: 8px;
     margin-top: 16px;
     margin-bottom: 40px;
@@ -189,7 +189,7 @@ body {
     background-position: center;
     margin: auto;
 
-    @include onTablet {
+    @include on-tablet {
       width: 287px;
       height: 287px;
 
@@ -197,7 +197,7 @@ body {
       margin-right: 16px;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       width: 464px;
       height: 464px;
       margin-right: 64px;
@@ -207,7 +207,7 @@ body {
   &__tachnical-info {
     grid-column: 7 / 13;
 
-    @include onBigScren {
+    @include on-big-screen {
       grid-column: 13 / 21;
     }
   }
@@ -325,7 +325,6 @@ body {
 
   &__button-favorites {
     background-image: url('public/img/add-to-favourites.svg');
-    background-size: cover;
     width: 48px;
     height: 48px;
     border: none;
@@ -339,8 +338,6 @@ body {
 
     &:hover {
       background-image: url('public/img/add-to-fovourites-hover.svg');
-      // transform: scale($scale);
-      // transition: transform ease-in-out $effectDuration;
     }
 
     &--active {
@@ -395,7 +392,7 @@ body {
   }
 
   &__text-data {
-    @include onBigScren {
+    @include on-big-screen {
       display: grid;
       grid-template-columns: repeat(24, 1fr);
       gap: 16px;
@@ -407,7 +404,7 @@ body {
     margin-bottom: 56px;
     grid-column: 1 / 13;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 64px;
     }
   }
@@ -443,7 +440,7 @@ body {
     border-bottom: 1px solid $Elements;
     font-size: 22px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 25px;
     }
   }

@@ -1,47 +1,29 @@
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: 640px) {
     @content;
   }
 }
 
-@mixin onMiddleScreen {
+@mixin on-middle-screen {
   @media (min-width: 768px) {
     @content;
   }
 }
 
-@mixin onBigScren {
+@mixin on-big-screen {
   @media (min-width: 1200px) {
     @content;
   }
 }
 
-@mixin contentMarginInline() {
+@mixin content-margin-inline {
   margin-inline: 16px;
-  // padding-bottom: 48px;
 
-  @include onTablet {
+  @include on-tablet {
     margin-inline: 24px;
-    // padding-bottom: 56px;
   }
 
-  @include onBigScren() {
+  @include on-big-screen {
     margin-inline: 32px;
   }
-
-  // @include onSmallDeskTop() {
-  //   padding-inline: 54px;
-  // }
-
-  // @include onDeskTop() {
-  //   padding-inline: 80px;
-  // }
-
-  // @include onTheDesign() {
-  //   padding-inline: 227px;
-  // }
-
-  // @include onLargeScreens() {
-  //   padding-inline: 707px;
-  // }
 }

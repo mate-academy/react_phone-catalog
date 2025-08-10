@@ -1,16 +1,16 @@
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 body:has(.sideMenu :target) {
   overflow: hidden;
 }
 
 .sideMenu {
-  font-family: "Mont";
+  font-family: Mont, sans-serif;
   height: 100%;
   position: fixed;
   top: 0;

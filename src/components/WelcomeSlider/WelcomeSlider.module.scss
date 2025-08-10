@@ -1,6 +1,6 @@
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
 @import '../../styles/mixins.module';
@@ -11,13 +11,12 @@ body {
 }
 
 .header {
-  @include onBigScren {
+  @include on-big-screen {
     width: 1136px;
     margin: 0 auto;
   }
 
   &__wrapper {
-
     display: flex;
     flex-direction: row;
   }
@@ -26,16 +25,16 @@ body {
     padding-bottom: 24px;
     padding-top: 72px;
 
-    @include contentMarginInline();
+    @include content-margin-inline;
 
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 48px;
     font-style: bold;
     line-height: 56px;
     letter-spacing: -0.32px;
 
-    @include onBigScren {
+    @include on-big-screen {
       margin: 0;
       padding-top: 120px;
     }
@@ -45,10 +44,10 @@ body {
     width: 100%;
     margin: 0 auto;
 
-    @include onTablet {
+    @include on-tablet {
       border-radius: 8px;
     }
-    
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

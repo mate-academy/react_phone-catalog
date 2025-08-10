@@ -1,15 +1,16 @@
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
 @import '../../styles/mixins.module';
 
 .page {
-  font-family: "Mont";
-  @include contentMarginInline();
+  font-family: Mont, sans-serif;
+  
+  @include content-margin-inline;
 
-  @include onBigScren {
+  @include on-big-screen {
     margin: auto;
     width: 1136px;
   }

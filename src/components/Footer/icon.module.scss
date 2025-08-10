@@ -1,23 +1,16 @@
 @import '../../styles/mixins.module';
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .icon {
-  // width: 16px;
-  // height: 16px;
   display: block;
-
-  // @include onTablet {
-  //   padding: 16px;
-  // }
 }
 
 .icon--menu {
   background-image: url("/img/burger-menu.svg");
-  // background-repeat: no-repeat;
   background-size: cover;
   margin: 16px;
 
-  @include onTablet {
+  @include on-tablet {
     display: none;
   }
 }
@@ -29,28 +22,17 @@
 }
 
 .icon--heart {
-  // display: none;
-  // width: 0;
-  // height: 0;
-
-  @include onTablet {
-    // background-image: url("public/img/favourites-(heart-like).svg");
-    // width: 16px;
-    // height: 16px;
+  @include on-tablet {
     background-size: cover;
 
     &__wrapper {
       padding: 16px;
-      // border-right: 1px solid$Elements;
     }
   }
 }
 
 .icon--arrow {
-  // display: none;
-  // width: 0;
-  // height: 0;
-  background-image: url("public/img/Chevron (Arrow Up).svg"); //public\img\shopping-bag-cart.svg
+  background-image: url("public/img/Chevron (Arrow Up).svg");
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -62,22 +44,16 @@
 
   background-repeat: no-repeat;
   margin-left: 16px;
-
-  // @include onTablet {
-  //   &__wrapper {
-  //     padding: 16px;
-  //   }
-  // }
 }
 
 .badge {
   display: none;
 
-  @include onTablet {
+  @include on-tablet {
     position: absolute;
     top: 14px;
     right: 10px;
-    background: $Secondary-Accent; // або ваш колір
+    background: $Secondary-Accent;
     color: $White;
     border-radius: 50%;
     padding: 2px 6px;

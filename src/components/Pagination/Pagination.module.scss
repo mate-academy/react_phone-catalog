@@ -2,26 +2,26 @@
 
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .pagination {
-  font-family: "Mont";
+  font-family: Mont, sans-serif;
   padding-top: 24px;
   width: fit-content;
   display: flex;
   justify-content: center;
   gap: 8px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: 40px;
   }
 
-  @include contentMarginInline();
+  @include content-margin-inline;
 
-  @include onBigScren {
+  @include on-big-screen {
     padding-top: 40px;
     width: 1136px;
     margin: auto;

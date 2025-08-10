@@ -1,4 +1,4 @@
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .list {
   &__lovely-choice {
@@ -23,7 +23,6 @@
     }
 
     padding: 0;
-    border: none;
     color: $White;
     background-color: $White;
     background-position: center;
@@ -34,7 +33,5 @@
     height: 49px;
     margin-left: 8px;
     border: 1px solid$NoneBackground;
-    // padding-left: 8px;
-    // padding-right: 2px;
   }
 }

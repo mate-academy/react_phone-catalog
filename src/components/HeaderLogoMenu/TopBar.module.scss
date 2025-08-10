@@ -2,10 +2,10 @@
 
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .header {
   position: fixed;
@@ -22,9 +22,8 @@
   justify-content: space-between;
   align-items: center;
   padding-left: 16px;
-  // margin-block: 13px;
   border-bottom: 1px solid $Elements;
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 
   &__navigation__wrapper {
     display: flex;
@@ -37,13 +36,13 @@
     padding-inline-start: 32px;
     position: relative;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       flex-direction: row;
       margin-block: 18px;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       margin-block: 26px;
       padding-inline-start: 48px;
     }
@@ -56,7 +55,7 @@
   }
 
   &__link {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 12px;
     line-height: 11px;
@@ -72,12 +71,9 @@
         content: "";
         position: absolute;
         display: block;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        top: 2.5px;
+        inset: 2.5px 0 0;
 
-        @include onBigScren {
+        @include on-big-screen {
           top: 10.5px;
         }
 
@@ -95,15 +91,9 @@
 
 
   &__icon-1 {
-    // padding: 16px;
     border-left: 1px solid $Elements;
     display: flex;
     flex-direction: row;
-    // border-right: 1px solid$Elements;
-
-    // @include onTablet {
-    //   padding: 32px;
-    // }
   }
 
   &__logo {
@@ -111,10 +101,7 @@
   }
 
   &__logo-img {
-    // padding-top: 9px;
-    // padding-bottom: 11px;
     width: 64px;
     height: 22px;
-
   }
 }

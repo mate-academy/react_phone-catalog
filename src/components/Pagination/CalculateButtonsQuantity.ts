@@ -22,8 +22,6 @@ export const calculateButtonsQuantity = (
   }
 
   for (let i = 0; i < paginationButtonQuantity; i++) {
-    // console.log(arrCiclePagination.some(num => num <= 0));
-
     if (arrCiclePagination.some(num => num <= 0)) {
       arrCiclePagination = arrCiclePagination.map(el => el + 1);
     }

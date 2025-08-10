@@ -2,10 +2,10 @@
 
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .swiper-wrapper {
   width: 10%;
@@ -14,21 +14,21 @@
 }
 
 .brand {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   margin-inline: 16px;
 
-  @include onTablet {
+  @include on-tablet {
     width: auto;
     margin-inline: 24px;
   }
 
-  @include onBigScren {
+  @include on-big-screen {
     width: 1136px;
     margin: auto;
   }
 
   &__title {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 32px;
     line-height: 41px;
@@ -42,11 +42,11 @@
     padding-bottom: 24px;
     padding-top: 56px;
 
-    @include onTablet {
+    @include on-tablet {
       padding-top: 64px;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       padding-top: 80px;
     }
   }
@@ -82,7 +82,6 @@
     width: min-content;
     height: auto;
     flex-direction: column;
-    // align-content: center;
     justify-content: center;
     align-items: center;
   }

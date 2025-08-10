@@ -78,14 +78,12 @@ const HeaderLogoMenu: React.FC = () => {
         <div className={topBatStyles['top-bar__icon-1']}>
           {isMenuOpen === true ? (
             <button
-              // href={`/${iconReference}`}
-              className={`${iconStyles.icon} ${iconStyles['icon--close']}`} // ${topBatStyles['top-bar__icon--menu']}
+              className={`${iconStyles.icon} ${iconStyles['icon--close']}`}
               onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
             ></button>
           ) : (
             <button
-              // href={`/${iconReference}`}
-              className={`${iconStyles.icon} ${iconStyles['icon--menu']}`} // ${topBatStyles['top-bar__icon--menu']}
+              className={`${iconStyles.icon} ${iconStyles['icon--menu']}`}
               onClick={() => setIsMenuOpen(currentBoolean => !currentBoolean)}
             ></button>
           )}

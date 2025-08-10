@@ -2,17 +2,18 @@
 
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .bag-page {
   height: 100vh;
-  font-family: 'Mont';
-  @include contentMarginInline;
+  font-family: Mont, sans-serif;
 
-  @include onBigScren {
+  @include content-margin-inline;
+
+  @include on-big-screen {
     width: 1136px;
     margin: auto;
   }
@@ -51,86 +52,57 @@
 
   &__list {
     margin: 0 auto;
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     padding-top: 40px;
     display: grid;
     grid-template-columns: repeat(var(--column-count), 1fr);
 
-    @include onTablet {
+    @include on-tablet {
       grid-template-columns: repeat(var(--column-count), 1fr);
     }
 
-    @include onMiddleScreen {
+    @include on-middle-screen {
       grid-template-columns: repeat(var(--column-count), 1fr);
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       grid-template-columns: repeat(var(--column-count), 1fr);
     }
 
     justify-content: center;
     gap: 40px 16px;
-    // align-items: center;
 
-    @include onTablet {
-      // margin-inline: 24px;
+    @include on-tablet {
       --column-count: 2;
     }
 
-    @include onMiddleScreen {
+    @include on-middle-screen {
       --column-count: 3;
-      // margin-inline: 24px;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       --column-count: 4;
-      // margin-inline: 32px;
     }
   }
 
   &__title {
     margin-block: 24px 8px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-block: 40px 8px;
     }
   }
 
   &__card{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // width: 287px;
     min-width: 229px;
     max-width: 100%;
     height: 506px;
-    // margin-inline: 16px;
 
-    @include onTablet {
-      // margin-inline: 24px;
-      // min-width: 229px;
-      // width: 288px;
-      // width: 229px !important;
-    }
-
-    @include onMiddleScreen {
-      // width: 229px;
-    }
-
-    @include onBigScren {
-      // width: 272px;
-      // margin-inline: 32px;
-    }
-
-    // height: 579px;
     border: 1px solid $Elements;
     border-radius: 8px;
-
     display: flex;
-    // justify-content: center;
-
     flex-direction: column;
-    align-content: center;
+    place-items: center;
   }
 
   &__image {
@@ -158,7 +130,7 @@
   }
 
   &__name {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-style: normal;
     line-height: 21px;
@@ -167,7 +139,7 @@
   }
 
   &__price {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 22px;
     font-style: normal;
@@ -199,7 +171,6 @@
     align-items: center;
     margin-bottom: 32px;
     margin-top: 8px;
-    // width: 173px;
   }
 
   &__add {
@@ -219,8 +190,8 @@
 
   &__lovely-choice {
     padding: 0;
-    border: none;
     background-image: url('/public/img/add-to-fovourites-default.png');
+
     &:hover {
       background-image: url('/public/img/add-to-fovourites-hover.png');
     }
@@ -246,8 +217,6 @@
     width: 49px;
     height: 40px;
     margin-left: 8px;
-    border: 1px solid$NoneBackground;
-    // padding-left: 8px;
-    // padding-right: 2px;
+    border: 1px solid $NoneBackground;
   }
 }

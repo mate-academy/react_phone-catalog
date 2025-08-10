@@ -1,17 +1,8 @@
-import {
-  Routes,
-  Route,
-  Link,
-  useSearchParams,
-  useNavigate,
-  useParams,
-  useLocation,
-} from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import mobilePageStyles from './MobilePhones.module.scss';
 import { useEffect, useState } from 'react';
 import ListOfGadgets from '../ListOfGadgets';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
-import { useMenu } from '../../context/MenuContext';
 import { debounce } from '../ListOfGadgets/debounce';
 import { Products } from '../../types/types';
 
@@ -23,11 +14,7 @@ const MobilePhones: React.FC = () => {
   const [typeOfGadgets, setTypeOfGadgets] = useState<Products[] | []>([]);
   const aplyQuery = debounce(setApliedQuery, 1000);
 
-  console.log(location);
-
   const gadgets = location.pathname.split('/')[1];
-
-  console.log(gadgets);
 
   useEffect(() => {
     window.scrollTo({
@@ -40,37 +27,19 @@ const MobilePhones: React.FC = () => {
     fetch('/api/products.json')
       .then(res => res.json())
       .then(data => {
-        // Фільтруємо тільки потрібну категорію
         const filtered = data.filter(
           (item: Products) => item.category === gadgets,
         );
 
-        // console.log(filtered);
-
         setTypeOfGadgets(filtered);
       });
   }, [gadgets]);
-
-  const sortBy = searchParams.get('sort');
-  const quantity = searchParams.get('quantity');
-
-  const { isMenuOpen, setIsMenuOpen } = useMenu();
-
-  // useEffect(() => {
-  //   const newParams = new URLSearchParams(location.search);
-
-  //   newParams.set('quantity', '16');
-  //   newParams.set('sort', 'newest');
-  //   setSearchParams(newParams.toString());
-  // }, [location.pathname, location.search, setSearchParams]);
 
   function handleSortChange(sort: string) {
     const newParams = new URLSearchParams(searchParams);
 
     newParams.set('sort', sort);
     setSearchParams(newParams.toString());
-
-    console.log(newParams.toString());
   }
 
   function handleItemsChange(perItems: string) {
@@ -78,8 +47,6 @@ const MobilePhones: React.FC = () => {
 
     newParams.set('quantity', perItems);
     setSearchParams(newParams.toString());
-
-    console.log(newParams.toString());
   }
 
   const currentPage =
@@ -89,11 +56,7 @@ const MobilePhones: React.FC = () => {
         ? 'accessories'
         : 'tablets';
 
-  // console.log(search.pathname);
-  // console.log(gadgets);
   function handleQueryChange(param: string) {
-    console.log(param);
-
     aplyQuery(param);
     setCurrentPagePag(1);
     const newParams = new URLSearchParams(searchParams);
@@ -104,16 +67,10 @@ const MobilePhones: React.FC = () => {
     if (newParams.get('query') === '') {
       newParams.delete('query');
       setSearchParams(newParams);
-      // aplyQuery(newParams.toString());
     }
   }
 
   const currentParams = new URLSearchParams(searchParams);
-
-  console.log(searchParams.toString);
-  console.log(currentParams.get('query') || '');
-  console.log(currentParams.get('sort') || '');
-  console.log(currentParams.get('quantity') || 16);
 
   return (
     <>
@@ -146,8 +103,6 @@ const MobilePhones: React.FC = () => {
         </span>
 
         <div className={mobilePageStyles['mobile-page__select-wrapper']}>
-          {/* <p className={mobilePageStyles['mobile-page__input-wrapper']}>
-          </p> */}
           <div className={mobilePageStyles['mobile-page__input-wrapper']}>
             <div>
               <label

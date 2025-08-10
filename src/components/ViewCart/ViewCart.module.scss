@@ -2,25 +2,22 @@
 
 @font-face {
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 }
 
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .list {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
 
   &__card{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     min-width: 212px;
 
-    @include onTablet {
+    @include on-tablet {
       min-width: 237px;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       min-width: 272px;
     }
 
@@ -33,7 +30,7 @@
     display: flex;
 
     flex-direction: column;
-    align-content: center;
+    place-items: center;
   }
 
   &__image {
@@ -61,7 +58,7 @@
   }
 
   &__name {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-style: normal;
     line-height: 21px;
@@ -70,7 +67,7 @@
   }
 
   &__price {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 800;
     font-size: 22px;
     font-style: normal;

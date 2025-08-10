@@ -1,5 +1,5 @@
 @import '../../styles/mixins.module';
-@import 'src/styles/_vars.scss';
+@import 'src/styles/vars';
 
 .navigation-button {
   height: 100%;
@@ -9,7 +9,7 @@
 
   display: none;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,11 +19,11 @@
     margin-left: 16px;
     margin-right: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-right: 24px;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       margin-right: 0;
     }
   }
@@ -32,11 +32,11 @@
     margin-left: 32px;
     margin-right: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-left: 24px;
     }
 
-    @include onBigScren {
+    @include on-big-screen {
       margin-left: 0;
     }
   }
