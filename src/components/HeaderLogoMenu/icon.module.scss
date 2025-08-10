@@ -6,11 +6,11 @@
   height: 16px;
   display: block;
   border: none;
-  background-color:$NoneBackground;
+  background-color: $NoneBackground;
 }
 
 .icon--menu {
-  background-image: url("./img/burger-menu.svg");
+  background-image: url("./../img/burger-menu.svg");
   background-size: cover;
   margin: 16px;
 
@@ -36,7 +36,7 @@
 }
 
 .icon--close {
-  background-image: url("./img/icon-close.png");
+  background-image: url("./../img/icon-close.png");
   background-size: cover;
   margin: 16px;
 }
@@ -46,7 +46,7 @@
   height: 0;
 
   @include on-tablet {
-    background-image: url("./img/favourites-(heart-like).svg");
+    background-image: url("./../img/favourites-(heart-like).svg");
     width: 16px;
     height: 16px;
     background-size: cover;
@@ -73,7 +73,7 @@
   height: 0;
 
   @include on-tablet {
-    background-image: url("./img/shopping-bag-cart.svg");
+    background-image: url("./../img/shopping-bag-cart.svg");
     width: 16px;
     height: 16px;
     background-size: cover;
