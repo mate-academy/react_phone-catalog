@@ -1,0 +1,17 @@
+@import '../../shared/index';
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 50%;
+  background: center no-repeat url('/img/icons/favourites-icon.svg');
+  transition: background-image 0.3s ease;
+
+  &--filled {
+    background: center no-repeat url('/img/icons/favourites-filled-icon.svg') !important;
+    filter: yellow !important;
+  }
+
+  @include hover(border-color, var(--primary-color));
+}
