@@ -22,6 +22,9 @@
     grid-column: 1/-1;
 
     text-decoration: none;
+    cursor: pointer;
+
+    @include hover(transform, scale(1.1));
 
     @include on-tablet {
       grid-column: span 4;

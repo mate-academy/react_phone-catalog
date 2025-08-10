@@ -17,10 +17,6 @@
   /* 2 */
   --nav-bg-color: var(--main-bg-color);
 
-  /* 3 */
-  --pagination-bg-color: var(--elements);
-  --pagination-bg-color-active: var(--primery);
-
   /* 4 */
   --card-bg-color: var(--main-bg-color);
   --card-border-color: var(--elements);

@@ -13,6 +13,8 @@
     mask-repeat: no-repeat;
   }
   &__link {
+    @extend %small-text;
+
     text-decoration: none;
     color: $main-text-color;
     cursor: pointer;

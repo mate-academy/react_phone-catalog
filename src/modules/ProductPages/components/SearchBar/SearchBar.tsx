@@ -15,12 +15,14 @@ export const SearchBar = () => {
   const [debouncedValue] = useDebounce(inputValue, 1000);
 
   useEffect(() => {
-    const newParams = {
+    const newParams = getSearchWith(searchParams, {
       [SearchEnum.QUERY]: debouncedValue.length ? debouncedValue : null,
-    };
+    });
 
-    setSearchParams(getSearchWith(searchParams, newParams));
-  }, [debouncedValue, setSearchParams, searchParams]);
+    if (new URLSearchParams(newParams).toString() !== searchParams.toString()) {
+      setSearchParams(newParams, { replace: true });
+    }
+  }, [debouncedValue, searchParams, setSearchParams]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);

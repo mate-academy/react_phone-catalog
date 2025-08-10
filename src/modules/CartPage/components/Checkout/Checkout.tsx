@@ -5,11 +5,11 @@ import { Button } from '../../../shared/components/Button';
 
 type Props = {
   totalPrice: number;
-  cartLength: number;
+  totalItems: number;
 };
 
 export const Checkout: React.FC<Props> = React.memo(
-  ({ totalPrice, cartLength }) => {
+  ({ totalPrice, totalItems }) => {
     return (
       <div className={cn(checkoutClass.checkout)}>
         <div className={cn(checkoutClass['checkout__text-content'])}>
@@ -17,7 +17,7 @@ export const Checkout: React.FC<Props> = React.memo(
             ${totalPrice}
           </p>
           <p className={cn(checkoutClass.checkout__text)}>
-            Total for {cartLength} items
+            Total for {totalItems} items
           </p>
         </div>
         <div className={cn(checkoutClass.checkout__button)}>

@@ -7,7 +7,10 @@ import { Checkout } from './components/Checkout/Checkout';
 
 export const CartPage = () => {
   const { cartProducts } = useContext(CartContext);
-  const cartLength = cartProducts.length;
+  const totalItems = cartProducts.reduce(
+    (acc, product) => acc + (product.totalCount || 1),
+    0,
+  );
   const totalPrice = cartProducts.reduce(
     (acc, product) => acc + product.price * (product.totalCount || 1),
     0,
@@ -21,7 +24,7 @@ export const CartPage = () => {
           <CartList cartProducts={cartProducts} />
         </div>
         <div className={cn(cartPageClass['cart-page__checkout'])}>
-          <Checkout totalPrice={totalPrice} cartLength={cartLength} />
+          <Checkout totalPrice={totalPrice} totalItems={totalItems} />
         </div>
       </div>
     </section>

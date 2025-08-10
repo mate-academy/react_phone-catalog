@@ -58,7 +58,7 @@ export const PageProvider: React.FC<Props> = ({ children }) => {
 
       setLoading(true);
 
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 0));
 
       const resultFilter = filteredProducts();
 

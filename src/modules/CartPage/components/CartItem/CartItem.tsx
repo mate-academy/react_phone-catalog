@@ -44,25 +44,6 @@ export const CartItem: React.FC<Props> = React.memo(({ product }) => {
             className={cn(cartItemClass['cart-item__icons'])}
             onClick={e => e.stopPropagation()}
           >
-            {/* <div
-              onClick={() => decreaseProductCount(id)}
-              className={cn(cartItemClass['cart-item__icon-wrapper'], {
-                [cartItemClass['cart-item__icon-wrapper--disabled']]:
-                  totalCount === 1,
-              })}
-            >
-              <div
-                className={cn(
-                  cartItemClass['cart-item__icon'],
-                  cartItemClass['cart-item__icon--minus'],
-                  {
-                    [cartItemClass['cart-item__icon--disabled']]:
-                      totalCount === 1,
-                  },
-                )}
-              ></div>
-
-            </div> */}
             <div
               className={cn(cartItemClass['cart-item__icon-wrapper'])}
               onClick={() => decreaseProductCount(id)}
@@ -75,15 +56,6 @@ export const CartItem: React.FC<Props> = React.memo(({ product }) => {
             <p className={cn(cartItemClass['cart-item__count'])}>
               {totalCount || 1}
             </p>
-            {/* <div className={cn(cartItemClass['cart-item__icon-wrapper'])}>
-              <div
-                onClick={() => increaseProductCount(id)}
-                className={cn(
-                  cartItemClass['cart-item__icon'],
-                  cartItemClass['cart-item__icon--plus'],
-                )}
-              ></div>
-            </div> */}
             <div
               className={cn(cartItemClass['cart-item__icon-wrapper'])}
               onClick={() => increaseProductCount(id)}

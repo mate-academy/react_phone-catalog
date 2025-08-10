@@ -92,6 +92,8 @@ export const SortBar: React.FC = React.memo(() => {
     setSelectedItems(option && option.value ? option : null);
   };
 
+  const isFirstRender = React.useRef(true);
+
   useEffect(() => {
     const newParams: Record<string, string | null> = {
       [SearchEnum.SORT]: selectedSort ? selectedSort.value : null,
@@ -100,15 +102,24 @@ export const SortBar: React.FC = React.memo(() => {
         : null,
     };
 
-    if (!selectedItems?.value) {
+    if (!selectedItems?.value || selectedSort?.value) {
       newParams[SearchEnum.PAGE] = null;
     }
 
-    if (selectedSort?.value) {
-      newParams[SearchEnum.PAGE] = null;
+    const updatedParams = getSearchWith(searchParams, newParams);
+
+    const currentParamsStr = searchParams.toString();
+    const updatedParamsStr = new URLSearchParams(updatedParams).toString();
+
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+
+      return;
     }
 
-    setSearchParams(getSearchWith(searchParams, newParams));
+    if (currentParamsStr !== updatedParamsStr) {
+      setSearchParams(updatedParams, { replace: true });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSort, selectedItems, setSearchParams]);
 
