@@ -27,7 +27,7 @@
   }
 
   &__go-home-icon {
-    background-image: url('./img/home.svg');
+    background-image: url('./../img/home.svg');
     background-position: center;
     background-repeat: no-repeat;
     display: block;
@@ -37,7 +37,7 @@
   }
 
   &__direction {
-    background-image: url('./img/chevron-arrow-right.svg');
+    background-image: url('./../img/chevron-arrow-right.svg');
     background-position: center;
     display: block;
     width: 16px;
@@ -120,7 +120,7 @@
 
     &:hover {
       transition: transform$effectDuration ease-in-out;
-      transform: scale(1.1);
+      transform: scale($scale);
     }
   }
 
@@ -190,19 +190,19 @@
 
   &__lovely-choice {
     padding: 0;
-    background-image: url('./img/add-to-fovourites-default.png');
+    background-image: url('./../img/add-to-fovourites-default.png');
 
     &:hover {
-      background-image: url('./img/add-to-fovourites-hover.png');
+      background-image: url('./../img/add-to-fovourites-hover.png');
     }
 
     &--active {
-      background-image: url('./img/add-to-fovourites-added.png');
+      background-image: url('./../img/add-to-fovourites-added.png');
 
       transition: transform$effectDuration ease-in-out;
 
       &:hover {
-        background-image: url('./img/add-to-fovourites-added.png');
+        background-image: url('./../img/add-to-fovourites-added.png');
         transform: scale(1.1);
         transition: transform$effectDuration ease-in-out;
       }
