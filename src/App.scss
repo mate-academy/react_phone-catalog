@@ -1,1 +1,26 @@
-// not empty
+.app {
+  display: grid;
+  min-height: 100vh;
+
+  // stylelint-disable
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+  "header header header header"
+  "main main main main"
+  "footer footer footer footer";
+  // stylelint-enable
+
+  column-gap: 16px;
+  padding: 0 16px;
+}
+
+.main {
+  grid-area: main;
+  background-color: yellow;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: red;
+}

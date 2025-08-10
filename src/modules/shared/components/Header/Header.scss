@@ -1,0 +1,19 @@
+.header {
+  grid-area: header;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 16px;
+  }
+}
+
+.logo-icon {
+  height: 21px;
+  width: 64px;
+}
+
+.burger-icon {
+  height: 16px;
+  width: 16px;
+}
