@@ -36,7 +36,11 @@ export const Menu = ({ showMenu, setShowMenu }: Props) => {
         </div>
 
         <a className={menu.blockwithcross} onClick={() => setShowMenu(false)}>
-          <div className={menuIcon.icon__cross}></div>
+          <div
+            className={classNames([menuIcon.icon__cross], {
+              [menuIcon.icon__crossONDARK]: themeSwitcher,
+            })}
+          ></div>
         </a>
       </div>
       <div className={menu.block}>
@@ -67,11 +71,7 @@ export const Menu = ({ showMenu, setShowMenu }: Props) => {
             onAnimationEnd={() => setTurnIcon(false)}
           >
             <img
-              src={
-                themeSwitcher
-                  ? '/img/moon-svgrepo-com.svg'
-                  : '/img/abstract_sun_design.svg'
-              }
+              src={themeSwitcher ? 'src/img/Sun.svg' : 'src/img/Moon.svg'}
               alt={themeSwitcher ? 'moon' : 'sun'}
               className={menu.themeswitcher__image}
             />

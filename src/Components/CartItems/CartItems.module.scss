@@ -120,6 +120,9 @@ margin-left: auto;
     height: 16px;
     margin: auto 0;
     cursor: pointer;
+    &ONDARK {
+      background-image: url('../../img/Close-white.svg');
+    }
     &:hover {
       transform: rotate(1turn);
       transition: 0.3s ease transform;

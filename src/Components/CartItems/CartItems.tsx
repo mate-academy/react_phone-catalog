@@ -110,10 +110,13 @@ export const CartItems = () => {
                             };
 
                             const changeAmountOfModels = (
-                              itemId: string,
+                              clickedItem: Product,
                               changer: 1 | -1,
                             ) => {
-                              if (itemId === item.id) {
+                              if (clickedItem.id === item.id && changer === -1 && clickedItem.amountOfModels === 1) {
+                                return;
+                              }
+                              if (clickedItem.id === item.id) {
                                 const updateItem = addedItems.map(
                                   currentItem => {
                                     if (currentItem.id === item.id) {
@@ -178,7 +181,9 @@ export const CartItems = () => {
                               <div className={cart.item} key={item.id}>
                                 <div className={cart.imagecontainer}>
                                   <button
-                                    className={cart.crossbutton}
+                                    className={classNames([cart.crossbutton], {
+                                      [cart.crossbuttonONDARK]: themeSwitcher,
+                                    })}
                                     onClick={() => deleteItem(item)}
                                   ></button>
                                   <Link to={`/${item.category}/${item.itemId}`}>
@@ -201,7 +206,7 @@ export const CartItems = () => {
                                       },
                                     )}
                                     onClick={() =>
-                                      changeAmountOfModels(item.id, -1)
+                                      changeAmountOfModels(item, -1)
                                     }
                                     disabled={item.amountOfModels === 1}
                                   >
@@ -219,7 +224,7 @@ export const CartItems = () => {
                                       },
                                     )}
                                     onClick={() =>
-                                      changeAmountOfModels(item.id, 1)
+                                      changeAmountOfModels(item, 1)
                                     }
                                     disabled={item.amountOfModels === 10}
                                   >
@@ -237,9 +242,6 @@ export const CartItems = () => {
                               <div
                                 className={cart.summaryprice}
                               >{`Total price for new products: $${totalPrice}`}</div>
-                              <div
-                                className={cart.summarytotal}
-                              >{`You have ${totalModels} new ${totalModels === 1 ? 'product' : 'products'}`}</div>
                             </div>
                           )}
                         </>

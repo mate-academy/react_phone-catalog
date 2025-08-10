@@ -33,7 +33,7 @@ export const ProductCard = ({ product }: Props) => {
       addedItem.id === product.id &&
       addedItems.find(item => item.id === addedItem.id)
     ) {
-      const updateItem = addedItems.filter(item => item.id !== addedItem.id);
+      const updateItem = addedItems.filter(item => item.id !== addedItem.id)
 
       setTotalModels(totalModels - product.amountOfModels);
       setAddedItems(updateItem);
@@ -44,6 +44,7 @@ export const ProductCard = ({ product }: Props) => {
       addedItem.id === product.id &&
       !addedItems.find(item => item.id === addedItem.id)
     ) {
+      addedItem.amountOfModels = 1;
       setTotalModels(totalModels + 1);
       setTotalPrice(totalPrice + addedItem.price);
       setAddedItems([...addedItems, addedItem]);

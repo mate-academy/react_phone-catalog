@@ -30,7 +30,7 @@
     height: 16px;
     width: 16px;
     cursor: pointer;
-    
+
     @include on-tablet {
       display: none;
     }
@@ -48,6 +48,9 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        &ONDARK {
+          background-image: url('../../img/Close-white.svg');
+        }
         &:hover {
           transform: rotate(2turn);
           transition: 0.5s ease-in-out transform;
@@ -126,7 +129,6 @@ bottom: 6px;
   &__switcher {
     width: 30px;
     height: 30px;
-    background-color: var(--background-color);
     &:hover {
       transform: rotate(3turn);
       transition: 30s cubic-bezier(0.01, 0.01, 0.01, 0.01);
