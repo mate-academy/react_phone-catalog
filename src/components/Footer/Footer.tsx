@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
         </ul>
         <div className={footerStyles.footer__backToTopContainer}>
           <span
-            className={`${iconStyles['icon--heart']} ${iconStyles.icon}`}
+            className={`${iconStyles['icon--back-to-top']} ${iconStyles.icon}`}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             Back to top
@@ -52,11 +52,6 @@ const Footer: React.FC = () => {
             className={`${iconStyles['icon--arrow']} ${iconStyles.icon}`}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           ></button>
-
-          {/* <div className={iconStyles['icon--bag__wrapper']}>
-
-          <span className={iconStyles.badge}>12</span>
-        </div> */}
         </div>
       </div>
     </div>

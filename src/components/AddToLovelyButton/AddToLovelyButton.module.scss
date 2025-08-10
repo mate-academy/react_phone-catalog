@@ -2,21 +2,21 @@
 
 .list {
   &__lovely-choice {
-    background-image: url('./img/add-to-favourites.svg');
+    background-image: url('./../img/add-to-favourites.svg');
 
     &:hover {
-      background-image: url('./img/add-to-fovourites-hover.svg');
+      background-image: url('./../img/add-to-fovourites-hover.svg');
       width: 49px;
       height: 49px;
     }
 
     &--active {
-      background-image: url('./img/add-to-fovourites-added.svg');
+      background-image: url('./../img/add-to-fovourites-added.svg');
 
       transition: transform$effectDuration ease-in-out;
 
       &:hover {
-        background-image: url('./img/add-to-fovourites-added.svg');
+        background-image: url('./../img/add-to-fovourites-added.svg');
         transform: scale(1.1);
         transition: transform$effectDuration ease-in-out;
       }

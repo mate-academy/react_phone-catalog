@@ -31,7 +31,7 @@
     }
 
     margin-bottom: 16px;
-    border: 1px solid$Elements;
+    border: 1px solid $Elements;
     border-radius: 16px;
   }
 
@@ -55,7 +55,7 @@
   }
 
   &__arrow-left {
-    background-image: url('./img/chevron-arrow_left.svg');
+    background-image: url('./../img/chevron-arrow_left.svg');
     display: block;
     width: 16px;
     height: 16px;
@@ -97,7 +97,7 @@
   }
 
   &__icon-close {
-    background-image: url('./img/close.svg');
+    background-image: url('./../img/close.svg');
     background-position: center;
     background-color: $White;
     border: none;
@@ -147,11 +147,11 @@
   }
 
   &__button-add {
-    background-image: url('./img/plus.svg');
+    background-image: url('./../img/plus.svg');
   }
 
   &__button-get-out {
-    background-image: url('./img/minus.svg');
+    background-image: url('./../img/minus.svg');
   }
 
   &__single-price {
@@ -184,7 +184,7 @@
   }
 
   &__items-info {
-    border-bottom: 1px solid$Elements;
+    border-bottom: 1px solid $Elements;
     margin-top: 24px;
     margin-bottom: 16px;
     padding-bottom: 16px;

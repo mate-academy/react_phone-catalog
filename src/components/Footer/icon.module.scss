@@ -1,27 +1,7 @@
 @import '../../styles/mixins.module';
 @import 'src/styles/vars';
 
-.icon {
-  display: block;
-}
-
-.icon--menu {
-  background-image: url("/img/burger-menu.svg");
-  background-size: cover;
-  margin: 16px;
-
-  @include on-tablet {
-    display: none;
-  }
-}
-
-.icon--close {
-  background-image: url("./img/icon-close.png");
-  background-size: cover;
-  margin: 16px;
-}
-
-.icon--heart {
+.icon--back-to-top {
   @include on-tablet {
     background-size: cover;
 
@@ -32,7 +12,7 @@
 }
 
 .icon--arrow {
-  background-image: url("./img/Chevron (Arrow Up).svg");
+  background-image: url("./../img/Chevron (Arrow Up).svg");
   width: 32px;
   height: 32px;
   border-radius: 50%;
