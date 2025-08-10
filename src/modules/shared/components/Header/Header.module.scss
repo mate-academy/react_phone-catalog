@@ -1,19 +1,22 @@
 .header {
+  position: sticky;
+  top: 0;
+
   grid-area: header;
 
   &__container {
     display: flex;
     justify-content: space-between;
-    padding: 14px 16px;
+    padding: 14px 0;
   }
 }
 
-.logo-icon {
+.logoIcon {
   height: 21px;
   width: 64px;
 }
 
-.burger-icon {
+.burgerIcon {
   height: 16px;
   width: 16px;
 }

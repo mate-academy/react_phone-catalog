@@ -1,0 +1,25 @@
+@use '../../styles/utils/constants';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  &__link {
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+    padding: 6px 0;
+    color: constants.$secondary-color;
+
+    &Active {
+      color: constants.$primary-color;
+      border-bottom: 2px solid constants.$primary-color;
+    }
+  }
+}

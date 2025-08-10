@@ -1,3 +1,24 @@
+@font-face {
+  font-family: Mont;
+  src: url(../../../../../public/fonts/Mont-Bold.otf) format('otf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(../../../../../public/fonts/Mont-SemiBold.otf) format('otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(../../../../../public/fonts/Mont-Regular.otf) format('otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
 // src/styles/base/_base.scss
 
 // 1. Zresetowanie domyślnych stylów przeglądarki
