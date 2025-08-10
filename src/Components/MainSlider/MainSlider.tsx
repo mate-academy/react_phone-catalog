@@ -12,18 +12,18 @@ import { CatalogContext } from '../CatalogProvider';
 const bannerPhotos = [
   {
     id: 1,
-    image: 'src/img/smartfon-OBRAZ_MAŁY.jpg',
-    imageONTABLETS: 'src/img/Smartfon_OBRAZ-DUŻY.png',
+    image: 'src/img/smartfon-OBRAZ_MALY.jpg',
+    imageONTABLETS: 'src/img/Smartfon_OBRAZ-DUZY.png',
   },
   {
     id: 2,
-    image: 'src/img/tablety-OBRAZ_MAŁY.png',
-    imageONTABLETS: 'src/img/Tablety_OBRAZ_DUŻY.png',
+    image: 'src/img/tablety-OBRAZ_MALY.png',
+    imageONTABLETS: 'src/img/Tablety_OBRAZ_DUZY.png',
   },
   {
     id: 3,
-    image: 'src/img/smartwatche-OBRAZ_MAŁY.png',
-    imageONTABLETS: 'src/img/Smartwatche_OBRAZ-DUŻY.png',
+    image: 'src/img/smartwatche-OBRAZ_MALY.png',
+    imageONTABLETS: 'src/img/Smartwatche_OBRAZ-DUZY.png',
   },
 ];
 
