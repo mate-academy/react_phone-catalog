@@ -7,13 +7,18 @@ import AddToLovelyButton from '../AddToLovelyButton';
 interface Props {
   gadget: Products;
   gadgets: string;
+  isSugested?: boolean;
 }
 
-const ViewCart: React.FC<Props> = ({ gadget, gadgets }) => {
+const ViewCart: React.FC<Props> = ({ gadget, gadgets, isSugested }) => {
   return (
     <>
       <Link
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onClick={() => {
+          if (isSugested) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }}
         to={`/${gadgets}/${gadget.itemId}`}
         key={gadget.id}
         className={viewCartStyle.list__reference}

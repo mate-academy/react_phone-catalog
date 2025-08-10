@@ -87,9 +87,9 @@ const WelcomeSlider: React.FC = () => {
     <div id="#" className={welcomeStyles.header}>
       <HeaderLogoMenu />
 
-      <div className={welcomeStyles.header__title}>
+      <h1 className={welcomeStyles.header__title}>
         Welcome to Nice Gadgets store!
-      </div>
+      </h1>
 
       <div className={welcomeStyles.header__wrapper}>
         <div className="navigation-button-prev-1">

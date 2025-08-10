@@ -81,6 +81,7 @@ const SliderCarts: React.FC<Props> = ({
                   gadget={phone}
                   gadgets={phone.category}
                   key={phone.id}
+                  isSugested={isSugested}
                 />
               </SwiperSlide>
             );
