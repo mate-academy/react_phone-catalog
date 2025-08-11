@@ -85,8 +85,18 @@ export const ProductItem: React.FC<Props> = ({
       </div>
 
       <div className="buttons">
-        <button className="button__add" onClick={handleToggleCart}>
-          {isInCart ? 'Remove' : 'Add to cart'}
+        <button
+          className="button__add"
+          onClick={handleToggleCart}
+          style={{
+            backgroundColor: isInCart
+              ? isBasicDark
+                ? '#4A4D58'
+                : '#75767F'
+              : undefined,
+          }}
+        >
+          {isInCart ? 'Remove from cart' : 'Add to cart'}
         </button>
         <button className="button__like" onClick={handleToggleFavourite}>
           <img src={getLikeIcon(isBasicDark, isFavourite)} alt="like" />

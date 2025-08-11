@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import './ProductInfo.scss';
 import home from '../../img/home.svg';
 import goto from '../../img/arrowRight.svg';
 import back from '../../img/arrowLeft.svg';
+import heart from '../../img/heart.svg';
+import liked from '../../img/heartRed.svg';
+import heartLight from '../../img/heartLight.svg';
 import notFound from '../../../public/img/product-not-found.png';
 import { GlassyOrbLoader } from '../Loader';
-import heart from '../../img/heart.svg';
-import like from '../../img/heartRed.svg';
 import { useInfoHook } from './useInfoHook';
 import { ProductSlider } from '../ProductCard';
 import { NavLink, useParams } from 'react-router-dom';
 import { NameSlider } from '../../types/nameslider';
+import { ThemeContext } from '../Themes';
 
 export const ProductInfo: React.FC = () => {
   const { category } = useParams<{ category: string }>();
+  const { theme } = useContext(ThemeContext);
+  const isBasicDark = theme === 'dark';
+
+  const getLikeIcon = (isDark: boolean, isFav: boolean) => {
+    if (isDark) {
+      return isFav ? liked : heart;
+    }
+
+    return isFav ? liked : heartLight;
+  };
 
   const {
     selectedPhone,
@@ -158,14 +170,21 @@ export const ProductInfo: React.FC = () => {
                 <button
                   className="productInfo__btnAdd"
                   onClick={handleToggleCart}
+                  style={{
+                    backgroundColor: isAdded
+                      ? isBasicDark
+                        ? '#4A4D58'
+                        : '#75767F'
+                      : undefined,
+                  }}
                 >
-                  {isAdded ? 'Remove' : 'Add to cart'}
+                  {isAdded ? 'Remove from cart' : 'Add to cart'}
                 </button>
                 <button
                   className="productInfo__btnLike"
                   onClick={handleToggleFavourite}
                 >
-                  <img src={isFav ? like : heart} alt="like" />
+                  <img src={getLikeIcon(isBasicDark, isFav)} alt="like" />
                 </button>
               </div>
 
