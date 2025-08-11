@@ -6,8 +6,13 @@
   &__button {
     border: none;
     background-color: #323542;
-    padding-inline: 8px; 
-    color: #F1F2F9;
+    padding-inline: 8px;
+    color: #f1f2f9;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
   }
 
   &__wrapper {
@@ -22,5 +27,22 @@
     object-fit: cover;
     object-position: center 30%;
     display: block;
+  }
+
+  // @media (max-width: 1200px) {
+  // }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    &__wrapper {
+      width: 100%;
+      height: 189px;
+      overflow: hidden;
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+    &__button {
+      display: none;
+    }
   }
 }

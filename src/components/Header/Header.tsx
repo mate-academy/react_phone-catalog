@@ -21,6 +21,7 @@ export const Header: React.FC = () => {
             ACCESSORIES
           </Link>
         </nav>
+
         <div className="header__button">
           <Link to="#" className="header__button-link">
             <img src="/img/icons/icon-favourites.svg" alt="favourites" />
@@ -30,6 +31,9 @@ export const Header: React.FC = () => {
           </Link>
         </div>
       </div>
+      <button className="burger-menu" aria-label="Toggle menu">
+        <img src="/img/icons/menu.svg" alt="burger menu" />
+      </button>
     </header>
   );
 };

@@ -1,36 +1,57 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import './ProductsList.scss';
 import { Product } from '../../utils/Product';
 import { ProductCard } from '../ProductCard';
-import { PaginationControl } from '../PaginationControl';
 
 type Props = {
   products: Product[];
   title: string;
 };
 
-const PAGE_SIZE = 4;
-
 export const ProductsList: React.FC<Props> = ({ products, title }) => {
-  const [page, setPage] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const startIndex = page * PAGE_SIZE;
-  const visibleProducts = products.slice(startIndex, startIndex + PAGE_SIZE);
+  const scrollAmount = 272 + 16;
 
-  const totalPages = Math.ceil(products.length / PAGE_SIZE);
+  const scrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
       <div className="header-row">
         <h2>{title}</h2>
-        <PaginationControl
-          page={page}
-          totalPages={totalPages}
-          onPageChange={setPage}
-        />
+        <div className="arrow">
+          <button className="arrow__button" onClick={scrollLeft}>
+            <img
+              className="arrow__image"
+              src="/img/icons/arrow-left.svg"
+              alt="arrow left"
+            />
+          </button>
+
+          <button className="arrow__button" onClick={scrollRight}>
+            <img
+              className="arrow__image"
+              src="/img/icons/arrow-right.svg"
+              alt="arrow right"
+            />
+          </button>
+        </div>
       </div>
-      <div className="products-list">
-        {visibleProducts.map(product => (
+      <div className="products-list" ref={containerRef}>
+        {products.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

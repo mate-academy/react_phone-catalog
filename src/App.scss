@@ -3,10 +3,28 @@
 
 .App {
   font-family: Mont, sans-serif;
-  background-color: #0F1121;
-  color: #F1F2F9;
+  background-color: #0f1121;
+  color: #f1f2f9;
 
   &__content {
-  padding-inline: 152px;
-}
+    padding-inline: 152px;
+  }
+
+  @media (max-width: 1200px) {
+    &__content {
+      padding-inline: 32px;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    &__content {
+      padding-inline: 24px;
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+    &__content {
+      padding-inline: 16px;
+    }
+  }
 }

@@ -13,21 +13,29 @@ export const PaginationControl: React.FC<Props> = ({
   onPageChange,
 }) => {
   return (
-    <div>
+    <div className="arrow">
       <button
-        className="arrow-button"
+        className="arrow__button"
         onClick={() => onPageChange(Math.max(page - 1, 0))}
         disabled={page === 0}
       >
-        ‹
+        <img
+          className="arrow__image"
+          src="/img/icons/arrow-left.svg"
+          alt="arrow left"
+        />
       </button>
 
       <button
-        className="arrow-button"
+        className="arrow__button"
         onClick={() => onPageChange(Math.min(page + 1, totalPages - 1))}
         disabled={page === totalPages - 1}
       >
-        ›
+        <img
+          className="arrow__image"
+          src="/img/icons/arrow-right.svg"
+          alt="arrow right"
+        />
       </button>
     </div>
   );

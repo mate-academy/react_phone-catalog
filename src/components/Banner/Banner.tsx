@@ -4,7 +4,13 @@ import './Banner.scss';
 export const Banner: React.FC = () => {
   return (
     <div className="banner">
-      <button className="banner__button">‹</button>
+      <button className="banner__button">
+        <img
+          className="banner__arrow"
+          src="/img/icons/arrow-left.svg"
+          alt="arrow left"
+        />
+      </button>
       <div className="banner__wrapper">
         <img
           className="banner__image"
@@ -12,7 +18,13 @@ export const Banner: React.FC = () => {
           alt="banner image"
         />
       </div>
-      <button className="banner__button">›</button>
+      <button className="banner__button">
+        <img
+          className="banner__arrow"
+          src="/img/icons/arrow-right.svg"
+          alt="arrow right"
+        />
+      </button>
       {/* <div className="banner__container">
         <h1>Now available in our store!</h1>
         <p>Be the first!</p>

@@ -35,7 +35,7 @@ export const HomePage: React.FC = () => {
         );
 
         // const minPrice = Math.min(...json.map(p => p.price));
-        // const maxPrice = minPrice + 300; 
+        // const maxPrice = minPrice + 300;
 
         // const hotProducts = json.filter(
         //   p => p.price >= minPrice && p.price <= maxPrice,

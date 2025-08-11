@@ -1,19 +1,30 @@
-.arrow-button {
-  border: none;
-  background-color: #323542;
-  width: 32px;
-  height: 32px;
-  font-size: 24px;
-  color: #f1f2f9;
+.arrow {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 
-  &:disabled {
-    cursor: not-allowed;
-    background-color: transparent;
-    border: 1px solid #3b3e4a;
-    color: #4a4d58;
+  &__button {
+    border: none;
+    background-color: #323542;
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    color: #f1f2f9;
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: transparent;
+      border: 1px solid #3b3e4a;
+      color: #4a4d58;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: #7a47d9;
+    }
   }
 
-  &:hover:not(:disabled) {
-    background-color: #7a47d9;
+  &__image {
+    width: 16px;
+    height: 16px;
   }
 }

@@ -22,7 +22,11 @@ export const Footer: React.FC = () => {
       <div className="footer__button">
         <p className="footer__button--text">Back to top</p>
         <button className="footer__button--back-to-top">
-          <img src="/img/icons/arrow-up.svg" alt="arrow up" className='footer__button--arrow-up' />
+          <img
+            src="/img/icons/arrow-up.svg"
+            alt="arrow up"
+            className="footer__button--arrow-up"
+          />
         </button>
       </div>
     </footer>
