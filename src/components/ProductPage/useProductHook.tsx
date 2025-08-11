@@ -1,24 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Product, ProductDetails } from '../../types/ProductTipes';
 import { fetchAllProducts, fetchProducts } from '../../utils/api';
+import { SortOption, ItemsPerPageOption } from '../../types/ProductTipes';
 
 export const useProductHook = () => {
   const [phones, setPhones] = useState<ProductDetails[]>([]);
-  const [itemPrevPage, setItemPrevPage] = useState(8);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [sortBy, setSortBy] = useState('Newest');
-  const [loading, setLoading] = useState(true);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [error, setError] = useState<string | null>(null);
-  // eslint-disable-next-line
-  const [cart, setCart] = useState<ProductDetails[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
+  //eslint-disable-next-line
+  const [cart, setCart] = useState<ProductDetails[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const [sortBy, setSortBy] = useState<SortOption>('Newest');
+  const [itemPrevPage, setItemPrevPage] = useState<ItemsPerPageOption>(8);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [searchParams, setSearchParams] = useSearchParams();
   const path = useLocation();
   const currentCategory = path.pathname.slice(1);
 
   useEffect(() => {
-    const sortParam = searchParams.get('sort');
+    const sortParam = searchParams.get('sort') as SortOption | null;
     const pageParam = searchParams.get('page');
     const itemsPerPageParam = searchParams.get('itemsPerPage');
 
@@ -30,10 +33,12 @@ export const useProductHook = () => {
       setCurrentPage(Number(pageParam));
     }
 
-    if (itemsPerPageParam) {
+    if (itemsPerPageParam === 'all') {
+      setItemPrevPage('all');
+    } else if (itemsPerPageParam) {
       setItemPrevPage(Number(itemsPerPageParam));
     }
-    // eslint-disable-next-line
+    //eslint-disable-next-line
     console.log('Сортування запущено');
   }, [searchParams]);
 
@@ -62,11 +67,11 @@ export const useProductHook = () => {
         const validCategories = ['phones', 'tablets', 'accessories'];
 
         if (validCategories.includes(currentCategory)) {
-          const filteredProducts = data.filter(
-            (product: Product) => product.category === currentCategory,
+          const filtered = data.filter(
+            (p: ProductDetails) => p.category === currentCategory,
           );
 
-          setProducts(filteredProducts);
+          setProducts(filtered);
         } else {
           setProducts([]);
         }
@@ -82,34 +87,47 @@ export const useProductHook = () => {
     setCart(savedCart);
   }, [currentCategory]);
 
-  const sortedProducts = [...products].sort((a, b) => {
-    if (sortBy === 'Newest') {
-      return b.year - a.year;
-    }
+  const sortedProducts = useMemo(() => {
+    return [...products].sort((a, b) => {
+      const priceA = a.fullPrice ?? 0;
+      const priceB = b.fullPrice ?? 0;
+      const yearA = a.year ?? 0;
+      const yearB = b.year ?? 0;
 
-    if (sortBy === 'Alphabetically') {
-      return a.name.localeCompare(b.name);
-    }
+      if (sortBy === 'Cheapest') {
+        return priceA - priceB;
+      }
 
-    if (sortBy === 'Cheapest') {
-      return a.fullPrice - b.fullPrice;
-    }
+      if (sortBy === 'Newest') {
+        return yearB - yearA;
+      }
 
-    return a.name.localeCompare(b.name);
-  });
+      if (sortBy === 'Alphabetically') {
+        return a.name.localeCompare(b.name);
+      }
 
-  const startIndex = (currentPage - 1) * itemPrevPage;
-  const endIndex = startIndex + itemPrevPage;
+      return 0;
+    });
+  }, [products, sortBy]);
+
+  const itemsPerPage =
+    itemPrevPage === 'all' ? sortedProducts.length : itemPrevPage;
+  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
   const currentItems = sortedProducts.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(sortedProducts.length / itemPrevPage);
 
-  const handleSortChange = (option: string) => {
+  //eslint-disable-next-line
+  console.log('itemPrevPage:', itemPrevPage);
+
+  const handleSortChange = (option: SortOption) => {
     setSortBy(option);
     setSearchParams({
       sort: option,
       page: '1',
       itemsPerPage: String(itemPrevPage),
     });
+    setCurrentPage(1);
   };
 
   const handlePageChange = (newPage: number) => {
@@ -121,31 +139,29 @@ export const useProductHook = () => {
     });
   };
 
-  const handleItemsPerPageChange = (newItemsPerPage: number) => {
+  const handleItemsPerPageChange = (newItemsPerPage: ItemsPerPageOption) => {
     setItemPrevPage(newItemsPerPage);
     setSearchParams({
       sort: sortBy,
       page: '1',
       itemsPerPage: String(newItemsPerPage),
     });
+    setCurrentPage(1);
   };
 
   return {
     phones,
-    loading,
-    error,
+    products,
     currentItems,
     currentPage,
     totalPages,
-    setError,
-    setCurrentPage,
-    handleSortChange,
-    setItemPrevPage,
     itemPrevPage,
     sortBy,
-    products,
     currentCategory,
-    handleItemsPerPageChange,
+    loading,
+    error,
+    handleSortChange,
     handlePageChange,
+    handleItemsPerPageChange,
   };
 };

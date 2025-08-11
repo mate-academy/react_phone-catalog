@@ -6,7 +6,7 @@ import back from '../../img/arrowLeft.svg';
 import goto from '../../img/arrowRight.svg';
 import { useState } from 'react';
 import { useProductHook } from './useProductHook';
-import { Product } from '../../types/ProductTipes';
+import { Product, SortOption } from '../../types/ProductTipes';
 import { GlassyOrbLoader } from '../Loader/GlassyOrbLoader';
 import { NavLink } from 'react-router-dom';
 
@@ -15,15 +15,15 @@ export const ProductPage = () => {
 
   const {
     currentItems,
+    currentPage,
+    totalPages,
+    itemPrevPage,
+    handleSortChange,
+    handlePageChange,
+    handleItemsPerPageChange,
     loading,
     error,
     currentCategory,
-    currentPage,
-    totalPages,
-    handleSortChange,
-    handleItemsPerPageChange,
-    handlePageChange,
-    itemPrevPage,
     products,
   } = useProductHook();
 
@@ -80,7 +80,7 @@ export const ProductPage = () => {
                 <h3 className="sortby">Sort by</h3>
                 <DDSortBy
                   onChange={option => {
-                    handleSortChange(option.value);
+                    handleSortChange(option.value as SortOption);
                   }}
                 />
               </div>
@@ -88,7 +88,9 @@ export const ProductPage = () => {
                 <h3 className="item__page">Items on page</h3>
                 <DDNum
                   onChange={option =>
-                    handleItemsPerPageChange(Number(option.value))
+                    handleItemsPerPageChange(
+                      option.value === 'all' ? 'all' : Number(option.value),
+                    )
                   }
                 />
               </div>
@@ -115,16 +117,18 @@ export const ProductPage = () => {
                   <img src={back} alt="Back" />
                 </button>
 
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
-                  <button
-                    key={number}
-                    className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
-                    onClickCapture={() => handlePageChange(number)}
-                    disabled={currentPage === number}
-                  >
-                    {number}
-                  </button>
-                ))}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  number => (
+                    <button
+                      key={number}
+                      className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
+                      onClickCapture={() => handlePageChange(number)}
+                      disabled={currentPage === number}
+                    >
+                      {number}
+                    </button>
+                  ),
+                )}
 
                 <button
                   className={`mobile__buttonNext ${currentPage === totalPages ? 'disabled' : ''}`}
