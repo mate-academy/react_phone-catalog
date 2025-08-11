@@ -42,10 +42,13 @@ export const ProductInfoPage: React.FC = () => {
 
   const colorMap: Record<string, string> = {
     rosegold: '#B76E79',
-    midnightgreen: '#4e5851',
+    midnight: '#0A0B1D',
+    midnightgreen: '#4E5851',
     sierrablue: '#9BB5CE',
-    spaceblack: '#1F1F1F',
     spacegray: '#4A4A4A',
+    spaceblack: '#121212',
+    champagne: '#F7E7CE',
+    skyblueish: '#87CEEB',
   };
 
   const specs = [
@@ -121,8 +124,7 @@ export const ProductInfoPage: React.FC = () => {
 
       <h2 className="full-name">{modelName}</h2>
 
-      <div className='photo-control-box'>
-
+      <div className="photo-control-box">
         <div className="modelsPhoto">
           <div className="mainPhoto">
             <img className="main-img" src={mainPhoto} alt="main photo" />
@@ -148,12 +150,13 @@ export const ProductInfoPage: React.FC = () => {
         </div>
 
         <div className="main-controls">
+          <div className="text-container">
+            <p className="small-text-12-600">Available colors</p>
+            <p className="id-text-12">ID: {foundId}</p>
+          </div>
+
           <div className="colors-id-box">
-            <div className="colors-box">
-              <p className="small-text-12-600">Available colors</p>
-
-              
-
+            <div className="container">
               <div className="models-colors">
                 {foundItem?.colorsAvailable.map(color => {
                   const safeColor = getSafeColor(color);
@@ -176,72 +179,66 @@ export const ProductInfoPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="id-box">
-              <p className="small-text-12">ID: {foundId}</p>
-            </div>
-          </div>
+            <div className="select-capacity-container">
+              <div className="info-copacity-box">
+                <p className="small-text-12-600">Select capacity</p>
 
-          <div className="select-capacity-container">
-            <div className="info-copacity-box">
-              <p className="small-text-12-600">Select capacity</p>
-
-              <div className="capacity-list">
-                {foundItem?.capacityAvailable.map(capacity => {
-                  return (
-                    <div
-                      key={capacity}
-                      className={cn('capacity', {
-                        'is-active': selectedCapacity === capacity,
-                      })}
-                      onClick={() => setSelectedCapacity(capacity)}
-                    >
-                      <p className="main-body-text-14">{capacity}</p>
-                    </div>
-                  );
-                })}
+                <div className="capacity-list">
+                  {foundItem?.capacityAvailable.map(capacity => {
+                    return (
+                      <div
+                        key={capacity}
+                        className={cn('capacity', {
+                          'is-active': selectedCapacity === capacity,
+                        })}
+                        onClick={() => setSelectedCapacity(capacity)}
+                      >
+                        <p className="main-body-text-14">{capacity}</p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="price-container">
-            {foundProduct ? (
-              foundProduct.year < 2021 ? (
-                <>
-                  <div className="price">${foundProduct.price}</div>
-                  <div className="price old-price">${foundProduct.fullPrice}</div>
-                </>
-              ) : (
-                <div className="price">${foundProduct.fullPrice}</div>
-              )
-            ) : null}
-          </div>
-
-          <div className="add-favourites-container">
-            <div className="add-button has-shadow-cursor">
-              <p className="button-text">Add to card</p>
+            <div className="price-container">
+              {foundProduct &&
+                (foundProduct.year < 2021 ? (
+                  <>
+                    <div className="price">${foundProduct.price}</div>
+                    <div className="price old-price">${foundProduct.fullPrice}</div>
+                  </>
+                ) : (
+                  <div className="price">${foundProduct.fullPrice}</div>
+                ))}
             </div>
 
-            <div className="favourites-button has-shadow-cursor">
-              <img
-                className="icon"
-                src="/img/icons/Heart.svg"
-                alt="favourites img"
-              />
-            </div>
-          </div>
-
-          <div className="info">
-            {specs.map(({ name, value }) => (
-              <div className="spec-name-value-box" key={name}>
-                <div className="spec-name">{name}</div>
-                <div className="spec-value">{value}</div>
+            <div className="add-favourites-container">
+              <div className="add-button has-shadow-cursor">
+                <p className="button-text">Add to card</p>
               </div>
-            ))}
+
+              <div className="favourites-button has-shadow-cursor">
+                <img
+                  className="icon"
+                  src="/img/icons/Heart.svg"
+                  alt="favourites img"
+                />
+              </div>
+            </div>
+
+            <div className="info">
+              {specs.map(({ name, value }) => (
+                <div className="spec-name-value-box" key={name}>
+                  <div className="spec-name">{name}</div>
+                  <div className="spec-value">{value}</div>
+                </div>
+              ))}
+            </div>
           </div>
+
         </div>
       </div>
-
-      {/* <div className='grey-line'></div> */}
     </div>
   );
 };

@@ -5,58 +5,72 @@
     padding: 0 24px 0 0;
   }
 
-  .small-text-12 {
-    color: $border-hover-color;
+  @include onDesktop {
+    padding: 0 ;
   }
+
   .full-name {
     padding-bottom: 32px;
   }
 
   .photo-control-box {
 
+    .id-text-12 {
+      font-size: 12px;
+      color: $border-hover-color;
+    }
+
     @include onTablet {
       display: flex;
-      gap: 17px;
+      gap: 18px;
+    }
+
+    @media (min-width: 1000px) {
+      gap: 0;
     }
 
     .modelsPhoto {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      flex-direction: column;
       gap: 16px;
 
       @include onTablet {
         width: 55%;
         flex-direction: row;
-
-        align-items: start;
+        align-items: flex-start;
       }
 
       .mainPhoto {
         display: flex;
-        height: 288px;
-        width: 288px;
         justify-content: center;
         align-items: center;
-        padding: 5px 0;
-
+        padding: 5px;
         background-color: $main-bg-color;
         border-radius: 8px;
         border: 1px solid $border-color;
 
+        width: 100%;
+        max-width: 288px;
+        aspect-ratio: 1 / 1;
+
         .main-img {
+          width: 100%;
           height: 100%;
+          object-fit: contain;
           border-radius: 8px;
         }
 
         @include onTablet {
           order: 2;
-        }
+          max-width: 464px;
+          width: 100%;
+          height: auto;
 
-        @include onDesktop {
-          height: 464px;
-          width: 464px;
+          .main-img {
+            max-height: none;
+            max-width: none;
+          }
         }
       }
 
@@ -74,8 +88,6 @@
         @include onDesktop {
           gap: 16px;
         }
-
-
 
         .smallPhoto-box {
           height: 50px;
@@ -95,6 +107,11 @@
             height: 35px;
             width: 35px;
           }
+
+          // @media (min-width: 1000px) {
+          //   height: 40px;
+          //   width: 40px;
+          // }
 
           @include onDesktop {
             height: 80px;
@@ -122,22 +139,34 @@
     }
 
     .main-controls {
-
       @include onTablet {
-      width: 45%
-    }
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .text-container {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding-bottom: 8px;
+      }
 
       .colors-id-box {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 24px;
-        margin-bottom: 24px;
-        border-bottom: 1px solid $border-color;
+        @include onTablet {
+          min-width: 237px;
+          max-width: 320px;
+          flex: 1;
+        }
 
-        .colors-box {
+        .container {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+
+          justify-content: space-between;
+          padding-bottom: 24px;
+          margin-bottom: 24px;
+          border-bottom: 1px solid $border-color;
 
           .models-colors {
             display: flex;
@@ -147,6 +176,7 @@
               transition:
                 transform 0.3s ease,
                 box-shadow 0.3s ease;
+
               border: 1px solid $border-color;
               height: 32px;
               width: 32px;
@@ -173,150 +203,132 @@
           }
         }
 
-        // .id-box {
+        .select-capacity-container {
+          padding-bottom: 24px;
+          margin-bottom: 32px;
+          border-bottom: 1px solid $border-color;
 
-        // }
-      }
-
-      .select-capacity-container {
-        padding-bottom: 24px;
-        margin-bottom: 32px;
-        border-bottom: 1px solid $border-color;
-
-        .info-copacity-box {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-
-          .capacity-list {
+          .info-copacity-box {
             display: flex;
+            flex-direction: column;
             gap: 8px;
 
-            .capacity {
+            .capacity-list {
               display: flex;
-              align-items: center;
-              width: fit-content;
-              height: 32px;
-              padding: 0 8px;
+              gap: 8px;
 
-              border-radius: 8px;
-              background-color: $main-bg-color;
-              border: 1px solid $border-color;
-              cursor: pointer;
+              .capacity {
+                display: flex;
+                align-items: center;
+                // width: fit-content;
+                height: 32px;
+                padding: 0 8px;
 
-              .main-body-text-14 {
-                color: $text-main-color;
-              }
+                border-radius: 8px;
+                background-color: $main-bg-color;
+                border: 1px solid $border-color;
+                cursor: pointer;
 
-              // .main-body-text-14 {
-              //   color: $text-white-color;
-              // }
+                .main-body-text-14 {
+                  color: $text-main-color;
+                }
 
-              // background-color: $bg-color-black;
+                transition:
+                  transform 0.3s ease,
+                  box-shadow 0.3s ease;
+                &.is-active {
+                  border-color: rgb(170, 158, 158);
+                  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+                  background-color: $border-hover-color;
 
-              transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
-              &.is-active {
-                border-color: rgb(170, 158, 158);
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+                  background: linear-gradient(
+                    to top right,
+                    $border-hover-color 30%,
+                    $main-bg-color 75%
+                  );
 
-                background-color: $border-hover-color;
+                  transform: scale(1.1);
+                }
 
-                // background: linear-gradient(to top right, $border-hover-color,white);
-
-                background: linear-gradient(
-                  to top right,
-                  $border-hover-color 30%,
-                  $main-bg-color 75%
-                );
-
-                transform: scale(1.1);
-              }
-
-              &:hover {
-                border-color: $border-hover-color;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+                &:hover {
+                  border-color: $border-hover-color;
+                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+                }
               }
             }
           }
         }
-      }
 
-      .price-container {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        padding-bottom: 32px;
-
-        .price {
-          font-weight: 800;
-          font-size: 22px;
-        }
-
-        .old-price {
-          font-weight: 600;
-          text-decoration: line-through;
-          color: $text-not-active-color;
-        }
-      }
-
-      .add-favourites-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 8px;
-        // max-width: 360px;
-        // margin: auto;
-
-        .add-button {
+        .price-container {
           display: flex;
-          justify-content: center;
+          gap: 8px;
           align-items: center;
-          width: 100%;
-          background-color: rgba(33, 108, 255, 1);
-          border-radius: 8px;
-        }
+          padding-bottom: 32px;
 
-        .favourites-button {
-          display: flex;
-          flex-shrink: 0;
-          align-items: center;
-          justify-content: center;
-          height: 40px;
-          width: 40px;
-          border-radius: 50%;
-          border: 1px solid $border-color;
-        }
-      }
+          .price {
+            font-weight: 800;
+            font-size: 22px;
+          }
 
-      .info {
-        display: flex;
-        flex-direction: column;
-        padding: 32px 0 56px;
-        gap: 8px;
-
-        .spec-name-value-box {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          height: 15px;
-
-          .spec-name {
-            font-weight: 700;
-            font-size: 12px;
+          .old-price {
+            font-weight: 600;
+            text-decoration: line-through;
             color: $text-not-active-color;
           }
+        }
 
-          .spec-value {
-            font-weight: 700;
-            font-size: 12px;
-            color: $text-main-color;
+        .add-favourites-container {
+          display: flex;
+          justify-content: space-between;
+          gap: 8px;
+
+          .add-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: rgba(33, 108, 255, 1);
+            border-radius: 8px;
+          }
+
+          .favourites-button {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            border: 1px solid $border-color;
+          }
+        }
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          padding: 32px 0 0;
+          gap: 8px;
+
+          .spec-name-value-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 15px;
+
+            .spec-name {
+              font-weight: 700;
+              font-size: 12px;
+              color: $text-not-active-color;
+            }
+
+            .spec-value {
+              font-weight: 700;
+              font-size: 12px;
+              color: $text-main-color;
+            }
           }
         }
       }
-
-
     }
   }
-
 }
