@@ -1,5 +1,10 @@
 import './productInfoPage.scss';
-import { useNavigate, useParams } from 'react-router-dom';
+import {
+  Link,
+  useNavigate,
+  useParams,
+  // useLocation
+} from 'react-router-dom';
 import { BreadcrumbsNav } from '../BreadcrumbsNav';
 import { useEffect, useState } from 'react';
 
@@ -17,23 +22,28 @@ export type ProductInfoUnionType =
 
 export const ProductInfoPage: React.FC = () => {
   const navigate = useNavigate();
-  const [foundItem, setFoundItem] = useState<ProductInfoUnionType | null>(null);
 
+  const [foundItem, setFoundItem] = useState<ProductInfoUnionType | null>(null);
   const [foundProduct, setFoundProduct] = useState<AllProductsType | null>(
     null,
   );
+
+  // const location = useLocation();
+
+  // console.log(location);
+  // console.log('-----location-----', location);
 
   const [foundId, setFoundId] = useState(null);
 
   const [mainPhoto, setMainPhoto] = useState<string | undefined>(undefined);
 
-  const [selectedColor, setSelectedColor] = useState<string | null>(
-    foundItem?.color || null,
-  );
+  // const [selectedColor, setSelectedColor] = useState<string | null>(
+  //   foundItem?.color || null,
+  // );
 
-  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(
-    foundItem?.capacity || null,
-  );
+  // const [selectedCapacity, setSelectedCapacity] = useState<string | null>(
+  //   foundItem?.capacity || null,
+  // );
 
   const { category, itemId } = useParams<{
     category: string;
@@ -90,12 +100,12 @@ export const ProductInfoPage: React.FC = () => {
 
         setFoundItem(found);
         setMainPhoto(found.images[0]);
-        setSelectedColor(found.color);
-        setSelectedCapacity(found.capacity);
+        // setSelectedColor(found.color);
+        // setSelectedCapacity(found.capacity);
       });
   }, [category, itemId]);
 
-  console.log('-----selectedCapacity-----', selectedCapacity);
+  // console.log('-----selectedCapacity-----', selectedCapacity);
 
   useEffect(() => {
     fetch(`/api/products.json`)
@@ -117,6 +127,39 @@ export const ProductInfoPage: React.FC = () => {
 
   const modelName = foundItem?.name;
   const modelPhoto = foundItem?.images;
+
+  const parts = itemId?.split('-') || [];
+  // const capacityFromUrl = parts.find(part =>
+  //   part.toLowerCase().endsWith('gb') || part.toLowerCase().endsWith('mm')
+  // ) || '';
+  // const colorFromUrl = parts[parts.length - 1] || '';
+
+  // const modelPrefix = parts.slice(0, parts.length - 2).join('-');
+  // const selectedColor = colorFromUrl;
+
+  const capacityIndex = parts.findIndex(p => {
+    const low = p.toLowerCase();
+
+    return low.endsWith('gb') || low.endsWith('mm') || low.endsWith('tb');
+  });
+
+  let capacityFromUrl = '';
+  let colorFromUrl = '';
+  let modelPrefix = '';
+
+  if (capacityIndex >= 0) {
+    capacityFromUrl = parts[capacityIndex];               // например "40mm" или "256gb"
+
+    const after = parts.slice(capacityIndex + 1);         // всё что идёт после capacity
+    colorFromUrl = after.length ? after.join('-') : '';   // "space-gray" или "space-gray-extra"
+    modelPrefix = parts.slice(0, capacityIndex).join('-'); // всё до capacity
+  } else {
+    return null;
+  }
+
+  // нормализованные для сравнений:
+  const selectedColor = colorFromUrl.toLowerCase();
+  // const selectedCapacity = capacityFromUrl.toLowerCase();
 
   return (
     <div className="product-info-page">
@@ -159,21 +202,25 @@ export const ProductInfoPage: React.FC = () => {
             <div className="container">
               <div className="models-colors">
                 {foundItem?.colorsAvailable.map(color => {
+                  color=color.split(' ').join('-')
                   const safeColor = getSafeColor(color);
 
+                  const newItemId = `${modelPrefix}-${capacityFromUrl}-${color}`;
+                  const newLink = `/${category}/${newItemId}`;
+
                   return (
-                    <div
+                    <Link
+                      to={newLink}
                       key={color}
                       className={cn('border-color', {
                         'is-active': selectedColor === color,
                       })}
-                      onClick={() => setSelectedColor(color)}
                     >
                       <div
                         className="color"
                         style={{ backgroundColor: safeColor }}
                       ></div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
@@ -185,16 +232,21 @@ export const ProductInfoPage: React.FC = () => {
 
                 <div className="capacity-list">
                   {foundItem?.capacityAvailable.map(capacity => {
+                    capacity = capacity.toLowerCase();
+
+                    const newItemId = `${modelPrefix}-${capacity}-${selectedColor}`;
+                    const newLink = `/${category}/${newItemId}`;
+
                     return (
-                      <div
+                      <Link
+                        to={newLink}
                         key={capacity}
                         className={cn('capacity', {
-                          'is-active': selectedCapacity === capacity,
+                          'is-active': capacityFromUrl === capacity,
                         })}
-                        onClick={() => setSelectedCapacity(capacity)}
                       >
                         <p className="main-body-text-14">{capacity}</p>
-                      </div>
+                      </Link>
                     );
                   })}
                 </div>
@@ -206,7 +258,9 @@ export const ProductInfoPage: React.FC = () => {
                 (foundProduct.year < 2021 ? (
                   <>
                     <div className="price">${foundProduct.price}</div>
-                    <div className="price old-price">${foundProduct.fullPrice}</div>
+                    <div className="price old-price">
+                      ${foundProduct.fullPrice}
+                    </div>
                   </>
                 ) : (
                   <div className="price">${foundProduct.fullPrice}</div>
@@ -236,7 +290,6 @@ export const ProductInfoPage: React.FC = () => {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </div>

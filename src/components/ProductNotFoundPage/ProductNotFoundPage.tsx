@@ -19,9 +19,6 @@ export const ProductNotFoundPage: React.FC = () => {
       <div className="product-not-found-box">
         <h2 className="product-not-found-title">Product not found</h2>
 
-        {/* <p>The product you are looking for does not exist.</p> */}
-
-
         <div className='link-box'>
 
         <Link to="/" className="back-link"
