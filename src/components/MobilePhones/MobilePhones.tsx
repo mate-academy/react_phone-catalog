@@ -38,12 +38,16 @@ const MobilePhones: React.FC = () => {
   function handleSortChange(sort: string) {
     const newParams = new URLSearchParams(searchParams);
 
+    setCurrentPagePag(1);
+
     newParams.set('sort', sort);
     setSearchParams(newParams.toString());
   }
 
   function handleItemsChange(perItems: string) {
     const newParams = new URLSearchParams(searchParams);
+
+    setCurrentPagePag(1);
 
     newParams.set('quantity', perItems);
     setSearchParams(newParams.toString());
@@ -145,10 +149,6 @@ const MobilePhones: React.FC = () => {
               </select>
             </div>
           </div>
-
-          {/* <span className="icon is-left">
-              <i className="fas fa-search" aria-hidden="true" />
-            </span> */}
 
           <div>
             <label
