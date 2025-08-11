@@ -33,6 +33,8 @@ export const useProductHook = () => {
     if (itemsPerPageParam) {
       setItemPrevPage(Number(itemsPerPageParam));
     }
+    // eslint-disable-next-line
+    console.log('Сортування запущено');
   }, [searchParams]);
 
   useEffect(() => {
@@ -50,9 +52,7 @@ export const useProductHook = () => {
         });
     }, 500);
 
-    return () => {
-      clearTimeout(timeout);
-    };
+    return () => clearTimeout(timeout);
   }, []);
 
   useEffect(() => {
@@ -80,7 +80,28 @@ export const useProductHook = () => {
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
 
     setCart(savedCart);
-  }, [currentCategory, setError]);
+  }, [currentCategory]);
+
+  const sortedProducts = [...products].sort((a, b) => {
+    if (sortBy === 'Newest') {
+      return b.year - a.year;
+    }
+
+    if (sortBy === 'Alphabetically') {
+      return a.name.localeCompare(b.name);
+    }
+
+    if (sortBy === 'Cheapest') {
+      return a.fullPrice - b.fullPrice;
+    }
+
+    return a.name.localeCompare(b.name);
+  });
+
+  const startIndex = (currentPage - 1) * itemPrevPage;
+  const endIndex = startIndex + itemPrevPage;
+  const currentItems = sortedProducts.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(sortedProducts.length / itemPrevPage);
 
   const handleSortChange = (option: string) => {
     setSortBy(option);
@@ -108,11 +129,6 @@ export const useProductHook = () => {
       itemsPerPage: String(newItemsPerPage),
     });
   };
-
-  const indexOfLastItem = currentPage * itemPrevPage;
-  const indexOfFirstItem = indexOfLastItem - itemPrevPage;
-  const currentItems = phones.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(phones.length / itemPrevPage);
 
   return {
     phones,

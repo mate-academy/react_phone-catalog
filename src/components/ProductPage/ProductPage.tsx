@@ -12,12 +12,9 @@ import { NavLink } from 'react-router-dom';
 
 export const ProductPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
-  // eslint-disable-next-line
-  const [itemsOnPage, setItemsOnPage] = useState<number | 'all'>(8);
 
   const {
-    products,
-    sortBy,
+    currentItems,
     loading,
     error,
     currentCategory,
@@ -26,30 +23,9 @@ export const ProductPage = () => {
     handleSortChange,
     handleItemsPerPageChange,
     handlePageChange,
+    itemPrevPage,
+    products,
   } = useProductHook();
-
-  const sortedProducts = [...products].sort((a, b) => {
-    if (sortBy === 'Newest') {
-      return b.year - a.year;
-    }
-
-    if (sortBy === 'Alphabetically') {
-      return a.name.localeCompare(b.name);
-    }
-
-    if (sortBy === 'Cheapest') {
-      return a.fullPrice - b.fullPrice;
-    }
-
-    return a.name.localeCompare(b.name);
-  });
-
-  const itemsPerPage = itemsOnPage === 'all' ? products.length : itemsOnPage;
-  const totalPagess = Math.ceil(products.length / itemsPerPage);
-
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const visibleProducts = sortedProducts.slice(startIndex, endIndex);
 
   return (
     <main className="main__phonepage">
@@ -57,7 +33,6 @@ export const ProductPage = () => {
         <NavLink to="/">
           <img src={home} alt="home" />
         </NavLink>
-        {/*check if smt will be wrong */}
         <span>
           <img src={back} alt="Back" />
         </span>
@@ -73,6 +48,7 @@ export const ProductPage = () => {
           )}
         </p>
       </div>
+
       {error && (
         <div className="error__container">
           <p className="error__message">
@@ -86,7 +62,7 @@ export const ProductPage = () => {
           <h1 className="page__title">
             {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
           </h1>
-          <h1 className="mobile__models">{`${products.length}models`}</h1>
+          <h1 className="mobile__models">{`${products.length} models`}</h1>
         </>
       )}
 
@@ -95,6 +71,7 @@ export const ProductPage = () => {
           <GlassyOrbLoader />
         </div>
       )}
+
       {!loading && !error && (
         <>
           <div className="mobile__choise">
@@ -116,8 +93,9 @@ export const ProductPage = () => {
                 />
               </div>
             </div>
+
             <div className="mobile__cards">
-              {visibleProducts.map((product: Product) => (
+              {currentItems.map((product: Product) => (
                 <ProductItem
                   key={product.id}
                   product={product}
@@ -127,7 +105,7 @@ export const ProductPage = () => {
               ))}
             </div>
 
-            {itemsOnPage !== 'all' && (
+            {itemPrevPage !== products.length && (
               <div className="mobile__buttons">
                 <button
                   className={`mobile__buttonsPrev ${currentPage === 1 ? 'disabled' : ''}`}
@@ -136,18 +114,18 @@ export const ProductPage = () => {
                 >
                   <img src={back} alt="Back" />
                 </button>
-                {Array.from({ length: totalPagess }, (_, i) => i + 1).map(
-                  number => (
-                    <button
-                      key={number}
-                      className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
-                      onClickCapture={() => handlePageChange(number)}
-                      disabled={currentPage === number}
-                    >
-                      {number}
-                    </button>
-                  ),
-                )}
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
+                  <button
+                    key={number}
+                    className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
+                    onClickCapture={() => handlePageChange(number)}
+                    disabled={currentPage === number}
+                  >
+                    {number}
+                  </button>
+                ))}
+
                 <button
                   className={`mobile__buttonNext ${currentPage === totalPages ? 'disabled' : ''}`}
                   onClick={() => handlePageChange(currentPage + 1)}
