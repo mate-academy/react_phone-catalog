@@ -7,6 +7,7 @@ import { Product } from '../../utils/Product';
 
 export const HomePage: React.FC = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);
+  const [hotPrices, setHotPrices] = useState<Product[]>([]);
 
   useEffect(() => {
     const getNewModels = async () => {
@@ -22,7 +23,30 @@ export const HomePage: React.FC = () => {
       } catch (e) {}
     };
 
+    const getHotPrices = async () => {
+      try {
+        const res = await fetch('/api/products.json');
+        const json: Product[] = await res.json();
+
+        const maxDiscount = Math.max(...json.map(p => p.fullPrice - p.price));
+
+        const hotProducts = json.filter(
+          p => p.fullPrice - p.price === maxDiscount,
+        );
+
+        // const minPrice = Math.min(...json.map(p => p.price));
+        // const maxPrice = minPrice + 300; 
+
+        // const hotProducts = json.filter(
+        //   p => p.price >= minPrice && p.price <= maxPrice,
+        // );
+
+        setHotPrices(hotProducts);
+      } catch (e) {}
+    };
+
     getNewModels();
+    getHotPrices();
   }, []);
 
   return (
@@ -37,7 +61,7 @@ export const HomePage: React.FC = () => {
 
       <CategorySelectCard />
 
-      <h2 className="title-2">Hot prices</h2>
+      <ProductsList title="Hot prices" products={hotPrices} />
     </>
   );
 };
