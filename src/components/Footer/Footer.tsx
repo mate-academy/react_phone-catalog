@@ -41,6 +41,10 @@ export const Footer = () => {
             >
               Contacts
             </NavLink>
+
+            <NavLink className="footer-item" to="/" target="_blank">
+              Rights
+            </NavLink>
           </ul>
           <div className="footer__button">
             <h3 className="footer__buttonsName">Back to top</h3>
