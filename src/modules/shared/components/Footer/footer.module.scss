@@ -20,6 +20,11 @@
     width: 33%;
   }
 
+  &__logo-link {
+    display: flex;
+    width: fit-content;
+  }
+
   &__logo {
     width: 89px;
     height: 32px;

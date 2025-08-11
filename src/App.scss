@@ -2,7 +2,14 @@
 .App {
   display: flex;
   flex-direction: column;
-  row-gap: 24px;
+  justify-content: space-between;
+  height: 100vh;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
 
   &__main {
     margin-bottom: 64px;

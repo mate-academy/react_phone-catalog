@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { IconEnum } from '../../../../types/iconsType';
 import { IconButton } from '../IconButton';
+import { PagesType } from '../../../../types/PagesType';
 
 const footerLinks = [
   {
@@ -29,12 +30,17 @@ export const Footer: React.FC = React.memo(() => {
     <div className={cn(footerClass.footer)}>
       <div className={cn(footerClass.footer__content, 'container')}>
         <div className={cn(footerClass['footer__logo-wraper'])}>
-          <img
-            src="img/Logo.png"
-            alt="image logo"
-            loading="lazy"
-            className={cn(footerClass.footer__logo)}
-          />
+          <Link
+            className={cn(footerClass['footer__logo-link'])}
+            to={PagesType.home}
+          >
+            <img
+              src="img/Logo.png"
+              alt="image logo"
+              loading="lazy"
+              className={cn(footerClass.footer__logo)}
+            />
+          </Link>
         </div>
         <div className={cn(footerClass.footer__links)}>
           {footerLinks.map(({ to, label }) => (

@@ -48,51 +48,35 @@
   }
 
   &__swiper-container {
-    margin-right: 0;
-
     @include layout-container;
+
+    margin-right: 0;
 
     @include on-tablet {
       margin-right: 0;
     }
+
+    @include on-desktop {
+      @include layout-container;
+    }
   }
 
   &__swiper {
-    --gap: 16px;
-    --width-column: 60px;
-
-    gap: 16px;
-
     @include page-grid;
-
-
-    @include on-tablet {
-      --width-column: 35px;
-    }
-
-    @include on-desktop {
-      --width-column: 32px;
-    }
   }
 
   &__swiper-item {
-    --span: 3;
+    --width: 212px;
 
-    display: flex;
-    flex-direction: column;
     height: 100%;
-
-    width: calc(
-      var(--span) * var(--width-column) + (var(--span) - 1) * var(--gap)
-    ) !important;
-    flex-shrink: 0;
+    max-width: var(--width);
 
     @include on-tablet {
-      --span: 5;
+      --width: 237px;
     }
 
     @include on-desktop {
-      --span: 6;
+      max-width: none;
     }
   }
 }

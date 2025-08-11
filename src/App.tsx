@@ -12,12 +12,14 @@ export const App = () => (
   <PageProvider>
     <ProductDetailProvider>
       <div className="App">
-        <TopBar />
-        <GoBack />
-        <BackButton />
-        <main className="App__main">
-          <Outlet />
-        </main>
+        <div className="App__content">
+          <TopBar />
+          <GoBack />
+          <BackButton />
+          <main className="App__main">
+            <Outlet />
+          </main>
+        </div>
         <Footer />
       </div>
     </ProductDetailProvider>

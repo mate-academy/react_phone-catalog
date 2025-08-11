@@ -10,18 +10,30 @@ import cn from 'classnames';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/css/effect-coverflow';
-import { Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+import 'swiper/css/autoplay';
+import {
+  Pagination,
+  Navigation,
+  EffectCoverflow,
+  Autoplay,
+} from 'swiper/modules';
 
 export const Carousel = () => {
   return (
     <Swiper
       className={`${carouseClass.carousel}`}
-      modules={[Navigation, Pagination, EffectCoverflow]}
+      modules={[Navigation, Pagination, EffectCoverflow, Autoplay]}
       effect={'coverflow'}
       grabCursor={true}
       centeredSlides={true}
       spaceBetween={100}
       slidesPerView={1}
+      loop={true}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
       navigation={{
         nextEl: `.${carouseClass['carousel__nav--next']}`,
         prevEl: `.${carouseClass['carousel__nav--prev']}`,

@@ -70,6 +70,12 @@ export const CardsCariusel: React.FC<Props> = React.memo(
             grabCursor={true}
             spaceBetween={16}
             slidesPerView="auto"
+            breakpoints={{
+              1200: {
+                slidesPerView: 4,
+                spaceBetween: 16,
+              },
+            }}
             onInit={instance => {
               const swiper = instance;
 
