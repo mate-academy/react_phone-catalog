@@ -41,8 +41,8 @@ const WelcomeSlider: React.FC = () => {
 
     if (window.innerWidth <= 640) {
       newPathFirstImage = './img/Banner-mobile.5ab4e0f94787219dc791.png';
-      newPathSecondImage = '/img/banner-mobil-3.88470ad4d90a78897a60.png';
-      newPathThirdImage = '/img/banner-mobile-2.00d157dda3b7eb6a4ac1.png';
+      newPathSecondImage = './../img/banner-mobil-3.88470ad4d90a78897a60.png';
+      newPathThirdImage = './../img/banner-mobile-2.00d157dda3b7eb6a4ac1.png';
       setCurrentImagePath([
         newPathFirstImage,
         newPathSecondImage,

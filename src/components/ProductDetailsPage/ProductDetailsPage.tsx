@@ -427,7 +427,7 @@ const ProductDetailsPage: React.FC = () => {
 
         <SliderCarts
           products={arr}
-          title="Brand new models"
+          title="You may also like"
           loading={loading}
           isSugested={true}
         />

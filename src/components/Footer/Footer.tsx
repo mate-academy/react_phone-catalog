@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Link } from 'react-router-dom';
 import footerStyles from './Footer.module.scss';
 import iconStyles from './icon.module.scss';
@@ -18,9 +19,14 @@ const Footer: React.FC = () => {
 
         <ul className={footerStyles.footer__list}>
           <li className={footerStyles.footer__item}>
-            <Link className={footerStyles.footer__link} to="/">
+            <a
+              className={footerStyles.footer__link}
+              target="_blank"
+              href="https://github.com/Pavlo-lab-max-Kopalko/react_phone-catalog"
+              rel="noreferrer"
+            >
               Github
-            </Link>
+            </a>
           </li>
           <li className={footerStyles.footer__item}>
             <a
@@ -33,12 +39,12 @@ const Footer: React.FC = () => {
             </a>
           </li>
           <li className={footerStyles.footer__item}>
-            <Link
+            <a
               className={footerStyles.footer__link}
-              to="/tablets?quantity=16&sort=newest"
+              href="https://mate.academy/home"
             >
               rights
-            </Link>
+            </a>
           </li>
         </ul>
         <div className={footerStyles.footer__backToTopContainer}>
