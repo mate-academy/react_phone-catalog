@@ -2,6 +2,7 @@ import { useUpdateSearchParams } from '../../hooks/UpdateSearchParams';
 import { GridFavourites } from '../modules/GridFavourites/GridFavourites';
 import { Products } from './../../types/Products';
 import style from './ProductsList.module.scss';
+import { SortSelector } from './SortSelector/SortSelector';
 type Props = {
   products: Products[];
   title: string;
@@ -11,6 +12,12 @@ type Props = {
 
 export const ProductList: React.FC<Props> = ({ title, products }) => {
   const { searchParams } = useUpdateSearchParams();
+
+  const sortOptions = [
+    { name: 'Newset', value: 'age' },
+    { name: 'Alphabetically', value: 'title' },
+    { name: 'Cheapest', value: 'price' },
+  ];
 
   const sortPerPage = [
     { name: '4', value: '4' },
@@ -82,7 +89,14 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
         </p>
       </div>
       <div>
-        <div className={style['product-list__select']}></div>
+        <div className={style['product-list__select']}>
+          <SortSelector title="Sort by" type="sort" items={sortOptions} />
+          <SortSelector
+            title="Items per page"
+            type="perPage"
+            items={sortPerPage}
+          />
+        </div>
         {finishedProducts.length ? (
           <GridFavourites products={visibleProducts} />
         ) : (

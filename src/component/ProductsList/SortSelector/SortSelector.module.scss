@@ -1,0 +1,72 @@
+@import './../../style/index';
+
+.selector{
+
+
+  &__conteiner{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__title {
+    color: $color-grey;
+    font-size:12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__dropDown {
+    position: relative;
+  }
+
+  &__select {
+    background-color: $color-white;
+    border: 1px solid $color-grey;
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    padding: 12px;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  &__menu {
+    position: absolute;
+    border: 1px solid $color-grey;
+    width: 100%;
+    padding-top: 4px;
+    background-color: $background-color;
+    z-index: 1;
+    border-radius: 15px;
+  }
+
+  &__item {
+    cursor: default;
+    color: $color-primary;
+    background-color:$color-grey-button;
+    padding: 8px 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: none;
+
+    &:hover {
+      background-color: $background-color;
+    }
+
+    &--active {
+      background-color: $background-color;
+    }
+  }
+}
