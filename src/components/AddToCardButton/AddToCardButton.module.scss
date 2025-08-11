@@ -6,6 +6,7 @@
 @import 'src/styles/vars';
 
 .button__add {
+  cursor: pointer;
   background-color: $Accent;
   color: $White;
   border: 1px solid$NoneBackground;
@@ -20,7 +21,7 @@
   font-family: Mont, sans-serif;
 
   &:hover {
-    transition: box-shadow$effectDuration, color$effectDuration;
+    transition: box-shadow$effectDuration, color $effectDuration;
     box-shadow: 0 0 2px 2px rgba(0,0,0,0.12);
   }
 }
