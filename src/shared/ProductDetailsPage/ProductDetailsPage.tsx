@@ -192,7 +192,7 @@ export const ProductDetailsPage: React.FC = () => {
 
               <section className={styles.confirm}>
                 <div className={styles.confirm_price}>
-                  <span>${chosedItem?.priceDiscount}</span>
+                  <span>{`$${chosedItem?.priceDiscount}`}</span>
                   <span className={styles.confirm_fullPrice}>
                     ${chosedItem?.priceRegular}
                   </span>

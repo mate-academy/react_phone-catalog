@@ -1,6 +1,9 @@
 .shopByCategory {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-block: 56px;
-  margin-inline: 16px;
 }
 
 .shop_title {

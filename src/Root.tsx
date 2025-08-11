@@ -10,6 +10,7 @@ import { Favorites } from './shared/Favorites';
 import { PhoneCatalog } from './modules/Catalogs/PhoneCatalog';
 import { TabletCatalog } from './modules/Catalogs/TabletCatalog';
 import { AccessoryCatalog } from './modules/Catalogs/AccessoryCatalog';
+import ScrollToTop from './shared/ScrollToTop/ScrollToTop';
 
 // const HomeWithFooter = () => (
 //   <>
@@ -20,6 +21,7 @@ import { AccessoryCatalog } from './modules/Catalogs/AccessoryCatalog';
 
 export const Root = () => (
   <Router>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />

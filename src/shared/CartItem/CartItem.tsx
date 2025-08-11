@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ProductDemo } from '../../types/ProductDemo';
 import styles from './CartItem.module.scss';
 import { useMyContext } from '../../Context/ProductContexts';
+import { Link } from 'react-router-dom';
 
 type OrderCardProps = {
   product: ProductDemo;
@@ -60,12 +61,16 @@ export const CartItem: React.FC<OrderCardProps> = ({ product }) => {
           <button className={styles.item_close} onClick={deleteOrder}>
             <img src="img/Additional images/icons/gray cross.svg" alt="close" />
           </button>
-          <img
-            className={styles.item_image}
-            src={product.image}
-            alt={product.name}
-          />
-          <span className={styles.item_name}>{product.name}</span>
+          <Link to={`/product/${product.itemId}`} className={styles.item_link}>
+            <img
+              className={styles.item_image}
+              src={product.image}
+              alt={product.name}
+            />
+          </Link>
+          <Link to={`/product/${product.itemId}`} className={styles.item_name}>
+            {product.name}
+          </Link>
         </div>
 
         <div className={styles.orderInfo}>

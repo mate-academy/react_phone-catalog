@@ -26,6 +26,10 @@
   box-sizing: border-box;
   overflow: hidden;
 
+  &_link {
+    height: 100%;
+  }
+
   &_close {
     all: unset;
     cursor: pointer;
@@ -37,6 +41,7 @@
   &_image {
     height: 100%;
     width: auto;
+
     object-fit: contain;
   }
 

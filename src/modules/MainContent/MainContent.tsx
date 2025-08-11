@@ -17,9 +17,11 @@ export const MainContent: React.FC = () => {
         <Swiper />
       </header>
 
-      <NewModels />
-      <ShopByCategory />
-      <HotPrices />
+      <div className={styles.content}>
+        <NewModels />
+        <ShopByCategory />
+        <HotPrices />
+      </div>
       <Footer />
     </>
   );

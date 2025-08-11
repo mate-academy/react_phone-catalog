@@ -226,7 +226,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
 
                         <div className={styles.pages}>
                           {pageArray.map(page => {
-                            if (page <= 4) {
+                            if (page <= 3) {
                               return (
                                 <button
                                   key={page}

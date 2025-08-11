@@ -30,6 +30,8 @@ export const BurgerMenu: React.FC = () => {
         setCartNumber(prev => prev + 1);
       }
     });
+
+    window.scrollTo(0, 0);
   }, []);
 
   return (
