@@ -3,6 +3,7 @@ import styles from './BurgerMenu.module.scss';
 import { useMyContext } from '../../Context/ProductContexts';
 import { NavBar } from '../NavBar';
 import { useEffect, useState } from 'react';
+import { SavedGoods } from '../SavedGoods';
 
 export const BurgerMenu: React.FC = () => {
   const location = useLocation();
@@ -54,40 +55,12 @@ export const BurgerMenu: React.FC = () => {
             </Link>
           ))}
         </div>
-        <div className={styles.BurgerMenu_savedGoods}>
-          <Link
-            to={'/favorites'}
-            className={`${styles.BurgerMenu_button} ${styles.BurgerMenu_favorite}`}
-            onClick={() => {
-              setIsMenuOpen(false);
-            }}
-          >
-            <div className={styles.heart_container}>
-              <img
-                className={styles.heart_image}
-                src="img/Additional images/icons/white_heart.svg"
-                alt="heart"
-              />
-              <span className={styles.heart_badge}>{favoriteNumber}</span>
-            </div>
-          </Link>
-          <Link
-            to={'/cart'}
-            className={`${styles.BurgerMenu_button} ${styles.BurgerMenu_cart}`}
-            onClick={() => {
-              setIsMenuOpen(false);
-            }}
-          >
-            <div className={styles.cart_container}>
-              <img
-                className={styles.cart_image}
-                src="img/Additional images/icons/Shopping cart.svg"
-                alt="cart"
-              />
-              <span className={styles.cart_badge}>{cartNumber}</span>
-            </div>
-          </Link>
-        </div>
+        <SavedGoods
+          cartNumber={cartNumber}
+          setCartNumber={setCartNumber}
+          favoriteNumber={favoriteNumber}
+          setFavoriteNumber={setFavoriteNumber}
+        />
       </div>
     </div>
   );

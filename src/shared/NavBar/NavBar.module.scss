@@ -1,3 +1,5 @@
+@use '../../Mixins/Mixins.scss' as *;
+
 .navBar {
   display: flex;
   justify-content: space-between;
@@ -7,17 +9,71 @@
   position: sticky;
   top: 0;
   z-index: 10;
+
   height: 48px;
+  @include respond(desktop) {
+    height: 64px;
+    justify-content: start;
+  }
+
   background-color: #0f1121;
+
+  &_options {
+    margin-left: 16px;
+    @include respond(desktop) {
+      margin-left: 24px;
+    }
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &_list {
+    display: flex;
+    gap: 32px;
+    @include respond(desktop) {
+      gap: 64px;
+    }
+  }
+  &_link {
+    display: flex;
+    padding-block: 8px;
+
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    color: #75767f;
+
+    &:hover {
+      color: #f1f2f9;
+    }
+
+    &:active {
+      color: #f1f2f9;
+      border-bottom: 2px solid #f1f2f9;
+    }
+  }
 }
 
 .logo {
   margin-inline: 16px;
   margin-block: 14px;
+  @include respond(desktop) {
+    margin-inline: 24px;
+    margin-block: 19px;
+  }
 
   &_image {
     width: 64px;
     height: 22px;
+    @include respond(desktop) {
+      width: 80px;
+      height: 28px;
+    }
+
     display: block;
   }
 
@@ -28,12 +84,12 @@
 }
 
 .burger {
-  all:unset;
+  all: unset;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0F1121;
+  background-color: #0f1121;
 
   width: 48px;
   height: 100%;
@@ -43,4 +99,9 @@
     transform: scale(1.1);
     transition: transform 0.3s ease;
   }
+}
+
+.isActive {
+  color: #f1f2f9;
+  border-bottom: 2px solid #f1f2f9;
 }

@@ -1,3 +1,5 @@
+@use '../../Mixins/Mixins.scss' as *;
+
 .header {
   &_title {
     display: block;
@@ -6,8 +8,21 @@
     margin-block: 24px;
 
     font-size: 32px;
-    font-style: bold;
+    font-style: 800;
     line-height: 41px;
+
+    @include respond(tablet) {
+      margin-inline: 24px;
+      margin-block: 32px;
+
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 56px;
+    }
+    @include respond(desktop) {
+      margin-inline: 32px;
+      margin-block: 56px;
+    }
   }
 }
 
