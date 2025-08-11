@@ -41,12 +41,6 @@
     }
   }
 
-  &__deleteIcon {
-    height: 16px;
-    width: 16px;
-    cursor: pointer;
-  }
-
   &__image {
     width: 80px;
     height: 80px;
@@ -91,4 +85,9 @@
     display: flex;
     cursor: pointer; // 8/11
   }
+}
+.deleteIcon {
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
 }

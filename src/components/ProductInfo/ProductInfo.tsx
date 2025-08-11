@@ -159,10 +159,10 @@ export const ProductInfo: React.FC = () => {
 
               <div className="productInfo__price">
                 <h3 className="productInfo__priceNew">
-                  {`$ ${selectedPhone.priceRegular}`}
+                  {`$ ${selectedPhone.priceDiscount}`}
                 </h3>
                 <h3 className="productInfo__priceOld">
-                  {`$ ${selectedPhone.priceDiscount}`}
+                  {`$ ${selectedPhone.priceRegular}`}
                 </h3>
               </div>
 

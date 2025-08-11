@@ -63,6 +63,11 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
+  cursor: pointer;
+
+  @include themy($themes) {
+    background-color: themed('colorViolet');
+  }
 }
 
 .modal {

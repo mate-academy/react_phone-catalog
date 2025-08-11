@@ -3,6 +3,8 @@ import { Product } from '../../types/ProductTipes';
 import Dlt from '../../img/close.svg';
 import DltLight from '../../img/closeLight.svg';
 import minus from '../../img/minus.svg';
+import minusLight from '../../img/minusLight.svg';
+import plusLight from '../../img/plusLight.svg';
 import plus from '../../img/plus.svg';
 import './BougthCardItem.scss';
 import { useNavigate } from 'react-router-dom';
@@ -97,7 +99,7 @@ export const BoughtCardItem: React.FC<Props> = ({
                   handleDecrease();
                 }}
               >
-                <img src={minus} alt="-" />
+                <img src={isBasicDark ? minus : minusLight} alt="-" />
               </button>
 
               <span className="bought__num">{quantity}</span>
@@ -108,7 +110,7 @@ export const BoughtCardItem: React.FC<Props> = ({
                   handleIncrease();
                 }}
               >
-                <img src={plus} alt="+" />
+                <img src={isBasicDark ? plus : plusLight} alt="+" />
               </button>
             </div>
             <p className="bought__price">{`$${totalPriceOne}`}</p>
