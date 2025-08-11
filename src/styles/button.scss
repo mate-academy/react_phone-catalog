@@ -1,0 +1,113 @@
+@import './variables.scss';
+
+.button {
+  &__primary {
+    border: none;
+    box-sizing: border-box;
+    padding: 9.5px 60.5px;
+
+    background-color: $accent-color;
+    color: $white-color;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0;
+
+    &:hover{
+      box-shadow: 0px 3px 13px rgba($shadow-color, 0.4);
+    }
+
+    &:disabled{
+      background: none;
+      border: 1px solid $elements-color;
+      color: $accent-color;
+    }
+  }
+
+  &__back {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+
+    &--text {
+      color: $secondary-color;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__circle {
+    padding: 8px;
+    border-radius: 50%;
+    background: none;
+
+    transition-property: border, color;
+    transition-duration: $transition-time;
+
+    &--arrow {
+      border: 1px solid $icons-color;
+      color: $primary-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:disabled {
+        border-color: $elements-color;
+        color: $elements-color;
+      }
+    }
+
+    &--number {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 500;
+      letter-spacing: 0;
+
+      border: 1px solid $elements-color;
+      color: $primary-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:active {
+        border-color: $primary-color;
+        background-color: $primary-color;
+        color: $white-color;
+      }
+    }
+
+    &--color {
+      padding: 1px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $elements-color;
+
+      &:hover{
+        border-color: $icons-color;
+      }
+
+      &:active{
+        border-color: $primary-color;
+      }
+    }
+
+    &--favorite {
+      padding: 12px;
+      border: 1px solid $icons-color;
+      color: $primary-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:active {
+        border-color: $elements-color;
+        color: $secondary-accent-color;
+      }
+    }
+  }
+}

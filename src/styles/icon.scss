@@ -1,0 +1,28 @@
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-position: center;
+  color: black;
+
+  &--heart {
+    background: url(/img/icons/heart-empty.svg);
+  }
+
+  &--cart {
+    background: url(/img/icons/cart-empty.svg);
+  }
+
+  &--menu {
+    background: url(/img/icons/menu.svg);
+  }
+
+  &--up {
+    background: url(/img/icons/up-chevron.svg);
+  }
+
+  &--close {
+    background: url(/img/icons/close.svg);
+  }
+}

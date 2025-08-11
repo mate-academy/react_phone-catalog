@@ -1,0 +1,129 @@
+@import '@/styles/mixins.scss';
+@import '@/styles/variables.scss';
+
+.headerContainer {
+  position: relative; // Create stacking context for the menu
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $white-color;
+  border-bottom: 1px solid $elements-color;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    padding: 13px 16px;
+
+    @include on-desktop {
+      padding: 18px 24px;
+    }
+
+    &--img {
+      height: 22px;
+
+      @include on-desktop {
+        height: 28px;
+      }
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    &--list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+
+      @include on-desktop {
+        gap: 48px;
+      }
+    }
+
+    &--link {
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      color: $secondary-color;
+
+      transition-property: color;
+      transition-duration: 0.3s;
+
+      &:hover {
+        color: $secondary-accent-color;
+      }
+
+      &:active {
+        color: $primary-color;
+        &::after {
+          content: '';
+          background-color: $primary-color;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 3px;
+        }
+      }
+    }
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+
+    > * {
+      padding: 16px;
+      border-left: 1px solid $elements-color;
+
+      @include on-desktop {
+        padding: 24px;
+      }
+    }
+
+    &--menu {
+      transition-property: all;
+      transition-duration: $transition-time;
+    }
+
+    &--mobile {
+      display: flex;
+      align-items: center;
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
