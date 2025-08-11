@@ -3,44 +3,6 @@
 .bought {
   margin-bottom: 17px;
 
-  &__item {
-    display: block;
-    background-color: $color-surf-1;
-    align-items: center;
-    border: 1px solid $color-surf-1;
-    padding: 24px;
-    justify-content: space-between;
-
-    @include themy($themes) {
-      background: themed('colorCart');
-    }
-
-    @include on-desktop {
-      display: flex;
-    }
-  }
-
-  &__wrapper {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    padding-bottom: 16px;
-
-    @include on-desktop {
-      padding-bottom: 0;
-    }
-  }
-
-  &__wrapper2 {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-
-    @include on-desktop {
-      gap: 24px;
-    }
-  }
-
   &__image {
     width: 80px;
     height: 80px;
@@ -86,8 +48,59 @@
     cursor: pointer; // 8/11
   }
 }
+
 .deleteIcon {
   height: 16px;
   width: 16px;
   cursor: pointer;
+}
+
+.bought__item {
+  display: flex;
+  background-color: $color-surf-1;
+  align-items: center;
+  border: 1px solid $color-surf-1;
+  padding: 24px;
+  justify-content: space-between;
+
+  @include themy($themes) {
+    background: themed('colorCart');
+  }
+
+  @include on-desktop {
+    display: flex;
+  }
+}
+
+.bought__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 16px;
+  width: 256px;
+
+  @include on-tablet {
+    width: 344px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 0;
+    width: 480px;
+  }
+}
+
+.bought__wrapper2 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 256px;
+
+  @include on-tablet {
+    width: 200px;
+  }
+
+  @include on-desktop {
+    gap: 24px;
+    width: 200px;
+  }
 }
