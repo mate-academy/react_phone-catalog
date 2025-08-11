@@ -36,8 +36,7 @@ export const Footer = () => {
 
             <NavLink
               className="footer-item"
-              to="https://www.linkedin.com/in/"
-              /*Create an account and add a link */
+              to="https://www.linkedin.com/in/valentyna-moskvinova-a18751379/"
               target="_blank"
             >
               Contacts
