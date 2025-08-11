@@ -1,5 +1,6 @@
 .footer {
-  padding: 32px 152px;
+  padding-block: 32px;
+  padding-inline: 152px;
 
   display: flex;
   flex-direction: row;
@@ -45,6 +46,37 @@
       height: 16px;
       width: 16px;
       align-items: center;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    padding-inline: 32px;
+
+    &__nav {
+      gap: 13.5px;
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+    padding-inline: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+    &__logo {
+      align-self: flex-start;
+    }
+
+    &__nav {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__button {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
     }
   }
 }

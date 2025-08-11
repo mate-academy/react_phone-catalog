@@ -14,3 +14,32 @@ h2 {
   padding-top: 80px;
   padding-bottom: 24px;
 }
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  h1 {
+    font-size: 48px;
+
+    padding-block: 32px;
+  }
+
+  h2 {
+    padding-top: 64px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  h1 {
+    font-size: 32px;
+    line-height: 41px;
+
+    padding-block: 24px;
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 140%;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
