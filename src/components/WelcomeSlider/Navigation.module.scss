@@ -6,7 +6,7 @@
   width: 32px;
   border: 1px solid $Icons;
   border-radius: 16px;
-
+  cursor: pointer;
   display: none;
 
   @include on-tablet {

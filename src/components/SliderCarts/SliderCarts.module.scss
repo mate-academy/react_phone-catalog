@@ -65,16 +65,23 @@
     background-size: 16px 16px;
     border: 1px solid $Elements;
     border-radius: 50%;
+    cursor: pointer;
   }
 
   &__left {
-    background-image: url('./../img/chevron-arrow_left.svg');
     margin-right: 16px;
+    background-image: url('./../img/chevron-arrow_left.svg');
+
+    // &--NewModels {
+    // }
+
+    // &--HotPrices {
+    //   background-image: url('./../img/chevron-arrow_left.svg');
+    // }
   }
 
   &__right {
     background-image: url('./../img/chevron-arrow-right.svg');
-
   }
 
   &__card{
@@ -87,17 +94,15 @@
   }
 }
 
-
-.swiper-button-disabled {
-  background-image: url('./../img/chevron-(arrow-down).svg');
-}
-
 button:disabled.brand__left {
   background-image: url('./../img/chevron-(arrow-down).svg');
   transform: rotate(90deg);
+  cursor: auto;
 }
 
 button:disabled.brand__right {
   background-image: url('./../img/chevron-(arrow-down).svg');
   transform: rotate(-90deg);
+  cursor: auto;
 }
+

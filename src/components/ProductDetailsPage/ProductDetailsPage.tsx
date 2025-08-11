@@ -431,9 +431,8 @@ const ProductDetailsPage: React.FC = () => {
           loading={loading}
           isSugested={true}
         />
-
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

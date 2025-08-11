@@ -2,6 +2,8 @@
 @import 'src/styles/vars';
 
 .icon--back-to-top {
+  cursor: pointer;
+
   @include on-tablet {
     background-size: cover;
 
@@ -13,6 +15,7 @@
 
 .icon--arrow {
   background-image: url("./../img/Chevron (Arrow Up).svg");
+  cursor: pointer;
   width: 32px;
   height: 32px;
   border-radius: 50%;

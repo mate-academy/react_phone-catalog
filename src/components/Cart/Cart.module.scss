@@ -59,9 +59,11 @@
     display: block;
     width: 16px;
     height: 16px;
+    cursor: pointer;
   }
 
-  &__where {
+  &__back {
+    cursor: pointer;
     text-decoration: none;
     color:$Secondary;
     border: none;

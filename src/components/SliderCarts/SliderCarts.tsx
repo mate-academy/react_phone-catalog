@@ -48,6 +48,8 @@ const SliderCarts: React.FC<Props> = ({
       ? products
       : structuredClone(brandNewProducts);
 
+  const uniqueClass = isHotPrices ? 'HotPrices' : 'NewModels';
+
   return (
     <>
       <div className={brandStyles.brand}>
@@ -56,10 +58,10 @@ const SliderCarts: React.FC<Props> = ({
 
           <div className={brandStyles.brand__navigation}>
             <button
-              className={`${brandStyles.brand__left} ${brandStyles.brand__vectors} navigation-button-prev-2`}
+              className={`${brandStyles.brand__left} ${brandStyles.brand__vectors} navigation-button-prev-2--${uniqueClass}`}
             ></button>
             <button
-              className={`${brandStyles.brand__right} ${brandStyles.brand__vectors} navigation-button-next-2`}
+              className={`${brandStyles.brand__right} ${brandStyles.brand__vectors} navigation-button-next-2--${uniqueClass}`}
             ></button>
           </div>
         </div>
@@ -70,8 +72,8 @@ const SliderCarts: React.FC<Props> = ({
           slidesPerView={'auto'}
           className={brandStyles.brand__swiper}
           navigation={{
-            nextEl: '.navigation-button-next-2',
-            prevEl: '.navigation-button-prev-2',
+            nextEl: `.navigation-button-next-2--${uniqueClass}`,
+            prevEl: `.navigation-button-prev-2--${uniqueClass}`,
           }}
         >
           {renderCards.map(phone => {

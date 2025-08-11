@@ -49,22 +49,19 @@
     background-image: url("./../img/favourites-(heart-like).svg");
     width: 16px;
     height: 16px;
-    background-size: cover;
+    padding: 16px;
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
 
     &__wrapper {
-      border-right: 1px solid$Elements;
+      border-right: 1px solid $Elements;
       position: relative;
-    }
-
-    &__content {
-      padding: 16px;
     }
   }
 
   @include on-big-screen {
-    &__content {
-      padding: 24px;
-    }
+    padding: 24px;
   }
 }
 
@@ -76,21 +73,18 @@
     background-image: url("./../img/shopping-bag-cart.svg");
     width: 16px;
     height: 16px;
-    background-size: cover;
+    padding: 16px;
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
 
     &__wrapper {
       position: relative;
     }
-
-    &__content {
-      padding: 16px;
-    }
   }
 
   @include on-big-screen {
-    &__content {
-      padding: 24px;
-    }
+    padding: 24px;
   }
 }
 

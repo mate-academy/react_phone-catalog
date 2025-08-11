@@ -2,6 +2,7 @@
 @import 'src/styles/vars';
 
 .swiper-custom-pagination-bullet {
+  cursor: pointer;
   height: 4px;
   width: 14px;
   display: block;

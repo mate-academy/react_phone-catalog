@@ -105,6 +105,7 @@ body {
   }
 
   &__arrow {
+    cursor: pointer;
     background-image: url('./../img/chevron-arrow_left.svg');
     background-size: 16px 16px;
     width: 16px;
@@ -112,6 +113,7 @@ body {
   }
 
   &__back {
+    cursor: pointer;
     color: $Secondary;
   }
 
@@ -167,6 +169,7 @@ body {
   }
 
   &__image {
+    cursor: pointer;
     width: 50px;
     height: 50px;
     background-size: contain;
@@ -176,6 +179,7 @@ body {
     border-radius: 8px;
 
     &--active {
+      cursor: auto;
       border: 1px solid $Primary;
       border-radius: 8px;
     }
@@ -247,10 +251,15 @@ body {
   }
 
   &__some-color {
+    cursor: pointer;
     width: 26px;
     height: 26px;
     border-radius: 50%;
     border: none;
+
+    &--active {
+      cursor: auto;
+    }
   }
 
   &__capacity {
@@ -267,6 +276,7 @@ body {
   }
 
   &__capacity-button {
+    cursor: pointer;
     background-color:$NoneBackground;
     border-radius: 4px;
     border: 1px solid $Icons;
@@ -274,6 +284,7 @@ body {
     height: 32px;
 
     &--active {
+      cursor: auto;
       color: $White;
       background-color: $Primary;
     }
@@ -315,6 +326,7 @@ body {
     border-radius: 8px;
     border: none;
     color: $White;
+    cursor: pointer;
   }
 
   &__button-added {
@@ -335,6 +347,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     display: block;
+    cursor: pointer;
 
     &:hover {
       background-image: url('./../img/add-to-fovourites-hover.svg');

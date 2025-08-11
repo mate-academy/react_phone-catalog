@@ -39,13 +39,13 @@
     @include on-tablet {
       display: flex;
       flex-direction: row;
-      margin-block: 18px;
     }
 
     @include on-big-screen {
-      margin-block: 26px;
       padding-inline-start: 48px;
     }
+
+    margin-block: 0;
   }
 
   &__item {
@@ -66,15 +66,23 @@
     display: block;
     transition: transform $effectDuration;
 
+    @include on-tablet {
+      padding-block: 18px;
+    }
+
+    @include on-big-screen {
+      padding-block: 26.5px;
+    }
+
     &--current-page {
       &::after {
         content: "";
         position: absolute;
         display: block;
-        inset: 2.5px 0 0;
+        inset: 20.5px 0 0;
 
         @include on-big-screen {
-          top: 10.5px;
+          top: 37px;
         }
 
         background-color: $Primary;

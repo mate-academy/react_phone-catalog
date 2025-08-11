@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
           <li className={footerStyles.footer__item}>
             <a
               className={footerStyles.footer__link}
-              href="https://www.linkedin.com/feed/"
+              href="https://www.linkedin.com/in/pavlo-kopalko-1a7a682a4/"
               target="_blank"
               rel="noreferrer"
             >
