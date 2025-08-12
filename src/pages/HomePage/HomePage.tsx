@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './HomePage.scss';
-import { Banner } from '../Banner';
-import { ProductsList } from '../ProductsList';
+import { Banner } from '../../components/Banner';
+import { ProductsList } from '../../components/ProductsList';
 import { Product } from '../../utils/Product';
-import { CategoriesList } from '../CategoriesList';
+import { CategoriesList } from '../../components/CategoriesList';
 
 export const HomePage: React.FC = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);

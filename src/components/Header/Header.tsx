@@ -23,22 +23,22 @@ export const Header: React.FC = () => {
             <Link to="/" className="header__link header__link--home">
               HOME
             </Link>
-            <Link to="#" className="header__link">
+            <Link to="/phones" className="header__link">
               PHONES
             </Link>
-            <Link to="#" className="header__link">
+            <Link to="tablets" className="header__link">
               TABLETS
             </Link>
-            <Link to="#" className="header__link">
+            <Link to="/accessories" className="header__link">
               ACCESSORIES
             </Link>
           </nav>
 
           <div className="header__button">
-            <Link to="#" className="header__button-link">
+            <Link to="/favourites" className="header__button-link">
               <img src="/img/icons/icon-favourites.svg" alt="favourites" />
             </Link>
-            <Link to="#" className="header__button-link">
+            <Link to="/cart" className="header__button-link">
               <img src="/img/icons/icon-cart.svg" alt="cart" />
             </Link>
           </div>
@@ -49,17 +49,9 @@ export const Header: React.FC = () => {
           onClick={handleOpenMenu}
         >
           {open ? (
-            <img
-              src="/img/icons/close-menu.svg"
-              alt="close burger menu"
-              // className="header__button-link"
-            />
+            <img src="/img/icons/close-menu.svg" alt="close burger menu" />
           ) : (
-            <img
-              src="/img/icons/menu.svg"
-              alt="burger menu"
-              // className="header__button-link"
-            />
+            <img src="/img/icons/menu.svg" alt="burger menu" />
           )}
         </button>
       </header>

@@ -7,14 +7,27 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const getImageSrc = (src: string) => (src.startsWith('/') ? src : '/' + src);
+
   return (
     <div className="product">
       <div className="product__characteristics">
-        <img
-          className="product__image"
-          src={product.image}
-          alt="product image"
-        />
+        {product.image ? (
+          <img
+            className="product__image"
+            src={getImageSrc(product.image)}
+            alt="product image"
+          />
+        ) : product.images && product.images.length > 0 ? (
+          <img
+            className="product__image"
+            src={getImageSrc(product.images[0])}
+            alt="product image"
+          />
+        ) : (
+          <div>No image available</div>
+        )}
+
         <p className="product__description">{product.name}</p>
         <p className="product__price">${product.fullPrice}</p>
       </div>
