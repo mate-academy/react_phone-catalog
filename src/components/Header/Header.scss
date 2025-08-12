@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   height: 64px;
+  width: 100%;
 
   // border-bottom: #323542 1px solid;
   box-shadow: 0 1px 0 #323542;
@@ -18,7 +19,7 @@
   z-index: 1000;
   background-color: inherit;
 
-  .burger-menu {
+  .burger-button {
     display: none;
   }
 
@@ -118,7 +119,7 @@
     //   }
     // }
 
-    .burger-menu {
+    .burger-button {
       display: flex;
       align-items: center;
       border: none;
