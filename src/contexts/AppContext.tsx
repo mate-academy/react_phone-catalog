@@ -5,6 +5,7 @@ import {
   useEffect,
   useContext,
   useRef,
+  useMemo,
 } from 'react';
 import {
   getCartProducts,
@@ -116,7 +117,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     saveCartProducts(cartProductsIds);
   }, [cartProductsIds]);
 
-  const value = {
+  const value = useMemo(() => ({
     favouriteProductsIds,
     cartProductsIds,
     isMenuOpen,
@@ -133,7 +134,14 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     setSearchParams,
     isLoading,
     setIsLoading,
-  }
+  }), [
+    favouriteProductsIds,
+    cartProductsIds,
+    isMenuOpen,
+    products,
+    searchParams,
+    isLoading
+  ])
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

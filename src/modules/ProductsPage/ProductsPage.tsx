@@ -14,9 +14,17 @@ type Props = {
 
 export const ProductsPage: React.FC<Props> = ({ type }) => {
   const [currentPages, setCurrentPages] = useState<number[]>([]);
-  const { searchParams, products, isLoading } = useAppContext();
+
   const sortDropDownRef = useRef<HTMLDivElement>(null);
   const perPageDropDownRef = useRef<HTMLDivElement>(null);
+
+  const { searchParams, setSearchParams, products, isLoading } = useAppContext();
+
+  const [isPerPageDropdownOpen, setIsPerPageDropdownOpen] = useState<boolean>(false);
+  const [isSortTypeDropdownOpen, setIsSortTypeDropdownOpen] = useState<boolean>(false);
+
+  const sortValues = ['Newest', 'Alphabetically', 'Chepest'];
+  const perPageValues = ['All', 4, 8, 16];
 
   function getPerPageFromParams() {
     const value = searchParams.get('perPage');
@@ -42,9 +50,9 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     return isNaN(num) || num < 1 ? 1 : num;
   };
 
-  const [sortType, setSortType] = useState<ProductsSortType>(getSortTypeFromParams());
-  const [currentPage, setCurrentPage] = useState<number>(getPageFromParams());
-  const [perPageValue, setPerPageValue] = useState<ItemsPerPage>(getPerPageFromParams());
+  const sortType = getSortTypeFromParams();
+  const currentPage = getPageFromParams();
+  const perPageValue = getPerPageFromParams();
 
   function sorter(a: Card, b: Card) {
     switch (sortType) {
@@ -69,23 +77,17 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
       .sort(sorter)
   );
 
-  const [isPerPageDropdownOpen, setIsPerPageDropdownOpen] = useState<boolean>(false);
-  const [isSortTypeDropdownOpen, setIsSortTypeDropdownOpen] = useState<boolean>(false);
+  function changeSearchParams(key: any, value?: any) {
+    const newSearchParams = new URLSearchParams(searchParams);
 
-  const sortValues = ['Newest', 'Alphabetically', 'Chepest'];
-  const perPageValues = ['All', 4, 8, 16];
+    if (value !== undefined && value !== null) {
+      newSearchParams.set(key.toString(), value.toString());
+    } else {
+      newSearchParams.delete(key.toString());
+    }
 
-  // function changeSearchParams(params: URLSearchParams, key: any, value?: any) {
-  //   const newSearchParams = new URLSearchParams(params);
-
-  //   if (value !== undefined && value !== null) {
-  //     params.set(key.toString(), value.toString());
-  //   } else {
-  //     params.delete(key.toString());
-  //   }
-
-  //   setSearchParams(newSearchParams);
-  // }
+    setSearchParams(newSearchParams);
+  }
 
   function createPagination(items: number, from = 1) {
     const to = Math.ceil(currentProducts.length / items);
@@ -99,6 +101,10 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   }
 
   function handlePageChange(value?: number) {
+    if (value === 1) {
+      changeSearchParams('page');
+      return;
+    }
     if (typeof perPageValue === 'string') return;
 
     if (!value) {
@@ -106,46 +112,46 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
         perPageValue,
         currentPages[currentPages.length - 1] + 1,
       );
-      setCurrentPage(currentPages[currentPages.length - 1] + 1);
+      changeSearchParams('page', currentPages[currentPages.length - 1] + 1);
       return;
     }
 
     if (currentPages[currentPages.length - 1] < value) {
       createPagination(perPageValue, value);
-      setCurrentPage(value);
+      changeSearchParams('page', value);
       return;
     }
 
     if (currentPages[0] > value) {
       createPagination(perPageValue, Math.max(value - 4, 1));
-      setCurrentPage(value);
+      changeSearchParams('page', value);
       return;
     }
 
-    setCurrentPage(value);
+    changeSearchParams('page', value);
   }
 
   function handlePerPageChange(value: ItemsPerPage) {
     if (value === 'All') {
-      setPerPageValue('All');
+      changeSearchParams('perPage');
       setIsPerPageDropdownOpen(false);
       return;
     }
 
-    setPerPageValue(value);
+    changeSearchParams('perPage', value);
     setIsPerPageDropdownOpen(false);
   }
 
   function handleSortTypeChange(value: string) {
     switch (value) {
       case 'Newest':
-        setSortType('age');
+        changeSearchParams('sort');
         break;
       case 'Alphabetically':
-        setSortType('title');
+        changeSearchParams('sort', 'title');
         break;
       case 'Chepest':
-        setSortType('price');
+        changeSearchParams('sort', 'price');
         break;
       default:
         break;
@@ -189,9 +195,6 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
         .sort(sorter);
 
       setCurrentProducts(filtered);
-      setCurrentPage(1);
-      setSortType('age');
-      setPerPageValue('All');
       setIsPerPageDropdownOpen(false);
       setIsSortTypeDropdownOpen(false);
     }
@@ -199,7 +202,6 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
   useEffect(() => {
     setCurrentProducts(prevProducts => [...prevProducts].sort(sorter));
-    setCurrentPage(1);
 
     if (typeof perPageValue === 'number') {
       createPagination(perPageValue);
