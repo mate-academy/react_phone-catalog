@@ -2,7 +2,9 @@ import { useUpdateSearchParams } from '../../hooks/UpdateSearchParams';
 import { GridFavourites } from '../modules/GridFavourites/GridFavourites';
 import { Products } from './../../types/Products';
 import style from './ProductsList.module.scss';
+import { Pagination } from './Pagination/Pagination';
 import { SortSelector } from './SortSelector/SortSelector';
+import { ProductNav } from './ProductNav/ProductNav';
 type Props = {
   products: Products[];
   title: string;
@@ -11,7 +13,7 @@ type Props = {
 };
 
 export const ProductList: React.FC<Props> = ({ title, products }) => {
-  const { searchParams } = useUpdateSearchParams();
+  const { searchParams, updateSearchParams } = useUpdateSearchParams();
 
   const sortOptions = [
     { name: 'Newset', value: 'age' },
@@ -82,6 +84,7 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
 
   return (
     <div className={style['product-list']}>
+      <ProductNav />
       <div>
         <h1 className={style['product-list__title']}>{title}</h1>
         <p className={style['product-list__text']}>
@@ -105,6 +108,13 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
           </p>
         )}
       </div>
+
+      <Pagination
+        perPage={perPage}
+        total={finishedProducts.length}
+        currentPage={currentPage}
+        onPageChange={page => updateSearchParams('page', page)}
+      />
     </div>
   );
 };

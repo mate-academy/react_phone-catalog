@@ -21,8 +21,9 @@
   }
 
   &__select {
-    background-color: $color-white;
-    border: none;
+    background-color: $background-color;
+    border: 1px solid $color-grey;
+    border-radius: 10px;
 
     height: 40px;
     width: 100%;
@@ -43,7 +44,8 @@
 
   &__menu {
     position: absolute;
-    border: 1px solid $color-grey;
+    border: 2px solid $color-grey;
+    border-radius: 10px;
     width: 100%;
     padding-top: 4px;
     background-color: $background-color;
@@ -60,6 +62,7 @@
     display: flex;
     justify-content: center;
     border: none;
+    border-radius: 10px;
 
     &:hover {
       background-color: $background-color;
