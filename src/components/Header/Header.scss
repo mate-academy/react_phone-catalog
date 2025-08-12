@@ -13,6 +13,11 @@
   // width: 100%;
   // z-index: 1000;
 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: inherit;
+
   .burger-menu {
     display: none;
   }
@@ -48,6 +53,7 @@
     align-items: center;
     height: 100%;
     font-size: 12px;
+    font-weight: 800;
 
     &:hover {
       color: #f1f2f9;

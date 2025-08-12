@@ -4,24 +4,25 @@
   gap: 24px;
 
   text-decoration: none;
-  color: #F1F2F9;
+  color: #f1f2f9;
 
   &__image-wrapper {
-    width: 368px; 
+    width: 368px;
     height: 368px;
-    overflow: hidden; 
+    overflow: hidden;
     position: relative;
-    background-color: #6D6474;
+    background-color: #6d6474;
   }
 
   &__image {
     position: absolute;
-    bottom: -50px;
-    right: -25px;
-    width: 80%; 
+    top: 50px;
+    left: 85px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
     height: auto;
   }
-
 
   &__title {
     font-size: 20px;
@@ -35,5 +36,19 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
+  }
+  
+  @media (min-width: 640px) and (max-width: 1199px) {
+    &__image-wrapper {
+      width: 187px;
+      height: 187px;
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+    &__image-wrapper {
+      width: 288px;
+      height: 288px;
+    }
   }
 }

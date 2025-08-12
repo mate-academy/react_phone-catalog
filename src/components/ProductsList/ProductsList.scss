@@ -47,8 +47,12 @@
       color: #4a4d58;
     }
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &:hover:not(:disabled) {
-      background-color: #7a47d9;
+      background-color: #4a4d58;
     }
   }
 

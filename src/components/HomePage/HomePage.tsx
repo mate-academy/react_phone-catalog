@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './HomePage.scss';
 import { Banner } from '../Banner';
-import { CategorySelectCard } from '../CategorySelectCard';
 import { ProductsList } from '../ProductsList';
 import { Product } from '../../utils/Product';
+import { CategoriesList } from '../CategoriesList';
 
 export const HomePage: React.FC = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);
@@ -59,7 +59,7 @@ export const HomePage: React.FC = () => {
 
       <h2 className="title-2">Shop by category</h2>
 
-      <CategorySelectCard />
+      <CategoriesList />
 
       <ProductsList title="Hot prices" products={hotPrices} />
     </>

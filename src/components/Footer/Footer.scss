@@ -40,6 +40,14 @@
       background-color: #323542;
       width: 32px;
       height: 32px;
+
+      &:hover {
+        background-color: #3b3e4a;
+        cursor: pointer;
+      }
+      &:active {
+        background-color: #905bff;
+      }
     }
 
     &--arrow-up {
