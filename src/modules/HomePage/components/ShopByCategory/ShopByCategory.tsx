@@ -38,7 +38,7 @@ export const ShopByCategory: FC = () => {
           <Link to="/phones" className={styles.link}>
             <article className={styles.category}>
               <img
-                src="/img/shop-by-category/phones.png"
+                src="./img/shop-by-category/phones.png"
                 alt="category photo"
                 className={styles.categoryPhoto}
               />
@@ -58,7 +58,7 @@ export const ShopByCategory: FC = () => {
           <Link to="/tablets" className={styles.link}>
             <article className={styles.category}>
               <img
-                src="/img/shop-by-category/tablets.png"
+                src="./img/shop-by-category/tablets.png"
                 alt="category photo"
                 className={styles.categoryPhoto}
               />
@@ -78,7 +78,7 @@ export const ShopByCategory: FC = () => {
           <Link to="/accessories" className={styles.link}>
             <article className={styles.category}>
               <img
-                src="/img/shop-by-category/accessories.png"
+                src="./img/shop-by-category/accessories.png"
                 alt="category photo"
                 className={styles.categoryPhoto}
               />

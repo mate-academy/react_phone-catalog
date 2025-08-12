@@ -5,6 +5,8 @@ import { useGlobalState } from '../../context/store';
 import { CheckoutModal } from './components/CheckoutModal/CheckoutModal';
 import { CardItem } from './components/CardItem';
 import { useTranslation } from 'react-i18next';
+import { InView } from 'react-intersection-observer';
+import cn from 'classnames';
 
 export const ShoppingCartPage: FC = () => {
   //#region state & handlers
@@ -42,7 +44,16 @@ export const ShoppingCartPage: FC = () => {
 
           <ul className={styles.items}>
             {cart.map(item => (
-              <CardItem key={item.id} cardItem={item} />
+              <InView key={item.id} rootMargin="-100px 0px">
+                {({ inView, ref }) => (
+                  <div
+                    ref={ref}
+                    className={cn('fadeEffect', { fadeEffectActive: inView })}
+                  >
+                    <CardItem cardItem={item} />
+                  </div>
+                )}
+              </InView>
             ))}
           </ul>
 
@@ -72,7 +83,7 @@ export const ShoppingCartPage: FC = () => {
           <div className={styles.emptyCardText}>Your card is empty</div>
 
           <img
-            src="\img\cart-is-empty.png"
+            src="./img/cart-is-empty.png"
             alt="card-is-empty"
             className={styles.emptyCardImg}
           />

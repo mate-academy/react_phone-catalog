@@ -11,8 +11,10 @@ import cn from 'classnames';
 import { ProductsSlider } from '../shared/ProductsSlider';
 import { getSuggestedProducts } from '../../utils/getSuggestedProducts';
 import { ProductDetailsPageSkeleton } from './ProductDetailsPageSkeleton';
+import { InView, useInView } from 'react-intersection-observer';
 
 export const ProductDetailsPage: FC = () => {
+  //#region state & handlers
   const {
     products,
     errorMessage,
@@ -60,6 +62,12 @@ export const ProductDetailsPage: FC = () => {
     [productId, products, selectedCategory],
   );
 
+  const { ref, inView } = useInView({
+    // triggerOnce: true,
+    // initialInView: true,
+    rootMargin: '-100px 0px',
+  });
+
   useEffect(() => {
     setErrorMessage('');
 
@@ -79,10 +87,10 @@ export const ProductDetailsPage: FC = () => {
 
         if (currentProductDetails) {
           setProductDetails(currentProductDetails);
-          setErrorMessage('');
+          // setErrorMessage('');
         } else {
           setProductDetails(null);
-          setErrorMessage('Product was not found');
+          // setErrorMessage('Product was not found');
         }
       })
       .catch(() => {
@@ -98,242 +106,298 @@ export const ProductDetailsPage: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory, productId]);
 
+  if (detailsIsLoading) {
+    return (
+      <div className={styles.pageBody}>
+        <ProductDetailsPageSkeleton />
+      </div>
+    );
+  }
+
+  if (!detailsIsLoading && errorMessage) {
+    return (
+      <div className={styles.pageBody}>
+        <p className={styles.errorMessage}>{errorMessage}</p>
+      </div>
+    );
+  }
+
+  if (productDetails === null) {
+    return (
+      <div className={styles.pageBody}>
+        <p className={styles.errorMessage}>Product not found.</p>
+      </div>
+    );
+  }
+
+  if (!selectedProduct) {
+    return (
+      <div className={styles.pageBody}>
+        <p className={styles.errorMessage}>Product data is missing.</p>
+      </div>
+    );
+  }
+  //#endregion
+
   return (
     <div className={styles.pageBody}>
-      {detailsIsLoading && <ProductDetailsPageSkeleton />}
+      <div
+        ref={ref}
+        className={cn(styles.breadcrumbs, 'fadeEffect', {
+          fadeEffectActive: inView,
+        })}
+      >
+        <Breadcrumbs />
+      </div>
 
-      {!detailsIsLoading && errorMessage && (
-        <p className={styles.errorMessage}>{errorMessage}</p>
-      )}
+      <div
+        ref={ref}
+        className={cn(styles.backButton, 'fadeEffect', {
+          fadeEffectActive: inView,
+        })}
+      >
+        <BackButton />
+      </div>
 
-      {!detailsIsLoading &&
-        !errorMessage &&
-        productDetails &&
-        selectedProduct && (
-          <>
-            <div className={styles.breadcrumbs}>
-              <Breadcrumbs />
+      <h2
+        ref={ref}
+        className={cn(styles.pageTitle, 'fadeEffect', {
+          fadeEffectActive: inView,
+        })}
+      >
+        {productDetails.name}
+      </h2>
+
+      <div
+        ref={ref}
+        className={cn(styles.imagesSlider, 'fadeEffect', {
+          fadeEffectActive: inView,
+        })}
+      >
+        <PhotosSlider images={productDetails.images} />
+      </div>
+
+      <div
+        ref={ref}
+        className={cn(styles.mainControls, 'fadeEffect', {
+          fadeEffectActive: inView,
+        })}
+      >
+        <div className={styles.optionsWrapper}>
+          <div className={styles.options}>
+            <div className={styles.optionsLabel}>
+              Available colors
+              <span className={styles.productId}>
+                {`ID: ${selectedProduct.id}`}
+              </span>
             </div>
 
-            <div className={styles.backButton}>
-              <BackButton />
-            </div>
-
-            <h2 className={styles.pageTitle}>{productDetails.name}</h2>
-
-            <div className={styles.imagesSlider}>
-              <PhotosSlider images={productDetails.images} />
-            </div>
-
-            <div className={styles.mainControls}>
-              <div className={styles.optionsWrapper}>
-                <div className={styles.options}>
-                  <div className={styles.optionsLabel}>
-                    Available colors
-                    <span className={styles.productId}>
-                      {`ID: ${selectedProduct.id}`}
-                    </span>
-                  </div>
-
-                  <ul className={styles.optionsList}>
-                    {productDetails.colorsAvailable.map(color => (
-                      <li key={color} className={styles.optionsListItem}>
-                        <Link
-                          to={`/${selectedCategory}/${getLink('color', color)}`}
-                          className={cn(styles.optionsColorLink, {
-                            [styles.optionsColorLinkActive]:
-                              color === productDetails.color,
-                          })}
-                        >
-                          <span
-                            style={{ backgroundColor: color }}
-                            className={styles.optionsIcon}
-                          ></span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className={styles.options}>
-                  <span className={styles.optionsLabel}>Select capacity</span>
-
-                  <ul className={styles.optionsList}>
-                    {productDetails.capacityAvailable.map(capacity => (
-                      <li key={capacity} className={styles.optionsListItem}>
-                        <Link
-                          to={`/${selectedCategory}/${getLink('capacity', capacity)}`}
-                          className={cn(styles.optionsCapacityLink, {
-                            [styles.optionsCapacityLinkActive]:
-                              capacity === productDetails.capacity,
-                          })}
-                        >
-                          {capacity.split('GB').join(' GB')}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className={styles.priceWrapper}>
-                <span
-                  className={styles.priceRegular}
-                >{`$${productDetails.priceRegular}`}</span>
-
-                <span
-                  className={styles.priceDiscount}
-                >{`$${productDetails.priceDiscount}`}</span>
-              </div>
-
-              <div className={styles.buttons}>
-                <button
-                  onClick={() => addToCart(selectedProduct)}
-                  className={cn(styles.btnAdd, {
-                    [styles.btnAddActive]: isInCart(selectedProduct),
-                  })}
-                >
-                  {isInCart(selectedProduct) ? 'Added' : 'Add to cart'}
-                </button>
-
-                <button
-                  onClick={() => toggleFavourites(selectedProduct)}
-                  className={styles.btnFav}
-                >
-                  <span
-                    className={cn(styles.iconFav, {
-                      [styles.iconFavActive]: isInFavourites(selectedProduct),
+            <ul className={styles.optionsList}>
+              {productDetails.colorsAvailable.map(color => (
+                <li key={color} className={styles.optionsListItem}>
+                  <Link
+                    to={`/${selectedCategory}/${getLink('color', color)}`}
+                    className={cn(styles.optionsColorLink, {
+                      [styles.optionsColorLinkActive]:
+                        color === productDetails.color,
                     })}
-                  ></span>
-                </button>
-              </div>
-
-              <div className={styles.specs}>
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>Screen</span>
-
-                  <span className={styles.specsItemValue}>
-                    {productDetails.screen}
-                  </span>
-                </span>
-
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>Resolution</span>
-
-                  <span className={styles.specsItemValue}>
-                    {productDetails.resolution}
-                  </span>
-                </span>
-
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>Processor</span>
-
-                  <span className={styles.specsItemValue}>
-                    {productDetails.processor}
-                  </span>
-                </span>
-
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>RAM</span>
-
-                  <span className={styles.specsItemValue}>
-                    {productDetails.ram}
-                  </span>
-                </span>
-              </div>
-            </div>
-
-            <section className={styles.about}>
-              <h3 className={styles.aboutTitle}>About</h3>
-
-              {productDetails.description.map(description => (
-                <article key={description.title} className={styles.aboutItem}>
-                  <h4 className={styles.aboutItemTitle}>{description.title}</h4>
-
-                  <p className={styles.aboutItemText}>{description.text}</p>
-                </article>
+                  >
+                    <span
+                      style={{ backgroundColor: color }}
+                      className={styles.optionsIcon}
+                    ></span>
+                  </Link>
+                </li>
               ))}
-            </section>
+            </ul>
+          </div>
 
-            <section className={styles.techSpecs}>
-              <h3 className={styles.specsTitle}>Tech specs</h3>
+          <div className={styles.options}>
+            <span className={styles.optionsLabel}>Select capacity</span>
 
-              <div className={styles.specs}>
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>Screen</span>
+            <ul className={styles.optionsList}>
+              {productDetails.capacityAvailable.map(capacity => (
+                <li key={capacity} className={styles.optionsListItem}>
+                  <Link
+                    to={`/${selectedCategory}/${getLink('capacity', capacity)}`}
+                    className={cn(styles.optionsCapacityLink, {
+                      [styles.optionsCapacityLinkActive]:
+                        capacity === productDetails.capacity,
+                    })}
+                  >
+                    {capacity.split('GB').join(' GB')}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-                  <span className={styles.specsItemValue}>
-                    {productDetails.screen}
-                  </span>
-                </span>
+        <div className={styles.priceWrapper}>
+          <span
+            className={styles.priceRegular}
+          >{`$${productDetails.priceRegular}`}</span>
 
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>Resolution</span>
+          <span
+            className={styles.priceDiscount}
+          >{`$${productDetails.priceDiscount}`}</span>
+        </div>
 
-                  <span className={styles.specsItemValue}>
-                    {productDetails.resolution}
-                  </span>
-                </span>
+        <div className={styles.buttons}>
+          <button
+            onClick={() => addToCart(selectedProduct)}
+            className={cn(styles.btnAdd, {
+              [styles.btnAddActive]: isInCart(selectedProduct),
+            })}
+          >
+            {isInCart(selectedProduct) ? 'Added' : 'Add to cart'}
+          </button>
 
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>Processor</span>
+          <button
+            onClick={() => toggleFavourites(selectedProduct)}
+            className={styles.btnFav}
+          >
+            <span
+              className={cn(styles.iconFav, {
+                [styles.iconFavActive]: isInFavourites(selectedProduct),
+              })}
+            ></span>
+          </button>
+        </div>
 
-                  <span className={styles.specsItemValue}>
-                    {productDetails.processor}
-                  </span>
-                </span>
+        <div className={styles.specs}>
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>Screen</span>
 
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>RAM</span>
+            <span className={styles.specsItemValue}>
+              {productDetails.screen}
+            </span>
+          </span>
 
-                  <span className={styles.specsItemValue}>
-                    {productDetails.ram}
-                  </span>
-                </span>
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>Resolution</span>
 
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>Built in memory</span>
+            <span className={styles.specsItemValue}>
+              {productDetails.resolution}
+            </span>
+          </span>
 
-                  <span className={styles.specsItemValue}>
-                    {productDetails.capacity}
-                  </span>
-                </span>
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>Processor</span>
 
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>Camera</span>
+            <span className={styles.specsItemValue}>
+              {productDetails.processor}
+            </span>
+          </span>
 
-                  <span className={styles.specsItemValue}>
-                    {productDetails.camera}
-                  </span>
-                </span>
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>RAM</span>
 
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>Zoom</span>
+            <span className={styles.specsItemValue}>{productDetails.ram}</span>
+          </span>
+        </div>
+      </div>
 
-                  <span className={styles.specsItemValue}>
-                    {productDetails.zoom}
-                  </span>
-                </span>
+      <section
+        ref={ref}
+        className={cn(styles.about, 'fadeEffect', {
+          fadeEffectActive: inView,
+        })}
+      >
+        <h3 className={styles.aboutTitle}>About</h3>
 
-                <span className={styles.specsItem}>
-                  <span className={styles.specsItemProp}>Cell</span>
+        {productDetails.description.map(description => (
+          <article key={description.title} className={styles.aboutItem}>
+            <h4 className={styles.aboutItemTitle}>{description.title}</h4>
 
-                  <span className={styles.specsItemValue}>
-                    {productDetails.cell.join(', ')}
-                  </span>
-                </span>
-              </div>
-            </section>
+            <p className={styles.aboutItemText}>{description.text}</p>
+          </article>
+        ))}
+      </section>
 
-            <div className={styles.suggestedProductsSlider}>
-              <ProductsSlider
-                title="You may also like"
-                products={suggestedProducts}
-                priceType="discount"
-              />
-            </div>
-          </>
-        )}
+      <section
+        ref={ref}
+        className={cn(styles.techSpecs, 'fadeEffect', {
+          fadeEffectActive: inView,
+        })}
+      >
+        <h3 className={styles.specsTitle}>Tech specs</h3>
+
+        <div className={styles.specs}>
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>Screen</span>
+
+            <span className={styles.specsItemValue}>
+              {productDetails.screen}
+            </span>
+          </span>
+
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>Resolution</span>
+
+            <span className={styles.specsItemValue}>
+              {productDetails.resolution}
+            </span>
+          </span>
+
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>Processor</span>
+
+            <span className={styles.specsItemValue}>
+              {productDetails.processor}
+            </span>
+          </span>
+
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>RAM</span>
+
+            <span className={styles.specsItemValue}>{productDetails.ram}</span>
+          </span>
+
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>Built in memory</span>
+
+            <span className={styles.specsItemValue}>
+              {productDetails.capacity}
+            </span>
+          </span>
+
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>Camera</span>
+
+            <span className={styles.specsItemValue}>
+              {productDetails.camera}
+            </span>
+          </span>
+
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>Zoom</span>
+
+            <span className={styles.specsItemValue}>{productDetails.zoom}</span>
+          </span>
+
+          <span className={styles.specsItem}>
+            <span className={styles.specsItemProp}>Cell</span>
+
+            <span className={styles.specsItemValue}>
+              {productDetails.cell.join(', ')}
+            </span>
+          </span>
+        </div>
+      </section>
+
+      <div
+        ref={ref}
+        className={cn(styles.suggestedProductsSlider, 'fadeEffect', {
+          fadeEffectActive: inView,
+        })}
+      >
+        <ProductsSlider
+          title="You may also like"
+          products={suggestedProducts}
+          priceType="discount"
+        />
+      </div>
     </div>
   );
 };

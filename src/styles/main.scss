@@ -100,6 +100,19 @@ body {
   height: 100vh;
 }
 
+.fadeEffect {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(10px);
+  transition: all $transition-duration ease-in-out;
+}
+
+.fadeEffectActive {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
 //#region typography
 h1 {
   font-weight: 800;

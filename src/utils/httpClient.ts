@@ -1,4 +1,4 @@
-const BASE_URL = '/api';
+const BASE_URL = './api';
 
 // Utility function to create a delay
 function wait(ms: number): Promise<void> {

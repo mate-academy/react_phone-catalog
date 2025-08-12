@@ -10,6 +10,7 @@ import {
 import { App } from './App';
 import { Suspense } from 'react';
 import { Loader } from './modules/shared/Loader';
+import './styles/main.scss';
 
 export const Root = () => (
   <Suspense fallback={<Loader />}>

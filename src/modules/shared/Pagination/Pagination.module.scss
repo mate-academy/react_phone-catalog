@@ -34,7 +34,7 @@
 }
 
 .iconLinkDisabled .iconPrev {
-  background-image: url('/public/img/icons/arrow-left-disabled.svg');
+  background-image: url('./img/icons/arrow-left-disabled.svg');
 }
 
 .icon {
@@ -45,11 +45,11 @@
 }
 
 .iconPrev {
-  background-image: url('/public/img/icons/arrow-left.svg');
+  background-image: url('./img/icons/arrow-left.svg');
 }
 
 .iconNext {
-  background-image: url('/public/img/icons/arrow-right.svg');
+  background-image: url('./img/icons/arrow-right.svg');
 }
 
 .pagesNums {

@@ -35,8 +35,8 @@ export const BurgerMenu: FC = () => {
           <img
             src={
               theme === 'dark'
-                ? '/img/icons/logo.svg'
-                : '/img/icons/logo-light-theme.svg'
+                ? './img/icons/logo.svg'
+                : './img/icons/logo-light-theme.svg'
             }
             alt="logo"
             className={styles.logoImg}

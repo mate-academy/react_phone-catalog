@@ -19,8 +19,8 @@ export const ProductList: FC<Props> = memo(({ products }) => {
           {({ inView, ref }) => (
             <li
               ref={ref}
-              className={cn(styles.item, styles.fadeEffect, {
-                [styles.fadeEffectActive]: inView,
+              className={cn(styles.item, 'fadeEffect', {
+                fadeEffectActive: inView,
               })}
             >
               <ProductCard product={product} priceType="discount" />

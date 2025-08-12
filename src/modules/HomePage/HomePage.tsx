@@ -7,7 +7,7 @@ import { ShopByCategory } from './components/ShopByCategory';
 import { HomePageSkeleton } from './HomePageSkeleton';
 import { useTranslation } from 'react-i18next';
 import { InView } from 'react-intersection-observer';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 export const HomePage: FC = () => {
   const { products, isLoading } = useGlobalState();
@@ -64,13 +64,11 @@ export const HomePage: FC = () => {
       <h2 className={styles.homeTitle}>{t('homeTitle')}</h2>
       <div className={styles.homeBody}>
         {sections.map(({ key, element }) => (
-          <InView key={key} rootMargin="75px 0px">
+          <InView key={key} rootMargin="-80px 0px">
             {({ inView, ref }) => (
               <div
                 ref={ref}
-                className={classNames(styles.fadeSection, {
-                  [styles.fadeSectionActive]: inView,
-                })}
+                className={cn('fadeEffect', { fadeEffectActive: inView })}
               >
                 {element}
               </div>

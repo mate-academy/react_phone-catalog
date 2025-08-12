@@ -33,7 +33,7 @@
   display: block;
   width: 16px;
   height: 16px;
-  background: url('/public/img/icons/close-dark.svg') center / cover no-repeat;
+  background: url('./img/icons/close-dark.svg') center / cover no-repeat;
 }
 
 .itemLink {
@@ -95,11 +95,11 @@
 }
 
 .itemCounterIconMinus {
-  background-image: url('/public/img/icons/minus.svg');
+  background-image: url('./img/icons/minus.svg');
 }
 
 .itemCounterBtn:disabled .itemCounterIconMinus {
-  background-image: url('/public/img/icons/minus-dark.svg');
+  background-image: url('./img/icons/minus-dark.svg');
 }
 
 .itemCounterValue {
@@ -111,7 +111,7 @@
 }
 
 .itemCounterIconPlus {
-  background-image: url('/public/img/icons/plus.svg');
+  background-image: url('./img/icons/plus.svg');
 }
 
 .itemPrice {

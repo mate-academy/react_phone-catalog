@@ -138,11 +138,11 @@
   display: block;
   width: 16px;
   height: 16px;
-  background: url(/public/img/icons/favourite.svg) center / cover no-repeat;
+  background: url(./img/icons/favourite.svg) center / cover no-repeat;
 }
 
 .iconFavActive {
-  background-image: url(/public/img/icons/favourite-added.svg);
+  background-image: url(./img/icons/favourite-added.svg);
 }
 
 .skeleton {
