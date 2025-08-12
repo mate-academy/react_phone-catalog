@@ -1,15 +1,9 @@
 import './productInfoPage.scss';
-import {
-  Link,
-  useNavigate,
-  useParams,
-  // useLocation
-} from 'react-router-dom';
-import { BreadcrumbsNav } from '../BreadcrumbsNav';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
 import cn from 'classnames';
 
+import { BreadcrumbsNav } from '../BreadcrumbsNav';
 import { PhoneInfoType } from '../../types/PhoneInfoType';
 import { TabletInfoType } from '../../types/TabletInfoType';
 import { AccessoryInfoType } from '../../types/AccessoryInfoType';
@@ -28,22 +22,9 @@ export const ProductInfoPage: React.FC = () => {
     null,
   );
 
-  // const location = useLocation();
-
-  // console.log(location);
-  // console.log('-----location-----', location);
-
-  const [foundId, setFoundId] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const [mainPhoto, setMainPhoto] = useState<string | undefined>(undefined);
-
-  // const [selectedColor, setSelectedColor] = useState<string | null>(
-  //   foundItem?.color || null,
-  // );
-
-  // const [selectedCapacity, setSelectedCapacity] = useState<string | null>(
-  //   foundItem?.capacity || null,
-  // );
 
   const { category, itemId } = useParams<{
     category: string;
@@ -61,105 +42,74 @@ export const ProductInfoPage: React.FC = () => {
     skyblueish: '#87CEEB',
   };
 
-  const specs = [
-    { name: 'Screen', value: foundItem?.screen },
-    { name: 'Resolution', value: foundItem?.resolution },
-    { name: 'Processor', value: foundItem?.processor },
-    { name: 'RAM', value: foundItem?.ram },
-  ];
-
-  const DEFAULT_COLOR = 'gray';
-  // const DEFAULT_COLOR = 'red';
-
   const getSafeColor = (color: string): string => {
+    const DEFAULT_COLOR = 'gray';
     const lowerColor = color.toLowerCase();
 
     if (CSS.supports('color', lowerColor)) {
       return lowerColor;
     }
 
-    if (colorMap[lowerColor]) {
-      return colorMap[lowerColor];
-    }
-
-    return DEFAULT_COLOR;
+    return colorMap[lowerColor] || DEFAULT_COLOR;
   };
 
   useEffect(() => {
-    fetch(`/api/${category}.json`)
-      .then(res => res.json())
-      .then(data => {
-        const found = data.find(
-          (product: ProductInfoUnionType) => product.id === itemId,
-        );
+    if (!category || !itemId) return;
 
-        if (!found) {
-          navigate('/product-not-found');
-          return;
-        }
+    // setIsLoading(true);
 
-        setFoundItem(found);
-        setMainPhoto(found.images[0]);
-        // setSelectedColor(found.color);
-        // setSelectedCapacity(found.capacity);
-      });
+    Promise.all([
+      fetch(`/api/${category}.json`).then(res => res.json()),
+      fetch(`/api/products.json`).then(res => res.json()),
+    ]).then(([categoryData, productsData]) => {
+      const foundItem = categoryData.find(
+        (product: ProductInfoUnionType) => product.id === itemId
+      );
+
+      const foundProduct = productsData.find(
+        (product: AllProductsType) => product.itemId === itemId
+      );
+
+      if (!foundItem || !foundProduct) {
+        navigate('/product-not-found');
+        return;
+      }
+
+      // Задержка в 1 секунду для показа лоадера
+      // setTimeout(() => {
+      setFoundItem(foundItem);
+      setFoundProduct(foundProduct);
+      setMainPhoto(foundItem.images[0]);
+        // setIsLoading(false);
+      // }, 200);
+    }).catch(error => {
+      console.error('Ошибка при загрузке данных:', error);
+      navigate('/product-not-found');
+    });
   }, [category, itemId]);
 
-  // console.log('-----selectedCapacity-----', selectedCapacity);
+  // if (isLoading) {
+  //   return <div>Loading...</div>; // или <Loader /> если есть компонент лоадера
+  // }
 
-  useEffect(() => {
-    fetch(`/api/products.json`)
-      .then(res => res.json())
-      .then(data => {
-        const foundProduct = data.find(
-          (product: AllProductsType) => product.itemId === itemId,
-        );
+    if (!foundItem || !foundProduct) {
+      return null; // или <Loader />
+    }
 
-        if (!foundProduct) {
-          navigate('/product-not-found');
-          return;
-        }
+    const specs = [
+      { name: 'Screen', value: foundItem.screen },
+      { name: 'Resolution', value: foundItem.resolution },
+      { name: 'Processor', value: foundItem.processor },
+      { name: 'RAM', value: foundItem.ram },
+    ];
 
-        setFoundId(foundProduct.id);
-        setFoundProduct(foundProduct);
-      });
-  }, [itemId]);
+  const foundId = foundProduct.id;
 
-  const modelName = foundItem?.name;
-  const modelPhoto = foundItem?.images;
-
-  const parts = itemId?.split('-') || [];
-  // const capacityFromUrl = parts.find(part =>
-  //   part.toLowerCase().endsWith('gb') || part.toLowerCase().endsWith('mm')
-  // ) || '';
-  // const colorFromUrl = parts[parts.length - 1] || '';
-
-  // const modelPrefix = parts.slice(0, parts.length - 2).join('-');
-  // const selectedColor = colorFromUrl;
-
-  const capacityIndex = parts.findIndex(p => {
-    const low = p.toLowerCase();
-
-    return low.endsWith('gb') || low.endsWith('mm') || low.endsWith('tb');
-  });
-
-  let capacityFromUrl = '';
-  let colorFromUrl = '';
-  let modelPrefix = '';
-
-  if (capacityIndex >= 0) {
-    capacityFromUrl = parts[capacityIndex];               // например "40mm" или "256gb"
-
-    const after = parts.slice(capacityIndex + 1);         // всё что идёт после capacity
-    colorFromUrl = after.length ? after.join('-') : '';   // "space-gray" или "space-gray-extra"
-    modelPrefix = parts.slice(0, capacityIndex).join('-'); // всё до capacity
-  } else {
-    return null;
-  }
-
-  // нормализованные для сравнений:
-  const selectedColor = colorFromUrl.toLowerCase();
-  // const selectedCapacity = capacityFromUrl.toLowerCase();
+  const modelName = foundItem.name;
+  const modelPhoto = foundItem.images;
+  const selectedCapacity = foundItem.capacity.toLowerCase();
+  const selectedColor = foundItem.color.split(' ').join('-').toLowerCase();
+  const modelPrefix = foundItem.namespaceId;
 
   return (
     <div className="product-info-page">
@@ -174,7 +124,7 @@ export const ProductInfoPage: React.FC = () => {
           </div>
 
           <div className="smallPhoto-container">
-            {modelPhoto?.map((photo, index) => (
+            {modelPhoto.map((photo, index) => (
               <div
                 key={index}
                 className={cn('smallPhoto-box', {
@@ -201,19 +151,22 @@ export const ProductInfoPage: React.FC = () => {
           <div className="colors-id-box">
             <div className="container">
               <div className="models-colors">
-                {foundItem?.colorsAvailable.map(color => {
-                  color=color.split(' ').join('-')
-                  const safeColor = getSafeColor(color);
+                {foundItem.colorsAvailable.map(color => {
+                  const normalizedColor = color
+                    .split(' ')
+                    .join('-')
+                    .toLowerCase();
+                  const safeColor = getSafeColor(normalizedColor);
 
-                  const newItemId = `${modelPrefix}-${capacityFromUrl}-${color}`;
+                  const newItemId = `${modelPrefix}-${selectedCapacity}-${normalizedColor}`;
                   const newLink = `/${category}/${newItemId}`;
 
                   return (
                     <Link
                       to={newLink}
-                      key={color}
+                      key={newLink}
                       className={cn('border-color', {
-                        'is-active': selectedColor === color,
+                        'is-active': selectedColor === normalizedColor,
                       })}
                     >
                       <div
@@ -231,18 +184,18 @@ export const ProductInfoPage: React.FC = () => {
                 <p className="small-text-12-600">Select capacity</p>
 
                 <div className="capacity-list">
-                  {foundItem?.capacityAvailable.map(capacity => {
-                    capacity = capacity.toLowerCase();
+                  {foundItem.capacityAvailable.map(capacity => {
+                    const normalizedCapacity = capacity.toLowerCase();
 
-                    const newItemId = `${modelPrefix}-${capacity}-${selectedColor}`;
+                    const newItemId = `${modelPrefix}-${normalizedCapacity}-${selectedColor}`;
                     const newLink = `/${category}/${newItemId}`;
 
                     return (
                       <Link
                         to={newLink}
-                        key={capacity}
+                        key={newLink}
                         className={cn('capacity', {
-                          'is-active': capacityFromUrl === capacity,
+                          'is-active': selectedCapacity === normalizedCapacity,
                         })}
                       >
                         <p className="main-body-text-14">{capacity}</p>
@@ -254,8 +207,7 @@ export const ProductInfoPage: React.FC = () => {
             </div>
 
             <div className="price-container">
-              {foundProduct &&
-                (foundProduct.year < 2021 ? (
+                {foundProduct.year < 2021 ? (
                   <>
                     <div className="price">${foundProduct.price}</div>
                     <div className="price old-price">
@@ -264,7 +216,7 @@ export const ProductInfoPage: React.FC = () => {
                   </>
                 ) : (
                   <div className="price">${foundProduct.fullPrice}</div>
-                ))}
+                )}
             </div>
 
             <div className="add-favourites-container">
