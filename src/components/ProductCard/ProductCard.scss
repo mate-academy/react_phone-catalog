@@ -30,6 +30,18 @@
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
+
+    &--regular {
+      font-weight: 600;
+      color: #75767F;
+      text-decoration: line-through;
+    }
+
+    &-with-discount {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
   }
 
   &__details {

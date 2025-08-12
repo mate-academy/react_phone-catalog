@@ -28,10 +28,20 @@ export const HomePage: React.FC = () => {
         const res = await fetch('/api/products.json');
         const json: Product[] = await res.json();
 
-        const maxDiscount = Math.max(...json.map(p => p.fullPrice - p.price));
+        const maxDiscount = Math.max(
+          ...json.map(p => {
+            if (p.fullPrice === undefined || p.price === undefined) {
+              return -Infinity;
+            }
+            return p.fullPrice - p.price;
+          }),
+        );
 
         const hotProducts = json.filter(
-          p => p.fullPrice - p.price === maxDiscount,
+          p =>
+            p.fullPrice !== undefined &&
+            p.price !== undefined &&
+            p.fullPrice - p.price === maxDiscount,
         );
 
         // const minPrice = Math.min(...json.map(p => p.price));

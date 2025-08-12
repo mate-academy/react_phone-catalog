@@ -29,7 +29,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         )}
 
         <p className="product__description">{product.name}</p>
-        <p className="product__price">${product.fullPrice}</p>
+        {product.fullPrice ? (
+          <p className="product__price">${product.fullPrice}</p>
+        ) : (
+          <div className="product__price-with-discount">
+            <p className="product__price product__price--discount">
+              ${product.priceDiscount}
+            </p>
+            <p className="product__price product__price--regular">
+              ${product.priceRegular}
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="product__details">
