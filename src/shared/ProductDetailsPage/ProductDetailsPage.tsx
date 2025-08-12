@@ -15,8 +15,6 @@ import { Direction } from '../Direction/Direction';
 
 export const ProductDetailsPage: React.FC = () => {
   const {
-    order,
-    setOrder,
     products,
     isMenuOpen,
     setIPhones,
@@ -25,7 +23,12 @@ export const ProductDetailsPage: React.FC = () => {
     isLoading,
     setIsLoading,
     setIsError,
+    setAddIsPressed,
+    setHeartIsPressed,
   } = useMyContext();
+
+  type Action = 'toCart' | 'toFavorite';
+
   const { productId } = useParams();
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -37,17 +40,43 @@ export const ProductDetailsPage: React.FC = () => {
   const [fullInfoList, setFullInfoList] = useState<ProductFullInfo[]>([]);
 
   const chosedItem = fullInfoList.find(item => item.id === productId);
+  const chosedItemDemo = products.find(product => product.itemId === productId);
 
-  const addToOrder = (item: ProductFullInfo) => {
-    const existingItem = order.find(i => i.itemId === item.id);
-    const productToAdd = products.find(product => product.itemId === item.id);
+  const updateList = (item: ProductDemo, direction: Action) => {
+    const chosedID = item.itemId;
 
-    if (existingItem) {
-      return;
-    }
+    switch (direction) {
+      case 'toCart':
+        const existingOrder = localStorage.getItem(`cart_${chosedID}`);
 
-    if (productToAdd) {
-      setOrder([...order, { ...productToAdd, quantity: 1 }]);
+        if (existingOrder) {
+          setAddIsPressed(prev => !prev);
+
+          return;
+        } else {
+          localStorage.setItem(`cart_${chosedID}`, JSON.stringify(item));
+          setAddIsPressed(prev => !prev);
+
+          setActiveAdd(true);
+        }
+
+        break;
+      case 'toFavorite':
+        const existingProduct = localStorage.getItem(chosedID);
+
+        if (existingProduct) {
+          localStorage.removeItem(chosedID);
+
+          setActiveHeart(false);
+          setHeartIsPressed(prev => !prev);
+        } else {
+          localStorage.setItem(chosedID, JSON.stringify(item));
+
+          setActiveHeart(true);
+          setHeartIsPressed(prev => !prev);
+        }
+
+        break;
     }
   };
 
@@ -85,6 +114,34 @@ export const ProductDetailsPage: React.FC = () => {
 
     getSuggestedProducts();
   }, []);
+
+  useEffect(() => {
+    const checkTheStorage = () => {
+      if (!chosedItemDemo) {
+        return;
+      }
+
+      const favoriteInStorage = localStorage.getItem(chosedItemDemo.itemId);
+
+      if (favoriteInStorage) {
+        setActiveHeart(true);
+      } else {
+        setActiveHeart(false);
+      }
+
+      const orderInStorage = localStorage.getItem(
+        `cart_${chosedItemDemo.itemId}`,
+      );
+
+      if (orderInStorage) {
+        setActiveAdd(true);
+      } else {
+        setActiveAdd(false);
+      }
+    };
+
+    checkTheStorage();
+  }, [activeHeart, activeAdd]);
 
   return (
     <div className={styles.container}>
@@ -203,8 +260,8 @@ export const ProductDetailsPage: React.FC = () => {
                     className={`${styles.confirm_button} ${styles.confirm_add}`}
                     style={activeAdd ? { backgroundColor: '#323542' } : {}}
                     onClick={() => {
-                      if (chosedItem) {
-                        addToOrder(chosedItem);
+                      if (chosedItemDemo) {
+                        updateList(chosedItemDemo, 'toCart');
                       }
 
                       setActiveAdd(!activeAdd);
@@ -214,7 +271,13 @@ export const ProductDetailsPage: React.FC = () => {
                   </button>
                   <button
                     className={`${styles.confirm_button} ${styles.confirm_heart}`}
-                    onClick={() => setActiveHeart(!activeHeart)}
+                    onClick={() => {
+                      if (chosedItemDemo) {
+                        updateList(chosedItemDemo, 'toFavorite');
+                      }
+
+                      setActiveHeart(!activeHeart);
+                    }}
                   >
                     <img
                       src={

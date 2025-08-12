@@ -12,12 +12,12 @@ type ProductCardProps = {
 
 export const ProductCard = React.memo(
   ({ product, showFullPrice }: ProductCardProps) => {
-    const {setHeartIsPressed} = useMyContext();
+    const { setHeartIsPressed, setAddIsPressed } = useMyContext();
     const location = useLocation();
     const [activeHeart, setActiveHeart] = useState(false);
     const [activeAdd, setActiveAdd] = useState(false);
 
-    const updateList = (item: ProductDemo, direction: ProductToAdd) => {
+    const updateList = (item: ProductDemo, direction: string) => {
       const productId = item.itemId;
 
       switch (direction) {
@@ -25,10 +25,12 @@ export const ProductCard = React.memo(
           const existingOrder = localStorage.getItem(`cart_${productId}`);
 
           if (existingOrder) {
+            setAddIsPressed(prev => !prev);
+
             return;
           } else {
             localStorage.setItem(`cart_${productId}`, JSON.stringify(item));
-
+            setAddIsPressed(prev => !prev);
             setActiveAdd(true);
           }
 
@@ -51,6 +53,8 @@ export const ProductCard = React.memo(
           break;
       }
     };
+
+    console.log('render');
 
     useEffect(() => {
       const checkTheStorage = () => {

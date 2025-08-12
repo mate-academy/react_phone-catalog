@@ -5,29 +5,27 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #3b3e4a;
+  height: 48px;
+  background-color: #0f1121;
 
   position: sticky;
   top: 0;
   z-index: 10;
 
-  height: 48px;
   @include respond(desktop) {
     height: 64px;
     justify-content: start;
   }
 
-  background-color: #0f1121;
-
   &_options {
     margin-left: 16px;
-    @include respond(desktop) {
-      margin-left: 24px;
-    }
-
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include respond(desktop) {
+      margin-left: 24px;
+    }
   }
   &_list {
     display: flex;
@@ -67,14 +65,13 @@
   }
 
   &_image {
+    display: block;
     width: 64px;
     height: 22px;
     @include respond(desktop) {
       width: 80px;
       height: 28px;
     }
-
-    display: block;
   }
 
   &_link:hover img {

@@ -10,14 +10,7 @@ import { ProductDemo } from '../../types/ProductDemo';
 import { Loader } from '../../shared/Loader';
 
 export const Cart: React.FC = () => {
-  const {
-    products,
-    isMenuOpen,
-    addIsPressed,
-    isLoading,
-    setIsLoading,
-    setIsError,
-  } = useMyContext();
+  const { products, isMenuOpen, addIsPressed, isLoading } = useMyContext();
   const [orderList, setOrderList] = useState<ProductDemo[]>([]);
   const [amountPrice, setAmountPrice] = useState(0);
   const [amountItems, setAmountItems] = useState(0);

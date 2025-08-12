@@ -1,1 +1,1 @@
-export { } from './Direction';
+export {} from './Direction';

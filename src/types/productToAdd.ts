@@ -1,1 +1,0 @@
-type ProductToAdd = 'toCart' | 'toFavorite';

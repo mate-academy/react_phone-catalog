@@ -7,7 +7,8 @@ import { breakpoints } from '../../Services/MediaBreakpoints';
 import { SavedGoods } from '../SavedGoods';
 
 export const NavBar: React.FC = () => {
-  const { isMenuOpen, setIsMenuOpen, products } = useMyContext();
+  const { isMenuOpen, setIsMenuOpen, products, heartIsPressed, addIsPressed } =
+    useMyContext();
   const [favoriteNumber, setFavoriteNumber] = useState<number>(0);
   const [cartNumber, setCartNumber] = useState<number>(0);
   const location = useLocation();
@@ -36,9 +37,7 @@ export const NavBar: React.FC = () => {
 
     setFavoriteNumber(favoriteCount);
     setCartNumber(cartCount);
-
-    window.scrollTo(0, 0);
-  }, [products]);
+  }, [products, heartIsPressed, addIsPressed]);
 
   return (
     <div className={styles.navBar}>

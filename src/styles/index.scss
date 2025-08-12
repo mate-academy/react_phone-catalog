@@ -1,20 +1,20 @@
 /* Подключение шрифта из public/fonts */
 @font-face {
-  font-family: 'Mont';
+  font-family: "Mont";
   src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: "Mont";
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: "Mont";
   src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
@@ -29,7 +29,7 @@
 
 /* Глобальные стили */
 body {
-  font-family: 'Mont', sans-serif;
+  font-family: "Mont", sans-serif;
   background-color: #0F1121;
   color: #F1F2F9;
   transition: all 0.3s ease;

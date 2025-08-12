@@ -7,7 +7,7 @@
 .content {
   flex: 1;
 
-  margin: 0px 16px 56px;
+  margin: 0 16px 56px;
 
   &_title {
     font-weight: 800;
@@ -95,6 +95,7 @@
     align-items: center;
     justify-content: center;
   }
+
   /* Кнопка для открытия */
   &_container summary {
     display: flex;
@@ -115,6 +116,7 @@
     font-size: 14px;
     line-height: 21px;
   }
+
   &_container summary:before {
     content: '';
     position: absolute;
@@ -128,6 +130,7 @@
     transform: translateX(-100%);
     z-index: -1;
   }
+  
   &_container summary:hover:before,
   &_container summary:active:before,
   &_container summary:focus:before {

@@ -18,8 +18,6 @@ type MyContextType = {
   setAccessories: (list: ProductFullInfo[]) => void;
   products: ProductDemo[];
   setProducts: (list: ProductDemo[]) => void;
-  order: ProductDemo[];
-  setOrder: (list: ProductDemo[]) => void;
   isMenuOpen: boolean;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isLoading: boolean;
@@ -39,7 +37,6 @@ export const MyProvider = ({ children }: { children: ReactNode }) => {
   const [tablets, setTablets] = useState<ProductFullInfo[]>([]);
   const [accessories, setAccessories] = useState<ProductFullInfo[]>([]);
   const [products, setProducts] = useState<ProductDemo[]>([]);
-  const [order, setOrder] = useState<ProductDemo[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
@@ -74,8 +71,6 @@ export const MyProvider = ({ children }: { children: ReactNode }) => {
         setAccessories,
         products,
         setProducts,
-        order,
-        setOrder,
         isMenuOpen,
         setIsMenuOpen,
         isLoading,
