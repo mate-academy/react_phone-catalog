@@ -2,6 +2,7 @@ import './productInfoPage.scss';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
+import { useProductFilters } from '../../hooks/useProductFilters';
 
 import { BreadcrumbsNav } from '../BreadcrumbsNav';
 import { PhoneInfoType } from '../../types/PhoneInfoType';
@@ -16,6 +17,7 @@ export type ProductInfoUnionType =
 
 export const ProductInfoPage: React.FC = () => {
   const navigate = useNavigate();
+  const { getLastSearch } = useProductFilters();
 
   const [foundItem, setFoundItem] = useState<ProductInfoUnionType | null>(null);
   const [foundProduct, setFoundProduct] = useState<AllProductsType | null>(
@@ -61,47 +63,49 @@ export const ProductInfoPage: React.FC = () => {
     Promise.all([
       fetch(`/api/${category}.json`).then(res => res.json()),
       fetch(`/api/products.json`).then(res => res.json()),
-    ]).then(([categoryData, productsData]) => {
-      const foundItem = categoryData.find(
-        (product: ProductInfoUnionType) => product.id === itemId
-      );
+    ])
+      .then(([categoryData, productsData]) => {
+        const foundItem = categoryData.find(
+          (product: ProductInfoUnionType) => product.id === itemId,
+        );
 
-      const foundProduct = productsData.find(
-        (product: AllProductsType) => product.itemId === itemId
-      );
+        const foundProduct = productsData.find(
+          (product: AllProductsType) => product.itemId === itemId,
+        );
 
-      if (!foundItem || !foundProduct) {
-        navigate('/product-not-found');
-        return;
-      }
+        if (!foundItem || !foundProduct) {
+          navigate('/product-not-found');
+          return;
+        }
 
-      // Задержка в 1 секунду для показа лоадера
-      // setTimeout(() => {
-      setFoundItem(foundItem);
-      setFoundProduct(foundProduct);
-      setMainPhoto(foundItem.images[0]);
+        // Задержка в 1 секунду для показа лоадера
+        // setTimeout(() => {
+        setFoundItem(foundItem);
+        setFoundProduct(foundProduct);
+        setMainPhoto(foundItem.images[0]);
         // setIsLoading(false);
-      // }, 200);
-    }).catch(error => {
-      console.error('Ошибка при загрузке данных:', error);
-      navigate('/product-not-found');
-    });
+        // }, 200);
+      })
+      .catch(error => {
+        console.error('Ошибка при загрузке данных:', error);
+        navigate('/product-not-found');
+      });
   }, [category, itemId]);
 
   // if (isLoading) {
   //   return <div>Loading...</div>; // или <Loader /> если есть компонент лоадера
   // }
 
-    if (!foundItem || !foundProduct) {
-      return null; // или <Loader />
-    }
+  if (!foundItem || !foundProduct) {
+    return null; // или <Loader />
+  }
 
-    const specs = [
-      { name: 'Screen', value: foundItem.screen },
-      { name: 'Resolution', value: foundItem.resolution },
-      { name: 'Processor', value: foundItem.processor },
-      { name: 'RAM', value: foundItem.ram },
-    ];
+  const specs = [
+    { name: 'Screen', value: foundItem.screen },
+    { name: 'Resolution', value: foundItem.resolution },
+    { name: 'Processor', value: foundItem.processor },
+    { name: 'RAM', value: foundItem.ram },
+  ];
 
   const foundId = foundProduct.id;
 
@@ -159,7 +163,7 @@ export const ProductInfoPage: React.FC = () => {
                   const safeColor = getSafeColor(normalizedColor);
 
                   const newItemId = `${modelPrefix}-${selectedCapacity}-${normalizedColor}`;
-                  const newLink = `/${category}/${newItemId}`;
+                  const newLink = `/${category}/${newItemId}${getLastSearch()}`;
 
                   return (
                     <Link
@@ -188,7 +192,7 @@ export const ProductInfoPage: React.FC = () => {
                     const normalizedCapacity = capacity.toLowerCase();
 
                     const newItemId = `${modelPrefix}-${normalizedCapacity}-${selectedColor}`;
-                    const newLink = `/${category}/${newItemId}`;
+                    const newLink = `/${category}/${newItemId}${getLastSearch()}`;
 
                     return (
                       <Link
@@ -207,16 +211,16 @@ export const ProductInfoPage: React.FC = () => {
             </div>
 
             <div className="price-container">
-                {foundProduct.year < 2021 ? (
-                  <>
-                    <div className="price">${foundProduct.price}</div>
-                    <div className="price old-price">
-                      ${foundProduct.fullPrice}
-                    </div>
-                  </>
-                ) : (
-                  <div className="price">${foundProduct.fullPrice}</div>
-                )}
+              {foundProduct.year < 2021 ? (
+                <>
+                  <div className="price">${foundProduct.price}</div>
+                  <div className="price old-price">
+                    ${foundProduct.fullPrice}
+                  </div>
+                </>
+              ) : (
+                <div className="price">${foundProduct.fullPrice}</div>
+              )}
             </div>
 
             <div className="add-favourites-container">

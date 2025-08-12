@@ -1,33 +1,41 @@
-// src/hooks/useProductFilters.ts
-import { useSearchParams } from 'react-router-dom'; // используем хук для работы с URL параметрами
+import { useSearchParams, useLocation, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const useProductFilters = () => {
-  const [searchParams, setSearchParams] = useSearchParams(); // получаем текущие параметры и функцию для их обновления
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const { itemId } = useParams<{ itemId?: string }>();
 
-  // Получаем значение параметра sort или пустую строку
+  const STORAGE_KEY = 'lastCategorySearch'; // один ключ для всех категорий
+
+  // 📌 1. Сохраняем search-параметры, если мы на странице категории (а не товара)
+  useEffect(() => {
+    const isCategoryPage = !itemId; // если нет itemId, значит список товаров
+    if (isCategoryPage && location.search) {
+      sessionStorage.setItem(STORAGE_KEY, location.search);
+    }
+  }, [location.search, itemId]);
+
+  // 📌 2. Получаем сохранённые параметры
+  const getLastSearch = () => sessionStorage.getItem(STORAGE_KEY) || '';
+
+  // --- Методы работы с фильтрами ---
   const getSortParam = () => searchParams.get('sort') || '';
-
-  // Получаем параметр perPage или 16 по умолчанию, приводим к числу
   const getPerPage = () => parseInt(searchParams.get('perPage') || '16', 10);
-
-  // Получаем текущую страницу или 1 по умолчанию, приводим к числу
   const getPage = () => parseInt(searchParams.get('page') || '1', 10);
 
-  // Устанавливаем сортировку и сбрасываем страницу на 1
   const setSort = (value: string) => {
-    searchParams.set('sort', value);         // задаём новый сорт
-    searchParams.set('page', '1');           // сбрасываем страницу
-    setSearchParams(searchParams);           // обновляем параметры
-  };
-
-  // Устанавливаем количество карточек на странице
-  const setPerPage = (value: number) => {
-    searchParams.set('perPage', value.toString()); // преобразуем число в строку
-    searchParams.set('page', '1');                 // тоже сбрасываем страницу
+    searchParams.set('sort', value);
+    searchParams.set('page', '1');
     setSearchParams(searchParams);
   };
 
-  // Устанавливаем текущую страницу
+  const setPerPage = (value: number) => {
+    searchParams.set('perPage', value.toString());
+    searchParams.set('page', '1');
+    setSearchParams(searchParams);
+  };
+
   const setPage = (value: number) => {
     searchParams.set('page', value.toString());
     setSearchParams(searchParams);
@@ -40,5 +48,7 @@ export const useProductFilters = () => {
     setSort,
     setPerPage,
     setPage,
+    getLastSearch, // теперь можно добавлять сохранённые search к ссылкам
   };
 };
+
