@@ -3,6 +3,7 @@ import styles from './CartPage.module.scss';
 import { useAppContext } from '../../contexts/AppContext';
 import { CartProduct } from './CartProduct';
 import { ModalWindow } from './ModalWindow';
+import { set } from 'cypress/types/lodash';
 
 export const CartPage: React.FC = () => {
   const { cartProductsIds, products, isLoading } = useAppContext();
@@ -49,7 +50,8 @@ export const CartPage: React.FC = () => {
 
   useEffect(() => {
     setTotalSum(countTotal());
-  }, [isLoading]);
+    setTotalItems(cartProductsIds.length);
+  }, [isLoading, cartProductsIds]);
 
   return (
     <main
