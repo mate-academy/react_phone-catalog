@@ -12,10 +12,12 @@
 
     &:not(:last-child)::after {
       content: '';
-      height: 16px;
-      width: 16px;
+      height: 12px;
+      width: 12px;
       background-image: url('/public/icon/Vector\ \(Stroke\).png');
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
   }
 }
 
