@@ -100,11 +100,25 @@ export const ProductInfoPage: React.FC = () => {
     return null; // или <Loader />
   }
 
-  const specs = [
+  const baseSpecifications = [
     { name: 'Screen', value: foundItem.screen },
     { name: 'Resolution', value: foundItem.resolution },
     { name: 'Processor', value: foundItem.processor },
     { name: 'RAM', value: foundItem.ram },
+  ];
+
+  const fullSpecifications = [
+    ...baseSpecifications,
+    ...(foundItem.category === 'phones' || foundItem.category === 'tablets'
+      ? [
+          { name: 'Built in memory', value: foundItem.capacity },
+          { name: 'Camera', value: foundItem.camera },
+          { name: 'Zoom', value: foundItem.zoom },
+          { name: 'Cell', value: foundItem.cell.join(', ') },
+        ]
+      : [
+          { name: 'Cell', value: foundItem.cell.join(', ') },
+        ]),
   ];
 
   const foundId = foundProduct.id;
@@ -238,7 +252,7 @@ export const ProductInfoPage: React.FC = () => {
             </div>
 
             <div className="info">
-              {specs.map(({ name, value }) => (
+              {baseSpecifications.map(({ name, value }) => (
                 <div className="spec-name-value-box" key={name}>
                   <div className="spec-name">{name}</div>
                   <div className="spec-value">{value}</div>
@@ -246,6 +260,34 @@ export const ProductInfoPage: React.FC = () => {
               ))}
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="about-section">
+        <div className="about-model">
+          <h3 className="box-title">About</h3>
+
+          {foundItem.description.map(({ title, text }) => (
+            <div key={title} className="description-block">
+              <h4 className="title-description">{title}</h4>
+              {text.map((paragraph, index) => (
+                <p key={index} className="text-description main-body-text-14">{paragraph}</p>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        <div className="tech-specs">
+          <h3 className="box-title">Tech specs</h3>
+
+          {fullSpecifications.map(({ name, value }) => {
+            return (
+              <div className="spec-name-value-box" key={name}>
+                <div className="spec-name">{name}</div>
+                <div className="spec-value">{value}</div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </div>

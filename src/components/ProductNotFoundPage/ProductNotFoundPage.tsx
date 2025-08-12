@@ -2,11 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './productNotFoundPage.scss';
 
-// import { useNavigate } from 'react-router-dom';
-
 export const ProductNotFoundPage: React.FC = () => {
-  // const navigate = useNavigate();
-
 
   return (
     <div className="product-not-found">
@@ -21,9 +17,7 @@ export const ProductNotFoundPage: React.FC = () => {
 
         <div className='link-box'>
 
-        <Link to="/" className="back-link"
-          // onClick={() => navigate(-3)}
-        >
+        <Link to="/" className="back-link">
           <img src="./img/icons/ArrowLeft.svg" alt="Arrow Left" />
           Back to Home
         </Link>

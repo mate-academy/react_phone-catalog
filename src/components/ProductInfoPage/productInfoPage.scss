@@ -14,18 +14,22 @@
   }
 
   .photo-control-box {
-    .id-text-12 {
-      font-size: 12px;
-      color: $border-hover-color;
-    }
+    padding-bottom: 56px;
 
     @include onTablet {
       display: flex;
       gap: 18px;
+      padding-bottom: 64px;
     }
 
     @media (min-width: 1000px) {
       gap: 0;
+      padding-bottom: 80px;
+    }
+
+    .id-text-12 {
+      font-size: 12px;
+      color: $border-hover-color;
     }
 
     .modelsPhoto {
@@ -325,6 +329,65 @@
           }
         }
       }
+    }
+  }
+
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include onTablet {
+      gap: 64px;
+    }
+
+    // @include onDesktop {
+    //   gap: 80px;
+    // }
+
+    .box-title {
+      padding-bottom: 16px;
+      border-bottom: 1px solid $border-color;
+
+      @include onTablet {
+        
+      }
+    }
+
+    .about-model {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      .description-block {
+
+        p {
+          margin-bottom: 10px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+
+        .title-description {
+          font-size: 16px;
+          padding-bottom: 16px;
+
+          @include onTablet {
+            font-size: 20px;
+          }
+        }
+
+
+        .text-description {
+
+        }
+      }
+    }
+
+    .tech-specs {
+
     }
   }
 }

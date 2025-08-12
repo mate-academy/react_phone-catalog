@@ -94,6 +94,18 @@ h2 {
   }
 }
 
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+
+  @include onTablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
 h4 {
   font-weight: 700;
   font-size: 20px;
