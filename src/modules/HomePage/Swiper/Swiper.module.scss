@@ -1,3 +1,5 @@
+@use '../../../Mixins/Mixins.scss' as *;
+
 .swiper {
   overflow: hidden;
 }
@@ -20,23 +22,59 @@
   display: block;
 }
 
-
 .buttons {
   display: flex;
   justify-content: center;
   gap: 9px;
   margin-top: 18px;
-  margin-bottom: 66px;
 }
 
 .dot {
   width: 14px;
   height: 4px;
-  background: #3B3E4A;
+  background: #3b3e4a;
   border: none;
   cursor: pointer;
 }
 
 .dot.active {
-  background: #F1F2F9;
+  background: #f1f2f9;
+}
+
+.swiperOnTablet {
+  display: flex;
+  align-items: center;
+  margin-inline: 24px;
+  @include respond(desktop) {
+    margin-inline: 32px;
+  }
+
+  &_viewport {
+    flex: 1;
+    margin-inline: 19px;
+    overflow: hidden;
+    @include respond(desktop) {
+      margin-inline: 16px;
+    }
+  }
+
+  &_container {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  &_button {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 32px;
+    background-color: #323542;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+  }
 }

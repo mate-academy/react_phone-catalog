@@ -1,12 +1,20 @@
+@use '../../Mixins/Mixins.scss' as *;
+
 .footer {
   padding-block: 32px;
   padding-inline: 16px;
-  border-top: 1px solid #3B3E4A;
+  border-top: 1px solid #3b3e4a;
 
   display: flex;
   flex-direction: column;
   gap: 32px;
 
+  @include respond(tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 32px;
+  }
 
   &_links {
     display: flex;
@@ -19,7 +27,15 @@
     letter-spacing: 4%;
     text-transform: uppercase;
 
-
+    @include respond(tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 50px;
+    }
+    @include respond(desktop) {
+      gap: 100px;
+    }
   }
 
   &_goTop {
@@ -31,7 +47,7 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;
-    color: #89939A;
+    color: #89939a;
   }
 
   &_button {
@@ -43,14 +59,16 @@
     width: 32px;
     height: 32px;
     background-color: #323542;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    transition:
+      background-color 0.3s ease,
+      transform 0.1s ease;
 
     &:hover {
-      background-color: #4A4D58;
+      background-color: #4a4d58;
     }
     &:disabled {
-      border: 1px solid #3B3E4A;
-      background-color: #0F1121;
+      border: 1px solid #3b3e4a;
+      background-color: #0f1121;
     }
   }
 }

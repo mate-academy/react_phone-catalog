@@ -1,3 +1,5 @@
+@use '../../Mixins/Mixins.scss' as *;
+
 .way {
   display: flex;
   justify-content: start;
@@ -8,6 +10,10 @@
   text-transform: capitalize;
 
   margin-block: 24px;
+  @include respond(tablet){
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
 
   &_home{
     cursor: pointer;

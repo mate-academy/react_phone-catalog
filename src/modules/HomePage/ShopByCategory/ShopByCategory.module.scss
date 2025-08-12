@@ -1,13 +1,26 @@
+@use '../../../Mixins/Mixins.scss' as *;
+
 .shopByCategory {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-block: 56px;
+  @include respond(tablet) {
+    margin-block: 64px;
+    justify-content: start;
+    align-items: start;
+    text-align: left;
+    width: 100%;
+  }
+  @include respond(desktop) {
+    margin-block: 80px;
+  }
 }
 
 .shop_title {
   margin-bottom: 24px;
+
 }
 
 .sections {
@@ -15,13 +28,22 @@
   flex-direction: column;
   gap: 32px;
 
+  @include respond(tablet) {
+    flex-direction: row;
+    width: 100%;
+    gap: 16px;
+  }
+
   &_good {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: fit-content;
+    @include respond(tablet) {
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 33.33%;
+    }
 
-    &:hover .good_image{
+    &:hover .good_image {
       transform: scale(1.1);
     }
   }
@@ -63,19 +85,22 @@
     color: #75767f;
   }
 
-  &_product{
-    width: 288px;
-    height: 288px;
+  &_product {
+    max-width: 288px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    @include respond(desktop) {
+      max-width: 368px;
+    }
   }
 
-  &_image{
+  &_image {
     width: 100%;
     height: 100%;
-    object-fit:cover;
+    object-fit:contain;
     transition: transform 0.3s ease;
   }
 }

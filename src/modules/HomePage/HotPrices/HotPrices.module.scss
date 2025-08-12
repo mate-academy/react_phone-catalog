@@ -1,3 +1,4 @@
+@use '../../../Mixins/Mixins.scss' as *;
 
 .topBar {
   display: flex;
@@ -9,6 +10,9 @@
     font-style: 800;
     line-height: 140%;
     width: 70%;
+    @include respond(tablet) {
+      font-size: 32px;
+    }
   }
 }
 

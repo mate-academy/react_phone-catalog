@@ -29,4 +29,14 @@
 .content {
   margin-inline: 16px;
   margin-bottom: 64px;
+  margin-top: 56px;
+
+  @include respond(tablet){
+    margin-inline: 24px;
+    margin-top: 64px;
+  }
+  @include respond(desktop){
+    margin-inline: 32px;
+    margin-block: 80px;
+  }
 }
