@@ -1,17 +1,25 @@
 import React from 'react';
-import './PaginationControl.scss';
+import './Pagination.scss';
 
 type Props = {
   page: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  onPerPageChange: (value: string) => void;
 };
 
-export const PaginationControl: React.FC<Props> = ({
+export const Pagination: React.FC<Props> = ({
   page,
   totalPages,
   onPageChange,
+  onPerPageChange,
 }) => {
+
+  const goTo = (p: number) =>
+    onPageChange(Math.min(Math.max(1, p), totalPages));
+
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i);
+
   return (
     <div className="arrow">
       <button
@@ -25,6 +33,18 @@ export const PaginationControl: React.FC<Props> = ({
           alt="arrow left"
         />
       </button>
+
+      <div className="pagination__pages">
+        {pageNumbers.map(num => (
+          <button
+            key={num}
+            className={`page-button ${page === num ? 'active' : ''}`}
+            onClick={() => onPageChange(num)}
+          >
+            {num + 1}
+          </button>
+        ))}
+      </div>
 
       <button
         className="arrow__button"

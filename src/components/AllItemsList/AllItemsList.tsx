@@ -4,6 +4,7 @@ import { Product } from '../../utils/Product';
 import { ProductCard } from '../ProductCard';
 import './AllItemsList.scss';
 import { SelectBox } from '../SelectBox';
+import { Pagination } from '../Pagination/Pagination';
 
 type Props = {
   path: string;
@@ -17,20 +18,23 @@ enum SortOptions {
   Cheapest = 'Cheapest',
 }
 
-// enum FilterOptions {
-//   All = 'All',
-//   Available = 'Available',
-//   OutOfStock = 'OutOfStock',
-// }
-
 export const AllItemsList: React.FC<Props> = ({
   path,
   allItems,
   setAllItems,
 }) => {
   const [sort, setSort] = useState<SortOptions>(SortOptions.Newest);
-  const [perPageStr, setPerPageStr] = useState<string>('8'); 
-  // const [page, setPage] = useState<number>(1);
+
+  const [perPage, setPerPage] = useState('4');
+  const [page, setPage] = useState<number>(1);
+
+  const itemsPerPage = perPage === 'all' ? allItems.length : +perPage;
+  const totalPages = Math.ceil(allItems.length / +itemsPerPage);
+
+  const visibleProducts = allItems.slice(
+    (page - 1) * itemsPerPage,
+    (page - 1) * itemsPerPage + itemsPerPage,
+  );
 
   useEffect(() => {
     const getItems = async () => {
@@ -61,8 +65,8 @@ export const AllItemsList: React.FC<Props> = ({
 
         <SelectBox
           title="Items on page"
-          value={perPageStr}
-          onChange={setPerPageStr}
+          value={perPage}
+          onChange={setPerPage}
           options={[
             { label: '4', value: '4' },
             { label: '8', value: '8' },
@@ -73,10 +77,20 @@ export const AllItemsList: React.FC<Props> = ({
       </div>
 
       <div className="catalog__list">
-        {allItems.map(item => (
+        {visibleProducts.map(item => (
           <ProductCard product={item} key={item.id} />
         ))}
       </div>
+
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        onPageChange={newPage => setPage(newPage)}
+        onPerPageChange={value => {
+          setPerPage(value);
+          setPage(0);
+        }}
+      />
     </div>
   );
 };
