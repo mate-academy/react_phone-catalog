@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useParams } from 'react-router-dom';
 import { Footer } from '../../modules/Footer';
-import { HotPrices } from '../../modules/HomePage/HotPrices';
 import { NavBar } from '../NavBar';
 import styles from './ProductDetailsPage.module.scss';
 import { useMyContext } from '../../Context/ProductContexts';
@@ -11,7 +10,10 @@ import { ProductDemo } from '../../types/ProductDemo';
 import { BurgerMenu } from '../BurgerMenu';
 import { client } from '../../fetch/fetchGoods';
 import { Loader } from '../Loader';
-import { Direction } from '../Direction/Direction';
+import { useMediaQuery } from '../../Services/UseMediaQuery';
+import { Action } from '../../types/Action';
+import { breakpoints } from '../../Services/MediaBreakpoints';
+import { DetailsContent } from './DetailsContent';
 
 export const ProductDetailsPage: React.FC = () => {
   const {
@@ -26,8 +28,6 @@ export const ProductDetailsPage: React.FC = () => {
     setAddIsPressed,
     setHeartIsPressed,
   } = useMyContext();
-
-  type Action = 'toCart' | 'toFavorite';
 
   const { productId } = useParams();
 
@@ -80,6 +80,8 @@ export const ProductDetailsPage: React.FC = () => {
     }
   };
 
+  const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`);
+
   useEffect(() => {
     const makeFullList = async () => {
       try {
@@ -88,7 +90,13 @@ export const ProductDetailsPage: React.FC = () => {
         const iphoneList = await client.fetchIPhones();
         const tabletList = await client.fetchTablets();
         const accessoryList = await client.fetchAccessories();
+        const productsList = await client.fetchProducts();
 
+        const suggestedProducts = [...productsList]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 10);
+
+        setSuggestedList(suggestedProducts);
         setIPhones(iphoneList);
         setTablets(tabletList);
         setAccessories(accessoryList);
@@ -101,18 +109,6 @@ export const ProductDetailsPage: React.FC = () => {
     };
 
     makeFullList();
-  }, []);
-
-  useEffect(() => {
-    const getSuggestedProducts = () => {
-      const suggestedProducts = [...products]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 10);
-
-      setSuggestedList(suggestedProducts);
-    };
-
-    getSuggestedProducts();
   }, []);
 
   useEffect(() => {
@@ -153,253 +149,23 @@ export const ProductDetailsPage: React.FC = () => {
           {isLoading ? (
             <Loader />
           ) : (
-            <div className={styles.content}>
-              <Direction page="productID" product={chosedItem} />
-
-              <h2 className={styles.name}>{chosedItem?.name}</h2>
-              {/* preview */}
-              <div className={styles.preview}>
-                <div className={styles.preview_main}>
-                  <img
-                    className={styles.preview_image}
-                    src={selectedImage ? selectedImage : chosedItem?.images[0]}
-                    alt="main"
-                  />
-                </div>
-                <ul className={styles.preview_list}>
-                  {chosedItem?.images.map((product, index) => (
-                    <li key={index} className={styles.preview_li}>
-                      <img
-                        className={`${styles.preview_miniImage} ${selectedImage === product ? styles.preview_miniImage_active : ''}`}
-                        src={product}
-                        alt={`mini image - ${index}`}
-                        onClick={() => setSelectedImage(product)}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Order */}
-              <div className={styles.selectors}>
-                {/* Сolor selection */}
-
-                <section className={styles.colorSelection}>
-                  <div className={styles.colorSelection_colors}>
-                    <span className={styles.caption}>Available colors</span>
-
-                    <div className={styles.colorSelection_radio}>
-                      {chosedItem?.colorsAvailable.map(color => (
-                        <label
-                          key={color}
-                          className={styles.colorSelection_label}
-                        >
-                          <input
-                            type="radio"
-                            name="color"
-                            className={styles.colorSelection_input}
-                            value={color}
-                            checked={selectedColor === color}
-                            onChange={() => setSelectedColor(color)}
-                            style={{ backgroundColor: color }}
-                          />
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
-                  <span
-                    className={styles.colorSelection_id}
-                  >{`id: ${chosedItem?.namespaceId}`}</span>
-                </section>
-
-                <div className={styles.underline}></div>
-
-                {/* Сapacity selection */}
-
-                <section className={styles.capacitySelection}>
-                  <span className={styles.caption}>Select capacity</span>
-
-                  <div className={styles.capacitySelection_selection}>
-                    {chosedItem?.capacityAvailable.map(capacity => (
-                      <div key={capacity}>
-                        <input
-                          type="radio"
-                          className={styles.capacitySelection_input}
-                          id={`capacity-${capacity}`}
-                          name="capacity"
-                          value={capacity}
-                          checked={selectedCapacity === capacity}
-                          onChange={() => setSelectedCapacity(capacity)}
-                        />
-                        <label
-                          className={styles.capacitySelection_label}
-                          htmlFor={`capacity-${capacity}`}
-                        >
-                          {capacity}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-
-                <div className={styles.underline}></div>
-              </div>
-              {/* Confirm order */}
-
-              <section className={styles.confirm}>
-                <div className={styles.confirm_price}>
-                  <span>{`$${chosedItem?.priceDiscount}`}</span>
-                  <span className={styles.confirm_fullPrice}>
-                    ${chosedItem?.priceRegular}
-                  </span>
-                </div>
-
-                <div className={styles.confirm_actions}>
-                  <button
-                    className={`${styles.confirm_button} ${styles.confirm_add}`}
-                    style={activeAdd ? { backgroundColor: '#323542' } : {}}
-                    onClick={() => {
-                      if (chosedItemDemo) {
-                        updateList(chosedItemDemo, 'toCart');
-                      }
-
-                      setActiveAdd(!activeAdd);
-                    }}
-                  >
-                    Add to cart
-                  </button>
-                  <button
-                    className={`${styles.confirm_button} ${styles.confirm_heart}`}
-                    onClick={() => {
-                      if (chosedItemDemo) {
-                        updateList(chosedItemDemo, 'toFavorite');
-                      }
-
-                      setActiveHeart(!activeHeart);
-                    }}
-                  >
-                    <img
-                      src={
-                        activeHeart
-                          ? 'img/Additional images/icons/red heart.svg'
-                          : 'img/Additional images/icons/white_heart.svg'
-                      }
-                      alt={activeHeart ? 'red_heart' : 'white_heart'}
-                    />
-                  </button>
-                </div>
-              </section>
-
-              {/* Specs short */}
-
-              <section className={styles.specsShort}>
-                <div
-                  className={`${styles.specsShort_parameter} ${styles.specsShort_screen}`}
-                >
-                  <span className={styles.specifications_option}>Screen</span>
-                  <span className={styles.specifications_value}>
-                    {chosedItem?.screen}
-                  </span>
-                </div>
-
-                <div
-                  className={`${styles.specsShort_parameter} ${styles.specsShort_resolution}`}
-                >
-                  <span className={styles.specifications_option}>
-                    Resolution
-                  </span>
-                  <span className={styles.specifications_value}>
-                    {chosedItem?.resolution}
-                  </span>
-                </div>
-
-                <div
-                  className={`${styles.specsShort_parameter} ${styles.specsShort_processor} `}
-                >
-                  <span className={styles.specifications_option}>
-                    Processor
-                  </span>
-                  <span className={styles.specifications_value}>
-                    {chosedItem?.processor}
-                  </span>
-                </div>
-
-                <div
-                  className={`${styles.specsShort_parameter} ${styles.specsShort_ram} `}
-                >
-                  <span className={styles.specifications_option}>RAM</span>
-                  <span className={styles.specifications_value}>
-                    {chosedItem?.ram}
-                  </span>
-                </div>
-              </section>
-
-              {/* Product description */}
-
-              <section className={styles.description}>
-                <h3 className={styles.description_title}>About</h3>
-
-                <div className={styles.underline}></div>
-
-                <div className={styles.description_sections}>
-                  {chosedItem?.description.map(article => (
-                    <section className={styles.feature} key={article.title}>
-                      <h4 className={styles.feature_title}>{article.title}</h4>
-
-                      <p className={styles.feature_text}>{article.text}</p>
-                    </section>
-                  ))}
-                </div>
-              </section>
-
-              {/* Tech specs */}
-
-              <section className={styles.specifications}>
-                <h3 className={styles.specifications_title}>Tech specs</h3>
-
-                <div className={styles.underline}></div>
-
-                <div className={styles.specifications_list}>
-                  <div className={styles.specifications_options}>
-                    <span className={styles.specifications_option}>Screen</span>
-                    <span className={styles.specifications_option}>
-                      Resolution
-                    </span>
-                    <span className={styles.specifications_option}>
-                      Processor
-                    </span>
-                    <span className={styles.specifications_option}>RAM</span>
-                    <span className={styles.specifications_option}>Cell</span>
-                  </div>
-
-                  <div className={styles.specifications_values}>
-                    <span className={styles.specifications_value}>
-                      {chosedItem?.screen}
-                    </span>
-                    <span className={styles.specifications_value}>
-                      {chosedItem?.resolution}
-                    </span>
-                    <span className={styles.specifications_value}>
-                      {chosedItem?.processor}
-                    </span>
-                    <span className={styles.specifications_value}>
-                      {chosedItem?.ram}
-                    </span>
-                    <span className={styles.specifications_cell}>
-                      {chosedItem?.cell.join(', ')}
-                    </span>
-                  </div>
-                </div>
-              </section>
-
-              <div className={styles.also}>
-                <HotPrices
-                  suggestedData={suggestedList}
-                  productDetails={true}
-                />
-              </div>
-            </div>
+            <DetailsContent
+              chosedItem={chosedItem}
+              selectedImage={selectedImage}
+              setSelectedImage={setSelectedImage}
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
+              selectedCapacity={selectedCapacity}
+              setSelectedCapacity={setSelectedCapacity}
+              activeAdd={activeAdd}
+              setActiveAdd={setActiveAdd}
+              activeHeart={activeHeart}
+              setActiveHeart={setActiveHeart}
+              chosedItemDemo={chosedItemDemo}
+              updateList={updateList}
+              suggestedList={suggestedList}
+              isTablet={isTablet}
+            />
           )}
           <Footer />
         </>

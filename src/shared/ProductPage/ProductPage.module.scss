@@ -48,12 +48,22 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
+  @include respond(tablet) {
+    justify-content:start;
+    gap: 16px;
+  }
 
   &_type {
     display: flex;
     flex-direction: column;
     width: 50%;
     gap: 4px;
+    @include respond(tablet) {
+      width: 189px;
+    }
+    @include respond(desktop) {
+      width: 176px;
+    }
   }
 
   &_label {
@@ -84,13 +94,13 @@
 
 .list {
   margin-top: 24px;
-  display: flex;
+  display: grid;
   justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
 }
 
 .pagination {
   width: auto;
-  margin-top: 24px;
   margin-bottom: 64px;
 
   display: flex;
@@ -160,3 +170,13 @@
     }
   }
 }
+
+.itemsPerPage{
+  @include respond(tablet) {
+    width: 136px;
+  }
+  @include respond(desktop) {
+    width: 128px;
+  }
+}
+

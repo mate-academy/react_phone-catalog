@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import styles from './ProductCard.module.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ProductDemo } from '../../types/ProductDemo';
 import React, { useEffect, useState } from 'react';
 import { useMyContext } from '../../Context/ProductContexts';
@@ -8,12 +8,12 @@ import { useMyContext } from '../../Context/ProductContexts';
 type ProductCardProps = {
   product: ProductDemo;
   showFullPrice?: boolean;
+  productPage?: boolean;
 };
 
 export const ProductCard = React.memo(
-  ({ product, showFullPrice }: ProductCardProps) => {
+  ({ product, showFullPrice, productPage }: ProductCardProps) => {
     const { setHeartIsPressed, setAddIsPressed } = useMyContext();
-    const location = useLocation();
     const [activeHeart, setActiveHeart] = useState(false);
     const [activeAdd, setActiveAdd] = useState(false);
 
@@ -54,8 +54,6 @@ export const ProductCard = React.memo(
       }
     };
 
-    console.log('render');
-
     useEffect(() => {
       const checkTheStorage = () => {
         const favoriteInStorage = localStorage.getItem(product.itemId);
@@ -82,13 +80,7 @@ export const ProductCard = React.memo(
       <div className={styles.embla__slide}>
         <li
           className={styles.card}
-          style={
-            ['/phones', '/tablets', '/accessories', '/favorites'].includes(
-              location.pathname,
-            )
-              ? { width: 287 }
-              : {}
-          }
+          style={productPage ? { width: '272px' } : undefined}
         >
           <Link
             to={`/product/${product.itemId}`}

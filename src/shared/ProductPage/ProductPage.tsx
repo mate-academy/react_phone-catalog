@@ -208,10 +208,10 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
                     </div>
 
                     <div className={styles.list}>
-                      <ProductList data={currentItems} />
+                      <ProductList data={currentItems} productPage={true} />
                     </div>
 
-                    {filteredProducts.length > 0 && (
+                    {filteredProducts.length !== itemsPerPage && (
                       <div className={styles.pagination}>
                         <button
                           disabled={currentPage === 1}

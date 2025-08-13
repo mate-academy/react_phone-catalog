@@ -10,6 +10,7 @@ type ProductListProps = {
   emblaRef?: (node: HTMLElement | null) => void;
   showFullPrice?: boolean;
   toCart?: boolean;
+  productPage?: boolean;
 };
 
 export const ProductList: React.FC<ProductListProps> = ({
@@ -17,10 +18,11 @@ export const ProductList: React.FC<ProductListProps> = ({
   emblaRef,
   showFullPrice,
   toCart,
+  productPage,
 }) => {
   const location = useLocation();
 
-  return (
+  const content = !productPage ? (
     <div className={styles.embla}>
       <div className={styles.embla__viewport} ref={emblaRef}>
         <ul
@@ -51,5 +53,20 @@ export const ProductList: React.FC<ProductListProps> = ({
         </ul>
       </div>
     </div>
+  ) : (
+    <div className={styles.standart}>
+      <ul className={styles.standart_container}>
+        {data.map(product => (
+          <ProductCard
+            product={product}
+            key={product.id}
+            showFullPrice={showFullPrice}
+            productPage={true}
+          />
+        ))}
+      </ul>
+    </div>
   );
+
+  return content;
 };
