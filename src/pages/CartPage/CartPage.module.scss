@@ -5,39 +5,112 @@
   margin: auto;
   padding: 20px;
 
+
+  @media (max-width: 640px) {
+    padding: 16px;
+  }
+
   &__container {
     @include page-grid;
     gap: 16px;
     padding-top: 32px;
+
+
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 16px;
+    }
   }
 
   &__list {
     @include flex(column);
+
     gap: 16px;
     grid-column: span 16;
+
+
+    @media (max-width: 768px) {
+      grid-column: unset;
+    }
   }
 
   &__item {
     @include flex(row, space-between, center);
+
     background-color: $white-color;
     border: 1px solid $porcelain-color;
     border-radius: $radius-large;
     padding: 24px;
     gap: 24px;
+
+
+    @media (max-width: 640px) {
+
+      flex-direction: column;
+      padding: 16px;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 480px) {
+
+      padding: 12px;
+      gap: 12px;
+    }
   }
 
   &__content {
     @include flex(row, start, center);
+
     gap: 24px;
+    flex: 1;
+
+    @media (max-width: 640px) {
+
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+
+      flex-direction: column;
+      text-align: center;
+      gap: 12px;
+    }
   }
 
   &__item_img {
+
     @include set-size(80px, 80px);
     object-fit: contain;
+
+    @media (max-width: 480px) {
+
+      @include set-size(60px, 60px);
+    }
   }
 
   &__item_link {
     color: $woodsmoke-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  &__item_name {
+    @media (max-width: 480px) {
+      font-size: 14px;
+      line-height: 1.4;
+    }
   }
 
   &__item_remove {
@@ -49,6 +122,18 @@
     gap: 24px;
     min-width: 200px;
     justify-content: space-between;
+
+    @media (max-width: 640px) {
+      flex-direction: row;
+      justify-content: space-between;
+      min-width: unset;
+      width: 100%;
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 12px;
+    }
   }
 
   &__quantity_block {
@@ -56,6 +141,11 @@
     gap: 12px;
     min-width: 120px;
     justify-content: space-between;
+
+    @media (max-width: 640px) {
+      min-width: 100px;
+      gap: 8px;
+    }
   }
 
   &__quantity_value {
@@ -70,6 +160,16 @@
     white-space: nowrap;
     min-width: 70px;
     justify-content: flex-end;
+
+    @media (max-width: 640px) {
+      font-size: 18px;
+      min-width: 60px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 16px;
+      justify-content: center;
+    }
   }
 
   &__minus,
@@ -77,6 +177,12 @@
     padding: 8px;
     width: 32px;
     height: 32px;
+
+    @media (max-width: 480px) {
+      width: 28px;
+      height: 28px;
+      padding: 6px;
+    }
   }
 
   &__summary {
@@ -89,6 +195,23 @@
     height: 206px;
     width: 100%;
     text-align: center;
+
+
+    @media (max-width: 768px) {
+      grid-column: unset;
+      height: auto;
+      min-height: 180px;
+      order: 2;
+    }
+
+    @media (max-width: 640px) {
+      padding: 20px;
+      min-height: 160px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 16px;
+    }
   }
 
   &__checkout_btn {
@@ -97,13 +220,24 @@
 
     button {
       width: 100%;
+
+      @media (max-width: 480px) {
+        padding: 12px;
+        font-size: 16px;
+      }
     }
   }
 
-  &__total_items {
+
+&__total_items {
     color: $regent-gray-color;
     padding-bottom: 16px;
     border-bottom: 1px solid $porcelain-color;
+
+    @media (max-width: 480px) {
+      font-size: 14px;
+      padding-bottom: 12px;
+    }
   }
 }
 
@@ -111,13 +245,35 @@
   @include flex(column, center, center);
   gap: 24px;
 
+  @media (max-width: 640px) {
+    gap: 20px;
+    padding: 20px;
+  }
+
   &__title {
     @include font(700, 25px, 100%, 0%);
+
+    @media (max-width: 640px) {
+      font-size: 22px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 20px;
+      text-align: center;
+    }
   }
 
   &__img {
     @include set-size(100%, 100%);
     max-width: 400px;
     object-fit: contain;
+
+    @media (max-width: 640px) {
+      max-width: 300px;
+    }
+
+    @media (max-width: 480px) {
+      max-width: 250px;
+    }
   }
 }
