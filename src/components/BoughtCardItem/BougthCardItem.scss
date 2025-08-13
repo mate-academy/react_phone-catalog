@@ -12,22 +12,15 @@
   &__title {
     font-family: Mont, sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 21px;
 
     @include themy($themes) {
       color: themed('colorText');
     }
-  }
 
-  &__price {
-    font-family: Mont, sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 70px;
-
-    @include themy($themes) {
-      color: themed('colorText');
+    @include on-tablet {
+      font-size: 14px;
     }
   }
 
@@ -42,11 +35,12 @@
       color: themed('colorText');
     }
   }
+}
 
-  &__button {
-    display: flex;
-    cursor: pointer; // 8/11
-  }
+.bought__button {
+  display: flex;
+  margin-left: 4px;
+  cursor: pointer; // 8/11
 }
 
 .deleteIcon {
@@ -60,7 +54,7 @@
   background-color: $color-surf-1;
   align-items: center;
   border: 1px solid $color-surf-1;
-  padding: 24px;
+  padding: 8px;
   justify-content: space-between;
 
   @include themy($themes) {
@@ -69,23 +63,31 @@
 
   @include on-desktop {
     display: flex;
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    display: flex;
+    padding: 24px;
   }
 }
 
 .bought__wrapper {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
   padding-bottom: 16px;
   width: 256px;
 
   @include on-tablet {
     width: 344px;
+    gap: 24px;
   }
 
   @include on-desktop {
     padding-bottom: 0;
     width: 480px;
+    gap: 24px;
   }
 }
 
@@ -102,5 +104,20 @@
   @include on-desktop {
     gap: 24px;
     width: 200px;
+  }
+}
+
+.bought__price {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 70px;
+
+  @include themy($themes) {
+    color: themed('colorText');
+  }
+
+  @include on-tablet {
+    font-size: 22px;
   }
 }
