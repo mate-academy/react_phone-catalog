@@ -1,11 +1,10 @@
-import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
-import { BaseProduct } from '@shared/types/APIReturnTypes';
+import { BannerData, CatalogueProduct } from '@shared/types';
 import { Mode } from '@widgets/Slider/types/types';
 
 // TODO: clone number => props;
 
 export function listCreate(
-  dataset: BannerData[] | BaseProduct[],
+  dataset: BannerData[] | CatalogueProduct[],
   mode: Mode,
   clones: number,
 ) {

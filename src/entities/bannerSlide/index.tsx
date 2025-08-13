@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './styles/bannerSlide.module.scss';
-import { BannerData } from './types/bannerSlide';
+import { BannerData } from '@shared/types';
 
 type Props = {
   item: BannerData;

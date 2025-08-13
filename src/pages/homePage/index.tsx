@@ -1,11 +1,12 @@
 import React from 'react';
-import { Slider } from '@widgets/Slider/';
+import { Slider } from '@widgets/slider/';
 import { SliderType } from '@widgets/Slider/types/types';
-import { heroStyles, prodStyles, categories } from './model';
+import { prodStyles, categories } from './model';
 import styles from './styles/HomePage.module.scss';
 import { Link } from 'react-router-dom';
 import { useHomePage } from './model/useHomepage';
 import { Spinner } from '@ui/spinner';
+import { SliderCSS } from '@widgets/sliderCss';
 
 export const HomePage = () => {
   const { newest, hotPrice, bannerList, loading } = useHomePage();
@@ -21,17 +22,7 @@ export const HomePage = () => {
         {loading.banners === true ? (
           <Spinner />
         ) : (
-          bannerList && (
-            <div
-              className={`${styles['hero-slider']} ${styles['slider-container']}`}
-            >
-              <Slider
-                classNames={heroStyles}
-                dataset={bannerList}
-                type={SliderType.BANNER}
-              />
-            </div>
-          )
+          bannerList && <SliderCSS data={bannerList} />
         )}
       </div>
       <div className={styles['home-catalogue']}>

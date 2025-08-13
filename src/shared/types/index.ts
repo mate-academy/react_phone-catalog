@@ -3,6 +3,7 @@ export {
   Category,
   type CatalogueProduct,
   type ItemProduct,
+  type BannerData,
 } from './APIReturnTypes';
 export { type Item, type CartItem } from './appReducerTypes';
 export {

@@ -1,5 +1,3 @@
-import { BaseProduct } from '@shared/types/APIReturnTypes';
-import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
 import {
   bannerConfig,
   bannerHooksConfig,
@@ -10,9 +8,10 @@ import { SliderType } from './types/types';
 import { SliderProvider } from './model/context/sliderContext';
 import { MainSlider } from './ui';
 import { useMemo } from 'react';
+import { BannerData, CatalogueProduct } from '@shared/types';
 
 type Props = {
-  dataset: BannerData[] | BaseProduct[];
+  dataset: BannerData[] | CatalogueProduct[];
   classNames: {
     viewport: string;
     pagination?: string;

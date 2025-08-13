@@ -123,7 +123,7 @@ $GAP_WIDE: 80px;
 
   @media (min-width: s.$c-BREAKPOINT_WIDE) {
     &__viewport {
-      overflow: hidden;
+      overflow: visible;
     }
   }
 }

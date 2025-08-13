@@ -16,6 +16,12 @@ enum Category {
   Tablets = 'tablets',
 }
 
+type BannerData = {
+  src: string;
+  alt: string;
+  href: string;
+};
+
 type Description = {
   title: string;
   text: string;
@@ -49,4 +55,4 @@ interface ItemProduct extends BaseProd {
   zoom?: string;
 }
 
-export { Category, type CatalogueProduct, type ItemProduct };
+export { Category, type CatalogueProduct, type ItemProduct, type BannerData };
