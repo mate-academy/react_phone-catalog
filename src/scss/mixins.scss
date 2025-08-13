@@ -1,6 +1,7 @@
 $mobile-max-width: 320px;
 $tablet-min-width: 640px;
 $desktop-min-width: 1200px;
+$body-background-color: #fff;
 
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {

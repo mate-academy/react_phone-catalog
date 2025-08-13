@@ -1,0 +1,51 @@
+@use './../../scss/mixins.scss' as *;
+
+.icon {
+  display: block;
+  height: 16px;
+  width: 16px;
+  margin: 16px;
+  border: none;
+
+  @include on-desktop {
+    margin: 24px;
+  }
+}
+
+.favorites {
+  display: none;
+  background: center center url('img/assets/icons/favorites.svg');
+
+  &--active {
+    background: center center url('img/assets/icons/favorites-selected.svg');
+  }
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.cart {
+  display: none;
+  background: center center url('img/assets/icons/cart.svg');
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.icon-menu-mobile {
+  display: flex;
+}
+
+.menu-mobile {
+  background: center center url('img/assets/icons/menu.svg');
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.close {
+  background: center center url('img/assets/icons/close.svg');
+}

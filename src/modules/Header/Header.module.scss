@@ -2,28 +2,53 @@
 
 .header {
   display: flex;
+  flex-direction: column;
+  background-color: $body-background-color;
+
+  &-mobile {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.nav {
+  display: flex;
   gap: 24px;
-  height: 64px;
+  height: 48px;
 
-  &__logo {
-    display: flex;
-    flex-shrink: 0;
-    justify-content: center;
-    align-items: center;
-    width: 96px;
-    height: 100%;
+  @include on-desktop {
+    height: 64px;
   }
+}
 
-  &__image {
-    width: 64px;
-    height: 22px;
-    object-fit: cover;
-  }
+.logo {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 96px;
+  height: 100%;
+}
 
-  &__buttons {
-    width: 183px;
-    flex-grow: 1;
-    flex-shrink: 0;
-    border: 1px solid red;
+.image {
+  width: 64px;
+  height: 22px;
+  object-fit: cover;
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
   }
+}
+
+.buttons {
+  width: 183px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  border: none;
+
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }

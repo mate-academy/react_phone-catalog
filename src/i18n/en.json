@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "tablets",
+    "accessories": "Accessories"
+  },
+
+  "home": {
+    "welcome_to_store": "Welcome to Nice Gadgets store!"
+  }
+}
