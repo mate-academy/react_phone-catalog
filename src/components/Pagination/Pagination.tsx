@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import paginationStyle from './Pagination.module.scss';
 import { Products } from '../../types/types';
 import cn from 'classnames';
@@ -45,6 +45,16 @@ const Pagination: React.FC<Props> = ({
     pageQuantity,
   );
 
+  const location = useLocation();
+
+  const gadgets = location.pathname.split('/')[1];
+
+  const savedValue = sessionStorage.getItem(`currentPage-${gadgets}`) || 1;
+
+  if (savedValue !== currentPage) {
+    setCurrentPage(+savedValue);
+  }
+
   return (
     <>
       <div className={paginationStyle.pagination}>
@@ -53,6 +63,10 @@ const Pagination: React.FC<Props> = ({
           onClick={() => {
             if (currentPage !== 1) {
               setCurrentPage(current => current - 1);
+              sessionStorage.setItem(
+                `currentPage-${gadgets}`,
+                `${currentPage - 1}`,
+              );
             }
           }}
         ></button>
@@ -65,7 +79,10 @@ const Pagination: React.FC<Props> = ({
                 [paginationStyle['pagination__button-simple-current']]:
                   currentPage === el,
               })}
-              onClick={() => setCurrentPage(el)}
+              onClick={() => {
+                setCurrentPage(el);
+                sessionStorage.setItem(`currentPage-${gadgets}`, `${el}`);
+              }}
             >
               {el}
             </button>
@@ -76,6 +93,10 @@ const Pagination: React.FC<Props> = ({
           onClick={() => {
             if (currentPage !== Array.from({ length: pageQuantity }).length) {
               setCurrentPage(current => current + 1);
+              sessionStorage.setItem(
+                `currentPage-${gadgets}`,
+                `${currentPage + 1}`,
+              );
             }
           }}
         ></button>

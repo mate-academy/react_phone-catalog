@@ -28,6 +28,7 @@
   }
 
   &__button-simple {
+    cursor: pointer;
     border: 1px solid $Elements;
     background-color: $White;
     border-radius: 50%;

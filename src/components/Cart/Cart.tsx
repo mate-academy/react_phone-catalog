@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import ModalContent from '../ModalContent/ModalContent';
 import Footer from '../Footer';
 import { useState } from 'react';
+import cn from 'classnames';
 
 const Cart = () => {
   const { cartItems, setCartItems, addToCart } = useCart();
@@ -155,7 +156,16 @@ const Cart = () => {
                                   event.preventDefault();
                                   minusQuantiy(item);
                                 }}
-                                className={`${cartStyle['cart__button-get-out']} ${cartStyle.cart__buttons}`}
+                                className={cn(`${cartStyle.cart__buttons}`, {
+                                  [
+                                    item.quantity === 1 ?
+                                    cartStyle[
+                                    'cart__button-get-out--no-access'
+                                    ]
+                                  ]: cartStyle[
+                                    'cart__button-get-out'
+                                  ]
+                                 })}
                               ></button>
                             </div>
                             <div className={cartStyle['cart__single-price']}>

@@ -1,6 +1,6 @@
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import mobilePageStyles from './MobilePhones.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ListOfGadgets from '../ListOfGadgets';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 import { debounce } from '../ListOfGadgets/debounce';
@@ -8,13 +8,21 @@ import { Products } from '../../types/types';
 
 const MobilePhones: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [currentPagePag, setCurrentPagePag] = useState<number>(1);
   const location = useLocation();
   const [apliedQuery, setApliedQuery] = useState('');
   const [typeOfGadgets, setTypeOfGadgets] = useState<Products[] | []>([]);
+
   const aplyQuery = debounce(setApliedQuery, 1000);
 
-  const gadgets = location.pathname.split('/')[1];
+  const gadgets = useMemo(() => {
+    return location.pathname.split('/')[1];
+  }, [location.pathname]);
+
+  const [currentPagePag, setCurrentPagePag] = useState<number>(() => {
+    const savedValue = sessionStorage.getItem(`currentPage-${gadgets}`) || 1;
+
+    return +savedValue;
+  });
 
   useEffect(() => {
     window.scrollTo({
@@ -39,6 +47,7 @@ const MobilePhones: React.FC = () => {
     const newParams = new URLSearchParams(searchParams);
 
     setCurrentPagePag(1);
+    sessionStorage.setItem(`currentPage-${gadgets}`, '1');
 
     newParams.set('sort', sort);
     setSearchParams(newParams.toString());
@@ -48,6 +57,7 @@ const MobilePhones: React.FC = () => {
     const newParams = new URLSearchParams(searchParams);
 
     setCurrentPagePag(1);
+    sessionStorage.setItem(`currentPage-${gadgets}`, '1');
 
     newParams.set('quantity', perItems);
     setSearchParams(newParams.toString());
@@ -63,6 +73,7 @@ const MobilePhones: React.FC = () => {
   function handleQueryChange(param: string) {
     aplyQuery(param);
     setCurrentPagePag(1);
+    sessionStorage.setItem(`currentPage-${gadgets}`, '1');
     const newParams = new URLSearchParams(searchParams);
 
     newParams.set('query', param);

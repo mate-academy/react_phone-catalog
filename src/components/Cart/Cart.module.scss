@@ -154,6 +154,10 @@
 
   &__button-get-out {
     background-image: url('./../img/minus.svg');
+
+    &--no-access {
+      background-image: url('./../img/active-minus.svg');
+    }
   }
 
   &__single-price {

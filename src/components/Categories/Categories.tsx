@@ -1,7 +1,11 @@
+/* eslint-disable max-len */
 import { Link } from 'react-router-dom';
 import categoriesStyle from './Categories.module.scss';
+import { useCart } from '../../context/CartContext';
 
 const Categories = () => {
+  const { products } = useCart();
+
   return (
     <>
       <div className={categoriesStyle.categories}>
@@ -28,7 +32,8 @@ const Categories = () => {
 
             <h2 className={categoriesStyle.categories__name}>Mobile phones</h2>
             <span className={categoriesStyle.categories__gadgets__info}>
-              95 models
+              {products.filter(product => product.category === 'phones').length}{' '}
+              models
             </span>
           </div>
 
@@ -52,7 +57,11 @@ const Categories = () => {
 
             <h2 className={categoriesStyle.categories__name}>Tablets</h2>
             <p className={categoriesStyle.categories__gadgets__info}>
-              24 models
+              {
+                products.filter(product => product.category === 'tablets')
+                  .length
+              }{' '}
+              models
             </p>
           </div>
 
@@ -76,7 +85,11 @@ const Categories = () => {
 
             <h2 className={categoriesStyle.categories__name}>Accessories</h2>
             <p className={categoriesStyle.categories__gadgets__info}>
-              100 models
+              {
+                products.filter(product => product.category === 'accessories')
+                  .length
+              }{' '}
+              models
             </p>
           </div>
         </div>
