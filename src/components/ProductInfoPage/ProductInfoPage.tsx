@@ -9,6 +9,7 @@ import { PhoneInfoType } from '../../types/PhoneInfoType';
 import { TabletInfoType } from '../../types/TabletInfoType';
 import { AccessoryInfoType } from '../../types/AccessoryInfoType';
 import { AllProductsType } from '../../types/AllProductsType';
+import { SwiperSection } from '../SwiperSection';
 
 export type ProductInfoUnionType =
   | PhoneInfoType
@@ -20,9 +21,8 @@ export const ProductInfoPage: React.FC = () => {
   const { getLastSearch } = useProductFilters();
 
   const [foundItem, setFoundItem] = useState<ProductInfoUnionType | null>(null);
-  const [foundProduct, setFoundProduct] = useState<AllProductsType | null>(
-    null,
-  );
+  const [foundProduct, setFoundProduct] = useState<AllProductsType | null>(null);
+  const [discountedProducts, setDiscountedProducts] = useState<AllProductsType[]>([]);
 
   // const [isLoading, setIsLoading] = useState(true);
 
@@ -73,6 +73,10 @@ export const ProductInfoPage: React.FC = () => {
           (product: AllProductsType) => product.itemId === itemId,
         );
 
+        const discountedProducts = productsData.filter(
+          (product: AllProductsType) => product.year < 2022,
+        ).sort(() => Math.random() - 0.5).slice(0, 12);
+
         if (!foundItem || !foundProduct) {
           navigate('/product-not-found');
           return;
@@ -82,6 +86,7 @@ export const ProductInfoPage: React.FC = () => {
         // setTimeout(() => {
         setFoundItem(foundItem);
         setFoundProduct(foundProduct);
+        setDiscountedProducts(discountedProducts);
         setMainPhoto(foundItem.images[0]);
         // setIsLoading(false);
         // }, 200);
@@ -116,180 +121,192 @@ export const ProductInfoPage: React.FC = () => {
           { name: 'Zoom', value: foundItem.zoom },
           { name: 'Cell', value: foundItem.cell.join(', ') },
         ]
-      : [
-          { name: 'Cell', value: foundItem.cell.join(', ') },
-        ]),
+      : [{ name: 'Cell', value: foundItem.cell.join(', ') }]),
   ];
 
   const foundId = foundProduct.id;
+  const modelYear = foundProduct.year;
 
   const modelName = foundItem.name;
   const modelPhoto = foundItem.images;
+
   const selectedCapacity = foundItem.capacity.toLowerCase();
   const selectedColor = foundItem.color.split(' ').join('-').toLowerCase();
   const modelPrefix = foundItem.namespaceId;
 
   return (
-    <div className="product-info-page">
-      <BreadcrumbsNav />
+    <>
+      <div className="product-info-page">
+        <BreadcrumbsNav />
 
-      <h2 className="full-name">{modelName}</h2>
+        <h2 className="full-name">{modelName}</h2>
 
-      <div className="photo-control-box">
-        <div className="modelsPhoto">
-          <div className="mainPhoto">
-            <img className="main-img" src={mainPhoto} alt="main photo" />
-          </div>
-
-          <div className="smallPhoto-container">
-            {modelPhoto.map((photo, index) => (
-              <div
-                key={index}
-                className={cn('smallPhoto-box', {
-                  'is-active': mainPhoto === photo,
-                })}
-              >
-                <img
-                  src={`/${photo}`}
-                  alt={`Product thumbnail ${index + 1}`}
-                  onClick={() => setMainPhoto(photo)}
-                  className="mini-img"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="main-controls">
-          <div className="text-container">
-            <p className="small-text-12-600">Available colors</p>
-            <p className="id-text-12">ID: {foundId}</p>
-          </div>
-
-          <div className="colors-id-box">
-            <div className="container">
-              <div className="models-colors">
-                {foundItem.colorsAvailable.map(color => {
-                  const normalizedColor = color
-                    .split(' ')
-                    .join('-')
-                    .toLowerCase();
-                  const safeColor = getSafeColor(normalizedColor);
-
-                  const newItemId = `${modelPrefix}-${selectedCapacity}-${normalizedColor}`;
-                  const newLink = `/${category}/${newItemId}${getLastSearch()}`;
-
-                  return (
-                    <Link
-                      to={newLink}
-                      key={newLink}
-                      className={cn('border-color', {
-                        'is-active': selectedColor === normalizedColor,
-                      })}
-                    >
-                      <div
-                        className="color"
-                        style={{ backgroundColor: safeColor }}
-                      ></div>
-                    </Link>
-                  );
-                })}
-              </div>
+        <div className="photo-control-box">
+          <div className="modelsPhoto">
+            <div className="mainPhoto">
+              <img className="main-img" src={mainPhoto} alt="main photo" />
             </div>
 
-            <div className="select-capacity-container">
-              <div className="info-copacity-box">
-                <p className="small-text-12-600">Select capacity</p>
+            <div className="smallPhoto-container">
+              {modelPhoto.map((photo, index) => (
+                <div
+                  key={index}
+                  className={cn('smallPhoto-box', {
+                    'is-active': mainPhoto === photo,
+                  })}
+                >
+                  <img
+                    src={`/${photo}`}
+                    alt={`Product thumbnail ${index + 1}`}
+                    onClick={() => setMainPhoto(photo)}
+                    className="mini-img"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
-                <div className="capacity-list">
-                  {foundItem.capacityAvailable.map(capacity => {
-                    const normalizedCapacity = capacity.toLowerCase();
+          <div className="main-controls">
+            <div className="text-container">
+              <p className="small-text-12-600">Available colors</p>
+              <p className="id-text-12">ID: {foundId}</p>
+            </div>
 
-                    const newItemId = `${modelPrefix}-${normalizedCapacity}-${selectedColor}`;
+            <div className="colors-id-box">
+              <div className="container">
+                <div className="models-colors">
+                  {foundItem.colorsAvailable.map(color => {
+                    const normalizedColor = color
+                      .split(' ')
+                      .join('-')
+                      .toLowerCase();
+                    const safeColor = getSafeColor(normalizedColor);
+
+                    const newItemId = `${modelPrefix}-${selectedCapacity}-${normalizedColor}`;
                     const newLink = `/${category}/${newItemId}${getLastSearch()}`;
 
                     return (
                       <Link
                         to={newLink}
                         key={newLink}
-                        className={cn('capacity', {
-                          'is-active': selectedCapacity === normalizedCapacity,
+                        className={cn('border-color', {
+                          'is-active': selectedColor === normalizedColor,
                         })}
                       >
-                        <p className="main-body-text-14">{capacity}</p>
+                        <div
+                          className="color"
+                          style={{ backgroundColor: safeColor }}
+                        ></div>
                       </Link>
                     );
                   })}
                 </div>
               </div>
-            </div>
 
-            <div className="price-container">
-              {foundProduct.year < 2021 ? (
-                <>
-                  <div className="price">${foundProduct.price}</div>
-                  <div className="price old-price">
-                    ${foundProduct.fullPrice}
+              <div className="select-capacity-container">
+                <div className="info-copacity-box">
+                  <p className="small-text-12-600">Select capacity</p>
+
+                  <div className="capacity-list">
+                    {foundItem.capacityAvailable.map(capacity => {
+                      const normalizedCapacity = capacity.toLowerCase();
+
+                      const newItemId = `${modelPrefix}-${normalizedCapacity}-${selectedColor}`;
+                      const newLink = `/${category}/${newItemId}${getLastSearch()}`;
+
+                      return (
+                        <Link
+                          to={newLink}
+                          key={newLink}
+                          className={cn('capacity', {
+                            'is-active':
+                              selectedCapacity === normalizedCapacity,
+                          })}
+                        >
+                          <p className="main-body-text-14">{capacity}</p>
+                        </Link>
+                      );
+                    })}
                   </div>
-                </>
-              ) : (
-                <div className="price">${foundProduct.fullPrice}</div>
-              )}
-            </div>
-
-            <div className="add-favourites-container">
-              <div className="add-button has-shadow-cursor">
-                <p className="button-text">Add to card</p>
+                </div>
               </div>
 
-              <div className="favourites-button has-shadow-cursor">
-                <img
-                  className="icon"
-                  src="/img/icons/Heart.svg"
-                  alt="favourites img"
-                />
+              <div className="price-container">
+                {modelYear < 2021 ? (
+                  <>
+                    <div className="price">${foundProduct.price}</div>
+                    <div className="price old-price">
+                      ${foundProduct.fullPrice}
+                    </div>
+                  </>
+                ) : (
+                  <div className="price">${foundProduct.fullPrice}</div>
+                )}
+              </div>
+
+              <div className="add-favourites-container">
+                <div className="add-button has-shadow-cursor">
+                  <p className="button-text">Add to card</p>
+                </div>
+
+                <div className="favourites-button has-shadow-cursor">
+                  <img
+                    className="icon"
+                    src="/img/icons/Heart.svg"
+                    alt="favourites img"
+                  />
+                </div>
+              </div>
+
+              <div className="info">
+                {baseSpecifications.map(({ name, value }) => (
+                  <div className="spec-name-value-box" key={name}>
+                    <div className="spec-name">{name}</div>
+                    <div className="spec-value">{value}</div>
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="about-section">
+          <div className="about-model">
+            <h3 className="box-title">About</h3>
+
+            {foundItem.description.map(({ title, text }) => (
+              <div key={title} className="description-block">
+                <h4 className="title-description">{title}</h4>
+                {text.map((paragraph, index) => (
+                  <p key={index} className="text-description main-body-text-14">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          <div className="tech-specs">
+            <h3 className="box-title">Tech specs</h3>
 
             <div className="info">
-              {baseSpecifications.map(({ name, value }) => (
-                <div className="spec-name-value-box" key={name}>
-                  <div className="spec-name">{name}</div>
-                  <div className="spec-value">{value}</div>
-                </div>
-              ))}
+              {fullSpecifications.map(({ name, value }) => {
+                return (
+                  <div className="spec-name-value-box" key={name}>
+                    <p className="main-body-text-14">{name}</p>
+                    <p className="main-body-text-14-black">{value}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
-
-      <div className="about-section">
-        <div className="about-model">
-          <h3 className="box-title">About</h3>
-
-          {foundItem.description.map(({ title, text }) => (
-            <div key={title} className="description-block">
-              <h4 className="title-description">{title}</h4>
-              {text.map((paragraph, index) => (
-                <p key={index} className="text-description main-body-text-14">{paragraph}</p>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        <div className="tech-specs">
-          <h3 className="box-title">Tech specs</h3>
-
-          {fullSpecifications.map(({ name, value }) => {
-            return (
-              <div className="spec-name-value-box" key={name}>
-                <div className="spec-name">{name}</div>
-                <div className="spec-value">{value}</div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    </div>
+      <SwiperSection
+        title="You may also like"
+        products={discountedProducts}
+        showDiscount={true}
+      />
+    </>
   );
 };
