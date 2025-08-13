@@ -7,17 +7,14 @@ import { useEffect, useState } from 'react';
 import { TypeGadget } from './../types/Gadget';
 import { Products } from './../types/Products';
 import { getGadget } from './../component/utils/gadgets';
-import {
-  getProductById,
-  getSuggestedProducts,
-} from './../component/utils/sortingProducts';
+import { getProductById } from './../component/utils/sortingProducts';
+import { Loader } from './../component/modules/Loader';
 
 type Category = 'phones' | 'tablets' | 'accessories';
 
 export const ProductDetails = () => {
   const [currentGadget, setCurrentGadget] = useState<TypeGadget | null>(null);
   const [currentProduct, setCurrentProduct] = useState<Products | null>(null);
-  const [suggestedProducts, setSuggestedProducts] = useState<Products[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const params = useParams();
@@ -32,11 +29,9 @@ export const ProductDetails = () => {
         setIsLoading(true);
         const gadget = await getGadget(category, id);
         const product = await getProductById(id);
-        const suggested = await getSuggestedProducts();
 
         setCurrentGadget(gadget);
         setCurrentProduct(product);
-        setSuggestedProducts(suggested);
       } finally {
         setIsLoading(false);
       }
@@ -44,6 +39,10 @@ export const ProductDetails = () => {
 
     fetchData();
   }, [category, id]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className={style.ProductDetails}>
