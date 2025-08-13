@@ -2,24 +2,59 @@
 
 .menu {
   position: fixed;
-  top: 0;
-  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   height: 100vh;
   width: 100vw;
 
+  background-color: white;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__item {
+    margin: 3.2rem 1.6rem 0;
+
+    &:first-child {
+      margin-top: 2.4rem;
+    }
+  }
+
   &__link {
     font-weight: 800;
-    font-size: 12px;
-    line-height: 11px;
+    font-size: 1.2rem;
+    line-height: 1.1rem;
     letter-spacing: 0.04rem;
     text-transform: uppercase;
-    padding: 6px 0;
+    text-decoration: none;
+    padding-bottom: 0.8rem;
     color: constants.$secondary-color;
 
-    &Active {
+    &_active {
       color: constants.$primary-color;
       border-bottom: 2px solid constants.$primary-color;
     }
   }
+
+  &__iconsWrapper {
+    height: 64px;
+    display: flex;
+  }
+
+  &__iconContainer {
+    flex: 1;
+    border: 1px solid constants.$border-color;
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+  }
 }
+
