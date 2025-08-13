@@ -153,10 +153,10 @@
   }
 
   &__button-get-out {
-    background-image: url('./../img/minus.svg');
+    background-image: url('./../img/minus-active.svg');
 
     &--no-access {
-      background-image: url('./../img/active-minus.svg');
+      background-image: url('./../img/minus.svg');
     }
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable max-len */
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
@@ -156,16 +157,14 @@ const Cart = () => {
                                   event.preventDefault();
                                   minusQuantiy(item);
                                 }}
-                                className={cn(`${cartStyle.cart__buttons}`, {
-                                  [
-                                    item.quantity === 1 ?
-                                    cartStyle[
-                                    'cart__button-get-out--no-access'
-                                    ]
-                                  ]: cartStyle[
-                                    'cart__button-get-out'
-                                  ]
-                                 })}
+                                className={cn(
+                                  cartStyle.cart__buttons,
+                                  item.quantity === 1
+                                    ? cartStyle[
+                                        'cart__button-get-out--no-access'
+                                      ]
+                                    : cartStyle['cart__button-get-out'],
+                                )}
                               ></button>
                             </div>
                             <div className={cartStyle['cart__single-price']}>
