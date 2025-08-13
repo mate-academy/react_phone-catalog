@@ -24,7 +24,7 @@ body {
   flex-direction: column;
   background-color: $color-black;
   color: $color-white;
-  max-height: 100vh;
+  height: 100vh;
 }
 
 .theme-light {
@@ -39,7 +39,7 @@ body {
 
 .container__page {
   background-color: $color-black;
-  
+
   // max-width: 1200px;
   margin: 0 auto;
 
