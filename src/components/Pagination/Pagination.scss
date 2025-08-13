@@ -1,9 +1,25 @@
-.arrow {
+.pagination {
+  padding-top: 40px;
   display: flex;
   flex-direction: row;
-  gap: 16px;
+  justify-content: center;
+  gap: 8px;
 
-  &__button {
+  &__pages {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    &__page-button {
+      width: 32px;
+      height: 32px;
+      background-color: #161827;
+      border: none;
+      color: #f1f2f9;
+    }
+  }
+
+  &__arrow {
     border: none;
     background-color: #323542;
     width: 32px;
@@ -21,10 +37,10 @@
     &:hover:not(:disabled) {
       background-color: #7a47d9;
     }
-  }
 
-  &__image {
-    width: 16px;
-    height: 16px;
+    &-image {
+      width: 16px;
+      height: 16px;
+    }
   }
 }

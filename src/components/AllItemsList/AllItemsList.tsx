@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { Product } from '../../utils/Product';
 import { ProductCard } from '../ProductCard';
@@ -23,6 +24,8 @@ export const AllItemsList: React.FC<Props> = ({
   allItems,
   setAllItems,
 }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [sort, setSort] = useState<SortOptions>(SortOptions.Newest);
 
   const [perPage, setPerPage] = useState('4');
@@ -30,6 +33,16 @@ export const AllItemsList: React.FC<Props> = ({
 
   const itemsPerPage = perPage === 'all' ? allItems.length : +perPage;
   const totalPages = Math.ceil(allItems.length / +itemsPerPage);
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('sort', sort);
+    params.set('perPage', perPage);
+    params.set('page', page.toString());
+
+    setSearchParams(params);
+  }, [sort, perPage, page]);
 
   const sortProducts = (items: Product[]) => {
     switch (sort) {
@@ -105,10 +118,10 @@ export const AllItemsList: React.FC<Props> = ({
           page={page}
           totalPages={totalPages}
           onPageChange={newPage => setPage(newPage)}
-          onPerPageChange={value => {
-            setPerPage(value);
-            setPage(0);
-          }}
+          // onPerPageChange={value => {
+          //   setPerPage(value);
+          //   setPage(0);
+          // }}
         />
       )}
     </div>
