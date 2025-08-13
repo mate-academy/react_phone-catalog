@@ -1,0 +1,10 @@
+@import './../component/style/index';
+
+.ProductDetails {
+  padding-bottom: 56px;
+  padding-top: 24px;
+
+  &__nav {
+    @include padding-inline;
+  }
+}

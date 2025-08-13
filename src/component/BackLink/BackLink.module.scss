@@ -1,0 +1,12 @@
+@import './../style/index';
+
+.backlink {
+  display: flex;
+  gap: 5px;
+  margin: 24px 0;
+
+  &__text {
+    font-size: 12px;
+    font-weight: 700;
+  }
+}

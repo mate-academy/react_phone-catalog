@@ -25,3 +25,19 @@ export const getHotPriceProducts = async () => {
     (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
   );
 };
+
+export const getProductById = async (id: string) => {
+  const products = await getAllProducts();
+
+  return (
+    products.find(product => {
+      return product.itemId.toLowerCase() === id.toLowerCase();
+    }) || null
+  );
+};
+
+export const getSuggestedProducts = async () => {
+  const products = await getAllProducts();
+
+  return products.filter(() => Math.random() > 0.5);
+};

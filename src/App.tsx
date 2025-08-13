@@ -6,6 +6,7 @@ import { HomePage } from './Page/HomePage/HomePage';
 import { PhonesPage } from './Page/PhonesPage/PhonesPage';
 import { TabletsPage } from './Page/TabletsPage';
 import { AccessoriesPage } from './Page/AccessoriesPage';
+import { ProductDetails } from './ProductDetails/ProductDetails';
 
 export const App = () => {
   return (
@@ -16,10 +17,13 @@ export const App = () => {
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="/phones" element={<PhonesPage />} />
+          <Route path="/phones/:id" element={<ProductDetails />} />
 
           <Route path="/tablets" element={<TabletsPage />} />
+          <Route path="/tablets/:id" element={<ProductDetails />} />
 
           <Route path="/accessories" element={<AccessoriesPage />} />
+          <Route path="/accessories/:id" element={<ProductDetails />} />
         </Routes>
 
         <Footer />

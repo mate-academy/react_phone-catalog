@@ -1,0 +1,13 @@
+@import './../../component/style/index';
+
+.ProductCharacteristics{
+
+  @include padding-inline;
+
+  &__title {
+    @include on-tablet {
+      font-size: 32px
+    }
+  }
+
+}
