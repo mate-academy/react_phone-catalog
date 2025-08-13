@@ -1,1 +1,16 @@
-// not empty
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__name {
+    padding-top: 40px;
+  }
+
+  &__quantity {
+    color: #75767f;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}

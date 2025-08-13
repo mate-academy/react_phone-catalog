@@ -1,0 +1,26 @@
+.select {
+  padding-top: 40px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__title {
+    color: #75767f;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__box {
+    background-color: #323542;
+    padding-inline: 12px;
+    padding-block: 10px;
+    border: none;
+    color: #f1f2f9;
+    appearance: none;
+    background-image: url('/img/icons/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+  }
+}

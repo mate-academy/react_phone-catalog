@@ -33,6 +33,7 @@ export const HomePage: React.FC = () => {
             if (p.fullPrice === undefined || p.price === undefined) {
               return -Infinity;
             }
+
             return p.fullPrice - p.price;
           }),
         );
@@ -61,13 +62,13 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <h1 className="title">Welcome to Nice Gadgets store!</h1>
+      <h1 className="title__h1">Welcome to Nice Gadgets store!</h1>
 
       <Banner />
 
       <ProductsList title="Brand new models" products={newModels} />
 
-      <h2 className="title-2">Shop by category</h2>
+      <h2 className="title__h2">Shop by category</h2>
 
       <CategoriesList />
 
