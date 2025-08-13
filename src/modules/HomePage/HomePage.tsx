@@ -1,2 +1,8 @@
-export const HomePage = () => <h1>Home Page</h1>;
+import Slider from './Slider';
+
+export const HomePage = () => (
+  <>
+    <Slider />
+  </>
+);
 export default HomePage;

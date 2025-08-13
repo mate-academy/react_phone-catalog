@@ -9,6 +9,8 @@ import HomePage from './modules/HomePage';
 import NotFoundPage from './modules/NotFoundPage';
 import ProductsPage from './modules/ProductsPage';
 import ProductDetailsPage from './modules/ProductDetailsPage';
+import FavoritesPage from './modules/FavoritesPage';
+import CartPage from './modules/CartPage';
 
 export const Root = () => (
   <Router>
@@ -18,6 +20,8 @@ export const Root = () => (
         <Route path="phones" element={<ProductsPage />} />
         <Route path="tablets" element={<ProductsPage />} />
         <Route path="accessories" element={<ProductsPage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
+        <Route path="cart" element={<CartPage />} />
         <Route path="product">
           <Route path=":productId" element={<ProductDetailsPage />} />
         </Route>
