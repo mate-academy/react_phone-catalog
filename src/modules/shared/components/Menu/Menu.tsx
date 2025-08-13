@@ -55,12 +55,14 @@ export const Menu = () => {
           </NavLink>
         </li>
       </ul>
-      <div className={scss.menu__iconsWrapper}>
-        <div className={scss.menu__iconContainer}>
+      <ul className={scss.menu__iconsWrapper}>
+        <li className={scss.menu__iconLink}>
           <NavLink
             to="/favourites"
             className={({ isActive }) =>
-              classNames(scss.menu__icon, { [scss.menu__linkActive]: isActive })
+              classNames(scss.menu__iconLink, {
+                [scss.menu__iconLink_active]: isActive,
+              })
             }
             aria-label="Favourites"
           >
@@ -68,12 +70,14 @@ export const Menu = () => {
               <use href="/icons/icons.svg#heart-icon"></use>
             </svg>
           </NavLink>
-        </div>
-        <div className={scss.menu__iconContainer}>
+        </li>
+        <li className={scss.menu__iconLink}>
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              classNames(scss.menu__icon, { [scss.menu__linkActive]: isActive })
+              classNames(scss.menu__iconLink, {
+                [scss.menu__iconLink_active]: isActive,
+              })
             }
             aria-label="Shopping Bag"
           >
@@ -81,8 +85,8 @@ export const Menu = () => {
               <use href="/icons/icons.svg#shopping-bag"></use>
             </svg>
           </NavLink>
-        </div>
-      </div>
+        </li>
+      </ul>
     </nav>
   );
 };

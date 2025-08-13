@@ -2,12 +2,17 @@
 
 .menu {
   position: fixed;
+  top: 49px;
+  left: 0;
+  right: 0;
+
+  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  height: 100vh;
+  height: calc(100vh - 48px);
   width: 100vw;
 
   background-color: white;
@@ -45,11 +50,24 @@
   &__iconsWrapper {
     height: 64px;
     display: flex;
+    border: 1px solid constants.$border-color;
   }
 
-  &__iconContainer {
+  &__iconLink {
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1;
-    border: 1px solid constants.$border-color;
+
+
+    &:not(:last-child) {
+      border-right: 1px solid constants.$border-color;
+    }
+
+    &_active {
+      border-bottom: 2px solid constants.$primary-color;
+    }
   }
 
   &__icon {
