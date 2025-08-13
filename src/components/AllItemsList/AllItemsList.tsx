@@ -41,6 +41,7 @@ export const AllItemsList: React.FC<Props> = ({
         return [...items].sort((a, b) => {
           const priceA = a.priceDiscount ?? a.price ?? 0;
           const priceB = b.priceDiscount ?? b.price ?? 0;
+
           return priceA - priceB;
         });
       default:
@@ -99,15 +100,17 @@ export const AllItemsList: React.FC<Props> = ({
         ))}
       </div>
 
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        onPageChange={newPage => setPage(newPage)}
-        onPerPageChange={value => {
-          setPerPage(value);
-          setPage(0);
-        }}
-      />
+      {totalPages !== 1 && (
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          onPageChange={newPage => setPage(newPage)}
+          onPerPageChange={value => {
+            setPerPage(value);
+            setPage(0);
+          }}
+        />
+      )}
     </div>
   );
 };

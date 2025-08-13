@@ -4,18 +4,18 @@ import { AllItemsList } from '../../components/AllItemsList';
 import { Product } from '../../utils/Product';
 import '../ProductsPage.scss';
 
-export const MobilePhonesPage: React.FC = () => {
+export const TabletsPage: React.FC = () => {
   const [allItems, setAllItems] = useState<Product[]>([]);
 
   return (
     <>
       <div className="title">
-        <h1 className="title__name">Mobile phones</h1>
+        <h1 className="title__name">Tablets</h1>
         <p className="title__quantity">{allItems.length} models</p>
       </div>
 
       <AllItemsList
-        path="/api/phones.json"
+        path="/api/tablets.json"
         allItems={allItems}
         setAllItems={setAllItems}
       />
