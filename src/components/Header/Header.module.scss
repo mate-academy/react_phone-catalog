@@ -1,0 +1,256 @@
+@import '../../shared/index';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+
+  &--mobile {
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    padding: 0 $padding-mobile;
+    border-bottom: 1px solid var(--elements-color);
+    background-color: var(--white-color);
+
+    @include on-desktop {
+      height: 64px;
+      padding: 0 $padding-desktop;
+    }
+
+    .logoLink {
+      img {
+        width: 64px;
+
+        @include on-desktop {
+          width: 80px;
+        }
+      }
+
+      @include on-tablet {
+        margin-right: 32px;
+      }
+
+      @include on-desktop {
+        margin-right: 48px;
+      }
+    }
+  }
+
+  .toggleButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-left: 16px;
+    border: none;
+    border-left: 1px solid var(--elements-color);
+    background-color: transparent;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
+
+.nav {
+  flex-grow: 1;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 16px;
+    margin: 0;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 32px;
+      height: 100%;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__link {
+    padding-block: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--secondary-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 2px solid transparent;
+
+    @include hover (color, var(--primary-color));
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      padding-top: 12px;
+    }
+
+    &--active {
+      border-bottom-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+  flex-direction: column;
+  transform: translateX(100%);
+  justify-content: space-between;
+  height: 100dvh;
+  background-color: var(--white-color);
+  transition: transform 0.3s ease-in-out;
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+
+  @include on-tablet {
+    position: relative;
+    transform: translateX(0%);
+    flex-direction: row;
+    height: 48px;
+    padding-bottom: 0;
+    border-bottom: 1px solid var(--elements-color);
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  &__icons {
+    position: fixed;
+    display: flex;
+    height: 64px;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid var(--elements-color);
+
+    @include on-tablet {
+      position: static;
+      width: auto;
+      height: 48px;
+      border-top: none;
+    }
+
+    @include on-desktop {
+      height: 64px;
+    }
+
+    .nav__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+
+      @include hover(border-bottom, 2px solid var(--primary-color));
+
+      &:first-child {
+        border-right: 1px solid var(--elements-color);
+
+        @include on-tablet {
+          border-left: 1px solid var(--elements-color);
+        }
+      }
+
+      @include on-tablet {
+        padding: 16px;
+        margin: 0;
+      }
+
+      @include on-desktop {
+        padding: 24px;
+      }
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &--menu {
+    background-image: url('/img/icons/menu-icon.svg');
+  }
+
+  &--close {
+    background-image: url('/img/icons/close-icon.svg');
+  }
+
+  &--heart {
+    background-image: url('/img/icons/favourites-icon.svg');
+  }
+
+  &--cart {
+    background-image: url('/img/icons/cart-icon.svg');
+  }
+
+  .itemAmount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    width: 14px;
+    height: 14px;
+    transform: translate(70%, -50%);
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    color: var(--white-color);
+    background-color: var(--accent);
+  }
+}
+
+// Dark theme styles for item amount circles
+body.dark .itemAmount {
+  color: var(--page-color);
+}
+
+// Dark theme styles for icons in header
+body.dark .icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+body.dark .icon .itemAmount {
+  filter: none !important;
+}
+
+
