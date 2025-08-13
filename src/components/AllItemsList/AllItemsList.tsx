@@ -31,7 +31,24 @@ export const AllItemsList: React.FC<Props> = ({
   const itemsPerPage = perPage === 'all' ? allItems.length : +perPage;
   const totalPages = Math.ceil(allItems.length / +itemsPerPage);
 
-  const visibleProducts = allItems.slice(
+  const sortProducts = (items: Product[]) => {
+    switch (sort) {
+      case SortOptions.Newest:
+        return [...items].sort((a, b) => b.year - a.year);
+      case SortOptions.Alphabetically:
+        return [...items].sort((a, b) => a.name.localeCompare(b.name));
+      case SortOptions.Cheapest:
+        return [...items].sort((a, b) => {
+          const priceA = a.priceDiscount ?? a.price ?? 0;
+          const priceB = b.priceDiscount ?? b.price ?? 0;
+          return priceA - priceB;
+        });
+      default:
+        return items;
+    }
+  };
+
+  const visibleProducts = sortProducts(allItems).slice(
     (page - 1) * itemsPerPage,
     (page - 1) * itemsPerPage + itemsPerPage,
   );
