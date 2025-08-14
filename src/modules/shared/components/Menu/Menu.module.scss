@@ -1,13 +1,10 @@
-@import '@/styles/icon.scss';
-@import '@/styles/mixins.scss';
-@import '@/styles/variables.scss';
+@import '@/styles/icon';
+@import '@/styles/mixins';
+@import '@/styles/variables';
 
 .menu {
   position: fixed;
-  top: 65px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 65px 0 0;
   background-color: $white-color;
   display: flex;
   flex-direction: column;
@@ -76,7 +73,7 @@
 
   &__icons {
     display: flex;
-    // flex-shrink: 0;
+    flex-shrink: 0;
     flex-direction: row;
     align-items: center;
     border-top: 1px solid $elements-color;

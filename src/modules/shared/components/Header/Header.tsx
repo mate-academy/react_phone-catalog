@@ -89,7 +89,7 @@ export const Header: React.FC = () => {
             </div>
           </div>
           <div className={styles['header__icons--desktop']}>
-            <a href="#" className="icon icon--heart"></a>
+            <a href="#" className="icon icon--heart-empty"></a>
           </div>
           <div className={styles['header__icons--desktop']}>
             <a href="#" className="icon icon--cart"></a>

@@ -1,7 +1,10 @@
-@import './mixins.scss';
+@import './mixins';
+@import './variables';
 
 h1 {
-  font-weight: 800;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
@@ -13,7 +16,9 @@ h1 {
 }
 
 h2 {
-  font-weight: 800;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
@@ -25,10 +30,12 @@ h2 {
 }
 
 h3 {
-  font-weight: 800;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
   font-size: 22px;
   line-height: 31px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
 
   @include on-tablet {
     font-size: 20px;
@@ -40,7 +47,7 @@ h4 {
   font-weight: 700;
   font-size: 20px;
   line-height: 26px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
 
   @include on-tablet {
     font-size: 16px;
@@ -48,31 +55,28 @@ h4 {
   }
 }
 
+p {
+  margin: 0;
+}
+
 .text {
   &__uppercase {
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 0.04em;
   }
 
-  &__button {
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0;
-  }
-
   &__body {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0;
   }
 
   &__small {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 12px;
     line-height: 15px;
     letter-spacing: 0;

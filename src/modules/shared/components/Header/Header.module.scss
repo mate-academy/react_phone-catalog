@@ -1,5 +1,5 @@
-@import '@/styles/mixins.scss';
-@import '@/styles/variables.scss';
+@import '@/styles/mixins';
+@import '@/styles/variables';
 
 .headerContainer {
   position: relative; // Create stacking context for the menu

@@ -1,0 +1,21 @@
+@import '@/styles/mixins';
+
+.grid-container {
+  display: grid;
+  justify-content: center;
+
+  grid-template-columns: repeat(4, 1fr);
+  padding-inline: 16px;
+  row-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    max-width: calc(100vw - 48px);
+    margin-inline: auto;
+  }
+}
