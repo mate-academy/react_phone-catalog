@@ -92,7 +92,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             products
               .filter(filter)
               .map(product => (
-                <Card key={product.id} card={product ? product : product} />
+                <Card key={product.id} card={product} />
               ))
           )}
         </div>
