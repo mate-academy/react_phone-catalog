@@ -5,12 +5,20 @@
   inset: 49px 0 0;
 
   overflow-y: auto;
+  transform: translateY(-8px); opacity:0; visibility:hidden; pointer-events:none;
+  transition: transform 0.7s ease, opacity 0.7s ease, visibility 0s ease 0.7s;
+  will-change: transform, opacity;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   background-color: white;
+
+  &_open {
+    transform: translateY(0); opacity:1; visibility:visible; pointer-events:auto;
+    transition: transform 0.7s ease, opacity 0.7s ease, visibility 0s;
+  }
 
   &__list {
     display: flex;

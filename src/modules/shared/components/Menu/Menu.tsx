@@ -1,9 +1,17 @@
 import scss from './Menu.module.scss';
 import { NavLinkMenu } from '../NavLinkMenu/NavLinkMenu';
+import classNames from 'classnames';
 
-export const Menu = () => {
+interface Props {
+  isMenuOpen: boolean;
+}
+
+export const Menu: React.FC<Props> = ({ isMenuOpen }) => {
   return (
-    <nav className={scss.menu}>
+    <nav
+      id="mobile-menu"
+      className={classNames(scss.menu, { [scss.menu_open]: isMenuOpen })}
+    >
       <ul className={scss.menu__list}>
         <li className={scss.menu__item}>
           <NavLinkMenu to="/" type="text" label="Home" end={true} />

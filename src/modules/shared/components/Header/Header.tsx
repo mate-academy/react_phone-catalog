@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { Menu } from '../Menu/Menu';
 import scss from './Header.module.scss';
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
   return (
     <header className={scss.header}>
       <div className={scss.header__container}>
@@ -10,14 +13,21 @@ export const Header = () => {
             <use href="/icons/icons.svg#logo-icon"></use>
           </svg>
         </a>
-        <button aria-label="Open and close menu">
-          <svg className={scss.burgerIcon}>
-            <use href="/icons/icons.svg#burger-icon"></use>
+        <button
+          aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <svg className={scss.icon} aria-hidden={true} focusable={false}>
+            <use
+              href={`/icons/icons.svg#${isMenuOpen ? 'close-icon' : 'burger-icon'}`}
+            />
           </svg>
         </button>
       </div>
 
-      <Menu />
+      <Menu isMenuOpen={isMenuOpen} />
     </header>
   );
 };
