@@ -11,6 +11,7 @@ import { ProductInfoPage } from './components/ProductInfoPage';
 
 import { PathProvider } from './components/contexts/PathContext';
 import { ProductNotFoundPage } from './components/ProductNotFoundPage';
+import { FavoritesPage } from './components/FavoritesPage/FavoritesPage';
 
 
 export const App = () => {
@@ -30,6 +31,8 @@ export const App = () => {
 
               <Route path=":itemId" element={<ProductInfoPage />} />
             </Route>
+
+            <Route path='/favorites' element={<FavoritesPage />} />
 
             <Route path="/product-not-found" element={<ProductNotFoundPage />} />
           </Routes>

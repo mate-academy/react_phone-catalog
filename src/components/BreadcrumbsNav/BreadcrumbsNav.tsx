@@ -9,6 +9,15 @@ export const BreadcrumbsNav: React.FC = () => {
   const { category, itemId } = useParams();
   const location = useLocation();
 
+  const pageNameRaw = (location.pathname.split('/')[1] || '')
+    .toLowerCase()
+    .trim();
+
+  const pageName = pageNameRaw
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  ////////////////////////////////////////
   // Подключаем хук для работы с фильтрами (search-параметрами)
   const { getLastSearch } = useProductFilters();
 
@@ -18,21 +27,15 @@ export const BreadcrumbsNav: React.FC = () => {
   // Получаем search из location.state (если есть), иначе из текущего location.search, иначе пустая строка
   const backSearch = location.state?.search || location.search || '';
 
-  // Формируем базовый путь назад — категория или пустая строка
-  const backPath = `/${category || ''}`;
-
   // Выбираем, какие search-параметры использовать: либо из location, либо из сохранённых
   const searchToUse = backSearch !== '' ? backSearch : lastSearch;
 
+  const [modelName, setModelName] = useState<string>('');
+
+  // Формируем базовый путь назад — категория или пустая строка
+  const backPath = `/${category || pageNameRaw || ''}`;
   // Формируем полный путь назад с параметрами
   const backWithSearch = `${backPath}${searchToUse}`;
-
-  // Формируем название категории с заглавной буквы для отображения
-  const pageCategory = category
-    ? category.charAt(0).toUpperCase() + category.slice(1)
-    : '';
-
-  const [modelName, setModelName] = useState<string>('');
 
   useEffect(() => {
     if (!category || !itemId) return;
@@ -40,10 +43,13 @@ export const BreadcrumbsNav: React.FC = () => {
     fetch(`/api/${category}.json`)
       .then(res => res.json())
       .then(data => {
-        const found = data.find((product: ProductInfoUnionType) => product.id === itemId);
+        const found = data.find(
+          (product: ProductInfoUnionType) => product.id === itemId,
+        );
+
         setModelName(found?.name || '');
       });
-  }, [category, itemId]);
+  }, [itemId]);
 
   return (
     <div className="breadcrumbsNav-block">
@@ -54,14 +60,19 @@ export const BreadcrumbsNav: React.FC = () => {
 
         <img src="/img/icons/NotActiveArrowRight.svg" alt="arrow icon" />
 
-        <Link to={backWithSearch} className="breadcrumbs-link">
-          {pageCategory}
-        </Link>
+        {itemId ?
+          <Link to={backWithSearch} className="breadcrumbs-link">
+            {pageName}
+          </Link>
+          :
+          <p className="small-text-12-600">{pageName}</p>
+        }
+
 
         {modelName && (
           <>
             <img src="/img/icons/NotActiveArrowRight.svg" alt="arrow icon" />
-            <div className="model-name">{modelName}</div>
+            <p className="small-text-12-600 model-name">{modelName}</p>
           </>
         )}
       </div>
@@ -69,7 +80,11 @@ export const BreadcrumbsNav: React.FC = () => {
       {modelName && (
         <div className="button-back-block">
           <Link to={backWithSearch} className="icon">
-            <img src="/img/icons/ArrowLeft.svg" alt="arrow icon" className="icon" />
+            <img
+              src="/img/icons/ArrowLeft.svg"
+              alt="arrow icon"
+              className="icon"
+            />
           </Link>
 
           <Link to={backWithSearch} className="breadcrumbs-link">

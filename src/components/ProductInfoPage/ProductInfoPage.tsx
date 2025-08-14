@@ -249,7 +249,9 @@ export const ProductInfoPage: React.FC = () => {
                   <p className="button-text">Add to card</p>
                 </div>
 
-                <div className="favourites-button has-shadow-cursor">
+                <div className="favourites-button has-shadow-cursor"
+                  onClick={() => toggleFavourite(foundId)}>
+                  //////////////////////////////////////////////
                   <img
                     className="icon"
                     src="/img/icons/Heart.svg"
@@ -302,6 +304,7 @@ export const ProductInfoPage: React.FC = () => {
           </div>
         </div>
       </div>
+
       <SwiperSection
         title="You may also like"
         products={discountedProducts}
