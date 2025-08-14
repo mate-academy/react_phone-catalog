@@ -1,9 +1,10 @@
 import styles from './Card.module.scss';
 import type { Card as CardItem } from '../../types/Card';
 import { LikeButton } from '../LikeButton/LikeButton';
-import { AddToCart } from './AddToCart';
+import { AddToCart } from '../AddToCart/AddToCart';
 import { useAppContext } from '../../contexts/AppContext';
 import { Link } from 'react-router-dom';
+import { getFormattedCapacity } from '../../modules/shared/utils/getFormattedCapacity';
 
 type Props = {
   card: CardItem | undefined;
@@ -67,8 +68,8 @@ export const Card: React.FC<Props> = ({ card }) => {
 
             <div className={styles.values}>
               <p className="cardValuesText">{card.screen}</p>
-              <p className="cardValuesText">{card.capacity}</p>
-              <p className="cardValuesText">{card.ram}</p>
+              <p className="cardValuesText">{getFormattedCapacity(card.capacity)}</p>
+              <p className="cardValuesText">{getFormattedCapacity(card.ram)}</p>
             </div>
           </div>
         </div>

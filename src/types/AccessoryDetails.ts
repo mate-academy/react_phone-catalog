@@ -1,4 +1,4 @@
-export type AccessoryDetals = {
+export type AccessoryDetails = {
   id: string,
   category: string,
   namespaceId: string,

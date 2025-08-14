@@ -8,6 +8,8 @@
   text-align: center;
 
   background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  box-sizing: border-box;
 
   transition: all 0.3s ease;
 
@@ -17,7 +19,7 @@
 }
 
 .isSelected {
-  border: 1px solid var(--color-elements);
+  border-color: var(--color-elements);
   color: var(--color-green) !important;
   background-color: var(--color-white) !important;
 }
