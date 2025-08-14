@@ -61,7 +61,11 @@ export const ProductDetails = () => {
       ) : (
         <div>
           <p>Product was not found</p>
-          <img src="/img/product-not-found.png" alt="Product not found" />
+          <img
+            className={style.ProductDetails__error__image}
+            src="/img/product-not-found.png"
+            alt="Product not found"
+          />
         </div>
       )}
     </div>

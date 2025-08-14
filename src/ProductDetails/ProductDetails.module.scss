@@ -7,4 +7,10 @@
   &__nav {
     @include padding-inline;
   }
+
+  &__error {
+    &__image {
+      width: 100%;
+    }
+  }
 }
