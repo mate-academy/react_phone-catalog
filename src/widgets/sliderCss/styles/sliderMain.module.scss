@@ -45,15 +45,6 @@
   @media (min-width: s.$c-BREAKPOINT_TAB) {
     aspect-ratio: 3 / 1;
   }
-
-
-  &__dragging {
-    transition: none;
-  }
-
-  &__animated {
-    transition: 150ms ease-in-out;
-  }
 }
 
 .button {

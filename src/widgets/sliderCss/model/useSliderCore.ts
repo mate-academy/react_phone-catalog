@@ -43,25 +43,39 @@ export const useSliderCore = ({ gap = 0, defaultIndex = 0, amount }: Props) => {
 
   const dragThreshold = 3;
 
+  const updateSize = {
+    VPWidth: () => {
+      if (!DOMRefs.viewport.current) {
+        return;
+      }
+
+      measureRefs.VPWidth.current = DOMRefs.viewport.current.offsetWidth;
+    },
+    track: () => {
+      if (!DOMRefs.track.current) {
+        return;
+      }
+
+      measureRefs.trackWidth.current = DOMRefs.track.current.offsetWidth;
+    },
+    item: () => {
+      if (!DOMRefs.item.current) {
+        return;
+      }
+
+      measureRefs.itemWidth.current = DOMRefs.item.current.offsetWidth;
+    },
+    all: () => {
+      updateSize.VPWidth();
+      updateSize.track();
+      updateSize.item();
+    },
+  };
+
   useLayoutEffect(() => {
-    if (!DOMRefs.viewport.current) {
-      return;
-    }
-
-    measureRefs.VPWidth.current = DOMRefs.viewport.current.offsetWidth;
-
-    if (!DOMRefs.track.current) {
-      return;
-    }
-
-    measureRefs.trackWidth.current = DOMRefs.track.current.offsetWidth;
-    manipulate.toggleTrackClass(DOMRefs.track.current, false);
-    if (!DOMRefs.item.current) {
-      return;
-    }
-
-    measureRefs.itemWidth.current = DOMRefs.item.current.offsetWidth;
-  }, [DOMRefs.item, DOMRefs.viewport, DOMRefs.track.current]);
+    updateSize.all();
+    manipulate.toggleTrackClass(DOMRefs.track.current as HTMLDivElement, false);
+  }, [DOMRefs.item, DOMRefs.viewport, DOMRefs.track]);
 
   const afLoop = {
     start: () => {
@@ -86,6 +100,7 @@ export const useSliderCore = ({ gap = 0, defaultIndex = 0, amount }: Props) => {
       }
     },
   };
+
   const utils = {
     setDrag: useCallback((e: React.PointerEvent<HTMLDivElement>) => {
       if (Math.abs(mechRefs.drag.current as number) > dragThreshold) {
@@ -138,6 +153,16 @@ export const useSliderCore = ({ gap = 0, defaultIndex = 0, amount }: Props) => {
       },
       [amount],
     ),
+    animateTrack: (idx: number, animation: boolean) => {
+      manipulate.toggleTrackClass(
+        DOMRefs.track.current as HTMLDivElement,
+        animation,
+      );
+      const newIdx = utils.checkClamp(idx);
+
+      utils.updateOffset(newIdx);
+      setActiveIndex(newIdx);
+    },
   };
 
   const handlers = {
@@ -184,25 +209,43 @@ export const useSliderCore = ({ gap = 0, defaultIndex = 0, amount }: Props) => {
 
       const newIndex = utils.getNewIndex();
 
-      const clampedIndex = utils.checkClamp(newIndex);
-
-      manipulate.toggleTrackClass(
-        DOMRefs.track.current as HTMLDivElement,
-        true,
-      );
-      utils.updateOffset(clampedIndex);
-      setActiveIndex(clampedIndex);
+      utils.animateTrack(newIndex, true);
       mechRefs.drag.current = 0;
     },
 
     onPointerCancel: (e: React.PointerEvent<HTMLDivElement>) => {
       handlers.onPointerUp(e);
     },
+    onButton: (mod: number) => {
+      utils.animateTrack(activeIndex + mod, true);
+    },
+    onPagination: (pos: number) => {
+      utils.animateTrack(pos, true);
+    },
   };
 
   useEffect(() => {
-    utils.cleanup();
+    return () => utils.cleanup();
   }, []);
+
+  useEffect(() => {
+    if (!DOMRefs.viewport.current) {
+      return;
+    }
+
+    const node = DOMRefs.viewport.current;
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateSize.all();
+      utils.animateTrack(activeIndex, false);
+    });
+
+    resizeObserver.observe(node);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [DOMRefs.viewport]);
 
   return { DOMRefs, measureRefs, mechRefs, handlers, activeIndex };
 };
