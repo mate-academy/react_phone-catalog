@@ -49,41 +49,39 @@ export const DetailsContent: React.FC<DetailsContentProps> = ({
   }
 
   return isTablet ? (
-    <div className={styles.tablet_content}>
-      <Direction page="productID" product={chosedItem} />
-      <h2 className={styles.name}>{chosedItem?.name}</h2>
-
-      <div className={styles.tablet_order}>
-        <ProductPreview
-          images={chosedItem.images}
-          selectedImage={selectedImage}
-          setSelectedImage={setSelectedImage}
-        />
-
-        <div className={styles.tablet_confirm}>
-          <ProductSelectors
-            chosedItem={chosedItem}
-            selectedColor={selectedColor}
-            setSelectedColor={setSelectedColor}
-            selectedCapacity={selectedCapacity}
-            setSelectedCapacity={setSelectedCapacity}
+    <div className={styles.wrapper}>
+      <div className={styles.tablet_content}>
+        <Direction page="productID" product={chosedItem} />
+        <h2 className={styles.name}>{chosedItem?.name}</h2>
+        <div className={styles.tablet_order}>
+          <ProductPreview
+            images={chosedItem.images}
+            selectedImage={selectedImage}
+            setSelectedImage={setSelectedImage}
           />
-          <ConfirmOrder
-            chosedItem={chosedItem}
-            chosedItemDemo={chosedItemDemo}
-            activeAdd={activeAdd}
-            setActiveAdd={setActiveAdd}
-            activeHeart={activeHeart}
-            setActiveHeart={setActiveHeart}
-            updateList={updateList}
-          />
+          <div className={styles.tablet_confirm}>
+            <ProductSelectors
+              chosedItem={chosedItem}
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
+              selectedCapacity={selectedCapacity}
+              setSelectedCapacity={setSelectedCapacity}
+            />
+            <ConfirmOrder
+              chosedItem={chosedItem}
+              chosedItemDemo={chosedItemDemo}
+              activeAdd={activeAdd}
+              setActiveAdd={setActiveAdd}
+              activeHeart={activeHeart}
+              setActiveHeart={setActiveHeart}
+              updateList={updateList}
+            />
+          </div>
         </div>
-      </div>
-
-      <DescriptionAndSpecifications chosedItem={chosedItem} />
-
-      <div className={styles.also}>
-        <HotPrices suggestedData={suggestedList} productDetails={true} />
+        <DescriptionAndSpecifications chosedItem={chosedItem} />
+        <div className={styles.also}>
+          <HotPrices suggestedData={suggestedList} productDetails={true} />
+        </div>
       </div>
     </div>
   ) : (

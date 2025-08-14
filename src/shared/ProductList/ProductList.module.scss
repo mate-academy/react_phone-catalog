@@ -16,7 +16,6 @@
   &__container {
     display: flex;
     gap: 16px;
-    will-change: transform;
     @include respond(tablet) {
       gap: 24px;
     }
@@ -34,10 +33,15 @@
   }
 
   &_container {
+    max-width: 864px;
     display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(auto-fit, minmax(calc(272px), 1fr));
-    column-gap: 16px;
-    row-gap: 40px;
+    gap: 40px 16px;
+    grid-template-columns: repeat(auto-fit, 272px);
+    justify-content: start;
+
+    @include respond(desktop){
+      max-width: 1152px;
+      grid-template-columns: repeat(auto-fit, 272px);
+    }
   }
 }

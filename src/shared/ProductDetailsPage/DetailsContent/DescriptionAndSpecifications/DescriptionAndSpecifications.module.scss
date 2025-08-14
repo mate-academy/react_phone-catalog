@@ -14,7 +14,7 @@
     margin-bottom: 64px;
   }
   @include respond(desktop) {
-    margin-bottom: 80px;
+    width: 50%;
   }
 
   &_title {
@@ -51,6 +51,10 @@
 .specifications {
   display: flex;
   flex-direction: column;
+  @include respond(desktop) {
+    width: 50%;
+  }
+
   &_title {
     font-weight: 700;
     font-size: 20px;
@@ -90,5 +94,13 @@
     font-size: 14px;
     line-height: 21px;
     text-align: right;
+  }
+}
+
+.wrapper {
+  @include respond(desktop) {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
   }
 }

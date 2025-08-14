@@ -1,8 +1,12 @@
 @use '../../Mixins/Mixins.scss' as *;
 
 .page {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  @include respond (tablet){
+    align-items: center;
+  }
 
   &_title {
     display: block;
@@ -35,12 +39,14 @@
 }
 
 .content {
-  margin-inline: 16px;
+  width: 100%;
+  max-width: 1200px;
+  padding-inline: 16px;
   @include respond(tablet) {
-    margin-inline: 24px;
+    padding-inline: 24px;
   }
   @include respond(desktop) {
-    margin-inline: 32px;
+    padding-inline: 32px;
   }
 }
 
@@ -171,12 +177,18 @@
   }
 }
 
-.itemsPerPage{
+.itemsPerPage {
   @include respond(tablet) {
     width: 136px;
   }
   @include respond(desktop) {
     width: 128px;
   }
+}
+
+.underline {
+  width: 100%;
+  height: 1px;
+  background-color: #3B3E4A;
 }
 

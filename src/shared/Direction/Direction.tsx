@@ -2,6 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { ProductFullInfo } from '../../types/ProductFullInfo';
 import styles from './Direction.module.scss';
+import { Back } from '../Back';
 
 type DirectionProps = {
   page:
@@ -58,23 +59,7 @@ export const Direction: React.FC<DirectionProps> = ({ page, product }) => {
         </span>
       </div>
 
-      {page === 'productID' && (
-        <div className={styles.back}>
-          <img
-            className={styles.back_arrow}
-            src="img/Buttons/Icons/white left.svg"
-            alt="arrow left"
-          />
-          <span
-            className={styles.back_link}
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            Back
-          </span>
-        </div>
-      )}
+      {page === 'productID' && <Back />}
     </>
   );
 };

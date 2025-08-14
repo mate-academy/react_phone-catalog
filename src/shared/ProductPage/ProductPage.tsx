@@ -131,151 +131,146 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
     <>
       {isError ? (
         <ErrorMessage />
+      ) : isMenuOpen ? (
+        <BurgerMenu />
       ) : (
-        <div className={styles.page}>
-          {isMenuOpen ? (
-            <BurgerMenu />
-          ) : (
-            <>
-              <NavBar />
-              <div className={styles.content}>
-                <Direction page={typeOFProduct} />
+        <>
+          <NavBar />
+          <div className={styles.page}>
+            <div className={styles.content}>
+              <Direction page={typeOFProduct} />
 
-                <h1 className={styles.page_title}>
-                  {typeOFProduct === 'phones'
-                    ? 'Mobile phones'
-                    : typeOFProduct === 'tablets'
-                      ? 'Tablets'
-                      : 'Accessories'}
-                </h1>
-                <span className={styles.page_quantity}>
-                  {`${
-                    filteredProducts.length
-                      ? `${filteredProducts.length} models`
-                      : `There are no ${typeOFProduct} yet`
-                  }`}
-                </span>
+              <h1 className={styles.page_title}>
+                {typeOFProduct === 'phones'
+                  ? 'Mobile phones'
+                  : typeOFProduct === 'tablets'
+                    ? 'Tablets'
+                    : 'Accessories'}
+              </h1>
+              <span className={styles.page_quantity}>
+                {filteredProducts.length
+                  ? `${filteredProducts.length} models`
+                  : `There are no ${typeOFProduct} yet`}
+              </span>
 
-                {isLoading ? (
-                  <Loader />
-                ) : (
-                  <>
-                    <div className={styles.sort}>
-                      <div className={styles.sort_type}>
-                        <label
-                          htmlFor="sort_type"
-                          className={styles.sort_label}
-                        >
-                          Sort by
-                        </label>
-
-                        <select
-                          className={styles.sort_selector}
-                          name="sort_type"
-                          id="sort_type"
-                          value={filterBy}
-                          onChange={handleSortChange}
-                        >
-                          <option value="Newest">Newest</option>
-                          <option value="Alphabetically">Alphabetically</option>
-                          <option value="Cheapest">Cheapest</option>
-                        </select>
-                      </div>
-
-                      <div
-                        className={`${styles.sort_type} ${styles.itemsPerPage}`}
+              {isLoading ? (
+                <Loader />
+              ) : (
+                <>
+                  <div className={styles.sort}>
+                    <div className={styles.sort_type}>
+                      <label htmlFor="sort_type" className={styles.sort_label}>
+                        Sort by
+                      </label>
+                      <select
+                        className={styles.sort_selector}
+                        name="sort_type"
+                        id="sort_type"
+                        value={filterBy}
+                        onChange={handleSortChange}
                       >
-                        <label
-                          htmlFor="items_quantity"
-                          className={styles.sort_label}
-                        >
-                          Items on page
-                        </label>
-
-                        <select
-                          className={styles.sort_selector}
-                          name="items_quantity"
-                          id="items_quantity"
-                          value={itemsPerPage}
-                          onChange={handleItemsPerPageChange}
-                        >
-                          <option value="16">16</option>
-                          <option value="8">8</option>
-                          <option value="4">4</option>
-                          <option value={filteredProducts.length}>All</option>
-                        </select>
-                      </div>
+                        <option value="Newest">Newest</option>
+                        <option value="Alphabetically">Alphabetically</option>
+                        <option value="Cheapest">Cheapest</option>
+                      </select>
                     </div>
 
-                    <div className={styles.list}>
-                      <ProductList data={currentItems} productPage={true} />
+                    <div
+                      className={`${styles.sort_type} ${styles.itemsPerPage}`}
+                    >
+                      <label
+                        htmlFor="items_quantity"
+                        className={styles.sort_label}
+                      >
+                        Items on page
+                      </label>
+                      <select
+                        className={styles.sort_selector}
+                        name="items_quantity"
+                        id="items_quantity"
+                        value={itemsPerPage}
+                        onChange={handleItemsPerPageChange}
+                      >
+                        <option value="16">16</option>
+                        <option value="8">8</option>
+                        <option value="4">4</option>
+                        <option value={filteredProducts.length}>All</option>
+                      </select>
                     </div>
+                  </div>
 
-                    {filteredProducts.length !== itemsPerPage && (
-                      <div className={styles.pagination}>
-                        <button
-                          disabled={currentPage === 1}
-                          className={`${styles.pagination_button} ${styles.button_left}`}
-                          onClick={() => goToPage(currentPage - 1)}
-                        >
-                          <img
-                            src={'img/Buttons/Icons/white left.svg'}
-                            alt="left"
-                          />
-                        </button>
+                  <div className={styles.list}>
+                    <ProductList data={currentItems} productPage={true} />
+                  </div>
 
-                        <div className={styles.pages}>
-                          {pageArray.map(page => {
-                            if (page <= 3) {
-                              return (
-                                <button
-                                  key={page}
-                                  className={`${currentPage === +page ? styles.pages_active : styles.pages_page}`}
-                                  onClick={() => goToPage(page)}
-                                >
-                                  {page}
-                                </button>
-                              );
-                            }
+                  {filteredProducts.length !== itemsPerPage && (
+                    <div className={styles.pagination}>
+                      <button
+                        disabled={currentPage === 1}
+                        className={`${styles.pagination_button} ${styles.button_left}`}
+                        onClick={() => goToPage(currentPage - 1)}
+                      >
+                        <img
+                          src={'img/Buttons/Icons/white left.svg'}
+                          alt="left"
+                        />
+                      </button>
 
-                            return null;
-                          })}
+                      <div className={styles.pages}>
+                        {pageArray.map(page =>
+                          page <= 3 ? (
+                            <button
+                              key={page}
+                              className={
+                                currentPage === +page
+                                  ? styles.pages_active
+                                  : styles.pages_page
+                              }
+                              onClick={() => goToPage(page)}
+                            >
+                              {page}
+                            </button>
+                          ) : null,
+                        )}
 
-                          {totalPages > 4 && (
-                            <>
-                              <button className={styles.pages_page} disabled>
-                                ...
-                              </button>
-
-                              <button
-                                className={`${currentPage === totalPages ? styles.pages_active : styles.pages_page}`}
-                                onClick={() => goToPage(totalPages)}
-                              >
-                                {totalPages}
-                              </button>
-                            </>
-                          )}
-                        </div>
-
-                        <button
-                          disabled={currentPage === totalPages}
-                          className={`${styles.pagination_button} ${styles.button_right}`}
-                          onClick={() => goToPage(currentPage + 1)}
-                        >
-                          <img
-                            src={'img/Buttons/Icons/white right.svg'}
-                            alt="right"
-                          />
-                        </button>
+                        {totalPages > 4 && (
+                          <>
+                            <button className={styles.pages_page} disabled>
+                              ...
+                            </button>
+                            <button
+                              className={
+                                currentPage === totalPages
+                                  ? styles.pages_active
+                                  : styles.pages_page
+                              }
+                              onClick={() => goToPage(totalPages)}
+                            >
+                              {totalPages}
+                            </button>
+                          </>
+                        )}
                       </div>
-                    )}
-                  </>
-                )}
-              </div>
-            </>
-          )}
+
+                      <button
+                        disabled={currentPage === totalPages}
+                        className={`${styles.pagination_button} ${styles.button_right}`}
+                        onClick={() => goToPage(currentPage + 1)}
+                      >
+                        <img
+                          src={'img/Buttons/Icons/white right.svg'}
+                          alt="right"
+                        />
+                      </button>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+          <div className={styles.underline}></div>
           <Footer />
-        </div>
+        </>
       )}
     </>
   );

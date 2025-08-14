@@ -16,6 +16,10 @@
   justify-content: space-between;
   padding: 32px;
   gap: 8px;
+  @include respond(desktop) {
+    width: 272px;
+    height: 506px;
+  }
 }
 
 .image_block {
@@ -26,9 +30,11 @@
   align-items: center;
   overflow: hidden;
   @include respond(tablet) {
+    max-width: 173px;
     max-height: 202px;
   }
   @include respond(desktop) {
+    max-width: 208px;
     max-height: 196px;
   }
 

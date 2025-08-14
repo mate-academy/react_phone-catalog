@@ -41,7 +41,9 @@
   &_content {
     display: flex;
     flex-direction: column;
-    margin: 24px 24px 64px;
+    padding: 24px 24px 64px;
+    width: 100%;
+    max-width: 1200px;
   }
 
   &_order {
@@ -64,6 +66,12 @@
       flex: 1;
     }
   }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 

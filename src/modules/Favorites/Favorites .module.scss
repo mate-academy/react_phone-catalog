@@ -1,0 +1,53 @@
+@use '../../Mixins/Mixins.scss' as *;
+
+.page {
+  &_title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+  &_quantity {
+    color: #89939a;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    margin-top: 8px;
+    margin-bottom: 32px;
+  }
+}
+
+.content {
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 24px;
+  margin-inline: 16px;
+  margin-bottom: 56px;
+  @include respond(tablet) {
+    margin-inline: 24px;
+    margin-bottom: 64px;
+  }
+  @include respond(desktop) {
+    margin-inline: 32px;
+    margin-bottom: 80px;
+  }
+}
+
+.list {
+  margin-top: 32px;
+  @include respond(tablet) {
+    margin-top: 40px;
+  }
+}
+
+.underline {
+  width: 100%;
+  height: 1px;
+  background-color: #3B3E4A;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}

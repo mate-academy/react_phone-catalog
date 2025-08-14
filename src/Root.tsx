@@ -6,11 +6,11 @@ import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { Cart } from './modules/Cart';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './shared/ProductDetailsPage/ProductDetailsPage';
-import { Favorites } from './shared/Favorites';
 import { PhoneCatalog } from './modules/Catalogs/PhoneCatalog';
 import { TabletCatalog } from './modules/Catalogs/TabletCatalog';
 import { AccessoryCatalog } from './modules/Catalogs/AccessoryCatalog';
 import ScrollToTop from './shared/ScrollToTop/ScrollToTop';
+import { Favorites } from './modules/Favorites';
 
 // const HomeWithFooter = () => (
 //   <>

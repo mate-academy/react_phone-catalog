@@ -11,17 +11,20 @@ export const MainContent: React.FC = () => {
   return (
     <>
       <NavBar />
-      <header className={styles.header}>
-        <h1 className={styles.header_title}>Welcome to Nice Gadgets store!</h1>
-
-        <Swiper />
-      </header>
-
-      <div className={styles.content}>
-        <NewModels />
-        <ShopByCategory />
-        <HotPrices />
+      <div className={styles.container}>
+        <header className={styles.header}>
+          <h1 className={styles.header_title}>
+            Welcome to Nice Gadgets store!
+          </h1>
+          <Swiper />
+        </header>
+        <div className={styles.content}>
+          <NewModels />
+          <ShopByCategory />
+          <HotPrices />
+        </div>
       </div>
+      <div className={styles.underline}></div>
       <Footer />
     </>
   );

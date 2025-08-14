@@ -1,5 +1,13 @@
 @use '../../Mixins/Mixins.scss' as *;
 
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .header {
   &_title {
     display: block;
@@ -8,7 +16,7 @@
     margin-block: 24px;
 
     font-size: 32px;
-    font-style: 800;
+    font-weight: 800;
     line-height: 41px;
 
     @include respond(tablet) {
@@ -39,4 +47,10 @@
     margin-inline: 32px;
     margin-block: 80px;
   }
+}
+
+.underline {
+  height: 1px;
+  background-color: #3b3e4a;
+  width: 100%;
 }

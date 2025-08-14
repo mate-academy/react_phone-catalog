@@ -11,9 +11,11 @@
     justify-content: start;
     align-items: start;
     text-align: left;
+    height: 327px;
     width: 100%;
   }
   @include respond(desktop) {
+    height: 508px;
     margin-block: 80px;
   }
 }
@@ -30,19 +32,18 @@
 
   @include respond(tablet) {
     flex-direction: row;
+    justify-content: start;
     width: 100%;
+    height: 327px;
     gap: 16px;
+  }
+  @include respond(desktop) {
+    height: 508px;
   }
 
   &_good {
     display: flex;
     flex-direction: column;
-    @include respond(tablet) {
-      flex: 1 1 0;
-      min-width: 0;
-      max-width: 33.33%;
-    }
-
     &:hover .good_image {
       transform: scale(1.1);
     }
@@ -86,14 +87,19 @@
   }
 
   &_product {
-    max-width: 288px;
-    height: auto;
+    width: 288px;
+    height: 288px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    @include respond(tablet) {
+      width: 187px;
+      height: 187px;
+    }
     @include respond(desktop) {
-      max-width: 368px;
+      width: 368px;
+      height: 368px;
     }
   }
 

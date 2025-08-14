@@ -139,37 +139,34 @@ export const ProductDetailsPage: React.FC = () => {
     checkTheStorage();
   }, [activeHeart, activeAdd]);
 
-  return (
-    <div className={styles.container}>
-      {isMenuOpen ? (
-        <BurgerMenu />
+  return isMenuOpen ? (
+    <BurgerMenu />
+  ) : (
+    <>
+      <NavBar />
+      {isLoading ? (
+        <Loader />
       ) : (
-        <>
-          <NavBar />
-          {isLoading ? (
-            <Loader />
-          ) : (
-            <DetailsContent
-              chosedItem={chosedItem}
-              selectedImage={selectedImage}
-              setSelectedImage={setSelectedImage}
-              selectedColor={selectedColor}
-              setSelectedColor={setSelectedColor}
-              selectedCapacity={selectedCapacity}
-              setSelectedCapacity={setSelectedCapacity}
-              activeAdd={activeAdd}
-              setActiveAdd={setActiveAdd}
-              activeHeart={activeHeart}
-              setActiveHeart={setActiveHeart}
-              chosedItemDemo={chosedItemDemo}
-              updateList={updateList}
-              suggestedList={suggestedList}
-              isTablet={isTablet}
-            />
-          )}
-          <Footer />
-        </>
+        <DetailsContent
+          chosedItem={chosedItem}
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+          selectedCapacity={selectedCapacity}
+          setSelectedCapacity={setSelectedCapacity}
+          activeAdd={activeAdd}
+          setActiveAdd={setActiveAdd}
+          activeHeart={activeHeart}
+          setActiveHeart={setActiveHeart}
+          chosedItemDemo={chosedItemDemo}
+          updateList={updateList}
+          suggestedList={suggestedList}
+          isTablet={isTablet}
+        />
       )}
-    </div>
+      <div className={styles.underline}></div>
+      <Footer />
+    </>
   );
 };
