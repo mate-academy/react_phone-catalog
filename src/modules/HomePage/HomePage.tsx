@@ -13,10 +13,10 @@ export const HomePage: React.FC = () => {
 
       <ProductsSlider
         title={'Brand new models'}
-        filter={item => item.name.includes('14')}
+        filter='year'
       />
       <Categories />
-      <ProductsSlider title={'Hot prices'} filter={item => item.price > 1000} />
+      <ProductsSlider title={'Hot prices'} filter='price' />
     </main>
   );
 };

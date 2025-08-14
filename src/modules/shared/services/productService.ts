@@ -4,7 +4,7 @@ import tablets from '../../../../public/api/tablets.json';
 import accessories from '../../../../public/api/accessories.json';
 import { Card } from '../../../types/Card';
 import { ProductDetails } from '../../../types/ProductDetails';
-import { AccessoryDetals } from '../../../types/AccessoryDetails';
+import { AccessoryDetails } from '../../../types/AccessoryDetails';
 
 function simulateAsync<T>(data: T, delay: number): Promise<T> {
   return new Promise(resolve => setTimeout(() => resolve(data), delay));
@@ -40,8 +40,8 @@ export function getTablets(): Promise<ProductDetails[]> {
   return simulateAsync(data, 1000);
 }
 
-export function getAccessories(): Promise<AccessoryDetals[]> {
-  let data: AccessoryDetals[] = [];
+export function getAccessories(): Promise<AccessoryDetails[]> {
+  let data: AccessoryDetails[] = [];
   if (Array.isArray(accessories)) {
     data = accessories;
   } else if (accessories) {

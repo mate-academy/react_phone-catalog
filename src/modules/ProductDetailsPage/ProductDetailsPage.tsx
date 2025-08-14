@@ -228,12 +228,12 @@ export const ProductDetailsPage: React.FC = () => {
                 </>
               )}
               <li className={styles.case}>
-                Cell <span className={styles.value}>{product.cell}</span>
+                Cell <span className={styles.value}>{product.cell.join(', ')}</span>
               </li>
             </ul>
           </div>
 
-          <ProductsSlider title={'You may also like'} filter={() => true} />
+          <ProductsSlider title={'You may also like'} filter='random' />
         </>
       ) : (
         <h2>Product not found</h2>

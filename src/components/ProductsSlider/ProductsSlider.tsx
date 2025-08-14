@@ -3,10 +3,12 @@ import { Arrow } from '../Arrow';
 import { Card } from '../Card';
 import styles from './ProductsSlider.module.scss';
 import { useAppContext } from '../../contexts/AppContext';
+import { getSuggestedProducts } from '../../modules/shared/utils/getSuggestedProducts';
+import { Card as CardType } from '../../types/Card';
 
 interface ProductsSliderProps {
   title: string;
-  filter: (product: any) => boolean;
+  filter: 'price' | 'year' | 'random';
 }
 
 export const ProductsSlider: React.FC<ProductsSliderProps> = ({
@@ -21,24 +23,24 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
     products,
     isLoading,
   } = useAppContext();
+
   const gap = 16;
-
-  useEffect(() => {
-    if (refCardWidth.current && refSliderWidth.current) {
-      const cardWidth = refCardWidth.current.offsetWidth;
-      const sliderWidth = refSliderWidth.current.offsetWidth;
-      const calculatedVisibleCards = Math.floor(
-        (sliderWidth + gap) / (cardWidth + gap),
-      );
-      setVisibleCards(calculatedVisibleCards);
-    }
-  }, [
-    refCardWidth.current?.offsetWidth,
-    refSliderWidth.current?.offsetWidth,
-    gap,
-  ]);
-
   const maxScrollPosition = Math.max(0, products.length - visibleCards);
+
+  function filterProducts(type: 'price' | 'year' | 'random'): CardType[] {
+    switch (type) {
+      case 'price':
+        return products.filter(item => item.price >= 1000);
+      case 'year':
+        return products.filter(item => item.year >= 2021);
+      case 'random':
+        return getSuggestedProducts(products);
+      default:
+        return [];
+    }
+  }
+
+  const [currentProducts, setCurrentProducts] = useState<CardType[]>(() => filterProducts(filter));
 
   function findAbleScrollStep() {
     if (!refCardWidth.current) {
@@ -57,6 +59,25 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       }
     });
   }
+
+  useEffect(() => {
+    if (refCardWidth.current && refSliderWidth.current) {
+      const cardWidth = refCardWidth.current.offsetWidth;
+      const sliderWidth = refSliderWidth.current.offsetWidth;
+      const calculatedVisibleCards = Math.floor(
+        (sliderWidth + gap) / (cardWidth + gap),
+      );
+      setVisibleCards(calculatedVisibleCards);
+    }
+  }, [
+    refCardWidth.current?.offsetWidth,
+    refSliderWidth.current?.offsetWidth,
+    gap,
+  ]);
+
+  useEffect(() => {
+    setCurrentProducts(filterProducts(filter));
+  }, [filter, products])
 
   return (
     <section ref={refSliderWidth} className={styles.section}>
@@ -89,8 +110,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
               <Card key={i} card={product} />
             ))
           ) : (
-            products
-              .filter(filter)
+            currentProducts
               .map(product => (
                 <Card key={product.id} card={product} />
               ))
