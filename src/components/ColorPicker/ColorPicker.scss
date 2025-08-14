@@ -1,0 +1,26 @@
+.color-picker {
+  display: flex;
+  gap: 8px;
+
+  &__circle-wrapper {
+    width: 32px;   // загальний розмір разом з відступом
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #3B3E4A; // колір рамки для не вибраного
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border 0.2s;
+
+    &--selected {
+      border: 1px solid #F1F2F9; // колір рамки для вибраного
+    }
+
+    .color-picker__circle {
+      width: 24px;  // внутрішній кружечок
+      height: 24px;
+      border-radius: 50%;
+    }
+  }
+}

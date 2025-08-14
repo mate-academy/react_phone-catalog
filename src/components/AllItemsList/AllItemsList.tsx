@@ -52,9 +52,7 @@ export const AllItemsList: React.FC<Props> = ({
 
         setAllItems(json);
         setPage(1);
-      } catch (e) {
-        
-      }
+      } catch (e) {}
     };
 
     getItems();

@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import { Product } from '../../utils/Product';
 import './ProductDetailsPage.scss';
+import { ColorPicker } from '../../components/ColorPicker';
+import { CapacityPicker } from '../../components/CapacityPicker';
 
 type Props = {};
 
@@ -64,6 +66,71 @@ export const ProductDetailsPage: React.FC<Props> = () => {
         ) : (
           <div>No image available</div>
         )}
+        <div className="details__short-characteristics">
+          <div className="details__colors">
+            <p className="details__small-title">Available colors</p>
+            <ColorPicker
+              colors={
+                product?.colorsAvailable ??
+                (product?.color ? [product.color] : [])
+              }
+            />
+          </div>
+          <div className="details__capacity">
+            <p className="details__small-title">Select capacity</p>
+            <CapacityPicker
+              capacity={
+                product?.capacityAvailable ??
+                (product?.capacity ? [product.capacity] : [])
+              }
+            />
+          </div>
+
+          {product?.fullPrice ? (
+            <p className="details__price">${product.fullPrice}</p>
+          ) : (
+            <div className="details__price-with-discount">
+              <p className="details__price details__price--discount">
+                ${product?.priceDiscount}
+              </p>
+              <p className="details__price details__price--regular">
+                ${product?.priceRegular}
+              </p>
+            </div>
+          )}
+
+          <div className="details__button">
+            <button className="details__button--add">Add to cart</button>
+            <button className="details__button--favourite">
+              <img
+                src="/img/icons/icon-favourites.svg"
+                alt="favourites icon"
+                className="details__button-icon"
+              />
+            </button>
+          </div>
+
+          <div className="details__details">
+            <div className="details__details-row">
+              <div className="details__details-name">Screen</div>
+              <div className="details__details-value">{product?.screen}</div>
+            </div>
+            <div className="details__details-row">
+              <div className="details__details-name">Resolution</div>
+              <div className="details__details-value">
+                {product?.resolution}
+              </div>
+            </div>
+            <div className="details__details-row">
+              <div className="details__details-name">Processor</div>
+              <div className="details__details-value">{product?.processor}</div>
+            </div>
+            <div className="details__details-row">
+              <div className="details__details-name">RAM</div>
+              <div className="details__details-value">{product?.ram}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
