@@ -1,13 +1,7 @@
 import { Card } from "../../../types/Card";
 
 export function getSuggestedProducts(products: Card[]): Card[] {
-  const suggestedProducts: Card[] = [];
-
-  for (const value of products) {
-    if (Math.random() < 0.5) {
-      suggestedProducts.push(value);
-    }
-  }
+  const suggestedProducts: Card[] = [...products];
 
   for (let i = suggestedProducts.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -17,5 +11,5 @@ export function getSuggestedProducts(products: Card[]): Card[] {
     ];
   }
 
-  return suggestedProducts;
+  return suggestedProducts.slice(0, 20);
 }

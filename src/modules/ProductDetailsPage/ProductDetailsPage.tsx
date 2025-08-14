@@ -37,13 +37,13 @@ export const ProductDetailsPage: React.FC = () => {
 
   const [product, setProduct] = useState<ProductDetails | AccessoryDetails | undefined>(undefined);
   const [currentPicture, setCurrentPicture] = useState('');
-  const [currentCapacity, setCurrentCapacity] = useState(product?.capacityAvailable[0]);
-  const [currentColor, setCurrentColor] = useState(product?.colorsAvailable[0]);
+  const [currentCapacity, setCurrentCapacity] = useState('');
+  const [currentColor, setCurrentColor] = useState('');
 
   useEffect(() => {
     if (product) {
-      setCurrentCapacity(product.capacityAvailable[0]);
-      setCurrentColor(product.colorsAvailable[0]);
+      setCurrentCapacity(product.capacity);
+      setCurrentColor(product.color);
       setCurrentPicture(product.images[0]);
     }
   }, [product]);
