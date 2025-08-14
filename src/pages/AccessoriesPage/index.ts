@@ -1,1 +1,0 @@
-export { AccessoriesPage } from './AccessoriesPage';

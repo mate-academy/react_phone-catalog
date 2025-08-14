@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProductCard.scss';
 import { Product } from '../../utils/Product';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -9,8 +10,10 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const getImageSrc = (src: string) => (src.startsWith('/') ? src : '/' + src);
 
+  const navigate = useNavigate();
+
   return (
-    <div className="product">
+    <div className="product" onClick={() => navigate(`/product/${product.id}`)}>
       <div className="product__characteristics">
         {product.image ? (
           <img

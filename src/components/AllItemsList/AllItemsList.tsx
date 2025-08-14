@@ -44,6 +44,22 @@ export const AllItemsList: React.FC<Props> = ({
     setSearchParams(params);
   }, [sort, perPage, page]);
 
+  useEffect(() => {
+    const getItems = async () => {
+      try {
+        const res = await fetch(path);
+        const json: Product[] = await res.json();
+
+        setAllItems(json);
+        setPage(1);
+      } catch (e) {
+        
+      }
+    };
+
+    getItems();
+  }, [path, setAllItems]);
+
   const sortProducts = (items: Product[]) => {
     switch (sort) {
       case SortOptions.Newest:
@@ -66,19 +82,6 @@ export const AllItemsList: React.FC<Props> = ({
     (page - 1) * itemsPerPage,
     (page - 1) * itemsPerPage + itemsPerPage,
   );
-
-  useEffect(() => {
-    const getItems = async () => {
-      try {
-        const res = await fetch(path);
-        const json: Product[] = await res.json();
-
-        setAllItems(json);
-      } catch (e) {}
-    };
-
-    getItems();
-  }, []);
 
   return (
     <div className="catalog">

@@ -1,1 +1,0 @@
-export { MobilePhonesPage } from './MobilePhonesPage';

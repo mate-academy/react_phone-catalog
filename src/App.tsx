@@ -3,21 +3,57 @@ import './App.scss';
 import { HomePage } from './pages/HomePage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { MobilePhonesPage } from './pages/MobilePhonesPage';
-import { TabletsPage } from './pages/TabletsPage';
-import { AccessoriesPage } from './pages/AccessoriesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { Product } from './utils/Product';
+import { useState } from 'react';
+import { ProductsCatalogPage } from './pages/ProductsCatalogPage';
 
-export const App = () => (
-  <div className="App">
-    <Header />
-    <div className="App__content">
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<MobilePhonesPage />} />
-        <Route path="/tablets" element={<TabletsPage />} />
-        <Route path="/accessories" element={<AccessoriesPage />} />
-      </Routes>
+export const App = () => {
+  const [allItems, setAllItems] = useState<Product[]>([]);
+
+  return (
+    <div className="App">
+      <Header />
+      <div className="App__content">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/phones"
+            element={
+              <ProductsCatalogPage
+                title="Mobile phones"
+                allItems={allItems}
+                setAllItems={setAllItems}
+                path="/api/phones.json"
+              />
+            }
+          />
+          <Route
+            path="/tablets"
+            element={
+              <ProductsCatalogPage
+                title="Tablets"
+                allItems={allItems}
+                setAllItems={setAllItems}
+                path="/api/tablets.json"
+              />
+            }
+          />
+          <Route
+            path="/accessories"
+            element={
+              <ProductsCatalogPage
+                title="Accessories"
+                allItems={allItems}
+                setAllItems={setAllItems}
+                path="/api/accessories.json"
+              />
+            }
+          />
+          <Route path="/product/:productId" element={<ProductDetailsPage />} />
+        </Routes>
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-);
+  );
+};
