@@ -1,19 +1,14 @@
-@use '../../styles/utils/constants';
+@use '../../styles/utils/constants' as constants;
 
 .menu {
   position: fixed;
-  top: 49px;
-  left: 0;
-  right: 0;
+  inset: 49px 0 0;
 
   overflow-y: auto;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  height: calc(100vh - 48px);
-  width: 100vw;
 
   background-color: white;
 
@@ -63,10 +58,6 @@
 
     &:not(:last-child) {
       border-right: 1px solid constants.$border-color;
-    }
-
-    &_active {
-      border-bottom: 2px solid constants.$primary-color;
     }
   }
 

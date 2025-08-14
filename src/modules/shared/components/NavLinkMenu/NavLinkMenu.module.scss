@@ -1,0 +1,36 @@
+@use '../../styles/utils/constants' as constants;
+
+.link {
+  font-weight: 800;
+    font-size: 1.2rem;
+    line-height: 1.1rem;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 0.8rem;
+    color: constants.$secondary-color;
+
+    &_active {
+      color: constants.$primary-color;
+      border-bottom: 2px solid constants.$primary-color;
+    }
+}
+
+.iconLink {
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+
+  &:not(:last-child) {
+    border-right: 1px solid constants.$border-color;
+  }
+
+  &__icon {
+  height: 16px;
+  width: 16px;
+  }
+}
+

@@ -1,90 +1,39 @@
-import { NavLink } from 'react-router-dom';
 import scss from './Menu.module.scss';
-import classNames from 'classnames';
+import { NavLinkMenu } from '../NavLinkMenu/NavLinkMenu';
 
 export const Menu = () => {
   return (
     <nav className={scss.menu}>
       <ul className={scss.menu__list}>
         <li className={scss.menu__item}>
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? `${scss.menu__link} ${scss.menu__link_active}`
-                : scss.menu__link
-            }
-          >
-            Home
-          </NavLink>
+          <NavLinkMenu to="/" type="text" label="Home" end={true} />
         </li>
         <li className={scss.menu__item}>
-          <NavLink
-            to="/phones"
-            className={({ isActive }) =>
-              isActive
-                ? `${scss.menu__link} ${scss.menu__link_active}`
-                : scss.menu__link
-            }
-          >
-            Phones
-          </NavLink>
+          <NavLinkMenu to="/phones" type="text" label="Phones" />
         </li>
         <li className={scss.menu__item}>
-          <NavLink
-            to="/tablets"
-            className={({ isActive }) =>
-              isActive
-                ? `${scss.menu__link} ${scss.menu__link_active}`
-                : scss.menu__link
-            }
-          >
-            Tablets
-          </NavLink>
+          <NavLinkMenu to="/tablets" type="text" label="Tablets" />
         </li>
         <li className={scss.menu__item}>
-          <NavLink
-            to="/accessories"
-            className={({ isActive }) =>
-              isActive
-                ? `${scss.menu__link} ${scss.menu__link_active}`
-                : scss.menu__link
-            }
-          >
-            Accessories
-          </NavLink>
+          <NavLinkMenu to="/accessories" type="text" label="Accessories" />
         </li>
       </ul>
       <ul className={scss.menu__iconsWrapper}>
         <li className={scss.menu__iconLink}>
-          <NavLink
+          <NavLinkMenu
             to="/favourites"
-            className={({ isActive }) =>
-              classNames(scss.menu__iconLink, {
-                [scss.menu__iconLink_active]: isActive,
-              })
-            }
-            aria-label="Favourites"
-          >
-            <svg className={scss.menu__icon}>
-              <use href="/icons/icons.svg#heart-icon"></use>
-            </svg>
-          </NavLink>
+            type="icon"
+            label="Favourites"
+            icon="heart-icon"
+          />
         </li>
         <li className={scss.menu__iconLink}>
-          <NavLink
+          <NavLinkMenu
             to="/cart"
-            className={({ isActive }) =>
-              classNames(scss.menu__iconLink, {
-                [scss.menu__iconLink_active]: isActive,
-              })
-            }
-            aria-label="Shopping Bag"
-          >
-            <svg className={scss.menu__icon}>
-              <use href="/icons/icons.svg#shopping-bag"></use>
-            </svg>
-          </NavLink>
+            type="icon"
+            label="Shopping Bag"
+            icon="shopping-bag"
+          />
         </li>
       </ul>
     </nav>
