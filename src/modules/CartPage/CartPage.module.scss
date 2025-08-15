@@ -1,0 +1,104 @@
+// src/modules/CartPage/CartPage.module.scss
+
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.cartPage {
+  padding: 40px 20px;
+  max-width: variables.$container-width; // <--- Виправлено
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.title {
+  @include mixins.title(variables.$fs-xxl, variables.$fw-bold);
+}
+
+.cartContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include mixins.on-desktop {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.cartList {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary {
+  flex: 1;
+  border: 1px solid var(--elements);
+  padding: 24px;
+  border-radius: 8px;
+  background-color: var(--elements);
+  min-width: 280px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.totalPrice {
+  @include mixins.text(variables.$fs-xl, variables.$fw-bold, var(--main-text));
+}
+
+.totalItems {
+  @include mixins.text(variables.$fs-normal, variables.$fw-regular, var(--secondary-text));
+}
+
+.checkoutButton {
+  padding: 12px 16px;
+  background-color: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-weight: variables.$fw-bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--accent-darker);
+  }
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.emptyTitle {
+  @include mixins.title(variables.$fs-xxl, variables.$fw-bold);
+
+  margin-bottom: 20px;
+}
+
+.backButton {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--accent);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: variables.$fw-bold;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--accent-darker);
+  }
+}

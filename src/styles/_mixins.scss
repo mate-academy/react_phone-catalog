@@ -1,0 +1,99 @@
+// src/styles/_mixins.scss
+@use 'sass:map' as map;
+@use 'sass:list' as list;
+@use './variables' as *;
+@use './themes' as *;
+
+
+@mixin apply-theme($theme) {
+  --main-bg: #{map.get($theme, main-bg)};
+  --main-text: #{map.get($theme, main-text)};
+  --secondary-text: #{map.get($theme, secondary-text)};
+  --secondary-text-darker: #{map.get($theme, secondary-text-darker)};
+  --elements: #{map.get($theme, elements)};
+  --hover-bg: #{map.get($theme, hover-bg)};
+  --accent: #{map.get($theme, accent)};
+  --accent-darker: #{map.get($theme, accent-darker)};
+  --white: #{map.get($theme, white)};
+  --black: #{map.get($theme, black)};
+  --icons: #{map.get($theme, icons)};
+  --link-active-color: #{map.get($theme , link-active-color)};
+}
+
+@mixin text-ellipsis {
+ overflow: hidden;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+}
+
+@mixin flex-center {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+@mixin container {
+ max-width: $container-width;
+ padding: 0 $container-padding;
+ margin: 0 auto;
+}
+
+@mixin title($size: $fs-xl, $weight: $fw-bold, $lh: $lh-title) {
+ font-size: $size;
+ font-weight: $weight;
+ line-height: $lh;
+ color: var(--main-text);
+ font-family: $font-main;
+}
+
+@mixin text($size: $fs-normal, $weight: $fw-regular, $color: var(--main-text)) {
+ font-size: $size;
+ font-weight: $weight;
+ color: $color;
+ font-family: $font-main;
+}
+
+@mixin section-title {
+ font-size: $fs-xxl;
+ font-weight: $fw-bold;
+ line-height: $lh-title;
+ font-family: $font-main;
+ color: var(--main-text);
+}
+
+// MEDIA MIXINS
+@mixin on-mobile {
+ @media (max-width: $breakpoint-sm) {
+  @content;
+ }
+}
+
+@mixin on-tablet {
+ @media (min-width: $breakpoint-md) {
+  @content;
+ }
+}
+
+@mixin on-desktop {
+ @media (min-width: $breakpoint-lg) {
+  @content;
+ }
+}
+
+@mixin on-large-desktop {
+ @media (min-width: $breakpoint-xl) {
+  @content;
+ }
+}
+
+@mixin on-small {
+ @media (max-width: $breakpoint-md) {
+  @content;
+ }
+}
+
+@mixin on-wide {
+ @media (min-width: $breakpoint-xxl) {
+   @content;
+ }
+}

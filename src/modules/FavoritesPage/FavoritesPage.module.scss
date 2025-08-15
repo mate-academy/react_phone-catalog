@@ -1,0 +1,59 @@
+// src/modules/FavoritesPage/FavoritesPage.module.scss
+
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.emptyWrapper {
+  width: 100%;
+  min-height: 60vh;
+  background-image: url('/img/product-not-found.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center top;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 60px;
+
+  @include mixins.on-desktop {
+    background-size: auto 300px;
+    padding-bottom: 80px;
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  background-color: var(--elements);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.emptyTitle {
+  font-size: variables.$fs-xl;
+  font-weight: variables.$fw-bold;
+  color: var(--secondary-text);
+
+  @include mixins.on-desktop {
+    font-size: variables.$fs-xxl;
+  }
+}
+
+.backButton {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--main-text);
+  color: var(--white); // Використовуємо CSS-змінну
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: variables.$fw-medium;
+  transition: background-color 0.2s;
+
+  &:hover {
+    // Використовуємо CSS-змінну, щоб уникнути darken()
+    background-color: var(--hover-bg);
+  }
+}

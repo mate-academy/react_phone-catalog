@@ -1,0 +1,97 @@
+@use '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+.slider {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.sliderWindow {
+  display: flex;
+  width: 100%;
+  max-width: 1136px;
+  height: 400px;
+
+  @include mixins.on-tablet {
+    height: 320px;
+  }
+
+  @include mixins.on-mobile {
+    height: 280px;
+  }
+}
+
+.arrow {
+  width: 56px;
+  background-color: var(--elements);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--hover-bg);
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.left {
+  &::before {
+    background-image: url('../../assets/icons/arrow-left.svg');
+  }
+}
+
+.right {
+  &::before {
+    background-image: url('../../assets/icons/arrow-right.svg');
+  }
+}
+
+.imageContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--white);
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  gap: 12px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: var(--elements);
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &.active {
+    background-color: var(--main-text);
+  }
+}

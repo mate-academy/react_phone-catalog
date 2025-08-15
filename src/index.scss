@@ -1,0 +1,34 @@
+@use './styles/mixins';
+@use './styles/themes';
+@use './styles/variables';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  @include mixins.apply-theme(themes.$light-theme);
+
+  &.dark {
+    @include mixins.apply-theme(themes.$dark-theme);
+  }
+}
+
+body {
+  margin: 0;
+  font-family: variables.$font-main, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

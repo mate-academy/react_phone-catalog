@@ -1,0 +1,128 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid variables.$color-elements;
+  padding: 16px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--card-bg);
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.imageWrapper {
+  display: block;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.name {
+  font-size: variables.$fs-normal;
+  font-weight: variables.$fw-semi-bold;
+  color: var(--main-text);
+  margin-bottom: 8px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: variables.$color-primary;
+  }
+}
+
+.priceBlock {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.currentPrice {
+  font-size: variables.$fs-large;
+  font-weight: variables.$fw-bold;
+  color: var(--main-text);
+}
+
+.oldPrice {
+  font-size: variables.$fs-small;
+  text-decoration: line-through;
+  color: var(--secondary-text);
+}
+
+.divider {
+  height: 1px;
+  background-color: variables.$color-elements;
+  margin: 8px 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addToCart {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: variables.$color-primary;
+  color: variables.$color-white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: variables.$fs-small;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: variables.$color-secondary;
+  }
+}
+
+.favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid variables.$color-elements;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--icons);
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: variables.$color-red;
+    border-color: variables.$color-red;
+  }
+}
+
+.activeFavorite {
+  color: variables.$color-red;
+  border-color: variables.$color-red;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
+
+.cardImage img {
+  transition: transform 0.25s ease;
+}
+
+.imageWrapper:hover img {
+  transform: scale(1.1);
+}
+
+.card:hover .cardImage img {
+  transform: scale(1.1);
+}

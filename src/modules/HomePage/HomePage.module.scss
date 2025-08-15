@@ -1,0 +1,41 @@
+@use '../../styles/mixins';
+@import '../../styles/variables';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-bottom: 80px;
+
+  @include mixins.on-mobile {
+    gap: 56px;
+    padding-bottom: 56px;
+  }
+}
+
+.sliderSection {
+  max-width: 1136px;
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 24px;
+
+  @include mixins.on-mobile {
+    padding-inline: 16px;
+  }
+}
+
+.section {
+  max-width: 1136px;
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include mixins.on-mobile {
+    padding-inline: 16px;
+    gap: 16px;
+  }
+}
+

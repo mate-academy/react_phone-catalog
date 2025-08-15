@@ -1,0 +1,28 @@
+@use '../../styles/variables';
+
+.arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: 1px solid var(--elements);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--hover-bg);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

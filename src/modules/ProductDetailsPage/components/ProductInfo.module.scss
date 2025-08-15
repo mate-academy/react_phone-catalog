@@ -1,0 +1,95 @@
+@use '../../../styles/variables';
+@use '../../../styles/mixins';
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.priceBlock {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.priceDiscount {
+  @include mixins.text(variables.$fs-medium, variables.$fw-bold, var(--main-text));
+}
+
+.priceRegular {
+  @include mixins.text(variables.$fs-normal, variables.$fw-medium, var(--secondary-text));
+
+  text-decoration: line-through;
+}
+
+.addToCart {
+  background-color: var(--main-text);
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--secondary-text-darker);
+  }
+}
+
+.id {
+  @include mixins.text(variables.$fs-small, variables.$fw-regular, var(--secondary-text));
+}
+
+.options {
+  margin-top: 16px;
+
+  h4 {
+    margin-bottom: 8px;
+
+    @include mixins.text(variables.$fs-normal, variables.$fw-medium, var(--main-text));
+  }
+}
+
+.colorOptions,
+.capacityOptions {
+  display: flex;
+  gap: 8px;
+}
+
+.color {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--elements);
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  &.selected {
+    border: 2px solid var(--main-text);
+  }
+}
+
+.capacity {
+  padding: 6px 12px;
+  border: 1px solid var(--elements);
+  background-color: white;
+  cursor: pointer;
+
+  @include mixins.text(variables.$fs-small, variables.$fw-medium, var(--main-text));
+
+  &.selected {
+    border-color: var(--main-text);
+    background-color: var(--main-text);
+    color: white;
+  }
+}

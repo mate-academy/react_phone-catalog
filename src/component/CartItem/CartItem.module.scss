@@ -1,0 +1,118 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--elements);
+
+  @include mixins.on-mobile {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 24px;
+}
+
+.imageWrapper {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24px;
+}
+
+.name {
+  flex: 1;
+  font-size: variables.$fs-medium;
+  font-weight: variables.$fw-regular;
+  color: var(--main-text);
+  text-decoration: none;
+  margin-right: 24px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @include mixins.on-mobile {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 24px;
+
+  @include mixins.on-mobile {
+    margin-right: 0;
+  }
+}
+
+.controlButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--elements);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color variables.$transition-main;
+
+  &:hover {
+    border-color: var(--main-text);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+
+.quantity {
+  font-size: variables.$fs-medium;
+  font-weight: variables.$fw-medium;
+  width: 24px;
+  text-align: center;
+}
+
+.price {
+  font-size: variables.$fs-medium;
+  font-weight: variables.$fw-bold;
+  color: var(--main-text);
+  width: 80px;
+  text-align: right;
+}
+
+.controlButton svg {
+  width: 12px;
+  height: 12px;
+  fill: var(--main-text);
+}
+
+.removeButton svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--icons);
+  transition: fill variables.$transition-main;
+}
+
+.removeButton svg:hover {
+  fill: variables.$color-red;
+}
+
+.imageWrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}

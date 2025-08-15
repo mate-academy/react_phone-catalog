@@ -1,0 +1,133 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.header {
+  width: 100%;
+  height: variables.$header-height;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--elements);
+}
+
+.headerContent {
+  max-width: 1136px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-inline: 24px;
+
+  @include mixins.on-mobile {
+    padding-inline: 16px;
+  }
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  @include mixins.on-tablet {
+    gap: 32px;
+  }
+
+  @include mixins.on-mobile {
+    gap: 16px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 24px;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+
+  @include mixins.on-mobile {
+    display: none;
+  }
+}
+
+.spacer {
+  flex: 1;
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.count {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.themeToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--elements);
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--hover-bg);
+  }
+}
+
+.nav a {
+  font-size: variables.$fs-small;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--secondary-text);
+  border-bottom: 3px solid transparent;
+  padding-bottom: 12px;
+  transition: border-color 0.3s;
+}
+
+.rightSide a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-left: 1px solid var(--elements);
+}
+
+.nav a:hover {
+  color: var(--link-active-color);
+  border-color: var(--accent);
+}
+
+.nav a.active {
+  color: var(--link-active-color);
+  border-color: var(--accentt);
+}
+
+.rightSide a:first-child {
+  border-left: none;
+}
