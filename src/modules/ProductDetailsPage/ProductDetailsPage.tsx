@@ -174,7 +174,7 @@ export const ProductDetailsPage = () => {
             {product.images.map((img, i) => (
               <img
                 key={i}
-                src={`/${img}`}
+                src={`${img}`}
                 alt={product.name}
                 onClick={() => setMainImage(img)}
                 className={`${styles.imagesContainer__smallImage} ${mainImage === img ? styles['imagesContainer__smallImage--active'] : ''}`}
