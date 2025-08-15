@@ -13,6 +13,7 @@
   @include respond(tablet) {
     margin-bottom: 64px;
   }
+
   @include respond(desktop) {
     width: 50%;
   }
@@ -51,6 +52,7 @@
 .specifications {
   display: flex;
   flex-direction: column;
+  
   @include respond(desktop) {
     width: 50%;
   }

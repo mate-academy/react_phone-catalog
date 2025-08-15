@@ -1,16 +1,16 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './modules/HomePage';
-import { BurgerMenu } from './shared/BurgerMenu';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { Cart } from './modules/Cart';
 // eslint-disable-next-line max-len
-import { ProductDetailsPage } from './shared/ProductDetailsPage/ProductDetailsPage';
 import { PhoneCatalog } from './modules/Catalogs/PhoneCatalog';
 import { TabletCatalog } from './modules/Catalogs/TabletCatalog';
 import { AccessoryCatalog } from './modules/Catalogs/AccessoryCatalog';
 import ScrollToTop from './shared/ScrollToTop/ScrollToTop';
 import { Favorites } from './modules/Favorites';
+import { BurgerMenu } from './modules/BurgerMenu';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 // const HomeWithFooter = () => (
 //   <>

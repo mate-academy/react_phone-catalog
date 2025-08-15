@@ -4,6 +4,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  
   @include respond (tablet){
     align-items: center;
   }
@@ -16,6 +17,7 @@
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -1%;
+
     @include respond(tablet) {
       font-size: 48px;
       line-height: 56px;
@@ -42,9 +44,11 @@
   width: 100%;
   max-width: 1200px;
   padding-inline: 16px;
+
   @include respond(tablet) {
     padding-inline: 24px;
   }
+
   @include respond(desktop) {
     padding-inline: 32px;
   }
@@ -54,6 +58,7 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
+
   @include respond(tablet) {
     justify-content:start;
     gap: 16px;
@@ -64,9 +69,11 @@
     flex-direction: column;
     width: 50%;
     gap: 4px;
+
     @include respond(tablet) {
       width: 189px;
     }
+
     @include respond(desktop) {
       width: 176px;
     }
@@ -111,6 +118,11 @@
 
   display: flex;
   justify-content: center;
+  gap: 16px;
+
+  @include respond(tablet) {
+    gap:0;
+  }
 
   &_button {
     all: unset;
@@ -181,6 +193,7 @@
   @include respond(tablet) {
     width: 136px;
   }
+
   @include respond(desktop) {
     width: 128px;
   }

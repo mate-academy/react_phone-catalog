@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './MainContent.module.scss';
-import { Swiper } from '../HomePage/Swiper';
-import { NewModels } from '../HomePage/NewModels';
-import { ShopByCategory } from '../HomePage/ShopByCategory';
-import { HotPrices } from '../HomePage/HotPrices';
-import { Footer } from '../Footer';
-import { NavBar } from '../../shared/NavBar';
+import { NavBar } from '../../../shared/NavBar';
+import { Swiper } from '../Swiper';
+import { NewModels } from '../NewModels';
+import { ShopByCategory } from '../ShopByCategory';
+import { HotPrices } from '../HotPrices';
+import { Footer } from '../../Footer';
 
 export const MainContent: React.FC = () => {
   return (

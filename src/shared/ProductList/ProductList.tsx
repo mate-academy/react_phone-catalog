@@ -3,7 +3,7 @@ import styles from './ProductList.module.scss';
 import { ProductCard } from '../ProductCard';
 import { useLocation } from 'react-router-dom';
 import { ProductDemo } from '../../types/ProductDemo';
-import { CartItem } from '../CartItem';
+import { CartItem } from '../../modules/Cart/CartItem';
 
 type ProductListProps = {
   data: ProductDemo[];

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { ProductDemo } from '../../types/ProductDemo';
 import styles from './CartItem.module.scss';
-import { useMyContext } from '../../Context/ProductContexts';
 import { Link } from 'react-router-dom';
+import { ProductDemo } from '../../../types/ProductDemo';
+import { useMyContext } from '../../../Context/ProductContexts';
 
 type OrderCardProps = {
   product: ProductDemo;

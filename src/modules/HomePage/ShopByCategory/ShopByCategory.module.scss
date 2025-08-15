@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   margin-block: 56px;
+
   @include respond(tablet) {
     margin-block: 64px;
     justify-content: start;
@@ -14,6 +15,7 @@
     height: 327px;
     width: 100%;
   }
+
   @include respond(desktop) {
     height: 508px;
     margin-block: 80px;
@@ -22,32 +24,6 @@
 
 .shop_title {
   margin-bottom: 24px;
-
-}
-
-.sections {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-
-  @include respond(tablet) {
-    flex-direction: row;
-    justify-content: start;
-    width: 100%;
-    height: 327px;
-    gap: 16px;
-  }
-  @include respond(desktop) {
-    height: 508px;
-  }
-
-  &_good {
-    display: flex;
-    flex-direction: column;
-    &:hover .good_image {
-      transform: scale(1.1);
-    }
-  }
 }
 
 .good {
@@ -93,10 +69,12 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+
     @include respond(tablet) {
       width: 187px;
       height: 187px;
     }
+
     @include respond(desktop) {
       width: 368px;
       height: 368px;
@@ -110,3 +88,31 @@
     transition: transform 0.3s ease;
   }
 }
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include respond(tablet) {
+    flex-direction: row;
+    justify-content: start;
+    width: 100%;
+    height: 327px;
+    gap: 16px;
+  }
+
+  @include respond(desktop) {
+    height: 508px;
+  }
+
+  &_good {
+    display: flex;
+    flex-direction: column;
+    &:hover .good_image {
+      transform: scale(1.1);
+    }
+  }
+}
+
+

@@ -5,6 +5,7 @@
   justify-content: space-between;
   border-top: 1px solid #3b3e4a;
   margin-top: auto;
+  
   @include respond(tablet) {
     flex: 1;
     justify-content: end;
@@ -17,10 +18,12 @@
 
     width: 50%;
     height: 64px;
+
     @include respond(tablet) {
       width: 48px;
       height: 48px;
     }
+
     @include respond(desktop) {
       width: 64px;
       height: 64px;
@@ -38,6 +41,7 @@
     }
   }
 }
+
 .miniImage {
   &_container {
     position: relative;

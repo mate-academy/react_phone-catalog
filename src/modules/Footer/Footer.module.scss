@@ -26,6 +26,7 @@
       align-items: center;
       gap: 50px;
     }
+    
     @include respond(desktop) {
       gap: 100px;
     }
@@ -64,6 +65,28 @@
       background-color: #0f1121;
     }
   }
+
+  &_theme {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 32px;
+    background-color: #323542;
+    transition:
+      background-color 0.3s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+    &:disabled {
+      border: 1px solid #3b3e4a;
+      background-color: #0f1121;
+    }
+  }
 }
 
 .wrapper {
@@ -82,6 +105,7 @@
     align-items: center;
     padding-inline: 32px;
   }
+
   @include respond(desktop) {
     flex-direction: row;
     justify-content: space-between;

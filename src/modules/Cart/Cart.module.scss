@@ -13,9 +13,11 @@
   width: 100%;
   max-width: 1200px;
   padding: 24px 16px 56px;
+  
   @include respond(tablet) {
     padding: 40px 24px 64px;
   }
+
   @include respond(desktop) {
     padding: 40px 32px 80px;
   }
@@ -29,6 +31,7 @@
       align-items: center;
       gap: 16px;
     }
+
     @include respond(desktop) {
       flex-direction: row;
       justify-content: center;
@@ -60,10 +63,12 @@
   max-height: 190px;
 
   border: 1px solid #3b3e4a;
+
   @include respond(tablet) {
     width: 100%;
     flex: 1;
   }
+
   @include respond(desktop) {
     max-width: 368px;
     max-height: 206px;
@@ -104,7 +109,7 @@
     height: 48px;
     background-color: #905bff;
 
-    color: #ffffff;
+    color: #fff;
     font-weight: 700;
     font-size: 14px;
     line-height: 21px;
@@ -175,10 +180,12 @@
   &_container summary:focus:before {
     transform: translateX(0);
   }
+
   /*  при открытом окне переход на весь экран */
   &_container details[open] summary {
     display: none;
   }
+
   /* затемняет страницу */
   &_container details .cmc {
     display: flex;
@@ -196,6 +203,7 @@
     animation: bg 0.5s ease;
     background: rgba(31, 37, 52, 0.7);
   }
+
   /* модальное окно */
   &_container details .cmt {
     font-size: 16px;
@@ -250,6 +258,7 @@
     transform: scale(1);
   }
 }
+
 @keyframes move {
   0% {
     right: -80px;
@@ -258,6 +267,7 @@
     right: 20px;
   }
 }
+
 @keyframes bg {
   0% {
     background: rgba(15, 17, 33, 0);

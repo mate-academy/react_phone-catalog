@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useParams } from 'react-router-dom';
 import { Footer } from '../../modules/Footer';
-import { NavBar } from '../NavBar';
 import styles from './ProductDetailsPage.module.scss';
 import { useMyContext } from '../../Context/ProductContexts';
 import { useEffect, useState } from 'react';
@@ -9,11 +8,13 @@ import { ProductFullInfo } from '../../types/ProductFullInfo';
 import { ProductDemo } from '../../types/ProductDemo';
 import { BurgerMenu } from '../BurgerMenu';
 import { client } from '../../fetch/fetchGoods';
-import { Loader } from '../Loader';
 import { useMediaQuery } from '../../Services/UseMediaQuery';
 import { Action } from '../../types/Action';
 import { breakpoints } from '../../Services/MediaBreakpoints';
 import { DetailsContent } from './DetailsContent';
+import { NavBar } from '../../shared/NavBar';
+import { Loader } from '../../shared/Loader';
+import { ErrorMessage } from '../../shared/ErrorMessage';
 
 export const ProductDetailsPage: React.FC = () => {
   const {
@@ -146,7 +147,7 @@ export const ProductDetailsPage: React.FC = () => {
       <NavBar />
       {isLoading ? (
         <Loader />
-      ) : (
+      ) : chosedItem ? (
         <DetailsContent
           chosedItem={chosedItem}
           selectedImage={selectedImage}
@@ -164,6 +165,8 @@ export const ProductDetailsPage: React.FC = () => {
           suggestedList={suggestedList}
           isTablet={isTablet}
         />
+      ) : (
+        <ErrorMessage notFound={true} />
       )}
       <div className={styles.underline}></div>
       <Footer />

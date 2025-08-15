@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react';
 import styles from './ProductPage.module.scss';
 import { ProductDemo } from '../../types/ProductDemo';
 import { useSearchParams } from 'react-router-dom';
-import { Footer } from '../../modules/Footer';
-import { NavBar } from '../NavBar';
+import { Footer } from '../Footer';
+import { NavBar } from '../../shared/NavBar';
 import { client } from '../../fetch/fetchGoods';
-import { ProductList } from '../ProductList';
+import { ProductList } from '../../shared/ProductList';
 import { useMyContext } from '../../Context/ProductContexts';
 import { BurgerMenu } from '../BurgerMenu';
-import { Loader } from '../Loader';
-import { ErrorMessage } from '../ErrorMessage';
-import { Direction } from '../Direction/Direction';
+import { Loader } from '../../shared/Loader';
+import { ErrorMessage } from '../../shared/ErrorMessage';
+import { Direction } from '../../shared/Direction/Direction';
+import { useMediaQuery } from '../../Services/UseMediaQuery';
+import { breakpoints } from '../../Services/MediaBreakpoints';
 
 type ProductPageProps = {
   typeOFProduct: 'phones' | 'tablets' | 'accessories';
@@ -24,11 +26,13 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
     useMyContext();
 
   const filterBy = searchParams.get('filterBy') || 'Newest';
-  const itemsPerPage = Math.max(1, Number(searchParams.get('perPage')) || 16);
+  const itemsPerPage = Math.max(
+    1,
+    Number(searchParams.get('perPage')) || filteredProducts.length,
+  );
   const currentPage = Number(searchParams.get('page')) || 1;
 
   const totalPages = Math.ceil(filteredList.length / itemsPerPage);
-  const pageArray = Array.from({ length: totalPages }, (_, i) => i + 1);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentItems = filteredList.slice(
     startIndex,
@@ -54,6 +58,12 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
           .sort((a, b) => b.year - a.year);
 
         setFilteredProducts(filtered);
+
+        const params = new URLSearchParams();
+
+        params.set('page', '1');
+        params.set('perPage', 'all');
+        setSearchParams(params);
       } catch {
         setIsError(true);
       } finally {
@@ -127,10 +137,16 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
     });
   };
 
+  const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`);
+
   return (
     <>
       {isError ? (
-        <ErrorMessage />
+        <>
+          <NavBar />
+          <ErrorMessage notResponding={true} />
+          <Footer />
+        </>
       ) : isMenuOpen ? (
         <BurgerMenu />
       ) : (
@@ -147,15 +163,17 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
                     ? 'Tablets'
                     : 'Accessories'}
               </h1>
-              <span className={styles.page_quantity}>
-                {filteredProducts.length
-                  ? `${filteredProducts.length} models`
-                  : `There are no ${typeOFProduct} yet`}
-              </span>
+              {!isLoading && (
+                <span className={styles.page_quantity}>
+                  {filteredProducts.length
+                    ? `${filteredProducts.length} models`
+                    : `There are no ${typeOFProduct} yet`}
+                </span>
+              )}
 
               {isLoading ? (
                 <Loader />
-              ) : (
+              ) : filteredProducts.length > 0 ? (
                 <>
                   <div className={styles.sort}>
                     <div className={styles.sort_type}>
@@ -203,7 +221,93 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
                     <ProductList data={currentItems} productPage={true} />
                   </div>
 
-                  {filteredProducts.length !== itemsPerPage && (
+                  {/* pagination */}
+                  {isTablet ? (
+                    // pagination for tablet and desktop
+                    filteredProducts.length !== itemsPerPage && (
+                      <div className={styles.pagination}>
+                        <button
+                          disabled={currentPage === 1}
+                          className={`${styles.pagination_button} ${styles.button_left}`}
+                          onClick={() => goToPage(currentPage - 1)}
+                        >
+                          <img
+                            src={'img/Buttons/Icons/white left.svg'}
+                            alt="left"
+                          />
+                        </button>
+
+                        <div className={styles.pages}>
+                          <button
+                            className={
+                              currentPage === 1
+                                ? styles.pages_active
+                                : styles.pages_page
+                            }
+                            onClick={() => goToPage(1)}
+                          >
+                            1
+                          </button>
+
+                          {currentPage - 1 > 2 && (
+                            <button className={styles.pages_page} disabled>
+                              ...
+                            </button>
+                          )}
+
+                          {Array.from({ length: totalPages }, (_, i) => i + 1)
+                            .filter(
+                              page =>
+                                page > 1 &&
+                                page < totalPages &&
+                                Math.abs(page - currentPage) <= 1,
+                            )
+                            .map(page => (
+                              <button
+                                key={page}
+                                className={
+                                  currentPage === page
+                                    ? styles.pages_active
+                                    : styles.pages_page
+                                }
+                                onClick={() => goToPage(page)}
+                              >
+                                {page}
+                              </button>
+                            ))}
+
+                          {totalPages > 4 && (
+                            <>
+                              <button className={styles.pages_page} disabled>
+                                ...
+                              </button>
+                              <button
+                                className={
+                                  currentPage === totalPages
+                                    ? styles.pages_active
+                                    : styles.pages_page
+                                }
+                                onClick={() => goToPage(totalPages)}
+                              >
+                                {totalPages}
+                              </button>
+                            </>
+                          )}
+                        </div>
+
+                        <button
+                          disabled={currentPage === totalPages}
+                          className={`${styles.pagination_button} ${styles.button_right}`}
+                          onClick={() => goToPage(currentPage + 1)}
+                        >
+                          <img
+                            src={'img/Buttons/Icons/white right.svg'}
+                            alt="right"
+                          />
+                        </button>
+                      </div>
+                    )
+                  ) : (
                     <div className={styles.pagination}>
                       <button
                         disabled={currentPage === 1}
@@ -215,42 +319,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
                           alt="left"
                         />
                       </button>
-
-                      <div className={styles.pages}>
-                        {pageArray.map(page =>
-                          page <= 3 ? (
-                            <button
-                              key={page}
-                              className={
-                                currentPage === +page
-                                  ? styles.pages_active
-                                  : styles.pages_page
-                              }
-                              onClick={() => goToPage(page)}
-                            >
-                              {page}
-                            </button>
-                          ) : null,
-                        )}
-
-                        {totalPages > 4 && (
-                          <>
-                            <button className={styles.pages_page} disabled>
-                              ...
-                            </button>
-                            <button
-                              className={
-                                currentPage === totalPages
-                                  ? styles.pages_active
-                                  : styles.pages_page
-                              }
-                              onClick={() => goToPage(totalPages)}
-                            >
-                              {totalPages}
-                            </button>
-                          </>
-                        )}
-                      </div>
 
                       <button
                         disabled={currentPage === totalPages}
@@ -264,7 +332,10 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
                       </button>
                     </div>
                   )}
+                  {/* end of pagination */}
                 </>
+              ) : (
+                <div></div>
               )}
             </div>
           </div>

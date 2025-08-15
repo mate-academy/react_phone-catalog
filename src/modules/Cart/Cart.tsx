@@ -4,10 +4,10 @@ import { NavBar } from '../../shared/NavBar';
 import { ProductList } from '../../shared/ProductList';
 import { Footer } from '../Footer';
 import styles from './Cart.module.scss';
-import { BurgerMenu } from '../../shared/BurgerMenu';
 import { ProductDemo } from '../../types/ProductDemo';
 import { Loader } from '../../shared/Loader';
 import { Back } from '../../shared/Back';
+import { BurgerMenu } from '../BurgerMenu';
 
 export const Cart: React.FC = () => {
   const { products, isMenuOpen, addIsPressed, isLoading } = useMyContext();
@@ -104,8 +104,8 @@ export const Cart: React.FC = () => {
                   <div className={styles.cmc}>
                     <div className={styles.cmt}>
                       <p>
-                        Checkout is not implemented yet. Do you want to clear the
-                        Cart?
+                        Checkout is not implemented yet. Do you want to clear
+                        the Cart?
                       </p>
                       <div className={styles.submit_buttons}>
                         <button

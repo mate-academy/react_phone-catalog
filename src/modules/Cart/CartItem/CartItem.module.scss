@@ -1,8 +1,9 @@
-@use '../../Mixins/Mixins.scss' as *;
+@use '../../../Mixins/Mixins.scss' as *;
 
 .embla__slide {
   flex: 0 0 auto;
   max-width: 592px;
+  
   @include respond(desktop) {
     max-width: 752px;
   }

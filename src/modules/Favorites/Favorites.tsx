@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Favorites .module.scss';
 import { useMyContext } from '../../Context/ProductContexts';
-import { Footer } from '../../modules/Footer';
+import { Footer } from '../Footer';
 import { ProductDemo } from '../../types/ProductDemo';
-import { BurgerMenu } from '../../shared/BurgerMenu';
 import { NavBar } from '../../shared/NavBar';
 import { Direction } from '../../shared/Direction/Direction';
 import { ProductList } from '../../shared/ProductList';
+import { BurgerMenu } from '../BurgerMenu';
 
 export const Favorites: React.FC = () => {
   const { isMenuOpen, products, heartIsPressed } = useMyContext();

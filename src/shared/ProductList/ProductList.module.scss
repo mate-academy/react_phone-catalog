@@ -16,9 +16,11 @@
   &__container {
     display: flex;
     gap: 16px;
+    
     @include respond(tablet) {
       gap: 24px;
     }
+
     @include respond(desktop) {
       gap: 32px;
     }
@@ -33,11 +35,15 @@
   }
 
   &_container {
-    max-width: 864px;
+    max-width: 304px;
     display: grid;
     gap: 40px 16px;
     grid-template-columns: repeat(auto-fit, 272px);
     justify-content: start;
+
+    @include respond(tablet) {
+      max-width: 864px;
+    }
 
     @include respond(desktop){
       max-width: 1152px;

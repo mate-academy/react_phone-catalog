@@ -1,4 +1,4 @@
-@use '../../Mixins/Mixins.scss' as *;
+@use '../../../Mixins/Mixins.scss' as *;
 
 .container{
   display: flex;
@@ -27,6 +27,7 @@
       font-size: 48px;
       line-height: 56px;
     }
+    
     @include respond(desktop) {
       margin-inline: 32px;
       margin-block: 56px;
@@ -43,6 +44,7 @@
     margin-inline: 24px;
     margin-top: 64px;
   }
+
   @include respond(desktop){
     margin-inline: 32px;
     margin-block: 80px;

@@ -1,9 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
 import { useMyContext } from '../../Context/ProductContexts';
-import { NavBar } from '../NavBar';
 import { useEffect, useState } from 'react';
-import { SavedGoods } from '../SavedGoods';
+import { NavBar } from '../../shared/NavBar';
+import { SavedGoods } from '../../shared/SavedGoods';
 
 export const BurgerMenu: React.FC = () => {
   const location = useLocation();

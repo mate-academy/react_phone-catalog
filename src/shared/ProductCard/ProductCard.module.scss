@@ -1,4 +1,5 @@
 @use '../../Mixins/Mixins.scss' as *;
+
 .embla__slide {
   flex: 0 0 auto;
 }
@@ -16,6 +17,7 @@
   justify-content: space-between;
   padding: 32px;
   gap: 8px;
+
   @include respond(desktop) {
     width: 272px;
     height: 506px;
@@ -29,13 +31,19 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  transition: transform 0.3s ease;
+
   @include respond(tablet) {
     max-width: 173px;
     max-height: 202px;
   }
+
   @include respond(desktop) {
     max-width: 208px;
     max-height: 196px;
+  }
+  &:hover {
+    transform: scale(1.1);
   }
 
   &_photo {
@@ -135,7 +143,7 @@
   justify-content: center;
   align-items: center;
   background-color: #905bff;
-  color: #ffffff;
+  color: #fff;
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;

@@ -1,8 +1,8 @@
 import { HotPrices } from '../../../modules/HomePage/HotPrices';
+import { Direction } from '../../../shared/Direction/Direction';
 import { Action } from '../../../types/Action';
 import { ProductDemo } from '../../../types/ProductDemo';
 import { ProductFullInfo } from '../../../types/ProductFullInfo';
-import { Direction } from '../../Direction/Direction';
 import { ConfirmOrder } from './ConfirmOrder/ConfirmOrder';
 import { DescriptionAndSpecifications } from './DescriptionAndSpecifications';
 import styles from './DetailsContent.module.scss';
