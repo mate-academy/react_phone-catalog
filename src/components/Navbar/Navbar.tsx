@@ -67,7 +67,7 @@ export const Navbar: React.FC = () => {
               `${isActive ? styles.activeLink : ''} ${styles.link}`
             }
           >
-            <img className={styles.img} src="./img/icons/Heart.svg" alt="" />
+            <img className={styles.img} src="/img/icons/Heart.svg" alt="" />
 
             {favouriteProductsIds.length > 0 && (
               <div className={styles.counter}>
@@ -82,7 +82,7 @@ export const Navbar: React.FC = () => {
               `${isActive ? styles.activeLink : ''} ${styles.link}`
             }
           >
-            <img className={styles.img} src="./img/icons/Cart.svg" alt="" />
+            <img className={styles.img} src="/img/icons/Cart.svg" alt="" />
 
             {cartProductsIds.length > 0 && (
               <div className={styles.counter}>

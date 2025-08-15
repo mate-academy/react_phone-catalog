@@ -10,7 +10,7 @@ export const CartPage: React.FC = () => {
   function countTotal() {
     let sum = 0;
     for (const id of cartProductsIds) {
-      const product = products.find(product => product.id === id);
+      const product = products.find(product => product.itemId === id);
       if (product) {
         sum += product.price;
       }
@@ -69,7 +69,7 @@ export const CartPage: React.FC = () => {
                 <CartProduct
                   key={id}
                   product={
-                    products.find(product => product.id === id)
+                    products.find(product => product.itemId === id)
                   }
                   onProductCountChange={handleProductCountChange}
                 />

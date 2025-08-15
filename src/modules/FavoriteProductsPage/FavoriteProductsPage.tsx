@@ -25,7 +25,7 @@ export const FavoriteProductsPage: React.FC = () => {
       <div className={styles.cards}>
         {favouriteProductsIds.map((id) => (
           <Card key={id} card={
-            products.find((product) => product.id === id)
+            products.find((product) => product.itemId === id)
           } />
         ))}
       </div>

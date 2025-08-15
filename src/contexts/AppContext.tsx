@@ -18,16 +18,16 @@ import { Card } from '../types/Card';
 import { getProducts } from '../modules/shared/services/productService';
 
 type AppContextType = {
-  favouriteProductsIds: number[];
-  cartProductsIds: number[];
+  favouriteProductsIds: string[];
+  cartProductsIds: string[];
   isMenuOpen: boolean;
   products: Card[];
   setProducts: (products: Card[]) => void;
   setIsMenuOpen: (isOpen: boolean) => void;
-  setFavouriteProductsIds: (ids: number[]) => void;
-  setCartProductsIds: (ids: number[]) => void;
-  toggleFavouriteCard: (cardId: number) => void;
-  toggleAddToCart: (cardId: number) => void;
+  setFavouriteProductsIds: (ids: string[]) => void;
+  setCartProductsIds: (ids: string[]) => void;
+  toggleFavouriteCard: (cardId: string) => void;
+  toggleAddToCart: (cardId: string) => void;
   refCardWidth: React.MutableRefObject<HTMLDivElement | null>;
   refSliderWidth: React.MutableRefObject<HTMLDivElement | null>;
   searchParams: URLSearchParams;
@@ -60,10 +60,10 @@ type Props = {
 };
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
-  const [favouriteProductsIds, setFavouriteProductsIds] = useState<number[]>(
+  const [favouriteProductsIds, setFavouriteProductsIds] = useState<string[]>(
     () => getFavouriteProducts(),
   );
-  const [cartProductsIds, setCartProductsIds] = useState<number[]>(() =>
+  const [cartProductsIds, setCartProductsIds] = useState<string[]>(() =>
     getCartProducts(),
   );
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -87,10 +87,10 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       });
   }, []);
 
-  function toggleFavouriteCard(cardId: number) {
+  function toggleFavouriteCard(cardId: string) {
     if (favouriteProductsIds.includes(cardId)) {
-      const updatedFavourites: number[] = favouriteProductsIds.filter(
-        (id: number) => id !== cardId,
+      const updatedFavourites: string[] = favouriteProductsIds.filter(
+        (id: string) => id !== cardId,
       );
       setFavouriteProductsIds(updatedFavourites);
       return;
@@ -99,9 +99,9 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     setFavouriteProductsIds([...favouriteProductsIds, cardId]);
   }
 
-  function toggleAddToCart(cardId: number) {
+  function toggleAddToCart(cardId: string) {
     if (cartProductsIds.includes(cardId)) {
-      const updatedCart = cartProductsIds.filter((id: number) => id !== cardId);
+      const updatedCart = cartProductsIds.filter((id: string) => id !== cardId);
       setCartProductsIds(updatedCart);
       return;
     }

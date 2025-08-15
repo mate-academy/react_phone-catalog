@@ -23,7 +23,7 @@ export const Card: React.FC<Props> = ({ card }) => {
     event.preventDefault();
     event.stopPropagation();
     if (card) {
-      toggleAddToCart(card.id);
+      toggleAddToCart(card.itemId);
     }
   }
 
@@ -31,7 +31,7 @@ export const Card: React.FC<Props> = ({ card }) => {
     event.preventDefault();
     event.stopPropagation();
     if (card) {
-      toggleFavouriteCard(card.id);
+      toggleFavouriteCard(card.itemId);
     }
   }
 
@@ -76,11 +76,11 @@ export const Card: React.FC<Props> = ({ card }) => {
 
         <div className={styles.buttons}>
           <AddToCart
-            isActive={cartProductsIds.includes(card.id)}
+            isActive={cartProductsIds.includes(card.itemId)}
             onClick={handleAddToCartClick}
           />
           <LikeButton
-            isSelected={favouriteProductsIds.includes(card.id)}
+            isSelected={favouriteProductsIds.includes(card.itemId)}
             onClick={handleAddToFavouriteClick}
           />
         </div>

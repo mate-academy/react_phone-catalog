@@ -16,9 +16,11 @@ import { getFormattedCapacity } from '../shared/utils/getFormattedCapacity';
 import { ProductDetails } from '../../types/ProductDetails';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { getColor } from '../shared/utils/getColor';
+import { useAppContext } from '../../contexts/AppContext';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
+  const { cartProductsIds, favouriteProductsIds, toggleFavouriteCard, toggleAddToCart } = useAppContext();
 
   async function finder() {
     const item = await findProduct('itemId', pathname.split('/')[2]);
@@ -154,9 +156,15 @@ export const ProductDetailsPage: React.FC = () => {
                   </h3>
 
                   <div className={styles.buttons}>
-                    <AddToCart isActive={false} onClick={() => { }} />
-                    <LikeButton isSelected={false} onClick={() => { }} />
-                  </div>
+                    <AddToCart
+                      isActive={cartProductsIds.includes(product.id)}
+                      onClick={() => toggleAddToCart(product.id)}
+                    />
+                    <LikeButton
+                      isSelected={favouriteProductsIds.includes(product.id)}
+                      onClick={() => toggleFavouriteCard(product.id)}
+                    />
+                    </div>
                 </div>
 
                 <div className={styles.info}>
