@@ -3,6 +3,7 @@
 .menu {
   position: fixed;
   inset: 49px 0 0;
+  z-index: 900;
 
   overflow-y: auto;
   transform: translateY(-8px); opacity:0; visibility:hidden; pointer-events:none;

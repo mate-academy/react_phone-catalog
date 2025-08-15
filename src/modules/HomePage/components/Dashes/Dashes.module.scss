@@ -1,0 +1,21 @@
+.dashes{
+  &__container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+  }
+
+  &__icon {
+    height: 2.4rem;
+    width: 2.4rem;
+
+    &:not(:last-child) {
+      margin-right: 0.4rem;
+    }
+  }
+}
