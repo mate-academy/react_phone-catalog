@@ -5,6 +5,8 @@ import { Product } from '../../utils/Product';
 import './ProductDetailsPage.scss';
 import { ColorPicker } from '../../components/ColorPicker';
 import { CapacityPicker } from '../../components/CapacityPicker';
+import { CharacteristicsTable } from '../../components/CharactiristicsTable';
+import { Buttons } from '../../components/Buttons';
 
 type Props = {};
 
@@ -99,37 +101,42 @@ export const ProductDetailsPage: React.FC<Props> = () => {
             </div>
           )}
 
-          <div className="details__button">
-            <button className="details__button--add">Add to cart</button>
-            <button className="details__button--favourite">
-              <img
-                src="/img/icons/icon-favourites.svg"
-                alt="favourites icon"
-                className="details__button-icon"
-              />
-            </button>
-          </div>
+          <Buttons />
 
-          <div className="details__details">
-            <div className="details__details-row">
-              <div className="details__details-name">Screen</div>
-              <div className="details__details-value">{product?.screen}</div>
+          <CharacteristicsTable
+            characteristics={[
+              { name: 'Screen', value: product?.screen },
+              { name: 'Resolution', value: product?.resolution },
+              { name: 'Processor', value: product?.processor },
+              { name: 'RAM', value: product?.ram },
+            ]}
+          />
+        </div>
+      </div>
+      <div className="details__description">
+        <div className="details__description__first-col">
+        <h2 className="details__description__title">About</h2>
+          {product?.description?.map(item => (
+            <div key={item.title} className='details__description--info'>
+              <h3 className="details__description--title">{item.title}</h3>
+              <p className="details__description--text">{item.text}</p>
             </div>
-            <div className="details__details-row">
-              <div className="details__details-name">Resolution</div>
-              <div className="details__details-value">
-                {product?.resolution}
-              </div>
-            </div>
-            <div className="details__details-row">
-              <div className="details__details-name">Processor</div>
-              <div className="details__details-value">{product?.processor}</div>
-            </div>
-            <div className="details__details-row">
-              <div className="details__details-name">RAM</div>
-              <div className="details__details-value">{product?.ram}</div>
-            </div>
-          </div>
+          ))}
+        </div>
+        <div className="details__description__second-col">
+        <h2 className="details__description__title">Tech specs</h2>
+          <CharacteristicsTable
+            characteristics={[
+              { name: 'Screen', value: product?.screen },
+              { name: 'Resolution', value: product?.resolution },
+              { name: 'Processor', value: product?.processor },
+              { name: 'RAM', value: product?.ram },
+              { name: 'Built in memory', value: product?.capacity },
+              { name: 'Camera', value: product?.camera },
+              { name: 'Zoom', value: product?.zoom },
+              // { name: 'Cell', value: product?.cell },
+            ]}
+          />
         </div>
       </div>
     </div>

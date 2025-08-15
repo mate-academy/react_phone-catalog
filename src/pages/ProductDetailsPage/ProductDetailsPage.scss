@@ -103,58 +103,82 @@
     }
   }
 
-  &__button {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 8px;
+  // &__button {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-between;
+  //   gap: 8px;
 
-    padding-top: 8px;
+  //   padding-top: 8px;
 
-    &--add {
-      padding-inline: 39.5px;
-      padding-block: 13.5px;
-      font-family: inherit;
-      width: 363px;
+  //   &--add {
+  //     padding-inline: 39.5px;
+  //     padding-block: 13.5px;
+  //     font-family: inherit;
+  //     width: 363px;
 
-      background-color: #905bff;
-      border: none;
+  //     background-color: #905bff;
+  //     border: none;
 
-      color: #f1f2f9;
-    }
+  //     color: #f1f2f9;
+  //   }
 
-    &--favourite {
-      padding: 16px;
-      background-color: #323542;
-      border: none;
+  //   &--favourite {
+  //     padding: 16px;
+  //     background-color: #323542;
+  //     border: none;
 
-      font-family: inherit;
-    }
+  //     font-family: inherit;
+  //   }
 
-    &-icon {
-      width: 16px;
-      height: 16px;
-      display: block;
-    }
+  //   &-icon {
+  //     width: 16px;
+  //     height: 16px;
+  //     display: block;
+  //   }
+  // }
+
+  &__description {
+  display: flex;
+  gap: 64px;
+
+  &__title {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: #F1F2F9;
+    padding-top: 80px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3B3E4A;
   }
 
-  &__details {
-    padding-top: 32px;
+  &--info {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-
-    &-row {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-      font-weight: 700;
-      font-size: 12px;
-    }
-
-    &-name {
-      color: #75767f;
-    }
+    gap: 16px;
   }
+
+  &--title {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  &--text {
+    font-weight: 600;
+    font-size: 14px;
+    color: #89939A;
+    line-height: 21px;
+  }
+
+  &__first-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__second-col {
+    flex: 1;
+  }
+}
 }

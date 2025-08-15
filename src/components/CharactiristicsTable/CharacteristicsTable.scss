@@ -1,0 +1,19 @@
+.details {
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  &__name {
+    color: #75767f;
+  }
+}

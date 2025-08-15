@@ -1,0 +1,1 @@
+export { CharacteristicsTable } from './CharacteristicsTable';
