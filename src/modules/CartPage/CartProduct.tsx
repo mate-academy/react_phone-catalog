@@ -15,7 +15,10 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
     useAppContext();
   const [counterValue, setCounterValue] = useState<number>(1);
 
-  function handleCounterChange(action: '+' | '-') {
+  function handleCounterChange(event: React.MouseEvent<HTMLButtonElement>, action: '+' | '-') {
+    event.stopPropagation();
+    event.preventDefault();
+
     if (action === '+') {
       onProductCountChange(product!.price, '+');
       setCounterValue(prev => prev + 1);
@@ -33,6 +36,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
   function handleDeleteProductFromCart(event: React.MouseEvent<HTMLButtonElement>, id: string) {
     event.stopPropagation();
     event.preventDefault();
+
     const updatedCart = cartProductsIds.filter(
       (productId: string) => productId !== id,
     );
@@ -68,7 +72,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
               ${styles.counterButton} 
               ${counterValue === 1 && styles.disabled}
             `}
-            onClick={() => handleCounterChange('-')}
+            onClick={(event) => handleCounterChange(event, '-')}
           >
             <img
               className={styles.img}
@@ -81,7 +85,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
 
           <button
             className={styles.counterButton}
-            onClick={() => handleCounterChange('+')}
+            onClick={(event) => handleCounterChange(event, '+')}
           >
             <img className={styles.img} src="/img/icons/Plus.svg" alt="Plus" />
           </button>
