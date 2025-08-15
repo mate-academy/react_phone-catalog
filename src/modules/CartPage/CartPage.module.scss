@@ -96,13 +96,13 @@
 }
 
 .emptyCart {
-  width: 100vw;
-  height: 100vw;
-  max-width: 100vw;
-  max-height: 100vh;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  overflow: hidden;
+  max-height: 65vh;
+
+  @include on-tablet {
+    max-height: 76vh;
+  }
+
+  @include on-desktop {
+    max-height: 74vh;
+  }
 }
