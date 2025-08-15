@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Menu } from '../Menu/Menu';
 import scss from './Header.module.scss';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const onClose = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
 
   return (
     <header className={scss.header}>
@@ -27,7 +31,7 @@ export const Header = () => {
         </button>
       </div>
 
-      <Menu isMenuOpen={isMenuOpen} />
+      <Menu isMenuOpen={isMenuOpen} onClose={onClose} />
     </header>
   );
 };

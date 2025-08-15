@@ -1,12 +1,21 @@
 import scss from './Menu.module.scss';
 import { NavLinkMenu } from '../NavLinkMenu/NavLinkMenu';
 import classNames from 'classnames';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 interface Props {
   isMenuOpen: boolean;
+  onClose: () => void;
 }
 
-export const Menu: React.FC<Props> = ({ isMenuOpen }) => {
+export const Menu: React.FC<Props> = ({ isMenuOpen, onClose }) => {
+  const pathname = useLocation();
+
+  useEffect(() => {
+    onClose();
+  }, [pathname, onClose]);
+
   return (
     <nav
       id="mobile-menu"
