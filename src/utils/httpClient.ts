@@ -1,4 +1,4 @@
-const BASE_URL = '/api';
+const BASE_URL = './api';
 
 export async function getData<T>(url: string): Promise<T> {
   const response = await fetch(`${BASE_URL}${url}`);
