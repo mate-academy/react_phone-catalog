@@ -1,7 +1,5 @@
 import React from 'react';
-import '@/styles/icon.scss';
-import '@/styles/button.scss';
-import '@/styles/typography.scss';
+import '@/styles/main.scss';
 import styles from './CartItem.module.scss';
 import classNames from 'classnames';
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
-import '@/styles/button.scss';
-import '@/styles/typography.scss';
+import '@/styles/main.scss';
 import classNames from 'classnames';
 
 export const ProductCard: React.FC = () => {

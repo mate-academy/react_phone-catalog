@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.scss';
-import '@/styles/icon.scss';
-import '@/styles/button.scss';
-import '@/styles/typography.scss';
+import '@/styles/main.scss';
 import classNames from 'classnames';
 
 export const Footer: React.FC = () => {

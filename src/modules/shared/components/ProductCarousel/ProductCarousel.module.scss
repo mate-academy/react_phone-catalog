@@ -1,0 +1,57 @@
+@import '@/styles/main';
+
+.product_carousel {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-inline: 0;
+
+    &--buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__products {
+    /* Mobile & Tablet: Break out of grid container bounds */
+    margin-inline: -16px;
+    padding-inline: 16px;
+
+    /* Enable horizontal scrolling */
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    @include on-tablet {
+      /* Tablet: Use tablet padding */
+      margin-inline: -24px;
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      /* Desktop: Stay within grid bounds, no breakout */
+      margin-inline: 0;
+      padding-inline: 0;
+
+      /* Optional: Change to grid or flex-wrap for desktop if needed */
+      // flex-wrap: wrap;
+      // overflow-x: visible;
+    }
+  }
+}

@@ -1,14 +1,15 @@
 import './App.scss';
-import { CartItem } from './modules/CartPage/components/CartItem/CartItem';
+import { HomePage } from './modules/HomePage/HomePage';
 // import { Footer } from './modules/shared/components/Footer';
 import { Header } from './modules/shared/components/Header';
-// import { ProductCard } from './modules/shared/components/ProductCard';
+
+import '@/styles/main.scss';
 
 export const App = () => {
   return (
     <div className="App">
       <Header></Header>
-      <CartItem></CartItem>
+      <HomePage></HomePage>
     </div>
   );
 };

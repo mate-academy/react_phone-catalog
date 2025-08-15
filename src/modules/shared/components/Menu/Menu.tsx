@@ -1,5 +1,5 @@
 import React from 'react';
-import '@/styles/icon.scss';
+import '@/styles/main.scss';
 import styles from './Menu.module.scss';
 import classNames from 'classnames';
 

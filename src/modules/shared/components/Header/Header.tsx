@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Header.module.scss';
-import '@/styles/icon.scss';
-import '@/styles/typography.scss';
+import '@/styles/main.scss';
 import classNames from 'classnames';
 
 import { Menu } from '../Menu';

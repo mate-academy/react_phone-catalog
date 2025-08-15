@@ -1,9 +1,9 @@
-@import '@/styles/variables';
+@import '@/styles/main';
 
 .product_card {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 240px;
   padding: 32px;
   gap: 8px;
 
