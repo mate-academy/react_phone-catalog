@@ -45,8 +45,10 @@ interface Product extends Base {
 }
 
 interface BannerData {
+  id: number;
   src: string;
   alt: string;
+  ariaLabel: string;
   href: string;
 }
 

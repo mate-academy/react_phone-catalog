@@ -6,7 +6,7 @@ import styles from './styles/HomePage.module.scss';
 import { Link } from 'react-router-dom';
 import { useHomePage } from './model/useHomepage';
 import { Spinner } from '@ui/spinner';
-import { SliderCSS } from '@widgets/sliderCss';
+import { SliderS } from '@widgets/sliderCss';
 
 export const HomePage = () => {
   const { newest, hotPrice, bannerList, loading } = useHomePage();
@@ -22,7 +22,7 @@ export const HomePage = () => {
         {loading.banners === true ? (
           <Spinner />
         ) : (
-          bannerList && <SliderCSS data={bannerList} />
+          bannerList && <SliderS mode="hero" data={bannerList} />
         )}
       </div>
       <div className={styles['home-catalogue']}>

@@ -17,8 +17,10 @@ enum Category {
 }
 
 type BannerData = {
+  id: number;
   src: string;
   alt: string;
+  ariaLabel: string;
   href: string;
 };
 

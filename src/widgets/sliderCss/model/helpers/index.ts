@@ -1,0 +1,1 @@
+export { manipulate } from './manipulate';

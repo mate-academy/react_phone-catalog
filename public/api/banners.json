@@ -1,22 +1,30 @@
 [
   {
+    "id": 0,
     "src": "/api/banners/swiperbanner_1.webp",
-    "alt": "buy iPhone 15",
+    "alt": "iPhone 15",
+    "ariaLabel": "Go to *** page",
     "href": "#"
   },
   {
+    "id": 1,
     "src": "/api/banners/swiperbanner_2.webp",
-    "alt": "buy iPhone 15",
+    "alt": "iPhone 15",
+    "ariaLabel": "Go to *** page",
     "href": "#"
   },
   {
+    "id": 2,
     "src": "/api/banners/swiperbanner_3.webp",
-    "alt": "buy iPhone 15",
+    "alt": "iPhone 15",
+    "ariaLabel": "Go to *** page",
     "href": "#"
   },
   {
+    "id": 3,
     "src": "/api/banners/swiperbanner_4.webp",
-    "alt": "buy iPhone 15",
+    "alt": "iPhone 15",
+    "ariaLabel": "Go to *** page",
     "href": "#"
   }
 ]
