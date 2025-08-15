@@ -3,6 +3,10 @@
   flex-direction: row;
   gap: 8px;
 
+  &__radio {
+    display: none;
+  }
+
   &__text {
     font-weight: 600;
     font-size: 14px;

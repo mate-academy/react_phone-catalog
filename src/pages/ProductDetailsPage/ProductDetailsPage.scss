@@ -35,6 +35,10 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+    &--active {
+      border: 1px solid #F1F2F9;
+    }
   }
 
   &__images {

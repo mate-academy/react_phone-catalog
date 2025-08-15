@@ -7,6 +7,7 @@ import { ColorPicker } from '../../components/ColorPicker';
 import { CapacityPicker } from '../../components/CapacityPicker';
 import { CharacteristicsTable } from '../../components/CharactiristicsTable';
 import { Buttons } from '../../components/Buttons';
+import { ProductsList } from '../../components/ProductsList';
 
 type Props = {};
 
@@ -16,16 +17,18 @@ export const ProductDetailsPage: React.FC<Props> = () => {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<Product | null>(null);
 
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+
+  const files = [
+    '/api/phones.json',
+    '/api/tablets.json',
+    '/api/accessories.json',
+  ];
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const files = [
-          '/api/phones.json',
-          '/api/tablets.json',
-          '/api/accessories.json',
-          '/api/products.json',
-        ];
-
         for (const file of files) {
           const res = await fetch(file);
           const data: Product[] = await res.json();
@@ -39,7 +42,24 @@ export const ProductDetailsPage: React.FC<Props> = () => {
       } catch (e) {}
     };
 
+    const getSuggestedProducts = async (count = 20) => {
+      try {
+        let allProducts: Product[] = [];
+
+        for (const file of files) {
+          const res = await fetch(file);
+          const data: Product[] = await res.json();
+          allProducts = allProducts.concat(data);
+        }
+
+        const shuffled = allProducts.sort(() => 0.5 - Math.random());
+
+        setSuggestedProducts(shuffled.slice(0, count));
+      } catch (e) {}
+    };
+
     fetchProduct();
+    getSuggestedProducts();
   }, [productId]);
 
   return (
@@ -47,8 +67,12 @@ export const ProductDetailsPage: React.FC<Props> = () => {
       <h1 className="details__title">{product?.name}</h1>
       <div className="details__main">
         <div className="details__images">
-          {product?.images?.map(image => (
-            <div className="details__image-wrapper" key={image}>
+          {product?.images?.map((image, index) => (
+            <div
+              className={`details__image-wrapper ${index === selectedImage && 'details__image-wrapper--active'}`}
+              key={image}
+              onClick={() => setSelectedImage(index)}
+            >
               <img
                 className="details__image"
                 src={getImageSrc(image)}
@@ -61,7 +85,7 @@ export const ProductDetailsPage: React.FC<Props> = () => {
           <div className="details__main-image-wrapper">
             <img
               className="details__main-image"
-              src={getImageSrc(product.images[0])}
+              src={getImageSrc(product.images[selectedImage])}
               alt="product image"
             />
           </div>
@@ -88,18 +112,14 @@ export const ProductDetailsPage: React.FC<Props> = () => {
             />
           </div>
 
-          {product?.fullPrice ? (
-            <p className="details__price">${product.fullPrice}</p>
-          ) : (
-            <div className="details__price-with-discount">
-              <p className="details__price details__price--discount">
-                ${product?.priceDiscount}
-              </p>
-              <p className="details__price details__price--regular">
-                ${product?.priceRegular}
-              </p>
-            </div>
-          )}
+          <div className="details__price-with-discount">
+            <p className="details__price details__price--discount">
+              ${product?.priceDiscount}
+            </p>
+            <p className="details__price details__price--regular">
+              ${product?.priceRegular}
+            </p>
+          </div>
 
           <Buttons />
 
@@ -134,10 +154,12 @@ export const ProductDetailsPage: React.FC<Props> = () => {
               { name: 'Built in memory', value: product?.capacity },
               { name: 'Camera', value: product?.camera },
               { name: 'Zoom', value: product?.zoom },
-              // { name: 'Cell', value: product?.cell },
             ]}
           />
         </div>
+      </div>
+      <div>
+        <ProductsList title="You may also like" products={suggestedProducts} />
       </div>
     </div>
   );

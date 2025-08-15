@@ -7,25 +7,29 @@ type Props = {
 
 export const CapacityPicker: React.FC<Props> = ({ capacity }) => {
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
-
   const capacityArray = typeof capacity === 'string' ? [capacity] : capacity;
 
   return (
     <div className="capacity-picker">
       {capacityArray.map(item => (
-        <div
+        <label
           key={item}
           className={`capacity-picker__container ${
-            selectedCapacity === item
-              ? 'capacity-picker__container--selected'
-              : ''
+            selectedCapacity === item ? 'capacity-picker__container--selected' : ''
           }`}
-          onClick={() => setSelectedCapacity(item)}
         >
+          <input
+            type="radio"
+            name="capacity"
+            value={item}
+            checked={selectedCapacity === item}
+            onChange={() => setSelectedCapacity(item)}
+            className="capacity-picker__radio"
+          />
           <span className="capacity-picker__text">
             {item.replace(/(\d+)(GB)/, '$1 $2')}
           </span>
-        </div>
+        </label>
       ))}
     </div>
   );
