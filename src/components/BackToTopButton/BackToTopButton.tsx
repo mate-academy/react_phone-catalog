@@ -1,7 +1,7 @@
 import styles from './BackToTopButton.module.scss';
 
 export const BackToTopButton: React.FC = () => {
-  const img = '/img/icons/backToTop-icon.svg';
+  const img = 'img/icons/backToTop-icon.svg';
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

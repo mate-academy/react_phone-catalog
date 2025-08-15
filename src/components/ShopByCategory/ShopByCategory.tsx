@@ -9,9 +9,9 @@ type Props = {
 };
 
 export const ShopByCategory: React.FC<Props> = ({ products }) => {
-  const categoryPhones = '/img/categoryBanner/category-phones.png';
-  const categoryTablets = '/img/categoryBanner/category-tablets.png';
-  const categoryAccessories = '/img/categoryBanner/category-accessories2.png';
+  const categoryPhones = 'img/categoryBanner/category-phones.png';
+  const categoryTablets = 'img/categoryBanner/category-tablets.png';
+  const categoryAccessories = 'img/categoryBanner/category-accessories2.png';
 
   const phonesAmount = useMemo(
     () => products.filter(p => p.category === 'phones').length,

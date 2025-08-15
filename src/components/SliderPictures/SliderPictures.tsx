@@ -9,9 +9,9 @@ import { useEffect, useRef } from 'react';
 
 export const SliderPictures: React.FC = () => {
   const bannersImg = [
-    '/img/banners/banner-1.png',
-    '/img/banners/banner-2.png',
-    '/img/banners/banner-3.png',
+    'img/banners/banner-1.png',
+    'img/banners/banner-2.png',
+    'img/banners/banner-3.png',
   ];
 
   const prevRef = useRef<HTMLButtonElement>(null);
