@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect } from 'react';
 import { manipulate } from '../sliderMechanics';
 import { useSliderData } from '../';

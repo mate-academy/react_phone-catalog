@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect } from 'react';
 import { useSliderData } from '../context/sliderContext';
 import { manipulate } from '../helpers';

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-param-reassign */
 import { useCallback } from 'react';
 import { useSliderData } from '../context/sliderContext';
