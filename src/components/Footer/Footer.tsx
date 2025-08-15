@@ -3,7 +3,7 @@ import styles from './Footer.module.scss';
 import { BackToTopButton } from '../BackToTopButton';
 
 export const Footer: React.FC = () => {
-  const logoUrl = `/img/icons/NiceGadgets.svg`;
+  const logoUrl = 'img/icons/NiceGadgets.svg';
 
   return (
     <div className={styles.footer}>
