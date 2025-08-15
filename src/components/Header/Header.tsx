@@ -20,7 +20,7 @@ const getLinkClassName = ({ isActive }: { isActive: boolean }) =>
   });
 
 export const Header = () => {
-  const logoUrl = `img/icons/NiceGadgets.svg`;
+  const logoUrl = 'img/icons/NiceGadgets.svg';
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
