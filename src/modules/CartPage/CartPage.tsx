@@ -48,9 +48,12 @@ export const CartPage: React.FC = () => {
   }, [isModalOpen]);
 
   useEffect(() => {
-    setTotalSum(countTotal());
     setTotalItems(cartProductsIds.length);
   }, [isLoading, cartProductsIds]);
+
+  useEffect(() => {
+    setTotalSum(countTotal());
+  }, [isLoading]);
 
   return (
     <main
@@ -105,7 +108,6 @@ export const CartPage: React.FC = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
-
 
       {cartProductsIds.length === 0 && (
         <img className={styles.emptyCart} src="/img/cart-is-empty.png" alt="Cart is empty" />

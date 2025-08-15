@@ -7,7 +7,7 @@ import {
   findProduct,
   findTablet
 } from '../shared/services/productService';
-import { getFormattedPathname } from '../shared/utils/formatPathname';
+import { getFormattedPathname } from '../shared/utils/getFormattedPathname';
 import { AccessoryDetails } from '../../types/AccessoryDetails';
 import { useEffect, useState } from 'react';
 import { AddToCart } from '../../components/AddToCart';
@@ -17,6 +17,7 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { getColor } from '../shared/utils/getColor';
 import { useAppContext } from '../../contexts/AppContext';
+import { Loader } from '../../components/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
@@ -51,9 +52,6 @@ export const ProductDetailsPage: React.FC = () => {
   }, [product]);
 
   useEffect(() => {
-  }, [currentCapacity, currentColor]);
-
-  useEffect(() => {
     let isMounted = true;
     finder().then(res => {
       if (isMounted) setProduct(res);
@@ -62,9 +60,9 @@ export const ProductDetailsPage: React.FC = () => {
   }, [pathname]);
 
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main} ${product === undefined ? styles.isLoading : ''}`}>
       {product === undefined ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : product ? (
         <>
           <div className={styles.head}>

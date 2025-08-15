@@ -5,6 +5,7 @@ import { AddToCart } from '../AddToCart/AddToCart';
 import { useAppContext } from '../../contexts/AppContext';
 import { Link } from 'react-router-dom';
 import { getFormattedCapacity } from '../../modules/shared/utils/getFormattedCapacity';
+import { CardSkeleton } from './CardSkeleton';
 
 type Props = {
   card: CardItem | undefined;
@@ -86,42 +87,5 @@ export const Card: React.FC<Props> = ({ card }) => {
         </div>
       </div>
     </Link>
-  ) : (
-    <div
-      ref={refCardWidth as React.Ref<HTMLDivElement>}
-      className={`${styles.card} ${styles.isLoading}`}
-    >
-      <div className={styles.wrapper}>
-        <div className={styles.imageContainer}>
-          <div className={styles.image}></div>
-        </div>
-
-        <div className={styles.about}>
-          <p className={styles.name}>
-          </p>
-          <div className={styles.price}>
-          </div>
-
-          <div className={styles.description}>
-            <div className={styles.keys}>
-              <div className={styles.key}></div>
-              <div className={styles.key}></div>
-              <div className={styles.key}></div>
-            </div>
-
-            <div className={styles.values}>
-              <div className={styles.value}></div>
-              <div className={styles.value}></div>
-              <div className={styles.value}></div>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.buttons}>
-          <div className={styles.button}></div>
-          <div className={styles.button}></div>
-        </div>
-      </div>
-    </div>
-  );
+  ) : <CardSkeleton />;
 };

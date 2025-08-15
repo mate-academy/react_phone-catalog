@@ -1,12 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumb.module.scss';
-import { getFormattedPathname } from '../../modules/shared/utils/formatPathname';
+import { getFormattedPathname } from '../../modules/shared/utils/getFormattedPathname';
+import { useAppContext } from '../../contexts/AppContext';
 
 export const Breadcrumb: React.FC = () => {
   const { pathname } = useLocation();
+  const { products } = useAppContext();
 
   return (
-    <div 
+    <div
       className={styles.path}
     >
       <Link className={styles.home} to='/'>
@@ -30,7 +32,7 @@ export const Breadcrumb: React.FC = () => {
             ${i === 0 && arr.length > 1 ? styles.firstItem : ''}
             ${i !== 0 ? styles.lastItem : ''}
             ${styles.pageName} smallText`}>
-          {item}
+          {i === 0 ? item : products.find(product => product.itemId === item)?.name}
         </Link>
       ])}
     </div>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styles from './CartProduct.module.scss';
 import { Card } from '../../types/Card';
 import { useAppContext } from '../../contexts/AppContext';
+import { Link } from 'react-router-dom';
+import { CartProductSkeleton } from './CartProductSkeleton';
 
 type CartProductProps = {
   product: Card | undefined;
@@ -28,18 +30,23 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
     setCounterValue(prev => prev - 1);
   }
 
-  function handleDeleteProductFromCart(id: number) {
+  function handleDeleteProductFromCart(event: React.MouseEvent<HTMLButtonElement>, id: string) {
+    event.stopPropagation();
+    event.preventDefault();
     const updatedCart = cartProductsIds.filter(
-      (productId: number) => productId !== id,
+      (productId: string) => productId !== id,
     );
     setCartProductsIds(updatedCart);
   }
 
   return product !== undefined ? (
-    <div className={styles.product}>
+    <Link
+      to={`/${product.category}/${product.itemId}`}
+      className={styles.product}
+    >
       <div className={styles.details}>
         <button
-          onClick={() => handleDeleteProductFromCart(product.id)}
+          onClick={(event) => handleDeleteProductFromCart(event, product.itemId)}
           className={`
             ${styles.img} 
             ${styles.close}
@@ -81,50 +88,6 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
         </div>
         <h3 className={styles.priceTitle}>${product.price * counterValue}</h3>
       </div>
-    </div>
-  ) : (
-    <div className={`${styles.product} ${styles.isLoading}`}>
-      <div className={styles.details}>
-        <div
-          className={`
-            ${styles.img} 
-            ${styles.close}
-          `}
-        ></div>
-        <div className={styles.wrapper}>
-          <div className={styles.image}></div>
-        </div>
-
-        <div className={styles.name}>
-        </div>
-      </div>
-
-      <div className={styles.price}>
-        <div className={styles.counter}>
-          {/* <div
-            className={`
-              ${styles.counterButton} 
-              ${styles.disabled}
-            `}
-          >
-            <div
-              className={styles.img}
-            ></div>
-          </div> */}
-
-          <div className={styles.value}></div>
-
-          {/* <div
-            className={`
-              ${styles.counterButton} 
-              ${styles.disabled}
-            `}
-          >
-            <div className={styles.img}></div>
-          </div> */}
-        </div>
-        <div className={styles.priceTitle}></div>
-      </div>
-    </div>
-  );
+    </Link>
+  ) : <CartProductSkeleton />
 };

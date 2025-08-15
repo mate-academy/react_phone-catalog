@@ -1,6 +1,5 @@
 .section {
   grid-column: 1/ -1;
-  transition: transform 1s ease-in-out;
 }
 
 .head {
@@ -21,5 +20,5 @@
 .content {
   display: flex;
   gap: 16px;
-  transition: transform 1s ease-in-out;
+  transition: transform 900ms ease-in-out;
 }

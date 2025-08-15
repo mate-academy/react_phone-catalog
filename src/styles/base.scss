@@ -9,7 +9,7 @@ body {
   margin: 0;
   padding-top: 48px;
 
-  @include on-desktop{
+  @include on-desktop {
     padding-top: 64px;
   }
 }
@@ -22,10 +22,10 @@ main {
 a {
   color: var(--text-color-light);
   text-decoration: none;
-}
 
-a:hover {
-  color: var(--text-color-dark);
+  &:hover {
+    color: var(--text-color-dark);
+  }
 }
 
 li {
