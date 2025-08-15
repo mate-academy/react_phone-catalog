@@ -168,7 +168,7 @@ export const ProductDetailsPage = () => {
       <div className={styles.main}>
         <div className={styles.imagesContainer}>
           <div className={styles.imagesContainer__mainImage}>
-            <img src={`/${mainImage}`} alt={product.name} />
+            <img src={`${mainImage}`} alt={product.name} />
           </div>
           <div className={styles.imagesContainer__imagesRow}>
             {product.images.map((img, i) => (
