@@ -6,15 +6,17 @@ type Props = {
   title: string;
   quantity: number;
   image: string;
+  path: string;
 };
 
 export const CategorySelectCard: React.FC<Props> = ({
   title,
   quantity,
   image,
+  path,
 }) => {
   return (
-    <Link to="/" className="select-category">
+    <Link to={path} className="select-category">
       <div className="select-category__image-wrapper">
         <img
           className="select-category__image"

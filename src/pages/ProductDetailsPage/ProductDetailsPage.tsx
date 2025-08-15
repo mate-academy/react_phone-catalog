@@ -115,16 +115,16 @@ export const ProductDetailsPage: React.FC<Props> = () => {
       </div>
       <div className="details__description">
         <div className="details__description__first-col">
-        <h2 className="details__description__title">About</h2>
+          <h2 className="details__description__title">About</h2>
           {product?.description?.map(item => (
-            <div key={item.title} className='details__description--info'>
+            <div key={item.title} className="details__description--info">
               <h3 className="details__description--title">{item.title}</h3>
               <p className="details__description--text">{item.text}</p>
             </div>
           ))}
         </div>
         <div className="details__description__second-col">
-        <h2 className="details__description__title">Tech specs</h2>
+          <h2 className="details__description__title">Tech specs</h2>
           <CharacteristicsTable
             characteristics={[
               { name: 'Screen', value: product?.screen },

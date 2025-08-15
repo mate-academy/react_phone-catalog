@@ -61,13 +61,13 @@ export const AllItemsList: React.FC<Props> = ({
   const sortProducts = (items: Product[]) => {
     switch (sort) {
       case SortOptions.Newest:
-        return [...items].sort((a, b) => b.year - a.year);
+        // return [...items].sort((a, b) => b.year - a.year);
       case SortOptions.Alphabetically:
         return [...items].sort((a, b) => a.name.localeCompare(b.name));
       case SortOptions.Cheapest:
         return [...items].sort((a, b) => {
-          const priceA = a.priceDiscount ?? a.price ?? 0;
-          const priceB = b.priceDiscount ?? b.price ?? 0;
+          const priceA = a.priceDiscount ?? a.priceDiscount ?? 0;
+          const priceB = b.priceDiscount ?? b.priceDiscount ?? 0;
 
           return priceA - priceB;
         });

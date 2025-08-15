@@ -12,12 +12,12 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     const getNewModels = async () => {
       try {
-        const res = await fetch('/api/products.json');
+        const res = await fetch('/api/phones.json');
         const json: Product[] = await res.json();
 
-        const latestYear = Math.max(...json.map(p => p.year));
+        // const latestYear = Math.max(...json.map(p => p.year));
 
-        const latestModels = json.filter(p => p.year === latestYear);
+        const latestModels = json.slice(0, 20);
 
         setNewModels(latestModels);
       } catch (e) {}
@@ -25,24 +25,23 @@ export const HomePage: React.FC = () => {
 
     const getHotPrices = async () => {
       try {
-        const res = await fetch('/api/products.json');
+        const res = await fetch('/api/phones.json');
         const json: Product[] = await res.json();
 
         const maxDiscount = Math.max(
           ...json.map(p => {
-            if (p.fullPrice === undefined || p.price === undefined) {
+            if (p.priceDiscount === undefined || p.priceRegular === undefined) {
               return -Infinity;
             }
 
-            return p.fullPrice - p.price;
+            return p.priceRegular - p.priceDiscount;
           }),
         );
 
+        const range = 100;
+
         const hotProducts = json.filter(
-          p =>
-            p.fullPrice !== undefined &&
-            p.price !== undefined &&
-            p.fullPrice - p.price === maxDiscount,
+          p => p.priceRegular - p.priceDiscount >= maxDiscount - range,
         );
 
         // const minPrice = Math.min(...json.map(p => p.price));
