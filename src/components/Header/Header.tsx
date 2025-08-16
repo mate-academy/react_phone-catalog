@@ -20,13 +20,13 @@ const getLinkClassName = ({ isActive }: { isActive: boolean }) =>
   });
 
 export const Header = () => {
-  const logoUrl = 'img/icons/NiceGadgets.svg';
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { favouritesCount } = useFavourites();
   const { cartTotalItemsCount } = useCart();
   const { theme, toggleTheme } = useTheme();
+
+  const logoUrl = `img/icons/NiceGadgets-${theme}.png`;
 
   useLockBodyScroll(isMenuOpen);
 
@@ -52,7 +52,7 @@ export const Header = () => {
               className={styles.toggleButton}
               aria-label="Toggle menu"
             >
-              <span className={classNames(styles.icon, styles['icon--menu'])} />
+              <img src={`/img/icons/menu-icon-${theme}.svg`} />
             </button>
           </div>
         </div>
@@ -65,14 +65,16 @@ export const Header = () => {
               <img src={logoUrl} alt="Logo" />
             </Link>
 
+            <button onClick={toggleTheme} className={styles.toggleThemeDesktop}>
+              {theme === 'light' ? '🌙' : '☀️'}
+            </button>
+
             <button
               onClick={toggleMenu}
               className={styles.toggleButton}
               aria-label="Toggle menu"
             >
-              <span
-                className={classNames(styles.icon, styles['icon--close'])}
-              />
+              <img src={`/img/icons/close-icon-${theme}.svg`} />
             </button>
           </div>
 
@@ -93,15 +95,17 @@ export const Header = () => {
           </nav>
 
           <div className={styles.menu__icons}>
-            <button onClick={toggleTheme} className={styles.toggleThemeDesktop}>
-              {theme === 'light' ? '🌙' : '☀️'}
-            </button>
             <NavLink
               to="/favourites"
               onClick={() => setIsMenuOpen(false)}
               className={getLinkClassName}
             >
-              <span className={classNames(styles.icon, styles['icon--heart'])}>
+              <span className={styles.iconWrap}>
+                <img
+                  src={`/img/icons/favorites-icon-${theme}.svg`}
+                  alt="Favorites"
+                  className={styles.icon}
+                />
                 {favouritesCount > 0 && (
                   <span className={styles.itemAmount}>{favouritesCount}</span>
                 )}
@@ -113,9 +117,14 @@ export const Header = () => {
               onClick={() => setIsMenuOpen(false)}
               className={getLinkClassName}
             >
-              <span className={classNames(styles.icon, styles['icon--cart'])}>
+              <span className={styles.iconWrap}>
+                <img
+                  src={`/img/icons/cart-icon-${theme}.svg`}
+                  alt="Cart"
+                  className={styles.icon}
+                />
                 {cartTotalItemsCount > 0 && (
-                  <span className={classNames(styles.itemAmount, styles.icon)}>
+                  <span className={styles.itemAmount}>
                     {cartTotalItemsCount}
                   </span>
                 )}

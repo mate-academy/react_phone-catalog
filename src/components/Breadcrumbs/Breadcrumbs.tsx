@@ -1,3 +1,4 @@
+import { useTheme } from '../../context/ThemeContext';
 import styles from './Breadcrumbs.module.scss';
 
 import { Link, useLocation } from 'react-router-dom';
@@ -5,6 +6,8 @@ import { Link, useLocation } from 'react-router-dom';
 export const Breadcrumbs: React.FC = () => {
   const { pathname } = useLocation();
   const parts = pathname.split('/').filter(Boolean);
+
+  const { theme } = useTheme();
 
   const getDisplayName = (segment: string) => {
     return decodeURIComponent(
@@ -17,7 +20,9 @@ export const Breadcrumbs: React.FC = () => {
 
   return (
     <nav className={styles.breadcrumbs}>
-      <Link to="/" className={styles.breadcrumbs__icon} aria-label="Home" />
+      <Link to="/" className={styles.breadcrumbs__icon} aria-label="Home">
+        <img src={`/img/icons/icon-home-${theme}.svg`} />
+      </Link>
 
       {parts.map((segment, index) => {
         const to = '/' + parts.slice(0, index + 1).join('/');

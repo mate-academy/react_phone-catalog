@@ -106,7 +106,7 @@
     letter-spacing: 0.04em;
     border-bottom: 2px solid transparent;
 
-    @include hover (color, var(--primary-color));
+    @include hover(color, var(--primary-color));
 
     @include on-tablet {
       display: flex;
@@ -200,43 +200,34 @@
   }
 }
 
-.icon {
-  display: block;
+.iconWrap {
+  position: relative;
+  display: inline-block;
   width: 18px;
   height: 18px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+}
 
-  &--menu {
-    background-image: url('/img/icons/menu-icon.svg');
-  }
+.icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-  &--close {
-    background-image: url('/img/icons/close-icon.svg');
-  }
-
-  &--heart {
-    background-image: url('/img/icons/favourites-icon.svg');
-  }
-
-  &--cart {
-    background-image: url('/img/icons/cart-icon.svg');
-  }
-
-  .itemAmount {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    width: 14px;
-    height: 14px;
-    transform: translate(70%, -50%);
-    border: 1px solid var(--accent);
-    border-radius: 50%;
-    color: var(--white-color);
-    background-color: var(--accent);
-  }
+.itemAmount {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  color: var(--white-color);
+  background-color: var(--accent);
 }
 
 // Dark theme styles for item amount circles
@@ -252,5 +243,3 @@ body.dark .icon {
 body.dark .icon .itemAmount {
   filter: none !important;
 }
-
-

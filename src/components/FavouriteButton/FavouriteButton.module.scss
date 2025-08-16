@@ -5,12 +5,15 @@
   height: 40px;
   border: 1px solid var(--secondary-color);
   border-radius: 50%;
-  background: center no-repeat url('/img/icons/favourites-icon.svg');
   transition: background-image 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 
-  &--filled {
-    background: center no-repeat url('/img/icons/favourites-filled-icon.svg') !important;
-    filter: yellow !important;
+  img {
+    width: 16px;
+    height: 16px;
   }
 
   @include hover(border-color, var(--primary-color));

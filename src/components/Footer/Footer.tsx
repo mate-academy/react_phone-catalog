@@ -1,9 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { BackToTopButton } from '../BackToTopButton';
+import { useTheme } from '../../context/ThemeContext';
 
 export const Footer: React.FC = () => {
-  const logoUrl = 'img/icons/NiceGadgets.svg';
+  const { theme } = useTheme();
+
+  const logoUrl = `img/icons/NiceGadgets-${theme}.png`;
 
   return (
     <div className={styles.footer}>
