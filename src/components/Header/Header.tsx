@@ -52,7 +52,7 @@ export const Header = () => {
               className={styles.toggleButton}
               aria-label="Toggle menu"
             >
-              <img src={`/img/icons/menu-icon-${theme}.svg`} />
+              <img src={`img/icons/menu-icon-${theme}.svg`} />
             </button>
           </div>
         </div>
@@ -74,7 +74,7 @@ export const Header = () => {
               className={styles.toggleButton}
               aria-label="Toggle menu"
             >
-              <img src={`/img/icons/close-icon-${theme}.svg`} />
+              <img src={`img/icons/close-icon-${theme}.svg`} />
             </button>
           </div>
 
@@ -102,7 +102,7 @@ export const Header = () => {
             >
               <span className={styles.iconWrap}>
                 <img
-                  src={`/img/icons/favorites-icon-${theme}.svg`}
+                  src={`img/icons/favorites-icon-${theme}.svg`}
                   alt="Favorites"
                   className={styles.icon}
                 />
@@ -119,7 +119,7 @@ export const Header = () => {
             >
               <span className={styles.iconWrap}>
                 <img
-                  src={`/img/icons/cart-icon-${theme}.svg`}
+                  src={`img/icons/cart-icon-${theme}.svg`}
                   alt="Cart"
                   className={styles.icon}
                 />

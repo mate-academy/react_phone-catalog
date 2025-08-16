@@ -25,8 +25,8 @@ export const FavouriteButton: React.FC<Props> = ({ product }) => {
       <img
         src={
           isItemFavourite
-            ? '/img/icons/favorites-filled-icon.svg'
-            : `/img/icons/favorites-icon-${theme}.svg`
+            ? 'img/icons/favorites-filled-icon.svg'
+            : `img/icons/favorites-icon-${theme}.svg`
         }
         alt="Toggle favorite"
       />
