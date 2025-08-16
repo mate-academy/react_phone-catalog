@@ -1,0 +1,20 @@
+@import '../../shared/index';
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 50%;
+  transition: background-image 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  @include hover(border-color, var(--primary-color));
+}
