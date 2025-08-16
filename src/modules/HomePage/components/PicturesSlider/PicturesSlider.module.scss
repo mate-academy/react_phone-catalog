@@ -1,0 +1,104 @@
+@import '../../../shared/styles/main';
+
+.picturesSlider {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__wrapper {
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: stretch;
+      gap: 16px;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-gray-icons-placeholders);
+      cursor: pointer;
+      transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+
+      &:hover {
+        border-color: var(--color-gray-primary);
+        background-color: var(--color-hover);
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    @include on-tablet {
+      aspect-ratio: 400 / 189;
+      min-height: 189px;
+      max-height: 400px;
+    }
+  }
+
+  &__image {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+  &__dots {
+    height: 24px;
+    display: flex;
+    margin: 16px auto 0;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  &__dot {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 4px;
+      background-color: var(--color-gray-elements);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s ease;
+    }
+
+    &--active::after {
+      background-color: var(--color-gray-primary);
+    }
+  }
+}
