@@ -22,42 +22,42 @@
 
 @mixin text-ellipsis {
  overflow: hidden;
- white-space: nowrap;
  text-overflow: ellipsis;
+ white-space: nowrap;
 }
 
 @mixin flex-center {
  display: flex;
- justify-content: center;
  align-items: center;
+ justify-content: center;
 }
 
 @mixin container {
  max-width: $container-width;
- padding: 0 $container-padding;
  margin: 0 auto;
+ padding: 0 $container-padding;
 }
 
 @mixin title($size: $fs-xl, $weight: $fw-bold, $lh: $lh-title) {
+ font-family: $font-main;
  font-size: $size;
  font-weight: $weight;
  line-height: $lh;
  color: var(--main-text);
- font-family: $font-main;
 }
 
 @mixin text($size: $fs-normal, $weight: $fw-regular, $color: var(--main-text)) {
+ font-family: $font-main;
  font-size: $size;
  font-weight: $weight;
  color: $color;
- font-family: $font-main;
 }
 
 @mixin section-title {
+ font-family: $font-main;
  font-size: $fs-xxl;
  font-weight: $fw-bold;
  line-height: $lh-title;
- font-family: $font-main;
  color: var(--main-text);
 }
 

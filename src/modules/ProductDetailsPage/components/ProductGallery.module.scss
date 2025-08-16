@@ -22,12 +22,14 @@
 }
 
 .thumb {
-  border: 1px solid var(--elements);
-  padding: 4px;
-  background-color: transparent;
   cursor: pointer;
+
   width: 60px;
   height: 60px;
+  padding: 4px;
+  border: 1px solid var(--elements);
+
+  background-color: transparent;
 
   img {
     width: 100%;

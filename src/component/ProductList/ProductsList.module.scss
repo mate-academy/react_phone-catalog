@@ -2,8 +2,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
   gap: 24px;
-  padding: 24px 0;
+
   margin: 0;
+  padding: 24px 0;
+
   list-style: none;
 }
 

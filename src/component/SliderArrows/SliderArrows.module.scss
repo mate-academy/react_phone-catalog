@@ -6,15 +6,19 @@
 }
 
 .arrow {
+  cursor: pointer;
+
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: none;
-  border: 1px solid var(--elements);
-  border-radius: 50%;
+  justify-content: center;
+
   width: 32px;
   height: 32px;
-  cursor: pointer;
+  border: 1px solid var(--elements);
+  border-radius: 50%;
+
+  background: none;
+
   transition: all 0.2s;
 
   &:hover {
@@ -22,7 +26,7 @@
   }
 
   &.disabled {
-    opacity: 0.5;
     pointer-events: none;
+    opacity: 0.5;
   }
 }

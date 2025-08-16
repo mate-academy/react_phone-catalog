@@ -1,4 +1,5 @@
 @use '../../styles/mixins';
+
 @import '../../styles/variables';
 
 .page {
@@ -14,8 +15,8 @@
 }
 
 .sliderSection {
-  max-width: 1136px;
   width: 100%;
+  max-width: 1136px;
   margin: 0 auto;
   padding-inline: 24px;
 
@@ -25,17 +26,18 @@
 }
 
 .section {
-  max-width: 1136px;
-  width: 100%;
-  margin: 0 auto;
-  padding-inline: 24px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-inline: 24px;
+
   @include mixins.on-mobile {
-    padding-inline: 16px;
     gap: 16px;
+    padding-inline: 16px;
   }
 }
 

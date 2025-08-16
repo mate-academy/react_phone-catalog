@@ -4,34 +4,22 @@
 .header {
   width: 100%;
   height: variables.$header-height;
-  background-color: var(--white);
   border-bottom: 1px solid var(--elements);
+  background-color: var(--white);
 }
 
 .headerContent {
-  max-width: 1136px;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: variables.$container-width;
   height: 100%;
-  display: flex;
-  align-items: center;
+  margin: 0 auto;
   padding-inline: 24px;
-
-  @include mixins.on-mobile {
-    padding-inline: 16px;
-  }
-}
-
-.leftSide {
-  display: flex;
-  align-items: center;
-  gap: 64px;
 
   @include mixins.on-tablet {
     gap: 32px;
-  }
-
-  @include mixins.on-mobile {
-    gap: 16px;
   }
 }
 
@@ -46,51 +34,129 @@
 
 .nav {
   display: flex;
+  flex-grow: 1;
   gap: 32px;
+  align-items: center;
 
   @include mixins.on-mobile {
     display: none;
   }
 }
 
-.spacer {
-  flex: 1;
-}
-
 .rightSide {
   display: flex;
-  align-items: center;
   gap: 16px;
+  align-items: center;
+
+  @include mixins.on-mobile {
+    gap: 0;
+  }
 }
 
-.count {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  background-color: var(--red);
-  color: var(--white);
-  font-size: 10px;
-  font-weight: 600;
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
+.rightSideLink {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border-left: 1px solid var(--elements);
+
+  color: var(--secondary-text);
+
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    color: var(--link-active-color);
+    background-color: var(--hover-bg);
+  }
+
+  .icon {
+    display: block;
+
+    width: 24px;
+    height: 24px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5px;
+
+    transition: stroke 0.2s, fill 0.2s, color 0.2s;
+  }
+
+  .activeIcon {
+    color: var(--red);
+    fill: none;
+  }
+
+  .count {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 9px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
+    color: var(--white);
+
+    background-color: var(--red);
+  }
+}
+
+.nav a {
+  padding-bottom: 12px;
+  border-bottom: 3px solid transparent;
+
+  font-size: variables.$fs-small;
+  font-weight: 700;
+  color: var(--secondary-text);
+  text-transform: uppercase;
+
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.nav a:hover {
+  border-color: var(--link-active-color);
+  color: var(--link-active-color);
+}
+
+.nav a.active {
+  border-color: var(--link-active-color);
+  color: var(--link-active-color);
+}
+
+.rightSide a:first-child {
+  border-left: none;
 }
 
 .themeToggle {
-  background: none;
-  border: none;
   cursor: pointer;
-  font-size: 18px;
-  line-height: 1;
-  width: 40px;
-  height: 40px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  border: none;
   border-left: 1px solid var(--elements);
+
+  font-size: 18px;
+  line-height: 1;
+
+  background: none;
+
   transition: background-color 0.2s;
 
   &:hover {
@@ -98,36 +164,98 @@
   }
 }
 
-.nav a {
-  font-size: variables.$fs-small;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--secondary-text);
-  border-bottom: 3px solid transparent;
-  padding-bottom: 12px;
-  transition: border-color 0.3s;
-}
+.burgerButton {
+  cursor: pointer;
 
-.rightSide a {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: none;
+
   width: 40px;
   height: 40px;
+  border: none;
   border-left: 1px solid var(--elements);
+
+  background: none;
+
+  @include mixins.on-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+
+    fill: none;
+    stroke: var(--secondary-text);
+    stroke-width: 1.5px;
+  }
+
+  &:hover {
+    background-color: var(--hover-bg);
+
+    .icon {
+      stroke: var(--link-active-color);
+    }
+  }
 }
 
-.nav a:hover {
-  color: var(--link-active-color);
-  border-color: var(--accent);
+.burgerMenu {
+  position: fixed;
+  z-index: 10;
+  top: variables.$header-height;
+  left: 0;
+  transform: translateX(100%);
+
+  display: none;
+
+  width: 100%;
+  height: calc(100vh - variables.$header-height);
+
+  background-color: var(--white);
+
+  transition: transform 0.3s ease-in-out;
+
+  @include mixins.on-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.isOpen {
+    transform: translateX(0);
+  }
 }
 
-.nav a.active {
-  color: var(--link-active-color);
-  border-color: var(--accentt);
+.burgerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
 }
 
-.rightSide a:first-child {
-  border-left: none;
+.burgerLink {
+  padding-bottom: 12px;
+  border-bottom: 3px solid transparent;
+
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--secondary-text);
+  text-transform: uppercase;
+
+  transition: color 0.3s, border-color 0.3s;
+
+  &:hover {
+    border-color: var(--link-active-color);
+    color: var(--link-active-color);
+  }
+
+  &.active {
+    border-color: var(--link-active-color);
+    color: var(--link-active-color);
+  }
 }

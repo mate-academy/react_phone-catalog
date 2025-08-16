@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+
   width: 100%;
   max-width: 300px;
 }
@@ -26,12 +27,16 @@
 }
 
 .addToCart {
-  background-color: var(--main-text);
-  color: white;
-  border: none;
-  padding: 12px;
-  width: 100%;
   cursor: pointer;
+
+  width: 100%;
+  padding: 12px;
+  border: none;
+
+  color: white;
+
+  background-color: var(--main-text);
+
   transition: background-color 0.3s;
 
   &:hover {
@@ -60,12 +65,13 @@
 }
 
 .color {
+  cursor: pointer;
+
   width: 32px;
   height: 32px;
+  padding: 0;
   border: 1px solid var(--elements);
   border-radius: 50%;
-  padding: 0;
-  cursor: pointer;
 
   span {
     display: block;
@@ -80,16 +86,16 @@
 }
 
 .capacity {
+  cursor: pointer;
   padding: 6px 12px;
   border: 1px solid var(--elements);
   background-color: white;
-  cursor: pointer;
 
   @include mixins.text(variables.$fs-small, variables.$fw-medium, var(--main-text));
 
   &.selected {
     border-color: var(--main-text);
-    background-color: var(--main-text);
     color: white;
+    background-color: var(--main-text);
   }
 }

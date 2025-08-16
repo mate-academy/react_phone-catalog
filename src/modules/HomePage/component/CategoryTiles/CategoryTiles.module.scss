@@ -18,11 +18,15 @@
 .tile {
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
-  border: 1px solid var(--elements);
-  text-decoration: none;
-  transition: box-shadow 0.3s;
+
   height: 100%;
+  border: 1px solid var(--elements);
+
+  text-decoration: none;
+
+  background-color: var(--white);
+
+  transition: box-shadow 0.3s;
 
   &:hover {
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
@@ -38,16 +42,16 @@
     padding: 24px;
 
     h3 {
+      margin: 0 0 4px;
       font-size: 20px;
       font-weight: 700;
       color: var(--secondary-text);
-      margin: 0 0 4px;
     }
 
     p {
+      margin: 0;
       font-size: variables.$fs-small;
       color: var(--secondary-text);
-      margin: 0;
     }
   }
 }

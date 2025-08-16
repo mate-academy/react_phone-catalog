@@ -10,10 +10,10 @@
 .back {
   @include mixins.text(variables.$fs-normal, variables.$fw-medium, var(--secondary-text));
 
-  margin-bottom: 16px;
-  background: none;
-  border: none;
   cursor: pointer;
+  margin-bottom: 16px;
+  border: none;
+  background: none;
 }
 
 .title {
@@ -25,13 +25,13 @@
 .mainSection {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
   gap: 32px;
+  justify-content: space-between;
 
   @include mixins.on-small {
     flex-flow: column wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 }
 
@@ -39,7 +39,6 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-
   margin-top: 40px;
 
   @include mixins.on-desktop {

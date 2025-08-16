@@ -4,12 +4,13 @@
 @use '../../styles/mixins';
 
 .cartPage {
-  padding: 40px 20px;
-  max-width: variables.$container-width; // <--- Виправлено
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 32px;
+
+  max-width: variables.$container-width; // <--- Виправлено
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
 .title {
@@ -23,29 +24,30 @@
 
   @include mixins.on-desktop {
     flex-direction: row;
-    justify-content: space-between;
     align-items: flex-start;
+    justify-content: space-between;
   }
 }
 
 .cartList {
-  flex: 2;
   display: flex;
+  flex: 2;
   flex-direction: column;
   gap: 16px;
 }
 
 .summary {
-  flex: 1;
-  border: 1px solid var(--elements);
-  padding: 24px;
-  border-radius: 8px;
-  background-color: var(--elements);
-  min-width: 280px;
-
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 16px;
+
+  min-width: 280px;
+  padding: 24px;
+  border: 1px solid var(--elements);
+  border-radius: 8px;
+
+  background-color: var(--elements);
 }
 
 .total {
@@ -63,13 +65,17 @@
 }
 
 .checkoutButton {
+  cursor: pointer;
+
   padding: 12px 16px;
-  background-color: var(--accent);
-  color: var(--white);
   border: none;
   border-radius: 4px;
+
   font-weight: variables.$fw-bold;
-  cursor: pointer;
+  color: var(--white);
+
+  background-color: var(--accent);
+
   transition: background-color 0.2s;
 
   &:hover {
@@ -78,8 +84,8 @@
 }
 
 .empty {
-  text-align: center;
   padding: 60px 20px;
+  text-align: center;
 }
 
 .emptyTitle {
@@ -90,12 +96,16 @@
 
 .backButton {
   display: inline-block;
+
   padding: 12px 24px;
-  background-color: var(--accent);
+  border-radius: 4px;
+
+  font-weight: variables.$fw-bold;
   color: var(--white);
   text-decoration: none;
-  border-radius: 4px;
-  font-weight: variables.$fw-bold;
+
+  background-color: var(--accent);
+
   transition: background-color 0.2s;
 
   &:hover {

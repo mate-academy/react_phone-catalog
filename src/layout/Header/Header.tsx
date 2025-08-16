@@ -1,70 +1,68 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 
 import Logo from '../../assets/icons/logo.svg';
+import MenuIcon from '../../assets/icons/burger-menu.svg';
+import CloseIcon from '../../assets/icons/close.svg';
 import FavoritesIcon from '../../assets/icons/favorites.svg';
 import CartIcon from '../../assets/icons/cart.svg';
 
-import { useCart } from '../../context/CartContext';
-import { useFavorites } from '../../context/FavoritesContext';
 import { useTheme } from '../../context/ThemeContext';
 import { ThemeEnum } from '../../types/Theme';
 
+import { Navigation } from './components/Navigation';
+import { BurgerMenu } from './components/BurgerMenu';
+
+import { useCart } from '../../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
+
 export const Header = () => {
+  const { theme, toggleTheme } = useTheme();
   const { cartItems } = useCart();
   const { favorites } = useFavorites();
-  const { theme, toggleTheme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
-        <div className={styles.leftSide}>
-          <NavLink to="/" className={styles.logo}>
-            <img src={Logo} alt="Nice Gadgets logo" />
-          </NavLink>
+        <NavLink to="/" className={styles.logo}>
+          <img src={Logo} alt="Nice Gadgets logo" />
+        </NavLink>
 
-          <nav className={styles.nav}>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? styles.active : undefined
-              }
-            >
-              Home
-            </NavLink>
-
-            <NavLink
-              to="/phones"
-              className={({ isActive }) =>
-                isActive ? styles.active : undefined
-              }
-            >
-              Phones
-            </NavLink>
-
-            <NavLink
-              to="/tablets"
-              className={({ isActive }) =>
-                isActive ? styles.active : undefined
-              }
-            >
-              Tablets
-            </NavLink>
-
-            <NavLink
-              to="/accessories"
-              className={({ isActive }) =>
-                isActive ? styles.active : undefined
-              }
-            >
-              Accessories
-            </NavLink>
-          </nav>
-        </div>
-
-        <div className={styles.spacer}></div>
+        <Navigation onClose={closeMenu} />
 
         <div className={styles.rightSide}>
+          <NavLink to="/favorites" className={styles.rightSideLink}>
+            <img
+              src={FavoritesIcon}
+              alt="Favorites"
+              className={`${styles.icon} ${favorites.length > 0 ? styles.activeIcon : ''}`}
+            />
+            {favorites.length > 0 && (
+              <span className={styles.count}>{favorites.length}</span>
+            )}
+          </NavLink>
+
+          <NavLink to="/cart" className={styles.rightSideLink}>
+            <img
+              src={CartIcon}
+              alt="Cart"
+              className={`${styles.icon} ${cartItems.length > 0 ? styles.activeIcon : ''}`}
+            />
+            {cartItems.length > 0 && (
+              <span className={styles.count}>{cartItems.length}</span>
+            )}
+          </NavLink>
+
           <button
             type="button"
             onClick={toggleTheme}
@@ -74,21 +72,20 @@ export const Header = () => {
             {theme === ThemeEnum.Light ? '🌙' : '🌞'}
           </button>
 
-          <NavLink to="/favorites">
-            <img src={FavoritesIcon} alt="Favorites" />
-            {favorites.length > 0 && (
-              <span className={styles.count}>{favorites.length}</span>
-            )}
-          </NavLink>
-
-          <NavLink to="/cart">
-            <img src={CartIcon} alt="Cart" />
-            {cartItems.length > 0 && (
-              <span className={styles.count}>{cartItems.length}</span>
-            )}
-          </NavLink>
+          <button
+            type="button"
+            onClick={toggleMenu}
+            className={styles.burgerButton}
+            aria-label="Toggle menu"
+          >
+            <img src={isMenuOpen ? CloseIcon : MenuIcon} alt="Menu" />
+          </button>
         </div>
       </div>
+
+      {isMenuOpen && (
+        <BurgerMenu isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
+      )}
     </header>
   );
 };

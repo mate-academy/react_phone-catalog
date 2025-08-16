@@ -14,28 +14,31 @@
 }
 
 .removeButton {
-  background: none;
-  border: none;
   cursor: pointer;
   margin-right: 24px;
+  border: none;
+  background: none;
 }
 
 .imageWrapper {
-  width: 80px;
-  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 80px;
+  height: 80px;
   margin-right: 24px;
 }
 
 .name {
   flex: 1;
+
+  margin-right: 24px;
+
   font-size: variables.$fs-medium;
   font-weight: variables.$fw-regular;
   color: var(--main-text);
   text-decoration: none;
-  margin-right: 24px;
 
   &:hover {
     text-decoration: underline;
@@ -49,8 +52,8 @@
 
 .quantityControls {
   display: flex;
-  align-items: center;
   gap: 12px;
+  align-items: center;
   margin-right: 24px;
 
   @include mixins.on-mobile {
@@ -59,14 +62,18 @@
 }
 
 .controlButton {
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--elements);
-  background-color: transparent;
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--elements);
+
+  background-color: transparent;
+
   transition: border-color variables.$transition-main;
 
   &:hover {
@@ -80,17 +87,18 @@
 }
 
 .quantity {
+  width: 24px;
   font-size: variables.$fs-medium;
   font-weight: variables.$fw-medium;
-  width: 24px;
   text-align: center;
 }
 
 .price {
+  width: 80px;
+
   font-size: variables.$fs-medium;
   font-weight: variables.$fw-bold;
   color: var(--main-text);
-  width: 80px;
   text-align: right;
 }
 

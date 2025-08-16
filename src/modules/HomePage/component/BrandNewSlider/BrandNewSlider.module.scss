@@ -1,4 +1,5 @@
 @use '../../../../styles/mixins';
+
 @import '../../../../styles/variables';
 
 .section {
@@ -6,8 +7,8 @@
 }
 
 .title {
+  margin-bottom: 24px;
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 24px;
   color: var(--main-text);
 }

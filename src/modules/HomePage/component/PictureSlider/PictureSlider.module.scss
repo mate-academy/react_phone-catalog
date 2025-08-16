@@ -1,11 +1,13 @@
 @use '../../../../styles/mixins';
+
 @import '../../../../styles/variables';
 
 .slider {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  width: 100%;
   margin-bottom: 40px;
 }
 
@@ -25,26 +27,33 @@
 }
 
 .arrow {
-  width: 56px;
-  background-color: var(--elements);
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s;
 
-  &:hover {
-    background-color: var(--hover-bg);
-  }
+  width: 56px;
+
+  background-color: var(--elements);
+
+  transition: background-color 0.3s;
 
   &::before {
     content: '';
+
     display: block;
+
     width: 16px;
     height: 16px;
-    background-size: 12px 12px;
+
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 12px 12px;
+  }
+
+  &:hover {
+    background-color: var(--hover-bg);
   }
 }
 
@@ -61,11 +70,12 @@
 }
 
 .imageContainer {
-  flex: 1;
+  overflow: hidden;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+
   background-color: var(--white);
 }
 
@@ -77,18 +87,21 @@
 
 .dots {
   display: flex;
+  gap: 12px;
   justify-content: center;
   margin-top: 24px;
-  gap: 12px;
 }
 
 .dot {
+  cursor: pointer;
+
   width: 14px;
   height: 4px;
-  background-color: var(--elements);
-  border-radius: 2px;
   border: none;
-  cursor: pointer;
+  border-radius: 2px;
+
+  background-color: var(--elements);
+
   transition: background-color 0.3s;
 
   &.active {

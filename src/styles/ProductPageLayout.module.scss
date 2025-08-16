@@ -1,4 +1,4 @@
-@use './variables.scss';
+@use './variables';
 @use './mixins';
 
 .page {
@@ -19,8 +19,8 @@
   margin-bottom: 24px;
 
   @include mixins.on-mobile {
-    font-size: 24px;
     margin-bottom: 16px;
+    font-size: 24px;
   }
 }
 

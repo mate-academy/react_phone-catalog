@@ -13,8 +13,8 @@
 }
 
 .table {
-  width: 100%;
   border-collapse: collapse;
+  width: 100%;
 
   @include mixins.text(variables.$fs-small, variables.$fw-regular, var(--secondary-text));
 
@@ -23,9 +23,9 @@
   }
 
   td:first-child {
+    width: 50%;
     font-weight: variables.$fw-medium;
     color: var(--main-text);
-    width: 50%;
   }
 
   td:last-child {
