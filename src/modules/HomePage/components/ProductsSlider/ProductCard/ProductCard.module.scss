@@ -6,48 +6,7 @@
   padding: 32px;
   gap: 8px;
 
-  @include hover(box-shadow, 1px 3px 13px 1px #17203166);
-
-  &__image {
-    display: flex;
-    align-self: center;
-
-    @include set-size(148px, 129px);
-
-    @include on-tablet {
-      @include set-size(173px, 202px);
-    }
-
-    @include on-desktop {
-      @include set-size(208px, 196px);
-    }
-
-    img {
-      @include set-size(100%, 100%);
-
-      object-fit: contain;
-      transition: transform 0.3s ease;
-    }
-  }
-
-  &__button-favorites {
-    display: flex;
-    width: 40px;
-    flex-shrink: 0;
-    border: 1px solid var(--color-gray-icons-placeholders);
-    background-color: var(--color-bg);
-
-    @include hover(border-color, var(--color-gray-primary));
-
-    &--active {
-      border: 1px solid var(--color-gray-elements);
-    }
-
-    img {
-      display: flex;
-      justify-self: center;
-    }
-  }
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
 
   &__title {
     font-family: Mont-Regular, sans-serif;
@@ -57,7 +16,6 @@
     line-height: 21px;
     letter-spacing: 0%;
     min-height: 42px;
-
     padding-top: 8px;
   }
 
@@ -99,6 +57,7 @@
     font-size: 12px;
     line-height: 100%;
     letter-spacing: 0%;
+
     width: 100%;
 
     &-container {
@@ -131,12 +90,57 @@
       border: 1px solid transparent;
       box-sizing: border-box;
 
-      @include hover(box-shadow, 1px 3px 13px 1px #17203166);
+      @include hover(box-shadow, 0 3px 13px 0 #17203166);
 
       &--active {
         background-color: var(--color-gray-bg);
         border-color: var(--color-gray-icons-placeholders);
         color: var(--color-gray-primary);
+      }
+    }
+
+
+    &-favorites {
+      background-color: var(--color-bg);
+      width: 40px;
+      flex-shrink: 0;
+      border: 1px solid var(--color-gray-icons-placeholders);
+
+      @include hover(border-color, var(--color-gray-primary));
+
+      &--active {
+        border: 1px solid var(--color-gray-elements);
+      }
+
+      & img {
+        display: flex;
+        justify-self: center;
+      }
+    }
+  }
+
+  &__image {
+    display: flex;
+    align-self: center;
+
+    @include set-size(148px, 129px);
+
+    @include on-tablet {
+      @include set-size(173px, 202px)
+    }
+
+    @include on-desktop {
+      @include set-size(208px, 196px)
+    }
+
+    img {
+      @include set-size(100%, 100%);
+
+      object-fit: contain;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
       }
     }
   }

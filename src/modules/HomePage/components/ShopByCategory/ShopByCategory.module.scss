@@ -65,70 +65,69 @@
       color: var(--color-gray-secondary);
     }
 
-    &__block {
-      &-wrapper {
-        padding: 55px;
-
-        @include on-tablet {
-          padding: 45px;
-        }
-
-        @include on-desktop {
-          padding: 70px;
-        }
-
-        width: 100%;
-        overflow: hidden;
-        box-sizing: border-box;
-        aspect-ratio: 1 / 1;
-        margin-bottom: 24px;
-        transition: padding 0.3s ease;
-
-        &-img {
-          transform-origin: left top;
-          height: 288px;
-          display: block;
-          max-width: auto;
-          border: 0;
-          transform: translate(10px, 5px);
-
-          @include on-tablet {
-            height: 222px;
-          }
-
-          @include on-desktop {
-            height: 400px;
-          }
-
-          @include hover(transform, scale(1.05));
-        }
-      }
-    }
-
-    &__link {
-      text-decoration: none;
-
-      grid-column: 1 / -1;
+    &-wrapper {
+      padding: 55px;
 
       @include on-tablet {
-        grid-column: span 4;
+        padding: 45px;
       }
 
       @include on-desktop {
-        grid-column: span 8;
+        padding: 70px;
       }
 
-      &:first-child .categories__block-wrapper {
-        background: #6d6474;
-      }
+      width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
+      aspect-ratio: 1 / 1;
+      margin-bottom: 24px;
+      transition: padding 0.3s ease;
 
-      &:nth-child(2) .categories__block-wrapper {
-        background: #8D8D92;
-      }
+      &-img {
+        transform-origin: left top;
+        height: 288px;
+        display: block;
+        max-width: auto;
+        border: 0;
+        transform: translate(10px, 5px);
 
-      &:last-child .categories__block-wrapper {
-        background: #973D5F;
+        @include on-tablet {
+          height: 222px;
+        }
+
+        @include on-desktop {
+          height: 400px;
+        }
+
+        @include hover(transform, scale(1.05));
       }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+
+    &:first-child .categories__block-wrapper {
+      background: #6D6474;
+    }
+
+    &:nth-child(2) .categories__block-wrapper {
+      background: #8D8D92;
+    }
+
+    &:last-child .categories__block-wrapper {
+      background: #973D5F;
     }
   }
 }
