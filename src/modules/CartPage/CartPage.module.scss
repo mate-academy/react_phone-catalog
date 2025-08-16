@@ -1,0 +1,163 @@
+@import '../../shared/index';
+
+.page {
+  background-color: var(--page-color);
+  padding-inline: $padding-mobile;
+
+  @include on-tablet {
+    padding-inline: $padding-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: $padding-desktop;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    text-align: center;
+  }
+
+  &__image {
+    max-width: 320px;
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  &__container {
+    @include on-desktop {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+
+  &__cartContainer {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    margin-bottom: 32px;
+
+    @include on-desktop {
+      margin-bottom: $margin-bottom-desktop;
+      min-width: 544px;
+      flex-grow: 2;
+    }
+  }
+
+  &__item {
+    background-color: var(--white-color);
+    border: 1px solid var(--elements-color);
+    border-radius: 16px;
+  }
+
+  &__checkoutContainer {
+    text-align: center;
+    padding: 24px;
+    border: 1px solid var(--elements-color);
+    border-radius: 16px;
+    margin-bottom: $margin-bottom-mobile;
+
+    @include on-desktop {
+      min-width: 368px;
+    }
+  }
+
+  &__checkoutContainerTop {
+    margin-bottom: 16px;
+
+    @include on-desktop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__checkoutPrice {
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: 700;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--secondary-color);
+  }
+
+  &__checkoutContainerButtom {
+    display: flex;
+  }
+
+  // &__buttom {
+  //   width: 240px;
+  //   background-color: var(--accent);
+  //   border: 1px solid var(--accent);
+  //   border-radius: 48px;
+  // }
+}
+
+.breadcrumbs {
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 16px;
+  }
+}
+
+.line {
+  border: 1px solid var(--elements-color);
+  margin-bottom: 16px;
+
+  @include on-desktop {
+    margin-bottom: 24px;
+  }
+}
+
+.button {
+  font-size: 14px;
+  line-height: 22px;
+  padding: 14px 86px;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.modalOverlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 24px;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+
+  &__modal {
+    border-radius: 16px;
+    background-color: var(--white-color);
+    padding: 24px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__modalButtons {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    align-items: center;
+  }
+
+  &__button {
+    padding: 10px 24px;
+    border: 1px solid var(--accent);
+    border-radius: 48px;
+    color: var(--white-color);
+    background-color: var(--accent);
+  }
+}
