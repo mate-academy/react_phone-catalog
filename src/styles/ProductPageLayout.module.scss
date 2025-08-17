@@ -1,0 +1,35 @@
+@use './variables';
+@use './mixins';
+
+.page {
+  padding: 40px 0;
+
+  @include mixins.on-mobile {
+    padding: 24px 0;
+  }
+}
+
+.container {
+  @include mixins.container;
+}
+
+.title {
+  @include mixins.section-title;
+
+  margin-bottom: 24px;
+
+  @include mixins.on-mobile {
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include mixins.on-tablet {
+    gap: 32px;
+  }
+}

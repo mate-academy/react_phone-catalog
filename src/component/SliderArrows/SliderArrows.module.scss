@@ -1,0 +1,32 @@
+@use '../../styles/variables';
+
+.arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--elements);
+  border-radius: 50%;
+
+  background: none;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--hover-bg);
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
