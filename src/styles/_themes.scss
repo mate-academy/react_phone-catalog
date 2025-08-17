@@ -1,0 +1,30 @@
+// src/styles/_themes.scss
+
+$light-theme: (
+  main-bg: #f1f2f9,
+  main-text: #313237,
+  secondary-text: #89939a,
+  secondary-text-darker: #7a8288,
+  elements: #e2e6e9,
+  hover-bg: #fafbfc,
+  accent: #905bff,
+  accent-darker: #773de6,
+  white: #fff,
+  black: #0f1121,
+  icons: #b4bdc3,
+  link-active-color: #313237,
+);
+$dark-theme: (
+  main-bg: #0f1121,
+  main-text: #fff,
+  secondary-text: #89939a,
+  secondary-text-darker: #6d747a,
+  elements: #464646,
+  hover-bg: #32353a,
+  accent: #905bff,
+  accent-darker: #773de6,
+  white: #fff,
+  black: #0f1121,
+  icons: #b4bdc3,
+  link-active-color: #fff,
+);

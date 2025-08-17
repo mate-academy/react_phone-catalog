@@ -1,0 +1,53 @@
+// src/modules/ProductDetailsPage/components/ProductAbout.module.scss
+
+@use '../../../styles/variables';
+@use '../../../styles/mixins';
+
+.about {
+  margin-bottom: 40px;
+
+  @include mixins.on-desktop {
+    margin-bottom: 64px;
+  }
+}
+
+.title {
+  @include mixins.title(variables.$fs-xl, variables.$fw-bold);
+
+  margin-bottom: 30px;
+
+  @include mixins.on-desktop {
+    margin-bottom: 64px;
+  }
+}
+
+.block {
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.subtitle {
+  @include mixins.text(variables.$fs-large, variables.$fw-medium, var(--main-text));
+
+  margin-bottom: 16px;
+}
+
+.text {
+  @include mixins.text(variables.$fs-small, variables.$fw-regular, var(--secondary-text));
+
+  margin-bottom: 10px;
+  line-height: 150%;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.empty {
+  @include mixins.text(variables.$fs-small, variables.$fw-regular, var(--secondary-text));
+
+  font-style: italic;
+}

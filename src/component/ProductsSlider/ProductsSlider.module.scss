@@ -1,0 +1,31 @@
+@use '../../styles/variables' as vars;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--main-text);
+}
+
+.trackWrapper {
+  overflow: visible;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide {
+  flex-shrink: 0;
+  width: 272px;
+  margin-right: 16px;
+}

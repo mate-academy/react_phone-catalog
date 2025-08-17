@@ -1,0 +1,57 @@
+@use '../../../../styles/mixins';
+@use '../../../../styles/variables';
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  @include mixins.on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mixins.on-mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  border: 1px solid var(--elements);
+
+  text-decoration: none;
+
+  background-color: var(--white);
+
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .textBlock {
+    padding: 24px;
+
+    h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--secondary-text);
+    }
+
+    p {
+      margin: 0;
+      font-size: variables.$fs-small;
+      color: var(--secondary-text);
+    }
+  }
+}
