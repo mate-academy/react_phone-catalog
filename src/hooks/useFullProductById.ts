@@ -1,7 +1,7 @@
 // hooks/useFullProductById.ts
 import { useEffect, useState } from 'react';
 import { Product } from '../types/Product';
-import { getProductById } from './productsApi';
+import { getProductById } from '../api/productsApi';
 
 export const useFullProductById = (productId: string | undefined) => {
   const [fullProduct, setFullProduct] = useState<Product | null>(null);
