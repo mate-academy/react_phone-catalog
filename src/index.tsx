@@ -9,7 +9,7 @@ import { CartProvider } from './context/CartContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/react_phone-catalog">
+    <BrowserRouter basename="/">
       <ThemeProvider>
         <FavoritesProvider>
           <CartProvider>
