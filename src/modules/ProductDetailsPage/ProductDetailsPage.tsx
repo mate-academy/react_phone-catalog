@@ -7,7 +7,7 @@ import { ProductInfo } from './components/ProductInfo';
 import { ProductAbout } from './components/ProductAbout';
 import { ProductSpecs } from './components/ProductSpecs';
 import { ProductsSlider } from '../../component/ProductsSlider/ProductsSlider';
-import { getSuggestedProducts } from '../../api/productsApi';
+import { getSuggestedProducts } from '../../hooks/productsApi';
 
 import { useFullProductById } from '../../hooks/useFullProductById';
 
