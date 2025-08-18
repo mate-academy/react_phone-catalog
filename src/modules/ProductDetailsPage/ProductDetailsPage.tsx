@@ -111,6 +111,13 @@ export const ProductDetailsPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    setSelectedImage(chosedItem ? chosedItem.images[0] : null);
+
+    setSelectedColor(chosedItem ? chosedItem.color : '');
+    setSelectedCapacity(chosedItem ? chosedItem.capacity : '');
+  }, [fullInfoList]);
+
+  useEffect(() => {
     const checkTheStorage = () => {
       if (!chosedItemDemo) {
         return;
