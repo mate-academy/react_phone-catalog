@@ -22,4 +22,57 @@
       text-align: right;
     }
   }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+    grid-column: 1/1;
+
+    &--discount {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+    }
+
+    &--full {
+      color: #75767F;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 28px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__button {
+    grid-column: 1/1;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+    grid-column: 1/1;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__term {
+    font-size: 12px;
+    color: $color-grey;
+    font-weight: 700;
+  }
+
+  &__desc {
+    font-size: 12px;
+    font-weight: 700;
+    color: $color-primary;
+  }
+
+
 };

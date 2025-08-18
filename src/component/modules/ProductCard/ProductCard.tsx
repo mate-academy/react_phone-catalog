@@ -1,6 +1,7 @@
 import { Products } from '../../../types/Products';
 import { Link, useLocation } from 'react-router-dom';
 import style from './ProductCard.module.scss';
+import { AddSelection } from './../../../component/AddSelection/AddSelection';
 
 interface Props {
   products: Products;
@@ -75,6 +76,8 @@ export const ProductCard: React.FC<Props> = ({ products }) => {
           </li>
         ))}
       </ul>
+
+      <AddSelection product={products} />
     </div>
   );
 };
