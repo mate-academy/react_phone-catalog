@@ -20,7 +20,6 @@ export const HomePage: React.FC = () => {
   return (
     <div className={styles.page}>
       <section className={styles.sliderSection}>
-        <h1 className={styles.section}>Product Catalog</h1>
         <PictureSlider />
       </section>
 
