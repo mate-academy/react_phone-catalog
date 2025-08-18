@@ -21,9 +21,9 @@ export const CartItem: React.FC<Props> = ({
 
   const slug = item.itemId || String(item.id);
   const imgSrc = item.image
-    ? `/${item.image}`
+    ? `./${item.image}`
     : item.images?.[0]
-      ? `/${item.images[0]}`
+      ? `./${item.images[0]}`
       : undefined;
 
   return (
