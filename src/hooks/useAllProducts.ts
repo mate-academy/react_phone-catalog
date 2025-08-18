@@ -11,7 +11,7 @@ export const useAllProducts = () => {
     setLoading(true);
     setError(null);
 
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to fetch all products');

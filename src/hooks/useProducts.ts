@@ -10,7 +10,7 @@ export const useProducts = (category: 'phones' | 'tablets' | 'accessories') => {
     setLoading(true);
     setError(null);
 
-    fetch(`/api/${category}.json`)
+    fetch(`./api/${category}.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error ${response.status}`);

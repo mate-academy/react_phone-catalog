@@ -27,7 +27,7 @@ export const useFullProductById = (productId: string | undefined) => {
           throw new Error('Product data incomplete');
         }
 
-        const categoryRes = await fetch(`/api/${baseProduct.category}.json`);
+        const categoryRes = await fetch(`./api/${baseProduct.category}.json`);
 
         if (!categoryRes.ok) {
           throw new Error('Failed to fetch category data');

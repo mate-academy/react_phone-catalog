@@ -17,7 +17,7 @@ export const useCategoryCounts = () => {
 
     Promise.all(
       categories.map(category =>
-        fetch(`/api/${category}.json`).then(
+        fetch(`./api/${category}.json`).then(
           res => res.json() as Promise<Product[]>,
         ),
       ),
