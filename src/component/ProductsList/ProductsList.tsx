@@ -12,7 +12,7 @@ type Props = {
   error: string;
 };
 
-export const ProductList: React.FC<Props> = ({ title, products }) => {
+export const ProductList: React.FC<Props> = ({ title, products, error }) => {
   const { searchParams, updateSearchParams } = useUpdateSearchParams();
 
   const sortOptions = [
@@ -83,31 +83,41 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
   const visibleProducts = getVisibleProducts(finishedProducts);
 
   return (
-    <div className={style['product-list']}>
+    <section className={style['product-list']}>
       <ProductNav />
-      <div>
-        <h1 className={style['product-list__title']}>{title}</h1>
-        <p className={style['product-list__text']}>
-          {finishedProducts.length} models
-        </p>
-      </div>
-      <div>
-        <div className={style['product-list__select']}>
-          <SortSelector title="Sort by" type="sort" items={sortOptions} />
-          <SortSelector
-            title="Items per page"
-            type="perPage"
-            items={sortPerPage}
-          />
-        </div>
-        {finishedProducts.length ? (
-          <GridFavourites products={visibleProducts} />
-        ) : (
-          <p className={style['products-catalog__no-found']}>
-            No matches found
-          </p>
-        )}
-      </div>
+
+      {error ? (
+        <p className={style['product-list__title']}>{error}</p>
+      ) : (
+        <>
+          <div>
+            <h1 className={style['product-list__title']}>{title}</h1>
+
+            <p className={style['product-list__text']}>
+              {finishedProducts.length} models
+            </p>
+          </div>
+
+          <div>
+            <div className={style['product-list__select']}>
+              <SortSelector title="Sort by" items={sortOptions} type="sort" />
+              <SortSelector
+                title="Items on page"
+                items={sortPerPage}
+                type="perPage"
+              />
+            </div>
+
+            {finishedProducts.length ? (
+              <GridFavourites products={visibleProducts} />
+            ) : (
+              <p className={style['products-catalog__no-found']}>
+                No matches found
+              </p>
+            )}
+          </div>
+        </>
+      )}
 
       <Pagination
         perPage={perPage}
@@ -115,6 +125,6 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
         currentPage={currentPage}
         onPageChange={page => updateSearchParams('page', page)}
       />
-    </div>
+    </section>
   );
 };
