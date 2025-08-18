@@ -39,7 +39,7 @@ export const CartItem: React.FC<Props> = ({
 
       <Link to={`/product/${slug}`} className={styles.imageWrapper}>
         {imgSrc && (
-          <img src={`/${imgSrc}`} alt={item.name} className={styles.image} />
+          <img src={`./${imgSrc}`} alt={item.name} className={styles.image} />
         )}
       </Link>
 
