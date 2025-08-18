@@ -15,7 +15,9 @@ export const CapacityPicker: React.FC<Props> = ({ capacity }) => {
         <label
           key={item}
           className={`capacity-picker__container ${
-            selectedCapacity === item ? 'capacity-picker__container--selected' : ''
+            selectedCapacity === item
+              ? 'capacity-picker__container--selected'
+              : ''
           }`}
         >
           <input

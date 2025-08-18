@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import { BurgerMenu } from '../BurgerMenu';
 
@@ -20,18 +20,38 @@ export const Header: React.FC = () => {
         />
         <div className="header__container">
           <nav className="header__nav">
-            <Link to="/" className="header__link header__link--home">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `header__link header__link--home ${isActive ? 'header__link--active' : ''}`
+              }
+            >
               HOME
-            </Link>
-            <Link to="/phones" className="header__link">
+            </NavLink>
+            <NavLink
+              to="/phones"
+              className={({ isActive }) =>
+                `header__link ${isActive ? 'header__link--active' : 'header__link'}`
+              }
+            >
               PHONES
-            </Link>
-            <Link to="tablets" className="header__link">
+            </NavLink>
+            <NavLink
+              to="tablets"
+              className={({ isActive }) =>
+                `header__link ${isActive ? 'header__link--active' : 'header__link'}`
+              }
+            >
               TABLETS
-            </Link>
-            <Link to="/accessories" className="header__link">
+            </NavLink>
+            <NavLink
+              to="/accessories"
+              className={({ isActive }) =>
+                `header__link ${isActive ? 'header__link--active' : 'header__link'}`
+              }
+            >
               ACCESSORIES
-            </Link>
+            </NavLink>
           </nav>
 
           <div className="header__button">

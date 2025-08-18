@@ -64,6 +64,11 @@
     &--home {
       margin-left: 24px;
     }
+
+    &--active {
+      color: #f1f2f9;
+      border-bottom: 3px solid #f1f2f9;
+    }
   }
 
   &__button {
