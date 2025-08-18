@@ -33,7 +33,7 @@
   padding: 12px;
   border: none;
 
-  color: white;
+  color: var(--main-bg);
 
   background-color: var(--main-text);
 
@@ -91,7 +91,7 @@
   border: 1px solid var(--elements);
   background-color: white;
 
-  @include mixins.text(variables.$fs-small, variables.$fw-medium, var(--main-text));
+  @include mixins.text(variables.$fs-small, variables.$fw-medium, var(--main-bg));
 
   &.selected {
     border-color: var(--main-text);
