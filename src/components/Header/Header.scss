@@ -47,6 +47,8 @@
     cursor: pointer;
     text-decoration: none;
 
+    box-sizing: border-box;
+
     color: #75767f;
 
     display: flex;
@@ -55,6 +57,8 @@
     height: 100%;
     font-size: 12px;
     font-weight: 800;
+
+    border-bottom: 3px solid transparent;
 
     &:hover {
       color: #f1f2f9;
