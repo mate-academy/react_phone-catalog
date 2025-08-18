@@ -13,45 +13,53 @@ export const Banner: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex(prev => (prev + 1) % images.length);
-    }, 5000); 
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
-  const prevSlide = () => {
+  const prevSlide = () =>
     setIndex(prev => (prev - 1 + images.length) % images.length);
-  };
-
-  const nextSlide = () => {
-    setIndex(prev => (prev + 1) % images.length);
-  };
+  const nextSlide = () => setIndex(prev => (prev + 1) % images.length);
 
   return (
     <div className="banner">
-      <button className="banner__button" onClick={prevSlide}>
-        <img
-          className="banner__arrow"
-          src="/img/icons/arrow-left.svg"
-          alt="arrow left"
-        />
+      <button
+        className="banner__button banner__button--left"
+        onClick={prevSlide}
+      >
+        <img src="/img/icons/arrow-left.svg" alt="arrow left" />
       </button>
 
       <div className="banner__wrapper">
-        <img className="banner__image" src={images[index]} alt="banner image" />
+        {images.map((img, i) => (
+          <img
+            key={img}
+            src={img}
+            alt="banner image"
+            className={`banner__image ${i === index ? 'active' : ''} ${
+              i === images.length - 1 ? 'last' : ''
+            }`}
+          />
+        ))}
       </div>
 
-      <button className="banner__button" onClick={nextSlide}>
-        <img
-          className="banner__arrow"
-          src="/img/icons/arrow-right.svg"
-          alt="arrow right"
-        />
+      <button
+        className="banner__button banner__button--right"
+        onClick={nextSlide}
+      >
+        <img src="/img/icons/arrow-right.svg" alt="arrow right" />
       </button>
-      {/* <div className="banner__container">
-        <h1>Now available in our store!</h1>
-        <p>Be the first!</p>
-        <button>ORDER NOW</button>
-      </div> */}
+
+      <div className="banner__dots">
+        {images.map((_, i) => (
+          <span
+            key={i}
+            className={`banner__dot ${i === index ? 'active' : ''}`}
+            onClick={() => setIndex(i)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
