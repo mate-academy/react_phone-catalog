@@ -28,6 +28,6 @@ export const router = createBrowserRouter(
     },
   ],
   {
-    basename: '/react_phone-catalog',
+    basename: '/react_phone-catalog/',
   },
 );
