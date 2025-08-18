@@ -12,7 +12,10 @@ export const Footer: React.FC = () => {
       <img className="footer__logo" src="/img/logo-img.svg" alt="logo image" />
       <div className="footer__container">
         <nav className="footer__nav">
-          <Link to="/" className="footer__link footer__link--home">
+          <Link
+            to="https://github.com/Sofiia13"
+            className="footer__link footer__link--home"
+          >
             GITHUB
           </Link>
           <Link to="#" className="footer__link">

@@ -8,6 +8,7 @@
     background-color: #323542;
     padding-inline: 8px;
     color: #f1f2f9;
+    cursor: pointer;
   }
 
   &__arrow {
@@ -27,6 +28,12 @@
     object-fit: cover;
     object-position: center 30%;
     display: block;
+
+    // opacity: 0;
+    pointer-events: none; // щоб картинки не блокували кнопки
+    // transition:
+    //   opacity 1s ease-in-out,
+    //   transform 0.5s ease;
   }
 
   // @media (max-width: 1200px) {
