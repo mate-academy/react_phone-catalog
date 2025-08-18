@@ -39,19 +39,25 @@ $content-padding-desktop: 40px;
   --small-button-active-bg: var(--color-white);
   --small-button-active-border: var(--color-elements);
 
+  --back-button-default-arrow-color: var(--color-primary);
+  --back-button-default-text-color: var(--color-secondary);
+  --back-button-hover-color: var(--color-primary);
+
   --counter-border: var(--color-white);
 
   --footer-bg-color: var(--color-black);
   --footer-text-color: var(--color-secondary);
 
   --dropdown-bg-color: var(--color-white);
-
   --dropdown-item-hover-bg: var(--color-hover-bg);
-
   --dropdown-default-border: var(--color-icons);
   --dropdown-hover-border: var(--color-secondary);
   --dropdown-active-border: var(--color-primary);
   --dropdown-menu-bg: var(--color-white);
+
+  --color-bg-border: var(--color-white);
+  --color-default-border: var(--color-elements);
+  --color-hover-border: var(--color-icons);
 }
 
 .dark-theme {
@@ -88,6 +94,10 @@ $content-padding-desktop: 40px;
   --small-button-active-bg: var(--color-black);
   --small-button-active-border: var(--color-elements);
 
+  --back-button-default-arrow-color: var(--color-primary);
+  --back-button-default-text-color: var(--color-secondary);
+  --back-button-hover-color: var(--color-accent);
+
   --counter-border: var(--color-black);
 
   --footer-bg-color: var(--color-black);
@@ -95,9 +105,12 @@ $content-padding-desktop: 40px;
 
   --dropdown-bg-color: var(--color-surface2);
   --dropdown-item-hover-bg: var(--color-surface2);
-
   --dropdown-default-border: var(--color-surface2);
   --dropdown-hover-border: var(--color-icons);
   --dropdown-active-border: var(--color-accent);
   --dropdown-menu-bg: var(--color-black);
+
+  --color-bg-border: var(--color-black);
+  --color-default-border: var(--color-elements);
+  --color-hover-border: var(--color-secondary);
 }

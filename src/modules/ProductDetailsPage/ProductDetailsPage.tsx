@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import styles from './ProductDetailsPage.module.scss';
 import {
@@ -7,7 +7,6 @@ import {
   findProduct,
   findTablet
 } from '../shared/services/productService';
-import { getFormattedPathname } from '../shared/utils/getFormattedPathname';
 import { AccessoryDetails } from '../../types/AccessoryDetails';
 import { useEffect, useState } from 'react';
 import { AddToCart } from '../../components/AddToCart';
@@ -18,6 +17,7 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { getColor } from '../shared/utils/getColor';
 import { useAppContext } from '../../contexts/AppContext';
 import { Loader } from '../../components/Loader';
+import { Back } from '../../components/Back';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
@@ -26,7 +26,6 @@ export const ProductDetailsPage: React.FC = () => {
     favouriteProductsIds,
     toggleFavouriteCard,
     toggleAddToCart,
-    theme,
   } = useAppContext();
 
   async function finder() {
@@ -73,14 +72,7 @@ export const ProductDetailsPage: React.FC = () => {
         <>
           <div className={styles.head}>
             <Breadcrumb />
-            <Link to={`/${getFormattedPathname(pathname)[0]}`} className={styles.back}>
-              <img
-                className={styles.left}
-                src={`/img/icons/${theme}-theme/arrow.svg`}
-                alt="Back"
-              />
-              <span className='smallText'>Back</span>
-            </Link>
+            <Back />
 
             <div className={styles.product}>
               <h2 className={styles.title}>{product?.name}</h2>

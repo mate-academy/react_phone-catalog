@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './ProductsPage.module.scss';
 import { ItemsPerPage } from '../../types/ItemsPerPage';
 import { ProductsSortType } from '../../types/ProductsSortType';
-import { Arrow } from '../../components/Arrow';
+import { ArrowButton } from '../../components/Arrow/ArrowButton';
 import { ProductsList } from '../../components/ProductsList';
 import { useAppContext } from '../../contexts/AppContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import { Card } from '../../types/Card';
+import { Arrow } from '../../components/Arrow/Arrow';
 
 type Props = {
   type: 'phones' | 'tablets' | 'accessories';
@@ -23,7 +24,6 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     setSearchParams, 
     products, 
     isLoading,
-    theme,
   } = useAppContext();
 
   const [isPerPageDropdownOpen, setIsPerPageDropdownOpen] = useState<boolean>(false);
@@ -246,11 +246,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
               >
                 {getSortTypeValue(sortType)}
                 <span className={styles.arrowContainer}>
-                  <img
-                    className={!isSortTypeDropdownOpen ? styles.down : ''}
-                    src={`/img/icons/${theme}-theme/arrow-disabled.svg`}
-                    alt={`Arrow ${isSortTypeDropdownOpen ? 'up' : 'down'}`}
-                  />
+                  <Arrow direction='down' isDisabled={true} />
                 </span>
               </button>
 
@@ -283,11 +279,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
               >
                 {perPageValue}
                 <span className={styles.arrowContainer}>
-                  <img
-                    className={!isSortTypeDropdownOpen ? styles.down : ''}
-                    src={`/img/icons/${theme}-theme/arrow-disabled.svg`}
-                    alt={`Arrow ${isPerPageDropdownOpen ? 'up' : 'down'}`}
-                  />
+                <Arrow direction='down' isDisabled={true} />
                 </span>
               </button>
 
@@ -324,7 +316,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
       {perPageValue !== 'All' && (
         <div className={styles.pagination}>
-          <Arrow
+          <ArrowButton
             direction="left"
             isDisabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
@@ -356,7 +348,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
             )}
           </div>
 
-          <Arrow
+          <ArrowButton
             direction="right"
             isDisabled={currentPage === Math.ceil(currentProducts.length / perPageValue)}
             onClick={() => handlePageChange(currentPage + 1)}

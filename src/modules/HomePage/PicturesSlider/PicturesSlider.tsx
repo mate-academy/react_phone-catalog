@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './PicturesSlider.module.scss';
-import { Arrow } from '../../../components/Arrow';
+import { ArrowButton } from '../../../components/Arrow/ArrowButton';
 
 export const PicturesSlider: React.FC = () => {
   const [currentPicture, setCurrentPicture] = useState(0);
@@ -27,7 +27,7 @@ export const PicturesSlider: React.FC = () => {
     <div className={styles.slider}>
       <div className={styles.carousel}>
         <div className={styles.onTablet}>
-          <Arrow
+          <ArrowButton
             direction="left"
             height="100%"
             onClick={() => handleArrowClick('left')}
@@ -39,7 +39,7 @@ export const PicturesSlider: React.FC = () => {
           </ul>
         </div>
         <div className={styles.onTablet}>
-          <Arrow
+          <ArrowButton
             direction="right"
             height="100%"
             onClick={() => handleArrowClick('right')}

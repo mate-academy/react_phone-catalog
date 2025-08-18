@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Arrow } from '../Arrow';
+import { ArrowButton } from '../Arrow/ArrowButton';
 import { Card } from '../Card';
 import styles from './ProductsSlider.module.scss';
 import { useAppContext } from '../../contexts/AppContext';
@@ -85,12 +85,12 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
         <h2 className={`pageTitle`}>{title}</h2>
 
         <div className={styles.arrows}>
-          <Arrow
+          <ArrowButton
             direction="left"
             isDisabled={scrollPosition === 0}
             onClick={() => handleArrowClick('left')}
           />
-          <Arrow
+          <ArrowButton
             direction="right"
             isDisabled={scrollPosition >= maxScrollPosition}
             onClick={() => handleArrowClick('right')}

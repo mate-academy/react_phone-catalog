@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumb.module.scss';
 import { getFormattedPathname } from '../../modules/shared/utils/getFormattedPathname';
 import { useAppContext } from '../../contexts/AppContext';
+import { Arrow } from '../Arrow/Arrow';
 
 export const Breadcrumb: React.FC = () => {
   const { pathname } = useLocation();
@@ -19,12 +20,7 @@ export const Breadcrumb: React.FC = () => {
       </Link>
 
       {getFormattedPathname(pathname).map((item, i, arr) => [
-        <img
-          key={`arrow-${i}`}
-          className={styles.arrow}
-          src={`/img/icons/${theme}-theme/arrow-disabled.svg`}
-          alt="Arrow"
-        />,
+        <Arrow direction='right' isDisabled={true} />,
         <Link
           key={`link-${i}`}
           to={`/${i === 0 ? item : `${pathname.slice(1)}`}`}

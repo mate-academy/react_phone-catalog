@@ -1,0 +1,32 @@
+.arrow {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 100%;
+  border: 1px solid var(--small-button-default-border);
+
+  background-color: var(--small-button-default-bg);
+
+  &:disabled {
+    pointer-events: none;
+    background-color: 1px solid var(--color-black);
+    border-color: var(--small-button-active-border);
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--small-button-hover-bg);
+    border-color: var(--small-button-hover-border);
+  }
+}
+
+.isTablet {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}

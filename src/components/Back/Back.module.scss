@@ -1,0 +1,17 @@
+.back {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  width: fit-content;
+  gap: 4px;
+  margin-bottom: 16px;
+  color: var(--back-button-default-text-color);
+
+  &Text {
+    margin-top: 2px;
+  }
+
+  &:hover {
+    color: var(--back-button-hover-color);
+  }
+}
