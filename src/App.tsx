@@ -7,6 +7,7 @@ import { PhonesPage } from './Page/PhonesPage/PhonesPage';
 import { TabletsPage } from './Page/TabletsPage';
 import { AccessoriesPage } from './Page/AccessoriesPage';
 import { ProductDetails } from './ProductDetails/ProductDetails';
+import { FavouritesProducts } from './component/FavouritesProducts';
 
 export const App = () => {
   return (
@@ -24,6 +25,8 @@ export const App = () => {
 
           <Route path="/accessories" element={<AccessoriesPage />} />
           <Route path="/accessories/:id" element={<ProductDetails />} />
+
+          <Route path="/favourites" element={<FavouritesProducts />} />
         </Routes>
 
         <Footer />
