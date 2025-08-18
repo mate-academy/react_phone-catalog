@@ -1,15 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
 import { useMyContext } from '../../Context/ProductContexts';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { NavBar } from '../../shared/NavBar';
 import { SavedGoods } from '../../shared/SavedGoods';
 
 export const BurgerMenu: React.FC = () => {
   const location = useLocation();
-  const { setIsMenuOpen, products } = useMyContext();
-  const [favoriteNumber, setFavoriteNumber] = useState<number>(0);
-  const [cartNumber, setCartNumber] = useState<number>(0);
+  const { setIsMenuOpen } = useMyContext();
   const links = [
     { path: '/', title: 'Home' },
     { path: '/phones', title: 'phones' },
@@ -18,20 +16,6 @@ export const BurgerMenu: React.FC = () => {
   ];
 
   useEffect(() => {
-    products.forEach(product => {
-      const jsonFavorite = localStorage.getItem(product.itemId);
-
-      if (jsonFavorite) {
-        setFavoriteNumber(prev => prev + 1);
-      }
-
-      const jsonOrder = localStorage.getItem(`cart_${product.itemId}`);
-
-      if (jsonOrder) {
-        setCartNumber(prev => prev + 1);
-      }
-    });
-
     window.scrollTo(0, 0);
   }, []);
 
@@ -55,12 +39,7 @@ export const BurgerMenu: React.FC = () => {
             </Link>
           ))}
         </div>
-        <SavedGoods
-          cartNumber={cartNumber}
-          setCartNumber={setCartNumber}
-          favoriteNumber={favoriteNumber}
-          setFavoriteNumber={setFavoriteNumber}
-        />
+        <SavedGoods />
       </div>
     </div>
   );

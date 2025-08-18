@@ -26,7 +26,7 @@
       align-items: center;
       gap: 50px;
     }
-    
+
     @include respond(desktop) {
       gap: 100px;
     }
@@ -112,4 +112,10 @@
     align-items: center;
     padding-inline: 32px;
   }
+}
+
+.underline {
+  height: 1px;
+  background-color: #3b3e4a;
+  width: 100%;
 }

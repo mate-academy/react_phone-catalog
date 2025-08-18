@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './NavBar.module.scss';
 import { useMyContext } from '../../Context/ProductContexts';
@@ -7,10 +7,13 @@ import { breakpoints } from '../../Services/MediaBreakpoints';
 import { SavedGoods } from '../SavedGoods';
 
 export const NavBar: React.FC = () => {
-  const { isMenuOpen, setIsMenuOpen, products, heartIsPressed, addIsPressed } =
-    useMyContext();
-  const [favoriteNumber, setFavoriteNumber] = useState<number>(0);
-  const [cartNumber, setCartNumber] = useState<number>(0);
+  const {
+    isMenuOpen,
+    setIsMenuOpen,
+    products,
+    heartIsPressed,
+    setFavoriteNumber,
+  } = useMyContext();
   const location = useLocation();
 
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.tablet}px)`);
@@ -23,21 +26,15 @@ export const NavBar: React.FC = () => {
 
   useEffect(() => {
     let favoriteCount = 0;
-    let cartCount = 0;
 
     products.forEach(product => {
       if (localStorage.getItem(product.itemId)) {
         favoriteCount++;
       }
-
-      if (localStorage.getItem(`cart_${product.itemId}`)) {
-        cartCount++;
-      }
     });
 
     setFavoriteNumber(favoriteCount);
-    setCartNumber(cartCount);
-  }, [products, heartIsPressed, addIsPressed]);
+  }, [products, heartIsPressed]);
 
   return (
     <div className={styles.navBar}>
@@ -89,12 +86,7 @@ export const NavBar: React.FC = () => {
               </li>
             ))}
           </ul>
-          <SavedGoods
-            cartNumber={cartNumber}
-            setCartNumber={setCartNumber}
-            favoriteNumber={favoriteNumber}
-            setFavoriteNumber={setFavoriteNumber}
-          />
+          <SavedGoods />
         </div>
       )}
     </div>

@@ -3,18 +3,8 @@ import styles from './SavedGoods.module.scss';
 import { Link } from 'react-router-dom';
 import { useMyContext } from '../../Context/ProductContexts';
 
-type SavedGoodsProps = {
-  favoriteNumber: number;
-  cartNumber: number;
-  setCartNumber: React.Dispatch<React.SetStateAction<number>>;
-  setFavoriteNumber: React.Dispatch<React.SetStateAction<number>>;
-};
-
-export const SavedGoods: React.FC<SavedGoodsProps> = ({
-  favoriteNumber,
-  cartNumber,
-}) => {
-  const { setIsMenuOpen } = useMyContext();
+export const SavedGoods: React.FC = () => {
+  const { setIsMenuOpen, favoriteNumber, amountItems } = useMyContext();
 
   return (
     <div className={styles.savedGoods}>
@@ -47,7 +37,7 @@ export const SavedGoods: React.FC<SavedGoodsProps> = ({
             src="img/Additional images/icons/Shopping cart.svg"
             alt="cart"
           />
-          <span className={styles.miniImage_badge}>{cartNumber}</span>
+          <span className={styles.miniImage_badge}>{amountItems}</span>
         </div>
       </Link>
     </div>

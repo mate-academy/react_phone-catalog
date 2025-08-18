@@ -5,7 +5,6 @@ import { Swiper } from '../Swiper';
 import { NewModels } from '../NewModels';
 import { ShopByCategory } from '../ShopByCategory';
 import { HotPrices } from '../HotPrices';
-import { Footer } from '../../Footer';
 
 export const MainContent: React.FC = () => {
   return (
@@ -13,9 +12,9 @@ export const MainContent: React.FC = () => {
       <NavBar />
       <div className={styles.container}>
         <header className={styles.header}>
-          <h1 className={styles.header_title}>
+          <h2 className={styles.header_title}>
             Welcome to Nice Gadgets store!
-          </h1>
+          </h2>
           <Swiper />
         </header>
         <div className={styles.content}>
@@ -24,8 +23,6 @@ export const MainContent: React.FC = () => {
           <HotPrices />
         </div>
       </div>
-      <div className={styles.underline}></div>
-      <Footer />
     </>
   );
 };

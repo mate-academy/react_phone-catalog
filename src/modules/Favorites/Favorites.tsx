@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Favorites .module.scss';
 import { useMyContext } from '../../Context/ProductContexts';
-import { Footer } from '../Footer';
 import { ProductDemo } from '../../types/ProductDemo';
 import { NavBar } from '../../shared/NavBar';
 import { Direction } from '../../shared/Direction/Direction';
@@ -49,8 +48,6 @@ export const Favorites: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className={styles.underline}></div>
-          <Footer />
         </>
       )}
     </div>

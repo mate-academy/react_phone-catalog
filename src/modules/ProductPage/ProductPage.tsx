@@ -58,12 +58,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
           .sort((a, b) => b.year - a.year);
 
         setFilteredProducts(filtered);
-
-        const params = new URLSearchParams();
-
-        params.set('page', '1');
-        params.set('perPage', 'all');
-        setSearchParams(params);
       } catch {
         setIsError(true);
       } finally {
@@ -339,8 +333,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
               )}
             </div>
           </div>
-          <div className={styles.underline}></div>
-          <Footer />
         </>
       )}
     </>

@@ -1,7 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useParams } from 'react-router-dom';
-import { Footer } from '../../modules/Footer';
-import styles from './ProductDetailsPage.module.scss';
 import { useMyContext } from '../../Context/ProductContexts';
 import { useEffect, useState } from 'react';
 import { ProductFullInfo } from '../../types/ProductFullInfo';
@@ -168,8 +166,6 @@ export const ProductDetailsPage: React.FC = () => {
       ) : (
         <ErrorMessage notFound={true} />
       )}
-      <div className={styles.underline}></div>
-      <Footer />
     </>
   );
 };

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useMyContext } from '../../Context/ProductContexts';
 import { NavBar } from '../../shared/NavBar';
 import { ProductList } from '../../shared/ProductList';
-import { Footer } from '../Footer';
 import styles from './Cart.module.scss';
 import { ProductDemo } from '../../types/ProductDemo';
 import { Loader } from '../../shared/Loader';
@@ -10,10 +9,16 @@ import { Back } from '../../shared/Back';
 import { BurgerMenu } from '../BurgerMenu';
 
 export const Cart: React.FC = () => {
-  const { products, isMenuOpen, addIsPressed, isLoading } = useMyContext();
+  const {
+    products,
+    isMenuOpen,
+    addIsPressed,
+    isLoading,
+    amountItems,
+    setClearIsPressed,
+  } = useMyContext();
   const [orderList, setOrderList] = useState<ProductDemo[]>([]);
   const [amountPrice, setAmountPrice] = useState(0);
-  const [amountItems, setAmountItems] = useState(0);
   const [checkout, setCheckout] = useState(false);
 
   const confirmModal = () => {
@@ -45,7 +50,6 @@ export const Cart: React.FC = () => {
 
   useEffect(() => {
     let totalPrice = 0;
-    let totalItems = 0;
 
     orderList.forEach(product => {
       const jsonItem = localStorage.getItem(`cart_${product.itemId}`);
@@ -58,11 +62,9 @@ export const Cart: React.FC = () => {
       const quantity = storedItem.quantity || 1;
       const price = storedItem.price;
 
-      totalItems += quantity;
       totalPrice += quantity * price;
     });
 
-    setAmountItems(totalItems);
     setAmountPrice(totalPrice);
   }, [orderList]);
 
@@ -111,7 +113,10 @@ export const Cart: React.FC = () => {
                         <button
                           className={styles.submit_button}
                           id="confirmBtn"
-                          onClick={confirmModal}
+                          onClick={() => {
+                            confirmModal();
+                            setClearIsPressed(prev => !prev);
+                          }}
                         >
                           Yes, clear
                         </button>
@@ -131,8 +136,6 @@ export const Cart: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className={styles.underline}></div>
-      <Footer />
     </>
   );
 };

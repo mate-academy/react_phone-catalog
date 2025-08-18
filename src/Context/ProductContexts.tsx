@@ -28,6 +28,18 @@ type MyContextType = {
   setHeartIsPressed: React.Dispatch<React.SetStateAction<boolean>>;
   addIsPressed: boolean;
   setAddIsPressed: React.Dispatch<React.SetStateAction<boolean>>;
+  minusIsPressed: boolean;
+  setMinusIsPressed: React.Dispatch<React.SetStateAction<boolean>>;
+  plusIsPressed: boolean;
+  setPlusIsPressed: React.Dispatch<React.SetStateAction<boolean>>;
+  cartNumber: number;
+  setCartNumber: React.Dispatch<React.SetStateAction<number>>;
+  favoriteNumber: number;
+  setFavoriteNumber: React.Dispatch<React.SetStateAction<number>>;
+  amountItems: number;
+  setAmountItems: React.Dispatch<React.SetStateAction<number>>;
+  clearIsPressed: boolean;
+  setClearIsPressed: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const MyContext = createContext<MyContextType | null>(null);
@@ -42,6 +54,12 @@ export const MyProvider = ({ children }: { children: ReactNode }) => {
   const [isError, setIsError] = useState<boolean>(false);
   const [heartIsPressed, setHeartIsPressed] = useState<boolean>(false);
   const [addIsPressed, setAddIsPressed] = useState<boolean>(false);
+  const [minusIsPressed, setMinusIsPressed] = useState<boolean>(false);
+  const [plusIsPressed, setPlusIsPressed] = useState<boolean>(false);
+  const [clearIsPressed, setClearIsPressed] = useState<boolean>(false);
+  const [favoriteNumber, setFavoriteNumber] = useState<number>(0);
+  const [cartNumber, setCartNumber] = useState<number>(0);
+  const [amountItems, setAmountItems] = useState<number>(0);
 
   useEffect(() => {
     const makeProductsList = async () => {
@@ -56,9 +74,25 @@ export const MyProvider = ({ children }: { children: ReactNode }) => {
 
     makeProductsList();
   }, []);
-  //----------
 
-  //-----------
+  useEffect(() => {
+    const checkTheStorageForCart = () => {
+      let total = 0;
+
+      products.forEach(product => {
+        const itemJSON = localStorage.getItem(`cart_${product.itemId}`);
+
+        if (itemJSON) {
+          const item: ProductDemo = JSON.parse(itemJSON);
+
+          total += item.quantity ?? 1;
+        }
+      });
+      setAmountItems(total);
+    };
+
+    checkTheStorageForCart();
+  }, [products, addIsPressed, plusIsPressed, minusIsPressed, clearIsPressed]);
 
   return (
     <MyContext.Provider
@@ -81,6 +115,18 @@ export const MyProvider = ({ children }: { children: ReactNode }) => {
         setHeartIsPressed,
         addIsPressed,
         setAddIsPressed,
+        minusIsPressed,
+        setMinusIsPressed,
+        plusIsPressed,
+        setPlusIsPressed,
+        favoriteNumber,
+        setFavoriteNumber,
+        cartNumber,
+        setCartNumber,
+        amountItems,
+        setAmountItems,
+        clearIsPressed,
+        setClearIsPressed,
       }}
     >
       {children}

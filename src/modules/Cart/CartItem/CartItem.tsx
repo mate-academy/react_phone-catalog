@@ -23,7 +23,8 @@ const removeStoredItem = (itemId: string) => {
 };
 
 export const CartItem: React.FC<OrderCardProps> = ({ product }) => {
-  const { setAddIsPressed } = useMyContext();
+  const { setAddIsPressed, setPlusIsPressed, setMinusIsPressed } =
+    useMyContext();
   const [quantity, setQuantity] = useState<number>(1);
 
   useEffect(() => {
@@ -75,13 +76,25 @@ export const CartItem: React.FC<OrderCardProps> = ({ product }) => {
 
         <div className={styles.orderInfo}>
           <div className={styles.orderInfo_quantity}>
-            <button className={styles.orderInfo_button} onClick={decrement}>
+            <button
+              className={styles.orderInfo_button}
+              onClick={() => {
+                decrement();
+                setMinusIsPressed(prev => !prev);
+              }}
+            >
               <img src="img/Buttons/Icons/white minus.svg" alt="minus" />
             </button>
 
             <span>{quantity}</span>
 
-            <button className={styles.orderInfo_button} onClick={increment}>
+            <button
+              className={styles.orderInfo_button}
+              onClick={() => {
+                increment();
+                setPlusIsPressed(prev => !prev);
+              }}
+            >
               <img src="img/Buttons/Icons/white plus.svg" alt="plus" />
             </button>
           </div>
