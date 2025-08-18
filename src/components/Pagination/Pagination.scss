@@ -16,6 +16,17 @@
       background-color: #161827;
       border: none;
       color: #f1f2f9;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: #905BFF;
+      }
+
+      &.active {
+        background-color: #905BFF; 
+        color: #F1F2F9;
+      }
     }
   }
 

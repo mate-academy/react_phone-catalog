@@ -19,21 +19,21 @@ export const BurgerMenu: React.FC<Props> = ({ setOpen }) => {
           HOME
         </Link>
         <Link
-          to="#"
+          to="/phones"
           className="burger-menu__link"
           onClick={() => setOpen(false)}
         >
           PHONES
         </Link>
         <Link
-          to="#"
+          to="/tablets"
           className="burger-menu__link"
           onClick={() => setOpen(false)}
         >
           TABLETS
         </Link>
         <Link
-          to="#"
+          to="/accessories"
           className="burger-menu__link"
           onClick={() => setOpen(false)}
         >
@@ -41,10 +41,10 @@ export const BurgerMenu: React.FC<Props> = ({ setOpen }) => {
         </Link>
       </nav>
       <div className="burger-menu__button">
-        <Link to="#" className="burger-menu__button-link">
+        <Link to="/favourites" className="burger-menu__button-link">
           <img src="/img/icons/icon-favourites.svg" alt="favourites" />
         </Link>
-        <Link to="#" className="burger-menu__button-link">
+        <Link to="/cart" className="burger-menu__button-link">
           <img src="/img/icons/icon-cart.svg" alt="cart" />
         </Link>
       </div>
