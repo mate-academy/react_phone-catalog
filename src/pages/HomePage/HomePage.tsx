@@ -7,9 +7,6 @@ import styles from './HomePage.module.scss';
 export const HomePage = () => {
   return (
     <div className={styles.home__page}>
-      <h1 className={styles.home__page_title_visually_hidden}>
-        Product Catalog
-      </h1>
       <h2 className={styles.home__page_title}>
         Welcome to Nice Gadgets store!
       </h2>

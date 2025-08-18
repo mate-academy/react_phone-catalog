@@ -1,17 +1,5 @@
 @use "../../shared/mixins/mixins" as *;
 
-.home__page_title_visually_hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-  white-space: nowrap;
-}
-
 .home__page_title {
   margin-top: 56px;
   letter-spacing: -0.48px;

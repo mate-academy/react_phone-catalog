@@ -10,6 +10,7 @@ export const App = () => (
     <div className="app">
       <Header />
       <main className="main-content">
+        <h1 className="title_visually_hidden">Product Catalog</h1>
         <Outlet />
       </main>
       <Footer />
