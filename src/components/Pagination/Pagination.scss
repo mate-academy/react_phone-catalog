@@ -1,3 +1,5 @@
+@import '../src/styles/variables';
+
 .pagination {
   padding-top: 40px;
   display: flex;
@@ -13,40 +15,40 @@
     &__page-button {
       width: 32px;
       height: 32px;
-      background-color: #161827;
+      background-color: $grey-dark-secondary-color;
       border: none;
-      color: #f1f2f9;
+      color: $text-color;
 
       cursor: pointer;
 
       &:hover {
-        background-color: #905BFF;
+        background-color: $purple-accent-color;
       }
 
       &.active {
-        background-color: #905BFF; 
-        color: #F1F2F9;
+        background-color: $purple-accent-color;
+        color: $text-color;
       }
     }
   }
 
   &__arrow {
     border: none;
-    background-color: #323542;
+    background-color: $grey-dark-color;
     width: 32px;
     height: 32px;
     font-size: 24px;
-    color: #f1f2f9;
+    color: $text-color;
 
     &:disabled {
       cursor: not-allowed;
       background-color: transparent;
-      border: 1px solid #3b3e4a;
-      color: #4a4d58;
+      border: 1px solid $grey-elements-color;
+      color: $grey-icons-color;
     }
 
     &:hover:not(:disabled) {
-      background-color: #7a47d9;
+      background-color: $purple-hover-color;
     }
 
     &-image {

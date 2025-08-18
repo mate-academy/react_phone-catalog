@@ -1,3 +1,5 @@
+@import '../src/styles/variables';
+
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -18,13 +20,15 @@
   &__arrow {
     width: 16px;
     height: 16px;
-    color: #4A4D58;
+    color: #4a4d58;
   }
 
   &__link {
     text-decoration: none;
-    color: #555;
-    font-weight: 500;
+    color: $text-color;
+
+    font-weight: 700;
+    font-size: 12px;
     transition: color 0.2s ease;
 
     &:hover {
@@ -32,10 +36,8 @@
     }
 
     &--active {
-      font-weight: 700;
-      font-size: 12px;
-      color: #75767F;
-      pointer-events: none; 
+      color: $grey-secondary-color;
+      pointer-events: none;
     }
   }
 }

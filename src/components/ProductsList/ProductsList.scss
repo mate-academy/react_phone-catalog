@@ -1,3 +1,5 @@
+@import '../src/styles/variables';
+
 .header-row {
   display: flex;
   flex-direction: row;
@@ -36,17 +38,17 @@
 
   &__button {
     border: none;
-    background-color: #323542;
+    background-color: $grey-dark-color;
     width: 32px;
     height: 32px;
     font-size: 24px;
-    color: #f1f2f9;
+    color: $text-color;
 
     &:disabled {
       cursor: not-allowed;
       background-color: transparent;
-      border: 1px solid #3b3e4a;
-      color: #4a4d58;
+      border: 1px solid $grey-elements-color;
+      color: $grey-icons-color;
     }
 
     &:hover {
@@ -54,7 +56,7 @@
     }
 
     &:hover:not(:disabled) {
-      background-color: #4a4d58;
+      background-color: $grey-icons-color;
     }
   }
 

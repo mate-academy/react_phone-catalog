@@ -1,3 +1,5 @@
+@import '../src/styles/variables';
+
 .select {
   padding-top: 40px;
   padding-bottom: 24px;
@@ -13,11 +15,11 @@
   }
 
   &__box {
-    background-color: #323542;
+    background-color: $grey-dark-color;
     padding-inline: 12px;
     padding-block: 10px;
     border: none;
-    color: #f1f2f9;
+    color: $text-color;
     appearance: none;
     background-image: url('/img/icons/arrow-down.svg');
     background-repeat: no-repeat;

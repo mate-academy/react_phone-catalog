@@ -1,3 +1,5 @@
+@import '../src/styles/variables';
+
 .burger-menu {
   position: fixed;
   top: 64px;
@@ -26,7 +28,7 @@
     cursor: pointer;
     text-decoration: none;
 
-    color: #75767f;
+    color: $grey-secondary-color;
 
     display: flex;
     flex-direction: row;
@@ -37,8 +39,8 @@
     padding-block: 8px;
 
     &:hover {
-      color: #f1f2f9;
-      border-bottom: 3px solid #f1f2f9;
+      color: $text-color;
+      border-bottom: 3px solid $text-color;
     }
   }
 }

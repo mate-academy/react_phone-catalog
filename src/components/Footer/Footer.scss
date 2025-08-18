@@ -1,3 +1,5 @@
+@import '../src/styles/variables';
+
 .footer {
   padding-block: 32px;
   padding-inline: 152px;
@@ -7,7 +9,7 @@
   justify-content: space-between;
   align-items: center;
 
-  border-top: 1px solid #3b3e4a;
+  border-top: 1px solid $grey-elements-color;
   margin-top: 80px;
 
   &__nav {
@@ -30,23 +32,23 @@
     align-items: center;
 
     &--text {
-      color: #75767f;
+      color: $grey-secondary-color;
       font-size: 12px;
       font-weight: 700;
     }
 
     &--back-to-top {
       border: none;
-      background-color: #323542;
+      background-color: $grey-dark-color;
       width: 32px;
       height: 32px;
 
       &:hover {
-        background-color: #3b3e4a;
+        background-color: $grey-elements-color;
         cursor: pointer;
       }
       &:active {
-        background-color: #905bff;
+        background-color: $purple-accent-color;
       }
     }
 

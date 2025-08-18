@@ -1,3 +1,5 @@
+@import '../src/styles/variables';
+
 .product {
   width: 272px;
   height: 506px;
@@ -5,13 +7,13 @@
 
   padding: 32px;
 
-  background-color: #161827;
+  background-color: $grey-dark-secondary-color;
 
   &__characteristics {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    border-bottom: #3b3e4a solid 1px;
+    border-bottom: $grey-elements-color solid 1px;
   }
 
   &__image {
@@ -33,7 +35,7 @@
 
     &--regular {
       font-weight: 600;
-      color: #75767F;
+      color: $grey-secondary-color;
       text-decoration: line-through;
     }
 
@@ -56,7 +58,7 @@
     }
 
     &-name {
-      color: #75767f;
+      color: $grey-secondary-color;
     }
   }
 
@@ -73,15 +75,15 @@
       padding-block: 9.5px;
       font-family: inherit;
 
-      background-color: #905bff;
+      background-color: $purple-accent-color;
       border: none;
 
-      color: #f1f2f9;
+      color: $text-color;
     }
 
     &--favourite {
       padding: 12px;
-      background-color: #323542;
+      background-color: $grey-dark-color;
       border: none;
 
       font-family: inherit;

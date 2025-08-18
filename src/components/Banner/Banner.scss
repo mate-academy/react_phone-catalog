@@ -1,3 +1,5 @@
+@import '../src/styles/variables';
+
 .banner {
   display: flex;
   flex-direction: row;
@@ -9,7 +11,7 @@
     border: none;
     background-color: #323542;
     padding-inline: 8px;
-    color: #f1f2f9;
+    color: $text-color;
     cursor: pointer;
 
     z-index: 2;
@@ -35,8 +37,8 @@
     object-position: center 30%;
     display: block;
 
-    pointer-events: none; 
-    position: absolute; 
+    pointer-events: none;
+    position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
@@ -67,20 +69,17 @@
   &__dot {
     width: 12px;
     height: 4px;
-    background: rgba(255, 255, 255, 0.5);
+    background: $grey-elements-color;
     cursor: pointer;
     transition:
       background 0.3s,
       width 0.3s;
 
     &.active {
-      background: #fff;
+      background: $text-color;
       width: 20px;
     }
   }
-
-  // @media (max-width: 1200px) {
-  // }
 
   @media (min-width: 640px) and (max-width: 1199px) {
     &__wrapper {

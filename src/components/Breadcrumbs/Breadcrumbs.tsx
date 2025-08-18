@@ -10,6 +10,8 @@ export const Breadcrumbs: React.FC = () => {
 
   const segments = path.split('/').filter(Boolean);
 
+  const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
   return (
     <>
       <div className="breadcrumbs">
@@ -32,7 +34,7 @@ export const Breadcrumbs: React.FC = () => {
                 to={link}
                 className={`breadcrumbs__link ${isLast ? 'breadcrumbs__link--active' : ''}`}
               >
-                {segment}
+                {capitalize(segment)}
               </Link>
             </span>
           );
