@@ -18,7 +18,13 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   const sortDropDownRef = useRef<HTMLDivElement>(null);
   const perPageDropDownRef = useRef<HTMLDivElement>(null);
 
-  const { searchParams, setSearchParams, products, isLoading } = useAppContext();
+  const { 
+    searchParams, 
+    setSearchParams, 
+    products, 
+    isLoading,
+    theme,
+  } = useAppContext();
 
   const [isPerPageDropdownOpen, setIsPerPageDropdownOpen] = useState<boolean>(false);
   const [isSortTypeDropdownOpen, setIsSortTypeDropdownOpen] = useState<boolean>(false);
@@ -225,7 +231,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
         <div className={styles.sorters}>
           <div className={`${styles.sortType} ${styles.sorter}`}>
-            <span className='smallText'>Sort by</span>
+            <span className={`${styles.counter} smallText`}>Sort by</span>
 
             <div
               ref={sortDropDownRef}
@@ -242,7 +248,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
                 <span className={styles.arrowContainer}>
                   <img
                     className={!isSortTypeDropdownOpen ? styles.down : ''}
-                    src="/img/icons/arrow-disabled.svg"
+                    src={`/img/icons/${theme}-theme/arrow-disabled.svg`}
                     alt={`Arrow ${isSortTypeDropdownOpen ? 'up' : 'down'}`}
                   />
                 </span>
@@ -263,7 +269,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
           </div>
 
           <div className={`${styles.perPageItems} ${styles.sorter}`}>
-            <span className='smallText'>Items on page</span>
+            <span className={`${styles.counter} smallText`}>Items on page</span>
             <div
               ref={perPageDropDownRef}
               className={styles.dropdown}
@@ -279,7 +285,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
                 <span className={styles.arrowContainer}>
                   <img
                     className={!isSortTypeDropdownOpen ? styles.down : ''}
-                    src="/img/icons/arrow-disabled.svg"
+                    src={`/img/icons/${theme}-theme/arrow-disabled.svg`}
                     alt={`Arrow ${isPerPageDropdownOpen ? 'up' : 'down'}`}
                   />
                 </span>

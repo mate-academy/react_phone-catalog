@@ -74,16 +74,21 @@
   margin: 0;
 }
 
+.total {
+  color: var(--color-secondary);
+}
+
 .button {
   width: 240px;
   height: 48px;
-  background-color: var(--color-primary);
+  background-color: var(--button-default-bg);
   border: none;
-  color: var(--color-white);
+  color: var(--button-default-text);
   cursor: pointer;
 
   &:hover {
     box-shadow: 0px 3px 13px 0px #17203166;
+    background-color: var(--button-hover-bg);
   }
 
   @include on-tablet {

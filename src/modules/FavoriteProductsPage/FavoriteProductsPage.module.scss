@@ -31,3 +31,19 @@
   gap: 16px;
   row-gap: 40px;
 }
+
+.counter {
+  color: var(--color-secondary);
+}
+
+.emptyPage {
+  min-height: 65vh;
+
+  @include on-tablet {
+    min-height: 76vh;
+  }
+
+  @include on-desktop {
+    min-height: 74vh;
+  }
+}

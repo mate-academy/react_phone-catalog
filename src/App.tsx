@@ -4,11 +4,11 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
 export const App = () => (
-  <div>
+  <>
     <header>
       <Navbar />
     </header>
     <Outlet />
     <Footer />
-  </div>
+  </>
 );

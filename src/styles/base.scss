@@ -4,8 +4,7 @@
 
 body {
   height: 100%;
-
-  color: var(--text-color-dark);
+  background-color: var(--header-bg-color);
   margin: 0;
   padding-top: 48px;
 
@@ -15,16 +14,16 @@ body {
 }
 
 main {
-  color: var(--text-color-dark);
+  color: var(--color-primary);
   max-width: 1200px;
 }
 
 a {
-  color: var(--text-color-light);
+  color: var(--color-secondary);
   text-decoration: none;
 
   &:hover {
-    color: var(--text-color-dark);
+    color: var(--color-primary);
   }
 }
 

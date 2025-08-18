@@ -8,7 +8,11 @@ export const FavoriteProductsPage: React.FC = () => {
   const { favouriteProductsIds, products } = useAppContext();
 
   return (
-    <main className={styles.main}>
+    <main className={`
+        ${styles.main} 
+        ${favouriteProductsIds.length === 0 ? styles.emptyPage : ''}
+      `}
+    >
       <div className={styles.head}>
         <Breadcrumb />
         <div className={styles.headContent}>

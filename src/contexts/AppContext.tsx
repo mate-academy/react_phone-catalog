@@ -10,8 +10,10 @@ import {
 import {
   getCartProducts,
   getFavouriteProducts,
+  getTheme,
   saveCartProducts,
   saveFavouriteProducts,
+  saveTheme,
 } from '../modules/shared/services/localStorage';
 import { useSearchParams } from 'react-router-dom';
 import { Card } from '../types/Card';
@@ -34,6 +36,11 @@ type AppContextType = {
   setSearchParams: (params: URLSearchParams) => void;
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
+  theme: 'light' | 'dark';
+  language: 'uk' | 'en';
+  setTheme: (theme: 'light' | 'dark') => void;
+  setLanguage: (language: 'uk' | 'en') => void;
+  handleThemeChange: (newTheme: 'light' | 'dark') => void;
 };
 
 export const AppContext = createContext<AppContextType>({
@@ -53,6 +60,11 @@ export const AppContext = createContext<AppContextType>({
   setSearchParams: () => { },
   isLoading: false,
   setIsLoading: () => { },
+  theme: getTheme(),
+  setTheme: () => { },
+  language: 'en',
+  setLanguage: () => { },
+  handleThemeChange: () => { },
 });
 
 type Props = {
@@ -72,6 +84,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [language, setLanguage] = useState<'uk' | 'en'>('en');
+  const [theme, setTheme] = useState<'light' | 'dark'>(getTheme());
 
   useEffect(() => {
     setIsLoading(true);
@@ -109,6 +123,20 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     setCartProductsIds([...cartProductsIds, cardId]);
   }
 
+  function handleThemeChange(newValue: 'light' | 'dark') {
+    setTheme(newValue);
+  }
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+
+    saveTheme(theme);
+  }, [theme])
+
   useEffect(() => {
     saveFavouriteProducts(favouriteProductsIds);
   }, [favouriteProductsIds]);
@@ -134,13 +162,20 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     setSearchParams,
     isLoading,
     setIsLoading,
+    language,
+    setLanguage,
+    theme,
+    setTheme,
+    handleThemeChange,
   }), [
     favouriteProductsIds,
     cartProductsIds,
     isMenuOpen,
     products,
     searchParams,
-    isLoading
+    isLoading,
+    theme,
+    language,
   ])
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

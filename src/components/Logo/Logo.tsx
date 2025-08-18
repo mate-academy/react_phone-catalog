@@ -1,10 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Logo.module.scss';
+import { useAppContext } from '../../contexts/AppContext';
 
 export const Logo: React.FC<{ location: 'navbar' | 'footer' }> = ({
   location,
 }) => {
+  const { theme } = useAppContext();
+
   return (
     <NavLink
       to="/"
@@ -18,7 +21,7 @@ export const Logo: React.FC<{ location: 'navbar' | 'footer' }> = ({
           ${styles.img} 
           ${location === 'navbar' ? styles.navbarImg : styles.footerImg}
         `}
-        src="/img/icons/Logo.svg"
+        src={`/img/icons/${theme}-theme/Logo.svg`}
         alt="Logo"
       />
     </NavLink>

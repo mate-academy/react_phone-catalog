@@ -6,21 +6,98 @@ $content-padding-desktop: 40px;
 
 :root {
   --color-primary: #313237;
-  --color-secondary: #89939A;
-  --color-icons: #B4BDC3;
-  --color-elements: #E2E6E9;
-  --color-hover-bg: #F8FBFC;
-  --color-white: #FFF;
-  --color-green: #27AE60;
-  --color-red: #EB5757;
-  --text-color-dark: var(--color-primary);
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover-bg: #fafbfc;
+  --color-white: #ffffff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+
   --text-color-light: var(--color-secondary);
-  --text-color-white: var(--color-white);
+  --text-color-dark: var(--color-primary);
+
   --header-bg-color: var(--color-white);
-  --footer-bg-color: var(--color-primary);
+
   --card-bg-color: var(--color-white);
-  --border-color: var(--color-elements);
-  --button-primary-bg: var(--color-primary);
-  --button-primary-text: var(--color-white);
-  --button-hover-bg: var(--color-secondary);
+  --card-border-color: var(--color-elements);
+
+  --button-default-bg: var(--color-primary);
+  --button-default-text: var(--color-white);
+
+  --button-active-bg: var(--color-white);
+  --button-active-text: var(--color-green);
+
+  --button-hover-bg: var(--color-primary);
+
+  --small-button-default-bg: var(--color-white);
+  --small-button-default-border: var(--color-icons);
+
+  --small-button-hover-bg: var(--color-white);
+  --small-button-hover-border: var(--color-primary);
+
+  --small-button-active-bg: var(--color-white);
+  --small-button-active-border: var(--color-elements);
+
+  --counter-border: var(--color-white);
+
+  --footer-bg-color: var(--color-black);
+  --footer-text-color: var(--color-secondary);
+
+  --dropdown-bg-color: var(--color-white);
+
+  --dropdown-item-hover-bg: var(--color-hover-bg);
+
+  --dropdown-default-border: var(--color-icons);
+  --dropdown-hover-border: var(--color-secondary);
+  --dropdown-active-border: var(--color-primary);
+  --dropdown-menu-bg: var(--color-white);
+}
+
+.dark-theme {
+  --color-white: #f1f2f9;
+  --color-black: #0f1121;
+
+  --color-primary: var(--color-white);
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #3b3e4a;
+  --color-surface1: #161827;
+  --color-surface2: #323542;
+  --color-accent: #905bff;
+
+  --header-bg-color: var(--color-black);
+
+  --card-bg-color: var(--color-surface1);
+  --card-border-color: var(--color-surface1);
+
+  --button-default-bg: var(--color-accent);
+  --button-default-text: var(--color-white);
+
+  --button-active-bg: var(--color-surface2);
+  --button-active-text: var(--color-primary);
+
+  --button-hover-bg: #a378ff;
+
+  --small-button-default-bg: var(--color-surface2);
+  --small-button-default-border: var(--color-surface2);
+
+  --small-button-hover-bg: var(--color-icons);
+  --small-button-hover-border: var(--color-icons);
+
+  --small-button-active-bg: var(--color-black);
+  --small-button-active-border: var(--color-elements);
+
+  --counter-border: var(--color-black);
+
+  --footer-bg-color: var(--color-black);
+  --footer-text-color: var(--color-white);
+
+  --dropdown-bg-color: var(--color-surface2);
+  --dropdown-item-hover-bg: var(--color-surface2);
+
+  --dropdown-default-border: var(--color-surface2);
+  --dropdown-hover-border: var(--color-icons);
+  --dropdown-active-border: var(--color-accent);
+  --dropdown-menu-bg: var(--color-black);
 }

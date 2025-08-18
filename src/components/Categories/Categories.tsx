@@ -19,7 +19,7 @@ export const Categories: React.FC = () => {
 
           <div className={styles.details}>
             <h4 className={styles.title}>Mobile phones</h4>
-            <span className="bodyText">{products.filter(product => product.category === 'phones').length} models</span>
+            <span className={`${styles.counter} bodyText`}>{products.filter(product => product.category === 'phones').length} models</span>
           </div>
         </Link>
 
@@ -31,7 +31,7 @@ export const Categories: React.FC = () => {
 
           <div className={styles.details}>
             <h4 className={styles.title}>Tablets</h4>
-            <span className="bodyText">{products.filter(product => product.category === 'tablets').length} models</span>
+            <span className={`${styles.counter} bodyText`}>{products.filter(product => product.category === 'tablets').length} models</span>
           </div>
         </Link>
 
@@ -43,7 +43,7 @@ export const Categories: React.FC = () => {
 
           <div className={styles.details}>
             <h4 className={styles.title}>Accessories</h4>
-            <span className="bodyText">{products.filter(product => product.category === 'accessories').length} models</span>
+            <span className={`${styles.counter} bodyText`}>{products.filter(product => product.category === 'accessories').length} models</span>
           </div>
         </Link>
       </div>

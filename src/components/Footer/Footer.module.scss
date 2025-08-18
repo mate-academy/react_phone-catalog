@@ -3,6 +3,7 @@
   max-width: 100%;
   justify-content: center;
   border-top: 1px solid var(--color-elements);
+  background-color: var(--footer-bg-color);
 
   @include page-grid;
 
@@ -35,8 +36,11 @@
   flex-direction: column;
   flex-grow: 1;
   gap: 16px;
-
   padding: 0;
+
+  &Link {
+    color: var(--footer-text-color);
+  }
 
   @include on-tablet {
     flex-direction: row;
@@ -51,6 +55,7 @@
   gap: 16px;
   align-items: center;
   justify-content: center;
+  color: var(--color-secondary);
 
   @include on-tablet {
     justify-content: end;

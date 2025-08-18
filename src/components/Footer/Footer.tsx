@@ -11,14 +11,14 @@ export const Footer: React.FC = () => (
       </div>
 
       <ul className={styles.list}>
-        <li className={`uppercaseText`}>
-          <Link to="https://github.com/Mihakurochkin/">github</Link>
+      <li className='uppercaseText'>
+          <Link className={styles.listLink} to="https://github.com/Mihakurochkin/">github</Link>
         </li>
-        <li className={`uppercaseText`}>
-          <Link to="/">contacts</Link>
+        <li className='uppercaseText'>
+          <Link className={styles.listLink} to="/">contacts</Link>
         </li>
-        <li className={`uppercaseText`}>
-          <Link to="/">rights</Link>
+        <li className='uppercaseText'>
+          <Link className={styles.listLink} to="/">rights</Link>
         </li>
       </ul>
 

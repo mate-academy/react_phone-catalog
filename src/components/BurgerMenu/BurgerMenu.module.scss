@@ -8,13 +8,12 @@
   width: 100%;
   height: 100vh;
 
-  background-color: var(--color-white);
-
+  background-color: var(--header-bg-color);
   transition: transform 0.3s ease-in-out;
-}
 
-.burgerMenu.open {
-  transform: translateX(0);
+  &.open {
+    transform: translateX(0);
+  }
 }
 
 .icons {
@@ -54,7 +53,7 @@
   border: none;
   border-left: 1px solid var(--color-elements);
 
-  background-color: var(--color-white);
+  background-color: inherit;
 }
 
 .link {
@@ -120,7 +119,7 @@
 
   width: 14px;
   height: 14px;
-  border: 1px solid var(--color-white);
+  border: 1px solid var(--counter-border);
   border-radius: 50%;
 
   font-family: Mont-Regular, sans-serif;
@@ -139,5 +138,77 @@
   @include on-desktop {
     top: 18px;
     right: 15px;
+  }
+}
+
+.settings {
+  display: flex;
+  height: 40px;
+  width: 100%;
+}
+
+.themes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  height: 100%;
+  flex-grow: 1;
+
+  &Item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    height: 25px;
+    border: 1px solid var(--color-elements);
+    border-radius: 50%;
+    cursor: pointer;
+
+    &Active {
+      border-color: var(--color-primary);
+    }
+  }
+
+  &Light {
+    background-color: #E5E5E5;
+    border: 2px solid var(--color-white);
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  &Dark {
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-white);
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+}
+
+.languages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  height: 100%;
+  flex-grow: 1;
+
+  &Item {
+    width: 40px;
+    height: 25px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-elements);
+    cursor: pointer;
+
+    &Active {
+      border-color: var(--color-primary);
+    }
   }
 }

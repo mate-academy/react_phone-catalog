@@ -4,7 +4,8 @@
   max-height: 506px;
   margin: 0;
   padding: 32px;
-  border: 1px solid var(--color-elements);
+  border: 1px solid var(--card-border-color);
+  background-color: var(--card-bg-color);
 
   &:hover {
     box-shadow: 0 2px 16px 0 #0000001a;
@@ -64,12 +65,13 @@
 .name {
   margin: 0;
   padding: 0;
+  color: var(--color-primary);
 }
 
 .price {
   margin: 0;
   padding: 0;
-  color: var(--text-color-dark);
+  color: var(--color-primary);
 }
 
 .fullPrice {
@@ -98,6 +100,10 @@
 .description {
   display: flex;
   justify-content: space-between;
+}
+
+.keys {
+  color: var(--color-secondary);
 }
 
 .imageContainer {

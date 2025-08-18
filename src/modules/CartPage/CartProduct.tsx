@@ -11,8 +11,7 @@ type CartProductProps = {
 };
 
 export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCountChange }) => {
-  const { cartProductsIds, setCartProductsIds } =
-    useAppContext();
+  const { cartProductsIds, setCartProductsIds, theme } = useAppContext();
   const [counterValue, setCounterValue] = useState<number>(1);
 
   function handleCounterChange(event: React.MouseEvent<HTMLButtonElement>, action: '+' | '-') {
@@ -54,6 +53,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
           className={`
             ${styles.img} 
             ${styles.close}
+            ${theme === 'light' ? styles.closeLight : styles.closeDark}
           `}
         ></button>
         <div className={styles.wrapper}>
@@ -76,7 +76,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
           >
             <img
               className={styles.img}
-              src={`/img/icons/Minus${counterValue === 1 ? '-disabled' : ''}.svg`}
+              src={`/img/icons/${theme}-theme/Minus${counterValue === 1 ? '-disabled' : ''}.svg`}
               alt="Minus"
             />
           </button>
@@ -87,7 +87,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
             className={styles.counterButton}
             onClick={(event) => handleCounterChange(event, '+')}
           >
-            <img className={styles.img} src="/img/icons/Plus.svg" alt="Plus" />
+            <img className={styles.img} src={`/img/icons/${theme}-theme/Plus.svg`} alt="Plus" />
           </button>
         </div>
         <h3 className={styles.priceTitle}>${product.price * counterValue}</h3>

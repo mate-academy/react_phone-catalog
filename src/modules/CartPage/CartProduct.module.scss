@@ -5,9 +5,8 @@
 
   width: 288px;
   padding: 16px;
-  border: 1px solid var(--color-elements);
-
-  background-color: var(--color-white);
+  border: 1px solid var(--card-border-color);
+  background-color: var(--card-bg-color);
 
   box-sizing: border-box;
 
@@ -123,11 +122,8 @@
   width: 32px;
   height: 32px;
   padding: 8px;
-  border: 1px solid var(--color-icons);
-
-  color: #000;
-
-  background-color: var(--color-white);
+  border: 1px solid var(--small-button-default-border);
+  background-color: var(--small-button-default-bg);
 }
 
 .value {
@@ -137,13 +133,12 @@
 
   width: 32px;
   height: 32px;
-
-  color: #000;
+  color: var(--color-primary);
 }
 
 .disabled {
-  border-color: var(--color-elements);
-  color: var(--color-icons);
+  border-color: var(--small-button-active-border);
+  background-color: inherit;
 }
 
 .name {
@@ -157,13 +152,25 @@
   height: 16px;
   border: none;
 
-  background-color: var(--color-white);
-  background-image: url(/public/img/icons/Close.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 
-  &:hover {
-    background-image: url(/public/img/icons/Close-hover.svg);
+  &Light {
+    background-color: inherit;
+    background-image: url(/public/img/icons/light-theme/Close.svg);
+
+    &:hover {
+      background-image: url(/public/img/icons/light-theme/Close-hover.svg);
+    }
+  }
+
+  &Dark {
+    background-color: inherit;
+    background-image: url(/public/img/icons/dark-theme/Close.svg);
+
+    &:hover {
+      background-image: url(/public/img/icons/dark-theme/Close-hover.svg);
+    }
   }
 }

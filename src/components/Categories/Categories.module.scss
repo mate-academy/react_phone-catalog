@@ -22,11 +22,11 @@
 .banner {
   overflow: hidden;
   aspect-ratio: 1 / 1;
+  background-repeat: no-repeat;
 
   &Phones {
     background-color: #6d6474;
     background-image: url('/img/category-phones.webp');
-    background-repeat: no-repeat;
     background-position: 120px 80px;
 
     @include on-tablet {
@@ -39,7 +39,6 @@
     background-color: #8d8d92;
     background-image: url('/img/category-tablets.png');
     background-size: 200%;
-    background-repeat: no-repeat;
     background-position: 15.65px 17.22px;
   }
 
@@ -47,7 +46,6 @@
     background-color: #d53c51;
     background-image: url('/img/category-accessories.png');
     background-size: 190%;
-    background-repeat: no-repeat;
     background-position: 38.5px 73px;
 
     @include on-tablet {
@@ -61,7 +59,6 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background-color: var(--color-white);
 }
 
 .category {
@@ -69,4 +66,8 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
+}
+
+.counter {
+  color: var(--color-secondary);
 }

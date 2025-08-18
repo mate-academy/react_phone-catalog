@@ -5,8 +5,13 @@ import { useAppContext } from '../../contexts/AppContext';
 import { BurgerMenu } from '../BurgerMenu';
 
 export const Navbar: React.FC = () => {
-  const { favouriteProductsIds, cartProductsIds, isMenuOpen, setIsMenuOpen } =
-    useAppContext();
+  const {
+    favouriteProductsIds,
+    cartProductsIds,
+    isMenuOpen,
+    setIsMenuOpen,
+    theme,
+  } = useAppContext();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,7 +21,7 @@ export const Navbar: React.FC = () => {
     <>
       <nav className={styles.navbar}>
         <Logo location="navbar" />
-  
+
         <ul className={`${styles.list} ${styles.tablet}`}>
           <li className={`${styles.item} uppercaseText`}>
             <NavLink
@@ -67,7 +72,7 @@ export const Navbar: React.FC = () => {
               `${isActive ? styles.activeLink : ''} ${styles.link}`
             }
           >
-            <img className={styles.img} src="/img/icons/Heart.svg" alt="" />
+            <img className={styles.img} src={`/img/icons/${theme}-theme/Heart.svg`} alt="" />
 
             {favouriteProductsIds.length > 0 && (
               <div className={styles.counter}>
@@ -82,7 +87,7 @@ export const Navbar: React.FC = () => {
               `${isActive ? styles.activeLink : ''} ${styles.link}`
             }
           >
-            <img className={styles.img} src="/img/icons/Cart.svg" alt="" />
+            <img className={styles.img} src={`/img/icons/${theme}-theme/Cart.svg`} alt="" />
 
             {cartProductsIds.length > 0 && (
               <div className={styles.counter}>
@@ -100,7 +105,7 @@ export const Navbar: React.FC = () => {
           ${styles.item}
         `}
           >
-            <img src="/img/icons/burger-menu.svg" alt="Burger menu" />
+            <img src={`/img/icons/${theme}-theme/burger-menu.svg`} alt="Burger menu" />
           </button>
         </div>
       </nav>

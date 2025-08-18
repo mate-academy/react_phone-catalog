@@ -10,3 +10,9 @@ export const getCartProducts = () => {
 export const saveCartProducts = (ids: string[]) => {
   localStorage.setItem('cart', JSON.stringify(ids));
 };
+export const getTheme = () => {
+  return (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
+};
+export const saveTheme = (theme: 'light' | 'dark') => {
+  localStorage.setItem('theme', theme);
+};

@@ -9,7 +9,15 @@ type Props = {
 };
 
 export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
-  const { isMenuOpen, cartProductsIds, favouriteProductsIds } = useAppContext();
+  const {
+    isMenuOpen,
+    cartProductsIds,
+    favouriteProductsIds,
+    theme,
+    language,
+    setLanguage,
+    handleThemeChange,
+  } = useAppContext();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -24,7 +32,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
       <div className={styles.topbar}>
         <Logo location="navbar" />
         <button onClick={onClose} className={styles.crossContainer}>
-          <img className={styles.img} src="/img/icons/cross.svg" alt="Cross" />
+          <img className={styles.img} src={`/img/icons/${theme}-theme/Cross.svg`} alt="Cross" />
         </button>
       </div>
 
@@ -75,6 +83,40 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
                 accessories
               </NavLink>
             </li>
+            <li className={styles.settings}>
+              <div className={styles.themes}>
+                <button
+                  onClick={() => handleThemeChange('light')}
+                  className={`${styles.themesItem} ${theme === 'light' ? styles.themesItemActive : ''}`}
+                >
+                  <div className={styles.themesLight}></div>
+                </button>
+                <button
+                  onClick={() => handleThemeChange('dark')}
+                  className={`${styles.themesItem} ${theme === 'dark' ? styles.themesItemActive : ''}`}
+                >
+                  <div className={styles.themesDark}></div>
+                </button>
+              </div>
+              <div className={styles.languages}>
+                <button
+                  onClick={() => setLanguage('uk')}
+                  className={`
+                    ${styles.languagesItem} 
+                    ${language === 'uk' ? styles.languagesItemActive : ''} 
+                    ${styles.uk}
+                  `}
+                >UK</button>
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`
+                    ${styles.languagesItem} 
+                    ${language === 'en' ? styles.languagesItemActive : ''} 
+                    ${styles.en}
+                  `}
+                >ENG</button>
+              </div>
+            </li>
           </ul>
         </nav>
 
@@ -88,7 +130,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
           >
             <img
               className={styles.img}
-              src="/img/icons/Heart.svg"
+              src={`/img/icons/${theme}-theme/Heart.svg`}
               alt="Heart"
             />
 
@@ -105,7 +147,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
               `${styles.link} ${isActive ? `${styles.activeLink}` : ''}`
             }
           >
-            <img className={styles.img} src="/img/icons/Cart.svg" alt="Cart" />
+            <img className={styles.img} src={`/img/icons/${theme}-theme/Cart.svg`} alt="Cart" />
 
             {cartProductsIds.length > 0 && (
               <div className={styles.counter}>

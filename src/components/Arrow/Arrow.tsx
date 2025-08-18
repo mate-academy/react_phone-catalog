@@ -1,3 +1,4 @@
+import { useAppContext } from '../../contexts/AppContext';
 import styles from './Arrow.module.scss';
 
 type Props = {
@@ -15,6 +16,8 @@ export const Arrow: React.FC<Props> = ({
   width = '32px',
   onClick,
 }) => {
+  const { theme } = useAppContext();
+
   return (
     <button
       disabled={isDisabled}
@@ -27,8 +30,8 @@ export const Arrow: React.FC<Props> = ({
       <img
         className={styles[direction]}
         src={isDisabled ?
-          `/img/icons/arrow-disabled.svg` :
-          `/img/icons/arrow.svg`
+          `/img/icons/${theme}-theme/arrow-disabled.svg` :
+          `/img/icons/${theme}-theme/arrow.svg`
         }
         alt={`Arrow ${direction}`}
       />

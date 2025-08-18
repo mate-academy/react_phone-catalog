@@ -21,7 +21,13 @@ import { Loader } from '../../components/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
-  const { cartProductsIds, favouriteProductsIds, toggleFavouriteCard, toggleAddToCart } = useAppContext();
+  const {
+    cartProductsIds,
+    favouriteProductsIds,
+    toggleFavouriteCard,
+    toggleAddToCart,
+    theme,
+  } = useAppContext();
 
   async function finder() {
     const item = await findProduct('itemId', pathname.split('/')[2]);
@@ -70,7 +76,7 @@ export const ProductDetailsPage: React.FC = () => {
             <Link to={`/${getFormattedPathname(pathname)[0]}`} className={styles.back}>
               <img
                 className={styles.left}
-                src="/img/icons/arrow.svg"
+                src={`/img/icons/${theme}-theme/arrow.svg`}
                 alt="Back"
               />
               <span className='smallText'>Back</span>
@@ -162,7 +168,7 @@ export const ProductDetailsPage: React.FC = () => {
                       isSelected={favouriteProductsIds.includes(product.id)}
                       onClick={() => toggleFavouriteCard(product.id)}
                     />
-                    </div>
+                  </div>
                 </div>
 
                 <div className={styles.info}>

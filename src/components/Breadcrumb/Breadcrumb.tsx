@@ -5,7 +5,7 @@ import { useAppContext } from '../../contexts/AppContext';
 
 export const Breadcrumb: React.FC = () => {
   const { pathname } = useLocation();
-  const { products } = useAppContext();
+  const { products, theme } = useAppContext();
 
   return (
     <div
@@ -13,7 +13,7 @@ export const Breadcrumb: React.FC = () => {
     >
       <Link className={styles.home} to='/'>
         <img
-          src="/img/icons/Home.svg"
+          src={`/img/icons/${theme}-theme/Home.svg`}
           alt="Home"
         />
       </Link>
@@ -22,7 +22,7 @@ export const Breadcrumb: React.FC = () => {
         <img
           key={`arrow-${i}`}
           className={styles.arrow}
-          src="/img/icons/arrow-disabled.svg"
+          src={`/img/icons/${theme}-theme/arrow-disabled.svg`}
           alt="Arrow"
         />,
         <Link
