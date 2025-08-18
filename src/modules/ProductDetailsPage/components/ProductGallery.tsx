@@ -15,7 +15,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
   return (
     <div className={styles.gallery}>
       <div className={styles.mainImage}>
-        <img src={`/${selectedImage}`} alt="Selected" />
+        <img src={`./${selectedImage}`} alt="Selected" />
       </div>
       <div className={styles.thumbs}>
         {images.map((img, index) => (
@@ -24,7 +24,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
             className={styles.thumb}
             onClick={() => setSelectedImage(img)}
           >
-            <img src={`/${img}`} alt="thumb" />
+            <img src={`./${img}`} alt="thumb" />
           </button>
         ))}
       </div>
