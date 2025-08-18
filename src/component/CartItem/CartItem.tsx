@@ -21,9 +21,9 @@ export const CartItem: React.FC<Props> = ({
 
   const slug = item.itemId || String(item.id);
   const imgSrc = item.image
-    ? `./${item.image}`
+    ? item.image
     : item.images?.[0]
-      ? `./${item.images[0]}`
+      ? item.images[0]
       : undefined;
 
   return (
@@ -39,7 +39,7 @@ export const CartItem: React.FC<Props> = ({
 
       <Link to={`/product/${slug}`} className={styles.imageWrapper}>
         {imgSrc && (
-          <img src={imgSrc} alt={item.name} className={styles.image} />
+          <img src={`./${imgSrc}`} alt={item.name} className={styles.image} />
         )}
       </Link>
 
