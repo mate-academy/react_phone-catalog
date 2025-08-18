@@ -1,1 +1,19 @@
 @import '../../../shared/styles/main';
+
+.button {
+  margin-block: 25px, 16px;
+
+  @include flex('row', 'center');
+  
+  cursor: pointer;
+
+  gap: 4px;
+
+  &__title {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+}

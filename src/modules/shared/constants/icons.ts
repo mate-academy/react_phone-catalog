@@ -40,4 +40,20 @@ export const icons: Record<string, Icon> = {
     title: 'arrow left',
     path: '/src/modules/shared/icons/arrow-right.svg',
   },
+  cross: {
+    title: 'cross',
+    path: '/src/modules/shared/icons/cross.svg',
+  },
+  plus: {
+    title: 'plus',
+    path: '/src/modules/shared/icons/plus.svg',
+  },
+  minus: {
+    title: 'minus',
+    path: '/src/modules/shared/icons/minus.svg',
+  },
+  minus_disabled: {
+    title: 'minus disabled',
+    path: '/src/modules/shared/icons/minus-disabled.svg',
+  },
 };

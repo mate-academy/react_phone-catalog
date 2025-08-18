@@ -42,7 +42,7 @@ export const PicturesSlider: React.FC = () => {
     const interval = setInterval(handleNextSlide, 5000);
 
     return () => clearInterval(interval);
-  }, [images]);
+  }, [handleNextSlide, images]);
 
   return (
     <div className={style.picturesSlider}>

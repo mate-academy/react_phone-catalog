@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './BurgerMenu.module.scss';
 import { NavLink } from 'react-router-dom';
 import { navLinks } from '../../../constants/navLinks';
@@ -14,6 +14,18 @@ export const BurgerMenu: React.FC = () => {
 
   const getActiveItem = ({ isActive }: { isActive: boolean }) =>
     classNames(styles['burger-menu__item'], { active: isActive });
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
 
   return (
     <div className={styles['burger-menu']}>
