@@ -119,12 +119,14 @@ export const ProductList: React.FC<Props> = ({ title, products, error }) => {
         </>
       )}
 
-      <Pagination
-        perPage={perPage}
-        total={finishedProducts.length}
-        currentPage={currentPage}
-        onPageChange={page => updateSearchParams('page', page)}
-      />
+      {perPage !== 'all' && (
+        <Pagination
+          perPage={perPage}
+          total={finishedProducts.length}
+          currentPage={currentPage}
+          onPageChange={page => updateSearchParams('page', page)}
+        />
+      )}
     </section>
   );
 };
