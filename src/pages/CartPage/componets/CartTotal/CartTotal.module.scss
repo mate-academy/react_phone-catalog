@@ -1,5 +1,5 @@
 @use "../../../../shared/mixins/mixins.scss" as *;
-@import "../../../../shared/variables/variables";
+@use "../../../../shared/variables/variables" as *;
 
 .Cart__total {
   width: 368px;

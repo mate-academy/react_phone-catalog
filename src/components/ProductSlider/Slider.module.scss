@@ -1,4 +1,4 @@
-@import '../../shared/mixins/mixins';
+@use "../../shared/mixins/mixins" as *;
 
 .Slider {
   margin-top: 80px;

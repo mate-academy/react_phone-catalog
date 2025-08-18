@@ -1,4 +1,4 @@
-@import "../../../shared//mixins/mixins.scss";
+@use "../../../shared/mixins/mixins.scss" as *;
 
 .buttons__addToCart {
   width: 160px;

@@ -1,4 +1,4 @@
-@import "../../../shared/mixins/mixins";
+@use "../../../shared/mixins/mixins" as *;
 
 .buttons__favorite {
   width: 40px;

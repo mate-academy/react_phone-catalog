@@ -1,5 +1,5 @@
-@import "../../../shared/mixins/mixins";
-@import "../../../shared/variables/variables";
+@use "../../../shared/mixins/mixins" as *;
+@use "../../../shared/variables/variables" as *;
 
 .button__container {
   width: max-content;

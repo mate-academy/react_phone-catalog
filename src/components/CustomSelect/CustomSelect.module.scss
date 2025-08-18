@@ -1,4 +1,4 @@
-@import '../../shared/variables/variables';
+@use "../../shared/variables/variables"  as *;
 
 .select {
   position: relative;

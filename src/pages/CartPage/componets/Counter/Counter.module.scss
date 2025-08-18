@@ -1,4 +1,4 @@
-@import "../../../../shared/mixins/mixins";
+@use "../../../../shared/mixins/mixins" as *;
 
 .counter {
   @include flex-center;

@@ -1,5 +1,5 @@
-@import '../../shared/variables/variables';
-@import '../../shared/mixins/mixins';
+@use "../../shared/variables/variables" as *;
+@use "../../shared/mixins/mixins" as *;
 
 .Catalog__header {
   display: flex;
