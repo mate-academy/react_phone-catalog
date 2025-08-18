@@ -59,8 +59,14 @@
     width: 32px;
 
     border-radius: 50%;
-    border: 1px solid $border-color;
+    border: 1px solid $border-hover-color;
     transition: all 0.3s ease;
+
+    background: linear-gradient(
+      to top right,
+      $border-hover-color 30%,
+      $main-bg-color 75%
+    );
 
     &:hover {
       background-color: $main-bg-color;

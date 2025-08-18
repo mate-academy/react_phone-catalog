@@ -10,6 +10,7 @@ import { TabletInfoType } from '../../types/TabletInfoType';
 import { AccessoryInfoType } from '../../types/AccessoryInfoType';
 import { AllProductsType } from '../../types/AllProductsType';
 import { SwiperSection } from '../SwiperSection';
+import { FavouritesAddButton } from '../FavouritesAddButton';
 
 export type ProductInfoUnionType =
   | PhoneInfoType
@@ -21,8 +22,12 @@ export const ProductInfoPage: React.FC = () => {
   const { getLastSearch } = useProductFilters();
 
   const [foundItem, setFoundItem] = useState<ProductInfoUnionType | null>(null);
-  const [foundProduct, setFoundProduct] = useState<AllProductsType | null>(null);
-  const [discountedProducts, setDiscountedProducts] = useState<AllProductsType[]>([]);
+  const [foundProduct, setFoundProduct] = useState<AllProductsType | null>(
+    null,
+  );
+  const [discountedProducts, setDiscountedProducts] = useState<
+    AllProductsType[]
+  >([]);
 
   // const [isLoading, setIsLoading] = useState(true);
 
@@ -73,9 +78,10 @@ export const ProductInfoPage: React.FC = () => {
           (product: AllProductsType) => product.itemId === itemId,
         );
 
-        const discountedProducts = productsData.filter(
-          (product: AllProductsType) => product.year < 2022,
-        ).sort(() => Math.random() - 0.5).slice(0, 12);
+        const discountedProducts = productsData
+          .filter((product: AllProductsType) => product.year < 2022)
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 12);
 
         if (!foundItem || !foundProduct) {
           navigate('/product-not-found');
@@ -244,21 +250,7 @@ export const ProductInfoPage: React.FC = () => {
                 )}
               </div>
 
-              <div className="add-favourites-container">
-                <div className="add-button has-shadow-cursor">
-                  <p className="button-text">Add to card</p>
-                </div>
-
-                <div className="favourites-button has-shadow-cursor"
-                  onClick={() => toggleFavourite(foundId)}>
-                  //////////////////////////////////////////////
-                  <img
-                    className="icon"
-                    src="/img/icons/Heart.svg"
-                    alt="favourites img"
-                  />
-                </div>
-              </div>
+              <FavouritesAddButton productId={foundId} />
 
               <div className="info">
                 {baseSpecifications.map(({ name, value }) => (

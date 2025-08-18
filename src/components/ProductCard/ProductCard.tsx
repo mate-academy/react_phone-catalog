@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AllProductsType } from '../../types/AllProductsType';
 import { useCurrentPath } from '../contexts/PathContext';
+import { FavouritesAddButton } from '../FavouritesAddButton';
 import './productCard.scss';
 
 type Props = {
@@ -19,6 +20,8 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const priceDiscount = `$${product.price}`;
   const modelId = product.itemId;
   const category = product.category;
+  const id = product.id;
+
 
   const { search } = useCurrentPath(); // ✅ достаём текущие параметры запроса
 
@@ -69,19 +72,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
         </div>
       </div>
 
-      <div className="add-favourites-container">
-        <div className="add-button has-shadow-cursor">
-          <p className="button-text">Add to card</p>
-        </div>
-
-        <div className="favourites-button has-shadow-cursor">
-          <img
-            className="icon"
-            src="/img/icons/Heart.svg"
-            alt="favourites img"
-          />
-        </div>
-      </div>
+      <FavouritesAddButton productId={id}/>
     </div>
   );
 };

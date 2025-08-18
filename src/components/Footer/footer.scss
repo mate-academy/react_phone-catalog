@@ -5,7 +5,7 @@
   background-color: $main-bg-color;
   border-top: 1px solid $border-color;
   justify-content: center;
-  
+
 
   @include onTablet {
     padding: 32px;
@@ -94,8 +94,14 @@
         justify-content: center;
         height: 32px;
         width: 32px;
-        border: 1px solid $border-color;
+        border: 1px solid $border-hover-color;
         border-radius: 50%;
+
+        background: linear-gradient(
+          to top right,
+          $border-hover-color 30%,
+          $main-bg-color 75%
+        );
       }
     }
   }

@@ -24,6 +24,12 @@
 
   .pagination-step-button {
     border: 1px solid $border-hover-color;
+
+    background: linear-gradient(
+      to top right,
+      $border-hover-color 30%,
+      $main-bg-color 75%
+    );
   }
 
   .paginations-page-button {
@@ -37,7 +43,13 @@
   .is-active {
     border-color: $border-hover-color;
     color: $text-main-color;
-    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.60);
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.6);
+
+    background: linear-gradient(
+      to top right,
+      $border-hover-color 30%,
+      $main-bg-color 75%
+    );
   }
 
   .not-active {
@@ -46,6 +58,3 @@
     cursor: default;
   }
 }
-
-
-

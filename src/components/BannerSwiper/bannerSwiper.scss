@@ -14,6 +14,12 @@
 .swiper-buttons {
   display: none;
 
+  background: linear-gradient(
+    to top right,
+    $border-hover-color 30%,
+    $main-bg-color 75%
+  );
+
   @include onTablet {
     display: flex;
     align-items: center;
