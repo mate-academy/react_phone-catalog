@@ -26,8 +26,8 @@ export const ProductConfig: React.FC<ProductConfigProps> = ({
   const navigate = useNavigate();
 
   const ProductImages = product.images;
-  const isFavorite = favorites.some(item => item.itemId === product.id);
-  const card = products.find(item => item.itemId === id);
+  const isFavorite = favorites.some((item) => item.itemId === product.id);
+  const card = products.find((item) => item.itemId === id);
 
   const handleCapacitySelect = (capacity: string) => {
     setSelectCapacity(capacity);
@@ -53,12 +53,18 @@ export const ProductConfig: React.FC<ProductConfigProps> = ({
               onClick={() => setSelectedImage(img)}
               className={`${styles.photos__item} ${selectedImage === img ? styles.active : ''}`}
             >
-              <img src={`/${img}`} alt={`Product thumbnail ${index + 1}`} />
+              <img
+                src={`/react_phone-catalog/public/${img}`}
+                alt={`Product thumbnail ${index + 1}`}
+              />
             </li>
           ))}
         </ul>
         <div className={styles.photos__large}>
-          <img src={`/${selectedImage}`} alt="Product" />
+          <img
+            src={`/react_phone-catalog/public/${selectedImage}`}
+            alt="Product"
+          />
         </div>
       </div>
       <div className={styles.ProductConfig__details}>

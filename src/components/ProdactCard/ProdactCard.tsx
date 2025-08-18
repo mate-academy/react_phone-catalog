@@ -23,7 +23,10 @@ export const ProdactCard: React.FC<Props> = ({ card, discount }) => {
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         <div className={styles.card__img}>
-          <img src={`/${card.image}`} alt={card.image} />
+          <img
+            src={`/react_phone-catalog/public/${card.image}`}
+            alt={card.image}
+          />
         </div>
         <p className={styles.card__title}>{card.name}</p>
         <div className={styles.card__price}>
