@@ -1,1 +1,31 @@
-// not empty
+@import "normalize.css";
+
+.app {
+  height: 100%;
+  margin: 0;
+  color: white;
+  font-family: Montserrat, sans-serif;
+  background: rgba(15, 17, 33, 1);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+
+  padding: 0 152px;
+
+  @media (max-width: 1200px) {
+    padding: 0 32px;
+  }
+
+  @media (max-width: 960px) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 0 16px;
+  }
+}
