@@ -39,10 +39,10 @@ export const HeaderNavigation: React.FC = () => {
 
         <div className="header-actions">
           <div className="header-icon-container">
-            <Link to="/" className="header-actions-link">
+            <Link to="/favorites" className="header-actions-link">
               <img
-                src="/img/icons/FavouritesHeartLike.svg"
-                alt="Favourites icon"
+                src="/img/icons/FavoritesHeartLike.svg"
+                alt="Favorites icon"
                 className="icon"
               />
             </Link>

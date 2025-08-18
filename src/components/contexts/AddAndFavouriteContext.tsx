@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 // Тип для ID товара
 type ID = number;
@@ -17,31 +18,44 @@ type AddAndFavouritesContextType = {
 };
 
 // Создаём контекст с дефолтными значениями
-export const AddAndFavouritesContext = createContext<AddAndFavouritesContextType>({
-  favourites: [],
-  toggleFavourite: () => {},
-  isFavourite: () => false,
-  cart: [],
-  toggleCart: () => {},
-  isInCart: () => false,
-});
+export const AddAndFavouritesContext =
+  createContext<AddAndFavouritesContextType>({
+    favourites: [],
+    cart: [],
+
+    toggleFavourite: () => {},
+    toggleCart: () => {},
+
+    isFavourite: () => false,
+    isInCart: () => false,
+  });
 
 // Провайдер контекста
-export const AddAndFavouritesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [favourites, setFavourites] = useState<ID[]>([]);
-  const [cart, setCart] = useState<ID[]>([]);
+export const AddAndFavouritesProvider: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => {
+  const [favourites, setFavourites] = useLocalStorage<ID[]>('favourites', []);
+  const [cart, setCart] = useLocalStorage<ID[]>('cart', []);
 
   // Универсальная функция toggle для любого массива
-  const toggleItemInArray = (id: ID, setArray: React.Dispatch<React.SetStateAction<ID[]>>) => {
-    setArray(prev => prev.includes(id) ? prev.filter(elId => elId !== id) : [...prev, id]);
+  const toggleItemInArray = (
+    id: ID,
+    array: ID[],
+    saveArray: (newValue: ID[]) => void,
+  ) => {
+    const newArray = array.includes(id)
+      ? array.filter(elId => elId !== id)
+      : [...array, id];
+
+    saveArray(newArray);
   };
 
   // Функции для работы с favourites
-  const toggleFavourite = (id: ID) => toggleItemInArray(id, setFavourites);
+  const toggleFavourite = (id: ID) => toggleItemInArray(id, favourites, setFavourites);
   const isFavourite = (id: ID) => favourites.includes(id);
 
   // Функции для работы с cart
-  const toggleCart = (id: ID) => toggleItemInArray(id, setCart);
+  const toggleCart = (id: ID) => toggleItemInArray(id, cart, setCart);
   const isInCart = (id: ID) => cart.includes(id);
 
   return (

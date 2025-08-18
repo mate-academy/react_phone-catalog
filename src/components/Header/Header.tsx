@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 import { BurgerNavigation } from '../BurgerNavigation';
 import { HeaderNavigation } from '../HeaderNavigation';
-import { useCurrentPath } from '../contexts/PathContext';
+// import { useCurrentPath } from '../contexts/PathContext';
 
 export const Header = () => {
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
 
-  const currentPath = useCurrentPath();
+  // const currentPath = useCurrentPath();
 
   return (
     <>
