@@ -2,6 +2,8 @@ import './burger-navigation.scss';
 import { Link } from 'react-router-dom';
 import { useCurrentPath } from '../contexts/PathContext';
 import cn from 'classnames';
+import { AddAndFavouritesContext } from '../contexts/AddAndFavouriteContext';
+import { useContext } from 'react';
 
 type Props = {
   isBurgerMenu: boolean;
@@ -13,6 +15,8 @@ export const BurgerNavigation: React.FC<Props> = ({
   onClose,
 }) => {
   const { pathname, search } = useCurrentPath(); // ← теперь получаем и pathname, и search из контекста
+  const context = useContext(AddAndFavouritesContext);
+  const { toggleFavourite, isFavourite, toggleCart, isInCart } = context;
 
   const pages = [
     { title: 'HOME', path: '/' },
@@ -56,6 +60,12 @@ export const BurgerNavigation: React.FC<Props> = ({
                 alt="Favourites icon"
                 className="icon"
               />
+
+              <div className='quantity-box'>
+                <div className='quantity'>
+                  7
+                </div>
+              </div>
             </Link>
           </div>
 

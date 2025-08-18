@@ -1,4 +1,3 @@
-
 .burger-navigation {
   background-color: $main-bg-color;
   width: 100%;
@@ -8,7 +7,9 @@
 
   opacity: 0;
   transform: translateY(-150%);
-  transition: opacity 0.3s linear, transform 0.5s ease;
+  transition:
+    opacity 0.3s linear,
+    transform 0.5s ease;
 
   &.is-open {
     display: flex;
@@ -115,19 +116,44 @@
         align-items: center;
         width: 100%;
         height: 100%;
-      }
-    }
+        text-decoration: none;
 
-      .is-active {
-        background: linear-gradient(
-          to top right,
-          $border-hover-color 30%,
-          $main-bg-color 75%
-        );
+        .icon {
+          position: relative;
+        }
 
-        &::after {
-          background-color: $text-main-color;
+        .quantity-box {
+          background-color: rgba(244, 71, 175, 1);
+          height: 14px;
+          width: 14px;
+          border: 1px solid white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+
+          transform: translate(50%, -50%);
+
+          .quantity {
+            color: white;
+            font-size: 9px;
+          }
         }
       }
+
+    }
+
+    .is-active {
+      background: linear-gradient(
+        to top right,
+        $border-hover-color 30%,
+        $main-bg-color 75%
+      );
+
+      &::after {
+        background-color: $text-main-color;
+      }
+    }
   }
 }
