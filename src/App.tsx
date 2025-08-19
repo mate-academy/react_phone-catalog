@@ -9,6 +9,7 @@ export const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
+      <title>best app</title>
       <h1 className={styles.sr_only}>Product Catalog</h1>
 
       <main className={styles.content}>
