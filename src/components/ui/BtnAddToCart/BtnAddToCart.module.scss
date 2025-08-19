@@ -1,0 +1,8 @@
+@use "../../../shared/mixins/mixins.scss" as *;
+
+.buttons__addToCart {
+  width: 160px;
+  height: 40px;
+
+  @include big-button;
+}
