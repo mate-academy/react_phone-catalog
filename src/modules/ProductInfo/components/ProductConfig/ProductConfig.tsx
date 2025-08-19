@@ -61,10 +61,7 @@ export const ProductConfig: React.FC<ProductConfigProps> = ({
           ))}
         </ul>
         <div className={styles.photos__large}>
-          <img
-            src={`/react_phone-catalog/${selectedImage}`}
-            alt="Product"
-          />
+          <img src={`/react_phone-catalog/${selectedImage}`} alt="Product" />
         </div>
       </div>
       <div className={styles.ProductConfig__details}>
