@@ -130,7 +130,11 @@ export const DetailsContent: React.FC<DetailsContentProps> = ({
       <DescriptionAndSpecifications chosedItem={chosedItem} />
 
       <div className={styles.also}>
-        <HotPrices suggestedData={suggestedList} productDetails={true} />
+        <HotPrices
+          suggestedData={suggestedList}
+          productDetails={true}
+          setNewProduct={setNewProduct}
+        />
       </div>
     </div>
   );
