@@ -16,20 +16,11 @@ export const AppRoutes = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/home" element={<Navigate to="/" replace />} />
 
-      <Route path="/phones">
-        <Route index element={<PhonesPage />} />
-        <Route path=":productId" element={<ProductDetailsPage />} />
-      </Route>
+      <Route path="/phones" element={<PhonesPage />} />
+      <Route path="/tablets" element={<TabletsPage />} />
+      <Route path="/accessories" element={<AccessoriesPage />} />
 
-      <Route path="/tablets">
-        <Route index element={<TabletsPage />} />
-        <Route path=":productId" element={<ProductDetailsPage />} />
-      </Route>
-
-      <Route path="/accessories">
-        <Route index element={<AccessoriesPage />} />
-        <Route path=":productId" element={<ProductDetailsPage />} />
-      </Route>
+      <Route path="/product/:productId" element={<ProductDetailsPage />} />
 
       <Route path="/favorites" element={<FavoritesPage />} />
       <Route path="/cart" element={<CartPage />} />
