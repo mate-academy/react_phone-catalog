@@ -5,6 +5,7 @@ import style from './ProductsList.module.scss';
 import { Pagination } from './Pagination/Pagination';
 import { SortSelector } from './SortSelector/SortSelector';
 import { ProductNav } from './ProductNav/ProductNav';
+import { Loader } from '../modules/Loader';
 type Props = {
   products: Products[];
   title: string;
@@ -87,6 +88,10 @@ export const ProductList: React.FC<Props> = ({
 
   const visibleProducts = getVisibleProducts(finishedProducts);
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <section className={style['product-list']}>
       <ProductNav />
@@ -99,7 +104,7 @@ export const ProductList: React.FC<Props> = ({
             <h1 className={style['product-list__title']}>{title}</h1>
 
             <p className={style['product-list__text']}>
-              <p>{loading ? '...' : `${finishedProducts.length} models`}</p>
+              {finishedProducts.length} models
             </p>
           </div>
 

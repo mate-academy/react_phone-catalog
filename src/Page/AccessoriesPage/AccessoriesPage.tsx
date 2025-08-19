@@ -20,7 +20,7 @@ export const AccessoriesPage = () => {
       .then(setAccessories)
       .catch(() => setError('Something went wrong!'))
       .finally(() => setLoading(false));
-  }, [accessories, loading]);
+  }, []);
 
   return (
     <ProductList
