@@ -1,0 +1,15 @@
+@import './../style/index';
+
+
+.cart-page {
+  @include padding-inline;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+}
