@@ -101,36 +101,38 @@ export const Cart: React.FC = () => {
               </div>
               <div className={styles.total_underline}></div>
               <div className={styles.submit_container}>
-                <details>
-                  <summary>Checkout</summary>
-                  <div className={styles.cmc}>
-                    <div className={styles.cmt}>
-                      <p>
-                        Checkout is not implemented yet. Do you want to clear
-                        the Cart?
-                      </p>
-                      <div className={styles.submit_buttons}>
-                        <button
-                          className={styles.submit_button}
-                          id="confirmBtn"
-                          onClick={() => {
-                            confirmModal();
-                            setClearIsPressed(prev => !prev);
-                          }}
-                        >
-                          Yes, clear
-                        </button>
-                        <button
-                          className={styles.submit_button}
-                          id="cancelBtn"
-                          onClick={closeModal}
-                        >
-                          No, keep it
-                        </button>
+                {orderList.length !== 0 && (
+                  <details>
+                    <summary>Checkout</summary>
+                    <div className={styles.cmc}>
+                      <div className={styles.cmt}>
+                        <p>
+                          Checkout is not implemented yet. Do you want to clear
+                          the Cart?
+                        </p>
+                        <div className={styles.submit_buttons}>
+                          <button
+                            className={styles.submit_button}
+                            id="confirmBtn"
+                            onClick={() => {
+                              confirmModal();
+                              setClearIsPressed(prev => !prev);
+                            }}
+                          >
+                            Yes, clear
+                          </button>
+                          <button
+                            className={styles.submit_button}
+                            id="cancelBtn"
+                            onClick={closeModal}
+                          >
+                            No, keep it
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </details>
+                  </details>
+                )}
               </div>
             </div>
           </div>
