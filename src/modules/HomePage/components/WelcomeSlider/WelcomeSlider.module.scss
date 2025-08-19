@@ -1,0 +1,24 @@
+@import '../../../../styles/mixins.module';
+
+.title {
+
+  @include content-padding-inline();
+
+  font-family: 'Mont';
+  font-size: 32px;
+  font-weight: 800;
+  margin-top: 24px;
+  line-height: 41px;
+
+  @include on-tablet {
+    font-size: 48px;
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+  }
+
+}
+
+

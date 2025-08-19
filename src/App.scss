@@ -1,1 +1,34 @@
-// not empty
+@import './styles/styles';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+@import '/src/styles/mixins.module';
+
+.App {
+  font-family: Mont;
+  scroll-behavior: smooth;
+}
+
+// .main {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 54px;
+// }
+
+.custom-swiper {
+  .swiper-button-prev,
+  .swiper-button-next {
+
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import '/src/styles/mixins.module';
+
+.product-page {
+
+  @include content-padding-inline();
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__quantity {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $main-gray;
+    margin-top: 8px;
+  }
+}
