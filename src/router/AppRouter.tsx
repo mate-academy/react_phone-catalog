@@ -8,26 +8,21 @@ import { AccessoriesPage } from '../pages/AccessoriesPage';
 import { FavoritesPage } from '../pages/FavoritesPage';
 import { CartPage } from '../pages/CartPage';
 
-export const router = createHashRouter(
-  [
-    {
-      path: '/',
-      element: <App />,
-      children: [
-        { index: true, element: <HomePage /> },
-        { path: 'phones', element: <PhonesPage /> },
-        { path: 'phones/:id', element: <PhonesPage /> },
-        { path: 'tablets', element: <TabletsPage /> },
-        { path: 'tablets/:id', element: <TabletsPage /> },
-        { path: 'accessories', element: <AccessoriesPage /> },
-        { path: 'accessories/:id', element: <AccessoriesPage /> },
-        { path: 'favorites', element: <FavoritesPage /> },
-        { path: 'cart', element: <CartPage /> },
-        { path: '*', element: <NotFoundPage /> },
-      ],
-    },
-  ],
+export const router = createHashRouter([
   {
-    basename: '/react_phone-catalog/',
+    path: '/',
+    element: <App />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'phones', element: <PhonesPage /> },
+      { path: 'phones/:id', element: <PhonesPage /> },
+      { path: 'tablets', element: <TabletsPage /> },
+      { path: 'tablets/:id', element: <TabletsPage /> },
+      { path: 'accessories', element: <AccessoriesPage /> },
+      { path: 'accessories/:id', element: <AccessoriesPage /> },
+      { path: 'favorites', element: <FavoritesPage /> },
+      { path: 'cart', element: <CartPage /> },
+      { path: '*', element: <NotFoundPage /> },
+    ],
   },
-);
+]);
