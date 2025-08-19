@@ -54,7 +54,7 @@ export const ProductConfig: React.FC<ProductConfigProps> = ({
               className={`${styles.photos__item} ${selectedImage === img ? styles.active : ''}`}
             >
               <img
-                src={`/react_phone-catalog/public/${img}`}
+                src={`/react_phone-catalog/${img}`}
                 alt={`Product thumbnail ${index + 1}`}
               />
             </li>
@@ -62,7 +62,7 @@ export const ProductConfig: React.FC<ProductConfigProps> = ({
         </ul>
         <div className={styles.photos__large}>
           <img
-            src={`/react_phone-catalog/public/${selectedImage}`}
+            src={`/react_phone-catalog/${selectedImage}`}
             alt="Product"
           />
         </div>

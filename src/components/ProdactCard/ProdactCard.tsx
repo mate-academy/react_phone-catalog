@@ -24,7 +24,7 @@ export const ProdactCard: React.FC<Props> = ({ card, discount }) => {
       >
         <div className={styles.card__img}>
           <img
-            src={`/react_phone-catalog/public/${card.image}`}
+            src={`/react_phone-catalog/${card.image}`}
             alt={card.image}
           />
         </div>
