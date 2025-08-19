@@ -14,16 +14,26 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/phones" element={<PhonesPage />} />
-      <Route path="/phones/:productId" element={<ProductDetailsPage />} />
-      <Route path="/tablets" element={<TabletsPage />} />
-      <Route path="/tablets/:productId" element={<ProductDetailsPage />} />
-      <Route path="/accessories" element={<AccessoriesPage />} />
-      <Route path="/accessories/:productId" element={<ProductDetailsPage />} />
-      <Route path="/product/:productId" element={<ProductDetailsPage />} />
+      <Route path="/home" element={<Navigate to="/" replace />} />
+
+      <Route path="/phones">
+        <Route index element={<PhonesPage />} />
+        <Route path=":productId" element={<ProductDetailsPage />} />
+      </Route>
+
+      <Route path="/tablets">
+        <Route index element={<TabletsPage />} />
+        <Route path=":productId" element={<ProductDetailsPage />} />
+      </Route>
+
+      <Route path="/accessories">
+        <Route index element={<AccessoriesPage />} />
+        <Route path=":productId" element={<ProductDetailsPage />} />
+      </Route>
+
       <Route path="/favorites" element={<FavoritesPage />} />
       <Route path="/cart" element={<CartPage />} />
-      <Route path="/home" element={<Navigate to="/" replace />} />
+
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

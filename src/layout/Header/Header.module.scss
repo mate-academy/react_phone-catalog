@@ -5,7 +5,7 @@
   width: 100%;
   height: variables.$header-height;
   border-bottom: 1px solid var(--elements);
-  background-color: var(--white);
+  background-color: var(--main-bg);
 }
 
 .headerContent {
@@ -29,6 +29,7 @@
 
   img {
     height: 24px;
+    display: block;
   }
 }
 
@@ -53,6 +54,17 @@
   }
 }
 
+.icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    filter: brightness(0) saturate(100%) invert(73%) sepia(9%) saturate(286%)
+      hue-rotate(169deg) brightness(88%) contrast(88%);
+    transition: filter 0.2s ease, opacity 0.2s ease;
+    opacity: 0.95;
+  }
+
 .rightSideLink {
   position: relative;
 
@@ -62,8 +74,8 @@
 
   width: 40px;
   height: 40px;
-  border-left: 1px solid var(--elements);
 
+  border-left: 1px solid var(--elements);
   color: var(--secondary-text);
 
   transition: background-color 0.2s, color 0.2s;
@@ -71,46 +83,33 @@
   &:hover {
     color: var(--link-active-color);
     background-color: var(--hover-bg);
-  }
 
-  .icon {
-    display: block;
-
-    width: 24px;
-    height: 24px;
-
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.5px;
-
-    transition: stroke 0.2s, fill 0.2s, color 0.2s;
+    .icon {
+      filter: brightness(0) saturate(100%) invert(16%) sepia(8%) saturate(749%)
+        hue-rotate(176deg) brightness(91%) contrast(88%);
+    }
   }
 
   .activeIcon {
-    color: var(--red);
-    fill: none;
+    filter: invert(28%) sepia(98%) saturate(2552%) hue-rotate(337deg)
+      brightness(92%) contrast(96%);
+    opacity: 1;
   }
 
   .count {
     position: absolute;
-    top: 6px;
-    right: 6px;
+    top: 32px;
 
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    min-width: 18px;
-    height: 18px;
-    padding: 0 4px;
-    border-radius: 9px;
+    height: 24px;
 
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 18px;
-    color: var(--white);
-
-    background-color: var(--red);
+    font-size: variables.$fs-small;
+    font-weight: variables.$fw-medium;
+    color: var(--main-tex);
+    z-index: 1;
   }
 }
 
@@ -182,20 +181,22 @@
     justify-content: center;
   }
 
-  .icon {
+  img {
     width: 24px;
     height: 24px;
+    display: block;
 
-    fill: none;
-    stroke: var(--secondary-text);
-    stroke-width: 1.5px;
+   filter: brightness(0) saturate(100%) invert(73%) sepia(9%) saturate(286%)
+      hue-rotate(169deg) brightness(88%) contrast(88%);
+    transition: filter 0.2s;
   }
 
   &:hover {
     background-color: var(--hover-bg);
 
-    .icon {
-      stroke: var(--link-active-color);
+    img {
+      filter: brightness(0) saturate(100%) invert(16%) sepia(8%) saturate(749%)
+        hue-rotate(176deg) brightness(91%) contrast(88%);
     }
   }
 }

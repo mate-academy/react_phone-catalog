@@ -11,7 +11,7 @@ interface CartContextType {
   decreaseQuantity: (productId: string) => void;
   clearCart: () => void;
   getTotalItems: () => number;
-  isInCart: (productId: string) => boolean; // ✅ додано
+  isInCart: (productId: string) => boolean;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
