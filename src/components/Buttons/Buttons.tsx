@@ -3,6 +3,8 @@ import { useFavorites } from '../../context/Favorites/FavoritesContext';
 import { useCart } from '../../context/CartContext/CartContext';
 import { Product } from '../../utils/Product';
 
+import './Buttons.scss';
+
 type Props = {
   product: Product | null;
 };

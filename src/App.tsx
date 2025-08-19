@@ -11,6 +11,7 @@ import { FavoritesProvider } from './context/Favorites/FavoritesContext';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
 import { CartProvider } from './context/CartContext/CartContext';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const App = () => {
   const [allItems, setAllItems] = useState<Product[]>([]);
@@ -59,8 +60,13 @@ export const App = () => {
               <Route path="/favourites" element={<FavoritesPage />} />
               <Route path="/cart" element={<CartPage />} />
               <Route
-                path="/product/:productId"
+                path="/:category/:productId"
                 element={<ProductDetailsPage />}
+              />
+
+              <Route
+                path="*"
+                element={<NotFoundPage />}
               />
             </Routes>
           </div>

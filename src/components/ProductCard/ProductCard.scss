@@ -20,6 +20,7 @@
     height: 196px;
     width: auto;
     object-fit: contain;
+    transition: transform 0.3s ease; 
   }
 
   &__description {
@@ -62,37 +63,11 @@
     }
   }
 
-  &__button {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 8px;
+  &:hover {
+    cursor: pointer;
+  }
 
-    padding-top: 8px;
-
-    &--add {
-      padding-inline: 39.5px;
-      padding-block: 9.5px;
-      font-family: inherit;
-
-      background-color: $purple-accent-color;
-      border: none;
-
-      color: $text-color;
-    }
-
-    &--favourite {
-      padding: 12px;
-      background-color: $grey-dark-color;
-      border: none;
-
-      font-family: inherit;
-    }
-
-    &-icon {
-      width: 16px;
-      height: 16px;
-      display: block;
-    }
+  &:hover img {
+    transform: scale(1.1); 
   }
 }
