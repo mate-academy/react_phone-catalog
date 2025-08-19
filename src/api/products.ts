@@ -4,7 +4,7 @@ import { Product } from '../shared/types/Product';
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export const getProducts = () => {
-  return client.get<Product[]>('/react_phone-catalog/public/api/products.json');
+  return client.get<Product[]>('/public/api/products.json');
 };
 
 export const getProductByItemId = (itemId: string) => {

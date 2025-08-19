@@ -26,8 +26,8 @@ export const ProductConfig: React.FC<ProductConfigProps> = ({
   const navigate = useNavigate();
 
   const ProductImages = product.images;
-  const isFavorite = favorites.some((item) => item.itemId === product.id);
-  const card = products.find((item) => item.itemId === id);
+  const isFavorite = favorites.some(item => item.itemId === product.id);
+  const card = products.find(item => item.itemId === id);
 
   const handleCapacitySelect = (capacity: string) => {
     setSelectCapacity(capacity);
