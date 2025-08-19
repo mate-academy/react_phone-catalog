@@ -38,6 +38,8 @@ export const ProductPage: React.FC = () => {
     }
   }, [currentProduct, setCategoryProducts]);
 
+  console.log(categoryProducts);
+
   function setTitle(product: CurrentCategory) {
     if (!product) {
       return '';
