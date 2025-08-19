@@ -10,7 +10,7 @@ import { TabletInfoType } from '../../types/TabletInfoType';
 import { AccessoryInfoType } from '../../types/AccessoryInfoType';
 import { AllProductsType } from '../../types/AllProductsType';
 import { SwiperSection } from '../SwiperSection';
-import { FavouritesAddButton } from '../FavouritesAddButton';
+import { FavoritesAddButton } from '../FavoritesAddButton';
 
 export type ProductInfoUnionType =
   | PhoneInfoType
@@ -250,7 +250,7 @@ export const ProductInfoPage: React.FC = () => {
                 )}
               </div>
 
-              <FavouritesAddButton productId={foundId} />
+              <FavoritesAddButton productId={foundId} />
 
               <div className="info">
                 {baseSpecifications.map(({ name, value }) => (

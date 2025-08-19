@@ -5,11 +5,11 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 type ID = number;
 
 // Тип для данных в контексте
-type AddAndFavouritesContextType = {
+type AddAndFavoritesContextType = {
   // Избранные
-  favourites: ID[];
-  toggleFavourite: (id: ID) => void;
-  isFavourite: (id: ID) => boolean;
+  favorites: ID[];
+  toggleFavorite: (id: ID) => void;
+  isFavorite: (id: ID) => boolean;
 
   // Добавленные в корзину
   cart: ID[];
@@ -18,23 +18,23 @@ type AddAndFavouritesContextType = {
 };
 
 // Создаём контекст с дефолтными значениями
-export const AddAndFavouritesContext =
-  createContext<AddAndFavouritesContextType>({
-    favourites: [],
+export const AddAndFavoritesContext =
+  createContext<AddAndFavoritesContextType>({
+    favorites: [],
     cart: [],
 
-    toggleFavourite: () => {},
+    toggleFavorite: () => {},
     toggleCart: () => {},
 
-    isFavourite: () => false,
+    isFavorite: () => false,
     isInCart: () => false,
   });
 
 // Провайдер контекста
-export const AddAndFavouritesProvider: React.FC<{
+export const AddAndFavoritesProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  const [favourites, setFavourites] = useLocalStorage<ID[]>('favourites', []);
+  const [favorites, setFavorites] = useLocalStorage<ID[]>('favorites', []);
   const [cart, setCart] = useLocalStorage<ID[]>('cart', []);
 
   // Универсальная функция toggle для любого массива
@@ -50,26 +50,26 @@ export const AddAndFavouritesProvider: React.FC<{
     saveArray(newArray);
   };
 
-  // Функции для работы с favourites
-  const toggleFavourite = (id: ID) => toggleItemInArray(id, favourites, setFavourites);
-  const isFavourite = (id: ID) => favourites.includes(id);
+  // Функции для работы с favorites
+  const toggleFavorite = (id: ID) => toggleItemInArray(id, favorites, setFavorites);
+  const isFavorite = (id: ID) => favorites.includes(id);
 
   // Функции для работы с cart
   const toggleCart = (id: ID) => toggleItemInArray(id, cart, setCart);
   const isInCart = (id: ID) => cart.includes(id);
 
   return (
-    <AddAndFavouritesContext.Provider
+    <AddAndFavoritesContext.Provider
       value={{
-        favourites,
-        toggleFavourite,
-        isFavourite,
+        favorites,
+        toggleFavorite,
+        isFavorite,
         cart,
         toggleCart,
         isInCart,
       }}
     >
       {children}
-    </AddAndFavouritesContext.Provider>
+    </AddAndFavoritesContext.Provider>
   );
 };

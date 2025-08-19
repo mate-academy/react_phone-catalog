@@ -5,6 +5,11 @@
   height: 100vh;
   background-color: $page-body-bg-color;
 
+
+  overflow-y: scroll;
+  // scrollbar-gutter: stable;
+
+
 }
 
 .app {
@@ -53,17 +58,13 @@
       margin-bottom: 80px;
     }
   }
+
+  &:has(.product-not-found) {
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
-
-// button {
-//   all: unset;
-//   cursor: pointer;
-// }
-
-// .icon {
-//   height: 16px;
-//   width: 16px;
-// }
 
 .title-section {
   padding: 24px 16px;

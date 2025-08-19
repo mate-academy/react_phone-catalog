@@ -2,7 +2,7 @@ import './burger-navigation.scss';
 import { Link } from 'react-router-dom';
 import { useCurrentPath } from '../contexts/PathContext';
 import cn from 'classnames';
-import { AddAndFavouritesContext } from '../contexts/AddAndFavouriteContext';
+import { AddAndFavoritesContext } from '../contexts/AddAndFavoritesContext';
 import { useContext } from 'react';
 
 type Props = {
@@ -15,8 +15,8 @@ export const BurgerNavigation: React.FC<Props> = ({
   onClose,
 }) => {
   const { pathname, search } = useCurrentPath(); // ← теперь получаем и pathname, и search из контекста
-  const context = useContext(AddAndFavouritesContext);
-  const { toggleFavourite, isFavourite, toggleCart, isInCart } = context;
+  const context = useContext(AddAndFavoritesContext);
+  const { favorites } = context;
 
   const pages = [
     { title: 'HOME', path: '/' },
@@ -46,7 +46,8 @@ export const BurgerNavigation: React.FC<Props> = ({
         </ul>
 
         <div className="burger-footer">
-          <div className={cn('burger-icon-container', {
+          <div
+            className={cn('burger-icon-container', {
               'is-active': pathname === '/favorites',
             })}
           >
@@ -57,15 +58,13 @@ export const BurgerNavigation: React.FC<Props> = ({
             >
               <img
                 src="/img/icons/FavoritesHeartLike.svg"
-                alt="Favourites icon"
+                alt="Favorites icon"
                 className="icon"
               />
 
-              <div className='quantity-box'>
-                <div className='quantity'>
-                  7
-                </div>
-              </div>
+              {favorites.length > 0 && <div className="quantity-box">
+                <div className="quantity">{favorites.length}</div>
+              </div>}
             </Link>
           </div>
 

@@ -21,11 +21,6 @@
     height: 506px;
   }
 
-  // transition: box-shadow 0.3s ease;
-  // &:hover {
-  //   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-  // }
-
   .photo-name-container {
     text-decoration: none;
     color: $text-main-color;
@@ -119,30 +114,4 @@
       }
     }
   }
-
-  // .add-favourites-container {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   gap: 8px;
-
-  //   .add-button {
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     width: 100%;
-  //     background-color: rgba(33, 108, 255, 1);
-  //     border-radius: 8px;
-  //   }
-
-  //   .favourites-button {
-  //     display: flex;
-  //     flex-shrink: 0;
-  //     align-items: center;
-  //     justify-content: center;
-  //     height: 40px;
-  //     width: 40px;
-  //     border-radius: 50%;
-  //     border: 1px solid $border-color;
-  //   }
-  // }
 }

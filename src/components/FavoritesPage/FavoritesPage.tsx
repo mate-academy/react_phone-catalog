@@ -1,16 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
 import { AllProductsType } from '../../types/AllProductsType';
 import { BreadcrumbsNav } from '../BreadcrumbsNav';
-import { AddAndFavouritesContext } from '../contexts/AddAndFavouriteContext';
+import { AddAndFavoritesContext } from '../contexts/AddAndFavoritesContext';
 import { ProductCard } from '../ProductCard';
 import './favoritesPage.scss';
 
 export const FavoritesPage = () => {
-  const context = useContext(AddAndFavouritesContext);
+  const context = useContext(AddAndFavoritesContext);
 
   const [products, setProducts] = useState<AllProductsType[]>([]);
 
-  const { favourites } = context;
+  const { favorites } = context;
 
   const [allProducts, setAllProducts] = useState<AllProductsType[]>([]);
 
@@ -22,21 +22,21 @@ export const FavoritesPage = () => {
 
   useEffect(() => {
     const productsInFavorites = allProducts.filter(product =>
-      favourites.includes(product.id),
+      favorites.includes(product.id),
     );
     setProducts(productsInFavorites);
-  }, [favourites, allProducts]);
+  }, [favorites, allProducts]);
 
   console.log('--===productsInFavorites===--', products);
-  console.log('--===favourites===--', favourites);
+  console.log('--===favorites===--', favorites);
 
   return (
-    <div className="favourites-page">
+    <div className="favorites-page">
       <BreadcrumbsNav />
 
       <div className="title-block">
         <div className="page-title">Favorites</div>
-        <p className="main-body-text-14">{favourites.length} models</p>
+        <p className="main-body-text-14">{favorites.length} items</p>
       </div>
 
       <div className="category-models">

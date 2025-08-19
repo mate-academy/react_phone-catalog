@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AllProductsType } from '../../types/AllProductsType';
 import { useCurrentPath } from '../contexts/PathContext';
-import { FavouritesAddButton } from '../FavouritesAddButton';
+import { FavoritesAddButton } from '../FavoritesAddButton';
 import './productCard.scss';
 
 type Props = {
@@ -22,14 +22,13 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const category = product.category;
   const id = product.id;
 
-
   const { search } = useCurrentPath(); // ✅ достаём текущие параметры запроса
 
   return (
     <div className="product-card-container" key={modelId}>
       <Link
-        to={`/${category}/${modelId}`}           // путь к странице товара
-        state={{ search }}                       // ✅ передаём параметры в state
+        to={`/${category}/${modelId}`} // путь к странице товара
+        state={{ search }} // ✅ передаём параметры в state
         className="photo-name-container"
         onClick={() => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -72,7 +71,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
         </div>
       </div>
 
-      <FavouritesAddButton productId={id}/>
+      <FavoritesAddButton productId={id} />
     </div>
   );
 };

@@ -1,27 +1,27 @@
 import { useContext } from 'react';
-import { AddAndFavouritesContext } from '../contexts/AddAndFavouriteContext';
-import './favouritesAddButton.scss';
+import { AddAndFavoritesContext } from '../contexts/AddAndFavoritesContext';
+import './favoritesAddButton.scss';
 
 type Props = {
   productId: number;
 };
 
-export const FavouritesAddButton = ({ productId }: Props) => {
-  const context = useContext(AddAndFavouritesContext);
-  // const toggleFavourite = () => {
-  //   console.log('Toggle favourite for product:', productId);
+export const FavoritesAddButton = ({ productId }: Props) => {
+  const context = useContext(AddAndFavoritesContext);
+  // const toggleFavorite = () => {
+  //   console.log('Toggle favorite for product:', productId);
   // };
 
-  if (!context) {
-    throw new Error(
-      'FavouritesAddButton must be used within AddAndFavouritesProvider',
-    );
-  }
+  // if (!context) {
+  //   throw new Error(
+  //     'FavoritesAddButton must be used within AddAndFavoritesProvider',
+  //   );
+  // }
 
-  const { toggleFavourite, isFavourite, toggleCart, isInCart } = context;
+  const { toggleFavorite, isFavorite, toggleCart, isInCart } = context;
 
   return (
-    <div className="add-favourites-container">
+    <div className="add-favorites-container">
       {!isInCart(productId) ? (
         <button
           className="add-button has-shadow-cursor"
@@ -39,20 +39,20 @@ export const FavouritesAddButton = ({ productId }: Props) => {
       )}
 
       <button
-        className="favourites-button has-shadow-cursor"
-        onClick={() => toggleFavourite(productId)}
+        className="favorites-button has-shadow-cursor"
+        onClick={() => toggleFavorite(productId)}
       >
-        {!isFavourite(productId) ? (
+        {!isFavorite(productId) ? (
           <img
             className="icon"
             src="/img/icons/Heart.svg"
-            alt="favourites img"
+            alt="favorites img"
           />
         ) : (
           <img
             className="icon"
             src="/img/icons/PinkHeartLike.svg"
-            alt="favourites img"
+            alt="favorites img"
           />
         )}
       </button>

@@ -11,11 +11,11 @@ import { ProductInfoPage } from './components/ProductInfoPage';
 import { PathProvider } from './components/contexts/PathContext';
 import { ProductNotFoundPage } from './components/ProductNotFoundPage';
 import { FavoritesPage } from './components/FavoritesPage/FavoritesPage';
-import { AddAndFavouritesProvider } from './components/contexts/AddAndFavouriteContext';
+import { AddAndFavoritesProvider } from './components/contexts/AddAndFavoritesContext';
 
 export const App = () => {
   return (
-    <AddAndFavouritesProvider>
+    <AddAndFavoritesProvider>
       <PathProvider>
         <div className="app">
           <Header />
@@ -42,6 +42,6 @@ export const App = () => {
           <Footer />
         </div>
       </PathProvider>
-    </AddAndFavouritesProvider>
+    </AddAndFavoritesProvider>
   );
 };
