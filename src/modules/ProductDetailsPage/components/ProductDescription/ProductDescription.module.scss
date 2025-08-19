@@ -1,0 +1,99 @@
+@import '../../../../styles/mixins.scss';
+@import '../../../../styles/variables.scss';
+
+.productDescription {
+  @include on-desktop {
+    display: contents;
+  }
+
+  &__aboutSection {
+    grid-column: 1 / -1;
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 12;
+      margin-top: 80px;
+    }
+  }
+
+  &__techSpecs {
+    grid-column: 1 / -1;
+    margin-top: 56px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: 16 / -1;
+      margin-top: 80px;
+    }
+  }
+
+  &__divider {
+    height: 2px;
+    background-color: $elements-color;
+    opacity: 0.5;
+    margin: 8px 0;
+    margin-bottom: 32px;
+  }
+
+  &__aboutSection,
+  &__techSpecs {
+    h2 {
+      font-size: 20px;
+      font-weight: $bold;
+      color: $white;
+      margin-bottom: 16px;
+
+      @include on-tablet {
+        font-size: 22px;
+      }
+    }
+  }
+
+  &__section {
+    h3 {
+      font-size: 16px;
+      font-weight: $bold;
+      color: $white;
+      margin-bottom: 16px;
+
+      @include on-tablet {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__sectionText {
+    font-size: 14px;
+    font-weight: $semi-bold;
+    color: #89939A;
+    margin-bottom: 32px;
+  }
+
+  &__specRow {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__specLabel {
+    font-size: 14px;
+    font-weight: $bold;
+    color: $secondary-color;
+  }
+
+  &__specValue {
+    font-size: 14px;
+    font-weight: $bold;
+    color: $white;
+    text-align: right;
+  }
+}

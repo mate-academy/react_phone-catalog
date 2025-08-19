@@ -1,0 +1,28 @@
+@import '../../../../styles/mixins.scss';
+@import '../../../../styles/variables.scss';
+
+.filter {
+  @include page-grid;
+
+  &__label {
+    font-size: 12px;
+    font-weight: $semi-bold;
+    color: $secondary-color;
+  }
+
+  &__group {
+    grid-column: span 2;
+  }
+
+  &__groupSort {
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__groupPerPage {
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+}

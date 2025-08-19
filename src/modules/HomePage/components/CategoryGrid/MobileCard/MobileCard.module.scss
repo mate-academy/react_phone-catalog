@@ -1,0 +1,23 @@
+@import '../../../../../styles/variables.scss';
+@import '../../../../../styles/mixins.scss';
+
+.mobileCard {
+  margin: 0;
+  padding: 0;
+
+  @include card-base;
+
+  &__imageContainer {
+    @include image-container;
+
+    background-color: #6D6474;
+  }
+
+  &__image {
+    @include position-and-crop-image;
+
+    margin-right: -15px;
+  }
+
+  @include categories-title-sizes;
+}

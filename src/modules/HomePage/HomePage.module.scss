@@ -1,0 +1,55 @@
+@import '../../styles/mixins.scss';
+
+.home {
+  .welcomeTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 40px;
+    padding: 24px 16px;
+
+    @include title-positioning;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      padding: 32px 24px;
+    }
+
+    @include on-desktop {
+      padding: 56px 32px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+
+    .section__title {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-weight: 800h;
+      font-size: 22px;
+      padding-left: 16px;
+
+      @include title-positioning;
+
+      @include on-tablet {
+        padding-left: 0;
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+

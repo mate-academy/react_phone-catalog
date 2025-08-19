@@ -1,0 +1,53 @@
+@import '../../../../styles/mixins.scss';
+@import '../../../../styles/variables.scss';
+
+.categories {
+  @include page-grid;
+  margin: 24px 16px;
+  padding: 0;
+
+  @include on-tablet {
+    margin: 24px 24px;
+  }
+
+  @include on-desktop {
+    margin: 24px 32px;
+  }
+
+  &__section_mobile {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 5;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 9;
+    }
+  }
+
+  &__section_tablets {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 5 / 9;
+    }
+
+    @include on-desktop {
+      grid-column: 9 / 17;
+    }
+  }
+
+
+  &__section_accessories {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 9 / 13;
+    }
+
+    @include on-desktop {
+      grid-column: 17 / 25;
+    }
+  }
+}
