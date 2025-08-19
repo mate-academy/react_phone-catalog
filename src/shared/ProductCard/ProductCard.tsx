@@ -9,10 +9,16 @@ type ProductCardProps = {
   product: ProductDemo;
   showFullPrice?: boolean;
   productPage?: boolean;
+  setNewProduct?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ProductCard = React.memo(
-  ({ product, showFullPrice, productPage }: ProductCardProps) => {
+  ({
+    product,
+    showFullPrice,
+    productPage,
+    setNewProduct,
+  }: ProductCardProps) => {
     const { setHeartIsPressed, setAddIsPressed } = useMyContext();
     const [activeHeart, setActiveHeart] = useState(false);
     const [activeAdd, setActiveAdd] = useState(false);
@@ -85,6 +91,11 @@ export const ProductCard = React.memo(
           <Link
             to={`/product/${product.itemId}`}
             className={styles.image_block}
+            onClick={() => {
+              if (setNewProduct) {
+                setNewProduct(prev => !prev);
+              }
+            }}
           >
             <img
               className={styles.image_block_photo}
@@ -97,6 +108,11 @@ export const ProductCard = React.memo(
             <Link
               to={`/product/${product.itemId}`}
               className={styles.link_block_text}
+              onClick={() => {
+                if (setNewProduct) {
+                  setNewProduct(prev => !prev);
+                }
+              }}
             >
               {product.name}
             </Link>

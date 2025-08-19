@@ -8,11 +8,13 @@ import { ProductDemo } from '../../../types/ProductDemo';
 type HotPricesProps = {
   suggestedData?: ProductDemo[];
   productDetails?: boolean;
+  setNewProduct?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const HotPrices: React.FC<HotPricesProps> = ({
   productDetails,
   suggestedData,
+  setNewProduct,
 }) => {
   const { products } = useMyContext();
 
@@ -83,6 +85,7 @@ export const HotPrices: React.FC<HotPricesProps> = ({
           emblaRef={emblaRef}
           data={suggestedData}
           showFullPrice={true}
+          setNewProduct={setNewProduct}
         />
       ) : (
         <ProductList

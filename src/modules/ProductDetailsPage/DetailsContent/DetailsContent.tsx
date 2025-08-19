@@ -12,6 +12,8 @@ import { ProductSelectors } from './ProductSelectors';
 type DetailsContentProps = {
   chosedItem: ProductFullInfo | undefined;
   chosedItemDemo: ProductDemo | undefined;
+  setChosedItem: (product: ProductFullInfo) => void;
+  fullInfoList: ProductFullInfo[];
   isTablet: boolean;
   selectedImage: string | null;
   setSelectedImage: (val: string | null) => void;
@@ -25,10 +27,13 @@ type DetailsContentProps = {
   setActiveHeart: (val: boolean) => void;
   updateList: (item: ProductDemo, direction: Action) => void;
   suggestedList: ProductDemo[];
+  setNewProduct: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const DetailsContent: React.FC<DetailsContentProps> = ({
   chosedItem,
+  setChosedItem,
+  fullInfoList,
   selectedImage,
   setSelectedImage,
   selectedColor,
@@ -43,6 +48,7 @@ export const DetailsContent: React.FC<DetailsContentProps> = ({
   updateList,
   suggestedList,
   isTablet,
+  setNewProduct,
 }) => {
   if (!chosedItem) {
     return <div></div>;
@@ -62,6 +68,8 @@ export const DetailsContent: React.FC<DetailsContentProps> = ({
           <div className={styles.tablet_confirm}>
             <ProductSelectors
               chosedItem={chosedItem}
+              setChosedItem={setChosedItem}
+              fullInfoList={fullInfoList}
               selectedColor={selectedColor}
               setSelectedColor={setSelectedColor}
               selectedCapacity={selectedCapacity}
@@ -80,7 +88,11 @@ export const DetailsContent: React.FC<DetailsContentProps> = ({
         </div>
         <DescriptionAndSpecifications chosedItem={chosedItem} />
         <div className={styles.also}>
-          <HotPrices suggestedData={suggestedList} productDetails={true} />
+          <HotPrices
+            suggestedData={suggestedList}
+            productDetails={true}
+            setNewProduct={setNewProduct}
+          />
         </div>
       </div>
     </div>
@@ -98,6 +110,8 @@ export const DetailsContent: React.FC<DetailsContentProps> = ({
       {/* Order */}
       <ProductSelectors
         chosedItem={chosedItem}
+        setChosedItem={setChosedItem}
+        fullInfoList={fullInfoList}
         selectedColor={selectedColor}
         setSelectedColor={setSelectedColor}
         selectedCapacity={selectedCapacity}

@@ -1,11 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { useNavigate } from 'react-router-dom';
 import { breakpoints } from '../../../../Services/MediaBreakpoints';
 import { useMediaQuery } from '../../../../Services/UseMediaQuery';
 import { ProductFullInfo } from '../../../../types/ProductFullInfo';
 import styles from './ProductSelectors.module.scss';
 
+type Selectors = 'color' | 'capacity';
+
 type ProductSelectorsProps = {
   chosedItem: ProductFullInfo;
+  setChosedItem: (product: ProductFullInfo) => void;
+  fullInfoList: ProductFullInfo[];
   selectedColor: string;
   setSelectedColor: (val: string) => void;
   selectedCapacity: string;
@@ -14,12 +19,34 @@ type ProductSelectorsProps = {
 
 export const ProductSelectors: React.FC<ProductSelectorsProps> = ({
   chosedItem,
+  setChosedItem,
+  fullInfoList,
   selectedColor,
   setSelectedColor,
   selectedCapacity,
   setSelectedCapacity,
 }) => {
+  const navigate = useNavigate();
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.desktop}px)`);
+
+  const changeSelectedProduct = (value: string, selector: Selectors) => {
+    const modelGroup = fullInfoList.filter(
+      model => model.namespaceId === chosedItem.namespaceId,
+    );
+
+    const modelToChange = modelGroup.find(item => {
+      if (selector === 'capacity') {
+        return item.capacity === value && item.color === chosedItem.color;
+      }
+
+      return item.color === value && item.capacity === chosedItem.capacity;
+    });
+
+    if (modelToChange) {
+      navigate(`/product/${modelToChange.id}`);
+      setChosedItem(modelToChange);
+    }
+  };
 
   return !isDesktop ? (
     <div className={styles.selectors}>
@@ -38,7 +65,10 @@ export const ProductSelectors: React.FC<ProductSelectorsProps> = ({
                   className={styles.colorSelection_input}
                   value={color}
                   checked={selectedColor === color}
-                  onChange={() => setSelectedColor(color)}
+                  onChange={() => {
+                    setSelectedColor(color);
+                    changeSelectedProduct(color, 'color');
+                  }}
                   style={{ backgroundColor: color }}
                 />
               </label>
@@ -68,7 +98,10 @@ export const ProductSelectors: React.FC<ProductSelectorsProps> = ({
                 name="capacity"
                 value={capacity}
                 checked={selectedCapacity === capacity}
-                onChange={() => setSelectedCapacity(capacity)}
+                onChange={() => {
+                  setSelectedCapacity(capacity);
+                  changeSelectedProduct(capacity, 'capacity');
+                }}
               />
               <label
                 className={styles.capacitySelection_label}
@@ -99,7 +132,10 @@ export const ProductSelectors: React.FC<ProductSelectorsProps> = ({
                     className={styles.colorSelection_input}
                     value={color}
                     checked={selectedColor === color}
-                    onChange={() => setSelectedColor(color)}
+                    onChange={() => {
+                      setSelectedColor(color);
+                      changeSelectedProduct(color, 'color');
+                    }}
                     style={{ backgroundColor: color }}
                   />
                 </label>
@@ -121,7 +157,10 @@ export const ProductSelectors: React.FC<ProductSelectorsProps> = ({
                   name="capacity"
                   value={capacity}
                   checked={selectedCapacity === capacity}
-                  onChange={() => setSelectedCapacity(capacity)}
+                  onChange={() => {
+                    setSelectedCapacity(capacity);
+                    changeSelectedProduct(capacity, 'capacity');
+                  }}
                 />
                 <label
                   className={styles.capacitySelection_label}

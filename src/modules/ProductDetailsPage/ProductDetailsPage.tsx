@@ -37,8 +37,10 @@ export const ProductDetailsPage: React.FC = () => {
   const [activeAdd, setActiveAdd] = useState(false);
   const [suggestedList, setSuggestedList] = useState<ProductDemo[]>([]);
   const [fullInfoList, setFullInfoList] = useState<ProductFullInfo[]>([]);
+  const [chosedItem, setChosedItem] = useState<ProductFullInfo>();
+  const [newProduct, setNewProduct] = useState<boolean>(false);
 
-  const chosedItem = fullInfoList.find(item => item.id === productId);
+  // const chosedItem = fullInfoList.find(item => item.id === productId);
   const chosedItemDemo = products.find(product => product.itemId === productId);
 
   const updateList = (item: ProductDemo, direction: Action) => {
@@ -95,11 +97,17 @@ export const ProductDetailsPage: React.FC = () => {
           .sort(() => Math.random() - 0.5)
           .slice(0, 10);
 
+        const fullData = [...iphoneList, ...tabletList, ...accessoryList];
+        const foundProduct = fullData.find(item => item.id === productId);
+
         setSuggestedList(suggestedProducts);
         setIPhones(iphoneList);
         setTablets(tabletList);
         setAccessories(accessoryList);
-        setFullInfoList([...iphoneList, ...tabletList, ...accessoryList]);
+        setFullInfoList(fullData);
+        if (foundProduct) {
+          setChosedItem(foundProduct);
+        }
       } catch {
         setIsError(true);
       } finally {
@@ -108,14 +116,14 @@ export const ProductDetailsPage: React.FC = () => {
     };
 
     makeFullList();
-  }, []);
+  }, [newProduct]);
 
   useEffect(() => {
     setSelectedImage(chosedItem ? chosedItem.images[0] : null);
 
     setSelectedColor(chosedItem ? chosedItem.color : '');
     setSelectedCapacity(chosedItem ? chosedItem.capacity : '');
-  }, [fullInfoList]);
+  }, [fullInfoList, chosedItem]);
 
   useEffect(() => {
     const checkTheStorage = () => {
@@ -155,6 +163,8 @@ export const ProductDetailsPage: React.FC = () => {
       ) : chosedItem ? (
         <DetailsContent
           chosedItem={chosedItem}
+          setChosedItem={setChosedItem}
+          fullInfoList={fullInfoList}
           selectedImage={selectedImage}
           setSelectedImage={setSelectedImage}
           selectedColor={selectedColor}
@@ -169,6 +179,7 @@ export const ProductDetailsPage: React.FC = () => {
           updateList={updateList}
           suggestedList={suggestedList}
           isTablet={isTablet}
+          setNewProduct={setNewProduct}
         />
       ) : (
         <ErrorMessage notFound={true} />

@@ -11,6 +11,7 @@ type ProductListProps = {
   showFullPrice?: boolean;
   toCart?: boolean;
   productPage?: boolean;
+  setNewProduct?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ProductList: React.FC<ProductListProps> = ({
@@ -19,6 +20,7 @@ export const ProductList: React.FC<ProductListProps> = ({
   showFullPrice,
   toCart,
   productPage,
+  setNewProduct,
 }) => {
   const location = useLocation();
 
@@ -48,6 +50,7 @@ export const ProductList: React.FC<ProductListProps> = ({
                   product={product}
                   key={product.id}
                   showFullPrice={showFullPrice}
+                  setNewProduct={setNewProduct}
                 />
               ))}
         </ul>
