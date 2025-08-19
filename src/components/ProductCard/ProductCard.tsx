@@ -43,7 +43,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         ]}
       />
 
-      <Buttons />
+      <Buttons product={product} />
     </div>
   );
 };

@@ -126,7 +126,7 @@ export const ProductDetailsPage: React.FC<Props> = () => {
               </p>
             </div>
 
-            <Buttons />
+            <Buttons product={product} />
 
             <CharacteristicsTable
               characteristics={[

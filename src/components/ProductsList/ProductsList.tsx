@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import './ProductsList.scss';
 import { Product } from '../../utils/Product';
 import { ProductCard } from '../ProductCard';
+import { ButtonScroll } from '../ButtonScroll';
 
 type Props = {
   products: Product[];
@@ -33,21 +34,15 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
       <div className="header-row">
         <h2>{title}</h2>
         <div className="arrow">
-          <button className="arrow__button" onClick={scrollLeft}>
-            <img
-              className="arrow__image"
-              src="/img/icons/arrow-left.svg"
-              alt="arrow left"
-            />
-          </button>
+          <ButtonScroll
+            buttonText="/img/icons/arrow-left.svg"
+            clickFunc={scrollLeft}
+          />
 
-          <button className="arrow__button" onClick={scrollRight}>
-            <img
-              className="arrow__image"
-              src="/img/icons/arrow-right.svg"
-              alt="arrow right"
-            />
-          </button>
+          <ButtonScroll
+            buttonText="/img/icons/arrow-right.svg"
+            clickFunc={scrollRight}
+          />
         </div>
       </div>
       <div className="products-list" ref={containerRef}>

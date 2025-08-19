@@ -4,37 +4,38 @@ import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../utils/Product';
 import { ProductCard } from '../ProductCard';
 import './AllItemsList.scss';
-import { SelectBox } from '../SelectBox';
 import { Pagination } from '../Pagination/Pagination';
+import { Filters } from '../Filters';
+import { SortOptions } from '../Filters/Filters';
 
 type Props = {
-  path: string;
-  allItems: Product[];
-  setAllItems: (el: Product[]) => void;
+  path?: string;
+  allItems?: Product[];
+  setAllItems?: (el: Product[]) => void;
+  useFilters?: boolean;
 };
-
-enum SortOptions {
-  Newest = 'Newest',
-  Alphabetically = 'Alphabetically',
-  Cheapest = 'Cheapest',
-}
 
 export const AllItemsList: React.FC<Props> = ({
   path,
-  allItems,
+  allItems = [],
   setAllItems,
+  useFilters = true,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [sort, setSort] = useState<SortOptions>(SortOptions.Newest);
-
   const [perPage, setPerPage] = useState('4');
   const [page, setPage] = useState<number>(1);
 
   const itemsPerPage = perPage === 'all' ? allItems.length : +perPage;
-  const totalPages = Math.ceil(allItems.length / +itemsPerPage);
+  const totalPages =
+    allItems.length > 0 ? Math.ceil(allItems.length / +itemsPerPage) : 1;
 
   useEffect(() => {
+    if (!useFilters) {
+      return;
+    }
+
     const params = new URLSearchParams(searchParams);
 
     params.set('sort', sort);
@@ -42,9 +43,13 @@ export const AllItemsList: React.FC<Props> = ({
     params.set('page', page.toString());
 
     setSearchParams(params);
-  }, [sort, perPage, page]);
+  }, [sort, perPage, page, searchParams, setSearchParams, useFilters]);
 
   useEffect(() => {
+    if (!path || !setAllItems) {
+      return;
+    }
+
     const getItems = async () => {
       try {
         const res = await fetch(path);
@@ -60,17 +65,16 @@ export const AllItemsList: React.FC<Props> = ({
 
   const sortProducts = (items: Product[]) => {
     switch (sort) {
-      case SortOptions.Newest:
-      // return [...items].sort((a, b) => b.year - a.year);
       case SortOptions.Alphabetically:
         return [...items].sort((a, b) => a.name.localeCompare(b.name));
       case SortOptions.Cheapest:
         return [...items].sort((a, b) => {
-          const priceA = a.priceDiscount ?? a.priceDiscount ?? 0;
-          const priceB = b.priceDiscount ?? b.priceDiscount ?? 0;
+          const priceA = a.priceDiscount ?? a.priceRegular ?? 0;
+          const priceB = b.priceDiscount ?? b.priceRegular ?? 0;
 
           return priceA - priceB;
         });
+      case SortOptions.Newest:
       default:
         return items;
     }
@@ -81,32 +85,24 @@ export const AllItemsList: React.FC<Props> = ({
     (page - 1) * itemsPerPage + itemsPerPage,
   );
 
+  if (!useFilters) {
+    return (
+      <div className="catalog__list">
+        {allItems.map(item => (
+          <ProductCard product={item} key={item.id} />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="catalog">
-      <div className="catalog__filters">
-        <SelectBox
-          value={sort}
-          onChange={value => setSort(value as SortOptions)}
-          options={[
-            { label: 'Newest', value: SortOptions.Newest },
-            { label: 'Alphabetically', value: SortOptions.Alphabetically },
-            { label: 'Cheapest', value: SortOptions.Cheapest },
-          ]}
-          title="Sort by"
-        />
-
-        <SelectBox
-          title="Items on page"
-          value={perPage}
-          onChange={setPerPage}
-          options={[
-            { label: '4', value: '4' },
-            { label: '8', value: '8' },
-            { label: '16', value: '16' },
-            { label: 'All', value: 'all' },
-          ]}
-        />
-      </div>
+      <Filters
+        sort={sort}
+        perPage={perPage}
+        onSortChange={setSort}
+        onPerPageChange={setPerPage}
+      />
 
       <div className="catalog__list">
         {visibleProducts.map(item => (
@@ -114,15 +110,11 @@ export const AllItemsList: React.FC<Props> = ({
         ))}
       </div>
 
-      {totalPages !== 1 && (
+      {totalPages > 1 && (
         <Pagination
           page={page}
           totalPages={totalPages}
           onPageChange={newPage => setPage(newPage)}
-          // onPerPageChange={value => {
-          //   setPerPage(value);
-          //   setPage(0);
-          // }}
         />
       )}
     </div>

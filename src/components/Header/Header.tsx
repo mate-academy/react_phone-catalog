@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
 import { BurgerMenu } from '../BurgerMenu';
+// import { useFavorites } from '../../context/Favorites/FavoritesContext';
 
 export const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
+
+  // const { favorites } = useFavorites();
 
   const handleOpenMenu = () => {
     setOpen(prev => !prev);
@@ -55,12 +58,22 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className="header__button">
-            <Link to="/favourites" className="header__button-link">
+            <NavLink
+              to="/favourites"
+              className={({ isActive }) =>
+                `header__button-link ${isActive ? 'header__button-link--active' : ''}`
+              }
+            >
               <img src="/img/icons/icon-favourites.svg" alt="favourites" />
-            </Link>
-            <Link to="/cart" className="header__button-link">
+            </NavLink>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                `header__button-link ${isActive ? 'header__button-link--active' : ''}`
+              }
+            >
               <img src="/img/icons/icon-cart.svg" alt="cart" />
-            </Link>
+            </NavLink>
           </div>
         </div>
         <button

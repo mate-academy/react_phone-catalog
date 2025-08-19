@@ -7,53 +7,66 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { Product } from './utils/Product';
 import { useState } from 'react';
 import { ProductsCatalogPage } from './pages/ProductsCatalogPage';
+import { FavoritesProvider } from './context/Favorites/FavoritesContext';
+import { FavoritesPage } from './pages/FavoritesPage';
+import { CartPage } from './pages/CartPage';
+import { CartProvider } from './context/CartContext/CartContext';
 
 export const App = () => {
   const [allItems, setAllItems] = useState<Product[]>([]);
 
   return (
     <div className="App">
-      <Header />
-      <div className="App__content">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/phones"
-            element={
-              <ProductsCatalogPage
-                title="Mobile phones"
-                allItems={allItems}
-                setAllItems={setAllItems}
-                path="/api/phones.json"
+      <FavoritesProvider>
+        <CartProvider>
+          <Header />
+          <div className="App__content">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route
+                path="/phones"
+                element={
+                  <ProductsCatalogPage
+                    title="Mobile phones"
+                    allItems={allItems}
+                    setAllItems={setAllItems}
+                    path="/api/phones.json"
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/tablets"
-            element={
-              <ProductsCatalogPage
-                title="Tablets"
-                allItems={allItems}
-                setAllItems={setAllItems}
-                path="/api/tablets.json"
+              <Route
+                path="/tablets"
+                element={
+                  <ProductsCatalogPage
+                    title="Tablets"
+                    allItems={allItems}
+                    setAllItems={setAllItems}
+                    path="/api/tablets.json"
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/accessories"
-            element={
-              <ProductsCatalogPage
-                title="Accessories"
-                allItems={allItems}
-                setAllItems={setAllItems}
-                path="/api/accessories.json"
+              <Route
+                path="/accessories"
+                element={
+                  <ProductsCatalogPage
+                    title="Accessories"
+                    allItems={allItems}
+                    setAllItems={setAllItems}
+                    path="/api/accessories.json"
+                  />
+                }
               />
-            }
-          />
-          <Route path="/product/:productId" element={<ProductDetailsPage />} />
-        </Routes>
-      </div>
-      <Footer />
+              <Route path="/favourites" element={<FavoritesPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route
+                path="/product/:productId"
+                element={<ProductDetailsPage />}
+              />
+            </Routes>
+          </div>
+          <Footer />
+        </CartProvider>
+      </FavoritesProvider>
     </div>
   );
 };
