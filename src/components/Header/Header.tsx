@@ -29,6 +29,7 @@ export const Header = () => {
 
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const favItems = useSelector((state: RootState) => state.favorites.items);
+  const totalQty = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
@@ -95,7 +96,7 @@ export const Header = () => {
           <div className={styles.wrapper}>
             <img src={shopping_bag_icon} alt="Shopping Cart" />
             {cartItems.length > 0 && (
-              <span className={styles.badge}>{cartItems.length}</span>
+              <span className={styles.badge}>{totalQty}</span>
             )}
           </div>
         </NavLink>
@@ -155,7 +156,7 @@ export const Header = () => {
                 <div className={styles.wrapper}>
                   <img src={shopping_bag_icon} alt="Shopping Cart" />
                   {cartItems.length > 0 && (
-                    <span className={styles.badge}>{cartItems.length}</span>
+                    <span className={styles.badge}>{totalQty}</span>
                   )}
                 </div>
               </NavLink>

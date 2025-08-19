@@ -35,9 +35,16 @@
 }
 
 .photo {
+  transition-duration: 0.3s;
+
   @include mobile {
     height: 288px;
     width: 288px;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001A;
+    scale: 102%;
   }
 }
 

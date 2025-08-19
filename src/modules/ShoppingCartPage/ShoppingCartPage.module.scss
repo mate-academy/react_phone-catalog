@@ -44,6 +44,7 @@
   @include tablet-above {
     flex-direction: row;
     row-gap: 24px;
+    justify-content: space-evenly;
   }
 }
 
@@ -59,6 +60,10 @@
   align-items: center;
   gap: 24px;
   width: 100%;
+
+  @include tablet-above {
+    width: 200%;
+  }
 }
 
 .extend {
@@ -68,8 +73,8 @@
   align-items: center;
 
   @include tablet-above {
-    width: max-content;
-    gap: 24px;
+    justify-content: space-between;
+    gap: 16px;
   }
 }
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import styles from './CustomSelect.module.scss';
+import { useSearchParams } from 'react-router-dom';
 
 type CustomSelectProps<T extends string | number> = {
   placeholder: string;
@@ -20,6 +21,7 @@ export const CustomSelect = <T extends string | number>({
   defaultValue,
   onChange,
 }: CustomSelectProps<T>) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState<T>(defaultValue);
   const selectRef = useRef<HTMLUListElement>(null);
@@ -102,6 +104,8 @@ export const CustomSelect = <T extends string | number>({
                   setValue(option);
                   setIsOpen(false);
                   onChange(option);
+                  searchParams.set('page', '1');
+                  setSearchParams(searchParams);
                 }}
               >
                 <p>{option}</p>

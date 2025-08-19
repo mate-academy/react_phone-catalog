@@ -17,6 +17,7 @@ export const Footer = () => {
         <ul className={styles.list}>
           <li className={styles.item}>
             <NavLink
+              target="_blank"
               to="https://github.com/alex-marcovych/react_phone-catalog"
               className="uppercase"
             >
@@ -24,12 +25,12 @@ export const Footer = () => {
             </NavLink>
           </li>
           <li className={styles.item}>
-            <NavLink to="/" className="uppercase">
+            <NavLink to="/" className="uppercase" target="_blank">
               CONTACTS
             </NavLink>
           </li>
           <li className={styles.item}>
-            <NavLink to="/" className="uppercase">
+            <NavLink to="/" className="uppercase" target="_blank">
               RIGHTS
             </NavLink>
           </li>
