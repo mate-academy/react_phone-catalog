@@ -63,7 +63,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
                 className={`${styles.categorySection__imgContainer} ${styles[`categorySection__imgContainer--${category}`]}`}
               >
                 <img
-                  className={`${styles.categorySection__img} ${styles[`categorySection__img--${category}`]}`}
+                  className={`${styles.image} ${styles[`image--${category}`]}`}
                   src={image}
                   alt={category}
                 />
