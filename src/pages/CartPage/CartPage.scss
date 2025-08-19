@@ -42,7 +42,7 @@
     align-self: flex-start;
 
     width: 100%;
-    height: auto; 
+    height: auto;
 
     &--price {
       color: $text-color;
@@ -66,6 +66,22 @@
       background-color: $purple-accent-color;
       padding-block: 13.5px;
       color: $text-color;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    &__page {
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+    &__page {
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
     }
   }
 }

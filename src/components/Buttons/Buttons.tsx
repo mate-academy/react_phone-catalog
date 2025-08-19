@@ -9,15 +9,19 @@ type Props = {
 
 export const Buttons: React.FC<Props> = ({ product }) => {
   const favoritesContext = useFavorites();
+
   if (!favoritesContext) {
     throw new Error('useFavorites must be used within a FavoritesProvider');
   }
+
   const { favorites, toggleFavorite } = favoritesContext;
 
   const cartContext = useCart();
+
   if (!cartContext) {
     throw new Error('useCart must be used within a CartProvider');
   }
+
   const { cart, addToCart } = cartContext;
 
   const isFavorite = product ? favorites.some(f => f.id === product.id) : false;

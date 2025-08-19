@@ -5,15 +5,15 @@ import { CartItem } from '../../components/CartItem';
 import './CartPage.scss';
 
 export const CartPage: React.FC = () => {
-  const { cart, totalQuantity, totalAmount } = useCart();
+  const { cart, totalQuantity, totalAmount, clearCart } = useCart();
 
-  // const handleCheckout = () => {
-  //   if (
-  //     confirm('Checkout is not implemented yet. Do you want to clear the Cart?')
-  //   ) {
-  //     clearCart();
-  //   }
-  // };
+  const handleCheckout = () => {
+    if (
+      confirm('Checkout is not implemented yet. Do you want to clear the Cart?')
+    ) {
+      clearCart();
+    }
+  };
 
   if (cart.length === 0) {
     return <p>Your cart is empty</p>;
@@ -40,7 +40,9 @@ export const CartPage: React.FC = () => {
               Total for {totalQuantity} items
             </p>
           </div>
-          <button className="cart__checkout--button">Checkout</button>
+          <button className="cart__checkout--button" onClick={handleCheckout}>
+            Checkout
+          </button>
         </div>
       </div>
     </>

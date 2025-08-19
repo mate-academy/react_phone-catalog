@@ -1,18 +1,18 @@
 @import '../src/styles/variables';
 
 .cart {
-  display: flex;
-  flex-direction: row;
+  display: grid;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-block: 24px;
-  padding-inline: 24px;
+  gap: 12px;
+  padding: 16px;
   background-color: $grey-dark-secondary-color;
+  width: 100%;
 
-  width: 592px;
+  grid-template-areas: 'close image name arrow price';
+  grid-template-columns: auto auto 1fr auto auto;
 
   &__close {
+    grid-area: close;
     width: 16px;
     height: 16px;
     display: flex;
@@ -24,6 +24,7 @@
   }
 
   &__image-wrapper {
+    grid-area: image;
     width: 80px;
     height: 80px;
     display: flex;
@@ -40,13 +41,35 @@
     display: block;
   }
 
+  &__name {
+    grid-area: name;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .arrow {
+    grid-area: arrow;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   &__price {
+    grid-area: price;
     font-size: 22px;
     font-weight: 800;
     line-height: 140%;
+    justify-self: end;
   }
-}
 
-.arrow {
-  align-items: center;
+  @media (min-width: 1024px) {
+    width: 752px;
+  }
+
+  @media (max-width: 639px) {
+    grid-template-areas:
+      'close image name'
+      'arrow arrow price';
+    grid-template-columns: auto auto 1fr;
+  }
 }
