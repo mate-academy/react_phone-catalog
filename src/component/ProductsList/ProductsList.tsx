@@ -12,7 +12,12 @@ type Props = {
   error: string;
 };
 
-export const ProductList: React.FC<Props> = ({ title, products, error }) => {
+export const ProductList: React.FC<Props> = ({
+  title,
+  products,
+  error,
+  loading,
+}) => {
   const { searchParams, updateSearchParams } = useUpdateSearchParams();
 
   const sortOptions = [
@@ -94,7 +99,7 @@ export const ProductList: React.FC<Props> = ({ title, products, error }) => {
             <h1 className={style['product-list__title']}>{title}</h1>
 
             <p className={style['product-list__text']}>
-              {finishedProducts.length} models
+              <p>{loading ? '...' : `${finishedProducts.length} models`}</p>
             </p>
           </div>
 
