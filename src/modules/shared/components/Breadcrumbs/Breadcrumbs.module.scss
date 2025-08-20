@@ -1,0 +1,25 @@
+@import '@/styles/main';
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  a {
+    text-decoration: none;
+  }
+
+  &__text {
+    color: $secondary-color;
+    font-size: 12px;
+    line-height: 100%;
+
+    transition-property: color;
+    transition-duration: $transition-time;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

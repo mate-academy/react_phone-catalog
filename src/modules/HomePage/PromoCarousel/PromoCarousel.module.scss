@@ -35,6 +35,11 @@
       align-items: center;
       flex-shrink: 0;
     }
+
+    button {
+      height: 100%;
+      border-radius: 48px;
+    }
   }
 
   &__image {

@@ -1,5 +1,6 @@
 @import './variables';
 @import './icon';
+@import './typography';
 
 .button {
   &__primary {
@@ -34,10 +35,22 @@
   &__back {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 4px;
+
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
 
     &--text {
       color: $secondary-color;
+      line-height: 100%;
+
+      transition-property: color;
+      transition-duration: $transition-time;
 
       &:hover {
         color: $primary-color;
@@ -47,8 +60,14 @@
 
   &__circle {
     padding: 8px;
+    box-sizing: border-box;
     border-radius: 50%;
     background: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     transition-property: border, color;
     transition-duration: $transition-time;
@@ -68,10 +87,13 @@
     }
 
     &--regular {
+      width: 32px;
+      height: 32px;
       font-size: 14px;
       line-height: 21px;
       font-weight: 500;
       letter-spacing: 0;
+      text-align: center;
 
       border: 1px solid $elements-color;
       color: $primary-color;
@@ -103,7 +125,6 @@
     }
 
     &--favorite {
-      padding: 12px;
       border: 1px solid $icons-color;
       color: $primary-color;
 

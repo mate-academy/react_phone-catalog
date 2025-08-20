@@ -1,0 +1,55 @@
+@import '@/styles/main';
+
+.product_page {
+  &__text {
+    grid-column: 1 / -1;
+    display: grid;
+    row-gap: 8px;
+  }
+
+  &__qty {
+    grid-column: 1 / -1;
+    color: $secondary-color;
+  }
+
+  &__filters {
+    grid-column: 1 / 7;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    column-gap: 16px;
+  }
+
+  &__products {
+    grid-column: 1 / -1;
+    display: grid;
+        gap: 40px 16px;
+
+
+    grid-template-columns: 1fr;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 800px) and (max-width: 1199px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+
+    &--numbers {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+  }
+}

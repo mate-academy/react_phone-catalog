@@ -1,14 +1,20 @@
 @import '@/styles/main';
 
 .product_card {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 240px;
   padding: 32px;
   gap: 8px;
+  width: 100%;
+  height: fit-content;
 
   border: 1px solid $elements-color;
   border-radius: 8px;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba($shadow-color, 0.1);
+  }
 
   &__image {
     display: flex;
@@ -28,6 +34,7 @@
 
   &__title {
     padding-top: 16px;
+    flex: 1;
   }
 
   &__price {
@@ -45,12 +52,6 @@
       text-decoration: line-through;
       line-height: 100%;
     }
-  }
-
-  &__separator{
-    margin: 0;
-    border: 0;
-    border-top: 1px solid $elements-color;
   }
 
   &__specs {
@@ -80,5 +81,6 @@
     justify-content: space-between;
     align-items: center;
     gap: 8px;
+    margin-top: auto;
   }
 }

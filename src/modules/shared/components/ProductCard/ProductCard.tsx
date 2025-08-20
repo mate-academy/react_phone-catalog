@@ -35,7 +35,7 @@ export const ProductCard: React.FC = () => {
         </p>
       </div>
 
-      <hr className={styles.product_card__separator} />
+      <hr />
 
       <div className={styles.product_card__specs}>
         <div className={styles['product_card__specs--spec']}>
@@ -101,7 +101,7 @@ export const ProductCard: React.FC = () => {
           })}
           onClick={() => setInCart(!inCart)}
         >
-          {inCart ? 'Added' : 'Add to card'}
+          {inCart ? 'Added' : 'Add to cart'}
         </button>
         <button
           className="button__circle button__circle--favorite"

@@ -6,7 +6,7 @@
   height: 16px;
   background-size: contain;
   background-position: center;
-  color: $primary-color;
+  color: $icons-color;
 
   &--home {
     background: url(/img/icons/home.svg);
@@ -32,6 +32,10 @@
 
   &--up {
     background: url(/img/icons/chevron-up.svg);
+
+    &:hover {
+      background-color: $primary-color;
+    }
   }
 
   &--down {

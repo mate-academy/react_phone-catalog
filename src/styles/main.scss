@@ -1,6 +1,12 @@
-@import './button.scss';
-@import './grid.scss';
-@import './icon.scss';
-@import './mixins.scss';
-@import './typography.scss';
-@import './variables.scss';
+@import './button';
+@import './grid';
+@import './icon';
+@import './mixins';
+@import './typography';
+@import './variables';
+
+hr {
+  margin: 0;
+  padding: 0;
+  border: 1px solid $elements-color;
+}
