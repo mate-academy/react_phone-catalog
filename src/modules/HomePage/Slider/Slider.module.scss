@@ -1,3 +1,68 @@
-div {
-  background-color: $fff;
+@use '../../../scss/main.scss' as *;
+
+.container {
+  height: 352px;
+  border: 1px solid green;
+  background-color: #fff;
+}
+
+.slider {
+  height: 320px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  font-weight: bold;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #000;
+  border: 1px solid blue;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  scroll-snap-align: center;
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    height: 42px;
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+    line-height: 100%;
+    background-image: linear-gradient(to right, #6f47de, #d15df3);
+    background-clip: text;
+  }
+
+  &__title {
+    margin-top: 48px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 100%;
+    color: #fff;
+    transform: scaleX(0.95);
+  }
+
+  &__description {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 100%;
+    color: #9b9b9b;
+    transform: scaleX(0.95);
+  }
+
+  &__photo {
+    height: 136px;
+    color: #fff;
+  }
 }
