@@ -12,7 +12,7 @@ export const Categories: React.FC = () => {
 
       <div className={styles.wrapper}>
         <Link
-          to="/phones"
+          to="phones"
           className={`${styles.category}`}
         >
           <div className={`${styles.banner} ${styles.bannerPhones}`}></div>
@@ -24,7 +24,7 @@ export const Categories: React.FC = () => {
         </Link>
 
         <Link
-          to="/tablets"
+          to="tablets"
           className={`${styles.category}`}
         >
           <div className={`${styles.banner} ${styles.bannerTablets}`}></div>
@@ -36,7 +36,7 @@ export const Categories: React.FC = () => {
         </Link>
 
         <Link
-          to="/accessories"
+          to="accessories"
           className={`${styles.category}`}
         >
           <div className={`${styles.banner} ${styles.bannerAccessories}`}></div>

@@ -58,6 +58,9 @@ $content-padding-desktop: 40px;
   --color-bg-border: var(--color-white);
   --color-default-border: var(--color-elements);
   --color-hover-border: var(--color-icons);
+
+  --skeleton-bg-color: var(--color-elements);
+  --skeleton-line-color: var(--color-hover-bg);
 }
 
 .dark-theme {
@@ -113,4 +116,7 @@ $content-padding-desktop: 40px;
   --color-bg-border: var(--color-black);
   --color-default-border: var(--color-elements);
   --color-hover-border: var(--color-secondary);
+
+  --skeleton-bg-color: var(--color-surface2);
+  --skeleton-line-color: var(--color-elements);
 }

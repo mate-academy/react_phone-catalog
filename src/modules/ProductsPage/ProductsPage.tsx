@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styles from './ProductsPage.module.scss';
 import { ItemsPerPage } from '../../types/ItemsPerPage';
 import { ProductsSortType } from '../../types/ProductsSortType';
@@ -19,18 +19,20 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   const sortDropDownRef = useRef<HTMLDivElement>(null);
   const perPageDropDownRef = useRef<HTMLDivElement>(null);
 
-  const { 
-    searchParams, 
-    setSearchParams, 
-    products, 
-    isLoading,
-  } = useAppContext();
+  const [currentProducts, setCurrentProducts] = useState<Card[]>([]);
+
+  const sortValues = ['Newest', 'Alphabetically', 'Chepest'];
+  const perPageValues = ['All', 4, 8, 16];
 
   const [isPerPageDropdownOpen, setIsPerPageDropdownOpen] = useState<boolean>(false);
   const [isSortTypeDropdownOpen, setIsSortTypeDropdownOpen] = useState<boolean>(false);
 
-  const sortValues = ['Newest', 'Alphabetically', 'Chepest'];
-  const perPageValues = ['All', 4, 8, 16];
+  const {
+    searchParams,
+    setSearchParams,
+    products,
+    isLoading,
+  } = useAppContext();
 
   function getPerPageFromParams() {
     const value = searchParams.get('perPage');
@@ -60,28 +62,22 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   const currentPage = getPageFromParams();
   const perPageValue = getPerPageFromParams();
 
-  function sorter(a: Card, b: Card) {
-    switch (sortType) {
-      case 'age':
-        if (a.year === b.year) {
-          return b.name.localeCompare(a.name);
-        } else {
-          return b.year - a.year;
-        }
-      case 'title':
-        return a.name.localeCompare(b.name);
-      case 'price':
-        return a.price - b.price;
-      default:
-        return 0;
-    }
+  const sorter = useCallback((a: Card, b: Card) => {
+  switch (sortType) {
+    case 'age':
+      if (a.year === b.year) {
+        return b.name.localeCompare(a.name);
+      } else {
+        return b.year - a.year;
+      }
+    case 'title':
+      return a.name.localeCompare(b.name);
+    case 'price':
+      return a.price - b.price;
+    default:
+      return 0;
   }
-
-  const [currentProducts, setCurrentProducts] = useState<Card[]>(
-    products
-      .filter(product => product.category === type)
-      .sort(sorter)
-  );
+}, [sortType]);
 
   function changeSearchParams(key: any, value?: any) {
     const newSearchParams = new URLSearchParams(searchParams);
@@ -196,23 +192,24 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
   useEffect(() => {
     if (!isLoading) {
-      const filtered = products
-        .filter(product => product.category === type)
-        .sort(sorter);
-
-      setCurrentProducts(filtered);
-      setIsPerPageDropdownOpen(false);
-      setIsSortTypeDropdownOpen(false);
+      const filteredProducts = products
+        .filter(product => product.category === type);
+      
+      const sortedProducts = [...filteredProducts].sort(sorter);
+  
+      setCurrentProducts(sortedProducts);
     }
-  }, [type, products]);
-
+  }, [products, type, sortType, isLoading, sorter]);
+  
   useEffect(() => {
-    setCurrentProducts(prevProducts => [...prevProducts].sort(sorter));
-
     if (typeof perPageValue === 'number') {
       createPagination(perPageValue);
     }
-  }, [perPageValue, sortType]);
+  }, [currentProducts, perPageValue]);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [type]);
 
   return (
     <main className={styles.main}>
@@ -238,6 +235,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
               className={styles.dropdown}
             >
               <button
+                type="button"
                 onClick={() => setIsSortTypeDropdownOpen(prev => !prev)}
                 className={`
                   ${styles.dropdownTrigger} 
@@ -253,11 +251,12 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
               {isSortTypeDropdownOpen && (
                 <div className={styles.dropdownMenu}>
                   {sortValues.map(type => (
-                    <a
+                    <button
                       key={type}
+                      type="button"
                       onClick={() => handleSortTypeChange(type as ProductsSortType)}
                       className={`${styles.dropdownItem} bodyText`}
-                    >{type}</a>
+                    >{type}</button>
                   ))}
                 </div>
               )}
@@ -271,6 +270,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
               className={styles.dropdown}
             >
               <button
+                type="button"
                 onClick={() => setIsPerPageDropdownOpen(prev => !prev)}
                 className={`
                   ${styles.dropdownTrigger} 
@@ -279,20 +279,19 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
               >
                 {perPageValue}
                 <span className={styles.arrowContainer}>
-                <Arrow direction='down' isDisabled={true} />
+                  <Arrow direction='down' isDisabled={true} />
                 </span>
               </button>
 
               {isPerPageDropdownOpen && (
                 <div className={styles.dropdownMenu}>
                   {perPageValues.map(value => (
-                    <a
+                    <button
                       key={value}
-                      onClick={() => {
-                        handlePerPageChange(value as ItemsPerPage);
-                      }}
+                      type="button"
+                      onClick={() => handlePerPageChange(value as ItemsPerPage)}
                       className={`${styles.dropdownItem} bodyText`}
-                    >{value}</a>
+                    >{value}</button>
                   ))}
                 </div>
               )}

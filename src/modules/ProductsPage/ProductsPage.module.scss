@@ -95,6 +95,8 @@
     height: 32px;
     max-width: 100%;
     padding-inline: 12px;
+    border: none;
+    background-color: inherit;
 
     &:hover {
       background-color: var(--dropdown-item-hover-bg);
