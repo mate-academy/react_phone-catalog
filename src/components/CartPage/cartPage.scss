@@ -1,0 +1,127 @@
+.cart-page {
+  padding: 0 16px;
+
+  @include onTablet {
+    padding: 0 24px 0 0;
+  }
+
+  @include onDesktop {
+    padding: 0;
+  }
+
+  .button-back-block {
+    display: flex;
+    padding: 24px 0;
+    gap: 4px;
+
+    .breadcrumbs-link {
+      text-decoration: none;
+      color: $text-main-color;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .back-text {
+      color: $text-not-active-color;
+      transition: color 0.5s ease;
+
+      &:hover {
+        color: $text-main-color;
+      }
+    }
+
+    @include onTablet {
+      padding: 40px 0 16px;
+    }
+  }
+
+  .page-title {
+    font-weight: 800;
+    font-size: 32px;
+    padding-bottom: 32px;
+
+    @include onTablet {
+      font-size: 48px;
+    }
+  }
+
+  .carts-card {
+    padding: 16px;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    background-color: $main-bg-color;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+    .info-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      width: fit-content;
+      flex: 1;
+
+      .delete {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        opacity: 0.5;
+        transition: opacity 0.5s ease;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .model-link {
+        text-decoration: none;
+      }
+
+      .photo {
+        display: flex;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        padding: 7px;
+      }
+
+      .modelName {
+        font-size: 14px;
+        font-weight: 600;
+        color: $text-main-color;
+        min-width: 128px;
+      }
+    }
+
+    // .calculation-row {
+
+      .calc-box {
+        display: flex;
+        // width: 96px;
+        width: fit-content;
+
+        .calc-button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          border: 1px solid $border-hover-color;
+          border-radius: 50%;
+        }
+      }
+    // }
+
+    .price {
+      display: flex;
+
+      max-width: 100%;
+      min-width: 80px;
+      justify-content: end;
+      margin-left: auto;
+    }
+  }
+}

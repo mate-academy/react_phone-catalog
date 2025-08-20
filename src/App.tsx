@@ -10,8 +10,9 @@ import { ProductInfoPage } from './components/ProductInfoPage';
 
 import { PathProvider } from './components/contexts/PathContext';
 import { ProductNotFoundPage } from './components/ProductNotFoundPage';
-import { FavoritesPage } from './components/FavoritesPage/FavoritesPage';
+import { FavoritesPage } from './components/FavoritesPage';
 import { AddAndFavoritesProvider } from './components/contexts/AddAndFavoritesContext';
+import { CartPage } from './components/CartPage';
 
 export const App = () => {
   return (
@@ -31,6 +32,8 @@ export const App = () => {
               </Route>
 
               <Route path="/favorites" element={<FavoritesPage />} />
+
+              <Route path="/cart" element={<CartPage />} />
 
               <Route
                 path="/product-not-found"

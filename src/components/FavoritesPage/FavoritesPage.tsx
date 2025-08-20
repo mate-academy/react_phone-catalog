@@ -1,17 +1,15 @@
+import './favoritesPage.scss';
 import { useContext, useEffect, useState } from 'react';
 import { AllProductsType } from '../../types/AllProductsType';
 import { BreadcrumbsNav } from '../BreadcrumbsNav';
 import { AddAndFavoritesContext } from '../contexts/AddAndFavoritesContext';
 import { ProductCard } from '../ProductCard';
-import './favoritesPage.scss';
 
 export const FavoritesPage = () => {
   const context = useContext(AddAndFavoritesContext);
-
-  const [products, setProducts] = useState<AllProductsType[]>([]);
-
   const { favorites } = context;
 
+  const [products, setProducts] = useState<AllProductsType[]>([]);
   const [allProducts, setAllProducts] = useState<AllProductsType[]>([]);
 
   useEffect(() => {
@@ -27,8 +25,8 @@ export const FavoritesPage = () => {
     setProducts(productsInFavorites);
   }, [favorites, allProducts]);
 
-  console.log('--===productsInFavorites===--', products);
-  console.log('--===favorites===--', favorites);
+  // console.log('--===productsInFavorites===--', products);
+  // console.log('--===favorites===--', favorites);
 
   return (
     <div className="favorites-page">
