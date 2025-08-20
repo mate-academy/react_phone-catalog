@@ -50,6 +50,7 @@ export const AllItemsList: React.FC<Props> = ({
 
   useEffect(() => {
     if (!path || !setAllItems) {
+      setLoading(false);
       return;
     }
 
