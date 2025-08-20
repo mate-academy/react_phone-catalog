@@ -85,7 +85,7 @@ export const Navigation: React.FC<Props> = ({ classNamesProps }) => {
           )}
         >
           <NavLink
-            to="../favorite"
+            to="../favorites"
             className={({ isActive }) =>
               getLinkStyle(
                 isActive,

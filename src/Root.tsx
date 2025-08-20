@@ -37,6 +37,26 @@ export const Root = () => {
                 <Route path=":itemId" element={<CardPage />} />
               </Route>
 
+              <Route path="tablets">
+                <Route
+                  index
+                  element={<CatalogPage title="Tablets" category="tablets" />}
+                />
+
+                <Route path=":itemId" element={<CardPage />} />
+              </Route>
+
+              <Route path="accessories">
+                <Route
+                  index
+                  element={
+                    <CatalogPage title="Accessories" category="accessories" />
+                  }
+                />
+
+                <Route path=":itemId" element={<CardPage />} />
+              </Route>
+
               <Route path="favorites">
                 <Route index element={<FavoritesPage />} />
                 <Route path=":itemId" element={<CardPage />} />
