@@ -1,8 +1,9 @@
 @use '../../../scss/main.scss' as *;
 
 .container {
+  display: flex;
+  flex-direction: column;
   height: 352px;
-  border: 1px solid green;
   background-color: #fff;
 }
 
@@ -14,6 +15,7 @@
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  scroll-behavior: auto;
   font-weight: bold;
 }
 
@@ -22,7 +24,6 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: #000;
-  border: 1px solid blue;
   flex-shrink: 0;
   width: 100%;
   box-sizing: border-box;
@@ -34,10 +35,10 @@
     margin-top: 32px;
     height: 42px;
     text-align: center;
-    color: #fff;
     font-size: 22px;
     line-height: 100%;
     background-image: linear-gradient(to right, #6f47de, #d15df3);
+    color: transparent;
     background-clip: text;
   }
 
@@ -48,6 +49,7 @@
     font-weight: 600;
     line-height: 100%;
     color: #fff;
+
     transform: scaleX(0.95);
   }
 
@@ -64,5 +66,24 @@
   &__photo {
     height: 136px;
     color: #fff;
+    background: center bottom / contain no-repeat;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-top: 8px;
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    margin: 10px 5px;
+    background-color: transparent;
+
+    &--active {
+      background-color: #000;
+    }
   }
 }
