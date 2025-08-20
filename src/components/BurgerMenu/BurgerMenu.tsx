@@ -1,52 +1,85 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './BurgerMenu.scss';
 
 type Props = {
+  open: boolean;
   setOpen: (value: boolean) => void;
 };
 
-export const BurgerMenu: React.FC<Props> = ({ setOpen }) => {
+export const BurgerMenu: React.FC<Props> = ({ open, setOpen }) => {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   return (
     <div className="burger-menu">
       <nav className="burger-menu__nav">
-        <Link
+        <NavLink
           to="/"
-          className="burger-menu__link"
+          className={({ isActive }) =>
+            `burger-menu__link ${isActive ? 'burger-menu__link--active' : ''}`
+          }
           onClick={() => setOpen(false)}
         >
           HOME
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/phones"
-          className="burger-menu__link"
+          className={({ isActive }) =>
+            `burger-menu__link ${isActive ? 'burger-menu__link--active' : ''}`
+          }
           onClick={() => setOpen(false)}
         >
           PHONES
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/tablets"
-          className="burger-menu__link"
+          className={({ isActive }) =>
+            `burger-menu__link ${isActive ? 'burger-menu__link--active' : ''}`
+          }
           onClick={() => setOpen(false)}
         >
           TABLETS
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/accessories"
-          className="burger-menu__link"
+          className={({ isActive }) =>
+            `burger-menu__link ${isActive ? 'burger-menu__link--active' : ''}`
+          }
           onClick={() => setOpen(false)}
         >
           ACCESSORIES
-        </Link>
+        </NavLink>
       </nav>
       <div className="burger-menu__button">
-        <Link to="/favourites" className="burger-menu__button-link">
+        <NavLink
+          to="/favourites"
+          className={({ isActive }) =>
+            `burger-menu__button-link ${isActive ? 'burger-menu__button--active' : ''}`
+          }
+          onClick={() => setOpen(false)}
+        >
           <img src="/img/icons/icon-favourites.svg" alt="favourites" />
-        </Link>
-        <Link to="/cart" className="burger-menu__button-link">
+        </NavLink>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) =>
+            `burger-menu__button-link ${isActive ? 'burger-menu__button--active' : ''}`
+          }
+          onClick={() => setOpen(false)}
+        >
           <img src="/img/icons/icon-cart.svg" alt="cart" />
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

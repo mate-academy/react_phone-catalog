@@ -91,7 +91,7 @@ export const Header: React.FC = () => {
           )}
         </button>
       </header>
-      {open && <BurgerMenu setOpen={setOpen} />}
+      {open && <BurgerMenu open={open} setOpen={setOpen} />}
     </>
   );
 };

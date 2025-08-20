@@ -42,26 +42,36 @@
       color: $text-color;
       border-bottom: 3px solid $text-color;
     }
+
+    &--active {
+      color: $text-color;
+      border-bottom: 3px solid $text-color;
+    }
   }
-}
 
-.burger-menu__button {
-  display: flex;
-  width: 100%;
-  padding-block: 24px;
-  border-top: 1px solid #323542;
-
-  &-link {
-    flex: 1;
+  &__button {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    height: 100%;
-    border-right: 1px solid #323542;
+    width: 100%;
+    // padding-block: 24px;
+    height: 64px;
+    border-top: 1px solid #323542;
+    background-color: inherit;
 
-    // &:not(:last-child) {
-    //   border-right: 1px solid #323542;
-    // }
+    &-link {
+      height: 100%;
+      border-right: 1px solid #323542;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+
+      position: relative;
+    }
+
+    &--active {
+      color: $text-color;
+      border-bottom: 3px solid $text-color;
+    }
   }
 }
