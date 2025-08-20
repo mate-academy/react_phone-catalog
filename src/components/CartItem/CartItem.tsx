@@ -35,14 +35,14 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
 
       <div className="arrow">
         <ButtonScroll
-          buttonText="/img/icons/arrow-left.svg"
+          buttonText="/img/icons/minus.svg"
           clickFunc={() => changeQuantity(product.id, -1)}
         />
 
         <p>{quantity}</p>
 
         <ButtonScroll
-          buttonText="/img/icons/arrow-right.svg"
+          buttonText="/img/icons/plus.svg"
           clickFunc={() => changeQuantity(product.id, 1)}
         />
       </div>

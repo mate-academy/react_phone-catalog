@@ -15,7 +15,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="product" onClick={() => navigate(`/${product.category}/${product.id}`)}>
+    <div
+      className="product"
+      onClick={() => navigate(`/${product.category}/${product.id}`)}
+    >
       <div className="product__characteristics">
         <img
           className="product__image"

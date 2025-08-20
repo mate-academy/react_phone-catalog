@@ -12,6 +12,7 @@ import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
 import { CartProvider } from './context/CartContext/CartContext';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export const App = () => {
   const [allItems, setAllItems] = useState<Product[]>([]);
@@ -22,6 +23,7 @@ export const App = () => {
         <CartProvider>
           <Header />
           <div className="App__content">
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route
@@ -64,10 +66,7 @@ export const App = () => {
                 element={<ProductDetailsPage />}
               />
 
-              <Route
-                path="*"
-                element={<NotFoundPage />}
-              />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>
           <Footer />

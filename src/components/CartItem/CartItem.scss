@@ -9,7 +9,7 @@
   width: 100%;
 
   grid-template-areas: 'close image name arrow price';
-  grid-template-columns: auto auto 1fr auto auto;
+  grid-template-columns: auto 80px 1fr 96px 80px;
 
   &__close {
     grid-area: close;
@@ -64,6 +64,7 @@
 
   @media (min-width: 1024px) {
     width: 752px;
+    gap: 24px;
   }
 
   @media (max-width: 639px) {

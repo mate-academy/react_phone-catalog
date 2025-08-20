@@ -101,6 +101,7 @@ export const ProductDetailsPage: React.FC<Props> = () => {
             <div className="details__colors">
               <p className="details__small-title">Available colors</p>
               <ColorPicker
+                activeColor={product?.color}
                 colors={
                   product?.colorsAvailable ??
                   (product?.color ? [product.color] : [])
@@ -110,6 +111,7 @@ export const ProductDetailsPage: React.FC<Props> = () => {
             <div className="details__capacity">
               <p className="details__small-title">Select capacity</p>
               <CapacityPicker
+                activeCapacity={product?.capacity}
                 capacity={
                   product?.capacityAvailable ??
                   (product?.capacity ? [product.capacity] : [])

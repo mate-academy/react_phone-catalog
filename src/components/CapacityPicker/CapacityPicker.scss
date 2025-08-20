@@ -21,6 +21,10 @@
     border: 1px solid $grey-icons-color;
     cursor: pointer;
 
+    &:hover {
+      background-color: $grey-elements-color;
+    }
+
     &--selected {
       background-color: $text-color;
       color: $black-color;

@@ -32,7 +32,7 @@
     transition: color 0.2s ease;
 
     &:hover {
-      color: #007bff;
+      color: $purple-accent-color;
     }
 
     &--active {
