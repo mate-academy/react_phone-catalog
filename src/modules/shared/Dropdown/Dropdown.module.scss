@@ -39,8 +39,7 @@
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: url('./img/icons/arrow-down-dark.svg') center / cover
-    no-repeat;
+  background: url('/src/img/icons/arrow-down-dark.svg') center / cover no-repeat;
   transition: all $transition-duration;
 }
 

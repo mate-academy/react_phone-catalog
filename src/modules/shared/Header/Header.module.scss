@@ -139,7 +139,7 @@
 .iconUA {
   @extend .icon;
 
-  background: url(./img/icons/ukraine-flag.svg);
+  background: url(/src/img/icons/ukraine-flag.svg);
 }
 
 .icons {
@@ -197,37 +197,37 @@
 .iconMenu {
   @extend .icon;
 
-  background-image: url('./img/icons/menu.svg');
+  background-image: url('/src/img/icons/menu.svg');
 }
 
 .iconMenuLight {
   @extend .icon;
 
-  background-image: url('./img/icons/menu-light-theme.svg');
+  background-image: url('/src/img/icons/menu-light-theme.svg');
 }
 
 .iconFavourite {
   @extend .icon;
 
-  background-image: url('./img/icons/favourite.svg');
+  background-image: url('/src/img/icons/favourite.svg');
 }
 
 .iconCart {
   @extend .icon;
 
-  background-image: url('./img/icons/cart.svg');
+  background-image: url('/src/img/icons/cart.svg');
 }
 
 .iconFavouriteLight {
   @extend .icon;
 
-  background-image: url('./img/icons/favourite-light-mode.svg');
+  background-image: url('/src/img/icons/favourite-light-mode.svg');
 }
 
 .iconCartLight {
   @extend .icon;
 
-  background-image: url('./img/icons/cart-light-theme.svg');
+  background-image: url('/src/img/icons/cart-light-theme.svg');
 }
 
 .itemsAmount {

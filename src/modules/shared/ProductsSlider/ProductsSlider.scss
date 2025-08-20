@@ -52,23 +52,23 @@
     }
 
     &--prev::after {
-      content: url(./img/icons/arrow-left.svg);
+      content: url(/src/img/icons/arrow-left.svg);
       width: 16px;
       height: 16px;
     }
 
     &--prev:disabled::after {
-      content: url(./img/icons/arrow-left-disabled.svg);
+      content: url(/src/img/icons/arrow-left-disabled.svg);
     }
 
     &--next::after {
-      content: url(./img/icons/arrow-right.svg);
+      content: url(/src/img/icons/arrow-right.svg);
       width: 16px;
       height: 16px;
     }
 
     &--next:disabled::after {
-      content: url(./img/icons/arrow-right-disabled.svg);
+      content: url(/src/img/icons/arrow-right-disabled.svg);
     }
   }
 }

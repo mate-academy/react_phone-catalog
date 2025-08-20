@@ -36,12 +36,12 @@
       }
 
       &--prev::after {
-        content: url('./img/icons/arrow-left.svg');
+        content: url('/src/img/icons/arrow-left.svg');
         width: 32px;
       }
 
       &--next::after {
-        content: url('./img/icons/arrow-right.svg');
+        content: url('/src/img/icons/arrow-right.svg');
         width: 32px;
       }
     }
@@ -70,13 +70,13 @@
     background-repeat: no-repeat;
 
     &--phones {
-      background-image: url('./img/pictures-slider/phones.jpg');
+      background-image: url('/src/img/pictures-slider/phones.jpg');
     }
     &--tablets {
-      background-image: url('./img/pictures-slider/tablets.jpg');
+      background-image: url('/src/img/pictures-slider/tablets.jpg');
     }
     &--accessories {
-      background-image: url('./img/pictures-slider/accessories.png');
+      background-image: url('/src/img/pictures-slider/accessories.png');
     }
 
     @include onHover {

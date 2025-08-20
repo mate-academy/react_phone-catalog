@@ -11,7 +11,7 @@ import cn from 'classnames';
 import { ProductsSlider } from '../shared/ProductsSlider';
 import { getSuggestedProducts } from '../../utils/getSuggestedProducts';
 import { ProductDetailsPageSkeleton } from './ProductDetailsPageSkeleton';
-import { InView, useInView } from 'react-intersection-observer';
+import { useInView } from 'react-intersection-observer';
 
 export const ProductDetailsPage: FC = () => {
   //#region state & handlers
@@ -30,6 +30,27 @@ export const ProductDetailsPage: FC = () => {
     null,
   );
   const [detailsIsLoading, setDetailsIsLoading] = useState(false);
+
+  const commonObserverOpts = {
+    triggerOnce: true,
+    // rootMargin: '0px 0px -40% 0px' => make element "enter" when it reaches ~upper half
+    // Change this if you want earlier/later triggering.
+    rootMargin: '0px 0px -20% 0px',
+    // threshold: 0   // default. Try 0.5 if you want 50% of element visible to trigger.
+  };
+
+  const { ref: breadcrumbsRef, inView: breadcrumbsInView } =
+    useInView(commonObserverOpts);
+  const { ref: backRef, inView: backInView } = useInView(commonObserverOpts);
+  const { ref: titleRef, inView: titleInView } = useInView(commonObserverOpts);
+  const { ref: imagesRef, inView: imagesInView } =
+    useInView(commonObserverOpts);
+  const { ref: controlsRef, inView: controlsInView } =
+    useInView(commonObserverOpts);
+  const { ref: aboutRef, inView: aboutInView } = useInView(commonObserverOpts);
+  const { ref: techRef, inView: techInView } = useInView(commonObserverOpts);
+  const { ref: suggestedRef, inView: suggestedInView } =
+    useInView(commonObserverOpts);
 
   const selectedProduct = useMemo(
     () => products.find(product => product.itemId === productId),
@@ -61,12 +82,6 @@ export const ProductDetailsPage: FC = () => {
     () => getSuggestedProducts(products, selectedCategory, productId || ''),
     [productId, products, selectedCategory],
   );
-
-  const { ref, inView } = useInView({
-    // triggerOnce: true,
-    // initialInView: true,
-    rootMargin: '-100px 0px',
-  });
 
   useEffect(() => {
     setErrorMessage('');
@@ -142,45 +157,45 @@ export const ProductDetailsPage: FC = () => {
   return (
     <div className={styles.pageBody}>
       <div
-        ref={ref}
+        ref={breadcrumbsRef}
         className={cn(styles.breadcrumbs, 'fadeEffect', {
-          fadeEffectActive: inView,
+          fadeEffectActive: breadcrumbsInView,
         })}
       >
         <Breadcrumbs />
       </div>
 
       <div
-        ref={ref}
+        ref={backRef}
         className={cn(styles.backButton, 'fadeEffect', {
-          fadeEffectActive: inView,
+          fadeEffectActive: backInView,
         })}
       >
         <BackButton />
       </div>
 
       <h2
-        ref={ref}
+        ref={titleRef}
         className={cn(styles.pageTitle, 'fadeEffect', {
-          fadeEffectActive: inView,
+          fadeEffectActive: titleInView,
         })}
       >
         {productDetails.name}
       </h2>
 
       <div
-        ref={ref}
+        ref={imagesRef}
         className={cn(styles.imagesSlider, 'fadeEffect', {
-          fadeEffectActive: inView,
+          fadeEffectActive: imagesInView,
         })}
       >
         <PhotosSlider images={productDetails.images} />
       </div>
 
       <div
-        ref={ref}
+        ref={controlsRef}
         className={cn(styles.mainControls, 'fadeEffect', {
-          fadeEffectActive: inView,
+          fadeEffectActive: controlsInView,
         })}
       >
         <div className={styles.optionsWrapper}>
@@ -299,9 +314,9 @@ export const ProductDetailsPage: FC = () => {
       </div>
 
       <section
-        ref={ref}
+        ref={aboutRef}
         className={cn(styles.about, 'fadeEffect', {
-          fadeEffectActive: inView,
+          fadeEffectActive: aboutInView,
         })}
       >
         <h3 className={styles.aboutTitle}>About</h3>
@@ -316,9 +331,9 @@ export const ProductDetailsPage: FC = () => {
       </section>
 
       <section
-        ref={ref}
+        ref={techRef}
         className={cn(styles.techSpecs, 'fadeEffect', {
-          fadeEffectActive: inView,
+          fadeEffectActive: techInView,
         })}
       >
         <h3 className={styles.specsTitle}>Tech specs</h3>
@@ -387,9 +402,9 @@ export const ProductDetailsPage: FC = () => {
       </section>
 
       <div
-        ref={ref}
+        ref={suggestedRef}
         className={cn(styles.suggestedProductsSlider, 'fadeEffect', {
-          fadeEffectActive: inView,
+          fadeEffectActive: suggestedInView,
         })}
       >
         <ProductsSlider

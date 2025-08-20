@@ -120,37 +120,37 @@
 .iconClose {
   @extend .icon;
 
-  background-image: url(./img/icons/close.svg);
+  background-image: url(/src/img/icons/close.svg);
 }
 
 .iconCloseLight {
   @extend .icon;
 
-  background-image: url(./img/icons/close-dark.svg);
+  background-image: url(/src/img/icons/close-dark.svg);
 }
 
 .iconFavourite {
   @extend .icon;
 
-  background-image: url(./img/icons/favourite.svg);
+  background-image: url(/src/img/icons/favourite.svg);
 }
 
 .iconFavouriteLight {
   @extend .icon;
 
-  background-image: url(./img/icons/favourite-light-mode.svg);
+  background-image: url(/src/img/icons/favourite-light-mode.svg);
 }
 
 .iconCart {
   @extend .icon;
 
-  background-image: url(./img/icons/cart.svg);
+  background-image: url(/src/img/icons/cart.svg);
 }
 
 .iconCartLight {
   @extend .icon;
 
-  background-image: url(./img/icons/cart-light-theme.svg);
+  background-image: url(/src/img/icons/cart-light-theme.svg);
 }
 
 .itemsAmount {

@@ -207,11 +207,11 @@
   display: block;
   width: 16px;
   height: 16px;
-  background: url(./img/icons/favourite.svg) center / cover no-repeat;
+  background: url(/src/img/icons/favourite.svg) center / cover no-repeat;
 }
 
 .iconFavActive {
-  background-image: url(./img/icons/favourite-added.svg);
+  background-image: url(/src/img/icons/favourite-added.svg);
 }
 
 .specs {

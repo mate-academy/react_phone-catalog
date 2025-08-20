@@ -4,8 +4,17 @@ import { SortOptions } from '../types/SortOptions';
 export function getPreparedProducts(
   products: Product[],
   sort: SortOptions,
+  query: string,
 ): Product[] {
-  return products.toSorted((product1, product2) => {
+  let preparedProducts = products;
+
+  if (query) {
+    preparedProducts = products.filter(product =>
+      product.name.toLowerCase().includes(query.trim().toLowerCase()),
+    );
+  }
+
+  return preparedProducts.toSorted((product1, product2) => {
     switch (sort) {
       case SortOptions.Newest:
         return product2.year - product1.year;

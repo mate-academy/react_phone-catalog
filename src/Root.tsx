@@ -11,9 +11,11 @@ import { App } from './App';
 import { Suspense } from 'react';
 import { Loader } from './modules/shared/Loader';
 import './styles/main.scss';
+import { ScrollToTop } from './modules/shared/ScrollToTop/ScrollToTop';
 
 export const Root = () => (
   <Suspense fallback={<Loader />}>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePageLazy />} />

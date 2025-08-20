@@ -1,12 +1,20 @@
-import { FC } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import {
+  ChangeEvent,
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import cn from 'classnames';
 
 import styles from './Header.module.scss';
-import cn from 'classnames';
 import { useGlobalState } from '../../../context/store';
 import { navLinks } from '../../../constants/navLinks';
 import { BurgerMenu } from '../BurgerMenu';
 import { useTranslation } from 'react-i18next';
+import { getSearch } from '../../../utils/getSearchWith';
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
   cn(styles.navLink, { [styles.navLinkActive]: isActive });
@@ -18,6 +26,8 @@ export const Header: FC = () => {
   const { toggleMenu, cart, favourites, theme, toggleTheme } = useGlobalState();
 
   const { t, i18n } = useTranslation();
+
+  const { pathname } = useLocation();
 
   return (
     <div className={styles.content}>

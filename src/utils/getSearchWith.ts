@@ -18,7 +18,7 @@ export function getSearch(
         newSearchParams.append(key, part);
       });
     } else {
-      newSearchParams.set(key, value);
+      newSearchParams.set(key, value.toString());
     }
   });
 
