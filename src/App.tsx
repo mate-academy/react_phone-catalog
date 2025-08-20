@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { HomePage } from './pages/HomePage';
 import { Header } from './components/Header';
@@ -26,6 +26,7 @@ export const App = () => {
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/home" element={<Navigate to="/" replace />} />
               <Route
                 path="/phones"
                 element={

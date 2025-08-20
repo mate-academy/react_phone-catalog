@@ -16,11 +16,14 @@ export const Header: React.FC = () => {
   return (
     <>
       <header className="header">
-        <img
-          className="header__logo"
-          src="/img/logo-img.svg"
-          alt="logo image"
-        />
+        <NavLink to="/">
+          <img
+            className="header__logo"
+            src="/img/logo-img.svg"
+            alt="logo image"
+          />
+        </NavLink>
+
         <div className="header__container">
           <nav className="header__nav">
             <NavLink

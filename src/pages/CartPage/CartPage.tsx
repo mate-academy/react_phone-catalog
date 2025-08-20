@@ -3,6 +3,7 @@ import { useCart } from '../../context/CartContext/CartContext';
 import { CartItem } from '../../components/CartItem';
 
 import './CartPage.scss';
+import { ButtonBack } from '../../components/ButtonBack';
 
 export const CartPage: React.FC = () => {
   const { cart, totalQuantity, totalAmount, clearCart } = useCart();
@@ -21,6 +22,7 @@ export const CartPage: React.FC = () => {
 
   return (
     <>
+      <ButtonBack />
       <h1 className="cart__title">Cart</h1>
       <div className="cart__page">
         <div className="cart__items">

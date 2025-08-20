@@ -7,6 +7,7 @@ import './AllItemsList.scss';
 import { Pagination } from '../Pagination/Pagination';
 import { Filters } from '../Filters';
 import { SortOptions } from '../Filters/Filters';
+import { ClipLoader } from 'react-spinners';
 
 type Props = {
   path?: string;
@@ -31,6 +32,8 @@ export const AllItemsList: React.FC<Props> = ({
   const totalPages =
     allItems.length > 0 ? Math.ceil(allItems.length / +itemsPerPage) : 1;
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (!useFilters) {
       return;
@@ -52,12 +55,16 @@ export const AllItemsList: React.FC<Props> = ({
 
     const getItems = async () => {
       try {
+        setLoading(true);
         const res = await fetch(path);
         const json: Product[] = await res.json();
 
         setAllItems(json);
         setPage(1);
-      } catch (e) {}
+      } catch (e) {
+      } finally {
+        setLoading(false);
+      }
     };
 
     getItems();
@@ -86,7 +93,11 @@ export const AllItemsList: React.FC<Props> = ({
   );
 
   if (!useFilters) {
-    return (
+    return loading ? (
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
+        <ClipLoader color="#905bff" size={60} />
+      </div>
+    ) : (
       <div className="catalog__list">
         {allItems.map(item => (
           <ProductCard product={item} key={item.id} />
@@ -95,7 +106,11 @@ export const AllItemsList: React.FC<Props> = ({
     );
   }
 
-  return (
+  return loading ? (
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
+      <ClipLoader color="#905bff" size={60} />
+    </div>
+  ) : (
     <div className="catalog">
       <Filters
         sort={sort}

@@ -10,5 +10,7 @@
     grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
     gap: 16px;
     max-width: 100%;
+    justify-content: center;
+    justify-items: center; 
   }
 }
