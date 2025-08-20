@@ -17,7 +17,7 @@ export const CartPage: React.FC = () => {
   };
 
   if (cart.length === 0) {
-    return <p>Your cart is empty</p>;
+    return <p className="cart__title">Your cart is empty</p>;
   }
 
   return (

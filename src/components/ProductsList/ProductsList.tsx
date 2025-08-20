@@ -34,10 +34,14 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+
+    if (!container) {
+      return;
+    }
 
     const update = () => {
       const { scrollLeft, scrollWidth, clientWidth } = container;
+
       setIsLeftDisabled(scrollLeft <= 0);
       setIsRightDisabled(scrollLeft + clientWidth >= scrollWidth - 1);
     };
@@ -51,7 +55,7 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
       container.removeEventListener('scroll', update);
       window.removeEventListener('resize', update);
     };
-  }, [products]); 
+  }, [products]);
 
   return (
     <>

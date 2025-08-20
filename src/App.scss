@@ -6,9 +6,13 @@
   font-family: Mont, sans-serif;
   background-color: $background-color;
   color: $text-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   &__content {
     padding-inline: 152px;
+    flex: 1;
   }
 
   @media (max-width: 1200px) {
