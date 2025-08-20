@@ -18,14 +18,38 @@
     width: 100%;
 
     color: $text-color;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $purple-hover-color;
+    }
   }
 
   &--favourite {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 12px;
     background-color: $grey-dark-color;
     border: none;
-
     font-family: inherit;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $grey-icons-color;
+    }
+
+    &.product__button--active {
+      background-color: transparent;
+      border: 1px solid $grey-elements-color;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
   }
 
   &-icon {

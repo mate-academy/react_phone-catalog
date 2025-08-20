@@ -18,7 +18,9 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
   const scrollAmount = 272 + 16;
 
   const updateButtons = () => {
-    if (!containerRef.current) return;
+    if (!containerRef.current) {
+      return;
+    }
 
     const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
 
@@ -45,6 +47,7 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
     updateButtons();
 
     const container = containerRef.current;
+
     if (container) {
       container.addEventListener('scroll', updateButtons);
       window.addEventListener('resize', updateButtons); // щоб кнопки коректно оновлювались при зміні ширини

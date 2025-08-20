@@ -24,10 +24,11 @@ export const Buttons: React.FC<Props> = ({ product }) => {
     throw new Error('useCart must be used within a CartProvider');
   }
 
-  const { cart, addToCart } = cartContext;
+  const { addToCart } = cartContext;
 
   const isFavorite = product ? favorites.some(f => f.id === product.id) : false;
-  const isInCart = product ? cart.some(item => item.id === product.id) : false;
+
+  // const isInCart = product ? cart.some(item => item.id === product.id) : false;
 
   return (
     <div className="product__button">
@@ -40,11 +41,11 @@ export const Buttons: React.FC<Props> = ({ product }) => {
           }
         }}
       >
-        {isInCart ? 'Added to cart' : 'Add to cart'}
+        Add to cart
       </button>
 
       <button
-        className="product__button--favourite"
+        className={`product__button--favourite ${isFavorite ? 'product__button--active' : ''}`}
         onClick={e => {
           e.stopPropagation();
           if (product) {
