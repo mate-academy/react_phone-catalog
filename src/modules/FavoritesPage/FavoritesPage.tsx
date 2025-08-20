@@ -28,7 +28,7 @@ export const FavoritesPage: React.FC = () => {
       {isEmpty ? (
         <div className={styles.favorites__empty}>
           <img
-            src="public/img/product-not-found.png"
+            src="./img/product-not-found.png"
             alt="No products"
             className={styles.favorites__emptyImage}
           />

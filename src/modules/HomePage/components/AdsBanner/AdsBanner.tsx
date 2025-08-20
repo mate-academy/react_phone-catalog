@@ -8,9 +8,9 @@ import { useMediaQuery } from '../../../../shared/hooks/useMediaQuery';
 import { BREAKPOINTS } from '../../../../shared/constants/Breakpoints';
 
 const banners = [
-  '/img/home_ads/iphone_17_air_render.jpg',
-  '/img/home_ads/iPad_air.jpg',
-  '/img/home_ads/Apple_Intelligence.png',
+  './img/home_ads/iphone_17_air_render.jpg',
+  './img/home_ads/iPad_air.jpg',
+  './img/home_ads/Apple_Intelligence.png',
 ];
 
 export const AdsBanner: React.FC = () => {

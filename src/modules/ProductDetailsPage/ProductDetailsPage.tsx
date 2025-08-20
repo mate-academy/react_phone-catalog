@@ -82,7 +82,7 @@ export const ProductDetailsPage: React.FC = () => {
     if (selected) {
       setProduct(selected);
 
-      navigate(`/product/${selected.id}`, { replace: true });
+      navigate(`./product/${selected.id}`, { replace: true });
     }
   };
 
@@ -94,7 +94,7 @@ export const ProductDetailsPage: React.FC = () => {
     if (selected) {
       setProduct(selected);
 
-      navigate(`/product/${selected.id}`, { replace: true });
+      navigate(`./product/${selected.id}`, { replace: true });
     }
   };
 
