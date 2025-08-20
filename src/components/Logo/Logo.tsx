@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import styles from './Logo.module.scss';
 
-import logoMobile from '../../assets/img/logo/logo-mobile.png';
-import logoLaptop from '../../assets/img/logo/logo-laptop.png';
+import logoMobile from '../../assets/img/logo/logo-mobile.svg';
+import logoLaptop from '../../assets/img/logo/logo-desctop.svg';
 import classNames from 'classnames';
 
 type Props = {

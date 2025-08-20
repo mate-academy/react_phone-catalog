@@ -21,12 +21,12 @@
   height: 32px;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(../../assets/img/icons/arrow.png);
+  background-image: url(../../assets/img/icons/arrow-up.svg);
   transition: all 0.3s;
 
   &:hover {
     background-position: center;
-    background-image: url(../../assets/img/icons/arrow.png);
+    background-image: url(../../assets/img/icons/arrow-up.svg);
     background-color: #FAFBFC;
     border: 1px solid #B4BDC3;
   }

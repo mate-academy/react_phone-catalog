@@ -17,43 +17,43 @@ html {
   cursor: pointer;
 
   &--menu {
-    background-image: url(../assets/img/icons/menu-burger-icon.png);
+    background-image: url(../assets/img/icons/menu-burger-icon.svg);
   }
 
   &--home {
-    background-image: url(../assets/img/icons/home.png);
+    background-image: url(../assets/img/icons/home.svg);
   }
 
   &--like {
-    background-image: url(../assets/img/icons/like.png);
+    background-image: url(../assets/img/icons/like.svg);
   }
 
   &--heart-red {
-    background-image: url(../assets/img/icons/heart-red.png);
+    background-image: url(../assets/img/icons/heart-red.svg);
   }
 
   &--cart {
-    background-image: url(../assets/img/icons/cart.png);
+    background-image: url(../assets/img/icons/cart.svg);
   }
 
   &--close {
-    background-image: url(../assets/img/icons/close.png);
+    background-image: url(../assets/img/icons/close.svg);
   }
 
   &--search {
-    background-image: url(../assets/img/icons/search.png);
+    background-image: url(../assets/img/icons/search.svg);
   }
 
   &--minus {
-    background-image: url(../assets/img/icons/minus.png);
+    background-image: url(../assets/img/icons/minus.svg);
   }
 
   &--plus {
-    background-image: url(../assets/img/icons/plus.png);
+    background-image: url(../assets/img/icons/plus.svg);
   }
 
   &--arrow {
-    background-image: url(../assets/img/icons/arrow.png);
+    background-image: url(../assets/img/icons/arrow-up.svg);
     transition: transform 0.3s;
 
     &--right {
