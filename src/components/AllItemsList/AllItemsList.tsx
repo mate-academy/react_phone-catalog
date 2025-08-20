@@ -14,6 +14,7 @@ type Props = {
   allItems?: Product[];
   setAllItems?: (el: Product[]) => void;
   useFilters?: boolean;
+  categoryName?: string;
 };
 
 export const AllItemsList: React.FC<Props> = ({
@@ -21,6 +22,7 @@ export const AllItemsList: React.FC<Props> = ({
   allItems = [],
   setAllItems,
   useFilters = true,
+  categoryName = 'products',
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -33,6 +35,7 @@ export const AllItemsList: React.FC<Props> = ({
     allItems.length > 0 ? Math.ceil(allItems.length / +itemsPerPage) : 1;
 
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!useFilters) {
@@ -51,6 +54,7 @@ export const AllItemsList: React.FC<Props> = ({
   useEffect(() => {
     if (!path || !setAllItems) {
       setLoading(false);
+
       return;
     }
 
@@ -63,6 +67,7 @@ export const AllItemsList: React.FC<Props> = ({
         setAllItems(json);
         setPage(1);
       } catch (e) {
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -93,12 +98,33 @@ export const AllItemsList: React.FC<Props> = ({
     (page - 1) * itemsPerPage + itemsPerPage,
   );
 
-  if (!useFilters) {
-    return loading ? (
+  if (loading) {
+    return (
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
         <ClipLoader color="#905bff" size={60} />
       </div>
-    ) : (
+    );
+  }
+
+  if (error) {
+    return (
+      <div style={{ textAlign: 'center', marginTop: 50 }}>
+        <p>Something went wrong</p>
+        <button onClick={() => window.location.reload()}>Reload</button>
+      </div>
+    );
+  }
+
+  if (allItems.length === 0) {
+    return (
+      <div style={{ textAlign: 'center', marginTop: 50 }}>
+        <p>There are no {categoryName} yet</p>
+      </div>
+    );
+  }
+
+  if (!useFilters) {
+    return (
       <div className="catalog__list">
         {allItems.map(item => (
           <ProductCard product={item} key={item.id} />

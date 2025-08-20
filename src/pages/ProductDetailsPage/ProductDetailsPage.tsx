@@ -87,6 +87,8 @@ export const ProductDetailsPage: React.FC<Props> = () => {
         >
           <ClipLoader color="#905bff" size={60} />
         </div>
+      ) : !product ? (
+        <div className="details__title">Product was not found</div>
       ) : (
         <div className="details">
           <Breadcrumbs />

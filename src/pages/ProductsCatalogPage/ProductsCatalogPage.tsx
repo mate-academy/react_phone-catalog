@@ -26,7 +26,12 @@ export const ProductsCatalogPage: React.FC<Props> = ({
         <p className="title__quantity">{allItems.length} models</p>
       </div>
 
-      <AllItemsList path={path} allItems={allItems} setAllItems={setAllItems} />
+      <AllItemsList
+        path={path}
+        allItems={allItems}
+        setAllItems={setAllItems}
+        categoryName={title}
+      />
     </div>
   );
 };

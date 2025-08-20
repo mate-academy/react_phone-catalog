@@ -28,30 +28,19 @@ export const HomePage: React.FC = () => {
         const res = await fetch('/api/phones.json');
         const json: Product[] = await res.json();
 
-        const maxDiscount = Math.max(
-          ...json.map(p => {
-            if (p.priceDiscount === undefined || p.priceRegular === undefined) {
-              return -Infinity;
-            }
+        const sortedByDiscount = json
+          .filter(
+            p => p.priceDiscount !== undefined && p.priceRegular !== undefined,
+          )
+          .sort(
+            (a, b) =>
+              b.priceRegular! -
+              b.priceDiscount! -
+              (a.priceRegular! - a.priceDiscount!),
+          )
+          .slice(0, 15);
 
-            return p.priceRegular - p.priceDiscount;
-          }),
-        );
-
-        const range = 100;
-
-        const hotProducts = json.filter(
-          p => p.priceRegular - p.priceDiscount >= maxDiscount - range,
-        );
-
-        // const minPrice = Math.min(...json.map(p => p.price));
-        // const maxPrice = minPrice + 300;
-
-        // const hotProducts = json.filter(
-        //   p => p.price >= minPrice && p.price <= maxPrice,
-        // );
-
-        setHotPrices(hotProducts);
+        setHotPrices(sortedByDiscount);
       } catch (e) {}
     };
 

@@ -17,18 +17,7 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
 
   const scrollAmount = 272 + 16;
 
-  const updateButtons = () => {
-    if (!containerRef.current) {
-      return;
-    }
-
-    const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-
-    setIsLeftDisabled(scrollLeft <= 0);
-    setIsRightDisabled(scrollLeft + clientWidth >= scrollWidth);
-  };
-
-  const scrollLeft = () => {
+  const scrollContainerLeft = () => {
     if (containerRef.current) {
       containerRef.current.scrollBy({
         left: -scrollAmount,
@@ -37,29 +26,32 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
     }
   };
 
-  const scrollRight = () => {
+  const scrollContainerRight = () => {
     if (containerRef.current) {
       containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
   useEffect(() => {
-    updateButtons();
-
     const container = containerRef.current;
+    if (!container) return;
 
-    if (container) {
-      container.addEventListener('scroll', updateButtons);
-      window.addEventListener('resize', updateButtons); // щоб кнопки коректно оновлювались при зміні ширини
-    }
+    const update = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      setIsLeftDisabled(scrollLeft <= 0);
+      setIsRightDisabled(scrollLeft + clientWidth >= scrollWidth - 1);
+    };
+
+    requestAnimationFrame(update);
+
+    container.addEventListener('scroll', update);
+    window.addEventListener('resize', update);
 
     return () => {
-      if (container) {
-        container.removeEventListener('scroll', updateButtons);
-        window.removeEventListener('resize', updateButtons);
-      }
+      container.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
     };
-  }, []);
+  }, [products]); 
 
   return (
     <>
@@ -68,13 +60,12 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
         <div className="arrow">
           <ButtonScroll
             buttonText="/img/icons/arrow-left.svg"
-            clickFunc={scrollLeft}
+            clickFunc={scrollContainerLeft}
             disabled={isLeftDisabled}
           />
-
           <ButtonScroll
             buttonText="/img/icons/arrow-right.svg"
-            clickFunc={scrollRight}
+            clickFunc={scrollContainerRight}
             disabled={isRightDisabled}
           />
         </div>

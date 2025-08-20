@@ -14,6 +14,7 @@
   }
 
   &__box {
+    width: 187px;
     background-color: $grey-dark-color;
     padding-inline: 12px;
     padding-block: 10px;
@@ -23,5 +24,14 @@
     background-image: url('/img/icons/arrow-down.svg');
     background-repeat: no-repeat;
     background-position: right 12px center;
+
+    cursor: pointer;
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+    flex: 1;
+    &__box {
+      width: 100%;
+    }
   }
 }
