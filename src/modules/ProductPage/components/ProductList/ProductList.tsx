@@ -1,5 +1,4 @@
-import React, { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React from 'react';
 import { ProductForCard } from '../../../../types/Product/Product';
 import { ProductCard } from '../../../../shared/components/ProductCard';
 // eslint-disable-next-line max-len
@@ -20,27 +19,6 @@ export const ProductList: React.FC<Props> = ({
   skeletonsCount,
   categoryLabel = 'products',
 }) => {
-  const [searchParams] = useSearchParams();
-  const query = (searchParams.get('query') ?? '').trim();
-
-  const filtered = useMemo(() => {
-    if (!query) {
-      return products;
-    }
-
-    const q = query.toLowerCase();
-
-    return products.filter(p => p.name.toLowerCase().includes(q));
-  }, [products, query]);
-
-  if (!products || products.length === 0) {
-    return <div>There are no {categoryLabel} yet</div>;
-  }
-
-  if (query && filtered.length === 0) {
-    return <div>There are no {categoryLabel} matching the query</div>;
-  }
-
   if (loading) {
     return (
       <div className={styles.productList}>
@@ -51,9 +29,13 @@ export const ProductList: React.FC<Props> = ({
     );
   }
 
+  if (!products || products.length === 0) {
+    return <div>There are no {categoryLabel} yet</div>;
+  }
+
   return (
     <div className={styles.productList}>
-      {filtered.map(product => (
+      {products.map(product => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>

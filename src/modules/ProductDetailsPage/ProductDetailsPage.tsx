@@ -34,6 +34,7 @@ export const ProductDetailsPage: React.FC = () => {
   const [suggestions, setSuggestions] = useState<ProductForCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -44,8 +45,11 @@ export const ProductDetailsPage: React.FC = () => {
         return;
       }
 
-      try {
+      if (initialLoad) {
         setLoading(true);
+      }
+
+      try {
         setError(null);
 
         const productBundle = await loadProductBundleById(productId);
@@ -68,11 +72,12 @@ export const ProductDetailsPage: React.FC = () => {
         );
       } finally {
         setLoading(false);
+        setInitialLoad(false);
       }
     };
 
     fetchProductData();
-  }, [productId]);
+  }, [productId, initialLoad]);
 
   const handleColorChange = (color: string) => {
     const selected = variants.find(
@@ -82,7 +87,9 @@ export const ProductDetailsPage: React.FC = () => {
     if (selected) {
       setProduct(selected);
 
-      navigate(`/product/${selected.id}`, { replace: true });
+      setTimeout(() => {
+        navigate(`/product/${selected.id}`, { replace: true });
+      }, 100);
     }
   };
 
@@ -94,7 +101,9 @@ export const ProductDetailsPage: React.FC = () => {
     if (selected) {
       setProduct(selected);
 
-      navigate(`/product/${selected.id}`, { replace: true });
+      setTimeout(() => {
+        navigate(`/product/${selected.id}`, { replace: true });
+      }, 100);
     }
   };
 

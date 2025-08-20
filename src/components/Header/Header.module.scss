@@ -133,6 +133,7 @@
       border: 1px solid $elements-color;
       border-radius: 8px;
       font-size: 14px;
+      font-weight: $semi-bold;
       color: $white;
       background-color: $primary-color;
 
@@ -146,6 +147,15 @@
       }
     }
 
+    &__clear {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 25%;
+      right: 12px;
+      cursor: pointer;
+    }
+
     &__icon {
       position: absolute;
       right: 12px;
@@ -154,6 +164,11 @@
       height: 16px;
       pointer-events: none;
     }
+  }
+
+  .headerSearch__input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   .button {

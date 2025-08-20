@@ -19,54 +19,40 @@ import styles from './Header.module.scss';
 
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const { cart, favorites } = useCartFavoritesContext();
-
-  const isMobile = useMediaQuery(BREAKPOINTS.mobile);
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const favoritesCount = favorites.length;
-  const cartCount = cart.length;
-
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const initialQuery = searchParams.get('query') ?? '';
-  const [query, setQuery] = useState<string>(initialQuery);
+  const [query, setQuery] = useState(searchParams.get('query') || '');
   const debouncedQuery = useDebouncedValue(query, 350);
 
   const searchRoutes = ['/phones', '/tablets', '/accessories'];
   const showSearch = searchRoutes.some(r => location.pathname.startsWith(r));
 
+  const isMobile = useMediaQuery(BREAKPOINTS.mobile);
+  const favoritesCount = favorites.length;
+  const cartCount = cart.length;
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
   useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams);
 
     if (debouncedQuery) {
-      params.set('query', debouncedQuery);
+      params.set('query', debouncedQuery.trim().toLowerCase());
     } else {
       params.delete('query');
-    }
+    };
 
     setSearchParams(params, { replace: true });
-  }, [debouncedQuery, searchParams, setSearchParams]);
-
-  useEffect(() => {
-    const q = searchParams.get('query') ?? '';
-
-    setQuery(q);
-  }, [searchParams]);
+  }, [debouncedQuery]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
+    setQuery(e.target.value);
+  };
 
-    setQuery(newValue);
-
-    if (!newValue) {
-      const params = new URLSearchParams(searchParams.toString());
-
-      params.delete('query');
-      setSearchParams(params, { replace: true });
-    }
+  const handleSearchClear = () => {
+    setQuery('');
   };
 
   return (
@@ -98,17 +84,27 @@ export const Header: React.FC = () => {
               <div className={styles.headerSearch}>
                 <input
                   type="search"
-                  aria-label="Search products"
-                  placeholder="Search products..."
+                  placeholder="Search..."
                   value={query}
                   onChange={handleSearchChange}
                   className={styles.headerSearch__input}
+                  autoComplete="off"
                 />
-                <img
-                  src={ICON_PATHS.search}
-                  alt="Search"
-                  className={styles.headerSearch__icon}
-                />
+
+                {query ? (
+                  <img
+                    src={ICON_PATHS.close}
+                    alt="Clear"
+                    className={styles.headerSearch__clear}
+                    onClick={handleSearchClear}
+                  />
+                ) : (
+                  <img
+                    src={ICON_PATHS.search}
+                    alt="Search"
+                    className={styles.headerSearch__icon}
+                  />
+                )}
               </div>
             )}
 

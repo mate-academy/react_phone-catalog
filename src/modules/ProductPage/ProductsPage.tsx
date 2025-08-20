@@ -13,6 +13,7 @@ import styles from './ProductPage.module.scss';
 
 type Props = {
   category: ProductCategory;
+  queryFromHeader?: string;
 };
 
 const getSortedProducts = (products: ProductForCard[], sortBy: string) => {
@@ -31,7 +32,10 @@ const getSortedProducts = (products: ProductForCard[], sortBy: string) => {
   }
 };
 
-export const ProductsPage: React.FC<Props> = ({ category }) => {
+export const ProductsPage: React.FC<Props> = ({
+  category,
+  queryFromHeader,
+}) => {
   const [products, setProducts] = useState<ProductForCard[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -40,6 +44,7 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   const sort = searchParams.get('sort') || 'age';
   const page = parseInt(searchParams.get('page') || '1', 10);
   const perPage = searchParams.get('perPage') || '4';
+  const query = (queryFromHeader ?? searchParams.get('query') ?? '').trim();
 
   const { counts, loading: countsLoading } = useCategoryCounts();
 
@@ -50,8 +55,6 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   };
 
   const count = counts[countMap[category]];
-
-  const query = (searchParams.get('query') ?? '').trim();
 
   const filterProducts = useMemo(() => {
     if (!query) {
@@ -64,6 +67,7 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   }, [products, query]);
 
   const sortedProducts = getSortedProducts(filterProducts, sort);
+
   const perPageNumber =
     perPage.toLowerCase() === 'all'
       ? sortedProducts.length
@@ -124,7 +128,7 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
 
   useEffect(() => {
     if (page > Math.ceil(sortedProducts.length / perPageNumber)) {
-      setSearchParams({ sort, page: '1', perPage });
+      setSearchParams({ sort, page: '1', perPage, query });
     }
   }, [
     query,
@@ -137,15 +141,15 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   ]);
 
   const handleSortChange = (newSort: string) => {
-    setSearchParams({ sort: newSort, page: '1', perPage });
+    setSearchParams({ sort: newSort, page: '1', perPage, query });
   };
 
   const handlePerPageChange = (newPerPage: string) => {
-    setSearchParams({ sort, page: '1', perPage: newPerPage });
+    setSearchParams({ sort, page: '1', perPage: newPerPage, query });
   };
 
   const handlePageChange = (newPage: number) => {
-    setSearchParams({ sort, page: newPage.toString(), perPage });
+    setSearchParams({ sort, page: newPage.toString(), perPage, query });
   };
 
   const paginatedProducts = sortedProducts.slice(
