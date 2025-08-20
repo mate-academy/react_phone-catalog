@@ -11,9 +11,9 @@ export const CategoryGrid: React.FC = () => {
   const { counts, loading } = useCategoryCounts();
 
   const categoriesPhotosPath = {
-    mobile: 'public/img/category/category-phones.webp',
-    tablets: 'public/img/category/category-tablets.webp',
-    accessories: 'public/img/category/category-accessories.png',
+    mobile: './img/category/category-phones.webp',
+    tablets: './img/category/category-tablets.webp',
+    accessories: './img/category/category-accessories.png',
   };
 
   return (
