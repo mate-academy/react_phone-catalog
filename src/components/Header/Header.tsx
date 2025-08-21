@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
 import { BurgerMenu } from '../BurgerMenu';
-// import { useFavorites } from '../../context/Favorites/FavoritesContext';
+import { useCart } from '../../context/CartContext/CartContext';
+import { useFavorites } from '../../context/Favorites/FavoritesContext';
 
 export const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
 
-  // const { favorites } = useFavorites();
+  const { cart } = useCart();
+  const { favorites } = useFavorites();
+
+  const cartCount = cart.length;
+  const favouritesCount = favorites.length;
 
   const handleOpenMenu = () => {
     setOpen(prev => !prev);
@@ -67,7 +72,12 @@ export const Header: React.FC = () => {
                 `header__button-link ${isActive ? 'header__button-link--active' : ''}`
               }
             >
-              <img src="/img/icons/icon-favourites.svg" alt="favourites" />
+              <div className="header__icon-wrapper">
+                <img src="/img/icons/icon-favourites.svg" alt="favourites" />
+                {favouritesCount > 0 && (
+                  <span className="header__badge">{favouritesCount}</span>
+                )}
+              </div>
             </NavLink>
             <NavLink
               to="/cart"
@@ -75,7 +85,12 @@ export const Header: React.FC = () => {
                 `header__button-link ${isActive ? 'header__button-link--active' : ''}`
               }
             >
-              <img src="/img/icons/icon-cart.svg" alt="cart" />
+              <div className="header__icon-wrapper">
+                <img src="/img/icons/icon-cart.svg" alt="cart" />
+                {cartCount > 0 && (
+                  <span className="header__badge">{cartCount}</span>
+                )}
+              </div>
             </NavLink>
           </div>
         </div>

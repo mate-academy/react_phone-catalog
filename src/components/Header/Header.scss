@@ -21,6 +21,28 @@
   z-index: 1000;
   background-color: inherit;
 
+  &__icon-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: $red-color;
+    color: $text-color;
+    font-size: 9px;
+    font-weight: 700;
+    border-radius: 50%;
+    padding: 2px 4px;
+    line-height: 100%;
+
+    text-align: center;
+
+    min-width: 14px;
+  }
+
   .burger-button {
     display: none;
   }
