@@ -1,13 +1,13 @@
 import React from 'react';
-import './NotFoundPage.scss';
+import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPage: React.FC = () => {
   return (
-    <div className="not-found__wrapper">
+    <div className={styles['not-found__wrapper']}>
       <img
         src="/img/page-not-found.png"
         alt="not found image"
-        className="not-found__image"
+        className={styles['not-found__image']}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './ProductsList.scss';
+import styles from './ProductsList.module.scss';
 import { Product } from '../../utils/Product';
 import { ProductCard } from '../ProductCard';
 import { ButtonScroll } from '../ButtonScroll';
@@ -59,9 +59,9 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
 
   return (
     <>
-      <div className="header-row">
+      <div className={styles['header-row']}>
         <h2>{title}</h2>
-        <div className="arrow">
+        <div className={styles.arrow}>
           <ButtonScroll
             buttonText="/img/icons/arrow-left.svg"
             clickFunc={scrollContainerLeft}
@@ -74,7 +74,7 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
           />
         </div>
       </div>
-      <div className="products-list" ref={containerRef}>
+      <div className={styles['products-list']} ref={containerRef}>
         {products.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}

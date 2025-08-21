@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './CapacityPicker.scss';
+import classNames from 'classnames';
+import styles from './CapacityPicker.module.scss';
 
 type Props = {
   activeCapacity?: string;
@@ -22,15 +23,13 @@ export const CapacityPicker: React.FC<Props> = ({
   }, [activeCapacity]);
 
   return (
-    <div className="capacity-picker">
+    <div className={styles.capacityPicker}>
       {capacityArray.map(item => (
         <label
           key={item}
-          className={`capacity-picker__container ${
-            selectedCapacity === item
-              ? 'capacity-picker__container--selected'
-              : ''
-          }`}
+          className={classNames(styles.capacityPickerContainer, {
+            [styles.capacityPickerContainerSelected]: selectedCapacity === item,
+          })}
         >
           <input
             type="radio"
@@ -38,9 +37,9 @@ export const CapacityPicker: React.FC<Props> = ({
             value={item}
             checked={selectedCapacity === item}
             onChange={() => setSelectedCapacity(item)}
-            className="capacity-picker__radio"
+            className={styles.capacityPickerRadio}
           />
-          <span className="capacity-picker__text">
+          <span className={styles.capacityPickerText}>
             {item.replace(/(\d+)(GB)/, '$1 $2')}
           </span>
         </label>

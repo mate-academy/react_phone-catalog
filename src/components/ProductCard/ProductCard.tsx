@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProductCard.scss';
+import styles from './ProductCard.module.scss';
 import { Product } from '../../utils/Product';
 import { useNavigate } from 'react-router-dom';
 import { CharacteristicsTable } from '../CharactiristicsTable';
@@ -11,28 +11,35 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const getImageSrc = (src: string) => (src.startsWith('/') ? src : '/' + src);
-
   const navigate = useNavigate();
 
   return (
     <div
-      className="product"
+      className={styles.product}
       onClick={() => navigate(`/${product.category}/${product.id}`)}
     >
-      <div className="product__characteristics">
+      <div className={styles.product__characteristics}>
         <img
-          className="product__image"
+          className={styles.product__image}
           src={getImageSrc(product.images[0])}
-          alt="product image"
+          alt={product.name}
         />
 
-        <p className="product__description">{product.name}</p>
+        <p className={styles.product__description}>{product.name}</p>
 
-        <div className="product__price-with-discount">
-          <p className="product__price product__price--discount">
+        <div className={styles['product__price-with-discount']}>
+          <p
+            className={
+              styles.product__price + ' ' + styles['product__price--discount']
+            }
+          >
             ${product.priceDiscount}
           </p>
-          <p className="product__price product__price--regular">
+          <p
+            className={
+              styles.product__price + ' ' + styles['product__price--regular']
+            }
+          >
             ${product.priceRegular}
           </p>
         </div>

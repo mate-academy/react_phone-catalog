@@ -1,45 +1,42 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
-import './Breadcrumbs.scss';
+import classNames from 'classnames';
+import styles from './Breadcrumbs.module.scss';
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
-
   const path = location.pathname;
-
   const segments = path.split('/').filter(Boolean);
-
   const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
   return (
-    <>
-      <div className="breadcrumbs">
-        <Link to="/" className="breadcrumbs__home">
-          <img src="/img/icons/home.svg" alt="home image" />
-        </Link>
+    <div className={styles.breadcrumbs}>
+      <Link to="/" className={styles.breadcrumbsHome}>
+        <img src="/img/icons/home.svg" alt="home image" />
+      </Link>
 
-        {segments.map((segment, i) => {
-          const link = '/' + segments.slice(0, i + 1).join('/');
-          const isLast = i === segments.length - 1;
+      {segments.map((segment, i) => {
+        const link = '/' + segments.slice(0, i + 1).join('/');
+        const isLast = i === segments.length - 1;
 
-          return (
-            <span key={link} className="breadcrumbs__item">
-              <img
-                src="/img/icons/arrow-right.svg"
-                alt="arrow"
-                className="breadcrumbs__arrow"
-              />
-              <Link
-                to={link}
-                className={`breadcrumbs__link ${isLast ? 'breadcrumbs__link--active' : ''}`}
-              >
-                {capitalize(segment)}
-              </Link>
-            </span>
-          );
-        })}
-      </div>
-    </>
+        return (
+          <span key={link} className={styles.breadcrumbsItem}>
+            <img
+              src="/img/icons/arrow-right.svg"
+              alt="arrow"
+              className={styles.breadcrumbsArrow}
+            />
+            <Link
+              to={link}
+              className={classNames(styles.breadcrumbsLink, {
+                [styles.breadcrumbsLinkActive]: isLast,
+              })}
+            >
+              {capitalize(segment)}
+            </Link>
+          </span>
+        );
+      })}
+    </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './ColorPicker.scss';
+import styles from './ColorPicker.module.scss';
 
 type Props = {
   activeColor?: string;
@@ -18,7 +18,7 @@ const colorMap: Record<string, string> = {
 
 export const ColorPicker: React.FC<Props> = ({ activeColor, colors }) => {
   const [selectedColor, setSelectedColor] = useState<string | null>(
-    activeColor || null,
+    activeColor ? colorMap[activeColor] || activeColor : null,
   );
 
   const colorsArray = (typeof colors === 'string' ? [colors] : colors).map(
@@ -32,19 +32,19 @@ export const ColorPicker: React.FC<Props> = ({ activeColor, colors }) => {
   }, [activeColor]);
 
   return (
-    <div className="color-picker">
+    <div className={styles['color-picker']}>
       {colorsArray.map(color => (
         <div
           key={color}
-          className={`color-picker__circle-wrapper ${
+          className={`${styles['color-picker__circle-wrapper']} ${
             selectedColor === color
-              ? 'color-picker__circle-wrapper--selected'
+              ? styles['color-picker__circle-wrapper--selected']
               : ''
           }`}
           onClick={() => setSelectedColor(color)}
         >
           <div
-            className="color-picker__circle"
+            className={styles['color-picker__circle']}
             style={{ backgroundColor: color }}
           />
         </div>

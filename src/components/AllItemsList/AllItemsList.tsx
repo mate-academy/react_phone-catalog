@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { Product } from '../../utils/Product';
 import { ProductCard } from '../ProductCard';
-import './AllItemsList.scss';
+import styles from './AllItemsList.module.scss';
 import { Pagination } from '../Pagination/Pagination';
 import { Filters } from '../Filters';
 import { SortOptions } from '../Filters/Filters';
@@ -110,7 +110,12 @@ export const AllItemsList: React.FC<Props> = ({
     return (
       <div style={{ textAlign: 'center', marginTop: 50 }}>
         <p>Something went wrong</p>
-        <button onClick={() => window.location.reload()}>Reload</button>
+        <button
+          className={styles.reload__button}
+          onClick={() => window.location.reload()}
+        >
+          Reload
+        </button>
       </div>
     );
   }
@@ -125,7 +130,7 @@ export const AllItemsList: React.FC<Props> = ({
 
   if (!useFilters) {
     return (
-      <div className="catalog__list">
+      <div className={styles.catalog__list}>
         {allItems.map(item => (
           <ProductCard product={item} key={item.id} />
         ))}
@@ -138,7 +143,7 @@ export const AllItemsList: React.FC<Props> = ({
       <ClipLoader color="#905bff" size={60} />
     </div>
   ) : (
-    <div className="catalog">
+    <div className={styles.catalog}>
       <Filters
         sort={sort}
         perPage={perPage}
@@ -146,7 +151,7 @@ export const AllItemsList: React.FC<Props> = ({
         onPerPageChange={setPerPage}
       />
 
-      <div className="catalog__list">
+      <div className={styles.catalog__list}>
         {visibleProducts.map(item => (
           <ProductCard product={item} key={item.id} />
         ))}

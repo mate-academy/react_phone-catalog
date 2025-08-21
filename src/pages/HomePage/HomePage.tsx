@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './HomePage.scss';
+import styles from './HomePage.module.scss';
 import { Banner } from '../../components/Banner';
 import { ProductsList } from '../../components/ProductsList';
 import { Product } from '../../utils/Product';
@@ -50,13 +50,13 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <h1 className="title__h1">Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.title__h1}>Welcome to Nice Gadgets store!</h1>
 
       <Banner />
 
       <ProductsList title="Brand new models" products={newModels} />
 
-      <h2 className="title__h2">Shop by category</h2>
+      <h2 className={styles.title__h2}>Shop by category</h2>
 
       <CategoriesList />
 

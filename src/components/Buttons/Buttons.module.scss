@@ -1,22 +1,19 @@
 @import '../src/styles/variables';
 
-.product__button {
+.productButton {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 8px;
-
   padding-top: 8px;
 
-  &--add {
+  &Add {
     padding-inline: 30px;
     padding-block: 9.5px;
     font-family: inherit;
-
     background-color: $purple-accent-color;
     border: none;
     width: 100%;
-
     color: $text-color;
 
     &:hover {
@@ -25,7 +22,7 @@
     }
   }
 
-  &--favourite {
+  &Favourite {
     flex-shrink: 0;
     width: 40px;
     height: 40px;
@@ -42,7 +39,7 @@
       background-color: $grey-icons-color;
     }
 
-    &.product__button--active {
+    &Active {
       background-color: transparent;
       border: 1px solid $grey-elements-color;
 
@@ -52,7 +49,7 @@
     }
   }
 
-  &-icon {
+  &Icon {
     width: 16px;
     height: 16px;
     display: block;

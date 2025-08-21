@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-
-import './BurgerMenu.scss';
+import classNames from 'classnames';
+import styles from './BurgerMenu.module.scss';
 
 type Props = {
   open: boolean;
@@ -10,11 +10,7 @@ type Props = {
 
 export const BurgerMenu: React.FC<Props> = ({ open, setOpen }) => {
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = open ? 'hidden' : '';
 
     return () => {
       document.body.style.overflow = '';
@@ -22,64 +18,50 @@ export const BurgerMenu: React.FC<Props> = ({ open, setOpen }) => {
   }, [open]);
 
   return (
-    <div className="burger-menu">
-      <nav className="burger-menu__nav">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `burger-menu__link ${isActive ? 'burger-menu__link--active' : ''}`
-          }
-          onClick={() => setOpen(false)}
-        >
-          HOME
-        </NavLink>
-        <NavLink
-          to="/phones"
-          className={({ isActive }) =>
-            `burger-menu__link ${isActive ? 'burger-menu__link--active' : ''}`
-          }
-          onClick={() => setOpen(false)}
-        >
-          PHONES
-        </NavLink>
-        <NavLink
-          to="/tablets"
-          className={({ isActive }) =>
-            `burger-menu__link ${isActive ? 'burger-menu__link--active' : ''}`
-          }
-          onClick={() => setOpen(false)}
-        >
-          TABLETS
-        </NavLink>
-        <NavLink
-          to="/accessories"
-          className={({ isActive }) =>
-            `burger-menu__link ${isActive ? 'burger-menu__link--active' : ''}`
-          }
-          onClick={() => setOpen(false)}
-        >
-          ACCESSORIES
-        </NavLink>
+    <div className={styles.burgerMenu}>
+      <nav className={styles.burgerMenuNav}>
+        {['/', '/phones', '/tablets', '/accessories'].map((path, i) => {
+          const label = ['HOME', 'PHONES', 'TABLETS', 'ACCESSORIES'][i];
+
+          return (
+            <NavLink
+              key={path}
+              to={path}
+              className={({ isActive }) =>
+                classNames(styles.burgerMenuLink, {
+                  [styles.burgerMenuLinkActive]: isActive,
+                })
+              }
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </NavLink>
+          );
+        })}
       </nav>
-      <div className="burger-menu__button">
-        <NavLink
-          to="/favourites"
-          className={({ isActive }) =>
-            `burger-menu__button-link ${isActive ? 'burger-menu__button--active' : ''}`
-          }
-          onClick={() => setOpen(false)}
-        >
-          <img src="/img/icons/icon-favourites.svg" alt="favourites" />
-        </NavLink>
-        <NavLink
-          to="/cart"
-          className={({ isActive }) =>
-            `burger-menu__button-link ${isActive ? 'burger-menu__button--active' : ''}`
-          }
-          onClick={() => setOpen(false)}
-        >
-          <img src="/img/icons/icon-cart.svg" alt="cart" />
-        </NavLink>
+
+      <div className={styles.burgerMenuButton}>
+        {['/favourites', '/cart'].map((path, i) => (
+          <NavLink
+            key={path}
+            to={path}
+            className={({ isActive }) =>
+              classNames(styles.burgerMenuButtonLink, {
+                [styles.burgerMenuButtonActive]: isActive,
+              })
+            }
+            onClick={() => setOpen(false)}
+          >
+            <img
+              src={
+                i === 0
+                  ? '/img/icons/icon-favourites.svg'
+                  : '/img/icons/icon-cart.svg'
+              }
+              alt={i === 0 ? 'favourites' : 'cart'}
+            />
+          </NavLink>
+        ))}
       </div>
     </div>
   );

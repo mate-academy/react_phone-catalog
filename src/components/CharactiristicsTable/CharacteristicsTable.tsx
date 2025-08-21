@@ -1,5 +1,5 @@
 import React from 'react';
-import './CharacteristicsTable.scss';
+import styles from './CharacteristicsTable.module.scss';
 
 type Characteristic = {
   name: string;
@@ -12,11 +12,11 @@ type Props = {
 
 export const CharacteristicsTable: React.FC<Props> = ({ characteristics }) => {
   return (
-    <div className="details">
+    <div className={styles.details}>
       {characteristics.map(({ name, value }) => (
-        <div className="details__row" key={name}>
-          <div className="details__name">{name}</div>
-          <div className="detail__value">{value || '-'}</div>
+        <div className={styles.details__row} key={name}>
+          <div className={styles.details__name}>{name}</div>
+          <div className={styles.details__value}>{value || '-'}</div>
         </div>
       ))}
     </div>

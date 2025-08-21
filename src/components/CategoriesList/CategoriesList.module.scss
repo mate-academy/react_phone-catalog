@@ -1,12 +1,10 @@
-.categories {
+.categoriesList {
   display: flex;
   flex-direction: row;
   gap: 16px;
   justify-content: space-between;
-}
 
-@media (min-width: 320px) and (max-width: 639px) {
-  .categories {
+  @media (min-width: 320px) and (max-width: 639px) {
     display: flex;
     flex-direction: column;
     gap: 32px;

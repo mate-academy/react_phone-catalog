@@ -1,6 +1,6 @@
 import React from 'react';
 import { CategorySelectCard } from '../CategorySelectCard';
-import './CategoriesList.scss';
+import styles from './CategoriesList.module.scss';
 
 import phones from '../../../public/api/phones.json';
 import tablets from '../../../public/api/tablets.json';
@@ -29,7 +29,7 @@ export const CategoriesList: React.FC = () => {
   ];
 
   return (
-    <div className="categories">
+    <div className={styles.categoriesList}>
       {categories.map((el, index) => (
         <CategorySelectCard
           key={index}

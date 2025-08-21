@@ -1,6 +1,6 @@
 @import '../src/styles/variables';
 
-.select-category {
+.selectCategory {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -8,7 +8,7 @@
   text-decoration: none;
   color: $text-color;
 
-  &__image-wrapper {
+  &__imageWrapper {
     width: 368px;
     height: 368px;
     overflow: hidden;
@@ -41,14 +41,14 @@
   }
 
   @media (min-width: 640px) and (max-width: 1199px) {
-    &__image-wrapper {
+    &__imageWrapper {
       width: 187px;
       height: 187px;
     }
   }
 
   @media (min-width: 320px) and (max-width: 639px) {
-    &__image-wrapper {
+    &__imageWrapper {
       width: 288px;
       height: 288px;
     }

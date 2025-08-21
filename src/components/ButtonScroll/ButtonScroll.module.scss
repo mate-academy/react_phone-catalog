@@ -5,7 +5,7 @@
   flex-direction: row;
   gap: 16px;
 
-  &__button {
+  &Button {
     border: none;
     background-color: $grey-dark-color;
     width: 32px;
@@ -20,16 +20,13 @@
       color: $grey-icons-color;
     }
 
-    &:hover {
-      cursor: pointer;
-    }
-
     &:hover:not(:disabled) {
+      cursor: pointer;
       background-color: $grey-icons-color;
     }
   }
 
-  &__image {
+  &Image {
     width: 16px;
     height: 16px;
   }

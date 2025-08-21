@@ -2,8 +2,8 @@ import React from 'react';
 import { useFavorites } from '../../context/Favorites/FavoritesContext';
 import { useCart } from '../../context/CartContext/CartContext';
 import { Product } from '../../utils/Product';
-
-import './Buttons.scss';
+import classNames from 'classnames';
+import styles from './Buttons.module.scss';
 
 type Props = {
   product: Product | null;
@@ -11,29 +11,24 @@ type Props = {
 
 export const Buttons: React.FC<Props> = ({ product }) => {
   const favoritesContext = useFavorites();
-
   if (!favoritesContext) {
     throw new Error('useFavorites must be used within a FavoritesProvider');
   }
-
   const { favorites, toggleFavorite } = favoritesContext;
 
   const cartContext = useCart();
-
   if (!cartContext) {
     throw new Error('useCart must be used within a CartProvider');
   }
-
   const { cart, addToCart } = cartContext;
 
   const isFavorite = product ? favorites.some(f => f.id === product.id) : false;
-
   const isInCart = product ? cart.some(item => item.id === product.id) : false;
 
   return (
-    <div className="product__button">
+    <div className={styles.productButton}>
       <button
-        className="product__button--add"
+        className={styles.productButtonAdd}
         onClick={e => {
           e.stopPropagation();
           if (product) {
@@ -45,7 +40,9 @@ export const Buttons: React.FC<Props> = ({ product }) => {
       </button>
 
       <button
-        className={`product__button--favourite ${isFavorite ? 'product__button--active' : ''}`}
+        className={classNames(styles.productButtonFavourite, {
+          [styles.productButtonFavouriteActive]: isFavorite,
+        })}
         onClick={e => {
           e.stopPropagation();
           if (product) {
@@ -53,14 +50,15 @@ export const Buttons: React.FC<Props> = ({ product }) => {
           }
         }}
       >
-        {isFavorite ? (
-          <img
-            src="/img/icons/icon-favourites-filled.svg"
-            alt="favourites icon"
-          />
-        ) : (
-          <img src="/img/icons/icon-favourites.svg" alt="favourites icon" />
-        )}
+        <img
+          src={
+            isFavorite
+              ? '/img/icons/icon-favourites-filled.svg'
+              : '/img/icons/icon-favourites.svg'
+          }
+          alt="favourites icon"
+          className={styles.productButtonIcon}
+        />
       </button>
     </div>
   );

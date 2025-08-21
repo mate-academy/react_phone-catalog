@@ -1,5 +1,5 @@
 import React from 'react';
-import './SelectBox.scss';
+import styles from './SelectBox.module.scss';
 
 type Option = {
   label: string;
@@ -20,10 +20,10 @@ export const SelectBox: React.FC<Props> = ({
   title,
 }) => {
   return (
-    <div className="select">
-      <p className="select__title">{title}</p>
+    <div className={styles.select}>
+      <p className={styles.select__title}>{title}</p>
       <select
-        className="select__box"
+        className={styles.select__box}
         value={value}
         onChange={e => onChange(e.target.value)}
       >

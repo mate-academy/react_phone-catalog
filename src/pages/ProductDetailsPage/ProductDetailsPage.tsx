@@ -10,12 +10,10 @@ import { Buttons } from '../../components/Buttons';
 import { ProductsList } from '../../components/ProductsList';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
-import './ProductDetailsPage.scss';
+import styles from './ProductDetailsPage.module.scss';
 import { ButtonBack } from '../../components/ButtonBack';
 
-type Props = {};
-
-export const ProductDetailsPage: React.FC<Props> = () => {
+export const ProductDetailsPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   const getImageSrc = (src: string) => (src.startsWith('/') ? src : '/' + src);
@@ -88,24 +86,24 @@ export const ProductDetailsPage: React.FC<Props> = () => {
           <ClipLoader color="#905bff" size={60} />
         </div>
       ) : !product ? (
-        <div className="details__title">Product was not found</div>
+        <div className={styles.details__title}>Product was not found</div>
       ) : (
-        <div className="details">
+        <div className={styles.details}>
           <Breadcrumbs />
 
           <ButtonBack />
 
-          <h1 className="details__title">{product?.name}</h1>
-          <div className="details__main">
-            <div className="details__images">
+          <h1 className={styles.details__title}>{product?.name}</h1>
+          <div className={styles.details__main}>
+            <div className={styles.details__images}>
               {product?.images?.map((image, index) => (
                 <div
-                  className={`details__image-wrapper ${index === selectedImage && 'details__image-wrapper--active'}`}
+                  className={`${styles['details__image-wrapper']} ${index === selectedImage ? styles['details__image-wrapper--active'] : ''}`}
                   key={image}
                   onClick={() => setSelectedImage(index)}
                 >
                   <img
-                    className="details__image"
+                    className={styles.details__image}
                     src={getImageSrc(image)}
                     alt="product image"
                   />
@@ -113,9 +111,9 @@ export const ProductDetailsPage: React.FC<Props> = () => {
               ))}
             </div>
             {product?.images && product.images.length > 0 ? (
-              <div className="details__main-image-wrapper">
+              <div className={styles['details__main-image-wrapper']}>
                 <img
-                  className="details__main-image"
+                  className={styles['details__main-image']}
                   src={getImageSrc(product.images[selectedImage])}
                   alt="product image"
                 />
@@ -123,9 +121,11 @@ export const ProductDetailsPage: React.FC<Props> = () => {
             ) : (
               <div>No image available</div>
             )}
-            <div className="details__short-characteristics">
-              <div className="details__colors">
-                <p className="details__small-title">Available colors</p>
+            <div className={styles['details__short-characteristics']}>
+              <div className={styles.details__colors}>
+                <p className={styles['details__small-title']}>
+                  Available colors
+                </p>
                 <ColorPicker
                   activeColor={product?.color}
                   colors={
@@ -134,8 +134,10 @@ export const ProductDetailsPage: React.FC<Props> = () => {
                   }
                 />
               </div>
-              <div className="details__capacity">
-                <p className="details__small-title">Select capacity</p>
+              <div className={styles.details__capacity}>
+                <p className={styles['details__small-title']}>
+                  Select capacity
+                </p>
                 <CapacityPicker
                   activeCapacity={product?.capacity}
                   capacity={
@@ -145,11 +147,15 @@ export const ProductDetailsPage: React.FC<Props> = () => {
                 />
               </div>
 
-              <div className="details__price-with-discount">
-                <p className="details__price details__price--discount">
+              <div className={styles['details__price-with-discount']}>
+                <p
+                  className={`${styles.details__price} ${styles['details__price--discount']}`}
+                >
                   ${product?.priceDiscount}
                 </p>
-                <p className="details__price details__price--regular">
+                <p
+                  className={`${styles.details__price} ${styles['details__price--regular']}`}
+                >
                   ${product?.priceRegular}
                 </p>
               </div>
@@ -166,18 +172,25 @@ export const ProductDetailsPage: React.FC<Props> = () => {
               />
             </div>
           </div>
-          <div className="details__description">
-            <div className="details__description__first-col">
-              <h2 className="details__description__title">About</h2>
+          <div className={styles.details__description}>
+            <div className={styles['details__description__first-col']}>
+              <h2 className={styles.details__description__title}>About</h2>
               {product?.description?.map(item => (
-                <div key={item.title} className="details__description--info">
-                  <h3 className="details__description--title">{item.title}</h3>
-                  <p className="details__description--text">{item.text}</p>
+                <div
+                  key={item.title}
+                  className={styles['details__description--info']}
+                >
+                  <h3 className={styles['details__description--title']}>
+                    {item.title}
+                  </h3>
+                  <p className={styles['details__description--text']}>
+                    {item.text}
+                  </p>
                 </div>
               ))}
             </div>
-            <div className="details__description__second-col">
-              <h2 className="details__description__title">Tech specs</h2>
+            <div className={styles['details__description__second-col']}>
+              <h2 className={styles.details__description__title}>Tech specs</h2>
               <CharacteristicsTable
                 characteristics={[
                   { name: 'Screen', value: product?.screen },

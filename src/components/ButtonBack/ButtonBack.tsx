@@ -1,20 +1,19 @@
 import React from 'react';
-import './ButtonBack.scss';
-
 import { useNavigate } from 'react-router-dom';
+import styles from './ButtonBack.module.scss';
 
 export const ButtonBack: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="button-back">
-      <button className="button-back__wrapper" onClick={() => navigate(-1)}>
+    <div className={styles.buttonBack}>
+      <button className={styles.buttonBackWrapper} onClick={() => navigate(-1)}>
         <img
           src="/img/icons/arrow-left.svg"
           alt="back button"
-          className="button-back__icon"
+          className={styles.buttonBackIcon}
         />
-        <p className="button-back__text">Back</p>
+        <p className={styles.buttonBackText}>Back</p>
       </button>
     </div>
   );

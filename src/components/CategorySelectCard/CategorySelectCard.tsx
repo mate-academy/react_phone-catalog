@@ -1,5 +1,5 @@
 import React from 'react';
-import './CategorySelectCard.scss';
+import styles from './CategorySelectCard.module.scss';
 import { Link } from 'react-router-dom';
 
 type Props = {
@@ -16,17 +16,17 @@ export const CategorySelectCard: React.FC<Props> = ({
   path,
 }) => {
   return (
-    <Link to={path} className="select-category">
-      <div className="select-category__image-wrapper">
+    <Link to={path} className={styles.selectCategory}>
+      <div className={styles.selectCategory__imageWrapper}>
         <img
-          className="select-category__image"
+          className={styles.selectCategory__image}
           src={image}
           alt="category image"
         />
       </div>
-      <div className="select-category__description">
-        <p className="select-category__title">{title}</p>
-        <p className="select-category__models">{quantity} models</p>
+      <div className={styles.selectCategory__description}>
+        <p className={styles.selectCategory__title}>{title}</p>
+        <p className={styles.selectCategory__models}>{quantity} models</p>
       </div>
     </Link>
   );

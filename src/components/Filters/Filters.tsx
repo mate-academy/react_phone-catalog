@@ -1,6 +1,8 @@
 import React from 'react';
 import { SelectBox } from '../SelectBox';
 
+import styles from './Filters.module.scss';
+
 export enum SortOptions {
   Newest = 'Newest',
   Alphabetically = 'Alphabetically',
@@ -21,7 +23,7 @@ export const Filters: React.FC<Props> = ({
   onPerPageChange,
 }) => {
   return (
-    <div className="catalog__filters">
+    <div className={styles.catalog__filters}>
       <SelectBox
         value={sort}
         onChange={value => onSortChange(value as SortOptions)}

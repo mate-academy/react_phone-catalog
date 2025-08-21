@@ -1,20 +1,20 @@
 @import '../src/styles/variables';
 
-.capacity-picker {
+.capacityPicker {
   display: flex;
   flex-direction: row;
   gap: 8px;
 
-  &__radio {
+  &Radio {
     display: none;
   }
 
-  &__text {
+  &Text {
     font-weight: 600;
     font-size: 14px;
   }
 
-  &__container {
+  &Container {
     padding-top: 7px;
     padding-bottom: 4px;
     padding-inline: 8px;
@@ -24,11 +24,11 @@
     &:hover {
       background-color: $grey-elements-color;
     }
+  }
 
-    &--selected {
-      background-color: $text-color;
-      color: $black-color;
-      border: none;
-    }
+  &ContainerSelected {
+    background-color: $text-color;
+    color: $black-color;
+    border: none;
   }
 }

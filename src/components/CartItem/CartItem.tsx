@@ -1,7 +1,7 @@
 import React from 'react';
 import { Product } from '../../utils/Product';
 import { ButtonScroll } from '../ButtonScroll';
-import './CartItem.scss';
+import styles from './CartItem.module.scss';
 import { useCart } from '../../context/CartContext/CartContext';
 
 type Props = {
@@ -11,29 +11,28 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ product, quantity }) => {
   const getImageSrc = (src: string) => (src.startsWith('/') ? src : '/' + src);
-
   const { removeFromCart, changeQuantity } = useCart();
 
   return (
-    <div className="cart">
+    <div className={styles.cart}>
       <button
         onClick={() => removeFromCart(product.id)}
-        className="cart__close"
+        className={styles.cartClose}
       >
         <img src="/img/icons/close-dark.svg" alt="close button" />
       </button>
 
-      <div className="cart__image-wrapper">
+      <div className={styles.cartImageWrapper}>
         <img
-          className="cart__image"
+          className={styles.cartImage}
           src={getImageSrc(product.images[0])}
           alt="product image"
         />
       </div>
 
-      <p className="cart__name">{product.name}</p>
+      <p className={styles.cartName}>{product.name}</p>
 
-      <div className="arrow">
+      <div className={styles.cartArrow}>
         <ButtonScroll
           buttonText="/img/icons/minus.svg"
           clickFunc={() => changeQuantity(product.id, -1)}
@@ -47,7 +46,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
         />
       </div>
 
-      <p className="cart__price">${product.priceDiscount}</p>
+      <p className={styles.cartPrice}>${product.priceDiscount}</p>
     </div>
   );
 };

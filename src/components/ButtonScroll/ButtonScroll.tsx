@@ -1,5 +1,5 @@
 import React from 'react';
-import './ButtonScroll.scss';
+import styles from './ButtonScroll.module.scss';
 
 type Props = {
   buttonText: string;
@@ -13,8 +13,12 @@ export const ButtonScroll: React.FC<Props> = ({
   disabled,
 }) => {
   return (
-    <button className="arrow__button" onClick={clickFunc} disabled={disabled}>
-      <img className="arrow__image" src={buttonText} alt="button" />
+    <button
+      className={styles.arrowButton}
+      onClick={clickFunc}
+      disabled={disabled}
+    >
+      <img className={styles.arrowImage} src={buttonText} alt="button" />
     </button>
   );
 };

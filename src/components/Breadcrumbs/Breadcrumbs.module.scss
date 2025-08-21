@@ -6,27 +6,26 @@
   gap: 8px;
   padding-top: 24px;
 
-  &__home {
+  &Home {
     display: flex;
     align-items: center;
   }
 
-  &__item {
+  &Item {
     display: flex;
     align-items: center;
     gap: 6px;
   }
 
-  &__arrow {
+  &Arrow {
     width: 16px;
     height: 16px;
     color: #4a4d58;
   }
 
-  &__link {
+  &Link {
     text-decoration: none;
     color: $text-color;
-
     font-weight: 700;
     font-size: 12px;
     transition: color 0.2s ease;
@@ -34,10 +33,10 @@
     &:hover {
       color: $purple-accent-color;
     }
+  }
 
-    &--active {
-      color: $grey-secondary-color;
-      pointer-events: none;
-    }
+  &LinkActive {
+    color: $grey-secondary-color;
+    pointer-events: none;
   }
 }
