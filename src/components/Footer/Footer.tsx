@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
@@ -17,18 +16,20 @@ export const Footer: React.FC = () => {
 
       <div className={styles.footer__container}>
         <nav className={styles.footer__nav}>
-          <Link
-            to="https://github.com/Sofiia13/react_phone-catalog"
+          <a
+            href="https://github.com/Sofiia13/react_phone-catalog"
             className={`${styles.footer__link} ${styles['footer__link--home']}`}
+            target="_blank"
+            rel="noreferrer"
           >
             GITHUB
-          </Link>
-          <Link to="#" className={styles.footer__link}>
+          </a>
+          <a href="#" className={styles.footer__link} target="_blank">
             CONTACTS
-          </Link>
-          <Link to="#" className={styles.footer__link}>
+          </a>
+          <a href="#" className={styles.footer__link} target="_blank">
             RIGHTS
-          </Link>
+          </a>
         </nav>
       </div>
 
