@@ -38,6 +38,7 @@ export const ColorPicker: React.FC<Props> = ({
     <div className={styles['color-picker']}>
       {colorsArray.map(colorName => {
         const hex = colorMap[colorName] || colorName; // hex для фону
+
         return (
           <div
             key={colorName}
@@ -47,13 +48,13 @@ export const ColorPicker: React.FC<Props> = ({
                 : ''
             }`}
             onClick={() => {
-              setSelectedColor(colorName); 
-              onColorChange?.(colorName); 
+              setSelectedColor(colorName);
+              onColorChange?.(colorName);
             }}
           >
             <div
               className={styles['color-picker__circle']}
-              style={{ backgroundColor: hex }} 
+              style={{ backgroundColor: hex }}
             />
           </div>
         );
