@@ -8,9 +8,6 @@ type Props = {
 
 export const FavoritesAddButton = ({ productId }: Props) => {
   const context = useContext(AddAndFavoritesContext);
-  // const toggleFavorite = () => {
-  //   console.log('Toggle favorite for product:', productId);
-  // };
 
   // if (!context) {
   //   throw new Error(

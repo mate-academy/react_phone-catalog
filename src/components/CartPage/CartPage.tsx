@@ -6,7 +6,7 @@ import { AddAndFavoritesContext } from '../contexts/AddAndFavoritesContext';
 
 export const CartPage = () => {
   const context = useContext(AddAndFavoritesContext);
-  const { cart } = context;
+  const { cart, changeQuantity} = context;
 
   const [products, setProducts] = useState<AllProductsType[]>([]);
   const [allProducts, setAllProducts] = useState<AllProductsType[]>([]);
@@ -18,11 +18,19 @@ export const CartPage = () => {
   }, []);
 
   useEffect(() => {
+    console.log('cart:', cart);
+    console.log('allProducts:', allProducts);
+
     const productsInCart = allProducts.filter(product =>
-      cart.includes(product.id),
+      cart.some(item => item.id === product.id)
     );
+
+    console.log('productsInCart:', productsInCart);
     setProducts(productsInCart);
   }, [cart, allProducts]);
+
+  // const cartItem = cart.find(item => item.id === product.id);
+  // const quantity = cartItem?.quantity ?? 1;
 
   return (
     <div className="cart-page">
@@ -46,11 +54,15 @@ export const CartPage = () => {
         const modelPhoto = product.image;
         const modelName = product.name;
         const price = product.price;
+        // const { id, count } = cartItem;
+
+        const cartItem = cart.find(item => item.id === product.id);
+        const quantity = cartItem?.quantity ?? 1;
 
         return (
           <div className="carts-card" key={product.id}>
             <div className="info-row">
-              <div className="delete">
+              <div className="delete" onClick={()=> changeQuantity(product.id, 'delete')}>
                 <img src="./img/icons/Close.svg" alt="delete item" />
               </div>
 
@@ -66,14 +78,20 @@ export const CartPage = () => {
 
             {/* <div className="calculation-row"> */}
               <div className="calc-box">
-                <div className="minus calc-button">
+                <div
+                  className="minus calc-button"
+                  onClick={()=> changeQuantity(product.id, 'minus')}
+                >
                   <img src="./img/icons/Minus.svg" alt="minus" />
                 </div>
 
-                <div className='count'></div>
+                <div className='count'>{quantity}</div>
 
-                <div className="plus calc-button">
-                <img src="./img/icons/Plus.svg" alt="plus" />
+                <div
+                  className="plus calc-button"
+                  onClick={() => changeQuantity(product.id, 'plus')}
+                >
+                  <img src="./img/icons/Plus.svg" alt="plus" />
                 </div>
               </div>
             {/* </div> */}
@@ -82,7 +100,7 @@ export const CartPage = () => {
               ${price}
             </div> */}
             <h3 className='price'>
-              ${price}
+              ${price * quantity}
             </h3>
           </div>
         );
