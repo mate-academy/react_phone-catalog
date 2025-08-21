@@ -22,6 +22,8 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
+  const getImageSrc = (src: string) => (src.startsWith('/') ? src : '/' + src);
+
   const files = ['api/phones.json', 'api/tablets.json', 'api/accessories.json'];
 
   useEffect(() => {
@@ -98,7 +100,7 @@ export const ProductDetailsPage: React.FC = () => {
                 >
                   <img
                     className={styles.details__image}
-                    src={image}
+                    src={getImageSrc(image)}
                     alt="product image"
                   />
                 </div>
@@ -108,7 +110,7 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={styles['details__main-image-wrapper']}>
                 <img
                   className={styles['details__main-image']}
-                  src={product.images[selectedImage]}
+                  src={getImageSrc(product.images[selectedImage])}
                   alt="product image"
                 />
               </div>

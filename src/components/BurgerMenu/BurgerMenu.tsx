@@ -55,8 +55,8 @@ export const BurgerMenu: React.FC<Props> = ({ open, setOpen }) => {
             <img
               src={
                 i === 0
-                  ? '/img/icons/icon-favourites.svg'
-                  : '/img/icons/icon-cart.svg'
+                  ? 'img/icons/icon-favourites.svg'
+                  : 'img/icons/icon-cart.svg'
               }
               alt={i === 0 ? 'favourites' : 'cart'}
             />
