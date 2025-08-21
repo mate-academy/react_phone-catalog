@@ -12,10 +12,12 @@
 
 .main-content {
   flex-grow: 1;
-
-  padding: 0 152px;
+  max-width: 1136px;
+  width: 100%;
+  margin: 0 auto;
 
   @media (max-width: 1200px) {
+    margin: 0;
     padding: 0 32px;
   }
 

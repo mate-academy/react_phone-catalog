@@ -6,15 +6,22 @@ import { removeFromCart } from '../../shared/utils/cart/removeFromCart';
 
 import deleteIco from '../../assets/icons/cart_icons/delete.svg';
 import styles from './CartPage.module.scss';
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 export const CartPage: React.FC = () => {
   const { cartItems, setCartItems } = useProducts();
+  const [, setSearchParams] = useSearchParams();
 
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
   const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  useEffect(() => {
+    setSearchParams({});
+  }, [setSearchParams]);
 
   return (
     <div className={styles.Cart}>

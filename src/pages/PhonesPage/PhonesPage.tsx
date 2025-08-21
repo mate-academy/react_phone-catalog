@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Catalog } from '../../components/Catalog';
 import { useProducts } from '../../shared/context/ProductsContext';
 import { ProductInfo } from '../../modules/ProductInfo';
-import { ProductsInfo } from '../../shared/types/ProductsInfo';
 import styles from './PhonesPage.module.scss';
 
 export const PhonesPage = () => {
-  const [selectedPhone, setSelectedPhone] = useState<ProductsInfo | null>(null);
   const { id } = useParams<{ id: string }>();
   const { phones, products } = useProducts();
+
+  const phone = id ? phones.find(item => item.id === id) || null : null;
   const catalogPhones = products.filter(
     product => product.category === 'phones',
   );
@@ -17,19 +16,9 @@ export const PhonesPage = () => {
   const smallTitle = 'Phones';
   const largeTitle = 'Mobile phones';
 
-  useEffect(() => {
-    if (id) {
-      const phone = phones.find(item => item.id === id);
-
-      setSelectedPhone(phone || null);
-    } else {
-      setSelectedPhone(null);
-    }
-  }, [id, phones]);
-
   return (
     <div className={styles.phones__page}>
-      {!selectedPhone ? (
+      {!phone ? (
         <Catalog
           smallTitle={smallTitle}
           largeTitle={largeTitle}
@@ -37,11 +26,7 @@ export const PhonesPage = () => {
           products={catalogPhones}
         />
       ) : (
-        <ProductInfo
-          key={selectedPhone?.id}
-          product={selectedPhone}
-          catalog={catalogPhones}
-        />
+        <ProductInfo product={phone} catalog={catalogPhones} />
       )}
     </div>
   );

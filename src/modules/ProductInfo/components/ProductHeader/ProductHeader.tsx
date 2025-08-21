@@ -7,7 +7,7 @@ import ArrowRight from '../../../../assets/icons/arrow/rightDisabled.svg';
 import styles from './ProductHeader.module.scss';
 
 type ProductHeaderProps = {
-  product: ProductsInfo;
+  product: ProductsInfo | null;
 };
 
 export const ProductHeader: React.FC<ProductHeaderProps> = ({ product }) => {

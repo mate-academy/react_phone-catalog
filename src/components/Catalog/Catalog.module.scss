@@ -58,6 +58,7 @@
 .Catalog__items {
   margin-top: 24px;
   display: flex;
+  justify-content:space-around;
   flex-wrap: wrap;
   gap: 40px 16px;
 }

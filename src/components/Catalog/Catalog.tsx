@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ProdactCard } from '../ProdactCard';
 import { Product } from '../../shared/types/Product';
 import { CustomSelect } from '../CustomSelect';
 import ArrowRight from '../../assets/icons/catalogIcons/arrowRightDisabled.svg';
 import Home from '../../assets/icons/catalogIcons/Home.svg';
 import styles from './Catalog.module.scss';
+import { Pagination } from './components/Pagination/Pagination';
 
 type CatalogProps = {
   smallTitle: string;
@@ -20,12 +21,30 @@ export const Catalog: React.FC<CatalogProps> = ({
   sorting,
   products,
 }) => {
-  const [sortBy, setSortBy] = useState<string>('Newest');
-  const [countItemsOnPage, setCountItemsOnPage] = useState<string>('all');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [currentPage, setCurrentPage] = useState(
+    Number(searchParams.get('page')) || 1,
+  );
+  const [sortBy, setSortBy] = useState<string>(
+    searchParams.get('sort') || 'Newest',
+  );
+  const [countItemsOnPage, setCountItemsOnPage] = useState<string>(
+    searchParams.get('limit') || 'all',
+  );
   const [items, setItems] = useState<Product[]>([]);
 
+  const itemsPerPageNumber =
+    countItemsOnPage === 'all' ? items.length : Number(countItemsOnPage);
+  const startIndex = (currentPage - 1) * itemsPerPageNumber;
+  const endIndex =
+    itemsPerPageNumber === items.length
+      ? items.length
+      : startIndex + itemsPerPageNumber;
+  const paginatedItems = items.slice(startIndex, endIndex);
+
   useEffect(() => {
-    let sortedProducts = [...products];
+    const sortedProducts = [...products];
 
     switch (sortBy) {
       case 'Newest':
@@ -44,12 +63,16 @@ export const Catalog: React.FC<CatalogProps> = ({
         break;
     }
 
-    if (countItemsOnPage !== 'all') {
-      sortedProducts = sortedProducts.slice(0, Number(countItemsOnPage));
-    }
-
     setItems(sortedProducts);
   }, [products, sortBy, countItemsOnPage]);
+
+  useEffect(() => {
+    setSearchParams({
+      sort: sortBy,
+      limit: countItemsOnPage,
+      page: String(currentPage),
+    });
+  }, [sortBy, countItemsOnPage, currentPage, setSearchParams]);
 
   return (
     <div className={styles.Catalog}>
@@ -77,7 +100,10 @@ export const Catalog: React.FC<CatalogProps> = ({
             <div className={styles.filters__sortBy}>
               <CustomSelect
                 value={sortBy}
-                onChange={setSortBy}
+                onChange={value => {
+                  setSortBy(value);
+                  setCurrentPage(1);
+                }}
                 options={[
                   { value: 'Newest', label: 'Newest' },
                   { value: 'Cheapest', label: 'Cheapest' },
@@ -93,7 +119,10 @@ export const Catalog: React.FC<CatalogProps> = ({
             <div className={styles.filters__counterItems}>
               <CustomSelect
                 value={countItemsOnPage}
-                onChange={setCountItemsOnPage}
+                onChange={value => {
+                  setCountItemsOnPage(value);
+                  setCurrentPage(1);
+                }}
                 options={[
                   { value: 'all', label: 'All' },
                   { value: '4', label: '4' },
@@ -107,11 +136,19 @@ export const Catalog: React.FC<CatalogProps> = ({
       )}
 
       <div className={styles.Catalog__items}>
-        {items.map(product => (
+        {paginatedItems.map(product => (
           <div className={styles.items__item} key={product.id}>
             <ProdactCard card={product} />
           </div>
         ))}
+        {sorting && (
+          <Pagination
+            itemsPerPage={itemsPerPageNumber}
+            totalItems={items.length}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        )}
       </div>
     </div>
   );

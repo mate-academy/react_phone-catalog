@@ -9,7 +9,7 @@ import { BtnAddToFavorite } from '../../../../components/ui/BtnAddToFavorite';
 import styles from './ProductConfig.module.scss';
 
 type ProductConfigProps = {
-  product: ProductsInfo;
+  product: ProductsInfo | null;
   selectCapacity: string;
   setSelectCapacity: (capacity: string) => void;
 };

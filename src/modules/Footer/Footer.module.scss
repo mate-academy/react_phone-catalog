@@ -3,18 +3,39 @@
 .footer {
   width: 100%;
   background-color: #0f1121;
-  padding: 32px 152px;
+  box-shadow: 0 0 0 1px rgba(50, 53, 66, 1);
+  margin-top: 80px;
+  padding: 32px 0;
 
   @media (max-width: 800px) {
     padding: 32px 16px;
   }
+
+  @media (max-width: 639px) {
+    margin-top: 64px;
+  }
 }
 
 .footer__content {
-  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    margin: 0;
+    padding: 0 32px;
+  }
+
+  @media (max-width: 960px) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 0 16px;
+  }
 
   @media (max-width: 560px) {
     flex-direction: column;

@@ -3,7 +3,7 @@ import { ProductsInfo } from '../../../../shared/types/ProductsInfo';
 import styles from './ProductDescription.module.scss';
 
 type ProductDescriptionProps = {
-  product: ProductsInfo;
+  product: ProductsInfo | null;
 };
 
 export const ProductDescription: React.FC<ProductDescriptionProps> = ({

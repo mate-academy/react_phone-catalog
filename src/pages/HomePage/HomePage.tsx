@@ -3,8 +3,16 @@ import { BannerSlider } from './components/BannerSlider';
 import { ShopByCategory } from './components/ShopByCategory';
 import { HotPrices } from './components/HotPrices';
 import styles from './HomePage.module.scss';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const HomePage = () => {
+  const [, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    setSearchParams({});
+  }, [setSearchParams]);
+
   return (
     <div className={styles.home__page}>
       <h2 className={styles.home__page_title}>
