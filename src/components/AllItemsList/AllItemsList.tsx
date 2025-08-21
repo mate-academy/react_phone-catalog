@@ -149,6 +149,7 @@ export const AllItemsList: React.FC<Props> = ({
         perPage={perPage}
         onSortChange={setSort}
         onPerPageChange={setPerPage}
+        onPageChange={setPage}
       />
 
       <div className={styles.catalog__list}>

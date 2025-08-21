@@ -14,6 +14,7 @@ type Props = {
   perPage: string;
   onSortChange: (value: SortOptions) => void;
   onPerPageChange: (value: string) => void;
+  onPageChange: (page: number) => void;
 };
 
 export const Filters: React.FC<Props> = ({
@@ -21,12 +22,16 @@ export const Filters: React.FC<Props> = ({
   perPage,
   onSortChange,
   onPerPageChange,
+  onPageChange,
 }) => {
   return (
     <div className={styles.catalog__filters}>
       <SelectBox
         value={sort}
-        onChange={value => onSortChange(value as SortOptions)}
+        onChange={value => {
+          onSortChange(value as SortOptions);
+          onPageChange(1);
+        }}
         options={[
           { label: 'Newest', value: SortOptions.Newest },
           { label: 'Alphabetically', value: SortOptions.Alphabetically },
@@ -38,7 +43,10 @@ export const Filters: React.FC<Props> = ({
       <SelectBox
         title="Items on page"
         value={perPage}
-        onChange={onPerPageChange}
+        onChange={value => {
+          onPerPageChange(value);
+          onPageChange(1);
+        }}
         options={[
           { label: '4', value: '4' },
           { label: '8', value: '8' },
