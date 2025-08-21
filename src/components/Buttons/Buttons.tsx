@@ -32,7 +32,7 @@ export const Buttons: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.productButton}>
       <button
-        className={styles.productButtonAdd}
+        className={`${styles.productButtonAdd} ${isInCart ? styles.inCart : ''}`}
         onClick={e => {
           e.stopPropagation();
           if (product) {
