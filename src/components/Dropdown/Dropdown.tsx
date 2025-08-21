@@ -58,6 +58,7 @@ export const Dropdown: React.FC<Props> = ({ name, className }) => {
       params.set(name, item);
     }
 
+    params.delete('page');
     setSearchParams(params);
     setOpenDropdown(false);
   };
