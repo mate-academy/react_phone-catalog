@@ -1,0 +1,16 @@
+export const colorMap: { [key: string]: string } = {
+  black: '#000000',
+  green: '#008000',
+  yellow: '#ffff00',
+  white: '#ffffff',
+  purple: '#800080',
+  red: '#ff0000',
+  'space gray': '#5a5a5a',
+  spacegray: '#5a5a5a',
+  silver: '#c0c0c0',
+  gold: '#ffc125',
+  starlight: '#f8f4e9',
+  pink: '#e0b0d5',
+  'space black': '#0f1121',
+  midnight: '#26292b',
+};

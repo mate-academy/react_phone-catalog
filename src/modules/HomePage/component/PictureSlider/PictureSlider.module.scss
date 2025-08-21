@@ -58,13 +58,15 @@
 
 .left {
   &::before {
-    background-image: url('../../assets/icons/arrow-left.svg');
+    background-image: url('../../../../assets/icons/arrow-left.svg');
+    color: var(--main-text);
   }
 }
 
 .right {
   &::before {
-    background-image: url('../../assets/icons/arrow-right.svg');
+    background-image: url('../../../../assets/icons/arrow-right.svg');
+    color: var(--main-text); 
   }
 }
 

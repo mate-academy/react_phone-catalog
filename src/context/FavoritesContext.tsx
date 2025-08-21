@@ -13,6 +13,9 @@ const FavoritesContext = createContext<FavoritesContextType>({
   isFavorite: () => false,
 });
 
+const getProductKey = (product: Product) =>
+  product.itemId || String(product.id);
+
 export const FavoritesProvider = ({
   children,
 }: {
@@ -37,17 +40,19 @@ export const FavoritesProvider = ({
   }, [favorites]);
 
   const toggleFavorite = (product: Product) => {
+    const key = getProductKey(product);
+
     setFavorites(prev => {
-      const exists = prev.some(item => item.id === product.id);
+      const exists = prev.some(item => getProductKey(item) === key);
 
       return exists
-        ? prev.filter(item => item.id !== product.id)
+        ? prev.filter(item => getProductKey(item) !== key)
         : [...prev, product];
     });
   };
 
   const isFavorite = (productId: string) =>
-    favorites.some(product => product.id === productId);
+    favorites.some(product => getProductKey(product) === productId);
 
   return (
     <FavoritesContext.Provider

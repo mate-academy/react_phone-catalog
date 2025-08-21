@@ -9,7 +9,6 @@ export const App = () => {
 
   return (
     <div className={`App theme-${theme}`}>
-      <h1>Product Catalog</h1>
       <Header />
       <Body />
       <Footer />

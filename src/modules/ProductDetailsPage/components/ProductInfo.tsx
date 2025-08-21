@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Product } from '../../../types/Product';
 import { useCart } from '../../../context/CartContext';
 import styles from './ProductInfo.module.scss';
+import { colorMap } from '../../../styles/colorMap';
 
 type Props = {
   product: Product;
@@ -86,7 +87,7 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
                 onClick={() => handleColorChange(color)}
                 type="button"
               >
-                <span style={{ backgroundColor: color }} />
+                <span style={{ backgroundColor: colorMap[color] || color }} />
               </button>
             ))}
           </div>

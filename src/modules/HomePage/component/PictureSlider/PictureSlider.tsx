@@ -23,7 +23,7 @@ export const PictureSlider: React.FC = () => {
       setCurrentIndex(prevIndex =>
         prevIndex === slides.length - 1 ? 0 : prevIndex + 1,
       );
-    }, 5000);
+    }, 7000);
 
     return () => resetTimeout();
   }, [currentIndex]);

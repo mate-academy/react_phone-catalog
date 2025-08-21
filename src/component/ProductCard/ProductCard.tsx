@@ -29,10 +29,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const oldPrice = priceRegular ?? fullPrice;
 
   const { toggleFavorite, isFavorite } = useFavorites();
-  const { addToCart } = useCart();
+  const { addToCart, isInCart } = useCart();
 
   const uniqueProductId = itemId || id;
   const productLink = `/product/${uniqueProductId}`;
+  const inCart = isInCart(String(uniqueProductId));
 
   return (
     <div className={styles.card}>
@@ -55,12 +56,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={styles.actions}>
         <button
-          className={styles.addToCart}
+          className={classNames(styles.addToCart, {
+            [styles.inCart]: inCart,
+          })}
           onClick={() => addToCart(product)}
           type="button"
         >
           <ShoppingCart size={16} />
-          Add to cart
+          {inCart ? 'In cart' : 'Add to cart'}
         </button>
 
         <button

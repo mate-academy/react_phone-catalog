@@ -1,7 +1,6 @@
 import React from 'react';
-import { ProductPageLayout } from '../../styles/ProductPageLayout';
-import { ProductsList } from '../../component/ProductList/ProductList';
 import { useProducts } from '../../hooks/useProducts';
+import { ProductPageLayout } from '../../styles/ProductPageLayout';
 
 export const TabletsPage: React.FC = () => {
   const { products, loading, error } = useProducts('tablets');
@@ -14,9 +13,5 @@ export const TabletsPage: React.FC = () => {
     return <p>Error: {error}</p>;
   }
 
-  return (
-    <ProductPageLayout title="Tablets">
-      <ProductsList products={products} />
-    </ProductPageLayout>
-  );
+  return <ProductPageLayout title="Tablets" products={products} />;
 };

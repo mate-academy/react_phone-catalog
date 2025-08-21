@@ -3,7 +3,6 @@
 
 
 .body {
-  min-height: calc(100vh - variables.$header-height - 80px); // 80px — висота футера
-  padding: 24px 0;
+  min-height: calc(100vh - variables.$header-height - 80px);
   background-color: var(--main-bg);
 }

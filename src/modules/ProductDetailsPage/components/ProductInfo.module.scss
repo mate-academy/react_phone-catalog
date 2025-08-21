@@ -89,13 +89,13 @@
   cursor: pointer;
   padding: 6px 12px;
   border: 1px solid var(--elements);
-  background-color: white;
+  background-color: variables.$color-elements;
 
   @include mixins.text(variables.$fs-small, variables.$fw-medium, var(--main-bg));
 
   &.selected {
     border-color: var(--main-text);
-    color: white;
+    color: variables.$color-white;
     background-color: var(--main-text);
   }
 }
