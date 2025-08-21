@@ -49,7 +49,7 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <h1 className={styles['visually-hidden']}>Product Catalog</h1>
-      <h1 className={styles.title__h1}>Welcome to Nice Gadgets store!</h1>
+      <p className={styles.title__h1}>Welcome to Nice Gadgets store!</p>
 
       <Banner />
 
