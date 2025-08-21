@@ -1,15 +1,10 @@
 .footer {
-  margin: 64px 0 0 0;
   max-width: 100%;
   justify-content: center;
   border-top: 1px solid var(--color-elements);
   background-color: var(--footer-bg-color);
 
   @include page-grid;
-
-  @include on-tablet {
-    margin-top: 80px;
-  }
 }
 
 .footerContent {

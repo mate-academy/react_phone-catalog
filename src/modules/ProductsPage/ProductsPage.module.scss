@@ -5,7 +5,6 @@
 .head {
   display: flex;
   flex-direction: column;
-  margin-block: 24px;
   grid-column: 1 / -1;
 }
 
@@ -35,6 +34,7 @@
 .sorters {
   display: flex;
   gap: 16px;
+  margin-bottom: 24px;
 }
 
 .sorter {
@@ -133,18 +133,19 @@
   align-items: center;
   justify-content: center;
   width: 32px;
-  border: 1px solid var(--color-icons);
+  border: 1px solid var(--pagination-item-default-border);
   color: var(--color-primary);
-  background-color: var(--color-white);
+  background-color: var(--pagination-item-default-bg);
   cursor: pointer;
 
   &Active {
-    border-color: var(--color-primary);
-    background-color: var(--color-primary);
+    border-color: var(--pagination-item-active-border);
+    background-color: var(--pagination-item-active-bg);
     color: var(--color-white);
   }
 
-  &:hover {
-    border-color: var(--color-primary);
+  &:hover:not(&Active) {
+    border-color: var(--pagination-item-hover-border);
+    background-color: var(--pagination-item-hover-bg);
   }
 }

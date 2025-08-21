@@ -6,16 +6,19 @@ body {
   height: 100%;
   background-color: var(--header-bg-color);
   margin: 0;
-  padding-top: 48px;
-
-  @include on-desktop {
-    padding-top: 64px;
-  }
+  padding: 0;
 }
 
 main {
   color: var(--color-primary);
   max-width: 1200px;
+  padding-top: 72px;
+  padding-bottom: 56px;
+
+  @include on-desktop {
+    padding-top: 88px;
+    padding-bottom: 80px;
+  }
 }
 
 a {

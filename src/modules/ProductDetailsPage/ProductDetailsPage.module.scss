@@ -197,9 +197,13 @@
     background-color: inherit;
 
     &Active {
-      background-color: var(--color-primary);
+      background-color: var(--capacity-item-active-bg);
       border-color: var(--color-primary);
-      color: var(--color-white);
+      color: var(--capacity-item-active-color);
+    }
+
+    &:hover:not(&Active) {
+      background-color: var(--capacity-item-hover-bg);
     }
   }
 }

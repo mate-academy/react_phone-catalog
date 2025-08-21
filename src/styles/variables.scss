@@ -14,9 +14,6 @@ $content-padding-desktop: 40px;
   --color-green: #27ae60;
   --color-red: #eb5757;
 
-  --text-color-light: var(--color-secondary);
-  --text-color-dark: var(--color-primary);
-
   --header-bg-color: var(--color-white);
 
   --card-bg-color: var(--color-white);
@@ -61,6 +58,17 @@ $content-padding-desktop: 40px;
 
   --skeleton-bg-color: var(--color-elements);
   --skeleton-line-color: var(--color-hover-bg);
+
+  --pagination-item-default-bg: var(--color-white);
+  --pagination-item-default-border: var(--color-elements);
+  --pagination-item-hover-border: var(--color-primary);
+  --pagination-item-hover-bg: var(--color-white);
+  --pagination-item-active-bg: var(--color-primary);
+  --pagination-item-active-border: var(--color-primary);
+
+  --capacity-item-hover-bg: var(--color-elements);
+  --capacity-item-active-color: var(--color-white);
+  --capacity-item-active-bg: var(--color-primary);
 }
 
 .dark-theme {
@@ -119,4 +127,15 @@ $content-padding-desktop: 40px;
 
   --skeleton-bg-color: var(--color-surface2);
   --skeleton-line-color: var(--color-elements);
+
+  --pagination-item-default-bg: var(--color-black);
+  --pagination-item-default-border: var(--color-black);
+  --pagination-item-hover-border: var(--color-elements);
+  --pagination-item-hover-bg: var(--color-elements);
+  --pagination-item-active-bg: var(--color-accent);
+  --pagination-item-active-border: var(--color-accent);
+
+  --capacity-item-hover-bg: var(--color-elements);
+  --capacity-item-active-color: var(--color-black);
+  --capacity-item-active-bg: var(--color-white);
 }

@@ -5,7 +5,7 @@ export const CardSkeleton: React.FC = () => {
   const { refCardWidth } = useAppDispatch();
   return (
     <div
-      ref={refCardWidth as React.Ref<HTMLDivElement>}
+      ref={refCardWidth as unknown as React.LegacyRef<HTMLDivElement>}
       className={`${styles.card} ${styles.isLoading}`}
     >
       <div className={styles.wrapper}>

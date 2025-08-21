@@ -12,18 +12,22 @@
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   grid-column: 1 / -1;
-}
-
-.title {
-  margin-block: 24px;
 
   @include on-tablet {
-    margin-block: 32px;
+    padding-top: 8px;
+    gap: 32px;
   }
 
   @include on-desktop {
-    margin-block: 56px;
+    padding-top: 32px;
+    gap: 56px;
   }
 }
 
+.title {
+  margin: 0;
+}

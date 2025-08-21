@@ -3,6 +3,7 @@ import styles from './CartPage.module.scss';
 import { useAppState } from '../../contexts/AppContext';
 import { CartProduct } from './CartProduct';
 import { ModalWindow } from './ModalWindow';
+import { Back } from '../../components/Back';
 
 export const CartPage: React.FC = () => {
   const { cartProductsIds, products, isLoading } = useAppState();
@@ -64,9 +65,10 @@ export const CartPage: React.FC = () => {
     >
       {cartProductsIds.length > 0 && (
         <>
-          <h1 className={styles.title}>Cart</h1>
+          <Back />
 
           <div className={styles.content}>
+          <h1 className={styles.title}>Cart</h1>
             <div className={styles.products}>
               {cartProductsIds.map(id => (
                 <CartProduct

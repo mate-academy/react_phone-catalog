@@ -44,8 +44,8 @@ type AppDispatchType = {
   toggleFavouriteCard: (cardId: string) => void;
   toggleAddToCart: (cardId: string) => void;
   handleThemeChange: (newTheme: 'light' | 'dark') => void;
-  refCardWidth: React.RefObject<HTMLDivElement>;
-  refSliderWidth: React.RefObject<HTMLDivElement>;
+  refCardWidth: React.RefObject<HTMLAnchorElement>;
+  refSliderWidth: React.MutableRefObject<HTMLDivElement | null>;
 };
 
 export const AppStateContext = createContext<AppStateType | null>(null);
@@ -64,8 +64,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const [language, setLanguage] = useState<'uk' | 'en'>('en');
   const [theme, setTheme] = useState<'light' | 'dark'>(getTheme);
   const [searchParams, setSearchParams] = useSearchParams();
-  
-  const refCardWidth = useRef<HTMLDivElement>(null);
+
+  const refCardWidth = useRef<HTMLAnchorElement>(null);
   const refSliderWidth = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     saveCartProducts(cartProductsIds);
   }, [cartProductsIds]);
-  
+
   const dispatchValue = useMemo(() => ({
     setIsMenuOpen,
     setFavouriteProductsIds,

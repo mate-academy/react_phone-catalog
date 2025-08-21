@@ -34,7 +34,7 @@ export const Card: React.FC<Props> = ({ card }) => {
   return card !== undefined ? (
     <Link
       to={`/${card.category}/${card.itemId}`}
-      ref={refCardWidth as React.Ref<HTMLAnchorElement>}
+      ref={refCardWidth}
       className={styles.card}
     >
       <div className={styles.wrapper}>
