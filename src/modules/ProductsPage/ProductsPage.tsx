@@ -35,7 +35,6 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
   const { setSearchParams } = useAppDispatch();
 
-
   function getPerPageFromParams() {
     const value = searchParams.get('perPage');
     if (value === null) return 'All';
@@ -65,21 +64,21 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   const perPageValue = getPerPageFromParams();
 
   const sorter = useCallback((a: Card, b: Card) => {
-  switch (sortType) {
-    case 'age':
-      if (a.year === b.year) {
-        return b.name.localeCompare(a.name);
-      } else {
-        return b.year - a.year;
-      }
-    case 'title':
-      return a.name.localeCompare(b.name);
-    case 'price':
-      return a.price - b.price;
-    default:
-      return 0;
-  }
-}, [sortType]);
+    switch (sortType) {
+      case 'age':
+        if (a.year === b.year) {
+          return b.name.localeCompare(a.name);
+        } else {
+          return b.year - a.year;
+        }
+      case 'title':
+        return a.name.localeCompare(b.name);
+      case 'price':
+        return a.price - b.price;
+      default:
+        return 0;
+    }
+  }, [sortType]);
 
   function changeSearchParams(key: any, value?: any) {
     const newSearchParams = new URLSearchParams(searchParams);
@@ -136,31 +135,38 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   }
 
   function handlePerPageChange(value: ItemsPerPage) {
-    if (value === 'All') {
-      changeSearchParams('perPage');
-      setIsPerPageDropdownOpen(false);
-      return;
-    }
-
-    changeSearchParams('perPage', value);
+    setSearchParams(prev => {
+      const p = new URLSearchParams(prev);
+      if (value === 'All') {
+        p.delete('perPage');
+      } else {
+        p.set('perPage', String(value));
+      }
+      p.delete('page');
+      return p;
+    });
     setIsPerPageDropdownOpen(false);
   }
 
   function handleSortTypeChange(value: string) {
-    switch (value) {
-      case 'Newest':
-        changeSearchParams('sort');
-        break;
-      case 'Alphabetically':
-        changeSearchParams('sort', 'title');
-        break;
-      case 'Chepest':
-        changeSearchParams('sort', 'price');
-        break;
-      default:
-        break;
-    }
-
+    setSearchParams(prev => {
+      const p = new URLSearchParams(prev);
+      switch (value) {
+        case 'Newest':
+          p.delete('sort');
+          break;
+        case 'Alphabetically':
+          p.set('sort', 'title');
+          break;
+        case 'Chepest':
+          p.set('sort', 'price');
+          break;
+        default:
+          break;
+      }
+      p.delete('page');
+      return p;
+    });
     setIsSortTypeDropdownOpen(false);
   }
 
@@ -196,19 +202,20 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     if (!isLoading) {
       const filteredProducts = products
         .filter(product => product.category === type);
-      
+
       const sortedProducts = [...filteredProducts].sort(sorter);
-  
+
       setCurrentProducts(sortedProducts);
     }
   }, [products, type, sortType, isLoading, sorter]);
-  
+
   useEffect(() => {
-    if (typeof perPageValue === 'number') {
-      createPagination(perPageValue);
+    if (typeof perPageValue === 'number' && currentProducts.length > 0) {
+      const initialPageBlockStart = Math.floor((currentPage - 1) / 5) * 5 + 1;
+      createPagination(perPageValue, initialPageBlockStart);
     }
   }, [currentProducts, perPageValue]);
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [type]);
