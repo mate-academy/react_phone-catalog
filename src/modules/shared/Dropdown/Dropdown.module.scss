@@ -1,4 +1,4 @@
-@import '/src/styles/main.scss';
+@import '/src/styles/main';
 
 .dropdown {
   position: relative;
@@ -54,7 +54,7 @@
   overflow-y: auto;
   padding-block: 8px;
   border: 1px solid var(--elements-color);
-  box-shadow: 0px 2px 15px 0px #0000000d;
+  box-shadow: 0 2px 15px 0 #0000000d;
   background: var(--bg-color);
   transition: all $transition-duration;
   opacity: 0;

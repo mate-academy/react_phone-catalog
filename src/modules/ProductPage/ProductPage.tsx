@@ -21,9 +21,11 @@ import { ProductPageSkeleton } from './ProductPageSkeleton';
 import { useTranslation } from 'react-i18next';
 import { getSearch } from '../../utils/getSearchWith';
 import debounce from 'lodash.debounce';
+import cn from 'classnames';
 
 export const ProductPage: FC = () => {
-  const { products, isLoading, errorMessage, fetchProducts } = useGlobalState();
+  const { products, isLoading, errorMessage, fetchProducts, theme } =
+    useGlobalState();
   const { t } = useTranslation();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -157,7 +159,11 @@ export const ProductPage: FC = () => {
             </div>
 
             <div className={styles.searchWrapper}>
-              <span className={styles.searchIcon}></span>
+              <span
+                className={cn(styles.searchIcon, {
+                  [styles.searchIconLight]: theme === 'light',
+                })}
+              ></span>
 
               <input
                 type="text"

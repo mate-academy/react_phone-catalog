@@ -1,4 +1,4 @@
-@import '/src/styles/main.scss';
+@import '/src/styles/main';
 
 .wrapper {
   display: flex;
@@ -23,20 +23,6 @@
   }
 }
 
-.iconLinkDisabled {
-  border-color: var(--elements-color);
-  background: var(--bg-color);
-  cursor: not-allowed;
-
-  @include onHover {
-    background: var(--bg-color);
-  }
-}
-
-.iconLinkDisabled .iconPrev {
-  background-image: url('/src/img/icons/arrow-left-disabled.svg');
-}
-
 .icon {
   display: block;
   width: 16px;
@@ -50,6 +36,20 @@
 
 .iconNext {
   background-image: url('/src/img/icons/arrow-right.svg');
+}
+
+.iconLinkDisabled {
+  border-color: var(--elements-color);
+  background: var(--bg-color);
+  cursor: not-allowed;
+
+  @include onHover {
+    background: var(--bg-color);
+  }
+}
+
+.iconLinkDisabled .iconPrev {
+  background-image: url('/src/img/icons/arrow-left-disabled.svg');
 }
 
 .pagesNums {

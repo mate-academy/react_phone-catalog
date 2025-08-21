@@ -1,4 +1,4 @@
-@import '/src/styles/main.scss';
+@import '/src/styles/main';
 
 .container {
   padding-block: 24px 64px;
@@ -88,7 +88,7 @@
 
 .searchInput {
   flex: 1;
-  padding: 8px 28px 8px 28px;
+  padding: 8px 28px;
   color: var(--text-color);
 
   &::placeholder {
@@ -120,6 +120,10 @@
   background: url(/src/img/icons/search.svg) center/contain no-repeat;
   pointer-events: none;
   opacity: 0.7;
+}
+
+.searchIconLight {
+  background-image: url(/src/img/icons/search-light-mode.svg);
 }
 
 .errorWrapper {

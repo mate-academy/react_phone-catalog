@@ -1,4 +1,4 @@
-@import '/src/styles/main.scss';
+@import '/src/styles/main';
 
 .productCard {
   display: flex;
@@ -12,7 +12,7 @@
 
   @include onHover {
     border-color: var(--surface2-color);
-    box-shadow: 0px 2px 16px 0px #0000001a;
+    box-shadow: 0 2px 16px 0 #0000001a;
   }
 }
 
@@ -31,6 +31,7 @@
 
   @include onHover {
     @include photoOnHover;
+
     padding: 0;
   }
 
@@ -160,13 +161,13 @@
 .title.skeleton {
   height: 24px;
   width: 80%;
-  margin: 16px auto 0 auto;
+  margin: 16px auto 0;
 }
 
 .priceWrapper.skeleton {
   height: 28px;
   width: 60%;
-  margin: 0 auto 8px auto;
+  margin: 0 auto 8px;
 }
 
 .specsItem.skeleton {

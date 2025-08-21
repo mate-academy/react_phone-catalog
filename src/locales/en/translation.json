@@ -29,7 +29,7 @@
     "capacity": "Capacity",
     "ram": "RAM"
   },
-  "productAdd": "Add to card",
+  "productAdd": "Add to cart",
   "productAdded": "Added",
   "dropdownLabel": {
     "sort": "Sort by",
@@ -41,6 +41,6 @@
   },
   "backBtn": "Back to top",
   "favouritesTitle": "Favourites",
-  "cardTitle": "Card",
+  "cardTitle": "Cart",
   "checkoutBtn": "Checkout"
 }

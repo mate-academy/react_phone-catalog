@@ -36,13 +36,21 @@ export const Footer: FC = () => {
           </li>
 
           <li className={styles.navItem}>
-            <Link to="/contacts" className={styles.navLink}>
+            <Link
+              to="https://github.com/VvynnykV"
+              target="_blank"
+              className={styles.navLink}
+            >
               {t('footerNav.contacts')}
             </Link>
           </li>
 
           <li className={styles.navItem}>
-            <Link to="/rights" className={styles.navLink}>
+            <Link
+              to="https://github.com/VvynnykV"
+              target="_blank"
+              className={styles.navLink}
+            >
               {t('footerNav.rights')}
             </Link>
           </li>
@@ -54,7 +62,7 @@ export const Footer: FC = () => {
 
         <div className={styles.btnIcon}>
           <img
-            src="/img/icons/arrow_up.svg"
+            src="./img/icons/arrow_up.svg"
             alt="button img"
             className={styles.btnImg}
           />

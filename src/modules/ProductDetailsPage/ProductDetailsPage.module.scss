@@ -1,4 +1,4 @@
-@import '/src/styles/main.scss';
+@import '/src/styles/main';
 
 .pageBody {
   position: relative;
@@ -120,9 +120,13 @@
   height: 32px;
   border: 1px solid var(--elements-color);
   border-radius: 50%;
+
+  @include onHover {
+    border-color: var(--text-color);
+  }
 }
 
-.optionsColorLink {
+.optionsColorLinkActive {
   border-color: var(--text-color);
 }
 
@@ -222,6 +226,7 @@
 
 .specsItem {
   @extend .small-text;
+  
   display: flex;
   justify-content: space-between;
 }
