@@ -26,9 +26,7 @@ export const ColorPicker: React.FC<Props> = ({
     activeColor ? colorMap[activeColor] || activeColor : null,
   );
 
-  const colorsArray = (typeof colors === 'string' ? [colors] : colors).map(
-    c => colorMap[c] || c,
-  );
+  const colorsArray = typeof colors === 'string' ? [colors] : colors;
 
   useEffect(() => {
     if (activeColor) {
@@ -38,27 +36,28 @@ export const ColorPicker: React.FC<Props> = ({
 
   return (
     <div className={styles['color-picker']}>
-      {colorsArray.map(color => (
-        <div
-          key={color}
-          className={`${styles['color-picker__circle-wrapper']} ${
-            selectedColor === color
-              ? styles['color-picker__circle-wrapper--selected']
-              : ''
-          }`}
-          onClick={() => {
-            setSelectedColor(color);
-            if (onColorChange) {
-              onColorChange(color);
-            }
-          }}
-        >
+      {colorsArray.map(colorName => {
+        const hex = colorMap[colorName] || colorName; // hex для фону
+        return (
           <div
-            className={styles['color-picker__circle']}
-            style={{ backgroundColor: color }}
-          />
-        </div>
-      ))}
+            key={colorName}
+            className={`${styles['color-picker__circle-wrapper']} ${
+              selectedColor === colorName
+                ? styles['color-picker__circle-wrapper--selected']
+                : ''
+            }`}
+            onClick={() => {
+              setSelectedColor(colorName); 
+              onColorChange?.(colorName); 
+            }}
+          >
+            <div
+              className={styles['color-picker__circle']}
+              style={{ backgroundColor: hex }} 
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };
