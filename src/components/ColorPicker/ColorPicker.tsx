@@ -6,16 +6,28 @@ type Props = {
   colors: string[] | string;
 };
 
+const colorMap: Record<string, string> = {
+  red: '#B85C5C',
+  black: '#4C4C4C',
+  green: '#5F7170',
+  blue: '#5FBFC0',
+  white: '#F0F0F0',
+  yellow: '#FCDBC1',
+  purple: '#7A6FA1',
+};
+
 export const ColorPicker: React.FC<Props> = ({ activeColor, colors }) => {
   const [selectedColor, setSelectedColor] = useState<string | null>(
     activeColor || null,
   );
 
-  const colorsArray = typeof colors === 'string' ? [colors] : colors;
+  const colorsArray = (typeof colors === 'string' ? [colors] : colors).map(
+    c => colorMap[c] || c,
+  );
 
   useEffect(() => {
     if (activeColor) {
-      setSelectedColor(activeColor);
+      setSelectedColor(colorMap[activeColor] || activeColor);
     }
   }, [activeColor]);
 
