@@ -63,12 +63,12 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
         <h2>{title}</h2>
         <div className={styles.arrow}>
           <ButtonScroll
-            buttonText="/img/icons/arrow-left.svg"
+            buttonText="img/icons/arrow-left.svg"
             clickFunc={scrollContainerLeft}
             disabled={isLeftDisabled}
           />
           <ButtonScroll
-            buttonText="/img/icons/arrow-right.svg"
+            buttonText="img/icons/arrow-right.svg"
             clickFunc={scrollContainerRight}
             disabled={isRightDisabled}
           />

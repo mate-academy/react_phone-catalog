@@ -34,7 +34,7 @@ export const App = () => {
                     title="Mobile phones"
                     allItems={allItems}
                     setAllItems={setAllItems}
-                    path="/api/phones.json"
+                    path="api/phones.json"
                   />
                 }
               />
@@ -45,7 +45,7 @@ export const App = () => {
                     title="Tablets"
                     allItems={allItems}
                     setAllItems={setAllItems}
-                    path="/api/tablets.json"
+                    path="api/tablets.json"
                   />
                 }
               />
@@ -56,7 +56,7 @@ export const App = () => {
                     title="Accessories"
                     allItems={allItems}
                     setAllItems={setAllItems}
-                    path="/api/accessories.json"
+                    path="api/accessories.json"
                   />
                 }
               />

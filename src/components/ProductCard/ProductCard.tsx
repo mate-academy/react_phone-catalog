@@ -10,7 +10,6 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const getImageSrc = (src: string) => (src.startsWith('/') ? src : '/' + src);
   const navigate = useNavigate();
 
   return (
@@ -21,7 +20,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles.product__characteristics}>
         <img
           className={styles.product__image}
-          src={getImageSrc(product.images[0])}
+          src={product.images[0]}
           alt={product.name}
         />
 

@@ -11,19 +11,19 @@ export const CategoriesList: React.FC = () => {
     {
       name: 'Mobile phones',
       data: phones,
-      image: '/img/category-phones.webp',
+      image: 'img/category-phones.webp',
       path: '/phones',
     },
     {
       name: 'Tablets',
       data: tablets,
-      image: '/img/category-tablets.webp',
+      image: 'img/category-tablets.webp',
       path: '/tablets',
     },
     {
       name: 'Accessories',
       data: accessories,
-      image: '/img/category-accessories.webp',
+      image: 'img/category-accessories.webp',
       path: '/accessories',
     },
   ];

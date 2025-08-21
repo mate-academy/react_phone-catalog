@@ -57,8 +57,8 @@ export const Buttons: React.FC<Props> = ({ product }) => {
         <img
           src={
             isFavorite
-              ? '/img/icons/icon-favourites-filled.svg'
-              : '/img/icons/icon-favourites.svg'
+              ? 'img/icons/icon-favourites-filled.svg'
+              : 'img/icons/icon-favourites.svg'
           }
           alt="favourites icon"
           className={styles.productButtonIcon}

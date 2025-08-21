@@ -16,19 +16,13 @@ import { ButtonBack } from '../../components/ButtonBack';
 export const ProductDetailsPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
-  const getImageSrc = (src: string) => (src.startsWith('/') ? src : '/' + src);
-
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<Product | null>(null);
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
-  const files = [
-    '/api/phones.json',
-    '/api/tablets.json',
-    '/api/accessories.json',
-  ];
+  const files = ['api/phones.json', 'api/tablets.json', 'api/accessories.json'];
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -104,7 +98,7 @@ export const ProductDetailsPage: React.FC = () => {
                 >
                   <img
                     className={styles.details__image}
-                    src={getImageSrc(image)}
+                    src={image}
                     alt="product image"
                   />
                 </div>
@@ -114,7 +108,7 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={styles['details__main-image-wrapper']}>
                 <img
                   className={styles['details__main-image']}
-                  src={getImageSrc(product.images[selectedImage])}
+                  src={product.images[selectedImage]}
                   alt="product image"
                 />
               </div>

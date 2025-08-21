@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <img
         className={styles.footer__logo}
-        src="/img/logo-img.svg"
+        src="img/logo-img.svg"
         alt="logo image"
       />
 
@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
           onClick={scrollToTop}
         >
           <img
-            src="/img/icons/arrow-up.svg"
+            src="img/icons/arrow-up.svg"
             alt="arrow up"
             className={styles['footer__button--arrow-up']}
           />

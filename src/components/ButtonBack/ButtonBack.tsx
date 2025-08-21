@@ -9,7 +9,7 @@ export const ButtonBack: React.FC = () => {
     <div className={styles.buttonBack}>
       <button className={styles.buttonBackWrapper} onClick={() => navigate(-1)}>
         <img
-          src="/img/icons/arrow-left.svg"
+          src="img/icons/arrow-left.svg"
           alt="back button"
           className={styles.buttonBackIcon}
         />

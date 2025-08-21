@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import styles from './Banner.module.scss';
 
 const images = [
-  '/img/banner-desktop-1.jpg',
-  '/img/banner-desktop-2.jpg',
-  '/img/banner-desktop-3.jpg',
+  'img/banner-desktop-1.jpg',
+  'img/banner-desktop-2.jpg',
+  'img/banner-desktop-3.jpg',
 ];
 
 export const Banner: React.FC = () => {
@@ -28,7 +28,7 @@ export const Banner: React.FC = () => {
       <button className={styles.bannerButton} onClick={prevSlide}>
         <img
           className={styles.bannerArrow}
-          src="/img/icons/arrow-left.svg"
+          src="img/icons/arrow-left.svg"
           alt="arrow left"
         />
       </button>
@@ -50,7 +50,7 @@ export const Banner: React.FC = () => {
       <button className={styles.bannerButton} onClick={nextSlide}>
         <img
           className={styles.bannerArrow}
-          src="/img/icons/arrow-right.svg"
+          src="img/icons/arrow-right.svg"
           alt="arrow right"
         />
       </button>

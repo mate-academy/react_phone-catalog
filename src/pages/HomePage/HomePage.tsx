@@ -12,7 +12,7 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     const getNewModels = async () => {
       try {
-        const res = await fetch('/api/phones.json');
+        const res = await fetch('api/phones.json');
         const json: Product[] = await res.json();
 
         // const latestYear = Math.max(...json.map(p => p.year));
@@ -25,7 +25,7 @@ export const HomePage: React.FC = () => {
 
     const getHotPrices = async () => {
       try {
-        const res = await fetch('/api/phones.json');
+        const res = await fetch('api/phones.json');
         const json: Product[] = await res.json();
 
         const sortedByDiscount = json

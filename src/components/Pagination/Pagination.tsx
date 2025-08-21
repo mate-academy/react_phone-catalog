@@ -55,7 +55,7 @@ export const Pagination: React.FC<Props> = ({
       >
         <img
           className={styles['pagination__arrow-image']}
-          src="/img/icons/arrow-left.svg"
+          src="img/icons/arrow-left.svg"
           alt="arrow left"
         />
       </button>
@@ -79,7 +79,7 @@ export const Pagination: React.FC<Props> = ({
       >
         <img
           className={styles['pagination__arrow-image']}
-          src="/img/icons/arrow-right.svg"
+          src="img/icons/arrow-right.svg"
           alt="arrow right"
         />
       </button>

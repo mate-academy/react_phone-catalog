@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
         <NavLink to="/">
           <img
             className={styles.header__logo}
-            src="/img/logo-img.svg"
+            src="img/logo-img.svg"
             alt="logo image"
           />
         </NavLink>
@@ -73,7 +73,7 @@ export const Header: React.FC = () => {
               }
             >
               <div className={styles['header__icon-wrapper']}>
-                <img src="/img/icons/icon-favourites.svg" alt="favourites" />
+                <img src="img/icons/icon-favourites.svg" alt="favourites" />
                 {favouritesCount > 0 && (
                   <span className={styles.header__badge}>
                     {favouritesCount}
@@ -88,7 +88,7 @@ export const Header: React.FC = () => {
               }
             >
               <div className={styles['header__icon-wrapper']}>
-                <img src="/img/icons/icon-cart.svg" alt="cart" />
+                <img src="img/icons/icon-cart.svg" alt="cart" />
                 {cartCount > 0 && (
                   <span className={styles.header__badge}>{cartCount}</span>
                 )}
@@ -102,9 +102,9 @@ export const Header: React.FC = () => {
           onClick={handleOpenMenu}
         >
           {open ? (
-            <img src="/img/icons/close-menu.svg" alt="close burger menu" />
+            <img src="img/icons/close-menu.svg" alt="close burger menu" />
           ) : (
-            <img src="/img/icons/menu.svg" alt="burger menu" />
+            <img src="img/icons/menu.svg" alt="burger menu" />
           )}
         </button>
       </header>

@@ -12,7 +12,7 @@ export const Breadcrumbs: React.FC = () => {
   return (
     <div className={styles.breadcrumbs}>
       <Link to="/" className={styles.breadcrumbsHome}>
-        <img src="/img/icons/home.svg" alt="home image" />
+        <img src="img/icons/home.svg" alt="home image" />
       </Link>
 
       {segments.map((segment, i) => {
@@ -22,7 +22,7 @@ export const Breadcrumbs: React.FC = () => {
         return (
           <span key={link} className={styles.breadcrumbsItem}>
             <img
-              src="/img/icons/arrow-right.svg"
+              src="img/icons/arrow-right.svg"
               alt="arrow"
               className={styles.breadcrumbsArrow}
             />
