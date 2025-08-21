@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
   const { cart } = useCart();
   const { favorites } = useFavorites();
 
-  const cartCount = cart.length;
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const favouritesCount = favorites.length;
 
   const handleOpenMenu = () => {
