@@ -37,7 +37,7 @@ export const ColorPicker: React.FC<Props> = ({
   return (
     <div className={styles['color-picker']}>
       {colorsArray.map(colorName => {
-        const hex = colorMap[colorName] || colorName; // hex для фону
+        const hex = colorMap[colorName] || colorName;
 
         return (
           <div
