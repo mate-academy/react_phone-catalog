@@ -24,6 +24,7 @@
     max-height: 100%;
     object-fit: cover;
     height: auto;
+    transition: transform 0.3s ease;
   }
 
   &__title {
@@ -38,6 +39,11 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
+  }
+
+  &:hover .selectCategory__image {
+    transform: scale(1.1);
+    transition: transform 0.3s ease; 
   }
 
   @media (min-width: 640px) and (max-width: 1199px) {
