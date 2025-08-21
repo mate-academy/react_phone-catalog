@@ -26,9 +26,19 @@ export const AllItemsList: React.FC<Props> = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [sort, setSort] = useState<SortOptions>(SortOptions.Newest);
-  const [perPage, setPerPage] = useState('4');
-  const [page, setPage] = useState<number>(1);
+  const [sort, setSort] = useState<SortOptions>(() => {
+    const sortParam = searchParams.get('sort');
+    return (sortParam as SortOptions) || SortOptions.Newest;
+  });
+
+  const [perPage, setPerPage] = useState<string>(() => {
+    return searchParams.get('perPage') || '4';
+  });
+
+  const [page, setPage] = useState<number>(() => {
+    const pageParam = searchParams.get('page');
+    return pageParam ? +pageParam : 1;
+  });
 
   const itemsPerPage = perPage === 'all' ? allItems.length : +perPage;
   const totalPages =
@@ -38,10 +48,6 @@ export const AllItemsList: React.FC<Props> = ({
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (!useFilters) {
-      return;
-    }
-
     const params = new URLSearchParams(searchParams);
 
     params.set('sort', sort);
@@ -49,7 +55,7 @@ export const AllItemsList: React.FC<Props> = ({
     params.set('page', page.toString());
 
     setSearchParams(params);
-  }, [sort, perPage, page, searchParams, setSearchParams, useFilters]);
+  }, [sort, perPage, page]);
 
   useEffect(() => {
     if (!path || !setAllItems) {
