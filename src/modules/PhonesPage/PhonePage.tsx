@@ -58,6 +58,7 @@ export const PhonePage = () => {
 
   const handlePerPageChange = (itemsPerPage: number) => {
     searchParams.set('perPage', itemsPerPage.toString());
+    searchParams.set('page', '1');
 
     setPerPage(Number(itemsPerPage));
     setSearchParams(searchParams);
