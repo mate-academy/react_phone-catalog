@@ -1,5 +1,5 @@
 :root {
-  --card-padding: 24px;
+  --card-padding: 32px;
   --card-height: 340px;
   --card-skeleton: linear-gradient(lightgrey var(--card-height), transparent 0);
 
@@ -35,7 +35,7 @@
 }
 
 .card {
-  width: 280px; // Adjust width as needed
+  width: 300px;
   height: var(--card-height);
 
   &:empty::after {

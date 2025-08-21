@@ -110,15 +110,25 @@ export const ProductsPage: React.FC<Props> = ({
       try {
         setLoading(true);
         setError(null);
+
+        const start = Date.now();
         const allProducts = await fetchApi<ProductForCard[]>('/products.json');
         const filteredProducts = allProducts.filter(
           product => product.category === category,
         );
 
         setProducts(filteredProducts);
+
+        const elapsed = Date.now() - start;
+        const minDelay = 300;
+
+        if (elapsed < minDelay) {
+          setTimeout(() => setLoading(false), minDelay - elapsed);
+        } else {
+          setLoading(false);
+        }
       } catch (err) {
         setError('Failed to load products. Please try again later');
-      } finally {
         setLoading(false);
       }
     };
@@ -165,6 +175,15 @@ export const ProductsPage: React.FC<Props> = ({
         <Breadcrumbs breadcrumbs={breadcrumbs} />
 
         <h1 className={styles.productPage__title}>{getTitle(category)}</h1>
+
+        <p className={styles.productPage__subtitle}>Loading...</p>
+
+        <Filter
+          sort={sort}
+          perPage={perPage}
+          onSortChange={handleSortChange}
+          onPerPageChange={handlePerPageChange}
+        />
 
         <ProductList
           products={[]}

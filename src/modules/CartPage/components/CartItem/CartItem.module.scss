@@ -65,7 +65,7 @@
     grid-area: quantity;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 8px;
   }
 
   &__quantityButton {
@@ -74,6 +74,7 @@
     justify-content: center;
     width: 32px;
     height: 32px;
+    flex-shrink: 0;
     background-color: $surface2-color;
     cursor: pointer;
 
@@ -95,6 +96,14 @@
 
   &__quantityControlIconDisabled {
     filter: brightness(0.3);
+  }
+
+  &__quantity {
+    display: inline-block;
+    min-width: 32px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: $semi-bold;
   }
 
   &__price {
