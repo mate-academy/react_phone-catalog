@@ -1,1 +1,7 @@
-// not empty
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding-block: 40px;
+}
