@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
       <div className="footer__container">
         <nav className="footer__nav">
           <Link
-            to="https://github.com/Sofiia13"
+            to="https://github.com/Sofiia13/react_phone-catalog"
             className="footer__link footer__link--home"
           >
             GITHUB
