@@ -11,9 +11,9 @@ export const FavoritesPage: React.FC = () => {
   return (
     <div>
       <Breadcrumbs />
-      <div className={styles['title']}>
-        <h1 className={styles['title__name']}>Favourites</h1>
-        <p className={styles['title__quantity']}>{favorites.length} models</p>
+      <div className={styles.title}>
+        <h1 className={styles.title__name}>Favourites</h1>
+        <p className={styles.title__quantity}>{favorites.length} models</p>
       </div>
 
       <AllItemsList allItems={favorites} useFilters={false} />
