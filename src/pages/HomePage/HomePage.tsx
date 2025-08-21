@@ -15,8 +15,6 @@ export const HomePage: React.FC = () => {
         const res = await fetch('api/phones.json');
         const json: Product[] = await res.json();
 
-        // const latestYear = Math.max(...json.map(p => p.year));
-
         const latestModels = json.slice(0, 20);
 
         setNewModels(latestModels);
@@ -50,6 +48,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
+      <h1 className={styles['visually-hidden']}>Product Catalog</h1>
       <h1 className={styles.title__h1}>Welcome to Nice Gadgets store!</h1>
 
       <Banner />
