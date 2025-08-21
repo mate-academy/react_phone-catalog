@@ -2,7 +2,7 @@ import styles from './Card.module.scss';
 import type { Card as CardItem } from '../../types/Card';
 import { LikeButton } from '../LikeButton/LikeButton';
 import { AddToCart } from '../AddToCart/AddToCart';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppState, useAppDispatch } from '../../contexts/AppContext';
 import { Link } from 'react-router-dom';
 import { getFormattedCapacity } from '../../modules/shared/utils/getFormattedCapacity';
 import { CardSkeleton } from './CardSkeleton';
@@ -12,13 +12,8 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ card }) => {
-  const {
-    toggleFavouriteCard,
-    toggleAddToCart,
-    favouriteProductsIds,
-    cartProductsIds,
-    refCardWidth,
-  } = useAppContext();
+  const { favouriteProductsIds, cartProductsIds } = useAppState();
+  const { toggleFavouriteCard, toggleAddToCart, refCardWidth } = useAppDispatch();
 
   function handleAddToCartClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();

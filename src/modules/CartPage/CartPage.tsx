@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CartPage.module.scss';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppState } from '../../contexts/AppContext';
 import { CartProduct } from './CartProduct';
 import { ModalWindow } from './ModalWindow';
 
 export const CartPage: React.FC = () => {
-  const { cartProductsIds, products, isLoading } = useAppContext();
+  const { cartProductsIds, products, isLoading } = useAppState();
 
   function countTotal() {
     let sum = 0;

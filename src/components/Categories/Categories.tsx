@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppState } from '../../contexts/AppContext';
 
 import styles from './Categories.module.scss';
 
 export const Categories: React.FC = () => {
-  const { products } = useAppContext();
+  const { products } = useAppState();
 
   return (
     <section className={styles.section}>

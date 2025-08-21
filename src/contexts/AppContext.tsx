@@ -1,4 +1,4 @@
-import {
+import React, {
   useState,
   createContext,
   ReactNode,
@@ -6,6 +6,8 @@ import {
   useContext,
   useRef,
   useMemo,
+  Dispatch,
+  SetStateAction,
 } from 'react';
 import {
   getCartProducts,
@@ -19,123 +21,65 @@ import { useSearchParams } from 'react-router-dom';
 import { Card } from '../types/Card';
 import { getProducts } from '../modules/shared/services/productService';
 
-type AppContextType = {
+type AppStateType = {
   favouriteProductsIds: string[];
   cartProductsIds: string[];
   isMenuOpen: boolean;
   products: Card[];
-  setProducts: (products: Card[]) => void;
-  setIsMenuOpen: (isOpen: boolean) => void;
-  setFavouriteProductsIds: (ids: string[]) => void;
-  setCartProductsIds: (ids: string[]) => void;
-  toggleFavouriteCard: (cardId: string) => void;
-  toggleAddToCart: (cardId: string) => void;
-  refCardWidth: React.MutableRefObject<HTMLDivElement | null>;
-  refSliderWidth: React.MutableRefObject<HTMLDivElement | null>;
   searchParams: URLSearchParams;
-  setSearchParams: (params: URLSearchParams) => void;
   isLoading: boolean;
-  setIsLoading: (isLoading: boolean) => void;
   theme: 'light' | 'dark';
   language: 'uk' | 'en';
-  setTheme: (theme: 'light' | 'dark') => void;
-  setLanguage: (language: 'uk' | 'en') => void;
-  handleThemeChange: (newTheme: 'light' | 'dark') => void;
 };
 
-export const AppContext = createContext<AppContextType>({
-  favouriteProductsIds: [],
-  cartProductsIds: [],
-  isMenuOpen: false,
-  products: [],
-  setProducts: () => { },
-  setIsMenuOpen: () => { },
-  setFavouriteProductsIds: () => { },
-  setCartProductsIds: () => { },
-  toggleFavouriteCard: () => { },
-  toggleAddToCart: () => { },
-  refCardWidth: { current: null },
-  refSliderWidth: { current: null },
-  searchParams: new URLSearchParams(),
-  setSearchParams: () => { },
-  isLoading: false,
-  setIsLoading: () => { },
-  theme: getTheme(),
-  setTheme: () => { },
-  language: 'en',
-  setLanguage: () => { },
-  handleThemeChange: () => { },
-});
+type AppDispatchType = {
+  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+  setFavouriteProductsIds: Dispatch<SetStateAction<string[]>>;
+  setCartProductsIds: Dispatch<SetStateAction<string[]>>;
+  setProducts: Dispatch<SetStateAction<Card[]>>;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
+  setLanguage: Dispatch<SetStateAction<'uk' | 'en'>>;
+  setTheme: Dispatch<SetStateAction<'light' | 'dark'>>;
+  setSearchParams: (params: URLSearchParams | ((prev: URLSearchParams) => URLSearchParams)) => void;
+  toggleFavouriteCard: (cardId: string) => void;
+  toggleAddToCart: (cardId: string) => void;
+  handleThemeChange: (newTheme: 'light' | 'dark') => void;
+  refCardWidth: React.RefObject<HTMLDivElement>;
+  refSliderWidth: React.RefObject<HTMLDivElement>;
+};
+
+export const AppStateContext = createContext<AppStateType | null>(null);
+export const AppDispatchContext = createContext<AppDispatchType | null>(null);
 
 type Props = {
   children: ReactNode;
 };
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
-  const [favouriteProductsIds, setFavouriteProductsIds] = useState<string[]>(
-    () => getFavouriteProducts(),
-  );
-  const [cartProductsIds, setCartProductsIds] = useState<string[]>(() =>
-    getCartProducts(),
-  );
+  const [favouriteProductsIds, setFavouriteProductsIds] = useState<string[]>(getFavouriteProducts);
+  const [cartProductsIds, setCartProductsIds] = useState<string[]>(getCartProducts);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const refCardWidth = useRef<HTMLDivElement | null>(null);
-  const refSliderWidth = useRef<HTMLDivElement | null>(null);
-  const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [language, setLanguage] = useState<'uk' | 'en'>('en');
-  const [theme, setTheme] = useState<'light' | 'dark'>(getTheme());
+  const [theme, setTheme] = useState<'light' | 'dark'>(getTheme);
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  const refCardWidth = useRef<HTMLDivElement>(null);
+  const refSliderWidth = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsLoading(true);
     getProducts()
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((err) => {
-        throw new Error(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .then(setProducts)
+      .catch((err) => { throw new Error(err); })
+      .finally(() => { setIsLoading(false); });
   }, []);
 
-  function toggleFavouriteCard(cardId: string) {
-    if (favouriteProductsIds.includes(cardId)) {
-      const updatedFavourites: string[] = favouriteProductsIds.filter(
-        (id: string) => id !== cardId,
-      );
-      setFavouriteProductsIds(updatedFavourites);
-      return;
-    }
-
-    setFavouriteProductsIds([...favouriteProductsIds, cardId]);
-  }
-
-  function toggleAddToCart(cardId: string) {
-    if (cartProductsIds.includes(cardId)) {
-      const updatedCart = cartProductsIds.filter((id: string) => id !== cardId);
-      setCartProductsIds(updatedCart);
-      return;
-    }
-
-    setCartProductsIds([...cartProductsIds, cardId]);
-  }
-
-  function handleThemeChange(newValue: 'light' | 'dark') {
-    setTheme(newValue);
-  }
-
   useEffect(() => {
-    if (theme === 'dark') {
-      document.body.classList.add('dark-theme');
-    } else {
-      document.body.classList.remove('dark-theme');
-    }
-
+    document.body.classList.toggle('dark-theme', theme === 'dark');
     saveTheme(theme);
-  }, [theme])
+  }, [theme]);
 
   useEffect(() => {
     saveFavouriteProducts(favouriteProductsIds);
@@ -144,30 +88,38 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     saveCartProducts(cartProductsIds);
   }, [cartProductsIds]);
-
-  const value = useMemo(() => ({
-    favouriteProductsIds,
-    cartProductsIds,
-    isMenuOpen,
-    products,
-    setProducts,
+  
+  const dispatchValue = useMemo(() => ({
     setIsMenuOpen,
     setFavouriteProductsIds,
     setCartProductsIds,
-    toggleFavouriteCard,
-    toggleAddToCart,
+    setProducts,
+    setIsLoading,
+    setLanguage,
+    setTheme,
+    setSearchParams,
+    toggleFavouriteCard: (cardId: string) => {
+      setFavouriteProductsIds(prev =>
+        prev.includes(cardId)
+          ? prev.filter(id => id !== cardId)
+          : [...prev, cardId]
+      );
+    },
+    toggleAddToCart: (cardId: string) => {
+      setCartProductsIds(prev =>
+        prev.includes(cardId)
+          ? prev.filter(id => id !== cardId)
+          : [...prev, cardId]
+      );
+    },
+    handleThemeChange: (newTheme: 'light' | 'dark') => {
+      setTheme(newTheme);
+    },
     refCardWidth,
     refSliderWidth,
-    searchParams,
-    setSearchParams,
-    isLoading,
-    setIsLoading,
-    language,
-    setLanguage,
-    theme,
-    setTheme,
-    handleThemeChange,
-  }), [
+  }), [setSearchParams]);
+
+  const stateValue = useMemo(() => ({
     favouriteProductsIds,
     cartProductsIds,
     isMenuOpen,
@@ -176,17 +128,29 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     isLoading,
     theme,
     language,
-  ])
+  }), [favouriteProductsIds, cartProductsIds, isMenuOpen, products, searchParams, isLoading, theme, language]);
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  return (
+    <AppDispatchContext.Provider value={dispatchValue}>
+      <AppStateContext.Provider value={stateValue}>
+        {children}
+      </AppStateContext.Provider>
+    </AppDispatchContext.Provider>
+  );
 };
 
-export const useAppContext = () => {
-  const context = useContext(AppContext);
+export const useAppState = () => {
+  const context = useContext(AppStateContext);
   if (!context) {
-    throw new Error(
-      'useProductsContext must be used within a ProductsProvider',
-    );
+    throw new Error('useAppState must be used within an AppProvider');
+  }
+  return context;
+};
+
+export const useAppDispatch = () => {
+  const context = useContext(AppDispatchContext);
+  if (!context) {
+    throw new Error('useAppDispatch must be used within an AppProvider');
   }
   return context;
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './LikeButton.module.scss';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppState } from '../../contexts/AppContext';
 
 type Props = {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const LikeButton: React.FC<Props> = ({ onClick, isSelected }) => {
-  const { theme } = useAppContext();
+  const { theme } = useAppState();
 
   return (
     <button

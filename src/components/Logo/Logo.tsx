@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Logo.module.scss';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppState } from '../../contexts/AppContext';
 
 export const Logo: React.FC<{ location: 'navbar' | 'footer' }> = ({
   location,
 }) => {
-  const { theme } = useAppContext();
+  const { theme } = useAppState();
 
   return (
     <NavLink

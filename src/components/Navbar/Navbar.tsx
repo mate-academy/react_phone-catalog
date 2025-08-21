@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Logo } from '../Logo';
 import styles from './Navbar.module.scss';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppDispatch, useAppState } from '../../contexts/AppContext';
 import { BurgerMenu } from '../BurgerMenu';
 
 export const Navbar: React.FC = () => {
@@ -9,9 +9,10 @@ export const Navbar: React.FC = () => {
     favouriteProductsIds,
     cartProductsIds,
     isMenuOpen,
-    setIsMenuOpen,
     theme,
-  } = useAppContext();
+  } = useAppState();
+
+  const { setIsMenuOpen } = useAppDispatch();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

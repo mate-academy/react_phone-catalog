@@ -2,12 +2,12 @@ import { Link, useLocation } from 'react-router-dom';
 import React from 'react';
 import styles from './Breadcrumb.module.scss';
 import { getFormattedPathname } from '../../modules/shared/utils/getFormattedPathname';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppState } from '../../contexts/AppContext';
 import { Arrow } from '../Arrow/Arrow';
 
 export const Breadcrumb: React.FC = () => {
   const { pathname } = useLocation();
-  const { products, theme } = useAppContext();
+  const { products, theme } = useAppState();
 
   return (
     <div

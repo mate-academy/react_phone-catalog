@@ -1,8 +1,8 @@
-import { useAppContext } from "../../contexts/AppContext";
+import { useAppDispatch } from "../../contexts/AppContext";
 import styles from './Card.module.scss';
 
 export const CardSkeleton: React.FC = () => {
-  const { refCardWidth } = useAppContext();
+  const { refCardWidth } = useAppDispatch();
   return (
     <div
       ref={refCardWidth as React.Ref<HTMLDivElement>}

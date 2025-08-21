@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './CartProduct.module.scss';
 import { Card } from '../../types/Card';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppDispatch, useAppState } from '../../contexts/AppContext';
 import { Link } from 'react-router-dom';
 import { CartProductSkeleton } from './CartProductSkeleton';
 
@@ -11,7 +11,8 @@ type CartProductProps = {
 };
 
 export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCountChange }) => {
-  const { cartProductsIds, setCartProductsIds, theme } = useAppContext();
+  const { cartProductsIds, theme } = useAppState();
+  const { setCartProductsIds } = useAppDispatch();
   const [counterValue, setCounterValue] = useState<number>(1);
 
   function handleCounterChange(event: React.MouseEvent<HTMLButtonElement>, action: '+' | '-') {

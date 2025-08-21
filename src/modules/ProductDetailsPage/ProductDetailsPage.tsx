@@ -15,18 +15,14 @@ import { getFormattedCapacity } from '../shared/utils/getFormattedCapacity';
 import { ProductDetails } from '../../types/ProductDetails';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { getColor } from '../shared/utils/getColor';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppState, useAppDispatch } from '../../contexts/AppContext';
 import { Loader } from '../../components/Loader';
 import { Back } from '../../components/Back';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
-  const {
-    cartProductsIds,
-    favouriteProductsIds,
-    toggleFavouriteCard,
-    toggleAddToCart,
-  } = useAppContext();
+  const { cartProductsIds, favouriteProductsIds } = useAppState();
+  const { toggleFavouriteCard, toggleAddToCart } = useAppDispatch();
 
   async function finder() {
     const item = await findProduct('itemId', pathname.split('/')[2]);

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card } from '../../components/Card';
 import styles from './FavoriteProductsPage.module.scss';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppState } from '../../contexts/AppContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
 
 export const FavoriteProductsPage: React.FC = () => {
-  const { favouriteProductsIds, products } = useAppContext();
+  const { favouriteProductsIds, products } = useAppState();
 
   return (
     <main className={`

@@ -1,4 +1,4 @@
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppDispatch } from '../../contexts/AppContext';
 import styles from './ModalWindow.module.scss';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 }
 
 export const ModalWindow: React.FC<Props> = ({ isOpen, onClose }) => {
-  const { setCartProductsIds } = useAppContext();
+  const { setCartProductsIds } = useAppDispatch();
 
   function handleConfirm() {
     onClose();

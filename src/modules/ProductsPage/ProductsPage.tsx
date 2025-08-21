@@ -4,7 +4,7 @@ import { ItemsPerPage } from '../../types/ItemsPerPage';
 import { ProductsSortType } from '../../types/ProductsSortType';
 import { ArrowButton } from '../../components/Arrow/ArrowButton';
 import { ProductsList } from '../../components/ProductsList';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppState, useAppDispatch } from '../../contexts/AppContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import { Card } from '../../types/Card';
 import { Arrow } from '../../components/Arrow/Arrow';
@@ -29,10 +29,12 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
   const {
     searchParams,
-    setSearchParams,
     products,
     isLoading,
-  } = useAppContext();
+  } = useAppState();
+
+  const { setSearchParams } = useAppDispatch();
+
 
   function getPerPageFromParams() {
     const value = searchParams.get('perPage');

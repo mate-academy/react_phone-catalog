@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ArrowButton } from '../Arrow/ArrowButton';
 import { Card } from '../Card';
 import styles from './ProductsSlider.module.scss';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppState, useAppDispatch } from '../../contexts/AppContext';
 import { getSuggestedProducts } from '../../modules/shared/utils/getSuggestedProducts';
 import { Card as CardType } from '../../types/Card';
 
@@ -17,12 +17,8 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
 }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [visibleCards, setVisibleCards] = useState(0);
-  const {
-    refCardWidth,
-    refSliderWidth,
-    products,
-    isLoading,
-  } = useAppContext();
+  const { products, isLoading } = useAppState();
+  const { refCardWidth, refSliderWidth } = useAppDispatch();
 
   const gap = 16;
   const maxScrollPosition = Math.max(0, products.length - visibleCards);

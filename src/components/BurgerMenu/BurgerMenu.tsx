@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './BurgerMenu.module.scss';
 import { Logo } from '../Logo';
 import { NavLink } from 'react-router-dom';
-import { useAppContext } from '../../contexts/AppContext';
+import { useAppDispatch, useAppState } from '../../contexts/AppContext';
 
 type Props = {
   onClose: () => void;
@@ -15,9 +15,10 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
     favouriteProductsIds,
     theme,
     language,
-    setLanguage,
-    handleThemeChange,
-  } = useAppContext();
+  } = useAppState();
+
+  const { setLanguage, handleThemeChange } = useAppDispatch();
+
 
   useEffect(() => {
     if (isMenuOpen) {
