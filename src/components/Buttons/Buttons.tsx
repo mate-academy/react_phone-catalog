@@ -7,9 +7,15 @@ import styles from './Buttons.module.scss';
 
 type Props = {
   product: Product | null;
+  selectedColor?: string | null;
+  selectedCapacity?: string | null;
 };
 
-export const Buttons: React.FC<Props> = ({ product }) => {
+export const Buttons: React.FC<Props> = ({
+  product,
+  selectedColor,
+  selectedCapacity,
+}) => {
   const favoritesContext = useFavorites();
 
   if (!favoritesContext) {
@@ -36,7 +42,11 @@ export const Buttons: React.FC<Props> = ({ product }) => {
         onClick={e => {
           e.stopPropagation();
           if (product) {
-            addToCart(product);
+            addToCart({
+              ...product,
+              selectedColor: selectedColor ?? undefined,
+              selectedCapacity: selectedCapacity ?? undefined,
+            });
           }
         }}
       >

@@ -28,6 +28,7 @@ export const AllItemsList: React.FC<Props> = ({
 
   const [sort, setSort] = useState<SortOptions>(() => {
     const sortParam = searchParams.get('sort');
+
     return (sortParam as SortOptions) || SortOptions.Newest;
   });
 
@@ -37,6 +38,7 @@ export const AllItemsList: React.FC<Props> = ({
 
   const [page, setPage] = useState<number>(() => {
     const pageParam = searchParams.get('page');
+
     return pageParam ? +pageParam : 1;
   });
 

@@ -28,4 +28,7 @@ export interface Product {
   zoom: string;
 
   cell: string[];
+
+  selectedColor?: string;
+  selectedCapacity?: string;
 }

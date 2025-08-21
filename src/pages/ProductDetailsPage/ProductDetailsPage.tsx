@@ -22,7 +22,10 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
-  // const getImageSrc = (src: string) => process.env.PUBLIC_URL + '/' + src;
+  const [selectedColor, setSelectedColor] = useState(product?.color ?? '');
+  const [selectedCapacity, setSelectedCapacity] = useState(
+    product?.capacity ?? '',
+  );
 
   const files = ['api/phones.json', 'api/tablets.json', 'api/accessories.json'];
 
@@ -89,7 +92,12 @@ export const ProductDetailsPage: React.FC = () => {
 
           <ButtonBack />
 
-          <h1 className={styles.details__title}>{product?.name}</h1>
+          {/* <h1 className={styles.details__title}>{product?.name}</h1> */}
+          <h1 className={styles.productTitle}>
+            {product.name}
+            {selectedCapacity && ` – ${selectedCapacity}`}
+            {selectedColor && ` – ${selectedColor}`}
+          </h1>
           <div className={styles.details__main}>
             <div className={styles.details__images}>
               {product?.images?.map((image, index) => (
@@ -128,6 +136,7 @@ export const ProductDetailsPage: React.FC = () => {
                     product?.colorsAvailable ??
                     (product?.color ? [product.color] : [])
                   }
+                  onColorChange={setSelectedColor}
                 />
               </div>
               <div className={styles.details__capacity}>
@@ -140,6 +149,7 @@ export const ProductDetailsPage: React.FC = () => {
                     product?.capacityAvailable ??
                     (product?.capacity ? [product.capacity] : [])
                   }
+                  onCapacityChange={setSelectedCapacity}
                 />
               </div>
 
@@ -156,7 +166,11 @@ export const ProductDetailsPage: React.FC = () => {
                 </p>
               </div>
 
-              <Buttons product={product} />
+              <Buttons
+                product={product}
+                selectedColor={selectedColor}
+                selectedCapacity={selectedCapacity}
+              />
 
               <CharacteristicsTable
                 characteristics={[

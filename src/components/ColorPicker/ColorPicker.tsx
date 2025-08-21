@@ -4,6 +4,7 @@ import styles from './ColorPicker.module.scss';
 type Props = {
   activeColor?: string;
   colors: string[] | string;
+  onColorChange?: (color: string) => void;
 };
 
 const colorMap: Record<string, string> = {
@@ -16,7 +17,11 @@ const colorMap: Record<string, string> = {
   purple: '#7A6FA1',
 };
 
-export const ColorPicker: React.FC<Props> = ({ activeColor, colors }) => {
+export const ColorPicker: React.FC<Props> = ({
+  activeColor,
+  colors,
+  onColorChange,
+}) => {
   const [selectedColor, setSelectedColor] = useState<string | null>(
     activeColor ? colorMap[activeColor] || activeColor : null,
   );
@@ -41,7 +46,12 @@ export const ColorPicker: React.FC<Props> = ({ activeColor, colors }) => {
               ? styles['color-picker__circle-wrapper--selected']
               : ''
           }`}
-          onClick={() => setSelectedColor(color)}
+          onClick={() => {
+            setSelectedColor(color);
+            if (onColorChange) {
+              onColorChange(color);
+            }
+          }}
         >
           <div
             className={styles['color-picker__circle']}

@@ -5,11 +5,13 @@ import styles from './CapacityPicker.module.scss';
 type Props = {
   activeCapacity?: string;
   capacity: string[] | string;
+  onCapacityChange: (capacity: string) => void;
 };
 
 export const CapacityPicker: React.FC<Props> = ({
   activeCapacity,
   capacity,
+  onCapacityChange,
 }) => {
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(
     activeCapacity || null,
@@ -36,7 +38,10 @@ export const CapacityPicker: React.FC<Props> = ({
             name="capacity"
             value={item}
             checked={selectedCapacity === item}
-            onChange={() => setSelectedCapacity(item)}
+            onChange={() => {
+              setSelectedCapacity(item);
+              onCapacityChange(item);
+            }}
             className={styles.capacityPickerRadio}
           />
           <span className={styles.capacityPickerText}>
