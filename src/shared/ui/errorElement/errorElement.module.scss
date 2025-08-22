@@ -1,0 +1,6 @@
+@use '@shared/styles' as s;
+
+.error {
+
+  @include s.t-h3;
+}

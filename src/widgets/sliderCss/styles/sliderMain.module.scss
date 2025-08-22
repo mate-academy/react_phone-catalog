@@ -8,6 +8,7 @@
   grid-template: 1fr 24px / 0 1fr 0;
   gap: 8px 0;
   width: 100vw;
+  scrollbar-width: none;
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
     left: 0;
@@ -18,6 +19,19 @@
 
   @media (min-width: s.$c-BREAKPOINT_WIDE) {
     column-gap: 16px;
+  }
+  
+  // buttons & pagination props-free positioning
+  > :first-child {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  > :nth-child(2) {
+    grid-area: 1 / 3 / 2 / 4;
+  }
+
+  > :nth-child(4) {
+    grid-area: 2 / 1 / 3 / 4;
   }
 }
 
@@ -34,6 +48,7 @@
   gap: var(--gap);
   translate: var(--offset);
 
+
   &__el {
     display: block;
     flex: 0 0 100%;
@@ -47,17 +62,6 @@
   }
 }
 
-.button {
-  width: 100%;
-  height: 100%;
-
-  @include s.m-btn-btn-reg;
-
-  &:hover {
-    @include s.m-btn-hover-reg;
-  }
-}
-
 .banner {
   display: block;
   width: 100%;
@@ -65,29 +69,11 @@
   object-fit: fill;
 }
 
-.pagination {
-  grid-area: 2 / 1 / 3 / 4;
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-}
-
-.pagination-button {
-  border: none;
-  height: 100%;
-  aspect-ratio: 1 / 1;
+.modal {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.pagination-img {
-  display: block;
-  background-color: s.$c-elements;
-  width: 14px;
-  height: 4px;
-
-  &-is-active {
-    background-color: s.$c-grey-primary;
-  }
+  grid-area: 1 / 2 / 2 / 3;
+  min-height: 300px;
+  width: 100%;
 }

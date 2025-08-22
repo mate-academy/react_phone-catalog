@@ -25,6 +25,7 @@ type SliderDataType = {
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
   gap: number;
+  startIndex: number;
 };
 
 const SliderDataContext = createContext<SliderDataType | null>(null);
@@ -72,6 +73,7 @@ const SliderDataProvider = ({ children, contextConfig }: ContextProps) => {
     activeIndex,
     setActiveIndex,
     gap,
+    startIndex,
   };
 
   return (

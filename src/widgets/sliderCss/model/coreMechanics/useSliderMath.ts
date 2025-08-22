@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { useSliderData } from '../context/sliderContext';
 
 export const useSliderMath = () => {
-  const { measure, mechanics, gap } = useSliderData();
+  const { measure, mechanics, gap, startIndex } = useSliderData();
 
   const math = {
     getIndex: useCallback(() => {
@@ -24,13 +24,28 @@ export const useSliderMath = () => {
       mechanics.offset.current = -newIdx * (gap + measure.itemWidth.current);
     }, []),
 
-    checkClamp: useCallback((arg: number, amount: number) => {
+    clamp: (amount: number) => {
+      const potentialOffset =
+        mechanics.offset.current + (mechanics.drag.current as number);
+      const max =
+        -(measure.itemWidth.current + gap) * (amount - 1 + startIndex * 2);
+
+      if (potentialOffset < max) {
+        mechanics.offset.current = max;
+      } else if (potentialOffset > 0) {
+        mechanics.offset.current = 0;
+      } else {
+        mechanics.offset.current = potentialOffset;
+      }
+    },
+
+    checkIndexClamp: useCallback((arg: number, amount: number) => {
       if (arg < 0) {
-        return amount - 1;
+        return amount;
       }
 
-      if (arg >= amount) {
-        return 0;
+      if (arg >= amount + startIndex * 2) {
+        return startIndex;
       }
 
       return arg;

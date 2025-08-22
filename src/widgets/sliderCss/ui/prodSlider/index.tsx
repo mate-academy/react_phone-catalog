@@ -1,3 +1,2 @@
-export const ProductSlider = () => {
-  return <div></div>;
-};
+export { ProdSlider } from './prodSlider';
+export { ProdSkeleton } from './prodSkeleton';

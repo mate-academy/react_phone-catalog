@@ -4,15 +4,27 @@ import { configs } from './model';
 
 type Props = {
   mode: 'hero';
-  data: BannerData[];
+  data: BannerData[] | null | undefined;
 };
 
 export const SliderS = ({ mode, data }: Props) => {
-  const { element: Element, contextConfig } = configs[mode];
+  const {
+    element: Element,
+    contextConfig,
+    skeleton: Skeleton,
+    err,
+  } = configs[mode];
 
-  return (
-    <SliderDataProvider contextConfig={contextConfig}>
-      <Element data={data} />
-    </SliderDataProvider>
-  );
+  switch (data) {
+    case undefined:
+      return <Skeleton error={err} />;
+    case null:
+      return <Skeleton />;
+    default:
+      return (
+        <SliderDataProvider contextConfig={contextConfig}>
+          <Element data={data} />
+        </SliderDataProvider>
+      );
+  }
 };

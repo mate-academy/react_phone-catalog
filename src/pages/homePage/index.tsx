@@ -5,11 +5,11 @@ import { prodStyles, categories } from './model';
 import styles from './styles/HomePage.module.scss';
 import { Link } from 'react-router-dom';
 import { useHomePage } from './model/useHomepage';
-import { Spinner } from '@ui/spinner';
+import { Spinner } from '@shared/ui';
 import { SliderS } from '@widgets/sliderCss';
 
 export const HomePage = () => {
-  const { newest, hotPrice, bannerList, loading } = useHomePage();
+  const { newest, hotPrice, bannerList, loading, errors } = useHomePage();
 
   return (
     <main className={styles.container}>
@@ -18,12 +18,7 @@ export const HomePage = () => {
         <span className={styles.welcome__text}>
           Welcome to Nice Gadgets store!
         </span>
-
-        {loading.banners === true ? (
-          <Spinner />
-        ) : (
-          bannerList && <SliderS mode="hero" data={bannerList} />
-        )}
+        <SliderS mode="hero" data={bannerList} error={errors.banners} />
       </div>
       <div className={styles['home-catalogue']}>
         <section

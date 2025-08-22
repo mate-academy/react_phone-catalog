@@ -1,0 +1,27 @@
+@use '@shared/styles' as s;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.pagination-button {
+  border: none;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-img {
+  display: block;
+  background-color: s.$c-elements;
+  width: 14px;
+  height: 4px;
+
+  &-is-active {
+    background-color: s.$c-grey-primary;
+  }
+}

@@ -1,16 +1,27 @@
 import { SliderMode } from './types';
-import { CatalogueSlider, HeroSlider, ProductSlider } from '../ui';
+import {
+  CatalogueSlider,
+  CatalogueSkeleton,
+  HeroSkeleton,
+  HeroSlider,
+  ProdSlider,
+  ProdSkeleton,
+} from '../ui';
 
 const hero = {
   element: HeroSlider,
+  skeleton: HeroSkeleton,
+  err: 'Unable to load banners',
   contextConfig: {
-    startIndex: 0,
+    startIndex: 1,
     gap: 10,
   },
 };
 
 const catalogue = {
   element: CatalogueSlider,
+  skeleton: CatalogueSkeleton,
+  err: 'Unable to load catalogue slider',
   contextConfig: {
     startIndex: 0,
     gap: 16,
@@ -18,9 +29,11 @@ const catalogue = {
 };
 
 const product = {
-  element: ProductSlider,
+  element: ProdSlider,
+  skeleton: ProdSkeleton,
+  err: 'Unable to load product images',
   contextConfig: {
-    startIndex: 0,
+    startIndex: 1,
     gap: 10,
   },
 };

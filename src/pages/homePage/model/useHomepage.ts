@@ -1,7 +1,6 @@
-import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
 import { get } from '@shared/api/';
-import { BaseProduct } from '@shared/types/APIReturnTypes';
-import { useCallback, useEffect, useState } from 'react';
+import { BannerData, CatalogueProduct } from '@shared/types/APIReturnTypes';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Conf, ErrorState, LoadState } from '../types';
 import { DATA_LOAD_CONFIGS } from '../config';
 
@@ -16,9 +15,16 @@ export const useHomePage = () => {
     newest: null,
     hotPrice: null,
   });
-  const [newest, setNewest] = useState<BaseProduct[] | null>(null);
-  const [hotPrice, setHotPrice] = useState<BaseProduct[] | null>(null);
-  const [bannerList, setBannerList] = useState<BannerData[] | null>(null);
+  const failCount = {
+    banner: useRef<number>(0),
+    newest: useRef<number>(0),
+    hotPrice: useRef<number>(0),
+  };
+  const [newest, setNewest] = useState<CatalogueProduct[] | null>(null);
+  const [hotPrice, setHotPrice] = useState<CatalogueProduct[] | null>(null);
+  const [bannerList, setBannerList] = useState<BannerData[] | null | undefined>(
+    null,
+  );
 
   const loadCatalogs = async (conf: Conf) => {
     const { key, getter, setter } = conf;
@@ -45,16 +51,18 @@ export const useHomePage = () => {
       const banners = await get.banners();
 
       setBannerList(banners);
+      failCount.banner.current = 0;
     } catch (e) {
-      setErrors(prev => ({
-        ...prev,
-        banners: e instanceof Error ? e.message : 'Failed to load banners',
-      }));
-    } finally {
-      setLoading(prev => ({
-        ...prev,
-        banners: false,
-      }));
+      if (failCount.banner.current < 3) {
+        failCount.banner.current += 1;
+        await new Promise(resolve =>
+          setTimeout(resolve, 1000 * failCount.banner.current),
+        );
+
+        return loadBanners();
+      } else {
+        setBannerList(undefined);
+      }
     }
   };
 

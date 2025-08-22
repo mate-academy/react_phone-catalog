@@ -1,3 +1,3 @@
-export { HeroSlider } from './heroSlider';
-export { CatalogueSlider } from './catalogueSlider';
-export { ProductSlider } from './prodSlider';
+export { HeroSlider, HeroSkeleton } from './heroSlider';
+export { CatalogueSlider, CatalogueSkeleton } from './catalogueSlider';
+export { ProdSlider, ProdSkeleton } from './prodSlider';

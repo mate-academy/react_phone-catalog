@@ -10,8 +10,8 @@ import {
   type ProductConf,
   type CatalogueConf,
 } from './typesAndEnums';
-import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
-import { CatalogueProduct, ItemProduct } from '@shared/types';
+
+import { BannerData, CatalogueProduct, ItemProduct } from '@shared/types';
 
 function handleError(message: string): never {
   console.warn(`Unable to load data, error: ${message}`);

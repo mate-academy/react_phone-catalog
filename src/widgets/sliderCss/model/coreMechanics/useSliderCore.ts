@@ -1,16 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect } from 'react';
-import { manipulate } from '../sliderMechanics';
+import { manipulate } from '../helpers';
 import { useSliderData } from '../';
-import { useSliderUtils } from './useSliderUtils';
-import { useAFLoop } from './useAFLoop';
-import { useSliderMath } from './useSliderMath';
+import { useSliderUtils, useSliderMath, useAFLoop } from '.';
 type Props = {
   amount: number;
 };
 
+//todo: fix resize fix initialOffset value;
+
 export const useSliderCore = ({ amount }: Props) => {
-  const { DOM, mechanics, ids, activeIndex, setActiveIndex } = useSliderData();
+  const { DOM, mechanics, ids, activeIndex, setActiveIndex, startIndex } =
+    useSliderData();
   const { utils } = useSliderUtils();
   const { af } = useAFLoop();
   const { math } = useSliderMath();
@@ -22,7 +23,7 @@ export const useSliderCore = ({ amount }: Props) => {
 
   const animateTrack = (idx: number, animation: boolean) => {
     manipulate.toggleTrackClass(DOM.track.current as HTMLDivElement, animation);
-    const newIdx = math.checkClamp(idx, amount);
+    const newIdx = math.checkIndexClamp(idx, amount);
 
     math.updateOffset(newIdx);
     setActiveIndex(newIdx);
@@ -46,7 +47,7 @@ export const useSliderCore = ({ amount }: Props) => {
         utils.setDrag(e);
       } else {
         af.start();
-        mechanics.offset.current += mechanics.drag.current;
+        math.clamp(amount);
         mechanics.startX.current = e.clientX;
       }
     },
@@ -76,11 +77,13 @@ export const useSliderCore = ({ amount }: Props) => {
     onPointerCancel: (e: React.PointerEvent<HTMLDivElement>) => {
       handlers.onPointerUp(e);
     },
+
     onButton: (mod: number) => {
       animateTrack(activeIndex + mod, true);
     },
+
     onPagination: (pos: number) => {
-      animateTrack(pos, true);
+      animateTrack(pos + startIndex, true);
     },
   };
 
@@ -97,7 +100,7 @@ export const useSliderCore = ({ amount }: Props) => {
 
     const resizeObserver = new ResizeObserver(() => {
       utils.updateSizes();
-      animateTrack(0, false);
+      animateTrack(1, false);
     });
 
     resizeObserver.observe(node);
