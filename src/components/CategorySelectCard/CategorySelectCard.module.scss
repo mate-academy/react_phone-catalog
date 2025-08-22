@@ -8,9 +8,13 @@
   text-decoration: none;
   color: $text-color;
 
+  flex: 1 1 calc((100% - 48px) / 3);
+
   &__imageWrapper {
-    width: 368px;
-    height: 368px;
+    // width: 368px;
+    // height: 368px;
+    width: 100%;
+    padding-top: 100%;
     overflow: hidden;
     position: relative;
     background-color: #6d6474;
@@ -47,9 +51,9 @@
   }
 
   @media (min-width: 640px) and (max-width: 1199px) {
-    &__imageWrapper {
-      width: 187px;
-      height: 187px;
+    &__image {
+      top: 40px;
+      left: 65px;
     }
   }
 
