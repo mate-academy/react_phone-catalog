@@ -57,5 +57,9 @@
 }
 
 .inCart {
-  background-color: $purple-hover-color;
+  background-color: $grey-dark-color;
+
+  &:hover {
+    background-color: $grey-icons-color;
+  }
 }
