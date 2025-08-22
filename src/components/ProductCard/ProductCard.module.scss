@@ -20,6 +20,8 @@
     flex-direction: column;
     gap: 8px;
     border-bottom: $grey-elements-color solid 1px;
+
+    flex-grow: 1;
   }
 
   &__image {
@@ -33,9 +35,15 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
+
+    text-overflow: ellipsis;
   }
 
   &__price {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;

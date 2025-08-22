@@ -26,7 +26,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <p className={styles.product__description}>{product.name}</p>
 
-        <div className={styles['product__price-with-discount']}>
+        <div className={styles['product__price']}>
           <p
             className={
               styles.product__price + ' ' + styles['product__price--discount']
