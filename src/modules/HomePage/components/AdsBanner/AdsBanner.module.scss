@@ -2,40 +2,24 @@
 @import '../../../../styles/variables.scss';
 
 .adWrapper {
+  @include page-grid;
+
   aspect-ratio: 1 / 1;
-  width: 100%;
   overflow: hidden;
   position: relative;
 
-  --margin-scale: 3vw;
-  --margin-max: 120px;
-
   @include on-tablet {
+    margin: 0 16px;
     aspect-ratio: 25 / 9;
-
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(12, 1fr);
-    align-items: stretch;
-    max-width: $tablet-max-width;
-    margin: 0 auto;
-    padding: 0 clamp(24px, var(--margin-scale), var(--margin-max));
   }
 
   @include on-desktop {
-    --margin-scale: 5vw;
-    --margin-max: 200px;
-
-    //aspect-ratio: 20 / 9;
-    grid-template-columns: repeat(24, 1fr);
-    max-width: $desktop-max-width;
-    margin: 0 auto;
-    padding: 0 clamp(32px, var(--margin-scale), var(--margin-max));
+    margin: 0 32px;
   }
 }
 
-
 .adImage {
+  grid-column: 1 / -1;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -47,7 +31,7 @@
   }
 
   @include on-desktop {
-    grid-column: 2 / 24;
+    grid-column: 2 / -2;
   }
 }
 

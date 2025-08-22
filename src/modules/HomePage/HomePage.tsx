@@ -11,7 +11,9 @@ export const HomePage: React.FC = () => {
     <main className={styles.home}>
       <h1 className={styles.welcomeTitle}>Welcome to Nice Gadgets store!</h1>
 
-      <AdsBanner />
+      <section className={styles.home__section}>
+        <AdsBanner />
+      </section>
 
       <section className={styles.home__section}>
         <NewModelsSlider />

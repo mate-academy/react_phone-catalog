@@ -137,10 +137,11 @@ export const ProductsPage: React.FC<Props> = ({
   }, [category]);
 
   useEffect(() => {
-    if (page > Math.ceil(sortedProducts.length / perPageNumber)) {
+    if (!loading && page > Math.ceil(sortedProducts.length / perPageNumber)) {
       setSearchParams({ sort, page: '1', perPage, query });
     }
   }, [
+    loading,
     query,
     sortedProducts.length,
     page,
