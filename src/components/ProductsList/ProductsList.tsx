@@ -37,7 +37,9 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
   };
 
   const handleResize = () => {
-    if (!containerRef.current) return;
+    if (!containerRef.current) {
+      return;
+    }
 
     const containerWidth = containerRef.current.offsetWidth;
 
@@ -49,6 +51,7 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
 
     Array.from(containerRef.current.children).forEach(child => {
       const el = child as HTMLElement;
+
       el.style.width = `${itemWidth}px`;
       el.style.flex = `0 0 ${itemWidth}px`;
     });
@@ -57,12 +60,14 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
+
     return () => window.removeEventListener('resize', handleResize);
   }, [products]);
 
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
+
     return () => window.removeEventListener('resize', handleResize);
   }, [products]);
 
