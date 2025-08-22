@@ -21,7 +21,9 @@ export const ShoppingCartPage = () => {
 
   const totalQty = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.product.priceDiscount * item.quantity,
+    (sum, item) =>
+      sum +
+      (item.product.priceDiscount ?? item.product.priceRegular) * item.quantity,
     0,
   );
 
@@ -131,7 +133,7 @@ export const ShoppingCartPage = () => {
                       </div>
                     </div>
                     <h3 className={styles.title}>
-                      ${t.product.priceDiscount * t.quantity}
+                      ${(t.product.priceDiscount ?? t.product.priceRegular) * t.quantity}
                     </h3>
                   </div>
                 </li>

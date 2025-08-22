@@ -35,7 +35,9 @@ export const PhonePage = () => {
       break;
     case 'price':
       filteredPhoneList.sort(
-        (a: Product, b: Product) => a.priceDiscount - b.priceDiscount,
+        (a: Product, b: Product) =>
+          (a.priceDiscount ?? a.priceRegular) -
+          (b.priceDiscount ?? b.priceRegular),
       );
       break;
   }
