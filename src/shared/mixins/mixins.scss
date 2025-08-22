@@ -42,13 +42,14 @@
   color: $white-color;
   cursor: pointer;
 
-  background: rgba(144, 91, 255, 1);
+  background-color: rgba(144, 91, 255, 1);
   transition:
     border 0.2s ease,
     transform 0.2s ease;
 
   &:hover {
     transform: scale(1.05);
+    background-color: rgba(163, 120, 255, 1);
   }
 
   &:active {

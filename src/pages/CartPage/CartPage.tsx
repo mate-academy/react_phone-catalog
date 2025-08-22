@@ -47,13 +47,12 @@ export const CartPage: React.FC = () => {
                   </div>
                   <h2 className={styles.item__name}>{product.name}</h2>
                 </div>
-                <div className={styles.item__counterAndPrice}>
-                  <Counter
-                    id={String(product.id)}
-                    quantity={product.quantity}
-                  />
-                  <p className={styles.item__price}>${product.price}</p>
-                </div>
+
+                <Counter
+                  id={String(product.id)}
+                  quantity={product.quantity}
+                  product={product}
+                />
               </li>
             ))}
           </ul>

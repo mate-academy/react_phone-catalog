@@ -18,12 +18,13 @@ export const Header = () => {
   const [favoriteCount, setFavoriteCount] = useState<number>(favorites.length);
   const [cartCount, setCartCount] = useState<number>(cartItems.length);
 
+  const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const handleBurgerToggle = () => setIsOpen(prev => !prev);
 
   useEffect(() => {
     setFavoriteCount(favorites.length);
-    setCartCount(cartItems.length);
-  }, [favorites.length, cartItems.length]);
+    setCartCount(cartItemCount);
+  }, [favorites.length, cartItemCount]);
 
   return (
     <header className={styles.header}>

@@ -19,12 +19,15 @@ export const BtnAddToCart: React.FC<Props> = ({ card }) => {
     }
   };
 
+  const isInCart = cartItems.some(item => item.id === card?.id);
+
   return (
     <button
-      className={styles.buttons__addToCart}
+      className={`${styles.buttons__addToCart} ${isInCart ? styles.active : ''}`}
       onClick={handleAddToCartClick}
+      disabled={isInCart}
     >
-      Add to Cart
+      {isInCart ? 'In Cart' : 'Add to Cart'}
     </button>
   );
 };

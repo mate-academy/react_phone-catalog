@@ -1,5 +1,16 @@
 @use "../../../../shared/mixins/mixins" as *;
 
+.counterAndPrice {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  @media (max-width: 639px) {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
 .counter {
   @include flex-center;
 }
@@ -28,4 +39,12 @@
   text-align: center;
 
   @include flex-center;
+}
+
+.item__price {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  text-align: right;
 }
