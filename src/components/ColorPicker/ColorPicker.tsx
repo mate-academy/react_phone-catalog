@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './ColorPicker.module.scss';
 
 type Props = {
@@ -24,17 +24,7 @@ export const ColorPicker: React.FC<Props> = ({
   colors,
   onColorChange,
 }) => {
-  const [selectedColor, setSelectedColor] = useState<string | null>(
-    activeColor ? colorMap[activeColor] || activeColor : null,
-  );
-
   const colorsArray = typeof colors === 'string' ? [colors] : colors;
-
-  useEffect(() => {
-    if (activeColor) {
-      setSelectedColor(colorMap[activeColor] || activeColor);
-    }
-  }, [activeColor]);
 
   return (
     <div className={styles['color-picker']}>
@@ -42,23 +32,38 @@ export const ColorPicker: React.FC<Props> = ({
         const hex = colorMap[colorName] || colorName;
 
         return (
-          <div
+          // eslint-disable-next-line jsx-a11y/label-has-associated-control
+          <label
             key={colorName}
             className={`${styles['color-picker__circle-wrapper']} ${
-              selectedColor === colorName
+              activeColor === colorName
                 ? styles['color-picker__circle-wrapper--selected']
                 : ''
             }`}
-            onClick={() => {
-              setSelectedColor(colorName);
-              onColorChange?.(colorName);
-            }}
+            style={{ cursor: 'pointer' }}
           >
-            <div
+            <input
+              type="radio"
+              name="color"
+              value={colorName}
+              checked={activeColor === colorName}
+              onChange={() => onColorChange?.(colorName)}
+              style={{
+                position: 'absolute',
+                width: '1px',
+                height: '1px',
+                margin: 0,
+                padding: 0,
+                overflow: 'hidden',
+                clip: 'rect(0 0 0 0)',
+                border: 0,
+              }}
+            />
+            <span
               className={styles['color-picker__circle']}
               style={{ backgroundColor: hex }}
             />
-          </div>
+          </label>
         );
       })}
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 
 import { Product } from '../../utils/Product';
@@ -13,7 +13,17 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './ProductDetailsPage.module.scss';
 import { ButtonBack } from '../../components/ButtonBack';
 
+const buildProductId = (
+  namespaceId: string,
+  capacity: string,
+  color: string,
+) => {
+  return `${namespaceId}-${capacity.toLowerCase()}-${color.toLowerCase()}`;
+};
+
 export const ProductDetailsPage: React.FC = () => {
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(true);
 
   const { productId } = useParams<{ productId: string }>();
@@ -22,10 +32,8 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
-  const [selectedColor, setSelectedColor] = useState(product?.color ?? '');
-  const [selectedCapacity, setSelectedCapacity] = useState(
-    product?.capacity ?? '',
-  );
+  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedCapacity, setSelectedCapacity] = useState('');
 
   const files = ['api/phones.json', 'api/tablets.json', 'api/accessories.json'];
 
@@ -41,6 +49,8 @@ export const ProductDetailsPage: React.FC = () => {
 
           if (found) {
             setProduct(found);
+            setSelectedColor(found.color);
+            setSelectedCapacity(found.capacity);
             break;
           }
         }
@@ -71,6 +81,36 @@ export const ProductDetailsPage: React.FC = () => {
     getSuggestedProducts();
   }, [productId]);
 
+  useEffect(() => {
+    if (!product || !selectedColor || !selectedCapacity) {
+      return;
+    }
+
+    const newId = buildProductId(
+      product.namespaceId,
+      selectedCapacity,
+      selectedColor,
+    );
+
+    navigate(`/${product.category}/${newId}`, { replace: true });
+
+    const fetchVariant = async () => {
+      for (const file of files) {
+        const res = await fetch(file);
+        const data: Product[] = await res.json();
+        const variant = data.find(p => p.id === newId);
+
+        if (variant) {
+          setProduct(variant);
+          setSelectedImage(0);
+          break;
+        }
+      }
+    };
+
+    fetchVariant();
+  }, [selectedColor, selectedCapacity]);
+
   return (
     <>
       {loading ? (
@@ -92,12 +132,8 @@ export const ProductDetailsPage: React.FC = () => {
 
           <ButtonBack />
 
-          {/* <h1 className={styles.details__title}>{product?.name}</h1> */}
-          <h1 className={styles.productTitle}>
-            {product.name}
-            {selectedCapacity && ` – ${selectedCapacity}`}
-            {selectedColor && ` – ${selectedColor}`}
-          </h1>
+          <h1 className={styles.details__title}>{product?.name}</h1>
+
           <div className={styles.details__main}>
             <div className={styles.details__images}>
               {product?.images?.map((image, index) => (
@@ -131,7 +167,7 @@ export const ProductDetailsPage: React.FC = () => {
                   Available colors
                 </p>
                 <ColorPicker
-                  activeColor={product?.color}
+                  activeColor={selectedColor}
                   colors={
                     product?.colorsAvailable ??
                     (product?.color ? [product.color] : [])
@@ -144,7 +180,7 @@ export const ProductDetailsPage: React.FC = () => {
                   Select capacity
                 </p>
                 <CapacityPicker
-                  activeCapacity={product?.capacity}
+                  activeCapacity={selectedCapacity}
                   capacity={
                     product?.capacityAvailable ??
                     (product?.capacity ? [product.capacity] : [])
