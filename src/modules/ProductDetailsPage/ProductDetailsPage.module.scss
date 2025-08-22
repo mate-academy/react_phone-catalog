@@ -9,6 +9,7 @@
   background-color: var(--page-color);
   padding-inline: $padding-mobile;
   margin-bottom: $margin-bottom-mobile;
+  min-height: 100vh;
 
   @include on-tablet {
     padding-inline: $padding-tablet;

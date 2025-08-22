@@ -4,7 +4,9 @@
   background-color: var(--page-color);
   padding-inline: $padding-mobile;
   margin-bottom: $margin-bottom-mobile;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   @include on-tablet {
     padding-inline: $padding-tablet;
@@ -13,7 +15,9 @@
 
   @include on-desktop {
     padding-inline: $padding-desktop;
+    margin: 0 auto;
     margin-bottom: $margin-bottom-desktop;
+    max-width: 1200px;
   }
 
   &__title {
@@ -52,6 +56,10 @@
     max-width: 320px;
     width: 100%;
     margin-top: 24px;
+  }
+
+  &__content {
+    flex: 1;
   }
 }
 
