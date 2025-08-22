@@ -73,7 +73,10 @@ export const AllItemsList: React.FC<Props> = ({
         const json: Product[] = await res.json();
 
         setAllItems(json);
-        setPage(1);
+
+        if (!searchParams.get('page')) {
+          setPage(1);
+        }
       } catch (e) {
         setError(true);
       } finally {
