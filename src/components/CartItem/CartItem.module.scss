@@ -50,7 +50,14 @@
     grid-area: arrow;
     display: flex;
     align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 96px;
     gap: 8px;
+  }
+
+  &quantity {
+    width: 40px;
   }
 
   &Price {

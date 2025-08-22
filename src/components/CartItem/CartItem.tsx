@@ -37,7 +37,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
           clickFunc={() => changeQuantity(product.id, -1)}
         />
 
-        <p>{quantity}</p>
+        <p className={styles.quantity}>{quantity}</p>
 
         <ButtonScroll
           buttonText="img/icons/plus.svg"
