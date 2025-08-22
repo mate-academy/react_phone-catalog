@@ -5,6 +5,7 @@ import styles from './ProductCard.module.scss';
 import { normalizeProduct } from '../NormalizeProduct';
 import { AddToCartButton } from '../AddToCartButton';
 import { FavouriteButton } from '../FavouriteButton';
+import React from 'react';
 
 type Props = {
   product: Product | ProductDetailed;

@@ -10,6 +10,7 @@
   --accent: #4219d0;
   --icons-color: #B4BDC3;
   --white-color: #FFF;
+  --button-color: #fff;
 }
 
 .dark {
@@ -20,16 +21,7 @@
   --accent: #beb0f0;
   --icons-color: #fff;
   --white-color: #393d42;
-}
-
-// Global dark theme styles for icons
-body.dark .icon {
-  filter: brightness(0) invert(1) !important;
-}
-
-// Exclude itemAmount from icon filter
-body.dark .icon .itemAmount {
-  filter: none !important;
+  --button-color: black;
 }
 
 // Dark theme styles for Material-UI Pagination

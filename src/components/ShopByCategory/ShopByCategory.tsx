@@ -3,6 +3,7 @@ import styles from './ShopByCategory.module.scss';
 import { Product } from '../../types/Product';
 import { ProductDetailed } from '../../types/ProductDetailed';
 import { NavLink } from 'react-router-dom';
+import React from 'react';
 
 type Props = {
   products: (Product | ProductDetailed)[];

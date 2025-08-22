@@ -10,7 +10,6 @@
   border: 1px solid var(--elements-color);
   border-radius: 8px;
   background-color: var(--white-color);
-  transition: all 0.3s ease-in-out;
 
   &:hover {
     transform: scale(1.02);
@@ -94,7 +93,7 @@
 
   &__buttonsActions {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 8px;
   }
 }

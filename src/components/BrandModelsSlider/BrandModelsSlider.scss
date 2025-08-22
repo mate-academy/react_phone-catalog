@@ -57,31 +57,28 @@
 }
 
 .swiper-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 32px;
   height: 32px;
   border: 1px solid $icons-color;
   border-radius: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: transparent;
+  cursor: pointer;
 
   @include hover('border-color', $primary-color);
 
-  &--prev {
-    background-image: url('/img/icons/arrow-left-black.svg');
-
-    &.swiper-button-disabled {
-      border-color: $elements-color;
-      background-image: url('/img/icons/arrow-left-grey.svg');
-    }
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
   }
 
-  &--next {
-    background-image: url('/img/icons/arrow-right-black.svg');
+  &.swiper-button-disabled {
+    cursor: not-allowed;
 
-    &.swiper-button-disabled {
-      border-color: $elements-color;
-      background-image: url('/img/icons/arrow-right-grey.svg');
+    img {
+      opacity: 0.5;
     }
   }
 }

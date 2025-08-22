@@ -47,9 +47,14 @@ export const ProductsList: React.FC<Props> = ({ items, itemsPerPage }) => {
   );
 
   useEffect(() => {
-    setCurrentPage(1);
-    updateSearchParams(params => params.delete('page'));
-  }, [sort, perPage, updateSearchParams]);
+    // Скидаємо сторінку тільки якщо вона не встановлена в URL
+    const pageFromUrl = searchParams.get('page');
+
+    if (!pageFromUrl) {
+      setCurrentPage(1);
+    }
+    // Не видаляємо 'page' з URL, якщо він вже є
+  }, [sort, perPage, searchParams]);
 
   const handlePageChange = (_: React.ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
@@ -78,6 +83,7 @@ export const ProductsList: React.FC<Props> = ({ items, itemsPerPage }) => {
       {totalPages > 1 && (
         <div className={styles.paginationContainer}>
           <CustomPagination
+            key={`pagination-${totalPages}-${currentPage}`}
             totalPages={totalPages}
             currentPage={currentPage}
             handlePageChange={handlePageChange}

@@ -38,20 +38,12 @@
     display: none;
 
     @include on-tablet {
-      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 32px;
       border: 1px solid var(--icons-color);
       border-radius: 48px;
-      background-repeat: no-repeat;
-      background-position: center;
-
-      &.banner__button--prev {
-        background-image: url('/img/icons/arrow-left-black.svg');
-      }
-
-      &.banner__button--next {
-        background-image: url('/img/icons/arrow-right-black.svg');
-      }
 
       @include hover('border-color', var(--primary-color));
     }

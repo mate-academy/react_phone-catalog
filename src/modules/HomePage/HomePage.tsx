@@ -9,6 +9,10 @@ export const HomePage: React.FC = () => {
   const { products, isLoading, error } = useProducts();
 
   const brandNewProduct = useMemo(() => {
+    if (products.length === 0) {
+      return [];
+    }
+
     return [...products]
       .sort((a, b) =>
         b.year !== a.year ? b.year - a.year : b.fullPrice - a.fullPrice,
@@ -17,6 +21,10 @@ export const HomePage: React.FC = () => {
   }, [products]);
 
   const hotPricesProduct = useMemo(() => {
+    if (products.length === 0) {
+      return [];
+    }
+
     return [...products].sort(
       (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
     );

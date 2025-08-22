@@ -5,14 +5,15 @@
   border: 1px solid transparent;
   border-radius: 48px;
   font-weight: 500;
-  color: var(--white-color);
+  color: var(--button-color);
   text-align: center;
-  transition:
-    background-color 0.3s ease-in-out,
-    border-color 0.3s ease-in-out,
-    color 0.3s ease-in-out,
-    transform 0.3s ease-in-out,
-    box-shadow 0.3s ease-in-out;
+
+  // transition:
+  //   background-color 0.3s ease-in-out,
+  //   border-color 0.3s ease-in-out,
+  //   color 0.3s ease-in-out,
+  //   transform 0.3s ease-in-out,
+  //   box-shadow 0.3s ease-in-out;
 
   @include on-desktop {
     &:hover {

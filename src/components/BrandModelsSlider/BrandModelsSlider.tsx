@@ -8,6 +8,8 @@ import { Loader } from '../Loader';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './BrandModelsSlider.scss';
+import React from 'react';
+import { useTheme } from '../../context/ThemeContext';
 
 type Props = {
   title: string;
@@ -17,6 +19,10 @@ type Props = {
 export const BrandModelsSlider: React.FC<Props> = ({ title, products }) => {
   const { isLoading } = useLoading();
   const sliderId = title.toLowerCase().replace(/\s+/g, '-');
+  const { theme } = useTheme();
+
+  const arrowLeft = `img/icons/arrow-left-${theme}.svg`;
+  const arrowRight = `img/icons/arrow-right-${theme}.svg`;
 
   if (products.length === 0) {
     return <p>No products found</p>;
@@ -31,11 +37,15 @@ export const BrandModelsSlider: React.FC<Props> = ({ title, products }) => {
           <button
             className={`swiper-button icon swiper-button--prev swiper-button--prev-${sliderId}`}
             aria-label="Previous slide"
-          ></button>
+          >
+            <img src={arrowLeft} alt="Previous" />
+          </button>
           <button
             className={`swiper-button icon swiper-button--next swiper-button--next-${sliderId}`}
             aria-label="Next slide"
-          ></button>
+          >
+            <img src={arrowRight} alt="Next" />
+          </button>
         </div>
       </div>
 

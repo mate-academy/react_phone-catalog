@@ -1,11 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 import { useFavourites } from '../../context/FavouritesContext';
 import { useCart } from '../../context/CartContext';
 import { useTheme } from '../../context/ThemeContext';
+import React from 'react';
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -19,20 +20,20 @@ const getLinkClassName = ({ isActive }: { isActive: boolean }) =>
     [styles['nav__link--active']]: isActive,
   });
 
-export const Header = () => {
+export const Header: React.FC = React.memo(function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { favouritesCount } = useFavourites();
   const { cartTotalItemsCount } = useCart();
   const { theme, toggleTheme } = useTheme();
 
-  const logoUrl = `img/icons/NiceGadgets-${theme}.png`;
+  const logoUrl = useMemo(() => `img/icons/NiceGadgets-${theme}.png`, [theme]);
 
   useLockBodyScroll(isMenuOpen);
 
-  const toggleMenu = () => {
+  const toggleMenu = useCallback(() => {
     setIsMenuOpen(prev => !prev);
-  };
+  }, []);
 
   return (
     <>
@@ -135,4 +136,4 @@ export const Header = () => {
       </header>
     </>
   );
-};
+});

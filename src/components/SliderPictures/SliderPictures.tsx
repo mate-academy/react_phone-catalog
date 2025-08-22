@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { useEffect, useRef } from 'react';
+import { useTheme } from '../../context/ThemeContext';
 
 export const SliderPictures: React.FC = () => {
   const bannersImg = [
@@ -13,6 +14,8 @@ export const SliderPictures: React.FC = () => {
     'img/banners/banner-2.png',
     'img/banners/banner-3.png',
   ];
+
+  const { theme } = useTheme();
 
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -41,7 +44,9 @@ export const SliderPictures: React.FC = () => {
             ref={prevRef}
             className={`banner__button icon banner__button--prev`}
             aria-label="Previous picture"
-          ></button>
+          >
+            <img src={`img/icons/arrow-left-${theme}.svg`} />
+          </button>
           <Swiper
             className="banner__container"
             modules={[Navigation, Pagination, Autoplay]}
@@ -73,7 +78,9 @@ export const SliderPictures: React.FC = () => {
             ref={nextRef}
             className={`banner__button icon banner__button--next`}
             aria-label="Next picture"
-          ></button>
+          >
+            <img src={`img/icons/arrow-right-${theme}.svg`} />
+          </button>
         </div>
         <div className="banner__pagination"></div>
       </section>
