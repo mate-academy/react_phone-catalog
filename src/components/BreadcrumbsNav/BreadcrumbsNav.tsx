@@ -9,14 +9,7 @@ export const BreadcrumbsNav: React.FC = () => {
   const { category, itemId } = useParams();
   const location = useLocation();
 
-  const pageNameRaw = (location.pathname.split('/')[1] || '')
-    .toLowerCase()
-    .trim();
-
-  const pageName = pageNameRaw
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+  const pageName = category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
   ////////////////////////////////////////
   // Подключаем хук для работы с фильтрами (search-параметрами)
   const { getLastSearch } = useProductFilters();
@@ -33,7 +26,8 @@ export const BreadcrumbsNav: React.FC = () => {
   const [modelName, setModelName] = useState<string>('');
 
   // Формируем базовый путь назад — категория или пустая строка
-  const backPath = `/${category || pageNameRaw || ''}`;
+  const backPath = `/${category || ''}`;
+
   // Формируем полный путь назад с параметрами
   const backWithSearch = `${backPath}${searchToUse}`;
 

@@ -67,14 +67,11 @@
       $border-hover-color 30%,
       $main-bg-color 75%
     );
-
-    &:hover {
-      background-color: $main-bg-color;
-    }
   }
 
   .arrow--disabled {
     opacity: 0.3;
+    cursor:auto;
 
     img {
       filter: grayscale(100%);

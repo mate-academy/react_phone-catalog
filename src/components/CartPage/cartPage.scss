@@ -1,5 +1,6 @@
 .cart-page {
   padding: 0 16px;
+  height: 100%;
 
   @include onTablet {
     padding: 0 24px 0 0;
@@ -45,83 +46,192 @@
     }
   }
 
-  .carts-card {
-    padding: 16px;
-    border: 1px solid $border-color;
-    border-radius: 8px;
-    background-color: $main-bg-color;
+  .cart-section {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
+    flex-direction: column;
+    gap: 32px;
 
-    .info-row {
-      display: flex;
+    @include onDesktop {
+      flex-direction: row;
       gap: 16px;
-      align-items: center;
-      width: fit-content;
+    }
+
+    .card-box {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
       flex: 1;
 
-      .delete {
+      .carts-card {
+        padding: 16px;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        background-color: $main-bg-color;
         display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
         align-items: center;
-        cursor: pointer;
+        gap: 16px;
+        box-sizing: border-box;
 
-        opacity: 0.5;
-        transition: opacity 0.5s ease;
-
-        &:hover {
-          opacity: 1;
+        @include onTablet {
+          gap: 24px;
         }
-      }
 
-      .model-link {
-        text-decoration: none;
-      }
+        .info-row {
+          display: flex;
+          gap: 16px;
+          align-items: center;
+          width: fit-content;
+          flex: 1;
 
-      .photo {
-        display: flex;
-        justify-content: center;
-        width: 80px;
-        height: 80px;
-        padding: 7px;
-      }
+          .delete {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
 
-      .modelName {
-        font-size: 14px;
-        font-weight: 600;
-        color: $text-main-color;
-        min-width: 128px;
+            opacity: 0.5;
+            transition: opacity 0.5s ease;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+
+          .model-link {
+            text-decoration: none;
+          }
+
+          .photo {
+            display: flex;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            padding: 7px;
+          }
+
+          .modelName {
+            font-size: 14px;
+            font-weight: 600;
+            color: $text-main-color;
+            min-width: 128px;
+          }
+        }
+
+        .calc-box {
+          display: flex;
+
+          .calc-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border: 1px solid $border-hover-color;
+            border-radius: 50%;
+          }
+
+          .count {
+            display: flex;
+            width: 32px;
+            height: 32px;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
+        .price {
+          display: flex;
+          min-width: 80px;
+          justify-content: end;
+          margin-left: auto;
+        }
       }
     }
 
-    // .calculation-row {
+    .totalForItem {
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      padding: 16px;
 
-      .calc-box {
+      @include onTablet {
+        padding: 24px;
+      }
+
+      @include onDesktop {
+        width: 368px;
+        height: fit-content;
         display: flex;
-        // width: 96px;
-        width: fit-content;
+        flex-direction: column;
 
-        .calc-button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 32px;
-          height: 32px;
-          border: 1px solid $border-hover-color;
-          border-radius: 50%;
+        position: sticky;
+        align-self: flex-start;
+        top: 81px;
+      }
+
+      .totalItem-Price {
+        font-weight: 800;
+        font-size: 32px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .main-body-text-14 {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 16px;
+        border-bottom: 1px solid $border-color;
+        margin-bottom: 16px;
+        width: 100%;
+
+        @include onDesktop {
+          padding-bottom: 24px;
+          margin-bottom: 24px;
         }
       }
-    // }
 
-    .price {
-      display: flex;
+      .checkout {
+        all: unset;
+        cursor: pointer;
+        text-align: center;
 
-      max-width: 100%;
-      min-width: 80px;
-      justify-content: end;
-      margin-left: auto;
+        background-color: $button-color;
+        height: 48px;
+
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      .button-text {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+        color: #fff;
+      }
+    }
+  }
+
+  .img-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .cart-is-empty {
+      max-width: 120px;
+
+      @include onTablet {
+        max-width: 225px;
+      }
+    }
+
+    .empty-text {
+      font-size: 16px;
+      color: $text-not-active-color;
+
+      @include onTablet {
+        padding-bottom: 20px;
+        font-size: 22px;
+      }
     }
   }
 }

@@ -1,25 +1,61 @@
 import { useSearchParams, useLocation, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useProductFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const { itemId } = useParams<{ itemId?: string }>();
 
-  const STORAGE_KEY = 'lastCategorySearch'; // один ключ для всех категорий
+  const STORAGE_KEY_SEARCH = 'lastCategorySearch'; // для search параметров
+  const STORAGE_KEY_PATH = 'lastCategoryPath';     // для пути категории
 
-  // 📌 1. Сохраняем search-параметры, если мы на странице категории (а не товара)
+  // Сохраняем только страницы категорий (без itemId и без /cart или /favorites)
+
+
+
+
+
+  const [path, setPath] = useState('')
+
   useEffect(() => {
-    const isCategoryPage = !itemId; // если нет itemId, значит список товаров
-    if (isCategoryPage && location.search) {
-      sessionStorage.setItem(STORAGE_KEY, location.search);
+    setPath(location.pathname) ;
+  }, []);
+
+  console.log('-==location==-', location.pathname);
+  console.log('-==path==-', path);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  useEffect(() => {
+    const isCategoryPage = !itemId && !location.pathname.startsWith('/cart') && !location.pathname.startsWith('/favorites');
+
+    if (isCategoryPage) {
+      if (location.search) {
+        sessionStorage.setItem(STORAGE_KEY_SEARCH, location.search);
+      }
+      sessionStorage.setItem(STORAGE_KEY_PATH, location.pathname);
     }
-  }, [location.search, itemId]);
+  }, [location.pathname, location.search, itemId]);
+  // console.log('-==location==-', location.pathname);
 
-  // 📌 2. Получаем сохранённые параметры
-  const getLastSearch = () => sessionStorage.getItem(STORAGE_KEY) || '';
+  const getLastSearch = () => sessionStorage.getItem(STORAGE_KEY_SEARCH) || '';
+  const getLastPath = () => sessionStorage.getItem(STORAGE_KEY_PATH) || '/';
 
-  // --- Методы работы с фильтрами ---
   const getSortParam = () => searchParams.get('sort') || '';
   const getPerPage = () => parseInt(searchParams.get('perPage') || '16', 10);
   const getPage = () => parseInt(searchParams.get('page') || '1', 10);
@@ -48,7 +84,7 @@ export const useProductFilters = () => {
     setSort,
     setPerPage,
     setPage,
-    getLastSearch, // теперь можно добавлять сохранённые search к ссылкам
+    getLastSearch,
+    getLastPath,
   };
 };
-
