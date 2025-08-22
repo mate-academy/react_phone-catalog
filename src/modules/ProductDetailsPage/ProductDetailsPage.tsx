@@ -4,8 +4,8 @@ import styles from './ProductDetailsPage.module.scss';
 import {
   findAccessory,
   findPhone,
-  findProduct,
-  findTablet
+  findTablet,
+  getProducts
 } from '../shared/services/productService';
 import { AccessoryDetails } from '../../types/AccessoryDetails';
 import { useEffect, useState } from 'react';
@@ -21,28 +21,65 @@ import { Back } from '../../components/Back';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
-  const { cartProductsIds, favouriteProductsIds } = useAppState();
+  const { cartProductsIds, favouriteProductsIds, products } = useAppState();
   const { toggleFavouriteCard, toggleAddToCart } = useAppDispatch();
 
-  async function finder() {
-    const item = await findProduct('itemId', pathname.split('/')[2]);
-
-    switch (item?.category) {
-      case 'phones':
-        return findPhone('id', item.itemId);
-      case 'tablets':
-        return findTablet('id', item.itemId);
-      case 'accessories':
-        return findAccessory('id', item.itemId);
-      default:
-        return undefined;
-    }
-  }
-
   const [product, setProduct] = useState<ProductDetails | AccessoryDetails | undefined>(undefined);
+  const [isProductLoading, setIsProductLoading] = useState(true);
   const [currentPicture, setCurrentPicture] = useState('');
   const [currentCapacity, setCurrentCapacity] = useState('');
   const [currentColor, setCurrentColor] = useState('');
+
+  useEffect(() => {
+    let isMounted = true;
+    setIsProductLoading(true);
+
+    const fetchProduct = async () => {
+      try {
+        const itemId = pathname.split('/')[2];
+        const item = (await getProducts()).find(item => item.itemId === itemId);
+
+        if (!item) {
+          if (isMounted) {
+            setProduct(undefined);
+            setIsProductLoading(false);
+          }
+          return;
+        }
+
+        let response;
+        switch (item.category) {
+          case 'phones':
+            response = await findPhone('id', item.itemId);
+            break;
+          case 'tablets':
+            response = await findTablet('id', item.itemId);
+            break;
+          case 'accessories':
+            response = await findAccessory('id', item.itemId);
+            break;
+          default:
+            response = undefined;
+        }
+
+        if (isMounted) {
+          setProduct(response);
+          setIsProductLoading(false);
+        }
+      } catch {
+        if (isMounted) {
+          setProduct(undefined);
+          setIsProductLoading(false);
+        }
+      }
+    };
+
+    fetchProduct();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [pathname, products]);
 
   useEffect(() => {
     if (product) {
@@ -52,19 +89,17 @@ export const ProductDetailsPage: React.FC = () => {
     }
   }, [product]);
 
-  useEffect(() => {
-    let isMounted = true;
-    finder().then(res => {
-      if (isMounted) setProduct(res);
-    });
-    return () => { isMounted = false; }
-  }, [pathname]);
+  if (isProductLoading || !products || products.length === 0) {
+    return (
+      <main className={`${styles.main} ${styles.isLoading}`}>
+        <Loader />
+      </main>
+    );
+  }
 
   return (
-    <main className={`${styles.main} ${product === undefined ? styles.isLoading : ''}`}>
-      {product === undefined ? (
-        <Loader />
-      ) : product ? (
+    <main className={`${styles.main} ${isProductLoading ? styles.isLoading : ''}`}>
+      {product ? (
         <>
           <div className={styles.head}>
             <Breadcrumb />
@@ -79,9 +114,9 @@ export const ProductDetailsPage: React.FC = () => {
                     onClick={() => setCurrentPicture(url)}
                     key={url}
                     className={`
-                      ${styles.picture} 
-                      ${currentPicture === url ? styles.pictureActive : ''}
-                    `}
+                        ${styles.picture} 
+                        ${currentPicture === url ? styles.pictureActive : ''}
+                      `}
                   >
                     <img className={styles.img} src={`/${url}`} alt="Phone" />
                   </div>
@@ -105,9 +140,9 @@ export const ProductDetailsPage: React.FC = () => {
                       <li
                         onClick={() => setCurrentColor(item)}
                         className={`
-                          ${styles.colorsItem} 
-                          ${currentColor === item ? styles.colorsItemActive : ''}
-                        `}
+                            ${styles.colorsItem} 
+                            ${currentColor === item ? styles.colorsItemActive : ''}
+                          `}
                         key={item}
                       >
                         <div
@@ -128,9 +163,9 @@ export const ProductDetailsPage: React.FC = () => {
                       <li
                         onClick={() => setCurrentCapacity(item)}
                         className={`
-                          ${styles.capacityItem} 
-                          ${currentCapacity === item ? styles.capacityItemActive : ''}
-                        `}
+                            ${styles.capacityItem} 
+                            ${currentCapacity === item ? styles.capacityItemActive : ''}
+                          `}
                         key={item}
                       >{getFormattedCapacity(item)}</li>
                     ))}
@@ -236,7 +271,12 @@ export const ProductDetailsPage: React.FC = () => {
           <ProductsSlider title={'You may also like'} filter='random' />
         </>
       ) : (
-        <h2>Product not found</h2>
+        <div className={styles.head}>
+          <Breadcrumb />
+          <Back />
+
+          <h1 className={styles.title}>Product not found</h1>
+        </div>
       )}
     </main>
   )

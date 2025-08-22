@@ -31,7 +31,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   const {
     searchParams,
     products,
-    isLoading,
+    isLoadingProducts,
   } = useAppState();
 
   const { setSearchParams } = useAppDispatch();
@@ -200,7 +200,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   }
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoadingProducts) {
       const filteredProducts = products
         .filter(product => product.category === type);
 
@@ -208,7 +208,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
       setCurrentProducts(sortedProducts);
     }
-  }, [products, type, sortType, isLoading, sorter]);
+  }, [products, type, sortType, isLoadingProducts, sorter]);
 
   useEffect(() => {
     if (typeof perPageValue === 'number' && currentProducts.length > 0) {
@@ -226,146 +226,182 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
   return (
     <main className={styles.main}>
-      <div className={styles.head}>
-        <Breadcrumb />
-
-        <div className={styles.headContent}>
-          <h1 className={styles.title}>
-            {type}
-          </h1>
-
-          <span
-            className={`${styles.counter} smallText`}
-          >{currentProducts.length} models</span>
-        </div>
-
-        <div className={styles.sorters}>
-          <div className={`${styles.sortType} ${styles.sorter}`}>
-            <span className={`${styles.counter} smallText`}>Sort by</span>
-
-            <div
-              ref={sortDropDownRef}
-              className={styles.dropdown}
-            >
-              <button
-                type="button"
-                onClick={() => setIsSortTypeDropdownOpen(prev => !prev)}
-                className={`
-                  ${styles.dropdownTrigger} 
-                  ${isSortTypeDropdownOpen ? styles.dropdownTriggerActive : ''}
-                `}
-              >
-                {getSortTypeValue(sortType)}
-                <span className={styles.arrowContainer}>
-                  <Arrow direction='down' isDisabled={true} />
-                </span>
-              </button>
-
-              {isSortTypeDropdownOpen && (
-                <div className={styles.dropdownMenu}>
-                  {sortValues.map(type => (
-                    <button
-                      key={type}
-                      type="button"
-                      onClick={() => handleSortTypeChange(type as ProductsSortType)}
-                      className={`${styles.dropdownItem} bodyText`}
-                    >{type}</button>
-                  ))}
-                </div>
-              )}
+      {!isLoadingProducts && products.length === 0 ? (
+        <>
+          <div className={styles.head}>
+            <Breadcrumb />
+            <div className={styles.headContent}>
+              <h1 className={styles.title}>
+                {type}
+              </h1>
+              <span className={`${styles.counter} smallText`}>0 models</span>
             </div>
           </div>
 
-          <div className={`${styles.perPageItems} ${styles.sorter}`}>
-            <span className={`${styles.counter} smallText`}>Items on page</span>
-            <div
-              ref={perPageDropDownRef}
-              className={styles.dropdown}
-            >
-              <button
-                type="button"
-                onClick={() => setIsPerPageDropdownOpen(prev => !prev)}
-                className={`
-                  ${styles.dropdownTrigger} 
-                  ${isPerPageDropdownOpen ? styles.dropdownTriggerActive : ''}
-                `}
-              >
-                {perPageValue}
-                <span className={styles.arrowContainer}>
-                  <Arrow direction='down' isDisabled={true} />
-                </span>
-              </button>
+          <div className={styles.notFound}>
+            <h2>Something went wrong</h2>
 
-              {isPerPageDropdownOpen && (
-                <div className={styles.dropdownMenu}>
-                  {perPageValues.map(value => (
-                    <button
-                      key={value}
-                      type="button"
-                      onClick={() => handlePerPageChange(value as ItemsPerPage)}
-                      className={`${styles.dropdownItem} bodyText`}
-                    >{value}</button>
-                  ))}
+            <button
+              type="button"
+              onClick={() => { }}
+              className={styles.notFoundButton}
+            >
+              <svg
+                className={styles.notFoundIcon}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"
+              >
+                <path
+                  d="M552 256L408 256C398.3 256 389.5 250.2 385.8 241.2C382.1 232.2 384.1 221.9 391 215L437.7 168.3C362.4 109.7 253.4 115 184.2 184.2C109.2 259.2 109.2 380.7 184.2 455.7C259.2 530.7 380.7 530.7 455.7 455.7C463.9 447.5 471.2 438.8 477.6 429.6C487.7 415.1 507.7 411.6 522.2 421.7C536.7 431.8 540.2 451.8 530.1 466.3C521.6 478.5 511.9 490.1 501 501C401 601 238.9 601 139 501C39.1 401 39 239 139 139C233.3 44.7 382.7 39.4 483.3 122.8L535 71C541.9 64.1 552.2 62.1 561.2 65.8C570.2 69.5 576 78.3 576 88L576 232C576 245.3 565.3 256 552 256z"
+                />
+              </svg>
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className={styles.head}>
+            <Breadcrumb />
+
+            <div className={styles.headContent}>
+              <h1 className={styles.title}>
+                {type}
+              </h1>
+
+              <span
+                className={`${styles.counter} smallText`}
+              >{currentProducts.length} models</span>
+            </div>
+
+            <div className={styles.sorters}>
+              <div className={`${styles.sortType} ${styles.sorter}`}>
+                <span className={`${styles.counter} smallText`}>Sort by</span>
+
+                <div
+                  ref={sortDropDownRef}
+                  className={styles.dropdown}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setIsSortTypeDropdownOpen(prev => !prev)}
+                    className={`
+                      ${styles.dropdownTrigger} 
+                      ${isSortTypeDropdownOpen ? styles.dropdownTriggerActive : ''}
+                    `}
+                  >
+                    {getSortTypeValue(sortType)}
+                    <span className={styles.arrowContainer}>
+                      <Arrow direction='down' isDisabled={true} />
+                    </span>
+                  </button>
+
+                  {isSortTypeDropdownOpen && (
+                    <div className={styles.dropdownMenu}>
+                      {sortValues.map(type => (
+                        <button
+                          key={type}
+                          type="button"
+                          onClick={() => handleSortTypeChange(type as ProductsSortType)}
+                          className={`${styles.dropdownItem} bodyText`}
+                        >{type}</button>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
+
+              <div className={`${styles.perPageItems} ${styles.sorter}`}>
+                <span className={`${styles.counter} smallText`}>Items on page</span>
+                <div
+                  ref={perPageDropDownRef}
+                  className={styles.dropdown}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setIsPerPageDropdownOpen(prev => !prev)}
+                    className={`
+                      ${styles.dropdownTrigger} 
+                      ${isPerPageDropdownOpen ? styles.dropdownTriggerActive : ''}
+                    `}
+                  >
+                    {perPageValue}
+                    <span className={styles.arrowContainer}>
+                      <Arrow direction='down' isDisabled={true} />
+                    </span>
+                  </button>
+
+                  {isPerPageDropdownOpen && (
+                    <div className={styles.dropdownMenu}>
+                      {perPageValues.map(value => (
+                        <button
+                          key={value}
+                          type="button"
+                          onClick={() => handlePerPageChange(value as ItemsPerPage)}
+                          className={`${styles.dropdownItem} bodyText`}
+                        >{value}</button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <ProductsList
-        products={
-          perPageValue === 'All'
-            ? isLoading
-              ? Array(8).fill(undefined)
-              : currentProducts
-            : currentProducts.slice(
-              (currentPage - 1) * Number(perPageValue),
-              currentPage * Number(perPageValue)
-            )
-        }
-      />
-
-      {perPageValue !== 'All' && (
-        <div className={styles.pagination}>
-          <ArrowButton
-            direction="left"
-            isDisabled={currentPage === 1}
-            onClick={() => handlePageChange(currentPage - 1)}
+          <ProductsList
+            products={
+              isLoadingProducts
+                ? Array(8).fill(undefined)
+                : perPageValue === 'All'
+                  ? currentProducts
+                  : currentProducts.slice(
+                    (currentPage - 1) * Number(perPageValue),
+                    currentPage * Number(perPageValue)
+                  )
+            }
           />
 
-          <div className={styles.pages}>
-            {currentPages.map(page => (
-              <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                className={`
-                  ${styles.page}
-                  ${currentPage === page ? styles.pageActive : ''}
-                `}
-              >
-                {page}
-              </button>
-            ))}
+          {perPageValue !== 'All' && (
+            <div className={styles.pagination}>
+              <ArrowButton
+                direction="left"
+                isDisabled={currentPage === 1}
+                onClick={() => handlePageChange(currentPage - 1)}
+              />
 
-            {hasNextPaginationPage() && (
-              <button
-                onClick={() => handlePageChange()}
-                className={`
-                ${styles.page}
-              `}
-              >
-                ...
-              </button>
-            )}
-          </div>
+              <div className={styles.pages}>
+                {currentPages.map(page => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={`
+                      ${styles.page}
+                      ${currentPage === page ? styles.pageActive : ''}
+                    `}
+                  >
+                    {page}
+                  </button>
+                ))}
 
-          <ArrowButton
-            direction="right"
-            isDisabled={currentPage === Math.ceil(currentProducts.length / perPageValue)}
-            onClick={() => handlePageChange(currentPage + 1)}
-          />
-        </div>
+                {hasNextPaginationPage() && (
+                  <button
+                    onClick={() => handlePageChange()}
+                    className={`
+                    ${styles.page}
+                  `}
+                  >
+                    ...
+                  </button>
+                )}
+              </div>
+
+              <ArrowButton
+                direction="right"
+                isDisabled={currentPage === Math.ceil(currentProducts.length / perPageValue)}
+                onClick={() => handlePageChange(currentPage + 1)}
+              />
+            </div>
+          )}
+        </>
       )}
     </main>
   );

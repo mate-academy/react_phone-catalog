@@ -36,13 +36,13 @@
 }
 
 .emptyPage {
-  min-height: 65vh;
+  min-height: 70vh;
 
   @include on-tablet {
-    min-height: 76vh;
+    min-height: 89vh;
   }
 
   @include on-desktop {
-    min-height: 74vh;
+    min-height: 89vh;
   }
 }

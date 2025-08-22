@@ -27,7 +27,7 @@ type AppStateType = {
   isMenuOpen: boolean;
   products: Card[];
   searchParams: URLSearchParams;
-  isLoading: boolean;
+  isLoadingProducts: boolean;
   theme: 'light' | 'dark';
   language: 'uk' | 'en';
 };
@@ -37,7 +37,7 @@ type AppDispatchType = {
   setFavouriteProductsIds: Dispatch<SetStateAction<string[]>>;
   setCartProductsIds: Dispatch<SetStateAction<string[]>>;
   setProducts: Dispatch<SetStateAction<Card[]>>;
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
+  setIsLoadingProducts: Dispatch<SetStateAction<boolean>>;
   setLanguage: Dispatch<SetStateAction<'uk' | 'en'>>;
   setTheme: Dispatch<SetStateAction<'light' | 'dark'>>;
   setSearchParams: (params: URLSearchParams | ((prev: URLSearchParams) => URLSearchParams)) => void;
@@ -60,7 +60,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const [cartProductsIds, setCartProductsIds] = useState<string[]>(getCartProducts);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [products, setProducts] = useState<Card[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoadingProducts, setIsLoadingProducts] = useState<boolean>(false);
   const [language, setLanguage] = useState<'uk' | 'en'>('en');
   const [theme, setTheme] = useState<'light' | 'dark'>(getTheme);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -69,11 +69,13 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const refSliderWidth = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoadingProducts(true);
     getProducts()
       .then(setProducts)
-      .catch((err) => { throw new Error(err); })
-      .finally(() => { setIsLoading(false); });
+      .catch((err) => {
+        throw new Error(err);
+      })
+      .finally(() => setIsLoadingProducts(false));
   }, []);
 
   useEffect(() => {
@@ -94,7 +96,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     setFavouriteProductsIds,
     setCartProductsIds,
     setProducts,
-    setIsLoading,
+    setIsLoadingProducts,
     setLanguage,
     setTheme,
     setSearchParams,
@@ -125,10 +127,19 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     isMenuOpen,
     products,
     searchParams,
-    isLoading,
+    isLoadingProducts,
     theme,
     language,
-  }), [favouriteProductsIds, cartProductsIds, isMenuOpen, products, searchParams, isLoading, theme, language]);
+  }), [
+    favouriteProductsIds,
+    cartProductsIds,
+    isMenuOpen,
+    products,
+    searchParams,
+    isLoadingProducts,
+    theme,
+    language,
+  ]);
 
   return (
     <AppDispatchContext.Provider value={dispatchValue}>

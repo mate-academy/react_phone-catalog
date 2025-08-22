@@ -17,7 +17,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
 }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [visibleCards, setVisibleCards] = useState(0);
-  const { products, isLoading } = useAppState();
+  const { products, isLoadingProducts } = useAppState();
   const { refCardWidth, refSliderWidth } = useAppDispatch();
 
   const gap = 16;
@@ -101,7 +101,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             transform: `translateX(-${findAbleScrollStep()}px)`,
           }}
         >
-          {isLoading ? (
+          {isLoadingProducts ? (
             Array(4).fill(undefined).map((product, i) => (
               <Card key={i} card={product} />
             ))

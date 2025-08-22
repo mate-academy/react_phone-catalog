@@ -6,7 +6,7 @@ import { ModalWindow } from './ModalWindow';
 import { Back } from '../../components/Back';
 
 export const CartPage: React.FC = () => {
-  const { cartProductsIds, products, isLoading } = useAppState();
+  const { cartProductsIds, products, isLoadingProducts } = useAppState();
 
   function countTotal() {
     let sum = 0;
@@ -50,11 +50,11 @@ export const CartPage: React.FC = () => {
 
   useEffect(() => {
     setTotalItems(cartProductsIds.length);
-  }, [isLoading, cartProductsIds]);
+  }, [isLoadingProducts, cartProductsIds]);
 
   useEffect(() => {
     setTotalSum(countTotal());
-  }, [isLoading]);
+  }, [isLoadingProducts]);
 
   return (
     <main

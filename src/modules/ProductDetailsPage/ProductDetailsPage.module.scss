@@ -1,16 +1,16 @@
 .main {
   @include page-grid;
   row-gap: 56px;
-  min-height: 65vh;
+  min-height: 70vh;
 
   @include on-tablet {
     row-gap: 64px;
-    min-height: 76vh;
+    min-height: 89vh;
   }
 
   @include on-desktop {
     row-gap: 80px;
-    min-height: 74vh;
+    min-height: 89vh;
   }
 }
 
