@@ -1,0 +1,20 @@
+.back {
+  width: fit-content;
+  display: flex;
+  gap: 4px;
+  background-color: transparent;
+  border: none;
+  padding-inline: 0;
+  padding-bottom: 16px;
+  color: var(--color-secondary);
+}
+
+.arrow {
+  color: var(--color-primary);
+}
+
+.text {
+  &:hover {
+    color: var(--color-primary);
+  }
+}

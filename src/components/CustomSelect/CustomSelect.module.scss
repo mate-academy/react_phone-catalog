@@ -1,0 +1,67 @@
+.select {
+  position: relative;
+  display: inline-block;
+  flex-direction: column;
+  gap: 44px;
+  padding-top: 40px;
+  color: var(--color-secondary);
+  transition-duration: 0.3s;
+}
+
+.box {
+  cursor: pointer;
+  display: flex;
+  margin-top: 4px;
+  padding: 8px;
+  gap: 53px;
+  color: var(--color-icons);
+  border: var(--border-dark);
+
+  &:hover {
+    border: var(--border-hover);
+  }
+
+  p {
+    color: var(--color-primary);
+  }
+}
+
+.focused {
+  border-color: var(--color-primary);
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  margin-top: 4px;
+  background-color: #fff;
+  border: var(--border);
+}
+
+.item {
+  color: var(--color-secondary);
+  padding: 8px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+  }
+}
+
+.placeholder .value {
+  color: inherit;
+}
