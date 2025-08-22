@@ -58,7 +58,8 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
       ) as HTMLElement[];
 
       children.forEach(child => {
-        const el = child as HTMLElement; 
+        const el = child as HTMLElement;
+
         el.style.width = `${itemWidth}px`;
         el.style.flex = `0 0 ${itemWidth}px`;
       });
