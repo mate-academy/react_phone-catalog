@@ -15,6 +15,8 @@ const colorMap: Record<string, string> = {
   white: '#F0F0F0',
   yellow: '#FCDBC1',
   purple: '#7A6FA1',
+  spacegray: '#3C3C3C',
+  midnightgreen: '#004953',
 };
 
 export const ColorPicker: React.FC<Props> = ({
