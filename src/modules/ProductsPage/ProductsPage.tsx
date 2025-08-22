@@ -8,6 +8,7 @@ import { useAppState, useAppDispatch } from '../../contexts/AppContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import { Card } from '../../types/Card';
 import { Arrow } from '../../components/Arrow/Arrow';
+import { useOnClickOutside } from '../shared/hooks/useOnClickOutside';
 
 type Props = {
   type: 'phones' | 'tablets' | 'accessories';
@@ -219,6 +220,9 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [type]);
+
+  useOnClickOutside(sortDropDownRef, () => setIsSortTypeDropdownOpen(false));
+  useOnClickOutside(perPageDropDownRef, () => setIsPerPageDropdownOpen(false));
 
   return (
     <main className={styles.main}>
