@@ -21,7 +21,6 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   const { refCardWidth, refSliderWidth } = useAppDispatch();
 
   const gap = 16;
-  const maxScrollPosition = Math.max(0, products.length - visibleCards);
 
   function filterProducts(type: 'price' | 'year' | 'random'): CardType[] {
     switch (type) {
@@ -37,6 +36,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   }
 
   const [currentProducts, setCurrentProducts] = useState<CardType[]>(() => filterProducts(filter));
+  const maxScrollPosition = Math.max(0, currentProducts.length - visibleCards);
 
   function findAbleScrollStep() {
     if (!refCardWidth.current) {
@@ -88,7 +88,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
           />
           <ArrowButton
             direction="right"
-            isDisabled={scrollPosition >= maxScrollPosition}
+            isDisabled={scrollPosition >= maxScrollPosition || currentProducts.length <= visibleCards}
             onClick={() => handleArrowClick('right')}
           />
         </div>
