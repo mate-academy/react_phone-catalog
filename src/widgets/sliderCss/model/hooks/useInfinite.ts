@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { useSliderData } from '../context/sliderContext';
-import { useAnimation } from '../coreMechanics';
-import { visualConfig } from '../configs';
+import { useSliderData, visualConfig } from '..';
+import { useAnimation } from '.';
 
 export const useInfinite = (amount: number) => {
   const { animationSpeed } = visualConfig;

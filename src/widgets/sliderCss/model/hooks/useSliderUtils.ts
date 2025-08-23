@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { useSliderData } from '../';
+import { useSliderData, visualConfig } from '..';
 import { useRef } from 'react';
-import { visualConfig } from '../configs';
+
 export const useSliderUtils = (startIndex: number, amount: number) => {
   const dragThreshold = 3;
   const { gap } = visualConfig;

@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { useSliderData } from '..';
+import { useSliderData, visualConfig } from '..';
 import styles from '../../styles/noAnimationClass.module.scss';
-import { visualConfig } from '../configs';
 
 export const useAnimation = () => {
   const { DOM, mechanics, measure, rerender } = useSliderData();

@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect, useRef } from 'react';
-import { useSliderData } from '../';
+import { useSliderData, visualConfig } from '..';
 import { useSliderUtils, useAnimation } from '.';
-import { visualConfig } from '../configs';
 
 export const useSliderCore = (startIndex: number, amount: number) => {
   const { DOM, mechanics, measure } = useSliderData();

@@ -1,5 +1,4 @@
-export { configs } from './configs';
+export { configs, visualConfig } from './configs';
 export { useSliderData, SliderDataProvider } from './context/sliderContext';
 export { SliderMode } from './types';
-export { useSliderCore } from './coreMechanics';
-export { useInfinite } from './infiniteMechanics/useInfinite';
+export { useSliderCore, useInfinite } from './hooks';
