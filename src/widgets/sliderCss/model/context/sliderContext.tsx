@@ -25,10 +25,10 @@ const SliderDataContext = createContext<SliderDataType | null>(null);
 
 type ContextProps = {
   children: ReactNode;
-  startIndex: number;
+  startIdx: number;
 };
 
-const SliderDataProvider = ({ children, startIndex }: ContextProps) => {
+const SliderDataProvider = ({ children, startIdx }: ContextProps) => {
   const DOMRefs = {
     viewport: useRef<HTMLDivElement>(null),
     track: useRef<HTMLDivElement>(null),
@@ -45,7 +45,7 @@ const SliderDataProvider = ({ children, startIndex }: ContextProps) => {
     offset: useRef<number>(0),
     drag: useRef<number | null>(null),
     dragging: useRef<boolean>(false),
-    index: useRef<number>(startIndex),
+    index: useRef<number>(startIdx),
   };
 
   const [tick, setTick] = useState(false);

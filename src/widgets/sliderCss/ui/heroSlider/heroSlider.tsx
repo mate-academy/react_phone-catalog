@@ -1,25 +1,28 @@
 import { BannerData } from '@shared/types';
 import { Link } from 'react-router-dom';
 import styles from '../../styles/sliderMain.module.scss';
-import { useSliderCore, useSliderData, useInfinite } from '../../model';
+import {
+  useSliderCore,
+  useSliderData,
+  useInfinite,
+  visualConfig,
+} from '../../model';
 import { SliderButtons, InfiniteBlockPagination } from '../shared';
-import { visualConfig } from '@widgets/sliderCss/model/configs';
 
 type Props = {
   data: BannerData[];
-  props: {
-    amount: number;
-    gap: number;
-    animationSpeed: number;
-    startIndex: number;
-  };
+  startIdx: number;
+  amount: number;
 };
 
-export const HeroSlider: React.FC<Props> = ({ data, props }) => {
-  const { amount, startIndex } = props;
+export const HeroSlider: React.FC<Props> = ({
+  data,
+  startIdx,
+  amount,
+}: Props) => {
   const { animationSpeed, gap } = visualConfig;
   const { DOM } = useSliderData();
-  const { trackHandlers, setByIndex } = useSliderCore(startIndex, amount);
+  const { trackHandlers, setByIndex } = useSliderCore(startIdx, amount);
 
   useInfinite(amount);
   const firstClone = data.at(-1) as BannerData;
@@ -71,7 +74,7 @@ export const HeroSlider: React.FC<Props> = ({ data, props }) => {
       <InfiniteBlockPagination
         dataIDs={dataIDs}
         setByIndex={setByIndex}
-        startIndex={startIndex}
+        startIndex={startIdx}
       />
     </section>
   );
