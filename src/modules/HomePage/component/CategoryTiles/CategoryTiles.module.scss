@@ -1,6 +1,14 @@
 @use '../../../../styles/mixins';
 @use '../../../../styles/variables';
 
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--main-text);
+  margin-bottom: 24px;
+}
+
 .tiles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -18,14 +26,10 @@
 .tile {
   display: flex;
   flex-direction: column;
-
   height: 100%;
   border: 1px solid var(--elements);
-
   text-decoration: none;
-
   background-color: var(--white);
-
   transition: box-shadow 0.3s;
 
   &:hover {
@@ -36,6 +40,7 @@
     width: 100%;
     height: auto;
     object-fit: contain;
+    /* Забираємо margin-bottom з img, щоб уникнути конфлікту з padding */
   }
 
   .textBlock {

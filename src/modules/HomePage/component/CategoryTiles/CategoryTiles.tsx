@@ -30,16 +30,19 @@ export const CategoryTiles: React.FC = () => {
   ];
 
   return (
-    <div className={styles.tiles}>
-      {categories.map(c => (
-        <NavLink to={c.path} key={c.name} className={styles.tile}>
-          <img src={c.image} alt={c.name} />
-          <div className={styles.text}>
-            <h3>{c.name.charAt(0).toUpperCase() + c.name.slice(1)}</h3>
-            <p>{c.amount} models</p>
-          </div>
-        </NavLink>
-      ))}
+    <div className={styles.wrapper}>
+      <h2 className={styles.title}>Shop by category</h2>
+      <div className={styles.tiles}>
+        {categories.map(c => (
+          <NavLink to={c.path} key={c.name} className={styles.tile}>
+            <img src={c.image} alt={c.name} />
+            <div className={styles.textBlock}>
+              <h3>{c.name.charAt(0).toUpperCase() + c.name.slice(1)}</h3>
+              <p>{c.amount} models</p>
+            </div>
+          </NavLink>
+        ))}
+      </div>
     </div>
   );
 };

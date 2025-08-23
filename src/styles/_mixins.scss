@@ -20,80 +20,72 @@
   --link-active-color: #{map.get($theme , link-active-color)};
 }
 
-@mixin text-ellipsis {
- overflow: hidden;
- text-overflow: ellipsis;
- white-space: nowrap;
-}
-
 @mixin flex-center {
- display: flex;
- align-items: center;
- justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin container {
- max-width: $container-width;
- margin: 0 auto;
- padding: 0 $container-padding;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
 }
 
 @mixin title($size: $fs-xl, $weight: $fw-bold, $lh: $lh-title) {
- font-family: $font-main;
- font-size: $size;
- font-weight: $weight;
- line-height: $lh;
- color: var(--main-text);
+  font-family: $font-main;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lh;
+  color: var(--main-text);
 }
 
 @mixin text($size: $fs-normal, $weight: $fw-regular, $color: var(--main-text)) {
- font-family: $font-main;
- font-size: $size;
- font-weight: $weight;
- color: $color;
+  font-family: $font-main;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
 }
 
 @mixin section-title {
- font-family: $font-main;
- font-size: $fs-xxl;
- font-weight: $fw-bold;
- line-height: $lh-title;
- color: var(--main-text);
+  font-family: $font-main;
+  font-size: $fs-xxl;
+  font-weight: $fw-bold;
+  line-height: $lh-title;
+  color: var(--main-text);
 }
 
 // MEDIA MIXINS
 @mixin on-mobile {
- @media (max-width: $breakpoint-sm) {
-  @content;
- }
+  @media (max-width: ($breakpoint-sm - 1)) {
+    @content;
+  }
 }
 
 @mixin on-tablet {
- @media (min-width: $breakpoint-md) {
-  @content;
- }
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
 }
+
+@mixin on-laptop {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
 
 @mixin on-desktop {
- @media (min-width: $breakpoint-lg) {
-  @content;
- }
-}
-
-@mixin on-large-desktop {
- @media (min-width: $breakpoint-xl) {
-  @content;
- }
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
 }
 
 @mixin on-small {
- @media (max-width: $breakpoint-md) {
-  @content;
- }
+  @media (max-width: $breakpoint-md) {
+    @content;
+  }
 }
 
-@mixin on-wide {
- @media (min-width: $breakpoint-xxl) {
-   @content;
- }
-}
+
+

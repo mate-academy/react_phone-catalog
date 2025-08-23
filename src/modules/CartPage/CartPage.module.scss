@@ -8,7 +8,7 @@
   flex-direction: column;
   gap: 32px;
 
-  max-width: variables.$container-width; // <--- Виправлено
+  max-width: variables.$container-width;
   margin: 0 auto;
   padding: 40px 20px;
 }
@@ -83,29 +83,55 @@
   }
 }
 
+.emptyWrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 20px 20px;
+  box-sizing: border-box;
+
+  background-image: url('/img/product-not-found.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain;
+
+  @include mixins.on-desktop {
+    padding: 20px 20px;
+    background-size: auto 300px;
+  }
+}
+
 .empty {
-  padding: 60px 20px;
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+
+  padding: 20px;
+  border-radius: 8px;
+
   text-align: center;
+
+  background-color: var(--elements);
 }
 
 .emptyTitle {
   @include mixins.title(variables.$fs-xxl, variables.$fw-bold);
-
   margin-bottom: 20px;
 }
 
 .backButton {
   display: inline-block;
-
   padding: 12px 24px;
   border-radius: 4px;
-
   font-weight: variables.$fw-bold;
   color: var(--white);
   text-decoration: none;
-
   background-color: var(--accent);
-
   transition: background-color 0.2s;
 
   &:hover {

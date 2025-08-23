@@ -1,15 +1,24 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-  gap: 24px;
-
+  gap: variables.$container-padding;
   margin: 0;
   padding: 24px 0;
-
   list-style: none;
-}
 
-.item {
-  display: flex;
-  justify-content: center;
+  grid-template-columns: repeat(1, 1fr);
+
+  @include mixins.on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mixins.on-laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mixins.on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

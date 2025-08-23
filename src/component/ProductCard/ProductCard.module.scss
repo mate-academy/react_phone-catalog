@@ -4,18 +4,15 @@
 .card {
   display: flex;
   flex-direction: column;
-
   padding: 16px;
   border: 1px solid variables.$color-elements;
-  border-radius: 12px;
-
+  border-radius: variables.$radius-l;
   background-color: var(--card-bg);
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform variables.$transition-main, box-shadow variables.$transition-main;
 
   &:hover {
     transform: scale(1.03);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: variables.$shadow-md;
   }
 }
 
@@ -25,15 +22,26 @@
   text-align: center;
 }
 
+.image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: variables.$radius-m;
+  object-fit: contain;
+  transition: transform variables.$transition-main;
+}
+
+.imageWrapper:hover .image {
+  transform: scale(1.1);
+}
+
 .name {
-  margin-bottom: 8px;
-
-  font-size: variables.$fs-normal;
-  font-weight: variables.$fw-semi-bold;
-  color: var(--main-text);
+  margin-bottom: 4px;
+  @include mixins.text($size: variables.$fs-normal, $weight: variables.$fw-semi-bold);
   text-decoration: none;
+  transition: color variables.$transition-main;
 
-  transition: color 0.3s ease;
+  min-height: calc(variables.$fs-normal * 1.5 * 2);
+  display: block;
 
   &:hover {
     color: variables.$color-primary;
@@ -44,24 +52,44 @@
   display: flex;
   gap: 12px;
   align-items: baseline;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .currentPrice {
-  font-size: variables.$fs-large;
-  font-weight: variables.$fw-bold;
-  color: var(--main-text);
+  @include mixins.text($size: variables.$fs-large, $weight: variables.$fw-bold);
 }
 
 .oldPrice {
-  font-size: variables.$fs-small;
-  color: var(--secondary-text);
+  @include mixins.text($size: variables.$fs-small, $color: var(--secondary-text));
   text-decoration: line-through;
+}
+.characteristics {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include mixins.text($size: variables.$fs-normal, $color: var(--secondary-text));
+
+    & > span:first-child {
+      display: inline-block;
+    }
+
+    & > span:last-child {
+      display: inline-block;
+      text-align: right;
+    }
+  }
 }
 
 .divider {
   height: 1px;
-  margin: 8px 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
   background-color: variables.$color-elements;
 }
 
@@ -69,25 +97,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: auto;
 }
 
 .addToCart {
   cursor: pointer;
-
-  display: flex;
+  @include mixins.flex-center;
   gap: 6px;
-  align-items: center;
-
   padding: 8px 12px;
   border: none;
-  border-radius: 8px;
-
+  border-radius: variables.$radius-m;
   font-size: variables.$fs-small;
   color: variables.$color-white;
-
   background-color: variables.$color-primary;
-
-  transition: background-color 0.3s ease;
+  transition: background-color variables.$transition-main;
 
   &:hover {
     background-color: variables.$color-secondary;
@@ -97,20 +120,13 @@
 
 .favorite {
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  @include mixins.flex-center;
   padding: 8px;
   border: 1px solid variables.$color-elements;
   border-radius: 50%;
-
   color: var(--icons);
-
   background-color: transparent;
-
-  transition: all 0.3s ease;
+  transition: all variables.$transition-main;
 
   &:hover {
     border-color: variables.$color-red;
@@ -121,26 +137,4 @@
 .activeFavorite {
   border-color: variables.$color-red;
   color: variables.$color-red;
-}
-
-.imageWrapper img {
-  width: 100%;
-  height: 180px;
-  border-radius: 8px;
-
-  object-fit: contain;
-
-  transition: transform 0.3s ease;
-}
-
-.cardImage img {
-  transition: transform 0.25s ease;
-}
-
-.imageWrapper:hover img {
-  transform: scale(1.1);
-}
-
-.card:hover .cardImage img {
-  transform: scale(1.1);
 }

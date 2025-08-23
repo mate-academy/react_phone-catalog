@@ -1,3 +1,5 @@
+// src/modules/CartPage/CartPage.tsx
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
@@ -22,11 +24,13 @@ export const CartPage: React.FC = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className={styles.empty}>
-        <h2 className={styles.emptyTitle}>Your cart is empty.</h2>
-        <Link to="/" className={styles.backButton}>
-          Go to Home
-        </Link>
+      <div className={styles.emptyWrapper}>
+        <div className={styles.empty}>
+          <h2 className={styles.emptyTitle}>Your cart is empty.</h2>
+          <Link to="/" className={styles.backButton}>
+            Go to Home
+          </Link>
+        </div>
       </div>
     );
   }

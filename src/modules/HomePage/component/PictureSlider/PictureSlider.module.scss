@@ -4,10 +4,20 @@
 .slider {
   display: flex;
   flex-direction: column;
-  align-items: center;
-
+  
   width: 100%;
   margin-bottom: 40px;
+}
+
+.title {
+  @include mixins.section-title;
+
+  margin-bottom: 24px;
+
+  @include mixins.on-mobile {
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
 }
 
 .sliderWindow {
@@ -66,7 +76,7 @@
 .right {
   &::before {
     background-image: url('../../../../assets/icons/arrow-right.svg');
-    color: var(--main-text); 
+    color: var(--main-text);
   }
 }
 

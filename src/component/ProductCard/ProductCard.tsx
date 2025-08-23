@@ -22,6 +22,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     images,
     itemId,
     id,
+    screen,
+    capacity,
+    ram,
   } = product;
 
   const mainImage = image || images?.[0];
@@ -50,6 +53,21 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles.priceBlock}>
         <span className={styles.currentPrice}>${currentPrice}</span>
         {oldPrice && <span className={styles.oldPrice}>${oldPrice}</span>}
+      </div>
+
+      <div className={styles.characteristics}>
+        <div>
+          <span>Screen</span>
+          <span>{screen}</span>
+        </div>
+        <div>
+          <span>Capacity</span>
+          <span>{capacity}</span>
+        </div>
+        <div>
+          <span>RAM</span>
+          <span>{ram}</span>
+        </div>
       </div>
 
       <div className={styles.divider} />

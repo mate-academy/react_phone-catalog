@@ -15,7 +15,6 @@
 
 .title {
   @include mixins.section-title;
-
   margin-bottom: 24px;
 
   @include mixins.on-mobile {
@@ -24,12 +23,152 @@
   }
 }
 
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.buttonText {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  transition: color 0.3s;
+}
+
 .sortControl {
   display: flex;
   align-items: center;
+
+  .sortButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--icons);
+    border: 1px solid var(--icons);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+
+    &:hover {
+      border-color: var(--secondary-text);
+      background: var(--secondary-text);
+
+      .buttonText {
+        color: var(--white);
+      }
+
+      .arrow {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+
+  .arrow {
+    width: 16px;
+    height: 16px;
+    transform: rotate(90deg);
+    transition: transform 0.3s, filter 0.3s;
+    filter: brightness(0) invert(1);
+  }
+
+  .arrow.down {
+    transform: rotate(-90deg);
+  }
+}
+
+.perPageControl {
+  position: relative;
+  display: flex;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 24px;
   color: var(--main-text);
+
+  label {
+    font-size: variables.$fs-small;
+    color: var(--secondary-text);
+  }
+
+  .perPageButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--icons);
+    border: 1px solid var(--icons);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+
+    &:hover {
+      background: var(--secondary-text);
+      border-color: var(--secondary-text);
+    }
+
+    &.active {
+      background: var(--secondary-text);
+      border-color: var(--secondary-text);
+    }
+
+    &:hover .buttonText, &.active .buttonText {
+      color: var(--white);
+    }
+
+    &:hover .arrow, &.active .arrow {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  .arrow {
+    width: 16px;
+    height: 16px;
+    transform: rotate(90deg);
+    transition: transform 0.3s, filter 0.3s;
+    filter: brightness(0) invert(1);
+  }
+
+  .arrow.down {
+    transform: rotate(-90deg);
+  }
+
+  .perPageMenu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    background: var(--secondary-text);
+    border: 1px solid var(--icons);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .perPageMenuItem {
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    text-align: left;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    &.active {
+      background: var(--primary);
+      color: var(--white);
+    }
+  }
 }
 
 .content {
@@ -39,5 +178,49 @@
 
   @include mixins.on-tablet {
     gap: 32px;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 8px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--elements);
+  border: 1px solid var(--icons);
+  border-radius: 50%;
+  color: var(--main-text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+
+  &:hover {
+    border-color: var(--primary-text);
+  }
+
+  &.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+  }
+
+  &.disabled {
+    background: var(--elements);
+    color: var(--icons);
+    border-color: var(--elements);
+    cursor: not-allowed;
   }
 }

@@ -46,6 +46,7 @@ export const PictureSlider: React.FC = () => {
 
   return (
     <div className={styles.slider}>
+      <h1 className={styles.title}>Welcome to Nice Gadgets store</h1>
       <div className={styles.sliderWindow}>
         <button
           className={`${styles.arrow} ${styles.left}`}
