@@ -78,7 +78,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   return (
     <section ref={refSliderWidth} className={styles.section}>
       <div className={styles.head}>
-        <h2 className={`pageTitle`}>{title}</h2>
+        <h3 className={`pageTitle`}>{title}</h3>
 
         <div className={styles.arrows}>
           <ArrowButton

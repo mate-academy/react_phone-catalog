@@ -234,17 +234,17 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
           <div className={styles.head}>
             <Breadcrumb />
             <div className={styles.headContent}>
-              <h1 className={styles.title}>
+              <h2 className={styles.title}>
                 {type === 'phones' ? t.productsPage.phones : 
                  type === 'tablets' ? t.productsPage.tablets : 
                  t.productsPage.accessories}
-              </h1>
+              </h2>
               <span className={`${styles.counter} smallText`}>0 {t.categories.models}</span>
             </div>
           </div>
 
           <div className={styles.notFound}>
-            <h2>{t.productsPage.somethingWentWrong}</h2>
+            <h3>{t.productsPage.somethingWentWrong}</h3>
 
             <button
               type="button"
@@ -269,11 +269,11 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
             <Breadcrumb />
 
             <div className={styles.headContent}>
-              <h1 className={styles.title}>
+              <h2 className={styles.title}>
                 {type === 'phones' ? t.productsPage.phones : 
                  type === 'tablets' ? t.productsPage.tablets : 
                  t.productsPage.accessories}
-              </h1>
+              </h2>
 
               <span
                 className={`${styles.counter} smallText`}

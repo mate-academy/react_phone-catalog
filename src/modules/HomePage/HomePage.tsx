@@ -11,8 +11,9 @@ export const HomePage: React.FC = () => {
 
   return (
     <main className={styles.main}>
+      <h1 className={styles.homeTitle}>Product Catalog</h1>
       <div className={styles.header}>
-        <h1 className={styles.title}>{t.homePage.welcomeMessage}</h1>
+        <h2 className={styles.title}>{t.homePage.welcomeMessage}</h2>
         <PicturesSlider />
       </div>
 

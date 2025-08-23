@@ -91,7 +91,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
             <img className={styles.img} src={`/img/icons/${theme}-theme/Plus.svg`} alt="Plus" />
           </button>
         </div>
-        <h3 className={styles.priceTitle}>${product.price * counterValue}</h3>
+        <h4 className={styles.priceTitle}>${product.price * counterValue}</h4>
       </div>
     </Link>
   ) : <CartProductSkeleton />

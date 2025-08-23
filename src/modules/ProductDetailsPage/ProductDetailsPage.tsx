@@ -108,7 +108,7 @@ export const ProductDetailsPage: React.FC = () => {
             <Back />
 
             <div className={styles.product}>
-              <h2 className={styles.title}>{product?.name}</h2>
+              <h3 className={styles.title}>{product?.name}</h3>
 
               <div className={styles.pictures}>
                 {product.images?.map((url: string) => (
@@ -177,12 +177,12 @@ export const ProductDetailsPage: React.FC = () => {
                 <div className={styles.line}></div>
 
                 <div className={styles.order}>
-                  <h3 className={styles.price}>
+                  <h4 className={styles.price}>
                     ${product.priceDiscount}{' '}
                     <span className={styles.fullPrice}>
                       ${product.priceRegular}
                     </span>
-                  </h3>
+                  </h4>
 
                   <div className={styles.buttons}>
                     <AddToCart
@@ -217,13 +217,13 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.about}>
             <div>
-              <h3 className={styles.aboutTitle}>{t.productDetailsPage.about}</h3>
+              <h4 className={styles.aboutTitle}>{t.productDetailsPage.about}</h4>
               <div className={styles.line}></div>
             </div>
 
             {product.description.map(item => (
               <div className={styles.aboutItem} key={item.title}>
-                <h4 className={styles.aboutSubtitle}>{item.title}</h4>
+                <h5 className={styles.aboutSubtitle}>{item.title}</h5>
 
                 {item.text.map(text => (
                   <p className={`${styles.aboutText} bodyText`} key={text}>{text}</p>
@@ -234,7 +234,7 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.techSpecs}>
             <div>
-              <h3 className={styles.techSpecsTitle}>{t.productDetailsPage.techSpecs}</h3>
+              <h4 className={styles.techSpecsTitle}>{t.productDetailsPage.techSpecs}</h4>
               <div className={styles.line}></div>
             </div>
 
@@ -277,7 +277,7 @@ export const ProductDetailsPage: React.FC = () => {
           <Breadcrumb />
           <Back />
 
-          <h1 className={styles.title}>{t.productDetailsPage.productNotFound}</h1>
+          <h2 className={styles.title}>{t.productDetailsPage.productNotFound}</h2>
         </div>
       )}
     </main>

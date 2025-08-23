@@ -15,7 +15,7 @@
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
 }
 
-h1 {
+h2 {
   font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   font-weight: 800;
@@ -28,7 +28,7 @@ h1 {
   }
 }
 
-h2 {
+h3 {
   font-family: Mont-Bold, sans-serif;
   font-size: 22px;
   font-weight: 800;
@@ -43,7 +43,7 @@ h2 {
   }
 }
 
-h3 {
+h4 {
   font-family: Mont-Bold, sans-serif;
   font-size: 22px;
   font-weight: 800;
@@ -51,7 +51,7 @@ h3 {
   letter-spacing: 0;
 }
 
-h4 {
+h5 {
   font-family: Mont-SemiBold, sans-serif;
   font-size: 20px;
   font-weight: 700;

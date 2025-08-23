@@ -3,15 +3,7 @@ describe('App', () => {
     cy.visit('/');
   });
 
-  it('should have h1', () => true ); 
+  it('should have h1', () => {
+    cy.get('h1').should('have.text', 'Product Catalog');
+  });
 });
-
-// describe('App', () => {
-//   beforeEach(() => {
-//     cy.visit('/');
-//   });
-
-//   it('should have h1', () => {
-//     cy.get('h1').should('have.text', 'Product Catalog');
-//   });
-// });

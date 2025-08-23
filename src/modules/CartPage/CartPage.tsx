@@ -70,7 +70,7 @@ export const CartPage: React.FC = () => {
           <Back />
 
           <div className={styles.content}>
-          <h1 className={styles.title}>{t.cartPage.title}</h1>
+          <h2 className={styles.title}>{t.cartPage.title}</h2>
             <div className={styles.products}>
               {cartProductsIds.map(id => (
                 <CartProduct
@@ -85,7 +85,7 @@ export const CartPage: React.FC = () => {
 
             <div className={styles.checkout}>
               <div className={styles.checkoutContent}>
-                <h2 className={styles.price}>${totalSum}</h2>
+                <h3 className={styles.price}>${totalSum}</h3>
                 <span
                   className={`${styles.total} bodyText`}
                 >{t.cartPage.totalFor} {totalItems} {totalItems === 1 ? t.cartPage.item : t.cartPage.items}</span>

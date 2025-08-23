@@ -48,12 +48,12 @@ export const Card: React.FC<Props> = ({ card }) => {
           <p className={`bodyText ${styles.name}`}>
             {card.name}
           </p>
-          <h3 className={styles.price}>
+          <h4 className={styles.price}>
             ${card.price}{' '}
             <span className={styles.fullPrice}>
               ${card.fullPrice}
             </span>
-          </h3>
+          </h4>
 
           <div className={styles.line}></div>
 

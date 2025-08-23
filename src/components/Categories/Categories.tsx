@@ -10,7 +10,7 @@ export const Categories: React.FC = () => {
 
   return (
     <section className={styles.section}>
-      <h2>{t.categories.title}</h2>
+      <h3>{t.categories.title}</h3>
 
       <div className={styles.wrapper}>
         <Link
@@ -20,7 +20,7 @@ export const Categories: React.FC = () => {
           <div className={`${styles.banner} ${styles.bannerPhones}`}></div>
 
           <div className={styles.details}>
-            <h4 className={styles.title}>{t.categories.phones}</h4>
+            <h5 className={styles.title}>{t.categories.phones}</h5>
             <span className={`${styles.counter} bodyText`}>{products.filter(product => product.category === 'phones').length} {t.categories.models}</span>
           </div>
         </Link>
@@ -32,7 +32,7 @@ export const Categories: React.FC = () => {
           <div className={`${styles.banner} ${styles.bannerTablets}`}></div>
 
           <div className={styles.details}>
-            <h4 className={styles.title}>{t.categories.tablets}</h4>
+            <h5 className={styles.title}>{t.categories.tablets}</h5>
             <span className={`${styles.counter} bodyText`}>{products.filter(product => product.category === 'tablets').length} {t.categories.models}</span>
           </div>
         </Link>
@@ -44,7 +44,7 @@ export const Categories: React.FC = () => {
           <div className={`${styles.banner} ${styles.bannerAccessories}`}></div>
 
           <div className={styles.details}>
-            <h4 className={styles.title}>{t.categories.accessories}</h4>
+            <h5 className={styles.title}>{t.categories.accessories}</h5>
             <span className={`${styles.counter} bodyText`}>{products.filter(product => product.category === 'accessories').length} {t.categories.models}</span>
           </div>
         </Link>

@@ -21,7 +21,7 @@ export const ModalWindow: React.FC<Props> = ({ isOpen, onClose }) => {
     <div
       className={`${styles.modal} ${isOpen ? styles.open : ''}`}
     >
-      <h3 className={styles.title}>{t.modal.checkoutNotImplemented}</h3>
+      <h4 className={styles.title}>{t.modal.checkoutNotImplemented}</h4>
 
       <div className={styles.buttons}>
         <button

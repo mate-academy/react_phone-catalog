@@ -11,6 +11,11 @@
   }
 }
 
+.homeTitle {
+  display: none;
+  color: var(--header-bg-color);
+}
+
 .header {
   display: flex;
   flex-direction: column;

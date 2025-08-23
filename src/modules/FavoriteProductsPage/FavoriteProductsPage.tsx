@@ -18,7 +18,7 @@ export const FavoriteProductsPage: React.FC = () => {
       <div className={styles.head}>
         <Breadcrumb />
         <div className={styles.headContent}>
-          <h1 className={`${styles.title}`}>{t.favoritesPage.title}</h1>
+          <h2 className={`${styles.title}`}>{t.favoritesPage.title}</h2>
 
           <span className={`${styles.counter} bodyText`}>
             {favouriteProductsIds.length === 1
