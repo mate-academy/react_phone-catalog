@@ -2,7 +2,18 @@
 
 .product-page {
 
+
   @include content-padding-inline();
+
+
+
+  &__wrapper {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
 
   &__title {
     font-weight: 800;
@@ -16,10 +27,32 @@
   }
 
   &__quantity {
+    display: block;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     color: $main-gray;
     margin-top: 8px;
+  }
+
+  &__select {
+    appearance: none;
+
+    width: 136px;
+    height: 40px;
+    padding-inline: 12px;
+    border: 1px solid $others-gray;
+
+    background-image: url('/public/img/icons/arrows/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+
+    font-family: Mont;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:focus {
+      border: 1px solid $main-black;
+    }
   }
 }

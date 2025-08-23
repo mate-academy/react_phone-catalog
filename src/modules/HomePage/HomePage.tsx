@@ -21,6 +21,8 @@ export const HomePage: React.FC = () => {
       });
   }, [setAllProducts]);
 
+  console.log(allProducts);
+
   const gadgetsCount = (category: string) => {
     return allProducts.filter(product => product.category === category).length;
   };

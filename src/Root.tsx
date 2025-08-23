@@ -1,6 +1,6 @@
 import { HomePage } from './modules/HomePage';
 import { App } from './App';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ProductPage } from './modules/ProductPage';
 
 export const Root = () => {

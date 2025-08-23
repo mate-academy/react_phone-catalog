@@ -7,6 +7,10 @@ export const getAllProducts = () => {
   return client.get<Product[]>('api/products.json');
 };
 
+export const getPhones = () => {
+  return client.get<ProductData[]>('api/phones.json');
+};
+
 export const getCategoryProduct = (category: CurrentCategory) => {
   return client.get<ProductData[]>(`api/${category}.json`);
 };

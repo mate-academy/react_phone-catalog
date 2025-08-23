@@ -1,0 +1,32 @@
+@import '/src/styles/vars';
+
+.breadcrumbs {
+
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+
+  &__link {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__category {
+    display: block;
+    font-size: 14px;
+    line-height: 100%;
+    color: $main-gray;
+
+    &:hover {
+      color: $main-black;
+    }
+  }
+}
