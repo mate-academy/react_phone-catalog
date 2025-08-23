@@ -1,12 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { useSliderData } from '../';
 import { useRef } from 'react';
-export const useSliderUtils = (
-  gap: number,
-  startIndex: number,
-  amount: number,
-) => {
+import { visualConfig } from '../configs';
+export const useSliderUtils = (startIndex: number, amount: number) => {
   const dragThreshold = 3;
+  const { gap } = visualConfig;
   const { DOM, measure, mechanics } = useSliderData();
   const id = {
     pointer: useRef<number | null>(null),

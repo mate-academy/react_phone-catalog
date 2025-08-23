@@ -14,6 +14,11 @@ const defaultConf = {
   startIndex: 1,
 };
 
+const visualConfig = {
+  gap: 16,
+  animationSpeed: 300,
+};
+
 const hero = {
   element: HeroSlider,
   skeleton: HeroSkeleton,
@@ -44,4 +49,4 @@ const configs = {
   [SliderMode.PRODUCT_CARD]: product,
 };
 
-export { configs };
+export { configs, visualConfig };

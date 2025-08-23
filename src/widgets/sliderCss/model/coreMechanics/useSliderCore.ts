@@ -2,17 +2,16 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useSliderData } from '../';
 import { useSliderUtils, useAnimation } from '.';
+import { visualConfig } from '../configs';
 
-export const useSliderCore = (
-  gap: number,
-  startIndex: number,
-  amount: number,
-) => {
+export const useSliderCore = (startIndex: number, amount: number) => {
   const { DOM, mechanics, measure } = useSliderData();
-  const { toggleTrackClass, snap, af } = useAnimation(gap);
-  const { drag, updateSizes, math } = useSliderUtils(gap, startIndex, amount);
+  const { toggleTrackClass, snap, af } = useAnimation();
+  const { drag, updateSizes, math } = useSliderUtils(startIndex, amount);
   const initialSetup = useRef<boolean>(false);
   const startX = useRef<number | null>(null);
+
+  const { gap } = visualConfig;
 
   useLayoutEffect(() => {
     updateSizes();

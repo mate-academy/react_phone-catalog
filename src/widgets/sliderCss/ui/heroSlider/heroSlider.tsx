@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from '../../styles/sliderMain.module.scss';
 import { useSliderCore, useSliderData, useInfinite } from '../../model';
 import { SliderButtons, InfiniteBlockPagination } from '../shared';
+import { visualConfig } from '@widgets/sliderCss/model/configs';
 
 type Props = {
   data: BannerData[];
@@ -15,11 +16,12 @@ type Props = {
 };
 
 export const HeroSlider: React.FC<Props> = ({ data, props }) => {
-  const { amount, gap, animationSpeed, startIndex } = props;
+  const { amount, startIndex } = props;
+  const { animationSpeed, gap } = visualConfig;
   const { DOM } = useSliderData();
-  const { trackHandlers, setByIndex } = useSliderCore(gap, startIndex, amount);
+  const { trackHandlers, setByIndex } = useSliderCore(startIndex, amount);
 
-  useInfinite(animationSpeed, amount, gap);
+  useInfinite(amount);
   const firstClone = data.at(-1) as BannerData;
   const lastClone = data.at(0) as BannerData;
   const dataIDs = data.map(el => el.id);

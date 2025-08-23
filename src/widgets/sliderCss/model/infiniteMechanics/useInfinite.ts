@@ -1,14 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { useSliderData } from '../context/sliderContext';
 import { useAnimation } from '../coreMechanics';
+import { visualConfig } from '../configs';
 
-export const useInfinite = (
-  animationSpeed: number,
-  amount: number,
-  gap: number,
-) => {
+export const useInfinite = (amount: number) => {
+  const { animationSpeed } = visualConfig;
   const { mechanics, rerender } = useSliderData();
-  const { snap } = useAnimation(gap);
+  const { snap } = useAnimation();
   const isTransitioning = useRef<boolean>(false);
 
   const transition = (pos: number) => {

@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useSliderData } from '..';
 import styles from '../../styles/noAnimationClass.module.scss';
+import { visualConfig } from '../configs';
 
-export const useAnimation = (gap: number) => {
+export const useAnimation = () => {
   const { DOM, mechanics, measure, rerender } = useSliderData();
+  const { gap } = visualConfig;
   const rafId = useRef<number | null>(null);
 
   const toggleTrackClass = (anim: boolean) => {
