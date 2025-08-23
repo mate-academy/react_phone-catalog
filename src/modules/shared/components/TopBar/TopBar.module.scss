@@ -38,5 +38,52 @@
 
   &__icons {
     display: flex;
+    background: #ffffff5d;
+  }
+
+  &__switch {
+    position: relative;
+    align-self: center;
+    height: 1.5rem;
+    width: 3rem;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 9999px;
+    background-color: #64748b60;
+    transition: all 0.3s ease;
+
+    &:checked {
+      background-color: #0116f5;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      left: calc(1.5rem - 1.6rem);
+      top: calc(1.5rem - 1.6rem);
+      display: block;
+      height: 1.6rem;
+      width: 1.6rem;
+      cursor: pointer;
+      border: 1px solid #64748b86;
+      border-radius: 9999px;
+      background-color: #fff;
+      box-shadow: 0 3px 10px #64748b53;
+      transition: all 0.3s ease;
+    }
+
+    &:hover::before {
+      box-shadow: 0 0 0 8px #00000026;
+    }
+
+    &:checked::before {
+      transform: translateX(100%);
+      border-color: #ec4899;
+    }
+
+    &:checked:hover::before {
+      box-shadow: 0 0 0 8px #ec489926;
+    }
   }
 }

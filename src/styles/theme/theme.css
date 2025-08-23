@@ -47,6 +47,31 @@
 }
 
 [data-theme='dark'] {
-  --main-bg-color: #121212;
-  --text-color: #fff;
+  --main-bg-color: #0d1b2a; /* темно-синій глобальний фон */
+  --main-text-color: #e0e6ed; /* основний текст (світло-сірий з блакиттю) */
+  --text-color: #a9b4c4; /* другорядний текст */
+  --gray: #3f3d3d;
+  --primery: #cbd5e1; /* головний колір тексту/іконок */
+  --secondary: #94a3b8; /* допоміжний текст */
+  --elements: #1e293b; /* бордери/елементи (темний slate) */
+  --icons: #64748b; /* іконки (сіро-блакитні) */
+  --menu-bg-color: var(--main-bg-color);
+  --menu-active-text-color: var(--primery);
+  --nav-bg-color: var(--main-bg-color);
+  --card-bg-color: #1b263b; /* картки: трохи світліші за фон */
+  --card-border-color: var(--elements);
+  --arrow-color: var(--primery);
+  --button-color: var(--main-bg-color);
+  --button-bg-color: #3b82f6; /* синя кнопка (можна tailwind blue-500) */
+  --icon-border-color: var(--icons);
+  --icon-border-hover-color: var(--primery);
+  --icon-border-disabled-color: var(--elements);
+  --category-phone-bg: #334155; /* navy-gray */
+  --category-accessory-bg: #475569;
+  --category-tablet-bg: #1e3a8a; /* насичений синій */
+  --select-border-color: var(--icon-border-color);
+  --select-border-hover-color: var(--secondary);
+  --select-border-focus-color: var(--primery);
+  --select-option-bg-color: #1e293b;
+  --select-option-focus-bg-color: #243447;
 }

@@ -16,6 +16,17 @@ export const TopBar = () => {
   const { favProducts } = useContext(FavoritesContext);
   const { cartProducts } = useContext(CartContext);
   const getBurgerName = !isActive ? IconEnum.burger : IconEnum.close;
+  const [toggleSwitch, setToggleSwitch] = useState(
+    localStorage.getItem('theme') === 'dark',
+  );
+  const handleToggleTheme = () => {
+    const newTheme = !toggleSwitch ? 'dark' : 'light';
+
+    setToggleSwitch(!toggleSwitch);
+
+    document.body.dataset.theme = newTheme;
+    localStorage.setItem('theme', newTheme);
+  };
 
   useEffect(() => {
     setIsActive(false);
@@ -37,6 +48,12 @@ export const TopBar = () => {
           </Link>
           <Navbar onLinkClick={() => setIsActive(false)} />
         </div>
+        <input
+          className={topBarStyle['top-bar__switch']}
+          type="checkbox"
+          checked={toggleSwitch}
+          onChange={() => handleToggleTheme()}
+        ></input>
         <div className={topBarStyle['top-bar__icons']}>
           <Icon
             count={cartProducts.length}

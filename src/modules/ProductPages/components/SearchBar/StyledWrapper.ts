@@ -15,11 +15,11 @@ export const StyledWrapper = styled.div`
     line-height: 28px;
     padding: 0 1rem;
     padding-left: 2.5rem;
-    border: 2px solid transparent;
+    // border: 2px solid transparent;
     border-radius: 8px;
     outline: none;
-    background-color: #f3f3f4;
-    color: #0d0c22;
+    // background-color: #f3f3f4;
+    // color: #0d0c22;
     transition: 0.3s ease;
   }
 
@@ -31,7 +31,7 @@ export const StyledWrapper = styled.div`
   input:hover {
     outline: none;
     border-color: rgba(234, 76, 137, 0.4);
-    background-color: #fff;
+    // background-color: #fff;
     box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
   }
 

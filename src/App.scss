@@ -1,9 +1,12 @@
-// not empty
+@use './styles/index' as *;
+
 .App {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  min-height: 100vh;
+  background-color: $main-bg-color;
+  color: $main-text-color;
 
   &__content {
     display: flex;

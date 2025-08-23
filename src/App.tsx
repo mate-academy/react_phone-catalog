@@ -8,6 +8,10 @@ import { BackButton } from './modules/shared/components/BackButton';
 import { PageProvider } from './context/PageContext';
 import { ProductDetailProvider } from './context/ProductDetailContext';
 
+const savedTheme = localStorage.getItem('theme') || 'light';
+
+document.body.dataset.theme = savedTheme;
+
 export const App = () => (
   <PageProvider>
     <ProductDetailProvider>

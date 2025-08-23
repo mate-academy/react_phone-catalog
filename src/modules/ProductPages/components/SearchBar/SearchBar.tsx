@@ -6,6 +6,8 @@ import { StyledWrapper } from './StyledWrapper';
 import { useDebounce } from 'use-debounce';
 import { SearchEnum } from '../../../../types/SearchType';
 import { getSearchWith } from '../../../../utils/searchHelper';
+import cn from 'classnames';
+import style from './searchBar.module.scss';
 
 export const SearchBar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -39,7 +41,7 @@ export const SearchBar = () => {
         <input
           placeholder="Search"
           type="search"
-          className="input"
+          className={cn('input', style.search)}
           value={inputValue}
           onChange={handleChange}
           autoFocus

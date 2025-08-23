@@ -6,6 +6,7 @@ export const customSelectStyles: StylesConfig = {
     // усе стилізується через SCSS, мінімально втручаємося
     cursor: 'pointer',
     // 'border-color': state.isFocused ? 'none' : 'none',
+    background: 'inherit',
   }),
 
   menu: base => ({
