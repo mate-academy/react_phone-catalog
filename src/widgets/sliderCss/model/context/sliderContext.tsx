@@ -14,31 +14,21 @@ type SliderDataType = {
   };
   mechanics: {
     offset: React.MutableRefObject<number>;
-    startX: React.MutableRefObject<number | null>;
     drag: React.MutableRefObject<number | null>;
     dragging: React.MutableRefObject<boolean>;
+    index: React.MutableRefObject<number>;
   };
-  ids: {
-    rafId: React.MutableRefObject<number | null>;
-    pointerId: React.MutableRefObject<number | null>;
-  };
-  activeIndex: number;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
-  gap: number;
-  startIndex: number;
+  rerender: () => void;
 };
 
 const SliderDataContext = createContext<SliderDataType | null>(null);
 
 type ContextProps = {
   children: ReactNode;
-  contextConfig: {
-    startIndex: number;
-    gap: number;
-  };
+  startIndex: number;
 };
 
-const SliderDataProvider = ({ children, contextConfig }: ContextProps) => {
+const SliderDataProvider = ({ children, startIndex }: ContextProps) => {
   const DOMRefs = {
     viewport: useRef<HTMLDivElement>(null),
     track: useRef<HTMLDivElement>(null),
@@ -53,27 +43,19 @@ const SliderDataProvider = ({ children, contextConfig }: ContextProps) => {
 
   const mechRefs = {
     offset: useRef<number>(0),
-    startX: useRef<number | null>(null),
     drag: useRef<number | null>(null),
     dragging: useRef<boolean>(false),
+    index: useRef<number>(startIndex),
   };
 
-  const idRefs = {
-    rafId: useRef<number | null>(null),
-    pointerId: useRef<number | null>(null),
-  };
-  const { startIndex, gap } = contextConfig;
-  const [activeIndex, setActiveIndex] = useState(startIndex);
+  const [tick, setTick] = useState(false);
+  const rerender = () => setTick(!tick);
 
   const data = {
     DOM: DOMRefs,
     measure: measureRefs,
     mechanics: mechRefs,
-    ids: idRefs,
-    activeIndex,
-    setActiveIndex,
-    gap,
-    startIndex,
+    rerender,
   };
 
   return (

@@ -1,40 +1,87 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-param-reassign */
-import { useCallback } from 'react';
-import { useSliderData } from '../context/sliderContext';
-
-export const useSliderUtils = () => {
+import { useSliderData } from '../';
+import { useRef } from 'react';
+export const useSliderUtils = (
+  gap: number,
+  startIndex: number,
+  amount: number,
+) => {
   const dragThreshold = 3;
-  const { DOM, measure, mechanics, ids } = useSliderData();
-  const utils = {
-    setDrag: useCallback((e: React.PointerEvent<HTMLDivElement>) => {
-      if (Math.abs(mechanics.drag.current as number) > dragThreshold) {
-        mechanics.dragging.current = true;
-        ids.pointerId.current = e.pointerId;
-        e.currentTarget.setPointerCapture(ids.pointerId.current);
-      }
-    }, []),
-    updateSizes: useCallback(() => {
-      const toUpdate = [
-        { element: DOM.viewport, size: measure.VPWidth },
-        { element: DOM.track, size: measure.trackWidth },
-        { element: DOM.item, size: measure.itemWidth },
-      ];
-
-      toUpdate.forEach(el => {
-        if (!el.element.current) {
-          return;
-        }
-
-        el.size.current = el.element.current.offsetWidth;
-      });
-    }, []),
-    cleanup: useCallback(() => {
-      if (ids.pointerId.current !== null) {
-        ids.pointerId.current = null;
-      }
-    }, []),
+  const { DOM, measure, mechanics } = useSliderData();
+  const id = {
+    pointer: useRef<number | null>(null),
+    raf: useRef<number | null>(null),
   };
 
-  return { utils };
+  const drag = {
+    set: (e: React.PointerEvent<HTMLDivElement>) => {
+      if (Math.abs(mechanics.drag.current as number) > dragThreshold) {
+        mechanics.dragging.current = true;
+        id.pointer.current = e.pointerId;
+        e.currentTarget.setPointerCapture(id.pointer.current);
+      }
+    },
+    stop: (e: React.PointerEvent<HTMLDivElement>) => {
+      e.currentTarget.releasePointerCapture(id.pointer.current as number);
+      id.pointer.current = null;
+    },
+  };
+
+  const updateSizes = () => {
+    const toUpdate = [
+      { element: DOM.viewport, size: measure.VPWidth },
+      { element: DOM.track, size: measure.trackWidth },
+      { element: DOM.item, size: measure.itemWidth },
+    ];
+
+    toUpdate.forEach(el => {
+      if (!el.element.current) {
+        return;
+      }
+
+      // eslint-disable-next-line no-param-reassign
+      el.size.current = el.element.current.offsetWidth;
+    });
+  };
+
+  const math = {
+    checkIndexClamp: (arg: number) => {
+      if (arg < 0) {
+        return amount;
+      }
+
+      if (arg >= amount + startIndex * 2) {
+        return startIndex;
+      }
+
+      return arg;
+    },
+
+    getNewIndex: () => {
+      const idx = -mechanics.offset.current / (measure.itemWidth.current + gap);
+
+      if ((mechanics.drag.current as number) > 0) {
+        return math.checkIndexClamp(Math.floor(idx));
+      }
+
+      return math.checkIndexClamp(Math.ceil(idx));
+    },
+
+    dragClamp: () => {
+      const potentialOffset =
+        mechanics.offset.current + (mechanics.drag.current as number);
+      const max =
+        -(measure.itemWidth.current + gap) * (amount - 1 + startIndex * 2);
+
+      if (potentialOffset < max) {
+        mechanics.offset.current = max;
+      } else if (potentialOffset > 0) {
+        mechanics.offset.current = 0;
+      } else {
+        mechanics.offset.current = potentialOffset;
+      }
+    },
+  };
+
+  return { drag, updateSizes, math };
 };

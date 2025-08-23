@@ -1,30 +1,34 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSliderData } from '../context/sliderContext';
-import { useSliderMath } from '../coreMechanics';
-import { manipulate } from '../helpers';
+import { useAnimation } from '../coreMechanics';
 
-type Props = {
-  amount: number;
-};
+export const useInfinite = (
+  animationSpeed: number,
+  amount: number,
+  gap: number,
+) => {
+  const { mechanics, rerender } = useSliderData();
+  const { snap } = useAnimation(gap);
+  const isTransitioning = useRef<boolean>(false);
 
-export const useInfinite = ({ amount }: Props) => {
-  const { setActiveIndex, activeIndex } = useSliderData();
-  const { DOM } = useSliderData();
-  const { math } = useSliderMath();
+  const transition = (pos: number) => {
+    if (isTransitioning.current) {
+      return;
+    }
 
-  const transition = useCallback((pos: number) => {
+    isTransitioning.current = true;
     setTimeout(() => {
-      manipulate.toggleTrackClass(DOM.track.current as HTMLDivElement, false);
-      math.updateOffset(pos);
-      setActiveIndex(pos);
-    }, 300);
-  }, []);
+      snap(pos, false);
+      rerender();
+      isTransitioning.current = false;
+    }, animationSpeed);
+  };
 
   useEffect(() => {
-    if (activeIndex < 1) {
+    if (mechanics.index.current < 1) {
       transition(amount);
-    } else if (activeIndex > amount) {
+    } else if (mechanics.index.current > amount) {
       transition(1);
     }
-  }, [activeIndex]);
+  }, [rerender]);
 };

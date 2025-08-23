@@ -6,28 +6,35 @@ import { SliderButtons, InfiniteBlockPagination } from '../shared';
 
 type Props = {
   data: BannerData[];
+  props: {
+    amount: number;
+    gap: number;
+    animationSpeed: number;
+    startIndex: number;
+  };
 };
-export const HeroSlider: React.FC<Props> = ({ data }) => {
-  const amount = data.length;
-  const { DOM, mechanics, gap } = useSliderData();
-  const { handlers } = useSliderCore({ amount });
 
-  useInfinite({ amount });
+export const HeroSlider: React.FC<Props> = ({ data, props }) => {
+  const { amount, gap, animationSpeed, startIndex } = props;
+  const { DOM } = useSliderData();
+  const { trackHandlers, setByIndex } = useSliderCore(gap, startIndex, amount);
+
+  useInfinite(animationSpeed, amount, gap);
   const firstClone = data.at(-1) as BannerData;
   const lastClone = data.at(0) as BannerData;
   const dataIDs = data.map(el => el.id);
 
   return (
     <section className={styles['hero-slider']} aria-label="Featured promotions">
-      <SliderButtons handler={handlers.onButton} />
-      <div className={styles.viewport} ref={DOM.viewport} {...handlers}>
+      <SliderButtons setByIndex={setByIndex} />
+      <div className={styles.viewport} ref={DOM.viewport} {...trackHandlers}>
         <div
           className={styles.track}
           ref={DOM.track}
           style={
             {
-              '--offset': `${mechanics.offset.current}px`,
               '--gap': `${gap}px`,
+              '--animation-speed': `${animationSpeed}ms`,
             } as React.CSSProperties
           }
         >
@@ -44,7 +51,7 @@ export const HeroSlider: React.FC<Props> = ({ data }) => {
               aria-label={el.ariaLabel}
               to={'/phones'}
               className={styles.track__el}
-              onClick={e => handlers.onClick(e)}
+              onClick={e => trackHandlers.onClick(e)}
               ref={el.id === 0 ? DOM.item : null}
             >
               <img src={el.src} alt={el.alt} className={styles.banner} />
@@ -61,7 +68,8 @@ export const HeroSlider: React.FC<Props> = ({ data }) => {
       </div>
       <InfiniteBlockPagination
         dataIDs={dataIDs}
-        handler={handlers.onPagination}
+        setByIndex={setByIndex}
+        startIndex={startIndex}
       />
     </section>
   );

@@ -4,23 +4,28 @@ import classNames from 'classnames';
 
 type Props = {
   dataIDs: number[];
-  handler: (pos: number) => void;
+  setByIndex: (idx: number) => void;
+  startIndex: number;
 };
 
-export const InfiniteBlockPagination = ({ dataIDs, handler }: Props) => {
-  const { activeIndex } = useSliderData();
+export const InfiniteBlockPagination = ({
+  dataIDs,
+  setByIndex,
+  startIndex,
+}: Props) => {
+  const { mechanics } = useSliderData();
   const getCurrent = (id: number) => {
     const mod = id + 1;
 
-    if (activeIndex > dataIDs.length) {
+    if (mechanics.index.current > dataIDs.length) {
       return mod === 1;
     }
 
-    if (activeIndex < 1) {
+    if (mechanics.index.current < 1) {
       return mod === dataIDs.length;
     }
 
-    return mod === activeIndex;
+    return mod === mechanics.index.current;
   };
 
   return (
@@ -29,7 +34,7 @@ export const InfiniteBlockPagination = ({ dataIDs, handler }: Props) => {
         <button
           className={styles['pagination-button']}
           key={el}
-          onClick={() => handler(el)}
+          onClick={() => setByIndex(el + startIndex)}
           aria-current={getCurrent(el)}
         >
           <div

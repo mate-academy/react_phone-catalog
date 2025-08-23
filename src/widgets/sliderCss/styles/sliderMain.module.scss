@@ -20,7 +20,7 @@
   @media (min-width: s.$c-BREAKPOINT_WIDE) {
     column-gap: 16px;
   }
-  
+
   // buttons & pagination props-free positioning
   > :first-child {
     grid-area: 1 / 1 / 2 / 2;
@@ -46,8 +46,7 @@
   display: flex;
   aspect-ratio: 1 / 1;
   gap: var(--gap);
-  translate: var(--offset);
-
+  transition: var(--animation-speed) ease-in-out;
 
   &__el {
     display: block;

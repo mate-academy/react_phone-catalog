@@ -8,23 +8,26 @@ import {
   ProdSkeleton,
 } from '../ui';
 
+const defaultConf = {
+  gap: 16,
+  animationSpeed: 300,
+  startIndex: 1,
+};
+
 const hero = {
   element: HeroSlider,
   skeleton: HeroSkeleton,
   err: 'Unable to load banners',
-  contextConfig: {
-    startIndex: 1,
-    gap: 10,
-  },
+  props: defaultConf,
 };
 
 const catalogue = {
   element: CatalogueSlider,
   skeleton: CatalogueSkeleton,
   err: 'Unable to load catalogue slider',
-  contextConfig: {
+  props: {
+    ...defaultConf,
     startIndex: 0,
-    gap: 16,
   },
 };
 
@@ -32,10 +35,7 @@ const product = {
   element: ProdSlider,
   skeleton: ProdSkeleton,
   err: 'Unable to load product images',
-  contextConfig: {
-    startIndex: 1,
-    gap: 10,
-  },
+  props: defaultConf,
 };
 
 const configs = {

@@ -1,54 +1,54 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useLayoutEffect } from 'react';
-import { manipulate } from '../helpers';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useSliderData } from '../';
-import { useSliderUtils, useSliderMath, useAFLoop } from '.';
-type Props = {
-  amount: number;
-};
+import { useSliderUtils, useAnimation } from '.';
 
-//todo: fix resize fix initialOffset value;
-
-export const useSliderCore = ({ amount }: Props) => {
-  const { DOM, mechanics, ids, activeIndex, setActiveIndex, startIndex } =
-    useSliderData();
-  const { utils } = useSliderUtils();
-  const { af } = useAFLoop();
-  const { math } = useSliderMath();
+export const useSliderCore = (
+  gap: number,
+  startIndex: number,
+  amount: number,
+) => {
+  const { DOM, mechanics, measure } = useSliderData();
+  const { toggleTrackClass, snap, af } = useAnimation(gap);
+  const { drag, updateSizes, math } = useSliderUtils(gap, startIndex, amount);
+  const initialSetup = useRef<boolean>(false);
+  const startX = useRef<number | null>(null);
 
   useLayoutEffect(() => {
-    utils.updateSizes();
-    manipulate.toggleTrackClass(DOM.track.current as HTMLDivElement, false);
+    updateSizes();
+    if (initialSetup.current) {
+      return;
+    }
+
+    snap(startIndex, false);
+    initialSetup.current = true;
   }, [DOM.item, DOM.viewport, DOM.track]);
 
-  const animateTrack = (idx: number, animation: boolean) => {
-    manipulate.toggleTrackClass(DOM.track.current as HTMLDivElement, animation);
-    const newIdx = math.checkIndexClamp(idx, amount);
+  useEffect(() => {
+    mechanics.index.current =
+      -mechanics.offset.current / (measure.itemWidth.current + gap);
+  }, []);
 
-    math.updateOffset(newIdx);
-    setActiveIndex(newIdx);
-  };
-
-  const handlers = {
+  const trackHandlers = {
     onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => {
       e.preventDefault();
-      manipulate.toggleTrackClass(DOM.track.current as HTMLDivElement, false);
-      mechanics.startX.current = e.clientX;
+      toggleTrackClass(false);
+      startX.current = e.clientX;
       mechanics.dragging.current = false;
     },
 
     onPointerMove: (e: React.PointerEvent<HTMLDivElement>) => {
-      if (mechanics.startX.current === null) {
+      if (startX.current === null) {
         return;
       }
 
-      mechanics.drag.current = e.clientX - +mechanics.startX.current;
+      mechanics.drag.current = e.clientX - +startX.current;
       if (!mechanics.dragging.current) {
-        utils.setDrag(e);
+        drag.set(e);
       } else {
         af.start();
-        math.clamp(amount);
-        mechanics.startX.current = e.clientX;
+        math.dragClamp();
+        startX.current = e.clientX;
       }
     },
 
@@ -62,34 +62,22 @@ export const useSliderCore = ({ amount }: Props) => {
 
     onPointerUp: (e: React.PointerEvent<HTMLDivElement>) => {
       af.stop();
-      mechanics.startX.current = null;
-      if (ids.pointerId.current !== null) {
-        e.currentTarget.releasePointerCapture(ids.pointerId.current);
-        ids.pointerId.current = null;
-      }
+      startX.current = null;
 
-      const newIndex = math.getNewIndex();
+      drag.stop(e);
 
-      animateTrack(newIndex, true);
-      mechanics.drag.current = 0;
+      snap(math.getNewIndex(), true);
+      mechanics.drag.current = null;
     },
 
     onPointerCancel: (e: React.PointerEvent<HTMLDivElement>) => {
-      handlers.onPointerUp(e);
-    },
-
-    onButton: (mod: number) => {
-      animateTrack(activeIndex + mod, true);
-    },
-
-    onPagination: (pos: number) => {
-      animateTrack(pos + startIndex, true);
+      trackHandlers.onPointerUp(e);
     },
   };
 
-  useEffect(() => {
-    return () => utils.cleanup();
-  }, []);
+  const setByIndex = (idx: number) => {
+    snap(idx, true);
+  };
 
   useEffect(() => {
     if (!DOM.viewport.current) {
@@ -99,8 +87,9 @@ export const useSliderCore = ({ amount }: Props) => {
     const node = DOM.viewport.current;
 
     const resizeObserver = new ResizeObserver(() => {
-      utils.updateSizes();
-      animateTrack(1, false);
+      updateSizes();
+
+      snap(mechanics.index.current, false);
     });
 
     resizeObserver.observe(node);
@@ -110,5 +99,5 @@ export const useSliderCore = ({ amount }: Props) => {
     };
   }, [DOM.viewport]);
 
-  return { handlers };
+  return { trackHandlers, setByIndex };
 };

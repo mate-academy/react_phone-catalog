@@ -8,12 +8,7 @@ type Props = {
 };
 
 export const SliderS = ({ mode, data }: Props) => {
-  const {
-    element: Element,
-    contextConfig,
-    skeleton: Skeleton,
-    err,
-  } = configs[mode];
+  const { element: Element, skeleton: Skeleton, err, props } = configs[mode];
 
   switch (data) {
     case undefined:
@@ -21,9 +16,11 @@ export const SliderS = ({ mode, data }: Props) => {
     case null:
       return <Skeleton />;
     default:
+      const conf = { ...props, amount: data.length };
+
       return (
-        <SliderDataProvider contextConfig={contextConfig}>
-          <Element data={data} />
+        <SliderDataProvider startIndex={conf.startIndex}>
+          <Element data={data} props={conf} />
         </SliderDataProvider>
       );
   }
