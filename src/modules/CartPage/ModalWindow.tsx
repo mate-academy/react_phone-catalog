@@ -1,5 +1,6 @@
-import { useAppDispatch } from '../../contexts/AppContext';
+import { useAppDispatch, useAppState } from '../../contexts/AppContext';
 import styles from './ModalWindow.module.scss';
+import { getTranslation } from '../shared/utils/getTranslation';
 
 type Props = {
   isOpen: boolean;
@@ -8,6 +9,8 @@ type Props = {
 
 export const ModalWindow: React.FC<Props> = ({ isOpen, onClose }) => {
   const { setCartProductsIds } = useAppDispatch();
+  const { language } = useAppState();
+  const t = getTranslation(language);
 
   function handleConfirm() {
     onClose();
@@ -18,7 +21,7 @@ export const ModalWindow: React.FC<Props> = ({ isOpen, onClose }) => {
     <div
       className={`${styles.modal} ${isOpen ? styles.open : ''}`}
     >
-      <h3 className={styles.title}>Checkout is not implemented yet. Do you want to clear the Cart?</h3>
+      <h3 className={styles.title}>{t.modal.checkoutNotImplemented}</h3>
 
       <div className={styles.buttons}>
         <button
@@ -27,14 +30,14 @@ export const ModalWindow: React.FC<Props> = ({ isOpen, onClose }) => {
             ${styles.button} 
             ${styles.cancel} 
             buttonText
-          `}>Cancel</button>
+          `}>{t.modal.cancel}</button>
         <button
           onClick={handleConfirm}
           className={`
             ${styles.button} 
             ${styles.confirm} 
             buttonText
-          `}>Confirm</button>
+          `}>{t.modal.confirm}</button>
       </div>
     </div>
   )

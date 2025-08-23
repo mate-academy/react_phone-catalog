@@ -18,11 +18,13 @@ import { getColor } from '../shared/utils/getColor';
 import { useAppState, useAppDispatch } from '../../contexts/AppContext';
 import { Loader } from '../../components/Loader';
 import { Back } from '../../components/Back';
+import { getTranslation } from '../shared/utils/getTranslation';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
-  const { cartProductsIds, favouriteProductsIds, products } = useAppState();
+  const { cartProductsIds, favouriteProductsIds, products, language } = useAppState();
   const { toggleFavouriteCard, toggleAddToCart } = useAppDispatch();
+  const t = getTranslation(language);
 
   const [product, setProduct] = useState<ProductDetails | AccessoryDetails | undefined>(undefined);
   const [isProductLoading, setIsProductLoading] = useState(true);
@@ -133,7 +135,7 @@ export const ProductDetailsPage: React.FC = () => {
 
               <div className={styles.mainInfo}>
                 <div className={styles.colors}>
-                  <span className='smallText'>Available colors</span>
+                  <span className='smallText'>{t.productDetailsPage.availableColors}</span>
 
                   <ul className={styles.colorsList}>
                     {product.colorsAvailable.map(item => (
@@ -156,7 +158,7 @@ export const ProductDetailsPage: React.FC = () => {
                 <div className={styles.line}></div>
 
                 <div className={styles.capacity}>
-                  <span className='smallText'>Select capacity</span>
+                  <span className='smallText'>{t.productDetailsPage.selectCapacity}</span>
 
                   <ul className={`${styles.capacityList} bodyText`}>
                     {product.capacityAvailable.map(item => (
@@ -196,10 +198,10 @@ export const ProductDetailsPage: React.FC = () => {
 
                 <div className={styles.info}>
                   <ul className={`${styles.keys} smallText`}>
-                    <li>Screen</li>
-                    <li>Resolution</li>
-                    <li>Processor</li>
-                    <li>RAM</li>
+                    <li>{t.productDetailsPage.screen}</li>
+                    <li>{t.productDetailsPage.resolution}</li>
+                    <li>{t.productDetailsPage.processor}</li>
+                    <li>{t.productDetailsPage.ram}</li>
                   </ul>
 
                   <ul className={`${styles.values} cardValuesText`}>
@@ -215,7 +217,7 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.about}>
             <div>
-              <h3 className={styles.aboutTitle}>About</h3>
+              <h3 className={styles.aboutTitle}>{t.productDetailsPage.about}</h3>
               <div className={styles.line}></div>
             </div>
 
@@ -232,50 +234,50 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.techSpecs}>
             <div>
-              <h3 className={styles.techSpecsTitle}>Tech specs</h3>
+              <h3 className={styles.techSpecsTitle}>{t.productDetailsPage.techSpecs}</h3>
               <div className={styles.line}></div>
             </div>
 
             <ul className={`${styles.techSpecsList} bodyText`}>
               <li className={styles.case}>
-                Screen <span className={styles.value}>{product.screen}</span>
+                {t.productDetailsPage.screen} <span className={styles.value}>{product.screen}</span>
               </li>
               <li className={styles.case}>
-                Resolution <span className={styles.value}>{product.resolution}</span>
+                {t.productDetailsPage.resolution} <span className={styles.value}>{product.resolution}</span>
               </li>
               <li className={styles.case}>
-                Processor <span className={styles.value}>{product.processor}</span>
+                {t.productDetailsPage.processor} <span className={styles.value}>{product.processor}</span>
               </li>
               <li className={styles.case}>
-                RAM <span className={styles.value}>{getFormattedCapacity(product.ram)}</span>
+                {t.productDetailsPage.ram} <span className={styles.value}>{getFormattedCapacity(product.ram)}</span>
               </li>
               <li className={styles.case}>
-                Built in memory <span className={styles.value}>{getFormattedCapacity(product.capacity)}</span>
+                {t.productDetailsPage.builtInMemory} <span className={styles.value}>{getFormattedCapacity(product.capacity)}</span>
               </li>
               {'camera' in product && (
                 <>
                   <li className={styles.case}>
-                    Camera <span className={styles.value}>{product.camera}</span>
+                    {t.productDetailsPage.camera} <span className={styles.value}>{product.camera}</span>
                   </li>
                   <li className={styles.case}>
-                    Zoom <span className={styles.value}>{product.zoom}</span>
+                    {t.productDetailsPage.zoom} <span className={styles.value}>{product.zoom}</span>
                   </li>
                 </>
               )}
               <li className={styles.case}>
-                Cell <span className={styles.value}>{product.cell.join(', ')}</span>
+                {t.productDetailsPage.cell} <span className={styles.value}>{product.cell.join(', ')}</span>
               </li>
             </ul>
           </div>
 
-          <ProductsSlider title={'You may also like'} filter='random' />
+          <ProductsSlider title={t.productDetailsPage.youMayAlsoLike} filter='random' />
         </>
       ) : (
         <div className={styles.head}>
           <Breadcrumb />
           <Back />
 
-          <h1 className={styles.title}>Product not found</h1>
+          <h1 className={styles.title}>{t.productDetailsPage.productNotFound}</h1>
         </div>
       )}
     </main>

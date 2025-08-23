@@ -9,6 +9,7 @@ import { Breadcrumb } from '../../components/Breadcrumb';
 import { Card } from '../../types/Card';
 import { Arrow } from '../../components/Arrow/Arrow';
 import { useOnClickOutside } from '../shared/hooks/useOnClickOutside';
+import { getTranslation } from '../shared/utils/getTranslation';
 
 type Props = {
   type: 'phones' | 'tablets' | 'accessories';
@@ -21,9 +22,11 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   const perPageDropDownRef = useRef<HTMLDivElement>(null);
 
   const [currentProducts, setCurrentProducts] = useState<Card[]>([]);
+  const { language } = useAppState();
+  const t = getTranslation(language);
 
-  const sortValues = ['Newest', 'Alphabetically', 'Chepest'];
-  const perPageValues = ['All', 4, 8, 16];
+  const sortValues = [t.productsPage.newest, t.productsPage.alphabetically, t.productsPage.cheapest];
+  const perPageValues = [t.productsPage.all, 4, 8, 16];
 
   const [isPerPageDropdownOpen, setIsPerPageDropdownOpen] = useState<boolean>(false);
   const [isSortTypeDropdownOpen, setIsSortTypeDropdownOpen] = useState<boolean>(false);
@@ -138,7 +141,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   function handlePerPageChange(value: ItemsPerPage) {
     setSearchParams(prev => {
       const p = new URLSearchParams(prev);
-      if (value === 'All') {
+      if (value === t.productsPage.all) {
         p.delete('perPage');
       } else {
         p.set('perPage', String(value));
@@ -153,13 +156,13 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     setSearchParams(prev => {
       const p = new URLSearchParams(prev);
       switch (value) {
-        case 'Newest':
+        case t.productsPage.newest:
           p.delete('sort');
           break;
-        case 'Alphabetically':
+        case t.productsPage.alphabetically:
           p.set('sort', 'title');
           break;
-        case 'Chepest':
+        case t.productsPage.cheapest:
           p.set('sort', 'price');
           break;
         default:
@@ -174,11 +177,11 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   function getSortTypeValue(type: ProductsSortType): string {
     switch (type) {
       case 'age':
-        return 'Newest';
+        return t.productsPage.newest;
       case 'title':
-        return 'Alphabetically';
+        return t.productsPage.alphabetically;
       case 'price':
-        return 'Chepest';
+        return t.productsPage.cheapest;
       default:
         return '';
     }
@@ -232,14 +235,16 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
             <Breadcrumb />
             <div className={styles.headContent}>
               <h1 className={styles.title}>
-                {type}
+                {type === 'phones' ? t.productsPage.phones : 
+                 type === 'tablets' ? t.productsPage.tablets : 
+                 t.productsPage.accessories}
               </h1>
-              <span className={`${styles.counter} smallText`}>0 models</span>
+              <span className={`${styles.counter} smallText`}>0 {t.categories.models}</span>
             </div>
           </div>
 
           <div className={styles.notFound}>
-            <h2>Something went wrong</h2>
+            <h2>{t.productsPage.somethingWentWrong}</h2>
 
             <button
               type="button"
@@ -265,17 +270,19 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
             <div className={styles.headContent}>
               <h1 className={styles.title}>
-                {type}
+                {type === 'phones' ? t.productsPage.phones : 
+                 type === 'tablets' ? t.productsPage.tablets : 
+                 t.productsPage.accessories}
               </h1>
 
               <span
                 className={`${styles.counter} smallText`}
-              >{currentProducts.length} models</span>
+              >{currentProducts.length} {t.categories.models}</span>
             </div>
 
-            <div className={styles.sorters}>
-              <div className={`${styles.sortType} ${styles.sorter}`}>
-                <span className={`${styles.counter} smallText`}>Sort by</span>
+                          <div className={styles.sorters}>
+                <div className={`${styles.sortType} ${styles.sorter}`}>
+                  <span className={`${styles.counter} smallText`}>{t.productsPage.sortBy}</span>
 
                 <div
                   ref={sortDropDownRef}
@@ -311,7 +318,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
               </div>
 
               <div className={`${styles.perPageItems} ${styles.sorter}`}>
-                <span className={`${styles.counter} smallText`}>Items on page</span>
+                <span className={`${styles.counter} smallText`}>{t.productsPage.itemsOnPage}</span>
                 <div
                   ref={perPageDropDownRef}
                   className={styles.dropdown}
@@ -324,7 +331,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
                       ${isPerPageDropdownOpen ? styles.dropdownTriggerActive : ''}
                     `}
                   >
-                    {perPageValue}
+                    {perPageValue === 'All' ? t.productsPage.all : perPageValue}
                     <span className={styles.arrowContainer}>
                       <Arrow direction='down' isDisabled={true} />
                     </span>

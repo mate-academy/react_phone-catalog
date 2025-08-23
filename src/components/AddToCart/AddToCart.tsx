@@ -1,11 +1,17 @@
 import styles from './AddToCart.module.scss';
+import { useAppState } from '../../contexts/AppContext';
+import { getTranslation } from '../../modules/shared/utils/getTranslation';
 
 type Props = {
   isActive: boolean;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export const AddToCart: React.FC<Props> = ({ onClick, isActive }) => (
+export const AddToCart: React.FC<Props> = ({ onClick, isActive }) => {
+  const { language } = useAppState();
+  const t = getTranslation(language);
+
+  return (
   <button
     className={`
       buttonText 
@@ -14,6 +20,7 @@ export const AddToCart: React.FC<Props> = ({ onClick, isActive }) => (
     `}
     onClick={onClick}
   >
-    {isActive ? 'Added to cart' : 'Add to cart'}
+    {isActive ? t.productDetailsPage.addedToCart : t.productDetailsPage.addToCart}
   </button>
-);
+  );
+};

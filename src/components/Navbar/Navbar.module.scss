@@ -173,21 +173,38 @@
 
 .settings {
   &Icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     transition: all 0.2s ease-in-out;
     fill: var(--color-primary);
 
     &Active {
-      transform: rotate(90deg);
+      transform: rotate(135deg);
     }
   }
 
   &Menu {
     display: flex;
     flex-direction: column;
+    gap: 8px;
     align-items: center;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--color-elements);
+    border-top: none;
+    margin-top: 1px;
     padding: 8px 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+
+    &.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &Type {
+    color: var(--color-primary);
   }
 }
 

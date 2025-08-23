@@ -4,9 +4,11 @@ import { useAppState } from '../../contexts/AppContext';
 import { CartProduct } from './CartProduct';
 import { ModalWindow } from './ModalWindow';
 import { Back } from '../../components/Back';
+import { getTranslation } from '../shared/utils/getTranslation';
 
 export const CartPage: React.FC = () => {
-  const { cartProductsIds, products, isLoadingProducts } = useAppState();
+  const { cartProductsIds, products, isLoadingProducts, language } = useAppState();
+  const t = getTranslation(language);
 
   function countTotal() {
     let sum = 0;
@@ -68,7 +70,7 @@ export const CartPage: React.FC = () => {
           <Back />
 
           <div className={styles.content}>
-          <h1 className={styles.title}>Cart</h1>
+          <h1 className={styles.title}>{t.cartPage.title}</h1>
             <div className={styles.products}>
               {cartProductsIds.map(id => (
                 <CartProduct
@@ -86,7 +88,7 @@ export const CartPage: React.FC = () => {
                 <h2 className={styles.price}>${totalSum}</h2>
                 <span
                   className={`${styles.total} bodyText`}
-                >Total for {totalItems} items</span>
+                >{t.cartPage.totalFor} {totalItems} {totalItems === 1 ? t.cartPage.item : t.cartPage.items}</span>
               </div>
 
               <div className={styles.line}></div>
@@ -94,7 +96,7 @@ export const CartPage: React.FC = () => {
               <button
                 onClick={() => setIsModalOpen(true)}
                 className={`${styles.button} buttonText`}
-              >Checkout</button>
+              >{t.cartPage.checkout}</button>
             </div>
           </div>
         </>
@@ -112,7 +114,7 @@ export const CartPage: React.FC = () => {
       />
 
       {cartProductsIds.length === 0 && (
-        <img className={styles.emptyCart} src="/img/cart-is-empty.png" alt="Cart is empty" />
+        <img className={styles.emptyCart} src="/img/cart-is-empty.png" alt={t.cartPage.cartIsEmpty} />
       )}
     </main>
   );

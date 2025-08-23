@@ -3,6 +3,7 @@ import styles from './BurgerMenu.module.scss';
 import { Logo } from '../Logo';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppState } from '../../contexts/AppContext';
+import { getTranslation } from '../../modules/shared/utils/getTranslation';
 
 type Props = {
   onClose: () => void;
@@ -18,6 +19,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
   } = useAppState();
 
   const { setLanguage, handleThemeChange } = useAppDispatch();
+  const t = getTranslation(language);
 
 
   useEffect(() => {
@@ -33,7 +35,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
       <div className={styles.topbar}>
         <Logo location="navbar" />
         <button onClick={onClose} className={styles.crossContainer}>
-          <img className={styles.img} src={`/img/icons/${theme}-theme/Cross.svg`} alt="Cross" />
+          <img className={styles.img} src={`/img/icons/${theme}-theme/Cross.svg`} alt={t.burgerMenu.cross} />
         </button>
       </div>
 
@@ -48,7 +50,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
                   `${styles.item} uppercaseText${isActive ? ` ${styles.activeLink}` : ''}`
                 }
               >
-                home
+                {t.navbar.home}
               </NavLink>
             </li>
             <li>
@@ -59,7 +61,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
                   `${styles.item} uppercaseText${isActive ? ` ${styles.activeLink}` : ''}`
                 }
               >
-                phones
+                {t.navbar.phones}
               </NavLink>
             </li>
             <li>
@@ -70,7 +72,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
                   `${styles.item} uppercaseText${isActive ? ` ${styles.activeLink}` : ''}`
                 }
               >
-                tablets
+                {t.navbar.tablets}
               </NavLink>
             </li>
             <li>
@@ -81,7 +83,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
                   `${styles.item} uppercaseText${isActive ? ` ${styles.activeLink}` : ''}`
                 }
               >
-                accessories
+                {t.navbar.accessories}
               </NavLink>
             </li>
             <li className={styles.settings}>
@@ -132,7 +134,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
             <img
               className={styles.img}
               src={`/img/icons/${theme}-theme/Heart.svg`}
-              alt="Heart"
+              alt={t.burgerMenu.heart}
             />
 
             {favouriteProductsIds.length > 0 && (
@@ -148,7 +150,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
               `${styles.link} ${isActive ? `${styles.activeLink}` : ''}`
             }
           >
-            <img className={styles.img} src={`/img/icons/${theme}-theme/Cart.svg`} alt="Cart" />
+            <img className={styles.img} src={`/img/icons/${theme}-theme/Cart.svg`} alt={t.burgerMenu.cart} />
 
             {cartProductsIds.length > 0 && (
               <div className={styles.counter}>

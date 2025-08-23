@@ -3,9 +3,11 @@ import { Card } from '../../components/Card';
 import styles from './FavoriteProductsPage.module.scss';
 import { useAppState } from '../../contexts/AppContext';
 import { Breadcrumb } from '../../components/Breadcrumb';
+import { getTranslation } from '../shared/utils/getTranslation';
 
 export const FavoriteProductsPage: React.FC = () => {
-  const { favouriteProductsIds, products } = useAppState();
+  const { favouriteProductsIds, products, language } = useAppState();
+  const t = getTranslation(language);
 
   return (
     <main className={`
@@ -16,12 +18,12 @@ export const FavoriteProductsPage: React.FC = () => {
       <div className={styles.head}>
         <Breadcrumb />
         <div className={styles.headContent}>
-          <h1 className={`${styles.title}`}>Favourites</h1>
+          <h1 className={`${styles.title}`}>{t.favoritesPage.title}</h1>
 
           <span className={`${styles.counter} bodyText`}>
             {favouriteProductsIds.length === 1
-              ? '1 item'
-              : `${favouriteProductsIds.length} items`}
+              ? `1 ${t.favoritesPage.item}`
+              : `${favouriteProductsIds.length} ${t.favoritesPage.items}`}
           </span>
         </div>
       </div>

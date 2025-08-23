@@ -33,11 +33,17 @@ export const PicturesSlider: React.FC = () => {
             onClick={() => handleArrowClick('left')}
           />
         </div>
+
         <div className={styles.products}>
-          <ul>
-            <li></li>
+          <ul className={styles.productsList} style={{ transform: `translateX(-${currentPicture * 100}%)` }}>
+            <li className={`${styles.product} ${styles.productFirst}`}>
+              <div className={styles.productContent}></div>
+            </li>
+            <li className={`${styles.product} ${styles.productSecond}`}></li>
+            <li className={`${styles.product} ${styles.productThird}`}></li>
           </ul>
         </div>
+
         <div className={styles.onTablet}>
           <ArrowButton
             direction="right"

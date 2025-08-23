@@ -4,10 +4,12 @@ import styles from './Breadcrumb.module.scss';
 import { getFormattedPathname } from '../../modules/shared/utils/getFormattedPathname';
 import { useAppState } from '../../contexts/AppContext';
 import { Arrow } from '../Arrow/Arrow';
+import { getTranslation } from '../../modules/shared/utils/getTranslation';
 
 export const Breadcrumb: React.FC = () => {
   const { pathname } = useLocation();
-  const { products, theme } = useAppState();
+  const { products, theme, language } = useAppState();
+  const t = getTranslation(language);
 
   return (
     <div
@@ -16,7 +18,7 @@ export const Breadcrumb: React.FC = () => {
       <Link className={styles.home} to='/'>
         <img
           src={`/img/icons/${theme}-theme/Home.svg`}
-          alt="Home"
+          alt={t.breadcrumb.home}
         />
       </Link>
 
@@ -30,7 +32,14 @@ export const Breadcrumb: React.FC = () => {
               ${i === 0 && arr.length > 1 ? styles.firstItem : ''}
               ${i !== 0 ? styles.lastItem : ''}
               ${styles.pageName} smallText`}>
-            {i === 0 ? item : products.find(product => product.itemId === item)?.name}
+            {i === 0 ? (
+              item === 'phones' ? t.productsPage.phones :
+              item === 'tablets' ? t.productsPage.tablets :
+              item === 'accessories' ? t.productsPage.accessories :
+              item
+            ) : (
+              products.find(product => product.itemId === item)?.name
+            )}
           </Link>
         </React.Fragment>
       ))}

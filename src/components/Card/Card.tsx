@@ -6,14 +6,16 @@ import { useAppState, useAppDispatch } from '../../contexts/AppContext';
 import { Link } from 'react-router-dom';
 import { getFormattedCapacity } from '../../modules/shared/utils/getFormattedCapacity';
 import { CardSkeleton } from './CardSkeleton';
+import { getTranslation } from '../../modules/shared/utils/getTranslation';
 
 type Props = {
   card: CardItem | undefined;
 };
 
 export const Card: React.FC<Props> = ({ card }) => {
-  const { favouriteProductsIds, cartProductsIds } = useAppState();
+  const { favouriteProductsIds, cartProductsIds, language } = useAppState();
   const { toggleFavouriteCard, toggleAddToCart, refCardWidth } = useAppDispatch();
+  const t = getTranslation(language);
 
   function handleAddToCartClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
@@ -57,9 +59,9 @@ export const Card: React.FC<Props> = ({ card }) => {
 
           <div className={styles.description}>
             <div className={styles.keys}>
-              <p className="smallText">Screen</p>
-              <p className="smallText">Capacity</p>
-              <p className="smallText">RAM</p>
+              <p className="smallText">{t.card.screen}</p>
+              <p className="smallText">{t.card.capacity}</p>
+              <p className="smallText">{t.card.ram}</p>
             </div>
 
             <div className={styles.values}>

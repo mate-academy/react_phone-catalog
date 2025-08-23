@@ -5,10 +5,13 @@ import { useAppDispatch, useAppState } from '../../contexts/AppContext';
 import { BurgerMenu } from '../BurgerMenu';
 import { useRef, useState } from 'react';
 import { useOnClickOutside } from '../../modules/shared/hooks/useOnClickOutside';
+import { Sun } from '../Sun';
+import { getTranslation } from '../../modules/shared/utils/getTranslation';
 
 export const Navbar: React.FC = () => {
-  const { favouriteProductsIds, cartProductsIds, theme } = useAppState();
-  const { setIsMenuOpen, setTheme } = useAppDispatch();
+  const { favouriteProductsIds, cartProductsIds, theme, language } = useAppState();
+  const { setIsMenuOpen, setTheme, setLanguage } = useAppDispatch();
+  const t = getTranslation(language);
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const settingsRef = useRef<HTMLDivElement>(null);
@@ -28,7 +31,7 @@ export const Navbar: React.FC = () => {
                 `${styles.item} ${isActive ? styles.activeLink : ''}`
               }
             >
-              home
+              {t.navbar.home}
             </NavLink>
           </li>
           <li className={`${styles.item} uppercaseText`}>
@@ -38,7 +41,7 @@ export const Navbar: React.FC = () => {
                 `${styles.item} ${isActive ? styles.activeLink : ''}`
               }
             >
-              phones
+              {t.navbar.phones}
             </NavLink>
           </li>
           <li className={`${styles.item} uppercaseText`}>
@@ -48,7 +51,7 @@ export const Navbar: React.FC = () => {
                 `${styles.item} ${isActive ? styles.activeLink : ''}`
               }
             >
-              tablets
+              {t.navbar.tablets}
             </NavLink>
           </li>
           <li className={`${styles.item} uppercaseText`}>
@@ -58,7 +61,7 @@ export const Navbar: React.FC = () => {
                 `${styles.item} ${isActive ? styles.activeLink : ''}`
               }
             >
-              accessories
+              {t.navbar.accessories}
             </NavLink>
           </li>
         </ul>
@@ -70,7 +73,7 @@ export const Navbar: React.FC = () => {
               `${isActive ? styles.activeLink : ''} ${styles.link}`
             }
           >
-            <img className={styles.img} src={`/img/icons/${theme}-theme/Heart.svg`} alt="" />
+            <img className={styles.img} src={`/img/icons/${theme}-theme/Heart.svg`} alt={t.navbar.favorites} />
 
             {favouriteProductsIds.length > 0 && (
               <div className={styles.counter}>
@@ -85,7 +88,7 @@ export const Navbar: React.FC = () => {
               `${isActive ? styles.activeLink : ''} ${styles.link}`
             }
           >
-            <img className={styles.img} src={`/img/icons/${theme}-theme/Cart.svg`} alt="" />
+            <img className={styles.img} src={`/img/icons/${theme}-theme/Cart.svg`} alt={t.navbar.cart} />
 
             {cartProductsIds.length > 0 && (
               <div className={styles.counter}>
@@ -120,19 +123,41 @@ export const Navbar: React.FC = () => {
               </svg>
             </button>
 
-            {isSettingsOpen && (
-              <div className={styles.settingsMenu}>
-                <button
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className={styles.switcher}
-                >
-                  <div className={`
+            <div className={`${styles.settingsMenu} ${isSettingsOpen ? styles.open : ''}`}>
+              <span className={`${styles.settingsType} smallText`}>
+                {theme === 'light' ? <Sun /> : (
+                  <svg
+                    width='20px'
+                    height='20px'
+                    fill='white'
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 640 640">
+                    <path d="M303.3 112.7C196.2 121.2 112 210.8 112 320C112 434.9 205.1 528 320 528C353.3 528 384.7 520.2 412.6 506.3C309.2 482.9 232 390.5 232 280C232 214.2 259.4 154.9 303.3 112.7zM64 320C64 178.6 178.6 64 320 64C339.4 64 358.4 66.2 376.7 70.3C386.6 72.5 394 80.8 395.2 90.8C396.4 100.8 391.2 110.6 382.1 115.2C321.5 145.4 280 207.9 280 280C280 381.6 362.4 464 464 464C469 464 473.9 463.8 478.8 463.4C488.9 462.6 498.4 468.2 502.6 477.5C506.8 486.8 504.6 497.6 497.3 504.6C451.3 548.8 388.8 576 320 576C178.6 576 64 461.4 64 320z" />
+                  </svg>
+                )}
+
+              </span>
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className={styles.switcher}
+              >
+                <div className={`
                     ${styles.switcherThumb}
                     ${theme === 'dark' ? styles.switcherThumbOn : ''}
                   `}></div>
-                </button>
-              </div>
-            )}
+              </button>
+
+              <span className={`${styles.settingsType} smallText`}>{language.toUpperCase()}</span>
+              <button
+                onClick={() => setLanguage(language === 'uk' ? 'en' : 'uk')}
+                className={styles.switcher}
+              >
+                <div className={`
+                    ${styles.switcherThumb}
+                    ${language === 'uk' ? styles.switcherThumbOn : ''}
+                  `}></div>
+              </button>
+            </div>
           </div>
         </div>
 

@@ -16,3 +16,9 @@ export const getTheme = () => {
 export const saveTheme = (theme: 'light' | 'dark') => {
   localStorage.setItem('theme', theme);
 };
+export const getLanguage = () => {
+  return (localStorage.getItem('language') as 'en' | 'uk') || 'en';
+};
+export const saveLanguage = (language: 'en' | 'uk') => {
+  localStorage.setItem('language', language);
+};

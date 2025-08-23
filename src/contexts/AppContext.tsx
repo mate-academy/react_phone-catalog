@@ -13,6 +13,8 @@ import {
   getCartProducts,
   getFavouriteProducts,
   getTheme,
+  getLanguage,
+  saveLanguage,
   saveCartProducts,
   saveFavouriteProducts,
   saveTheme,
@@ -61,7 +63,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoadingProducts, setIsLoadingProducts] = useState<boolean>(false);
-  const [language, setLanguage] = useState<'uk' | 'en'>('en');
+  const [language, setLanguage] = useState<'uk' | 'en'>(getLanguage);
   const [theme, setTheme] = useState<'light' | 'dark'>(getTheme);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -82,6 +84,10 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     document.body.classList.toggle('dark-theme', theme === 'dark');
     saveTheme(theme);
   }, [theme]);
+
+  useEffect(() => {
+    saveLanguage(language);
+  }, [language]);
 
   useEffect(() => {
     saveFavouriteProducts(favouriteProductsIds);
