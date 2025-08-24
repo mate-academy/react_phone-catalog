@@ -7,6 +7,7 @@ import { TabletsPage } from './Page/TabletsPage';
 import { AccessoriesPage } from './Page/AccessoriesPage';
 import { FavouritesProducts } from './component/FavouritesProducts';
 import { CartPage } from './component/CartPage';
+import { PageNotFound } from './component/modules/PageNotFound/PageNotFound';
 
 export const Root = () => {
   return (
@@ -25,6 +26,8 @@ export const Root = () => {
 
         <Route path="/favourites" element={<FavouritesProducts />} />
         <Route path="/cart" element={<CartPage />} />
+
+        <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
   );
