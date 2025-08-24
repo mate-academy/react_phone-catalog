@@ -34,15 +34,3 @@
 .counter {
   color: var(--color-secondary);
 }
-
-.emptyPage {
-  min-height: 70vh;
-
-  @include on-tablet {
-    min-height: 89vh;
-  }
-
-  @include on-desktop {
-    min-height: 89vh;
-  }
-}

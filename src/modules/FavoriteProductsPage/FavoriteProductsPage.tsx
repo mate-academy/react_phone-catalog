@@ -10,11 +10,7 @@ export const FavoriteProductsPage: React.FC = () => {
   const t = getTranslation(language);
 
   return (
-    <main className={`
-        ${styles.main} 
-        ${favouriteProductsIds.length === 0 ? styles.emptyPage : ''}
-      `}
-    >
+    <main className={styles.main}>
       <div className={styles.head}>
         <Breadcrumb />
         <div className={styles.headContent}>

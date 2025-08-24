@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import styles from './BurgerMenu.module.scss';
-import { Logo } from '../Logo';
+import { Logo } from '../../Logo';
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch, useAppState } from '../../contexts/AppContext';
-import { getTranslation } from '../../modules/shared/utils/getTranslation';
+import { useAppState } from '../../../contexts/AppContext';
+import { getTranslation } from '../../../modules/shared/utils/getTranslation';
+import { LanguageSwitcher } from '../LanguageSwitcher';
+import { ThemeSwitcher } from '../ThemeSwitcher';
 
 type Props = {
   onClose: () => void;
@@ -18,7 +20,6 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
     language,
   } = useAppState();
 
-  const { setLanguage, handleThemeChange } = useAppDispatch();
   const t = getTranslation(language);
 
 
@@ -87,38 +88,8 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
               </NavLink>
             </li>
             <li className={styles.settings}>
-              <div className={styles.themes}>
-                <button
-                  onClick={() => handleThemeChange('light')}
-                  className={`${styles.themesItem} ${theme === 'light' ? styles.themesItemActive : ''}`}
-                >
-                  <div className={styles.themesLight}></div>
-                </button>
-                <button
-                  onClick={() => handleThemeChange('dark')}
-                  className={`${styles.themesItem} ${theme === 'dark' ? styles.themesItemActive : ''}`}
-                >
-                  <div className={styles.themesDark}></div>
-                </button>
-              </div>
-              <div className={styles.languages}>
-                <button
-                  onClick={() => setLanguage('uk')}
-                  className={`
-                    ${styles.languagesItem} 
-                    ${language === 'uk' ? styles.languagesItemActive : ''} 
-                    ${styles.uk}
-                  `}
-                >UK</button>
-                <button
-                  onClick={() => setLanguage('en')}
-                  className={`
-                    ${styles.languagesItem} 
-                    ${language === 'en' ? styles.languagesItemActive : ''} 
-                    ${styles.en}
-                  `}
-                >ENG</button>
-              </div>
+              <ThemeSwitcher />
+              <LanguageSwitcher />
             </li>
           </ul>
         </nav>

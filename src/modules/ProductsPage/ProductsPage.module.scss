@@ -1,15 +1,8 @@
 .main {
   @include page-grid;
-
-  min-height: 70vh;
-
-  @include on-tablet {
-    min-height: 89vh;
-  }
-
-  @include on-desktop {
-    min-height: 89vh;
-  }
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .head {

@@ -9,11 +9,14 @@ body {
   padding: 0;
 }
 
-main {
+.main-content {
   color: var(--color-primary);
   max-width: 1200px;
   padding-top: 72px;
   padding-bottom: 56px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 
   @include on-desktop {
     padding-top: 88px;

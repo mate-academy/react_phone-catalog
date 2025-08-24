@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { getFormattedPathname } from '../../modules/shared/utils/getFormattedPathname';
 import { Arrow } from '../Arrow/Arrow';
 import styles from './Back.module.scss';
 import { useAppState } from '../../contexts/AppContext';
 import { getTranslation } from '../../modules/shared/utils/getTranslation';
+import { useNavigate } from 'react-router-dom';
 
 export const Back: React.FC = () => {
-  const { pathname } = useLocation();
   const { language } = useAppState();
   const t = getTranslation(language);
 
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
   return (
-    <Link
-      to={`/${getFormattedPathname(pathname)[0]}`}
+    <button
       className={styles.back}
+      onClick={() => navigate(-1)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -30,6 +29,6 @@ export const Back: React.FC = () => {
         ${isHovered ? styles.backTextHover : ''} 
         smallText
       `}>{t.back.back}</span>
-    </Link>
+    </button>
   );
 };

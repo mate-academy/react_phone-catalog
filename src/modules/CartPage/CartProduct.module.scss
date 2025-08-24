@@ -110,20 +110,20 @@
 .counter {
   display: flex;
   align-items: center;
-}
 
-.counterButton {
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 32px;
-  height: 32px;
-  padding: 8px;
-  border: 1px solid var(--small-button-default-border);
-  background-color: var(--small-button-default-bg);
+  &Button {
+    cursor: pointer;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border: 1px solid var(--small-button-default-border);
+    background-color: var(--small-button-default-bg);
+  }
 }
 
 .value {
@@ -143,6 +143,14 @@
 
 .name {
   color: var(--color-primary);
+
+  @include on-tablet {
+    width: 176px;
+  }
+
+  @include on-desktop {
+    width: 336px;
+  }
 }
 
 .close {

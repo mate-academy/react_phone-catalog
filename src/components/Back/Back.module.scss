@@ -6,6 +6,9 @@
   gap: 4px;
   margin-bottom: 16px;
   color: var(--back-button-default-text-color);
+  border: none;
+  background-color: inherit;
+  padding: 0;
 
   &Text {
     margin-top: 2px;

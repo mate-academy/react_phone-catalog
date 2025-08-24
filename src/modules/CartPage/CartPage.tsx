@@ -58,49 +58,46 @@ export const CartPage: React.FC = () => {
     setTotalSum(countTotal());
   }, [isLoadingProducts]);
 
-  return (
+  return cartProductsIds.length > 0 ? (
     <main
       className={`
         ${styles.main} 
         ${isModalOpen ? styles.isModalOpen : ''}
       `}
     >
-      {cartProductsIds.length > 0 && (
-        <>
-          <Back />
+      <Back />
 
-          <div className={styles.content}>
-          <h2 className={styles.title}>{t.cartPage.title}</h2>
-            <div className={styles.products}>
-              {cartProductsIds.map(id => (
-                <CartProduct
-                  key={id}
-                  product={
-                    products.find(product => product.itemId === id)
-                  }
-                  onProductCountChange={handleProductCountChange}
-                />
-              ))}
-            </div>
+      <h2 className={styles.title}>{t.cartPage.title}</h2>
 
-            <div className={styles.checkout}>
-              <div className={styles.checkoutContent}>
-                <h3 className={styles.price}>${totalSum}</h3>
-                <span
-                  className={`${styles.total} bodyText`}
-                >{t.cartPage.totalFor} {totalItems} {totalItems === 1 ? t.cartPage.item : t.cartPage.items}</span>
-              </div>
+      <div className={styles.content}>
+        <div className={styles.products}>
+          {cartProductsIds.map(id => (
+            <CartProduct
+              key={id}
+              product={
+                products.find(product => product.itemId === id)
+              }
+              onProductCountChange={handleProductCountChange}
+            />
+          ))}
+        </div>
 
-              <div className={styles.line}></div>
-
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className={`${styles.button} buttonText`}
-              >{t.cartPage.checkout}</button>
-            </div>
+        <div className={styles.checkout}>
+          <div className={styles.checkoutContent}>
+            <h3 className={styles.price}>${totalSum}</h3>
+            <span
+              className={`${styles.total} bodyText`}
+            >{t.cartPage.totalFor} {totalItems} {totalItems === 1 ? t.cartPage.item : t.cartPage.items}</span>
           </div>
-        </>
-      )}
+
+          <div className={styles.line}></div>
+
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className={`${styles.button} buttonText`}
+          >{t.cartPage.checkout}</button>
+        </div>
+      </div>
 
       <div
         className={styles.overlay}
@@ -112,10 +109,10 @@ export const CartPage: React.FC = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
-
-      {cartProductsIds.length === 0 && (
-        <img className={styles.emptyCart} src="/img/cart-is-empty.png" alt={t.cartPage.cartIsEmpty} />
-      )}
     </main>
-  );
+  ) : (
+    <main className={styles.main}>
+      <img className={styles.emptyCart} src="/img/cart-is-empty.png" alt={t.cartPage.cartIsEmpty} />
+    </main>
+  )
 };
