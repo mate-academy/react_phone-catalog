@@ -71,7 +71,7 @@ export const Menu = ({ showMenu, setShowMenu }: Props) => {
             onAnimationEnd={() => setTurnIcon(false)}
           >
             <img
-              src={themeSwitcher ? 'src/img/Sun.svg' : 'src/img/Moon.svg'}
+              src={themeSwitcher ? 'img/Sun.svg' : 'img/Moon.svg'}
               alt={themeSwitcher ? 'moon' : 'sun'}
               className={menu.themeswitcher__image}
             />

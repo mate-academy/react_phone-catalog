@@ -79,8 +79,8 @@ export const Navigation = () => {
                     className={icons.icon__switcher}
                     src={
                       themeSwitcher
-                        ? 'src/img/Sun.svg'
-                        : 'src/img/Moon.svg'
+                        ? 'img/Sun.svg'
+                        : 'img/Moon.svg'
                     }
                     alt={themeSwitcher ? 'moon' : 'sun'}
                   />
