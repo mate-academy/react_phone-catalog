@@ -8,17 +8,22 @@ import styles from './HistoryNavigation.module.scss';
 export const HistoryNavigation: React.FC = () => {
   const navigate = useNavigate();
 
+  const historyIndex = window.history.state?.idx ?? 0;
+
+  const canGoBack = historyIndex > 0;
+  const canGoForward = window.history.length > historyIndex + 1;
+
   const handleGoBack = () => {
-    navigate(-1);
+    if (canGoBack) {
+      navigate(-1);
+    }
   };
 
   const handleGoForward = () => {
-    navigate(1);
+    if (canGoForward) {
+      navigate(1);
+    }
   };
-
-  const canGoBack = window.history.state?.idx > 0;
-  const canGoForward =
-    window.history.length > (window.history.state?.idx || 0) + 1;
 
   return (
     <div className={styles.navigationContainer}>
@@ -34,7 +39,7 @@ export const HistoryNavigation: React.FC = () => {
         <img src={ArrowLeftIcon} alt="Go back" />
       </button>
 
-      <span className={styles.navText}> Move </span>
+      <span className={styles.navText}>Move</span>
 
       <button
         type="button"

@@ -34,6 +34,7 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
+      <h1 className={styles.titleNotVisible}>Product Catalog</h1>
       <div className={styles.headerContent}>
         <NavLink to="/" className={styles.logo}>
           <img src={Logo} alt="Nice Gadgets logo" />

@@ -6,11 +6,12 @@
   height: variables.$header-height;
   border-bottom: 1px solid var(--elements);
   background-color: var(--main-bg);
+  padding-top: 16px;
 }
 
 .headerContent {
   display: flex;
-  align-items: flex-start; /* ✅ Вирівнювання по верхньому краю */
+  align-items: flex-start;
   justify-content: space-between;
   max-width: variables.$container-width;
   height: 100%;
@@ -25,10 +26,12 @@
 .logo {
   display: flex;
   align-items: center;
+  min-width: 96px;
 
   img {
     height: 24px;
     display: block;
+
   }
 }
 
@@ -37,7 +40,7 @@
   flex-grow: 1;
   gap: 32px;
   align-items: center;
-  padding-top: 14px; /* ✅ Додаємо паддінг, щоб вирівняти по центру */
+  padding-top: 14px;
 
   @include mixins.on-mobile {
     display: none;
@@ -47,13 +50,9 @@
 .navigationAndHistory {
     display: flex;
     flex-direction: column;
-    gap: 16px; /* Відступ між групами кнопок */
-    align-items: flex-end; /* Вирівнювання по правому краю */
+    gap: 8px;
+    align-items: flex-end;
 
-    @include mixins.on-mobile {
-        flex-direction: row;
-        gap: 0;
-    }
 }
 
 .rightSide {
@@ -247,4 +246,18 @@
     border-color: var(--link-active-color);
     color: var(--link-active-color);
   }
+}
+
+.titleNotVisible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

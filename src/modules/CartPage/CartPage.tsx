@@ -36,7 +36,7 @@ export const CartPage: React.FC = () => {
   }
 
   return (
-    <div className={styles.cartPage}>
+    <div className={styles.page}>
       <h1 className={styles.title}>Cart</h1>
 
       <div className={styles.cartContent}>

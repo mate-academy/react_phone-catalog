@@ -4,8 +4,8 @@
 .navigationContainer {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  gap: 4px;
+  padding: 4px 0;
   background: var(--icons);
   border: 1px solid var(--icons);
   border-radius: 4px;
@@ -32,40 +32,35 @@
 }
 
 .navArrow {
-  background: none;
   border: none;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
+  width: 8px;
   height: 16px;
-  transition: opacity 0.2s;
+  transition: opacity 0.3s;
 
   img {
     width: 16px;
     height: 16px;
-    filter: brightness(0) invert(1);
+    filter: brightness(0);
     transition: filter 0.3s;
-  }
-
-  .navigationContainer:hover & {
-    filter: brightness(0) invert(1);
-  }
+   }
 
   &.disabled {
-    cursor: pointer; /* ✅ Виправляємо курсор */
+    cursor: pointer;
 
     img {
-      filter: brightness(0) invert(0); /* ✅ Робимо іконку сірою */
-      opacity: 0.5; /* ✅ Робимо іконку напівпрозорою */
+      filter: brightness(0) invert(1);
+
     }
   }
 }
 
 .navigationContainer:hover .navArrow.disabled {
   img {
-    filter: brightness(0) invert(0);
+    filter: brightness(0) invert(1);
     opacity: 0.5;
   }
 }

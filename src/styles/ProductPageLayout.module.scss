@@ -15,6 +15,7 @@
 
 .title {
   @include mixins.section-title;
+
   margin-bottom: 24px;
 
   @include mixins.on-mobile {
@@ -37,6 +38,14 @@
   color: var(--white);
   transition: color 0.3s;
 }
+
+.arrow {
+    width: 16px;
+    height: 16px;
+    transform: rotate(90deg);
+    transition: transform 0.3s, filter 0.3s;
+    filter: brightness(0) invert(1);
+  }
 
 .sortControl {
   display: flex;
@@ -65,14 +74,6 @@
         filter: brightness(0) invert(1);
       }
     }
-  }
-
-  .arrow {
-    width: 16px;
-    height: 16px;
-    transform: rotate(90deg);
-    transition: transform 0.3s, filter 0.3s;
-    filter: brightness(0) invert(1);
   }
 
   .arrow.down {
@@ -122,15 +123,7 @@
     }
   }
 
-  .arrow {
-    width: 16px;
-    height: 16px;
-    transform: rotate(90deg);
-    transition: transform 0.3s, filter 0.3s;
-    filter: brightness(0) invert(1);
-  }
-
-  .arrow.down {
+    .arrow.down {
     transform: rotate(-90deg);
   }
 
