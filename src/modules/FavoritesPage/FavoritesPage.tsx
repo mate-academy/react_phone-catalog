@@ -11,7 +11,7 @@ export const FavoritesPage: React.FC = () => {
     return (
       <div className={styles.emptyWrapper}>
         <div className={styles.empty}>
-          <h2 className={styles.emptyTitle}>No favourites yet.</h2>
+          <h2 className={styles.emptyTitle}>No favourites yet!</h2>
           <Link to="/" className={styles.backButton}>
             Go to Home
           </Link>

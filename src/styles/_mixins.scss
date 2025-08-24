@@ -20,12 +20,6 @@
   --link-active-color: #{map.get($theme , link-active-color)};
 }
 
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 @mixin container {
   max-width: $container-width;
   margin: 0 auto;

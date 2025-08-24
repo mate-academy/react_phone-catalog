@@ -1,0 +1,71 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+
+.navigationContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--icons);
+  border: 1px solid var(--icons);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  width: fit-content;
+
+  &:hover {
+    border-color: var(--secondary-text);
+    background: var(--secondary-text);
+  }
+}
+
+.navText {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  transition: color 0.3s;
+
+  .navigationContainer:hover & {
+    color: var(--white);
+  }
+}
+
+.navArrow {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.2s;
+
+  img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s;
+  }
+
+  .navigationContainer:hover & {
+    filter: brightness(0) invert(1);
+  }
+
+  &.disabled {
+    cursor: pointer; /* ✅ Виправляємо курсор */
+
+    img {
+      filter: brightness(0) invert(0); /* ✅ Робимо іконку сірою */
+      opacity: 0.5; /* ✅ Робимо іконку напівпрозорою */
+    }
+  }
+}
+
+.navigationContainer:hover .navArrow.disabled {
+  img {
+    filter: brightness(0) invert(0);
+    opacity: 0.5;
+  }
+}

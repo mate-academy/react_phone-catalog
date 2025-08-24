@@ -36,7 +36,9 @@
 
 .name {
   margin-bottom: 4px;
+
   @include mixins.text($size: variables.$fs-normal, $weight: variables.$fw-semi-bold);
+
   text-decoration: none;
   transition: color variables.$transition-main;
 
@@ -61,8 +63,10 @@
 
 .oldPrice {
   @include mixins.text($size: variables.$fs-small, $color: var(--secondary-text));
+
   text-decoration: line-through;
 }
+
 .characteristics {
   display: flex;
   flex-direction: column;
@@ -73,6 +77,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     @include mixins.text($size: variables.$fs-normal, $color: var(--secondary-text));
 
     & > span:first-child {
@@ -102,7 +107,11 @@
 
 .addToCart {
   cursor: pointer;
-  @include mixins.flex-center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   gap: 6px;
   padding: 8px 12px;
   border: none;
@@ -120,7 +129,11 @@
 
 .favorite {
   cursor: pointer;
-  @include mixins.flex-center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 8px;
   border: 1px solid variables.$color-elements;
   border-radius: 50%;

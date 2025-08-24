@@ -5,7 +5,6 @@ import styles from './ProductPageLayout.module.scss';
 import { ProductsList } from '../component/ProductList/ProductList';
 import { Product } from '../types/Product';
 import ArrowIcon from './../assets/icons/arrow-right.svg';
-import { Link } from 'react-router-dom';
 
 type Props = {
   title: string;
@@ -31,7 +30,7 @@ const sortProducts = (
   }
 
   return sorted.sort(
-    (a, b) => (b.priceDiscount ?? b.price) - (a.priceDiscount ?? a.price),
+    (a, b) => (b.priceDiscount ?? b.price) - (a.priceDiscount ?? b.price),
   );
 };
 
@@ -108,7 +107,9 @@ export const ProductPageLayout: React.FC<Props> = ({ title, products }) => {
   return (
     <section className={styles.page}>
       <div className={styles.container}>
-        <h1 className={styles.title}>{title}</h1>
+        <div className={styles.header}>
+          <h1 className={styles.title}>{title}</h1>
+        </div>
 
         {!isListEmpty && (
           <div className={styles.controls}>
@@ -164,18 +165,7 @@ export const ProductPageLayout: React.FC<Props> = ({ title, products }) => {
         )}
 
         <div className={styles.content}>
-          {isListEmpty ? (
-            <div className={styles.emptyWrapper}>
-              <div className={styles.empty}>
-                <h2 className={styles.emptyTitle}>No favourites yet</h2>
-                <Link to="/" className={styles.backButton}>
-                  Go to Home
-                </Link>
-              </div>
-            </div>
-          ) : (
-            <ProductsList products={visibleProducts} />
-          )}
+          <ProductsList products={visibleProducts} />
         </div>
 
         {!isListEmpty && perPage !== 'all' && totalPages > 1 && (

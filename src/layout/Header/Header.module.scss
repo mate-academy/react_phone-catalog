@@ -10,9 +10,8 @@
 
 .headerContent {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* ✅ Вирівнювання по верхньому краю */
   justify-content: space-between;
-
   max-width: variables.$container-width;
   height: 100%;
   margin: 0 auto;
@@ -38,10 +37,23 @@
   flex-grow: 1;
   gap: 32px;
   align-items: center;
+  padding-top: 14px; /* ✅ Додаємо паддінг, щоб вирівняти по центру */
 
   @include mixins.on-mobile {
     display: none;
   }
+}
+
+.navigationAndHistory {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Відступ між групами кнопок */
+    align-items: flex-end; /* Вирівнювання по правому краю */
+
+    @include mixins.on-mobile {
+        flex-direction: row;
+        gap: 0;
+    }
 }
 
 .rightSide {
@@ -55,29 +67,25 @@
 }
 
 .icon {
-    display: block;
-    width: 24px;
-    height: 24px;
+  display: block;
+  width: 24px;
+  height: 24px;
 
-    filter: brightness(0) saturate(100%) invert(73%) sepia(9%) saturate(286%)
-      hue-rotate(169deg) brightness(88%) contrast(88%);
-    transition: filter 0.2s ease, opacity 0.2s ease;
-    opacity: 0.95;
-  }
+  filter: brightness(0) saturate(100%) invert(73%) sepia(9%) saturate(286%)
+    hue-rotate(169deg) brightness(88%) contrast(88%);
+  transition: filter 0.2s ease, opacity 0.2s ease;
+  opacity: 0.95;
+}
 
 .rightSideLink {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 40px;
   height: 40px;
-
   border-left: 1px solid var(--elements);
   color: var(--secondary-text);
-
   transition: background-color 0.2s, color 0.2s;
 
   &:hover {
@@ -99,13 +107,10 @@
   .count {
     position: absolute;
     top: 32px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     height: 24px;
-
     font-size: variables.$fs-small;
     font-weight: variables.$fw-medium;
     color: var(--main-tex);
@@ -121,7 +126,6 @@
   font-weight: 700;
   color: var(--secondary-text);
   text-transform: uppercase;
-
   transition: border-color 0.3s, color 0.3s;
 }
 
@@ -141,21 +145,16 @@
 
 .themeToggle {
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 40px;
   height: 40px;
   border: none;
   border-left: 1px solid var(--elements);
-
   font-size: 18px;
   line-height: 1;
-
   background: none;
-
   transition: background-color 0.2s;
 
   &:hover {
@@ -165,14 +164,11 @@
 
 .burgerButton {
   cursor: pointer;
-
   display: none;
-
   width: 40px;
   height: 40px;
   border: none;
   border-left: 1px solid var(--elements);
-
   background: none;
 
   @include mixins.on-mobile {
@@ -185,8 +181,7 @@
     width: 24px;
     height: 24px;
     display: block;
-
-   filter: brightness(0) saturate(100%) invert(73%) sepia(9%) saturate(286%)
+    filter: brightness(0) saturate(100%) invert(73%) sepia(9%) saturate(286%)
       hue-rotate(169deg) brightness(88%) contrast(88%);
     transition: filter 0.2s;
   }
@@ -207,14 +202,10 @@
   top: variables.$header-height;
   left: 0;
   transform: translateX(100%);
-
   display: none;
-
   width: 100%;
   height: calc(100vh - variables.$header-height);
-
   background-color: var(--white);
-
   transition: transform 0.3s ease-in-out;
 
   @include mixins.on-mobile {
@@ -235,19 +226,16 @@
   gap: 32px;
   align-items: center;
   justify-content: center;
-
   padding: 24px;
 }
 
 .burgerLink {
   padding-bottom: 12px;
   border-bottom: 3px solid transparent;
-
   font-size: 24px;
   font-weight: 700;
   color: var(--secondary-text);
   text-transform: uppercase;
-
   transition: color 0.3s, border-color 0.3s;
 
   &:hover {
