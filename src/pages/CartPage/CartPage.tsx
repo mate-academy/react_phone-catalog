@@ -7,7 +7,7 @@ import { removeFromCart } from '../../shared/utils/cart/removeFromCart';
 import deleteIco from '../../assets/icons/cart_icons/delete.svg';
 import styles from './CartPage.module.scss';
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 export const CartPage: React.FC = () => {
   const { cartItems, setCartItems } = useProducts();
@@ -31,7 +31,7 @@ export const CartPage: React.FC = () => {
       <div className={styles.Cart__container}>
         <div className={styles.Cart__items}>
           <ul className={styles.Cart__list}>
-            {cartItems.map(product => (
+            {cartItems.map((product) => (
               <li key={product.id} className={styles.list__item}>
                 <div className={styles.item__info}>
                   <button
@@ -42,10 +42,15 @@ export const CartPage: React.FC = () => {
                   >
                     <img src={deleteIco} alt="Delete item" />
                   </button>
-                  <div className={styles.item__image}>
+                  <Link
+                    to={`/${product.category}/${product.itemId}`}
+                    className={styles.item__image}
+                  >
                     <img src={product.image} alt={product.name} />
-                  </div>
-                  <h2 className={styles.item__name}>{product.name}</h2>
+                  </Link>
+                  <Link to={`/${product.category}/${product.itemId}`}>
+                    <h2 className={styles.item__name}>{product.name}</h2>
+                  </Link>
                 </div>
 
                 <Counter

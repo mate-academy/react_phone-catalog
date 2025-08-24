@@ -1,13 +1,13 @@
 @use "../../../../shared/mixins/mixins" as *;
 
 .counterAndPrice {
+  width: 200px;
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: space-between;
 
   @media (max-width: 639px) {
     width: 100%;
-    justify-content: space-between;
   }
 }
 
@@ -42,6 +42,7 @@
 }
 
 .item__price {
+  width: 80px;
   font-weight: 800;
   font-size: 22px;
   line-height: 31px;
