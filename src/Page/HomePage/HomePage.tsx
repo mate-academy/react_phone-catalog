@@ -27,10 +27,10 @@ export const HomePage = () => {
   return (
     <section className={style.home__page}>
       <div className={style.home__page__wrapper}>
-        <h1 className={style.home__page__title}>
+        <h2 className={style.home__page__title}>
           Welcome to Nice <br className={style['home__page__title-break']} />
           Gadgets store!
-        </h1>
+        </h2>
         <SwiperBaner slides={slides} />
       </div>
       <SwiperProduct products={newModels} title="Brand new models" />
