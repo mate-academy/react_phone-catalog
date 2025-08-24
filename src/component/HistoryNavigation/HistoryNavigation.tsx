@@ -29,7 +29,7 @@ export const HistoryNavigation: React.FC = () => {
           [styles.disabled]: !canGoBack,
         })}
         disabled={!canGoBack}
-        aria-label="Повернутися назад"
+        aria-label="Go back"
       >
         <img src={ArrowLeftIcon} alt="Go back" />
       </button>
@@ -43,7 +43,7 @@ export const HistoryNavigation: React.FC = () => {
           [styles.disabled]: !canGoForward,
         })}
         disabled={!canGoForward}
-        aria-label="Перейти вперед"
+        aria-label="Go forward"
       >
         <img src={ArrowRightIcon} alt="Go forward" />
       </button>
