@@ -1,0 +1,158 @@
+@use '../../../../Mixins/Mixins.scss' as *;
+
+.confirm {
+  margin-block: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  
+  @include respond(desktop) {
+    width: 320px;
+  }
+
+  &_price {
+    display: flex;
+    gap: 8px;
+
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+  &_fullPrice {
+    font-weight: 600;
+    font-size: 22px;
+    text-decoration: line-through;
+    color: #75767f;
+  }
+
+  &_actions {
+    display: flex;
+    gap: 8px;
+
+    @include respond(desktop) {
+      width: 100%;
+    }
+  }
+  &_button {
+    all: unset;
+    cursor: pointer;
+  }
+  &_add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 231px;
+    height: 48px;
+    background-color: #905bff;
+    transition: all 0.3s ease;
+
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+
+    @include respond(tablet) {
+      width: 180px;
+    }
+
+    @include respond(desktop) {
+      width: 263px;
+    }
+
+    &:hover {
+      background-color: #a378ff;
+    }
+  }
+  &_heart {
+    width: 48px;
+    height: 48px;
+    background-color: #323542;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    &:active {
+      background-color: #3b3e4a;
+    }
+  }
+}
+
+.specsShort {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 56px;
+
+  @include respond(tablet) {
+    width: 237px;
+  }
+
+  @include respond(desktop) {
+    width: 320px;
+  }
+
+  &_parameter {
+    display: flex;
+    justify-content: space-between;
+  }
+  &_name {
+    color: #89939a;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  &_value {
+    font-weight: 700;
+    font-size: 12px;
+    text-align: right;
+  }
+}
+
+.specifications {
+  display: flex;
+  flex-direction: column;
+  &_title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  &_list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  &_options {
+    display: flex;
+    flex-direction: column;
+  }
+  &_values {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_option {
+    color: #89939a;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &_value {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+  }
+
+  &_cell {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+  }
+}

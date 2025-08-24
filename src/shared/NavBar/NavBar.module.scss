@@ -1,0 +1,108 @@
+@use '../../Mixins/Mixins.scss' as *;
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #3b3e4a;
+  height: 48px;
+  background-color: #0f1121;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  @include respond(desktop) {
+    height: 64px;
+    justify-content: start;
+  }
+
+  &_options {
+    margin-left: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    @include respond(desktop) {
+      margin-left: 24px;
+    }
+  }
+  &_list {
+    display: flex;
+    gap: 32px;
+
+    @include respond(desktop) {
+      gap: 64px;
+    }
+  }
+  &_link {
+    display: flex;
+    padding-block: 8px;
+
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    color: #75767f;
+
+    &:hover {
+      color: #f1f2f9;
+    }
+
+    &:active {
+      color: #f1f2f9;
+      border-bottom: 2px solid #f1f2f9;
+    }
+  }
+}
+
+.logo {
+  margin-inline: 16px;
+  margin-block: 14px;
+
+  @include respond(desktop) {
+    margin-inline: 24px;
+    margin-block: 19px;
+  }
+
+  &_image {
+    display: block;
+    width: 64px;
+    height: 22px;
+
+    @include respond(desktop) {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &_link:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+}
+
+.burger {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f1121;
+
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid #3b3e4a;
+
+  &:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+}
+
+.isActive {
+  color: #f1f2f9;
+  border-bottom: 2px solid #f1f2f9;
+}
