@@ -1,14 +1,16 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
 import { ArrowButton } from '../../../components/Arrow/ArrowButton';
 import { SliderProduct } from './SliderProduct';
 import { getTranslation } from '../../shared/utils/getTranslation';
 import { useAppState } from '../../../contexts/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 export const PicturesSlider: React.FC = () => {
   const TOTAL_SLIDES = 2;
   const { language } = useAppState();
   const t = getTranslation(language);
+  const navigate = useNavigate();
   
   const [currentPicture, setCurrentPicture] = useState(0);
   const sliderRef = useRef<HTMLUListElement>(null);
@@ -17,6 +19,15 @@ export const PicturesSlider: React.FC = () => {
   const currentTranslate = useRef(0);
   const previousTranslate = useRef(0);
   const isSwiping = useRef(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleArrowClick('right');
+      console.log('interval')
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentPicture]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     isSwiping.current = true;
@@ -90,16 +101,19 @@ export const PicturesSlider: React.FC = () => {
               title={t.homePage.sliderProduct.titles[currentPicture]}
               image='/img/accessories/apple-watch-series-5/silver/00.webp'
               buttonContent={t.homePage.sliderProduct.buttonContent[0]}
+              onClick={() => navigate('/accessories/apple-watch-series-5-44mm-silver')}
             />
             <SliderProduct
               title={t.homePage.sliderProduct.titles[currentPicture]}
               buttonContent={t.homePage.sliderProduct.buttonContent[1]}
               image='/img/phones/apple-iphone-13-pro-max/sierrablue/00.webp'
+              onClick={() => navigate('/phones/apple-iphone-13-pro-max-512gb-sierrablue')}
             />
             <SliderProduct
               title={t.homePage.sliderProduct.titles[currentPicture]}
               image='/img/tablets/apple-ipad-pro-11-2021/silver/00.webp'
               buttonContent={t.homePage.sliderProduct.buttonContent[0]}
+              onClick={() => navigate('/tablets/apple-ipad-pro-11-2021-1tb-silver')}
             />
           </ul>
         </div>

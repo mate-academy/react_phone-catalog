@@ -152,33 +152,3 @@
     width: 336px;
   }
 }
-
-.close {
-  cursor: pointer;
-
-  width: 16px;
-  height: 16px;
-  border: none;
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-
-  &Light {
-    background-color: inherit;
-    background-image: url(/public/img/icons/light-theme/Close.svg);
-
-    &:hover {
-      background-image: url(/public/img/icons/light-theme/Close-hover.svg);
-    }
-  }
-
-  &Dark {
-    background-color: inherit;
-    background-image: url(/public/img/icons/dark-theme/Close.svg);
-
-    &:hover {
-      background-image: url(/public/img/icons/dark-theme/Close-hover.svg);
-    }
-  }
-}

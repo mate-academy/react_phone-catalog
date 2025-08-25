@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import styles from './ProductDetailsPage.module.scss';
 import {
@@ -25,6 +25,7 @@ import { getTranslation } from '../shared/utils/getTranslation';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const { cartProducts, favouriteProducts, products, language } = useAppState();
   const { toggleFavouriteCard, toggleAddToCart } = useAppDispatch();
   const t = getTranslation(language);
@@ -37,8 +38,11 @@ export const ProductDetailsPage: React.FC = () => {
   const [currentColor, setCurrentColor] = useState('');
 
   useEffect(() => {
+    if (!product) {
+      setIsProductLoading(true);
+    }
+
     let isMounted = true;
-    setIsProductLoading(true);
 
     const fetchProduct = async () => {
       try {
@@ -105,6 +109,8 @@ export const ProductDetailsPage: React.FC = () => {
       setCurrentCapacity(product.capacity);
       setCurrentColor(product.color);
       setCurrentPicture(product.images[0]);
+
+      navigate(`/${product.category}/${product.id}`)
     }
   }, [product]);
 
@@ -157,7 +163,7 @@ export const ProductDetailsPage: React.FC = () => {
                   <ul className={styles.colorsList}>
                     {product.colorsAvailable.map(item => (
                       <li
-                      onClick={() => setProduct(similarProducts!.find(p => p.color === item && p.capacity === currentCapacity))}
+                        onClick={() => setProduct(similarProducts!.find(p => p.color === item && p.capacity === currentCapacity))}
                         className={`
                             ${styles.colorsItem} 
                             ${currentColor === item ? styles.colorsItemActive : ''}

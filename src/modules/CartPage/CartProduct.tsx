@@ -5,6 +5,7 @@ import { useAppDispatch, useAppState } from '../../contexts/AppContext';
 import { Link } from 'react-router-dom';
 import { CartProductSkeleton } from './CartProductSkeleton';
 import { saveCartProducts } from '../shared/services/localStorage';
+import { Close } from '../../components/Close';
 
 type CartProductProps = {
   product: Card | undefined;
@@ -67,14 +68,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
       className={styles.product}
     >
       <div className={styles.details}>
-        <button
-          onClick={(event) => handleDeleteProductFromCart(event, product.itemId)}
-          className={`
-            ${styles.img} 
-            ${styles.close}
-            ${theme === 'light' ? styles.closeLight : styles.closeDark}
-          `}
-        ></button>
+        <Close onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleDeleteProductFromCart(event, product.itemId)} />
         <div className={styles.wrapper}>
           <img className={styles.image} src={product.image} alt="Product" />
         </div>

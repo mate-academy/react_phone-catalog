@@ -16,6 +16,7 @@
     "models": "models"
   },
   "productsPage": {
+    "filterPlaceholder": "Search",
     "sortBy": "Sort by",
     "itemsOnPage": "Items on page",
     "newest": "Newest",

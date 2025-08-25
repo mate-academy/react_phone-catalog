@@ -16,6 +16,7 @@
     "models": "моделей"
   },
   "productsPage": {
+    "filterPlaceholder": "Пошук",
     "sortBy": "Сортувати за",
     "itemsOnPage": "Товарів на сторінці",
     "newest": "Найновіші",

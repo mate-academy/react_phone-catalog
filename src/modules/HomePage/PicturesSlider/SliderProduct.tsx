@@ -4,9 +4,10 @@ type Props = {
   title: string;
   image: string;
   buttonContent: string;
+  onClick: () => void;
 };
 
-export const SliderProduct: React.FC<Props> = ({ title, buttonContent, image }) => {
+export const SliderProduct: React.FC<Props> = ({ title, buttonContent, image, onClick }) => {
   const variantClass = image.includes('/phones/')
     ? styles.productSecond
     : image.includes('/tablets/')
@@ -15,11 +16,14 @@ export const SliderProduct: React.FC<Props> = ({ title, buttonContent, image }) 
 
   return (
     <>
-      <li 
+      <li
         className={`${styles.product} ${variantClass} ${styles.tablet}`}>
         <div className={styles.productContent}>
           <h3 className={styles.productContentTitle}>{title}</h3>
-          <button className={`${styles.productContentButton} buttonText`}>{buttonContent}</button>
+          <button
+            onClick={onClick}
+            className={`${styles.productContentButton} buttonText`}
+          >{buttonContent}</button>
         </div>
 
         <div className={styles.productImage}>
@@ -34,8 +38,11 @@ export const SliderProduct: React.FC<Props> = ({ title, buttonContent, image }) 
           <div className={styles.productImage}>
             <img src={image} alt="Product" />
           </div>
-          
-          <button className={`${styles.productContentButton} buttonText`}>{buttonContent}</button>
+
+          <button
+            onClick={() => { }}
+            className={`${styles.productContentButton} buttonText`}
+          >{buttonContent}</button>
         </div>
       </li>
     </>

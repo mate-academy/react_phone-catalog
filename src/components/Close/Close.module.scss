@@ -1,0 +1,18 @@
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+
+  width: 16px;
+  height: 16px;
+  border: none;
+  padding: 0;
+  background-color: inherit;
+  stroke: var(--color-icons);
+
+  &:hover {
+    stroke: var(--color-primary);
+  }
+}

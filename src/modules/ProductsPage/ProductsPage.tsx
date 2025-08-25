@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './ProductsPage.module.scss';
 import { ItemsPerPage } from '../../types/ItemsPerPage';
 import { ProductsSortType } from '../../types/ProductsSortType';
@@ -10,6 +10,8 @@ import { Card } from '../../types/Card';
 import { Arrow } from '../../components/Arrow/Arrow';
 import { useOnClickOutside } from '../shared/hooks/useOnClickOutside';
 import { getTranslation } from '../shared/utils/getTranslation';
+import debounce from 'lodash.debounce';
+import { Close } from '../../components/Close';
 
 type Props = {
   type: 'phones' | 'tablets' | 'accessories';
@@ -17,27 +19,26 @@ type Props = {
 
 export const ProductsPage: React.FC<Props> = ({ type }) => {
   const [currentPages, setCurrentPages] = useState<number[]>([]);
-
-  const sortDropDownRef = useRef<HTMLDivElement>(null);
-  const perPageDropDownRef = useRef<HTMLDivElement>(null);
-
   const [currentProducts, setCurrentProducts] = useState<Card[]>([]);
-  const { language } = useAppState();
-  const t = getTranslation(language);
-
-  const sortValues = [t.productsPage.newest, t.productsPage.alphabetically, t.productsPage.cheapest];
-  const perPageValues = [t.productsPage.all, 4, 8, 16];
 
   const [isPerPageDropdownOpen, setIsPerPageDropdownOpen] = useState<boolean>(false);
   const [isSortTypeDropdownOpen, setIsSortTypeDropdownOpen] = useState<boolean>(false);
 
+  const sortDropDownRef = useRef<HTMLDivElement>(null);
+  const perPageDropDownRef = useRef<HTMLDivElement>(null);
+  const filterRef = useRef<HTMLInputElement>(null);
   const {
     searchParams,
     products,
+    language,
     isLoadingProducts,
   } = useAppState();
 
   const { setSearchParams, fetchProducts } = useAppDispatch();
+  const t = getTranslation(language);
+
+  const sortValues = [t.productsPage.newest, t.productsPage.alphabetically, t.productsPage.cheapest];
+  const perPageValues = [t.productsPage.all, 4, 8, 16];
 
   function getPerPageFromParams() {
     const value = searchParams.get('perPage');
@@ -46,7 +47,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     const num = Number(value);
     if ([4, 8, 16].includes(num)) return num as ItemsPerPage;
     return 'All';
-  };
+  }
 
   function getSortTypeFromParams() {
     const value = searchParams.get('sort');
@@ -54,18 +55,26 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
       return value as ProductsSortType;
     }
     return 'age';
-  };
+  }
 
   function getPageFromParams() {
     const value = searchParams.get('page');
     if (!value) return 1;
     const num = parseInt(value, 10);
     return isNaN(num) || num < 1 ? 1 : num;
-  };
+  }
+
+  function getFilterFromParams() {
+    const value = searchParams.get('search');
+    if (!value) return '';
+    return value;
+  }
 
   const sortType = getSortTypeFromParams();
   const currentPage = getPageFromParams();
   const perPageValue = getPerPageFromParams();
+  const [filter, setFilter] = useState<string>(getFilterFromParams());
+  const [searchValue, setSearchValue] = useState<string>(getFilterFromParams());
 
   const sorter = useCallback((a: Card, b: Card) => {
     switch (sortType) {
@@ -174,6 +183,33 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     setIsSortTypeDropdownOpen(false);
   }
 
+  function handleSearchValueChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    setSearchValue(value);
+    changeFilter(value);
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Escape') {
+      setSearchValue('');
+      changeFilter('');
+      filterRef.current?.blur();
+    }
+  }
+
+  const changeFilter = useCallback(
+    debounce((value: string) => {
+      setFilter(value);
+
+      if (value === '') {
+        changeSearchParams('search');
+      } else {
+        changeSearchParams('search', value);
+      }
+    }, 500),
+    [],
+  )
+
   function getSortTypeValue(type: ProductsSortType): string {
     switch (type) {
       case 'age':
@@ -205,13 +241,14 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   useEffect(() => {
     if (!isLoadingProducts) {
       const filteredProducts = products
-        .filter(product => product.category === type);
+        .filter(product => product.category === type)
+        .filter(product => product.name.toLowerCase().includes(filter.toLowerCase()));
 
       const sortedProducts = [...filteredProducts].sort(sorter);
 
       setCurrentProducts(sortedProducts);
     }
-  }, [products, type, sortType, isLoadingProducts, sorter]);
+  }, [products, type, sortType, isLoadingProducts, sorter, filter]);
 
   useEffect(() => {
     if (typeof perPageValue === 'number' && currentProducts.length > 0) {
@@ -223,6 +260,11 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [type]);
+
+  useEffect(() => {
+    console.log(filter, 'filter')
+    console.log(searchValue, 'searchValue')
+  }, [filter, searchValue])
 
   useOnClickOutside(sortDropDownRef, () => setIsSortTypeDropdownOpen(false));
   useOnClickOutside(perPageDropDownRef, () => setIsPerPageDropdownOpen(false));
@@ -351,6 +393,29 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
                   )}
                 </div>
               </div>
+
+              <div className={styles.sorter}>
+                <span className={`${styles.counter} smallText`}>{t.productsPage.filterPlaceholder}</span>
+
+                <div className={styles.filter}>
+                  <input
+                    ref={filterRef}
+                    type="text"
+                    value={searchValue}
+                    placeholder={t.productsPage.filterPlaceholder}
+                    onChange={handleSearchValueChange}
+                    onKeyDown={handleKeyDown}
+                    className={`${styles.filterInput} ${styles.dropdown}`}
+                  />
+
+                  {searchValue && (
+                    <Close onClick={() => {
+                      setSearchValue('');
+                      changeFilter('');
+                    }} />
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -359,11 +424,17 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
               isLoadingProducts
                 ? Array(8).fill(undefined)
                 : perPageValue === 'All'
-                  ? currentProducts
-                  : currentProducts.slice(
-                    (currentPage - 1) * Number(perPageValue),
-                    currentPage * Number(perPageValue)
+                  ? currentProducts.filter(product =>
+                    product.name.toLowerCase().includes(filter.toLowerCase())
                   )
+                  : currentProducts
+                    .filter(product =>
+                      product.name.toLowerCase().includes(filter.toLowerCase())
+                    )
+                    .slice(
+                      (currentPage - 1) * Number(perPageValue),
+                      currentPage * Number(perPageValue)
+                    )
             }
           />
 
