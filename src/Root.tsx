@@ -15,7 +15,7 @@ import { ProductsPage } from './modules/ProductsPage/ProductsPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 
 export const Root = () => (
-  <Router basename='/react_phone-catalog'>
+  <Router>
     <AppProvider>
       <Routes>
         <Route element={<App />}>
