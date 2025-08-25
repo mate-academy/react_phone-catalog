@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "./",
+  "homepage": "https://mihakurochkin.github.io/react-phone-catalog/",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -44,7 +44,7 @@
     "eslint-plugin-prettier": "^5.5.3",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "gh-pages": "^6.1.1",
+    "gh-pages": "^6.3.0",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
@@ -71,7 +71,9 @@
     "postinstall": "npm run update || true",
     "predeploy": "npm run build",
     "deploy": "mate-scripts deploy",
-    "prepare": "husky"
+    "prepare": "husky",
+    "predeploy-gh": "npm run build",
+    "deploy-gh": "gh-pages -d dist"
   },
   "browserslist": {
     "production": [

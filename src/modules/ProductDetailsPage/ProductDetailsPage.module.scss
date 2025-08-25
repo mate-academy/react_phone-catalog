@@ -34,21 +34,40 @@
 
 .pictures {
   display: flex;
-  width: 100%;
-  height: 49px;
-  gap: 8px;
-  margin-bottom: 40px;
+  flex-direction: column-reverse;
+  gap: 16px;
 
   @include on-tablet {
-    margin: 0;
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    grid-column: 1 / 2;
+    display: grid;
+    flex-direction: row;
+    grid-column: 1 / 8;
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 16px;
   }
 
   @include on-desktop {
-    grid-column: 1 / 3;
+    grid-template-columns: repeat(13, 32px);
+    margin: 0 auto;
+  }
+
+  &List {
+    display: flex;
+    width: 100%;
+    height: 49px;
+    gap: 8px;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      margin: 0;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      grid-column: 1 / 2;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+    }
   }
 }
 
@@ -71,15 +90,41 @@
 }
 
 .currentPicture {
+  display: flex;
+  overflow: hidden;
   grid-column: 1 / -1;
   aspect-ratio: 1 / 1;
 
+  &List {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    padding: 0;
+    margin: 0;
+
+    @include on-tablet {
+      transition: none;
+    }
+  }
+
+  &Item {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
   @include on-tablet {
-    grid-column: 2 / 8;
+    grid-column: 2 / -1;
   }
 
   @include on-desktop {
-    grid-column: 3 / 13;
+    grid-column: 3 / -1;
+  }
+
+  &Img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }
 
@@ -87,6 +132,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  aspect-ratio: 1 / 1;
 }
 
 .title {
@@ -132,6 +178,15 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  &Title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &Id {
+    color: var(--color-icons);
+  }
 
   &List {
     display: flex;

@@ -10,4 +10,5 @@ export default defineConfig({
       },
     },
   },
+  base: '/react_phone-catalog/',
 });

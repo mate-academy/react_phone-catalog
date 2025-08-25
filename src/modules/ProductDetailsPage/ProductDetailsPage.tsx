@@ -134,31 +134,41 @@ export const ProductDetailsPage: React.FC = () => {
               <h3 className={styles.title}>{product.name}</h3>
 
               <div className={styles.pictures}>
-                {product.images.map((url: string) => (
-                  <div
-                    onClick={() => setCurrentPicture(url)}
-                    key={url}
-                    className={`
+                <div className={styles.picturesList}>
+                  {product.images.map((url: string) => (
+                    <div
+                      onClick={() => setCurrentPicture(url)}
+                      key={url}
+                      className={`
                         ${styles.picture} 
                         ${currentPicture === url ? styles.pictureActive : ''}
                       `}
-                  >
-                    <img className={styles.img} src={`/${url}`} alt="Phone" />
-                  </div>
-                ))}
-              </div>
+                    >
+                      <img className={styles.img} src={`/${url}`} alt="Phone" />
+                    </div>
+                  ))}
+                </div>
 
-              <div className={styles.currentPicture}>
-                <img
-                  className={styles.img}
-                  src={`/${currentPicture}`}
-                  alt="Phone"
-                />
+                <div className={styles.currentPicture}>
+                  <ul
+                    className={styles.currentPictureList}
+                    style={{ transform: `translateX(-${product.images.indexOf(currentPicture) * 100}%)` }}
+                  >
+                    {product.images.map((url) => (
+                      <li key={url} className={styles.currentPictureItem}>
+                        <img src={`/${url}`} className={styles.img} alt="Image" />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               <div className={styles.mainInfo}>
                 <div className={styles.colors}>
-                  <span className='smallText'>{t.productDetailsPage.availableColors}</span>
+                  <div className={styles.colorsTitle}>
+                    <span className='smallText'>{t.productDetailsPage.availableColors}</span>
+                    <span className={`${styles.colorsId} smallText`}>ID: {Math.floor(100000 + Math.random() * 900000)}</span>
+                  </div>
 
                   <ul className={styles.colorsList}>
                     {product.colorsAvailable.map(item => (
