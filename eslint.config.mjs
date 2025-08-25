@@ -13,7 +13,6 @@ export default tseslint.config(
   ...tseslint.configs.recommended, // Розгортаємо рекомендовані правила TypeScript
 
   pluginReact.configs.flat.recommended,
-  pluginReactHooks.configs.recommended, // Рекомендовані правила для React Hooks
 
   // 4. Основна конфігурація для вашого проєкту (застосовується до певних файлів)
   {
@@ -55,6 +54,8 @@ export default tseslint.config(
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "off",
       "react/prop-types": "off", // Зазвичай відключається, коли використовується TypeScript
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
     },
   },
 

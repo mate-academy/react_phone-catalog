@@ -52,20 +52,26 @@ export function getAccessories(): Promise<AccessoryDetails[]> {
 
 export async function findProduct(key: string, value: string | number) {
   const products = await getProducts();
-  return products.find((item: any) => item[key] === value);
+  return products.find((item: Card) => item[key as keyof Card] === value);
 }
 
 export async function findPhone(key: string, value: string | number) {
   const phones = await getPhones();
-  return phones.find((item: any) => item[key] === value);
+  return phones.find(
+    (item: ProductDetails) => item[key as keyof ProductDetails] === value,
+  );
 }
 
 export async function findTablet(key: string, value: string | number) {
   const tablets = await getTablets();
-  return tablets.find((item: any) => item[key] === value);
+  return tablets.find(
+    (item: ProductDetails) => item[key as keyof ProductDetails] === value,
+  );
 }
 
 export async function findAccessory(key: string, value: string | number) {
   const accessories = await getAccessories();
-  return accessories.find((item: any) => item[key] === value);
+  return accessories.find(
+    (item: AccessoryDetails) => item[key as keyof AccessoryDetails] === value,
+  );
 }

@@ -97,7 +97,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     [sortType],
   );
 
-  function changeSearchParams(key: any, value?: any) {
+  function changeSearchParams(key: string, value?: string | number) {
     const newSearchParams = new URLSearchParams(searchParams);
 
     if (value !== undefined && value !== null) {
