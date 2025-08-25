@@ -89,15 +89,14 @@ export const CartPage: React.FC = () => {
         <div className={styles.checkout}>
           <div className={styles.checkoutContent}>
             <h3 className={styles.price}>${totalSum}</h3>
-            <span
-              className={`${styles.total} bodyText`}
-            >{t.cartPage.totalFor} {totalItems} {
-              totalItems === 1
+            <span className={`${styles.total} bodyText`}>
+              {t.cartPage.totalFor} {totalItems}{' '}
+              {totalItems === 1
                 ? t.cartPage.item
-                : (totalItems >= 2 && totalItems <= 4)
+                : totalItems >= 2 && totalItems <= 4
                   ? t.cartPage.items_2_4
-                  : t.cartPage.items
-            }</span>
+                  : t.cartPage.items}
+            </span>
           </div>
 
           <div className={styles.line}></div>
@@ -105,7 +104,9 @@ export const CartPage: React.FC = () => {
           <button
             onClick={() => setIsModalOpen(true)}
             className={`${styles.button} buttonText`}
-          >{t.cartPage.checkout}</button>
+          >
+            {t.cartPage.checkout}
+          </button>
         </div>
       </div>
 
@@ -115,14 +116,15 @@ export const CartPage: React.FC = () => {
         onClick={() => setIsModalOpen(false)}
       ></div>
 
-      <ModalWindow
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      <ModalWindow isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </main>
   ) : (
     <main className={styles.main}>
-      <img className={styles.emptyCart} src="/img/cart-is-empty.png" alt={t.cartPage.cartIsEmpty} />
+      <img
+        className={styles.emptyCart}
+        src="/img/cart-is-empty.png"
+        alt={t.cartPage.cartIsEmpty}
+      />
     </main>
-  )
+  );
 };

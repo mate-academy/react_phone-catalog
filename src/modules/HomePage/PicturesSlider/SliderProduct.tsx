@@ -7,7 +7,12 @@ type Props = {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export const SliderProduct: React.FC<Props> = ({ title, buttonContent, image, onClick }) => {
+export const SliderProduct: React.FC<Props> = ({
+  title,
+  buttonContent,
+  image,
+  onClick,
+}) => {
   const variantClass = image.includes('/phones/')
     ? styles.productSecond
     : image.includes('/tablets/')
@@ -16,14 +21,15 @@ export const SliderProduct: React.FC<Props> = ({ title, buttonContent, image, on
 
   return (
     <>
-      <li
-        className={`${styles.product} ${variantClass} ${styles.tablet}`}>
+      <li className={`${styles.product} ${variantClass} ${styles.tablet}`}>
         <div className={styles.productContent}>
           <h3 className={styles.productContentTitle}>{title}</h3>
           <button
             onClick={onClick}
             className={`${styles.productContentButton} buttonText`}
-          >{buttonContent}</button>
+          >
+            {buttonContent}
+          </button>
         </div>
 
         <div className={styles.productImage}>
@@ -42,9 +48,11 @@ export const SliderProduct: React.FC<Props> = ({ title, buttonContent, image, on
           <button
             onClick={onClick}
             className={`${styles.productContentButton} buttonText`}
-          >{buttonContent}</button>
+          >
+            {buttonContent}
+          </button>
         </div>
       </li>
     </>
-  )
-}
+  );
+};

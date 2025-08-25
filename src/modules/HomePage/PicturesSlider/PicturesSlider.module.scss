@@ -1,7 +1,7 @@
 .slider {
   grid-column: 1 / -1;
-  margin-left: -16px;
   margin-right: -16px;
+  margin-left: -16px;
 
   @include on-tablet {
     margin: 0;
@@ -24,8 +24,9 @@
 }
 
 .products {
-  display: flex;
   overflow: hidden;
+  display: flex;
+
   box-sizing: border-box;
   aspect-ratio: 1 / 1;
   width: 100%;
@@ -36,10 +37,11 @@
 
   &List {
     display: flex;
+
     width: 100%;
     height: 100%;
-    padding: 0;
     margin: 0;
+    padding: 0;
 
     transition: transform 0.3s ease;
   }
@@ -56,10 +58,10 @@
 }
 
 .dash {
+  cursor: pointer;
   width: 14px;
   height: 4px;
   background-color: var(--color-elements);
-  cursor: pointer;
 }
 
 .activeDash {

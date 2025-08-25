@@ -7,16 +7,20 @@ export const LanguageSwitcher = () => {
 
   return (
     <div className={styles.settingsMenuItem}>
-      <span className={`${styles.settingsType} bodyText`}>{language.toUpperCase()}</span>
+      <span className={`${styles.settingsType} bodyText`}>
+        {language.toUpperCase()}
+      </span>
       <button
         onClick={() => setLanguage(language === 'uk' ? 'en' : 'uk')}
         className={styles.switcher}
       >
-        <div className={`
+        <div
+          className={`
           ${styles.switcherThumb}
           ${language === 'uk' ? styles.switcherThumbOn : ''}
-        `}></div>
+        `}
+        ></div>
       </button>
     </div>
-  )
-}
+  );
+};

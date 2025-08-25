@@ -4,19 +4,20 @@
 
 body {
   height: 100%;
-  background-color: var(--header-bg-color);
   margin: 0;
   padding: 0;
+  background-color: var(--header-bg-color);
 }
 
 .main-content {
-  color: var(--color-primary);
+  box-sizing: border-box;
+  width: 100%;
   max-width: 1200px;
+  margin: 0 auto;
   padding-top: 72px;
   padding-bottom: 56px;
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
+
+  color: var(--color-primary);
 
   @include on-desktop {
     padding-top: 88px;

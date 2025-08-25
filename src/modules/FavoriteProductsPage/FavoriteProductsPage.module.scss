@@ -4,8 +4,8 @@
 
 .head {
   display: flex;
-  flex-direction: column;
   grid-column: 1 / -1;
+  flex-direction: column;
 }
 
 .headContent {

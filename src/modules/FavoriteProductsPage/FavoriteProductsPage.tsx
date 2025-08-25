@@ -25,10 +25,11 @@ export const FavoriteProductsPage: React.FC = () => {
       </div>
 
       <div className={styles.cards}>
-        {favouriteProducts.map((id) => (
-          <Card key={id} card={
-            products.find((product) => product.itemId === id)
-          } />
+        {favouriteProducts.map(id => (
+          <Card
+            key={id}
+            card={products.find(product => product.itemId === id)}
+          />
         ))}
       </div>
     </main>

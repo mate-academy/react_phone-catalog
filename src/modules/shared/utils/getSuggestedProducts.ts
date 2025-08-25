@@ -1,4 +1,4 @@
-import { Card } from "../../../types/Card";
+import { Card } from '../../../types/Card';
 
 export function getSuggestedProducts(products: Card[]): Card[] {
   const suggestedProducts: Card[] = [...products];

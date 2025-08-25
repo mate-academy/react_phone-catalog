@@ -17,12 +17,9 @@ export const HomePage: React.FC = () => {
         <PicturesSlider />
       </div>
 
-      <ProductsSlider
-        title={t.homePage.newModelsTitle}
-        filter='year'
-      />
+      <ProductsSlider title={t.homePage.newModelsTitle} filter="year" />
       <Categories />
-      <ProductsSlider title={t.homePage.hotPricesTitle} filter='price' />
+      <ProductsSlider title={t.homePage.hotPricesTitle} filter="price" />
     </main>
   );
 };

@@ -14,8 +14,7 @@ export const CartProductSkeleton: React.FC = () => {
           <div className={styles.image}></div>
         </div>
 
-        <div className={styles.name}>
-        </div>
+        <div className={styles.name}></div>
       </div>
 
       <div className={styles.price}>
@@ -26,4 +25,4 @@ export const CartProductSkeleton: React.FC = () => {
       </div>
     </div>
   );
-}
+};

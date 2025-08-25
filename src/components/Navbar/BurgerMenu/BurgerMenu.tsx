@@ -12,16 +12,10 @@ type Props = {
 };
 
 export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
-  const {
-    isMenuOpen,
-    cartProducts,
-    favouriteProducts,
-    theme,
-    language,
-  } = useAppState();
+  const { isMenuOpen, cartProducts, favouriteProducts, theme, language } =
+    useAppState();
 
   const t = getTranslation(language);
-
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -36,7 +30,11 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
       <div className={styles.topbar}>
         <Logo location="navbar" />
         <button onClick={onClose} className={styles.crossContainer}>
-          <img className={styles.img} src={`/img/icons/${theme}-theme/Cross.svg`} alt={t.burgerMenu.cross} />
+          <img
+            className={styles.img}
+            src={`/img/icons/${theme}-theme/Cross.svg`}
+            alt={t.burgerMenu.cross}
+          />
         </button>
       </div>
 
@@ -109,9 +107,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
             />
 
             {favouriteProducts.length > 0 && (
-              <div className={styles.counter}>
-                {favouriteProducts.length}
-              </div>
+              <div className={styles.counter}>{favouriteProducts.length}</div>
             )}
           </NavLink>
           <NavLink
@@ -121,7 +117,11 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
               `${styles.link} ${isActive ? `${styles.activeLink}` : ''}`
             }
           >
-            <img className={styles.img} src={`/img/icons/${theme}-theme/Cart.svg`} alt={t.burgerMenu.cart} />
+            <img
+              className={styles.img}
+              src={`/img/icons/${theme}-theme/Cart.svg`}
+              alt={t.burgerMenu.cart}
+            />
 
             {Object.keys(cartProducts).length > 0 && (
               <div className={styles.counter}>

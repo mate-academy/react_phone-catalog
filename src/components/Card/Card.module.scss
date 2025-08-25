@@ -5,42 +5,11 @@
   margin: 0;
   padding: 32px;
   border: 1px solid var(--card-border-color);
+
   background-color: var(--card-bg-color);
 
   &:hover {
     box-shadow: 0 2px 16px 0 #0000001a;
-  }
-}
-
-.isLoading {
-  .imageContainer,
-  .price,
-  .name,
-  .description {
-    background: linear-gradient(110deg, var(--skeleton-bg-color) 8%, var(--skeleton-line-color) 18%, var(--skeleton-bg-color) 33%);
-    animation: 1.5s shine linear infinite;
-    background-size: 200% 100%;
-    border-radius: 5%;
-  }
-
-  .image {
-    height: 200px;
-  }
-
-  .name,
-  .price,
-  .key {
-    min-height: 20px;
-  }
-
-  &:hover {
-    box-shadow: none;
-  }
-}
-
-@keyframes shine {
-  to {
-    background-position-x: -200%;
   }
 }
 
@@ -52,7 +21,6 @@
 
   width: 212px;
   height: 439px;
-
   margin: 0;
   padding: 0;
 
@@ -60,29 +28,6 @@
     max-width: 208px;
     max-height: 476px;
   }
-}
-
-.name {
-  margin: 0;
-  padding: 0;
-  color: var(--color-primary);
-}
-
-.price {
-  margin: 0;
-  padding: 0;
-  color: var(--color-primary);
-}
-
-.fullPrice {
-  font-family: Mont-Regular;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 100%;
-  letter-spacing: 0%;
-
-  color: var(--color-secondary);
-  text-decoration: line-through;
 }
 
 .about {
@@ -95,15 +40,6 @@
   width: 208px;
   margin: 0;
   padding: 0;
-}
-
-.description {
-  display: flex;
-  justify-content: space-between;
-}
-
-.keys {
-  color: var(--color-secondary);
 }
 
 .imageContainer {
@@ -125,10 +61,73 @@
   }
 }
 
+.name {
+  margin: 0;
+  padding: 0;
+  color: var(--color-primary);
+}
+
+.price {
+  margin: 0;
+  padding: 0;
+  color: var(--color-primary);
+}
+
+.fullPrice {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--color-secondary);
+  text-decoration: line-through;
+  letter-spacing: 0%;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+}
+
+.keys {
+  color: var(--color-secondary);
+}
+
 .image {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.isLoading {
+  .imageContainer,
+  .price,
+  .name,
+  .description {
+    border-radius: 5%;
+    background: linear-gradient(110deg, var(--skeleton-bg-color) 8%, var(--skeleton-line-color) 18%, var(--skeleton-bg-color) 33%);
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+  }
+
+  .image {
+    height: 200px;
+  }
+
+  .name,
+  .price,
+  .key {
+    min-height: 20px;
+  }
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
 }
 
 .line {

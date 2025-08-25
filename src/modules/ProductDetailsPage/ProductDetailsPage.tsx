@@ -8,7 +8,7 @@ import {
   getAccessories,
   getPhones,
   getProducts,
-  getTablets
+  getTablets,
 } from '../shared/services/productService';
 import { AccessoryDetails } from '../../types/AccessoryDetails';
 import { useEffect, useState, useRef } from 'react';
@@ -30,8 +30,12 @@ export const ProductDetailsPage: React.FC = () => {
   const { toggleFavouriteCard, toggleAddToCart } = useAppDispatch();
   const t = getTranslation(language);
 
-  const [product, setProduct] = useState<ProductDetails | AccessoryDetails | undefined>(undefined);
-  const [similarProducts, setSimilarProducts] = useState<ProductDetails[] | AccessoryDetails[] | undefined>(undefined);
+  const [product, setProduct] = useState<
+    ProductDetails | AccessoryDetails | undefined
+  >(undefined);
+  const [similarProducts, setSimilarProducts] = useState<
+    ProductDetails[] | AccessoryDetails[] | undefined
+  >(undefined);
   const [isProductLoading, setIsProductLoading] = useState(true);
   const [currentPicture, setCurrentPicture] = useState('');
   const [currentCapacity, setCurrentCapacity] = useState('');
@@ -40,7 +44,8 @@ export const ProductDetailsPage: React.FC = () => {
   const handleSwipeLeft = () => {
     if (product && product.images.length > 1) {
       const currentIndex = product.images.indexOf(currentPicture);
-      const nextIndex = currentIndex === product.images.length - 1 ? 0 : currentIndex + 1;
+      const nextIndex =
+        currentIndex === product.images.length - 1 ? 0 : currentIndex + 1;
       setCurrentPicture(product.images[nextIndex]);
     }
   };
@@ -48,7 +53,8 @@ export const ProductDetailsPage: React.FC = () => {
   const handleSwipeRight = () => {
     if (product && product.images.length > 1) {
       const currentIndex = product.images.indexOf(currentPicture);
-      const prevIndex = currentIndex === 0 ? product.images.length - 1 : currentIndex - 1;
+      const prevIndex =
+        currentIndex === 0 ? product.images.length - 1 : currentIndex - 1;
       setCurrentPicture(product.images[prevIndex]);
     }
   };
@@ -62,20 +68,20 @@ export const ProductDetailsPage: React.FC = () => {
   const handleTouchStart = (e: React.TouchEvent) => {
     isSwiping.current = true;
     touchStartX.current = e.targetTouches[0].clientX;
-    
+
     const currentIndex = product ? product.images.indexOf(currentPicture) : 0;
     previousTranslate.current = -currentIndex * 100;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isSwiping.current) return;
-    
+
     const deltaX = e.targetTouches[0].clientX - touchStartX.current;
     const containerWidth = sliderRef.current?.offsetWidth || 0;
-    
+
     const percentageDelta = (deltaX / containerWidth) * 100;
     currentTranslate.current = previousTranslate.current + percentageDelta;
-    
+
     if (sliderRef.current) {
       sliderRef.current.style.transform = `translateX(${currentTranslate.current}%)`;
     }
@@ -83,7 +89,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (!isSwiping.current) return;
-    
+
     isSwiping.current = false;
     const touchEndX = e.changedTouches[0].clientX;
     const deltaX = touchEndX - touchStartX.current;
@@ -97,7 +103,9 @@ export const ProductDetailsPage: React.FC = () => {
       }
     } else {
       if (sliderRef.current) {
-        const currentIndex = product ? product.images.indexOf(currentPicture) : 0;
+        const currentIndex = product
+          ? product.images.indexOf(currentPicture)
+          : 0;
         sliderRef.current.style.transform = `translateX(-${currentIndex * 100}%)`;
       }
     }
@@ -131,19 +139,28 @@ export const ProductDetailsPage: React.FC = () => {
             response = await findPhone('id', item.itemId);
             const phones = await getPhones();
 
-            similar = phones.filter((p: ProductDetails) => p.namespaceId === (response as ProductDetails).namespaceId);
+            similar = phones.filter(
+              (p: ProductDetails) =>
+                p.namespaceId === (response as ProductDetails).namespaceId,
+            );
             break;
           }
           case 'tablets': {
             const tablets = await getTablets();
             response = await findTablet('id', item.itemId);
-            similar = tablets.filter((p: ProductDetails) => p.namespaceId === (response as ProductDetails).namespaceId);
+            similar = tablets.filter(
+              (p: ProductDetails) =>
+                p.namespaceId === (response as ProductDetails).namespaceId,
+            );
             break;
           }
           case 'accessories': {
             const accessories = await getAccessories();
             response = await findAccessory('id', item.itemId);
-            similar = accessories.filter((p: AccessoryDetails) => p.namespaceId === (response as AccessoryDetails).namespaceId);
+            similar = accessories.filter(
+              (p: AccessoryDetails) =>
+                p.namespaceId === (response as AccessoryDetails).namespaceId,
+            );
             break;
           }
           default:
@@ -189,7 +206,9 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   return (
-    <main className={`${styles.main} ${isProductLoading ? styles.isLoading : ''}`}>
+    <main
+      className={`${styles.main} ${isProductLoading ? styles.isLoading : ''}`}
+    >
       {product ? (
         <>
           <div className={styles.head}>
@@ -215,7 +234,7 @@ export const ProductDetailsPage: React.FC = () => {
                   ))}
                 </div>
 
-                <div 
+                <div
                   className={styles.currentPicture}
                   onTouchStart={handleTouchStart}
                   onTouchMove={handleTouchMove}
@@ -224,11 +243,17 @@ export const ProductDetailsPage: React.FC = () => {
                   <ul
                     ref={sliderRef}
                     className={styles.currentPictureList}
-                    style={{ transform: `translateX(-${product.images.indexOf(currentPicture) * 100}%)` }}
+                    style={{
+                      transform: `translateX(-${product.images.indexOf(currentPicture) * 100}%)`,
+                    }}
                   >
-                    {product.images.map((url) => (
+                    {product.images.map(url => (
                       <li key={url} className={styles.currentPictureItem}>
-                        <img src={`/${url}`} className={styles.img} alt="Image" />
+                        <img
+                          src={`/${url}`}
+                          className={styles.img}
+                          alt="Image"
+                        />
                       </li>
                     ))}
                   </ul>
@@ -238,14 +263,26 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={styles.mainInfo}>
                 <div className={styles.colors}>
                   <div className={styles.colorsTitle}>
-                    <span className='smallText'>{t.productDetailsPage.availableColors}</span>
-                    <span className={`${styles.colorsId} smallText`}>ID: {Math.floor(100000 + Math.random() * 900000)}</span>
+                    <span className="smallText">
+                      {t.productDetailsPage.availableColors}
+                    </span>
+                    <span className={`${styles.colorsId} smallText`}>
+                      ID: {Math.floor(100000 + Math.random() * 900000)}
+                    </span>
                   </div>
 
                   <ul className={styles.colorsList}>
                     {product.colorsAvailable.map(item => (
                       <li
-                        onClick={() => setProduct(similarProducts!.find(p => p.color === item && p.capacity === currentCapacity))}
+                        onClick={() =>
+                          setProduct(
+                            similarProducts!.find(
+                              p =>
+                                p.color === item &&
+                                p.capacity === currentCapacity,
+                            ),
+                          )
+                        }
                         className={`
                             ${styles.colorsItem} 
                             ${currentColor === item ? styles.colorsItemActive : ''}
@@ -254,7 +291,8 @@ export const ProductDetailsPage: React.FC = () => {
                       >
                         <div
                           style={{ backgroundColor: getColor(item) }}
-                          className={styles.colorsItemColor}></div>
+                          className={styles.colorsItemColor}
+                        ></div>
                       </li>
                     ))}
                   </ul>
@@ -263,18 +301,29 @@ export const ProductDetailsPage: React.FC = () => {
                 <div className={styles.line}></div>
 
                 <div className={styles.capacity}>
-                  <span className='smallText'>{t.productDetailsPage.selectCapacity}</span>
+                  <span className="smallText">
+                    {t.productDetailsPage.selectCapacity}
+                  </span>
 
                   <ul className={`${styles.capacityList} bodyText`}>
                     {product.capacityAvailable.map(item => (
                       <li
-                        onClick={() => setProduct(similarProducts!.find(p => p.capacity === item && p.color === currentColor))}
+                        onClick={() =>
+                          setProduct(
+                            similarProducts!.find(
+                              p =>
+                                p.capacity === item && p.color === currentColor,
+                            ),
+                          )
+                        }
                         className={`
                             ${styles.capacityItem} 
                             ${currentCapacity === item ? styles.capacityItemActive : ''}
                           `}
                         key={item}
-                      >{getFormattedCapacity(item)}</li>
+                      >
+                        {getFormattedCapacity(item)}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -322,7 +371,9 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.about}>
             <div>
-              <h4 className={styles.aboutTitle}>{t.productDetailsPage.about}</h4>
+              <h4 className={styles.aboutTitle}>
+                {t.productDetailsPage.about}
+              </h4>
               <div className={styles.line}></div>
             </div>
 
@@ -331,7 +382,9 @@ export const ProductDetailsPage: React.FC = () => {
                 <h5 className={styles.aboutSubtitle}>{item.title}</h5>
 
                 {item.text.map(text => (
-                  <p className={`${styles.aboutText} bodyText`} key={text}>{text}</p>
+                  <p className={`${styles.aboutText} bodyText`} key={text}>
+                    {text}
+                  </p>
                 ))}
               </div>
             ))}
@@ -339,52 +392,71 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className={styles.techSpecs}>
             <div>
-              <h4 className={styles.techSpecsTitle}>{t.productDetailsPage.techSpecs}</h4>
+              <h4 className={styles.techSpecsTitle}>
+                {t.productDetailsPage.techSpecs}
+              </h4>
               <div className={styles.line}></div>
             </div>
 
             <ul className={`${styles.techSpecsList} bodyText`}>
               <li className={styles.case}>
-                {t.productDetailsPage.screen} <span className={styles.value}>{product.screen}</span>
+                {t.productDetailsPage.screen}{' '}
+                <span className={styles.value}>{product.screen}</span>
               </li>
               <li className={styles.case}>
-                {t.productDetailsPage.resolution} <span className={styles.value}>{product.resolution}</span>
+                {t.productDetailsPage.resolution}{' '}
+                <span className={styles.value}>{product.resolution}</span>
               </li>
               <li className={styles.case}>
-                {t.productDetailsPage.processor} <span className={styles.value}>{product.processor}</span>
+                {t.productDetailsPage.processor}{' '}
+                <span className={styles.value}>{product.processor}</span>
               </li>
               <li className={styles.case}>
-                {t.productDetailsPage.ram} <span className={styles.value}>{getFormattedCapacity(product.ram)}</span>
+                {t.productDetailsPage.ram}{' '}
+                <span className={styles.value}>
+                  {getFormattedCapacity(product.ram)}
+                </span>
               </li>
               <li className={styles.case}>
-                {t.productDetailsPage.builtInMemory} <span className={styles.value}>{getFormattedCapacity(product.capacity)}</span>
+                {t.productDetailsPage.builtInMemory}{' '}
+                <span className={styles.value}>
+                  {getFormattedCapacity(product.capacity)}
+                </span>
               </li>
               {'camera' in product && (
                 <>
                   <li className={styles.case}>
-                    {t.productDetailsPage.camera} <span className={styles.value}>{product.camera}</span>
+                    {t.productDetailsPage.camera}{' '}
+                    <span className={styles.value}>{product.camera}</span>
                   </li>
                   <li className={styles.case}>
-                    {t.productDetailsPage.zoom} <span className={styles.value}>{product.zoom}</span>
+                    {t.productDetailsPage.zoom}{' '}
+                    <span className={styles.value}>{product.zoom}</span>
                   </li>
                 </>
               )}
               <li className={styles.case}>
-                {t.productDetailsPage.cell} <span className={styles.value}>{product.cell.join(', ')}</span>
+                {t.productDetailsPage.cell}{' '}
+                <span className={styles.value}>{product.cell.join(', ')}</span>
               </li>
             </ul>
           </div>
 
-          <ProductsSlider title={t.productDetailsPage.youMayAlsoLike} filter='random' />
+          <ProductsSlider
+            title={t.productDetailsPage.youMayAlsoLike}
+            filter="random"
+          />
         </>
       ) : (
         <div className={styles.head}>
           <Breadcrumb />
           <Back />
 
-          <h2 className={styles.title}>{t.productDetailsPage.productNotFound}</h2>
+          <h2 className={styles.title}>
+            {t.productDetailsPage.productNotFound}
+          </h2>
         </div>
       )}
     </main>
-  )
-}
+  );
+};

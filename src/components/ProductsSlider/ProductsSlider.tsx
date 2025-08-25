@@ -35,7 +35,9 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
     }
   }
 
-  const [currentProducts, setCurrentProducts] = useState<CardType[]>(() => filterProducts(filter));
+  const [currentProducts, setCurrentProducts] = useState<CardType[]>(() =>
+    filterProducts(filter),
+  );
   const maxScrollPosition = Math.max(0, currentProducts.length - visibleCards);
 
   function findAbleScrollStep() {
@@ -73,7 +75,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
 
   useEffect(() => {
     setCurrentProducts(filterProducts(filter));
-  }, [filter, products])
+  }, [filter, products]);
 
   return (
     <section ref={refSliderWidth} className={styles.section}>
@@ -88,7 +90,10 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
           />
           <ArrowButton
             direction="right"
-            isDisabled={scrollPosition >= maxScrollPosition || currentProducts.length <= visibleCards}
+            isDisabled={
+              scrollPosition >= maxScrollPosition ||
+              currentProducts.length <= visibleCards
+            }
             onClick={() => handleArrowClick('right')}
           />
         </div>
@@ -101,16 +106,13 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             transform: `translateX(-${findAbleScrollStep()}px)`,
           }}
         >
-          {isLoadingProducts ? (
-            Array(4).fill(undefined).map((product, i) => (
-              <Card key={i} card={product} />
-            ))
-          ) : (
-            currentProducts
-              .map(product => (
+          {isLoadingProducts
+            ? Array(4)
+                .fill(undefined)
+                .map((product, i) => <Card key={i} card={product} />)
+            : currentProducts.map(product => (
                 <Card key={product.id} card={product} />
-              ))
-          )}
+              ))}
         </div>
       </div>
     </section>

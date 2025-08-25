@@ -1,17 +1,20 @@
 .modal {
-  background-color: var(--color-elements);
-  border: 1px solid var(--color-elements);
   position: fixed;
+  z-index: 1000;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000;
-  padding: 15px 20px;
+
   display: none;
+
+  padding: 15px 20px;
+  border: 1px solid var(--color-elements);
+
+  background-color: var(--color-elements);
 }
 
 .title {
-  margin: 0 0 25px 0;
+  margin: 0 0 25px;
   font-family: Mont-Regular, sans-serif;
 }
 
@@ -26,12 +29,15 @@
 
 .button {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   height: 40px;
-  background-color: inherit;
   border: 1px solid var(--color-elements);
+
   color: var(--color-primary);
+
+  background-color: inherit;
 
   &:hover {
     border-color: var(--color-primary);

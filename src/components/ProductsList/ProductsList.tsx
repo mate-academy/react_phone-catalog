@@ -5,7 +5,7 @@ import { Card as CardType } from '../../types/Card';
 
 type Props = {
   products: CardType[];
-}
+};
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
@@ -14,5 +14,5 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
         <Card key={product === undefined ? i : product.id} card={product} />
       ))}
     </div>
-  )
-}
+  );
+};

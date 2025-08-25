@@ -20,15 +20,19 @@ export const Back: React.FC = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered ? (
-        <Arrow direction='left' fill='var(--back-button-hover-color)' />
+        <Arrow direction="left" fill="var(--back-button-hover-color)" />
       ) : (
-        <Arrow direction='left' fill='var(--back-button-default-arrow-color)' />
+        <Arrow direction="left" fill="var(--back-button-default-arrow-color)" />
       )}
-      <span className={`
+      <span
+        className={`
         ${styles.backText} 
         ${isHovered ? styles.backTextHover : ''} 
         smallText
-      `}>{t.back.back}</span>
+      `}
+      >
+        {t.back.back}
+      </span>
     </button>
   );
 };

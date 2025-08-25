@@ -5,7 +5,7 @@ import { getTranslation } from '../shared/utils/getTranslation';
 type Props = {
   isOpen: boolean;
   onClose: () => void;
-}
+};
 
 export const ModalWindow: React.FC<Props> = ({ isOpen, onClose }) => {
   const { setCartProducts } = useAppDispatch();
@@ -18,9 +18,7 @@ export const ModalWindow: React.FC<Props> = ({ isOpen, onClose }) => {
   }
 
   return (
-    <div
-      className={`${styles.modal} ${isOpen ? styles.open : ''}`}
-    >
+    <div className={`${styles.modal} ${isOpen ? styles.open : ''}`}>
       <h4 className={styles.title}>{t.modal.checkoutNotImplemented}</h4>
 
       <div className={styles.buttons}>
@@ -30,15 +28,21 @@ export const ModalWindow: React.FC<Props> = ({ isOpen, onClose }) => {
             ${styles.button} 
             ${styles.cancel} 
             buttonText
-          `}>{t.modal.cancel}</button>
+          `}
+        >
+          {t.modal.cancel}
+        </button>
         <button
           onClick={handleConfirm}
           className={`
             ${styles.button} 
             ${styles.confirm} 
             buttonText
-          `}>{t.modal.confirm}</button>
+          `}
+        >
+          {t.modal.confirm}
+        </button>
       </div>
     </div>
-  )
-}
+  );
+};

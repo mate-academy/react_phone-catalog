@@ -42,7 +42,9 @@ type AppDispatchType = {
   setIsLoadingProducts: Dispatch<SetStateAction<boolean>>;
   setLanguage: Dispatch<SetStateAction<'uk' | 'en'>>;
   setTheme: Dispatch<SetStateAction<'light' | 'dark'>>;
-  setSearchParams: (params: URLSearchParams | ((prev: URLSearchParams) => URLSearchParams)) => void;
+  setSearchParams: (
+    params: URLSearchParams | ((prev: URLSearchParams) => URLSearchParams),
+  ) => void;
   toggleFavouriteCard: (cardId: string) => void;
   toggleAddToCart: (cardId: string) => void;
   fetchProducts: () => void;
@@ -58,8 +60,10 @@ type Props = {
 };
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
-  const [favouriteProducts, setFavouriteProducts] = useState<string[]>(getFavouriteProducts);
-  const [cartProducts, setCartProducts] = useState<Record<string, number>>(getCartProducts);
+  const [favouriteProducts, setFavouriteProducts] =
+    useState<string[]>(getFavouriteProducts);
+  const [cartProducts, setCartProducts] =
+    useState<Record<string, number>>(getCartProducts);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoadingProducts, setIsLoadingProducts] = useState<boolean>(false);
@@ -74,7 +78,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     setIsLoadingProducts(true);
     getProducts()
       .then(setProducts)
-      .catch((err) => {
+      .catch(err => {
         throw new Error(err);
       })
       .finally(() => setIsLoadingProducts(false));
@@ -101,53 +105,61 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     saveCartProducts(cartProducts);
   }, [cartProducts]);
 
-  const dispatchValue = useMemo(() => ({
-    setIsMenuOpen,
-    setFavouriteProducts,
-    setCartProducts,
-    setProducts,
-    setIsLoadingProducts,
-    setLanguage,
-    setTheme,
-    setSearchParams,
-    toggleFavouriteCard: (cardId: string) => {
-      setFavouriteProducts(prev =>
-        prev.includes(cardId)
-          ? prev.filter(id => id !== cardId)
-          : [...prev, cardId]
-      );
-    },
-    toggleAddToCart: (cardId: string) => {
-      setCartProducts(prev =>
-        Object.keys(prev).includes(cardId)
-          ? Object.fromEntries(Object.entries(prev).filter(([id]) => id !== cardId))
-          : { ...prev, [cardId]: 1 }
-      );
-    },
-    fetchProducts,
-    refCardWidth,
-    refSliderWidth,
-  }), [setSearchParams]);
+  const dispatchValue = useMemo(
+    () => ({
+      setIsMenuOpen,
+      setFavouriteProducts,
+      setCartProducts,
+      setProducts,
+      setIsLoadingProducts,
+      setLanguage,
+      setTheme,
+      setSearchParams,
+      toggleFavouriteCard: (cardId: string) => {
+        setFavouriteProducts(prev =>
+          prev.includes(cardId)
+            ? prev.filter(id => id !== cardId)
+            : [...prev, cardId],
+        );
+      },
+      toggleAddToCart: (cardId: string) => {
+        setCartProducts(prev =>
+          Object.keys(prev).includes(cardId)
+            ? Object.fromEntries(
+                Object.entries(prev).filter(([id]) => id !== cardId),
+              )
+            : { ...prev, [cardId]: 1 },
+        );
+      },
+      fetchProducts,
+      refCardWidth,
+      refSliderWidth,
+    }),
+    [setSearchParams],
+  );
 
-  const stateValue = useMemo(() => ({
-    favouriteProducts,
-    cartProducts,
-    isMenuOpen,
-    products,
-    searchParams,
-    isLoadingProducts,
-    theme,
-    language,
-  }), [
-    favouriteProducts,
-    cartProducts,
-    isMenuOpen,
-    products,
-    searchParams,
-    isLoadingProducts,
-    theme,
-    language,
-  ]);
+  const stateValue = useMemo(
+    () => ({
+      favouriteProducts,
+      cartProducts,
+      isMenuOpen,
+      products,
+      searchParams,
+      isLoadingProducts,
+      theme,
+      language,
+    }),
+    [
+      favouriteProducts,
+      cartProducts,
+      isMenuOpen,
+      products,
+      searchParams,
+      isLoadingProducts,
+      theme,
+      language,
+    ],
+  );
 
   return (
     <AppDispatchContext.Provider value={dispatchValue}>

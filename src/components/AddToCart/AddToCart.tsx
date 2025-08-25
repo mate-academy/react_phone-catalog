@@ -12,15 +12,17 @@ export const AddToCart: React.FC<Props> = ({ onClick, isActive }) => {
   const t = getTranslation(language);
 
   return (
-  <button
-    className={`
+    <button
+      className={`
       buttonText 
       ${styles.button} 
       ${isActive ? styles.isSelected : ''}
     `}
-    onClick={onClick}
-  >
-    {isActive ? t.productDetailsPage.addedToCart : t.productDetailsPage.addToCart}
-  </button>
+      onClick={onClick}
+    >
+      {isActive
+        ? t.productDetailsPage.addedToCart
+        : t.productDetailsPage.addToCart}
+    </button>
   );
 };

@@ -1,4 +1,4 @@
-import { useAppDispatch } from "../../contexts/AppContext";
+import { useAppDispatch } from '../../contexts/AppContext';
 import styles from './Card.module.scss';
 
 export const CardSkeleton: React.FC = () => {
@@ -14,10 +14,8 @@ export const CardSkeleton: React.FC = () => {
         </div>
 
         <div className={styles.about}>
-          <p className={styles.name}>
-          </p>
-          <div className={styles.price}>
-          </div>
+          <p className={styles.name}></p>
+          <div className={styles.price}></div>
 
           <div className={styles.description}>
             <div className={styles.keys}>
@@ -41,4 +39,4 @@ export const CardSkeleton: React.FC = () => {
       </div>
     </div>
   );
-}
+};

@@ -14,7 +14,8 @@ type Props = {
 
 export const Card: React.FC<Props> = ({ card }) => {
   const { favouriteProducts, cartProducts, language } = useAppState();
-  const { toggleFavouriteCard, toggleAddToCart, refCardWidth } = useAppDispatch();
+  const { toggleFavouriteCard, toggleAddToCart, refCardWidth } =
+    useAppDispatch();
   const t = getTranslation(language);
 
   function handleAddToCartClick(event: React.MouseEvent<HTMLButtonElement>) {
@@ -25,7 +26,9 @@ export const Card: React.FC<Props> = ({ card }) => {
     }
   }
 
-  function handleAddToFavouriteClick(event: React.MouseEvent<HTMLButtonElement>) {
+  function handleAddToFavouriteClick(
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) {
     event.preventDefault();
     event.stopPropagation();
     if (card) {
@@ -41,18 +44,18 @@ export const Card: React.FC<Props> = ({ card }) => {
     >
       <div className={styles.wrapper}>
         <div className={styles.imageContainer}>
-          <img className={styles.image} src={`/${card.image}`} alt={card.name} />
+          <img
+            className={styles.image}
+            src={`/${card.image}`}
+            alt={card.name}
+          />
         </div>
 
         <div className={styles.about}>
-          <p className={`bodyText ${styles.name}`}>
-            {card.name}
-          </p>
+          <p className={`bodyText ${styles.name}`}>{card.name}</p>
           <h4 className={styles.price}>
             ${card.price}{' '}
-            <span className={styles.fullPrice}>
-              ${card.fullPrice}
-            </span>
+            <span className={styles.fullPrice}>${card.fullPrice}</span>
           </h4>
 
           <div className={styles.line}></div>
@@ -66,7 +69,9 @@ export const Card: React.FC<Props> = ({ card }) => {
 
             <div className={styles.values}>
               <p className="cardValuesText">{card.screen}</p>
-              <p className="cardValuesText">{getFormattedCapacity(card.capacity)}</p>
+              <p className="cardValuesText">
+                {getFormattedCapacity(card.capacity)}
+              </p>
               <p className="cardValuesText">{getFormattedCapacity(card.ram)}</p>
             </div>
           </div>
@@ -84,5 +89,7 @@ export const Card: React.FC<Props> = ({ card }) => {
         </div>
       </div>
     </Link>
-  ) : <CardSkeleton />;
+  ) : (
+    <CardSkeleton />
+  );
 };

@@ -17,14 +17,23 @@ export const Footer: React.FC = () => {
         </div>
 
         <ul className={styles.list}>
-          <li className='uppercaseText'>
-            <Link className={styles.listLink} to="https://github.com/Mihakurochkin/">{t.footer.github}</Link>
+          <li className="uppercaseText">
+            <Link
+              className={styles.listLink}
+              to="https://github.com/Mihakurochkin/"
+            >
+              {t.footer.github}
+            </Link>
           </li>
-          <li className='uppercaseText'>
-            <Link className={styles.listLink} to="/">{t.footer.contacts}</Link>
+          <li className="uppercaseText">
+            <Link className={styles.listLink} to="/">
+              {t.footer.contacts}
+            </Link>
           </li>
-          <li className='uppercaseText'>
-            <Link className={styles.listLink} to="/">{t.footer.rights}</Link>
+          <li className="uppercaseText">
+            <Link className={styles.listLink} to="/">
+              {t.footer.rights}
+            </Link>
           </li>
         </ul>
 
@@ -44,4 +53,4 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-}
+};

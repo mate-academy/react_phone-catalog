@@ -1,7 +1,8 @@
 .main {
   @include page-grid;
-  flex: 1;
+
   display: flex;
+  flex: 1;
   flex-direction: column;
   row-gap: 56px;
 
@@ -21,18 +22,18 @@
 
 .header {
   display: flex;
+  grid-column: 1 / -1;
   flex-direction: column;
   gap: 24px;
-  grid-column: 1 / -1;
 
   @include on-tablet {
-    padding-top: 8px;
     gap: 32px;
+    padding-top: 8px;
   }
 
   @include on-desktop {
-    padding-top: 32px;
     gap: 56px;
+    padding-top: 32px;
   }
 }
 

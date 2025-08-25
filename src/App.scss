@@ -5,12 +5,12 @@
 }
 
 .main-content {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
 }
 
 header {
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
 }

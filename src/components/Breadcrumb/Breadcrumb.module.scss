@@ -1,8 +1,7 @@
 .path {
   display: flex;
-  align-items: center;
   gap: 8px;
-
+  align-items: center;
   margin-bottom: 24px;
 
   @include on-tablet {
@@ -11,7 +10,7 @@
 }
 
 .pageName {
-  margin: 2px 0 0 0;
+  margin: 2px 0 0;
   text-transform: capitalize;
 }
 
@@ -20,9 +19,9 @@
 }
 
 .lastItem {
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
 }
 
 .arrow {

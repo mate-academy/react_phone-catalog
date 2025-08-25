@@ -175,8 +175,8 @@
   &Icon {
     width: 20px;
     height: 20px;
-    transition: all 0.2s ease-in-out;
     fill: var(--color-primary);
+    transition: all 0.2s ease-in-out;
 
     &Active {
       transform: rotate(135deg);
@@ -184,30 +184,35 @@
   }
 
   &Menu {
+    pointer-events: none;
+
     display: flex;
     flex-direction: column;
     gap: 8px;
     align-items: center;
-    background-color: var(--card-bg-color);
-    border: 1px solid var(--color-elements);
-    border-top: none;
+
     margin-top: 1px;
     padding: 8px 4px;
+    border: 1px solid var(--color-elements);
+    border-top: none;
+
     opacity: 0;
-    pointer-events: none;
+    background-color: var(--card-bg-color);
+
     transition: all 0.2s ease-in-out;
 
     &Item {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 4px;
+      align-items: center;
+
       width: 100%;
     }
 
     &.open {
-      opacity: 1;
       pointer-events: auto;
+      opacity: 1;
     }
   }
 
@@ -217,33 +222,39 @@
 }
 
 .switcher {
+  cursor: pointer;
+
+  position: relative;
+
   display: flex;
   align-items: center;
 
-  position: relative;
-  cursor: pointer;
   width: 100%;
-  height: 24px;
   max-width: 48px;
+  height: 24px;
   min-height: 24px;
-  border-radius: 20px;
-  border: 1px solid var(--color-icons);
-  background-color: var(--color-elements);
   padding: 0;
+  border: 1px solid var(--color-icons);
+  border-radius: 20px;
+
+  background-color: var(--color-elements);
 
   @include on-desktop {
-    height: 28px;
     width: 48px;
+    height: 28px;
   }
 
   &Thumb {
     position: absolute;
     left: 4px;
+
+    aspect-ratio: 1 / 1;
     width: auto;
     height: 16px;
-    aspect-ratio: 1 / 1;
     border-radius: 50%;
+
     background-color: var(--color-primary);
+
     transition: all 0.2s ease-in-out;
 
     @include on-desktop {

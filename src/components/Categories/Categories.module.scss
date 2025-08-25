@@ -30,27 +30,27 @@
     background-position: 120px 80px;
 
     @include on-tablet {
-      background-size: cover;
       background-position: 38px 31.3px;
+      background-size: cover;
     }
   }
 
   &Tablets {
     background-color: #8d8d92;
     background-image: url('/img/category-tablets.png');
-    background-size: 200%;
     background-position: 15.65px 17.22px;
+    background-size: 200%;
   }
 
   &Accessories {
     background-color: #d53c51;
     background-image: url('/img/category-accessories.png');
-    background-size: 190%;
     background-position: 38.5px 73px;
+    background-size: 190%;
 
     @include on-tablet {
-      background-size: 190%;
       background-position: 20px 50px;
+      background-size: 190%;
     }
   }
 }

@@ -11,7 +11,7 @@ export const PicturesSlider: React.FC = () => {
   const { language } = useAppState();
   const t = getTranslation(language);
   const navigate = useNavigate();
-  
+
   const [currentPicture, setCurrentPicture] = useState(0);
   const sliderRef = useRef<HTMLUListElement>(null);
 
@@ -29,25 +29,24 @@ export const PicturesSlider: React.FC = () => {
     return () => clearInterval(interval);
   }, [currentPicture]);
 
-
-
   const handleTouchStart = (e: React.TouchEvent) => {
     isSwiping.current = true;
     hasMoved.current = false;
     touchStartX.current = e.targetTouches[0].clientX;
-    
-    previousTranslate.current = -currentPicture * (sliderRef.current?.offsetWidth || 0);
+
+    previousTranslate.current =
+      -currentPicture * (sliderRef.current?.offsetWidth || 0);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isSwiping.current) return;
 
     const deltaX = e.targetTouches[0].clientX - touchStartX.current;
-    
+
     if (Math.abs(deltaX) > 10) {
       hasMoved.current = true;
     }
-    
+
     currentTranslate.current = previousTranslate.current + deltaX;
 
     if (sliderRef.current) {
@@ -57,7 +56,7 @@ export const PicturesSlider: React.FC = () => {
 
   const handleTouchEnd = () => {
     if (!isSwiping.current) return;
-    
+
     isSwiping.current = false;
 
     const threshold = 50;
@@ -103,32 +102,34 @@ export const PicturesSlider: React.FC = () => {
         >
           <ul
             ref={sliderRef}
-            className={styles.productsList} style={{ transform: `translateX(-${currentPicture * 100}%)` }}>
+            className={styles.productsList}
+            style={{ transform: `translateX(-${currentPicture * 100}%)` }}
+          >
             <SliderProduct
               title={t.homePage.sliderProduct.titles[currentPicture]}
-              image='/img/accessories/apple-watch-series-5/silver/00.webp'
+              image="/img/accessories/apple-watch-series-5/silver/00.webp"
               buttonContent={t.homePage.sliderProduct.buttonContent[0]}
               onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                 event.stopPropagation();
-                navigate('/accessories/apple-watch-series-5-44mm-silver')
+                navigate('/accessories/apple-watch-series-5-44mm-silver');
               }}
             />
             <SliderProduct
               title={t.homePage.sliderProduct.titles[currentPicture]}
               buttonContent={t.homePage.sliderProduct.buttonContent[1]}
-              image='/img/phones/apple-iphone-13-pro-max/sierrablue/00.webp'
+              image="/img/phones/apple-iphone-13-pro-max/sierrablue/00.webp"
               onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                 event.stopPropagation();
-                navigate('/phones/apple-iphone-13-pro-max-512gb-sierrablue')
+                navigate('/phones/apple-iphone-13-pro-max-512gb-sierrablue');
               }}
             />
             <SliderProduct
               title={t.homePage.sliderProduct.titles[currentPicture]}
-              image='/img/tablets/apple-ipad-pro-11-2021/silver/00.webp'
+              image="/img/tablets/apple-ipad-pro-11-2021/silver/00.webp"
               buttonContent={t.homePage.sliderProduct.buttonContent[0]}
               onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                 event.stopPropagation();
-                navigate('/tablets/apple-ipad-pro-11-2021-1tb-silver')
+                navigate('/tablets/apple-ipad-pro-11-2021-1tb-silver');
               }}
             />
           </ul>
@@ -155,8 +156,7 @@ export const PicturesSlider: React.FC = () => {
           onClick={() => setCurrentPicture(1)}
           className={`
             ${styles.dash} 
-            ${currentPicture === 1 ? styles.activeDash : ''}`
-          }
+            ${currentPicture === 1 ? styles.activeDash : ''}`}
         ></div>
         <div
           onClick={() => setCurrentPicture(2)}

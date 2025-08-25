@@ -12,12 +12,20 @@ type CartProductProps = {
   onProductCountChange: (price: number, action: '+' | '-') => void;
 };
 
-export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCountChange }) => {
+export const CartProduct: React.FC<CartProductProps> = ({
+  product,
+  onProductCountChange,
+}) => {
   const { cartProducts, theme } = useAppState();
   const { setCartProducts } = useAppDispatch();
-  const [counterValue, setCounterValue] = useState<number>(product ? cartProducts[product.itemId] : 1);
+  const [counterValue, setCounterValue] = useState<number>(
+    product ? cartProducts[product.itemId] : 1,
+  );
 
-  function handleCounterChange(event: React.MouseEvent<HTMLButtonElement>, action: '+' | '-') {
+  function handleCounterChange(
+    event: React.MouseEvent<HTMLButtonElement>,
+    action: '+' | '-',
+  ) {
     event.stopPropagation();
     event.preventDefault();
 
@@ -46,7 +54,10 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
     });
   }
 
-  function handleDeleteProductFromCart(event: React.MouseEvent<HTMLButtonElement>, id: string) {
+  function handleDeleteProductFromCart(
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: string,
+  ) {
     event.stopPropagation();
     event.preventDefault();
 
@@ -68,14 +79,16 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
       className={styles.product}
     >
       <div className={styles.details}>
-        <Close onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleDeleteProductFromCart(event, product.itemId)} />
+        <Close
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+            handleDeleteProductFromCart(event, product.itemId)
+          }
+        />
         <div className={styles.wrapper}>
           <img className={styles.image} src={product.image} alt="Product" />
         </div>
 
-        <div className={`${styles.name} bodyText`}>
-          {product.name}
-        </div>
+        <div className={`${styles.name} bodyText`}>{product.name}</div>
       </div>
 
       <div className={styles.price}>
@@ -85,7 +98,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
               ${styles.counterButton} 
               ${counterValue === 1 && styles.disabled}
             `}
-            onClick={(event) => handleCounterChange(event, '-')}
+            onClick={event => handleCounterChange(event, '-')}
           >
             <img
               className={styles.img}
@@ -98,13 +111,19 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
 
           <button
             className={styles.counterButton}
-            onClick={(event) => handleCounterChange(event, '+')}
+            onClick={event => handleCounterChange(event, '+')}
           >
-            <img className={styles.img} src={`/img/icons/${theme}-theme/Plus.svg`} alt="Plus" />
+            <img
+              className={styles.img}
+              src={`/img/icons/${theme}-theme/Plus.svg`}
+              alt="Plus"
+            />
           </button>
         </div>
         <h4 className={styles.priceTitle}>${product.price * counterValue}</h4>
       </div>
     </Link>
-  ) : <CartProductSkeleton />
+  ) : (
+    <CartProductSkeleton />
+  );
 };

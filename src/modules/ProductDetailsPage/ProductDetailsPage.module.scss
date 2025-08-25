@@ -1,7 +1,8 @@
 .main {
   @include page-grid;
-  flex: 1;
+
   display: flex;
+  flex: 1;
   flex-direction: column;
   row-gap: 56px;
 }
@@ -39,9 +40,9 @@
 
   @include on-tablet {
     display: grid;
-    flex-direction: row;
     grid-column: 1 / 8;
     grid-template-columns: repeat(8, 1fr);
+    flex-direction: row;
     column-gap: 16px;
   }
 
@@ -52,17 +53,19 @@
 
   &List {
     display: flex;
+    gap: 8px;
+
     width: 100%;
     height: 49px;
-    gap: 8px;
     margin-bottom: 40px;
 
     @include on-tablet {
-      margin: 0;
+      grid-column: 1 / 2;
       flex-direction: column;
+
       width: 100%;
       height: auto;
-      grid-column: 1 / 2;
+      margin: 0;
     }
 
     @include on-desktop {
@@ -72,12 +75,14 @@
 }
 
 .picture {
-  height: 100%;
-  width: auto;
-  border: 1px solid var(--color-elements);
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
   cursor: pointer;
+
+  overflow: hidden;
+
+  aspect-ratio: 1 / 1;
+  width: auto;
+  height: 100%;
+  border: 1px solid var(--color-elements);
 
   @include on-tablet {
     width: 100%;
@@ -90,18 +95,20 @@
 }
 
 .currentPicture {
-  display: flex;
   overflow: hidden;
+  display: flex;
   grid-column: 1 / -1;
   aspect-ratio: 1 / 1;
 
   &List {
     display: flex;
+
     width: 100%;
     height: 100%;
-    transition: transform 0.3s ease;
-    padding: 0;
     margin: 0;
+    padding: 0;
+
+    transition: transform 0.3s ease;
 
     @include on-tablet {
       transition: none;
@@ -129,26 +136,26 @@
 }
 
 .img {
+  aspect-ratio: 1 / 1;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  aspect-ratio: 1 / 1;
 }
 
 .title {
-  margin: 0 0 32px 0;
+  margin: 0 0 32px;
 
   @include on-tablet {
     grid-column: 1 / -1;
-    margin: 0 0 40px 0;
+    margin: 0 0 40px;
   }
 }
 
 .mainInfo {
   display: flex;
   flex-direction: column;
-  width: 100%;
   gap: 24px;
+  width: 100%;
 
   @include on-tablet {
     grid-column: 8 / -1;
@@ -164,14 +171,13 @@
 }
 
 .fullPrice {
-  font-family: Mont-Regular;
-  font-weight: 600;
+  font-family: Mont-Regular, sans-serif;
   font-size: 22px;
+  font-weight: 600;
   line-height: 100%;
-  letter-spacing: 0%;
-
   color: var(--color-secondary);
   text-decoration: line-through;
+  letter-spacing: 0%;
 }
 
 .colors {
@@ -195,19 +201,20 @@
   }
 
   &Item {
+    cursor: pointer;
+
+    aspect-ratio: 1 / 1;
     width: 32px;
     height: 32px;
     border: 1px solid var(--color-default-border);
-    cursor: pointer;
     border-radius: 50%;
-    aspect-ratio: 1 / 1;
 
     &Color {
+      box-sizing: border-box;
       width: 100%;
       height: 100%;
-      border-radius: 50%;
-      box-sizing: border-box;
       border: 2px solid var(--color-bg-border);
+      border-radius: 50%;
     }
 
     &Active {
@@ -232,21 +239,22 @@
   }
 
   &Item {
+    cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
 
     width: 56px;
     height: 32px;
-
     border: 1px solid var(--color-icons);
+
     background-color: inherit;
 
     &Active {
-      background-color: var(--capacity-item-active-bg);
       border-color: var(--color-primary);
       color: var(--capacity-item-active-color);
+      background-color: var(--capacity-item-active-bg);
     }
 
     &:hover:not(&Active) {
@@ -269,16 +277,16 @@
 
 .about {
   display: flex;
+  grid-column: 1 / -1;
   flex-direction: column;
   gap: 32px;
-  grid-column: 1 / -1;
 
   @include on-desktop {
     grid-column: 1 / 11;
   }
 
   &Title {
-    margin: 0 0 16px 0;
+    margin: 0 0 16px;
   }
 
   &Subtitle {
@@ -300,8 +308,8 @@
 .order {
   display: flex;
   flex-direction: column;
-  margin-block: 8px;
   gap: 16px;
+  margin-block: 8px;
 }
 
 .info {
@@ -337,18 +345,19 @@
 }
 
 .techSpecs {
-  margin: 0;
   display: flex;
+  grid-column: 1 / -1;
   flex-direction: column;
   gap: 32px;
-  grid-column: 1 / -1;
+
+  margin: 0;
 
   @include on-desktop {
     grid-column: 14 / -1;
   }
 
   &Title {
-    margin: 0 0 16px 0;
+    margin: 0 0 16px;
   }
 
   &List {

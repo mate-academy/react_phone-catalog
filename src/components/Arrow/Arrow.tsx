@@ -6,7 +6,11 @@ type Props = {
   isDisabled?: boolean;
 };
 
-export const Arrow: React.FC<Props> = ({ direction, isDisabled = false, fill = '' }) => (
+export const Arrow: React.FC<Props> = ({
+  direction,
+  isDisabled = false,
+  fill = '',
+}) => (
   <svg
     className={`
         ${styles[direction]} 

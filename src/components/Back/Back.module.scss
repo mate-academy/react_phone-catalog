@@ -1,15 +1,19 @@
 .back {
-  display: flex;
-  align-items: center;
-  height: 16px;
-  width: fit-content;
-  gap: 4px;
-  margin-bottom: 16px;
-  color: var(--back-button-default-text-color);
-  border: none;
-  background-color: inherit;
-  padding: 0;
   cursor: pointer;
+
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  width: fit-content;
+  height: 16px;
+  margin-bottom: 16px;
+  padding: 0;
+  border: none;
+
+  color: var(--back-button-default-text-color);
+
+  background-color: inherit;
 
   &Text {
     margin-top: 2px;

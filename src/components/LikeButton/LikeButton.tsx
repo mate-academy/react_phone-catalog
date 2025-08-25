@@ -21,4 +21,4 @@ export const LikeButton: React.FC<Props> = ({ onClick, isSelected }) => {
       />
     </button>
   );
-}
+};

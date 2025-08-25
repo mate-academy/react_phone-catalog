@@ -27,10 +27,10 @@
 @mixin page-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  
   box-sizing: border-box;
   
   @include page-padding-inline;
+
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
   }
