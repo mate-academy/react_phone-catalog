@@ -40,7 +40,7 @@ export const SliderProduct: React.FC<Props> = ({ title, buttonContent, image, on
           </div>
 
           <button
-            onClick={() => { }}
+            onClick={onClick}
             className={`${styles.productContentButton} buttonText`}
           >{buttonContent}</button>
         </div>

@@ -11,7 +11,7 @@ export const PicturesSlider: React.FC = () => {
   const { language } = useAppState();
   const t = getTranslation(language);
   const navigate = useNavigate();
-
+  
   const [currentPicture, setCurrentPicture] = useState(0);
   const sliderRef = useRef<HTMLUListElement>(null);
 
@@ -19,20 +19,23 @@ export const PicturesSlider: React.FC = () => {
   const currentTranslate = useRef(0);
   const previousTranslate = useRef(0);
   const isSwiping = useRef(false);
+  const hasMoved = useRef(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       handleArrowClick('right');
-      console.log('interval')
     }, 5000);
 
     return () => clearInterval(interval);
   }, [currentPicture]);
 
+
+
   const handleTouchStart = (e: React.TouchEvent) => {
     isSwiping.current = true;
+    hasMoved.current = false;
     touchStartX.current = e.targetTouches[0].clientX;
-
+    
     previousTranslate.current = -currentPicture * (sliderRef.current?.offsetWidth || 0);
   };
 
@@ -40,7 +43,11 @@ export const PicturesSlider: React.FC = () => {
     if (!isSwiping.current) return;
 
     const deltaX = e.targetTouches[0].clientX - touchStartX.current;
-
+    
+    if (Math.abs(deltaX) > 10) {
+      hasMoved.current = true;
+    }
+    
     currentTranslate.current = previousTranslate.current + deltaX;
 
     if (sliderRef.current) {
@@ -50,13 +57,13 @@ export const PicturesSlider: React.FC = () => {
 
   const handleTouchEnd = () => {
     if (!isSwiping.current) return;
-
+    
     isSwiping.current = false;
 
     const threshold = 50;
     const movedBy = currentTranslate.current - previousTranslate.current;
 
-    if (Math.abs(movedBy) > threshold) {
+    if (hasMoved.current && Math.abs(movedBy) > threshold) {
       if (movedBy < 0) {
         handleArrowClick('right');
       } else {

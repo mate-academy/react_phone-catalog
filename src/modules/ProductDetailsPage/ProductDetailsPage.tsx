@@ -11,7 +11,7 @@ import {
   getTablets
 } from '../shared/services/productService';
 import { AccessoryDetails } from '../../types/AccessoryDetails';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { AddToCart } from '../../components/AddToCart';
 import { LikeButton } from '../../components/LikeButton/LikeButton';
 import { getFormattedCapacity } from '../shared/utils/getFormattedCapacity';
@@ -36,6 +36,72 @@ export const ProductDetailsPage: React.FC = () => {
   const [currentPicture, setCurrentPicture] = useState('');
   const [currentCapacity, setCurrentCapacity] = useState('');
   const [currentColor, setCurrentColor] = useState('');
+
+  const handleSwipeLeft = () => {
+    if (product && product.images.length > 1) {
+      const currentIndex = product.images.indexOf(currentPicture);
+      const nextIndex = currentIndex === product.images.length - 1 ? 0 : currentIndex + 1;
+      setCurrentPicture(product.images[nextIndex]);
+    }
+  };
+
+  const handleSwipeRight = () => {
+    if (product && product.images.length > 1) {
+      const currentIndex = product.images.indexOf(currentPicture);
+      const prevIndex = currentIndex === 0 ? product.images.length - 1 : currentIndex - 1;
+      setCurrentPicture(product.images[prevIndex]);
+    }
+  };
+
+  const sliderRef = useRef<HTMLUListElement>(null);
+  const touchStartX = useRef(0);
+  const currentTranslate = useRef(0);
+  const previousTranslate = useRef(0);
+  const isSwiping = useRef(false);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    isSwiping.current = true;
+    touchStartX.current = e.targetTouches[0].clientX;
+    
+    const currentIndex = product ? product.images.indexOf(currentPicture) : 0;
+    previousTranslate.current = -currentIndex * 100;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isSwiping.current) return;
+    
+    const deltaX = e.targetTouches[0].clientX - touchStartX.current;
+    const containerWidth = sliderRef.current?.offsetWidth || 0;
+    
+    const percentageDelta = (deltaX / containerWidth) * 100;
+    currentTranslate.current = previousTranslate.current + percentageDelta;
+    
+    if (sliderRef.current) {
+      sliderRef.current.style.transform = `translateX(${currentTranslate.current}%)`;
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!isSwiping.current) return;
+    
+    isSwiping.current = false;
+    const touchEndX = e.changedTouches[0].clientX;
+    const deltaX = touchEndX - touchStartX.current;
+    const threshold = 50;
+
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX < 0) {
+        handleSwipeLeft();
+      } else {
+        handleSwipeRight();
+      }
+    } else {
+      if (sliderRef.current) {
+        const currentIndex = product ? product.images.indexOf(currentPicture) : 0;
+        sliderRef.current.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+    }
+  };
 
   useEffect(() => {
     if (!product) {
@@ -149,8 +215,14 @@ export const ProductDetailsPage: React.FC = () => {
                   ))}
                 </div>
 
-                <div className={styles.currentPicture}>
+                <div 
+                  className={styles.currentPicture}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
                   <ul
+                    ref={sliderRef}
                     className={styles.currentPictureList}
                     style={{ transform: `translateX(-${product.images.indexOf(currentPicture) * 100}%)` }}
                   >
