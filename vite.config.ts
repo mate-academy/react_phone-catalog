@@ -6,6 +6,7 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/react_phone-catalog/',
   plugins: [react(), svgr()],
   css: {
     preprocessorOptions: {
