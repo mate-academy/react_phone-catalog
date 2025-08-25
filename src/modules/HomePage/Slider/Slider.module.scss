@@ -1,5 +1,7 @@
 @use '../../../scss/main.scss' as *;
 
+$text-grey: #9b9b9b;
+
 .slider-button {
   display: none;
   padding: 0;
@@ -26,12 +28,10 @@
   @include page-grid;
 
   flex-direction: column;
-  height: 352px;
   background-color: #fff;
 
   @include on-tablet {
     margin-inline: 0;
-    height: 221px;
   }
 }
 
@@ -53,6 +53,10 @@
     grid-column: 2 / -2;
     height: 189px;
   }
+
+  @include on-desktop {
+    height: 432px;
+  }
 }
 
 .slide {
@@ -73,9 +77,16 @@
       flex-basis: 224px;
       background-color: #222;
       border-radius: 9px;
+
+      @include on-desktop {
+        margin: 10px;
+        border-radius: 25px;
+      }
     }
 
     &__bottom {
+      display: flex;
+      flex-direction: column;
       flex-grow: 1;
       flex-basis: 260px;
     }
@@ -84,6 +95,7 @@
   &__logo {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin-top: 32px;
     height: 42px;
     font-size: 22px;
@@ -95,8 +107,79 @@
 
     @include on-tablet {
       margin-top: 24px;
-      padding-left: 11%;
+      margin-left: 11%;
+      height: 42px;
+      font-size: 16px;
       text-align: left;
+    }
+
+    @include on-desktop {
+      margin-top: 54px;
+      margin-left: 11%;
+      height: 82px;
+      font-size: 33px;
+      text-align: left;
+    }
+
+    &_ok {
+      display: none;
+      margin-left: 0.3em;
+      height: 1.2em;
+      width: 1em;
+      background: url('img/assets/icons/ok_icon.svg') no-repeat center center /
+        cover;
+
+      @include on-tablet {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__moto {
+    display: none;
+    color: $text-grey;
+    font-size: 8px;
+
+    @include on-tablet {
+      display: block;
+      margin-top: 10px;
+      margin-left: 11%;
+      text-align: left;
+    }
+
+    @include on-desktop {
+      display: block;
+      margin-top: 24px;
+      margin-left: 11%;
+      font-size: 16px;
+      text-align: left;
+    }
+  }
+
+  &__order {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      margin-top: 32px;
+      margin-left: 11%;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 8px;
+      text-transform: uppercase;
+      background-color: transparent;
+      border: 0.5px solid #444;
+      border-radius: 16px;
+    }
+
+    @include on-desktop {
+      display: block;
+      margin-top: 100px;
+      margin-left: 11%;
+      padding: 24px 52px;
+      font-size: 14px;
+      text-align: left;
+      border-radius: 31px;
     }
   }
 
@@ -113,6 +196,10 @@
     @include on-tablet {
       margin-top: 22px;
     }
+
+    @include on-desktop {
+      margin-top: 48px;
+    }
   }
 
   &__description {
@@ -121,16 +208,21 @@
     font-size: 13px;
     font-weight: 600;
     line-height: 100%;
-    color: #9b9b9b;
+    color: $text-grey;
     transform: scaleX(0.95);
 
     @include on-tablet {
       margin-top: 8px;
     }
+
+    @include on-tablet {
+      margin-top: 16px;
+    }
   }
 
   &__photo {
     height: 136px;
+    flex-grow: 1;
     color: #fff;
     background: center bottom / contain no-repeat;
   }

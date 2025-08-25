@@ -31,12 +31,12 @@ const Slider = () => {
   const lastSlide = { ...slides[0] };
   const fullSlides = [firstSlide, ...slides, lastSlide];
   const lastSlideNumber = slides.length;
-  const goToSlide = (number: number) => {
+  const goToSlide = (number: number, behavior: ScrollBehavior = 'instant') => {
     if (sliderRef.current) {
       const children = Array.from(sliderRef.current.children);
 
       if (children.length > 1) {
-        children[number].scrollIntoView({ behavior: 'auto', block: 'center' });
+        children[number].scrollIntoView({ behavior, block: 'center' });
       }
     }
   };
@@ -63,7 +63,12 @@ const Slider = () => {
         goToSlide(lastSlideNumber);
       }
 
-      if (sliderRef.current.scrollLeft === slideWidht * (slides.length + 1)) {
+      if (
+        Math.round(
+          (sliderRef.current.scrollLeft / (slideWidht * (slides.length + 1))) *
+            100,
+        ) === 100
+      ) {
         goToSlide(1);
       }
 
@@ -75,6 +80,7 @@ const Slider = () => {
     <div className={styles['slider-container']}>
       <button
         className={cn(styles['slider-button'], styles['slider-button--left'])}
+        onClick={() => goToSlide(currentSlide - 1, 'smooth')}
       ></button>
       <div
         ref={sliderRef}
@@ -85,10 +91,13 @@ const Slider = () => {
           <div key={slide.id} className={styles.slide}>
             <div className={styles.slide__top}>
               <p className={styles.slide__logo}>
-                Now available
-                <br />
-                in our store!
+                <span>Now available</span>
+                <span>
+                  in our store!<span className={styles.slide__logo_ok}></span>
+                </span>
               </p>
+              <p className={styles.slide__moto}>Be the first</p>
+              <button className={styles.slide__order}>Order now</button>
             </div>
             <div className={styles.slide__bottom}>
               <p className={styles.slide__title}>{slide.title}</p>
@@ -105,6 +114,7 @@ const Slider = () => {
       </div>
       <button
         className={cn(styles['slider-button'], styles['slider-button--right'])}
+        onClick={() => goToSlide(currentSlide + 1, 'smooth')}
       ></button>
       <div className={styles.dots}>
         {slides.map(slide => (
