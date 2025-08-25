@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './CartProduct.module.scss';
 import { Card } from '../../types/Card';
 import { useAppDispatch, useAppState } from '../../contexts/AppContext';
 import { Link } from 'react-router-dom';
 import { CartProductSkeleton } from './CartProductSkeleton';
+import { saveCartProducts } from '../shared/services/localStorage';
 
 type CartProductProps = {
   product: Card | undefined;
@@ -22,6 +23,12 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
     if (action === '+') {
       onProductCountChange(product!.price, '+');
       setCounterValue(prev => prev + 1);
+      setCartProducts(prev => {
+        const updated = { ...prev, [product!.itemId]: counterValue + 1 };
+        saveCartProducts(updated);
+        return updated;
+      });
+
       return;
     }
 
@@ -31,6 +38,11 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
 
     onProductCountChange(product!.price, '-');
     setCounterValue(prev => prev - 1);
+    setCartProducts(prev => {
+      const updated = { ...prev, [product!.itemId]: counterValue - 1 };
+      saveCartProducts(updated);
+      return updated;
+    });
   }
 
   function handleDeleteProductFromCart(event: React.MouseEvent<HTMLButtonElement>, id: string) {
@@ -41,6 +53,13 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
     delete updatedCart[id];
     setCartProducts(updatedCart);
   }
+
+  useEffect(() => {
+    if (product === undefined) {
+      return;
+    }
+    setCounterValue(cartProducts[product.itemId]);
+  }, [product]);
 
   return product !== undefined ? (
     <Link
