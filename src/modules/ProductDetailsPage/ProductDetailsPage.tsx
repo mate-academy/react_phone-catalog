@@ -22,7 +22,7 @@ import { getTranslation } from '../shared/utils/getTranslation';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
-  const { cartProductsIds, favouriteProductsIds, products, language } = useAppState();
+  const { cartProducts, favouriteProducts, products, language } = useAppState();
   const { toggleFavouriteCard, toggleAddToCart } = useAppDispatch();
   const t = getTranslation(language);
 
@@ -186,11 +186,11 @@ export const ProductDetailsPage: React.FC = () => {
 
                   <div className={styles.buttons}>
                     <AddToCart
-                      isActive={cartProductsIds.includes(product.id)}
+                      isActive={Object.keys(cartProducts).includes(product.id)}
                       onClick={() => toggleAddToCart(product.id)}
                     />
                     <LikeButton
-                      isSelected={favouriteProductsIds.includes(product.id)}
+                      isSelected={favouriteProducts.includes(product.id)}
                       onClick={() => toggleFavouriteCard(product.id)}
                     />
                   </div>

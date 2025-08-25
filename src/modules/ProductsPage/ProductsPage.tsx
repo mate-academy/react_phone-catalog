@@ -37,7 +37,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     isLoadingProducts,
   } = useAppState();
 
-  const { setSearchParams } = useAppDispatch();
+  const { setSearchParams, fetchProducts } = useAppDispatch();
 
   function getPerPageFromParams() {
     const value = searchParams.get('perPage');
@@ -235,9 +235,9 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
             <Breadcrumb />
             <div className={styles.headContent}>
               <h2 className={styles.title}>
-                {type === 'phones' ? t.productsPage.phones : 
-                 type === 'tablets' ? t.productsPage.tablets : 
-                 t.productsPage.accessories}
+                {type === 'phones' ? t.productsPage.phones :
+                  type === 'tablets' ? t.productsPage.tablets :
+                    t.productsPage.accessories}
               </h2>
               <span className={`${styles.counter} smallText`}>0 {t.categories.models}</span>
             </div>
@@ -248,7 +248,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
             <button
               type="button"
-              onClick={() => { }}
+              onClick={fetchProducts}
               className={styles.notFoundButton}
             >
               <svg
@@ -270,9 +270,9 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
             <div className={styles.headContent}>
               <h2 className={styles.title}>
-                {type === 'phones' ? t.productsPage.phones : 
-                 type === 'tablets' ? t.productsPage.tablets : 
-                 t.productsPage.accessories}
+                {type === 'phones' ? t.productsPage.phones :
+                  type === 'tablets' ? t.productsPage.tablets :
+                    t.productsPage.accessories}
               </h2>
 
               <span
@@ -280,9 +280,9 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
               >{currentProducts.length} {t.categories.models}</span>
             </div>
 
-                          <div className={styles.sorters}>
-                <div className={`${styles.sortType} ${styles.sorter}`}>
-                  <span className={`${styles.counter} smallText`}>{t.productsPage.sortBy}</span>
+            <div className={styles.sorters}>
+              <div className={`${styles.sortType} ${styles.sorter}`}>
+                <span className={`${styles.counter} smallText`}>{t.productsPage.sortBy}</span>
 
                 <div
                   ref={sortDropDownRef}

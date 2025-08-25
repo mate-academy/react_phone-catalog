@@ -10,7 +10,7 @@ import { ThemeSwitcher } from './ThemeSwitcher';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Navbar: React.FC = () => {
-  const { favouriteProductsIds, cartProductsIds, theme, language } = useAppState();
+  const { favouriteProducts, cartProducts, theme, language } = useAppState();
   const { setIsMenuOpen } = useAppDispatch();
   const t = getTranslation(language);
 
@@ -76,9 +76,9 @@ export const Navbar: React.FC = () => {
           >
             <img className={styles.img} src={`/img/icons/${theme}-theme/Heart.svg`} alt={t.navbar.favorites} />
 
-            {favouriteProductsIds.length > 0 && (
+            {favouriteProducts.length > 0 && (
               <div className={styles.counter}>
-                {favouriteProductsIds.length}
+                {favouriteProducts.length}
               </div>
             )}
           </NavLink>
@@ -91,9 +91,9 @@ export const Navbar: React.FC = () => {
           >
             <img className={styles.img} src={`/img/icons/${theme}-theme/Cart.svg`} alt={t.navbar.cart} />
 
-            {cartProductsIds.length > 0 && (
+            {Object.keys(cartProducts).length > 0 && (
               <div className={styles.counter}>
-                {cartProductsIds.length}
+                {Object.keys(cartProducts).length}
               </div>
             )}
           </NavLink>

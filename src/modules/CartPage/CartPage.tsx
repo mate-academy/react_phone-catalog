@@ -7,22 +7,31 @@ import { Back } from '../../components/Back';
 import { getTranslation } from '../shared/utils/getTranslation';
 
 export const CartPage: React.FC = () => {
-  const { cartProductsIds, products, isLoadingProducts, language } = useAppState();
+  const { cartProducts, products, isLoadingProducts, language } = useAppState();
   const t = getTranslation(language);
 
   function countTotal() {
     let sum = 0;
-    for (const id of cartProductsIds) {
+    for (const id in cartProducts) {
       const product = products.find(product => product.itemId === id);
       if (product) {
-        sum += product.price;
+        sum += product.price * cartProducts[id];
       }
     }
     return sum;
   }
 
+  function countAllCartProducts() {
+    let sum = 0;
+
+    for (const id in cartProducts) {
+      sum += cartProducts[id];
+    }
+    return sum;
+  }
+
   const [totalSum, setTotalSum] = useState(countTotal());
-  const [totalItems, setTotalItems] = useState(cartProductsIds.length);
+  const [totalItems, setTotalItems] = useState(countAllCartProducts());
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleProductCountChange(price: number, action: '+' | '-') {
@@ -51,14 +60,11 @@ export const CartPage: React.FC = () => {
   }, [isModalOpen]);
 
   useEffect(() => {
-    setTotalItems(cartProductsIds.length);
-  }, [isLoadingProducts, cartProductsIds]);
-
-  useEffect(() => {
+    setTotalItems(countAllCartProducts());
     setTotalSum(countTotal());
-  }, [isLoadingProducts]);
+  }, [isLoadingProducts, cartProducts]);
 
-  return cartProductsIds.length > 0 ? (
+  return Object.keys(cartProducts).length > 0 ? (
     <main
       className={`
         ${styles.main} 
@@ -71,12 +77,10 @@ export const CartPage: React.FC = () => {
 
       <div className={styles.content}>
         <div className={styles.products}>
-          {cartProductsIds.map(id => (
+          {Object.keys(cartProducts).map(id => (
             <CartProduct
               key={id}
-              product={
-                products.find(product => product.itemId === id)
-              }
+              product={products.find(product => product.itemId === id)}
               onProductCountChange={handleProductCountChange}
             />
           ))}
@@ -87,7 +91,13 @@ export const CartPage: React.FC = () => {
             <h3 className={styles.price}>${totalSum}</h3>
             <span
               className={`${styles.total} bodyText`}
-            >{t.cartPage.totalFor} {totalItems} {totalItems === 1 ? t.cartPage.item : t.cartPage.items}</span>
+            >{t.cartPage.totalFor} {totalItems} {
+              totalItems === 1
+                ? t.cartPage.item
+                : (totalItems >= 2 && totalItems <= 4)
+                  ? t.cartPage.items_2_4
+                  : t.cartPage.items
+            }</span>
           </div>
 
           <div className={styles.line}></div>

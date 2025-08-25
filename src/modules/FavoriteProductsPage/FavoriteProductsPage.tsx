@@ -6,7 +6,7 @@ import { Breadcrumb } from '../../components/Breadcrumb';
 import { getTranslation } from '../shared/utils/getTranslation';
 
 export const FavoriteProductsPage: React.FC = () => {
-  const { favouriteProductsIds, products, language } = useAppState();
+  const { favouriteProducts, products, language } = useAppState();
   const t = getTranslation(language);
 
   return (
@@ -17,15 +17,15 @@ export const FavoriteProductsPage: React.FC = () => {
           <h2 className={`${styles.title}`}>{t.favoritesPage.title}</h2>
 
           <span className={`${styles.counter} bodyText`}>
-            {favouriteProductsIds.length === 1
+            {favouriteProducts.length === 1
               ? `1 ${t.favoritesPage.item}`
-              : `${favouriteProductsIds.length} ${t.favoritesPage.items}`}
+              : `${favouriteProducts.length} ${t.favoritesPage.items}`}
           </span>
         </div>
       </div>
 
       <div className={styles.cards}>
-        {favouriteProductsIds.map((id) => (
+        {favouriteProducts.map((id) => (
           <Card key={id} card={
             products.find((product) => product.itemId === id)
           } />

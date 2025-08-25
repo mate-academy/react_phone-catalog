@@ -8,13 +8,13 @@ type Props = {
 }
 
 export const ModalWindow: React.FC<Props> = ({ isOpen, onClose }) => {
-  const { setCartProductsIds } = useAppDispatch();
+  const { setCartProducts } = useAppDispatch();
   const { language } = useAppState();
   const t = getTranslation(language);
 
   function handleConfirm() {
     onClose();
-    setCartProductsIds([]);
+    setCartProducts({});
   }
 
   return (

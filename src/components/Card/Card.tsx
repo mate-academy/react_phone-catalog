@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ card }) => {
-  const { favouriteProductsIds, cartProductsIds, language } = useAppState();
+  const { favouriteProducts, cartProducts, language } = useAppState();
   const { toggleFavouriteCard, toggleAddToCart, refCardWidth } = useAppDispatch();
   const t = getTranslation(language);
 
@@ -74,11 +74,11 @@ export const Card: React.FC<Props> = ({ card }) => {
 
         <div className={styles.buttons}>
           <AddToCart
-            isActive={cartProductsIds.includes(card.itemId)}
+            isActive={Object.keys(cartProducts).includes(card.itemId)}
             onClick={handleAddToCartClick}
           />
           <LikeButton
-            isSelected={favouriteProductsIds.includes(card.itemId)}
+            isSelected={favouriteProducts.includes(card.itemId)}
             onClick={handleAddToFavouriteClick}
           />
         </div>

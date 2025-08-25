@@ -11,9 +11,9 @@ type CartProductProps = {
 };
 
 export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCountChange }) => {
-  const { cartProductsIds, theme } = useAppState();
-  const { setCartProductsIds } = useAppDispatch();
-  const [counterValue, setCounterValue] = useState<number>(1);
+  const { cartProducts, theme } = useAppState();
+  const { setCartProducts } = useAppDispatch();
+  const [counterValue, setCounterValue] = useState<number>(product ? cartProducts[product.itemId] : 1);
 
   function handleCounterChange(event: React.MouseEvent<HTMLButtonElement>, action: '+' | '-') {
     event.stopPropagation();
@@ -37,10 +37,9 @@ export const CartProduct: React.FC<CartProductProps> = ({ product, onProductCoun
     event.stopPropagation();
     event.preventDefault();
 
-    const updatedCart = cartProductsIds.filter(
-      (productId: string) => productId !== id,
-    );
-    setCartProductsIds(updatedCart);
+    const updatedCart = { ...cartProducts };
+    delete updatedCart[id];
+    setCartProducts(updatedCart);
   }
 
   return product !== undefined ? (

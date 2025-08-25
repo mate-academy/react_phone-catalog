@@ -24,8 +24,8 @@ import { Card } from '../types/Card';
 import { getProducts } from '../modules/shared/services/productService';
 
 type AppStateType = {
-  favouriteProductsIds: string[];
-  cartProductsIds: string[];
+  favouriteProducts: string[];
+  cartProducts: Record<string, number>;
   isMenuOpen: boolean;
   products: Card[];
   searchParams: URLSearchParams;
@@ -36,8 +36,8 @@ type AppStateType = {
 
 type AppDispatchType = {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
-  setFavouriteProductsIds: Dispatch<SetStateAction<string[]>>;
-  setCartProductsIds: Dispatch<SetStateAction<string[]>>;
+  setFavouriteProducts: Dispatch<SetStateAction<string[]>>;
+  setCartProducts: Dispatch<SetStateAction<Record<string, number>>>;
   setProducts: Dispatch<SetStateAction<Card[]>>;
   setIsLoadingProducts: Dispatch<SetStateAction<boolean>>;
   setLanguage: Dispatch<SetStateAction<'uk' | 'en'>>;
@@ -45,7 +45,7 @@ type AppDispatchType = {
   setSearchParams: (params: URLSearchParams | ((prev: URLSearchParams) => URLSearchParams)) => void;
   toggleFavouriteCard: (cardId: string) => void;
   toggleAddToCart: (cardId: string) => void;
-  handleThemeChange: (newTheme: 'light' | 'dark') => void;
+  fetchProducts: () => void;
   refCardWidth: React.RefObject<HTMLAnchorElement>;
   refSliderWidth: React.MutableRefObject<HTMLDivElement | null>;
 };
@@ -58,8 +58,8 @@ type Props = {
 };
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
-  const [favouriteProductsIds, setFavouriteProductsIds] = useState<string[]>(getFavouriteProducts);
-  const [cartProductsIds, setCartProductsIds] = useState<string[]>(getCartProducts);
+  const [favouriteProducts, setFavouriteProducts] = useState<string[]>(getFavouriteProducts);
+  const [cartProducts, setCartProducts] = useState<Record<string, number>>(getCartProducts);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [products, setProducts] = useState<Card[]>([]);
   const [isLoadingProducts, setIsLoadingProducts] = useState<boolean>(false);
@@ -70,7 +70,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const refCardWidth = useRef<HTMLAnchorElement>(null);
   const refSliderWidth = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  function fetchProducts() {
     setIsLoadingProducts(true);
     getProducts()
       .then(setProducts)
@@ -78,6 +78,10 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         throw new Error(err);
       })
       .finally(() => setIsLoadingProducts(false));
+  }
+
+  useEffect(() => {
+    fetchProducts();
   }, []);
 
   useEffect(() => {
@@ -90,46 +94,44 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   }, [language]);
 
   useEffect(() => {
-    saveFavouriteProducts(favouriteProductsIds);
-  }, [favouriteProductsIds]);
+    saveFavouriteProducts(favouriteProducts);
+  }, [favouriteProducts]);
 
   useEffect(() => {
-    saveCartProducts(cartProductsIds);
-  }, [cartProductsIds]);
+    saveCartProducts(cartProducts);
+  }, [cartProducts]);
 
   const dispatchValue = useMemo(() => ({
     setIsMenuOpen,
-    setFavouriteProductsIds,
-    setCartProductsIds,
+    setFavouriteProducts,
+    setCartProducts,
     setProducts,
     setIsLoadingProducts,
     setLanguage,
     setTheme,
     setSearchParams,
     toggleFavouriteCard: (cardId: string) => {
-      setFavouriteProductsIds(prev =>
+      setFavouriteProducts(prev =>
         prev.includes(cardId)
           ? prev.filter(id => id !== cardId)
           : [...prev, cardId]
       );
     },
     toggleAddToCart: (cardId: string) => {
-      setCartProductsIds(prev =>
-        prev.includes(cardId)
-          ? prev.filter(id => id !== cardId)
-          : [...prev, cardId]
+      setCartProducts(prev =>
+        Object.keys(prev).includes(cardId)
+          ? Object.fromEntries(Object.entries(prev).filter(([id]) => id !== cardId))
+          : { ...prev, [cardId]: 1 }
       );
     },
-    handleThemeChange: (newTheme: 'light' | 'dark') => {
-      setTheme(newTheme);
-    },
+    fetchProducts,
     refCardWidth,
     refSliderWidth,
   }), [setSearchParams]);
 
   const stateValue = useMemo(() => ({
-    favouriteProductsIds,
-    cartProductsIds,
+    favouriteProducts,
+    cartProducts,
     isMenuOpen,
     products,
     searchParams,
@@ -137,8 +139,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     theme,
     language,
   }), [
-    favouriteProductsIds,
-    cartProductsIds,
+    favouriteProducts,
+    cartProducts,
     isMenuOpen,
     products,
     searchParams,

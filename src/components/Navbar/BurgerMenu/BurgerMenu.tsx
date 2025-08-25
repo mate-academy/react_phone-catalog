@@ -14,8 +14,8 @@ type Props = {
 export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
   const {
     isMenuOpen,
-    cartProductsIds,
-    favouriteProductsIds,
+    cartProducts,
+    favouriteProducts,
     theme,
     language,
   } = useAppState();
@@ -108,9 +108,9 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
               alt={t.burgerMenu.heart}
             />
 
-            {favouriteProductsIds.length > 0 && (
+            {favouriteProducts.length > 0 && (
               <div className={styles.counter}>
-                {favouriteProductsIds.length}
+                {favouriteProducts.length}
               </div>
             )}
           </NavLink>
@@ -123,9 +123,9 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
           >
             <img className={styles.img} src={`/img/icons/${theme}-theme/Cart.svg`} alt={t.burgerMenu.cart} />
 
-            {cartProductsIds.length > 0 && (
+            {Object.keys(cartProducts).length > 0 && (
               <div className={styles.counter}>
-                {cartProductsIds.length}
+                {Object.keys(cartProducts).length}
               </div>
             )}
           </NavLink>
