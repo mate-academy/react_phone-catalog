@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsList.module.scss';
@@ -17,6 +17,7 @@ export const ProductsList: React.FC<Props> = ({ items, itemsPerPage }) => {
   const initialPage = Number(searchParams.get('page')) || 1;
 
   const [currentPage, setCurrentPage] = useState(initialPage);
+  const prevItemsPerPageRef = useRef(itemsPerPage);
 
   const totalPages = useMemo(
     () => Math.ceil(items.length / itemsPerPage),
@@ -31,7 +32,6 @@ export const ProductsList: React.FC<Props> = ({ items, itemsPerPage }) => {
   }, [currentPage, items, itemsPerPage]);
 
   const sort = searchParams.get('sort');
-  const perPage = searchParams.get('perPage');
 
   const updateSearchParams = useCallback(
     (callback: (params: URLSearchParams) => void) => {
@@ -47,14 +47,22 @@ export const ProductsList: React.FC<Props> = ({ items, itemsPerPage }) => {
   );
 
   useEffect(() => {
-    // Скидаємо сторінку тільки якщо вона не встановлена в URL
     const pageFromUrl = searchParams.get('page');
 
     if (!pageFromUrl) {
       setCurrentPage(1);
     }
-    // Не видаляємо 'page' з URL, якщо він вже є
-  }, [sort, perPage, searchParams]);
+  }, [sort, searchParams]);
+
+  useEffect(() => {
+    if (prevItemsPerPageRef.current !== itemsPerPage) {
+      setCurrentPage(1);
+      updateSearchParams(params => {
+        params.delete('page');
+      });
+      prevItemsPerPageRef.current = itemsPerPage;
+    }
+  }, [itemsPerPage, updateSearchParams]);
 
   const handlePageChange = (_: React.ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);

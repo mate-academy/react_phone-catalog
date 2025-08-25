@@ -3,7 +3,6 @@
 .page {
   background-color: var(--page-color);
   padding-inline: $padding-mobile;
-  min-height: 100vh;
   margin-bottom: $margin-bottom-mobile;
 
   @include on-tablet {

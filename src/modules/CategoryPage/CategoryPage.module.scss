@@ -4,7 +4,6 @@
   background-color: var(--page-color);
   margin: 0 auto 64px;
   padding-inline: $padding-mobile;
-  min-height: 100vh;
 
   @include on-tablet {
     padding-inline: $padding-tablet;
@@ -12,8 +11,6 @@
 
   @include on-desktop {
     padding-inline: $padding-desktop;
-    max-width: 1200px;
-    margin: 0 auto;
   }
 
   &__title {

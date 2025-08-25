@@ -21,7 +21,7 @@ export const Breadcrumbs: React.FC = () => {
   return (
     <nav className={styles.breadcrumbs}>
       <Link to="/" className={styles.breadcrumbs__icon} aria-label="Home">
-        <img src={`/img/icons/icon-home-${theme}.svg`} />
+        <img src={`img/icons/icon-home-${theme}.svg`} />
       </Link>
 
       {parts.map((segment, index) => {
