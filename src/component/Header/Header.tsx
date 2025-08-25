@@ -31,8 +31,7 @@ export const Headers: React.FC = () => {
     <div>
       <div className={style.header}>
         <div className={style.header__container}>
-          <h1 className={style.visuallyhidden}>Product Catalog</h1>
-          <a href="/" className={style.header__logoLink}>
+          <a href="/home" className={style.header__logoLink}>
             <img src={Logo} className={style.header__logo} />
           </a>
 

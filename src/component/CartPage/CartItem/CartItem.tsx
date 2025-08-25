@@ -31,7 +31,7 @@ export const CartItem = ({ product }: CartItemProps) => {
     dispatch({ type: 'reduceTheQuantityInTheCart', payload: itemId });
   };
 
-  const path = `${category}/${itemId}`;
+  const path = `/${category}/${itemId}`;
 
   return (
     <div className={style['cart-item']}>

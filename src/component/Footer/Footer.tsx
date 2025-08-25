@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import style from './Footer.module.scss';
 import arrowUp from '../../assets/icons/Chevron (Arrow Right).png';
 import Logo from '../../../public/img/Logo/Logo.png';
@@ -24,9 +23,14 @@ export const Footer = () => {
       <ul className={style.footer__list}>
         {links.map(link => (
           <li key={link.title} className={style.footer__item}>
-            <Link className={style.footer__link} to={link.path}>
+            <a
+              className={style.footer__link}
+              href={link.path}
+              target="_blank"
+              rel="noreferrer"
+            >
               {link.title}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>
