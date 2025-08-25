@@ -16,6 +16,9 @@
     "models": "models"
   },
   "productsPage": {
+    "noPhones": "No phones found with this filter",
+    "noTablets": "No tablets found with this filter",
+    "noAccessories": "No accessories found with this filter",
     "filterPlaceholder": "Search",
     "sortBy": "Sort by",
     "itemsOnPage": "Items on page",

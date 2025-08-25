@@ -207,7 +207,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
         changeSearchParams('search', value);
       }
     }, 500),
-    [],
+    [changeSearchParams],
   )
 
   function getSortTypeValue(type: ProductsSortType): string {
@@ -259,12 +259,11 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [type]);
 
-  useEffect(() => {
-    console.log(filter, 'filter')
-    console.log(searchValue, 'searchValue')
-  }, [filter, searchValue])
+    const urlFilter = getFilterFromParams();
+    setFilter(urlFilter);
+    setSearchValue(urlFilter);
+  }, [type]);
 
   useOnClickOutside(sortDropDownRef, () => setIsSortTypeDropdownOpen(false));
   useOnClickOutside(perPageDropDownRef, () => setIsPerPageDropdownOpen(false));
@@ -438,7 +437,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
             }
           />
 
-          {perPageValue !== 'All' && (
+          {perPageValue !== 'All' && currentProducts.length > 0 && (
             <div className={styles.pagination}>
               <ArrowButton
                 direction="left"
@@ -477,6 +476,18 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
                 isDisabled={currentPage === Math.ceil(currentProducts.length / perPageValue)}
                 onClick={() => handlePageChange(currentPage + 1)}
               />
+            </div>
+          )}
+
+          {currentProducts.length === 0 && (
+            <div>
+              <h3>
+                {type === 'phones'
+                  ? t.productsPage.noPhones
+                  : type === 'tablets'
+                    ? t.productsPage.noTablets
+                    : t.productsPage.noAccessories}
+              </h3>
             </div>
           )}
         </>
