@@ -1,13 +1,44 @@
 @use '../../../scss/main.scss' as *;
 
-.container {
-  display: flex;
+.slider-button {
+  display: none;
+  padding: 0;
+  border: 1px solid $border-color;
+
+  &:hover {
+    border-color: $border-color-hover;
+  }
+
+  @include on-tablet {
+    display: block;
+  }
+
+  &--left {
+    background: url('img/assets/icons/arrow_left.svg') no-repeat center center;
+  }
+
+  &--right {
+    background: url('img/assets/icons/arrow_right.svg') no-repeat center center;
+  }
+}
+
+.slider-container {
+  @include page-grid;
+
   flex-direction: column;
   height: 352px;
   background-color: #fff;
+
+  @include on-tablet {
+    margin-inline: 0;
+    height: 221px;
+  }
 }
 
 .slider {
+  grid-column: 1 / -1;
+  grid-row: 1;
+
   height: 320px;
   display: flex;
   flex-direction: row;
@@ -17,6 +48,11 @@
   scrollbar-width: none;
   scroll-behavior: auto;
   font-weight: bold;
+
+  @include on-tablet {
+    grid-column: 2 / -2;
+    height: 189px;
+  }
 }
 
 .slide {
@@ -29,17 +65,39 @@
   box-sizing: border-box;
   scroll-snap-align: center;
 
+  @include on-tablet {
+    flex-direction: row;
+    &__top {
+      margin: 7px;
+      flex-grow: 1;
+      flex-basis: 224px;
+      background-color: #222;
+      border-radius: 9px;
+    }
+
+    &__bottom {
+      flex-grow: 1;
+      flex-basis: 260px;
+    }
+  }
+
   &__logo {
     display: flex;
     flex-direction: column;
     margin-top: 32px;
     height: 42px;
-    text-align: center;
     font-size: 22px;
     line-height: 100%;
     background-image: linear-gradient(to right, #6f47de, #d15df3);
+    text-align: center;
     color: transparent;
     background-clip: text;
+
+    @include on-tablet {
+      margin-top: 24px;
+      padding-left: 11%;
+      text-align: left;
+    }
   }
 
   &__title {
@@ -51,6 +109,10 @@
     color: #fff;
 
     transform: scaleX(0.95);
+
+    @include on-tablet {
+      margin-top: 22px;
+    }
   }
 
   &__description {
@@ -61,6 +123,10 @@
     line-height: 100%;
     color: #9b9b9b;
     transform: scaleX(0.95);
+
+    @include on-tablet {
+      margin-top: 8px;
+    }
   }
 
   &__photo {
@@ -71,6 +137,8 @@
 }
 
 .dots {
+  grid-column: 1 / -1;
+
   display: flex;
   justify-content: center;
   align-items: end;

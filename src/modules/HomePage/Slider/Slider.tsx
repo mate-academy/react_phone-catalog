@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import style from './Slider.module.scss';
+import cn from 'classnames';
+import styles from './Slider.module.scss';
 
 const slides = [
   {
@@ -71,37 +72,45 @@ const Slider = () => {
   };
 
   return (
-    <div className={style.container}>
+    <div className={styles['slider-container']}>
+      <button
+        className={cn(styles['slider-button'], styles['slider-button--left'])}
+      ></button>
       <div
         ref={sliderRef}
-        className={style.slider}
+        className={styles.slider}
         onScrollCapture={handleScroll}
       >
         {fullSlides.map(slide => (
-          <div key={slide.id} className={style.slide}>
-            <div className="slide__top">
-              <p className={style.slide__logo}>
+          <div key={slide.id} className={styles.slide}>
+            <div className={styles.slide__top}>
+              <p className={styles.slide__logo}>
                 Now available
                 <br />
                 in our store!
               </p>
-              <p className={style.slide__title}>{slide.title}</p>
-              <p className={style.slide__description}>{slide.description}</p>
             </div>
-            <div
-              className={style.slide__photo}
-              style={{
-                backgroundImage: `url(${slide.img})`,
-              }}
-            ></div>
+            <div className={styles.slide__bottom}>
+              <p className={styles.slide__title}>{slide.title}</p>
+              <p className={styles.slide__description}>{slide.description}</p>
+              <div
+                className={styles.slide__photo}
+                style={{
+                  backgroundImage: `url(${slide.img})`,
+                }}
+              ></div>
+            </div>
           </div>
         ))}
       </div>
-      <div className={style.dots}>
+      <button
+        className={cn(styles['slider-button'], styles['slider-button--right'])}
+      ></button>
+      <div className={styles.dots}>
         {slides.map(slide => (
           <div
             key={slide.id}
-            className={`${style.dots__dot} ${slide.id === currentSlide ? style['dots__dot--active'] : ''}`}
+            className={`${styles.dots__dot} ${slide.id === currentSlide ? styles['dots__dot--active'] : ''}`}
           ></div>
         ))}
       </div>

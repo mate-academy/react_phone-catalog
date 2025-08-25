@@ -1,0 +1,13 @@
+@use '../../scss/main.scss' as *;
+
+.header__title {
+  font-size: 32px;
+}
+
+.slider-wrapper {
+  margin-inline: $mobile-padding-inline * -1;
+
+  @include on-desktop {
+    margin-inline: 0;
+  }
+}
