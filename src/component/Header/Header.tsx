@@ -31,7 +31,7 @@ export const Headers: React.FC = () => {
     <div>
       <div className={style.header}>
         <div className={style.header__container}>
-          <a href="/home" className={style.header__logoLink}>
+          <a href="/" className={style.header__logoLink}>
             <img src={Logo} className={style.header__logo} />
           </a>
 
