@@ -110,9 +110,9 @@ export const ProductDetailsPage: React.FC = () => {
       setCurrentColor(product.color);
       setCurrentPicture(product.images[0]);
 
-      navigate(`/${product.category}/${product.id}`)
+      navigate(`/${product.category}/${product.id}`, { replace: true });
     }
-  }, [product]);
+  }, [product, navigate]);
 
   if (isProductLoading || !products || products.length === 0) {
     return (

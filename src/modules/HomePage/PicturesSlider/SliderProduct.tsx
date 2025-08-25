@@ -4,7 +4,7 @@ type Props = {
   title: string;
   image: string;
   buttonContent: string;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const SliderProduct: React.FC<Props> = ({ title, buttonContent, image, onClick }) => {

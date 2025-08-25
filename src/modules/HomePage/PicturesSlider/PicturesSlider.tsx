@@ -11,7 +11,7 @@ export const PicturesSlider: React.FC = () => {
   const { language } = useAppState();
   const t = getTranslation(language);
   const navigate = useNavigate();
-  
+
   const [currentPicture, setCurrentPicture] = useState(0);
   const sliderRef = useRef<HTMLUListElement>(null);
 
@@ -32,7 +32,7 @@ export const PicturesSlider: React.FC = () => {
   const handleTouchStart = (e: React.TouchEvent) => {
     isSwiping.current = true;
     touchStartX.current = e.targetTouches[0].clientX;
-    
+
     previousTranslate.current = -currentPicture * (sliderRef.current?.offsetWidth || 0);
   };
 
@@ -40,7 +40,7 @@ export const PicturesSlider: React.FC = () => {
     if (!isSwiping.current) return;
 
     const deltaX = e.targetTouches[0].clientX - touchStartX.current;
-  
+
     currentTranslate.current = previousTranslate.current + deltaX;
 
     if (sliderRef.current) {
@@ -50,16 +50,16 @@ export const PicturesSlider: React.FC = () => {
 
   const handleTouchEnd = () => {
     if (!isSwiping.current) return;
-    
+
     isSwiping.current = false;
 
     const threshold = 50;
     const movedBy = currentTranslate.current - previousTranslate.current;
 
     if (Math.abs(movedBy) > threshold) {
-      if (movedBy < 0) { 
+      if (movedBy < 0) {
         handleArrowClick('right');
-      } else { 
+      } else {
         handleArrowClick('left');
       }
     } else {
@@ -88,7 +88,7 @@ export const PicturesSlider: React.FC = () => {
           />
         </div>
 
-        <div 
+        <div
           className={styles.products}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
@@ -101,19 +101,28 @@ export const PicturesSlider: React.FC = () => {
               title={t.homePage.sliderProduct.titles[currentPicture]}
               image='/img/accessories/apple-watch-series-5/silver/00.webp'
               buttonContent={t.homePage.sliderProduct.buttonContent[0]}
-              onClick={() => navigate('/accessories/apple-watch-series-5-44mm-silver')}
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                event.stopPropagation();
+                navigate('/accessories/apple-watch-series-5-44mm-silver')
+              }}
             />
             <SliderProduct
               title={t.homePage.sliderProduct.titles[currentPicture]}
               buttonContent={t.homePage.sliderProduct.buttonContent[1]}
               image='/img/phones/apple-iphone-13-pro-max/sierrablue/00.webp'
-              onClick={() => navigate('/phones/apple-iphone-13-pro-max-512gb-sierrablue')}
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                event.stopPropagation();
+                navigate('/phones/apple-iphone-13-pro-max-512gb-sierrablue')
+              }}
             />
             <SliderProduct
               title={t.homePage.sliderProduct.titles[currentPicture]}
               image='/img/tablets/apple-ipad-pro-11-2021/silver/00.webp'
               buttonContent={t.homePage.sliderProduct.buttonContent[0]}
-              onClick={() => navigate('/tablets/apple-ipad-pro-11-2021-1tb-silver')}
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                event.stopPropagation();
+                navigate('/tablets/apple-ipad-pro-11-2021-1tb-silver')
+              }}
             />
           </ul>
         </div>
