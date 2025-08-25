@@ -1,6 +1,7 @@
 import style from './Footer.module.scss';
 import arrowUp from '../../assets/icons/Chevron (Arrow Right).png';
 import Logo from '../../../public/img/Logo/Logo.png';
+import { NavLink } from 'react-router-dom';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -18,7 +19,9 @@ export const Footer = () => {
 
   return (
     <footer className={style.footer}>
-      <img src={Logo} className={style.footer__logo} />
+      <NavLink to="/" className={style.header__logoLink}>
+        <img src={Logo} className={style.footer__logo} />
+      </NavLink>
 
       <ul className={style.footer__list}>
         {links.map(link => (

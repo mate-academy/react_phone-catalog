@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import style from './Header.module.scss';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Logo from '../../../public/img/Logo/Logo.png';
 import burger from '../../../public/icon/Icons/Menu.png';
 import close from '../../../public/icon/Icons/Close.png';
@@ -31,9 +31,9 @@ export const Headers: React.FC = () => {
     <div>
       <div className={style.header}>
         <div className={style.header__container}>
-          <a href="/" className={style.header__logoLink}>
+          <NavLink to="/" className={style.header__logoLink}>
             <img src={Logo} className={style.header__logo} />
-          </a>
+          </NavLink>
 
           <div className={style.header__burger}>
             <img
