@@ -40,25 +40,8 @@
     height: 100%;
     padding: 0;
     margin: 0;
-    transition: all 0.3s ease;
-  }
-}
 
-.product {
-  min-width: 100%;
-  min-height: 100%;
-  padding: 0;
-
-  &First {
-    background-color: #000;
-  }
-
-  &Second {
-    background-color: var(--color-elements);
-  }
-
-  &Third {
-    background-color: var(--color-green);
+    transition: transform 0.3s ease;
   }
 }
 

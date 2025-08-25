@@ -1,6 +1,10 @@
 {
   "homePage": {
     "welcomeMessage": "Ласкаво просимо до магазину Nice Gadgets!",
+    "sliderProduct": {
+      "titles": ["Інтелект і стиль", "За межею Pro", "Твори будь-де"],
+      "buttonContent": ["Замовити зараз", "Переглянути деталі"]
+    },
     "newModelsTitle": "Нові моделі",
     "hotPricesTitle": "Гарячі ціни"
   },

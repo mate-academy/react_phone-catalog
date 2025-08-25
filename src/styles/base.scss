@@ -24,6 +24,10 @@ body {
   }
 }
 
+main {
+  max-width: 1200px;
+}
+
 a {
   color: var(--color-secondary);
   text-decoration: none;

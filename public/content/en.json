@@ -1,6 +1,10 @@
 {
   "homePage": {
     "welcomeMessage": "Welcome to Nice Gadgets store!",
+    "sliderProduct": {
+      "titles": ["Smart meets style", "Beyond Pro", "Create anywhere"],
+      "buttonContent": ["Order now", "View details"]
+    },
     "newModelsTitle": "Brand new models",
     "hotPricesTitle": "Hot prices"
   },

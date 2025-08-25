@@ -5,7 +5,10 @@ import {
   findAccessory,
   findPhone,
   findTablet,
-  getProducts
+  getAccessories,
+  getPhones,
+  getProducts,
+  getTablets
 } from '../shared/services/productService';
 import { AccessoryDetails } from '../../types/AccessoryDetails';
 import { useEffect, useState } from 'react';
@@ -27,6 +30,7 @@ export const ProductDetailsPage: React.FC = () => {
   const t = getTranslation(language);
 
   const [product, setProduct] = useState<ProductDetails | AccessoryDetails | undefined>(undefined);
+  const [similarProducts, setSimilarProducts] = useState<ProductDetails[] | AccessoryDetails[] | undefined>(undefined);
   const [isProductLoading, setIsProductLoading] = useState(true);
   const [currentPicture, setCurrentPicture] = useState('');
   const [currentCapacity, setCurrentCapacity] = useState('');
@@ -39,7 +43,8 @@ export const ProductDetailsPage: React.FC = () => {
     const fetchProduct = async () => {
       try {
         const itemId = pathname.split('/')[2];
-        const item = (await getProducts()).find(item => item.itemId === itemId);
+        const fetchedProducts = await getProducts();
+        const item = fetchedProducts.find(item => item.itemId === itemId);
 
         if (!item) {
           if (isMounted) {
@@ -49,23 +54,35 @@ export const ProductDetailsPage: React.FC = () => {
           return;
         }
 
-        let response;
+        let response: ProductDetails | AccessoryDetails | undefined;
+        let similar: ProductDetails[] | AccessoryDetails[] | undefined;
         switch (item.category) {
-          case 'phones':
+          case 'phones': {
             response = await findPhone('id', item.itemId);
+            const phones = await getPhones();
+
+            similar = phones.filter((p: ProductDetails) => p.namespaceId === (response as ProductDetails).namespaceId);
             break;
-          case 'tablets':
+          }
+          case 'tablets': {
+            const tablets = await getTablets();
             response = await findTablet('id', item.itemId);
+            similar = tablets.filter((p: ProductDetails) => p.namespaceId === (response as ProductDetails).namespaceId);
             break;
-          case 'accessories':
+          }
+          case 'accessories': {
+            const accessories = await getAccessories();
             response = await findAccessory('id', item.itemId);
+            similar = accessories.filter((p: AccessoryDetails) => p.namespaceId === (response as AccessoryDetails).namespaceId);
             break;
+          }
           default:
             response = undefined;
         }
 
         if (isMounted) {
           setProduct(response);
+          setSimilarProducts(similar);
           setIsProductLoading(false);
         }
       } catch {
@@ -108,10 +125,10 @@ export const ProductDetailsPage: React.FC = () => {
             <Back />
 
             <div className={styles.product}>
-              <h3 className={styles.title}>{product?.name}</h3>
+              <h3 className={styles.title}>{product.name}</h3>
 
               <div className={styles.pictures}>
-                {product.images?.map((url: string) => (
+                {product.images.map((url: string) => (
                   <div
                     onClick={() => setCurrentPicture(url)}
                     key={url}
@@ -140,7 +157,7 @@ export const ProductDetailsPage: React.FC = () => {
                   <ul className={styles.colorsList}>
                     {product.colorsAvailable.map(item => (
                       <li
-                        onClick={() => setCurrentColor(item)}
+                      onClick={() => setProduct(similarProducts!.find(p => p.color === item && p.capacity === currentCapacity))}
                         className={`
                             ${styles.colorsItem} 
                             ${currentColor === item ? styles.colorsItemActive : ''}
@@ -163,7 +180,7 @@ export const ProductDetailsPage: React.FC = () => {
                   <ul className={`${styles.capacityList} bodyText`}>
                     {product.capacityAvailable.map(item => (
                       <li
-                        onClick={() => setCurrentCapacity(item)}
+                        onClick={() => setProduct(similarProducts!.find(p => p.capacity === item && p.color === currentColor))}
                         className={`
                             ${styles.capacityItem} 
                             ${currentCapacity === item ? styles.capacityItemActive : ''}
