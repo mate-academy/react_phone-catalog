@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { App } from './App';
 import { ThemeProvider } from './context/ThemeContext';
 import { FavoritesProvider } from './context/FavoritesContext';
@@ -9,7 +9,7 @@ import { CartProvider } from './context/CartContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Router>
+    <HashRouter>
       <ThemeProvider>
         <FavoritesProvider>
           <CartProvider>
@@ -17,6 +17,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           </CartProvider>
         </FavoritesProvider>
       </ThemeProvider>
-    </Router>
+    </HashRouter>
   </React.StrictMode>,
 );
