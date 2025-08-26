@@ -8,10 +8,12 @@ function wait(): Promise<void> {
 
 export const getData = async <T>(url: string): Promise<T> => {
   await wait();
-  const response = await fetch(url);
+
+  const fullUrl = `/${url.replace(/^\/+/, '')}`;
+  const response = await fetch(fullUrl);
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch: ${url}`);
+    throw new Error(`Failed to fetch: ${fullUrl}`);
   }
 
   return response.json();
