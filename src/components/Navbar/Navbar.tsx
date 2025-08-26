@@ -8,6 +8,7 @@ import { useOnClickOutside } from '../../modules/shared/hooks/useOnClickOutside'
 import { getTranslation } from '../../modules/shared/utils/getTranslation';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { getCartProductsCount } from '../../modules/shared/utils/getCartProductsCount';
 
 export const Navbar: React.FC = () => {
   const { favouriteProducts, cartProducts, theme, language } = useAppState();
@@ -99,7 +100,7 @@ export const Navbar: React.FC = () => {
 
             {Object.keys(cartProducts).length > 0 && (
               <div className={styles.counter}>
-                {Object.keys(cartProducts).length}
+                {getCartProductsCount(cartProducts)}
               </div>
             )}
           </NavLink>

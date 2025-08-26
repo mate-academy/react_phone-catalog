@@ -5,6 +5,7 @@ import { CartProduct } from './CartProduct';
 import { ModalWindow } from './ModalWindow';
 import { Back } from '../../components/Back';
 import { getTranslation } from '../shared/utils/getTranslation';
+import { getCartProductsCount } from '../shared/utils/getCartProductsCount';
 
 export const CartPage: React.FC = () => {
   const { cartProducts, products, isLoadingProducts, language } = useAppState();
@@ -21,17 +22,8 @@ export const CartPage: React.FC = () => {
     return sum;
   }
 
-  function countAllCartProducts() {
-    let sum = 0;
-
-    for (const id in cartProducts) {
-      sum += cartProducts[id];
-    }
-    return sum;
-  }
-
   const [totalSum, setTotalSum] = useState(countTotal());
-  const [totalItems, setTotalItems] = useState(countAllCartProducts());
+  const [totalItems, setTotalItems] = useState(getCartProductsCount(cartProducts));
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleProductCountChange(price: number, action: '+' | '-') {
@@ -60,7 +52,7 @@ export const CartPage: React.FC = () => {
   }, [isModalOpen]);
 
   useEffect(() => {
-    setTotalItems(countAllCartProducts());
+    setTotalItems(getCartProductsCount(cartProducts));
     setTotalSum(countTotal());
   }, [isLoadingProducts, cartProducts]);
 

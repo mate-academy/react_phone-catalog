@@ -19,6 +19,8 @@ export const Footer: React.FC = () => {
         <ul className={styles.list}>
           <li className="uppercaseText">
             <Link
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.listLink}
               to="https://github.com/Mihakurochkin/"
             >
@@ -26,12 +28,22 @@ export const Footer: React.FC = () => {
             </Link>
           </li>
           <li className="uppercaseText">
-            <Link className={styles.listLink} to="/">
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.listLink}
+              to="/"
+            >
               {t.footer.contacts}
             </Link>
           </li>
           <li className="uppercaseText">
-            <Link className={styles.listLink} to="/">
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.listLink}
+              to="/"
+            >
               {t.footer.rights}
             </Link>
           </li>

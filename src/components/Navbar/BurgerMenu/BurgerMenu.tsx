@@ -6,6 +6,7 @@ import { useAppState } from '../../../contexts/AppContext';
 import { getTranslation } from '../../../modules/shared/utils/getTranslation';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { ThemeSwitcher } from '../ThemeSwitcher';
+import { getCartProductsCount } from '../../../modules/shared/utils/getCartProductsCount';
 
 type Props = {
   onClose: () => void;
@@ -125,7 +126,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
 
             {Object.keys(cartProducts).length > 0 && (
               <div className={styles.counter}>
-                {Object.keys(cartProducts).length}
+                {getCartProductsCount(cartProducts)}
               </div>
             )}
           </NavLink>
