@@ -41,7 +41,7 @@ export const ProductCategoryPage: React.FC = () => {
 
 
   useEffect(() => {
-    if (!category || !validCategories.includes(category)) return;
+    if (!category || !validCategories.includes(category)) return ;
 
     fetch('/api/products.json')
       .then(res => res.json())
@@ -70,7 +70,7 @@ export const ProductCategoryPage: React.FC = () => {
   }, [category, sort, page, perPage]);
 
   if (!category || !validCategories.includes(category)) {
-    return <Navigate to="/not-found" />;
+    return <Navigate to="/product-not-found" />;
   }
 
   return (

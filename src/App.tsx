@@ -9,7 +9,7 @@ import { ProductCategoryPage } from './components/ProductCategoryPage';
 import { ProductInfoPage } from './components/ProductInfoPage';
 
 import { PathProvider } from './components/contexts/PathContext';
-import { ProductNotFoundPage } from './components/ProductNotFoundPage';
+import { NotFound } from './components/NotFound';
 import { FavoritesPage } from './components/FavoritesPage';
 import { AddAndFavoritesProvider } from './components/contexts/AddAndFavoritesContext';
 import { CartPage } from './components/CartPage';
@@ -35,19 +35,11 @@ export const App = () => {
 
               <Route path="/cart" element={<CartPage />} />
 
-              {/* <Route
-                path="/product-not-found"
-                element={<ProductNotFoundPage />}
-              />*/}
-
-
-              
               <Route
                 path="/product-not-found"
                 element={<NotFound type="product" />}
               />
 
-              {/* catch-all для остальных страниц */}
               <Route path="*" element={<NotFound type="page" />} />
             </Routes>
           </main>
