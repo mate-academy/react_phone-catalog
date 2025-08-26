@@ -35,10 +35,20 @@ export const App = () => {
 
               <Route path="/cart" element={<CartPage />} />
 
-              <Route
+              {/* <Route
                 path="/product-not-found"
                 element={<ProductNotFoundPage />}
+              />*/}
+
+
+              
+              <Route
+                path="/product-not-found"
+                element={<NotFound type="product" />}
               />
+
+              {/* catch-all для остальных страниц */}
+              <Route path="*" element={<NotFound type="page" />} />
             </Routes>
           </main>
 

@@ -16,7 +16,6 @@ type AddAndFavoritesContextType = {
   changeQuantity: (id: ID, command: "plus" | "minus" | "delete") => void;
 };
 
-// Создаём контекст с дефолтными значениями
 export const AddAndFavoritesContext =
   createContext<AddAndFavoritesContextType>({
     favorites: [],
@@ -30,7 +29,6 @@ export const AddAndFavoritesContext =
     isInCart: () => false,
   });
 
-// Провайдер контекста
 export const AddAndFavoritesProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {

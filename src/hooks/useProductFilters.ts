@@ -1,45 +1,13 @@
 import { useSearchParams, useLocation, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export const useProductFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const { itemId } = useParams<{ itemId?: string }>();
 
-  const STORAGE_KEY_SEARCH = 'lastCategorySearch'; // для search параметров
-  const STORAGE_KEY_PATH = 'lastCategoryPath';     // для пути категории
-
-  // Сохраняем только страницы категорий (без itemId и без /cart или /favorites)
-
-
-
-
-
-  const [path, setPath] = useState('')
-
-  useEffect(() => {
-    setPath(location.pathname) ;
-  }, []);
-
-  console.log('-==location==-', location.pathname);
-  console.log('-==path==-', path);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const STORAGE_KEY_SEARCH = 'lastCategorySearch';
+  const STORAGE_KEY_PATH = 'lastCategoryPath';
 
   useEffect(() => {
     const isCategoryPage = !itemId && !location.pathname.startsWith('/cart') && !location.pathname.startsWith('/favorites');
@@ -51,7 +19,6 @@ export const useProductFilters = () => {
       sessionStorage.setItem(STORAGE_KEY_PATH, location.pathname);
     }
   }, [location.pathname, location.search, itemId]);
-  // console.log('-==location==-', location.pathname);
 
   const getLastSearch = () => sessionStorage.getItem(STORAGE_KEY_SEARCH) || '';
   const getLastPath = () => sessionStorage.getItem(STORAGE_KEY_PATH) || '/';

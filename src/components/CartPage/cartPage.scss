@@ -153,6 +153,7 @@
       border: 1px solid $border-color;
       border-radius: 8px;
       padding: 16px;
+      background-color: $main-bg-color;
 
       @include onTablet {
         padding: 24px;

@@ -10,25 +10,33 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
+  const { search } = useCurrentPath();
+
   const screen = product.screen.split(' ').slice(0, 2).join(' ');
   const capacity = product.capacity.replace(/(\d)([A-Za-z])/g, '$1 $2');
-  const ram = product.ram.replace(/(\d)([A-Za-z])/g, '$1 $2');
   const titleModelPhoto = product.image;
   const modelName = product.name;
-
-  const priceRegular = `$${product.fullPrice}`;
-  const priceDiscount = `$${product.price}`;
   const modelId = product.itemId;
   const category = product.category;
   const id = product.id;
+  const priceRegular = `$${product.fullPrice}`;
+  const priceDiscount = `$${product.price}`;
 
-  const { search } = useCurrentPath(); // ✅ достаём текущие параметры запроса
+  let ram = product.ram;
+
+  if (ram.startsWith('0')) {
+    const match = ram.match(/^([\d.]+)([A-Za-z]+)$/);
+
+    if (match) {
+      ram = `${Math.round(parseFloat(match[1]) * 1024)}MB`;
+    }
+  }
 
   return (
     <div className="product-card-container" key={modelId}>
       <Link
-        to={`/${category}/${modelId}`} // путь к странице товара
-        state={{ search }} // ✅ передаём параметры в state
+        to={`/${category}/${modelId}`}
+        state={{ search }}
         className="photo-name-container"
         onClick={() => {
           window.scrollTo({ top: 0, behavior: 'smooth' });

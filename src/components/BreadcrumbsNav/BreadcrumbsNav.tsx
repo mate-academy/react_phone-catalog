@@ -1,34 +1,19 @@
+import './breadcrumbsNav.scss';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { ProductInfoUnionType } from '../ProductInfoPage';
-import './breadcrumbsNav.scss';
-
 import { useProductFilters } from '../../hooks/useProductFilters';
 
 export const BreadcrumbsNav: React.FC = () => {
-  const { category, itemId } = useParams();
   const location = useLocation();
-
-  const pageName = category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
-  ////////////////////////////////////////
-  // Подключаем хук для работы с фильтрами (search-параметрами)
+  const { category, itemId } = useParams();
   const { getLastSearch } = useProductFilters();
-
-  // Получаем сохранённые последние search-параметры (например "?sort=name&page=3")
+  const pageName = category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
   const lastSearch = getLastSearch();
-
-  // Получаем search из location.state (если есть), иначе из текущего location.search, иначе пустая строка
   const backSearch = location.state?.search || location.search || '';
-
-  // Выбираем, какие search-параметры использовать: либо из location, либо из сохранённых
   const searchToUse = backSearch !== '' ? backSearch : lastSearch;
-
   const [modelName, setModelName] = useState<string>('');
-
-  // Формируем базовый путь назад — категория или пустая строка
   const backPath = `/${category || ''}`;
-
-  // Формируем полный путь назад с параметрами
   const backWithSearch = `${backPath}${searchToUse}`;
 
   useEffect(() => {
@@ -61,7 +46,6 @@ export const BreadcrumbsNav: React.FC = () => {
           :
           <p className="small-text-12-600">{pageName}</p>
         }
-
 
         {modelName && (
           <>
