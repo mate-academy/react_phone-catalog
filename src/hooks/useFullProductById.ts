@@ -42,7 +42,6 @@ export const useFullProductById = (productId: string | undefined) => {
           throw new Error('Product not found in category data');
         }
 
-        // Збираємо повний продукт
         const mergedProduct: Product = {
           ...baseProduct,
           ...categoryProduct,
