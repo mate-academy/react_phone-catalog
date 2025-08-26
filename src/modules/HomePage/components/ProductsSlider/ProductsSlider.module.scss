@@ -1,0 +1,26 @@
+.slider {
+  margin: 5.6rem 0;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.6rem;
+
+    &_title {
+      flex: 1;
+    }
+
+    &_buttons {
+      flex: 1;
+
+      width: 8rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      > :first-child {
+        margin-right: 1.6rem;
+      }
+    }
+  }
+}

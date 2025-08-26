@@ -1,11 +1,14 @@
-@media (min-width: 320px) and (max-width: 639px) {
-  .slider {
+ .slider {
     position: relative;
     z-index: 800;
     width: 100%;
-    aspect-ratio: 1/1;
     overflow: hidden;
+    aspect-ratio: 1/1;
+
+    @media (min-width: 320px) and (max-width: 639px) {
+      aspect-ratio: 1/1;
+    }
   }
-}
+
 
 
