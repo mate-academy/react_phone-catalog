@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  align-items: center;
+
 
   @include mixins.on-tablet {
     flex-direction: row;
@@ -33,7 +33,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  align-items: center;
+
 
   @include mixins.on-tablet {
     flex-direction: row;

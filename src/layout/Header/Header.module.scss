@@ -11,16 +11,13 @@
 
 .headerContent {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   max-width: variables.$container-width;
   height: 100%;
   margin: 0 auto;
   padding-inline: 24px;
-
-  @include mixins.on-tablet {
-    gap: 32px;
-  }
+  flex-direction: row;
 }
 
 .logo {
@@ -31,7 +28,6 @@
   img {
     height: 24px;
     display: block;
-
   }
 }
 
@@ -48,28 +44,21 @@
 }
 
 .navigationAndHistory {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-end;
-
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
 }
 
 .rightSide {
   display: flex;
-  gap: 16px;
   align-items: center;
-
-  @include mixins.on-mobile {
-    gap: 0;
-  }
 }
 
 .icon {
   display: block;
   width: 24px;
   height: 24px;
-
   filter: brightness(0) saturate(100%) invert(73%) sepia(9%) saturate(286%)
     hue-rotate(169deg) brightness(88%) contrast(88%);
   transition: filter 0.2s ease, opacity 0.2s ease;
@@ -83,38 +72,40 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-left: 1px solid var(--elements);
-  color: var(--secondary-text);
-  transition: background-color 0.2s, color 0.2s;
+  border: 1px solid var(--elements);
+  transition: border-color 0.2s;
 
-  &:hover {
-    color: var(--link-active-color);
-    background-color: var(--hover-bg);
-
-    .icon {
-      filter: brightness(0) saturate(100%) invert(16%) sepia(8%) saturate(749%)
-        hue-rotate(176deg) brightness(91%) contrast(88%);
-    }
-  }
-
-  .activeIcon {
-    filter: invert(28%) sepia(98%) saturate(2552%) hue-rotate(337deg)
-      brightness(92%) contrast(96%);
-    opacity: 1;
+  &:hover,
+  &.active {
+    border-color: var(--accent);
   }
 
   .count {
     position: absolute;
-    top: 32px;
+    top: -5px;
+    right: -5px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
     font-size: variables.$fs-small;
     font-weight: variables.$fw-medium;
-    color: var(--main-tex);
-    z-index: 1;
+    color: var(--main-text);
+    z-index: 100;
+    transition: all 0.3s;
   }
+}
+
+.icon.filled {
+  filter: invert(28%) sepia(98%) saturate(2552%) hue-rotate(337deg)
+    brightness(92%) contrast(96%);
+  opacity: 1;
+}
+
+.count.filled {
+  color: var(--main-text);
 }
 
 .nav a {
@@ -138,10 +129,6 @@
   color: var(--link-active-color);
 }
 
-.rightSide a:first-child {
-  border-left: none;
-}
-
 .themeToggle {
   cursor: pointer;
   display: flex;
@@ -149,15 +136,15 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: none;
-  border-left: 1px solid var(--elements);
+  border: 1px solid var(--elements);
   font-size: 18px;
   line-height: 1;
   background: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, border-color 0.2s;
 
   &:hover {
     background-color: var(--hover-bg);
+    border: 1px solid var(--accent);
   }
 }
 
@@ -166,9 +153,9 @@
   display: none;
   width: 40px;
   height: 40px;
-  border: none;
-  border-left: 1px solid var(--elements);
+  border: 1px solid var(--elements);
   background: none;
+  transition: background-color 0.2s, border-color 0.2s;
 
   @include mixins.on-mobile {
     display: flex;
@@ -187,7 +174,6 @@
 
   &:hover {
     background-color: var(--hover-bg);
-
     img {
       filter: brightness(0) saturate(100%) invert(16%) sepia(8%) saturate(749%)
         hue-rotate(176deg) brightness(91%) contrast(88%);
@@ -198,13 +184,13 @@
 .burgerMenu {
   position: fixed;
   z-index: 10;
-  top: variables.$header-height;
+  top: variables.$header-height + 16px;
   left: 0;
   transform: translateX(100%);
   display: none;
   width: 100%;
   height: calc(100vh - variables.$header-height);
-  background-color: var(--white);
+  background-color: inherit;
   transition: transform 0.3s ease-in-out;
 
   @include mixins.on-mobile {

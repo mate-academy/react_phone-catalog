@@ -1,6 +1,6 @@
 // ProductDetailsPage.tsx
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { ProductGallery } from './components/ProductGallery';
 import { ProductInfo } from './components/ProductInfo';
@@ -16,7 +16,6 @@ import { Product } from '../../types/Product';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
-  const navigate = useNavigate();
 
   const {
     product,
@@ -41,10 +40,6 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className={styles.page}>
       <Breadcrumbs category={product.category} productName={product.name} />
-
-      <button className={styles.back} onClick={() => navigate(-1)}>
-        ← Back
-      </button>
 
       <h1 className={styles.title}>{product.name}</h1>
 

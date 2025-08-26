@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/icons/logo.svg';
+import Logo from '../../../public/img/logo.svg';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.content}>
         <Link to="/" className={styles.logo}>
-          <img src={logo} alt="Nice Gadgets logo" />
+          <img src={Logo} alt="Nice Gadgets logo" />
         </Link>
 
         <nav className={styles.nav}>

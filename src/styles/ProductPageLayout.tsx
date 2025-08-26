@@ -135,6 +135,9 @@ export const ProductPageLayout: React.FC<Props> = ({ title, products }) => {
                 className={styles.perPageButton}
                 onClick={() => setIsPerPageMenuVisible(prev => !prev)}
               >
+                <span className={styles.currentCount}>
+                  {perPage === 'all' ? 'all' : perPage}
+                </span>
                 <span className={styles.buttonText}>Items on page</span>
                 <img
                   src={ArrowIcon}

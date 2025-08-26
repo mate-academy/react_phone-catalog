@@ -126,7 +126,7 @@
 
 .emptyTitle {
   @include mixins.title(variables.$fs-xxl, variables.$fw-bold);
-  
+
   margin-bottom: 20px;
 }
 

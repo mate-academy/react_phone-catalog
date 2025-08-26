@@ -73,6 +73,7 @@
   border: 1px solid var(--elements);
 
   background-color: transparent;
+  color: var(--main-text);
 
   transition: border-color variables.$transition-main;
 
@@ -91,6 +92,7 @@
   font-size: variables.$fs-medium;
   font-weight: variables.$fw-medium;
   text-align: center;
+  color: var(--main-text);
 }
 
 .price {

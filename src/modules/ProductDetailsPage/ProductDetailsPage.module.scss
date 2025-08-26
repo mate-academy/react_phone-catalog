@@ -7,15 +7,6 @@
   padding-top: 40px;
 }
 
-.back {
-  @include mixins.text(variables.$fs-normal, variables.$fw-medium, var(--secondary-text));
-
-  cursor: pointer;
-  margin-bottom: 16px;
-  border: none;
-  background: none;
-}
-
 .title {
   @include mixins.section-title;
 

@@ -2,7 +2,9 @@
 @use './styles/themes';
 @use './styles/variables';
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 

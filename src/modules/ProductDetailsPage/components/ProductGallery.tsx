@@ -21,7 +21,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
         {images.map((img, index) => (
           <button
             key={index}
-            className={styles.thumb}
+            className={`${styles.thumb} ${img === selectedImage ? styles.active : ''}`}
             onClick={() => setSelectedImage(img)}
           >
             <img src={`./${img}`} alt="thumb" />

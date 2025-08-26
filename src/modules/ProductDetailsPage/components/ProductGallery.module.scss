@@ -36,6 +36,11 @@
     height: 100%;
     object-fit: contain;
   }
+
+  &.active {
+    border: 1px solid var(--accent);
+  }
+
 }
 
 .mainImage {
