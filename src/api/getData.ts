@@ -8,7 +8,7 @@ function wait(): Promise<void> {
 
 const BASE_URL =
   import.meta.env.MODE === 'production'
-    ? 'https://dejisk.github.io/react_phone-catalog/api'
+    ? 'https://dejisk.github.io/react_phone-catalog/'
     : '';
 
 export const getData = async <T>(url: string): Promise<T> => {
