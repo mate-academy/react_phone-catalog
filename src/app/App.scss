@@ -5,11 +5,15 @@
 * {
   font-family: Montserrat, sans-serif;
   color: s.$c-grey-primary;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .App {
   position: relative;
-  
+
   display: flex;
   flex-direction: column;
   width: 100%;

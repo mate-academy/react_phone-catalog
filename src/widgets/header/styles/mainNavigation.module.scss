@@ -57,6 +57,10 @@
 
     @include s.t-uppercase;
 
+  &:focus {
+    color: s.$c-grey-primary;
+  }
+
     &--active {
       color: s.$c-grey-primary;
       @include underscore;

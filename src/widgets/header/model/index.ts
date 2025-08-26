@@ -1,6 +1,12 @@
 import { CartIcon, HeartIcon } from '@shared/icons';
 import { NavAriaLabels, NavElementName, RoutePath } from '@shared/types';
 
+type UINavLinkType = {
+  title: NavElementName;
+  path: RoutePath;
+  ariaLabel: NavAriaLabels;
+};
+
 const navLinksList = [
   {
     title: NavElementName.Home,
@@ -43,4 +49,4 @@ const uiLinksList: UiLink[] = [
   },
 ];
 
-export { navLinksList, uiLinksList, type UiLink };
+export { navLinksList, uiLinksList, type UiLink, type UINavLinkType };

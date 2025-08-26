@@ -16,6 +16,7 @@ enum Request {
   CATALOGUE = 'catalogue',
   PRODUCT = 'product',
   BANNER = 'banner',
+  AMOUNT = 'amount',
 }
 
 enum Order {

@@ -22,7 +22,7 @@ export const HeroSlider: React.FC<Props> = ({
 }: Props) => {
   const { animationSpeed, gap } = visualConfig;
   const { DOM } = useSliderData();
-  const { trackHandlers, setByIndex } = useSliderCore(startIdx, amount);
+  const { handlers, setByIndex } = useSliderCore(startIdx, amount);
 
   useInfinite(amount);
   const firstClone = data.at(-1) as BannerData;
@@ -32,10 +32,11 @@ export const HeroSlider: React.FC<Props> = ({
   return (
     <section className={styles['hero-slider']} aria-label="Featured promotions">
       <SliderButtons setByIndex={setByIndex} />
-      <div className={styles.viewport} ref={DOM.viewport} {...trackHandlers}>
+      <div className={styles.viewport} ref={DOM.viewport} {...handlers}>
         <div
           className={styles.track}
           ref={DOM.track}
+          tabIndex={0}
           style={
             {
               '--gap': `${gap}px`,
@@ -56,10 +57,15 @@ export const HeroSlider: React.FC<Props> = ({
               aria-label={el.ariaLabel}
               to={'/phones'}
               className={styles.track__el}
-              onClick={e => trackHandlers.onClick(e)}
+              onClick={e => handlers.onClick(e)}
               ref={el.id === 0 ? DOM.item : null}
             >
-              <img src={el.src} alt={el.alt} className={styles.banner} />
+              <img
+                src={el.src}
+                alt={el.alt}
+                className={styles.banner}
+                loading={el.id !== 0 ? 'lazy' : 'eager'}
+              />
             </Link>
           ))}
           <div className={styles.track__el}>
@@ -67,6 +73,7 @@ export const HeroSlider: React.FC<Props> = ({
               src={lastClone.src}
               alt={lastClone.alt}
               className={styles.banner}
+              loading="lazy"
             />
           </div>
         </div>

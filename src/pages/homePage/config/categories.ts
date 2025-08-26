@@ -1,25 +1,29 @@
 import { Category } from '@shared/types/APIReturnTypes';
 
-export const categories = [
+interface HomePageCategory {
+  id: number;
+  name: string;
+  link: 'phones' | 'tablets' | 'accessories';
+  src: string;
+}
+
+export const categories: HomePageCategory[] = [
   {
     id: 0,
     name: 'Mobile phones',
-    amount: '124 models',
-    src: 'phones.png',
     link: Category.Phones,
+    src: 'phones.png',
   },
   {
     id: 1,
     name: 'Tablets',
-    amount: '1488 models',
-    src: 'tablets.png',
     link: Category.Tablets,
+    src: 'tablets.png',
   },
   {
     id: 2,
     name: 'Accessories',
-    amount: '42 models',
-    src: 'accessories.png',
     link: Category.Accessories,
+    src: 'accessories.png',
   },
 ];

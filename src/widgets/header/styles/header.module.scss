@@ -8,7 +8,7 @@
   width: 100%;
   box-sizing: border-box;
 
-  > :nth-child(2) {
+  > :nth-child(3) {
     grid-area: 2 / 1 / 3 / 3;
     display: none;
   }
@@ -20,7 +20,7 @@
   &--is-active {
     grid-template: lc.$grid-mob-active;
 
-    > :nth-child(2) {
+    > :nth-child(3) {
       display: block;
     }
     > :last-child {
@@ -31,7 +31,7 @@
   @media (min-width: s.$c-BREAKPOINT_TAB) {
     grid-template: lc.$grid-tab;
 
-    > :nth-child(2) {
+    > :nth-child(3) {
       grid-area: 1 / 2 / 2 / 3;
       display: block;
     }
@@ -53,8 +53,12 @@
 
   @include s.m-btn-btn-reg;
 
-  &:hover {
+  border-top: 0;
+
+  &:hover, &:focus {
     @include s.m-btn-hover-reg;
+
+    border-top: 0;
   }
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {

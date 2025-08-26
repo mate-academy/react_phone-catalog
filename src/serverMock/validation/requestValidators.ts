@@ -5,6 +5,7 @@ import {
   ItemsOnPage,
   OrderParams,
   RequestType,
+  ValidAmountParams,
   ValidCatalogueParams,
   ValidProdParams,
 } from '@server/types';
@@ -12,7 +13,7 @@ import {
 interface ValidParams {
   status: true;
   request: RequestType;
-  params?: ValidCatalogueParams | ValidProdParams;
+  params?: ValidCatalogueParams | ValidProdParams | ValidAmountParams;
 }
 
 export const getErrorObject = (msg: string): ErrorObject => {
@@ -29,7 +30,7 @@ export const getErrorObject = (msg: string): ErrorObject => {
 
 const getValidParams = (
   req: RequestType,
-  prm?: ValidCatalogueParams | ValidProdParams,
+  prm?: ValidCatalogueParams | ValidProdParams | ValidAmountParams,
 ): ValidParams => {
   const validParams: ValidParams = {
     status: true,
@@ -104,6 +105,16 @@ function validateParams(request: any, params?: any): ValidParams | ErrorObject {
       }
 
       return getValidParams(RequestType.CATALOGUE, params);
+
+    case RequestType.AMOUNT:
+      if (
+        params.category !== CategoryParams.ALL &&
+        Object.values(CategoryParams).some(el => el === params.category)
+      ) {
+        return getValidParams(RequestType.AMOUNT, params);
+      }
+
+      return getErrorObject(`Invalid category param: ${params.category}`);
 
     default:
       return getErrorObject('Something went wrong');

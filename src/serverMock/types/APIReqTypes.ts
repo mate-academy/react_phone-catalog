@@ -8,11 +8,19 @@ interface ValidCatalogueParams {
   page?: number;
 }
 
-interface ValidProdParams {
+interface ValidAmountParams {
   category: Omit<CategoryParams, CategoryParams.ALL>;
+}
+
+interface ValidProdParams extends ValidAmountParams {
   itemId: GlobalValidNameSpaceIDs;
 }
 
-type ValidParams = ValidCatalogueParams | ValidProdParams;
+type ValidParams = ValidCatalogueParams | ValidAmountParams | ValidProdParams;
 
-export { type ValidCatalogueParams, type ValidProdParams, type ValidParams };
+export {
+  type ValidCatalogueParams,
+  type ValidProdParams,
+  type ValidParams,
+  type ValidAmountParams,
+};

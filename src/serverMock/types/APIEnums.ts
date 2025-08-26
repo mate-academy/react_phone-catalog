@@ -17,6 +17,7 @@ enum RequestType {
   CATALOGUE = 'catalogue',
   PRODUCT = 'product',
   BANNER = 'banner',
+  AMOUNT = 'amount',
 }
 
 enum CategoryParams {

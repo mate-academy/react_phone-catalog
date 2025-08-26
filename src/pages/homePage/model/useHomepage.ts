@@ -1,4 +1,5 @@
-import { get } from '@shared/api/';
+/* eslint-disable no-console */
+import { Category, get } from '@shared/api/';
 import { BannerData, CatalogueProduct } from '@shared/types/APIReturnTypes';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Conf, ErrorState, LoadState } from '../types';
@@ -25,6 +26,36 @@ export const useHomePage = () => {
   const [bannerList, setBannerList] = useState<BannerData[] | null | undefined>(
     null,
   );
+  const [amount, setAmount] = useState({
+    phones: 'Loading...',
+    tablets: 'Loading...',
+    accessories: 'Loading...',
+  });
+
+  const loadAmount = async (category: Omit<Category, Category.ALL>) => {
+    try {
+      const res = await get.length(category);
+
+      setAmount(prev => ({
+        ...prev,
+        [category as string]: `${res.toString()} models`,
+      }));
+    } catch (e) {
+      console.warn(`Unexpected error: ${e}`);
+      setAmount(prev => ({
+        ...prev,
+        [category as string]: 'failed to load data',
+      }));
+    }
+  };
+
+  useEffect(() => {
+    Promise.all(
+      Object.values(Category)
+        .filter(cat => cat !== Category.ALL)
+        .map(category => loadAmount(category)),
+    );
+  }, []);
 
   const loadCatalogs = async (conf: Conf) => {
     const { key, getter, setter } = conf;
@@ -78,5 +109,5 @@ export const useHomePage = () => {
     loadAllData();
   }, [loadAllData]);
 
-  return { loading, newest, hotPrice, bannerList, errors };
+  return { loading, newest, hotPrice, bannerList, errors, amount };
 };

@@ -1,16 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useLayoutEffect, useRef } from 'react';
-import { useSliderData, visualConfig } from '..';
+import { useSliderData } from '..';
 import { useSliderUtils, useAnimation } from '.';
 
 export const useSliderCore = (startIndex: number, amount: number) => {
-  const { DOM, mechanics, measure } = useSliderData();
+  const { DOM, mechanics } = useSliderData();
   const { toggleTrackClass, snap, af } = useAnimation();
   const { drag, updateSizes, math } = useSliderUtils(startIndex, amount);
   const initialSetup = useRef<boolean>(false);
   const startX = useRef<number | null>(null);
-
-  const { gap } = visualConfig;
 
   useLayoutEffect(() => {
     updateSizes();
@@ -22,12 +20,11 @@ export const useSliderCore = (startIndex: number, amount: number) => {
     initialSetup.current = true;
   }, [DOM.item, DOM.viewport, DOM.track]);
 
-  useEffect(() => {
-    mechanics.index.current =
-      -mechanics.offset.current / (measure.itemWidth.current + gap);
-  }, []);
+  const setByIndex = (idx: number) => {
+    snap(idx, true);
+  };
 
-  const trackHandlers = {
+  const handlers = {
     onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => {
       e.preventDefault();
       toggleTrackClass(false);
@@ -69,12 +66,20 @@ export const useSliderCore = (startIndex: number, amount: number) => {
     },
 
     onPointerCancel: (e: React.PointerEvent<HTMLDivElement>) => {
-      trackHandlers.onPointerUp(e);
+      handlers.onPointerUp(e);
     },
-  };
-
-  const setByIndex = (idx: number) => {
-    snap(idx, true);
+    onKeyDown: (e: React.KeyboardEvent) => {
+      switch (e.key) {
+        case 'ArrowLeft':
+          e.preventDefault();
+          setByIndex(mechanics.index.current - 1);
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          setByIndex(mechanics.index.current + 1);
+          break;
+      }
+    },
   };
 
   useEffect(() => {
@@ -97,5 +102,5 @@ export const useSliderCore = (startIndex: number, amount: number) => {
     };
   }, [DOM.viewport]);
 
-  return { trackHandlers, setByIndex };
+  return { handlers, setByIndex };
 };

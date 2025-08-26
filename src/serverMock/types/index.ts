@@ -2,6 +2,7 @@ export {
   type ValidCatalogueParams,
   type ValidProdParams,
   type ValidParams,
+  type ValidAmountParams,
 } from './APIReqTypes';
 
 export {

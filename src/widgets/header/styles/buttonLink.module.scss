@@ -9,9 +9,10 @@
   height: 100%;
   border-bottom: 0;
 
-  &:hover {
+  &:hover, &:focus {
     @include s.m-btn-hover-reg;
-
+    
+    z-index: s.$c-attention;
     border-bottom: 0;
   }
 
@@ -22,7 +23,7 @@
 
     border-top: 0;
 
-    &:hover {
+    &:hover, &:focus {
       @include s.m-btn-hover-reg;
 
       border-top: 0;

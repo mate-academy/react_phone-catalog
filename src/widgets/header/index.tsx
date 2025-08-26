@@ -16,7 +16,12 @@ export const Header: React.FC = () => {
 
   return (
     <header className={getClassName()}>
-      <Link to="/" className={styles['header-logo']} aria-hidden="true">
+      <Link
+        to="/"
+        className={styles['header-logo']}
+        aria-hidden="true"
+        tabIndex={-1}
+      >
         <img
           src="/src/shared/icons/logo.svg"
           alt=""
@@ -24,14 +29,15 @@ export const Header: React.FC = () => {
           className={styles['logo-image']}
         />
       </Link>
-      <HeaderMainNavigation />
       <button
         aria-label={isOpened ? NavAriaLabels.CloseMenu : NavAriaLabels.Menu}
+        aria-expanded={isOpened}
         className={styles['burger-button']}
         onClick={() => setOpened(!isOpened)}
       >
         {!isOpened ? <BurgerMenuIcon /> : <CrossIcon />}
       </button>
+      <HeaderMainNavigation />
       <HeaderButtonNavigation />
     </header>
   );

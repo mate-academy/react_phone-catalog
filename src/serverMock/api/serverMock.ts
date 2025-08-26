@@ -1,4 +1,9 @@
-import { getBanners, getProduct, getCatalogueItems } from '../services';
+import {
+  getBanners,
+  getProduct,
+  getCatalogueItems,
+  getItemsAmount,
+} from '../services';
 import { RequestType, ValidResponse } from '../types';
 import { validateParams } from '../validation';
 
@@ -41,6 +46,8 @@ async function getRequest(conf: string): Promise<string> {
       response.pages = pages;
 
       break;
+    case RequestType.AMOUNT:
+      response.data = await getItemsAmount(params);
   }
 
   return JSON.stringify(response);

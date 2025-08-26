@@ -11,7 +11,12 @@ import {
   type CatalogueConf,
 } from './typesAndEnums';
 
-import { BannerData, CatalogueProduct, ItemProduct } from '@shared/types';
+import {
+  BannerData,
+  CatalogueProduct,
+  Category,
+  ItemProduct,
+} from '@shared/types';
 
 function handleError(message: string): never {
   console.warn(`Unable to load data, error: ${message}`);
@@ -70,6 +75,24 @@ const get = {
     const { data, currentPage, pages } = catalogueItems;
 
     return { data, currentPage, pages };
+  },
+  length: async (
+    category: Omit<Category, Category.Products>,
+  ): Promise<number> => {
+    const itemsAmount = JSON.parse(
+      await getRequest(
+        JSON.stringify({
+          request: Request.AMOUNT,
+          body: {
+            category: category,
+          },
+        }),
+      ),
+    );
+
+    const { data } = itemsAmount;
+
+    return data;
   },
 };
 

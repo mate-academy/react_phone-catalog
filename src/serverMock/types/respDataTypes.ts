@@ -59,7 +59,7 @@ interface ErrorObject {
 
 interface ValidResponse {
   status: true;
-  data: BaseProduct[] | Product[] | BannerData[];
+  data: BaseProduct[] | Product[] | BannerData[] | number;
   currentPage?: number;
   pages?: number;
 }

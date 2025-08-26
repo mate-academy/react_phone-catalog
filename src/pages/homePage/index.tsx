@@ -9,7 +9,7 @@ import { Spinner } from '@shared/ui';
 import { SliderS } from '@widgets/sliderCss';
 
 export const HomePage = () => {
-  const { newest, hotPrice, bannerList, loading, errors } = useHomePage();
+  const { newest, hotPrice, bannerList, loading, amount } = useHomePage();
 
   return (
     <main className={styles.container}>
@@ -18,7 +18,7 @@ export const HomePage = () => {
         <span className={styles.welcome__text}>
           Welcome to Nice Gadgets store!
         </span>
-        <SliderS mode="hero" data={bannerList} error={errors.banners} />
+        <SliderS mode="hero" data={bannerList} />
       </div>
       <div className={styles['home-catalogue']}>
         <section
@@ -50,7 +50,11 @@ export const HomePage = () => {
               />
               <h3
                 className={styles.categories__name}
-                style={{ '--amount': `"${el.amount}"` } as React.CSSProperties}
+                style={
+                  {
+                    '--amount': `"${amount[el.link]}"`,
+                  } as React.CSSProperties
+                }
               >
                 {el.name}
               </h3>
