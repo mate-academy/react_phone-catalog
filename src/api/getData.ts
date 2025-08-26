@@ -6,10 +6,15 @@ function wait(): Promise<void> {
   });
 }
 
+const BASE_URL =
+  import.meta.env.MODE === 'production'
+    ? 'https://dejisk.github.io/react_phone-catalog/api'
+    : '';
+
 export const getData = async <T>(url: string): Promise<T> => {
   await wait();
 
-  const fullUrl = `/${url.replace(/^\/+/, '')}`;
+  const fullUrl = BASE_URL + url;
   const response = await fetch(fullUrl);
 
   if (!response.ok) {
