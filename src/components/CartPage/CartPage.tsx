@@ -106,7 +106,9 @@ export const CartPage = () => {
           <div className="totalForItem">
             <div className="totalItem-Price">${cartTotalSum}</div>
             <p className="main-body-text-14">Total for {itemInCart} items</p>
-            <button className="checkout button-text">Checkout</button>
+            <button className="checkout button-text"
+
+            >Checkout</button>
           </div>
         </div>
       ) : (

@@ -70,7 +70,7 @@ export const ProductCategoryPage: React.FC = () => {
   }, [category, sort, page, perPage]);
 
   if (!category || !validCategories.includes(category)) {
-    return <Navigate to="/product-not-found" />;
+    return <Navigate to="/not-found" />;
   }
 
   return (

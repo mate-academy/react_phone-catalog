@@ -40,7 +40,7 @@ export const App = () => {
                 element={<NotFound type="product" />}
               />
 
-              <Route path="*" element={<NotFound type="page" />} />
+              <Route path="not-found" element={<NotFound type="page" />} />
             </Routes>
           </main>
 
