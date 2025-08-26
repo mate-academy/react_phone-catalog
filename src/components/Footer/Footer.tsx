@@ -16,21 +16,36 @@ export const Footer = () => {
         </div>
 
         <div className="footerLinks">
-          <Link to="/" className="link">
+          <a
+            href="https://github.com/andriy-chornyy"
+            className="link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Github
-          </Link>
-          <Link to="/" className="link">
+          </a>
+
+          <a
+            href="https://github.com/andriy-chornyy"
+            className="link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Contacts
-          </Link>
-          <Link to="/" className="link">
+          </a>
+
+          <a
+            href="https://github.com/andriy-chornyy"
+            className="link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Rights
-          </Link>
+          </a>
         </div>
 
         <div className="backToTop-container">
-
-          <div className='button-box'>
-
+          <div className="button-box">
             <div
               className="button-name"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

@@ -14,6 +14,8 @@ type AddAndFavoritesContextType = {
   toggleCart: (id: ID) => void;
   isInCart: (id: ID) => boolean;
   changeQuantity: (id: ID, command: "plus" | "minus" | "delete") => void;
+
+  clearCart: () => void;
 };
 
 export const AddAndFavoritesContext =
@@ -27,6 +29,7 @@ export const AddAndFavoritesContext =
 
     isFavorite: () => false,
     isInCart: () => false,
+    clearCart: () => {},
   });
 
 export const AddAndFavoritesProvider: React.FC<{
@@ -79,6 +82,10 @@ export const AddAndFavoritesProvider: React.FC<{
     setCart(newCart);
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
     <AddAndFavoritesContext.Provider
       value={{
@@ -90,6 +97,8 @@ export const AddAndFavoritesProvider: React.FC<{
         toggleCart,
         isInCart,
         changeQuantity,
+
+        clearCart,
       }}
     >
       {children}

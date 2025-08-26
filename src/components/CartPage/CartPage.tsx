@@ -8,11 +8,11 @@ import { useProductFilters } from '../../hooks/useProductFilters';
 export const CartPage = () => {
   const context = useContext(AddAndFavoritesContext);
   const { getLastSearch, getLastPath } = useProductFilters();
-  const { cart, changeQuantity } = context;
+  const { cart, changeQuantity, clearCart } = context;
 
   const [products, setProducts] = useState<AllProductsType[]>([]);
   const [allProducts, setAllProducts] = useState<AllProductsType[]>([]);
-
+  const [orderMessage, setOrderMessage] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/products.json')
@@ -34,18 +34,30 @@ export const CartPage = () => {
     return `/${product.category}/${product.itemId}`;
   };
 
+  const handleCheckout = () => {
+    clearCart();
+    setOrderMessage('Ваше замовлення успішно відпралено');
+
+    setTimeout(() => setOrderMessage(null), 5000);
+  };
+
+  const closeMessage = () => setOrderMessage(null);
+
   return (
     <div className="cart-page">
-
       <div className="button-back-block">
-        <Link to={`${getLastPath()}${getLastSearch()}`} className="icon"
-        >
-          <img src="/img/icons/ArrowLeft.svg" alt="arrow icon" className="icon" />
+        <Link to={`${getLastPath()}${getLastSearch()}`} className="icon">
+          <img
+            src="/img/icons/ArrowLeft.svg"
+            alt="arrow icon"
+            className="icon"
+          />
         </Link>
 
         <Link
           to={`${getLastPath()}${getLastSearch()}`}
-          className="breadcrumbs-link">
+          className="breadcrumbs-link"
+        >
           <div className="back-text">Back</div>
         </Link>
       </div>
@@ -72,7 +84,10 @@ export const CartPage = () => {
               return (
                 <div className="carts-card" key={id}>
                   <div className="info-row">
-                    <div className="delete" onClick={() => changeQuantity(id, 'delete')}>
+                    <div
+                      className="delete"
+                      onClick={() => changeQuantity(id, 'delete')}
+                    >
                       <img src="./img/icons/Close.svg" alt="delete item" />
                     </div>
 
@@ -86,13 +101,19 @@ export const CartPage = () => {
                   </div>
 
                   <div className="calc-box">
-                    <div className="minus calc-button" onClick={() => changeQuantity(id, 'minus')}>
+                    <div
+                      className="minus calc-button"
+                      onClick={() => changeQuantity(id, 'minus')}
+                    >
                       <img src="./img/icons/Minus.svg" alt="minus" />
                     </div>
 
                     <div className="count">{quantity}</div>
 
-                    <div className="plus calc-button" onClick={() => changeQuantity(id, 'plus')}>
+                    <div
+                      className="plus calc-button"
+                      onClick={() => changeQuantity(id, 'plus')}
+                    >
                       <img src="./img/icons/Plus.svg" alt="plus" />
                     </div>
                   </div>
@@ -106,15 +127,28 @@ export const CartPage = () => {
           <div className="totalForItem">
             <div className="totalItem-Price">${cartTotalSum}</div>
             <p className="main-body-text-14">Total for {itemInCart} items</p>
-            <button className="checkout button-text"
-
-            >Checkout</button>
+            <button className="checkout button-text" onClick={handleCheckout}>
+              Checkout
+            </button>
           </div>
         </div>
       ) : (
         <div className="img-box">
+          {orderMessage && (
+            <div className="order-message" onClick={closeMessage}>
+              {orderMessage}
+              <span className="close-message">
+                ×
+              </span>
+            </div>
+          )}
+
           <h4 className="empty-text">Cart is empty</h4>
-          <img src="/img/cart-is-empty.png" alt="cart is empty" className="cart-is-empty" />
+          <img
+            src="/img/cart-is-empty.png"
+            alt="cart is empty"
+            className="cart-is-empty"
+          />
         </div>
       )}
     </div>

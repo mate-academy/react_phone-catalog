@@ -4,19 +4,22 @@ import { Link } from 'react-router-dom';
 
 import { BurgerNavigation } from '../BurgerNavigation';
 import { HeaderNavigation } from '../HeaderNavigation';
-// import { useCurrentPath } from '../contexts/PathContext';
 
 export const Header = () => {
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
-
-  // const currentPath = useCurrentPath();
 
   return (
     <>
       <div className="header">
         <div className="header__container">
           <div className="header__logo">
-            <Link to="/" className="header__link">
+            <Link
+              to="/"
+              className="header__link"
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
               <img
                 src="/img/logo/logo.svg"
                 alt="Company logo"
@@ -29,7 +32,10 @@ export const Header = () => {
 
           <div
             className="burger__menu"
-            onClick={() => setIsBurgerMenu(prev => !prev)}
+            onClick={() => {
+              setIsBurgerMenu(prev => !prev);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           >
             <img
               src={
