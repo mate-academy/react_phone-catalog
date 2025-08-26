@@ -1,0 +1,36 @@
+@import '../../../shared/styles/variable';
+
+.details {
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+  }
+
+  &__value {
+    color: $text-color-black;
+    text-align: justify;
+  }
+
+  &__label {
+    line-height: 100%;
+    color: $text-color-gray;
+  }
+
+  .small-font {
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .big-font {
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+

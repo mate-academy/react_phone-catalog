@@ -1,0 +1,19 @@
+@import '../../../shared/styles/variable';
+
+
+.navigation-item {
+  margin-bottom: 24px;
+
+  &__constructor {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    align-items: center;
+  }
+
+  &__path {
+    font-size: 12px;
+    font-weight: 600;
+    color: $text-color-gray;
+  }
+}

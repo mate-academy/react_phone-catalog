@@ -1,0 +1,38 @@
+@import '../../../../../../shared/styles/variable';
+@import '../../../../../../shared/styles/mixins';
+
+.capacity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+
+  &::before {
+    @include pseudo-line;
+  }
+
+  &__items {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    cursor: pointer;
+    color: $text-color-black;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    padding: 7px 8px 4px;
+    transition: all $effect-duration;
+
+    border: 1px solid $elements-color-gray;
+  }
+
+  &__active {
+    background-color: $text-color-black;
+    color: #FFF;
+  }
+}

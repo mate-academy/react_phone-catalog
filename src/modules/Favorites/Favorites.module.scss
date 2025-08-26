@@ -1,0 +1,32 @@
+@import '../../shared/styles/variable';
+@import '../../shared/styles/mixins';
+
+.favorites {
+  margin-top: 24px;
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    color: $text-color-black;
+    margin-bottom: 8px;
+    letter-spacing: -1%;
+
+     @include on-tablet {
+      font-size: 48px;
+    }
+  }
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $text-color-gray;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

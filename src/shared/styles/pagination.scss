@@ -1,0 +1,28 @@
+@import './variable';
+
+.swiper-pagination-custom {
+  grid-column: 1 / -1;
+}
+
+.custom-pagination {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding-top: 18px;
+}
+
+.custom-dashes {
+  display: block;
+  width: 14px;
+  height: 4px;
+  background-color: $elements-color-gray;
+  cursor: pointer;
+  transition: background-color $effect-duration;
+}
+
+.custom-dashes-active {
+  background-color: $text-color-black;
+}
