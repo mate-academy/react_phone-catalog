@@ -1,0 +1,44 @@
+.root {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.frame {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  transition: transform .6s ease;
+  will-change: transform;
+}
+
+.item {
+  flex: 0 0 272px;
+}
+
+.arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+}
+
+.btn:disabled {
+  opacity: .5;
+}

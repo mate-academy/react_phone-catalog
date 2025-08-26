@@ -1,0 +1,9 @@
+@use '../../styles/app' as *;
+
+.root {
+  @extend %footer;
+}
+
+.inner {
+  @extend %footer__inner;
+}

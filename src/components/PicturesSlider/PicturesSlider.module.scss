@@ -1,0 +1,60 @@
+.frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.track {
+  display: flex;
+  will-change: transform;
+  transition: transform .6s ease;
+}
+
+.item { flex: 0 0 100%; }
+
+.arrows {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  padding: 0 8px;
+}
+
+.btn {
+  pointer-events: all;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  transition: transform .2s;
+}
+
+.dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 8px;
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.dotActive {
+  background: #000;
+}

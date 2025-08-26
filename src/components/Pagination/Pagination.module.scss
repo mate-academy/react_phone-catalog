@@ -1,0 +1,34 @@
+.root {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.ul {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.li {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.a {
+  display: block;
+  padding: 6px 10px;
+}
+
+.active .a {
+  background: #000;
+  color: #fff;
+}
+
+.disabled {
+  opacity: .6;
+}
