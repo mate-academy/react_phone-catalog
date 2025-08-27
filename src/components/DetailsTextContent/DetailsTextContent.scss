@@ -1,0 +1,72 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.product-details-text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 64px;
+
+  @include respond-to('tablet') {
+    flex-direction: row;
+    gap: 17px;
+  }
+
+  &--margin {
+    margin-bottom: 56px;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    margin-top: 56px;
+
+    @include respond-to('tablet') {
+      max-width: 50%;
+      margin-top: 64px;
+    }
+  }
+}
+
+.description {
+  flex-direction: column;
+
+  &__title {
+    color: $headLine-text-color;
+
+    @include weigh-size-line-height-text-align(700, 16px, 100%, left);
+
+    @include respond-to('tablet') {
+      @include weigh-size-line-height-text-align(700, 20px, 100%, left);
+    }
+  }
+
+  &__paragraph {
+    color: $second-text-color;
+
+    @include weigh-size-line-height-text-align(600, 14px, 21px, left);
+  }
+}
+
+.tech-specs {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  width: 100%;
+
+  @include respond-to('tablet') {
+    max-width: 50%;
+  }
+}
+
+.about-title {
+  color: $headLine-text-color;
+  padding-bottom: 16px;
+  border-bottom: 2px solid $border-color;
+
+  @include weigh-size-line-height-text-align(700, 20px, 100%, left);
+
+  @include respond-to('tablet') {
+    @include weigh-size-line-height-text-align(800, 22px, 140%, left);
+  }
+}

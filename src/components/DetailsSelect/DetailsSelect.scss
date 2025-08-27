@@ -1,0 +1,14 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+
+.details-select {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  order: 3;
+
+  @include respond-to('tablet') {
+    max-width: 320px;
+  }
+}

@@ -1,0 +1,12 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.page-not-found {
+  display: flex;
+  align-self: center;
+  background-image: url('/img/page-not-found.png');
+  background-repeat: no-repeat;
+  height: 600px;
+  width: 600px;
+  background-size: contain;
+}

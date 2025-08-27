@@ -1,0 +1,38 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  @include respond-to('phone') {
+    padding-inline: 16px;
+  }
+
+  @include respond-to('tablet') {
+    padding-inline: 24px;
+  }
+
+  @include respond-to('desktop') {
+    padding-inline: 32px;
+  }
+
+  @include respond-to('large-desktop') {
+    padding-inline: 152px;
+  }
+}
+
+
+.title {
+  color: $headLine-text-color;
+
+  @include respond-to('phone') {
+    @include weigh-size-line-height-text-align(800, 32px, 41px, left);
+  }
+
+  @include respond-to('tablet') {
+    @include weigh-size-line-height-text-align(800, 48px, 56px, left);
+  }
+}
+

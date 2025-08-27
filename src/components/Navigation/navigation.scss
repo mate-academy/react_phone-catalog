@@ -1,0 +1,97 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid $border-color;
+  box-sizing: border-box;
+  height: 64px;
+  background-color: $page-background;
+
+  &__left {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__right {
+    display: flex;
+  }
+}
+
+  .navigation-logo {
+    display: flex;
+    background-image: url('/img/icons/logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 89px;
+    height: 32px;
+  }
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  &--margin {
+    margin: 20px;
+  }
+}
+
+.nav {
+  display: flex;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    gap: 48px;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    display: flex;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 26px 0;
+    color: $headLine-text-color;
+
+    @include weigh-size-line-height-text-align(800, 12px, 11px, center);
+  }
+}
+
+.burger-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $border-color;
+
+  &__button {
+    height: 48px;
+    width: 48px;
+    background-color: $page-background;
+    border-style: none;
+    cursor: pointer;
+    background-image: url('/img/icons/menu.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--close {
+      background-image: url('/img/icons/menu-close.svg');
+    }
+  }
+
+  &__img {
+    display: flex;
+    place-self: center;
+    height: 16px;
+    width: 16px;
+  }
+}

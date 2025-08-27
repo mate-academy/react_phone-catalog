@@ -1,0 +1,34 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.productDetails-title {
+  color: $headLine-text-color;
+}
+
+.productDetails-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+
+  @include respond-to('tablet') {
+    flex-direction: row;
+    gap: 16px;
+    justify-content: flex-start;
+  }
+}
+
+.productDetails-not-find {
+  display: flex;
+  align-self: center;
+  background-image: url('/img/product-not-found.png');
+  background-repeat: no-repeat;
+  height: 400px;
+  width: 400px;
+  background-size: contain;
+}

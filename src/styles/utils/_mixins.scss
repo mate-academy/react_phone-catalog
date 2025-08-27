@@ -1,0 +1,32 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'phone' {
+    @media (min-width: 320px) {
+      @content;
+    }
+  } @else if $breakpoint == 'tablet' {
+    @media (min-width: 640px) {
+      @content;
+    }
+  } @else if $breakpoint == 'desktop' {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $breakpoint == 'large-desktop' {
+    @media (min-width: 1201px) {
+      @content;
+    }
+  }
+}
+
+
+@mixin weigh-size-line-height-text-align(
+  $_weigh,
+  $_size,
+  $_line,
+  $_text-align
+) {
+  font-weight: $_weigh;
+  font-size: $_size;
+  line-height: $_line;
+  text-align: $_text-align;
+}

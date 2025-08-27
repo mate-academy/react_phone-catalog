@@ -1,0 +1,100 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.banner {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  width: 100vw;
+
+
+    @include respond-to('tablet') {
+      width: 100%;
+    }
+
+  &__arrow {
+    display: flex;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+  }
+
+  &__dots {
+    display: flex;
+    background-color: $border-color;
+    width: 14px;
+    height: 4px;
+    margin: 10px;
+
+    &--active {
+      background-color: $headLine-text-color;
+    }
+  }
+}
+
+.banner__button {
+  display: none;
+  border-style: none;
+
+  @include respond-to('tablet') {
+    display: flex;
+    width: 32px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    background-color: $second-button-color;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &--left {
+    background-image: url('../img/icons/banner-arrow-left.svg');
+  }
+
+  &--right {
+    background-image: url('../img/icons/banner-arrow-right.svg');
+  }
+}
+
+.banner__slider {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  @include respond-to('tablet') {
+    padding-inline: 10px;
+  }
+}
+
+.banner__pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 56px;
+  width: 100%;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  list-style: none;
+}
+
+.banner--relative {
+  position: relative;
+}
+
+.banner--margin {
+  margin-bottom: 60px;
+}

@@ -1,0 +1,213 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.carts-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 56px;
+
+  @include respond-to('desktop') {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.carts-box__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 6;
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  background-color: $item-background;
+  padding: 16px;
+  gap: 16px;
+
+  @include respond-to('tablet') {
+    flex-direction: row;
+  }
+}
+
+.cart-product-char {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__delete-button {
+    display: flex;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    background-color: $item-background;
+    border-style: none;
+    cursor: pointer;
+  }
+
+  &__model-img {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__model-name {
+    color: $headLine-text-color;
+    text-decoration: none;
+
+    @include weigh-size-line-height-text-align(600, 14px, 21px, left);
+  }
+}
+
+.cart__amount-and-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffff;
+  flex: 1;
+
+  @include respond-to('tablet') {
+    justify-content: space-around;
+  }
+}
+
+.cart__amount {
+  display: flex;
+  flex-direction: row;
+}
+
+.cart__select-amount-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  background-color: $second-button-color;
+  border-style: none;
+  cursor: pointer;
+}
+
+.cart__select-amount-button--stop {
+  background-color: $page-background;
+  cursor: default;
+}
+
+.cart__product-amount {
+  padding-inline: 15px;
+  align-self: center;
+
+  @include weigh-size-line-height-text-align(600, 14px, 21px, center);
+}
+
+.cart_price {
+  @include weigh-size-line-height-text-align(800, 22px, 140%, center);
+}
+
+.carts-box-checkout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 2;
+  height: 206px;
+  padding: 24px;
+  border: 1px solid $border-color;
+}
+
+.carts-box-checkout__common-price {
+  display: flex;
+  color: #ffff;
+
+  @include weigh-size-line-height-text-align(800, 32px, 41px, center);
+}
+
+.carts-box-checkout__amount-products {
+  display: flex;
+  color: $second-text-color;
+  padding-bottom: 24px;
+
+  @include weigh-size-line-height-text-align(600, 14px, 21px, center);
+}
+
+.carts-box-checkout-apply {
+  color: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-button-color;
+  border-style: none;
+  position: relative;
+  height: 48px;
+  width: 100%;
+  margin-top: 24px;
+  cursor: pointer;
+
+  @include weigh-size-line-height-text-align(700, 14px, 21px, center);
+}
+
+.carts-box-checkout-apply::after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  top: -50%;
+  left: 0;
+  border-bottom: 1px solid $border-color;
+}
+
+.common-navigation {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  border-style: none;
+  height: 16px;
+  width: 16px;
+  background-color: $page-background;
+  background-image: url('/img/icons/cards-back.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.common-navigation::after {
+  content: 'Back';
+  font-weight: 700;
+  font-size: 12px;
+  color: $headLine-text-color;
+  position: relative;
+  left: 15px;
+  top: -0.5px;
+
+  @include weigh-size-line-height-text-align(700, 12px, 100%, center);
+}
+
+.common-navigation--margin {
+  margin-top: 40px;
+}
+
+.carts-empty-box {
+  display: flex;
+  align-self: center;
+  background-image: url('/img/cart-is-empty.png');
+  background-repeat: no-repeat;
+  height: 400px;
+  width: 400px;
+  background-size: contain;
+}

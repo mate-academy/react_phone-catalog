@@ -11,6 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:cypress/recommended',
+     'plugin:regexp/recommended',
   ],
   overrides: [
     {
@@ -34,7 +35,8 @@ module.exports = {
     'import',
     'react-hooks',
     '@typescript-eslint',
-    'prettier'
+    'prettier',
+    'regexp'
   ],
   rules: {
     // JS
@@ -46,6 +48,17 @@ module.exports = {
       ignoreTemplateLiterals: true,
       ignoreComments: true,
     }],
+
+    // 'regexp/match': [
+    //   'error',
+    //   {
+    //     files: ['**/*.tsx', '**/*.jsx'],
+    //     match: {
+    //       pattern: 'className=["\'](?![a-z]+(__[a-z]+)?(--[a-z]+)?)[^"\']+["\']',
+    //       message: 'Classes must be in BEM format or excluded from checking',
+    //     },
+    //   },
+    // ],
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,
     'operator-linebreak': 0,

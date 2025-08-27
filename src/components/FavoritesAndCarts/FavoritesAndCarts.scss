@@ -1,0 +1,51 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.favorites-and-carts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid $border-color;
+
+  @include respond-to('tablet') {
+    position: static;
+  }
+}
+
+.favorites-and-carts__link {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  width: 50%;
+  position: relative;
+}
+
+.favorites-and-carts__link:nth-child(2) {
+  border-left: 1px solid $border-color;
+}
+
+
+
+.favorites-and-carts__counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eb5757;
+  color: $headLine-text-color;
+  border-radius: 50%;
+  padding: 1px;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  font-size: 9px;
+}
+
+.is-active {
+  border-bottom: 3px solid $headLine-text-color;
+}

@@ -1,0 +1,81 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.footer {
+  display: flex;
+  background-color: $page-background;
+  border-top: 1px solid $border-color;
+  padding: 32px 16px;
+  gap: 32px;
+  flex-direction: column;
+  align-items: baseline;
+
+  @include respond-to('tablet') {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+  }
+}
+
+.footer__logo {
+  display: flex;
+  flex-grow: 1;
+  width: 288px;
+  height: 32px;
+}
+
+.footer-items {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+  align-items: baseline;
+  width: 288px;
+  gap: 16px;
+
+  @include respond-to('tablet') {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+.footer-items__link {
+  display: flex;
+  font-family: Mont, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $headLine-text-color;
+
+  @include weigh-size-line-height-text-align(800, 12px, 11px, center);
+}
+
+.footer-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+
+  @include respond-to('tablet') {
+    justify-content: flex-end;
+    width: 288px;
+    flex-grow: 1;
+  }
+}
+
+.footer-button__button {
+  background-color: $second-button-color;
+  border-style: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url('/img/icons/arrow-right.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.footer-button__text {
+  color: $second-text-color;
+
+  @include weigh-size-line-height-text-align(700, 12px, 15.34px, right);
+}

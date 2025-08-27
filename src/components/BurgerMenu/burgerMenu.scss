@@ -1,0 +1,35 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: $page-background;
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+  }
+
+  &__link {
+    display: flex;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 50px;
+
+    @include weigh-size-line-height-text-align(900, 24px, 11px, center);
+  
+    padding: 10px 0;
+    color: $second-text-color;
+  }
+}
+
+
+.burger-menu__link--active {
+  color: $headLine-text-color;
+  border-bottom: 2px solid $headLine-text-color;
+}

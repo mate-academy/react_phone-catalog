@@ -1,2 +1,4 @@
-/build
-/node_modules
+node_modules
+build
+cypress.config.ts
+reports/assets/app.js

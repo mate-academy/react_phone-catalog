@@ -1,0 +1,96 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.product-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+
+  @include respond-to('tablet') {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  &--margin {
+    margin-bottom: 24px;
+  }
+}
+
+.product-filter__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding: 12px;
+  width: 120px;
+  position: relative;
+  user-select: none;
+  background-color: #323542;
+  background-image: url('/img/icons/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 10px) center;
+
+  @include respond-to('tablet') {
+    width: 140px;
+  }
+}
+
+.product-filter__select {
+  color: $headLine-text-color;
+
+  @include weigh-size-line-height-text-align(700, 14px, 21px, center);
+}
+
+$filter-labels: (
+  'sort': 'Sort by',
+  'leng': 'Items on page',
+);
+
+@each $key, $text in $filter-labels {
+  .product-filter__select--#{$key}::before {
+    content: '#{$text}';
+    color: $second-text-color;
+    position: absolute;
+    top: -20px;
+    left: 0;
+
+    @include weigh-size-line-height-text-align(700, 12px, 21px, left);
+  }
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  &--width {
+    width: 50%;
+  }
+}
+
+.product-filter__list {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  border: 1px solid $border-color;
+}
+
+.filter-item__value {
+  list-style: none;
+  padding: 6px 12px;
+  color: $second-text-color;
+  height: 40px;
+
+  @include weigh-size-line-height-text-align(600, 14px, 40px, left);
+}
+
+.filter-item__value:hover {
+  background-color: $button-color-selected;
+  color: $headLine-text-color;
+}
+
+.filter-item__value--notVisible {
+  display: none;
+}

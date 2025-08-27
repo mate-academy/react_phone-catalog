@@ -1,0 +1,45 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.fav-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 80px;
+  flex-grow: 1;
+}
+
+.fav-box__no-favs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fav-box__button {
+  width: 25%;
+  padding: 20px;
+  background-color: $main-button-color;
+  color: $headLine-text-color;
+  font-family: Mont, sans-serif;
+}
+
+.fav-box-products {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 40px 16px;
+
+  @include respond-to('desktop') {
+    justify-content: flex-start;
+  }
+}
+
+.fav-box__item-length {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  color: $second-text-color;
+  letter-spacing: 0%;
+
+  @include weigh-size-line-height-text-align(600, 14px, 21px, center);
+}

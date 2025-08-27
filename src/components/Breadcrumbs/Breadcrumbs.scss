@@ -1,0 +1,25 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  &--margin-top {
+    margin-top: 24px;
+  }
+
+  &__item {
+    display: flex;
+    color: $headLine-text-color;
+    text-decoration: none;
+
+    @include weigh-size-line-height-text-align(700, 12px, 100%, left);
+
+    &--active {
+      color: $second-text-color;
+    }
+  }
+}

@@ -1,1 +1,21 @@
-// not empty
+// not empty;
+
+@import './styles/utils/vars';
+
+html {
+  background-color: red; // for check
+  font-family: Mont, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $page-background;
+}
+
+.App__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

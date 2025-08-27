@@ -1,0 +1,46 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.details-select-color {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid $border-color;
+  gap: 8px;
+  padding-bottom: 24px;
+  width: 100%;
+
+  &::before {
+    content: 'Available colors:';
+    color: $second-text-color;
+    position: absolute;
+    top: -20px;
+    left: 0;
+
+    @include weigh-size-line-height-text-align(700, 12px, 15.34px, center);
+  }
+
+  &--position-margin {
+    position: relative;
+    margin-bottom: 20px;
+  }
+}
+
+.color {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  padding: 0;
+  cursor: pointer;
+}
+
+.details-select-color__border {
+  display: flex;
+  align-items: center;
+  border-radius: 100%;
+  border: 2px solid $border-color;
+  padding: 2px;
+
+  &--active {
+    border: 2px solid #ffff;
+  }
+}

@@ -1,0 +1,14 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.product-catalog {
+  display: grid;
+  gap: 40px 16px;
+  place-items: center;
+  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
+
+  @include respond-to('desktop') {
+    grid-template-columns: repeat(4, minmax(212px, 1fr));
+  }
+}
