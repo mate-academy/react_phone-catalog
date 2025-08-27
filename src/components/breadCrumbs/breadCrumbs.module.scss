@@ -1,4 +1,4 @@
-@import '../../utils/main';
+@import '../../styles/main';
 
 .container {
   @include content-padding-inline;
@@ -26,10 +26,18 @@
 }
 
 .breadCrumbsLink {
-  display: flex;
-  align-items: center;
+  display: inline-block;
   text-decoration: none;
   font-weight: 600;
   font-size: 12px;
   line-height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+
+  @include on-large-mobile {
+    overflow: none;
+    max-width: 300px;
+  }
 }

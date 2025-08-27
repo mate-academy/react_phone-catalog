@@ -6,13 +6,20 @@ import { Icon } from '../icons';
 import { icons } from '../../constants/icons';
 import { useContext } from 'react';
 import { ProductContext } from '../../context/ProductContext';
+import classNames from 'classnames';
 
 type Props = {
   isMobile: boolean;
 };
 
 export const TopBar: React.FC<Props> = ({ isMobile }) => {
-  const { openMenu, setOpenMenu } = useContext(ProductContext);
+  const { openMenu, setOpenMenu, cart, favorites, totalItems } =
+    useContext(ProductContext);
+
+  const navActiveLink = ({ isActive }: { isActive: boolean }) =>
+    classNames(styles.button, {
+      [styles['button--active']]: isActive,
+    });
 
   return (
     <div className={styles.topBar}>
@@ -23,11 +30,19 @@ export const TopBar: React.FC<Props> = ({ isMobile }) => {
             <Nav />
           </div>
           <div className={styles.topBarButton}>
-            <NavLink to="/" className={styles.button}>
+            <NavLink to="/favorites" className={navActiveLink}>
               <Icon icon={icons.favorites} />
+              {favorites.length > 0 && (
+                <span className={styles.quantityCircle}>
+                  {favorites.length}
+                </span>
+              )}
             </NavLink>
-            <NavLink to="/" className={styles.button}>
+            <NavLink to="/cart" className={navActiveLink}>
               <Icon icon={icons.shoppingBag} />
+              {cart.length > 0 && (
+                <span className={styles.quantityCircle}>{totalItems}</span>
+              )}
             </NavLink>
           </div>
         </>

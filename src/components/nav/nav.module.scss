@@ -1,4 +1,4 @@
-@import '../../utils/main';
+@import '../../styles/main';
 
 .navList {
   display: flex;
@@ -15,10 +15,9 @@
     column-gap: 32px;
   }
 
-@include on-desktop {
-  column-gap: 64px;
-}
-
+  @include on-desktop {
+    column-gap: 64px;
+  }
 }
 
 .navLink {
@@ -26,18 +25,16 @@
   height: inherit;
   align-items: center;
   text-decoration: none;
-  color: #89939A;
-  letter-spacing: .04em;
+  color: #89939a;
+  letter-spacing: 0.04em;
   line-height: 11px;
   font-size: 12px;
   font-weight: 800;
   position: relative;
   transition: color 0.3s;
 
-
-
-&::after {
-   content: '';
+  &::after {
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -49,13 +46,13 @@
     transition: transform 0.3s ease;
   }
 
-  &:hover {
+  &--active {
     color: #313237;
 
     &::after {
       transform: scaleX(1);
     }
-}
+  }
 }
 
 .navItem {

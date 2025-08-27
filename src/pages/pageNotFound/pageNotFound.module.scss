@@ -1,0 +1,35 @@
+@import '../../styles/main';
+
+.container {
+@include content-padding-inline;
+
+ display: flex;
+  flex-direction: column;
+}
+
+.pageNotFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pageNotFoundLink {
+  text-decoration: none;
+  color: #0F0F11;
+  font-size: 32px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+}
+
+.pageNotFoundImg {
+  width: 100%;
+  object-fit: contain;
+
+
+  @include on-desktop {
+    width: 460px;
+  }
+}

@@ -1,4 +1,4 @@
-@import '../../utils/main';
+@import '../../styles/main';
 
 .container {
   @include on-tablet {
@@ -7,7 +7,7 @@
 }
 
 .banner {
-@include on-desktop {
+  @include on-desktop {
     max-width: 1136px;
   }
 }
@@ -24,7 +24,7 @@
   overflow: hidden;
   aspect-ratio: 1 / 1;
   line-height: 130%;
-  letter-spacing: .03em;
+  letter-spacing: 0.03em;
   padding-top: 30px;
   grid-column: 1 / -1;
   max-width: 100%;
@@ -48,9 +48,9 @@
 }
 
 .slideImgBox {
-position: relative;
-display: flex;
-justify-content: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .slideImg {
@@ -77,10 +77,9 @@ justify-content: center;
 .captionImg {
   height: 24px;
 
-   @include on-desktop {
+  @include on-desktop {
     height: 48px;
   }
-
 }
 
 .title {
@@ -111,7 +110,6 @@ justify-content: center;
   grid-column: 2 / -2;
 }
 
-
 .dot {
   height: 4px;
   width: 14px;
@@ -122,7 +120,7 @@ justify-content: center;
 }
 
 .dot.active {
-  background-color:#0f0f11;
+  background-color: #0f0f11;
 }
 
 .textBlock {
@@ -136,7 +134,6 @@ justify-content: center;
   justify-content: space-between;
 }
 
-
 .sliderButton {
   display: block;
   width: 200px;
@@ -149,21 +146,20 @@ justify-content: center;
   padding: 12px;
 
   @include on-desktop {
-  font-size: 16px;
-  padding: 16px;
-  width: 250px;
-  border-radius: 32px;
+    font-size: 16px;
+    padding: 16px;
+    width: 250px;
+    border-radius: 32px;
   }
 
   &:hover {
-    border-color: #E2E6E9;
+    border-color: #e2e6e9;
   }
 }
 
 .sliderTitleBlock {
   @include on-tablet {
     padding: 30px;
-
   }
 }
 
@@ -172,21 +168,20 @@ justify-content: center;
 }
 
 .arrow {
-border-radius: 24px;
-border: 1px solid #B4BDC3;
-background: transparent;
-width: 32px;
+  border-radius: 24px;
+  border: 1px solid #b4bdc3;
+  background: transparent;
+  width: 32px;
 
-&:hover {
-  border-color: #0F0F11;
+  &:hover {
+    border-color: #0f0f11;
+  }
+  &--align {
+    justify-self: flex-end;
+  }
 }
-&--align {
-  justify-self: flex-end;
-}
-}
-
 
 .icon {
-width: 16px;
-height: 16px;
+  width: 16px;
+  height: 16px;
 }

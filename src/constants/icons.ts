@@ -33,7 +33,7 @@ export const icons: Record<string, { title: string; path: string }> = {
   },
   favoritesFilled: {
     title: 'Favorites Filled',
-    path: './img/icons/Favurites-Filled.png',
+    path: './img/icons/favourites-filled.svg',
   },
   shoppingBag: {
     title: 'Shopping Bag',
@@ -47,8 +47,24 @@ export const icons: Record<string, { title: string; path: string }> = {
     title: 'Close Menu',
     path: './img/icons/Close.png',
   },
+  removeProduct: {
+    title: 'Remove product',
+    path: './img/icons/removeProduct.svg',
+  },
   Home: {
     title: 'Home',
     path: './img/icons/Home.svg',
+  },
+  Minus: {
+    title: 'Minus',
+    path: './img/icons/Minus.svg',
+  },
+  MinusDisabled: {
+    title: 'Minus Disabled',
+    path: './img/icons/Minus-disabled.svg',
+  },
+  Plus: {
+    title: 'Plus',
+    path: './img/icons/Plus.svg',
   },
 };

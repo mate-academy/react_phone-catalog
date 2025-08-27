@@ -7,12 +7,18 @@ import classNames from 'classnames';
 type Props = {
   options: string[];
   sortBy?: true;
+  selected: string;
+  onSelect: (value: string) => void;
 };
 
-export const Dropdown: React.FC<Props> = ({ options, sortBy }) => {
+export const Dropdown: React.FC<Props> = ({
+  options,
+  sortBy,
+  selected,
+  onSelect,
+}) => {
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, onSelect] = useState(options[0]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

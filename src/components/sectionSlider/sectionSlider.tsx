@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
-import { ProductCard } from '../ProductCard';
+import { ProductCard } from '../productCard';
 import { useScrollableSlider } from '../../hooks/useScrollableSlider';
 import styles from './sectionSlider.module.scss';
 import { Icon } from '../icons';
@@ -9,11 +9,13 @@ import { icons } from '../../constants/icons';
 type Props = {
   product: Product[];
   hotPrice?: boolean;
+  mayAlsoLike?: boolean;
 };
 
 export const SectionSlider: React.FC<Props> = ({
   product,
   hotPrice = false,
+  mayAlsoLike = false,
 }) => {
   const slider = useScrollableSlider([...product]);
   const { isAtEnd, isAtStart, scrollLeft, scrollRight, sliderRef } = slider;
@@ -23,12 +25,15 @@ export const SectionSlider: React.FC<Props> = ({
       <div className={styles.container}>
         <div className={styles.sectionTop}>
           <h2
-            className={classNames(
-              styles['section-title'],
-              styles['section-title--width'],
-            )}
+            className={classNames(styles['section-title'], {
+              [styles['section-title--width']]: !hotPrice && !mayAlsoLike,
+            })}
           >
-            {hotPrice ? 'Hot prices' : 'Brand new models'}
+            {hotPrice
+              ? 'Hot prices'
+              : mayAlsoLike
+                ? 'You may also like'
+                : 'Brand new models'}
           </h2>
           <div className={styles.buttons}>
             <button
@@ -55,11 +60,7 @@ export const SectionSlider: React.FC<Props> = ({
             </button>
           </div>
         </div>
-        {hotPrice ? (
-          <ProductCard product={product} sliderRef={sliderRef} withDiscount />
-        ) : (
-          <ProductCard product={product} sliderRef={sliderRef} />
-        )}
+        <ProductCard product={product} sliderRef={sliderRef} />
       </div>
     </section>
   );

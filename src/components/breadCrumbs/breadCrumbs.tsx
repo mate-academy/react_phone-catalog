@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const BreadCrumbs: React.FC<Props> = ({ location }) => {
-  const capitalizeFirstLetter = (str: string) => {
+  const formatBreadcrumb = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
@@ -29,10 +29,10 @@ export const BreadCrumbs: React.FC<Props> = ({ location }) => {
                   to={`/${loc}`}
                   className={styles.breadCrumbsLink}
                   style={({ isActive }) => ({
-                    color: isActive ? '#89939A' : '#0F0F11',
+                    color: isActive ? '#0F0F11' : '#89939A',
                   })}
                 >
-                  {capitalizeFirstLetter(loc)}
+                  {formatBreadcrumb(loc)}
                 </NavLink>
               </li>
             </>

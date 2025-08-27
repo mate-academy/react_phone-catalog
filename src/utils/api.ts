@@ -1,4 +1,5 @@
 import { Product } from '../types/Product';
+import { ProductDetails } from '../types/ProductDetails';
 
 export async function fetchProducts<T>(url: string): Promise<T> {
   const response = await fetch(url);
@@ -16,4 +17,10 @@ export async function fetchProducts<T>(url: string): Promise<T> {
 
 export function getAllProducts(): Promise<Product[]> {
   return fetchProducts<Product[]>('./api/products.json');
+}
+
+export function getSpecificProducts(
+  productsType: string,
+): Promise<ProductDetails[]> {
+  return fetchProducts<ProductDetails[]>(`./api/${productsType}.json`);
 }

@@ -1,18 +1,16 @@
-@import '../../utils/main';
+@import '../../styles/main';
 
 .logo {
   display: flex;
 }
 
 .logo--padding-left {
-padding-left: 16px;
+  padding-left: 16px;
 
   @include on-desktop {
     padding-left: 24px;
   }
 }
-
-
 
 .logoImg {
   height: 22px;

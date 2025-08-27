@@ -7,7 +7,7 @@ import { icons } from '../../constants/icons';
 import { ProductContext } from '../../context/ProductContext';
 
 export const Menu = () => {
-  const { openMenu } = useContext(ProductContext);
+  const { openMenu, setOpenMenu } = useContext(ProductContext);
 
   useEffect(() => {
     const setVh = () => {
@@ -35,10 +35,18 @@ export const Menu = () => {
         <Nav />
       </div>
       <div className={styles.menuBottom}>
-        <NavLink to="/favorites" className={styles.button}>
+        <NavLink
+          to="/favorites"
+          className={styles.button}
+          onClick={() => setOpenMenu(false)}
+        >
           <Icon icon={icons.favorites} />
         </NavLink>
-        <NavLink to="/cart" className={styles.button}>
+        <NavLink
+          to="/cart"
+          className={styles.button}
+          onClick={() => setOpenMenu(false)}
+        >
           <Icon icon={icons.shoppingBag} />
         </NavLink>
       </div>

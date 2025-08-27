@@ -1,0 +1,18 @@
+@import '../../styles/main';
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin: 24px 0 64px;
+
+  @include on-tablet{
+    gap: 64px;
+    margin-top: 48px;
+  }
+
+  @include on-desktop{
+    gap: 80px;
+    margin: 56px 0 80px;
+  }
+}

@@ -1,1 +1,0 @@
-export { filterBlock } from './filterBlock';
