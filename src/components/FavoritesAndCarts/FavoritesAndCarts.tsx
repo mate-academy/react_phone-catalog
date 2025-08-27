@@ -29,7 +29,7 @@ export const FavoritesAndCarts: React.FC<Props> = ({ handle }) => {
         state={{ from: location.pathname }}
       >
         <img
-          src="/img/icons/favourites.svg"
+          src="img/icons/favourites.svg"
           alt="favourites"
           className="logo--anim"
         />
@@ -44,7 +44,7 @@ export const FavoritesAndCarts: React.FC<Props> = ({ handle }) => {
         state={{ from: location.pathname }}
       >
         <img
-          src="/img/icons/shopping-bag.svg"
+          src="img/icons/shopping-bag.svg"
           alt="shopping-bag"
           className="logo--anim"
         />

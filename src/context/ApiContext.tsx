@@ -15,7 +15,7 @@ export const ApiProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(response => response.json())
       .then(data => setProducts(data))
       .catch(() => alert('i cant load file'));

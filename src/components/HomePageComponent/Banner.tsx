@@ -12,12 +12,12 @@ export const Banner: React.FC = () => {
 
   const banners = [
     {
-      main: '/img/banner/banner-1.svg',
-      phone: '/img/banner/banner-1-mobile.png',
+      main: 'img/banner/banner-1.svg',
+      phone: 'img/banner/banner-1-mobile.png',
     },
     {
-      main: '/img/banner/banner-2.png',
-      phone: '/img/banner/banner-2-mobile.png',
+      main: 'img/banner/banner-2.png',
+      phone: 'img/banner/banner-2-mobile.png',
     },
   ];
 

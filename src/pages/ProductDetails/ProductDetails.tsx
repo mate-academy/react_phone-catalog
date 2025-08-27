@@ -70,7 +70,7 @@ export const ProductDetails: React.FC = () => {
   };
 
   useEffect(() => {
-    fetch(`/api/${category}.json`)
+    fetch(`api/${category}.json`)
       .then(res => {
         if (!res.ok) {
           navigate('..');
@@ -116,7 +116,7 @@ export const ProductDetails: React.FC = () => {
           >
             <img
               className="common-navigation__img"
-              src="./img/icons/cards-back.svg"
+              src="img/icons/cards-back.svg"
               alt=""
             />
           </button>

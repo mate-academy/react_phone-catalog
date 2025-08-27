@@ -26,14 +26,14 @@ export const Breadcrumbs: React.FC = () => {
   return (
     <div className="breadcrumbs breadcrumbs--margin-top">
       <NavLink end className={getClass} to={'/home'}>
-        <img src="./img/icons/Home.svg" alt="home" />
+        <img src="img/icons/Home.svg" alt="home" />
       </NavLink>
 
       {content.map(link => (
         <React.Fragment key={link}>
           <img
             className="breadcrumbs__item"
-            src="./img/icons/arrow-right.svg"
+            src="img/icons/arrow-right.svg"
             alt=""
           />
 
