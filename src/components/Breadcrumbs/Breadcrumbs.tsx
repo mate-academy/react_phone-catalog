@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 import cn from 'classnames';
 
-import './Breadcrumbs.scss';
+import './breadcrumbs.scss';
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();

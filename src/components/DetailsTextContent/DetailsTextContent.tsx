@@ -1,6 +1,6 @@
 import { ProductDetail } from '../../pages/ProductDetails/ProductDetails';
 
-import './DetailsTextContent.scss';
+import './detailsTextContent.scss';
 
 export type TechSpecs =
   | 'screen'

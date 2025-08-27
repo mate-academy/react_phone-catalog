@@ -2,7 +2,7 @@ import { useContext, useMemo } from 'react';
 import { Banner } from '../../components/HomePageComponent/Banner';
 import { CategoryList } from '../../components/HomePageComponent/CategoryList';
 import { ProductList } from '../../components/ProductList/ProductList';
-import './HomePage.scss';
+import './homePage.scss';
 import { ApiContext } from '../../context/ApiContext';
 import { ProductType } from '../../types/ProductType';
 

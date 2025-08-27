@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ProductFilter.scss';
+import './productFilter.scss';
 import { useSearchParams } from 'react-router-dom';
 
 type SortKey = keyof typeof filterTypes;

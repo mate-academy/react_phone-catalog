@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Banner.scss';
+import './banner.scss';
 
 import cn from 'classnames';
 

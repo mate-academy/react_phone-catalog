@@ -3,7 +3,7 @@ import { DetailsSelectColor } from '../DetailsSelectColor';
 import { DetailsSelectCapacity } from '../DetailsSelectCapacity';
 import { ActionButtons } from '../ActionButtons';
 
-import './DetailsSelect.scss';
+import './detailsSelect.scss';
 
 interface Props {
   product: ProductDetail;

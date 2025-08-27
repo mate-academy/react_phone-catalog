@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { LocalStorageContext } from '../../context/LocaleStorageContext';
 import cn from 'classnames';
 
-import './ActionButtons.scss';
+import './actionButtons.scss';
 
 interface Props {
   id: string;

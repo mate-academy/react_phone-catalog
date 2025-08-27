@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './PageNotFound.scss';
+import './pageNotFound.scss';
 
 export const PageNotFound: React.FC = () => {
   return (

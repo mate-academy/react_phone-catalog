@@ -6,6 +6,7 @@
   gap: 40px 16px;
   place-items: center;
   overflow: hidden;
+
   grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
 
   @include respond-to('desktop') {

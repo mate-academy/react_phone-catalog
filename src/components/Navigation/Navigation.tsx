@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import './Navigation.scss';
+import './navigation.scss';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { FavoritesAndCarts } from '../FavoritesAndCarts';

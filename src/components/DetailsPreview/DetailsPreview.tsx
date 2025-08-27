@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ProductDetail } from '../../pages/ProductDetails/ProductDetails';
 import cn from 'classnames';
 
-import './DetailsPreview.scss';
+import './detailsPreview.scss';
 
 interface Props {
   product: ProductDetail;

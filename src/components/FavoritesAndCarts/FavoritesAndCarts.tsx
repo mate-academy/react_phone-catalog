@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { LocalStorageContext } from '../../context/LocaleStorageContext';
 import cn from 'classnames';
 
-import './FavoritesAndCarts.scss';
+import './favoritesAndCarts.scss';
 
 interface Props {
   handle?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;

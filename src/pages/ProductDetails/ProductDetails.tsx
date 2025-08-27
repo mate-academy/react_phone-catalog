@@ -8,7 +8,7 @@ import { DetailsSelect } from '../../components/DetailsSelect';
 import { DetailsTextContent } from '../../components/DetailsTextContent';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
-import './ProductDetails.scss';
+import './productDetails.scss';
 
 export const NotFind = () => {
   const navi = useNavigate();

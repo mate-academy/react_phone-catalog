@@ -2,7 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { ProductDetail } from '../../pages/ProductDetails/ProductDetails';
 import cn from 'classnames';
 
-import './DetailsSelectColor.scss';
+import './detailsSelectColor.scss';
 
 interface Props {
   product: ProductDetail;

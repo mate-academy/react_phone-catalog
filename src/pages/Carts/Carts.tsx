@@ -4,7 +4,7 @@ import { ApiContext } from '../../context/ApiContext';
 import { ProductType } from '../../types/ProductType';
 import cn from 'classnames';
 
-import './Carts.scss';
+import './carts.scss';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 export const Carts: React.FC = () => {

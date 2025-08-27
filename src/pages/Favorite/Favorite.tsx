@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { LocalStorageContext } from '../../context/LocaleStorageContext';
 
-import './Favorite.scss';
+import './favorite.scss';
 import { ApiContext } from '../../context/ApiContext';
 import { ProductType } from '../../types/ProductType';
 import { Product } from '../../components/Product/Product';

@@ -2,7 +2,7 @@ import { Product } from '../Product/Product';
 import { ProductType } from '../../types/ProductType';
 import { useEffect, useState } from 'react';
 
-import './ProductList.scss';
+import './productList.scss';
 
 export interface Props {
   title: string;

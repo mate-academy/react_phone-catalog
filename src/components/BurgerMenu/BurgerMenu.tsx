@@ -4,7 +4,7 @@ import { FavoritesAndCarts } from '../FavoritesAndCarts';
 
 import cn from 'classnames';
 
-import './BurgerMenu.scss';
+import './burgerMenu.scss';
 
 interface Props {
   setIsActive: Dispatch<SetStateAction<boolean>>;

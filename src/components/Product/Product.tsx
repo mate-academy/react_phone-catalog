@@ -1,5 +1,5 @@
 import React from 'react';
-import './Product.scss';
+import './product.scss';
 import { ProductType } from '../../types/ProductType';
 import { NavLink, useLocation } from 'react-router-dom';
 import { ActionButtons } from '../ActionButtons';

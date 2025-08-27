@@ -1,6 +1,6 @@
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
-import './ProductPagination.scss';
+import './productPagination.scss';
 import cn from 'classnames';
 
 import { Pagination } from './Pagination';
