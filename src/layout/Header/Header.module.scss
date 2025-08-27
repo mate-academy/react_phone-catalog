@@ -247,3 +247,8 @@
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+// stylelint-disable-next-line selector-pseudo-class-no-unknown
+:global(body.no-scroll) {
+  overflow: hidden;
+}
