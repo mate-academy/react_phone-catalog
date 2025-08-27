@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 // eslint-disable-next-line max-len
 import { ButtonArrow } from '../../../shared/components/ButtonArrow/ButtonArrow';
-import { ProductCard } from '../ProductCard/ProductCard';
+// eslint-disable-next-line max-len
+import { ProductCard } from '../../../shared/components/ProductCard/ProductCard';
 import scss from './ProductsSlider.module.scss';
 import { DataContext } from '../../../../context/ContextProvider';
 

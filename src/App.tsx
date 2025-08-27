@@ -3,6 +3,7 @@ import '../src/App.scss';
 import '../src/modules/shared/styles/base/_base.scss';
 import { Header } from './modules/shared/components/Header/Header';
 import { HomePage } from './modules/HomePage/HomePage';
+import { Favourites } from './modules/Favourites/Favourites';
 
 export const App = () => (
   <div className="app">
@@ -12,6 +13,7 @@ export const App = () => (
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/home" element={<Navigate to="/" replace />}></Route>
+        <Route path="/favourites" element={<Favourites />}></Route>
       </Routes>
     </div>
     <div className="footer">FOOTER</div>
