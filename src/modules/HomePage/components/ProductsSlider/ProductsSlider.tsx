@@ -1,8 +1,13 @@
+import { useContext } from 'react';
 // eslint-disable-next-line max-len
 import { ButtonArrow } from '../../../shared/components/ButtonArrow/ButtonArrow';
+import { ProductCard } from '../ProductCard/ProductCard';
 import scss from './ProductsSlider.module.scss';
+import { DataContext } from '../../../../context/ContextProvider';
 
-export const ProductsSlider = () => {
+export const ProductsSlider: React.FC = () => {
+  const { products } = useContext(DataContext);
+
   return (
     <div className={scss.slider}>
       <div className={scss.slider__header}>
@@ -11,6 +16,9 @@ export const ProductsSlider = () => {
           <ButtonArrow direction="left" />
           <ButtonArrow direction="right" />
         </div>
+      </div>
+      <div className={scss.slider__productCard}>
+        {products[0] && <ProductCard product={products[0]} discount={false} />}
       </div>
     </div>
   );

@@ -32,13 +32,13 @@ export const PicturesSlider = () => {
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > 20) {
       setActiveSlide(current =>
-        current === slides.length - 1 ? 0 : current + 1,
+        current === slides.length / 2 - 1 ? 0 : current + 1,
       );
     }
 
     if (touchStart - touchEnd < -20) {
       setActiveSlide(current =>
-        current === 0 ? slides.length - 1 : current - 1,
+        current === 0 ? slides.length / 2 - 1 : current - 1,
       );
     }
   };
