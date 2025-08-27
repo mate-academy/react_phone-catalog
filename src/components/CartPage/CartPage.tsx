@@ -36,7 +36,7 @@ export const CartPage = () => {
 
   const handleCheckout = () => {
     clearCart();
-    setOrderMessage('Ваше замовлення успішно відпралено');
+    setOrderMessage('Ваше замовлення успішно відправлено');
 
     setTimeout(() => setOrderMessage(null), 5000);
   };
