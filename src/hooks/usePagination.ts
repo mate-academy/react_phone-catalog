@@ -21,7 +21,6 @@ export const usePagination = (category?: string) => {
     return ['age', 'name', 'price'].includes(s) ? s : 'age';
   }, [searchParams]);
 
-  // Эффект сброса page при смене категории
   useEffect(() => {
     if (prevCategoryRef.current && prevCategoryRef.current !== category) {
       const newParams = new URLSearchParams(searchParams.toString());
@@ -40,28 +39,28 @@ export const usePagination = (category?: string) => {
       }
       setSearchParams(newParams);
     },
-    [searchParams, setSearchParams]
+    [searchParams, setSearchParams],
   );
 
   const updatePage = useCallback(
     (newPage: number) => {
       setParam('page', newPage.toString());
     },
-    [setParam]
+    [setParam],
   );
 
   const updatePerPage = useCallback(
     (newPerPage: number) => {
       setParam('perPage', newPerPage.toString());
     },
-    [setParam]
+    [setParam],
   );
 
   const updateSort = useCallback(
     (newSort: string) => {
       setParam('sort', newSort);
     },
-    [setParam]
+    [setParam],
   );
 
   return {

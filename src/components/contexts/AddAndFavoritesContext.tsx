@@ -13,13 +13,13 @@ type AddAndFavoritesContextType = {
   cart: CartItem[];
   toggleCart: (id: ID) => void;
   isInCart: (id: ID) => boolean;
-  changeQuantity: (id: ID, command: "plus" | "minus" | "delete") => void;
+  changeQuantity: (id: ID, command: 'plus' | 'minus' | 'delete') => void;
 
   clearCart: () => void;
 };
 
-export const AddAndFavoritesContext =
-  createContext<AddAndFavoritesContextType>({
+export const AddAndFavoritesContext = createContext<AddAndFavoritesContextType>(
+  {
     favorites: [],
     cart: [],
 
@@ -30,7 +30,8 @@ export const AddAndFavoritesContext =
     isFavorite: () => false,
     isInCart: () => false,
     clearCart: () => {},
-  });
+  },
+);
 
 export const AddAndFavoritesProvider: React.FC<{
   children: React.ReactNode;
@@ -49,30 +50,30 @@ export const AddAndFavoritesProvider: React.FC<{
   const isFavorite = (id: ID) => favorites.includes(id);
 
   const toggleCart = (id: ID) => {
-  const newCart = cart.some(item => item.id === id)
-    ? cart.filter(item => item.id !== id)
-    : [...cart, { id, quantity: 1 }];
+    const newCart = cart.some(item => item.id === id)
+      ? cart.filter(item => item.id !== id)
+      : [...cart, { id, quantity: 1 }];
 
-  setCart(newCart);
-};
+    setCart(newCart);
+  };
 
   const isInCart = (id: ID) => cart.some(item => item.id === id);
 
-  const changeQuantity = (id: ID, command: "plus" | "minus" | "delete") => {
+  const changeQuantity = (id: ID, command: 'plus' | 'minus' | 'delete') => {
     const newCart = cart.flatMap(item => {
       if (item.id !== id) return [item];
 
-      if (command === "plus") {
+      if (command === 'plus') {
         return [{ ...item, quantity: item.quantity + 1 }];
       }
 
-      if (command === "minus") {
+      if (command === 'minus') {
         return item.quantity > 1
           ? [{ ...item, quantity: item.quantity - 1 }]
           : [];
       }
 
-      if (command === "delete") {
+      if (command === 'delete') {
         return [];
       }
 
@@ -105,4 +106,3 @@ export const AddAndFavoritesProvider: React.FC<{
     </AddAndFavoritesContext.Provider>
   );
 };
-

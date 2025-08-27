@@ -99,26 +99,22 @@ export const Dropdown: React.FC<Props> = ({
             className="dropdown-trigger "
             onClick={() => setIsOpenSort(prev => !prev)}
           >
-            <div className='trigger-name'>
-              {selectedValue}
-            </div>
+            <div className="trigger-name">{selectedValue}</div>
 
             {isOpenSort ? (
               <img
-              src="./img/icons/ArrowUpChevron.svg"
-              alt="chevron"
-              className="icon"
+                src="./img/icons/ArrowUpChevron.svg"
+                alt="chevron"
+                className="icon"
               />
-              ) : (
-                <img
+            ) : (
+              <img
                 src="./img/icons/ArrowDownChevron.svg"
                 alt="chevron"
                 className="icon"
               />
             )}
           </div>
-
-
 
           <div className={cn('dropdown-content', { active: isOpenSort })}>
             <ul className="content">
@@ -133,7 +129,6 @@ export const Dropdown: React.FC<Props> = ({
               ))}
             </ul>
           </div>
-
         </div>
       </div>
 
@@ -147,18 +142,18 @@ export const Dropdown: React.FC<Props> = ({
           >
             {selectedPerPage}
             {isOpenPerPage ? (
-                <img
+              <img
                 src="./img/icons/ArrowUpChevron.svg"
                 alt="chevron"
                 className="icon"
-                />
-                ) : (
-                  <img
-                  src="./img/icons/ArrowDownChevron.svg"
-                  alt="chevron"
-                  className="icon"
-                />
-              )}
+              />
+            ) : (
+              <img
+                src="./img/icons/ArrowDownChevron.svg"
+                alt="chevron"
+                className="icon"
+              />
+            )}
           </div>
 
           <div className={cn('dropdown-content', { active: isOpenPerPage })}>
@@ -174,7 +169,6 @@ export const Dropdown: React.FC<Props> = ({
               ))}
             </ul>
           </div>
-
         </div>
       </div>
     </div>

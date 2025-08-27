@@ -25,9 +25,6 @@ export const FavoritesPage = () => {
     setProducts(productsInFavorites);
   }, [favorites, allProducts]);
 
-  // console.log('--===productsInFavorites===--', products);
-  // console.log('--===favorites===--', favorites);
-
   return (
     <div className="favorites-page">
       <BreadcrumbsNav />

@@ -218,7 +218,6 @@
               .capacity {
                 display: flex;
                 align-items: center;
-                // width: fit-content;
                 height: 32px;
                 padding: 0 8px;
 
@@ -325,7 +324,6 @@
       border-bottom: 1px solid $border-color;
 
       @include onTablet {
-
       }
     }
 
@@ -339,7 +337,6 @@
       }
 
       .description-block {
-
         .text-description {
           margin-bottom: 10px;
 

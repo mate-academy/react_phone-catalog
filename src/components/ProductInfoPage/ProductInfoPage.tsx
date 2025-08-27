@@ -29,7 +29,6 @@ export const ProductInfoPage: React.FC = () => {
     AllProductsType[]
   >([]);
 
-  // const [isLoading, setIsLoading] = useState(true);
 
   const [mainPhoto, setMainPhoto] = useState<string | undefined>(undefined);
 
@@ -63,7 +62,7 @@ export const ProductInfoPage: React.FC = () => {
   useEffect(() => {
     if (!category || !itemId) return;
 
-    // setIsLoading(true);
+
 
     Promise.all([
       fetch(`/api/${category}.json`).then(res => res.json()),
@@ -88,14 +87,12 @@ export const ProductInfoPage: React.FC = () => {
           return;
         }
 
-        // Задержка в 1 секунду для показа лоадера
-        // setTimeout(() => {
+
         setFoundItem(foundItem);
         setFoundProduct(foundProduct);
         setDiscountedProducts(discountedProducts);
         setMainPhoto(foundItem.images[0]);
-        // setIsLoading(false);
-        // }, 200);
+
       })
       .catch(error => {
         console.error('Ошибка при загрузке данных:', error);
@@ -103,12 +100,9 @@ export const ProductInfoPage: React.FC = () => {
       });
   }, [category, itemId]);
 
-  // if (isLoading) {
-  //   return <div>Loading...</div>; // или <Loader /> если есть компонент лоадера
-  // }
 
   if (!foundItem || !foundProduct) {
-    return null; // или <Loader />
+    return null;
   }
 
   const baseSpecifications = [

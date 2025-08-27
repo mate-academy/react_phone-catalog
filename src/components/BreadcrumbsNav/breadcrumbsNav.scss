@@ -1,5 +1,4 @@
 .breadcrumbsNav-block {
-
   .breadcrumbs-navigation {
     display: flex;
     align-items: center;
@@ -11,9 +10,9 @@
     }
 
     .model-name {
-      white-space: nowrap;// запрет переноса текста на новую строку
-      overflow: hidden; // скрытие лишнего текста, выходящего за границы
-      text-overflow: ellipsis;// добавление троеточия в конце
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       max-width: 100%;
     }
   }
@@ -35,9 +34,8 @@
     color: $text-not-active-color;
     transition: color 0.3s ease;
 
-
     &:hover {
-      color: $text-main-color
+      color: $text-main-color;
     }
   }
 }

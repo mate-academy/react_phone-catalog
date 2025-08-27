@@ -43,7 +43,7 @@ export const ShopByCategorySection: React.FC<Props> = ({
       <h2>{title}</h2>
 
       <div className="section-link-block">
-        {categories.map((category) => (
+        {categories.map(category => (
           <div className="link-container" key={category.name}>
             <Link
               to={`/${category.name}`}
@@ -59,9 +59,7 @@ export const ShopByCategorySection: React.FC<Props> = ({
             <div className="category-properties">
               <h4>{category.title}</h4>
 
-              <p className="main-body-text-14">
-                {category.count} models
-              </p>
+              <p className="main-body-text-14">{category.count} models</p>
             </div>
           </div>
         ))}

@@ -8,7 +8,9 @@ export const BreadcrumbsNav: React.FC = () => {
   const location = useLocation();
   const { category, itemId } = useParams();
   const { getLastSearch } = useProductFilters();
-  const pageName = category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
+  const pageName = category
+    ? category.charAt(0).toUpperCase() + category.slice(1)
+    : '';
   const lastSearch = getLastSearch();
   const backSearch = location.state?.search || location.search || '';
   const searchToUse = backSearch !== '' ? backSearch : lastSearch;
@@ -39,13 +41,13 @@ export const BreadcrumbsNav: React.FC = () => {
 
         <img src="/img/icons/NotActiveArrowRight.svg" alt="arrow icon" />
 
-        {itemId ?
+        {itemId ? (
           <Link to={backWithSearch} className="breadcrumbs-link">
             {pageName}
           </Link>
-          :
+        ) : (
           <p className="small-text-12-600">{pageName}</p>
-        }
+        )}
 
         {modelName && (
           <>

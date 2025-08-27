@@ -6,7 +6,6 @@
   border-top: 1px solid $border-color;
   justify-content: center;
 
-
   @include onTablet {
     padding: 32px;
   }
@@ -22,16 +21,13 @@
     max-width: $main-max-width;
     width: 100%;
 
-
     @include onTablet {
       flex-direction: row;
       justify-content: space-between;
     }
 
     .logoContainer {
-
       .footer-logo-link {
-
         .logo {
           width: 89px;
           height: 32px;
@@ -62,6 +58,11 @@
         font-weight: 800;
         font-size: 12px;
         text-transform: uppercase;
+        transition: all 0.5s ease;
+
+        &:hover {
+          color: $text-main-color;
+        }
       }
     }
 
@@ -71,15 +72,12 @@
       gap: 16px;
       align-items: center;
 
-
       .button-box {
         &:hover .button-name {
           color: $text-main-color;
           cursor: pointer;
         }
-
       }
-
 
       .button-name {
         font-weight: 700;

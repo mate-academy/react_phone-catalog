@@ -10,7 +10,10 @@ export const useProductFilters = () => {
   const STORAGE_KEY_PATH = 'lastCategoryPath';
 
   useEffect(() => {
-    const isCategoryPage = !itemId && !location.pathname.startsWith('/cart') && !location.pathname.startsWith('/favorites');
+    const isCategoryPage =
+      !itemId &&
+      !location.pathname.startsWith('/cart') &&
+      !location.pathname.startsWith('/favorites');
 
     if (isCategoryPage) {
       if (location.search) {

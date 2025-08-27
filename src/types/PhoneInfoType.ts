@@ -1,4 +1,3 @@
-
 export type PhoneInfoType = {
   id: string;
   category: string;

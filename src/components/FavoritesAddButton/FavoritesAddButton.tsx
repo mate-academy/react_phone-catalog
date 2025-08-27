@@ -8,13 +8,6 @@ type Props = {
 
 export const FavoritesAddButton = ({ productId }: Props) => {
   const context = useContext(AddAndFavoritesContext);
-
-  // if (!context) {
-  //   throw new Error(
-  //     'FavoritesAddButton must be used within AddAndFavoritesProvider',
-  //   );
-  // }
-
   const { toggleFavorite, isFavorite, toggleCart, isInCart } = context;
 
   return (

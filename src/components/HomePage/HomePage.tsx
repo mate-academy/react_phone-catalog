@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react';
-// import { AccessoryInfoType } from '../../types/AccessoryInfoType';
-// import { PhoneInfoType } from '../../types/PhoneInfoType';
-// import { TabletInfoType } from '../../types/TabletInfoType';
 
 import { AllProductsType } from '../../types/AllProductsType';
 import { BannerSwiper } from '../BannerSwiper';
 import { ShopByCategorySection } from '../ShopByCategorySection';
 import { SwiperSection } from '../SwiperSection';
-
-// import { useCurrentPath } from '../contexts/PathContext';
 
 export const HomePage: React.FC = () => {
   const [newPhones, setNewPhones] = useState<AllProductsType[]>([]);
@@ -19,8 +14,6 @@ export const HomePage: React.FC = () => {
 
   const [totalTabletsModels, setTotalTabletsModels] = useState(0);
   const [totalAccessoriesModels, setTotalAccessoriesModels] = useState(0);
-
-  // const currentPath = useCurrentPath();
 
   useEffect(() => {
     fetch('/api/products.json')

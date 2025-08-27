@@ -39,9 +39,8 @@ export const ProductCategoryPage: React.FC = () => {
     }
   }, [category, searchParams, setSearchParams]);
 
-
   useEffect(() => {
-    if (!category || !validCategories.includes(category)) return ;
+    if (!category || !validCategories.includes(category)) return;
 
     fetch('/api/products.json')
       .then(res => res.json())
