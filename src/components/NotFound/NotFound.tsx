@@ -12,10 +12,10 @@ export const NotFound: React.FC<Props> = ({ type }) => {
 
   if (type === 'product') {
     title = 'Product not found';
-    imgSrc = '/img/product-not-found.png';
+    imgSrc = 'img/product-not-found.png';
   } else {
     title = 'Page not found';
-    imgSrc = '/img/page-not-found.png';
+    imgSrc = 'img/page-not-found.png';
   }
 
   console.log(type, title, imgSrc);
@@ -28,7 +28,7 @@ export const NotFound: React.FC<Props> = ({ type }) => {
 
         <div className="link-box">
           <Link to="/" className="back-link">
-            <img src="./img/icons/ArrowLeft.svg" alt="Arrow Left" />
+            <img src="img/icons/ArrowLeft.svg" alt="Arrow Left" />
             Back to Home
           </Link>
         </div>

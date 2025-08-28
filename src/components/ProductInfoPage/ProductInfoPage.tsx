@@ -65,8 +65,8 @@ export const ProductInfoPage: React.FC = () => {
 
 
     Promise.all([
-      fetch(`/api/${category}.json`).then(res => res.json()),
-      fetch(`/api/products.json`).then(res => res.json()),
+      fetch(`api/${category}.json`).then(res => res.json()),
+      fetch(`api/products.json`).then(res => res.json()),
     ])
       .then(([categoryData, productsData]) => {
         const foundItem = categoryData.find(

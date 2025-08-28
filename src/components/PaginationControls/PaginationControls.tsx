@@ -51,7 +51,7 @@ export const PaginationControls: React.FC<Props> = ({
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       >
-        <img src="./img/icons/ArrowLeft.svg" alt="arrow left" />
+        <img src="img/icons/ArrowLeft.svg" alt="arrow left" />
       </button>
 
       {pages.map(page => (
@@ -83,7 +83,7 @@ export const PaginationControls: React.FC<Props> = ({
           }, 900);
         }}
       >
-        <img src="./img/icons/ArrowRight.svg" alt="arrow right" />
+        <img src="img/icons/ArrowRight.svg" alt="arrow right" />
       </button>
     </div>
   );

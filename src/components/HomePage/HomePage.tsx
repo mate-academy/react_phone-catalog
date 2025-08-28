@@ -16,7 +16,7 @@ export const HomePage: React.FC = () => {
   const [totalAccessoriesModels, setTotalAccessoriesModels] = useState(0);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => res.json())
       .then((data: AllProductsType[]) => {
         const newModels = data

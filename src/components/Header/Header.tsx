@@ -7,6 +7,7 @@ import { HeaderNavigation } from '../HeaderNavigation';
 
 export const Header = () => {
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
+  
 
   return (
     <>

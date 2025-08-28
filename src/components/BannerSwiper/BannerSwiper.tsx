@@ -13,7 +13,7 @@ export const ArrowLeft = () => {
       className="arrowLeft swiper-buttons has-shadow-cursor"
       onClick={() => swiper.slidePrev()}
     >
-      <img className="icon" src="./img/icons/ArrowLeft.svg" alt="Arrow Left" />
+      <img className="icon" src="img/icons/ArrowLeft.svg" alt="Arrow Left" />
     </button>
   );
 };
@@ -25,20 +25,16 @@ export const ArrowRight = () => {
       className="arrowRight swiper-buttons has-shadow-cursor"
       onClick={() => swiper.slideNext()}
     >
-      <img
-        className="icon"
-        src="./img/icons/ArrowRight.svg"
-        alt="Arrow Right"
-      />
+      <img className="icon" src="img/icons/ArrowRight.svg" alt="Arrow Right" />
     </button>
   );
 };
 
 export const BannerSwiper = () => {
   const banner = [
-    '/img/banner/55.svg',
-    '/img/banner/watch.jpg',
-    '/img/banner/headphones.png',
+    'img/banner/55.svg',
+    'img/banner/watch.jpg',
+    'img/banner/headphones.png',
   ];
 
   return (

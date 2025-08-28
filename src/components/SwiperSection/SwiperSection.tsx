@@ -34,7 +34,7 @@ export const SwiperSection: React.FC<Props> = ({
           >
             <img
               className="icon"
-              src="./img/icons/ArrowLeft.svg"
+              src="img/icons/ArrowLeft.svg"
               alt="Arrow Left"
             />
           </div>
@@ -44,7 +44,7 @@ export const SwiperSection: React.FC<Props> = ({
           >
             <img
               className="icon"
-              src="./img/icons/ArrowRight.svg"
+              src="img/icons/ArrowRight.svg"
               alt="Arrow Right"
             />
           </div>

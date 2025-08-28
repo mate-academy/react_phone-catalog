@@ -42,7 +42,7 @@ export const ProductCategoryPage: React.FC = () => {
   useEffect(() => {
     if (!category || !validCategories.includes(category)) return;
 
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => res.json())
       .then((data: AllProductsType[]) => {
         let filteredProducts = data.filter(
