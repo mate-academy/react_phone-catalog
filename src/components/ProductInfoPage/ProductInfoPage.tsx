@@ -25,8 +25,9 @@ export const ProductInfoPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<AllProductsType | null>(
     null,
   );
-  const [discountedProducts, setDiscountedProducts] =
-  useState<AllProductsType[]>([]);
+  const [discountedProducts, setDiscountedProducts] = useState<
+    AllProductsType[]
+  >([]);
 
   const [mainPhoto, setMainPhoto] = useState<string | undefined>(undefined);
 
@@ -88,8 +89,10 @@ export const ProductInfoPage: React.FC = () => {
         setDiscountedProducts(dProducts);
         setMainPhoto(fItem.images[0]);
       })
-      .catch(() => {navigate('/product-not-found')});
-  }, [itemId, navigate]);
+      .catch(() => {
+        navigate('/product-not-found');
+      });
+  }, [itemId, navigate, category]);
 
   if (!foundItem || !foundProduct) {
     return null;
@@ -105,15 +108,13 @@ export const ProductInfoPage: React.FC = () => {
   const fullSpecifications = [
     ...baseSpecifications,
     ...(foundItem.category === 'phones' || foundItem.category === 'tablets'
-    ?
-    [
-      { name: 'Built in memory', value: foundItem.capacity },
-      { name: 'Camera', value: foundItem.camera },
-      { name: 'Zoom', value: foundItem.zoom },
-      { name: 'Cell', value: foundItem.cell.join(', ') },
-    ]
-    :
-    [{ name: 'Cell', value: foundItem.cell.join(', ') }]),
+      ? [
+        { name: 'Built in memory', value: foundItem.capacity },
+        { name: 'Camera', value: foundItem.camera },
+        { name: 'Zoom', value: foundItem.zoom },
+        { name: 'Cell', value: foundItem.cell.join(', ') },
+        ]
+      : [{ name: 'Cell', value: foundItem.cell.join(', ') }]),
   ];
 
   const foundId = foundProduct.id;
