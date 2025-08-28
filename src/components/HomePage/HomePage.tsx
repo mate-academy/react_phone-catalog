@@ -7,8 +7,8 @@ import { SwiperSection } from '../SwiperSection';
 
 export const HomePage: React.FC = () => {
   const [newPhones, setNewPhones] = useState<AllProductsType[]>([]);
-  const [discountedProducts, setDiscountedProducts] = useState<
-    AllProductsType[]
+  const [discountedProducts, setDiscountedProducts] =
+  useState<AllProductsType[]
   >([]);
   const [totalPhoneModels, setTotalPhoneModels] = useState(0);
 
@@ -47,7 +47,6 @@ export const HomePage: React.FC = () => {
         setTotalTabletsModels(allTabletsModels);
         setTotalAccessoriesModels(allAccessoriesModels);
       })
-      .catch(err => console.error('Ошибка загрузки:', err));
   }, []);
 
   return (

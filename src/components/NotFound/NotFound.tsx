@@ -18,7 +18,6 @@ export const NotFound: React.FC<Props> = ({ type }) => {
     imgSrc = 'img/page-not-found.png';
   }
 
-  console.log(type, title, imgSrc);
   return (
     <div className="product-not-found">
       <img className="product-not-found-img" src={imgSrc} alt={title} />

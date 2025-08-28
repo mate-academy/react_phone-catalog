@@ -25,10 +25,8 @@ export const ProductInfoPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<AllProductsType | null>(
     null,
   );
-  const [discountedProducts, setDiscountedProducts] = useState<
-    AllProductsType[]
-  >([]);
-
+  const [discountedProducts, setDiscountedProducts] =
+  useState<AllProductsType[]>([]);
 
   const [mainPhoto, setMainPhoto] = useState<string | undefined>(undefined);
 
@@ -62,44 +60,36 @@ export const ProductInfoPage: React.FC = () => {
   useEffect(() => {
     if (!category || !itemId) return;
 
-
-
     Promise.all([
       fetch(`api/${category}.json`).then(res => res.json()),
       fetch(`api/products.json`).then(res => res.json()),
     ])
       .then(([categoryData, productsData]) => {
-        const foundItem = categoryData.find(
+        const fItem = categoryData.find(
           (product: ProductInfoUnionType) => product.id === itemId,
         );
 
-        const foundProduct = productsData.find(
+        const fProduct = productsData.find(
           (product: AllProductsType) => product.itemId === itemId,
         );
 
-        const discountedProducts = productsData
+        const dProducts = productsData
           .filter((product: AllProductsType) => product.year < 2022)
           .sort(() => Math.random() - 0.5)
           .slice(0, 12);
 
-        if (!foundItem || !foundProduct) {
+        if (!fItem || !fProduct) {
           navigate('/product-not-found');
           return;
         }
 
-
-        setFoundItem(foundItem);
-        setFoundProduct(foundProduct);
-        setDiscountedProducts(discountedProducts);
-        setMainPhoto(foundItem.images[0]);
-
+        setFoundItem(fItem);
+        setFoundProduct(fProduct);
+        setDiscountedProducts(dProducts);
+        setMainPhoto(fItem.images[0]);
       })
-      .catch(error => {
-        console.error('Ошибка при загрузке данных:', error);
-        navigate('/product-not-found');
-      });
+      .catch(() => {navigate('/product-not-found')});
   }, [category, itemId]);
-
 
   if (!foundItem || !foundProduct) {
     return null;
@@ -115,13 +105,15 @@ export const ProductInfoPage: React.FC = () => {
   const fullSpecifications = [
     ...baseSpecifications,
     ...(foundItem.category === 'phones' || foundItem.category === 'tablets'
-      ? [
-          { name: 'Built in memory', value: foundItem.capacity },
-          { name: 'Camera', value: foundItem.camera },
-          { name: 'Zoom', value: foundItem.zoom },
-          { name: 'Cell', value: foundItem.cell.join(', ') },
-        ]
-      : [{ name: 'Cell', value: foundItem.cell.join(', ') }]),
+      ?
+      [
+        { name: 'Built in memory', value: foundItem.capacity },
+        { name: 'Camera', value: foundItem.camera },
+        { name: 'Zoom', value: foundItem.zoom },
+        { name: 'Cell', value: foundItem.cell.join(', ') },
+      ]
+      :
+      [{ name: 'Cell', value: foundItem.cell.join(', ') }]),
   ];
 
   const foundId = foundProduct.id;

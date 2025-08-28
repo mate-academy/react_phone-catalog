@@ -65,7 +65,6 @@ export const ProductCategoryPage: React.FC = () => {
 
         setProducts(paginatedProducts);
       })
-      .catch(err => console.error('Ошибка загрузки продуктов:', err));
   }, [category, sort, page, perPage]);
 
   if (!category || !validCategories.includes(category)) {
