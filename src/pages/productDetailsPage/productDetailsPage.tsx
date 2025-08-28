@@ -20,6 +20,7 @@ export const ProductDetailsPage = () => {
   const location = useLocation();
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [connectedProducts, setConnectedProducts] = useState<Product>();
+  const [localErrorMessage, setLocalErrorMessage] = useState<string>('');
   const [alsoLike, setAlsoLike] = useState<Product[]>([]);
   const isDesktop = useMediaQuery({ maxWidth: 1199 });
 
@@ -33,14 +34,8 @@ export const ProductDetailsPage = () => {
     return parts;
   }, [location.pathname, product?.name]);
 
-  const {
-    errorMessage,
-    isLoading,
-    setErrorMessage,
-    setIsLoading,
-    filteredProductsCategory,
-    setCategory,
-  } = useContext(ProductContext);
+  const { isLoading, setIsLoading, filteredProductsCategory, setCategory } =
+    useContext(ProductContext);
 
   const currCategory = arrLocation[0];
   const params = useParams();
@@ -52,7 +47,7 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    setErrorMessage('');
+    setLocalErrorMessage('');
 
     const timeout = setTimeout(() => {
       getSpecificProducts(currCategory)
@@ -79,16 +74,16 @@ export const ProductDetailsPage = () => {
               setAlsoLike(similarProducts);
             }
 
-            setErrorMessage('');
+            setLocalErrorMessage('');
           } else {
             setProduct(null);
             setConnectedProducts(undefined);
             setAlsoLike([]);
-            setErrorMessage('Product not found');
+            setLocalErrorMessage('Product not found');
           }
         })
         .catch(() => {
-          setErrorMessage('Error! This product does not exist.');
+          setLocalErrorMessage('Error! This product does not exist.');
         })
         .finally(() => {
           setIsLoading(false);
@@ -97,7 +92,7 @@ export const ProductDetailsPage = () => {
 
     return () => clearTimeout(timeout);
     /* eslint-disable-next-line */
-  }, [currCategory, currentProductId, setErrorMessage, setIsLoading]);
+  }, [currCategory, currentProductId, setLocalErrorMessage, setIsLoading]);
 
   const year = connectedProducts?.year;
   const fullPrice = connectedProducts?.fullPrice;
@@ -139,11 +134,11 @@ export const ProductDetailsPage = () => {
     return <Loader />;
   }
 
-  if (errorMessage) {
+  if (localErrorMessage) {
     return (
       <div className={styles.productNotFound}>
         <BackBtn to={`/${currCategory}`} />
-        <h1 className={styles.errorMessage}>{errorMessage}</h1>
+        <h1 className={styles.errorMessage}>{localErrorMessage}</h1>
       </div>
     );
   }

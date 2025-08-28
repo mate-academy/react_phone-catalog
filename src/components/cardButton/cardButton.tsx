@@ -11,8 +11,14 @@ type Props = {
 };
 
 export const CardButton: React.FC<Props> = ({ prodDet = false, id }) => {
-  const { addToCart, cart, removeFavorite, favorites, addFavorite } =
-    useContext(ProductContext);
+  const {
+    addToCart,
+    removeFromCart,
+    cart,
+    removeFavorite,
+    favorites,
+    addFavorite,
+  } = useContext(ProductContext);
   const alreadyAdded = [...cart].includes(id);
 
   const isFavorite = [...favorites].includes(id);
@@ -25,6 +31,14 @@ export const CardButton: React.FC<Props> = ({ prodDet = false, id }) => {
     }
   };
 
+  const toggleCart = () => {
+    if (alreadyAdded) {
+      removeFromCart(id);
+    } else {
+      addToCart(id);
+    }
+  };
+
   return (
     <div className={styles.cardBtnBlock}>
       <button
@@ -32,9 +46,9 @@ export const CardButton: React.FC<Props> = ({ prodDet = false, id }) => {
           [styles['cardBtn--size']]: prodDet,
           [styles['cardBtn--active']]: alreadyAdded,
         })}
-        onClick={() => addToCart(id)}
+        onClick={toggleCart}
       >
-        {alreadyAdded ? 'Added to cart' : 'Add to card'}
+        {alreadyAdded ? 'Added to cart' : 'Add to cart'}
       </button>
       <button
         className={classNames(

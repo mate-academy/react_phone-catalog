@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { icons } from '../../constants/icons';
 import { Icon } from '../icons';
 import { Logo } from '../logo';
@@ -16,19 +17,28 @@ export const Footer = () => {
           <nav className={styles.footerNav}>
             <ul className={styles.navList}>
               <li className={styles.navItem}>
-                <a href="#" className={styles.navLink}>
+                <Link
+                  to="https://github.com/NataliiaNudyk"
+                  className={styles.navLink}
+                >
                   Github
-                </a>
+                </Link>
               </li>
               <li className={styles.navItem}>
-                <a href="#" className={styles.navLink}>
+                <Link
+                  to="https://www.linkedin.com/in/nataliia-nudyk-302687198/"
+                  className={styles.navLink}
+                >
                   Contacts
-                </a>
+                </Link>
               </li>
               <li className={styles.navItem}>
-                <a href="#" className={styles.navLink}>
+                <Link
+                  to="https://www.linkedin.com/in/nataliia-nudyk-302687198/"
+                  className={styles.navLink}
+                >
                   rights
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

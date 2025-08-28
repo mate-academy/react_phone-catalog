@@ -145,6 +145,7 @@
   font-size: 12px;
   padding: 12px;
 
+
   @include on-desktop {
     font-size: 16px;
     padding: 16px;
@@ -172,6 +173,7 @@
   border: 1px solid #b4bdc3;
   background: transparent;
   width: 32px;
+  cursor: pointer;
 
   &:hover {
     border-color: #0f0f11;

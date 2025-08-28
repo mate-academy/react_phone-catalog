@@ -36,7 +36,6 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
   useEffect(() => {
     setIsLoading(true);
     setErrorMessage('');
-    setProduct([]);
 
     const timeout = setTimeout(() => {
       getAllProducts()

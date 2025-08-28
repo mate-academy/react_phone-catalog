@@ -78,6 +78,7 @@ $desktop-min-width: 1200px;
   border-radius: 100%;
   border: 1px solid #b4bdc3;
   background: transparent;
+  cursor: pointer;
 
   &:hover {
     border-color: #313237;
@@ -119,6 +120,7 @@ font-size: 22px;
   height: inherit;
   box-shadow: -1px 0 0 0 #E2E6E9;
   position: relative;
+  cursor: pointer;
 
   &:hover::after {
     content: '';
