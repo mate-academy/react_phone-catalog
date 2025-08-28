@@ -21,7 +21,7 @@ export const Header = () => {
               }}
             >
               <img
-                src="/img/logo/logo.svg"
+                src="img/logo/logo.svg"
                 alt="Company logo"
                 className="logo top-logo"
               />
@@ -39,7 +39,7 @@ export const Header = () => {
           >
             <img
               src={
-                isBurgerMenu ? '/img/icons/Close.svg' : '/img/icons/Menu.svg'
+                isBurgerMenu ? 'img/icons/Close.svg' : 'img/icons/Menu.svg'
               }
               alt="menu icon"
               className="icon"
