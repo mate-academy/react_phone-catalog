@@ -15,7 +15,7 @@ export const CartPage = () => {
   const [orderMessage, setOrderMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => res.json())
       .then((data: AllProductsType[]) => setAllProducts(data));
   }, []);
@@ -48,7 +48,7 @@ export const CartPage = () => {
       <div className="button-back-block">
         <Link to={`${getLastPath()}${getLastSearch()}`} className="icon">
           <img
-            src="/img/icons/ArrowLeft.svg"
+            src="img/icons/ArrowLeft.svg"
             alt="arrow icon"
             className="icon"
           />
@@ -88,7 +88,7 @@ export const CartPage = () => {
                       className="delete"
                       onClick={() => changeQuantity(id, 'delete')}
                     >
-                      <img src="./img/icons/Close.svg" alt="delete item" />
+                      <img src="img/icons/Close.svg" alt="delete item" />
                     </div>
 
                     <Link to={productLink} className="model-link photo">
@@ -105,7 +105,7 @@ export const CartPage = () => {
                       className="minus calc-button"
                       onClick={() => changeQuantity(id, 'minus')}
                     >
-                      <img src="./img/icons/Minus.svg" alt="minus" />
+                      <img src="img/icons/Minus.svg" alt="minus" />
                     </div>
 
                     <div className="count">{quantity}</div>
@@ -114,7 +114,7 @@ export const CartPage = () => {
                       className="plus calc-button"
                       onClick={() => changeQuantity(id, 'plus')}
                     >
-                      <img src="./img/icons/Plus.svg" alt="plus" />
+                      <img src="img/icons/Plus.svg" alt="plus" />
                     </div>
                   </div>
 
@@ -145,7 +145,7 @@ export const CartPage = () => {
 
           <h4 className="empty-text">Cart is empty</h4>
           <img
-            src="/img/cart-is-empty.png"
+            src="img/cart-is-empty.png"
             alt="cart is empty"
             className="cart-is-empty"
           />
