@@ -20,7 +20,7 @@ export const HeaderLinks: React.FC<Props> = ({
 }) => {
   const { pathname } = useLocation();
   const validPath = pathname.split('/').filter(Boolean).join('');
-  const cartLength = Object.entries(cart).length;
+  const cartLength = Object.values(cart).reduce((acc, value) => acc + value, 0);
 
   return (
     <div className={styles.header}>

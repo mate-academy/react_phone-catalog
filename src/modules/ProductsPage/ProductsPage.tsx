@@ -147,9 +147,18 @@ export const ProductsPage: React.FC<Props> = ({ title }) => {
     perPage === 'all'
       ? 1
       : Math.max(1, Math.ceil(filteredProducts.length / perPageNum));
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const [slicedPages, setSlicedPages] = useState(pages.slice(0, 4));
+  const pages = useMemo(() => {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }, [totalPages]);
+
+  const [slicedPages, setSlicedPages] = useState<number[]>([]);
+
+  useEffect(() => {
+    const currentPage = +page - 1;
+
+    setSlicedPages(pages.slice(currentPage, currentPage + 4));
+  }, [pages, page]);
 
   const start = (+page - 1) * perPageNum;
   const end = start + perPageNum;

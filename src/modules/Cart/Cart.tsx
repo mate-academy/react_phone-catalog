@@ -38,6 +38,11 @@ export const Cart: React.FC = () => {
     }
   };
 
+  const totalCount = filteredProducts.reduce(
+    (acc, product) => acc + cart[product.id],
+    0,
+  );
+
   return (
     <div className={styles.cart}>
       <div className={`${styles.cart__container} container`}>
@@ -72,7 +77,7 @@ export const Cart: React.FC = () => {
                 <div className={styles.checkout__container}>
                   <div className={styles.checkout__total}>${totalPrice}</div>
                   <div className={styles.checkout__subtitle}>
-                    Total for {filteredProducts.length} items{' '}
+                    Total for {totalCount} items{' '}
                   </div>
                   <button
                     className={styles.checkout__button}
