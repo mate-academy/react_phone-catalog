@@ -277,7 +277,7 @@ export const ProductInfoPage: React.FC = () => {
           <div className="tech-specs">
             <h3 className="box-title">Tech specs</h3>
 
-            <div className="info">
+            <div className="info-detailed">
               {fullSpecifications.map(({ name, value }) => {
                 return (
                   <div className="spec-name-value-box" key={name}>
