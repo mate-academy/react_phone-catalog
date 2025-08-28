@@ -156,7 +156,7 @@ export const ProductInfoPage: React.FC = () => {
                   })}
                 >
                   <img
-                    src={`/${photo}`}
+                    src={`${photo}`}
                     alt={`Product thumbnail ${index + 1}`}
                     onClick={() => setMainPhoto(photo)}
                     className="mini-img"
