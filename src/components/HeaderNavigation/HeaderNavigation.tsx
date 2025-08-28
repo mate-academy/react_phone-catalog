@@ -62,7 +62,7 @@ export const HeaderNavigation: React.FC = () => {
               }}
             >
               <img
-                src="/img/icons/FavoritesHeartLike.svg"
+                src="img/icons/FavoritesHeartLike.svg"
                 alt="Favorites icon"
                 className="icon"
               />
@@ -85,7 +85,7 @@ export const HeaderNavigation: React.FC = () => {
               }}
             >
               <img
-                src="/img/icons/ShoppingBag.svg"
+                src="img/icons/ShoppingBag.svg"
                 alt="Shopping Bag icon"
                 className="icon"
               />
