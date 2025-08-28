@@ -11,8 +11,7 @@ import { ProductInfoPage } from './components/ProductInfoPage';
 import { PathProvider } from './components/contexts/PathContext';
 import { NotFound } from './components/NotFound';
 import { FavoritesPage } from './components/FavoritesPage';
-import { AddAndFavoritesProvider }
-  from './components/contexts/AddAndFavoritesContext';
+import { AddAndFavoritesProvider } from './components/contexts/AddAndFavoritesContext';
 import { CartPage } from './components/CartPage';
 
 export const App = () => {

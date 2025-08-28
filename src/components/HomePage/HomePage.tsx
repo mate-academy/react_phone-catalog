@@ -8,8 +8,7 @@ import { SwiperSection } from '../SwiperSection';
 export const HomePage: React.FC = () => {
   const [newPhones, setNewPhones] = useState<AllProductsType[]>([]);
   const [discountedProducts, setDiscountedProducts] =
-  useState<AllProductsType[]
-  >([]);
+  useState<AllProductsType[]>([]);
   const [totalPhoneModels, setTotalPhoneModels] = useState(0);
 
   const [totalTabletsModels, setTotalTabletsModels] = useState(0);

@@ -30,7 +30,7 @@ export const BreadcrumbsNav: React.FC = () => {
 
         setModelName(found?.name || '');
       });
-  }, [itemId]);
+  }, [itemId, category]);
 
   return (
     <div className="breadcrumbsNav-block">

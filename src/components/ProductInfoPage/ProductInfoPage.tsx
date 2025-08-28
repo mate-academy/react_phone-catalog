@@ -89,7 +89,7 @@ export const ProductInfoPage: React.FC = () => {
         setMainPhoto(fItem.images[0]);
       })
       .catch(() => {navigate('/product-not-found')});
-  }, [category, itemId]);
+  }, [itemId, navigate]);
 
   if (!foundItem || !foundProduct) {
     return null;
@@ -105,15 +105,15 @@ export const ProductInfoPage: React.FC = () => {
   const fullSpecifications = [
     ...baseSpecifications,
     ...(foundItem.category === 'phones' || foundItem.category === 'tablets'
-      ?
-      [
-        { name: 'Built in memory', value: foundItem.capacity },
-        { name: 'Camera', value: foundItem.camera },
-        { name: 'Zoom', value: foundItem.zoom },
-        { name: 'Cell', value: foundItem.cell.join(', ') },
-      ]
-      :
-      [{ name: 'Cell', value: foundItem.cell.join(', ') }]),
+    ?
+    [
+      { name: 'Built in memory', value: foundItem.capacity },
+      { name: 'Camera', value: foundItem.camera },
+      { name: 'Zoom', value: foundItem.zoom },
+      { name: 'Cell', value: foundItem.cell.join(', ') },
+    ]
+    :
+    [{ name: 'Cell', value: foundItem.cell.join(', ') }]),
   ];
 
   const foundId = foundProduct.id;
