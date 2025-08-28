@@ -8,25 +8,29 @@ $desktop-min-width: 1200px;
   color: white;
   z-index: 100;
   box-sizing: border-box;
-  border-bottom: 1px solid #75767f;
 }
 
 .container {
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: 12px 24px;
+  padding: 13px;
+  padding-left: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 32px;
+  border-bottom: 1px solid #75767f;
+  height: 48px;
 
   @media (min-width: $desktop-min-width) {
-    height: 48px;
+    height: 64px;
+    padding: 18px;
+    padding-left: 24px;
   }
 }
 
 .logo {
-  height: 28px;
-  width: 80px;
+  height: 20.8px;
+  width: 64px;
   background-size: cover;
   background-position: center;
   background-image: url(/public/img/logo.svg);
@@ -35,6 +39,11 @@ $desktop-min-width: 1200px;
 
   &:hover {
     transform: scale(1.1);
+  }
+
+  @media (min-width: $desktop-min-width) {
+    height: 28px;
+    width: 80px;
   }
 }
 
@@ -50,6 +59,7 @@ $desktop-min-width: 1200px;
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 32px;
 
   @media (min-width: $desktop-min-width) {
@@ -146,7 +156,6 @@ $desktop-min-width: 1200px;
   background-position: center;
   font-size: 20px;
   text-decoration: none;
-  color: white;
   transition: transform 0.3s;
   background-image: url(/public/img/shop.svg);
   background-repeat: no-repeat;
@@ -162,13 +171,33 @@ $desktop-min-width: 1200px;
 }
 
 .containerClose {
-  height: 32px;
-  width: 32px;
+  height: 48px;
+  width: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   border-left: 1px solid #75767f;
+
+  @media (min-width: $desktop-min-width) {
+    height: 64px;
+    width: 64px;
+  }
+}
+
+.containerBurger {
+  height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-left: 1px solid #75767f;
+
+  @media (min-width: $desktop-min-width) {
+    height: 64px;
+    width: 64px;
+  }
 }
 
 .iconClose {
@@ -236,22 +265,26 @@ $desktop-min-width: 1200px;
   }
 
   &__top {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 24px;
+    padding: 13px;
+    padding-left: 16px;
     border-bottom: 1px solid #75767f;
-    height: 32px;
+    height: 48px;
 
     @media (min-width: $desktop-min-width) {
-      height: 48px;
+      height: 64px;
+      padding: 18px;
+      padding-left: 24px;
     }
   }
 
   &__hero {
+    padding-top: 24px;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     height: 100%;
   }
 
@@ -277,5 +310,6 @@ $desktop-min-width: 1200px;
 }
 
 .activeIcon {
+  box-sizing: border-box;
   border-bottom: 2px solid #f1f2f9;
 }

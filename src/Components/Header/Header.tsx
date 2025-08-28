@@ -41,13 +41,24 @@ export const Header: React.FC = () => {
         <div className={styles.actions}>
           <NavLink
             to="/favorites"
-            className={`${styles.icon} ${styles.iconLike}`}
+            className={({ isActive }) =>
+              `${styles.icon} ${styles.iconLike} ${isActive ? styles.activeIcon : ''}`
+            }
           />
-          <NavLink to="/cart" className={`${styles.icon} ${styles.iconShop}`} />
-          <div
-            className={`${styles.icon} ${styles.iconBurger}`}
-            onClick={() => setIsMenuOpen(true)}
+
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              `${styles.icon} ${styles.iconShop} ${isActive ? styles.activeIcon : ''}`
+            }
           />
+
+          <div className={styles.containerBurger}>
+            <div
+              className={`${styles.icon} ${styles.iconBurger}`}
+              onClick={() => setIsMenuOpen(true)}
+            />
+          </div>
         </div>
       </div>
 
