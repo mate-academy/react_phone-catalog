@@ -2,11 +2,11 @@
   padding: 0 16px;
   height: 100%;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 0 24px 0 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 0;
   }
 
@@ -31,7 +31,7 @@
       }
     }
 
-    @include onTablet {
+    @include on-tablet {
       padding: 40px 0 16px;
     }
   }
@@ -41,7 +41,7 @@
     font-size: 32px;
     padding-bottom: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 48px;
     }
   }
@@ -51,7 +51,7 @@
     flex-direction: column;
     gap: 32px;
 
-    @include onDesktop {
+    @include on-desktop {
       flex-direction: row;
       gap: 16px;
     }
@@ -74,7 +74,7 @@
         gap: 16px;
         box-sizing: border-box;
 
-        @include onTablet {
+        @include on-tablet {
           gap: 24px;
         }
 
@@ -155,11 +155,11 @@
       padding: 16px;
       background-color: $main-bg-color;
 
-      @include onTablet {
+      @include on-tablet {
         padding: 24px;
       }
 
-      @include onDesktop {
+      @include on-desktop {
         width: 368px;
         height: fit-content;
         display: flex;
@@ -185,7 +185,7 @@
         margin-bottom: 16px;
         width: 100%;
 
-        @include onDesktop {
+        @include on-desktop {
           padding-bottom: 24px;
           margin-bottom: 24px;
         }
@@ -241,7 +241,7 @@
     .cart-is-empty {
       max-width: 120px;
 
-      @include onTablet {
+      @include on-tablet {
         max-width: 225px;
       }
     }
@@ -250,7 +250,7 @@
       font-size: 16px;
       color: $text-not-active-color;
 
-      @include onTablet {
+      @include on-tablet {
         padding-bottom: 20px;
         font-size: 22px;
       }

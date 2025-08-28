@@ -11,12 +11,12 @@
   border: 1px solid $border-color;
   border-radius: 8px;
 
-  @include onTablet {
+  @include on-tablet {
     min-width: 229px;
     height: 512px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     max-width: 272px;
     height: 506px;
   }

@@ -1,11 +1,11 @@
 .product-info-page {
   padding: 0 16px;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 0 24px 0 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 0;
   }
 
@@ -16,7 +16,7 @@
   .photo-control-box {
     padding-bottom: 56px;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       gap: 18px;
       padding-bottom: 64px;
@@ -38,7 +38,7 @@
       flex-direction: column;
       gap: 16px;
 
-      @include onTablet {
+      @include on-tablet {
         width: 55%;
         flex-direction: row;
         align-items: flex-start;
@@ -64,7 +64,7 @@
           border-radius: 8px;
         }
 
-        @include onTablet {
+        @include on-tablet {
           order: 2;
           max-width: 464px;
           width: 100%;
@@ -83,12 +83,12 @@
         gap: 8px;
         padding-bottom: 40px;
 
-        @include onTablet {
+        @include on-tablet {
           flex-direction: column;
           padding-bottom: 0;
         }
 
-        @include onDesktop {
+        @include on-desktop {
           gap: 16px;
         }
 
@@ -106,12 +106,12 @@
             transform 0.3s ease,
             box-shadow 0.3s ease;
 
-          @include onTablet {
+          @include on-tablet {
             height: 35px;
             width: 35px;
           }
 
-          @include onDesktop {
+          @include on-desktop {
             height: 80px;
             width: 80px;
           }
@@ -137,7 +137,7 @@
     }
 
     .main-controls {
-      @include onTablet {
+      @include on-tablet {
         width: 45%;
         display: flex;
         flex-direction: column;
@@ -151,7 +151,7 @@
       }
 
       .colors-id-box {
-        @include onTablet {
+        @include on-tablet {
           min-width: 237px;
           max-width: 320px;
           flex: 1;
@@ -309,11 +309,11 @@
     flex-direction: column;
     gap: 56px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 64px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       flex-direction: row;
       gap: 59px;
     }
@@ -328,7 +328,7 @@
       flex-direction: column;
       gap: 32px;
 
-      @include onDesktop {
+      @include on-desktop {
         width: 50%;
       }
 
@@ -345,7 +345,7 @@
           font-size: 16px;
           padding-bottom: 16px;
 
-          @include onTablet {
+          @include on-tablet {
             font-size: 20px;
           }
         }
@@ -357,7 +357,7 @@
       flex-direction: column;
       gap: 32px;
 
-      @include onDesktop {
+      @include on-desktop {
         width: 45%;
       }
 
@@ -366,7 +366,7 @@
         flex-direction: column;
         gap: 8px;
 
-        .spec-name-value-box {
+        .sn-value-box {
           display: flex;
           justify-content: space-between;
         }

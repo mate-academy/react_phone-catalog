@@ -5,7 +5,7 @@
     gap: 8px;
     padding: 24px 0;
 
-    @include onTablet {
+    @include on-tablet {
       padding: 24px 0 40px;
     }
 

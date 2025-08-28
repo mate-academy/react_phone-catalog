@@ -280,7 +280,7 @@ export const ProductInfoPage: React.FC = () => {
             <div className="info-detailed">
               {fullSpecifications.map(({ name, value }) => {
                 return (
-                  <div className="spec-name-value-box" key={name}>
+                  <div className="sn-value-box" key={name}>
                     <p className="main-body-text-14">{name}</p>
                     <p className="main-body-text-14-black">{value}</p>
                   </div>

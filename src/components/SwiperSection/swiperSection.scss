@@ -1,7 +1,7 @@
 .swiper-section-wrapper {
   padding-left: 16px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-left: 0px;
   }
 
@@ -16,11 +16,11 @@
     padding-right: 16px;
     margin-bottom: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       padding-right: 24px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       padding-right: 0;
     }
   }
@@ -32,12 +32,12 @@
       width: 212px;
       height: 439px;
 
-      @include onTablet {
+      @include on-tablet {
         width: 237px;
         height: 512px;
       }
 
-      @include onDesktop {
+      @include on-desktop {
         width: 272px;
         height: 506px;
       }

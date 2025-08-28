@@ -18,7 +18,7 @@
     transform: translateY(0);
   }
 
-  @include onTablet {
+  @include on-tablet {
     display: none;
   }
 
@@ -141,7 +141,6 @@
           }
         }
       }
-
     }
 
     .is-active {

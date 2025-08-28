@@ -33,12 +33,12 @@
     margin-bottom: 64px;
   }
 
-  @include onTablet {
+  @include on-tablet {
     padding: 0 0 0 24px;
     gap: 64px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     max-width: $main-max-width;
     padding: 0;
     gap: 80px;
@@ -62,11 +62,11 @@
 .title-section {
   padding: 24px 16px;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 32px 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 56px 0;
   }
 
@@ -75,7 +75,7 @@
     font-size: 32px;
     line-height: 41px;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 48px;
       line-height: 56px;
     }
@@ -87,7 +87,7 @@ h2 {
   font-size: 22px;
   line-height: 140%;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 32px;
     line-height: 41px;
   }
@@ -98,7 +98,7 @@ h3 {
   font-size: 20px;
   line-height: 100%;
 
-  @include onTablet {
+  @include on-tablet {
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;

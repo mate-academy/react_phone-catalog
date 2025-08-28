@@ -83,24 +83,24 @@
   }
 
   .sort-by-box {
-    @include onTablet {
+    @include on-tablet {
       flex: none;
       width: 100%;
       max-width: 186px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       max-width: 176px;
     }
   }
 
   .items-on-page-box {
-    @include onTablet {
+    @include on-tablet {
       width: 136px;
       flex: none;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       max-width: 128px;
     }
   }

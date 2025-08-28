@@ -6,7 +6,7 @@
   top: 0;
   z-index: 10;
 
-  @include onDesktop {
+  @include on-desktop {
     height: 64px;
   }
 
@@ -21,11 +21,11 @@
     align-items: center;
     padding: 0 16px;
 
-    @include onTablet {
+    @include on-tablet {
       padding: 0px 32px 0px 16px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       padding: 0px 24px 0px 24px;
       margin-right: 24px;
     }
@@ -37,7 +37,7 @@
         transform: scale(1.1);
       }
 
-      @include onDesktop {
+      @include on-desktop {
         width: 80px;
         height: 28px;
       }
@@ -56,7 +56,7 @@
     align-items: center;
     border-left: 1px solid $border-color;
 
-    @include onTablet {
+    @include on-tablet {
       display: none;
     }
   }
