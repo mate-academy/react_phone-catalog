@@ -21,7 +21,7 @@
 
   .navigation-logo {
     display: flex;
-    background-image: url('img/icons/logo.svg');
+    background-image: url('/img/icons/logo.svg');
     background-repeat: no-repeat;
     background-position: center;
 
@@ -80,12 +80,12 @@
     background-color: $page-background;
     border-style: none;
     cursor: pointer;
-    background-image: url('img/icons/menu.svg');
+    background-image: url('/img/icons/menu.svg');
     background-repeat: no-repeat;
     background-position: center;
 
     &--close {
-      background-image: url('img/icons/menu-close.svg');
+      background-image: url('/img/icons/menu-close.svg');
     }
   }
 
