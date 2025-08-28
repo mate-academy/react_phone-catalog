@@ -35,13 +35,13 @@ export const FavoritesAddButton = ({ productId }: Props) => {
         {!isFavorite(productId) ? (
           <img
             className="icon"
-            src="/img/icons/Heart.svg"
+            src="img/icons/Heart.svg"
             alt="favorites img"
           />
         ) : (
           <img
             className="icon"
-            src="/img/icons/PinkHeartLike.svg"
+            src="img/icons/PinkHeartLike.svg"
             alt="favorites img"
           />
         )}

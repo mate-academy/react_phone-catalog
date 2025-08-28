@@ -103,13 +103,13 @@ export const Dropdown: React.FC<Props> = ({
 
             {isOpenSort ? (
               <img
-                src="./img/icons/ArrowUpChevron.svg"
+                src="img/icons/ArrowUpChevron.svg"
                 alt="chevron"
                 className="icon"
               />
             ) : (
               <img
-                src="./img/icons/ArrowDownChevron.svg"
+                src="img/icons/ArrowDownChevron.svg"
                 alt="chevron"
                 className="icon"
               />
@@ -143,13 +143,13 @@ export const Dropdown: React.FC<Props> = ({
             {selectedPerPage}
             {isOpenPerPage ? (
               <img
-                src="./img/icons/ArrowUpChevron.svg"
+                src="img/icons/ArrowUpChevron.svg"
                 alt="chevron"
                 className="icon"
               />
             ) : (
               <img
-                src="./img/icons/ArrowDownChevron.svg"
+                src="img/icons/ArrowDownChevron.svg"
                 alt="chevron"
                 className="icon"
               />

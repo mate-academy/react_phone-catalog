@@ -21,7 +21,7 @@ export const BreadcrumbsNav: React.FC = () => {
   useEffect(() => {
     if (!category || !itemId) return;
 
-    fetch(`/api/${category}.json`)
+    fetch(`api/${category}.json`)
       .then(res => res.json())
       .then(data => {
         const found = data.find(
@@ -36,10 +36,10 @@ export const BreadcrumbsNav: React.FC = () => {
     <div className="breadcrumbsNav-block">
       <div className="breadcrumbs-navigation">
         <Link to="/" className="homeLink icon">
-          <img src="/img/icons/Home.svg" alt="Home Page icon" />
+          <img src="img/icons/Home.svg" alt="Home Page icon" />
         </Link>
 
-        <img src="/img/icons/NotActiveArrowRight.svg" alt="arrow icon" />
+        <img src="img/icons/NotActiveArrowRight.svg" alt="arrow icon" />
 
         {itemId ? (
           <Link to={backWithSearch} className="breadcrumbs-link">
@@ -51,7 +51,7 @@ export const BreadcrumbsNav: React.FC = () => {
 
         {modelName && (
           <>
-            <img src="/img/icons/NotActiveArrowRight.svg" alt="arrow icon" />
+            <img src="img/icons/NotActiveArrowRight.svg" alt="arrow icon" />
             <p className="small-text-12-600 model-name">{modelName}</p>
           </>
         )}
@@ -61,7 +61,7 @@ export const BreadcrumbsNav: React.FC = () => {
         <div className="button-back-block">
           <Link to={backWithSearch} className="icon">
             <img
-              src="/img/icons/ArrowLeft.svg"
+              src="img/icons/ArrowLeft.svg"
               alt="arrow icon"
               className="icon"
             />

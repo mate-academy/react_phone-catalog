@@ -81,7 +81,7 @@ export const BurgerNavigation: React.FC<Props> = ({
               }}
             >
               <img
-                src="/img/icons/FavoritesHeartLike.svg"
+                src="img/icons/FavoritesHeartLike.svg"
                 alt="Favorites icon"
                 className="icon"
               />
@@ -108,7 +108,7 @@ export const BurgerNavigation: React.FC<Props> = ({
               }}
             >
               <img
-                src="/img/icons/ShoppingBag.svg"
+                src="img/icons/ShoppingBag.svg"
                 alt="Shopping Bag icon"
                 className="icon"
               />

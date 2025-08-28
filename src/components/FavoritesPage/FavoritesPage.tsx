@@ -13,7 +13,7 @@ export const FavoritesPage = () => {
   const [allProducts, setAllProducts] = useState<AllProductsType[]>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => res.json())
       .then((data: AllProductsType[]) => setAllProducts(data));
   }, []);
