@@ -321,9 +321,6 @@
     .box-title {
       padding-bottom: 16px;
       border-bottom: 1px solid $border-color;
-
-      @include onTablet {
-      }
     }
 
     .about-model {
