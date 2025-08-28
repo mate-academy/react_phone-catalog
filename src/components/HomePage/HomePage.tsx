@@ -52,10 +52,10 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <h1 className="titleMate">Welcome to Nice Gadgets store! </h1>
+      <h1 className="titleMate">Product Catalog</h1>
       <div className="section">
         <div className="title-section">
-          <h1 className="title">Welcome to Nice Gadgets store! </h1>
+          <h1 className="title">Welcome to Nice Gadgets store!</h1>
         </div>
 
         <BannerSwiper />
