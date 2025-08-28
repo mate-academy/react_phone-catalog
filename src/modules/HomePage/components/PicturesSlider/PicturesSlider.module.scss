@@ -1,0 +1,142 @@
+@import '../../../../shared/styles/mixins';
+
+.main-slider {
+  margin-bottom: 56px;
+
+  &__container {
+    @include on-tablet {
+      @include grid-layout;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    color: $text-color-black;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      line-height: 56px;
+      margin-bottom: 56px;
+    }
+  }
+
+  &__images {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: 320px;
+
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+     @include on-tablet {
+      width: 100%;
+      margin-left: 0;
+      grid-column: 2 / 12;
+
+      height: 189px;
+    }
+
+    @include on-tablet-middle {
+      grid-column: 2 / 15;
+      height: 248px;
+    }
+
+    @include on-tablet-large {
+      grid-column: 2 / 20;
+      height: 318px;
+    }
+
+    @include on-desktop {
+      grid-column: 2 / 24;
+      height: 400px;
+    }
+  }
+
+
+  &__wrapper {
+    height: 352px;
+    position: relative;
+
+    @include on-tablet {
+      @include grid-layout;
+
+      grid-column: 1 / -1;
+      height: 221px;
+    }
+
+    @include on-tablet-middle {
+      height: 280px;
+    }
+
+    @include on-tablet-large {
+      height: 350px;
+    }
+
+    @include on-desktop {
+      height: 432px;
+    }
+  }
+}
+
+.custom-prev,
+.custom-next {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+    max-height: 189px;
+    background: none;
+    border: 1px solid #B4BDC3;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+    transition: all $effect-duration;
+
+    &:hover {
+      border: 1px solid $text-color-black;
+    }
+  }
+
+  @include on-tablet-middle {
+    max-height: 248px;
+  }
+
+  @include on-tablet-large {
+    max-height: 318px;
+  }
+
+  @include on-desktop {
+    max-height: 400px;
+  }
+}
+
+.custom-prev {
+  @include on-tablet {
+    grid-column: 1;
+  }
+}
+
+.custom-next {
+   @include on-tablet {
+    grid-column: -2;
+  }
+}

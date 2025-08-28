@@ -1,0 +1,33 @@
+@import '../../../../../../shared/styles/variable';
+@import '../../../../../../shared/styles/mixins';
+
+.description {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $text-color-black;
+
+    @include on-tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__texts{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color-gray;
+  }
+}

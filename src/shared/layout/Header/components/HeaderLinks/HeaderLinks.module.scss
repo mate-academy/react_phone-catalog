@@ -1,0 +1,73 @@
+@import '../../../../styles/variable';
+@import '../../../../styles/mixins';
+
+.header {
+  display: flex;
+  width: 100%;
+
+  &__links--desctop{
+    display: none;
+    position: relative;
+
+    &:hover {
+      border: 1px solid $text-color-black;
+    }
+
+    @include on-tablet {
+      @include icon-button-desktop(48px);
+    }
+
+    @include on-desktop {
+      @include icon-button-desktop(64px);
+    }
+  }
+
+  &__links--mobile{
+    display: flex;
+    flex: 1 1 50%;
+    position: relative;
+
+    @include icon-button-desktop(64px);
+
+    &:hover {
+      border: 1px solid $text-color-black;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
+
+.links__underline {
+  @include underline-link;
+}
+
+.count {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #EB5757;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    font-size: 9px;
+    font-weight: 400;
+
+    left: 51%;
+    top: 19px;
+
+  @include on-tablet {
+    left: 24px;
+    top: 10px;
+  }
+
+  @include on-desktop {
+    left: 32px;
+    top: 18px;
+  }
+}
+
+
