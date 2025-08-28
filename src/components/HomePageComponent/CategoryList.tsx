@@ -23,7 +23,7 @@ export const CategoryList = () => {
             category-list-product__link--phone-color"
           >
             <img
-              src="../img/category-phones.webp"
+              src="./img/category-phones.webp"
               alt="phones"
               className="category-list-product__img"
             />
@@ -43,7 +43,7 @@ export const CategoryList = () => {
           category-list-product__link--tablets-color"
           >
             <img
-              src="../img/category-tablets.webp"
+              src="/img/category-tablets.webp"
               alt="phones"
               className="category-list-product__img"
             />
@@ -63,7 +63,7 @@ export const CategoryList = () => {
           category-list-product__link--acc-color"
           >
             <img
-              src="../img/category-accessories.webp"
+              src="img/category-accessories.webp"
               alt="phones"
               className="category-list-product__img"
             />
