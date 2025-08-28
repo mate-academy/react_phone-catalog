@@ -53,7 +53,7 @@ export const HomePage: React.FC = () => {
       <h1 className="titleMate">Product Catalog</h1>
       <div className="section">
         <div className="title-section">
-          <h1 className="title">Welcome to Nice Gadgets store!</h1>
+          <div className="title">Welcome to Nice Gadgets store!</div>
         </div>
 
         <BannerSwiper />
