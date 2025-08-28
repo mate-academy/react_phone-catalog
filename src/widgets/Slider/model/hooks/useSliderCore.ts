@@ -20,8 +20,14 @@ export const useSliderCore = (startIndex: number, amount: number) => {
     initialSetup.current = true;
   }, [DOM.item, DOM.viewport, DOM.track]);
 
-  const setByIndex = (idx: number) => {
-    snap(idx, true);
+  const setByIndex = (idx: number, clamped: boolean = false) => {
+    let newIdx = idx;
+
+    if (clamped) {
+      newIdx = math.checkIndexClamp(idx);
+    }
+
+    snap(newIdx, true);
   };
 
   const handlers = {

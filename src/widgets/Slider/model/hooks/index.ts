@@ -1,5 +1,4 @@
-export { useAF } from './useAnimationFrame';
-export { useSliderHandlers } from './useHandlers';
+export { useSliderCore } from './useSliderCore';
+export { useSliderUtils } from './useSliderUtils';
+export { useAnimation } from './useAnimation';
 export { useInfinite } from './useInfinite';
-export { useResize } from './useResize';
-export { useSliderUtils } from './useSliderMechanics';

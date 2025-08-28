@@ -15,7 +15,7 @@ type Props = {
   amount: number;
 };
 
-export const HeroSlider: React.FC<Props> = ({
+export const ProdSlider: React.FC<Props> = ({
   data,
   startIdx,
   amount,
@@ -31,7 +31,7 @@ export const HeroSlider: React.FC<Props> = ({
 
   return (
     <section className={styles['hero-slider']} aria-label="Featured promotions">
-      <SliderButtons setByIndex={setByIndex} />
+      <SliderButtons setByIndex={setByIndex} posMod={1} />
       <div className={styles.viewport} ref={DOM.viewport} {...handlers}>
         <div
           className={styles.track}

@@ -1,25 +1,13 @@
-import { BaseProduct } from '@shared/types/APIReturnTypes';
-
-type LoadState = {
-  banners: boolean;
-  newest: boolean;
-  hotPrice: boolean;
-};
-
-type ErrorState = {
-  banners: null | string;
-  newest: null | string;
-  hotPrice: null | string;
-};
+import { CatalogueProduct } from '@shared/types/APIReturnTypes';
 
 type Conf = {
   key: string;
   getter: () => Promise<{
-    data: BaseProduct[];
+    data: CatalogueProduct[];
     currentPage: number;
     pages: number;
   }>;
-  setter: (data: BaseProduct[]) => void;
+  setter: (data: CatalogueProduct[]) => void;
 };
 
-export { type LoadState, type ErrorState, type Conf };
+export { type Conf };

@@ -5,6 +5,7 @@
   box-sizing: border-box;
   width: s.$c-card-width;
   height: s.$c-card-height;
+  flex-shrink: 0;
 }
 
 .product-card {

@@ -1,1 +1,1 @@
-export { type LoadState, type ErrorState, type Conf } from './hooksTypes';
+export { type Conf } from './hooksTypes';

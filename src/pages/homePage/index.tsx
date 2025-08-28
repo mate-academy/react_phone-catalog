@@ -1,15 +1,12 @@
 import React from 'react';
-import { Slider } from '@widgets/slider/';
-import { SliderType } from '@widgets/Slider/types/types';
-import { prodStyles, categories } from './model';
+import { categories } from './model';
 import styles from './styles/HomePage.module.scss';
 import { Link } from 'react-router-dom';
 import { useHomePage } from './model/useHomepage';
-import { Spinner } from '@shared/ui';
-import { SliderS } from '@widgets/sliderCss';
+import { Slider } from '@widgets/slider';
 
 export const HomePage = () => {
-  const { newest, hotPrice, bannerList, loading, amount } = useHomePage();
+  const { amount, items } = useHomePage();
 
   return (
     <main className={styles.container}>
@@ -18,25 +15,10 @@ export const HomePage = () => {
         <span className={styles.welcome__text}>
           Welcome to Nice Gadgets store!
         </span>
-        <SliderS mode="hero" data={bannerList} />
+        <Slider mode="hero" data={items.banner} />
       </div>
       <div className={styles['home-catalogue']}>
-        <section
-          className={`${styles.prodSwiper} ${styles['slider-container']}`}
-        >
-          <h2 className={styles.prodSwiper__title}>Brand new Models</h2>
-          {loading.newest === true ? (
-            <Spinner />
-          ) : (
-            newest && (
-              <Slider
-                classNames={prodStyles}
-                dataset={newest}
-                type={SliderType.PROD}
-              />
-            )
-          )}
-        </section>
+        <Slider mode="catalogue" data={items.new} title="Brand new Models" />
         <section
           className={styles.categories}
           style={{ '--fields-count': categories.length } as React.CSSProperties}
@@ -61,22 +43,7 @@ export const HomePage = () => {
             </Link>
           ))}
         </section>
-        <section
-          className={`${styles.prodSwiper} ${styles['slider-container']}`}
-        >
-          <h2 className={styles.prodSwiper__title}>Hot prices</h2>
-          {loading.hotPrice === true ? (
-            <Spinner />
-          ) : (
-            hotPrice && (
-              <Slider
-                classNames={prodStyles}
-                dataset={hotPrice}
-                type={SliderType.PROD}
-              />
-            )
-          )}
-        </section>
+        <Slider mode="catalogue" data={items.promo} title="Hot prices" />
       </div>
     </main>
   );

@@ -6,7 +6,8 @@
 
   @include s.m-btn-btn-reg;
 
-  &:hover {
+  &:hover, &:focus {
     @include s.m-btn-hover-reg;
+    border-color: s.$c-icons;
   }
 }

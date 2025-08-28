@@ -2,35 +2,69 @@
 import { Category, get } from '@shared/api/';
 import { BannerData, CatalogueProduct } from '@shared/types/APIReturnTypes';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Conf, ErrorState, LoadState } from '../types';
 import { DATA_LOAD_CONFIGS } from '../config';
 
+type ItemState = {
+  new: CatalogueProduct[] | null | undefined;
+  promo: CatalogueProduct[] | null | undefined;
+  banner: BannerData[] | null | undefined;
+};
+
+type FlagKey = 'new' | 'promo' | 'banner';
+
 export const useHomePage = () => {
-  const [loading, setLoading] = useState<LoadState>({
-    banners: true,
-    newest: true,
-    hotPrice: true,
+  const [items, setItems] = useState<ItemState>({
+    new: null,
+    promo: null,
+    banner: null,
   });
-  const [errors, setErrors] = useState<ErrorState>({
-    banners: null,
-    newest: null,
-    hotPrice: null,
-  });
-  const failCount = {
-    banner: useRef<number>(0),
-    newest: useRef<number>(0),
-    hotPrice: useRef<number>(0),
-  };
-  const [newest, setNewest] = useState<CatalogueProduct[] | null>(null);
-  const [hotPrice, setHotPrice] = useState<CatalogueProduct[] | null>(null);
-  const [bannerList, setBannerList] = useState<BannerData[] | null | undefined>(
-    null,
-  );
+
   const [amount, setAmount] = useState({
     phones: 'Loading...',
     tablets: 'Loading...',
     accessories: 'Loading...',
   });
+
+  const failCount = {
+    new: useRef<number>(0),
+    promo: useRef<number>(0),
+    banner: useRef<number>(0),
+  };
+
+  // that func is universal loader for different datatypes and uses API config, that's why 'any'.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const load = async (fn: any, flag: FlagKey) => {
+    try {
+      const foo = await fn();
+
+      setItems(prev => ({ ...prev, [flag]: foo.data ? foo.data : foo }));
+
+      failCount[flag].current = 0;
+    } catch (e) {
+      if (failCount[flag].current < 3) {
+        failCount[flag].current += 1;
+        await new Promise(resolve =>
+          setTimeout(resolve, 1000 * failCount[flag].current),
+        );
+
+        return load(fn, flag);
+      } else {
+        setItems(prev => ({ ...prev, [flag]: undefined }));
+      }
+    }
+  };
+
+  const loadAllData = useCallback(async () => {
+    await Promise.all([
+      load(get.banners, 'banner'),
+      load(DATA_LOAD_CONFIGS.NEWEST.getter, 'new'),
+      load(DATA_LOAD_CONFIGS.HOT_PRICE.getter, 'promo'),
+    ]);
+  }, []);
+
+  useEffect(() => {
+    loadAllData();
+  }, [loadAllData]);
 
   const loadAmount = async (category: Omit<Category, Category.ALL>) => {
     try {
@@ -57,57 +91,5 @@ export const useHomePage = () => {
     );
   }, []);
 
-  const loadCatalogs = async (conf: Conf) => {
-    const { key, getter, setter } = conf;
-
-    try {
-      const resp = await getter();
-
-      setter(resp.data);
-    } catch (e) {
-      setErrors(prev => ({
-        ...prev,
-        [key]: e instanceof Error ? e.message : `Failed to load ${key}`,
-      }));
-    } finally {
-      setLoading(prev => ({
-        ...prev,
-        [key]: false,
-      }));
-    }
-  };
-
-  const loadBanners = async () => {
-    try {
-      const banners = await get.banners();
-
-      setBannerList(banners);
-      failCount.banner.current = 0;
-    } catch (e) {
-      if (failCount.banner.current < 3) {
-        failCount.banner.current += 1;
-        await new Promise(resolve =>
-          setTimeout(resolve, 1000 * failCount.banner.current),
-        );
-
-        return loadBanners();
-      } else {
-        setBannerList(undefined);
-      }
-    }
-  };
-
-  const loadAllData = useCallback(async () => {
-    await Promise.all([
-      loadCatalogs({ ...DATA_LOAD_CONFIGS.NEWEST, setter: setNewest }),
-      loadCatalogs({ ...DATA_LOAD_CONFIGS.HOT_PRICE, setter: setHotPrice }),
-      loadBanners(),
-    ]);
-  }, []);
-
-  useEffect(() => {
-    loadAllData();
-  }, [loadAllData]);
-
-  return { loading, newest, hotPrice, bannerList, errors, amount };
+  return { amount, items };
 };

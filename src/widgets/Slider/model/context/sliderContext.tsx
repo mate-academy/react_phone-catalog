@@ -1,74 +1,70 @@
-import { BannerData } from '@entities/bannerSlide/types/bannerSlide';
-import { BaseProduct } from '@shared/types/APIReturnTypes';
-import { createContext, ReactNode, useContext, useMemo, useRef } from 'react';
-import { listCreate } from '../helpers/listProcess';
-import { Mode, SliderType } from '@widgets/Slider/types/types';
+import { createContext, ReactNode, useRef, useState } from 'react';
+import { createContextHook } from '@shared/helpers/contextProvider';
 
-type SliderContextType = {
-  VP: React.RefObject<HTMLDivElement>;
-  track: React.RefObject<HTMLUListElement>;
-  trackElement: React.RefObject<HTMLLIElement>;
-  offset: React.MutableRefObject<number>;
-  drag: React.MutableRefObject<number | null>;
-  list: ((BannerData | BaseProduct) & { idx: number })[];
-  length: number;
-  type: SliderType;
-  vpWidth: React.MutableRefObject<number>;
-  elWidth: React.MutableRefObject<number>;
-  CLONES: number;
-  mode: Mode;
+type SliderDataType = {
+  DOM: {
+    viewport: React.RefObject<HTMLDivElement>;
+    track: React.RefObject<HTMLDivElement>;
+    item: React.RefObject<HTMLAnchorElement | HTMLLIElement>;
+  };
+  measure: {
+    VPWidth: React.MutableRefObject<number>;
+    trackWidth: React.MutableRefObject<number>;
+    itemWidth: React.MutableRefObject<number>;
+  };
+  mechanics: {
+    offset: React.MutableRefObject<number>;
+    drag: React.MutableRefObject<number | null>;
+    dragging: React.MutableRefObject<boolean>;
+    index: React.MutableRefObject<number>;
+  };
+  rerender: () => void;
 };
 
-const SlContext = createContext<SliderContextType | null>(null);
+const SliderDataContext = createContext<SliderDataType | null>(null);
 
-export const useSlContext = () => {
-  const context = useContext(SlContext);
-
-  if (!context) {
-    throw new Error('Must be used within SLProvider');
-  }
-
-  return context;
-};
-
-type Props = {
+type ContextProps = {
   children: ReactNode;
-  config: {
-    dataset: BannerData[] | BaseProduct[];
-    mode: Mode;
-  };
-  type: SliderType;
+  startIdx: number;
 };
 
-export const SliderProvider = ({ children, config, type }: Props) => {
-  const CLONES = 1;
-  const VP = useRef<HTMLDivElement>(null);
-  const track = useRef<HTMLUListElement>(null);
-  const trackElement = useRef<HTMLLIElement>(null);
-  const offset = useRef(0);
-  const drag = useRef<number | null>(null);
-  const list = useMemo(
-    () => listCreate(config.dataset, config.mode, CLONES),
-    [config.dataset, config.mode],
+const SliderDataProvider = ({ children, startIdx }: ContextProps) => {
+  const DOMRefs = {
+    viewport: useRef<HTMLDivElement>(null),
+    track: useRef<HTMLDivElement>(null),
+    item: useRef<HTMLAnchorElement | HTMLLIElement>(null),
+  };
+
+  const measureRefs = {
+    VPWidth: useRef<number>(0),
+    trackWidth: useRef<number>(0),
+    itemWidth: useRef<number>(0),
+  };
+
+  const mechRefs = {
+    offset: useRef<number>(0),
+    drag: useRef<number | null>(null),
+    dragging: useRef<boolean>(false),
+    index: useRef<number>(startIdx),
+  };
+
+  const [tick, setTick] = useState(false);
+  const rerender = () => setTick(!tick);
+
+  const data = {
+    DOM: DOMRefs,
+    measure: measureRefs,
+    mechanics: mechRefs,
+    rerender,
+  };
+
+  return (
+    <SliderDataContext.Provider value={data}>
+      {children}
+    </SliderDataContext.Provider>
   );
-  const length = list.length;
-  const vpWidth = useRef<number>(0);
-  const elWidth = useRef<number>(0);
-  // #endregion
-  const value = {
-    VP,
-    track,
-    trackElement,
-    offset,
-    drag,
-    list,
-    length,
-    type,
-    vpWidth,
-    elWidth,
-    CLONES,
-    mode: config.mode,
-  };
-
-  return <SlContext.Provider value={value}>{children}</SlContext.Provider>;
 };
+
+const useSliderData = createContextHook(SliderDataContext);
+
+export { useSliderData, SliderDataProvider };

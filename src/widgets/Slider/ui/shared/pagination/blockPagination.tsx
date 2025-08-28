@@ -1,4 +1,4 @@
-import { useSliderData } from '@widgets/sliderCss/model';
+import { useSliderData } from '../../../model';
 import styles from '../../../styles/blockPagination.module.scss';
 import classNames from 'classnames';
 
@@ -34,8 +34,11 @@ export const InfiniteBlockPagination = ({
         <button
           className={styles['pagination-button']}
           key={el}
-          onClick={() => setByIndex(el + startIndex)}
+          onClick={() => {
+            setByIndex(el + startIndex);
+          }}
           aria-current={getCurrent(el)}
+          aria-label={`Show slide #${el + 1}`}
         >
           <div
             className={classNames(styles['pagination-img'], {

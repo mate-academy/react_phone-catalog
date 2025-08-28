@@ -1,35 +1,43 @@
-import { HooksConfig, Mode, SliderConfig } from '../types/types';
+import { SliderMode } from './types';
+import {
+  CatalogueSlider,
+  CatalogueSkeleton,
+  HeroSkeleton,
+  HeroSlider,
+  ProdSlider,
+  ProdSkeleton,
+} from '../ui';
 
-const bannerHooksConfig: HooksConfig = {
-  swipeCoeff: 1.2,
-  threshold: 0.1,
-  autoplay: {
-    autoplay: true,
-    times: Infinity,
-    interval: 5000,
-  },
-  gap: 0,
-  animationSpeed: 350,
-};
-
-const bannerConfig: SliderConfig = {
-  mode: Mode.INFINITE,
-  ...bannerHooksConfig,
-};
-
-const prodHooksConfig: HooksConfig = {
-  swipeCoeff: 1.2,
-  threshold: 0.1,
-  autoplay: {
-    autoplay: false,
-  },
+const visualConfig = {
   gap: 16,
-  animationSpeed: 350,
+  animationSpeed: 300,
 };
 
-const prodConfig: SliderConfig = {
-  mode: Mode.CLAMP,
-  ...prodHooksConfig,
+const hero = {
+  element: HeroSlider,
+  skeleton: HeroSkeleton,
+  err: 'Unable to load banners',
+  startIdx: 1,
 };
 
-export { bannerConfig, prodConfig, prodHooksConfig, bannerHooksConfig };
+const catalogue = {
+  element: CatalogueSlider,
+  skeleton: CatalogueSkeleton,
+  err: 'Unable to load catalogue slider',
+  startIdx: 0,
+};
+
+const product = {
+  element: ProdSlider,
+  skeleton: ProdSkeleton,
+  err: 'Unable to load product images',
+  startIdx: 1,
+};
+
+const configs = {
+  [SliderMode.HERO]: hero,
+  [SliderMode.CATALOGUE]: catalogue,
+  [SliderMode.PRODUCT_CARD]: product,
+};
+
+export { configs, visualConfig };

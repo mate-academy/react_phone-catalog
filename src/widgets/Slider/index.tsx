@@ -1,40 +1,31 @@
-import {
-  bannerConfig,
-  bannerHooksConfig,
-  prodConfig,
-  prodHooksConfig,
-} from './model/configs';
-import { SliderType } from './types/types';
-import { SliderProvider } from './model/context/sliderContext';
-import { MainSlider } from './ui';
-import { useMemo } from 'react';
 import { BannerData, CatalogueProduct } from '@shared/types';
+import { SliderDataProvider } from './model/context/sliderContext';
+import { configs } from './model';
 
 type Props = {
-  dataset: BannerData[] | CatalogueProduct[];
-  classNames: {
-    viewport: string;
-    pagination?: string;
-    buttonPrev?: string;
-    buttonNext?: string;
-  };
-  type: SliderType;
+  mode: 'hero' | 'catalogue';
+  data: BannerData[] | CatalogueProduct[] | null | undefined;
+  title?: string;
 };
 
-//TODO: re-access CSS props (clamp), fix buttons, fix pagination
-export const Slider: React.FC<Props> = ({ dataset, classNames, type }) => {
-  const config = useMemo(() => {
-    return type === SliderType.BANNER ? bannerConfig : prodConfig;
-  }, []);
+export const Slider = ({ mode, data, title }: Props) => {
+  const { element: Element, skeleton: Skeleton, err, startIdx } = configs[mode];
 
-  const hooksConfig = useMemo(() => {
-    return type === SliderType.BANNER ? bannerHooksConfig : prodHooksConfig;
-  }, []);
-  const providerConfig = { dataset, mode: config.mode };
-
-  return (
-    <SliderProvider config={providerConfig} type={type}>
-      <MainSlider classNames={classNames} hooksConfig={hooksConfig} />
-    </SliderProvider>
-  );
+  switch (data) {
+    case undefined:
+      return <Skeleton error={err} />;
+    case null:
+      return <Skeleton />;
+    default:
+      return (
+        <SliderDataProvider startIdx={startIdx}>
+          <Element
+            data={data}
+            startIdx={startIdx}
+            amount={data.length}
+            {...(title ? { title } : {})}
+          />
+        </SliderDataProvider>
+      );
+  }
 };

@@ -45,11 +45,14 @@ export const useSliderUtils = (startIndex: number, amount: number) => {
   const math = {
     checkIndexClamp: (arg: number) => {
       if (arg < 0) {
-        return amount;
+        return 0;
       }
 
       if (arg >= amount + startIndex * 2) {
-        return startIndex;
+        return (
+          amount -
+          Math.ceil(measure.VPWidth.current / (measure.itemWidth.current + gap))
+        );
       }
 
       return arg;
