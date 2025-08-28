@@ -111,21 +111,5 @@
       color: rgba(255, 255, 255, 1);
       background-color: rgba(49, 50, 55, 1);
     }
-
-    &__buttonIcon {
-      width: 4.0rem;
-      height: 4.0rem;
-
-      border: 0.1rem solid rgba(180, 189, 195, 1);
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    &__icon {
-      width: 1.6rem;
-      height: 1.6rem;
-    }
   }
 }

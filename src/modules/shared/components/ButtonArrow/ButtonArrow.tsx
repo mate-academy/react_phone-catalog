@@ -17,8 +17,6 @@ export const ButtonArrow: React.FC<Props> = ({ direction }) => {
       <svg
         className={scss.button__icon}
         style={{ transform: direction === 'left' ? 'rotate(180deg)' : 'none' }}
-        aria-hidden="true"
-        focusable="false"
       >
         <use href="/icons/icons.svg#arrow"></use>
       </svg>

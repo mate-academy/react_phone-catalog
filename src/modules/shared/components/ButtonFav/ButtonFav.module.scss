@@ -1,0 +1,24 @@
+.buttonFav {
+  width: 4.0rem;
+  height: 4.0rem;
+
+  border: 0.1rem solid rgba(180, 189, 195, 1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 250ms ease-in-out;
+
+
+  &__icon {
+      width: 1.6rem;
+      height: 1.6rem;
+
+      transition: all 500ms ease-in-out;
+  }
+
+  &:hover {
+    border-color: rgba(49, 50, 55, 1);
+  }
+}

@@ -44,4 +44,6 @@ export type DataContextProps = {
   phones: Phone[];
   products: Product[];
   isLoading: boolean;
+  favItems: number[];
+  setFavItems: React.Dispatch<React.SetStateAction<number[]>>;
 };

@@ -1,0 +1,31 @@
+.breadcrumbs {
+  padding: 2.4rem 1.6rem 0;
+
+  &__path {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  &__link {
+    padding: 0;
+  }
+
+  &__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+
+    &_color {
+      fill: rgba(180, 189, 195, 1);
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    color: rgba(137, 147, 154, 1);
+  }
+}

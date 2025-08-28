@@ -22,9 +22,9 @@ export const Pictures: React.FC<Props> = ({ activeSlide }) => {
       {slides.map((_, i) => {
         return (
           <picture key={i}>
-            <source srcSet={slides[activeSlide]} type="image/webp" />
+            <source srcSet={slides[i]} type="image/webp" />
             <img
-              src={slides[activeSlide]}
+              src={slides[i]}
               alt={alt}
               className={classNames(scss.picture__img, {
                 [scss.picture__img_active]: activeSlide === i,

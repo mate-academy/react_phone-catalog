@@ -1,5 +1,7 @@
+import { useMemo } from 'react';
 import { Product } from '../../../../api/types';
 import scss from './ProductCard.module.scss';
+import { ButtonFav } from '../ButtonFav/ButtonFav';
 
 interface Props {
   product: Product;
@@ -7,19 +9,19 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ product, discount }) => {
-  const normalPrice = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(product.fullPrice);
+  const formatter = useMemo(
+    () =>
+      new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }),
+    [],
+  );
 
-  const discountPrice = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(product.price);
+  const normalPrice = formatter.format(product.fullPrice);
+  const discountPrice = formatter.format(product.price);
 
   return (
     <article className={scss.productCard}>
@@ -81,18 +83,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
           <button className={scss.productCard__buttons__cart}>
             Add to cart
           </button>
-          <button
-            className={scss.productCard__buttons__buttonIcon}
-            aria-label="Add to favourites"
-          >
-            <svg
-              className={scss.productCard__buttons__icon}
-              aria-hidden="true"
-              focusable="false"
-            >
-              <use href="/icons/icons.svg#heart-icon"></use>
-            </svg>
-          </button>
+          <ButtonFav productId={product.id} />
         </div>
       </dl>
     </article>
