@@ -8,6 +8,12 @@
 
   &:hover, &:focus {
     @include s.m-btn-hover-reg;
+    
     border-color: s.$c-icons;
+  }
+
+  &:disabled {
+
+    @include s.m-btn-disabled;
   }
 }

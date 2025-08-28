@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useHomePage } from './model/useHomepage';
 import { Slider } from '@widgets/slider';
 
+//todo: make categories length => span
+
 export const HomePage = () => {
   const { amount, items } = useHomePage();
 

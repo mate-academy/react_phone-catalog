@@ -24,6 +24,7 @@ $primary-grey-border: 1px solid c.$grey-primary;
     outline: none;
   }
 }
+
 // #endregion
 
 // #region Buttons
@@ -45,6 +46,7 @@ $primary-grey-border: 1px solid c.$grey-primary;
 
   @include button-base;
 }
+
 // #endregion
 
 // #region Hover
@@ -55,6 +57,7 @@ $primary-grey-border: 1px solid c.$grey-primary;
 @mixin hover-black {
   box-shadow: 0 3px 13px #17203166;
 }
+
 // #endregion
 
 // #region Active
@@ -64,5 +67,13 @@ $primary-grey-border: 1px solid c.$grey-primary;
   background-color: c.$white;
   box-shadow: none;
 }
+
 // #endregion
 
+@mixin disabled {
+  border-color: c.$elements;
+
+  > svg > path {
+    fill: c.$elements;
+  }
+}
