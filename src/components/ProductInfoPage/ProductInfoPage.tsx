@@ -109,10 +109,10 @@ export const ProductInfoPage: React.FC = () => {
     ...baseSpecifications,
     ...(foundItem.category === 'phones' || foundItem.category === 'tablets'
       ? [
-        { name: 'Built in memory', value: foundItem.capacity },
-        { name: 'Camera', value: foundItem.camera },
-        { name: 'Zoom', value: foundItem.zoom },
-        { name: 'Cell', value: foundItem.cell.join(', ') },
+          { name: 'Built in memory', value: foundItem.capacity },
+          { name: 'Camera', value: foundItem.camera },
+          { name: 'Zoom', value: foundItem.zoom },
+          { name: 'Cell', value: foundItem.cell.join(', ') },
         ]
       : [{ name: 'Cell', value: foundItem.cell.join(', ') }]),
   ];

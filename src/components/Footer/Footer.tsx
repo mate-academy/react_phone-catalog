@@ -5,12 +5,13 @@ export const Footer = () => {
   return (
     <div className="footerBlock">
       <div className="footer-container">
-        <div className="logoContainer">
+        <div className="logoContainer" >
           <Link to="/" className="footer-logo-link">
             <img
               src="img/logo/logo.svg"
               alt="Company logo"
               className="logo footer-logo"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             />
           </Link>
         </div>

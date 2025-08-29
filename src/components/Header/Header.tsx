@@ -7,7 +7,7 @@ import { HeaderNavigation } from '../HeaderNavigation';
 
 export const Header = () => {
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
-  
+
 
   return (
     <>
@@ -19,6 +19,7 @@ export const Header = () => {
               className="header__link"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                setIsBurgerMenu(false);
               }}
             >
               <img

@@ -43,6 +43,8 @@ export const CartPage = () => {
 
   const closeMessage = () => setOrderMessage(null);
 
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <div className="cart-page">
       <div className="button-back-block">
@@ -126,7 +128,7 @@ export const CartPage = () => {
 
           <div className="totalForItem">
             <div className="totalItem-Price">${cartTotalSum}</div>
-            <p className="main-body-text-14">Total for {itemInCart} items</p>
+            <p className="main-body-text-14">Total for {totalQuantity} items</p>
             <button className="checkout button-text" onClick={handleCheckout}>
               Checkout
             </button>
