@@ -1,7 +1,7 @@
 React Phone Catalog
 
-Live Demo
- • <a src='https://nex1994.github.io/react_phone-catalog/'>Live Demo</a>
+
+<a src='https://nex1994.github.io/react_phone-catalog/'>Live Demo</a>
 
 An e-commerce web application for browsing, filtering, and purchasing phones and accessories. The project was developed as part of a learning assignment and expanded with production-quality improvements.
 
