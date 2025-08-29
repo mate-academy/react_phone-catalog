@@ -48,7 +48,7 @@
     }
   }
 
-  &:has(.product-not-found) {
+  &:has(.product-not-found, .cart-page) {
     > *:last-child {
       margin-bottom: 0;
     }
