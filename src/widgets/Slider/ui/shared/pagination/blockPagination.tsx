@@ -34,6 +34,7 @@ export const InfiniteBlockPagination = ({
         <button
           className={styles['pagination-button']}
           key={el}
+          role="tab"
           onClick={() => {
             setByIndex(el + startIndex);
           }}

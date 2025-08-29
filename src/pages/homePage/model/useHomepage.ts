@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
 import { Category, get } from '@shared/api/';
 import { BannerData, CatalogueProduct } from '@shared/types/APIReturnTypes';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { DATA_LOAD_CONFIGS } from '../config';
+import { DATA_LOAD } from './config';
 
 type ItemState = {
   new: CatalogueProduct[] | null | undefined;
@@ -33,9 +32,9 @@ export const useHomePage = () => {
 
   // that func is universal loader for different datatypes and uses API config, that's why 'any'.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const load = async (fn: any, flag: FlagKey) => {
+  const load = async (bar: any, flag: FlagKey) => {
     try {
-      const foo = await fn();
+      const foo = await bar();
 
       setItems(prev => ({ ...prev, [flag]: foo.data ? foo.data : foo }));
 
@@ -47,7 +46,7 @@ export const useHomePage = () => {
           setTimeout(resolve, 1000 * failCount[flag].current),
         );
 
-        return load(fn, flag);
+        return load(bar, flag);
       } else {
         setItems(prev => ({ ...prev, [flag]: undefined }));
       }
@@ -57,8 +56,8 @@ export const useHomePage = () => {
   const loadAllData = useCallback(async () => {
     await Promise.all([
       load(get.banners, 'banner'),
-      load(DATA_LOAD_CONFIGS.NEWEST.getter, 'new'),
-      load(DATA_LOAD_CONFIGS.HOT_PRICE.getter, 'promo'),
+      load(DATA_LOAD.NEW, 'new'),
+      load(DATA_LOAD.HOT, 'promo'),
     ]);
   }, []);
 
@@ -75,7 +74,6 @@ export const useHomePage = () => {
         [category as string]: `${res.toString()} models`,
       }));
     } catch (e) {
-      console.warn(`Unexpected error: ${e}`);
       setAmount(prev => ({
         ...prev,
         [category as string]: 'failed to load data',

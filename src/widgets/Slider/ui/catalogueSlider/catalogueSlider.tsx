@@ -9,7 +9,7 @@ type Props = {
   data: CatalogueProduct[];
   startIdx: number;
   amount: number;
-  title: string;
+  title: string | undefined;
 };
 
 export const CatalogueSlider: React.FC<Props> = ({
@@ -43,9 +43,9 @@ export const CatalogueSlider: React.FC<Props> = ({
         disable={disableButtons}
       />
       <div className={styles.viewport} ref={DOM.viewport} {...handlers}>
-        <div
+        <ul
           className={styles.track}
-          ref={DOM.track}
+          ref={DOM.track as React.RefObject<HTMLUListElement>}
           tabIndex={0}
           style={
             {
@@ -67,7 +67,7 @@ export const CatalogueSlider: React.FC<Props> = ({
               }
             />
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

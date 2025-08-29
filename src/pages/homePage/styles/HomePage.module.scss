@@ -3,6 +3,7 @@
 $GAP_MOB: 56px;
 $GAP_TAB: 64px;
 $GAP_WIDE: 80px;
+$GRID_SPACER: 24px;
 
 .container {
   @include s.page-layout;
@@ -57,41 +58,16 @@ $GAP_WIDE: 80px;
 
 .categories {
   display: grid;
-  grid-template-rows: repeat(calc(var(--fields-count + 1)), 1fr);
+  width: 100%;
+  grid-template-rows: 31px repeat(3, 1fr);
   gap: 24px;
 
-  &__image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: fill;
-  }
-
-  &__name {
-    @include s.t-h4;
-
-    &::after {
-      content: var(--amount);
-      display: block;
-      margin-top: 4px;
-      line-height: 21px;
-      color: s.$c-grey-secondary;
-      padding-bottom: 8px;
-
-      @include s.t-body-text;
-    }
-  }
-
   @media (min-width: s.$c-BREAKPOINT_TAB) {
-    grid-template-rows: 41px, 1fr, 51px;
-    grid-template-columns: repeat(calc(var(--fields-count)), 1fr);
+    grid-template: 41px 1fr / repeat(3, 1fr);
+    gap: 24px 16px;
 
     &__title {
-      grid-area: 1 / 1 / 1 / calc(var(--fields-count) + 1);
-    }
-
-    &__image {
-      grid-row: 2;
+      grid-area: 1 / 1 / 2 / 4;
     }
   }
 }

@@ -1,11 +1,8 @@
 import React from 'react';
-import { categories } from './model';
+import { categories, useHomePage } from './model';
 import styles from './styles/HomePage.module.scss';
-import { Link } from 'react-router-dom';
-import { useHomePage } from './model/useHomepage';
 import { Slider } from '@widgets/slider';
-
-//todo: make categories length => span
+import { CategoryElement } from './ui';
 
 export const HomePage = () => {
   const { amount, items } = useHomePage();
@@ -27,22 +24,11 @@ export const HomePage = () => {
         >
           <h2 className={styles.categories__title}>Shop by category</h2>
           {categories.map(el => (
-            <Link to={`/${el.link}`} key={el.id}>
-              <img
-                className={styles.categories__image}
-                src={`/src/shared/img/${el.src}`}
-              />
-              <h3
-                className={styles.categories__name}
-                style={
-                  {
-                    '--amount': `"${amount[el.link]}"`,
-                  } as React.CSSProperties
-                }
-              >
-                {el.name}
-              </h3>
-            </Link>
+            <CategoryElement
+              key={el.id}
+              category={el}
+              amount={amount[el.link]}
+            />
           ))}
         </section>
         <Slider mode="catalogue" data={items.promo} title="Hot prices" />

@@ -7,7 +7,7 @@ interface HomePageCategory {
   src: string;
 }
 
-export const categories: HomePageCategory[] = [
+const categories: HomePageCategory[] = [
   {
     id: 0,
     name: 'Mobile phones',
@@ -27,3 +27,5 @@ export const categories: HomePageCategory[] = [
     src: 'accessories.png',
   },
 ];
+
+export { type HomePageCategory, categories };

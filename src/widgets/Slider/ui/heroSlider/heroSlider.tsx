@@ -35,7 +35,7 @@ export const HeroSlider: React.FC<Props> = ({
       <div className={styles.viewport} ref={DOM.viewport} {...handlers}>
         <div
           className={styles.track}
-          ref={DOM.track}
+          ref={DOM.track as React.RefObject<HTMLDivElement>}
           tabIndex={0}
           style={
             {

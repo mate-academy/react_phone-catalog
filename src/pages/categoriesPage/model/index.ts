@@ -1,4 +1,3 @@
-export { reducer, initialState } from './reducer/categoriesReducer';
 export {
   useCategoriesContext,
   CategoriesProvider,

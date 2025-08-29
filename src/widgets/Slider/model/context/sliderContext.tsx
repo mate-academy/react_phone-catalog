@@ -4,7 +4,7 @@ import { createContextHook } from '@shared/helpers/contextProvider';
 type SliderDataType = {
   DOM: {
     viewport: React.RefObject<HTMLDivElement>;
-    track: React.RefObject<HTMLDivElement>;
+    track: React.RefObject<HTMLDivElement | HTMLUListElement>;
     item: React.RefObject<HTMLAnchorElement | HTMLLIElement>;
   };
   measure: {
@@ -31,7 +31,7 @@ type ContextProps = {
 const SliderDataProvider = ({ children, startIdx }: ContextProps) => {
   const DOMRefs = {
     viewport: useRef<HTMLDivElement>(null),
-    track: useRef<HTMLDivElement>(null),
+    track: useRef<HTMLDivElement | HTMLUListElement>(null),
     item: useRef<HTMLAnchorElement | HTMLLIElement>(null),
   };
 

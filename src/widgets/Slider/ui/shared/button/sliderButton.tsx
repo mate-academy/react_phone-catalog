@@ -5,8 +5,8 @@ import { useSliderData } from '../../../model';
 type Props = {
   setByIndex: (mod: number, clamp: boolean) => void;
   posMod: number;
-  clamp: boolean;
-  disable: boolean[];
+  clamp?: boolean;
+  disable?: boolean[];
 };
 
 export const SliderButtons = ({

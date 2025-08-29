@@ -1,2 +1,2 @@
-export { heroStyles, prodStyles } from '../config/sliderStyles';
-export { categories } from '../config/categories';
+export { useHomePage } from './useHomepage';
+export { categories, type HomePageCategory } from './config';

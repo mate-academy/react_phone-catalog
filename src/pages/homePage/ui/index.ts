@@ -1,0 +1,1 @@
+export { CategoryElement } from './categoryElement';
