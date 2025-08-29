@@ -40,31 +40,7 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
 
   const [selectedSort, setSelectedSort] = useState(initialSort);
   const [selectedQuantity, setSelectedQuantity] = useState(initialQuantity);
-
   const productQuantity = filteredProductsCategory.length;
-
-  const handleSortChange = (value: string) => {
-    setSelectedSort(value);
-    setSearchParams(prev => {
-      const params = new URLSearchParams(prev);
-
-      params.set('sort', value);
-
-      return params;
-    });
-  };
-
-  const handleQuantityChange = (value: string) => {
-    setSelectedQuantity(value);
-    setSearchParams(prev => {
-      const params = new URLSearchParams(prev);
-
-      params.set('quantity', value);
-
-      return params;
-    });
-  };
-
   const filteredProduct = useMemo(() => {
     return [...filteredProductsCategory].sort((a, b) => {
       switch (selectedSort) {
@@ -94,6 +70,30 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
     goNext,
     scrollToPage,
   } = usePaginationWithScroll(filteredProduct, itemsPerPage);
+
+  const handleSortChange = (value: string) => {
+    setSelectedSort(value);
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev);
+
+      params.set('sort', value);
+
+      return params;
+    });
+    scrollToPage(1);
+  };
+
+  const handleQuantityChange = (value: string) => {
+    setSelectedQuantity(value);
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev);
+
+      params.set('quantity', value);
+
+      return params;
+    });
+    scrollToPage(1);
+  };
 
   if (errorMessage) {
     return (

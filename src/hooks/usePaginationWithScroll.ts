@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 export const usePaginationWithScroll = <T>(
@@ -9,19 +9,13 @@ export const usePaginationWithScroll = <T>(
   const [searchParams, setSearchParams] = useSearchParams();
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
-
-  const initialPage = Math.max(
-    1,
-    Math.min(Number(searchParams.get('page')) || 1, totalPages),
-  );
-
-  const [currentPage, setCurrentPage] = useState(initialPage);
+  const pageFromUrl = Number(searchParams.get('page')) || 1;
+  const currentPage = Math.max(1, Math.min(pageFromUrl, totalPages));
 
   const scrollToPage = useCallback(
     (page: number) => {
       const safePage = Math.max(1, Math.min(page, totalPages));
 
-      setCurrentPage(safePage);
       setSearchParams(prev => {
         const newParams = new URLSearchParams(prev);
 
@@ -34,7 +28,7 @@ export const usePaginationWithScroll = <T>(
         containerRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
       });
     },
-    [setSearchParams, totalPages, setCurrentPage],
+    [setSearchParams, totalPages],
   );
 
   const goPrev = useCallback(() => {
