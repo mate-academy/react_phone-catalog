@@ -58,6 +58,7 @@ export const BurgerNavigation: React.FC<Props> = ({
                 onClick={() => {
                   saveLastPage();
                   onClose();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               >
                 {title}
