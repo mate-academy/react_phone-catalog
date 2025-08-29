@@ -3,22 +3,33 @@
 .emptycard {
   background-color: var(--favourite-background);
   height: 80vh;
+  &ONDARK {
+    background-color: rgb(28, 27, 27);
+  }
   &image {
     background-image: url('../../../public/img/product-not-found.png');
     background-repeat: no-repeat;
-    background-size: 100% 400px;
+    background-size: 100% 250px;
     background-position: 50%;
-    height: 100%;
+    height: 90%;
     width: 100%;
+    @include on-desktop {
+      height: 80%;
+      background-size: 100% 450px;
+    }
     &ONDARK {
       background-color: rgb(28, 27, 27);
       padding-top: 100px;
       background-image: url('../../../public/img/product-not-found.png');
       background-repeat: no-repeat;
       background-position: 50%;
-      background-size: 100% 400px;
-      height: 100%;
+      background-size: 100% 250px;
+      height: 90%;
       width: 100%;
+          @include on-desktop {
+      height: 80%;
+      background-size: 100% 450px;
+    }
     }
   }
 
@@ -26,11 +37,26 @@
     background-color: var(--favourite-background);
     color: var(--primary-font-color);
     font-family: Mont-bold, sans-serif;
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 800;
-    line-height: 110px;
+    line-height: 80px;
     height: 110px;
     letter-spacing: -0.01em;
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 110px;
+    }
+  }
+  &container {
+    width: 350px;
+    height: 100%;
+    margin: 0 auto;
+    @include on-tablet {
+    width: 550px;
+    }
+    @include on-desktop {
+    width: 800px;
+    }
   }
 }
 

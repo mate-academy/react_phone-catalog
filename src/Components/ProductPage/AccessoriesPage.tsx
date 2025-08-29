@@ -24,9 +24,7 @@ export const AccessoriesPage = () => {
     themeSwitcher,
     error,
     loading,
-  } =
-    useContext(CatalogContext);
-
+  } = useContext(CatalogContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const queries = searchParams.get('query') || '';
@@ -133,12 +131,15 @@ export const AccessoriesPage = () => {
     }
   };
 
-
   const getSkeleton = () => {
     const array: number[] = [];
 
     // eslint-disable-next-line max-len
-    for (let i = 0; i < (items === '' || items === 'all' ? 34 : parseInt(items)); i++) {
+    for (
+      let i = 0;
+      i < (items === '' || items === 'all' ? 34 : parseInt(items));
+      i++
+    ) {
       array.push(i);
     }
 
@@ -161,7 +162,8 @@ export const AccessoriesPage = () => {
               })}
             />
             <div className={accessoriesPage.breadcrumbs__text}>
-              {'>'} Accessories</div>
+              {'>'} Accessories
+            </div>
           </div>
 
           <h1 className={accessoriesPage.header}>Accessories</h1>
@@ -205,13 +207,13 @@ export const AccessoriesPage = () => {
 
       {!Number.isNaN(itemsInNumber) &&
         filteredAccessories.length >= itemsInNumber && (
-        <Pagination
-          filteredItems={filteredAccessories}
-          itemsInNumber={itemsInNumber}
-          number={numberOfPage}
-          setSearchParams={setSearchParams}
-        />
-      )}
+          <Pagination
+            filteredItems={filteredAccessories}
+            itemsInNumber={itemsInNumber}
+            number={numberOfPage}
+            setSearchParams={setSearchParams}
+          />
+        )}
       <Footer />
     </>
   );

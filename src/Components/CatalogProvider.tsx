@@ -3,8 +3,12 @@ import { ContextType } from './types/ContextType';
 import { createContext, useEffect, useState } from 'react';
 import { ProductType } from './types/phones';
 import { Product } from './types/Product';
-import { getAccessories,
-  getPhones, getProducts, getTablets } from '../api/products';
+import {
+  getAccessories,
+  getPhones,
+  getProducts,
+  getTablets,
+} from '../api/products';
 import { useLocaleStorage } from './hooks/useLocaleStorage';
 export const CatalogContext = createContext<ContextType>({
   phones: [],
@@ -63,7 +67,10 @@ export const GlobalCatalogProvider: React.FC<{
   const [visibleItems, setVisibleItems] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   // eslint-disable-next-line max-len
-  const [themeSwitcher, setThemeSwitcher] = useLocaleStorage('themeSwitcher', false);
+  const [themeSwitcher, setThemeSwitcher] = useLocaleStorage(
+    'themeSwitcher',
+    false,
+  );
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -107,9 +114,11 @@ export const GlobalCatalogProvider: React.FC<{
 
   useEffect(() => {
     setLoading(true);
-    getProducts().then(setProducts).finally(() => {
-      setLoading(false);
-    });
+    getProducts()
+      .then(setProducts)
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {

@@ -22,8 +22,8 @@ export const TabletsPage = () => {
     pageNumber,
     themeSwitcher,
     loading,
-    error } =
-    useContext(CatalogContext);
+    error,
+  } = useContext(CatalogContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -131,12 +131,15 @@ export const TabletsPage = () => {
     }
   };
 
-
   const getSkeleton = () => {
     const array: number[] = [];
 
     // eslint-disable-next-line max-len
-    for (let i = 0; i < (items === '' || items === 'all' ? 36 : parseInt(items)); i++) {
+    for (
+      let i = 0;
+      i < (items === '' || items === 'all' ? 36 : parseInt(items));
+      i++
+    ) {
       array.push(i);
     }
 
@@ -202,13 +205,13 @@ export const TabletsPage = () => {
 
       {!Number.isNaN(itemsInNumber) &&
         filteredTablets.length >= itemsInNumber && (
-        <Pagination
-          filteredItems={filteredTablets}
-          itemsInNumber={itemsInNumber}
-          number={numberOfPage}
-          setSearchParams={setSearchParams}
-        />
-      )}
+          <Pagination
+            filteredItems={filteredTablets}
+            itemsInNumber={itemsInNumber}
+            number={numberOfPage}
+            setSearchParams={setSearchParams}
+          />
+        )}
       <Footer />
     </>
   );

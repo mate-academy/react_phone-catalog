@@ -2,10 +2,19 @@
 
 .page {
   height: 100%;
-}
+  &ONDARK {
+    background-color: black;
+  }
 
 .image {
       width: 100%;
+      &container {
+        margin: 0 auto;
+        width: 80%;
+        @include on-tablet {
+          width: 50%;
+        }
+      }
     }
 
     .title {
@@ -20,3 +29,4 @@ line-height: 56px;
 letter-spacing: -0.01em;
 
     }
+  }

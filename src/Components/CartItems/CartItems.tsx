@@ -113,7 +113,11 @@ export const CartItems = () => {
                               clickedItem: Product,
                               changer: 1 | -1,
                             ) => {
-                              if (clickedItem.id === item.id && changer === -1 && clickedItem.amountOfModels === 1) {
+                              if (
+                                clickedItem.id === item.id &&
+                                changer === -1 &&
+                                clickedItem.amountOfModels === 1
+                              ) {
                                 return;
                               }
                               if (clickedItem.id === item.id) {
