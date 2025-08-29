@@ -7,52 +7,57 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.container}>
+      <div className={styles.container} id="top">
         <div className={styles.containerNav}>
           <Link to="/" className={styles.logo} />
           <nav className={styles.nav}>
             <NavLink
               to="/"
-              className={({ isActive }) => (isActive ? styles.active : '')}
+              className={({ isActive }) =>
+                `${styles.nav_item} ${isActive ? styles.active : ''}`
+              }
             >
               Home
             </NavLink>
             <NavLink
               to="/phones"
-              className={({ isActive }) => (isActive ? styles.active : '')}
+              className={({ isActive }) =>
+                `${styles.nav_item} ${isActive ? styles.active : ''}`
+              }
             >
               Phones
             </NavLink>
             <NavLink
               to="/tablets"
-              className={({ isActive }) => (isActive ? styles.active : '')}
+              className={({ isActive }) =>
+                `${styles.nav_item} ${isActive ? styles.active : ''}`
+              }
             >
               Tablets
             </NavLink>
             <NavLink
               to="/accessories"
-              className={({ isActive }) => (isActive ? styles.active : '')}
+              className={({ isActive }) =>
+                `${styles.nav_item} ${isActive ? styles.active : ''}`
+              }
             >
               Accessories
             </NavLink>
           </nav>
         </div>
-
         <div className={styles.actions}>
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
-              `${styles.icon} ${styles.iconLike} ${isActive ? styles.activeIcon : ''}`
+              `${styles.icon} ${styles.iconLike}  ${isActive ? styles.activeIcon : ''}`
             }
           />
-
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              `${styles.icon} ${styles.iconShop} ${isActive ? styles.activeIcon : ''}`
+              `${styles.icon} ${styles.iconShop}  ${isActive ? styles.activeIcon : ''}`
             }
           />
-
           <div className={styles.containerBurger}>
             <div
               className={`${styles.icon} ${styles.iconBurger}`}
@@ -61,10 +66,13 @@ export const Header: React.FC = () => {
           </div>
         </div>
       </div>
-
       <aside className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}>
         <div className={styles.menu__top}>
-          <Link to="/" className={styles.logo} />
+          <Link
+            to="/"
+            className={styles.logo}
+            onClick={() => setIsMenuOpen(false)}
+          />
           <div className={styles.containerClose}>
             <div
               className={`${styles.icon} ${styles.iconClose}`}
@@ -72,7 +80,6 @@ export const Header: React.FC = () => {
             />
           </div>
         </div>
-
         <div className={styles.menu__hero}>
           <ul className={styles.menu__list}>
             <li>
@@ -113,19 +120,18 @@ export const Header: React.FC = () => {
             </li>
           </ul>
         </div>
-
         <div className={styles.menu__bottom}>
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
-              `${styles.icon} ${styles.iconLike} ${isActive ? styles.activeIcon : ''}`
+              `${styles.icon} ${styles.iconLike} ${styles.icon_aside} ${styles['icon_aside-border']} ${isActive ? styles.activeIcon : ''}`
             }
             onClick={() => setIsMenuOpen(false)}
           />
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              `${styles.icon} ${styles.iconShop} ${isActive ? styles.activeIcon : ''}`
+              `${styles.icon} ${styles.iconShop} ${styles.icon_aside} ${isActive ? styles.activeIcon : ''}`
             }
             onClick={() => setIsMenuOpen(false)}
           />

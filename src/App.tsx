@@ -1,6 +1,7 @@
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './Components/Header';
+import { Footer } from './Components/Footer';
 
 export const App = () => {
   return (
@@ -16,6 +17,8 @@ export const App = () => {
         <Route path="/favorites" element={<div>Phones page</div>} />
         <Route path="*" element={<div>Phones page</div>} />
       </Routes>
+
+      <Footer />
     </main>
   );
 };
