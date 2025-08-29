@@ -73,12 +73,11 @@
       .header-icon-container {
         display: flex;
         width: 48px;
-        height: 48px;
+        height: 100%;
         border-left: 0.5px solid $border-color;
 
         @include on-desktop {
           width: 64px;
-          height: 64px;
         }
 
         .icon {
