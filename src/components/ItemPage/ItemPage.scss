@@ -246,6 +246,12 @@
     }
   }
 
+  &.theme2, &.theme3, &.theme4 {
+    &:hover {
+      outline-color: black;
+    }
+  }
+
   &.non-linkable {
     outline: 1px solid $color-primary-black;
 
@@ -272,7 +278,7 @@
       padding: 0 8px;
       border: 1px solid $color-icons;
       color: $color-primary-black;
-      transition: background-color 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 
       &.theme1 {
         color: $theme-dark-white;
@@ -280,6 +286,14 @@
 
         &:hover {
           background-color: $theme-dark-elements;
+        }
+      }
+
+      &.theme2, &.theme3, &.theme4 {
+        border-radius: 4px;
+
+        &:hover {
+          border-color: black;
         }
       }
 

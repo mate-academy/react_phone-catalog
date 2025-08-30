@@ -30,13 +30,13 @@ export const Home: React.FC = () => {
       <Recommended title='brand_new_models' />
       <div className="home__shop-container">
         <div className={`home__subtitle ${currentTheme}`}>{t('home.shop_by_cat')}</div>
-        <div className="home__shop-categories">
+        <div className={`home__shop-categories ${currentTheme}`}>
           <div className="home__shop_card">
             <Link
               to={'/phones'}
               onClick={() => window.scrollTo(0, 0)}
             >
-              <div className="home__image-container home__phones-banner">
+              <div className={`home__image-container home__phones-banner ${currentTheme}`}>
                 <img src="img/phones_banner.png"
                   alt="tablets shop banner" />
               </div>
@@ -68,7 +68,7 @@ export const Home: React.FC = () => {
               to={'/tablets'}
               onClick={() => window.scrollTo(0, 0)}
             >
-              <div className="home__image-container home__tablets-banner">
+              <div className={`home__image-container home__tablets-banner ${currentTheme}`}>
                 <img src="img/category-tablets.png"
                   alt="tablets shop banner" />
               </div>
@@ -100,7 +100,7 @@ export const Home: React.FC = () => {
               to={'/accessories'}
               onClick={() => window.scrollTo(0, 0)}
             >
-              <div className="home__image-container home__accessories_banner">
+              <div className={`home__image-container home__accessories_banner ${currentTheme}`}>
                 <img src="img/category-accessories.png"
                   alt="accessories shop banner" />
               </div>

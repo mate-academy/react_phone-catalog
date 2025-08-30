@@ -27,6 +27,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
   const [serResQty, setSerResQty] = useState(0);
+  const [showAdminPanel, setShowAdminPanel] = useState(false);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
   const page = parseInt(searchParams.get('page') || '1', 10);
@@ -39,6 +40,21 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   const windowWidth = useWindowWidth();
   const currentTheme = useAppSelector(
     (state: { theme: { current: string; }; }) => state.theme.current);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === 'i') {
+        event.preventDefault();
+        setShowAdminPanel(prev => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   // Визначаємо тип сторінки
   const isSearchPage = !itemsCategory;
@@ -158,7 +174,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
 
   const filteredItems = () => {
     let preparedItems = allProducts;
-    const totalItems = filteredItems.length;
+    const totalItems = preparedItems.length;
     const totalPages = Math.ceil(totalItems / perPage);
     const startIndex = (page - 1) * perPage;
 
@@ -169,7 +185,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
         setSerResQty(preparedItems.length);
       }
 
-      return preparedItems.slice(startIndex, startIndex + perPage);
+      // return preparedItems.slice(startIndex, startIndex + perPage);
     }
 
     preparedItems = preparedItems.filter((sub) => {
@@ -179,6 +195,40 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     if (serResQty !== preparedItems.length) {
       setSerResQty(preparedItems.length);
     }
+
+    preparedItems.sort((a, b) => {
+      if (sort === 'relevance') {
+        console.log('sort_changed_to_relevance');
+
+        return 0;
+      }
+
+      if (sort === 'price_low_high') {
+        console.log('sort_changed_to_price_low->high');
+
+        return a.priceDiscount - b.priceDiscount;
+      }
+
+      if (sort === 'price_high_low') {
+        console.log('sort_changed_to_price_high->low');
+
+        return b.priceDiscount - a.priceDiscount;
+      }
+
+      if (sort === 'discount_high_low') {
+        console.log('sort_changed_to discount_high_low');
+
+        return (b.priceRegular - b.priceDiscount)
+          - (a.priceRegular - a.priceDiscount);
+      }
+
+      if (sort === 'discount_low_high') {
+        console.log('sort_changed_to discount_low_high');
+
+        return (a.priceRegular - a.priceDiscount)
+          - (b.priceRegular - b.priceDiscount);
+      }
+    });
 
     return preparedItems.slice(startIndex, startIndex + perPage);
   };
@@ -303,23 +353,37 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
         </>
       )}
 
-      {/* Для категорійних сторінок показуємо інформацію про кількість товарів */}
-      {!isSearchPage && (
-        <div className="category-info">
-          <p>Items in {itemsCategory}: {serResQty}</p>
-        </div>
-      )}
+      {/*
+          {!isSearchPage && (
+            <div className="category-info">
+              <p>Items in {itemsCategory}: {serResQty}</p>
+            </div>
+          )}
+      */}
 
-      <p>Current Page: {page} of {Math.ceil(serResQty / perPage)}</p>
-      {isSearchPage && <p>Category: {category}</p>}
-      <p>Sort: {sort}</p>
-      all items = {allProducts.length}
+      {showAdminPanel && (
+        <>
+          <p>Items in {itemsCategory}: {serResQty}</p>
+          <p>Current Page: {page} of {Math.ceil(serResQty / perPage)}</p>
+          {isSearchPage && <p>Category: {category}</p>}
+          <p>Sort: {sort}</p>
+          all items = {allProducts.length}
+          <br/>
+        </>
+      )}
 
       {/* Render actual results here */}
 
-      <select onChange={e => updateSearchParam('sort', e.target.value)}>
+      <br/>
+      <select
+        onChange={e => updateSearchParam('sort', e.target.value)}
+        value={sort}
+      >
         <option value="relevance">Relevance</option>
         <option value="price_low_high">Price: Low to High</option>
+        <option value="price_high_low">Price: High to Low</option>
+        <option value="discount_high_low">Discount: High to Low</option>
+        <option value="discount_low_high">Discount: Low to High</option>
       </select>
 
       <select

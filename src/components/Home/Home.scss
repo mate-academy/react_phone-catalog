@@ -4,8 +4,40 @@
   background-color: $color-white;
   overflow-x: hidden;
 
+  &.theme0 {
+    & .filledHeartSVG {
+      color: $color-heart-red;
+    }
+  }
+
   &.theme1 {
     background-color: $theme-dark-black;
+
+    & .filledHeartSVG {
+      color: $color-heart-red;
+    }
+  }
+
+  &.theme2,&.theme3,&.theme4 {
+    background-color: $color-hover-BG;
+  }
+
+  &.theme2 {
+    & .filledHeartSVG {
+      color: $color-heart-pink;
+    }
+  }
+
+  &.theme3 {
+    & .filledHeartSVG {
+      color: $theme-purple-secondary-accent;
+    }
+  }
+
+  &.theme4 {
+    & .filledHeartSVG {
+      color: $theme-orange-secondary-accent;
+    }
   }
 }
 
@@ -116,6 +148,10 @@
     & img {
       transform: translateX(-6%);
     } // to align left border
+  }
+
+  &.theme2, &.theme3, &.theme4 {
+    border-radius: 8px;
   }
 }
 

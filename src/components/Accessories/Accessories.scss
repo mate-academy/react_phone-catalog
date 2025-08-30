@@ -3,6 +3,10 @@
 .acc-toplwrpr {
   max-width: 1136px;
   margin: 24px auto 40px;
+
+  @media (max-width: 1199px) {
+    margin-left: 16px;
+  }
 }
 
 .acc--nav-legend, .acc-homeIcon {

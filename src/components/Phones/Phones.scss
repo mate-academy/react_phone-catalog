@@ -9,38 +9,7 @@
     background-color: $theme-dark-black;
   }
 
-  &.theme2 {
-    background-color: #f0bdbd;
-  }
-
-  &.theme3 {
-    background-color: #bdf0c0;
-  }
-
-  &.theme4 {
-    background-color: #eebdf0;
-  }
-}
-
-.in-cart, .in-favorites {
-  background-color: green;
-}
-
-*:is(.in-cart, .in-favorites) {
-  &.theme0 {
-    background-color: rgb(75, 255, 75);
-  }
-
-  &.theme1 {
-    background-color: rgb(255, 253, 118);
-  }
-  &.theme2 {
-    background-color: rgb(152, 255, 246);
-  }
-  &.theme3 {
-    background-color: rgb(15, 219, 255);
-  }
-  &.theme4 {
-    background-color: rgb(174, 104, 255);
+  &.theme2, &.theme3, &.theme4 {
+    background-color: #ffffff00;
   }
 }

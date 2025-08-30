@@ -12,8 +12,11 @@ import { currentCartItems, currentCartTotalQuantity } from '../../redux/cartSlic
 import { currentFavoriteItems } from '../../redux/favoritesSlice';
 import { shoppingBagIcon, crossIcon, burgerIcon, settingsIcon, searchGlass, emptyHeart }
   from '../../../public/img/icons/svg_icons';
-import iLogo from '../../../public/img/icons/iSupply_logo.png';
-import iLogo_inverted from '../../../public/img/icons/iSupply_logo_inverted.png';
+import iLogo from '../../../public/img/Logo/iSupply_logo_transparent.png';
+import iLogo_inverted from '../../../public/img/Logo/iSupply_logo_inverted_transparent.png';
+import iLogo_blue from '../../../public/img/Logo/iSupply_logo_theme3.png';
+import iLogo_purple from '../../../public/img/Logo/iSupply_logo4_purple.png';
+import iLogo_orange from '../../../public/img/Logo/iSupply_logo5_orange.png';
 
 type ThemeType = 'theme0' | 'theme1' | 'theme2' | 'theme3' | 'theme4';
 
@@ -135,9 +138,18 @@ const FullNavbar: React.FC = () => {
           to='/'
         >
           <img
-            src={currentTheme === 'theme1'
-              ? iLogo_inverted
-              : iLogo}
+            src={currentTheme === 'theme0'
+              ? iLogo
+              : currentTheme === 'theme1'
+                ? iLogo_inverted
+                : currentTheme === 'theme2'
+                  ? iLogo_blue
+                  : currentTheme === 'theme3'
+                    ? iLogo_purple
+                    : currentTheme === 'theme4'
+                      ? iLogo_orange
+                      : iLogo
+            }
             alt='' />
         </NavLink>
         <div className="navbar-burger-icon"
@@ -159,9 +171,18 @@ const FullNavbar: React.FC = () => {
             )}
           >
             <img
-              src={currentTheme === 'theme1'
-                ? iLogo_inverted
-                : iLogo}
+              src={currentTheme === 'theme0'
+                ? iLogo
+                : currentTheme === 'theme1'
+                  ? iLogo_inverted
+                  : currentTheme === 'theme2'
+                    ? iLogo_blue
+                    : currentTheme === 'theme3'
+                      ? iLogo_purple
+                      : currentTheme === 'theme4'
+                        ? iLogo_orange
+                        : iLogo
+              }
               alt=""
             />
           </NavLink>
@@ -246,13 +267,13 @@ const FullNavbar: React.FC = () => {
         <NavLink
           to="/favorites"
           className={({ isActive }) => classNames(
-            'bottom-button desktop',
+            'bottom-button desktop', currentTheme,
             { 'link-active has-background-grey-lighter': isActive },
             currentTheme,
           )}
         >
           {emptyHeart}
-          <div className="fav-counter red-counter">
+          <div className={`fav-counter red-counter ${currentTheme}`}>
             {favQty()}
           </div>
         </NavLink>
@@ -264,7 +285,7 @@ const FullNavbar: React.FC = () => {
           )}
         >
           {shoppingBagIcon}
-          <div className="cart-counter red-counter">
+          <div className={`cart-counter red-counter ${currentTheme}`}>
             {displayCartQty()}
           </div>
         </NavLink>
@@ -366,14 +387,28 @@ const MobileNavbar: React.FC = () => {
       aria-label="main navigation"
       className={`navbar-body ${currentTheme} ${sidebarOpen ? 'sidebar-open' : ''}`}
     >
-      <div className="navbar-burger"
+      <div className={`navbar-burger navbar-burger--mobile ${currentTheme}`}
       >
         <NavLink
           to='/'
         >
-          <img src="img/icons/iSupply_logo.png" alt="" />
+          <img
+            src={currentTheme === 'theme0'
+              ? iLogo
+              : currentTheme === 'theme1'
+                ? iLogo_inverted
+                : currentTheme === 'theme2'
+                  ? iLogo_blue
+                  : currentTheme === 'theme3'
+                    ? iLogo_purple
+                    : currentTheme === 'theme4'
+                      ? iLogo_orange
+                      : iLogo
+            }
+            alt=''
+          />
         </NavLink>
-        <div className="navbar-burger-icon"
+        <div className={`navbar-burger-icon ${currentTheme} burger-only-flag`}
           onClick={() => setSidebarOpen(true)}
         >
           {burgerIcon}
@@ -383,14 +418,28 @@ const MobileNavbar: React.FC = () => {
       <div className={`navbar-container ${currentTheme} ${sidebarOpen ? 'visible' : ''}`}
         onClick={() => setSidebarOpen(false)}
       >
-        <div className="navbar-burger navbar-burger-mobile"
+        <div className={`navbar-burger navbar-burger-mobile ${currentTheme}`}
         >
           <NavLink
             to='/'
           >
-            <img src="img/icons/iSupply_logo.png" alt="" />
+            <img
+              src={currentTheme === 'theme0'
+                ? iLogo
+                : currentTheme === 'theme1'
+                  ? iLogo_inverted
+                  : currentTheme === 'theme2'
+                    ? iLogo_blue
+                    : currentTheme === 'theme3'
+                      ? iLogo_purple
+                      : currentTheme === 'theme4'
+                        ? iLogo_orange
+                        : iLogo
+              }
+              alt=""
+            />
           </NavLink>
-          <div className="navbar-burger-icon"
+          <div className={`navbar-burger-icon ${currentTheme}`}
             onClick={() => setSidebarOpen(true)}
           >
             {crossIcon}
@@ -401,7 +450,7 @@ const MobileNavbar: React.FC = () => {
         <NavLink
           to="/"
           className={({ isActive }) => classNames(
-            'navbar-item navbar-item-mobile',
+            'navbar-item navbar-item-mobile', currentTheme,
             { 'link-active': isActive },
           )}
         >
@@ -411,7 +460,7 @@ const MobileNavbar: React.FC = () => {
         <NavLink
           to="/phones"
           className={({ isActive }) => classNames(
-            'navbar-item navbar-item-mobile',
+            'navbar-item navbar-item-mobile', currentTheme,
             { 'link-active': isActive },
           )}
         >
@@ -421,7 +470,7 @@ const MobileNavbar: React.FC = () => {
         <NavLink
           to="/tablets"
           className={({ isActive }) => classNames(
-            'navbar-item navbar-tablets navbar-item-mobile',
+            'navbar-item navbar-tablets navbar-item-mobile', currentTheme,
             { 'link-active': isActive },
           )}
         >
@@ -431,60 +480,62 @@ const MobileNavbar: React.FC = () => {
         <NavLink
           to="/accessories"
           className={({ isActive }) => classNames(
-            'navbar-item navbar-item-mobile',
+            'navbar-item navbar-item-mobile', currentTheme,
             { 'link-active': isActive },
           )}
         >
           {t('navigation.accessories')}
         </NavLink>
 
-        <div className="navbar-item navbar-search navbar-item-mobile">
+        <div className={`navbar-item navbar-search navbar-item-mobile ${currentTheme}`}>
           <input
             type="text"
             placeholder={t('navigation.search_placeholder')}
-            className='navigation-searchbar '
+            className={`navigation-searchbar ${currentTheme}`}
             value={query}
             onClick={(e) => e.stopPropagation()}
             onChange={e => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
           />
-          <button onClick={handleSearch}>🔍</button>
+          <button
+            onClick={handleSearch}
+            className={`burger__search_btn ${currentTheme}`}>{searchGlass}</button>
         </div>
 
         <div
           onClick={(e) => e.stopPropagation()}
-          className='navbar-item-mobile'>
+          className={`navbar-item-mobile ${currentTheme}`}>
           <LanguageSwitcher />
         </div>
 
         <div
           onClick={(e) => e.stopPropagation()}
-          className='navbar-item-mobile'
+          className={`navbar-item-mobile ${currentTheme}`}
         >
           <ThemeSwitcher />
         </div>
-        <div className="navbar-footer">
+        <div className={`navbar-footer ${currentTheme}`}>
           <NavLink
             to="/favorites"
             className={({ isActive }) => classNames(
-              'bottom-button',
+              'bottom-button', currentTheme,
               { 'link-active': isActive },
             )}
           >
             {emptyHeart}
-            <div className="fav-counter red-counter">
+            <div className={`fav-counter red-counter ${currentTheme}`}>
               {favQty()}
             </div>
           </NavLink>
           <NavLink
             to="/cart"
             className={({ isActive }) => classNames(
-              'bottom-button',
+              'bottom-button', currentTheme,
               { 'link-active': isActive },
             )}
           >
             {shoppingBagIcon}
-            <div className="cart-counter red-counter">
+            <div className={`fav-counter red-counter ${currentTheme}`}>
               {displayCartQty()}
             </div>
           </NavLink>

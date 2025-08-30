@@ -32,6 +32,10 @@
       color: $theme-dark-white;
     }
   }
+
+  &.theme2, &.theme3, &.theme4 {
+    border-radius: 100px;
+  }
 }
 
 .cart__h1 {
@@ -138,6 +142,11 @@
     &:hover {
       border: 1px solid $theme-dark-elements;
     }
+  }
+
+  &.theme2, &.theme3, &.theme4 {
+    background-color: $theme-3-white;
+    border-radius: 16px;
   }
 }
 
@@ -308,6 +317,10 @@
   &.theme1 {
     border-color: $theme-dark-elements;
   }
+
+  &.theme2, &.theme3, &.theme4 {
+    border-radius: 16px;
+  }
 }
 
 .cart__total-divider {
@@ -368,6 +381,38 @@
 
     &:hover {
       background-color: $theme-dark-acc-hover;
+    }
+  }
+
+  &.theme2, &.theme4 {
+    border-radius: 8px;
+  }
+
+  &.theme2 {
+    background-color: $theme-blue-accent;
+
+    &:hover {
+      color: $theme-3-white;
+      border-color: $theme-blue-accent;
+    }
+  }
+
+  &.theme3 {
+    border-radius: 100px;
+    background-color: $theme-purple-accent;
+
+    &:hover {
+      color: $theme-3-white;
+      border-color: $theme-purple-accent;
+    }
+  }
+
+  &.theme4 {
+    background-color: $theme-orange-accent;
+
+    &:hover {
+      color: $theme-3-white;
+      border-color: $theme-orange-accent;
     }
   }
 }

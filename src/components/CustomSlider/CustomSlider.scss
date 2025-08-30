@@ -44,6 +44,14 @@ $--tablet-width: 640px;
     width: 1040px;
     height: 400px;
   }
+
+  &.theme2, &.theme3, &.theme4 {
+    border-radius: 8px;
+
+    @media (max-width: 639px) {
+      border-radius: 0;
+    }
+  }
 }
 
 .slider__container {
@@ -98,6 +106,12 @@ $--tablet-width: 640px;
     color: $theme-dark-white;
     background-color: $theme-dark-surface2;
     border-color: $theme-dark-surface2;
+  }
+
+  &.theme2,&.theme3,&.theme4 {
+    border-radius: 300px;
+    border-color: $color-icons;
+    background-color: $color-hover-BG;
   }
 
   @media (min-width: 1200px) {

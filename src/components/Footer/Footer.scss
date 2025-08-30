@@ -67,16 +67,20 @@
 
 .footer-links-wrapper {
   display: flex;
-  gap: 13.5px;
-
-  @media (min-width: 1200px) {
-    gap: 106px;
-  }
 
   @media (max-width: 639px) {
     flex-direction: column;
     gap: 16px;
     margin: 0 auto 0 0;
+  }
+
+  @media (min-width: 640px) {
+      display: flex;
+      gap: 16px;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 106px;
   }
 
   & * {
@@ -90,8 +94,6 @@
 
 .Footer-item {
   @include font-uppercase;
-  font-family: "montRegular";
-  font-weight: 800;
 
   &.theme1 {
     color: $theme-dark-white;
@@ -113,14 +115,23 @@
 
   &.theme1 {
     color: $theme-dark-secondary;
+
+    &:hover {
+      color: $theme-dark-accent;
+
+      & button {
+        background-color: $theme-dark-accent;
+        border-color: $theme-dark-accent;
+      }
+    }
   }
 
   &:hover {
     color: $color-primary-black;
 
     & button {
-      background-color: $theme-dark-accent;
-      border-color: $theme-dark-accent;
+      background-color: #ffffff00;
+      border-color: black;
     }
   }
 }
@@ -140,6 +151,13 @@
 
     &:hover {
       background-color: $theme-dark-accent;
+    }
+  }
+
+  &.theme0, &.theme2, &.theme3, &.theme4 {
+    &:hover {
+      background-color: #ffffff00;
+      border-color: black;
     }
   }
 

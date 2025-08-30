@@ -119,7 +119,7 @@ const ImageSlider = ({ slides = [], autoRotateTime = 5000 }) => {
           </svg>
         </button>
 
-        <div className="slider">
+        <div className={`slider ${currentTheme}`}>
           <div className="slider__container"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}

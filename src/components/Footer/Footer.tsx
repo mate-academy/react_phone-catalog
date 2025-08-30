@@ -3,8 +3,11 @@ import './Footer.scss';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../redux/store';
-import iLogo from '../../../public/img/icons/iSupply_logo.png';
-import iLogo_inverted from '../../../public/img/icons/iSupply_logo_inverted.png';
+import iLogo from '../../../public/img/Logo/iSupply_logo_transparent.png';
+import iLogo_inverted from '../../../public/img/Logo/iSupply_logo_inverted_transparent.png';
+import iLogo_blue from '../../../public/img/Logo/iSupply_logo_theme3.png';
+import iLogo_purple from '../../../public/img/Logo/iSupply_logo4_purple.png';
+import iLogo_orange from '../../../public/img/Logo/iSupply_logo5_orange.png';
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -26,9 +29,18 @@ export const Footer: React.FC = () => {
             )}
           >
             <img
-              src={currentTheme === 'theme1'
-                ? iLogo_inverted
-                : iLogo}
+              src={currentTheme === 'theme0'
+                ? iLogo
+                : currentTheme === 'theme1'
+                  ? iLogo_inverted
+                  : currentTheme === 'theme2'
+                    ? iLogo_blue
+                    : currentTheme === 'theme3'
+                      ? iLogo_purple
+                      : currentTheme === 'theme4'
+                        ? iLogo_orange
+                        : iLogo
+              }
               alt=""
             />
           </NavLink>

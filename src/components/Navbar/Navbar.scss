@@ -118,6 +118,10 @@ body.sidebar-open {
     color: $theme-dark-white;
   }
 
+  &.theme0, &.theme2, &.theme3, &.theme4 {
+    color: $theme-3-primary;
+  }
+
   @media (min-width: $screen-tablet) {
     min-width: 0;
     height: 48px;
@@ -209,6 +213,10 @@ body.sidebar-open {
   &.theme1 {
     background-color: $theme-dark-black;
   }
+
+  &.theme2,&.theme3,&.theme4 {
+    background-color: $color-white;
+  }
 }
 
 .navbar-search--desktop { // container for desk search
@@ -220,16 +228,32 @@ body.sidebar-open {
   height: 40px;
   font-size: 25px;
 
+  @media (max-width: 639px) {
+    height: 24px;
+    font-size: 14px;
+    width: 65vw;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
   &.theme1 {
     background-color: $theme-dark-black;
     color: $theme-dark-white;
     border-color: $theme-dark-elements;
+  }
+
+  &.theme2, &.theme3, &.theme4 {
+    border-radius: 8px;
   }
 }
 
 .navigation-searchglassicon {
   height: 40px;
   width: 40px;
+  background-color: $color-white;
+  border: none;
 
   &.theme1 {
     background-color: $theme-dark-black;
@@ -276,22 +300,18 @@ body.sidebar-open {
     background-color: $theme-dark-black;
   }
 
-  &.theme2 {
-    background-color: rgb(186, 207, 0);
-  }
-
-  &.theme3 {
-    background-color: rgb(255, 175, 27);
-  }
-
-  &.theme4 {
-    background-color: rgb(180, 114, 255);
+  &.theme2,&.theme3,&.theme4 {
+    background-color: $color-white;
   }
 
   &.navbar-container.navbar-container {
     @media (max-width: 639px) {
       background-color: rgb(255, 255, 255);
       z-index: 11;
+
+      &.theme1 {
+        background-color: $theme-dark-black;
+      }
     }
   }
 
@@ -355,18 +375,49 @@ body.sidebar-open {
     margin-left: auto;
     display: inline-block;
     cursor: pointer;
+
+    &.theme1 {
+      color: $theme-dark-white;
+
+      & svg {
+        border-color: #323542;
+      }
+    }
+
+    &.theme1.burger-only-flag {
+      & svg {
+        border-color: #323542;
+        color: $color-white;
+      }
+    }
   }
 
   &.navbar-burger-mobile {
     width: 100%;
+
+    &.theme1 {
+      background-color: $theme-dark-black;
+    }
+  }
+
+  &--mobile {
+    background-color: $color-white;
+
+    &.theme1 {
+      background-color: $theme-dark-black;
+    }
+  }
+
+  &.theme1 {
+    border-color: #323542;
   }
 }
 
 .navbar-item-mobile {
-    margin-top: 22px;
+    margin-top: 16px;
     text-decoration: none;
     color: $color-secondary-grey;
-    height: 18px;
+    height: fit-content;
     line-height: 27px;
     @include font-uppercase;
 
@@ -381,6 +432,27 @@ body.sidebar-open {
   &.link-active {
     color: $color-primary-black;
     border-bottom: 2px solid $color-primary-black;
+
+    &.theme1 {
+      color: $theme-dark-white;
+      border-color: $theme-dark-white;
+    }
+  }
+
+  &.navbar-search {
+    @media (max-width: 639px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.burger__search_btn {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+
+  &.theme1 {
+    color: $theme-dark-icons;
   }
 }
 
@@ -395,6 +467,10 @@ body.sidebar-open {
 
   @media (max-width: 639px) {
     justify-self: end;
+  }
+
+  &.theme1 {
+    border-color: $theme-dark-surface2;
   }
 
 /*   position: absolute;
@@ -416,8 +492,31 @@ body.sidebar-open {
     justify-content: center;
     align-items: center;
 
+    &.theme1 {
+      color: $theme-dark-white;
+
+      &.bottom-button {
+        border-color: $theme-dark-surface2;
+      }
+    }
+
     &.link-active {
       border-bottom: 3px solid $color-primary-black;
+    }
+
+    & .red-counter {
+      &.theme2 {
+        background-color: $color-heart-pink;
+        color: $color-white;
+      }
+
+      &.theme3 {
+        background-color: $theme-purple-accent;
+      }
+
+      &.theme4 {
+        background-color: $theme-orange-secondary-accent;
+      }
     }
   }
 
@@ -440,4 +539,17 @@ body.sidebar-open {
   font-size: 9px;
   font-family: "montRegular";
   letter-spacing: 0;
+
+  &.theme2 {
+    background-color: $color-heart-pink;
+    color: $color-white;
+  }
+
+  &.theme3 {
+    background-color: $theme-purple-accent;
+  }
+
+  &.theme4 {
+    background-color: $theme-orange-secondary-accent;
+  }
 }

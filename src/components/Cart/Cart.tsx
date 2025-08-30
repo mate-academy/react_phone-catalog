@@ -103,7 +103,7 @@ export const Cart: React.FC = () => {
                     }>{plusIcon}</button>
                 </div>
                 <div className={`cart__price-wrap ${currentTheme}`}>
-                  {` $${item.price * item.quantity} `}
+                  {` $${(item.price * item.quantity).toLocaleString()} `}
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@ export const Cart: React.FC = () => {
         <div className={`cart__total-wrap ${currentTheme}`}>
           <div className="cart__total-numbers">
             <div className={`cart__total-numbers-price ${currentTheme}`}>
-              {`$${totalPrice}`}
+              {`$${totalPrice.toLocaleString()}`}
             </div>
             <div className="cart__total-numbers-qty">
               {`${t('cart.total_for')} ${totalQuantity} ${t('favorites.items')}`}

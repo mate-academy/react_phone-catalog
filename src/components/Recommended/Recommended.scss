@@ -33,6 +33,11 @@
     border-color: #161827;
     background-color: #161827;
   }
+
+  &.theme2, &.theme3, &.theme4 {
+    border-radius: 8px;
+    background-color: $theme-3-white;
+  }
 }
 
 .rec__link {
@@ -93,6 +98,21 @@
       background-color: $theme-dark-accent;
     }
 
+    &.theme2 {
+      background-color: $theme-blue-accent;
+      border-radius: 8px;
+    }
+
+    &.theme3 {
+      background-color: $theme-purple-accent;
+      border-radius: 100px;
+    }
+
+    &.theme4 {
+      background-color: $theme-orange-accent;
+      border-radius: 8px;
+    }
+
     &:hover {
       box-shadow: 0px 3px 13px 0px #17203166;
     }
@@ -106,6 +126,18 @@
         background-color: $theme-dark-surface2;
         border-color: $theme-dark-surface2;
         color: $theme-dark-white;
+      }
+
+      &.theme2 {
+        color: $theme-blue-accent;
+      }
+
+      &.theme3 {
+        color: $theme-purple-accent;
+      }
+
+      &.theme4 {
+        color: $theme-orange-accent;
       }
     }
   }
@@ -128,12 +160,20 @@
       color: $theme-dark-white;
     }
 
+    &.theme2, &.theme3, &.theme4 {
+      border-radius: 100%;
+    }
+
     &.in-favorites.in-favorites {
       background-color: $color-white;
 
       &.theme1 {
         background-color: #ffffff00;
         border-color: $theme-dark-surface2;
+      }
+
+      &.theme2, &.theme3, &.theme4 {
+        border-color: $color-elements;
       }
     }
 
@@ -222,6 +262,14 @@
       color: $theme-dark-icons;
       border-color: $theme-dark-icons;
       background-color: #ffffff00;
+    }
+  }
+
+  &.theme2, &.theme3, &.theme4 {
+    border-radius: 100%;
+
+    &:disabled {
+      border-color: $color-elements;
     }
   }
 
