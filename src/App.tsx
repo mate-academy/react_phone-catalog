@@ -16,18 +16,20 @@ import { FavoritesPage } from './modules/favorites/FavoritesPage';
 import { NotFoundPage } from './modules/not-found/NotFoundPage';
 
 import './styles/app.scss';
+import './App.scss';
 
 function Shell() {
   return (
-    <>
+    <div className="app-container">
       <Header />
       <main className="container">
+        <h1 className="visually-hidden">Product Catalog</h1>
         <Suspense fallback={<div className="loader">Loading…</div>}>
           <Outlet />
         </Suspense>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -1,10 +1,21 @@
 // src/styles/app.scss - Application-specific styles
-.header {
+%header {
   position: sticky;
   top: 0;
   z-index: 10;
   background: #fff;
   border-bottom: 1px solid #eee;
+}
+
+%header-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 64px;
+}
+
+.header {
+  @extend %header;
 }
 
 .header__inner {
@@ -24,11 +35,21 @@
   text-decoration: underline;
 }
 
-.footer {
+%footer {
   border-top: 1px solid #eee;
   margin-top: 48px;
   padding-block: 24px;
   color: #666;
+}
+
+%footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  @extend %footer;
 }
 
 .footer__inner {

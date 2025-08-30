@@ -7,9 +7,9 @@ import { useAsync } from '../catalog/hooks/useAsync';
 import { Product } from '../../types';
 
 const HERO_IMAGES = [
-  './public/img/banner-accessories.png',
-  './public/img/banner-phones.png',
-  './public/img/banner-tablets.png',
+  '/img/banner-accessories.png',
+  '/img/banner-phones.png',
+  '/img/banner-tablets.png',
 ];
 
 export const HomePage: React.FC = () => {
