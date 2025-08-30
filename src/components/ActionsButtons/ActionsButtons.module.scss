@@ -2,26 +2,28 @@
 
 .actions-buttons {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 8px;
+  align-items: center;
+  justify-content: space-between;
 
   &__button {
     &--selected {
       background-color: rgba(0, 0, 0, 0.5);
-      pointer-events: none;
     }
   }
 
   &__favorite {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
     width: 40px;
     height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: 1px solid utils.$elements;
-    box-sizing: border-box;
-    cursor: pointer;
+
     transition: all 0.3s;
 
     &:hover {

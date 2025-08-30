@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import styles from './ActionsButtons.module.scss';
 import { Product } from '../../types/Product';
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { FavoritesContext } from '../../context/FavoriteProvider';
 import { CartContext } from '../../context/CartProvider';
 
@@ -13,7 +13,8 @@ export const ActionsButtons: React.FC<Props> = ({ product }) => {
   const { favorites, addFavoriteProduct, removeFafouriteProduct } =
     useContext(FavoritesContext);
 
-  const { cartProducts, addCartProducts } = useContext(CartContext);
+  const { cartProducts, addCartProducts, removeCartProduct } =
+    useContext(CartContext);
 
   const isFafourite = favorites.some(
     favorite => favorite.itemId === product.itemId,
@@ -29,15 +30,25 @@ export const ActionsButtons: React.FC<Props> = ({ product }) => {
       : addFavoriteProduct(product);
   };
 
+  const handleToggleCart = useCallback(() => {
+    if (isCartProduct) {
+      removeCartProduct(product.itemId);
+    } else {
+      addCartProducts(product);
+    }
+  }, [isCartProduct, removeCartProduct, addCartProducts, product]);
+
   return (
     <div className={classNames(styles['actions-buttons'])}>
       <button
         className={classNames(styles['actions-buttons__button'], 'button', {
           [styles['actions-buttons__button--selected']]: isCartProduct,
         })}
-        onClick={() => addCartProducts(product)}
+        onClick={handleToggleCart}
+        aria-pressed={isCartProduct}
+        title={isCartProduct ? 'Remove from cart' : 'Add to cart'}
       >
-        {isCartProduct ? 'Added to cart' : 'Add to cart'}
+        {isCartProduct ? 'Remove from cart' : 'Add to cart'}
       </button>
       <button
         className={classNames(styles['actions-buttons__favorite'], 'icon', {
@@ -45,6 +56,8 @@ export const ActionsButtons: React.FC<Props> = ({ product }) => {
           'icon--heart-red': isFafourite,
         })}
         onClick={handleChangeFavorite}
+        aria-pressed={isCartProduct}
+        title={isCartProduct ? 'Remove from favorites' : 'Add to favorites'}
       ></button>
     </div>
   );
