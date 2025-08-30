@@ -6,6 +6,7 @@ import { useQueryState } from '../../utils/searchParams';
 import { ProductsList } from './components/ProductsList';
 import { useAsync } from './hooks/useAsync';
 import { Pagination } from '../../components/Pagination';
+import s from './CatalogPage.module.scss';
 
 type Props = { category: ProductCategory };
 
@@ -67,12 +68,10 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
 
   return (
     <div>
-      <h1 style={{ marginTop: 16 }}>{title} page</h1>
+      <h1 className={s.title}>{title} page</h1>
 
       {/* Controls (search lives in Header now) */}
-      <div
-        style={{ display: 'flex', gap: 12, marginTop: 12, marginBottom: 12 }}
-      >
+      <div className={s.controls}>
         <select
           value={sort}
           onChange={e => setQuery({ sort: e.target.value, page: '1' })}

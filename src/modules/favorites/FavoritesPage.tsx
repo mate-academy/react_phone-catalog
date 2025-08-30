@@ -4,6 +4,7 @@ import { api } from '../../api';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types';
 import { ProductsList } from '../catalog/components/ProductsList';
+import s from './FavoritesPage.module.scss';
 
 export const FavoritesPage: React.FC = () => {
   const { ids } = useFavorites();
@@ -17,7 +18,7 @@ export const FavoritesPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Favorites</h1>
+      <h1 className={s.title}>Favorites</h1>
       {!products && <div className="loader">Loading…</div>}
       {products && products.length === 0 && <p>No favorites yet</p>}
       {products && products.length > 0 && <ProductsList products={products} />}

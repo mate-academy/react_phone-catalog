@@ -38,13 +38,10 @@ export const PicturesSlider: React.FC<Props> = ({ images, autoMs = 5000 }) => {
 
   return (
     <div className={s.frame}>
-      <div
-        className={s.track}
-        style={{ transform: `translateX(-${index * 100}%)` }}
-      >
+      <div className={`${s.track} ${s[`trackSlide${index}`]}`}>
         {pics.map((src, i) => (
           <div className={s.item} key={`${src}-${i}`}>
-            <img src={src} alt={`slide-${i + 1}`} style={{ width: '100%' }} />
+            <img src={src} alt={`slide-${i + 1}`} className={s.image} />
           </div>
         ))}
       </div>

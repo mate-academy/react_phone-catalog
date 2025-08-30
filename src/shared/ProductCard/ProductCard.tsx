@@ -26,7 +26,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         {product.name}
       </Link>
 
-      <div className={s.row} style={{ justifyContent: 'space-between' }}>
+      <div className={`${s.row} ${s.spaceBetween}`}>
         <div>
           <span className={s.price}>${product.price}</span>
           {product.fullPrice !== product.price && (
@@ -36,15 +36,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <button
           aria-label="Toggle favorite"
-          className={s.heart}
+          className={`${s.heart} ${fav ? s.heartActive : ''}`}
           onClick={() => toggle(product.id)}
-          style={{ background: fav ? '#fee' : '#fff' }}
         >
           {fav ? '♥' : '♡'}
         </button>
       </div>
 
-      <div className={s.row} style={{ marginTop: 8 }}>
+      <div className={`${s.row} ${s.marginTop}`}>
         <button
           className={`${s.btn} ${added ? '' : s.btnPrimary}`}
           onClick={() => !added && add(product)}

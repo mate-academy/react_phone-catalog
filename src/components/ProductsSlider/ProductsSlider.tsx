@@ -42,9 +42,7 @@ export const ProductsSlider: React.FC<Props> = ({
       <div className={s.frame}>
         <div
           className={s.track}
-          style={{
-            transform: `translateX(-${index * (itemWidth + 16)}px)`,
-          }} /* 16 = gap */
+          style={{ transform: `translateX(-${index * (itemWidth + 16)}px)` }}
         >
           {items.map(p => (
             <div key={p.id} className={s.item} style={{ width: itemWidth }}>

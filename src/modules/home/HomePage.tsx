@@ -1,10 +1,12 @@
 // src/modules/home/HomePage.tsx - Home page component
 import { useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { api } from '../../api';
 import { useAsync } from '../catalog/hooks/useAsync';
 import { Product } from '../../types';
+import styles from './HomePage.module.scss';
 
 const HERO_IMAGES = [
   '/img/banner-accessories.png',
@@ -46,26 +48,47 @@ export const HomePage: React.FC = () => {
 
       <PicturesSlider images={HERO_IMAGES} />
 
-      <section style={{ marginTop: 32 }}>
+      <section className={styles.section}>
         <ProductsSlider title="Hot prices" products={hot} />
       </section>
 
-      <section style={{ marginTop: 32 }}>
-        <h2>Shop by category</h2>
-        <ul>
+      <section className={styles.section}>
+        <h2 className={styles.title}>Shop by category</h2>
+        <ul className={styles.categories}>
           <li>
-            <a href="/phones">Phones</a>
+            <Link to="/phones" className={styles.categoryLink}>
+              <img
+                src="/img/category-phones.webp"
+                alt="Phones"
+                className={styles.categoryImage}
+              />
+              Phones
+            </Link>
           </li>
           <li>
-            <a href="/tablets">Tablets</a>
+            <Link to="/tablets" className={styles.categoryLink}>
+              <img
+                src="/img/category-tablets.webp"
+                alt="Tablets"
+                className={styles.categoryImage}
+              />
+              Tablets
+            </Link>
           </li>
           <li>
-            <a href="/accessories">Accessories</a>
+            <Link to="/accessories" className={styles.categoryLink}>
+              <img
+                src="/img/category-accessories.webp"
+                alt="Accessories"
+                className={styles.categoryImage}
+              />
+              Accessories
+            </Link>
           </li>
         </ul>
       </section>
 
-      <section style={{ marginTop: 32 }}>
+      <section className={styles.section}>
         <ProductsSlider title="Brand new" products={newest} />
       </section>
     </div>

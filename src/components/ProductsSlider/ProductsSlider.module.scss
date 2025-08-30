@@ -22,7 +22,9 @@
 }
 
 .item {
-  flex: 0 0 272px;
+  flex-shrink: 0;
+
+  /* Width will be set dynamically */
 }
 
 .arrows {

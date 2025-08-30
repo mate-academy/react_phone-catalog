@@ -5,6 +5,7 @@ import { useAsync } from '../catalog/hooks/useAsync';
 import { api } from '../../api';
 import { Product, ProductDetails } from '../../types';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId = '' } = useParams();
@@ -55,68 +56,40 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <div>
-      <nav style={{ margin: '12px 0' }}>
+      <nav className={styles.navigation}>
         <Link to="/">Home</Link> /{' '}
         <Link to={`/${data.category}`}>{data.category}</Link> / {data.name}
       </nav>
 
-      <button onClick={back} style={{ marginBottom: 8 }}>
+      <button onClick={back} className={styles.backButton}>
         ← Back
       </button>
 
       <h1>{data.name}</h1>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 24,
-          marginTop: 12,
-        }}
-      >
+      <div className={styles.layout}>
         {/* Gallery */}
         <div>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr',
-              justifyItems: 'center',
-            }}
-          >
+          <div className={styles.galleryContainer}>
             <img
               src={images[selectedImg]}
               alt={data.name}
-              style={{ maxHeight: 420, objectFit: 'contain' }}
+              className={styles.mainImage}
             />
           </div>
 
           {images.length > 1 && (
-            <div
-              style={{
-                marginTop: 12,
-                display: 'flex',
-                gap: 8,
-                flexWrap: 'wrap',
-              }}
-            >
+            <div className={styles.thumbnailsContainer}>
               {images.map((src, i) => (
                 <button
                   key={i}
                   onClick={() => setSelectedImg(i)}
-                  style={{
-                    border:
-                      i === selectedImg ? '2px solid #000' : '1px solid #ddd',
-                    padding: 2,
-                    borderRadius: 8,
-                    background: '#fff',
-                  }}
+                  className={`${styles.thumbnailButton} ${
+                    i === selectedImg ? styles.thumbnailButtonSelected : ''
+                  }`}
                   aria-label={`Show image ${i + 1}`}
                 >
-                  <img
-                    src={src}
-                    alt=""
-                    style={{ width: 64, height: 64, objectFit: 'contain' }}
-                  />
+                  <img src={src} alt="" className={styles.thumbnailImage} />
                 </button>
               ))}
             </div>
@@ -125,18 +98,15 @@ export const ProductDetailsPage: React.FC = () => {
 
         {/* Right side: buy, options */}
         <div>
-          <p style={{ fontSize: 20, fontWeight: 700 }}>${data.price}</p>
+          <p className={styles.price}>${data.price}</p>
 
           {/* Colors */}
           {data.colorsAvailable?.length ? (
-            <div style={{ marginTop: 12 }}>
+            <div className={styles.optionGroup}>
               <h3>Colors</h3>
-              <div style={{ display: 'flex', gap: 8 }}>
+              <div className={styles.optionsContainer}>
                 {data.colorsAvailable.map(c => (
-                  <label
-                    key={c}
-                    style={{ display: 'flex', gap: 6, alignItems: 'center' }}
-                  >
+                  <label key={c} className={styles.optionLabel}>
                     <input
                       type="radio"
                       name="color"
@@ -152,14 +122,11 @@ export const ProductDetailsPage: React.FC = () => {
 
           {/* Capacity */}
           {data.capacityAvailable?.length ? (
-            <div style={{ marginTop: 12 }}>
+            <div className={styles.optionGroup}>
               <h3>Capacity</h3>
-              <div style={{ display: 'flex', gap: 8 }}>
+              <div className={styles.optionsContainer}>
                 {data.capacityAvailable.map(cap => (
-                  <label
-                    key={cap}
-                    style={{ display: 'flex', gap: 6, alignItems: 'center' }}
-                  >
+                  <label key={cap} className={styles.optionLabel}>
                     <input
                       type="radio"
                       name="capacity"
@@ -175,18 +142,14 @@ export const ProductDetailsPage: React.FC = () => {
 
           {/* Tech specs — pick a few if present */}
           {data.specs && (
-            <div style={{ marginTop: 16 }}>
+            <div className={styles.techSpecs}>
               <h3>Tech specs</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              <ul className={styles.specsList}>
                 {Object.entries(data.specs)
                   .slice(0, 6)
                   .map(([k, v]) => (
-                    <li key={k} style={{ display: 'flex', gap: 8 }}>
-                      <strong
-                        style={{ minWidth: 120, textTransform: 'capitalize' }}
-                      >
-                        {k}:
-                      </strong>{' '}
+                    <li key={k} className={styles.specItem}>
+                      <strong className={styles.specName}>{k}:</strong>{' '}
                       <span>{String(v)}</span>
                     </li>
                   ))}
@@ -198,10 +161,10 @@ export const ProductDetailsPage: React.FC = () => {
 
       {/* About */}
       {data.description?.length ? (
-        <section style={{ marginTop: 24 }}>
+        <section className={styles.section}>
           <h2>About</h2>
           {data.description.map(block => (
-            <div key={block.title} style={{ marginTop: 8 }}>
+            <div key={block.title} className={styles.descriptionBlock}>
               <h3>{block.title}</h3>
               <p>{block.text}</p>
             </div>
@@ -210,7 +173,7 @@ export const ProductDetailsPage: React.FC = () => {
       ) : null}
 
       {/* Suggested */}
-      <section style={{ marginTop: 24 }}>
+      <section className={styles.section}>
         <h2>You may also like</h2>
         {suggested ? (
           <ProductsSlider title="" products={suggested} />

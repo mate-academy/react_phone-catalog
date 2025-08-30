@@ -9,9 +9,27 @@
   display: flex;
   will-change: transform;
   transition: transform .6s ease;
+
+  &Slide0 { transform: translateX(0); }
+  &Slide1 { transform: translateX(-100%); }
+  &Slide2 { transform: translateX(-200%); }
+  &Slide3 { transform: translateX(-300%); }
+  &Slide4 { transform: translateX(-400%); }
 }
 
-.item { flex: 0 0 100%; }
+.item {
+  flex: 0 0 100%;
+}
+
+.image {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
 
 .arrows {
   position: absolute;
