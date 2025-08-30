@@ -1,3 +1,4 @@
+// src/modules/favorites/FavoritesPage.tsx - Favorites page component
 import { useFavorites } from '../../context/FavoritesContext';
 import { api } from '../../api';
 import { useEffect, useState } from 'react';

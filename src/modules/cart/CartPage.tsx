@@ -1,3 +1,4 @@
+// src/modules/cart/CartPage.tsx - Shopping cart page component
 import { useCart } from '../../context/CartContext';
 
 export const CartPage: React.FC = () => {

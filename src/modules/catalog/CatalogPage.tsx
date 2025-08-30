@@ -1,3 +1,4 @@
+// src/modules/catalog/CatalogPage.tsx - Product catalog page component
 import { useEffect, useMemo } from 'react';
 import { api } from '../../api';
 import { Product, ProductCategory } from '../../types';

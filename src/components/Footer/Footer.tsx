@@ -1,3 +1,4 @@
+// src/components/Footer/Footer.tsx - Footer component with back-to-top functionality
 import s from './Footer.module.scss';
 
 export const Footer: React.FC = () => {

@@ -1,3 +1,4 @@
+// src/App.tsx - Main application component
 import { Suspense } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 

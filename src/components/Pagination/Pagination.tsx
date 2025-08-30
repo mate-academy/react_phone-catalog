@@ -1,3 +1,4 @@
+// src/components/Pagination/Pagination.tsx - Pagination control component
 import s from './Pagination.module.scss';
 
 type Props = {

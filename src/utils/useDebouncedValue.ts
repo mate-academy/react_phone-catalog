@@ -1,3 +1,4 @@
+// src/utils/useDebouncedValue.ts - Hook for debouncing values
 import { useEffect, useState } from 'react';
 
 export function useDebouncedValue<T>(value: T, delay = 500): T {

@@ -1,3 +1,4 @@
+// src/api/index.ts - API functions for data fetching
 import { Product, ProductCategory, ProductDetails } from '../types';
 
 const delay = (ms: number) => new Promise(r => setTimeout(r, ms));

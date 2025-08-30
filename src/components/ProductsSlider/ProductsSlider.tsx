@@ -1,3 +1,4 @@
+// src/components/ProductsSlider/ProductsSlider.tsx - Horizontal slider for product cards
 import { useMemo, useState } from 'react';
 import s from './ProductsSlider.module.scss';
 import { Product } from '../../types';

@@ -1,3 +1,4 @@
+// src/types.ts - Type definitions for the application
 export type ProductCategory = 'phones' | 'tablets' | 'accessories';
 
 export interface Product {

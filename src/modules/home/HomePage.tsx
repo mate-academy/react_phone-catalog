@@ -1,3 +1,4 @@
+// src/modules/home/HomePage.tsx - Home page component
 import { useEffect, useMemo } from 'react';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';

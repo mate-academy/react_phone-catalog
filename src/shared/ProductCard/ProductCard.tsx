@@ -1,3 +1,4 @@
+// src/shared/ProductCard/ProductCard.tsx - Reusable product card component
 import { Link } from 'react-router-dom';
 import s from './ProductCard.module.scss';
 import { Product } from '../../types';

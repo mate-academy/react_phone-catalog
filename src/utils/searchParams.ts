@@ -1,3 +1,4 @@
+// src/utils/searchParams.ts - Utility for handling URL search parameters
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 

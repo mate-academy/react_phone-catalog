@@ -1,3 +1,4 @@
+// src/modules/not-found/NotFoundPage.tsx - 404 page component
 import { Link } from 'react-router-dom';
 
 export const NotFoundPage: React.FC = () => (

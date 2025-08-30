@@ -1,3 +1,4 @@
+// src/modules/catalog/hooks/useAsync.ts - Custom hook for handling async operations
 import { useCallback, useState } from 'react';
 
 export function useAsync<T>() {

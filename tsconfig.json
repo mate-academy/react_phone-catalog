@@ -1,3 +1,4 @@
+// tsconfig.json
 {
   "extends": "@mate-academy/students-ts-config",
   "include": [

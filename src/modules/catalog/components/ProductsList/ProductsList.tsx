@@ -1,3 +1,4 @@
+// src/modules/catalog/components/ProductsList/ProductsList.tsx - Component to display a grid of products
 import s from './ProductsList.module.scss';
 import { Product } from '../../../../types';
 import { ProductCard } from '../../../../shared/ProductCard';

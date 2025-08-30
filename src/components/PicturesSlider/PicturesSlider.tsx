@@ -1,3 +1,4 @@
+// src/components/PicturesSlider/PicturesSlider.tsx - Image carousel component
 import { useEffect, useMemo, useRef, useState } from 'react';
 import s from './PicturesSlider.module.scss';
 

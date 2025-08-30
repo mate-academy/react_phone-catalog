@@ -1,3 +1,4 @@
+// src/components/Header/Header.tsx - Main header component with navigation
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import s from './Header.module.scss';

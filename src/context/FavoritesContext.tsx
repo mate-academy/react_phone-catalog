@@ -1,3 +1,4 @@
+// src/context/FavoritesContext.tsx - Context provider for favorites functionality
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 type FavsCtx = {

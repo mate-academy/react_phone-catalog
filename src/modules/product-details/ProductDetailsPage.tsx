@@ -1,3 +1,4 @@
+// src/modules/product-details/ProductDetailsPage.tsx - Product details page component
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAsync } from '../catalog/hooks/useAsync';

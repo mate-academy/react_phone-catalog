@@ -1,3 +1,4 @@
+// src/context/CartContext.tsx - Context provider for shopping cart functionality
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { Product } from '../types';
 
