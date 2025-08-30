@@ -20,6 +20,7 @@ export const ProductsSlider: React.FC = () => {
       </div>
       <div className={scss.slider__productCard}>
         {products[0] && <ProductCard product={products[0]} discount={false} />}
+        {products[1] && <ProductCard product={products[1]} discount={false} />}
       </div>
     </div>
   );

@@ -9,6 +9,11 @@ interface Props {
 export const ButtonFav: React.FC<Props> = ({ productId }) => {
   const { favItems, setFavItems } = useContext(DataContext);
 
+  const fav = favItems.includes(productId);
+  const count = favItems.length;
+
+  const showBadge = !fav && count > 0;
+
   const toggleFav = (id: number) => {
     setFavItems((prev: number[]) => {
       const next = prev.includes(id)
@@ -19,18 +24,12 @@ export const ButtonFav: React.FC<Props> = ({ productId }) => {
     });
   };
 
-  const isFav = (id: number) => {
-    return favItems.includes(id);
-  };
-
   return (
     <button
       type="button"
       className={scss.buttonFav}
-      aria-label={
-        isFav(productId) ? 'Remove from favourites' : 'Add to favourites'
-      }
-      aria-pressed={isFav(productId)}
+      aria-label={fav ? 'Remove from favourites' : 'Add to favourites'}
+      aria-pressed={fav}
       onClick={() => toggleFav(productId)}
     >
       <svg
@@ -39,9 +38,15 @@ export const ButtonFav: React.FC<Props> = ({ productId }) => {
         focusable="false"
       >
         <use
-          href={`/icons/icons.svg#${isFav(productId) ? 'filled-heart' : 'heart-icon'}`}
+          href={`/icons/icons.svg#${fav ? 'filled-heart' : 'heart-icon'}`}
         ></use>
       </svg>
+
+      {showBadge && (
+        <span className={scss.buttonFav__counter} aria-hidden="true">
+          {count}
+        </span>
+      )}
     </button>
   );
 };
