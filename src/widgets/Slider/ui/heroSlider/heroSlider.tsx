@@ -68,7 +68,7 @@ export const HeroSlider: React.FC<Props> = ({
                 src={el.src}
                 alt={el.alt}
                 className={styles.banner}
-                loading={el.id !== 0 ? 'lazy' : 'eager'}
+                loading={el.id === 0 ? 'eager' : 'lazy'}
               />
             </Link>
           ))}

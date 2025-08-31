@@ -1,8 +1,0 @@
-@use '@constants/fonts' as f;
-
-@mixin button-text {
-  font-size: f.$xsm;
-  font-weight: f.$r;
-  line-height: f.$lh-m;
-  letter-spacing: f.$null;
-}

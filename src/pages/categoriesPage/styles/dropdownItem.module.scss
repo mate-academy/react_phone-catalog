@@ -9,17 +9,22 @@
 
 .title {
   color: s.$c-grey-secondary;
+
+  @include s.t-small-text;
+
+  font-weight: 500;
 }
 
 .button {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
   padding-left: 12px;
   height: 40px;
   line-height: 40px;
   width: 100%;
   border: 1px solid s.$c-icons;
+  gap: 40px;
 
   &:hover {
     border-color: s.$c-grey-secondary;
@@ -61,7 +66,7 @@
     height: 100%;
     box-sizing: border-box;
 
-    @include body-text;
+    @include s.t-body-text;
 
     color: s.$c-grey-secondary
 

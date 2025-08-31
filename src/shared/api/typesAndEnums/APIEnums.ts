@@ -20,6 +20,7 @@ enum Request {
 }
 
 enum Order {
+  NONE = 'none',
   AGE = 'age',
   TITLE = 'title',
   PRICE_ASC = 'price',

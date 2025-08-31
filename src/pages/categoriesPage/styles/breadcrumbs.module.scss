@@ -1,0 +1,41 @@
+@use '@shared/styles' as s;
+
+.breadcrumbs {
+  display: flex;
+  height: 16px;
+  width: 100%;
+  gap: 8px;
+
+  @include s.t-button-text;
+
+  > :first-child {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+  > li {
+    display: flex;
+  }
+
+  > li > svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  > li > a {
+    display: inline-block;
+    line-height: 16px;
+    text-transform: capitalize;
+  }
+
+  > :last-child  {
+    > a {
+      color: s.$c-grey-secondary;
+    }
+    > svg > path {
+      color: s.$c-icons;
+    }
+  }
+}

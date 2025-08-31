@@ -1,8 +1,0 @@
-@use '@constants/colors.scss' as cl;
-
-@mixin hover-default {
-  z-index: 10;
-  overflow: visible;
-  box-shadow: none;
-  border: 1px solid cl.$gray-primary;
-}

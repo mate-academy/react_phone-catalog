@@ -3,87 +3,19 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
+  align-items: start;
+  width: 100%;
 
   @include s.page-layout;
-
-  @media (min-width: s.$c-BREAKPOINT_TAB) {
-    gap: 40px;
-  }
 }
 
-.breadcrumbs {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 8px;
-  height: 16px;
-
-  &__home {
-    display: block;
-    width: 16px;
-    height: 16px;
-  }
-
-  &__btn {
-    display: flex;
-    align-items: center;
-    height: 16px;
-
-    @include s.t-button-text;
-
-    text-transform: capitalize;
-    color: s.$c-grey-secondary;
-
-    &::before {
-      display: inline-block;
-      content: "";
-      mask-image: url(/src/shared/icons/arrow-next.svg);
-      background-color: s.$c-grey-secondary;
-      width: 16px;
-      height: 16px;
-      margin-right: 8px;
-    }
-  }
-}
-
-.h1 {
-  @include s.t-h1;
-
-  text-transform: capitalize;
-
-  &::after {
-    content: "1488 models";
-    display: block;
-    margin-top: 8px;
-    height: 21px;
-    color: s.$c-grey-secondary;
-
-    @include s.t-button-text;
-  }
-}
-
-.filter-container {
+.navigation {
   display: flex;
-  gap: 16px;
-  margin-bottom: -16px;
+  margin-bottom: 24px;
 
-  @include s.t-small-text;
-
-  > div {
-    width: 136px;
-  }
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
-    :first-child {
-      width: 187px;
-    }
-  }
-
-  @media (min-width: s.$c-BREAKPOINT_WIDE) {
-    :first-child {
-      width: 176px;
-    }
+    margin-bottom: 40px;
   }
 }
 
@@ -105,4 +37,28 @@ $column-gap: 16px;
 
 .pagination {
   display: flex;
+}
+
+.h1 {
+  @include s.t-h1;
+
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+
+.models {
+  @include s.t-body-text;
+
+  color: s.$c-grey-secondary;
+  margin-bottom: 32px;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    margin-bottom: 40px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }

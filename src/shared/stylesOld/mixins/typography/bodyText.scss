@@ -1,8 +1,0 @@
-@use '@constants/fonts' as f;
-
-@mixin body-text {
-  font-size: f.$xsm;
-  font-weight: f.$r;
-  line-height: f.$lh-xs;
-  letter-spacing: f.$null;
-}

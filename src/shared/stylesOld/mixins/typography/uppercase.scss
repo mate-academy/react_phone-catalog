@@ -1,9 +1,0 @@
-@use '@constants/fonts' as *;
-
-@mixin uppercase {
-  font-size: $xxsm;
-  font-weight: $s-u;
-  line-height: $lh-xxs;
-  text-transform: uppercase;
-  letter-spacing: $pos;
-}

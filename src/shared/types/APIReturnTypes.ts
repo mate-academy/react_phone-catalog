@@ -1,3 +1,4 @@
+import { Category } from '@shared/api';
 import {
   Cameras,
   Capacity,
@@ -8,13 +9,6 @@ import {
   Resolutions,
   Screens,
 } from '.';
-
-enum Category {
-  Accessories = 'accessories',
-  Phones = 'phones',
-  Products = 'all',
-  Tablets = 'tablets',
-}
 
 type BannerData = {
   id: number;
