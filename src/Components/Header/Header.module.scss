@@ -62,7 +62,6 @@ $desktop-min-width: 1200px;
   @media (min-width: $desktop-min-width) {
     gap: 64px;
   }
-
 }
 .nav_item {
   line-height: 48px;
@@ -73,6 +72,10 @@ $desktop-min-width: 1200px;
 }
 
 .menu__list a {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 4%;
   position: relative;
   color: #75767f;
   transition: color 0.3s ease;
@@ -107,6 +110,10 @@ $desktop-min-width: 1200px;
 }
 
 .nav a {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 4%;
   position: relative;
   color: #75767f;
   transition: color 0.3s ease;
@@ -264,7 +271,6 @@ $desktop-min-width: 1200px;
 }
 
 @media (max-width: $tablet-min-width) {
-
   .actions {
     gap: 0;
 

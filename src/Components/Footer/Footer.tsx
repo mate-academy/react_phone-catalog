@@ -12,20 +12,23 @@ export const Footer: React.FC = () => {
 
         <ul className={styles.links}>
           <li>
-            <a href="https://github.com">GITHUB</a>
+            <a href="https://github.com/BogdanS1nb">GITHUB</a>
           </li>
           <li>
-            <a href="/contacts">CONTACTS</a>
+            <a href="https://github.com/BogdanS1nb">CONTACTS</a>
           </li>
           <li>
-            <a href="/rights">RIGHTS</a>
+            <a href="https://github.com/BogdanS1nb">RIGHTS</a>
           </li>
         </ul>
 
         <div className={styles.toTop}>
-          <a href="#top">
-            Back to top <div className="img"></div>
-          </a>
+          <div
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className={styles.back}
+          >
+            Back to top<div className={styles.img}></div>
+          </div>
         </div>
       </div>
     </footer>

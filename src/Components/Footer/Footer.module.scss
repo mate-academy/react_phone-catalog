@@ -3,30 +3,35 @@ $desktop-min-width: 1200px;
 
 .footer {
   background-color: #0f1121;
-  color: #F1F2F9;
+  color: #f1f2f9;
   font-size: 14px;
   height: 257px;
   display: flex;
+  padding: 16px;
+  border-top: 1px solid #75767f;
 
   @media (min-width: $tablet-min-width) {
     padding: 32px 32px;
-    justify-content: space-between;
     height: 96px;
   }
 }
 
 .container {
   align-items: flex-start;
-  max-width: 1200px;
   display: grid;
   gap: 16px;
+  width: 100%;
 
   @media (min-width: $tablet-min-width) {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
     align-items: center;
   }
 }
 
 .logo {
+  display: block;
   height: 20.8px;
   width: 64px;
   background-size: cover;
@@ -48,17 +53,59 @@ $desktop-min-width: 1200px;
 .links {
   list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 16px;
   padding: 0;
   margin: 0;
+  flex-direction: column;
+  transition: all 0.3s;
+
+  @media (min-width: $tablet-min-width) {
+    flex-direction: row;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    gap: 106px;
+  }
 
   a {
-    color: #F1F2F9;
+    text-transform: uppercase;
+    color: #f1f2f9;
     text-decoration: none;
-    transition: all 0.3ms;
+    display: block;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
 
     &:hover {
       color: #999;
     }
+  }
+}
+
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8.5px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0%;
+  color: #75767F;
+}
+
+.img {
+  height: 32px;
+  width: 32px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-image: url(/public/img/arrow.svg);
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
   }
 }

@@ -1,0 +1,46 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  background-color: #0f1121;
+  color: #333;
+}
+
+.text {
+  margin-top: 2rem;
+  color: #666;
+}
+
+.pulseImage {
+  width: 250px;
+  height: 250px;
+  animation: pulse 1.5s infinite;
+
+  @media (min-width: $tablet-min-width) {
+    width: 300px;
+    height: 300px;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
