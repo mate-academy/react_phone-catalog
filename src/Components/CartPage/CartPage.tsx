@@ -28,6 +28,50 @@ export const CartPage = ({ showedProducts, swiperTitle }: Props) => {
             <button className="CartPage__arrowright">{'>'}</button>
           </div>
         </div>
+                <div className={pageCart.CartSwiperON1760PX}>
+          {' '}
+          <Swiper
+            className={pageCart.CartSwiper}
+            modules={[FreeMode, Navigation]}
+            slidesPerView={6}
+            freeMode={true}
+            pagination={{ clickable: true }}
+            navigation={{
+              prevEl: '.CartPage__arrowleft',
+              nextEl: '.CartPage__arrowright',
+            }}
+          >
+            {showedProducts.map(product => {
+              return (
+                <SwiperSlide key={product.id}>
+                  <ProductCard key={product.id} product={product} />{' '}
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+                <div className={pageCart.CartSwiperON1480PX}>
+          {' '}
+          <Swiper
+            className={pageCart.CartSwiper}
+            modules={[FreeMode, Navigation]}
+            slidesPerView={5}
+            freeMode={true}
+            pagination={{ clickable: true }}
+            navigation={{
+              prevEl: '.CartPage__arrowleft',
+              nextEl: '.CartPage__arrowright',
+            }}
+          >
+            {showedProducts.map(product => {
+              return (
+                <SwiperSlide key={product.id}>
+                  <ProductCard key={product.id} product={product} />{' '}
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
         <div className={pageCart.CartSwiperONDESKTOP}>
           {' '}
           <Swiper

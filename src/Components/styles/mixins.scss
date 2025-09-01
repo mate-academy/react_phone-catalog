@@ -11,8 +11,14 @@
   }
 };
 
-@mixin more-than-1200 {
-  @media (max-width: 1200px) {
+@mixin on-desktop-1480 {
+  @media (min-width: 1480px) {
+    @content;
+  }
+}
+
+@mixin on-desktop-1760 {
+  @media (min-width: 1760px) {
     @content;
   }
 }
