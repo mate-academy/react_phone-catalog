@@ -77,10 +77,10 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
       const params = new URLSearchParams(prev);
 
       params.set('sort', value);
+      params.set('page', '1');
 
       return params;
     });
-    scrollToPage(1);
   };
 
   const handleQuantityChange = (value: string) => {
@@ -89,10 +89,10 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
       const params = new URLSearchParams(prev);
 
       params.set('quantity', value);
+      params.set('page', '1');
 
       return params;
     });
-    scrollToPage(1);
   };
 
   if (errorMessage) {
