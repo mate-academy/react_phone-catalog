@@ -46,6 +46,13 @@ export type StorageCartItem = {
   productId: number;
 };
 
+const Direction = {
+  Left: 'left',
+  Right: 'right',
+} as const;
+
+export type DirectionType = (typeof Direction)[keyof typeof Direction];
+
 export type DataContextProps = {
   phones: Phone[];
   products: Product[];
