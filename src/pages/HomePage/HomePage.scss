@@ -15,6 +15,11 @@
     padding-top: 24px;
   }
 
+  &__main-title {
+    visibility: hidden;
+    display: none;
+  }
+
   &__title {
     align-self: start;
     font-size: 48px;

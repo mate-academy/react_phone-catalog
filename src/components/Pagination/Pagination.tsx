@@ -13,16 +13,11 @@ export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   onPageChange,
 }) => {
-
   return (
     <div className="pagination-container">
       <ReactPaginate
-        previousLabel={
-          <img src="./img/icons/arrow-prev.svg" alt="Previous" />
-        }
-        nextLabel={
-          <img src="./img/icons/arrow-next.svg" alt="Next" />
-        }
+        previousLabel={<img src="./img/icons/arrow-prev.svg" alt="Previous" />}
+        nextLabel={<img src="./img/icons/arrow-next.svg" alt="Next" />}
         pageCount={totalPages}
         // forcePage={currentPage}
         forcePage={currentPage - 1}

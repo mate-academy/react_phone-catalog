@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import './BurgerMenu.scss';
 import { RootState } from '../../app/store';
 
-interface Props {
-  isOpen: boolean;
-  closeMenu: () => void;
-}
+  interface Props {
+    isOpen: boolean;
+    closeMenu: () => void;
+  }
 
 export const BurgerMenu: React.FC<Props> = ({ isOpen, closeMenu }) => {
   const likedProducts = useSelector((state: RootState) => state.likedProducts);

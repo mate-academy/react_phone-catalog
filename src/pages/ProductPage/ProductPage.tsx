@@ -367,7 +367,7 @@ export const ProductPage = () => {
                         }
                       }}
                     >
-                      Add to cart
+                      {addedToCartProduct ? 'Added to cart' : 'Add to cart'}
                     </button>
 
                     <button
