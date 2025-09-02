@@ -8,9 +8,11 @@
 
 .category-list-box {
   display: flex;
+  // flex-wrap: wrap;
   flex-direction: column;
+  justify-content: center;
   padding: 0;
-  gap: 32px;
+  gap: 40px;
 
   @include respond-to('tablet') {
     flex-direction: row;
@@ -20,17 +22,26 @@
 
 .category-list-product {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   text-decoration: none;
   width: 100%;
+  height: 100%;
   padding: 0;
+
+  color: $headLine-text-color;
+
+  &:hover {
+    transform: scale(1.01);
+    color: $button-color-hover;
+  }
 }
 
 .category-list-product__link {
   display: flex;
-  width: 100%;
-  height: 100%;
+  flex-basis: 288px;
   overflow: hidden;
+  position: relative;
   transition: ease-in 100ms;
 
   &--phone-color {
@@ -48,20 +59,37 @@
   &:hover {
     transform: scale(1.01);
   }
+
+  @include respond-to('tablet') {
+    flex-basis: 188px;
+  }
+
+  @include respond-to('desktop') {
+    flex-basis: 368px;
+  }
 }
 
 .category-list-product__img {
-  width: 100%;
-  height: 100%;
+  width: 288px;
+  height: 288px;
   object-fit: fill;
-  position: relative;
-  top: 54px;
-  left: 54px;
+  position: absolute;
+  right: -15%;
+  bottom: -15%;
+
+  @include respond-to('tablet') {
+    width: 188px;
+    height: 188px;
+  }
+
+  @include respond-to('desktop') {
+    width: 368px;
+    height: 368px;
+  }
 }
 
 .category-list-product-info {
   &__name {
-    color: $headLine-text-color;
     margin-bottom: 8px;
 
     @include weigh-size-line-height-text-align(700, 20px, 25.56px, left);

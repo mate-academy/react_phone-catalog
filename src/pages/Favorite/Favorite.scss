@@ -22,6 +22,10 @@
   background-color: $main-button-color;
   color: $headLine-text-color;
   font-family: Mont, sans-serif;
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 .fav-box-products {

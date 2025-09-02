@@ -33,14 +33,19 @@
   background-repeat: no-repeat;
   background-position: calc(100% - 10px) center;
 
+  color: $headLine-text-color;
+
   @include respond-to('tablet') {
     width: 140px;
+
+    &:hover {
+      color: $button-color-hover;
+      transform: scale(1.01);
+    }
   }
 }
 
 .product-filter__select {
-  color: $headLine-text-color;
-
   @include weigh-size-line-height-text-align(700, 14px, 21px, center);
 }
 
@@ -89,7 +94,7 @@ $filter-labels: (
 
 .filter-item__value:hover {
   background-color: $button-color-selected;
-  color: $headLine-text-color;
+  color: $button-color-hover;
 }
 
 .filter-item__value--notVisible {

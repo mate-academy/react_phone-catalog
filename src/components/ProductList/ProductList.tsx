@@ -35,7 +35,7 @@ export const ProductList: React.FC<Props> = ({ title, productList }) => {
   };
 
   return (
-    <div className="productList">
+    <div className="product-list">
       <div className="titleAndPagination">
         <h2 className="titleAndPagination-title">{title}</h2>
         <div className="titleAndPagination__pagination">
@@ -51,7 +51,7 @@ export const ProductList: React.FC<Props> = ({ title, productList }) => {
           ></button>
         </div>
       </div>
-      <div className="productList__list">
+      <div className="product-list__list">
         {models.map(model => (
           <Product model={model} key={model.id} />
         ))}

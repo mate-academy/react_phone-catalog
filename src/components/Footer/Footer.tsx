@@ -31,12 +31,9 @@ export const Footer: React.FC = () => {
         </NavLink>
       </div>
 
-      <div className="footer-button">
+      <div className="footer-button" onClick={scrollToTop}>
         <span className="footer-button__text">Back to top</span>
-        <button
-          onClick={scrollToTop}
-          className="footer-button__button"
-        ></button>
+        <button className="footer-button__button"></button>
       </div>
     </article>
   );

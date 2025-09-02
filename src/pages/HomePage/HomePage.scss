@@ -1,10 +1,9 @@
 @import '../../styles/utils/mixins';
 @import '../../styles/utils/vars';
 
-
 .container {
   display: flex;
-
+  overflow-x: hidden;
   flex-direction: column;
 
   @include respond-to('phone') {
@@ -22,8 +21,11 @@
   @include respond-to('large-desktop') {
     padding-inline: 152px;
   }
-}
 
+  @include respond-to('ultra-large-desktop') {
+    padding-inline: 400px;
+  }
+}
 
 .title {
   color: $headLine-text-color;
@@ -36,4 +38,3 @@
     @include weigh-size-line-height-text-align(800, 48px, 56px, left);
   }
 }
-

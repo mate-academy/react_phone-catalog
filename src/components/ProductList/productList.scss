@@ -30,6 +30,11 @@
     background-repeat: no-repeat;
     background-position: center;
 
+    &:hover {
+      background-color: $button-color-hover;
+      transform: scale(1.01);
+    }
+
     &--left {
       background-image: url('img/icons/banner-arrow-left.svg');
     }
@@ -46,7 +51,7 @@
   }
 }
 
-.productList {
+.product-list {
   display: flex;
   flex-direction: column;
   background-color: $page-background;
@@ -67,16 +72,20 @@
     }
 
     @include respond-to('desktop') {
-      width: calc(100vw - 32px * 2);
       display: grid;
+      justify-content: space-between;
+      width: 100%;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-
       grid-gap: 10px;
       height: 506px;
     }
 
     @include respond-to('large-desktop') {
-      width: calc(100vw - 152px * 2);
+      grid-template-columns: repeat(auto-fit, 272px);
+    }
+
+    @include respond-to('ultra-large-desktop') {
+      grid-template-columns: repeat(auto-fit, minmax(212px, 272px));
     }
   }
 }

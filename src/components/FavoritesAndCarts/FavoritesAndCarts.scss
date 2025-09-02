@@ -22,13 +22,16 @@
   padding: 24px;
   width: 50%;
   position: relative;
+
+  &:hover {
+    background-color: $button-color-hover;
+    transform: scale(1.01);
+  }
 }
 
 .favorites-and-carts__link:nth-child(2) {
   border-left: 1px solid $border-color;
 }
-
-
 
 .favorites-and-carts__counter {
   display: flex;
@@ -48,5 +51,6 @@
 }
 
 .is-active {
-  border-bottom: 3px solid $headLine-text-color;
+  border-bottom: 3px solid $button-color-hover;
+  color: $button-color-hover;
 }

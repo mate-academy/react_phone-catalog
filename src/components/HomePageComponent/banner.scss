@@ -7,10 +7,9 @@
   align-self: center;
   width: 100vw;
 
-
-    @include respond-to('tablet') {
-      width: 100%;
-    }
+  @include respond-to('tablet') {
+    width: 100%;
+  }
 
   &__arrow {
     display: flex;
@@ -58,6 +57,11 @@
     background-color: $second-button-color;
     background-repeat: no-repeat;
     background-position: center;
+
+    &:hover {
+      background-color: $button-color-hover;
+      transform: scale(1.01);
+    }
   }
 
   &--left {

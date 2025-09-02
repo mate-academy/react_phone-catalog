@@ -113,13 +113,7 @@ export const ProductDetails: React.FC = () => {
           <button
             onClick={navBack}
             className="common-navigation common-navigation--margin"
-          >
-            <img
-              className="common-navigation__img"
-              src="img/icons/cards-back.svg"
-              alt=""
-            />
-          </button>
+          ></button>
           <div className="productDetails">
             <h2 className="productDetails-title">{findProduct.name}</h2>
 

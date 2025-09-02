@@ -50,6 +50,10 @@
     width: 100%;
 
     @include weigh-size-line-height-text-align(600, 14px, 21px, left);
+
+    &:hover {
+       color:$button-color-hover;
+    }
   }
 
   &-price {

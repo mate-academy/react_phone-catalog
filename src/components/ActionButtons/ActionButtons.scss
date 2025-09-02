@@ -26,44 +26,44 @@
 
     &:hover {
       background-color: $button-color-hover;
+      color: $button-color-hover;
     }
 
     &--selected {
       background-color: $button-color-selected;
 
       &:hover {
-        background-color: #4a4d58;;
+        background-color: #4a4d58;
       }
     }
   }
 
   &__favourites {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('/img/icons/favourites.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  border-style: none;
-  width: 40px;
-  height: 40px;
-  background-color: $second-button-color;
-
-  &:hover {
-    background-color: #4a4d58;
-  }
-
-  &--added {
-  background-image: url('/img/icons/fovouritesAdded.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: $page-background;
-
-  &:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-image: url('/img/icons/favourites.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border-style: none;
+    width: 40px;
+    height: 40px;
     background-color: $second-button-color;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    &--added {
+      background-image: url('/img/icons/fovouritesAdded.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $page-background;
+
+      &:hover {
+        background-color: $second-button-color;
+      }
+    }
   }
 }
-}
-}
-
-

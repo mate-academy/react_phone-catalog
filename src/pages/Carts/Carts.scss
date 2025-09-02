@@ -57,6 +57,10 @@
     background-color: $item-background;
     border-style: none;
     cursor: pointer;
+
+    &:hover {
+      transform: scale(1.4);
+    }
   }
 
   &__model-img {
@@ -103,11 +107,21 @@
   background-color: $second-button-color;
   border-style: none;
   cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+    background-color: $button-color-hover;
+  }
 }
 
 .cart__select-amount-button--stop {
   background-color: $page-background;
   cursor: default;
+
+  &:hover {
+    transform: scale(1);
+    background-color: $page-background;
+  }
 }
 
 .cart__product-amount {
@@ -161,6 +175,10 @@
   cursor: pointer;
 
   @include weigh-size-line-height-text-align(700, 14px, 21px, center);
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 .carts-box-checkout-apply::after {
@@ -176,6 +194,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: $headLine-text-color;
   padding: 0;
   border-style: none;
   height: 16px;
@@ -184,15 +203,20 @@
   background-image: url('/img/icons/cards-back.svg');
   background-repeat: no-repeat;
   background-position: center;
+
+  &:hover {
+    color: $button-color-hover;
+    background-color: $button-color-hover;
+    transform: scale(1.2);
+  }
 }
 
 .common-navigation::after {
   content: 'Back';
   font-weight: 700;
   font-size: 12px;
-  color: $headLine-text-color;
   position: relative;
-  left: 15px;
+  left: 20px;
   top: -0.5px;
 
   @include weigh-size-line-height-text-align(700, 12px, 100%, center);

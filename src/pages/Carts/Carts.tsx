@@ -7,6 +7,8 @@ import cn from 'classnames';
 import './carts.scss';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
+type Tagret = 'price' | 'amount';
+
 export const Carts: React.FC = () => {
   const { carts, removeFromCart, updateCart } = useContext(LocalStorageContext);
 
@@ -22,13 +24,19 @@ export const Carts: React.FC = () => {
 
   const [data, setData] = useState<Cart[]>();
 
-  const totalPrice = (): number => {
+  const countTotal = (target: Tagret): number => {
     let total = 0;
 
     if (data) {
-      total = data.reduce((acc, val) => {
-        return acc + val.price * val.amount;
-      }, 0);
+      if (target === 'price') {
+        total = data.reduce((acc, val) => {
+          return acc + val.price * val.amount;
+        }, 0);
+      } else {
+        total = data.reduce((acc, val) => {
+          return acc + val.amount;
+        }, 0);
+      }
     }
 
     return total;
@@ -158,10 +166,10 @@ export const Carts: React.FC = () => {
 
             <div className="carts-box-checkout">
               <div className="carts-box-checkout__common-price">
-                {totalPrice()}
+                {countTotal('price')}
               </div>
               <span className="carts-box-checkout__amount-products">
-                Total for {findCarts.length}
+                Total for {countTotal('amount')}
               </span>
               <button className="carts-box-checkout-apply">Checkout</button>
             </div>

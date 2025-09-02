@@ -23,6 +23,10 @@
   flex-grow: 1;
   width: 288px;
   height: 32px;
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 .footer-items {
@@ -47,12 +51,19 @@
   color: $headLine-text-color;
 
   @include weigh-size-line-height-text-align(800, 12px, 11px, center);
+
+  &:hover {
+    color: $button-color-hover;
+    transform: scale(1.01);
+  }
 }
 
 .footer-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: $second-text-color;
+  cursor: pointer;
   gap: 16px;
   width: 100%;
 
@@ -60,6 +71,11 @@
     justify-content: flex-end;
     width: 288px;
     flex-grow: 1;
+
+    &:hover {
+      color: $button-color-hover;
+      transform: scale(1.01);
+    }
   }
 }
 
@@ -73,10 +89,13 @@
   background-image: url('/img/icons/arrow-right.png');
   background-repeat: no-repeat;
   background-position: center;
+
+  &:hover {
+    background-color: $button-color-hover;
+    transform: scale(1.01);
+  }
 }
 
 .footer-button__text {
-  color: $second-text-color;
-
   @include weigh-size-line-height-text-align(700, 12px, 15.34px, right);
 }

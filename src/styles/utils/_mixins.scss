@@ -8,11 +8,15 @@
       @content;
     }
   } @else if $breakpoint == 'desktop' {
-    @media (min-width: 1200px) {
+    @media (min-width: 1199px) {
       @content;
     }
   } @else if $breakpoint == 'large-desktop' {
-    @media (min-width: 1201px) {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $breakpoint == 'ultra-large-desktop' {
+    @media (min-width: 1920px) {
       @content;
     }
   }
