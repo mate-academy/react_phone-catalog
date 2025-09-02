@@ -5,6 +5,7 @@ import { ButtonArrow } from '../../../shared/components/ButtonArrow/ButtonArrow'
 import { ProductCard } from '../../../shared/components/ProductCard/ProductCard';
 import scss from './ProductsSlider.module.scss';
 import { DataContext } from '../../../../context/ContextProvider';
+import { Loader } from '../../../shared/components/Loader/Loader';
 
 export const ProductsSlider: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState<number>(0);
@@ -32,6 +33,7 @@ export const ProductsSlider: React.FC = () => {
         </div>
       </div>
       <div className={scss.slider__productCard}>
+        {}
         <div className={scss.slider__productCard__container}>
           {products[0] && (
             <ProductCard product={products[0]} hasDiscount={true} />
@@ -44,6 +46,7 @@ export const ProductsSlider: React.FC = () => {
           )}
         </div>
       </div>
+      <Loader />
     </div>
   );
 };
