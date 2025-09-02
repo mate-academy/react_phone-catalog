@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { DataContextProps, Phone, Product } from '../api/types';
 import { getPhones, getProducts } from '../api/api';
-import { STORAGE_KEYS } from '../modules/shared/constants/storage';
+import { STORAGE_KEYS, StorageKey } from '../modules/shared/constants/storage';
 
 const defaultContext: DataContextProps = {
   phones: [],
@@ -9,6 +9,8 @@ const defaultContext: DataContextProps = {
   isLoading: false,
   favItems: [],
   setFavItems: () => {},
+  cartItems: [],
+  setCartItems: () => {},
 };
 
 export const DataContext = createContext(defaultContext);
@@ -18,9 +20,9 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
 
-  const getInitialFavourites = () => {
+  const getInitialStorage = (key: StorageKey) => {
     try {
-      const initialFav = localStorage.getItem(STORAGE_KEYS.FAVOURITES);
+      const initialFav = localStorage.getItem(STORAGE_KEYS[key]);
 
       return initialFav ? JSON.parse(initialFav) : [];
     } catch (error) {
@@ -31,7 +33,12 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const [favItems, setFavItems] = useState<number[]>(getInitialFavourites);
+  const [favItems, setFavItems] = useState<number[]>(
+    getInitialStorage('FAVOURITES'),
+  );
+  const [cartItems, setCartItems] = useState<number[]>(
+    getInitialStorage('CART'),
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,9 +69,23 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     } catch {}
   }, [favItems]);
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(cartItems));
+    } catch {}
+  }, [cartItems]);
+
   return (
     <DataContext.Provider
-      value={{ phones, products, isLoading, favItems, setFavItems }}
+      value={{
+        phones,
+        products,
+        isLoading,
+        favItems,
+        setFavItems,
+        cartItems,
+        setCartItems,
+      }}
     >
       {children}
     </DataContext.Provider>

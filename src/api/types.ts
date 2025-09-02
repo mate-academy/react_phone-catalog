@@ -46,4 +46,6 @@ export type DataContextProps = {
   isLoading: boolean;
   favItems: number[];
   setFavItems: React.Dispatch<React.SetStateAction<number[]>>;
+  cartItems: number[];
+  setCartItems: React.Dispatch<React.SetStateAction<number[]>>;
 };
