@@ -3,7 +3,6 @@ import styles from './ProductFilters.module.scss';
 
 export const ProductFilters: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
 
@@ -28,34 +27,35 @@ export const ProductFilters: React.FC = () => {
   return (
     <div className={styles.filters}>
       <div className={styles.filterGroup}>
-        <label className={styles.label}>
+        <label className={styles.label} htmlFor="select">
           Sort by
-          <select
-            value={sort}
-            onChange={handleSortChange}
-            className={styles.select}
-          >
-            <option value="age">Newest</option>
-            <option value="title">Alphabetically</option>
-            <option value="price">Cheapest</option>
-          </select>
         </label>
+        <select
+          id="select"
+          value={sort}
+          onChange={handleSortChange}
+          className={`${styles.select} ${styles.selectAll}`}
+        >
+          <option value="age">Newest</option>
+          <option value="title">Alphabetically</option>
+          <option value="price">Cheapest</option>
+        </select>
       </div>
-
       <div className={styles.filterGroup}>
-        <label className={styles.label}>
+        <label className={styles.label} htmlFor="selectAll">
           Items on page
-          <select
-            value={perPage}
-            onChange={handlePerPageChange}
-            className={styles.select}
-          >
-            <option value="all">All</option>
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-          </select>
         </label>
+        <select
+          id="selectAll"
+          value={perPage}
+          onChange={handlePerPageChange}
+          className={styles.select}
+        >
+          <option value="all">All</option>
+          <option value="4">4</option>
+          <option value="8">8</option>
+          <option value="16">16</option>
+        </select>
       </div>
     </div>
   );

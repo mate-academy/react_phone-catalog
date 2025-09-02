@@ -6,10 +6,14 @@ $desktop-min-width: 1200px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: calc(100vh - 257px);
   text-align: center;
   background-color: #0f1121;
   color: #333;
+
+  @media (min-width: $tablet-min-width) {
+    height: calc(100vh - 96px);
+  }
 }
 
 .text {
