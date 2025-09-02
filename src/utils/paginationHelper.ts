@@ -2,7 +2,10 @@ export const getPaginationLinks = (pageCount: number, currentPage: number) => {
   const pages: number[] = [];
 
   if (pageCount <= 7) {
-    for (let i = 1; i <= pageCount; i++) pages.push(i);
+    for (let i = 1; i <= pageCount; i++) {
+      pages.push(i);
+    }
+
     return pages;
   }
 
@@ -31,7 +34,9 @@ export const getPaginationLinks = (pageCount: number, currentPage: number) => {
     );
   } else {
     // fallback
-    for (let i = 1; i <= Math.min(7, pageCount); i++) pages.push(i);
+    for (let i = 1; i <= Math.min(7, pageCount); i++) {
+      pages.push(i);
+    }
   }
 
   return pages;

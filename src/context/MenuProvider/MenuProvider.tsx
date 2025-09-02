@@ -1,5 +1,9 @@
-import { createContext, useState } from 'react';
-import { ToggleMenu } from '../../types/ToggleMenu';
+import { createContext, Dispatch, SetStateAction, useState } from 'react';
+
+interface ToggleMenu {
+  isMenuVisible: boolean;
+  setIsMenuVisible: Dispatch<SetStateAction<boolean>>;
+}
 
 export const MenuContext = createContext<ToggleMenu>({
   isMenuVisible: false,
