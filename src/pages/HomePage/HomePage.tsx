@@ -23,7 +23,7 @@ export const HomePage = () => {
 
   return (
     <div className="home">
-      <h1 className="home__main-title" >Product Catalog</h1>
+      <h1 className="home__main-title">Product Catalog</h1>
       <h2 className="home__title">Welcome to Nice Gadgets store!</h2>
       <BannerSlider />
       <NewModelsList products={products} errorMessage={errorMessage} />
