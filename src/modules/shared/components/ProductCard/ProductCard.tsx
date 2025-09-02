@@ -1,27 +1,17 @@
-import { useMemo } from 'react';
 import { Product } from '../../../../api/types';
 import scss from './ProductCard.module.scss';
 import { ButtonFav } from '../ButtonFav/ButtonFav';
+import { ButtonCart } from '../ButtonCart/ButtonCart';
+import { Specs } from './Specs';
+import { Price } from './Price';
 
 interface Props {
   product: Product;
-  discount: boolean;
+  hasDiscount: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product, discount }) => {
-  const formatter = useMemo(
-    () =>
-      new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }),
-    [],
-  );
-
-  const normalPrice = formatter.format(product.fullPrice);
-  const discountPrice = formatter.format(product.price);
+export const ProductCard: React.FC<Props> = ({ product, hasDiscount }) => {
+  const discount = hasDiscount ? product.price : null;
 
   return (
     <article className={scss.productCard}>
@@ -32,60 +22,13 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
         loading="lazy"
       ></img>
       <h3 className={scss.productCard__name}>{product.name}</h3>
-      <div className={scss.productCard__priceLine}>
-        <p className={scss.productCard__price}>
-          {discount ? discountPrice : normalPrice}
-        </p>
-        {discount && (
-          <p className={scss.productCard__discount}>{normalPrice}</p>
-        )}
-      </div>
-
+      <Price normal={product.fullPrice} discount={discount} />
       <div className={scss.productCard__divider}></div>
-      <dl className={scss.productCard__specs}>
-        <div className={scss.productCard__specs__line}>
-          <dt
-            className={`${scss.productCard__specs__text} ${scss.productCard__specs__type}`}
-          >
-            Screen
-          </dt>
-          <dd
-            className={`${scss.productCard__specs__text} ${scss.productCard__specs__value}`}
-          >
-            {product.screen}
-          </dd>
-        </div>
-        <div className={scss.productCard__specs__line}>
-          <dt
-            className={`${scss.productCard__specs__text} ${scss.productCard__specs__type}`}
-          >
-            Capacity
-          </dt>
-          <dd
-            className={`${scss.productCard__specs__text} ${scss.productCard__specs__value}`}
-          >
-            {product.capacity}
-          </dd>
-        </div>
-        <div className={scss.productCard__specs__line}>
-          <dt
-            className={`${scss.productCard__specs__text} ${scss.productCard__specs__type}`}
-          >
-            RAM
-          </dt>
-          <dd
-            className={`${scss.productCard__specs__text} ${scss.productCard__specs__value}`}
-          >
-            {product.ram}
-          </dd>
-        </div>
-        <div className={scss.productCard__buttons}>
-          <button className={scss.productCard__buttons__cart}>
-            Add to cart
-          </button>
-          <ButtonFav productId={product.id} />
-        </div>
-      </dl>
+      <Specs product={product} />
+      <div className={scss.productCard__buttons}>
+        <ButtonCart productId={product.id} />
+        <ButtonFav productId={product.id} />
+      </div>
     </article>
   );
 };

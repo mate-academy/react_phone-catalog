@@ -1,5 +1,10 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
-import { DataContextProps, Phone, Product } from '../api/types';
+import {
+  DataContextProps,
+  Phone,
+  Product,
+  StorageCartItem,
+} from '../api/types';
 import { getPhones, getProducts } from '../api/api';
 import { STORAGE_KEYS, StorageKey } from '../modules/shared/constants/storage';
 
@@ -36,7 +41,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
   const [favItems, setFavItems] = useState<number[]>(
     getInitialStorage('FAVOURITES'),
   );
-  const [cartItems, setCartItems] = useState<number[]>(
+  const [cartItems, setCartItems] = useState<StorageCartItem[]>(
     getInitialStorage('CART'),
   );
 

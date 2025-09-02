@@ -40,12 +40,18 @@ export type Product = {
   image: string;
 };
 
+export type StorageCartItem = {
+  id: number;
+  quantity: number;
+  productId: number;
+};
+
 export type DataContextProps = {
   phones: Phone[];
   products: Product[];
   isLoading: boolean;
   favItems: number[];
   setFavItems: React.Dispatch<React.SetStateAction<number[]>>;
-  cartItems: number[];
-  setCartItems: React.Dispatch<React.SetStateAction<number[]>>;
+  cartItems: StorageCartItem[];
+  setCartItems: React.Dispatch<React.SetStateAction<StorageCartItem[]>>;
 };
