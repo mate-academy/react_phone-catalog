@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
 
 type Product = {
@@ -21,6 +21,12 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const [isFav, setIsFav] = useState(false);
+
+  const toggleFav = () => {
+    setIsFav(prev => !prev);
+  };
+
   return (
     <div className={styles.card}>
       <img src={product.image} alt={product.name} className={styles.image} />
@@ -46,7 +52,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={styles.actions}>
         <button className={styles.addToCart}>Add to cart</button>
-        <div className={styles.fav}></div>
+        <div
+          className={`${styles.fav} ${isFav ? styles.favActive : ''}`}
+          onClick={toggleFav}
+        ></div>
       </div>
     </div>
   );
