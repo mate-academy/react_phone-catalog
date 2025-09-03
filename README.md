@@ -69,7 +69,7 @@ Each component is placed in its own folder with:
 - Dynamic product list with:
   - Loader / error states / empty messages
   - Sorting (`Newest`, `Alphabetically`, `Cheapest`)
-  - Pagination (`4 / 8 / 16 / All` items per page)
+  - Pagination (`4 / 8 / 16 / 32` items per page)
 
 ### 📱 Product Details Page (`/product/:productId`)
 
