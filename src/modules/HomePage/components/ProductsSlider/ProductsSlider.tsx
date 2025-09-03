@@ -9,6 +9,8 @@ import { Product } from '../../../../api/types';
 
 export const ProductsSlider: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState<number>(0);
+  const [touchStart, setTouchStart] = useState<number>(0);
+  const [touchEnd, setTouchEnd] = useState<number>(0);
   const { products } = useContext(DataContext);
 
   const newestProducts = useMemo(() => {
@@ -72,6 +74,28 @@ export const ProductsSlider: React.FC = () => {
     [newestProducts.length],
   );
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 20) {
+      setActiveSlide(current =>
+        current === newestProducts.length ? 0 : current + 1,
+      );
+    }
+
+    if (touchStart - touchEnd < -20) {
+      setActiveSlide(current =>
+        current === 0 ? newestProducts.length / 2 - 1 : current - 1,
+      );
+    }
+  };
+
   return (
     <div className={scss.slider}>
       <div className={scss.slider__header}>
@@ -84,6 +108,9 @@ export const ProductsSlider: React.FC = () => {
       <div
         className={scss.slider__productCard}
         style={{ '--index': -activeSlide } as React.CSSProperties}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         {newestProducts.map(prod => {
           return (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import scss from './PicturesSlider.module.scss';
-import { Dashes } from '../Dashes/Dashes';
+import { Dashes } from './Dashes';
 import { slides } from '../../../../assets/slider/slider';
-import { Pictures } from '../Pictures/Pictures';
+import { Pictures } from './Pictures';
 
 export const PicturesSlider = () => {
   const [activeSlide, setActiveSlide] = useState<number>(0);
