@@ -1,8 +1,6 @@
 import { useCallback, useContext, useMemo, useState } from 'react';
-// eslint-disable-next-line max-len
-import { ButtonArrow } from '../../../shared/components/ButtonArrow/ButtonArrow';
-// eslint-disable-next-line max-len
-import { ProductCard } from '../../../shared/components/ProductCard/ProductCard';
+import { ButtonArrow } from '../../../shared/components/ButtonArrow';
+import { ProductCard } from '../../../shared/components/ProductCard';
 import scss from './ProductsSlider.module.scss';
 import { DataContext } from '../../../../context/ContextProvider';
 import { Product } from '../../../../api/types';

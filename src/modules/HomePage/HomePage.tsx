@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 import { DataContext } from '../../context/ContextProvider';
-import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
-import { ProductsSlider } from './components/ProductsSlider/ProductsSlider';
+import { PicturesSlider } from './components/PicturesSlider';
+import { ProductsSlider } from './components/ProductsSlider';
 import scss from './HomePage.module.scss';
-import { Loader } from '../shared/components/Loader/Loader';
+import { Loader } from '../shared/components/Loader';
+import { Categories } from './components/Categories';
 
 export const HomePage: React.FC = () => {
   const { isLoading } = useContext(DataContext);
@@ -19,6 +20,7 @@ export const HomePage: React.FC = () => {
           <ProductsSlider />
         </>
       )}
+      <Categories />
     </div>
   );
 };
