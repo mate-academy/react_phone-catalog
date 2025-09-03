@@ -68,7 +68,6 @@ export const CategoryPage: React.FC = () => {
           <Breadcrumbs />
           <h1 className="title title-mobile"> {title}</h1>
           <ProductFilter />
-          <ProductPagination pages={arrayOfPages} />
           <ProductCatalog
             models={productsFiltered.slice(START_VALUE, END_VALUE)}
           />

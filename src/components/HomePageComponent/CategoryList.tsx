@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import './CategoryList.scss';
+import './categoryList.scss';
 import { ApiContext } from '../../context/ApiContext';
 import { NavLink } from 'react-router-dom';
 

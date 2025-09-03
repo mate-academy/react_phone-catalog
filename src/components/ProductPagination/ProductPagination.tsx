@@ -17,8 +17,12 @@ export const ProductPagination: React.FC<Props> = ({ pages }) => {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [search]);
+    const limit = searchParams.get('limit') || '16';
+
+    if (+limit !== 4) {
+      window.scrollTo(0, 0);
+    }
+  }, [search, searchParams]);
 
   const queryPage = searchParams.get('page') || '1';
 

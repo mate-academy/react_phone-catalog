@@ -14,6 +14,12 @@ export const FavoritesAndCarts: React.FC<Props> = ({ handle }) => {
 
   const location = useLocation();
 
+  const countTotal = (): number => {
+    return carts.reduce((acc, val) => {
+      return acc + val.amount;
+    }, 0);
+  };
+
   const getItemClass = ({ isActive }: { isActive: boolean }) => {
     return cn('favorites-and-carts__link', { 'is-active': isActive });
   };
@@ -49,7 +55,7 @@ export const FavoritesAndCarts: React.FC<Props> = ({ handle }) => {
           className="logo--anim"
         />
         {carts.length > 0 && (
-          <span className="favorites-and-carts__counter">{carts.length}</span>
+          <span className="favorites-and-carts__counter">{countTotal()}</span>
         )}
       </NavLink>
     </div>

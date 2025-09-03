@@ -26,7 +26,6 @@
 
     &:hover {
       background-color: $button-color-hover;
-      color: $button-color-hover;
     }
 
     &--selected {
@@ -34,6 +33,7 @@
 
       &:hover {
         background-color: #4a4d58;
+        color: $button-color-hover;
       }
     }
   }
