@@ -4,13 +4,17 @@ import { ButtonFav } from '../ButtonFav/ButtonFav';
 import { ButtonCart } from '../ButtonCart/ButtonCart';
 import { Specs } from './Specs';
 import { Price } from './Price';
+import { memo } from 'react';
 
 interface Props {
   product: Product;
   hasDiscount: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product, hasDiscount }) => {
+export const ProductCardComponent: React.FC<Props> = ({
+  product,
+  hasDiscount,
+}) => {
   const discount = hasDiscount ? product.price : null;
 
   return (
@@ -32,3 +36,6 @@ export const ProductCard: React.FC<Props> = ({ product, hasDiscount }) => {
     </article>
   );
 };
+
+export const ProductCard = memo(ProductCardComponent);
+ProductCard.displayName = 'ProductCard';

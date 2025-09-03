@@ -1,3 +1,5 @@
+@use './../../../shared/styles/utils/_constants' as constants;
+
 .slider {
   margin: 5.6rem 0;
 
@@ -28,10 +30,15 @@
     margin: 2.4rem 1.6rem 0;
 
     display: flex;
-    gap: 1.6rem;
+    gap: constants.$mobile-product-card-gap;
+
+    transition: transform 0.3s ease;
+    will-change: transform;
+
+    transform: translateX(calc(var(--index) * (constants.$mobile-product-card-gap + constants.$mobile-product-card-width)));
 
     &__container {
-      width: 21.2rem;
+      width: constants.$mobile-product-card-width;
     }
   }
 }
