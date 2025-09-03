@@ -102,6 +102,10 @@
   transition: border 0.2s;
 }
 
+.active_img {
+  border: 1px solid black;
+}
+
 .main_img {
   width: 180px;
   height: 180px;
@@ -784,6 +788,13 @@
   .side_img {
     width: 80px;
     height: 80px;
+    border: 1px solid #E2E6E9;
+    object-fit: contain;
+  }
+
+  .active_img {
+    width: 80px;
+    height: 80px;
     border: 1px solid black;
     object-fit: contain;
   }
@@ -879,7 +890,7 @@
   .add_to_cart_button {
     width: 263px;
     height: 48px;
-    padding: 10px 20px;
+    padding: 0;
     background-color: #313237;
     border: none;
     color: #fff;
@@ -1008,9 +1019,16 @@
   }
 
   .container_also_like {
+    width: 1136px;
     display: grid;
     grid-template-columns: repeat(4, 4fr);
+    gap: 16px;
   }
+
+  .buttons_group {
+    display: flex;
+    gap: 16px;
+}
 
   .link_product {
     text-decoration: none;

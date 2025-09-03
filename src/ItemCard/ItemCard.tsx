@@ -187,7 +187,7 @@ export const ItemCard: React.FC = () => {
                   key={index}
                   src={img}
                   alt="imagesForItem"
-                  className={styles.side_img}
+                  className={`${styles.side_img} ${selectedImageIndex === index ? styles.active_img : ''}`}
                   onClick={() => handleImagesChange(index)}
                 />
               ))}
