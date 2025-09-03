@@ -9,7 +9,7 @@
   gap: 32px;
   padding: 32px 16px;
 
-  box-shadow: 0px -1px 0px rgba($elements-color, 1);
+  box-shadow: 0 -1px 0 rgba($elements-color, 1);
 
   @include on-desktop {
     width: auto;
