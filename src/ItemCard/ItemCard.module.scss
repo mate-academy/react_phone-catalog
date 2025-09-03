@@ -21,6 +21,7 @@
 }
 
 .button_back {
+  display: flex;
   font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 700;
@@ -30,6 +31,10 @@
   border: 0;
   background-color: #fff;
   cursor: pointer;
+}
+
+.button_back_text {
+  padding: 0;
 }
 
 .navigation_text {
@@ -151,8 +156,12 @@
   transition: border 0.2s;
 }
 
+.color_circle:active {
+  border: 2px solid #313237;
+}
+
 .active_color {
-  border-color: #313237;
+  border: 2px solid #313237;
 }
 
 .capacity {
@@ -476,6 +485,7 @@
   }
 
   .colors {
+    width: 300px;
     margin: 0 32px;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 24px;
@@ -492,7 +502,7 @@
   }
 
   .active_color {
-    border-color: 2px #313237;
+    border: 2px solid #313237;
   }
 
   .capacity {
@@ -709,20 +719,20 @@
     margin-left: auto;
   }
 
-.buttons_controls {
-  width: 32px;
-  height: 32px;
-  gap: 16px;
-  background-color: #fff;
-  border: 1px solid gray;
-  transition: background-color 0.3s ease, opacity 0.3s ease;
-  cursor: pointer;
-}
+  .buttons_controls {
+    width: 32px;
+    height: 32px;
+    gap: 16px;
+    background-color: #fff;
+    border: 1px solid gray;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+  }
 
-.buttons_controls:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+  .buttons_controls:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
   .link_product {
     width: 237px;
@@ -818,6 +828,7 @@
   }
 
   .colors {
+    width: 300px;
     margin: 0 32px;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 24px;
@@ -834,11 +845,11 @@
   }
 
   .active_color {
-    border-color: 2px #313237;
+    border: 2px solid #313237;
   }
 
   .capacity {
-    margin: 0 32px 56px;
+    margin: 0 32px;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 24px;
     gap: 16px;
@@ -887,6 +898,13 @@
     line-height: 28.12px;
   }
 
+  .checkout {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    gap: 8px;
+  }
+
   .add_to_cart_button {
     width: 263px;
     height: 48px;
@@ -900,7 +918,6 @@
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
-    margin: 0 32px 32px;
   }
 
   .add_to_cart_button.added_to_cart {
@@ -1025,10 +1042,16 @@
     gap: 16px;
   }
 
+  .controls {
+    width: 1136px;
+  }
+
   .buttons_group {
     display: flex;
     gap: 16px;
-}
+    margin-left: auto;
+    max-width: 1000px;
+  }
 
   .link_product {
     text-decoration: none;

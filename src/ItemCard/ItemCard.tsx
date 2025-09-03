@@ -140,7 +140,7 @@ export const ItemCard: React.FC = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [productId]);
 
   useEffect(() => {
@@ -174,7 +174,7 @@ export const ItemCard: React.FC = () => {
       <div>
         <button className={styles.button_back} onClick={handleBackClick}>
           <img src="img/Arrow-left.png" alt="" />
-          <p>Back</p>
+          <p className={styles.button_back_text}>Back</p>
         </button>
       </div>
       <h1 className={styles.title}>{product.name}</h1>
