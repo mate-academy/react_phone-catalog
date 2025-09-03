@@ -54,8 +54,11 @@ export const Footer: React.FC = () => {
 
       <div className={styles.footer__redirect}>
         <span className={styles['footer__redirect--text']}>Back to top</span>
-        <button className="button__circle button__circle--arrow">
-          <span className="icon icon--up"></span>
+        <button
+          className="button__circle button__circle--arrow"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <i className="icon icon--up"></i>
         </button>
       </div>
     </footer>

@@ -68,7 +68,7 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
 
       <div className={styles.menu__icons}>
         <div className={styles['menu__icons--icon']}>
-          <a href="#" className="icon icon--heart"></a>
+          <a href="#" className="icon icon--heart-empty"></a>
         </div>
         <div className={styles['menu__icons--icon']}>
           <a href="#" className="icon icon--cart"></a>

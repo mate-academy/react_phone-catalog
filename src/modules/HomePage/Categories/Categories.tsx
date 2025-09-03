@@ -2,6 +2,7 @@ import React from 'react';
 import '@/styles/main.scss';
 import styles from './Categories.module.scss';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 export const Categories: React.FC = () => {
   return (
@@ -9,14 +10,16 @@ export const Categories: React.FC = () => {
       <h2>Shop by categories</h2>
       <div className={styles.categories__container}>
         <div className={styles.categories__block}>
-          <img
-            src="/img/category-phones.png"
-            alt="Phones"
-            className={classNames(
-              styles.categories__image,
-              styles['categories__image--phone'],
-            )}
-          />
+          <Link to="/phones">
+            <img
+              src="/img/category-phones.png"
+              alt="Phones"
+              className={classNames(
+                styles.categories__image,
+                styles['categories__image--phone'],
+              )}
+            />
+          </Link>
           <div className={styles.categories__desc}>
             <h4 className={styles['categories__desc--title']}>Mobile phones</h4>
             <p
@@ -30,14 +33,16 @@ export const Categories: React.FC = () => {
           </div>
         </div>
         <div className={styles.categories__block}>
-          <img
-            src="/img/category-tablets.png"
-            alt="Phones"
-            className={classNames(
-              styles.categories__image,
-              styles['categories__image--tablet'],
-            )}
-          />
+          <Link to="/tablets">
+            <img
+              src="/img/category-tablets.png"
+              alt="Phones"
+              className={classNames(
+                styles.categories__image,
+                styles['categories__image--tablet'],
+              )}
+            />
+          </Link>
           <div className={styles.categories__desc}>
             <h4 className={styles['categories__desc--title']}>Tablets</h4>
             <p
@@ -51,14 +56,16 @@ export const Categories: React.FC = () => {
           </div>
         </div>
         <div className={styles.categories__block}>
-          <img
-            src="/img/category-accessories.png"
-            alt="Phones"
-            className={classNames(
-              styles.categories__image,
-              styles['categories__image--accessory'],
-            )}
-          />
+          <Link to="/accessories">
+            <img
+              src="/img/category-accessories.png"
+              alt="Phones"
+              className={classNames(
+                styles.categories__image,
+                styles['categories__image--accessory'],
+              )}
+            />
+          </Link>
           <div className={styles.categories__desc}>
             <h4 className={styles['categories__desc--title']}>Accessories</h4>
             <p

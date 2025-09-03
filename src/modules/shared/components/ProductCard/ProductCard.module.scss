@@ -7,10 +7,12 @@
   padding: 32px;
   gap: 8px;
   width: 100%;
-  height: fit-content;
+  height: 100%;
 
   border: 1px solid $elements-color;
   border-radius: 8px;
+
+  transition: box-shadow $transition-time;
 
   &:hover {
     box-shadow: 0 2px 16px rgba($shadow-color, 0.1);

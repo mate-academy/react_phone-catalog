@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+/* eslint-disable import/extensions */
+import React, { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
 import '@/styles/main.scss';
-import classNames from 'classnames';
 
 import { Menu } from '../Menu';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useProducts } from '@/hooks/useProducts';
 
 export const Header: React.FC = () => {
+  const { cart, favorites } = useProducts();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const handleMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -16,59 +20,65 @@ export const Header: React.FC = () => {
     setMobileMenuOpen(false);
   };
 
+  // disabling content scrolling when menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <div className={styles.headerContainer}>
       <div className={styles.header}>
         <div className={styles.header__left}>
-          <div className={styles.header__logo}>
+          <NavLink to="/" className={styles.header__logo}>
             <img
               src="/img/icons/Logo@2x.png"
               alt="Nice gadgets"
               className={styles['header__logo--img']}
             />
-          </div>
+          </NavLink>
 
           <nav className={styles.header__nav}>
             <ul className={styles['header__nav--list']}>
               <li>
-                <a
-                  className={classNames(
-                    styles['header__nav--link'],
-                    'text__uppercase',
-                  )}
+                <NavLink
+                  className={`text__uppercase ${location.pathname === '/' ? styles['header__nav--link__active'] : styles['header__nav--link']}`}
+                  to="/"
                 >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  className={classNames(
-                    styles['header__nav--link'],
-                    'text__uppercase',
-                  )}
+                <NavLink
+                  className={`text__uppercase ${location.pathname === '/phones' ? styles['header__nav--link__active'] : styles['header__nav--link']}`}
+                  to="/phones"
                 >
                   Phones
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  className={classNames(
-                    styles['header__nav--link'],
-                    'text__uppercase',
-                  )}
+                <NavLink
+                  className={`text__uppercase ${location.pathname === '/tablets' ? styles['header__nav--link__active'] : styles['header__nav--link']}`}
+                  to="/tablets"
                 >
                   Tablets
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  className={classNames(
-                    styles['header__nav--link'],
-                    'text__uppercase',
-                  )}
+                <NavLink
+                  className={`text__uppercase ${location.pathname === '/accessories' ? styles['header__nav--link__active'] : styles['header__nav--link']}`}
+                  to="/accessories"
                 >
                   Accessories
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>
@@ -88,10 +98,24 @@ export const Header: React.FC = () => {
             </div>
           </div>
           <div className={styles['header__icons--desktop']}>
-            <a href="#" className="icon icon--heart-empty"></a>
+            <div className={styles['header__icons--wrapper']}>
+              <Link to="/favorites" className="icon icon--heart-empty"></Link>
+              {favorites.length > 0 && (
+                <div className={styles['header__icons--badge']}>
+                  {favorites.length}
+                </div>
+              )}
+            </div>
           </div>
           <div className={styles['header__icons--desktop']}>
-            <a href="#" className="icon icon--cart"></a>
+            <div className={styles['header__icons--wrapper']}>
+              <Link to="/cart" className="icon icon--cart"></Link>
+              {cart.length > 0 && (
+                <div className={styles['header__icons--badge']}>
+                  {cart.length > 99 ? '99+' : cart.length}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

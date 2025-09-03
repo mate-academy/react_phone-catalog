@@ -1,37 +1,62 @@
-import React, { useState } from 'react';
+/* eslint-disable import/extensions */
+import React from 'react';
 import styles from './ProductCard.module.scss';
 import '@/styles/main.scss';
 import classNames from 'classnames';
+import { ProductBrief } from '@/types/ProductBrief';
+import { useProducts } from '@/hooks/useProducts';
 
-export const ProductCard: React.FC = () => {
-  const [inCart, setInCart] = useState<boolean>(false);
-  const [favorited, setFavorited] = useState<boolean>(false);
+interface Props {
+  product: ProductBrief;
+}
+
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { cart, setCart, favorites, setFavorites } = useProducts();
+
+  const inCart = cart.some(p => p.product.id === product.id);
+  const favorited = favorites.some(p => p.id === product.id);
+
+  const toggleCart = () => {
+    if (inCart) {
+      setCart(cart.filter(item => item.product.id !== product.id));
+    } else {
+      setCart([...cart, { product, quantity: 1 }]);
+    }
+  };
+
+  const toggleFavorite = () => {
+    setFavorites(
+      favorited
+        ? favorites.filter(p => p.id !== product.id)
+        : [...favorites, product],
+    );
+  };
 
   return (
     <div className={styles.product_card}>
       <div className={styles.product_card__image}>
         <img
-          src="/img/phones/apple-iphone-xs/spacegray/00.webp"
-          alt="Apple iPhone XS Space Gray"
+          src={product.image}
+          alt={product.name}
           className={styles['product_card__image--img']}
         />
       </div>
 
       <div className={styles.product_card__title}>
-        <p className="text__body">
-          Apple iPhone Xs 64GB Space Gray (iMT9G2FS/A)
-        </p>
+        <p className="text__body">{product.name}</p>
       </div>
 
       <div className={styles.product_card__price}>
-        <h3 className={styles['product_card__price--main']}>$799</h3>
+        <h3 className={styles['product_card__price--main']}>
+          ${product.price}
+        </h3>
         <p
           className={classNames(
             styles['product_card__price--discount'],
             'text_small',
           )}
         >
-          $899
+          ${product.fullPrice}
         </p>
       </div>
 
@@ -53,7 +78,7 @@ export const ProductCard: React.FC = () => {
               'text__small',
             )}
           >
-            5.8&quot; OLED
+            {product.screen}
           </p>
         </div>
         <div className={styles['product_card__specs--spec']}>
@@ -71,7 +96,7 @@ export const ProductCard: React.FC = () => {
               'text__small',
             )}
           >
-            64 GB
+            {product.capacity}
           </p>
         </div>
         <div className={styles['product_card__specs--spec']}>
@@ -89,7 +114,7 @@ export const ProductCard: React.FC = () => {
               'text__small',
             )}
           >
-            4 GB
+            {product.ram}
           </p>
         </div>
       </div>
@@ -99,13 +124,13 @@ export const ProductCard: React.FC = () => {
           className={classNames('button__primary', {
             'button__primary--active': inCart,
           })}
-          onClick={() => setInCart(!inCart)}
+          onClick={toggleCart}
         >
           {inCart ? 'Added' : 'Add to cart'}
         </button>
         <button
           className="button__circle button__circle--favorite"
-          onClick={() => setFavorited(!favorited)}
+          onClick={toggleFavorite}
         >
           <i
             className={classNames('icon', {

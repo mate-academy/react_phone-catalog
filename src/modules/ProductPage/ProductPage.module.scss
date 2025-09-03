@@ -5,6 +5,12 @@
     grid-column: 1 / -1;
     display: grid;
     row-gap: 8px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-block: 40px;
+    }
   }
 
   &__qty {
@@ -13,38 +19,37 @@
   }
 
   &__filters {
-    grid-column: 1 / 7;
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    column-gap: 16px;
-  }
-
-  &__products {
     grid-column: 1 / -1;
     display: grid;
-        gap: 40px 16px;
-
-
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
 
     @include on-tablet {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (min-width: 800px) and (max-width: 1199px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-column: 1 / 7;
+      grid-template-columns: 4fr 3fr;
     }
 
     @include on-desktop {
-      grid-template-columns: repeat(4, 1fr);
+      grid-column: 1 / 9;
+      grid-template-columns: 5fr 4fr;
     }
   }
 
   &__pagination {
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 16px;
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      margin-top: 16px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
 
     &--numbers {
       display: flex;
@@ -53,3 +58,4 @@
     }
   }
 }
+

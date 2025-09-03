@@ -32,4 +32,6 @@ body {
   margin: 0;
   font-family: Mont, Arial, Helvetica, sans-serif;
   color: $primary-color;
+  background-color: $hover-bg-color;
+  scroll-behavior: smooth;
 }

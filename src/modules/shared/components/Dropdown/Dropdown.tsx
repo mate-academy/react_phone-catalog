@@ -6,10 +6,15 @@ import '@/styles/main.scss';
 
 interface DropdownProps {
   title: string;
-  option: string;
+  options: string[];
+  selectedOption: string;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ title, option }) => {
+export const Dropdown: React.FC<DropdownProps> = ({
+  title,
+  options,
+  selectedOption,
+}) => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   return (
@@ -31,7 +36,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, option }) => {
           })}
         >
           <span className={styles['dropdown__placeholder--text']}>
-            {option}
+            {selectedOption}
           </span>
           <div
             className={classNames(styles['dropdown__placeholder--arrow'], {
@@ -46,10 +51,11 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, option }) => {
             [styles['dropdown__options-open']]: isOpen,
           })}
         >
-          <div className={styles['dropdown__options--option']}>Item</div>
-          <div className={styles['dropdown__options--option']}>Item</div>
-          <div className={styles['dropdown__options--option']}>Item</div>
-          <div className={styles['dropdown__options--option']}>Item</div>
+          {options.map((o: string) => (
+            <div key={o} className={styles['dropdown__options--option']}>
+              {o}
+            </div>
+          ))}
         </div>
       </div>
     </div>

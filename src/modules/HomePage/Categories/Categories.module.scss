@@ -6,6 +6,16 @@
   grid-column: 1 / -1;
   gap: 24px;
 
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -39,6 +49,9 @@
     object-position: left;
     border-radius: 8px;
 
+    transition-property: transform, box-shadow;
+    transition-duration: $transition-time;
+
     &--phone {
       background: #fae1be;
     }
@@ -49,6 +62,14 @@
 
     &--accessory {
       background: #973d5f;
+    }
+
+    &:hover {
+      transform: scale(0.9);
+    }
+
+    &:active {
+      box-shadow: 1px 1px 3px rgba($shadow-color, 0.1);
     }
   }
 

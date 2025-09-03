@@ -1,5 +1,6 @@
 import React from 'react';
 import '@/styles/main.scss';
+import { Link } from 'react-router-dom';
 
 interface Props {
   href: string;
@@ -7,9 +8,9 @@ interface Props {
 
 export const BackButton: React.FC<Props> = ({ href }) => {
   return (
-    <a href={href} className="button button__back">
+    <Link to={href} className="button button__back">
       <i className="icon icon--left"></i>
       <span className="text__small button__back--text">Back</span>
-    </a>
+    </Link>
   );
 };

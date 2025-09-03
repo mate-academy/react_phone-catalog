@@ -1,6 +1,12 @@
 @import '@/styles/main';
 
 .cart_page {
+  &__back {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-items: flex-start;
+  }
+
   &__heading {
     grid-column: 1 / -1;
     margin-top: 24px;
@@ -22,6 +28,44 @@
       flex-direction: row;
       align-items: flex-start;
       gap: 16px;
+    }
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 40px;
+
+    &--image {
+      width: 320px;
+      height: 320px;
+
+      @include on-tablet {
+        width: 480px;
+        height: 480px;
+      }
+
+      @include on-desktop {
+        width: 640px;
+        height: 640px;
+      }
+    }
+
+    &--text {
+      font-size: 16px;
+
+      @include on-tablet {
+        font-size: 20px;
+      }
+
+      @include on-desktop {
+        font-size: 24px;
+      }
     }
   }
 

@@ -37,6 +37,11 @@
     justify-content: center;
     align-items: center;
     gap: 4px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
 
     border: none;
     background: none;
@@ -68,11 +73,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: inherit;
 
     transition-property: border, color;
     transition-duration: $transition-time;
 
     &--arrow {
+      width: 32px;
+      height: 32px;
       border: 1px solid $icons-color;
       color: $primary-color;
 

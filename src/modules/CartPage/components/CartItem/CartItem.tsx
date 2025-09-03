@@ -1,37 +1,83 @@
-import React from 'react';
+/* eslint-disable import/extensions */
+import React, { useState } from 'react';
 import '@/styles/main.scss';
 import styles from './CartItem.module.scss';
 import classNames from 'classnames';
+import { ProductBrief } from '@/types/ProductBrief';
 
-export const CartItem: React.FC = () => {
+interface Props {
+  product: ProductBrief;
+  onQtyChange: (productId: number, quantity: number) => void;
+  onRemove: (productId: number) => void;
+}
+
+export const CartItem: React.FC<Props> = ({
+  product,
+  onQtyChange,
+  onRemove,
+}) => {
+  const [qty, setQty] = useState<number>(1);
+
+  const decreaseQty = () => {
+    if (qty > 1) {
+      const newQty = qty - 1;
+
+      setQty(newQty);
+      onQtyChange?.(product.id, newQty);
+    }
+  };
+
+  const increaseQty = () => {
+    const newQty = qty + 1;
+
+    setQty(newQty);
+    onQtyChange(product.id, newQty);
+  };
+
+  const remove = () => {
+    onRemove(product.id);
+  };
+
+  const itemPrice = product.price * qty;
+
   return (
     <div className={styles.cart_item}>
       <div className={styles.cart_item__desc}>
         <div className={styles.cart_item__remove}>
-          <i className="icon icon--close"></i>
+          <i className="icon icon--close" onClick={remove}></i>
         </div>
         <div className={styles.cart_item__image}>
           <img
-            src="/img/phones/apple-iphone-11-pro-max/gold/00.webp"
-            alt="Apple iPhone 11 Pro Max"
+            src={product.image}
+            alt={product.name}
             className={styles['cart_item__image--img']}
           />
         </div>
         <p className={classNames(styles.cart_item__title, 'text__body')}>
-          Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+          {product.name}
         </p>
       </div>
       <div className={styles.cart_item__controls}>
         <div className={styles.cart_item__qty}>
-          <button className="button__circle button__circle--regular">-</button>
+          <button
+            className="button__circle button__circle--regular"
+            onClick={decreaseQty}
+          >
+            -
+          </button>
           <p
             className={classNames(styles['cart_item__qty--text'], 'text__body')}
           >
             1
           </p>
-          <button className="button__circle button__circle--regular">+</button>
+          <button
+            className="button__circle button__circle--regular"
+            onClick={increaseQty}
+          >
+            +
+          </button>
         </div>
-        <h3>$1099</h3>
+        <h3>{itemPrice}</h3>
       </div>
     </div>
   );

@@ -7,6 +7,16 @@
   justify-content: center;
   gap: 24px;
 
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
   &__controls {
     display: flex;
     flex-direction: row;
@@ -39,11 +49,15 @@
       display: none; /* Chrome/Safari */
     }
 
+    scroll-snap-type: x mandatory;
+
     > * {
       flex-shrink: 0;
       width: calc(100vw - 64px);
       min-width: 200px;
       max-width: 220px;
+
+      scroll-snap-type: start;
     }
 
     @include on-tablet {
@@ -62,14 +76,18 @@
       /* Desktop: Stay within grid bounds, no breakout */
       margin-inline: 0;
       padding-inline: 0;
-      overflow-x: hidden;
+      overflow-x: auto;
 
-      /* Reset flex properties */
+      /* Keep flex display */
+      display: flex;
+
       > * {
-        width: 100%;
-        min-width: none;
-        max-width: none;
-        flex-shrink: initial;
+        /* Force exactly 4 items: (100% - 3 gaps) / 4 items */
+        width: calc((100% - 48px) / 4);
+        min-width: calc((100% - 48px) / 4);
+        max-width: calc((100% - 48px) / 4);
+        flex-shrink: 0;
+        flex-grow: 0;
       }
     }
   }

@@ -1,13 +1,17 @@
 @import '@/styles/main';
 
 .breadcrumbs {
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 24px;
   gap: 8px;
+  overflow: hidden;
 
   a {
     text-decoration: none;
+    cursor: pointer;
   }
 
   &__text {
@@ -17,9 +21,34 @@
 
     transition-property: color;
     transition-duration: $transition-time;
+    cursor: default;
 
     &:hover {
       color: $primary-color;
+    }
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:not(:last-of-type) {
+      max-width: 80px;
+
+      @include on-tablet {
+        max-width: none;
+      }
+    }
+
+    &:last-of-type {
+      flex: 1;
+      min-width: 0;
+      max-width: 200px;
+
+      @include on-tablet {
+        flex: initial;
+        min-width: initial;
+        max-width: none;
+      }
     }
   }
 }
