@@ -1,0 +1,92 @@
+@import '/src/style.scss';
+
+.footer {
+  padding: 32px 0;
+  border-top: 1px solid #3b3e4a;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include onPhone() {
+      flex-direction: column;
+      align-items: start;
+      gap: 32px;
+    }
+  }
+
+  &__logo {
+    @include hoverOpacity();
+
+    & img {
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 107px;
+
+    @include onTablet() {
+      gap: 13.5px;
+    }
+
+    @include onPhone() {
+      flex-direction: column;
+      gap: 16px;
+      align-items: start;
+    }
+  }
+
+  &__listItem {
+    color: $gray-white-text;
+    @extend %mont-700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+
+    @include onTablet() {
+      @include mont-600;
+    }
+
+    @include hoverOpacity();
+  }
+
+  &__goHome {
+    color: $gray-text;
+    font-size: 12px;
+    @extend %mont-700;
+    line-height: 15px;
+    padding-right: 48px;
+    position: relative;
+    cursor: pointer;
+    @include hoverOpacity();
+
+    &::after {
+      content: '';
+      background-color: #323542;
+      position: absolute;
+      background-image: url('icons/arrow-top.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      width: 32px;
+      height: 32px;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+    @include onTablet() {
+      @include mont-400;
+    }
+
+    @include onTablet() {
+      align-self: center;
+    }
+  }
+}

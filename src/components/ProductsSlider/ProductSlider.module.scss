@@ -1,0 +1,84 @@
+@import '/src/style.scss';
+
+.productsSlider {
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @include section-title;
+    margin-bottom: 0;
+
+    @include onPhone() {
+      color: $gray-white-text;
+      font-size: 22px;
+      line-height: 140%;
+      @include mont-400;
+    }
+  }
+
+  &__products {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btnPrev,
+  &__btnNext {
+    background-color: $gray-dark;
+    padding: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border: 1px solid rgb(59, 62, 74);
+      background-color: transparent;
+    }
+
+    @include onTablet() {
+      padding: 15px;
+    }
+  }
+
+  &__btnNext {
+    background-image: url('icons/arrow-slider.svg');
+
+    &:disabled {
+      background-image: url('icons/arrow-slider-disabled.svg');
+    }
+  }
+
+  &__btnPrev {
+    background-image: url('icons/arrow-slider.svg');
+    transform: rotate(180deg);
+
+    &:disabled {
+      background-image: url('icons/arrow-slider-disabled.svg');
+    }
+  }
+
+  :global(.swiper-slide) {
+    @include onTablet() {
+      max-width: 237px;
+      width: 100%;
+    }
+  }
+}

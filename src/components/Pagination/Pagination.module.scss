@@ -1,0 +1,81 @@
+@import '/src/style.scss';
+
+.pagination {
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__num {
+    color: rgb(241, 242, 249);
+    font-size: 14px;
+    @extend %mont-600;
+    line-height: 21px;
+    padding: 16px;
+    padding: 7px 13px 4px 14px;
+    background-color: rgb(22, 24, 39);
+    display: flex;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    transition: background-color .3s ease-in;
+
+    &Active {
+      background-color: rgb(144, 91, 255);
+    }
+
+    @include onTablet() {
+      @include mont-400();
+    }
+
+    &:hover {
+      background-color: rgba(59, 62, 74, 1);
+    }
+  }
+
+  &__nav { 
+    background-color: rgb(50, 53, 66);
+    border: 1px solid transparent;
+
+    &Disabled {
+      background-color: transparent;
+      border: 1px solid rgb(59, 62, 74);
+    }
+  }
+
+  &__btn {
+    display: block;
+    width: 31px;
+    height: 31px;
+    background-position: center;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    transition: background-color .3s ease-in;
+    
+    &:hover {
+     background-color: #4a4d58;
+    }
+
+    &Next {
+      background-image: url('icons/arrow-slider.svg');
+    }
+
+    &Prev {
+      background-image: url('icons/arrow-slider.svg');
+      transform: rotate(180deg);
+    }
+
+    &Disabled {
+      background-image: url('icons/arrow-slider-disabled.svg');
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+  }
+}

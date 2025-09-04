@@ -1,0 +1,192 @@
+@import '../../style.scss';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #0f1121;
+  z-index: 999;
+  transform: translateX(-300%);
+  transition: transform 0.1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  &.menuOpen {
+    transform: translateY(0);
+  }
+
+  &__logo {
+    max-width: 64px;
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    border-bottom: 1px solid #3b3e4a;
+    padding-left: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__close {
+    background-image: url('icons/close-icon.svg');
+    width: 16px;
+    height: 16px;
+    padding: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-left: 1px solid #3b3e4a;
+    cursor: pointer;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: auto;
+  }
+
+  &__listItem {
+    color: #75767f;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    @extend %mont-400;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    position: relative;
+    z-index: 1000;
+    transition: color 0.3s ease-in-out;
+
+    &::after {
+      position: absolute;
+      height: 2px;
+      width: 0;
+      content: '';
+      background-color: $gray-white-text;
+      bottom: 0;
+      transition: width 0.3s ease-in-out;
+      left: 0;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &:hover {
+      color: $gray-white-text;
+    }
+  }
+
+  &__navLinkActive {
+    color: $gray-white-text;
+    position: relative;
+    padding-bottom: 5px;
+
+    &::after {
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      content: '';
+      background-color: $gray-white-text;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__links {
+    display: flex;
+    border-top: 1px solid #3b3e4a;
+    justify-content: center;
+  }
+
+  &__link {
+    padding-block: 24px;
+    max-width: 160px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+
+    &Like {
+      border-right: 1px solid #3b3e4a;
+      background-image: url('icons/heart-icon.svg');
+    }
+
+    &Add {
+      background-image: url('icons/bag-icon.svg');
+    }
+
+    &::after {
+      position: absolute;
+      height: 2px;
+      width: 0;
+      content: '';
+      background-color: $gray-white-text;
+      bottom: 0;
+      transition: width 0.3s ease-in-out;
+      left: 0;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &:hover {
+      color: $gray-white-text;
+    }
+
+    &Active {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        content: '';
+        background-color: $gray-white-text;
+        bottom: 0;
+        transition: width 0.3s ease-in-out;
+        left: 0;
+      }
+    }
+  }
+
+  &__count {
+    background-color: #eb5757;
+    position: absolute;
+    display: block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid rgb(15, 17, 33);
+    border-radius: 50%;
+    top: 12px;
+    right: 65px;
+    color: $gray-white-text;
+    font-size: 9px;
+    @extend %mont-700;
+    line-height: 12px;
+    text-align: center;
+  }
+}

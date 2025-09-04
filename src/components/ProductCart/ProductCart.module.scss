@@ -1,0 +1,167 @@
+@import '/src/style.scss';
+
+.productCard {
+  padding: 32px;
+  background-color: rgb(22, 24, 39);
+  max-height: 506px;
+
+  &:hover .productCard__img {
+    transform: scale(1.1);
+  }
+
+  &__img {
+    margin-bottom: 24px;
+    max-height: 196px;
+    object-fit: contain;
+    margin-inline: auto;
+    transition: 0.3s ease-in-out transform;
+
+    @include onPhone() {
+      max-height: 129px;
+    }
+  }
+
+  &__title {
+    color: $gray-white-text;
+    font-size: 14px;
+    @extend %mont-700;
+    line-height: 21px;
+    margin-bottom: 8px;
+    min-height: 42px;
+
+    @include onTablet() {
+      @include mont-400;
+    }
+  }
+
+  &__priceBlock {
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #3b3e4a;
+
+    @include onPhone() {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__priceOld,
+  &__price {
+    color: $gray-white-text;
+    font-size: 22px;
+    @extend %mont-700;
+    line-height: 140%;
+    display: block;
+
+    @include onTablet() {
+      @include mont-600;
+    }
+  }
+
+  &__priceSale {
+    color: $gray-text;
+    font-size: 22px;
+    line-height: 28px;
+    @extend %mont-600;
+    text-decoration-line: line-through;
+  }
+
+  &__info {
+    margin-bottom: 16px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__property {
+    color: $gray-text;
+    font-size: 12px;
+    @extend %mont-700;
+    line-height: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & span {
+      display: block;
+      color: $gray-white-text;
+      font-size: 12px;
+      line-height: 15px;
+      @extend %mont-700;
+
+      @include onTablet() {
+        @include mont-400;
+      }
+    }
+
+    @include onTablet() {
+      @include mont-400;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__add {
+    background-color: $btn-color;
+    color: $gray-white-text;
+    font-size: 14px;
+    @extend %mont-700;
+    line-height: 21px;
+    padding-block: 9.5px;
+    max-width: 160px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $btn-hover;
+    }
+
+    &Active {
+      background-color: #323542;
+      transition: background-color 0.3s ease-in-out;
+
+      &:hover {
+        background-color: #323542;
+      }
+    }
+
+    @include onTablet() {
+      @include mont-400;
+    }
+  }
+
+  &__like {
+    padding: 20px;
+    background-color: #323542;
+    background-image: url('icons/heart-icon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    &Active {
+      background-color: transparent;
+      border: 1px solid #3b3e4a;
+      background-image: url('icons/like-active.svg');
+    }
+
+    @include onTablet() {
+      padding: 19px;
+    }
+  }
+}

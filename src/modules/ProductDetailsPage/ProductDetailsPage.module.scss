@@ -1,0 +1,327 @@
+@import '../../style.scss';
+
+.productDetails {
+  padding-block: 88px 81px;
+
+  @include onPhone() {
+    padding: 72px 0 56px;
+  }
+
+  &__notFoundBlock {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include flex-center();
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__back {
+    max-width: 263px;
+    width: 100%;
+    text-align: center;
+    color: $gray-white-text;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: #905bff;
+    padding: 14px 0;
+  }
+
+  &__notFound {
+    font-size: 32px;
+    line-height: 41px;
+    @extend %mont-700;
+    color: $gray-white-text;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 41px;
+    @extend %mont-700;
+    color: $gray-white-text;
+    margin-bottom: 40px;
+
+    @include onTablet() {
+      @include mont-600;
+    }
+
+    @include onPhone() {
+      font-size: 22px;
+      @include mont-400;
+      line-height: 140%;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+
+    @include onTablet() {
+      margin-bottom: 64px;
+      gap: 60px;
+    }
+
+    @include onPhone() {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 56px;
+      gap: 40px;
+    }
+  }
+
+  &__info {
+    max-width: 320px;
+    width: 100%;
+
+    @include onTablet() {
+      max-width: 237px;
+    }
+
+    @include onPhone() {
+      max-width: 288px;
+    }
+  }
+
+  &__colorsBlock {
+    margin-bottom: 24.5px;
+  }
+
+  &__colorsBlock,
+  &__capacityBlock {
+    padding-bottom: 23.5px;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: #3b3e4a;
+    }
+  }
+
+  &__colorsTitle,
+  &__capacityTitle {
+    color: $gray-text;
+    font-size: 12px;
+    @extend %mont-400;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__inputWrapper,
+  &__capacityWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__radio {
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      border: 3px solid #0f1121;
+      border-radius: 50%;
+      inset: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      border: 1px solid #3b3e4a;
+      border-radius: 50%;
+      inset: 0;
+      transition: border 0.3s ease-in-out;
+    }
+
+    &:hover.productDetails__radio::after {
+      border: 1px solid #75767f;
+    }
+  }
+
+  &__capacityBlock {
+    margin-bottom: 32.5px;
+  }
+
+  &__capacityLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__capacity {
+    appearance: none;
+    width: 56px;
+    height: 32px;
+    border: 1px solid #4a4d58;
+    position: relative;
+    padding: 7px 8px 4px 8px;
+    text-align: center;
+
+    &:checked {
+      background-color: $gray-white-text;
+      border: 1px solid transparent;
+    }
+
+    &:checked + .productDetails__capacityStyle {
+      color: #0f1121;
+    }
+  }
+
+  &__capacityStyle {
+    position: absolute;
+    color: $gray-white-text;
+    font-size: 14px;
+    line-height: 21px;
+    @extend %mont-400;
+    cursor: pointer;
+    @include hoverOpacity();
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 8px;
+  }
+
+  &__newPrice {
+    color: $gray-white-text;
+    font-size: 32px;
+    line-height: 41px;
+    @extend %mont-600;
+    display: block;
+
+    @include onPhone() {
+      @include mont-400;
+    }
+  }
+
+  &__oldPrice {
+    color: #76767f;
+    @extend %mont-400;
+    font-size: 22px;
+    line-height: 0px;
+    text-decoration-line: line-through;
+  }
+
+  &__btns {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add {
+    max-width: 263px;
+    width: 100%;
+    text-align: center;
+    color: $gray-white-text;
+    font-size: 14px;
+    line-height: 21px;
+    @extend %mont-400;
+    background-color: #905bff;
+    padding: 14px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #a378ff;
+    }
+
+    &Active {
+      background-color: #323542;
+
+      &:hover {
+        background-color: #323542;
+      }
+    }
+  }
+
+  &__like {
+    padding: 23px;
+    background-color: #323542;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      background-image: url('/icons/heart-icon.svg');
+      width: 16px;
+      height: 16px;
+      background-size: 16px 16px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &Active {
+      background-color: transparent;
+      border: 1px solid #3b3e4a;
+    }
+
+    &Active.productDetails__like::after {
+      background-image: url('icons/like-active.svg');
+    }
+  }
+
+  &__priceBlock {
+    margin-bottom: 32px;
+  }
+
+  &__specsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__specsListItem {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specsName {
+    color: #75767f;
+    font-size: 12px;
+    @extend %mont-400;
+    display: block;
+  }
+
+  &__specInfo {
+    color: $gray-white-text;
+    font-size: 12px;
+    @extend %mont-400;
+    display: block;
+  }
+
+  &__infoAboutProduct {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+
+    @include onTablet() {
+      flex-direction: column;
+      margin-bottom: 64px;
+    }
+  }
+}

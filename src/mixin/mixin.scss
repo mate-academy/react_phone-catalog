@@ -1,0 +1,93 @@
+@mixin flex-between-center() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin hoverOpacity() {
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+  
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+@mixin sectionPadding() {
+  padding-bottom: 80px;
+
+  @include onTablet() {
+    padding-bottom: 64px;
+  }
+
+  @include onPhone() {
+    padding-bottom: 57px;
+  }
+}
+
+@mixin onTablet() {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin onPhone() {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin colorTransition {
+  transition: 0.3s ease-in-out color;
+}
+
+@mixin widthTransition {
+  transition: width 0.3s ease-in-out;
+}
+
+@mixin section-title {
+  color: $gray-white-text;
+  @extend %mont-700;
+  font-size: 32px;
+  line-height: 41px;
+  margin-bottom: 24px;
+
+  @include onTablet() {
+    @include mont-600();
+  }
+
+  @include onPhone() {
+    font-size: 22px;
+    line-height: 140%;
+    @include mont-400();
+  }
+}
+
+@mixin scaleImage() {
+  transition: 0.3s ease-in-out transform;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin mont-400 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 400;
+}
+
+@mixin mont-600 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+}
+
+@mixin mont-700 {
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+}

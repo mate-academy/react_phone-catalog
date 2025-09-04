@@ -1,0 +1,185 @@
+@import '/src/style.scss';
+
+.header {
+  border-bottom: 1px solid #3b3e4a;
+  padding-left: 24px;
+  position: fixed;
+  z-index: 10;
+  background-color: #0f1121;
+  width: 100%;
+
+  &__nav {
+    @include flex-between-center;
+  }
+
+  @include onTablet() {
+   padding-left: 16px;
+  }
+
+  &__navLogoLink {
+    margin-right: 48px;
+    height: 64px;
+    @include flex-between-center;
+    max-width: 80px;
+    width: 100%;
+    @include hoverOpacity();
+
+    @include onTablet() {
+      max-width: 64px;
+      height: 48px;
+      margin-right: 32px;
+    }
+  }
+
+  &__navList {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    gap: 64px;
+
+    @include onTablet() {
+      gap: 32px;
+    }
+
+    @include onPhone() {
+      display: none;
+    }
+  }
+
+  &__navListLink {
+    color: $gray-text;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    @extend %mont-700;
+    @include flex-between-center;
+    height: 64px;
+    position: relative;
+    @include colorTransition;
+
+    &:hover {
+      color: $gray-white-text;
+    }
+
+    &::after {
+      content: '';
+      @include widthTransition;
+      height: 3px;
+      background-color: $gray-white-text;
+      position: absolute;
+      bottom: 0;
+      width: 0;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    @include onTablet() {
+      height: 48px;
+    }
+  }
+
+  &__links {
+    @include flex-between-center;
+
+    @include onPhone() {
+      display: none;
+    }
+  }
+
+  &__link {
+    box-shadow: -1px 0 0 0 $gray-dark;
+    padding: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+
+    @include onTablet() {
+      padding: 24px;
+    }
+
+    &::after {
+      content: '';
+      @include widthTransition;
+      height: 3px;
+      background-color: $gray-white-text;
+      position: absolute;
+      bottom: 0;
+      width: 0;
+      left: 0;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &Like {
+      background-image: url('icons/heart-icon.svg');
+      position: relative;
+    }
+
+    &Bag {
+      background-image: url('icons/bag-icon.svg');
+      position: relative;
+    }
+  }
+
+  &__likeCount,
+  &__bagCount {
+    background-color: #eb5757;
+    position: absolute;
+    display: block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid rgb(15, 17, 33);
+    border-radius: 50%;
+    top: 18px;
+    left: 32px;
+    color: $gray-white-text;
+    font-size: 9px;
+    @extend %mont-700;
+    line-height: 12px;
+    text-align: center;
+
+    @include onTablet() {
+      top: 11px;
+      left: 24px;
+    }
+  }
+
+  &__menu {
+    display: none;
+    cursor: pointer;
+    
+    @include onPhone() {
+      display: block;
+      background-image: url('icons/menu-icon.svg');
+      width: 16px;
+      height: 16px;
+      padding: 24px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      border-left: 1px solid #3b3e4a;;
+    }
+  }
+
+  &.header__menuOpen {
+    background: url('icons/close-icon.svg') no-repeat center/cover;
+  }
+}
+
+.isActiveLink {
+  color: $gray-white-text;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: $gray-white-text;
+    position: absolute;
+    bottom: 0;
+  }
+}
