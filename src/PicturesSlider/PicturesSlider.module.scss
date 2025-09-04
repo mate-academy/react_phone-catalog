@@ -25,8 +25,14 @@
     display: none;
   }
 
-  :global(.swiper-pagination) {
+:global(.swiper-pagination) {
   position: relative !important;
+  z-index: 1;
+}
+
+.custom_swiper_slide {
+  flex-shrink: 0;
+  min-width: 100% !important
 }
 
 .swiper-pagination-bullet-active {

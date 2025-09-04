@@ -46,7 +46,7 @@ export const PicturesSlider = () => {
         loop
       >
         {images.map((image, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} className={styles.custom_swiper_slide}>
             <img
               src={image.image}
               alt={image.alt}

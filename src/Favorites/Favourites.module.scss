@@ -28,6 +28,10 @@
   color: #89939A;
 }
 
+.empty_favourites_message {
+  width: 400px;
+}
+
 .navigation_items_left {
   font-family: Mont, sans-serif;
   font-size: 12px;
@@ -50,6 +54,9 @@
 @media screen and (min-width: 640px) {
   .container {
     padding: 0 24px;
+    margin: 24px auto;
+    max-width: 640px;
+    width: 100%;
   }
 
   .navigation_text {
@@ -94,6 +101,15 @@
 }
 
 @media screen and (min-width: 1200px) {
+  .container {
+    margin: 0 auto;
+    max-width: 1136px;
+    width: 100%;
+  }
+
+  .cart_container {
+    flex-direction: none;
+  }
 
   .navigation {
     align-items: center;

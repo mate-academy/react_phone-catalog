@@ -130,7 +130,7 @@ export const Accessories: React.FC = () => {
         <h2 className={styles.category}>Accessories</h2>
       </div>
       <h1 className={styles.title}>Accessories</h1>
-      <p>{filteredProducts.length} models</p>
+      <p className={styles.count_models}>{filteredProducts.length} models</p>
 
       <div className={styles.select}>
         <div className={styles.select__group}>

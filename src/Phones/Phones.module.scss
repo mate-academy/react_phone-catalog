@@ -1,6 +1,6 @@
 .product_list {
   max-width: 639px;
-  margin: auto 16px;
+  margin: auto 16px 64px;
 }
 
 .navigation {
@@ -60,6 +60,16 @@
   display: block;
 }
 
+.count_models {
+  font-family: Mont;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #89939A;
+  margin: 8px 0 40px;
+}
+
 .select {
   display: flex;
   align-items: center;
@@ -75,21 +85,23 @@
 .selection {
   font-family: Mont, sans-serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 21px;
   text-align: left;
   width: 136px;
   height: 40px;
-  border: 1px solid #B4BDC3;
+  border: 2px solid #B4BDC3;
 }
 
 .select__title {
   font-family: Mont, sans-serif;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 15.34px;
   text-align: left;
   margin: 0;
+  color: #89939A;
+
 }
 
 .pagination {
@@ -133,6 +145,7 @@ button {
     line-height: 56px;
     letter-spacing: -1%;
     color: #313237;
+    margin: 40px 0 0 0;
   }
 
   .product_grid {
@@ -147,7 +160,6 @@ button {
     color: inherit;
     display: block;
   }
-
 
   .pagination {
     display: flex;
@@ -168,9 +180,8 @@ button {
   }
 
   .active_page {
-    background-color: #ff6347;
-    color: black;
-    border-color: #ff6347;
+    background-color: #313237;
+    color: #313237;
   }
 
   .select {
@@ -190,7 +201,6 @@ button {
     border: 1px solid #B4BDC3;
     font-family: Mont, sans-serif;
     font-size: 14px;
-    font-weight: 700;
     line-height: 21px;
     text-align: left;
 
@@ -199,7 +209,6 @@ button {
   .select__title {
     font-family: Mont, sans-serif;
     font-size: 12px;
-    font-weight: 700;
     line-height: 15.34px;
     text-align: left;
   }
@@ -227,7 +236,6 @@ button {
     display: block;
   }
 
-
   .pagination {
     display: flex;
     justify-content: center;
@@ -254,19 +262,15 @@ button {
   .selection {
     max-width: 176px;
     max-height: 40px;
-    border: 1px #B4BDC3;
     font-family: Mont, sans-serif;
     font-size: 14px;
-    font-weight: 700;
     line-height: 21px;
     text-align: left;
-
   }
 
   .select__title {
     font-family: Mont, sans-serif;
     font-size: 12px;
-    font-weight: 700;
     line-height: 15.34px;
     text-align: left;
   }

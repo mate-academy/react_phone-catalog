@@ -34,11 +34,6 @@ type Action =
   | { type: 'DECREASE_QUANTITY'; productId: string }
   | { type: 'CLEAR_CART' };
 
-const initialState: CartState = {
-  cart: [],
-  favorites: [],
-};
-
 const cartReducer = (state: CartState, action: Action): CartState => {
   switch (action.type) {
     case 'ADD_TO_CART':
@@ -111,31 +106,20 @@ interface CartContextProps {
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 
+const getInitialState = (): CartState => {
+  const storedCart = localStorage.getItem('cart');
+  const storedFavorites = localStorage.getItem('favorites');
+
+  return {
+    cart: storedCart ? JSON.parse(storedCart) : [],
+    favorites: storedFavorites ? JSON.parse(storedFavorites) : [],
+  };
+};
+
 export const CartProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const [state, dispatch] = useReducer(cartReducer, initialState);
-
-  useEffect(() => {
-    const storedCart = localStorage.getItem('cart');
-    const storedFavorites = localStorage.getItem('favorites');
-
-    if (storedCart) {
-      const cartProducts: Product[] = JSON.parse(storedCart);
-
-      cartProducts.forEach(product =>
-        dispatch({ type: 'ADD_TO_CART', product }),
-      );
-    }
-
-    if (storedFavorites) {
-      const favoriteProducts: Product[] = JSON.parse(storedFavorites);
-
-      favoriteProducts.forEach(product =>
-        dispatch({ type: 'TOGGLE_FAVORITE', product }),
-      );
-    }
-  }, []);
+  const [state, dispatch] = useReducer(cartReducer, getInitialState());
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(state.cart));

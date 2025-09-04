@@ -50,7 +50,9 @@ export const Favorites: React.FC = () => {
         {state.favorites.length} items
       </h2>
       {state.favorites.length === 0 ? (
-        <p>You have no favourites</p>
+        <p className={styles.empty_favourites_message}>
+          You have no favourites
+        </p>
       ) : (
         <div className={styles.favourites_grid}>
           {state.favorites.map(product => {

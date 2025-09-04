@@ -24,7 +24,13 @@ export const Header: React.FC = () => {
       const cart = JSON.parse(localStorage.getItem('cart') || '[]');
       const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
-      setCartCount(cart.length);
+      const totalCartItems = cart.reduce(
+        (total: number, product: { quantity?: number }) =>
+          total + (product.quantity || 1),
+        0,
+      );
+
+      setCartCount(totalCartItems);
       setFavoritesCount(favorites.length);
     };
 

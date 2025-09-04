@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCart } from '../UseCart/UseCart';
 import styles from './Cart.module.scss';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import phones from '../../public/api/phones.json';
 import tablets from '../../public/api/tablets.json';
 import accessories from '../../public/api/accessories.json';
@@ -44,6 +44,10 @@ export const Cart: React.FC = () => {
     navigate(-1);
   };
 
+  const handleHome = () => {
+    navigate('/');
+  };
+
   const handleCheckOut = () => {
     dispatch({ type: 'CLEAR_CART' });
     navigate('/');
@@ -60,7 +64,22 @@ export const Cart: React.FC = () => {
       <h1 className={styles.navigation_title}>Cart</h1>
       <div className={styles.cart_container}>
         {state.cart.length === 0 ? (
-          <p className={styles.empty}>Your cart is empty</p>
+          <>
+            <div className={styles.empty_cart_wrapper}>
+              <img
+                src="img/cart-is-empty.png"
+                alt="Empty cart"
+                className={styles.empty_cart_img}
+              />
+              <h2 className={styles.empty_cart_title}>Your cart is empty</h2>
+              <p className={styles.empty_cart_text}>
+                Looks like you haven’t added anything yet.
+              </p>
+              <button className={styles.empty_cart_button} onClick={handleHome}>
+                Back to shop
+              </button>
+            </div>
+          </>
         ) : (
           <>
             <div className={styles.cart_grid}>
@@ -81,14 +100,21 @@ export const Cart: React.FC = () => {
                       >
                         ✕
                       </button>
-                      <img
-                        src={fullProduct.images?.[0] ?? 'img/default-image.png'}
-                        alt={fullProduct.name}
-                        className={styles.product_image}
-                      />
-                      <h2 className={styles.product_name}>
-                        {fullProduct.name}
-                      </h2>
+                      <Link
+                        to={`/product/${product.id}`}
+                        className={styles.link_product}
+                      >
+                        <img
+                          src={
+                            fullProduct.images?.[0] ?? 'img/default-image.png'
+                          }
+                          alt={fullProduct.name}
+                          className={styles.product_image}
+                        />
+                        <h2 className={styles.product_name}>
+                          {fullProduct.name}
+                        </h2>
+                      </Link>
                     </div>
                     <div className={styles.cart_bottom}>
                       <div className={styles.quantity_control}>
