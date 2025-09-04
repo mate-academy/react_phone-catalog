@@ -50,12 +50,23 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
             { [styles.cartItem__btnDisabled]: quantity === 1 },
           )}
           onClick={handleDecreaseQuantity}
-        ></button>
+        >
+          <img
+            src={
+              quantity === 1
+                ? `icons/minus-icon-disabled.svg`
+                : `icons/minus-icon.svg`
+            }
+            alt="Icon minus"
+          />
+        </button>
         <span className={styles.cartItem__count}>{quantity}</span>
         <button
           className={classNames(styles.cartItem__btn, styles.cartItem__btnPlus)}
           onClick={handleIncreaseQuantity}
-        ></button>
+        >
+          <img src="icons/plus-icon.svg" alt="Icon plus" />
+        </button>
       </div>
       <span className={styles.cartItem__price}>
         ${product.fullPrice * quantity}

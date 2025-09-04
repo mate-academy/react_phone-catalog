@@ -68,7 +68,16 @@ export const Pagination: React.FC<Props> = ({
             href="#"
             aria-disabled={currentPage === 1}
             onClick={handlePrev}
-          ></a>
+          >
+            <img
+              src={
+                currentPage === 1
+                  ? `icons/arrow-slider-disabled.svg`
+                  : `icons/arrow-slider.svg`
+              }
+              alt="Prev icon btn"
+            />
+          </a>
         </div>
 
         <ul className={styles.pagination__list}>
@@ -105,7 +114,16 @@ export const Pagination: React.FC<Props> = ({
             href="#"
             aria-disabled={currentPage === totalPages}
             onClick={handleNext}
-          ></a>
+          >
+            <img
+              src={
+                currentPage === totalPages
+                  ? `icons/arrow-slider-disabled.svg`
+                  : `icons/arrow-slider.svg`
+              }
+              alt="Next icon btn"
+            />
+          </a>
         </div>
       </div>
     </div>

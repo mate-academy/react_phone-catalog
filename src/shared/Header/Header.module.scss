@@ -13,7 +13,7 @@
   }
 
   @include onTablet() {
-   padding-left: 16px;
+    padding-left: 16px;
   }
 
   &__navLogoLink {
@@ -90,14 +90,13 @@
   }
 
   &__link {
+    padding: 24px;
     box-shadow: -1px 0 0 0 $gray-dark;
-    padding: 32px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 16px 16px;
+    position: relative;
+    transition: width 0.3s ease-in-out;
 
     @include onTablet() {
-      padding: 24px;
+      padding: 16px;
     }
 
     &::after {
@@ -114,16 +113,11 @@
     &:hover::after {
       width: 100%;
     }
+  }
 
-    &Like {
-      background-image: url('icons/heart-icon.svg');
-      position: relative;
-    }
-
-    &Bag {
-      background-image: url('icons/bag-icon.svg');
-      position: relative;
-    }
+  &__icon {
+    width: 16px;
+    height: 16px;
   }
 
   &__likeCount,
@@ -152,22 +146,12 @@
   &__menu {
     display: none;
     cursor: pointer;
-    
+
     @include onPhone() {
       display: block;
-      background-image: url('icons/menu-icon.svg');
-      width: 16px;
-      height: 16px;
-      padding: 24px;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 16px 16px;
-      border-left: 1px solid #3b3e4a;;
+      padding: 16px;
+      border-left: 1px solid #3b3e4a;
     }
-  }
-
-  &.header__menuOpen {
-    background: url('icons/close-icon.svg') no-repeat center/cover;
   }
 }
 

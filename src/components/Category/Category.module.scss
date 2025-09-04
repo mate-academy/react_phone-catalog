@@ -13,9 +13,7 @@
   }
 
   &__list {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-between-center();
     gap: 16px;
 
     @include onPhone() {

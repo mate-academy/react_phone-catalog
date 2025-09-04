@@ -157,9 +157,7 @@
   }
 
   &__capacityLabel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center();
   }
 
   &__capacity {
@@ -250,12 +248,10 @@
   }
 
   &__like {
-    padding: 23px;
+    padding: 17px;
     background-color: #323542;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center();
     border: 1px solid transparent;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
@@ -264,24 +260,9 @@
       background-color: #4a4d58;
     }
 
-    &::after {
-      position: absolute;
-      content: '';
-      background-image: url('/icons/heart-icon.svg');
-      width: 16px;
-      height: 16px;
-      background-size: 16px 16px;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
     &Active {
       background-color: transparent;
       border: 1px solid #3b3e4a;
-    }
-
-    &Active.productDetails__like::after {
-      background-image: url('icons/like-active.svg');
     }
   }
 

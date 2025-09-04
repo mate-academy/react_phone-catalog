@@ -55,6 +55,10 @@
   &__navigation {
     display: flex;
     justify-content: space-around;
+
+    @include onPhone() {
+      display: none;
+    }
   }
 
   &__box {
@@ -98,17 +102,13 @@
     background-position: center;
     width: 32px;
     transition: background-color 0.3s ease-in-out;
-    
+    @include flex-center();
+
     &:hover {
       background-color: #4a4d58;
     }
 
-    &Next {
-      background-image: url('icons/arrow-slider.svg');
-    }
-
     &Prev {
-      background-image: url('icons/arrow-slider.svg');
       transform: rotate(180deg);
     }
   }
@@ -116,9 +116,7 @@
   &__pagination {
     margin-top: 18px;
     grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center();
     gap: 14px;
 
     @include onPhone() {

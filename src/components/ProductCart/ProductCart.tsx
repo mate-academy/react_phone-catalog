@@ -83,7 +83,13 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
 
               { [styles.productCard__likeActive]: isLiked },
             )}
-          ></button>
+          >
+            <img
+              className={styles.productCard__likeImg}
+              src={isLiked ? `icons/like-active.svg` : `icons/heart-icon.svg`}
+              alt="Like icon"
+            />
+          </button>
         </div>
       </NavLink>
     </article>

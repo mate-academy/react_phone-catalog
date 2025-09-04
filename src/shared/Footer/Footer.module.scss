@@ -5,9 +5,7 @@
   border-top: 1px solid #3b3e4a;
 
   &__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-between-center();
 
     @include onPhone() {
       flex-direction: column;
@@ -66,21 +64,6 @@
     cursor: pointer;
     @include hoverOpacity();
 
-    &::after {
-      content: '';
-      background-color: #323542;
-      position: absolute;
-      background-image: url('icons/arrow-top.svg');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 16px 16px;
-      width: 32px;
-      height: 32px;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-    }
-
     @include onTablet() {
       @include mont-400;
     }
@@ -88,5 +71,14 @@
     @include onTablet() {
       align-self: center;
     }
+  }
+
+  &__arrow {
+    background-color: #323542;
+    position: absolute;
+    padding: 8px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
   }
 }

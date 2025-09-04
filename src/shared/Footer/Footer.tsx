@@ -47,6 +47,11 @@ export const Footer = () => {
 
           <a className={styles.footer__goHome} onClick={backToTop}>
             Back to top
+            <img
+              className={styles.footer__arrow}
+              src="icons/arrow-top.svg"
+              alt="To top arrow"
+            />
           </a>
         </div>
       </div>

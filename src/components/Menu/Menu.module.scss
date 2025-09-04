@@ -36,9 +36,7 @@
   }
 
   &__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-between-center();
     height: 48px;
     border-bottom: 1px solid #3b3e4a;
     padding-left: 16px;
@@ -46,23 +44,16 @@
   }
 
   &__close {
-    background-image: url('icons/close-icon.svg');
-    width: 16px;
-    height: 16px;
-    padding: 24px;
-    background-repeat: no-repeat;
-    background-position: center;
+    padding: 16px;
     border-left: 1px solid #3b3e4a;
     cursor: pointer;
   }
 
   &__list {
-    display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
     gap: 24px;
     margin-bottom: auto;
+    @include flex-center();
   }
 
   &__listItem {
@@ -121,22 +112,11 @@
 
   &__link {
     padding-block: 24px;
-    max-width: 160px;
     width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
     background-size: 16px 16px;
     position: relative;
     transition: color 0.3s ease-in-out;
-
-    &Like {
-      border-right: 1px solid #3b3e4a;
-      background-image: url('icons/heart-icon.svg');
-    }
-
-    &Add {
-      background-image: url('icons/bag-icon.svg');
-    }
+    @include flex-center();
 
     &::after {
       position: absolute;
@@ -171,6 +151,10 @@
         left: 0;
       }
     }
+
+    &Like {
+      border-right: 1px solid #3b3e4a;
+    }
   }
 
   &__count {
@@ -179,10 +163,10 @@
     display: block;
     width: 14px;
     height: 14px;
-    border: 1px solid rgb(15, 17, 33);
+    border: 1px solid #0f1121;
     border-radius: 50%;
-    top: 12px;
-    right: 65px;
+    top: 18px;
+    left: 50%;
     color: $gray-white-text;
     font-size: 9px;
     @extend %mont-700;

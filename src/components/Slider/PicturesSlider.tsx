@@ -45,7 +45,9 @@ export const PicturesSlider = () => {
               styles.picturesSlider__btn,
               styles.picturesSlider__btnPrev,
             )}
-          ></button>
+          >
+            <img src="icons/arrow-slider.svg" alt="Prev arrow button" />
+          </button>
         </div>
 
         <div className={styles.picturesSlider__navigation}>
@@ -55,7 +57,9 @@ export const PicturesSlider = () => {
               styles.picturesSlider__btn,
               styles.picturesSlider__btnNext,
             )}
-          ></button>
+          >
+            <img src="icons/arrow-slider.svg" alt="Next arrow button" />
+          </button>
         </div>
 
         {init && (

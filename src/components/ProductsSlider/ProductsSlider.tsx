@@ -16,7 +16,10 @@ type Props = {
 export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
+
   const [init, setInit] = useState(false);
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
+  const [isNextDisabled, setIsNextDisabled] = useState(false);
 
   useEffect(() => {
     setInit(true);
@@ -31,11 +34,31 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
           <button
             ref={prevRef}
             className={styles.productsSlider__btnPrev}
-          ></button>
+            disabled={isPrevDisabled}
+          >
+            <img
+              src={
+                isPrevDisabled
+                  ? 'icons/arrow-slider-disabled.svg'
+                  : 'icons/arrow-slider.svg'
+              }
+              alt="Prev arrow button"
+            />
+          </button>
           <button
             ref={nextRef}
             className={styles.productsSlider__btnNext}
-          ></button>
+            disabled={isNextDisabled}
+          >
+            <img
+              src={
+                isNextDisabled
+                  ? 'icons/arrow-slider-disabled.svg'
+                  : 'icons/arrow-slider.svg'
+              }
+              alt="Next arrow button"
+            />
+          </button>
         </div>
       </div>
 
@@ -56,6 +79,14 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
                 swiper.navigation.init();
                 swiper.navigation.update();
               }
+
+              setIsPrevDisabled(swiper.isBeginning);
+              setIsNextDisabled(swiper.isEnd);
+
+              swiper.on('slideChange', () => {
+                setIsPrevDisabled(swiper.isBeginning);
+                setIsNextDisabled(swiper.isEnd);
+              });
             });
           }}
           spaceBetween={16}

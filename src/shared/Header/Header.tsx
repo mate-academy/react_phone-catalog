@@ -66,6 +66,11 @@ export const Header = () => {
             }}
             to="/favourites"
           >
+            <img
+              className={(styles.header__icon, styles.header__like)}
+              src="icons/heart-icon.svg"
+              alt="Favourites icon"
+            />
             {favCount > 0 && (
               <span className={styles.header__likeCount}>{favCount}</span>
             )}
@@ -79,6 +84,11 @@ export const Header = () => {
             }}
             to="/cart"
           >
+            <img
+              className={(styles.header__icon, styles.header__iconBag)}
+              src="icons/bag-icon.svg"
+              alt="Cart icon"
+            />
             {cartCount > 0 && (
               <span className={styles.header__bagCount}>{cartCount}</span>
             )}
@@ -91,7 +101,9 @@ export const Header = () => {
           })}
           type="button"
           onClick={toggleMenu}
-        ></button>
+        >
+          <img src="icons/menu-icon.svg" alt="Burger menu icon" />
+        </button>
 
         <Menu isOpen={isMenuOpen} closeMenu={closeMenu} />
       </nav>

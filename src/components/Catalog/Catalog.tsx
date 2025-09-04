@@ -9,6 +9,7 @@ import { Breadcrumbs } from '../../shared/Breadcrumbs/Breadcrumbs';
 import { Loader } from '../../shared/Loader/Loader';
 import { ProductsList } from '../ProductsList/ProductsList';
 import { NotFoundPage } from '../../modules/NotFoundPage/NotFoundPage';
+import { CustomSelect } from '../CustomSelect/CustomSelect';
 
 export const Catalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -50,29 +51,6 @@ export const Catalog = () => {
     isAllSelected ? undefined : (page - 1) * perPage + perPage,
   );
 
-  const handleSortFieldChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    const params = new URLSearchParams(searchParams);
-
-    params.set('sortField', event.target.value);
-    params.delete('page');
-    setSearchParams(params);
-  };
-
-  const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const params = new URLSearchParams(searchParams);
-
-    if (event.target.value === 'all') {
-      params.delete('perPage');
-    } else {
-      params.set('perPage', event.target.value);
-    }
-
-    params.delete('page');
-    setSearchParams(params);
-  };
-
   const handlePageChange = (newPage: number) => {
     const params = new URLSearchParams(searchParams);
 
@@ -82,6 +60,27 @@ export const Catalog = () => {
       params.delete('page');
     }
 
+    setSearchParams(params);
+  };
+
+  const handlePerPage = (newValue: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (newValue === 'all') {
+      params.delete('perPage');
+    } else {
+      params.set('perPage', newValue);
+    }
+
+    params.delete('page');
+    setSearchParams(params);
+  };
+
+  const handleSort = (newValue: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('sortField', newValue);
+    params.delete('page');
     setSearchParams(params);
   };
 
@@ -116,38 +115,28 @@ export const Catalog = () => {
             </div>
 
             <div className={styles.catalog__selectWrapper}>
-              <label htmlFor="sortBy" className={styles.catalog__label}>
-                <span>Sort by</span>
-                <div className={styles.catalog__customSelect}>
-                  <select
-                    value={sortField}
-                    onChange={handleSortFieldChange}
-                    id="sortBy"
-                    className={styles.catalog__select}
-                  >
-                    <option value="Newest">Newest</option>
-                    <option value="Alphabetically">Alphabetically</option>
-                    <option value="Cheapest">Cheapest</option>
-                  </select>
-                </div>
-              </label>
+              <CustomSelect
+                label="Sort by"
+                value={sortField}
+                onChange={handleSort}
+                options={[
+                  { label: 'Newest', value: 'Newest' },
+                  { label: 'Alphabetically', value: 'Alphabetically' },
+                  { label: 'Cheapest', value: 'Cheapest' },
+                ]}
+              />
 
-              <label htmlFor="itemsOnPage" className={styles.catalog__label}>
-                <span>Items on page</span>
-                <div className={styles.catalog__customSelect}>
-                  <select
-                    id="itemsOnPage"
-                    className={styles.catalog__select}
-                    value={perPageParam}
-                    onChange={handlePerPageChange}
-                  >
-                    <option value="4">4</option>
-                    <option value="8">8</option>
-                    <option value="16">16</option>
-                    <option value="all">all</option>
-                  </select>
-                </div>
-              </label>
+              <CustomSelect
+                label="Items on page"
+                value={perPageParam}
+                onChange={handlePerPage}
+                options={[
+                  { label: '4', value: '4' },
+                  { label: '8', value: '8' },
+                  { label: '16', value: '16' },
+                  { label: 'all', value: 'all' },
+                ]}
+              />
             </div>
 
             <div className={styles.catalog__wrapperList}>

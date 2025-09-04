@@ -80,9 +80,7 @@
     font-size: 12px;
     @extend %mont-700;
     line-height: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-between-center();
 
     & span {
       display: block;
@@ -102,9 +100,7 @@
   }
 
   &__btns {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-between-center();
     gap: 8px;
   }
 
@@ -139,16 +135,20 @@
     }
   }
 
+  &__likeImg {
+    width: 16px;
+    height: 16px;
+  }
+
   &__like {
-    padding: 20px;
+    max-width: 38px;
+    width: 100%;
+    height: 38px;
     background-color: #323542;
-    background-image: url('icons/heart-icon.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 16px 16px;
     border: 1px solid transparent;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
+    @include flex-center();
 
     &:hover {
       background-color: #4a4d58;
@@ -157,11 +157,6 @@
     &Active {
       background-color: transparent;
       border: 1px solid #3b3e4a;
-      background-image: url('icons/like-active.svg');
-    }
-
-    @include onTablet() {
-      padding: 19px;
     }
   }
 }

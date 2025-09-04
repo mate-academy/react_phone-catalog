@@ -51,73 +51,12 @@
     margin-bottom: 24px;
   }
 
-  &__label {
-    color: $gray-text;
-    font-size: 12px;
-    @extend %mont-700;
-    line-height: 15px;
-    max-width: 176px;
-    width: 100%;
-
-    @include onTablet() {
-      @include mont-400();
-    }
-
-    & span {
-      display: block;
-      margin-bottom: 4px;
-    }
-  }
-
-  &__customSelect {
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      background: url('icons/arrow-dropdown.svg');
-      background-repeat: no-repeat;
-      width: 16px;
-      height: 16px;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-  }
-
-  &__select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    color: $gray-white-text;
-    font-size: 14px;
-    line-height: 21px;
-    @extend %mont-700;
-    background-color: $gray-dark;
-    border: none;
-    padding: 10px 12px;
-    width: 100%;
-
-    &:focus {
-      outline: none;
-      box-shadow: none;
-      border: none;
-    }
-
-    @include onTablet() {
-      @include mont-400();
-    }
-  }
-
   &__wrapperList {
     margin-bottom: 40px;
   }
 
   &__errorWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center();
     flex-direction: column;
     position: absolute;
     inset: 0;

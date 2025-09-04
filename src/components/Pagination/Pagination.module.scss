@@ -14,21 +14,18 @@
   }
 
   &__num {
-    color: rgb(241, 242, 249);
+    color: $gray-white-text;
     font-size: 14px;
     @extend %mont-600;
     line-height: 21px;
-    padding: 16px;
-    padding: 7px 13px 4px 14px;
-    background-color: rgb(22, 24, 39);
-    display: flex;
-    justify-content: center;
+    background-color: #161827;
+    @include flex-center();
     width: 32px;
     height: 32px;
-    transition: background-color .3s ease-in;
+    transition: background-color 0.3s ease-in;
 
     &Active {
-      background-color: rgb(144, 91, 255);
+      background-color: #905bff;
     }
 
     @include onTablet() {
@@ -36,46 +33,40 @@
     }
 
     &:hover {
-      background-color: rgba(59, 62, 74, 1);
+      background-color: #3b3e4a;
     }
   }
 
-  &__nav { 
-    background-color: rgb(50, 53, 66);
+  &__nav {
+    background-color: #323542;
     border: 1px solid transparent;
 
     &Disabled {
       background-color: transparent;
-      border: 1px solid rgb(59, 62, 74);
+      border: 1px solid #3b3e4a;
     }
   }
 
   &__btn {
-    display: block;
-    width: 31px;
-    height: 31px;
-    background-position: center;
-    background-size: 16px 16px;
-    background-repeat: no-repeat;
-    transition: background-color .3s ease-in;
-    
-    &:hover {
-     background-color: #4a4d58;
-    }
+    padding: 8px;
+    transition: background-color 0.3s ease-in;
+    @include flex-center();
 
-    &Next {
-      background-image: url('icons/arrow-slider.svg');
+    &:hover {
+      background-color: #4a4d58;
     }
 
     &Prev {
-      background-image: url('icons/arrow-slider.svg');
       transform: rotate(180deg);
     }
 
     &Disabled {
-      background-image: url('icons/arrow-slider-disabled.svg');
       background-color: transparent;
       cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
 }

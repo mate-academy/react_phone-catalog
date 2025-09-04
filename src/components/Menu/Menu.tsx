@@ -41,7 +41,9 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu }) => {
             type="button"
             onClick={closeMenu}
             className={styles.menu__close}
-          ></button>
+          >
+            <img src="icons/close-icon.svg" alt="Close menu icon" />
+          </button>
         </div>
 
         <ul className={styles.menu__list}>
@@ -51,12 +53,12 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu }) => {
             </NavLink>
           </li>
           <li className={styles.menu__listItem}>
-            <NavLink className={activeLink} onClick={closeMenu} to="/phones">
+            <NavLink className={activeLink} onClick={closeMenu} to="phones">
               Phones
             </NavLink>
           </li>
           <li className={styles.menu__listItem}>
-            <NavLink className={activeLink} onClick={closeMenu} to="/tablets">
+            <NavLink className={activeLink} onClick={closeMenu} to="tablets">
               Tablets
             </NavLink>
           </li>
@@ -64,7 +66,7 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu }) => {
             <NavLink
               className={activeLink}
               onClick={closeMenu}
-              to="/accessories"
+              to="accessories"
             >
               Accessories
             </NavLink>
@@ -81,6 +83,7 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu }) => {
               });
             }}
           >
+            <img src="icons/heart-icon.svg" alt="Add to favourites icon" />
             {favCount > 0 && (
               <span className={classNames(styles.menu__count)}>{favCount}</span>
             )}
@@ -94,6 +97,7 @@ export const Menu: React.FC<Props> = ({ isOpen, closeMenu }) => {
               });
             }}
           >
+            <img src="icons/bag-icon.svg" alt="Add to favourites bag" />
             {cartCount > 0 && (
               <span className={classNames(styles.menu__count)}>
                 {cartCount}

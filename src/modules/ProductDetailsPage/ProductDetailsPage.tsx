@@ -239,7 +239,9 @@ export const ProductDetailsPage = () => {
                         [styles.productDetails__likeActive]: isLiked,
                       })}
                       type="button"
-                    ></button>
+                    >
+                      <img src={isLiked ? `icons/like-active.svg` : `icons/heart-icon.svg`} alt="" />
+                    </button>
                   </div>
                 </div>
 
