@@ -4,16 +4,18 @@
   flex-grow: 1;
 
   &__list {
-    margin-top: 24px;
-    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 16px;
 
+    margin-top: 24px;
+
+    list-style: none;
+
     @include utils.on-tablet {
       flex-direction: row;
-      margin-top: 0;
       gap: 32px;
+      margin-top: 0;
     }
   }
 
@@ -23,19 +25,22 @@
     justify-content: center;
 
     &--favorite {
-      width: 50%;
       position: relative;
+      width: 50%;
 
       &::after {
         content: '';
-        display: block;
-        width: 0;
-        height: 2px;
-        background-color: utils.$primary;
 
         position: absolute;
         bottom: 0;
         left: 0;
+
+        display: block;
+
+        width: 0;
+        height: 2px;
+
+        background-color: utils.$primary;
 
         transition: all 0.3s;
       }
@@ -52,38 +57,47 @@
   }
 
   &__link {
-    color: utils.$secondary;
-    text-transform: uppercase;
+    position: relative;
+
+    height: 100%;
+
     font-size: 12px;
     font-weight: 800;
     line-height: 22px;
+    color: utils.$secondary;
+    text-transform: uppercase;
     letter-spacing: 2px;
-    height: 100%;
 
-    position: relative;
     transition: all 0.3s;
-
-    &--favorite {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
 
     &::after {
       content: '';
-      display: block;
-      height: 2px;
-      width: 0;
-      background-color: utils.$primary;
+
       position: absolute;
       bottom: 0;
+
+      display: block;
+
+      width: 0;
+      height: 2px;
+
+      background-color: utils.$primary;
+
       transition: all 0.3s;
     }
 
+    &--favorite {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+
+
     &--active {
-      color: utils.$primary;
       position: relative;
+      color: utils.$primary;
 
       &::after {
         width: 100%;
@@ -110,12 +124,16 @@
     &::after,
     &::before {
       content: '';
-      display: block;
-      width: 1px;
-      height: 100%;
-      background-color: utils.$elements;
+
       position: absolute;
       left: 50%;
+
+      display: block;
+
+      width: 1px;
+      height: 100%;
+
+      background-color: utils.$elements;
 
       @include utils.on-tablet {
         content: none;
@@ -131,20 +149,21 @@
     position: absolute;
     bottom: 50%;
     left: 50%;
-    width: 14px;
-    height: 14px;
-
-    border-radius: 50%;
-    box-sizing: border-box;
-    border: 1px solid #fff;
-
-    background-color: utils.$red;
-    color: #fff;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+
     font-size: 9px;
+    color: #fff;
     letter-spacing: 0;
+
+    background-color: utils.$red;
   }
 }

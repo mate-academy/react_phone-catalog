@@ -1,16 +1,17 @@
 @use '../../styles/utils' as utils;
 
 .price {
-  color: utils.$primary;
+  display: flex;
+
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
-  display: flex;
+  color: utils.$primary;
 
   &__fullPrice {
-    color: utils.$secondary;
-    text-decoration: line-through;
     font-size: 22px;
     font-weight: 600;
+    color: utils.$secondary;
+    text-decoration: line-through;
   }
 }

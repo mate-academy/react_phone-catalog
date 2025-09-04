@@ -2,8 +2,8 @@
 
 .favorites {
   &__breadcrumbs {
-    margin-top: 24px;
     grid-column: 1 / -1;
+    margin-top: 24px;
   }
 
   &__title {
@@ -12,8 +12,8 @@
 
   &__text {
     grid-column: 1 / -1;
-    text-align: center;
     font-size: 18px;
+    text-align: center;
   }
 
   &__block-items {
@@ -27,10 +27,12 @@
 
 .count-models {
   grid-column: 1 / -1;
+
+  margin-bottom: 32px;
+
   font-size: 14px;
   line-height: 21px;
   color: utils.$secondary;
-  margin-bottom: 32px;
 
   @include utils.on-tablet {
     margin-bottom: 40px;

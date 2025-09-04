@@ -1,27 +1,27 @@
 @use '../../styles/utils' as utils;
 
 .pagination {
-  grid-column: 1 / -1;
-
   display: flex;
-  justify-content: center;
+  grid-column: 1 / -1;
   gap: 16px;
+  justify-content: center;
 
   &__button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 32px;
     height: 32px;
     border: 1px solid utils.$elements;
-    font-family: Mont, sans-serif;
 
+    font-family: Mont, sans-serif;
     font-size: 14px;
     line-height: 21px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     transition: all .3s;
-    cursor: pointer;
 
     &--arrow {
       border-color: utils.$icons;

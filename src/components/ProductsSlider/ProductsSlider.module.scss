@@ -1,8 +1,8 @@
 @use '../../styles/utils' as utils;
 
 .slider {
-  grid-column: 1 / -1;
   position: static;
+  grid-column: 1 / -1;
 }
 
 .slide {
@@ -13,26 +13,29 @@
   position: absolute;
   top: 0;
   right: 0;
-  border: 1px solid #E2E6E9;
-  box-sizing: border-box;
 
   display: block;
+
+  box-sizing: border-box;
   width: 32px;
   height: 32px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(../../assets/img/icons/arrow-up.svg);
-  transition: all 0.3s;
+  border: 1px solid #E2E6E9;
 
-  &:hover {
-    background-position: center;
-    background-image: url(../../assets/img/icons/arrow-up.svg);
-    background-color: #FAFBFC;
-    border: 1px solid #B4BDC3;
-  }
+  background-image: url(../../assets/img/icons/arrow-up.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition: all 0.3s;
 
   &::before {
     content: none;
+  }
+
+  &:hover {
+    border: 1px solid #B4BDC3;
+    background-color: #FAFBFC;
+    background-image: url(../../assets/img/icons/arrow-up.svg);
+    background-position: center;
   }
 }
 
@@ -40,18 +43,18 @@
   transform: rotateZ(90deg);
 
   &:hover {
-    background-repeat: no-repeat;
     background-color: utils.$hover;
+    background-repeat: no-repeat;
   }
 }
 
 .prev {
-  transform: rotateZ(-90deg);
   right: 60px;
   left: auto;
+  transform: rotateZ(-90deg);
 
   &:hover {
-    background-repeat: no-repeat;
     background-color: utils.$hover;
+    background-repeat: no-repeat;
   }
 }

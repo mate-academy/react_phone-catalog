@@ -2,9 +2,9 @@
 
 .card-page {
   &__breadcrumbs {
+    grid-column: 1 / -1;
     margin-top: 24px;
     margin-bottom: 40px;
-    grid-column: 1 / -1;
   }
 
   &__title {
@@ -55,8 +55,8 @@
   }
 
   &__slider {
-    grid-column: 1 / -1;
     position: relative;
+    grid-column: 1 / -1;
 
     @include utils.page-grid;
   }
@@ -87,28 +87,31 @@
 }
 
 .title-info {
+  margin-bottom: 8px;
   font-size: 12px;
   line-height: 15px;
   color: utils.$secondary;
-  margin-bottom: 8px;
 }
 
 .capacity {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid utils.$icons;
-  padding-inline: 8px;
-  height: 32px;
-  box-sizing: border-box;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  height: 32px;
+  padding-inline: 8px;
+  border: 1px solid utils.$icons;
+
   transition: all .3s;
 
   &--active {
-    background-color: utils.$primary;
+    pointer-events: none;
     border-color: utils.$primary;
     color: #fff;
-    pointer-events: none;
+    background-color: utils.$primary;
   }
 
   &:hover {
@@ -120,6 +123,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+
   padding-block: 8px;
 
   font-size: 14px;
@@ -132,8 +136,8 @@
 
   &__item {
     display: flex;
-    justify-content: space-between;
     gap: 16px;
+    justify-content: space-between;
   }
 
   &__name {
@@ -142,14 +146,14 @@
 }
 
 .content-block {
-  color: utils.$primary;
   margin-bottom: 56px;
+  color: utils.$primary;
 
   &__title {
-    font-size: 20px;
-    line-height: 25px;
-    font-weight: 700;
     margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
   }
 
   &__description {
@@ -157,8 +161,8 @@
   }
 
   &__text {
-    color: #89939A;
     margin-top: 16px;
+    color: #89939A;
   }
 }
 

@@ -18,9 +18,9 @@ section {
   padding: 0;
   border: 0;
 
+  color: inherit;
   text-decoration: none;
   list-style: none;
-  color: inherit;
 }
 
 ul,
@@ -31,6 +31,6 @@ li {
 input,
 textarea,
 button {
-  outline: none;
   background: none;
+  outline: none;
 }
