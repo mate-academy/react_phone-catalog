@@ -64,37 +64,33 @@ export const ProductDetailsPage = () => {
     }, 500);
   }, [category, productId]);
 
+  const getVariant = (color: string, capacity: string) =>
+    allProductsDetails.find(
+      p =>
+        p.namespaceId === productDetails?.namespaceId &&
+        p.color === color &&
+        p.capacity === capacity
+    );
+
+
   const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedColor(event.target.value);
 
-    if (productDetails) {
-      const varient = allProductsDetails.find(
-        p =>
-          p.namespaceId === productDetails.namespaceId &&
-          p.color === event.target.value &&
-          p.capacity === selectedCapacity,
-      );
+    const varient = getVariant(event.target.value, selectedCapacity);
 
-      if (varient) {
-        navigate(`/${category}/${varient.id}`, { replace: true });
-      }
+    if (varient) {
+      navigate(`/${category}/${varient.id}`, { replace: true });
     }
+
   };
 
   const handleCapacityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedCapacity(event.target.value);
 
-    if (productDetails) {
-      const varient = allProductsDetails.find(
-        p =>
-          p.namespaceId === productDetails.namespaceId &&
-          p.capacity === event.target.value &&
-          p.color === selectedColor,
-      );
+    const varient = getVariant(selectedColor, event.target.value);
 
-      if (varient) {
-        navigate(`/${category}/${varient.id}`, { replace: true });
-      }
+    if (varient) {
+      navigate(`/${category}/${varient.id}`, { replace: true });
     }
   };
 
@@ -155,7 +151,6 @@ export const ProductDetailsPage = () => {
   return (
     <section className={styles.productDetails}>
       <div className={styles.container}>
-        {loading && <Loader />}
         {!loading && productDetails && (
           <div className={styles.productDetails__inner}>
             <Breadcrumbs pathnames={pathnames} />
