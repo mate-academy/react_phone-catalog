@@ -7,21 +7,24 @@ export const ProductFilters: React.FC = () => {
   const perPage = searchParams.get('perPage') || 'all';
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    searchParams.set('sort', event.target.value);
-    setSearchParams(searchParams);
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('sort', event.target.value);
+    setSearchParams(newParams);
   };
 
   const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newParams = new URLSearchParams(searchParams);
     const value = event.target.value;
 
     if (value === 'all') {
-      searchParams.delete('perPage');
+      newParams.delete('perPage');
     } else {
-      searchParams.set('perPage', value);
+      newParams.set('perPage', value);
     }
 
-    searchParams.delete('page');
-    setSearchParams(searchParams);
+    newParams.delete('page');
+    setSearchParams(newParams);
   };
 
   return (

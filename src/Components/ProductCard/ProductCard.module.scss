@@ -14,7 +14,7 @@ $desktop-min-width: 1200px;
     transform: translateY(-4px);
   }
 
-   @media (min-width: $tablet-min-width) {
+  @media (min-width: $tablet-min-width) {
     width: 288px;
     height: 506px;
   }
@@ -44,7 +44,7 @@ $desktop-min-width: 1200px;
   font-size: 14px;
   letter-spacing: 0%;
   font-weight: 600;
-  color: #F1F2F9;
+  color: #f1f2f9;
   margin: 0;
   margin-bottom: 8px;
 }
@@ -58,7 +58,7 @@ $desktop-min-width: 1200px;
   margin-bottom: 8px;
 
   .price {
-    color: #F1F2F9;
+    color: #f1f2f9;
     font-weight: 700;
     font-size: 22px;
     line-height: 140%;
@@ -70,7 +70,7 @@ $desktop-min-width: 1200px;
     font-size: 22px;
     line-height: 100%;
     letter-spacing: 0%;
-    color: #75767F;
+    color: #75767f;
     text-decoration: line-through;
   }
 }
@@ -81,7 +81,7 @@ $desktop-min-width: 1200px;
   width: 100%;
   padding: 0;
   margin: 0;
-  border-top: 1px solid #3B3E4A;
+  border-top: 1px solid #3b3e4a;
   padding-top: 12px;
 
   li {
@@ -91,7 +91,7 @@ $desktop-min-width: 1200px;
     font-size: 12px;
     line-height: 100%;
     letter-spacing: 0%;
-    color: #F1F2F9;
+    color: #f1f2f9;
     margin-bottom: 8px;
   }
 }
@@ -101,7 +101,7 @@ strong {
   font-size: 12px;
   line-height: 100%;
   letter-spacing: 0%;
-  color: #75767F;
+  color: #75767f;
 }
 
 .actions {
@@ -111,8 +111,8 @@ strong {
 
   .addToCart {
     flex: 1;
-    background: #905BFF;
-    color: #F1F2F9;
+    background: #905bff;
+    color: #f1f2f9;
     border: none;
     padding: 8px;
     cursor: pointer;
@@ -122,6 +122,10 @@ strong {
     &:hover {
       transform: scale(1.05);
     }
+  }
+
+  .addToCartActive {
+    background: #323542;
   }
 
   .fav {
@@ -134,11 +138,11 @@ strong {
     transition: all 0.3s;
 
     &:hover {
-     transform: scale(1.05);
+      transform: scale(1.05);
     }
   }
-}
 
-.favActive {
-  background-image: url(/public/img/heart-filled.svg);
+  .favActive {
+    background-image: url(/public/img/heart-filled.svg);
+  }
 }
