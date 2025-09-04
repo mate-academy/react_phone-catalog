@@ -32,7 +32,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
       <button className={styles.cartItem__delete} onClick={handleRemoveItem}>
         <img
           className={styles.cartItem__imgDelete}
-          src="/icons/delete-icon.svg"
+          src="icons/delete-icon.svg"
           alt="remove item"
         />
       </button>

@@ -96,18 +96,18 @@
     }
 
     &Plus {
-      background-image: url('/icons/plus-icon.svg');
+      background-image: url('icons/plus-icon.svg');
     }
 
     &Minus {
-      background-image: url('/icons/minus-icon.svg');
+      background-image: url('icons/minus-icon.svg');
     }
 
     &Disabled {
       cursor: not-allowed;
       border: 1px solid rgb(59, 62, 74);
       background-color: transparent;
-      background-image: url('/icons/minus-icon-disabled.svg');
+      background-image: url('icons/minus-icon-disabled.svg');
 
       &:hover {
         background-color: transparent;

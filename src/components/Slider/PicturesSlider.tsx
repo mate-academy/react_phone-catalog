@@ -11,14 +11,14 @@ import classNames from 'classnames';
 export const PicturesSlider = () => {
   const sliderImages = [
     {
-      desktop: '/img/banner-order.png',
-      mobile: '/img/banner-phone.png',
+      desktop: 'img/banner-order.png',
+      mobile: 'img/banner-phone.png',
     },
     {
-      desktop: '/img/banner-phones.png',
+      desktop: 'img/banner-phones.png',
     },
     {
-      desktop: '/img/banner-tablets.png',
+      desktop: 'img/banner-tablets.png',
     },
   ];
 

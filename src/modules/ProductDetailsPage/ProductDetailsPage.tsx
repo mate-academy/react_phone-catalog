@@ -40,8 +40,7 @@ export const ProductDetailsPage = () => {
     if (!category) {
       return;
     }
-    //возможно эта проверка не нужна
-    
+
     setLoading(true);
 
     setTimeout(() => {
@@ -131,7 +130,7 @@ export const ProductDetailsPage = () => {
     getNewProdut(productDetails, 'TOGGLE_FAV');
   };
 
-  if (loading) {
+  if (loading && !errorMessage) {
     return <Loader />;
   }
 
@@ -157,7 +156,7 @@ export const ProductDetailsPage = () => {
     <section className={styles.productDetails}>
       <div className={styles.container}>
         {loading && <Loader />}
-        {!loading && allProductsDetails.length > 0 && (
+        {!loading && productDetails && (
           <div className={styles.productDetails__inner}>
             <Breadcrumbs pathnames={pathnames} />
             <h1 className={styles.productDetails__title}>

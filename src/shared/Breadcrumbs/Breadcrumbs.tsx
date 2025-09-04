@@ -14,7 +14,7 @@ export const Breadcrumbs: React.FC<Props> = ({ pathnames }) => {
           <Link className={styles.breadcrumbs__linkHome} to="/">
             <img
               className={styles.breadcrumbs__icon}
-              src="/icons/home-icon.svg"
+              src="icons/home-icon.svg"
               alt="Home icon link"
             />
           </Link>
@@ -25,7 +25,7 @@ export const Breadcrumbs: React.FC<Props> = ({ pathnames }) => {
 
           return (
             <li key={to} className={styles.breadcrumbs__item}>
-              <img src="/icons/breadcrumbs-arrow-icon.svg" alt="" />
+              <img src="icons/breadcrumbs-arrow-icon.svg" alt="" />
 
               {!last ? (
                 <Link to={to} className={styles.breadcrumbs__link}>

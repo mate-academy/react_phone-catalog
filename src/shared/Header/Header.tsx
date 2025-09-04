@@ -41,17 +41,17 @@ export const Header = () => {
             </NavLink>
           </li>
           <li className={styles.header__navListItem}>
-            <NavLink to="/phones" className={isActiveLinks}>
+            <NavLink to="phones" className={isActiveLinks}>
               Phones
             </NavLink>
           </li>
           <li className={styles.header__navListItem}>
-            <NavLink to="/tablets" className={isActiveLinks}>
+            <NavLink to="tablets" className={isActiveLinks}>
               tablets
             </NavLink>
           </li>
           <li className={styles.header__navListItem}>
-            <NavLink to="/accessories" className={isActiveLinks}>
+            <NavLink to="accessories" className={isActiveLinks}>
               accessories
             </NavLink>
           </li>
