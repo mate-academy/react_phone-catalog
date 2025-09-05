@@ -11,6 +11,10 @@ export const Header: React.FC = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const goToPage = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   useEffect(() => {
     if (menuOpen) {
       document.body.classList.add('body_no_scroll');
@@ -50,11 +54,25 @@ export const Header: React.FC = () => {
       <div className={styles.header__container}>
         <div className={styles.logo}>
           <Link to="/">
-            <img src="img/Logo.svg" alt="Logo" className={styles.logo_img} />
+            <img
+              src="img/Logo.svg"
+              alt="Logo"
+              className={styles.logo_img}
+              onClick={() => {
+                toggleMenu();
+                goToPage();
+              }}
+            />
           </Link>
         </div>
 
-        <div className={styles.burger} onClick={toggleMenu}>
+        <div
+          className={styles.burger}
+          onClick={() => {
+            toggleMenu();
+            goToPage();
+          }}
+        >
           {menuOpen ? (
             <img
               src="img/close.png"
@@ -75,7 +93,10 @@ export const Header: React.FC = () => {
             <li>
               <NavLink
                 to="/"
-                onClick={toggleMenu}
+                onClick={() => {
+                  toggleMenu();
+                  goToPage();
+                }}
                 className={({ isActive }) =>
                   `${styles.nav_link} ${isActive ? styles.active_link : ''}`
                 }
@@ -86,7 +107,10 @@ export const Header: React.FC = () => {
             <li>
               <NavLink
                 to="/phones"
-                onClick={toggleMenu}
+                onClick={() => {
+                  toggleMenu();
+                  goToPage();
+                }}
                 className={({ isActive }) =>
                   `${styles.nav_link} ${isActive ? styles.active_link : ''}`
                 }
@@ -97,7 +121,10 @@ export const Header: React.FC = () => {
             <li>
               <NavLink
                 to="/tablets"
-                onClick={toggleMenu}
+                onClick={() => {
+                  toggleMenu();
+                  goToPage();
+                }}
                 className={({ isActive }) =>
                   `${styles.nav_link} ${isActive ? styles.active_link : ''}`
                 }
@@ -108,7 +135,10 @@ export const Header: React.FC = () => {
             <li>
               <NavLink
                 to="/accessories"
-                onClick={toggleMenu}
+                onClick={() => {
+                  toggleMenu();
+                  goToPage();
+                }}
                 className={({ isActive }) =>
                   `${styles.nav_link} ${isActive ? styles.active_link : ''}`
                 }
@@ -121,7 +151,10 @@ export const Header: React.FC = () => {
           <div className={styles.nav_right}>
             <NavLink
               to="/Favorites"
-              onClick={toggleMenu}
+              onClick={() => {
+                toggleMenu();
+                goToPage();
+              }}
               className={({ isActive }) =>
                 `${styles.nav_favorite} ${isActive ? styles.active_link : ''}`
               }
@@ -137,7 +170,10 @@ export const Header: React.FC = () => {
             </NavLink>
             <NavLink
               to="/Cart"
-              onClick={toggleMenu}
+              onClick={() => {
+                toggleMenu();
+                goToPage();
+              }}
               className={({ isActive }) =>
                 `${styles.nav_cart} ${isActive ? styles.active_link : ''}`
               }

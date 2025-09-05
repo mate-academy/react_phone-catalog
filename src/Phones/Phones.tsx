@@ -11,16 +11,9 @@ import { useNavigate } from 'react-router-dom';
 export const Phones: React.FC = () => {
   const { dispatch } = useCart();
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(16);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const sortParam = searchParams.get('sort') || 'age';
-
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedSort = event.target.value;
-
-    setSearchParams({ sort: selectedSort });
-  };
+  const itemsPerPage = Number(searchParams.get('perPage')) || 16;
 
   const sortedProducts = [...products].sort((a, b) => {
     if (sortParam === 'age') {
@@ -48,10 +41,20 @@ export const Phones: React.FC = () => {
 
   const currentProducts = filteredProducts.slice(startIndex, endIndex);
 
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedSort = event.target.value;
+
+    setSearchParams({ sort: selectedSort });
+  };
+
   const handleItemsPerPageChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setItemsPerPage(Number(event.target.value));
+    const value = event.target.value;
+    const newSearchParam = new URLSearchParams(searchParams);
+
+    newSearchParam.set('perPage', value);
+    setSearchParams(newSearchParam);
     setCurrentPage(1);
   };
 
@@ -59,8 +62,6 @@ export const Phones: React.FC = () => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   const handleAddToCart = (id: string) => {
     const product = phones.find(p => p.id === id);

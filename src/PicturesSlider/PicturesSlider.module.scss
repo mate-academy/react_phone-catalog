@@ -22,8 +22,8 @@
 
 .button_right,
 .button_left {
-    display: none;
-  }
+  display: none;
+}
 
 :global(.swiper-pagination) {
   position: relative !important;
@@ -32,12 +32,14 @@
 
 .custom_swiper_slide {
   flex-shrink: 0;
-  min-width: 100% !important
+  min-width: 100% !important;
+  width: 640px;
 }
 
 .swiper-pagination-bullet-active {
-opacity: 1;
+  opacity: 1;
 }
+
 
 @media screen and (min-width: 640px){
   .pictures_slider {

@@ -11,16 +11,23 @@ import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountPr
 export const ItemCard: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
+  const goToPage = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleBackClick = () => {
     navigate(-1);
+    goToPage();
   };
 
   const handleHomeClick = () => {
     navigate('/');
+    goToPage();
   };
 
-  const handleCategoClick = () => {
-    navigate('/phones');
+  const handleCategoryClick = (path: string) => {
+    navigate(path);
+    goToPage();
   };
 
   const allProducts = [...phones, ...tablets, ...accessories];
@@ -165,7 +172,10 @@ export const ItemCard: React.FC = () => {
           <img src="img/Home.svg" alt="" />
         </button>
         <img src="img/Arrow-right.svg" alt="" />
-        <button className={styles.button_back} onClick={handleCategoClick}>
+        <button
+          className={styles.button_back}
+          onClick={() => handleCategoryClick(`/${product.category}`)}
+        >
           {capitalizeFirstLetter(product.category)}
         </button>
         <img src="img/Arrow-right.svg" alt="" />

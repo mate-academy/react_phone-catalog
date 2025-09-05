@@ -10,16 +10,10 @@ import { useCart } from '../UseCart/UseCart';
 export const Accessories: React.FC = () => {
   const { dispatch } = useCart();
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(16);
-
   const [searchParams, setSearchParams] = useSearchParams();
+
   const sortParam = searchParams.get('sort') || 'age';
-
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedSort = event.target.value;
-
-    setSearchParams({ sort: selectedSort });
-  };
+  const itemsPerPage = Number(searchParams.get('perPage')) || 16;
 
   const sortedProducts = [...products].sort((a, b) => {
     if (sortParam === 'age') {
@@ -48,10 +42,20 @@ export const Accessories: React.FC = () => {
 
   const currentProducts = filteredProducts.slice(startIndex, endIndex);
 
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedSort = event.target.value;
+
+    setSearchParams({ sort: selectedSort });
+  };
+
   const handleItemsPerPageChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setItemsPerPage(Number(event.target.value));
+    const value = event.target.value;
+    const newSearchParam = new URLSearchParams(searchParams);
+
+    newSearchParam.set('perPage', value);
+    setSearchParams(newSearchParam);
     setCurrentPage(1);
   };
 
