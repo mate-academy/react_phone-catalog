@@ -150,6 +150,10 @@
     &:hover.productDetails__radio::after {
       border: 1px solid #75767f;
     }
+
+    &:checked.productDetails__radio::after {
+      border: 1px solid $gray-white-text;
+    }
   }
 
   &__capacityBlock {

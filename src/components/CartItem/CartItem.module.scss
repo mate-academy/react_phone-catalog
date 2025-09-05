@@ -1,16 +1,22 @@
 @import '../../style.scss';
 
 .cartItem {
-  @include flex-between-center();
+  display: flex;
+  align-items: center;
   background-color: #161827;
   padding: 24px;
   width: 100%;
   gap: 24px;
 
+  @include onTablet() {
+    max-width: 592px;
+  }
+
   @include onPhone() {
     flex-wrap: wrap;
     gap: 16px;
     padding: 16px;
+    justify-content: space-between;
   }
 
   &__delete {
@@ -51,6 +57,9 @@
     font-size: 22px;
     line-height: 140%;
     @extend %mont-700;
+    max-width: 80px;
+    width: 100%;
+    text-align: right;
 
     @include onTablet() {
       @include mont-600();
@@ -65,7 +74,10 @@
     color: $gray-white-text;
     font-size: 14px;
     line-height: 21px;
+    position: absolute;
     @extend %mont-600;
+    left: 50%;
+    transform: translateX(-50%);
 
     @include onTablet() {
       @include mont-400();
@@ -75,7 +87,10 @@
   &__counterBox {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 32px;
+    max-width: 96px;
+    width: 100%;
+    position: relative;
   }
 
   &__btn {

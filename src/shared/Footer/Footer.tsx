@@ -13,7 +13,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.footer__inner}>
-          <a className={styles.footer__logo} href="/">
+          <a className={styles.footer__logo} onClick={backToTop}>
             <img src="icons/logo.svg" alt="Logotype" />
           </a>
 

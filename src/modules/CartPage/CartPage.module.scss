@@ -87,8 +87,12 @@
 
     @include onTablet() {
       flex-direction: column;
+
       gap: 32px;
       align-items: center;
+      max-width: 592px;
+      width: 100%;
+      margin: 0 auto;
     }
   }
 
