@@ -1,8 +1,8 @@
 @use '../../styles/utils' as utils;
 
 .dropdown {
-  grid-column: span 2;
   position: relative;
+  grid-column: span 2;
 
   @include utils.on-tablet {
     grid-column: span 4;
@@ -20,30 +20,36 @@
 
   &__title {
     font-size: 12px;
-    color: utils.$secondary;
     line-height: 15px;
+    color: utils.$secondary;
   }
 
   &__field {
-    border: 1px solid utils.$icons;
-    background-color: #fff;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px;
-    color: utils.$primary;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    font-size: 15px;
-    line-height: 21px;
-    transition: all 0.3s;
     position: relative;
     z-index: 5;
 
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid utils.$icons;
+
+
+    font-size: 15px;
+    line-height: 21px;
+    color: utils.$primary;
+
+    background-color: #fff;
+
+    transition: all 0.3s;
+
     &:hover {
-      border-color: utils.$secondary;
       cursor: pointer;
+      border-color: utils.$secondary;
     }
 
     &--focus {
@@ -52,17 +58,22 @@
   }
 
   &__list {
-    background-color: #fff;
-    border: 1px solid utils.$icons;
-    box-sizing: border-box;
-    overflow: hidden;
     position: absolute;
     top: 0;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
     width: 100%;
     padding-block: 8px;
-    transition: all .3s;
+    border: 1px solid utils.$icons;
+
     visibility: hidden;
     opacity: 0;
+    background-color: #fff;
+
+
+    transition: all .3s;
 
     &--show {
       z-index: 1;
@@ -73,11 +84,14 @@
   }
 
   &__item {
+    cursor: pointer;
+
     padding: 6px 12px;
+
     font-size: 14px;
     line-height: 21px;
     color: utils.$secondary;
-    cursor: pointer;
+
     transition: all .3s;
 
     &:hover {

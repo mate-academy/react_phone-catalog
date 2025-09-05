@@ -2,15 +2,18 @@
 
 .loaderContainer {
   position: fixed;
+  z-index: 9999;
   top: 0;
   left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   background-color: rgba(255, 255, 255, 0.8);
-  z-index: 9999;
 }
 
 .loader {
@@ -19,6 +22,7 @@
   border: 6px solid #ccc;
   border-top: 6px solid #3498db;
   border-radius: 50%;
+
   animation: spin 1s linear infinite;
 }
 

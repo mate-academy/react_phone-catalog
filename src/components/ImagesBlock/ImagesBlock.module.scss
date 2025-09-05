@@ -42,20 +42,23 @@
 .thumbnail {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  align-content: start;
   gap: 8px;
+  align-content: start;
 
   @include utils.on-tablet {
     grid-template-columns: 1fr;
   }
 
   &__image {
-    aspect-ratio: 1;
-    overflow: hidden;
-    padding: 5px;
-    box-sizing: border-box;
-    border: 1px solid utils.$elements;
     cursor: pointer;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+    aspect-ratio: 1;
+    padding: 5px;
+    border: 1px solid utils.$elements;
+
     transition: all .3s;
 
     &:hover {
@@ -68,14 +71,14 @@
     }
 
     &--active {
-      border-color: utils.$primary;
       pointer-events: none;
+      border-color: utils.$primary;
     }
   }
 }
 
 .img {
-  transition: all .3s;
   height: 100%;
   object-fit: contain;
+  transition: all .3s;
 }

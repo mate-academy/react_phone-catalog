@@ -8,8 +8,8 @@
   &__content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 32px;
+    justify-content: space-between;
 
     @include utils.on-tablet {
       flex-direction: row;
@@ -27,16 +27,16 @@
 
     @include utils.on-tablet {
       flex-direction: row;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
   }
 
   &__item {
-    text-transform: uppercase;
-    font-weight: 800;
     font-size: 12px;
+    font-weight: 800;
     line-height: 11px;
+    text-transform: uppercase;
   }
 
   &__link {
@@ -59,17 +59,21 @@
 }
 
 .back-to-top {
+  cursor: pointer;
+
   display: flex;
-  align-items: center;
   gap: 16px;
+  align-items: center;
+
   width: fit-content;
-  transition: all .3s;
-  color: utils.$secondary;
+
   font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;
-  cursor: pointer;
+  color: utils.$secondary;
+
+  transition: all .3s;
 
   &__icon {
     width: 24px;
