@@ -1,16 +1,20 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import {
+  Accessory,
   DataContextProps,
   Phone,
   Product,
   StorageCartItem,
+  Tablet,
 } from '../api/types';
-import { getPhones, getProducts } from '../api/api';
+import { getData } from '../api/api';
 import { STORAGE_KEYS, StorageKey } from '../modules/shared/constants/storage';
 
 const defaultContext: DataContextProps = {
   phones: [],
   products: [],
+  tablets: [],
+  accessories: [],
   isLoading: false,
   favItems: [],
   setFavItems: () => {},
@@ -24,6 +28,8 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [phones, setPhones] = useState<Phone[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
+  const [tablets, setTablets] = useState<Tablet[]>([]);
+  const [accessories, setAccessories] = useState<Accessory[]>([]);
 
   const getInitialStorage = (key: StorageKey) => {
     try {
@@ -50,13 +56,18 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
       try {
         setIsLoading(true);
 
-        const [phonesData, productsData] = await Promise.all([
-          getPhones(),
-          getProducts(),
-        ]);
+        const [phonesData, productsData, tabletsData, accessoriesData] =
+          await Promise.all([
+            getData('phones'),
+            getData('products'),
+            getData('tablets'),
+            getData('accessories'),
+          ]);
 
         setPhones(phonesData);
         setProducts(productsData);
+        setTablets(tabletsData);
+        setAccessories(accessoriesData);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Failed to fetch data:', error);
@@ -85,6 +96,8 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
       value={{
         phones,
         products,
+        tablets,
+        accessories,
         isLoading,
         favItems,
         setFavItems,

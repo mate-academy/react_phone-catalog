@@ -25,6 +25,33 @@ export type Phone = {
   cell: string[];
 };
 
+export type Tablet = {
+  id: string;
+  category: string;
+  namespaceId: string;
+  name: string;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
+  images: string[];
+  description: [
+    {
+      title: string;
+      text: string[];
+    },
+  ];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera: string;
+  zoom: string;
+  cell: string[];
+};
+
 export type Product = {
   id: number;
   category: string;
@@ -38,6 +65,30 @@ export type Product = {
   ram: string;
   year: number;
   image: string;
+};
+
+export type Accessory = {
+  id: string;
+  category: string;
+  namespaceId: string;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
+  images: string[];
+  description: [
+    {
+      title: string;
+      text: string[];
+    },
+  ];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  cell: string[];
 };
 
 export type StorageCartItem = {
@@ -56,6 +107,8 @@ export type DirectionType = (typeof Direction)[keyof typeof Direction];
 export type DataContextProps = {
   phones: Phone[];
   products: Product[];
+  tablets: Tablet[];
+  accessories: Accessory[];
   isLoading: boolean;
   favItems: number[];
   setFavItems: React.Dispatch<React.SetStateAction<number[]>>;

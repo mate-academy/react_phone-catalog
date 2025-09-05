@@ -1,7 +1,25 @@
-import { Phone, Product } from './types';
+import { Accessory, Phone, Product, Tablet } from './types';
 
-export async function getPhones(): Promise<Phone[]> {
-  const response = await fetch('/api/phones.json');
+const ENDPOINT = {
+  phones: '/api/phones.json',
+  products: '/api/products.json',
+  accessories: '/api/accessories.json',
+  tablets: '/api/tablets.json',
+} as const;
+
+type Category = keyof typeof ENDPOINT;
+
+type ResponseMap = {
+  phones: Phone[];
+  products: Product[];
+  tablets: Tablet[];
+  accessories: Accessory[];
+};
+
+export async function getData<K extends Category>(
+  category: K,
+): Promise<ResponseMap[K]> {
+  const response = await fetch(ENDPOINT[category]);
 
   if (!response.ok) {
     throw new Error(`Response status: ${response.status}`);
@@ -9,17 +27,5 @@ export async function getPhones(): Promise<Phone[]> {
 
   const result = await response.json();
 
-  return result;
-}
-
-export async function getProducts(): Promise<Product[]> {
-  const response = await fetch('/api/products.json');
-
-  if (!response.ok) {
-    throw new Error(`Response status: ${response.status}`);
-  }
-
-  const result = await response.json();
-
-  return result;
+  return result as ResponseMap[K];
 }

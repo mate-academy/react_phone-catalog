@@ -73,7 +73,10 @@ export const ProductsSlider: React.FC = () => {
   );
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setTouchStart(e.targetTouches[0].clientX);
+    const x = e.targetTouches[0].clientX;
+
+    setTouchStart(x);
+    setTouchEnd(x);
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -81,16 +84,17 @@ export const ProductsSlider: React.FC = () => {
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 20) {
-      setActiveSlide(current =>
-        current === newestProducts.length ? 0 : current + 1,
-      );
+    const delta = touchStart - touchEnd;
+    const THRESHOLD = 30;
+
+    if (Math.abs(delta) < THRESHOLD) {
+      return;
     }
 
-    if (touchStart - touchEnd < -20) {
-      setActiveSlide(current =>
-        current === 0 ? newestProducts.length / 2 - 1 : current - 1,
-      );
+    if (delta > 0) {
+      nextSlide();
+    } else {
+      prevSlide();
     }
   };
 
