@@ -1,0 +1,29 @@
+@import '../../style/variables.scss';
+
+.details {
+  padding-top: 32px;
+  display: flex;
+  flex-direction: row;
+
+  gap: 8px;
+
+  flex-grow: 1;
+  justify-content: flex-start;
+
+  &_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  &_name {
+    color: #75767F;
+  }
+
+  &_value {
+    color: $text-color;
+  }
+}

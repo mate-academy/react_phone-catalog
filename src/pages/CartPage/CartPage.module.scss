@@ -1,0 +1,88 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.cart {
+  &_title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    padding-bottom: 32px;
+    padding-top: 16px;
+  }
+
+  &_page {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &_items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__price-description {
+    padding-bottom: 25px;
+    border-bottom: 1px solid #3B3E4A;
+
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+
+  &_checkout {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid $grey-element-color;
+    gap: 24px;
+
+    align-self: flex-start;
+
+    width: 100%;
+    height: auto;
+
+    &--price {
+      color: $text-color;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      text-align: center;
+    }
+
+    &--total {
+      color: #75767F;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+    }
+
+    &--button {
+      width: 100%;
+      border: none;
+      background-color: #905BFF;
+      padding-block: 13.5px;
+      color: $text-color;
+    }
+  }
+
+  @include on-tablet {
+    &_page {
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+    }
+  }
+
+  @include on-desktop {
+    &_page {
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.selectCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  text-decoration: none;
+  color: $text-color;
+
+  flex: 1 1 calc((100% - 48px) / 3);
+
+  &_ImgWrapper {
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #6d6474;
+  }
+
+  &_Img {
+    position: absolute;
+    top: 50px;
+    left: 85px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+
+  &_title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100%;
+    padding-bottom: 4px;
+  }
+
+  &_models {
+    color: $gray-secondary-color;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &:hover .selectCategory__image {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+
+  @include on-tablet {
+    &_ImgWrapper {
+      width: 288px;
+      height: 288px;
+    }
+  }
+
+  @include on-desktop {
+    &_Img {
+      top: 40px;
+      left: 65px;
+    }
+  }
+}
+
+

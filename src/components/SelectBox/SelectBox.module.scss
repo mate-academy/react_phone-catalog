@@ -1,0 +1,37 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.select {
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &_title {
+    color: $gray-secondary-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &_box {
+    width: 187px;
+    background-color: $grey-dark-color;
+    padding-inline: 12px;
+    padding-block: 10px;
+    border: none;
+    appearance: none;
+    background-image: url('/public/img/icons/Chevron\ \(Arrow\ Down\).svg');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+
+    cursor: pointer;
+  }
+
+  @include on-tablet {
+    flex: 1;
+    &_box {
+      width: 100%;
+    }
+  }
+}
