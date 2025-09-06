@@ -15,7 +15,7 @@ export const ShopByCategory = () => {
             className={`${styles.categoryCard__background} ${styles['background--phones']}`}
           >
             <img
-              src="/img/category-phones.webp"
+              src="./img/category-phones.webp"
               alt="Mobile phones"
               className={styles.categoryCard__image}
             />
@@ -31,7 +31,7 @@ export const ShopByCategory = () => {
             className={`${styles.categoryCard__background} ${styles['background--tablets']}`}
           >
             <img
-              src="/img/category-tablets.webp"
+              src="./img/category-tablets.webp"
               alt="Tablets"
               className={styles.categoryCard__image}
             />
@@ -47,7 +47,7 @@ export const ShopByCategory = () => {
             className={`${styles.categoryCard__background} ${styles['background--accessories']}`}
           >
             <img
-              src="/img/category-accessories.webp"
+              src="./img/category-accessories.webp"
               alt="Accessories"
               className={styles.categoryCard__image}
             />

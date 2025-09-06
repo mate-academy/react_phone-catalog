@@ -10,7 +10,7 @@ export const Footer = () => {
     <div className={styles.footer}>
       <div className={styles['footer__logo-wrapper']}>
         <Link to="/">
-          <img src="/img/logo.svg" alt="MA" className={styles.footer__logo} />
+          <img src="./img/logo.svg" alt="MA" className={styles.footer__logo} />
         </Link>
       </div>
       <nav className={styles.footer__nav}>
@@ -46,7 +46,7 @@ export const Footer = () => {
           className={styles.footer__backToTopBtn}
           aria-label="Scroll to top"
         >
-          <img src="/img/Icons/Buttons/Icons/arrow-up.svg" />
+          <img src="./img/Icons/Buttons/Icons/arrow-up.svg" />
         </button>
       </div>
     </div>

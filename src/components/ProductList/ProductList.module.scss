@@ -5,12 +5,13 @@
 .products-list {
   display: flex;
   flex-direction: column;
-  padding-inline: 16px;
   padding-bottom: 64px;
+  padding-inline: 16px;
 
   @include on-tablet {
-    @include padding-inline-tablet;
     padding-bottom: 80px;
+
+    @include padding-inline-tablet;
   }
 
   @include on-desktop {

@@ -11,7 +11,7 @@ export const BackBtn = () => {
   return (
     <div className={styles.BackBtn} onClick={handleClick}>
       <img
-        src="/img/Icons/Buttons/Icons/arrow-left.svg"
+        src="./img/Icons/Buttons/Icons/arrow-left.svg"
         alt="Back"
         className={styles.BackBtn__icon}
       />

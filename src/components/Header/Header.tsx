@@ -38,7 +38,7 @@ export const Header = () => {
           <div className={styles['header__logo-wrapper']}>
             <Link to="/">
               <img
-                src="/img/logo.svg"
+                src="./img/logo.svg"
                 alt="MA"
                 className={styles.header__logo}
               />
@@ -52,7 +52,9 @@ export const Header = () => {
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
             <img
-              src={isMenuOpen ? '/img/Icons/close.svg' : '/img/Icons/menu.svg'}
+              src={
+                isMenuOpen ? './img/Icons/close.svg' : './img/Icons/menu.svg'
+              }
               alt={isMenuOpen ? 'Close' : 'Menu'}
             />
           </button>
@@ -89,11 +91,11 @@ export const Header = () => {
               className={getActionBtnClass}
               aria-label="Favorites"
             >
-              <img src="/img/Icons/favorites.svg" alt="Favorites" />
+              <img src="./img/Icons/favorites.svg" alt="Favorites" />
             </NavLink>
 
             <NavLink to="/cart" className={getActionBtnClass} aria-label="Cart">
-              <img src="/img/Icons/cart.svg" alt="Cart" />
+              <img src="./img/Icons/cart.svg" alt="Cart" />
             </NavLink>
           </div>
         </div>
@@ -143,7 +145,7 @@ export const Header = () => {
                   aria-label="Favorites"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <img src="/img/Icons/favorites.svg" alt="Favorites" />
+                  <img src="./img/Icons/favorites.svg" alt="Favorites" />
                 </NavLink>
 
                 <NavLink
@@ -152,7 +154,7 @@ export const Header = () => {
                   aria-label="Cart"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <img src="/img/Icons/cart.svg" alt="Cart" />
+                  <img src="./img/Icons/cart.svg" alt="Cart" />
                 </NavLink>
               </div>
             </div>

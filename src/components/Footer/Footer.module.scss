@@ -2,21 +2,23 @@
 @use '../../styles/variables' as *;
 
 .footer {
-    display: flex;
+  display: flex;
   flex-direction: column;
+
   box-sizing: border-box;
   width: 100%;
   padding-block: 32px;
   padding-inline: 16px;
+
   box-shadow: 0 -1px 0 0 #E2E6E9;
 
   @include on-tablet {
+    overflow: hidden;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
     max-height: 96px;
-    overflow: hidden;
 
     @include padding-inline-responsive;
   }

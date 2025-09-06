@@ -68,7 +68,7 @@ export const ProductList: React.FC<Props> = ({
             }`}
           >
             <img
-              src="/img/Icons/Buttons/Icons/arrow-left.svg"
+              src="./img/Icons/Buttons/Icons/arrow-left.svg"
               alt="Scroll left"
             />
           </button>
@@ -80,7 +80,7 @@ export const ProductList: React.FC<Props> = ({
             }`}
           >
             <img
-              src="/img/Icons/Buttons/Icons/arrow-right.svg"
+              src="./img/Icons/Buttons/Icons/arrow-right.svg"
               alt="Scroll right"
             />
           </button>

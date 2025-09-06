@@ -19,7 +19,9 @@
 
 .error__text {
   margin-bottom: 12px;
+
   @include text-style($body-text);
+
   color: #d32f2f;
 }
 
@@ -31,6 +33,7 @@
   border-radius: 4px;
 
   @include text-style($button-text);
+
   color: #fff;
 
   background-color: #d32f2f;

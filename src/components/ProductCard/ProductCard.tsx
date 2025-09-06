@@ -10,7 +10,7 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
   return (
     <div className={styles.productcard}>
       <div className={styles.productcard__image}>
-        <img src={product.image} alt="Product photo" />
+        <img src={`./${product.image}`} alt="Product photo" />
       </div>
       <div className={styles.productcard__content}>
         <div className={styles.productcard__name}>
@@ -54,7 +54,7 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
         </button>
 
         <button className={styles['productcard__buttons-fav']}>
-          <img src="/img/Icons/favorites.svg" alt="Add to favorites" />
+          <img src="./img/Icons/favorites.svg" alt="Add to favorites" />
         </button>
       </div>
     </div>

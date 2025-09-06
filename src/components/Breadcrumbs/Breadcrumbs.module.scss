@@ -7,10 +7,10 @@ iframe {
 }
 
 .breadcrumbs {
+  box-sizing: border-box;
   padding-block: 24px;
   font-size: 12px;
   color: $color-secondary;
-  box-sizing: border-box;
 
   @include on-tablet {
     padding-block-end: 40px;

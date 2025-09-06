@@ -2,9 +2,9 @@ import { useBannerSliderLogic } from '../useBannerSliderLogic';
 import styles from './BannerSliderTablet.module.scss';
 
 const images = [
-  '/img/swiper/desktop-banner-1.png',
-  '/img/swiper/desktop-banner-2.png',
-  '/img/swiper/desktop-banner-3.png',
+  './img/swiper/desktop-banner-1.png',
+  './img/swiper/desktop-banner-2.png',
+  './img/swiper/desktop-banner-3.png',
 ];
 
 export const BannerSliderTablet = () => {
@@ -19,7 +19,7 @@ export const BannerSliderTablet = () => {
           className={styles['banner-slider__nav-button']}
           onClick={() => scrollToIndex(activeIndex - 1)}
         >
-          <img src="/img/Icons/Buttons/Icons/arrow-left.svg" />
+          <img src="./img/Icons/Buttons/Icons/arrow-left.svg" />
         </button>
 
         <div className={styles['banner-slider__slides']} ref={sliderRef}>
@@ -38,7 +38,7 @@ export const BannerSliderTablet = () => {
           className={styles['banner-slider__nav-button']}
           onClick={() => scrollToIndex(activeIndex + 1)}
         >
-          <img src="/img/Icons/Buttons/Icons/arrow-right.svg" />
+          <img src="./img/Icons/Buttons/Icons/arrow-right.svg" />
         </button>
       </div>
 
