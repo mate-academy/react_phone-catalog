@@ -1,1 +1,36 @@
-// not empty
+@use './styles/variables' as *;
+@use './styles/mixins' as *;
+
+@import './styles/fonts';
+
+body {
+  margin: 0;
+  padding-top: $header-height-mobile;
+  font-family: Mont, sans-serif;
+  box-sizing: border-box;
+
+  @media (min-width: 1200px) {
+    padding-top: $header-height-tablet;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+
+  min-height: calc(100vh - $header-height-mobile - $footer-height);
+
+  @include on-tablet {
+    min-height: calc(100vh - $header-height-tablet - $footer-height);
+  }
+}
+
+.section {
+  flex-grow: 1;
+  overflow-y: auto;
+}

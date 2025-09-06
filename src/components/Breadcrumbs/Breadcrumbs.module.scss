@@ -1,0 +1,62 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+@use 'sass:map';
+
+iframe {
+  display: none;
+}
+
+.breadcrumbs {
+  padding-block: 24px;
+  font-size: 12px;
+  color: $color-secondary;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    padding-block-end: 40px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__link {
+    font-weight: 700;
+    color: $color-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__current {
+    font-weight: 600;
+    color: $color-secondary;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon,
+  &__arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+}

@@ -1,0 +1,20 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+iframe {
+  display: none;
+}
+
+.page404 {
+  width: 100%;
+  height: calc(100vh - #{$header-height-mobile});
+
+  background-image: url('/img/page-not-found.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  @include on-desktop {
+    height: calc(100vh - #{$header-height-tablet});
+  }
+}

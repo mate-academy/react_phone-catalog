@@ -1,0 +1,23 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables' as *;
+
+iframe {
+  display: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+
+  width: 100%;
+  max-width: 100%;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    gap: 32px;
+  }
+}

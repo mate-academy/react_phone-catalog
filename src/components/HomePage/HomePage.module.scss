@@ -1,0 +1,38 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+@use "sass:map";
+
+iframe {
+  display: none;
+}
+
+.homePage {
+  margin: 0;
+
+  &__title {
+    margin: 0;
+    padding: 16px 24px;
+
+    font-size: map.get($h1-mobile, size);
+    font-weight: map.get($h1-mobile, weight);
+    letter-spacing: map.get($h1-mobile, letter-spacing);
+
+    @include on-tablet {
+      font-size: map.get($h1-desktop, size);
+      font-weight: map.get($h1-desktop, weight);
+      letter-spacing: map.get($h1-desktop, letter-spacing);
+    }
+
+    @include on-tablet {
+      padding: 24px 32px;
+    }
+
+    @include on-desktop {
+      padding: 32px 56px;
+    }
+
+    @include widest {
+      padding: 56px 152px;
+    }
+  }
+}

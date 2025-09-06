@@ -1,0 +1,9 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables' as *;
+
+.empty-message {
+  padding: 40px;
+  @include text-style($body-text);
+  color: $color-secondary;
+  text-align: center;
+}
