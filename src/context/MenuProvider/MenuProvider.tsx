@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { ToggleMenu } from '../../types/ToggleMenu';
+import { ToggleMenu } from '../../types/types';
 
 export const MenuContext = createContext<ToggleMenu>({
   isMenuVisible: false,
