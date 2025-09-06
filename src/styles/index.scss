@@ -1,20 +1,24 @@
 @use './utils' as utils;
 
 html {
+  scroll-behavior: smooth;
+
   font-family: Mont, sans-serif;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
-  scroll-behavior: smooth;
 }
 
 .icon {
+  cursor: pointer;
+
   display: block;
+
   width: 16px;
   height: 16px;
-  background-position: center;
+
   background-repeat: no-repeat;
-  cursor: pointer;
+  background-position: center;
 
   &--menu {
     background-image: url(../assets/img/icons/menu-burger-icon.svg);
@@ -71,38 +75,46 @@ html {
 }
 
 .circle-color {
+  cursor: pointer;
+
+  position: relative;
+
   display: block;
+
+  box-sizing: border-box;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  border: 1px solid utils.$elements;
   padding: 2px;
-  box-sizing: border-box;
+  border: 1px solid utils.$elements;
+  border-radius: 50%;
+
   background-color: white;
-  position: relative;
+
   transition: all .3s;
-  cursor: pointer;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
 
   &:hover {
     border-color: utils.$icons;
   }
 
-  &::before {
-    content: '';
-    display: block;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
   &--active {
-    border-color: utils.$primary;
     pointer-events: none;
+    border-color: utils.$primary;
   }
 
   &--black {
@@ -151,9 +163,9 @@ html {
 }
 
 .main {
-  padding-top: 48px;
-  box-sizing: border-box;
   flex: 1;
+  box-sizing: border-box;
+  padding-top: 48px;
 
   @include utils.on-desktop {
     padding-top: 64px;
@@ -162,8 +174,8 @@ html {
 
 .container {
   max-width: utils.$desktop-min-width;
-  padding-inline: 16px;
   margin: 0 auto;
+  padding-inline: 16px;
 
   @include utils.on-tablet {
     padding-inline: 24px;
@@ -189,10 +201,10 @@ html {
 }
 
 .title {
+  margin-block: 24px;
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
-  margin-block: 24px;
 
   @include utils.on-tablet {
     font-size: 48px;
@@ -212,23 +224,28 @@ html {
 }
 
 .divider {
+  width: 100%;
   border: none;
   border-top: 1px solid utils.$elements;
-  width: 100%;
 }
 
 .button {
+  cursor: pointer;
+
+  flex-grow: 1;
+
+  box-sizing: border-box;
+  height: 40px;
+
   font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
-  text-align: center;
-  flex-grow: 1;
-  height: 40px;
-  background-color: utils.$primary;
   color: #fff;
-  cursor: pointer;
-  box-sizing: border-box;
+  text-align: center;
+
+  background-color: utils.$primary;
+
   transition: all 0.3s;
 
   &:hover {
@@ -237,7 +254,7 @@ html {
 
   &--selected {
     border: 1px solid utils.$elements;
-    background-color: #fff;
     color: utils.$green;
+    background-color: #fff;
   }
 }

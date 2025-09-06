@@ -1,16 +1,18 @@
 @use '../../styles/utils' as utils;
 
 .cart-item {
-  grid-column: 1 / -1;
   position: relative;
 
-  padding: 16px;
-  border: 1px solid utils.$elements;
-  color: utils.$primary;
-
+  grid-column: 1 / -1;
   grid-template-rows: 1fr 1fr;
   row-gap: 16px;
   align-items: center;
+
+  padding: 16px;
+  border: 1px solid utils.$elements;
+
+  color: utils.$primary;
+
   transition: border-color .3s;
 
   @include utils.page-grid;
@@ -37,15 +39,17 @@
   &__image {
     position: relative;
     left: 30px;
-    width: 66px;
-    height: 66px;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
+    width: 66px;
+    height: 66px;
+
     img {
-      object-fit: cover;
       height: 100%;
+      object-fit: cover;
       object-position: center;
     }
 
@@ -79,10 +83,10 @@
   }
 
   &__price {
-    text-align: end;
+    grid-column: span 2 / -1;
     font-size: 22px;
     font-weight: 800;
-    grid-column: span 2 / -1;
+    text-align: end;
 
     @include utils.on-tablet {
       grid-column: span 3 / -1;
@@ -99,23 +103,26 @@
 }
 
 .counter {
-  min-width: 100px;
   display: flex;
   justify-content: space-between;
+  min-width: 100px;
 
   &__item {
-    box-sizing: border-box;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
 
   &__button {
-    font-family: Mont, sans-serif;
+    cursor: pointer;
+
     width: 32px;
     height: 32px;
     border: 1px solid utils.$icons;
-    cursor: pointer;
+
+    font-family: Mont, sans-serif;
+
     transition: all .3s;
 
     &:hover {
