@@ -1,0 +1,37 @@
+.homePage {
+  padding: 40px 0;
+
+  &__section {
+    margin-bottom: 80px;
+  }
+}
+
+.error {
+  text-align: center;
+  padding: 80px 20px;
+
+  h2 {
+    font-size: 24px;
+    color: #eb5757;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: #89939a;
+    margin-bottom: 24px;
+  }
+
+  button {
+    padding: 12px 24px;
+    background: #313237;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: #5f6368;
+    }
+  }
+}

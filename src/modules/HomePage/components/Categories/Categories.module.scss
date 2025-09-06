@@ -1,0 +1,65 @@
+.categories {
+  margin-bottom: 40px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #313237;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  &__item {
+    background: #fff;
+    border: 1px solid #e2e6e9;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: #313237;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 24px;
+  }
+
+  &__imageContainer {
+    margin-bottom: 24px;
+    text-align: center;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #313237;
+    margin-bottom: 4px;
+  }
+
+  &__count {
+    font-size: 14px;
+    color: #89939a;
+    margin: 0;
+  }
+}
