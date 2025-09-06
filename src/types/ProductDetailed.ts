@@ -12,7 +12,7 @@ export interface ProductDetailed {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: Description;
+  description: Description[];
   screen: string;
   resolution: string;
   processor: string;

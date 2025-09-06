@@ -48,11 +48,11 @@ export const PromoSlider: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setImageIndex(prevIndex => (prevIndex + 1) % images.length);
+      next();
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  });
 
   return (
     <div

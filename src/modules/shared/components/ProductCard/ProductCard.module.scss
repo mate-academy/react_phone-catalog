@@ -39,6 +39,16 @@
     flex: 1;
   }
 
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    transition: color $transition-time;
+
+    &:hover {
+      color: $secondary-accent-color;
+    }
+  }
+
   &__price {
     display: flex;
     flex-direction: row;

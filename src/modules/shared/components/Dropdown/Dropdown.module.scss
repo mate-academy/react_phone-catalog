@@ -34,22 +34,22 @@
     &-open {
       border-color: $primary-color;
     }
-  }
 
-  &--text {
-    flex: 1;
-    text-align: left;
-    color: $primary-color;
-  }
+    &--text {
+      flex: 1;
+      text-align: left;
+      color: $primary-color;
+    }
 
-  &--arrow {
-    margin-left: 8px;
-    transition: transform $transition-time;
-    display: flex;
-    align-items: center;
+    &--arrow {
+      margin-left: 8px;
+      transition: transform $transition-time;
+      display: flex;
+      align-items: center;
 
-    &-open {
-      transform: rotate(180deg);
+      &-open {
+        transform: rotate(180deg);
+      }
     }
   }
 

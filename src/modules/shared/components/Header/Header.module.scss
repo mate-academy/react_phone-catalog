@@ -1,6 +1,7 @@
 @import '@/styles/main';
 
 .headerContainer {
+  grid-area: header;
   position: relative; // Create stacking context for the menu
 }
 
@@ -74,7 +75,6 @@
     &--link {
       cursor: pointer;
       text-decoration: none;
-      position: relative;
       display: flex;
       align-items: center;
       height: 100%;
@@ -89,6 +89,7 @@
       }
 
       &__active {
+        position: relative;
         color: $primary-color;
         text-decoration: none;
         &::after {
@@ -113,6 +114,21 @@
     align-items: center;
     height: 64px;
     flex-shrink: 0;
+
+    &__active {
+      position: relative;
+      color: $primary-color;
+      text-decoration: none;
+      &::after {
+        content: '';
+        background-color: $primary-color;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+      }
+    }
 
     > * {
       width: 64px;

@@ -2,8 +2,10 @@
 @import '@/styles/variables';
 
 .container {
+  grid-area: main;
   display: grid;
   justify-content: stretch;
+  align-content: start;
 
   grid-template-columns: repeat(4, 1fr);
   padding-inline: 16px;
@@ -16,7 +18,7 @@
 
   @include on-desktop {
     grid-template-columns: repeat(24, 1fr);
-    max-width: 1200px;
+    width: 1200px;
     margin-inline: auto;
     padding-inline: 24px;
   }

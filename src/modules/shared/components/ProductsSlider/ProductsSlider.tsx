@@ -142,7 +142,11 @@ export const ProductsSlider: React.FC<Props> = ({
       </div>
       <div ref={containerRef} className={styles.product_carousel__products}>
         {products.map((p: ProductBrief) => (
-          <ProductCard key={p.id} product={p}></ProductCard>
+          <ProductCard
+            key={p.id}
+            product={p}
+            link={`${p.category}/${p.itemId}`}
+          ></ProductCard>
         ))}
       </div>
     </div>

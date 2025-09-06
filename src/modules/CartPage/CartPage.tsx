@@ -78,12 +78,14 @@ export const CartPage: React.FC = () => {
               ></CartItem>
             ))}
           </div>
-          <div className={styles.checkout}>
-            <div className={styles.checkout__text}>
-              <h2 className={styles['checkout__text--sum']}>${totalPrice}</h2>
+          <div className={styles.cart_page__checkout}>
+            <div className={styles['cart_page__checkout--summary']}>
+              <h2 className={styles['cart_page__checkout--price']}>
+                ${totalPrice}
+              </h2>
               <p
                 className={classNames(
-                  styles['checkout__text--qty'],
+                  styles['cart_page__checkout--qty'],
                   'text__small',
                 )}
               >

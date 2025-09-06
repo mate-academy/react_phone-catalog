@@ -54,9 +54,13 @@
 
   &__viewport {
     overflow: hidden; // Hide images outside of visible area
-    width: 100%; // Your carousel visible viewport width
+    width: 100%;
     height: 100%; // Make sure the height fills the banner height
     position: relative;
+
+    @include on-tablet {
+      border-radius: 8px;
+    }
   }
 
   &__wrapper {
@@ -82,9 +86,9 @@
       background: $accent-color;
     }
 
-    @include on-tablet {
-      border-radius: 8px;
-    }
+    // @include on-tablet {
+    //   border-radius: 8px;
+    // }
   }
 
   &__pagination {

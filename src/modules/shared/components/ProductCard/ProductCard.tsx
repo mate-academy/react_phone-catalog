@@ -5,12 +5,14 @@ import '@/styles/main.scss';
 import classNames from 'classnames';
 import { ProductBrief } from '@/types/ProductBrief';
 import { useProducts } from '@/hooks/useProducts';
+import { Link } from 'react-router-dom';
 
 interface Props {
   product: ProductBrief;
+  link: string;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, link }) => {
   const { cart, setCart, favorites, setFavorites } = useProducts();
 
   const inCart = cart.some(p => p.product.id === product.id);
@@ -43,7 +45,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={styles.product_card__title}>
-        <p className="text__body">{product.name}</p>
+        <Link
+          to={link}
+          className={classNames(styles.product_card__link, 'text__body')}
+        >
+          {product.name}
+        </Link>
       </div>
 
       <div className={styles.product_card__price}>

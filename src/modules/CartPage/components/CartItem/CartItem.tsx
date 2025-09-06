@@ -68,7 +68,7 @@ export const CartItem: React.FC<Props> = ({
           <p
             className={classNames(styles['cart_item__qty--text'], 'text__body')}
           >
-            1
+            {qty}
           </p>
           <button
             className="button__circle button__circle--regular"
@@ -77,7 +77,7 @@ export const CartItem: React.FC<Props> = ({
             +
           </button>
         </div>
-        <h3>{itemPrice}</h3>
+        <h3>${itemPrice}</h3>
       </div>
     </div>
   );

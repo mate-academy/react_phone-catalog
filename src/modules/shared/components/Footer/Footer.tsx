@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Footer.module.scss';
 import '@/styles/main.scss';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   return (
@@ -17,37 +18,37 @@ export const Footer: React.FC = () => {
       <nav className={styles.footer__nav}>
         <ul className={styles['footer__nav--list']}>
           <li>
-            <a
-              href="#"
+            <Link
+              to="https://github.com/dminikulin"
               className={classNames(
                 styles['footer__nav--link'],
                 'text__uppercase',
               )}
             >
               GitHub
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
+            <Link
+              to="https://www.linkedin.com/in/dmytro-nikulin-053658372"
               className={classNames(
                 styles['footer__nav--link'],
                 'text__uppercase',
               )}
             >
               Contacts
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
+            <Link
+              to="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
               className={classNames(
                 styles['footer__nav--link'],
                 'text__uppercase',
               )}
             >
               Rights
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

@@ -89,6 +89,7 @@
       }
 
       &:disabled {
+        cursor: default;
         border-color: $elements-color;
         color: $elements-color;
       }
@@ -110,7 +111,7 @@
         border-color: $primary-color;
       }
 
-      &:active {
+      &:active, &.active {
         border-color: $primary-color;
         background-color: $primary-color;
         color: $white-color;

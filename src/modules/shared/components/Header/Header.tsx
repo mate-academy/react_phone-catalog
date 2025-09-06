@@ -4,8 +4,9 @@ import styles from './Header.module.scss';
 import '@/styles/main.scss';
 
 import { Menu } from '../Menu';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useProducts } from '@/hooks/useProducts';
+import classNames from 'classnames';
 
 export const Header: React.FC = () => {
   const { cart, favorites } = useProducts();
@@ -50,7 +51,14 @@ export const Header: React.FC = () => {
             <ul className={styles['header__nav--list']}>
               <li>
                 <NavLink
-                  className={`text__uppercase ${location.pathname === '/' ? styles['header__nav--link__active'] : styles['header__nav--link']}`}
+                  className={classNames(
+                    'text__uppercase',
+                    styles['header__nav--link'],
+                    {
+                      [styles['header__nav--link__active']]:
+                        location.pathname === '/',
+                    },
+                  )}
                   to="/"
                 >
                   Home
@@ -58,7 +66,14 @@ export const Header: React.FC = () => {
               </li>
               <li>
                 <NavLink
-                  className={`text__uppercase ${location.pathname === '/phones' ? styles['header__nav--link__active'] : styles['header__nav--link']}`}
+                  className={classNames(
+                    'text__uppercase',
+                    styles['header__nav--link'],
+                    {
+                      [styles['header__nav--link__active']]:
+                        location.pathname.startsWith('/phones'),
+                    },
+                  )}
                   to="/phones"
                 >
                   Phones
@@ -66,7 +81,14 @@ export const Header: React.FC = () => {
               </li>
               <li>
                 <NavLink
-                  className={`text__uppercase ${location.pathname === '/tablets' ? styles['header__nav--link__active'] : styles['header__nav--link']}`}
+                  className={classNames(
+                    'text__uppercase',
+                    styles['header__nav--link'],
+                    {
+                      [styles['header__nav--link__active']]:
+                        location.pathname.startsWith('/tablets'),
+                    },
+                  )}
                   to="/tablets"
                 >
                   Tablets
@@ -74,7 +96,14 @@ export const Header: React.FC = () => {
               </li>
               <li>
                 <NavLink
-                  className={`text__uppercase ${location.pathname === '/accessories' ? styles['header__nav--link__active'] : styles['header__nav--link']}`}
+                  className={classNames(
+                    'text__uppercase',
+                    styles['header__nav--link'],
+                    {
+                      [styles['header__nav--link__active']]:
+                        location.pathname.startsWith('/accessories'),
+                    },
+                  )}
                   to="/accessories"
                 >
                   Accessories
@@ -97,9 +126,17 @@ export const Header: React.FC = () => {
               )}
             </div>
           </div>
-          <div className={styles['header__icons--desktop']}>
+          <div
+            className={classNames(styles['header__icons--desktop'], {
+              [styles.header__icons__active]:
+                location.pathname.startsWith('/favorites'),
+            })}
+          >
             <div className={styles['header__icons--wrapper']}>
-              <Link to="/favorites" className="icon icon--heart-empty"></Link>
+              <NavLink
+                to="/favorites"
+                className="icon icon--heart-empty"
+              ></NavLink>
               {favorites.length > 0 && (
                 <div className={styles['header__icons--badge']}>
                   {favorites.length}
@@ -107,9 +144,14 @@ export const Header: React.FC = () => {
               )}
             </div>
           </div>
-          <div className={styles['header__icons--desktop']}>
+          <div
+            className={classNames(styles['header__icons--desktop'], {
+              [styles.header__icons__active]:
+                location.pathname.startsWith('/cart'),
+            })}
+          >
             <div className={styles['header__icons--wrapper']}>
-              <Link to="/cart" className="icon icon--cart"></Link>
+              <NavLink to="/cart" className="icon icon--cart"></NavLink>
               {cart.length > 0 && (
                 <div className={styles['header__icons--badge']}>
                   {cart.length > 99 ? '99+' : cart.length}
