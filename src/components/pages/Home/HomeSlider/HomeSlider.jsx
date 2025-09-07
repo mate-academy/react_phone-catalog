@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import './HomeSlider.scss';
 
 const images = [
@@ -19,41 +19,39 @@ export const HomeSlider = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  // 👉 Функції винесені вище (щоб не було "used before defined")
-  const resetAutoSlide = () => {
+  const nextSlide = useCallback(() => {
+    setCurrent(prev => prev + 1);
+    setTransitioning(true);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrent(prev => prev - 1);
+    setTransitioning(true);
+  }, []);
+
+  const startAutoSlide = useCallback(() => {
     clearInterval(intervalRef.current);
-    startAutoSlide();
-  };
-
-  const nextSlide = () => {
-    setCurrent((prev) => prev + 1);
-    setTransitioning(true);
-    resetAutoSlide();
-  };
-
-  const prevSlide = () => {
-    setCurrent((prev) => prev - 1);
-    setTransitioning(true);
-    resetAutoSlide();
-  };
-
-  const startAutoSlide = () => {
     intervalRef.current = setInterval(() => {
-      nextSlide();
+      setCurrent(prev => prev + 1);
+      setTransitioning(true);
     }, 5000);
-  };
+  }, []);
 
-  const goToSlide = (index) => {
-    setCurrent(index + 1);
-    setTransitioning(true);
-    resetAutoSlide();
-  };
+  const goToSlide = useCallback(
+    index => {
+      setCurrent(index + 1);
+      setTransitioning(true);
+      startAutoSlide();
+    },
+    [startAutoSlide],
+  );
 
   const handleTransitionEnd = () => {
     if (current === 0) {
       setTransitioning(false);
       setCurrent(images.length);
     }
+
     if (current === images.length + 1) {
       setTransitioning(false);
       setCurrent(1);
@@ -61,29 +59,33 @@ export const HomeSlider = () => {
   };
 
   // Обробники свайпу
-  const handleTouchStart = (e) => {
+  const handleTouchStart = e => {
     touchStartX.current = e.touches[0].clientX;
   };
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = e => {
     touchEndX.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = () => {
     const diff = touchStartX.current - touchEndX.current;
-    const swipeThreshold = 50; // Мінімальна відстань свайпу в px
+    const swipeThreshold = 50;
 
     if (diff > swipeThreshold) {
       nextSlide();
     } else if (diff < -swipeThreshold) {
       prevSlide();
     }
+
+    startAutoSlide();
   };
 
   useEffect(() => {
     const sliderTrackEl = sliderRef.current;
+
     if (sliderTrackEl) {
       const slide = sliderTrackEl.querySelector('.image-slide');
+
       if (slide) {
         setSlideHeight(slide.clientHeight);
       }
@@ -91,8 +93,10 @@ export const HomeSlider = () => {
 
     const handleResize = () => {
       const sliderTrackElResize = sliderRef.current;
+
       if (sliderTrackElResize) {
         const slide = sliderTrackElResize.querySelector('.image-slide');
+
         if (slide) {
           setSlideHeight(slide.clientHeight);
         }
@@ -106,8 +110,9 @@ export const HomeSlider = () => {
 
   useEffect(() => {
     startAutoSlide();
+
     return () => clearInterval(intervalRef.current);
-  }, []);
+  }, [startAutoSlide]);
 
   return (
     <section className="slider-wrapper-container">
