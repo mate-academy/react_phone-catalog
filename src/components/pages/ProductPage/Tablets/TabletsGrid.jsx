@@ -138,7 +138,7 @@ export const Tablets = () => {
   return (
     <div className="product-list-container">
       <div className="products-list-title-page">
-        <Link to="/">
+        <Link to="/Home">
           <img
             src={`${import.meta.env.BASE_URL}images/icons/Home.svg`}
             className="products-list-icon"

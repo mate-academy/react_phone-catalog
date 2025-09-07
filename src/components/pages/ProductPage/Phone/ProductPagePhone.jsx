@@ -131,7 +131,7 @@ export default function ProductPage() {
     <>
       <div className="product-page-container">
         <div className="products-list-title-page">
-          <Link to="/">
+          <Link to="/Home">
             <img
               src={`${import.meta.env.BASE_URL}images/icons/Home.svg`}
               className="products-list-icon"

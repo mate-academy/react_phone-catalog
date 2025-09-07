@@ -10,7 +10,7 @@ export const Footer = () => {
     <footer className="footer-wrapper">
       <div className="footer">
         <div className="footer-logo">
-          <NavLink to="/">
+          <NavLink to="/Home">
             <img
               onClick={scrollToTop}
               src={`${import.meta.env.BASE_URL}images/icons/Logo_1.png`}
