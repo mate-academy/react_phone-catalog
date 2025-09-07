@@ -89,6 +89,6 @@ export interface Product {
   color: string;
   ram: string;
   year: number;
-  images: string;
+  image: string;
   quantity?: number;
 }
