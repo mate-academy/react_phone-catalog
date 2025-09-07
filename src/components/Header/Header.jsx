@@ -61,7 +61,7 @@ export const Header = () => {
           <NavLink to="/">
             <img
               onClick={scrollToTop}
-              src={`${import.meta.env.BASE_URL}images/icons/Logo_1.png`}
+              src={`${import.meta.env.BASE_URL}/images/icons/Logo_1.png`}
               alt="logo"
               className="logo-img"
             />
@@ -71,12 +71,12 @@ export const Header = () => {
         {/* Бургер-меню для мобільної версії */}
         <button className="burger-button" onClick={handleToggleMenu}>
           <img
-            src={`${import.meta.env.BASE_URL}images/icons/Menu.svg`}
+            src={`${import.meta.env.BASE_URL}/images/icons/Menu.svg`}
             alt="burger"
             className={`burger-icon ${menuOpen ? 'fade-out' : 'fade-in'}`}
           />
           <img
-            src={`${import.meta.env.BASE_URL}images/icons/Close.svg`}
+            src={`${import.meta.env.BASE_URL}/images/icons/Close.svg`}
             alt="close"
             className={`close-icon ${menuOpen ? 'fade-in' : 'fade-out'}`}
           />
@@ -129,7 +129,7 @@ export const Header = () => {
             }`}
           >
             <img
-              src={`${import.meta.env.BASE_URL}images/icons/Favourites.svg`}
+              src={`${import.meta.env.BASE_URL}/images/icons/Favourites.svg`}
               alt="Favourites"
             />
             {totalFavourites > 0 && (
@@ -146,7 +146,7 @@ export const Header = () => {
             }`}
           >
             <img
-              src={`${import.meta.env.BASE_URL}images/icons/Shopping_bag.svg`}
+              src={`${import.meta.env.BASE_URL}/images/icons/Shopping_bag.svg`}
               alt="Shopping_Bag"
             />
             {displayQuantity > 0 && (
@@ -171,7 +171,7 @@ export const Header = () => {
             >
               <div className="icon-wrapper">
                 <img
-                  src={`${import.meta.env.BASE_URL}images/icons/Favourites.svg`}
+                  src={`${import.meta.env.BASE_URL}/images/icons/Favourites.svg`}
                   alt="Favourites"
                 />
                 {totalFavourites > 0 && (
@@ -193,7 +193,7 @@ export const Header = () => {
             >
               <div className="icon-wrapper">
                 <img
-                  src={`${import.meta.env.BASE_URL}images/icons/Shopping_bag.svg`}
+                  src={`${import.meta.env.BASE_URL}/images/icons/Shopping_bag.svg`}
                   alt="Cart"
                 />
                 {displayQuantity > 0 && (
