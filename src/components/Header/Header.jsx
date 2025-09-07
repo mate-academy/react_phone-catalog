@@ -61,7 +61,7 @@ export const Header = () => {
           <NavLink to="/">
             <img
               onClick={scrollToTop}
-              src="/images/icons/Logo_1.png"
+              src={`${import.meta.env.BASE_URL}images/icons/Logo_1.png`}
               alt="logo"
               className="logo-img"
             />
@@ -71,12 +71,12 @@ export const Header = () => {
         {/* Бургер-меню для мобільної версії */}
         <button className="burger-button" onClick={handleToggleMenu}>
           <img
-            src="/images/icons/Menu.svg"
+            src={`${import.meta.env.BASE_URL}images/icons/Menu.svg`}
             alt="burger"
             className={`burger-icon ${menuOpen ? 'fade-out' : 'fade-in'}`}
           />
           <img
-            src="/images/icons/Close.svg"
+            src={`${import.meta.env.BASE_URL}images/icons/Close.svg`}
             alt="close"
             className={`close-icon ${menuOpen ? 'fade-in' : 'fade-out'}`}
           />
@@ -128,7 +128,10 @@ export const Header = () => {
               isActiveLink('/favourites') ? 'active' : ''
             }`}
           >
-            <img src="/images/icons/Favourites.svg" alt="Favourites" />
+            <img
+              src={`${import.meta.env.BASE_URL}images/icons/Favourites.svg`}
+              alt="Favourites"
+            />
             {totalFavourites > 0 && (
               <span className="cart-count-favourites">
                 {totalFavourites === 100 ? '99+' : totalFavourites}
@@ -142,7 +145,10 @@ export const Header = () => {
               isActiveLink('/cart') ? 'active' : ''
             }`}
           >
-            <img src="/images/icons/Shopping_bag.svg" alt="Shopping_Bag" />
+            <img
+              src={`${import.meta.env.BASE_URL}images/icons/Shopping_bag.svg`}
+              alt="Shopping_Bag"
+            />
             {displayQuantity > 0 && (
               <span className="cart-count-cart">
                 {displayQuantity === 100 ? '99+' : displayQuantity}
@@ -164,7 +170,10 @@ export const Header = () => {
               }`}
             >
               <div className="icon-wrapper">
-                <img src="/images/icons/Favourites.svg" alt="Favourites" />
+                <img
+                  src={`${import.meta.env.BASE_URL}images/icons/Favourites.svg`}
+                  alt="Favourites"
+                />
                 {totalFavourites > 0 && (
                   <span className="cart-count-favourites">
                     {totalFavourites === 100 ? '99+' : totalFavourites}
@@ -183,7 +192,10 @@ export const Header = () => {
               className={`icon-box ${isActiveLink('/cart') ? 'active' : ''}`}
             >
               <div className="icon-wrapper">
-                <img src="/images/icons/Shopping_bag.svg" alt="Cart" />
+                <img
+                  src={`${import.meta.env.BASE_URL}images/icons/Shopping_bag.svg`}
+                  alt="Cart"
+                />
                 {displayQuantity > 0 && (
                   <span className="cart-count-cart">
                     {displayQuantity === 100 ? '99+' : displayQuantity}
