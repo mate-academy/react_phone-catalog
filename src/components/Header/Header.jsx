@@ -61,7 +61,7 @@ export const Header = () => {
           <NavLink to="/">
             <img
               onClick={scrollToTop}
-              src={`${process.env.PUBLIC_URL}/images/icons/Logo_1.png`}
+              src="/images/icons/Logo_1.png"
               alt="logo"
               className="logo-img"
             />
@@ -71,12 +71,12 @@ export const Header = () => {
         {/* Бургер-меню для мобільної версії */}
         <button className="burger-button" onClick={handleToggleMenu}>
           <img
-            src={`${process.env.PUBLIC_URL}/images/icons/Menu.svg`}
+            src="/images/icons/Menu.svg"
             alt="burger"
             className={`burger-icon ${menuOpen ? 'fade-out' : 'fade-in'}`}
           />
           <img
-            src={`${process.env.PUBLIC_URL}/images/icons/Close.svg`}
+            src="/images/icons/Close.svg"
             alt="close"
             className={`close-icon ${menuOpen ? 'fade-in' : 'fade-out'}`}
           />
@@ -128,10 +128,7 @@ export const Header = () => {
               isActiveLink('/favourites') ? 'active' : ''
             }`}
           >
-            <img
-              src={`${process.env.PUBLIC_URL}/images/icons/Favourites.svg`}
-              alt="Favourites"
-            />
+            <img src="/images/icons/Favourites.svg" alt="Favourites" />
             {totalFavourites > 0 && (
               <span className="cart-count-favourites">
                 {totalFavourites === 100 ? '99+' : totalFavourites}
@@ -145,10 +142,7 @@ export const Header = () => {
               isActiveLink('/cart') ? 'active' : ''
             }`}
           >
-            <img
-              src={`${process.env.PUBLIC_URL}/images/icons/Shopping_bag.svg`}
-              alt="Shopping_Bag"
-            />
+            <img src="/images/icons/Shopping_bag.svg" alt="Shopping_Bag" />
             {displayQuantity > 0 && (
               <span className="cart-count-cart">
                 {displayQuantity === 100 ? '99+' : displayQuantity}
