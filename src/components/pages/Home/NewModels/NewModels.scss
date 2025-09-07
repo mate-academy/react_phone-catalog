@@ -1,0 +1,125 @@
+@use '../../../../assets/styles/variables' as *;
+
+.swiper-wrapper-custom {
+  max-width: 1200px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  padding: 0 32px;
+  box-sizing: border-box;
+  margin-bottom: 80px;
+  overflow: hidden;
+}
+
+.swiper-button {
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.swiper-wrapper-title {
+  font-weight: $font-bold;
+  font-size: $font-title-small-size;
+  line-height: 41px;
+  letter-spacing: -1px;
+  color: #313237;
+  margin: 0;
+}
+
+.swiper-button-custom {
+  padding: 6px;
+  margin-left: 16px;
+  border: 1px solid #b4bdc3;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border: 1px solid #313237;
+  }
+
+  &.disabled {
+    border-color: #e2e6e9;
+    cursor: not-allowed; /* сірий знак заборони */
+    pointer-events: auto; /* дозволяє курсору показатись */
+    opacity: 0.5;
+
+    &:hover {
+      border: 1px solid #e2e6e9;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.icons_arrow {
+  height: 16px;
+  width: 16px;
+  display: block;
+}
+
+.swiper-slide {
+  width: 280px !important;
+  flex-shrink: 0;
+  flex-basis: 280px !important;
+}
+
+/* Адаптація для планшетів */
+@media (max-width: 1199px) and (min-width: 640px) {
+  .swiper-wrapper-custom {
+    padding: 0;
+    margin-bottom: 50px;
+  }
+
+  .swiper-button {
+    margin-bottom: 24px;
+  }
+}
+
+/* Адаптація для мобільних 320–639px */
+@media (max-width: 639px) {
+  .swiper-wrapper-custom {
+    max-width: 639px;
+    width: calc(100% - 40px);
+    padding: 0;
+    margin-bottom: 50px;
+  }
+
+  .swiper-slide {
+    width: auto !important;
+    max-width: 220px;
+    box-sizing: border-box;
+  }
+
+  .product_card_link {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .swiper-button-box {
+    display: flex;
+  }
+
+  .new-models-hot-price {
+    .product_card_container {
+      min-height: 320px;
+      width: 168px;
+    }
+
+    .product_card_foto img {
+      height: 129px;
+    }
+
+    .product_card_price {
+      font-size: $text-price-size;
+    }
+
+    .product_card_old_price {
+      font-size: 18px;
+    }
+
+    .product_card_button_add {
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+@use '../../../../assets/styles/variables' as *;
+
+.category-section {
+  color: $main-color;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding: 0 32px;
+  margin-bottom: 80px;
+}
+
+.category-section-title {
+  font-weight: $font-bold;
+  font-size: $font-title-small-size;
+  line-height: 41px;
+  letter-spacing: -1px;
+  color: $main-color;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+
+.category-card {
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.category-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  overflow: hidden;
+}
+
+.category-image img {
+  max-width: 80%;
+  height: auto;
+  transform-origin: right bottom; /* точка збільшення */
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.category-info {
+  padding-top: 24px;
+}
+
+.category-info h3 {
+  font-size: 20px;
+  font-weight: $font-semi-bold;
+  margin: 0 0 5px;
+  color: $main-color;
+}
+
+.category-info p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: $font-regular;
+  margin-bottom: 4px;
+  color: $secondary-color;
+  text-decoration: none;
+}
+
+
+/* Адаптація для планшетів */
+@media (max-width: 1199px) and (min-width: 640px) {
+  .category-section {
+    padding: 0 24px;
+    margin-bottom: 64px;
+  }
+
+  .category-section-title {
+    margin-bottom: 24px;
+  }
+}
+
+/* Адаптація для мобільних 320–639px */
+@media (max-width: 639px) {
+  .category-section {
+    padding: 0 16px;
+    margin-bottom: 50px;
+  }
+
+  .category-section-title {
+    margin-bottom: 24px;
+  }
+  .category-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

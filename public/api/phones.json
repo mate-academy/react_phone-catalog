@@ -2,6 +2,8 @@
   {
     "id": "apple-iphone-11-128gb-black",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 128GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -10,12 +12,13 @@
     "priceDiscount": 1050,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "black",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/black/00.webp",
-      "img/phones/apple-iphone-11/black/01.webp",
-      "img/phones/apple-iphone-11/black/02.webp",
-      "img/phones/apple-iphone-11/black/03.webp",
-      "img/phones/apple-iphone-11/black/04.webp"
+      "images/phones/apple-iphone-11/black/00.webp",
+      "images/phones/apple-iphone-11/black/01.webp",
+      "images/phones/apple-iphone-11/black/02.webp",
+      "images/phones/apple-iphone-11/black/03.webp",
+      "images/phones/apple-iphone-11/black/04.webp"
     ],
     "description": [
       {
@@ -50,6 +53,8 @@
   {
     "id": "apple-iphone-11-128gb-green",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 128GB Green",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -58,12 +63,13 @@
     "priceDiscount": 1050,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "green",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/green/00.webp",
-      "img/phones/apple-iphone-11/green/01.webp",
-      "img/phones/apple-iphone-11/green/02.webp",
-      "img/phones/apple-iphone-11/green/03.webp",
-      "img/phones/apple-iphone-11/green/04.webp"
+      "images/phones/apple-iphone-11/green/00.webp",
+      "images/phones/apple-iphone-11/green/01.webp",
+      "images/phones/apple-iphone-11/green/02.webp",
+      "images/phones/apple-iphone-11/green/03.webp",
+      "images/phones/apple-iphone-11/green/04.webp"
     ],
     "description": [
       {
@@ -98,6 +104,8 @@
   {
     "id": "apple-iphone-11-128gb-purple",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 128GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -106,12 +114,13 @@
     "priceDiscount": 1050,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "purple",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/purple/00.webp",
-      "img/phones/apple-iphone-11/purple/01.webp",
-      "img/phones/apple-iphone-11/purple/02.webp",
-      "img/phones/apple-iphone-11/purple/03.webp",
-      "img/phones/apple-iphone-11/purple/04.webp"
+      "images/phones/apple-iphone-11/purple/00.webp",
+      "images/phones/apple-iphone-11/purple/01.webp",
+      "images/phones/apple-iphone-11/purple/02.webp",
+      "images/phones/apple-iphone-11/purple/03.webp",
+      "images/phones/apple-iphone-11/purple/04.webp"
     ],
     "description": [
       {
@@ -146,6 +155,8 @@
   {
     "id": "apple-iphone-11-128gb-red",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 128GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -154,12 +165,13 @@
     "priceDiscount": 1050,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "red",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/red/00.webp",
-      "img/phones/apple-iphone-11/red/01.webp",
-      "img/phones/apple-iphone-11/red/02.webp",
-      "img/phones/apple-iphone-11/red/03.webp",
-      "img/phones/apple-iphone-11/red/04.webp"
+      "images/phones/apple-iphone-11/red/00.webp",
+      "images/phones/apple-iphone-11/red/01.webp",
+      "images/phones/apple-iphone-11/red/02.webp",
+      "images/phones/apple-iphone-11/red/03.webp",
+      "images/phones/apple-iphone-11/red/04.webp"
     ],
     "description": [
       {
@@ -194,6 +206,8 @@
   {
     "id": "apple-iphone-11-128gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 128GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -202,12 +216,13 @@
     "priceDiscount": 1050,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/white/00.webp",
-      "img/phones/apple-iphone-11/white/01.webp",
-      "img/phones/apple-iphone-11/white/02.webp",
-      "img/phones/apple-iphone-11/white/03.webp",
-      "img/phones/apple-iphone-11/white/04.webp"
+      "images/phones/apple-iphone-11/white/00.webp",
+      "images/phones/apple-iphone-11/white/01.webp",
+      "images/phones/apple-iphone-11/white/02.webp",
+      "images/phones/apple-iphone-11/white/03.webp",
+      "images/phones/apple-iphone-11/white/04.webp"
     ],
     "description": [
       {
@@ -242,6 +257,8 @@
   {
     "id": "apple-iphone-11-128gb-yellow",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 128GB Yellow",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -250,12 +267,13 @@
     "priceDiscount": 1050,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "yellow",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/yellow/00.webp",
-      "img/phones/apple-iphone-11/yellow/01.webp",
-      "img/phones/apple-iphone-11/yellow/02.webp",
-      "img/phones/apple-iphone-11/yellow/03.webp",
-      "img/phones/apple-iphone-11/yellow/04.webp"
+      "images/phones/apple-iphone-11/yellow/00.webp",
+      "images/phones/apple-iphone-11/yellow/01.webp",
+      "images/phones/apple-iphone-11/yellow/02.webp",
+      "images/phones/apple-iphone-11/yellow/03.webp",
+      "images/phones/apple-iphone-11/yellow/04.webp"
     ],
     "description": [
       {
@@ -290,6 +308,8 @@
   {
     "id": "apple-iphone-11-256gb-black",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 256GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -298,12 +318,13 @@
     "priceDiscount": 1115,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "black",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/black/00.webp",
-      "img/phones/apple-iphone-11/black/01.webp",
-      "img/phones/apple-iphone-11/black/02.webp",
-      "img/phones/apple-iphone-11/black/03.webp",
-      "img/phones/apple-iphone-11/black/04.webp"
+      "images/phones/apple-iphone-11/black/00.webp",
+      "images/phones/apple-iphone-11/black/01.webp",
+      "images/phones/apple-iphone-11/black/02.webp",
+      "images/phones/apple-iphone-11/black/03.webp",
+      "images/phones/apple-iphone-11/black/04.webp"
     ],
     "description": [
       {
@@ -338,6 +359,8 @@
   {
     "id": "apple-iphone-11-256gb-green",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 256GB Green",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -346,12 +369,13 @@
     "priceDiscount": 1115,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "green",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/green/00.webp",
-      "img/phones/apple-iphone-11/green/01.webp",
-      "img/phones/apple-iphone-11/green/02.webp",
-      "img/phones/apple-iphone-11/green/03.webp",
-      "img/phones/apple-iphone-11/green/04.webp"
+      "images/phones/apple-iphone-11/green/00.webp",
+      "images/phones/apple-iphone-11/green/01.webp",
+      "images/phones/apple-iphone-11/green/02.webp",
+      "images/phones/apple-iphone-11/green/03.webp",
+      "images/phones/apple-iphone-11/green/04.webp"
     ],
     "description": [
       {
@@ -386,6 +410,8 @@
   {
     "id": "apple-iphone-11-256gb-purple",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 256GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -394,12 +420,13 @@
     "priceDiscount": 1115,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "purple",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/purple/00.webp",
-      "img/phones/apple-iphone-11/purple/01.webp",
-      "img/phones/apple-iphone-11/purple/02.webp",
-      "img/phones/apple-iphone-11/purple/03.webp",
-      "img/phones/apple-iphone-11/purple/04.webp"
+      "images/phones/apple-iphone-11/purple/00.webp",
+      "images/phones/apple-iphone-11/purple/01.webp",
+      "images/phones/apple-iphone-11/purple/02.webp",
+      "images/phones/apple-iphone-11/purple/03.webp",
+      "images/phones/apple-iphone-11/purple/04.webp"
     ],
     "description": [
       {
@@ -434,6 +461,8 @@
   {
     "id": "apple-iphone-11-256gb-red",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 256GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -442,12 +471,13 @@
     "priceDiscount": 1115,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "red",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/red/00.webp",
-      "img/phones/apple-iphone-11/red/01.webp",
-      "img/phones/apple-iphone-11/red/02.webp",
-      "img/phones/apple-iphone-11/red/03.webp",
-      "img/phones/apple-iphone-11/red/04.webp"
+      "images/phones/apple-iphone-11/red/00.webp",
+      "images/phones/apple-iphone-11/red/01.webp",
+      "images/phones/apple-iphone-11/red/02.webp",
+      "images/phones/apple-iphone-11/red/03.webp",
+      "images/phones/apple-iphone-11/red/04.webp"
     ],
     "description": [
       {
@@ -482,6 +512,8 @@
   {
     "id": "apple-iphone-11-256gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 256GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -490,12 +522,13 @@
     "priceDiscount": 1115,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/white/00.webp",
-      "img/phones/apple-iphone-11/white/01.webp",
-      "img/phones/apple-iphone-11/white/02.webp",
-      "img/phones/apple-iphone-11/white/03.webp",
-      "img/phones/apple-iphone-11/white/04.webp"
+      "images/phones/apple-iphone-11/white/00.webp",
+      "images/phones/apple-iphone-11/white/01.webp",
+      "images/phones/apple-iphone-11/white/02.webp",
+      "images/phones/apple-iphone-11/white/03.webp",
+      "images/phones/apple-iphone-11/white/04.webp"
     ],
     "description": [
       {
@@ -530,6 +563,8 @@
   {
     "id": "apple-iphone-11-256gb-yellow",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 256GB Yellow",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -538,12 +573,13 @@
     "priceDiscount": 1115,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "yellow",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/yellow/00.webp",
-      "img/phones/apple-iphone-11/yellow/01.webp",
-      "img/phones/apple-iphone-11/yellow/02.webp",
-      "img/phones/apple-iphone-11/yellow/03.webp",
-      "img/phones/apple-iphone-11/yellow/04.webp"
+      "images/phones/apple-iphone-11/yellow/00.webp",
+      "images/phones/apple-iphone-11/yellow/01.webp",
+      "images/phones/apple-iphone-11/yellow/02.webp",
+      "images/phones/apple-iphone-11/yellow/03.webp",
+      "images/phones/apple-iphone-11/yellow/04.webp"
     ],
     "description": [
       {
@@ -578,6 +614,8 @@
   {
     "id": "apple-iphone-11-64gb-black",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 64GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -586,12 +624,13 @@
     "priceDiscount": 880,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "black",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/black/00.webp",
-      "img/phones/apple-iphone-11/black/01.webp",
-      "img/phones/apple-iphone-11/black/02.webp",
-      "img/phones/apple-iphone-11/black/03.webp",
-      "img/phones/apple-iphone-11/black/04.webp"
+      "images/phones/apple-iphone-11/black/00.webp",
+      "images/phones/apple-iphone-11/black/01.webp",
+      "images/phones/apple-iphone-11/black/02.webp",
+      "images/phones/apple-iphone-11/black/03.webp",
+      "images/phones/apple-iphone-11/black/04.webp"
     ],
     "description": [
       {
@@ -626,6 +665,8 @@
   {
     "id": "apple-iphone-11-64gb-green",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 64GB Green",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -634,12 +675,13 @@
     "priceDiscount": 880,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "green",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/green/00.webp",
-      "img/phones/apple-iphone-11/green/01.webp",
-      "img/phones/apple-iphone-11/green/02.webp",
-      "img/phones/apple-iphone-11/green/03.webp",
-      "img/phones/apple-iphone-11/green/04.webp"
+      "images/phones/apple-iphone-11/green/00.webp",
+      "images/phones/apple-iphone-11/green/01.webp",
+      "images/phones/apple-iphone-11/green/02.webp",
+      "images/phones/apple-iphone-11/green/03.webp",
+      "images/phones/apple-iphone-11/green/04.webp"
     ],
     "description": [
       {
@@ -674,6 +716,8 @@
   {
     "id": "apple-iphone-11-64gb-purple",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 64GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -682,12 +726,13 @@
     "priceDiscount": 880,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "purple",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/purple/00.webp",
-      "img/phones/apple-iphone-11/purple/01.webp",
-      "img/phones/apple-iphone-11/purple/02.webp",
-      "img/phones/apple-iphone-11/purple/03.webp",
-      "img/phones/apple-iphone-11/purple/04.webp"
+      "images/phones/apple-iphone-11/purple/00.webp",
+      "images/phones/apple-iphone-11/purple/01.webp",
+      "images/phones/apple-iphone-11/purple/02.webp",
+      "images/phones/apple-iphone-11/purple/03.webp",
+      "images/phones/apple-iphone-11/purple/04.webp"
     ],
     "description": [
       {
@@ -722,6 +767,8 @@
   {
     "id": "apple-iphone-11-64gb-red",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 64GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -730,12 +777,13 @@
     "priceDiscount": 880,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "red",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/red/00.webp",
-      "img/phones/apple-iphone-11/red/01.webp",
-      "img/phones/apple-iphone-11/red/02.webp",
-      "img/phones/apple-iphone-11/red/03.webp",
-      "img/phones/apple-iphone-11/red/04.webp"
+      "images/phones/apple-iphone-11/red/00.webp",
+      "images/phones/apple-iphone-11/red/01.webp",
+      "images/phones/apple-iphone-11/red/02.webp",
+      "images/phones/apple-iphone-11/red/03.webp",
+      "images/phones/apple-iphone-11/red/04.webp"
     ],
     "description": [
       {
@@ -770,6 +818,8 @@
   {
     "id": "apple-iphone-11-64gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 64GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -778,12 +828,13 @@
     "priceDiscount": 880,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/white/00.webp",
-      "img/phones/apple-iphone-11/white/01.webp",
-      "img/phones/apple-iphone-11/white/02.webp",
-      "img/phones/apple-iphone-11/white/03.webp",
-      "img/phones/apple-iphone-11/white/04.webp"
+      "images/phones/apple-iphone-11/white/00.webp",
+      "images/phones/apple-iphone-11/white/01.webp",
+      "images/phones/apple-iphone-11/white/02.webp",
+      "images/phones/apple-iphone-11/white/03.webp",
+      "images/phones/apple-iphone-11/white/04.webp"
     ],
     "description": [
       {
@@ -818,6 +869,8 @@
   {
     "id": "apple-iphone-11-64gb-yellow",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11",
     "name": "Apple iPhone 11 64GB Yellow",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -826,12 +879,13 @@
     "priceDiscount": 880,
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "yellow",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11/yellow/00.webp",
-      "img/phones/apple-iphone-11/yellow/01.webp",
-      "img/phones/apple-iphone-11/yellow/02.webp",
-      "img/phones/apple-iphone-11/yellow/03.webp",
-      "img/phones/apple-iphone-11/yellow/04.webp"
+      "images/phones/apple-iphone-11/yellow/00.webp",
+      "images/phones/apple-iphone-11/yellow/01.webp",
+      "images/phones/apple-iphone-11/yellow/02.webp",
+      "images/phones/apple-iphone-11/yellow/03.webp",
+      "images/phones/apple-iphone-11/yellow/04.webp"
     ],
     "description": [
       {
@@ -866,6 +920,8 @@
   {
     "id": "apple-iphone-11-pro-256gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 256GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -874,10 +930,11 @@
     "priceDiscount": 1570,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/gold/00.webp",
-      "img/phones/apple-iphone-11-pro/gold/01.webp",
-      "img/phones/apple-iphone-11-pro/gold/02.webp"
+      "images/phones/apple-iphone-11-pro/gold/00.webp",
+      "images/phones/apple-iphone-11-pro/gold/01.webp",
+      "images/phones/apple-iphone-11-pro/gold/02.webp"
     ],
     "description": [
       {
@@ -912,6 +969,8 @@
   {
     "id": "apple-iphone-11-pro-256gb-midnightgreen",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 256GB Midnight green",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -920,11 +979,12 @@
     "priceDiscount": 1570,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/midnightgreen/00.webp",
-      "img/phones/apple-iphone-11-pro/midnightgreen/01.webp",
-      "img/phones/apple-iphone-11-pro/midnightgreen/02.webp",
-      "img/phones/apple-iphone-11-pro/midnightgreen/03.webp"
+      "images/phones/apple-iphone-11-pro/midnightgreen/00.webp",
+      "images/phones/apple-iphone-11-pro/midnightgreen/01.webp",
+      "images/phones/apple-iphone-11-pro/midnightgreen/02.webp",
+      "images/phones/apple-iphone-11-pro/midnightgreen/03.webp"
     ],
     "description": [
       {
@@ -959,6 +1019,8 @@
   {
     "id": "apple-iphone-11-pro-256gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 256GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -967,10 +1029,11 @@
     "priceDiscount": 1570,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/silver/00.webp",
-      "img/phones/apple-iphone-11-pro/silver/01.webp",
-      "img/phones/apple-iphone-11-pro/silver/02.webp"
+      "images/phones/apple-iphone-11-pro/silver/00.webp",
+      "images/phones/apple-iphone-11-pro/silver/01.webp",
+      "images/phones/apple-iphone-11-pro/silver/02.webp"
     ],
     "description": [
       {
@@ -1005,6 +1068,8 @@
   {
     "id": "apple-iphone-11-pro-256gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 256GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1013,10 +1078,11 @@
     "priceDiscount": 1570,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/spacegray/00.webp",
-      "img/phones/apple-iphone-11-pro/spacegray/01.webp",
-      "img/phones/apple-iphone-11-pro/spacegray/02.webp"
+      "images/phones/apple-iphone-11-pro/spacegray/00.webp",
+      "images/phones/apple-iphone-11-pro/spacegray/01.webp",
+      "images/phones/apple-iphone-11-pro/spacegray/02.webp"
     ],
     "description": [
       {
@@ -1051,6 +1117,8 @@
   {
     "id": "apple-iphone-11-pro-512gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 512GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1059,10 +1127,11 @@
     "priceDiscount": 1780,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/gold/00.webp",
-      "img/phones/apple-iphone-11-pro/gold/01.webp",
-      "img/phones/apple-iphone-11-pro/gold/02.webp"
+      "images/phones/apple-iphone-11-pro/gold/00.webp",
+      "images/phones/apple-iphone-11-pro/gold/01.webp",
+      "images/phones/apple-iphone-11-pro/gold/02.webp"
     ],
     "description": [
       {
@@ -1097,6 +1166,8 @@
   {
     "id": "apple-iphone-11-pro-512gb-midnightgreen",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 512GB Midnight green",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1105,11 +1176,12 @@
     "priceDiscount": 1780,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/midnightgreen/00.webp",
-      "img/phones/apple-iphone-11-pro/midnightgreen/01.webp",
-      "img/phones/apple-iphone-11-pro/midnightgreen/02.webp",
-      "img/phones/apple-iphone-11-pro/midnightgreen/03.webp"
+      "images/phones/apple-iphone-11-pro/midnightgreen/00.webp",
+      "images/phones/apple-iphone-11-pro/midnightgreen/01.webp",
+      "images/phones/apple-iphone-11-pro/midnightgreen/02.webp",
+      "images/phones/apple-iphone-11-pro/midnightgreen/03.webp"
     ],
     "description": [
       {
@@ -1144,6 +1216,8 @@
   {
     "id": "apple-iphone-11-pro-512gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 512GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1152,10 +1226,11 @@
     "priceDiscount": 1780,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/silver/00.webp",
-      "img/phones/apple-iphone-11-pro/silver/01.webp",
-      "img/phones/apple-iphone-11-pro/silver/02.webp"
+      "images/phones/apple-iphone-11-pro/silver/00.webp",
+      "images/phones/apple-iphone-11-pro/silver/01.webp",
+      "images/phones/apple-iphone-11-pro/silver/02.webp"
     ],
     "description": [
       {
@@ -1190,6 +1265,8 @@
   {
     "id": "apple-iphone-11-pro-512gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 512GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1198,10 +1275,11 @@
     "priceDiscount": 1780,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/spacegray/00.webp",
-      "img/phones/apple-iphone-11-pro/spacegray/01.webp",
-      "img/phones/apple-iphone-11-pro/spacegray/02.webp"
+      "images/phones/apple-iphone-11-pro/spacegray/00.webp",
+      "images/phones/apple-iphone-11-pro/spacegray/01.webp",
+      "images/phones/apple-iphone-11-pro/spacegray/02.webp"
     ],
     "description": [
       {
@@ -1236,6 +1314,8 @@
   {
     "id": "apple-iphone-11-pro-64gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 64GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1244,10 +1324,11 @@
     "priceDiscount": 1270,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/gold/00.webp",
-      "img/phones/apple-iphone-11-pro/gold/01.webp",
-      "img/phones/apple-iphone-11-pro/gold/02.webp"
+      "images/phones/apple-iphone-11-pro/gold/00.webp",
+      "images/phones/apple-iphone-11-pro/gold/01.webp",
+      "images/phones/apple-iphone-11-pro/gold/02.webp"
     ],
     "description": [
       {
@@ -1282,6 +1363,8 @@
   {
     "id": "apple-iphone-11-pro-64gb-midnightgreen",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 64GB Midnight green",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1290,11 +1373,12 @@
     "priceDiscount": 1270,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/midnightgreen/00.webp",
-      "img/phones/apple-iphone-11-pro/midnightgreen/01.webp",
-      "img/phones/apple-iphone-11-pro/midnightgreen/02.webp",
-      "img/phones/apple-iphone-11-pro/midnightgreen/03.webp"
+      "images/phones/apple-iphone-11-pro/midnightgreen/00.webp",
+      "images/phones/apple-iphone-11-pro/midnightgreen/01.webp",
+      "images/phones/apple-iphone-11-pro/midnightgreen/02.webp",
+      "images/phones/apple-iphone-11-pro/midnightgreen/03.webp"
     ],
     "description": [
       {
@@ -1329,6 +1413,8 @@
   {
     "id": "apple-iphone-11-pro-64gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 64GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1337,10 +1423,11 @@
     "priceDiscount": 1270,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/silver/00.webp",
-      "img/phones/apple-iphone-11-pro/silver/01.webp",
-      "img/phones/apple-iphone-11-pro/silver/02.webp"
+      "images/phones/apple-iphone-11-pro/silver/00.webp",
+      "images/phones/apple-iphone-11-pro/silver/01.webp",
+      "images/phones/apple-iphone-11-pro/silver/02.webp"
     ],
     "description": [
       {
@@ -1375,6 +1462,8 @@
   {
     "id": "apple-iphone-11-pro-64gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 64GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1383,10 +1472,11 @@
     "priceDiscount": 1270,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro/spacegray/00.webp",
-      "img/phones/apple-iphone-11-pro/spacegray/01.webp",
-      "img/phones/apple-iphone-11-pro/spacegray/02.webp"
+      "images/phones/apple-iphone-11-pro/spacegray/00.webp",
+      "images/phones/apple-iphone-11-pro/spacegray/01.webp",
+      "images/phones/apple-iphone-11-pro/spacegray/02.webp"
     ],
     "description": [
       {
@@ -1421,6 +1511,8 @@
   {
     "id": "apple-iphone-11-pro-max-256gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 256GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1429,10 +1521,11 @@
     "priceDiscount": 1680,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/gold/00.webp",
-      "img/phones/apple-iphone-11-pro-max/gold/01.webp",
-      "img/phones/apple-iphone-11-pro-max/gold/02.webp"
+      "images/phones/apple-iphone-11-pro-max/gold/00.webp",
+      "images/phones/apple-iphone-11-pro-max/gold/01.webp",
+      "images/phones/apple-iphone-11-pro-max/gold/02.webp"
     ],
     "description": [
       {
@@ -1467,6 +1560,8 @@
   {
     "id": "apple-iphone-11-pro-max-256gb-midnightgreen",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 256GB Midnightgreen",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1475,10 +1570,11 @@
     "priceDiscount": 1680,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
-      "img/phones/apple-iphone-11-pro-max/midnightgreen/01.webp",
-      "img/phones/apple-iphone-11-pro-max/midnightgreen/02.webp"
+      "images/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
+      "images/phones/apple-iphone-11-pro-max/midnightgreen/01.webp",
+      "images/phones/apple-iphone-11-pro-max/midnightgreen/02.webp"
     ],
     "description": [
       {
@@ -1513,6 +1609,8 @@
   {
     "id": "apple-iphone-11-pro-max-256gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 256GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1521,10 +1619,11 @@
     "priceDiscount": 1680,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/silver/00.webp",
-      "img/phones/apple-iphone-11-pro-max/silver/01.webp",
-      "img/phones/apple-iphone-11-pro-max/silver/02.webp"
+      "images/phones/apple-iphone-11-pro-max/silver/00.webp",
+      "images/phones/apple-iphone-11-pro-max/silver/01.webp",
+      "images/phones/apple-iphone-11-pro-max/silver/02.webp"
     ],
     "description": [
       {
@@ -1559,6 +1658,8 @@
   {
     "id": "apple-iphone-11-pro-max-256gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 256GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1567,10 +1668,11 @@
     "priceDiscount": 1680,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/spacegray/00.webp",
-      "img/phones/apple-iphone-11-pro-max/spacegray/01.webp",
-      "img/phones/apple-iphone-11-pro-max/spacegray/02.webp"
+      "images/phones/apple-iphone-11-pro-max/spacegray/00.webp",
+      "images/phones/apple-iphone-11-pro-max/spacegray/01.webp",
+      "images/phones/apple-iphone-11-pro-max/spacegray/02.webp"
     ],
     "description": [
       {
@@ -1605,6 +1707,8 @@
   {
     "id": "apple-iphone-11-pro-max-512gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 512GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1613,10 +1717,11 @@
     "priceDiscount": 1930,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/gold/00.webp",
-      "img/phones/apple-iphone-11-pro-max/gold/01.webp",
-      "img/phones/apple-iphone-11-pro-max/gold/02.webp"
+      "images/phones/apple-iphone-11-pro-max/gold/00.webp",
+      "images/phones/apple-iphone-11-pro-max/gold/01.webp",
+      "images/phones/apple-iphone-11-pro-max/gold/02.webp"
     ],
     "description": [
       {
@@ -1651,6 +1756,8 @@
   {
     "id": "apple-iphone-11-pro-max-512gb-midnightgreen",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 512GB Midnightgreen",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1659,10 +1766,11 @@
     "priceDiscount": 1930,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
-      "img/phones/apple-iphone-11-pro-max/midnightgreen/01.webp",
-      "img/phones/apple-iphone-11-pro-max/midnightgreen/02.webp"
+      "images/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
+      "images/phones/apple-iphone-11-pro-max/midnightgreen/01.webp",
+      "images/phones/apple-iphone-11-pro-max/midnightgreen/02.webp"
     ],
     "description": [
       {
@@ -1697,6 +1805,8 @@
   {
     "id": "apple-iphone-11-pro-max-512gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 512GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1705,10 +1815,11 @@
     "priceDiscount": 1930,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/silver/00.webp",
-      "img/phones/apple-iphone-11-pro-max/silver/01.webp",
-      "img/phones/apple-iphone-11-pro-max/silver/02.webp"
+      "images/phones/apple-iphone-11-pro-max/silver/00.webp",
+      "images/phones/apple-iphone-11-pro-max/silver/01.webp",
+      "images/phones/apple-iphone-11-pro-max/silver/02.webp"
     ],
     "description": [
       {
@@ -1743,6 +1854,8 @@
   {
     "id": "apple-iphone-11-pro-max-512gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 512GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1751,10 +1864,11 @@
     "priceDiscount": 1930,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/spacegray/00.webp",
-      "img/phones/apple-iphone-11-pro-max/spacegray/01.webp",
-      "img/phones/apple-iphone-11-pro-max/spacegray/02.webp"
+      "images/phones/apple-iphone-11-pro-max/spacegray/00.webp",
+      "images/phones/apple-iphone-11-pro-max/spacegray/01.webp",
+      "images/phones/apple-iphone-11-pro-max/spacegray/02.webp"
     ],
     "description": [
       {
@@ -1789,6 +1903,8 @@
   {
     "id": "apple-iphone-11-pro-max-64gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 64GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1797,10 +1913,11 @@
     "priceDiscount": 1400,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/gold/00.webp",
-      "img/phones/apple-iphone-11-pro-max/gold/01.webp",
-      "img/phones/apple-iphone-11-pro-max/gold/02.webp"
+      "images/phones/apple-iphone-11-pro-max/gold/00.webp",
+      "images/phones/apple-iphone-11-pro-max/gold/01.webp",
+      "images/phones/apple-iphone-11-pro-max/gold/02.webp"
     ],
     "description": [
       {
@@ -1835,6 +1952,8 @@
   {
     "id": "apple-iphone-11-pro-max-64gb-midnightgreen",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 64GB Midnightgreen",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1843,10 +1962,11 @@
     "priceDiscount": 1400,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
-      "img/phones/apple-iphone-11-pro-max/midnightgreen/01.webp",
-      "img/phones/apple-iphone-11-pro-max/midnightgreen/02.webp"
+      "images/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
+      "images/phones/apple-iphone-11-pro-max/midnightgreen/01.webp",
+      "images/phones/apple-iphone-11-pro-max/midnightgreen/02.webp"
     ],
     "description": [
       {
@@ -1881,6 +2001,8 @@
   {
     "id": "apple-iphone-11-pro-max-64gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 64GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1889,10 +2011,11 @@
     "priceDiscount": 1400,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/silver/00.webp",
-      "img/phones/apple-iphone-11-pro-max/silver/01.webp",
-      "img/phones/apple-iphone-11-pro-max/silver/02.webp"
+      "images/phones/apple-iphone-11-pro-max/silver/00.webp",
+      "images/phones/apple-iphone-11-pro-max/silver/01.webp",
+      "images/phones/apple-iphone-11-pro-max/silver/02.webp"
     ],
     "description": [
       {
@@ -1927,6 +2050,8 @@
   {
     "id": "apple-iphone-11-pro-max-64gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 64GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
@@ -1935,10 +2060,11 @@
     "priceDiscount": 1400,
     "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-11-pro-max/spacegray/00.webp",
-      "img/phones/apple-iphone-11-pro-max/spacegray/01.webp",
-      "img/phones/apple-iphone-11-pro-max/spacegray/02.webp"
+      "images/phones/apple-iphone-11-pro-max/spacegray/00.webp",
+      "images/phones/apple-iphone-11-pro-max/spacegray/01.webp",
+      "images/phones/apple-iphone-11-pro-max/spacegray/02.webp"
     ],
     "description": [
       {
@@ -1973,6 +2099,8 @@
   {
     "id": "apple-iphone-7-32gb-black",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-7",
     "name": "Apple iPhone 7 32GB Black",
     "capacityAvailable": ["32GB"],
@@ -1981,12 +2109,13 @@
     "priceDiscount": 375,
     "colorsAvailable": ["black", "rosegold", "gold", "silver"],
     "color": "black",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-7/black/00.webp",
-      "img/phones/apple-iphone-7/black/01.webp",
-      "img/phones/apple-iphone-7/black/02.webp",
-      "img/phones/apple-iphone-7/black/03.webp",
-      "img/phones/apple-iphone-7/black/04.webp"
+      "images/phones/apple-iphone-7/black/00.webp",
+      "images/phones/apple-iphone-7/black/01.webp",
+      "images/phones/apple-iphone-7/black/02.webp",
+      "images/phones/apple-iphone-7/black/03.webp",
+      "images/phones/apple-iphone-7/black/04.webp"
     ],
     "description": [
       {
@@ -2021,6 +2150,8 @@
   {
     "id": "apple-iphone-7-32gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-7",
     "name": "Apple iPhone 7 32GB Gold",
     "capacityAvailable": ["32GB"],
@@ -2029,12 +2160,13 @@
     "priceDiscount": 375,
     "colorsAvailable": ["black", "rosegold", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-7/gold/00.webp",
-      "img/phones/apple-iphone-7/gold/01.webp",
-      "img/phones/apple-iphone-7/gold/02.webp",
-      "img/phones/apple-iphone-7/gold/03.webp",
-      "img/phones/apple-iphone-7/gold/04.webp"
+      "images/phones/apple-iphone-7/gold/00.webp",
+      "images/phones/apple-iphone-7/gold/01.webp",
+      "images/phones/apple-iphone-7/gold/02.webp",
+      "images/phones/apple-iphone-7/gold/03.webp",
+      "images/phones/apple-iphone-7/gold/04.webp"
     ],
     "description": [
       {
@@ -2069,6 +2201,8 @@
   {
     "id": "apple-iphone-7-32gb-rosegold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-7",
     "name": "Apple iPhone 7 32GB Rosegold",
     "capacityAvailable": ["32GB"],
@@ -2077,12 +2211,13 @@
     "priceDiscount": 375,
     "colorsAvailable": ["black", "rosegold", "gold", "silver"],
     "color": "rosegold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-7/rosegold/00.webp",
-      "img/phones/apple-iphone-7/rosegold/01.webp",
-      "img/phones/apple-iphone-7/rosegold/02.webp",
-      "img/phones/apple-iphone-7/rosegold/03.webp",
-      "img/phones/apple-iphone-7/rosegold/04.webp"
+      "images/phones/apple-iphone-7/rosegold/00.webp",
+      "images/phones/apple-iphone-7/rosegold/01.webp",
+      "images/phones/apple-iphone-7/rosegold/02.webp",
+      "images/phones/apple-iphone-7/rosegold/03.webp",
+      "images/phones/apple-iphone-7/rosegold/04.webp"
     ],
     "description": [
       {
@@ -2117,6 +2252,8 @@
   {
     "id": "apple-iphone-7-32gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-7",
     "name": "Apple iPhone 7 32GB Silver",
     "capacityAvailable": ["32GB"],
@@ -2125,12 +2262,13 @@
     "priceDiscount": 375,
     "colorsAvailable": ["black", "rosegold", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-7/silver/00.webp",
-      "img/phones/apple-iphone-7/silver/01.webp",
-      "img/phones/apple-iphone-7/silver/02.webp",
-      "img/phones/apple-iphone-7/silver/03.webp",
-      "img/phones/apple-iphone-7/silver/04.webp"
+      "images/phones/apple-iphone-7/silver/00.webp",
+      "images/phones/apple-iphone-7/silver/01.webp",
+      "images/phones/apple-iphone-7/silver/02.webp",
+      "images/phones/apple-iphone-7/silver/03.webp",
+      "images/phones/apple-iphone-7/silver/04.webp"
     ],
     "description": [
       {
@@ -2165,6 +2303,8 @@
   {
     "id": "apple-iphone-7-plus-32gb-black",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-7-plus",
     "name": "Apple iPhone 7 Plus 32GB Black",
     "capacityAvailable": ["32GB"],
@@ -2173,12 +2313,13 @@
     "priceDiscount": 500,
     "colorsAvailable": ["black", "rosegold", "gold", "silver"],
     "color": "black",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-7-plus/black/00.webp",
-      "img/phones/apple-iphone-7-plus/black/01.webp",
-      "img/phones/apple-iphone-7-plus/black/02.webp",
-      "img/phones/apple-iphone-7-plus/black/03.webp",
-      "img/phones/apple-iphone-7-plus/black/04.webp"
+      "images/phones/apple-iphone-7-plus/black/00.webp",
+      "images/phones/apple-iphone-7-plus/black/01.webp",
+      "images/phones/apple-iphone-7-plus/black/02.webp",
+      "images/phones/apple-iphone-7-plus/black/03.webp",
+      "images/phones/apple-iphone-7-plus/black/04.webp"
     ],
     "description": [
       {
@@ -2213,6 +2354,8 @@
   {
     "id": "apple-iphone-7-plus-32gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-7-plus",
     "name": "Apple iPhone 7 Plus 32GB Gold",
     "capacityAvailable": ["32GB"],
@@ -2221,12 +2364,13 @@
     "priceDiscount": 500,
     "colorsAvailable": ["black", "rosegold", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-7-plus/gold/00.webp",
-      "img/phones/apple-iphone-7-plus/gold/01.webp",
-      "img/phones/apple-iphone-7-plus/gold/02.webp",
-      "img/phones/apple-iphone-7-plus/gold/03.webp",
-      "img/phones/apple-iphone-7-plus/gold/04.webp"
+      "images/phones/apple-iphone-7-plus/gold/00.webp",
+      "images/phones/apple-iphone-7-plus/gold/01.webp",
+      "images/phones/apple-iphone-7-plus/gold/02.webp",
+      "images/phones/apple-iphone-7-plus/gold/03.webp",
+      "images/phones/apple-iphone-7-plus/gold/04.webp"
     ],
     "description": [
       {
@@ -2261,6 +2405,8 @@
   {
     "id": "apple-iphone-7-plus-32gb-rosegold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-7-plus",
     "name": "Apple iPhone 7 Plus 32GB Rosegold",
     "capacityAvailable": ["32GB"],
@@ -2269,12 +2415,13 @@
     "priceDiscount": 500,
     "colorsAvailable": ["black", "rosegold", "gold", "silver"],
     "color": "rosegold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-7-plus/rosegold/00.webp",
-      "img/phones/apple-iphone-7-plus/rosegold/01.webp",
-      "img/phones/apple-iphone-7-plus/rosegold/02.webp",
-      "img/phones/apple-iphone-7-plus/rosegold/03.webp",
-      "img/phones/apple-iphone-7-plus/rosegold/04.webp"
+      "images/phones/apple-iphone-7-plus/rosegold/00.webp",
+      "images/phones/apple-iphone-7-plus/rosegold/01.webp",
+      "images/phones/apple-iphone-7-plus/rosegold/02.webp",
+      "images/phones/apple-iphone-7-plus/rosegold/03.webp",
+      "images/phones/apple-iphone-7-plus/rosegold/04.webp"
     ],
     "description": [
       {
@@ -2309,6 +2456,8 @@
   {
     "id": "apple-iphone-7-plus-32gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-7-plus",
     "name": "Apple iPhone 7 Plus 32GB Silver",
     "capacityAvailable": ["32GB"],
@@ -2317,12 +2466,13 @@
     "priceDiscount": 500,
     "colorsAvailable": ["black", "rosegold", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-7-plus/silver/00.webp",
-      "img/phones/apple-iphone-7-plus/silver/01.webp",
-      "img/phones/apple-iphone-7-plus/silver/02.webp",
-      "img/phones/apple-iphone-7-plus/silver/03.webp",
-      "img/phones/apple-iphone-7-plus/silver/04.webp"
+      "images/phones/apple-iphone-7-plus/silver/00.webp",
+      "images/phones/apple-iphone-7-plus/silver/01.webp",
+      "images/phones/apple-iphone-7-plus/silver/02.webp",
+      "images/phones/apple-iphone-7-plus/silver/03.webp",
+      "images/phones/apple-iphone-7-plus/silver/04.webp"
     ],
     "description": [
       {
@@ -2357,6 +2507,8 @@
   {
     "id": "apple-iphone-8-64gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-8",
     "name": "Apple iPhone 8 64GB Gold",
     "capacityAvailable": ["64GB"],
@@ -2365,11 +2517,12 @@
     "priceDiscount": 550,
     "colorsAvailable": ["spacegray", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-8/gold/00.webp",
-      "img/phones/apple-iphone-8/gold/01.webp",
-      "img/phones/apple-iphone-8/gold/02.webp",
-      "img/phones/apple-iphone-8/gold/03.webp"
+      "images/phones/apple-iphone-8/gold/00.webp",
+      "images/phones/apple-iphone-8/gold/01.webp",
+      "images/phones/apple-iphone-8/gold/02.webp",
+      "images/phones/apple-iphone-8/gold/03.webp"
     ],
     "description": [
       {
@@ -2404,6 +2557,8 @@
   {
     "id": "apple-iphone-8-64gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-8",
     "name": "Apple iPhone 8 64GB Silver",
     "capacityAvailable": ["64GB"],
@@ -2412,11 +2567,12 @@
     "priceDiscount": 550,
     "colorsAvailable": ["spacegray", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-8/silver/00.webp",
-      "img/phones/apple-iphone-8/silver/01.webp",
-      "img/phones/apple-iphone-8/silver/02.webp",
-      "img/phones/apple-iphone-8/silver/03.webp"
+      "images/phones/apple-iphone-8/silver/00.webp",
+      "images/phones/apple-iphone-8/silver/01.webp",
+      "images/phones/apple-iphone-8/silver/02.webp",
+      "images/phones/apple-iphone-8/silver/03.webp"
     ],
     "description": [
       {
@@ -2451,6 +2607,8 @@
   {
     "id": "apple-iphone-8-64gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-8",
     "name": "Apple iPhone 8 64GB Space Gray",
     "capacityAvailable": ["64GB"],
@@ -2459,11 +2617,12 @@
     "priceDiscount": 550,
     "colorsAvailable": ["spacegray", "gold", "silver"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-8/spacegray/00.webp",
-      "img/phones/apple-iphone-8/spacegray/01.webp",
-      "img/phones/apple-iphone-8/spacegray/02.webp",
-      "img/phones/apple-iphone-8/spacegray/03.webp"
+      "images/phones/apple-iphone-8/spacegray/00.webp",
+      "images/phones/apple-iphone-8/spacegray/01.webp",
+      "images/phones/apple-iphone-8/spacegray/02.webp",
+      "images/phones/apple-iphone-8/spacegray/03.webp"
     ],
     "description": [
       {
@@ -2498,6 +2657,8 @@
   {
     "id": "apple-iphone-xr-128gb-coral",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xr",
     "name": "Apple iPhone XR 128GB Coral",
     "capacityAvailable": ["64GB", "128GB"],
@@ -2506,12 +2667,13 @@
     "priceDiscount": 815,
     "colorsAvailable": ["white", "yellow", "red", "coral"],
     "color": "coral",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xr/coral/00.webp",
-      "img/phones/apple-iphone-xr/coral/01.webp",
-      "img/phones/apple-iphone-xr/coral/02.webp",
-      "img/phones/apple-iphone-xr/coral/03.webp",
-      "img/phones/apple-iphone-xr/coral/04.webp"
+      "images/phones/apple-iphone-xr/coral/00.webp",
+      "images/phones/apple-iphone-xr/coral/01.webp",
+      "images/phones/apple-iphone-xr/coral/02.webp",
+      "images/phones/apple-iphone-xr/coral/03.webp",
+      "images/phones/apple-iphone-xr/coral/04.webp"
     ],
     "description": [
       {
@@ -2546,6 +2708,8 @@
   {
     "id": "apple-iphone-xr-128gb-red",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xr",
     "name": "Apple iPhone XR 128GB Red",
     "capacityAvailable": ["64GB", "128GB"],
@@ -2554,12 +2718,13 @@
     "priceDiscount": 815,
     "colorsAvailable": ["white", "yellow", "red", "coral"],
     "color": "red",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xr/red/00.webp",
-      "img/phones/apple-iphone-xr/red/01.webp",
-      "img/phones/apple-iphone-xr/red/02.webp",
-      "img/phones/apple-iphone-xr/red/03.webp",
-      "img/phones/apple-iphone-xr/red/04.webp"
+      "images/phones/apple-iphone-xr/red/00.webp",
+      "images/phones/apple-iphone-xr/red/01.webp",
+      "images/phones/apple-iphone-xr/red/02.webp",
+      "images/phones/apple-iphone-xr/red/03.webp",
+      "images/phones/apple-iphone-xr/red/04.webp"
     ],
     "description": [
       {
@@ -2594,6 +2759,8 @@
   {
     "id": "apple-iphone-xr-128gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xr",
     "name": "Apple iPhone XR 128GB White",
     "capacityAvailable": ["64GB", "128GB"],
@@ -2602,12 +2769,13 @@
     "priceDiscount": 815,
     "colorsAvailable": ["white", "yellow", "red", "coral"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xr/white/00.webp",
-      "img/phones/apple-iphone-xr/white/01.webp",
-      "img/phones/apple-iphone-xr/white/02.webp",
-      "img/phones/apple-iphone-xr/white/03.webp",
-      "img/phones/apple-iphone-xr/white/04.webp"
+      "images/phones/apple-iphone-xr/white/00.webp",
+      "images/phones/apple-iphone-xr/white/01.webp",
+      "images/phones/apple-iphone-xr/white/02.webp",
+      "images/phones/apple-iphone-xr/white/03.webp",
+      "images/phones/apple-iphone-xr/white/04.webp"
     ],
     "description": [
       {
@@ -2642,6 +2810,8 @@
   {
     "id": "apple-iphone-xr-128gb-yellow",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xr",
     "name": "Apple iPhone XR 128GB Yellow",
     "capacityAvailable": ["64GB", "128GB"],
@@ -2650,12 +2820,13 @@
     "priceDiscount": 815,
     "colorsAvailable": ["white", "yellow", "red", "coral"],
     "color": "yellow",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xr/yellow/00.webp",
-      "img/phones/apple-iphone-xr/yellow/01.webp",
-      "img/phones/apple-iphone-xr/yellow/02.webp",
-      "img/phones/apple-iphone-xr/yellow/03.webp",
-      "img/phones/apple-iphone-xr/yellow/04.webp"
+      "images/phones/apple-iphone-xr/yellow/00.webp",
+      "images/phones/apple-iphone-xr/yellow/01.webp",
+      "images/phones/apple-iphone-xr/yellow/02.webp",
+      "images/phones/apple-iphone-xr/yellow/03.webp",
+      "images/phones/apple-iphone-xr/yellow/04.webp"
     ],
     "description": [
       {
@@ -2690,6 +2861,8 @@
   {
     "id": "apple-iphone-xr-64gb-coral",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xr",
     "name": "Apple iPhone XR 64GB Coral",
     "capacityAvailable": ["64GB", "128GB"],
@@ -2698,10 +2871,11 @@
     "priceDiscount": 670,
     "colorsAvailable": ["white", "yellow", "red", "coral"],
     "color": "coral",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xr/coral/00.webp",
-      "img/phones/apple-iphone-xr/coral/01.webp",
-      "img/phones/apple-iphone-xr/coral/02.webp"
+      "images/phones/apple-iphone-xr/coral/00.webp",
+      "images/phones/apple-iphone-xr/coral/01.webp",
+      "images/phones/apple-iphone-xr/coral/02.webp"
     ],
     "description": [
       {
@@ -2736,6 +2910,8 @@
   {
     "id": "apple-iphone-xr-64gb-red",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xr",
     "name": "Apple iPhone XR 64GB Red",
     "capacityAvailable": ["64GB", "128GB"],
@@ -2744,12 +2920,13 @@
     "priceDiscount": 670,
     "colorsAvailable": ["white", "yellow", "red", "coral"],
     "color": "red",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xr/red/00.webp",
-      "img/phones/apple-iphone-xr/red/01.webp",
-      "img/phones/apple-iphone-xr/red/02.webp",
-      "img/phones/apple-iphone-xr/red/03.webp",
-      "img/phones/apple-iphone-xr/red/04.webp"
+      "images/phones/apple-iphone-xr/red/00.webp",
+      "images/phones/apple-iphone-xr/red/01.webp",
+      "images/phones/apple-iphone-xr/red/02.webp",
+      "images/phones/apple-iphone-xr/red/03.webp",
+      "images/phones/apple-iphone-xr/red/04.webp"
     ],
     "description": [
       {
@@ -2784,6 +2961,8 @@
   {
     "id": "apple-iphone-xr-64gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xr",
     "name": "Apple iPhone XR 64GB White",
     "capacityAvailable": ["64GB", "128GB"],
@@ -2792,12 +2971,13 @@
     "priceDiscount": 670,
     "colorsAvailable": ["white", "yellow", "red", "coral"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xr/white/00.webp",
-      "img/phones/apple-iphone-xr/white/01.webp",
-      "img/phones/apple-iphone-xr/white/02.webp",
-      "img/phones/apple-iphone-xr/white/03.webp",
-      "img/phones/apple-iphone-xr/white/04.webp"
+      "images/phones/apple-iphone-xr/white/00.webp",
+      "images/phones/apple-iphone-xr/white/01.webp",
+      "images/phones/apple-iphone-xr/white/02.webp",
+      "images/phones/apple-iphone-xr/white/03.webp",
+      "images/phones/apple-iphone-xr/white/04.webp"
     ],
     "description": [
       {
@@ -2832,6 +3012,8 @@
   {
     "id": "apple-iphone-xr-64gb-yellow",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xr",
     "name": "Apple iPhone XR 64GB Yellow",
     "capacityAvailable": ["64GB", "128GB"],
@@ -2840,12 +3022,13 @@
     "priceDiscount": 670,
     "colorsAvailable": ["white", "yellow", "red", "coral"],
     "color": "yellow",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xr/yellow/00.webp",
-      "img/phones/apple-iphone-xr/yellow/01.webp",
-      "img/phones/apple-iphone-xr/yellow/02.webp",
-      "img/phones/apple-iphone-xr/yellow/03.webp",
-      "img/phones/apple-iphone-xr/yellow/04.webp"
+      "images/phones/apple-iphone-xr/yellow/00.webp",
+      "images/phones/apple-iphone-xr/yellow/01.webp",
+      "images/phones/apple-iphone-xr/yellow/02.webp",
+      "images/phones/apple-iphone-xr/yellow/03.webp",
+      "images/phones/apple-iphone-xr/yellow/04.webp"
     ],
     "description": [
       {
@@ -2880,6 +3063,8 @@
   {
     "id": "apple-iphone-xs-256gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xs",
     "name": "Apple iPhone XS 256GB Gold",
     "capacityAvailable": ["64GB", "256GB"],
@@ -2888,12 +3073,13 @@
     "priceDiscount": 900,
     "colorsAvailable": ["spacegray", "gold"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xs/gold/00.webp",
-      "img/phones/apple-iphone-xs/gold/01.webp",
-      "img/phones/apple-iphone-xs/gold/02.webp",
-      "img/phones/apple-iphone-xs/gold/03.webp",
-      "img/phones/apple-iphone-xs/gold/04.webp"
+      "images/phones/apple-iphone-xs/gold/00.webp",
+      "images/phones/apple-iphone-xs/gold/01.webp",
+      "images/phones/apple-iphone-xs/gold/02.webp",
+      "images/phones/apple-iphone-xs/gold/03.webp",
+      "images/phones/apple-iphone-xs/gold/04.webp"
     ],
     "description": [
       {
@@ -2928,6 +3114,8 @@
   {
     "id": "apple-iphone-xs-256gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xs",
     "name": "Apple iPhone XS 256GB Spacegray",
     "capacityAvailable": ["64GB", "256GB"],
@@ -2936,12 +3124,13 @@
     "priceDiscount": 900,
     "colorsAvailable": ["spacegray", "gold"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xs/spacegray/00.webp",
-      "img/phones/apple-iphone-xs/spacegray/01.webp",
-      "img/phones/apple-iphone-xs/spacegray/02.webp",
-      "img/phones/apple-iphone-xs/spacegray/03.webp",
-      "img/phones/apple-iphone-xs/spacegray/04.webp"
+      "images/phones/apple-iphone-xs/spacegray/00.webp",
+      "images/phones/apple-iphone-xs/spacegray/01.webp",
+      "images/phones/apple-iphone-xs/spacegray/02.webp",
+      "images/phones/apple-iphone-xs/spacegray/03.webp",
+      "images/phones/apple-iphone-xs/spacegray/04.webp"
     ],
     "description": [
       {
@@ -2976,6 +3165,8 @@
   {
     "id": "apple-iphone-xs-64gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xs",
     "name": "Apple iPhone XS 64GB Gold",
     "capacityAvailable": ["64GB", "256GB"],
@@ -2984,12 +3175,13 @@
     "priceDiscount": 720,
     "colorsAvailable": ["spacegray", "gold"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xs/gold/00.webp",
-      "img/phones/apple-iphone-xs/gold/01.webp",
-      "img/phones/apple-iphone-xs/gold/02.webp",
-      "img/phones/apple-iphone-xs/gold/03.webp",
-      "img/phones/apple-iphone-xs/gold/04.webp"
+      "images/phones/apple-iphone-xs/gold/00.webp",
+      "images/phones/apple-iphone-xs/gold/01.webp",
+      "images/phones/apple-iphone-xs/gold/02.webp",
+      "images/phones/apple-iphone-xs/gold/03.webp",
+      "images/phones/apple-iphone-xs/gold/04.webp"
     ],
     "description": [
       {
@@ -3024,6 +3216,8 @@
   {
     "id": "apple-iphone-xs-64gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xs",
     "name": "Apple iPhone XS 64GB Spacegray",
     "capacityAvailable": ["64GB", "256GB"],
@@ -3032,12 +3226,13 @@
     "priceDiscount": 720,
     "colorsAvailable": ["spacegray", "gold"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xs/spacegray/00.webp",
-      "img/phones/apple-iphone-xs/spacegray/01.webp",
-      "img/phones/apple-iphone-xs/spacegray/02.webp",
-      "img/phones/apple-iphone-xs/spacegray/03.webp",
-      "img/phones/apple-iphone-xs/spacegray/04.webp"
+      "images/phones/apple-iphone-xs/spacegray/00.webp",
+      "images/phones/apple-iphone-xs/spacegray/01.webp",
+      "images/phones/apple-iphone-xs/spacegray/02.webp",
+      "images/phones/apple-iphone-xs/spacegray/03.webp",
+      "images/phones/apple-iphone-xs/spacegray/04.webp"
     ],
     "description": [
       {
@@ -3072,6 +3267,8 @@
   {
     "id": "apple-iphone-xs-max-256gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xs-max",
     "name": "Apple iPhone XS Max 256GB Gold",
     "capacityAvailable": ["64GB", "256GB"],
@@ -3080,12 +3277,13 @@
     "priceDiscount": 1000,
     "colorsAvailable": ["spacegray", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xs-max/gold/00.webp",
-      "img/phones/apple-iphone-xs-max/gold/01.webp",
-      "img/phones/apple-iphone-xs-max/gold/02.webp",
-      "img/phones/apple-iphone-xs-max/gold/03.webp",
-      "img/phones/apple-iphone-xs-max/gold/04.webp"
+      "images/phones/apple-iphone-xs-max/gold/00.webp",
+      "images/phones/apple-iphone-xs-max/gold/01.webp",
+      "images/phones/apple-iphone-xs-max/gold/02.webp",
+      "images/phones/apple-iphone-xs-max/gold/03.webp",
+      "images/phones/apple-iphone-xs-max/gold/04.webp"
     ],
     "description": [
       {
@@ -3108,7 +3306,7 @@
         ]
       }
     ],
-    "screen": "6.5' OLED (Super Retina HD)",
+    "screen": "6.5' OLED",
     "resolution": "2688х1242",
     "processor": "Apple A12 Bionic",
     "ram": "4GB",
@@ -3120,6 +3318,8 @@
   {
     "id": "apple-iphone-xs-max-256gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xs-max",
     "name": "Apple iPhone XS Max 256GB Silver",
     "capacityAvailable": ["64GB", "256GB"],
@@ -3128,12 +3328,13 @@
     "priceDiscount": 1000,
     "colorsAvailable": ["spacegray", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xs-max/silver/00.webp",
-      "img/phones/apple-iphone-xs-max/silver/01.webp",
-      "img/phones/apple-iphone-xs-max/silver/02.webp",
-      "img/phones/apple-iphone-xs-max/silver/03.webp",
-      "img/phones/apple-iphone-xs-max/silver/04.webp"
+      "images/phones/apple-iphone-xs-max/silver/00.webp",
+      "images/phones/apple-iphone-xs-max/silver/01.webp",
+      "images/phones/apple-iphone-xs-max/silver/02.webp",
+      "images/phones/apple-iphone-xs-max/silver/03.webp",
+      "images/phones/apple-iphone-xs-max/silver/04.webp"
     ],
     "description": [
       {
@@ -3156,7 +3357,7 @@
         ]
       }
     ],
-    "screen": "6.5' OLED (Super Retina HD)",
+    "screen": "6.5' OLED",
     "resolution": "2688х1242",
     "processor": "Apple A12 Bionic",
     "ram": "4GB",
@@ -3168,6 +3369,8 @@
   {
     "id": "apple-iphone-xs-max-256gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xs-max",
     "name": "Apple iPhone XS Max 256GB Spacegray",
     "capacityAvailable": ["64GB", "256GB"],
@@ -3176,12 +3379,13 @@
     "priceDiscount": 1000,
     "colorsAvailable": ["spacegray", "gold", "silver"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xs-max/spacegray/00.webp",
-      "img/phones/apple-iphone-xs-max/spacegray/01.webp",
-      "img/phones/apple-iphone-xs-max/spacegray/02.webp",
-      "img/phones/apple-iphone-xs-max/spacegray/03.webp",
-      "img/phones/apple-iphone-xs-max/spacegray/04.webp"
+      "images/phones/apple-iphone-xs-max/spacegray/00.webp",
+      "images/phones/apple-iphone-xs-max/spacegray/01.webp",
+      "images/phones/apple-iphone-xs-max/spacegray/02.webp",
+      "images/phones/apple-iphone-xs-max/spacegray/03.webp",
+      "images/phones/apple-iphone-xs-max/spacegray/04.webp"
     ],
     "description": [
       {
@@ -3204,7 +3408,7 @@
         ]
       }
     ],
-    "screen": "6.5' OLED (Super Retina HD)",
+    "screen": "6.5' OLED",
     "resolution": "2688х1242",
     "processor": "Apple A12 Bionic",
     "ram": "4GB",
@@ -3216,6 +3420,8 @@
   {
     "id": "apple-iphone-xs-max-64gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xs-max",
     "name": "Apple iPhone XS Max 64GB Gold",
     "capacityAvailable": ["64GB", "256GB"],
@@ -3224,12 +3430,13 @@
     "priceDiscount": 900,
     "colorsAvailable": ["spacegray", "gold", "silver"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xs-max/gold/00.webp",
-      "img/phones/apple-iphone-xs-max/gold/01.webp",
-      "img/phones/apple-iphone-xs-max/gold/02.webp",
-      "img/phones/apple-iphone-xs-max/gold/03.webp",
-      "img/phones/apple-iphone-xs-max/gold/04.webp"
+      "images/phones/apple-iphone-xs-max/gold/00.webp",
+      "images/phones/apple-iphone-xs-max/gold/01.webp",
+      "images/phones/apple-iphone-xs-max/gold/02.webp",
+      "images/phones/apple-iphone-xs-max/gold/03.webp",
+      "images/phones/apple-iphone-xs-max/gold/04.webp"
     ],
     "description": [
       {
@@ -3252,7 +3459,7 @@
         ]
       }
     ],
-    "screen": "6.5' OLED (Super Retina HD)",
+    "screen": "6.5' OLED",
     "resolution": "2688х1242",
     "processor": "Apple A12 Bionic",
     "ram": "4GB",
@@ -3264,6 +3471,8 @@
   {
     "id": "apple-iphone-xs-max-64gb-silver",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xs-max",
     "name": "Apple iPhone XS Max 64GB Silver",
     "capacityAvailable": ["64GB", "256GB"],
@@ -3272,12 +3481,13 @@
     "priceDiscount": 900,
     "colorsAvailable": ["spacegray", "gold", "silver"],
     "color": "silver",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xs-max/silver/00.webp",
-      "img/phones/apple-iphone-xs-max/silver/01.webp",
-      "img/phones/apple-iphone-xs-max/silver/02.webp",
-      "img/phones/apple-iphone-xs-max/silver/03.webp",
-      "img/phones/apple-iphone-xs-max/silver/04.webp"
+      "images/phones/apple-iphone-xs-max/silver/00.webp",
+      "images/phones/apple-iphone-xs-max/silver/01.webp",
+      "images/phones/apple-iphone-xs-max/silver/02.webp",
+      "images/phones/apple-iphone-xs-max/silver/03.webp",
+      "images/phones/apple-iphone-xs-max/silver/04.webp"
     ],
     "description": [
       {
@@ -3300,7 +3510,7 @@
         ]
       }
     ],
-    "screen": "6.5' OLED (Super Retina HD)",
+    "screen": "6.5' OLED",
     "resolution": "2688х1242",
     "processor": "Apple A12 Bionic",
     "ram": "4GB",
@@ -3312,6 +3522,8 @@
   {
     "id": "apple-iphone-xs-max-64gb-spacegray",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-xs-max",
     "name": "Apple iPhone XS Max 64GB Spacegray",
     "capacityAvailable": ["64GB", "256GB"],
@@ -3320,12 +3532,13 @@
     "priceDiscount": 900,
     "colorsAvailable": ["spacegray", "gold", "silver"],
     "color": "spacegray",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-xs-max/spacegray/00.webp",
-      "img/phones/apple-iphone-xs-max/spacegray/01.webp",
-      "img/phones/apple-iphone-xs-max/spacegray/02.webp",
-      "img/phones/apple-iphone-xs-max/spacegray/03.webp",
-      "img/phones/apple-iphone-xs-max/spacegray/04.webp"
+      "images/phones/apple-iphone-xs-max/spacegray/00.webp",
+      "images/phones/apple-iphone-xs-max/spacegray/01.webp",
+      "images/phones/apple-iphone-xs-max/spacegray/02.webp",
+      "images/phones/apple-iphone-xs-max/spacegray/03.webp",
+      "images/phones/apple-iphone-xs-max/spacegray/04.webp"
     ],
     "description": [
       {
@@ -3348,7 +3561,7 @@
         ]
       }
     ],
-    "screen": "6.5' OLED (Super Retina HD)",
+    "screen": "6.5' OLED",
     "resolution": "2688х1242",
     "processor": "Apple A12 Bionic",
     "ram": "4GB",
@@ -3359,6 +3572,8 @@
   {
     "id": "apple-iphone-14-128gb-midnight",
     "category": "phones",
+    "newModel": "yes",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14",
     "name": "Apple iPhone 14 128GB Midnight",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
@@ -3367,12 +3582,13 @@
     "priceDiscount": 980,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "midnight",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14/midnight/00.webp",
-      "img/phones/apple-iphone-14/midnight/01.webp",
-      "img/phones/apple-iphone-14/midnight/02.webp",
-      "img/phones/apple-iphone-14/midnight/03.webp",
-      "img/phones/apple-iphone-14/midnight/04.webp"
+      "images/phones/apple-iphone-14/midnight/00.webp",
+      "images/phones/apple-iphone-14/midnight/01.webp",
+      "images/phones/apple-iphone-14/midnight/02.webp",
+      "images/phones/apple-iphone-14/midnight/03.webp",
+      "images/phones/apple-iphone-14/midnight/04.webp"
     ],
     "description": [
       {
@@ -3395,7 +3611,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED OLED OLED OLED",
     "resolution": "2532x1170",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -3406,6 +3622,8 @@
   {
     "id": "apple-iphone-14-256gb-midnight",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14",
     "name": "Apple iPhone 14 256GB Midnight",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
@@ -3414,12 +3632,13 @@
     "priceDiscount": 1160,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "midnight",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14/midnight/00.webp",
-      "img/phones/apple-iphone-14/midnight/01.webp",
-      "img/phones/apple-iphone-14/midnight/02.webp",
-      "img/phones/apple-iphone-14/midnight/03.webp",
-      "img/phones/apple-iphone-14/midnight/04.webp"
+      "images/phones/apple-iphone-14/midnight/00.webp",
+      "images/phones/apple-iphone-14/midnight/01.webp",
+      "images/phones/apple-iphone-14/midnight/02.webp",
+      "images/phones/apple-iphone-14/midnight/03.webp",
+      "images/phones/apple-iphone-14/midnight/04.webp"
     ],
     "description": [
       {
@@ -3442,7 +3661,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2532x1170",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -3453,6 +3672,8 @@
   {
     "id": "apple-iphone-14-512gb-midnight",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14",
     "name": "Apple iPhone 14 512GB Midnight",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
@@ -3461,12 +3682,13 @@
     "priceDiscount": 1378,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "midnight",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14/midnight/00.webp",
-      "img/phones/apple-iphone-14/midnight/01.webp",
-      "img/phones/apple-iphone-14/midnight/02.webp",
-      "img/phones/apple-iphone-14/midnight/03.webp",
-      "img/phones/apple-iphone-14/midnight/04.webp"
+      "images/phones/apple-iphone-14/midnight/00.webp",
+      "images/phones/apple-iphone-14/midnight/01.webp",
+      "images/phones/apple-iphone-14/midnight/02.webp",
+      "images/phones/apple-iphone-14/midnight/03.webp",
+      "images/phones/apple-iphone-14/midnight/04.webp"
     ],
     "description": [
       {
@@ -3489,7 +3711,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2532x1170",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -3500,6 +3722,8 @@
   {
     "id": "apple-iphone-14-128gb-yellow",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14",
     "name": "Apple iPhone 14 128GB Yellow",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
@@ -3508,12 +3732,13 @@
     "priceDiscount": 980,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "yellow",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14/yellow/00.webp",
-      "img/phones/apple-iphone-14/yellow/01.webp",
-      "img/phones/apple-iphone-14/yellow/02.webp",
-      "img/phones/apple-iphone-14/yellow/03.webp",
-      "img/phones/apple-iphone-14/yellow/04.webp"
+      "images/phones/apple-iphone-14/yellow/00.webp",
+      "images/phones/apple-iphone-14/yellow/01.webp",
+      "images/phones/apple-iphone-14/yellow/02.webp",
+      "images/phones/apple-iphone-14/yellow/03.webp",
+      "images/phones/apple-iphone-14/yellow/04.webp"
     ],
     "description": [
       {
@@ -3536,7 +3761,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2532x1170",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -3547,6 +3772,8 @@
   {
     "id": "apple-iphone-14-256gb-yellow",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14",
     "name": "Apple iPhone 14 256GB Yellow",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
@@ -3555,12 +3782,13 @@
     "priceDiscount": 1160,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "yellow",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14/yellow/00.webp",
-      "img/phones/apple-iphone-14/yellow/01.webp",
-      "img/phones/apple-iphone-14/yellow/02.webp",
-      "img/phones/apple-iphone-14/yellow/03.webp",
-      "img/phones/apple-iphone-14/yellow/04.webp"
+      "images/phones/apple-iphone-14/yellow/00.webp",
+      "images/phones/apple-iphone-14/yellow/01.webp",
+      "images/phones/apple-iphone-14/yellow/02.webp",
+      "images/phones/apple-iphone-14/yellow/03.webp",
+      "images/phones/apple-iphone-14/yellow/04.webp"
     ],
     "description": [
       {
@@ -3583,7 +3811,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2532x1170",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -3594,6 +3822,8 @@
   {
     "id": "apple-iphone-14-512gb-yellow",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14",
     "name": "Apple iPhone 14 512GB Yellow",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
@@ -3602,12 +3832,13 @@
     "priceDiscount": 1378,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "yellow",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14/yellow/00.webp",
-      "img/phones/apple-iphone-14/yellow/01.webp",
-      "img/phones/apple-iphone-14/yellow/02.webp",
-      "img/phones/apple-iphone-14/yellow/03.webp",
-      "img/phones/apple-iphone-14/yellow/04.webp"
+      "images/phones/apple-iphone-14/yellow/00.webp",
+      "images/phones/apple-iphone-14/yellow/01.webp",
+      "images/phones/apple-iphone-14/yellow/02.webp",
+      "images/phones/apple-iphone-14/yellow/03.webp",
+      "images/phones/apple-iphone-14/yellow/04.webp"
     ],
     "description": [
       {
@@ -3630,7 +3861,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2532x1170",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -3641,6 +3872,8 @@
   {
     "id": "apple-iphone-14-128gb-purple",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14",
     "name": "Apple iPhone 14 128GB Purple",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
@@ -3649,12 +3882,13 @@
     "priceDiscount": 980,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "purple",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14/purple/00.webp",
-      "img/phones/apple-iphone-14/purple/01.webp",
-      "img/phones/apple-iphone-14/purple/02.webp",
-      "img/phones/apple-iphone-14/purple/03.webp",
-      "img/phones/apple-iphone-14/purple/04.webp"
+      "images/phones/apple-iphone-14/purple/00.webp",
+      "images/phones/apple-iphone-14/purple/01.webp",
+      "images/phones/apple-iphone-14/purple/02.webp",
+      "images/phones/apple-iphone-14/purple/03.webp",
+      "images/phones/apple-iphone-14/purple/04.webp"
     ],
     "description": [
       {
@@ -3677,7 +3911,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2532x1170",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -3688,6 +3922,8 @@
   {
     "id": "apple-iphone-14-256gb-purple",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14",
     "name": "Apple iPhone 14 256GB Purple",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
@@ -3696,12 +3932,13 @@
     "priceDiscount": 1180,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "purple",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14/purple/00.webp",
-      "img/phones/apple-iphone-14/purple/01.webp",
-      "img/phones/apple-iphone-14/purple/02.webp",
-      "img/phones/apple-iphone-14/purple/03.webp",
-      "img/phones/apple-iphone-14/purple/04.webp"
+      "images/phones/apple-iphone-14/purple/00.webp",
+      "images/phones/apple-iphone-14/purple/01.webp",
+      "images/phones/apple-iphone-14/purple/02.webp",
+      "images/phones/apple-iphone-14/purple/03.webp",
+      "images/phones/apple-iphone-14/purple/04.webp"
     ],
     "description": [
       {
@@ -3724,7 +3961,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2532x1170",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -3735,6 +3972,8 @@
   {
     "id": "apple-iphone-14-512gb-purple",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14",
     "name": "Apple iPhone 14 512GB Purple",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
@@ -3743,12 +3982,13 @@
     "priceDiscount": 1450,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "purple",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14/purple/00.webp",
-      "img/phones/apple-iphone-14/purple/01.webp",
-      "img/phones/apple-iphone-14/purple/02.webp",
-      "img/phones/apple-iphone-14/purple/03.webp",
-      "img/phones/apple-iphone-14/purple/04.webp"
+      "images/phones/apple-iphone-14/purple/00.webp",
+      "images/phones/apple-iphone-14/purple/01.webp",
+      "images/phones/apple-iphone-14/purple/02.webp",
+      "images/phones/apple-iphone-14/purple/03.webp",
+      "images/phones/apple-iphone-14/purple/04.webp"
     ],
     "description": [
       {
@@ -3771,7 +4011,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2532x1170",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -3782,6 +4022,8 @@
   {
     "id": "apple-iphone-14-pro-128gb-spaceblack",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14-pro",
     "name": "Apple iPhone 14 Pro 128GB Space Black",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -3790,12 +4032,13 @@
     "priceDiscount": 980,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "spaceblack",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14-pro/spaceblack/00.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/01.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/02.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/03.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/04.webp"
+      "images/phones/apple-iphone-14-pro/spaceblack/00.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/01.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/02.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/03.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/04.webp"
     ],
     "description": [
       {
@@ -3818,7 +4061,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",
@@ -3829,6 +4072,8 @@
   {
     "id": "apple-iphone-14-pro-256gb-spaceblack",
     "category": "phones",
+    "newModel": "yes",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14-pro",
     "name": "Apple iPhone 14 Pro 256GB Space Black",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -3837,12 +4082,13 @@
     "priceDiscount": 1160,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "spaceblack",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14-pro/spaceblack/00.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/01.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/02.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/03.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/04.webp"
+      "images/phones/apple-iphone-14-pro/spaceblack/00.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/01.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/02.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/03.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/04.webp"
     ],
     "description": [
       {
@@ -3865,7 +4111,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",
@@ -3876,6 +4122,8 @@
   {
     "id": "apple-iphone-14-pro-512gb-spaceblack",
     "category": "phones",
+    "newModel": "yes",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14-pro",
     "name": "Apple iPhone 14 Pro 512GB Space Black",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -3884,12 +4132,13 @@
     "priceDiscount": 1378,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "spaceblack",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14-pro/spaceblack/00.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/01.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/02.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/03.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/04.webp"
+      "images/phones/apple-iphone-14-pro/spaceblack/00.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/01.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/02.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/03.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/04.webp"
     ],
     "description": [
       {
@@ -3912,7 +4161,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",
@@ -3923,6 +4172,8 @@
   {
     "id": "apple-iphone-14-pro-1tb-spaceblack",
     "category": "phones",
+    "newModel": "yes",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14-pro",
     "name": "Apple iPhone 14 Pro 1TB Space Black",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -3931,12 +4182,13 @@
     "priceDiscount": 1520,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "spaceblack",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14-pro/spaceblack/00.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/01.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/02.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/03.webp",
-      "img/phones/apple-iphone-14-pro/spaceblack/04.webp"
+      "images/phones/apple-iphone-14-pro/spaceblack/00.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/01.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/02.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/03.webp",
+      "images/phones/apple-iphone-14-pro/spaceblack/04.webp"
     ],
     "description": [
       {
@@ -3959,7 +4211,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",
@@ -3967,9 +4219,12 @@
     "zoom": "Digital 5x, Optical 2x",
     "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
+
   {
     "id": "apple-iphone-12-64gb-black",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 64GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -3978,11 +4233,12 @@
     "priceDiscount": 800,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "black",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/black/00.webp",
-      "img/phones/apple-iphone-12/black/01.webp",
-      "img/phones/apple-iphone-12/black/02.webp",
-      "img/phones/apple-iphone-12/black/03.webp"
+      "images/phones/apple-iphone-12/black/00.webp",
+      "images/phones/apple-iphone-12/black/01.webp",
+      "images/phones/apple-iphone-12/black/02.webp",
+      "images/phones/apple-iphone-12/black/03.webp"
     ],
     "description": [
       {
@@ -4015,6 +4271,8 @@
   {
     "id": "apple-iphone-12-128gb-black",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 128GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4023,11 +4281,12 @@
     "priceDiscount": 900,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "black",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/black/00.webp",
-      "img/phones/apple-iphone-12/black/01.webp",
-      "img/phones/apple-iphone-12/black/02.webp",
-      "img/phones/apple-iphone-12/black/03.webp"
+      "images/phones/apple-iphone-12/black/00.webp",
+      "images/phones/apple-iphone-12/black/01.webp",
+      "images/phones/apple-iphone-12/black/02.webp",
+      "images/phones/apple-iphone-12/black/03.webp"
     ],
     "description": [
       {
@@ -4060,6 +4319,8 @@
   {
     "id": "apple-iphone-12-256gb-black",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 256GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4068,11 +4329,12 @@
     "priceDiscount": 1100,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "black",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/black/00.webp",
-      "img/phones/apple-iphone-12/black/01.webp",
-      "img/phones/apple-iphone-12/black/02.webp",
-      "img/phones/apple-iphone-12/black/03.webp"
+      "images/phones/apple-iphone-12/black/00.webp",
+      "images/phones/apple-iphone-12/black/01.webp",
+      "images/phones/apple-iphone-12/black/02.webp",
+      "images/phones/apple-iphone-12/black/03.webp"
     ],
     "description": [
       {
@@ -4105,6 +4367,8 @@
   {
     "id": "apple-iphone-12-64gb-purple",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 64GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4113,11 +4377,12 @@
     "priceDiscount": 800,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "purple",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/purple/00.webp",
-      "img/phones/apple-iphone-12/purple/01.webp",
-      "img/phones/apple-iphone-12/purple/02.webp",
-      "img/phones/apple-iphone-12/purple/03.webp"
+      "images/phones/apple-iphone-12/purple/00.webp",
+      "images/phones/apple-iphone-12/purple/01.webp",
+      "images/phones/apple-iphone-12/purple/02.webp",
+      "images/phones/apple-iphone-12/purple/03.webp"
     ],
     "description": [
       {
@@ -4150,6 +4415,8 @@
   {
     "id": "apple-iphone-12-128gb-purple",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 128GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4158,11 +4425,12 @@
     "priceDiscount": 900,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "purple",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/purple/00.webp",
-      "img/phones/apple-iphone-12/purple/01.webp",
-      "img/phones/apple-iphone-12/purple/02.webp",
-      "img/phones/apple-iphone-12/purple/03.webp"
+      "images/phones/apple-iphone-12/purple/00.webp",
+      "images/phones/apple-iphone-12/purple/01.webp",
+      "images/phones/apple-iphone-12/purple/02.webp",
+      "images/phones/apple-iphone-12/purple/03.webp"
     ],
     "description": [
       {
@@ -4195,6 +4463,8 @@
   {
     "id": "apple-iphone-12-256gb-purple",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 256GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4203,11 +4473,12 @@
     "priceDiscount": 1100,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "purple",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/purple/00.webp",
-      "img/phones/apple-iphone-12/purple/01.webp",
-      "img/phones/apple-iphone-12/purple/02.webp",
-      "img/phones/apple-iphone-12/purple/03.webp"
+      "images/phones/apple-iphone-12/purple/00.webp",
+      "images/phones/apple-iphone-12/purple/01.webp",
+      "images/phones/apple-iphone-12/purple/02.webp",
+      "images/phones/apple-iphone-12/purple/03.webp"
     ],
     "description": [
       {
@@ -4240,6 +4511,8 @@
   {
     "id": "apple-iphone-12-64gb-red",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 64GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4248,11 +4521,12 @@
     "priceDiscount": 800,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "red",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/red/00.webp",
-      "img/phones/apple-iphone-12/red/01.webp",
-      "img/phones/apple-iphone-12/red/02.webp",
-      "img/phones/apple-iphone-12/red/03.webp"
+      "images/phones/apple-iphone-12/red/00.webp",
+      "images/phones/apple-iphone-12/red/01.webp",
+      "images/phones/apple-iphone-12/red/02.webp",
+      "images/phones/apple-iphone-12/red/03.webp"
     ],
     "description": [
       {
@@ -4285,6 +4559,8 @@
   {
     "id": "apple-iphone-12-128gb-red",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 128GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4293,11 +4569,12 @@
     "priceDiscount": 900,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "red",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/red/00.webp",
-      "img/phones/apple-iphone-12/red/01.webp",
-      "img/phones/apple-iphone-12/red/02.webp",
-      "img/phones/apple-iphone-12/red/03.webp"
+      "images/phones/apple-iphone-12/red/00.webp",
+      "images/phones/apple-iphone-12/red/01.webp",
+      "images/phones/apple-iphone-12/red/02.webp",
+      "images/phones/apple-iphone-12/red/03.webp"
     ],
     "description": [
       {
@@ -4330,6 +4607,8 @@
   {
     "id": "apple-iphone-12-256gb-red",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 256GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4338,11 +4617,12 @@
     "priceDiscount": 1100,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "red",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/red/00.webp",
-      "img/phones/apple-iphone-12/red/01.webp",
-      "img/phones/apple-iphone-12/red/02.webp",
-      "img/phones/apple-iphone-12/red/03.webp"
+      "images/phones/apple-iphone-12/red/00.webp",
+      "images/phones/apple-iphone-12/red/01.webp",
+      "images/phones/apple-iphone-12/red/02.webp",
+      "images/phones/apple-iphone-12/red/03.webp"
     ],
     "description": [
       {
@@ -4375,6 +4655,8 @@
   {
     "id": "apple-iphone-12-64gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 64GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4383,11 +4665,12 @@
     "priceDiscount": 800,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/white/00.webp",
-      "img/phones/apple-iphone-12/white/01.webp",
-      "img/phones/apple-iphone-12/white/02.webp",
-      "img/phones/apple-iphone-12/white/03.webp"
+      "images/phones/apple-iphone-12/white/00.webp",
+      "images/phones/apple-iphone-12/white/01.webp",
+      "images/phones/apple-iphone-12/white/02.webp",
+      "images/phones/apple-iphone-12/white/03.webp"
     ],
     "description": [
       {
@@ -4420,6 +4703,8 @@
   {
     "id": "apple-iphone-12-128gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 128GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4428,11 +4713,12 @@
     "priceDiscount": 900,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/white/00.webp",
-      "img/phones/apple-iphone-12/white/01.webp",
-      "img/phones/apple-iphone-12/white/02.webp",
-      "img/phones/apple-iphone-12/white/03.webp"
+      "images/phones/apple-iphone-12/white/00.webp",
+      "images/phones/apple-iphone-12/white/01.webp",
+      "images/phones/apple-iphone-12/white/02.webp",
+      "images/phones/apple-iphone-12/white/03.webp"
     ],
     "description": [
       {
@@ -4465,6 +4751,8 @@
   {
     "id": "apple-iphone-12-256gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-12",
     "name": "Apple iPhone 12 256GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4473,11 +4761,12 @@
     "priceDiscount": 1100,
     "colorsAvailable": ["black", "white", "purple", "red"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-12/white/00.webp",
-      "img/phones/apple-iphone-12/white/01.webp",
-      "img/phones/apple-iphone-12/white/02.webp",
-      "img/phones/apple-iphone-12/white/03.webp"
+      "images/phones/apple-iphone-12/white/00.webp",
+      "images/phones/apple-iphone-12/white/01.webp",
+      "images/phones/apple-iphone-12/white/02.webp",
+      "images/phones/apple-iphone-12/white/03.webp"
     ],
     "description": [
       {
@@ -4510,6 +4799,8 @@
   {
     "id": "apple-iphone-13-mini-64gb-midnight",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 64GB Midnight",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4518,17 +4809,18 @@
     "priceDiscount": 800,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "midnight",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/midnight/00.webp",
-      "img/phones/apple-iphone-13-mini/midnight/01.webp",
-      "img/phones/apple-iphone-13-mini/midnight/02.webp",
-      "img/phones/apple-iphone-13-mini/midnight/03.webp"
+      "images/phones/apple-iphone-13-mini/midnight/00.webp",
+      "images/phones/apple-iphone-13-mini/midnight/01.webp",
+      "images/phones/apple-iphone-13-mini/midnight/02.webp",
+      "images/phones/apple-iphone-13-mini/midnight/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -4555,6 +4847,8 @@
   {
     "id": "apple-iphone-13-mini-128gb-midnight",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 128GB Midnight",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4563,17 +4857,18 @@
     "priceDiscount": 900,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "midnight",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/midnight/00.webp",
-      "img/phones/apple-iphone-13-mini/midnight/01.webp",
-      "img/phones/apple-iphone-13-mini/midnight/02.webp",
-      "img/phones/apple-iphone-13-mini/midnight/03.webp"
+      "images/phones/apple-iphone-13-mini/midnight/00.webp",
+      "images/phones/apple-iphone-13-mini/midnight/01.webp",
+      "images/phones/apple-iphone-13-mini/midnight/02.webp",
+      "images/phones/apple-iphone-13-mini/midnight/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -4600,6 +4895,8 @@
   {
     "id": "apple-iphone-13-mini-256gb-midnight",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 256GB Midnight",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4608,17 +4905,18 @@
     "priceDiscount": 1100,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "midnight",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/midnight/00.webp",
-      "img/phones/apple-iphone-13-mini/midnight/01.webp",
-      "img/phones/apple-iphone-13-mini/midnight/02.webp",
-      "img/phones/apple-iphone-13-mini/midnight/03.webp"
+      "images/phones/apple-iphone-13-mini/midnight/00.webp",
+      "images/phones/apple-iphone-13-mini/midnight/01.webp",
+      "images/phones/apple-iphone-13-mini/midnight/02.webp",
+      "images/phones/apple-iphone-13-mini/midnight/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -4645,6 +4943,8 @@
   {
     "id": "apple-iphone-13-mini-64gb-pink",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 64GB Pink",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4653,17 +4953,18 @@
     "priceDiscount": 800,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "pink",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/pink/00.webp",
-      "img/phones/apple-iphone-13-mini/pink/01.webp",
-      "img/phones/apple-iphone-13-mini/pink/02.webp",
-      "img/phones/apple-iphone-13-mini/pink/03.webp"
+      "images/phones/apple-iphone-13-mini/pink/00.webp",
+      "images/phones/apple-iphone-13-mini/pink/01.webp",
+      "images/phones/apple-iphone-13-mini/pink/02.webp",
+      "images/phones/apple-iphone-13-mini/pink/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -4690,6 +4991,8 @@
   {
     "id": "apple-iphone-13-mini-128gb-pink",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 128GB Pink",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4698,17 +5001,18 @@
     "priceDiscount": 900,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "pink",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/pink/00.webp",
-      "img/phones/apple-iphone-13-mini/pink/01.webp",
-      "img/phones/apple-iphone-13-mini/pink/02.webp",
-      "img/phones/apple-iphone-13-mini/pink/03.webp"
+      "images/phones/apple-iphone-13-mini/pink/00.webp",
+      "images/phones/apple-iphone-13-mini/pink/01.webp",
+      "images/phones/apple-iphone-13-mini/pink/02.webp",
+      "images/phones/apple-iphone-13-mini/pink/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -4735,6 +5039,8 @@
   {
     "id": "apple-iphone-13-mini-256gb-pink",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 256GB Pink",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4743,17 +5049,18 @@
     "priceDiscount": 1100,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "pink",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/pink/00.webp",
-      "img/phones/apple-iphone-13-mini/pink/01.webp",
-      "img/phones/apple-iphone-13-mini/pink/02.webp",
-      "img/phones/apple-iphone-13-mini/pink/03.webp"
+      "images/phones/apple-iphone-13-mini/pink/00.webp",
+      "images/phones/apple-iphone-13-mini/pink/01.webp",
+      "images/phones/apple-iphone-13-mini/pink/02.webp",
+      "images/phones/apple-iphone-13-mini/pink/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -4780,6 +5087,8 @@
   {
     "id": "apple-iphone-13-mini-64gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 64GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4788,17 +5097,18 @@
     "priceDiscount": 800,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/white/00.webp",
-      "img/phones/apple-iphone-13-mini/white/01.webp",
-      "img/phones/apple-iphone-13-mini/white/02.webp",
-      "img/phones/apple-iphone-13-mini/white/03.webp"
+      "images/phones/apple-iphone-13-mini/white/00.webp",
+      "images/phones/apple-iphone-13-mini/white/01.webp",
+      "images/phones/apple-iphone-13-mini/white/02.webp",
+      "images/phones/apple-iphone-13-mini/white/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -4825,6 +5135,8 @@
   {
     "id": "apple-iphone-13-mini-128gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 128GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4833,17 +5145,18 @@
     "priceDiscount": 900,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/white/00.webp",
-      "img/phones/apple-iphone-13-mini/white/01.webp",
-      "img/phones/apple-iphone-13-mini/white/02.webp",
-      "img/phones/apple-iphone-13-mini/white/03.webp"
+      "images/phones/apple-iphone-13-mini/white/00.webp",
+      "images/phones/apple-iphone-13-mini/white/01.webp",
+      "images/phones/apple-iphone-13-mini/white/02.webp",
+      "images/phones/apple-iphone-13-mini/white/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -4870,6 +5183,8 @@
   {
     "id": "apple-iphone-13-mini-256gb-white",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 256GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4878,17 +5193,18 @@
     "priceDiscount": 949,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "white",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/white/00.webp",
-      "img/phones/apple-iphone-13-mini/white/01.webp",
-      "img/phones/apple-iphone-13-mini/white/02.webp",
-      "img/phones/apple-iphone-13-mini/white/03.webp"
+      "images/phones/apple-iphone-13-mini/white/00.webp",
+      "images/phones/apple-iphone-13-mini/white/01.webp",
+      "images/phones/apple-iphone-13-mini/white/02.webp",
+      "images/phones/apple-iphone-13-mini/white/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -4915,6 +5231,8 @@
   {
     "id": "apple-iphone-13-mini-64gb-blue",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 64GB Blue",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4923,17 +5241,18 @@
     "priceDiscount": 800,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "blue",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/blue/00.webp",
-      "img/phones/apple-iphone-13-mini/blue/01.webp",
-      "img/phones/apple-iphone-13-mini/blue/02.webp",
-      "img/phones/apple-iphone-13-mini/blue/03.webp"
+      "images/phones/apple-iphone-13-mini/blue/00.webp",
+      "images/phones/apple-iphone-13-mini/blue/01.webp",
+      "images/phones/apple-iphone-13-mini/blue/02.webp",
+      "images/phones/apple-iphone-13-mini/blue/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -4960,6 +5279,8 @@
   {
     "id": "apple-iphone-13-mini-128gb-blue",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 128GB Blue",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -4968,17 +5289,18 @@
     "priceDiscount": 900,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "blue",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/blue/00.webp",
-      "img/phones/apple-iphone-13-mini/blue/01.webp",
-      "img/phones/apple-iphone-13-mini/blue/02.webp",
-      "img/phones/apple-iphone-13-mini/blue/03.webp"
+      "images/phones/apple-iphone-13-mini/blue/00.webp",
+      "images/phones/apple-iphone-13-mini/blue/01.webp",
+      "images/phones/apple-iphone-13-mini/blue/02.webp",
+      "images/phones/apple-iphone-13-mini/blue/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -5005,6 +5327,8 @@
   {
     "id": "apple-iphone-13-mini-256gb-blue",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-mini",
     "name": "Apple iPhone 13 Mini 256GB Blue",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
@@ -5013,17 +5337,18 @@
     "priceDiscount": 949,
     "colorsAvailable": ["midnight", "white", "blue", "pink"],
     "color": "blue",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-mini/blue/00.webp",
-      "img/phones/apple-iphone-13-mini/blue/01.webp",
-      "img/phones/apple-iphone-13-mini/blue/02.webp",
-      "img/phones/apple-iphone-13-mini/blue/03.webp"
+      "images/phones/apple-iphone-13-mini/blue/00.webp",
+      "images/phones/apple-iphone-13-mini/blue/01.webp",
+      "images/phones/apple-iphone-13-mini/blue/02.webp",
+      "images/phones/apple-iphone-13-mini/blue/03.webp"
     ],
     "description": [
       {
         "title": "Your new superpower.",
         "text": [
-          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina XDR display with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
+          "A15 Bionic, the fastest chip ever in a smartphone. Super Retina with ProMotion. Durable Ceramic Shield with 4x better drop performance. New Night mode on all cameras. It’s the ultimate iPhone, powered by the ultimate chip."
         ]
       },
       {
@@ -5050,6 +5375,8 @@
   {
     "id": "apple-iphone-13-pro-max-128gb-sierrablue",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 128GB Sierra Blue",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5058,11 +5385,12 @@
     "priceDiscount": 1260,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "sierrablue",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/01.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/02.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/03.webp"
+      "images/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/01.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/02.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/03.webp"
     ],
     "description": [
       {
@@ -5090,7 +5418,7 @@
         ]
       }
     ],
-    "screen": "6.7' Super Retina XDR display",
+    "screen": "6.7' Super Retina",
     "resolution": "2778x1284",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -5101,6 +5429,8 @@
   {
     "id": "apple-iphone-13-pro-max-256gb-sierrablue",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 256GB Sierra Blue",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5109,11 +5439,12 @@
     "priceDiscount": 1379,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "sierrablue",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/01.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/02.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/03.webp"
+      "images/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/01.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/02.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/03.webp"
     ],
     "description": [
       {
@@ -5141,7 +5472,7 @@
         ]
       }
     ],
-    "screen": "6.7' Super Retina XDR display",
+    "screen": "6.7' Super Retina",
     "resolution": "2778x1284",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -5152,6 +5483,8 @@
   {
     "id": "apple-iphone-13-pro-max-512gb-sierrablue",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 512GB Sierra Blue",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5160,11 +5493,12 @@
     "priceDiscount": 1371,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "sierrablue",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/01.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/02.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/03.webp"
+      "images/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/01.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/02.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/03.webp"
     ],
     "description": [
       {
@@ -5192,7 +5526,7 @@
         ]
       }
     ],
-    "screen": "6.7' Super Retina XDR display",
+    "screen": "6.7' Super Retina",
     "resolution": "2778x1284",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -5203,6 +5537,8 @@
   {
     "id": "apple-iphone-13-pro-max-1tb-sierrablue",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 1TB Sierra Blue",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5211,11 +5547,12 @@
     "priceDiscount": 1540,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "sierrablue",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/01.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/02.webp",
-      "img/phones/apple-iphone-13-pro-max/sierrablue/03.webp"
+      "images/phones/apple-iphone-13-pro-max/sierrablue/00.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/01.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/02.webp",
+      "images/phones/apple-iphone-13-pro-max/sierrablue/03.webp"
     ],
     "description": [
       {
@@ -5238,7 +5575,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",
@@ -5249,6 +5586,8 @@
   {
     "id": "apple-iphone-13-pro-max-128gb-graphite",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 128GB Graphite",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5257,11 +5596,12 @@
     "priceDiscount": 1260,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "graphite",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/graphite/00.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/01.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/02.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/03.webp"
+      "images/phones/apple-iphone-13-pro-max/graphite/00.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/01.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/02.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/03.webp"
     ],
     "description": [
       {
@@ -5289,7 +5629,7 @@
         ]
       }
     ],
-    "screen": "6.7' Super Retina XDR display",
+    "screen": "6.7' Super Retina",
     "resolution": "2778x1284",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -5300,6 +5640,8 @@
   {
     "id": "apple-iphone-13-pro-max-256gb-graphite",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 256GB Graphite",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5308,11 +5650,12 @@
     "priceDiscount": 1379,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "graphite",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/graphite/00.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/01.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/02.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/03.webp"
+      "images/phones/apple-iphone-13-pro-max/graphite/00.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/01.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/02.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/03.webp"
     ],
     "description": [
       {
@@ -5340,7 +5683,7 @@
         ]
       }
     ],
-    "screen": "6.7' Super Retina XDR display",
+    "screen": "6.7' Super Retina",
     "resolution": "2778x1284",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -5351,6 +5694,8 @@
   {
     "id": "apple-iphone-13-pro-max-512gb-graphite",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 512GB Graphite",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5359,11 +5704,12 @@
     "priceDiscount": 1371,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "graphite",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/graphite/00.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/01.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/02.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/03.webp"
+      "images/phones/apple-iphone-13-pro-max/graphite/00.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/01.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/02.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/03.webp"
     ],
     "description": [
       {
@@ -5391,7 +5737,7 @@
         ]
       }
     ],
-    "screen": "6.7' Super Retina XDR display",
+    "screen": "6.7' Super Retina",
     "resolution": "2778x1284",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -5402,6 +5748,8 @@
   {
     "id": "apple-iphone-13-pro-max-1tb-graphite",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 1TB Graphite",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5410,11 +5758,12 @@
     "priceDiscount": 1540,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "graphite",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/graphite/00.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/01.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/02.webp",
-      "img/phones/apple-iphone-13-pro-max/graphite/03.webp"
+      "images/phones/apple-iphone-13-pro-max/graphite/00.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/01.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/02.webp",
+      "images/phones/apple-iphone-13-pro-max/graphite/03.webp"
     ],
     "description": [
       {
@@ -5437,7 +5786,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",
@@ -5448,6 +5797,8 @@
   {
     "id": "apple-iphone-13-pro-max-128gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 128GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5456,11 +5807,12 @@
     "priceDiscount": 1260,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/gold/00.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/01.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/02.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/03.webp"
+      "images/phones/apple-iphone-13-pro-max/gold/00.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/01.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/02.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/03.webp"
     ],
     "description": [
       {
@@ -5488,7 +5840,7 @@
         ]
       }
     ],
-    "screen": "6.7' Super Retina XDR display",
+    "screen": "6.7' Super Retina",
     "resolution": "2778x1284",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -5499,6 +5851,8 @@
   {
     "id": "apple-iphone-13-pro-max-256gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 256GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5507,11 +5861,12 @@
     "priceDiscount": 1379,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/gold/00.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/01.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/02.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/03.webp"
+      "images/phones/apple-iphone-13-pro-max/gold/00.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/01.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/02.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/03.webp"
     ],
     "description": [
       {
@@ -5539,7 +5894,7 @@
         ]
       }
     ],
-    "screen": "6.7' Super Retina XDR display",
+    "screen": "6.7' Super Retina",
     "resolution": "2778x1284",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -5550,6 +5905,8 @@
   {
     "id": "apple-iphone-13-pro-max-512gb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 512GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5558,11 +5915,12 @@
     "priceDiscount": 1371,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/gold/00.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/01.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/02.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/03.webp"
+      "images/phones/apple-iphone-13-pro-max/gold/00.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/01.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/02.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/03.webp"
     ],
     "description": [
       {
@@ -5590,7 +5948,7 @@
         ]
       }
     ],
-    "screen": "6.7' Super Retina XDR display",
+    "screen": "6.7' Super Retina",
     "resolution": "2778x1284",
     "processor": "Apple A15 Bionic",
     "ram": "6GB",
@@ -5601,6 +5959,8 @@
   {
     "id": "apple-iphone-13-pro-max-1tb-gold",
     "category": "phones",
+    "newModel": "no",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-13-pro-max",
     "name": "Apple iPhone 13 Pro Max 1TB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5609,11 +5969,12 @@
     "priceDiscount": 1540,
     "colorsAvailable": ["graphite", "gold", "sierrablue"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-13-pro-max/gold/00.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/01.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/02.webp",
-      "img/phones/apple-iphone-13-pro-max/gold/03.webp"
+      "images/phones/apple-iphone-13-pro-max/gold/00.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/01.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/02.webp",
+      "images/phones/apple-iphone-13-pro-max/gold/03.webp"
     ],
     "description": [
       {
@@ -5636,7 +5997,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",
@@ -5647,6 +6008,8 @@
   {
     "id": "apple-iphone-14-pro-128gb-gold",
     "category": "phones",
+    "newModel": "yes",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14-pro",
     "name": "Apple iPhone 14 Pro 128GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5655,12 +6018,13 @@
     "priceDiscount": 980,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14-pro/gold/00.webp",
-      "img/phones/apple-iphone-14-pro/gold/01.webp",
-      "img/phones/apple-iphone-14-pro/gold/02.webp",
-      "img/phones/apple-iphone-14-pro/gold/03.webp",
-      "img/phones/apple-iphone-14-pro/gold/04.webp"
+      "images/phones/apple-iphone-14-pro/gold/00.webp",
+      "images/phones/apple-iphone-14-pro/gold/01.webp",
+      "images/phones/apple-iphone-14-pro/gold/02.webp",
+      "images/phones/apple-iphone-14-pro/gold/03.webp",
+      "images/phones/apple-iphone-14-pro/gold/04.webp"
     ],
     "description": [
       {
@@ -5683,7 +6047,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",
@@ -5694,6 +6058,8 @@
   {
     "id": "apple-iphone-14-pro-256gb-gold",
     "category": "phones",
+    "newModel": "yes",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14-pro",
     "name": "Apple iPhone 14 Pro 256GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5702,12 +6068,13 @@
     "priceDiscount": 1160,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14-pro/gold/00.webp",
-      "img/phones/apple-iphone-14-pro/gold/01.webp",
-      "img/phones/apple-iphone-14-pro/gold/02.webp",
-      "img/phones/apple-iphone-14-pro/gold/03.webp",
-      "img/phones/apple-iphone-14-pro/gold/04.webp"
+      "images/phones/apple-iphone-14-pro/gold/00.webp",
+      "images/phones/apple-iphone-14-pro/gold/01.webp",
+      "images/phones/apple-iphone-14-pro/gold/02.webp",
+      "images/phones/apple-iphone-14-pro/gold/03.webp",
+      "images/phones/apple-iphone-14-pro/gold/04.webp"
     ],
     "description": [
       {
@@ -5730,7 +6097,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",
@@ -5741,6 +6108,8 @@
   {
     "id": "apple-iphone-14-pro-512gb",
     "category": "phones",
+    "newModel": "yes",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14-pro",
     "name": "Apple iPhone 14 Pro 512GB Space Black",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5749,12 +6118,13 @@
     "priceDiscount": 1378,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14-pro/gold/00.webp",
-      "img/phones/apple-iphone-14-pro/gold/01.webp",
-      "img/phones/apple-iphone-14-pro/gold/02.webp",
-      "img/phones/apple-iphone-14-pro/gold/03.webp",
-      "img/phones/apple-iphone-14-pro/gold/04.webp"
+      "images/phones/apple-iphone-14-pro/gold/00.webp",
+      "images/phones/apple-iphone-14-pro/gold/01.webp",
+      "images/phones/apple-iphone-14-pro/gold/02.webp",
+      "images/phones/apple-iphone-14-pro/gold/03.webp",
+      "images/phones/apple-iphone-14-pro/gold/04.webp"
     ],
     "description": [
       {
@@ -5777,7 +6147,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",
@@ -5788,6 +6158,8 @@
   {
     "id": "apple-iphone-14-pro-1tb-gold",
     "category": "phones",
+    "newModel": "yes",
+    "availability" : "yes",
     "namespaceId": "apple-iphone-14-pro",
     "name": "Apple iPhone 14 Pro 1TB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
@@ -5796,12 +6168,13 @@
     "priceDiscount": 1520,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "gold",
+    "quantity": 1,
     "images": [
-      "img/phones/apple-iphone-14-pro/gold/00.webp",
-      "img/phones/apple-iphone-14-pro/gold/01.webp",
-      "img/phones/apple-iphone-14-pro/gold/02.webp",
-      "img/phones/apple-iphone-14-pro/gold/03.webp",
-      "img/phones/apple-iphone-14-pro/gold/04.webp"
+      "images/phones/apple-iphone-14-pro/gold/00.webp",
+      "images/phones/apple-iphone-14-pro/gold/01.webp",
+      "images/phones/apple-iphone-14-pro/gold/02.webp",
+      "images/phones/apple-iphone-14-pro/gold/03.webp",
+      "images/phones/apple-iphone-14-pro/gold/04.webp"
     ],
     "description": [
       {
@@ -5824,7 +6197,7 @@
         ]
       }
     ],
-    "screen": "6.1' OLED (Super Retina XDR)",
+    "screen": "6.1' OLED",
     "resolution": "2556x1179",
     "processor": "Apple A16 Bionic",
     "ram": "6GB",

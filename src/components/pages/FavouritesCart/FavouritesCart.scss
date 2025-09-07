@@ -1,0 +1,25 @@
+@use '../../../assets/styles/variables' as *;
+
+.shopping-favourites-title {
+  font-size: 48px;
+  font-weight: $font-bold;
+  color: #313237;
+}
+
+.product-list-favourites {
+  margin-bottom: 80px;
+}
+
+/* Адаптація для планшетів */
+@media (max-width: 1199px) and (min-width: 640px) {
+  .product-list-favourites {
+    margin-bottom: 64px;
+  }
+}
+
+/* Адаптація для мобільних 320–639px */
+@media (max-width: 639px) {
+  .product-list-favourites {
+    margin-bottom: 56px;
+  }
+}

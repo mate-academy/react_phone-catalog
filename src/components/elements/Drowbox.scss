@@ -1,0 +1,114 @@
+@use '../../assets/styles/variables' as *;
+
+.items-select {
+  position: relative;
+  min-width: 174px;
+
+  .label {
+    font-size: 12px;
+    color: $secondary-color;
+    margin-bottom: 4px;
+  }
+
+  .select-box {
+    border: 1px solid $button-border-color;
+    padding: 8px;
+    cursor: pointer;
+    background: #fff;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    .selected-value {
+      color: $main-color;
+      font-weight: 600;
+    }
+
+    .arrow {
+      font-size: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    &.open .arrow {
+      transform: rotate(180deg) translateY(4px);
+    }
+  }
+
+  .select-box:hover {
+    border: 1px solid $button-border-color-hover;
+  }
+
+  .options-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease;
+
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 172px;
+    border: 1px solid $button-border-color;
+    background: #fff;
+    z-index: 10;
+
+    .option {
+      font-size: $text-name-product-size;
+      padding: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: $secondary-color;
+
+      &:hover {
+        background-color: $border-color;
+      }
+
+      &.active {
+        color: $main-color;
+      }
+    }
+
+    &.open {
+      max-height: 500px;
+      width: 99%;
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+/* Адаптація для мобільних 320–639px */
+@media (max-width: 639px) {
+  .items-select {
+    min-width: auto;
+
+    .options-list {
+      top: 66px;
+      width: 100%;
+
+      &.open {
+        width: 98%;
+      }
+    }
+  }
+
+  .items-select-color {
+    width: 30%;
+  }
+
+  .items-select-price {
+    width: 40%;
+  }
+
+  .items-select-page {
+    width: 30%;
+  }
+}

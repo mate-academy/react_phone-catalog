@@ -1,0 +1,149 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #ff0101;
+    transform: scale(1.3);
+  }
+}
+
+input::placeholder {
+  color: #b8b8b8;
+  font-style: italic;
+}
+
+h2 {
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #111;
+  text-align: center;
+}
+
+form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  margin-top: 18px;
+  color: #444;
+  user-select: none;
+}
+
+form input {
+  width: 92%;
+  padding: 12px 15px;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  outline-offset: 2px;
+
+  &:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 6px #3a86ff66;
+  }
+}
+
+.button-submit {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+button[type='submit'],
+button[type='button'] {
+  margin-top: 30px;
+  padding: 14px 22px;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  user-select: none;
+  min-width: 120px;
+}
+
+button[type='submit'] {
+  background-color: #0057e4a6;
+  color: #fff;
+  box-shadow: 0 4px 12px #3a86ff88;
+}
+
+button[type='submit']:disabled {
+  background-color: #a8c5ff;
+  cursor: not-allowed;
+  box-shadow: none;
+  color: #eee;
+}
+
+button[type='submit']:hover:not(:disabled) {
+  background-color: #0057e4;
+  box-shadow: 0 6px 14px #265dd888;
+}
+
+button[type='button'] {
+  background-color: #eee;
+  color: #555;
+  margin-left: 15px;
+  box-shadow: 0 2px 8px #bbb;
+}
+
+button[type='button']:hover:not(:disabled) {
+  background-color: #ddd;
+  color: #222;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
+@media (max-width: 520px) {
+  .modal-content {
+    width: 90%;
+    padding: 25px 20px;
+    max-height: 85vh;
+  }
+}

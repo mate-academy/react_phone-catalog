@@ -1,0 +1,339 @@
+@use '../../assets/styles/variables' as *;
+
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: $button-background;
+  border-bottom: 1px solid $border-color;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.burger-button,
+.mobile-bottom-icons {
+  display: none;
+}
+
+.logo {
+  cursor: pointer;
+  padding: 16px 0;
+  margin-right: 48px;
+}
+
+.logo-img {
+  width: 80px;
+  height: 28px;
+  transition: all 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.07);
+}
+
+.logo-img:active {
+  transform: scale(0.95);
+}
+
+.nav_link {
+  flex-grow: 1;
+}
+
+.nav-link-box {
+  gap: 64px;
+  display: flex;
+}
+
+.nav_link a {
+  font-size: $text-nav-link;
+  font-weight: $font-bold;
+  line-height: 11px;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  color: $secondary-color;
+  padding: 23px 0;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.nav_link a:hover {
+  color: $main-color;
+}
+
+.nav_link a.active {
+  color: $main-color;
+  border-bottom: 3px solid $main-color;
+}
+
+.burger-button {
+  display: none;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1001;
+
+  img {
+    position: absolute;
+    transition: opacity 0.3s ease;
+  }
+
+  .fade-in {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .fade-out {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+.icons {
+  display: flex;
+  height: 100%;
+}
+
+.icons img {
+  border: 1px solid $border-color;
+  padding: 21.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.icons img:hover {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.20);
+}
+
+.icon-box + .icon-box {
+  margin-left: -1px;
+}
+
+.icon-box.active {
+  color: $main-color;
+  border-bottom: 3px solid $main-color;
+}
+
+.cart-icon-box {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-count-cart,
+.cart-count-favourites {
+  position: absolute;
+  top: 13px;
+  right: 12px;
+  background-color: #eb5757;
+  color: white;
+  font-size: 9px;
+  font-weight: $font-regular;
+  min-width: 15px;
+  height: 15px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Адаптація для планшетів */
+@media (max-width: 1199px) and (min-width: 640px) {
+  .header {
+    padding: 0 0 0 16px;
+    height: 52px;
+  }
+
+  .logo {
+    margin-right: 32px;
+  }
+
+  .logo-img {
+    width: 64px;
+    height: 21px;
+  }
+
+  .nav-link-box {
+    gap: 32px;
+  }
+
+  .nav_link a {
+    padding: 19px 0;
+  }
+
+  .icons img {
+    padding: 17.5px;
+  }
+
+  .cart-count-cart,
+  .cart-count-favourites {
+    top: 10px;
+    right: 10px;
+    min-width: 14px;
+    height: 14px;
+  }
+}
+
+/* Адаптація для мобільних 320–639px */
+@media (max-width: 639px) {
+  .header {
+    height: 52px;
+    padding: 0 8px;
+  }
+
+  .logo {
+    margin-right: auto;
+    padding-left: 8px;
+  }
+
+  .burger-button {
+    display: block;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+
+    img {
+      border: 1px solid $border-color;
+      top: -21px;
+      left: -20px;
+      width: 32px;
+      height: 32px;
+      padding: 13px;
+    }
+  }
+
+  .nav-link-box {
+    gap: 0;
+    display: flex;
+  }
+
+  .nav_link {
+    /* Приховуємо меню спочатку */
+    position: absolute;
+    top: 53px;
+    left: 0;
+    right: 0;
+    background-color: $button-background;
+    z-index: 998;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition:
+      height 0.7s ease,
+      opacity 0.7s ease;
+
+    &.mobile {
+      display: flex;
+      justify-content: center;
+    }
+
+    &.mobile.animating {
+      height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &.mobile.open {
+      height: 100vh;
+      opacity: 1;
+      pointer-events: auto; /* дозволити кліки */
+    }
+
+    a {
+      padding: 12px 0;
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    a.active {
+      color: $main-color;
+      border-bottom: 3px solid $main-color;
+    }
+  }
+
+  .nav_link-mobile-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-top: 40px;
+    width: 100%;
+    height: 50%;
+  }
+
+  .icons {
+    display: none;
+  }
+
+  .mobile-bottom-icons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background-color: $button-background;
+    border-top: 1px solid $border-color;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 999;
+
+    .divider {
+      width: 1px;
+      height: 24px;
+      background-color: $border-color;
+    }
+
+    .icon-box {
+      position: relative;
+
+      &.active {
+        border-bottom: 3px solid $main-color;
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .cart-count-cart,
+    .cart-count-favourites {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      font-size: 10px;
+      min-width: 15px;
+      height: 15px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 15px;
+    }
+  }
+}

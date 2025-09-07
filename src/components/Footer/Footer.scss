@@ -1,0 +1,160 @@
+@use '../../assets/styles/variables' as *;
+
+.footer-wrapper {
+  z-index: 10;
+  border-top: 1px solid $border-color;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+  max-width: 1200px;
+  box-sizing: border-box;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  padding: 16px 0;
+}
+
+.footer-logo-img {
+  width: 80px;
+  height: 28px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.07);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.footer-nav_link {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-grow: 1;
+}
+
+.footer-nav_link a {
+  font-weight: $font-bold;
+  font-size: $text-nav-link;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: $secondary-color;
+  padding: 24px 0;
+  border-bottom: 2px solid transparent;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+
+  &:hover {
+    color: $main-color;
+  }
+
+  &.active {
+    color: $main-color;
+  }
+}
+
+.footer-icons {
+  display: flex;
+}
+
+.footer-icons p {
+  color: $secondary-color;
+  font-size: $text-nav-link;
+  font-weight: $font-semi-bold;
+  line-height: 11px;
+  transition: all 0.2s ease;
+}
+
+.footer-icons:hover p {
+  color: $main-color;
+}
+
+.swiper-button-custom-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $button-border-color;
+  background: $button-background;
+  cursor: pointer;
+  margin-left: 16px;
+  transition: all 0.2s ease;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    border: 1px solid $main-color;
+  }
+}
+
+.icons_arrow {
+  height: 16px;
+  width: 16px;
+  display: block; /* або inline-block */
+}
+
+/* Адаптація для планшетів */
+@media (max-width: 1199px) and (min-width: 640px) {
+  .footer {
+    height: 96px;
+    padding: 0 24px;
+  }
+
+  .footer-logo {
+    padding: 16px 0;
+  }
+
+  .footer-logo-img {
+    width: 89px;
+    height: 32px;
+  }
+
+  .footer-nav_link {
+    gap: 26px;
+  }
+}
+
+/* Для мобільної версії */
+@media (max-width: 639px) {
+  .footer {
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    height: 250px;
+    padding: 0 16px;
+    margin: 0 auto;
+    margin-bottom: 16px;
+  }
+
+  .footer-logo {
+    padding: 28px 0;
+  }
+
+  .footer-logo-img {
+    width: 100px;
+    height: 48px;
+  }
+
+  .footer-nav_link {
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+  }
+
+  .footer-nav_link a {
+    padding: 4px 0;
+  }
+
+  .footer-icons {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,218 @@
+@use '../../../../assets/styles/variables' as *;
+
+.slider-wrapper-container {
+  margin-bottom: 60px;
+}
+
+.title {
+  font-weight: $font-bold;
+  font-size: $font-title-big-size;
+  line-height: 56px;
+  letter-spacing: -1px;
+  color: $main-color;
+  padding: 120px 32px 32px;
+  max-width: 1032px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.nav-button {
+  padding: 6px;
+  border: 1px solid $button-border-color;
+  background: $button-background;
+  height: auto;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $button-border-color-hover;
+  }
+}
+
+.icons_arrow {
+  height: 16px;
+  width: 16px;
+}
+
+.slider-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1039px;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.image-slide {
+  flex-shrink: 0;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.image-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.slider-dot {
+  width: 14px;
+  height: 4px;
+  background-color: $border-color;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &.active {
+    background-color: $main-color;
+  }
+}
+
+/* Адаптація для планшетів */
+@media (max-width: 1199px) and (min-width: 640px) {
+  .slider-wrapper-container {
+    margin-bottom: 50px;
+  }
+
+  .title {
+    padding: 80px 24px 32px;
+    max-width: 1064px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .slider-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .nav-button {
+    padding: 6px;
+    border: 1px solid $button-border-color;
+    background: $button-background;
+    height: auto;
+    transition: border-color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .nav-button:hover {
+    border: 1px solid $button-border-color-hover;
+  }
+
+  .icons_arrow {
+    height: 16px;
+    width: 16px;
+  }
+
+  .slider-container {
+    overflow: hidden;
+    width: 100%;
+    max-width: 1039px;
+    position: relative;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .image-slide {
+    flex-shrink: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .image-slide img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .slider-dot {
+    width: 14px;
+    height: 4px;
+    background-color: $border-color;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .slider-dot.active {
+    background-color: $main-color;
+  }
+}
+
+/* Адаптація для мобільних 320–639px */
+@media (max-width: 639px) {
+  .slider-wrapper-container {
+    margin-bottom: 56px;
+  }
+
+  .title {
+    font-size: 42px;
+    padding: 72px 16px 24px;
+  }
+
+  .slider-wrapper {
+    width: 100% !important;
+    padding: 0;
+    height: 100%;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .image-slide {
+    flex-shrink: 0;
+    width: 320px;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .image-slide img {
+    width: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .nav-button {
+    display: none;
+  }
+}
