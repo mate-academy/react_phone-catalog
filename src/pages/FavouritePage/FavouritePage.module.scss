@@ -1,13 +1,11 @@
 @import '../../styles/common';
 
-.goBackButton__cartPage {
+.goBackButton__favouritePage {
   padding-top: 48px;
 }
 
-.cartPage {
+.favouritePage {
   padding: 32px $padding-phone 0;
-  display: flex;
-  flex-direction: column;
   max-width: 1136px;
 
   @include page-grid;
@@ -19,7 +17,6 @@
 
   @include on-desktop-small {
     padding: 32px $padding-desktop-small 80px;
-    flex-direction: row;
     column-gap: 16px;
   }
 

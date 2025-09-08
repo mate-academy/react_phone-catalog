@@ -30,10 +30,10 @@ export const Card: React.FC<Props> = ({ product }) => {
   );
 
   const imageSrc = product.image
-    ? `/${product.image.replace(/^\/?/, '')}`
+    ? `/${product.image}`
     : product.images && product.images.length > 0
-      ? `/${product.images[0].replace(/^\/?/, '')}`
-      : '/img/notFoundPage.png';
+      ? `/${product.images[0]}`
+      : '/img/page-not-found.png';
 
   const price = product.price ?? product.priceDiscount ?? '';
   const fullPrice = product.fullPrice ?? product.priceRegular ?? '';

@@ -117,10 +117,10 @@ export const ProductDescription: React.FC<Props> = ({
   );
 
   const imageSrc = selectedProduct?.image
-    ? `/${selectedProduct.image.replace(/^\/?/, '')}`
+    ? `/${selectedProduct.image}`
     : selectedImage
-      ? `/${selectedImage.replace(/^\/?/, '')}`
-      : '/img/notFoundPage.png';
+      ? `/${selectedImage}`
+      : '/img/page-not-found.png';
 
   const shortSpecs: SpecItem[] = [
     { name: 'Screen', value: screen },
@@ -169,7 +169,7 @@ export const ProductDescription: React.FC<Props> = ({
                     )}
                   >
                     <img
-                      src={`/${image.replace(/^\/?/, '')}`}
+                      src={`/${image}`}
                       alt={selectedProduct.id}
                       className="product-description__miniature-image"
                     />

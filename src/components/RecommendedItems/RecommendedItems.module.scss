@@ -23,18 +23,12 @@
     grid-column: -1 / 1;
     display: flex;
     justify-content: space-between;
-
-    @include page-grid;
+    align-items: center;
+    margin-bottom: 24px;
 
     &--buttons {
       display: flex;
-      justify-content: space-between;
       gap: 16px;
-      margin-right: 16px;
-
-      @include on-desktop-small {
-        margin-right: 0;
-      }
     }
 
     &--title {
@@ -43,7 +37,7 @@
       letter-spacing: 0;
       font-weight: 700;
       color: #313237;
-      margin-bottom: 24px;
+      margin: 0;
       box-sizing: border-box;
       text-align: left;
 

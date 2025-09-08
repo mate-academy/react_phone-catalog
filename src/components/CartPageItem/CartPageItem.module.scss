@@ -37,18 +37,19 @@
       margin: auto 0;
       width: 32px;
       height: 32px;
-      background-image: url('/img/close_def.png');
+      background-image: url('/img/delete.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size: 16px 16px;
-      border: none;
       background-color: transparent;
+      border: none !important;
       cursor: pointer;
-      transition: background-image 0.2s;
+      transition: all 0.2s;
 
       &:hover,
       &:active {
-        background-image: url('/img/delete.png');
+        background-image: url('/img/close_def.svg');
+        border: none !important;
       }
     }
 
@@ -106,6 +107,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px 16px;
+  background-color: transparent;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -115,21 +117,26 @@
 
   &:hover,
   &:active {
-    border: 1px solid #313237;
+    border-color: #313237;
   }
 }
 
 .card__decreaseQuantity {
   background-image: url('/img/decreaseQuantity.png');
 
-  &--active,
-  &:hover:not(.card__decreaseQuantity--disabled) {
-    background-image: url('/img/decreaseQuantity_active.png');
-  }
-
   &--disabled {
     pointer-events: none;
     opacity: 0.5;
+  }
+
+  &:hover:not(.card__decreaseQuantity--disabled),
+  &:active:not(.card__decreaseQuantity--disabled) {
+    border-color: #313237;
+  }
+
+  &--active,
+  &:hover:not(.card__decreaseQuantity--disabled) {
+    background-image: url('/img/decreaseQuantity_active.png');
   }
 }
 
