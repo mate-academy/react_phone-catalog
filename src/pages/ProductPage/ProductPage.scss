@@ -16,7 +16,7 @@
     display: flex;
     gap: 8px;
     align-self: start;
-    padding-bottom: 40px;
+    padding: 0 0 40px;
 
     @include on-mobile {
       padding-bottom: 24px;
