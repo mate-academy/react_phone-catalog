@@ -1,0 +1,66 @@
+@import '../../styles/utils/mixin';
+@import '../../styles/utils/variables';
+
+.product-page-list {
+  &__models {
+    color: $secondary-text-color;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 14px;
+    padding-bottom: 40px;
+
+    @include on-mobile {
+      padding-bottom: 32px;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+
+  &__products-list {
+    display: flex;
+    justify-self: center;
+  }
+}
+
+.filters {
+  &__sort-by {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Mont-Regular, sans-serif;
+    color: $secondary-text-color;
+    font-size: 12px;
+  }
+
+  &__items-on-page {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Mont-Regular, sans-serif;
+    color: $secondary-text-color;
+    font-size: 12px;
+  }
+}
+
+.sort-by__dropdown {
+  min-width: 176px;
+
+  @include on-tablet {
+    min-width: 187px;
+  }
+
+  @include on-mobile {
+    min-width: 136px;
+  }
+}
+
+.items-on-page__dropdown {
+  min-width: 128px;
+
+  @include on-tablet {
+    min-width: 136px;
+  }
+}
