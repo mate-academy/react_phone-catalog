@@ -10,9 +10,13 @@ import { ProductCard } from '../ProductCard/ProductCard';
 
 export const Phones: React.FC = () => {
   const { dispatch } = useCart();
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const pageParam = Number(searchParams.get('page')) || 1;
+  const [currentPage, setCurrentPage] = useState(pageParam);
+
   const sortParam = searchParams.get('sort') || 'age';
+
   const itemsPerPage = Number(searchParams.get('perPage')) || 16;
 
   const sortedProducts = [...products].sort((a, b) => {
@@ -60,6 +64,11 @@ export const Phones: React.FC = () => {
 
   const goToPage = (page: number) => {
     setCurrentPage(page);
+    const newSearchParam = new URLSearchParams(searchParams);
+
+    newSearchParam.set('page', String(page));
+    setSearchParams(newSearchParam);
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -92,7 +101,9 @@ export const Phones: React.FC = () => {
     const pages = [];
 
     if (totalPages <= maxVisible) {
-      for (let i = 1; i <= totalPages; i++) pages.push(i);
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
 
       return pages;
     }
@@ -103,7 +114,9 @@ export const Phones: React.FC = () => {
     } else if (currentPage >= totalPages - 1) {
       pages.push(1);
       pages.push('...');
-      for (let i = totalPages - 2; i <= totalPages; i++) pages.push(i);
+      for (let i = totalPages - 2; i <= totalPages; i++) {
+        pages.push(i);
+      }
     } else {
       pages.push(1);
       pages.push('...');
@@ -197,7 +210,7 @@ export const Phones: React.FC = () => {
       <div className={styles.pagination}>
         <button
           className={styles.prev_page_button}
-          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          onClick={() => goToPage(Math.max(currentPage - 1, 1))}
           disabled={currentPage === 1}
         >
           <img src="img/Arrow-left.svg" alt="prev" />
@@ -210,7 +223,7 @@ export const Phones: React.FC = () => {
           ) : (
             <button
               key={page}
-              onClick={() => goToPage(Number(page))}
+              onClick={() => goToPage(Math.min(currentPage + 1, totalPages))}
               className={currentPage === page ? styles.active_page : ''}
             >
               {page}
