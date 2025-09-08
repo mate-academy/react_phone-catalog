@@ -14,6 +14,8 @@ import { ButtonBack } from '../../components/ButtonBack/ButtonBack';
 
 import style from './ProductsDetailsPage.module.scss';
 
+const files = ['api/phones.json', 'api/tablets.json', 'api/accessories.json'];
+
 const buildProductId = (
   namespaceId: string,
   capacity: string,
@@ -24,10 +26,10 @@ const buildProductId = (
 
 export const ProductsDetailsPage: React.FC = () => {
   const navigate = useNavigate();
+  const { productId } = useParams<{ productId: string }>();
 
   const [loading, setLoading] = useState(true);
-
-  const { productId } = useParams<{ productId: string }>();
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<Product | null>(null);
 
   const [selectedImage, setSelectedImage] = useState(0);
@@ -36,52 +38,39 @@ export const ProductsDetailsPage: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const files = ['api/phones.json', 'api/tablets.json', 'api/accessories.json'];
-
   useEffect(() => {
-    const fetchProduct = async () => {
+    const loadAllProducts = async () => {
       try {
         setLoading(true);
+        let products: Product[] = [];
 
         for (const file of files) {
           const res = await fetch(file);
           const data: Product[] = await res.json();
-          const found = data.find(p => String(p.id) === productId);
 
-          if (found) {
-            setProduct(found);
-            setSelectedColor(found.color);
-            setSelectedCapacity(found.capacity);
-            break;
-          }
+          products = products.concat(data);
         }
-      } catch (e) {
+
+        setAllProducts(products);
+
+        const found = products.find(p => String(p.id) === productId);
+
+        if (found) {
+          setProduct(found);
+          setSelectedColor(found.color);
+          setSelectedCapacity(found.capacity);
+        }
+
+        const shuffled = [...products].sort(() => 0.5 - Math.random());
+
+        setSuggestedProducts(shuffled.slice(0, 20));
       } finally {
         setLoading(false);
       }
     };
 
-    const getSuggestedProducts = async (count = 20) => {
-      try {
-        let allProducts: Product[] = [];
-
-        for (const file of files) {
-          const res = await fetch(file);
-          const data: Product[] = await res.json();
-
-          allProducts = allProducts.concat(data);
-        }
-
-        const shuffled = allProducts.sort(() => 0.5 - Math.random());
-
-        setSuggestedProducts(shuffled.slice(0, count));
-      } catch (e) {}
-    };
-
-    fetchProduct();
-    getSuggestedProducts();
-  }, [files, productId]);
+    loadAllProducts();
+  }, [productId]);
 
   useEffect(() => {
     if (!product || !selectedColor || !selectedCapacity) {
@@ -94,24 +83,17 @@ export const ProductsDetailsPage: React.FC = () => {
       selectedColor,
     );
 
-    navigate(`/${product.category}/${newId}`, { replace: true });
+    if (product.id !== newId) {
+      navigate(`/${product.category}/${newId}`, { replace: true });
 
-    const fetchVariant = async () => {
-      for (const file of files) {
-        const res = await fetch(file);
-        const data: Product[] = await res.json();
-        const variant = data.find(p => p.id === newId);
+      const variant = allProducts.find(p => p.id === newId);
 
-        if (variant) {
-          setProduct(variant);
-          setSelectedImage(0);
-          break;
-        }
+      if (variant) {
+        setProduct(variant);
+        setSelectedImage(0);
       }
-    };
-
-    fetchVariant();
-  }, [selectedColor, selectedCapacity, product, navigate, files]);
+    }
+  }, [selectedColor, selectedCapacity, product, allProducts, navigate]);
 
   return (
     <>

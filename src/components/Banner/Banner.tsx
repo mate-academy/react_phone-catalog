@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import style from './Banner.module.scss';
 import className from 'classnames';
 
-const images = ['img/banner1.png', 'img/banner2.png', 'img/banner3.png'];
+const images = [
+  'img/banner-phones.png',
+  'img/banner-accessories.png',
+  'img/banner-tablets.png',
+];
 
 export const Banner: React.FC = () => {
   const [current, setCurrent] = useState(0);
