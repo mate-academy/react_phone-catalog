@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import accessories from '../../public/api/accessories.json';
 import products from '../../public/api/products.json';
-import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountProductCard';
 import styles from './Accessories.module.scss';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useCart } from '../UseCart/UseCart';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 export const Accessories: React.FC = () => {
   const { dispatch } = useCart();
@@ -177,7 +177,7 @@ export const Accessories: React.FC = () => {
                 key={accessory.id}
                 className={styles.linkProduct}
               >
-                <DiscountProductCard
+                <ProductCard
                   key={accessory.id}
                   id={accessory.id}
                   name={accessory.name}

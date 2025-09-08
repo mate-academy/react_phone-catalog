@@ -24,7 +24,7 @@
   display: flex;
   font-family: Mont, sans-serif;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 15.34px;
   text-align: left;
   text-decoration: none;
@@ -40,7 +40,7 @@
 .navigation_text {
   font-family: Mont, sans-serif;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 15px;
   text-align: left;
   color: #313237;
@@ -389,6 +389,35 @@
   cursor: pointer;
 }
 
+.product_grid {
+  margin: 32px 0 24px 0;
+  width: 100%;
+}
+
+.buttons_group {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.buttons_controls {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border: 1px solid gray;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons_controls:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
 @media screen and (min-width: 640px) {
   .container {
     display: flex;
@@ -413,7 +442,6 @@
   .navigation_text {
     font-family: Mont, sans-serif;
     font-size: 12px;
-    font-weight: 700;
     line-height: 15.34px;
     text-align: left;
 
@@ -422,7 +450,6 @@
   .button_back {
     font-family: Mont, sans-serif;
     font-size: 12px;
-    font-weight: 700;
     line-height: 15.34px;
     text-align: left;
     text-decoration: none;
@@ -747,6 +774,7 @@
     display: flex;
     flex-direction: column;
     margin: 80px 152px;
+    width: 1136px;
   }
 
   .content {
@@ -762,7 +790,6 @@
   .navigation_text {
     font-family: Mont, sans-serif;
     font-size: 12px;
-    font-weight: 700;
     line-height: 15.34px;
     text-align: left;
 
@@ -771,7 +798,6 @@
   .button_back {
     font-family: Mont, sans-serif;
     font-size: 12px;
-    font-weight: 700;
     line-height: 15.34px;
     text-align: left;
     text-decoration: none;
@@ -1057,6 +1083,10 @@
     text-decoration: none;
     color: inherit;
     display: block;
+  }
+
+  .swiper-slide {
+    width: 237px;
   }
 }
 

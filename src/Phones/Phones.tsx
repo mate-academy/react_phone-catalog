@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import phones from '../../public/api/phones.json';
 import products from '../../public/api/products.json';
-import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountProductCard';
 import styles from './Phones.module.scss';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useCart } from '../UseCart/UseCart';
 import { useNavigate } from 'react-router-dom';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 export const Phones: React.FC = () => {
   const { dispatch } = useCart();
@@ -174,7 +174,7 @@ export const Phones: React.FC = () => {
                 key={phone.id}
                 className={styles.link_product}
               >
-                <DiscountProductCard
+                <ProductCard
                   key={phone.id}
                   id={phone.id}
                   name={phone.name}

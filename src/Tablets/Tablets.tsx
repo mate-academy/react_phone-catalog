@@ -6,6 +6,7 @@ import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountPr
 import styles from './Tablets.module.scss';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useCart } from '../UseCart/UseCart';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 export const Tablets: React.FC = () => {
   const { dispatch } = useCart();
@@ -176,7 +177,7 @@ export const Tablets: React.FC = () => {
                 key={phone.id}
                 className={styles.linkProduct}
               >
-                <DiscountProductCard
+                <ProductCard
                   key={phone.id}
                   id={phone.id}
                   name={phone.name}

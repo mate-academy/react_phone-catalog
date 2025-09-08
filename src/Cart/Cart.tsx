@@ -143,20 +143,7 @@ export const Cart: React.FC = () => {
                         </button>
                       </div>
                       <div className={styles.price}>
-                        {fullProduct.priceDiscount ? (
-                          <>
-                            <span className={styles.discount_price}>
-                              ${fullProduct.priceDiscount}
-                            </span>
-                            <span className={styles.original_price}>
-                              ${fullProduct.priceRegular}
-                            </span>
-                          </>
-                        ) : (
-                          <span className={styles.price}>
-                            ${fullProduct.priceRegular}
-                          </span>
-                        )}
+                        ${fullProduct.priceRegular * product.quantity}
                       </div>
                     </div>
                   </div>

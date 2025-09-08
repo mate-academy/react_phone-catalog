@@ -6,7 +6,15 @@ import tablets from '../../public/api/tablets.json';
 import accessories from '../../public/api/accessories.json';
 import styles from './ItemCard.module.scss';
 import { useCart } from '../UseCart/UseCart';
-import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountProductCard';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import SwiperCore from 'swiper';
+import { Navigation } from 'swiper/modules';
+import { ProductCard } from '../ProductCard/ProductCard';
+
+SwiperCore.use([Navigation]);
 
 export const ItemCard: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -86,36 +94,71 @@ export const ItemCard: React.FC = () => {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
   };
 
-  const getDiscountedProducts = products => {
-    return products.filter(
-      production =>
-        production.priceDiscount &&
-        production.priceDiscount < production.priceRegular,
+  const resolvePrices = (p: any) => {
+    const regular =
+      typeof p?.priceRegular === 'number'
+        ? p.priceRegular
+        : typeof p?.fullPrice === 'number'
+          ? p.fullPrice
+          : null;
+
+    const current =
+      typeof p?.priceDiscount === 'number'
+        ? p.priceDiscount
+        : typeof p?.price === 'number'
+          ? p.price
+          : null;
+
+    return { regular, current };
+  };
+
+  const getDiscountedProducts = (products: any[]) => {
+    return products.filter(p => {
+      const { regular, current } = resolvePrices(p);
+
+      return regular != null && current != null && current < regular;
+    });
+  };
+
+  const getRandomDiscountProducts = (
+    products: any[],
+    count: number,
+    excludeId?: string,
+  ) => {
+    const pool = getDiscountedProducts(products)
+      .filter(p => p.id !== excludeId)
+      .filter(p => Array.isArray(p.images) && p.images.length > 0);
+
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+
+    return pool.slice(0, Math.max(0, count));
+  };
+
+  const [randomDiscountProduct, setRandomDiscountProduct] = useState([]);
+
+  useEffect(() => {
+    setRandomDiscountProduct(
+      getRandomDiscountProducts(allProducts, 16, product.id),
     );
-  };
-
-  const getRandomDiscountProducts = (products, count) => {
-    const discountedProducts = getDiscountedProducts(products);
-    const shuffled = [...discountedProducts].sort(() => 0.5 - Math.random());
-
-    return shuffled.slice(0, count);
-  };
-
-  const randomDiscountProduct = getRandomDiscountProducts(allProducts, 4);
+  }, [productId]);
 
   const handleAddToCart = (id: string) => {
-    const production = phones.find(p => p.id === id);
+    const production = allProducts.find(p => p.id === id);
 
     if (production) {
-      dispatch({ type: 'ADD_TO_CART', product });
+      dispatch({ type: 'ADD_TO_CART', product: production });
     }
   };
 
   const handleToggleFavorite = (id: string) => {
-    const production = phones.find(p => p.id === id);
+    const production = allProducts.find(p => p.id === id);
 
     if (production) {
-      dispatch({ type: 'TOGGLE_FAVORITE', product });
+      dispatch({ type: 'TOGGLE_FAVORITE', product: production });
     }
   };
 
@@ -345,47 +388,66 @@ export const ItemCard: React.FC = () => {
           <h1 className={styles.controls_title}>You may also like</h1>
           <div className={styles.buttons_group}>
             <button
-              onClick={handlePrev}
-              disabled={currentIndex === 0}
-              className={styles.buttons_controls}
+              className={`brand-new-slider_prev ${styles.buttons_controls}`}
             >
-              <img src="img/Arrow-left.png" alt="Previous" />
+              <img src="img/Arrow-left.png" alt="Next" />
             </button>
             <button
-              onClick={handleNext}
-              disabled={currentIndex + productsPerPage >= sortedProducts.length}
-              className={styles.buttons_controls}
+              className={`brand-new-slider_next  ${styles.buttons_controls}`}
             >
               <img src="img/Arrow-right.png" alt="Next" />
             </button>
           </div>
         </div>
-        <div className={styles.container_also_like}>
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={16}
+          navigation={{
+            nextEl: '.brand-new-slider_next',
+            prevEl: '.brand-new-slider_prev',
+          }}
+          breakpoints={{
+            320: { slidesPerView: 1.5, spaceBetween: 16 },
+            640: { slidesPerView: 3, spaceBetween: 16 },
+            1200: { slidesPerView: 4, spaceBetween: 16 },
+          }}
+          className={styles.product_grid}
+        >
           {randomDiscountProduct.map(randomProduct => (
-            <Link
-              to={`/product/${randomProduct.id}`}
+            <SwiperSlide
               key={randomProduct.id}
-              className={styles.link_product}
+              className={styles.swiper_slide_custom}
             >
-              <DiscountProductCard
+              <Link
+                to={`/product/${randomProduct.id}`}
                 key={randomProduct.id}
-                id={randomProduct.id}
-                name={randomProduct.name}
-                price={randomProduct.priceRegular}
-                discountPrice={randomProduct.priceDiscount}
-                screen={randomProduct.screen}
-                capacity={randomProduct.capacity}
-                ram={randomProduct.ram}
-                imageUrl={randomProduct.images[0]}
-                isFavorite={state.favorites.some(
-                  fav => fav.id === randomProduct.id,
-                )}
-                onAddToCart={() => handleAddToCart(randomProduct.id)}
-                onToggleFavorite={() => handleToggleFavorite(randomProduct.id)}
-              />
-            </Link>
+                className={styles.link_product}
+              >
+                <ProductCard
+                  key={randomProduct.id}
+                  id={randomProduct.id}
+                  name={randomProduct.name}
+                  price={randomProduct.priceRegular}
+                  discountPrice={randomProduct.priceDiscount}
+                  screen={randomProduct.screen}
+                  capacity={randomProduct.capacity}
+                  ram={randomProduct.ram}
+                  imageUrl={randomProduct.images[0]}
+                  isFavorite={state.favorites.some(
+                    fav => fav.id === randomProduct.id,
+                  )}
+                  isInCart={state.cart.some(
+                    cartItem => cartItem.id === randomProduct.id,
+                  )}
+                  onAddToCart={() => handleAddToCart(randomProduct.id)}
+                  onToggleFavorite={() =>
+                    handleToggleFavorite(randomProduct.id)
+                  }
+                />
+              </Link>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </div>
   );
