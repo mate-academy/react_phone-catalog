@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { ProductSlider } from "../../../shared/components/ProductSlider";
 import { useAppSelector } from "../../../../app/store/hooks";
 
@@ -6,7 +6,7 @@ import styles from "./BrandNew.module.scss";
 
 export const BrandNew = () => {
   const products = useAppSelector((state) => state.product.items);
-  
+
   const prevRef = useRef<HTMLDivElement | null>(null);
   const nextRef = useRef<HTMLDivElement | null>(null);
 

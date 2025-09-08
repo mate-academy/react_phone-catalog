@@ -1,6 +1,3 @@
-import React from "react";
-
-
 import { useAppSelector } from "../../../../app/store/hooks";
 import { useParams } from "react-router-dom";
 

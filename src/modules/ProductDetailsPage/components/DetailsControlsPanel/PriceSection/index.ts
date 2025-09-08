@@ -1,1 +1,0 @@
-export {PriceSection} from './PriceSection';

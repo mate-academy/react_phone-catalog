@@ -1,4 +1,5 @@
 import { useAppSelector } from "../../../../../app/store/hooks";
+import { ProductNotFoundPage } from "../../../../ProductNotFoundPage";
 import { CustomButton } from "../../../../shared/components/Button";
 
 import type { DetailsProps } from "../../../../shared/types/ProductDetails";
@@ -14,9 +15,8 @@ export const Actions = ({ priceRegular, priceDiscount, id }: ActionsProps) => {
 
   const detailsProduct = product.find((item) => item.itemId === id);
 
-  //fix this
   if (!detailsProduct) {
-    return null;
+    return <ProductNotFoundPage />;
   }
 
   return (

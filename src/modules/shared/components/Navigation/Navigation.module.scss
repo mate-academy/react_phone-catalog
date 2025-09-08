@@ -1,4 +1,4 @@
-@use "@styles/media" as *;
+@use '@styles/media' as *;
 
 .navigation {
   position: absolute;
@@ -16,7 +16,7 @@
   overflow: hidden;
   transition: min-height 0.3s ease, opacity 0.3s ease;
 
-  &[data-open="true"] {
+  &[data-open='true'] {
     opacity: 1;
     min-height: calc(100vh - 49px);
     max-height: calc(100vh - 49px);
@@ -85,7 +85,7 @@
     transition-duration: color 0.3s;
 
     &::after {
-      content: "";
+      content: '';
 
       position: absolute;
       width: 100%;
@@ -129,6 +129,7 @@
     width: 50%;
     height: 64px;
     overflow: hidden;
+    box-shadow: -1px -1px var(--gray-surface-2);
 
     &Count {
       position: absolute;
@@ -160,8 +161,6 @@
         right: 25%;
       }
     }
-
-    box-shadow: -1px -1px var(--gray-surface-2);
 
     @include tablet {
       width: 48px;

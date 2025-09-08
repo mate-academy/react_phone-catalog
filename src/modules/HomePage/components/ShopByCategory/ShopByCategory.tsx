@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { categoriesList } from '../../constants/categories';
 import { CategoryItem } from './CategoryItem/CategoryItem';
 
