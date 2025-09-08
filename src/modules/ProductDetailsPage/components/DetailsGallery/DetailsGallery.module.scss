@@ -1,0 +1,96 @@
+@use "@/styles/_media" as *;
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+  grid-column: span 4;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 0;
+    grid-column: span 7;
+  }
+
+  @include desktop {
+    grid-column: span 12;
+    margin-bottom: 80px;
+  }
+
+  &MainContainer {
+    height: 288px;
+    width: 100%;
+    transition: width 0.3s, height 0.3s;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      margin: 0px auto;
+    }
+
+    @include tablet {
+      order: 2;
+    }
+
+    @include desktop {
+      height: 464px;
+    }
+  }
+
+  &PreviewList {
+    display: flex;
+    justify-content: space-around;
+    gap: 8px;
+
+    @include tablet {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    @include desktop {
+      justify-content: space-around;
+    }
+  }
+
+  &PreviewItem {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    transition-duration: var(--transition-duration);
+    border: 1px solid var(--gray-elements);
+    border-image: initial;
+    border-radius: 4px;
+
+    @include tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      margin: 0px auto;
+    }
+
+    &[data-selected="true"] {
+      transition-duration: var(--transition-duration);
+      border: 1px solid var(--gray-white);
+      border-image: initial;
+    }
+
+    @include hover {
+      border-color: var(--gray-white);
+    }
+  }
+}

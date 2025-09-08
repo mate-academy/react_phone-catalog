@@ -1,0 +1,173 @@
+@use "@/styles/_media" as *;
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 64px;
+
+  @include desktop {
+    margin-bottom: 80px;
+  }
+
+  & > :first-child {
+    margin-right: 8px;
+  }
+
+  & > :last-child {
+    margin-left: 8px;
+  }
+
+  &ArrowLink {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    background-color: var(--gray-surface-2);
+
+    &[data-disabled="true"] {
+      border: 1px solid var(--placeholders);
+      background: transparent !important;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    @include hover {
+      background-color: var(--placeholders);
+    }
+  }
+
+  &PageLink {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    background-color: var(--gray-surface-1);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--gray-white);
+    border: 1px solid var(--gray-surface-1);
+
+    &[data-active="true"] {
+      background-color: var(--accent);
+      background: var(--accent);
+      color: var(--gray-white);
+      pointer-events: none;
+      transition-duration: 0.3s;
+    }
+
+    @include hover {
+      background-color: var(--placeholders);
+    }
+  }
+}
+
+.root {
+  margin-top: 50px;
+
+  li {
+    display: inline-block;
+
+    a {
+      text-align: center;
+      width: 45px;
+      line-height: 42px;
+      height: 45px;
+      border: 1px solid #fe5f1e;
+      border-radius: 30px;
+      margin-right: 10px;
+      cursor: pointer;
+      display: inline-block;
+      color: #fe5f1e;
+
+      &:hover {
+        background-color: #fe5f1e;
+        color: #fff;
+      }
+    }
+  }
+
+  :global {
+    .selected {
+      a {
+        background-color: #fe5f1e;
+        color: #fff;
+      }
+    }
+  }
+}
+
+// .pagination {
+//   display: flex;
+//   gap: 8px;
+//   justify-content: center;
+//   align-items: center;
+
+//   & > :first-child {
+//     margin-right: 8px;
+
+//   }
+
+//   & > :last-child {
+//     margin-left: 8px;
+//   }
+
+//   li {
+//     display: inline-block;
+
+//     height: 32px;
+//     width: 32px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     user-select: none;
+//     box-sizing: border-box;
+//     transition: background-color 0.3s ease, border-color 0.3s ease;
+//     background-color: var(--gray-surface-2);
+
+//     @include hover {
+//       background-color: var(--placeholders);
+//     }
+
+//     a {
+//       height: 32px;
+//       width: 32px;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       user-select: none;
+//       box-sizing: border-box;
+//       transition: background-color 0.3s ease, border-color 0.3s ease;
+//       background-color: var(--gray-surface-1);
+//       font-weight: 600;
+//       font-size: 14px;
+//       color: var(--gray-white);
+//       border: 1px solid var(--gray-surface-1);
+//     }
+//   }
+
+//   :global {
+//     .selected {
+//       background-color: var(--accent);
+//       background: var(--accent);
+//       color: var(--gray-white);
+//       pointer-events: none;
+//       transition-duration: 0.3s;
+//     }
+
+//     .disabled {
+//       border: 1px solid var(--placeholders);
+//       background: transparent !important;
+//       pointer-events: none;
+//       cursor: default;
+//     }
+//   }
+// }

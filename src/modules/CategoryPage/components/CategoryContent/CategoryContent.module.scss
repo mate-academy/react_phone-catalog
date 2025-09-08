@@ -1,0 +1,31 @@
+@use "@/styles/_media" as *;
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @include tablet {
+    justify-content: start;
+
+    > :nth-child(1) {
+      width: 187px;
+    }
+
+    > :nth-child(2) {
+      width: 136px;
+    }
+  }
+
+  @include desktop {
+    > :nth-child(1) {
+      width: 176px;
+    }
+
+    > :nth-child(2) {
+      width: 128px;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { HeaderDetails } from './HeaderDetails';

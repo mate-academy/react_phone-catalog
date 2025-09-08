@@ -1,0 +1,99 @@
+@use "./_media" as *;
+
+@font-face {
+  font-family: "Mont";
+  src: url('../assets/fonts/Mont-Regular.otf') format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("../assets/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("../assets/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--page-bg);
+  text-wrap: balance;
+}
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+body > :first-child {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 128%;
+  letter-spacing: -0.01em;
+  color: var(--gray-white);
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @include tablet {
+    font-size: 48px;
+    line-height: 117%;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  @include desktop {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: var(--gray-white);
+  margin: 0;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 128%;
+  }
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--gray-white);
+  margin: 0;
+}
