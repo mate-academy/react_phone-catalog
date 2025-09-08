@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styles from './CartPage.module.scss';
-import { Link, useParams } from 'react-router-dom';
-import { Category, isCategory } from '../../../public/api/types/Titles';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../utils/themeContext';
 import { Theme } from '../../../public/api/types/theme';
 import { useShop } from '../../components/ShopContext';
@@ -13,6 +12,7 @@ export const CardPage = () => {
   const { state, incrementItem, decrementItem, removeFromCart } = useShop();
   const uniqueItems = Object.values(state.cart);
   const { theme } = useContext(ThemeContext);
+  const counter = Object.values(state.favorites);
 
   const total = uniqueItems.reduce(
     (sum, { product, qty }) => sum + (product.price ?? product.fullPrice) * qty,
@@ -20,8 +20,16 @@ export const CardPage = () => {
   );
   const items = uniqueItems.reduce((sum, item) => sum + item.qty, 0);
 
-  const { category: rawCategory } = useParams();
-  const category: Category = isCategory(rawCategory) ? rawCategory : 'phones';
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleBack = () => {
+    if (location.state?.from) {
+      navigate(location.state.from, { replace: true });
+    } else {
+      navigate(-1);
+    }
+  };
 
   return (
     <>
@@ -32,16 +40,17 @@ export const CardPage = () => {
         ].join(' ')}
       >
         <div className={styles.container__backbutton}>
-          <Link
-            to={`/${category}`}
+          <div
             className={styles.container__backbutton__back}
+            onClick={handleBack}
           >
             <span className={styles.container__backbutton__icon} />
             <p className={styles.container__backbutton__button}>Back</p>
-          </Link>
+          </div>
         </div>
         <section className={styles.container__body}>
           <h1 className={styles.container__body__title}>Cart</h1>
+          <p className={styles.container__body__text}>{counter.length} items</p>
           <div className={styles.container__body__cart}>
             {uniqueItems.length === 0 ? (
               <div className={styles.container__body__empty}>
@@ -70,7 +79,7 @@ export const CardPage = () => {
                           onClick={() => removeFromCart(product.itemId)}
                         />
                         <img
-                          src={`http:${product.image}`}
+                          src={product.image}
                           alt={product.name}
                           className={styles.container__body__item__img}
                         />

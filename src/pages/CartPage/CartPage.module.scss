@@ -27,11 +27,9 @@
     }
 
     &__icon {
-      background-image: url('../img/icons/ArrowLeft.svg');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-
+      width: 16px;
+      height: 16px;
+      background: url('../img/icons/ArrowLeft.svg') center / contain no-repeat;
       transition: background-image .2s;
     }
   }
@@ -63,8 +61,16 @@
     }
 
     &__title {
+      margin: 0;
       font-family: Mont-Bold, sans-serif;
       font-size: 32px;
+    }
+
+    &__text {
+      margin: 0 0 24px;
+      font-family: Mont-Regular, sans-serif;
+      font-size: 14px;
+      color: $grey-color-text;
     }
 
     &__item {
