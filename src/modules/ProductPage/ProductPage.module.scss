@@ -1,0 +1,44 @@
+@import '../shared/styles/main';
+
+.products {
+  @include content-padding-inline;
+
+  &__content {
+    &-title {
+      font-family: Mont-Bold, sans-serif;
+      font-weight: 800;
+      font-style: Bold;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      color: var(--color-gray-primary);
+
+      @include on-tablet {
+        font-size: 48px;
+        line-height: 56px;
+      }
+    }
+
+    &-count {
+      margin: 8px 0 32px;
+      font-family: Mont-Regular, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: var(--color-gray-secondary);
+
+      @include on-tablet {
+        margin: 8px 0 40px;
+      }
+    }
+  }
+
+  &__filters {
+    @include flex(row);
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+  }
+}

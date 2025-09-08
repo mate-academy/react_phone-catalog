@@ -1,19 +1,30 @@
 @import '../../../shared/styles/main';
 
 .button {
-  margin-block: 25px, 16px;
+  margin: 25px 0;
 
-  @include flex('row', 'center');
+  @include flex(row, flex-start, center);
   
   cursor: pointer;
 
   gap: 4px;
 
   &__title {
+    padding-top: 2px;
     font-family: Mont-Regular, sans-serif;
     font-weight: 700;
     font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0%;
+    letter-spacing: 0;
+    color: var(--color-gray-secondary);
+  }
+
+  &:hover {
+    .button__title {
+      color: var(--color-gray-primary);
+    }
+  }
+
+  @include on-tablet {
+    margin: 41px 0;
   }
 }

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Product } from '../../../shared/types/Product';
 import { Icon } from '../../../shared/components/Icon/Icon';
 import { icons } from '../../../shared/constants/icons';
-import { ProductCard } from './ProductCard';
+import { ProductCard } from '../../../shared/components/ProductCard';
 
 import cn from 'classnames';
 import styles from './ProductsSlider.module.scss';
@@ -21,6 +21,11 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
 
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const [cardWidth, setCardWidth] = useState(0);
+  const gap = 16;
+
+  // считаем количество карточек по брейкпоинтам
   useEffect(() => {
     function updateVisibleCount() {
       if (window.innerWidth >= 1440) {
@@ -39,16 +44,33 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({
 
     return () => window.removeEventListener('resize', updateVisibleCount);
   }, []);
+
+  // считаем ширину карточки от wrapper
+  useEffect(() => {
+    function updateCardWidth() {
+      if (wrapperRef.current) {
+        const wrapperWidth = wrapperRef.current.offsetWidth;
+
+        setCardWidth((wrapperWidth - gap * (visibleCount - 1)) / visibleCount);
+      }
+    }
+
+    updateCardWidth();
+    window.addEventListener('resize', updateCardWidth);
+
+    return () => window.removeEventListener('resize', updateCardWidth);
+  }, [visibleCount]);
+
   const handleNext = () => {
-    setCurrentIndex(prevIndex => Math.min(prevIndex + 1, products.length - 1));
+    setCurrentIndex(prev => Math.min(prev + 1, products.length - visibleCount));
   };
 
   const handlePrev = () => {
-    setCurrentIndex(prevIndex => Math.max(prevIndex - 1, 0));
+    setCurrentIndex(prev => Math.max(prev - 1, 0));
   };
 
   const isPrevDisabled = currentIndex === 0;
-  const isNextDisabled = currentIndex >= products.length - 4;
+  const isNextDisabled = currentIndex >= products.length - visibleCount;
 
   return (
     <div className={styles.carousel}>
@@ -75,26 +97,24 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({
           </button>
         </div>
       </div>
-      <div className={styles.carousel__contentWrapper}>
+
+      <div className={styles.carousel__contentWrapper} ref={wrapperRef}>
         <div
           className={styles.carousel__content}
           style={{
-            transform: `translateX(-${currentIndex * (100 / products.length)}%)`,
+            transform: `translateX(-${currentIndex * (cardWidth + gap)}px)`,
             transition: 'transform 0.5s ease',
-            width: `${(100 * products.length) / visibleCount}%`,
+            display: 'flex',
+            gap: `${gap}px`,
           }}
         >
           {products.map(product => (
             <div
               key={product.id}
               className={styles.carousel__item}
-              style={{ width: `${100 / products.length}%` }}
+              style={{ width: `${cardWidth}px` }}
             >
-              <ProductCard
-                key={product.id}
-                product={product}
-                displayType={displayType}
-              />
+              <ProductCard product={product} displayType={displayType} />
             </div>
           ))}
         </div>

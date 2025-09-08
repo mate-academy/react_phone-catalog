@@ -1,5 +1,6 @@
 @mixin hover($property, $toValue) {
-  transition: #{$property} 0.3s;
+  transition: #{$property} 0.3s ease;
+
   &:hover {
     #{$property}: $toValue;
   }
@@ -41,4 +42,35 @@
   flex-direction: $direction;
   justify-content: $content;
   align-items: $items;
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin responsive-padding($desktop, $tablet, $mobile) {
+  padding-top: $mobile;
+  padding-left: $mobile;
+
+  @include on-tablet {
+    padding-top: $tablet;
+    padding-left: $tablet;
+  }
+
+  @include on-desktop {
+    padding-top: $desktop;
+    padding-left: $desktop;
+  }
 }

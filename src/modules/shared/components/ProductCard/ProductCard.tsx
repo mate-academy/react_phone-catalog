@@ -1,11 +1,11 @@
 import { FC, memo } from 'react';
-import { Product } from '../../../../shared/types/Product';
-import { useCart } from '../../../../shared/contexts/CartContext';
-import { useFavorites } from '../../../../shared/contexts/FavouritesContext';
+import { Product } from '../../types/Product';
+import { useCart } from '../../contexts/CartContext';
+import { useFavorites } from '../../contexts/FavouritesContext';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Icon } from '../../../../shared/components/Icon/Icon';
-import { icons } from '../../../../shared/constants/icons';
+import { Icon } from '../Icon/Icon';
+import { icons } from '../../constants/icons';
 import classNames from 'classnames';
 
 import styles from './ProductCard.module.scss';
@@ -37,31 +37,29 @@ export const ProductCard: FC<Props> = memo(({ product, displayType }) => {
   return (
     <div className={styles.card}>
       <Link
-        to={`/${product.category}/${product.id}`}
+        to={`/${product.category}/${product.itemId}`}
         className={styles.card__image}
       >
         <img src={product.image} alt={product.name} />
       </Link>
       <Link
-        to={`/${product.category}/${product.id}`}
+        to={`/${product.category}/${product.itemId}`}
         className={styles.card__title}
         style={{ textDecoration: 'none' }}
       >
         <span>{product.name}</span>
       </Link>
       {displayType === 'fullprice' && (
-        <span className={styles['card__price-regular']}>
-          ${product.fullPrice}
-        </span>
+        <span className={styles['card__price-regular']}>${product.price}</span>
       )}
 
       {displayType === 'discount' && (
         <div className={styles['card__price-container']}>
           <span className={styles['card__price-regular']}>
-            ${product.fullPrice}
+            ${product.price}
           </span>
           <span className={styles['card__price-discount']}>
-            ${product.price}
+            ${product.fullPrice}
           </span>
         </div>
       )}

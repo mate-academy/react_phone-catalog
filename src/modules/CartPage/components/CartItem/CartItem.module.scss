@@ -52,8 +52,6 @@
 
   &__bottom {
     @include flex(row, space-between, center);
-
-    gap: 24px;
   }
 
   &__image {
@@ -73,9 +71,10 @@
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0%;
+    min-width: 24px;
+    text-align: center;
 
     &-container {
-      width: 96px;
       display: flex;
       align-items: center;
       gap: 14px;
@@ -83,10 +82,14 @@
   }
 
   &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border: 1px solid var(--color-gray-icons-placeholders);
 
     @include set-size(32px, 32px);
-    
+
     cursor: pointer;
     transition: border 0.3 ease;
 
@@ -107,7 +110,8 @@
     font-size: 22px;
     line-height: 140%;
     letter-spacing: 0%;
-    width: 80px;
+    min-width: 100px;
+    text-align: right;
 
     color: var(--color-gray-primary);
   }

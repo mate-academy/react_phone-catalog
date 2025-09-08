@@ -40,6 +40,18 @@ export const icons: Record<string, Icon> = {
     title: 'arrow left',
     path: '/src/modules/shared/icons/arrow-right.svg',
   },
+  arrow_down: {
+    title: 'arrow down',
+    path: '/src/modules/shared/icons/arrow-down.svg',
+  },
+  arrow_left__disabled: {
+    title: 'arrow left disabled',
+    path: '/src/modules/shared/icons/arrow-left-disabled.svg',
+  },
+  arrow_right__disabled: {
+    title: 'arrow left disabled',
+    path: '/src/modules/shared/icons/arrow-right-disabled.svg',
+  },
   cross: {
     title: 'cross',
     path: '/src/modules/shared/icons/cross.svg',
@@ -55,5 +67,9 @@ export const icons: Record<string, Icon> = {
   minus_disabled: {
     title: 'minus disabled',
     path: '/src/modules/shared/icons/minus-disabled.svg',
+  },
+  home: {
+    title: 'home',
+    path: '/src/modules/shared/icons/Home.svg',
   },
 };

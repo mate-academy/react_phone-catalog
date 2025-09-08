@@ -19,8 +19,13 @@ export function getProducts(): Promise<Product[]> {
   return fetchProducts<Product[]>('./api/products.json');
 }
 
-export function getSpecificProducts(
-  productsType: string,
-): Promise<ProductDetails[]> {
-  return fetchProducts<ProductDetails[]>(`./api/${productsType}.json`);
+export async function getProductById(
+  id: string,
+  category: string,
+): Promise<ProductDetails | undefined> {
+  const products: ProductDetails[] = await fetchProducts<ProductDetails[]>(
+    `./api/${category}.json`,
+  );
+
+  return products.find(item => item.id.toLowerCase() === id.toLowerCase());
 }
