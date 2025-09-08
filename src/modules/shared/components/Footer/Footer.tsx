@@ -64,7 +64,7 @@ export const Footer = () => {
         >
           <div className={styles.footerBackTopText}>Back to top</div>
           <div className={styles.footerBackTopIcon}>
-            <img src="/src/assets/icons/arrow-left.svg" alt="Arrow Left" />
+            <img src="src/assets/icons/arrow-left.svg" alt="Arrow Left" />
           </div>
         </button>
       </div>
