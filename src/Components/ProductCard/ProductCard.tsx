@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
+import { useFavorites } from '../../context/FavoritesContext';
 
 type Props = {
   product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const [isFav, setIsFav] = useState(false);
+  const { toggleFavorite, isFavorite } = useFavorites();
   const [isProduct, setIsProduct] = useState(false);
 
   const toggleProduct = () => {
     setIsProduct(prev => !prev);
-  };
-
-  const toggleFav = () => {
-    setIsFav(prev => !prev);
   };
 
   return (
@@ -49,8 +46,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           {isProduct ? 'Added to cart' : 'Add to cart'}
         </button>
         <div
-          className={`${styles.fav} ${isFav ? styles.favActive : ''}`}
-          onClick={toggleFav}
+          className={`${styles.fav} ${isFavorite(product.id) ? styles.favActive : ''}`}
+          onClick={() => toggleFavorite(product)}
         ></div>
       </div>
     </div>

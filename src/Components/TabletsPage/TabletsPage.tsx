@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
-import styles from './PhonesPage.module.scss';
+import styles from './TabletsPage.module.scss';
 import { Product } from '../../types/Product';
 import { Loader } from '../Loader/Loader';
 import { ProductFilters } from '../Filter';
@@ -8,7 +8,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Pagination } from '../Pagination';
 
-export const PhonesPage: React.FC = () => {
+export const TabletsPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -29,11 +29,11 @@ export const PhonesPage: React.FC = () => {
       }
 
       const data: Product[] = await response.json();
-      const phones = data.filter(item => item.category === 'phones');
+      const tablets = data.filter(item => item.category === 'tablets');
 
       await new Promise(resolve => setTimeout(resolve, 700));
 
-      setProducts(phones);
+      setProducts(tablets);
     } catch (e) {
       setError(true);
     } finally {
@@ -83,7 +83,7 @@ export const PhonesPage: React.FC = () => {
   return (
     <div className={styles.page}>
       <Breadcrumbs />
-      <h1 className={styles.title}>Phones page</h1>
+      <h1 className={styles.title}>Tablets page</h1>
       <p className={styles.counter}>{products.length} models</p>
       <ProductFilters />
 

@@ -26,8 +26,9 @@ $desktop-min-width: 1200px;
 
 .image {
   width: 233px;
-  height: auto;
+  height: 130px;
   margin-bottom: 8px;
+  object-fit: contain;
 
   @media (min-width: $tablet-min-width) {
     width: 224px;

@@ -1,9 +1,11 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useState } from 'react';
+import { useFavorites } from '../../context/FavoritesContext';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { favorites } = useFavorites();
 
   return (
     <header className={styles.header}>
@@ -51,13 +53,18 @@ export const Header: React.FC = () => {
             className={({ isActive }) =>
               `${styles.icon} ${styles.iconLike}  ${isActive ? styles.activeIcon : ''}`
             }
-          />
+          >
+            {favorites.length > 0 && (
+              <span className={styles.badge}>{favorites.length}</span>
+            )}
+          </NavLink>
           <NavLink
             to="/cart"
             className={({ isActive }) =>
               `${styles.icon} ${styles.iconShop}  ${isActive ? styles.activeIcon : ''}`
             }
           />
+
           <div className={styles.containerBurger}>
             <div
               className={`${styles.icon} ${styles.iconBurger}`}
@@ -127,7 +134,11 @@ export const Header: React.FC = () => {
               `${styles.icon} ${styles.iconLike} ${styles.icon_aside} ${styles['icon_aside-border']} ${isActive ? styles.activeIcon : ''}`
             }
             onClick={() => setIsMenuOpen(false)}
-          />
+          >
+            {favorites.length > 0 && (
+              <span className={styles.badge}>{favorites.length}</span>
+            )}
+          </NavLink>
           <NavLink
             to="/cart"
             className={({ isActive }) =>

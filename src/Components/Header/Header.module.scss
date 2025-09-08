@@ -232,6 +232,7 @@ $desktop-min-width: 1200px;
   background-image: url(/img/like.svg);
   background-repeat: no-repeat;
   background-size: 16px 16px;
+  position: relative;
 
   @media (min-width: $desktop-min-width) {
     background-size: 20px 20px;
@@ -240,6 +241,23 @@ $desktop-min-width: 1200px;
   &:active {
     background-image: url(/img/heart.svg);
   }
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  min-width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #EB5757;
+  color: #F1F2F9;
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 100%;
 }
 
 .iconBurger {

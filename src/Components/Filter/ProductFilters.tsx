@@ -4,7 +4,7 @@ import styles from './ProductFilters.module.scss';
 export const ProductFilters: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get('sort') || 'age';
-  const perPage = searchParams.get('perPage') || 'all';
+  const perPage = searchParams.get('perPage') || '16';
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newParams = new URLSearchParams(searchParams);
@@ -17,7 +17,7 @@ export const ProductFilters: React.FC = () => {
     const newParams = new URLSearchParams(searchParams);
     const value = event.target.value;
 
-    if (value === 'all') {
+    if (value === '16') {
       newParams.delete('perPage');
     } else {
       newParams.set('perPage', value);
@@ -54,10 +54,10 @@ export const ProductFilters: React.FC = () => {
           onChange={handlePerPageChange}
           className={styles.select}
         >
-          <option value="all">All</option>
-          <option value="4">4</option>
-          <option value="8">8</option>
           <option value="16">16</option>
+          <option value="24">24</option>
+          <option value="32">32</option>
+          <option value="64">64</option>
         </select>
       </div>
     </div>

@@ -52,9 +52,9 @@ $desktop-min-width: 1200px;
 .empty {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 8px;
-  align-items: center;
   font-size: 14px;
   line-height: 21px;
   font-weight: 600;

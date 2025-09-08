@@ -1,9 +1,20 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
 .loaderWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px;
-  height: 100vh;
+  height: calc(100vh - 257px - 49px);
+
+  @media (min-width: $tablet-min-width) {
+    height: calc(100vh - 96px - 49px);
+  }
+
+  @media (min-width: $desktop-min-width) {
+    height: calc(100vh - 96px - 65px);
+  }
 }
 
 .loader {

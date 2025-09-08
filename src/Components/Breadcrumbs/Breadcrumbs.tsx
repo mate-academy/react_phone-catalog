@@ -13,14 +13,15 @@ export const Breadcrumbs: React.FC = () => {
       {parts.map((part, index) => {
         const path = '/' + parts.slice(0, index + 1).join('/');
         const isLast = index === parts.length - 1;
+        const capitalize = part.charAt(0).toUpperCase() + part.slice(1);
 
         return (
           <span key={path} className={styles.part}>
             <span className={styles.separator}></span>
             {isLast ? (
-              <span className={styles.current}>{part}</span>
+              <span className={styles.current}>{capitalize}</span>
             ) : (
-              <Link to={path}>{part}</Link>
+              <Link to={path}>{capitalize}</Link>
             )}
           </span>
         );
