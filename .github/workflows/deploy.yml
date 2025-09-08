@@ -1,23 +1,25 @@
-name: Github Page Deploy Workflow
+name: Github Pages Deploy
 
 on:
   push:
-    branches: [main]
+    branches:
+      - develop # запускается при пуше в develop
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
-          node-version: "12.x"
+          node-version: 20
+
       - run: npm ci
       - run: npm run build
+
       - name: Deploy
-        uses: crazy-max/ghaction-github-pages@v1
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          target_branch: gh-pages
-          build_dir: build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # для Vite
