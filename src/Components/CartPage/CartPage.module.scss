@@ -58,7 +58,6 @@ text-align: left;
 
   &ONTABLET {
     display: none;
-
     @include on-tablet {
       display: block;
     }
@@ -76,17 +75,24 @@ text-align: left;
     }
 
     @include on-desktop {
-      margin: 0 10px;
       display: block;
+    }
+    @include on-desktop-1480 {
+      display: none;
+    }
+
+    @include on-desktop-1760 {
+      display: none;
     }
   }
   &ON1480PX {
     display: none;
+    @include on-desktop {
+      display: none;
+    }
+
     @include on-desktop-1480 {
       display: block;
-    }
-        @include on-desktop {
-      display: none;
     }
     @include on-desktop-1760 {
       display: none;
@@ -95,6 +101,9 @@ text-align: left;
   &ON1760PX {
     display: none;
             @include on-desktop {
+      display: none;
+    }
+    @include on-desktop-1480 {
       display: none;
     }
     @include on-desktop-1760 {
