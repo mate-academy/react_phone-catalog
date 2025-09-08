@@ -23,10 +23,10 @@ export const Breadcrumbs: React.FC<Props> = ({ productName, pageName }) => {
   return (
     <div className={styles.catalogBreadcrumbs}>
       <Link className={styles.catalogBreadcrumbsLink} to={"/"}>
-        <img src="/src/assets/icons/icon-home.svg" alt="Icon Home" />
+        <img src="src/assets/icons/icon-home.svg" alt="Icon Home" />
       </Link>
       <div className={styles.catalogBreadcrumbsImage}>
-        <img src="/src/assets/icons/arrow-right-gray.svg" alt="Arrow Right" />
+        <img src="src/assets/icons/arrow-right-gray.svg" alt="Arrow Right" />
       </div>
       <Link
         to={`/${pageName ? pageName : categoryName}`}
@@ -38,7 +38,7 @@ export const Breadcrumbs: React.FC<Props> = ({ productName, pageName }) => {
         <>
           <div className={styles.catalogBreadcrumbsImage}>
             <img
-              src="/src/assets/icons/arrow-right-gray.svg"
+              src="src/assets/icons/arrow-right-gray.svg"
               alt="Arrow Right"
             />
           </div>
