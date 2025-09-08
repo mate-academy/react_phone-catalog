@@ -133,13 +133,13 @@ export default function ProductPage() {
         <div className="products-list-title-page">
           <Link to="/Home">
             <img
-              src={`${import.meta.env.BASE_URL}images/icons/Home.svg`}
+              src={`/images/icons/Home.svg`}
               className="products-list-icon"
               alt="Home"
             />
           </Link>
           <img
-            src={`${import.meta.env.BASE_URL}images/icons/Chevron_Arrow_Right_Disabled.svg`}
+            src={`/images/icons/Chevron_Arrow_Right_Disabled.svg`}
             className="products-list-arrow"
             alt="Arrow_Right"
           />
@@ -148,7 +148,7 @@ export default function ProductPage() {
           </NavLink>
 
           <img
-            src={`${import.meta.env.BASE_URL}images/icons/Chevron_Arrow_Right_Disabled.svg`}
+            src={`/images/icons/Chevron_Arrow_Right_Disabled.svg`}
             className="products-list-arrow"
             alt="Arrow_Right"
           />
@@ -157,7 +157,7 @@ export default function ProductPage() {
 
         <p className="products-list-title-page">
           <img
-            src={`${import.meta.env.BASE_URL}images/icons/Chevron_Arrow_Left_Disabled.svg`}
+            src={`/images/icons/Chevron_Arrow_Left_Disabled.svg`}
             className="product-list-arrow-one"
             alt="Arrow_Right"
           />
@@ -175,7 +175,7 @@ export default function ProductPage() {
             {product.images?.map((src, i) => (
               <img
                 key={i}
-                src={`${import.meta.env.BASE_URL}${src}`}
+                src={`/${src}`}
                 alt={`Photo ${i + 1}`}
                 className={`photo-gallery__small-photo ${
                   activePhoto === src ? 'active' : ''
@@ -187,7 +187,7 @@ export default function ProductPage() {
 
           <div className="photo-gallery__right-photo">
             <img
-              src={`${import.meta.env.BASE_URL}${activePhoto}`}
+              src={`/${activePhoto}`}
               alt="Big preview"
               className="photo-gallery__big-photo"
             />
@@ -293,8 +293,8 @@ export default function ProductPage() {
                     className="heart-icon"
                     src={
                       liked
-                        ? `${import.meta.env.BASE_URL}images/icons/Favourites_Filled_(Heart_Like).svg`
-                        : `${import.meta.env.BASE_URL}images/icons/Favourites_(Heart_Like).svg`
+                        ? `/images/icons/Favourites_Filled_(Heart_Like).svg`
+                        : `/images/icons/Favourites_(Heart_Like).svg`
                     }
                     alt="Favorite"
                   />

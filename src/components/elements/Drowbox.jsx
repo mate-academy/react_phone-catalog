@@ -34,8 +34,8 @@ export const Drowbox = ({ value, onChange }) => {
           <img
             src={
               isOpen
-                ? `${import.meta.env.BASE_URL}images/icons/Chevron_Arrow_Up_black.svg`
-                : `${import.meta.env.BASE_URL}images/icons/Chevron_Arrow_Down.svg`
+                ? `./images/icons/Chevron_Arrow_Up_black.svg`
+                : `./images/icons/Chevron_Arrow_Down.svg`
             }
             alt="arrow"
             className="select-arrow"

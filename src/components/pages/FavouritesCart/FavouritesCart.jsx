@@ -46,7 +46,7 @@ export const FavouritesCart = () => {
       <div className="shopping-page">
         <p className="products-list-title-page">
           <img
-            src={`${import.meta.env.BASE_URL}images/icons/Chevron_Arrow_Left_Disabled.svg`}
+            src={`./images/icons/Chevron_Arrow_Left_Disabled.svg`}
             className="product-list-arrow-one"
             alt="Arrow_Left"
           />
@@ -87,8 +87,8 @@ export const FavouritesCart = () => {
                       <img
                         src={
                           product?.images?.[0]
-                            ? `${import.meta.env.BASE_URL}${product.images[0]}`
-                            : `${import.meta.env.BASE_URL}images/no-image.jpg`
+                            ? `./${product.images[0]}`
+                            : `./images/no-image.jpg`
                         }
                         alt={product?.name || 'No name'}
                       />
@@ -152,8 +152,8 @@ export const FavouritesCart = () => {
                             className="heart-icon"
                             src={
                               liked
-                                ? `${import.meta.env.BASE_URL}images/icons/Favourites_Filled_(Heart_Like).svg`
-                                : `${import.meta.env.BASE_URL}images/icons/Favourites_(Heart_Like).svg`
+                                ? `./images/icons/Favourites_Filled_(Heart_Like).svg`
+                                : `./images/icons/Favourites_(Heart_Like).svg`
                             }
                             alt="Favorite"
                           />

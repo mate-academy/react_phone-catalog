@@ -13,7 +13,7 @@ export const Footer = () => {
           <NavLink to="/Home">
             <img
               onClick={scrollToTop}
-              src={`${import.meta.env.BASE_URL}images/icons/Logo_1.png`}
+              src={`./images/icons/Logo_1.png`}
               alt="logo"
               className="footer-logo-img"
             />
@@ -54,7 +54,7 @@ export const Footer = () => {
             className="swiper-button-custom-footer"
           >
             <img
-              src={`${import.meta.env.BASE_URL}images/icons/Chevron_Arrow_Up.svg`}
+              src={`./images/icons/Chevron_Arrow_Up.svg`}
               className="icons_arrow"
               alt="Chevron Left"
             />

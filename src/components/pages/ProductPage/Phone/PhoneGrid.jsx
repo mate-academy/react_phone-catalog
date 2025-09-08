@@ -31,7 +31,7 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
       disabled={currentPage === 1}
     >
       <img
-        src={`${import.meta.env.BASE_URL}images/icons/Chevron_Arrow_Left.svg`}
+        src={`./images/icons/Chevron_Arrow_Left.svg`}
         className="icons_arrow_page"
         alt="Chevron Left"
       />
@@ -80,7 +80,7 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
       disabled={currentPage === totalPages}
     >
       <img
-        src={`${import.meta.env.BASE_URL}images/icons/Chevron_Arrow_Right.svg`}
+        src={`./images/icons/Chevron_Arrow_Right.svg`}
         className="icons_arrow_page"
         alt="Chevron Right"
       />
@@ -143,13 +143,13 @@ export const Phones = () => {
       <div className="products-list-title-page">
         <Link to="/Home">
           <img
-            src={`${import.meta.env.BASE_URL}images/icons/Home.svg`}
+            src={`./images/icons/Home.svg`}
             className="products-list-icon"
             alt="Home"
           />
         </Link>
         <img
-          src={`${import.meta.env.BASE_URL}images/icons/Chevron_Arrow_Right_Disabled.svg`}
+          src={`./images/icons/Chevron_Arrow_Right_Disabled.svg`}
           className="products-list-arrow"
           alt="Arrow_Right"
         />

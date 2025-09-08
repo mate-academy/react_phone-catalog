@@ -69,8 +69,8 @@ export const ProductCard = ({ product }) => {
             <img
               src={
                 product?.images?.[0]
-                  ? `${import.meta.env.BASE_URL}${product.images[0]}`
-                  : `${import.meta.env.BASE_URL}images/no-image.jpg`
+                  ? `/${product.images[0]}`
+                  : `/images/no-image.jpg`
               }
               alt={product?.name || 'No name'}
             />
@@ -125,8 +125,8 @@ export const ProductCard = ({ product }) => {
                   className="heart-icon"
                   src={
                     liked
-                      ? `${import.meta.env.BASE_URL}images/icons/Favourites_Filled_(Heart_Like).svg`
-                      : `${import.meta.env.BASE_URL}images/icons/Favourites_(Heart_Like).svg`
+                      ? `/images/icons/Favourites_Filled_(Heart_Like).svg`
+                      : `/images/icons/Favourites_(Heart_Like).svg`
                   }
                   alt="Favorite"
                 />
