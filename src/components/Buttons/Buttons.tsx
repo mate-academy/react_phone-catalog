@@ -16,27 +16,27 @@ export const Buttons: React.FC<Props> = ({
   selectedColor,
   selectedCapacity,
 }) => {
-  const favouriteContext = useFavorites();
+  const favoritesContext = useFavorites();
 
-  if (!favouriteContext) {
-    throw new Error('useFavourite must be use with in a FavouriteProvide');
+  if (!favoritesContext) {
+    throw new Error('useFavorites must be used within a FavoritesProvider');
   }
 
-  const { favorites, toggleFavorite } = favouriteContext;
+  const { favorites, toggleFavorite } = favoritesContext;
 
-  const CartContext = useCart();
+  const cartContext = useCart();
 
-  if (!CartContext) {
-    throw new Error('useCart must be used with in a CartProvide');
+  if (!cartContext) {
+    throw new Error('useCart must be used within a CartProvider');
   }
 
-  const { cart, addToCart } = CartContext;
+  const { cart, addToCart } = cartContext;
 
   const isFavorite = product ? favorites.some(f => f.id === product.id) : false;
   const isInCart = product ? cart.some(item => item.id === product.id) : false;
 
   return (
-    <div className={style.productBtn}>
+    <div className={style.productButton}>
       <button
         className={`${style.productButtonAdd} ${isInCart ? style.inCart : ''}`}
         onClick={e => {
@@ -67,11 +67,11 @@ export const Buttons: React.FC<Props> = ({
         <img
           src={
             isFavorite
-              ? 'img/icons/Favourites (Heart Like).svg'
-              : 'img/icons/Favourites Filled (Heart Like).svg'
+              ? 'img/icons/Favourites Filled (Heart Like).svg'
+              : 'img/icons/Favourites (Heart Like).svg'
           }
-          alt="favourite icon"
-          className={style.productBtnIcon}
+          alt="favourites icon"
+          className={style.productButtonIcon}
         />
       </button>
     </div>

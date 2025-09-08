@@ -17,16 +17,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       className={style.product}
       onClick={() => navigate(`/${product.category}/${product.id}`)}
     >
-      <div className={style.product_character}>
+      <div className={style.product__characteristics}>
         <img
-          className={style.product_Img}
+          className={style.product__image}
           src={product.images[0]}
           alt={product.name}
         />
 
-        <p className={style.product_description}>{product.name}</p>
+        <p className={style.product__description}>{product.name}</p>
 
-        <div className={style.product_price}>
+        <div className={style.product__price}>
           <p
             className={
               style.product__price + ' ' + style['product__price--discount']

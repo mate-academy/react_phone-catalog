@@ -59,7 +59,7 @@ export const AllItemsList: React.FC<Props> = ({
     params.set('page', page.toString());
 
     setSearchParams(params);
-  }, [sort, perPage, page, searchParams, setSearchParams]);
+  }, [sort, perPage, page]);
 
   useEffect(() => {
     if (!path || !setAllItems) {
@@ -87,7 +87,7 @@ export const AllItemsList: React.FC<Props> = ({
     };
 
     getItems();
-  }, [path, searchParams, setAllItems]);
+  }, [path, setAllItems]);
 
   const sortProducts = (items: Product[]) => {
     switch (sort) {
@@ -113,9 +113,7 @@ export const AllItemsList: React.FC<Props> = ({
 
   if (loading) {
     return (
-      <div
-        style={{ display: 'flex', justifyContent: 'center', marginTop: '50' }}
-      >
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
         <ClipLoader color="#905bff" size={60} />
       </div>
     );
@@ -123,10 +121,10 @@ export const AllItemsList: React.FC<Props> = ({
 
   if (error) {
     return (
-      <div style={{ textAlign: 'center', marginTop: '50' }}>
+      <div style={{ textAlign: 'center', marginTop: 50 }}>
         <p>Something went wrong</p>
         <button
-          className={style.reload_btn}
+          className={style.reload__button}
           onClick={() => window.location.reload()}
         >
           Reload
@@ -137,7 +135,7 @@ export const AllItemsList: React.FC<Props> = ({
 
   if (allItems.length === 0) {
     return (
-      <div style={{ textAlign: 'center', marginTop: '50' }}>
+      <div style={{ textAlign: 'center', marginTop: 50 }}>
         <p>There are no {categoryName} yet</p>
       </div>
     );
@@ -145,7 +143,7 @@ export const AllItemsList: React.FC<Props> = ({
 
   if (!useFilters) {
     return (
-      <div className={style.catalog_list}>
+      <div className={style.catalog__list}>
         {allItems.map(item => (
           <ProductCard product={item} key={item.id} />
         ))}
@@ -154,7 +152,7 @@ export const AllItemsList: React.FC<Props> = ({
   }
 
   return loading ? (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
       <ClipLoader color="#905bff" size={60} />
     </div>
   ) : (
@@ -167,7 +165,7 @@ export const AllItemsList: React.FC<Props> = ({
         onPageChange={setPage}
       />
 
-      <div className={style.catalog_list}>
+      <div className={style.catalog__list}>
         {visibleProducts.map(item => (
           <ProductCard product={item} key={item.id} />
         ))}

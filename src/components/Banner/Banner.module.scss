@@ -1,5 +1,5 @@
-@import '../../style/variables.scss';
-@import '../../style/mixins.scss';
+@import '../../style/variables';
+@import '../../style/mixins';
 
 .banner {
   display: flex;
@@ -45,7 +45,7 @@
       z-index: 1;
     }
 
-    %Last {
+    &Last {
       object-position: center 0;
     }
   }

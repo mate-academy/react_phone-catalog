@@ -1,7 +1,7 @@
-@import './style/variables.scss';
-@import './style/mixins.scss';
-@import './style/reset.scss';
-@import './style/fonts.scss';
+@import './style/variables';
+@import './style/mixins';
+@import './style/reset';
+@import './style/fonts';
 
 .App {
   font-family: Mont, sans-serif;
@@ -10,25 +10,25 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  &__content {
+    padding-inline: 152px;
+    flex: 1;
+  }
+
+  @include on-tablet {
+    &__content {
+      padding-inline: 16px;
+    }
+  }
+
+  @include on-desktop {
+    &__content {
+      padding-inline: 24px;
+    }
+  }
+
 }
 
-@include on-tablet {
-  .App {
-    padding-inline: 16px;
-  }
-}
 
-@include on-desktop {
-  .App {
-    padding-inline: 24px;
-  }
-}
-
-@include on-large {
-  .App {
-    padding-inline: 32px;
-    // max-width: 1200px;
-    margin: 0 auto;
-  }
-}
 

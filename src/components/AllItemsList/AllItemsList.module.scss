@@ -1,13 +1,13 @@
-@import '../../style/variables.scss';
+@import '../../style/variables';
 
 .catalog {
-  &_filters {
+  &__filters {
     display: flex;
     flex-direction: row;
     gap: 16px;
   }
 
-  &_list {
+  &__list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
     gap: 16px;
@@ -17,7 +17,7 @@
   }
 }
 
-.reload_btn {
+.reload__button {
   margin-top: 10px;
   font-size: 14px;
   font-weight: 700;

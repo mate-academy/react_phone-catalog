@@ -1,5 +1,5 @@
-@import '../../style/variables.scss';
-@import '../../style/mixins.scss';
+@import '../../style/variables';
+@import '../../style/mixins';
 
 .select {
   padding-bottom: 24px;
@@ -7,21 +7,22 @@
   flex-direction: column;
   gap: 4px;
 
-  &_title {
-    color: $gray-secondary-color;
+  &__title {
+    color: #75767f;
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;
   }
 
-  &_box {
+  &__box {
     width: 187px;
     background-color: $grey-dark-color;
     padding-inline: 12px;
     padding-block: 10px;
     border: none;
+    color: $text-color;
     appearance: none;
-    background-image: url('/public/img/icons/Chevron\ \(Arrow\ Down\).svg');
+    background-image: url('img/icons/Chevron (Arrow Down).svg');
     background-repeat: no-repeat;
     background-position: right 12px center;
 
@@ -30,7 +31,7 @@
 
   @include on-tablet {
     flex: 1;
-    &_box {
+    &__box {
       width: 100%;
     }
   }

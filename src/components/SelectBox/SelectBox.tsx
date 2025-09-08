@@ -21,9 +21,9 @@ export const SelectBox: React.FC<Props> = ({
 }) => {
   return (
     <div className={style.select}>
-      <p className={style.select_title}>{title}</p>
+      <p className={style.select__title}>{title}</p>
       <select
-        className={style.select_box}
+        className={style.select__box}
         value={value}
         onChange={e => onChange(e.target.value)}
       >

@@ -36,6 +36,7 @@ export const ProductsDetailsPage: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const files = ['api/phones.json', 'api/tablets.json', 'api/accessories.json'];
 
   useEffect(() => {

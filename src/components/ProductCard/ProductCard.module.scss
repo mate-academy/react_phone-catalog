@@ -1,4 +1,4 @@
-@import '../../style/variables.scss';
+@import '../../style/variables';
 
 .product {
   display: flex;
@@ -15,23 +15,23 @@
 
   background-color: $grey-dark-secondary-color;
 
-  &_character {
+  &__characteristics {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    border-bottom: $grey-element-color solid 1px;
+    border-bottom: #3B3E4A solid 1px;
 
     flex-grow: 1;
   }
 
-  &_Img {
+  &__image {
     height: 196px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
   }
 
-  &_description {
+  &__description {
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
@@ -39,7 +39,7 @@
     text-overflow: ellipsis;
   }
 
-  &_price {
+  &__price {
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -73,7 +73,7 @@
     }
 
     &-name {
-      color: $gray-secondary-color;
+      color: #75767F;
     }
   }
 

@@ -1,6 +1,6 @@
-@import '../../style/variables.scss';
+@import '../../style/variables';
 
-.productBtn {
+.productButton {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -11,7 +11,7 @@
     padding-inline: 30px;
     padding-block: 9.5px;
     font-family: inherit;
-    background-color: $purple-color;
+    background-color: #905BFF;
     border: none;
     width: 100%;
     color: $text-color;
@@ -36,12 +36,12 @@
 
     &:hover {
       cursor: pointer;
-      background-color: $grey-icon-color;
+      background-color: #4A4D58;
     }
 
-    &:active {
+    &Active {
       background-color: transparent;
-      border: 1px solid $grey-element-color;
+      border: 1px solid #3B3E4A;
 
       &:hover {
         background-color: transparent;
@@ -60,6 +60,6 @@
   background-color: $grey-dark-color;
 
   &:hover {
-    background-color: $grey-icon-color;
+    background-color: #4A4D58;
   }
 }
