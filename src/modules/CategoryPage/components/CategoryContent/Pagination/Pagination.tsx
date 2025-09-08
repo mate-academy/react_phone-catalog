@@ -45,7 +45,7 @@ export const Pagination: React.FC<Props> = ({ products }) => {
         aria-disabled={currentPage === 1}
         to={buildLink(prevPage)}
       >
-        <img src="src/assets/icons/arrow-left.svg" alt="Previous page" />
+        <img src="/src/assets/icons/arrow-left.svg" alt="Previous page" />
       </Link>
 
       {pageList.map((page) => (
@@ -66,7 +66,7 @@ export const Pagination: React.FC<Props> = ({ products }) => {
         aria-disabled={currentPage === pageCount}
         to={buildLink(nextPage)}
       >
-        <img src="src/assets/icons/arrow-right.svg" alt="Next page" />
+        <img src="/src/assets/icons/arrow-right.svg" alt="Next page" />
       </Link>
     </nav>
   );
