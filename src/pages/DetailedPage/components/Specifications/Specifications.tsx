@@ -145,7 +145,7 @@ export const Specifications: React.FC<Props> = ({
                   aria-label={`Image ${i + 1}`}
                 >
                   <img
-                    src={`/${img}`}
+                    src={`${img}`}
                     alt={`${product.name} ${i + 1}`}
                     className={styles.gallery__thumbImg}
                   />
@@ -167,7 +167,7 @@ export const Specifications: React.FC<Props> = ({
                 </button>
 
                 <img
-                  src={`/${selected ?? product.images[0]}`}
+                  src={`${selected ?? product.images[0]}`}
                   alt={product.name}
                   className={styles.gallery__mainImg}
                 />

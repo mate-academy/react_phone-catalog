@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import styles from './DetailedPage.module.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import goods from '../../../public/api/products.json';
-// import goods from '../../../public/api/products.json';
 import { Theme } from '../../../public/api/types/theme';
 import { ThemeContext } from '../../utils/themeContext';
 import { ProductCart } from '../../components/ProductCart';

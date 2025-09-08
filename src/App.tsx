@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-
 import { ThemeContext } from './utils/themeContext';
 import styles from './App.module.scss';
 import { TopBar } from './components/TopBar';
