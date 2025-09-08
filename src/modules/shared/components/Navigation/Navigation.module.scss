@@ -18,8 +18,8 @@
 
   &[data-open='true'] {
     opacity: 1;
-    min-height: calc(100vh - 49px);
-    max-height: calc(100vh - 49px);
+    min-height: calc(100dvh - 49px);
+    max-height: calc(100dvh - 49px);
   }
 
   @include tablet {
