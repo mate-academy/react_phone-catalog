@@ -1,0 +1,161 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+.header {
+  &__block {
+    @include content-padding-in-line;
+  }
+
+  &__title {
+    margin: 24px 0;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+
+    @include on-tablet {
+      margin: 32px 0;
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      margin: 56px 0;
+    }
+  }
+}
+
+.banner {
+  --banner-h: 300px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 0;
+  padding-inline: 0;
+
+
+  @include on-tablet  {
+    --banner-h: 250px;
+
+    @include content-padding-in-line;
+  }
+
+  @include on-desktop {
+    --banner-h: 300px;
+  }
+
+  &__controls {
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      gap: 19px;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+      height: var(--banner-h);
+      border: 1px solid $dark-grey;
+      border-radius: 48px;
+
+      font-size: 20px;
+      line-height: 1;
+      color: $grey-color-icons;
+
+      background-color: transparent;
+
+      @include hover('border-color', $white-color-text);
+      @include hover('color', $white-color-text);
+    }
+
+    &--prev, &--next {
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &--prev {
+      margin-left: 10px;
+    }
+
+    &--next {
+      margin-right: 10px;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    height: var(--banner-h);
+    max-height: 400px;
+
+    @include on-tablet {
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+  }
+
+  &__slider {
+    background-color: black;
+
+    @include on-desktop {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include on-tablet {
+      object-fit: contain;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+
+    height: 24px;
+  }
+}
+
+:global(.custom-pagination) {
+  position: static;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+
+  :global(.swiper-pagination-bullet) {
+    width: 15px;
+    height: 4px;
+    margin: 0 9px;
+    border-radius: 2px;
+
+    opacity: 1;
+    background: $element-color;
+
+    transition: background .3s;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background: $white-color-text;
+  }
+}

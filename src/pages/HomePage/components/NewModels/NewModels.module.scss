@@ -1,0 +1,108 @@
+.models {
+  @include content-padding-in-line;
+
+  margin-top: 56px;
+  font-family: Mont-Regular, sans-serif;
+  color: $white-color-text;
+
+  &__products {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    max-width: 9ch;
+    margin: 0;
+
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    overflow-wrap: break-word;
+    white-space: normal;
+
+    @include on-tablet {
+      min-width: 15ch;
+      font-size: 32px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid $grey-color-icons;
+    border-radius: 50px;
+
+    color: $white-color-text;
+    text-align: center;
+
+    background: $grey-color-icons;
+
+    &:disabled {
+      cursor: not-allowed;
+
+      border: 1px solid $grey-color-icons;
+
+      color: $grey-color-icons;
+
+      opacity: 0.8;
+      background: $background-color;
+    }
+
+    &--left, &--right {
+      font-size: 16px;
+    }
+  }
+
+  &__viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
+.models--light {
+  .models {
+    &__title {
+      color: $background-color;
+    }
+
+    &__button {
+      border: 1px solid $grey-color-text;
+      color: $background-color;
+      background: $white-color-text;
+
+      &:hover {
+        border: 1.6px solid $background-color;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        background: $grey-color-text;
+      }
+    }
+  }
+}
