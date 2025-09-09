@@ -7,13 +7,13 @@ import { useFavourites } from '../Favourites/FavouritesContext';
 
 interface Props {
   product: Product;
-  additionalPrice?: boolean;
+  AdditionalPrice?: boolean;
   onClick?: () => void;
 }
 
 export const ProductItem: React.FC<Props> = ({
   product,
-  additionalPrice = false,
+  AdditionalPrice: additionalPrice = false,
 }) => {
   const { favourites, toggleFavourite } = useFavourites();
   const { cart, toggleCart } = useCart();
