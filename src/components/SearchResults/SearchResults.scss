@@ -143,6 +143,15 @@
 }
 
 .page-back, .page-forward {
+  &.theme0 {
+
+    &:disabled {
+      background-color: transparent;
+      color: $color-icons;
+      border-color: $color-elements;
+    }
+  }
+
   &.theme1 {
     background-color: $theme-dark-surface2;
 

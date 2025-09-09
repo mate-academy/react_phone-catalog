@@ -12,7 +12,9 @@
     "about": "O nás",
     "contact": "Kontakt",
     "services": "Služby",
-    "search_placeholder": "Hledat"
+    "search_placeholder": "Hledat",
+    "foundforKeyWord": "nalezeno ve výsledcích vyhledávání pro",
+    "searchRes": "Výsledky vyhledávání"
   },
   "theme": {
     "title": "Vyberte téma",

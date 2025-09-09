@@ -12,7 +12,9 @@
     "about": "Über uns",
     "contact": "Kontakt",
     "services": "Dienstleistungen",
-    "search_placeholder": "Suche"
+    "search_placeholder": "Suche",
+    "foundforKeyWord": "gefunden nach Suchergebnissen für",
+    "searchRes": "Suchergebnisse"
   },
   "theme": {
     "title": "Thema auswählen",

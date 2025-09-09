@@ -12,7 +12,9 @@
     "about": "About",
     "contact": "Contact",
     "services": "Services",
-    "search_placeholder": "search"
+    "search_placeholder": "search",
+    "foundforKeyWord": "found for the keyword",
+    "searchRes": "Search results"
   },
   "theme": {
     "title": "Select theme",

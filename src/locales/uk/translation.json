@@ -12,7 +12,9 @@
     "about": "Про нас",
     "contact": "Контакти",
     "services": "Послуги",
-    "search_placeholder": "Пошук"
+    "search_placeholder": "Пошук",
+    "foundforKeyWord": "знайдено за результатами пошуку",
+    "searchRes": "Результати пошуку"
   },
   "theme": {
     "title": "Виберіть тему",

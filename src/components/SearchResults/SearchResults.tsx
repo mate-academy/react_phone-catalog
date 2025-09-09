@@ -14,11 +14,24 @@ import { Tablet } from '../Tablets/Tablets';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useWindowWidth } from '../Navbar/Navbar';
-import { emptyHeart, filledHeart, arrowLeft, arrowRight } from '../../../public/img/icons/svg_icons';
+import { emptyHeart, filledHeart, arrowLeft, arrowRight, homeIcon } from '../../../public/img/icons/svg_icons';
 import { useAppSelector } from '../../redux/store';
+import CustomSelect from '../CustomSelect/CustomSelect';
 
 interface SearchResultsProps {
   itemsCategory?: 'phones' | 'tablets' | 'accessories';
+}
+
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
+interface CustomSelectProps {
+  options: SelectOption[];
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
 }
 
 export const SearchResults: React.FC<SearchResultsProps> = ({
@@ -132,7 +145,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   }
 
   function getAllValuesExtended(obj, result = []) {
-    const ignoredKeys = ['colorsAvailable', 'capacityAvailable'];
+    const ignoredKeys = ['colorsAvailable', 'capacityAvailable', 'description'];
 
     if (obj === null || obj === undefined) {
       return result;
@@ -332,14 +345,60 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
     );
   };
 
+  const sortOptions = [
+    { value: 'relevance', label: 'Relevance' },
+    { value: 'price_low_high', label: 'Price: Low to High' },
+    { value: 'price_high_low', label: 'Price: High to Low' },
+    { value: 'discount_high_low', label: 'Discount: High to Low' },
+    { value: 'discount_low_high', label: 'Discount: Low to High' }
+  ];
+
+  const perPageOptions = [
+    { value: '4', label: '4' },
+    { value: '8', label: '8' },
+    { value: '16', label: '16' },
+    { value: '24', label: '24' }
+  ];
+
   return (
     <div className="search-page__wrapper">
       {/* Елементи тільки для сторінки пошуку */}
       {isSearchPage && (
-        <div className="search-page-header">
-          <h2>Search results for: &quot;{query}&quot;</h2>
-          <p>Search res quantity - {serResQty}</p>
-        </div>
+        <>
+          <div className="acc-toplwrpr">
+            <div className="acc--nav-legend">
+              <Link
+                to={'/'}
+                className={`acc-homeIcon ${currentTheme}`}
+              >
+                {homeIcon}
+              </Link>
+
+              <svg
+                className='arrow-right'
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+
+              <div className="acc--link-legend">
+                {t('navigation.searchRes')}
+              </div>
+            </div>
+          </div>
+          <div className={`search-header ${currentTheme}`}>
+            {t('navigation.searchRes')}
+          </div>
+          <div className={`search-subheader ${currentTheme}`}>
+            {serResQty} {t('home.models')} {t('navigation.foundforKeyWord')} &quot;{query}&quot;
+          </div>
+        </>
+
       )}
 
       {!isSearchPage && (
@@ -373,28 +432,47 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       )}
 
       {/* Render actual results here */}
-
       <br/>
-      <select
-        onChange={e => updateSearchParam('sort', e.target.value)}
-        value={sort}
-      >
-        <option value="relevance">Relevance</option>
-        <option value="price_low_high">Price: Low to High</option>
-        <option value="price_high_low">Price: High to Low</option>
-        <option value="discount_high_low">Discount: High to Low</option>
-        <option value="discount_low_high">Discount: Low to High</option>
-      </select>
+      {showAdminPanel && (
+        <>
 
-      <select
-        onChange={e => updateSearchParam('perPage', e.target.value)}
-        value={perPage}
-      >
-        <option value="4">4</option>
-        <option value="8">8</option>
-        <option value="16">16</option>
-        <option value="24">24</option>
-      </select>
+          <select
+            onChange={e => updateSearchParam('sort', e.target.value)}
+            value={sort}
+          >
+            <option value="relevance">Relevance</option>
+            <option value="price_low_high">Price: Low to High</option>
+            <option value="price_high_low">Price: High to Low</option>
+            <option value="discount_high_low">Discount: High to Low</option>
+            <option value="discount_low_high">Discount: Low to High</option>
+          </select>
+
+          <select
+            onChange={e => updateSearchParam('perPage', e.target.value)}
+            value={perPage}
+          >
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="24">24</option>
+          </select>
+        </>
+      )}
+
+
+      <CustomSelect
+        options={sortOptions}
+        value={sort}
+        selTitle='Sort by'
+        onChange={(value) => updateSearchParam('sort', value)}
+      />
+
+      <CustomSelect
+        options={perPageOptions}
+        value={`${perPage}`}
+        selTitle='Items on page'
+        onChange={(value) => updateSearchParam('perPage', value)}
+      />
 
       <div className="sr__dvdr" />
       {GeneratePaginationButtons()}

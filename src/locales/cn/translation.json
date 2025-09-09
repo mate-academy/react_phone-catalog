@@ -12,7 +12,9 @@
     "about": "关于我们",
     "contact": "联系我们",
     "services": "服务",
-    "search_placeholder": "搜索"
+    "search_placeholder": "搜索",
+    "foundforKeyWord": "在搜索结果中找到",
+    "searchRes": "搜索结果"
   },
   "theme": {
     "title": "选择主题",
