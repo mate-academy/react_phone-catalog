@@ -11,9 +11,9 @@ type Props = {
   selected: string | null;
   onPickColor: (color: string) => void;
   selectedColor: string | null;
+  onPickCapacity: (capacity: string) => void;
   selectedCapacity: string | null;
   setSelected: (img: string) => void;
-  setSelectedCapacity: (cap: string) => void;
   priceMode?: 'both' | 'full';
   theme: string;
 };
@@ -23,9 +23,9 @@ export const Specifications: React.FC<Props> = ({
   selected,
   onPickColor,
   selectedColor,
+  onPickCapacity,
   selectedCapacity,
   setSelected,
-  setSelectedCapacity,
   priceMode = 'both',
   theme,
 }) => {
@@ -227,7 +227,7 @@ export const Specifications: React.FC<Props> = ({
                   <div
                     key={cap}
                     className={`${styles.capacity__item} ${isActive ? styles['capacity__item--active'] : ''}`}
-                    onClick={() => setSelectedCapacity(cap)}
+                    onClick={() => onPickCapacity(cap)}
                     aria-pressed={isActive}
                   >
                     {cap}

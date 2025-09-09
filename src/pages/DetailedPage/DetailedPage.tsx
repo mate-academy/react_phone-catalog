@@ -9,6 +9,7 @@ import { ProductCart } from '../../components/ProductCart';
 import { PathToPage } from './components/PathToPage/PathToPage';
 import { Specifications } from './components/Specifications/Specifications';
 import { DetailedInfo } from './components/DetailedInfo/DetailedInfo';
+import { Loader } from '../../components/Loader';
 
 export const DetailPage = () => {
   const [product, setProduct] = useState<any | null>(undefined);
@@ -163,10 +164,42 @@ export const DetailPage = () => {
     navigate(`/${cat}/${targetBase.itemId}`);
   };
 
+  const onPickCapacity = (capacity: string) => {
+    if (!product) {
+      return;
+    }
+
+    const sameNamespaceDetailed = detailedAll.filter(
+      (p: any) => p.namespaceId === product.namespaceId,
+    );
+
+    const targetDetailed = sameNamespaceDetailed.find(
+      (p: any) =>
+        p.capacity === capacity &&
+        (!selectedColor || p.color === selectedColor),
+    );
+
+    if (!targetDetailed) {
+      return;
+    }
+
+    const targetBase = allProducts.find(
+      (p: any) => p.itemId === targetDetailed.id,
+    );
+
+    if (!targetBase) {
+      return;
+    }
+
+    const cat = targetBase.category ?? product.namespaceId;
+
+    navigate(`/${cat}/${targetBase.itemId}`);
+  };
+
   const lastIndex = goods.length - 1;
 
   if (product === undefined) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (product === null) {
@@ -188,9 +221,9 @@ export const DetailPage = () => {
           selected={selected}
           onPickColor={onPickColor}
           selectedColor={selectedColor}
+          onPickCapacity={onPickCapacity}
           selectedCapacity={selectedCapacity}
           setSelected={setSelected}
-          setSelectedCapacity={setSelectedCapacity}
           theme={theme}
         />
 

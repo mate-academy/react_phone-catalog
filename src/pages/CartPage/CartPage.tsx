@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './CartPage.module.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../utils/themeContext';
 import { Theme } from '../../../public/api/types/theme';
 import { useShop } from '../../components/ShopContext';
+import { Loader } from '../../components/Loader';
 
 const MIN_QTY = 1;
 const MAX_QTY = 10;
@@ -12,13 +13,20 @@ export const CardPage = () => {
   const { state, incrementItem, decrementItem, removeFromCart } = useShop();
   const uniqueItems = Object.values(state.cart);
   const { theme } = useContext(ThemeContext);
-  const counter = Object.values(state.favorites);
+  const [message, setMessage] = useState('');
+  const [items, setItems] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const { clearCart } = useShop();
 
   const total = uniqueItems.reduce(
     (sum, { product, qty }) => sum + (product.price ?? product.fullPrice) * qty,
     0,
   );
-  const items = uniqueItems.reduce((sum, item) => sum + item.qty, 0);
+
+  useEffect(() => {
+    setItems(uniqueItems.reduce((sum, item) => sum + item.qty, 0));
+  }, [uniqueItems]);
+  // const items = uniqueItems.reduce((sum, item) => sum + item.qty, 0);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,6 +38,20 @@ export const CardPage = () => {
       navigate(-1);
     }
   };
+
+  const handleCheckOut = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      clearCart();
+      setMessage('The order is complete!');
+      setLoading(false);
+    }, 500);
+  };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -50,8 +72,11 @@ export const CardPage = () => {
         </div>
         <section className={styles.container__body}>
           <h1 className={styles.container__body__title}>Cart</h1>
-          <p className={styles.container__body__text}>{counter.length} items</p>
+          <p className={styles.container__body__text}>{items} items</p>
           <div className={styles.container__body__cart}>
+            {message && (
+              <p className={styles.container__body__message}>{message}</p>
+            )}
             {uniqueItems.length === 0 ? (
               <div className={styles.container__body__empty}>
                 <p className={styles.container__body__empty__text}>
@@ -123,7 +148,10 @@ export const CardPage = () => {
                     Total for {items} items
                   </p>
 
-                  <button className={styles.container__body__total__button}>
+                  <button
+                    className={styles.container__body__total__button}
+                    onClick={handleCheckOut}
+                  >
                     Checkout
                   </button>
                 </div>

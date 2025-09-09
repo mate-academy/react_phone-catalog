@@ -24,7 +24,8 @@ type Action =
   | { type: 'INCREMENT_QTY'; itemId: string }
   | { type: 'DECREMENT_QTY'; itemId: string }
   | { type: 'TOGGLE_LIKE'; product: Product }
-  | { type: 'LOAD'; state: State };
+  | { type: 'LOAD'; state: State }
+  | { type: 'CLEAR_CART' };
 
 const STORAGE_KEY = 'shop-state-v1';
 const initialState: State = { cart: {}, favorites: {} };
@@ -47,6 +48,10 @@ function reducer(state: State, action: Action): State {
       const { [action.itemId]: _drop, ...rest } = state.cart;
 
       return { ...state, cart: rest };
+    }
+
+    case 'CLEAR_CART': {
+      return { ...state, cart: {} };
     }
 
     case 'INCREMENT_QTY': {
@@ -109,6 +114,7 @@ type Ctx = {
   incrementItem: (itemId: string) => void;
   decrementItem: (itemId: string) => void;
   removeFromCart: (itemId: string) => void;
+  clearCart: () => void;
 };
 
 const ShopContext = createContext<Ctx | null>(null);
@@ -144,6 +150,7 @@ export function ShopProvider({ children }: { children: React.ReactNode }) {
       incrementItem: id => dispatch({ type: 'INCREMENT_QTY', itemId: id }),
       decrementItem: id => dispatch({ type: 'DECREMENT_QTY', itemId: id }),
       removeFromCart: id => dispatch({ type: 'REMOVE_FROM_CART', itemId: id }),
+      clearCart: () => dispatch({ type: 'CLEAR_CART' }),
     }),
     [state],
   );

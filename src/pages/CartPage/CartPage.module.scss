@@ -35,6 +35,10 @@
   }
 
   &__body {
+    &__message {
+      text-align: center;
+    }
+
     &__empty {
       text-align: center;
 
