@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  width: 100%;
+  width: 100% !important;
+  box-sizing: border-box;
 
   @include s.page-layout;
 }
@@ -12,6 +13,7 @@
 .navigation {
   display: flex;
   margin-bottom: 24px;
+  box-sizing: border-box;
 
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
@@ -23,10 +25,12 @@ $column-gap: 16px;
 
 .catalogue {
   display: grid;
+  margin-top: 24px;
   gap: 40px $column-gap;
   max-width: 1200px;
   grid-template-columns: repeat(auto-fit, minmax(s.$c-card-width, 1fr));
   place-items: center center;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
 

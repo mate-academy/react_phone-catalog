@@ -11,19 +11,19 @@ const categories: HomePageCategory[] = [
   {
     id: 0,
     name: 'Mobile phones',
-    link: Category.Phones,
+    link: Category.PHONES,
     src: 'phones.png',
   },
   {
     id: 1,
     name: 'Tablets',
-    link: Category.Tablets,
+    link: Category.TABLETS,
     src: 'tablets.png',
   },
   {
     id: 2,
     name: 'Accessories',
-    link: Category.Accessories,
+    link: Category.ACCESSORIES,
     src: 'accessories.png',
   },
 ];

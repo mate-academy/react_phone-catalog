@@ -1,3 +1,4 @@
-export { filter, perPage, type DropdownProps } from './dropdownConfig';
+export { filter, pPage, type DropdownProps } from './dropdownConfig';
 export { useCatalogue } from './useCatalogue';
-export { argToValidSort, argToValidAmount } from './searchParamsMappers';
+export { uiToApiMap, apiToUIMap } from './apiUiMappers';
+export { useDropdown } from './useDropdown';

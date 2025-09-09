@@ -1,6 +1,6 @@
 import { GlobalValidNameSpaceIDs } from '@server/static';
 import {
-  CategoryParams,
+  ServerCategory,
   ErrorObject,
   ItemsOnPage,
   OrderParams,
@@ -74,8 +74,8 @@ function validateParams(request: any, params?: any): ValidParams | ErrorObject {
         Object.values(GlobalValidNameSpaceIDs).some(
           el => el === params.itemId,
         ) &&
-        params.category !== CategoryParams.ALL &&
-        Object.values(CategoryParams).some(el => el === params.category);
+        params.category !== ServerCategory.ALL &&
+        Object.values(ServerCategory).some(el => el === params.category);
 
       if (!trueParams) {
         return getErrorObject(`Unreckognized parameters: ${params}`);
@@ -85,31 +85,31 @@ function validateParams(request: any, params?: any): ValidParams | ErrorObject {
     case RequestType.CATALOGUE:
       if (
         params.itemType &&
-        !Object.values(CategoryParams).some(el => el === params.itemType)
+        !Object.values(ServerCategory).some(el => el === params.itemType)
       ) {
         return getErrorObject(`Invalid itemType: ${params.itemType}`);
       }
 
       if (
-        params.sortOrder &&
-        !Object.values(OrderParams).some(el => el === params.sortOrder)
+        params.sort &&
+        !Object.values(OrderParams).some(el => el === params.sort)
       ) {
-        return getErrorObject(`Invalid sortOrder: ${params.sortOrder}`);
+        return getErrorObject(`Invalid sortOrder: ${params.sort}`);
       }
 
       if (
-        params.itemsOnPage &&
-        !Object.values(ItemsOnPage).some(el => el === params.itemsOnPage)
+        params.perPage &&
+        !Object.values(ItemsOnPage).some(el => el === params.perPage)
       ) {
-        return getErrorObject(`Invalid itemsOnPage: ${params.itemsOnPage}`);
+        return getErrorObject(`Invalid itemsOnPage: ${params.perPage}`);
       }
 
       return getValidParams(RequestType.CATALOGUE, params);
 
     case RequestType.AMOUNT:
       if (
-        params.category !== CategoryParams.ALL &&
-        Object.values(CategoryParams).some(el => el === params.category)
+        params.category !== ServerCategory.ALL &&
+        Object.values(ServerCategory).some(el => el === params.category)
       ) {
         return getValidParams(RequestType.AMOUNT, params);
       }

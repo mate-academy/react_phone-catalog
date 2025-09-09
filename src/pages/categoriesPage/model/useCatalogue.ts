@@ -1,38 +1,44 @@
-import { useSearchParams } from 'react-router-dom';
-import { argToValidAmount, argToValidSort } from '.';
-import { Category, get, ItemsAmount, Order } from '@shared/api';
+import { Category, get } from '@shared/api';
 import { useEffect, useRef, useState } from 'react';
 import { CatalogueProduct } from '@shared/types';
+import { useUrlReducer } from './useUrlReducer';
+import { CatalogueConf, ItemsAmount, Order } from '@shared/api/typesAndEnums';
 
-export const useCatalogue = (category: Category) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [items, setItems] = useState<CatalogueProduct[] | null | undefined>(
-    null,
-  );
+type Props = {
+  category: Exclude<Category, Category.ALL>;
+};
+
+export const useCatalogue = ({ category }: Props) => {
+  const [data, setData] = useState<{
+    items: CatalogueProduct[] | null | undefined;
+    length: string;
+  }>({
+    items: null,
+    length: 'Loading...',
+  });
   const pages = useRef<number>(1);
   const currentPage = useRef<number>(1);
   const failCount = useRef<number>(0);
-  const [tick, render] = useState(false);
-  const rerender = () => render(!tick);
 
-  const sort = searchParams.get('sort') || '';
-  const page = searchParams.get('page') || '';
-  const perPage = searchParams.get('perPage') || '';
+  const [state, dispatch] = useUrlReducer();
 
-  const apiConf = {
+  const apiConfig: CatalogueConf = {
     itemType: category,
-    sortOrder: argToValidSort[sort] || Order.NONE,
-    itemsOnPage: argToValidAmount[perPage] || ItemsAmount.ALL,
-    page: +page || 1,
+    sort: state.sort || Order.NONE,
+    perPage: state.perPage || ItemsAmount.ALL,
+    page: +state.page || 1,
   };
 
   const loadCatalogue = async () => {
     try {
-      const res = await get.catalogue(apiConf);
+      const res = await get.catalogue(apiConfig);
+      const length = await get.length(category);
 
       pages.current = res.pages;
       currentPage.current = res.currentPage;
-      setItems(res.data);
+      failCount.current = 0;
+
+      setData({ items: res.data, length: `${length} models` });
     } catch (e) {
       if (failCount.current < 3) {
         failCount.current += 1;
@@ -42,49 +48,28 @@ export const useCatalogue = (category: Category) => {
 
         return loadCatalogue();
       } else {
-        setItems(undefined);
+        setData({ items: undefined, length: '0' });
       }
     }
   };
 
   useEffect(() => {
     loadCatalogue();
-  }, [sort, page, perPage]);
+  }, [category, state]);
 
-  type SetOfSort = {
-    param: 'sort';
-    value: Omit<Order, Order.FULL_PRICE_DECS_PROMO>;
+  const set = {
+    order: (order: Order) => dispatch({ type: 'SET_SORT', payload: order }),
+    amount: (amount: ItemsAmount) =>
+      dispatch({ type: 'SET_PER_PAGE', payload: amount }),
+    page: (page: number) => dispatch({ type: 'SET_PAGE', payload: page }),
   };
 
-  type SetOfPerPage = {
-    param: 'perPage';
-    value: ItemsAmount;
+  return {
+    data,
+    currentPage,
+    pages,
+    set,
+    currentOrder: apiConfig.sort as string,
+    currentPerPage: apiConfig.perPage as string,
   };
-
-  type SetOfPage = {
-    param: 'page';
-    value: string;
-  };
-
-  type FnParams = SetOfSort | SetOfPerPage | SetOfPage;
-
-  const setFilter = ({ params }: { params: FnParams }) => {
-    const { param, value } = params;
-
-    setSearchParams(url => {
-      {
-        if (value === '' || value === ItemsAmount.ALL || value === '1') {
-          url.delete(param);
-        } else {
-          url.set(param, value as string);
-        }
-
-        rerender();
-
-        return url;
-      }
-    });
-  };
-
-  return { items, setFilter };
 };

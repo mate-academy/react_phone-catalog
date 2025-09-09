@@ -65,7 +65,7 @@ export const useHomePage = () => {
     loadAllData();
   }, [loadAllData]);
 
-  const loadAmount = async (category: Omit<Category, Category.ALL>) => {
+  const loadAmount = async (category: Exclude<Category, Category.ALL>) => {
     try {
       const res = await get.length(category);
 

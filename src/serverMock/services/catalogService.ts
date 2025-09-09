@@ -1,7 +1,7 @@
 import { apiFetch } from '@server/helpers';
 import { ApiEndpoint } from '@server/static';
 import {
-  CategoryParams,
+  ServerCategory,
   ItemsOnPage,
   OrderParams,
   ValidCatalogueParams,
@@ -10,9 +10,9 @@ import {
 } from '@server/types';
 
 const defaultParams: ValidCatalogueParams = {
-  itemType: CategoryParams.ALL,
-  sortOrder: OrderParams.NONE,
-  itemsOnPage: ItemsOnPage.ALL,
+  itemType: ServerCategory.ALL,
+  sort: OrderParams.NONE,
+  perPage: ItemsOnPage.ALL,
   page: 1,
 };
 
@@ -23,7 +23,7 @@ async function getCatalogueItems(
   initParams?: ValidCatalogueParams,
 ): Promise<Omit<ValidResponse, 'status'>> {
   const params = { ...defaultParams, ...initParams } as ValidCatalogueParams;
-  const { itemType, sortOrder, itemsOnPage, page } = params;
+  const { itemType, sort, perPage, page } = params;
   let initialArray = (await apiFetch(ApiEndpoint.PRODUCTS)) as BaseProduct[];
 
   const response = {
@@ -32,13 +32,13 @@ async function getCatalogueItems(
     pages: 1,
   };
 
-  if (itemType && itemType !== CategoryParams.ALL) {
+  if (itemType && itemType !== ServerCategory.ALL) {
     initialArray = initialArray.filter(
       (el: BaseProduct) => el.category === itemType,
     );
   }
 
-  switch (sortOrder) {
+  switch (sort) {
     case OrderParams.AGE:
       initialArray = initialArray.sort(
         (a: BaseProduct, b: BaseProduct) => b.year - a.year,
@@ -65,18 +65,16 @@ async function getCatalogueItems(
       break;
   }
 
-  if (itemsOnPage === ItemsOnPage.ALL) {
+  if (perPage === ItemsOnPage.ALL) {
     response.data = initialArray;
   } else {
     response.pages = Math.ceil(
-      initialArray.length /
-        +(itemsOnPage as Omit<ItemsOnPage, ItemsOnPage.ALL>),
+      initialArray.length / +(perPage as Exclude<ItemsOnPage, ItemsOnPage.ALL>),
     );
 
     const start =
-      ((page as number) - 1) *
-      +(itemsOnPage as Omit<ItemsOnPage, ItemsOnPage.ALL>);
-    const end = start + +(itemsOnPage as Omit<ItemsOnPage, ItemsOnPage.ALL>);
+      ((page as number) - 1) * +(perPage as Omit<ItemsOnPage, ItemsOnPage.ALL>);
+    const end = start + +(perPage as Omit<ItemsOnPage, ItemsOnPage.ALL>);
 
     response.data = initialArray.slice(start, end);
   }

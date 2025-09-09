@@ -72,7 +72,9 @@ const get = {
 
     return { data, currentPage, pages };
   },
-  length: async (category: Omit<Category, Category.ALL>): Promise<number> => {
+  length: async (
+    category: Exclude<Category, Category.ALL>,
+  ): Promise<number> => {
     const itemsAmount = JSON.parse(
       await getRequest(
         JSON.stringify({

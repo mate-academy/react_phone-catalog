@@ -4,6 +4,7 @@
   display: flex;
   position: relative;
   flex-direction: column;
+  min-width: 136px;
   gap: 4px;
 }
 
@@ -18,13 +19,11 @@
 .button {
   display: flex;
   align-items: center;
-
+  justify-content: space-between;
   padding-left: 12px;
   height: 40px;
   line-height: 40px;
-  width: 100%;
   border: 1px solid s.$c-icons;
-  gap: 40px;
 
   &:hover {
     border-color: s.$c-grey-secondary;
@@ -35,7 +34,7 @@
   }
 
   svg {
-    margin: 12px;;
+    margin: 12px;
     width: 16px !important;
     > path {
       fill: s.$c-icons;
@@ -52,25 +51,28 @@
   flex-direction: column;
   padding: 8px 0;
   border: 1px solid s.$c-elements;
-  align-items: flex-start;
-  z-index: 20;
+  align-items: center;
+  justify-content: center;
+  z-index: s.$c-attention;
   background-color: #fff;
   cursor: pointer;
   pointer-events: all;
+  color: s.$c-grey-secondary;
+
 
   &__item {
-    display: inline-block;
-    line-height: 32px;
-    margin: 6px auto 5px 12px;
+    display: flex;
     width: 100%;
-    height: 100%;
+    height: 32px;
+    padding-left: 12px;
+    align-items: center;
     box-sizing: border-box;
 
     @include s.t-body-text;
 
-    color: s.$c-grey-secondary
+    color: s.$c-grey-secondary;
 
-    &--active {
+    &__active {
       color: s.$c-grey-primary;
       background-color: s.$c-hover-bg;
     }

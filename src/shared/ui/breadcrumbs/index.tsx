@@ -1,6 +1,6 @@
 import { ArrowIcon, HomeIcon } from '@shared/icons';
 import { Link } from 'react-router-dom';
-import styles from '../styles/breadcrumbs.module.scss';
+import styles from './breadcrumbs.module.scss';
 import { AriaNames } from '@shared/types/ButtonProps';
 
 type Props = {

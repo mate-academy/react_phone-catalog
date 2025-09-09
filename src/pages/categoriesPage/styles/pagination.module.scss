@@ -1,0 +1,50 @@
+@use '@shared/styles' as s;
+
+.container {
+  display: flex;
+  height: 100%;
+  align-self: center;
+  justify-content: center;
+  margin-top: 24px;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    margin-top: 40px;
+  }
+
+  > :first-child {
+    margin-right: 8px;
+  }
+
+  > :last-child {
+    margin-left: 8px;
+  }
+
+  > :first-child, :last-child {
+    &:disabled {
+
+      @include s.m-btn-disabled;
+    }
+  }
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
+  @include s.m-btn-btn-reg;
+
+  &:hover {
+    @include s.m-btn-hover-reg;
+  }
+
+  &__active {
+    @include s.m-btn-btn-blc;
+    
+    border: 1px solid s.$c-grey-primary;
+  }
+
+
+}

@@ -20,11 +20,11 @@ enum RequestType {
   AMOUNT = 'amount',
 }
 
-enum CategoryParams {
+enum ServerCategory {
   ALL = 'all',
   ACCESSORIES = 'accessories',
   PHONES = 'phones',
   TABLETS = 'tablets',
 }
 
-export { OrderParams, ItemsOnPage, RequestType, CategoryParams };
+export { OrderParams, ItemsOnPage, RequestType, ServerCategory };

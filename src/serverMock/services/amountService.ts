@@ -1,26 +1,16 @@
 import { apiFetch } from '@server/helpers';
-import { ApiEndpoint } from '@server/static';
-import { CategoryParams, Product, ValidAmountParams } from '@server/types';
+import { endpointMap } from '@server/static';
+import { ValidAmountParams } from '@server/types';
 
 async function getItemsAmount(params: ValidAmountParams): Promise<number> {
   const category = params.category;
-  let endpoint;
+  const endpoint = endpointMap.get(category);
 
-  switch (category) {
-    case CategoryParams.ACCESSORIES:
-      endpoint = ApiEndpoint.ACCESSORIES;
-      break;
-    case CategoryParams.PHONES:
-      endpoint = ApiEndpoint.PHONES;
-      break;
-    case CategoryParams.TABLETS:
-      endpoint = ApiEndpoint.TABLETS;
-      break;
-    default:
-      throw new Error('Error in productService');
+  if (!endpoint) {
+    throw new Error(`Wrong endpoint: ${endpoint}`);
   }
 
-  const initArray = (await apiFetch(endpoint)) as Product[];
+  const initArray = await apiFetch(endpoint);
 
   return initArray.length;
 }

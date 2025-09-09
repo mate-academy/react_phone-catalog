@@ -1,15 +1,15 @@
 import { GlobalValidNameSpaceIDs } from '@server/static';
-import { CategoryParams, ItemsOnPage, OrderParams } from '.';
+import { ServerCategory, ItemsOnPage, OrderParams } from '.';
 
 interface ValidCatalogueParams {
-  itemType?: CategoryParams;
-  sortOrder?: OrderParams;
-  itemsOnPage?: ItemsOnPage;
+  itemType?: ServerCategory;
+  sort?: OrderParams;
+  perPage?: ItemsOnPage;
   page?: number;
 }
 
 interface ValidAmountParams {
-  category: Omit<CategoryParams, CategoryParams.ALL>;
+  category: Exclude<ServerCategory, ServerCategory.ALL>;
 }
 
 interface ValidProdParams extends ValidAmountParams {

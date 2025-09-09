@@ -1,4 +1,4 @@
-import { useGlobalData } from '@app/appContext';
+import { useGlobalData } from '@features/index';
 import { ItemsCounter } from '@shared/icons';
 import { NavAriaLabels, RoutePath } from '@shared/types';
 import classNames from 'classnames';

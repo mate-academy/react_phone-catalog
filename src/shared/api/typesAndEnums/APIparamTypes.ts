@@ -13,8 +13,8 @@ interface ProductRequest extends RequestParams {
 
 interface CatalogueConf {
   itemType?: Category;
-  sortOrder?: Order;
-  itemsOnPage?: ItemsAmount;
+  sort?: Order;
+  perPage?: ItemsAmount;
   page?: number;
 }
 

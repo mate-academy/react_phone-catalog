@@ -12,7 +12,7 @@ import {
   Resolutions,
   Screens,
 } from '@server/static';
-import { CategoryParams } from '.';
+import { ServerCategory } from '.';
 
 interface Base {
   id: string;
@@ -29,7 +29,7 @@ interface Base {
 interface BaseProduct extends Base {
   key: (typeof catalogueValidIDs)[number];
   year: number;
-  category: Omit<CategoryParams, CategoryParams.ALL>;
+  category: Exclude<ServerCategory, ServerCategory.ALL>;
 }
 
 interface Product extends Base {

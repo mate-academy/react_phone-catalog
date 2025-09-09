@@ -9,7 +9,7 @@ export {
   OrderParams,
   ItemsOnPage,
   RequestType,
-  CategoryParams,
+  ServerCategory,
 } from './APIEnums';
 
 export {

@@ -1,4 +1,4 @@
-export { ApiEndpoint } from './endPoints';
+export { ApiEndpoint, endpointMap } from './endPoints';
 export {
   catalogueValidIDs,
   PhoneValidNameSpaceIDs,

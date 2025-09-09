@@ -1,51 +1,26 @@
-import { SearchParam } from './URLEnums';
+import { ItemsAmount } from '@shared/api';
 
 interface DropdownProps {
   title: string;
-  values: {
-    name: string;
-    searchParam: SearchParam;
-  }[];
+  defaultLabel: string;
+  names: string[];
 }
 
 const filter: DropdownProps = {
   title: 'Sort by',
-  values: [
-    {
-      name: 'Newest',
-      searchParam: SearchParam.AGE,
-    },
-    {
-      name: 'Alphabetically',
-      searchParam: SearchParam.TITLE,
-    },
-    {
-      name: 'Cheapest',
-      searchParam: SearchParam.PRICE,
-    },
-  ],
+  defaultLabel: 'Newest',
+  names: ['Newest', 'Alphabetically', 'Cheapest'],
 };
 
-const perPage: DropdownProps = {
+const pPage: DropdownProps = {
   title: 'Items on page',
-  values: [
-    {
-      name: '4',
-      searchParam: SearchParam.FOUR,
-    },
-    {
-      name: '8',
-      searchParam: SearchParam.EIGHT,
-    },
-    {
-      name: '16',
-      searchParam: SearchParam.SIXTEEN,
-    },
-    {
-      name: 'all',
-      searchParam: SearchParam.ALL,
-    },
+  defaultLabel: ItemsAmount.ALL,
+  names: [
+    ItemsAmount.ALL,
+    ItemsAmount.FOUR,
+    ItemsAmount.EIGHT,
+    ItemsAmount.SIXTEEN,
   ],
 };
 
-export { filter, perPage, type DropdownProps };
+export { filter, pPage, type DropdownProps };
