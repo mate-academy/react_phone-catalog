@@ -102,15 +102,15 @@
       }
 
       &__push-left {
-        animation: pushLeft $transition-time ease-in-out;
+        animation: push-left $transition-time ease-in-out;
       }
 
       &__push-right {
-        animation: pushRight $transition-time ease-in-out;
+        animation: push-right $transition-time ease-in-out;
       }
 
       &__changing {
-        animation: fadeIn $transition-time ease-in-out;
+        animation: fade-in $transition-time ease-in-out;
       }
     }
 
@@ -300,7 +300,7 @@
   }
 }
 
-@keyframes pushLeft {
+@keyframes push-left {
   0% {
     transform: translateX(100%);
   }
@@ -309,7 +309,7 @@
   }
 }
 
-@keyframes pushRight {
+@keyframes push-right {
   0% {
     transform: translateX(-100%);
   }
@@ -318,7 +318,7 @@
   }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   0% {
     opacity: 0;
   }
