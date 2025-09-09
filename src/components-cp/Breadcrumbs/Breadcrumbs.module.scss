@@ -1,0 +1,143 @@
+@import '../../assets/fonts/variables.scss';
+
+.breadcrumbWrapper {
+  padding-top: 24px;
+  display: grid;
+  grid-column: 1 / -1;
+  width: calc(24 * 32px + 23 * 16px);
+  margin: 0 auto;
+
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding-bottom: 40px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+   flex-wrap: nowrap;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    text-decoration: none;
+    height: auto;
+    transition: transform 0.2s ease;
+
+    &:active,
+    &:focus {
+      outline: none;
+      height: auto;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  .currentPage{
+    height: 15px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0em;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+
+  .extra {
+    height: 15px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0em;
+    white-space: nowrap;
+    align-items: center;
+  }
+
+  .currentPage {
+    color: var(--color-Secondary);
+    &.withExtra {
+      color: var(--color-White);
+    }
+    &.gray {
+      color: var(--color-Secondary);
+    }
+  }
+
+  .extra {
+    color: var(--color-Secondary);
+  }
+}
+
+
+
+
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .breadcrumbWrapper {
+     margin: 0 24px;
+     width: 640px;
+     align-items: center;
+  justify-content: flex-start;
+  }
+}
+
+
+
+
+
+
+@media (max-width: 639px) {
+  .breadcrumbWrapper {
+
+    width: 100%;
+    margin: 0 16px;
+    padding-bottom: 24px;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  .breadcrumb a,
+  .breadcrumb .arrow {
+    flex-shrink: 0;
+  }
+
+
+
+  .extra {
+    width: calc(100vw - 230px);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    color: var(--color-Secondary);
+  }
+}

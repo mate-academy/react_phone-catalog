@@ -1,0 +1,40 @@
+@import '/src/assets/fonts/variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-main;
+  color: var(--color-White);
+  cursor: url('/src/assets/icons/cursor.svg') 8 8, auto;
+}
+
+body {
+  width: 100%;
+  background-color:var(--color-Black);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-theme {
+  background-color: var(--color-Surface1);
+  color: var(--color-White);
+}
+
+main {
+  margin-top: 64px;
+}
+
+
+@media (max-width: 1199px) and (min-width: 640px) {
+  main {
+  margin-top: 48px;
+}
+}
+
+
+// Мобильная от 320px до 639px
+@media (max-width: 639px) {
+  main {
+  margin-top: 48px;
+}
+}

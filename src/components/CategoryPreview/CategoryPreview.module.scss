@@ -1,0 +1,250 @@
+@import '../../assets/fonts/variables';
+
+.categoryPreview {
+  @include grid-24(16px);
+  @include grid-24-mw($gap: 16px);
+  margin: 0 auto 80px auto;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  row-gap: 0;
+}
+
+.title {
+  grid-column: 1 / 13;
+  height: 41px;
+  @include desktop-tablet-H2-style;
+  color: var(--color-White);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 24px;
+}
+
+.blocks {
+  grid-column: 1 / -1;
+  @include grid-24($gap: 16px);
+}
+
+.block {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  grid-column: span 8;
+  position: relative;
+}
+
+.imageWrapper {
+  &:first-child {
+    height: 368px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &:nth-child(2) {
+    height: 368px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &:nth-child(3) {
+    height: 368px;
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+.block:first-child .imageWrapper {
+  height: 368px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.block:first-child img {
+  height: 457px;
+  width: 386px;
+  transform: translate(49px, 40px);
+  object-fit: cover;
+  position: relative;
+}
+
+.block:nth-child(2) .imageWrapper {
+  height: 368px;
+  position: relative;
+  width: 100%;
+}
+
+.block:nth-child(2) img {
+  height: 546px;
+  width: 546px;
+  transform: translate(22px, 20px);
+  object-fit: cover;
+  position: relative;
+}
+
+.block:nth-child(3) .imageWrapper {
+  height: 368px;
+  position: relative;
+  width: 100%;
+}
+
+.block:nth-child(3) img {
+  width: 880px;
+  transform: translate(-72px, -458px);
+  object-fit: cover;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.textBlock {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.titleText {
+  @include desktop-tablet-H4-style;
+}
+
+.subtitleText {
+  @include body-text-style;
+  color: var(--color-Secondary);
+}
+
+// 📱 Планшет: 640px – 1199px
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .categoryPreview {
+    @include grid-12($gap: 24px);
+    max-width: 100%;
+    justify-content: start;
+    overflow-x: visible;
+    padding: 0 24px;
+    margin-bottom: 64px;
+    height: auto;
+  }
+
+  .blocks {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    max-width: 100%;
+    height: 262px;
+  }
+
+  .block {
+    grid-column: span 4;
+    width: 100%;
+    height: 262px;
+  }
+
+  .block:first-child img {
+    width: 196px;
+    height: 232px;
+    transform: translate(26px, 20px);
+    object-fit: cover;
+    position: relative;
+  }
+
+  .block:nth-child(2) img {
+    width: 277px;
+    height: 277px;
+    transform: translate(11px, 10px);
+    object-fit: cover;
+    position: relative;
+  }
+
+  .block:nth-child(3) img {
+    width: 748px;
+    height: 447px;
+    transform: translate(-187px, -232px);
+    object-fit: cover;
+    position: relative;
+  }
+
+  .imageWrapper {
+    overflow: hidden;
+    position: relative;
+    height: auto;
+    width: auto;
+  }
+
+  .title {
+    grid-column: 1 / 12;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .categoryPreview {
+    @include grid-4($gap: 16px);
+    max-width: calc(4 * 1fr + 3 * 16px);
+    margin: 0 auto;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 16px;
+    margin-bottom: 56px;
+    row-gap: 0;
+  }
+
+  .title {
+    height: auto;
+    grid-column: 1 / -1;
+    @include mobile-H2-style;
+    margin-bottom: 24px;
+  }
+
+  .blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .block {
+    grid-column: 1 / -1;
+    height: 363px;
+  }
+
+  .block img {
+    width: 100%;
+    height: auto;
+    transform: none;
+  }
+
+  .imageWrapper {
+    width: 100%;
+  }
+
+  .block:first-child img {
+    width: 357px;
+    height: 302px;
+    transform: translate(11px, 57px);
+    object-fit: cover;
+    position: relative;
+  }
+
+  .block:nth-child(2) img {
+    width: 427px;
+    height: 427px;
+    transform: translate(17px, 15px);
+    object-fit: cover;
+    position: relative;
+  }
+
+  .block:nth-child(3) img {
+    width: 1152px;
+    height: 689px;
+    transform: translate(-288px, -358px);
+    object-fit: cover;
+    position: relative;
+  }
+}

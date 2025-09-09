@@ -1,0 +1,33 @@
+@import '../../assets/fonts/variables.scss';
+
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+  gap: 16px;
+  min-height: calc(100vh - 64px - 96px);
+  padding: 0 24px;
+}
+
+.message {
+  @include desktop-tablet-H2-style;
+  color: #eb5757;
+}
+
+.retryButton {
+  @include desktop-tablet-H3-style;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #323542;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #50535a;
+  }
+}

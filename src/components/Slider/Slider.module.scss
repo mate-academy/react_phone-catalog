@@ -1,0 +1,244 @@
+@import '../../assets/fonts/variables';
+
+
+.sliderWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px;
+  overflow: hidden;
+  height: 432px;
+  margin-bottom: 80px;
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+  height: 400px;
+@include grid-24-mw($gap: 16px);
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+  position: relative;
+}
+
+.arrowLeft,
+.arrowRight {
+  height: 100%;
+  width: 32px;
+  background-color: var(--color-Surface2);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+
+  img {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.3);
+  }
+}
+
+.arrowLeft {
+  grid-column: 1 / 2;
+}
+
+.arrowRight {
+  grid-column: 24 / 25;
+}
+
+.slide {
+  grid-column: 2 / 24;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.dotsContainer {
+  margin-top: 8px;
+  display: flex;
+  gap: 4px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dotWrapper {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dotButton {
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+    &.activeDot img {
+    transform: scale(1.3);
+  }
+
+    &:hover img {
+    transform: scale(1.3);
+    transition: transform 0.2s ease;
+  }
+}
+
+.dotImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.adjustedSecond {
+  object-position: center 20%;
+}
+
+.adjustedThird {
+  object-position: center 20%;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+  @include grid-24-mw($gap: 16px);
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+
+
+
+// ---------------------------
+// 📱 Планшет: 640px – 1199px
+// ---------------------------
+@media (min-width: 640px) and (max-width: 1199px) {
+  .sliderWrapper {
+    padding: 0 24px;
+    height: 221px;
+    margin-bottom: 64px;
+  }
+
+  .slider {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+    height: 189px;
+  }
+
+  .arrowLeft {
+    grid-column: 1 / 2;
+    height: 189px;
+  }
+
+  .slide {
+    grid-column: 2 / 12;
+    height: 189px;
+  }
+
+  .arrowRight {
+    grid-column: 12 / 13;
+    justify-self: end;
+    height: 189px;
+  }
+}
+
+
+
+
+
+// Мобильная от 320px до 639px
+@media (max-width: 639px) {
+  .sliderWrapper {
+    padding: 0 16px;
+    height: auto;
+    max-width: 320px;
+    margin: 0 auto 56px;
+  }
+
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    width: 100vw;
+    max-height: 320px;
+    margin: 0 -16px;
+  }
+
+  .arrowLeft,
+  .arrowRight {
+    display: none;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    height: auto;
+  }
+
+  .slide img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+}
+
+.dots {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: gray;
+    border: none;
+
+    &.active {
+      background-color: black;
+    }
+  }
+
+  .adjustedFirst {
+    object-position: right center;
+  }
+}

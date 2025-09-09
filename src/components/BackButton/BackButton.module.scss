@@ -1,0 +1,32 @@
+@import '../../assets/fonts/variables.scss';
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+
+  span {
+    height: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-White);
+    transition:
+      transform 0.3s ease,
+      color 0.3s;
+  }
+
+  span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-White);
+    transition:
+      color 0.3s,
+      transform 0.2s;
+  }
+
+  &:hover span {
+    color: var(--color-Accent);
+    transform: scale(1.1);
+  }
+}

@@ -1,0 +1,156 @@
+@import '../../assets/fonts/variables.scss';
+
+.grid {
+  @include grid-24($gap: 16px);
+  @include grid-24-mw($gap: 16px);
+  grid-column: 1 / -1;
+  margin: 0 auto;
+  row-gap: 40px;
+  margin-bottom: 80px;
+}
+
+.cardsWrapper {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+    row-gap: 40px;
+  grid-column: 1 / -1;
+}
+
+.cardsWrapper > * {
+  grid-column: span 6;
+}
+
+.pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+    .prevArrow {
+    margin-right: 12px;
+  }
+
+  .nextArrow {
+    margin-left: 12px;
+  }
+
+  .arrowBtn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: var(--color-Surface2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+    transition: filter 0.2s;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+&:hover:not(:disabled) {
+      background-color: var(--color-Icons);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid var(--color-Elements);
+      img {
+        filter: grayscale(100%);
+      }
+    }
+  }
+}
+
+.pagination button {
+  min-width: 32px;
+  height: 32px;
+  border: none;
+  margin: 0 4px;
+  background-color: var(--color-Surface1);
+  font-size: 14px;
+  color: var(--color-White);
+  font-weight: 600;
+  transition: background-color 0.2s;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-Icons);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    background-color: transparent;
+    border: 1px solid var(--color-Elements);
+  }
+
+  &.active {
+    background-color: var(--color-Accent);
+    color: var(--color-White);
+  }
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .grid {
+    @include grid-12($gap: 16px);
+    margin: 0 24px;
+    row-gap: 40px;
+    margin-bottom: 64px;
+  }
+
+
+
+  .tabletCard {
+    grid-column: span 8;
+    height: 506px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .grid {
+    @include grid-12($gap: 16px);
+    margin: 0 24px;
+    row-gap: 40px;
+    margin-bottom: 64px;
+  }
+
+
+
+  .tabletCard {
+    grid-column: span 12;
+    height: 506px;
+  }
+}
+
+
+
+@media (max-width: 639px) {
+  .grid {
+    @include grid-4($gap: 16px);
+    margin: 0 16px;
+    margin-bottom: 64px;
+    row-gap: 24px;
+  }
+
+  .cardsWrapper {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px; 
+  }
+
+  .tabletCard {
+    height: 440px;
+    grid-column: span 4;
+  }
+
+  .pagination {
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+  }
+
+
+}
