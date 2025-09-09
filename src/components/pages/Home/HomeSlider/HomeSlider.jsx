@@ -2,10 +2,10 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import './HomeSlider.scss';
 
 const images = [
-  './images/banner/Banner__1.png',
-  './images/banner/Banner__2.png',
-  './images/banner/Banner__6.png',
-  './images/banner/Banner_2.png',
+  '/images/banner/Banner__1.png',
+  '/images/banner/Banner__2.png',
+  '/images/banner/Banner__6.png',
+  '/images/banner/Banner_2.png',
 ];
 
 const extendedImages = [images[images.length - 1], ...images, images[0]];
@@ -116,7 +116,7 @@ export const HomeSlider = () => {
 
   return (
     <section className="slider-wrapper-container">
-      <h1 className="title">Welcome to Nice Gadgets store!</h1>
+      <h1 className="title">Welcome to Nice Gadgets store !!!</h1>
 
       <div className="slider-wrapper">
         <button
@@ -125,7 +125,7 @@ export const HomeSlider = () => {
           style={{ height: slideHeight ? `${slideHeight}px` : 'auto' }}
         >
           <img
-            src="./images/icons/Chevron_Arrow_Left.svg"
+            src="/images/icons/Chevron_Arrow_Left.svg"
             className="icons_arrow"
             alt="Chevron Left"
           />
@@ -167,7 +167,7 @@ export const HomeSlider = () => {
           style={{ height: slideHeight ? `${slideHeight}px` : 'auto' }}
         >
           <img
-            src="./images/icons/Chevron_Arrow_Right.svg"
+            src="/images/icons/Chevron_Arrow_Right.svg"
             className="icons_arrow"
             alt="Chevron Right"
           />

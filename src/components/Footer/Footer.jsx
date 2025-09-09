@@ -54,7 +54,7 @@ export const Footer = () => {
             className="swiper-button-custom-footer"
           >
             <img
-              src={`./images/icons/Chevron_Arrow_Up.svg`}
+              src="./images/icons/Chevron_Arrow_Up.svg"
               className="icons_arrow"
               alt="Chevron Left"
             />
