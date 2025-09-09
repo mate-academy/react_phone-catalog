@@ -492,8 +492,8 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
               className='rec__link fav__itemImage'
             >
               <img
-                src={`../../../public/${item.images[0]}`}
-                alt="here should be an image"
+                src={`${item.images[0]}`}
+                alt="here should be a main image"
               />
               <div className={`rec__item-name ${currentTheme}`}>
                 {item.name}
