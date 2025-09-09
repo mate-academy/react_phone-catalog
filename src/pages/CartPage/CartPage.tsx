@@ -73,10 +73,12 @@ export const CardPage = () => {
         <section className={styles.container__body}>
           <h1 className={styles.container__body__title}>Cart</h1>
           <p className={styles.container__body__text}>{items} items</p>
+
+          {message && (
+            <p className={styles.container__body__message}>{message}</p>
+          )}
+
           <div className={styles.container__body__cart}>
-            {message && (
-              <p className={styles.container__body__message}>{message}</p>
-            )}
             {uniqueItems.length === 0 ? (
               <div className={styles.container__body__empty}>
                 <p className={styles.container__body__empty__text}>

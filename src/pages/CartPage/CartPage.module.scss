@@ -2,6 +2,8 @@
   @include content-padding-in-line;
 
   &__backbutton {
+    cursor: pointer;
+
     display: flex;
     gap: 8px;
     align-items: center;
