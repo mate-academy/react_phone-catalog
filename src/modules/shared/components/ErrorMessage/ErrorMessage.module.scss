@@ -12,8 +12,8 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #e87c74;
-  border: 1px solid #f51a0a;
+  background-color: rgba($red-color, 0.7);
+  border: 1px solid $red-color;
   box-shadow: 0 2px 5px rgba($shadow-color, 0.2);
 
   opacity: 0;

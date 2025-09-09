@@ -27,27 +27,18 @@
       color: $primary-color;
     }
 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
     &:not(:last-of-type) {
-      max-width: 80px;
-
-      @include on-tablet {
-        max-width: none;
-      }
+      flex-shrink: 0;
     }
 
-    &:last-of-type {
-      flex: 1;
-      min-width: 0;
+    &:last-child {
       max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       @include on-tablet {
-        flex: initial;
-        min-width: initial;
-        max-width: none;
+        max-width: 300px;
       }
     }
   }

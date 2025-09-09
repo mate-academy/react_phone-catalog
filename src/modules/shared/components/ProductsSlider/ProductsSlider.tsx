@@ -145,7 +145,7 @@ export const ProductsSlider: React.FC<Props> = ({
           <ProductCard
             key={p.id}
             product={p}
-            link={`${p.category}/${p.itemId}`}
+            link={`/${p.category}/${p.itemId}`}
           ></ProductCard>
         ))}
       </div>

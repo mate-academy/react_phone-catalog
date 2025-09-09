@@ -3,6 +3,7 @@
 @import './typography';
 
 .button {
+  font-family: none;
   &__primary {
     border: none;
     box-sizing: border-box;
@@ -34,7 +35,7 @@
 
   &__back {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 4px;
     margin-top: 24px;
@@ -119,16 +120,24 @@
     }
 
     &--color {
-      padding: 1px;
       width: 32px;
       height: 32px;
+      padding: 1px;
       border: 1px solid $elements-color;
+
+      &::before {
+        content: '';
+        width: 90%;
+        height: 90%;
+        border-radius: 50%;
+        background-color: var(--button-color);
+      }
 
       &:hover {
         border-color: $icons-color;
       }
 
-      &:active {
+      &:active, &.active {
         border-color: $primary-color;
       }
     }
@@ -140,6 +149,29 @@
       &:hover {
         border-color: $primary-color;
       }
+    }
+  }
+
+  &__capacity {
+    padding: 8px;
+    box-sizing: border-box;
+    background: none;
+    border: 1px solid $icons-color;
+    border-radius: 4px;
+    font-family: inherit;
+    cursor: pointer;
+
+    transition-property: background-color color;
+    transition-duration: $transition-time;
+
+    &:hover {
+      background-color: $elements-color;
+      color: $primary-color;
+    }
+
+    &:active, &--active {
+      background-color: $primary-color;
+      color: $white-color;
     }
   }
 }

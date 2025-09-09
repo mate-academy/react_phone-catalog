@@ -1,28 +1,14 @@
 import React from 'react';
 import '@/styles/main.scss';
-import classNames from 'classnames';
-import styles from './NotFoundPage.module.scss';
-import { Link } from 'react-router-dom';
+import { NotFound } from '../components/NotFound';
 
-export const NotFound: React.FC = () => {
+export const NotFoundPage: React.FC = () => {
   return (
     <main className="container">
-      <div className={styles.not_found}>
-        <img
-          className={styles['not_found--image']}
-          src="/img/page-not-found.png"
-          alt="404"
-        />
-        <p className={classNames(styles['not_found--text'], 'text__body')}>
-          Oops, the page doesn&apos;t exist :(
-        </p>
-        <Link
-          className={classNames(styles['not_found--link'], 'text__body')}
-          to="/"
-        >
-          Back to home
-        </Link>
-      </div>
+      <NotFound
+        imageUrl="/img/page-not-found.png"
+        message="Oops, the page doesn't exist"
+      ></NotFound>
     </main>
   );
 };

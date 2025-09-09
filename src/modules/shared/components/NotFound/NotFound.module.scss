@@ -12,17 +12,16 @@
   &--image {
     margin-block: 16px;
 
-    width: 320px;
-    height: 300px;
+    max-width: 320px;
+    width: 100%;
+    height: auto;
 
     @include on-tablet {
-      width: 480px;
-      height: 460px;
+      max-width: 480px;
     }
 
     @include on-desktop {
-      width: 640px;
-      height: 620px;
+      max-width: 640px;
     }
   }
 

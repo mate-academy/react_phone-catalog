@@ -122,7 +122,9 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
             comparison = a.price - b.price;
             break;
           case 'title':
-            comparison = a.name.localeCompare(b.name);
+            comparison = a.name.localeCompare(b.name, 'en-US', {
+              numeric: true,
+            });
             break;
           default:
             return 0;
@@ -141,7 +143,8 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     return processed;
   }, [products, category, sort, order]);
 
-  const itemsPerPage = perPage === 'All' ? processedProducts.length : (perPage as number);
+  const itemsPerPage =
+    perPage === 'All' ? processedProducts.length : (perPage as number);
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currItems = processedProducts.slice(startIndex, endIndex);
@@ -173,10 +176,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
       {error && <ErrorMessage message={error}></ErrorMessage>}
       {processedProducts && (
         <>
-          <ProductsList
-            products={currItems}
-            category={category.toLowerCase()}
-          ></ProductsList>
+          <ProductsList products={currItems}></ProductsList>
           {perPage !== 'All' &&
             Math.ceil(processedProducts.length / itemsPerPage) > 1 && (
               <Pagination

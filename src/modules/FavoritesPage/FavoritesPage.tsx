@@ -16,19 +16,14 @@ export const FavoritePage: React.FC = () => {
       <div className={styles.favorites_page__text}>
         <h1>Favorites</h1>
         <p className={classNames('text__body', styles.favorites_page__qty)}>
-          5 items
+          {favorites.length} items
         </p>
       </div>
       <div className={styles.favorites_page__products}>
         {favorites.length === 0 ? (
-          <p
-            className={classNames(
-              'text__body',
-              styles['favorites_page__products--note'],
-            )}
-          >
-            No favorite items
-          </p>
+          <h4 className={styles['favorite_page__products--note']}>
+            Your favorite items will appear here
+          </h4>
         ) : (
           <ProductsList products={favorites}></ProductsList>
         )}

@@ -4,6 +4,7 @@ import '@/styles/main.scss';
 import styles from './CartItem.module.scss';
 import classNames from 'classnames';
 import { ProductBrief } from '@/types/ProductBrief';
+import { Link } from 'react-router-dom';
 
 interface Props {
   product: ProductBrief;
@@ -53,9 +54,12 @@ export const CartItem: React.FC<Props> = ({
             className={styles['cart_item__image--img']}
           />
         </div>
-        <p className={classNames(styles.cart_item__title, 'text__body')}>
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+          className={classNames(styles.cart_item__title, 'text__body')}
+        >
           {product.name}
-        </p>
+        </Link>
       </div>
       <div className={styles.cart_item__controls}>
         <div className={styles.cart_item__qty}>

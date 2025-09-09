@@ -24,7 +24,7 @@ export const Breadcrumbs: React.FC<Props> = ({ links }) => {
               </p>
             ) : (
               <Link
-                to={`/${link}`}
+                to={`/${link.toLowerCase()}`}
                 className={classNames(styles.breadcrumbs__text, 'text__body')}
               >
                 {link}

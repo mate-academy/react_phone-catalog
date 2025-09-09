@@ -9,12 +9,13 @@ import {
   Routes,
 } from 'react-router-dom';
 import { HomePage } from './modules/HomePage';
-import { NotFound } from './modules/shared/NotFoundPage';
+import { NotFoundPage } from './modules/shared/NotFoundPage';
 import { ProductPage } from './modules/ProductPage/ProductPage';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { FavoritePage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 // import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
@@ -29,32 +30,32 @@ createRoot(document.getElementById('root') as HTMLElement).render(
 
               <Route path="phones">
                 <Route index element={<ProductPage category="Phones" />} />
-                {/* <Route
+                <Route
                   path=":itemId"
                   element={<ProductDetailsPage category="Phones" />}
-                /> */}
+                />
               </Route>
 
               <Route path="tablets">
                 <Route index element={<ProductPage category="Tablets" />} />
-                {/* <Route
+                <Route
                   path=":itemId"
                   element={<ProductDetailsPage category="Tablets" />}
-                /> */}
+                />
               </Route>
 
               <Route path="accessories">
                 <Route index element={<ProductPage category="Accessories" />} />
-                {/* <Route
+                <Route
                   path=":itemId"
                   element={<ProductDetailsPage category="Accessories" />}
-                /> */}
+                />
               </Route>
 
               <Route path="favorites" element={<FavoritePage />} />
               <Route path="cart" element={<CartPage />} />
 
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </Router>

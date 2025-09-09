@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import '@/styles/main.scss';
 
@@ -14,16 +14,24 @@ import { useProducts } from '@/hooks/useProducts';
 export const HomePage: React.FC = () => {
   const { products, loading, error } = useProducts();
 
-  const newProducts = products
-    .slice(0, 20)
-    .sort((p1: ProductBrief, p2: ProductBrief) => p2.year - p1.year);
+  const newProducts = useMemo(
+    () =>
+      products
+        .sort((p1: ProductBrief, p2: ProductBrief) => p2.year - p1.year)
+        .slice(0, 20),
+    [products],
+  );
 
-  const hotPriceProducts = products
-    .slice(0, 12)
-    .sort(
-      (p1: ProductBrief, p2: ProductBrief) =>
-        p2.fullPrice - p2.price - (p1.fullPrice - p1.price),
-    );
+  const hotPriceProducts = useMemo(
+    () =>
+      products
+        .sort(
+          (p1: ProductBrief, p2: ProductBrief) =>
+            p2.fullPrice - p2.price - (p1.fullPrice - p1.price),
+        )
+        .slice(0, 12),
+    [products],
+  );
 
   return (
     <main className={classNames(styles.home_page, 'container')}>
