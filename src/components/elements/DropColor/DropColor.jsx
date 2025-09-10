@@ -33,8 +33,8 @@ export const DropColor = ({ value, onChange, availableColors }) => {
           <img
             src={
               isOpen
-                ? `./images/icons/Chevron_Arrow_Up_black.svg`
-                : `./images/icons/Chevron_Arrow_Down.svg`
+                ? '/images/icons/Chevron_Arrow_Up_black.svg'
+                : '/images/icons/Chevron_Arrow_Down.svg'
             }
             alt="arrow"
             className="select-arrow"
