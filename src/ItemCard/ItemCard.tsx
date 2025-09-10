@@ -58,7 +58,8 @@ export const ItemCard: React.FC = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   const updateProductUrl = (color: string, capacity: string) => {
-    const newProductId = `${product?.namespaceId}-${capacity.toLocaleLowerCase()}-${color}`;
+    const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, '-');
+    const newProductId = `${product?.namespaceId}-${capacity.toLocaleLowerCase()}-${normalize(color)}`;
 
     navigate(`/product/${newProductId}`);
   };
@@ -208,6 +209,17 @@ export const ItemCard: React.FC = () => {
     return <p>Product not found</p>;
   }
 
+  const colorVariable: Record<string, string> = {
+    black: '#000000',
+    white: '#FFFFFF',
+    yellow: '#FFD700',
+    purple: '#800080',
+    midnight: '#0d1b3a',
+    spacegray: '#4A4A4A',
+    starlight: '#F5F5DC',
+    spaceblack: '#000000',
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.navigation}>
@@ -259,7 +271,10 @@ export const ItemCard: React.FC = () => {
                   <button
                     key={color}
                     className={`${styles.color_circle} ${selectedColor === color ? styles.active_color : ''}`}
-                    style={{ backgroundColor: color }}
+                    style={{
+                      backgroundColor:
+                        colorVariable[color.toLowerCase()] || color,
+                    }}
                     onClick={() => handleColorChange(color)}
                   />
                 ))}
@@ -283,9 +298,6 @@ export const ItemCard: React.FC = () => {
               {product.priceDiscount ? (
                 <>
                   <span className={styles.discount_price}>
-                    ${product.priceDiscount}
-                  </span>
-                  <span className={styles.original_price}>
                     ${product.priceRegular}
                   </span>
                 </>

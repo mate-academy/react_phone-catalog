@@ -56,7 +56,7 @@ export const HotPrices: React.FC = () => {
   const { dispatch } = useCart();
 
   const handleAddToCart = (id: string) => {
-    const product = phones.find(p => p.id === id);
+    const product = allProducts.find(p => p.id === id);
 
     if (product) {
       dispatch({ type: 'ADD_TO_CART', product });
@@ -64,7 +64,7 @@ export const HotPrices: React.FC = () => {
   };
 
   const handleToggleFavorite = (id: string) => {
-    const product = phones.find(p => p.id === id);
+    const product = allProducts.find(p => p.id === id);
 
     if (product) {
       dispatch({ type: 'TOGGLE_FAVORITE', product });

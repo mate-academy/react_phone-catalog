@@ -181,8 +181,8 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0;
-    // margin: 0 32px;
+    padding: 16px;
+    margin: 0;
   }
 
   .product_card:hover {
@@ -278,6 +278,8 @@ a {
     line-height: 15.34px;
     text-align: right;
     color: #313237;
+    max-height: 15px;
+    overflow: hidden;
   }
 
   .bottom_buttons {

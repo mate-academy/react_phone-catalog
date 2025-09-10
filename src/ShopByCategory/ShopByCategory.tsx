@@ -14,6 +14,10 @@ export const ShopByCategory: React.FC = () => {
     accessory => accessory.category === 'accessories',
   );
 
+  const goToPage = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       <div className={style.category}>
@@ -26,6 +30,7 @@ export const ShopByCategory: React.FC = () => {
                   src="img/category-phones.svg"
                   alt="Mobile phones"
                   className={style.image}
+                  onClick={goToPage}
                 />
               </Link>
             </div>
@@ -44,6 +49,7 @@ export const ShopByCategory: React.FC = () => {
                   src="img/category-tablets.svg"
                   alt="Tablets"
                   className={style.image}
+                  onClick={goToPage}
                 />
               </Link>
             </div>
@@ -62,6 +68,7 @@ export const ShopByCategory: React.FC = () => {
                   src="img/category-accessories.svg"
                   alt="Accessories"
                   className={style.image}
+                  onClick={goToPage}
                 />
               </Link>
             </div>
