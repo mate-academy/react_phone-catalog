@@ -131,14 +131,12 @@ export const Header: React.FC = () => {
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
-              `${styles.icon} ${styles.icon_aside} ${styles['icon_aside-border']} ${isActive ? styles.activeIcon : ''}`
+              `${styles.icon} ${styles.iconLike} ${styles.icon_aside} ${styles['icon_aside-border']} ${isActive ? styles.activeIcon : ''}`
             }
             onClick={() => setIsMenuOpen(false)}
           >
             {favorites.length > 0 && (
-              <div className={styles.iconLike}>
-                <span className={styles.badge}>{favorites.length}</span>
-              </div>
+              <span className={styles.badge}>{favorites.length}</span>
             )}
           </NavLink>
           <NavLink
