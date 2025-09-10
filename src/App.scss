@@ -160,3 +160,19 @@ body {
     @include font-h1;
   }
 }
+
+/* .main_lol { // remove this if short pages starting to look funny
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+} */
+
+.main_lol {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.section {
+  flex: 1;
+}

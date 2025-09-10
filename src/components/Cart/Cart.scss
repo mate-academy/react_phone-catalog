@@ -314,6 +314,10 @@
     flex-shrink: 0;
   }
 
+  @media (max-width: 1199px) {
+    margin-top: 32px;
+  }
+
   &.theme1 {
     border-color: $theme-dark-elements;
   }

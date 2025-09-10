@@ -31,7 +31,7 @@ export const App: React.FC = () => {
   }, [currentTheme]);
 
   return (
-    <div data-cy="app">
+    <div data-cy="app" className='main_lol'>
       <Navbar />
 
       <main className="section">

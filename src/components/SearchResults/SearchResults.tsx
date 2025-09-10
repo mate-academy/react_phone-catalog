@@ -211,32 +211,32 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
 
     preparedItems.sort((a, b) => {
       if (sort === 'relevance') {
-        console.log('sort_changed_to_relevance');
+        // console.log('sort_changed_to_relevance');
 
         return 0;
       }
 
       if (sort === 'price_low_high') {
-        console.log('sort_changed_to_price_low->high');
+        // console.log('sort_changed_to_price_low->high');
 
         return a.priceDiscount - b.priceDiscount;
       }
 
       if (sort === 'price_high_low') {
-        console.log('sort_changed_to_price_high->low');
+        // console.log('sort_changed_to_price_high->low');
 
         return b.priceDiscount - a.priceDiscount;
       }
 
       if (sort === 'discount_high_low') {
-        console.log('sort_changed_to discount_high_low');
+        // console.log('sort_changed_to discount_high_low');
 
         return (b.priceRegular - b.priceDiscount)
           - (a.priceRegular - a.priceDiscount);
       }
 
       if (sort === 'discount_low_high') {
-        console.log('sort_changed_to discount_low_high');
+        // console.log('sort_changed_to discount_low_high');
 
         return (a.priceRegular - a.priceDiscount)
           - (b.priceRegular - b.priceDiscount);
@@ -346,18 +346,18 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   };
 
   const sortOptions = [
-    { value: 'relevance', label: 'Relevance' },
-    { value: 'price_low_high', label: 'Price: Low to High' },
-    { value: 'price_high_low', label: 'Price: High to Low' },
-    { value: 'discount_high_low', label: 'Discount: High to Low' },
-    { value: 'discount_low_high', label: 'Discount: Low to High' }
+    { value: 'relevance', label: t('select.sort.relevance') },
+    { value: 'price_low_high', label: t('select.sort.price_low_high') },
+    { value: 'price_high_low', label: t('select.sort.price_high_low') },
+    { value: 'discount_high_low', label: t('select.sort.discount_high_low') },
+    { value: 'discount_low_high', label: t('select.sort.discount_low_high') },
   ];
 
   const perPageOptions = [
     { value: '4', label: '4' },
     { value: '8', label: '8' },
     { value: '16', label: '16' },
-    { value: '24', label: '24' }
+    { value: '24', label: '24' },
   ];
 
   return (
@@ -440,11 +440,16 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
             onChange={e => updateSearchParam('sort', e.target.value)}
             value={sort}
           >
-            <option value="relevance">Relevance</option>
-            <option value="price_low_high">Price: Low to High</option>
-            <option value="price_high_low">Price: High to Low</option>
-            <option value="discount_high_low">Discount: High to Low</option>
-            <option value="discount_low_high">Discount: Low to High</option>
+            <option value="relevance">
+              {t('select.sort.relevance')}</option>
+            <option value="price_low_high">
+              {t('select.sort.price_low_high')}</option>
+            <option value="price_high_low">
+              {t('select.sort.price_high_low')}</option>
+            <option value="discount_high_low">
+              {t('select.sort.discount_high_low')}</option>
+            <option value="discount_low_high">
+              {t('select.sort.discount_low_high')}</option>
           </select>
 
           <select
@@ -463,14 +468,14 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
       <CustomSelect
         options={sortOptions}
         value={sort}
-        selTitle='Sort by'
+        selTitle={t('select.sort.title')}
         onChange={(value) => updateSearchParam('sort', value)}
       />
 
       <CustomSelect
         options={perPageOptions}
         value={`${perPage}`}
-        selTitle='Items on page'
+        selTitle={t('select.perPage.title')}
         onChange={(value) => updateSearchParam('perPage', value)}
       />
 

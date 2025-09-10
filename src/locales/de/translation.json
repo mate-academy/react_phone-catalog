@@ -81,5 +81,18 @@
     "cart": "Warenkorb",
     "back": "Zurück",
     "total_for": "Summe für"
+  },
+  "select": {
+    "sort": {
+      "title": "Sortieren nach",
+      "relevance": "Relevanz",
+      "price_low_high": "Preis: Aufsteigend",
+      "price_high_low": "Preis: Absteigend",
+      "discount_high_low": "Rabatt: Hoch bis Niedrig",
+      "discount_low_high": "Rabatt: Niedrig bis Hoch"
+    },
+    "perPage": {
+      "title": "Artikel pro Seite"
+    }
   }
 }

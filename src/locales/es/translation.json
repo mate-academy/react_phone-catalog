@@ -81,5 +81,18 @@
     "cart": "carrito",
     "back": "atrás",
     "total_for": "Total por"
+  },
+  "select": {
+    "sort": {
+      "title": "Ordenar por",
+      "relevance": "Relevancia",
+      "price_low_high": "Precio: de menor a mayor",
+      "price_high_low": "Precio: de mayor a menor",
+      "discount_high_low": "Descuento: de mayor a menor",
+      "discount_low_high": "Descuento: de menor a mayor"
+    },
+    "perPage": {
+      "title": "Artículos por página"
+    }
   }
 }

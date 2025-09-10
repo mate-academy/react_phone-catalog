@@ -81,5 +81,18 @@
     "cart": "cart",
     "back": "back",
     "total_for": "Total for"
+  },
+  "select": {
+    "sort": {
+      "title": "Sort by",
+      "relevance": "Relevance",
+      "price_low_high": "Price: Low to High",
+      "price_high_low": "Price: High to Low",
+      "discount_high_low": "Discount: High to Low",
+      "discount_low_high": "Discount: Low to High"
+    },
+    "perPage": {
+      "title": "Items on page"
+    }
   }
 }

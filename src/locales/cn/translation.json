@@ -81,5 +81,18 @@
     "cart": "购物车",
     "back": "返回",
     "total_for": "总计"
+  },
+  "select": {
+    "sort": {
+      "title": "排序方式",
+      "relevance": "相关性",
+      "price_low_high": "价格：从低到高",
+      "price_high_low": "价格：从高到低",
+      "discount_high_low": "折扣：从高到低",
+      "discount_low_high": "折扣：从低到高"
+    },
+    "perPage": {
+      "title": "每页商品数"
+    }
   }
 }

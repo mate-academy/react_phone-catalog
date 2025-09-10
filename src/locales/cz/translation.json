@@ -81,5 +81,18 @@
     "cart": "košík",
     "back": "zpět",
     "total_for": "Celkem za"
+  },
+  "select": {
+    "sort": {
+      "title": "Seřadit podle",
+      "relevance": "Relevance",
+      "price_low_high": "Cena: od nejnižší po nejvyšší",
+      "price_high_low": "Cena: od nejvyšší po nejnižší",
+      "discount_high_low": "Sleva: od nejvyšší po nejnižší",
+      "discount_low_high": "Sleva: od nejnižší po nejvyšší"
+    },
+    "perPage": {
+      "title": "Položek na stránku"
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import './CustomSelect.scss';
 import { useAppSelector } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
 
 interface SelectOption {
   value: string;
@@ -22,6 +23,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ options, value, onChange,
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const selectedOption = options.find(option => option.value === value);
 
@@ -42,7 +44,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ options, value, onChange,
   };
 
   return (
-    <div className={`custom-select ${selTitle === 'Items on page' ? 'items_on_page' : ''}`} ref={dropdownRef}>
+    <div className={`custom-select ${selTitle === t('select.perPage.title') ? 'items_on_page' : ''}`} ref={dropdownRef}>
       <div className={`custom-select__description ${currentTheme}`}>{selTitle}</div>
       <button
         type="button"
