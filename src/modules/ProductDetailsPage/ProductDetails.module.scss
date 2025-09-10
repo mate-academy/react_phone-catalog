@@ -135,7 +135,7 @@
   &__characteristics {
     &-container {
       @include flex(row, space-between);
-      
+
       margin-bottom: 8px;
 
       &__name {
@@ -159,5 +159,15 @@
 
   &__about {
     @include page-grid;
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
   }
 }

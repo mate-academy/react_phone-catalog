@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { PicturesSlider } from './components/PicturesSlider';
 import style from './HomePage.module.scss';
-import { ProductsSlider } from './components/ProductsSlider/ProductsSlider';
+import { ProductsSlider } from '../shared/components/ProductsSlider';
 
 import { getProducts } from '../shared/utils/api';
 import { Product } from '../shared/types/Product';

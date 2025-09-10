@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Product } from '../../../shared/types/Product';
-import { Icon } from '../../../shared/components/Icon/Icon';
-import { icons } from '../../../shared/constants/icons';
-import { ProductCard } from '../../../shared/components/ProductCard';
+import { Product } from '../../types/Product';
+import { Icon } from '../Icon/Icon';
+import { icons } from '../../constants/icons';
+import { ProductCard } from '../ProductCard';
 
 import cn from 'classnames';
 import styles from './ProductsSlider.module.scss';

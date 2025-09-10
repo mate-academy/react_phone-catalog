@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ProductDetails } from '../shared/types/ProductDetails';
 
 import { getProductById, getProducts } from '../shared/utils/api';
@@ -19,6 +19,7 @@ import { icons } from '../shared/constants/icons';
 import { useFavorites } from '../shared/contexts/FavouritesContext';
 import { ProductAbout } from './ProductAbout/ProductAbout';
 import { ProductSpecs } from './ProductSpecs/ProductSpecs';
+import { ProductsSlider } from '../shared/components/ProductsSlider';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{
@@ -38,6 +39,10 @@ export const ProductDetailsPage: React.FC = () => {
   const isFavorite = favorites.includes(String(productIdNumber));
 
   const navigate = useNavigate();
+
+  const categoryProducts = useMemo(() => {
+    return products.filter(product => product.category === currentCategory);
+  }, [products, currentCategory]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -239,6 +244,12 @@ export const ProductDetailsPage: React.FC = () => {
         <ProductAbout productDetails={productDetails} />
         <ProductSpecs productDetails={productDetails} />
       </div>
+
+      <ProductsSlider
+        title="You may also like"
+        products={categoryProducts}
+        displayType={'discount'}
+      />
     </div>
   );
 };

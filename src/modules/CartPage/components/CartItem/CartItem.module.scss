@@ -25,10 +25,10 @@
 
       @include set-size(16px, 16px);
 
-      background-image: url(../../../shared/icons/close__disabled.svg);
+      background-image: url(../../../../../public/icons/close__disabled.svg);
 
       &:hover {
-        background-image: url(../../../shared/icons/Close.svg);
+        background-image: url(../../../../../public/icons/Close.svg);
       }
     }
   }

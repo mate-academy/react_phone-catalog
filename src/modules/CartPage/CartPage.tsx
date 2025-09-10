@@ -56,7 +56,7 @@ export const CartPage: React.FC = () => {
       ) : (
         <div className={styles.cart__empty}>
           <img
-            src="/public/img/cart-is-empty.png"
+            src="./img/cart-is-empty.png"
             alt="cart is empty"
             className={styles['cart__empty-image']}
           />

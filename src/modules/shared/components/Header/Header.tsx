@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styles from './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { navLinks } from '../../constants/navLinks';
@@ -6,8 +6,18 @@ import { Icon } from '../Icon/Icon';
 import { icons } from '../../constants/icons';
 import classNames from 'classnames';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
+import { useCart } from '../../contexts/CartContext';
+import { useFavorites } from '../../contexts/FavouritesContext';
 
 export const Header = () => {
+  const { cart } = useCart();
+  const { favorites } = useFavorites();
+
+  const totalQuantityCart = useMemo(
+    () => cart.reduce((sum, item) => sum + item.quantity, 0),
+    [cart],
+  );
+
   const getActiveItem = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.header__item, {
       [styles['header__item--active']]: isActive,
@@ -39,12 +49,24 @@ export const Header = () => {
         <NavLink to="/favorites" className={getActiveIcon}>
           <div className={styles['header__icon-wrapper']}>
             <Icon icon={icons.favorites} />
+
+            {favorites.length > 0 && (
+              <span className={styles.header__quantity}>
+                {favorites.length}
+              </span>
+            )}
           </div>
         </NavLink>
 
         <NavLink to="/cart" className={getActiveIcon}>
           <div className={styles['header__icon-wrapper']}>
             <Icon icon={icons.shopping_cart} />
+
+            {totalQuantityCart > 0 && (
+              <span className={styles.header__quantity}>
+                {totalQuantityCart}
+              </span>
+            )}
           </div>
         </NavLink>
       </div>

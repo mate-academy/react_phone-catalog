@@ -33,7 +33,7 @@ export const FavoritesPage: React.FC = () => {
       ) : (
         <div className={styles.favorites__empty}>
           <img
-            src="/public/img/cart-is-empty.png"
+            src="./img/cart-is-empty.png"
             alt="cart is empty"
             className={styles['favorites__empty-image']}
           />

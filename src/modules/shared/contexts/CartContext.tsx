@@ -49,7 +49,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
 
       if (existingItem) {
         return prev.map(item =>
-          item.id === String(product.id)
+          item.id === String(product.itemId)
             ? { ...item, quantity: item.quantity + 1 }
             : item,
         );

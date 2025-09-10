@@ -150,10 +150,32 @@
   }
 
   &__icon-wrapper {
+    position: relative;
     width: 28px;
     height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    @include flex(row, center, center);
+  }
+
+  &__quantity {
+    @include flex(row, center, center);
+
+    width: 12px;
+    height: 12px;
+    background-color: #EB5757;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: '';
+
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 100%;
+    color: var(--color-bg);
+    text-align: center;
+
+    border: 1px solid var(--color-bg);
   }
 }

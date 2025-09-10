@@ -14,7 +14,7 @@ type Props = {
 export const CartItem: React.FC<Props> = ({
   cartProduct: {
     id,
-    product: { name, price, image, category },
+    product: { name, price, image, category, itemId },
     quantity,
   },
 }) => {
@@ -29,7 +29,7 @@ export const CartItem: React.FC<Props> = ({
           className={styles['cartItem__top-close']}
           onClick={() => removeFromCart(id)}
         />
-        <Link to={`/${category}/${id}`} className={styles.cartItem__link}>
+        <Link to={`/${category}/${itemId}`} className={styles.cartItem__link}>
           <img src={image} alt="product" className={styles.cartItem__image} />
           <div className={styles.cartItem__title}>{name}</div>
         </Link>
