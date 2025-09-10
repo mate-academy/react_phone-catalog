@@ -17,16 +17,16 @@ export const CategorySelectCard: React.FC<Props> = ({
 }) => {
   return (
     <Link to={path} className={style.selectCategory}>
-      <div className={style.selectCategory_ImgWrapper}>
+      <div className={style.selectCategory__imageWrapper}>
         <img
-          className={style.selectCategory_Img}
+          className={style.selectCategory__image}
           src={image}
-          alt="category img"
+          alt="category image"
         />
       </div>
-      <div className={style.selectCategory_description}>
-        <p className={style.selectCategory_title}>{title}</p>
-        <p className={style.selectCategory_models}>{quantity}</p>
+      <div className={style.selectCategory__description}>
+        <p className={style.selectCategory__title}>{title}</p>
+        <p className={style.selectCategory__models}>{quantity} models</p>
       </div>
     </Link>
   );

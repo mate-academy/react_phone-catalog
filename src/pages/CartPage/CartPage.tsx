@@ -16,15 +16,15 @@ export const CartPage: React.FC = () => {
   };
 
   if (cart.length === 0) {
-    return <p className={style.cart_title}>Your cart is empty</p>;
+    return <p className={style.cart__title}>Your cart is empty</p>;
   }
 
   return (
     <>
       <ButtonBack />
-      <h1 className={style.cart_title}>Cart</h1>
-      <div className={style.cart_page}>
-        <div className={style.cart_items}>
+      <h1 className={style.cart__title}>Cart</h1>
+      <div className={style.cart__page}>
+        <div className={style.cart__items}>
           {cart.map(item => (
             <CartItem
               key={item.id}
@@ -34,7 +34,7 @@ export const CartPage: React.FC = () => {
           ))}
         </div>
 
-        <div className={style.cart_checkout}>
+        <div className={style.cart__checkout}>
           <div className={style['cart__price-description']}>
             <p className={style['cart__checkout--price']}>${totalAmount}</p>
             <p className={style['cart__checkout--total']}>

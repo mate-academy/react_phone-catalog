@@ -11,7 +11,7 @@
 
   flex: 1 1 calc((100% - 48px) / 3);
 
-  &_ImgWrapper {
+  &__imageWrapper {
     width: 100%;
     padding-top: 100%;
     overflow: hidden;
@@ -19,7 +19,7 @@
     background-color: #6d6474;
   }
 
-  &_Img {
+  &__image {
     position: absolute;
     top: 50px;
     left: 85px;
@@ -30,15 +30,15 @@
     transition: transform 0.3s ease;
   }
 
-  &_title {
+  &__title {
     font-size: 20px;
     font-weight: 700;
     line-height: 100%;
     padding-bottom: 4px;
   }
 
-  &_models {
-    color: $gray-secondary-color;
+  &__models {
+    color: #75767F;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
@@ -49,17 +49,17 @@
     transition: transform 0.3s ease;
   }
 
-  @include on-tablet {
-    &_ImgWrapper {
-      width: 288px;
-      height: 288px;
+  @include on-desktop {
+    &__image {
+      top: 40px;
+      left: 65px;
     }
   }
 
-  @include on-desktop {
-    &_Img {
-      top: 40px;
-      left: 65px;
+  @include on-tablet {
+    &__imageWrapper {
+      width: 288px;
+      height: 288px;
     }
   }
 }
