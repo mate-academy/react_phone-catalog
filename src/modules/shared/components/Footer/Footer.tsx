@@ -24,6 +24,7 @@ export const Footer: React.FC = () => {
                 styles['footer__nav--link'],
                 'text__uppercase',
               )}
+              target="_blank"
             >
               GitHub
             </Link>
@@ -35,17 +36,19 @@ export const Footer: React.FC = () => {
                 styles['footer__nav--link'],
                 'text__uppercase',
               )}
+              target="_blank"
             >
               Contacts
             </Link>
           </li>
           <li>
             <Link
-              to="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              to="https://mate.academy/"
               className={classNames(
                 styles['footer__nav--link'],
                 'text__uppercase',
               )}
+              target="_blank"
             >
               Rights
             </Link>

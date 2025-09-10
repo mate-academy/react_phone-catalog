@@ -8,6 +8,11 @@
   padding: 16px;
   border: 1px solid $elements-color;
   border-radius: 16px;
+  transition: box-shadow $transition-time;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba($shadow-color, 0.1);
+  }
 
   @include on-tablet {
     flex-direction: row;
@@ -43,6 +48,8 @@
 
   &__title {
     flex: 1;
+    color: $primary-color;
+    text-decoration: none;
   }
 
   &__controls {
@@ -51,11 +58,12 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    min-width: 200px;
 
     @include on-tablet {
-      width: auto;
-      justify-content: flex-start;
-      gap: 24px;
+      width: 200px;
+      justify-content: space-evenly;
+      gap: 0;
       flex-shrink: 0;
     }
   }

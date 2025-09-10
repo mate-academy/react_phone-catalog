@@ -73,6 +73,7 @@ export const CartPage: React.FC = () => {
               <CartItem
                 key={p.product.id}
                 product={p.product}
+                quantity={p.quantity}
                 onQtyChange={updateQty}
                 onRemove={removeItem}
               ></CartItem>

@@ -105,6 +105,7 @@ export const PromoSlider: React.FC = () => {
             className={`${styles['promo_carousel__pagination--item']} ${
               index === imageIndex ? styles.activePagination : ''
             }`}
+            onClick={() => setImageIndex(index)}
           />
         ))}
       </div>

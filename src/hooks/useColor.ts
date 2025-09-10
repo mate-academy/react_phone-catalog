@@ -20,9 +20,13 @@ export const useColor = (namespace: string, color: string) => {
       red: '#a5282c',
     },
     'apple-iphone-xs': {
+      spacegray: '#25282a',
+      gold: '#f5ddc5',
+    },
+    'apple-iphone-xs-max': {
+      spacegray: '#25282a',
       black: '#1f2020',
       silver: '#e4e4e2',
-      gold: '#f5ddc5',
     },
     'apple-iphone-11': {
       purple: '#d1cdda',
@@ -113,7 +117,7 @@ export const useColor = (namespace: string, color: string) => {
     },
     'apple-watch-se': {
       silver: '#e4e4e2',
-      spacegray: '#25282a',
+      'space gray': '#25282a',
       gold: '#f5ddc5',
     },
   };

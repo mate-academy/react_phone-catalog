@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React, { useState } from 'react';
+import React from 'react';
 import '@/styles/main.scss';
 import styles from './CartItem.module.scss';
 import classNames from 'classnames';
@@ -8,30 +8,26 @@ import { Link } from 'react-router-dom';
 
 interface Props {
   product: ProductBrief;
+  quantity: number;
   onQtyChange: (productId: number, quantity: number) => void;
   onRemove: (productId: number) => void;
 }
 
 export const CartItem: React.FC<Props> = ({
   product,
+  quantity,
   onQtyChange,
   onRemove,
 }) => {
-  const [qty, setQty] = useState<number>(1);
-
   const decreaseQty = () => {
-    if (qty > 1) {
-      const newQty = qty - 1;
+    const newQty = quantity - 1;
 
-      setQty(newQty);
-      onQtyChange?.(product.id, newQty);
-    }
+    onQtyChange(product.id, newQty);
   };
 
   const increaseQty = () => {
-    const newQty = qty + 1;
+    const newQty = quantity + 1;
 
-    setQty(newQty);
     onQtyChange(product.id, newQty);
   };
 
@@ -39,7 +35,7 @@ export const CartItem: React.FC<Props> = ({
     onRemove(product.id);
   };
 
-  const itemPrice = product.price * qty;
+  const itemPrice = product.price * quantity;
 
   return (
     <div className={styles.cart_item}>
@@ -72,7 +68,7 @@ export const CartItem: React.FC<Props> = ({
           <p
             className={classNames(styles['cart_item__qty--text'], 'text__body')}
           >
-            {qty}
+            {quantity}
           </p>
           <button
             className="button__circle button__circle--regular"
