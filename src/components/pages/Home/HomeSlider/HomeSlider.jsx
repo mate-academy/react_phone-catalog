@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import './HomeSlider.scss';
 
 const images = [
-  '/images/banner/Banner__1.png',
+  '/images/banner/Banner__3.jpg',
   '/images/banner/Banner__2.png',
   '/images/banner/Banner__6.png',
   '/images/banner/Banner_2.png',
@@ -116,7 +116,7 @@ export const HomeSlider = () => {
 
   return (
     <section className="slider-wrapper-container">
-      <h1 className="title">Welcome to Nice Gadgets store !!!</h1>
+      <h1 className="title">Welcome to Nice Gadgets store !</h1>
 
       <div className="slider-wrapper">
         <button
