@@ -24,9 +24,9 @@ export default function DownPagePhone({ products }) {
             }`}
           >
             <img
-              src={`/images/icons/Chevron_Arrow_Left${
+              src="./images/icons/Chevron_Arrow_Left${
                 isBeginning ? '_Disabled' : ''
-              }.svg`}
+              }.svg"
               className="icons_arrow"
               alt="Chevron Left"
             />
@@ -37,9 +37,9 @@ export default function DownPagePhone({ products }) {
             className={`swiper-button-custom right ${isEnd ? 'disabled' : ''}`}
           >
             <img
-              src={`/images/icons/Chevron_Arrow_Right${
+              src="./images/icons/Chevron_Arrow_Right${
                 isEnd ? '_Disabled' : ''
-              }.svg`}
+              }.svg"
               className="icons_arrow"
               alt="Chevron Right"
             />

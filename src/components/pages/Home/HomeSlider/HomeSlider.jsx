@@ -125,7 +125,7 @@ export const HomeSlider = () => {
           style={{ height: slideHeight ? `${slideHeight}px` : 'auto' }}
         >
           <img
-            src="/images/icons/Chevron_Arrow_Left.svg"
+            src="./images/icons/Chevron_Arrow_Left.svg"
             className="icons_arrow"
             alt="Chevron Left"
           />
@@ -167,7 +167,7 @@ export const HomeSlider = () => {
           style={{ height: slideHeight ? `${slideHeight}px` : 'auto' }}
         >
           <img
-            src="/images/icons/Chevron_Arrow_Right.svg"
+            src="./images/icons/Chevron_Arrow_Right.svg"
             className="icons_arrow"
             alt="Chevron Right"
           />

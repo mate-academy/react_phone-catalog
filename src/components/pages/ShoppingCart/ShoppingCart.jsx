@@ -34,7 +34,7 @@ export const ShoppingCart = () => {
         <div className="shopping-page">
           <p className="products-list-title-page">
             <img
-              src={`./images/icons/Chevron_Arrow_Left_Disabled.svg`}
+              src="./images/icons/Chevron_Arrow_Left_Disabled.svg"
               className="product-list-arrow-one"
               alt="Arrow_Right"
             />
@@ -49,7 +49,7 @@ export const ShoppingCart = () => {
       {cartItems.length === 0 ? (
         <div className="empty-cart">
           <img
-            src={`./images/pages/cart-is-empty.png`}
+            src="./images/pages/cart-is-empty.png"
             alt="Empty Cart"
             className="empty-cart-image"
           />
@@ -74,7 +74,7 @@ export const ShoppingCart = () => {
                     >
                       <div className="shopping-box-left-element">
                         <img
-                          src={`./images/icons/Close.svg`}
+                          src="./images/icons/Close.svg"
                           className="shopping-cart-icon"
                           alt="Remove"
                         />
@@ -108,7 +108,7 @@ export const ShoppingCart = () => {
                           }}
                         >
                           <img
-                            src={`./images/icons/Minus.svg`}
+                            src="./images/icons/Minus.svg"
                             className="shopping-button-icon"
                             alt="Decrease"
                           />
@@ -129,7 +129,7 @@ export const ShoppingCart = () => {
                           }}
                         >
                           <img
-                            src={`./images/icons/Plus.svg`}
+                            src="./images/icons/Plus.svg"
                             className="shopping-button-icon"
                             alt="Increase"
                           />

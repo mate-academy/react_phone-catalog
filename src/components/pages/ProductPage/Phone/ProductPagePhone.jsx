@@ -133,13 +133,13 @@ export default function ProductPage() {
         <div className="products-list-title-page">
           <Link to="/Home">
             <img
-              src={`/images/icons/Home.svg`}
+              src="./images/icons/Home.svg"
               className="products-list-icon"
               alt="Home"
             />
           </Link>
           <img
-            src={`/images/icons/Chevron_Arrow_Right_Disabled.svg`}
+            src="./images/icons/Chevron_Arrow_Right_Disabled.svg"
             className="products-list-arrow"
             alt="Arrow_Right"
           />
@@ -148,7 +148,7 @@ export default function ProductPage() {
           </NavLink>
 
           <img
-            src={`/images/icons/Chevron_Arrow_Right_Disabled.svg`}
+            src="./images/icons/Chevron_Arrow_Right_Disabled.svg"
             className="products-list-arrow"
             alt="Arrow_Right"
           />
@@ -157,7 +157,7 @@ export default function ProductPage() {
 
         <p className="products-list-title-page">
           <img
-            src={`/images/icons/Chevron_Arrow_Left_Disabled.svg`}
+            src="./images/icons/Chevron_Arrow_Left_Disabled.svg"
             className="product-list-arrow-one"
             alt="Arrow_Right"
           />

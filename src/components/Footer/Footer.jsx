@@ -13,7 +13,7 @@ export const Footer = () => {
           <NavLink to="/Home">
             <img
               onClick={scrollToTop}
-              src={`./images/icons/Logo_1.png`}
+              src="./images/icons/Logo_1.png"
               alt="logo"
               className="footer-logo-img"
             />

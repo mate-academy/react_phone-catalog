@@ -46,7 +46,7 @@ export const FavouritesCart = () => {
       <div className="shopping-page">
         <p className="products-list-title-page">
           <img
-            src={`./images/icons/Chevron_Arrow_Left_Disabled.svg`}
+            src="./images/icons/Chevron_Arrow_Left_Disabled.svg"
             className="product-list-arrow-one"
             alt="Arrow_Left"
           />
