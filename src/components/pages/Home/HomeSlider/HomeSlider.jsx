@@ -116,7 +116,7 @@ export const HomeSlider = () => {
 
   return (
     <section className="slider-wrapper-container">
-      <h1 className="title">Welcome to Nice Gadgets store !!</h1>
+      <h1 className="title">Welcome to Nice Gadgets store !</h1>
 
       <div className="slider-wrapper">
         <button
