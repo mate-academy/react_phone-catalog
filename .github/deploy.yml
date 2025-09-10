@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [deploy]
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm i
 
       - name: Run linting
         run: npm run lint
