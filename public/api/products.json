@@ -2298,7 +2298,7 @@
   {
     "id": 165,
     "category": "tablets",
-    "itemId": "apple-ipad-air-4th-gen-256gb-rose-gold",
+    "itemId": "apple-ipad-air-4th-gen-256gb-rosegold",
     "name": "Apple iPad Air (4th Gen) 256GB Rose Gold",
     "capacity": "256GB",
     "fullPrice": 749,
@@ -2312,7 +2312,7 @@
   {
     "id": 166,
     "category": "tablets",
-    "itemId": "apple-ipad-air-4th-gen-64gb-rose-gold",
+    "itemId": "apple-ipad-air-4th-gen-64gb-rosegold",
     "name": "Apple iPad Air (4th Gen) 64GB Rose Gold",
     "capacity": "64GB",
     "fullPrice": 599,
@@ -2382,7 +2382,7 @@
   {
     "id": 171,
     "category": "tablets",
-    "itemId": "apple-ipad-air-4th-gen-256gb-sky-blue",
+    "itemId": "apple-ipad-air-4th-gen-256gb-skyblue",
     "name": "Apple iPad Air (4th Gen) 256GB Sky Blue",
     "capacity": "256GB",
     "fullPrice": 749,
@@ -2396,7 +2396,7 @@
   {
     "id": 172,
     "category": "tablets",
-    "itemId": "apple-ipad-air-4th-gen-64gb-sky-blue",
+    "itemId": "apple-ipad-air-4th-gen-64gb-skyblue",
     "name": "Apple iPad Air (4th Gen) 64GB Sky Blue",
     "capacity": "64GB",
     "fullPrice": 599,

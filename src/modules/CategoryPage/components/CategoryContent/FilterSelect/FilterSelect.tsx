@@ -15,7 +15,7 @@ export const FilterSelect = <T extends Record<string | number, string>>({
 }: Props<T>) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const ref = useRef<HTMLDivElement>(null);
   const optionsKeys = Object.keys(options) as Array<string>;
 
@@ -39,6 +39,7 @@ export const FilterSelect = <T extends Record<string | number, string>>({
   const handleSelect = (value: string) => {
     if (variant === "items") {
       searchParams.set("perPage", value);
+      searchParams.delete("page");
     } else {
       searchParams.set("sort", value);
     }
