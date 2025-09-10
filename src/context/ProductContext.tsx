@@ -23,7 +23,7 @@ export const ProductProvider: React.FC<ProviderProps> = ({ children }) => {
     try {
       setLoading(true);
       setError('');
-      const response = await fetch('/api/products.json');
+      const response = await fetch('api/products.json');
 
       if (!response.ok) {
         throw new Error('Failed to fetch products');

@@ -7,9 +7,9 @@ export const PromoSlider: React.FC = () => {
   const [imageIndex, setImageIndex] = useState<number>(0);
 
   const images = [
-    '/img/banner-phones.png',
-    '/img/banner-tablets.png',
-    '/img/banner-accessories.png',
+    'img/banner-phones.png',
+    'img/banner-tablets.png',
+    'img/banner-accessories.png',
   ];
 
   const touchStartX = useRef(0);

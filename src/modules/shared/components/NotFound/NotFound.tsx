@@ -12,7 +12,11 @@ interface Props {
 export const NotFound: React.FC<Props> = ({ imageUrl, message }) => {
   return (
     <div className={styles.not_found}>
-      <img className={styles['not_found--image']} src={imageUrl} alt="404" />
+      <img
+        className={styles['not_found--image']}
+        src={imageUrl.slice(1)}
+        alt="404"
+      />
       <p className={classNames(styles['not_found--text'], 'text__body')}>
         {message}
       </p>

@@ -185,7 +185,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
                           imageChanging && swipeDirection === null,
                       },
                     )}
-                    src={`/${productDetails.images[displayedImageIndex]}`}
+                    src={productDetails.images[displayedImageIndex]}
                     alt={productDetails.name}
                   />
                 </div>
@@ -200,7 +200,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
                         },
                       )}
                       key={i}
-                      src={`/${img}`}
+                      src={img}
                       alt={productDetails.name}
                       onClick={() => handleThumbnailClick(i)}
                     />

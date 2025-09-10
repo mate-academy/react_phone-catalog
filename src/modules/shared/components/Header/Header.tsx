@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
         <div className={styles.header__left}>
           <NavLink to="/" className={styles.header__logo}>
             <img
-              src="/img/icons/Logo@2x.png"
+              src="img/icons/Logo@2x.png"
               alt="Nice gadgets"
               className={styles['header__logo--img']}
             />

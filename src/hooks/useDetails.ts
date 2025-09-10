@@ -12,7 +12,7 @@ export const useDetails = (category: string, itemId: string) => {
       try {
         setLoading(true);
 
-        const response = await fetch(`/api/${category}.json`);
+        const response = await fetch(`api/${category}.json`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch products');
