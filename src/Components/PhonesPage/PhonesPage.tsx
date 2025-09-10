@@ -22,7 +22,7 @@ export const PhonesPage: React.FC = () => {
       setIsLoading(true);
       setError(false);
 
-      const response = await fetch('/api/products.json');
+      const response = await fetch('./api/products.json');
 
       if (!response.ok) {
         throw new Error('Network error');
