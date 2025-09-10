@@ -65,7 +65,7 @@ export const Favorites: React.FC = () => {
               className='rec__link fav__itemImage'
             >
               <img
-                src={`../../../public/${item.image}`}
+                src={`${item.image}`}
                 alt="here should be an image"
               />
               <div className={`rec__item-name ${currentTheme}`}>

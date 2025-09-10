@@ -70,7 +70,7 @@ export const Cart: React.FC = () => {
 
                 <div className="cart__img-wrap">
                   <img
-                    src={`../../../public/${item.image}`}
+                    src={`${item.image}`}
                     alt="here should be an image"
                   />
                 </div>
