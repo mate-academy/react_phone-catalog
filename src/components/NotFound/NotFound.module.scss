@@ -1,0 +1,44 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.notFound{
+  @include omitFixedTopBar;
+  flex: 1;
+
+  &__content{
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  &__title{
+    text-align: center;
+    font-size: 30px;
+
+    @include tablet{
+      font-size: 40px;
+    }
+  }
+
+  &__photo{
+    margin-top: 40px;
+    height: 200px;
+    width: 200px;
+
+    @include tablet{
+      height: 300px;
+      width: 300px;
+    }
+  }
+
+  &__link{
+    @include scaleOnHover;
+    margin-top: 30px;
+    color: $main-white;
+    display: block;
+    text-decoration: none;
+
+    &:hover{
+      color: $text-color;
+    }
+  }
+}

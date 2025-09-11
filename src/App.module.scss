@@ -1,0 +1,48 @@
+@import './mixins/mixins.scss';
+@import './variables/variables.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url(../public/fonts/Mont-Regular.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url(../public/fonts/Mont-SemiBold.otf);
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url(../public/fonts/Mont-Bold.otf);
+  font-weight: 800;
+  font-style:normal;
+}
+
+.app{
+  @include maxWidth;
+  margin-inline: auto;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Mont';
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+
+  &__title {
+    position: absolute;
+    visibility: hidden;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,90 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.productSlider {
+  position: relative;
+  @include padding-inline;
+  overflow: hidden;
+
+  @include desktop {
+    padding-inline: 0;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.9s ease-in-out;
+  }
+
+  &__buttons {
+    position: absolute;
+    top: 0px;
+    right: 16px;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+
+    @include tablet {
+      right: 24px;
+    }
+
+    @include desktop {
+      right: 0px;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: $dark-gray;
+    box-shadow: none !important;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--prev {
+      background-image: url('../../public/img/icons/arrow-left.svg');
+
+      &:disabled {
+        background-image: url('../../../public/img/icons/disabled-arrow-left.svg');
+
+        &:hover{
+          background-color: $app-background;
+        }
+      }
+    }
+
+    &--next {
+      background-image: url('../../../public/img/icons/arrow-right-white.svg');
+
+      &:disabled {
+        background-image: url('../../../public/img/icons/disabled-arrow-right.svg');
+
+        &:hover{
+          background-color: $app-background;
+        }
+      }
+    }
+
+    &:disabled {
+      border: 1px solid $items-disabled;
+      background-color: $app-background;
+    }
+
+    &:hover {
+      background-color: $items-hover;
+    }
+  }
+
+  &__title {
+    @include padding-inline;
+    @include sectionTitleStyle;
+
+    @include desktop {
+      padding-inline: 0px;
+    }
+  }
+
+  &__head {
+    margin-bottom: 24px;
+  }
+}

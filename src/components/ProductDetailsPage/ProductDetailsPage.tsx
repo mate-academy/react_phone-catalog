@@ -1,0 +1,285 @@
+import { Link, useParams } from 'react-router-dom';
+import styles from './ProductDetailsPage.module.scss';
+import { usePhones } from '../../contexts/PhonesContext';
+import { Item } from '../../types/Item';
+import { useEffect, useState } from 'react';
+import { AppleColor } from '../../types/Color';
+import { ProductControls } from '../ProductControls/ProductControls';
+import { useTablets } from '../../contexts/TabletsContext';
+import { useAccessories } from '../../contexts/AccessoriesContext';
+import { YouMayAlsoLike } from '../YouMayAlsoLike/YouMayAlsoLike';
+import { Breadcrumbs } from '../Breadcrumbs';
+
+type Props = {
+  category: string;
+};
+
+export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
+  const { phones } = usePhones();
+  const { tablets } = useTablets();
+  const { accessories } = useAccessories();
+  const { productId } = useParams();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentColor, setCurrentColor] = useState('');
+  const [currentCapacity, setCurrentCapacity] = useState('');
+  const [product, setProduct] = useState<Item | undefined>();
+
+  useEffect(() => {
+    let foundProduct: Item | undefined;
+
+    if (category === 'phones') {
+      foundProduct = phones.find(x => x.id === productId);
+    } else if (category === 'tablets') {
+      foundProduct = tablets.find(x => x.id === productId);
+    } else if (category === 'accessories') {
+      foundProduct = accessories.find(x => x.id === productId);
+    }
+
+    if (foundProduct) {
+      setProduct(foundProduct);
+      setCurrentColor(foundProduct.color as string);
+      setCurrentCapacity(foundProduct.capacity as string);
+    }
+  }, [category, productId, phones, tablets, accessories]);
+
+  useEffect(() => {
+    if (category === 'phones' && product) {
+      const elems = phones.filter(x => x.namespaceId === product.namespaceId);
+      const variation = elems.find(x => x.color === currentColor && x.capacity === currentCapacity);
+
+      if (variation) {
+        setProduct(variation);
+      }
+    } else if (category === 'tablets' && product) {
+      const elems = tablets.filter(x => x.namespaceId === product.namespaceId);
+      const variation = elems.find(x => x.color === currentColor && x.capacity === currentCapacity);
+
+      if (variation) {
+        setProduct(variation);
+      }
+    } else if (category === 'accessories' && product) {
+      const elems = accessories.filter(x => x.namespaceId === product.namespaceId);
+      const variation = elems.find(x => x.color === currentColor && x.capacity === currentCapacity);
+
+      if (variation) {
+        setProduct(variation);
+      }
+    }
+  }, [category, currentColor, currentCapacity, phones, product]);
+
+  const handleImageSelection = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  const handleColorSelection = (color: string) => {
+    setCurrentColor(color);
+  };
+
+  const handleCapacitySelection = (capacity: string) => {
+    setCurrentCapacity(capacity);
+  };
+
+  const colorMap: Record<AppleColor, string> = {
+    gold: '#F8E5C7',
+    midnightgreen: '#4E5851',
+    spacegray: '#323542',
+    silver: '#F1F2F9',
+    red: '#FF3B30',
+    green: '#34C759',
+    yellow: '#FFD60A',
+    purple: '#BF5AF2',
+    white: '#FFFFFF',
+    black: '#000000',
+    pink: '#FF9F9F',
+    starlight: '#F5F2EB',
+    midnight: '#1E2023',
+    blue: '#007AFF',
+    deepPurple: '#5E5CE6',
+    graphite: '#4B4B4B',
+    roseGold: '#B76E79',
+    spaceBlack: '#1C1C1E',
+    naturalTitanium: '#C0B8AE',
+    blueTitanium: '#4E6B8A',
+    whiteTitanium: '#F8F9F9',
+    orange: '#FF9500',
+    clay: '#CBB8A9',
+    stormBlue: '#475569',
+    guava: '#FF7F8C',
+  };
+
+  const images = product?.images as string[];
+  const colors = product?.colorsAvailable as string[];
+  const capacity = product?.capacityAvailable as string[];
+
+  return (
+    <section className={styles.productDetailsPage}>
+      <div className={styles.productDetailsPage__content}>
+        <Breadcrumbs product={product} category={category} />
+
+        <Link to=".." relative="path" className={styles.productDetailsPage__linkBack}>
+          Back
+        </Link>
+        <h1 className={styles.productDetailsPage__title}>{product?.name}</h1>
+
+        {product ? (
+          images &&
+          colors && (
+            <div className={styles.productDetailsPage__product}>
+              <div className={styles.productDetailsPage__photos}>
+                <div className={styles.productDetailsPage__mainPhotoBox}>
+                  <img
+                    src={`/public/${images[currentIndex]}`}
+                    alt="Product photo"
+                    className={styles.productDetailsPage__mainPhoto}
+                  />
+                </div>
+                <div className={styles.productDetailsPage__photoList}>
+                  {images?.map((image, index) => (
+                    <a
+                      key={index}
+                      className={`${styles.productDetailsPage__photoLink} ${index === currentIndex && styles['productDetailsPage__photoLink--active']}`}
+                    >
+                      <img
+                        src={`/public/${image}`}
+                        alt={(index + 1).toString()}
+                        className={`${styles.productDetailsPage__photo}`}
+                        onClick={() => handleImageSelection(index)}
+                      />
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div
+                className={`${styles.productDetailsPage__details} ${styles['productDetailsPage__details--colors']}`}
+              >
+                <div className={styles.productDetailsPage__detailsHead}>
+                  <h3 className={styles.productDetailsPage__detailsTitle}>Available colors</h3>
+                  <p className={styles.productDetailsPage__detailsId}>ID: 802390</p>
+                </div>
+                <div className={styles.productDetailsPage__detailsList}>
+                  {colors.map((color, index) => (
+                    <div
+                      className={`${styles.productDetailsPage__detail} ${styles['productDetailsPage__detail--color']} ${color === currentColor && styles['productDetailsPage__detail--colorActive']}`}
+                      key={index}
+                      style={{ backgroundColor: colorMap[color as AppleColor] }}
+                      onClick={() => handleColorSelection(color)}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.productDetailsPage__details}>
+                <div
+                  className={`${styles.productDetailsPage__detailsHead} ${styles['productDetailsPage__detailsHead--capacity']}`}
+                >
+                  <h3 className={`${styles.productDetailsPage__detailsTitle}}`}>Select capacity</h3>
+                </div>
+                <div className={`${styles.productDetailsPage__detailsList}`}>
+                  {capacity.map((x, index) => (
+                    <div
+                      className={`${styles.productDetailsPage__detail} ${styles['productDetailsPage__detail--capacity']} ${x === currentCapacity && styles['productDetailsPage__detail--capacityActive']}`}
+                      key={index}
+                      onClick={() => handleCapacitySelection(x)}
+                    >
+                      {x}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.productDetailsPage__addToCart}>
+                <div className={styles.productDetailsPage__price}>
+                  <p className={styles.productDetailsPage__priceDiscount}>
+                    ${product?.priceDiscount}
+                  </p>{' '}
+                  <p className={styles.productDetailsPage__priceFull}>${product?.priceRegular}</p>
+                </div>
+                <ProductControls product={product as Item} isDetails={true} isYouMayLike={false} />
+              </div>
+              <ul
+                className={`${styles.productDetailsPage__featuresList} ${styles['productDetailsPage__featuresList--details']}`}
+              >
+                <li className={styles.productDetailsPage__featuresItem}>
+                  <span className={styles.productDetailsPage__featuresTitle}>Screen</span>
+                  <span className={styles.productDetailsPage__featuresValue}>
+                    {product?.screen}
+                  </span>
+                </li>
+                <li className={styles.productDetailsPage__featuresItem}>
+                  <span className={styles.productDetailsPage__featuresTitle}>Resolution</span>
+                  <span className={styles.productDetailsPage__featuresValue}>
+                    {product?.resolution}
+                  </span>
+                </li>
+                <li className={styles.productDetailsPage__featuresItem}>
+                  <span className={styles.productDetailsPage__featuresTitle}>Processor</span>
+                  <span className={styles.productDetailsPage__featuresValue}>
+                    {product?.processor}
+                  </span>
+                </li>
+                <li className={styles.productDetailsPage__featuresItem}>
+                  <span className={styles.productDetailsPage__featuresTitle}>RAM</span>
+                  <span className={styles.productDetailsPage__featuresValue}>{product?.ram}</span>
+                </li>
+              </ul>
+              <article
+                className={`${styles.productDetailsPage__article} ${styles['productDetailsPage__article--about']}`}
+              >
+                <h3 className={styles.productDetailsPage__articleTitle}>About</h3>
+                <div className={styles.productDetailsPage__aboutDescriptions}>
+                  {product?.description.map((x, id) => (
+                    <div className={styles.productDetailsPage__aboutDescription} key={id}>
+                      <h4 className={styles.productDetailsPage__aboutDescriptionTitle}>
+                        {x.title}
+                      </h4>
+                      <p className={styles.productDetailsPage__aboutDescriptionText}>{x.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </article>
+              <article
+                className={`${styles.productDetailsPage__article} ${styles['productDetailsPage__article--techSpecs']}`}
+              >
+                <h3 className={styles.productDetailsPage__articleTitle}>Tech Specs</h3>
+                <ul
+                  className={`${styles.productDetailsPage__featuresList} ${styles['productDetailsPage__featuresList--techSpecs']}`}
+                >
+                  <li className={styles.productDetailsPage__featuresItem}>
+                    <span className={styles.productDetailsPage__featuresTitle}>Screen</span>
+                    <span className={styles.productDetailsPage__featuresValue}>
+                      {product?.screen}
+                    </span>
+                  </li>
+                  <li className={styles.productDetailsPage__featuresItem}>
+                    <span className={styles.productDetailsPage__featuresTitle}>Resolution</span>
+                    <span className={styles.productDetailsPage__featuresValue}>
+                      {product?.resolution}
+                    </span>
+                  </li>
+                  <li className={styles.productDetailsPage__featuresItem}>
+                    <span className={styles.productDetailsPage__featuresTitle}>Processor</span>
+                    <span className={styles.productDetailsPage__featuresValue}>
+                      {product?.processor}
+                    </span>
+                  </li>
+                  <li className={styles.productDetailsPage__featuresItem}>
+                    <span className={styles.productDetailsPage__featuresTitle}>RAM</span>
+                    <span className={styles.productDetailsPage__featuresValue}>{product?.ram}</span>
+                  </li>
+                  <li className={styles.productDetailsPage__featuresItem}>
+                    <span className={styles.productDetailsPage__featuresTitle}>Cell</span>
+                    <span className={styles.productDetailsPage__featuresValue}>
+                      {product?.cell.join(', ')}
+                    </span>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          )
+        ) : (
+          <h2 className={styles.productDetailsPage__notFound}>Product was not found!</h2>
+        )}
+      </div>
+
+      <YouMayAlsoLike />
+    </section>
+  );
+};

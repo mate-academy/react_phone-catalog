@@ -1,0 +1,24 @@
+@import '../../mixins/mixins.scss';
+
+.header{
+  @include omitFixedTopBar;
+
+  @include tablet{
+    @include padding-inline;
+  }
+
+  &__title{
+    @include titleStyle;
+
+    padding: 24px 16px;
+    margin: 0;
+
+    @include tablet{
+      padding: 32px 0px;
+    }
+
+    @include desktop{
+      padding-block: 56px;
+    }
+  }
+}

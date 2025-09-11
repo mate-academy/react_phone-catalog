@@ -1,0 +1,10 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.BrandNewModels{
+  position: relative;
+
+  @include desktop{
+    @include padding-inline;
+  }
+}

@@ -1,0 +1,52 @@
+@import '../../variables/variables.scss';
+
+.menu {
+  background-color: $app-background;
+  z-index: 17;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__bottomNavigation{
+    display: flex;
+    border-top: 1px solid $dark-gray;
+  }
+
+  &__navigationItem{
+    position: relative;
+    padding-block: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &:hover{
+      color: $main-white;
+
+      &::after{
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0px;
+        background-color: $main-white;
+        width: 100%;
+        height: 3px;
+      }
+    }
+
+    &--left{
+      border-right: 1px solid $dark-gray;
+    }
+  }
+
+  &__icon{
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+}

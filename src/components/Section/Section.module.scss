@@ -1,0 +1,51 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.section{
+  flex: 1;
+  @include omitFixedTopBar;
+  @include padding-inline;
+  @include sectionsPaddingBlock;
+
+  &__navigation{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    @include tablet{
+      margin-bottom: 40px;
+    }
+  }
+
+  &__linkHome{
+    display: block;
+    background-image: url('../../../public/img/icons/home.svg');
+    width: 16px;
+    height: 16px;
+  }
+
+  &__arrowRight{
+    padding-top: 6px;
+    display: block;
+    background-image: url('../../../public/img/icons/arrow-right-gray.svg');
+    width: 16px;
+    height: 16px;
+  }
+
+  &__currentLink{
+    padding-top: 3px;
+    text-decoration: none;
+    color: $text-color;
+  }
+
+  &__title{
+    @include titleStyle;
+  }
+
+  &__quantity{
+    margin-top: 8px;
+    color: $text-color;
+    line-height: 21px;
+  }
+}

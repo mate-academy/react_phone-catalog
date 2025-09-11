@@ -1,0 +1,234 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.swiper {
+  width: 100%;
+  height: 100%;
+
+  :global(.swiper-wrapper) {
+    padding-bottom: 25px;
+
+    @include tablet {
+      height: 189px;
+    }
+
+    @include desktop {
+      height: 400px;
+    }
+  }
+
+  :global(.swiper-pagination) {
+    position: absolute;
+    bottom: 0px !important;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    width: 20px !important;
+    height: 4px !important;
+    background-color: $items-disabled !important;
+    border-radius: 0px !important;
+    opacity: 1 !important;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background-color: $main-white !important;
+    width: 20px !important;
+    height: 4px !important;
+  }
+
+  .swiper__prev,
+  .swiper__next {
+    background-color: $dark-gray;
+    display: none;
+    position: absolute;
+    top: 47%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 189px;
+    z-index: 18;
+    cursor: pointer;
+
+    @include tablet {
+      display: block;
+    }
+
+    @include desktop {
+      height: 400px;
+    }
+  }
+
+  &__prev {
+    background-image: url('../../../public/img/icons/arrow-left.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 0px;
+  }
+
+  &__next {
+    right: 0px;
+    background-image: url('../../../public/img/icons/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+      display: flex;
+      justify-items: center !important;
+    }
+  }
+
+  &__slideContentTablet {
+    display: none;
+    padding: 5px;
+    background-color: black;
+    justify-content: space-between;
+    overflow: hidden;
+    height: 189px;
+    width: 520px;
+
+    @include tablet {
+      display: flex;
+    }
+
+    @include desktop {
+      height: 400px;
+      width: 1040px;
+      padding: 10px;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    @include tablet {
+      background-position: center;
+      justify-self: center;
+      width: 490px !important;
+    }
+
+    &--mobile {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+
+      @include desktop {
+        object-fit: cover;
+        height: 400px;
+        width: 1040px !important;
+      }
+    }
+
+    &--tabletOrder {
+      width: 50% !important;
+      object-position: bottom;
+      object-fit: cover;
+    }
+  }
+
+  &__order {
+    width: 45%;
+    padding: 20px;
+    text-align: left;
+    background-color: #1f1f1f;
+    border-radius: 7%;
+
+    @include desktop {
+      padding: 50px;
+    }
+  }
+
+  &__orderTitle {
+    position: relative;
+    background: linear-gradient(90deg, #5142c3, #ee75de);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 25px;
+    line-height: 25px;
+
+    &::after {
+      z-index: 3;
+      content: '';
+      display: block;
+      position: absolute;
+      right: 15px;
+      bottom: 5px;
+      background-image: url('../../../public/img/icons/ok-emoji.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 20px;
+
+      @include desktop {
+        width: 30px;
+        height: 30px;
+        right: 55px;
+      }
+    }
+
+    @include desktop {
+      font-size: 44px;
+      line-height: 40px;
+    }
+  }
+
+  &__orderText {
+    color: $border-color;
+    font-size: 9px;
+
+    @include desktop {
+      font-size: 15px;
+      margin-top: 10px;
+    }
+  }
+
+  &__orderButton {
+    display: block;
+    text-align: center;
+    padding-block: 5px;
+    text-decoration: none;
+    width: 110px;
+    height: 30px;
+    font-weight: 800;
+    font-size: 8px;
+    margin-top: 40px;
+    text-transform: uppercase;
+    border: 0.1px solid $border-color;
+    border-radius: 9999px;
+    background-color: #1f1f1f;
+    color: $main-white;
+
+    &:hover {
+      background-color: $main-purple;
+    }
+
+    @include desktop {
+      padding-block: 15px;
+      width: 170px;
+      height: 50px;
+      font-size: 14px;
+      margin-top: 110px;
+    }
+  }
+}

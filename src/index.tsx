@@ -1,26 +1,68 @@
-<<<<<<< HEAD
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
+import './index.scss';
+// eslint-disable-next-line max-len
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { ProductsProvider } from './contexts/ProductContext';
+import { Menu } from './components/Menu';
+import { MainContent } from './components/Main/MainContent';
+import { Phones } from './components/Phones/Phones';
+import { Tablets } from './components/Tablets/Tablets';
+import { Accessories } from './components/Accessories/Accessories';
+import { Cart } from './components/Cart';
+import { Favorites } from './components/Favorites';
+import { FavoritesProvider } from './contexts/FavoritesContext';
+import { CartProvider } from './contexts/CartContext';
+// eslint-disable-next-line max-len
+import { ProductDetailsPage } from './components/ProductDetailsPage/ProductDetailsPage';
+import { PhonesProvider } from './contexts/PhonesContext';
+import { TabletsProvider } from './contexts/TabletsContext';
+import { AccessoriesProvider } from './contexts/AccessoriesContext';
+import { NotFound } from './components/NotFound';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
-=======
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+createRoot(document.getElementById('root') as HTMLDivElement).render(
+  <Router>
+    <FavoritesProvider>
+      <CartProvider>
+        <PhonesProvider>
+          <TabletsProvider>
+            <AccessoriesProvider>
+              <ProductsProvider>
+                <Routes>
+                  <Route path="/" element={<App />}>
+                    <Route index element={<MainContent />} />
+                    <Route path="phones">
+                      <Route index element={<Phones />}/>
+                      <Route path=":productId" element={<ProductDetailsPage category="phones" />} />
+                    </Route>
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+                    <Route path="tablets">
+                      <Route index element={<Tablets />} />
+                      <Route
+                        path=":productId"
+                        element={<ProductDetailsPage category="tablets" />}
+                      />
+                    </Route>
+
+                    <Route path="accessories">
+                      <Route index element={<Accessories />} />
+                      <Route
+                        path=":productId"
+                        element={<ProductDetailsPage category="accessories" />}
+                      />
+                    </Route>
+                    <Route path="cart" element={<Cart />} />
+                    <Route path="favorites" element={<Favorites />} />
+                    <Route path="menu" element={<Menu />} />
+                    <Route path="home" element={<Navigate to="/" replace />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Route>
+                </Routes>
+              </ProductsProvider>
+            </AccessoriesProvider>
+          </TabletsProvider>
+        </PhonesProvider>
+      </CartProvider>
+    </FavoritesProvider>
+  </Router>,
 );
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
->>>>>>> 5093d5c (Initialize project using Create React App)

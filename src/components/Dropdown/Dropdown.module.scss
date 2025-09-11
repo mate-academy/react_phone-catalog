@@ -1,0 +1,81 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.dropdown {
+  position: relative;
+  width: 136px;
+  height: 40px;
+
+  &--sortBy{
+    @include tablet{
+      width: 187px;
+    }
+  }
+
+  &__toggle {
+    width: 100%;
+    padding: 10px 12px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    border: 1px solid $dark-gray;
+    color: $main-white;
+    background: $dark-gray;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover{
+      background-color: $dark-gray;
+      border-color: $items-hover;
+    }
+
+    &:focus{
+      border-color: $main-purple;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+
+    &--up{
+      background-image: url('../../../public/img/icons/arrow-up.svg');
+    }
+
+    &--down{
+      background-image: url('../../../public/img/icons/arrow-down.svg');
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: $app-background;
+    border: 1px solid $items-hover;
+    margin-top: 8px;
+    list-style: none;
+    padding: 0;
+    z-index: 100;
+  }
+
+  &__item {
+    height: 32px;
+    color: $text-color;
+    font-weight: 600;
+    padding: 6px 12px;
+    cursor: pointer;
+
+    &:hover {
+      color: $main-white;
+      background-color: $dark-gray;
+    }
+
+    &--active {
+      color: $main-white;
+    }
+  }
+}

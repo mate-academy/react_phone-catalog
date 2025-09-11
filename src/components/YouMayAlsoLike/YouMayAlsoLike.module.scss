@@ -1,0 +1,10 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.youMayAlsoLike{
+  position: relative;
+
+  @include desktop{
+    @include padding-inline;
+  }
+}

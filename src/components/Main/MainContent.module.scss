@@ -1,0 +1,19 @@
+@import '../../mixins/mixins.scss';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-bottom: 64px;
+  padding-top: 56px;
+
+  @include tablet {
+    padding-block: 64px;
+    gap: 64px;
+  }
+
+  @include desktop {
+    padding-bottom: 80px;
+    gap: 80px;
+  }
+}

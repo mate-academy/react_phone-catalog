@@ -1,9 +1,10 @@
-import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import { App } from './App';
 
-test('renders learn react link', () => {
+test('renders Product Catalog heading', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const headingElement = screen.getByText(/Product Catalog/i);
+
+  expect(headingElement).toBeInTheDocument();
 });

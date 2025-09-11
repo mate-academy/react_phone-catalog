@@ -1,0 +1,106 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.phones {
+  @include omitFixedTopBar;
+  @include padding-inline;
+
+  padding-top: 24px;
+  padding-bottom: 64px;
+  flex: 1;
+
+  @include desktop {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    @include titleStyle;
+    margin-bottom: 8px;
+  }
+
+  &__linkNavigation {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__arrowRight {
+    display: block;
+    background-image: url('../../../public/img/icons/arrow-right-gray.svg');
+    width: 16px;
+    height: 16px;
+  }
+
+  &__currentLink {
+    padding-top: 3px;
+    font-weight: 700;
+    font-size: 12px;
+    color: $text-color;
+    text-decoration: none;
+  }
+
+  &__linkHome {
+    display: block;
+    background-image: url('../../../public/img/icons/home.svg');
+    width: 16px;
+    height: 16px;
+  }
+
+  &__quantity {
+    font-weight: 600;
+    line-height: 21px;
+    color: $text-color;
+    margin-bottom: 32px;
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__noProducts {
+    font-size: 20px;
+  }
+
+  &__error {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 16px;
+
+    @include tablet {
+      font-size: 25px;
+    }
+  }
+
+  &__reload {
+    margin-inline: auto;
+    display: block;
+    text-align: center;
+    padding-block: 5px;
+    width: 110px;
+    height: 30px;
+    font-weight: 800;
+    font-size: 8px;
+    margin-top: 30px;
+    text-transform: uppercase;
+    border: 0.1px solid $border-color;
+    border-radius: 9999px;
+    background-color: $app-background;
+    color: $main-white;
+
+    &:hover {
+      background-color: $main-purple;
+    }
+
+    @include tablet {
+      padding-block: 15px;
+      width: 165px;
+      height: 50px;
+      font-size: 13px;
+    }
+  }
+}

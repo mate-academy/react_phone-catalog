@@ -1,0 +1,150 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.topBar {
+  position:fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 1px 0px 0px $items-disabled;
+  background-color: $app-background;
+
+    &__leftSide{
+      display: flex;
+      gap: 16px;
+
+      @include desktop{
+        gap: 24px;
+      }
+    }
+
+   &__logo{
+    padding: 13px 16px;
+
+    @include desktop{
+      padding: 18px 24px;
+    }
+   }
+
+   &__rightIcons{
+    display: flex;
+   }
+
+   &__iconElement{
+    position: relative;
+    padding: 16px;
+    box-shadow: -1px 0px 0px 0px $items-disabled;
+
+    @include desktop{
+      padding: 24px;
+    }
+
+    &--menu{
+      @include tablet{
+        display: none;
+      }
+    }
+
+    &--visibleOnTablet{
+      display: none;
+
+      @include tablet{
+        display: block;
+      }
+    }
+   }
+
+   &__quantity{
+    line-height: 130%;
+    color: $main-white;
+    font-size: 9px;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background-color: $main-red;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    @include desktop{
+      top: 18px;
+      right: 19px;
+    }
+   }
+}
+
+.icon {
+  @include scaleOnHover;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  box-sizing: border-box;
+
+  &--menu {
+    background-image: url('../../../public/img/icons/menu.svg');
+    width: 16px;
+    height: 16px;
+  }
+
+  &--logo {
+    background-image: url('../../../public/img/icons/logo.svg');
+    width: 64px;
+    height: 22px;
+
+    @include desktop{
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &--footerLogo{
+    width: 89px;
+    height: 32px;
+  }
+
+  &--favorites{
+    background-image: url('../../../public/img/icons/favorites.svg');
+    width: 16px;
+    height: 16px;
+
+    &:hover{
+      transform: none;
+    }
+  }
+
+  &--cart{
+    background-image: url('../../../public/img/icons/cart.svg');
+    width: 16px;
+    height: 16px;
+
+    &:hover{
+      transform: none;
+    }
+  }
+
+  &--active{
+    &::after{
+      display: block;
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0px;
+      width: 100%;
+      height: 3px;
+      background-color: $main-white;
+    }
+  }
+
+  &--close{
+    z-index: 5;
+    background-image: url('../../../public/img/icons/close.svg');
+    width: 16px;
+    height: 16px;
+  }
+}

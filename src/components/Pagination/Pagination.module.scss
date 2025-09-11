@@ -1,0 +1,92 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.pagination {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  list-style: none;
+
+  @media (min-width: 450px) {
+    gap: 16px;
+  }
+
+  &__button {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $items-disabled;
+
+    @media (min-width: 450px) {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__buttonDisabled{
+    border: 1px solid $items-disabled;
+    background-color: $app-background;
+  }
+
+  &__arrowLink {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  &__arrowLinkLeft {
+    background-image: url('../../../public/img/icons/arrow-left.svg');
+
+    &[aria-disabled='true']{
+      background-image: url('../../../public/img/icons/disabled-arrow-left.svg');
+    }
+  }
+
+  &__arrowLinkRight {
+    background-image: url('../../../public/img/icons/arrow-right.svg');
+
+    &[aria-disabled='true']{
+      background-image: url('../../../public/img/icons/disabled-arrow-right.svg');
+    }
+  }
+
+  &__itemList {
+    list-style: none;
+    display: flex;
+    gap: 4px;
+
+    @media (min-width: 450px) {
+      gap: 8px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $card-background;
+    width: 25px;
+    height: 25px;
+
+    @media (min-width: 450px) {
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover{
+      background-color: $items-disabled;
+    }
+  }
+
+  &__itemActive {
+    background-color: $main-purple;
+  }
+
+  &__link {
+    color: $main-white;
+    text-decoration: none;
+    text-align: center;
+  }
+}

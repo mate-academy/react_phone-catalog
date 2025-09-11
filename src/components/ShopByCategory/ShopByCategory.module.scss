@@ -1,0 +1,66 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.ShopByCategory{
+  @include padding-inline;
+
+  &__title{
+    margin-bottom: 24px;
+    @include sectionTitleStyle;
+  }
+
+  &__categories{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+
+    @include tablet{
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__categoryTitle{
+    width: max-content;
+    position: relative;
+    display: block;
+    color: $main-white;
+    text-decoration: none;
+    margin-top: 24px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    transform-origin: left center;
+    @include scaleOnHover;
+
+    &:hover{
+      color: $main-purple;
+    }
+  }
+
+  &__categoryQuantity{
+    padding-top: 4px;
+    color: $border-color;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__categoryPhoto{
+    width: 288px;
+    height: 288px;
+    @include scaleOnHover;
+
+    @include tablet{
+      width: fit-content;
+      height: 187px;
+    }
+
+    @include desktop{
+      width: fit-content;
+      height: 368px;
+    }
+  }
+}

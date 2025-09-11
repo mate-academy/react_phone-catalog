@@ -1,0 +1,220 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.cart{
+  flex: 1;
+  @include omitFixedTopBar;
+  @include padding-inline;
+  @include sectionsPaddingBlock;
+
+  @include desktop{
+    padding-top: 40px;
+  }
+
+  &__navigation{
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    @include desktop{
+      margin-bottom: 16px;
+    }
+  }
+
+  &__arrowLeft{
+    display: block;
+    background-image: url('../../../public/img/icons/arrow-left.svg');
+    width: 16px;
+    height: 16px;
+  }
+
+  &__linkBack{
+    padding-top: 3px;
+    line-height: 100%;
+    text-decoration: none;
+    font-size: 12px;
+    color: $main-white;
+  }
+
+  &__title{
+    @include titleStyle;
+    margin-bottom: 32px;
+  }
+
+  &__emptyBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    @include tablet{
+      gap: 60px;
+    }
+  }
+
+  &__emptyMessage{
+    font-size: 20px;
+
+    @include tablet{
+      font-size: 30px;
+    }
+  }
+
+  &__emptyPhoto{
+    width: 200px;
+    height: 200px;
+
+    @include tablet{
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  &__content{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include desktop{
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__list{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 16px;
+    background-color: $card-background;
+    padding: 16px;
+
+    @include tablet{
+      padding: 24px;
+      align-items: center;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &__itemRemove{
+    cursor: pointer;
+    align-self: center;
+    display: block;
+    background-image: url('../../../public/img/icons/close-grey.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__itemPhoto{
+    grid-column: 1fr;
+    width: fit-content;
+    height: 70px;
+  }
+
+  &__itemTitle{
+    grid-column: 3/5;
+    color: $main-white;
+    font-weight: 600;
+  }
+
+  &__itemPrice{
+    justify-self: flex-end;
+    grid-column: 3/5;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+
+    @include tablet{
+      grid-column: 6/7;
+    }
+  }
+
+  &__itemQuantity{
+    grid-column: 1/3;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    @include tablet{
+      grid-column: 5/6;
+    }
+  }
+
+  &__quantityBtn{
+    width: 32px;
+    height: 32px;
+    color: $main-white;
+    background-color: $dark-gray;
+    border: none;
+
+    &:hover{
+      background-color: $items-hover;
+    }
+
+    &--disabled{
+      border: 1px solid $items-disabled;
+      color: $items-hover;
+      background-color: $card-background;
+
+      &:hover{
+        background-color: $card-background;
+      }
+    }
+  }
+
+  &__checkout{
+    padding: 24px;
+    border: 1px solid $items-disabled;
+
+    @include desktop{
+     align-self: start;
+    }
+  }
+
+  &__checkoutAmount{
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    text-align: center;
+  }
+
+  &__checkoutQuantity{
+    position: relative;
+    text-align: center;
+    color: $text-color;
+    font-weight: 600;
+
+    &::after{
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: $items-disabled;
+      height: 1px;
+      width: 100%;
+      bottom: -16px;
+    }
+  }
+
+  &__checkoutButton{
+    text-align: center;
+    color: $main-white;
+    height: 48px;
+    width: 100%;
+    background-color: $main-purple;
+    margin-top: 32px;
+
+    @include desktop{
+      margin-top: 49px;
+      width: 320px;
+    }
+  }
+}

@@ -1,0 +1,124 @@
+@import '../../mixins/mixins.scss';
+@import '../../variables/variables.scss';
+
+.productCard {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 8px;
+  background-color: $card-background;
+  padding: 32px;
+  width: 212px;
+
+  @include tablet{
+    width: 237px;
+  }
+
+  @include desktop{
+    width: 272px;
+  }
+
+  &--wide{
+    width: 287px;
+
+    @include desktop{
+      width: 272px;
+    }
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 195px;
+
+    @include tablet {
+      min-height: 268px;
+    }
+  }
+
+  &__photo {
+    @include scaleOnHover;
+    width: max-content;
+    height: 129px;
+
+    @include tablet {
+      height: 202px;
+    }
+
+    &--youMayLike{
+      height: 108px;
+      max-width: 148px;
+
+      @include tablet {
+        max-width: 173px;
+        height: 182px;
+      }
+
+      @include desktop {
+        max-width: 208px;
+        height: 196px;
+      }
+    }
+  }
+
+  &__photoLink{
+    display: flex;
+    align-self: center;
+  }
+
+  &__title {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:hover{
+      color: $main-purple;
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    font-size: 22px;
+    border-bottom: 1px solid $items-disabled;
+    padding-bottom: 8px;
+  }
+
+  &__discount {
+    font-weight: 800;
+  }
+
+  &__fullPrice {
+    text-decoration: line-through;
+    font-weight: 600;
+    color: $text-color;
+  }
+
+  &__description {
+    margin-block: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 700;
+    line-height: 100%;
+    font-size: 12px;
+  }
+
+  &__descriptionTitle {
+    color: $text-color;
+  }
+
+  &__descriptionValue {
+    color: $main-white;
+    text-align: right;
+  }
+
+  &__descriptionItem {
+    display: flex;
+    justify-content: space-between;
+  }
+}

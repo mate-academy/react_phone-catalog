@@ -1,37 +1,8 @@
 {
-<<<<<<< HEAD
   "extends": "@mate-academy/students-ts-config",
-  "include": [
-    "src"
-  ],
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"]
-  }
-=======
-  "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
->>>>>>> 5093d5c (Initialize project using Create React App)
+  "include": ["src"]
 }

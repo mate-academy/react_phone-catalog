@@ -1,0 +1,168 @@
+@import '../variables/variables.scss';
+
+@mixin mobile {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin sectionsPaddingBlock {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include tablet {
+    padding-block: 64px;
+  }
+
+  @include desktop {
+    padding-bottom: 80px;
+  }
+}
+
+@mixin omitFixedTopBar {
+  margin-top: 48px;
+
+  @include tablet {
+    margin-top: 57px;
+  }
+
+  @include desktop {
+    margin-top: 74px;
+  }
+}
+
+@mixin titleStyle {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin sectionTitleStyle {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: -1%;
+
+  @include tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin maxWidth {
+  max-width: 1200px;
+}
+
+@mixin scaleOnHover{
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+
+  &:hover{
+    transform: scale(1.05);
+  }
+}
+
+@mixin swiperStypes{
+  :global(.swiper) {
+    height: 100%;
+  }
+
+  :global(.swiper-wrapper) {
+    @include padding-inline;
+    display: flex;
+    gap: 16px;
+  }
+
+  :global(.swiper-slide) {
+    width: max-content !important;
+
+    @include desktop{
+      width: 272px !important;
+    }
+  }
+
+  :global(.swiper-button-prev) {
+    z-index: 3 !important;
+    width: 32px;
+    height: 32px;
+    top: 20px !important;
+    background-color: $dark-gray;
+    right: 50px !important;
+    left: auto !important;
+    box-shadow: none !important;
+
+    @include tablet{
+      right: 64px !important;
+    }
+
+    &:disabled{
+      border: 1px solid $items-disabled;
+      background-color: $app-background;
+    }
+
+    &:hover{
+      background-color: $items-hover;
+    }
+
+    &::after{
+      content: url('../../public/img/icons/arrow-left.svg');
+      font-size:small !important;
+    }
+  }
+
+  :global(.swiper-button-next) {
+    z-index: 3 !important;
+    background-color: $dark-gray;
+    width: 32px;
+    height: 32px;
+    top: 20px !important;
+
+    &:disabled{
+      border: 1px solid $items-disabled;
+      background-color: $app-background;
+    }
+
+    &:hover{
+      background-color: $items-hover;
+    }
+
+    &::after{
+      content: url('../../../public/img/icons/arrow-right-white.svg');
+      font-size:small !important;
+    }
+
+    @include tablet{
+      right: 24px !important;
+    }
+  }
+}
