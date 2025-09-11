@@ -60,20 +60,17 @@
   }
 
   &__block {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
     gap: 16px;
   }
 
   &__position {
   display: grid;
-  grid-template-columns: repeat(16, 1fr);
   align-items: center;
   height: 128px;
-  gap: 16px;
   border: 1px solid #e2e6e9;
   border-radius: 16px;
-  padding: 0 16px;
 }
 
 
@@ -84,17 +81,11 @@
   }
 
   &__items {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 24px; // відстань між картками
-    // min-height: 100vh;
+    grid-column: 1 / span 16;
   }
 
   &__close {
-    width: 16px;
-    height: 16px;
-    padding: 56px 24px;
+    padding-left: 24px;
     cursor: pointer;
     grid-column: 1 /  span 1;
   }
@@ -107,7 +98,7 @@
     grid-column: 2 / span 2;
   }
 
-  .cart__name-garget {
+  &__name-garget {
     width: 336px;
     font-weight: 600;
     font-size: 14px;
@@ -118,7 +109,7 @@
     height: 100%;
     font-variant-numeric: tabular-nums;
     font-family: 'Mont', monospace;
-    grid-column: 4 / span 7;
+    grid-column: 4 / span 8;
   }
 
   &__counter {
@@ -127,6 +118,7 @@
     justify-content: center;
     gap: 8px;
     width: 112px;
+    grid-column: 12 / span 2;
   }
 
   &__button-plus,
@@ -165,38 +157,34 @@
     color: #0f0f11;
     font-size: 22px;
     font-weight: 800;
-    padding-right: 24px;
     display: flex;
     align-items: center;
     height: 100%;
     width: 80px;
-    grid-column: 16 / span 2;
+    grid-column: 16 / span 1;
   }
 
   &__block-total {
+    grid-column: 17 / span 8;
     border-radius: 48px;
     border: 1px solid #e2e6e9;
     height: 206px;
   }
 
-  &__total-amount {
+  .cart__total-amount {
     color: #0f0f11;
     font-size: 32px;
     font-weight: 800;
-
-    display: flex;
-    justify-content: center; // центр по горизонталі
-    align-items: flex-start; // якщо треба зверху
     padding-top: 23px;
     padding-bottom: 0;
-    text-align: center; // для внутрішнього тексту
+    text-align: center;
   }
 
   &__count-item {
     color: #89939a;
     font-size: 14px;
     font-weight: 500;
-    padding: 0px 128px;
+    text-align: center;
   }
 
   &__small-line {
@@ -220,7 +208,8 @@
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
-    margin: 24px;
+    margin: 0 auto;
+        margin-top: 24px;
     border: none;
     transition: all 0.2s;
 
@@ -279,7 +268,7 @@
   }
 }
 
-@media screen and (max-width: 640px) {
+@media (max-width: 640px) {
   .cart {
     @include contentPaddingInline;
     font-family: 'Mont', 'sans-serif';
@@ -322,7 +311,7 @@
 
     &__position {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 8px;
       padding: 16px;
       border: 1px solid #e2e6e9;
@@ -347,7 +336,7 @@
       object-fit: contain;
     }
 
-    .cart__name-garget {
+    &__name-garget {
       grid-column: 3 / span 1;
       font-weight: 600;
       font-size: 14px;
@@ -507,54 +496,54 @@
   }
 }
 
-@media (max-width: 768px) {
-  .cart {
-    &__position {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+// @media (max-width: 768px) {
+//   .cart {
+//     &__position {
+//       display: grid !important;
+//       grid-template-columns: 1fr 1fr 1fr 1fr;
 
-      // gap: 8px;
-      // padding: 16px;
-      border: 1px solid #e2e6e9;
-      border-radius: 16px;
-      align-items: center;
-      height: auto !important;
-      // gap: 12px;
-    }
+//       // gap: 8px;
+//       // padding: 16px;
+//       border: 1px solid #e2e6e9;
+//       border-radius: 16px;
+//       align-items: center;
+//       height: auto !important;
+//       // gap: 12px;
+//     }
 
-    &__close {
-      grid-column: 1 / span 1;
-      padding: 0 !important;
-      justify-self: start;
-      margin-right: 19.33px;
-    }
+//     &__close {
+//       grid-column: 1 / span 1;
+//       padding: 0 !important;
+//       justify-self: start;
+//       margin-right: 19.33px;
+//     }
 
-    &__image {
-      grid-column: 2 / span 1;
-      margin: 0 !important;
-    }
+//     &__image {
+//       grid-column: 2 / span 1;
+//       margin: 0 !important;
+//     }
 
-    &__name-garget {
-      grid-column: 3 / span 2;
-      padding: 0 8px !important;
-      width: 100% !important;
-    }
+//     &__name-garget {
+//       grid-column: 3 / span 2;
+//       padding: 0 8px !important;
+//       width: 100% !important;
+//     }
 
-    &__counter {
-      grid-column: 1 / span 2;
-      justify-content: flex-start !important;
-      padding-left: 8px;
-    }
+//     &__counter {
+//       grid-column: 1 / span 2;
+//       justify-content: flex-start !important;
+//       padding-left: 8px;
+//     }
 
-    &__cost {
-      grid-column: 4 / span 1;
-      justify-content: flex-end !important;
-      padding-right: 8px;
-    }
-  }
-}
+//     &__cost {
+//       grid-column: 4 / span 1;
+//       justify-content: flex-end !important;
+//       padding-right: 8px;
+//     }
+//   }
+// }
 
-@media  (min-width: 640px) and (max-width: 1199px) {
+@media  (max-width: 1199px) {
 .cart {
   // @include contentPaddingInline;
 
@@ -584,15 +573,22 @@
     width: 80px;
     height: 80px;
     object-fit: contain;
-    padding-top: 24px;
+    margin-top: 24px;
+    grid-column: 2 / span 2;
   }
 
   &__close {
     justify-self: center;
+    grid-column: 1 / span 1;
   }
 
   &__counter {
-    grid-column: 9 / span 2;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 112px;
+    grid-column: 8 / span 3 ;
   }
 
   &__cost {
@@ -604,11 +600,11 @@
     align-items: center;
     height: 100%;
     width: 80px;
-    grid-column: 11 / span 1;
+    grid-column: 12 / span 1;
   }
 
   &__name-garget {
-    grid-column: 3 / span 4;
+    grid-column: 4 / span 4;
   }
 
   &__count-item {
@@ -655,7 +651,6 @@
       font-size: 14px;
       font-weight: 700;
       line-height: 21px;
-      margin: 24px;
       border: none;
       transition: all 0.2s;
 
