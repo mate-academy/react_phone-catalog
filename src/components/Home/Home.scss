@@ -133,9 +133,14 @@
 
 .home__shop_card {
   flex: 1;
+  transition: transform 0.3s ease-in-out;
 
   & img {
       width: 155%;
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 }
 
