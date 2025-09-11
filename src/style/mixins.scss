@@ -9,9 +9,3 @@
     @content;
   }
 }
-
-@mixin on-large {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
