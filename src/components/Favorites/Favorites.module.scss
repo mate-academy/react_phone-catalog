@@ -1,5 +1,5 @@
-@import '../../mixins/mixins';
-@import '../../variables/variables';
+@use '../../variables/variables' as *;
+@use '../../mixins/mixins' as *;
 
 .favorites{
   flex: 1;
