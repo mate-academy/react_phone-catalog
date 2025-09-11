@@ -1,4 +1,5 @@
-@import './variables/variables';
+@use './variables/variables.scss' as *;
+@use './mixins/mixins' as *;
 
 html{
   scroll-behavior: smooth;
