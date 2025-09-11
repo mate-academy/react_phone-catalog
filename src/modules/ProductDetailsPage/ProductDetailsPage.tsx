@@ -25,6 +25,7 @@ export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{
     productId: string;
   }>();
+  const location = useLocation();
   const currentCategory = useLocation().pathname.split('/')[1];
   const [products, setProducts] = useState<Product[]>([]);
   const [productDetails, setProductDetails] = useState<ProductDetails>();
@@ -98,6 +99,10 @@ export const ProductDetailsPage: React.FC = () => {
 
     navigate(`/${productDetails.category}/${newProductId}`);
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
 
   const handleCapacityChange = (capacity: string) => {
     if (!productDetails || !selectedColor) {
