@@ -4,6 +4,7 @@ import Empty from '../../../public/img/cart-is-empty.png';
 import { useInfoHook } from '../ProductInfo/useInfoHook';
 import { useCart } from './CartContext';
 import { BoughtCartItem } from '../BoughtCardItem/BoughtCardItem';
+import { CheckoutChears } from '../Reward/Reward';
 
 export const CartPage = () => {
   const { navigate } = useInfoHook();
@@ -95,7 +96,7 @@ export const CartPage = () => {
           </div>
         </div>
       )}
-      {isCheckoutConfirmed && <></>}
+      {isCheckoutConfirmed && <CheckoutChears trigger={isCheckoutConfirmed} />}
     </main>
   );
 };
