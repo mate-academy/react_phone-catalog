@@ -245,8 +245,9 @@ $desktop-min-width: 1200px;
 
 .badge {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: calc(50% - 8px);
+  left: calc(50% + 8px);
+  transform: translate(-50%, -50%);
   min-width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -258,16 +259,6 @@ $desktop-min-width: 1200px;
   align-items: center;
   justify-content: center;
   line-height: 100%;
-
-  @media (min-width: $tablet-min-width) {
-    top: 8px;
-    right: 8px;
-  }
-
-  @media (min-width: $desktop-min-width) {
-    top: 15px;
-    right: 15px;
-  }
 }
 
 .iconBurger {

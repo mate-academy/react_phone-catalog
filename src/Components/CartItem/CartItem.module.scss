@@ -1,0 +1,129 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #161827;
+  padding-inline: 16px;
+  width: 288px;
+  height: 160px;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  @media (min-width: $tablet-min-width) {
+    flex-direction: row;
+    padding-inline: 24px;
+    width: 592px;
+    height: 128px;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    width: 752px;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.image {
+  margin-right: 24px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 12px;
+}
+
+.info {
+  flex: 1;
+  color: #F1F2F9;
+}
+
+.count {
+  color: #F1F2F9;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.btnMin {
+  border: none;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-image: url(/public/img/btnMin.svg);
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.btnPlus {
+  margin-right: 24px;
+  border: none;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-image: url(/public/img/btnPlus.svg);
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  color: #F1F2F9;
+  letter-spacing: 0%;
+  line-height: 140%
+}
+
+.removeBtn {
+  margin-right: 24px;
+  background: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-image: url(/public/img/removeBut.svg);
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

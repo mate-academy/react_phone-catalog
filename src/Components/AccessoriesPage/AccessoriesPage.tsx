@@ -17,6 +17,10 @@ export const AccessoriesPage: React.FC = () => {
   const productsPerPage = searchParams.get('perPage') || '16';
   const sort = searchParams.get('sort') || 'age';
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [productsPerPage, sort]);
+
   const fetchProducts = async () => {
     try {
       setIsLoading(true);
