@@ -1,10 +1,10 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .productControls {
   display: flex;
-  justify-content: space-between;
   gap: 8px;
+  justify-content: space-between;
 
   &--details{
     justify-content: start;
@@ -12,14 +12,17 @@
 
   &__add {
     cursor: pointer;
-    border: none;
-    line-height: 21px;
-    font-size: 14px;
-    font-weight: 700;
-    color: $main-white;
-    background-color: $main-purple;
+
     width: 100px;
     height: 40px;
+    border: none;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: $main-white;
+
+    background-color: $main-purple;
 
     @include tablet {
       width: 125px;
@@ -38,8 +41,8 @@
     }
 
     &--details{
-      height: 48px;
       width: 231px;
+      height: 48px;
 
       @include tablet{
         width: 180px;
@@ -77,25 +80,32 @@
 
   &__favorites {
     cursor: pointer;
-    border: none;
+
     position: relative;
-    background-color: $dark-gray;
+
     width: 40px;
     height: 40px;
+    border: none;
 
-    &:hover {
-      background-color: $items-hover;
-    }
+    background-color: $dark-gray;
 
     &::after {
-      display: block;
       content: '';
+
       position: absolute;
       top: 12px;
       right: 12px;
+
+      display: block;
+
       width: 16px;
       height: 16px;
+
       background-image: url('../../../public/img/icons/favorites.svg');
+    }
+
+    &:hover {
+      background-color: $items-hover;
     }
 
     &--selected {

@@ -1,18 +1,18 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .productsList {
-  padding-block: 24px;
   display: grid;
   grid-template-columns: 1fr;
-  justify-items: center;
   gap: 40px;
+  justify-items: center;
+
+  padding-block: 24px;
 
   @include tablet {
     grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+    gap: 40px 16px;
     padding-bottom: 40px;
-    row-gap: 40px;
-    column-gap: 16px;
   }
 
   @include desktop{
@@ -20,9 +20,9 @@
   }
 
   :global(.swiper) {
-    padding-inline: 16px;
     width: 100%;
     height: 100%;
+    padding-inline: 16px;
 
     @include tablet{
       padding-inline: 24px;
@@ -52,13 +52,20 @@
 
   :global(.swiper-button-prev) {
     z-index: 3 !important;
-    width: 32px;
-    height: 32px;
     top: 20px !important;
-    background-color: $dark-gray;
     right: 50px !important;
     left: auto !important;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: $dark-gray;
     box-shadow: none !important;
+
+    &::after{
+      content: url('../../../public/img/icons/arrow-left.svg');
+      font-size:small !important;
+    }
 
     &:disabled{
       background-color: $app-background;
@@ -66,11 +73,6 @@
 
     &:hover{
       background-color: $items-hover;
-    }
-
-    &::after{
-      content: url('../../../public/img/icons/arrow-left.svg');
-      font-size:small !important;
     }
 
     @include tablet{
@@ -80,10 +82,17 @@
 
   :global(.swiper-button-next) {
     z-index: 3 !important;
-    background-color: $dark-gray;
+    top: 20px !important;
+
     width: 32px;
     height: 32px;
-    top: 20px !important;
+
+    background-color: $dark-gray;
+
+    &::after{
+      content: url('../../../public/img/icons/arrow-right-white.svg');
+      font-size:small !important;
+    }
 
     &:disabled{
       background-color: $app-background;
@@ -91,11 +100,6 @@
 
     &:hover{
       background-color: $items-hover;
-    }
-
-    &::after{
-      content: url('../../../public/img/icons/arrow-right-white.svg');
-      font-size:small !important;
     }
 
     @include tablet{
@@ -107,7 +111,7 @@
     display: grid;
     justify-items: center;
     padding-top: 32px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 
     @include tablet {
       grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));

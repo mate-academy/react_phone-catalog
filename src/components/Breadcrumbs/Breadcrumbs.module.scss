@@ -1,10 +1,10 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .breadcrumbs {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
   margin-bottom: 24px;
 
   @include tablet {
@@ -13,30 +13,32 @@
 
   &__category {
     padding-top: 3px;
-    text-decoration: none;
     font-size: 12px;
     color: $main-white;
+    text-decoration: none;
   }
 
   &__linkHome {
     display: block;
-    background-image: url('../../../public/img/icons/home.svg');
     width: 16px;
     height: 16px;
+    background-image: url('../../../public/img/icons/home.svg');
   }
 
   &__arrowRight {
-    padding-top: 6px;
-    background-image: url('../../../public/img/icons/arrow-right-gray.svg');
     width: 16px;
     height: 16px;
+    padding-top: 6px;
+    background-image: url('../../../public/img/icons/arrow-right-gray.svg');
   }
 
   &__currentLink {
     overflow: hidden;
+
+    padding-top: 3px;
+
+    color: $text-color;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding-top: 3px;
-    color: $text-color;
   }
 }

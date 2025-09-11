@@ -1,5 +1,5 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .pagination {
   display: flex;
@@ -7,16 +7,14 @@
   justify-content: center;
   list-style: none;
 
-  @media (min-width: 450px) {
-    gap: 16px;
-  }
-
   &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 25px;
     height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     background-color: $items-disabled;
 
     @media (min-width: 450px) {
@@ -31,9 +29,9 @@
   }
 
   &__arrowLink {
+    display: block;
     width: 16px;
     height: 16px;
-    display: block;
   }
 
   &__arrowLinkLeft {
@@ -53,9 +51,9 @@
   }
 
   &__itemList {
-    list-style: none;
     display: flex;
     gap: 4px;
+    list-style: none;
 
     @media (min-width: 450px) {
       gap: 8px;
@@ -64,19 +62,21 @@
 
   &__item {
     display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: $card-background;
+    justify-content: center;
+
     width: 25px;
     height: 25px;
+
+    background-color: $card-background;
+
+    &:hover{
+      background-color: $items-disabled;
+    }
 
     @media (min-width: 450px) {
       width: 32px;
       height: 32px;
-    }
-
-    &:hover{
-      background-color: $items-disabled;
     }
   }
 
@@ -86,7 +86,11 @@
 
   &__link {
     color: $main-white;
-    text-decoration: none;
     text-align: center;
+    text-decoration: none;
+  }
+
+  @media (min-width: 450px) {
+    gap: 16px;
   }
 }

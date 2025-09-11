@@ -1,8 +1,9 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .productDetailsPage {
   flex: 1;
+
   @include omitFixedTopBar;
   @include sectionsPaddingBlock;
 
@@ -11,43 +12,50 @@
   }
 
   &__title {
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 140%;
     margin-bottom: 32px;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
 
     @include tablet {
-      font-size: 32px;
       margin-bottom: 40px;
+      font-size: 32px;
     }
   }
 
   &__quantity {
     margin-top: 8px;
-    color: $text-color;
     line-height: 21px;
+    color: $text-color;
   }
 
   &__linkBack {
-    display: block;
-    margin-bottom: 16px;
     position: relative;
+
+    display: block;
+
+    margin-bottom: 16px;
     padding-top: 3px;
     padding-left: 20px;
-    line-height: 100%;
-    text-decoration: none;
+
     font-size: 12px;
+    line-height: 100%;
     color: $main-white;
+    text-decoration: none;
 
     &::before {
-      position: absolute;
       content: '';
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
       display: block;
-      left: 0px;
-      top: 0px;
-      background-image: url('../../../public/img/icons/arrow-left.svg');
+
       width: 16px;
       height: 16px;
+
+      background-image: url('../../../public/img/icons/arrow-left.svg');
     }
 
     &:hover {
@@ -62,8 +70,9 @@
   &__photos {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 16px;
+    align-items: center;
+
     margin-bottom: 40px;
 
     @include tablet {
@@ -71,7 +80,8 @@
       grid-row: 1/5;
       flex-direction: row-reverse;
       align-items: start;
-      margin-bottom: 0px;
+
+      margin-bottom: 0;
     }
 
     @include desktop {
@@ -105,8 +115,8 @@
   }
 
   &__mainPhoto {
-    height: 288px;
     width: fit-content;
+    height: 288px;
 
     @include desktop {
       height: 464px;
@@ -138,8 +148,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 288px;
+
     width: 288px;
+    height: 288px;
 
     @include desktop {
       width: 464px;
@@ -149,8 +160,8 @@
 
   &__product {
     display: grid;
-    color: $text-color;
     font-size: 12px;
+    color: $text-color;
 
     @include tablet {
       grid-template-columns: repeat(2, 1fr);
@@ -177,9 +188,10 @@
 
   &__detail {
     &--color {
-      border-radius: 50%;
       width: 30px;
       height: 30px;
+      border-radius: 50%;
+
       outline: 1px solid $items-disabled;
       outline-offset: 2px;
     }
@@ -189,13 +201,14 @@
     }
 
     &--capacity {
-      font-weight: 600;
-      color: $main-white;
-      border: 1px solid $items-hover;
-      text-align: center;
-      padding: 7px;
       width: 56px;
       height: 32px;
+      padding: 7px;
+      border: 1px solid $items-hover;
+
+      font-weight: 600;
+      color: $main-white;
+      text-align: center;
     }
 
     &--capacityActive {
@@ -241,31 +254,32 @@
   }
 
   &__price {
-    color: $main-white;
     display: flex;
     gap: 8px;
+    color: $main-white;
   }
 
   &__priceDiscount {
-    font-weight: 800;
     font-size: 32px;
+    font-weight: 800;
     line-height: 41px;
   }
 
   &__priceFull {
     padding-top: 6px;
-    text-decoration: line-through;
-    color: $text-color;
-    font-weight: 600;
+
     font-size: 22px;
+    font-weight: 600;
     line-height: 100%;
+    color: $text-color;
+    text-decoration: line-through;
   }
 
   &__featuresList {
-    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    list-style: none;
 
     &--details {
       margin-bottom: 56px;
@@ -275,8 +289,8 @@
       }
 
       @include desktop {
-        margin-bottom: 80px;
         grid-column: 14/21;
+        margin-bottom: 80px;
       }
     }
 
@@ -286,9 +300,9 @@
   }
 
   &__featuresItem {
-    font-weight: 600;
     display: flex;
     justify-content: space-between;
+    font-weight: 600;
   }
 
   &__featuresTitle {
@@ -326,10 +340,10 @@
   }
 
   &__articleTitle {
-    color: $main-white;
-    font-size: 20px;
     padding-bottom: 16px;
     border-bottom: 1px solid $items-disabled;
+    font-size: 20px;
+    color: $main-white;
 
     @include tablet {
       font-size: 22px;
@@ -337,16 +351,16 @@
   }
 
   &__aboutDescriptions {
-    margin-top: 32px;
     display: flex;
     flex-direction: column;
     gap: 32px;
+    margin-top: 32px;
   }
 
   &__aboutDescriptionTitle {
-    color: $main-white;
-    font-size: 16px;
     margin-bottom: 16px;
+    font-size: 16px;
+    color: $main-white;
 
     @include tablet {
       font-size: 20px;
@@ -366,7 +380,7 @@
   &__notFound {
     @include sectionTitleStyle;
 
-    margin-block: 30px;
     margin-bottom: 150px;
+    margin-block: 30px;
   }
 }

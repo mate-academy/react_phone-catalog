@@ -1,13 +1,13 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .tablets {
   @include omitFixedTopBar;
   @include padding-inline;
 
+  flex: 1;
   padding-top: 24px;
   padding-bottom: 64px;
-  flex: 1;
 
   @include desktop {
     padding-bottom: 80px;
@@ -15,13 +15,14 @@
 
   &__title {
     @include titleStyle;
+
     margin-bottom: 8px;
   }
 
   &__linkNavigation {
     display: flex;
-    align-items: center;
     gap: 8px;
+    align-items: center;
     margin-bottom: 24px;
 
     @include tablet {
@@ -31,31 +32,32 @@
 
   &__arrowRight {
     display: block;
-    background-image: url('../../../public/img/icons/arrow-right-gray.svg');
     width: 16px;
     height: 16px;
+    background-image: url('../../../public/img/icons/arrow-right-gray.svg');
   }
 
   &__currentLink {
     padding-top: 3px;
-    font-weight: 700;
+
     font-size: 12px;
+    font-weight: 700;
     color: $text-color;
     text-decoration: none;
   }
 
   &__linkHome {
     display: block;
-    background-image: url('../../../public/img/icons/home.svg');
     width: 16px;
     height: 16px;
+    background-image: url('../../../public/img/icons/home.svg');
   }
 
   &__quantity {
+    margin-bottom: 32px;
     font-weight: 600;
     line-height: 21px;
     color: $text-color;
-    margin-bottom: 32px;
 
     @include tablet {
       margin-bottom: 40px;
@@ -67,9 +69,9 @@
   }
 
   &__error {
-    text-align: center;
     margin-top: 60px;
     font-size: 16px;
+    text-align: center;
 
     @include tablet{
       font-size: 25px;
@@ -77,29 +79,32 @@
   }
 
   &__reload {
-    margin-inline: auto;
     display: block;
-    text-align: center;
-    padding-block: 5px;
+
     width: 110px;
     height: 30px;
-    font-weight: 800;
-    font-size: 8px;
     margin-top: 30px;
-    text-transform: uppercase;
+    margin-inline: auto;
+    padding-block: 5px;
     border: 0.1px solid $border-color;
     border-radius: 9999px;
-    background-color: $app-background;
+
+    font-size: 8px;
+    font-weight: 800;
     color: $main-white;
+    text-align: center;
+    text-transform: uppercase;
+
+    background-color: $app-background;
 
     &:hover {
       background-color: $main-purple;
     }
 
     @include tablet{
-      padding-block: 15px;
       width: 165px;
       height: 50px;
+      padding-block: 15px;
       font-size: 13px;
     }
   }

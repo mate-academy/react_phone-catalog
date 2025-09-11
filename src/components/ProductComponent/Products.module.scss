@@ -1,5 +1,5 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .products{
   &__form {
@@ -7,8 +7,8 @@
     justify-content: space-between;
 
     @include tablet {
-      justify-content: start;
       gap: 16px;
+      justify-content: start;
     }
   }
 
@@ -34,12 +34,14 @@
     height: 40px;
     padding: 10px 12px;
     border: none;
-    color: $main-white;
+
     line-height: 21px;
-    background-color: $dark-gray;
-    appearance: none;
+    color: $main-white;
+
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
+    background-color: $dark-gray;
     background-image: url('../../../public/img/icons/arrow-down.svg');
     background-repeat: no-repeat;
     background-position: right 8px center;

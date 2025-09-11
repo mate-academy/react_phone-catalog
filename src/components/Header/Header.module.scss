@@ -1,4 +1,4 @@
-@import '../../mixins/mixins.scss';
+@import '../../mixins/mixins';
 
 .header{
   @include omitFixedTopBar;
@@ -10,11 +10,11 @@
   &__title{
     @include titleStyle;
 
-    padding: 24px 16px;
     margin: 0;
+    padding: 24px 16px;
 
     @include tablet{
-      padding: 32px 0px;
+      padding: 32px 0;
     }
 
     @include desktop{

@@ -1,9 +1,11 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .productSlider {
   position: relative;
+
   @include padding-inline;
+
   overflow: hidden;
 
   @include desktop {
@@ -18,8 +20,9 @@
 
   &__buttons {
     position: absolute;
-    top: 0px;
+    top: 0;
     right: 16px;
+
     display: flex;
     gap: 16px;
     justify-content: space-between;
@@ -29,17 +32,18 @@
     }
 
     @include desktop {
-      right: 0px;
+      right: 0;
     }
   }
 
   &__button {
     width: 32px;
     height: 32px;
+
     background-color: $dark-gray;
-    box-shadow: none !important;
     background-repeat: no-repeat;
     background-position: center;
+    box-shadow: none !important;
 
     &--prev {
       background-image: url('../../public/img/icons/arrow-left.svg');
@@ -80,7 +84,7 @@
     @include sectionTitleStyle;
 
     @include desktop {
-      padding-inline: 0px;
+      padding-inline: 0;
     }
   }
 

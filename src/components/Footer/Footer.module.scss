@@ -1,30 +1,31 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .Footer {
   &__content{
     @include padding-inline;
-    padding-block: 32px;
+
     display: flex;
     flex-direction: column;
     gap: 32px;
+    padding-block: 32px;
 
     @include tablet{
       flex-direction: row;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
   }
 
   &__list {
-    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    list-style: none;
 
     @include tablet {
-      gap: 14px;
       flex-direction: row;
+      gap: 14px;
     }
 
     @include desktop{
@@ -34,14 +35,16 @@
 
   &__link {
     @include scaleOnHover;
+
     display: block;
-    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
     color: $main-white;
+    text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 4%;
-    font-weight: 800;
-    font-size: 12px;
-    line-height: 11px;
 
     &:hover{
       color: $main-purple;
@@ -49,19 +52,19 @@
   }
 
   &__navToTop{
-    justify-self: center;
-    justify-content: center;
-    align-items: center;
     display: flex;
     gap: 16px;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
   }
 
   &__toTopLink {
-    color: $border-color;
-    text-decoration: none;
     font-size: 12px;
     font-weight: 700;
     line-height: 100%;
+    color: $border-color;
+    text-decoration: none;
 
     &:hover{
       color: $main-purple;
@@ -69,14 +72,16 @@
   }
 
   &__arrowUp {
-    box-sizing: border-box;
     display: block;
+
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+
     background-color: $dark-gray;
     background-image: url('../../../public/img/icons/arrow-up.svg');
     background-repeat: no-repeat;
     background-position: center;
-    width: 32px;
-    height: 32px;
 
     &:hover{
       background-color: $items-hover;

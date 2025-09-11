@@ -1,15 +1,17 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .productCard {
-  box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   gap: 8px;
-  background-color: $card-background;
-  padding: 32px;
+  justify-content: space-between;
+
+  box-sizing: border-box;
   width: 212px;
+  padding: 32px;
+
+  background-color: $card-background;
 
   @include tablet{
     width: 237px;
@@ -40,6 +42,7 @@
 
   &__photo {
     @include scaleOnHover;
+
     width: max-content;
     height: 129px;
 
@@ -48,8 +51,8 @@
     }
 
     &--youMayLike{
-      height: 108px;
       max-width: 148px;
+      height: 108px;
 
       @include tablet {
         max-width: 173px;
@@ -69,11 +72,11 @@
   }
 
   &__title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
     color: inherit;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
 
     &:hover{
       color: $main-purple;
@@ -83,9 +86,11 @@
   &__price {
     display: flex;
     gap: 8px;
-    font-size: 22px;
-    border-bottom: 1px solid $items-disabled;
+
     padding-bottom: 8px;
+    border-bottom: 1px solid $items-disabled;
+
+    font-size: 22px;
   }
 
   &__discount {
@@ -93,19 +98,21 @@
   }
 
   &__fullPrice {
-    text-decoration: line-through;
     font-weight: 600;
     color: $text-color;
+    text-decoration: line-through;
   }
 
   &__description {
-    margin-block: 8px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    margin-block: 8px;
+
+    font-size: 12px;
     font-weight: 700;
     line-height: 100%;
-    font-size: 12px;
   }
 
   &__descriptionTitle {

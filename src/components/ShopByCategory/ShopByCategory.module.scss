@@ -1,20 +1,21 @@
-@import '../../mixins/mixins.scss';
-@import '../../variables/variables.scss';
+@import '../../mixins/mixins';
+@import '../../variables/variables';
 
 .ShopByCategory{
   @include padding-inline;
 
   &__title{
     margin-bottom: 24px;
+
     @include sectionTitleStyle;
   }
 
   &__categories{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 32px;
+    align-items: center;
+    justify-content: center;
 
     @include tablet{
       flex-direction: row;
@@ -23,16 +24,20 @@
   }
 
   &__categoryTitle{
-    width: max-content;
     position: relative;
+    transform-origin: left center;
+
     display: block;
+
+    width: max-content;
+    margin-top: 24px;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100%;
     color: $main-white;
     text-decoration: none;
-    margin-top: 24px;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 100%;
-    transform-origin: left center;
+
     @include scaleOnHover;
 
     &:hover{
@@ -42,15 +47,17 @@
 
   &__categoryQuantity{
     padding-top: 4px;
-    color: $border-color;
-    font-weight: 600;
+
     font-size: 14px;
+    font-weight: 600;
     line-height: 21px;
+    color: $border-color;
   }
 
   &__categoryPhoto{
     width: 288px;
     height: 288px;
+
     @include scaleOnHover;
 
     @include tablet{
