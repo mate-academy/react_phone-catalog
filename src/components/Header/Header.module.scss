@@ -1,0 +1,128 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  z-index: 100;
+
+  @include respond-to(desktop) {
+    height: 64px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: $gray-secondary;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+
+  @include respond-to(desktop) {
+    margin-left: 24px;
+  }
+
+  @include respond-to(phone) {
+    display: none;
+  }
+}
+
+.navLinks {
+  @include respond-to(phone) {
+    display: none;
+  }
+}
+
+.burger_container {
+  display: none;
+
+  @include respond-to(phone) {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    border-left: 1px solid $gray-secondary;
+  }
+}
+
+.burger_button {
+  display: none;
+
+  @include respond-to(phone) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 100%;
+    border: none;
+  }
+}
+
+.burger_button img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.burgerMenu {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.burgerNav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 72px;
+}
+
+.burgerFavAndCartIcons {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 1px solid $gray-secondary;
+}
+
+.burgerIconWrapper {
+  .icon {
+    border-left: none; // прибираємо лівий бордер тільки для бургер-версії
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .burgerMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $background;
+    z-index: 999;
+  }
+}

@@ -1,0 +1,47 @@
+@use '../../../../styles/variables.scss' as *;
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 56px;
+}
+.slider_button {
+  width: 32px;
+  height: 100%;
+  background-color: $grey-surface;
+  color: $grey-white;
+  border: none;
+  margin: 0 16px;
+  cursor: pointer;
+}
+.slider_container {
+  width: 1040px;
+  height: 400px;
+}
+.banner_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.my-pagination {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+:global(.swiper-pagination-bullet) {
+  width: 15px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: $grey-elements;
+  opacity: 1;
+  transition: background 0.3s;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background-color: $grey-white;
+}

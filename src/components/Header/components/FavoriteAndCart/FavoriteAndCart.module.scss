@@ -1,0 +1,47 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.fav_cart_icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 100%;
+  @include respond-to(desktop) {
+    height: 64px;
+  }
+}
+
+.icon {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-left: 1px solid $gray-secondary;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @include respond-to(desktop) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.burgerIcon {
+  border-left: none;
+}
+
+.burgerIconSecond {
+  border-left: 1px solid $gray-secondary;
+}

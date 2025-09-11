@@ -1,7 +1,15 @@
 import './App.scss';
+import './styles/fonts.scss';
+import { Header } from './components/Header';
+
+import { BrowserRouter } from 'react-router-dom';
+import { HomePage } from './modules/HomePage';
 
 export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
+  <BrowserRouter>
+    <div className="App">
+      <Header />
+      <HomePage />
+    </div>
+  </BrowserRouter>
 );

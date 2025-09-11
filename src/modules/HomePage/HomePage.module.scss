@@ -1,0 +1,28 @@
+@use '../../styles/variables.scss' as *;
+
+.visually_hidden {
+   position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.home_page {
+  padding-top: 64px;
+  margin-left: 152px;
+}
+
+.home_page_header {
+  font-family: 'Mont-Bold';
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: $grey-white;
+}

@@ -1,0 +1,26 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  width: auto;
+  height: 48px;
+
+  @include respond-to(desktop) {
+    margin-right: 24px;
+  }
+
+  @include respond-to(desktop) {
+    height: 64px;
+  }
+}
+
+.logo_img {
+  color: $grey-white;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
