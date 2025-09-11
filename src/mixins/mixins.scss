@@ -1,4 +1,4 @@
-@import '../variables/variables';
+@use '../variables/variables' as v;
 
 @mixin mobile {
   @media (max-width: 320px) {
@@ -7,13 +7,13 @@
 }
 
 @mixin tablet {
-  @media (min-width: $tablet) {
+  @media (min-width: v.$tablet) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: $desktop) {
+  @media (min-width: v.$desktop) {
     @content;
   }
 }
