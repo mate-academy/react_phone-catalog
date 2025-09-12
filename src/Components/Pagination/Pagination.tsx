@@ -43,9 +43,7 @@ export const Pagination: React.FC<Props> = ({
         onClick={handlePrev}
         disabled={currentPage === 1}
         className={styles.arrowLeft}
-      >
-        ‹
-      </button>
+      ></button>
 
       {pageNumbers.map(page => (
         <button
@@ -63,9 +61,7 @@ export const Pagination: React.FC<Props> = ({
         onClick={handleNext}
         disabled={currentPage === totalPages}
         className={styles.arrowRight}
-      >
-        ›
-      </button>
+      ></button>
     </div>
   );
 };

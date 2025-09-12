@@ -29,9 +29,11 @@ export const CartItem: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={styles.controls}>
-        <div onClick={handleDecrease} className={styles.btnMin}></div>
-        <span className={styles.count}>{count}</span>
-        <div onClick={handleIncrease} className={styles.btnPlus}></div>
+        <div className={styles.controlsBtn}>
+          <div onClick={handleDecrease} className={styles.btnMin}></div>
+          <span className={styles.count}>{count}</span>
+          <div onClick={handleIncrease} className={styles.btnPlus}></div>
+        </div>
         <p className={styles.price}>${product.price * count}</p>
       </div>
     </div>
