@@ -7,6 +7,10 @@
   @include omitFixedTopBar;
   @include sectionsPaddingBlock;
 
+  @include tablet{
+    padding-top: 24px;
+  }
+
   &__content {
     @include padding-inline;
   }
@@ -100,6 +104,7 @@
   }
 
   &__photo {
+    cursor: pointer;
     display: block;
     width: fit-content;
     height: 49px;
@@ -187,6 +192,8 @@
   }
 
   &__detail {
+    cursor: pointer;
+
     &--color {
       width: 30px;
       height: 30px;

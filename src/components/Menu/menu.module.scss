@@ -23,10 +23,9 @@
 
   &__navigationItem{
     position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-image: url('../../../public/img/icons/cart.svg');
+    background-position: center;
+    background-repeat: no-repeat;
 
     width: 100%;
     padding-block: 24px;
@@ -50,13 +49,37 @@
     }
 
     &--left{
+      background-image: url('../../../public/img/icons/favorites.svg');
       border-right: 1px solid $dark-gray;
     }
   }
 
   &__icon{
+    position: relative;
     display: block;
     width: 16px;
     height: 16px;
   }
+
+  &__quantity{
+    position: absolute;
+    top: 11px;
+    right: 45.5%;
+
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    font-size: 9px;
+    line-height: 130%;
+    color: $main-white;
+    text-align: center;
+
+    background-color: $main-red;
+
+    @include desktop{
+      top: 18px;
+      right: 19px;
+    }
+   }
 }

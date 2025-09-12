@@ -8,6 +8,10 @@
   @include padding-inline;
   @include sectionsPaddingBlock;
 
+  @include tablet{
+    padding-top: 24px;
+  }
+
   &__navigation{
     display: flex;
     gap: 8px;

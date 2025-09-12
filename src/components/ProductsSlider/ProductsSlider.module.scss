@@ -37,6 +37,7 @@
   }
 
   &__button {
+    cursor: pointer;
     width: 32px;
     height: 32px;
 
@@ -49,6 +50,7 @@
       background-image: url('../../public/img/icons/arrow-left.svg');
 
       &:disabled {
+        cursor:auto;
         background-image: url('../../../public/img/icons/disabled-arrow-left.svg');
 
         &:hover{
@@ -80,7 +82,6 @@
   }
 
   &__title {
-    @include padding-inline;
     @include sectionTitleStyle;
 
     @include desktop {

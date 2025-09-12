@@ -18,7 +18,9 @@ export const Favorites = () => {
       <h1 className={styles.favorites__title}>Favorites</h1>
       <p className={styles.favorites__quantity}>{favorites.length} items</p>
 
-      {favorites.length > 0 && <ProductsList currentItems={favorites} isFavorites={true} />}
+      {favorites.length > 0 && (
+        <ProductsList currentItems={favorites} isFavorites={true} isWideCard={true} />
+      )}
     </section>
   );
 };

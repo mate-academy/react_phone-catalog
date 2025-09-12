@@ -13,7 +13,7 @@ export const Cart = () => {
 
   const increaseQuantity = (item: Item) => {
     setCartItems(prev =>
-      prev.map(x => (x.id === item.id ? { ...item, quantity: item.quantity + 1 } : item)),
+      prev.map(x => (x.id === item.id ? { ...item, quantity: x.quantity + 1 } : x)),
     );
   };
 
@@ -23,7 +23,7 @@ export const Cart = () => {
     }
 
     setCartItems(prev =>
-      prev.map(x => (x.id === item.id ? { ...item, quantity: item.quantity - 1 } : item)),
+      prev.map(x => (x.id === item.id ? { ...item, quantity: x.quantity - 1 } : x)),
     );
   };
 
@@ -82,7 +82,7 @@ export const Cart = () => {
                   </button>
                 </div>
 
-                <p className={styles.cart__itemPrice}>${item.priceDiscount}</p>
+                <p className={styles.cart__itemPrice}>${item.priceDiscount * item.quantity}</p>
               </div>
             ))}
           </div>

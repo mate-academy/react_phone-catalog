@@ -20,14 +20,14 @@ export const Navigation = ({ isAside = false }: Props) => {
       >
         <li
           className={classNames(styles.navigation__item, {
-            [styles['navigation--item--aside']]: isAside,
+            [styles['navigation__item--aside']]: isAside,
           })}
         >
           <NavLink
             to="/"
             className={({ isActive }) =>
               isActive
-                ? `${styles.navigation__link} ${styles['navigation__link--active']}`
+                ? `${styles.navigation__link} ${isAside && styles['navigation__link--aside']} ${styles['navigation__link--active']}`
                 : styles.navigation__link
             }
           >
@@ -43,9 +43,10 @@ export const Navigation = ({ isAside = false }: Props) => {
             to="/phones"
             className={({ isActive }) =>
               isActive
-                ? `${styles.navigation__link} ${styles['navigation__link--active']}`
+                ? `${styles.navigation__link}  ${isAside && styles['navigation__link--aside']} ${styles['navigation__link--active']}`
                 : styles.navigation__link
             }
+            end
           >
             Phones
           </NavLink>
@@ -59,9 +60,10 @@ export const Navigation = ({ isAside = false }: Props) => {
             to="/tablets"
             className={({ isActive }) =>
               isActive
-                ? `${styles.navigation__link} ${styles['navigation__link--active']}`
+                ? `${styles.navigation__link}  ${isAside && styles['navigation__link--aside']} ${styles['navigation__link--active']}`
                 : styles.navigation__link
             }
+            end
           >
             Tablets
           </NavLink>
@@ -75,9 +77,10 @@ export const Navigation = ({ isAside = false }: Props) => {
             to="/accessories"
             className={({ isActive }) =>
               isActive
-                ? `${styles.navigation__link} ${styles['navigation__link--active']}`
+                ? `${styles.navigation__link}  ${isAside && styles['navigation__link--aside']} ${styles['navigation__link--active']}`
                 : styles.navigation__link
             }
+            end
           >
             Accessories
           </NavLink>
