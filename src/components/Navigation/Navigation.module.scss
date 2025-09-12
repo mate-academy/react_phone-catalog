@@ -43,11 +43,8 @@
       padding-block: 27px;
     }
 
-    &--aside {
-      padding-block: 8px;
-    }
-
     &--aside{
+      padding-block: 8px;
       &:hover::after {
         content: '';
 
