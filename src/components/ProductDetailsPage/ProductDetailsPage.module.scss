@@ -105,9 +105,12 @@
 
   &__photo {
     cursor: pointer;
+
     display: block;
+
     width: fit-content;
     height: 49px;
+
     background-color: $main-white;
 
     @include tablet {

@@ -23,12 +23,13 @@
 
   &__navigationItem{
     position: relative;
-    background-image: url('../../../public/img/icons/cart.svg');
-    background-position: center;
-    background-repeat: no-repeat;
 
     width: 100%;
     padding-block: 24px;
+
+    background-image: url('../../../public/img/icons/cart.svg');
+    background-repeat: no-repeat;
+    background-position: center;
 
     &:hover{
       color: $main-white;
@@ -49,8 +50,8 @@
     }
 
     &--left{
-      background-image: url('../../../public/img/icons/favorites.svg');
       border-right: 1px solid $dark-gray;
+      background-image: url('../../../public/img/icons/favorites.svg');
     }
   }
 
