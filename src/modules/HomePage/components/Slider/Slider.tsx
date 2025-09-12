@@ -7,6 +7,7 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
 import 'swiper/scss';
 import { SlideItem } from '../../interfaces/swiperInterface';
+import { useRef } from 'react';
 
 const slides: SlideItem[] = [
   {
@@ -48,64 +49,88 @@ const slides: SlideItem[] = [
 ];
 
 export const Slider: React.FC = () => {
-  return (
-    <div className={styles.sliderWrapper}>
-      <button className="slide-btn__prev">
-        <img src="/img/icons/arrow_left.svg" alt="Arrow left" />
-      </button>
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
+  const paginationRef = useRef<HTMLDivElement>(null);
 
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        modules={[Navigation, Pagination, Autoplay]}
-        navigation={{
-          prevEl: '.slide-btn__prev',
-          nextEl: '.slide-btn__next',
-        }}
-        pagination={{ clickable: true, type: 'bullets' }}
-        autoplay={{ delay: 5000 }}
-      >
-        {slides.map(slide => (
-          <SwiperSlide key={slide.id}>
-            <div className={styles.slide}>
-              <div className={styles.slide__wrapper}>
-                <div className={styles.slide__content}>
-                  <h3 className={styles.slide__title}>
-                    {slide.content.title}
+  return (
+    <>
+      <div className={styles.sliderWrapper}>
+        <button ref={prevRef} className={`${styles.navBtn} ${styles.prevBtn}`}>
+          <img src="/img/icons/arrow_left.png" alt="Arrow left" />
+        </button>
+
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          modules={[Navigation, Pagination, Autoplay]}
+          onBeforeInit={swiper => {
+            if (typeof swiper.params.navigation !== 'boolean') {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }
+
+            if (typeof swiper.params.pagination !== 'boolean') {
+              swiper.params.pagination.el = paginationRef.current;
+            }
+          }}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          pagination={{
+            clickable: true,
+            type: 'bullets',
+            el: paginationRef.current,
+            bulletClass: styles.bullet,
+            bulletActiveClass: styles.activeBullet,
+          }}
+          autoplay={{ delay: 5000 }}
+        >
+          {slides.map(slide => (
+            <SwiperSlide key={slide.id}>
+              <div className={styles.slide}>
+                <div className={styles.slide__wrapper}>
+                  <div className={styles.slide__content}>
+                    <h3 className={styles.slide__title}>
+                      {slide.content.title}
+                      {'\u00A0'}
+                      <span className={styles.slide__emoji}>{'👌'}</span>
+                    </h3>
+                    <p className={styles.slide__text}>{slide.content.text}</p>
+                    <a className={styles.slide__link} href="#">
+                      {slide.content.buttonText}
+                    </a>
+                  </div>
+                  <div className={styles.slide__image}>
+                    <h3 className={styles['slide__image-title']}>
+                      {slide.mainTitle}
+                    </h3>
+                    <p className={styles['slide__image-text']}>
+                      {slide.subTitle}
+                    </p>
                     <img
-                      className={styles.slide__titleImg}
-                      src="/img/icons/hand.png"
-                      alt="ok hand"
+                      className={styles.slide__img}
+                      src={slide.image}
+                      alt={slide.mainTitle}
                     />
-                  </h3>
-                  <p className={styles.slide__text}>{slide.content.text}</p>
-                  <a className={styles.slide__link} href="#">
-                    {slide.content.buttonText}
-                  </a>
-                </div>
-                <div className={styles.slide__image}>
-                  <h3 className={styles['slide__image-title']}>
-                    {slide.mainTitle}
-                  </h3>
-                  <p className={styles['slide__image-text']}>
-                    {slide.subTitle}
-                  </p>
-                  <img
-                    className={styles.slide__img}
-                    src={slide.image}
-                    alt={slide.mainTitle}
-                  />
+                  </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-      <button className="slide-btn__next">
-        <img src="/img/icons/arrow_right.svg" alt="Arrow right" />
-      </button>
-    </div>
+        <button ref={nextRef} className={`${styles.navBtn} ${styles.nextBtn}`}>
+          <img src="/img/icons/arrow_right.png" alt="Arrow right" />
+        </button>
+      </div>
+      <div
+        ref={paginationRef}
+        id="main-slider-pagination"
+        className={styles.pagination}
+      />
+    </>
   );
 };
 
