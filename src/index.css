@@ -1,5 +1,8 @@
-@use './variables/variables.scss' as *;
-@use './mixins/mixins' as *;
+:root {
+  --main-white: #f1f2f9;
+  --app-background: #0f1121;
+  --items-disabled: #3b3e4a;
+}
 
 html{
   scroll-behavior: smooth;
@@ -18,9 +21,9 @@ body {
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $main-white;
+  color: var(--main-white);
 
-  background-color: $app-background;
+  background-color: var(--app-background);
 
   &::after {
     content: '';
@@ -34,7 +37,7 @@ body {
     width: 100%;
     height: 1px;
 
-    background-color: $items-disabled;
+    background-color: var(--items-disabled);
 
     @media (min-width: 640px) {
       bottom: 96px;

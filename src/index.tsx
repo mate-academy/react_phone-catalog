@@ -1,6 +1,7 @@
+/* eslint-disable max-len */
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
-import './index.scss';
+import './index.css';
 // eslint-disable-next-line max-len
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { ProductsProvider } from './contexts/ProductContext';
@@ -32,7 +33,7 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
                   <Route path="/" element={<App />}>
                     <Route index element={<MainContent />} />
                     <Route path="phones">
-                      <Route index element={<Phones />}/>
+                      <Route index element={<Phones />} />
                       <Route path=":productId" element={<ProductDetailsPage category="phones" />} />
                     </Route>
 

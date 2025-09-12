@@ -1,12 +1,12 @@
 import { Footer } from './components/Footer/Footer';
 import { Outlet } from 'react-router-dom';
 import { TopBar } from './components/topbar';
-import styles from './App.module.scss';
+import './App.scss';
 
 export const App = () => {
   return (
-    <div className={styles.app}>
-      <h1 className={styles.app__title}>Product Catalog</h1>
+    <div className="app">
+      <h1 className="app__title">Product Catalog</h1>
       <TopBar />
       <Outlet />
       <Footer />

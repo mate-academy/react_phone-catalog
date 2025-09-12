@@ -1,42 +1,52 @@
-.App {
-  text-align: center;
+@use './variables/variables' as *;
+@use './mixins/mixins' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  pointer-events: none;
-  height: 40vmin;
+@font-face {
+  font-family: Mont;
+  font-weight: 400;
+  font-style: normal;
+  src: url(../public/fonts/Mont-Regular.otf);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  font-style: normal;
+  src: url(../public/fonts/Mont-SemiBold.otf);
 }
 
-.App-header {
+@font-face {
+  font-family: Mont;
+  font-weight: 800;
+  font-style: normal;
+  src: url(../public/fonts/Mont-Bold.otf);
+}
+
+.app {
+  @include maxWidth;
+
+  scroll-behavior: smooth;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
   min-height: 100vh;
+  margin-inline: auto;
 
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
 
-  background-color: #282c34;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-/* stylelint-disable-next-line keyframes-name-pattern */
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  &__title {
+    position: absolute;
+    overflow: hidden;
+    visibility: hidden;
   }
 }
