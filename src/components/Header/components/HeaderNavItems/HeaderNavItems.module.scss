@@ -33,11 +33,16 @@
     left: 0;
     bottom: -18px;
     width: 100%;
-    height: 3px;
+    height: 2px;
     background-color: $grey-white;
 
     @include respond-to(desktop) {
       bottom: -26px;
     }
+
+    @include respond-to(phone) {
+      bottom: -8px;
+    }
   }
 }
+

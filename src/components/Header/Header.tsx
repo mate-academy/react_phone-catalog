@@ -5,6 +5,7 @@ import styles from './Header.module.scss';
 import { useState } from 'react';
 
 import burgerIcon from '/icons/menu-icon.png';
+import closeIcon from '/icons/close-icon.png';
 
 export const Header: React.FC = () => {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
@@ -21,6 +22,7 @@ export const Header: React.FC = () => {
           <HeaderNavItems />
         </div>
       </div>
+
       <nav className={styles.right}>
         <FavoriteAndCart />
       </nav>
@@ -33,7 +35,12 @@ export const Header: React.FC = () => {
 
       {isBurgerOpen && (
         <div className={styles.burgerMenu}>
-          <Logo />
+          <div className={styles.burger_header}>
+            <Logo />
+            <button className={styles.close_button} onClick={toggleBurger}>
+              <img src={closeIcon} alt="closeIcon" />
+            </button>
+          </div>
 
           <HeaderNavItems className={styles.burgerNav} />
           <FavoriteAndCart

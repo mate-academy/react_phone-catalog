@@ -2,31 +2,35 @@
 
 .slider {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   position: relative;
   margin-top: 56px;
+  max-width: 1136px;
+
 }
 .slider_button {
   width: 32px;
-  height: 100%;
+  height: 400px;
   background-color: $grey-surface;
   color: $grey-white;
   border: none;
   margin: 0 16px;
   cursor: pointer;
 }
+
 .slider_container {
-  width: 1040px;
+  max-width: 1040px;
   height: 400px;
 }
+
 .banner_image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.my-pagination {
+:global(.my-pagination) {
   margin-top: 8px;
   display: flex;
   justify-content: center;

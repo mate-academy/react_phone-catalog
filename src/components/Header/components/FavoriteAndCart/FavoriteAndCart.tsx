@@ -17,13 +17,22 @@ export const FavoriteAndCart: React.FC<Props> = ({ className, isBurger }) => {
     >
       <NavLink
         to="/favorites"
-        className={`${styles.icon} ${isBurger ? styles.burgerIcon : ''}`}
+        className={({ isActive }) =>
+          `${styles.icon} ${isBurger ? styles.burgerIcon : ''} ${
+            isActive && isBurger ? styles.active : ''
+          }`
+        }
       >
         <img src={favoriteIcon} alt="favoriteIcon" />
       </NavLink>
+
       <NavLink
         to="/cart"
-        className={`${styles.icon} ${isBurger ? styles.burgerIconSecond : ''}`}
+        className={({ isActive }) =>
+          `${styles.icon} ${isBurger ? styles.burgerIconSecond : ''} ${
+            isActive && isBurger ? styles.active : ''
+          }`
+        }
       >
         <img src={cartIcon} alt="cartIcon" />
       </NavLink>

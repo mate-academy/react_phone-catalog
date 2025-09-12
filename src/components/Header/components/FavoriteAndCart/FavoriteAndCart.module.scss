@@ -38,10 +38,17 @@
   }
 }
 
-.burgerIcon {
-  border-left: none;
-}
+.burgerIcon.active,
+.burgerIconSecond.active {
+  position: relative;
 
-.burgerIconSecond {
-  border-left: 1px solid $gray-secondary;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 100%;
+    height: 2px;
+    background-color: $grey-white
+  }
 }
