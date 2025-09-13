@@ -1,39 +1,57 @@
 import './NewModels.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
-import { Phone } from '../../../../src/types/Phone';
+import { Product } from '../../../../src/types/Product';
+import { useRef } from 'react';
 
 type Props = {
-  devices: Phone[];
+  products: Product[];
 };
 
-export const NewModels: React.FC<Props> = ({ devices }) => {
+export const NewModels: React.FC<Props> = ({ products }) => {
+  const newProducts = [...(products || [])].sort((a, b) => b.year - a.year);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!containerRef.current) {
+      return;
+    }
+
+    const container = containerRef.current;
+    const card = container.querySelector<HTMLDivElement>('.phone');
+
+    if (!card) {
+      return;
+    }
+
+    const cardWidth = card.offsetWidth + 16;
+    const scrollAmount = direction === 'right' ? cardWidth : -cardWidth;
+
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
   return (
     <div className="new">
       <div className="new__title">
         <div className="new__title--text">Brand new models</div>
         <div className="new__title--arrows">
-          <div className="new__title--arrows-arrow">
+          <div
+            className="new__title--arrows-arrow"
+            onClick={() => scroll('left')}
+          >
             <img src="../../img/arrow-left.png" alt="left" />
           </div>
-          <div className="new__title--arrows-arrow arrow-active">
+          <div
+            className="new__title--arrows-arrow arrow-active"
+            onClick={() => scroll('right')}
+          >
             <img src="../../img/arrow-right.png" alt="right" />
           </div>
         </div>
       </div>
-      <div className="new__phones">
-        {devices.map(phone => {
-          return (
-            <ProductCard
-              key={phone.id}
-              image={phone.images[0]}
-              name={phone.name}
-              priceRegular={phone.priceRegular}
-              priceDiscount={0}
-              screen={phone.screen}
-              capacity={phone.capacity}
-              ram={phone.ram}
-            />
-          );
+      <div className="new__phones" ref={containerRef}>
+        {newProducts.map(product => {
+          return <ProductCard key={product.id} product={product} />;
         })}
       </div>
     </div>

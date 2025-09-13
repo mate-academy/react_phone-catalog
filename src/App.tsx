@@ -8,6 +8,9 @@ import { Favourites } from './components/Favourites/Favourites';
 import { Catalog } from './components/Catalog/Catalog';
 import { BurgerMenu } from './components/BurgerMenu/BurgerMenu';
 import { useState, useEffect } from 'react';
+import { Product } from './types/Product';
+import { ProductPage } from './components/ProductPage/ProductPage';
+import { NotFound } from './components/NotFound/NotFound';
 
 export const App = () => {
   const [phones, setPhones] = useState([]);
@@ -16,17 +19,19 @@ export const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    fetch('../../../api/phones.json')
+    fetch('../../../api/products.json')
       .then(res => res.json())
-      .then(data => setPhones(data));
-
-    fetch('../../../api/tablets.json')
-      .then(res => res.json())
-      .then(data => setTablets(data));
-
-    fetch('../../../api/accessories.json')
-      .then(res => res.json())
-      .then(data => setAccessories(data));
+      .then(data => {
+        setPhones(
+          data.filter((product: Product) => product.category === 'phones'),
+        );
+        setTablets(
+          data.filter((product: Product) => product.category === 'tablets'),
+        );
+        setAccessories(
+          data.filter((product: Product) => product.category === 'accessories'),
+        );
+      });
   }, []);
 
   return (
@@ -35,16 +40,24 @@ export const App = () => {
       <BurgerMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <div className="page">
         <Routes>
-          <Route path="/" element={<HomePage devices={phones} />} />
+          <Route path="/" element={<HomePage products={phones} />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="/phones" element={<Catalog devices={phones} />} />
-          <Route path="/tablets" element={<Catalog devices={tablets} />} />
+          <Route
+            path="/phones"
+            element={<Catalog products={phones} title="Phones" />}
+          />
+          <Route
+            path="/tablets"
+            element={<Catalog products={tablets} title="Tablets" />}
+          />
           <Route
             path="/accessories"
-            element={<Catalog devices={accessories} />}
+            element={<Catalog products={accessories} title="Accessories" />}
           />
+          <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/basket" element={<Basket />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <Footer />

@@ -1,6 +1,6 @@
 import { Description } from './Description';
 
-export type Phone = {
+export type Details = {
   id: string;
   category: string;
   namespaceId: string;

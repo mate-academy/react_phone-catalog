@@ -1,40 +1,60 @@
 import './HotPrices.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
-import { Phone } from '../../../../src/types/Phone';
+import { Product } from '../../../../src/types/Product';
+import { useRef } from 'react';
 
 type Props = {
-  devices: Phone[];
+  products: Product[];
 };
 
-export const HotPrices: React.FC<Props> = ({ devices }) => {
+export const HotPrices: React.FC<Props> = ({ products }) => {
+  const hotProducts = [...(products || [])].sort(
+    (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
+  );
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!containerRef.current) {
+      return;
+    }
+
+    const container = containerRef.current;
+    const card = container.querySelector<HTMLDivElement>('.phone');
+
+    if (!card) {
+      return;
+    }
+
+    const cardWidth = card.offsetWidth + 16;
+    const scrollAmount = direction === 'right' ? cardWidth : -cardWidth;
+
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
   return (
     <div className="hot">
       <div className="hot__title">
         <div className="hot__title--text">Hot prices</div>
         <div className="hot__title--arrows">
-          <div className="hot__title--arrows-arrow">
+          <div
+            className={`hot__title--arrows-arrow`}
+            onClick={() => scroll('left')}
+          >
             <img src="../../img/arrow-left.png" alt="left" />
           </div>
-          <div className="hot__title--arrows-arrow arrow-active">
+          <div
+            className={`hot__title--arrows-arrow arrow-active`}
+            onClick={() => scroll('right')}
+          >
             <img src="../../img/arrow-right.png" alt="right" />
           </div>
         </div>
       </div>
-      <div className="hot__phones">
-        {devices.map(phone => {
-          return (
-            <ProductCard
-              key={phone.id}
-              image={phone.images[0]}
-              name={phone.name}
-              priceRegular={phone.priceRegular}
-              priceDiscount={phone.priceDiscount}
-              screen={phone.screen}
-              capacity={phone.capacity}
-              ram={phone.ram}
-            />
-          );
-        })}
+      <div className="hot__phones" ref={containerRef}>
+        {hotProducts.map(product => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );

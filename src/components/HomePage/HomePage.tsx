@@ -2,19 +2,19 @@ import { Home } from './home/Home';
 import { NewModels } from './newModels/NewModels';
 import { Category } from './Category/Category';
 import { HotPrices } from './HotPrices/HotPrices';
-import { Phone } from '../../../src/types/Phone';
+import { Product } from '../../../src/types/Product';
 
 type Props = {
-  devices: Phone[];
+  products: Product[];
 };
 
-export const HomePage: React.FC<Props> = ({ devices }) => {
+export const HomePage: React.FC<Props> = ({ products }) => {
   return (
     <>
       <Home />
-      <NewModels devices={devices} />
+      <NewModels products={products} />
       <Category />
-      <HotPrices devices={devices} />
+      <HotPrices products={products} />
     </>
   );
 };

@@ -6,9 +6,16 @@ html, body {
   overflow-x: hidden;
 }
 
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .page {
   padding: 0 16px;
   padding-top: 48px;
+  flex: 1;
 }
 
 @media (min-width: 640px) {

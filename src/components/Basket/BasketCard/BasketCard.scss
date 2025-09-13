@@ -1,0 +1,143 @@
+@font-face {
+  font-family: Mont-Bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url('../../../public/fonts/Mont-Regular.otf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('../../../public/fonts/Mont-SemiBold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.card {
+  width: 100%;
+  height: 160px;
+  padding: 16px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  border: 1px solid lightgrey;
+
+  &__product {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    width: 100%;
+    height: 80px;
+
+    &--x {
+      cursor: pointer;
+    }
+
+    &--name {
+      font-family: Mont-Regular, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0%;
+      color: #313237;
+    }
+
+    &--img {
+      width: 80px;
+      height: 80px;
+
+      &-item {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__info {
+    width: 100%;
+    height: 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--quantity {
+      display: flex;
+
+      &-button {
+        width: 32px;
+        height: 32px;
+        border: 1px solid lightgrey;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+
+        &:hover {
+          border: 1px solid grey;
+        }
+      }
+
+      &-number {
+        width: 32px;
+        height: 32px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: Mont-Regular, sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: center;
+      }
+    }
+
+    &--price {
+      font-family: Mont-Bold, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      letter-spacing: 0%;
+      color: #313237;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .card {
+    height: 128px;
+    padding: 24px;
+
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__info {
+      min-width: 200px;
+      max-width: 200px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  card {
+    flex: 1;
+  }
+}

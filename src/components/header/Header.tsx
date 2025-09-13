@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import './Header.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useShop } from '../../context/shopContext';
 
 type Props = {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
@@ -8,6 +9,7 @@ type Props = {
 
 export const Header: React.FC<Props> = ({ setMenuOpen }) => {
   const { pathname } = useLocation();
+  const { favourites, basket } = useShop();
 
   const handleMenu = () => {
     setMenuOpen(prev => !prev);
@@ -16,47 +18,82 @@ export const Header: React.FC<Props> = ({ setMenuOpen }) => {
   return (
     <div className="header">
       <div className="header__wrapper">
-        <div className="header__logo">
+        <Link to="/" className="header__logo">
           <img
             src="./public/img/logo.png"
             alt="logo"
             className="header__logo--img"
           />
-        </div>
+        </Link>
         <div className="header__nav">
-          <Link
+          <NavLink
             to="/"
-            className={`header__nav--item ${pathname === '/' ? 'is-active' : ''}`}
+            className={({ isActive }) => {
+              return isActive
+                ? 'header__nav--item is-active'
+                : 'header__nav--item';
+            }}
           >
             home
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/phones"
-            className={`header__nav--item ${pathname === '/phones' ? 'is-active' : ''}`}
+            className={({ isActive }) => {
+              return isActive
+                ? 'header__nav--item is-active'
+                : 'header__nav--item';
+            }}
           >
             phones
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/tablets"
-            className={`header__nav--item ${pathname === '/tablets' ? 'is-active' : ''}`}
+            className={({ isActive }) => {
+              return isActive
+                ? 'header__nav--item is-active'
+                : 'header__nav--item';
+            }}
           >
             tablets
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/accessories"
-            className={`header__nav--item ${pathname === '/accessories' ? 'is-active' : ''}`}
+            className={({ isActive }) => {
+              return isActive
+                ? 'header__nav--item is-active'
+                : 'header__nav--item';
+            }}
           >
             accessories
-          </Link>
+          </NavLink>
         </div>
       </div>
       <div className="header__trinkets">
         <Link
           to="/favourites"
           className={`header__trinkets--heart ${pathname === '/favourites' ? 'heart-active' : ''}`}
-        ></Link>
+        >
+          <div
+            className={
+              favourites.length === 0
+                ? `header__trinkets--heart-quantity-disabled`
+                : `header__trinkets--heart-quantity`
+            }
+          >
+            {favourites.length}
+          </div>
+        </Link>
         <Link to="/basket" className="header__trinkets--basket">
           <img src="./public/img/basket.png" alt="shopping cart" />
+          <div
+            className={
+              basket.length === 0
+                ? `header__trinkets--basket-quantity-disabled`
+                : `header__trinkets--basket-quantity`
+            }
+          >
+            {basket.length}
+          </div>
         </Link>
       </div>
       <div className="header__burger">

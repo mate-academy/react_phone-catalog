@@ -1,19 +1,19 @@
 @font-face {
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold;
   src: url('../../../public/fonts/Mont-Bold.otf');
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular;
   src: url('../../../public/fonts/Mont-Regular.otf');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont-SemiBold';
+  font-family: Mont-SemiBold;
   src: url('../../../public/fonts/Mont-SemiBold.otf');
   font-weight: 700;
   font-style: normal;
@@ -45,6 +45,11 @@
 
       &-img {
         width: 100%;
+        transition: transform 300ms ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
       }
     }
 
@@ -55,6 +60,7 @@
       line-height: 100%;
       letter-spacing: 0%;
       color: #313237;
+      margin-top: 24px;
     }
 
     &--quantity {

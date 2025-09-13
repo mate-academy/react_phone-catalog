@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Category.scss';
 
 export const Category = () => {
@@ -6,35 +7,35 @@ export const Category = () => {
       <div className="category__title">Shop by category</div>
       <div className="classes">
         <div className="category__class">
-          <div className="category__class--image">
+          <Link to="/phones" className="category__class--image">
             <img
               src="../../../../public/img/mobilephones.png"
               alt="phones"
               className="category__class--image-img"
             />
-          </div>
+          </Link>
           <div className="category__class--name">Mobile phones</div>
           <div className="category__class--quantity">95 models</div>
         </div>
         <div className="category__class">
-          <div className="category__class--image">
+          <Link to="/tablets" className="category__class--image">
             <img
               src="../../../../public/img/tablets.png"
               alt="phones"
               className="category__class--image-img"
             />
-          </div>
+          </Link>
           <div className="category__class--name">Tablets</div>
           <div className="category__class--quantity">24 models</div>
         </div>
         <div className="category__class">
-          <div className="category__class--image">
+          <Link to="/accessories" className="category__class--image">
             <img
               src="../../../../public/img/accessories.png"
               alt="phones"
               className="category__class--image-img"
             />
-          </div>
+          </Link>
           <div className="category__class--name">Accessories</div>
           <div className="category__class--quantity">100 models</div>
         </div>
