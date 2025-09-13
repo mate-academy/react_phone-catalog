@@ -8,30 +8,94 @@ import PlusIcon from '../../assets/icons/Plus.svg';
 import { Loader } from '../../components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
 
+interface RawProduct {
+  id: number;
+  category: string;
+  itemId: string;
+  name: string;
+  fullPrice: number;
+  price?: number;
+  screen?: string;
+  capacity?: string;
+  color?: string;
+  ram?: string;
+  year?: number;
+  image: string;
+}
+
+interface CartProduct {
+  id: string;
+  title: string;
+  image: string;
+  price: number;
+  quantity: number;
+  shortSpecs: { left: string; right: string }[];
+}
+
 export const CartPage = () => {
   const { t } = useTranslation();
   const { cartItems, removeFromCart, increaseQty, decreaseQty, clearCart } =
     useCart();
 
   const [loading, setLoading] = useState(true);
+  const [productsData, setProductsData] = useState<CartProduct[]>([]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 300);
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch('/api/products.json');
 
-    return () => clearTimeout(timer);
-  }, []);
+        if (!res.ok) {
+          throw new Error('Failed to fetch products');
+        }
 
-  const parsePrice = (price: string | number) => {
-    if (typeof price === 'number') {
-      return price;
-    }
+        const allProducts: RawProduct[] = await res.json();
 
-    return Number(price.toString().replace('$', '')) || 0;
-  };
+        // Собираем товары из корзины с полными данными
+        const cartProducts: CartProduct[] = cartItems
+          .map(cartItem => {
+            const product = allProducts.find(p => p.itemId === cartItem.id);
 
-  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            if (!product) {
+              return null;
+            }
 
-  const totalPrice = cartItems.reduce(
+            return {
+              id: product.itemId,
+              title: product.name,
+              image: `/${product.image}`,
+              price: product.price ?? product.fullPrice,
+              quantity: cartItem.quantity,
+              shortSpecs: [
+                { left: 'Screen', right: product.screen ?? '-' },
+                { left: 'Capacity', right: product.capacity ?? '-' },
+                { left: 'RAM', right: product.ram ?? '-' },
+              ],
+            };
+          })
+          .filter(Boolean) as CartProduct[];
+
+        setProductsData(cartProducts);
+      } catch (err) {
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [cartItems]);
+
+  const parsePrice = (price: number | string) =>
+    typeof price === 'number'
+      ? price
+      : Number(price.toString().replace('$', '')) || 0;
+
+  const totalQuantity = productsData.reduce(
+    (sum, item) => sum + item.quantity,
+    0,
+  );
+  const totalPrice = productsData.reduce(
     (sum, item) => sum + parsePrice(item.price) * item.quantity,
     0,
   );
@@ -59,14 +123,19 @@ export const CartPage = () => {
         <h1 className={styles.title}>{t('cart.title')}</h1>
       </div>
 
-      {cartItems.length === 0 ? (
+      {productsData.length === 0 ? (
         <div className={styles.emptyCart}>
+          <img
+            src="/img/cart-is-empty.png"
+            alt={t('cart.empty')}
+            className={styles.emptyCartImage}
+          />
           <p>{t('cart.empty')}</p>
         </div>
       ) : (
         <div className={styles.grid}>
           <div className={styles.cartItems}>
-            {cartItems.map(item => (
+            {productsData.map(item => (
               <div key={item.id} className={styles.cartItem}>
                 <div className={styles.topRow}>
                   <button
@@ -81,9 +150,9 @@ export const CartPage = () => {
                     alt={item.title}
                     className={styles.itemImage}
                   />
-
                   <span className={styles.itemTitle}>{item.title}</span>
                 </div>
+
                 <div className={styles.bottomRow}>
                   <div className={styles.counter}>
                     <button

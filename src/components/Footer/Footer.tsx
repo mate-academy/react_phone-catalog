@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
           </div>
 
           <nav className={styles.nav}>
-            <a href="https://github.com/">{t('footer.github')}</a>
+            <a href="https://github.com/Diana2369/">{t('footer.github')}</a>
             <NavLink to="/contacts">{t('footer.contacts')}</NavLink>
             <NavLink to="/rights">{t('footer.rights')}</NavLink>
           </nav>

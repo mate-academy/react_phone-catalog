@@ -1,36 +1,113 @@
+import { useEffect, useState } from 'react';
 import { useFavorites } from '../../contexts/FavoritesContext';
-import { brandNewProducts, hotPricesProducts } from '../../data/products';
-import { ProductsGrid } from '../../components-cp/ProductsGrid/ProductsGrid';
 import { Breadcrumbs } from '../../components-cp/Breadcrumbs/Breadcrumbs';
-import { baseProducts } from '../../data/products';
 import { useTranslation } from 'react-i18next';
 import styles from './FavoritesPage.module.scss';
 import { useCart } from '../../contexts/CartContext';
+import { ProductsGrid } from '../../components-cp/ProductsGrid/ProductsGrid';
+import { Loader } from '../../components/Loader/Loader';
+
+interface RawProduct {
+  id: number;
+  category: string;
+  itemId: string;
+  name: string;
+  fullPrice: number;
+  price?: number;
+  screen?: string;
+  capacity?: string;
+  color?: string;
+  ram?: string;
+  year?: number;
+  image: string;
+}
+
+interface Spec {
+  left: string;
+  right: string;
+}
+
+interface ProductType {
+  id: string;
+  namespaceId: string;
+  category: string;
+  title: string;
+  price: number;
+  oldPrice?: number;
+  images: string[];
+  colors: string[];
+  color: string;
+  memory: string[];
+  capacity: string;
+  fullSpecs: Spec[];
+  description: { title: string; text: string[] }[];
+  shortSpecs: Spec[];
+}
 
 export const FavoritesPage = () => {
   const { favorites } = useFavorites();
   const { t } = useTranslation();
   const { addToCart } = useCart();
 
-  const allProducts = [
-    ...baseProducts,
-    ...brandNewProducts,
-    ...hotPricesProducts,
-  ];
+  const [loading, setLoading] = useState(true);
+  const [allProducts, setAllProducts] = useState<ProductType[]>([]);
 
-  const favoriteProducts = allProducts.filter(product =>
-    favorites.includes(product.id),
-  );
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch('/api/products.json');
 
-  const normalizedFavorites = favoriteProducts.map(product => ({
-    id: product.id.toString(),
-    image: product.image,
-    title: product.title ?? product.name,
-    price: product.price,
-    oldPrice: product.oldPrice ?? product.fullPrice,
-    specs: product.specs ?? product.baseSpecs ?? [],
-    originalId: product.id,
-  }));
+        if (!res.ok) {
+          throw new Error('Failed to fetch products');
+        }
+
+        const products: RawProduct[] = await res.json();
+
+        const favoriteProducts = products
+          .filter(p => favorites.includes(p.itemId))
+          .map(p => ({
+            id: p.itemId,
+            namespaceId: p.itemId,
+            category: p.category,
+            title: p.name,
+            price: p.price ?? p.fullPrice,
+            oldPrice: p.price ? p.fullPrice : undefined,
+            images: [`/${p.image}`], // путь к картинке
+            colors: p.color ? [p.color] : [],
+            color: p.color ?? '',
+            memory: [], // здесь можно добавить массив памяти, если есть
+            capacity: p.capacity ?? '-',
+            fullSpecs: [
+              { left: 'Screen', right: p.screen ?? '-' },
+              { left: 'Capacity', right: p.capacity ?? '-' },
+              { left: 'RAM', right: p.ram ?? '-' },
+              { left: 'Year', right: p.year?.toString() ?? '-' },
+            ],
+            description: [],
+            shortSpecs: [
+              { left: 'Screen', right: p.screen ?? '-' },
+              { left: 'Capacity', right: p.capacity ?? '-' },
+              { left: 'RAM', right: p.ram ?? '-' },
+            ],
+          }));
+
+        setAllProducts(favoriteProducts);
+      } catch (err) {
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [favorites]);
+
+  if (loading) {
+    return (
+      <div className={styles.loaderWrapper}>
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.favoritesPage}>
@@ -38,31 +115,43 @@ export const FavoritesPage = () => {
 
       <div className={styles.headerWrapper}>
         <h1 className={styles.title}>{t('favoritesPage.title')}</h1>
-        {normalizedFavorites.length > 0 && (
+        {allProducts.length > 0 && (
           <p className={styles.itemsCount}>
-            {normalizedFavorites.length}{' '}
-            {normalizedFavorites.length === 1
+            {allProducts.length}{' '}
+            {allProducts.length === 1
               ? t('favoritesPage.item')
               : t('favoritesPage.items')}
           </p>
         )}
       </div>
 
-      {normalizedFavorites.length === 0 ? (
+      {allProducts.length === 0 ? (
         <p className={styles.empty}>{t('favoritesPage.empty')}</p>
       ) : (
         <ProductsGrid
-          products={normalizedFavorites}
+          products={allProducts.map(p => ({
+            id: p.id,
+            originalId: p.namespaceId,
+            image: p.images[0], // берем первую картинку
+            title: p.title,
+            price: p.price,
+            oldPrice: p.oldPrice,
+            specs: {
+              screen: p.shortSpecs.find(s => s.left === 'Screen')?.right,
+              capacity: p.shortSpecs.find(s => s.left === 'Capacity')?.right,
+              ram: p.shortSpecs.find(s => s.left === 'RAM')?.right,
+            },
+          }))}
           visibleCount="all"
           setVisibleCount={() => {}}
           showPagination={false}
           className={styles.favoritesGrid}
           onAddToCart={product =>
             addToCart({
-              id: product.originalId,
+              id: product.id,
               title: product.title,
               image: product.image,
-              price: Number(product.price.replace(/\$/g, '')),
+              price: product.price,
               quantity: 1,
             })
           }

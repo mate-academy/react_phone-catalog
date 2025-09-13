@@ -8,17 +8,20 @@
   display: grid;
   grid-template-columns: repeat(24, 32px);
   column-gap: 16px;
-  @include grid-24-mw($gap: 16px);
+  align-items: center;
+
   width: 100%;
   margin: 0 auto;
-  align-items: center;
+
+  @include grid-24-mw($gap: 16px);
 }
 
 .title {
-  @include desktop-tablet-H1-style;
-  margin: 0;
-  color: var(--color-White);
+  @include desktop-tablet-h1-style;
+
   grid-column: 1 / 25;
+  margin: 0;
+  color: var(--color-white);
   white-space: nowrap;
 }
 
@@ -26,53 +29,50 @@
   display: inline;
 }
 
-
-
-
 // Планшетная версия
 @media (max-width: 1199px) and (min-width: 640px) {
-
   .wrapper {
-  padding: 32px 0;
-  max-width: 640px;
-}
+    max-width: 640px;
+    padding: 32px 0;
+  }
 
   .title {
-    white-space: normal;
     grid-column: 1 / -1;
-    padding-left: 24px;
+
+    max-width: 640px;
     padding-right: 24px;
-      max-width: 640px;
+    padding-left: 24px;
+
+    white-space: normal;
   }
 
   .line {
-      max-width: 640px;
     display: block;
+    max-width: 640px;
   }
 }
-
-
-
 
 // Мобильная от 320px до 639px
 @media (max-width: 639px) {
   .wrapper {
-  padding: 24px 0;
-  max-width: 320px;
-}
+    max-width: 320px;
+    padding: 24px 0;
+  }
 
   .title {
-    @include mobile-H1-style;
-    white-space: normal;
+    @include mobile-h1-style;
+
     grid-column: 1 / -1;
-    padding-left: 16px;
+
+    max-width: 320px;
     padding-right: 16px;
-      max-width: 320px;
+    padding-left: 16px;
+
+    white-space: normal;
   }
 
   .line {
     display: block;
-      max-width: 320px;
+    max-width: 320px;
   }
 }
-

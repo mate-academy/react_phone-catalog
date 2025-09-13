@@ -2,23 +2,25 @@
 
 
 * {
+  cursor: url('/src/assets/icons/cursor.svg') 8 8, auto;
+
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+
   font-family: $font-main;
-  color: var(--color-White);
-  cursor: url('/src/assets/icons/cursor.svg') 8 8, auto;
+  color: var(--color-white);
 }
 
 body {
   width: 100%;
-  background-color:var(--color-Black);
+  background-color:var(--color-black);
   transition: background-color 0.3s, color 0.3s;
 }
 
 .dark-theme {
-  background-color: var(--color-Surface1);
-  color: var(--color-White);
+  color: var(--color-white);
+  background-color: var(--color-surface1);
 }
 
 main {

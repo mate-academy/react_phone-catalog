@@ -11,6 +11,9 @@ export const NotFoundPage: React.FC<Props> = ({ messageKey }) => {
 
   return (
     <div className={styles.emptyPage}>
+      <div className={styles.imageWrapper}>
+        <img src="/img/page-not-found.png" alt="Not Found" />
+      </div>
       <p>{messageKey ? t(messageKey) : t('notFound.defaultMessage')}</p>
     </div>
   );

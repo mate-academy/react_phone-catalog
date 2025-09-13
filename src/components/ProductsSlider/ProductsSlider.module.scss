@@ -1,93 +1,108 @@
 @import '../../assets/fonts/variables';
 
 .section {
+    display: flex;
+  flex-direction: column;
+  gap: 24px;
   margin-bottom: 80px;
 }
 
 .sectionHeader {
   @include grid-24($gap: 16px);
   @include grid-24-mw($gap: 16px);
-  margin: 0 auto;
+
   align-items: center;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .title {
-  grid-column: 1 / 13; //
-  @include desktop-tablet-H2-style;
-  color: var(--color-White);
-  margin: 0;
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  grid-column: 1 / 13;
+
   height: 41px;
+  margin: 0;
+
+  color: var(--color-white);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @include desktop-tablet-h2-style;
 }
 
 .productCard {
+  display: flex;
   grid-column: span 6;
+  flex-direction: column;
+
+  box-sizing: border-box;
   width: calc((100% - (23 * 16px)) / 24 * 6 + (5 * 16px));
   height: 506px;
-  background-color: var(--color-Surface1);
-  display: flex;
-  flex-direction: column;
   padding: 32px;
-  box-sizing: border-box;
+
+  background-color: var(--color-surface1);
 }
 
 .productImage {
   width: 208px;
   height: 196px;
+  margin: 0 auto 8px;
   object-fit: contain;
-  margin: 0 auto 8px auto;
 }
 
 .productTitle {
+  margin: 0 0 8px;
   font-size: 16px;
   font-weight: 600;
-  margin: 0 0 8px 0;
 }
 
 .productPrice {
+  margin: 0 0 16px;
   font-size: 14px;
   color: #666;
-  margin: 0 0 16px 0;
 }
 
 .specList {
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   padding: 0;
-  list-style: none;
+
   font-size: 12px;
   color: #555;
+  list-style: none;
 }
 
 .productActions {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   height: 40px;
 }
 
 .productsGrid {
   @include grid-24($gap: 16px);
   @include grid-24-mw($gap: 16px);
-  margin: 0 auto;
+
   justify-content: start;
+  margin: 0 auto;
 }
 
 .buyButton {
-  flex: 1;
-  padding: 8px 16px;
-  background-color: var(--color-Accent);
-  border: none;
-  color: white;
   cursor: pointer;
+
+  flex: 1;
+
+  padding: 8px 16px;
+  border: none;
   border-radius: 4px;
+
   font-weight: 600;
+  color: white;
+
+  background-color: var(--color-accent);
 
   &:hover {
-    background-color: var(--color-Elements);
+    background-color: var(--color-elements);
   }
 }
 
@@ -95,41 +110,42 @@
   width: 40px;
   height: 40px;
   margin-left: 8px;
-  background-color: transparent;
   border: 1px solid #ccc;
-}
 
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  background-color: transparent;
 }
 
 .arrowLeft,
 .arrowRight {
+  cursor: pointer;
+
   width: 32px;
   height: 32px;
-  background-color: var(--color-Black);
-  border: 1px solid var(--color-Elements);
-  cursor: pointer;
+  border: 1px solid var(--color-elements);
+
+  background-color: var(--color-black);
 }
 
 .arrows {
-  grid-column: 24 / 25;
   display: flex;
-  justify-self: end;
+  grid-column: 24 / 25;
   gap: 16px;
+  justify-self: end;
 }
 
 .arrowBtn {
-  width: 32px;
-  height: 32px;
-  background-color: var(--color-Surface2);
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-Surface2);
-  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-surface2);
+
+  background-color: var(--color-surface2);
+
   transition: background-color 0.3s ease;
 
   img {
@@ -139,7 +155,7 @@
   }
 
   &:hover:not(.disabled) {
-    background-color: var(--color-Surface2);
+    background-color: var(--color-surface2);
 
     img {
       transform: scale(1.2);
@@ -147,9 +163,8 @@
   }
 
   &.disabled {
-    background-color: none;
-
     cursor: not-allowed;
+    background-color: none;
 
     img {
       transform: none;
@@ -164,10 +179,8 @@
   $side-padding: 24px;
   $columns-header: 12;
   $columns-cards: 15;
-
   $column-width: calc(
-    (100vw - 2 * #{$side-padding} - (#{$columns-header} - 1) * #{$gap}) /
-      #{$columns-header}
+    (100vw - 2 * #{$side-padding} - (#{$columns-header} - 1) * #{$gap}) / #{$columns-header}
   );
 
   .section {
@@ -175,40 +188,48 @@
   }
 
   .sectionHeader {
+    position: relative;
+
     display: grid;
     grid-template-columns: repeat($columns-header, #{$column-width});
     column-gap: $gap;
-    padding: 0 $side-padding;
+
     box-sizing: border-box;
-    position: relative;
+    padding: 0 $side-padding;
   }
 
   .title {
-    grid-column: 1 / 10;
-    @include desktop-tablet-H2-style;
-    margin: 0;
-    white-space: normal;
     overflow: visible;
+    grid-column: 1 / 10;
+
+    margin: 0;
+
     text-overflow: unset;
+    white-space: normal;
+
+    @include desktop-tablet-h2-style;
   }
 
   .arrows {
+    position: absolute;
+    top: 50%;
+    right: $side-padding;
+    transform: translateY(-50%);
+
     display: flex;
     gap: 16px;
-    position: absolute;
-    right: $side-padding;
-    top: 50%;
-    transform: translateY(-50%);
   }
 
   .productsGrid {
+    position: relative;
+
+    overflow-x: hidden;
     display: grid;
     grid-template-columns: repeat($columns-cards, #{$column-width});
     gap: $gap;
-    padding: 0 $side-padding;
+
     box-sizing: border-box;
-    overflow-x: hidden;
-    position: relative;
+    padding: 0 $side-padding;
   }
 
   .productsGrid > .productCard {
@@ -244,47 +265,55 @@
     }
   }
   .sectionHeader {
+    position: relative;
+
     display: grid;
     grid-template-columns: repeat($columns-header, #{$column-width});
     column-gap: $gap;
-    padding: 0 $gap;
+
     box-sizing: border-box;
-    position: relative;
+    padding: 0 $gap;
   }
 
   .title {
-    grid-column: 1 / 3;
-    @include mobile-H2-style;
-    margin: 0;
-    height: 100%;
-    white-space: normal;
     overflow: visible;
+    grid-column: 1 / 3;
+
+    height: 100%;
+    margin: 0;
+
     text-overflow: unset;
+    white-space: normal;
+
+    @include mobile-h2-style;
   }
 
   .arrows {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+
     display: flex;
     gap: 16px;
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
   }
 
   .productsWrapper {
-    max-width: 100%;
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
+    max-width: 100%;
   }
 
   .productsGrid {
+    position: relative;
+
+    overflow-x: hidden;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: $gap;
-    padding: 0 $gap;
+
     box-sizing: border-box;
-    overflow-x: hidden;
-    position: relative;
+    padding: 0 $gap;
   }
 
   .productsGrid > .productCard {

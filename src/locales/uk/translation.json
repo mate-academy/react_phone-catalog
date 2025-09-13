@@ -18,20 +18,19 @@
     "favorites": "Вибране",
     "cart": "Кошик"
   },
-  "home": {
-    "heroTitle": "Ласкаво просимо до магазину Nice Gadgets!",
-    "heroSubtitle": "Знайдіть свій ідеальний гаджет тут",
-    "brandNewModels": "Нові моделі",
-    "hotPrices": "Гарячі пропозиції",
-    "shopByCategory": "Переглянути категорії",
-    "categories": {
-      "phones": "Мобільні телефони",
-      "phonesSubtitle": "95 моделей",
-      "tablets": "Планшети",
-      "tabletsSubtitle": "24 моделі",
-      "accessories": "Аксесуари",
-      "accessoriesSubtitle": "100 моделей"
-    }
+"home": {
+  "heroTitle": "Ласкаво просимо до магазину Nice Gadgets!",
+  "brandNewModels": "Нові моделі",
+  "hotPrices": "Гарячі ціни",
+  "shopByCategory": "Купуйте за категоріями",
+  "categories": {
+    "phones": "Мобільні телефони",
+    "phonesSubtitle": "{{count}} моделей",
+    "tablets": "Планшети",
+    "tabletsSubtitle": "{{count}} моделей",
+    "accessories": "Аксесуари",
+    "accessoriesSubtitle": "{{count}} моделей"
+  }
   },
   "product": {
     "inCart": "У кошику",
@@ -149,6 +148,14 @@
   "error": {
   "somethingWentWrong": "Щось пішло не так",
   "retry": "Перезавантажити"
-}
+},
+  "tabletsPage": {
+    "title": "Планшети",
+    "modelsCount": "{{count}} моделей"
+  },
+    "accessoriesPage": {
+    "title": "Аксесуари",
+    "modelsCount": "{{count}} моделей"
+  }
 }
 

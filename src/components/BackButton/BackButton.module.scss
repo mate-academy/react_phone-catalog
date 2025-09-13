@@ -1,32 +1,25 @@
-@import '../../assets/fonts/variables.scss';
+@import '../../assets/fonts/variables';
 
 .backButton {
-  display: flex;
-  align-items: center;
-  gap: 4px;
   cursor: pointer;
+  display: flex;
+  gap: 4px;
+  align-items: center;
 
   span {
     height: 16px;
+
     font-size: 12px;
     font-weight: 700;
-    color: var(--color-White);
+    color: var(--color-white);
+
     transition:
       transform 0.3s ease,
       color 0.3s;
   }
 
-  span {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--color-White);
-    transition:
-      color 0.3s,
-      transform 0.2s;
-  }
-
   &:hover span {
-    color: var(--color-Accent);
     transform: scale(1.1);
+    color: var(--color-accent);
   }
 }

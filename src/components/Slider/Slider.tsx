@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './Slider.module.scss';
 import cn from 'classnames';
 
@@ -44,6 +45,9 @@ export const Slider: React.FC<Props> = ({
     return () => clearTimeout(timer);
   }, [current, autoPlay, autoPlayDelay]);
 
+  // Связываем каждую картинку с категорией
+  const categoryLinks = ['/phones', '/tablets', '/accessories'];
+
   return (
     <section className={styles.sliderWrapper}>
       <div className={styles.slider}>
@@ -52,14 +56,16 @@ export const Slider: React.FC<Props> = ({
         </button>
 
         <div className={styles.slide}>
-          <img
-            src={images[current]}
-            alt={`Slide ${current + 1}`}
-            className={cn(styles.slideImage, {
-              [styles.adjustedSecond]: current === 1,
-              [styles.adjustedThird]: current === 2,
-            })}
-          />
+          <NavLink to={categoryLinks[current]}>
+            <img
+              src={images[current]}
+              alt={`Slide ${current + 1}`}
+              className={cn(styles.slideImage, {
+                [styles.adjustedSecond]: current === 1,
+                [styles.adjustedThird]: current === 2,
+              })}
+            />
+          </NavLink>
         </div>
 
         <button className={styles.arrowRight} onClick={nextSlide}>

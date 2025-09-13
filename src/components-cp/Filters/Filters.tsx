@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Filters.module.scss';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
@@ -7,6 +7,7 @@ interface FiltersProps {
   visibleCount: number | 'all';
   setVisibleCount: (value: number | 'all') => void;
   setSortField: (field: 'age' | 'title' | 'price') => void;
+  setSortDirection: (dir: 'asc' | 'desc') => void;
 }
 
 const sortOptions = [
@@ -21,6 +22,7 @@ export const Filters: React.FC<FiltersProps> = ({
   visibleCount,
   setVisibleCount,
   setSortField,
+  setSortDirection,
 }) => {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,15 +32,21 @@ export const Filters: React.FC<FiltersProps> = ({
     | 'title'
     | 'price'
     | null;
+  const directionParam = searchParams.get('direction') as 'asc' | 'desc' | null;
+
   const [sortValue, setSortValue] = useState<'age' | 'title' | 'price'>(
     sortParam || 'age',
   );
-
+  const [directionValue, setDirectionValue] = useState<'asc' | 'desc'>(
+    directionParam || 'desc',
+  );
   const [sortOpen, setSortOpen] = useState(false);
   const [itemsOpen, setItemsOpen] = useState(false);
 
-  const sortRef = useRef<HTMLDivElement>(null);
-  const itemsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    setSortField(sortValue);
+    setSortDirection(directionValue);
+  }, [sortValue, directionValue, setSortField, setSortDirection]);
 
   const handleSortChange = (value: 'age' | 'title' | 'price') => {
     setSortValue(value);
@@ -54,9 +62,31 @@ export const Filters: React.FC<FiltersProps> = ({
       params.perPage = String(visibleCount);
     }
 
-    setSearchParams(params, { replace: true });
+    params.direction = directionValue;
 
+    setSearchParams(params, { replace: true });
     setSortOpen(false);
+  };
+
+  const toggleDirection = () => {
+    const newDir = directionValue === 'asc' ? 'desc' : 'asc';
+
+    setDirectionValue(newDir);
+    setSortDirection(newDir);
+
+    const params: Record<string, string> = {};
+
+    if (sortValue !== 'age') {
+      params.sort = sortValue;
+    }
+
+    if (visibleCount !== 'all') {
+      params.perPage = String(visibleCount);
+    }
+
+    params.direction = newDir;
+
+    setSearchParams(params, { replace: true });
   };
 
   const handleItemsChange = (opt: string) => {
@@ -74,18 +104,19 @@ export const Filters: React.FC<FiltersProps> = ({
       params.perPage = String(newCount);
     }
 
-    setSearchParams(params, { replace: true });
+    params.direction = directionValue;
 
+    setSearchParams(params, { replace: true });
     setItemsOpen(false);
   };
 
   return (
     <div className={styles.filters}>
+      {/* Сортировка */}
       <div className={styles.filterItem}>
         <span className={styles.filterName}>{t('filters.sort.title')}</span>
         <div
           className={`${styles.selectWrapper} ${sortOpen ? styles.open : ''}`}
-          ref={sortRef}
         >
           <div
             className={styles.selectDisplay}
@@ -113,12 +144,21 @@ export const Filters: React.FC<FiltersProps> = ({
       </div>
 
       <div className={styles.filterItem}>
+        <div
+          className={`${styles.directionToggle} ${directionValue}`}
+          onClick={toggleDirection}
+        >
+          <span className={styles.arrow}></span>
+        </div>
+      </div>
+
+      {/* Элементы на странице */}
+      <div className={styles.filterItem}>
         <span className={styles.filterName}>
           {t('filters.itemsPerPage.title')}
         </span>
         <div
           className={`${styles.selectWrapper} ${itemsOpen ? styles.open : ''}`}
-          ref={itemsRef}
         >
           <div
             className={styles.selectDisplay}

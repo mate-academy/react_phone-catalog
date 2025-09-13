@@ -1,30 +1,36 @@
-@import '../../assets/fonts/variables.scss';
+@import '../../assets/fonts/variables';
 
 .favoritesPage {
   @include grid-24($gap: 16px);
-  max-width: calc(24 * 32px + 23 * 16px);
-  margin: 0 auto;
-  gap: 0;
+
   position: relative;
-  min-height: calc(100vh - 64px - 96px);
+
   display: flex;
   flex-direction: column;
+  gap: 0;
+
+  max-width: calc(24 * 32px + 23 * 16px);
+  min-height: calc(100vh - 64px - 96px);
+  margin: 0 auto;
 
   .headerWrapper {
-    grid-column: 1 / -1;
     display: flex;
+    grid-column: 1 / -1;
     flex-direction: column;
     gap: 8px;
+
     margin-bottom: 40px;
   }
 
   .title {
-    @include desktop-tablet-H1-style;
+    @include desktop-tablet-h1-style;
+
     max-height: 56px;
   }
 
   .itemsCount {
-    color: var(--color-Secondary);
+    color: var(--color-secondary);
+
     @include body-text-style;
   }
 
@@ -35,23 +41,26 @@
   }
 
   .empty {
-    flex: 1;
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
-    text-align: center;
+
+    margin: 0;
 
     font-size: 25px;
-    color: var(--color-White);
-    margin: 0;
+    color: var(--color-white);
+    text-align: center;
   }
 }
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .favoritesPage {
+
     @include grid-12($gap: 16px);
-    max-width: 640px;
+
     gap: 0;
+    max-width: 640px;
 
     .headerWrapper {
       padding: 0 24px;
@@ -61,27 +70,30 @@
 
 @media (max-width: 639px) {
   .favoritesPage {
+
     @include grid-4($gap: 16px);
-    max-width: 320px;
+
     gap: 0;
+    max-width: 320px;
+
+       .favoritesGrid {
+      margin-bottom: 56px;
+    }
 
     .title {
-      @include mobile-H1-style;
+
+      @include mobile-h1-style;
+
       max-height: 41px;
     }
 
     .headerWrapper {
-      padding: 0 16px;
       margin-bottom: 32px;
+      padding: 0 16px;
     }
   }
 
-  .favoritesPage {
-    .favoritesGrid {
-      margin-bottom: 56px;
-    }
-  }
   .empty {
-    margin: 10px 0 60px 0;
+    margin: 10px 0 60px;
   }
 }

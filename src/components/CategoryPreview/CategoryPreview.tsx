@@ -1,43 +1,73 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import styles from './CategoryPreview.module.scss';
-import img1 from '../../assets/images/mobile-phones.png';
-import img2 from '../../assets/images/tablets.png';
-import img3 from '../../assets/images/accessories.png';
+import img1 from '../../../public/_old/v2/img/category-phones.png';
+import img2 from '../../../public/_old/v2/img/category-tablets.png';
+import img3 from '../../../public/_old/v2/img/category-accessories.png';
 
-interface CategoryPreviewProps {
-  phonesTitle: string;
-  tabletsTitle: string;
-  accessoriesTitle: string;
+interface RawProduct {
+  id: string;
+  category: string;
+  name: string;
 }
 
-export const CategoryPreview: React.FC<CategoryPreviewProps> = ({
-  phonesTitle,
-  tabletsTitle,
-  accessoriesTitle,
-}) => {
+export const CategoryPreview: React.FC = () => {
   const { t } = useTranslation();
+  const [phonesCount, setPhonesCount] = useState(0);
+  const [tabletsCount, setTabletsCount] = useState(0);
+  const [accessoriesCount, setAccessoriesCount] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [phonesRes, tabletsRes, accessoriesRes] = await Promise.all([
+          fetch('/api/phones.json'),
+          fetch('/api/tablets.json'),
+          fetch('/api/accessories.json'),
+        ]);
+
+        if (!phonesRes.ok || !tabletsRes.ok || !accessoriesRes.ok) {
+          throw new Error('Failed to fetch categories');
+        }
+
+        const [phones, tablets, accessories]: RawProduct[][] =
+          await Promise.all([
+            phonesRes.json(),
+            tabletsRes.json(),
+            accessoriesRes.json(),
+          ]);
+
+        setPhonesCount(phones.length);
+        setTabletsCount(tablets.length);
+        setAccessoriesCount(accessories.length);
+      } catch (err) {}
+    };
+
+    fetchData();
+  }, []);
 
   const categories = [
     {
       img: img1,
-      title: phonesTitle,
-      subtitle: t('home.categories.phonesSubtitle'),
-      bg: '#6D6474',
+      title: t('home.categories.phones'),
+      subtitle: t('home.categories.phonesSubtitle', { count: phonesCount }),
+      bg: '#F1E0B5',
       link: '/phones',
     },
     {
       img: img2,
-      title: tabletsTitle,
-      subtitle: t('home.categories.tabletsSubtitle'),
+      title: t('home.categories.tablets'),
+      subtitle: t('home.categories.tabletsSubtitle', { count: tabletsCount }),
       bg: '#8D8D92',
       link: '/tablets',
     },
     {
       img: img3,
-      title: accessoriesTitle,
-      subtitle: t('home.categories.accessoriesSubtitle'),
+      title: t('home.categories.accessories'),
+      subtitle: t('home.categories.accessoriesSubtitle', {
+        count: accessoriesCount,
+      }),
       bg: '#973D5F',
       link: '/accessories',
     },

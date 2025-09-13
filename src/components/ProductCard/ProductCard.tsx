@@ -6,21 +6,24 @@ import { useFavorites } from '../../contexts/FavoritesContext';
 import { useCart } from '../../contexts/CartContext';
 import { useTranslation } from 'react-i18next';
 
-interface Spec {
-  left: string;
-  right: string;
+interface SpecsType {
+  screen: string;
+  capacity: string;
+  ram: string;
 }
 
 interface ProductCardProps {
-  originalId: number;
+  originalId: string;
   image: string;
   title: string;
   price: string;
   oldPrice?: string;
-  specs: Spec[];
+  specs: SpecsType;
   isFirst?: boolean;
   className?: string;
   onAddToCart?: () => void;
+  isNew?: boolean;
+  onClick?: () => void;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -33,6 +36,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   isFirst = false,
   className = '',
   onAddToCart,
+  isNew = false,
 }) => {
   const { favorites, toggleFavorite } = useFavorites();
   const { cartItems, addToCart } = useCart();
@@ -49,7 +53,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         id: originalId,
         title,
         image,
-        price: Number(price.replace(/\$/g, '')),
+        price: Number(price.replace(/\$/g, '')) || 0,
         quantity: 1,
       });
     }
@@ -57,42 +61,45 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <Link
-      to={`/phones/${originalId}`}
+      to={`/phones/${originalId}`} // здесь снова жёстко "phones"
       className={`${styles.productCard} ${isFirst ? styles.firstCard : ''} ${className}`}
     >
       <div className={styles.productImageWrapper}>
-        <img src={image} alt={title} className={styles.productImage} />
+        <img
+          src={image || '/img/placeholder.png'}
+          alt={title || 'No title'}
+          className={styles.productImage}
+        />
       </div>
 
       <div
         className={`${styles.titleWrapper} ${isFirst ? styles['titleWrapper--large'] : ''}`}
       >
-        <h3 className={styles.productTitle}>{title}</h3>
+        <h3 className={styles.productTitle}>{title || 'No title'}</h3>
       </div>
 
       <div className={styles.priceWrapper}>
-        <span className={styles.productPrice}>{price}</span>
-        {oldPrice && <span className={styles.oldPrice}>{oldPrice}</span>}
+        <span className={styles.productPrice}>{price || '$0'}</span>
+        {oldPrice && !isNew && (
+          <span className={styles.oldPrice}>{oldPrice}</span>
+        )}
       </div>
 
       <div className={styles.divider}></div>
 
       <ul className={styles.specList}>
-        {specs.map(({ left, right }, i) => {
-          const key = left.charAt(0).toLowerCase() + left.slice(1);
-          const translated = t(`specs.${key}`) || left;
-          const displayLeft =
-            key === 'ram'
-              ? translated.toUpperCase()
-              : translated.charAt(0).toUpperCase() + translated.slice(1);
-
-          return (
-            <li key={i} className={styles.specItem}>
-              <div className={styles.specLeft}>{displayLeft}</div>
-              <div className={styles.specRight}>{right}</div>
-            </li>
-          );
-        })}
+        <li className={styles.specItem}>
+          <div className={styles.specLeft}>Screen</div>
+          <div className={styles.specRight}>{specs.screen || '-'}</div>
+        </li>
+        <li className={styles.specItem}>
+          <div className={styles.specLeft}>Capacity</div>
+          <div className={styles.specRight}>{specs.capacity || '-'}</div>
+        </li>
+        <li className={styles.specItem}>
+          <div className={styles.specLeft}>RAM</div>
+          <div className={styles.specRight}>{specs.ram || '-'}</div>
+        </li>
       </ul>
 
       <div className={styles.productActions}>

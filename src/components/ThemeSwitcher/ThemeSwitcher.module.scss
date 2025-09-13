@@ -1,8 +1,8 @@
 .switcher {
   position: fixed;
+  z-index: 1000;
   top: 72px;
   right: 150px;
-  z-index: 1000;
 }
 
 .toggle {
@@ -12,37 +12,42 @@
   height: 24px;
 
   input {
-    opacity: 0;
     width: 0;
     height: 0;
+    opacity: 0;
   }
 
   .slider {
-    position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--color-Surface2);
-    transition: 0.4s;
+
+    position: absolute;
+    inset: 0;
+
     border-radius: 24px;
 
+    background-color: var(--color-surface2);
+
+    transition: 0.4s;
+
     &::before {
-      position: absolute;
       content: '';
-      height: 20px;
-      width: 20px;
-      left: 2px;
+
+      position: absolute;
       bottom: 2px;
-      background-color: var(--color-Black);
-      transition: 0.4s;
+      left: 2px;
+
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
+
+      background-color: var(--color-black);
+
+      transition: 0.4s;
     }
   }
 
   input:checked + .slider {
-    background-color: var(--color-Accent);
+    background-color: var(--color-accent);
   }
 
   input:checked + .slider::before {
@@ -53,21 +58,25 @@
 /* Спрятанный текст для скринридеров */
 .visuallyHidden {
   position: absolute !important;
+
+  overflow: hidden !important;
+
   width: 1px !important;
   height: 1px !important;
-  padding: 0 !important;
   margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
+  padding: 0 !important;
   border: 0 !important;
+
+  white-space: nowrap !important;
+
+  clip: rect(0, 0, 0, 0) !important;
 }
 
 @media (max-width: 1199px) and (min-width: 640px) {
   .switcher {
+    z-index: 1000;
     top: 57px;
     right: 120px;
-    z-index: 1000;
   }
   .toggle {
     width: 30px;
@@ -75,8 +84,8 @@
 
     .slider {
       &::before {
-        height: 10px;
         width: 10px;
+        height: 10px;
       }
     }
 
@@ -88,9 +97,9 @@
 
 @media (max-width: 639px) {
   .switcher {
+    z-index: 1000;
     top: 56px;
     right: 98px;
-    z-index: 1000;
   }
   .toggle {
     width: 20px;
@@ -98,10 +107,10 @@
 
     .slider {
       &::before {
-        height: 8px;
-        width: 8px;
-        left: 1px;
         bottom: 1px;
+        left: 1px;
+        width: 8px;
+        height: 8px;
       }
     }
 

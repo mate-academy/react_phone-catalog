@@ -17,20 +17,19 @@
     "favorites": "Ulubione",
     "cart": "Koszyk"
   },
-  "home": {
-    "heroTitle": "Witamy w sklepie Nice Gadgets!",
-    "heroSubtitle": "Znajdź idealny gadżet dla siebie",
-    "brandNewModels": "Nowe modele",
-    "hotPrices": "Gorące oferty",
-    "shopByCategory": "Przeglądaj kategorie",
-    "categories": {
-      "phones": "Telefony komórkowe",
-      "phonesSubtitle": "95 modeli",
-      "tablets": "Tablety",
-      "tabletsSubtitle": "24 modele",
-      "accessories": "Akcesoria",
-      "accessoriesSubtitle": "100 modeli"
-    }
+"home": {
+  "heroTitle": "Witamy w sklepie Nice Gadgets!",
+  "brandNewModels": "Nowe modele",
+  "hotPrices": "Gorące ceny",
+  "shopByCategory": "Kup według kategorii",
+  "categories": {
+    "phones": "Telefony komórkowe",
+    "phonesSubtitle": "{{count}} modeli",
+    "tablets": "Tablety",
+    "tabletsSubtitle": "{{count}} modeli",
+    "accessories": "Akcesoria",
+    "accessoriesSubtitle": "{{count}} modeli"
+  }
 },
 "product": {
     "inCart": "W koszyku",
@@ -55,7 +54,7 @@
       "cheapest": "Najtańsze"
     },
     "itemsPerPage": {
-      "title": "Ilość produktów na stronie",
+      "title": "Produktów na str",
       "all": "Wszystkie"
     }
   },
@@ -148,5 +147,13 @@
   "error": {
   "somethingWentWrong": "Coś poszło nie tak",
   "retry": "Odśwież"
-}
+},
+  "tabletsPage": {
+    "title": "Tablety",
+    "modelsCount": "{{count}} modeli"
+  },
+    "accessoriesPage": {
+    "title": "Akcesoria",
+    "modelsCount": "{{count}} modeli"
+  }
 }
