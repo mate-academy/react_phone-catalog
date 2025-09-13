@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "category": "phones",
+    "itemId": "apple-iphone-14-pro-128gb-silver-(mq023)",
+    "name": "Apple iPhone 14 Pro 128GB Silver (MQ023)",
+    "price": 999,
+    "screen": "6.1' OLED",
+    "capacity": "128GB",
+    "color": "silver",
+    "ram": "6GB",
+    "year": 2020,
+    "image": "/img/brandNewModels/iphone-14-white.png"
+  },
+  { "id": 2,
+  "category": "phones",
+  "itemId": "apple-iphone-14-pro-128gb-deep-purple-(mq0g3)",
+  "name": "Apple iPhone 14 Pro 128GB Deep Purple (MQ0G3)",
+  "price": 999,
+  "screen": "6.1' OLED",
+  "capacity": "128GB",
+  "color": "deep-purple",
+  "ram": "6GB",
+  "year": 2020,
+  "image": "/img/brandNewModels/iphone-14-deep-purple.png"
+  },
+  {
+    "id": 3,
+    "category": "phones",
+    "itemId": "apple-iphone-14-pro-128gb-gold-(mq083)",
+    "name": "Apple iPhone 14 Pro 128GB Gold (MQ083)",
+    "price": 999,
+    "screen": "6.1' OLED",
+    "capacity": "128GB",
+    "color": "silver",
+    "ram": "6GB",
+    "year": 2020,
+    "image": "/img/brandNewModels/iphone-14-gold.png"
+  },
+  { "id": 4,
+    "category": "phones",
+    "itemId": "apple-iphone-14-plus-128gb-product-red-(mq513)",
+    "name": "Apple iPhone 14 Plus 128GB PRODUCT Red (MQ513)",
+    "price": 859,
+    "screen": "6.7' OLED",
+    "capacity": "128GB",
+    "color": "silver",
+    "ram": "6GB",
+    "year": 2020,
+    "image": "/img/brandNewModels/iphone-14-plus-red.png"
+  }
+]
+
