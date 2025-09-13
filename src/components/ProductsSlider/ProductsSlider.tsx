@@ -93,8 +93,8 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   /* eslint-disable @typescript-eslint/indent */
   const visibleProducts = products.length
     ? Array.from(
-      { length: Math.min(visibleCount, products.length) },
-      (_, i) => products[(startIndex + i) % products.length],
+        { length: Math.min(visibleCount, products.length) },
+        (_, i) => products[(startIndex + i) % products.length],
       )
     : [];
 
@@ -152,7 +152,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
           {visibleProducts.map(product => (
             <ProductCard
               key={product.id}
-              category={product.category} // обязательно передаём категорию
+              category={product.category}
               originalId={product.id}
               image={product.images[0]}
               title={product.name}
