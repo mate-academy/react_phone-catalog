@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
-import productsSlider from './ProductsSlider.module.scss';
+import React, { useEffect, useState } from 'react';
+import './ProductsSlider.scss';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import { ProductCard } from '../../../shared/ProductCard';
 import { getSortedProducts } from '../../../../utils/sortProducts';
-import { Product } from 'types/Product';
+import { ProductPreview } from 'types/ProductPreview';
 import { BlockTitle } from 'types/BlockTitle';
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 type Props = {
-  products: Product[];
+  products: ProductPreview[];
   title: BlockTitle;
-  sortBy: string;
+  sortBy?: string;
   showDiscount?: boolean;
 };
 
@@ -23,58 +27,109 @@ export const ProductsSlider: React.FC<Props> = ({
   const [swiperInstance, setSwiperInstance] = useState<SwiperClass | null>(
     null,
   );
-  const [canSlidePrev, setCanSlidePrev] = useState(false);
-  const [canSlideNext, setCanSlideNext] = useState(false);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
-  const updateButtonsState = (swiper: SwiperClass) => {
-    setCanSlidePrev(!swiper.isBeginning);
-    setCanSlideNext(!swiper.isEnd);
+  const sortedProducts = getSortedProducts(products, sortBy || '');
+
+  const syncBeginEnd = (inst: SwiperClass | null) => {
+    if (!inst) {
+      return;
+    }
+
+    inst.update();
+    setIsBeginning(Boolean(inst.isBeginning));
+    setIsEnd(Boolean(inst.isEnd));
   };
 
-  const handleSwiperInit = (swiper: SwiperClass) => {
-    setSwiperInstance(swiper);
-    updateButtonsState(swiper);
+  const handleOnSwiper = (inst: SwiperClass) => {
+    setSwiperInstance(inst);
+
+    requestAnimationFrame(() => syncBeginEnd(inst));
+
+    try {
+      const ro = new ResizeObserver(() => {
+        syncBeginEnd(inst);
+      });
+
+      ro.observe(inst.el);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-param-reassign
+      (inst as any).__ro = ro;
+    } catch (e) {
+      return;
+    }
   };
 
-  const sortedProducts = getSortedProducts(products, sortBy);
+  const handleSlideChange = (inst: SwiperClass) => {
+    setIsBeginning(Boolean(inst.isBeginning));
+    setIsEnd(Boolean(inst.isEnd));
+  };
+
+  const handleImagesReady = (inst: SwiperClass) => {
+    inst.update();
+    setIsBeginning(Boolean(inst.isBeginning));
+    setIsEnd(Boolean(inst.isEnd));
+  };
+
+  useEffect(() => {
+    return () => {
+      if (swiperInstance) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const ro = (swiperInstance as any).__ro;
+
+        if (ro && typeof ro.disconnect === 'function') {
+          ro.disconnect();
+        }
+      }
+    };
+  }, [swiperInstance]);
 
   return (
     <>
-      <div className={productsSlider['products-slider']}>
-        <div className={productsSlider['products-slider__header']}>
-          <h2 className={productsSlider['products-slider__subtitle']}>
-            {title}
-          </h2>
-          <div className={productsSlider['products-slider__container']}>
+      <div className="products-slider">
+        <div className="products-slider__header">
+          <h2 className="products-slider__subtitle">{title}</h2>
+          <div className="products-slider__container">
             <button
-              className={`${productsSlider.arrow} ${productsSlider['arrow-left']}`}
-              onClick={() => swiperInstance?.slidePrev()}
-              disabled={canSlidePrev}
+              className={`arrow arrow-left ${isBeginning ? 'arrow-left-disabled' : ''}`}
+              onClick={() => {
+                if (!swiperInstance) {
+                  return;
+                }
+
+                swiperInstance.slidePrev();
+                setIsBeginning(Boolean(swiperInstance.isBeginning));
+                setIsEnd(Boolean(swiperInstance.isEnd));
+              }}
             />
             <button
-              className={`${productsSlider.arrow} ${productsSlider['arrow-right']}`}
-              onClick={() => swiperInstance?.slideNext()}
-              disabled={canSlideNext}
+              className={`arrow arrow-right ${isEnd ? 'arrow-right-disabled' : ''}`}
+              onClick={() => {
+                if (!swiperInstance) {
+                  return;
+                }
+
+                swiperInstance.slideNext();
+                setIsBeginning(Boolean(swiperInstance.isBeginning));
+                setIsEnd(Boolean(swiperInstance.isEnd));
+              }}
             />
           </div>
         </div>
-        <div className={productsSlider['swiper-container']}>
+        <div className="swiper-container">
           <Swiper
-            modules={[Pagination, Navigation]}
+            modules={[Navigation]}
             spaceBetween={16}
             slidesPerView={'auto'}
-            onSwiper={handleSwiperInit}
-            onSlideChange={swiper => updateButtonsState(swiper)}
             centeredSlides={false}
-            navigation={{
-              nextEl: null,
-              prevEl: null,
-            }}
-            pagination={{
-              clickable: true,
-              el: '.products-slider__container',
-            }}
-            className={productsSlider['my-swiper']}
+            onSwiper={handleOnSwiper}
+            onSlideChange={handleSlideChange}
+            onResize={inst => syncBeginEnd(inst)}
+            onAfterInit={handleImagesReady}
+            observer={true}
+            observeParents={true}
+            watchOverflow={true}
+            className="my-swiper"
           >
             {sortedProducts.slice(0, 10).map(product => (
               <SwiperSlide key={product.id}>

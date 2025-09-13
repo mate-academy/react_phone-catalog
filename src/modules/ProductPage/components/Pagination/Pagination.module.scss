@@ -1,0 +1,94 @@
+@import '/src/styles/vars';
+@import '/src/styles/mixins.module';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: $main-white;
+    border: 1px solid $others-gray;
+    cursor: pointer;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    &--active {
+      background-color: $main-black;
+      color: $main-white;
+    }
+
+    &--prev {
+      margin-right: 8px;
+
+      &:not(&--disabled):hover {
+        border: 1px solid $main-black;
+      }
+
+      &--disabled {
+        border: 1px solid $secondary-gray;
+        cursor: default;
+      }
+    }
+
+    &--next {
+      margin-left: 8px;
+
+      &--disabled {
+        border: 1px solid $secondary-gray;
+        cursor: default;
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: $main-white;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    align-self: center;
+
+    &--prev {
+      background-image: url('/img/icons/arrows/arrow-prev.svg');
+
+      &--disabled {
+        background-image: url('/img/icons/arrows/arrow-prev-disabled.svg');
+      }
+    }
+
+    &--next {
+      background-image: url('/img/icons/arrows/arrow-next.svg');
+
+      &--disabled {
+        background-image: url('/img/icons/arrows/arrow-next-disabled.svg');
+      }
+    }
+  }
+}

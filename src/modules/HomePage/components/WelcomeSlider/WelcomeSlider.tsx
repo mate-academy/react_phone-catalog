@@ -6,6 +6,7 @@ export const WelcomeSlider: React.FC = () => {
   return (
     <>
       <div>
+        <h1 className={welcomeSlider.h1}>Product Catalog</h1>
         <h1 className={welcomeSlider.title}>Welcome to Nice Gadgets store!</h1>
         <PicturesSlider />
       </div>

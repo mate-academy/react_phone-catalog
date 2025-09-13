@@ -1,20 +1,30 @@
-import { Product } from 'types/Product';
+import { ProductPreview } from 'types/ProductPreview';
 import productCard from './ProductCard.module.scss';
+import { Link } from 'react-router-dom';
+import { Buttons } from '../../../components/Buttons';
 
 type Props = {
-  product: Product;
+  product: ProductPreview;
   showDiscount?: boolean;
 };
 export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
+  const pathToProduct = `/${product.category}/${product.itemId}`;
+
   return (
     <div className={productCard['product-card']}>
       <div className={productCard.wrapper}>
-        <img
-          src={product.image}
-          alt={`${product.name} image`}
-          className={productCard.image}
-        />
-        <span className={productCard.name}>{product.name}</span>
+        <div className={productCard.image__wrapper}>
+          <Link to={pathToProduct}>
+            <img
+              src={product.image}
+              alt={`${product.name} image`}
+              className={productCard.image}
+            />
+          </Link>
+        </div>
+        <Link to={pathToProduct} className={productCard.name}>
+          {product.name}
+        </Link>
         <div className={productCard.price__wrapper}>
           <span
             className={productCard['full-price']}
@@ -51,12 +61,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
             </li>
           </ul>
         </div>
-        <div className={productCard['buttons-wrapper']}>
-          <button className={productCard['button-add-to-cart']}>
-            Add to cart
-          </button>
-          <button className={productCard['button-to-favourites']} />
-        </div>
+        <Buttons product={product} />
       </div>
     </div>
   );

@@ -32,7 +32,6 @@
   @include on-big-screen {
     max-width: 1200px;
     margin-inline: auto;
-    padding-inline: 152px;
   }
 }
 
@@ -49,5 +48,12 @@
 
   @include on-desktop {
     --columns: 24;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $effect-duration;
+  &:hover {
+    #{$_property}: $_toValue;
   }
 }

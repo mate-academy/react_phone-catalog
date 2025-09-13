@@ -1,113 +1,71 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import productPage from './ProductPage.module.scss';
-import { CurrentCategory } from '../../types/CurrentCategory';
 import { ProductsContext } from '../../context/ProductsContext';
-import { getCategoryProduct, getPhones } from '../../api/getProducts';
+import { getAllProducts } from '../../api/getProducts';
 import { Breadcrumbs } from '../../modules/shared/Breadcrumbs';
+import { ProductsList } from '../shared/ProductsList';
 import { CategoryContext } from '../../context/CategoryContext';
+import { Loader } from '../../components/Loader';
+import { useSortedProducts } from '../../hooks/useSortedProducts';
+import { Pagination } from './components/Pagination';
 
 export const ProductPage: React.FC = () => {
-  const { pathname } = useLocation();
-  const [currentProduct, setCurrentProduct] = useState<CurrentCategory | null>(
-    null,
-  );
-  const { categoryProducts, setCategoryProducts } = useContext(ProductsContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [sortDropdownIsOpen, setSortDropdownIsOpen] = useState(false);
+  const [itemsDropdownIsOpen, setItemsDropdownIsOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortBy = searchParams.get('sort') || 'age';
+  const currentPage = searchParams.get('page') || '1';
+  const perPage = searchParams.get('perPage') || 'all';
+
+  const { allProducts, setAllProducts } = useContext(ProductsContext);
 
   const { currentCategory } = useContext(CategoryContext);
 
-  useEffect(() => {
-    const categories = ['phones', 'tablets', 'accessories'];
+  const currentCategoryProducts = allProducts?.filter(
+    product => product.category === currentCategory,
+  );
 
-    const found = categories.find(category => pathname.includes(category));
+  const filteredCategoryProducts = useSortedProducts(currentCategoryProducts);
 
-    if (found) {
-      setCurrentProduct(found as CurrentCategory);
-    }
-  }, [currentProduct, pathname]);
+  const isAll = perPage === 'all';
 
-  const sortOptions = ['Newest', 'Alphabetically', 'Cheapest'];
+  const itemsPerPage = isAll
+    ? filteredCategoryProducts.length
+    : Number(perPage) || 0;
 
-  // getCategoryProduct(currentProduct).then(response => console.log(response));
+  const current = Number(currentPage) || 1;
 
-  // getPhones().then(response => console.log(response));
+  const startIndex = (current - 1) * itemsPerPage;
+  const endIndex = isAll
+    ? filteredCategoryProducts.length
+    : startIndex + itemsPerPage;
 
-  useEffect(() => {
-    if (currentProduct) {
-      console.log('Fetching category:', currentProduct);
+  const totalPages = Math.ceil(filteredCategoryProducts.length / itemsPerPage);
 
-      getCategoryProduct(currentProduct)
-        .then(response => {
-          console.log('response', response);
+  const visibleProducts = filteredCategoryProducts.slice(startIndex, endIndex);
 
-          setCategoryProducts(response);
-        })
-        .catch(() => {
-          console.log('ok');
-          'error';
-        })
-        .finally(() => {
-          // eslint-disable-next-line no-console
-          console.log('Products fetched successfully');
-        });
-    }
-  }, [currentProduct]);
-
-  function wait(delay: number) {
-    return new Promise(resolve => {
-      setTimeout(resolve, delay);
-    });
-  }
-
-  function request<T>(path: string): Promise<T> {
-    return wait(300)
-      .then(() => fetch(path))
-      .then(response => {
-        if (!response.ok) {
-          throw new Error();
-        }
-
-        return response.json() as Promise<T>;
-      });
-  }
+  const sortOptions = [
+    { value: 'age', label: 'Newest' },
+    { value: 'title', label: 'Alphabetically' },
+    { value: 'price', label: 'Cheapest' },
+  ];
+  const itemsOnPage = ['32', '16', '8', '4', 'all'];
 
   useEffect(() => {
-    request('api/phones.json')
-      .then(response => {
-        // setPhoneItems(response as Phone[]);
-        console.log('ok');
-      })
+    setIsLoading(true);
+    getAllProducts()
+      .then(setAllProducts)
       .catch(() => {
-        alert('Error fetching phones');
+        'error';
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-  }, []);
+  }, [setAllProducts]);
 
-  console.log(categoryProducts);
-
-  // useEffect(() => {
-  //   if (currentProduct) {
-  //     console.log('Fetching category:', currentProduct);
-  //     const fetchData = async () => {
-  //       try {
-  //         console.log('Fetching category:', currentProduct);
-
-  //         const response = await getCategoryProduct(currentProduct);
-
-  //         setCategoryProducts(response);
-  //       } catch (error) {
-  //         console.error('Error fetching products:', error);
-  //       } finally {
-  //         console.log('Products fetched successfully');
-  //       }
-
-  //       fetchData();
-  //     };
-  //   }
-  // }, [currentProduct]);
-
-
-
-  function setTitle(product: CurrentCategory) {
+  function setTitle(product: string) {
     if (!product) {
       return '';
     }
@@ -119,37 +77,196 @@ export const ProductPage: React.FC = () => {
     return product[0].toUpperCase() + product.slice(1);
   }
 
-  const title = setTitle(currentProduct);
+  const title = currentCategory ? setTitle(currentCategory) : '';
+
+  const handleSortDropdown = () => {
+    setSortDropdownIsOpen(!sortDropdownIsOpen);
+    setItemsDropdownIsOpen(false);
+  };
+
+  const handleItemsDropdown = () => {
+    setItemsDropdownIsOpen(!itemsDropdownIsOpen);
+    setSortDropdownIsOpen(false);
+  };
+
+  const handleOptionClick = (value: string) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('sort', value);
+    setSearchParams(newParams);
+
+    setSortDropdownIsOpen(false);
+  };
+
+  const handleItemsClick = (value: string) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('perPage', value);
+    setSearchParams(newParams);
+
+    setSortDropdownIsOpen(false);
+    setItemsDropdownIsOpen(false);
+  };
+
+  const handlePerPageChange = (page: number) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('page', String(page));
+    setSearchParams(newParams);
+  };
 
   return (
-    <div className={productPage['product-page']}>
-      <Breadcrumbs />
-      <div className={productPage['product-page__wrapper']}>
-        <h2 className={productPage['product-page__title']}>{title}</h2>
-        <span className={productPage['product-page__quantity']}>95 models</span>
-      </div>
-      <div className={productPage.sort}>
-        <div className={productPage.sort__by}>
-          <label htmlFor="sort-by">
-            {' '}
-            Sort by
-            <select
-              name=""
-              id="sort-by"
-              className={productPage['product-page__select']}
-            >
-              {sortOptions.map(option => (
-                <option
-                  key={option}
-                  className={productPage['product-page__option']}
-                >
-                  {option}
-                </option>
-              ))}
-            </select>
-          </label>
+    <>
+      <div className={productPage['product-page']}>
+        <Breadcrumbs />
+        <div className={productPage['product-page__wrapper']}>
+          <h2 className={productPage['product-page__title']}>{title}</h2>
+          {!isLoading && (
+            <span className={productPage['product-page__quantity']}>
+              {currentCategoryProducts.length > 0 &&
+                `${currentCategoryProducts.length} models`}
+            </span>
+          )}
         </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className={productPage['product-page__content']}>
+            {currentCategoryProducts.length !== 0 && (
+              <div className={productPage['product-page__filters']}>
+                <div className={productPage['product-page__sort-container']}>
+                  <label
+                    htmlFor="sort-by"
+                    className={
+                      productPage['product-page__sort-container__name']
+                    }
+                  >
+                    Sort by
+                  </label>
+                  <div className={productPage['product-page__dropdown']}>
+                    <button
+                      className={productPage['product-page__dropdown__trigger']}
+                      onClick={handleSortDropdown}
+                      name="sort-by"
+                    >
+                      {sortOptions.find(o => o.value === sortBy)?.label}
+                      {sortDropdownIsOpen ? (
+                        <img
+                          src="/img/icons/arrows/arrow-top-disabled.svg"
+                          alt=""
+                          className={
+                            productPage['product-page__dropdown__trigger__icon']
+                          }
+                        />
+                      ) : (
+                        <img
+                          src="/img/icons/arrows/arrow-down.svg"
+                          alt=""
+                          className={
+                            productPage['product-page__dropdown__trigger__icon']
+                          }
+                        />
+                      )}
+                    </button>
+                    {sortDropdownIsOpen && (
+                      <ul
+                        className={productPage['product-page__dropdown__list']}
+                      >
+                        {sortOptions.map(option => (
+                          <li
+                            key={option.value}
+                            className={
+                              productPage['product-page__dropdown__item']
+                            }
+                            onClick={() => handleOptionClick(option.value)}
+                          >
+                            {option.label}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+                <div className={productPage['product-page__sort-container']}>
+                  <label
+                    htmlFor="items-on-page"
+                    className={
+                      productPage['product-page__sort-container__name']
+                    }
+                  >
+                    Items on page
+                  </label>
+                  <div className={productPage['product-page__dropdown']}>
+                    <button
+                      className={productPage['product-page__dropdown__trigger']}
+                      onClick={handleItemsDropdown}
+                      name="items-on-page"
+                    >
+                      {perPage}
+                      {sortDropdownIsOpen ? (
+                        <img
+                          src="/img/icons/arrows/arrow-top-disabled.svg"
+                          alt=""
+                          className={
+                            productPage['product-page__dropdown__trigger__icon']
+                          }
+                        />
+                      ) : (
+                        <img
+                          src="/img/icons/arrows/arrow-down.svg"
+                          alt=""
+                          className={
+                            productPage['product-page__dropdown__trigger__icon']
+                          }
+                        />
+                      )}
+                    </button>
+                    {itemsDropdownIsOpen && (
+                      <ul
+                        className={productPage['product-page__dropdown__list']}
+                      >
+                        {itemsOnPage.map(option => (
+                          <li
+                            key={option}
+                            className={
+                              productPage['product-page__dropdown__item']
+                            }
+                            onClick={() => handleItemsClick(option)}
+                          >
+                            {option}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+            {currentCategoryProducts.length === 0 ? (
+              <div className={productPage['product-page__error-message']}>
+                <h2
+                  className={productPage['product-page__error-message__text']}
+                >{`There are no ${currentCategory} yet`}</h2>
+                <img
+                  src="/img/product-not-found.png"
+                  alt=""
+                  className={productPage['product-page__error-message__image']}
+                />
+              </div>
+            ) : (
+              <>
+                <ProductsList products={visibleProducts ?? []} />
+
+                <Pagination
+                  totalPages={totalPages}
+                  currentPage={+currentPage}
+                  onPageChange={handlePerPageChange}
+                />
+              </>
+            )}
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 };

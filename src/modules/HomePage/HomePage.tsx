@@ -5,6 +5,7 @@ import { ProductsContext } from '../../context/ProductsContext';
 import { ProductsSlider } from './components/ProductsSlider';
 import { getAllProducts } from '../../api/getProducts';
 import { BlockTitle } from '../../types/BlockTitle';
+import { Link } from 'react-router-dom';
 
 export const HomePage: React.FC = () => {
   const { allProducts, setAllProducts } = useContext(ProductsContext);
@@ -20,8 +21,6 @@ export const HomePage: React.FC = () => {
         console.log('Products fetched successfully');
       });
   }, [setAllProducts]);
-
-  console.log(allProducts);
 
   const gadgetsCount = (category: string) => {
     return allProducts.filter(product => product.category === category).length;
@@ -43,61 +42,58 @@ export const HomePage: React.FC = () => {
         <h2 className={homePage.subtitle}>Shop by category</h2>
         <ul className={homePage.categories__list}>
           <li className={homePage.categories__item}>
-            <div
+            <Link
+              to="/phones"
               className={`${homePage['image-wrapper']} ${homePage['image-wrapper--phones']}`}
             >
-              <a href="/phones" className={homePage.link}>
-                <img
-                  src={'img/category-phones.webp'}
-                  alt="Category Phones"
-                  className={`${homePage.image} ${homePage['image--phones']}`}
-                />
-              </a>
-            </div>
-            <a href="/phones" className={homePage['link-category-info']}>
+              <img
+                src={'img/category-phones.webp'}
+                alt="Category Phones"
+                className={`${homePage.image} ${homePage['image--phones']}`}
+              />
+            </Link>
+            <Link to="/phones" className={homePage['link-category-info']}>
               <span className={homePage['category-name']}>Mobile phones</span>
               <span
                 className={homePage['category-quantity']}
               >{`${gadgetsCount('phones')} models`}</span>
-            </a>
+            </Link>
           </li>
           <li className={homePage.categories__item}>
-            <div
+            <Link
+              to="/tablets"
               className={`${homePage['image-wrapper']} ${homePage['image-wrapper--tablets']}`}
             >
-              <a href="/tablets" className={homePage.link}>
-                <img
-                  src={'img/category-tablets.png'}
-                  alt="Category Tablets"
-                  className={`${homePage.image} ${homePage['image--tablets']}`}
-                />
-              </a>
-            </div>
-            <a href="/tablets" className={homePage['link-category-info']}>
+              <img
+                src={'img/category-tablets.png'}
+                alt="Category Tablets"
+                className={`${homePage.image} ${homePage['image--tablets']}`}
+              />
+            </Link>
+            <Link to="/tablets" className={homePage['link-category-info']}>
               <span className={homePage['category-name']}>Tablets</span>
               <span
                 className={homePage['category-quantity']}
               >{`${gadgetsCount('tablets')} models`}</span>
-            </a>
+            </Link>
           </li>
           <li className={homePage.categories__item}>
-            <div
+            <Link
+              to="/accessories"
               className={`${homePage['image-wrapper']} ${homePage['image-wrapper--accessories']}`}
             >
-              <a href="/accessories" className={homePage.link}>
-                <img
-                  src={'img/category-accessories.png'}
-                  alt="Category Accessories"
-                  className={`${homePage.image} ${homePage['image--accessories']}`}
-                />
-              </a>
-            </div>
-            <a href="/accessories" className={homePage['link-category-info']}>
-              <span className={homePage['category-name']}>Mobile phones</span>
+              <img
+                src={'img/category-accessories.png'}
+                alt="Category Accessories"
+                className={`${homePage.image} ${homePage['image--accessories']}`}
+              />
+            </Link>
+            <Link to="/accessories" className={homePage['link-category-info']}>
+              <span className={homePage['category-name']}>Accessories</span>
               <span
                 className={homePage['category-quantity']}
               >{`${gadgetsCount('accessories')} models`}</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,19 +1,14 @@
 import { createContext, useMemo, useState } from 'react';
-import { Product } from 'types/Product';
-import { ProductData } from 'types/ProductData';
+import { ProductPreview } from 'types/ProductPreview';
 
 type ProductsContextType = {
-  allProducts: Product[];
-  setAllProducts: (products: Product[]) => void;
-  categoryProducts: ProductData[];
-  setCategoryProducts: (products: ProductData[]) => void;
+  allProducts: ProductPreview[];
+  setAllProducts: (products: ProductPreview[]) => void;
 };
 
 export const ProductsContext = createContext<ProductsContextType>({
   allProducts: [],
   setAllProducts: () => {},
-  categoryProducts: [],
-  setCategoryProducts: () => {},
 });
 
 type Props = {
@@ -21,17 +16,13 @@ type Props = {
 };
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
-  const [allProducts, setAllProducts] = useState<Product[]>([]);
-  const [categoryProducts, setCategoryProducts] = useState<ProductData[]>([]);
-
+  const [allProducts, setAllProducts] = useState<ProductPreview[]>([]);
   const value = useMemo(
     () => ({
       allProducts,
       setAllProducts,
-      categoryProducts,
-      setCategoryProducts,
     }),
-    [allProducts, categoryProducts],
+    [allProducts],
   );
 
   return (

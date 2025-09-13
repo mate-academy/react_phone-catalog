@@ -1,16 +1,11 @@
-import { Product } from 'types/Product';
+import { ProductPreview } from 'types/ProductPreview';
 import { client } from '../utils/fetchClient';
-import { ProductData } from 'types/ProductData';
-import { CurrentCategory } from 'types/CurrentCategory';
+import { ProductDetails } from 'types/ProductDetails';
 
 export const getAllProducts = () => {
-  return client.get<Product[]>('api/products.json');
+  return client.get<ProductPreview[]>('api/products.json');
 };
 
-export const getPhones = () => {
-  return client.get<ProductData[]>('api/phones.json');
-};
-
-export const getCategoryProduct = (category: CurrentCategory) => {
-  return client.get<ProductData[]>(`api/${category}.json`);
+export const getCategoryProduct = (category: string) => {
+  return client.get<ProductDetails[]>(`api/${category}.json`);
 };

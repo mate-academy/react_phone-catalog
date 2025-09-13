@@ -1,32 +1,67 @@
+import { useContext } from 'react';
 import breadcrumbs from './Breadcrumbs.module.scss';
-import { useLocation } from 'react-router-dom';
+import { CategoryContext } from '../../../context/CategoryContext';
+import { Back } from './components/Back';
+import { Link, useParams } from 'react-router-dom';
+import { ProductsContext } from '../../../context/ProductsContext';
 
 export const Breadcrumbs: React.FC = () => {
-  const { pathname } = useLocation();
-  const categories = ['phones', 'tablets', 'accessories'];
-  const currentCategory = categories.find(category =>
-    pathname.includes(category),
-  );
+  const { currentCategory } = useContext(CategoryContext);
+
   const currentCategoryNormalized = currentCategory
     ? currentCategory[0].toUpperCase() + currentCategory.slice(1)
     : '';
 
+  const isCart = currentCategory === 'cart';
+
+  const params = useParams();
+  const { productId } = params;
+
+  const { allProducts } = useContext(ProductsContext);
+
+  const product = allProducts.find(p => p.itemId === productId);
+
   return (
     <div className={breadcrumbs.breadcrumbs}>
-      <a href="/" className={breadcrumbs.breadcrumbs__link}>
-        <img
-          src="/img/icons/home.svg"
-          alt="Home icon"
-          className={breadcrumbs.breadcrumbs__icon}
-        />
-      </a>
-      <img
-        src="/img/icons/arrows/arrow-right-breadcrumbs.svg"
-        alt="Arrow icon"
-      />
-      <span className={breadcrumbs.breadcrumbs__category}>
-        {currentCategoryNormalized}
-      </span>
+      {isCart ? (
+        <Back />
+      ) : (
+        <>
+          <Link to="/" className={breadcrumbs.breadcrumbs__link}>
+            <img
+              src="/img/icons/home.svg"
+              alt="Home icon"
+              className={breadcrumbs.breadcrumbs__icon}
+            />
+          </Link>
+          <img
+            src="/img/icons/arrows/arrow-right-breadcrumbs.svg"
+            alt="Arrow icon"
+          />
+          <Link
+            to={`/${product?.category}`}
+            className={`${breadcrumbs.breadcrumbs__category} ${productId ? breadcrumbs['breadcrumbs__category--active'] : ''}`}
+          >
+            {currentCategoryNormalized}
+          </Link>
+          {productId && (
+            <>
+              <img
+                src="/img/icons/arrows/arrow-right-breadcrumbs.svg"
+                alt="Arrow icon"
+              />
+              <span className={breadcrumbs.breadcrumbs__name}>
+                {product?.name}
+              </span>
+            </>
+          )}
+        </>
+      )}
+      {productId && (
+        <div className={breadcrumbs.breadcrumbs__wrapper}>
+          <Back />
+        </div>
+      )}
     </div>
   );
 };

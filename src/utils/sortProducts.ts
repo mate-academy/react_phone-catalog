@@ -1,4 +1,4 @@
-import { Product } from 'types/Product';
+import { Product } from 'types/ProductPreview';
 
 export function getSortedProducts(products: Product[], sortBy: string) {
   const sortedProducts = [...products];

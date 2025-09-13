@@ -1,6 +1,4 @@
-import { ProductData } from './ProductData';
-
-export interface Product {
+export interface ProductPreview {
   id: number;
   category: string;
   itemId: string;
@@ -13,6 +11,4 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
-  data: ProductData;
-  namespaceId: string;
 }

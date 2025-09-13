@@ -17,16 +17,8 @@ type Props = {
 
 export const CategoryProvider: React.FC<Props> = ({ children }) => {
   const { pathname } = useLocation();
-  const categories = ['phones', 'tablets', 'accessories'];
+  const categories = ['phones', 'tablets', 'accessories', 'favorites', 'cart'];
   const currentCategory = categories.find(found => pathname.includes(found));
-
-  // const value = useMemo(
-  //   () => ({
-  //     categories,
-  //     found,
-  //   }),
-  //   [categories, found],
-  // );
 
   const value = {
     categories,

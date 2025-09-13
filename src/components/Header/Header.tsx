@@ -1,8 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import header from './Header.module.scss';
+import { CategoryContext } from '../../context/CategoryContext';
+import { CartContext } from '../../context/CartContext';
+import { FavoritesContext } from '../../context/FavoritesContext';
+import { Counter } from './components/Counter/Counter';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { currentCategory } = useContext(CategoryContext);
+
+  const { cartItems } = useContext(CartContext);
+
+  const { favoritesIds } = useContext(FavoritesContext);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -58,24 +69,40 @@ export const Header: React.FC = () => {
         <nav className={header.menu__nav}>
           <ul className={header.menu__nav__list}>
             <li className={header.menu__nav__item}>
-              <a href="/" className={header.menu__nav__link}>
+              <Link
+                to="/"
+                className={header.menu__nav__link}
+                onClick={() => setIsMenuOpen(false)}
+              >
                 home
-              </a>
+              </Link>
             </li>
             <li className={header.menu__nav__item}>
-              <a href="/phones" className={header.menu__nav__link}>
+              <Link
+                to="/phones"
+                className={header.menu__nav__link}
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Phones
-              </a>
+              </Link>
             </li>
             <li className={header.menu__nav__item}>
-              <a href="/tablets" className={header.menu__nav__link}>
+              <Link
+                to="/tablets"
+                className={header.menu__nav__link}
+                onClick={() => setIsMenuOpen(false)}
+              >
                 tablets
-              </a>
+              </Link>
             </li>
             <li className={header.menu__nav__item}>
-              <a href="/accessories" className={header.menu__nav__link}>
+              <Link
+                to="/accessories"
+                className={header.menu__nav__link}
+                onClick={() => setIsMenuOpen(false)}
+              >
                 accessories
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -84,22 +111,30 @@ export const Header: React.FC = () => {
             <li
               className={`${header.menu__icons__item} ${header['menu__icons__item--border-right']}`}
             >
-              <a href="/favourites" className={header.menu__icons__link}>
-                <img
-                  src="/img/icons/heart-like.svg"
-                  alt="Heart icon"
-                  className={header.menu__icons__icon}
+              <Link
+                to="/favorites"
+                className={header.menu__icons__link}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Counter
+                  icon="/img/icons/heart-like.svg"
+                  count={favoritesIds.length}
+                  alt="Favourites icon"
                 />
-              </a>
+              </Link>
             </li>
             <li className={header.menu__icons__item}>
-              <a href="/cart" className={header.menu__icons__link}>
-                <img
-                  src="/img/icons/shopping-bag.svg"
-                  alt="Shopping Bag icon"
-                  className={header.menu__icons__icon}
+              <Link
+                to="/cart"
+                className={header.menu__icons__link}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Counter
+                  icon="/img/icons/shopping-bag.svg"
+                  count={cartItems.length}
+                  alt="Cart icon"
                 />
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -110,13 +145,13 @@ export const Header: React.FC = () => {
           className={`${header['header__top-bar']} ${header['header__top-bar--big-screen']}`}
         >
           <div className={header.menu__nav__container}>
-            <a href="/" className={header.header__link__logo}>
+            <Link to="/" className={header.header__link__logo}>
               <img
                 src="/img/icons/logo.png"
                 alt="Nice Gadgets logo"
                 className={header.header__icon__logo}
               />
-            </a>
+            </Link>
             <nav
               className={`${header.menu__nav} ${header['menu__nav--big-screen']}`}
             >
@@ -124,24 +159,36 @@ export const Header: React.FC = () => {
                 className={`${header.menu__nav__list} ${header['header.menu__nav__list--big-screen']}`}
               >
                 <li className={header.menu__nav__item}>
-                  <a href="/" className={header.menu__nav__link}>
+                  <Link
+                    to="/"
+                    className={`${header.menu__nav__link} ${currentCategory === undefined ? header['menu__nav__link--active'] : ''}`}
+                  >
                     home
-                  </a>
+                  </Link>
                 </li>
                 <li className={header.menu__nav__item}>
-                  <a href="/phones" className={header.menu__nav__link}>
+                  <Link
+                    to="/phones"
+                    className={`${header.menu__nav__link} ${currentCategory === 'phones' ? header['menu__nav__link--active'] : ''}`}
+                  >
                     Phones
-                  </a>
+                  </Link>
                 </li>
                 <li className={header.menu__nav__item}>
-                  <a href="/tablets" className={header.menu__nav__link}>
+                  <Link
+                    to="/tablets"
+                    className={`${header.menu__nav__link} ${currentCategory === 'tablets' ? header['menu__nav__link--active'] : ''}`}
+                  >
                     tablets
-                  </a>
+                  </Link>
                 </li>
                 <li className={header.menu__nav__item}>
-                  <a href="/accessories" className={header.menu__nav__link}>
+                  <Link
+                    to="/accessories"
+                    className={`${header.menu__nav__link} ${currentCategory === 'accessories' ? header['menu__nav__link--active'] : ''}`}
+                  >
                     accessories
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -153,26 +200,26 @@ export const Header: React.FC = () => {
               className={`${header.menu__icons__list} ${header['menu__icons__list--big-screen']}`}
             >
               <li
-                className={`${header.menu__icons__item} ${header['menu__icons__item--big-screen']}`}
+                className={`${header.menu__icons__item} ${header['menu__icons__item--big-screen']} ${currentCategory === 'favorites' ? header['menu__icons__item--big-screen--active'] : ''}`}
               >
-                <a href="/favourites" className={header.menu__icons__link}>
-                  <img
-                    src="/img/icons/heart-like.svg"
-                    alt="Heart icon"
-                    className={header.menu__icons__icon}
+                <Link to="/favorites" className={header.menu__icons__link}>
+                  <Counter
+                    icon="/img/icons/heart-like.svg"
+                    count={favoritesIds.length}
+                    alt="Favourites icon"
                   />
-                </a>
+                </Link>
               </li>
               <li
-                className={`${header.menu__icons__item} ${header['menu__icons__item--big-screen']}`}
+                className={`${header.menu__icons__item} ${header['menu__icons__item--big-screen']} ${currentCategory === 'cart' ? header['menu__icons__item--big-screen--active'] : ''}`}
               >
-                <a href="/cart" className={header.menu__icons__link}>
-                  <img
-                    src="/img/icons/shopping-bag.svg"
-                    alt="Shopping Bag icon"
-                    className={header.menu__icons__icon}
+                <Link to="/cart" className={header.menu__icons__link}>
+                  <Counter
+                    icon="/img/icons/shopping-bag.svg"
+                    count={cartItems.length}
+                    alt="Cart icon"
                   />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
