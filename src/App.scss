@@ -1,4 +1,8 @@
 // @import '../src/modules/mixins.scss';
+.modal-overlay.open {
+  overflow: hidden;
+  /* інші стилі для модального вікна */
+}
 @import '../src/modules/main.scss';
 
 * {
@@ -434,6 +438,8 @@ body::-webkit-scrollbar { width: 0 !important }
   display: flex;
   flex-direction: column;
   height: 100vh;
+  // align-items: center;
+   overflow: hidden;
 
   &__brand {
     display: flex;
@@ -509,7 +515,7 @@ body::-webkit-scrollbar { width: 0 !important }
 
   &__right {
     display: flex;
-    margin-top: auto;
+    // margin-top: auto;
   }
 
   &__button {
