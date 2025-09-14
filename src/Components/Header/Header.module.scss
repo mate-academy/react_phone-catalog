@@ -223,6 +223,7 @@ $desktop-min-width: 1200px;
   background-image: url(/img/shop.svg);
   background-repeat: no-repeat;
   background-size: 16px 16px;
+  position: relative;
 
   @media (min-width: $desktop-min-width) {
     background-size: 20px 20px;

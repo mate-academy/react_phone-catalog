@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { useFavorites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 
 type Props = {
   product: Product;
@@ -9,11 +9,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
-  const [isProduct, setIsProduct] = useState(false);
-
-  const toggleProduct = () => {
-    setIsProduct(prev => !prev);
-  };
+  const { addToCart, isCart } = useCart();
 
   return (
     <div className={styles.card}>
@@ -40,10 +36,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={styles.actions}>
         <button
-          className={`${styles.addToCart} ${isProduct ? styles.addToCartActive : ''}`}
-          onClick={toggleProduct}
+          className={`${styles.addToCart} ${isCart(product.id) ? styles.addToCartActive : ''}`}
+          onClick={() => addToCart(product)}
         >
-          {isProduct ? 'Added to cart' : 'Add to cart'}
+          {isCart(product.id) ? 'Added to cart' : 'Add to cart'}
         </button>
         <div
           className={`${styles.fav} ${isFavorite(product.id) ? styles.favActive : ''}`}

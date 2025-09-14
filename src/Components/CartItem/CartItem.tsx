@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import styles from './CartItem.module.scss';
 import { Product } from '../../types/Product';
+import { useCart } from '../../context/CartContext';
 
 type Props = {
   product: Product;
 };
 
 export const CartItem: React.FC<Props> = ({ product }) => {
+  const { deleteFromCart } = useCart();
   const [count, setCount] = useState(1);
 
   const handleIncrease = () => setCount(prev => prev + 1);
@@ -19,7 +21,10 @@ export const CartItem: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.cartItem}>
       <div className={styles.container}>
-        <button className={styles.removeBtn}></button>
+        <button
+          className={styles.removeBtn}
+          onClick={() => deleteFromCart(product.id)}
+        ></button>
 
         <img src={product.image} alt={product.name} className={styles.image} />
 

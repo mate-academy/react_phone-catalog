@@ -2,10 +2,12 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useState } from 'react';
 import { useFavorites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { favorites } = useFavorites();
+  const { cart } = useCart();
 
   return (
     <header className={styles.header}>
@@ -63,7 +65,11 @@ export const Header: React.FC = () => {
             className={({ isActive }) =>
               `${styles.icon} ${styles.iconShop}  ${isActive ? styles.activeIcon : ''}`
             }
-          />
+          >
+            {cart.length > 0 && (
+              <span className={styles.badge}>{cart.length}</span>
+            )}
+          </NavLink>
 
           <div className={styles.containerBurger}>
             <div
@@ -145,7 +151,11 @@ export const Header: React.FC = () => {
               `${styles.icon} ${styles.iconShop} ${styles.icon_aside} ${isActive ? styles.activeIcon : ''}`
             }
             onClick={() => setIsMenuOpen(false)}
-          />
+          >
+            {cart.length > 0 && (
+              <span className={styles.badge}>{cart.length}</span>
+            )}
+          </NavLink>
         </div>
       </aside>
     </header>

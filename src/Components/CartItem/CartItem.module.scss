@@ -2,14 +2,15 @@ $tablet-min-width: 640px;
 $desktop-min-width: 1200px;
 
 .cartItem {
+  padding-block: 16px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
   background-color: #161827;
   padding-inline: 16px;
-  width: 288px;
-  height: 160px;
+  width: 100%;
+  height: auto;
   transition: all 0.3s;
 
   &:hover {
@@ -17,9 +18,10 @@ $desktop-min-width: 1200px;
   }
 
   @media (min-width: $tablet-min-width) {
+    padding: 0;
     flex-direction: row;
     padding-inline: 24px;
-    width: 592px;
+    width: 100%;
     height: 128px;
   }
 
@@ -29,8 +31,14 @@ $desktop-min-width: 1200px;
 }
 
 .container {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+
+  @media (min-width: $tablet-min-width) {
+    width: auto;
+  }
 }
 
 .image {
@@ -63,8 +71,13 @@ $desktop-min-width: 1200px;
 
 .controls {
   justify-content: space-between;
+  width: 100%;
   display: flex;
   align-items: center;
+
+  @media (min-width: $tablet-min-width) {
+    width: auto;
+  }
 }
 
 .controlsBtn {
