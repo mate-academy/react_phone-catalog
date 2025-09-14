@@ -1,0 +1,25 @@
+@import '../../mixins.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap');
+
+.slider {
+  width: 100%;
+  box-sizing: border-box;
+
+  &Title {
+    margin: 0;
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 32px;
+    line-height: 41px;
+    color: #313237;
+    padding: 72px 16px 24px;
+  }
+}
+
+
+.red {
+  height: 1000px;
+  width: 100%;
+  background-color: red;
+}

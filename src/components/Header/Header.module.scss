@@ -1,0 +1,135 @@
+@import '../../mixins.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 48px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E2E6E9;
+
+  @include onTablet {
+    justify-content: start;
+  }
+
+  @include onDesktop {
+    height: 64px;
+  }
+}
+
+.logoMobile {
+  display: block;
+
+  @include onDesktop {
+    display: none;
+  }
+}
+
+.logoDesktop {
+  display: none;
+
+  @include onDesktop {
+    display: block;
+  }
+}
+
+.menuButton {
+  all: unset;
+  cursor: pointer;
+
+  @include onTablet {
+    display: none;
+  }
+}
+
+.menu {
+  display: none;
+
+  @include onTablet {
+    display: block;
+    margin-left: 16px;
+    height: 100%;
+    align-items: center;
+  }
+
+  @include onDesktop {
+    margin-left: 24px;
+  }
+
+  &List {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+
+    &Item {
+      font-family: Mont;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 48px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #89939A;
+      text-decoration: none;
+
+      @include onDesktop {
+        line-height: 64px;
+      }
+
+
+      &Active {
+        color: #313237;
+        border-bottom: 3px solid #313237;
+
+      }
+    }
+  }
+}
+
+.icon {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+    margin-left: auto;
+  }
+
+  &Item {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #E2E6E9;
+
+    @include onDesktop {
+      height: 64px;
+      width: 64px;
+    }
+
+    &ImgActive {
+      display: none;
+    }
+  }
+
+  &Item:hover {
+    border: 1px solid #313237;
+    box-sizing: border-box;
+  }
+}
+
+.iconItemActive {
+  & .iconItemImg {
+    display: none;
+  }
+
+  & .iconItemImgActive {
+    display: block;
+  }
+}
