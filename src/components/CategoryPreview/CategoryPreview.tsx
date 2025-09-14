@@ -22,9 +22,9 @@ export const CategoryPreview: React.FC = () => {
     const fetchData = async () => {
       try {
         const [phonesRes, tabletsRes, accessoriesRes] = await Promise.all([
-          fetch('/api/phones.json'),
-          fetch('/api/tablets.json'),
-          fetch('/api/accessories.json'),
+          fetch('api/phones.json'),
+          fetch('api/tablets.json'),
+          fetch('api/accessories.json'),
         ]);
 
         if (!phonesRes.ok || !tabletsRes.ok || !accessoriesRes.ok) {

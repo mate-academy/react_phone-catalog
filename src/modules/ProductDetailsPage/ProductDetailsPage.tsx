@@ -75,7 +75,7 @@ const transformProduct = (p: RawProduct): ProductType => ({
   title: p.name,
   price: p.priceDiscount ?? p.priceRegular,
   oldPrice: p.priceDiscount ? p.priceRegular : undefined,
-  images: p.images.map(img => (img.startsWith('/') ? img : `/${img}`)),
+  images: p.images.map(img => (img.startsWith('/') ? img.substring(1) : img)),
   colors: p.colorsAvailable ?? [],
   color: p.color ?? '',
   memory: p.capacityAvailable ?? [],
@@ -115,9 +115,9 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = ({
       setLoading(true);
       try {
         const [phonesRes, tabletsRes, accessoriesRes] = await Promise.all([
-          fetch('/api/phones.json'),
-          fetch('/api/tablets.json'),
-          fetch('/api/accessories.json'),
+          fetch('api/phones.json'),
+          fetch('api/tablets.json'),
+          fetch('api/accessories.json'),
         ]);
 
         if (!phonesRes.ok || !tabletsRes.ok || !accessoriesRes.ok) {
@@ -144,7 +144,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = ({
   useEffect(() => {
     const fetchNumericProducts = async () => {
       try {
-        const res = await fetch('/api/products.json');
+        const res = await fetch('api/products.json');
 
         if (!res.ok) {
           throw new Error('Failed to fetch products.json');

@@ -45,7 +45,7 @@ export const TabletsPage: React.FC = () => {
     perPageParam === 'all' ? 'all' : Number(perPageParam) || 16;
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);

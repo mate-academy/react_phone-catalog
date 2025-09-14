@@ -55,7 +55,7 @@ export const FavoritesPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('/api/products.json');
+        const res = await fetch('api/products.json');
 
         if (!res.ok) {
           throw new Error('Failed to fetch products');
@@ -72,10 +72,10 @@ export const FavoritesPage = () => {
             title: p.name,
             price: p.price ?? p.fullPrice,
             oldPrice: p.price ? p.fullPrice : undefined,
-            images: [`/${p.image}`], // путь к картинке
+            images: [p.image],
             colors: p.color ? [p.color] : [],
             color: p.color ?? '',
-            memory: [], // здесь можно добавить массив памяти, если есть
+            memory: [],
             capacity: p.capacity ?? '-',
             fullSpecs: [
               { left: 'Screen', right: p.screen ?? '-' },
@@ -132,7 +132,7 @@ export const FavoritesPage = () => {
           products={allProducts.map(p => ({
             id: p.id,
             originalId: p.namespaceId,
-            image: p.images[0], // берем первую картинку
+            image: p.images[0],
             title: p.title,
             price: p.price,
             oldPrice: p.oldPrice,

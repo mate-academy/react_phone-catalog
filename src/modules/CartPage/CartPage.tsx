@@ -44,7 +44,7 @@ export const CartPage = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const res = await fetch('/api/products.json');
+        const res = await fetch('api/products.json');
 
         if (!res.ok) {
           throw new Error('Failed to fetch products');
@@ -52,7 +52,6 @@ export const CartPage = () => {
 
         const allProducts: RawProduct[] = await res.json();
 
-        // Собираем товары из корзины с полными данными
         const cartProducts: CartProduct[] = cartItems
           .map(cartItem => {
             const product = allProducts.find(p => p.itemId === cartItem.id);
@@ -64,7 +63,7 @@ export const CartPage = () => {
             return {
               id: product.itemId,
               title: product.name,
-              image: `/${product.image}`,
+              image: product.image,
               price: product.price ?? product.fullPrice,
               quantity: cartItem.quantity,
               shortSpecs: [
@@ -126,7 +125,7 @@ export const CartPage = () => {
       {productsData.length === 0 ? (
         <div className={styles.emptyCart}>
           <img
-            src="/img/cart-is-empty.png"
+            src="img/cart-is-empty.png"
             alt={t('cart.empty')}
             className={styles.emptyCartImage}
           />

@@ -43,7 +43,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   const [hoveredRight, setHoveredRight] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/${category}.json`) // подгружаем данные из нужной категории
+    fetch(`api/${category}.json`) // подгружаем данные из нужной категории
       .then(res => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -55,7 +55,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
         const filtered = data.filter(p => p.id !== excludeId); // исключаем текущий товар
         const fixed = filtered.map(p => ({
           ...p,
-          images: p.images.map(img => (img.startsWith('/') ? img : `/${img}`)),
+          images: p.images.map(img => (img.startsWith('/') ? img.substring(1) : img)),
         }));
 
         setProducts(fixed);
