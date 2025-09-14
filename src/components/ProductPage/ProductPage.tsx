@@ -44,7 +44,7 @@ export const ProductPage = () => {
     return a.name.localeCompare(b.name);
   });
 
-  const itemsPerPage = itemOnPage === 'all' ? products.length : itemOnPage;
+  const itemsPerPage = itemsOnPage === 'all' ? products.length : itemsOnPage;
   const totalPagess = Math.ceil(products.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
