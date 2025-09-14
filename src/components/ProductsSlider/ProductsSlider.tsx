@@ -55,7 +55,9 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
         const filtered = data.filter(p => p.id !== excludeId); // исключаем текущий товар
         const fixed = filtered.map(p => ({
           ...p,
-          images: p.images.map(img => (img.startsWith('/') ? img.substring(1) : img)),
+          images: p.images.map(img =>
+            img.startsWith('/') ? img.substring(1) : img,
+          ),
         }));
 
         setProducts(fixed);
@@ -93,8 +95,8 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   /* eslint-disable @typescript-eslint/indent */
   const visibleProducts = products.length
     ? Array.from(
-      { length: Math.min(visibleCount, products.length) },
-      (_, i) => products[(startIndex + i) % products.length],
+        { length: Math.min(visibleCount, products.length) },
+        (_, i) => products[(startIndex + i) % products.length],
       )
     : [];
 
