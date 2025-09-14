@@ -8,6 +8,7 @@ import { Loader } from '../Loader';
 import { DDNum, DDSortBy } from '../DropDown';
 import { Product } from '../../types/ProductTypes';
 import { ProductItem } from '../ProductItem';
+import './ProductPage.module.scss';
 
 export const ProductPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
