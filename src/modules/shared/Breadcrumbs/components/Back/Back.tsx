@@ -12,7 +12,7 @@ export const Back: React.FC = () => {
   return (
     <div className={back.back}>
       <img
-        src="/img/icons/arrows/arrow-prev.svg"
+        src="img/icons/arrows/arrow-prev.svg"
         alt="Arrow icon"
         className={back.back__icon}
       />

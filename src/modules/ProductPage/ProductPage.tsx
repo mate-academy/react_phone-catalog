@@ -101,6 +101,7 @@ export const ProductPage: React.FC = () => {
   const handleItemsClick = (value: string) => {
     const newParams = new URLSearchParams(searchParams);
 
+    newParams.set('page', '1');
     newParams.set('perPage', value);
     setSearchParams(newParams);
 
@@ -152,7 +153,7 @@ export const ProductPage: React.FC = () => {
                       {sortOptions.find(o => o.value === sortBy)?.label}
                       {sortDropdownIsOpen ? (
                         <img
-                          src="/img/icons/arrows/arrow-top-disabled.svg"
+                          src="img/icons/arrows/arrow-top-disabled.svg"
                           alt=""
                           className={
                             productPage['product-page__dropdown__trigger__icon']
@@ -160,7 +161,7 @@ export const ProductPage: React.FC = () => {
                         />
                       ) : (
                         <img
-                          src="/img/icons/arrows/arrow-down.svg"
+                          src="img/icons/arrows/arrow-down.svg"
                           alt=""
                           className={
                             productPage['product-page__dropdown__trigger__icon']
@@ -205,7 +206,7 @@ export const ProductPage: React.FC = () => {
                       {perPage}
                       {sortDropdownIsOpen ? (
                         <img
-                          src="/img/icons/arrows/arrow-top-disabled.svg"
+                          src="img/icons/arrows/arrow-top-disabled.svg"
                           alt=""
                           className={
                             productPage['product-page__dropdown__trigger__icon']
@@ -213,7 +214,7 @@ export const ProductPage: React.FC = () => {
                         />
                       ) : (
                         <img
-                          src="/img/icons/arrows/arrow-down.svg"
+                          src="img/icons/arrows/arrow-down.svg"
                           alt=""
                           className={
                             productPage['product-page__dropdown__trigger__icon']
@@ -248,7 +249,7 @@ export const ProductPage: React.FC = () => {
                   className={productPage['product-page__error-message__text']}
                 >{`There are no ${currentCategory} yet`}</h2>
                 <img
-                  src="/img/product-not-found.png"
+                  src="img/product-not-found.png"
                   alt=""
                   className={productPage['product-page__error-message__image']}
                 />

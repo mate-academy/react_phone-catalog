@@ -7,7 +7,7 @@ import { ProductsContext } from '../../context/ProductsContext';
 import { getAllProducts } from '../../api/getProducts';
 
 export const CartPage: React.FC = () => {
-  const { cartItems, clearCart } = useContext(CartContext);
+  const { cartItems, clearCart, totalItemsOfCart } = useContext(CartContext);
 
   const { setAllProducts } = useContext(ProductsContext);
 
@@ -17,10 +17,6 @@ export const CartPage: React.FC = () => {
 
   const totalOfCart = cartItems.reduce((sum, item) => {
     return sum + item.product.price * item.quantity;
-  }, 0);
-
-  const totalItemsOfCart = cartItems.reduce((sum, item) => {
-    return sum + item.quantity;
   }, 0);
 
   const handleCheckout = () => {
@@ -40,7 +36,7 @@ export const CartPage: React.FC = () => {
         <div className={cartPage['cart-page__empty-cart-container']}>
           <h2 className={cartPage['cart-page__title']}>Your cart is empty</h2>
           <img
-            src="/img/cart-is-empty.png"
+            src="img/cart-is-empty.png"
             alt="Empty cart image"
             className={cartPage['cart-page__empty-cart-container__image']}
           />

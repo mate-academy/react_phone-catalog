@@ -29,25 +29,34 @@ export const Breadcrumbs: React.FC = () => {
         <>
           <Link to="/" className={breadcrumbs.breadcrumbs__link}>
             <img
-              src="/img/icons/home.svg"
+              src="img/icons/home.svg"
               alt="Home icon"
               className={breadcrumbs.breadcrumbs__icon}
             />
           </Link>
           <img
-            src="/img/icons/arrows/arrow-right-breadcrumbs.svg"
+            src="img/icons/arrows/arrow-right-breadcrumbs.svg"
             alt="Arrow icon"
           />
-          <Link
-            to={`/${product?.category}`}
-            className={`${breadcrumbs.breadcrumbs__category} ${productId ? breadcrumbs['breadcrumbs__category--active'] : ''}`}
-          >
-            {currentCategoryNormalized}
-          </Link>
+          {productId ? (
+            <Link
+              to={`/${product?.category}`}
+              className={`${breadcrumbs.breadcrumbs__category} ${productId ? breadcrumbs['breadcrumbs__category--active'] : ''}`}
+            >
+              {currentCategoryNormalized}
+            </Link>
+          ) : (
+            <span
+              className={`${breadcrumbs.breadcrumbs__category} ${breadcrumbs['breadcrumbs__category--span']} ${productId ? breadcrumbs['breadcrumbs__category--span--active'] : ''}`}
+            >
+              {currentCategoryNormalized}
+            </span>
+          )}
+
           {productId && (
             <>
               <img
-                src="/img/icons/arrows/arrow-right-breadcrumbs.svg"
+                src="img/icons/arrows/arrow-right-breadcrumbs.svg"
                 alt="Arrow icon"
               />
               <span className={breadcrumbs.breadcrumbs__name}>

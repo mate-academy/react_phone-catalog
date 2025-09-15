@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Product } from '../types/ProductPreview';
+import { ProductPreview } from '../types/ProductPreview';
 
-export function useSortedProducts(products: Product[]) {
+export function useSortedProducts(products: ProductPreview[]) {
   const [searchParams] = useSearchParams();
   const sortBy = searchParams.get('sort') || 'age';
 

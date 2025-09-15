@@ -1,10 +1,8 @@
 @import '/src/styles/vars';
 
 .breadcrumbs {
-
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   gap: 8px;
   align-items: center;
   margin-top: 24px;
@@ -40,6 +38,14 @@
     color: $main-gray;
     transition: color $effect-duration;
     cursor: pointer;
+
+    &--span {
+      cursor: default;
+
+      &--active {
+        color: $main-black;
+      }
+    }
 
     &--name {
 

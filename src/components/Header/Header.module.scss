@@ -1,4 +1,4 @@
-@import '../../styles/mixins.module.scss';
+@import '../../styles/mixins.module';
 
 .header {
   position: sticky;
@@ -94,7 +94,6 @@
   justify-content: space-between;
 
   &__nav {
-
     @include on-tablet {
       margin-top: 0;
     }
@@ -159,6 +158,7 @@
   }
 
   &__icons {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
 
     &__list {
       display: flex;

@@ -68,7 +68,7 @@
   &-left {
 
     &::before {
-      background-image: url('/img/icons/arrows/arrow-left.svg');
+      background-image: url('img/icons/arrows/arrow-left.svg');
     }
 
     &-disabled {
@@ -76,7 +76,7 @@
       cursor: default;
 
       &::before {
-        background-image: url('/img/icons/arrows/arrow-left-disabled.svg');
+        background-image: url('img/icons/arrows/arrow-left-disabled.svg');
       }
     }
   }
@@ -84,7 +84,7 @@
   &-right{
 
     &::before {
-      background-image: url('/img/icons/arrows/arrow-right.svg');
+      background-image: url('img/icons/arrows/arrow-right.svg');
     }
 
     &-disabled {
@@ -92,7 +92,7 @@
       cursor: default;
 
       &::before {
-        background-image: url('/img/icons/arrows/arrow-right-disabled.svg');
+        background-image: url('img/icons/arrows/arrow-right-disabled.svg');
       }
     }
   }

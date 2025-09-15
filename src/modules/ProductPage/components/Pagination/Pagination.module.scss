@@ -29,6 +29,10 @@
     font-size: 14px;
     line-height: 21px;
 
+    &:hover {
+      border: 1px solid $main-black;
+    }
+
     &--active {
       background-color: $main-black;
       color: $main-white;
@@ -76,18 +80,18 @@
     align-self: center;
 
     &--prev {
-      background-image: url('/img/icons/arrows/arrow-prev.svg');
+      background-image: url('img/icons/arrows/arrow-prev.svg');
 
       &--disabled {
-        background-image: url('/img/icons/arrows/arrow-prev-disabled.svg');
+        background-image: url('img/icons/arrows/arrow-prev-disabled.svg');
       }
     }
 
     &--next {
-      background-image: url('/img/icons/arrows/arrow-next.svg');
+      background-image: url('img/icons/arrows/arrow-next.svg');
 
       &--disabled {
-        background-image: url('/img/icons/arrows/arrow-next-disabled.svg');
+        background-image: url('img/icons/arrows/arrow-next-disabled.svg');
       }
     }
   }

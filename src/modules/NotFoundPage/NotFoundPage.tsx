@@ -6,7 +6,7 @@ export const NotFoundPage: React.FC = () => {
     <div className={style['not-found-page']}>
       <h2 className={style['not-found-page__title']}>Page not found</h2>
       <img
-        src="/img/page-not-found.png"
+        src="img/page-not-found.png"
         alt=""
         className={style['not-found-page__image']}
       />

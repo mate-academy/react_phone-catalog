@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import pagination from './Pagination.module.scss';
 
 type Props = {
@@ -21,6 +21,17 @@ export const Pagination: React.FC<Props> = ({
   start = Math.max(1, end - VISIBLE_COUNT + 1);
 
   const pages = Array.from({ length: end - start + 1 }, (_, i) => start + i);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    scrollToTop();
+  }, [currentPage]);
 
   return (
     <div className={pagination.pagination}>
@@ -46,7 +57,9 @@ export const Pagination: React.FC<Props> = ({
           <li
             key={page}
             className={`${pagination.pagination__item} ${currentPage === page ? `${pagination['pagination__item--active']}` : ''}`}
-            onClick={() => onPageChange(page)}
+            onClick={() => {
+              onPageChange(page);
+            }}
           >
             {page}
           </li>

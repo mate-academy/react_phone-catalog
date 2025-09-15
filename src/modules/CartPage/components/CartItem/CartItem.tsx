@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 // import { CartItem as CartItemType } from 'types/CartItem';
-import { Product } from 'types/ProductPreview';
+import { ProductPreview } from 'types/ProductPreview';
 import cartItemStyle from './CartItem.module.scss';
 import { CartContext } from '../../../../context/CartContext';
 
 type Props = {
-  cartItem: Product;
+  cartItem: ProductPreview;
   productQuantity: number;
 };
 
@@ -14,6 +14,8 @@ export const CartItem: React.FC<Props> = ({ cartItem, productQuantity }) => {
     useContext(CartContext);
 
   const itemId = cartItem.id.toString();
+
+  const totalCostOfItem = cartItem.price * productQuantity;
 
   return (
     <div className={cartItemStyle['cart-item']}>
@@ -49,7 +51,7 @@ export const CartItem: React.FC<Props> = ({ cartItem, productQuantity }) => {
       </div>
       <span
         className={cartItemStyle['cart-item__price']}
-      >{`$${cartItem.price}`}</span>
+      >{`$${totalCostOfItem}`}</span>
     </div>
   );
 };

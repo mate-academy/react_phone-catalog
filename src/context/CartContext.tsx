@@ -10,6 +10,7 @@ type CartContextType = {
   increaseQuantity: (id: string) => void;
   decreaseQuantity: (id: string) => void;
   clearCart: () => void;
+  totalItemsOfCart: number;
 };
 
 export const CartContext = createContext<CartContextType>({
@@ -20,6 +21,7 @@ export const CartContext = createContext<CartContextType>({
   increaseQuantity: () => {},
   decreaseQuantity: () => {},
   clearCart: () => {},
+  totalItemsOfCart: 0,
 });
 
 type Props = {
@@ -74,6 +76,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     clearCart: () => {
       setCartItems([]);
     },
+    totalItemsOfCart: cartItems.reduce((sum, item) => sum + item.quantity, 0),
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

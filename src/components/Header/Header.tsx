@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
 
   const { currentCategory } = useContext(CategoryContext);
 
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, totalItemsOfCart } = useContext(CartContext);
 
   const { favoritesIds } = useContext(FavoritesContext);
 
@@ -31,20 +31,20 @@ export const Header: React.FC = () => {
     <>
       <header className={header.header}>
         <div className={header['header__top-bar']}>
-          <a href="/" className={header.header__link__logo}>
+          <Link to="/" className={header.header__link__logo}>
             <img
-              src="/img/icons/logo.png"
+              src="img/icons/logo.png"
               alt="Nice Gadgets logo"
               className={header.header__icon__logo}
             />
-          </a>
+          </Link>
           {isMenuOpen ? (
             <button
               className={header.header__link__burger}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <img
-                src="/img/icons/close.svg"
+                src="img/icons/close.svg"
                 alt="Nice Gadgets logo"
                 className={header.header__icon}
               />
@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <img
-                src="/img/icons/burger-icon.svg"
+                src="img/icons/burger-icon.svg"
                 alt="Nice Gadgets logo"
                 className={header.header__icon}
               />
@@ -117,7 +117,7 @@ export const Header: React.FC = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Counter
-                  icon="/img/icons/heart-like.svg"
+                  icon="img/icons/heart-like.svg"
                   count={favoritesIds.length}
                   alt="Favourites icon"
                 />
@@ -130,7 +130,7 @@ export const Header: React.FC = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Counter
-                  icon="/img/icons/shopping-bag.svg"
+                  icon="img/icons/shopping-bag.svg"
                   count={cartItems.length}
                   alt="Cart icon"
                 />
@@ -147,7 +147,7 @@ export const Header: React.FC = () => {
           <div className={header.menu__nav__container}>
             <Link to="/" className={header.header__link__logo}>
               <img
-                src="/img/icons/logo.png"
+                src="img/icons/logo.png"
                 alt="Nice Gadgets logo"
                 className={header.header__icon__logo}
               />
@@ -204,7 +204,7 @@ export const Header: React.FC = () => {
               >
                 <Link to="/favorites" className={header.menu__icons__link}>
                   <Counter
-                    icon="/img/icons/heart-like.svg"
+                    icon="img/icons/heart-like.svg"
                     count={favoritesIds.length}
                     alt="Favourites icon"
                   />
@@ -215,8 +215,8 @@ export const Header: React.FC = () => {
               >
                 <Link to="/cart" className={header.menu__icons__link}>
                   <Counter
-                    icon="/img/icons/shopping-bag.svg"
-                    count={cartItems.length}
+                    icon="img/icons/shopping-bag.svg"
+                    count={totalItemsOfCart}
                     alt="Cart icon"
                   />
                 </Link>
