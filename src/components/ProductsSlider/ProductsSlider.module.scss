@@ -7,13 +7,14 @@
   margin-bottom: 80px;
 
   @include grid-24-mw($gap: 16px);
-  
+
   width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
 .sectionHeader {
+  
   @include grid-24($gap: 16px);
 
   display: flex;
@@ -23,8 +24,9 @@
 }
 
 .title {
-  font-size: 24px;
-  font-weight: 600;
+
+  @include desktop-tablet-h2-style;
+
   color: var(--color-white);
 }
 
