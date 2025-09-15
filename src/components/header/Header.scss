@@ -175,7 +175,7 @@
       &--heart {
         width: 48px;
         height: 48px;
-        background-image: url('./public/img/heart.png');
+        background-image: url('/img/heart.png');
         background-repeat: no-repeat;
         background-position: center;
 
@@ -287,7 +287,7 @@
 }
 
 .heart-active {
-  background-image: url('./public/img/heart-red.png');
+  background-image: url('/img/heart-red.png');
   background-repeat: no-repeat;
   background-position: center;
 }

@@ -19,11 +19,7 @@ export const Header: React.FC<Props> = ({ setMenuOpen }) => {
     <div className="header">
       <div className="header__wrapper">
         <Link to="/" className="header__logo">
-          <img
-            src="./public/img/logo.png"
-            alt="logo"
-            className="header__logo--img"
-          />
+          <img src="/img/logo.png" alt="logo" className="header__logo--img" />
         </Link>
         <div className="header__nav">
           <NavLink
@@ -84,7 +80,7 @@ export const Header: React.FC<Props> = ({ setMenuOpen }) => {
           </div>
         </Link>
         <Link to="/basket" className="header__trinkets--basket">
-          <img src="./public/img/basket.png" alt="shopping cart" />
+          <img src="/img/basket.png" alt="shopping cart" />
           <div
             className={
               basket.length === 0
@@ -98,7 +94,7 @@ export const Header: React.FC<Props> = ({ setMenuOpen }) => {
       </div>
       <div className="header__burger">
         <img
-          src="./public/img/burger.png"
+          src="/img/burger.png"
           alt="burger"
           className="header__burger--img"
           onClick={handleMenu}

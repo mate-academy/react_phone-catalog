@@ -19,7 +19,7 @@ export const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    fetch('../../../api/products.json')
+    fetch('/api/products.json')
       .then(res => res.json())
       .then(data => {
         setPhones(
