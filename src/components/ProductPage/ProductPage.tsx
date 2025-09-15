@@ -76,8 +76,7 @@ export const ProductPage = () => {
       {error && (
         <div className="error__container">
           <p className="error__message">
-            Something went wrong...
-            <br>Please, check your connection and try later</br>
+            Something went wrong... Please, check your connection and try later
           </p>
         </div>
       )}

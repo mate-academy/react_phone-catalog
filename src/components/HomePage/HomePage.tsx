@@ -6,6 +6,7 @@ import { Loader } from '../Loader';
 import { ProductSlider } from '../ProductCard';
 import { NameSlider } from '../../types/namesSlider';
 import { Category } from '../Category';
+import { SliderSwiper } from '../Swiper';
 
 export const HomePage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -23,7 +24,7 @@ export const HomePage = () => {
         setError(null);
       } catch (err: any) {
         if (err.message === 'No internet connection') {
-          setError('No internet connection. Please, cehck your network.');
+          setError('No internet connection. Please, check your network.');
         } else {
           setError('Server in not responding. Please, try again later');
         }
@@ -42,8 +43,7 @@ export const HomePage = () => {
       {error && (
         <div className="error_container">
           <p className="error-message">
-            Something went wrong...
-            <br>Please, cehck your connection and try again later.</br>
+            Something went wrong... Please, check your connection and try later.
           </p>
         </div>
       )}
@@ -60,7 +60,7 @@ export const HomePage = () => {
 
       {!loading && !error && (
         <>
-          <Swiper />
+          <SliderSwiper />
           <div className="homepaage__product">
             <ProductSlider products={phones} title={NameSlider.Brand} />
           </div>

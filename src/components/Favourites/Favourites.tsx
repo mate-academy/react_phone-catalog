@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom';
 import { useFavourites } from './FavouritesContext';
 import home from '../../../public/img/home.svg';
 import goto from '../../../public/img/arrowRight.svg';
-import error404 from '../../../public/img/page-not-found.png';
 import { ProductItem } from '../ProductItem/ProductItem';
 
 export const FavouritesPage = () => {
@@ -23,7 +22,7 @@ export const FavouritesPage = () => {
       {favourites.length === 0 ? (
         <div className="none">
           <img
-            src={error404}
+            src="img/page-not-found.png"
             alt="Favourites have not been chosen"
             className="product__empty"
           />

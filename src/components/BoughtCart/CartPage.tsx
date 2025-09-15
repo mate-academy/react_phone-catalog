@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import './CartPage.scss';
-import Empty from '../../../public/img/cart-is-empty.png';
 import { useInfoHook } from '../ProductInfo/useInfoHook';
 import { useCart } from './CartContext';
-import { BoughtCartItem } from '../BoughtCardItem/BoughtCardItem';
+import { BoughtCardItem } from '../BoughtCardItem/BoughtCardItem';
 import { CheckoutChears } from '../Reward/Reward';
 
 export const CartPage = () => {
@@ -54,7 +53,7 @@ export const CartPage = () => {
         <div className="cart__wrapper">
           <div className="cart__wrapper--left">
             {cart.map(product => (
-              <BoughtCartItem
+              <BoughtCardItem
                 key={product.id}
                 product={product}
                 onDelete={removeFromCart}
@@ -74,7 +73,7 @@ export const CartPage = () => {
       ) : (
         <div className="none">
           <img
-            src={Empty}
+            src="img/cart-is-empty.png"
             alt="Your cart is empty"
             className="product__empty"
           />
