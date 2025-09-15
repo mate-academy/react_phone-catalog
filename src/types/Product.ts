@@ -11,4 +11,5 @@ export type Product = {
   screen: string;
   ram: string;
   year: number;
+  count?: number;
 };

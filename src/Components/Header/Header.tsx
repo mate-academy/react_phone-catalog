@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useState } from 'react';
 import { useFavorites } from '../../context/FavoritesContext';
@@ -8,6 +8,7 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { favorites } = useFavorites();
   const { cart } = useCart();
+  const { pathname } = useLocation();
 
   return (
     <header className={styles.header}>
@@ -62,6 +63,7 @@ export const Header: React.FC = () => {
           </NavLink>
           <NavLink
             to="/cart"
+            state={{ pathname }}
             className={({ isActive }) =>
               `${styles.icon} ${styles.iconShop}  ${isActive ? styles.activeIcon : ''}`
             }
@@ -147,6 +149,7 @@ export const Header: React.FC = () => {
           </NavLink>
           <NavLink
             to="/cart"
+            state={{ pathname }}
             className={({ isActive }) =>
               `${styles.icon} ${styles.iconShop} ${styles.icon_aside} ${isActive ? styles.activeIcon : ''}`
             }

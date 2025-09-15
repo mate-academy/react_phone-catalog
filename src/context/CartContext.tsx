@@ -6,6 +6,8 @@ type CartContextType = {
   addToCart: (product: Product) => void;
   deleteFromCart: (productId: number) => void;
   isCart: (id: number) => boolean;
+  increaseCount: (productId: number) => void;
+  decreaseCount: (productId: number) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -19,7 +21,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     const saved = localStorage.getItem('cart');
 
     if (saved) {
-      setCart(JSON.parse(saved));
+      const parsed: Product[] = JSON.parse(saved);
+
+      setCart(parsed.map(item => ({ ...item, count: item.count ?? 1 })));
     }
   }, []);
 
@@ -29,7 +33,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const addToCart = (product: Product) => {
     setCart(prev =>
-      prev.some(item => item.id === product.id) ? prev : [...prev, product],
+      prev.some(item => item.id === product.id)
+        ? prev
+        : [...prev, { ...product, count: 1 }],
     );
   };
 
@@ -41,8 +47,35 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     return cart.some(item => item.id === id);
   };
 
+  const increaseCount = (productId: number) => {
+    setCart(prev =>
+      prev.map(item =>
+        item.id === productId ? { ...item, count: item.count ?? 1 + 1 } : item,
+      ),
+    );
+  };
+
+  const decreaseCount = (productId: number) => {
+    setCart(prev =>
+      prev.map(item =>
+        item.id === productId && item.count > 1
+          ? { ...item, count: item.count - 1 }
+          : item,
+      ),
+    );
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, deleteFromCart, isCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        deleteFromCart,
+        isCart,
+        increaseCount,
+        decreaseCount,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

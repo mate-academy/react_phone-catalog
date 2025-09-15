@@ -2,11 +2,12 @@ import React from 'react';
 import styles from './Cart.module.scss';
 import { useCart } from '../../context/CartContext';
 import { CartItem } from '../CartItem';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const CartPage: React.FC = () => {
   const navigate = useNavigate();
   const { cart } = useCart();
+  const { state } = useLocation();
 
   const totalItems = cart.length;
   const totalPrice = cart.reduce((acc, product) => acc + product.price, 0);
@@ -26,7 +27,10 @@ export const CartPage: React.FC = () => {
 
   return (
     <div className={styles.page}>
-      <div className={styles.backButton} onClick={() => navigate(-1)}>
+      <div
+        className={styles.backButton}
+        onClick={() => navigate(state?.pathname || '/')}
+      >
         <div className={styles.img}></div> Back
       </div>
       <h1 className={styles.title}>Cart</h1>

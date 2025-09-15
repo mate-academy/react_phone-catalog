@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import styles from './CartItem.module.scss';
 import { Product } from '../../types/Product';
 import { useCart } from '../../context/CartContext';
@@ -8,15 +7,7 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ product }) => {
-  const { deleteFromCart } = useCart();
-  const [count, setCount] = useState(1);
-
-  const handleIncrease = () => setCount(prev => prev + 1);
-  const handleDecrease = () => {
-    if (count > 1) {
-      setCount(prev => prev - 1);
-    }
-  };
+  const { deleteFromCart, increaseCount, decreaseCount } = useCart();
 
   return (
     <div className={styles.cartItem}>
@@ -35,11 +26,17 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
       <div className={styles.controls}>
         <div className={styles.controlsBtn}>
-          <div onClick={handleDecrease} className={styles.btnMin}></div>
-          <span className={styles.count}>{count}</span>
-          <div onClick={handleIncrease} className={styles.btnPlus}></div>
+          <div
+            onClick={() => decreaseCount(product.id)}
+            className={styles.btnMin}
+          ></div>
+          <span className={styles.count}>{product.count}</span>
+          <div
+            onClick={() => increaseCount(product.id)}
+            className={styles.btnPlus}
+          ></div>
         </div>
-        <p className={styles.price}>${product.price * count}</p>
+        <p className={styles.price}>${product.price * product.count}</p>
       </div>
     </div>
   );
