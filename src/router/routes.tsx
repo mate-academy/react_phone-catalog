@@ -43,7 +43,7 @@ export const AppRoutes: React.FC<AppRoutesProps> = ({ theme, toggleTheme }) => {
             path="/:accessories/:id"
             element={<ProductDetailsPage theme={theme} />}
           />
-          <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="favorites" element={<FavoritesPage theme={theme}/>} />
           <Route path="cart" element={<CartPage />} />
           <Route
             path="contacts"

@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 import styles from './Slider.module.scss';
 import cn from 'classnames';
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import arrowLeft from '../../assets/icons/Chevron (Arrow Left).svg';
 import arrowRight from '../../assets/icons/Chevron (Arrow Right).svg';
 import dotActive from '../../assets/icons/dot-active.svg';

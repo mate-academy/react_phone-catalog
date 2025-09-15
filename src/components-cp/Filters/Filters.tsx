@@ -144,6 +144,7 @@ export const Filters: React.FC<FiltersProps> = ({
       </div>
 
       <div className={styles.filterItem}>
+        <span className={styles.filterName}>{t('filters.sort.order')}</span>
         <div
           className={`${styles.directionToggle} ${directionValue}`}
           onClick={toggleDirection}

@@ -51,10 +51,11 @@
       "title": "Sortuj według",
       "newest": "Najnowsze",
       "alphabetically": "Alfabetycznie",
-      "cheapest": "Najtańsze"
+      "cheapest": "Najtańsze",
+      "order": "Kolejność"
     },
     "itemsPerPage": {
-      "title": "Produktów na str",
+      "title": "Produktów na stronie",
       "all": "Wszystkie"
     }
   },

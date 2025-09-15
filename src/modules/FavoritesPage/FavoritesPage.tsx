@@ -44,7 +44,11 @@ interface ProductType {
   shortSpecs: Spec[];
 }
 
-export const FavoritesPage = () => {
+interface PhonesPageProps {
+  theme: 'light' | 'dark';
+}
+
+export const FavoritesPage: React.FC<PhonesPageProps> = ({ theme }) => {
   const { favorites } = useFavorites();
   const { t } = useTranslation();
   const { addToCart } = useCart();
@@ -111,7 +115,7 @@ export const FavoritesPage = () => {
 
   return (
     <div className={styles.favoritesPage}>
-      <Breadcrumbs currentPage="favorites" />
+      <Breadcrumbs currentPage="favorites" theme={theme} />
 
       <div className={styles.headerWrapper}>
         <h1 className={styles.title}>{t('favoritesPage.title')}</h1>

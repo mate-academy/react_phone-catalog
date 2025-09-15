@@ -82,11 +82,16 @@
   background: none;
 }
 
+.removeBtn img {
+      cursor: pointer;
+  }
+
 .itemImage {
   width: 80px;
   height: 80px;
   object-fit: contain;
   object-position: center;
+
 }
 
 .itemTitle {
