@@ -45,6 +45,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       .then(res => res.json())
       .then((data: ProductType[]) => {
         const filtered = data.filter(p => p.id !== excludeId);
+
         setProducts(filtered);
       });
   }, [category, excludeId]);
@@ -52,17 +53,22 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   // Адаптивность
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 640) setVisibleCount(2);
-      else if (window.innerWidth < 1200) setVisibleCount(3);
-      else setVisibleCount(visibleCountDesktop);
+      if (window.innerWidth < 640) {
+        setVisibleCount(2);
+      } else if (window.innerWidth < 1200) {
+        setVisibleCount(3);
+      } else {
+        setVisibleCount(visibleCountDesktop);
+      }
     };
+
     handleResize();
     window.addEventListener('resize', handleResize);
+
     return () => window.removeEventListener('resize', handleResize);
   }, [visibleCountDesktop]);
 
-  const handlePrev = () =>
-    setStartIndex(prev => Math.max(prev - 1, 0));
+  const handlePrev = () => setStartIndex(prev => Math.max(prev - 1, 0));
   const handleNext = () =>
     setStartIndex(prev => Math.min(prev + 1, products.length - visibleCount));
 
@@ -70,7 +76,9 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
     ? trackRef.current.clientWidth / visibleCount
     : 0;
 
-  if (!products.length) return <p>Loading products...</p>;
+  if (!products.length) {
+    return <p>Loading products...</p>;
+  }
 
   return (
     <section className={styles.section}>
@@ -82,7 +90,10 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             onClick={handlePrev}
             disabled={startIndex === 0}
           >
-            <img src={startIndex === 0 ? arrowLeftDisabled : arrowLeftDefault} alt="Prev" />
+            <img
+              src={startIndex === 0 ? arrowLeftDisabled : arrowLeftDefault}
+              alt="Prev"
+            />
           </button>
 
           <button
@@ -91,7 +102,11 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             disabled={startIndex + visibleCount >= products.length}
           >
             <img
-              src={startIndex + visibleCount >= products.length ? arrowRightDisabled : arrowRightDefault}
+              src={
+                startIndex + visibleCount >= products.length
+                  ? arrowRightDisabled
+                  : arrowRightDefault
+              }
               alt="Next"
             />
           </button>
