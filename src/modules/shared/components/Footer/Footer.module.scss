@@ -1,11 +1,10 @@
 .footer {
   grid-area: footer;
   box-shadow: 0 -1px 0 0 rgba(226, 230, 233, 1);
+  padding: 3.2rem 1.6rem;
 
 
-  &__container {
-    margin: 3.2rem 1.6rem 0;
-  }
+
 
   &__logo {
     height: 3.2rem;
@@ -24,7 +23,7 @@
     font-weight: 800;
     font-size: 1.2rem;
     line-height: 1.1rem;
-    letter-spacing: 4%;
+    letter-spacing: 0.04rem;
     text-transform: uppercase;
     text-decoration: none;
     color: rgba(137, 147, 154, 1);

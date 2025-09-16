@@ -38,7 +38,10 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
   text-size-adjust: none;
 }
 
-html { font-size: 62.5%; }
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
 
 footer, header, nav, section, main{
   display: block;
