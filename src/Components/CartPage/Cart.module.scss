@@ -129,7 +129,7 @@ $desktop-min-width: 1200px;
   @media (min-width: $desktop-min-width) {
     margin-bottom: 90px;
     flex-direction: row;
-    gap: 16px;
+    justify-content: space-between;
   }
 }
 

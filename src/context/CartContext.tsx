@@ -58,8 +58,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   const decreaseCount = (productId: number) => {
     setCart(prev =>
       prev.map(item =>
-        item.id === productId && item.count > 1
-          ? { ...item, count: item.count - 1 }
+        item.id === productId && (item.count ?? 0) > 1
+          ? { ...item, count: (item.count ?? 0) - 1 }
           : item,
       ),
     );

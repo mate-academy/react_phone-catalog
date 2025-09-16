@@ -10,7 +10,10 @@ export const CartPage: React.FC = () => {
   const { state } = useLocation();
 
   const totalItems = cart.length;
-  const totalPrice = cart.reduce((acc, product) => acc + product.price, 0);
+  const totalPrice = cart.reduce(
+    (acc, product) => acc + product.price * (product.count ?? 1),
+    0,
+  );
 
   if (cart.length === 0) {
     return (
