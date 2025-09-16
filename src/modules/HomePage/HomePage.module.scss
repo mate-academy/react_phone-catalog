@@ -1,7 +1,8 @@
 @use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
 
 .visually_hidden {
-   position: absolute;
+  position: absolute;
   width: 1px;
   height: 1px;
   margin: -1px;
@@ -16,7 +17,6 @@
 
 .home_page {
   padding-top: 64px;
-  margin-left: 32px;
 }
 
 .home_page_header {
@@ -24,5 +24,24 @@
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
-  color: $grey-white;
+  color: $gray-white;
+
+  @include respond-to(phone) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.container {
+  padding-inline: 0;
+
+  @include respond-to(tablet) {
+    padding-inline: 24px;
+  }
+
+  @include respond-to(desktop) {
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: 152px;
+  }
 }

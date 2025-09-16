@@ -1,0 +1,110 @@
+@use '../../../../styles/variables.scss' as *;
+
+.card {
+  width: 272px;
+  height: 506px;
+  background-color: $cardColor;
+  font-family: 'Mont-Regular';
+  color: $gray-white;
+}
+
+.card_content {
+  padding: 32px;
+}
+
+.card_image {
+  width: 208px;
+  height: 196px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.card_image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.card__title {
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  margin-top: 8px;
+  height: 42px;
+}
+
+.card__prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  letter-spacing: 0%;
+}
+
+.card__price {
+  font-family: 'Mont-Bold';
+  line-height: 31px;
+}
+
+.card__fullPrice {
+  line-height: 100%;
+  text-decoration: line-through;
+  color: $gray-secondary;
+}
+
+.divide_line {
+  width: 208px;
+  height: 1px;
+  background-color: $gray-secondary;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.card__specs dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 20px;
+  font-size: 12px;
+  letter-spacing: 0%;
+  row-gap: 8px;
+}
+
+.card__specs dt {
+  color: $gray-secondary;
+}
+
+.card__specs dd {
+  margin: 0;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.card__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card__addBtn {
+  width: 100%;
+  height: 40px;
+  background-color: $addBtn;
+  color: $gray-white;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.card__favBtn {
+  height: 40px;
+  background-color: $gray-surface;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+}

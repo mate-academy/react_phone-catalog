@@ -1,4 +1,5 @@
 @use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
 
 .slider {
   display: flex;
@@ -6,26 +7,47 @@
   justify-content: center;
   position: relative;
   margin-top: 56px;
-  max-width: 1136px;
-
+  margin: auto;
 }
+
 .slider_button {
-  width: 32px;
+  width: 42px;
   height: 400px;
-  background-color: $grey-surface;
-  color: $grey-white;
+  background-color: $gray-surface;
+  color: $gray-white;
   border: none;
   margin: 0 16px;
   cursor: pointer;
+
+  @include respond-to(tablet) {
+    height: 189px;
+  }
+
+  @include respond-to(phone) {
+    display: none;
+  }
 }
 
 .slider_container {
-  max-width: 1040px;
   height: 400px;
+
+  @include respond-to(tablet) {
+    height: 189px;
+  }
+
+  @include respond-to(phone) {
+    width: 320px;
+    height: 320px;
+    padding-inline: 0;
+    margin-inline: 0;
+  }
 }
 
 .banner_image {
+  display: block;
+  margin: 0 auto;
   width: 100%;
+  max-width: 1040px;
   height: 100%;
   object-fit: cover;
 }
@@ -41,11 +63,11 @@
   width: 15px;
   height: 4px;
   border-radius: 2px;
-  background-color: $grey-elements;
+  background-color: $gray-elements;
   opacity: 1;
   transition: background 0.3s;
 }
 
 :global(.swiper-pagination-bullet-active) {
-  background-color: $grey-white;
+  background-color: $gray-white;
 }

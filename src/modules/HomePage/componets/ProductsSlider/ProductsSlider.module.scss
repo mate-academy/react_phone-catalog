@@ -1,0 +1,24 @@
+@use '../../../../styles/variables.scss' as *;
+
+.product_title {
+  font-family: 'Mont-Bold';
+  color: $gray-white;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  margin-top: 80px;
+  margin-bottom: 24px;
+}
+
+.product_buttons_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.swiper_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
