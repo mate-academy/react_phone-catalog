@@ -5,7 +5,7 @@ import { Slider } from '@widgets/slider';
 import { CategoryElement } from './ui';
 
 export const HomePage = () => {
-  const { amount, items } = useHomePage();
+  const { amount, newItems, promoItems, banners } = useHomePage();
 
   return (
     <main className={styles.container}>
@@ -14,10 +14,14 @@ export const HomePage = () => {
         <span className={styles.welcome__text}>
           Welcome to Nice Gadgets store!
         </span>
-        <Slider mode="hero" data={items.banner} />
+        <Slider mode="hero" data={banners} title="" />
       </div>
       <div className={styles['home-catalogue']}>
-        <Slider mode="catalogue" data={items.new} title="Brand new Models" />
+        <Slider
+          mode="catalogue"
+          data={typeof newItems === 'string' ? newItems : newItems.items}
+          title="Brand new Models"
+        />
         <section
           className={styles.categories}
           style={{ '--fields-count': categories.length } as React.CSSProperties}
@@ -27,11 +31,15 @@ export const HomePage = () => {
             <CategoryElement
               key={el.id}
               category={el}
-              amount={amount[el.link]}
+              amount={amount[el.link].items as string}
             />
           ))}
         </section>
-        <Slider mode="catalogue" data={items.promo} title="Hot prices" />
+        <Slider
+          mode="catalogue"
+          data={typeof promoItems === 'string' ? promoItems : promoItems.items}
+          title="Hot prices"
+        />
       </div>
     </main>
   );

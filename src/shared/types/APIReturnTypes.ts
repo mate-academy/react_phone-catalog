@@ -39,7 +39,7 @@ interface CatalogueProduct extends BaseProd {
   year: number;
 }
 
-interface ItemProduct extends BaseProd {
+interface Product extends BaseProd {
   namespaceId: string;
   capacityAvailable: Capacity[];
   colorsAvailable: Colors[];
@@ -51,4 +51,4 @@ interface ItemProduct extends BaseProd {
   zoom?: string;
 }
 
-export { Category, type CatalogueProduct, type ItemProduct, type BannerData };
+export { Category, type CatalogueProduct, type Product, type BannerData };

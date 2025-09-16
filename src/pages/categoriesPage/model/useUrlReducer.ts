@@ -35,10 +35,9 @@ export const useUrlReducer = () => {
           if (action.payload === Order.NONE) {
             params.delete('sort');
           } else {
+            params.delete('page');
             params.set('sort', action.payload);
           }
-
-          dispatch({ type: 'SET_PAGE', payload: 1 });
 
           return params;
 
@@ -46,10 +45,9 @@ export const useUrlReducer = () => {
           if (action.payload === ItemsAmount.ALL) {
             params.delete('perPage');
           } else {
+            params.delete('page');
             params.set('perPage', action.payload);
           }
-
-          dispatch({ type: 'SET_PAGE', payload: 1 });
 
           return params;
 

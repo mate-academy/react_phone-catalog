@@ -1,1 +1,1 @@
-export { validateRequest, validateParams } from './requestValidators';
+export { validate } from './validateParams';

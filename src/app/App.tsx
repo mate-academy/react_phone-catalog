@@ -13,3 +13,6 @@ export const App = () => (
     </GlobalProvider>
   </div>
 );
+
+// todo: clean Categories enum, types
+// make type selectors null / undefined / data => loading.LOAD === null loading.ERR etc

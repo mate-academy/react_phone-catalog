@@ -1,56 +1,33 @@
-import {
-  getBanners,
-  getProduct,
-  getCatalogueItems,
-  getItemsAmount,
-} from '../services';
-import { RequestType, ValidResponse } from '../types';
-import { validateParams } from '../validation';
+import { validate } from '../validation';
+import { getService } from '../services';
+import { RequestType, Status } from '../types';
+
+const DELAY = 800;
 
 async function getRequest(conf: string): Promise<string> {
-  await new Promise(resolve => setTimeout(resolve, 800));
-  const config = JSON.parse(conf);
-  const request = config.request;
-  let params = null;
+  await new Promise(resolve => setTimeout(resolve, DELAY));
+  const { request, body } = JSON.parse(conf);
 
-  if (config.body) {
-    params = config.body;
+  if (!Object.values(RequestType).some(el => el === request)) {
+    return JSON.stringify({
+      status: Status.ERROR,
+      data: `Invalid request: ${request}`,
+    });
   }
 
-  const validated =
-    params !== null ? validateParams(request, params) : validateParams(request);
-
-  if (validated.status === false) {
-    return JSON.stringify(validated);
+  if (!(await validate[request as RequestType](body))) {
+    return JSON.stringify({
+      status: Status.ERROR,
+      data: `Invalid parameters: ${body}`,
+    });
   }
 
-  const response: ValidResponse = {
-    status: true,
-    data: [],
-  };
+  const res = await getService[request as RequestType](body && body);
 
-  switch (validated.request) {
-    case RequestType.BANNER:
-      response.data = await getBanners();
-
-      break;
-    case RequestType.PRODUCT:
-      response.data = await getProduct(params);
-
-      break;
-    case RequestType.CATALOGUE:
-      const { data, currentPage, pages } = await getCatalogueItems(params);
-
-      response.data = data;
-      response.currentPage = currentPage;
-      response.pages = pages;
-
-      break;
-    case RequestType.AMOUNT:
-      response.data = await getItemsAmount(params);
-  }
-
-  return JSON.stringify(response);
+  return JSON.stringify({
+    status: Status.SUCCESS,
+    data: res,
+  });
 }
 
 export { getRequest };

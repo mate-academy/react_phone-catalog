@@ -10,6 +10,10 @@
 
 .fav-button {
   @include s.m-btn-btn-reg;
+
+  &:hover {
+    @include s.m-btn-hover-reg;
+  }
 }
 
 .cart-button {
@@ -17,9 +21,17 @@
 
   height: 40px;
 
+  &:hover {
+    @include s.m-btn-hover-black;
+  }
+
   &__active {
     @include s.m-btn-btn-reg;
 
     color: s.$c-green;
+
+    &:hover {
+      @include s.m-btn-hover-reg;
+    }
   }
 }

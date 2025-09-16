@@ -39,7 +39,7 @@ export const ProductCard = forwardRef<HTMLLIElement, Props>(
 
     return (
       <li ref={ref} className={styles.container}>
-        <Link to={`/${category}/${id}`} className={styles['product-card']}>
+        <Link to={`/product/${id}`} className={styles['product-card']}>
           <div className={styles['image-wrapper']}>
             <img className={styles.image} src={images[0]} alt={name} />
           </div>

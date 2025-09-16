@@ -3,14 +3,14 @@ export {
   type ValidProdParams,
   type ValidParams,
   type ValidAmountParams,
-} from './APIReqTypes';
+} from './ValidEntryParams';
 
 export {
   OrderParams,
   ItemsOnPage,
   RequestType,
   ServerCategory,
-} from './APIEnums';
+} from './ServicesEnums';
 
 export {
   type BaseProduct,
@@ -18,4 +18,5 @@ export {
   type BannerData,
   type ErrorObject,
   type ValidResponse,
-} from './respDataTypes';
+  Status,
+} from './returnDataTypes';

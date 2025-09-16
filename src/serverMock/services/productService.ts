@@ -1,25 +1,32 @@
 import { apiFetch } from '@server/helpers';
 import { ApiEndpoint } from '@server/static';
-import { ServerCategory, Product, ValidProdParams } from '@server/types';
+import {
+  Product,
+  ServerCategory,
+  ValidAmountParams,
+  ValidProdParams,
+} from '@server/types';
 
-async function getProduct(params: ValidProdParams): Promise<Product[]> {
-  const { category, itemId } = params;
+async function getProduct(params: ValidProdParams): Promise<Product | null> {
+  const { itemId } = params;
 
-  const endpointMap = new Map([
-    [ServerCategory.ACCESSORIES, ApiEndpoint.ACCESSORIES],
-    [ServerCategory.PHONES, ApiEndpoint.PHONES],
-    [ServerCategory.TABLETS, ApiEndpoint.TABLETS],
-  ]);
+  const product = ((await apiFetch(ApiEndpoint.ITEMS)) as Product[]).filter(
+    (el: Product) => el.id === itemId,
+  );
 
-  const endpoint = endpointMap.get(category);
-
-  if (!endpoint) {
-    throw new Error(`Wrong endpoint: ${endpoint}`);
+  if (product.length === 0) {
+    return null;
   }
 
-  return ((await apiFetch(endpoint)) as Product[]).filter(
-    (el: Product) => el.namespaceId === itemId,
-  );
+  return product[0];
 }
 
-export { getProduct };
+async function getAmount(params: ValidAmountParams): Promise<number> {
+  const initArray = (await apiFetch(ApiEndpoint.ITEMS)) as Product[];
+
+  return params.category === ServerCategory.ALL
+    ? initArray.length
+    : initArray.filter(el => el.category === params.category).length;
+}
+
+export { getProduct, getAmount };

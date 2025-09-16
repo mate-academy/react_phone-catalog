@@ -30,7 +30,7 @@ export const CataloguePagination = ({ pages, currentPage, setPage }: Props) => {
           className={getClassName(dg + 1)}
           onClick={() => setPage(dg + 1)}
           aria-label={`Go to page #${dg + 1}`}
-          aria-current={dg + 1 === currentPage}
+          aria-current={dg + 1 === currentPage ? 'page' : undefined}
         >
           {dg + 1}
         </button>

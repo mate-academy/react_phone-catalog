@@ -1,6 +1,6 @@
 import { Item } from '@shared/types';
 import { useMemo } from 'react';
-import { useGlobalActions, useGlobalData } from '../useGlobalStore/appContext';
+import { useGlobalActions, useGlobalData } from '../globalStore/appContext';
 
 export const useProdCard = () => {
   const { itemsInFav, itemsInCart } = useGlobalData();

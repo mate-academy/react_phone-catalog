@@ -1,35 +1,45 @@
 import { Category, ItemsAmount, Order, Request } from '.';
 
-interface RequestParams {
-  request: Request;
-}
-
-interface ProductRequest extends RequestParams {
-  body: {
-    category: Category;
-    itemId: string;
-  };
-}
-
 interface CatalogueConf {
-  itemType?: Category;
-  sort?: Order;
-  perPage?: ItemsAmount;
-  page?: number;
+  itemType: Category;
+  sort: Order;
+  perPage: ItemsAmount;
+  page: number;
 }
 
-interface CatalogueRequest extends RequestParams {
-  body: CatalogueConf;
-}
 interface ProductConf {
-  category: Category;
   itemId: string;
 }
 
+interface AmountConf {
+  category: Category;
+}
+
+interface CatalogueRequest {
+  request: Request.CATALOGUE;
+  body: CatalogueConf;
+}
+
+interface ProductRequest {
+  request: Request.PRODUCT;
+  body: ProductConf;
+}
+
+interface AmountRequest {
+  request: Request.AMOUNT;
+  body: AmountConf;
+}
+
+interface BannerRequest {
+  request: Request.BANNER;
+}
+
 export {
-  type ProductRequest,
-  type RequestParams,
-  type CatalogueRequest,
-  type ProductConf,
   type CatalogueConf,
+  type ProductConf,
+  type AmountConf,
+  type CatalogueRequest,
+  type ProductRequest,
+  type AmountRequest,
+  type BannerRequest,
 };

@@ -2,5 +2,6 @@ export {
   useGlobalData,
   useGlobalActions,
   GlobalProvider,
-} from './useGlobalStore/appContext';
-export { useProdCard } from './useProductCard/useProdCard';
+} from './globalStore/appContext';
+export { useProdCard } from './productCard/useProdCard';
+export { useLoadItems, LoadingStates } from './itemsLoader/loadItems';

@@ -1,13 +1,12 @@
 import { Category } from '@shared/api';
 import styles from './styles/categoriesPage.module.scss';
-import { Dropdown, CataloguePagination } from './ui';
+import { Dropdown, CataloguePagination, CatalogueGrid } from './ui';
 import { useCatalogue, filter, pPage } from './model';
-import { useProdCard } from '@features/index';
-import { ProductCard } from '@entities/prodCard';
 import { Breadcrumbs } from '@ui/index';
+import { LoadingStates } from '@features/index';
 
 type Props = {
-  category: Exclude<Category, Category.ALL>;
+  category: Category;
 };
 
 export const CategoriesPage = ({ category }: Props) => {
@@ -15,11 +14,9 @@ export const CategoriesPage = ({ category }: Props) => {
     name: category as string,
     to: category as string,
   };
-  const { data, set, currentOrder, currentPerPage, pages, currentPage } =
-    useCatalogue({
-      category,
-    });
-  const { isIn, stateHandlers } = useProdCard();
+  const { data, set, currentOrder, currentPerPage, length } = useCatalogue({
+    category,
+  });
 
   return (
     <section className={styles.container}>
@@ -28,27 +25,20 @@ export const CategoriesPage = ({ category }: Props) => {
       </nav>
 
       <h1 className={styles.h1}>{category}</h1>
-      <span className={styles.models}>{data.length}</span>
+      <span className={styles.models}>
+        {length === LoadingStates.LOADING
+          ? LoadingStates.LOADING
+          : `${length} models`}
+      </span>
       <div className={styles.wrapper}>
         <Dropdown data={filter} setFilter={set.order} active={currentOrder} />
         <Dropdown data={pPage} setFilter={set.amount} active={currentPerPage} />
       </div>
-      <ul className={styles.catalogue}>
-        {data.items &&
-          data.items.length !== 0 &&
-          data.items.map(el => (
-            <ProductCard
-              key={el.key}
-              product={el}
-              isIn={isIn}
-              stateHandlers={stateHandlers}
-            />
-          ))}
-      </ul>
-      {pages.current > 1 && (
+      <CatalogueGrid data={data} category={category} />
+      {typeof data === 'object' && data.pages > 1 && (
         <CataloguePagination
-          pages={pages.current}
-          currentPage={currentPage.current}
+          pages={data.pages}
+          currentPage={data.currentPage}
           setPage={set.page}
         />
       )}

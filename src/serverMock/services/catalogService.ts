@@ -1,38 +1,32 @@
 import { apiFetch } from '@server/helpers';
 import { ApiEndpoint } from '@server/static';
 import {
-  ServerCategory,
   ItemsOnPage,
   OrderParams,
   ValidCatalogueParams,
   BaseProduct,
   ValidResponse,
+  ServerCategory,
 } from '@server/types';
-
-const defaultParams: ValidCatalogueParams = {
-  itemType: ServerCategory.ALL,
-  sort: OrderParams.NONE,
-  perPage: ItemsOnPage.ALL,
-  page: 1,
-};
 
 // Mutation is essential, because this is server mock,
 // I do not have DB and instruments to imply it full usage.
 
 async function getCatalogueItems(
-  initParams?: ValidCatalogueParams,
+  params: ValidCatalogueParams,
 ): Promise<Omit<ValidResponse, 'status'>> {
-  const params = { ...defaultParams, ...initParams } as ValidCatalogueParams;
   const { itemType, sort, perPage, page } = params;
+
   let initialArray = (await apiFetch(ApiEndpoint.PRODUCTS)) as BaseProduct[];
 
   const response = {
-    data: [] as BaseProduct[],
+    items: [] as BaseProduct[] | null,
     currentPage: page as number,
     pages: 1,
   };
 
-  if (itemType && itemType !== ServerCategory.ALL) {
+  // filtering by item category
+  if (itemType !== ServerCategory.ALL) {
     initialArray = initialArray.filter(
       (el: BaseProduct) => el.category === itemType,
     );
@@ -66,20 +60,25 @@ async function getCatalogueItems(
   }
 
   if (perPage === ItemsOnPage.ALL) {
-    response.data = initialArray;
+    response.items = initialArray;
   } else {
     response.pages = Math.ceil(
       initialArray.length / +(perPage as Exclude<ItemsOnPage, ItemsOnPage.ALL>),
     );
 
     const start =
-      ((page as number) - 1) * +(perPage as Omit<ItemsOnPage, ItemsOnPage.ALL>);
-    const end = start + +(perPage as Omit<ItemsOnPage, ItemsOnPage.ALL>);
+      ((page as number) - 1) *
+      +(perPage as Exclude<ItemsOnPage, ItemsOnPage.ALL>);
+    const end = start + +(perPage as Exclude<ItemsOnPage, ItemsOnPage.ALL>);
 
-    response.data = initialArray.slice(start, end);
+    response.items = initialArray.slice(start, end);
   }
 
-  return response as Omit<ValidResponse, 'status'>;
+  if (response.items.length === 0) {
+    response.items = null;
+  }
+
+  return response;
 }
 
 export { getCatalogueItems };

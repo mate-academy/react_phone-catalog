@@ -1,11 +1,4 @@
-export { ApiEndpoint, endpointMap } from './endPoints';
-export {
-  catalogueValidIDs,
-  PhoneValidNameSpaceIDs,
-  TabletValidNameSpaceIDs,
-  AccessoriesValidNameSpaceIDs,
-  GlobalValidNameSpaceIDs,
-} from './IDvalidationData';
+export { ApiEndpoint } from './endPoints';
 export {
   Processors,
   Resolutions,

@@ -1,6 +1,4 @@
 import {
-  catalogueValidIDs,
-  GlobalValidNameSpaceIDs,
   Cameras,
   Capacity,
   Cells,
@@ -27,13 +25,14 @@ interface Base {
 }
 
 interface BaseProduct extends Base {
-  key: (typeof catalogueValidIDs)[number];
+  key: number;
   year: number;
-  category: Exclude<ServerCategory, ServerCategory.ALL>;
+  category: ServerCategory;
 }
 
 interface Product extends Base {
-  namespaceId: GlobalValidNameSpaceIDs;
+  category: ServerCategory;
+  namespaceId: string;
   capacityAvailable: Capacity[];
   colorsAvailable: Colors[];
   description: Description[];
@@ -59,9 +58,14 @@ interface ErrorObject {
 
 interface ValidResponse {
   status: true;
-  data: BaseProduct[] | Product[] | BannerData[] | number;
+  items: BaseProduct[] | Product[] | BannerData[] | number | null;
   currentPage?: number;
   pages?: number;
+}
+
+enum Status {
+  ERROR = 'error',
+  SUCCESS = 'success',
 }
 
 export {
@@ -70,4 +74,5 @@ export {
   type BannerData,
   type ErrorObject,
   type ValidResponse,
+  Status,
 };

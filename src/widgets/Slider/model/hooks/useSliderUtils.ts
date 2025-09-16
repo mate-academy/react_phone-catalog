@@ -20,8 +20,10 @@ export const useSliderUtils = (startIndex: number, amount: number) => {
       }
     },
     stop: (e: React.PointerEvent<HTMLDivElement>) => {
-      e.currentTarget.releasePointerCapture(id.pointer.current as number);
-      id.pointer.current = null;
+      if (id.pointer.current !== null) {
+        e.currentTarget.releasePointerCapture(id.pointer.current as number);
+        id.pointer.current = null;
+      }
     },
   };
 

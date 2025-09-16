@@ -1,8 +1,8 @@
 enum Category {
-  ALL = 'all',
   ACCESSORIES = 'accessories',
   PHONES = 'phones',
   TABLETS = 'tablets',
+  ALL = 'all',
 }
 
 enum ItemsAmount {

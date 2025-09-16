@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { HomePageCategory } from '../model';
 import styles from '../styles/category.module.scss';
+import { LoadingStates } from '@features/index';
 
 type Props = {
   category: HomePageCategory;
@@ -22,6 +23,10 @@ export const CategoryElement = ({ category, amount }: Props) => (
       />
     </Link>
     <h3 className={styles.category__name}>{category.name}</h3>
-    <span className={styles.category__amount}>{amount}</span>
+    <span className={styles.category__amount}>
+      {amount === LoadingStates.LOADING
+        ? LoadingStates.LOADING
+        : `${amount} models`}
+    </span>
   </div>
 );

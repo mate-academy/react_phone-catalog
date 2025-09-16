@@ -42,9 +42,7 @@
 
   &__active {
     @include s.m-btn-btn-blc;
-    
+
     border: 1px solid s.$c-grey-primary;
   }
-
-
 }

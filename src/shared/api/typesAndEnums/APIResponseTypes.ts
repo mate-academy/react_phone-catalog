@@ -1,19 +1,37 @@
-import { CatalogueProduct } from '@shared/types';
+import { BannerData, CatalogueProduct, Product } from '@shared/types';
+
+enum ResponseStatus {
+  ERROR = 'error',
+  SUCCESS = 'success',
+}
 
 interface ErrorMessage {
-  status: false;
+  status: ResponseStatus.ERROR;
   message: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface BasicResponse<T = any> {
-  status: true;
+interface BasicResponse<T> {
+  status: ResponseStatus.SUCCESS;
   data: T;
 }
 
-interface CatalogueResponse extends BasicResponse<CatalogueProduct[]> {
+interface CatalogueData {
+  items: CatalogueProduct[] | null;
   currentPage: number;
   pages: number;
 }
 
-export { type ErrorMessage, type BasicResponse, type CatalogueResponse };
+type CatalogueResponse = BasicResponse<CatalogueData>;
+type BannerResponse = BasicResponse<BannerData[]>;
+type ItemResponse = BasicResponse<Product | null>;
+type LengthResponse = BasicResponse<number>;
+
+export {
+  ResponseStatus,
+  type ErrorMessage,
+  type CatalogueData,
+  type CatalogueResponse,
+  type BannerResponse,
+  type ItemResponse,
+  type LengthResponse,
+};

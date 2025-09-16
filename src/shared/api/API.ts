@@ -1,94 +1,91 @@
 /* eslint-disable no-console */
 import { getRequest } from '@server/api/serverMock';
 import {
-  BasicResponse,
+  AmountRequest,
+  BannerResponse,
+  CatalogueConf,
+  CatalogueData,
   CatalogueRequest,
   CatalogueResponse,
+  Category,
   ErrorMessage,
+  ItemResponse,
+  LengthResponse,
   ProductRequest,
   Request,
-  type ProductConf,
-  type CatalogueConf,
-  Category,
+  ResponseStatus,
 } from './typesAndEnums';
+import { BannerData, Product } from '@shared/types';
 
-import { BannerData, CatalogueProduct, ItemProduct } from '@shared/types';
-
-function handleError(message: string): never {
+const handleError = (message: string): never => {
   console.warn(`Unable to load data, error: ${message}`);
   throw new Error(`Unable to load data, error: ${message}`);
-}
+};
 
 const get = {
   banners: async (): Promise<BannerData[]> => {
-    const banners: BasicResponse<BannerData[]> | ErrorMessage = JSON.parse(
+    const banners: BannerResponse | ErrorMessage = JSON.parse(
       await getRequest(JSON.stringify({ request: Request.BANNER })),
     );
 
-    if (banners.status === false) {
+    if (banners.status === ResponseStatus.ERROR) {
       return handleError(banners.message);
     }
 
     return banners.data;
   },
 
-  product: async (conf: ProductConf): Promise<ItemProduct[]> => {
+  product: async (conf: string): Promise<Product | null> => {
     const itemConf: ProductRequest = {
       request: Request.PRODUCT,
-      body: { ...conf },
+      body: { itemId: conf },
     };
 
-    const item: BasicResponse<ItemProduct[]> | ErrorMessage = JSON.parse(
+    const item: ItemResponse | ErrorMessage = JSON.parse(
       await getRequest(JSON.stringify(itemConf)),
     );
 
-    if (item.status === false) {
+    if (item.status === ResponseStatus.ERROR) {
       return handleError(item.message);
     }
 
     return item.data;
   },
-  catalogue: async (
-    conf: CatalogueConf,
-  ): Promise<{
-    data: CatalogueProduct[];
-    currentPage: number;
-    pages: number;
-  }> => {
+
+  catalogue: async (conf: CatalogueConf): Promise<CatalogueData> => {
     const catConf: CatalogueRequest = {
       request: Request.CATALOGUE,
-      body: { ...conf },
+      body: conf,
     };
 
     const catalogueItems: CatalogueResponse | ErrorMessage = JSON.parse(
       await getRequest(JSON.stringify(catConf)),
     );
 
-    if (catalogueItems.status === false) {
-      handleError(catalogueItems.message);
+    if (catalogueItems.status === ResponseStatus.ERROR) {
+      return handleError(catalogueItems.message);
     }
 
-    const { data, currentPage, pages } = catalogueItems;
-
-    return { data, currentPage, pages };
+    return catalogueItems.data;
   },
-  length: async (
-    category: Exclude<Category, Category.ALL>,
-  ): Promise<number> => {
-    const itemsAmount = JSON.parse(
-      await getRequest(
-        JSON.stringify({
-          request: Request.AMOUNT,
-          body: {
-            category: category,
-          },
-        }),
-      ),
+
+  length: async (category: Category): Promise<number> => {
+    const lenReq: AmountRequest = {
+      request: Request.AMOUNT,
+      body: { category: category },
+    };
+
+    const itemsAmount: LengthResponse | ErrorMessage = JSON.parse(
+      await getRequest(JSON.stringify(lenReq)),
     );
 
-    const { data } = itemsAmount;
+    if (itemsAmount.status === ResponseStatus.ERROR) {
+      return handleError(itemsAmount.message);
+    }
 
-    return data;
+    console.log(itemsAmount);
+
+    return itemsAmount.data;
   },
 };
 

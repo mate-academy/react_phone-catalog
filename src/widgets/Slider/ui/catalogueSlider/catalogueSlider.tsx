@@ -2,7 +2,7 @@ import { CatalogueProduct } from '@shared/types';
 import styles from '../../styles/catalogueSlider.module.scss';
 import { useSliderCore, useSliderData, visualConfig } from '../../model';
 import { SliderButtons } from '../shared';
-import { useProdCard } from '@features/useProductCard/useProdCard';
+import { useProdCard } from '@features/productCard/useProdCard';
 import { ProductCard } from '@entities/prodCard';
 
 type Props = {

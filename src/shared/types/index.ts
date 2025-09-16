@@ -2,7 +2,7 @@ export { RoutePath, NavElementName, NavAriaLabels } from './navLinksTypes';
 export {
   Category,
   type CatalogueProduct,
-  type ItemProduct,
+  type Product,
   type BannerData,
 } from './APIReturnTypes';
 export { type Item, type CartItem } from './appReducerTypes';
