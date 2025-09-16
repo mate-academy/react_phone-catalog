@@ -1,4 +1,3 @@
-@use '../../variables/variables' as *;
 @use '../../mixins/mixins' as *;
 
 .productDetailsPage {
@@ -27,12 +26,6 @@
     }
   }
 
-  &__quantity {
-    margin-top: 8px;
-    line-height: 21px;
-    color: $text-color;
-  }
-
   &__linkBack {
     position: relative;
 
@@ -44,7 +37,7 @@
 
     font-size: 12px;
     line-height: 100%;
-    color: $main-white;
+    color: var(--header-color);
     text-decoration: none;
 
     &::before {
@@ -63,10 +56,26 @@
     }
 
     &:hover {
-      color: $main-purple;
+      color: var(--purple-main);
 
       &::before{
         background-image: url('../../../public/img/icons/arrow-left-purple.svg');
+      }
+    }
+
+    &--lightTheme{
+      color: var(--text-color);
+
+      &::before{
+        background-image: url('../../../public/img/icons/arrow-left-lightTheme.svg');
+      }
+
+      &:hover {
+        color: var(--header-color);
+
+        &::before{
+          background-image: url('../../../public/img/icons/arrow-left-lightTheme.svg');
+        }
       }
     }
   }
@@ -111,7 +120,7 @@
     width: fit-content;
     height: 49px;
 
-    background-color: $main-white;
+    background-color: var(--header-color);
 
     @include tablet {
       height: 32px;
@@ -119,6 +128,10 @@
 
     @include desktop {
       height: 80px;
+    }
+
+    &--lightTheme{
+      background-color: var(--app-background);
     }
   }
 
@@ -136,9 +149,10 @@
     align-items: center;
     justify-content: center;
     width: 52px;
+    border: 0.5px solid rgba(196, 196, 196, 1);
 
     &--active {
-      outline: 1px solid $main-white;
+      outline: 1px solid var(--header-color);
     }
 
     @include tablet {
@@ -169,7 +183,7 @@
   &__product {
     display: grid;
     font-size: 12px;
-    color: $text-color;
+    color: var(--text-color);
 
     @include tablet {
       grid-template-columns: repeat(2, 1fr);
@@ -183,7 +197,7 @@
 
   &__details {
     padding-bottom: 24px;
-    border-bottom: 1px solid $items-disabled;
+    border-bottom: 1px solid var(--items-disabled);
 
     @include tablet {
       grid-column: 2/-1;
@@ -202,28 +216,32 @@
       height: 30px;
       border-radius: 50%;
 
-      outline: 1px solid $items-disabled;
+      outline: 1px solid var(--items-disabled);
       outline-offset: 2px;
     }
 
     &--colorActive {
-      outline-color: $main-white;
+      outline-color: var(--header-color);
     }
 
     &--capacity {
       width: 56px;
       height: 32px;
       padding: 7px;
-      border: 1px solid $items-hover;
+      border: 1px solid var(--items-disabled);
 
       font-weight: 600;
-      color: $main-white;
+      color: var(--header-color);
       text-align: center;
+
+      &-lightTheme{
+        border-color: var(--border-color);
+      }
     }
 
     &--capacityActive {
-      color: $app-background;
-      background-color: $main-white;
+      color: var(--app-background);
+      background-color: var(--header-color);
     }
   }
 
@@ -266,7 +284,7 @@
   &__price {
     display: flex;
     gap: 8px;
-    color: $main-white;
+    color: var(--header-color);
   }
 
   &__priceDiscount {
@@ -281,7 +299,7 @@
     font-size: 22px;
     font-weight: 600;
     line-height: 100%;
-    color: $text-color;
+    color: var(--text-color);
     text-decoration: line-through;
   }
 
@@ -320,7 +338,7 @@
   }
 
   &__featuresValue {
-    color: $main-white;
+    color: var(--header-color);
     text-align: right;
   }
 
@@ -351,9 +369,9 @@
 
   &__articleTitle {
     padding-bottom: 16px;
-    border-bottom: 1px solid $items-disabled;
+    border-bottom: 1px solid var(--items-disabled);
     font-size: 20px;
-    color: $main-white;
+    color: var(--header-color);
 
     @include tablet {
       font-size: 22px;
@@ -370,7 +388,7 @@
   &__aboutDescriptionTitle {
     margin-bottom: 16px;
     font-size: 16px;
-    color: $main-white;
+    color: var(--header-color);
 
     @include tablet {
       font-size: 20px;

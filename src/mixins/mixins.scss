@@ -1,19 +1,11 @@
-@use '../variables/variables' as v;
-
-@mixin mobile {
-  @media (max-width: 320px) {
-    @content;
-  }
-}
-
 @mixin tablet {
-  @media (min-width: v.$tablet) {
+  @media (min-width: 640px) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: v.$desktop) {
+  @media (min-width: 1200px) {
     @content;
   }
 }
@@ -83,16 +75,16 @@
   max-width: 1200px;
 }
 
-@mixin scaleOnHover{
+@mixin scaleOnHover {
   transform-origin: center center;
   transition: transform 0.3s ease;
 
-  &:hover{
+  &:hover {
     transform: scale(1.05);
   }
 }
 
-@mixin swiperStypes{
+@mixin swiperStypes {
   :global(.swiper) {
     height: 100%;
   }
@@ -107,7 +99,7 @@
   :global(.swiper-slide) {
     width: max-content !important;
 
-    @include desktop{
+    @include desktop {
       width: 272px !important;
     }
   }
@@ -121,24 +113,24 @@
     width: 32px;
     height: 32px;
 
-    background-color: $dark-gray;
+    background-color: var(--dark-gray);
     box-shadow: none !important;
 
-    &::after{
+    &::after {
       content: url('../../public/img/icons/arrow-left.svg');
-      font-size:small !important;
+      font-size: small !important;
     }
 
-    &:disabled{
-      border: 1px solid $items-disabled;
-      background-color: $app-background;
+    &:disabled {
+      border: 1px solid var(--items-disabled);
+      background-color: var(--app-background);
     }
 
-    &:hover{
-      background-color: $items-hover;
+    &:hover {
+      background-color: var(--items-hover);
     }
 
-    @include tablet{
+    @include tablet {
       right: 64px !important;
     }
   }
@@ -150,24 +142,67 @@
     width: 32px;
     height: 32px;
 
-    background-color: $dark-gray;
+    background-color: var(--dark-gray);
 
-    &::after{
+    &::after {
       content: url('../../../public/img/icons/arrow-right-white.svg');
-      font-size:small !important;
+      font-size: small !important;
     }
 
-    &:disabled{
-      border: 1px solid $items-disabled;
-      background-color: $app-background;
+    &:disabled {
+      border: 1px solid var(--items-disabled);
+      background-color: var(--app-background);
     }
 
-    &:hover{
-      background-color: $items-hover;
+    &:hover {
+      background-color: var(--items-hover);
     }
 
-    @include tablet{
+    @include tablet {
       right: 24px !important;
+    }
+  }
+}
+
+@mixin buttonOnHover {
+  filter: drop-shadow(0 3px 13px rgba(23, 32, 49, 0.4));
+}
+
+@mixin dropdownStyles {
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--dark-gray);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: var(--header-color);
+  background: var(--dark-gray);
+
+  &:hover {
+    border-color: var(--items-hover);
+    background-color: var(--dark-gray);
+  }
+
+  &:focus {
+    border-color: var(--purple-main);
+  }
+
+  &--lightTheme {
+    background-color: var(--app-background);
+    border: 1px solid var(--border-color);
+
+    &:hover {
+      background-color: var(--app-background);
+      border-color: var(--text-color);
+    }
+
+    &:focus {
+      border-color: var(--header-color);
     }
   }
 }

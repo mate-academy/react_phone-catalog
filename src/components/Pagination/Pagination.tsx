@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import styles from './Pagination.module.scss';
+import { useTheme } from '../../contexts/ThemeContext';
 
 interface Props {
   total: number;
@@ -10,6 +11,7 @@ interface Props {
 
 // eslint-disable-next-line max-len
 export const Pagination = ({ total, perPage, currentPage, onPageChange }: Props): JSX.Element => {
+  const { theme } = useTheme();
   let totalPages = total;
 
   if (typeof perPage === 'number') {
@@ -51,12 +53,24 @@ export const Pagination = ({ total, perPage, currentPage, onPageChange }: Props)
     <ul className={styles.pagination}>
       <button
         className={classNames(styles.pagination__button, {
-          [styles.pagination__buttonDisabled]: currentPage === 1,
+          [styles['pagination__button--disabled']]: currentPage === 1,
+          [styles['pagination__button--lightTheme']]: theme === 'light',
+          [styles['pagination__button--disabled-lightTheme']]:
+            theme === 'light' && currentPage === 1,
         })}
         disabled={currentPage === 1}
       >
         <a
-          className={`${styles.pagination__arrowLinkLeft} ${styles.pagination__arrowLink}`}
+          className={classNames(
+            styles.pagination__arrowLink,
+            styles['pagination__arrowLink--left'],
+            {
+              [styles['pagination__arrowLink--left-lightTheme']]: theme === 'light',
+              [styles['pagination__arrowLink--left-disabled']]: currentPage === 1,
+              [styles['pagination__arrowLink--left-lightTheme-disabled']]:
+                theme === 'light' && currentPage === 1,
+            },
+          )}
           href="#prev"
           aria-disabled={currentPage === 1}
           onClick={e => {
@@ -73,13 +87,16 @@ export const Pagination = ({ total, perPage, currentPage, onPageChange }: Props)
           <li
             key={idx}
             className={classNames(styles.pagination__item, {
-              [styles.pagination__itemActive]: currentPage === page,
+              [styles['pagination__item--active']]: currentPage === page,
+              [styles['pagination__item--lightTheme']]: theme === 'light',
+              [styles['pagination__item--active-lightTheme']]:
+                theme === 'light' && currentPage === page,
             })}
           >
             {page === '...' ? (
               <a
                 href="#ellipsis"
-                className={styles.pagination__link}
+                className={`${styles.pagination__link}`}
                 onClick={e => {
                   e.preventDefault();
                   if (idx === 1) {
@@ -94,7 +111,10 @@ export const Pagination = ({ total, perPage, currentPage, onPageChange }: Props)
             ) : (
               <a
                 data-cy="pageLink"
-                className={styles.pagination__link}
+                className={classNames(styles.pagination__link, {
+                  [styles['pagination__link--active-lightTheme']]:
+                    currentPage === page && theme === 'light',
+                })}
                 href={`#${page}`}
                 onClick={e => {
                   e.preventDefault();
@@ -110,12 +130,24 @@ export const Pagination = ({ total, perPage, currentPage, onPageChange }: Props)
 
       <button
         className={classNames(styles.pagination__button, {
-          [styles.pagination__buttonDisabled]: currentPage === totalPages,
+          [styles['pagination__button--disabled']]: currentPage === totalPages,
+          [styles['pagination__button--lightTheme']]: theme === 'light',
+          [styles['pagination__button--disabled-lightTheme']]:
+            theme === 'light' && currentPage === totalPages,
         })}
         disabled={currentPage === totalPages}
       >
         <a
-          className={`${styles.pagination__arrowLinkRight} ${styles.pagination__arrowLink} ${currentPage === totalPages ? 'disabled' : ''}`}
+          className={classNames(
+            styles.pagination__arrowLink,
+            styles['pagination__arrowLink--right'],
+            {
+              [styles['pagination__arrowLink--right-lightTheme']]: theme === 'light',
+              [styles['pagination__arrowLink--right-disabled']]: currentPage === totalPages,
+              [styles['pagination__arrowLink--right-lightTheme-disabled']]:
+                theme === 'light' && currentPage === totalPages,
+            },
+          )}
           href="#next"
           aria-disabled={currentPage === totalPages}
           onClick={e => {

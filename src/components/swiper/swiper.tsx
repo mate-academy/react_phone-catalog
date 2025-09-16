@@ -6,8 +6,16 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../../contexts/ThemeContext';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export const MySwiper = () => {
+  const { theme } = useTheme();
+  const { t } = useTranslation();
+  const { language } = useLanguage();
+
   return (
     <Swiper
       modules={[Pagination, Navigation, Autoplay]}
@@ -16,23 +24,48 @@ export const MySwiper = () => {
         nextEl: `.${styles.swiper__next}`,
         prevEl: `.${styles.swiper__prev}`,
       }}
-      autoplay={{ delay: 5000, disableOnInteraction: false }}
-      loop={true}
+      // autoplay={{ delay: 5000, disableOnInteraction: false }}
+      // loop={true}
       className={`${styles.mySwiper} ${styles.swiper}`}
     >
       <SwiperSlide className={`${styles.swiper__slide}`}>
-        <img
-          src="public/img/slider/slider-1.png"
-          alt="iPhone 14"
-          className={`${styles.swiper__image} ${styles['swiper__image--mobile']}`}
-        />
+        <div className={`${styles.swiper__slideContentMobile}`}>
+          <img
+            src="public/img/slider/slider-1.png"
+            alt="iPhone 14"
+            className={`${styles.swiper__image} ${styles['swiper__image--mobile-main']}`}
+          />
+
+          <h2 className={`${styles.swiper__orderTitle} ${styles['swiper__orderTitle--mobile']}`}>
+            {t('titles.nowInStore')}
+          </h2>
+
+          <div
+            className={`${styles.swiper__slideDescription} ${styles['swiper__slideDescription--mobile']}`}
+          >
+            <h2 className={`${styles.swiper__slideTitle}`}>iPhone 14 Pro</h2>
+            <p className={`${styles.swiper__slideText}`}>{t('titles.sliderText')}</p>
+          </div>
+        </div>
 
         <div className={`${styles.swiper__slideContentTablet}`}>
           <div className={styles.swiper__order}>
-            <h2 className={styles.swiper__orderTitle}>Now available in our store!</h2>
-            <p className={styles.swiper__orderText}>Be the first!</p>
+            <div className={styles.swiper__orderHead}>
+              <h2
+                className={`${styles.swiper__orderTitle} ${language === 'UA' && styles['swiper__orderTitle--ua']}`}
+              >
+                {t('titles.nowInStore')}
+              </h2>
+              <p className={styles.swiper__orderText}>{t('titles.beTheFirst')}</p>
+
+              <div className={`${styles.swiper__slideDescription}`}>
+                <h2 className={`${styles.swiper__slideTitle}`}>iPhone 14 Pro</h2>
+                <p className={`${styles.swiper__slideText}`}>{t('titles.sliderText')}</p>
+              </div>
+            </div>
+
             <Link to="/phones" className={styles.swiper__orderButton}>
-              Order now
+              {t('buttonText.order')}
             </Link>
           </div>
 
@@ -72,8 +105,12 @@ export const MySwiper = () => {
         />
       </SwiperSlide>
 
-      <div className={styles.swiper__prev}></div>
-      <div className={styles.swiper__next}></div>
+      <div
+        className={`${styles.swiper__prev} ${theme === 'light' && styles['swiper__prev--lightTheme']}`}
+      ></div>
+      <div
+        className={`${styles.swiper__next} ${theme === 'light' && styles['swiper__next--lightTheme']}`}
+      ></div>
     </Swiper>
   );
 };

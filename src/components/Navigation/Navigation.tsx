@@ -1,12 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 import classNames from 'classnames';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   isAside?: boolean;
 };
 
 export const Navigation = ({ isAside = false }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <nav
       className={classNames(styles.navigation, {
@@ -31,7 +35,7 @@ export const Navigation = ({ isAside = false }: Props) => {
                 : styles.navigation__link
             }
           >
-            Home
+            {t('nav.home')}
           </NavLink>
         </li>
         <li
@@ -46,9 +50,8 @@ export const Navigation = ({ isAside = false }: Props) => {
                 ? `${styles.navigation__link}  ${isAside && styles['navigation__link--aside']} ${styles['navigation__link--active']}`
                 : styles.navigation__link
             }
-            end
           >
-            Phones
+            {t('nav.phones')}
           </NavLink>
         </li>
         <li
@@ -63,9 +66,8 @@ export const Navigation = ({ isAside = false }: Props) => {
                 ? `${styles.navigation__link}  ${isAside && styles['navigation__link--aside']} ${styles['navigation__link--active']}`
                 : styles.navigation__link
             }
-            end
           >
-            Tablets
+            {t('nav.tablets')}
           </NavLink>
         </li>
         <li
@@ -80,9 +82,8 @@ export const Navigation = ({ isAside = false }: Props) => {
                 ? `${styles.navigation__link}  ${isAside && styles['navigation__link--aside']} ${styles['navigation__link--active']}`
                 : styles.navigation__link
             }
-            end
           >
-            Accessories
+            {t('nav.accessories')}
           </NavLink>
         </li>
       </ul>

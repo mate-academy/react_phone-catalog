@@ -1,8 +1,7 @@
-@use '../../variables/variables' as *;
 @use '../../mixins/mixins' as *;
 
 .Footer {
-  &__content{
+  &__content {
     @include padding-inline;
 
     display: flex;
@@ -10,7 +9,7 @@
     gap: 32px;
     padding-block: 32px;
 
-    @include tablet{
+    @include tablet {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
@@ -28,7 +27,7 @@
       gap: 14px;
     }
 
-    @include desktop{
+    @include desktop {
       gap: 107px;
     }
   }
@@ -41,17 +40,25 @@
     font-size: 12px;
     font-weight: 800;
     line-height: 11px;
-    color: $main-white;
+    color: var(--header-color);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 4%;
 
-    &:hover{
-      color: $main-purple;
+    &:hover {
+      color: var(--purple-main);
+    }
+
+    &--lightTheme {
+      color: var(--text-color);
+
+      &:hover {
+        color: var(--header-color);
+      }
     }
   }
 
-  &__navToTop{
+  &__navToTop {
     display: flex;
     gap: 16px;
     align-items: center;
@@ -59,32 +66,52 @@
     justify-self: center;
   }
 
-  &__toTopLink {
+  &__toTopButton {
+    cursor: pointer;
+    all: unset;
     font-size: 12px;
     font-weight: 700;
     line-height: 100%;
-    color: $border-color;
+    color: var(--text-color);
     text-decoration: none;
 
-    &:hover{
-      color: $main-purple;
+    &:hover {
+      color: var(--purple-main);
+    }
+
+    &--lightTheme {
+      &:hover {
+        color: var(--header-color);
+      }
     }
   }
 
-  &__arrowUp {
-    display: block;
-
+  &__upButton {
+    cursor: pointer;
+    outline: none;
+    border: none;
     box-sizing: border-box;
     width: 32px;
     height: 32px;
 
-    background-color: $dark-gray;
+    background-color: var(--dark-gray);
     background-image: url('../../../public/img/icons/arrow-up.svg');
     background-repeat: no-repeat;
     background-position: center;
 
-    &:hover{
-      background-color: $items-hover;
+    &:hover {
+      background-color: var(--items-hover);
+    }
+
+    &--lightTheme {
+      border: 1px solid var(--border-color);
+      background-color: var(--app-background);
+      background-image: url('../../../public/img/icons/arrow-up-lightTheme-dark.svg');
+
+      &:hover {
+        border-color: var(--header-color);
+        background-color: var(--app-background);
+      }
     }
   }
 }

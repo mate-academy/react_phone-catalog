@@ -1,7 +1,25 @@
 :root {
-  --main-white: #f1f2f9;
-  --app-background: #0f1121;
-  --items-disabled: #3b3e4a;
+  --app-background: rgb(15, 17, 33);
+  --header-color: rgb(241, 242, 249);
+  --purple-main: #905bff;
+  --purple-light: #a378ff;
+  --text-color: rgb(117, 118, 127);
+  --dark-gray: rgb(50, 53, 66);
+  --card-background: rgb(22, 24, 39);
+  --border-color: rgb(138, 147, 153);
+  --items-disabled: rgb(59, 62, 74);
+  --items-hover: rgb(74, 77, 88);
+  --main-red: rgb(233, 83, 83);
+  --gray-secondary: rgba(137, 147, 154, 1);
+}
+
+html[data-theme='light'] {
+  --app-background: rgba(255, 255, 255, 1);
+  --header-color: rgba(49, 50, 55, 1);
+  --text-color: rgba(137, 147, 154, 1);
+  --items-disabled: rgba(226, 230, 233, 1);
+  --main-green: rgba(39, 174, 96, 1);
+  --border-color: rgba(180, 189, 195, 1);
 }
 
 html{
@@ -21,7 +39,7 @@ body {
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--main-white);
+  color: var(--header-color);
 
   background-color: var(--app-background);
 
@@ -29,7 +47,7 @@ body {
     content: '';
 
     position: absolute;
-    bottom: 287px;
+    bottom: 257px;
     left: 0;
 
     display: block;

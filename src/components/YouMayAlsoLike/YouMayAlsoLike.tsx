@@ -5,10 +5,13 @@ import { useEffect, useState } from 'react';
 import { Item } from '../../types/Item';
 import { useProducts } from '../../contexts/ProductContext';
 import { ProductSlider } from '../ProductsSlider';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useTranslation } from 'react-i18next';
 
 export const YouMayAlsoLike = () => {
   const { transformedProducts } = useProducts();
   const [randomProducts, setRandomProducts] = useState<Item[]>([]);
+  const { t } = useTranslation();
 
   function getRandomProducts(items: Item[], count = 30): Item[] {
     const filtered = [...items];
@@ -34,7 +37,7 @@ export const YouMayAlsoLike = () => {
     <section className={styles.youMayAlsoLike}>
       <ProductSlider
         products={randomProducts}
-        title={'You may also like'}
+        title={t('sections.youMayLike')}
         isWithoutDescount={true}
         isYouMayLike={true}
       />

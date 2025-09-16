@@ -1,116 +1,164 @@
-@use '../../variables/variables' as *;
 @use '../../mixins/mixins' as *;
 
-.cart{
+.cart {
   flex: 1;
 
   @include omitFixedTopBar;
   @include padding-inline;
   @include sectionsPaddingBlock;
 
-  @include desktop{
+  @include tablet {
     padding-top: 40px;
   }
 
-  &__navigation{
+  &__navigation {
     display: flex;
     gap: 5px;
     align-items: center;
     margin-bottom: 24px;
 
-    @include desktop{
+    @include desktop {
       margin-bottom: 16px;
     }
   }
 
-  &__arrowLeft{
+  &__arrowLeft {
     display: block;
     width: 16px;
     height: 16px;
     background-image: url('../../../public/img/icons/arrow-left.svg');
+
+    &--lightTheme {
+      background-image: url('../../../public/img/icons/arrow-left-black.svg');
+    }
   }
 
-  &__linkBack{
+  &__linkBack {
+    position: relative;
+    display: block;
+    margin-bottom: 16px;
     padding-top: 3px;
+    padding-left: 20px;
 
     font-size: 12px;
     line-height: 100%;
-    color: $main-white;
+    color: var(--header-color);
     text-decoration: none;
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      background-image: url('../../../public/img/icons/arrow-left.svg');
+    }
+
+    &:hover {
+      color: var(--purple-main);
+
+      &::before {
+        background-image: url('../../../public/img/icons/arrow-left-purple.svg');
+      }
+    }
+
+    &--lightTheme {
+      color: var(--gray-secondary);
+
+      &::before {
+        background-image: url('../../../public/img/icons/arrow-left-black.svg');
+      }
+
+      &:hover {
+        color: var(--header-color);
+
+        &::before {
+          background-image: url('../../../public/img/icons/arrow-left-black.svg');
+        }
+      }
+    }
   }
 
-  &__title{
+  &__title {
     @include titleStyle;
 
     margin-bottom: 32px;
   }
 
-  &__emptyBox{
+  &__emptyBox {
     display: flex;
     flex-direction: column;
     gap: 30px;
     align-items: center;
 
-    @include tablet{
+    @include tablet {
       gap: 60px;
     }
   }
 
-  &__emptyMessage{
+  &__emptyMessage {
     font-size: 20px;
 
-    @include tablet{
+    @include tablet {
       font-size: 30px;
     }
   }
 
-  &__emptyPhoto{
+  &__emptyPhoto {
     width: 200px;
     height: 200px;
 
-    @include tablet{
+    @include tablet {
       width: 300px;
       height: 300px;
     }
   }
 
-  &__content{
+  &__content {
     display: flex;
     flex-direction: column;
     gap: 32px;
 
-    @include desktop{
+    @include desktop {
       flex-direction: row;
       justify-content: space-between;
     }
   }
 
-  &__list{
+  &__list {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
 
-  &__item{
+  &__item {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     row-gap: 16px;
-
     padding: 16px;
+    background-color: var(--card-background);
 
-    background-color: $card-background;
-
-    @include tablet{
+    @include tablet {
       grid-template-columns: repeat(6, 1fr);
       column-gap: 24px;
       align-items: center;
       padding: 24px;
     }
+
+    &--lightTheme {
+      background-color: var(--app-background);
+      border: 1px solid var(--items-disabled);
+    }
   }
 
-  &__itemRemove{
+  &__itemRemove {
     cursor: pointer;
-
     display: block;
     align-self: center;
 
@@ -120,21 +168,29 @@
     background-image: url('../../../public/img/icons/close-grey.svg');
     background-repeat: no-repeat;
     background-position: center;
+
+    &--lightTheme {
+      background-image: url('../../../public/img/icons/close-cart-lightTheme.svg');
+
+      &:hover{
+        background-image: url('../../../public/img/icons/close-grey.svg');
+      }
+    }
   }
 
-  &__itemPhoto{
+  &__itemPhoto {
     grid-column: 1fr;
     width: fit-content;
     height: 70px;
   }
 
-  &__itemTitle{
+  &__itemTitle {
     grid-column: 3/5;
     font-weight: 600;
-    color: $main-white;
+    color: var(--header-color);
   }
 
-  &__itemPrice{
+  &__itemPrice {
     grid-column: 3/5;
     justify-self: flex-end;
 
@@ -142,69 +198,88 @@
     font-weight: 800;
     line-height: 140%;
 
-    @include tablet{
+    @include tablet {
       grid-column: 6/7;
     }
   }
 
-  &__itemQuantity{
+  &__itemQuantity {
     display: flex;
     grid-column: 1/3;
     gap: 13px;
     align-items: center;
 
-    @include tablet{
+    @include tablet {
       grid-column: 5/6;
     }
   }
 
-  &__quantityBtn{
+  &__quantityBtn {
     width: 32px;
     height: 32px;
     border: none;
+    color: var(--header-color);
+    background-color: var(--dark-gray);
 
-    color: $main-white;
-
-    background-color: $dark-gray;
-
-    &:hover{
-      background-color: $items-hover;
+    &:hover {
+      background-color: var(--items-hover);
     }
 
-    &--disabled{
-      border: 1px solid $items-disabled;
-      color: $items-hover;
-      background-color: $card-background;
+    &--disabled {
+      border: 1px solid var(--items-disabled);
+      color: var(--items-disabled);
+      background-color: var(--card-background);
 
-      &:hover{
-        background-color: $card-background;
+      &:hover {
+        background-color: var(--card-background);
+      }
+    }
+
+    &--lightTheme {
+      background-color: var(--app-background);
+      border: 1px solid var(--border-color);
+
+      &:hover {
+        background-color: var(--app-background);
+        border: 1px solid var(--header-color);
+      }
+    }
+
+    &--lightTheme-disabled {
+      border: 1px solid var(--items-disabled);
+      color: var(--items-disabled);
+      background-color: var(--app-background);
+
+      &:hover {
+        border-color: var(--items-disabled);
+        background-color: var(--app-background);
       }
     }
   }
 
-  &__checkout{
+  &__checkout {
     padding: 24px;
-    border: 1px solid $items-disabled;
+    border: 1px solid var(--items-disabled);
 
-    @include desktop{
-     align-self: start;
+    @include desktop {
+      align-self: start;
     }
   }
 
-  &__checkoutAmount{
+  &__checkoutAmount {
     font-size: 32px;
     line-height: 41px;
     text-align: center;
     letter-spacing: -1%;
   }
 
-  &__checkoutQuantity{
+  &__checkoutQuantity {
     position: relative;
     font-weight: 600;
-    color: $text-color;
+    color: var(--text-color);
     text-align: center;
 
-    &::after{
+    &::after {
       content: '';
 
       position: absolute;
@@ -215,23 +290,36 @@
       width: 100%;
       height: 1px;
 
-      background-color: $items-disabled;
+      background-color: var(--items-disabled);
     }
   }
 
-  &__checkoutButton{
+  &__checkoutButton {
     width: 100%;
     height: 48px;
     margin-top: 32px;
-
-    color: $main-white;
+    border: none;
+    color: var(--header-color);
     text-align: center;
+    background-color: var(--purple-main);
 
-    background-color: $main-purple;
-
-    @include desktop{
+    @include desktop {
       width: 320px;
       margin-top: 49px;
+    }
+
+    &:hover {
+      background-color: var(--purple-light);
+    }
+
+    &--lightTheme {
+      color: var(--app-background);
+      background-color: var(--header-color);
+
+      &:hover {
+        @include buttonOnHover;
+        background-color: var(--header-color);
+      }
     }
   }
 }

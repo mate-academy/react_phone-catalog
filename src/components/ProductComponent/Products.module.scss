@@ -1,10 +1,11 @@
-@use '../../variables/variables' as *;
 @use '../../mixins/mixins' as *;
 
 .products{
   &__form {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
 
     @include tablet {
       gap: 16px;
@@ -22,11 +23,19 @@
         width: 187px;
       }
     }
+
+    &--search{
+      width: 100%;
+
+      @media (min-width: 520px) {
+        width: 187px;
+      }
+    }
   }
 
   &__label {
     font-size: 12px;
-    color: $text-color;
+    color: var(--text-color);
   }
 
   &__select {
@@ -36,16 +45,20 @@
     border: none;
 
     line-height: 21px;
-    color: $main-white;
+    color: var(--header-color);
 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: $dark-gray;
+    background-color: var(--dark-gray);
     background-image: url('../../../public/img/icons/arrow-down.svg');
     background-repeat: no-repeat;
     background-position: right 8px center;
     background-size: 16px 16px;
+
+    &-lightTheme{
+      background-color: var(--app-background);
+    }
   }
 
   &__selectSort{
@@ -54,7 +67,16 @@
     }
   }
 
-  &__option{
-    background-color: $dark-gray !important;
+  &__input{
+    &::placeholder{
+      opacity: 0.3;
+      color: var(--header-color)
+    }
+
+    @include dropdownStyles;
+  }
+
+  &__noProducts{
+    margin-top: 40px;
   }
 }

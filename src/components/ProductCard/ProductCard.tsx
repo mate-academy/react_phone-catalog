@@ -2,6 +2,9 @@ import styles from './ProductCard.module.scss';
 import { Item } from '../../types/Item';
 import { Link } from 'react-router-dom';
 import { ProductControls } from '../ProductControls/ProductControls';
+import { useTheme } from '../../contexts/ThemeContext';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Item;
@@ -16,9 +19,12 @@ export const ProductCard: React.FC<Props> = ({
   isWideCard,
   isWithoutDescount,
 }) => {
+  const { theme } = useTheme();
+  const { t } = useTranslation();
+
   return (
     <div
-      className={`${styles.productCard} ${isYouMayLike && styles['productCard--youMayLike']} ${isWideCard && styles['productCard--wide']}`}
+      className={`${styles.productCard} ${theme === 'light' && styles['productCard--lightTheme']} ${isYouMayLike && styles['productCard--youMayLike']} ${isWideCard && styles['productCard--wide']}`}
     >
       <div className={styles.productCard__head}>
         <Link to={`/${product.category}/${product.id}`} className={styles.productCard__photoLink}>
@@ -29,7 +35,10 @@ export const ProductCard: React.FC<Props> = ({
           />
         </Link>
 
-        <Link to={`/${product.category}/${product.id}`} className={styles.productCard__title}>
+        <Link
+          to={`/${product.category}/${product.id}`}
+          className={`${styles.productCard__title} ${theme === 'light' && styles['productCard__title--lightTheme']}`}
+        >
           {product.name}
         </Link>
       </div>
@@ -44,17 +53,17 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className={styles.productCard__description}>
         <div className={styles.productCard__descriptionItem}>
-          <span className={styles.productCard__descriptionTitle}>Screen</span>
+          <span className={styles.productCard__descriptionTitle}>{t('titles.screen')}</span>
           <span className={styles.productCard__descriptionValue}>{product.screen}</span>
         </div>
 
         <div className={styles.productCard__descriptionItem}>
-          <span className={styles.productCard__descriptionTitle}>Capacity</span>
+          <span className={styles.productCard__descriptionTitle}>{t('titles.capacity')}</span>
           <span className={styles.productCard__descriptionValue}>{product.capacity}</span>
         </div>
 
         <div className={styles.productCard__descriptionItem}>
-          <span className={styles.productCard__descriptionTitle}>RAM</span>
+          <span className={styles.productCard__descriptionTitle}>{t('titles.ram')}</span>
           <span className={styles.productCard__descriptionValue}>{product.ram}</span>
         </div>
       </div>

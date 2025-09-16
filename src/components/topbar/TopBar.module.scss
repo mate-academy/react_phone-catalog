@@ -1,10 +1,9 @@
-@use '../../variables/variables' as *;
 @use '../../mixins/mixins' as *;
 
 .topBar {
-  position:fixed;
+  position: fixed;
   z-index: 4;
-  top:0;
+  top: 0;
   right: 0;
   left: 0;
 
@@ -12,55 +11,164 @@
   align-items: center;
   justify-content: space-between;
 
-  background-color: $app-background;
-  box-shadow: 0 1px 0 0 $items-disabled;
+  background-color: var(--app-background);
+  box-shadow: 0 1px 0 0 var(--dark-gray);
 
-    &__leftSide{
-      display: flex;
-      gap: 16px;
+  &--lightTheme{
+    box-shadow: 0 1px 0 0 var(--items-disabled);
+  }
 
-      @include desktop{
-        gap: 24px;
+  // &__switcher{
+  //   padding: 3px;
+  //   width: 33px;
+  //   border-radius: 20px;
+  //   background-color: var(--dark-gray);
+
+  //   &::after{
+  //     content: '';
+  //     display: block;
+  //     width: 50%;
+  //     padding-bottom: 50%;
+  //     border-radius: 50%;
+  //     background-color: var(--header-color);
+  //     transition: transform .3s;
+  //   }
+
+  //   @include desktop{
+  //     width: 45px
+  //   }
+
+  //   &--lightTheme{
+  //     background-color: var(--border-color);
+
+  //     &::after{
+  //       transform: translateX(100%);
+  //       background-color: var(--app-background);
+  //     }
+
+  //     &-en{
+  //       ::after{
+  //         transform: none;
+  //       }
+  //     }
+  //   }
+
+
+  //   &--language-ua{
+  //     &::after{
+  //       transform: translateX(100%);
+  //     }
+  //   }
+  // }
+
+  &__switcher {
+    padding: 3px;
+    width: 33px;
+    border-radius: 20px;
+    background-color: var(--dark-gray);
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 50%;
+      padding-bottom: 50%;
+      border-radius: 50%;
+      background-color: var(--header-color);
+      transition: transform 0.3s, background-color 0.3s;
+      transform: translateX(0); // дефолт: зліва
+    }
+
+    @include desktop {
+      width: 45px;
+    }
+
+    /* ---- Колір при світлій темі ---- */
+    &--light {
+      background-color: var(--border-color);
+
+      &::after {
+        background-color: var(--app-background);
       }
     }
 
-   &__logo{
+    /* ---- Активний стан (кружечок справа) ---- */
+    &--active {
+      &::after {
+        transform: translateX(100%);
+      }
+    }
+  }
+
+
+  &__leftSide {
+    display: flex;
+    gap: 16px;
+
+    @include desktop {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
     padding: 13px 16px;
 
-    @include desktop{
+    @include desktop {
       padding: 18px 24px;
     }
-   }
+  }
 
-   &__rightIcons{
+  &__rightIcons {
     display: flex;
-   }
+  }
 
-   &__iconElement{
+  &__iconElement {
     position: relative;
     padding: 16px;
-    box-shadow: -1px 0 0 0 $items-disabled;
+    box-shadow: -1px 0 0 0 var(--dark-gray);
 
-    @include desktop{
+    @include desktop {
       padding: 24px;
     }
 
-    &--menu{
-      @include tablet{
+    &--lightTheme{
+      box-shadow: -1px 0 0 0 var(--items-disabled);
+    }
+
+    &--menu {
+      @include tablet {
         display: none;
       }
     }
 
-    &--visibleOnTablet{
+    &--visibleOnTablet {
       display: none;
 
-      @include tablet{
+      @include tablet {
         display: block;
       }
     }
-   }
 
-   &__quantity{
+    &--settings {
+      position: relative;
+      cursor: pointer;
+
+      &-open{
+        &::after{
+          content: '';
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          background-color: var(--header-color);
+          bottom: -4px;
+          left: 0px;
+        }
+      }
+    }
+  }
+
+  &__quantity {
     position: absolute;
     top: 10px;
     right: 12px;
@@ -71,16 +179,53 @@
 
     font-size: 9px;
     line-height: 130%;
-    color: $main-white;
+    color: white;
     text-align: center;
 
-    background-color: $main-red;
+    background-color: var(--main-red);
 
-    @include desktop{
+    @include desktop {
       top: 18px;
       right: 19px;
     }
-   }
+  }
+
+  &__settings {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__settingsBox {
+    background-color: var(--app-background);
+    display: none;
+    border: 1px solid var(--items-disabled);
+    position: absolute;
+    top: 51px;
+
+    @include desktop{
+      top: 67px
+    }
+
+    &--open {
+      display: block;
+    }
+  }
+
+  &__settingsElement {
+    padding: 10px 5px;
+    border-bottom: 1px solid var(--items-disabled);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 48px;
+
+    @include desktop{
+      width: 64px
+    }
+  }
 }
 
 .icon {
@@ -94,10 +239,26 @@
   background-position: center;
   background-size: contain;
 
+  &--darkTheme{
+    width: 20px;
+    height: 20px;
+    background-image: url('../../../public/img/icons/dark-theme.png');
+  }
+
+  &--lightTheme{
+    width: 20px;
+    height: 20px;
+    background-image: url('../../../public/img/icons/light-theme.png');
+  }
+
   &--menu {
     width: 16px;
     height: 16px;
     background-image: url('../../../public/img/icons/menu.svg');
+  }
+
+  &--menu-lightTheme{
+    background-image: url('../../../public/img/icons/menu-lightTheme.svg');
   }
 
   &--logo {
@@ -105,39 +266,65 @@
     height: 22px;
     background-image: url('../../../public/img/icons/logo.svg');
 
-    @include desktop{
+    @include desktop {
       width: 80px;
       height: 28px;
     }
   }
 
-  &--footerLogo{
+  &--logo-lightTheme{
+    background-image: url('../../../public/img/icons/logo-lightTheme.svg');
+  }
+
+  &--settings {
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/icons/settings.png');
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  &--settings-lightTheme{
+    background-image: url('../../../public/img/icons/settings-lightTheme.png');
+  }
+
+  &--footerLogo {
     width: 89px;
     height: 32px;
   }
 
-  &--favorites{
+  &--favorites {
     width: 16px;
     height: 16px;
     background-image: url('../../../public/img/icons/favorites.svg');
 
-    &:hover{
+    &:hover {
       transform: none;
     }
   }
 
-  &--cart{
+  &--favorites-lightTheme{
+    background-image: url('../../../public/img/icons/favorites-lightTheme.svg');
+  }
+
+  &--cart {
     width: 16px;
     height: 16px;
     background-image: url('../../../public/img/icons/cart.svg');
 
-    &:hover{
+    &:hover {
       transform: none;
     }
   }
 
-  &--active{
-    &::after{
+  &--cart-lightTheme{
+    background-image: url('../../../public/img/icons/cart-lightTheme.svg');
+  }
+
+  &--active {
+    &::after {
       content: '';
 
       position: absolute;
@@ -149,14 +336,18 @@
       width: 100%;
       height: 3px;
 
-      background-color: $main-white;
+      background-color: var(--header-color);
     }
   }
 
-  &--close{
+  &--close {
     z-index: 5;
     width: 16px;
     height: 16px;
     background-image: url('../../../public/img/icons/close.svg');
+  }
+
+  &--close-lightTheme{
+    background-image: url('../../../public/img/icons/close-lightTheme.svg');
   }
 }

@@ -1,5 +1,6 @@
 import { Item } from '../../types/Item';
 import { ProductCard } from '../ProductCard';
+import { SwiperButtons } from '../SwiperButtons/SwiperButtons';
 import styles from './ProductsSlider.module.scss';
 import { useEffect, useState } from 'react';
 
@@ -65,19 +66,13 @@ export const ProductSlider: React.FC<Props> = ({
     <div className={styles.productSlider}>
       <div className={styles.productSlider__head}>
         <h2 className={styles.productSlider__title}>{title}</h2>
-
-        <div className={styles.productSlider__buttons}>
-          <button
-            className={`${styles.productSlider__button} ${styles['productSlider__button--prev']}`}
-            onClick={handlePrevClick}
-            disabled={transform === 0}
-          ></button>
-          <button
-            className={`${styles.productSlider__button} ${styles['productSlider__button--next']}`}
-            onClick={handleNextClick}
-            disabled={transform === maxOffset}
-          ></button>
-        </div>
+        <SwiperButtons
+          isSwiper={false}
+          handleNextClick={handleNextClick}
+          handlePrevClick={handlePrevClick}
+          maxOffset={maxOffset}
+          transform={transform}
+        />
       </div>
 
       <div

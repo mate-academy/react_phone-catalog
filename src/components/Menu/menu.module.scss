@@ -1,4 +1,3 @@
-@use '../../variables/variables' as *;
 @use '../../mixins/mixins' as *;
 
 .menu {
@@ -11,17 +10,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   height: 100%;
+  background-color: var(--app-background);
 
-  background-color: $app-background;
-
-  &__bottomNavigation{
+  &__bottomNavigation {
     display: flex;
-    border-top: 1px solid $dark-gray;
+    border-top: 1px solid var(--dark-gray);
+
+    &--lightTheme {
+      border-color: var(--items-disabled);
+    }
   }
 
-  &__navigationItem{
+  &__navigationItem {
     position: relative;
 
     width: 100%;
@@ -31,41 +32,49 @@
     background-repeat: no-repeat;
     background-position: center;
 
-    &:hover{
-      color: $main-white;
+    &:hover {
+      color: var(--header-color);
 
-      &::after{
-        content: "";
-
+      &::after {
+        content: '';
         position: absolute;
         bottom: 0;
 
         display: block;
 
         width: 100%;
-        height: 3px;
+        height: 2px;
 
-        background-color: $main-white;
+        background-color: var(--header-color);
       }
     }
 
-    &--left{
-      border-right: 1px solid $dark-gray;
+    &--left {
+      border-right: 1px solid var(--dark-gray);
       background-image: url('../../../public/img/icons/favorites.svg');
+    }
+
+    &--lightTheme {
+      background-image: url('../../../public/img/icons/cart-lightTheme.svg');
+    }
+
+    &--lightTheme-left {
+      border-color: var(--items-disabled);
+      background-image: url('../../../public/img/icons/favorites-lightTheme.svg');
     }
   }
 
-  &__icon{
+  &__icon {
     position: relative;
     display: block;
     width: 16px;
     height: 16px;
   }
 
-  &__quantity{
+  &__quantity {
     position: absolute;
     top: 11px;
-    right: 45.5%;
+    right: 45.2%;
 
     width: 12px;
     height: 12px;
@@ -73,14 +82,18 @@
 
     font-size: 9px;
     line-height: 130%;
-    color: $main-white;
+    color: var(--header-color);
     text-align: center;
 
-    background-color: $main-red;
+    background-color: var(--main-red);
 
-    @include desktop{
+    @include desktop {
       top: 18px;
       right: 19px;
     }
-   }
+
+    &--lightTheme {
+      color: var(--app-background);
+    }
+  }
 }

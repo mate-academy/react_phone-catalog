@@ -20,6 +20,9 @@ import { PhonesProvider } from './contexts/PhonesContext';
 import { TabletsProvider } from './contexts/TabletsContext';
 import { AccessoriesProvider } from './contexts/AccessoriesContext';
 import { NotFound } from './components/NotFound';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { LanguageProvider } from './contexts/LanguageContext';
+import './118n';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <Router>
@@ -29,36 +32,43 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
           <TabletsProvider>
             <AccessoriesProvider>
               <ProductsProvider>
-                <Routes>
-                  <Route path="/" element={<App />}>
-                    <Route index element={<MainContent />} />
-                    <Route path="phones">
-                      <Route index element={<Phones />} />
-                      <Route path=":productId" element={<ProductDetailsPage category="phones" />} />
-                    </Route>
+                <ThemeProvider>
+                  <LanguageProvider>
+                    <Routes>
+                      <Route path="/" element={<App />}>
+                        <Route index element={<MainContent />} />
+                        <Route path="phones">
+                          <Route index element={<Phones />} />
+                          <Route
+                            path=":productId"
+                            element={<ProductDetailsPage category="phones" />}
+                          />
+                        </Route>
 
-                    <Route path="tablets">
-                      <Route index element={<Tablets />} />
-                      <Route
-                        path=":productId"
-                        element={<ProductDetailsPage category="tablets" />}
-                      />
-                    </Route>
+                        <Route path="tablets">
+                          <Route index element={<Tablets />} />
+                          <Route
+                            path=":productId"
+                            element={<ProductDetailsPage category="tablets" />}
+                          />
+                        </Route>
 
-                    <Route path="accessories">
-                      <Route index element={<Accessories />} />
-                      <Route
-                        path=":productId"
-                        element={<ProductDetailsPage category="accessories" />}
-                      />
-                    </Route>
-                    <Route path="cart" element={<Cart />} />
-                    <Route path="favorites" element={<Favorites />} />
-                    <Route path="menu" element={<Menu />} />
-                    <Route path="home" element={<Navigate to="/" replace />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Route>
-                </Routes>
+                        <Route path="accessories">
+                          <Route index element={<Accessories />} />
+                          <Route
+                            path=":productId"
+                            element={<ProductDetailsPage category="accessories" />}
+                          />
+                        </Route>
+                        <Route path="cart" element={<Cart />} />
+                        <Route path="favorites" element={<Favorites />} />
+                        <Route path="menu" element={<Menu />} />
+                        <Route path="home" element={<Navigate to="/" replace />} />
+                        <Route path="*" element={<NotFound />} />
+                      </Route>
+                    </Routes>
+                  </LanguageProvider>
+                </ThemeProvider>
               </ProductsProvider>
             </AccessoriesProvider>
           </TabletsProvider>

@@ -9,6 +9,9 @@ import { useTablets } from '../../contexts/TabletsContext';
 import { useAccessories } from '../../contexts/AccessoriesContext';
 import { YouMayAlsoLike } from '../YouMayAlsoLike/YouMayAlsoLike';
 import { Breadcrumbs } from '../Breadcrumbs';
+import { useTheme } from '../../contexts/ThemeContext';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   category: string;
@@ -23,6 +26,8 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   const [currentColor, setCurrentColor] = useState('');
   const [currentCapacity, setCurrentCapacity] = useState('');
   const [product, setProduct] = useState<Item | undefined>();
+  const { theme } = useTheme();
+  const { t } = useTranslation();
 
   useEffect(() => {
     let foundProduct: Item | undefined;
@@ -116,8 +121,12 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
       <div className={styles.productDetailsPage__content}>
         <Breadcrumbs product={product} category={category} />
 
-        <Link to=".." relative="path" className={styles.productDetailsPage__linkBack}>
-          Back
+        <Link
+          to=".."
+          relative="path"
+          className={`${styles.productDetailsPage__linkBack} ${theme === 'light' && styles['productDetailsPage__linkBack--lightTheme']}`}
+        >
+          {t('elements.back')}
         </Link>
         <h1 className={styles.productDetailsPage__title}>{product?.name}</h1>
 
@@ -142,7 +151,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
                       <img
                         src={`/public/${image}`}
                         alt={(index + 1).toString()}
-                        className={`${styles.productDetailsPage__photo}`}
+                        className={`${styles.productDetailsPage__photo} ${theme === 'light' && styles['productDetailsPage__photo--lightTheme']}`}
                         onClick={() => handleImageSelection(index)}
                       />
                     </a>
@@ -153,7 +162,9 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
                 className={`${styles.productDetailsPage__details} ${styles['productDetailsPage__details--colors']}`}
               >
                 <div className={styles.productDetailsPage__detailsHead}>
-                  <h3 className={styles.productDetailsPage__detailsTitle}>Available colors</h3>
+                  <h3 className={styles.productDetailsPage__detailsTitle}>
+                    {t('elements.colors')}
+                  </h3>
                   <p className={styles.productDetailsPage__detailsId}>ID: 802390</p>
                 </div>
                 <div className={styles.productDetailsPage__detailsList}>
@@ -171,12 +182,14 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
                 <div
                   className={`${styles.productDetailsPage__detailsHead} ${styles['productDetailsPage__detailsHead--capacity']}`}
                 >
-                  <h3 className={`${styles.productDetailsPage__detailsTitle}}`}>Select capacity</h3>
+                  <h3 className={`${styles.productDetailsPage__detailsTitle}}`}>
+                    {t('elements.capacity')}
+                  </h3>
                 </div>
                 <div className={`${styles.productDetailsPage__detailsList}`}>
                   {capacity.map((x, index) => (
                     <div
-                      className={`${styles.productDetailsPage__detail} ${styles['productDetailsPage__detail--capacity']} ${x === currentCapacity && styles['productDetailsPage__detail--capacityActive']}`}
+                      className={`${styles.productDetailsPage__detail} ${styles['productDetailsPage__detail--capacity']} ${theme === 'light' && styles['productDetailsPage__detail--capacity-lightTheme']} ${x === currentCapacity && styles['productDetailsPage__detail--capacityActive']}`}
                       key={index}
                       onClick={() => handleCapacitySelection(x)}
                     >
@@ -198,32 +211,40 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
                 className={`${styles.productDetailsPage__featuresList} ${styles['productDetailsPage__featuresList--details']}`}
               >
                 <li className={styles.productDetailsPage__featuresItem}>
-                  <span className={styles.productDetailsPage__featuresTitle}>Screen</span>
+                  <span className={styles.productDetailsPage__featuresTitle}>
+                    {t('titles.screen')}
+                  </span>
                   <span className={styles.productDetailsPage__featuresValue}>
                     {product?.screen}
                   </span>
                 </li>
                 <li className={styles.productDetailsPage__featuresItem}>
-                  <span className={styles.productDetailsPage__featuresTitle}>Resolution</span>
+                  <span className={styles.productDetailsPage__featuresTitle}>
+                    {t('titles.resolution')}
+                  </span>
                   <span className={styles.productDetailsPage__featuresValue}>
                     {product?.resolution}
                   </span>
                 </li>
                 <li className={styles.productDetailsPage__featuresItem}>
-                  <span className={styles.productDetailsPage__featuresTitle}>Processor</span>
+                  <span className={styles.productDetailsPage__featuresTitle}>
+                    {t('titles.processor')}
+                  </span>
                   <span className={styles.productDetailsPage__featuresValue}>
                     {product?.processor}
                   </span>
                 </li>
                 <li className={styles.productDetailsPage__featuresItem}>
-                  <span className={styles.productDetailsPage__featuresTitle}>RAM</span>
+                  <span className={styles.productDetailsPage__featuresTitle}>
+                    {t('titles.ram')}
+                  </span>
                   <span className={styles.productDetailsPage__featuresValue}>{product?.ram}</span>
                 </li>
               </ul>
               <article
                 className={`${styles.productDetailsPage__article} ${styles['productDetailsPage__article--about']}`}
               >
-                <h3 className={styles.productDetailsPage__articleTitle}>About</h3>
+                <h3 className={styles.productDetailsPage__articleTitle}>{t('titles.about')}</h3>
                 <div className={styles.productDetailsPage__aboutDescriptions}>
                   {product?.description.map((x, id) => (
                     <div className={styles.productDetailsPage__aboutDescription} key={id}>
@@ -238,34 +259,44 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
               <article
                 className={`${styles.productDetailsPage__article} ${styles['productDetailsPage__article--techSpecs']}`}
               >
-                <h3 className={styles.productDetailsPage__articleTitle}>Tech Specs</h3>
+                <h3 className={styles.productDetailsPage__articleTitle}>{t('titles.techSpecs')}</h3>
                 <ul
                   className={`${styles.productDetailsPage__featuresList} ${styles['productDetailsPage__featuresList--techSpecs']}`}
                 >
                   <li className={styles.productDetailsPage__featuresItem}>
-                    <span className={styles.productDetailsPage__featuresTitle}>Screen</span>
+                    <span className={styles.productDetailsPage__featuresTitle}>
+                      {t('titles.screen')}
+                    </span>
                     <span className={styles.productDetailsPage__featuresValue}>
                       {product?.screen}
                     </span>
                   </li>
                   <li className={styles.productDetailsPage__featuresItem}>
-                    <span className={styles.productDetailsPage__featuresTitle}>Resolution</span>
+                    <span className={styles.productDetailsPage__featuresTitle}>
+                      {t('titles.resolution')}
+                    </span>
                     <span className={styles.productDetailsPage__featuresValue}>
                       {product?.resolution}
                     </span>
                   </li>
                   <li className={styles.productDetailsPage__featuresItem}>
-                    <span className={styles.productDetailsPage__featuresTitle}>Processor</span>
+                    <span className={styles.productDetailsPage__featuresTitle}>
+                      {t('titles.processor')}
+                    </span>
                     <span className={styles.productDetailsPage__featuresValue}>
                       {product?.processor}
                     </span>
                   </li>
                   <li className={styles.productDetailsPage__featuresItem}>
-                    <span className={styles.productDetailsPage__featuresTitle}>RAM</span>
+                    <span className={styles.productDetailsPage__featuresTitle}>
+                      {t('titles.ram')}
+                    </span>
                     <span className={styles.productDetailsPage__featuresValue}>{product?.ram}</span>
                   </li>
                   <li className={styles.productDetailsPage__featuresItem}>
-                    <span className={styles.productDetailsPage__featuresTitle}>Cell</span>
+                    <span className={styles.productDetailsPage__featuresTitle}>
+                      {t('titles.cell')}
+                    </span>
                     <span className={styles.productDetailsPage__featuresValue}>
                       {product?.cell.join(', ')}
                     </span>
@@ -275,7 +306,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
             </div>
           )
         ) : (
-          <h2 className={styles.productDetailsPage__notFound}>Product was not found!</h2>
+          <h2 className={styles.productDetailsPage__notFound}> {t('errors.productNotFound')}</h2>
         )}
       </div>
 

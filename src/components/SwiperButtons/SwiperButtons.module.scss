@@ -1,0 +1,98 @@
+@use '../../mixins/mixins' as *;
+
+.swiperButtons {
+  position: absolute;
+  top: 0;
+  right: 16px;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+
+  @include tablet {
+    right: 24px;
+  }
+
+  @include desktop {
+    right: 0;
+  }
+
+  &__button {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: var(--dark-gray);
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: none !important;
+
+    &:disabled {
+      border: 1px solid var(--items-disabled);
+      background-color: var(--app-background);
+    }
+
+    &:hover {
+      background-color: var(--items-hover);
+    }
+
+    &--lightTheme {
+      border: 1px solid var(--border-color);
+      background-color: var(--app-background);
+
+      &:hover {
+        border-color: var(--header-color);
+        background-color: var(--app-background);
+      }
+
+      &:disabled{
+        border: 1px solid var(--items-disabled);
+        background-color: var(--app-background);
+
+        &:hover {
+          border-color: var(--items-disabled);
+        }
+      }
+    }
+
+    &--prev {
+      background-image: url('../../public/img/icons/arrow-left.svg');
+
+      &:disabled {
+        cursor: auto;
+        background-image: url('../../../public/img/icons/disabled-arrow-left.svg');
+
+        &:hover {
+          background-color: var(--app-background);
+        }
+      }
+
+      &-lightTheme{
+        background-image: url('../../../public/img/icons/arrow-left-lightTheme.svg');
+
+        &:disabled{
+          background-image: url('../../../public/img/icons/arrow-left-lightTheme-white.svg');
+        }
+      }
+    }
+
+    &--next {
+      background-image: url('../../public/img/icons/arrow-right.svg');
+
+      &:disabled {
+        cursor: auto;
+        background-image: url('../../../public/img/icons/disabled-arrow-right.svg');
+
+        &:hover {
+          background-color: var(--app-background);
+        }
+      }
+
+      &-lightTheme{
+        background-image: url('../../../public/img/icons/arrow-right-lightTheme-dark.svg');
+
+        &:disabled{
+          background-image: url('../../../public/img/icons/arrow-right-lightTheme.svg');
+        }
+      }
+    }
+  }
+}
