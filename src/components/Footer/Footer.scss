@@ -21,6 +21,7 @@
 
   &__logo {
     width: 379px;
+    cursor: pointer;
 
     @include on-tablet {
       width: 192px;

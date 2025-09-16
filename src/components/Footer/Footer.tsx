@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer = () => {
@@ -5,11 +6,21 @@ export const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  const navigate = useNavigate();
+
   return (
     <footer className="footer">
       <div className="footer__logo">
-        <a className="footer-logo__link" href="/">
-          <img src="./img/logo/logo-nice-gadgets.svg" alt="logo-nice-gadgets" />
+        <a className="footer-logo__link">
+          <img
+            src="./img/logo/logo-nice-gadgets.svg"
+            alt="logo-nice-gadgets"
+
+            onClick={() => {
+              navigate('/');
+              scrollPage();
+            }}
+          />
         </a>
       </div>
       <div className="footer__links">

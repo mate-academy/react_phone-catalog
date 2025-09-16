@@ -7,10 +7,10 @@
   flex-direction: column;
   justify-content: space-between;
 
-  top: 48px;
+  top: $header-height-tablet;
   position: fixed;
   width: 100%;
-  height: 568px;
+  height: calc(100vh - $header-height-tablet);
   z-index: 5;
   background-color: $white-color;
 

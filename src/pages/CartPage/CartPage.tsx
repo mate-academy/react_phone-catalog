@@ -6,6 +6,7 @@ import { ProductBuyCard } from '../../components/ProductByCard';
 
 export const CartPage = () => {
   const cart = useSelector((state: RootState) => state.cartQuantities);
+  let totalCartQuantity = 0;
   const addedToCartProducts = useSelector(
     (state: RootState) => state.addedToCartProducts,
   );
@@ -14,6 +15,7 @@ export const CartPage = () => {
     const cartItem = cart.find(item => item.id === product.id);
     const quantity = cartItem ? cartItem.quantity : 1;
 
+    totalCartQuantity += quantity;
     return sum + (product.price ?? product.fullPrice) * quantity;
   }, 0);
 
@@ -58,7 +60,7 @@ export const CartPage = () => {
 
               <div className="bottom-cart__checkout checkout">
                 <p className="checkout__price">{`$${totalPrice}`}</p>
-                <p className="checkout__items">{`Total for ${addedToCartProducts.length} items`}</p>
+                <p className="checkout__items">{`Total for ${totalCartQuantity} items`}</p>
                 <button className="checkout__button">Checkout</button>
               </div>
             </div>
