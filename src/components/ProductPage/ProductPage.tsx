@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useProductHook } from './useProductHook';
-import home from '../../../public/img/home.svg';
-import back from '../../../public/img/arrowLeft.svg';
-import goto from '../../../public/img/arrowRight.svg';
+import home from '../../assets/icons/home.svg';
+import back from '../../assets/icons/arrowLeft.svg';
+import goto from '../../assets/icons/arrowRight.svg';
 import { NavLink } from 'react-router-dom';
 import { Loader } from '../Loader';
 import { DDNum, DDSortBy } from '../DropDown';

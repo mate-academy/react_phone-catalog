@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import logo from '../../../public/img/logo.svg';
-import logoLight from '../../../public/img/logoLight.svg';
+import logo from '../../assets/icons/logo.svg';
+import logoLight from '../../assets/icons/logoLight.svg';
 import { ThemeContext } from '../Themes/Themes';
 import { NavLink } from 'react-router-dom';
-import arrowUp from '../../../public/img/arrowUp.svg';
+import arrowUp from '../../assets/icons/arrowUp.svg';
 
 export const Footer = () => {
   const scrollTop = () => {

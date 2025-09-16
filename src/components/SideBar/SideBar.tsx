@@ -5,10 +5,10 @@ import { NavLink } from 'react-router-dom';
 import { ThemeContext } from '../Themes/Themes';
 import { useFavourites } from '../Favourites/FavouritesContext';
 import { useCart } from '../BoughtCart/CartContext';
-import DarkBag from '../../../public/img/bagCart.svg';
-import LightBag from '../../../public/img/bagCartLight.svg';
-import DarkFav from '../../../public/img/heart.svg';
-import LightFav from '../../../public/img/heartLight.svg';
+import DarkBag from '../../assets/icons/bagCart.svg';
+import LightBag from '../../assets/icons/bagCartLight.svg';
+import DarkFav from '../../assets/icons/heart.svg';
+import LightFav from '../../assets/icons/heartLight.svg';
 
 interface SidebarProps {
   openMenu: boolean;

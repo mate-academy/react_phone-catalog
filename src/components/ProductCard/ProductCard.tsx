@@ -1,6 +1,6 @@
 import { Product } from '../../types/ProductTypes';
 import React, { useEffect, useState } from 'react';
-import arrLeft from '../../../public/img/arrowLeft.svg';
+import arrLeft from '../../assets/icons/arrowLeft.svg';
 import { useSwipeable } from 'react-swipeable';
 import { ProductItem } from '../ProductItem/ProductItem';
 

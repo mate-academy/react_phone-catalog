@@ -1,1 +1,32 @@
-// s
+@import '../../utils/mixins.scss';
+@import '../Themes/Themes.scss';
+@import '../../utils/variables.scss';
+
+.cart__wrapper {
+  display: block;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  gap: 16px;
+
+  &--left {
+    width: 100%;
+  }
+
+  &--right {
+    border: 1px solid $color-elem;
+    padding: 24px;
+    max-height: 190px;
+    min-width: 25%;
+  }
+
+  @include onTablet {
+    display: block;
+  }
+
+  @include onDesktop {
+    display: flex;
+
+  }
+
+}

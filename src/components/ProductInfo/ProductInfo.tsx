@@ -1,10 +1,10 @@
 import React from 'react';
 import './ProductInfo.scss';
-import home from '../../../public/img/home.svg';
-import goto from '../../../public/img/arrowRight.svg';
-import back from '../../../public/img/arrowLeft.svg';
-import heart from '../../../public/img/heart.svg';
-import like from '../../../public/img/heartRed.svg';
+import home from '../../assets/icons/home.svg';
+import goto from '../../assets/icons/arrowRight.svg';
+import back from '../../assets/icons/arrowLeft.svg';
+import heart from '../../assets/icons/heart.svg';
+import like from '../../assets/icons/heartRed.svg';
 import { useInfoHook } from './useInfoHook';
 import { Loader } from '../Loader';
 import { ProductSlider } from '../ProductCard';

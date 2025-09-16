@@ -1,20 +1,20 @@
 import './Swiper.module.scss';
-import back from '../../../public/img/arrowLeft.svg';
-import goto from '../../../public/img/arrowRight.svg';
+import back from '../../assets/icons/arrowLeft.svg';
+import goto from '../../assets/icons/arrowRight.svg';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const desktopImg = [
-  'img/banner-dt.png',
-  'img/banner-tablets.png',
-  'img/banner-phones.png',
+  '/img/banner-bs.png', //dt
+  '/img/banner-bs.png', //tab
+  '/img/banner-bs.png', //mobile
 ];
 
 const mobileImg = [
-  'img/banner-mob.png',
-  'img/banner-tablets-mob.png',
-  'img/banner-phones-mob.png',
+  '/img/banner-mobmain.png',
+  '/img/banner-mobmain.png',
+  '/img/banner-mobmain.png',
 ];
 
 export const SliderSwiper = () => {

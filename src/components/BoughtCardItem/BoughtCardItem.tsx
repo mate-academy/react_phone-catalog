@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Product } from '../../types/ProductTypes';
 import './BoughtCardItem.module.scss';
 import { useNavigate } from 'react-router-dom';
-import Delete from '../../../public/img/close.svg';
-import DeleteLight from '../../../public/img/closeLight.svg';
+import Delete from '../../assets/icons/close.svg';
+import DeleteLight from '../../assets/icons/closeLight.svg';
 import { ThemeContext } from '../Themes/Themes';
-import minus from '../../../public/img/minus.svg';
-import plus from '../../../public/img/plus.svg';
+import minus from '../../assets/icons/minus.svg';
+import plus from '../../assets/icons/plus.svg';
 import { useCart } from '../BoughtCart/CartContext';
 
 interface Props {

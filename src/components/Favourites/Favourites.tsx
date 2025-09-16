@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useFavourites } from './FavouritesContext';
-import home from '../../../public/img/home.svg';
-import goto from '../../../public/img/arrowRight.svg';
+import home from '../../assets/icons/home.svg';
+import goto from '../../assets/icons/arrowRight.svg';
 import { ProductItem } from '../ProductItem/ProductItem';
 
 export const FavouritesPage = () => {

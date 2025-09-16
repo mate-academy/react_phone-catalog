@@ -1,24 +1,25 @@
-@use '../../utils/mixins.scss';
-@use '../../utils/variables.scss';
+/* stylelint-disable scss/no-global-function-names */
+@use '../../utils/mixins.scss' as mixins;
+@use '../../utils/variables.scss' as vars;
 
 $theme: (
   dark: (
-    colorSwiperBG: $color-surf-2,
-    colorSwiperText: $color-white,
-    colorCart: $color-surf-1,
-    colorHeaderFooter: $color-black,
-    colorText: $color-white,
-    colorBG: $color-black,
-    colorPaginActiv: $color-white,
-    colorPagination: $color-elem-text,
+    colorSwiperBG: vars.$color-surf-2,
+    colorSwiperText: vars.$color-white,
+    colorCart: vars.$color-surf-1,
+    colorHeaderFooter: vars.$color-black,
+    colorText: vars.$color-white,
+    colorBG: vars.$color-black,
+    colorPaginActiv: vars.$color-white,
+    colorPagination: vars.$color-elem,
   ),
   light: (
-    colorSwiperBG: $color-white,
-    colorSwiperText: $color-surf-2,
-    colorCart: $color-white,
-    colorHeaderFooter: $color-white,
-    colorText: $color-black,
-    colorBG: $color-white,
+    colorSwiperBG: vars.$color-white,
+    colorSwiperText: vars.$color-surf-2,
+    colorCart: vars.$color-white,
+    colorHeaderFooter: vars.$color-white,
+    colorText: vars.$color-black,
+    colorBG: vars.$color-white,
     colorPaginActiv: #313237,
     colorPagination: #E2E6E9,
   ),

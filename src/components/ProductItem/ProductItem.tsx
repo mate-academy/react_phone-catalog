@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../../types/ProductTypes';
 import { useCart } from '../BoughtCart/CartContext';
-import liked from '../../../public/img/heartRed.svg';
-import heart from '../../../public/img/heart.svg';
+import liked from '../../assets/icons/heartRed.svg';
+import heart from '../../assets/icons/heart.svg';
 import { useFavourites } from '../Favourites/FavouritesContext';
 
 interface Props {

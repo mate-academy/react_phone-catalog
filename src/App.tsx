@@ -1,16 +1,52 @@
-// import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './App.scss';
+import { ThemeContext } from './components/Themes';
+import { NavBar } from './components/NavBar';
+import { Footer } from './components/Footer';
+import { SideBar } from './components/SideBar';
+import { Outlet } from 'react-router-dom';
 
-export const App = () => (
-  <div className="App">
-    {/* <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<PhonesPage />} />
-        <Route path="/tablets" element={<TabletsPage />} />
-        <Route path="/accessories" element={<AccessoriesPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router> */}
-  </div>
-);
+export const App = () => {
+  const getDefaultTheme = (): string => {
+    const locarStorageTheme = localStorage.getItem('theme');
+
+    return locarStorageTheme || 'dark';
+  };
+
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [theme, setTheme] = useState(getDefaultTheme());
+
+  useEffect(() => {
+    if (menuIsOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+  }, [menuIsOpen]);
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <div className={`theme-${theme}`}>
+        <div className="App">
+          <NavBar
+            setMenuIsOpen={() => setMenuIsOpen(true)}
+            setMenuIsClose={() => setMenuIsOpen(false)}
+            menuIsOpen={menuIsOpen}
+          />
+
+          <SideBar
+            openMenu={menuIsOpen}
+            setOpenMenu={() => setMenuIsOpen(false)}
+          />
+
+          <div className="section">
+            <div className="container__page">
+              <Outlet />
+            </div>
+          </div>
+          <Footer />
+        </div>
+      </div>
+    </ThemeContext.Provider>
+  );
+};
