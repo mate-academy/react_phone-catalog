@@ -3,33 +3,58 @@ import { ButtonArrow } from '../../../shared/components/ButtonArrow';
 import { ProductCard } from '../../../shared/components/ProductCard';
 import scss from './ProductsSlider.module.scss';
 import { DataContext } from '../../../../context/ContextProvider';
-import { Product } from '../../../../api/types';
+import { Product, Slider } from '../../../../api/types';
 
-export const ProductsSlider: React.FC = () => {
+interface Props {
+  title: string;
+  type: Slider;
+}
+
+export const ProductsSlider: React.FC<Props> = ({ title, type }) => {
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const [touchStart, setTouchStart] = useState<number>(0);
   const [touchEnd, setTouchEnd] = useState<number>(0);
   const { products } = useContext(DataContext);
+  const hasDiscount = type === 'new' ? false : true;
 
-  const newestProducts = useMemo(() => {
-    let max = -Infinity;
+  const sliderProducts = useMemo(() => {
+    let filtered = [];
 
-    for (const { year } of products) {
-      if (year > max) {
-        max = year;
-      }
-    }
-
-    const filteredByYear = products.filter(device => device.year === max);
     const getModel = (device: Product) => {
       const parts = device.image.split('/');
 
       return parts.at(-3)?.toLowerCase();
     };
 
+    switch (type) {
+      case 'new': {
+        let max = -Infinity;
+
+        for (const { year } of products) {
+          if (year > max) {
+            max = year;
+          }
+        }
+
+        filtered = products.filter(device => device.year === max);
+
+        break;
+      }
+
+      case 'hot': {
+        const filteredByPrice = products.sort(
+          (a, b) => b.fullPrice - a.fullPrice,
+        );
+
+        filtered = filteredByPrice.slice(0, 20);
+
+        break;
+      }
+    }
+
     const modelGroups = new Map<string, Product[]>();
 
-    for (const prod of filteredByYear) {
+    for (const prod of filtered) {
       const key = getModel(prod);
 
       if (key) {
@@ -55,21 +80,21 @@ export const ProductsSlider: React.FC = () => {
     });
 
     return test.flat(1);
-  }, [products]);
+  }, [products, type]);
 
   const prevSlide = useCallback(
     () =>
       setActiveSlide(prev =>
-        prev === 0 ? newestProducts.length - 1 : prev - 1,
+        prev === 0 ? sliderProducts.length - 1 : prev - 1,
       ),
-    [newestProducts.length],
+    [sliderProducts.length],
   );
   const nextSlide = useCallback(
     () =>
       setActiveSlide(prev =>
-        prev === newestProducts.length - 1 ? 0 : prev + 1,
+        prev === sliderProducts.length - 1 ? 0 : prev + 1,
       ),
-    [newestProducts.length],
+    [sliderProducts.length],
   );
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -101,7 +126,7 @@ export const ProductsSlider: React.FC = () => {
   return (
     <div className={scss.slider}>
       <div className={scss.slider__header}>
-        <h2 className={scss.slider__header_title}>Brand new models</h2>
+        <h2 className={scss.slider__header_title}>{title}</h2>
         <div className={scss.slider__header_buttons}>
           <ButtonArrow direction="left" onClick={prevSlide} />
           <ButtonArrow direction="right" onClick={nextSlide} />
@@ -114,10 +139,10 @@ export const ProductsSlider: React.FC = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {newestProducts.map(prod => {
+        {sliderProducts.map(prod => {
           return (
             <div className={scss.slider__productCard__container} key={prod.id}>
-              <ProductCard product={prod} hasDiscount={false} />
+              <ProductCard product={prod} hasDiscount={hasDiscount} />
             </div>
           );
         })}

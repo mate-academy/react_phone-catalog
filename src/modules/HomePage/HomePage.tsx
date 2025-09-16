@@ -5,6 +5,7 @@ import { ProductsSlider } from './components/ProductsSlider';
 import scss from './HomePage.module.scss';
 import { Loader } from '../shared/components/Loader';
 import { Categories } from './components/Categories';
+import { SLIDER_TYPE } from '../../api/types';
 
 export const HomePage: React.FC = () => {
   const { isLoading } = useContext(DataContext);
@@ -17,10 +18,11 @@ export const HomePage: React.FC = () => {
       ) : (
         <>
           <PicturesSlider />
-          <ProductsSlider />
+          <ProductsSlider title={'Brand new models'} type={SLIDER_TYPE.NEW} />
+          <Categories />
+          <ProductsSlider title={'Hot prices'} type={SLIDER_TYPE.HOT} />
         </>
       )}
-      <Categories />
     </div>
   );
 };

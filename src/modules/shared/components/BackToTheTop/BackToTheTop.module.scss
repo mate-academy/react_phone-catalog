@@ -1,0 +1,35 @@
+.backToTheTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  width: 100%;
+
+  margin: 3.2rem 0;
+
+  &__text {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: rgba(137, 147, 154, 1);
+  }
+
+  &__button {
+    border: 0.1rem solid rgba(180, 189, 195, 1);
+
+    height: 3.2rem;
+    width: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon {
+    height: 1.6rem;
+    width: 1.6rem;
+
+    color: rgba(49, 50, 55, 1);
+
+    transform: rotate(270deg);
+  }
+}

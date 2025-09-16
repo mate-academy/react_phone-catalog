@@ -97,6 +97,13 @@ export type StorageCartItem = {
   productId: number;
 };
 
+export const SLIDER_TYPE = {
+  NEW: 'new',
+  HOT: 'hot',
+} as const;
+
+export type Slider = (typeof SLIDER_TYPE)[keyof typeof SLIDER_TYPE];
+
 const Direction = {
   Left: 'left',
   Right: 'right',
