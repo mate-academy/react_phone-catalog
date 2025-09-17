@@ -70,7 +70,7 @@
   }
 }
 
-@mixin uppercase {
+@mixin text-uppercase {
   font-family: Mont-Bold, sans-serif;
   font-size: 12px;
   font-weight: 800;
@@ -78,7 +78,7 @@
   letter-spacing: 0.04em;
 }
 
-@mixin buttons {
+@mixin text-buttons {
   font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -86,16 +86,15 @@
   letter-spacing: 0;
 }
 
-@mixin font-body {
+@mixin text-body {
   font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
   letter-spacing: 0;
-
 }
 
-@mixin small {
+@mixin text-small {
   font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 700;

@@ -1,3 +1,4 @@
+import './Footer.scss';
 import { useContext } from 'react';
 import logo from '../../assets/icons/logo.svg';
 import logoLight from '../../assets/icons/logoLight.svg';
@@ -20,11 +21,11 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <nav role="">
-        <div className="footer_container">
-          <NavLink className="footer_logo" to="/">
+        <div className="footer__container">
+          <NavLink className="footer__logo" to="/">
             <img src={isBasicDark ? logo : logoLight} alt="logo" />
           </NavLink>
-          <ul>
+          <ul className="footer-links">
             <NavLink
               className="footer-item"
               to="https://github.com/kifont"
@@ -40,10 +41,14 @@ export const Footer = () => {
             >
               Contacts
             </NavLink>
+
+            <NavLink className="footer-item" to="/" target="_blank">
+              Rights
+            </NavLink>
           </ul>
-          <div className="footer_button">
-            <h3 className="footer_buttonsName">Back to top</h3>
-            <button className="footer_btn" onClick={scrollTop}>
+          <div className="footer__button">
+            <h3 className="footer__buttonsName">Back to top</h3>
+            <button className="footer__btn" onClick={scrollTop}>
               <img src={arrowUp} alt="Scroll to top" />
             </button>
           </div>

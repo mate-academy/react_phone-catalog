@@ -68,7 +68,7 @@
   }
 
   &__title {
-    @include font-body;
+    @include text-body;
 
     @include themy($theme) {
       color: themed('colorText');
@@ -76,7 +76,7 @@
   }
 
   &__num {
-    @include font-body;
+    @include text-body;
     height: 32px;
     width: 32px;
     display: flex;

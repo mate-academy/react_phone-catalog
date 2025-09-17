@@ -5,10 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import Delete from '../../assets/icons/close.svg';
 import DeleteLight from '../../assets/icons/closeLight.svg';
 import { ThemeContext } from '../Themes/Themes';
-import minus from '../../assets/icons/minus.svg';
 import minusGray from '../../assets/icons/minusGray.svg';
 import plus from '../../assets/icons/plus.svg';
-import grayClose from '../../assets/icons/grayClose.svg';
+import grayDelete from '../../assets/icons/grayClose.svg';
 import { useCart } from '../BoughtCart/CartContext';
 
 interface Props {
@@ -70,7 +69,7 @@ export const BoughtCardItem: React.FC<Props> = ({
         >
           <div className="bought__wrapper">
             <img
-              src={isBasicDark ? grayClose : DeleteLight}
+              src={isBasicDark ? grayDelete : DeleteLight}
               alt="delete"
               className="deleteIcon"
               onClick={(e: React.MouseEvent) => {

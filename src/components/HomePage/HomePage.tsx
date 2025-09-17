@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './HomePage.module.scss';
+import './HomePage.scss';
 import { Product } from '../../types/ProductTypes';
 import { fetchProducts } from '../../utils/api';
 import { Loader } from '../Loader';
@@ -22,11 +22,15 @@ export const HomePage = () => {
           data.filter((product: Product) => product.category === 'phones'),
         );
         setError(null);
-      } catch (err: any) {
-        if (err.message === 'No internet connection') {
-          setError('No internet connection. Please, check your network.');
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          if (err.message === 'No internet connection') {
+            setError('No internet connection. Please, check your network.');
+          } else {
+            setError('Server is not responding. Please, try again later');
+          }
         } else {
-          setError('Server in not responding. Please, try again later');
+          setError('Unknown error occurred');
         }
       } finally {
         setLoading(false);
@@ -61,7 +65,7 @@ export const HomePage = () => {
       {!loading && !error && (
         <>
           <SliderSwiper />
-          <div className="homepaage__product">
+          <div className="homepage__product">
             <ProductSlider products={phones} title={NameSlider.Brand} />
           </div>
           <div className="homepage__category">

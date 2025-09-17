@@ -8,5 +8,5 @@ body {
   background-color: $color-black;
   overflow-x: hidden;
 
-  @include font-body;
+  @include text-body;
 }

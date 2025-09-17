@@ -1,6 +1,6 @@
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import './DropDown.module.scss';
+import './DropDown.scss';
 
 interface DDOpt {
   value: string;

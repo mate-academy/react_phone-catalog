@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useProductHook } from '../ProductPage/useProductHook';
-import './Category.module.scss';
+import './Category.scss';
 import { categories } from './categoryList';
 
 export const Category = () => {

@@ -1,4 +1,3 @@
-@import '../fonts/fonts';
 @import '../../utils/core';
 
 
@@ -46,7 +45,7 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  @include font-body;
+  @include text-body;
   @include themy($theme) {
     color: themed('colorSecond')
   }
@@ -70,7 +69,10 @@
   border: 1px solid $color-accent;
   color: $color-white;
   margin: 0;
-  @include buttons;
+  @include text-buttons;
+  &:hover {
+    background-color: red !important;
+  }
 }
 
 .modal {
@@ -136,6 +138,5 @@
   background-color: $color-accent;
   border: 1px solid $color-accent;
   color: $color-white;
-  @include buttons;
-  @include hover(background-color, red)
+  @include text-buttons;
 }

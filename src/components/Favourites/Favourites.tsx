@@ -1,3 +1,4 @@
+import './Favourites.scss';
 import { NavLink } from 'react-router-dom';
 import { useFavourites } from './FavouritesContext';
 import home from '../../assets/icons/home.svg';

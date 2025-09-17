@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Глобальні стилі */
+body {
+  font-family: 'Mont', sans-serif;
+  background-color: #0F1121;
+  color: #F1F2F9;
+  transition: all 0.3s ease;
+}
+
+/* Силки без підкреслення */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Убрать стилі списків */
+ul, ol {
+  list-style: none;
+}
