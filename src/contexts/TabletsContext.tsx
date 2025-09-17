@@ -20,7 +20,7 @@ export const TabletsProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setIsLoading(true);
     setIsError(false);
 
-    fetch('/api/tablets.json')
+    fetch('./api/tablets.json')
       .then(res => res.json())
       .then(res => setTablets(res))
       .catch(() => {

@@ -24,7 +24,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const { accessories } = useAccessories();
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(res => res.json())
       .then(result => {
         setAllProducts(result);
@@ -76,6 +76,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   // eslint-disable-next-line max-len
   return (
     <ProductContext.Provider
+      // eslint-disable-next-line max-len
       value={{ allProducts, transformedProducts, setTransformedProducts, newestModels }}
     >
       {children}

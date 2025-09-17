@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-len
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import i18n from '../118n';
 
@@ -9,6 +10,7 @@ type LanguageContextType = {
   toggleLanguage: () => void;
 };
 
+// eslint-disable-next-line max-len
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {

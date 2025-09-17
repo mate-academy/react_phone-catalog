@@ -20,7 +20,7 @@ export const PhonesProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     setIsLoading(true);
     setIsError(false);
 
-    fetch('/api/phones.json')
+    fetch('./api/phones.json')
       .then(res => res.json())
       .then(res => setPhones(res))
       .catch(() => {
@@ -38,6 +38,7 @@ export const PhonesProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   // eslint-disable-next-line max-len
   return (
+    // eslint-disable-next-line max-len
     <PhonesContext.Provider value={{ phones, isError, isLoading, reload: loadPhones }}>
       {children}
     </PhonesContext.Provider>

@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-len
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 type Theme = 'light' | 'dark';

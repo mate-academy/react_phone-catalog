@@ -1,12 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Phone } from '../types/Phone';
-import { Tablet } from '../types/Tablet';
-import { Accessory } from '../types/Accessory';
+import { Item } from '../types/Item';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 type favoritesContextType = {
-  favorites: Phone[] | Tablet[] | Accessory[];
+  favorites: Item[];
   favoritesIds: string[];
-  setFavorites: React.Dispatch<React.SetStateAction<Phone[] | Tablet[] | Accessory[]>>;
+  setFavorites: React.Dispatch<React.SetStateAction<Item[]>>;
   setFavoritesIds: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
@@ -15,7 +14,7 @@ const FavoritesContext = createContext<favoritesContextType | undefined>(undefin
 
 // eslint-disable-next-line max-len
 export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [favorites, setFavorites] = useState<Phone[] | Tablet[] | Accessory[]>([]);
+  const [favorites, setFavorites] = useState<Item[]>([]);
   const [favoritesIds, setFavoritesIds] = useState<string[]>([]);
 
   useEffect(() => {
@@ -34,8 +33,8 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }
   }, [favorites, favoritesIds]);
 
-  // eslint-disable-next-line max-len
   return (
+    // eslint-disable-next-line max-len
     <FavoritesContext.Provider value={{ favorites, setFavorites, favoritesIds, setFavoritesIds }}>
       {children}
     </FavoritesContext.Provider>
