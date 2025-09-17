@@ -56,10 +56,12 @@ body {
     height: 1px;
 
     background-color: var(--items-disabled);
+  }
+}
 
-    @media (min-width: 640px){
-      bottom: 96px;
-    }
+@media (min-width: 640px) {
+  body::after {
+    bottom: 96px;
   }
 }
 
