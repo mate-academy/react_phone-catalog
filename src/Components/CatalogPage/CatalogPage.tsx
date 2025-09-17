@@ -6,12 +6,20 @@ import { GetProducts } from '../../services/GetProducts';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../types/Product';
 import { Loader } from '../Loader/Loader';
+import { Pagination } from '../Pagination/Pagination';
 
 export const CatalogPage: React.FC = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [sortField, setSortField] = useState('newest');
   const [itemsOnPage, setItemsOnPage] = useState('all');
   const [isLoading, setIsLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerPage] = useState(
+    filteredProducts.length,
+  );
+
+  const [totalProducts, setTotalProducts] = useState(0);
 
   const location = useLocation();
 
@@ -25,9 +33,14 @@ export const CatalogPage: React.FC = () => {
         (item: Product) => item.category === gadgets,
       );
 
+      setTotalProducts(productsFilter.length);
+
       setTimeout(() => {
         setIsLoading(true);
       }, 1000);
+
+      const lastIndex = currentPage * productsPerPage;
+      const firstIndex = lastIndex - productsPerPage;
 
       switch (sortField) {
         case 'newest':
@@ -42,34 +55,54 @@ export const CatalogPage: React.FC = () => {
           break;
       }
 
-      let visibleProducts = productsFilter;
+      let currentProducts = productsFilter;
 
       switch (itemsOnPage) {
         case 'all':
+          setProductsPerPage(currentProducts.length);
           break;
 
         case '4':
-          visibleProducts = visibleProducts.slice(0, 4);
+          setProductsPerPage(4);
           break;
 
         case '8':
-          visibleProducts = visibleProducts.slice(0, 8);
+          setProductsPerPage(8);
           break;
 
         case '16':
-          visibleProducts = visibleProducts.slice(0, 16);
+          setProductsPerPage(16);
           break;
 
         default:
           break;
       }
 
-      setFilteredProducts(visibleProducts);
+      currentProducts = currentProducts.slice(firstIndex, lastIndex);
+
+      setFilteredProducts(currentProducts);
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
     });
-  }, [gadgets, sortField, itemsOnPage]);
+  }, [gadgets, sortField, itemsOnPage, productsPerPage, currentPage]);
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const nextPage = () => setCurrentPage(prev => prev + 1);
+  const previousPage = () => setCurrentPage(prev => prev - 1);
+
+  const pageNumbers: number[] = [];
+
+  for (
+    let index = 1;
+    index <= Math.ceil(totalProducts / productsPerPage);
+    index++
+  ) {
+    pageNumbers.push(index);
+  }
 
   return (
     <>
@@ -120,7 +153,10 @@ export const CatalogPage: React.FC = () => {
               <select
                 className="catalog-sort"
                 value={itemsOnPage}
-                onChange={e => setItemsOnPage(e.target.value)}
+                onChange={e => {
+                  setItemsOnPage(e.target.value);
+                  setCurrentPage(1);
+                }}
               >
                 <option value="all">all</option>
                 <option value="4">4</option>
@@ -135,6 +171,15 @@ export const CatalogPage: React.FC = () => {
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
+
+          {pageNumbers.length > 1 && (
+            <Pagination
+              pageNumbers={pageNumbers}
+              paginate={paginate}
+              nextPage={nextPage}
+              previousPage={previousPage}
+            />
+          )}
         </div>
       )}
     </>

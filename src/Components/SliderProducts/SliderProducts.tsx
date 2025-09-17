@@ -37,7 +37,7 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
 
       setProducts(shuffled.slice(0, 20));
     });
-  }, []);
+  }, [title]);
 
   const handleNext = () => {
     if (startIndex < products.length - 4) {

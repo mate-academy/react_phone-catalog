@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
+// import { Product } from '../types/Product';
+import { useLocalStorage } from '../hooks/useLocaleStorage';
 
 type FavoritesContextType = {
   favorites: string[];
@@ -12,15 +14,13 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(
 export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useLocalStorage<string[]>('favorites', []);
 
   const toggleFavorite = (id: string) => {
     setFavorites(prev =>
       prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id],
     );
   };
-
-  console.log(favorites);
 
   return (
     <FavoritesContext.Provider value={{ favorites, toggleFavorite }}>

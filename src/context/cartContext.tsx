@@ -1,9 +1,17 @@
-import { log } from 'console';
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
+import { Product } from '../types/Product';
+import { useLocalStorage } from '../hooks/useLocaleStorage';
+// import { DeleteProduct } from '../services/GetProducts';
+
+export interface CartProduct {
+  item: Product,
+  count: number,
+}
 
 type CartContextType = {
-  cart: string[];
-  toggleCart: (id: string) => void;
+  cart: CartProduct[];
+  toggleCart: (addedToProduct: Product) => void;
+  updateCounter: (id: string, value: string) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -11,18 +19,41 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<string[]>([]);
+  const [cart, setCart] = useLocalStorage<CartProduct[]>('cart',[]);
 
-  const toggleCart = (id: string) => {
-    setCart(prev =>
-      prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id],
+  const toggleCart = (addedToProduct: Product) => {
+    setCart((prev: CartProduct[]) => {
+      // prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id],
+      const foundItem = prev.find((product) => product.item.itemId === addedToProduct.itemId)
+
+      if (foundItem) {
+         return prev.filter(favId => favId.item.itemId !== addedToProduct.itemId);
+      }
+
+      return  [...prev, {
+        item: addedToProduct,
+        count: 1,
+      }];
+      }
     );
   };
 
-  console.log(cart);
+  const updateCounter = (id: string, value: string) => {
+    if (value === 'add') {
+      setCart(prev => prev.map((product: CartProduct) => product.item.itemId === id ? {...product,
+        count: product.count + 1,
+      } : product))
+    }
+
+    if (value === 'decrement') {
+      setCart(prev => prev.map((product: CartProduct) => product.item.itemId === id ? {...product,
+        count: product.count - 1,
+      } : product))
+    }
+  };
 
   return (
-    <CartContext.Provider value={{ cart, toggleCart }}>
+    <CartContext.Provider value={{ cart, toggleCart, updateCounter }}>
       {children}
     </CartContext.Provider>
   );

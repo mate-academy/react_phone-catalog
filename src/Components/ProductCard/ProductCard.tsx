@@ -15,7 +15,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { cart, toggleCart } = useCart();
 
   const isFavorite = favorites.includes(product.itemId);
-  const isAdded = cart.includes(product.itemId);
+  const isAdded = cart.find(
+    cartProduct => cartProduct.item.itemId === product.itemId,
+  );
 
   return (
     <div className="product">
@@ -57,7 +59,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           className={classNames('product__button--add-to-cart', {
             'button-active': isAdded,
           })}
-          onClick={() => toggleCart(product.itemId)}
+          onClick={() => toggleCart(product)}
         >
           {isAdded ? 'Added' : 'Add to cart'}
         </button>

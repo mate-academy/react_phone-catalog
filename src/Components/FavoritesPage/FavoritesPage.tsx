@@ -14,14 +14,11 @@ export const FavoritesPage: React.FC = () => {
     GetProducts().then(data => {
       setProducts(data);
     });
-  }),
-  [];
+  }, []);
 
   const favoriteProducts = products.filter(product =>
     favorites.includes(product.itemId),
   );
-
-  console.log(favoriteProducts);
 
   return (
     <>

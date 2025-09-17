@@ -1,41 +1,23 @@
 import './ViewCart.scss';
-// import { NavLink } from 'react-router-dom';
-// import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
-import { useEffect, useState } from 'react';
-// import { Gadget } from '../../types/Gadget';
-// import { useEffect, useState } from 'react';
-// import { Product } from '../../types/Product';
-// import { GetProducts } from '../../services/GetProducts';
-// import { useCart } from '../../context/cartContext';
+import { useCart } from '../../context/cartContext';
 
 type Props = {
   product: Product;
   onRemove: (id: string) => void;
-  updateCounter: (id: string, value: number) => void;
-  counter: number;
-  UpdateTotalPrice: (id: string) => void;
-  addedToCart: Product[];
 };
 
-export const ViewCart: React.FC<Props> = ({
-  product,
-  onRemove,
-  updateCounter,
-  counter,
-  UpdateTotalPrice,
-  addedToCart,
-}) => {
-  const deleteCounter = () => {
-    updateCounter(product.itemId, 0);
+export const ViewCart: React.FC<Props> = ({ product, onRemove }) => {
+  const { toggleCart, updateCounter, cart } = useCart();
+
+  const counter = cart.find(
+    cartProduct => cartProduct.item.itemId === product.itemId,
+  );
+
+  const DeleteProduct = () => {
+    toggleCart(product);
     onRemove(product.itemId);
   };
-
-  useEffect(() => {
-    addedToCart.forEach((element: Product) => {
-      UpdateTotalPrice(element.itemId);
-    });
-  }, [addedToCart]);
 
   return (
     <>
@@ -45,8 +27,7 @@ export const ViewCart: React.FC<Props> = ({
           src="public/img/ui-kit/Close.png"
           alt="close"
           onClick={() => {
-            deleteCounter();
-            UpdateTotalPrice(product.itemId);
+            DeleteProduct();
           }}
         />
 
@@ -64,30 +45,29 @@ export const ViewCart: React.FC<Props> = ({
             src="public/img/ui-kit/cart-button-minus.png"
             alt="-"
             onClick={() => {
-              const newValue = Math.max(0, counter - 1);
-
-              updateCounter(product.itemId, newValue);
-              UpdateTotalPrice(product.itemId);
-              if (newValue === 0) {
-                deleteCounter();
+              if (counter?.count === 1) {
+                DeleteProduct();
               }
+
+              updateCounter(product.itemId, 'decrement');
             }}
           />
 
-          <p className="view-cart__counter">{counter}</p>
+          <p className="view-cart__counter">{counter?.count}</p>
 
           <img
             className="view-cart__button"
             src="public/img/ui-kit/cart-button-plus.png"
             alt="+"
             onClick={() => {
-              updateCounter(product.itemId, counter + 1);
-              UpdateTotalPrice(product.itemId);
+              updateCounter(product.itemId, 'add');
             }}
           />
         </div>
 
-        <div className="view-cart__price">${product.price * counter}</div>
+        <div className="view-cart__price">
+          ${product.price * counter?.count}
+        </div>
       </div>
     </>
   );

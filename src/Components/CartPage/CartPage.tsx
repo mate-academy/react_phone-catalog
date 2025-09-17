@@ -1,9 +1,8 @@
 import './CartPage.scss';
 import { NavLink } from 'react-router-dom';
-// import { ProductCard } from '../ProductCard/ProductCard';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
-import { GetProducts } from '../../services/GetProducts';
+import { DeleteProduct, GetProducts } from '../../services/GetProducts';
 import { useCart } from '../../context/cartContext';
 import { ViewCart } from '../ViewCart/ViewCart';
 import { CartEmpty } from '../CartEmpty/CartEmpty';
@@ -12,39 +11,20 @@ import { Checkout } from '../Checkout/Checkout';
 export const CartPage: React.FC = () => {
   const { cart } = useCart();
   const [products, setProducts] = useState<Product[]>([]);
-  const [counters, setCounters] = useState<{ [id: string]: number }>({});
 
   useEffect(() => {
     GetProducts().then(data => {
-      setProducts(data);
+      const addedToCart = data.filter(product =>
+        cart.find(cartProduct => cartProduct.item.itemId === product.itemId),
+      );
+
+      setProducts(addedToCart);
     });
   }, []);
 
   const onRemove = (id: string) => {
+    DeleteProduct();
     setProducts(prev => prev.filter(p => p.itemId !== id));
-  };
-
-  const addedToCart = products.filter(product => cart.includes(product.itemId));
-
-  const updateCounter = (id: string, value: number) => {
-    setCounters(prev => ({
-      ...prev,
-      [id]: value,
-    }));
-  };
-
-  const initialTotalPrice = addedToCart.reduce(
-    (acc, item) => acc + item.price,
-    0,
-  );
-
-  const [totalPrice, setTotalPrice] = useState<number | undefined>(
-    initialTotalPrice,
-  );
-
-  const UpdateTotalPrice = (id: string) => {
-    const deletedItem = products.find(item => item.itemId === id);
-    setTotalPrice(initialTotalPrice - deletedItem.price);
   };
 
   return (
@@ -69,29 +49,23 @@ export const CartPage: React.FC = () => {
         <h1 className="cart__page-title">Cart</h1>
 
         <div className="cart-catalog__wrapper">
-          {addedToCart.length > 0 ? (
+          {products.length > 0 ? (
             <>
               <div className="cart-catalog">
-                {addedToCart.map(product => {
-                  return <ViewCart
-                    key={product.id}
-                    product={product}
-                    onRemove={onRemove}
-                    updateCounter={(value: number) =>
-                        updateCounter(product.itemId, value)
-                      }
-                    counter={counters[product.id] || 1}
-                    UpdateTotalPrice={UpdateTotalPrice}
-                    addedToCart={addedToCart}
-                  />;
+                {products.map(product => {
+                  return (
+                    <ViewCart
+                      key={product.id}
+                      product={product}
+                      onRemove={onRemove}
+                    />
                   );
                 })}
               </div>
-
-              <Checkout count={addedToCart.length} totalPrice={totalPrice}/>
+              <Checkout />
             </>
           ) : (
-            <CartEmpty/>
+            <CartEmpty />
           )}
         </div>
       </div>
