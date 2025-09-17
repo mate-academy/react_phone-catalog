@@ -58,7 +58,7 @@ export const Cart = () => {
         <div className={styles.cart__emptyBox}>
           <p className={styles.cart__emptyMessage}>{t('errors.emptyCart')}</p>
           <img
-            src="public/img/icons/empty-cart.webp"
+            src="img/icons/empty-cart.webp"
             alt="Empty cart"
             className={styles.cart__emptyPhoto}
           />

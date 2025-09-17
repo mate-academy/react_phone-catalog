@@ -11,7 +11,7 @@ export const NotFound = () => {
       <div className={styles.notFound__content}>
         <h1 className={styles.notFound__title}>{t('errors.pageNotFound')}</h1>
         <img
-          src="public/img/page-not-found.png"
+          src="img/page-not-found.png"
           alt="Page not found photo"
           className={styles.notFound__photo}
         />

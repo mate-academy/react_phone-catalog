@@ -137,7 +137,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
               <div className={styles.productDetailsPage__photos}>
                 <div className={styles.productDetailsPage__mainPhotoBox}>
                   <img
-                    src={`/public/${images[currentIndex]}`}
+                    src={`${images[currentIndex]}`}
                     alt="Product photo"
                     className={styles.productDetailsPage__mainPhoto}
                   />
@@ -149,7 +149,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
                       className={`${styles.productDetailsPage__photoLink} ${index === currentIndex && styles['productDetailsPage__photoLink--active']}`}
                     >
                       <img
-                        src={`/public/${image}`}
+                        src={`${image}`}
                         alt={(index + 1).toString()}
                         className={`${styles.productDetailsPage__photo} ${theme === 'light' && styles['productDetailsPage__photo--lightTheme']}`}
                         onClick={() => handleImageSelection(index)}

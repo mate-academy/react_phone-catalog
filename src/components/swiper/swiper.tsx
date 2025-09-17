@@ -24,14 +24,14 @@ export const MySwiper = () => {
         nextEl: `.${styles.swiper__next}`,
         prevEl: `.${styles.swiper__prev}`,
       }}
-      // autoplay={{ delay: 5000, disableOnInteraction: false }}
-      // loop={true}
+      autoplay={{ delay: 5000, disableOnInteraction: false }}
+      loop={true}
       className={`${styles.mySwiper} ${styles.swiper}`}
     >
       <SwiperSlide className={`${styles.swiper__slide}`}>
         <div className={`${styles.swiper__slideContentMobile}`}>
           <img
-            src="public/img/slider/slider-1.png"
+            src="img/slider/slider-1.png"
             alt="iPhone 14"
             className={`${styles.swiper__image} ${styles['swiper__image--mobile-main']}`}
           />
@@ -70,7 +70,7 @@ export const MySwiper = () => {
           </div>
 
           <img
-            src="public/img/slider/slider-1.png"
+            src="img/slider/slider-1.png"
             alt="iPhone 14"
             className={`${styles.swiper__image} ${styles['swiper__image--tabletOrder']}`}
           />
@@ -79,13 +79,13 @@ export const MySwiper = () => {
 
       <SwiperSlide className={styles.swiper__slide}>
         <img
-          src="public/img/slider/slider-2.jpg"
+          src="img/slider/slider-2.jpg"
           alt="iPhone 14"
           className={`${styles.swiper__image} ${styles['swiper__image--mobile']}`}
         />
 
         <img
-          src="public/img/slider/swiper-tablet-2.webp"
+          src="img/slider/swiper-tablet-2.webp"
           alt="iPhone 14"
           className={`${styles.swiper__image} ${styles['swiper__image--tablet']}`}
         />
@@ -93,13 +93,13 @@ export const MySwiper = () => {
 
       <SwiperSlide className={styles.swiper__slide}>
         <img
-          src="public/img/slider/slider-3.webp"
+          src="img/slider/slider-3.webp"
           alt="iPhone 14"
           className={`${styles.swiper__image} ${styles['swiper__image--mobile']}`}
         />
 
         <img
-          src="public/img/slider/slider-tablet-3.jpeg"
+          src="img/slider/slider-tablet-3.jpeg"
           alt="iPhone 14"
           className={`${styles.swiper__image} ${styles['swiper__image--tablet']}`}
         />
