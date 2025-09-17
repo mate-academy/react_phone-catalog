@@ -20,7 +20,7 @@ export const ShopByCategory = () => {
         <article className={styles.ShopByCategory__category}>
           <Link to="/phones">
             <img
-              src="/img/phones-category.png"
+              src="img/phones-category.png"
               alt="Phones"
               className={styles.ShopByCategory__categoryPhoto}
             />
