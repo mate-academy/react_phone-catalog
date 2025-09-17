@@ -26,7 +26,7 @@ export function TopBar({ isAside = false }: Props) {
       <div className={styles.topBar__leftSide}>
         <div className={styles.topBar__logo}>
           <a
-            href="/"
+            href="#"
             className={`${styles.icon} ${styles['icon--logo']} ${theme === 'light' && styles['icon--logo-lightTheme']}`}
           ></a>
         </div>
