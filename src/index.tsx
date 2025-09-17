@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import './index.css';
 // eslint-disable-next-line max-len
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { ProductsProvider } from './contexts/ProductContext';
 import { Menu } from './components/Menu';
 import { MainContent } from './components/Main/MainContent';

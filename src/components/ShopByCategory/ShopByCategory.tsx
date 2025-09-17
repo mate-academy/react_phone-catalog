@@ -40,7 +40,7 @@ export const ShopByCategory = () => {
         <article className={styles.ShopByCategory__category}>
           <Link to="/tablets">
             <img
-              src=".public/img/tablets-category.png"
+              src="img/tablets-category.png"
               alt="Tablets"
               className={styles.ShopByCategory__categoryPhoto}
             />
@@ -59,7 +59,7 @@ export const ShopByCategory = () => {
         <article className={styles.ShopByCategory__category}>
           <Link to="/accessories">
             <img
-              src="public/img/accessories-category.png"
+              src="img/accessories-category.png"
               alt="Accessories"
               className={styles.ShopByCategory__categoryPhoto}
             />
