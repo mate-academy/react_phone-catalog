@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Product } from '../../types/ProductTypes';
-import './BoughtCardItem.module.scss';
+import './BoughtCardItem.scss';
 import { useNavigate } from 'react-router-dom';
 import Delete from '../../assets/icons/close.svg';
 import DeleteLight from '../../assets/icons/closeLight.svg';
 import { ThemeContext } from '../Themes/Themes';
 import minus from '../../assets/icons/minus.svg';
+import minusGray from '../../assets/icons/minusGray.svg';
 import plus from '../../assets/icons/plus.svg';
+import grayClose from '../../assets/icons/grayClose.svg';
 import { useCart } from '../BoughtCart/CartContext';
 
 interface Props {
@@ -68,8 +70,9 @@ export const BoughtCardItem: React.FC<Props> = ({
         >
           <div className="bought__wrapper">
             <img
-              src={isBasicDark ? Delete : DeleteLight}
+              src={isBasicDark ? grayClose : DeleteLight}
               alt="delete"
+              className="deleteIcon"
               onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 handleDelete();
@@ -93,7 +96,7 @@ export const BoughtCardItem: React.FC<Props> = ({
                   handleDecrease();
                 }}
               >
-                <img src={minus} alt="-" />
+                <img src={minusGray} alt="-" />
               </button>
               <span className="bought__num">{quantity}</span>
               <button

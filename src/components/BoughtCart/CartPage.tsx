@@ -65,7 +65,7 @@ export const CartPage = () => {
             <h1 className="window__price">{`$${totalCartPrice}`}</h1>
             <p className="window__title">{`Total for ${totalCartItem} items`}</p>
             <div className="product__row"></div>
-            <button className="Checkout" onClick={handleCheckout}>
+            <button className="checkout" onClick={handleCheckout}>
               Checkout
             </button>
           </div>

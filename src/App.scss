@@ -1,1 +1,12 @@
-// not empty
+@import './components/fonts/fonts';
+@import './components/Themes/Themes';
+
+body {
+  display: block;
+  margin: 0;
+  padding: 0;
+  background-color: $color-black;
+  overflow-x: hidden;
+
+  @include font-body;
+}

@@ -1,0 +1,103 @@
+@import '../fonts/fonts';
+@import '../../utils/core';
+
+.bought {
+  margin-bottom: 17px;
+
+  &__item {
+    background-color: $color-surf-1;
+    display: block;
+    align-items: center;
+    border: 1px solid $color-surf-1;
+    padding: 16px;
+    justify-content: space-between;
+
+    @include themy($theme) {
+      background: themed('colorCart');
+    }
+
+    @include onTablet {
+      display: block;
+    }
+
+    @include onDesktop {
+      display: flex;
+    }
+  }
+
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 16px;
+
+    @include onDesktop {
+      padding-bottom: 0;
+    }
+  }
+
+  &__wrapper2 {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+
+    @include onDesktop {
+      gap: 24px;
+    }
+  }
+
+  &__price {
+    @include h3;
+
+    @include themy($theme) {
+      color: themed('colorText');
+    }
+  }
+
+  &__deleteIcon {
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+  }
+
+  &__image {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+  }
+
+  &__title {
+    @include font-body;
+
+    @include themy($theme) {
+      color: themed('colorText');
+    }
+  }
+
+  &__num {
+    @include font-body;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include themy($theme) {
+      color: themed('colorText');
+    }
+  }
+
+  &__button {
+    display: flex;
+  }
+}
+
+.prevBtn {
+  background-color: $color-surf-1;
+  border: 1px solid $color-elem;
+}
+
+.nextBtn {
+  background-color: $color-surf-2;
+}
