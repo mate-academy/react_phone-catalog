@@ -50,7 +50,7 @@
       width: 16px;
       height: 16px;
       transform: translate(-50%, -50%);
-      background-image: url('img/icons/heart-like.svg');
+      background-image: url('/img/icons/heart-like.svg');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -64,7 +64,7 @@
       border: 1px solid $secondary-gray;
 
       &::before {
-        background-image: url('img/icons/heart-like-active.svg');
+        background-image: url('/img/icons/heart-like-active.svg');
       }
     }
   }
