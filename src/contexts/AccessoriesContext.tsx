@@ -8,6 +8,7 @@ type AccessoriesContextType = {
   reload: () => void;
 };
 
+// eslint-disable-next-line max-len
 const AccessoriesContext = createContext<AccessoriesContextType | undefined>(undefined);
 
 // eslint-disable-next-line max-len
@@ -20,7 +21,7 @@ export const AccessoriesProvider: React.FC<{ children: React.ReactNode }> = ({ c
     setIsLoading(true);
     setIsError(false);
 
-    fetch('/api/accessories.json')
+    fetch('./api/accessories.json')
       .then(res => res.json())
       .then(res => setAccessories(res))
       .catch(() => {
