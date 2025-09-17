@@ -8,9 +8,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const images = [
-  '../../../img/slider/slider-1.jpg',
-  '../../../img/slider/slider-2.png',
-  '../../../img/slider/slider-3.png',
+  'img/slider/slider-1.jpg',
+  'img/slider/slider-2.png',
+  'img/slider/slider-3.png',
 ];
 
 export const PicturesSlider: React.FC = () => {

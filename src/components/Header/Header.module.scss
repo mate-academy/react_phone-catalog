@@ -158,7 +158,7 @@
   }
 
   &__icons {
-    padding-bottom: env(safe-area-inset-bottom, 16px);
+    padding-bottom: env(safe-area-inset-bottom);
 
     &__list {
       display: flex;

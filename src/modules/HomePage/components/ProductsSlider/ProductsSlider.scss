@@ -33,14 +33,18 @@
       @include on-tablet {
         width: 237px !important;
       }
+
+      @include on-desktop {
+        width: 272px !important;
+      }
     }
 
     .arrow.swiper-button-disabled {
-  opacity: 0.4;
-  pointer-events: none;
-  cursor: default;
-  background-color: rebeccapurple;
-}
+      opacity: 0.4;
+      pointer-events: none;
+      cursor: default;
+      background-color: rebeccapurple;
+    }
 }
 
 .arrow {
@@ -68,7 +72,7 @@
   &-left {
 
     &::before {
-      background-image: url('img/icons/arrows/arrow-left.svg');
+      background-image: url('./img/icons/arrows/arrow-left.svg');
     }
 
     &-disabled {
@@ -76,7 +80,7 @@
       cursor: default;
 
       &::before {
-        background-image: url('img/icons/arrows/arrow-left-disabled.svg');
+        background-image: url('./img/icons/arrows/arrow-left-disabled.svg');
       }
     }
   }
@@ -84,7 +88,7 @@
   &-right{
 
     &::before {
-      background-image: url('img/icons/arrows/arrow-right.svg');
+      background-image: url('./img/icons/arrows/arrow-right.svg');
     }
 
     &-disabled {
@@ -92,7 +96,7 @@
       cursor: default;
 
       &::before {
-        background-image: url('img/icons/arrows/arrow-right-disabled.svg');
+        background-image: url('./img/icons/arrows/arrow-right-disabled.svg');
       }
     }
   }

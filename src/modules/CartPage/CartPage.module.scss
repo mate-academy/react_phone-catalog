@@ -2,8 +2,7 @@
 @import '/src/styles/typography';
 
 .cart-page {
-
-  @include content-padding-inline();
+  @include content-padding-inline;
 
   &__title {
     margin-top: 24px;
@@ -19,7 +18,6 @@
   &__content {
 
     @include on-desktop {
-
       @include page-grid;
     }
   }
@@ -80,7 +78,7 @@
       border: none;
       position: relative;
 
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       color: $main-white;
       font-weight: 700;
       font-size: 14px;

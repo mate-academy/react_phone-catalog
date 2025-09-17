@@ -207,7 +207,7 @@ export const ProductDetailsPage: React.FC = () => {
                         selectedProduct.color === color
                           ? style[
                               // eslint-disable-next-line prettier/prettier
-                            'product-details__details__main-controls__section__selectors__link--active'
+                              'product-details__details__main-controls__section__selectors__link--active'
                             ]
                           : ''
                       }
@@ -271,7 +271,7 @@ export const ProductDetailsPage: React.FC = () => {
                       } ${
                         selectedProduct.capacity === item
                           ? style[
-                            'product-details__details__main-controls__section__selectors__capacity--active'
+                              'product-details__details__main-controls__section__selectors__capacity--active'
                             ]
                           : ''
                       }

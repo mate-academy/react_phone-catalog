@@ -2,12 +2,12 @@
 
 
 .home-page {
-
   display: flex;
   flex-direction: column;
   gap: 56px;
 
   @include on-tablet {
+
     gap: 64px;
   }
 
@@ -17,13 +17,13 @@
 
   &__block {
 
-    @include content-padding-inline();
+    @include content-padding-inline;
   }
 }
 
 .categories {
 
-  @include content-padding-inline();
+  @include content-padding-inline;
 
   display: flex;
   flex-direction: column;
