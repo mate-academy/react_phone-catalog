@@ -1,11 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../app/store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './CartPage.scss';
 import { ProductBuyCard } from '../../components/ProductByCard';
+import { actions } from '../../features/addedToCartProducts';
+import { actions as quantityActions } from '../../features/cartQuantities';
 
 export const CartPage = () => {
   const cart = useSelector((state: RootState) => state.cartQuantities);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   let totalCartQuantity = 0;
   const addedToCartProducts = useSelector(
     (state: RootState) => state.addedToCartProducts,
@@ -16,10 +20,22 @@ export const CartPage = () => {
     const quantity = cartItem ? cartItem.quantity : 1;
 
     totalCartQuantity += quantity;
+
     return sum + (product.price ?? product.fullPrice) * quantity;
   }, 0);
 
-  const navigate = useNavigate();
+  function checkoutAlert() {
+    const confirmClear = confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (confirmClear) {
+      for (const productToDelete of addedToCartProducts) {
+        dispatch(actions.deleteOne(productToDelete.itemId));
+        dispatch(quantityActions.removeQuantity(productToDelete.id));
+      }
+    }
+  }
 
   function goBack() {
     return navigate(-1);
@@ -61,7 +77,12 @@ export const CartPage = () => {
               <div className="bottom-cart__checkout checkout">
                 <p className="checkout__price">{`$${totalPrice}`}</p>
                 <p className="checkout__items">{`Total for ${totalCartQuantity} items`}</p>
-                <button className="checkout__button">Checkout</button>
+                <button
+                  className="checkout__button"
+                  onClick={() => checkoutAlert()}
+                >
+                  Checkout
+                </button>
               </div>
             </div>
           )}

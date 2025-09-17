@@ -15,7 +15,6 @@ export const Footer = () => {
           <img
             src="./img/logo/logo-nice-gadgets.svg"
             alt="logo-nice-gadgets"
-
             onClick={() => {
               navigate('/');
               scrollPage();
