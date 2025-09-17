@@ -54,7 +54,7 @@
     }
 
     &--prev {
-      background-image: url('../../public/img/icons/arrow-left.svg');
+      background-image: url('../../../public/img/icons/arrow-left.svg');
 
       &:disabled {
         cursor: auto;
@@ -75,7 +75,7 @@
     }
 
     &--next {
-      background-image: url('../../public/img/icons/arrow-right.svg');
+      background-image: url('../../../public/img/icons/arrow-right.svg');
 
       &:disabled {
         cursor: auto;
