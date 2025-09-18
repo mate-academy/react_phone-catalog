@@ -49,22 +49,17 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   }, [category, productId, phones, tablets, accessories]);
 
   useEffect(() => {
-    if (category === 'phones' && product) {
-      const elems = phones.filter(x => x.namespaceId === product.namespaceId);
-      const variation = elems.find(x => x.color === currentColor && x.capacity === currentCapacity);
+    if (product) {
+      let elems: Item[] = [];
 
-      if (variation) {
-        setProduct(variation);
+      if (category === 'phones') {
+        elems = phones.filter(x => x.namespaceId === product.namespaceId);
+      } else if (category === 'tablets') {
+        elems = tablets.filter(x => x.namespaceId === product.namespaceId);
+      } else if (category === 'accessories') {
+        elems = accessories.filter(x => x.namespaceId === product.namespaceId);
       }
-    } else if (category === 'tablets' && product) {
-      const elems = tablets.filter(x => x.namespaceId === product.namespaceId);
-      const variation = elems.find(x => x.color === currentColor && x.capacity === currentCapacity);
 
-      if (variation) {
-        setProduct(variation);
-      }
-    } else if (category === 'accessories' && product) {
-      const elems = accessories.filter(x => x.namespaceId === product.namespaceId);
       const variation = elems.find(x => x.color === currentColor && x.capacity === currentCapacity);
 
       if (variation) {
@@ -72,7 +67,8 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
         navigate(`/${category}/${variation.id}`, { replace: true });
       }
     }
-  }, [category, currentColor, currentCapacity, phones, product]);
+    // eslint-disable-next-line max-len
+  }, [category, currentColor, currentCapacity, phones, tablets, accessories, product, navigate]);
 
   const handleImageSelection = (index: number) => {
     setCurrentIndex(index);
