@@ -20,12 +20,12 @@ export const SectionBreadcrumbs: React.FC<Props> = ({ currentLink }) => {
         href=""
         className={`${styles.sectionBreadcrumbs__arrowRight} ${theme === 'light' && styles['sectionBreadcrumbs__arrowRight--lightTheme']}`}
       ></a>
-      <a
-        href=""
+
+      <p
         className={`${styles.sectionBreadcrumbs__currentLink} ${theme === 'light' && styles['sectionBreadcrumbs__currentLink--lightTheme']}`}
       >
         {currentLink}
-      </a>
+      </p>
     </div>
   );
 };
