@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
 
   const { currentCategory } = useContext(CategoryContext);
 
-  const { cartItems, totalItemsOfCart } = useContext(CartContext);
+  const { totalItemsOfCart } = useContext(CartContext);
 
   const { favoritesIds } = useContext(FavoritesContext);
 
@@ -118,7 +118,7 @@ export const Header: React.FC = () => {
               >
                 <Counter
                   icon="img/icons/heart-like.svg"
-                  count={favoritesIds.length}
+                  count={totalItemsOfCart}
                   alt="Favourites icon"
                 />
               </Link>
@@ -131,7 +131,7 @@ export const Header: React.FC = () => {
               >
                 <Counter
                   icon="img/icons/shopping-bag.svg"
-                  count={cartItems.length}
+                  count={totalItemsOfCart}
                   alt="Cart icon"
                 />
               </Link>
