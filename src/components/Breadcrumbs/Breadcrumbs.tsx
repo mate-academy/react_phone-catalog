@@ -23,10 +23,10 @@ export const Breadcrumbs: React.FC<Props> = ({ category, product }) => {
 
   return (
     <div className={styles.breadcrumbs}>
-      <a
-        href="/"
+      <Link
+        to="#"
         className={`${styles.breadcrumbs__linkHome} ${theme === 'light' && styles['breadcrumbs__linkHome--lightTheme']}`}
-      ></a>
+      ></Link>
       <div
         className={`${styles.breadcrumbs__arrowRight} ${theme === 'light' && styles['breadcrumbs__arrowRight--lightTheme']}`}
       ></div>
