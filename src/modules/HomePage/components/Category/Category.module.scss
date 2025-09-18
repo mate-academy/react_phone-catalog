@@ -1,0 +1,71 @@
+@use '../../../../shared/styles/variables.scss' as *;
+@use '../../../../shared/styles/mixins.scss' as *;
+
+.wrapper {
+  margin-left: 50px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  color: $menu-color;
+  margin-top: 80px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 368px);
+  gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, 368px);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fit, 368px);
+    gap: 16px;
+  }
+}
+
+.category {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+
+  &__link {
+    display: block;
+    overflow: hidden;
+  }
+
+  &__photo {
+    width: 368px;
+    height: 368px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    margin-bottom: 16px;
+
+    // img {
+    //   width: 368px;
+    //   height: 368px;
+    // }
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__title {
+    margin: 0 0 4px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    color: $menu-color;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: $card-contentColor;
+    margin: 0;
+  }
+}

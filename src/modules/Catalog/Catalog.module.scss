@@ -1,0 +1,27 @@
+@use '../../shared/styles/variables.scss' as *;
+@use '../../shared/styles/mixins.scss' as *;
+
+.catalogPage {
+  // @include content-padding-inline;
+
+  padding-top: 56px;
+  padding-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  background-color: $menu-background-color;
+  font-family: 'Montserrat', sans-serif;
+
+  // &__title {
+  //   font-weight: 800;
+  //   font-size: 32px;
+  //   color: $menu-color;
+
+  //   @include on-tablet {
+  //     font-size: 48px;
+  //   }
+
+  //   @include on-desktop {
+  //     font-size: 48px;
+  //   }
+  // }
+}

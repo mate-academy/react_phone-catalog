@@ -7,8 +7,6 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
 import 'swiper/scss';
 import { SlideItem } from '../../interfaces/swiperInterface';
-import { useRef } from 'react';
-
 const slides: SlideItem[] = [
   {
     id: 1,
@@ -49,39 +47,21 @@ const slides: SlideItem[] = [
 ];
 
 export const Slider: React.FC = () => {
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
-  const paginationRef = useRef<HTMLDivElement>(null);
-
   return (
     <>
       <div className={styles.sliderWrapper}>
-        <button ref={prevRef} className={`${styles.navBtn} ${styles.prevBtn}`}>
-          <img src="/img/icons/arrow_left.png" alt="Arrow left" />
-        </button>
-
         <Swiper
           spaceBetween={50}
           slidesPerView={1}
           modules={[Navigation, Pagination, Autoplay]}
-          onBeforeInit={swiper => {
-            if (typeof swiper.params.navigation !== 'boolean') {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }
-
-            if (typeof swiper.params.pagination !== 'boolean') {
-              swiper.params.pagination.el = paginationRef.current;
-            }
-          }}
+          loop
           navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
+            prevEl: `.${styles.prevBtn}`,
+            nextEl: `.${styles.nextBtn}`,
           }}
           pagination={{
+            el: `.${styles.pagination}`,
             clickable: true,
-            type: 'bullets',
-            el: paginationRef.current,
             bulletClass: styles.bullet,
             bulletActiveClass: styles.activeBullet,
           }}
@@ -93,12 +73,14 @@ export const Slider: React.FC = () => {
                 <div className={styles.slide__wrapper}>
                   <div className={styles.slide__content}>
                     <h3 className={styles.slide__title}>
-                      {slide.content.title}
-                      {'\u00A0'}
+                      {slide.content.title}{' '}
                       <span className={styles.slide__emoji}>{'👌'}</span>
                     </h3>
                     <p className={styles.slide__text}>{slide.content.text}</p>
-                    <a className={styles.slide__link} href="#">
+                    <a
+                      className={styles.slide__link}
+                      href={slide.content.buttonLink}
+                    >
                       {slide.content.buttonText}
                     </a>
                   </div>
@@ -120,16 +102,14 @@ export const Slider: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <button ref={nextRef} className={`${styles.navBtn} ${styles.nextBtn}`}>
+        <button className={`${styles.navBtn} ${styles.prevBtn}`}>
+          <img src="/img/icons/arrow_left.png" alt="Arrow left" />
+        </button>
+        <button className={`${styles.navBtn} ${styles.nextBtn}`}>
           <img src="/img/icons/arrow_right.png" alt="Arrow right" />
         </button>
       </div>
-      <div
-        ref={paginationRef}
-        id="main-slider-pagination"
-        className={styles.pagination}
-      />
+      <div className={styles.pagination} />
     </>
   );
 };

@@ -1,4 +1,5 @@
 @use '../../../../shared/styles/variables.scss' as *;
+@use '../../../../shared/styles/mixins.scss' as *;
 
 .sliderWrapper {
   position: relative;

@@ -1,0 +1,35 @@
+@use '../../shared/styles/variables.scss' as *;
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: ">";
+      margin: 0 8px;
+      color: $card-contentColor;
+    }
+
+    &:last-child::after {
+      content: "";
+    }
+  }
+
+  // &__link {
+  //   color: #7560fa;
+  //   text-decoration: none;
+
+  //   &:hover {
+  //     text-decoration: underline;
+  //   }
+  // }
+}
