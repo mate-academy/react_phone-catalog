@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 export const Cart = () => {
   const { theme } = useTheme();
+  // eslint-disable-next-line max-len
   const { cartItems, setCartItems, setCartItemsIds, totalAmount, totalQuantity } = useCart();
   const { t } = useTranslation();
 
@@ -75,6 +76,7 @@ export const Cart = () => {
                   className={`${styles.cart__itemRemove} ${theme === 'light' && styles['cart__itemRemove--lightTheme']}`}
                   onClick={() => removeFromCart(item)}
                 ></a>
+
                 <img src={item.images[0]} alt="Cart item" className={styles.cart__itemPhoto} />
                 <p className={styles.cart__itemTitle}>{item.name}</p>
 

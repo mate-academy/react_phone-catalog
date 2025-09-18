@@ -11,6 +11,7 @@ export const HotPrices = () => {
   const { t } = useTranslation();
 
   const sortedByDiscount = [...transformedProducts].sort(
+    // eslint-disable-next-line max-len
     (a, b) => b.priceRegular - b.priceDiscount - (a.priceRegular - a.priceDiscount),
   );
 
@@ -19,7 +20,7 @@ export const HotPrices = () => {
       <ProductSlider
         products={sortedByDiscount}
         title={t('sections.hotPrices')}
-        isWithoutDescount={false}
+        isWithoutDiscount={false}
         isYouMayLike={false}
       />
     </section>

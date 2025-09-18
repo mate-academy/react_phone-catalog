@@ -23,7 +23,7 @@ export const ProductsList: React.FC<Props> = ({
           product={product}
           key={product.id}
           isWideCard={isWideCard}
-          isWithoutDescount={false}
+          isWithoutDiscount={false}
           isYouMayLike={false}
         />
       ))}

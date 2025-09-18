@@ -11,7 +11,7 @@ export const SectionBreadcrumbs: React.FC<Props> = ({ currentLink }) => {
   return (
     <div className={styles.sectionBreadcrumbs}>
       <a
-        href="/"
+        href="#"
         className={`${styles.sectionBreadcrumbs__linkHome} ${theme === 'light' && styles['sectionBreadcrumbs__linkHome--lightTheme']}`}
       ></a>
       <a

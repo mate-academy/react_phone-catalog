@@ -13,7 +13,7 @@ export const BrandNewModels = () => {
       <ProductSlider
         products={newestModels}
         title={t('sections.brandNewModels')}
-        isWithoutDescount={true}
+        isWithoutDiscount={true}
         isYouMayLike={false}
       />
     </section>

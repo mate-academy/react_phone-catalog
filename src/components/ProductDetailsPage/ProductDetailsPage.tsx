@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import { usePhones } from '../../contexts/PhonesContext';
 import { Item } from '../../types/Item';
@@ -28,6 +28,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   const [product, setProduct] = useState<Item | undefined>();
   const { theme } = useTheme();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let foundProduct: Item | undefined;
@@ -68,6 +69,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
 
       if (variation) {
         setProduct(variation);
+        navigate(`/${category}/${variation.id}`, { replace: true });
       }
     }
   }, [category, currentColor, currentCapacity, phones, product]);

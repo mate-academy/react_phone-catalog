@@ -10,14 +10,14 @@ type Props = {
   product: Item;
   isYouMayLike: boolean;
   isWideCard: boolean;
-  isWithoutDescount: boolean;
+  isWithoutDiscount: boolean;
 };
 
 export const ProductCard: React.FC<Props> = ({
   product,
   isYouMayLike,
   isWideCard,
-  isWithoutDescount,
+  isWithoutDiscount,
 }) => {
   const { theme } = useTheme();
   const { t } = useTranslation();
@@ -46,7 +46,7 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.productCard__price}>
         <p className={styles.productCard__discount}>${product.priceDiscount}</p>
 
-        {!isWithoutDescount && (
+        {!isWithoutDiscount && (
           <p className={styles.productCard__fullPrice}>${product.priceRegular}</p>
         )}
       </div>

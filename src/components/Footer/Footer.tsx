@@ -21,7 +21,7 @@ export const Footer = () => {
           <ul className={styles.Footer__list}>
             <li className={styles.Footer__item}>
               <a
-                href="https://github.com/viktoriamyhailiak/react_phone-catalog"
+                href="https://github.com/viktoriamyhailiak"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${styles.Footer__link} ${theme === 'light' && styles['Footer__link--lightTheme']}`}

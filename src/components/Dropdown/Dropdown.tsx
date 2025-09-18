@@ -1,8 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './Dropdown.module.scss';
 import { useTheme } from '../../contexts/ThemeContext';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { useTranslation } from 'react-i18next';
 
 type Props = {
   options: (string | number)[];
@@ -11,11 +9,11 @@ type Props = {
   isSortBy: boolean;
 };
 
+// eslint-disable-next-line max-len
 export const Dropdown: React.FC<Props> = ({ options, value, onChange, isSortBy }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
-  const { t } = useTranslation();
 
   const handleSelect = (val: string | number) => {
     onChange(val);
@@ -24,6 +22,7 @@ export const Dropdown: React.FC<Props> = ({ options, value, onChange, isSortBy }
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
+      // eslint-disable-next-line max-len
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setIsOpen(false);
       }

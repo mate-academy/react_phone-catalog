@@ -7,14 +7,14 @@ import { useEffect, useState } from 'react';
 type Props = {
   products: Item[];
   title: string;
-  isWithoutDescount: boolean;
+  isWithoutDiscount: boolean;
   isYouMayLike: boolean;
 };
 
 export const ProductSlider: React.FC<Props> = ({
   products,
   title,
-  isWithoutDescount,
+  isWithoutDiscount,
   isYouMayLike,
 }) => {
   const [transform, setTransform] = useState(0);
@@ -84,7 +84,7 @@ export const ProductSlider: React.FC<Props> = ({
             product={product}
             isYouMayLike={isYouMayLike}
             isWideCard={false}
-            isWithoutDescount={isWithoutDescount}
+            isWithoutDiscount={isWithoutDiscount}
             key={id}
           />
         ))}

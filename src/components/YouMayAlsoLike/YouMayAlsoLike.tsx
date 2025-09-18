@@ -27,7 +27,7 @@ export const YouMayAlsoLike = () => {
 
   useEffect(() => {
     if (transformedProducts.length > 0) {
-      const result = getRandomProducts(transformedProducts, 20);
+      const result = getRandomProducts(transformedProducts, 40);
 
       setRandomProducts(result);
     }
@@ -38,7 +38,7 @@ export const YouMayAlsoLike = () => {
       <ProductSlider
         products={randomProducts}
         title={t('sections.youMayLike')}
-        isWithoutDescount={true}
+        isWithoutDiscount={true}
         isYouMayLike={true}
       />
     </section>
