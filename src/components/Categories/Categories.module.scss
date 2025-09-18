@@ -1,0 +1,41 @@
+@import '../../styles/utils';
+
+.categories {
+  padding-bottom: 80px;
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    max-width: 368px;
+  }
+
+  &__item-box {
+    padding-top: 24px;
+  }
+
+  &__item-img {
+    @include hover(transform, scale(1.1))
+  }
+
+  &__item-titlelink {
+    color: $main-color;
+    @include hover(color, $accent-color);
+  }
+
+  &__item-title {
+    font-size: 20px;
+    line-height: 100%;
+    margin-bottom: 4px;
+    display: inline-block;
+  }
+
+  &__item-text {
+    @extend %mont-600;
+    color: $nav-color;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

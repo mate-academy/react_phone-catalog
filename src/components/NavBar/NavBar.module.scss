@@ -1,0 +1,81 @@
+@import '../../styles/utils';
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 24px;
+  box-shadow: 0px 1px 0px 0px #323542;
+
+  &__nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 27px;
+
+    @include hover(transform, scale(1.1))
+  }
+
+  &__list {
+    display: flex;
+    gap: 64px;
+    margin-left: 48px;
+  }
+
+  &__link {
+    @extend %mont-800;
+
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: $nav-color;
+    text-transform: uppercase;
+    transition: all .3s;
+
+    &:hover {
+      color: $main-color;
+      padding-bottom: 20px;
+      border-bottom: 3px solid $main-color;
+    }
+  }
+
+  &__link--active {
+    color: $main-color;
+    padding-bottom: 20px;
+    border-bottom: 3px solid $main-color;
+  }
+}
+
+.user-nav {
+  display: flex;
+
+  &__link {
+    position: relative;
+    padding: 24px;
+    box-shadow: -1px 0px 0px 0px #323542;
+  }
+
+  &__num {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #EB5757;
+    border: 1px solid $background-color;
+    top: 18px;
+    right: 18px;
+    text-align: center;
+
+    font-size: 9px;
+    line-height: 12px;
+    color: $main-color;
+  }
+}

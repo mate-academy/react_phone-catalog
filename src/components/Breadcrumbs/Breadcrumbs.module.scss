@@ -1,0 +1,31 @@
+@import '../../styles/utils';
+
+.breadcrumbs {
+  padding: 24px 0 40px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    position: relative;
+    padding-right: 32px;
+
+    &:not(:last-child)::after {
+      position: absolute;
+      content: '';
+      background-image: url('/img/icons/arrow-right-disabled.svg');
+      width: 16px;
+      height: 16px;
+      top: 0;
+      right: 8px;
+    }
+  }
+
+  &__link {
+    color: $nav-color;
+    font-size: 12px;
+    line-height: 100%;
+  }
+}

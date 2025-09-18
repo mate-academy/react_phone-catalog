@@ -1,0 +1,16 @@
+@import '../../styles/utils';
+
+.welcome {
+
+  &__inner {
+    padding: 56px 0 80px;
+  }
+
+  &__title {
+    @extend %mont-800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    margin-bottom: 56px;
+  }
+}

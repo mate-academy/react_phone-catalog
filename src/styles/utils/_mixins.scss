@@ -1,0 +1,42 @@
+@mixin on-desktop {
+  @media (max-width: $max-desktop-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (max-width: $max-tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-phone {
+  @media (max-width: $max-phone-width) {
+    @content;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin container {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-phone {
+    padding-inline: 16px;
+  }
+}
