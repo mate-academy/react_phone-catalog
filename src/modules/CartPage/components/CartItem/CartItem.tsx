@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { ProductPreview } from 'types/ProductPreview';
 import cartItemStyle from './CartItem.module.scss';
 import { CartContext } from '../../../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   cartItem: ProductPreview;
@@ -17,6 +18,8 @@ export const CartItem: React.FC<Props> = ({ cartItem, productQuantity }) => {
 
   const totalCostOfItem = cartItem.price * productQuantity;
 
+  const pathToProduct = `/${cartItem.category}/${cartItem.itemId}`;
+
   return (
     <div className={cartItemStyle['cart-item']}>
       <div
@@ -26,14 +29,18 @@ export const CartItem: React.FC<Props> = ({ cartItem, productQuantity }) => {
           className={`${cartItemStyle['cart-item__button']} ${cartItemStyle['cart-item__button--delete']}`}
           onClick={() => deleteItem(itemId)}
         ></button>
-        <img
-          src={cartItem.image}
-          alt="Phone image"
-          className={cartItemStyle['cart-item__image']}
-        />
-        <span className={cartItemStyle['cart-item__name']}>
-          {cartItem.name}
-        </span>
+        <Link to={pathToProduct}>
+          <img
+            src={cartItem.image}
+            alt="Phone image"
+            className={cartItemStyle['cart-item__image']}
+          />
+        </Link>
+        <Link to={pathToProduct}>
+          <span className={cartItemStyle['cart-item__name']}>
+            {cartItem.name}
+          </span>
+        </Link>
       </div>
       <div className={cartItemStyle['cart-item__buttons']}>
         <button

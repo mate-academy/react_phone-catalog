@@ -3,7 +3,7 @@
 
 .product-page {
 
-  @include content-padding-inline();
+  @include content-padding-inline;
 
   &__wrapper {
     margin-top: 24px;
@@ -97,6 +97,7 @@
       background-color: $main-white;
       top: 100%;
       margin-top: 4px;
+      z-index: 2;
     }
 
     &__item {
