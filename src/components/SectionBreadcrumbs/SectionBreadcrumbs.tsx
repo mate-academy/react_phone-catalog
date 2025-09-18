@@ -12,7 +12,7 @@ export const SectionBreadcrumbs: React.FC<Props> = ({ currentLink }) => {
   return (
     <div className={styles.sectionBreadcrumbs}>
       <Link
-        to="/"
+        to="/#/"
         className={`${styles.sectionBreadcrumbs__linkHome} ${theme === 'light' && styles['sectionBreadcrumbs__linkHome--lightTheme']}`}
       ></Link>
 
