@@ -120,12 +120,7 @@ export const ProductsSlider: React.FC<Props> = ({
           <Swiper
             modules={[Navigation]}
             spaceBetween={16}
-            // slidesPerView={'auto'}
-            breakpoints={{
-              // 320: { slidesPerView: 1 },
-              // 640: { slidesPerView: 2 },
-              1200: { slidesPerView: 4 },
-            }}
+            slidesPerView={'auto'}
             centeredSlides={false}
             onSwiper={handleOnSwiper}
             onSlideChange={handleSlideChange}

@@ -27,7 +27,7 @@
     align-items: center;
   }
 
-      .swiper-slide {
+    .swiper-slide {
       width: 212px !important;
 
       @include on-tablet {
@@ -43,7 +43,6 @@
       opacity: 0.4;
       pointer-events: none;
       cursor: default;
-      background-color: rebeccapurple;
     }
 }
 
@@ -70,6 +69,7 @@
   }
 
   &-left {
+    transition: border $effect-duration;
 
     &::before {
       background-image: url('/img/icons/arrows/arrow-left.svg');
@@ -83,9 +83,16 @@
         background-image: url('/img/icons/arrows/arrow-left-disabled.svg');
       }
     }
+
+    &:not(.arrow-left-disabled) {
+      &:hover {
+        border: 1px solid $main-black;
+      }
+    }
   }
 
-  &-right{
+  &-right {
+    transition: border $effect-duration;
 
     &::before {
       background-image: url('/img/icons/arrows/arrow-right.svg');
@@ -97,6 +104,12 @@
 
       &::before {
         background-image: url('/img/icons/arrows/arrow-right-disabled.svg');
+      }
+    }
+
+    &:not(.arrow-right-disabled) {
+      &:hover {
+        border: 1px solid $main-black;
       }
     }
   }

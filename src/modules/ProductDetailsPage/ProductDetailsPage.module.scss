@@ -2,12 +2,10 @@
 @import '/src/styles/typography';
 
 .product-details {
-
-  @include content-padding-inline();
+  @include content-padding-inline;
 
   &__not-found {
-
-    @include content-padding-inline();
+    @include content-padding-inline;
 
     display: flex;
     flex-direction: column;
@@ -45,7 +43,6 @@
       position: relative;
 
       @include on-tablet {
-
         @include page-grid;
       }
     }
@@ -135,7 +132,6 @@
     }
 
     &__main-controls {
-
       @include on-tablet {
         grid-column: 8 / 13;
       }
@@ -146,16 +142,15 @@
 
       &__section {
         display: flex;
-        flex-direction: column;
+        flex-flow: column wrap;
         justify-content: space-between;
         gap: 10px;
         margin-top: 40px;
         padding-bottom: 24px;
-        flex-wrap: wrap;
+
         border-bottom: 1px solid $secondary-gray;
 
         &--first {
-
           @include on-desktop {
             margin-top: 0;
           }
@@ -214,6 +209,11 @@
             height: 30px;
             border: 1px solid $secondary-gray;
             border-radius: 50%;
+            transition: border $effect-duration;
+
+            &:hover {
+              border: 1px solid $main-black;
+            }
 
             &--active {
               border: 1px solid $main-black;
@@ -327,9 +327,7 @@
   }
 
   &__sections {
-
     @include on-desktop {
-
       @include page-grid;
     }
   }
