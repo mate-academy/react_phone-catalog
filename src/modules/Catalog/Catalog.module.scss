@@ -10,18 +10,48 @@
   flex-direction: column;
   background-color: $menu-background-color;
   font-family: 'Montserrat', sans-serif;
-
-  // &__title {
-  //   font-weight: 800;
-  //   font-size: 32px;
-  //   color: $menu-color;
-
-  //   @include on-tablet {
-  //     font-size: 48px;
-  //   }
-
-  //   @include on-desktop {
-  //     font-size: 48px;
-  //   }
-  // }
+  padding-left: 152px;
+  padding-right: 152px;
 }
+
+.catalogTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: $menu-background-color;
+  margin: 24px 0 32px;
+}
+
+// ul {
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+//   gap: 16px;
+// }
+
+// li {
+//   background-color: $menu-background-color;
+//   border-radius: 12px;
+//   padding: 16px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   text-align: center;
+//   font-size: 14px;
+//   font-weight: 500;
+//   color: $card-contentColor;
+
+//   &:hover {
+//     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+//     transform: translateY(-2px);
+//     transition: all 0.2s ease;
+//   }
+
+//   img {
+//     width: 100px;
+//     height: 100px;
+//     object-fit: contain;
+//     margin-bottom: 12px;
+//   }
+// }

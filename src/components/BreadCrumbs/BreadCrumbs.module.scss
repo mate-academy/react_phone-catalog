@@ -12,24 +12,24 @@
   &__item {
     display: flex;
     align-items: center;
-
-    &::after {
-      content: ">";
-      margin: 0 8px;
-      color: $card-contentColor;
-    }
-
-    &:last-child::after {
-      content: "";
-    }
   }
 
-  // &__link {
-  //   color: #7560fa;
-  //   text-decoration: none;
+  &__icon,
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
 
-  //   &:hover {
-  //     text-decoration: underline;
-  //   }
-  // }
+  &__link {
+    text-decoration: none;
+    color: $card-contentColor;
+  }
+
+  &_active {
+    color: $card-contentColor;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+  }
 }

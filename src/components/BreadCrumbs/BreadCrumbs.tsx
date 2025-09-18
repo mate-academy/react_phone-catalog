@@ -13,8 +13,8 @@ export const BreadCrumbs: React.FC = () => {
 
   return (
     <nav className={styles.breadcrumbs}>
-      <ul className={styles.breadcrumbs_list}>
-        <li className={styles.breadcrumbs_item}>
+      <ul className={styles.breadcrumbs__list}>
+        <li className={styles.breadcrumbs__item}>
           <Link to="/" className={styles.breadcrumbs_link}>
             <img
               src="/img/icons/Home.png"
@@ -29,11 +29,18 @@ export const BreadCrumbs: React.FC = () => {
           const title = pageTitles[part] || part;
 
           return (
-            <li key={part}>
+            <li key={part} className={styles.breadcrumbs__item}>
+              <img
+                src="/img/icons/arrow_right.png"
+                alt="arrow"
+                className={styles.breadcrumbs_arrow}
+              />
               {isLast ? (
-                <span>{title}</span>
+                <span className={styles.breadcrumbs_active}>{title}</span>
               ) : (
-                <Link to={`/${part}`}>{title}</Link>
+                <Link to={`/${part}`} className={styles.breadcrumbs__link}>
+                  {title}
+                </Link>
               )}
             </li>
           );
