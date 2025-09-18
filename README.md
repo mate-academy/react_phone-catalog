@@ -92,7 +92,8 @@ Create `ProductDetailsPage` available at `/product/:productId`.
    - A Home page link;
    - A category page link (`Phones`, `Tablets`, `Accessories`);
    - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+8.   Show `Product was not found` if there is no product with a given id on 
+    the server.
 
 ## Shopping Cart page
 
