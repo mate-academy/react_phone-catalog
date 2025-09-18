@@ -2,10 +2,10 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './Slider.module.scss';
 import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/modules';
-import 'swiper/scss/navigation';
-import 'swiper/scss/effect-fade';
-import 'swiper/scss/pagination';
-import 'swiper/scss';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
+import 'swiper/css';
 
 export const Slider = () => {
   return (
