@@ -24,7 +24,7 @@ export const Breadcrumbs: React.FC<Props> = ({ category, product }) => {
   return (
     <div className={styles.breadcrumbs}>
       <Link
-        to="#"
+        to="/"
         className={`${styles.breadcrumbs__linkHome} ${theme === 'light' && styles['breadcrumbs__linkHome--lightTheme']}`}
       ></Link>
       <div
