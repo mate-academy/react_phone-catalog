@@ -27,16 +27,16 @@ export const ProductCard: React.FC<Props> = ({
       className={`${styles.productCard} ${theme === 'light' && styles['productCard--lightTheme']} ${isYouMayLike && styles['productCard--youMayLike']} ${isWideCard && styles['productCard--wide']}`}
     >
       <div className={styles.productCard__head}>
-        <Link to={`#${product.category}/${product.id}`} className={styles.productCard__photoLink}>
+        <Link to={`/${product.category}/${product.id}`} className={styles.productCard__photoLink}>
           <img
-            src={`${product.images[0]}`}
+            src={`{product.images[0]}`}
             alt="Product photo"
             className={`${styles.productCard__photo} ${isYouMayLike && styles['productCard__photo--youMayLike']}`}
           />
         </Link>
 
         <Link
-          to={`#${product.category}/${product.id}`}
+          to={`/${product.category}/${product.id}`}
           className={`${styles.productCard__title} ${theme === 'light' && styles['productCard__title--lightTheme']}`}
         >
           {product.name}
