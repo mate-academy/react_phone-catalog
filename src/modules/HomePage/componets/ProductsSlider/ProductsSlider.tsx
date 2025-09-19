@@ -45,11 +45,10 @@ export const ProductsSlider: React.FC<Props> = ({
         <Swiper
           modules={[Navigation]}
           spaceBetween={16}
-          slidesPerView={'auto'}
           breakpoints={{
             1200: { slidesPerView: 4 },
-            640: { slidesPerView: 3 },
-            320: { slidesPerView: 2 },
+            640: { slidesPerView: 2.5 },
+            320: { slidesPerView: 1.5 },
           }}
           navigation={{
             prevEl: '.js-product-prev',

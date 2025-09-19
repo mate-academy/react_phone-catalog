@@ -2,16 +2,11 @@
 @use '../../../../styles/mixins.scss' as *;
 
 .card {
-  width: 272px;
-  height: 506px;
+  width: 100%;
+  height: 100%;
   background-color: $cardColor;
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   color: $gray-white;
-
-  @include respond-to(phone) {
-    width: 212px;
-    height: 439px;
-  }
 }
 
 .card_content {
@@ -19,7 +14,7 @@
 }
 
 .card_image {
-  width: 208px;
+  width: 100%;
   height: 196px;
   display: flex;
   justify-content: center;
@@ -50,7 +45,7 @@
 }
 
 .card__price {
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   line-height: 31px;
 }
 
@@ -61,7 +56,7 @@
 }
 
 .divide_line {
-  width: 208px;
+  width: 100%;
   height: 1px;
   background-color: $gray-secondary;
   margin-top: 8px;
@@ -71,10 +66,9 @@
 .card__specs dl {
   display: grid;
   grid-template-columns: max-content 1fr;
-  column-gap: 20px;
   font-size: 12px;
   letter-spacing: 0%;
-  row-gap: 8px;
+  gap: 8px 20px;
 }
 
 .card__specs dt {

@@ -1,23 +1,48 @@
 @use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
 
 .product_title {
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   color: $gray-white;
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -1%;
   margin-top: 80px;
   margin-bottom: 24px;
+
+  @include respond-to(phone) {
+    font-size: 22px;
+  }
 }
 
 .product_buttons_title {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 }
 
-.swiper_wrapper {
+.product_buttons {
   display: flex;
   gap: 16px;
-  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.product_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  background-color: $gray-surface;
+  color: $gray-white;
+  border: none;
+  cursor: pointer;
+}
+
+.product_button[aria-disabled="true"],
+.product_button[disabled] {
+  background-color: $background;
+  border: 1px solid $gray-surface;
+  opacity: 0.6;
+  cursor: not-allowed;
 }

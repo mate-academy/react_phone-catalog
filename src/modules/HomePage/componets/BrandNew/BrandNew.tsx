@@ -13,5 +13,5 @@ export const BrandNew = () => {
 
   const brandNew = [...allProducts].sort((a, b) => b.year - a.year);
 
-  return <ProductsSlider title={'Brand new'} products={brandNew} />;
+  return <ProductsSlider title={'Brand new models'} products={brandNew} />;
 };

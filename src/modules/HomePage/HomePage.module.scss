@@ -20,7 +20,7 @@
 }
 
 .home_page_header {
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
@@ -39,9 +39,13 @@
     padding-inline: 24px;
   }
 
-  @include respond-to(desktop) {
-    max-width: 1400px;
-    margin-inline: auto;
+  @media (width: 1200px) {
+    padding-inline: 32px;
+  }
+
+  @media (min-width: 1201px) {
     padding-inline: 152px;
+    margin-inline: auto;
+    max-width: 100%;
   }
 }
