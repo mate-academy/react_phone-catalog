@@ -18,7 +18,7 @@ export const ShopByCategory = () => {
               className={styles.categories_photo}
             />
           </NavLink>
-          <h4>Mobile phones</h4>
+          <h4 className={styles.category_title}>Mobile phones</h4>
           <p>95 models</p>
         </div>
 
@@ -30,7 +30,7 @@ export const ShopByCategory = () => {
               className={styles.categories_photo}
             />
           </NavLink>
-          <h4>Tablets</h4>
+          <h4 className={styles.category_title}>Tablets</h4>
           <p>24 models</p>
         </div>
 
@@ -45,7 +45,7 @@ export const ShopByCategory = () => {
               className={styles.categories_photo}
             />
           </NavLink>
-          <h4>Accessories</h4>
+          <h4 className={styles.category_title}>Accessories</h4>
           <p>100 models</p>
         </div>
       </div>
