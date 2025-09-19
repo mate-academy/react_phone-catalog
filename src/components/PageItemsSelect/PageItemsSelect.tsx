@@ -37,7 +37,7 @@ export const PageItemsSelect: React.FC<Props> = ({
         Items on page
       </label>
 
-      <Listbox value={selected} onChange={e => handlePerPageChange(e.label)}>
+      <Listbox value={selected} onChange={e => handlePerPageChange(e.value)}>
         <ListboxButton
           id="page-items"
           name="page-items"

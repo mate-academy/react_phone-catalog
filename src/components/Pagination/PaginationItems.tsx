@@ -7,13 +7,11 @@ import { getSearchWith } from '../../utils/searchHelper';
 type Props = {
   totalPages: number;
   currentPage: number;
-  onPageChange: (value: number) => void;
 };
 
 export const PaginationItems: React.FC<Props> = ({
   totalPages,
   currentPage,
-  onPageChange,
 }) => {
   const [searchParams] = useSearchParams();
   const windowSize = 4;
@@ -35,8 +33,8 @@ export const PaginationItems: React.FC<Props> = ({
           className={styles['pagination__link-arrows']}
           to={{
             search: getSearchWith(searchParams, {
-              page: String(currentPage - 1),
-            }),
+              page: currentPage - 1 === 1 ? null : String(currentPage - 1),
+            }).toString(),
           }}
         >
           <img
@@ -63,8 +61,8 @@ export const PaginationItems: React.FC<Props> = ({
               className={styles.pagination__link}
               to={{
                 search: getSearchWith(searchParams, {
-                  page: elem.toString(),
-                }),
+                  page: elem === 1 ? null : elem.toString(),
+                }).toString(),
               }}
             >
               {elem}
@@ -86,7 +84,7 @@ export const PaginationItems: React.FC<Props> = ({
           to={{
             search: getSearchWith(searchParams, {
               page: String(currentPage + 1),
-            }),
+            }).toString(),
           }}
         >
           <img

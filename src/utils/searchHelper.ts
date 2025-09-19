@@ -5,7 +5,7 @@ export type SearchParams = {
 export function getSearchWith(
   currentParams: URLSearchParams,
   paramsToUpdate: SearchParams,
-): string {
+): URLSearchParams {
   const newParams = new URLSearchParams(currentParams.toString());
 
   Object.entries(paramsToUpdate).forEach(([key, value]) => {
@@ -22,5 +22,5 @@ export function getSearchWith(
     }
   });
 
-  return newParams.toString();
+  return newParams;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useState } from 'react';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { PageItemsSelect } from '../PageItemsSelect';
@@ -21,26 +22,13 @@ export const PhonesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get('page')) || 1;
   const perPage = searchParams.get('perPage') || 'all';
-  const start = perPage.toString() === 'all' ? 0 : (page - 1) * Number(perPage);
-  const end =
-    perPage.toString() === 'all' ? products.length : start + Number(perPage);
-  const visibleProducts = products.slice(start, end);
-  const totalPages =
-    perPage === 'all' ? 1 : Math.ceil(products.length / Number(perPage));
+  const sort = searchParams.get('sort') || 'year';
 
   function setSearchWith(params: any) {
     const search = getSearchWith(searchParams, params);
 
     setSearchParams(search);
   }
-
-  const handlePageChange = (newPage: number) => {
-    if (newPage > 1) {
-      setSearchWith({ page: newPage.toString() });
-    } else {
-      setSearchWith({ page: null });
-    }
-  };
 
   const handlePerPageChange = (newPerPage: string) => {
     if (newPerPage !== 'all') {
@@ -49,6 +37,31 @@ export const PhonesPage = () => {
       setSearchWith({ perPage: null, page: null });
     }
   };
+
+  const handleSortChange = (newSort: string) => {
+    setSearchWith({ sort: newSort, page: null });
+  };
+
+  const sortedProducts = [...products].sort((product1, product2) => {
+    switch (sort) {
+      case 'price':
+        return product1.price - product2.price;
+      case 'title':
+        return product1.name.localeCompare(product2.name);
+      case 'year':
+      default:
+        return product2.year - product1.year;
+    }
+  });
+
+  const start = perPage.toString() === 'all' ? 0 : (page - 1) * Number(perPage);
+  const end =
+    perPage.toString() === 'all'
+      ? sortedProducts.length
+      : start + Number(perPage);
+  const visibleProducts = sortedProducts.slice(start, end);
+  const totalPages =
+    perPage === 'all' ? 1 : Math.ceil(sortedProducts.length / Number(perPage));
 
   useEffect(() => {
     setIsLoading(true);
@@ -75,7 +88,7 @@ export const PhonesPage = () => {
         <h1 className={styles.phones__title}>Mobile phones</h1>
         <p className={styles.phones__text}>{products.length} models</p>
         <div className={styles.phones__filters}>
-          <SortSelect />
+          <SortSelect sort={sort} handleSortChange={handleSortChange} />
           <PageItemsSelect
             perPage={perPage}
             handlePerPageChange={handlePerPageChange}
@@ -96,11 +109,7 @@ export const PhonesPage = () => {
               ))}
             </div>
             {perPage !== 'all' && (
-              <PaginationItems
-                totalPages={totalPages}
-                currentPage={page}
-                onPageChange={handlePageChange}
-              />
+              <PaginationItems totalPages={totalPages} currentPage={page} />
             )}
           </>
         )}

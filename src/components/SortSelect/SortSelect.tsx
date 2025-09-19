@@ -5,17 +5,21 @@ import {
   ListboxOption,
   ListboxOptions,
 } from '@headlessui/react';
-import { useState } from 'react';
 import styles from './SortSelect.module.scss';
 
-export const SortSelect = () => {
+type Props = {
+  sort: string;
+  handleSortChange: (value: string) => void;
+};
+
+export const SortSelect: React.FC<Props> = ({ sort, handleSortChange }) => {
   const options = [
     { value: 'year', label: 'Newest' },
     { value: 'title', label: 'Alphabetically' },
     { value: 'price', label: 'Cheapest' },
   ];
 
-  const [selected, setSelected] = useState(options[0]);
+  const selected = options.find(option => option.value === sort) || options[0];
 
   return (
     <div className={styles.dropdown}>
@@ -23,7 +27,10 @@ export const SortSelect = () => {
         Sort by
       </label>
 
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox
+        value={selected}
+        onChange={option => handleSortChange(option.value)}
+      >
         <ListboxButton
           id="sort"
           name="sort"
