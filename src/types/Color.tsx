@@ -23,4 +23,5 @@ export type AppleColor =
   | 'orange'
   | 'clay'
   | 'stormBlue'
-  | 'guava';
+  | 'guava'
+  | 'coral';

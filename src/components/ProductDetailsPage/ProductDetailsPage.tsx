@@ -45,6 +45,9 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
       return;
     }
 
+    setCurrentColor(foundProduct.color as string);
+    setCurrentCapacity(foundProduct.capacity as string);
+
     let elems: Item[] = [];
 
     if (category === 'phones') {
@@ -108,6 +111,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
     whiteTitanium: '#F8F9F9',
     orange: '#FF9500',
     clay: '#CBB8A9',
+    coral: '#FF6B6B',
     stormBlue: '#475569',
     guava: '#FF7F8C',
   };
