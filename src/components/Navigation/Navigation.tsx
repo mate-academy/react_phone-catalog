@@ -28,7 +28,7 @@ export const Navigation = ({ isAside = false }: Props) => {
           })}
         >
           <NavLink
-            to="#"
+            to="/"
             className={({ isActive }) =>
               isActive
                 ? `${styles.navigation__link} ${isAside && styles['navigation__link--aside']} ${styles['navigation__link--active']}`
