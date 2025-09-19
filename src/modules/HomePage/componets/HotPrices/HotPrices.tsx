@@ -7,7 +7,7 @@ export const HotPrices = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('/react_phone-catalog/api/products.json')
       .then(res => res.json())
       .then(setAllProducts);
   }, []);
