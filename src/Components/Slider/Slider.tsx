@@ -1,4 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import styles from './Slider.module.scss';
 
 const slidesData = [
@@ -17,56 +24,24 @@ const slidesData = [
 ];
 
 export const Slider: React.FC = () => {
-  const [current, setCurrent] = useState(0);
-
-  const nextSlide = () => {
-    setCurrent(prev => (prev + 1) % slidesData.length);
-  };
-
-  const prevSlide = () => {
-    setCurrent(prev => (prev - 1 + slidesData.length) % slidesData.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrent(index);
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      nextSlide();
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className={styles.slider}>
-      <div className={styles.prev} onClick={prevSlide}></div>
-
-      <div
-        className={styles.slides}
-        style={{ transform: `translateX(-${current * 100}%)` }}
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        loop={true}
+        spaceBetween={30}
       >
         {slidesData.map(slide => (
-          <div key={slide.id} className={styles.slide}>
-            <img src={slide.img} alt={`Slide ${slide.id}`} />
-          </div>
+          <SwiperSlide key={slide.id}>
+            <div className={styles.slide}>
+              <img src={slide.img} alt={`Slide ${slide.id}`} />
+            </div>
+          </SwiperSlide>
         ))}
-      </div>
-
-      <div className={styles.next} onClick={nextSlide}></div>
-
-      <div className={styles.dots}>
-        {slidesData.map((_, index) => (
-          <div
-            key={index}
-            className={`${styles.dot} ${
-              current === index ? styles.active : ''
-            }`}
-            onClick={() => goToSlide(index)}
-          ></div>
-        ))}
-      </div>
+      </Swiper>
     </div>
   );
 };
