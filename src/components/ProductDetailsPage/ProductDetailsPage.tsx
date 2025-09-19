@@ -30,7 +30,50 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   let foundProduct: Item | undefined;
+
+  //   if (category === 'phones') {
+  //     foundProduct = phones.find(x => x.id === productId);
+  //   } else if (category === 'tablets') {
+  //     foundProduct = tablets.find(x => x.id === productId);
+  //   } else if (category === 'accessories') {
+  //     foundProduct = accessories.find(x => x.id === productId);
+  //   }
+
+  //   if (foundProduct) {
+  //     setProduct(foundProduct);
+  //     setCurrentColor(foundProduct.color as string);
+  //     setCurrentCapacity(foundProduct.capacity as string);
+  //   }
+
+  //   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // }, [category, productId, phones, tablets, accessories]);
+
+  // useEffect(() => {
+  //   if (product) {
+  //     let elems: Item[] = [];
+
+  //     if (category === 'phones') {
+  //       elems = phones.filter(x => x.namespaceId === product.namespaceId);
+  //     } else if (category === 'tablets') {
+  //       elems = tablets.filter(x => x.namespaceId === product.namespaceId);
+  //     } else if (category === 'accessories') {
+  //       elems = accessories.filter(x => x.namespaceId === product.namespaceId);
+  //     }
+
+  //     const variation = elems.find(x => x.color === currentColor && x.capacity === currentCapacity);
+
+  //     if (variation) {
+  //       setProduct(variation);
+  //       navigate(`/${category}/${variation.id}`, { replace: true });
+  //     }
+  //   }
+  //   // eslint-disable-next-line max-len
+  // }, [category, currentColor, currentCapacity, phones, tablets, accessories, product, navigate]);
+
   useEffect(() => {
+    // 1. Знаходимо продукт по productId та category
     let foundProduct: Item | undefined;
 
     if (category === 'phones') {
@@ -41,34 +84,36 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
       foundProduct = accessories.find(x => x.id === productId);
     }
 
-    if (foundProduct) {
-      setProduct(foundProduct);
-      setCurrentColor(foundProduct.color as string);
-      setCurrentCapacity(foundProduct.capacity as string);
+    if (!foundProduct) {
+      return;
     }
-  }, [category, productId, phones, tablets, accessories]);
 
-  useEffect(() => {
-    if (product) {
-      let elems: Item[] = [];
+    let elems: Item[] = [];
 
-      if (category === 'phones') {
-        elems = phones.filter(x => x.namespaceId === product.namespaceId);
-      } else if (category === 'tablets') {
-        elems = tablets.filter(x => x.namespaceId === product.namespaceId);
-      } else if (category === 'accessories') {
-        elems = accessories.filter(x => x.namespaceId === product.namespaceId);
-      }
-
-      const variation = elems.find(x => x.color === currentColor && x.capacity === currentCapacity);
-
-      if (variation) {
-        setProduct(variation);
-        navigate(`/${category}/${variation.id}`, { replace: true });
-      }
+    if (category === 'phones') {
+      elems = phones.filter(x => x.namespaceId === foundProduct.namespaceId);
+    } else if (category === 'tablets') {
+      elems = tablets.filter(x => x.namespaceId === foundProduct.namespaceId);
+    } else if (category === 'accessories') {
+      // eslint-disable-next-line max-len
+      elems = accessories.filter(x => x.namespaceId === foundProduct.namespaceId);
     }
+
     // eslint-disable-next-line max-len
-  }, [category, currentColor, currentCapacity, phones, tablets, accessories, product, navigate]);
+    const variation = elems.find(x => x.color === currentColor && x.capacity === currentCapacity);
+
+    if (variation) {
+      foundProduct = variation;
+      navigate(`/${category}/${variation.id}`, { replace: true });
+    }
+
+    setProduct(foundProduct);
+    setCurrentColor(foundProduct.color as string);
+    setCurrentCapacity(foundProduct.capacity as string);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // eslint-disable-next-line max-len
+  }, [productId, category, currentColor, currentCapacity, phones, tablets, accessories, navigate]);
 
   const handleImageSelection = (index: number) => {
     setCurrentIndex(index);
