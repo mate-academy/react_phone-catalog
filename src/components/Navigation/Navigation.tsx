@@ -34,6 +34,7 @@ export const Navigation = ({ isAside = false }: Props) => {
                 ? `${styles.navigation__link} ${isAside && styles['navigation__link--aside']} ${styles['navigation__link--active']}`
                 : styles.navigation__link
             }
+            end
           >
             {t('nav.home')}
           </NavLink>
