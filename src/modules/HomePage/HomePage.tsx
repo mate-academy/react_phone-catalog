@@ -1,6 +1,8 @@
 import styles from './HomePage.module.scss';
+import { BrandNew } from './componets/BrandNew';
 import { HotPrices } from './componets/HotPrices';
 import { PicturesSlider } from './componets/PicturesSlider';
+import { ShopByCategory } from './componets/ShopByCategory';
 
 export const HomePage = () => {
   return (
@@ -10,6 +12,8 @@ export const HomePage = () => {
         Welcome to Nice Gadgets store!
       </h1>
       <PicturesSlider />
+      <BrandNew />
+      <ShopByCategory />
       <HotPrices />
     </div>
   );
