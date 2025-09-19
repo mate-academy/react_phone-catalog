@@ -29,7 +29,7 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.productCard__head}>
         <Link to={`/${product.category}/${product.id}`} className={styles.productCard__photoLink}>
           <img
-            src={`{product.images[0]}`}
+            src={`/{product.images[0]}`}
             alt="Product photo"
             className={`${styles.productCard__photo} ${isYouMayLike && styles['productCard__photo--youMayLike']}`}
           />
