@@ -1,6 +1,10 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
 .slider {
+  position: relative;
   width: 100%;
-  height: 320px;
+  max-height: 320px;
   margin-bottom: 56px;
 
   @media (min-width: 640px) {
@@ -26,31 +30,95 @@
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
     }
   }
 
-  /* Стилі для навігації */
-  .swiper-button-prev,
-  .swiper-button-next {
-    color: white;
+  .customBullet {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 4px;
+      background-color: #3b3e4a;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+    }
+  }
+
+  .customBulletActive::before {
+    background-color: white;
+  }
+
+  .swiper-button-prev {
+    height: 100%;
+    width: 32px;
+    display: none;
+    background-size: cover;
+    background-position: center;
+    background-image: url(/public/img/prevSlide.svg);
+    background-repeat: no-repeat;
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
+    }
+
+    @media (min-width: $tablet-min-width) {
+      display: block;
     }
   }
 
-  /* Стилі для пагінації */
-  .swiper-pagination-bullet {
-    background: #3b3e4a;
-    width: 14px;
-    height: 4px;
-    border-radius: 0;
-    opacity: 1;
-  }
+  .swiper-button-next {
+    height: 100%;
+    width: 32px;
+    display: none;
+    background-size: cover;
+    background-position: center;
+    background-image: url(/public/img/nextSlide.svg);
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
 
-  .swiper-pagination-bullet-active {
-    background: white;
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @media (min-width: $tablet-min-width) {
+      display: block;
+    }
   }
+}
+
+:global(.swiper-pagination) {
+  height: 40px;
+  bottom: -50px;
+  z-index: 1000;
+}
+
+:global(.swiper-pagination-bullet) {
+  background: #3b3e4a;
+  width: 14px;
+  height: 4px;
+  margin: 0;
+  border-radius: 0;
+  opacity: 1;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background: white;
+}
+
+:global(.pagination-container) {
+  position: absolute;
+  width: 100%;
+  bottom: -70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
