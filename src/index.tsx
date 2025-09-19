@@ -41,7 +41,9 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
                           <Route index element={<Phones />} />
                           <Route
                             path=":productId"
-                            element={<ProductDetailsPage category="phones" />}
+                            element={
+                              <ProductDetailsPage key={window.location.hash} category="phones" />
+                            }
                           />
                         </Route>
 
@@ -49,7 +51,9 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
                           <Route index element={<Tablets />} />
                           <Route
                             path=":productId"
-                            element={<ProductDetailsPage category="tablets" />}
+                            element={
+                              <ProductDetailsPage key={window.location.hash} category="tablets" />
+                            }
                           />
                         </Route>
 
@@ -57,7 +61,12 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
                           <Route index element={<Accessories />} />
                           <Route
                             path=":productId"
-                            element={<ProductDetailsPage category="accessories" />}
+                            element={
+                              <ProductDetailsPage
+                                key={window.location.hash}
+                                category="accessories"
+                              />
+                            }
                           />
                         </Route>
                         <Route path="cart" element={<Cart />} />
