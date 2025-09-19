@@ -6,7 +6,7 @@ export const BrandNew = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => res.json())
       .then(setAllProducts);
   }, []);
