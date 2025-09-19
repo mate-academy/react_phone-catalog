@@ -126,6 +126,37 @@ export const Products: React.FC<Props> = ({ products }) => {
     setSortedProducts(result);
   }, [products, sortedBy, allProducts, debouncedQuery, t]);
 
+  useEffect(() => {
+    const sortParam = searchParams.get('sort');
+    const perPageParam = searchParams.get('perPage');
+    const pageParam = searchParams.get('page');
+    const queryParam = searchParams.get('query');
+
+    if (sortParam) {
+      setSortedBy(
+        sortParam === 'age'
+          ? t('filtering.newest')
+          : sortParam === 'title'
+            ? t('filtering.alphabetically')
+            : t('filtering.cheapest'),
+      );
+    }
+
+    if (perPageParam) {
+      // eslint-disable-next-line max-len
+      setPerPage(perPageParam === t('filtering.all') ? t('filtering.all') : Number(perPageParam));
+    }
+
+    if (pageParam) {
+      setPage(Number(pageParam));
+    }
+
+    if (queryParam) {
+      setQuery(queryParam);
+      setDebouncedQuery(queryParam);
+    }
+  }, []);
+
   return (
     <div className={styles.products}>
       <form className={styles.products__form}>
