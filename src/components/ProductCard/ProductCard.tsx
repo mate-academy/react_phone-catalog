@@ -27,15 +27,7 @@ export const ProductCard: React.FC<Props> = ({
       className={`${styles.productCard} ${theme === 'light' && styles['productCard--lightTheme']} ${isYouMayLike && styles['productCard--youMayLike']} ${isWideCard && styles['productCard--wide']}`}
     >
       <div className={styles.productCard__head}>
-        <Link
-          to={`/${product.category}/${product.id}`}
-          className={styles.productCard__photoLink}
-          onClick={() => {
-            if (isYouMayLike) {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-          }}
-        >
+        <Link to={`/#${product.category}/${product.id}`} className={styles.productCard__photoLink}>
           <img
             src={product.images[0]}
             alt="Product photo"
@@ -44,13 +36,8 @@ export const ProductCard: React.FC<Props> = ({
         </Link>
 
         <Link
-          to={`/${product.category}/${product.id}`}
+          to={`/#${product.category}/${product.id}`}
           className={`${styles.productCard__title} ${theme === 'light' && styles['productCard__title--lightTheme']}`}
-          onClick={() => {
-            if (isYouMayLike) {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-          }}
         >
           {product.name}
         </Link>
