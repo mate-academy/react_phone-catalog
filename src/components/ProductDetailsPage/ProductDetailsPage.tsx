@@ -31,10 +31,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [productId]);
-
-  useEffect(() => {
     let foundProduct: Item | undefined;
 
     if (category === 'phones') {
