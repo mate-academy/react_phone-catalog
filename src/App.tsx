@@ -10,6 +10,7 @@ import { FavoritesProvider } from './context/FavoritesContext';
 import { FavoritesPage } from './Components/FavoritesPage';
 import { CartProvider } from './context/CartContext';
 import { CartPage } from './Components/CartPage';
+import { HomePage } from './Components/HomePage';
 
 export const App = () => {
   return (
@@ -19,7 +20,7 @@ export const App = () => {
           <Header />
 
           <Routes>
-            <Route path="/" element={<div>Home page</div>} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/phones" element={<PhonesPage />} />
             <Route path="/tablets" element={<TabletsPage />} />
             <Route path="/accessories" element={<AccessoriesPage />} />

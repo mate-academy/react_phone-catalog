@@ -36,7 +36,9 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             className={styles.btnPlus}
           ></div>
         </div>
-        <p className={styles.price}>${product.price * product.count}</p>
+        <p className={styles.price}>
+          ${(Number(product.price) || 0) * (product.count || 1)}
+        </p>
       </div>
     </div>
   );

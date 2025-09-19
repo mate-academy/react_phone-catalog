@@ -10,6 +10,11 @@ export const Header: React.FC = () => {
   const { cart } = useCart();
   const { pathname } = useLocation();
 
+  const totalItems = cart.reduce(
+    (acc, product) => acc + (product.count || 1),
+    0,
+  );
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -69,7 +74,7 @@ export const Header: React.FC = () => {
             }
           >
             {cart.length > 0 && (
-              <span className={styles.badge}>{cart.length}</span>
+              <span className={styles.badge}>{totalItems}</span>
             )}
           </NavLink>
 
@@ -156,7 +161,7 @@ export const Header: React.FC = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             {cart.length > 0 && (
-              <span className={styles.badge}>{cart.length}</span>
+              <span className={styles.badge}>{totalItems}</span>
             )}
           </NavLink>
         </div>
