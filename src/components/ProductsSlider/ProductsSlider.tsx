@@ -11,6 +11,7 @@ type Props = {
   isYouMayLike: boolean;
 };
 
+
 export const ProductSlider: React.FC<Props> = ({
   products,
   title,
