@@ -22,7 +22,6 @@ export default function App() {
         <ScrollToTop />
         <main>
           <Routes>
-            {/* Редірект з кореня на /Home */}
             <Route path="/" element={<Navigate to="/Home" replace />} />
 
             <Route path="/Home" element={<Home />} />
