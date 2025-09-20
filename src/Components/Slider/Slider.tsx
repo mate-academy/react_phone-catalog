@@ -56,7 +56,13 @@ export const Slider: React.FC = () => {
         {slidesData.map(slide => (
           <SwiperSlide key={slide.id} className={styles['swiper-slide']}>
             <div className={styles.slide}>
-              <img src={slide.img} alt={`Slide ${slide.id}`} />
+              <picture>
+                <source
+                  media="(max-width: 640px)"
+                  srcSet={`./img/mobile-${slide.id}.png`}
+                />
+                <img src={slide.img} alt={`Slide ${slide.id}`} />
+              </picture>
             </div>
           </SwiperSlide>
         ))}
