@@ -1,5 +1,6 @@
 :root {
-  --app-background: rgb(15, 17, 33);
+  /* --app-background: rgb(15, 17, 33); */
+  --app-background: red;
   --header-color: rgb(241, 242, 249);
   --purple-main: #905bff;
   --purple-light: #a378ff;
