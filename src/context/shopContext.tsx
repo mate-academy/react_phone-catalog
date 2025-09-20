@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Product } from '../types/Product';
 import { Details } from '../types/Details';
+import { getAssetUrl } from '../utils/functions/function';
 
 type ShopContextType = {
   favourites: Product[];
@@ -38,10 +39,10 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     Promise.all([
-      fetch('/api/products.json').then(res => res.json()),
-      fetch('/api/phones.json').then(res => res.json()),
-      fetch('/api/tablets.json').then(res => res.json()),
-      fetch('/api/accessories.json').then(res => res.json()),
+      fetch(getAssetUrl('/api/products.json')).then(res => res.json()),
+      fetch(getAssetUrl('/api/phones.json')).then(res => res.json()),
+      fetch(getAssetUrl('/api/tablets.json')).then(res => res.json()),
+      fetch(getAssetUrl('/api/accessories.json')).then(res => res.json()),
     ]).then(([productsData, phonesData, tabletsData, accessoriesData]) => {
       setProducts(productsData);
       setPhones(phonesData);

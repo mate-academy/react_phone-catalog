@@ -38,6 +38,7 @@
       letter-spacing: 0%;
       color: #313237;
       text-transform: capitalize;
+      text-decoration: none;
     }
 
     &--name {
@@ -319,6 +320,16 @@
                   width: 100%;
                   height: 100%;
                   background-color: rgb(230, 230, 198);
+                  border-radius: 50%;
+                }
+              }
+
+              &-rosegold {
+                &::before {
+                  content: '';
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgb(243, 204, 245);
                   border-radius: 50%;
                 }
               }

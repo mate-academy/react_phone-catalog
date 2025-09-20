@@ -2,6 +2,7 @@ import './Favourites.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useShop } from '../../context/shopContext';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../../utils/functions/function';
 
 export const Favourites = () => {
   const { favourites } = useShop();
@@ -12,11 +13,11 @@ export const Favourites = () => {
         <div className="favourites__path">
           <div className="favourites__path--image">
             <Link to="/" className="favourites__path--image-img">
-              <img src="../../../img/Home.png" alt="home" />
+              <img src={getAssetUrl('/img/Home.png')} alt="home" />
             </Link>
           </div>
           <div className="favourites__path--arrow">
-            <img src="../../../img/arrow-right.png" alt="right" />
+            <img src={getAssetUrl('/img/arrow-right.png')} alt="right" />
           </div>
           <div className="favourites__path--device">Favourites</div>
         </div>

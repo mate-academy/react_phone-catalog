@@ -56,6 +56,12 @@
       letter-spacing: 4%;
       text-transform: uppercase;
       color: #89939A;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        color: grey;
+      }
     }
   }
 

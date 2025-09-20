@@ -3,6 +3,7 @@ import { Product } from '../../../src/types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useMemo } from 'react';
+import { getAssetUrl } from '../../utils/functions/function';
 
 type Props = {
   products: Product[];
@@ -91,11 +92,11 @@ export const Catalog: React.FC<Props> = ({ products, title }) => {
         <div className="catalog__path">
           <div className="catalog__path--image">
             <Link to="/" className="catalog__path--image-img">
-              <img src="../../../img/Home.png" alt="home" />
+              <img src={getAssetUrl('/img/Home.png')} alt="home" />
             </Link>
           </div>
           <div className="catalog__path--arrow">
-            <img src="../../../img/arrow-right.png" alt="right" />
+            <img src={getAssetUrl('/img/arrow-right.png')} alt="right" />
           </div>
           <div className="catalog__path--device">{title}</div>
         </div>
@@ -146,7 +147,7 @@ export const Catalog: React.FC<Props> = ({ products, title }) => {
             onClick={() => page > 1 && handlePageChange(page - 1)}
           >
             <img
-              src="../../../img/arrow-left.png"
+              src={getAssetUrl('/img/arrow-left.png')}
               alt="prev"
               className="catalog__pagination--button-img"
             />
@@ -168,7 +169,7 @@ export const Catalog: React.FC<Props> = ({ products, title }) => {
             onClick={() => page < totalPages && handlePageChange(page + 1)}
           >
             <img
-              src="../../../img/arrow-right.png"
+              src={getAssetUrl('/img/arrow-right.png')}
               alt="next"
               className="catalog__pagination--button-img"
             />

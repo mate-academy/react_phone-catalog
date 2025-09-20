@@ -2,6 +2,7 @@ import './Basket.scss';
 import { useShop } from '../../context/shopContext';
 import { BasketCard } from './BasketCard/BasketCard';
 import { useState } from 'react';
+import { getAssetUrl } from '../../utils/functions/function';
 
 export const Basket = () => {
   const { basket, removeFromBasket } = useShop();
@@ -33,7 +34,7 @@ export const Basket = () => {
     <div className="basket">
       <div className="basket__path">
         <div className="basket__path--arrow">
-          <img src="../../../img/arrow-left.png" alt="right" />
+          <img src={getAssetUrl('/img/arrow-left.png')} alt="back" />
         </div>
         <div
           className="basket__path--back"

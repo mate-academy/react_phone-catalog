@@ -2,6 +2,7 @@ import './ProductCard.scss';
 import { Product } from '../../types/Product';
 import { useShop } from '../../context/shopContext';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../../utils/functions/function';
 
 type Props = {
   product: Product;
@@ -10,14 +11,28 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { addToBasket, toggleFavourite, isFavourite, isInBasket } = useShop();
 
+  const backToTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <div className="phone" key={product.id}>
-      <Link to={`/product/${product.id}`} className="phone--link">
+      <Link
+        to={`/product/${product.id}`}
+        className="phone--link"
+        onClick={backToTop}
+      >
         <div className="phone__photo">
           <img src={product.image} alt="photo" className="phone__photo--img" />
         </div>
       </Link>
-      <Link to={`/product/${product.id}`} className="phone--link">
+      <Link
+        to={`/product/${product.id}`}
+        className="phone--link"
+        onClick={backToTop}
+      >
         <div className="phone__name">{product.name}</div>
       </Link>
       <div className="phone__prices">
@@ -61,8 +76,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <img
             src={
               isFavourite(product.id)
-                ? './public/img/heart-red.png'
-                : './public/img/heart.png'
+                ? getAssetUrl('/img/heart-red.png')
+                : getAssetUrl('/img/heart.png')
             }
             alt="favourites"
           />

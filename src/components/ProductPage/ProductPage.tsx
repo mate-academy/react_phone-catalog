@@ -1,8 +1,9 @@
 import './ProductPage.scss';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useShop } from '../../context/shopContext';
 import { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { getAssetUrl } from '../../utils/functions/function';
 
 export const ProductPage = () => {
   const [photo, setPhoto] = useState(0);
@@ -119,14 +120,21 @@ export const ProductPage = () => {
   return (
     <div className="product">
       <div className="product__path">
-        <img src="../../../img/Home.png" alt="home" />
-        <img src="../../../img/arrow-right.png" alt="img" />
-        <div className="product__path--category">{fullProduct.category}</div>
-        <img src="../../../img/arrow-right.png" alt="img" />
+        <Link to="/">
+          <img src={getAssetUrl('/img/Home.png')} alt="home" />
+        </Link>
+        <img src={getAssetUrl('/img/arrow-right.png')} alt="img" />
+        <Link
+          to={`/${fullProduct.category}`}
+          className="product__path--category"
+        >
+          {fullProduct.category}
+        </Link>
+        <img src={getAssetUrl('/img/arrow-right.png')} alt="img" />
         <div className="product__path--name">{fullProduct.name}</div>
       </div>
       <div className="product__back">
-        <img src="../../../img/arrow-left.png" alt="img" />
+        <img src={getAssetUrl('/img/arrow-left.png')} alt="img" />
         <div className="product__back--text" onClick={() => navigate(-1)}>
           Back
         </div>
@@ -223,8 +231,8 @@ export const ProductPage = () => {
                 <img
                   src={
                     isFavourite(product.id)
-                      ? './public/img/heart-red.png'
-                      : './public/img/heart.png'
+                      ? getAssetUrl('/img/heart-red.png')
+                      : getAssetUrl('/img/heart.png')
                   }
                   alt="favourites"
                 />
@@ -340,10 +348,10 @@ export const ProductPage = () => {
           <div className="product__like--title--text">You may also like</div>
           <div className="product__like--title--arrows">
             <div className="product__like--title--arrows-arrow">
-              <img src="../../img/arrow-left.png" alt="left" />
+              <img src={getAssetUrl('/img/arrow-left.png')} alt="left" />
             </div>
             <div className="product__like--title--arrows-arrow arrow-active">
-              <img src="../../img/arrow-right.png" alt="right" />
+              <img src={getAssetUrl('/img/arrow-right.png')} alt="right" />
             </div>
           </div>
         </div>

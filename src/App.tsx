@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react';
 import { Product } from './types/Product';
 import { ProductPage } from './components/ProductPage/ProductPage';
 import { NotFound } from './components/NotFound/NotFound';
+import { getAssetUrl } from './utils/functions/function';
 
 export const App = () => {
   const [phones, setPhones] = useState([]);
@@ -19,7 +20,7 @@ export const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch(getAssetUrl('/api/products.json'))
       .then(res => res.json())
       .then(data => {
         setPhones(

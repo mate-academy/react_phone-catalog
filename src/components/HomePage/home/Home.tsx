@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 import './Home.scss';
+import { getAssetUrl } from '../../../utils/functions/function';
 
 export const Home = () => {
   useEffect(() => {
@@ -41,7 +42,7 @@ export const Home = () => {
       </div>
       <div className="home__slider swiper">
         <div className="home__slider--arrow swiper-button-prev">
-          <img src="../../img/arrow-left.png" alt="left" />
+          <img src={getAssetUrl('/img/arrow-left.png')} alt="left" />
         </div>
         <div className="swiper-wrapper">
           <div className="home__slider--screen-one swiper-slide"></div>
@@ -49,7 +50,7 @@ export const Home = () => {
           <div className="home__slider--screen-three swiper-slide"></div>
         </div>
         <div className="home__slider--arrow swiper-button-next">
-          <img src="../../img/arrow-right.png" alt="right" />
+          <img src={getAssetUrl('/img/arrow-right.png')} alt="right" />
         </div>
         <div className="swiper-pagination"></div>
       </div>

@@ -72,7 +72,7 @@
 
     &--screen {
       &-one {
-        background-image: url('../../../public/img/slider.png');
+        background-image: url('/img/slider.png');
         width: 100%;
         height: 100%;
         background-repeat: no-repeat;
@@ -81,7 +81,7 @@
       }
 
       &-two {
-        background-image: url('../../../public/img/slider-second.png');
+        background-image: url('/img/slider-second.png');
         width: 100%;
         height: 100%;
         background-repeat: no-repeat;
@@ -90,7 +90,7 @@
       }
 
       &-three {
-        background-image: url('../../../public/img/slider-third.png');
+        background-image: url('/img/slider-third.png');
         width: 100%;
         height: 100%;
         background-repeat: no-repeat;
@@ -116,6 +116,7 @@
 
     &__slider {
       display: flex;
+      width: 100%;
       height: 29.5vw;
       padding-bottom: 3vw;
       margin-left: 0 !important;
@@ -127,17 +128,17 @@
         margin: 0 19px;
 
         &-one {
-          background-image: url('../../../public/img/slider-big.png');
+          background-image: url('/img/slider-big.png');
           flex: 0 0 100%;
         }
 
         &-two {
-          background-image: url('../../../public/img/slider-big-second.png');
+          background-image: url('/img/slider-big-second.png');
           flex: 0 0 100%;
         }
 
         &-three {
-          background-image: url('../../../public/img/slider-big-third.png');
+          background-image: url('/img/slider-big-third.png');
           flex: 0 0 100%;
         }
       }
@@ -180,7 +181,7 @@
         width: 100%;
         height: 29.5vw;
         margin: 0 19px;
-        background-image: url('../../../public/img/slider-big.png');
+        background-image: url('/img/slider-big.png');
       }
 
       &--arrow {

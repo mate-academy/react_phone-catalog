@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../../types/Product';
+import { getAssetUrl } from '../../../utils/functions/function';
 import './BasketCard.scss';
 
 type Props = {
@@ -21,7 +23,7 @@ export const BasketCard: React.FC<Props> = ({
       <div className="card__product">
         <div className="card__product--x">
           <img
-            src="../../../../img/close.png"
+            src={getAssetUrl('/img/close.png')}
             alt="delete"
             onClick={removeFromBasket}
           />
@@ -33,16 +35,18 @@ export const BasketCard: React.FC<Props> = ({
             className="card__product--img-item"
           />
         </div>
-        <div className="card__product--name">{product.name}</div>
+        <Link to={`/product/${product.id}`} className="card__product--name">
+          {product.name}
+        </Link>
       </div>
       <div className="card__info">
         <div className="card__info--quantity">
           <div className="card__info--quantity-button" onClick={handleTake}>
-            <img src="../../../../img/minus.png" alt="take" />
+            <img src={getAssetUrl('/img/minus.png')} alt="take" />
           </div>
           <div className="card__info--quantity-number">{quantity}</div>
           <div className="card__info--quantity-button" onClick={handleAdd}>
-            <img src="../../../../img/plus.png" alt="add" />
+            <img src={getAssetUrl('/img/plus.png')} alt="add" />
           </div>
         </div>
         <div className="card__info--price">${product.price}</div>

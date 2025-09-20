@@ -2,6 +2,7 @@ import './NewModels.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
 import { Product } from '../../../../src/types/Product';
 import { useRef } from 'react';
+import { getAssetUrl } from '../../../utils/functions/function';
 
 type Props = {
   products: Product[];
@@ -39,13 +40,13 @@ export const NewModels: React.FC<Props> = ({ products }) => {
             className="new__title--arrows-arrow"
             onClick={() => scroll('left')}
           >
-            <img src="../../img/arrow-left.png" alt="left" />
+            <img src={getAssetUrl('/img/arrow-right.png')} alt="left" />
           </div>
           <div
             className="new__title--arrows-arrow arrow-active"
             onClick={() => scroll('right')}
           >
-            <img src="../../img/arrow-right.png" alt="right" />
+            <img src={getAssetUrl('/img/arrow-right.png')} alt="right" />
           </div>
         </div>
       </div>

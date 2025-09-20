@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import { getAssetUrl } from '../../utils/functions/function';
 
 export const Footer = () => {
   const backToTop = () => {
@@ -11,15 +12,20 @@ export const Footer = () => {
 
   return (
     <div className="footer">
-      <Link to="/" className="footer__logo">
+      <Link to="/" className="footer__logo" onClick={backToTop}>
         <img
-          src="./public/img/logo.png"
+          src={getAssetUrl('/img/logo.png')}
           alt="logo"
           className="footer__logo--img"
         />
       </Link>
       <div className="footer__links">
-        <div className="footer__links--text">github</div>
+        <a
+          href="https://github.com/mate-academy/react_phone-catalog"
+          className="footer__links--text"
+        >
+          github
+        </a>
         <div className="footer__links--text">contacts</div>
         <div className="footer__links--text">rights</div>
       </div>
@@ -28,7 +34,7 @@ export const Footer = () => {
           Back to top
         </div>
         <div className="footer__return--button" onClick={backToTop}>
-          <img src="../../../public/img/arrow-up.png" alt="arrow" />
+          <img src={getAssetUrl('/img/arrow-up.png')} alt="arrow" />
         </div>
       </div>
     </div>

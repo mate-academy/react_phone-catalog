@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Category.scss';
+import { getAssetUrl } from '../../../utils/functions/function';
 
 export const Category = () => {
   return (
@@ -9,7 +10,7 @@ export const Category = () => {
         <div className="category__class">
           <Link to="/phones" className="category__class--image">
             <img
-              src="../../../../public/img/mobilephones.png"
+              src={getAssetUrl('/img/mobilephones.png')}
               alt="phones"
               className="category__class--image-img"
             />
@@ -20,7 +21,7 @@ export const Category = () => {
         <div className="category__class">
           <Link to="/tablets" className="category__class--image">
             <img
-              src="../../../../public/img/tablets.png"
+              src={getAssetUrl('/img/tablets.png')}
               alt="phones"
               className="category__class--image-img"
             />
@@ -31,7 +32,7 @@ export const Category = () => {
         <div className="category__class">
           <Link to="/accessories" className="category__class--image">
             <img
-              src="../../../../public/img/accessories.png"
+              src={getAssetUrl('/img/accessories.png')}
               alt="phones"
               className="category__class--image-img"
             />
