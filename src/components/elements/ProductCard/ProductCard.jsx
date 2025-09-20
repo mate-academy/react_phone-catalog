@@ -50,7 +50,7 @@ export const ProductCard = ({ product }) => {
       id: product.id,
       name: product.name,
       price: product.priceDiscount,
-      image: `/${product.images?.[0] || 'no-image.jpg'}`,
+      image: `./${product.images?.[0] || 'no-image.jpg'}`,
       color: activeColor,
       capacity: activeCapacity,
       quantity: 1,
@@ -69,8 +69,8 @@ export const ProductCard = ({ product }) => {
             <img
               src={
                 product?.images?.[0]
-                  ? `/${product.images[0]}`
-                  : `/images/no-image.jpg`
+                  ? `./${product.images[0]}`
+                  : `./images/no-image.jpg`
               }
               alt={product?.name || 'No name'}
             />
@@ -125,8 +125,8 @@ export const ProductCard = ({ product }) => {
                   className="heart-icon"
                   src={
                     liked
-                      ? `/images/icons/Favourites_Filled_(Heart_Like).svg`
-                      : `/images/icons/Favourites_(Heart_Like).svg`
+                      ? `./images/icons/Favourites_Filled_(Heart_Like).svg`
+                      : `./images/icons/Favourites_(Heart_Like).svg`
                   }
                   alt="Favorite"
                 />

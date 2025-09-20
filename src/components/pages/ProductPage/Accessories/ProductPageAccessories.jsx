@@ -175,7 +175,7 @@ export default function ProductPage() {
             {product.images?.map((src, i) => (
               <img
                 key={i}
-                src={`/${src}`}
+                src={`./${src}`}
                 alt={`Photo ${i + 1}`}
                 className={`photo-gallery__small-photo ${
                   activePhoto === src ? 'active' : ''
@@ -187,7 +187,7 @@ export default function ProductPage() {
 
           <div className="photo-gallery__right-photo">
             <img
-              src={`/${activePhoto}`}
+              src={`./${activePhoto}`}
               alt="Big preview"
               className="photo-gallery__big-photo"
             />
@@ -293,8 +293,8 @@ export default function ProductPage() {
                     className="heart-icon"
                     src={
                       liked
-                        ? `/images/icons/Favourites_Filled_(Heart_Like).svg`
-                        : `/images/icons/Favourites_(Heart_Like).svg`
+                        ? `./images/icons/Favourites_Filled_(Heart_Like).svg`
+                        : `./images/icons/Favourites_(Heart_Like).svg`
                     }
                     alt="Favorite"
                   />
