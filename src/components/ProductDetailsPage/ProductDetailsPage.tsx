@@ -312,6 +312,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
           <h2 className={styles.productDetailsPage__notFound}> {t('errors.productNotFound')}</h2>
         )}
       </div>
+
       <YouMayAlsoLike />
     </section>
   );
