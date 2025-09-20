@@ -1,11 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Product, ProductDetails } from '../../types/ProductTypes';
+import { useEffect, useMemo, useState } from 'react';
+import {
+  ItemsPerPageOption,
+  Product,
+  ProductDetails,
+  SortOption,
+} from '../../types/ProductTypes';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { fetchAllProducts, fetchProducts } from '../../utils/api';
 
 export const useProductHook = () => {
   const [phones, setPhones] = useState<ProductDetails[]>([]);
-  const [itemPrevPage, setItemPrevPage] = useState(8);
+  const [itemPrevPage, setItemPrevPage] = useState<ItemsPerPageOption>(8);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState('Newest');
   const [loading, setLoading] = useState(true);
@@ -18,9 +23,9 @@ export const useProductHook = () => {
   const currentCategory = path.pathname.slice(1);
 
   useEffect(() => {
-    const sortParam = searchParams.get('sort');
+    const sortParam = searchParams.get('sort') as SortOption | null;
     const pageParam = searchParams.get('page');
-    const itemsPrevPageParam = searchParams.get('itemPerPage');
+    const itemsPrevPageParam = searchParams.get('itemsPerPage');
 
     if (sortParam) {
       setSortBy(sortParam);
@@ -30,8 +35,10 @@ export const useProductHook = () => {
       setCurrentPage(Number(pageParam));
     }
 
-    if (itemsPrevPageParam) {
-      setItemPrevPage(Number(itemPrevPage));
+    if (itemsPrevPageParam === 'all') {
+      setItemPrevPage('all');
+    } else if (itemsPrevPageParam) {
+      setItemPrevPage(Number(itemsPrevPageParam));
     }
   }, [searchParams]);
 
@@ -40,6 +47,7 @@ export const useProductHook = () => {
       fetchAllProducts()
         .then(data => {
           setPhones(data.filter(d => d.category === 'phones'));
+          setError(null);
         })
         .catch(() => {
           setError('Something went wrong...');
@@ -62,7 +70,7 @@ export const useProductHook = () => {
 
         if (validCategories.includes(currentCategory)) {
           const filteredProducts = data.filter(
-            (product: Product) => product.category === currentCategory,
+            (product: ProductDetails) => product.category === currentCategory,
           );
 
           setProducts(filteredProducts);
@@ -81,13 +89,47 @@ export const useProductHook = () => {
     setCart(savedCart);
   }, [currentCategory, setError]);
 
-  const handleSortChange = (option: string) => {
-    setSortBy(option);
+  const sortedProducts = useMemo(() => {
+    return [...products].sort((a, b) => {
+      const priceA = a.fullPrice ?? 0;
+      const priceB = b.fullPrice ?? 0;
+      const yearA = a.year ?? 0;
+      const yearB = b.year ?? 0;
+
+      if (sortBy === 'Cheapest') {
+        return priceA - priceB;
+      }
+
+      if (sortBy === 'Newest') {
+        return yearB - yearA;
+      }
+
+      if (sortBy === 'Alphabetically') {
+        return a.name.localeCompare(b.name);
+      }
+
+      return 0;
+    });
+  }, [products, sortBy]);
+
+  const itemsPerPage =
+    itemPrevPage === 'all' ? sortedProducts.length : itemPrevPage;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = sortedProducts.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
+
+  const handleSortChange = (option: SortOption) => {
+    const normalized = (option.charAt(0).toUpperCase() +
+      option.slice(1).toLowerCase()) as SortOption;
+
+    setSortBy(normalized);
     setSearchParams({
-      sort: option,
+      sort: normalized,
       page: '1',
       itemsPerPage: String(itemPrevPage),
     });
+    setCurrentPage(1);
   };
 
   const handlePageChange = (newPage: number) => {
@@ -99,19 +141,15 @@ export const useProductHook = () => {
     });
   };
 
-  const handleItemsPerPageChange = (newItemsPerPage: number) => {
+  const handleItemsPerPageChange = (newItemsPerPage: ItemsPerPageOption) => {
     setItemPrevPage(newItemsPerPage);
     setSearchParams({
       sort: sortBy,
       page: '1',
       itemsPerPage: String(newItemsPerPage),
     });
+    setCurrentPage(1);
   };
-
-  const indexOfLastItem = currentPage * itemPrevPage;
-  const indexOfFirstItem = indexOfLastItem - itemPrevPage;
-  const currentItems = phones.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(phones.length / itemPrevPage);
 
   return {
     phones,

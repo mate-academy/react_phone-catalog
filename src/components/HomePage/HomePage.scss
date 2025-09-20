@@ -1,8 +1,17 @@
 @import '../../utils/core';
 
 .main__homepage {
-  min-width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 16px;
+
+  @include onTablet {
+    padding: 0 24px;
+  }
+
+  @include onDesktop {
+    padding: 0 32px;
+  }
 }
 
 .page__title {
@@ -30,7 +39,6 @@
 .category__wrapper {
   margin-top: 56px;
   max-width: 1200px;
-  margin: 0 16px;
 
 }
 

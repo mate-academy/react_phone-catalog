@@ -4,7 +4,7 @@ import logo from '../../assets/icons/logo.svg';
 import logoLight from '../../assets/icons/logoLight.svg';
 import { ThemeContext } from '../Themes/Themes';
 import { NavLink } from 'react-router-dom';
-import arrowUp from '../../assets/icons/arrowUp.svg';
+import arrowUp from '../../assets/icons/arrowUpL.svg';
 
 export const Footer = () => {
   const scrollTop = () => {

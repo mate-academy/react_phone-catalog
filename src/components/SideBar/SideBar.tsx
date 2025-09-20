@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './SideBar.scss';
+import styles from './SideBar.module.scss';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { ThemeContext } from '../Themes/Themes';
@@ -17,7 +17,7 @@ interface SidebarProps {
 
 export const SideBar: React.FC<SidebarProps> = ({ openMenu, setOpenMenu }) => {
   const getLinkActive = ({ isActive }: { isActive: boolean }) =>
-    classNames('navbar-item', { 'active-link': isActive });
+    classNames(styles['sidebar-item'], { [styles['active-link']]: isActive });
 
   const { theme } = useContext(ThemeContext);
   const isBasicDark = theme === 'dark';
@@ -29,9 +29,9 @@ export const SideBar: React.FC<SidebarProps> = ({ openMenu, setOpenMenu }) => {
   }, 0);
 
   return (
-    <aside className={`sidebar ${openMenu ? 'open' : ''}`}>
-      <div className="sidebar__menu">
-        <div className="sidebar-brand">
+    <aside className={`${styles.sidebar} ${openMenu ? styles.open : ''}`}>
+      <div className={styles.sidebar__menu}>
+        <div className={styles['sidebar-brand']}>
           <NavLink className={getLinkActive} to="/" onClick={setOpenMenu}>
             Home
           </NavLink>
@@ -57,24 +57,26 @@ export const SideBar: React.FC<SidebarProps> = ({ openMenu, setOpenMenu }) => {
           </NavLink>
         </div>
       </div>
-      <div className="sidebar__icons">
+      <div className={styles.sidebar__icons}>
         <NavLink
-          className="sidebar__favourite"
+          className={styles.sidebar__favourite}
           to="/favourites"
           onClick={setOpenMenu}
         >
           <img src={isBasicDark ? DarkFav : LightFav} alt="heart" />
           {favourites.length > 0 && (
-            <span className="badge-2">{favourites.length}</span>
+            <span className={styles['badge-2']}>{favourites.length}</span>
           )}
         </NavLink>
-        <NavLink className="sidebar__bought" to="/cart">
+        <NavLink className={styles.sidebar__bought} to="/cart">
           <img
             src={isBasicDark ? DarkBag : LightBag}
             alt="bought"
             onClick={setOpenMenu}
           />
-          {cart.length > 0 && <span className="badge">{totalCount}</span>}
+          {cart.length > 0 && (
+            <span className={styles.badge}>{totalCount}</span>
+          )}
         </NavLink>
       </div>
     </aside>

@@ -1,0 +1,68 @@
+@use '../../utils/core' as *;
+
+.product {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+
+  &__cards {
+    display: flex;
+    padding-top: 50px;
+    justify-content: flex-start;
+    gap: 16px;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+
+    @include onDesktop {
+      justify-content: center;
+    }
+  }
+
+  &__titleButton {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0;
+
+  & img {
+    display: block;
+    margin: auto;
+  }
+}
+
+.prevBtn,
+.nextBtn {
+  font-family: Mont-Bold, sans-serif;
+  background-color: $color-surf-2;
+  border: 1px solid $color-elem;
+  color: $color-surf-2;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-icon-btn;
+    border: 1px solid $color-icon-btn;
+    color: $color-white;
+  }
+}
+
+.prevBtn:disabled,
+.nextBtn:disabled {
+  background-color: transparent;
+  cursor: not-allowed;
+}
+
+.category__title {
+  @include h2;
+  color: $color-white;
+}

@@ -1,0 +1,141 @@
+@use '../../utils/core' as *;
+
+.main__phonepage {
+  margin: 0 16px;
+
+  @include onTablet {
+    margin: 0 24px;
+  }
+
+  @include onDesktop {
+    margin: 0 32px;
+  }
+}
+
+.mobilelink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0;
+
+  img {
+    display: block;
+  }
+
+  @include onTablet {
+    margin: 24px 0 40px 0;
+  }
+
+  &__title {
+    color: $color-second;
+    @include text-small;
+    align-items: center;
+  }
+}
+
+.mobile {
+  &__title {
+    @include h1;
+    color: $color-white;
+    margin: 0;
+
+    &-description {
+      margin: 8px 0 0 ;
+      @include text-body;
+      color: $color-second;
+    }
+  }
+
+  &__dropdown {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 24px;
+
+    @include onTablet {
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(288px, 2fr));
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(auto-fit, minmax(272px, 4fr));
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    gap: 8px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__buttonPrev,
+  &__buttonNext {
+    @include text-buttons;
+    background-color: $color-surf-2;
+    border: 1px solid $color-surf-2;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+     img {
+      display: block;
+    }
+
+    &:hover {
+      background-color: $color-icon-btn;
+      border: 1px solid $color-icon-btn;
+    }
+
+    &.disabled {
+      border: 1px solid $color-elem;
+      background-color: transparent;
+      pointer-events: none;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__pagination {
+    @include text-body;
+    background-color: $color-surf-1;
+    border: 1px solid $color-surf-1;
+    width: 32px;
+    height: 32px;
+    color: $color-white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-accent-hover;
+      border: 1px solid $color-accent-hover;
+    }
+
+    &.active {
+      background-color: $color-accent;
+      color: $color-white;
+      font-weight: bold;
+    }
+  }
+}
+
+.sortby {
+  @include text-small;
+  color: $color-second;
+  margin: 0 0 4px;
+}

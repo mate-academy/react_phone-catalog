@@ -1,3 +1,4 @@
+import styles from './ProdcutItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../../types/ProductTypes';
 import { useCart } from '../BoughtCart/CartContext';
@@ -33,45 +34,54 @@ export const ProductItem: React.FC<Props> = ({
   };
 
   return (
-    <div className="product__elements" onClick={() => navigate(productPath)}>
-      <div className="product__container">
+    <div
+      className={styles.product__elements}
+      onClick={() => navigate(productPath)}
+    >
+      <div className={styles.product__container}>
         <img
           src={product.image}
           alt={`${product.category} image`}
-          className="product__image"
+          className={styles.product__image}
         />
       </div>
 
-      <h3 className="product__name">{product.name}</h3>
-      <div className="product__discount">
-        <h3 className="product__price">{`${product.price}`}</h3>
+      <h3 className={styles.product__name}>{product.name}</h3>
+      <div className={styles.product__discount}>
+        <h3 className={styles.product__price}>{`${product.price}`}</h3>
         {additionalPrice && (
-          <h3 className="product__fullprice">{`${product.fullPrice}`}</h3>
+          <h3
+            className={styles.product__fullprice}
+          >{`${product.fullPrice}`}</h3>
         )}
       </div>
 
-      <div className="product__row"></div>
+      <div className={styles.product__line}></div>
 
-      <div className="product__information">
-        <div className="product__informationFull">
-          <h3 className="product__screenTitle">Screen</h3>
-          <h3 className="product__screenDescription">{product.screen}</h3>
+      <div className={styles.product__information}>
+        <div className={styles.product__informationFull}>
+          <h3 className={styles.product__screenTitle}>Screen</h3>
+          <h3 className={styles.product__screenDescription}>
+            {product.screen}
+          </h3>
         </div>
-        <div className="product__informationFull">
-          <h3 className="product__screenTitle">Capacity</h3>
-          <h3 className="product__screenDescription">{product.capacity}</h3>
+        <div className={styles.product__informationFull}>
+          <h3 className={styles.product__screenTitle}>Capacity</h3>
+          <h3 className={styles.product__screenDescription}>
+            {product.capacity}
+          </h3>
         </div>
-        <div className="product__informationFull">
-          <h3 className="product__screenTitle">RAM</h3>
-          <h3 className="product__screenDescription">{product.ram}</h3>
+        <div className={styles.product__informationFull}>
+          <h3 className={styles.product__screenTitle}>RAM</h3>
+          <h3 className={styles.product__screenDescription}>{product.ram}</h3>
         </div>
       </div>
 
-      <div className="buttons">
-        <button className="button__add" onClick={handleToggleCart}>
+      <div className={styles.buttons}>
+        <button className={styles.button__add} onClick={handleToggleCart}>
           {isInCart ? 'Remove' : 'Add to cart'}
         </button>
-        <button className="button__like" onClick={handleToggleFavourite}>
+        <button className={styles.button__like} onClick={handleToggleFavourite}>
           <img src={isFavourite ? liked : heart} alt="like" />
         </button>
       </div>

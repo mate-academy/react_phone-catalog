@@ -1,23 +1,24 @@
 import { useState } from 'react';
 import { useProductHook } from './useProductHook';
 import home from '../../assets/icons/home.svg';
-import back from '../../assets/icons/arrowLeft.svg';
-import goto from '../../assets/icons/arrowRight.svg';
+import back from '../../assets/icons/arrowLeftL.svg';
+import backDis from '../../assets/icons/arrowLeft.svg';
+import goto from '../../assets/icons/arrowRightL.svg';
+import gotoDis from '../../assets/icons/arrowRight.svg';
 import { NavLink } from 'react-router-dom';
 import { Loader } from '../Loader';
 import { DDNum, DDSortBy } from '../DropDown';
-import { Product } from '../../types/ProductTypes';
+import { Product, SortOption } from '../../types/ProductTypes';
 import { ProductItem } from '../ProductItem';
-import './ProductPage.module.scss';
+import styles from './ProductPage.module.scss';
 
 export const ProductPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
-  // eslint-disable-next-line
-  const [itemsOnPage, setItemsOnPage] = useState<number | 'all'>(8);
 
   const {
+    itemPrevPage,
+    currentItems,
     products,
-    sortBy,
     loading,
     error,
     currentCategory,
@@ -28,32 +29,12 @@ export const ProductPage = () => {
     handlePageChange,
   } = useProductHook();
 
-  const sortedProducts = [...products].sort((a, b) => {
-    if (sortBy === 'Newest') {
-      return b.year - a.year;
-    }
-
-    if (sortBy === 'Alphabetically') {
-      return a.name.localeCompare(b.name);
-    }
-
-    if (sortBy === 'Cheapest') {
-      return a.fullPrice - b.fullPrice;
-    }
-
-    return a.name.localeCompare(b.name);
-  });
-
-  const itemsPerPage = itemsOnPage === 'all' ? products.length : itemsOnPage;
-  const totalPagess = Math.ceil(products.length / itemsPerPage);
-
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const visibleProducts = sortedProducts.slice(startIndex, endIndex);
+  const slisedCurrentCategory =
+    currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1);
 
   return (
-    <main className="main__phonepage">
-      <div className="mobilelink">
+    <main className={styles.main__phonepage}>
+      <div className={styles.mobilelink}>
         <NavLink to="/">
           <img src={home} alt="home" />
         </NavLink>
@@ -61,7 +42,7 @@ export const ProductPage = () => {
         <span>
           <img src={back} alt="back" />
         </span>
-        <p className="mobilelink__title">
+        <p className={styles.mobilelink__title}>
           {currentCategory}
           {selectedPhone && (
             <>
@@ -74,8 +55,8 @@ export const ProductPage = () => {
         </p>
       </div>
       {error && (
-        <div className="error__container">
-          <p className="error__message">
+        <div className={styles.error__container}>
+          <p className={styles.error__message}>
             Something went wrong... Please, check your connection and try later
           </p>
         </div>
@@ -83,40 +64,47 @@ export const ProductPage = () => {
 
       {!error && (
         <>
-          <h1 className="page__title">
-            {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
+          <h1 className={styles.mobile__title}>
+            {slisedCurrentCategory === 'Phones'
+              ? 'Mobile phones'
+              : slisedCurrentCategory}
           </h1>
+          <h1
+            className={styles['mobile__title-description']}
+          >{`${products.length} models`}</h1>
         </>
       )}
 
       {loading && (
-        <div className="loadere-container">
+        <div className={styles['loadere-container']}>
           <Loader />
         </div>
       )}
       {!loading && !error && (
         <>
-          <div className="mobile__choise">
-            <div className="mobile__dropdown">
-              <div className="mobile__sortBy">
-                <h3 className="sortby">Sort By</h3>
+          <div className={styles.mobile__choise}>
+            <div className={styles.mobile__dropdown}>
+              <div className={styles.mobile__sortBy}>
+                <h3 className={styles.sortby}>Sort By</h3>
                 <DDSortBy
                   onChange={option => {
-                    handleSortChange(option.value);
+                    handleSortChange(option.value as SortOption);
                   }}
                 />
               </div>
-              <div className="mobile__items">
-                <h3 className="sortby">Sort By</h3>
+              <div className={styles.mobile__items}>
+                <h3 className={styles.sortby}>Items on page</h3>
                 <DDNum
                   onChange={option => {
-                    handleItemsPerPageChange(Number(option.value));
+                    handleItemsPerPageChange(
+                      option.value === 'all' ? 'all' : Number(option.value),
+                    );
                   }}
                 />
               </div>
             </div>
-            <div className="mobile__cards">
-              {visibleProducts.map((product: Product) => (
+            <div className={styles.mobile__cards}>
+              {currentItems.map((product: Product) => (
                 <ProductItem
                   key={product.id}
                   product={product}
@@ -126,20 +114,20 @@ export const ProductPage = () => {
               ))}
             </div>
 
-            {itemsOnPage !== 'all' && (
-              <div className="mobile__buttons">
+            {itemPrevPage !== 'all' && (
+              <div className={styles.mobile__buttons}>
                 <button
-                  className={`mobile__buttonPrev ${currentPage === 1 ? 'disabled' : ''}`}
+                  className={`${styles.mobile__buttonPrev} ${currentPage === 1 ? styles.disabled : ''}`}
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
                 >
-                  <img src={back} alt="Back" />
+                  <img src={currentPage === 1 ? backDis : back} alt="Back" />
                 </button>
-                {Array.from({ length: totalPagess }, (_, i) => i + 1).map(
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
                   number => (
                     <button
                       key={number}
-                      className={`mobile__pagination ${currentPage === number ? 'active' : ''}`}
+                      className={`${styles.mobile__pagination} ${currentPage === number ? styles.active : ''}`}
                       onClickCapture={() => handlePageChange(number)}
                       disabled={currentPage === number}
                     >
@@ -148,11 +136,14 @@ export const ProductPage = () => {
                   ),
                 )}
                 <button
-                  className={`mobile__buttonNext ${currentPage === totalPages ? 'disabled' : ''}`}
+                  className={`${styles.mobile__buttonNext} ${currentPage === totalPages ? styles.disabled : ''}`}
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
                 >
-                  <img src={goto} alt="Goto" />
+                  <img
+                    src={currentPage === totalPages ? gotoDis : goto}
+                    alt="Goto"
+                  />
                 </button>
               </div>
             )}

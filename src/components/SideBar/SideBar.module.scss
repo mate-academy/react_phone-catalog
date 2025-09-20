@@ -1,0 +1,77 @@
+@use '../../utils/core' as *;
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  background-color: $color-black;
+  height: 100vh;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+
+  &.open {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 10;
+
+    @include themy($theme) {
+      background: themed('colorHeaderFooter');
+    }
+  }
+
+  &__menu {
+    padding-top: 24px;
+  }
+
+  &__icons {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 64px;
+  }
+
+  &__favourite,
+  &__bought {
+    display: flex;
+    position: relative;
+    width: 100%;
+    border: 1px solid $color-elem;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+  margin: auto 0;
+}
+
+.sidebar-item {
+  @include text-uppercase;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  color: $color-second;
+
+  &:hover {
+    color: $color-white;
+  }
+
+  &.active-link {
+    color: $color-white;
+    border-bottom: 2px solid $color-white;
+  }
+}

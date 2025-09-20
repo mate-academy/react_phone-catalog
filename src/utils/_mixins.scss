@@ -1,4 +1,4 @@
-@use './variables.scss' as vars;
+@use './variables' as vars;
 
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;

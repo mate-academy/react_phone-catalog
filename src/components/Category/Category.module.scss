@@ -1,4 +1,4 @@
-@import '../../utils/core';
+@use '../../utils/core' as *;
 
 .card {
   display: flex;
@@ -38,10 +38,7 @@
   }
 
   &__title {
-    font-family: Mont-SemiBold, sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 26px;
+    @include h4;
     margin: 24px 0 0 0;
 
     @include themy($theme) {

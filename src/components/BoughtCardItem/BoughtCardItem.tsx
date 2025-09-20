@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Product } from '../../types/ProductTypes';
-import './BoughtCardItem.scss';
+import styles from './BoughtCardItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import Delete from '../../assets/icons/close.svg';
 import DeleteLight from '../../assets/icons/closeLight.svg';
@@ -61,17 +61,17 @@ export const BoughtCardItem: React.FC<Props> = ({
 
   return (
     <>
-      <div className="bought">
+      <div className={styles.bought}>
         <div
-          className="bought__item"
+          className={styles.bought__item}
           role="button"
           onClick={() => navigate(productPath)}
         >
-          <div className="bought__wrapper">
+          <div className={styles.bought__wrapper}>
             <img
               src={isBasicDark ? grayDelete : DeleteLight}
               alt="delete"
-              className="deleteIcon"
+              className={styles.deleteIcon}
               onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 handleDelete();
@@ -81,15 +81,15 @@ export const BoughtCardItem: React.FC<Props> = ({
             <img
               src={product.image}
               alt={product.name}
-              className="bought__image"
+              className={styles.bought__image}
             />
-            <h3 className="bought__title">{product.name}</h3>
+            <h3 className={styles.bought__title}>{product.name}</h3>
           </div>
 
-          <div className="bought__wrapper2">
-            <div className="bought__button">
+          <div className={styles.bought__wrapper2}>
+            <div className={styles.bought__button}>
               <button
-                className="prevBtn"
+                className={styles.prevBtn}
                 onClick={(e: React.MouseEvent) => {
                   e.stopPropagation();
                   handleDecrease();
@@ -97,9 +97,9 @@ export const BoughtCardItem: React.FC<Props> = ({
               >
                 <img src={minusGray} alt="-" />
               </button>
-              <span className="bought__num">{quantity}</span>
+              <span className={styles.bought__num}>{quantity}</span>
               <button
-                className="nextBtn"
+                className={styles.nextBtn}
                 onClick={(e: React.MouseEvent) => {
                   e.stopPropagation();
                   handleIncrease();
@@ -108,7 +108,7 @@ export const BoughtCardItem: React.FC<Props> = ({
                 <img src={plus} alt="+" />
               </button>
             </div>
-            <p className="bought__price">{`$${totalPriceOne}`}</p>
+              <p className={styles.bought__price}>{`$${totalPriceOne}`}</p>
           </div>
         </div>
       </div>

@@ -63,9 +63,14 @@
     color: $color-white;
     width: 32px;
     height: 32px;
-    background-color: $color-second;
-    border: 1px solid $color-second;
+    background-color: $color-surf-2;
+    border: 1px solid $color-surf-2;
     cursor: pointer;
+
+    &:hover {
+      background-color: $color-icon-btn;
+      border: 1px solid $color-icon-btn;
+    }
   }
 }
 

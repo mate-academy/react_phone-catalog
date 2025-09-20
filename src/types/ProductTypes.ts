@@ -92,3 +92,6 @@ export interface Product {
   image: string;
   quantity?: number;
 }
+
+export type SortOption = 'Newest' | 'Alphabetically' | 'Cheapest';
+export type ItemsPerPageOption = number | 'all';

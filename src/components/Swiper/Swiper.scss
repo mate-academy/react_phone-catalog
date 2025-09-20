@@ -1,0 +1,117 @@
+@use '../../utils/core' as *;
+
+.main__slider {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include onTablet {
+    margin: 32px 24px 64px 24px;
+  }
+}
+
+.slider__image {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include onTablet {
+    width: 490px;
+    height: 189px;
+  }
+
+  @include onDesktop {
+    width: 1040px;
+    height: 400px;
+  }
+}
+
+.swiper-slide {
+  opacity: 0 !important;
+  transition: opacity 0.5s ease;
+}
+
+.swiper-slide-active {
+  opacity: 1 !important;
+  z-index: 2;
+}
+
+.swiper {
+  overflow: hidden;
+  width: 320px;
+  height: 320px;
+
+  @include onTablet {
+    width: 592px;
+    height: 221px;
+  }
+
+  @include onDesktop {
+    width: 1136px;
+    height: 400px;
+  }
+}
+
+.slider__wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.custom-prev,
+.custom-next {
+  display: none;
+  color: $color-white;
+  width: 32px;
+  background-color: $color-surf-2;
+  border: 1px solid $color-surf-2;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-icon-btn;
+    border: 1px solid $color-icon-btn;
+  }
+
+  @include themy($theme) {
+    background-color: themed('colorSwiperBG');
+    color: themed('colorSwiperText');
+  }
+
+  @include onTablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+
+  .swiper-pagination-bullet {
+    background-color: $color-surf-2;
+    border: 1px solid $color-surf-2;
+    opacity: 0.7;
+    margin: 0 5px;
+    width: 24px;
+    height: 4px;
+    margin-top: 40px;
+    border-radius: 0;
+
+    &-active {
+      border: 1px solid $color-white;
+      background-color: $color-white;
+      opacity: 1;
+    }
+  }
+}
+
+.custom-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @include themy($theme) {
+    background-color: themed('colorPaginActive');
+  }
+}

@@ -1,31 +1,41 @@
-import './Swiper.module.scss';
-import back from '../../assets/icons/arrowLeft.svg';
-import goto from '../../assets/icons/arrowRight.svg';
+import './Swiper.scss';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import back from '../../assets/icons/arrowLeftL.svg';
+import goto from '../../assets/icons/arrowRightL.svg';
+import backLight from '../../assets/icons/arrowLeftLight.svg';
+import gotoLight from '../../assets/icons/arrowRightLight.svg';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useContext } from 'react';
+import { ThemeContext } from '../Themes';
 
 const desktopImg = [
-  '/img/banner-bs.png', //dt
-  '/img/banner-bs.png', //tab
-  '/img/banner-bs.png', //mobile
+  '/img/banner-dt-2k.png', //dt
+  '/img/banner-tablets.png', //mobile
+  '/img/banner-accessories.png', //tab
 ];
 
 const mobileImg = [
   '/img/banner-mobmain.png',
-  '/img/banner-mobmain.png',
-  '/img/banner-mobmain.png',
+  '/img/banner-tablets.png',
+  '/img/banner-accessories.png',
 ];
 
 export const SliderSwiper = () => {
   const isMobile = useMediaQuery({ maxWidth: 550 });
   const images = isMobile ? mobileImg : desktopImg;
+  const { theme } = useContext(ThemeContext);
+
+  const isBasicDark = theme === 'dark';
 
   return (
-    <div>
+    <div className="main__slider">
       <div className="slider__wrapper">
         <button className="custom-prev">
-          <img src={back} alt="<" />
+          <img src={isBasicDark ? back : backLight} alt="<" />
         </button>
         <Swiper
           modules={[Autoplay, Navigation, Pagination]}
@@ -50,10 +60,10 @@ export const SliderSwiper = () => {
           ))}
         </Swiper>
         <button className="custom-next">
-          <img src={goto} alt=">" />
+          <img src={isBasicDark ? goto : gotoLight} alt=">" />
         </button>
       </div>
-      <div id="pagination" className="custom-paginatino"></div>
+      <div id="pagination" className="custom-pagination"></div>
     </div>
   );
 };

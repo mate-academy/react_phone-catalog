@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProductInfo.scss';
+import styles from './ProductInfo.module.scss';
 import home from '../../assets/icons/home.svg';
 import goto from '../../assets/icons/arrowRight.svg';
 import back from '../../assets/icons/arrowLeft.svg';
@@ -36,15 +36,15 @@ export const ProductInfo: React.FC = () => {
   } = useInfoHook();
 
   return (
-    <main className="productInfo">
-      <div className="productInfolink">
-        <NavLink to="/" className="productInfolink__home">
+    <main className={styles.productInfo}>
+      <div className={styles.productInfolink}>
+        <NavLink to="/" className={styles.productInfolink__home}>
           <img src={home} alt="home" />
         </NavLink>
         <span>
           <img src={goto} alt="Goto" />
         </span>
-        <NavLink to={`/${category}`} className="productInfolink__title">
+        <NavLink to={`/${category}`} className={styles.productInfolink__title}>
           {category === 'tablets'
             ? 'tablets'
             : category === 'accessories'
@@ -57,39 +57,43 @@ export const ProductInfo: React.FC = () => {
             <span>
               <img src={goto} alt="Goto" />
             </span>
-            <p className="productInfolink__title">{productId}</p>
+            <p className={styles['productInfolink__title-id']}>{productId}</p>
           </>
         )}
       </div>
 
-      <div className="productInfolink__back">
+      <div className={styles.productInfolink__back}>
         <img src={back} alt="Back" onClick={() => navigate(1)} />
-        <p className="productInfolink__backTitle" onClick={() => navigate(1)}>
+        <p
+          className={styles.productInfolink__backTitle}
+          onClick={() => navigate(1)}
+        >
           Back
         </p>
       </div>
 
       {error && (
-        <div className="error__container">
-          <p className="error-message">Something is wrong... Try again later</p>
+        <div className={styles.error__container}>
+          <p className={styles['error-message']}>
+            Something is wrong... Try again later
+          </p>
         </div>
       )}
-
       {error ? null : loading ? (
-        <div className="loader-container">
+        <div className={styles['loader-container']}>
           <Loader />
         </div>
       ) : selectedPhone ? (
         <div key={selectedPhone.id}>
-          <h2 className="category__title">{selectedPhone.name}</h2>
-          <div className="productInfo__wrapper">
-            <div className="productInfo__wrapperPhone">
-              <div className="Image">
+          <h2 className={styles.category__title}>{selectedPhone.name}</h2>
+          <div className={styles.productInfo__wrapper}>
+            <div className={styles.productInfo__wrapperPhone}>
+              <div className={styles.Image}>
                 {selectedPhone.images &&
                   selectedPhone.images.map((image, index) => (
                     <img
-                      className={classNames('productInfo__Image', {
-                        active: mainImg === image,
+                      className={classNames(styles.productInfo__Image, {
+                        [styles.active]: mainImg === image,
                       })}
                       key={index}
                       src={image}
@@ -99,108 +103,119 @@ export const ProductInfo: React.FC = () => {
                   ))}
               </div>
 
-              <div className="Main__Image">
+              <div className={styles.Main__Image}>
                 <img
                   src={mainImg}
                   alt="image"
-                  className="productInfo__mainImage"
+                  className={styles.productInfo__mainImage}
                 />
               </div>
             </div>
           </div>
 
-          <div className="productInfo__wrapperDetails">
-            <div className="productInfo__colors">
-              <h3 className="productInfo__contentTItle">Available colors</h3>
+          <div className={styles.productInfo__wrapperDetails}>
+            <div className={styles.productInfo__colors}>
+              <h3 className={styles.productInfo__contentTitle}>
+                Available colors
+              </h3>
               {selectedPhone.colorAvaileble &&
                 selectedPhone.colorAvaileble.map((color, i) => (
                   <button
                     key={i}
-                    className={classNames('productInfo__color', {
-                      selected: selectedColor === color,
+                    className={classNames(styles.productInfo__color, {
+                      [styles.selected]: selectedColor === color,
                     })}
                     onClick={() => handleColorChange(color)}
                     style={{ background: color }}
                   ></button>
                 ))}
             </div>
-            <div className="productInfo__line"></div>
+            <div className={styles.productInfo__line}></div>
 
-            <div className="productInfo__memory">
-              <h3 className="productInfo__contentTitle">Select capacity</h3>
+            <div className={styles.productInfo__memory}>
+              <h3 className={styles.productInfo__contentTitle}>
+                Select capacity
+              </h3>
               {selectedPhone.capacityAvailable &&
                 selectedPhone.capacityAvailable.map((memory, i) => (
                   <button
                     key={i}
-                    className={classNames('productInfo__memories', {
-                      selected: selectedMemory === memory,
+                    className={classNames(styles.productInfo__memories, {
+                      [styles.selected]: selectedMemory === memory,
                     })}
                     onClick={() => handleMemoryChange(memory)}
                   ></button>
                 ))}
             </div>
-            <div className="productInfo__line"></div>
+            <div className={styles.productInfo__line}></div>
 
-            <div className="productInfo__price">
-              <h3 className="productInfo__priceNew">
+            <div className={styles.productInfo__price}>
+              <h3 className={styles.productInfo__priceNew}>
                 {`$ ${selectedPhone.priceRegular}`}
               </h3>
-              <h3 className="productInfo__preceIld">
+              <h3 className={styles.productInfo__preceIld}>
                 {`$ ${selectedPhone.priceDiscount}`}
               </h3>
             </div>
 
-            <div className="productInfo__btn">
-              <button>{isAdded ? 'Remove' : 'Add to cart'}</button>
+            <div className={styles.productInfo__btn}>
               <button
-                className="productInfo__btnLike"
+                className={styles.productInfo__btnCart}
+                onClick={handleToggleCart}
+              >
+                {isAdded ? 'Remove' : 'Add to cart'}
+              </button>
+              <button
+                className={styles.productInfo__btnLike}
                 onClick={handleToggleFavourite}
               >
                 <img src={isFav ? like : heart} alt="like" />
               </button>
             </div>
 
-            <div className="productInfo__info">
-              <div className="productInfo__infoAll">
-                <h3 className="productInfo__screenTitle">Screen</h3>
-                <h3 className="productInfo__screenDescription">
+            <div className={styles.productInfo__info}>
+              <div className={styles.productInfo__infoAll}>
+                <h3 className={styles.productInfo__screenTitle}>Screen</h3>
+                <h3 className={styles.productInfo__screenDescription}>
                   {selectedPhone.screen}
                 </h3>
               </div>
 
-              <div className="productInfo__infoAll">
-                <h3 className="productInfo__screenTitle">Screen</h3>
-                <h3 className="productInfo__screenDescription">
+              <div className={styles.productInfo__infoAll}>
+                <h3 className={styles.productInfo__screenTitle}>Screen</h3>
+                <h3 className={styles.productInfo__screenDescription}>
                   {selectedPhone.resolution}
                 </h3>
               </div>
 
-              <div className="productInfo__infoAll">
-                <h3 className="productInfo__screenTitle">Processor</h3>
-                <h3 className="productInfo__screenDescription">
+              <div className={styles.productInfo__infoAll}>
+                <h3 className={styles.productInfo__screenTitle}>Processor</h3>
+                <h3 className={styles.productInfo__screenDescription}>
                   {selectedPhone.processor}
                 </h3>
               </div>
 
-              <div className="productInfo__infoAll">
-                <h3 className="productInfo__screenTitle">RAM</h3>
-                <h3 className="productInfo__screenDescription">
+              <div className={styles.productInfo__infoAll}>
+                <h3 className={styles.productInfo__screenTitle}>RAM</h3>
+                <h3 className={styles.productInfo__screenDescription}>
                   {selectedPhone.ram}
                 </h3>
               </div>
             </div>
           </div>
 
-          <div className="productInfo__wrapperAboutTech">
-            <div className="productInfo__paragraph">
-              <h3 className="productInfo__about">About</h3>
-              <div className="productInfo__line"></div>
+          <div className={styles.productInfo__wrapperAboutTech}>
+            <div className={styles.productInfo__paragraph}>
+              <h3 className={styles.productInfo__about}>About</h3>
+              <div className={styles.productInfo__line}></div>
               {selectedPhone.description &&
                 selectedPhone.description.map((item, index) => (
-                  <div className="productInfo__content" key={index}>
-                    <h2 className="productInfo__itemTitle">{item.title}</h2>
+                  <div className={styles.productInfo__content} key={index}>
+                    <h2 className={styles.productInfo__itemTitle}>
+                      {item.title}
+                    </h2>
                     {item.text.map((paragraph, i) => (
-                      <p className="productInfo__description" key={i}>
+                      <p className={styles.productInfo__description} key={i}>
                         {paragraph}
                       </p>
                     ))}
@@ -208,14 +223,16 @@ export const ProductInfo: React.FC = () => {
                 ))}
             </div>
 
-            <div className="productInfo__wrapperTech">
-              <h3 className="productInfo__about">Tech specs</h3>
-              <div className="productInfo__line"></div>
+            <div className={styles.productInfo__wrapperTech}>
+              <h3 className={styles.productInfo__about}>Tech specs</h3>
+              <div className={styles.productInfo__line}></div>
 
               {techInfo.map((item, index) => (
-                <div className="productInfo__techInfoAll" key={index}>
-                  <h3 className="productInfo__techScreenTitle">{item.title}</h3>
-                  <h3 className="productInfo__techScreenDescription">
+                <div className={styles.productInfo__techInfoAll} key={index}>
+                  <h3 className={styles.productInfo__techScreenTitle}>
+                    {item.title}
+                  </h3>
+                  <h3 className={styles.productInfo__techScreenDescription}>
                     {Array.isArray(item.value)
                       ? item.value.join(', ')
                       : item.value}
@@ -234,12 +251,12 @@ export const ProductInfo: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="not-found">
+        <div className={styles['not-found']}>
           <h2>Something went wrong...</h2>
           <img
             src="public/img/product-not-found.png"
             alt="not-found"
-            className="error__img"
+            className={styles.error__img}
           />
         </div>
       )}

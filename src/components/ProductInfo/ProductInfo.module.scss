@@ -1,0 +1,276 @@
+@use '../../utils/core' as *;
+
+.productInfo {
+  margin: 0 16px;
+
+  &__wrapper {
+    display: block;
+    gap: 16px;
+
+    @include onTablet {
+      display: flex;
+      gap: 16px;
+    }
+
+    @include onDesktop {
+      display: flex;
+      gap: 64px;
+    }
+  }
+
+  &__wrapperPhone {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__Image {
+    height: 49px;
+    width: 51px;
+    object-fit: contain;
+    border: 1px solid $color-elem;
+    cursor: pointer;
+
+    &.active {
+      border-color: #4721c5d8;
+      transform: scale(1.05);
+      box-shadow: 0 0 8px rgba(120, 64, 204, 0.92);
+    }
+
+    &:hover {
+      border-color: rgba(96, 11, 133, 0.78);
+    }
+
+    @include onTablet {
+      height: 35px;
+      width: 35px;
+    }
+
+    @include onDesktop {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  &__mainImage {
+    width: 288px;
+    height: 288px;
+    object-fit: contain;
+
+    @include onDesktop {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+  }
+
+  &__contentTitle {
+    @include text-small;
+    color: $color-second;
+    margin: 0 0 8px 0;
+  }
+
+  &__color {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid $color-elem;
+    margin: 0 8px 0px 0;
+
+    &.selected {
+      border: 2px solid rgba(96, 11, 133, 0.78);
+    }
+  }
+
+  &__line {
+    border: 1px solid $color-elem;
+    width: 288px;
+  }
+
+  &__memory {
+    margin-top: 24px;
+  }
+
+  &__btn {
+    display: flex;
+  }
+
+  &__btnCart {
+    @include text-buttons;
+    text-decoration: none;
+    border: 1px solid $color-accent;
+    background-color: $color-accent;
+    color: $color-white;
+    cursor: pointer;
+    text-align: center;
+    width: 231px;
+    height: 48px;
+
+    @include onTablet {
+      width: 180px;
+    }
+
+    @include onDesktop {
+      width: 263px;
+    }
+  }
+
+  &__btnLike {
+    width: 48px;
+    height: 48px;
+    background-color: $color-surf-2;
+    border: 1px solid $color-surf-2;
+    cursor: pointer;
+    color: $color-white;
+  }
+
+  &__info {
+    margin-top: 32px;
+  }
+
+  &__infoAll {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__screenTitle,
+  &__techScreenTitle {
+    @include text-body;
+    color: $color-second;
+  }
+
+  &__screenDescription,
+  &__techScreenDescription {
+    @include text-body;
+    color: $color-white;
+
+    @include themy($theme) {
+      color: themed('colorText');
+    }
+  }
+
+  &__wrapperAboutTech {
+    margin-top: 56px;
+    display: block;
+    gap: 32px;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  &__paragraph,
+  &__wrapperTech {
+    width: 100%;
+
+    @include onDesktop {
+      width: 50%;
+    }
+  }
+
+  &__about {
+    @include h3;
+    color: $color-white;
+    margin: 0 0 16px 0;
+  }
+
+  &__content {
+    margin: 32px 0 0 0;
+  }
+
+  &__itemTitle {
+    @include h4;
+    color: $color-white;
+
+    @include themy($theme) {
+      color: themed('colorText');
+    }
+  }
+
+  &__description {
+    @include text-body;
+    color: $color-second;
+  }
+
+  &__techInfoAll {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__memories {
+    margin: 0 8px 24px 0;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid $color-elem;
+    color: $color-white;
+    cursor: pointer;
+
+    @include themy($theme) {
+      color: themed('colorText');
+    }
+
+    &:hover,
+    &:hover {
+      background-color: #2a2c36;
+      border: 1px solid $color-second;
+      color: $color-white;
+    }
+
+    &:active {
+      background-color: #1e2028;
+      border: 1px solid $color-white;
+      color: $color-white;
+    }
+  }
+}
+
+.productInfolink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 56px 0;
+
+  &__title,
+  &__backTitle {
+    @include text-small;
+    color: $color-white;
+    align-items: center;
+    text-decoration: none;
+    //display: flex;
+    //gap: 8px;
+  }
+
+  &__title-id {
+    color: $color-second;
+  }
+
+  &__back,
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.Image {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.Main__Image {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.category__title {
+  @include h2;
+  color: $color-white;
+}

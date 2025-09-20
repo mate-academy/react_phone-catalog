@@ -1,6 +1,8 @@
+import styles from './ProductCard.module.scss';
 import { Product } from '../../types/ProductTypes';
 import React, { useEffect, useState } from 'react';
-import arrLeft from '../../assets/icons/arrowLeft.svg';
+import back from '../../assets/icons/arrowLeft.svg';
+import goto from '../../assets/icons/arrowRightL.svg';
 import { useSwipeable } from 'react-swipeable';
 import { ProductItem } from '../ProductItem/ProductItem';
 
@@ -55,23 +57,30 @@ export const ProductSlider: React.FC<Props> = ({
   });
 
   return (
-    <div className="product" {...handlers}>
-      <div className="product__titleButton">
+    <div className={styles.product} {...handlers}>
+      <div className={styles.product__titleButton}>
         {/*sometext*/}
-        <h2 className="category__title">{title}</h2>
-        <div className="button">
+        <h2 className={styles.category__title}>{title}</h2>
+        <div className={styles.button}>
           <button
-            className="prevBtn"
+            className={styles.prevBtn}
             onClick={handlePrev}
             disabled={currentIndex === 0}
           >
-            <img src={arrLeft} alt="previous" />
+            <img src={back} alt="previous" />
+          </button>
+          <button
+            className={styles.nextBtn}
+            onClick={handleNext}
+            disabled={currentIndex + itemsPerPage >= products.length}
+          >
+            <img src={goto} alt="previous" />
           </button>
         </div>
       </div>
 
-      <div className="wrapper">
-        <div className="product__cards">
+      <div className={styles.wrapper}>
+        <div className={styles.product__cards}>
           {products
             .slice(currentIndex, currentIndex + itemsPerPage)
             .map(product => (
