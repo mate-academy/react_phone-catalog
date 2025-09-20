@@ -4,16 +4,16 @@ $desktop-min-width: 1200px;
 .slider {
   position: relative;
   width: 100%;
-  max-height: 320px;
-  margin-bottom: 56px;
+  height: 320px;
+  margin-bottom: 88px;
 
   @media (min-width: 640px) {
-    margin-bottom: 64px;
+    margin-bottom: 96px;
     height: 189px;
   }
 
   @media (min-width: 1200px) {
-    margin-bottom: 80px;
+    margin-bottom: 112px;
     height: 400px;
   }
 
@@ -56,49 +56,45 @@ $desktop-min-width: 1200px;
     background-color: white;
   }
 
-  .swiper-button-prev {
-    height: 100%;
+  .button {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
     width: 32px;
-    display: none;
     background-size: cover;
     background-position: center;
-    background-image: url(/public/img/prevSlide.svg);
     background-repeat: no-repeat;
     transition: transform 0.3s ease;
+    z-index: 10;
+    border: none;
+    cursor: pointer;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.03);
     }
 
-    @media (min-width: $tablet-min-width) {
-      display: block;
+    @media (max-width: 639px) {
+      display: none;
     }
   }
 
-  .swiper-button-next {
-    height: 100%;
-    width: 32px;
-    display: none;
-    background-size: cover;
-    background-position: center;
-    background-image: url(/public/img/nextSlide.svg);
-    background-repeat: no-repeat;
-    transition: transform 0.3s ease;
+  .prev {
+    left: 0;
+    background-image: url('/public/img/prevSlide.svg');
+  }
 
-    &:hover {
-      transform: scale(1.1);
-    }
-
-    @media (min-width: $tablet-min-width) {
-      display: block;
-    }
+  .next {
+    right: 0;
+    background-image: url('/public/img/nextSlide.svg');
   }
 }
 
 :global(.swiper-pagination) {
   height: 40px;
   bottom: -50px;
-  z-index: 1000;
+  z-index: 900;
 }
 
 :global(.swiper-pagination-bullet) {

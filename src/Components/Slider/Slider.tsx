@@ -1,6 +1,6 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import React, { useRef } from 'react';
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -9,23 +9,37 @@ import styles from './Slider.module.scss';
 const slidesData = [
   {
     id: 1,
-    img: '/img/Banner.png',
+    img: './img/Banner.png',
   },
   {
     id: 2,
-    img: '/img/banner-accessories.png',
+    img: './img/banner-accessories.png',
   },
   {
     id: 3,
-    img: '/img/banner-phones.png',
+    img: './img/banner-phones.png',
   },
 ];
 
 export const Slider: React.FC = () => {
+  const swiperRef = useRef<SwiperClass | null>(null);
+
+  const handlePrevSlide = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
+  };
+
+  const handleNextSlide = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
+  };
+
   return (
     <div className={styles.slider}>
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
+        modules={[Pagination, Autoplay]}
         navigation
         pagination={{
           clickable: true,
@@ -35,6 +49,9 @@ export const Slider: React.FC = () => {
         loop={true}
         spaceBetween={30}
         className={styles.swiper}
+        onSwiper={swiper => {
+          swiperRef.current = swiper;
+        }}
       >
         {slidesData.map(slide => (
           <SwiperSlide key={slide.id} className={styles['swiper-slide']}>
@@ -44,6 +61,16 @@ export const Slider: React.FC = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <>
+        <button
+          className={`${styles.button} ${styles.prev}`}
+          onClick={handlePrevSlide}
+        />
+        <button
+          className={`${styles.button} ${styles.next}`}
+          onClick={handleNextSlide}
+        />
+      </>
       <div className="pagination-container">
         <div className="swiper-pagination"></div>
       </div>

@@ -28,12 +28,14 @@ export const Pagination: React.FC<Props> = ({
   const handlePrev = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handleNext = () => {
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -48,7 +50,10 @@ export const Pagination: React.FC<Props> = ({
       {pageNumbers.map(page => (
         <button
           key={page}
-          onClick={() => onPageChange(page)}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            onPageChange(page);
+          }}
           className={`${styles.pageBtn} ${
             page === currentPage ? styles.active : ''
           }`}

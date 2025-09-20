@@ -11,7 +11,7 @@ export const FavoritesPage: React.FC = () => {
     return (
       <div className={styles.wrapper}>
         <img
-          src="/img/product-not-found.png"
+          src="./img/product-not-found.png"
           alt="Not found"
           className={styles.pulseImage}
         />

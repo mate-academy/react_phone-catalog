@@ -313,7 +313,7 @@ $desktop-min-width: 1200px;
   transition: all 0.3s;
   opacity: 0;
   pointer-events: none;
-  z-index: 200;
+  z-index: 10000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
