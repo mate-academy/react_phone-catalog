@@ -10,7 +10,6 @@ import { useAccessories } from '../../contexts/AccessoriesContext';
 import { YouMayAlsoLike } from '../YouMayAlsoLike/YouMayAlsoLike';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { useTheme } from '../../contexts/ThemeContext';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useTranslation } from 'react-i18next';
 
 type Props = {
