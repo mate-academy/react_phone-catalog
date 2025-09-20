@@ -24,9 +24,7 @@ export default function HotPrice({ products }) {
             }`}
           >
             <img
-              src="./images/icons/Chevron_Arrow_Left${
-                isBeginning ? '_Disabled' : ''
-              }.svg"
+              src={`./images/icons/Chevron_Arrow_Left${isBeginning ? '_Disabled' : ''}.svg`}
               className="icons_arrow"
               alt="Chevron Left"
             />
@@ -37,9 +35,7 @@ export default function HotPrice({ products }) {
             className={`swiper-button-custom right ${isEnd ? 'disabled' : ''}`}
           >
             <img
-              src="./images/icons/Chevron_Arrow_Right${
-                isEnd ? '_Disabled' : ''
-              }.svg"
+              src={`./images/icons/Chevron_Arrow_Right${isEnd ? '_Disabled' : ''}.svg`}
               className="icons_arrow"
               alt="Chevron Right"
             />

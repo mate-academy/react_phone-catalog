@@ -293,8 +293,8 @@ export default function ProductPage() {
                     className="heart-icon"
                     src={
                       liked
-                        ? `/images/icons/Favourites_Filled_(Heart_Like).svg`
-                        : `/images/icons/Favourites_(Heart_Like).svg`
+                        ? `./images/icons/Favourites_Filled_(Heart_Like).svg`
+                        : `./images/icons/Favourites_(Heart_Like).svg`
                     }
                     alt="Favorite"
                   />
