@@ -9,7 +9,11 @@
   box-sizing: border-box;
 }
 
-body::-webkit-scrollbar { width: 0 !important }
+
+
+body::-webkit-scrollbar {
+  width: 0 !important;
+}
 
 @font-face {
   font-family: 'Mont';
@@ -32,15 +36,18 @@ body::-webkit-scrollbar { width: 0 !important }
   font-style: normal;
 }
 
+body {
+  font-family: 'Mont', sans-serif;
+}
+
 .product__catalog[hidden] {
   display: none;
 }
 
-
 .navbar {
   max-width: 1440px;
   margin-inline: auto;
-    padding-inline: 0;
+  padding-inline: 0;
   font-weight: 800;
   font-size: 12px;
   height: 64px;
@@ -65,8 +72,8 @@ body::-webkit-scrollbar { width: 0 !important }
 
   &__badge {
     position: absolute;
-    top: -4px;    /* трохи підняти вгору */
-    right: -4px;  /* трохи зсунути вправо */
+    top: -4px; /* трохи підняти вгору */
+    right: -4px; /* трохи зсунути вправо */
     width: 14px;
     height: 14px;
     background-color: #4219d0;
@@ -76,7 +83,6 @@ body::-webkit-scrollbar { width: 0 !important }
     border: 1px solid white; /* обводка, щоб було чіткіше */
     pointer-events: none; /* щоб не заважав клікам */
   }
-
 
   &__item {
     padding-left: 64px;
@@ -120,7 +126,6 @@ body::-webkit-scrollbar { width: 0 !important }
     color: #0f0f11;
   }
 
-
   .has-background-grey-lighter::after {
     content: '';
     display: block;
@@ -132,7 +137,7 @@ body::-webkit-scrollbar { width: 0 !important }
     background-color: #0f0f11;
   }
 
-    &__icon__cart,
+  &__icon__cart,
   &__icon__like {
     display: block;
     width: 16px;
@@ -144,16 +149,16 @@ body::-webkit-scrollbar { width: 0 !important }
       transform 0.3s ease-in-out;
     position: relative;
 
-  //   &.active::after {
-  //   content: '';
-  //   position: absolute;
-  //   bottom: -24px; // регулюй по висоті
-  //   left: 0;
-  //   width: 100%;
-  //   height: 3px;
-  //   background-color: black;
-  //   border-radius: 2px;
-  // }
+    //   &.active::after {
+    //   content: '';
+    //   position: absolute;
+    //   bottom: -24px; // регулюй по висоті
+    //   left: 0;
+    //   width: 100%;
+    //   height: 3px;
+    //   background-color: black;
+    //   border-radius: 2px;
+    // }
   }
 
   &__icon__cart {
@@ -177,22 +182,21 @@ body::-webkit-scrollbar { width: 0 !important }
 
     position: relative; // <-- Додано
 
-  &:first-child {
-    border-right: 1px solid #e2e6e9;
-  }
+    &:first-child {
+      border-right: 1px solid #e2e6e9;
+    }
 
- &.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: black;
-    border-radius: 2px;
+    &.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: black;
+      border-radius: 2px;
+    }
   }
-  }
-
 
   &__right {
     margin-left: auto;
@@ -218,8 +222,6 @@ body::-webkit-scrollbar { width: 0 !important }
     border-bottom: 1px solid #e2e6e9;
     box-sizing: border-box;
     background-color: white;
-
-
 
     &__brand {
       display: flex;
@@ -345,7 +347,6 @@ body::-webkit-scrollbar { width: 0 !important }
       align-items: center;
     }
 
-
     &__item,
     &__link,
     &__icon__cart,
@@ -439,7 +440,7 @@ body::-webkit-scrollbar { width: 0 !important }
   flex-direction: column;
   height: 100vh;
   // align-items: center;
-   overflow: hidden;
+  overflow: hidden;
 
   &__brand {
     display: flex;
@@ -451,6 +452,10 @@ body::-webkit-scrollbar { width: 0 !important }
 
   &__item:first-child {
     padding-top: 32px;
+  }
+
+  &__item a {
+    font-size: 12px;
   }
 
   &__item {
@@ -527,7 +532,21 @@ body::-webkit-scrollbar { width: 0 !important }
     width: 100%;
     height: 64px;
   }
+
+  &--open {
+    height: calc(100vh - 48px);
+  }
 }
+
+body.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+
+
+
 
 .App {
   display: flex;
@@ -552,7 +571,7 @@ body::-webkit-scrollbar { width: 0 !important }
   font-weight: 800;
   line-height: 11px;
   padding-left: 24px;
-  font-family: "Mont";
+  font-family: 'Mont';
   z-index: 100;
   border-top: 1px solid #e2e6e9;
   background-color: white;
@@ -609,7 +628,7 @@ body::-webkit-scrollbar { width: 0 !important }
     align-self: center;
   }
   .footer__button::before {
-    content: "";
+    content: '';
     display: block;
     width: 5.33px;
     height: 5.33px;

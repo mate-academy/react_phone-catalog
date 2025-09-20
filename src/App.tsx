@@ -31,6 +31,14 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
+    if (clickOnLogoBar) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [clickOnLogoBar]);
+
+  useEffect(() => {
     localStorage.setItem('clickOnLogoBar', JSON.stringify(clickOnLogoBar));
   }, [clickOnLogoBar]);
 
