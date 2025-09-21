@@ -28,17 +28,22 @@ $desktop-min-width: 1200px;
     align-items: center;
 
     img {
-      background-color: #1b1e33;
+      background-color: #000000;
       width: 320px;
-      height: auto;
+      height: 320px;
       object-fit: contain;
 
       @media (min-width: 640px) {
+        background-color: #1b1e33;
+        aspect-ratio: 8 / 2;
+        height: 189px;
         width: 100%;
       }
 
       @media (min-width: 1200px) {
+        aspect-ratio: auto;
         width: 1040px;
+        height: auto;
       }
     }
   }
