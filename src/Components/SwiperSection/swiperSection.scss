@@ -5,7 +5,6 @@ $desktop-min-width: 1200px;
   padding-left: 16px;
   margin-bottom: 56px;
 
-
   @media (min-width: $tablet-min-width) {
     margin-bottom: 64px;
     padding-left: 0px;
@@ -43,18 +42,8 @@ $desktop-min-width: 1200px;
     display: flex;
 
     .swiper-slide {
-      width: 212px;
-      height: 439px;
-
-      @media (min-width: $tablet-min-width) {
-        width: 237px;
-        height: 512px;
-      }
-
-      @media (min-width: $desktop-min-width) {
-        width: 272px;
-        height: 506px;
-      }
+      width: 272px;
+      height: 506px;
     }
   }
 }

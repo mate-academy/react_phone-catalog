@@ -4,7 +4,7 @@ import 'swiper/css/navigation';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
-import { ProductCard } from '../ProductCard';
+import { SwiperProductCard } from '../SwiperProductCard';
 import './swiperSection.scss';
 import { Product } from '../../types/Product';
 
@@ -52,7 +52,7 @@ export const SwiperSection: React.FC<Props> = ({ title, products }) => {
       >
         {products.map(product => (
           <SwiperSlide key={product.id}>
-            <ProductCard product={product} />
+            <SwiperProductCard product={product} />
           </SwiperSlide>
         ))}
       </Swiper>
