@@ -82,7 +82,7 @@ export const ShoppingCart = () => {
                     </div>
                     <div className="shopping-foto">
                       <img
-                        src={item.image}
+                        src={`./${item.image}`}
                         alt={item.name}
                         className="shopping-cart-foto"
                       />
