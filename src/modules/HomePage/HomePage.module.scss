@@ -38,8 +38,7 @@
   @include respond-to(tablet) {
     padding-inline: 24px;
   }
-
-  @media (width: 1200px) {
+  @include respond-to(desktop) {
     padding-inline: 32px;
   }
 

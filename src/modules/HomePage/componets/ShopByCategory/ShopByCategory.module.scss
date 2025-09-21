@@ -12,28 +12,19 @@
   }
 }
 
+.categories {}
+
 .category {
   display: flex;
   flex-direction: column;
-  width: 368px;
-  height: 443px;
-
-  @include respond-to(tablet) {
-    width: 187px;
-    height: 262px;
-  }
-
-  @include respond-to(phone) {
-    width: 288px;
-    height: 363px;
-  }
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 .categories_photo_container_1,
 .categories_photo_container_2,
 .categories_photo_container_3 {
   position: relative;
-  width: 100%;
   height: 100%;
   overflow: hidden;
 }
