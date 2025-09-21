@@ -94,7 +94,7 @@
 
     &__class {
       margin-bottom: 0;
-      width: 29vw;
+      width: 32%;
 
       &--image {
         width: 100%;
@@ -123,6 +123,20 @@
         color: #89939A;
 
         margin-top: 4px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .category {
+    &__class {
+      &--image {
+        width: 368px;
+
+        &-img {
+          width: 368px;
+        }
       }
     }
   }

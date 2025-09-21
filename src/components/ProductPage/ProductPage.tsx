@@ -60,17 +60,26 @@ export const ProductPage = () => {
     switch (fullProduct.category) {
       case 'phones':
         newProduct = phones.find(
-          p => p.namespaceId === details.namespaceId && p.color === newColor,
+          p =>
+            p.namespaceId === details.namespaceId &&
+            p.color === newColor &&
+            p.capacity === details.capacity,
         );
         break;
       case 'tablets':
         newProduct = tablets.find(
-          p => p.namespaceId === details.namespaceId && p.color === newColor,
+          p =>
+            p.namespaceId === details.namespaceId &&
+            p.color === newColor &&
+            p.capacity === details.capacity,
         );
         break;
       case 'accessories':
         newProduct = accessories.find(
-          p => p.namespaceId === details.namespaceId && p.color === newColor,
+          p =>
+            p.namespaceId === details.namespaceId &&
+            p.color === newColor &&
+            p.capacity === details.capacity,
         );
         break;
     }
@@ -91,19 +100,25 @@ export const ProductPage = () => {
       case 'phones':
         newProduct = phones.find(
           p =>
-            p.namespaceId === details.namespaceId && p.capacity === newCapacity,
+            p.namespaceId === details.namespaceId &&
+            p.capacity === newCapacity &&
+            p.color === details.color,
         );
         break;
       case 'tablets':
         newProduct = tablets.find(
           p =>
-            p.namespaceId === details.namespaceId && p.capacity === newCapacity,
+            p.namespaceId === details.namespaceId &&
+            p.capacity === newCapacity &&
+            p.color === details.color,
         );
         break;
       case 'accessories':
         newProduct = accessories.find(
           p =>
-            p.namespaceId === details.namespaceId && p.capacity === newCapacity,
+            p.namespaceId === details.namespaceId &&
+            p.capacity === newCapacity &&
+            p.color === details.color,
         );
         break;
     }

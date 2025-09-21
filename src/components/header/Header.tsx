@@ -37,7 +37,7 @@ export const Header: React.FC<Props> = ({ setMenuOpen }) => {
             to="/"
             className={({ isActive }) => {
               return isActive
-                ? 'header__nav--item is-active'
+                ? 'header__nav--item header__nav--item-is-active'
                 : 'header__nav--item';
             }}
             onClick={backToTop}
@@ -48,7 +48,7 @@ export const Header: React.FC<Props> = ({ setMenuOpen }) => {
             to="/phones"
             className={({ isActive }) => {
               return isActive
-                ? 'header__nav--item is-active'
+                ? 'header__nav--item header__nav--item-is-active'
                 : 'header__nav--item';
             }}
             onClick={backToTop}
@@ -59,7 +59,7 @@ export const Header: React.FC<Props> = ({ setMenuOpen }) => {
             to="/tablets"
             className={({ isActive }) => {
               return isActive
-                ? 'header__nav--item is-active'
+                ? 'header__nav--item header__nav--item-is-active'
                 : 'header__nav--item';
             }}
             onClick={backToTop}
@@ -70,7 +70,7 @@ export const Header: React.FC<Props> = ({ setMenuOpen }) => {
             to="/accessories"
             className={({ isActive }) => {
               return isActive
-                ? 'header__nav--item is-active'
+                ? 'header__nav--item header__nav--item-is-active'
                 : 'header__nav--item';
             }}
             onClick={backToTop}
@@ -114,7 +114,7 @@ export const Header: React.FC<Props> = ({ setMenuOpen }) => {
       </div>
       <div className="header__burger">
         <img
-          src="/img/burger.png"
+          src={getAssetUrl('/img/burger.png')}
           alt="burger"
           className="header__burger--img"
           onClick={handleMenu}

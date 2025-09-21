@@ -13,6 +13,10 @@ html, body {
 }
 
 .page {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1136px;
+  box-sizing: border-box;
   padding: 0 16px;
   padding-top: 48px;
   flex: 1;
@@ -27,7 +31,6 @@ html, body {
 
 @media (min-width: 1200px) {
   .page {
-    padding: 0 32px;
-    padding-top: 64px;
+    padding: 64px 0 0;
   }
 }
