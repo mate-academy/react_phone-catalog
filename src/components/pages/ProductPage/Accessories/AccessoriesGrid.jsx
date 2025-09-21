@@ -78,7 +78,7 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
       disabled={currentPage === totalPages}
     >
       <img
-        src=".images/icons/Chevron_Arrow_Right.svg"
+        src="./images/icons/Chevron_Arrow_Right.svg"
         className="icons_arrow_page"
         alt="Chevron Right"
       />
