@@ -1,3 +1,5 @@
+import { ProductList } from '../ProductList';
+
 export const AccessoriesPage = () => {
-  return <h1>AccessoriesPage</h1>;
+  return <ProductList category="accessories" title="Accessories" />;
 };

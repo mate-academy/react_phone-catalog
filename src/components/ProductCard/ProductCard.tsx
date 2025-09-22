@@ -1,20 +1,33 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
   showOldPrice: boolean;
+  category: 'phones' | 'tablets' | 'accessories';
 };
 
-export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  showOldPrice,
+  category,
+}) => {
   return (
     <div className={styles['product-card']}>
-      <img
-        className={styles['product-card__img']}
-        src={`/${product.image}`}
-        alt="Product image"
-      />
-      <h4 className={styles['product-card__title']}>{product.name}</h4>
+      <Link to={`/${category}/${product.itemId}`}>
+        <img
+          className={styles['product-card__img']}
+          src={`/${product.image}`}
+          alt="Product image"
+        />
+      </Link>
+      <Link
+        to={`/${category}/${product.itemId}`}
+        className={styles['product-card__link-title']}
+      >
+        <h4 className={styles['product-card__title']}>{product.name}</h4>
+      </Link>
       <div className={styles['product-card__price']}>
         <div className={styles['product-card__new-price']}>
           ${product.price}

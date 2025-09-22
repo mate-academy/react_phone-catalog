@@ -24,7 +24,7 @@ export const Categories = () => {
                   Mobile phones
                 </h4>
               </Link>
-              <p className={styles['categories__item-text']}>95 models</p>
+              <p className={styles['categories__item-text']}>124 models</p>
             </div>
           </div>
           <div className={styles.categories__item}>
@@ -42,7 +42,7 @@ export const Categories = () => {
               >
                 <h4 className={styles['categories__item-title']}>Tablets</h4>
               </Link>
-              <p className={styles['categories__item-text']}>24 models</p>
+              <p className={styles['categories__item-text']}>36 models</p>
             </div>
           </div>
           <div className={styles.categories__item}>
@@ -65,7 +65,7 @@ export const Categories = () => {
                   Accessories
                 </h4>
               </Link>
-              <p className={styles['categories__item-text']}>100 models</p>
+              <p className={styles['categories__item-text']}>34 models</p>
             </div>
           </div>
         </div>

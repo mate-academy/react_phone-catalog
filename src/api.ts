@@ -14,3 +14,12 @@ export async function getProducts(): Promise<Product[]> {
     .then(() => fetch(API_URL))
     .then(response => response.json());
 }
+
+export async function getProductById(
+  category: 'phones' | 'tablets' | 'accessories',
+  id?: string,
+) {
+  return wait(100)
+    .then(() => fetch(`/api/${category}/${id}`))
+    .then(response => response.json());
+}

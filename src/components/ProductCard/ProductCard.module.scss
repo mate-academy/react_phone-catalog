@@ -22,6 +22,10 @@
     margin: 0 auto 16px;
   }
 
+  &__link-title {
+    color: $main-color
+  }
+
   &__title {
     @extend %mont-600;
     height: 42px;
