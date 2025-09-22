@@ -4,12 +4,14 @@ type FavoritesContextType = {
   favoritesIds: string[];
   setFavoritesIds: (favoritesIds: string[]) => void;
   addFavoriteId: (id: string) => void;
+  totalItemsOfFavorites: number;
 };
 
 export const FavoritesContext = createContext<FavoritesContextType>({
   favoritesIds: [],
   setFavoritesIds: () => {},
   addFavoriteId: () => {},
+  totalItemsOfFavorites: 0,
 });
 
 type Props = {
@@ -39,6 +41,7 @@ export const FavoritesProvider: React.FC<Props> = ({ children }) => {
 
       return setFavoritesIds([...favoritesIds, id]);
     },
+    totalItemsOfFavorites: favoritesIds.length,
   };
 
   return (

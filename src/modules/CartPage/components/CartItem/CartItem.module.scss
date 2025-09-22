@@ -112,14 +112,14 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    width: 128px;
+    max-width: 128px;
 
     @include on-tablet {
-      width: 176px;
+      max-width: 176px;
     }
 
     @include on-desktop {
-      width: 336px;
+      max-width: 336px;
     }
   }
 

@@ -44,8 +44,18 @@
     }
 
     &__logo {
-      width: 89px;
-      height: 32px;
+      width: 64px;
+      height: 22px;
+      transition: all $effect-duration;
+
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
   }
@@ -53,6 +63,11 @@
   &__icon {
     width: 16px;
     height: 16px;
+
+    &__logo {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__menu {

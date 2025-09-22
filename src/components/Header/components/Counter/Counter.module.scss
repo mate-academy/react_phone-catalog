@@ -10,6 +10,7 @@
     position: absolute;
     width: 15px;
     height: 15px;
+    z-index: 2;
 
     background-color: $main-red;
     border: 1px solid $main-white;
@@ -38,5 +39,10 @@
   &__icon {
     width: 16px;
     height: 16px;
+    transition: all $effect-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }

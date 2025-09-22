@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
 
   const { totalItemsOfCart } = useContext(CartContext);
 
-  const { favoritesIds } = useContext(FavoritesContext);
+  const { totalItemsOfFavorites } = useContext(FavoritesContext);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
         <div className={header['header__top-bar']}>
           <Link to="/" className={header.header__link__logo}>
             <img
-              src="img/icons/logo.png"
+              src="img/icons/Logo-main.png"
               alt="Nice Gadgets logo"
               className={header.header__icon__logo}
             />
@@ -118,7 +118,7 @@ export const Header: React.FC = () => {
               >
                 <Counter
                   icon="img/icons/heart-like.svg"
-                  count={totalItemsOfCart}
+                  count={totalItemsOfFavorites}
                   alt="Favourites icon"
                 />
               </Link>
@@ -147,7 +147,7 @@ export const Header: React.FC = () => {
           <div className={header.menu__nav__container}>
             <Link to="/" className={header.header__link__logo}>
               <img
-                src="img/icons/logo.png"
+                src="img/icons/Logo-main.png"
                 alt="Nice Gadgets logo"
                 className={header.header__icon__logo}
               />
@@ -205,7 +205,7 @@ export const Header: React.FC = () => {
                 <Link to="/favorites" className={header.menu__icons__link}>
                   <Counter
                     icon="img/icons/heart-like.svg"
-                    count={favoritesIds.length}
+                    count={totalItemsOfFavorites}
                     alt="Favourites icon"
                   />
                 </Link>

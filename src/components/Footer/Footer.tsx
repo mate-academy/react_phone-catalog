@@ -13,7 +13,11 @@ export const Footer: React.FC = () => {
     <footer className={footer.footer}>
       <div className={footer.footer__container}>
         <a href="/" className={footer.footer__logo}>
-          <img src="img/icons/logo.png" alt="Nice Gadgets logo" />
+          <img
+            src="img/icons/Logo-main.png"
+            alt="Nice Gadgets logo"
+            className={footer.footer__logo__image}
+          />
         </a>
         <ul className={footer.footer__list}>
           <li className={footer.footer__item}>
