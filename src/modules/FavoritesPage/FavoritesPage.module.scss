@@ -42,6 +42,7 @@
 
   .empty {
     display: flex;
+    grid-column: 1 / -1;
     flex: 1;
     align-items: center;
     justify-content: center;
@@ -56,7 +57,6 @@
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .favoritesPage {
-
     @include grid-12($gap: 16px);
 
     gap: 0;
@@ -70,18 +70,16 @@
 
 @media (max-width: 639px) {
   .favoritesPage {
-
     @include grid-4($gap: 16px);
 
     gap: 0;
     max-width: 320px;
 
-       .favoritesGrid {
+    .favoritesGrid {
       margin-bottom: 56px;
     }
 
     .title {
-
       @include mobile-h1-style;
 
       max-height: 41px;
