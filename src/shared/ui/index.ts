@@ -1,3 +1,7 @@
-export { Spinner } from './spinner';
-export { ErrorElement } from './errorElement';
+export {
+  Spinner,
+  ErrorElement,
+  createLoaderMap,
+  loaderTextMap,
+} from './loadingUI';
 export { Breadcrumbs } from './breadcrumbs';

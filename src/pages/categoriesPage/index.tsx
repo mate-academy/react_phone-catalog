@@ -3,7 +3,7 @@ import styles from './styles/categoriesPage.module.scss';
 import { Dropdown, CataloguePagination, CatalogueGrid } from './ui';
 import { useCatalogue, filter, pPage } from './model';
 import { Breadcrumbs } from '@ui/index';
-import { LoadingStates } from '@features/index';
+import { Status } from '@features/index';
 
 type Props = {
   category: Category;
@@ -11,8 +11,8 @@ type Props = {
 
 export const CategoriesPage = ({ category }: Props) => {
   const links = {
-    name: category as string,
-    to: category as string,
+    name: category,
+    to: category,
   };
   const { data, set, currentOrder, currentPerPage, length } = useCatalogue({
     category,
@@ -26,9 +26,7 @@ export const CategoriesPage = ({ category }: Props) => {
 
       <h1 className={styles.h1}>{category}</h1>
       <span className={styles.models}>
-        {length === LoadingStates.LOADING
-          ? LoadingStates.LOADING
-          : `${length} models`}
+        {length === Status.LOADING ? Status.LOADING : `${length} models`}
       </span>
       <div className={styles.wrapper}>
         <Dropdown data={filter} setFilter={set.order} active={currentOrder} />

@@ -1,25 +1,43 @@
-import { get } from '@shared/api';
+import styles from './styles/productPage.module.scss';
+import { Breadcrumbs, loaderTextMap } from '@ui/index';
+import { ArrowIcon } from '@shared/icons';
+import { Status } from '@features/index';
+import { useProductPage } from './model/useProductPage';
 import { Product } from '@shared/types';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 export const ProductPage = () => {
-  const { productId } = useParams<{ productId: string }>();
-  const [item, setItem] = useState<Product | null>(null);
+  const item = useProductPage();
 
-  const load = async () => {
-    try {
-      const res = await get.product(productId as string);
-
-      setItem(res);
-    } catch (e) {
-      setItem(null);
-    }
-  };
-
-  useEffect(() => {
-    load();
-  }, []);
-
-  return <div>{item ? item.id : ''}</div>;
+  return (
+    <section className={styles.container}>
+      <nav aria-label="breadcrumb" className={styles.navigation}>
+        {typeof item !== 'string' ? (
+          <Breadcrumbs
+            links={[
+              {
+                name: item.category,
+                to: item.category,
+              },
+              {
+                name: item.name,
+                to: `/products/${item.id}`,
+              },
+            ]}
+          />
+        ) : (
+          item
+        )}
+      </nav>
+      <button className={styles['return-button']}>
+        <ArrowIcon direction="left" />
+        Back
+      </button>
+      <h1 className={styles.h1}>
+        {typeof item === 'string' &&
+        (item === Status.LOADING || item === Status.ERROR)
+          ? loaderTextMap[item]
+          : (item as Product).name}
+      </h1>
+    </section>
+  );
 };

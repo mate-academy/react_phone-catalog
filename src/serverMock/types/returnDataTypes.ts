@@ -58,7 +58,7 @@ interface ErrorObject {
 
 interface ValidResponse {
   status: true;
-  items: BaseProduct[] | Product[] | BannerData[] | number | null;
+  items: BaseProduct[] | Product[] | BannerData[] | number;
   currentPage?: number;
   pages?: number;
 }

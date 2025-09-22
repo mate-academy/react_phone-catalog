@@ -20,12 +20,11 @@ async function getCatalogueItems(
   let initialArray = (await apiFetch(ApiEndpoint.PRODUCTS)) as BaseProduct[];
 
   const response = {
-    items: [] as BaseProduct[] | null,
+    items: [] as BaseProduct[],
     currentPage: page as number,
     pages: 1,
   };
 
-  // filtering by item category
   if (itemType !== ServerCategory.ALL) {
     initialArray = initialArray.filter(
       (el: BaseProduct) => el.category === itemType,
@@ -72,10 +71,6 @@ async function getCatalogueItems(
     const end = start + +(perPage as Exclude<ItemsOnPage, ItemsOnPage.ALL>);
 
     response.items = initialArray.slice(start, end);
-  }
-
-  if (response.items.length === 0) {
-    response.items = null;
   }
 
   return response;

@@ -1,7 +1,23 @@
-import { Category, get } from '@shared/api/';
+import { Category, get, ItemsAmount, Order } from '@shared/api/';
 import { useCallback, useEffect } from 'react';
-import { DATA_LOAD } from './config';
 import { useLoadItems } from '@features/index';
+
+const DATA_LOAD = {
+  NEW: () =>
+    get.catalogue({
+      itemType: Category.ALL,
+      sort: Order.AGE,
+      perPage: ItemsAmount.ALL,
+      page: 1,
+    }),
+  HOT: () =>
+    get.catalogue({
+      itemType: Category.ALL,
+      sort: Order.FULL_PRICE_DECS_PROMO,
+      perPage: ItemsAmount.ALL,
+      page: 1,
+    }),
+};
 
 export const useHomePage = () => {
   const products = {

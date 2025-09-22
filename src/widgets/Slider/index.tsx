@@ -1,44 +1,52 @@
-import { BannerData, CatalogueProduct } from '@shared/types';
+import { BannerData } from '@shared/types';
 import { SliderDataProvider } from './model/context/sliderContext';
 import { configs } from './model';
-import { LoadingStates } from '@features/index';
+import { Status } from '@features/index';
+import { CatalogueData } from '@shared/api/types';
+import { CatalogueSlider, HeroSlider } from './ui';
 
 type HeroSliderProps = {
   mode: 'hero';
-  data: BannerData[] | LoadingStates;
+  data: BannerData[] | Status;
   title: '';
 };
 
 type CatalogueSliderProps = {
   mode: 'catalogue';
-  data: CatalogueProduct[] | null | LoadingStates;
+  data: CatalogueData | Status;
   title: string;
 };
 
 type SliderProps = HeroSliderProps | CatalogueSliderProps;
 
 export const Slider = ({ mode, data, title }: SliderProps) => {
-  const { element: Element, skeleton: Skeleton, err, startIdx } = configs[mode];
+  const { skeleton: Skeleton, startIdx } = configs[mode];
 
-  const nullCaseError = 'Oops... There is no items here yet...';
+  if (typeof data === 'string') {
+    return <Skeleton data={data} />;
+  }
 
-  switch (data) {
-    case LoadingStates.ERROR:
-      return <Skeleton error={err} />;
-    case null:
-      return <Skeleton error={nullCaseError} />;
-    case LoadingStates.LOADING:
-      return <Skeleton />;
-    default:
+  switch (mode) {
+    case 'hero':
       return (
         <SliderDataProvider startIdx={startIdx}>
-          <Element
-            data={data}
-            startIdx={startIdx}
-            amount={(data as CatalogueProduct[] | BannerData[]).length}
-            {...(title && { title })}
-          />
+          <HeroSlider data={data} startIdx={startIdx} amount={data.length} />
         </SliderDataProvider>
       );
+    case 'catalogue':
+      if (data.items === null) {
+        return <Skeleton data={Status.ERROR} />;
+      } else {
+        return (
+          <SliderDataProvider startIdx={startIdx}>
+            <CatalogueSlider
+              data={data.items}
+              startIdx={startIdx}
+              amount={data.items && data.items.length}
+              title={title}
+            />
+          </SliderDataProvider>
+        );
+      }
   }
 };

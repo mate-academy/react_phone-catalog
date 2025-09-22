@@ -19,7 +19,7 @@ export const Breadcrumbs = ({ links }: Props) => {
         </Link>
       </li>
       {links.map(el => (
-        <li key={el.to}>
+        <li key={el.name}>
           <ArrowIcon direction="right" />
           <Link to={`/${el.to}`}>{el.name}</Link>
         </li>

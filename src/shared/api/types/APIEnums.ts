@@ -27,4 +27,9 @@ enum Order {
   FULL_PRICE_DECS_PROMO = 'hotPrice',
 }
 
-export { Category, ItemsAmount, Request, Order };
+enum ResponseStatus {
+  ERROR = 'error',
+  SUCCESS = 'success',
+}
+
+export { Category, ItemsAmount, Request, Order, ResponseStatus };

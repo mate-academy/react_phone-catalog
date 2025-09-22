@@ -7,16 +7,12 @@ import {
   ValidProdParams,
 } from '@server/types';
 
-async function getProduct(params: ValidProdParams): Promise<Product | null> {
+async function getProduct(params: ValidProdParams): Promise<Product> {
   const { itemId } = params;
 
   const product = ((await apiFetch(ApiEndpoint.ITEMS)) as Product[]).filter(
     (el: Product) => el.id === itemId,
   );
-
-  if (product.length === 0) {
-    return null;
-  }
 
   return product[0];
 }

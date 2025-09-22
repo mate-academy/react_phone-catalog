@@ -3,6 +3,8 @@ import { categories, useHomePage } from './model';
 import styles from './styles/HomePage.module.scss';
 import { Slider } from '@widgets/slider';
 import { CategoryElement } from './ui';
+import { BannerData } from '@server/types';
+import { CatalogueData } from '@shared/api/types';
 
 export const HomePage = () => {
   const { amount, newItems, promoItems, banners } = useHomePage();
@@ -14,12 +16,12 @@ export const HomePage = () => {
         <span className={styles.welcome__text}>
           Welcome to Nice Gadgets store!
         </span>
-        <Slider mode="hero" data={banners} title="" />
+        <Slider mode="hero" data={banners as BannerData[]} title="" />
       </div>
       <div className={styles['home-catalogue']}>
         <Slider
           mode="catalogue"
-          data={typeof newItems === 'string' ? newItems : newItems.items}
+          data={newItems as CatalogueData}
           title="Brand new Models"
         />
         <section
@@ -31,13 +33,13 @@ export const HomePage = () => {
             <CategoryElement
               key={el.id}
               category={el}
-              amount={amount[el.link].items as string}
+              amount={amount[el.link].items}
             />
           ))}
         </section>
         <Slider
           mode="catalogue"
-          data={typeof promoItems === 'string' ? promoItems : promoItems.items}
+          data={promoItems as CatalogueData}
           title="Hot prices"
         />
       </div>

@@ -1,10 +1,9 @@
+import { LoadingStates } from '@features/index';
 import { visualConfig } from '../../model';
 import styles from '../../styles/catalogueSlider.module.scss';
-import { SkeletonProps } from '../shared';
-import { ErrorElement } from '@ui/errorElement';
-import { Spinner } from '@ui/spinner';
+import { createLoaderMap, loaderTextMap } from '@ui/index';
 
-export const CatalogueSkeleton = ({ error }: SkeletonProps) => {
+export const CatalogueSkeleton = ({ data }: { data: LoadingStates }) => {
   const { animationSpeed, gap } = visualConfig;
 
   return (
@@ -27,11 +26,7 @@ export const CatalogueSkeleton = ({ error }: SkeletonProps) => {
             } as React.CSSProperties
           }
         ></div>
-        {error ? (
-          <ErrorElement message={error} className={styles.modal} />
-        ) : (
-          <Spinner className={styles.modal} />
-        )}
+        {createLoaderMap(loaderTextMap[data], styles.modal, styles.modal)[data]}
       </div>
     </section>
   );

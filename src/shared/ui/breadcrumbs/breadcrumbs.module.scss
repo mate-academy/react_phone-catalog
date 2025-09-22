@@ -22,6 +22,7 @@
     width: 16px;
     height: 16px;
     margin-right: 8px;
+    flex-shrink: 0;
   }
 
   > li > a {
@@ -33,6 +34,10 @@
   > :last-child  {
     > a {
       color: s.$c-grey-secondary;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: calc(100vw - 165px);
     }
     > svg > path {
       color: s.$c-icons;

@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import { HomePageCategory } from '../model';
 import styles from '../styles/category.module.scss';
 import { LoadingStates } from '@features/index';
+import { loaderTextMap } from '@ui/index';
 
 type Props = {
   category: HomePageCategory;
-  amount: string;
+  amount: LoadingStates | number;
 };
 
 export const CategoryElement = ({ category, amount }: Props) => (
@@ -24,9 +25,7 @@ export const CategoryElement = ({ category, amount }: Props) => (
     </Link>
     <h3 className={styles.category__name}>{category.name}</h3>
     <span className={styles.category__amount}>
-      {amount === LoadingStates.LOADING
-        ? LoadingStates.LOADING
-        : `${amount} models`}
+      {typeof amount === 'string' ? loaderTextMap[amount] : `${amount} models`}
     </span>
   </div>
 );

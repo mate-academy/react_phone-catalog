@@ -1,7 +1,7 @@
 import { Category, get } from '@shared/api';
 import { useEffect } from 'react';
 import { useUrlReducer } from './useUrlReducer';
-import { CatalogueConf, ItemsAmount, Order } from '@shared/api/typesAndEnums';
+import { CatalogueConf, ItemsAmount, Order } from '@shared/api/types';
 import { useLoadItems } from '@features/index';
 
 type Props = {
@@ -27,7 +27,7 @@ export const useCatalogue = ({ category }: Props) => {
 
   useEffect(() => {
     length.loadItems();
-  }, []);
+  }, [category]);
 
   const set = {
     order: (order: Order) => dispatch({ type: 'SET_SORT', payload: order }),

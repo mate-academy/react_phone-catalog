@@ -1,9 +1,9 @@
 import { ArrowIcon } from '@shared/icons';
 import styles from '../../styles/sliderMain.module.scss';
-import { ErrorElement, Spinner } from '@shared/ui';
-import { SkeletonProps } from '../shared';
+import { createLoaderMap, loaderTextMap } from '@shared/ui';
+import { LoadingStates } from '@features/index';
 
-export const HeroSkeleton = ({ error }: SkeletonProps) => {
+export const HeroSkeleton = ({ data }: { data: LoadingStates }) => {
   return (
     <section
       aria-label="loading slider"
@@ -44,11 +44,7 @@ export const HeroSkeleton = ({ error }: SkeletonProps) => {
           </button>
         ))}
       </div>
-      {error ? (
-        <ErrorElement message={error} className={styles.modal} />
-      ) : (
-        <Spinner className={styles.modal} />
-      )}
+      {createLoaderMap(loaderTextMap[data], styles.modal, styles.modal)[data]}
     </section>
   );
 };

@@ -4,4 +4,4 @@ export {
   GlobalProvider,
 } from './globalStore/appContext';
 export { useProdCard } from './productCard/useProdCard';
-export { useLoadItems, LoadingStates } from './itemsLoader/loadItems';
+export { useLoadItems, Status } from './itemsLoader/loadItems';
