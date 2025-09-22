@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import { useContext } from 'react';
 import { ThemeContext } from '../Themes';
-import './Switcher.module.scss';
+import styles from './Switcher.module.scss';
 
 export const Switcher = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -13,22 +14,21 @@ export const Switcher = () => {
   };
 
   return (
-    <div className="header-content">
-      <div className={`toggle-btn-section ${theme}`}>
-        <div className="toggle-checkbox">
+    <div className={styles.headerContent}>
+      <div className={`${styles.toggleBtnSection} ${styles[theme]}`}>
+        <div className={styles.toggleCheckbox}>
           <input
             type="checkbox"
-            className="toggle-btn__input"
+            id="theme-switch"
+            className={styles.toggleBtnInput}
             onChange={handleThemeChange}
             checked={theme === 'dark'}
-            aria-label="Choose theme between dark and light"
           />
-          <button
-            type="button"
-            className="toggle-btn__input-label"
-            onClick={handleThemeChange}
-            aria-label="Choose theme between dark and light"
-          ></button>
+          <label
+            htmlFor="theme-switch"
+            className={styles.toggleBtnLabel}
+            aria-label="Toggle theme"
+          />
         </div>
       </div>
     </div>

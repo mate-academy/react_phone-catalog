@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import styles from './NavBar.module.scss';
 import logo from '../../assets/icons/logo.svg';
 import logoLight from '../../assets/icons/logoLight.svg';
 import close from '../../assets/icons/close.svg';
@@ -37,25 +38,31 @@ export const NavBar: React.FC<NavBarProops> = ({
   }, 0);
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames('navbar-item', { 'navbar-item--active': isActive });
+    classNames(styles['navbar-item'], {
+      [styles['navbar-item--active']]: isActive,
+    });
 
   return (
-    <header className="header">
+    <header className={styles.header}>
       <nav
-        className="navbar is-fixed-top has-shadow"
+        className={classNames(
+          styles.navbar,
+          styles['is-fixed-top'],
+          styles['has-shadow'],
+        )}
         role="navigation"
         aria-label="main navigator"
       >
-        <div className="container">
-          <div className="wrapper__navbar">
-            <NavLink className="logo" to="/">
+        <div className={styles.container}>
+          <div className={styles.wrapper__navbar}>
+            <NavLink className={styles.logo} to="/">
               <img
                 src={isBasicDark ? logo : logoLight}
                 alt="logo"
-                className="logo__img"
+                className={styles.logo__img}
               />
             </NavLink>
-            <div className="navbar-brand">
+            <div className={styles['navbar-brand']}>
               <NavLink className={getLinkClass} to="/">
                 Home
               </NavLink>
@@ -71,29 +78,40 @@ export const NavBar: React.FC<NavBarProops> = ({
             </div>
           </div>
 
-          <Switcher />
-
-          <div className="buttons__menu">
-            <NavLink className="logo likes" to="/favourites">
+          <div className={styles.buttons__menu}>
+            <Switcher />
+            <NavLink
+              className={classNames(styles.logo, styles.likes)}
+              to="/favourites"
+            >
               <img src={isBasicDark ? heart : heartLight} alt="" />
               {favourites.length > 0 && (
-                <span className="badge2">{favourites.length}</span>
+                <span className={styles.badge2}>{favourites.length}</span>
               )}
             </NavLink>
 
-            <NavLink className="logo shopping" to="/cart">
+            <NavLink
+              className={classNames(styles.logo, styles.shopping)}
+              to="/cart"
+            >
               <img src={isBasicDark ? bag : bagLight} alt="shopping" />
               {cart.length > 0 && (
-                <span className="badge">{totalItemCount}</span>
+                <span className={styles.badge}>{totalItemCount}</span>
               )}
             </NavLink>
 
             {menuIsOpen ? (
-              <div className="logo menu close" onClick={setMenuIsClose}>
+              <div
+                className={classNames(styles.logo, styles.menu, styles.close)}
+                onClick={setMenuIsClose}
+              >
                 <img src={isBasicDark ? close : closeLight} alt="close" />
               </div>
             ) : (
-              <div className={`logo menu`} onClick={setMenuIsOpen}>
+              <div
+                className={classNames(styles.logo, styles.menu)}
+                onClick={setMenuIsOpen}
+              >
                 <img src={isBasicDark ? menu : menuLight} alt="menu" />
               </div>
             )}

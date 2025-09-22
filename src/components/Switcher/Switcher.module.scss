@@ -1,0 +1,151 @@
+// @use '../../utils/core' as *;
+
+// .header-content {
+//   display: flex;
+//   max-width: 1200px;
+//   .logo-section {
+//     height: 50px;
+//     text-decoration: none;
+//     display: flex;
+//     width: 430px;
+
+//     @include themy($theme) {
+//       color: themed('textColor');
+//     }
+
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     img {
+//       width: 50px;
+//       height: 50px;
+//     }
+//     span {
+//       display: inline-block;
+//       font-size: 30px;
+//       margin: auto;
+//     }
+//   }
+//   .toggle-btn-section {
+//     margin: auto 0 auto auto;
+//     .toggle-checkbox {
+//       justify-content: center;
+//       display: inline-flex;
+//       align-items: center;
+//       cursor: pointer;
+
+//       .toggle-btn__input {
+//         height: 0;
+//         width: 0;
+//         visibility: hidden;
+//       }
+
+//       .toggle-btn__input-label {
+//         cursor: pointer;
+//         text-indent: -9999px;
+//         width: 46px;
+//         height: 20px;
+//         display: block;
+//         border: none;
+//         border-radius: 23px;
+//         position: relative;
+//         margin-top: 2px;
+//         background-color: $color-white;
+
+//         @include themy($theme) {
+//           background-color: themed('colorBG');
+//         }
+
+//         &::after {
+//           content: '?';
+//           position: absolute;
+//           top: 3px;
+//           left: 3px;
+//           width: 14px;
+//           height: 14px;
+//           border-radius: 50%;
+//           transition: 0.3s;
+//           box-shadow: 0 5px 10px rgba(123, 76, 224, 0.4);
+//           background-color: $color-white;
+//         }
+//       }
+
+//       .toggle-btn__input:checked ~ .toggle-btn__input-label {
+//         background-color: $color-white;
+//         &::after {
+//           background: $color-white;
+//           left: calc(100% - 3px);
+//           transform: translateX(-100%);
+//         }
+//       }
+
+//       .toggle-btn__input:checked ~ .toggle-btn__theme {
+//         &::after {
+//           background: $color-white;
+//           left: calc(100% - 3px);
+//           transform: translateX(-100%);
+//         }
+//       }
+//     }
+//   }
+// }
+
+@use '../../utils/core' as *;
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  right: 0;
+}
+
+.toggleBtnSection {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid $color-surf-2;
+  border-radius: 24px;
+  padding: 2px 4px;
+
+  @include themy($theme) {
+    background: themed('colorHeaderFooter');
+  }
+}
+
+.toggleCheckbox {
+  display: flex;
+  align-items: center;
+
+  .toggleBtnInput {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+
+  .toggleBtnLabel {
+    cursor: pointer;
+    width: 36px;
+    height: 18px;
+    display: block;
+    border-radius: 23px;
+    position: relative;
+    background-color: $color-second;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      transition: 0.3s;
+      background-color: $color-white;
+    }
+  }
+
+  .toggleBtnInput:checked ~ .toggleBtnLabel::after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+  }
+}

@@ -108,7 +108,7 @@ export const BoughtCardItem: React.FC<Props> = ({
                 <img src={plus} alt="+" />
               </button>
             </div>
-              <p className={styles.bought__price}>{`$${totalPriceOne}`}</p>
+            <p className={styles.bought__price}>{`$${totalPriceOne}`}</p>
           </div>
         </div>
       </div>

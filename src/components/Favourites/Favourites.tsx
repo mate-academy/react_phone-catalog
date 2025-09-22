@@ -24,11 +24,11 @@ export const FavouritesPage = () => {
         className={styles.page__description}
       >{`${favourites.length} items`}</h1>
       {favourites.length === 0 ? (
-        <div className={styles.none}>
+        <div className="none">
           <img
-            src="img/page-not-found.png"
+            src="img/product-not-found.png"
             alt="Favourites have not been chosen"
-            className={styles.product__empty}
+            className="product__empty"
           />
         </div>
       ) : (

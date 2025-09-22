@@ -27,7 +27,7 @@
   }
 
   &__menu {
-    padding-top: 24px;
+    padding-top: 72px;
   }
 
   &__icons {
@@ -54,8 +54,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding-top: 24px;
+  gap: 24px;
+  padding-top: 12px;
   margin: auto 0;
 }
 
@@ -73,5 +73,33 @@
   &.active-link {
     color: $color-white;
     border-bottom: 2px solid $color-white;
+  }
+}
+
+.badge,
+.badge2 {
+  display: flex;
+  position: absolute;
+  top: 17px;
+  left: 80px;
+  background-color: #EB5757;
+  color: $color-white;
+  font-size: 10px;
+  font-weight: bold;
+  width: 14px;
+  height: 14px;
+  border: 1px solid $color-black;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+
+  @include onTablet {
+    top: 11px;
+    left: 35px;
+  }
+
+  @include onDesktop {
+    top: 17px;
+    left: 34px;
   }
 }

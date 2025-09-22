@@ -8,9 +8,9 @@ import { Outlet } from 'react-router-dom';
 
 export const App = () => {
   const getDefaultTheme = (): string => {
-    const locarStorageTheme = localStorage.getItem('theme');
+    const localStorageTheme = localStorage.getItem('theme');
 
-    return locarStorageTheme || 'dark';
+    return localStorageTheme || 'dark';
   };
 
   const [menuIsOpen, setMenuIsOpen] = useState(false);

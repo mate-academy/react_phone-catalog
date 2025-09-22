@@ -65,7 +65,7 @@ export const SideBar: React.FC<SidebarProps> = ({ openMenu, setOpenMenu }) => {
         >
           <img src={isBasicDark ? DarkFav : LightFav} alt="heart" />
           {favourites.length > 0 && (
-            <span className={styles['badge-2']}>{favourites.length}</span>
+            <span className={styles.badge2}>{favourites.length}</span>
           )}
         </NavLink>
         <NavLink className={styles.sidebar__bought} to="/cart">

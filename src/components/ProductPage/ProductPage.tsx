@@ -55,8 +55,8 @@ export const ProductPage = () => {
         </p>
       </div>
       {error && (
-        <div className={styles.error__container}>
-          <p className={styles.error__message}>
+        <div className="error__container">
+          <p className="error__message">
             Something went wrong... Please, check your connection and try later
           </p>
         </div>

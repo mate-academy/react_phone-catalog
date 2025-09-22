@@ -8,5 +8,91 @@ body {
   background-color: $color-black;
   overflow-x: hidden;
 
+  &.menu-open {
+    overflow: hidden;
+  }
+
   @include text-body;
+}
+
+.App {
+  @include themy($theme) {
+    background: themed('colorHeaderFooter');
+  }
+
+  display: flex;
+  flex-direction: column;
+  background-color: $color-black;
+  color: $color-white;
+  max-height: 100vh;
+}
+
+.theme-light {
+  background-color: $color-white;
+  color: $color-black;
+}
+
+.theme-dark {
+  background-color: $color-black;
+  color: $color-white;
+}
+
+.container__page {
+  background-color: $color-black;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include themy($theme) {
+    background: themed('colorHeaderFooter');
+  }
+}
+
+.section {
+  flex-grow: 1;
+}
+
+.error__img {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.error__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+}
+
+.error__message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  animation: fade-in 1s ease-in;
+
+  @include themy($theme) {
+    color: themed('colorText');
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.product__empty {
+  width: 40%;
+}
+
+.none {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

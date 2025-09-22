@@ -73,8 +73,8 @@ export const ProductInfo: React.FC = () => {
       </div>
 
       {error && (
-        <div className={styles.error__container}>
-          <p className={styles['error-message']}>
+        <div className="error__container">
+          <p className="error__message">
             Something is wrong... Try again later
           </p>
         </div>
@@ -111,95 +111,94 @@ export const ProductInfo: React.FC = () => {
                 />
               </div>
             </div>
-          </div>
+            <div className={styles.productInfo__wrapperDetails}>
+              <div className={styles.productInfo__colors}>
+                <h3 className={styles.productInfo__contentTitle}>
+                  Available colors
+                </h3>
+                {selectedPhone.colorAvaileble &&
+                  selectedPhone.colorAvaileble.map((color, i) => (
+                    <button
+                      key={i}
+                      className={classNames(styles.productInfo__color, {
+                        [styles.selected]: selectedColor === color,
+                      })}
+                      onClick={() => handleColorChange(color)}
+                      style={{ background: color }}
+                    ></button>
+                  ))}
+              </div>
+              <div className={styles.productInfo__line}></div>
 
-          <div className={styles.productInfo__wrapperDetails}>
-            <div className={styles.productInfo__colors}>
-              <h3 className={styles.productInfo__contentTitle}>
-                Available colors
-              </h3>
-              {selectedPhone.colorAvaileble &&
-                selectedPhone.colorAvaileble.map((color, i) => (
-                  <button
-                    key={i}
-                    className={classNames(styles.productInfo__color, {
-                      [styles.selected]: selectedColor === color,
-                    })}
-                    onClick={() => handleColorChange(color)}
-                    style={{ background: color }}
-                  ></button>
-                ))}
-            </div>
-            <div className={styles.productInfo__line}></div>
+              <div className={styles.productInfo__memory}>
+                <h3 className={styles.productInfo__contentTitle}>
+                  Select capacity
+                </h3>
+                {selectedPhone.capacityAvailable &&
+                  selectedPhone.capacityAvailable.map((memory, i) => (
+                    <button
+                      key={i}
+                      className={classNames(styles.productInfo__memories, {
+                        [styles.selected]: selectedMemory === memory,
+                      })}
+                      onClick={() => handleMemoryChange(memory)}
+                    ></button>
+                  ))}
+              </div>
+              <div className={styles.productInfo__line}></div>
 
-            <div className={styles.productInfo__memory}>
-              <h3 className={styles.productInfo__contentTitle}>
-                Select capacity
-              </h3>
-              {selectedPhone.capacityAvailable &&
-                selectedPhone.capacityAvailable.map((memory, i) => (
-                  <button
-                    key={i}
-                    className={classNames(styles.productInfo__memories, {
-                      [styles.selected]: selectedMemory === memory,
-                    })}
-                    onClick={() => handleMemoryChange(memory)}
-                  ></button>
-                ))}
-            </div>
-            <div className={styles.productInfo__line}></div>
-
-            <div className={styles.productInfo__price}>
-              <h3 className={styles.productInfo__priceNew}>
-                {`$ ${selectedPhone.priceRegular}`}
-              </h3>
-              <h3 className={styles.productInfo__preceIld}>
-                {`$ ${selectedPhone.priceDiscount}`}
-              </h3>
-            </div>
-
-            <div className={styles.productInfo__btn}>
-              <button
-                className={styles.productInfo__btnCart}
-                onClick={handleToggleCart}
-              >
-                {isAdded ? 'Remove' : 'Add to cart'}
-              </button>
-              <button
-                className={styles.productInfo__btnLike}
-                onClick={handleToggleFavourite}
-              >
-                <img src={isFav ? like : heart} alt="like" />
-              </button>
-            </div>
-
-            <div className={styles.productInfo__info}>
-              <div className={styles.productInfo__infoAll}>
-                <h3 className={styles.productInfo__screenTitle}>Screen</h3>
-                <h3 className={styles.productInfo__screenDescription}>
-                  {selectedPhone.screen}
+              <div className={styles.productInfo__price}>
+                <h3 className={styles.productInfo__priceNew}>
+                  {`$ ${selectedPhone.priceDiscount}`}
+                </h3>
+                <h3 className={styles.productInfo__priceOld}>
+                  {`$ ${selectedPhone.priceRegular}`}
                 </h3>
               </div>
 
-              <div className={styles.productInfo__infoAll}>
-                <h3 className={styles.productInfo__screenTitle}>Screen</h3>
-                <h3 className={styles.productInfo__screenDescription}>
-                  {selectedPhone.resolution}
-                </h3>
+              <div className={styles.productInfo__btn}>
+                <button
+                  className={styles.productInfo__btnCart}
+                  onClick={handleToggleCart}
+                >
+                  {isAdded ? 'Remove' : 'Add to cart'}
+                </button>
+                <button
+                  className={styles.productInfo__btnLike}
+                  onClick={handleToggleFavourite}
+                >
+                  <img src={isFav ? like : heart} alt="like" />
+                </button>
               </div>
 
-              <div className={styles.productInfo__infoAll}>
-                <h3 className={styles.productInfo__screenTitle}>Processor</h3>
-                <h3 className={styles.productInfo__screenDescription}>
-                  {selectedPhone.processor}
-                </h3>
-              </div>
+              <div className={styles.productInfo__info}>
+                <div className={styles.productInfo__infoAll}>
+                  <h3 className={styles.productInfo__screenTitle}>Screen</h3>
+                  <h3 className={styles.productInfo__screenDescription}>
+                    {selectedPhone.screen}
+                  </h3>
+                </div>
 
-              <div className={styles.productInfo__infoAll}>
-                <h3 className={styles.productInfo__screenTitle}>RAM</h3>
-                <h3 className={styles.productInfo__screenDescription}>
-                  {selectedPhone.ram}
-                </h3>
+                <div className={styles.productInfo__infoAll}>
+                  <h3 className={styles.productInfo__screenTitle}>Screen</h3>
+                  <h3 className={styles.productInfo__screenDescription}>
+                    {selectedPhone.resolution}
+                  </h3>
+                </div>
+
+                <div className={styles.productInfo__infoAll}>
+                  <h3 className={styles.productInfo__screenTitle}>Processor</h3>
+                  <h3 className={styles.productInfo__screenDescription}>
+                    {selectedPhone.processor}
+                  </h3>
+                </div>
+
+                <div className={styles.productInfo__infoAll}>
+                  <h3 className={styles.productInfo__screenTitle}>RAM</h3>
+                  <h3 className={styles.productInfo__screenDescription}>
+                    {selectedPhone.ram}
+                  </h3>
+                </div>
               </div>
             </div>
           </div>
@@ -256,7 +255,7 @@ export const ProductInfo: React.FC = () => {
           <img
             src="public/img/product-not-found.png"
             alt="not-found"
-            className={styles.error__img}
+            className="error__img"
           />
         </div>
       )}

@@ -5,7 +5,9 @@
 
   &__wrapper {
     display: block;
-    gap: 16px;
+    width: 100%;
+    gap: 40px;
+    align-items: flex-start;
 
     @include onTablet {
       display: flex;
@@ -18,8 +20,13 @@
     }
   }
 
+  &__wrapperDetails {
+    flex: 1;
+  }
+
   &__wrapperPhone {
     display: flex;
+    gap: 16px;
     align-items: flex-start;
   }
 
@@ -94,8 +101,35 @@
     margin-top: 24px;
   }
 
+  &__price {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    height: 41px;
+    margin-bottom: 16px;
+  }
+
+  &__priceOld {
+    color: $color-elem;
+    text-decoration: line-through;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+
+  &__priceNew {
+    @include h3;
+    @include themy($theme) {
+      color: themed('colorText');
+    }
+  }
+
   &__btn {
     display: flex;
+    gap: 8px;
   }
 
   &__btnCart {
@@ -128,7 +162,7 @@
   }
 
   &__info {
-    margin-top: 32px;
+    margin-top: 24px;
   }
 
   &__infoAll {
@@ -142,12 +176,14 @@
   &__techScreenTitle {
     @include text-body;
     color: $color-second;
+    margin: 8px 0 0 0;
   }
 
   &__screenDescription,
   &__techScreenDescription {
     @include text-body;
     color: $color-white;
+    margin: 8px 0 0 0;
 
     @include themy($theme) {
       color: themed('colorText');
@@ -160,7 +196,12 @@
     gap: 32px;
 
     @include onTablet {
+      margin-top: 56px;
       display: flex;
+    }
+
+    @include onDesktop {
+      margin-top: 80px;
     }
   }
 

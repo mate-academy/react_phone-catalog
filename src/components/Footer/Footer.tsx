@@ -36,7 +36,7 @@ export const Footer = () => {
 
             <NavLink
               className="footer-item"
-              to="https://github.com/kifont/react_phone-catalog"
+              to="www.linkedin.com/in/anton-kryzhanivskyi-938a462a8"
               target="_blank"
             >
               Contacts

@@ -73,11 +73,11 @@ export const CartPage = () => {
           </div>
         </div>
       ) : (
-        <div className={styles.none}>
+        <div className="none">
           <img
             src="img/cart-is-empty.png"
             alt="Your cart is empty"
-            className={styles.product__empty}
+            className="product__empty"
           />
         </div>
       )}
