@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: #0F1121;
+  width: 100%;
+  height: 64px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &__topBarLogo {
+    padding-inline: 24px;
+  }
+
+  &__Nav {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__Nav a{
+    color: #75767F;
+  }
+
+  &__Navleft {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+}

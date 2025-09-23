@@ -1,7 +1,11 @@
 import './App.scss';
+import { Header } from './Header/Header';
+import { BrowserRouter } from 'react-router-dom';
 
 export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
+  <BrowserRouter>
+    <div className="App">
+      <Header />
+    </div>
+  </BrowserRouter>
 );
