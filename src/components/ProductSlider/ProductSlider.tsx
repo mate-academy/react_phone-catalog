@@ -12,6 +12,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { NextArrow, PrevArrow } from '../ArrowsSlider';
 import { ShowOldPriceContext } from '../../context/OldPrice';
+import { CategoryType } from '../../types/Category';
 
 export const ProductSlider = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -69,12 +70,20 @@ export const ProductSlider = () => {
         {price
           ? discountProducts.map(product => (
               <div key={product.id}>
-                <ProductCard product={product} showOldPrice={price} />
+                <ProductCard
+                  product={product}
+                  showOldPrice={price}
+                  category={product.category as CategoryType}
+                />
               </div>
             ))
           : newestProducts.map(product => (
               <div key={product.id}>
-                <ProductCard product={product} showOldPrice={price} />
+                <ProductCard
+                  product={product}
+                  showOldPrice={price}
+                  category={product.category as CategoryType}
+                />
               </div>
             ))}
       </Slider>

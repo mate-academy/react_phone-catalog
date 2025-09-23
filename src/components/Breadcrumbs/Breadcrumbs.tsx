@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 
 type Props = {
   category: string;
+  productName: string | undefined;
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ category }) => {
+export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
   const getLink = () => {
     switch (category) {
       case 'phones':
@@ -20,6 +21,7 @@ export const Breadcrumbs: React.FC<Props> = ({ category }) => {
   };
 
   const { path, label } = getLink();
+  const { productId } = useParams();
 
   return (
     <div className={styles.breadcrumbs}>
@@ -38,6 +40,9 @@ export const Breadcrumbs: React.FC<Props> = ({ category }) => {
             {label}
           </Link>
         </li>
+        {productId && (
+          <li className={styles['breadcrumbs__item-id']}>{productName}</li>
+        )}
       </ul>
     </div>
   );

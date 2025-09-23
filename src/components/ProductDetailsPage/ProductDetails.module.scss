@@ -1,0 +1,34 @@
+@import '../../styles/utils';
+
+.product-details {
+
+  &__back-btn {
+    position: relative;
+    color: $main-color;
+    font-size: 12px;
+    line-height: 100%;
+    padding-left: 20px;
+    @include hover(color, $accent-color);
+
+    &::before {
+      position: absolute;
+      content: '';
+      background-image: url('/img/icons/arrow-left.svg');
+      width: 16px;
+      height: 16px;
+      left: 0;
+      top: 0;
+      transition: all .3s;
+    }
+
+    &:hover::before {
+      background-image: url('/img/icons/arrow-left-hover.svg');
+    }
+  }
+
+  &__img-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

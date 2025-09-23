@@ -12,7 +12,7 @@
     position: relative;
     padding-right: 32px;
 
-    &:not(:last-child)::after {
+    &:first-child::after {
       position: absolute;
       content: '';
       background-image: url('/img/icons/arrow-right-disabled.svg');
@@ -21,11 +21,36 @@
       top: 0;
       right: 8px;
     }
+
+    &:nth-child(2):not(:last-child) .breadcrumbs__link {
+      color: $main-color;
+    }
   }
 
   &__link {
     color: $nav-color;
     font-size: 12px;
     line-height: 100%;
+  }
+
+  &__item-id {
+    font-size: 12px;
+    line-height: 100%;
+    color: $nav-color;
+    position: relative;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      background-image: url('/img/icons/arrow-right-disabled.svg');
+      width: 16px;
+      height: 16px;
+      bottom: -2px;
+      left: -24px;
+    }
   }
 }

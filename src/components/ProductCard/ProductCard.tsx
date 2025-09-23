@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
+import { CategoryType } from '../../types/Category';
 
 type Props = {
   product: Product;
   showOldPrice: boolean;
-  category: 'phones' | 'tablets' | 'accessories';
+  category: CategoryType;
 };
 
 export const ProductCard: React.FC<Props> = ({

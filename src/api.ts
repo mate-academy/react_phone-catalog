@@ -1,3 +1,4 @@
+import { CategoryType } from './types/Category';
 import { Product } from './types/Product';
 
 // eslint-disable-next-line operator-linebreak
@@ -15,11 +16,8 @@ export async function getProducts(): Promise<Product[]> {
     .then(response => response.json());
 }
 
-export async function getProductById(
-  category: 'phones' | 'tablets' | 'accessories',
-  id?: string,
-) {
+export async function getProductById(category: CategoryType) {
   return wait(100)
-    .then(() => fetch(`/api/${category}/${id}`))
+    .then(() => fetch(`/api/${category}.json`))
     .then(response => response.json());
 }

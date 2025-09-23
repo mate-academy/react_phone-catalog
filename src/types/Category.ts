@@ -1,4 +1,10 @@
+export enum CategoryType {
+  Phones = 'phones',
+  Tablets = 'tablets',
+  Accessories = 'accessories',
+}
+
 export interface Category {
-  category: 'phones' | 'tablets' | 'accessories';
+  category: CategoryType;
   title: string;
 }
