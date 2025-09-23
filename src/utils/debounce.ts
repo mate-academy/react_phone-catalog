@@ -1,4 +1,4 @@
-export const debounce = <T extends (...args: any[]) => any>(
+export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number,
 ): ((...args: Parameters<T>) => void) => {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import React, { useState, useEffect } from 'react';
 import { Product, SortBy, ItemsPerPage } from '../../types';
 import { api } from '../../utils/api';

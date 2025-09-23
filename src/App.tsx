@@ -12,7 +12,7 @@ import { HomePage } from './modules/HomePage';
 import { PhonesPage } from './modules/PhonesPage';
 import { TabletsPage } from './modules/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage';
-import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { ProductDetailsPage } from '@modules/ProductDetailsPage';
 import { CartPage } from './modules/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
