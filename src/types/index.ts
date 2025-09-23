@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
-  category: string;
-  phoneId: string;
+  category: 'phones' | 'tablets' | 'accessories';
+  phoneId?: string;
   itemId: string;
   name: string;
   fullPrice: number;
@@ -24,9 +24,11 @@ export interface ProductDetails {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colors: string[];
   images: string[];
-  description: string[];
+  description: Array<{
+    title: string;
+    text: string[];
+  }>;
   screen: string;
   resolution: string;
   processor: string;

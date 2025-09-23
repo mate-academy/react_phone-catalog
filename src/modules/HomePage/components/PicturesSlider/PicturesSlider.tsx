@@ -3,9 +3,27 @@ import classNames from 'classnames';
 import styles from './PicturesSlider.module.scss';
 
 const SLIDER_IMAGES = [
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
-  '/img/banner-accessories.png',
+  {
+    src: '/img/banner-phones.png',
+    title: 'iPhone 14 Pro',
+    subtitle: 'Pro. Beyond.',
+    description: 'Now available in our store!',
+    cta: 'ORDER NOW',
+  },
+  {
+    src: '/img/banner-tablets.png',
+    title: 'Tablets Collection',
+    subtitle: 'Powerful. Portable.',
+    description: 'Be the first!',
+    cta: 'SHOP NOW',
+  },
+  {
+    src: '/img/banner-accessories.png',
+    title: 'Accessories',
+    subtitle: 'Complete Your Setup.',
+    description: 'New arrivals every week!',
+    cta: 'DISCOVER',
+  },
 ];
 
 const SLIDER_INTERVAL = 5000;
@@ -48,44 +66,32 @@ export const PicturesSlider: React.FC = () => {
 
   return (
     <div className={styles.slider}>
+      <button
+        className={styles.slider__button}
+        onClick={goToPrev}
+        aria-label="Previous slide"
+        role="previous-button"
+      >
+        <img src="/img/icons/icon-left.png" alt="Previous" />
+      </button>
       <div className={styles.slider__container}>
         {/* Slides */}
         <div className={styles.slider__slides}>
-          {SLIDER_IMAGES.map((image, index) => (
+          {SLIDER_IMAGES.map((slide, index) => (
             <div
-              key={image}
+              key={slide.src}
               className={classNames(styles.slider__slide, {
                 [styles.slider__slide_active]: index === currentSlide,
               })}
             >
               <img
-                src={image}
+                src={slide.src}
                 alt={`Banner ${index + 1}`}
                 className={styles.slider__image}
               />
             </div>
           ))}
         </div>
-
-        {/* Navigation Buttons */}
-        <button
-          className={styles.slider__button}
-          onClick={goToPrev}
-          aria-label="Previous slide"
-          role="previous-button"
-        >
-          <img src="/img/icons/icon-left.png" alt="Previous" />
-        </button>
-
-        <button
-          className={styles.slider__button}
-          onClick={goToNext}
-          aria-label="Next slide"
-          role="next-button"
-        >
-          <img src="/img/icons/icon-right.png" alt="Next" />
-        </button>
-
         {/* Dots */}
         <div className={styles.slider__dots}>
           {SLIDER_IMAGES.map((_, index) => (
@@ -100,6 +106,14 @@ export const PicturesSlider: React.FC = () => {
           ))}
         </div>
       </div>
+      <button
+        className={styles.slider__button}
+        onClick={goToNext}
+        aria-label="Next slide"
+        role="next-button"
+      >
+        <img src="/img/icons/icon-right.png" alt="Next" />
+      </button>
     </div>
   );
 };

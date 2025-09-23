@@ -1,34 +1,30 @@
+@import '../../utils/style/main';
+
 .homePage {
-  padding: 40px 0;
+  padding: $spacing-4xl 0;
 
   &__section {
-    margin-bottom: 80px;
+    margin-bottom: $spacing-7xl;
   }
 }
 
 .error {
   text-align: center;
-  padding: 80px 20px;
+  padding: $spacing-7xl $spacing-xl;
 
   h2 {
-    font-size: 24px;
-    color: #eb5757;
-    margin-bottom: 16px;
+    font-size: $font-size-3xl;
+    color: $red;
+    margin-bottom: $spacing-lg;
   }
 
   p {
-    color: #89939a;
-    margin-bottom: 24px;
+    color: $gray-secondary;
+    margin-bottom: $spacing-2xl;
   }
 
   button {
-    padding: 12px 24px;
-    background: #313237;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    @include button-primary;
 
     &:hover {
       background: #5f6368;

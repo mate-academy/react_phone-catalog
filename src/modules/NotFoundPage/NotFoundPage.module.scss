@@ -1,31 +1,29 @@
+@import '../../utils/style/main';
+
 .notFound {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flex-column-center;
+
   min-height: 60vh;
   text-align: center;
 
   &__title {
-    font-size: 120px;
-    font-weight: 700;
-    color: #313237;
-    margin-bottom: 16px;
+    font-size: $font-size-6xl;
+    font-weight: $font-weight-bold;
+    color: $gray-primary;
+    margin-bottom: $spacing-lg;
   }
 
   &__text {
-    font-size: 24px;
-    color: #89939a;
-    margin-bottom: 32px;
+    font-size: $font-size-3xl;
+    color: $gray-secondary;
+    margin-bottom: $spacing-3xl;
   }
 
   &__link {
-    padding: 12px 24px;
-    background-color: #313237;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+    @include button-base;
+
+    background-color: $gray-primary;
+    color: $white;
 
     &:hover {
       background-color: #5f6368;

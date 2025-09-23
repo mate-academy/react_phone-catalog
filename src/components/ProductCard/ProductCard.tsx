@@ -61,7 +61,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Product Image */}
         <div className={styles.productCard__imageContainer}>
           <img
-            src={`/${product.image}`}
+            src={product.image}
             alt={product.name}
             className={styles.productCard__image}
           />
@@ -133,8 +133,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               <img
                 src={
                   isInFavorites
-                    ? '/img/icons/heart-filled.svg'
-                    : '/img/icons/heart.svg'
+                    ? '/img/icons/icon-red-heart.png'
+                    : '/img/icons/heart.png'
                 }
                 alt="Favorite"
                 className={styles.productCard__favoriteIcon}

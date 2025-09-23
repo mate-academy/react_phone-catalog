@@ -1,0 +1,36 @@
+@import '../../../../utils/style/main';
+
+.cartTotal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-3xl;
+  border: 1px solid $elements;
+  border-radius: $border-radius-md;
+  background: $surface2;
+
+  @include mobile {
+    padding: $spacing-2xl;
+  }
+
+  &__price {
+    @include font-mont($font-size-5xl, $font-weight-extra-bold);
+
+    color: $secondary;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__items {
+    @include font-mont($font-size-md);
+
+    color: $gray-secondary;
+    margin-bottom: $spacing-4xl;
+  }
+
+  &__button {
+    @include button-primary;
+
+    width: 100%;
+    padding: $spacing-lg $spacing-2xl;
+  }
+}

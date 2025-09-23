@@ -1,0 +1,120 @@
+@import '../../../../utils/style/main';
+
+.cartItem {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  align-items: center;
+  gap: $spacing-lg;
+  padding: $spacing-2xl;
+  border: 1px solid $elements;
+  border-radius: $border-radius-md;
+  background: $surface2;
+
+  @include tablet {
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: auto auto;
+    gap: $spacing-lg;
+  }
+
+  @include mobile {
+    grid-template-columns: auto 1fr;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+  }
+
+  &__remove {
+    @include icon-button(32px);
+
+    img {
+      width: $spacing-lg;
+      height: $spacing-lg;
+    }
+  }
+
+  &__imageLink {
+    @include flex-center;
+
+    width: 80px;
+    height: 80px;
+    background: $surface1;
+    border-radius: $border-radius-sm;
+
+    @include mobile {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__name {
+    @include font-mont($font-size-md, $font-weight-semibold);
+
+    color: $secondary;
+    text-decoration: none;
+
+    // @include smooth-transition();
+
+    &:hover {
+      color: $primary;
+    }
+
+    @include mobile {
+      grid-column: 1 / -1;
+      order: -1;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    @include tablet {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    @include mobile {
+      justify-self: start;
+    }
+  }
+
+  &__quantityBtn {
+    @include icon-button(32px);
+    @include font-mont($font-size-lg, $font-weight-semibold);
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__quantityValue {
+    @include font-mont($font-size-md, $font-weight-semibold);
+
+    color: $secondary;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  &__price {
+    @include font-mont($font-size-2xl, $font-weight-bold);
+
+    @include tablet {
+      grid-column: 3;
+      grid-row: 2;
+      justify-self: end;
+    }
+
+    @include mobile {
+      justify-self: end;
+    }
+
+    color: $secondary;
+  }
+}

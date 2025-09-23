@@ -1,22 +1,25 @@
+@import '../../../../utils/style/main';
+
 .backToTop {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  @include flex-center;
+
+  gap: $spacing-sm;
   background: none;
-  border: 1px solid #b4bdc3;
-  border-radius: 8px;
-  padding: 8px 16px;
+  border: 1px solid $gray-elements;
+  border-radius: $border-radius-md;
+  padding: $spacing-sm $spacing-lg;
+  color: $secondary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
-  color: #89939a;
-  font-size: 12px;
-  font-weight: 600;
+
+  @include smooth-transition(all);
 
   &:hover {
-    border-color: #313237;
-    color: #313237;
+    border-color: $primary;
+    background: $background-hover;
   }
 
   &_visible {
@@ -25,26 +28,36 @@
   }
 
   &__text {
-    @media (max-width: 480px) {
+    @media (max-width: $mobile) {
       display: none;
     }
   }
 
   &__arrow {
-    width: 16px;
-    height: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: $spacing-lg;
+    height: $spacing-lg;
+
+    @include flex-center;
   }
 
   &__arrowIcon {
     width: 100%;
     height: 100%;
-    transition: transform 0.3s ease;
+
+    @include smooth-transition(transform);
   }
 
   &:hover &__arrowIcon {
     transform: translateY(-2px);
+  }
+
+  @media (max-width: $tablet-lg) {
+    padding: 6px $spacing-md;
+    font-size: $font-size-base;
+
+    &__arrow {
+      width: 14px;
+      height: 14px;
+    }
   }
 }

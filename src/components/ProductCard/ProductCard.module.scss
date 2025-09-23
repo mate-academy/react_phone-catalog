@@ -1,15 +1,10 @@
-.productCard {
-  background: #fff;
-  border: 1px solid #e2e6e9;
-  border-radius: 8px;
-  padding: 24px;
-  transition: all 0.3s ease;
-  height: 100%;
+@import '../../utils/style/main';
 
-  &:hover {
-    border-color: #313237;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  }
+.productCard {
+  @include card-base;
+
+  padding: $spacing-2xl;
+  height: 100%;
 
   &__link {
     text-decoration: none;
@@ -20,12 +15,11 @@
 
   &__imageContainer {
     position: relative;
-    margin-bottom: 16px;
+    margin-bottom: $spacing-lg;
     text-align: center;
     height: 196px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    @include flex-center;
   }
 
   &__image {
@@ -36,62 +30,61 @@
 
   &__discount {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #eb5757;
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    background: $red;
+    color: $white;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
   }
 
   &__info {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
+
     height: calc(100% - 212px);
   }
 
   &__title {
-    font-size: 14px;
-    font-weight: 500;
+    @include font-mont($font-size-md, $font-weight-medium);
+
     line-height: 1.4;
-    margin-bottom: 8px;
-    color: #313237;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    margin-bottom: $spacing-sm;
+    color: $secondary;
+
+    @include text-ellipsis(3);
   }
 
   &__prices {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
+    @include flex-center;
+
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
   }
 
   &__price {
-    font-size: 20px;
-    font-weight: 700;
-    color: #313237;
+    @include font-mont($spacing-xl, $font-weight-bold);
+
+    color: $gray-primary;
   }
 
   &__fullPrice {
-    font-size: 16px;
-    color: #89939a;
+    @include font-mont($spacing-lg);
+
+    color: $gray-secondary;
     text-decoration: line-through;
   }
 
   &__specs {
-    margin-bottom: 16px;
+    margin-bottom: $spacing-lg;
     flex: 1;
   }
 
   &__spec {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
+    @include flex-between;
+
+    margin-bottom: $spacing-sm;
 
     &:last-child {
       margin-bottom: 0;
@@ -99,70 +92,46 @@
   }
 
   &__specName {
-    font-size: 12px;
-    color: #89939a;
+    @include font-mont($font-size-base);
+
+    color: $gray-secondary;
   }
 
   &__specValue {
-    font-size: 12px;
-    color: #313237;
-    font-weight: 500;
+    @include font-mont($font-size-base, $font-weight-medium);
+
+    color: $gray-primary;
   }
 
   &__actions {
     display: flex;
-    gap: 8px;
+    gap: $spacing-sm;
   }
 
   &__cartBtn {
     flex: 1;
-    padding: 12px;
-    background: #313237;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
 
-    &:hover {
-      background: #5f6368;
-    }
+    @include button-primary;
 
     &_added {
-      background: #27ae60;
+      background: $elements;
 
       &:hover {
-        background: #219653;
+        background: $purple-hover;
       }
     }
   }
 
   &__favoriteBtn {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #b4bdc3;
-    border-radius: 8px;
-    background: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-
-    &:hover {
-      border-color: #313237;
-    }
+    @include icon-button;
 
     &_active {
-      border-color: #eb5757;
-      background: rgba(235, 87, 87, 0.1);
+      background: #3b3e4a;
     }
   }
 
   &__favoriteIcon {
-    width: 16px;
-    height: 16px;
+    width: $spacing-lg;
+    height: $spacing-lg;
   }
 }

@@ -1,20 +1,9 @@
-// Colors from your palette
-$secondary: #f1f2f9;
-$white: #ffffff;
-$surface1: #0f1121;
-$surface2: #161827;
-$elements: #323542;
-$icons: #4a4d58;
-$red: #eb5757;
-$green: #27ae60;
-
-// Typography
-$font-mont: 'Mont', sans-serif;
+@import '../../../../utils/style/main';
 
 .header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: $z-index-header;
   background: $surface1;
   border-bottom: 1px solid $elements;
   backdrop-filter: blur(10px);
@@ -22,21 +11,24 @@ $font-mont: 'Mont', sans-serif;
 
 .header__container {
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 clamp(16px, 5%, 32px);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-  max-width: 1440px;
+
+  @include flex-between;
+
+  height: $header-height-desktop;
+  max-width: $desktop-xl;
+  width: 100%;
 }
 
 // Logo styles
 .header__logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  @include flex-center;
+
+  gap: $spacing-sm;
   text-decoration: none;
-  transition: transform 0.3s ease;
+
+  @include smooth-transition(transform);
 
   &:hover {
     transform: scale(1.05);
@@ -44,14 +36,13 @@ $font-mont: 'Mont', sans-serif;
 }
 
 .header__logoImage {
-  height: 32px;
+  height: $spacing-3xl;
   width: auto;
 }
 
 .header__logoText {
-  font-family: $font-mont;
-  font-size: 20px;
-  font-weight: 700;
+  @include font-mont(clamp(16px, 4vw, 20px), $font-weight-bold);
+
   color: $white;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -60,19 +51,20 @@ $font-mont: 'Mont', sans-serif;
 // Navigation styles
 .header__nav {
   display: flex;
-  gap: 64px;
+  gap: clamp(16px, 4vw, 64px);
 }
 
 .header__navLink {
-  font-family: $font-mont;
-  font-size: 12px;
-  font-weight: 700;
+  @include font-mont($font-size-base, $font-weight-bold);
+
   color: $secondary;
   text-decoration: none;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: color 0.3s ease;
-  padding: 24px 0;
+
+  @include smooth-transition(color);
+
+  padding: $spacing-2xl 0;
 
   &:hover {
     color: $white;
@@ -97,34 +89,29 @@ $font-mont: 'Mont', sans-serif;
 // Icons styles
 .header__icons {
   display: flex;
-  gap: 24px;
+  gap: clamp(12px, 3vw, 24px);
   align-items: center;
 }
 
 .header__iconLink {
   position: relative;
-  transition: transform 0.3s ease;
-  padding: 8px;
+
+  @include smooth-transition(transform);
+
+  padding: $spacing-sm;
 
   &:hover {
     transform: scale(1.1);
   }
 }
 
-.header__iconLink_active {
-  .header__icon {
-    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%)
-      hue-rotate(0deg) brightness(100%) contrast(100%);
-  }
-}
-
 .header__iconWrapper {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
+
+  @include flex-center;
+
+  width: $spacing-2xl;
+  height: $spacing-2xl;
 }
 
 .header__badge {
@@ -133,23 +120,30 @@ $font-mont: 'Mont', sans-serif;
   right: -4px;
   background: $red;
   color: $white;
-  font-size: 9px;
-  font-weight: 700;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  @include flex-center;
+
   border: 1px solid $surface1;
 }
 
 .header__icon {
-  width: 20px;
-  height: 20px;
+  width: $spacing-xl;
+  height: $spacing-xl;
   filter: brightness(0) saturate(100%) invert(70%) sepia(10%) saturate(200%)
     hue-rotate(200deg) brightness(90%) contrast(90%);
   transition: filter 0.3s ease;
+}
+
+.header__iconLink_active {
+  .header__icon {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%)
+      hue-rotate(0deg) brightness(100%) contrast(100%);
+  }
 }
 
 .header__iconLink:hover .header__icon {
@@ -163,8 +157,9 @@ $font-mont: 'Mont', sans-serif;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
-  transition: transform 0.3s ease;
+  padding: $spacing-sm;
+
+  @include smooth-transition(transform);
 
   &:hover {
     transform: scale(1.1);
@@ -172,8 +167,8 @@ $font-mont: 'Mont', sans-serif;
 }
 
 .header__menuIcon {
-  width: 24px;
-  height: 24px;
+  width: $spacing-2xl;
+  height: $spacing-2xl;
   filter: brightness(0) saturate(100%) invert(70%) sepia(10%) saturate(200%)
     hue-rotate(200deg) brightness(90%) contrast(90%);
 }
@@ -181,19 +176,22 @@ $font-mont: 'Mont', sans-serif;
 // Mobile Menu
 .header__mobileMenu {
   position: fixed;
-  top: 64px;
+  top: $header-height-desktop;
   left: 0;
   right: 0;
   background: $surface1;
   border-top: 1px solid $elements;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  padding: $spacing-xl;
+
+  @include flex-column;
+
+  gap: $spacing-xl;
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+
+  @include smooth-transition(all);
+
   z-index: 999;
 }
 
@@ -204,21 +202,22 @@ $font-mont: 'Mont', sans-serif;
 }
 
 .header__mobileNav {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  @include flex-column;
+
+  gap: $spacing-lg;
 }
 
 .header__mobileNavLink {
-  font-family: $font-mont;
-  font-size: 20px;
-  font-weight: 800;
+  @include font-mont($spacing-xl, $font-weight-extra-bold);
+
   color: $secondary;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  transition: color 0.3s ease;
-  padding: 12px 0;
+
+  @include smooth-transition(color);
+
+  padding: $spacing-md 0;
 
   &:hover {
     color: $white;
@@ -232,7 +231,7 @@ $font-mont: 'Mont', sans-serif;
   &::after {
     content: '';
     position: absolute;
-    bottom: 8px;
+    bottom: $spacing-sm;
     left: 0;
     width: 100%;
     height: 2px;
@@ -243,15 +242,54 @@ $font-mont: 'Mont', sans-serif;
 .header__mobileIcons {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  padding-top: 16px;
+  gap: $spacing-2xl;
+  padding-top: $spacing-lg;
   border-top: 1px solid $elements;
 }
 
 // Responsive styles
 @media (max-width: 1199px) {
   .header__nav {
-    gap: 32px;
+    gap: clamp(12px, 3vw, 32px);
+  }
+}
+
+@media (max-width: $desktop-md) {
+  .header__nav {
+    gap: $spacing-2xl;
+  }
+  .header__navLink {
+    font-size: 11px;
+    padding: $spacing-xl 0;
+  }
+}
+
+@media (max-width: $desktop-sm) {
+  .header__nav {
+    gap: $spacing-lg;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header__icons {
+    display: none;
+  }
+
+  .header__container {
+    padding: 0 clamp(12px, 4%, 16px);
+    top: $header-height-mobile;
+  }
+
+  .header__mobileMenu {
+    top: $header-height-mobile;
+  }
+
+  .header__logoText {
+    font-size: $spacing-lg;
   }
 }
 
@@ -266,15 +304,29 @@ $font-mont: 'Mont', sans-serif;
   }
 
   .header__container {
-    padding: 0 16px;
-    height: 56px;
+    padding: 0 $spacing-lg;
+    height: $header-height-mobile;
   }
 
   .header__mobileMenu {
-    top: 56px;
+    top: $header-height-mobile;
   }
 
   .header__logoText {
-    font-size: 16px;
+    font-size: $spacing-lg;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__container {
+    padding: 0 $spacing-md;
+  }
+
+  .header__logoImage {
+    height: 28px;
+  }
+
+  .header__logoText {
+    font-size: $font-size-md;
   }
 }

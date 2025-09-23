@@ -1,0 +1,29 @@
+@import '../../utils/style/main';
+
+.productDetailsPage {
+  padding: $spacing-4xl 0;
+
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-7xl;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $spacing-4xl;
+    }
+
+    @include mobile {
+      gap: $spacing-3xl;
+    }
+  }
+
+  &__not_found {
+    @include flex-column-center;
+
+    min-height: 400px;
+    text-align: center;
+    color: $gray-secondary;
+    font-size: $font-size-2xl;
+  }
+}

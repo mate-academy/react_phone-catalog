@@ -1,19 +1,21 @@
+@import '../../../../utils/style/main';
+
 .slider {
-  margin-bottom: 40px;
   position: relative;
+  max-width: 1040px;
+  margin: 0 auto;
+  margin-bottom: 80px;
 
   &__container {
     position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
+    height: 400px;
     border-radius: 8px;
   }
 
   &__slides {
     display: flex;
-    transition: transform 0.5s ease;
-    height: 400px;
+    height: 100%;
+    position: relative;
   }
 
   &__slide {
@@ -21,9 +23,59 @@
     opacity: 0;
     transition: opacity 0.5s ease;
     position: absolute;
-    inset: 0 &_active {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &_active {
       opacity: 1;
       position: relative;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 232px;
+    left: 200px;
+    color: white;
+    text-align: left;
+    z-index: 5;
+  }
+
+  &__description {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    opacity: 0.9;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+
+  &__ctaButton {
+    padding: 12px 24px;
+    background: white;
+    color: #313237;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #f8f8f8;
+      transform: translateY(-2px);
     }
   }
 
@@ -47,41 +99,39 @@
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 10;
+    border: none;
 
     &:hover {
       background-color: #4a4d58;
     }
 
     &[role='previous-button'] {
-      left: 16px;
+      left: -50px;
     }
 
     &[role='next-button'] {
-      right: 16px;
+      right: -50px;
     }
 
     img {
       width: 16px;
       height: 16px;
-      background-color: #3b3e4a;
     }
   }
 
   &__dots {
     position: absolute;
-    bottom: 16px;
+    bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 8px;
     z-index: 10;
-    background: none;
   }
 
   &__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
+    width: 14px;
+    height: 4px;
     background: rgba(255, 255, 255, 0.5);
     border: none;
     cursor: pointer;
@@ -94,6 +144,84 @@
     &_active {
       background: #fff;
       transform: scale(1.2);
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .slider {
+    &__container {
+      max-width: 490px;
+      height: 189px;
+    }
+
+    &__content {
+      top: 224px;
+      left: 75px;
+    }
+
+    &__description {
+      font-size: 12px;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__subtitle {
+      font-size: 16px;
+    }
+
+    &__ctaButton {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+}
+
+/* --------Mobile--------- */
+
+@media (max-width: 639px) {
+  .slider {
+    &__container {
+      max-width: 320px;
+      height: 320px;
+    }
+
+    &__content {
+      top: 178px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    &__description {
+      font-size: 11px;
+    }
+
+    &__title {
+      font-size: 20px;
+    }
+
+    &__subtitle {
+      font-size: 14px;
+    }
+
+    &__ctaButton {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+
+    &__button {
+      width: 28px;
+      height: 28px;
+
+      img {
+        width: 12px;
+        height: 12px;
+      }
     }
   }
 }

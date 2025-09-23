@@ -25,9 +25,9 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={styles.homePage}>
-      <h1 style={{ display: 'none' }}>Product Catalog</h1>
+      <h1 style={{ display: 'none' }}>Welcome to Nice Gadgets store!</h1>
       <h1 className="visually-hidden">Product Catalog</h1>
-      {/* Banner Slider */}s
+      {/* Banner Slider */}
       <PicturesSlider />
       {/* Hot Prices Section */}
       <ProductsSlider

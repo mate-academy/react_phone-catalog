@@ -1,14 +1,16 @@
+@import '../../utils/style/main';
+
 .cartPage {
-  padding: 40px 0;
+  padding: $spacing-4xl 0;
   text-align: center;
 
   h1 {
-    font-size: 32px;
-    margin-bottom: 16px;
-    color: #313237;
+    font-size: $font-size-4xl;
+    margin-bottom: $spacing-lg;
+    color: $gray-primary;
   }
 
   p {
-    color: #89939a;
+    color: $gray-secondary;
   }
 }
