@@ -53,7 +53,7 @@ export const useProducts = (category: string) => {
         setError(false);
 
         const startTime = Date.now();
-        const response = await fetch('/api/products.json');
+        const response = await fetch('api/products.json');
         const data = await response.json();
 
         const elapsed = Date.now() - startTime;

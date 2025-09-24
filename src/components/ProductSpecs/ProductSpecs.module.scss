@@ -199,9 +199,9 @@
   border-radius: 48px;
 
   font-family: $font-primary;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 21px;
+
+  @include text-style($button-text);
+
   color: $color-white;
   text-align: center;
   letter-spacing: 0;
@@ -216,7 +216,9 @@
 
   &--active {
     line-height: 100%;
-    background-color: $color-secondary;
+    background-color: $color-white;
+    border: 1px solid #E2E6E9;
+    color: $color-accent;
   }
     }
 

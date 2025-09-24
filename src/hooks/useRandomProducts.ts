@@ -6,7 +6,7 @@ export const useRandomProducts = (count: number = 4): Product[] => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/api/products.json');
+      const response = await fetch('api/products.json');
       const data = await response.json();
 
       setAllProducts(data);

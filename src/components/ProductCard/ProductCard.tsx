@@ -80,7 +80,7 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
           })}
           onClick={() => addToCart(product)}
         >
-          {isInCart(product.itemId) ? 'Added to cart' : 'Add to cart'}
+          {isInCart(product.itemId) ? 'Added' : 'Add to cart'}
         </button>
 
         <button

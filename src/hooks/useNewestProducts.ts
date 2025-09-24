@@ -10,7 +10,7 @@ export const useNewestProducts = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/products.json');
+        const response = await fetch('api/products.json');
         const data = await response.json();
 
         setAllProducts(data);

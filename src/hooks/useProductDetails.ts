@@ -19,7 +19,7 @@ export const useProductDetails = (
         setLoading(true);
         setError(false);
 
-        const response = await fetch(`/api/${category}.json`);
+        const response = await fetch(`api/${category}.json`);
         const data: ProductDetails[] = await response.json();
 
         const found = data.find(p => p.id === itemId);
