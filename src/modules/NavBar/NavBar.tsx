@@ -60,7 +60,7 @@ export const NavBar: React.FC<Props> = ({
               }
               to={item === 'home' ? '/' : `/${item}`}
             >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
+              {item.toUpperCase()}
             </NavLink>
           </li>
         ))}

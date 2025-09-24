@@ -9,23 +9,27 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
+}
+
+html {
+  font-family: 'Mont', sans-serif;
 }
 
 .main {
@@ -35,35 +39,50 @@
 
 
 @media screen and (max-width: 639px) {
+  .swiper {
+  &__top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 80px;
+    padding-left: 16px;
+        padding-right: 16px;
+  }
+}
   .home {
-    width: 100%;
+       width: 100%;
+
+
     &__turn-image {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      // grid-template-columns: repeat(4, 1fr);
       align-items: center;
       width: 100%;
       padding-top: 24px;
       position: relative;
       overflow: hidden;
       margin: 0;
-      padding: 0;
+      // padding: 0;
     }
 
-    &__gargets-store {
-      font-family: 'Mont';
-      grid-column: 1 / span 8;
-      padding-top: 24px;
-      font-weight: 800;
-      font-size: 32px;
-      line-height: 41px;
-      letter-spacing: -1%;
-      color: #0f0f11;
-      padding-left: 16px;
+   &__gargets-store {
+        font-family: Mont;
+        grid-column: 1 / span 8;
+        /* padding-top: 24px; */
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+        color: #0f0f11;
+        padding: 24px 0 24px 16px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     &__button-left,
     &__button-right {
       display: none;
+        padding-right: 16px;
     }
 
     &__roundabout {
@@ -86,7 +105,7 @@
       align-items: center;
       align-content: center;
       padding-top: 20px;
-      width: 100vh;
+
     }
 
     .small-line {
@@ -94,6 +113,8 @@
       border-top: 4px solid #b4bdc3;
       margin: 0 10px;
       width: 14px;
+      padding-left: 16px;
+        padding-right: 16px;
     }
 
     .small-line.active {
@@ -113,6 +134,9 @@
       position: relative;
       overflow: hidden;
       gap: 16px;
+      padding-left: 16px;
+        padding-right: 16px;
+        color: #0F0F11;
 
       &-h2 {
         font-size: 32px;
@@ -165,12 +189,13 @@
       &-h4 {
         color: #89939a;
         font-size: 14px;
-        font-weight: 500px;
+        font-weight: 500;
         line-height: 21px;
         padding-top: 4px;
       }
     }
   }
+
 }
 
 @media screen and (min-width: 640px) {
@@ -263,6 +288,7 @@
       position: relative;
       overflow: hidden;
       gap: 24px;
+      color: #0F0F11;
 
       &-h2 {
         font-size: 32px;
@@ -315,7 +341,7 @@
       &-h4 {
         color: #89939a;
         font-size: 14px;
-        font-weight: 500px;
+        font-weight: 500;
         line-height: 21px;
         padding-top: 4px;
       }
@@ -412,6 +438,7 @@
       position: relative;
       overflow: hidden;
       gap: 16px;
+      color: #0F0F11;
 
       &-h2 {
         font-size: 32px;
@@ -464,7 +491,7 @@
       &-h4 {
         color: #89939a;
         font-size: 14px;
-        font-weight: 500px;
+        font-weight: 500;
         line-height: 21px;
         padding-top: 4px;
       }
@@ -483,6 +510,10 @@
   &__nav-buttons {
     display: flex;
     gap: 12px;
+  }
+
+  &__name {
+    font-weight: 600;
   }
 
   .swiper-button-prev,
@@ -518,7 +549,7 @@
     line-height: 41px;
     letter-spacing: -1%;
     grid-column: 1 / span 6;
-    white-space: nowrap;
+    white-space: normal;
     margin: 0;
   }
 
@@ -556,7 +587,7 @@
     background-color: white;
     border: 1px solid #e2e6e9;
     padding: 32px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 1s, box-shadow 1s;
     box-shadow: 0 0 0 transparent;
 
     &:hover {
@@ -575,14 +606,16 @@
   }
 
   &__position {
-    display: flex;
+   display: flex
+;
     justify-content: space-between;
     padding-top: 8px;
+    align-items: center;
   }
 
   &__name {
     font-size: 14px;
-    font-weight: 600px;
+    font-weight: 600;
     line-height: 21px;
     padding-top: 16px;
   }
@@ -617,41 +650,41 @@
 
   &__screen {
     font-size: 12px;
-    font-weight: 700px;
+    font-weight: 700;
     line-height: 100%;
     color: #89939a;
   }
 
   &__oled {
     font-size: 12px;
-    font-weight: 700px;
+    font-weight: 700;
     line-height: 100%;
   }
 
   &__capacity {
     color: #89939a;
     font-size: 12px;
-    font-weight: 700px;
+    font-weight: 700;
     line-height: 100%;
   }
 
   &__gb {
     font-size: 12px;
     color: #0f0f11;
-    font-weight: 700px;
+    font-weight: 700;
     line-height: 100%;
   }
 
   &__ram {
     font-size: 12px;
-    font-weight: 700px;
+    font-weight: 700;
     line-height: 100%;
     color: #89939a;
   }
 
   &__ram-gb {
     font-size: 12px;
-    font-weight: 700px;
+    font-weight: 700;
     line-height: 100%;
   }
 
@@ -717,7 +750,8 @@
    background-image: url('/img/arrow.png');
     width: 15.33px;
     height: 13.55px;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     z-index: 1;
   }
 }

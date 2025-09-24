@@ -561,22 +561,23 @@ body.no-scroll {
 }
 
 .footer {
-  max-width: 1440px;
-  margin-inline: auto;
-  padding-inline: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 11px;
-  padding-left: 24px;
-  font-family: 'Mont';
-  z-index: 100;
-  border-top: 1px solid #e2e6e9;
-  background-color: white;
-  margin-top: 80px;
-  position: static;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 0;
+    display: flex
+;
+    flex-direction: column;
+    justify-content: left;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    padding-left: 24px;
+    font-family: Mont;
+    z-index: 100;
+    border-top: 1px solid #e2e6e9;
+    background-color: #fff;
+    margin-top: 64px;
+    position: static;
   &__link__logo {
     padding-top: 32px;
     transition: transform 0.3s ease-in-out;
@@ -646,10 +647,10 @@ body.no-scroll {
 @media screen and (min-width: 639px) {
   .footer {
     width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
     &__left {
       margin: 0;
     }
