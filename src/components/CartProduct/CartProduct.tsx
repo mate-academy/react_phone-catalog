@@ -20,7 +20,7 @@ export const CartProduct: React.FC<Props> = ({ product }) => {
         className={styles.cartProduct__remove}
         onClick={() => removeFromCart(product.itemId)}
       >
-        <img src="/img/Icons/delete-cart.svg" alt="Remove from cart" />
+        <img src="./img/Icons/delete-cart.svg" alt="Remove from cart" />
       </button>
 
       <Link
@@ -29,7 +29,7 @@ export const CartProduct: React.FC<Props> = ({ product }) => {
         className={styles.cartProduct__imageLink}
       >
         <img
-          src={`/${product.image}`}
+          src={`./${product.image}`}
           alt={product.name}
           className={styles.cartProduct__image}
         />
@@ -48,7 +48,7 @@ export const CartProduct: React.FC<Props> = ({ product }) => {
           className={styles.cartProduct__btn}
           onClick={() => decreaseQuantity(product.itemId)}
         >
-          <img src="/img/Icons/minus.svg" alt="Decrease" />
+          <img src="./img/Icons/minus.svg" alt="Decrease" />
         </button>
 
         <span className={styles.cartProduct__count}>{quantity}</span>
@@ -57,7 +57,7 @@ export const CartProduct: React.FC<Props> = ({ product }) => {
           className={styles.cartProduct__btn}
           onClick={() => increaseQuantity(product.itemId)}
         >
-          <img src="/img/Icons/plus.svg" alt="Increase" />
+          <img src="./img/Icons/plus.svg" alt="Increase" />
         </button>
       </div>
 
