@@ -18,7 +18,7 @@ export const FavoritesPage = () => {
           <div className={styles.favorites__empty}>
             <span>Your favorites list is empty 😮</span>
             <img
-              src="/img/cart-is-empty.png"
+              src="./img/cart-is-empty.png"
               alt="Empty favorites"
               className={styles.favorites__emptyImage}
             />
