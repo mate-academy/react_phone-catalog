@@ -5,7 +5,7 @@ export const PageNotFound: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <img
-        src="/img/page-not-found.png"
+        src="./img/page-not-found.png"
         alt="Not found"
         className={styles.pulseImage}
       />
