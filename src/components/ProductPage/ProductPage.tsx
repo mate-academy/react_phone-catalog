@@ -23,21 +23,31 @@ export const ProductPage = () => {
   const { product, loading, error } = useProductDetails(itemId, category);
   const recommendedProducts = useRandomProducts(10);
 
-  const [delayedLoading, setDelayedLoading] = useState(true);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
-    if (!loading) {
-      const timer = setTimeout(() => {
-        setDelayedLoading(false);
-      }, 500);
+    let timer: NodeJS.Timeout;
 
-      return () => clearTimeout(timer);
-    } else {
-      setDelayedLoading(true);
+    if (loading && isFirstLoad) {
+      setShowLoader(true);
     }
-  }, [loading]);
 
-  if (loading || delayedLoading) {
+    if (!loading && product && isFirstLoad) {
+      timer = setTimeout(() => {
+        setIsFirstLoad(false);
+        setShowLoader(false);
+      }, 300);
+    }
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [loading, product, isFirstLoad]);
+
+  if (showLoader) {
     return (
       <div className={styles.productPage__loader}>
         <Loader />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ProductDetails } from '../types/ProductDetails';
 
 export const useProductDetails = (
@@ -9,8 +9,20 @@ export const useProductDetails = (
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  const cache = useRef<Map<string, ProductDetails>>(new Map());
+
   useEffect(() => {
     if (!itemId || !category) {
+      return;
+    }
+
+    const cacheKey = `${category}/${itemId}`;
+
+    if (cache.current.has(cacheKey)) {
+      setProduct(cache.current.get(cacheKey)!);
+      setLoading(false);
+      setError(false);
+
       return;
     }
 
@@ -24,7 +36,13 @@ export const useProductDetails = (
 
         const found = data.find(p => p.id === itemId);
 
-        setProduct(found || null);
+        if (found) {
+          cache.current.set(cacheKey, found);
+          setProduct(found);
+        } else {
+          setProduct(null);
+        }
+
         setLoading(false);
       } catch {
         setError(true);
