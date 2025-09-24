@@ -18,7 +18,7 @@ export const Breadcrumbs: React.FC = () => {
         <li className={styles.breadcrumbs__item}>
           <Link to="/" className={styles.breadcrumbs__link}>
             <img
-              src="/img/Icons/home.svg"
+              src="./img/Icons/home.svg"
               alt="Home"
               className={styles.breadcrumbs__icon}
             />
@@ -41,7 +41,7 @@ export const Breadcrumbs: React.FC = () => {
             <React.Fragment key={to}>
               <li className={styles.breadcrumbs__separator}>
                 <img
-                  src="/img/Icons/arrow-right.svg"
+                  src="./img/Icons/arrow-right.svg"
                   alt=""
                   aria-hidden="true"
                   className={styles.breadcrumbs__arrow}
