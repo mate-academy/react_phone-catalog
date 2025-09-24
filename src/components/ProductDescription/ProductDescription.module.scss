@@ -1,0 +1,44 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.description {
+  @include on-desktop {
+    grid-column: 1 / 12;
+  }
+
+  &__header {
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+
+    @include text-style($h3-mobile);
+
+    @include on-tablet {
+      @include text-style($h3-desktop);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding-top: 32px;
+
+    h4 {
+      @include text-style($h4-mobile);
+
+      @include on-tablet {
+        @include text-style($h4-desktop);
+      }
+    }
+  }
+
+  &__text {
+    margin: 0;
+    padding-top: 16px;
+
+    @include text-style($body-text);
+
+    @include on-tablet {
+      @include text-style($body-text);
+    }
+  }
+}

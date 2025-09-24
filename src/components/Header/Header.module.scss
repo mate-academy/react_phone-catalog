@@ -39,9 +39,7 @@
   &__logo-wrapper {
     display: flex;
     align-items: center;
-
     height: 48px;
-    padding-right: 0;
     padding-left: 16px;
 
     img {
@@ -54,7 +52,6 @@
 
     @include on-tablet {
       height: 64px;
-      padding-right: 24px;
       padding-left: 24px;
     }
   }
@@ -91,13 +88,13 @@
     transition: color 0.2s ease, border-bottom-color 0.2s ease;
 
     @include on-tablet {
-    height: 48px;
-    line-height: 48px;
+      height: 48px;
+      line-height: 48px;
     }
 
     @include on-desktop {
-    height: 64px;
-    line-height: 64px;
+      height: 64px;
+      line-height: 64px;
     }
 
     &:hover {
@@ -121,9 +118,12 @@
   }
 
   &__action-btn {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     box-shadow: -1px 0 0 0 $color-elements;
 
     @include on-tablet {
@@ -148,6 +148,43 @@
 
     &--active {
       border-bottom: 3px solid $color-primary;
+    }
+  }
+
+  &__badge {
+    pointer-events: none;
+    user-select: none;
+
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 100%;
+    color: $color-white;
+    text-align: center;
+
+    background-color: $color-accent;
+
+    @include on-tablet {
+      top: 10px;
+      right: 10px;
+    }
+
+    @include on-desktop {
+      top: 18px;
+      right: 18px;
     }
   }
 
@@ -223,6 +260,8 @@
     }
 
     .header__action-btn {
+      position: relative;
+
       display: flex;
       flex: 1;
       align-items: center;
@@ -231,9 +270,7 @@
       box-sizing: border-box;
       height: 64px;
       border-top: 1px solid $color-elements;
-      border-right: none;
       border-bottom: 2px solid transparent;
-      border-left: none;
 
       box-shadow: none;
 

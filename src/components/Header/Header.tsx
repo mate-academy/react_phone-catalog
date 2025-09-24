@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { Link, NavLink, useSearchParams } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
+import { useFavorites } from '../../contexts/FavoritesContext';
+import { useCart } from '../../contexts/CartContext';
 
 export const Header = () => {
-  const [searchParams] = useSearchParams();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { favorites } = useFavorites();
+  const { cartItems } = useCart();
 
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles['header__nav-link'], {
@@ -64,22 +67,13 @@ export const Header = () => {
             <NavLink to="/" end className={getNavLinkClass}>
               Home
             </NavLink>
-            <NavLink
-              to={{ pathname: '/phones', search: searchParams.toString() }}
-              className={getNavLinkClass}
-            >
+            <NavLink to="/phones" className={getNavLinkClass}>
               Phones
             </NavLink>
-            <NavLink
-              to={{ pathname: '/tablets', search: searchParams.toString() }}
-              className={getNavLinkClass}
-            >
+            <NavLink to="/tablets" className={getNavLinkClass}>
               Tablets
             </NavLink>
-            <NavLink
-              to={{ pathname: '/accessories', search: searchParams.toString() }}
-              className={getNavLinkClass}
-            >
+            <NavLink to="/accessories" className={getNavLinkClass}>
               Accessories
             </NavLink>
           </div>
@@ -92,10 +86,16 @@ export const Header = () => {
               aria-label="Favorites"
             >
               <img src="./img/Icons/favorites.svg" alt="Favorites" />
+              {favorites.length > 0 && (
+                <span className={styles.header__badge}>{favorites.length}</span>
+              )}{' '}
             </NavLink>
 
             <NavLink to="/cart" className={getActionBtnClass} aria-label="Cart">
               <img src="./img/Icons/cart.svg" alt="Cart" />
+              {cartItems.length > 0 && (
+                <span className={styles.header__badge}>{cartItems.length}</span>
+              )}{' '}
             </NavLink>
           </div>
         </div>
@@ -113,24 +113,21 @@ export const Header = () => {
                 Home
               </NavLink>
               <NavLink
-                to={{ pathname: '/phones', search: searchParams.toString() }}
+                to="/phones"
                 className={getNavLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Phones
               </NavLink>
               <NavLink
-                to={{ pathname: '/tablets', search: searchParams.toString() }}
+                to="/tablets"
                 className={getNavLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tablets
               </NavLink>
               <NavLink
-                to={{
-                  pathname: '/accessories',
-                  search: searchParams.toString(),
-                }}
+                to="/accessories"
                 className={getNavLinkClass}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -146,6 +143,11 @@ export const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <img src="./img/Icons/favorites.svg" alt="Favorites" />
+                  {favorites.length > 0 && (
+                    <span className={styles.header__badge}>
+                      {favorites.length}
+                    </span>
+                  )}{' '}
                 </NavLink>
 
                 <NavLink
@@ -155,6 +157,11 @@ export const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <img src="./img/Icons/cart.svg" alt="Cart" />
+                  {cartItems.length > 0 && (
+                    <span className={styles.header__badge}>
+                      {cartItems.length}
+                    </span>
+                  )}{' '}
                 </NavLink>
               </div>
             </div>

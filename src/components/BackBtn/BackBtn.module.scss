@@ -8,13 +8,9 @@
   gap: 4px;
   align-items: center;
 
-  padding-inline: 16px;
+  box-sizing: border-box;
 
   text-decoration: none;
-
-  @include on-tablet {
-    @include padding-inline-responsive;
-  }
 
   &__icon {
     display: inline-block;

@@ -2,9 +2,9 @@ import { useBannerSliderLogic } from '../useBannerSliderLogic';
 import styles from './BannerSliderMobile.module.scss';
 
 const images = [
-  './img/swiper/iphone14Pro.png',
-  './img/swiper/mini_1.png',
-  './img/swiper/mini_2.png',
+  './img/swiper/mini-1.png',
+  './img/swiper/mini-2.png',
+  './img/swiper/mini-3.png',
 ];
 
 export const BannerSliderMobile = () => {

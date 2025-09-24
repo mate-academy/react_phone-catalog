@@ -7,16 +7,6 @@ iframe {
 }
 
 .categorySection {
-  padding-inline: 16px;
-
-  @include on-tablet {
-    @include padding-inline-tablet;
-  }
-
-  @include on-desktop {
-    @include padding-inline-responsive;
-  }
-
   &__title {
     margin: 0;
 

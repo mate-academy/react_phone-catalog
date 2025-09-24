@@ -66,7 +66,7 @@ export const Pagination = ({ total, perPage }: Props) => {
         onClick={() => goToPage(Math.max(currentPage - 1, 1))}
         disabled={currentPage === 1}
       >
-        <img src="./img/Icons/Buttons/Icons/arrow-left.svg" alt="Previous" />
+        <img src="./img/Icons/arrow-left.svg" alt="Previous" />
       </button>
 
       {pagesToShow.map((page, index) => {
@@ -96,7 +96,7 @@ export const Pagination = ({ total, perPage }: Props) => {
         onClick={() => goToPage(Math.min(currentPage + 1, totalPages))}
         disabled={currentPage === totalPages}
       >
-        <img src="./img/Icons/Buttons/Icons/arrow-right.svg" alt="Next" />
+        <img src="./img/Icons/arrow-right.svg" alt="Next" />
       </button>
     </div>
   );

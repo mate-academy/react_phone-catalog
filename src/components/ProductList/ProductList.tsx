@@ -67,10 +67,7 @@ export const ProductList: React.FC<Props> = ({
               isAtStart ? styles['arrow-button--disabled'] : ''
             }`}
           >
-            <img
-              src="./img/Icons/Buttons/Icons/arrow-left.svg"
-              alt="Scroll left"
-            />
+            <img src="./img/Icons/arrow-left.svg" alt="Scroll left" />
           </button>
           <button
             onClick={scrollRight}
@@ -79,10 +76,7 @@ export const ProductList: React.FC<Props> = ({
               isAtEnd ? styles['arrow-button--disabled'] : ''
             }`}
           >
-            <img
-              src="./img/Icons/Buttons/Icons/arrow-right.svg"
-              alt="Scroll right"
-            />
+            <img src="./img/Icons/arrow-right.svg" alt="Scroll right" />
           </button>
         </div>
       </div>

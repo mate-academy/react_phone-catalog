@@ -46,7 +46,7 @@
 
 @mixin grid-desktop($gap: 16px) {
   display: grid;
-  grid-template-columns: repeat(24, 32px);
+  grid-template-columns: repeat(24, minmax(0, 1fr));
   column-gap: $gap;
 }
 

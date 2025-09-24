@@ -6,15 +6,45 @@ iframe {
 }
 
 .page404 {
-  width: 100%;
-  height: calc(100vh - #{$header-height-mobile});
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
-  background-image: url('./img/page-not-found.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  box-sizing: border-box;
+  padding-block-start: 72px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    @include padding-inline-responsive
+  }
 
   @include on-desktop {
-    height: calc(100vh - #{$header-height-tablet});
+    padding-block-start: 88px;
+  }
+
+  span {
+    @include text-style($body-text);
+
+    z-index: 1;
+    color: $color-secondary;
+  }
+  
+  a {
+    @include text-style($body-text);
+
+    z-index: 1;
+    color: $color-secondary;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-accent-secondary;
+    }
+  }
+
+  &__image {
+    align-self: center;
+    width: 300px;
+    height: auto;
+    object-fit: contain;
   }
 }

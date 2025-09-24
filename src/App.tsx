@@ -9,6 +9,7 @@ import { AccessoriesPage } from './components/AccessoriesPage';
 import { FavoritesPage } from './components/FavoritesPage';
 import { CartPage } from './components/CartPage';
 import { Footer } from './components/Footer';
+import { ProductPage } from './components/ProductPage';
 
 export const App = () => (
   <div className="app">
@@ -20,15 +21,15 @@ export const App = () => (
           <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="phones">
             <Route index element={<PhonesPage />} />
-            <Route path=":id" element={<PhonesPage />} />
+            <Route path=":itemId" element={<ProductPage />} />
           </Route>
           <Route path="tablets">
             <Route index element={<TabletsPage />} />
-            <Route path=":id" element={<TabletsPage />} />
+            <Route path=":itemId" element={<ProductPage />} />
           </Route>
           <Route path="accessories">
             <Route index element={<AccessoriesPage />} />
-            <Route path=":id" element={<AccessoriesPage />} />
+            <Route path=":itemId" element={<ProductPage />} />
           </Route>
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />

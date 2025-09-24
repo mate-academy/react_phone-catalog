@@ -46,7 +46,7 @@ export const Footer = () => {
           className={styles.footer__backToTopBtn}
           aria-label="Scroll to top"
         >
-          <img src="./img/Icons/Buttons/Icons/arrow-up.svg" />
+          <img src="./img/Icons/arrow-up.svg" />
         </button>
       </div>
     </div>

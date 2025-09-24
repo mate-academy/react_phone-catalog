@@ -13,17 +13,19 @@ export const HomePage = () => {
     <div className={styles.homePage}>
       <h1 className={styles.homePage__title}>Welcome to Nice Gadgets store!</h1>
       <BannerSlider />
-      <ProductList
-        title={'Brand new models'}
-        products={newestProducts}
-        showOldPrice={false}
-      />
-      <ShopByCategory />
-      <ProductList
-        title={'Hot prices'}
-        products={topDiscounted}
-        showOldPrice={true}
-      />
+      <div className={styles.homePage__main}>
+        <ProductList
+          title={'Brand new models'}
+          products={newestProducts}
+          showOldPrice={false}
+        />
+        <ShopByCategory />
+        <ProductList
+          title={'Hot prices'}
+          products={topDiscounted}
+          showOldPrice={true}
+        />
+      </div>
     </div>
   );
 };

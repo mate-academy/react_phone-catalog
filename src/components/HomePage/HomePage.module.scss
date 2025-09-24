@@ -11,28 +11,36 @@ iframe {
 
   &__title {
     margin: 0;
-    padding: 16px 24px;
+    padding: 72px 16px 24px;
 
-    font-size: map.get($h1-mobile, size);
-    font-weight: map.get($h1-mobile, weight);
-    letter-spacing: map.get($h1-mobile, letter-spacing);
+    @include text-style($h1-mobile);
 
     @include on-tablet {
-      font-size: map.get($h1-desktop, size);
-      font-weight: map.get($h1-desktop, weight);
-      letter-spacing: map.get($h1-desktop, letter-spacing);
+      @include text-style($h1-desktop);
     }
 
     @include on-tablet {
-      padding: 24px 32px;
+      @include padding-inline-responsive;
+
+      padding-top: 80px;
+      padding-bottom: 32px;
     }
 
     @include on-desktop {
-      padding: 32px 56px;
+      padding-top: 120px;
+      padding-bottom: 56px;
+    }
+  }
+
+  &__main {
+    padding-inline: 16px;
+
+    @include on-tablet {
+      @include padding-inline-tablet;
     }
 
-    @include widest {
-      padding: 56px 152px;
+    @include on-desktop {
+      @include padding-inline-responsive;
     }
   }
 }

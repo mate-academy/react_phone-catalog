@@ -1,3 +1,32 @@
-iframe {
-  display: none;
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables' as *;
+
+.accessories {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    @include padding-inline-responsive;
+  }
+
+  h1 {
+    margin: 0;
+
+    @include text-style($h1-mobile);
+
+    @include on-tablet {
+      @include text-style($h1-desktop);
+    }
+  }
+
+  &__quantity {
+    padding-block: 8px 32px;
+
+    @include text-style($body-text);
+
+    @include on-tablet {
+      padding-block-end: 40px;
+    }
+  }
 }

@@ -6,16 +6,9 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 64px;
-  padding-inline: 16px;
 
   @include on-tablet {
     padding-bottom: 80px;
-
-    @include padding-inline-tablet;
-  }
-
-  @include on-desktop {
-    @include padding-inline-responsive;
   }
 
   &__header {

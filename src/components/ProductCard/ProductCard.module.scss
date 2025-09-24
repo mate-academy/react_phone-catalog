@@ -1,6 +1,6 @@
 @use '../../styles/mixins.scss' as *;
 @use '../../styles/variables.scss' as *;
-@use "sass:map";
+@use 'sass:map';
 
 iframe {
   display: none;
@@ -28,6 +28,12 @@ iframe {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
+  &__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
   &__image {
     display: flex;
     align-items: center;
@@ -35,7 +41,7 @@ iframe {
 
     aspect-ratio: 1 / 1;
     width: 100%;
-    /* stylelint-disable no-descending-specificity */
+
     img {
       max-width: 100%;
       height: 200px;
@@ -46,7 +52,6 @@ iframe {
         transform: scale(1.1);
       }
     }
-    /* stylelint-enable no-descending-specificity */
   }
 
   &__content {
@@ -85,29 +90,28 @@ iframe {
   }
 
   &__newPrice {
-  margin: 0;
+    margin: 0;
 
-  @include text-style($h3-desktop);
+    @include text-style($h3-desktop);
 
-  line-height: 140%;
-  color: $color-primary;
-}
+    line-height: 140%;
+    color: $color-primary;
+  }
 
-&__oldPrice {
-  margin: 0;
+  &__oldPrice {
+    margin: 0;
 
-  font-weight: $font-weight-semibold;
-  line-height: 100%;
-  color: $color-secondary;
-  text-decoration: line-through;
+    font-weight: $font-weight-semibold;
+    line-height: 100%;
+    color: $color-secondary;
+    text-decoration: line-through;
 
-  @include text-style($h3-desktop);
-}
-
+    @include text-style($h3-desktop);
+  }
 
   &__line {
-  width: 100%;
-  border-bottom: 1px solid #E2E6E9;
+    width: 100%;
+    border-bottom: 1px solid $color-elements;
   }
 
   &__detailes {
@@ -123,80 +127,91 @@ iframe {
   }
 
   &__detailesRow {
-  display: flex;
-  justify-content: space-between;
-  font-family: $font-primary;
-
-  @include text-style($small-text);
-
-  color: $color-secondary;
-}
-
-&__detailesName {
-  text-align: left;
-}
-
-&__detailesValue {
-  color: $color-primary;
-  text-align: right;
-}
-
-&__buttons {
-  display: flex;
-  gap: 8px;
-  width: 100%;
-
-  &-add {
-    cursor: pointer;
-
-    flex: 1;
-
-    min-width: 120px;
-    height: 40px;
-    padding-inline: 12px;
-    border: none;
-    border-radius: 48px;
-
-    font-family: $font-primary;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    color: $color-white;
-    text-align: center;
-    letter-spacing: 0;
-
-    background-color: $color-accent;
-
-    transition: transform 0.2s ease;
-
-    &:hover {
-      transform: scale(1.02);
-    }
-  }
-
-  &-fav {
-    cursor: pointer;
-
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    font-family: $font-primary;
 
-    width: 40px;
-    height: 40px;
-    border: 1px solid #B4BDC3;
-    border-radius: 48px;
+    @include text-style($small-text);
 
-    background-color: transparent;
-
-    &:hover {
-      transform: scale(1.02);
-    }
-    /* stylelint-disable no-descending-specificity */
-    img {
-      width: 16px;
-      height: 16px;
-    }
-    /* stylelint-enable no-descending-specificity */
+    color: $color-secondary;
   }
-}
+
+  &__detailesName {
+    text-align: left;
+  }
+
+  &__detailesValue {
+    color: $color-primary;
+    text-align: right;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+
+    &-add {
+      cursor: pointer;
+
+  flex: 1;
+
+  min-width: 120px;
+  height: 40px;
+  padding-inline: 12px;
+  border: none;
+  border-radius: 48px;
+
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: $color-white;
+  text-align: center;
+  letter-spacing: 0;
+
+  background-color: $color-accent;
+
+  transition: transform 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &--active {
+    line-height: 100%;
+    background-color: $color-secondary;
+  }
+    }
+
+    &-fav {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 40px;
+      height: 40px;
+      border: 1px solid #B4BDC3;
+      border-radius: 48px;
+
+      background-color: transparent;
+
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &__fav-icon {
+    width: 16px;
+    height: 16px;
+    transition: filter 0.2s ease;
+
+    &--active {
+      filter: brightness(0) saturate(100%) sepia(100%) hue-rotate(10deg) saturate(300%) brightness(1.2);
+    }
+  }
 }

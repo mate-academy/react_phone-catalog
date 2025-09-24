@@ -8,12 +8,16 @@ iframe {
 
 .breadcrumbs {
   box-sizing: border-box;
-  padding-block: 24px;
+  padding-block: 72px 24px;
   font-size: 12px;
   color: $color-secondary;
 
   @include on-tablet {
     padding-block-end: 40px;
+  }
+
+  @include on-desktop {
+    padding-block-start: 88px;
   }
 
   &__list {
