@@ -6,23 +6,21 @@ import back from '../../assets/icons/arrowLeftL.svg';
 import goto from '../../assets/icons/arrowRightL.svg';
 import backLight from '../../assets/icons/arrowLeftLight.svg';
 import gotoLight from '../../assets/icons/arrowRightLight.svg';
+import banner1dt from '../../assets/icons/banner-dt-2k.png';
+import banner2dt from '../../assets/icons/banner-tablets.png';
+import banner3dt from '../../assets/icons/banner-accessories.png';
+import banner1mob from '../../assets/icons/banner-mobmain.png';
+import banner2mob from '../../assets/icons/banner-tablets.png';
+import banner3mob from '../../assets/icons/banner-accessories.png';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useContext } from 'react';
 import { ThemeContext } from '../Themes';
 
-const desktopImg = [
-  '../../assets/icons/banner-dt-2k.png',
-  '../../assets/iconsimg/banner-tablets.png',
-  '../../assets/iconsimg/banner-accessories.png',
-];
+const desktopImg = [banner1dt, banner2dt, banner3dt];
 
-const mobileImg = [
-  '../../assets/iconsimg/banner-mobmain.png',
-  '../../assets/iconsimg/banner-tablets.png',
-  '../../assets/iconsimg/banner-accessories.png',
-];
+const mobileImg = [banner1mob, banner2mob, banner3mob];
 
 export const SliderSwiper = () => {
   const isMobile = useMediaQuery({ maxWidth: 550 });

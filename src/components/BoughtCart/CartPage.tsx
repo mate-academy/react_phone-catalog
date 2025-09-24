@@ -99,9 +99,7 @@ export const CartPage = () => {
             onClick={e => e.stopPropagation()}
           >
             <h2 className={styles.modal__title}>Do you want to buy this?</h2>
-            <p
-              className={styles.window__price}
-            >{`Total: $${totalCartPrice}`}</p>
+            <p className={styles.modal__price}>{`Total: $${totalCartPrice}`}</p>
             <div className={styles.modalbtn__wrapper}>
               <button className={styles.confirm} onClick={confirmCheckout}>
                 Confirm

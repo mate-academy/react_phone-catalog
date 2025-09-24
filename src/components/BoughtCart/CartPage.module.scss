@@ -37,7 +37,7 @@
   @include h2;
 
   @include themy($theme) {
-    color: themed('colorText');
+    color: themed('colorHeaderFooter');
   }
 }
 
@@ -118,6 +118,16 @@
     @include themy($theme) {
       background: themed('colorHeaderFooter');
     }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    color: $color-black;
+
+    @include h2;
   }
 }
 
