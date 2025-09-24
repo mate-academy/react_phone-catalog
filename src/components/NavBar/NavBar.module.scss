@@ -1,11 +1,14 @@
 @use '../../utils/core' as *;
 
 .header {
+  background-color: #0F1121;
+
   @include themy($theme) {
     background: themed('colorHeaderFooter');
   }
 
   border: 1px solid $color-surf-2;
+
   // background-color: #0F1121;
   border-top: none;
   position: sticky;
@@ -21,7 +24,7 @@
   margin: 0 auto;
   height: 48px;
 
-  @include onDesktop {
+  @include on-desktop {
     height: 64px;
   }
 }
@@ -30,7 +33,7 @@
   display: flex;
   gap: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 16px;
   }
 }
@@ -39,12 +42,12 @@
   display: none;
   gap: 64px;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
-    gap: 32px
+    gap: 32px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     display: flex;
     gap: 64px;
   }
@@ -52,12 +55,13 @@
 
 .navbar-item {
   display: flex;
-  @include text-uppercase;
   text-decoration: none;
   text-transform: uppercase;
   color: $color-second;
   align-items: center;
   position: relative;
+
+  @include text-uppercase;
 
   &:active {
     color: $color-white;
@@ -107,11 +111,11 @@
   border: 1px solid $color-surf-2;
   border-top: none;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     display: flex;
   }
 }
@@ -122,11 +126,11 @@
   border: 1px solid $color-surf-2;
   border-top: none;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     display: flex;
   }
 }
@@ -136,11 +140,11 @@
   border: 1px solid $color-surf-2;
   border-top: none;
 
-  @include onTablet {
+  @include on-tablet {
     display: none;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     display: none;
   }
 }
@@ -149,7 +153,7 @@
   display: flex;
   border: 1px solid $color-surf-2;
 
-  @include onDesktop {
+  @include on-desktop {
     display: none;
   }
 }
@@ -160,7 +164,7 @@
   position: absolute;
   top: 17px;
   left: 80px;
-  background-color: #EB5757;
+  background-color: #eb5757;
   color: $color-white;
   font-size: 10px;
   font-weight: bold;
@@ -171,12 +175,12 @@
   justify-content: center;
   align-items: center;
 
-  @include onTablet {
+  @include on-tablet {
     top: 11px;
     left: 35px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     top: 17px;
     left: 34px;
   }

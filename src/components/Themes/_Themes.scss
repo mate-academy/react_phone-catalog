@@ -1,6 +1,6 @@
 /* stylelint-disable scss/no-global-function-names */
-@use '../../utils/mixins.scss' as mixins;
-@use '../../utils/variables.scss' as vars;
+@use '../../utils/mixins' as mixins;
+@use '../../utils/variables' as vars;
 
 $theme: (
   dark: (
@@ -13,6 +13,8 @@ $theme: (
     colorBG: vars.$color-black,
     colorPaginActiv: vars.$color-white,
     colorPagination: vars.$color-elem,
+    colorViolet: vars.$color-accent,
+    colorVioletHover: vars.$color-accent-hover,
   ),
   light: (
     colorSwiperBG: vars.$color-white,
@@ -23,7 +25,9 @@ $theme: (
     colorSecond: #89939A,
     colorBG: vars.$color-white,
     colorPaginActiv: #313237,
-    colorPagination: #E2E6E9,
+    colorPagination: vars.$color-white,
+    colorViolet: vars.$color-surf-2,
+    colorVioletHover: vars.$color-icon-btn,
   ),
 );
 
@@ -31,11 +35,13 @@ $theme: (
   @each $theme, $map in $themes {
     .theme-#{$theme} & {
       $theme-map: () !global;
+
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), '#{$key}');
         $theme-map: map-merge($theme-map, ($key: $value)) !global;
       }
       @content;
+
       $theme-map: null !global;
     }
   }

@@ -3,30 +3,32 @@
 .main__homepage {
   max-width: 1200px;
   margin: 0 auto;
+
   // padding: 0 16px;
 
-  // @include onTablet {
+  // @include on-tablet {
   //   padding: 0 24px;
   // }
 
-  // @include onDesktop {
+  // @include on-desktop {
   //   padding: 0 32px;
   // }
 }
 
 .page__title {
   @include h1;
+
   width: 82%;
   margin: 24px 16px;
   padding: 0 20px;
   color: $color-white;
 
-  @include onTablet {
+  @include on-tablet {
     width: 88%;
     margin: 32px 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     width: 100%;
     margin: 56px 0;
   }
@@ -40,12 +42,21 @@
   margin-top: 56px;
   max-width: 1200px;
 
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
 }
 
 .category__title {
   @include h2;
+
   width: 100%;
-  margin: 56px 0 24px 0;
+  margin: 0 0 24px;
+
   @include themy($theme) {
     color: themed('colorText');
   }
@@ -54,13 +65,25 @@
 .homepage__product,
 .homepage__category,
 .homepage__hotproduct {
-  margin: 0 16px 0 16px;
+  margin: 0 16px;
 
-  @include onTablet {
-    margin: 0 24px 0 24px;
+  @include on-tablet {
+    margin: 0 24px;
   }
 
-  @include onDesktop {
-    margin: 0 32px 0 32px;
+  @include on-desktop {
+    margin: 0 32px;
+  }
+}
+
+.hotproduct__wrapper {
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
   }
 }

@@ -1,4 +1,4 @@
-@import '../../utils/core.scss';
+@import '../../utils/core';
 
 .footer {
   padding-top: 64px;
@@ -9,7 +9,7 @@
   right: 0;
   z-index: 1;
 
-  @include onDesktop {
+  @include on-desktop {
     padding-top: 80px;
   }
 
@@ -21,7 +21,7 @@
     height: 257px;
     border-top: 1px solid $color-elem;
 
-    @include onTablet {
+    @include on-tablet {
       height: 96px;
       display: flex;
       align-items: center;
@@ -36,7 +36,7 @@
     display: flex;
     cursor: pointer;
 
-    @include onTablet {
+    @include on-tablet {
       margin: 32px 0 32px 32px;
     }
   }
@@ -48,7 +48,7 @@
     margin-top: 32px;
     gap: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       margin: 0 32px 0 0;
       justify-content: space-between;
     }
@@ -56,6 +56,7 @@
 
   &__buttonsName {
     color: $color-second;
+
     @include text-small;
   }
 
@@ -81,20 +82,21 @@
   padding: 0;
   margin: 32px 0 0 16px;
 
-  @include onTablet {
+  @include on-tablet {
     margin: 0;
     gap: 13px;
     flex-direction: row;
     justify-content: space-between;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     gap: 106px;
   }
 }
 
 .footer-item {
   @include text-uppercase;
+  
   text-transform: uppercase;
   text-decoration: none;
   counter-reset: $color-white;

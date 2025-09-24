@@ -2,7 +2,9 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../types/ProductTypes';
 import React, { useEffect, useState } from 'react';
 import back from '../../assets/icons/arrowLeft.svg';
-import goto from '../../assets/icons/arrowRightL.svg';
+import backActive from '../../assets/icons/arrowLeftL.svg';
+import goto from '../../assets/icons/arrowRight.svg';
+import gotoActive from '../../assets/icons/arrowRightL.svg';
 import { useSwipeable } from 'react-swipeable';
 import { ProductItem } from '../ProductItem/ProductItem';
 
@@ -67,14 +69,21 @@ export const ProductSlider: React.FC<Props> = ({
             onClick={handlePrev}
             disabled={currentIndex === 0}
           >
-            <img src={back} alt="previous" />
+            <img src={currentIndex === 0 ? back : backActive} alt="previous" />
           </button>
           <button
             className={styles.nextBtn}
             onClick={handleNext}
             disabled={currentIndex + itemsPerPage >= products.length}
           >
-            <img src={goto} alt="previous" />
+            <img
+              src={
+                currentIndex + itemsPerPage >= products.length
+                  ? goto
+                  : gotoActive
+              }
+              alt="previous"
+            />
           </button>
         </div>
       </div>

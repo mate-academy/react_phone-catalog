@@ -1,5 +1,4 @@
-@import '../../utils/core';
-
+@use '../../utils/core' as *;
 
 .cart__wrapper {
   display: block;
@@ -14,18 +13,18 @@
 
   &--right {
     border: 1px solid $color-elem;
-    padding: 24px 24px 0 24px;
+
+    padding: 24px 24px 0;
     max-height: 190px;
     min-width: 25%;
   }
 
-  @include onTablet {
+  @include on-tablet {
     display: block;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     display: flex;
-
   }
 }
 
@@ -34,7 +33,9 @@
   align-items: center;
   justify-content: center;
   margin: 0;
+
   @include h2;
+
   @include themy($theme) {
     color: themed('colorText');
   }
@@ -43,11 +44,15 @@
 .window__title {
   display: flex;
   align-items: center;
+
   justify-content: center;
+
   margin: 0;
+
   @include text-body;
+
   @include themy($theme) {
-    color: themed('colorSecond')
+    color: themed('colorSecond');
   }
 }
 
@@ -58,21 +63,23 @@
   background-color: $color-elem;
 }
 
-.cart__wrapper--right .checkout:active {
-  background-color: $color-accent;
-}
-
 .checkout {
   width: 100%;
   height: 48px;
   background-color: $color-accent;
+
   border: 1px solid $color-accent;
   color: $color-white;
   margin: 0;
+
   @include text-buttons;
   &:hover {
     background-color: red !important;
   }
+}
+
+.cart__wrapper--right .checkout:active {
+  background-color: $color-accent;
 }
 
 .modal {
@@ -94,18 +101,19 @@
     margin-bottom: 10px;
 
     @include themy($theme) {
-      color: themed('colorText')
+      color: themed('colorText');
     }
   }
 
   &__content {
     background: #fff;
     padding: 20px;
+    border: 1px solid $color-black;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     min-width: 300px;
-    animation: fadeIn 0.3s ease-out;
+    animation: fade-in 0.3s ease-out;
 
     @include themy($theme) {
       background: themed('colorHeaderFooter');
@@ -113,7 +121,7 @@
   }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   0% {
     opacity: 0;
     transform: scale(0.95);
@@ -131,12 +139,35 @@
   gap: 30px;
 }
 
-.confirm, .cancel {
+.confirm,
+.cancel {
   width: 100%;
   height: 48px;
   margin-top: 24px;
   background-color: $color-accent;
   border: 1px solid $color-accent;
   color: $color-white;
+
   @include text-buttons;
+}
+
+.productInfolink {
+  display: flex;
+  // align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px;
+
+  &__backTitle {
+    @include text-small;
+
+    color: $color-white;
+    align-items: center;
+    text-decoration: none;
+  }
+}
+
+.page__title {
+  @include h1;
+
+  color: $color-white;
 }

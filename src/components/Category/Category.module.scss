@@ -7,9 +7,8 @@
   align-items: center;
   margin: 0 auto;
   gap: 16px;
-  padding-top: 50px;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
     justify-content: center;
   }
@@ -20,18 +19,19 @@
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
 
-    @include onTablet {
+    @include on-tablet {
       width: 187px;
       height: 187px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 368px;
       height: 368px;
     }
 
     &:hover {
-      box-shadow: 1px 0 0.4em rgb(217, 217, 214);
+      // box-shadow: 1px 0 0.4em rgb(217, 217, 214);
+      box-shadow: 1px 0 0.4em rgb(93, 53, 236);
       transform: translateY(-3px);
       border-image: initial;
     }
@@ -39,7 +39,8 @@
 
   &__title {
     @include h4;
-    margin: 24px 0 0 0;
+
+    margin: 24px 0 0;
 
     @include themy($theme) {
       color: themed('colorText');
@@ -51,7 +52,7 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    margin: 4px 0 0 0;
+    margin: 4px 0 0;
     color: $color-second;
 
     @include themy($theme) {

@@ -4,7 +4,10 @@ import { Product } from '../../types/ProductTypes';
 import { useCart } from '../BoughtCart/CartContext';
 import liked from '../../assets/icons/heartRed.svg';
 import heart from '../../assets/icons/heart.svg';
+import heartLight from '../../assets/icons/heartLight.svg';
 import { useFavourites } from '../Favourites/FavouritesContext';
+import { useContext } from 'react';
+import { ThemeContext } from '../Themes';
 
 interface Props {
   product: Product;
@@ -22,6 +25,16 @@ export const ProductItem: React.FC<Props> = ({
   const isInCart = cart.some(item => item.id === product.id);
   const productPath = `/${product.category}/${product.itemId}`;
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
+  const isBasicDark = theme === 'dark';
+
+  const getLikeIcon = (isDark: boolean, isFav: boolean) => {
+    if (isDark) {
+      return isFav ? liked : heart;
+    }
+
+    return isFav ? liked : heartLight;
+  };
 
   const handleToggleCart = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -48,11 +61,11 @@ export const ProductItem: React.FC<Props> = ({
 
       <h3 className={styles.product__name}>{product.name}</h3>
       <div className={styles.product__discount}>
-        <h3 className={styles.product__price}>{`${product.price}`}</h3>
+        <h3 className={styles.product__price}>{`$${product.price}`}</h3>
         {additionalPrice && (
           <h3
             className={styles.product__fullprice}
-          >{`${product.fullPrice}`}</h3>
+          >{`$${product.fullPrice}`}</h3>
         )}
       </div>
 
@@ -78,11 +91,21 @@ export const ProductItem: React.FC<Props> = ({
       </div>
 
       <div className={styles.buttons}>
-        <button className={styles.button__add} onClick={handleToggleCart}>
+        <button
+          className={styles.button__add}
+          onClick={handleToggleCart}
+          style={{
+            backgroundColor: isInCart
+              ? isBasicDark
+                ? '#4A4D58'
+                : '#75767F'
+              : undefined,
+          }}
+        >
           {isInCart ? 'Remove' : 'Add to cart'}
         </button>
         <button className={styles.button__like} onClick={handleToggleFavourite}>
-          <img src={isFavourite ? liked : heart} alt="like" />
+          <img src={getLikeIcon(isBasicDark, isFavourite)} alt="like" />
         </button>
       </div>
     </div>

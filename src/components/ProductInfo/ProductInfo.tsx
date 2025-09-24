@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './ProductInfo.module.scss';
 import home from '../../assets/icons/home.svg';
 import goto from '../../assets/icons/arrowRight.svg';
 import back from '../../assets/icons/arrowLeft.svg';
 import heart from '../../assets/icons/heart.svg';
+import heartLight from '../../assets/icons/heartLight.svg';
 import like from '../../assets/icons/heartRed.svg';
 import { useInfoHook } from './useInfoHook';
 import { Loader } from '../Loader';
@@ -11,9 +12,20 @@ import { ProductSlider } from '../ProductCard';
 import { NameSlider } from '../../types/namesSlider';
 import { NavLink, useParams } from 'react-router-dom';
 import classNames from 'classnames';
+import { ThemeContext } from '../Themes';
 
 export const ProductInfo: React.FC = () => {
   const { category } = useParams<{ category: string }>();
+  const { theme } = useContext(ThemeContext);
+  const isBasicDark = theme === 'dark';
+
+  const getLikeIcon = (isDark: boolean, isFav: boolean) => {
+    if (isDark) {
+      return isFav ? like : heart;
+    }
+
+    return isFav ? like : heartLight;
+  };
 
   const {
     selectedPhone,
@@ -62,7 +74,7 @@ export const ProductInfo: React.FC = () => {
         )}
       </div>
 
-      <div className={styles.productInfolink__back}>
+      <div className={styles.productInfo__back}>
         <img src={back} alt="Back" onClick={() => navigate(1)} />
         <p
           className={styles.productInfolink__backTitle}
@@ -160,6 +172,13 @@ export const ProductInfo: React.FC = () => {
                 <button
                   className={styles.productInfo__btnCart}
                   onClick={handleToggleCart}
+                  style={{
+                    backgroundColor: isAdded
+                      ? isBasicDark
+                        ? '#4A4D58'
+                        : '#75767F'
+                      : undefined,
+                  }}
                 >
                   {isAdded ? 'Remove' : 'Add to cart'}
                 </button>
@@ -167,7 +186,7 @@ export const ProductInfo: React.FC = () => {
                   className={styles.productInfo__btnLike}
                   onClick={handleToggleFavourite}
                 >
-                  <img src={isFav ? like : heart} alt="like" />
+                  <img src={getLikeIcon(isBasicDark, isFav)} alt="like" />
                 </button>
               </div>
 

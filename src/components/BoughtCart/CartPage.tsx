@@ -2,6 +2,8 @@ import { useState } from 'react';
 import styles from './CartPage.module.scss';
 import { useInfoHook } from '../ProductInfo/useInfoHook';
 import { useCart } from './CartContext';
+import back from '../../assets/icons/arrowLeftL.svg';
+import empty from '../../../public/img/cart-is-empty.png';
 import { BoughtCardItem } from '../BoughtCardItem/BoughtCardItem';
 import { CheckoutChears } from '../Reward/Reward';
 
@@ -38,8 +40,13 @@ export const CartPage = () => {
   return (
     <main className={styles.main__phonepage}>
       <h1 className={styles.title}>
-        <div className={styles.productInfolink__back}>
-          <img src="" alt="back" onClick={() => navigate(-1)} />
+        <div className={styles.productInfolink}>
+          <img
+            src={back}
+            alt="back"
+            onClick={() => navigate(-1)}
+            className={styles.productInfolink__backImg}
+          />
           <p
             className={styles.productInfolink__backTitle}
             onClick={() => navigate(-1)}
@@ -75,7 +82,7 @@ export const CartPage = () => {
       ) : (
         <div className="none">
           <img
-            src="img/cart-is-empty.png"
+            src={empty}
             alt="Your cart is empty"
             className="product__empty"
           />

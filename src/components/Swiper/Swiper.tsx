@@ -13,9 +13,9 @@ import { useContext } from 'react';
 import { ThemeContext } from '../Themes';
 
 const desktopImg = [
-  '/img/banner-dt-2k.png', //dt
-  '/img/banner-tablets.png', //mobile
-  '/img/banner-accessories.png', //tab
+  '/img/banner-dt-2k.png',
+  '/img/banner-tablets.png',
+  '/img/banner-accessories.png',
 ];
 
 const mobileImg = [

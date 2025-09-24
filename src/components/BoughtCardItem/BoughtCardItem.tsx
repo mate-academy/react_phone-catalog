@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Product } from '../../types/ProductTypes';
 import styles from './BoughtCardItem.module.scss';
 import { useNavigate } from 'react-router-dom';
-import Delete from '../../assets/icons/close.svg';
 import DeleteLight from '../../assets/icons/closeLight.svg';
 import { ThemeContext } from '../Themes/Themes';
 import minusGray from '../../assets/icons/minusGray.svg';
@@ -71,7 +70,7 @@ export const BoughtCardItem: React.FC<Props> = ({
             <img
               src={isBasicDark ? grayDelete : DeleteLight}
               alt="delete"
-              className={styles.deleteIcon}
+              className={styles.bought__deleteIcon}
               onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 handleDelete();

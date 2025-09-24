@@ -4,8 +4,12 @@
   max-width: 1200px;
   margin: 0 auto;
 
-  @include onTablet {
-    margin: 32px 24px 64px 24px;
+  @include on-tablet {
+    margin: 0 24px 64px;
+  }
+
+  @include on-desktop {
+    margin: 0 32px 80px;
   }
 }
 
@@ -19,12 +23,12 @@
     transform: scale(1.05);
   }
 
-  @include onTablet {
+  @include on-tablet {
     width: 490px;
     height: 189px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     width: 1040px;
     height: 400px;
   }
@@ -45,12 +49,12 @@
   width: 320px;
   height: 320px;
 
-  @include onTablet {
+  @include on-tablet {
     width: 592px;
     height: 221px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     width: 1056px;
     height: 400px;
   }
@@ -80,7 +84,7 @@
     color: themed('colorSwiperText');
   }
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,19 +103,17 @@
     margin: 0 5px;
     width: 24px;
     height: 4px;
-    margin-top: 40px;
+    margin-top: 20px;
     border-radius: 0;
 
     &-active {
       border: 1px solid $color-white;
       background-color: $color-white;
       opacity: 1;
-    }
-  }
-}
 
-.custom-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  @include themy($theme) {
-    background-color: themed('colorPaginActive');
+      @include themy($theme) {
+        background-color: themed('colorPaginActive');
+      }
+    }
   }
 }

@@ -16,11 +16,11 @@
     border: 1px solid $color-accent;
   }
 
-  @include onTablet {
+  @include on-tablet {
     width: 187px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     width: 176px;
   }
 }
@@ -39,11 +39,11 @@
     border: 1px solid $color-accent;
   }
 
-  @include onTablet {
+  @include on-tablet {
     width: 187px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     width: 176px;
   }
 }

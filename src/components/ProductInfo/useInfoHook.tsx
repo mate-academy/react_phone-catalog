@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useNavigate, useParams } from 'react-router-dom';
-import styles from './ProductInfo.module.scss';
+import './ProductInfo.module.scss';
 import { useEffect, useState } from 'react';
 import { Product, ProductDetails } from '../../types/ProductTypes';
 import { useCart } from '../BoughtCart/CartContext';

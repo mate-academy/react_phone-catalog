@@ -8,6 +8,7 @@
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
+
 .loader::after,
 .loader::before {
   content: '';
@@ -22,6 +23,7 @@
   border-radius: 50%;
   animation: animloader 1s infinite ease-in-out;
 }
+
 .loader::before {
   background-color: #a378ff;
   transform: scale(0.5) translate(-48px, -48px);
@@ -35,6 +37,7 @@
     transform: rotate(360deg);
   }
 }
+
 @keyframes animloader {
   50% {
     transform: scale(1) translate(-50%, -50%);

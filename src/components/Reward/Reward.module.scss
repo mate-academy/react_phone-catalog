@@ -11,11 +11,11 @@
     left: -20px;
     font-size: 24px;
     opacity: 0;
-    animation: floatUp 1.8s ease-in-out forwards;
+    animation: float-up 1.8s ease-in-out forwards;
   }
 }
 
-@keyframes floatUp {
+@keyframes float-up {
   0% {
     transform: translateY(0);
   }

@@ -1,5 +1,4 @@
-@import '../fonts/fonts';
-@import '../../utils/core';
+@use '../../utils/core' as *;
 
 .bought {
   margin-bottom: 17px;
@@ -16,15 +15,14 @@
       background: themed('colorCart');
     }
 
-    @include onTablet {
+    @include on-tablet {
       display: block;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       display: flex;
     }
   }
-
 
   &__wrapper {
     display: flex;
@@ -32,7 +30,7 @@
     gap: 24px;
     padding-bottom: 16px;
 
-    @include onDesktop {
+    @include on-desktop {
       padding-bottom: 0;
     }
   }
@@ -42,7 +40,7 @@
     align-items: center;
     gap: 60px;
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 24px;
     }
   }
@@ -50,6 +48,9 @@
   &__price {
     @include h3;
 
+    width: 80px;
+    height: 31px;
+  
     @include themy($theme) {
       color: themed('colorText');
     }
@@ -65,6 +66,7 @@
     height: 80px;
     width: 80px;
     object-fit: contain;
+    cursor: pointer;
   }
 
   &__title {
@@ -77,6 +79,7 @@
 
   &__num {
     @include text-body;
+
     height: 32px;
     width: 32px;
     display: flex;
@@ -90,14 +93,31 @@
 
   &__button {
     display: flex;
+    width: 96px;
+    height: 32px;
   }
 }
 
 .prevBtn {
+  width: 32px;
+  height: 32px;
   background-color: $color-surf-1;
   border: 1px solid $color-elem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-icon-btn;
+  }
 }
 
 .nextBtn {
+  width: 32px;
+  height: 32px;
   background-color: $color-surf-2;
+  border: 1px solid $color-surf-2;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-icon-btn;
+  }
 }

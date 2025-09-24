@@ -7,30 +7,58 @@
     display: block;
     width: 100%;
     gap: 40px;
-    align-items: flex-start;
+    margin-top: 40px;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
+      align-items: flex-start;
       gap: 16px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       display: flex;
       gap: 64px;
     }
   }
 
   &__wrapperDetails {
-    flex: 1;
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      width: $mob-width;
+      height: 435px;
+      margin-top: 40px;
+    }
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+      width: $tab-width;
+      height: 435px;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      width: 320px;
+      height: 464px;
+      margin-top: 0;
+    }
   }
 
   &__wrapperPhone {
     display: flex;
     gap: 16px;
-    align-items: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
   }
 
   &__Image {
+    display: block;
+    box-sizing: border-box;
     height: 49px;
     width: 51px;
     object-fit: contain;
@@ -47,12 +75,12 @@
       border-color: rgba(96, 11, 133, 0.78);
     }
 
-    @include onTablet {
+    @include on-tablet {
       height: 35px;
       width: 35px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 80px;
       width: 80px;
     }
@@ -63,7 +91,7 @@
     height: 288px;
     object-fit: contain;
 
-    @include onDesktop {
+    @include on-desktop {
       width: 464px;
       height: 464px;
     }
@@ -75,8 +103,9 @@
 
   &__contentTitle {
     @include text-small;
+
     color: $color-second;
-    margin: 0 0 8px 0;
+    margin: 0 0 8px;
   }
 
   &__color {
@@ -85,7 +114,7 @@
     border-radius: 50%;
     cursor: pointer;
     border: 2px solid $color-elem;
-    margin: 0 8px 0px 0;
+    margin: 0 8px 24px 0;
 
     &.selected {
       border: 2px solid rgba(96, 11, 133, 0.78);
@@ -94,11 +123,28 @@
 
   &__line {
     border: 1px solid $color-elem;
-    width: 288px;
+    width: $mob-width;
+
+    @include on-tablet {
+      width: $tab-width;
+    }
+
+    @include on-desktop {
+      width: $desk-width;
+    }
   }
 
   &__memory {
     margin-top: 24px;
+    width: $mob-width;
+
+    @include on-tablet {
+      width: $tab-width;
+    }
+
+    @include on-desktop {
+      width: $desk-width;
+    }
   }
 
   &__price {
@@ -122,6 +168,7 @@
 
   &__priceNew {
     @include h3;
+
     @include themy($theme) {
       color: themed('colorText');
     }
@@ -134,6 +181,7 @@
 
   &__btnCart {
     @include text-buttons;
+
     text-decoration: none;
     border: 1px solid $color-accent;
     background-color: $color-accent;
@@ -143,12 +191,25 @@
     width: 231px;
     height: 48px;
 
-    @include onTablet {
+    @include on-tablet {
       width: 180px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 263px;
+    }
+
+    &:hover {
+      background-color: $color-accent-hover;
+      border: 1px solid $color-accent-hover;
+
+      @include themy($theme) {
+        background: themed('colorVioletHover');
+      }
+    }
+
+    @include themy($theme) {
+      background: themed('colorViolet');
     }
   }
 
@@ -159,31 +220,51 @@
     border: 1px solid $color-surf-2;
     cursor: pointer;
     color: $color-white;
+
+    &:hover {
+      background-color: $color-icon-btn;
+    }
+
+    @include themy($theme) {
+      background: themed('colorSwiperBG');
+    }
   }
 
   &__info {
     margin-top: 24px;
+    width: $mob-width;
+    height: 84px;
+
+    @include on-tablet {
+      width: $tab-width;
+    }
+
+    @include on-desktop {
+      width: $desk-width;
+    }
   }
 
   &__infoAll {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
+    // height: 100%;
   }
 
   &__screenTitle,
   &__techScreenTitle {
     @include text-body;
+
     color: $color-second;
-    margin: 8px 0 0 0;
+    margin: 8px 0 0;
   }
 
   &__screenDescription,
   &__techScreenDescription {
     @include text-body;
+
     color: $color-white;
-    margin: 8px 0 0 0;
+    margin: 8px 0 0;
 
     @include themy($theme) {
       color: themed('colorText');
@@ -195,12 +276,8 @@
     display: block;
     gap: 32px;
 
-    @include onTablet {
-      margin-top: 56px;
+    @include on-desktop {
       display: flex;
-    }
-
-    @include onDesktop {
       margin-top: 80px;
     }
   }
@@ -209,23 +286,25 @@
   &__wrapperTech {
     width: 100%;
 
-    @include onDesktop {
+    @include on-desktop {
       width: 50%;
     }
   }
 
   &__about {
     @include h3;
+
     color: $color-white;
-    margin: 0 0 16px 0;
+    margin: 0 0 16px;
   }
 
   &__content {
-    margin: 32px 0 0 0;
+    margin: 32px 0 0;
   }
 
   &__itemTitle {
     @include h4;
+
     color: $color-white;
 
     @include themy($theme) {
@@ -235,6 +314,7 @@
 
   &__description {
     @include text-body;
+
     color: $color-second;
   }
 
@@ -257,7 +337,7 @@
     }
 
     &:hover,
-    &:hover {
+    &:focus {
       background-color: #2a2c36;
       border: 1px solid $color-second;
       color: $color-white;
@@ -269,49 +349,105 @@
       color: $color-white;
     }
   }
+
+  &__back {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__btn {
+    display: flex;
+    width: $tab-width;
+    align-items: center;
+    gap: 8px;
+
+    @include on-desktop {
+      width: $desk-width;
+    }
+  }
 }
+
+
 
 .productInfolink {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 24px 0 56px 0;
+  margin: 24px 0 40px;
 
   &__title,
   &__backTitle {
     @include text-small;
+
     color: $color-white;
     align-items: center;
     text-decoration: none;
-    //display: flex;
-    //gap: 8px;
   }
 
   &__title-id {
     color: $color-second;
   }
-
-  &__back,
-  &__btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
 }
 
 .Image {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-shrink: 0;
   gap: 16px;
+  justify-content: center;
+  width: 35px;
+  order: 2;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+    order: 1;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+    order: 1;
+  }
 }
 
 .Main__Image {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+  display: block;
+  flex-direction: column;
+  flex-grow: 0;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  margin: 0 auto;
+  order: 1;
+  // margin-left: 35px;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 35px;
+    order: 2;
+  }
+
+  @include on-desktop {
+    display: flex;
+    margin-left: 80px;
+    flex-direction: row;
+    align-items: flex-start;
+    order: 2;
+  }
+
 }
 
 .category__title {
   @include h2;
+
   color: $color-white;
 }

@@ -9,13 +9,13 @@
 
   &__cards {
     display: flex;
-    padding-top: 50px;
+    padding-top: 24px;
     justify-content: flex-start;
     gap: 16px;
     transition: transform 0.3s ease-in-out;
     overflow: hidden;
 
-    @include onDesktop {
+    @include on-desktop {
       justify-content: center;
     }
   }
@@ -64,5 +64,6 @@
 
 .category__title {
   @include h2;
+
   color: $color-white;
 }

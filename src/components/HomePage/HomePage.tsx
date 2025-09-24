@@ -75,11 +75,13 @@ export const HomePage = () => {
             </div>
           </div>
           <div className="homepage__hotproduct">
-            <ProductSlider
-              products={phones}
-              AdditionalPrice={true}
-              title={NameSlider.Hot}
-            />
+            <div className="hotproduct__wrapper">
+              <ProductSlider
+                products={phones}
+                AdditionalPrice={true}
+                title={NameSlider.Hot}
+              />
+            </div>
           </div>
         </>
       )}

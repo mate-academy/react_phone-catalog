@@ -7,7 +7,7 @@
     text-decoration: none;
     padding: 32px;
     background-color: $color-surf-1;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     border: 1px solid $color-surf-1;
     margin: auto;
 
@@ -15,19 +15,19 @@
       background: themed('colorHeaderFooter');
     }
 
-    @include onTablet {
+    @include on-tablet {
       flex: 0 0 33.33%;
       margin: 0;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       flex: 0 0 calc(50% / 4);
       margin: 0;
     }
 
     &:hover {
       box-shadow: 1px 0 0.4em rgb(57, 54, 227);
-      transform: translateY(-3px);
+      transform: translateY(-1px);
       border: 1px solid transparent;
       border-image: initial;
     }
@@ -35,14 +35,15 @@
 
   &__container {
     display: flex;
-    height: 281px;
+    height: 196px;
+    width: 208px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
   }
 
   &__image {
-    height: 281px;
+    height: 100%;
     object-fit: cover;
     transition: all 1s ease;
 
@@ -57,7 +58,9 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+
     @include text-body;
+
     min-height: 42px;
     width: 100%;
     color: $color-white;
@@ -71,27 +74,30 @@
   }
 
   &__discount {
-    margin: 8px 0 0 0;
+    margin: 8px 0 0;
     display: flex;
     gap: 8px;
   }
 
   &__price {
     @include h3;
+
     color: $color-white;
     margin: 0;
   }
 
   &__fullprice {
     margin: 0;
+
     @include h3;
+
     text-decoration: line-through;
     color: $color-second;
   }
 
   &__line {
     border: 1px solid $color-second;
-    margin: 8px 0 0 0;
+    margin: 8px 0 0;
   }
 
   &__information {
@@ -108,10 +114,14 @@
   }
 
   &__screenTitle {
+    @include text-small;
+
     color: $color-second;
   }
 
   &__screenDescription {
+    @include text-small;
+
     text-decoration: none;
     color: $color-white;
 
@@ -125,7 +135,13 @@
   display: flex;
   height: 40px;
   width: 100%;
+
   @include text-buttons;
+
+  @include themy($theme) {
+    background-color: themed('colorHeaderFooter');
+  }
+
   color: $color-white;
   border: 1px solid $color-accent;
   background-color: $color-accent;
@@ -136,6 +152,10 @@
   cursor: pointer;
 
   &:hover {
+    @include themy($theme) {
+      background-color: themed('colorVioletHover');
+    }
+
     background-color: $color-accent-hover;
     border: 1px solid $color-accent-hover;
   }
@@ -147,6 +167,10 @@
 }
 
 .button__like {
+  @include themy($theme) {
+    background-color: themed('colorHeaderFooter');
+  }
+
   display: flex;
   height: 40px;
   width: 40px;
@@ -161,4 +185,5 @@
   &:hover {
     background-color: $color-icon-btn;
   }
+
 }
