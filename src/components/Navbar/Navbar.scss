@@ -320,7 +320,7 @@ body.sidebar-open {
   @media (max-width: 639px) {
     display: flex;
     position: fixed;
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     overflow-x: hidden;
     overflow-y: hidden;
