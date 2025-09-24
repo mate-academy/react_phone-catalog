@@ -1,12 +1,13 @@
 import { Link, useParams } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
+import { ProductDetails } from '../../types/ProductsDetails';
 
 type Props = {
   category: string;
-  productName: string | undefined;
+  product: ProductDetails | null;
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
+export const Breadcrumbs: React.FC<Props> = ({ category, product }) => {
   const getLink = () => {
     switch (category) {
       case 'phones':
@@ -40,9 +41,15 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
             {label}
           </Link>
         </li>
-        {productId && (
-          <li className={styles['breadcrumbs__item-id']}>{productName}</li>
-        )}
+        {productId ? (
+          product ? (
+            <li className={styles['breadcrumbs__item-id']}>{product.name}</li>
+          ) : (
+            <li className={styles['breadcrumbs__item-id']}>
+              Product wasn’t found
+            </li>
+          )
+        ) : null}
       </ul>
     </div>
   );

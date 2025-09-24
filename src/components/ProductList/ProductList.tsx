@@ -81,7 +81,7 @@ export const ProductList: React.FC<Category> = ({ category, title }) => {
   return (
     <section className={styles['product-list']}>
       <div className="container">
-        <Breadcrumbs category={category} productName={undefined} />
+        <Breadcrumbs category={category} product={null} />
         <h1 className={styles['product-list__title']}>{title}</h1>
         <p className={styles['product-list__text']}>{products.length} models</p>
         <div className={styles['product-list__filters']}>
