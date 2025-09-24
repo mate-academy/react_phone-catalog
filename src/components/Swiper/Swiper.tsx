@@ -13,15 +13,15 @@ import { useContext } from 'react';
 import { ThemeContext } from '../Themes';
 
 const desktopImg = [
-  'img/banner-dt-2k.png',
-  'img/banner-tablets.png',
-  'img/banner-accessories.png',
+  '../../assets/icons/banner-dt-2k.png',
+  '../../assets/iconsimg/banner-tablets.png',
+  '../../assets/iconsimg/banner-accessories.png',
 ];
 
 const mobileImg = [
-  'img/banner-mobmain.png',
-  'img/banner-tablets.png',
-  'img/banner-accessories.png',
+  '../../assets/iconsimg/banner-mobmain.png',
+  '../../assets/iconsimg/banner-tablets.png',
+  '../../assets/iconsimg/banner-accessories.png',
 ];
 
 export const SliderSwiper = () => {
