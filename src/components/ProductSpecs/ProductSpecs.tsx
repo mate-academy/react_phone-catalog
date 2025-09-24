@@ -62,7 +62,13 @@ export const ProductSpecs: React.FC<Props> = ({ product }) => {
             <div className={styles.specs__colors}>
               {colorsAvailable.map(availableColor => {
                 const isActive = availableColor === color;
-                const newId = id.replace(color, availableColor);
+                const normalizedColor = color
+                  .toLowerCase()
+                  .replace(/\s+/g, '-');
+                const targetColor = availableColor
+                  .toLowerCase()
+                  .replace(/\s+/g, '-');
+                const newId = id.replace(normalizedColor, targetColor);
 
                 return (
                   <Link

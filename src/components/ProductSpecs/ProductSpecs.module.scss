@@ -215,10 +215,10 @@
   }
 
   &--active {
-    line-height: 100%;
-    background-color: $color-white;
     border: 1px solid #E2E6E9;
+    line-height: 100%;
     color: $color-accent;
+    background-color: $color-white;
   }
     }
 
