@@ -54,7 +54,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
         {images.map((img, index) => (
           <div key={img} className={styles.gallery__slide}>
             <img
-              src={`/${img}`}
+              src={`./${img}`}
               alt={`Product image ${index + 1}`}
               className={styles.gallery__mainImage}
             />
@@ -79,7 +79,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
                 }`}
               >
                 <img
-                  src={`/${img}`}
+                  src={`./${img}`}
                   alt={`Preview ${index + 1}`}
                   className={styles.gallery__previewImg}
                 />
