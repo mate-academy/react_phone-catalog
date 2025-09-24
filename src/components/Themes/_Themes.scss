@@ -15,6 +15,7 @@ $theme: (
     colorPagination: vars.$color-elem,
     colorViolet: vars.$color-accent,
     colorVioletHover: vars.$color-accent-hover,
+    colorSubtitle: vars.$color-white,
   ),
   light: (
     colorSwiperBG: vars.$color-white,
@@ -28,6 +29,7 @@ $theme: (
     colorPagination: vars.$color-white,
     colorViolet: vars.$color-surf-2,
     colorVioletHover: vars.$color-icon-btn,
+    colorSubtitle: vars.$color-second,
   ),
 );
 

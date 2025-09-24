@@ -128,8 +128,8 @@ export const ProductInfo: React.FC = () => {
                 <h3 className={styles.productInfo__contentTitle}>
                   Available colors
                 </h3>
-                {selectedPhone.colorAvaileble &&
-                  selectedPhone.colorAvaileble.map((color, i) => (
+                {selectedPhone.colorsAvailable &&
+                  selectedPhone.colorsAvailable.map((color, i) => (
                     <button
                       key={i}
                       className={classNames(styles.productInfo__color, {
@@ -154,7 +154,9 @@ export const ProductInfo: React.FC = () => {
                         [styles.selected]: selectedMemory === memory,
                       })}
                       onClick={() => handleMemoryChange(memory)}
-                    ></button>
+                    >
+                      {memory}
+                    </button>
                   ))}
               </div>
               <div className={styles.productInfo__line}></div>

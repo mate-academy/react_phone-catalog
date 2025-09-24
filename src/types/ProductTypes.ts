@@ -12,7 +12,7 @@ export interface Phone {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorAvaileble: string[];
+  colorsAvailable: string[];
   color: string;
   images: string[];
   description: Description[];
@@ -36,7 +36,7 @@ export interface Tablet {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorAvaileble: string[];
+  colorsAvailable: string[];
   color: string;
   images: string[];
   description: Description[];
@@ -60,7 +60,7 @@ export interface Accessory {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorAvaileble: string[];
+  colorsAvailable: string[];
   color: string;
   images: string[];
   description: Description[];

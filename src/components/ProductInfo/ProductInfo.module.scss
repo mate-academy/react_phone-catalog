@@ -177,6 +177,12 @@
   &__btn {
     display: flex;
     gap: 8px;
+    width: $tab-width;
+    align-items: center;
+
+    @include on-desktop {
+      width: $desk-width;
+    }
   }
 
   &__btnCart {
@@ -248,7 +254,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // height: 100%;
   }
 
   &__screenTitle,
@@ -274,7 +279,11 @@
   &__wrapperAboutTech {
     margin-top: 56px;
     display: block;
-    gap: 32px;
+    gap: 64px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
 
     @include on-desktop {
       display: flex;
@@ -288,6 +297,14 @@
 
     @include on-desktop {
       width: 50%;
+    }
+  }
+
+  &__wrapperTech {
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
     }
   }
 
@@ -354,20 +371,7 @@
     display: flex;
     gap: 4px;
   }
-
-  &__btn {
-    display: flex;
-    width: $tab-width;
-    align-items: center;
-    gap: 8px;
-
-    @include on-desktop {
-      width: $desk-width;
-    }
-  }
 }
-
-
 
 .productInfolink {
   display: flex;
@@ -425,25 +429,21 @@
   align-self: flex-start;
   margin: 0 auto;
   order: 1;
-  // margin-left: 35px;
 
   @include on-tablet {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    margin-left: 35px;
     order: 2;
   }
 
   @include on-desktop {
     display: flex;
-    margin-left: 80px;
     flex-direction: row;
     align-items: flex-start;
     order: 2;
   }
-
 }
 
 .category__title {

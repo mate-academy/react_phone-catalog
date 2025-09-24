@@ -14,7 +14,7 @@
   &--right {
     border: 1px solid $color-elem;
 
-    padding: 24px 24px 0;
+    padding: 24px;
     max-height: 190px;
     min-width: 25%;
   }
@@ -153,14 +153,17 @@
 
 .productInfolink {
   display: flex;
-  // align-items: center;
   gap: 8px;
   margin: 24px 0 40px;
+  cursor: pointer;
 
   &__backTitle {
     @include text-small;
 
-    color: $color-white;
+    @include themy($theme) {
+      color: themed('colorSubtitle');
+    }
+
     align-items: center;
     text-decoration: none;
   }
@@ -168,6 +171,10 @@
 
 .page__title {
   @include h1;
+
+  @include themy($theme) {
+    color: themed('colorSubtitle');
+  }
 
   color: $color-white;
 }

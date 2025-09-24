@@ -30,13 +30,17 @@
   }
 
   &__logo {
-    margin: 32px 0 16px 32px;
+    margin: 32px 0 32px 16px;
     align-items: center;
     justify-content: center;
-    display: flex;
+    display: block;
     cursor: pointer;
 
     @include on-tablet {
+      margin: 32px 0 32px 24px;
+    }
+
+    @include on-desktop {
       margin: 32px 0 32px 32px;
     }
   }
@@ -96,7 +100,7 @@
 
 .footer-item {
   @include text-uppercase;
-  
+
   text-transform: uppercase;
   text-decoration: none;
   counter-reset: $color-white;

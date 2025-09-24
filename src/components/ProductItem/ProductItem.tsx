@@ -100,6 +100,7 @@ export const ProductItem: React.FC<Props> = ({
                 ? '#4A4D58'
                 : '#75767F'
               : undefined,
+            border: isInCart ? '1px solid #4A4D58' : '1px solid transparent',
           }}
         >
           {isInCart ? 'Remove' : 'Add to cart'}

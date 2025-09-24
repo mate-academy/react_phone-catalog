@@ -20,7 +20,6 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
     @include on-tablet {
-      gap: 16px;
       grid-template-columns: repeat(2, minmax(250px, 1fr));
     }
 
@@ -61,7 +60,7 @@
     margin-top: 8px;
 
     color: $color-second;
-    
+
     @include text-body;
   }
 }

@@ -1,17 +1,21 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styles from './CartPage.module.scss';
 import { useInfoHook } from '../ProductInfo/useInfoHook';
 import { useCart } from './CartContext';
 import back from '../../assets/icons/arrowLeftL.svg';
+import backLight from '../../assets/icons/arrowLeftLight.svg';
 import empty from '../../../public/img/cart-is-empty.png';
 import { BoughtCardItem } from '../BoughtCardItem/BoughtCardItem';
 import { CheckoutChears } from '../Reward/Reward';
+import { ThemeContext } from '../Themes';
 
 export const CartPage = () => {
   const { navigate } = useInfoHook();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
   const [isCheckoutConfirmed, setIsCheckoutConfirmed] = useState(false);
+  const { theme } = useContext(ThemeContext);
+  const isBasicDark = theme === 'dark';
 
   const totalCartPrice = cart.reduce((acc, item) => {
     const itemPrice = item.fullPrice * (item.quantity || 1);
@@ -42,7 +46,7 @@ export const CartPage = () => {
       <h1 className={styles.title}>
         <div className={styles.productInfolink}>
           <img
-            src={back}
+            src={isBasicDark ? back : backLight}
             alt="back"
             onClick={() => navigate(-1)}
             className={styles.productInfolink__backImg}
