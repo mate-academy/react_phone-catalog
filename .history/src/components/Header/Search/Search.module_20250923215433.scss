@@ -1,0 +1,121 @@
+.searchlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  position: relative;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b4bdc3;
+  border-radius: 50px;
+  padding: 8px;
+  box-sizing: border-box;
+  gap: 16px;
+}
+
+.searchbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  height: 16px;
+  width: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.searchicon {
+  height: 16px;
+  width: 16px;
+}
+
+.input {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  font-family: 'Mont-Regular';
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  background: none;
+  box-shadow: none;
+}
+
+.shortlist {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid #B4BDC3;
+  padding: 10px;
+  
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #0f0f11;
+  gap: 8px;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+  gap: 8px;
+  z-index: 1;
+
+  &:hover {
+    box-shadow: 0 3px 20px #17203166;
+    transition: 0.3s ease;
+  }
+}
+
+.photo {
+  object-fit: contain;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease;
+  }
+}
+
+.name {
+  font-family: 'Mont-Regular';
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.price {
+  display: flex;
+  font-family: 'Mont-Bold';
+  font-size: 14px;
+  font-weight: 800;
+}

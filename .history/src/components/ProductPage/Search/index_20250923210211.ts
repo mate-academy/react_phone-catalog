@@ -1,0 +1,1 @@
+export { ProductsList } from './Search';

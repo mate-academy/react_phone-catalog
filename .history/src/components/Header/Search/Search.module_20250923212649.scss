@@ -1,0 +1,125 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.searchlist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #B4BDC3;
+  border-radius: 50px;
+  padding: 5px;
+  box-sizing: border-box;
+  gap: 16px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #0f0f11;
+  gap: 8px;
+}
+
+.product {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  gap: 8px;
+}
+
+.photo {
+  object-fit: contain;
+  width: 208px;
+  height: 196px;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease;
+  }
+}
+
+.name {
+  font-family: 'Mont-Regular';
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Mont-SemiBold';
+  font-size: 12px;
+  font-weight: 700;
+  gap: 8px;
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+  font-family: 'Mont-Bold';
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.newprice {
+  color: #0f0f11;
+}
+
+.oldprice {
+  color: #89939a;
+  position: relative;
+  text-decoration: line-through;
+}
+
+.outer {
+  display: flex;
+  justify-content: space-between;
+  color: #0f0f11;
+}
+
+.inner {
+  color: #89939a;
+}
+
+.searchbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Mont-Regular';
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background: none;
+  height: 16px;
+  width: 32px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

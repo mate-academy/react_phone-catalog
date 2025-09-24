@@ -1,0 +1,97 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.switchers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Mont-Regular';
+  font-size: 14px;
+  font-weight: 600;
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  border: 1px solid #e2e6e9;
+  background: none;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #0f0f11;
+    transition: 0.3s ease;
+  }
+
+  &.active {
+    border: 1px solid #0f0f11;
+    background-color: #0f0f11;
+    color: #ffffff;
+  }
+}
+
+.nextbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  border: 1px solid #b4bdc3;
+  background: none;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #0f0f11;
+    transition: 0.3s ease;
+  }
+
+  &:disabled {
+    cursor: default;
+    border-color: #e2e6e9;
+
+    > * {
+      opacity: 0.3;
+    }
+  }
+}
+
+.prevbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  border: 1px solid #b4bdc3;
+  background: none;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #0f0f11;
+    transition: 0.3s ease;
+  }
+
+  &:disabled {
+    cursor: default;
+    border-color: #e2e6e9;
+
+    > * {
+      opacity: 0.3;
+    }
+  }
+}

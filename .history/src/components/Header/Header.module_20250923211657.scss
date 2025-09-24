@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    height: 1px;
+    background: #e2e6e9;
+    transform: translateX(-50%);
+  }
+}
+
+.headercontent {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+}
+
+.nav {
+  grid-column: span 24;
+  df
+}
+
+.icons {
+  display: flex;
+}

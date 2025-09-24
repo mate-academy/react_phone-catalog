@@ -1,0 +1,21 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.about {
+  grid-column: 1 / 12;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.specs {
+  grid-column: 13 / 25;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
