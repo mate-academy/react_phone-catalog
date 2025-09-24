@@ -3,23 +3,19 @@
 .backToTop {
   @include flex-center;
 
-  gap: $spacing-sm;
-  background: none;
-  border: 1px solid $gray-elements;
-  border-radius: $border-radius-md;
-  padding: $spacing-sm $spacing-lg;
-  color: $secondary;
-  font-size: $font-size-md;
-  font-weight: $font-weight-semibold;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #75767f;
+  background: #3b3e4a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-
-  @include smooth-transition(all);
+  transition: all 0.3s ease;
 
   &:hover {
-    border-color: $primary;
-    background: $background-hover;
+    background: $surface2;
+    border-color: $elements;
   }
 
   &_visible {
@@ -41,8 +37,9 @@
   }
 
   &__arrowIcon {
-    width: 100%;
-    height: 100%;
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
 
     @include smooth-transition(transform);
   }

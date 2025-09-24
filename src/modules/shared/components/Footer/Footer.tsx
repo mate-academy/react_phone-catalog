@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BackToTop } from '../BackToTop';
 import styles from './Footer.module.scss';
 
@@ -6,16 +7,15 @@ export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
-        {/* Logo */}
-        <div className={styles.footer__logo}>
+        <Link to="/" className={styles.footer__logo}>
           <img
             src="/img/logo.png"
             alt="Product Catalog Logo"
             className={styles.footer__logoImage}
           />
-        </div>
+          <span className={styles.footer__logoText}></span>
+        </Link>
 
-        {/* Links */}
         <nav className={styles.footer__nav}>
           <a
             href="https://github.com/your-username/react_phone-catalog"
@@ -33,8 +33,8 @@ export const Footer: React.FC = () => {
           </a>
         </nav>
 
-        {/* Back to Top */}
-        <div className={styles.footer__backToTop}>
+        <div className={styles.footer__backToTopWrapper}>
+          <span className={styles.footer__backToTopText}>Back to top</span>
           <BackToTop />
         </div>
       </div>

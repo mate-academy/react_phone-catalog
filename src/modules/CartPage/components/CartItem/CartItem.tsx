@@ -31,6 +31,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   return (
     <div className={styles.cartItem}>
       <button
+        type="button"
         className={styles.cartItem__remove}
         onClick={handleRemove}
         aria-label="Remove item"
@@ -58,22 +59,24 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
       <div className={styles.cartItem__quantity}>
         <button
+          type="button"
           className={styles.cartItem__quantityBtn}
           onClick={() => handleQuantityChange(item.quantity - 1)}
           disabled={item.quantity <= 1}
           aria-label="Decrease quantity"
         >
-          -
+          <img src="/img/icons/icon-subtraction.png" alt="Decrease" />{' '}
         </button>
 
         <span className={styles.cartItem__quantityValue}>{item.quantity}</span>
 
         <button
+          type="button"
           className={styles.cartItem__quantityBtn}
           onClick={() => handleQuantityChange(item.quantity + 1)}
           aria-label="Increase quantity"
         >
-          +
+          <img src="/img/icons/icon-plus.png" alt="Increase" />
         </button>
       </div>
 

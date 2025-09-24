@@ -7,7 +7,7 @@ export const BackToTop: React.FC = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
+      if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -16,7 +16,9 @@ export const BackToTop: React.FC = () => {
 
     window.addEventListener('scroll', toggleVisibility);
 
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -28,20 +30,18 @@ export const BackToTop: React.FC = () => {
 
   return (
     <button
+      type="button"
       className={classNames(styles.backToTop, {
         [styles.backToTop_visible]: isVisible,
       })}
       onClick={scrollToTop}
-      aria-label="Back to top"
+      aria-label="Scroll back to top"
     >
-      <span className={styles.backToTop__text}>Back to top</span>
-      <div className={styles.backToTop__arrow}>
-        <img
-          src="/img/icons/icon-up.png"
-          alt="Up arrow"
-          className={styles.backToTop__arrowIcon}
-        />
-      </div>
+      <img
+        src="/img/icons/icon-up.png"
+        alt="Up arrow"
+        className={styles.backToTop__arrowIcon}
+      />
     </button>
   );
 };

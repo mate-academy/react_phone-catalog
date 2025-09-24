@@ -61,7 +61,7 @@
 
   &__nav {
     display: flex;
-    gap: $spacing-8xl;
+    gap: 140px;
 
     @media (max-width: $desktop-md) {
       gap: $spacing-7xl;
@@ -97,11 +97,17 @@
     }
   }
 
-  &__backToTop {
+  &__backToTopWrapper {
     @include flex-center;
 
     @media (max-width: $tablet-lg) {
       order: 3;
     }
+  }
+
+  &__backToTopText {
+    color: $icons;
+    padding-right: 16px;
+    font-weight: $font-weight-bold;
   }
 }
