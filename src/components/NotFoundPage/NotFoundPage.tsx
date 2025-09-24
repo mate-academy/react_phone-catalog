@@ -4,7 +4,7 @@ export const NotFoundPage = () => {
   return (
     <div className={styles.page404}>
       <span>Page not found :(</span>
-      <a href="/">Go to homepage 🔗</a>
+      <a href="./">Go to homepage 🔗</a>
       <img
         src="./img/page-not-found.png"
         alt="Page not found"
