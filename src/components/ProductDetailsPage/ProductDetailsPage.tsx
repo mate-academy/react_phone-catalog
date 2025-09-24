@@ -12,7 +12,8 @@ import { LikeSlider } from './LikeSlider';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
-  const { phones, tablets, accessories, isLoading, errorMessage } = useContext(ProductsContext);
+  const { phones, tablets, accessories, isLoading, errorMessage } =
+    useContext(ProductsContext);
 
   const gadget = useMemo(() => {
     return (
@@ -34,7 +35,10 @@ export const ProductDetailsPage = () => {
     <div className={styles.container}>
       {gadget && (
         <div className={styles.breadcrumbs}>
-          <Breadcrumbs categoryTitle={gadget.category} gadgetTitle={gadget.name} />
+          <Breadcrumbs
+            categoryTitle={gadget.category}
+            gadgetTitle={gadget.name}
+          />
         </div>
       )}
 

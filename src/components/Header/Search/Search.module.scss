@@ -33,7 +33,7 @@
   align-items: center;
   justify-content: center;
   justify-content: space-between;
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   font-size: 12px;
   font-weight: 700;
   border: none;
@@ -101,7 +101,7 @@
 .message {
   position: absolute;
   display: flex;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   top: 8px;
   font-size: 14px;
   font-weight: 800;
@@ -124,14 +124,14 @@
 }
 
 .name {
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   font-size: 12px;
   font-weight: 600;
 }
 
 .price {
   display: flex;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 14px;
   font-weight: 800;
 }

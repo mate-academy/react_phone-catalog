@@ -12,7 +12,11 @@ export const BackButton = () => {
   return (
     <div className={styles.container}>
       <button onClick={handleBack} className={styles.button}>
-        <img src="images/Chevron (Arrow Left).svg" alt="PrevArr" className={styles.arrow} />
+        <img
+          src="images/Chevron (Arrow Left).svg"
+          alt="PrevArr"
+          className={styles.arrow}
+        />
         <span className={styles.title}>Back</span>
       </button>
     </div>

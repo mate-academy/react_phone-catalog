@@ -35,7 +35,10 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
 
     return (
       allGadgets.find(
-        g => g.namespaceId === gadget.namespaceId && g.color === color && g.capacity === capacity,
+        g =>
+          g.namespaceId === gadget.namespaceId &&
+          g.color === color &&
+          g.capacity === capacity,
       ) || gadget
     );
   }, [gadget, phones, tablets, accessories, capacity, color]);

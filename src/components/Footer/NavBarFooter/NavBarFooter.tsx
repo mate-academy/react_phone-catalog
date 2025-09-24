@@ -5,7 +5,10 @@ import { NavLink } from 'react-router-dom';
 export const NavBarFooter = () => {
   return (
     <nav className={styles.navbarfooter}>
-      <NavLink to="https://github.com/vanyagg?tab=repositories" className={styles.link}>
+      <NavLink
+        to="https://github.com/vanyagg?tab=repositories"
+        className={styles.link}
+      >
         <span>GITHUB</span>
       </NavLink>
       <NavLink to="/contacts" className={styles.link}>

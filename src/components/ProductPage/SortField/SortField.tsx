@@ -32,7 +32,10 @@ export const SortField: React.FC<Props> = ({
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setOpenSort(false);
         setOpenItem(false);
       }
@@ -49,10 +52,17 @@ export const SortField: React.FC<Props> = ({
     <div className={styles.container} ref={containerRef}>
       <div className={styles.first}>
         <span className={styles.title}>Sort by</span>
-        <button className={styles.button} onClick={() => setOpenSort(!openSort)}>
+        <button
+          className={styles.button}
+          onClick={() => setOpenSort(!openSort)}
+        >
           {sort}
           <img
-            src={openSort ? 'images/Chevron (Arrow Up).svg' : 'images/Chevron (Arrow Down).svg'}
+            src={
+              openSort
+                ? 'images/Chevron (Arrow Up).svg'
+                : 'images/Chevron (Arrow Down).svg'
+            }
             alt="arr"
           />
         </button>
@@ -89,10 +99,17 @@ export const SortField: React.FC<Props> = ({
 
       <div className={styles.second}>
         <span className={styles.title}>Items on page</span>
-        <button className={styles.button} onClick={() => setOpenItem(!openItem)}>
+        <button
+          className={styles.button}
+          onClick={() => setOpenItem(!openItem)}
+        >
           {item}
           <img
-            src={openItem ? 'images/Chevron (Arrow Up).svg' : 'images/Chevron (Arrow Down).svg'}
+            src={
+              openItem
+                ? 'images/Chevron (Arrow Up).svg'
+                : 'images/Chevron (Arrow Down).svg'
+            }
             alt="arr"
           />
         </button>

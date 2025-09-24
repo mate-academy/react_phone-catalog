@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(24, 32px);
   column-gap: 16px;
-  row-gap: 16px;
 }
 
 .back {
@@ -19,7 +18,7 @@
 }
 
 .quantity {
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #89939A;
@@ -29,7 +28,7 @@
   margin: 0;
   margin-top: 16px;
   margin-bottom: 8px;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 48px;
   font-weight: 800;
   color: #0f0f11;
@@ -40,7 +39,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: #0f0f11;

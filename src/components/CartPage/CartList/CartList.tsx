@@ -5,10 +5,16 @@ import { NavLink } from 'react-router-dom';
 import { StoreContext } from '../../../StoreProvider';
 
 export const CartList = () => {
-  const { cartItems, removeItemFromCart, updateQuantity } = useContext(StoreContext);
+  const { cartItems, removeItemFromCart, updateQuantity } =
+    useContext(StoreContext);
 
   const totalAmount = cartItems.reduce(
     (acc, cartItem) => acc + cartItem.product.price * cartItem.quantity,
+    0,
+  );
+
+  const totalQuantity = cartItems.reduce(
+    (acc, cartItem) => acc + cartItem.quantity,
     0,
   );
 
@@ -26,7 +32,10 @@ export const CartList = () => {
               >
                 <img src="images/Union.svg" alt="Cross" />
               </button>
-              <NavLink to={`/product/${cartItem.product.itemId}`} className={styles.link}>
+              <NavLink
+                to={`/product/${cartItem.product.itemId}`}
+                className={styles.link}
+              >
                 <div className={styles.image}>
                   <img
                     className={styles.photo}
@@ -63,7 +72,9 @@ export const CartList = () => {
                   <img className={styles.next} src="images/Plus.svg" />
                 </button>
               </div>
-              <span className={styles.price}>{`$${cartItem.product.price}`}</span>
+              <span
+                className={styles.price}
+              >{`$${cartItem.product.price}`}</span>
             </div>
           </div>
         ))}
@@ -73,7 +84,8 @@ export const CartList = () => {
         <div className={styles.summary}>
           <span className={styles.amount}>{`$${totalAmount}`}</span>
           <span className={styles.total}>
-            Total for {cartItems.length} {cartItems.length > 1 ? 'items' : 'item'}
+            Total for {totalQuantity}{' '}
+            {cartItems.length > 1 ? 'items' : 'item'}
           </span>
         </div>
         <hr />

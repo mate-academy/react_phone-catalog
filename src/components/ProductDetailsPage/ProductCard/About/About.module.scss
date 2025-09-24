@@ -2,28 +2,27 @@
   display: grid;
   grid-template-columns: repeat(24, 32px);
   column-gap: 16px;
-  row-gap: 16px;
 }
 
 .title {
   margin: 0;
   margin-top: 80px;
   margin-bottom: 16px;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 22px;
   font-weight: 800;
   color: #0f0f11;
 }
 
 .infotitle {
-  font-family: 'Mont-SemiBold';
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: #0f0f11;
 }
 
 .infotext {
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #89939a;

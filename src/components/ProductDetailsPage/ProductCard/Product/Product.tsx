@@ -47,8 +47,12 @@ export const Product: React.FC<Props> = ({
     red: '#e23637',
   };
 
-  const { isAddedToCart, isAddedToFavourites, addItemToCart, addItemToFavourites } =
-    useContext(StoreContext);
+  const {
+    isAddedToCart,
+    isAddedToFavourites,
+    addItemToCart,
+    addItemToFavourites,
+  } = useContext(StoreContext);
 
   const { products } = useContext(ProductsContext);
 
@@ -114,7 +118,9 @@ export const Product: React.FC<Props> = ({
                 <span
                   className={`${styles.circle} ${gadgetColor === color ? styles.active : ''}`}
                   style={{
-                    backgroundColor: colorsPicker[gadgetColor.split(' ').join('')] || gadgetColor,
+                    backgroundColor:
+                      colorsPicker[gadgetColor.split(' ').join('')] ||
+                      gadgetColor,
                   }}
                   onClick={() => {
                     handleSelectColor(gadgetColor);
@@ -155,7 +161,9 @@ export const Product: React.FC<Props> = ({
 
         <div className={styles.mainactions}>
           <div className={styles.price}>
-            <span className={styles.newprice}>{`$${gadget.priceDiscount}`}</span>
+            <span
+              className={styles.newprice}
+            >{`$${gadget.priceDiscount}`}</span>
             <span className={styles.oldprice}>{`$${gadget.priceRegular}`}</span>
           </div>
 
@@ -168,7 +176,9 @@ export const Product: React.FC<Props> = ({
                 }
               }}
             >
-              {product && isAddedToCart(product.id) ? 'Added to cart' : 'Add to cart'}
+              {product && isAddedToCart(product.id)
+                ? 'Added to cart'
+                : 'Add to cart'}
             </button>
             <button
               className={styles.favorites}

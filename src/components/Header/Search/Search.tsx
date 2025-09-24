@@ -65,7 +65,11 @@ export const Search = () => {
             setInputValue(event.target.value);
           }}
         />
-        <img src="images/Search.svg" alt="Search" className={styles.searchicon} />
+        <img
+          src="images/Search.svg"
+          alt="Search"
+          className={styles.searchicon}
+        />
       </div>
 
       {query &&
@@ -74,9 +78,16 @@ export const Search = () => {
             {filteredByQuery.slice(0, 15).map(product => (
               <div key={product.id} className={styles.product}>
                 <div className={styles.info}>
-                  <NavLink to={`/product/${product.itemId}`} className={styles.link}>
+                  <NavLink
+                    to={`/product/${product.itemId}`}
+                    className={styles.link}
+                  >
                     <div className={styles.image}>
-                      <img className={styles.photo} src={product.image} alt={product.name} />
+                      <img
+                        className={styles.photo}
+                        src={product.image}
+                        alt={product.name}
+                      />
                     </div>
 
                     <span className={styles.name}>{product.name}</span>
@@ -88,7 +99,9 @@ export const Search = () => {
           </div>
         ) : (
           <div className={styles.messagelist}>
-            <span className={styles.message}>There are no products matching the query</span>
+            <span className={styles.message}>
+              There are no products matching the query
+            </span>
           </div>
         ))}
     </div>

@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 600;
   width: 32px;
@@ -40,7 +40,7 @@
   &.active {
     border: 1px solid #0f0f11;
     background-color: #0f0f11;
-    color: #ffffff;
+    color: #fff;
   }
 }
 

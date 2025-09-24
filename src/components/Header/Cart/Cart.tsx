@@ -13,8 +13,15 @@ export const Cart = () => {
 
   return (
     <NavLink to="/cart" className={getLinkClass}>
-      {cartItems.length > 0 && <div className={styles.counter}>{cartItems.length}</div>}
-      <img src="images/Shopping bag (Cart).svg" alt="Cart Logo" className={styles.icon} />
+      {cartItems.length > 0 && (
+        <div className={styles.counter}>{cartItems.length}</div>
+      )}
+      <img
+        src="images/Shopping bag (Cart).svg"
+        alt="Cart Logo"
+        className={styles.icon}
+      />
     </NavLink>
   );
 };
+

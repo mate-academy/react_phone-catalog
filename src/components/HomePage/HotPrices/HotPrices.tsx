@@ -7,14 +7,20 @@ import { ProductsContext } from '../../../ProductsProvider';
 
 export const HotPrices = () => {
   const { products, errorMessage } = useContext(ProductsContext);
-  const { isAddedToCart, isAddedToFavourites, addItemToCart, addItemToFavourites } =
-    useContext(StoreContext);
+  const {
+    isAddedToCart,
+    isAddedToFavourites,
+    addItemToCart,
+    addItemToFavourites,
+  } = useContext(StoreContext);
 
   const [currentProduct, setCurrentProduct] = useState(0);
 
   const hotPricesProducts = [...products].sort(
     (product1, product2) =>
-      product2.fullPrice - product2.price - (product1.fullPrice - product1.price),
+      product2.fullPrice -
+      product2.price -
+      (product1.fullPrice - product1.price),
   );
 
   const handlePrevProduct = () => {
@@ -23,7 +29,9 @@ export const HotPrices = () => {
 
   const handleNextProduct = () => {
     setCurrentProduct(index =>
-      index < hotPricesProducts.length - 1 ? index + 1 : hotPricesProducts.length - 1,
+      index < hotPricesProducts.length - 1
+        ? index + 1
+        : hotPricesProducts.length - 1,
     );
   };
 
@@ -57,64 +65,79 @@ export const HotPrices = () => {
 
       {errorMessage === '' ? (
         <div className={styles.productsslider}>
-          {hotPricesProducts.slice(currentProduct, currentProduct + 4).map(product => (
-            <div key={product.id} className={styles.product}>
-              <NavLink to={`/product/${product.itemId}`} className={styles.link}>
-                <div className={styles.container}>
-                  <img className={styles.photo} src={product.image} alt={product.name} />
+          {hotPricesProducts
+            .slice(currentProduct, currentProduct + 4)
+            .map(product => (
+              <div key={product.id} className={styles.product}>
+                <NavLink
+                  to={`/product/${product.itemId}`}
+                  className={styles.link}
+                >
+                  <div className={styles.container}>
+                    <img
+                      className={styles.photo}
+                      src={product.image}
+                      alt={product.name}
+                    />
+                  </div>
+
+                  <span className={styles.name}>{product.name}</span>
+                </NavLink>
+
+                <div className={styles.description}>
+                  <div className={styles.price}>
+                    <span
+                      className={styles.newprice}
+                    >{`$${product.price}`}</span>
+                    <span
+                      className={styles.oldprice}
+                    >{`$${product.fullPrice}`}</span>
+                  </div>
+
+                  <hr />
+                  <span className={styles.outer}>
+                    <span className={styles.inner}>Screen</span>
+                    {product.screen}
+                  </span>
+                  <span className={styles.outer}>
+                    <span className={styles.inner}>Capacity</span>
+                    {product.capacity}
+                  </span>
+                  <span className={styles.outer}>
+                    <span className={styles.inner}>RAM</span>
+                    {product.ram}
+                  </span>
                 </div>
 
-                <span className={styles.name}>{product.name}</span>
-              </NavLink>
-
-              <div className={styles.description}>
-                <div className={styles.price}>
-                  <span className={styles.newprice}>{`$${product.price}`}</span>
-                  <span className={styles.oldprice}>{`$${product.fullPrice}`}</span>
+                <div className={styles.buttons}>
+                  <button
+                    className={`${styles.addbutton} ${isAddedToCart(product.id) ? styles.active : ''}`}
+                    onClick={() => {
+                      addItemToCart({ id: product.id, product, quantity: 1 });
+                    }}
+                  >
+                    {isAddedToCart(product.id)
+                      ? 'Added to cart'
+                      : 'Add to cart'}
+                  </button>
+                  <button
+                    className={styles.favorites}
+                    onClick={() => {
+                      addItemToFavourites(product);
+                    }}
+                  >
+                    <img
+                      src={
+                        isAddedToFavourites(product.id)
+                          ? 'images/Favourites Filled (Heart Like).svg'
+                          : 'images/Favourites (Heart Like).svg'
+                      }
+                      alt="Favorites"
+                    />
+                  </button>
                 </div>
-
-                <hr />
-                <span className={styles.outer}>
-                  <span className={styles.inner}>Screen</span>
-                  {product.screen}
-                </span>
-                <span className={styles.outer}>
-                  <span className={styles.inner}>Capacity</span>
-                  {product.capacity}
-                </span>
-                <span className={styles.outer}>
-                  <span className={styles.inner}>RAM</span>
-                  {product.ram}
-                </span>
               </div>
-
-              <div className={styles.buttons}>
-                <button
-                  className={`${styles.addbutton} ${isAddedToCart(product.id) ? styles.active : ''}`}
-                  onClick={() => {
-                    addItemToCart({ id: product.id, product, quantity: 1 });
-                  }}
-                >
-                  {isAddedToCart(product.id) ? 'Added to cart' : 'Add to cart'}
-                </button>
-                <button
-                  className={styles.favorites}
-                  onClick={() => {
-                    addItemToFavourites(product);
-                  }}
-                >
-                  <img
-                    src={
-                      isAddedToFavourites(product.id)
-                        ? 'images/Favourites Filled (Heart Like).svg'
-                        : 'images/Favourites (Heart Like).svg'
-                    }
-                    alt="Favorites"
-                  />
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       ) : (
         <h2 className={styles.error}>Unable to load products</h2>

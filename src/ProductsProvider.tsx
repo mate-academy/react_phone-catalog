@@ -1,7 +1,13 @@
 /* eslint-disable max-len */
 import React, { useEffect, useMemo, useState } from 'react';
 import { Product } from './types/Product';
-import { getAccessories, getPhones, getProducts, getSuggestedProducts, getTablets } from './api';
+import {
+  getAccessories,
+  getPhones,
+  getProducts,
+  getSuggestedProducts,
+  getTablets,
+} from './api';
 import { Gadget } from './types/Gadget';
 
 type ProductsContextType = {
@@ -97,8 +103,20 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       isLoading,
       setIsLoading,
     }),
-    [products, suggestedProducts, phones, tablets, accessories, isLoading, errorMessage],
+    [
+      products,
+      suggestedProducts,
+      phones,
+      tablets,
+      accessories,
+      isLoading,
+      errorMessage,
+    ],
   );
 
-  return <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>;
+  return (
+    <ProductsContext.Provider value={value}>
+      {children}
+    </ProductsContext.Provider>
+  );
 };

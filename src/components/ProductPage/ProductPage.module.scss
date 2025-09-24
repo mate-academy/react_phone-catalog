@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(24, 32px);
   column-gap: 16px;
-  row-gap: 16px;
 }
 
 .errorcontent {
@@ -17,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 20px;
   font-weight: 800;
   border-radius: 20px;
@@ -39,7 +38,7 @@
   flex-direction: column;
 
   & span {
-    font-family: 'Mont-Regular';
+    font-family: Mont-Regular, sans-serif;
     font-size: 14px;
     font-weight: 600;
     color: #89939a;
@@ -50,7 +49,7 @@
   margin: 0;
   margin-top: 40px;
   margin-bottom: 8px;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 48px;
   font-weight: 800;
   color: #0f0f11;
@@ -61,7 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: #0f0f11;

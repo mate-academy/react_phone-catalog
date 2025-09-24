@@ -11,9 +11,17 @@ type Props = {
   endIndex: number;
 };
 
-export const ProductsList: React.FC<Props> = ({ sortedProducts, startIndex, endIndex }) => {
-  const { isAddedToCart, isAddedToFavourites, addItemToCart, addItemToFavourites } =
-    useContext(StoreContext);
+export const ProductsList: React.FC<Props> = ({
+  sortedProducts,
+  startIndex,
+  endIndex,
+}) => {
+  const {
+    isAddedToCart,
+    isAddedToFavourites,
+    addItemToCart,
+    addItemToFavourites,
+  } = useContext(StoreContext);
 
   return (
     <div className={styles.productslist}>
@@ -21,7 +29,11 @@ export const ProductsList: React.FC<Props> = ({ sortedProducts, startIndex, endI
         <div key={product.id} className={styles.product}>
           <NavLink to={`/product/${product.itemId}`} className={styles.link}>
             <div className={styles.container}>
-              <img className={styles.photo} src={product.image} alt={product.name} />
+              <img
+                className={styles.photo}
+                src={product.image}
+                alt={product.name}
+              />
             </div>
 
             <span className={styles.name}>{product.name}</span>

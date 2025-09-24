@@ -4,6 +4,7 @@ import styles from './CartPage.module.scss';
 import { StoreContext } from '../../StoreProvider';
 import { BackButton } from '../ProductDetailsPage/BackButton';
 import { CartList } from './CartList';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 export const CartPage = () => {
   const { cartItems } = useContext(StoreContext);
@@ -11,6 +12,7 @@ export const CartPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.upper}>
+        <Breadcrumbs categoryTitle={'Cart'} />
         <div className={styles.back}>
           <BackButton />
         </div>

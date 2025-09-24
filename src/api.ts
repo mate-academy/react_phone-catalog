@@ -12,7 +12,10 @@ export function getSuggestedProducts() {
       for (let i = randomProducts.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
 
-        [randomProducts[i], randomProducts[j]] = [randomProducts[j], randomProducts[i]];
+        [randomProducts[i], randomProducts[j]] = [
+          randomProducts[j],
+          randomProducts[i],
+        ];
       }
 
       return randomProducts.slice(0, 10);

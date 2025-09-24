@@ -11,16 +11,14 @@ export const FavouritesPage = () => {
 
   return (
     <div className={styles.container}>
-      <Breadcrumbs categoryTitle={'Favourites'} />
       <div className={styles.upper}>
+        <Breadcrumbs categoryTitle={'Favourites'} />
         <div className={styles.back}>
           <BackButton />
         </div>
 
         <h1 className={styles.title}>Favourites</h1>
-        <span className={styles.quantity}>{favourites.length} items</span>
-      </div>
-
+        <span className={styles.quantity}>{favourites.length} {favourites.length > 1 ? 'items' : 'item'}</span>
       {favourites.length === 0 ? (
         <h2 className={styles.message}>{`You don't have any favourites...`}</h2>
       ) : (
@@ -28,6 +26,8 @@ export const FavouritesPage = () => {
           <FavouritesList />
         </div>
       )}
+      </div>
+
     </div>
   );
 };

@@ -93,7 +93,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   font-size: 13px;
   font-weight: 600;
   border: 1px solid #b4bdc3;
@@ -105,7 +105,7 @@
   cursor: pointer;
 
   &.active {
-    color: #ffffff;
+    color: #fff;
     font-weight: 500;
     border-color: #0f0f11;
     background-color: #0f0f11;
@@ -124,7 +124,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 20px;
   font-weight: 800;
   border-radius: 20px;
@@ -145,7 +145,7 @@
   margin: 0;
   margin-top: 16px;
   margin-bottom: 40px;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: #0f0f11;
@@ -156,7 +156,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: #0f0f11;
@@ -175,7 +175,7 @@
 }
 
 .name {
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 600;
 }
@@ -184,7 +184,7 @@
   display: flex;
   flex-direction: column;
   grid-column: 14 / span 7;
-  font-family: 'Mont-SemiBold';
+  font-family: Mont-SemiBold, sans-serif;
   gap: 32px;
   font-size: 12px;
   font-weight: 700;
@@ -209,14 +209,14 @@
 }
 
 .newprice {
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: #0f0f11;
 }
 
 .oldprice {
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   font-size: 22px;
   font-weight: 500;
   text-decoration: line-through;
@@ -275,12 +275,12 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   height: 48px;
   width: 263px;
   font-size: 14px;
   font-weight: 700;
-  color: #ffffff;
+  color: #fff;
   background-color: #216cff;
   border: none;
   border-radius: 8px;
@@ -293,7 +293,7 @@ hr {
 
   &.active {
     color: #216cff;
-    background-color: #ffffff;
+    background-color: #fff;
     cursor: default;
     box-shadow: none;
   }

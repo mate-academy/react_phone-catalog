@@ -1,1 +1,0 @@
-export { Butt } from './Button';

@@ -13,8 +13,15 @@ export const Favorites = () => {
 
   return (
     <NavLink to="/favorites" className={getLinkClass}>
-      {favourites.length > 0 && <div className={styles.counter}>{favourites.length}</div>}
-      <img src="images/Favourites (Heart Like).svg" alt="Favorites Logo" className={styles.icon} />
+      {favourites.length > 0 && (
+        <div className={styles.counter}>{favourites.length}</div>
+      )}
+      <img
+        src="images/Favourites (Heart Like).svg"
+        alt="Favorites Logo"
+        className={styles.icon}
+      />
     </NavLink>
   );
 };
+

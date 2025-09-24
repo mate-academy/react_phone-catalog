@@ -8,7 +8,10 @@ type Props = {
   gadgetTitle?: string;
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ categoryTitle, gadgetTitle }) => {
+export const Breadcrumbs: React.FC<Props> = ({
+  categoryTitle,
+  gadgetTitle,
+}) => {
   return (
     <div className={styles.container}>
       <NavLink to="/" className={styles.link}>

@@ -1,19 +1,18 @@
 .footer {
   display: grid;
   align-items: center;
+  justify-content: center;
   grid-template-columns: repeat(24, 32px);
   column-gap: 16px;
+  margin-top: 80px;
 }
 
 .line {
   border: none;
   border-top: 1px solid #e2e6e9;
   width: 100vw;
-  margin: 0;
-  margin-top: 80px;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-bottom: 100px;
+  position: absolute;
 }
 
 .logo {

@@ -57,7 +57,9 @@ export const ShopByCategory = () => {
             alt="Gadget image"
           />
           <h3 className={styles.name}>Accessories</h3>
-          <span className={styles.quantity}>{`${accessories.length} models`}</span>
+          <span
+            className={styles.quantity}
+          >{`${accessories.length} models`}</span>
         </NavLink>
       </div>
     </>

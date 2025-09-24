@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(24, 32px);
   column-gap: 16px;
-  row-gap: 16px;
 }
 
 .link {
@@ -31,7 +30,7 @@
 
 .title {
   margin-top: 80px;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: #0f0f11;
@@ -39,7 +38,7 @@
 }
 
 .error {
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: #0f0f11;
@@ -52,7 +51,6 @@
   display: grid;
   grid-template-columns: repeat(24, 32px);
   column-gap: 16px;
-  row-gap: 16px;
 }
 
 .product {
@@ -81,7 +79,7 @@
 }
 
 .name {
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 600;
 }
@@ -90,7 +88,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: 'Mont-SemiBold';
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 700;
   gap: 8px;
@@ -98,7 +96,7 @@
 
 .price {
   display: flex;
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold, sans-serif;
   font-size: 22px;
   font-weight: 800;
   gap: 8px;
@@ -166,10 +164,10 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Mont-Regular';
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: #ffffff;
+  color: #fff;
   background-color: #216cff;
   height: 40px;
   width: 160px;
@@ -184,7 +182,7 @@ hr {
 
   &.active {
     color: #216cff;
-    background-color: #ffffff;
+    background-color: #fff;
     cursor: default;
     box-shadow: none;
   }

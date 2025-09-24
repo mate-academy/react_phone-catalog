@@ -7,8 +7,12 @@ import { StoreContext } from '../../../StoreProvider';
 
 export const LikeSlider = () => {
   const { suggestedProducts } = useContext(ProductsContext);
-  const { isAddedToCart, isAddedToFavourites, addItemToCart, addItemToFavourites } =
-    useContext(StoreContext);
+  const {
+    isAddedToCart,
+    isAddedToFavourites,
+    addItemToCart,
+    addItemToFavourites,
+  } = useContext(StoreContext);
   const [currentProduct, setCurrentProduct] = useState(0);
 
   const handlePrevProduct = () => {
@@ -17,7 +21,9 @@ export const LikeSlider = () => {
 
   const handleNextProduct = () => {
     setCurrentProduct(index =>
-      index < suggestedProducts.length - 1 ? index + 1 : suggestedProducts.length - 1,
+      index < suggestedProducts.length - 1
+        ? index + 1
+        : suggestedProducts.length - 1,
     );
   };
 
@@ -49,72 +55,83 @@ export const LikeSlider = () => {
         </div>
       </div>
       <div className={styles.productsslider}>
-        {suggestedProducts.slice(currentProduct, currentProduct + 4).map(suggestedProduct => (
-          <div key={suggestedProduct.id} className={styles.product}>
-            <NavLink to={`/product/${suggestedProduct.itemId}`} className={styles.link}>
-              <div className={styles.container}>
-                <img
-                  className={styles.photo}
-                  src={suggestedProduct.image}
-                  alt={suggestedProduct.name}
-                />
+        {suggestedProducts
+          .slice(currentProduct, currentProduct + 4)
+          .map(suggestedProduct => (
+            <div key={suggestedProduct.id} className={styles.product}>
+              <NavLink
+                to={`/product/${suggestedProduct.itemId}`}
+                className={styles.link}
+              >
+                <div className={styles.container}>
+                  <img
+                    className={styles.photo}
+                    src={suggestedProduct.image}
+                    alt={suggestedProduct.name}
+                  />
+                </div>
+
+                <span className={styles.name}>{suggestedProduct.name}</span>
+              </NavLink>
+
+              <div className={styles.description}>
+                <div className={styles.price}>
+                  <span
+                    className={styles.newprice}
+                  >{`$${suggestedProduct.price}`}</span>
+                  <span
+                    className={styles.oldprice}
+                  >{`$${suggestedProduct.fullPrice}`}</span>
+                </div>
+
+                <hr />
+                <span className={styles.outer}>
+                  <span className={styles.inner}>Screen</span>
+                  {suggestedProduct.screen}
+                </span>
+                <span className={styles.outer}>
+                  <span className={styles.inner}>Capacity</span>
+                  {suggestedProduct.capacity}
+                </span>
+                <span className={styles.outer}>
+                  <span className={styles.inner}>RAM</span>
+                  {suggestedProduct.ram}
+                </span>
               </div>
 
-              <span className={styles.name}>{suggestedProduct.name}</span>
-            </NavLink>
-
-            <div className={styles.description}>
-              <div className={styles.price}>
-                <span className={styles.newprice}>{`$${suggestedProduct.price}`}</span>
-                <span className={styles.oldprice}>{`$${suggestedProduct.fullPrice}`}</span>
+              <div className={styles.buttons}>
+                <button
+                  className={`${styles.addbutton} ${isAddedToCart(suggestedProduct.id) ? styles.active : ''}`}
+                  onClick={() => {
+                    addItemToCart({
+                      id: suggestedProduct.id,
+                      product: suggestedProduct,
+                      quantity: 1,
+                    });
+                  }}
+                >
+                  {isAddedToCart(suggestedProduct.id)
+                    ? 'Added to cart'
+                    : 'Add to cart'}
+                </button>
+                <button
+                  className={styles.favorites}
+                  onClick={() => {
+                    addItemToFavourites(suggestedProduct);
+                  }}
+                >
+                  <img
+                    src={
+                      isAddedToFavourites(suggestedProduct.id)
+                        ? 'images/Favourites Filled (Heart Like).svg'
+                        : 'images/Favourites (Heart Like).svg'
+                    }
+                    alt="Favorites"
+                  />
+                </button>
               </div>
-
-              <hr />
-              <span className={styles.outer}>
-                <span className={styles.inner}>Screen</span>
-                {suggestedProduct.screen}
-              </span>
-              <span className={styles.outer}>
-                <span className={styles.inner}>Capacity</span>
-                {suggestedProduct.capacity}
-              </span>
-              <span className={styles.outer}>
-                <span className={styles.inner}>RAM</span>
-                {suggestedProduct.ram}
-              </span>
             </div>
-
-            <div className={styles.buttons}>
-              <button
-                className={`${styles.addbutton} ${isAddedToCart(suggestedProduct.id) ? styles.active : ''}`}
-                onClick={() => {
-                  addItemToCart({
-                    id: suggestedProduct.id,
-                    product: suggestedProduct,
-                    quantity: 1,
-                  });
-                }}
-              >
-                {isAddedToCart(suggestedProduct.id) ? 'Added to cart' : 'Add to cart'}
-              </button>
-              <button
-                className={styles.favorites}
-                onClick={() => {
-                  addItemToFavourites(suggestedProduct);
-                }}
-              >
-                <img
-                  src={
-                    isAddedToFavourites(suggestedProduct.id)
-                      ? 'images/Favourites Filled (Heart Like).svg'
-                      : 'images/Favourites (Heart Like).svg'
-                  }
-                  alt="Favorites"
-                />
-              </button>
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

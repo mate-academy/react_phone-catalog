@@ -27,7 +27,9 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   };
 
   const { products, isLoading, errorMessage } = useContext(ProductsContext);
-  const filteredProducts = products.filter(product => product.category === category);
+  const filteredProducts = products.filter(
+    product => product.category === category,
+  );
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -120,7 +122,9 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
         </div>
       )}
 
-      {sortedProducts.length === 0 && <h2 className={styles.error}>{emptyMessage[category]}</h2>}
+      {sortedProducts.length === 0 && (
+        <h2 className={styles.error}>{emptyMessage[category]}</h2>
+      )}
 
       {errorMessage && (
         <div className={styles.errorcontent}>
