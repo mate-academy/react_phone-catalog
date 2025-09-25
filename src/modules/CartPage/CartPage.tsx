@@ -13,7 +13,7 @@ export const CartPage: React.FC = () => {
         <h1 className={styles.cartPage__title}>Your cart</h1>
         <div className={styles.cartPage__empty}>
           <img
-            src="/img/cart-is-empty.png"
+            src="img/cart-is-empty.png"
             alt="Empty cart"
             className={styles.cartPage__emptyImage}
           />

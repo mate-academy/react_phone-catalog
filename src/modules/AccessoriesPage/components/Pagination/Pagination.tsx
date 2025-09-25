@@ -31,7 +31,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === 1}
         aria-label="Previous page"
       >
-        <img src="/img/icons/icon-left.png" alt="Previous" />
+        <img src="img/icons/icon-left.png" alt="Previous" />
       </button>
 
       <div className={styles.pagination__pages}>
@@ -85,7 +85,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === totalPages}
         aria-label="Next page"
       >
-        <img src="/img/icons/icon-right.png" alt="Next" />
+        <img src="img/icons/icon-right.png" alt="Next" />
       </button>
     </div>
   );

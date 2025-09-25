@@ -39,7 +39,7 @@ export const App: React.FC = () => {
                     element={<AccessoriesPage />}
                   />
                   <Route
-                    path={`${ROUTES.PRODUCT}/:productId`}
+                    path={`${ROUTES.PRODUCT}`}
                     element={<ProductDetailsPage />}
                   />
                   <Route path={ROUTES.CART} element={<CartPage />} />

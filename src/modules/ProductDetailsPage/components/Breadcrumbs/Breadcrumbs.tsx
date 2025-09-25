@@ -20,7 +20,7 @@ export const Breadcrumbs: React.FC<Props> = ({ product }) => {
         onClick={() => navigate(-1)}
         aria-label="Go back"
       >
-        <img src="/img/icons/icon-left.png" alt="Back" />
+        <img src="img/icons/icon-left.png" alt="Back" />
         Back
       </button>
 

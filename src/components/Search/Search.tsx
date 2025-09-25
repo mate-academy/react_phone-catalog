@@ -30,7 +30,7 @@ export const Search: React.FC<Props> = ({
         onChange={e => setSearchTerm(e.target.value)}
       />
       <img
-        src="/img/icons/icon-search.png"
+        src="img/icons/icon-search.png"
         alt="Search"
         className={styles.search__icon}
       />

@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
       <div className={styles.footer__container}>
         <Link to="/" className={styles.footer__logo}>
           <img
-            src="/img/logo.png"
+            src="img/logo.png"
             alt="Product Catalog Logo"
             className={styles.footer__logoImage}
           />

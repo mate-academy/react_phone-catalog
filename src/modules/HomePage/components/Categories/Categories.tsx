@@ -7,15 +7,15 @@ import {
 import styles from './Categories.module.scss';
 
 const CATEGORY_IMAGES = {
-  [CATEGORIES.PHONES]: '/img/category-phones.png',
-  [CATEGORIES.TABLETS]: '/img/category-tablets.png',
-  [CATEGORIES.ACCESSORIES]: '/img/category-accessories.png',
+  [CATEGORIES.PHONES]: 'img/category-phones.png',
+  [CATEGORIES.TABLETS]: 'img/category-tablets.png',
+  [CATEGORIES.ACCESSORIES]: 'img/category-accessories.png',
 };
 
 const CATEGORY_WEBP_IMAGES = {
-  [CATEGORIES.PHONES]: '/img/category-phones.webp',
-  [CATEGORIES.TABLETS]: '/img/category-tablets.webp',
-  [CATEGORIES.ACCESSORIES]: '/img/category-accessories.webp',
+  [CATEGORIES.PHONES]: 'img/category-phones.webp',
+  [CATEGORIES.TABLETS]: 'img/category-tablets.webp',
+  [CATEGORIES.ACCESSORIES]: 'img/category-accessories.webp',
 };
 
 export const Categories: React.FC = () => {

@@ -38,7 +38,7 @@ export const BackToTop: React.FC = () => {
       aria-label="Scroll back to top"
     >
       <img
-        src="/img/icons/icon-up.png"
+        src="img/icons/icon-up.png"
         alt="Up arrow"
         className={styles.backToTop__arrowIcon}
       />

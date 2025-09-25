@@ -68,7 +68,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             onClick={() => scroll('left')}
             aria-label="Previous products"
           >
-            <img src="/img/icons/icon-left.png" alt="Previous" />
+            <img src="img/icons/icon-left.png" alt="Previous" />
           </button>
 
           <button
@@ -80,7 +80,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             onClick={() => scroll('right')}
             aria-label="Next products"
           >
-            <img src="/img/icons/icon-right.png" alt="Next" />
+            <img src="img/icons/icon-right.png" alt="Next" />
           </button>
         </div>
       </div>

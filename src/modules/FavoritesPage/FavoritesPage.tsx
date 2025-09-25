@@ -64,7 +64,7 @@ export const FavoritesPage: React.FC = () => {
         <h1 className={styles.favoritesPage__title}>Favorites</h1>
         <div className={styles.favoritesPage__empty}>
           <img
-            src="/img/product-not-found.png"
+            src="img/product-not-found.png"
             alt="No favorites"
             className={styles.favoritesPage__emptyImage}
           />

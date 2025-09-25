@@ -4,21 +4,21 @@ import styles from './PicturesSlider.module.scss';
 
 const SLIDER_IMAGES = [
   {
-    src: '/img/banner-phones.png',
+    src: 'img/banner-phones.png',
     title: 'iPhone 14 Pro',
     subtitle: 'Pro. Beyond.',
     description: 'Now available in our store!',
     cta: 'ORDER NOW',
   },
   {
-    src: '/img/banner-tablets.png',
+    src: 'img/banner-tablets.png',
     title: 'Tablets Collection',
     subtitle: 'Powerful. Portable.',
     description: 'Be the first!',
     cta: 'SHOP NOW',
   },
   {
-    src: '/img/banner-accessories.png',
+    src: 'img/banner-accessories.png',
     title: 'Accessories',
     subtitle: 'Complete Your Setup.',
     description: 'New arrivals every week!',
@@ -72,7 +72,7 @@ export const PicturesSlider: React.FC = () => {
         aria-label="Previous slide"
         role="previous-button"
       >
-        <img src="/img/icons/icon-left.png" alt="Previous" />
+        <img src="img/icons/icon-left.png" alt="Previous" />
       </button>
       <div className={styles.slider__container}>
         {/* Slides */}
@@ -112,7 +112,7 @@ export const PicturesSlider: React.FC = () => {
         aria-label="Next slide"
         role="next-button"
       >
-        <img src="/img/icons/icon-right.png" alt="Next" />
+        <img src="img/icons/icon-right.png" alt="Next" />
       </button>
     </div>
   );

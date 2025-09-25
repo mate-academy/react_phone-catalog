@@ -1,7 +1,7 @@
 import { Product, ProductDetails } from '../types';
 
 const API_BASE =
-  process.env.NODE_ENV === 'production' ? '/react_phone-catalog/api' : '/api';
+  process.env.NODE_ENV === 'production' ? '/react_phone-catalog/api' : 'api';
 
 export const api = {
   async getProducts(): Promise<Product[]> {

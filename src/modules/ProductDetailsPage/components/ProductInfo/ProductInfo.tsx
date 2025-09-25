@@ -153,8 +153,8 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
           <img
             src={
               isInFavorites
-                ? '/img/icons/icon-red-heart.png'
-                : '/img/icons/heart.png'
+                ? 'img/icons/icon-red-heart.png'
+                : 'img/icons/heart.png'
             }
             alt="Heart"
           />

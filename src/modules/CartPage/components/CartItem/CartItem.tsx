@@ -36,7 +36,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         onClick={handleRemove}
         aria-label="Remove item"
       >
-        <img src="/img/icons/icon-close.png" alt="Remove" />
+        <img src="img/icons/icon-close.png" alt="Remove" />
       </button>
 
       <Link
@@ -65,7 +65,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           disabled={item.quantity <= 1}
           aria-label="Decrease quantity"
         >
-          <img src="/img/icons/icon-subtraction.png" alt="Decrease" />{' '}
+          <img src="img/icons/icon-subtraction.png" alt="Decrease" />{' '}
         </button>
 
         <span className={styles.cartItem__quantityValue}>{item.quantity}</span>
@@ -76,7 +76,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           onClick={() => handleQuantityChange(item.quantity + 1)}
           aria-label="Increase quantity"
         >
-          <img src="/img/icons/icon-plus.png" alt="Increase" />
+          <img src="img/icons/icon-plus.png" alt="Increase" />
         </button>
       </div>
 
