@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "https://yuliimar.github.io/react_phone-catalog",
+  "homepage": "/react_phone-catalog/img",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -48,7 +48,7 @@
   },
   "scripts": {
     "start": "mate-scripts start -l",
-    "build": "mate-scripts build",
+    "build": "vite build",
     "test": "mate-scripts test -l",
     "style-format": "npx stylelint 'src/**/*.scss' --fix --allow-empty-input",
     "lint-js": "mate-scripts lint -j",
