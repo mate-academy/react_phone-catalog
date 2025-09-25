@@ -1,9 +1,9 @@
-import { LoadingStates } from '@features/index';
+import { Status } from '@features/index';
 import { visualConfig } from '../../model';
 import styles from '../../styles/catalogueSlider.module.scss';
 import { createLoaderMap, loaderTextMap } from '@ui/index';
 
-export const CatalogueSkeleton = ({ data }: { data: LoadingStates }) => {
+export const CatalogueSkeleton = ({ data }: { data: Status }) => {
   const { animationSpeed, gap } = visualConfig;
 
   return (

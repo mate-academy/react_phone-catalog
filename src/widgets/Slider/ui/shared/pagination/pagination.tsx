@@ -3,17 +3,20 @@ import styles from '../../../styles/blockPagination.module.scss';
 import classNames from 'classnames';
 
 type Props = {
-  dataIDs: number[];
+  amount: number;
   setByIndex: (idx: number) => void;
   startIndex: number;
 };
 
-export const InfiniteBlockPagination = ({
-  dataIDs,
-  setByIndex,
-  startIndex,
-}: Props) => {
+export const SliderPagination = ({ amount, setByIndex, startIndex }: Props) => {
   const { mechanics } = useSliderData();
+
+  const dataIDs = [];
+
+  for (let i = 0; i < amount; i++) {
+    dataIDs.push(i);
+  }
+
   const getCurrent = (id: number) => {
     const mod = id + 1;
 

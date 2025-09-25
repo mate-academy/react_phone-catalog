@@ -1,2 +1,2 @@
 export { SliderButtons } from './button/sliderButton';
-export { InfiniteBlockPagination } from './pagination/blockPagination';
+export { SliderPagination } from './pagination/pagination';

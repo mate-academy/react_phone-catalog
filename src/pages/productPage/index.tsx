@@ -3,29 +3,30 @@ import { Breadcrumbs, loaderTextMap } from '@ui/index';
 import { ArrowIcon } from '@shared/icons';
 import { Status } from '@features/index';
 import { useProductPage } from './model/useProductPage';
-import { Product } from '@shared/types';
+import { Slider } from '@widgets/slider';
+import { SliderMode } from '@widgets/slider/model';
 
 export const ProductPage = () => {
-  const item = useProductPage();
+  const { prod } = useProductPage();
 
   return (
     <section className={styles.container}>
       <nav aria-label="breadcrumb" className={styles.navigation}>
-        {typeof item !== 'string' ? (
+        {typeof prod !== 'string' ? (
           <Breadcrumbs
             links={[
               {
-                name: item.category,
-                to: item.category,
+                name: prod.category,
+                to: prod.category,
               },
               {
-                name: item.name,
-                to: `/products/${item.id}`,
+                name: prod.name,
+                to: `/products/${prod.id}`,
               },
             ]}
           />
         ) : (
-          item
+          prod
         )}
       </nav>
       <button className={styles['return-button']}>
@@ -33,11 +34,12 @@ export const ProductPage = () => {
         Back
       </button>
       <h1 className={styles.h1}>
-        {typeof item === 'string' &&
-        (item === Status.LOADING || item === Status.ERROR)
-          ? loaderTextMap[item]
-          : (item as Product).name}
+        {typeof prod === 'string' &&
+        (prod === Status.LOADING || prod === Status.ERROR)
+          ? loaderTextMap[prod]
+          : prod.name}
       </h1>
+      <Slider mode={SliderMode.PRODUCT_CARD} data={prod} title={''} />
     </section>
   );
 };

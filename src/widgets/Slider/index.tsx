@@ -1,14 +1,14 @@
-import { BannerData } from '@shared/types';
+import { BannerData, Product } from '@shared/types';
 import { SliderDataProvider } from './model/context/sliderContext';
-import { configs } from './model';
+import { configs, SliderMode } from './model';
 import { Status } from '@features/index';
 import { CatalogueData } from '@shared/api/types';
-import { CatalogueSlider, HeroSlider } from './ui';
+import { CatalogueSlider, HeroSlider, ProdSlider } from './ui';
 
 type HeroSliderProps = {
   mode: 'hero';
   data: BannerData[] | Status;
-  title: '';
+  title?: '';
 };
 
 type CatalogueSliderProps = {
@@ -17,7 +17,13 @@ type CatalogueSliderProps = {
   title: string;
 };
 
-type SliderProps = HeroSliderProps | CatalogueSliderProps;
+type ProdSliderProps = {
+  mode: SliderMode.PRODUCT_CARD;
+  data: Product | Status;
+  title: '';
+};
+
+type SliderProps = HeroSliderProps | CatalogueSliderProps | ProdSliderProps;
 
 export const Slider = ({ mode, data, title }: SliderProps) => {
   const { skeleton: Skeleton, startIdx } = configs[mode];
@@ -48,5 +54,16 @@ export const Slider = ({ mode, data, title }: SliderProps) => {
           </SliderDataProvider>
         );
       }
+
+    case SliderMode.PRODUCT_CARD:
+      return (
+        <SliderDataProvider startIdx={startIdx}>
+          <ProdSlider
+            data={data}
+            startIdx={startIdx}
+            amount={data.images && data.images.length}
+          />
+        </SliderDataProvider>
+      );
   }
 };

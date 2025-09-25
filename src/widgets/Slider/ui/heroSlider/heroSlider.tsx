@@ -7,7 +7,7 @@ import {
   useInfinite,
   visualConfig,
 } from '../../model';
-import { SliderButtons, InfiniteBlockPagination } from '../shared';
+import { SliderButtons, SliderPagination } from '../shared';
 
 type Props = {
   data: BannerData[];
@@ -27,7 +27,6 @@ export const HeroSlider: React.FC<Props> = ({
   useInfinite(amount);
   const firstClone = data.at(-1) as BannerData;
   const lastClone = data.at(0) as BannerData;
-  const dataIDs = data.map(el => el.id);
 
   return (
     <section className={styles['hero-slider']} aria-label="Featured promotions">
@@ -82,8 +81,8 @@ export const HeroSlider: React.FC<Props> = ({
           </div>
         </div>
       </div>
-      <InfiniteBlockPagination
-        dataIDs={dataIDs}
+      <SliderPagination
+        amount={data.length}
         setByIndex={setByIndex}
         startIndex={startIdx}
       />

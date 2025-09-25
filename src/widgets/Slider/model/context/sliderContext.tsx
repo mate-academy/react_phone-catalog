@@ -5,7 +5,7 @@ type SliderDataType = {
   DOM: {
     viewport: React.RefObject<HTMLDivElement>;
     track: React.RefObject<HTMLDivElement | HTMLUListElement>;
-    item: React.RefObject<HTMLAnchorElement | HTMLLIElement>;
+    item: React.RefObject<HTMLAnchorElement | HTMLLIElement | HTMLElement>;
   };
   measure: {
     VPWidth: React.MutableRefObject<number>;
@@ -32,7 +32,7 @@ const SliderDataProvider = ({ children, startIdx }: ContextProps) => {
   const DOMRefs = {
     viewport: useRef<HTMLDivElement>(null),
     track: useRef<HTMLDivElement | HTMLUListElement>(null),
-    item: useRef<HTMLAnchorElement | HTMLLIElement>(null),
+    item: useRef<HTMLAnchorElement | HTMLLIElement | HTMLElement>(null),
   };
 
   const measureRefs = {
