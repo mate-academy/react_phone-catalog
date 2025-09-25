@@ -41,12 +41,9 @@ $desktop-min-width: 1200px;
           transition: all 0.3s linear;
           position: absolute;
           width: 100%;
-
           top: 18%;
           left: 18%;
-
           object-fit: cover;
-
           filter: drop-shadow(-6px -6px 10px rgba(0, 0, 0, 0.4));
         }
 
@@ -69,10 +66,18 @@ $desktop-min-width: 1200px;
         background-color: rgba(141, 141, 146, 1);
       }
       .bg-accessories {
-        background-color: rgba(213, 60, 81, 1);
+        background-color: #97334A;
       }
     }
   }
+}
+
+.accessories {
+  width: 170%;
+  object-fit: contain;
+  bottom: 0;
+  object-position: 40px 100%;
+  position: static;
 }
 
 .title {

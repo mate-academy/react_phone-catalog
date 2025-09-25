@@ -21,6 +21,7 @@ export const ShopByCategorySection: React.FC<Props> = ({
       count: totalPhoneModels,
       image: 'img/category-phones.webp',
       bgClass: 'bg-phone',
+      mnClass: 'phone',
     },
     {
       name: 'tablets',
@@ -28,6 +29,7 @@ export const ShopByCategorySection: React.FC<Props> = ({
       count: totalTabletsModels,
       image: 'img/category-tablets.png',
       bgClass: 'bg-tablets',
+      mnClass: 'tablets',
     },
     {
       name: 'accessories',
@@ -35,6 +37,7 @@ export const ShopByCategorySection: React.FC<Props> = ({
       count: totalAccessoriesModels,
       image: 'img/category-accessories.png',
       bgClass: 'bg-accessories',
+      mnClass: 'accessories',
     },
   ];
 
@@ -50,7 +53,7 @@ export const ShopByCategorySection: React.FC<Props> = ({
               className={`category-link ${category.bgClass}`}
             >
               <img
-                className="category-link-img img"
+                className={`category-link-img img ${category.mnClass}`}
                 src={category.image}
                 alt={`category ${category.name}`}
               />
