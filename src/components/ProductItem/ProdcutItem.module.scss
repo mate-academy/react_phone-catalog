@@ -139,10 +139,6 @@
 
   @include text-buttons;
 
-  @include themy($theme) {
-    background-color: themed('colorHeaderFooter');
-  }
-
   color: $color-white;
   border: 1px solid $color-accent;
   background-color: $color-accent;
