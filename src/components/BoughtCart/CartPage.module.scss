@@ -115,9 +115,7 @@
     min-width: 300px;
     animation: fade-in 0.3s ease-out;
 
-    @include themy($theme) {
-      background: themed('colorHeaderFooter');
-    }
+    
   }
 
   &__price {

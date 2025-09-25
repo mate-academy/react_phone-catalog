@@ -16,30 +16,34 @@ $theme: (
     colorViolet: vars.$color-accent,
     colorVioletHover: vars.$color-accent-hover,
     colorSubtitle: vars.$color-white,
+    colorElem: vars.$color-surf-2,
+    colorHover: vars.$color-icon-btn,
   ),
   light: (
-    colorSwiperBG: vars.$color-white,
-    colorSwiperText: vars.$color-surf-2,
-    colorCart: vars.$color-white,
-    colorHeaderFooter: vars.$color-white,
-    colorText: vars.$color-black,
+    colorSwiperBG: vars.$color-whiteLight,
+    colorSwiperText: vars.$color-blackLight,
+    colorCart: vars.$color-whiteLight,
+    colorHeaderFooter: vars.$color-whiteLight,
+    colorText: vars.$color-blackLight,
     colorSecond: #89939A,
-    colorBG: vars.$color-white,
+    colorBG: vars.$color-whiteLight,
     colorPaginActiv: #313237,
-    colorPagination: vars.$color-white,
+    colorPagination: vars.$color-whiteLight,
     colorViolet: vars.$color-surf-2,
     colorVioletHover: vars.$color-icon-btn,
     colorSubtitle: vars.$color-second,
+    colorElem: vars.$color-elemlight,
+    colorHover: vars.$color-icon-btnLight,
   ),
 );
 
 @mixin themy($themes) {
   @each $theme, $map in $themes {
-    .theme-#{$theme} & {
+    :global(.theme-#{$theme}) & {
       $theme-map: () !global;
 
       @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $value: map-get(map-get($themes, $theme), #{$key});
         $theme-map: map-merge($theme-map, ($key: $value)) !global;
       }
       @content;

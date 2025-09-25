@@ -1,4 +1,4 @@
-@import '../../utils/core';
+@use '../../utils/core' as *;
 
 .main__homepage {
   max-width: 1200px;
@@ -21,7 +21,6 @@
   width: 82%;
   margin: 24px 16px;
   padding: 0 20px;
-  color: $color-white;
 
   @include on-tablet {
     width: 88%;
@@ -36,6 +35,7 @@
   @include themy($theme) {
     color: themed('colorText');
   }
+
 }
 
 .category__wrapper {
@@ -66,6 +66,10 @@
 .homepage__category,
 .homepage__hotproduct {
   margin: 0 16px;
+  
+  @include themy($theme) {
+    background: themed('colorHeaderFooter');
+  }
 
   @include on-tablet {
     margin: 0 24px;

@@ -12,7 +12,8 @@
     margin: auto;
 
     @include themy($theme) {
-      background: themed('colorHeaderFooter');
+      background: themed('colorCart');
+      border: 1px solid themed('colorElem');
     }
 
     @include on-tablet {

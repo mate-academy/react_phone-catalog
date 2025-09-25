@@ -7,6 +7,10 @@
   position: relative;
   z-index: 2;
 
+  @include themy($theme) {
+    background: themed('colorHeaderFooter');
+  }
+
   &__cards {
     display: flex;
     padding-top: 24px;

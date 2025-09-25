@@ -75,13 +75,17 @@
   cursor: pointer;
 
   &:hover {
-    background-color: $color-icon-btn;
-    border: 1px solid $color-icon-btn;
+    @include themy($theme) {
+      background: themed('colorSwiperBG');
+      color: themed('colorSwiperText');
+      border: 1px solid themed('colorHover');
+    }
   }
 
   @include themy($theme) {
     background-color: themed('colorSwiperBG');
     color: themed('colorSwiperText');
+    border: 1px solid themed('colorSwiperBG');
   }
 
   @include on-tablet {
