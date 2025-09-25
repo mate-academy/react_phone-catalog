@@ -1,0 +1,47 @@
+@import './vars';
+
+@mixin mont($weight: 600, $size: 16px) {
+  font-family: 'Mont', sans-serif;
+  font-weight: $weight;
+  font-size: $size;
+  font-style: normal;
+}
+
+@mixin on-phone {
+  @media (min-width: $on-phone-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $on-tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $on-desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tv {
+  @media (min-width: $on-tv-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+   @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+  @include on-tv {
+    padding-inline: 152px;
+  }
+}

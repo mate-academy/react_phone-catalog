@@ -1,0 +1,15 @@
+@import "../../styles/mixins.scss";
+
+.main-page {
+  &__hello {
+    @include content-padding-inline;
+
+    @include mont(800, 32px);
+
+    @include on-tablet {
+      @include mont(800, 48px);
+    }
+  }
+
+
+}
