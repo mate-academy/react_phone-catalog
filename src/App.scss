@@ -1,6 +1,10 @@
 // not empty
 @use '../src/shared/styles/variables.scss' as *;
 
+body {
+  font-family: 'Mont-Regular', sans-serif;
+}
+
 .swiper-pagination {
     bottom: -30px;
     display: flex;

@@ -1,20 +1,15 @@
-// import Slider from './components/Slider';
 import styles from './Catalog.module.scss';
-import '@fontsource/montserrat/400.css';
-import '@fontsource/montserrat/500.css';
-import '@fontsource/montserrat/700.css';
+// import '@fontsource/montserrat/400.css';
+// import '@fontsource/montserrat/500.css';
+// import '@fontsource/montserrat/700.css';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { CatalogInterface } from './interfaces/CatalogInterface';
-import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { useLocation } from 'react-router-dom';
+import { ProductsList } from './components/ProductsList/ProductsList';
 
-interface Item {
-  id: string | number;
-  name: string;
-}
-
-export const Catalog: React.FC<CatalogInterface> = ({ type }) => {
-  const [data, setData] = useState<Item[]>([]);
+export const Catalog: React.FC<CatalogInterface> = () => {
+  const path = useLocation().pathname;
+  const currentPath = path.slice(1) as CatalogInterface['type'];
 
   const titles: Record<CatalogInterface['type'], string> = {
     phones: 'Mobile phones',
@@ -22,27 +17,19 @@ export const Catalog: React.FC<CatalogInterface> = ({ type }) => {
     accessories: 'Accessories',
   };
 
-  useEffect(() => {
-    fetch(`api/${type}`)
-      .then(res => res.json())
-      .then(json => setData(json));
-  }, [type]);
+  const counts: Record<CatalogInterface['type'], number> = {
+    phones: 95,
+    tablets: 24,
+    accessories: 100,
+  };
 
   return (
     <>
-      <Helmet>
-        <title>{titles[type]}</title>
-      </Helmet>
-
       <div className={styles.catalogPage}>
         <BreadCrumbs />
-        <h1 className={styles.catalogTitle}>{titles[type]}</h1>
-
-        <ul>
-          {data.map(item => (
-            <li key={item.id}>{item.name}</li>
-          ))}
-        </ul>
+        <h2 className={styles.catalogTitle}>{titles[currentPath]}</h2>
+        <p className={styles.catalogText}>{counts[currentPath]} models</p>
+        <ProductsList type={currentPath} />
       </div>
     </>
   );

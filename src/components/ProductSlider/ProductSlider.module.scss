@@ -1,4 +1,4 @@
-@use '../../../../shared/styles/variables.scss' as *;
+@use '../../shared/styles/variables.scss' as *;
 
 .wrapper {
   padding-left: 40px;
@@ -84,20 +84,30 @@
     width: 208px;
     height: 196px;
     display: block;
+
+    object-fit: contain;
+    object-position: center;
   }
 
   &__image > img {
-    object-fit: contain;
     width: 160px;
     height: 134px;
   }
 
-  &__title {
+  &__name {
     font-weight: 300;
     font-size: 14px;
     line-height: 21px;
     margin-bottom: 8px;
     color: $menu-color;
+    max-width: 208px;
+    min-height: 42px;
+    max-height: 42px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   &__prices {
@@ -107,13 +117,13 @@
     margin-bottom: 16px;
   }
 
-  &__newPrice {
+  &__fullPrice {
     font-size: 22px;
     font-weight: 800;
     color: $menu-color;
   }
 
-  &__oldPrice {
+  &__price {
     font-size: 22px;
     color: $card-contentColor;
     text-decoration: line-through;

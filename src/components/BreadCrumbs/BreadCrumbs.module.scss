@@ -7,11 +7,13 @@
     list-style: none;
     gap: 8px;
     font-size: 12px;
+    padding: 0;
   }
 
   &__item {
     display: flex;
     align-items: center;
+    gap: 8px;
   }
 
   &__icon,

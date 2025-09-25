@@ -1,0 +1,14 @@
+@use '../../shared/styles/variables.scss' as *;
+
+.container {
+  padding: 20px;
+  background-color: $menu-background-color;
+}
+
+.name {
+  font-size: 24px;
+}
+
+.wrapper {
+  display: flex;
+}
