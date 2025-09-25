@@ -100,7 +100,7 @@ export const Header: React.FC = () => {
           >
             <div className={styles.header__iconWrapper}>
               <img
-                src="/img/icons/heart.png"
+                src="/public/img/icons/heart.png"
                 alt="Favorites"
                 className={styles.header__icon}
               />
@@ -119,7 +119,7 @@ export const Header: React.FC = () => {
           >
             <div className={styles.header__iconWrapper}>
               <img
-                src="/img/icons/icon-shopping-bag.png"
+                src="/public/img/icons/icon-shopping-bag.png"
                 alt="Shopping Cart"
                 className={styles.header__icon}
               />
@@ -137,7 +137,7 @@ export const Header: React.FC = () => {
           aria-label="Open menu"
         >
           <img
-            src="/img/icons/icon-menu.png"
+            src="/public/img/icons/icon-menu.png"
             alt="Menu"
             className={styles.header__menuIcon}
           />
