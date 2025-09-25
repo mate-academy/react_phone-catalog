@@ -15,10 +15,7 @@
   border-radius: 16px;
 
   @include on-tablet {
-    display: grid;
-    grid-template-columns: 32px 64px 1fr 120px 80px;
-    grid-template-areas:
-      'remove image name quantity price';
+    display: flex;
     align-items: center;
     gap: 24px;
     padding: 24px;
@@ -65,6 +62,7 @@
 
     color: $color-primary;
     text-decoration: none;
+    margin-right: auto;
 
     &:hover {
       color: $color-accent;
@@ -76,10 +74,6 @@
     grid-area: quantity;
     gap: 8px;
     align-items: center;
-
-    @include on-tablet {
-      order: 2;
-    }
   }
 
   &__btn {
@@ -120,9 +114,5 @@
     @include text-style($h3-desktop);
 
     color: $color-primary;
-
-    @include on-tablet {
-      order: 3;
-    }
   }
 }
