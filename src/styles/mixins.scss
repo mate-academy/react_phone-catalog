@@ -8,6 +8,12 @@
   letter-spacing: map.get($style, letter-spacing);
 }
 
+@mixin on-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
 @mixin on-tablet {
   @media (min-width: 640px) {
     @content;

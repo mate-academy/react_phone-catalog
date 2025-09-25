@@ -17,6 +17,10 @@ export const ProductPage = () => {
   const { itemId } = useParams();
   const location = useLocation();
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [itemId]);
+
   const pathSegments = location.pathname.split('/');
   const category = location.state?.category || pathSegments[1];
 

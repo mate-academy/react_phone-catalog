@@ -8,7 +8,7 @@ import { useCart } from '../../contexts/CartContext';
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { favorites } = useFavorites();
-  const { cartItems } = useCart();
+  const { getTotalQuantity } = useCart();
 
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles['header__nav-link'], {
@@ -36,7 +36,11 @@ export const Header = () => {
         role="navigation"
         aria-label="main navigation"
       >
-        <div className={styles.header__container}>
+        <div
+          className={classNames(styles.header__container, {
+            [styles['header__container--menu-open']]: isMenuOpen,
+          })}
+        >
           {/* Логотип */}
           <div className={styles['header__logo-wrapper']}>
             <Link to="/">
@@ -79,31 +83,39 @@ export const Header = () => {
           </div>
 
           {/* Десктопні кнопки */}
-          <div className={styles.header__actions}>
+          <div className={styles.header__actionsDesktop}>
             <NavLink
               to="/favorites"
               className={getActionBtnClass}
               aria-label="Favorites"
             >
-              <img src="./img/Icons/favorites.svg" alt="Favorites" />
-              {favorites.length > 0 && (
-                <span className={styles.header__badge}>{favorites.length}</span>
-              )}{' '}
+              <span className={styles.header__iconWrapper}>
+                <img src="./img/Icons/favorites.svg" alt="Favorites" />
+                {favorites.length > 0 && (
+                  <span className={styles.header__badge}>
+                    {favorites.length}
+                  </span>
+                )}
+              </span>
             </NavLink>
 
             <NavLink to="/cart" className={getActionBtnClass} aria-label="Cart">
-              <img src="./img/Icons/cart.svg" alt="Cart" />
-              {cartItems.length > 0 && (
-                <span className={styles.header__badge}>{cartItems.length}</span>
-              )}{' '}
+              <span className={styles.header__iconWrapper}>
+                <img src="./img/Icons/cart.svg" alt="Cart" />
+                {getTotalQuantity() > 0 && (
+                  <span className={styles.header__badge}>
+                    {getTotalQuantity()}
+                  </span>
+                )}
+              </span>
             </NavLink>
           </div>
         </div>
 
         {/* Мобільне меню */}
         {isMenuOpen && (
-          <div className={styles['header__mobile-menu']}>
-            <div className={styles['header__mobile-links']}>
+          <div className={styles.header__mobileMenu}>
+            <div className={styles.header__mobileLinks}>
               <NavLink
                 to="/"
                 end
@@ -134,20 +146,24 @@ export const Header = () => {
                 Accessories
               </NavLink>
             </div>
-            <div className={styles['header__mobile-bottom']}>
-              <div className={styles.header__actions}>
+
+            {/* Мобільні кнопки внизу */}
+            <div className={styles.header__mobileBottom}>
+              <div className={styles.header__actionsMobile}>
                 <NavLink
                   to="/favorites"
                   className={getActionBtnClass}
                   aria-label="Favorites"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <img src="./img/Icons/favorites.svg" alt="Favorites" />
-                  {favorites.length > 0 && (
-                    <span className={styles.header__badge}>
-                      {favorites.length}
-                    </span>
-                  )}{' '}
+                  <span className={styles.header__iconWrapper}>
+                    <img src="./img/Icons/favorites.svg" alt="Favorites" />
+                    {favorites.length > 0 && (
+                      <span className={styles.header__badge}>
+                        {favorites.length}
+                      </span>
+                    )}
+                  </span>
                 </NavLink>
 
                 <NavLink
@@ -156,12 +172,14 @@ export const Header = () => {
                   aria-label="Cart"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <img src="./img/Icons/cart.svg" alt="Cart" />
-                  {cartItems.length > 0 && (
-                    <span className={styles.header__badge}>
-                      {cartItems.length}
-                    </span>
-                  )}{' '}
+                  <span className={styles.header__iconWrapper}>
+                    <img src="./img/Icons/cart.svg" alt="Cart" />
+                    {getTotalQuantity() > 0 && (
+                      <span className={styles.header__badge}>
+                        {getTotalQuantity()}
+                      </span>
+                    )}
+                  </span>
                 </NavLink>
               </div>
             </div>

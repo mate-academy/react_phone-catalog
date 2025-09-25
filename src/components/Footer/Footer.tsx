@@ -17,6 +17,8 @@ export const Footer = () => {
         <ul className={styles.footer__navList}>
           <li>
             <a
+              target="_blank"
+              rel="noreferrer"
               href="https://github.com/hannachachacha/react_phone-catalog"
               className={styles.footer__link}
             >

@@ -15,11 +15,12 @@
   border-radius: 16px;
 
   @include on-tablet {
-    display: flex;
-    gap: 24px;
+    display: grid;
+    grid-template-columns: 32px 64px 1fr 120px 80px;
+    grid-template-areas:
+      'remove image name quantity price';
     align-items: center;
-    justify-content: space-between;
-
+    gap: 24px;
     padding: 24px;
   }
 
@@ -48,6 +49,12 @@
     @include on-tablet {
       width: 64px;
       height: 64px;
+    }
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 
