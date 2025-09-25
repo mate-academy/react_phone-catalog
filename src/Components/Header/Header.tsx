@@ -1,11 +1,17 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
-import { useState } from 'react';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
 
-export const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+type HeaderProps = {
+  isMenuOpen: boolean;
+  setIsMenuOpen: (open: boolean) => void;
+};
+
+export const Header: React.FC<HeaderProps> = ({
+  isMenuOpen,
+  setIsMenuOpen,
+}) => {
   const { favorites } = useFavorites();
   const { cart } = useCart();
   const { pathname } = useLocation();

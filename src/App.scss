@@ -4,10 +4,11 @@
 
 .page {
   scroll-behavior: smooth;
+}
 
-  :has(.menu:target) {
-    overflow: hidden;
-  }
+.app--no-scroll {
+  height: 100vh;
+  overflow: hidden;
 }
 
 body {

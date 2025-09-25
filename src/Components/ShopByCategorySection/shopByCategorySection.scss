@@ -45,11 +45,33 @@ $desktop-min-width: 1200px;
           left: 18%;
           object-fit: cover;
           filter: drop-shadow(-6px -6px 10px rgba(0, 0, 0, 0.4));
+
+          &.accessories {
+            width: 170%;
+            object-fit: contain;
+            bottom: 0;
+            object-position: 60px 120%;
+            position: static;
+          }
+
+          &.phone {
+            top: 24%;
+            left: 24%;
+          }
         }
 
         &:hover .category-link-img {
-          top: 10%;
-          left: 10%;
+          top: 12%;
+          left: 12%;
+
+          &.accessories {
+            object-position: 30px 100%;
+          }
+
+          &.phone {
+            top: 18%;
+            left: 18%;
+          }
         }
       }
 
@@ -70,14 +92,6 @@ $desktop-min-width: 1200px;
       }
     }
   }
-}
-
-.accessories {
-  width: 170%;
-  object-fit: contain;
-  bottom: 0;
-  object-position: 40px 100%;
-  position: static;
 }
 
 .title {

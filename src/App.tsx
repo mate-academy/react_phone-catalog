@@ -11,13 +11,16 @@ import { FavoritesPage } from './Components/FavoritesPage';
 import { CartProvider } from './context/CartContext';
 import { CartPage } from './Components/CartPage';
 import { HomePage } from './Components/HomePage';
+import { useState } from 'react';
 
 export const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <CartProvider>
       <FavoritesProvider>
-        <main>
-          <Header />
+        <main className={isMenuOpen ? 'app app--no-scroll' : ''}>
+          <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
           <Routes>
             <Route path="/" element={<HomePage />} />
