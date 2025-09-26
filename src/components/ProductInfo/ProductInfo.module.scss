@@ -71,10 +71,6 @@
       box-shadow: 0 0 8px rgba(120, 64, 204, 0.92);
     }
 
-    &:hover {
-      border-color: rgba(96, 11, 133, 0.78);
-    }
-
     @include on-tablet {
       height: 35px;
       width: 35px;
@@ -83,6 +79,13 @@
     @include on-desktop {
       height: 80px;
       width: 80px;
+    }
+
+    @include themy($theme) {
+      border: 1px solid themed('colorElem');
+      &:hover {
+        border-color: rgba(96, 11, 133, 0.78);
+      }
     }
   }
 
@@ -114,7 +117,17 @@
     border-radius: 50%;
     cursor: pointer;
     border: 2px solid $color-elem;
-    margin: 0 8px 24px 0;
+    margin: 0 8px 0 0;
+
+    &:hover {
+      @include themy($theme) {
+        border: 2px solid themed('colorSecond');
+      }
+    }
+
+    @include themy($theme) {
+      border: 2px solid themed('colorBorder');
+    }
 
     &.selected {
       border: 2px solid rgba(96, 11, 133, 0.78);
@@ -131,6 +144,10 @@
 
     @include on-desktop {
       width: $desk-width;
+    }
+
+    @include themy($theme) {
+      border: 1px solid themed('colorElem');
     }
   }
 
@@ -154,6 +171,7 @@
     gap: 8px;
     height: 41px;
     margin-bottom: 16px;
+    margin-top: 32px;
   }
 
   &__priceOld {
@@ -164,10 +182,14 @@
     font-weight: 600;
     line-height: 22px;
     letter-spacing: 0;
+
+    @include themy($theme) {
+      color: themed('colorSecond');
+    }
   }
 
   &__priceNew {
-    @include h3;
+    @include h2;
 
     @include themy($theme) {
       color: themed('colorText');
@@ -258,15 +280,19 @@
 
   &__screenTitle,
   &__techScreenTitle {
-    @include text-body;
+    @include text-small;
 
     color: $color-second;
     margin: 8px 0 0;
+
+    @include themy($theme) {
+      color: themed('colorSecond');
+    }
   }
 
   &__screenDescription,
   &__techScreenDescription {
-    @include text-body;
+    @include text-small;
 
     color: $color-white;
     margin: 8px 0 0;
@@ -277,7 +303,7 @@
   }
 
   &__wrapperAboutTech {
-    margin-top: 56px;
+    margin-top: 80px;
     display: block;
     gap: 64px;
 
@@ -287,7 +313,7 @@
 
     @include on-desktop {
       display: flex;
-      margin-top: 80px;
+      margin-bottom: 70px;
     }
   }
 
@@ -306,6 +332,10 @@
     @include on-tablet {
       margin-top: 64px;
     }
+
+    @include on-desktop {
+      margin-top: 0;
+    }
   }
 
   &__about {
@@ -313,6 +343,10 @@
 
     color: $color-white;
     margin: 0 0 16px;
+
+    @include themy($theme) {
+      color: themed('colorText');
+    }
   }
 
   &__content {
@@ -333,6 +367,10 @@
     @include text-body;
 
     color: $color-second;
+
+    @include themy($theme) {
+      color: themed('colorSecond');
+    }
   }
 
   &__techInfoAll {
@@ -348,6 +386,13 @@
     border: 1px solid $color-elem;
     color: $color-white;
     cursor: pointer;
+
+    &.selected {
+      @include themy($theme) {
+        background: themed('colorText');
+        color: themed('colorHeaderFooter');
+      }
+    }
 
     @include themy($theme) {
       color: themed('colorText');
@@ -386,10 +431,24 @@
     color: $color-white;
     align-items: center;
     text-decoration: none;
+
+    @include themy($theme) {
+      color: themed('colorText');
+    }
+  }
+
+  &__backTitle {
+    @include themy($theme) {
+      color: themed('colorSecond');
+    }
   }
 
   &__title-id {
     color: $color-second;
+
+    @include themy($theme) {
+      color: themed('colorSecond');
+    }
   }
 }
 
@@ -450,4 +509,8 @@
   @include h2;
 
   color: $color-white;
+
+  @include themy($theme) {
+    color: themed('colorText');
+  }
 }

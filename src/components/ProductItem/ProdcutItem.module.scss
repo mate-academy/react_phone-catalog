@@ -166,11 +166,8 @@
   &:hover {
     @include themy($theme) {
       background-color: themed('colorVioletHover');
-      background-color: themed('colorVioletHover');
       border: 1px solid themed('colorVioletHover');
     }
-
-
   }
 
   @include themy($theme) {

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './ProductInfo.module.scss';
 import home from '../../assets/icons/home.svg';
+import homeLigt from '../../assets/icons/homeLight.svg';
 import goto from '../../assets/icons/arrowRight.svg';
 import back from '../../assets/icons/arrowLeft.svg';
 import heart from '../../assets/icons/heart.svg';
@@ -51,7 +52,7 @@ export const ProductInfo: React.FC = () => {
     <main className={styles.productInfo}>
       <div className={styles.productInfolink}>
         <NavLink to="/" className={styles.productInfolink__home}>
-          <img src={home} alt="home" />
+          <img src={isBasicDark ? home : homeLigt} alt="home" />
         </NavLink>
         <span>
           <img src={goto} alt="Goto" />
