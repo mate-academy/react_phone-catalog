@@ -12,6 +12,7 @@ import { CartProvider } from './context/CartContext';
 import { CartPage } from './Components/CartPage';
 import { HomePage } from './Components/HomePage';
 import { useState } from 'react';
+import { AboutMe } from './Components/About/About';
 
 export const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,6 +31,7 @@ export const App = () => {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="*" element={<PageNotFound />} />
+            <Route path="/aboutMe" element={<AboutMe />} />
           </Routes>
 
           <Footer />

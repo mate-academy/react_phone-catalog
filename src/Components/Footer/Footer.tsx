@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from './Footer.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -15,7 +17,14 @@ export const Footer: React.FC = () => {
             <a href="https://github.com/BogdanS1nb">GITHUB</a>
           </li>
           <li>
-            <a href="https://github.com/BogdanS1nb">CONTACTS</a>
+            <a
+              href="javascript:void(0)"
+              onClick={() => {
+                navigate('/aboutMe');
+              }}
+            >
+              CONTACTS
+            </a>
           </li>
           <li>
             <a href="https://github.com/BogdanS1nb">RIGHTS</a>
