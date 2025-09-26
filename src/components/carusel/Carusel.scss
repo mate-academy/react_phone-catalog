@@ -1,4 +1,4 @@
-@import '../../styles/mixins.scss';
+@import '../../styles/mixins';
 
 .carusel {
   @include on-tablet {
@@ -10,6 +10,7 @@
     max-width: 100%;
     gap: 16px;
     justify-content: space-between;
+
   }
 
   &__bttn {
@@ -17,6 +18,7 @@
     border: 1px solid rgba(180, 189, 195, 1);
     background-color: #fff;
     cursor: pointer;
+    height: auto;
 
     @include on-tablet {
       display: block;

@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './Carusel.scss';
 
-const images = ['/img/banner.png', '/img/banner-phones.png', '/img/banner-tablets.png'];
+const images = [
+  '/img/carusel/desktop-banner-2.png',
+  '/img/banner-phones.png',
+  '/img/carusel/desktop-banner-3.png',
+];
+
+const imagesMini = [
+  '/img/carusel/mini-1.png',
+  '/img/carusel/mini-2.png',
+  '/img/carusel/mini-3.png',
+];
 
 interface Props {
   duration?: number;
@@ -27,14 +37,15 @@ export const Carusel: React.FC<Props> = ({ duration = 4000 }) => {
           <img src="/img/left.png" alt="leftBtn" />
         </button>
 
-        <div className="carusel__carusel">
-          <div className="carusel__imgs">
+        <div className="carusel__imgs">
+          <picture>
+            <source media="(max-width: 639px)" srcSet={imagesMini[currentIndex]} />
             <img
               src={images[currentIndex]}
               alt={`slide-${currentIndex}`}
               className="carusel__img"
             />
-          </div>
+          </picture>
         </div>
 
         <button className="carusel__bttn carusel__bttn--next" onClick={nextSlide}>
