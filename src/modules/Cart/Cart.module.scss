@@ -161,25 +161,25 @@
     line-height: 21px;
   }
 
-  &_container summary:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -50px;
-    bottom: 0;
-    left: 0;
-    border-right: 50px solid transparent;
-    border-top: 50px solid #a378ff;
-    transition: transform 0.5s;
-    transform: translateX(-100%);
-    z-index: -1;
-  }
+  &_container summary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  right: -50px; // залишаємо, бо потрібен відступ
+  border-right: 50px solid transparent;
+  border-top: 50px solid #a378ff;
+  transition: transform 0.5s;
+  transform: translateX(-100%);
+  z-index: -1;
+}
 
-  &_container summary:hover:before,
-  &_container summary:active:before,
-  &_container summary:focus:before {
-    transform: translateX(0);
-  }
+&_container summary:hover::before,
+&_container summary:active::before,
+&_container summary:focus::before {
+  transform: translateX(0);
+}
+
+
 
   /*  при открытом окне переход на весь экран */
   &_container details[open] summary {

@@ -8,7 +8,7 @@ export const App: React.FC = () => {
   const { isMenuOpen } = useMyContext();
 
   useEffect(() => {
-    document.title = 'best app';
+    document.title = 'Phone catalog';
   }, []);
 
   return (
