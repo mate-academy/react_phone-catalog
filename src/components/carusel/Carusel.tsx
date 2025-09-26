@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './Carusel.scss';
 
 const images = [
-  '/img/carusel/desktop-banner-2.png',
-  '/img/banner-phones.png',
-  '/img/carusel/desktop-banner-3.png',
+  './img/carusel/desktop-banner-2.png',
+  './img/banner-phones.png',
+  './img/carusel/desktop-banner-3.png',
 ];
 
 const imagesMini = [
-  '/img/carusel/mini-1.png',
-  '/img/carusel/mini-2.png',
-  '/img/carusel/mini-3.png',
+  './img/carusel/mini-1.png',
+  './img/carusel/mini-2.png',
+  './img/carusel/mini-3.png',
 ];
 
 interface Props {

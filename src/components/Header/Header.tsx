@@ -6,7 +6,7 @@ export const Header = () => (
     <div className="header__nav">
       <div className="header__logo">
         <NavLink to="/">
-          <img src="/img/main-logo.png" alt="mainLogo" className="header__logo__img" />
+          <img src="../img/main-logo.png" alt="mainLogo" className="header__logo__img" />
         </NavLink>
       </div>
 
@@ -60,17 +60,17 @@ export const Header = () => (
       <ul className="header__bttns__list">
         <li className="header__bttns__item header__bttns__item--phone">
           <NavLink to="/menu">
-            <img src="/img/menu.png" alt="menuLogo" className="header__bttns__logo" />
+            <img src="./img/menu.png" alt="menuLogo" className="header__bttns__logo" />
           </NavLink>
         </li>
         <li className="header__bttns__item header__bttns__item--tablet">
           <NavLink to="/favourites">
-            <img src="/img/favourites.png" alt="favouritesLogo" className="header__bttns__logo" />
+            <img src="./img/favourites.png" alt="favouritesLogo" className="header__bttns__logo" />
           </NavLink>
         </li>
         <li className="header__bttns__item header__bttns__item--tablet">
           <NavLink to="/cart">
-            <img src="/img/cart.png" alt="favocart" className="header__bttns__logo" />
+            <img src="./img/cart.png" alt="favocart" className="header__bttns__logo" />
           </NavLink>
         </li>
       </ul>
