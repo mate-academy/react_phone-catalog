@@ -46,6 +46,12 @@
   @include on-desktop {
     width: 176px;
   }
+
+  @include themy($theme) {
+    color: themed('colorText');
+    background-color: themed('colorSwiperBG');
+    border: 1px solid #B4BDC3;
+  }
 }
 
 .Dropdown-option {

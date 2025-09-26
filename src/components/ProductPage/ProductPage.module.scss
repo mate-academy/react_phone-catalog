@@ -31,6 +31,10 @@
 
     @include text-small;
 
+    @include themy($theme) {
+      color: themed('colorSecond');
+    }
+
     align-items: center;
   }
 }
@@ -41,6 +45,10 @@
 
     color: $color-white;
     margin: 0;
+
+    @include themy($theme) {
+      color: themed('colorText');
+    }
 
     &-description {
       margin: 8px 0 0;
@@ -143,7 +151,11 @@
 
 .sortby {
   @include text-small;
-  
+
   color: $color-second;
   margin: 0 0 4px;
+
+  @include themy($theme) {
+    color: themed('colorSecond');
+  }
 }

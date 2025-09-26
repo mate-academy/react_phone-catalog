@@ -17,6 +17,10 @@
     height: 257px;
     border-top: 1px solid $color-elem;
 
+    @include themy($theme) {
+      border-top: 1px solid $color-elemlight;
+    }
+
     @include on-tablet {
       height: 96px;
       display: flex;
@@ -58,6 +62,10 @@
     color: $color-second;
 
     @include text-small;
+
+    @include themy($theme) {
+      color: themed('colorSecond');
+    }
   }
 
   &__btn {
@@ -71,6 +79,11 @@
     &:hover {
       background-color: $color-icon-btn;
       border: 1px solid $color-icon-btn;
+    }
+
+    @include themy($theme) {
+      background: transparent;
+      border: 1px solid #B4BDC3;
     }
   }
 }
@@ -103,10 +116,14 @@
   align-items: center;
 
   @include themy($theme) {
-    color: themed('colorText');
+    color: #89939a;
   }
 
   &:hover {
     color: $color-accent;
+
+    @include themy($theme) {
+      color: themed('colorViolet');
+    }
   }
 }

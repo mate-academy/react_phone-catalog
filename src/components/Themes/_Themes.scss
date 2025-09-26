@@ -18,6 +18,7 @@ $theme: (
     colorSubtitle: vars.$color-white,
     colorElem: vars.$color-surf-2,
     colorHover: vars.$color-icon-btn,
+    colorBorder: vars.$color-elem,
   ),
   light: (
     colorSwiperBG: vars.$color-whiteLight,
@@ -25,7 +26,7 @@ $theme: (
     colorCart: vars.$color-whiteLight,
     colorHeaderFooter: vars.$color-whiteLight,
     colorText: vars.$color-blackLight,
-    colorSecond: #89939A,
+    colorSecond: vars.$color-secondLight,
     colorBG: vars.$color-whiteLight,
     colorPaginActiv: #313237,
     colorPagination: vars.$color-whiteLight,
@@ -34,6 +35,7 @@ $theme: (
     colorSubtitle: vars.$color-second,
     colorElem: vars.$color-elemlight,
     colorHover: vars.$color-icon-btnLight,
+    colorBorder: vars.$color-border,
   ),
 );
 

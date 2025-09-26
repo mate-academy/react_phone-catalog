@@ -56,7 +56,7 @@
     color: $color-second;
 
     @include themy($theme) {
-      color: themed('colorText');
+      color: themed('colorSecond');
     }
   }
 

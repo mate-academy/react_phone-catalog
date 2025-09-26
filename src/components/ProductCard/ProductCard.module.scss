@@ -57,6 +57,16 @@
     background-color: $color-icon-btn;
     border: 1px solid $color-icon-btn;
     color: $color-white;
+
+    @include themy($theme) {
+      border: 1px solid $color-blackLight;
+    }
+  }
+
+  @include themy($theme) {
+    color: themed('colorElem');
+    border: 1px solid themed('colorBorder');
+    background-color: themed('colorSwiperBG');
   }
 }
 
@@ -70,4 +80,8 @@
   @include h2;
 
   color: $color-white;
+
+  @include themy($theme) {
+    color: themed('colorText');
+  }
 }

@@ -1,12 +1,17 @@
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/ProductTypes';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import back from '../../assets/icons/arrowLeft.svg';
+import backD from '../../assets/icons/arrowLeftLightD.svg';
 import backActive from '../../assets/icons/arrowLeftL.svg';
+import backActiveLight from '../../assets/icons/arrowLeftLight.svg';
 import goto from '../../assets/icons/arrowRight.svg';
+import gotoD from '../../assets/icons/arrowRightLightD.svg';
 import gotoActive from '../../assets/icons/arrowRightL.svg';
+import gotoActiveLight from '../../assets/icons/arrowRightLight.svg';
 import { useSwipeable } from 'react-swipeable';
 import { ProductItem } from '../ProductItem/ProductItem';
+import { ThemeContext } from '../Themes';
 
 interface Props {
   title: string;
@@ -29,6 +34,25 @@ export const ProductSlider: React.FC<Props> = ({
     } else {
       setItemsPerPage(4);
     }
+  };
+
+  const { theme } = useContext(ThemeContext);
+  const isBasicDark = theme === 'dark';
+
+  const getBackIcon = (isDark: boolean, isDisabled: boolean) => {
+    if (isDark) {
+      return isDisabled ? back : backActive;
+    }
+
+    return isDisabled ? backD : backActiveLight;
+  };
+
+  const getNextIcon = (isDark: boolean, isDisabled: boolean) => {
+    if (isDark) {
+      return isDisabled ? goto : gotoActive;
+    }
+
+    return isDisabled ? gotoD : gotoActiveLight;
   };
 
   useEffect(() => {
@@ -69,7 +93,10 @@ export const ProductSlider: React.FC<Props> = ({
             onClick={handlePrev}
             disabled={currentIndex === 0}
           >
-            <img src={currentIndex === 0 ? back : backActive} alt="previous" />
+            <img
+              src={getBackIcon(isBasicDark, currentIndex === 0)}
+              alt="previous"
+            />
           </button>
           <button
             className={styles.nextBtn}
@@ -77,12 +104,11 @@ export const ProductSlider: React.FC<Props> = ({
             disabled={currentIndex + itemsPerPage >= products.length}
           >
             <img
-              src={
-                currentIndex + itemsPerPage >= products.length
-                  ? goto
-                  : gotoActive
-              }
-              alt="previous"
+              src={getNextIcon(
+                isBasicDark,
+                currentIndex + itemsPerPage >= products.length,
+              )}
+              alt="next"
             />
           </button>
         </div>

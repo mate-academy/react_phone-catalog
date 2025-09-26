@@ -85,6 +85,10 @@
 
     color: $color-white;
     margin: 0;
+
+    @include themy($theme) {
+      color: themed('colorText');
+    }
   }
 
   &__fullprice {
@@ -94,11 +98,18 @@
 
     text-decoration: line-through;
     color: $color-second;
+
+    @include themy($theme) {
+      color: themed('colorSecond');
+    }
   }
 
   &__line {
-    border: 1px solid $color-second;
     margin: 8px 0 0;
+
+    @include themy($theme) {
+      border: 1px solid themed('colorElem');
+    }
   }
 
   &__information {
@@ -118,6 +129,10 @@
     @include text-small;
 
     color: $color-second;
+
+    @include themy($theme) {
+      color: themed('colorSecond');
+    }
   }
 
   &__screenDescription {
@@ -151,10 +166,16 @@
   &:hover {
     @include themy($theme) {
       background-color: themed('colorVioletHover');
+      background-color: themed('colorVioletHover');
+      border: 1px solid themed('colorVioletHover');
     }
 
-    background-color: $color-accent-hover;
-    border: 1px solid $color-accent-hover;
+
+  }
+
+  @include themy($theme) {
+    background: themed('colorViolet');
+    border: 1px solid themed('colorViolet');
   }
 }
 
@@ -166,6 +187,7 @@
 .button__like {
   @include themy($theme) {
     background-color: themed('colorHeaderFooter');
+    border: 1px solid themed('colorElem');
   }
 
   display: flex;

@@ -75,11 +75,11 @@
   cursor: pointer;
 
   &:hover {
-    @include themy($theme) {
-      background: themed('colorSwiperBG');
-      color: themed('colorSwiperText');
-      border: 1px solid themed('colorHover');
-    }
+    // @include themy($theme) {
+    //   background: themed('colorSwiperBG');
+    //   color: themed('colorSwiperText');
+    //   border: 1px solid themed('colorHover');
+    // }
   }
 
   @include themy($theme) {
