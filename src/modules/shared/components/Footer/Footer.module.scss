@@ -11,7 +11,7 @@
 
     @include flex-between;
 
-    max-width: $container-max-width;
+    // max-width: $container-max-width;
     width: 100%;
 
     @media (max-width: $tablet-lg) {
@@ -41,6 +41,12 @@
   &__logoImage {
     height: $spacing-3xl;
     margin-bottom: $spacing-sm;
+
+    @include smooth-transition(transform);
+
+    &:hover {
+      transform: scale(1.05);
+    }
 
     @media (max-width: $mobile) {
       height: 28px;
@@ -83,12 +89,14 @@
     font-size: $spacing-lg;
     font-weight: $font-weight-bold;
 
+    @include smooth-transition(transform);
     @include smooth-transition(color);
 
     text-transform: uppercase;
 
     &:hover {
       color: $primary;
+      transform: scale(1.05);
     }
 
     @media (max-width: $tablet-lg) {

@@ -17,7 +17,8 @@
   @include flex-between;
 
   height: $header-height-desktop;
-  max-width: $desktop-xl;
+
+  // max-width: $desktop-xl;
   width: 100%;
 }
 
@@ -191,7 +192,7 @@
 
   @include smooth-transition(all);
 
-  z-index: 999;
+  z-index: 1001;
 }
 
 .header__mobileMenu_open {

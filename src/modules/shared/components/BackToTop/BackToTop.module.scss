@@ -37,8 +37,8 @@
   }
 
   &__arrowIcon {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     filter: brightness(0) invert(1);
 
     @include smooth-transition(transform);

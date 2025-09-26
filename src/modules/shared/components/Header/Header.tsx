@@ -233,7 +233,7 @@ export const Header: React.FC = () => {
           >
             <div className={styles.header__iconWrapper}>
               <img
-                src="img/icons/icon-shopping-bag"
+                src="img/icons/icon-shopping-bag.png"
                 alt="Shopping Cart"
                 className={styles.header__icon}
               />
