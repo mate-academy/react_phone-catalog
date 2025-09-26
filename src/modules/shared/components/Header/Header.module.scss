@@ -124,7 +124,6 @@
   font-weight: $font-weight-bold;
   width: 14px;
   height: 14px;
-  border-radius: 50%;
 
   @include flex-center;
 
@@ -176,7 +175,7 @@
 // Mobile Menu
 .header__mobileMenu {
   position: fixed;
-  top: $header-height-desktop;
+  top: $header-height-mobile;
   left: 0;
   right: 0;
   background: $surface1;
@@ -196,9 +195,10 @@
 }
 
 .header__mobileMenu_open {
-  transform: translateY(0);
+  transform: translateX(0);
   opacity: 1;
   visibility: visible;
+  text-align: center;
 }
 
 .header__mobileNav {

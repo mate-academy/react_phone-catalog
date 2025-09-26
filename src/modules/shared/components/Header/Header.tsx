@@ -137,7 +137,11 @@ export const Header: React.FC = () => {
           aria-label="Open menu"
         >
           <img
-            src="img/icons/icon-menu.png"
+            src={
+              isMenuOpen
+                ? 'img/icons/icon-close.png'
+                : 'img/icons/icon-menu.png'
+            }
             alt="Menu"
             className={styles.header__menuIcon}
           />

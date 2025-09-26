@@ -7,7 +7,6 @@
   gap: $spacing-lg;
   padding: $spacing-2xl;
   border: 1px solid $elements;
-  border-radius: $border-radius-md;
   background: $surface2;
 
   @include tablet {
@@ -37,7 +36,6 @@
     width: 80px;
     height: 80px;
     background: $surface1;
-    border-radius: $border-radius-sm;
 
     @include mobile {
       width: 60px;
