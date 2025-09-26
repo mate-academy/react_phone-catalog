@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import styles from './ProductDetailsPage.module.scss';
 import { PhoneDetails } from './interfaces/PhoneDetailsInterface';
 import { useState } from 'react';
-import phones from '../../../public/api/phones.json';
+import rawPhones from '../../../public/api/phones.json';
+import { Loader } from '../Catalog/components/Loader/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const { category, productId } = useParams<{
@@ -13,16 +14,23 @@ export const ProductDetailsPage: React.FC = () => {
 
   const dataMap: Record<string, PhoneDetails[]> = {
     phones,
-    tablets: [],
-    accessories: [],
   };
 
-  const detailsData = dataMap[category || ''] || [];
+  const phones: PhoneDetails[] = rawPhones.map((p: any) => ({
+    ...p,
+    id: p.itemId,
+  }));
+  const detailsData = category && dataMap[category] ? dataMap[category] : [];
+
+  // const detailsData = dataMap[category || ''] || [];
   const product = detailsData.find(p => p.id === productId);
+
   const [selectedColor, setSelectedColor] = useState(product?.color || '');
   const [selectedCapacity, setSelectedCapacity] = useState(
     product?.capacity || '',
   );
+  const [isError, setIsError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   if (!product) {
     return (
@@ -38,6 +46,29 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.container}>
         {product && (
           <BreadCrumbs category={product.category} product={product} />
+        )}
+        <Link to={`/${category}`} className={styles.buttonBack}>
+          Back
+        </Link>
+
+        {isLoading && <Loader />}
+        {!isLoading && isError && (
+          <div className={styles['product-details__img-box']}>
+            <img
+              className={styles['product-details__img']}
+              src="/img/product-not-found.png"
+              alt="Product not found"
+            />
+          </div>
+        )}
+        {!isLoading && !isError && !product && (
+          <div className={styles['product-details__img-box']}>
+            <img
+              className={styles['product-details__img']}
+              src="/img/product-not-found.png"
+              alt="Product not found"
+            />
+          </div>
         )}
 
         <h1 className={styles.name}>{product.name}</h1>

@@ -19,7 +19,7 @@ export const App: React.FC = () => {
           path="/accessories"
           element={<Catalog type={'accessories'} />}
         ></Route>
-        <Route path="/product/:productId" element={<ProductDetailsPage />} />
+        <Route path="/:category/:productId" element={<ProductDetailsPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
