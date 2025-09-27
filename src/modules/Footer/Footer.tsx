@@ -46,15 +46,11 @@ export const Footer = () => {
         {['github', 'contacts', 'rights'].map((item, index) => (
           <li className="footer__item" key={index}>
             <NavLink
-              className={({ isActive }) =>
-                classNames('footer__link', {
-                  'has-background-grey-lighter': isActive,
-                })
-              }
+              className={classNames('footer__link')}
               to={
                 item === 'github'
                   ? 'https://github.com/vikaruda?tab=repositories'
-                  : `/${item}`
+                  : ``
               }
               target={item === 'github' ? '_blank' : undefined}
             >

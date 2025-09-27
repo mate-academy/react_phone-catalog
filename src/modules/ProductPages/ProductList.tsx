@@ -16,8 +16,14 @@ export const ProductList: React.FC<ProductListProps> = ({
   onRemoveFromFavorites,
 }) => {
   const navigate = useNavigate();
-  const { addToCart, cartItems, favoriteItems, addFavorite, removeFavorite } =
-    useCart();
+  const {
+    addToCart,
+    cartItems,
+    favoriteItems,
+    addFavorite,
+    removeFavorite,
+    removeFromCart,
+  } = useCart();
 
   return (
     <div className="product__list">
@@ -64,9 +70,11 @@ export const ProductList: React.FC<ProductListProps> = ({
                   e.preventDefault();
                   if (!isInCart) {
                     addToCart(item);
+                  } else {
+                    removeFromCart(item.id);
                   }
                 }}
-                style={{ pointerEvents: isInCart ? 'none' : 'auto' }}
+                style={{ pointerEvents: 'auto' }}
               >
                 {isInCart ? 'Added to cart' : 'Add to cart'}
               </NavLink>
