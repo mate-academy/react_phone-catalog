@@ -1,3 +1,5 @@
+@import '../../src/mixins';
+
 @font-face {
   font-family: Mont;
   src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
@@ -31,6 +33,14 @@
   width: 100%;
   height: 64px;
 
+  @include onTablet {
+    background-color: white
+  }
+
+  @include onPhone {
+    height: 48px;
+  }
+
   &__container {
     display: flex;
     justify-content: space-between;
@@ -54,6 +64,14 @@
     align-items: center;
   }
 
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+  }
+
   &__Navleft {
     height: 100%;
     display: flex;
@@ -67,7 +85,7 @@
       position: relative;
       height: 100%;
 
-    a {
+      a {
         position: relative;
         display: flex;
         align-items: center;
@@ -79,7 +97,7 @@
         &:hover,
         &.active {
           color: #fff;
-          border-bottom: 10px solid rgb(179, 41, 41);
+          outline: 10px solid red;
         }
 
         &::after {
@@ -110,20 +128,6 @@
     padding: 0;
     margin: 0;
 
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      width: 16px;
-      height: 16px;
-      cursor: pointer;
-    }
-
     li {
       position: relative;
       height: 100%;
@@ -153,6 +157,12 @@
       &.active::after {
         transform: scaleX(1);
       }
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
     }
   }
 
