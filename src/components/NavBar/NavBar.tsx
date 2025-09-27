@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './NavBar.module.scss';
 import classNames from 'classnames';
 import { useFavorites } from '../../context/Favoutires';
+import { useCart } from '../../context/Cart';
 
 const getLinkActive = ({ isActive }: { isActive: boolean }) =>
   classNames(styles['top-bar__link'], {
@@ -10,6 +11,7 @@ const getLinkActive = ({ isActive }: { isActive: boolean }) =>
 
 export const NavBar = () => {
   const { count } = useFavorites();
+  const { totalQty } = useCart();
 
   return (
     <div className={styles['top-bar']}>
@@ -52,7 +54,7 @@ export const NavBar = () => {
           className={({ isActive }) =>
             `${styles['user-nav__link']} ${isActive ? styles['user-nav__link--active'] : ''}`
           }
-          to="favourites"
+          to="favorites"
         >
           <img
             className="user-nav__link-img"
@@ -67,14 +69,16 @@ export const NavBar = () => {
           className={({ isActive }) =>
             `${styles['user-nav__link']} ${isActive ? styles['user-nav__link--active'] : ''}`
           }
-          to="shopping-cart"
+          to="cart"
         >
           <img
             className="user-nav__link-img"
             src="/img/icons/shopping-bag.svg"
             alt="bag icon"
           ></img>
-          <span className={styles['user-nav__num']}>12</span>
+          {totalQty > 0 && (
+            <span className={styles['user-nav__num']}>{totalQty}</span>
+          )}
         </NavLink>
       </div>
     </div>

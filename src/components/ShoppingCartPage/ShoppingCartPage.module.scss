@@ -1,1 +1,39 @@
 @import '../../styles/utils';
+
+.cart {
+  &__back-btn {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: $main-color;
+    font-size: 12px;
+    line-height: 100%;
+    padding-left: 20px;
+    margin: 40px 0 16px;
+    @include hover(color, $accent-color);
+
+    &::before {
+      position: absolute;
+      content: '';
+      background-image: url('/img/icons/arrow-left.svg');
+      width: 16px;
+      height: 16px;
+      left: 0;
+      bottom: 0;
+      transition: all .3s;
+    }
+
+    &:hover::before {
+      background-image: url('/img/icons/arrow-left-hover.svg');
+    }
+  }
+
+  &__title {
+    @extend %mont-800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+}

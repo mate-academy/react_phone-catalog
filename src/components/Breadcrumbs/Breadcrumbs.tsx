@@ -16,8 +16,8 @@ export const Breadcrumbs: React.FC<Props> = ({ category, product }) => {
         return { path: '/tablets', label: 'Tablets' };
       case 'accessories':
         return { path: '/accessories', label: 'Accessories' };
-      case 'favourites':
-        return { path: '/favourites', label: 'Favourites' };
+      case 'favorites':
+        return { path: '/favorites', label: 'Favourites' };
       default:
         return { path: '/', label: 'Home' };
     }

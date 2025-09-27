@@ -5,28 +5,26 @@ import { useFavorites } from '../../context/Favoutires';
 import { ProductCard } from '../ProductCard';
 import { useContext, useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
-import { getProductById } from '../../api';
 import { CategoryType } from '../../types/Category';
 import { ShowOldPriceContext } from '../../context/OldPrice';
+import { getProducts } from '../../api';
+import { Loader } from '../Loader';
 
 export const FavouritesPage = () => {
   const location = useLocation();
   const category = location.pathname.split('/')[1];
   const { favorites, count } = useFavorites();
   const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const price = useContext(ShowOldPriceContext);
 
   useEffect(() => {
     async function loadFavorites() {
-      const [phones, tablets, accessories] = await Promise.all([
-        getProductById(CategoryType.Phones),
-        getProductById(CategoryType.Tablets),
-        getProductById(CategoryType.Accessories),
-      ]);
+      setIsLoading(true);
+      const products = await getProducts();
 
-      const allProducts = [...phones, ...tablets, ...accessories];
-
-      setFavoriteProducts(allProducts.filter(p => favorites.includes(p.id)));
+      setFavoriteProducts(products.filter(p => favorites.includes(p.itemId)));
+      setIsLoading(false);
     }
 
     loadFavorites();
@@ -38,16 +36,19 @@ export const FavouritesPage = () => {
         <Breadcrumbs category={category} product={null} />
         <h1 className={styles.favourites__title}>Favourites</h1>
         <p className={styles.favourites__items}>{count} items</p>
-        <div className={styles.favourites__content}>
-          {favoriteProducts.map(product => (
-            <ProductCard
-              product={product}
-              showOldPrice={price}
-              category={category as CategoryType}
-              key={product.id}
-            />
-          ))}
-        </div>
+        {isLoading && <Loader />}
+        {!isLoading && (
+          <div className={styles.favourites__content}>
+            {favoriteProducts.map(product => (
+              <ProductCard
+                product={product}
+                showOldPrice={price}
+                category={category as CategoryType}
+                key={product.id}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

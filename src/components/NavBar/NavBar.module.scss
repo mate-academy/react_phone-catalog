@@ -42,14 +42,14 @@
 
     &:hover {
       color: $main-color;
-      padding-bottom: 20px;
+      padding-bottom: 23px;
       border-bottom: 3px solid $main-color;
     }
   }
 
   &__link--active {
     color: $main-color;
-    padding-bottom: 20px;
+    padding-bottom: 23px;
     border-bottom: 3px solid $main-color;
   }
 }
@@ -62,6 +62,7 @@
     padding: 24px;
     box-shadow: -1px 0px 0px 0px #323542;
     transition: all .3s;
+    border-bottom: 3px solid transparent;
 
     &:hover {
       padding-bottom: 18px;
