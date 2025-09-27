@@ -1,0 +1,85 @@
+@use '../../styles/utils' as utils;
+
+.footer {
+  border-top: 1px solid utils.$header-border;
+  color: utils.$secondary;
+  padding-block: 32px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 32px;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__logo {
+    padding: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include utils.on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include utils.on-small-desktop {
+      gap: 100px;
+    }
+  }
+
+  &__item {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+  }
+
+  &__link {
+    transition: all .3s;
+
+    &:hover {
+      color: utils.$primary;
+    }}
+
+  &__action {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+  transition: all .3s;
+  color: utils.$secondary;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  cursor: pointer;
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    border: 1px solid utils.$header-border;
+    transition: all .3s;
+  }
+
+  &:hover {
+    color: utils.$primary;
+
+    & span {
+      border: 1px solid utils.$primary;
+    }
+  }
+}

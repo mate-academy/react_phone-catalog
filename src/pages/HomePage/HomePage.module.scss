@@ -1,0 +1,34 @@
+@use '../../styles/utils' as utils;
+
+.brand-section {
+  position: relative;
+}
+
+.title {
+  grid-column: 1 / -1;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.categories {
+  display: grid;
+  grid-column: 1 / -1;
+  row-gap: 32px;
+
+  @include utils.page-grid;
+
+  &__category {
+    grid-column: 1 / -1;
+
+    @include utils.on-tablet {
+      grid-column: span 4;
+    }
+
+    @include utils.on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+}

@@ -1,0 +1,17 @@
+@use '../../styles/utils' as utils;
+
+.go-back {
+  width: 66px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  color: utils.$secondary;
+  font-size: 15px;
+  line-height: 15px;
+  transition: all .3s;
+
+  &:hover {
+    color: utils.$primary;
+    cursor: pointer;
+  }
+}

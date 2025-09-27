@@ -1,0 +1,35 @@
+@use '../../styles/utils' as utils;
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+
+  &__button {
+    &--selected {
+      background-color: transparent;
+      border: 1px solid utils.$header-border;
+      color: utils.$green;
+    }
+  }
+
+  &__favourite {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border: 1px solid utils.$header-border;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: utils.$primary;
+    }
+  }
+}
