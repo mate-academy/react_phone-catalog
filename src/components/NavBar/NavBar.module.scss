@@ -61,6 +61,17 @@
     position: relative;
     padding: 24px;
     box-shadow: -1px 0px 0px 0px #323542;
+    transition: all .3s;
+
+    &:hover {
+      padding-bottom: 18px;
+      border-bottom: 3px solid $main-color;
+    }
+  }
+
+  &__link--active {
+    padding-bottom: 18px;
+    border-bottom: 3px solid $main-color;
   }
 
   &__num {
@@ -75,7 +86,7 @@
     text-align: center;
 
     font-size: 9px;
-    line-height: 12px;
+    line-height: 13px;
     color: $main-color;
   }
 }

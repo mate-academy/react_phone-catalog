@@ -17,7 +17,7 @@ export async function getProducts(): Promise<Product[]> {
 }
 
 export async function getProductById(category: CategoryType) {
-  return wait(100)
+  return wait(300)
     .then(() => fetch(`/api/${category}.json`))
     .then(response => response.json());
 }

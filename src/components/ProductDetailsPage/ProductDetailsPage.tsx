@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { useEffect, useState } from 'react';
 import { getProductById } from '../../api';
@@ -13,9 +13,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 import 'swiper/css';
+import { ProductSlider } from '../ProductSlider';
+import { useFavorites } from '../../context/Favoutires';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
+  const navigate = useNavigate();
   const location = useLocation();
   const category = location.pathname.split('/')[1];
 
@@ -39,6 +42,14 @@ export const ProductDetailsPage = () => {
       .finally(() => setIsLoading(false));
   }, [category, productId]);
 
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const favorite = isFavorite(product?.id || '');
+
+  const numCapacity = product?.capacity.match(/\d+/);
+  const strCapacity = product?.capacity.replace(/\d+/, '');
+  const numRam = product?.ram.match(/\d+/);
+  const strRam = product?.ram.replace(/\d+/, '');
+
   const colorMap: Record<string, string> = {
     midnight: '#191970',
     graphite: '#383838',
@@ -56,12 +67,18 @@ export const ProductDetailsPage = () => {
     <section className={styles['product-details']}>
       <div className="container">
         <Breadcrumbs category={category} product={product} />
-        <Link
-          to={`/${category}`}
+        <button
           className={styles['product-details__back-btn']}
+          onClick={() => {
+            if (window.history.state && window.history.state.idx > 0) {
+              navigate(-1);
+            } else {
+              navigate(`/${category}`);
+            }
+          }}
         >
           Back
-        </Link>
+        </button>
         {isLoading && <Loader />}
         {!isLoading && isError && (
           <div className={styles['product-details__img-box']}>
@@ -93,6 +110,8 @@ export const ProductDetailsPage = () => {
                   pagination={{
                     clickable: true,
                     el: '#product-details-slider-pagination',
+                    bulletClass: styles.bullet,
+                    bulletActiveClass: styles.activeBullet,
                     renderBullet: (index, className) => {
                       return `
         <span class="${className}">
@@ -102,45 +121,19 @@ export const ProductDetailsPage = () => {
                     },
                   }}
                 >
-                  <SwiperSlide>
-                    <img
-                      className={styles['product-details__slider-img']}
-                      src={`/${product.images[0]}`}
-                      alt="Photo of product"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      className={styles['product-details__slider-img']}
-                      src={`/${product.images[1]}`}
-                      alt="Photo of product"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      className={styles['product-details__slider-img']}
-                      src={`/${product.images[2]}`}
-                      alt="Photo of product"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      className={styles['product-details__slider-img']}
-                      src={`/${product.images[3]}`}
-                      alt="Photo of product"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      className={styles['product-details__slider-img']}
-                      src={`/${product.images[4]}`}
-                      alt="Photo of product"
-                    />
-                  </SwiperSlide>
+                  {product.images.map((slide, index) => (
+                    <SwiperSlide key={index}>
+                      <img
+                        className={styles['product-details__slider-img']}
+                        src={`/${slide}`}
+                        alt="Photo of product"
+                      />
+                    </SwiperSlide>
+                  ))}
                 </Swiper>
                 <div
                   id="product-details-slider-pagination"
-                  className={`swiper-pagination ${styles['product-details__pagination']}`}
+                  className={styles.pagination}
                 ></div>
               </div>
               <div className={styles['product-details__characteristics']}>
@@ -153,15 +146,21 @@ export const ProductDetailsPage = () => {
                   <div
                     className={styles['product-details__characteristics-color']}
                   >
-                    {product.colorsAvailable.map((color, index) => (
-                      <a
-                        // ${styles['product-details__characteristics-color-link--active']}
-                        className={`${styles['product-details__characteristics-color-link']}`}
-                        href="#"
-                        key={index}
-                        style={{ backgroundColor: colorMap[color] || color }}
-                      ></a>
-                    ))}
+                    {product.colorsAvailable.map((color, index) => {
+                      const newId = `${product.id.split('-').slice(0, -1).join('-')}-${color.toLowerCase()}`;
+
+                      return (
+                        <NavLink
+                          key={index}
+                          to={`/phones/${newId}`}
+                          className={({
+                            isActive,
+                          }) => `${styles['product-details__characteristics-color-link']}
+          ${isActive ? styles['product-details__characteristics-color-link--active'] : ''}`}
+                          style={{ backgroundColor: colorMap[color] || color }}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
                 <div
@@ -182,18 +181,23 @@ export const ProductDetailsPage = () => {
                       const numberCapacity = capacity.match(/\d+/);
                       const stringCapacity = capacity.replace(/\d+/, '');
 
+                      const parts = product.id.split('-');
+
+                      parts[parts.length - 2] = capacity.toLowerCase();
+
+                      const newId = parts.join('-');
+
                       return (
-                        <a
-                          className={
-                            styles[
-                              'product-details__characteristics-capacity-link'
-                            ]
-                          }
-                          href="#"
+                        <NavLink
                           key={index}
+                          to={`/phones/${newId}`}
+                          className={({ isActive }) =>
+                            `${styles['product-details__characteristics-capacity-link']}
+           ${isActive ? styles['product-details__characteristics-capacity-link--active'] : ''}`
+                          }
                         >
                           {`${numberCapacity} ${stringCapacity}`}
-                        </a>
+                        </NavLink>
                       );
                     })}
                   </div>
@@ -224,34 +228,18 @@ export const ProductDetailsPage = () => {
                     styles['product-details__characteristics-link-box']
                   }
                 >
-                  <a
+                  <button
                     className={styles['product-details__characteristics-link']}
-                    href="#"
                   >
                     Add to cart
-                  </a>
-                  <a
-                    className={
-                      styles['product-details__characteristics-link-favourite']
-                    }
-                    href="#"
-                  >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        // eslint-disable-next-line max-len
-                        d="M9.62852 1.63137C10.1584 1.41179 10.7264 1.29878 11.3 1.29878C11.8737 1.29878 12.4416 1.41179 12.9716 1.63137C13.5015 1.85094 13.983 2.17277 14.3885 2.57847C14.7941 2.98393 15.1158 3.46532 15.3353 3.99514C15.5549 4.52506 15.6679 5.09305 15.6679 5.66666C15.6679 6.24027 15.5549 6.80827 15.3353 7.33819C15.1158 7.86806 14.794 8.34949 14.3884 8.75497C14.3883 8.75501 14.3884 8.75493 14.3884 8.75497L8.49502 14.6483C8.22165 14.9217 7.77844 14.9217 7.50507 14.6483L1.61174 8.75497C0.792668 7.9359 0.33252 6.825 0.33252 5.66666C0.33252 4.50832 0.792668 3.39743 1.61174 2.57836C2.43081 1.75928 3.54171 1.29914 4.70005 1.29914C5.85839 1.29914 6.96928 1.75928 7.78835 2.57836L8.00005 2.79005L8.21162 2.57847C8.21158 2.57851 8.21166 2.57843 8.21162 2.57847C8.61711 2.17283 9.09865 1.85092 9.62852 1.63137ZM13.3983 3.56819C13.1228 3.29256 12.7957 3.07391 12.4357 2.92474C12.0756 2.77556 11.6898 2.69878 11.3 2.69878C10.9103 2.69878 10.5245 2.77556 10.1644 2.92474C9.80441 3.07391 9.4773 3.29256 9.2018 3.56819L8.49502 4.27497C8.22165 4.54834 7.77844 4.54834 7.50507 4.27497L6.7984 3.5683C6.24189 3.01179 5.48708 2.69914 4.70005 2.69914C3.91301 2.69914 3.15821 3.01179 2.60169 3.5683C2.04517 4.12482 1.73252 4.87963 1.73252 5.66666C1.73252 6.4537 2.04517 7.2085 2.60169 7.76502L8.00005 13.1634L13.3984 7.76502C13.674 7.48952 13.8928 7.1623 14.042 6.80228C14.1911 6.44225 14.2679 6.05637 14.2679 5.66666C14.2679 5.27696 14.1911 4.89107 14.042 4.53105C13.8928 4.17102 13.6739 3.84369 13.3983 3.56819Z"
-                        fill="#F1F2F9"
-                      />
-                    </svg>
-                  </a>
+                  </button>
+                  <button
+                    className={`${styles['product-details__characteristics-link-favourite']} ${favorite ? styles['product-details__characteristics-link-favourite--active'] : ''}`}
+                    onClick={e => {
+                      e.preventDefault();
+                      toggleFavorite(product.id);
+                    }}
+                  ></button>
                 </div>
                 <div
                   className={styles['product-details__characteristics-descr']}
@@ -341,6 +329,107 @@ export const ProductDetailsPage = () => {
               <p className={styles['product-details__identifier']}>
                 ID: {product.id}
               </p>
+            </div>
+            <div className={styles['product-details__description']}>
+              <div className={styles['product-details__about']}>
+                <h3 className={styles['product-details__description-title']}>
+                  About
+                </h3>
+                <div
+                  className={styles['product-details__description-divider']}
+                ></div>
+                {product.description.map((item, index) => (
+                  <div
+                    className={styles['product-details__about-box']}
+                    key={index}
+                  >
+                    <h3 className={styles['product-details__about-title']}>
+                      {item.title}
+                    </h3>
+                    <p className={styles['product-details__about-text']}>
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className={styles['product-details__techspecs']}>
+                <h3 className={styles['product-details__description-title']}>
+                  Tech specs
+                </h3>
+                <div
+                  className={styles['product-details__description-divider']}
+                ></div>
+                <div className={styles['product-details__techspecs-content']}>
+                  <div className={styles['product-details__techspecs-box']}>
+                    <div className={styles['product-details__techspecs-title']}>
+                      Screen
+                    </div>
+                    <div className={styles['product-details__techspecs-text']}>
+                      {product.screen}
+                    </div>
+                  </div>
+                  <div className={styles['product-details__techspecs-box']}>
+                    <div className={styles['product-details__techspecs-title']}>
+                      Resolution
+                    </div>
+                    <div className={styles['product-details__techspecs-text']}>
+                      {product.resolution}
+                    </div>
+                  </div>
+                  <div className={styles['product-details__techspecs-box']}>
+                    <div className={styles['product-details__techspecs-title']}>
+                      Processor
+                    </div>
+                    <div className={styles['product-details__techspecs-text']}>
+                      {product.processor}
+                    </div>
+                  </div>
+                  <div className={styles['product-details__techspecs-box']}>
+                    <div className={styles['product-details__techspecs-title']}>
+                      RAM
+                    </div>
+                    <div className={styles['product-details__techspecs-text']}>
+                      {`${numRam} ${strRam}`}
+                    </div>
+                  </div>
+                  <div className={styles['product-details__techspecs-box']}>
+                    <div className={styles['product-details__techspecs-title']}>
+                      Built in memory
+                    </div>
+                    <div className={styles['product-details__techspecs-text']}>
+                      {`${numCapacity} ${strCapacity}`}
+                    </div>
+                  </div>
+                  <div className={styles['product-details__techspecs-box']}>
+                    <div className={styles['product-details__techspecs-title']}>
+                      Camera
+                    </div>
+                    <div className={styles['product-details__techspecs-text']}>
+                      {product.camera}
+                    </div>
+                  </div>
+                  <div className={styles['product-details__techspecs-box']}>
+                    <div className={styles['product-details__techspecs-title']}>
+                      Zoom
+                    </div>
+                    <div className={styles['product-details__techspecs-text']}>
+                      {product.zoom}
+                    </div>
+                  </div>
+                  <div className={styles['product-details__techspecs-box']}>
+                    <div className={styles['product-details__techspecs-title']}>
+                      Cell
+                    </div>
+                    <div className={styles['product-details__techspecs-text']}>
+                      {product.cell.join(', ')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="product-details__similar-products">
+              <h3 className="title">You may also like</h3>
+              <ProductSlider detailProduct={product} />
             </div>
           </div>
         )}

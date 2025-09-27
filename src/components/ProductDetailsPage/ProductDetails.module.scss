@@ -4,6 +4,9 @@
 
   &__back-btn {
     position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
     color: $main-color;
     font-size: 12px;
     line-height: 100%;
@@ -17,7 +20,7 @@
       width: 16px;
       height: 16px;
       left: 0;
-      top: 0;
+      bottom: 0;
       transition: all .3s;
     }
 
@@ -44,12 +47,16 @@
   &__box {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 80px;
   }
 
   &__slider-wrapper {
     position: relative;
-    width: 464px;
-    height: 464px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 545px;
+    height: 545px;
   }
 
   &__slider-img {
@@ -57,40 +64,7 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-  }
-
-  &__pagination {
-    --swiper-theme-color: transparent;
-    --swiper-pagination-bullet-width: 80px;
-    --swiper-pagination-bullet-height: 80px;
-    --swiper-pagination-bullet-border-radius: 0px;
-    --swiper-pagination-bullet-inactive-color: transparent;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .swiper-pagination-bullet {
-    padding: 0;
-    border: 2px solid #3B3E4A;
-    width: 80px;
-    height: 80px;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 0;
-      background: #fff;
-    }
-  }
-
-  .swiper-pagination-bullet-active {
-    border: 2px solid $main-color;
+    padding-right: 10px;
   }
 
   &__characteristics {
@@ -129,6 +103,8 @@
 
   &__characteristics-color-link--active {
     border: 1px solid $main-color;
+    pointer-events: none;
+    cursor: none;
   }
 
   &__characteristics-divider {
@@ -150,6 +126,14 @@
     border: 1px solid $hover-btn-color;
 
     @include hover(border-color, $nav-color)
+  }
+
+  &__characteristics-capacity-link--active {
+    border: none;
+    background-color: $main-color;
+    color: $background-color;
+    pointer-events: none;
+    cursor: none;
   }
 
   &__characteristics-price {
@@ -185,6 +169,8 @@
     background-color: $accent-color;
     color: $main-color;
     padding: 13px 91px;
+    border: none;
+    cursor: pointer;
 
     @include hover(background-color, $hover-main-btn-color);
   }
@@ -196,8 +182,19 @@
     width: 48px;
     height: 48px;
     background-color: $btn-color;
+    border: none;
+    cursor: pointer;
+    background-image: url('/img/icons/heart.svg');
+    background-repeat: no-repeat;
+    background-position: center;
 
     @include hover(background-color, $hover-btn-color);
+  }
+
+  &__characteristics-link-favourite--active {
+    background-color: transparent;
+    border: 1px solid #3B3E4A;
+    background-image: url('/img/icons/heart-selected.svg');
   }
 
   &__characteristics-descr {
@@ -228,4 +225,100 @@
     line-height: 100%;
     color: $hover-btn-color;
   }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+  }
+
+  &__description-title {
+    @extend %mont-800;
+    font-size: 22px;
+    line-height: 140%;
+    margin-bottom: 16px;
+  }
+
+  &__description-divider {
+    height: 1px;
+    background-color: #3B3E4A;
+    margin-bottom: 32px;
+  }
+
+  &__about {
+    width: 560px;
+  }
+
+  &__about-box {
+    margin-bottom: 32px;
+  }
+
+  &__about-title {
+    font-size: 20px;
+    line-height: 100%;
+    margin-bottom: 16px;
+  }
+
+  &__about-text {
+    @extend %mont-600;
+    color: $nav-color;
+  }
+
+  &__techspecs {
+    width: 512px;
+  }
+
+  &__techspecs-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__techspecs-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__techspecs-title {
+    @extend %mont-600;
+    color: $nav-color;
+  }
+
+  &__techspecs-text {
+    @extend %mont-600;
+  }
+}
+
+.pagination {
+  position: static;
+  order: -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 80px;
+  transform: none !important;
+}
+
+.bullet {
+  border: 1px solid #3B3E4A;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  padding: 8px;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+
+  & img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.activeBullet {
+  border: 1px solid $main-color;
+  pointer-events: none;
+  cursor: auto;
 }

@@ -1,5 +1,8 @@
+import { CategoryType } from '../../types/Category';
 import { ProductList } from '../ProductList';
 
 export const AccessoriesPage = () => {
-  return <ProductList category="accessories" title="Accessories" />;
+  return (
+    <ProductList category={CategoryType.Accessories} title="Accessories" />
+  );
 };

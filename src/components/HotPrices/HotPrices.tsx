@@ -6,7 +6,7 @@ export const HotPrices = () => {
     <section className={styles['hot-prices']}>
       <div className="container">
         <h2 className="title">Hot prices</h2>
-        <ProductSlider />
+        <ProductSlider detailProduct={undefined} />
       </div>
     </section>
   );

@@ -13,8 +13,13 @@ import 'slick-carousel/slick/slick-theme.css';
 import { NextArrow, PrevArrow } from '../ArrowsSlider';
 import { ShowOldPriceContext } from '../../context/OldPrice';
 import { CategoryType } from '../../types/Category';
+import { ProductDetails } from '../../types/ProductsDetails';
 
-export const ProductSlider = () => {
+type Props = {
+  detailProduct: ProductDetails | undefined;
+};
+
+export const ProductSlider: React.FC<Props> = ({ detailProduct }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const price = useContext(ShowOldPriceContext);
 
@@ -39,6 +44,10 @@ export const ProductSlider = () => {
 
     return dicsount2 - dicsount1;
   });
+
+  const similarProducts = products.filter(
+    item => detailProduct?.capacity === item.capacity,
+  );
 
   const settings = {
     dots: false,
@@ -67,8 +76,8 @@ export const ProductSlider = () => {
   return (
     <div className={styles['slider-wrapper']}>
       <Slider {...settings}>
-        {price
-          ? discountProducts.map(product => (
+        {detailProduct
+          ? similarProducts.map(product => (
               <div key={product.id}>
                 <ProductCard
                   product={product}
@@ -77,15 +86,25 @@ export const ProductSlider = () => {
                 />
               </div>
             ))
-          : newestProducts.map(product => (
-              <div key={product.id}>
-                <ProductCard
-                  product={product}
-                  showOldPrice={price}
-                  category={product.category as CategoryType}
-                />
-              </div>
-            ))}
+          : price
+            ? discountProducts.map(product => (
+                <div key={product.id}>
+                  <ProductCard
+                    product={product}
+                    showOldPrice={price}
+                    category={product.category as CategoryType}
+                  />
+                </div>
+              ))
+            : newestProducts.map(product => (
+                <div key={product.id}>
+                  <ProductCard
+                    product={product}
+                    showOldPrice={price}
+                    category={product.category as CategoryType}
+                  />
+                </div>
+              ))}
       </Slider>
     </div>
   );
