@@ -1,224 +1,235 @@
 @import '../../../../utils/style/main';
 
 .slider {
+  margin-bottom: $spacing-7xl;
+}
+
+.slider__mainLayout {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.swiperContainer {
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.slider__slide {
+  display: block;
+  aspect-ratio: 1040 / 400;
+  background-color: #000;
   position: relative;
-  max-width: 1040px;
-  margin: 0 auto;
-  margin-bottom: 80px;
+}
 
-  &__container {
-    position: relative;
-    height: 400px;
+.slider__layout {
+  position: absolute;
+  inset: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.slider__contentBox {
+  flex-basis: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $spacing-3xl;
+  background-color: $surface2;
+  border-radius: 24px;
+}
+
+.slider__description {
+  @include font-mont($font-size-4xl, $font-weight-bold);
+  line-height: 1.2;
+  margin-bottom: $spacing-sm;
+}
+
+.slider__gradientText {
+  background: linear-gradient(90deg, #905bff, #f1f2f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.slider__subtitle {
+  @include font-mont($font-size-md, $font-weight-regular);
+  color: $gray-secondary;
+  margin-bottom: $spacing-4xl;
+}
+
+.slider__ctaButton {
+  @include button-secondary;
+  border: 1px solid $secondary;
+  padding: $spacing-md $spacing-3xl;
+  width: fit-content;
+  border-radius: 20px;
+  &:hover {
+    border-color: $secondary;
+  }
+}
+
+.slider__imageArea {
+  flex-basis: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.slider__title {
+  @include font-mont($font-size-4xl, $font-weight-bold);
+  color: $white;
+  text-align: center;
+}
+
+.slider__imageSubtitle {
+  @include font-mont($font-size-md, $font-weight-regular);
+  color: $gray-secondary;
+  text-align: center;
+}
+
+.slider__image {
+  max-width: 450px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  align-self: center;
+}
+
+.slider__mobileDescription {
+  display: none;
+  text-align: center;
+}
+
+.slider__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: auto;
+  background-color: $elements;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  z-index: 10;
+  @include smooth-transition;
+
+  &:hover {
+    background-color: $icons;
   }
 
-  &__slides {
-    display: flex;
-    height: 100%;
-    position: relative;
+  img {
+    height: 16px;
+    width: 16px;
   }
+}
 
-  &__slide {
-    min-width: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.slider__pagination {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-lg;
 
-    &_active {
-      opacity: 1;
-      position: relative;
-    }
-  }
-
-  &__content {
-    position: absolute;
-    top: 232px;
-    left: 200px;
-    color: white;
-    text-align: left;
-    z-index: 5;
-  }
-
-  &__description {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    opacity: 0.9;
-  }
-
-  &__title {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  &__subtitle {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 24px;
-    opacity: 0.9;
-  }
-
-  &__ctaButton {
-    padding: 12px 24px;
-    background: white;
-    color: #313237;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background: #f8f8f8;
-      transform: translateY(-2px);
-    }
-  }
-
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &__button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 32px;
-    height: 400px;
-    background: #3b3e4a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    border: none;
-
-    &:hover {
-      background-color: #4a4d58;
-    }
-
-    &[role='previous-button'] {
-      left: -50px;
-    }
-
-    &[role='next-button'] {
-      right: -50px;
-    }
-
-    img {
-      width: 16px;
-      height: 16px;
-    }
-  }
-
-  &__dots {
-    position: absolute;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
-  }
-
-  &__dot {
-    width: 14px;
+  :global(.swiper-pagination-bullet) {
+    width: 16px;
     height: 4px;
-    background: rgba(255, 255, 255, 0.5);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    background: $elements;
+    opacity: 1;
+    border-radius: 0;
+    @include smooth-transition;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.8);
+      background: $icons;
     }
+  }
 
-    &_active {
-      background: #fff;
-      transform: scale(1.2);
-    }
+  :global(.swiper-pagination-bullet-active) {
+    background: $secondary;
   }
 }
 
-@media (max-width: 1199px) {
-  .slider {
-    &__container {
-      max-width: 490px;
-      height: 189px;
-    }
+// --- Responsiveness ---
 
-    &__content {
-      top: 224px;
-      left: 75px;
-    }
+@media (max-width: $desktop-md) {
+  .slider__layout {
+    inset: 16px;
+    gap: 12px;
+  }
 
-    &__description {
-      font-size: 12px;
-    }
+  .slider__contentBox {
+    padding: $spacing-2xl;
+  }
 
-    &__title {
-      font-size: 24px;
-    }
+  .slider__description,
+  .slider__title {
+    font-size: $font-size-2xl;
+  }
 
-    &__subtitle {
-      font-size: 16px;
-    }
+  .slider__subtitle,
+  .slider__imageSubtitle {
+    font-size: $font-size-sm;
+  }
 
-    &__ctaButton {
-      padding: 8px 16px;
-      font-size: 14px;
-    }
+  .slider__ctaButton {
+    padding: $spacing-sm $spacing-2xl;
+  }
+
+  .slider__image {
+    max-width: 350px;
   }
 }
 
-/* --------Mobile--------- */
+// MOBILE
+@media (max-width: #{$tablet - 1px}) {
+  .slider__slide {
+    aspect-ratio: 1 / 1;
+  }
 
-@media (max-width: 639px) {
-  .slider {
-    &__container {
-      max-width: 320px;
-      height: 320px;
-    }
+  .slider__layout {
+    inset: 0;
+  }
 
-    &__content {
-      top: 178px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      width: 100%;
-      padding: 0 20px;
-    }
+  .slider__contentBox {
+    display: none;
+  }
 
-    &__description {
-      font-size: 11px;
-    }
+  .slider__mobileDescription {
+    display: block;
+    text-align: center;
+    @include font-mont($font-size-3xl, $font-weight-bold);
+    line-height: 1.2;
+  }
 
-    &__title {
-      font-size: 20px;
-    }
+  .slider__imageArea {
+    flex-basis: 100%;
+    padding: $spacing-3xl $spacing-lg;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
 
-    &__subtitle {
-      font-size: 14px;
-    }
+  .slider__title {
+    font-size: $font-size-3xl;
+  }
 
-    &__ctaButton {
-      padding: 8px 16px;
-      font-size: 12px;
-    }
+  .slider__imageSubtitle {
+    font-size: $font-size-base;
+  }
 
-    &__button {
-      width: 28px;
-      height: 28px;
+  .slider__image {
+    width: 85%;
+    max-width: 280px;
+  }
 
-      img {
-        width: 12px;
-        height: 12px;
-      }
-    }
+  .slider__button {
+    display: none;
+  }
+
+  .slider__mainLayout {
+    gap: 0;
   }
 }

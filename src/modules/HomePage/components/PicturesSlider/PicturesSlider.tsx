@@ -1,119 +1,129 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperCore } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 import styles from './PicturesSlider.module.scss';
 
-const SLIDER_IMAGES = [
+const SLIDER_DATA = [
   {
-    src: 'img/banner-phones.png',
+    imageSrc: 'img/banner-iphome-14-pro.png',
+    descriptionText: 'Now available in our store! ',
+    descriptionEmoji: '👌',
     title: 'iPhone 14 Pro',
     subtitle: 'Pro. Beyond.',
-    description: 'Now available in our store!',
     cta: 'ORDER NOW',
   },
   {
-    src: 'img/banner-tablets.png',
-    title: 'Tablets Collection',
-    subtitle: 'Powerful. Portable.',
-    description: 'Be the first!',
+    imageSrc: 'img/category-tablets.webp',
+    descriptionText: 'Check our latest tablets! ',
+    descriptionEmoji: '✨',
+    title: 'iPad Air',
+    subtitle: 'Light. Bright. Full of might.',
     cta: 'SHOP NOW',
   },
   {
-    src: 'img/banner-accessories.png',
+    imageSrc: 'img/category-accessories.webp',
+    descriptionText: 'Complete Your Setup. ',
+    descriptionEmoji: '🎧',
     title: 'Accessories',
-    subtitle: 'Complete Your Setup.',
-    description: 'New arrivals every week!',
+    subtitle: 'Find what you need.',
     cta: 'DISCOVER',
   },
 ];
 
-const SLIDER_INTERVAL = 5000;
-
 export const PicturesSlider: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    if (!isAutoPlaying) {
-      return;
+  const handleSwiperInit = (swiper: SwiperCore) => {
+    if (
+      swiper.params.navigation &&
+      typeof swiper.params.navigation === 'object'
+    ) {
+      const navigation = swiper.params.navigation;
+
+      navigation.prevEl = prevRef.current;
+      navigation.nextEl = nextRef.current;
+      swiper.navigation.init();
+      swiper.navigation.update();
     }
-
-    const timer = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % SLIDER_IMAGES.length);
-    }, SLIDER_INTERVAL);
-
-    return () => clearInterval(timer);
-  }, [isAutoPlaying]);
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), SLIDER_INTERVAL * 2);
-  };
-
-  const goToNext = () => {
-    setCurrentSlide(prev => (prev + 1) % SLIDER_IMAGES.length);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), SLIDER_INTERVAL * 2);
-  };
-
-  const goToPrev = () => {
-    setCurrentSlide(
-      prev => (prev - 1 + SLIDER_IMAGES.length) % SLIDER_IMAGES.length,
-    );
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), SLIDER_INTERVAL * 2);
   };
 
   return (
     <div className={styles.slider}>
-      <button
-        className={styles.slider__button}
-        onClick={goToPrev}
-        aria-label="Previous slide"
-        role="previous-button"
-      >
-        <img src="img/icons/icon-left.png" alt="Previous" />
-      </button>
-      <div className={styles.slider__container}>
-        {/* Slides */}
-        <div className={styles.slider__slides}>
-          {SLIDER_IMAGES.map((slide, index) => (
-            <div
-              key={slide.src}
-              className={classNames(styles.slider__slide, {
-                [styles.slider__slide_active]: index === currentSlide,
-              })}
-            >
-              <img
-                src={slide.src}
-                alt={`Banner ${index + 1}`}
-                className={styles.slider__image}
-              />
-            </div>
+      <div className={styles.slider__mainLayout}>
+        <button
+          ref={prevRef}
+          className={classNames(styles.slider__button, styles.slider__prevBtn)}
+          aria-label="Previous slide"
+        >
+          <img src="img/icons/icon-left.png" alt="Previous" />
+        </button>
+
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          loop={true}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          slidesPerView={1}
+          onInit={handleSwiperInit}
+          pagination={{ clickable: true, el: `.${styles.slider__pagination}` }}
+          className={styles.swiperContainer}
+        >
+          {SLIDER_DATA.map((slide, index) => (
+            <SwiperSlide key={index} className={styles.slider__slide}>
+              <div className={styles.slider__layout}>
+                <div className={styles.slider__contentBox}>
+                  <p className={styles.slider__description}>
+                    <span className={styles.slider__gradientText}>
+                      {slide.descriptionText}
+                    </span>
+                    <span>{slide.descriptionEmoji}</span>
+                  </p>
+
+                  <p className={styles.slider__subtitle}>Be the first!</p>
+                  <button className={styles.slider__ctaButton}>
+                    {slide.cta}
+                  </button>
+                </div>
+
+                <div className={styles.slider__imageArea}>
+                  <p className={styles.slider__mobileDescription}>
+                    <span className={styles.slider__gradientText}>
+                      {slide.descriptionText}
+                    </span>
+                    <span>{slide.descriptionEmoji}</span>
+                  </p>
+
+                  <h2 className={styles.slider__title}>{slide.title}</h2>
+                  <p className={styles.slider__imageSubtitle}>
+                    {slide.subtitle}
+                  </p>
+                  <img
+                    src={slide.imageSrc}
+                    alt={slide.title}
+                    className={styles.slider__image}
+                  />
+                </div>
+              </div>
+            </SwiperSlide>
           ))}
-        </div>
-        {/* Dots */}
-        <div className={styles.slider__dots}>
-          {SLIDER_IMAGES.map((_, index) => (
-            <button
-              key={index}
-              className={classNames(styles.slider__dot, {
-                [styles.slider__dot_active]: index === currentSlide,
-              })}
-              onClick={() => goToSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
+        </Swiper>
+
+        <button
+          ref={nextRef}
+          className={classNames(styles.slider__button, styles.slider__nextBtn)}
+          aria-label="Next slide"
+        >
+          <img src="img/icons/icon-right.png" alt="Next" />
+        </button>
       </div>
-      <button
-        className={styles.slider__button}
-        onClick={goToNext}
-        aria-label="Next slide"
-        role="next-button"
-      >
-        <img src="img/icons/icon-right.png" alt="Next" />
-      </button>
+
+      <div className={styles.slider__pagination}></div>
     </div>
   );
 };
