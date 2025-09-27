@@ -1,52 +1,87 @@
 import styles from './Header.module.scss';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <div className={styles.header__topBarLogo}>
-          <Link className={styles.header__niceGadgetsLogo} to="/">
-            <img src="/img/Logos/Logo.png" alt="Nice Gadgets logo" />
-          </Link>
-        </div>
-        <nav className={styles.header__Nav}>
+        <div className={styles.header__leftBlock}>
+          <NavLink className={styles.header__niceGadgetsLogo} to="/"></NavLink>
           <ul className={styles.header__Navleft}>
             <li>
-              <Link to="/" className={styles.header__Home}>
+              <NavLink
+                to="/Home"
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.text__uppercase} active`
+                    : styles.text__uppercase
+                }
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/" className={styles.header__Phones}>
+              <NavLink
+                to="/phones"
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.text__uppercase} active`
+                    : styles.text__uppercase
+                }
+              >
                 Phones
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/" className={styles.header__Tablets}>
+              <NavLink
+                to="/tablets"
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.text__uppercase} active`
+                    : styles.text__uppercase
+                }
+              >
                 Tablets
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/" className={styles.header__Accessories}>
+              <NavLink
+                to="/accessories"
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.text__uppercase} active`
+                    : styles.text__uppercase
+                }
+              >
                 Accessories
-              </Link>
+              </NavLink>
             </li>
           </ul>
-
+        </div>
+        <div className={styles.header__rightBlock}>
           <ul className={styles.header__Navright}>
             <li>
-              <Link to="/" className={styles.header__Favourites}>
-                <img src="/img/Logos/Favourites.png" alt="Favourites" />
-              </Link>
+              <NavLink
+                to="/favourites"
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.header__Favourites} active`
+                    : styles.header__Favourites
+                }
+              />
             </li>
             <li>
-              <Link to="/" className={styles.header__Shopping}>
-                <img src="/img/Logos/Shopping.png" alt="Shopping" />
-              </Link>
+              <NavLink
+                to="/cart"
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.header__Shopping} active`
+                    : styles.header__Shopping
+                }
+              />
             </li>
           </ul>
-        </nav>
+        </div>
       </div>
     </header>
   );

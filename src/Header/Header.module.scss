@@ -1,19 +1,19 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
@@ -26,52 +26,159 @@
 }
 
 .header {
+  font-family: Mont, Arial, Helvetica, sans-serif;
   background-color: #0F1121;
   width: 100%;
   height: 64px;
 
   &__container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    width: 100%;
-    padding: 0 24px;
+    align-items: center;
+    padding-left: 24px;
+    height: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #323542;
   }
 
-  li {
-    list-style: none;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  &__leftBlock {
+    height: 100%;
     display: flex;
     align-items: center;
     gap: 24px;
   }
 
-  a {
-    text-decoration: none;
-  }
-
-  &__topBarLogo {
-    padding-inline: 24px;
-  }
-
-  &__Nav {
+  &__rightBlock {
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 64px;
-  }
-
-  &__Nav a{
-    color: #75767F;
   }
 
   &__Navleft {
+    height: 100%;
     display: flex;
     align-items: center;
-    margin-left: auto;
+    gap: 64px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      position: relative;
+      height: 100%;
+
+    a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        text-decoration: none;
+        color: #75767F;
+        transition: color 0.3s ease;
+
+        &:hover,
+        &.active {
+          color: #fff;
+          border-bottom: 10px solid rgb(179, 41, 41);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #f447af;
+          transform: scaleX(0);
+          transition: transform 0.3s ease;
+        }
+
+        &:hover::after,
+        &.active::after {
+          transform: scaleX(1);
+        }
+      }
+    }
   }
+
+  &__Navright {
+    display: flex;
+    align-items: stretch;
+    height: 64px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    li {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      border-left: 1px solid #323542;
+
+      &:last-child {
+        border-right: 1px solid #323542;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #f447af;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      &:hover::after,
+      &.active::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__niceGadgetsLogo {
+    background: url('../../public/img/Logos/Logo.png');
+    width: 80px;
+    height: 28px;
+  }
+
+  &__Favourites {
+    background: url('../../public/img/Logos/Favourites.png');
+    width: 16px;
+    height: 16px;
+  }
+
+  &__Shopping {
+    background: url('../../public/img/Logos/Shopping.png');
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.text__uppercase {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: .04em;
 }
