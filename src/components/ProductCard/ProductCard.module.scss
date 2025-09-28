@@ -5,11 +5,8 @@
   box-sizing: border-box;
   padding: 32px;
   transition: border-color 0.3s;
-  margin-right: 16px;
 
   &__img {
-    height: 100%;
-
     @include utils.hover(transform, scale(1.05));
   }
 

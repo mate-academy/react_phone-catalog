@@ -1,7 +1,9 @@
-import React, { useMemo } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import React, { useMemo, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 import styles from './ProductsSlider.module.scss';
 
@@ -14,57 +16,9 @@ interface Props {
   mode?: 'newest' | 'discount';
 }
 
-interface CustomArrowProps {
-  className: string;
-  onClick?: () => void;
-  direction: string;
-}
-
-const CustomArrow = (props: CustomArrowProps) => {
-  const { className, onClick, direction } = props;
-
-  return (
-    <button
-      className={classNames(className, styles.arrow, styles[direction])}
-      onClick={onClick}
-    >
-      <span
-        className={classNames('icon', {
-          'icon--arrow-left': direction === 'prev',
-          'icon--arrow-right': direction === 'next',
-        })}
-      ></span>
-    </button>
-  );
-};
-
 const CustomSlider: React.FC<Props> = ({ products, mode }) => {
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-    nextArrow: (
-      <CustomArrow className={classNames(styles.arrow)} direction="next" />
-    ),
-    prevArrow: (
-      <CustomArrow className={classNames(styles.arrow)} direction="prev" />
-    ),
-  };
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
 
   const preparedProducts = useMemo(() => {
     let result = [...products];
@@ -83,11 +37,54 @@ const CustomSlider: React.FC<Props> = ({ products, mode }) => {
   }, [products, mode]);
 
   return (
-    <Slider {...settings} className={styles.slider}>
-      {preparedProducts.map(product => (
-        <ProductCard key={product.id} product={product} mode={mode} />
-      ))}
-    </Slider>
+    <div className={styles.slider}>
+      {/* Стрілки */}
+      <button ref={prevRef} className={classNames(styles.arrow, styles.prev)}>
+        <span className="icon icon--arrow-left"></span>
+      </button>
+      <button ref={nextRef} className={classNames(styles.arrow, styles.next)}>
+        <span className="icon icon--arrow-right"></span>
+      </button>
+
+      {/* Swiper */}
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={20}
+        slidesPerView={4}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={swiper => {
+          if (typeof swiper.params.navigation !== 'boolean') {
+            const nav = swiper.params.navigation!;
+
+            nav.prevEl = prevRef.current;
+            nav.nextEl = nextRef.current;
+          }
+        }}
+        breakpoints={{
+          1200: {
+            slidesPerView: 4,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+          500: {
+            slidesPerView: 2,
+          },
+          100: {
+            slidesPerView: 1,
+          },
+        }}
+      >
+        {preparedProducts.map(product => (
+          <SwiperSlide key={product.id}>
+            <ProductCard product={product} mode={mode} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 
