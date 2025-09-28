@@ -1,8 +1,7 @@
 import styles from './Footer.module.scss';
-import { useContext } from 'react';
 import logo from '../../assets/icons/logo.svg';
 import logoLight from '../../assets/icons/logoLight.svg';
-import { ThemeContext } from '../Themes/Themes';
+import { useTheme } from '../Themes/Themes';
 import { NavLink } from 'react-router-dom';
 import arrowUp from '../../assets/icons/arrowUpL.svg';
 import arrowUpLight from '../../assets/icons/arrowUpLight.svg';
@@ -15,7 +14,7 @@ export const Footer = () => {
     });
   };
 
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
   const isBasicDark = theme === 'dark';
 

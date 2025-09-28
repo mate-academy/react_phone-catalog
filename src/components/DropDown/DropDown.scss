@@ -1,19 +1,19 @@
 @use '../../utils/core' as *;
 
 .Dropdown-control {
-  // background-color: $color-surf-2;
-  // border: 1px solid $color-surf-2;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-surface-2);
   width: 136px;
   height: 40px;
-  color: $color-white;
+  color: var(--color-text);
   cursor: pointer;
 
   &:hover {
-    border: 1px solid $color-icon-btn;
+    border: 1px solid var(--color-icon-hover);
   }
 
   &:active {
-    border: 1px solid $color-accent;
+    border: 1px solid var(--color-accent-primary);
   }
 
   @include on-tablet {
@@ -22,27 +22,21 @@
 
   @include on-desktop {
     width: 176px;
-  }
-
-  @include themy($theme) {
-    background-color: red;
-    border: 1px solid red;
-    color: $color-white;
   }
 }
 
 .Dropdown-menu {
-  background-color: $color-surf-2;
-  border: 1px solid $color-surf-2;
+  background-color: var(--color-header-footer);
+  border: 1px solid var(--color-surface-2);
   width: 136px;
-  color: $color-white;
+  color: var(--color-text);
 
   &:hover {
-    border: 1px solid $color-icon-btn;
+    border: 1px solid var(--color-icon-hover);
   }
 
   &:active {
-    border: 1px solid $color-accent;
+    border: 1px solid var(--color-accent-primary);
   }
 
   @include on-tablet {
@@ -52,19 +46,31 @@
   @include on-desktop {
     width: 176px;
   }
-
-  @include themy($theme) {
-    color: themed('colorText');
-    background-color: themed('colorSwiperBG');
-    border: 1px solid #b4bdc3;
-  }
 }
 
 .Dropdown-option {
-  color: $color-second;
+  color: var(--color-secondary);
 }
 
 .Dropdown-option.is-selected {
-  background-color: $color-surf-2;
-  color: $color-white;
+  background-color: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+html[data-theme='light'] {
+  .Dropdown-control {
+    border: 1px solid #b4bdc3;
+
+    &:hover {
+      border: 1px solid var(--color-black);
+    }
+  }
+
+  .Dropdown-menu {
+    border: 1px solid #b4bdc3;
+
+    &:hover {
+      border: 1px solid var(--color-black);
+    }
+  }
 }

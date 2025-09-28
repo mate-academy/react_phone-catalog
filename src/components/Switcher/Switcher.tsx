@@ -1,17 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-for */
-import { useContext } from 'react';
-import { ThemeContext } from '../Themes';
+import { useTheme } from '../Themes';
 import styles from './Switcher.module.scss';
 
 export const Switcher = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useTheme();
 
-  const handleThemeChange = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
+  // const handleThemeChange = () => {
+  //   const newTheme = theme === 'dark' ? 'light' : 'dark';
 
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
+  //   toggleTheme(newTheme);
+  //   localStorage.setItem('theme', newTheme);
+  // };
 
   return (
     <div className={styles.headerContent}>
@@ -21,7 +20,7 @@ export const Switcher = () => {
             type="checkbox"
             id="theme-switch"
             className={styles.toggleBtnInput}
-            onChange={handleThemeChange}
+            onChange={toggleTheme}
             checked={theme === 'dark'}
           />
           <label

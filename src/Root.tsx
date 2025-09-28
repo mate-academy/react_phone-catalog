@@ -13,29 +13,32 @@ import { ProductInfo } from './components/ProductInfo/ProductInfo';
 import { FavouritesPage } from './components/Favourites';
 import { CartPage } from './components/BoughtCart';
 import { PageNotFound } from './components/PageNotFound';
+import { ThemeProvider } from './components/Themes';
 
 export const Root = () => {
   return (
     <FavouritesProvider>
       <CartProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<HomePage />} />
-              <Route path="home" element={<Navigate to="/" replace />} />
-              <Route path="phones" element={<ProductPage />} />
-              <Route path="tablets" element={<ProductPage />} />
-              <Route path="accessories" element={<ProductPage />} />
-              <Route path=":category">
-                <Route index element={<ProductPage />} />
-                <Route path=":productId" element={<ProductInfo />} />
+        <ThemeProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route index element={<HomePage />} />
+                <Route path="home" element={<Navigate to="/" replace />} />
+                <Route path="phones" element={<ProductPage />} />
+                <Route path="tablets" element={<ProductPage />} />
+                <Route path="accessories" element={<ProductPage />} />
+                <Route path=":category">
+                  <Route index element={<ProductPage />} />
+                  <Route path=":productId" element={<ProductInfo />} />
+                </Route>
+                <Route path="favourites" element={<FavouritesPage />} />
+                <Route path="cart" element={<CartPage />} />
+                <Route path="*" element={<PageNotFound />} />
               </Route>
-              <Route path="favourites" element={<FavouritesPage />} />
-              <Route path="cart" element={<CartPage />} />
-              <Route path="*" element={<PageNotFound />} />
-            </Route>
-          </Routes>
-        </Router>
+            </Routes>
+          </Router>
+        </ThemeProvider>
       </CartProvider>
     </FavouritesProvider>
   );

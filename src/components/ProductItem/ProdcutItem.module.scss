@@ -6,15 +6,10 @@
     max-width: 272px;
     text-decoration: none;
     padding: 32px;
-    background-color: $color-surf-1;
+    background-color: var(--color-cart);
     transition: all 0.2s ease-in-out;
-    border: 1px solid $color-surf-1;
+    border: 1px solid var(--color-cart);
     margin: auto;
-
-    @include themy($theme) {
-      background: themed('colorCart');
-      border: 1px solid themed('colorElem');
-    }
 
     @include on-tablet {
       flex: 0 0 33.33%;
@@ -64,14 +59,10 @@
 
     min-height: 42px;
     width: 100%;
-    color: $color-white;
+    color: var(--color-text);
     text-transform: uppercase;
     margin-top: 24px;
     cursor: pointer;
-
-    @include themy($theme) {
-      color: themed('colorText');
-    }
   }
 
   &__discount {
@@ -83,12 +74,8 @@
   &__price {
     @include h3;
 
-    color: $color-white;
+    color: var(--color-text);
     margin: 0;
-
-    @include themy($theme) {
-      color: themed('colorText');
-    }
   }
 
   &__fullprice {
@@ -97,19 +84,12 @@
     @include h3;
 
     text-decoration: line-through;
-    color: $color-second;
-
-    @include themy($theme) {
-      color: themed('colorSecond');
-    }
+    color: var(--color-secondary);
   }
 
   &__line {
     margin: 8px 0 0;
-
-    @include themy($theme) {
-      border: 1px solid themed('colorElem');
-    }
+    border: 1px solid var(--color-elements);
   }
 
   &__information {
@@ -128,22 +108,14 @@
   &__screenTitle {
     @include text-small;
 
-    color: $color-second;
-
-    @include themy($theme) {
-      color: themed('colorSecond');
-    }
+    color: var(--color-secondary);
   }
 
   &__screenDescription {
     @include text-small;
 
     text-decoration: none;
-    color: $color-white;
-
-    @include themy($theme) {
-      color: themed('colorText');
-    }
+    color: var(--color-text);
   }
 }
 
@@ -154,9 +126,9 @@
 
   @include text-buttons;
 
-  color: $color-white;
-  border: 1px solid $color-accent;
-  background-color: $color-accent;
+  color: var(--color-text);
+  border: 1px solid var(--color-accent-primary);
+  background-color: var(--color-accent-primary);
   text-decoration: none;
   align-items: center;
   justify-content: center;
@@ -164,15 +136,8 @@
   cursor: pointer;
 
   &:hover {
-    @include themy($theme) {
-      background-color: themed('colorVioletHover');
-      border: 1px solid themed('colorVioletHover');
-    }
-  }
-
-  @include themy($theme) {
-    background: themed('colorViolet');
-    border: 1px solid themed('colorViolet');
+    background-color: var(--color-accent-hover);
+    border: 1px solid var(--color-accent-hover);
   }
 }
 
@@ -182,24 +147,36 @@
 }
 
 .button__like {
-  @include themy($theme) {
-    background-color: themed('colorHeaderFooter');
-    border: 1px solid themed('colorElem');
-  }
-
   display: flex;
   height: 40px;
   width: 40px;
-  background-color: $color-surf-2;
-  border: 1px solid $color-surf-2;
-  color: $color-white;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-surface-2);
+  color: var(--color-text);
   align-items: center;
   justify-content: center;
   text-align: center;
   cursor: pointer;
 
   &:hover {
-    background-color: $color-icon-btn;
+    background-color: var(--color-icon-hover);
+  }
+}
+
+html[data-theme='light'] {
+  .product__elements {
+    border: 1px solid var(--color-elements);
   }
 
+  .button__add {
+    color: var(--color-white);
+  }
+
+  .button__like {
+    border: 1px solid var(--color-elements);
+
+    &:hover {
+      border: 1px solid var(--color-black);
+    }
+  }
 }

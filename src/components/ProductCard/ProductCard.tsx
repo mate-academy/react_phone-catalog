@@ -1,6 +1,6 @@
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/ProductTypes';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import back from '../../assets/icons/arrowLeft.svg';
 import backD from '../../assets/icons/arrowLeftLightD.svg';
 import backActive from '../../assets/icons/arrowLeftL.svg';
@@ -11,7 +11,7 @@ import gotoActive from '../../assets/icons/arrowRightL.svg';
 import gotoActiveLight from '../../assets/icons/arrowRightLight.svg';
 import { useSwipeable } from 'react-swipeable';
 import { ProductItem } from '../ProductItem/ProductItem';
-import { ThemeContext } from '../Themes';
+import { useTheme } from '../Themes';
 
 interface Props {
   title: string;
@@ -36,7 +36,7 @@ export const ProductSlider: React.FC<Props> = ({
     }
   };
 
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   const isBasicDark = theme === 'dark';
 
   const getBackIcon = (isDark: boolean, isDisabled: boolean) => {
@@ -85,7 +85,6 @@ export const ProductSlider: React.FC<Props> = ({
   return (
     <div className={styles.product} {...handlers}>
       <div className={styles.product__titleButton}>
-        {/*sometext*/}
         <h2 className={styles.category__title}>{title}</h2>
         <div className={styles.button}>
           <button

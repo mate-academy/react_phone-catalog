@@ -6,10 +6,7 @@
   margin: 0 auto;
   position: relative;
   z-index: 2;
-
-  @include themy($theme) {
-    background: themed('colorHeaderFooter');
-  }
+  background: var(--color-header-footer);
 
   &__cards {
     display: flex;
@@ -46,27 +43,16 @@
 .prevBtn,
 .nextBtn {
   font-family: Mont-Bold, sans-serif;
-  background-color: $color-surf-2;
-  border: 1px solid $color-elem;
-  color: $color-surf-2;
+  background-color: var(--color-icon-active);
+  border: 1px solid var(--color-elements);
+  color: var(--color-surface-2);
   width: 32px;
   height: 32px;
   cursor: pointer;
 
   &:hover {
-    background-color: $color-icon-btn;
-    border: 1px solid $color-icon-btn;
-    color: $color-white;
-
-    @include themy($theme) {
-      border: 1px solid $color-blackLight;
-    }
-  }
-
-  @include themy($theme) {
-    color: themed('colorElem');
-    border: 1px solid themed('colorBorder');
-    background-color: themed('colorSwiperBG');
+    background-color: var(--color-icon-hover);
+    border: 1px solid var(--color-icon-hover);
   }
 }
 
@@ -79,9 +65,15 @@
 .category__title {
   @include h2;
 
-  color: $color-white;
+  color: var(--color-text);
+}
 
-  @include themy($theme) {
-    color: themed('colorText');
+html[data-theme='light'] {
+  .prevBtn,
+  .nextBtn {
+    &:hover {
+      background-color: transparent;
+      border: 1px solid var(--color-black);
+    }
   }
 }

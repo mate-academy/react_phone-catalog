@@ -1,12 +1,10 @@
-@import './components/fonts/fonts';
-@import './components/Themes/Themes';
-@import './utils/variables';
+@import './utils/core';
 
 body {
   display: block;
   margin: 0;
   padding: 0;
-  background-color: $color-black;
+  background-color: var(--color-header-footer);
   overflow-x: hidden;
 
   &.menu-open {
@@ -14,49 +12,32 @@ body {
   }
 
   @include text-body;
-
-  @include themy($theme) {
-    background: themed('colorHeaderFooter');
-  }
 }
 
 .App {
-  @include themy($theme) {
-    color: themed('colorText');
-  }
-
+  color: var(--color-text);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.theme-light {
-  background-color: $color-whiteLight;
-  color: $color-blackLight;
-}
+// .theme-light {
+//   background-color: $color-whiteLight;
+//   color: $color-blackLight;
+// }
 
-.theme-dark {
-  background-color: $color-black;
-  color: $color-white;
-}
+// .theme-dark {
+//   background-color: $color-black;
+//   color: $color-white;
+// }
 
 .container__page {
-  // background-color: $color-black;
-
   max-width: 1200px;
   margin: 0 auto;
-
-  @include themy($theme) {
-    background-color: themed('colorHeaderFooter');
-  }
 }
 
 .section {
   flex-grow: 1;
-
-  @include themy($theme) {
-    background-color: themed('colorHeaderFooter');
-  }
 }
 
 .error__img {
@@ -80,10 +61,7 @@ body {
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   animation: fade-in 1s ease-in;
-
-  @include themy($theme) {
-    color: themed('colorText');
-  }
+  color: var(--color-text);
 }
 
 @keyframes fade-in {

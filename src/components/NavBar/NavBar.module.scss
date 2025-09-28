@@ -1,18 +1,8 @@
 @use '../../utils/core' as *;
 
 .header {
-  background-color: #0f1121;
-
-  @include themy($theme) {
-    background: themed('colorHeaderFooter');
-  }
-
-  @include themy($theme) {
-    border: 1px solid themed('colorElem');
-  }
-
-  border: 1px solid $color-surf-2;
-  border-top: none;
+  background-color: var(--color-header-footer);
+  border-bottom: 1px solid var(--color-border-hf);
   position: sticky;
   top: 0;
   left: 0;
@@ -60,18 +50,14 @@
   display: flex;
   text-decoration: none;
   text-transform: uppercase;
-  color: $color-second;
+  color: var(--color-secondary);
   align-items: center;
   position: relative;
 
   @include text-uppercase;
 
   &:active {
-    @include themy($theme) {
-      color: themed('colorText');
-    }
-
-    color: $color-white;
+    color: var(--color-text);
   }
 
   &::after {
@@ -81,14 +67,10 @@
     bottom: 0;
     width: 100%;
     height: 2px;
-    background-color: $color-white;
+    background-color: var(--color-text);
     transform: scale(0);
     transition: transform 0.4s ease;
     z-index: 1;
-
-    @include themy($theme) {
-      background: themed('colorText');
-    }
   }
 
   &:hover::after {
@@ -96,17 +78,11 @@
   }
 
   &--active {
-    @include themy($theme) {
-      color: themed('colorText');
-    }
+    color: var(--color-text);
 
     &::after {
       transform: scale(1);
-      background-color: $color-white;
-
-      @include themy($theme) {
-        background-color: themed('colorText');
-      }
+      background-color: var(--color-text);
     }
   }
 }
@@ -123,16 +99,12 @@
 }
 
 .likes {
-  @include themy($theme) {
-    border: 1px solid themed('colorElem');
-    border-top: none;
-    border-bottom: none;
-  }
-
   display: none;
   margin-left: auto;
   position: relative;
-  border: 1px solid $color-surf-2;
+  border: 1px solid var(--color-border-hf);
+  border-top: none;
+  border-bottom: none;
 
   @include on-tablet {
     display: flex;
@@ -146,12 +118,6 @@
 .shopping {
   display: none;
   position: relative;
-  border: 1px solid $color-surf-2;
-
-  @include themy($theme) {
-    border: 1px solid themed('colorElem');
-    border: none;
-  }
 
   @include on-tablet {
     display: flex;
@@ -164,9 +130,7 @@
 
 .menu {
   display: flex;
-  border: 1px solid $color-surf-2;
-  border-top: none;
-  border-bottom: none;
+  border-left: 1px solid var(--color-border-hf);
 
   @include on-tablet {
     display: none;
@@ -175,26 +139,14 @@
   @include on-desktop {
     display: none;
   }
-
-  @include themy($theme) {
-    border: 1px solid themed('colorElemHF');
-    border-top: none;
-    border-bottom: none;
-  }
 }
 
 .close {
   display: flex;
-  border: 1px solid $color-surf-2;
+  border-left: 1px solid var(--color-border-hf);;
 
   @include on-desktop {
     display: none;
-  }
-
-  @include themy($theme) {
-    border: 1px solid themed('colorElemHF');
-    border-top: none;
-    border-bottom: none;
   }
 }
 
@@ -204,13 +156,13 @@
   position: absolute;
   top: 17px;
   left: 80px;
-  background-color: #eb5757;
-  color: $color-white;
+  background-color: var(--color-red);
+  color: var(--color-white);
   font-size: 10px;
   font-weight: bold;
   width: 14px;
   height: 14px;
-  border: 1px solid $color-black;
+  border: 1px solid var(--color-black);
   border-radius: 50%;
   justify-content: center;
   align-items: center;

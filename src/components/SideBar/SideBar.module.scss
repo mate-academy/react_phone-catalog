@@ -7,7 +7,6 @@
   left: 0;
   text-transform: uppercase;
   box-sizing: border-box;
-  background-color: $color-black;
   height: 100vh;
   opacity: 0;
   transform: translateY(-100%);
@@ -20,10 +19,7 @@
     opacity: 1;
     transform: translateY(0);
     z-index: 10;
-
-    @include themy($theme) {
-      background: themed('colorHeaderFooter');
-    }
+    background: var(--color-header-footer);
   }
 
   &__menu {
@@ -44,7 +40,7 @@
     display: flex;
     position: relative;
     width: 100%;
-    border: 1px solid $color-elem;
+    border: 1px solid var(--color-elements);
     align-items: center;
     justify-content: center;
   }
@@ -61,19 +57,19 @@
 
 .sidebar-item {
   @include text-uppercase;
-  
+
   text-decoration: none;
   text-transform: uppercase;
   transition: color 0.3s;
-  color: $color-second;
+  color: var(--color-secondary);
 
   &:hover {
-    color: $color-white;
+    color: var(--color-text);
   }
 
   &.active-link {
-    color: $color-white;
-    border-bottom: 2px solid $color-white;
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-text);
   }
 }
 
@@ -83,13 +79,13 @@
   position: absolute;
   top: 17px;
   left: 80px;
-  background-color: #eb5757;
-  color: $color-white;
+  background-color: var(--color-red);
+  color: var(--color-white);
   font-size: 10px;
   font-weight: bold;
   width: 14px;
   height: 14px;
-  border: 1px solid $color-black;
+  border: 1px solid var(--color-black);
   border-radius: 50%;
   justify-content: center;
   align-items: center;

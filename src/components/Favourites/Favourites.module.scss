@@ -43,13 +43,13 @@
 
   &__title {
     text-decoration: none;
-    color: $color-white;
+    color: var(--color-subtitle);
   }
 }
 
 .page {
   &__title {
-    color: $color-white;
+    color: var(--color-text);
 
     @include h1;
 
@@ -59,7 +59,7 @@
   &__description {
     margin-top: 8px;
 
-    color: $color-second;
+    color: var(--color-secondary);
 
     @include text-body;
   }

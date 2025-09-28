@@ -1,21 +1,33 @@
 $mobile-min-width: 320px;
 $tablet-min-width: 640px;
 $desktop-min-width: 1024px;
-$color-white: #F1F2F9;
-$color-whiteLight: #FFF;
-$color-black: #0F1121;
-$color-blackLight: #313237;
-$color-surf-1: #161827;
-$color-surf-2: #323542;
-$color-elem: #3B3E4A;
-$color-elemlight: #E2E6E9;
-$color-icon-btn: #4A4D58;
-$color-icon-btnLight: #FAFBFC;
-$color-second: #75767F;
-$color-secondLight: #89939A;
-$color-accent: #905BFF;
-$color-accent-hover: #A378FF;
 $mob-width: 288px;
 $tab-width: 231px;
 $desk-width: 320px;
-$color-border: #B4BDC3;
+
+:root {
+  --color-black-text: #313237;
+  --color-light-text: #fff;
+  --color-white: #fff;
+  --color-white-light: #f1f2f9;
+  --color-black: #0f1121;
+  --color-secondary-dark: #75767f;
+  --color-secondary-light: #89939a;
+  --color-surface-secondary-dark: #323542;
+  --color-surface-secondary-light: #fafbfc;
+  --color-surface-primary-dark: #0f1121;
+  --color-surface-primary-light: #fff;
+  --color-surface-first-dark: #161827;
+  --color-elements-dark: #3b3e4a;
+  --color-elements-light: #e2e6e9;
+  --color-accent-primary-dark: #905bff;
+  --color-accent-dark-hover: #a378ff;
+  --color-accent-light-hover: #3a3b41;
+  --color-icons-active-dark: #4a4d58;
+  --color-icons-active-light: #fafbfc;
+  --color-icons-hover-dark: #4a4d58;
+  --color-icons-hover-light: #f8f9fa;
+  --color-red-light: #eb5757;
+  --color-red-dark: #c0392b;
+}
+

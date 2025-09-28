@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import styles from './CartPage.module.scss';
 import { useInfoHook } from '../ProductInfo/useInfoHook';
 import { useCart } from './CartContext';
@@ -7,14 +7,14 @@ import backLight from '../../assets/icons/arrowLeftLight.svg';
 import empty from '../../../public/img/cart-is-empty.png';
 import { BoughtCardItem } from '../BoughtCardItem/BoughtCardItem';
 import { CheckoutChears } from '../Reward/Reward';
-import { ThemeContext } from '../Themes';
+import { useTheme } from '../Themes';
 
 export const CartPage = () => {
   const { navigate } = useInfoHook();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
   const [isCheckoutConfirmed, setIsCheckoutConfirmed] = useState(false);
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   const isBasicDark = theme === 'dark';
 
   const totalCartPrice = cart.reduce((acc, item) => {

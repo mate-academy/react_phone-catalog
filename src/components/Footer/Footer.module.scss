@@ -15,11 +15,7 @@
 
   &__container {
     height: 257px;
-    border-top: 1px solid $color-elem;
-
-    @include themy($theme) {
-      border-top: 1px solid $color-elemlight;
-    }
+    border-top: 1px solid var(--color-border-hf);
 
     @include on-tablet {
       height: 96px;
@@ -59,31 +55,22 @@
   }
 
   &__buttonsName {
-    color: $color-second;
+    color: var(--color-secondary);
 
     @include text-small;
-
-    @include themy($theme) {
-      color: themed('colorSecond');
-    }
   }
 
   &__btn {
-    color: $color-white;
+    color: var(--color-white);
     width: 32px;
     height: 32px;
-    background-color: $color-surf-2;
-    border: 1px solid $color-surf-2;
+    background-color: var(--color-icon-active);
+    border: 1px solid var(--color-icon-active);
     cursor: pointer;
 
     &:hover {
-      background-color: $color-icon-btn;
-      border: 1px solid $color-icon-btn;
-    }
-
-    @include themy($theme) {
-      background: transparent;
-      border: 1px solid #B4BDC3;
+      background-color: var(--color-icon-hover);
+      border: 1px solid var(--color-icon-hover);
     }
   }
 }
@@ -112,18 +99,28 @@
 
   text-transform: uppercase;
   text-decoration: none;
-  color: $color-white;
+  color: var(--color-text);
   align-items: center;
 
-  @include themy($theme) {
-    color: #89939a;
+  &:hover {
+    color: var(--color-accent-hover);
+  }
+}
+
+html[data-theme='light'] {
+  .footer__btn {
+    border: 1px solid var(--color-border-hf);
+
+    &:hover {
+      border: 1px solid var(--color-black);
+    }
   }
 
-  &:hover {
-    color: $color-accent;
+  .footer-item {
+    color: var(--color-secondary);
 
-    @include themy($theme) {
-      color: themed('colorViolet');
+    &:hover {
+      color: var(--color-accent-hover);
     }
   }
 }

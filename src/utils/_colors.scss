@@ -1,0 +1,39 @@
+html[data-theme='dark'] {
+  --color-text: var(--color-light-text);
+  --color-text-modal: var(--color-black-text);
+  --color-subtitle: var(--color-white-light);
+  --color-surface-1: var(--color-surface-first-dark);
+  --color-surface-2: var(--color-surface-secondary-dark);
+  --color-header-footer: var(--color-surface-primary-dark);
+  --color-elements: var(--color-elements-dark);
+  --color-secondary: var(--color-secondary-dark);
+  --color-cart: var(--color-surface-first-dark);
+  --color-cart-border: var(--color-surface-first-dark);
+  --color-border-hf: var(--color-surface-secondary-dark);
+  --color-icon-active: var(--color-surface-secondary-dark);
+  --color-icon-hover: var(--color-icons-hover-dark);
+  --color-icons-disabled: var(--color-surface-primary-dark);
+  --color-accent-primary: var(--color-accent-primary-dark);
+  --color-accent-hover: var(--color-accent-dark-hover);
+  --color-red: var(--color-red-dark);
+}
+
+html[data-theme='light'] {
+  --color-text: var(--color-black-text);
+  --color-text-modal: var(--color-black-text);
+  --color-subtitle: var(--color-secondary-light);
+  --color-surface-1: var(--color-surface-secondary-dark);
+  --color-surface-2: var(--color-white);
+  --color-cart: var(--color-light-text);
+  --color-cart-border: var(--color-elements-light);
+  --color-secondary: var(--color-secondary-light);
+  --color-elements: var(--color-elements-light);
+  --color-header-footer: var(--color-surface-primary-light);
+  --color-border-hf: var(--color-elements);
+  --color-icon-active: var(--color-surface-primary-light);
+  --color-icon-hover: var(--color-icons-hover-light);
+  --color-icons-disabled: var(--color-surface-primary-light);
+  --color-accent-hover: var(--color-accent-light-hover);
+  --color-accent-primary: var(--color-black-text);
+  --color-red: var(--color-red-light);
+}

@@ -9,6 +9,7 @@ interface DDOpt {
 
 interface DDProps {
   onChange: (option: DDOpt) => void;
+  value: string;
 }
 
 const sort = [
@@ -24,24 +25,24 @@ const num = [
   { value: 'all', label: 'All' },
 ];
 
-const defSort = sort[0];
-const defNum = num[1];
-
-export function DDSortBy({ onChange }: DDProps) {
+export function DDSortBy({ onChange, value }: DDProps) {
   return (
     <Dropdown
       options={sort}
-      value={defSort}
+      value={
+        sort.find(opt => opt.value.toLowerCase() === value.toLowerCase()) ||
+        sort[0]
+      }
       onChange={option => onChange({ value: option.value })}
     />
   );
 }
 
-export function DDNum({ onChange }: DDProps) {
+export function DDNum({ onChange, value }: DDProps) {
   return (
     <Dropdown
       options={num}
-      value={defNum}
+      value={num.find(opt => opt.value === value) || num[1]}
       onChange={option => onChange({ value: option.value })}
     />
   );

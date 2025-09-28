@@ -3,16 +3,6 @@
 .main__homepage {
   max-width: 1200px;
   margin: 0 auto;
-
-  // padding: 0 16px;
-
-  // @include on-tablet {
-  //   padding: 0 24px;
-  // }
-
-  // @include on-desktop {
-  //   padding: 0 32px;
-  // }
 }
 
 .page__title {
@@ -21,6 +11,7 @@
   width: 82%;
   margin: 24px 16px;
   padding: 0 20px;
+  color: var(--color-text);
 
   @include on-tablet {
     width: 88%;
@@ -31,11 +22,6 @@
     width: 100%;
     margin: 56px 0;
   }
-
-  @include themy($theme) {
-    color: themed('colorText');
-  }
-
 }
 
 .category__wrapper {
@@ -56,20 +42,13 @@
 
   width: 100%;
   margin: 0 0 24px;
-
-  @include themy($theme) {
-    color: themed('colorText');
-  }
+  color: var(--color-text);
 }
 
 .homepage__product,
 .homepage__category,
 .homepage__hotproduct {
   margin: 0 16px;
-  
-  @include themy($theme) {
-    background: themed('colorHeaderFooter');
-  }
 
   @include on-tablet {
     margin: 0 24px;

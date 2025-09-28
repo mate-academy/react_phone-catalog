@@ -12,7 +12,7 @@
   }
 
   &--right {
-    border: 1px solid $color-elem;
+    border: 1px solid var(--color-elements);
 
     padding: 24px;
     max-height: 190px;
@@ -33,53 +33,46 @@
   align-items: center;
   justify-content: center;
   margin: 0;
+  color: var(--color-text);
 
   @include h2;
-
-  @include themy($theme) {
-    color: themed('colorHeaderFooter');
-  }
 }
 
 .window__title {
   display: flex;
   align-items: center;
-
   justify-content: center;
-
   margin: 0;
+  color: var(--color-secondary);
 
   @include text-body;
-
-  @include themy($theme) {
-    color: themed('colorSecond');
-  }
 }
 
 .product__row {
   width: 100%;
   height: 1px;
   margin: 24px 0;
-  background-color: $color-elem;
+  background-color: var(--color-elements);
 }
 
 .checkout {
   width: 100%;
   height: 48px;
-  background-color: $color-accent;
-
-  border: 1px solid $color-accent;
-  color: $color-white;
+  background-color: var(--color-accent-primary);
+  border: 1px solid var(--color-accent-primary);
+  color: var(--color-white);
   margin: 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+  }
 
   @include text-buttons;
-  &:hover {
-    background-color: red !important;
-  }
 }
 
 .cart__wrapper--right .checkout:active {
-  background-color: $color-accent;
+  background-color: var(--color-accent-primary);
 }
 
 .modal {
@@ -95,27 +88,23 @@
   z-index: 1000;
 
   &__title {
-    color: $color-elem;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
-
-    @include themy($theme) {
-      color: themed('colorText');
-    }
+    color: var(--color-text-modal);
   }
 
   &__content {
     background: #fff;
     padding: 20px;
-    border: 1px solid $color-black;
+    border: 1px solid var(--color-black);
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     min-width: 300px;
     animation: fade-in 0.3s ease-out;
 
-    
+
   }
 
   &__price {
@@ -123,7 +112,7 @@
     align-items: center;
     justify-content: center;
     margin: 0;
-    color: $color-black;
+    color: var(--color-black);
 
     @include h2;
   }
@@ -152,9 +141,15 @@
   width: 100%;
   height: 48px;
   margin-top: 24px;
-  background-color: $color-accent;
-  border: 1px solid $color-accent;
-  color: $color-white;
+  background-color: var(--color-accent-primary);
+  border: 1px solid var(--color-accent-primary);
+  color: var(--color-white);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+    border: 1px solid var(--color-accent-hover);
+  }
 
   @include text-buttons;
 }
@@ -164,13 +159,10 @@
   gap: 8px;
   margin: 24px 0 40px;
   cursor: pointer;
+  color: var(--color-subtitle);
 
   &__backTitle {
     @include text-small;
-
-    @include themy($theme) {
-      color: themed('colorSubtitle');
-    }
 
     align-items: center;
     text-decoration: none;
@@ -180,9 +172,5 @@
 .page__title {
   @include h1;
 
-  @include themy($theme) {
-    color: themed('colorSubtitle');
-  }
-
-  color: $color-white;
+  color: var(--color-text);
 }

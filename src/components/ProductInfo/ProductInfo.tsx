@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './ProductInfo.module.scss';
 import home from '../../assets/icons/home.svg';
 import homeLigt from '../../assets/icons/homeLight.svg';
 import goto from '../../assets/icons/arrowRight.svg';
 import back from '../../assets/icons/arrowLeft.svg';
+import backLight from '../../assets/icons/arrowLeftL.svg';
 import heart from '../../assets/icons/heart.svg';
 import heartLight from '../../assets/icons/heartLight.svg';
 import like from '../../assets/icons/heartRed.svg';
@@ -13,11 +14,11 @@ import { ProductSlider } from '../ProductCard';
 import { NameSlider } from '../../types/namesSlider';
 import { NavLink, useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { ThemeContext } from '../Themes';
+import { useTheme } from '../Themes';
 
 export const ProductInfo: React.FC = () => {
   const { category } = useParams<{ category: string }>();
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   const isBasicDark = theme === 'dark';
 
   const getLikeIcon = (isDark: boolean, isFav: boolean) => {
@@ -59,9 +60,9 @@ export const ProductInfo: React.FC = () => {
         </span>
         <NavLink to={`/${category}`} className={styles.productInfolink__title}>
           {category === 'tablets'
-            ? 'tablets'
+            ? 'Tablets'
             : category === 'accessories'
-              ? 'accessories'
+              ? 'Accessories'
               : 'Mobile'}
         </NavLink>
 
@@ -76,7 +77,11 @@ export const ProductInfo: React.FC = () => {
       </div>
 
       <div className={styles.productInfo__back}>
-        <img src={back} alt="Back" onClick={() => navigate(1)} />
+        <img
+          src={isBasicDark ? backLight : back}
+          alt="Back"
+          onClick={() => navigate(1)}
+        />
         <p
           className={styles.productInfolink__backTitle}
           onClick={() => navigate(1)}

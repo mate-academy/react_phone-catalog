@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './SideBar.module.scss';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import { ThemeContext } from '../Themes/Themes';
+import { useTheme } from '../Themes/Themes';
 import { useFavourites } from '../Favourites/FavouritesContext';
 import { useCart } from '../BoughtCart/CartContext';
 import DarkBag from '../../assets/icons/bagCart.svg';
@@ -19,7 +19,7 @@ export const SideBar: React.FC<SidebarProps> = ({ openMenu, setOpenMenu }) => {
   const getLinkActive = ({ isActive }: { isActive: boolean }) =>
     classNames(styles['sidebar-item'], { [styles['active-link']]: isActive });
 
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   const isBasicDark = theme === 'dark';
   const { favourites } = useFavourites();
   const { cart } = useCart();

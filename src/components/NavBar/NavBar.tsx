@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './NavBar.module.scss';
 import logo from '../../assets/icons/logo.svg';
 import logoLight from '../../assets/icons/logoLight.svg';
@@ -10,7 +10,7 @@ import bag from '../../assets/icons/bagCart.svg';
 import bagLight from '../../assets/icons/bagCartLight.svg';
 import menu from '../../assets/icons/menu.svg';
 import menuLight from '../../assets/icons/menuLight.svg';
-import { ThemeContext } from '../Themes';
+import { useTheme } from '../Themes';
 import { useFavourites } from '../Favourites/FavouritesContext';
 import { useCart } from '../BoughtCart/CartContext';
 import classNames from 'classnames';
@@ -28,7 +28,7 @@ export const NavBar: React.FC<NavBarProops> = ({
   menuIsOpen,
   setMenuIsClose,
 }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   const { favourites } = useFavourites();
   const { cart } = useCart();
   const isBasicDark = theme === 'dark';

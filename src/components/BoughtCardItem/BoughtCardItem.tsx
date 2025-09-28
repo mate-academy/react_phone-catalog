@@ -1,11 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Product } from '../../types/ProductTypes';
 import styles from './BoughtCardItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import DeleteLight from '../../assets/icons/closeLight.svg';
-import { ThemeContext } from '../Themes/Themes';
+import { useTheme } from '../Themes/Themes';
 import minusGray from '../../assets/icons/minusGray.svg';
+import minusLight from '../../assets/icons/minusLight.svg';
 import plus from '../../assets/icons/plus.svg';
+import plusLight from '../../assets/icons/plusLight.svg';
 import grayDelete from '../../assets/icons/grayClose.svg';
 import { useCart } from '../BoughtCart/CartContext';
 
@@ -21,7 +23,7 @@ export const BoughtCardItem: React.FC<Props> = ({
   onUpdate,
 }) => {
   const navigate = useNavigate();
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   const { toggleCart } = useCart();
   const productPath = `/${product.category}/${product.itemId}`;
   const isBasicDark = theme === 'dark';
@@ -94,7 +96,7 @@ export const BoughtCardItem: React.FC<Props> = ({
                   handleDecrease();
                 }}
               >
-                <img src={minusGray} alt="-" />
+                <img src={isBasicDark ? minusGray : minusLight} alt="-" />
               </button>
               <span className={styles.bought__num}>{quantity}</span>
               <button
@@ -104,7 +106,7 @@ export const BoughtCardItem: React.FC<Props> = ({
                   handleIncrease();
                 }}
               >
-                <img src={plus} alt="+" />
+                <img src={isBasicDark ? plus : plusLight} alt="+" />
               </button>
             </div>
             <p className={styles.bought__price}>{`$${totalPriceOne}`}</p>

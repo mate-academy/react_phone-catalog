@@ -5,15 +5,11 @@
 
   &__item {
     display: block;
-    background-color: $color-surf-1;
+    background-color: var(--color-cart);
     align-items: center;
-    border: 1px solid $color-surf-1;
+    border: 1px solid var(--color-cart-border);
     padding: 16px;
     justify-content: space-between;
-
-    @include themy($theme) {
-      background: themed('colorCart');
-    }
 
     @include on-tablet {
       display: block;
@@ -50,10 +46,7 @@
 
     width: 80px;
     height: 31px;
-  
-    @include themy($theme) {
-      color: themed('colorText');
-    }
+    color: var(--color-text);
   }
 
   &__deleteIcon {
@@ -72,9 +65,7 @@
   &__title {
     @include text-body;
 
-    @include themy($theme) {
-      color: themed('colorText');
-    }
+    color: var(--color-text);
   }
 
   &__num {
@@ -85,10 +76,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    @include themy($theme) {
-      color: themed('colorText');
-    }
+    color: var(--color-text);
   }
 
   &__button {
@@ -101,23 +89,23 @@
 .prevBtn {
   width: 32px;
   height: 32px;
-  background-color: $color-surf-1;
-  border: 1px solid $color-elem;
+  background-color: var(--color-icons-disabled);
+  border: 1px solid var(--color-elements);
   cursor: pointer;
 
   &:hover {
-    background-color: $color-icon-btn;
+    background-color: var(--color-icon-hover);
   }
 }
 
 .nextBtn {
   width: 32px;
   height: 32px;
-  background-color: $color-surf-2;
-  border: 1px solid $color-surf-2;
+  background-color: var(--color-icon-active);
+  border: 1px solid var(--color-elements);
   cursor: pointer;
 
   &:hover {
-    background-color: $color-icon-btn;
+    background-color: var(--color-icon-hover);
   }
 }

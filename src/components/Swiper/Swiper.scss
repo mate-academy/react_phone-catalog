@@ -68,24 +68,15 @@
 .custom-prev,
 .custom-next {
   display: none;
-  color: $color-white;
+  color: var(--color-text);
   width: 32px;
-  background-color: $color-surf-2;
-  border: 1px solid $color-surf-2;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-surface-2);
   cursor: pointer;
 
   &:hover {
-    // @include themy($theme) {
-    //   background: themed('colorSwiperBG');
-    //   color: themed('colorSwiperText');
-    //   border: 1px solid themed('colorHover');
-    // }
-  }
-
-  @include themy($theme) {
-    background-color: themed('colorSwiperBG');
-    color: themed('colorSwiperText');
-    border: 1px solid themed('colorSwiperBG');
+    background: var(--color-elements);
+    border: 1px solid var(--color-elements);
   }
 
   @include on-tablet {
@@ -101,8 +92,8 @@
   margin-top: 10px;
 
   .swiper-pagination-bullet {
-    background-color: $color-surf-2;
-    border: 1px solid $color-surf-2;
+    background-color: var(--color-surface-2);
+    border: 1px solid var(--color-surface-2);
     opacity: 0.7;
     margin: 0 5px;
     width: 24px;
@@ -111,13 +102,31 @@
     border-radius: 0;
 
     &-active {
-      border: 1px solid $color-white;
-      background-color: $color-white;
+      border: 1px solid var(--color-white);
+      background-color: var(--color-white);
       opacity: 1;
+    }
+  }
+}
 
-      @include themy($theme) {
-        background-color: themed('colorPaginActive');
-      }
+html[data-theme='light'] {
+  .custom-prev,
+  .custom-next {
+    background-color: transparent;
+    border: 1px solid var(--color-elements);
+
+    &:hover {
+      border: 1px solid var(--color-black);
+    }
+  }
+  .swiper-pagination-bullet {
+    background-color: var(--color-elements);
+    border: 1px solid var(--color-elements);
+
+    &-active {
+      border: 1px solid var(--color-text);
+      background-color: var(--color-text);
+      opacity: 1;
     }
   }
 }

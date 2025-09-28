@@ -30,7 +30,6 @@
     }
 
     &:hover {
-      // box-shadow: 1px 0 0.4em rgb(217, 217, 214);
       box-shadow: 1px 0 0.4em rgb(93, 53, 236);
       transform: translateY(-3px);
       border-image: initial;
@@ -41,10 +40,7 @@
     @include h4;
 
     margin: 24px 0 0;
-
-    @include themy($theme) {
-      color: themed('colorText');
-    }
+    color: var(--color-text);
   }
 
   &__description {
@@ -53,15 +49,11 @@
     font-size: 14px;
     line-height: 21px;
     margin: 4px 0 0;
-    color: $color-second;
-
-    @include themy($theme) {
-      color: themed('colorSecond');
-    }
+    color: var(--color-secondary);
   }
 
   &__link {
     text-decoration: none;
-    color: $color-white;
+    color: var(--color-text);
   }
 }

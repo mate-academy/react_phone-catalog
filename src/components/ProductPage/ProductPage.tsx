@@ -1,16 +1,22 @@
 import { useState } from 'react';
 import { useProductHook } from './useProductHook';
 import home from '../../assets/icons/home.svg';
-import back from '../../assets/icons/arrowLeftL.svg';
-import backDis from '../../assets/icons/arrowLeft.svg';
-import goto from '../../assets/icons/arrowRightL.svg';
-import gotoDis from '../../assets/icons/arrowRight.svg';
+import homeLight from '../../assets/icons/homeLight.svg';
+import back from '../../assets/icons/arrowLeft.svg';
+import backDis from '../../assets/icons/arrowLeftLightD.svg';
+import backActive from '../../assets/icons/arrowLeftL.svg';
+import backActiveLight from '../../assets/icons/arrowLeftLight.svg';
+import goto from '../../assets/icons/arrowRight.svg';
+import gotoDis from '../../assets/icons/arrowRightLightD.svg';
+import gotoActive from '../../assets/icons/arrowRightL.svg';
+import gotoActiveLight from '../../assets/icons/arrowRightLight.svg';
 import { NavLink } from 'react-router-dom';
 import { Loader } from '../Loader';
 import { DDNum, DDSortBy } from '../DropDown';
 import { Product, SortOption } from '../../types/ProductTypes';
 import { ProductItem } from '../ProductItem';
 import styles from './ProductPage.module.scss';
+import { useTheme } from '../Themes';
 
 export const ProductPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<string | null>(null);
@@ -27,23 +33,41 @@ export const ProductPage = () => {
     handleSortChange,
     handleItemsPerPageChange,
     handlePageChange,
+    sortBy,
   } = useProductHook();
 
   const slisedCurrentCategory =
     currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1);
+  const { theme } = useTheme();
+  const isBasicBlack = theme === 'dark';
+
+  const getBackIcon = (isDark: boolean, isDisabled: boolean) => {
+    if (isDark) {
+      return isDisabled ? back : backActive;
+    }
+
+    return isDisabled ? backDis : backActiveLight;
+  };
+
+  const getNextIcon = (isDark: boolean, isDisabled: boolean) => {
+    if (isDark) {
+      return isDisabled ? goto : gotoActive;
+    }
+
+    return isDisabled ? gotoDis : gotoActiveLight;
+  };
 
   return (
     <main className={styles.main__phonepage}>
       <div className={styles.mobilelink}>
         <NavLink to="/">
-          <img src={home} alt="home" />
+          <img src={isBasicBlack ? home : homeLight} alt="home" />
         </NavLink>
-        {/* mb goto*/}
         <span>
-          <img src={back} alt="back" />
+          <img src={isBasicBlack ? goto : gotoDis} alt="back" />
         </span>
         <p className={styles.mobilelink__title}>
-          {currentCategory}
+          {slisedCurrentCategory}
           {selectedPhone && (
             <>
               <span>
@@ -87,6 +111,7 @@ export const ProductPage = () => {
               <div className={styles.mobile__sortBy}>
                 <h3 className={styles.sortby}>Sort By</h3>
                 <DDSortBy
+                  value={sortBy}
                   onChange={option => {
                     handleSortChange(option.value as SortOption);
                   }}
@@ -95,6 +120,7 @@ export const ProductPage = () => {
               <div className={styles.mobile__items}>
                 <h3 className={styles.sortby}>Items on page</h3>
                 <DDNum
+                  value={itemPrevPage.toString()}
                   onChange={option => {
                     handleItemsPerPageChange(
                       option.value === 'all' ? 'all' : Number(option.value),
@@ -121,7 +147,10 @@ export const ProductPage = () => {
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
                 >
-                  <img src={currentPage === 1 ? backDis : back} alt="Back" />
+                  <img
+                    src={getBackIcon(isBasicBlack, currentPage === 1)}
+                    alt="Back"
+                  />
                 </button>
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(
                   number => (
@@ -141,7 +170,7 @@ export const ProductPage = () => {
                   disabled={currentPage === totalPages}
                 >
                   <img
-                    src={currentPage === totalPages ? gotoDis : goto}
+                    src={getNextIcon(isBasicBlack, currentPage === totalPages)}
                     alt="Goto"
                   />
                 </button>

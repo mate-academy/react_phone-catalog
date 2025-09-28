@@ -6,8 +6,7 @@ import liked from '../../assets/icons/heartRed.svg';
 import heart from '../../assets/icons/heart.svg';
 import heartLight from '../../assets/icons/heartLight.svg';
 import { useFavourites } from '../Favourites/FavouritesContext';
-import { useContext } from 'react';
-import { ThemeContext } from '../Themes';
+import { useTheme } from '../Themes';
 
 interface Props {
   product: Product;
@@ -25,7 +24,7 @@ export const ProductItem: React.FC<Props> = ({
   const isInCart = cart.some(item => item.id === product.id);
   const productPath = `/${product.category}/${product.itemId}`;
   const navigate = useNavigate();
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   const isBasicDark = theme === 'dark';
 
   const getLikeIcon = (isDark: boolean, isFav: boolean) => {

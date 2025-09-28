@@ -15,8 +15,7 @@ import banner3mob from '../../assets/icons/banner-accessories.png';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useContext } from 'react';
-import { ThemeContext } from '../Themes';
+import { useTheme } from '../Themes/Themes';
 
 const desktopImg = [banner1dt, banner2dt, banner3dt];
 
@@ -25,7 +24,7 @@ const mobileImg = [banner1mob, banner2mob, banner3mob];
 export const SliderSwiper = () => {
   const isMobile = useMediaQuery({ maxWidth: 550 });
   const images = isMobile ? mobileImg : desktopImg;
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
   const isBasicDark = theme === 'dark';
 
