@@ -18,6 +18,10 @@
   background: var(--color-header-footer);
 }
 
+.toggleBtnInput {
+  display: none;
+}
+
 .toggleCheckbox {
   display: flex;
   align-items: center;
