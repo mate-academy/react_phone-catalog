@@ -7,6 +7,8 @@
   transition: border-color 0.3s;
 
   &__img {
+    height: 100%;
+
     @include utils.hover(transform, scale(1.05));
   }
 
