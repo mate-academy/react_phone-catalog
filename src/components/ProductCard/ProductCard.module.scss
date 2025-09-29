@@ -3,8 +3,10 @@
 .productCard {
   @include card-base;
 
-  padding: $spacing-2xl;
+  padding: $spacing-3xl;
+  width: 272px;
   height: 100%;
+  box-sizing: border-box;
 
   &__link {
     text-decoration: none;
@@ -34,18 +36,6 @@
     }
   }
 
-  &__discount {
-    position: absolute;
-    top: $spacing-sm;
-    right: $spacing-sm;
-    background: $red;
-    color: $white;
-    padding: $spacing-xs $spacing-sm;
-    font-size: $font-size-base;
-    font-weight: $font-weight-semibold;
-    z-index: 1;
-  }
-
   &__info {
     @include flex-column;
 
@@ -63,22 +53,24 @@
   }
 
   &__prices {
-    @include flex-center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
-    gap: $spacing-sm;
     margin-bottom: $spacing-lg;
   }
 
   &__price {
     @include font-mont($spacing-xl, $font-weight-bold);
 
-    color: $gray-primary;
+    color: $white;
   }
 
   &__fullPrice {
-    @include font-mont($spacing-lg);
+    @include font-mont($spacing-xl);
 
-    color: $gray-secondary;
+    padding: 0 20px;
+    color: $icons;
     text-decoration: line-through;
   }
 
@@ -106,7 +98,7 @@
   &__specValue {
     @include font-mont($font-size-base, $font-weight-medium);
 
-    color: $gray-primary;
+    color: $white;
   }
 
   &__actions {

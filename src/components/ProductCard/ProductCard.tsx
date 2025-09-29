@@ -9,15 +9,15 @@ import styles from './ProductCard.module.scss';
 interface ProductCardProps {
   product: Product;
   className?: string;
-  showDiscountBadge?: boolean; // Новий пропс для керування бейджем знижки
-  showHotPriceText?: boolean; // Новий пропс для керування текстом "Hot Price"
+  showDiscountBadge?: boolean;
+  showHotPriceText?: boolean;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   className,
-  showDiscountBadge = true, // За замовчуванням показуємо бейдж знижки
-  showHotPriceText = false, // За замовчуванням не показуємо "Hot Price"
+  showDiscountBadge = true,
+  showHotPriceText = false,
 }) => {
   const { state: cartState, dispatch: cartDispatch } = useCart();
   const { state: favoritesState, dispatch: favoritesDispatch } = useFavorites();
@@ -57,9 +57,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   const discount = product.fullPrice - product.price;
-  const discountPercentage = Math.round((discount / product.fullPrice) * 100);
 
-  const shouldShowDiscountBadge = showDiscountBadge && discount > 0;
   const shouldShowFullPrice = showDiscountBadge && discount > 0;
 
   return (
@@ -72,13 +70,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             alt={product.name}
             className={styles.productCard__image}
           />
-
-          {/* Discount Badge */}
-          {shouldShowDiscountBadge && (
-            <div className={styles.productCard__discount}>
-              -{discountPercentage}%
-            </div>
-          )}
         </div>
 
         {/* Product Info */}
