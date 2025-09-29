@@ -27,7 +27,7 @@
   &__navButton {
     width: 32px;
     height: 32px;
-    border: 1px solid #75767f;
+    border: none;
     background: #3b3e4a;
     display: flex;
     align-items: center;
@@ -40,9 +40,16 @@
       background: #323542;
     }
 
-    &_hidden {
-      opacity: 0;
-      visibility: hidden;
+    &_disabled {
+      background: #25262c;
+      border: 1px solid #535459;
+      cursor: not-allowed;
+      opacity: 0.6;
+
+      &:hover {
+        background: #25262c;
+        border-color: #535459;
+      }
     }
 
     img {

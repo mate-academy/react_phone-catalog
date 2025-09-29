@@ -9,11 +9,15 @@ import styles from './ProductCard.module.scss';
 interface ProductCardProps {
   product: Product;
   className?: string;
+  showDiscountBadge?: boolean; // Новий пропс для керування бейджем знижки
+  showHotPriceText?: boolean; // Новий пропс для керування текстом "Hot Price"
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   className,
+  showDiscountBadge = true, // За замовчуванням показуємо бейдж знижки
+  showHotPriceText = false, // За замовчуванням не показуємо "Hot Price"
 }) => {
   const { state: cartState, dispatch: cartDispatch } = useCart();
   const { state: favoritesState, dispatch: favoritesDispatch } = useFavorites();
@@ -55,6 +59,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const discount = product.fullPrice - product.price;
   const discountPercentage = Math.round((discount / product.fullPrice) * 100);
 
+  const shouldShowDiscountBadge = showDiscountBadge && discount > 0;
+  const shouldShowFullPrice = showDiscountBadge && discount > 0;
+
   return (
     <div className={classNames(styles.productCard, className)}>
       <Link to={`/product/${product.id}`} className={styles.productCard__link}>
@@ -67,7 +74,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           />
 
           {/* Discount Badge */}
-          {discount > 0 && (
+          {shouldShowDiscountBadge && (
             <div className={styles.productCard__discount}>
               -{discountPercentage}%
             </div>
@@ -78,10 +85,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className={styles.productCard__info}>
           <h3 className={styles.productCard__title}>{product.name}</h3>
 
+          {/* Hot Price Label */}
+          {showHotPriceText && (
+            <p className={styles.productCard__hotPriceLabel}>HOT PRICE</p>
+          )}
+
           {/* Prices */}
           <div className={styles.productCard__prices}>
             <span className={styles.productCard__price}>${product.price}</span>
-            {discount > 0 && (
+            {shouldShowFullPrice && (
               <span className={styles.productCard__fullPrice}>
                 ${product.fullPrice}
               </span>

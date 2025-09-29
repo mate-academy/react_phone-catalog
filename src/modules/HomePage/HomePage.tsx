@@ -29,18 +29,19 @@ export const HomePage: React.FC = () => {
       <h1 className="visually-hidden">Welcome to Nice Gadgets store!</h1>
       {/* Banner Slider */}
       <PicturesSlider />
-      {/* Hot Prices Section */}
-      <ProductsSlider
-        title="Hot prices"
-        products={hotPrices}
-        className={styles.homePage__section}
-      />
-      {/* Categories Section */}
-      <Categories />
       {/* Brand New Models Section */}
       <ProductsSlider
         title="Brand new models"
         products={newModels}
+        className={styles.homePage__section}
+      />
+      {/* Categories Section */}
+      <Categories />
+
+      {/* Hot Prices Section */}
+      <ProductsSlider
+        title="Hot prices"
+        products={hotPrices}
         className={styles.homePage__section}
       />
     </div>

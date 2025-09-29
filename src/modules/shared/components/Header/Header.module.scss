@@ -125,6 +125,7 @@
   font-weight: $font-weight-bold;
   width: 14px;
   height: 14px;
+  border-radius: 50%;
 
   @include flex-center;
 

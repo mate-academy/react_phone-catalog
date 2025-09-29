@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Product } from '../../../../types';
 import { ProductCard } from '../../../../components/ProductCard';
@@ -16,8 +16,11 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   className,
 }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [showLeftButton, setShowLeftButton] = useState(false);
-  const [showRightButton, setShowRightButton] = useState(true);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const isHotPricesSlider = title === 'Hot prices';
+  const showDiscountBadge = isHotPricesSlider;
 
   const updateButtonVisibility = () => {
     if (!sliderRef.current) {
@@ -26,9 +29,18 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
 
     const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
 
-    setShowLeftButton(scrollLeft > 0);
-    setShowRightButton(scrollLeft < scrollWidth - clientWidth - 10);
+    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
   };
+
+  useEffect(() => {
+    updateButtonVisibility();
+    window.addEventListener('resize', updateButtonVisibility);
+
+    return () => {
+      window.removeEventListener('resize', updateButtonVisibility);
+    };
+  }, [products]);
 
   const scroll = (direction: 'left' | 'right') => {
     if (!sliderRef.current) {
@@ -44,9 +56,6 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       left: newScrollLeft,
       behavior: 'smooth',
     });
-
-    // Update button visibility after scroll
-    setTimeout(updateButtonVisibility, 300);
   };
 
   if (products.length === 0) {
@@ -63,10 +72,11 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             className={classNames(
               styles.productsSlider__navButton,
               styles.productsSlider__navButton_prev,
-              { [styles.productsSlider__navButton_hidden]: !showLeftButton },
+              { [styles.productsSlider__navButton_disabled]: !canScrollLeft },
             )}
             onClick={() => scroll('left')}
             aria-label="Previous products"
+            disabled={!canScrollLeft}
           >
             <img src="img/icons/icon-left.png" alt="Previous" />
           </button>
@@ -75,10 +85,11 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
             className={classNames(
               styles.productsSlider__navButton,
               styles.productsSlider__navButton_next,
-              { [styles.productsSlider__navButton_hidden]: !showRightButton },
+              { [styles.productsSlider__navButton_disabled]: !canScrollRight },
             )}
             onClick={() => scroll('right')}
             aria-label="Next products"
+            disabled={!canScrollRight}
           >
             <img src="img/icons/icon-right.png" alt="Next" />
           </button>
@@ -93,7 +104,10 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
         <div className={styles.productsSlider__track}>
           {products.map(product => (
             <div key={product.id} className={styles.productsSlider__slide}>
-              <ProductCard product={product} />
+              <ProductCard
+                product={product}
+                showDiscountBadge={showDiscountBadge}
+              />
             </div>
           ))}
         </div>

@@ -43,6 +43,7 @@
     padding: $spacing-xs $spacing-sm;
     font-size: $font-size-base;
     font-weight: $font-weight-semibold;
+    z-index: 1;
   }
 
   &__info {
