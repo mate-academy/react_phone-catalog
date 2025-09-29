@@ -14,4 +14,12 @@ export interface PhoneDetails {
   resolution: string;
   processor: string;
   ram: string;
+  camera: string;
+  zoom: string;
+  cell: string;
+
+  description: {
+    title: string;
+    text: string[];
+  }[];
 }

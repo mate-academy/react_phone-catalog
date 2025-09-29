@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { Link, useParams } from 'react-router-dom';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import styles from './ProductDetailsPage.module.scss';
 import { PhoneDetails } from './interfaces/PhoneDetailsInterface';
 import { useEffect, useState } from 'react';
 import { Loader } from '../Catalog/components/Loader/Loader';
+import ProductSlider from '../../components/ProductSlider/ProductSlider';
 
 export const ProductDetailsPage: React.FC = () => {
   const { category, productId } = useParams<{
@@ -12,12 +14,31 @@ export const ProductDetailsPage: React.FC = () => {
   }>();
 
   const [product, setProduct] = useState<PhoneDetails | null>(null);
+  const [allProducts, setAllProducts] = useState<PhoneDetails[]>([]);
+  const [suggestedProducts, setSuggestedProducts] = useState<PhoneDetails[]>(
+    [],
+  );
   const [selectedColor, setSelectedColor] = useState(product?.color || '');
   const [selectedCapacity, setSelectedCapacity] = useState(
     product?.capacity || '',
   );
   const [isError, setIsError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [mainImage, setMainImage] = useState('');
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = () => {
+    setIsFavorite(prev => !prev);
+  };
+
+  const getSuggestedProducts = (
+    products: PhoneDetails[],
+    limit: number = 4,
+  ) => {
+    const shuffled = [...products].sort(() => 0.5 - Math.random());
+
+    return shuffled.filter(p => p.id !== product?.id).slice(0, limit);
+  };
 
   useEffect(() => {
     if (!category || !productId) {
@@ -36,6 +57,8 @@ export const ProductDetailsPage: React.FC = () => {
         }
 
         const products: PhoneDetails[] = await response.json();
+
+        setAllProducts(products);
         const found = products.find(item => item.id === productId);
 
         if (!found) {
@@ -48,6 +71,11 @@ export const ProductDetailsPage: React.FC = () => {
         setProduct(found);
         setSelectedColor(found.color);
         setSelectedCapacity(found.capacity);
+        setMainImage(found.images[0]);
+
+        const suggested = getSuggestedProducts(products, 4);
+
+        setSuggestedProducts(suggested);
       } catch (error) {
         setIsError('Product not found');
       } finally {
@@ -57,6 +85,33 @@ export const ProductDetailsPage: React.FC = () => {
 
     fetchProduct();
   }, [category, productId]);
+
+  const handleColorChange = (color: string) => {
+    setSelectedColor(color);
+
+    const found = allProducts.find(
+      p => p.color === color && p.capacity === selectedCapacity,
+    );
+
+    if (found) {
+      setProduct(found);
+      setSelectedCapacity(found.capacity);
+      setMainImage(found.images[0]);
+    }
+  };
+
+  const handleCapacityChange = (capacity: string) => {
+    setSelectedCapacity(capacity);
+
+    const found = allProducts.find(
+      p => p.color === selectedColor && p.capacity === capacity,
+    );
+
+    if (found) {
+      setProduct(found);
+      setMainImage(found.images[0]);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -90,78 +145,218 @@ export const ProductDetailsPage: React.FC = () => {
     <>
       <div className={styles.container}>
         <BreadCrumbs category={product.category} product={product} />
-        <Link to={`/${category}`} className={styles.buttonBack}>
-          Back
-        </Link>
+        <div className={styles.back}>
+          <img src="/img/icons/butnBack.png" alt="Arrow left" />
+          <Link to={`/${category}`} className={styles.buttonBack}>
+            Back
+          </Link>
+        </div>
 
         <h1 className={styles.name}>{product.name}</h1>
 
         <div className={styles.wrapper}>
-          <div className={styles.productDetails}>
+          <div className={styles.top}>
             <div className={styles.images}>
               <div className={styles.thumbnails}>
                 {product.images.map((src, i) => (
-                  <img key={i} src={`/${src}`} className={styles.thumbnail} />
+                  <img
+                    key={i}
+                    src={`/${src}`}
+                    className={`${styles.thumbnail} ${mainImage === src ? styles.activeThumb : ''}`}
+                    onClick={() => setMainImage(src)}
+                    alt={`Thumbnail ${i}`}
+                  />
                 ))}
               </div>
-              <img src={`/${product.images[0]}`} className={styles.mainImage} />
+
+              <div className={styles.mainImageWrapper}>
+                <img
+                  src={`/${mainImage}`}
+                  alt="Main product"
+                  className={styles.mainImage}
+                />
+              </div>
             </div>
 
             <div className={styles.info}>
               <div className={styles.colors}>
-                <p className={styles.colorsTitle}>Available colors</p>
-                {product?.colorsAvailable.map((color, i) => (
-                  <input
-                    key={i}
-                    type="radio"
-                    className={
-                      selectedColor === color ? styles.activeColor : ''
+                <p className={styles.colors__title}>Available colors</p>
+                {product?.colorsAvailable.map((color, i) => {
+                  const id = `color-${i}`;
+
+                  return (
+                    <label
+                      key={id}
+                      className={`${styles.colorOption} ${selectedColor === color ? styles.activeColor : ''}`}
+                      htmlFor={id}
+                    >
+                      <input
+                        id={id}
+                        type="radio"
+                        name="color"
+                        checked={selectedColor === color}
+                        className={styles.colorInput}
+                        onChange={() => handleColorChange(color)}
+                      />
+                      <span
+                        className={styles.colorSwatch}
+                        style={{ backgroundColor: color }}
+                      ></span>
+                    </label>
+                  );
+                })}
+              </div>
+
+              <div className={styles.capacity}>
+                <p className={styles.capacity__title}>Select capacity</p>
+                <div className={styles.capacityOptions}>
+                  {product.capacityAvailable.map((cap, i) => {
+                    const inputId = `capacity-${i}`;
+
+                    return (
+                      <label
+                        key={i}
+                        className={`${styles.capacityItem} ${selectedCapacity === cap ? styles.activeCapacity : ''}`}
+                      >
+                        <input
+                          key={inputId}
+                          type="radio"
+                          name="capacity"
+                          value={cap}
+                          checked={selectedCapacity === cap}
+                          className={styles.capacityInput}
+                          onChange={() => handleCapacityChange(cap)}
+                        />
+                        {cap}
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className={styles.prices}>
+                <span className={styles.prices__discount}>
+                  ${product.priceDiscount}
+                </span>
+                <span className={styles.prices__regular}>
+                  ${product.priceRegular}
+                </span>
+              </div>
+
+              <div className={styles.info__buttons}>
+                <a
+                  href="#buy"
+                  className={styles['info__buttons-cart']}
+                  data-qa="hover"
+                >
+                  Add to cart
+                </a>
+
+                <a
+                  href="#"
+                  className={styles['info__buttons-fav']}
+                  onClick={e => {
+                    e.preventDefault();
+                    toggleFavorite();
+                  }}
+                >
+                  <img
+                    src={
+                      isFavorite
+                        ? '/img/icons/fav-active.png'
+                        : '/img/icons/fav.png'
                     }
-                    onClick={() => setSelectedColor(color)}
+                    alt="favourite goods"
                   />
-                ))}
+                </a>
               </div>
-            </div>
 
-            <div className={styles.capacity}>
-              <p className={styles.capacityTitle}>Select capacity</p>
-              <div className={styles.capacityOptions}>
-                {product.capacityAvailable.map((cap, i) => (
-                  <label key={i} className={styles.capacityItem}>
-                    <input
-                      type="radio"
-                      className={
-                        selectedCapacity === cap ? styles.activeCapacity : ''
-                      }
-                      onClick={() => setSelectedCapacity(cap)}
-                    />
-                    {cap}
-                  </label>
-                ))}
+              <div className={styles.specs}>
+                <div className={styles.specs__row}>
+                  <span className={styles.specs__name}>Screen:</span>
+                  <span className={styles.specs__value}>{product.screen}</span>
+                </div>
+                <div className={styles.specs__row}>
+                  <span className={styles.specs__name}>Resolution:</span>
+                  <span className={styles.specs__value}>
+                    {product.resolution}
+                  </span>
+                </div>
+                <div className={styles.specs__row}>
+                  <span className={styles.specs__name}>Processor:</span>
+                  <span className={styles.specs__value}>
+                    {product.processor}
+                  </span>
+                </div>
+                <div className={styles.specs__row}>
+                  <span className={styles.specs__name}>RAM:</span>
+                  <span className={styles.specs__value}>{product.ram}</span>
+                </div>
               </div>
-            </div>
-
-            <div className={styles.prices}>
-              <span className={styles.priceDiscount}>
-                ${product.priceDiscount}
-              </span>
-              <span className={styles.priceRegular}>
-                ${product.priceRegular}
-              </span>
-            </div>
-
-            <div className={styles.actions}>
-              <button className={styles.addToCart}>Add to cart</button>
-              <button className={styles.wishlist}>♡</button>
-            </div>
-
-            <div className={styles.specs}>
-              <p>Screen: {product.screen}</p>
-              <p>Resolution: {product.resolution}</p>
-              <p>Processor: {product.processor}</p>
-              <p>RAM: {product.ram}</p>
             </div>
           </div>
+
+          <div className={styles.descr}>
+            <div className={styles.about}>
+              <p className={styles.about__name}>About</p>
+
+              {product.description.map((section, i) => (
+                <div key={i} className={styles.about__section}>
+                  <div className={styles.about__title}>{section.title}</div>
+
+                  {section.text.map((paragraph, j) => (
+                    <div key={j} className={styles.about__text}>
+                      {paragraph}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.tech}>
+              <p className={styles.tech__title}>Tech specs</p>
+              <div className={styles.tech__row}>
+                <span className={styles.tech__name}>Screen:</span>
+                <span className={styles.tech__value}>{product.screen}</span>
+              </div>
+              <div className={styles.tech__row}>
+                <span className={styles.tech__name}>Resolution:</span>
+                <span className={styles.tech__value}>{product.resolution}</span>
+              </div>
+              <div className={styles.tech__row}>
+                <span className={styles.tech__name}>Processor:</span>
+                <span className={styles.tech__value}>{product.processor}</span>
+              </div>
+              <div className={styles.tech__row}>
+                <span className={styles.tech__name}>RAM:</span>
+                <span className={styles.tech__value}>{product.ram}</span>
+              </div>
+
+              {product.category !== 'accessories' && (
+                <>
+                  <div className={styles.tech__row}>
+                    <span className={styles.tech__name}>Camera:</span>
+                    <span className={styles.tech__value}>{product.camera}</span>
+                  </div>
+                  <div className={styles.tech__row}>
+                    <span className={styles.tech__name}>Zoom:</span>
+                    <span className={styles.tech__value}>{product.zoom}</span>
+                  </div>
+                </>
+              )}
+              <div className={styles.tech__row}>
+                <span className={styles.tech__name}>Cell:</span>
+                <span className={styles.tech__value}>{product.cell}</span>
+              </div>
+            </div>
+          </div>
+
+          <ProductSlider
+            title={'You may also like'}
+            showOldPrice={true}
+            limit={10}
+            products={suggestedProducts || []}
+          />
         </div>
       </div>
     </>

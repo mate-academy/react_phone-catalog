@@ -1,0 +1,43 @@
+@use '../../shared/styles/variables.scss' as *;
+
+* {
+  background-color: $menu-background-color;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  padding-left: 152px;
+  margin-bottom: 80px;
+}
+
+.title {
+  font-size: 48px;
+  color: $menu-color;
+  margin-bottom: 8px;
+
+}
+
+.emptyMessage {
+  color: $menu-color;
+}
+
+.count {
+  color: $card-contentColor;
+  font-size: 14px;
+}
+
+.grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+}

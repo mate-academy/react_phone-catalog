@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/scss';
@@ -6,34 +6,17 @@ import 'swiper/scss/navigation';
 import styles from './ProductSlider.module.scss';
 import { ProductSliderInterface } from '../../types/ProductSliderInterface';
 
-import productsData from '../../../public/api/products.json';
-import { Product } from '../../modules/Catalog/interfaces/Product';
+// import productsData from '../../../public/api/products.json';
+// import { Product } from '../../modules/Catalog/interfaces/Product';
+import { Link } from 'react-router-dom';
 
 export const ProductSlider: React.FC<ProductSliderInterface> = ({
   title,
   showOldPrice = false,
   limit = 10,
+  products = [],
 }) => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    const mapped = productsData.slice(0, limit).map(item => ({
-      id: item.id,
-      category: item.category,
-      itemId: item.itemId,
-      name: item.name,
-      fullPrice: item.fullPrice,
-      price: item.price,
-      screen: item.screen,
-      capacity: item.capacity,
-      color: item.color,
-      ram: item.ram,
-      year: item.year,
-      image: item.image,
-    })) as Product[];
-
-    setProducts(mapped);
-  }, [limit]);
+  const itemsToShow = limit ? products.slice(0, limit) : products;
 
   return (
     <div className={styles.wrapper}>
@@ -52,33 +35,41 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
           prevEl: `.${styles.prevBtn}`,
           nextEl: `.${styles.nextBtn}`,
         }}
-        spaceBetween={20}
+        spaceBetween={16}
         slidesPerView={1}
         breakpoints={{
-          576: { slidesPerView: 2 },
-          992: { slidesPerView: 3 },
-          1200: { slidesPerView: 4 },
+          576: { slidesPerView: 2, spaceBetween: 16 },
+          992: { slidesPerView: 3, spaceBetween: 16 },
+          1200: { slidesPerView: 4, spaceBetween: 16 },
         }}
       >
-        {products.map(product => (
+        {itemsToShow.map(product => (
           <SwiperSlide key={product.id}>
             <article className={styles.card} data-qa="card">
               <div className={styles.card__top}>
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className={styles.card__image}
-                />
+                <Link to={`/${product.category}/${product.id}`}>
+                  <img
+                    src={`/${product.images[0]}`}
+                    alt={product.name}
+                    className={styles.card__image}
+                  />
+                </Link>
               </div>
 
-              <h2 className={styles.card__name}>{product.name}</h2>
+              <h2 className={styles.card__name}>
+                <Link to={`/${product.category}/${product.id}`}>
+                  {product.name}
+                </Link>
+              </h2>
 
               <div className={styles.card__prices}>
                 <span className={styles.card__fullPrice}>
-                  ${product.fullPrice}
+                  ${product.priceRegular}
                 </span>
                 {showOldPrice && (
-                  <span className={styles.card__price}>${product.price}</span>
+                  <span className={styles.card__price}>
+                    ${product.priceDiscount}
+                  </span>
                 )}
               </div>
 

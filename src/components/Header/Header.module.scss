@@ -52,7 +52,21 @@ html, body {
       align-items: center;
       justify-content: center;
       border-left: 1px solid $menu-border-color;
+      position: relative;
     }
+  }
+
+  &__badge {
+    background-color: red;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
   }
 }
 

@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from '../Header/Header.module.scss';
 import { MenuLink } from '../../types/menuLink';
 import classNames from 'classnames';
+import { useFavorites } from '../../modules/Favorites/context/FavoritesContext';
 
 const menuLinks: MenuLink[] = [
   { to: '/', label: 'Home' },
@@ -11,6 +12,8 @@ const menuLinks: MenuLink[] = [
 ];
 
 export const Header: React.FC = () => {
+  const { favorites } = useFavorites();
+
   return (
     <header className={styles.menu}>
       <div className={styles.container}>
@@ -44,13 +47,16 @@ export const Header: React.FC = () => {
         </div>
 
         <div className={styles.menu__icons}>
-          <a href="#" className={styles.menu__iconsLike}>
+          <Link to="/favorites" className={styles.menu__iconsLike}>
             <img
               src="/img/icons/like.png"
               alt="Like icon"
               className={styles.nav__icons}
             />
-          </a>
+            {favorites.length > 0 && (
+              <span className={styles.menu__badge}>{favorites.length}</span>
+            )}
+          </Link>
           <a href="#">
             <img
               src="/img/icons/cart.png"

@@ -2,29 +2,26 @@ import { Link } from 'react-router-dom';
 import styles from './BreadCrumbs.module.scss';
 // eslint-disable-next-line max-len
 import { PhoneDetails } from '../../modules/ProductDetails/interfaces/PhoneDetailsInterface';
-import { useEffect } from 'react';
+import { useFavorites } from '../../modules/Favorites/context/FavoritesContext';
 
 const pageTitles: Record<string, string> = {
   phones: 'Phones',
   tablets: 'Tablets',
   accessories: 'Accessories',
+  favorites: 'Favorites',
 };
 
 interface BreadCrumbsProps {
   category?: string;
   product?: PhoneDetails;
+  showFavorites?: boolean;
 }
-
 export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({
   category,
   product,
+  showFavorites = false,
 }) => {
-  useEffect(() => {
-    alert(JSON.stringify(product, null, 2));
-    console.log('product =>', product);
-  }, [product]);
-  // const location = useLocation();
-  // const parts = location.pathname.split('/').filter(Boolean);
+  const { favorites } = useFavorites();
 
   return (
     <nav className={styles.breadcrumbs}>
@@ -38,26 +35,24 @@ export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({
             />
           </Link>
         </li>
-        {/* {parts.map((part, index) => {
-          const isLast = index === parts.length - 1;
-          const title = pageTitles[part] || part; */}
-        {/* {category && (
-          <li key={part} className={styles.breadcrumbs__item}>
+
+        {showFavorites && (
+          <li className={styles.breadcrumbs__item}>
             <img
-              src="/img/icons/arrow_right.png"
-              alt="arrow"
+              src="/img/icons/right_white_arrow.svg"
+              alt="arrow right"
               className={styles.breadcrumbs_arrow}
             />
-            {isLast ? (
-              <span className={styles.breadcrumbs_active}>{title}</span>
-            ) : (
-              <Link to={`/${part}`} className={styles.breadcrumbs__link}>
-                {title}
-              </Link>
+            <Link to="/favorites" className={styles.breadcrumbs__link}>
+              Favorites
+            </Link>
+            {favorites.length > 0 && (
+              <span className={styles.breadcrumbs__count}>
+                {favorites.length} items
+              </span>
             )}
           </li>
-        )} */}
-        {/* })} */}
+        )}
 
         {category && (
           <li className={styles.breadcrumbs__item}>
