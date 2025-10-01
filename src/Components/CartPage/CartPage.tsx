@@ -2,7 +2,7 @@ import './CartPage.scss';
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
-import { DeleteProduct, GetProducts } from '../../services/GetProducts';
+import { GetProducts } from '../../services/GetProducts';
 import { useCart } from '../../context/cartContext';
 import { ViewCart } from '../ViewCart/ViewCart';
 import { CartEmpty } from '../CartEmpty/CartEmpty';
@@ -20,10 +20,9 @@ export const CartPage: React.FC = () => {
 
       setProducts(addedToCart);
     });
-  }, []);
+  }, [cart]);
 
   const onRemove = (id: string) => {
-    DeleteProduct();
     setProducts(prev => prev.filter(p => p.itemId !== id));
   };
 

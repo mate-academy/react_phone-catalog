@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Home.scss';
 
 export const Home: React.FC = () => {
@@ -8,7 +9,11 @@ export const Home: React.FC = () => {
 
         <div className="home__banner--box">
           <img src="/img/ui-kit/Slider-button-left.png" alt="" />
-          <img src="/img/banners/Banner.png" alt="banner" />
+
+          <Link to="/phones">
+            <img src="/img/banners/Banner.png" alt="banner" />
+          </Link>
+
           <img src="/img/ui-kit/Slider-button-right.png" alt="" />
         </div>
       </div>

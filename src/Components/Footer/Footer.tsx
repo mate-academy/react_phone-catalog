@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer: React.FC = () => {
@@ -9,15 +8,18 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="footer__nav--links">
-        <NavLink className="footer__nav--link" to={'/github'}>
+        <a className="footer__nav--link" href={'https://github.com/romkaqb'}>
           github
-        </NavLink>
-        <NavLink className="footer__nav--link" to={'/contacts'}>
+        </a>
+        <a
+          className="footer__nav--link"
+          href={'https://www.linkedin.com/in/roman-rusin-866aa4322/'}
+        >
           contacts
-        </NavLink>
-        <NavLink className="footer__nav--link" to={'/rights'}>
+        </a>
+        <a className="footer__nav--link" href={'https://mate.academy/home'}>
           rights
-        </NavLink>
+        </a>
       </div>
 
       <a

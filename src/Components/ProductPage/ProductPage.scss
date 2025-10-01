@@ -1,5 +1,6 @@
 .product-page {
   margin-inline: 152px;
+  margin-bottom: 160px;
 }
 
 .product-page__nav-links {
@@ -56,6 +57,14 @@
   height: 80px;
   width: 80px;
   object-fit: contain;
+}
+
+.product-page-color{
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: contain;
+  text-decoration: none;
 }
 
 .product-page-main-photo {

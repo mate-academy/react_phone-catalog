@@ -6,8 +6,8 @@ export const GetProducts = (): Promise<Product[]> => {
   });
 };
 
-export const DeleteProduct = (): Promise<Product[]> => {
-  return fetch(`./api/products/.json`, { method: 'DELETE' }).then(response => {
-    return response.json();
-  });
-};
+// export const DeleteProduct = (): Promise<Product[]> => {
+//   return fetch(`./api/products/.json`, { method: 'DELETE' }).then(response => {
+//     return response.json();
+//   });
+// };

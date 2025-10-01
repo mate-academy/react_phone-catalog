@@ -21,29 +21,29 @@ export const Header: React.FC = () => {
 
       <nav className="header__nav">
         <div className="header__nav--links">
-          <NavLink className={ActivateLink} to={'/'}>
+          <NavLink className={ActivateLink} to="/">
             home
           </NavLink>
-          <NavLink className={ActivateLink} to={'/phones'}>
+          <NavLink className={ActivateLink} to="/phones">
             phones
           </NavLink>
-          <NavLink className={ActivateLink} to={'/tablets'}>
+          <NavLink className={ActivateLink} to="/tablets">
             tablets
           </NavLink>
-          <NavLink className={ActivateLink} to={'/accessories'}>
+          <NavLink className={ActivateLink} to="/accessories">
             accessories
           </NavLink>
         </div>
 
         <div className="header__nav--icons">
           <div className="header__nav--icons--section">
-            <NavLink className={IconsActivateLink} to={'/favorites'}>
+            <NavLink className={IconsActivateLink} to="/favorites">
               <img src="/img/ui-kit/favorites-icon.png" alt="favorites-icon" />
             </NavLink>
           </div>
 
           <div className="header__nav--icons--section">
-            <NavLink className={IconsActivateLink} to={'/cart'}>
+            <NavLink className={IconsActivateLink} to="/cart">
               <img src="/img/ui-kit/Shopping-bag.png" alt="Shopping-bag.png" />
             </NavLink>
           </div>
