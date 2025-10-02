@@ -18,16 +18,19 @@ export const FavouritesPage = () => {
         </div>
 
         <h1 className={styles.title}>Favourites</h1>
-        <span className={styles.quantity}>{favourites.length} {favourites.length > 1 ? 'items' : 'item'}</span>
-      {favourites.length === 0 ? (
-        <h2 className={styles.message}>{`You don't have any favourites...`}</h2>
-      ) : (
-        <div className={styles.cartlist}>
-          <FavouritesList />
-        </div>
-      )}
+        <span className={styles.quantity}>
+          {favourites.length} {favourites.length > 1 ? 'items' : 'item'}
+        </span>
+        {favourites.length === 0 ? (
+          <h2
+            className={styles.message}
+          >{`You don't have any favourites...`}</h2>
+        ) : (
+          <div className={styles.cartlist}>
+            <FavouritesList />
+          </div>
+        )}
       </div>
-
     </div>
   );
 };

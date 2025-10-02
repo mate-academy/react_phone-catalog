@@ -1,0 +1,44 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+}
+
+.back {
+  grid-column: 1 / span 2;
+  display: flex;
+  height: 16px;
+  margin-top: 40px;
+}
+
+.upper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 0;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: #0f0f11;
+}
+
+.message {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f0f11;
+}
+
+.cartlist {
+  grid-column: 1 / -1;
+  display: flex;
+  margin-top: 32px;
+}

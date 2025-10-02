@@ -1,0 +1,36 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover > * {
+  border-color: #0f0f11;
+  transition: 0.3s ease;
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #89939a;
+  border-radius: 50%;
+
+  &:hover {
+    border-color: var();
+    transition: 0.3s ease;
+  }
+}
+
+.text {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 700;
+  color: #89939a;
+  text-decoration: none;
+  font-size: 12px;
+}

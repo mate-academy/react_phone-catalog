@@ -1,0 +1,47 @@
+.cart {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  padding: 24px;
+  border-left: 1px solid #e2e6e9;
+  position: relative;
+
+  &:hover img {
+    transform: scale(1.1);
+    transition: 0.3s ease;
+  }
+
+  &.active {
+    color: #0f0f11;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 3px;
+      bottom: 1px;
+      left: 0;
+      border-radius: 10px;
+      background-color: ;
+      width: 100%;
+      transition: width 0.3s ease;
+    }
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 9px;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background-color: #f447af;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 50px;
+  z-index: 1;
+  top: 18px;
+  left: 32px;
+}
