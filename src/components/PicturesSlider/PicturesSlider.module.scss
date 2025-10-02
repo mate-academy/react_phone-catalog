@@ -1,0 +1,89 @@
+// src/components/PicturesSlider/PicturesSlider.module.scss - Styles for the pictures slider component
+.frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.track {
+  display: flex;
+  will-change: transform;
+  transition: transform 0.6s ease;
+
+  &Slide0 {
+    transform: translateX(0);
+  }
+  &Slide1 {
+    transform: translateX(-100%);
+  }
+  &Slide2 {
+    transform: translateX(-200%);
+  }
+  &Slide3 {
+    transform: translateX(-300%);
+  }
+  &Slide4 {
+    transform: translateX(-400%);
+  }
+}
+
+.item {
+  flex: 0 0 100%;
+}
+
+.image {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.arrows {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  padding: 0 8px;
+}
+
+.btn {
+  pointer-events: all;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s;
+}
+
+.dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 8px;
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.dotActive {
+  background: #000;
+}
