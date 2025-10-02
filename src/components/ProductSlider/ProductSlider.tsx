@@ -5,9 +5,6 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import styles from './ProductSlider.module.scss';
 import { ProductSliderInterface } from '../../types/ProductSliderInterface';
-
-// import productsData from '../../../public/api/products.json';
-// import { Product } from '../../modules/Catalog/interfaces/Product';
 import { Link } from 'react-router-dom';
 
 export const ProductSlider: React.FC<ProductSliderInterface> = ({

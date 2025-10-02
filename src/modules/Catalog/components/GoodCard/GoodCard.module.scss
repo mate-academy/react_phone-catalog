@@ -89,6 +89,7 @@
     grid-template-columns: 115px 1fr;
     row-gap: 4px;
     column-gap: 15px;
+    min-height: 108px;
 
     grid-auto-rows: 36px;
     align-items: start;
@@ -98,6 +99,9 @@
       font-size: 12px;
       line-height: 18px;
       font-weight: 600;
+      -webkit-line-clamp: 2;
+      min-height: 42px;
+      max-height: 42px;
     }
 
     &-value {

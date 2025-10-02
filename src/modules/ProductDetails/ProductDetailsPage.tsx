@@ -2,116 +2,53 @@
 import { Link, useParams } from 'react-router-dom';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import styles from './ProductDetailsPage.module.scss';
-import { PhoneDetails } from './interfaces/PhoneDetailsInterface';
-import { useEffect, useState } from 'react';
 import { Loader } from '../Catalog/components/Loader/Loader';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
+import { useFavorites } from '../Favorites/context/FavoritesContext';
+import { mapDetailsToProduct } from './utils/mapDetailsToProduct';
+import { useProduct } from './hooks/useProduct';
+import { useProductSelection } from './hooks/useProductSelection';
+import { useEffect, useState } from 'react';
+import { PhoneDetails } from './interfaces/PhoneDetailsInterface';
 
 export const ProductDetailsPage: React.FC = () => {
   const { category, productId } = useParams<{
     category: string;
     productId: string;
   }>();
+  const { favorites, toggleFavorite } = useFavorites();
 
-  const [product, setProduct] = useState<PhoneDetails | null>(null);
-  const [allProducts, setAllProducts] = useState<PhoneDetails[]>([]);
+  const {
+    product: loadedProduct,
+    allProducts,
+    isLoading,
+    isError,
+  } = useProduct(category, productId);
+
   const [suggestedProducts, setSuggestedProducts] = useState<PhoneDetails[]>(
     [],
   );
-  const [selectedColor, setSelectedColor] = useState(product?.color || '');
-  const [selectedCapacity, setSelectedCapacity] = useState(
-    product?.capacity || '',
-  );
-  const [isError, setIsError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [mainImage, setMainImage] = useState('');
-  const [isFavorite, setIsFavorite] = useState(false);
 
-  const toggleFavorite = () => {
-    setIsFavorite(prev => !prev);
-  };
-
-  const getSuggestedProducts = (
-    products: PhoneDetails[],
-    limit: number = 4,
-  ) => {
-    const shuffled = [...products].sort(() => 0.5 - Math.random());
-
-    return shuffled.filter(p => p.id !== product?.id).slice(0, limit);
-  };
+  const {
+    product,
+    selectedColor,
+    selectedCapacity,
+    mainImage,
+    setMainImage,
+    handleColorChange,
+    handleCapacityChange,
+  } = useProductSelection(loadedProduct, allProducts);
 
   useEffect(() => {
-    if (!category || !productId) {
-      return;
+    if (allProducts.length && loadedProduct) {
+      const shuffled = [...allProducts].sort(() => 0.5 - Math.random());
+      const suggested = shuffled
+        .filter(p => p.id !== loadedProduct.id)
+        .slice(0, 4);
+
+      setSuggestedProducts(suggested);
     }
-
-    const fetchProduct = async () => {
-      try {
-        setIsLoading(true);
-        setIsError('');
-
-        const response = await fetch(`/api/${category}.json`);
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch');
-        }
-
-        const products: PhoneDetails[] = await response.json();
-
-        setAllProducts(products);
-        const found = products.find(item => item.id === productId);
-
-        if (!found) {
-          setIsError('Product not found');
-          setProduct(null);
-
-          return;
-        }
-
-        setProduct(found);
-        setSelectedColor(found.color);
-        setSelectedCapacity(found.capacity);
-        setMainImage(found.images[0]);
-
-        const suggested = getSuggestedProducts(products, 4);
-
-        setSuggestedProducts(suggested);
-      } catch (error) {
-        setIsError('Product not found');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [category, productId]);
-
-  const handleColorChange = (color: string) => {
-    setSelectedColor(color);
-
-    const found = allProducts.find(
-      p => p.color === color && p.capacity === selectedCapacity,
-    );
-
-    if (found) {
-      setProduct(found);
-      setSelectedCapacity(found.capacity);
-      setMainImage(found.images[0]);
-    }
-  };
-
-  const handleCapacityChange = (capacity: string) => {
-    setSelectedCapacity(capacity);
-
-    const found = allProducts.find(
-      p => p.color === selectedColor && p.capacity === capacity,
-    );
-
-    if (found) {
-      setProduct(found);
-      setMainImage(found.images[0]);
-    }
-  };
+  }, [allProducts, loadedProduct]);
 
   if (isLoading) {
     return (
@@ -140,6 +77,10 @@ export const ProductDetailsPage: React.FC = () => {
       </div>
     );
   }
+
+  const isFavorite = product
+    ? favorites.some(item => String(item.id) === String(product.id))
+    : false;
 
   return (
     <>
@@ -257,7 +198,10 @@ export const ProductDetailsPage: React.FC = () => {
                   className={styles['info__buttons-fav']}
                   onClick={e => {
                     e.preventDefault();
-                    toggleFavorite();
+
+                    if (product) {
+                      toggleFavorite(mapDetailsToProduct(product));
+                    }
                   }}
                 >
                   <img

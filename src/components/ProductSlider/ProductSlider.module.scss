@@ -1,9 +1,5 @@
 @use '../../shared/styles/variables.scss' as *;
 
-// .wrapper {
-//   padding-left: 40px;
-// }
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -11,10 +7,6 @@
   margin-bottom: 24px;
   margin-top: 80px;
 }
-
-// .cards {
-//   gap: 16px;
-// }
 
 .title {
   color: $menu-color;
@@ -143,12 +135,16 @@
     grid-template-columns: 115px 1fr;
     row-gap: 4px;
     column-gap: 15px;
+    min-height: 108px;
 
     &-name {
       color: $card-settings-nameColor;
       font-size: 12px;
       line-height: 18px;
       font-weight: 600;
+      -webkit-line-clamp: 2;
+      min-height: 42px;
+      max-height: 42px;
     }
 
     &-value {
@@ -156,6 +152,16 @@
       font-weight: 400;
       font-size: 12px;
       line-height: 18px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      max-height: 36px;
     }
   }
 

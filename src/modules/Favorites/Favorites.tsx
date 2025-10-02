@@ -8,7 +8,7 @@ export const Favorites: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <BreadCrumbs />
+      <BreadCrumbs category="favorites" />
       <h1 className={styles.title}>Favourites</h1>
 
       {favorites.length === 0 ? (

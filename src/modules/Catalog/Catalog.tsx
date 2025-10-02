@@ -26,7 +26,7 @@ export const Catalog: React.FC<CatalogInterface> = () => {
   return (
     <>
       <div className={styles.catalogPage}>
-        <BreadCrumbs />
+        <BreadCrumbs category={currentPath} />
         <h2 className={styles.catalogTitle}>{titles[currentPath]}</h2>
         <p className={styles.catalogText}>{counts[currentPath]} models</p>
         <ProductsList type={currentPath} />

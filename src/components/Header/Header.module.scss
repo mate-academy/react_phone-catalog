@@ -1,10 +1,13 @@
 @use '../../shared/styles/variables.scss' as *;
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -67,6 +70,7 @@ html, body {
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
+    z-index: 1;
   }
 }
 
@@ -119,17 +123,15 @@ html, body {
 .isActive {
   color: $menu-color;
   position: relative;
-}
 
-.isActive::after {
-  content: '';
-  display: block;
-  background-color: $menu-color;
-  height: 4px;
-  border-radius: 8px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  &::after {
+    content: '';
+    display: block;
+    background-color: $menu-color;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
-

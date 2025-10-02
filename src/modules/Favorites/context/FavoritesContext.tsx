@@ -25,7 +25,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  const isFavorite = (id: number) => favorites.some(p => p.id === id);
+  const isFavorite = (id: string) => favorites.some(p => p.id === id);
 
   return (
     <FavoritesContext.Provider

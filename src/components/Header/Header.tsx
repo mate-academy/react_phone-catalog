@@ -47,7 +47,14 @@ export const Header: React.FC = () => {
         </div>
 
         <div className={styles.menu__icons}>
-          <Link to="/favorites" className={styles.menu__iconsLike}>
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              classNames(styles.menu__iconsLike, {
+                [styles.isActive]: isActive,
+              })
+            }
+          >
             <img
               src="/img/icons/like.png"
               alt="Like icon"
@@ -56,14 +63,21 @@ export const Header: React.FC = () => {
             {favorites.length > 0 && (
               <span className={styles.menu__badge}>{favorites.length}</span>
             )}
-          </Link>
-          <a href="#">
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              classNames(styles.menu__iconsCart, {
+                [styles.isActive]: isActive,
+              })
+            }
+          >
             <img
               src="/img/icons/cart.png"
               alt="Cart icon"
               className={styles.nav__icons}
             />
-          </a>
+          </NavLink>
         </div>
       </div>
     </header>

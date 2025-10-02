@@ -5,23 +5,23 @@ body {
   font-family: 'Mont-Regular', sans-serif;
 }
 
-.swiper-pagination {
-    bottom: -30px;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-  }
+// .swiper-pagination {
+//     bottom: -30px;
+//     display: flex;
+//     justify-content: center;
+//     gap: 8px;
+//   }
 
-  .swiper-pagination-bullet {
-    width: 14px;
-    height: 4px;
-    border-radius: 4px;
-    background-color: $slider-back-color;
-    opacity: 0.5;
-    transition: opacity 0.3s, background-color 0.3s;
-  }
+//   .swiper-pagination-bullet {
+//     width: 14px;
+//     height: 4px;
+//     border-radius: 4px;
+//     background-color: $slider-back-color;
+//     opacity: 0.5;
+//     transition: opacity 0.3s, background-color 0.3s;
+//   }
 
-  .swiper-pagination-bullet-active {
-    opacity: 1;
-    background-color: $menu-color;
-  }
+//   .swiper-pagination-bullet-active {
+//     opacity: 1;
+//     background-color: $menu-color;
+//   }
