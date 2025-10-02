@@ -48,7 +48,7 @@ export const PicturesSlider = () => {
     <>
       <div className={styles.container}>
         <h1 hidden>Product Catalog</h1>
-        <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
+        <h2 className={styles.title}>Welcome to Nice Gadgets store!</h1>
 
         <div className={styles.picturesslider}>
           <button
