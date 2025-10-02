@@ -1,12 +1,18 @@
-// src/api/index.ts - API functions for data fetching
+// src/api/index.ts
+// Funções para buscar dados da API
+
 import { Product, ProductCategory, ProductDetails } from '../types';
 
+const API_URL = 'https://mate-academy.github.io/phone-catalog-api';
+
+// delay artificial para simular carregamento
 const delay = (ms: number) => new Promise(r => setTimeout(r, ms));
 
-async function request<T>(url: string): Promise<T> {
-  // add tiny delay to visualize loaders
+async function request<T>(path: string): Promise<T> {
   await delay(200);
-  const res = await fetch(url);
+
+  // monta sempre a URL absoluta
+  const res = await fetch(`${API_URL}/${path.replace(/^\//, '')}`);
 
   if (!res.ok) {
     throw new Error(`${res.status} ${res.statusText}`);
@@ -16,15 +22,8 @@ async function request<T>(url: string): Promise<T> {
 }
 
 export const api = {
-  getProducts: (category: ProductCategory) =>
-    request<Product[]>(`/api/${category}.json`),
-
-  getProductDetails: (id: string) =>
-    request<ProductDetails>(`/api/products/${id}.json`),
-
-  getSuggestedProducts: async (take = 10) => {
-    const all = await request<Product[]>(`/api/phones.json`);
-
-    return all.sort(() => Math.random() - 0.5).slice(0, take);
-  },
+  getProducts: () => request<Product[]>('products.json'),
+  getPhones: () => request<ProductDetails[]>('phones.json'),
+  getCategories: () => request<ProductCategory[]>('categories.json'),
+  // adicione aqui outros endpoints que precisar
 };
