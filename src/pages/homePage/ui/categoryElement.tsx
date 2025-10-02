@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { HomePageCategory } from '../model';
 import styles from '../styles/category.module.scss';
-import { LoadingStates } from '@features/index';
+import { Status } from '@features/index';
 import { loaderTextMap } from '@ui/index';
 
 type Props = {
   category: HomePageCategory;
-  amount: LoadingStates | number;
+  amount: Status | number;
 };
 
 export const CategoryElement = ({ category, amount }: Props) => (

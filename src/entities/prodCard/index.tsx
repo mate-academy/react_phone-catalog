@@ -2,10 +2,10 @@ import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles/productCard.module.scss';
 import { CardButtons } from './ui/buttons';
-import { CatalogueProduct, Item } from '@shared/types';
+import { CatalogueProduct, Item, Product } from '@shared/types';
 
 type Props = {
-  product: CatalogueProduct;
+  product: CatalogueProduct | Product;
   isIn: {
     fav: (itemId: string) => boolean;
     cart: (itemId: string) => boolean;
@@ -14,10 +14,11 @@ type Props = {
     toggleCart: (e: React.MouseEvent, item: Item) => void;
     toggleFav: (e: React.MouseEvent, item: Item) => void;
   };
+  linkHandler: (e: React.MouseEvent, id: string) => void;
 };
 
 export const ProductCard = forwardRef<HTMLLIElement, Props>(
-  ({ product, isIn, stateHandlers }, ref) => {
+  ({ product, isIn, stateHandlers, linkHandler }, ref) => {
     const {
       category,
       id,
@@ -31,7 +32,6 @@ export const ProductCard = forwardRef<HTMLLIElement, Props>(
     } = product;
     const { fav, cart } = isIn;
     const { toggleCart, toggleFav } = stateHandlers;
-
     const item = {
       id: id,
       category: category,
@@ -39,15 +39,19 @@ export const ProductCard = forwardRef<HTMLLIElement, Props>(
 
     return (
       <li ref={ref} className={styles.container}>
-        <Link to={`/product/${id}`} className={styles['product-card']}>
+        <Link
+          to={`/product/${id}`}
+          className={styles['product-card']}
+          onClick={e => linkHandler(e, id)}
+        >
           <div className={styles['image-wrapper']}>
             <img className={styles.image} src={images[0]} alt={name} />
           </div>
           <h3 className={styles.name}>{name}</h3>
           <span className={styles.price}>
-            {`${priceDiscount}$`}
+            {`$${priceDiscount}`}
             {priceRegular && (
-              <span className={styles['full-price']}>{`${priceRegular}$`}</span>
+              <span className={styles['full-price']}>{`$${priceRegular}`}</span>
             )}
           </span>
 

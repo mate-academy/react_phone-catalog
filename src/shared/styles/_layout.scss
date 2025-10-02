@@ -22,7 +22,7 @@ $MAX_WIDTH: 1136px;
   }
 
   @media (min-width: c.$BREAKPOINT_WIDE) {
-    max-width: $MAX_WIDTH;
+    width: $MAX_WIDTH;
     margin: $MARGIN_TOP $MARGIN_SIDE_WIDE $MARGIN_BOT_WIDE;
   }
 }

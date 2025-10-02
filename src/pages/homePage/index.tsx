@@ -5,6 +5,8 @@ import { Slider } from '@widgets/slider';
 import { CategoryElement } from './ui';
 import { BannerData } from '@server/types';
 import { CatalogueData } from '@shared/api/types';
+import { InfiniteSlider } from '@widgets/infiniteSlider';
+import { Status } from '@features/index';
 
 export const HomePage = () => {
   const { amount, newItems, promoItems, banners } = useHomePage();
@@ -16,7 +18,7 @@ export const HomePage = () => {
         <span className={styles.welcome__text}>
           Welcome to Nice Gadgets store!
         </span>
-        <Slider mode="hero" data={banners as BannerData[]} title="" />
+        <InfiniteSlider data={banners as BannerData[] | Status} />
       </div>
       <div className={styles['home-catalogue']}>
         <Slider

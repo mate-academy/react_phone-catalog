@@ -1,0 +1,1 @@
+export { SliderPagination } from './sliderPagination';

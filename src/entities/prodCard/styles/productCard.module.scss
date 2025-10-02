@@ -39,7 +39,7 @@
 
   font-size: s.$c-lg;
   font-weight: s.$c-s-u;
-  line-height: 140%;
+
   letter-spacing: 0;
 }
 
@@ -48,7 +48,7 @@
   margin-left: 8px;
   color: s.$c-grey-secondary;
   text-decoration: line-through;
-  font-weight: 600;
+  font-weight: s.$c-r;
 }
 
 .image-wrapper {
@@ -75,8 +75,8 @@
 
 .descr {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, 15px);
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(4, 15px);
   row-gap: 8px;
 
   box-sizing: border-box;

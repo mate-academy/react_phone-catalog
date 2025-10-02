@@ -25,8 +25,6 @@ export const HeroSlider: React.FC<Props> = ({
   const { handlers, setByIndex } = useSliderCore(startIdx, amount);
 
   useInfinite(amount);
-  const firstClone = data.at(-1) as BannerData;
-  const lastClone = data.at(0) as BannerData;
 
   return (
     <section className={styles['hero-slider']} aria-label="Featured promotions">
@@ -43,13 +41,13 @@ export const HeroSlider: React.FC<Props> = ({
             } as React.CSSProperties
           }
         >
-          <div className={styles.track__el}>
+          <figure className={styles.track__el}>
             <img
-              src={firstClone.src}
-              alt={firstClone.alt}
+              src={(data.at(-1) as BannerData).src}
+              alt={(data.at(-1) as BannerData).alt}
               className={styles.banner}
             />
-          </div>
+          </figure>
           {data.map(el => (
             <Link
               key={el.id}
@@ -71,14 +69,14 @@ export const HeroSlider: React.FC<Props> = ({
               />
             </Link>
           ))}
-          <div className={styles.track__el}>
+          <figure className={styles.track__el}>
             <img
-              src={lastClone.src}
-              alt={lastClone.alt}
+              src={(data.at(0) as BannerData).src}
+              alt={(data.at(0) as BannerData).alt}
               className={styles.banner}
               loading="lazy"
             />
-          </div>
+          </figure>
         </div>
       </div>
       <SliderPagination

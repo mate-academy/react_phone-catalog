@@ -20,7 +20,7 @@ type BannerData = {
 
 type Description = {
   title: string;
-  text: string;
+  text: string[];
 };
 interface BaseProd {
   category: Category;

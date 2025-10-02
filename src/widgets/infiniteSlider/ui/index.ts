@@ -1,0 +1,1 @@
+export { HeroSkeleton } from './heroSkeleton';

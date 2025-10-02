@@ -1,0 +1,47 @@
+@use '@shared/styles' as s;
+
+.img-pagination {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  gap: 8px;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    flex-direction: column;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.image-button {
+  border: 1px solid s.$c-elements;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  object-fit: fill;
+  position: relative;
+
+  &-is-active {
+    border: 1px solid s.$c-grey-primary;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    height: 35px;
+    width: 35px;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.product-image {
+  display: block;
+  height: 100%;
+}

@@ -1,0 +1,1 @@
+export { HeadSection } from './headSection';

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 enum Status {
   LOADING = 'Loading...',
@@ -7,6 +8,8 @@ enum Status {
 
 const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
   const [items, setItems] = useState<T | Status>(Status.LOADING);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const navigate = useNavigate();
 
   const load = async () => {
     setItems(Status.LOADING);
@@ -22,12 +25,42 @@ const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
   };
 
   const loadItems = async () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+
+    abortControllerRef.current = new AbortController();
+    const signal = abortControllerRef.current.signal;
+
     for (let attempt = 0; attempt < 3; attempt++) {
       try {
+        if (signal.aborted) {
+          return;
+        }
+
+        setItems(Status.LOADING);
+        const data = await loadFn();
+
+        if (signal.aborted) {
+          return;
+        }
+
+        if (!data || (data as T[]).length === 0) {
+          setItems(Status.ERROR);
+
+          return;
+        }
+
         await load();
+
+        setItems(data);
 
         return;
       } catch (e) {
+        if (signal.aborted) {
+          return;
+        }
+
         if (attempt === 2) {
           setItems(Status.ERROR);
         } else {
@@ -36,6 +69,20 @@ const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
       }
     }
   };
+
+  useEffect(() => {
+    if (items === Status.ERROR) {
+      navigate('/404');
+    }
+  }, [items]);
+
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, []);
 
   return { items, loadItems };
 };

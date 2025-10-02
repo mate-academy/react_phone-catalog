@@ -1,0 +1,1 @@
+export { ArticleSection } from './articleSection';

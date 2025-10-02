@@ -1,0 +1,31 @@
+@use '@shared/styles' as s;
+
+.options-list {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid s.$c-elements;
+
+  &--buttons {
+    display: flex;
+    width: 100%;
+    justify-items: start;
+    gap: 8px;
+  }
+
+  &--heading {
+    @include s.t-small-text;
+
+    color: s.$c-grey-secondary;
+  }
+
+  &--item {
+    display: flex;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    width: 320px;
+  }
+}
