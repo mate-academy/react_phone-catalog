@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PhoneDetails } from '../interfaces/PhoneDetailsInterface';
 
 export const useProductSelection = (
@@ -13,6 +13,17 @@ export const useProductSelection = (
     initialProduct?.capacity || '',
   );
   const [mainImage, setMainImage] = useState(initialProduct?.images[0] || '');
+
+  useEffect(() => {
+    setProduct(initialProduct);
+  }, [initialProduct]);
+
+  useEffect(() => {
+    setProduct(initialProduct);
+    if (initialProduct?.images?.length) {
+      setMainImage(initialProduct.images[0]);
+    }
+  }, [initialProduct]);
 
   const handleColorChange = (color: string) => {
     setSelectedColor(color);

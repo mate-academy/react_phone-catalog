@@ -3,19 +3,17 @@ import { Product } from '../../interfaces/Product';
 import styles from './GoodCard.module.scss';
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../../../Favorites/context/FavoritesContext';
+// import { useCart } from '../../../Cart/CartContext';
+import { CartButton } from '../../../Cart/components/CartButton';
+import cartBtn from '../../../Cart/components/CartButton.module.scss';
 
 interface PhoneCardProps {
   product: Product;
 }
 
 export const PhoneCard: React.FC<PhoneCardProps> = ({ product }) => {
-  // const [isFavorite, setIsFavorite] = useState(false);
-
-  // const toggleFavorite = () => {
-  //   setIsFavorite(prev => !prev);
-  // };
-
   const { toggleFavorite, isFavorite } = useFavorites();
+  // const { addToCart } = useCart();
 
   return (
     <article className={styles.card} data-qa="card">
@@ -54,9 +52,23 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ product }) => {
       </p>
 
       <div className={styles.card__buttons}>
-        <a href="#buy" className={styles['card__buttons-cart']} data-qa="hover">
+        <CartButton product={product} className={cartBtn.small} />
+        {/* <a
+          href="#"
+          className={styles['card__buttons-cart']}
+          data-qa="hover"
+          onClick={() =>
+            addToCart({
+              id: product.id,
+              name: product.name,
+              image: product.image,
+              price: product.price.toString(),
+              category: product.category,
+            })
+          }
+        >
           Add to cart
-        </a>
+        </a> */}
 
         <a
           href="#"

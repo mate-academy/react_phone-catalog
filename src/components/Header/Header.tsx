@@ -3,6 +3,7 @@ import styles from '../Header/Header.module.scss';
 import { MenuLink } from '../../types/menuLink';
 import classNames from 'classnames';
 import { useFavorites } from '../../modules/Favorites/context/FavoritesContext';
+import { useCart } from '../../modules/Cart/CartContext';
 
 const menuLinks: MenuLink[] = [
   { to: '/', label: 'Home' },
@@ -13,6 +14,9 @@ const menuLinks: MenuLink[] = [
 
 export const Header: React.FC = () => {
   const { favorites } = useFavorites();
+  const { cartItems } = useCart();
+
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <header className={styles.menu}>
@@ -77,6 +81,9 @@ export const Header: React.FC = () => {
               alt="Cart icon"
               className={styles.nav__icons}
             />
+            {totalQuantity > 0 && (
+              <span className={styles.menu__countCart}>{totalQuantity}</span>
+            )}
           </NavLink>
         </div>
       </div>

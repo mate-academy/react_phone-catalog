@@ -9,28 +9,36 @@ import { ProductDetailsPage } from './modules/ProductDetails/ProductDetailsPage'
 import Footer from './components/Footer';
 import { FavoritesProvider } from './modules/Favorites/context/FavoritesContext';
 import { Favorites } from './modules/Favorites/Favorites';
+import { CartProvider } from './modules/Cart/CartContext';
+import { CartPage } from './modules/Cart/CartPage';
 
 export const App: React.FC = () => {
   return (
     <FavoritesProvider>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/phones" element={<Catalog type={'phones'} />}></Route>
-          <Route path="/tablets" element={<Catalog type={'tablets'} />}></Route>
-          <Route
-            path="/accessories"
-            element={<Catalog type={'accessories'} />}
-          ></Route>
-          <Route path="/favorites" element={<Favorites />} />
-          <Route
-            path="/:category/:productId"
-            element={<ProductDetailsPage />}
-          />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/phones" element={<Catalog type={'phones'} />}></Route>
+            <Route
+              path="/tablets"
+              element={<Catalog type={'tablets'} />}
+            ></Route>
+            <Route
+              path="/accessories"
+              element={<Catalog type={'accessories'} />}
+            ></Route>
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route
+              path="/:category/:productId"
+              element={<ProductDetailsPage />}
+            />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </CartProvider>
     </FavoritesProvider>
   );
 };

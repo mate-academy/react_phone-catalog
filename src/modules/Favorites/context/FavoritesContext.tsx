@@ -7,7 +7,18 @@ const FavoritesContext = createContext<FavoritesContextValue | null>(null);
 export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [favorites, setFavorites] = useState<Product[]>([]);
+  const [favorites, setFavorites] = useState<Product[]>(() => {
+    try {
+      const stored = localStorage.getItem('favorites');
+
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      console.error('Invalid favorites data in localStorage:', e);
+      localStorage.removeItem('favorites');
+
+      return [];
+    }
+  });
 
   useEffect(() => {
     const stored = localStorage.getItem('favorites');
@@ -16,6 +27,10 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
       setFavorites(JSON.parse(stored));
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   const toggleFavorite = (product: Product) => {
     setFavorites(prev =>

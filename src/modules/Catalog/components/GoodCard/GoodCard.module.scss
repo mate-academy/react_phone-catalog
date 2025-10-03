@@ -129,33 +129,33 @@
     justify-content: space-between;
     margin-bottom: 16px;
 
-    &-cart {
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 14px;
-      color: $menu-color;
-      text-decoration: none;
-      background-color: $card-settings-buttonBackColor;
-      width: 160px;
-      height: 40px;
-      outline: none;
-      box-shadow: none;
-      border: none;
-      cursor: pointer;
-      justify-content: center;
-      align-items: center;
-      display: flex;
+    // &-cart {
+    //   font-weight: 500;
+    //   font-size: 14px;
+    //   line-height: 14px;
+    //   color: $menu-color;
+    //   text-decoration: none;
+    //   background-color: $card-settings-buttonBackColor;
+    //   width: 160px;
+    //   height: 40px;
+    //   outline: none;
+    //   box-shadow: none;
+    //   border: none;
+    //   cursor: pointer;
+    //   justify-content: center;
+    //   align-items: center;
+    //   display: flex;
 
-      &:hover {
-        background-color: $card-settings-buttonHoverColor;
-        color: $menu-color;
-      }
+    //   &:hover {
+    //     background-color: $card-settings-buttonHoverColor;
+    //     color: $menu-color;
+    //   }
 
-      &:active {
-        background-color: $card-settings-buttonSelectedColor;
-        color: $menu-color;
-      }
-    }
+    //   &:active {
+    //     background-color: $card-settings-buttonSelectedColor;
+    //     color: $menu-color;
+    //   }
+    // }
 
     &-fav img {
       width: 40px;

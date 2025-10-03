@@ -1,0 +1,228 @@
+@use '../../shared/styles/variables.scss' as *;
+
+html,
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.cart {
+  padding-left: 152px;
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 80px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    background-color: $card-backColor;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    flex-wrap: nowrap;
+    width: 752px;
+    height: 128px;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__name {
+    font-size: 14px;
+    color: $menu-color;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    color: $menu-color;
+    font-weight: 600;
+  }
+
+  &__price {
+    color: $menu-color;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 368px;
+    height: 206px;
+    border: 1px solid $catalogHoverBtnColor;
+  }
+
+  &__total {
+    font-size: 32px;
+    font-weight: 600;
+    color: $menu-color;
+    margin-top: 23px;
+  }
+
+  &__summaryTotal {
+    font-size: 14px;
+    color: $card-contentColor;
+    border-bottom: 1px solid $card-contentColor;
+    padding-bottom: 25px;
+    width: 321px;
+    text-align: center;
+  }
+
+  &__checkout {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    color: $menu-color;
+    text-decoration: none;
+    background-color: $card-settings-buttonBackColor;
+    width: 320px;
+    height: 48px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 23px;
+  }
+
+  &__remove {
+    background: none;
+    border: none;
+    padding-left: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      stroke: $catalogHoverBtnColor;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover svg {
+      transform: scale(1.2);
+    }
+  }
+
+  &__emptyWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding-left: 152px;
+  }
+
+  &__emptyImage {
+    width: 500px;
+    height: auto;
+    margin-bottom: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__empty {
+    font-size: 32px;
+    color: $menu-color;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  &__name {
+    color: $menu-color;
+    font-size: 14px;
+    margin: 0;
+    width: 336px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+}
+
+.container__minus,
+.container__plus {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $menu-border-color;
+  background-color: $menu-border-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border-color: #4a4d58;
+
+    svg {
+      color: #4a4d58;
+    }
+  }
+
+  &:not(:disabled):hover {
+    background-color: $catalogHoverBtnColor;
+    border: 1px solid $catalogHoverBtnColor;
+  }
+}
+
+.back {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.buttonBack {
+  color: $menu-color;
+  font-size: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 48px;
+  color: $menu-color;
+  margin-top: 16px;
+}
