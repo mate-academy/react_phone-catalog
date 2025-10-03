@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import classNames from 'classnames';
-import styles from '../styles/optionButtons.module.scss';
+import styles from '../styles/uiSection/optionButtons.module.scss';
 import { Colors } from '@shared/types';
 import { ColorsToHex } from './dataToUiMappers';
 

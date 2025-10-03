@@ -41,6 +41,10 @@ interface UISectionProps {
   capacityOptions: CapacityOptionProps;
   purchase: PurchaseProps;
   baseSpecs: TechSpecsBase;
+  slider: {
+    images: string[];
+    name: string;
+  };
 }
 
 export {

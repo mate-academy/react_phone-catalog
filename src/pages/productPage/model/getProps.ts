@@ -50,6 +50,10 @@ export const getProps = (prod: Product) => {
         category: prod.category,
       },
       baseSpecs: baseSpecs,
+      slider: {
+        images: prod.images,
+        name: prod.name,
+      },
     },
 
     extendedSpecs: extendedSpecs,

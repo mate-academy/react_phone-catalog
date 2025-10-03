@@ -2,7 +2,8 @@
 
 .container {
   @include s.page-layout;
-
+  
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -11,6 +12,21 @@
 
   > :first-child {
     margin-bottom: 24px;
+    max-width: 100%;
   }
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-bottom: 2px;
+
+  @media(min-width: s.$c-BREAKPOINT_TAB) {
+    gap: 64px;
+  }
+
+  @media(min-width: s.$c-BREAKPOINT_WIDE) {
+    gap: 80px;
+  }
+}

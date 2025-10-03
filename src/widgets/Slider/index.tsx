@@ -1,69 +1,61 @@
-import { BannerData, Product } from '@shared/types';
-import { SliderDataProvider } from './model/context/sliderContext';
-import { configs, SliderMode } from './model';
+/* eslint-disable prettier/prettier */
 import { Status } from '@features/index';
-import { CatalogueData } from '@shared/api/types';
-import { CatalogueSlider, HeroSlider, ProdSlider } from './ui';
+import { BannerData, CatalogueProduct } from '@shared/types';
+import { SliderDataProvider } from '@shared/lib/useSlider';
+import { Slider } from './infiniteSlider';
+import { CatalogueSlider } from './catalogueSlider';
 
-type HeroSliderProps = {
-  mode: 'hero';
-  data: BannerData[] | Status;
-  title?: '';
+type ProductProps = {
+  images: string[];
+  name: string;
 };
 
-type CatalogueSliderProps = {
-  mode: 'catalogue';
-  data: CatalogueData | Status;
+type CatalogueProps = {
+  array: CatalogueProduct[];
   title: string;
 };
 
-type ProdSliderProps = {
-  mode: SliderMode.PRODUCT_CARD;
-  data: Product | Status;
-  title: '';
+type Props = {
+  data:
+  | BannerData[]
+  | ProductProps
+  | CatalogueProps
+  | Status;
 };
 
-type SliderProps = HeroSliderProps | CatalogueSliderProps | ProdSliderProps;
+const isStatus = (data: unknown): data is Status => {
+  return Object.values(Status).some(el => el === data);
+};
 
-export const Slider = ({ mode, data, title }: SliderProps) => {
-  const { skeleton: Skeleton, startIdx } = configs[mode];
+type Check = BannerData[] | ProductProps | CatalogueProps;
 
-  if (typeof data === 'string') {
-    return <Skeleton data={data} />;
+const isCatalogue = (data: Check): data is CatalogueProps => {
+  if (Array.isArray(data)) {
+    return false;
+  } else {
+    return Object.keys(data).some(el => el === 'title');
   }
+};
 
-  switch (mode) {
-    case 'hero':
+const INFINITE_START_INDEX = 1;
+const REGULAR_START_INDEX = 1;
+
+export const InfiniteSlider = ({ data }: Props) => {
+  if (isStatus(data)) {
+    return <div></div>;
+  } else {
+    if (isCatalogue(data)){
       return (
-        <SliderDataProvider startIdx={startIdx}>
-          <HeroSlider data={data} startIdx={startIdx} amount={data.length} />
+        <SliderDataProvider startIdx={REGULAR_START_INDEX}>
+          <CatalogueSlider {...data} />
         </SliderDataProvider>
       );
-    case 'catalogue':
-      if (data.items === null) {
-        return <Skeleton data={Status.ERROR} />;
-      } else {
-        return (
-          <SliderDataProvider startIdx={startIdx}>
-            <CatalogueSlider
-              data={data.items}
-              startIdx={startIdx}
-              amount={data.items && data.items.length}
-              title={title}
-            />
-          </SliderDataProvider>
-        );
-      }
-
-    case SliderMode.PRODUCT_CARD:
+    } else {
       return (
-        <SliderDataProvider startIdx={startIdx}>
-          <ProdSlider
-            data={data}
-            startIdx={startIdx}
-            amount={data.images && data.images.length}
-          />
+        <SliderDataProvider startIdx={INFINITE_START_INDEX}>
+          <Slider data={data} />
         </SliderDataProvider>
       );
+    }
   }
 };

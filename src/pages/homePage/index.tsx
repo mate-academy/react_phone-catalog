@@ -1,12 +1,11 @@
 import React from 'react';
 import { categories, useHomePage } from './model';
 import styles from './styles/HomePage.module.scss';
-import { Slider } from '@widgets/slider';
 import { CategoryElement } from './ui';
 import { BannerData } from '@server/types';
-import { CatalogueData } from '@shared/api/types';
-import { InfiniteSlider } from '@widgets/infiniteSlider';
+import { InfiniteSlider } from '@widgets/slider';
 import { Status } from '@features/index';
+import { CatalogueData } from '@shared/api/types';
 
 export const HomePage = () => {
   const { amount, newItems, promoItems, banners } = useHomePage();
@@ -21,11 +20,14 @@ export const HomePage = () => {
         <InfiniteSlider data={banners as BannerData[] | Status} />
       </div>
       <div className={styles['home-catalogue']}>
-        <Slider
-          mode="catalogue"
-          data={newItems as CatalogueData}
-          title="Brand new Models"
-        />
+        {typeof newItems !== 'string' && (
+          <InfiniteSlider
+            data={{
+              array: (newItems as CatalogueData).items,
+              title: 'Brand new Models',
+            }}
+          />
+        )}
         <section
           className={styles.categories}
           style={{ '--fields-count': categories.length } as React.CSSProperties}
@@ -35,15 +37,18 @@ export const HomePage = () => {
             <CategoryElement
               key={el.id}
               category={el}
-              amount={amount[el.link].items}
+              amount={amount[el.link].items as number | Status}
             />
           ))}
         </section>
-        <Slider
-          mode="catalogue"
-          data={promoItems as CatalogueData}
-          title="Hot prices"
-        />
+        {typeof promoItems !== 'string' && (
+          <InfiniteSlider
+            data={{
+              array: (promoItems as CatalogueData).items,
+              title: 'Hot prices',
+            }}
+          />
+        )}
       </div>
     </main>
   );

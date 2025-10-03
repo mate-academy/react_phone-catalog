@@ -1,0 +1,16 @@
+@use '@shared/styles' as s;
+
+.tech-specs {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  row-gap: 8px;
+  justify-content: space-between;
+
+  &__value {
+    @include s.t-body-text;
+
+    color: s.$c-grey-primary;
+  }
+}

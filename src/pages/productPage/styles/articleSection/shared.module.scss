@@ -1,0 +1,26 @@
+@use '@shared/styles' as s;
+
+.article-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.heading {
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px solid s.$c-elements;
+  text-transform: capitalize;
+
+  @include s.t-h3;
+}
+
+.headline {
+  @include s.t-h4;
+}
+
+.main-text {
+  @include s.t-body-text;
+
+  color: s.$c-grey-secondary;
+}
