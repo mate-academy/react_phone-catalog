@@ -8,16 +8,16 @@ import { FooterLink } from './types/types';
 
 const FOOTER_LINKS: FooterLink[] = [
   {
-    href: 'https://github.com/oleksandr-kovalchuk',
+    href: 'https://github.com/anastasia22422',
     label: 'Github',
     hasRel: true,
   },
   {
-    href: 'https://github.com/oleksandr-kovalchuk',
+    href: 'https://github.com/anastasia22422',
     label: 'Contacts',
     hasRel: true,
   },
-  { href: 'https://github.com/oleksandr-kovalchuk', label: 'rights' },
+  { href: 'https://github.com/anastasia22422', label: 'rights' },
 ];
 
 export const Footer: FC = () => {
