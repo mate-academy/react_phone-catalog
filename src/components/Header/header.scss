@@ -1,0 +1,91 @@
+@import '../../Scss-variables/Variables.scss';
+
+.header {
+	background-color: $main-background-color;
+	display: flex;
+	align-items: stretch;
+	justify-content: flex-start;
+
+	&__logo,
+	&__nav,
+	&__icons {
+		display: flex;
+		align-items: center;
+	}
+
+	&__logo {
+		padding: 0 24px;
+
+		&__image {
+			display: block;
+			width: 80px;
+			height: 28px;
+		}
+	}
+
+	&__nav {
+		font-family: $mont-regular-font;
+		text-align: center;
+		cursor: pointer;
+
+
+		&__link {
+			margin-right: 64px;
+			color: $not-active-link-color;
+			text-decoration: none;
+			text-transform: uppercase;
+			transition: 0.20s;
+
+
+			&:hover {
+				color: $active-link-color;
+			}
+		}
+	}
+
+	&__icons {
+		display: flex;
+		margin-left: auto;
+		align-items: center;
+		justify-content: center;
+
+		&:first-child {
+			border-left: 1px solid #fff;
+		}
+
+		&--favourites,
+		&--bag {
+			display: block;
+			background-repeat: no-repeat;
+			background-position: center;
+			width: 16px;
+			height: 16px;
+			padding: 24px;
+			border-left: 1px solid grey;
+		}
+
+		&--favourites {
+			background-image: url(/img/logo/Heart.svg);
+		}
+
+		&--bag {
+			background-image: url(/img/logo/Bag.svg);
+		}
+	}
+}
+
+.is-active {
+	color: $active-link-color;
+	position: relative;
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		background-color: $active-link-color;
+		height: 4px;
+		bottom: -20px;
+		left: 0;
+		width: 100%;
+	}
+}
