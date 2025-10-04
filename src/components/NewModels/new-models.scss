@@ -1,0 +1,58 @@
+@import '../../Scss-variables/Variables.scss';
+
+.newmodels {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 1136px;
+    flex-wrap: wrap;
+
+    &__title {
+        color: $active-link-color;
+        font-family: $mont-bold-font;
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -1%;
+
+    }
+
+    &__button {
+        background-color: $main-background-color;
+        width: 31px;
+        height: 31px;
+        border: 1px solid #3B3E4A;
+        margin-left: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:first-child {
+            margin-right: 14px;
+        }
+
+        &--left {
+            background-image: url(/img/logo/arrow-left.svg);
+            width: 5.33px;
+            height: 9.33px;
+        }
+
+
+        &--right {
+            background-image: url(/img/logo/arrow-right.svg);
+            width: 5.33px;
+            height: 9.33px;
+        }
+    }
+
+    &__button--position {
+        margin-left: auto;
+    }
+
+    &__products {
+        flex-basis: 100%;
+    }
+    &__product {
+        display: block;
+        width: 100%;
+    }
+}

@@ -1,3 +1,12 @@
+@import './Scss-variables/Variables.scss';
+
 * {
     margin: 0;
+    background-color: $main-background-color;
+}
+
+
+.container {
+    width: 1430px;
+    margin: 0 auto;
 }

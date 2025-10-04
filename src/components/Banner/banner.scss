@@ -1,0 +1,38 @@
+@import '../../Scss-variables/Variables.scss';
+
+.banner {
+    display: flex;
+    margin-bottom: 112px;
+    width: 1136px;
+
+    &__leftside, 
+    &__rightside {
+        display: flex;
+        background-color: #323542;
+        width: 32px;
+        height: 400px;
+        justify-content: center;
+        align-items: center;
+
+        &__arrow {
+            width: 6px;
+            height: 10px;
+            background-color: #323542;
+
+            &--left {
+                background-image: url(/img/logo/arrow-left.svg);
+            }
+
+            &--right {
+                background-image: url(/img/logo/arrow-right.svg);
+            }
+        }
+    }
+
+
+    &__img {
+        padding: 0 16px;
+        height: 400px;
+        width: 1040px;
+    }
+}

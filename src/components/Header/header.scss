@@ -5,6 +5,7 @@
 	display: flex;
 	align-items: stretch;
 	justify-content: flex-start;
+	border-bottom: 1px solid grey;
 
 	&__logo,
 	&__nav,
@@ -55,10 +56,11 @@
 
 		&--favourites,
 		&--bag {
+
 			display: block;
 			background-repeat: no-repeat;
 			background-position: center;
-			width: 16px;
+			width: 14px;
 			height: 16px;
 			padding: 24px;
 			border-left: 1px solid grey;
