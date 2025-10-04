@@ -13,7 +13,7 @@ export const Header = () => {
                 to="/Home"
                 className={({ isActive }) =>
                   isActive
-                    ? `${styles.text__uppercase} active`
+                    ? `${styles.text__uppercase} ${styles.active}`
                     : styles.text__uppercase
                 }
               >
@@ -25,7 +25,7 @@ export const Header = () => {
                 to="/phones"
                 className={({ isActive }) =>
                   isActive
-                    ? `${styles.text__uppercase} active`
+                    ? `${styles.text__uppercase} ${styles.active}`
                     : styles.text__uppercase
                 }
               >
@@ -37,7 +37,7 @@ export const Header = () => {
                 to="/tablets"
                 className={({ isActive }) =>
                   isActive
-                    ? `${styles.text__uppercase} active`
+                    ? `${styles.text__uppercase} ${styles.active}`
                     : styles.text__uppercase
                 }
               >
@@ -49,7 +49,7 @@ export const Header = () => {
                 to="/accessories"
                 className={({ isActive }) =>
                   isActive
-                    ? `${styles.text__uppercase} active`
+                    ? `${styles.text__uppercase} ${styles.active}`
                     : styles.text__uppercase
                 }
               >
@@ -81,6 +81,10 @@ export const Header = () => {
               />
             </li>
           </ul>
+        </div>
+
+        <div className={styles.header__Menu}>
+          <NavLink to="./" className={styles.header__BurgerMenu}></NavLink>
         </div>
       </div>
     </header>
