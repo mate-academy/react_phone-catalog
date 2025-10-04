@@ -1,39 +1,78 @@
+import React from 'react';
+import product from '../../../public/api/products.json';
+import type { Product } from '../../Types/type'
 import './new-models.scss'
 
 export const NewModels = () => {
 
 	return (
 		<div className='newmodels'>
-			<h2 className='newmodels__title'>Brand new models</h2>
-			<div className='newmodels__button newmodels__button--position '>
-				<div className='newmodels__button--left'></div>
+			<div className='newmodels__topbar'></div>
+			<h2 className='newmodels__topbar__title'>Brand new models</h2>
+			<div className="newmodels__topbar__buttons">
+				<div className="newmodels__topbar__buttons__left">
+					<a href="" className="newmodels__topbar__buttons__left--arrow"></a>
+				</div>
+				<div className="newmodels__topbar__buttons__right">
+					<a href="" className="newmodels__topbar__buttons__right--arrow"></a>
+				</div>
 			</div>
-			<div className='newmodels__button'>
-				<div className='newmodels__button--right'></div>
-			</div>
-		
-				<div className='newmodels__products'>
-				<article className='newmodels__product'>
-					<img src="" alt="" />
-					<p>Apple iPhone 14 Pro 128GB Silver (MQ023)</p>
-					<h4>$999</h4>
-					<div>
-						<p>Screen</p>
-						<p>6.1" OLED</p>
-					</div>
-					<div>
-						<p>Capacity</p>
-						<p>128 GB</p>
-					</div>
-					<div>
-						<p>RAM</p>
-						<p>6 GB</p>
-					</div>
-					<button>Add to cart</button>
-					<button></button>
-				</article>
-				
+
+			<div className='newmodels__products'>
+
+				{product.map((product: Product) => {
+					return (
+						<article className='newmodels__product' key={product.id}>
+							<img
+								className='newmodels__product__image'
+								src= {`${product.image}`}
+								alt={`${product.itemId}`}
+							/>
+							<p className='newmodels__product__name'>
+								{product.name}
+							</p>
+							<h4 className='newmodels__product__price'>
+								{`$${product.price}`}
+							</h4>
+							<div className='newmodels__product__description'>
+								<p className='newmodels__product__description__screen'>
+									Screen
+								</p>
+								<p className='newmodels__product__description__screen--number'>
+									{product.screen}
+								</p>
+							</div>
+							<div className='newmodels__product__description'>
+								<p className='newmodels__product__description__capacity'>
+									Capacity
+								</p>
+								<p className='newmodels__product__description__capacity--number'>
+									{product.capacity}
+								</p>
+							</div>
+							<div className='newmodels__product__description'>
+								<p className='newmodels__product__description__ram'>
+									RAM
+								</p>
+								<p className='newmodels__product__description__ram--number'>
+									{product.ram}
+								</p>
+							</div>
+
+							<div className='newmodels__product__buttons'>
+								<button className='newmodels__product__buttons__button__add'>
+									Add to cart
+								</button>
+								<button className='newmodels__product__buttons__button__favourites'>
+									<a href="#" className='newmodels__product__buttons__button__favourites--heart'></a>
+								</button>
+							</div>
+						</article>
+					);
+				})};
+
 			</div>
 		</div>
 	);
 }
+
