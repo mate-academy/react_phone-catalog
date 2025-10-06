@@ -75,9 +75,21 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const parsePrice = (price: string | number): number => {
+    if (typeof price === 'number') {
+      return price;
+    }
+
+    if (typeof price === 'string') {
+      return Number(price.replace(/[^0-9.]/g, '')) || 0;
+    }
+
+    return 0;
+  };
+
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cartItems.reduce(
-    (sum, item) => sum + Number(item.price.replace('$', '')) * item.quantity,
+    (sum, item) => sum + parsePrice(item.price) * item.quantity,
     0,
   );
 

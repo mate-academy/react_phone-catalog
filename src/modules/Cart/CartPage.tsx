@@ -121,7 +121,10 @@ export const CartPage: React.FC = () => {
                 </div>
               </div>
               <p className={styles.cart__price}>
-                ${Number(item.price) * item.quantity}
+                $
+                {(typeof item.price === 'string'
+                  ? Number(item.price.replace(/[^0-9.]/g, ''))
+                  : item.price) * item.quantity}
               </p>
             </div>
           ))}

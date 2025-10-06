@@ -5,12 +5,18 @@
 }
 
 @mixin on-tablet {
-  @media (min-width: 640px) and (max-width: 1199px)  {
+  @media (min-width: 640px) and (max-width: 1199px) {
     @content;
   }
 }
 
 @mixin on-desktop {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin on-large-desktop {
   @media (min-width: 1200px) {
     @content;
   }

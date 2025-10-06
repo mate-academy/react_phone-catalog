@@ -4,6 +4,7 @@ import { MenuLink } from '../../types/menuLink';
 import classNames from 'classnames';
 import { useFavorites } from '../../modules/Favorites/context/FavoritesContext';
 import { useCart } from '../../modules/Cart/CartContext';
+import { useState } from 'react';
 
 const menuLinks: MenuLink[] = [
   { to: '/', label: 'Home' },
@@ -15,8 +16,11 @@ const menuLinks: MenuLink[] = [
 export const Header: React.FC = () => {
   const { favorites } = useFavorites();
   const { cartItems } = useCart();
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  const toggleMenu = () => setIsOpenMenu(prev => !prev);
 
   return (
     <header className={styles.menu}>
@@ -48,6 +52,14 @@ export const Header: React.FC = () => {
               ))}
             </ul>
           </nav>
+
+          <button
+            className={styles.menu__burger}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <img src="/img/icons/burger-menu.png" alt="Menu" />
+          </button>
         </div>
 
         <div className={styles.menu__icons}>
@@ -84,6 +96,39 @@ export const Header: React.FC = () => {
             {totalQuantity > 0 && (
               <span className={styles.menu__countCart}>{totalQuantity}</span>
             )}
+          </NavLink>
+        </div>
+      </div>
+
+      <div
+        className={classNames(styles.menu__dropdown, {
+          [styles.isOpen]: isOpenMenu,
+        })}
+      >
+        <ul className={styles.menu__list}>
+          {menuLinks.map(link => (
+            <li key={link.to}>
+              <NavLink
+                to={link.to}
+                className={({ isActive }) =>
+                  classNames(styles.nav__link, {
+                    [styles.isActive]: isActive,
+                  })
+                }
+                onClick={() => setIsOpenMenu(false)}
+              >
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
+        <div className={styles.menu__bottomIcons}>
+          <NavLink to={'/favorites'} className={styles.menu__bottomIcon}>
+            <img src="/img/icons/fav.png" alt="Favorites" />
+          </NavLink>
+          <NavLink to={'/cart'} className={styles.menu__bottomIcon}>
+            <img src="/img/icons/cart.png" alt="Cart" />
           </NavLink>
         </div>
       </div>

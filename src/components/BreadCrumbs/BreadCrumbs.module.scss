@@ -1,6 +1,8 @@
 @use '../../shared/styles/variables.scss' as *;
 
 .breadcrumbs {
+  padding-top: 12px;
+
   &__list {
     display: flex;
     align-items: center;
