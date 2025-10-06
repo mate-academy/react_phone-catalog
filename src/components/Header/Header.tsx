@@ -24,80 +24,78 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.menu}>
-      <div className={styles.container}>
-        <div className={styles.menu__left}>
-          <Link to="/" className={styles.menu__logoImg}>
-            <img
-              src="/img/logo/logo.png"
-              alt="Nice gadgets logo"
-              className={styles.logo__image}
-            />
-          </Link>
+      <div className={styles.menu__left}>
+        <Link to="/" className={styles.menu__logoImg}>
+          <img
+            src="/img/logo/logo.png"
+            alt="Nice gadgets logo"
+            className={styles.logo__image}
+          />
+        </Link>
 
-          <nav className={styles.nav}>
-            <ul className={styles.nav__list}>
-              {menuLinks.map(link => (
-                <li key={link.to} className={styles.nav__item}>
-                  <NavLink
-                    to={link.to}
-                    className={({ isActive }) =>
-                      classNames(styles.nav__link, {
-                        [styles.isActive]: isActive,
-                      })
-                    }
-                  >
-                    {link.label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        <nav className={styles.nav}>
+          <ul className={styles.nav__list}>
+            {menuLinks.map(link => (
+              <li key={link.to} className={styles.nav__item}>
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) =>
+                    classNames(styles.nav__link, {
+                      [styles.isActive]: isActive,
+                    })
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-          <button
-            className={styles.menu__burger}
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            <img src="/img/icons/burger-menu.png" alt="Menu" />
-          </button>
-        </div>
+        <button
+          className={styles.menu__burger}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <img src="/img/icons/burger-menu.png" alt="Menu" />
+        </button>
+      </div>
 
-        <div className={styles.menu__icons}>
-          <NavLink
-            to="/favorites"
-            className={({ isActive }) =>
-              classNames(styles.menu__iconsLike, {
-                [styles.isActive]: isActive,
-              })
-            }
-          >
-            <img
-              src="/img/icons/like.png"
-              alt="Like icon"
-              className={styles.nav__icons}
-            />
-            {favorites.length > 0 && (
-              <span className={styles.menu__badge}>{favorites.length}</span>
-            )}
-          </NavLink>
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              classNames(styles.menu__iconsCart, {
-                [styles.isActive]: isActive,
-              })
-            }
-          >
-            <img
-              src="/img/icons/cart.png"
-              alt="Cart icon"
-              className={styles.nav__icons}
-            />
-            {totalQuantity > 0 && (
-              <span className={styles.menu__countCart}>{totalQuantity}</span>
-            )}
-          </NavLink>
-        </div>
+      <div className={styles.menu__icons}>
+        <NavLink
+          to="/favorites"
+          className={({ isActive }) =>
+            classNames(styles.menu__iconsLike, {
+              [styles.isActive]: isActive,
+            })
+          }
+        >
+          <img
+            src="/img/icons/like.png"
+            alt="Like icon"
+            className={styles.nav__icons}
+          />
+          {favorites.length > 0 && (
+            <span className={styles.menu__badge}>{favorites.length}</span>
+          )}
+        </NavLink>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) =>
+            classNames(styles.menu__iconsCart, {
+              [styles.isActive]: isActive,
+            })
+          }
+        >
+          <img
+            src="/img/icons/cart.png"
+            alt="Cart icon"
+            className={styles.nav__icons}
+          />
+          {totalQuantity > 0 && (
+            <span className={styles.menu__countCart}>{totalQuantity}</span>
+          )}
+        </NavLink>
       </div>
 
       <div
@@ -105,6 +103,27 @@ export const Header: React.FC = () => {
           [styles.isOpen]: isOpenMenu,
         })}
       >
+        <div className={styles.menu__dropdownHeader}>
+          <Link
+            to="/"
+            className={styles.menu__logoImg}
+            onClick={() => setIsOpenMenu(false)}
+          >
+            <img
+              src="/img/logo/logo.png"
+              alt="Logo"
+              className={styles.logo__image}
+            />
+          </Link>
+          <button
+            className={styles.menu__close}
+            onClick={toggleMenu}
+            aria-label="Close menu"
+          >
+            <img src="/img/icons/close.png" alt="Close menu" />
+          </button>
+        </div>
+
         <ul className={styles.menu__list}>
           {menuLinks.map(link => (
             <li key={link.to}>
@@ -125,7 +144,7 @@ export const Header: React.FC = () => {
 
         <div className={styles.menu__bottomIcons}>
           <NavLink to={'/favorites'} className={styles.menu__bottomIcon}>
-            <img src="/img/icons/fav.png" alt="Favorites" />
+            <img src="/img/icons/like.png" alt="Favorites" />
           </NavLink>
           <NavLink to={'/cart'} className={styles.menu__bottomIcon}>
             <img src="/img/icons/cart.png" alt="Cart" />

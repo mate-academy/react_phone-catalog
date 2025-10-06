@@ -17,40 +17,11 @@ body {
 .menu {
   background-color: $menu-background-color;
   border-bottom: 1px solid $menu-border-color;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 64px;
   position: relative;
-
-  .container {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: 24px;
-    max-width: 1440px;
-
-    @include on-tablet {
-      height: 48px;
-      padding-inline: 32px;
-    }
-
-    @include on-desktop {
-      height: 64px;
-      padding-inline: 24px;
-      max-width: 1200px;
-    }
-
-    @include on-phone {
-      height: 48px;
-      justify-content: space-between;
-      padding-inline: 16px;
-    }
-
-    @include on-large-desktop {
-      max-width: 1440px;
-    }
-  }
 
   &__left {
     display: flex;
@@ -144,17 +115,14 @@ body {
 
   &__dropdown {
     display: none;
-    position: absolute;
-    top: calc(48px + 24px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 288px;
-    height: 156px;
+    // position: absolute;
+    position: fixed;
+    top: 48px;
+    left: 0;
+    right: 0;
     background-color: $menu-background-color;
-    border: 1px solid $menu-border-color;
-    border-radius: 8px;
+    border-top: 1px solid $menu-border-color;
     flex-direction: column;
-    justify-content: space-between;
     padding: 16px;
     z-index: 10;
 
@@ -162,8 +130,27 @@ body {
       display: flex;
     }
 
+    &Header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
     @include on-phone {
       display: none;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    img {
+      width: 24px;
+      height: 24px;
     }
   }
 
@@ -171,7 +158,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    flex-grow: 1;
     align-items: center;
+    color: $card-contentColor;
+    font-size: 12px;
+    font-weight: 600;
+    list-style: none;
   }
 
   &__bottomIcons {
@@ -181,6 +173,7 @@ body {
       display: flex;
       justify-content: space-between;
       margin-top: auto;
+      padding-top: 16px;
     }
   }
 
@@ -194,6 +187,10 @@ body {
 }
 
 .nav {
+  @include on-phone {
+    display: none;
+  }
+
   &__item {
     color: $menu-color;
     display: inline-block;
@@ -209,8 +206,17 @@ body {
   &__list {
     margin: 0;
     padding: 0;
-    display: flex;
-    gap: 64px;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      display: flex;
+      gap: 64px;
+    }
   }
 
   &__link {
