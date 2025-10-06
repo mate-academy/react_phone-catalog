@@ -1,0 +1,74 @@
+@use '../../utils.scss' as *;
+
+.pagetop {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__home {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      bottom: -10px;
+      left: -10px;
+      background: transparent;
+    }
+  }
+
+  &__name {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    color: $color-secondary;
+  }
+
+  &__breadcrumb {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__item-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: $color-secondary;
+  }
+}
+
+.products__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &-models {
+    color: $color-secondary;
+  }
+}
+
+.body-text {
+  color: $color-secondary;
+}

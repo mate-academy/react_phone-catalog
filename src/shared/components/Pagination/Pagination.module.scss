@@ -1,0 +1,50 @@
+@use '../../utils.scss' as *;
+
+.pagination {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-secondary;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-secondary;
+    border-radius: 50%;
+    text-decoration: none;
+    color: $color-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all $effectDuration ease;
+  }
+}
+
+.active {
+  color: $color-white;
+  background-color: $color-primary;
+}

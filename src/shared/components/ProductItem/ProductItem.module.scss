@@ -1,0 +1,231 @@
+@use '../../utils.scss' as *;
+
+.product {
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 32px;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
+  gap: 8px;
+  transition: box-shadow $effectDuration ease;
+
+  &:hover {
+    box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
+
+    .product__image {
+      transform: scale(1.1);
+    }
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: contain;
+    transition: transform $effectDuration;
+
+    &-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-container--home {
+      width: 148px;
+      height: 129px;
+
+      @include on-tablet {
+        width: 173px;
+        height: 202px;
+      }
+
+      @include on-desktop {
+        width: 208px;
+        height: 196px;
+      }
+    }
+
+    &-container--catalog {
+      margin: 0 auto;
+      width: 223px;
+      height: 130px;
+
+      @include on-tablet {
+        width: 224px;
+        height: 196px;
+      }
+
+      @include on-desktop {
+        width: 208px;
+        height: 196px;
+      }
+    }
+  }
+
+  &__name {
+    text-decoration: none;
+    color: $color-primary;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__line {
+    flex: 1;
+    height: 1px;
+    background-color: $color-elements;
+  }
+
+  &__description {
+    display: grid;
+    row-gap: 8px;
+    padding-block: 8px;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    &-screen {
+      max-width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__info p:first-child {
+    color: $color-secondary
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  &__button {
+    cursor: pointer;
+    background-color: $color-accent;
+    border-radius: 48px;
+    transition: box-shadow $effectDuration;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+    }
+  }
+
+  &__button--home {
+    width: 100px;
+    height: 40px;
+
+    @include on-tablet {
+      width: 125px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+    }
+  }
+
+  &__button--catalog {
+    flex: 1;
+    height: 40px;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+    }
+  }
+
+  &__button-fav {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    border-radius: 50%;
+    transition: border-color $effectDuration;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.home {
+  width: 212px;
+  height: 439px;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 512px;
+  }
+}
+
+.catalog {
+  width: 100%;
+  height: 440px;
+
+  @include on-tablet {
+    height: 506px;
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    height: 506px;
+    grid-column: span 6;
+  }
+}
+
+.pulse-add {
+  animation: pulse 0.2s linear;
+  background-color: #000;
+}
+
+.pulse-fav {
+  animation: pulse-fav 0.4s linear;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-fav {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

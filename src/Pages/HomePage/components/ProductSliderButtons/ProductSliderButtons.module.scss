@@ -1,0 +1,27 @@
+@use '../../../../shared/utils.scss' as *;
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-elements;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border-color $effectDuration;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}

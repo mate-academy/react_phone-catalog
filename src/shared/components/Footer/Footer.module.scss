@@ -1,0 +1,82 @@
+@use '../../utils.scss' as *;
+
+.footer {
+  padding: 32px 16px;
+  border-top: 1px solid $color-elements;
+  background-color: $color-white;
+  margin-top: 64px;
+
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__content {
+    max-width: 1136px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.nav {
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-secondary;
+  }
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-secondary;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__image {
+    width: 16px;
+    height: 16px;
+    transform: rotate(90deg);
+  }
+}
