@@ -22,65 +22,98 @@ body {
   width: 100%;
   height: 64px;
   position: relative;
+  gap: 0;
+
+  @include on-desktop {
+    padding: 0 24px;
+  }
+
+  @include on-tablet {
+    padding: 0 16px;
+  }
 
   &__left {
-    display: flex;
-    align-items: center;
-    gap: 48px;
-    flex-shrink: 0;
+    gap: 0;
 
-    @include on-phone {
-      gap: 0;
+    @include on-tablet {
+      gap: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      gap: 24px;
+      display: flex;
+      align-items: center;
     }
   }
 
-  &__logo--img {
+  &__logoImg {
     display: flex;
     align-items: center;
-    width: 80px;
-    height: 28px;
+    width: 64px;
+    height: 22px;
+    padding-left: 16px;
 
-    @include on-phone {
-      width: 64px;
-      height: 24px;
+    @include on-desktop {
+      padding-left: 24px;
+      width: 80px;
+      height: 28px;
     }
+
+    // @include on-tablet {
+    //   padding-left: 16px;
+    // }
   }
 
   &__icons {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+    display: none;
 
     a {
+      @include on-desktop {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid $menu-border-color;
+        position: relative;
+      }
+    }
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-left: auto;
+    }
+
+    @include on-desktop {
       width: 64px;
       height: 64px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      border-left: 1px solid $menu-border-color;
-      position: relative;
-
-      @include on-tablet {
-        width: 48px;
-        height: 48px;
-      }
-
-      @include on-phone {
-        display: none;
-      }
+      gap: 24px;
+      margin-left: auto;
     }
   }
 
   &__burger {
-    display: none;
+    display: flex;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 
-    @include on-phone {
-      display: flex;
-      width: 24px;
-      height: 24px;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
     }
   }
 
@@ -117,7 +150,8 @@ body {
     display: none;
     // position: absolute;
     position: fixed;
-    top: 48px;
+    top: 0px;
+    bottom: 0;
     left: 0;
     right: 0;
     background-color: $menu-background-color;
@@ -135,10 +169,6 @@ body {
       justify-content: space-between;
       align-items: center;
       margin-bottom: 32px;
-    }
-
-    @include on-phone {
-      display: none;
     }
   }
 
@@ -168,12 +198,17 @@ body {
 
   &__bottomIcons {
     display: none;
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 16px;
 
-    @include on-phone {
-      display: flex;
-      justify-content: space-between;
-      margin-top: auto;
-      padding-top: 16px;
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
     }
   }
 
@@ -187,8 +222,17 @@ body {
 }
 
 .nav {
-  @include on-phone {
-    display: none;
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    padding-left: 24px;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    display: flex;
+    gap: 64px;
   }
 
   &__item {
