@@ -1,6 +1,7 @@
 import './ViewCart.scss';
 import { Product } from '../../types/Product';
 import { useCart } from '../../context/cartContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -21,7 +22,7 @@ export const ViewCart: React.FC<Props> = ({ product, onRemove }) => {
 
   return (
     <>
-      <div className="view-cart">
+      <Link to={`/${product.category}/${product.itemId}`} className="view-cart">
         <img
           className="view-cart__close"
           src="public/img/ui-kit/Close.png"
@@ -68,7 +69,7 @@ export const ViewCart: React.FC<Props> = ({ product, onRemove }) => {
         <div className="view-cart__price">
           ${product.price * counter?.count}
         </div>
-      </div>
+      </Link>
     </>
   );
 };

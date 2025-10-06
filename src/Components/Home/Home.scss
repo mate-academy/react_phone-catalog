@@ -21,6 +21,43 @@
 
   &__banner--box {
     display: flex;
+    align-items: stretch;
     gap: 16px;
+    max-height: 400px;
+  }
+
+  &__slider-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #323542;
+    flex: 0 0 32px;
+
+    &--left {
+      transform: scaleX(-1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #323542;
+      flex: 0 0 32px;
+    }
+  }
+}
+
+.home-banner {
+  max-width: 1040px;
+  max-height: 400px;
+  width: 100%;
+  height: auto;
+  flex: 1 1 auto;
+}
+
+@media (max-width: 1199px) {
+  .home {
+    margin-inline: 24px;
+
+    &__banner--box {
+      gap: 8px;
+    }
   }
 }

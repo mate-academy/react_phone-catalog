@@ -21,6 +21,12 @@
     gap: 64px;
   }
 
+  @media (max-width: 1199px) {
+      &__nav--links {
+        gap: 16px;
+      }
+    }
+
   &__nav--link {
     color: #F1F2F9;
     text-decoration: none;
@@ -32,6 +38,12 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .footer {
+    padding-inline: 24px;
   }
 }
 

@@ -3,6 +3,12 @@
   padding-bottom: 115px;
 }
 
+@media (max-width: 1199px) {
+  .favorites__page {
+    margin-inline: 24px;
+  }
+}
+
 .favorites__nav-links {
   display: flex;
   align-items: center;
@@ -42,15 +48,24 @@
   margin-bottom: 40px;
 }
 
+@media (max-width: 1199px) {
+  .favorites-catalog {
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    margin-bottom: 40px;
+  }
+}
+
 .favorites-empty {
   color: #75767f;
   width: 300px;
 }
 
 .favorites-empty-photo-wrapper {
+  padding-inline: auto;
   display: flex;
   justify-content: center;
-  padding-inline: 152px;
+  align-items: center;
 }
 
 .favorites-empty-photo {

@@ -52,6 +52,12 @@
   }
 }
 
+@media (max-width: 1199px) {
+  .slider-products {
+    padding-inline: 24px;
+  }
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;

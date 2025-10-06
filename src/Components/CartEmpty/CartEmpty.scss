@@ -4,9 +4,10 @@
 }
 
 .cart-empty-photo-wrapper {
+  padding-inline: auto;
   display: flex;
   justify-content: center;
-  padding-inline: 152px;
+  align-items: center;
 }
 
 .cart-empty-photo {

@@ -9,7 +9,8 @@ import { SliderProducts } from '../SliderProducts/SliderProducts';
 
 export const ProductPage = () => {
   const [product, setProduct] = useState<Gadget | null>(null);
-  // const [mainPhoto, setMainPhoto] = useState<string | null>(null);
+  const [mainPhoto, setMainPhoto] = useState<string | undefined>('');
+  const [photoIsActive, setPhotoIsActive] = useState<string | undefined>();
   const { productId } = useParams();
   const location = useLocation();
 
@@ -18,10 +19,11 @@ export const ProductPage = () => {
   }, [location.pathname]);
 
   const BASE_ID = location.pathname.split('/');
-
   const idToChange = BASE_ID[BASE_ID.length - 1];
-
   const arrayForColorReplase = idToChange.split('-');
+  // console.log(BASE_ID);
+  // console.log(idToChange);
+  // console.log(arrayForColorReplase);
 
   const createLink = (cl: string) => {
     return arrayForColorReplase
@@ -40,18 +42,18 @@ export const ProductPage = () => {
         const found = data.find(item => String(item.id) === productId);
 
         setProduct(found || null);
+        setMainPhoto(found?.images[0]);
+        setPhotoIsActive(found?.images[0]);
       });
   }, [productId, typeOfProducts]);
 
   const { favorites, toggleFavorite } = useFavorites();
-  const { toggleProductPageCart } = useCart();
+  const { cart, toggleProductPageCart } = useCart();
 
   const isFavorite = product ? favorites.includes(product.id) : false;
-  // const isAdded = cart.find(
-  //   cartProduct => cartProduct.gadget.id === product?.id,
-  // );
-
-  // console.log(isAdded)
+  const isAdded = cart.find(
+    cartProduct => cartProduct.gadget.id === product?.id,
+  );
 
   return (
     <div className="product-page">
@@ -93,14 +95,25 @@ export const ProductPage = () => {
       <div className="product-page-container">
         <div className="product-page-side-photos">
           {product?.images.map((p, i) => (
-            <img key={i} src={p} alt={p} className="product-page-photo" />
+            <img
+              key={i}
+              src={p}
+              alt={p}
+              className={classNames('product-page-photo', {
+                'product-page-photo-active': photoIsActive === p,
+              })}
+              onClick={() => {
+                setMainPhoto(p);
+                setPhotoIsActive(p);
+              }}
+            />
           ))}
         </div>
 
         <img
           className="product-page-main-photo"
-          src={product?.images[0]}
-          alt={product?.images[0]}
+          src={mainPhoto}
+          alt={mainPhoto}
         />
 
         <div className="product-page-info-container">
@@ -137,7 +150,7 @@ export const ProductPage = () => {
           <div className="product__buttons-page">
             <button
               className={classNames('product__button--add-to-cart-page', {
-                // 'button-active-page': isAdded,
+                'button-active-page': isAdded,
               })}
               onClick={() => {
                 if (product) {
@@ -145,7 +158,7 @@ export const ProductPage = () => {
                 }
               }}
             >
-              {/* {isAdded ? 'Added' : 'Add to cart'} */}
+              {isAdded ? 'Added' : 'Add to cart'}
             </button>
 
             <button

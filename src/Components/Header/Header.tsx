@@ -15,8 +15,12 @@ export const Header: React.FC = () => {
 
   return (
     <div className="header">
-      <div className="header__logo">
-        <img src="public/img/ui-kit/header-logo.png" alt="header__logo" />
+      <div>
+        <img
+          className="header__logo"
+          src="public/img/ui-kit/header-logo.png"
+          alt="header__logo"
+        />
       </div>
 
       <nav className="header__nav">

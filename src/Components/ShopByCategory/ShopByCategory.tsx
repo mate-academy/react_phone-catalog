@@ -15,10 +15,14 @@ export const ShopByCategory: React.FC = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
-              <img src="/img/categories/mobile-phones.png" alt="category" />
+              <img
+                className="category__image"
+                src="/img/categories/mobile-phones.png"
+                alt="category"
+              />
             </Link>
             <h4 className="category__title">Mobile phones</h4>
-            <p className="category__count">95 models</p>
+            <p className="category__count">124 models</p>
           </div>
 
           <div className="category">
@@ -28,10 +32,14 @@ export const ShopByCategory: React.FC = () => {
               }}
               to={'tablets'}
             >
-              <img src="/img/categories/tablets.png" alt="category" />
+              <img
+                className="category__image"
+                src="/img/categories/tablets.png"
+                alt="category"
+              />
             </Link>
             <h4 className="category__title">Tablets</h4>
-            <p className="category__count">24 models</p>
+            <p className="category__count">36 models</p>
           </div>
 
           <div className="category">
@@ -41,10 +49,14 @@ export const ShopByCategory: React.FC = () => {
               }}
               to={'accessories'}
             >
-              <img src="/img/categories/Accessories.png" alt="category" />
+              <img
+                className="category__image"
+                src="/img/categories/Accessories.png"
+                alt="category"
+              />
             </Link>
             <h4 className="category__title">Accessories</h4>
-            <p className="category__count">100 models</p>
+            <p className="category__count">34 models</p>
           </div>
         </div>
       </div>

@@ -1,6 +1,23 @@
 .catalog__page {
-  margin-inline: 152px;
   padding-bottom: 140px;
+  margin-inline: auto;
+  width: 1200px;
+}
+
+@media (max-width: 1199px) {
+  .catalog__page {
+    margin-inline: 24px;
+    width: 95%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 799px) {
+  .catalog__page {
+    margin-inline: 24px;
+    width: 93%;
+    box-sizing: border-box;
+  }
 }
 
 .catalog__nav-links {
@@ -40,6 +57,15 @@
   gap: 16px;
   grid-template-columns: repeat(24, 1fr);
   margin-bottom: 40px;
+}
+
+@media (max-width: 1199px) {
+  .catalog {
+    width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: repeat(12, 1fr);
+    margin-bottom: 40px;
+  }
 }
 
 .catalog-sort-dropdowns {
