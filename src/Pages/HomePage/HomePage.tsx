@@ -1,7 +1,7 @@
-import { HotPrices } from "./components/HotPrices";
-import { NewModels } from "./components/NewModels";
-import { ShopCategory } from "./components/ShopCategory";
-import { Slider } from "./components/Slider";
+import { HotPrices } from './components/HotPrices';
+import { NewModels } from './components/NewModels';
+import { ShopCategory } from './components/ShopCategory';
+import { Slider } from './components/Slider';
 
 export const HomePage = () => {
   return (

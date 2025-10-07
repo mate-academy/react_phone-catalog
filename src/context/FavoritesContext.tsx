@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Phone } from "../types/Phone";
+import React, { useEffect, useState } from 'react';
+import { Phone } from '../types/Phone';
 
 type FavoritesContextType = {
   items: Phone[];
@@ -28,9 +28,7 @@ export const FavoritesProvider: React.FC<Props> = ({ children }) => {
 
   const toggleFavorites = (product: Phone) => {
     if (items.some(item => item.id === product.id)) {
-      setItems(currentItems =>
-        currentItems.filter(item => item.id !== product.id),
-      );
+      setItems(currentItems => currentItems.filter(item => item.id !== product.id));
     } else {
       setItems(currentItems => {
         return [...currentItems, product];

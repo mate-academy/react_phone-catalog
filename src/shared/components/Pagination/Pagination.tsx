@@ -1,6 +1,6 @@
 import styles from './Pagination.module.scss';
-import arrowLeft from '../../images/slider/slider-arrow-left.png';
-import arrowRight from '../../images/slider/slider-arrow-right.png';
+import arrowLeft from '../../images/slider/arrow-left.png';
+import arrowRight from '../../images/slider/arrow-right.png';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 

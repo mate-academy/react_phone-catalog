@@ -12,7 +12,7 @@
   transition: box-shadow $effectDuration ease;
 
   &:hover {
-    box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
 
     .product__image {
       transform: scale(1.1);
@@ -65,6 +65,10 @@
   &__name {
     text-decoration: none;
     color: $color-primary;
+
+    @include on-desktop {
+      height: 40px;
+    }
   }
 
   &__prices {
@@ -114,7 +118,7 @@
     transition: box-shadow $effectDuration;
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
     }
   }
 

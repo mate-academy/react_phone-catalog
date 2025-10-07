@@ -18,8 +18,6 @@ export const HeaderProvider: React.FC<Props> = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <HeaderContext.Provider value={{ menuOpen, setMenuOpen }}>
-      {children}
-    </HeaderContext.Provider>
+    <HeaderContext.Provider value={{ menuOpen, setMenuOpen }}>{children}</HeaderContext.Provider>
   );
 };

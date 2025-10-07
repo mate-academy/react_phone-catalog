@@ -1,6 +1,5 @@
 import { PageTop } from '../../shared/components/PageTop/PageTop';
 import accessories from '../../../public/api/accessories.json';
-import styles from './AccessoriesPage.modules.scss';
 import { ProductList } from '../../shared/components/ProductList/ProductList';
 import { useEffect, useState } from 'react';
 import { Loader } from '../../shared/components/utils/Loader';

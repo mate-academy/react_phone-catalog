@@ -1,4 +1,3 @@
-import styles from './Phones.module.scss';
 import { PageTop } from '../../shared/components/PageTop/PageTop';
 import { ProductList } from '../../shared/components/ProductList/ProductList';
 import phones from '../../../public/api/phones.json';

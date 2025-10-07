@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 import styles from './ProductItem.module.scss';
-import favourites from '../../../shared/images/icones/header-favourites-icon-3x.png';
+import favourites from '../../../shared/images/icones/favourites-icon.png';
 import favouritesActive from '../../../shared/images/icones/favorites-active.png';
-import { Link, useLocation } from "react-router-dom";
-import { Product } from "../../../../types/Product";
-import { findFullProduct } from "../../../shared/components/utils/findFullProduct";
-import { CartContext } from "../../../context/CartContext";
-import { FavoritesContext } from "../../../context/FavoritesContext";
+import { Link, useLocation } from 'react-router-dom';
+import { findFullProduct } from '../../../shared/components/utils/findFullProduct';
+import { CartContext } from '../../../context/CartContext';
+import { FavoritesContext } from '../../../context/FavoritesContext';
+import { Product } from '../../../types/Product';
+import { Phone } from '../../../types/Phone';
 
 type Props = {
   product: Product;
@@ -22,7 +23,9 @@ export const ProductItem: React.FC<Props> = ({
   find,
 }) => {
   const { pathname } = useLocation();
-  const fullProduct = find ? findFullProduct(product.itemId) : product;
+  const fullProduct = find
+    ? findFullProduct(product.itemId)
+    : (product as unknown as Phone);
   const { toggleToCart, items: cartItems } = useContext(CartContext);
   const { toggleFavorites, items: favoritesItems } =
     useContext(FavoritesContext);
@@ -39,7 +42,8 @@ export const ProductItem: React.FC<Props> = ({
           <Link
             to={`/product/${fullProduct.id}`}
             state={{ from: pathname }}
-            className={`${styles['product__image-container']} ${widthItem === 'homePage' ? styles['product__image-container--home'] : styles['product__image-container--catalog']}`}>
+            className={`${styles['product__image-container']} ${widthItem === 'homePage' ? styles['product__image-container--home'] : styles['product__image-container--catalog']}`}
+          >
             <img
               src={fullProduct.images[0]}
               alt={product.name}

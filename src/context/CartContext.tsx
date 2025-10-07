@@ -55,9 +55,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
 
   const toggleToCart = (product: Phone) => {
     if (items.some(item => item.product.id === product.id)) {
-      setItems(currentItems =>
-        currentItems.filter(item => item.product.id !== product.id),
-      );
+      setItems(currentItems => currentItems.filter(item => item.product.id !== product.id));
     } else {
       setItems(currentItems => {
         return [...currentItems, { product, quantity: 1 }];
@@ -68,9 +66,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   const increaseQuantity = (id: string) => {
     setItems(currentItems =>
       currentItems.map(item =>
-        item.product.id === id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item,
+        item.product.id === id ? { ...item, quantity: item.quantity + 1 } : item,
       ),
     );
   };
@@ -78,19 +74,13 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   const decreaseQuantity = (id: string) => {
     setItems(currentItems =>
       currentItems
-        .map(item =>
-          item.product.id === id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item,
-        )
+        .map(item => (item.product.id === id ? { ...item, quantity: item.quantity - 1 } : item))
         .filter(item => item.quantity > 0),
     );
   };
 
   const clearCart = (id: string) => {
-    setItems(currentItems =>
-      currentItems.filter(item => item.product.id !== id),
-    );
+    setItems(currentItems => currentItems.filter(item => item.product.id !== id));
   };
 
   const clearAll = () => {

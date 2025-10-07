@@ -11,12 +11,7 @@ type Props = {
   bottom?: string;
 };
 
-export const Navigation: React.FC<Props> = ({
-  direction,
-  hidden,
-  gap,
-  bottom,
-}) => {
+export const Navigation: React.FC<Props> = ({ direction, hidden, gap, bottom }) => {
   const { setMenuOpen } = useContext(HeaderContext);
   const { pathname } = useLocation();
 

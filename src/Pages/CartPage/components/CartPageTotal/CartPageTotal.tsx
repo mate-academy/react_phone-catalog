@@ -19,10 +19,7 @@ export const CartPageTotal: React.FC<Props> = ({ onShowCheckout }) => {
           </span>
         </div>
         <div className={styles.total__line}></div>
-        <button
-          className={styles.total__button}
-          onClick={() => onShowCheckout(true)}
-        >
+        <button className={styles.total__button} onClick={() => onShowCheckout(true)}>
           Checkout
         </button>
       </div>

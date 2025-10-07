@@ -1,18 +1,18 @@
 import styles from './Slider.module.scss';
 
 // #region sliderMobile
-import sliderFirstMobile from '../../../../shared/images/slider/slider-image-1.png';
-import sliderSecondMobile from '../../../../shared/images/slider/slider-image-2.png';
-import sliderThirdMobile from '../../../../shared/images/slider/slider-image-3.png';
+import sliderMobile1 from '../../../../shared/images/slider/slider-image-1.png';
+import sliderMobile2 from '../../../../shared/images/slider/slider-image-2.png';
+import sliderMobile3 from '../../../../shared/images/slider/slider-image-3.png';
 // #endregion
 
 // #region sliderDesktop
 import sliderTablet1 from '../../../../shared/images/slider/tablet-image-1.png';
-import sliderTablet2 from '../../../../shared/images/slider/tablet-image-2.webp';
+import slideTablet2 from '../../../../shared/images/slider/tablet-image-2.webp';
 import sliderTablet3 from '../../../../shared/images/slider/tablet-image-3.jpg';
 // #endregion
-import sliderLeft from '../../../../shared/images/slider/slider-arrow-left.png';
-import sliderRight from '../../../../shared/images/slider/slider-arrow-right.png';
+import sliderLeft from '../../../../shared/images/slider/arrow-left.png';
+import sliderRight from '../../../../shared/images/slider/arrow-right.png';
 import { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useSwipeable } from 'react-swipeable';
@@ -20,15 +20,15 @@ import { useSwipeable } from 'react-swipeable';
 export const Slider = () => {
   const images = [
     {
-      mobile: sliderFirstMobile,
+      mobile: sliderMobile1,
       tablet: sliderTablet1,
     },
     {
-      mobile: sliderSecondMobile,
-      tablet: sliderTablet2,
+      mobile: sliderMobile2,
+      tablet: slideTablet2,
     },
     {
-      mobile: sliderThirdMobile,
+      mobile: sliderMobile3,
       tablet: sliderTablet3,
     },
   ];
@@ -104,7 +104,7 @@ export const Slider = () => {
         {images.map((_, i) => (
           <div
             key={i}
-            className={classNames(styles['slider__rectangle'], {
+            className={classNames(styles.slider__rectangle, {
               [styles['slider__rectangle-active']]: i === index,
             })}
             onClick={() => setIndex(i)}

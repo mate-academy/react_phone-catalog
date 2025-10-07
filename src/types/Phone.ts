@@ -13,7 +13,7 @@ export interface Phone {
   description: {
     title: string;
     text: string[];
-  } [];
+  }[];
   screen: string;
   resolution: string;
   processor: string;

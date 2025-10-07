@@ -1,8 +1,8 @@
 import styles from './Header.module.scss';
 import logo from '../../images/phone-catalog-logo-3x.png';
-import menu from '../../images/icones/header-burger-menu-3x.png';
-import basket from '../../images/icones/header-basket-icon-3x.png';
-import favourites from '../../images/icones/header-favourites-icon-3x.png';
+import menu from '../../images/icones/burger-menu.png';
+import basket from '../../images/icones/basket-icon.png';
+import favourites from '../../images/icones/favourites-icon.png';
 import close from '../../images/icones/header-close-icon.png';
 
 import { useContext } from 'react';
@@ -14,7 +14,7 @@ import { FavoritesContext } from '../../../context/FavoritesContext';
 
 export const Header = () => {
   const { menuOpen, setMenuOpen } = useContext(HeaderContext);
-  const { items: cartItems } = useContext(CartContext);
+  const { items: cartItems, totalQuantity: totalQuantityCarts } = useContext(CartContext);
   const { items: favItems } = useContext(FavoritesContext);
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -48,7 +48,7 @@ export const Header = () => {
           {cartItems.length !== 0 && (
             <div className={styles.header__circle}>
               <span style={{ fontSize: '9px', color: '#fff' }}>
-                {cartItems.length}
+                {totalQuantityCarts}
               </span>
             </div>
           )}

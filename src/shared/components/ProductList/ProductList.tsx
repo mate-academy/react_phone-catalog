@@ -40,8 +40,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
     return 0;
   });
 
-  const startIndex =
-    (Number(searchParams.get('page')) - 1) * Number(itemsAmount);
+  const startIndex = (Number(searchParams.get('page')) - 1) * Number(itemsAmount);
   const endIndex = startIndex + Number(itemsAmount);
 
   const preparedProducts = itemsAmount

@@ -1,4 +1,3 @@
-import styles from './TabletsPage.modules.scss';
 import tablets from '../../../public/api/tablets.json';
 import { PageTop } from '../../shared/components/PageTop/PageTop';
 import { ProductList } from '../../shared/components/ProductList/ProductList';

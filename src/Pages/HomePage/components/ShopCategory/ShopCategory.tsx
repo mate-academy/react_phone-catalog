@@ -1,7 +1,7 @@
 import styles from './ShopCategory.module.scss';
 import phones from '../../../../shared/images/categories/phone-category.png';
 import tablets from '../../../../shared/images/categories/tablets-category.png';
-import accessories from '../../../../shared/images/categories/accessories-category.webp';
+import accessories from '../../../../shared/images/categories/accessories.webp';
 import { Link } from 'react-router-dom';
 
 export const ShopCategory = () => {

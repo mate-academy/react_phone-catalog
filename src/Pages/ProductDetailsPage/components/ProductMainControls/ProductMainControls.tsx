@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from 'react';
 import styles from './ProductMainControls.module.scss';
-import { Phone } from "../../../../types/Phone";
-import favourites from '../../../../shared/images/icones/header-favourites-icon-3x.png';
-import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../../../context/CartContext";
+import { Phone } from '../../../../types/Phone';
+import favourites from '../../../../shared/images/icones/favourites-icon.png';
+import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../../../../context/CartContext';
 import favActive from '../../../../shared/images/icones/favorites-active.png';
-import { FavoritesContext } from "../../../../context/FavoritesContext";
+import { FavoritesContext } from '../../../../context/FavoritesContext';
 
 type Props = {
   product: Phone;
@@ -52,6 +52,7 @@ function getColor(color: string) {
 }
 
 export const ProductMainControls: React.FC<Props> = ({ product }) => {
+  const [color, setColor] = useState<string>(product.color);
   const navigate = useNavigate();
   const { items: cartItems, toggleToCart } = useContext(CartContext);
   const { items: favItems, toggleFavorites } = useContext(FavoritesContext);
@@ -84,18 +85,22 @@ export const ProductMainControls: React.FC<Props> = ({ product }) => {
           Available colors
         </p>
         <div className={styles.maincontrols__selects}>
-          {product.colorsAvailable.map((color, index) => (
+          {product.colorsAvailable.map((c, index) => (
             <label
               key={index}
-              className={styles['maincontrols__color-label']}
+              className={`${styles['maincontrols__color-label']} ${color === c ? styles['color-active']: ''}`}
             >
               <input
                 type="radio"
                 name="color"
-                onChange={() => handleChangeColor(product, color)}
+                value={color}
+                onChange={() => {
+                  handleChangeColor(product, c);
+                  setColor(c);
+                }}
                 className={styles.productdetails__color}
               />
-              <div style={{ backgroundColor: getColor(color) }}></div>
+              <div style={{ backgroundColor: getColor(c) }}></div>
             </label>
           ))}
         </div>
@@ -138,7 +143,7 @@ export const ProductMainControls: React.FC<Props> = ({ product }) => {
             onClick={() => toggleToCart(product)}
             className={`${styles.maincontrols__button} ${inCart ? styles.pulse : ''}`}
           >
-            Add to cart
+            {`${inCart ? 'Added' : 'Add to cart'}`}
           </button>
           <div
             className={styles['maincontrols__icon-container']}

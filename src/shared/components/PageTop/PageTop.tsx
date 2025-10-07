@@ -112,10 +112,7 @@ export const PageTop: React.FC<Props> = ({
           </svg>
         )}
         {breadcrumb && (
-          <p
-            className={styles.pagetop__breadcrumb}
-            onClick={() => navigate(from)}
-          >
+          <p className={styles.pagetop__breadcrumb} onClick={() => navigate(from)}>
             {breadcrumb}
           </p>
         )}

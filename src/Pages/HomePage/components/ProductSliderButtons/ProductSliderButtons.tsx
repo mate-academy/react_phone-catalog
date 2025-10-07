@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import styles from './ProductSliderButtons.module.scss';
-import arrowLeft from '../../../../shared/images/slider/slider-arrow-left.png';
-import arrowRight from '../../../../shared/images/slider/slider-arrow-right.png';
+import arrowLeft from '../../../../shared/images/slider/arrow-left.png';
+import arrRight from '../../../../shared/images/slider/arrow-right.png';
 
 type Props = {
   length: number;
@@ -36,7 +36,7 @@ export const ProductSliderButtons: React.FC<Props> = ({
         <img src={arrowLeft} alt="" className={styles.icon} />
       </div>
       <div className={styles.button} onClick={handleNext}>
-        <img src={arrowRight} alt="" className={styles.icon} />
+        <img src={arrRight} alt="" className={styles.icon} />
       </div>
     </div>
   );

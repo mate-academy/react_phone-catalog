@@ -1,6 +1,6 @@
 import styles from './Footer.module.scss';
 import logo from '../../images/phone-catalog-logo-3x.png';
-import arrow from '../../images/slider/slider-arrow-left.png';
+import arrow from '../../images/slider/arrow-left.png';
 
 export const Footer = () => {
   return (

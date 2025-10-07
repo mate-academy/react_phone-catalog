@@ -1,5 +1,5 @@
 import styles from './CartPage.module.scss';
-import arrowLeft from '../../shared/images/slider/slider-arrow-left.png';
+import arrowLeft from '../../shared/images/slider/arrow-left.png';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { CartPageItem } from './components/CartPageItem/CartPageItem';

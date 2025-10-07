@@ -16,59 +16,39 @@ export const ProductTechSpecs: React.FC<Props> = ({ product }) => {
       <div className={styles.techspecs__list}>
         <div className={styles.techspecs__item}>
           <span className={`${styles.techspecs__name} body-text`}>Screen</span>
-          <span className={`${styles.techspecs__value} body-text`}>
-            {product.screen}
-          </span>
+          <span className={`${styles.techspecs__value} body-text`}>{product.screen}</span>
         </div>
         <div className={styles.techspecs__item}>
           <span className={`${styles.techspecs__name} body-text`}>Resolution</span>
-          <span className={`${styles.techspecs__value} body-text`}>
-            {product.resolution}
-          </span>
+          <span className={`${styles.techspecs__value} body-text`}>{product.resolution}</span>
         </div>
         <div className={styles.techspecs__item}>
           <span className={`${styles.techspecs__name} body-text`}>Processor</span>
-          <span className={`${styles.techspecs__value} body-text`}>
-            {product.processor}
-          </span>
+          <span className={`${styles.techspecs__value} body-text`}>{product.processor}</span>
         </div>
         <div className={styles.techspecs__item}>
           <span className={`${styles.techspecs__name} body-text`}>RAM</span>
-          <span className={`${styles.techspecs__value} body-text`}>
-            {product.ram}
-          </span>
+          <span className={`${styles.techspecs__value} body-text`}>{product.ram}</span>
         </div>
         <div className={styles.techspecs__item}>
-          <span className={`${styles.techspecs__name} body-text`}>
-            Built in memory
-          </span>
-          <span className={`${styles.techspecs__value} body-text`}>
-            {product.capacity}
-          </span>
+          <span className={`${styles.techspecs__name} body-text`}>Built in memory</span>
+          <span className={`${styles.techspecs__value} body-text`}>{product.capacity}</span>
         </div>
         {product.camera && (
           <div className={styles.techspecs__item}>
-            <span className={`${styles.techspecs__name} body-text`}>
-              Camera
-            </span>
-            <span className={`${styles.techspecs__value} body-text`}>
-              {product.camera}
-            </span>
+            <span className={`${styles.techspecs__name} body-text`}>Camera</span>
+            <span className={`${styles.techspecs__value} body-text`}>{product.camera}</span>
           </div>
         )}
         {product.zoom && (
           <div className={styles.techspecs__item}>
             <span className={`${styles.techspecs__name} body-text`}>Zoom</span>
-            <span className={`${styles.techspecs__value} body-text`}>
-              {product.zoom}
-            </span>
+            <span className={`${styles.techspecs__value} body-text`}>{product.zoom}</span>
           </div>
         )}
         <div className={styles.techspecs__item}>
           <span className={`${styles.techspecs__name} body-text`}>Cell</span>
-          <span className={`${styles.techspecs__value} body-text`}>
-            {product.cell.join(', ')}
-          </span>
+          <span className={`${styles.techspecs__value} body-text`}>{product.cell.join(', ')}</span>
         </div>
       </div>
     </div>
