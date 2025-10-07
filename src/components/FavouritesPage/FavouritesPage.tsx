@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom';
 import { Breadcrumbs } from '../Breadcrumbs';
 import styles from './FavouritesPage.module.scss';
 import { useFavorites } from '../../context/Favoutires';
@@ -11,8 +10,6 @@ import { getProducts } from '../../api';
 import { Loader } from '../Loader';
 
 export const FavouritesPage = () => {
-  const location = useLocation();
-  const category = location.pathname.split('/')[1];
   const { favorites, count } = useFavorites();
   const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +30,7 @@ export const FavouritesPage = () => {
   return (
     <section className="favourites">
       <div className="container">
-        <Breadcrumbs category={category} product={null} />
+        <Breadcrumbs category="favorites" product={null} />
         <h1 className={styles.favourites__title}>Favourites</h1>
         <p className={styles.favourites__items}>{count} items</p>
         {isLoading && <Loader />}
@@ -43,7 +40,7 @@ export const FavouritesPage = () => {
               <ProductCard
                 product={product}
                 showOldPrice={price}
-                category={category as CategoryType}
+                category={product.category as CategoryType}
                 key={product.id}
               />
             ))}

@@ -1,9 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Product } from '../types/Product';
+import {
+  normalizeToCartProduct,
+  ProductForCart,
+} from '../utils/normalizeToCartProduct';
+import { ProductDetails } from '../types/ProductsDetails';
 
 type CartItem = {
-  id: number;
-  product: Product;
+  product: ProductForCart;
   quantity: number;
 };
 
@@ -11,11 +15,12 @@ type CartContextType = {
   cart: CartItem[];
   totalQty: number;
   totalPrice: number;
-  addToCart: (product: Product) => void;
-  removeFromCart: (id: number) => void;
-  inc: (id: number) => void;
-  dec: (id: number) => void;
+  addToCart: (product: Product | ProductDetails) => void;
+  removeFromCart: (id: string) => void;
+  inc: (id: string) => void;
+  dec: (id: string) => void;
   clear: () => void;
+  isInCart: (id: string) => boolean;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -39,33 +44,41 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     0,
   );
 
-  const addToCart = (product: Product) => {
+  const addToCart = (value: Product | ProductDetails) => {
+    const product: ProductForCart = normalizeToCartProduct(value);
+
     setCart(prev =>
-      prev.some(i => i.id === product.id)
+      prev.some(i => i.product.id === product.id)
         ? prev
-        : [...prev, { id: product.id, product, quantity: 1 }],
+        : [...prev, { product, quantity: 1 } as CartItem],
     );
   };
 
-  const removeFromCart = (id: number) => {
-    setCart(prev => prev.filter(i => i.id !== id));
+  const removeFromCart = (id: string) => {
+    setCart(prev => prev.filter(i => i.product.id !== id));
   };
 
-  const inc = (id: number) => {
-    setCart(prev =>
-      prev.map(i => (i.id === id ? { ...i, quantity: i.quantity + 1 } : i)),
-    );
-  };
-
-  const dec = (id: number) => {
+  const inc = (id: string) => {
     setCart(prev =>
       prev.map(i =>
-        i.id === id && i.quantity > 1 ? { ...i, quantity: i.quantity - 1 } : i,
+        i.product.id === id ? { ...i, quantity: i.quantity + 1 } : i,
+      ),
+    );
+  };
+
+  const dec = (id: string) => {
+    setCart(prev =>
+      prev.map(i =>
+        i.product.id === id && i.quantity > 1
+          ? { ...i, quantity: i.quantity - 1 }
+          : i,
       ),
     );
   };
 
   const clear = () => setCart([]);
+
+  const isInCart = (id: string) => cart.some(item => item.product.id === id);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -82,6 +95,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         inc,
         dec,
         clear,
+        isInCart,
       }}
     >
       {children}

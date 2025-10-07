@@ -95,6 +95,10 @@
     @include hover(background-color, $hover-main-btn-color);
   }
 
+  &__link--selected {
+    background-color: $btn-color;
+  }
+
   &__link-favourite {
     display: flex;
     justify-content: center;
@@ -112,7 +116,7 @@
     @include hover(background-color, $hover-btn-color);
   }
 
-  &__link-favourite--active {
+  &__link-favourite--selected {
     background-color: transparent;
     border: 1px solid #3B3E4A;
     background-image: url('/img/icons/heart-selected.svg');

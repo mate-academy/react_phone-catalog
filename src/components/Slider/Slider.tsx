@@ -48,13 +48,37 @@ export const Slider = () => {
                   </a>
                 </div>
                 <div className={styles.slide__image}>
-                  <h3 className={styles['slide__image-title']}>
-                    iPhone 14 Pro
-                  </h3>
-                  <p className={styles['slide__image-text']}>Pro. Beyond.</p>
+                  <div className={styles['slide__img-box']}>
+                    <h3 className={styles['slide__image-title']}>
+                      iPhone 14 Pro
+                    </h3>
+                    <p className={styles['slide__image-text']}>Pro. Beyond.</p>
+                  </div>
                   <img
                     className={styles.slide__img}
                     src="/img/slider/iphone-14.png"
+                    alt="iPhone 14 Pro"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={styles['slide-phone']}>
+              <div className={styles['slide-phone__content']}>
+                <h3 className={styles['slide-phone__title']}>
+                  Now available in our store!
+                </h3>
+                <div className={styles.slide__image}>
+                  <div className={styles['slide-phone__img-box']}>
+                    <h3 className={styles['slide-phone__image-title']}>
+                      iPhone 14 Pro
+                    </h3>
+                    <p className={styles['slide-phone__image-text']}>
+                      Pro. Beyond.
+                    </p>
+                  </div>
+                  <img
+                    className={styles['slide-phone__img']}
+                    src="/img/slider/iphone-14-small-screens.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -79,13 +103,37 @@ export const Slider = () => {
                   </a>
                 </div>
                 <div className={styles.slide__image}>
-                  <h3 className={styles['slide__image-title']}>
-                    iPhone 14 Pro
-                  </h3>
-                  <p className={styles['slide__image-text']}>Pro. Beyond.</p>
+                  <div className={styles['slide__img-box']}>
+                    <h3 className={styles['slide__image-title']}>
+                      iPhone 14 Pro
+                    </h3>
+                    <p className={styles['slide__image-text']}>Pro. Beyond.</p>
+                  </div>
                   <img
                     className={styles.slide__img}
                     src="/img/slider/iphone-14.png"
+                    alt="iPhone 14 Pro"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={styles['slide-phone']}>
+              <div className={styles['slide-phone__content']}>
+                <h3 className={styles['slide-phone__title']}>
+                  Now available in our store!
+                </h3>
+                <div className={styles.slide__image}>
+                  <div className={styles['slide-phone__img-box']}>
+                    <h3 className={styles['slide-phone__image-title']}>
+                      iPhone 14 Pro
+                    </h3>
+                    <p className={styles['slide-phone__image-text']}>
+                      Pro. Beyond.
+                    </p>
+                  </div>
+                  <img
+                    className={styles['slide-phone__img']}
+                    src="/img/slider/iphone-14-small-screens.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -110,13 +158,37 @@ export const Slider = () => {
                   </a>
                 </div>
                 <div className={styles.slide__image}>
-                  <h3 className={styles['slide__image-title']}>
-                    iPhone 14 Pro
-                  </h3>
-                  <p className={styles['slide__image-text']}>Pro. Beyond.</p>
+                  <div className={styles['slide__img-box']}>
+                    <h3 className={styles['slide__image-title']}>
+                      iPhone 14 Pro
+                    </h3>
+                    <p className={styles['slide__image-text']}>Pro. Beyond.</p>
+                  </div>
                   <img
                     className={styles.slide__img}
                     src="/img/slider/iphone-14.png"
+                    alt="iPhone 14 Pro"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={styles['slide-phone']}>
+              <div className={styles['slide-phone__content']}>
+                <h3 className={styles['slide-phone__title']}>
+                  Now available in our store!
+                </h3>
+                <div className={styles.slide__image}>
+                  <div className={styles['slide-phone__img-box']}>
+                    <h3 className={styles['slide-phone__image-title']}>
+                      iPhone 14 Pro
+                    </h3>
+                    <p className={styles['slide-phone__image-text']}>
+                      Pro. Beyond.
+                    </p>
+                  </div>
+                  <img
+                    className={styles['slide-phone__img']}
+                    src="/img/slider/iphone-14-small-screens.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>

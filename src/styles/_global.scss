@@ -81,6 +81,10 @@ body {
   pointer-events: none;
 }
 
-.slick-track:not(:last-child) {
-  margin-right: 16px;
+.slick-slide {
+  padding-right: 16px;
+}
+
+.slick-list {
+  margin-right: -16px;
 }

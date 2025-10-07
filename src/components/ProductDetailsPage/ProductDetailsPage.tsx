@@ -15,6 +15,7 @@ import 'swiper/css/pagination';
 import 'swiper/css';
 import { ProductSlider } from '../ProductSlider';
 import { useFavorites } from '../../context/Favoutires';
+import { useCart } from '../../context/Cart';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -44,6 +45,9 @@ export const ProductDetailsPage = () => {
 
   const { toggleFavorite, isFavorite } = useFavorites();
   const favorite = isFavorite(product?.id || '');
+
+  const { addToCart, removeFromCart, isInCart } = useCart();
+  const selectedProduct = isInCart(product?.id || '');
 
   const numCapacity = product?.capacity.match(/\d+/);
   const strCapacity = product?.capacity.replace(/\d+/, '');
@@ -152,7 +156,7 @@ export const ProductDetailsPage = () => {
                       return (
                         <NavLink
                           key={index}
-                          to={`/phones/${newId}`}
+                          to={`/${category}/${newId}`}
                           className={({
                             isActive,
                           }) => `${styles['product-details__characteristics-color-link']}
@@ -190,7 +194,7 @@ export const ProductDetailsPage = () => {
                       return (
                         <NavLink
                           key={index}
-                          to={`/phones/${newId}`}
+                          to={`/${category}/${newId}`}
                           className={({ isActive }) =>
                             `${styles['product-details__characteristics-capacity-link']}
            ${isActive ? styles['product-details__characteristics-capacity-link--active'] : ''}`
@@ -229,12 +233,20 @@ export const ProductDetailsPage = () => {
                   }
                 >
                   <button
-                    className={styles['product-details__characteristics-link']}
+                    className={`${styles['product-details__characteristics-link']} ${selectedProduct ? styles['product-details__characteristics-link--selected'] : ''}`}
+                    onClick={e => {
+                      e.preventDefault();
+                      if (selectedProduct) {
+                        removeFromCart(product.id);
+                      } else {
+                        addToCart(product);
+                      }
+                    }}
                   >
-                    Add to cart
+                    {selectedProduct ? 'Added to cart' : 'Add to cart'}
                   </button>
                   <button
-                    className={`${styles['product-details__characteristics-link-favourite']} ${favorite ? styles['product-details__characteristics-link-favourite--active'] : ''}`}
+                    className={`${styles['product-details__characteristics-link-favourite']} ${favorite ? styles['product-details__characteristics-link-favourite--selected'] : ''}`}
                     onClick={e => {
                       e.preventDefault();
                       toggleFavorite(product.id);

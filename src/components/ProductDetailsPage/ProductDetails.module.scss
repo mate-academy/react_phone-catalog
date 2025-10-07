@@ -168,11 +168,16 @@
   &__characteristics-link {
     background-color: $accent-color;
     color: $main-color;
-    padding: 13px 91px;
+    width: 263px;
+    padding-inline: 13px;
     border: none;
     cursor: pointer;
 
     @include hover(background-color, $hover-main-btn-color);
+  }
+
+  &__characteristics-link--selected {
+    background-color: $btn-color;
   }
 
   &__characteristics-link-favourite {
@@ -191,7 +196,7 @@
     @include hover(background-color, $hover-btn-color);
   }
 
-  &__characteristics-link-favourite--active {
+  &__characteristics-link-favourite--selected {
     background-color: transparent;
     border: 1px solid #3B3E4A;
     background-image: url('/img/icons/heart-selected.svg');

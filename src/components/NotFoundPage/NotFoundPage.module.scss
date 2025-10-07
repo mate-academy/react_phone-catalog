@@ -2,4 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &__img {
+    max-width: 50%;
+    margin-bottom: 80px;
+  }
 }

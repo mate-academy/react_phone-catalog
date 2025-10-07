@@ -3,6 +3,7 @@ import { Product } from '../../types/Product';
 import styles from './ProductCard.module.scss';
 import { CategoryType } from '../../types/Category';
 import { useFavorites } from '../../context/Favoutires';
+import { useCart } from '../../context/Cart';
 
 type Props = {
   product: Product;
@@ -17,6 +18,9 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
   const favorite = isFavorite(product.itemId);
+
+  const { addToCart, removeFromCart, isInCart } = useCart();
+  const selectedProduct = isInCart(product.itemId);
 
   return (
     <div className={styles['product-card']}>
@@ -65,9 +69,21 @@ export const ProductCard: React.FC<Props> = ({
         </div>
       </div>
       <div className={styles['product-card__link-box']}>
-        <button className={styles['product-card__link']}>Add to cart</button>
         <button
-          className={`${styles['product-card__link-favourite']} ${favorite ? styles['product-card__link-favourite--active'] : ''}`}
+          className={`${styles['product-card__link']} ${selectedProduct ? styles['product-card__link--selected'] : ''}`}
+          onClick={e => {
+            e.preventDefault();
+            if (selectedProduct) {
+              removeFromCart(product.itemId);
+            } else {
+              addToCart(product);
+            }
+          }}
+        >
+          {selectedProduct ? 'Added to cart' : 'Add to cart'}
+        </button>
+        <button
+          className={`${styles['product-card__link-favourite']} ${favorite ? styles['product-card__link-favourite--selected'] : ''}`}
           onClick={e => {
             e.preventDefault();
             toggleFavorite(product.itemId);

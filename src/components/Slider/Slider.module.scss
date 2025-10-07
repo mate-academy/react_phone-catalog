@@ -5,17 +5,38 @@
   display: flex;
   height: 432px;
   gap: 16px;
+
+  @include on-tablet {
+    height: 300px;
+    gap: 19px;
+  }
+
+  @media (max-width: 897px) {
+    height: 240px;
+  }
+
+  @include on-phone {
+    height: 320px;
+  }
 }
 
 .slide {
   background-color: #000000;
   height: 100%;
 
+  @include on-phone {
+    display: none;
+  }
+
   &__wrapper {
     display: flex;
     padding: 14px;
     gap: 80px;
     height: 100%;
+
+    @include on-tablet {
+      gap: 50px;
+    }
   }
 
   &__content {
@@ -36,6 +57,19 @@
     background-clip: text;
     color: transparent;
     margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 36px;
+    }
+
+    @media (max-width: 897px) {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 669px) {
+      font-size: 18px;
+    }
   }
 
   &__title-img {
@@ -43,6 +77,16 @@
     margin-left: 10px;
     width: 30px;
     height: 44px;
+
+    @include on-tablet {
+      width: 20px;
+      height: 30px;
+    }
+
+    @media (max-width: 897px) {
+      width: 15px;
+      height: 20px;
+    }
   }
 
   &__text {
@@ -51,6 +95,15 @@
     letter-spacing: 0;
     color: #AEAEAE;
     margin-bottom: 60px;
+
+    @include on-tablet {
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 669px) {
+      font-size: 12px;
+    }
   }
 
   &__link {
@@ -64,16 +117,113 @@
     letter-spacing: 0;
     padding: 20px 55px;
     margin-top: 50px;
+
+    @include on-desktop {
+      margin-top: 0;
+    }
+
+    @include on-tablet {
+      padding: 15px 40px;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    @media (max-width: 897px) {
+      padding: 12px 30px;
+    }
+
+    @media (max-width: 669px) {
+      font-size: 12px;
+    }
   }
 
   &__image {
+    display: flex;
+    flex-direction: column;
     padding-top: 30px;
     padding-right: 66px;
     text-align: center;
+
+    @include on-tablet {
+      padding-top: 10px;
+    }
+
+    @media (max-width: 897px) {
+      padding-right: 10px;
+    }
+  }
+
+  &__img-box {
+    flex-grow: 1;
   }
 
   &__image-title {
     font-size: 42px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #fff;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      font-size: 36px;
+    }
+
+    @media (max-width: 897px) {
+      font-size: 24px;
+    }
+
+    @media (max-width: 669px) {
+      font-size: 18px;
+    }
+  }
+
+  &__image-text {
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #9B9B9B;
+    margin-bottom: 68px;
+
+    @include on-tablet {
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 897px) {
+      font-size: 14px;
+    }
+  }
+}
+
+.slide-phone {
+  display: none;
+
+  @include on-phone {
+    display: block;
+    background-color: #000000;
+    height: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  &__title {
+    @extend %mont-800;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0;
+    background: linear-gradient(#891CE8, #7560FA, #E963FF);
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+    padding-top: 30px;
+  }
+
+  &__image-title {
+    font-size: 32px;
     line-height: 100%;
     letter-spacing: 0;
     color: #fff;
@@ -85,7 +235,7 @@
     line-height: 100%;
     letter-spacing: 0;
     color: #9B9B9B;
-    margin-bottom: 68px;
+    margin-bottom: 12px;
   }
 }
 
@@ -98,6 +248,10 @@
   border: none;
   cursor: pointer;
   background-color: $btn-color;
+
+  @include on-phone {
+    display: none;
+  }
 }
 
 .myCustomBtn__next {
@@ -109,6 +263,10 @@
   border: none;
   cursor: pointer;
   background-color: $btn-color;
+
+  @include on-phone {
+    display: none;
+  }
 }
 
 .myPagination {
