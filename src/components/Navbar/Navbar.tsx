@@ -9,7 +9,10 @@ import React, {
   useEffect,
 } from 'react';
 import styles from './Navbar.module.css';
-import logo from '../../assets/img/phones/Logo_mobile.png';
+import logoMobile from '../../assets/img/phones/Logo_mobile.png';
+import logoDesktop from '../../assets/img/phones/Logo_desktop.png';
+import cartMobile from '../../assets/img/Cart.svg';
+import favouritesMobile from '../../assets/img/Favourites.svg';
 
 //__________
 // BLOCO TYPES
@@ -19,8 +22,12 @@ type Props = { links?: LinkItem[] };
 
 // Type guard to avoid `any` and satisfy ESLint
 const isLinkItem = (obj: unknown): obj is LinkItem => {
-  if (typeof obj !== 'object' || obj === null) return false;
+  if (typeof obj !== 'object' || obj === null) {
+    return false;
+  }
+
   const rec = obj as Record<string, unknown>;
+
   return (
     typeof rec.id === 'string' &&
     typeof rec.label === 'string' &&
@@ -41,10 +48,16 @@ export default function Navbar({ links }: Props): JSX.Element {
 
   // BLOCO VALIDATION (runtime leve) sem utilizar `any`
   const validateLinks = (maybe: unknown): LinkItem[] | null => {
-    if (!Array.isArray(maybe)) return null;
-    for (const item of maybe) {
-      if (!isLinkItem(item)) return null;
+    if (!Array.isArray(maybe)) {
+      return null;
     }
+
+    for (const item of maybe) {
+      if (!isLinkItem(item)) {
+        return null;
+      }
+    }
+
     return maybe as LinkItem[];
   };
 
@@ -62,6 +75,7 @@ export default function Navbar({ links }: Props): JSX.Element {
   // BLOCO effectiveLinks com useMemo para evitar recomputações desnecessárias
   const effectiveLinks: LinkItem[] = useMemo(() => {
     const validated = validateLinks(links);
+
     return validated ?? defaultLinks;
   }, [links, defaultLinks]);
 
@@ -84,11 +98,16 @@ export default function Navbar({ links }: Props): JSX.Element {
         hamburgerRef.current?.focus();
       }
     };
+
     const onResize = () => {
-      if (window.innerWidth >= 1200) setIsOpen(false);
+      if (window.innerWidth >= 1200) {
+        setIsOpen(false);
+      }
     };
+
     window.addEventListener('keydown', onKey);
     window.addEventListener('resize', onResize);
+
     return () => {
       window.removeEventListener('keydown', onKey);
       window.removeEventListener('resize', onResize);
@@ -101,8 +120,10 @@ export default function Navbar({ links }: Props): JSX.Element {
       const id = window.setTimeout(() => {
         firstLinkRef.current?.focus();
       }, 0);
+
       return () => window.clearTimeout(id);
     }
+
     return;
   }, [isOpen]);
 
@@ -110,11 +131,14 @@ export default function Navbar({ links }: Props): JSX.Element {
   useEffect(() => {
     if (isOpen) {
       const prev = document.body.style.overflow;
+
       document.body.style.overflow = 'hidden';
+
       return () => {
         document.body.style.overflow = prev;
       };
     }
+
     return;
   }, [isOpen]);
 
@@ -123,16 +147,21 @@ export default function Navbar({ links }: Props): JSX.Element {
     (items: LinkItem[]) =>
       items.map((link, idx) => (
         <li key={link.id}>
-          <a
-            href={link.href}
-            onClick={close}
-            ref={idx === 0 ? firstLinkRef : undefined}
-            aria-current={
-              window.location.pathname === link.href ? 'page' : undefined
-            }
-          >
-            {link.label}
-          </a>
+          <div className={styles.linkContainer}>
+            <a
+              href={link.href}
+              onClick={close}
+              ref={idx === 0 ? firstLinkRef : undefined}
+              aria-current={
+                window.location.pathname === link.href ? 'page' : undefined
+              }
+              className={`${styles.navLink} ${
+                window.location.pathname === link.href ? styles.activeLink : ''
+              }`}
+            >
+              {link.label}
+            </a>
+          </div>
         </li>
       )),
     [close],
@@ -141,9 +170,12 @@ export default function Navbar({ links }: Props): JSX.Element {
   // BLOCO RENDER
   return (
     <header className={styles.navbar}>
-      <div className={styles.left}>
+      <div className={styles.leftGroup}>
         <a href="/" onClick={close} aria-label="Ir para home">
-          <img src={logo} alt="Logo" className={styles.logo} />
+          <picture>
+            <source srcSet={logoDesktop} media="(min-width: 640px)" />
+            <img src={logoMobile} alt="Logo" className={styles.logo} />
+          </picture>
         </a>
       </div>
 
@@ -169,6 +201,14 @@ export default function Navbar({ links }: Props): JSX.Element {
       >
         <ul className={styles.menuList}>{renderLinks(effectiveLinks)}</ul>
       </nav>
+      <div className={styles.containerIcon}>
+        <img
+          src={favouritesMobile}
+          alt="Ícone Cart"
+          className={styles.iconFavourites}
+        />
+        <img src={cartMobile} alt="Ícone Cart" className={styles.iconCart} />
+      </div>
     </header>
   );
 }

@@ -1,20 +1,19 @@
-/* navbar base */
+/* ------------------ BASE ------------------ */
 .navbar {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 16px;
   background: #fff;
   border-bottom: 1px solid #e6e6e6;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* Logo */
 .logo {
-  height: 22px;
+  height: 1.5rem;
+  width: 4rem;
 }
 
-/* hamburguer */
 .hamburger {
   display: inline-flex;
   flex-direction: column;
@@ -24,7 +23,8 @@
   padding: 8px;
   align-items: center;
   justify-content: center;
-  z-index: 10001; /* keep button above overlays */
+  cursor: pointer;
+  z-index: 10001;
 }
 
 .bar {
@@ -34,7 +34,32 @@
   display: block;
 }
 
-/* menu - mobile hidden by default */
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.containerIcon {
+  display: none;
+}
+
+.linkContainer {
+  position: relative;
+}
+
+.navLink {
+  color: #828282;
+  text-decoration: none;
+  font-weight: 800;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #313237;
+}
+
+/* ------------------ MENU MOBILE ------------------ */
 .menu {
   position: fixed;
   top: 60px;
@@ -49,7 +74,7 @@
     transform 0.2s ease;
   padding: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  display: none; /* hidden on mobile until opened */
+  display: none;
   z-index: 10000;
 }
 
@@ -62,27 +87,37 @@
   gap: 12px;
 }
 
-/* opened states: class or ARIA attribute — must set display so element leaves display:none */
 .menuOpen,
 .menu[aria-hidden='false'] {
-  display: block; /* required on mobile so opacity/transform take effect */
+  display: block;
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
 }
 
-/* menu links layout (mobile) */
 .menuList a {
-  color: inherit;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 800;
 }
 
-/* larger screens */
+/* ------------------ TABLET (≥640px) ------------------ */
 @media (min-width: 640px) {
+  .navbar {
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .logo {
+    height: 2rem;
+    width: 5rem;
+    margin: 24px;
+  }
+
   .hamburger {
     display: none;
   }
+
   .menu {
     position: static;
     transform: none;
@@ -90,23 +125,53 @@
     pointer-events: auto;
     background: transparent;
     box-shadow: none;
-    display: block; /* show menu from tablet up */
+    display: block;
   }
+
   .menu ul {
     flex-direction: row;
     gap: 24px;
     align-items: center;
   }
+
+  .containerIcon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+  }
+
+  .linkContainer::after {
+    content: '';
+    position: absolute;
+    bottom: -32px;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background-color: #111;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+  }
+
+  .linkContainer:hover::after {
+    transform: scaleX(1);
+  }
 }
 
-/* breakpoint para telas largas: mostra menu, esconde hamburger */
+/* ------------------ DESKTOP (≥1200px) ------------------ */
 @media (min-width: 1200px) {
+  .logo {
+    height: 2rem;
+    width: 5rem;
+    margin: 24px;
+  }
+
   .hamburger {
     display: none !important;
   }
 
   .menu {
-    /* normalize to horizontal layout on very large screens */
     display: flex !important;
     gap: 1rem;
     align-items: center;
@@ -117,11 +182,7 @@
     pointer-events: auto;
   }
 
-  /* ensure both ARIA and class states render the menu on desktop */
-  .menu[aria-hidden='true'] {
-    display: flex !important;
-  }
-
+  .menu[aria-hidden='true'],
   .menu.menuOpen {
     display: flex !important;
   }
