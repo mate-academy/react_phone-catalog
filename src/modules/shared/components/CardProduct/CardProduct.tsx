@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useFavourite } from '../../../../ProductsContext/FavouriteContext';
 import { Product } from '../../../../ProductsContext/TabsContext';
 import styles from './CardProduct.module.scss';
 
@@ -8,17 +8,15 @@ interface CardProductProps {
 }
 
 export const CardProduct: React.FC<CardProductProps> = ({ element, sale }) => {
+  const { favourites, toggleFavourite } = useFavourite();
+
+  const isFavourite = favourites.includes(element.id);
+
   const inform = [
     { name: 'Screen', value: element.screen },
     { name: 'Capacity', value: element.capacity },
     { name: 'RAM', value: element.ram },
   ];
-
-  const [isFavourite, setIsFavourite] = useState(element.favourit);
-
-  const toggleFavourite = () => {
-    setIsFavourite(prev => !prev);
-  };
 
   return (
     <div className={styles.container}>
@@ -46,7 +44,10 @@ export const CardProduct: React.FC<CardProductProps> = ({ element, sale }) => {
       <div className={styles.blockButtons}>
         <button className={styles.add}>Add to cart</button>
 
-        <button className={styles.favourites} onClick={toggleFavourite}>
+        <button
+          className={styles.favourites}
+          onClick={() => toggleFavourite(element.id)}
+        >
           <img
             src={
               isFavourite ? '/img/favourites-active.svg' : '/img/favourites.svg'

@@ -28,39 +28,35 @@ export const CartPage = () => {
     [productsList, category],
   );
 
-  switch (sortBy) {
-    case 'Newest':
-      productsFilters.sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
-      break;
+  const sortedProducts = useMemo(() => {
+    const copy = [...productsFilters];
 
-    case 'Alphabetically':
-      productsFilters.sort((a, b) =>
-        (a.name ?? '').localeCompare(b.name ?? ''),
-      );
-      break;
-
-    case 'Cheapest':
-      productsFilters.sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
-      break;
-
-    default:
-      break;
-  }
+    switch (sortBy) {
+      case 'Newest':
+        return copy.sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
+      case 'Alphabetically':
+        return copy.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? ''));
+      case 'Cheapest':
+        return copy.sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+      default:
+        return copy;
+    }
+  }, [productsFilters, sortBy]);
 
   const perPage =
-    perPageParam === 'all' ? productsFilters.length : Number(perPageParam);
+    perPageParam === 'all' ? sortedProducts.length : Number(perPageParam);
 
   const totalPage =
-    perPage === productsFilters.length
+    perPage === sortedProducts.length
       ? 1
-      : Math.ceil(productsFilters.length / perPage);
+      : Math.ceil(sortedProducts.length / perPage);
 
   const start = (pageParam - 1) * perPage;
 
   const visibleProducts =
     perPageParam === 'all'
-      ? productsFilters
-      : productsFilters.slice(start, start + perPage);
+      ? sortedProducts
+      : sortedProducts.slice(start, start + perPage);
 
   const updateParams = (page: number, perPageItems: string | number) => {
     const params: Record<string, string> = {};
@@ -71,9 +67,9 @@ export const CartPage = () => {
 
     if (
       perPageItems !== 'all' &&
-      Number(perPageItems !== productsFilters.length)
+      Number(perPageItems) !== sortedProducts.length
     ) {
-      params.perPage = String(perPage);
+      params.perPage = String(perPageItems);
     }
 
     setSearchParams(params);
@@ -97,7 +93,7 @@ export const CartPage = () => {
       <NavigateList />
       <h1 className={styles.title}>{titleCategory}</h1>
 
-      <div className={styles.countModels}>{productsFilters.length} models</div>
+      <div className={styles.countModels}>{sortedProducts.length} models</div>
 
       <div className={styles.box}>
         <div className={styles.sortGrid}>
@@ -110,7 +106,7 @@ export const CartPage = () => {
           />
 
           <ItemsOnPage
-            current={perPage}
+            current={perPageParam}
             items={items}
             onChange={newPerPage => updateParams(1, newPerPage)}
           />
@@ -126,7 +122,7 @@ export const CartPage = () => {
       <Pagination
         totalPage={totalPage}
         currentPage={pageParam}
-        onPageChange={newPerPage => updateParams(1, newPerPage)}
+        onPageChange={newPage => updateParams(newPage, perPageParam)}
       />
     </div>
   );

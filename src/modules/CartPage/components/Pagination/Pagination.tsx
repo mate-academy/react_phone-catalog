@@ -11,7 +11,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   onPageChange,
 }) => {
-  const newArr = Array.from({ length: totalPage }, (_, i) => i);
+  const newArr = Array.from({ length: totalPage }, (_, i) => i + 1);
   const itemsPerList = 4;
 
   let visibleNumbers: number[];
@@ -28,13 +28,13 @@ export const Pagination: React.FC<PaginationProps> = ({
   }
 
   const goNext = () => {
-    if (currentPage < totalPage - 1) {
+    if (currentPage < totalPage) {
       onPageChange(currentPage + 1);
     }
   };
 
   const goPrev = () => {
-    if (currentPage > 0) {
+    if (currentPage > 1) {
       onPageChange(currentPage - 1);
     }
   };
@@ -59,7 +59,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             }}
             onClick={() => onPageChange(p)}
           >
-            {p + 1}
+            {p}
           </button>
         ))}
       </div>

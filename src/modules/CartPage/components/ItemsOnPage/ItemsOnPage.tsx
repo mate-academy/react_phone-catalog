@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './ItemsOnPage.module.scss';
 
 interface ItemsOnPageProps {
-  current: number;
+  current: string;
   items: string[];
   onChange: (perPage: string | number) => void;
 }
