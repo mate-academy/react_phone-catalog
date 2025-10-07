@@ -1,0 +1,103 @@
+@use "/src/mixins.scss" as *;
+
+.container {
+  padding: 24px 0 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  color: #F1F2F9;
+  font-size: 32px;
+  line-height: 41px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  @include on-desktop {
+    line-height: 56px;
+  }
+}
+
+.sortGrid {
+  color: #75767F;
+
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+
+  @include page-grid;
+}
+
+.sortBy {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.itemsOnPage {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+}
+
+.countModels {
+  color: #75767F;
+  padding-top: 8px;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.box {
+  padding: 32px 0 24px;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+
+  @include on-tablet {
+    padding: 40px 0;
+  }
+}
+
+.sortList {
+  background-color: #323542;
+  position: fixed;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.item {
+  background-color: #323542;
+  cursor: pointer;
+
+  &:hover {
+    color: #F1F2F9;
+  }
+}
+
+.elementsContainer {
+  @include page-grid;
+
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+

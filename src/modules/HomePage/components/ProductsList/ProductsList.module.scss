@@ -1,0 +1,46 @@
+@use '/src/mixins.scss' as *;
+
+.container {
+  gap: 24px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+
+.productsList {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.elementsTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: #F1F2F9;
+  font-size: 22px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  color: #3B3E4A;
+  border: 1px solid #3B3E4A;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.active {
+  background-color: #3B3E4A;
+  color: #F1F2F9;
+}

@@ -1,0 +1,56 @@
+@use "/src/mixins.scss" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  color: #F1F2F9;
+  padding-bottom: 24px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+
+  @include on-tablet {
+    gap: 15px;
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.block {
+  width: 100%;
+  text-decoration: none;
+
+}
+
+.blockImg {
+  padding-bottom: 24px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+.titleLink {
+  color: #F1F2F9;
+  font-weight: normal;
+  padding-bottom: 4px;
+}
+
+.titleCount {
+  color: #75767F;
+  font-size: 14px;
+}
+

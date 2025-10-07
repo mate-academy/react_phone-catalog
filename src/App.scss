@@ -1,1 +1,44 @@
-// not empty
+@use "./mixins.scss" as *;
+
+
+iframe {
+  display: none;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #0F1121;
+  font-family: Mont, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+button {
+  cursor: pointer;
+}

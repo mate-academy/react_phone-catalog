@@ -1,0 +1,24 @@
+.pagination {
+  justify-content: center;
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.buttonNav {
+  height: 32px;
+  width: 32px;
+  border: none;
+  color: #F1F2F9;
+  background-color: #323542;
+  cursor: pointer;
+}
+
+
+.pageList {
+  display: flex;
+  gap: 8px;
+}
+
+
+

@@ -1,0 +1,47 @@
+@use "/src/mixins.scss" as *;
+
+.picturesSlider {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sliderTrack {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  gap: 16px;
+}
+
+.button {
+  display: none;
+  width: 32px;
+  border: none;
+  background-color: #323542;
+  color: #F1F2F9;
+
+  @include on-tablet {
+    display: block;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: #3B3E4A;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.active {
+  background-color: #F1F2F9;
+}

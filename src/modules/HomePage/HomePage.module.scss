@@ -1,0 +1,42 @@
+@use "/src/mixins.scss" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  color: #F1F2F9;
+  font-size: 48px;
+  line-height: 56px;
+  margin: 24px 0;
+
+  @include on-tablet {
+    margin: 32px 0;
+  }
+
+  @include on-desktop {
+    margin: 56px 0;
+  }
+}
+
+.elements {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}
+

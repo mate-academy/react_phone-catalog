@@ -1,0 +1,41 @@
+@use "/src/mixins.scss" as *;
+
+.sortBy {
+  grid-column: span 2;
+  position: relative;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.button {
+  background-color: #323542;
+  width: 100%;
+  height: 40px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #F1F2F9;
+  padding: 12px 10px;
+  margin-top: 4px;
+}
+
+.sortList {
+  background-color: #323542;
+  position: fixed;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.item {
+  background-color: #323542;
+  cursor: pointer;
+
+  &:hover {
+    color: #F1F2F9;
+  }
+}
