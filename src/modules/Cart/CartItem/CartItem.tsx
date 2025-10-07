@@ -47,7 +47,6 @@ export const CartItem: React.FC<OrderCardProps> = ({ product }) => {
   };
 
   const increment = () => handleQuantityChange(quantity + 1);
-
   const decrement = () => handleQuantityChange(quantity - 1);
 
   const deleteOrder = () => {
@@ -62,6 +61,7 @@ export const CartItem: React.FC<OrderCardProps> = ({ product }) => {
           <button className={styles.item_close} onClick={deleteOrder}>
             <img src="img/icons/gray cross.svg" alt="close" />
           </button>
+
           <Link to={`/product/${product.itemId}`} className={styles.item_link}>
             <img
               className={styles.item_image}
@@ -69,6 +69,7 @@ export const CartItem: React.FC<OrderCardProps> = ({ product }) => {
               alt={product.name}
             />
           </Link>
+
           <Link to={`/product/${product.itemId}`} className={styles.item_name}>
             {product.name}
           </Link>
@@ -88,7 +89,8 @@ export const CartItem: React.FC<OrderCardProps> = ({ product }) => {
               <img src="img/buttons/white minus.svg" alt="minus" />
             </button>
 
-            <span>{quantity}</span>
+            {/* value with fixed width */}
+            <span className={styles.orderInfo_value}>{quantity}</span>
 
             {/* plus button */}
             <button
@@ -102,7 +104,7 @@ export const CartItem: React.FC<OrderCardProps> = ({ product }) => {
             </button>
           </div>
 
-          {/* FIXED: show total for this item */}
+          {/* price */}
           <span className={styles.orderInfo_price}>
             ${(product.price * quantity).toLocaleString('en-US')}
           </span>

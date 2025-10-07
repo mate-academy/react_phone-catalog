@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMyContext } from '../../Context/ProductContexts';
 import { NavBar } from '../../shared/NavBar/NavBar';
 import { ProductList } from '../../shared/ProductList/ProductList';
@@ -10,16 +9,12 @@ import { Back } from '../../shared/Back';
 import { BurgerMenu } from '../BurgerMenu';
 
 export const Cart: React.FC = () => {
-  const {
-    products,
-    isMenuOpen,
-    addIsPressed,
-    isLoading,
-    amountItems,
-    setClearIsPressed,
-  } = useMyContext();
+  const { products, isMenuOpen, addIsPressed, isLoading, setClearIsPressed } =
+    useMyContext();
+
   const [orderList, setOrderList] = useState<ProductDemo[]>([]);
   const [amountPrice, setAmountPrice] = useState(0);
+  const [totalItems, setTotalItems] = useState(0); // ✅ новий стейт
   const [checkout, setCheckout] = useState(false);
 
   const confirmModal = () => {
@@ -39,6 +34,7 @@ export const Cart: React.FC = () => {
     details?.removeAttribute('open');
   };
 
+  // отримуємо список замовлень із localStorage
   useEffect(() => {
     const orders = products.filter(item => {
       const orderInStorage = localStorage.getItem(`cart_${item.itemId}`);
@@ -49,8 +45,10 @@ export const Cart: React.FC = () => {
     setOrderList(orders);
   }, [products, addIsPressed, checkout]);
 
+  // рахуємо totalPrice і totalItems
   useEffect(() => {
     let totalPrice = 0;
+    let itemsCount = 0; // ✅ не конфліктує зі стейтом
 
     orderList.forEach(product => {
       const jsonItem = localStorage.getItem(`cart_${product.itemId}`);
@@ -64,9 +62,11 @@ export const Cart: React.FC = () => {
       const price = storedItem.price;
 
       totalPrice += quantity * price;
+      itemsCount += quantity;
     });
 
     setAmountPrice(totalPrice);
+    setTotalItems(itemsCount);
   }, [orderList]);
 
   return isMenuOpen ? (
@@ -89,9 +89,11 @@ export const Cart: React.FC = () => {
               <div className={styles.total_purchaseAmount}>
                 {orderList.length > 0 ? (
                   <>
-                    <span className={styles.total_price}>${amountPrice}</span>
+                    <span className={styles.total_price}>
+                      ${amountPrice.toLocaleString('en-US')}
+                    </span>
                     <span className={styles.total_quantity}>
-                      Total for {amountItems} items
+                      Total for {totalItems} items
                     </span>
                   </>
                 ) : products.length === 0 ? (

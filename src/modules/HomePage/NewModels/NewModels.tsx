@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';

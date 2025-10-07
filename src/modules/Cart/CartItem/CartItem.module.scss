@@ -64,7 +64,6 @@
     text-align: left;
   }
 }
-
 .orderInfo {
   width: 100%;
   display: flex;
@@ -78,25 +77,23 @@
   }
 
   &_quantity {
-    width: 96px;
-    height: 32px;
+    width: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 8px;
   }
 
   &_button {
     all: unset;
     cursor: pointer;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 32px;
     height: 32px;
     background-color: #323542;
-    transition:
-      background-color 0.3s ease,
-      transform 0.1s ease;
+    transition: background-color 0.3s ease;
 
     &:hover {
       background-color: #4a4d58;
@@ -107,9 +104,21 @@
     }
   }
 
+  &_value {
+    display: inline-block;
+    min-width: 40px; // фіксована ширина, цифри не рухають кнопки
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+  }
+
   &_price {
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
+    min-width: 120px; // ціна теж завжди стабільна
+    text-align: right;
   }
 }

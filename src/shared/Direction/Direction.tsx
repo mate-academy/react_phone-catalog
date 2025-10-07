@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/indent */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ProductFullInfo } from '../../types/ProductFullInfo.ts';
+import { ProductFullInfo } from '../../types/ProductFullInfo';
 import styles from './Direction.module.scss';
 import { Back } from '../Back';
 

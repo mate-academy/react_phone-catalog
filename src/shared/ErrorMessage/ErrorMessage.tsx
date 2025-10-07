@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './ErrorMessage.module.scss';

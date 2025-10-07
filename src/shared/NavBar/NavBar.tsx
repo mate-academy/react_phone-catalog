@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './NavBar.module.scss';

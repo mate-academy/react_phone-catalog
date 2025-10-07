@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Action } from '../../../../types/Action';
 import { ProductDemo } from '../../../../types/ProductDemo';
 import { ProductFullInfo } from '../../../../types/ProductFullInfo';
@@ -23,6 +23,18 @@ export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
   setActiveHeart,
   updateList,
 }) => {
+  // ✅ Перевірка чи товар уже в кошику — при відкритті сторінки
+  useEffect(() => {
+    if (!chosedItemDemo) {
+      return;
+    }
+
+    const cartKey = `cart_${chosedItemDemo.itemId}_${chosedItemDemo.color}_${chosedItemDemo.capacity}`;
+    const existing = localStorage.getItem(cartKey);
+
+    setActiveAdd(!!existing);
+  }, [chosedItemDemo, setActiveAdd]);
+
   return (
     <>
       <section className={styles.confirm}>
@@ -36,17 +48,21 @@ export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
         <div className={styles.confirm_actions}>
           <button
             className={`${styles.confirm_button} ${styles.confirm_add}`}
-            style={activeAdd ? { backgroundColor: '#323542' } : {}}
+            style={{
+              backgroundColor: activeAdd ? '#323542' : '',
+              color: activeAdd ? '#fff' : '',
+              borderColor: activeAdd ? '#323542' : '',
+            }}
             onClick={() => {
               if (chosedItemDemo) {
                 updateList(chosedItemDemo, 'toCart');
+                setActiveAdd(!activeAdd);
               }
-
-              setActiveAdd(!activeAdd);
             }}
           >
-            Add to cart
+            {activeAdd ? 'Added to cart' : 'Add to cart'}
           </button>
+
           <button
             className={`${styles.confirm_button} ${styles.confirm_heart}`}
             onClick={() => {
@@ -70,7 +86,6 @@ export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
       </section>
 
       {/* Specifications short */}
-
       <section className={styles.specsShort}>
         <div
           className={`${styles.specsShort_parameter} ${styles.specsShort_screen}`}

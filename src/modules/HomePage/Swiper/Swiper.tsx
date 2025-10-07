@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Swiper.module.scss';

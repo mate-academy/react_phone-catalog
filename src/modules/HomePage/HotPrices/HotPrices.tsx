@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import useEmblaCarousel from 'embla-carousel-react';
