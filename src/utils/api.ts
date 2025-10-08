@@ -21,11 +21,11 @@ async function fetchProducts<T>(url: string): Promise<T> {
 }
 
 export function getAllProducts(): Promise<Product[]> {
-  return fetchProducts<Product[]>('/api/products.json');
+  return fetchProducts<Product[]>('./api/products.json');
 }
 
 export function getProductDetails(
   productsType: string,
 ): Promise<ProductDetails[]> {
-  return fetchProducts<ProductDetails[]>(`/api/${productsType}.json`);
+  return fetchProducts<ProductDetails[]>(`./api/${productsType}.json`);
 }
