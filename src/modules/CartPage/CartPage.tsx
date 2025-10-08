@@ -7,12 +7,18 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { Pagination } from './components/Pagination';
 import { SortBy } from './components/SortBy';
 import { ItemsOnPage } from './components/ItemsOnPage';
+import { useFavourite } from '../../ProductsContext/FavouriteContext';
 
 export const CartPage = () => {
   const { productsList } = useTabs();
   const { category } = useParams();
-
   const [searchParams, setSearchParams] = useSearchParams();
+  const { favourites } = useFavourite();
+
+  const favouritesProducts = productsList.filter(product =>
+    favourites.includes(product.id),
+  );
+  const categoryFavourite = category === 'favourites';
 
   const pageParam = Number(searchParams.get('page') || 1);
   const perPageParam = searchParams.get('perPage') || 'all';
@@ -53,10 +59,23 @@ export const CartPage = () => {
 
   const start = (pageParam - 1) * perPage;
 
-  const visibleProducts =
-    perPageParam === 'all'
+  const visibleProducts = useMemo(() => {
+    if (categoryFavourite) {
+      return productsList.filter(product => favourites.includes(product.id));
+    }
+
+    return perPageParam === 'all'
       ? sortedProducts
       : sortedProducts.slice(start, start + perPage);
+  }, [
+    categoryFavourite,
+    productsList,
+    favourites,
+    sortedProducts,
+    start,
+    perPage,
+    perPageParam,
+  ]);
 
   const updateParams = (page: number, perPageItems: string | number) => {
     const params: Record<string, string> = {};
@@ -83,6 +102,10 @@ export const CartPage = () => {
         return 'Tablets';
       case 'accessories':
         return 'Accessories';
+      case 'favourites':
+        return 'Favourites';
+      case 'cart':
+        return 'Cart';
       default:
         return '';
     }
@@ -93,24 +116,29 @@ export const CartPage = () => {
       <NavigateList />
       <h1 className={styles.title}>{titleCategory}</h1>
 
-      <div className={styles.countModels}>{sortedProducts.length} models</div>
+      <div className={styles.countModels}>
+        {categoryFavourite ? favouritesProducts.length : sortedProducts.length}
+        &nbsp;models
+      </div>
 
       <div className={styles.box}>
-        <div className={styles.sortGrid}>
-          <SortBy
-            sortBy={sortBy}
-            setSortOpen={setSortOpen}
-            sortOpen={sortOpen}
-            sortOptions={sortOptions}
-            setSortBy={setSortBy}
-          />
+        {!categoryFavourite && (
+          <div className={styles.sortGrid}>
+            <SortBy
+              sortBy={sortBy}
+              setSortOpen={setSortOpen}
+              sortOpen={sortOpen}
+              sortOptions={sortOptions}
+              setSortBy={setSortBy}
+            />
 
-          <ItemsOnPage
-            current={perPageParam}
-            items={items}
-            onChange={newPerPage => updateParams(1, newPerPage)}
-          />
-        </div>
+            <ItemsOnPage
+              current={perPageParam}
+              items={items}
+              onChange={newPerPage => updateParams(1, newPerPage)}
+            />
+          </div>
+        )}
 
         <div className={styles.elementsContainer}>
           {visibleProducts.map(product => (
@@ -119,11 +147,13 @@ export const CartPage = () => {
         </div>
       </div>
 
-      <Pagination
-        totalPage={totalPage}
-        currentPage={pageParam}
-        onPageChange={newPage => updateParams(newPage, perPageParam)}
-      />
+      {!categoryFavourite && (
+        <Pagination
+          totalPage={totalPage}
+          currentPage={pageParam}
+          onPageChange={newPage => updateParams(newPage, perPageParam)}
+        />
+      )}
     </div>
   );
 };
