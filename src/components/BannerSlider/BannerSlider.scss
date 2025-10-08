@@ -1,0 +1,69 @@
+@import '../../styles/utils/mixins';
+
+.slider-block {
+  display: flex;
+  height: 400px;
+
+  @include on-tablet {
+    height: 490px;
+  }
+
+  @include on-mobile {
+    height: 320px;
+  }
+
+  &__image-container {
+    margin: 0 16px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  &__image-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &__image {
+    min-width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  &__button {
+    @include on-mobile {
+      display: none;
+    }
+
+    width: 32px;
+    height: 100%;
+    padding: 0 8px;
+    border: 1px solid #b4bdc3;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  &__arrow {
+    height: 16px;
+    box-sizing: border-box;
+  }
+
+  &__radio-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+  }
+
+  &__radio-button {
+    height: 4px;
+    width: 14px;
+    background-color: #e2e6e9;
+    margin-right: 10px;
+    margin-bottom: 80px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+
+    &--active {
+      background-color: #313237;
+    }
+  }
+}
