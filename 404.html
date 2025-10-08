@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      const redirect = window.location.pathname.replace('/react_phone-catalog', '');
+      sessionStorage.redirect = redirect;
+      window.location.href = '/react_phone-catalog/';
+    </script>
+  </head>
+</html>
