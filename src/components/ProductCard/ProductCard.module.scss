@@ -16,6 +16,10 @@
     box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
   }
 
+  @media (max-width: 1199px) {
+    max-width: 100%;
+  }
+
   &__img {
     height: 196px;
     display: block;
@@ -86,6 +90,10 @@
   &__link-box {
     display: flex;
     gap: 8px;
+
+    @include on-tablet {
+      justify-content: space-between;
+    }
   }
 
   &__link {

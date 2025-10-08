@@ -3,6 +3,7 @@ import styles from './NavBar.module.scss';
 import classNames from 'classnames';
 import { useFavorites } from '../../context/Favoutires';
 import { useCart } from '../../context/Cart';
+import { useEffect, useState } from 'react';
 
 const getLinkActive = ({ isActive }: { isActive: boolean }) =>
   classNames(styles['top-bar__link'], {
@@ -17,6 +18,15 @@ const getLinkActiveMenu = ({ isActive }: { isActive: boolean }) =>
 export const NavBar = () => {
   const { count } = useFavorites();
   const { totalQty } = useCart();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   return (
     <>
@@ -86,14 +96,24 @@ export const NavBar = () => {
               <span className={styles['user-nav__num']}>{totalQty}</span>
             )}
           </NavLink>
-          <a className={styles['user-nav__menu']} href="#menu"></a>
+          <button
+            className={styles['user-nav__menu']}
+            onClick={() => setIsMenuOpen(true)}
+          ></button>
         </div>
       </div>
-      <aside className={styles.menu} id="menu">
+
+      <aside
+        className={`${styles.menu} ${isMenuOpen ? styles['menu--open'] : ''}`}
+      >
         <div className={styles.menu__content}>
           <div className={styles['top-bar']}>
             <div className={styles['top-bar__nav-links']}>
-              <Link className={styles['top-bar__logo-link']} to="/">
+              <Link
+                className={styles['top-bar__logo-link']}
+                to="/"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 <img
                   className={styles['top-bar__logo']}
                   src="/img/icons/logo.svg"
@@ -102,31 +122,47 @@ export const NavBar = () => {
               </Link>
             </div>
             <div className={styles['user-nav']}>
-              <a
+              <button
                 className={`${styles['user-nav__menu']} ${styles['user-nav__menu--close']}`}
-                href="#"
-              ></a>
+                onClick={() => setIsMenuOpen(false)}
+              ></button>
             </div>
           </div>
           <nav className="menu__nav">
             <ul className={styles.menu__list}>
               <li className="menu__item">
-                <NavLink className={getLinkActiveMenu} to="/">
+                <NavLink
+                  className={getLinkActiveMenu}
+                  to="/"
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   Home
                 </NavLink>
               </li>
               <li className="menu__item">
-                <NavLink className={getLinkActiveMenu} to="/phones">
+                <NavLink
+                  className={getLinkActiveMenu}
+                  to="/phones"
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   Phones
                 </NavLink>
               </li>
               <li className="menu__item">
-                <NavLink className={getLinkActiveMenu} to="/tablets">
+                <NavLink
+                  className={getLinkActiveMenu}
+                  to="/tablets"
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   Tablets
                 </NavLink>
               </li>
               <li className="menu__item">
-                <NavLink className={getLinkActiveMenu} to="/accessories">
+                <NavLink
+                  className={getLinkActiveMenu}
+                  to="/accessories"
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   Accessories
                 </NavLink>
               </li>
@@ -139,6 +175,7 @@ export const NavBar = () => {
               `${styles['menu__user-nav-link']} ${isActive ? styles['menu__user-nav-link--active'] : ''}`
             }
             to="favorites"
+            onClick={() => setIsMenuOpen(false)}
           >
             <span className={styles['menu__user-nav-box']}>
               <img
@@ -156,6 +193,7 @@ export const NavBar = () => {
               `${styles['menu__user-nav-link']} ${isActive ? styles['menu__user-nav-link--active'] : ''}`
             }
             to="cart"
+            onClick={() => setIsMenuOpen(false)}
           >
             <span className={styles['menu__user-nav-box']}>
               <img

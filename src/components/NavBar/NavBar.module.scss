@@ -149,10 +149,12 @@
       height: 16px;
       padding: 24px;
       box-shadow: -1px 0px 0px 0px #323542;
+      background-color: transparent;
+      border: none;
     }
 
     &--close {
-      transition: all 0.3s;
+      transition: all 0.5s;
 
       @include on-phone {
         background-image: url('/img/icons/close.svg');
@@ -179,11 +181,12 @@
   display: flex;
   flex-direction: column;
 
-  &:target {
+
+  &--open {
     opacity: 1;
     pointer-events: all;
     transform: translateY(0);
-    z-index: 4;
+    z-index: 14;
   }
 
   &__content {

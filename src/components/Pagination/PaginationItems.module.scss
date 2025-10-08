@@ -7,6 +7,10 @@
   gap: 8px;
   margin-bottom: 80px;
 
+  @media (max-width: 1199px) {
+    margin-bottom: 64px;
+  }
+
   &__item-btn {
     width: 32px;
     height: 32px;

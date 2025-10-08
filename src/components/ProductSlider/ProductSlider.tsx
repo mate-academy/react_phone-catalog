@@ -3,7 +3,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import styles from './NewModelSlider.module.scss';
 import Slider from 'react-slick';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../api';
 import { ProductCard } from '../ProductCard';
@@ -22,17 +22,38 @@ type Props = {
 export const ProductSlider: React.FC<Props> = ({ detailProduct }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const price = useContext(ShowOldPriceContext);
+  const [isReady, setIsReady] = useState(false);
+  const sliderRef = useRef<Slider>(null);
 
   useEffect(() => {
+    let mounted = true;
+
     getProducts()
       // eslint-disable-next-line @typescript-eslint/no-shadow
       .then((products: Product[]) => {
-        setProducts(products);
+        if (mounted) {
+          setProducts(products);
+        }
       })
       .catch(error => {
         throw new Error(error);
+      })
+      .finally(() => {
+        setTimeout(() => setIsReady(true), 100);
       });
+
+    const handleResize = () => sliderRef.current?.slickGoTo(0);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      mounted = false;
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
+
+  if (!isReady || products.length === 0) {
+    return null;
+  }
 
   const newestProducts = [...products].sort(
     (product1, product2) => product2.year - product1.year,
@@ -60,14 +81,18 @@ export const ProductSlider: React.FC<Props> = ({ detailProduct }) => {
     responsive: [
       {
         breakpoint: 1100,
-        settings: { slidesToShow: 2 },
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 639,
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
       },
     ],
   };
 
   return (
     <div className={styles['slider-wrapper']}>
-      <Slider {...settings}>
+      <Slider {...settings} ref={sliderRef}>
         {detailProduct
           ? similarProducts.map(product => (
               <div key={product.id}>

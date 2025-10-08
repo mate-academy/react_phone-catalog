@@ -36,6 +36,12 @@ body {
   line-height: 41px;
   letter-spacing: -0.01em;
   margin-bottom: 24px;
+
+  @include on-phone {
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
 }
 
 .swiper,
@@ -83,6 +89,11 @@ body {
 
 .slick-slide {
   padding-right: 16px;
+  width: 272px;
+
+  @include on-tablet {
+    max-width: 100%;
+  }
 }
 
 .slick-list {

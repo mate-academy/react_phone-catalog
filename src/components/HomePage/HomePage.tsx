@@ -11,10 +11,10 @@ export const HomePage = () => {
       <ShowOldPriceContext.Provider value={false}>
         <NewModels />
       </ShowOldPriceContext.Provider>
-      {/*<Categories />
+      <Categories />
       <ShowOldPriceContext.Provider value={true}>
         <HotPrices />
-      </ShowOldPriceContext.Provider> */}
+      </ShowOldPriceContext.Provider>
     </>
   );
 };

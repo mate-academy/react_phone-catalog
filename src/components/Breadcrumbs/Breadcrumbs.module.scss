@@ -3,6 +3,10 @@
 .breadcrumbs {
   padding: 24px 0 40px;
 
+  @include on-phone {
+    padding: 24px 0;
+  }
+
   &__list {
     display: flex;
     align-items: center;

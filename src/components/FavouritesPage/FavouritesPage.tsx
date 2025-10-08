@@ -28,8 +28,8 @@ export const FavouritesPage = () => {
   }, [favorites]);
 
   return (
-    <section className="favourites">
-      <div className="container">
+    <section className={styles.favourites}>
+      <div className={`${styles.container} container`}>
         <Breadcrumbs category="favorites" product={null} />
         <h1 className={styles.favourites__title}>Favourites</h1>
         <p className={styles.favourites__items}>{count} items</p>

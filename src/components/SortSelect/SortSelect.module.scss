@@ -22,6 +22,10 @@
     outline: none;
     transition: all .3s;
 
+    @include on-phone {
+      width: 136px;
+    }
+
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
