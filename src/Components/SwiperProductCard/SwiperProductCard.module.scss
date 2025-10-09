@@ -17,6 +17,7 @@ $desktop-min-width: 1200px;
 }
 
 .image {
+  cursor: pointer;
   width: 208px;
   height: 196px;
   margin-bottom: 8px;
@@ -24,6 +25,7 @@ $desktop-min-width: 1200px;
 }
 
 .title {
+  cursor: pointer;
   line-height: 21px;
   font-size: 14px;
   letter-spacing: 0%;

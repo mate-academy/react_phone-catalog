@@ -2,6 +2,7 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -10,12 +11,36 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
   const { addToCart, isCart } = useCart();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const category = product.category;
+  const modelId = product.itemId;
 
   return (
     <div className={styles.card}>
-      <img src={product.image} alt={product.name} className={styles.image} />
+      <img
+        src={product.image}
+        alt={product.name}
+        className={styles.image}
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          navigate(`/${category}/${modelId}`, {
+            state: { pathname },
+          });
+        }}
+      />
 
-      <h3 className={styles.title}>{product.name}</h3>
+      <h3
+        className={styles.title}
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          navigate(`/${category}/${modelId}`, {
+            state: { pathname },
+          });
+        }}
+      >
+        {product.name}
+      </h3>
 
       <div className={styles.prices}>
         <span className={styles.price}>${product.price}</span>

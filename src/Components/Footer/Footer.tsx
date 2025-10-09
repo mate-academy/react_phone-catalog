@@ -17,14 +17,7 @@ export const Footer: React.FC = () => {
             <a href="https://github.com/BogdanS1nb">GITHUB</a>
           </li>
           <li>
-            <a
-              href="javascript:void(0)"
-              onClick={() => {
-                navigate('/aboutMe');
-              }}
-            >
-              CONTACTS
-            </a>
+            <a href="https://github.com/BogdanS1nb">CONTACTS</a>
           </li>
           <li>
             <a href="https://github.com/BogdanS1nb">RIGHTS</a>
