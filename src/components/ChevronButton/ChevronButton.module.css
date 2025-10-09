@@ -1,0 +1,22 @@
+.container {
+  width: 32px;
+  height: 400px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b4bdc3;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin: 1rem;
+}
+
+.icon {
+  display: block;
+  color: #313237;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}

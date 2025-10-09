@@ -9,6 +9,7 @@ import React, {
   useEffect,
 } from 'react';
 import styles from './Navbar.module.css';
+import { Link, useLocation } from 'react-router-dom';
 import logoMobile from '../../assets/img/phones/Logo_mobile.png';
 import logoDesktop from '../../assets/img/phones/Logo_desktop.png';
 import cartMobile from '../../assets/img/Cart.svg';
@@ -143,28 +144,30 @@ export default function Navbar({ links }: Props): JSX.Element {
   }, [isOpen]);
 
   // BLOCO RENDER HELPERS
+  const location = useLocation();
+
   const renderLinks = useCallback(
     (items: LinkItem[]) =>
-      items.map((link, idx) => (
-        <li key={link.id}>
-          <div className={styles.linkContainer}>
-            <a
-              href={link.href}
-              onClick={close}
-              ref={idx === 0 ? firstLinkRef : undefined}
-              aria-current={
-                window.location.pathname === link.href ? 'page' : undefined
-              }
-              className={`${styles.navLink} ${
-                window.location.pathname === link.href ? styles.activeLink : ''
-              }`}
-            >
-              {link.label}
-            </a>
-          </div>
-        </li>
-      )),
-    [close],
+      items.map((link, idx) => {
+        const isActive = location.pathname === link.href;
+
+        return (
+          <li key={link.id}>
+            <div className={styles.linkContainer}>
+              <Link
+                to={link.href}
+                onClick={close}
+                ref={idx === 0 ? firstLinkRef : undefined}
+                aria-current={isActive ? 'page' : undefined}
+                className={`${styles.navLink} ${isActive ? styles.activeLink : ''}`}
+              >
+                {link.label}
+              </Link>
+            </div>
+          </li>
+        );
+      }),
+    [close, location.pathname],
   );
 
   // BLOCO RENDER

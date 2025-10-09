@@ -59,6 +59,17 @@
   color: #313237;
 }
 
+.iconCart,
+.iconFavourites {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.iconCart:hover,
+.iconFavourites:hover {
+  background-color: #f2f3f7;
+}
+
 /* ------------------ MENU MOBILE ------------------ */
 .menu {
   position: fixed;

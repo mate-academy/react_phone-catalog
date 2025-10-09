@@ -1,0 +1,23 @@
+/* wrapper do banner com botões laterais */
+.sectionBanner {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10rem;
+}
+
+.containerBanner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6; /* espaço entre chevrons e banner */
+}
+
+/* wrapper externo dos dots (na Home) — usado como ponto de entrada para o CSS dos dots */
+.containerDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1168px;
+  margin-top: 12px;
+}

@@ -1,0 +1,10 @@
+.container {
+  background-image: url('../../assets/img/Banner-Home.png');
+  background-size: cover;
+  background-position: center;
+  width: 1040px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
