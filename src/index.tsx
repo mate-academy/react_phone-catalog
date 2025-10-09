@@ -12,21 +12,24 @@ import { NotFoundPage } from './modules/NotFoundPage';
 import { CartPage } from './modules/CartPage';
 import { TabsProvider } from './ProductsContext/TabsContext';
 import { FavouriteProvider } from './ProductsContext/FavouriteContext';
+import { CartProvider } from './ProductsContext/CartContext';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <TabsProvider>
-    <FavouriteProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
-            <Route path="home" element={<Navigate to="/" replace />} />
-            <Route path=":category" element={<CartPage />} />
-            <Route path="people/:slug" element={<ProductDetailsPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </Router>
-    </FavouriteProvider>
+    <CartProvider>
+      <FavouriteProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<HomePage />} />
+              <Route path="home" element={<Navigate to="/" replace />} />
+              <Route path=":category" element={<CartPage />} />
+              <Route path="people/:slug" element={<ProductDetailsPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </Router>
+      </FavouriteProvider>
+    </CartProvider>
   </TabsProvider>,
 );

@@ -1,3 +1,66 @@
-* {
-  display: block;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #F1F2F9;
+}
+
+.cartComponent {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #161827;
+  gap: 16px;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+  background-color: #161827;
+  align-items: center;
+}
+
+.title {
+  background-color: #161827;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.button {
+  border: 1px solid #3B3E4A;
+  color: #3B3E4A;
+  font-size: 16px;
+}
+
+.commonButton {
+  display: flex;
+  border: none;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+  justify-content: center;
+  background-color: #161827;
+
+}
+
+.buttonActive {
+  background-color: #323542;
+  color: #F1F2F9;
+}
+
+.countBox {
+  display: flex;
+  flex-direction: row;
+  background-color: #161827;
+
+}
+
+.picture {
+  height: 66px;
+}
+
+.price {
+  font-size: 22px;
 }

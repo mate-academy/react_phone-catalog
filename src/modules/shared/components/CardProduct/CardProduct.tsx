@@ -1,3 +1,4 @@
+import { useCart } from '../../../../ProductsContext/CartContext';
 import { useFavourite } from '../../../../ProductsContext/FavouriteContext';
 import { Product } from '../../../../ProductsContext/TabsContext';
 import styles from './CardProduct.module.scss';
@@ -9,8 +10,10 @@ interface CardProductProps {
 
 export const CardProduct: React.FC<CardProductProps> = ({ element, sale }) => {
   const { favourites, toggleFavourite } = useFavourite();
+  const { cartItems, toggleCart } = useCart();
 
   const isFavourite = favourites.includes(element.id);
+  const isInCart = cartItems.includes(element.id);
 
   const inform = [
     { name: 'Screen', value: element.screen },
@@ -42,7 +45,12 @@ export const CardProduct: React.FC<CardProductProps> = ({ element, sale }) => {
       </div>
 
       <div className={styles.blockButtons}>
-        <button className={styles.add}>Add to cart</button>
+        <button
+          className={`${styles.add} ${isInCart ? styles.addedToCart : ''}`}
+          onClick={() => toggleCart(element.id)}
+        >
+          {isInCart ? 'Added' : 'Add to cart'}
+        </button>
 
         <button
           className={styles.favourites}

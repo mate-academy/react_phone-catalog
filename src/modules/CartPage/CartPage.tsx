@@ -8,6 +8,7 @@ import { Pagination } from './components/Pagination';
 import { SortBy } from './components/SortBy';
 import { ItemsOnPage } from './components/ItemsOnPage';
 import { useFavourite } from '../../ProductsContext/FavouriteContext';
+import { Cart } from '../Cart/Cart';
 
 export const CartPage = () => {
   const { productsList } = useTabs();
@@ -19,6 +20,7 @@ export const CartPage = () => {
     favourites.includes(product.id),
   );
   const categoryFavourite = category === 'favourites';
+  const categoryCart = category === 'cart';
 
   const pageParam = Number(searchParams.get('page') || 1);
   const perPageParam = searchParams.get('perPage') || 'all';
@@ -116,13 +118,17 @@ export const CartPage = () => {
       <NavigateList />
       <h1 className={styles.title}>{titleCategory}</h1>
 
-      <div className={styles.countModels}>
-        {categoryFavourite ? favouritesProducts.length : sortedProducts.length}
-        &nbsp;models
-      </div>
+      {!categoryCart && (
+        <div className={styles.countModels}>
+          {categoryFavourite
+            ? favouritesProducts.length
+            : sortedProducts.length}
+          &nbsp;models
+        </div>
+      )}
 
       <div className={styles.box}>
-        {!categoryFavourite && (
+        {!categoryFavourite && !categoryCart && (
           <div className={styles.sortGrid}>
             <SortBy
               sortBy={sortBy}
@@ -140,14 +146,18 @@ export const CartPage = () => {
           </div>
         )}
 
-        <div className={styles.elementsContainer}>
-          {visibleProducts.map(product => (
-            <CardProduct key={product.id} element={product} sale={true} />
-          ))}
-        </div>
+        {categoryCart ? (
+          <Cart />
+        ) : (
+          <div className={styles.elementsContainer}>
+            {visibleProducts.map(product => (
+              <CardProduct key={product.id} element={product} sale={true} />
+            ))}
+          </div>
+        )}
       </div>
 
-      {!categoryFavourite && (
+      {!categoryFavourite && !categoryCart && (
         <Pagination
           totalPage={totalPage}
           currentPage={pageParam}
