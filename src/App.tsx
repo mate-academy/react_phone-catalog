@@ -1,13 +1,13 @@
 import './App.scss';
 import { Header } from './Header/Header';
 import { BrowserRouter } from 'react-router-dom';
-import { Main } from './Main/Main';
+import { ProductSlider } from './Main/ProductSlider/ProductSlider';
 
 export const App = () => (
   <BrowserRouter>
     <div className="App">
       <Header />
-      <Main />
+      <ProductSlider />
     </div>
   </BrowserRouter>
 );
