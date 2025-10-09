@@ -7,6 +7,7 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
 import 'swiper/scss';
 import { SlideItem } from '../../interfaces/swiperInterface';
+
 const slides: SlideItem[] = [
   {
     id: 1,
@@ -50,66 +51,68 @@ export const Slider: React.FC = () => {
   return (
     <>
       <div className={styles.sliderWrapper}>
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={1}
-          modules={[Navigation, Pagination, Autoplay]}
-          loop
-          navigation={{
-            prevEl: `.${styles.prevBtn}`,
-            nextEl: `.${styles.nextBtn}`,
-          }}
-          pagination={{
-            el: `.${styles.pagination}`,
-            clickable: true,
-            bulletClass: styles.bullet,
-            bulletActiveClass: styles.activeBullet,
-          }}
-          autoplay={{ delay: 5000 }}
-        >
-          {slides.map(slide => (
-            <SwiperSlide key={slide.id}>
-              <div className={styles.slide}>
-                <div className={styles.slide__wrapper}>
-                  <div className={styles.slide__content}>
-                    <h3 className={styles.slide__title}>
-                      {slide.content.title}{' '}
-                      <span className={styles.slide__emoji}>{'👌'}</span>
-                    </h3>
-                    <p className={styles.slide__text}>{slide.content.text}</p>
-                    <a
-                      className={styles.slide__link}
-                      href={slide.content.buttonLink}
-                    >
-                      {slide.content.buttonText}
-                    </a>
-                  </div>
-                  <div className={styles.slide__image}>
-                    <h3 className={styles['slide__image-title']}>
-                      {slide.mainTitle}
-                    </h3>
-                    <p className={styles['slide__image-text']}>
-                      {slide.subTitle}
-                    </p>
-                    <img
-                      className={styles.slide__img}
-                      src={slide.image}
-                      alt={slide.mainTitle}
-                    />
+        <div className={styles.sliderInner}>
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={1}
+            modules={[Navigation, Pagination, Autoplay]}
+            loop
+            navigation={{
+              prevEl: `.${styles.prevBtn}`,
+              nextEl: `.${styles.nextBtn}`,
+            }}
+            pagination={{
+              el: `.${styles.pagination}`,
+              clickable: true,
+              bulletClass: styles.bullet,
+              bulletActiveClass: styles.activeBullet,
+            }}
+            autoplay={{ delay: 5000 }}
+          >
+            {slides.map(slide => (
+              <SwiperSlide key={slide.id}>
+                <div className={styles.slide}>
+                  <div className={styles.slide__wrapper}>
+                    <div className={styles.slide__content}>
+                      <h3 className={styles.slide__title}>
+                        {slide.content.title}{' '}
+                        <span className={styles.slide__emoji}>{'👌'}</span>
+                      </h3>
+                      <p className={styles.slide__text}>{slide.content.text}</p>
+                      <a
+                        className={styles.slide__link}
+                        href={slide.content.buttonLink}
+                      >
+                        {slide.content.buttonText}
+                      </a>
+                    </div>
+                    <div className={styles.slide__image}>
+                      <h3 className={styles['slide__image-title']}>
+                        {slide.mainTitle}
+                      </h3>
+                      <p className={styles['slide__image-text']}>
+                        {slide.subTitle}
+                      </p>
+                      <img
+                        className={styles.slide__img}
+                        src={slide.image}
+                        alt={slide.mainTitle}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <button className={`${styles.navBtn} ${styles.prevBtn}`}>
-          <img src="/img/icons/arrow_left.png" alt="Arrow left" />
-        </button>
-        <button className={`${styles.navBtn} ${styles.nextBtn}`}>
-          <img src="/img/icons/arrow_right.png" alt="Arrow right" />
-        </button>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <button className={`${styles.navBtn} ${styles.prevBtn}`}>
+            <img src="/img/icons/arrow_left.png" alt="Arrow left" />
+          </button>
+          <button className={`${styles.navBtn} ${styles.nextBtn}`}>
+            <img src="/img/icons/arrow_right.png" alt="Arrow right" />
+          </button>
+        </div>
+        <div className={styles.pagination} />
       </div>
-      <div className={styles.pagination} />
     </>
   );
 };
