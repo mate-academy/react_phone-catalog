@@ -6,10 +6,10 @@
   @include page-grid;
   grid-column: 1 / -1;
   position: relative;
-  width: 320px;
-  height: 320px;
+  width: 100%;
+  height: auto;
   margin: 0 auto;
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,6 +179,8 @@
     align-items: center;
     justify-content: flex-end;
     position: absolute;
+    transform: none;
+    margin-top: 16px;
     bottom: 0;
     gap: 8px;
 
@@ -198,6 +200,8 @@
     img {
       width: 240px;
       height: 150px;
+      max-width: 100%;
+      height: auto;
 
       @include on-tablet {
         width: 160px;
@@ -262,11 +266,11 @@
     width: 320px;
     height: 320px;
     padding-bottom: 20px;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    padding: 16px;
 
     @include on-tablet {
       justify-content: flex-start;
