@@ -1,40 +1,7 @@
-/* wrapper do banner com botões laterais */
-.sectionBanner {
-  display: block;
-  align-items: center;
-  justify-content: center;
-  margin: 0 10rem;
-}
-
-.containerBanner {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6; /* espaço entre chevrons e banner */
-}
-
-/* wrapper externo dos dots (na Home) — usado como ponto de entrada para o CSS dos dots */
-.containerDots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1168px;
-  margin-top: 12px;
-}
-
 .sectionBrandNewModels {
-  display: block;
-  align-items: center;
-  justify-content: center;
-  margin: 0 10.7rem;
-}
-
-.containerBrandFlex {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1168px;
-  gap: 16px;
 }
 
 .container {
@@ -47,44 +14,11 @@
   border: 1px solid #e2e6e9;
 }
 
-.containerImgSilver {
+.containerImg {
   width: 208px;
   height: 196px;
   margin: 24px auto 0;
-  background-image: url('../../assets/img/Phone_Silver.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: block;
-}
-
-.containerImgPurple {
-  width: 208px;
-  height: 196px;
-  margin: 24px auto 0;
-  background-image: url('../../assets/img/Phone_Purple.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: block;
-}
-
-.containerImgGold {
-  width: 208px;
-  height: 196px;
-  margin: 24px auto 0;
-  background-image: url('../../assets/img/Phone_Gold.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: block;
-}
-
-.containerImgRed {
-  width: 208px;
-  height: 196px;
-  margin: 24px auto 0;
-  background-image: url('../../assets/img/Phone_Red.png');
+  background-image: url('../../assets/img/bnm1.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

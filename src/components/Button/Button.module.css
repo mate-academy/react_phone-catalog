@@ -1,0 +1,20 @@
+.addButton {
+  width: 160px;
+  height: 40px;
+  font-size: 1rem;
+  border: none;
+  color: #fff;
+  background-color: #313237;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background-color: #2d47ad;
+}
+
+.addFavourites {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-image: url('../../assets/img/favourites.png');
+}
