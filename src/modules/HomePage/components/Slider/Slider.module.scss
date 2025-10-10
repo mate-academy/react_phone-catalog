@@ -185,6 +185,7 @@
     gap: 8px;
 
     @include on-tablet {
+
       justify-content: flex-end;
       bottom: 13%;
       left: 80%;
@@ -192,6 +193,7 @@
     }
 
     @include on-desktop {
+      
       justify-content: flex-end;
       left: 75%;
       transform: translateX(-50%);
