@@ -50,46 +50,48 @@ export const ShoppingCartPage = () => {
               <div className={styles['cart__box-items']}>
                 {cart.map(({ quantity, product }) => (
                   <div className={styles.cart__item} key={product.id}>
-                    <button
-                      className={styles['cart__cancel-btn']}
-                      onClick={e => {
-                        e.preventDefault();
-                        removeFromCart(product.id);
-                      }}
-                    ></button>
-                    <Link to={`/${product.category}/${product.id}`}>
-                      <img
-                        className={styles.cart__img}
-                        src={`${product.image}`}
-                        alt="Product image"
-                      />
-                    </Link>
-                    <Link
-                      className={styles.cart__name}
-                      to={`/${product.category}/${product.id}`}
-                    >
-                      {product.name}
-                    </Link>
-                    <div className={styles['cart__box-btns']}>
+                    <div className={styles['cart__product-info']}>
                       <button
-                        className={`${styles['cart__remove-btn']} ${quantity === 1 ? styles['cart__remove-btn--disabled'] : ''}`}
+                        className={styles['cart__cancel-btn']}
                         onClick={e => {
                           e.preventDefault();
-
-                          dec(product.id);
+                          removeFromCart(product.id);
                         }}
                       ></button>
-                      <span className={styles.cart__number}>{quantity}</span>
-                      <button
-                        className={styles['cart__add-btn']}
-                        onClick={e => {
-                          e.preventDefault();
-
-                          inc(product.id);
-                        }}
-                      ></button>
+                      <Link to={`/${product.category}/${product.id}`}>
+                        <img
+                          className={styles.cart__img}
+                          src={`${product.image}`}
+                          alt="Product image"
+                        />
+                      </Link>
+                      <Link
+                        className={styles.cart__name}
+                        to={`/${product.category}/${product.id}`}
+                      >
+                        {product.name}
+                      </Link>
                     </div>
-                    <p className={styles.cart__price}>${product.price}</p>
+                    <div className={styles['cart__quantity-price']}>
+                      <div className={styles['cart__box-btns']}>
+                        <button
+                          className={`${styles['cart__remove-btn']} ${quantity === 1 ? styles['cart__remove-btn--disabled'] : ''}`}
+                          onClick={e => {
+                            e.preventDefault();
+                            dec(product.id);
+                          }}
+                        ></button>
+                        <span className={styles.cart__number}>{quantity}</span>
+                        <button
+                          className={styles['cart__add-btn']}
+                          onClick={e => {
+                            e.preventDefault();
+                            inc(product.id);
+                          }}
+                        ></button>
+                      </div>
+                      <p className={styles.cart__price}>${product.price}</p>
+                    </div>
                   </div>
                 ))}
               </div>

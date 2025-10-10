@@ -111,7 +111,7 @@ export const Slider = () => {
                   </div>
                   <img
                     className={styles.slide__img}
-                    src="/img/slider/iphone-14.png"
+                    src="/img/slider/slider-img-2.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -133,7 +133,7 @@ export const Slider = () => {
                   </div>
                   <img
                     className={styles['slide-phone__img']}
-                    src="/img/slider/iphone-14-small-screens.png"
+                    src="/img/slider/slider-img-2-small.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -166,7 +166,7 @@ export const Slider = () => {
                   </div>
                   <img
                     className={styles.slide__img}
-                    src="/img/slider/iphone-14.png"
+                    src="/img/slider/slider-img-3.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -188,7 +188,7 @@ export const Slider = () => {
                   </div>
                   <img
                     className={styles['slide-phone__img']}
-                    src="/img/slider/iphone-14-small-screens.png"
+                    src="/img/slider/slider-img-3-small.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>

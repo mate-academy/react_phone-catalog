@@ -7,7 +7,7 @@ import { Product } from '../../types/Product';
 import { CategoryType } from '../../types/Category';
 import { ShowOldPriceContext } from '../../context/OldPrice';
 import { getProducts } from '../../api';
-import { Loader } from '../Loader';
+import { SkeletonLoader } from '../SkeletonLoader';
 
 export const FavouritesPage = () => {
   const { favorites, count } = useFavorites();
@@ -33,7 +33,7 @@ export const FavouritesPage = () => {
         <Breadcrumbs category="favorites" product={null} />
         <h1 className={styles.favourites__title}>Favourites</h1>
         <p className={styles.favourites__items}>{count} items</p>
-        {isLoading && <Loader />}
+        {isLoading && <SkeletonLoader count={count} />}
         {!isLoading && (
           <div className={styles.favourites__content}>
             {favoriteProducts.map(product => (

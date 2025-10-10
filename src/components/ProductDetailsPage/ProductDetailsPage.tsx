@@ -6,7 +6,6 @@ import { getProductById } from '../../api';
 import { ProductDetails } from '../../types/ProductsDetails';
 import { CategoryType } from '../../types/Category';
 import styles from './ProductDetails.module.scss';
-import { Loader } from '../Loader';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css/navigation';
@@ -16,6 +15,7 @@ import 'swiper/css';
 import { ProductSlider } from '../ProductSlider';
 import { useFavorites } from '../../context/Favoutires';
 import { useCart } from '../../context/Cart';
+import { SkeletonDetailsPage } from '../SkeletonDetailsPage';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -83,7 +83,7 @@ export const ProductDetailsPage = () => {
         >
           Back
         </button>
-        {isLoading && <Loader />}
+        {isLoading && <SkeletonDetailsPage />}
         {!isLoading && isError && (
           <div className={styles['product-details__img-box']}>
             <img
@@ -110,18 +110,34 @@ export const ProductDetailsPage = () => {
                 <Swiper
                   slidesPerView={1}
                   modules={[Pagination]}
-                  direction={'vertical'}
-                  pagination={{
-                    clickable: true,
-                    el: '#product-details-slider-pagination',
-                    bulletClass: styles.bullet,
-                    bulletActiveClass: styles.activeBullet,
-                    renderBullet: (index, className) => {
-                      return `
-        <span class="${className}">
-          <img src="/${product.images[index]}" alt="thumb" />
-        </span>
-      `;
+                  breakpoints={{
+                    640: {
+                      direction: 'vertical',
+                      pagination: {
+                        clickable: true,
+                        el: '#product-details-slider-pagination',
+                        bulletClass: styles.bullet,
+                        bulletActiveClass: styles.activeBullet,
+                        renderBullet: (index, className) => `
+          <span class="${className}">
+            <img src="/${product.images[index]}" alt="thumb" />
+          </span>
+        `,
+                      },
+                    },
+                    0: {
+                      direction: 'horizontal',
+                      pagination: {
+                        clickable: true,
+                        el: '#product-details-slider-pagination',
+                        bulletClass: styles.bullet,
+                        bulletActiveClass: styles.activeBullet,
+                        renderBullet: (index, className) => `
+          <span class="${className}">
+            <img src="/${product.images[index]}" alt="thumb" />
+          </span>
+        `,
+                      },
                     },
                   }}
                 >
@@ -143,28 +159,45 @@ export const ProductDetailsPage = () => {
               <div className={styles['product-details__characteristics']}>
                 <div className={styles['product-details__characteristics-box']}>
                   <div
-                    className={styles['product-details__characteristics-title']}
+                    className={
+                      styles['product-details__characteristics-content']
+                    }
                   >
-                    Available colors
-                  </div>
-                  <div
-                    className={styles['product-details__characteristics-color']}
-                  >
-                    {product.colorsAvailable.map((color, index) => {
-                      const newId = `${product.id.split('-').slice(0, -1).join('-')}-${color.toLowerCase()}`;
+                    <div className="product-details__color-box">
+                      <div
+                        className={
+                          styles['product-details__characteristics-title']
+                        }
+                      >
+                        Available colors
+                      </div>
+                      <div
+                        className={
+                          styles['product-details__characteristics-color']
+                        }
+                      >
+                        {product.colorsAvailable.map((color, index) => {
+                          const newId = `${product.id.split('-').slice(0, -1).join('-')}-${color.toLowerCase()}`;
 
-                      return (
-                        <NavLink
-                          key={index}
-                          to={`/${category}/${newId}`}
-                          className={({
-                            isActive,
-                          }) => `${styles['product-details__characteristics-color-link']}
-          ${isActive ? styles['product-details__characteristics-color-link--active'] : ''}`}
-                          style={{ backgroundColor: colorMap[color] || color }}
-                        />
-                      );
-                    })}
+                          return (
+                            <NavLink
+                              key={index}
+                              to={`/${category}/${newId}`}
+                              className={({
+                                isActive,
+                              }) => `${styles['product-details__characteristics-color-link']}
+                                ${isActive ? styles['product-details__characteristics-color-link--active'] : ''}`}
+                              style={{
+                                backgroundColor: colorMap[color] || color,
+                              }}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <p className={styles['product-details__id']}>
+                      ID: {product.id}
+                    </p>
                   </div>
                 </div>
                 <div
@@ -412,22 +445,34 @@ export const ProductDetailsPage = () => {
                       {`${numCapacity} ${strCapacity}`}
                     </div>
                   </div>
-                  <div className={styles['product-details__techspecs-box']}>
-                    <div className={styles['product-details__techspecs-title']}>
-                      Camera
+                  {product.camera && (
+                    <div className={styles['product-details__techspecs-box']}>
+                      <div
+                        className={styles['product-details__techspecs-title']}
+                      >
+                        Camera
+                      </div>
+                      <div
+                        className={styles['product-details__techspecs-text']}
+                      >
+                        {product.camera}
+                      </div>
                     </div>
-                    <div className={styles['product-details__techspecs-text']}>
-                      {product.camera}
+                  )}
+                  {product.zoom && (
+                    <div className={styles['product-details__techspecs-box']}>
+                      <div
+                        className={styles['product-details__techspecs-title']}
+                      >
+                        Zoom
+                      </div>
+                      <div
+                        className={styles['product-details__techspecs-text']}
+                      >
+                        {product.zoom}
+                      </div>
                     </div>
-                  </div>
-                  <div className={styles['product-details__techspecs-box']}>
-                    <div className={styles['product-details__techspecs-title']}>
-                      Zoom
-                    </div>
-                    <div className={styles['product-details__techspecs-text']}>
-                      {product.zoom}
-                    </div>
-                  </div>
+                  )}
                   <div className={styles['product-details__techspecs-box']}>
                     <div className={styles['product-details__techspecs-title']}>
                       Cell
@@ -440,7 +485,11 @@ export const ProductDetailsPage = () => {
               </div>
             </div>
             <div className="product-details__similar-products">
-              <h3 className="title">You may also like</h3>
+              <h3
+                className={`title ${styles['product-details__title-slider']}`}
+              >
+                You may also like
+              </h3>
               <ProductSlider detailProduct={product} />
             </div>
           </div>

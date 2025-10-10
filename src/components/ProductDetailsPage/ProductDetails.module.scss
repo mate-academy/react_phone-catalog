@@ -11,6 +11,7 @@
     font-size: 12px;
     line-height: 100%;
     padding-left: 20px;
+
     @include hover(color, $accent-color);
 
     &::before {
@@ -38,16 +39,36 @@
   &__img {
     max-width: 50%;
     height: 50%;
+
+    @media (max-width: 720px) {
+      max-width: 85%;
+    }
   }
 
   &__content {
     padding: 16px 0 80px;
+
+    @include on-tablet {
+      padding: 16px 0 64px;
+    }
   }
 
   &__box {
     display: flex;
     justify-content: space-between;
     margin-bottom: 80px;
+    margin-top: 40px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-phone {
+      margin-top: 32px;
+      margin-bottom: 56px;
+      flex-direction: column;
+      gap: 40px;
+    }
   }
 
   &__slider-wrapper {
@@ -57,6 +78,18 @@
     gap: 16px;
     width: 545px;
     height: 545px;
+
+    @include on-tablet {
+      width: 287px;
+      height: 287px;
+    }
+
+    @include on-phone {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__slider-img {
@@ -64,17 +97,54 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    padding-right: 10px;
+    padding-right: 64px;
+
+    @include on-tablet {
+      padding-right: 17px;
+    }
+
+    @include on-phone {
+      padding-right: 0;
+      height: auto;
+      max-height: 60vh;
+    }
   }
 
   &__characteristics {
     display: flex;
     flex-direction: column;
     width: 320px;
+
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-phone {
+      width: 100%;
+    }
   }
 
   &__characteristics-box {
     margin-bottom: 24px;
+  }
+
+  &__characteristics-content {
+    @include on-phone {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+    }
+  }
+
+  &__id {
+    display: none;
+
+    @include on-phone {
+      display: block;
+      font-size: 12px;
+      line-height: 100%;
+      color: $hover-btn-color;
+    }
   }
 
   &__characteristics-title {
@@ -121,9 +191,11 @@
 
   &__characteristics-capacity-link {
     @extend %mont-600;
+
     color: $main-color;
     padding: 7px 8px 4px;
     border: 1px solid $hover-btn-color;
+    text-align: center;
 
     @include hover(border-color, $nav-color)
   }
@@ -145,6 +217,7 @@
 
   &__characteristics-new-price {
     @extend %mont-800;
+
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
@@ -152,6 +225,7 @@
 
   &__characteristics-old-price {
     @extend %mont-600;
+
     font-size: 22px;
     line-height: 100%;
     color: $nav-color;
@@ -163,6 +237,10 @@
     display: flex;
     gap: 8px;
     margin-bottom: 32px;
+
+    @include on-phone {
+      justify-content: space-between;
+    }
   }
 
   &__characteristics-link {
@@ -229,19 +307,40 @@
     font-size: 12px;
     line-height: 100%;
     color: $hover-btn-color;
+
+    @include on-phone {
+      display: none;
+    }
   }
 
   &__description {
     display: flex;
     justify-content: space-between;
+    gap: 64px;
     margin-bottom: 80px;
+
+    @include on-tablet {
+      flex-direction: column;
+      margin-bottom: 64px;
+    }
+
+    @include on-phone {
+      margin-bottom: 56px;
+      gap: 56px;
+    }
   }
 
   &__description-title {
     @extend %mont-800;
+
     font-size: 22px;
     line-height: 140%;
     margin-bottom: 16px;
+
+    @include on-phone {
+      font-size: 20px;
+      line-height: 100%;
+    }
   }
 
   &__description-divider {
@@ -252,6 +351,10 @@
 
   &__about {
     width: 560px;
+
+    @include on-tablet {
+      width: 100%;
+    }
   }
 
   &__about-box {
@@ -262,15 +365,24 @@
     font-size: 20px;
     line-height: 100%;
     margin-bottom: 16px;
+
+    @include on-phone {
+      font-size: 16px;
+    }
   }
 
   &__about-text {
     @extend %mont-600;
+
     color: $nav-color;
   }
 
   &__techspecs {
     width: 512px;
+
+    @include on-tablet {
+      width: 100%;
+    }
   }
 
   &__techspecs-content {
@@ -283,15 +395,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
   }
 
   &__techspecs-title {
     @extend %mont-600;
+
     color: $nav-color;
   }
 
   &__techspecs-text {
     @extend %mont-600;
+  }
+
+  &__title-slider {
+    @media (max-width: 340px) {
+      max-width: 136px;
+    }
   }
 }
 
@@ -303,6 +423,20 @@
   gap: 16px;
   max-width: 80px;
   transform: none !important;
+
+  @include on-tablet {
+    max-width: 35px;
+    gap: 8px;
+  }
+
+  @include on-phone {
+    order: 2;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    max-width: 100%;
+    gap: 8px;
+  }
 }
 
 .bullet {
@@ -313,6 +447,12 @@
   padding: 8px;
   transition: border-color 0.3s ease;
   cursor: pointer;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+    padding: 4px;
+  }
 
   & img {
     display: block;

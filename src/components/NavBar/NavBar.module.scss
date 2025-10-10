@@ -5,10 +5,19 @@
   justify-content: space-between;
   align-items: center;
   padding-left: 24px;
-  box-shadow: 0px 1px 0px 0px #323542;
+  height: 64px;
+  box-shadow: 0 1px 0 0 #323542;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: $background-color;
+  z-index: 20;
 
   @include on-tablet {
     padding-left: 16px;
+    height: 48px;
   }
 
   &__nav-links {
@@ -58,22 +67,22 @@
 
     &:hover {
       color: $main-color;
-      padding-bottom: 23px;
+      padding-bottom: 22px;
       border-bottom: 3px solid $main-color;
 
       @include on-tablet {
-        padding-bottom: 16px;
+        padding-bottom: 14px;
       }
     }
   }
 
   &__link--active {
     color: $main-color;
-    padding-bottom: 23px;
+    padding-bottom: 22px;
     border-bottom: 3px solid $main-color;
 
     @include on-tablet {
-      padding-bottom: 16px;
+      padding-bottom: 14px;
     }
   }
 }
@@ -84,7 +93,7 @@
   &__link {
     position: relative;
     padding: 24px;
-    box-shadow: -1px 0px 0px 0px #323542;
+    box-shadow: -1px 0 0 0 #323542;
     transition: all .3s;
     border-bottom: 3px solid transparent;
 
@@ -148,9 +157,10 @@
       width: 16px;
       height: 16px;
       padding: 24px;
-      box-shadow: -1px 0px 0px 0px #323542;
+      box-shadow: -1px 0 0 0 #323542;
       background-color: transparent;
       border: none;
+      cursor: pointer;
     }
 
     &--close {
@@ -161,7 +171,8 @@
         width: 16px;
         height: 16px;
         padding: 24px;
-        box-shadow: -1px 0px 0px 0px #323542;
+        box-shadow: -1px 0 0 0 #323542;
+        cursor: pointer;
       }
     }
   }
@@ -186,11 +197,12 @@
     opacity: 1;
     pointer-events: all;
     transform: translateY(0);
-    z-index: 14;
+    z-index: 25;
   }
 
   &__content {
     flex: 1;
+    padding-top: 48px;
   }
 
   &__list {
@@ -235,8 +247,7 @@
     justify-content: center;
     width: 100%;
     height: 64px;
-    // padding: 24px 72px;
-    box-shadow: -1px 0px 0px 0px #323542;
+    box-shadow: -1px 0 0 0 #323542;
     transition: all .3s;
     border-bottom: 3px solid transparent;
 

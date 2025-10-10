@@ -7,12 +7,12 @@ import styles from './ProductList.module.scss';
 import { getProducts } from '../../api';
 import { Product } from '../../types/Product';
 import { ShowOldPriceContext } from '../../context/OldPrice';
-import { Loader } from '../Loader';
 import { ProductCard } from '../ProductCard';
 import { PaginationItems } from '../Pagination';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../utils/searchHelper';
 import { Category } from '../../types/Category';
+import { SkeletonLoader } from '../SkeletonLoader';
 
 export const ProductList: React.FC<Category> = ({ category, title }) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -91,7 +91,7 @@ export const ProductList: React.FC<Category> = ({ category, title }) => {
             handlePerPageChange={handlePerPageChange}
           />
         </div>
-        {isLoading && <Loader />}
+        {isLoading && <SkeletonLoader count={8} />}
         {!isLoading && isError && <p>{isError}</p>}
         {!isLoading && !isError && products.length === 0 && (
           <p>There are no {category}</p>

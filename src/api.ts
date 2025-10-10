@@ -11,13 +11,13 @@ function wait(delay: number) {
 }
 
 export async function getProducts(): Promise<Product[]> {
-  return wait(100)
+  return wait(500)
     .then(() => fetch(API_URL))
     .then(response => response.json());
 }
 
 export async function getProductById(category: CategoryType) {
-  return wait(300)
+  return wait(500)
     .then(() => fetch(`/api/${category}.json`))
     .then(response => response.json());
 }

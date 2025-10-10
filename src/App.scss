@@ -2,3 +2,11 @@
 @import './styles/utils';
 @import './styles/fonts';
 @import './styles/global';
+
+.main {
+  padding-top: 64px;
+
+  @include on-tablet {
+    padding-top: 48px;
+  }
+}

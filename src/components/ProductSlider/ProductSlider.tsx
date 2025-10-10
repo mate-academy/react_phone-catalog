@@ -5,7 +5,6 @@ import styles from './NewModelSlider.module.scss';
 import Slider from 'react-slick';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Product } from '../../types/Product';
-import { getProducts } from '../../api';
 import { ProductCard } from '../ProductCard';
 
 import 'slick-carousel/slick/slick.css';
@@ -25,10 +24,28 @@ export const ProductSlider: React.FC<Props> = ({ detailProduct }) => {
   const [isReady, setIsReady] = useState(false);
   const sliderRef = useRef<Slider>(null);
 
+  const [initialSlides, setInitialSlides] = useState(4);
+
+  useEffect(() => {
+    const width = window.innerWidth;
+
+    if (width < 639) {
+      setInitialSlides(1);
+    } else if (width < 1100) {
+      setInitialSlides(2);
+    } else {
+      setInitialSlides(4);
+    }
+  }, []);
+
   useEffect(() => {
     let mounted = true;
 
-    getProducts()
+    fetch(
+      // eslint-disable-next-line max-len
+      'https://raw.githubusercontent.com/mate-academy/react_phone-catalog/refs/heads/master/public/api/products.json',
+    )
+      .then(response => response.json())
       // eslint-disable-next-line @typescript-eslint/no-shadow
       .then((products: Product[]) => {
         if (mounted) {
@@ -43,6 +60,7 @@ export const ProductSlider: React.FC<Props> = ({ detailProduct }) => {
       });
 
     const handleResize = () => sliderRef.current?.slickGoTo(0);
+
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -74,11 +92,15 @@ export const ProductSlider: React.FC<Props> = ({ detailProduct }) => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: initialSlides,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
+      {
+        breakpoint: 2000,
+        settings: { slidesToShow: 4, slidesToScroll: 1 },
+      },
       {
         breakpoint: 1100,
         settings: { slidesToShow: 2, slidesToScroll: 1 },
