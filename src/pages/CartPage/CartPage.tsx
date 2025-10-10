@@ -1,6 +1,7 @@
 import { useGlobalContext } from '../../context/GlobalContext';
 import { Link } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton/BackButton';
+import cartIsEmpty from '../../../public/img/cart-is-empty.png';
 import remove from '../../images/icons/remove.svg';
 import minus from '../../images/icons/minus.svg';
 import plus from '../../images/icons/plus.svg';
@@ -26,7 +27,7 @@ export const CartPage: React.FC = () => {
         <div className="cart__empty">
           <p className="cart__empty--string">Your cart is empty...</p>
           <img
-            src="/img/cart-is-empty.png"
+            src={cartIsEmpty}
             alt="Cart is empty"
             className="cart__empty--image"
           />
@@ -76,7 +77,7 @@ export const CartPage: React.FC = () => {
                       <img src={minus} alt="Decrease" />
                     </button>
 
-                    <span className="cart__item--bottom--quantity">
+                    <span className="cart__item-bottom--quantity">
                       {item.quantity}
                     </span>
 

@@ -79,7 +79,7 @@
 
     @include on-tablet {
       flex: 0 0 180px;
-
+      flex-shrink: 0;
       justify-content: flex-end;
     }
 
@@ -98,6 +98,8 @@
     &--quantity {
       font-size: 14px;
       font-weight: 600;
+      width: 32px;
+      text-align: center;
     }
 
     @include on-mobile {
@@ -108,7 +110,9 @@
   &__controls {
     display: flex;
     align-items: center;
-    gap: 12px;
+    width: 96px;
+    justify-content: space-between;
+
   }
 
   &__icon {
@@ -156,6 +160,8 @@
     font-size: 20px;
     white-space: nowrap;
     margin-left: 8px;
+    min-width: 80px;
+    text-align: right;
   }
 
   &__checkout {

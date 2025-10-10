@@ -5,6 +5,7 @@ import favoriteIconActive from '../../images/icons/favorites-active.svg';
 import { Product } from '../../types/Product';
 
 import './ProductCard.scss';
+import { getImagePath } from '../../utils/getImagePath';
 
 type ProductCardProps = {
   product?: Product;
@@ -43,7 +44,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="product-card" onClick={handleCardClick}>
       <img
-        src={product.image}
+        src={getImagePath(product.image)}
         alt={product.name}
         className="product-card__image"
       />

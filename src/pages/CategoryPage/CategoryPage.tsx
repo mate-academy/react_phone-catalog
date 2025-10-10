@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-import { useParams, useLocation } from 'react-router-dom';
-import { useState, useMemo, useEffect } from 'react';
+import { useParams, useLocation, useSearchParams } from 'react-router-dom';
+import { useMemo, useEffect } from 'react';
 import { NavigationWay } from '../../components/NavigationWay/NavigationWay';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { SelectOptions } from '../../components/SelectOptions/SelectOptions';
@@ -14,10 +14,11 @@ export const CategoryPage: React.FC = () => {
   const { category } = useParams();
   const location = useLocation();
   const { allProducts, loading, error } = useGlobalContext();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(16);
-  const [sortBy, setSortBy] = useState('Newest');
+  const currentPage = Number(searchParams.get('page')) || 1;
+  const sortBy = searchParams.get('sort') || 'Newest';
+  const itemsParam = searchParams.get('items') || '16';
 
   const getCategoryFromPath = () => {
     const path = location.pathname;
@@ -65,9 +66,8 @@ export const CategoryPage: React.FC = () => {
     return sortProducts(filtered, sortBy);
   }, [allProducts, currentCategory, sortBy]);
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [currentCategory, sortBy, itemsPerPage]);
+  const itemsPerPage =
+    itemsParam === 'all' ? categoryProducts.length : Number(itemsParam);
 
   const currentProducts = useMemo(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -79,16 +79,23 @@ export const CategoryPage: React.FC = () => {
   }, [categoryProducts, currentPage, itemsPerPage]);
 
   const handleSortChange = (newSort: string) => {
-    setSortBy(newSort);
+    searchParams.set('sort', newSort);
+    searchParams.set('page', '1');
+    setSearchParams(searchParams);
   };
 
-  const handleItemsPerPageChange = (newItemsPerPage: string | number) => {
-    const items =
-      newItemsPerPage === 'all'
-        ? categoryProducts.length
-        : Number(newItemsPerPage);
+  const handleItemsPerPageChange = (newItems: string | number) => {
+    searchParams.set(
+      'items',
+      newItems === categoryProducts.length ? 'all' : String(newItems),
+    );
+    searchParams.set('page', '1');
+    setSearchParams(searchParams);
+  };
 
-    setItemsPerPage(items);
+  const handlePageChange = (page: number) => {
+    searchParams.set('page', String(page));
+    setSearchParams(searchParams);
   };
 
   const getCategoryTitle = (cat: string) => {
@@ -105,12 +112,8 @@ export const CategoryPage: React.FC = () => {
   const modelsCount = `${categoryProducts.length} models`;
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [category, sortBy, itemsPerPage]);
-
-  useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [category]);
+  }, [currentCategory]);
 
   if (loading) {
     return (
@@ -144,9 +147,7 @@ export const CategoryPage: React.FC = () => {
           onSortChange={handleSortChange}
           onItemsPerPageChange={handleItemsPerPageChange}
           initialSort={sortBy}
-          initialItemsPerPage={
-            itemsPerPage === categoryProducts.length ? 'all' : itemsPerPage
-          }
+          initialItemsPerPage={itemsParam === 'all' ? 'all' : itemsPerPage}
         />
 
         <div className="market__products">
@@ -166,7 +167,7 @@ export const CategoryPage: React.FC = () => {
             currentPage={currentPage}
             totalItems={categoryProducts.length}
             itemsPerPage={itemsPerPage}
-            onPageChange={setCurrentPage}
+            onPageChange={handlePageChange}
           />
         )}
       </div>

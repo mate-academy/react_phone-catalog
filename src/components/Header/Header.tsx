@@ -98,10 +98,13 @@ export const Header: React.FC = () => {
             <span className="header__icons--badge">{favorites.length}</span>
           )}
         </Link>
+
         <Link to="/cart" className="header__icons--button">
           <img src={cartIcon} alt="cart" className="header__icons--icon" />
           {cart.length > 0 && (
-            <span className="header__icons--badge">{cart.length}</span>
+            <span className="header__icons--badge">
+              {cart.reduce((sum, item) => sum + item.quantity, 0)}
+            </span>
           )}
         </Link>
       </div>
@@ -178,7 +181,7 @@ export const Header: React.FC = () => {
                 />
                 {cart.length > 0 && (
                   <span className="header__mobile-bottom--badge">
-                    {cart.length}
+                    {cart.reduce((sum, item) => sum + item.quantity, 0)}
                   </span>
                 )}
               </div>

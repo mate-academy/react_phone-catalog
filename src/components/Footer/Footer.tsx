@@ -19,9 +19,29 @@ export const Footer: React.FC = () => {
         </a>
 
         <ul className="footer__nav">
-          <li className="footer__nav--info">Github</li>
-          <li className="footer__nav--info">Contacts</li>
-          <li className="footer__nav--info">Rights</li>
+          <li className="footer__nav--info">
+            <a
+              href="https://github.com/julius0724"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__nav--link"
+            >
+              Github
+            </a>
+          </li>
+          <li className="footer__nav--info">
+            <a
+              href="mailto:yuliizilnyk@gmail.com"
+              className="footer__nav--link"
+            >
+              Contacts
+            </a>
+          </li>
+          <li className="footer__nav--info">
+            <a href="#" className="footer__nav--link">
+              Rights
+            </a>
+          </li>
         </ul>
 
         <div className="footer__back">

@@ -13,6 +13,7 @@ import favoriteIcon from '../../images/icons/favorites.svg';
 import favoriteIconActive from '../../images/icons/favorites-active.svg';
 
 import './ProductPage.scss';
+import { getImagePath } from '../../utils/getImagePath';
 
 export const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -53,7 +54,7 @@ export const ProductPage: React.FC = () => {
 
         setAllProducts(all);
 
-        const urlCategory = window.location.pathname.split('/')[1];
+        const urlCategory = window.location.hash.split('/')[1];
 
         const prod = all.find(p => p.id === productId);
 
@@ -222,7 +223,7 @@ export const ProductPage: React.FC = () => {
             {images.map((img, idx) => (
               <img
                 key={idx}
-                src={`/${img}`}
+                src={getImagePath(img)}
                 className={`product-page__gallery--image ${
                   idx === currentImageIndex ? 'active' : ''
                 }`}
@@ -231,8 +232,9 @@ export const ProductPage: React.FC = () => {
               />
             ))}
           </div>
+
           <img
-            src={`/${currentImg}`}
+            src={getImagePath(currentImg)}
             className="product-page__gallery--current-img"
             alt={current.name}
           />

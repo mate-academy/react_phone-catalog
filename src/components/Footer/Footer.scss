@@ -19,19 +19,23 @@
       gap: 16px;
     }
 
-    font-family: Mont-Bold, sans-serif;
-    font-size: 12px;
-    line-height: 11px;
-    text-transform: uppercase;
-    display: flex;
     gap: 107px;
-    color: #89939a;
+    display: flex;
+
+    &--link {
+      text-decoration: none;
+      font-family: Mont-Bold, sans-serif;
+      font-size: 12px;
+      line-height: 11px;
+      text-transform: uppercase;
+      color: #89939a;
+    }
 
     &--info {
       margin: 42px 0;
 
       @include on-mobile {
-        margin: 0
+        margin: 0;
       }
     }
   }
