@@ -16,6 +16,7 @@
     height: 32px;
     border: none;
     background-color: $btn-color;
+
     @include hover(background-color, $hover-btn-color);
   }
 
@@ -66,6 +67,7 @@
 
   &__link {
     @extend %mont-600;
+
     color: $main-color;
     display: flex;
     align-items: center;

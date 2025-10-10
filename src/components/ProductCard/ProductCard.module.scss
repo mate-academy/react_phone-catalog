@@ -13,7 +13,7 @@
 
   &:hover {
     border: 1px solid $btn-color;
-    box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 1199px) {
@@ -32,6 +32,7 @@
 
   &__title {
     @extend %mont-600;
+
     height: 42px;
     font-size: 14px;
     line-height: 21px;
@@ -45,12 +46,14 @@
 
   &__new-price {
     @extend %mont-800;
+
     font-size: 22px;
     line-height: 140%;
   }
 
   &__old-price {
     @extend %mont-600;
+
     font-size: 20px;
     line-height: 100%;
     color: $nav-color;
@@ -99,6 +102,7 @@
   &__link {
     border: none;
     cursor: pointer;
+
     @extend %btn;
     @include hover(background-color, $hover-main-btn-color);
   }

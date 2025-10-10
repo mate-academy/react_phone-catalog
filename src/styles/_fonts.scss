@@ -4,9 +4,9 @@
   font-style: normal;
   src:
     local('Mont-Regular'),
-    url('../../public/fonts/Mont-Regular.woff2') format('woff2'),
-    url('../../public/fonts/Mont-Regular.woff') format('woff'),
-    url('../../public/fonts/Mont-Regular.otf') format('otf');
+    url('../../fonts/Mont-Regular.woff2') format('woff2'),
+    url('../../fonts/Mont-Regular.woff') format('woff'),
+    url('../../fonts/Mont-Regular.otf') format('otf');
   font-display: swap;
 }
 
@@ -16,9 +16,9 @@
   font-style: normal;
   src:
     local('Mont-SemiBold'),
-    url('../../public/fonts/Mont-SemiBold.woff') format('woff'),
-    url('../../public/fonts/Mont-SemiBold.woff2') format('woff2'),
-    url('../../public/fonts/Mont-SemiBold.otf') format('otf');
+    url('../../fonts/Mont-SemiBold.woff') format('woff'),
+    url('../../fonts/Mont-SemiBold.woff2') format('woff2'),
+    url('../../fonts/Mont-SemiBold.otf') format('otf');
   font-display: swap;
 }
 
@@ -28,8 +28,8 @@
   font-style: normal;
   src:
     local('Mont-Bold'),
-    url('../../public/fonts/Mont-Bold.woff') format('woff'),
-    url('../../public/fonts/Mont-Bold.woff2') format('woff2'),
-    url('../../public/fonts/Mont-Bold.otf') format('otf');
+    url('../../fonts/Mont-Bold.woff') format('woff'),
+    url('../../fonts/Mont-Bold.woff2') format('woff2'),
+    url('../../fonts/Mont-Bold.otf') format('otf');
   font-display: swap;
 }

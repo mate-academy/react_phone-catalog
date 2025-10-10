@@ -16,12 +16,13 @@
 
   &__container {
     @include on-phone {
-      padding-inline: 0px !important;
+      padding-inline: 0 !important;
     }
   }
 
   &__title {
     @extend %mont-800;
+
     font-size: 48px;
     line-height: 56px;
     letter-spacing: -0.01em;

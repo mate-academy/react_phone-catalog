@@ -47,11 +47,12 @@
     margin-top: 4px;
     outline: none;
     border: 1px solid #3B3E4A;
-    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
   }
 
   &__page-items-option {
     @extend %mont-600;
+
     padding: 6px 12px;
     color: $nav-color;
     background-color: $background-color;

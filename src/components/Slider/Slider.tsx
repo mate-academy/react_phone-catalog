@@ -148,7 +148,7 @@ export const Slider = () => {
                     Now available in our store!
                     <img
                       className={styles['slide__title-img']}
-                      src="../../public/img/icons/hand.png"
+                      src="/img/icons/hand.png"
                       alt="ok hand"
                     />
                   </h3>
