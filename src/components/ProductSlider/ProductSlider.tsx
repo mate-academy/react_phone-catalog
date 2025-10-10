@@ -32,11 +32,14 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
           prevEl: `.${styles.prevBtn}`,
           nextEl: `.${styles.nextBtn}`,
         }}
-        spaceBetween={16}
-        slidesPerView={1}
+        centeredSlides={false}
+        // slidesOffsetAfter={8}
+        // slidesOffsetBefore={8}
+        // spaceBetween={16}
+        // slidesPerView={1}
         breakpoints={{
-          576: { slidesPerView: 2, spaceBetween: 16 },
-          992: { slidesPerView: 3, spaceBetween: 16 },
+          0: { slidesPerView: 1.5, spaceBetween: 8 },
+          768: { slidesPerView: 2.5, spaceBetween: 16 },
           1200: { slidesPerView: 4, spaceBetween: 16 },
         }}
       >

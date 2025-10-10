@@ -9,21 +9,24 @@
   width: 100%;
   height: auto;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   @include on-tablet {
     position: relative;
     width: 592px;
-    height: 221px;
+    // height: 221px;
+    height: auto;
   }
 
   @include on-desktop {
     position: relative;
     width: 1440px;
-    height: 432px;
+    // height: 432px;
+    height: auto;
   }
 }
 
@@ -193,7 +196,7 @@
     }
 
     @include on-desktop {
-      
+
       justify-content: flex-end;
       left: 75%;
       transform: translateX(-50%);
@@ -203,7 +206,7 @@
       width: 240px;
       height: 150px;
       max-width: 100%;
-      height: auto;
+      // height: auto;
 
       @include on-tablet {
         width: 160px;
@@ -211,8 +214,8 @@
       }
 
       @include on-desktop {
-        width: 360px;
-        height: 270px;
+        width: 320px;
+        height: 240px;
       }
 
       display: block;
@@ -227,7 +230,7 @@
 
       @include on-tablet {
         position: absolute;
-        font-size: 18px;
+        font-size: 15px;
         top: -70px;
         left: 50%;
         transform: translateX(-50%);
@@ -236,7 +239,7 @@
       @include on-desktop {
         position: absolute;
         font-size: 36px;
-        top: 10px;
+        top: -110px;
         left: 50%;
         transform: translateX(-50%);
       }
@@ -257,7 +260,7 @@
 
       @include on-desktop {
         position: absolute;
-        top: 76px;
+        top: -20px;
         left: 50%;
         transform: translateX(-50%);
       }
@@ -387,7 +390,8 @@
     }
 
     @include on-desktop {
-      margin-top: auto;
+      // margin-top: auto;
+      margin-top: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -416,10 +420,17 @@
 }
 
 .pagination {
+  position: static;
   display: flex;
   justify-content: center;
+  transform: none;
+  margin-top: 10px;
+  justify-content: center;
+  left: 0;
+  right: 0;
   gap: 8px;
   min-height: 24px;
+  z-index: 10;
 }
 
 .bullet {
@@ -433,7 +444,7 @@
     content: '';
     width: 14px;
     height: 4px;
-    border-radius: 2px;
+    // border-radius: 2px;
     background-color: $slider-color-button;
   }
 }

@@ -24,7 +24,7 @@ const slides: SlideItem[] = [
   {
     id: 2,
     image: '/img/category-phones.png',
-    mainTitle: 'iPad 13',
+    mainTitle: 'iPad 13 Max',
     subTitle: 'Pro.Beyond.',
     content: {
       title: 'Check our latest arrivals!',
