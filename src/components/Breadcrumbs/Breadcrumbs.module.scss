@@ -25,7 +25,7 @@
     &:first-child::after {
       position: absolute;
       content: '';
-      background-image: url('/img/icons/arrow-right-disabled.svg');
+      background-image: url('./img/icons/arrow-right-disabled.svg');
       width: 16px;
       height: 16px;
       top: 0;
@@ -62,7 +62,7 @@
     &::before {
       position: absolute;
       content: '';
-      background-image: url('/img/icons/arrow-right-disabled.svg');
+      background-image: url('./img/icons/arrow-right-disabled.svg');
       width: 16px;
       height: 16px;
       bottom: -2px;
