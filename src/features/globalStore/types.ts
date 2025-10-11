@@ -1,9 +1,9 @@
 interface Item {
   id: string;
-  category: string;
 }
 
 interface CartItem extends Item {
+  id: string;
   amount: number;
 }
 

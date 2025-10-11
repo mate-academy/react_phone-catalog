@@ -6,7 +6,7 @@ enum RoutePath {
   Phones = '/phones',
   Tablets = '/tablets',
   Accessories = '/accessories',
-  Favorites = '/favorites',
+  Favorites = '/favourites',
   Cart = '/cart',
 }
 

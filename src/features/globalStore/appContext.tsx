@@ -5,8 +5,9 @@ import {
   useMemo,
   useReducer,
 } from 'react';
-import { appReducer, CartItem, init, initialState, Item } from './appReducer';
+import { appReducer, init, initialState } from './appReducer';
 import { createContextHook } from '@shared/helpers/contextProvider';
+import { CartItem, Item } from './types';
 
 type GlobalDataType = {
   itemsInFav: Item[];

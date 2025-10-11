@@ -1,7 +1,14 @@
-import { Item } from '@shared/types';
 import { useMemo } from 'react';
 import { useGlobalActions, useGlobalData } from '../globalStore/appContext';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Item } from '@features/globalStore/types';
+
+const handler = (e: React.MouseEvent, fn: (item: Item) => void, item: Item) => {
+  e.preventDefault();
+  e.stopPropagation();
+  fn(item);
+  (e.currentTarget as HTMLElement).blur();
+};
 
 export const useProdCard = () => {
   const { itemsInFav, itemsInCart } = useGlobalData();
@@ -30,17 +37,6 @@ export const useProdCard = () => {
     const amount = +!isIn.cart(item.id);
 
     setCart({ ...item, amount });
-  };
-
-  const handler = (
-    e: React.MouseEvent,
-    fn: (item: Item) => void,
-    item: Item,
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
-    fn(item);
-    (e.currentTarget as HTMLElement).blur();
   };
 
   const stateHandlers = {

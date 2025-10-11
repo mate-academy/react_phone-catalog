@@ -2,7 +2,7 @@
 import { AriaNames } from '@shared/types/ButtonProps';
 import styles from '../styles/buttons.module.scss';
 import { HeartIcon } from '@shared/icons';
-import { Item } from '@shared/types';
+import { Item } from '@features/globalStore/types';
 
 type Props = {
   item: Item;

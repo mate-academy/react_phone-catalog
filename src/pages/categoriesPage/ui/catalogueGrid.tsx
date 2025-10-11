@@ -6,7 +6,7 @@ import { createLoaderMap, ErrorElement } from '@ui/index';
 
 type Props = {
   data: CatalogueData | Status;
-  category: Category;
+  category: Category | 'favourites';
 };
 
 export const CatalogueGrid = ({ data, category }: Props) => {
@@ -16,7 +16,7 @@ export const CatalogueGrid = ({ data, category }: Props) => {
     return createLoaderMap(data, styles.message, styles.message)[data];
   }
 
-  if (data.items === null) {
+  if (data.items === null || data.items.length === 0) {
     return (
       <ErrorElement
         message={`There are no ${category} yet`}
@@ -27,9 +27,9 @@ export const CatalogueGrid = ({ data, category }: Props) => {
 
   return (
     <ul className={styles.catalogue}>
-      {data.items.map(el => (
+      {data.items.map((el, index) => (
         <ProductCard
-          key={el.key}
+          key={index}
           product={el}
           isIn={isIn}
           stateHandlers={stateHandlers}

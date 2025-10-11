@@ -1,7 +1,14 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { App } from './app/App';
-import { HomePage, NotFoundPage, CategoriesPage, ProductPage } from './pages';
+import {
+  HomePage,
+  NotFoundPage,
+  CategoriesPage,
+  ProductPage,
+  CartPage,
+} from './pages';
 import { Category } from '@shared/types/APIReturnTypes';
+import { FavouritesPage } from '@pages/favouritesPage/favouritesPage';
 
 export const Root = () => (
   <HashRouter>
@@ -17,6 +24,8 @@ export const Root = () => (
           />
         ))}
         <Route path="/product/:productId" element={<ProductPage />} />
+        <Route path="/favourites" element={<FavouritesPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Route>
     </Routes>
   </HashRouter>

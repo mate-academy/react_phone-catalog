@@ -1,4 +1,4 @@
-import { CartItem, Item } from '@shared/types';
+import { CartItem, Item } from './types';
 
 type State = {
   itemsInFav: Item[];
@@ -58,4 +58,4 @@ function appReducer(state: State, action: Action): State {
   }
 }
 
-export { appReducer, initialState, init, type Item, type CartItem };
+export { appReducer, initialState, init };

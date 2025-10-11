@@ -1,0 +1,21 @@
+@use '@shared/styles' as s;
+
+.layout-container {
+  @include s.page-layout;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  @include s.t-h1;
+
+  color: s.$c-grey-primary;
+}
+
+.cart-list {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 16px;
+}

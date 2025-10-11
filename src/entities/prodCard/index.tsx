@@ -2,7 +2,8 @@ import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles/productCard.module.scss';
 import { CardButtons } from './ui/buttons';
-import { CatalogueProduct, Item, Product } from '@shared/types';
+import { CatalogueProduct, Product } from '@shared/types';
+import { Item } from '@features/globalStore/types';
 
 type Props = {
   product: CatalogueProduct | Product;
@@ -20,7 +21,6 @@ type Props = {
 export const ProductCard = forwardRef<HTMLLIElement, Props>(
   ({ product, isIn, stateHandlers, linkHandler }, ref) => {
     const {
-      category,
       id,
       name,
       priceRegular,
@@ -32,10 +32,7 @@ export const ProductCard = forwardRef<HTMLLIElement, Props>(
     } = product;
     const { fav, cart } = isIn;
     const { toggleCart, toggleFav } = stateHandlers;
-    const item = {
-      id: id,
-      category: category,
-    };
+    const item = { id: id };
 
     return (
       <li ref={ref} className={styles.container}>
