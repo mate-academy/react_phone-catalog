@@ -43,7 +43,7 @@ export const FavoritesAddButton = ({ productId, product }: Props) => {
         ) : (
           <img
             className="icon iconLike"
-            src="./public/img/heart-filled.svg"
+            src="./img/heart-filled.svg"
             alt="favorites img"
           />
         )}
