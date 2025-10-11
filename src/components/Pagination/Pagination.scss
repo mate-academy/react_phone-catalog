@@ -21,6 +21,7 @@
     border: 1px solid #e2e6e9;
     background-color: white;
     transition: all 0.3s;
+    cursor: pointer;
 
     &:disabled {
       cursor: not-allowed;

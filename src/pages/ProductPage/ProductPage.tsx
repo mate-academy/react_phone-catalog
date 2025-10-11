@@ -263,7 +263,11 @@ export const ProductPage: React.FC = () => {
             </div>
 
             <div className="product-page__option">
-              <div className="product-page__option-title">Select capacity</div>
+              <div className="product-page__option-title">
+                {current.category === 'accessories'
+                  ? 'Select display'
+                  : 'Select capacity'}
+              </div>
               <div className="product-page__radio">
                 {capacities.map((cap, i) => (
                   <button

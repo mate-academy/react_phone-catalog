@@ -1,4 +1,3 @@
-// src/utils/getImagePath.ts
 export const getImagePath = (relativePath: string) => {
   if (!relativePath) {
     return '';

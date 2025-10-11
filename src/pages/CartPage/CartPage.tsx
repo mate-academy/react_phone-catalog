@@ -1,5 +1,6 @@
 import { useGlobalContext } from '../../context/GlobalContext';
 import { Link } from 'react-router-dom';
+import { getImagePath } from '../../utils/getImagePath';
 import { BackButton } from '../../components/BackButton/BackButton';
 import cartIsEmpty from '../../../public/img/cart-is-empty.png';
 import remove from '../../images/icons/remove.svg';
@@ -54,7 +55,7 @@ export const CartPage: React.FC = () => {
                     className="cart__link"
                   >
                     <img
-                      src={item.image}
+                      src={getImagePath(item.image)}
                       className="cart__product-image"
                       alt={item.name}
                     />

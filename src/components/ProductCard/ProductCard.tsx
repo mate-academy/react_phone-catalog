@@ -63,7 +63,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="product-card__spec">Screen</div>
           <div className="product-card__spec">
             <div className="product-card__spec">
-              {product.category === 'accessories' ? 'Display' : 'Capacity'}{' '}
+              {product.category === 'accessories' ? 'Display' : 'Capacity'}
             </div>
           </div>
           <div className="product-card__spec">RAM</div>
