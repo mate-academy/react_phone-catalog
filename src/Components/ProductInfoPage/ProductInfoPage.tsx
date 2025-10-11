@@ -150,6 +150,7 @@ export const ProductInfoPage: React.FC = () => {
               {modelPhoto.map((photo, index) => (
                 <div
                   key={index}
+                  onClick={() => setMainPhoto(photo)}
                   className={cn('smallPhoto-box', {
                     'is-active': mainPhoto === photo,
                   })}
