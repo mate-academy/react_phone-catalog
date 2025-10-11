@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/indent */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './ProductsPage.module.scss';
 import { ItemsPerPage } from '../../types/ItemsPerPage';

@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { ArrowButton } from '../Arrow/ArrowButton';

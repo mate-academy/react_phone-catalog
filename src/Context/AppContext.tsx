@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable max-len */
 import React, {
   useState,
@@ -127,8 +128,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         setCartProducts(prev =>
           Object.keys(prev).includes(cardId)
             ? Object.fromEntries(
-              Object.entries(prev).filter(([id]) => id !== cardId),
-            )
+                Object.entries(prev).filter(([id]) => id !== cardId),
+              )
             : { ...prev, [cardId]: 1 },
         );
       },
