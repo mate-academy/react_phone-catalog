@@ -40,7 +40,7 @@ export const ShoppingCartPage = () => {
             <p className={styles['cart__empty-text']}>Your cart is empty</p>
             <img
               className={styles['cart__empty-img']}
-              src="/img/cart-is-empty.png"
+              src="./img/cart-is-empty.png"
               alt="Empty Cart"
             />
           </div>

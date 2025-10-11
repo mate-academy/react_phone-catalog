@@ -5,7 +5,7 @@ export const NotFoundPage = () => {
     <section className={styles['not-found-page']}>
       <img
         className={styles['not-found-page__img']}
-        src="/img/page-not-found.png"
+        src="./img/page-not-found.png"
         alt="Page-Not-Found"
       />
     </section>

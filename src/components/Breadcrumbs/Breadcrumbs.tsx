@@ -33,7 +33,7 @@ export const Breadcrumbs: React.FC<Props> = ({ category, product }) => {
           <Link className={styles.breadcrumbs__link} to="/">
             <img
               className={styles.breadcrumbs__img}
-              src="/img/icons/home.svg"
+              src="./img/icons/home.svg"
               alt="Home icon"
             />
           </Link>

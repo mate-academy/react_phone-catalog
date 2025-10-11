@@ -12,7 +12,7 @@ export const Slider = () => {
     <>
       <div className={styles['slider-wrapper']}>
         <button className={`slide-btn__prev ${styles.myCustomBtn__prev}`}>
-          <img src="/img/icons/arrow-left.svg" alt="Arrow left" />
+          <img src="./img/icons/arrow-left.svg" alt="Arrow left" />
         </button>
         <Swiper
           slidesPerView={1}
@@ -38,7 +38,7 @@ export const Slider = () => {
                     Now available in our store!
                     <img
                       className={styles['slide__title-img']}
-                      src="/img/icons/hand.png"
+                      src="./img/icons/hand.png"
                       alt="ok hand"
                     />
                   </h3>
@@ -56,7 +56,7 @@ export const Slider = () => {
                   </div>
                   <img
                     className={styles.slide__img}
-                    src="/img/slider/iphone-14.png"
+                    src="./img/slider/iphone-14.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -78,7 +78,7 @@ export const Slider = () => {
                   </div>
                   <img
                     className={styles['slide-phone__img']}
-                    src="/img/slider/iphone-14-small-screens.png"
+                    src="./img/slider/iphone-14-small-screens.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -93,7 +93,7 @@ export const Slider = () => {
                     Now available in our store!
                     <img
                       className={styles['slide__title-img']}
-                      src="/img/icons/hand.png"
+                      src="./img/icons/hand.png"
                       alt="ok hand"
                     />
                   </h3>
@@ -111,7 +111,7 @@ export const Slider = () => {
                   </div>
                   <img
                     className={styles.slide__img}
-                    src="/img/slider/slider-img-2.png"
+                    src="./img/slider/slider-img-2.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -133,7 +133,7 @@ export const Slider = () => {
                   </div>
                   <img
                     className={styles['slide-phone__img']}
-                    src="/img/slider/slider-img-2-small.png"
+                    src="./img/slider/slider-img-2-small.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -148,7 +148,7 @@ export const Slider = () => {
                     Now available in our store!
                     <img
                       className={styles['slide__title-img']}
-                      src="/img/icons/hand.png"
+                      src="./img/icons/hand.png"
                       alt="ok hand"
                     />
                   </h3>
@@ -166,7 +166,7 @@ export const Slider = () => {
                   </div>
                   <img
                     className={styles.slide__img}
-                    src="/img/slider/slider-img-3.png"
+                    src="./img/slider/slider-img-3.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -188,7 +188,7 @@ export const Slider = () => {
                   </div>
                   <img
                     className={styles['slide-phone__img']}
-                    src="/img/slider/slider-img-3-small.png"
+                    src="./img/slider/slider-img-3-small.png"
                     alt="iPhone 14 Pro"
                   />
                 </div>
@@ -197,7 +197,7 @@ export const Slider = () => {
           </SwiperSlide>
         </Swiper>
         <button className={`slide-btn__next ${styles.myCustomBtn__next}`}>
-          <img src="/img/icons/arrow-right.svg" alt="Arrow right" />
+          <img src="./img/icons/arrow-right.svg" alt="Arrow right" />
         </button>
       </div>
       <div

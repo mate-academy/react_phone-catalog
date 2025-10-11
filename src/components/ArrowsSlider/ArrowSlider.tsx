@@ -31,8 +31,8 @@ export const NextArrow: React.FC<ArrowProps> = ({
       <img
         src={
           isDisabled
-            ? '/img/icons/arrow-right-disabled.svg'
-            : '/img/icons/arrow-right.svg'
+            ? './img/icons/arrow-right-disabled.svg'
+            : './img/icons/arrow-right.svg'
         }
         alt="Arrow right"
       />
@@ -65,8 +65,8 @@ export const PrevArrow: React.FC<ArrowProps> = ({
       <img
         src={
           isDisabled
-            ? '/img/icons/arrow-left-disabled.svg'
-            : '/img/icons/arrow-left.svg'
+            ? './img/icons/arrow-left-disabled.svg'
+            : './img/icons/arrow-left.svg'
         }
         alt="Arrow left"
       />

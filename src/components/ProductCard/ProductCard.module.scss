@@ -121,7 +121,7 @@
     background-color: $btn-color;
     border: none;
     cursor: pointer;
-    background-image: url('/img/icons/heart.svg');
+    background-image: url('./img/icons/heart.svg');
     background-repeat: no-repeat;
     background-position: center;
 
@@ -131,6 +131,6 @@
   &__link-favourite--selected {
     background-color: transparent;
     border: 1px solid #3B3E4A;
-    background-image: url('/img/icons/heart-selected.svg');
+    background-image: url('./img/icons/heart-selected.svg');
   }
 }

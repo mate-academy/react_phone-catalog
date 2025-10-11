@@ -41,8 +41,8 @@ export const PaginationItems: React.FC<Props> = ({
             className={styles.pagination__img}
             src={
               currentPage === 1
-                ? '/img/icons/arrow-left-disabled.svg'
-                : '/img/icons/arrow-left.svg'
+                ? './img/icons/arrow-left-disabled.svg'
+                : './img/icons/arrow-left.svg'
             }
             alt="Arrow left"
           />
@@ -91,8 +91,8 @@ export const PaginationItems: React.FC<Props> = ({
             className={styles.pagination__img}
             src={
               currentPage === totalPages
-                ? '/img/icons/arrow-right-disabled.svg'
-                : '/img/icons/arrow-right.svg'
+                ? './img/icons/arrow-right-disabled.svg'
+                : './img/icons/arrow-right.svg'
             }
             alt="Arrow right"
           />

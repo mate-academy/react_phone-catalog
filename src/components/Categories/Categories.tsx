@@ -11,7 +11,7 @@ export const Categories = () => {
             <Link className={styles['categories__item-imglink']} to="/phones">
               <img
                 className={styles['categories__item-img']}
-                src="/img/categories/phones.png"
+                src="./img/categories/phones.png"
                 alt="Mobile phones"
               />
             </Link>
@@ -31,7 +31,7 @@ export const Categories = () => {
             <Link className={styles['categories__item-imglink']} to="/tablets">
               <img
                 className={styles['categories__item-img']}
-                src="/img/categories/tablets.png"
+                src="./img/categories/tablets.png"
                 alt="Tablets"
               />
             </Link>
@@ -52,7 +52,7 @@ export const Categories = () => {
             >
               <img
                 className={styles['categories__item-img']}
-                src="/img/categories/accessories.png"
+                src="./img/categories/accessories.png"
                 alt="Accessories"
               />
             </Link>

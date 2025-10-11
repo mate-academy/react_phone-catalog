@@ -35,7 +35,7 @@ export const NavBar = () => {
           <Link className={styles['top-bar__logo-link']} to="/">
             <img
               className={styles['top-bar__logo']}
-              src="/img/icons/logo.svg"
+              src="./img/icons/logo.svg"
               alt="Nice Gadgets logo"
             />
           </Link>
@@ -74,7 +74,7 @@ export const NavBar = () => {
           >
             <img
               className="user-nav__link-img"
-              src="/img/icons/heart.svg"
+              src="./img/icons/heart.svg"
               alt="heart icon"
             ></img>
             {count > 0 && (
@@ -89,7 +89,7 @@ export const NavBar = () => {
           >
             <img
               className="user-nav__link-img"
-              src="/img/icons/shopping-bag.svg"
+              src="./img/icons/shopping-bag.svg"
               alt="bag icon"
             ></img>
             {totalQty > 0 && (
@@ -116,7 +116,7 @@ export const NavBar = () => {
               >
                 <img
                   className={styles['top-bar__logo']}
-                  src="/img/icons/logo.svg"
+                  src="./img/icons/logo.svg"
                   alt="Nice Gadgets logo"
                 />
               </Link>
@@ -180,7 +180,7 @@ export const NavBar = () => {
             <span className={styles['menu__user-nav-box']}>
               <img
                 className={styles['menu__user-nav-link-img']}
-                src="/img/icons/heart.svg"
+                src="./img/icons/heart.svg"
                 alt="heart icon"
               ></img>
               {count > 0 && (
@@ -198,7 +198,7 @@ export const NavBar = () => {
             <span className={styles['menu__user-nav-box']}>
               <img
                 className={styles['menu__user-nav-link-img']}
-                src="/img/icons/shopping-bag.svg"
+                src="./img/icons/shopping-bag.svg"
                 alt="bag icon"
               ></img>
               {totalQty > 0 && (

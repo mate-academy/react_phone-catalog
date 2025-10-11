@@ -21,7 +21,7 @@
     &::before {
       position: absolute;
       content: '';
-      background-image: url('/img/icons/arrow-left.svg');
+      background-image: url('./img/icons/arrow-left.svg');
       width: 16px;
       height: 16px;
       left: 0;
@@ -30,7 +30,7 @@
     }
 
     &:hover::before {
-      background-image: url('/img/icons/arrow-left-hover.svg');
+      background-image: url('./img/icons/arrow-left-hover.svg');
     }
   }
 
@@ -135,14 +135,14 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    background-image: url('/img/icons/cancel.svg');
+    background-image: url('./img/icons/cancel.svg');
     width: 16px;
     height: 16px;
     background-repeat: no-repeat;
     transition: all .3s;
 
     &:hover {
-      background-image: url('/img/icons/cancel-hover.svg');
+      background-image: url('./img/icons/cancel-hover.svg');
     }
   }
 
@@ -173,7 +173,7 @@
     background-color: $btn-color;
     border: none;
     cursor: pointer;
-    background-image: url('/img/icons/remove.svg');
+    background-image: url('./img/icons/remove.svg');
     background-repeat: no-repeat;
     background-position: center;
 
@@ -183,7 +183,7 @@
   &__remove-btn--disabled {
     background-color: transparent;
     border: 1px solid #3B3E4A;
-    background-image: url('/img/icons/remove-disabled.svg');
+    background-image: url('./img/icons/remove-disabled.svg');
     cursor: not-allowed;
     pointer-events: none;
   }
@@ -194,7 +194,7 @@
     background-color: $btn-color;
     border: none;
     cursor: pointer;
-    background-image: url('/img/icons/add.svg');
+    background-image: url('./img/icons/add.svg');
     background-repeat: no-repeat;
     background-position: center;
 

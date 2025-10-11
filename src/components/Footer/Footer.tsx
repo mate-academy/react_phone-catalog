@@ -9,7 +9,7 @@ export const Footer = () => {
           <Link className={styles['footer__logo-link']} to="/">
             <img
               className={styles.footer__logo}
-              src="/img/icons/logo.svg"
+              src="./img/icons/logo.svg"
               alt="Nice Gadgets logo"
             />
           </Link>
@@ -39,7 +39,7 @@ export const Footer = () => {
             <a className={styles['footer__go-back-btn']} href="#body">
               <img
                 className="footer__go-back-img"
-                src="/img/icons/arrow-up.svg"
+                src="./img/icons/arrow-up.svg"
                 alt="Arrow Up"
               />
             </a>

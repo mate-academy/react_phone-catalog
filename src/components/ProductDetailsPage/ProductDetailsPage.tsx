@@ -88,7 +88,7 @@ export const ProductDetailsPage = () => {
           <div className={styles['product-details__img-box']}>
             <img
               className={styles['product-details__img']}
-              src="/img/product-not-found.png"
+              src="./img/product-not-found.png"
               alt="Product not found"
             />
           </div>
@@ -97,7 +97,7 @@ export const ProductDetailsPage = () => {
           <div className={styles['product-details__img-box']}>
             <img
               className={styles['product-details__img']}
-              src="/img/product-not-found.png"
+              src="./img/product-not-found.png"
               alt="Product not found"
             />
           </div>
@@ -120,7 +120,7 @@ export const ProductDetailsPage = () => {
                         bulletActiveClass: styles.activeBullet,
                         renderBullet: (index, className) => `
           <span class="${className}">
-            <img src="/${product.images[index]}" alt="thumb" />
+            <img src="./${product.images[index]}" alt="thumb" />
           </span>
         `,
                       },
@@ -134,7 +134,7 @@ export const ProductDetailsPage = () => {
                         bulletActiveClass: styles.activeBullet,
                         renderBullet: (index, className) => `
           <span class="${className}">
-            <img src="/${product.images[index]}" alt="thumb" />
+            <img src="./${product.images[index]}" alt="thumb" />
           </span>
         `,
                       },
@@ -145,7 +145,7 @@ export const ProductDetailsPage = () => {
                     <SwiperSlide key={index}>
                       <img
                         className={styles['product-details__slider-img']}
-                        src={`/${slide}`}
+                        src={`./${slide}`}
                         alt="Photo of product"
                       />
                     </SwiperSlide>
