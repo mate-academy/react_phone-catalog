@@ -35,11 +35,15 @@ export const FavoritesAddButton = ({ productId, product }: Props) => {
         onClick={() => toggleFavorite(product)}
       >
         {!isFavorite(productId) ? (
-          <img className="icon" src="img/icons/Heart.svg" alt="favorites img" />
+          <img
+            className="icon iconLike"
+            src="/img/iconLike.svg"
+            alt="favorites img"
+          />
         ) : (
           <img
-            className="icon"
-            src="img/icons/PinkHeartLike.svg"
+            className="icon iconLike"
+            src="/public/img/heart-filled.svg"
             alt="favorites img"
           />
         )}

@@ -1,5 +1,5 @@
 import './productInfoPage.scss';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 
@@ -18,6 +18,7 @@ export type ProductInfoUnionType =
 
 export const ProductInfoPage: React.FC = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
   const STORAGE_KEY_SEARCH = 'lastCategorySearch';
 
   const getLastSearch = () => {
@@ -30,10 +31,10 @@ export const ProductInfoPage: React.FC = () => {
 
   const [mainPhoto, setMainPhoto] = useState<string | undefined>(undefined);
 
-  const { category, itemId } = useParams<{
-    category: string;
-    itemId: string;
-  }>();
+  const { itemId } = useParams<{ itemId: string }>();
+  const location = useLocation();
+
+  const category = location.pathname.split('/')[1];
 
   const colorMap: Record<string, string> = {
     rosegold: '#B76E79',
@@ -118,12 +119,10 @@ export const ProductInfoPage: React.FC = () => {
         ]
       : [{ name: 'Cell', value: foundItem.cell.join(', ') }]),
   ];
-  const foundId = foundProduct.id;
-  const modelYear = foundProduct.year;
 
+  const foundId = foundProduct.id;
   const modelName = foundItem.name;
   const modelPhoto = foundItem.images;
-
   const selectedCapacity = foundItem.capacity.toLowerCase();
   const selectedColor = foundItem.color.split(' ').join('-').toLowerCase();
   const modelPrefix = foundItem.namespaceId;
@@ -132,6 +131,12 @@ export const ProductInfoPage: React.FC = () => {
     <>
       <div className="product-info-page">
         <Breadcrumbs />
+        <div
+          className="backButton"
+          onClick={() => navigate(state?.pathname || '/')}
+        >
+          <div className="imgArrow"></div> Back
+        </div>
 
         <h2 className="full-name">{modelName}</h2>
 
@@ -217,7 +222,14 @@ export const ProductInfoPage: React.FC = () => {
                               selectedCapacity === normalizedCapacity,
                           })}
                         >
-                          <p className="main-body-text-14">{capacity}</p>
+                          <p
+                            className={cn('main-body-text-14', {
+                              'main-body-text-active':
+                                selectedCapacity === normalizedCapacity,
+                            })}
+                          >
+                            {capacity}
+                          </p>
                         </Link>
                       );
                     })}
@@ -226,16 +238,12 @@ export const ProductInfoPage: React.FC = () => {
               </div>
 
               <div className="price-container">
-                {modelYear < 2021 ? (
-                  <>
-                    <div className="price">${foundProduct.price}</div>
-                    <div className="price old-price">
-                      ${foundProduct.fullPrice}
-                    </div>
-                  </>
-                ) : (
-                  <div className="price">${foundProduct.fullPrice}</div>
-                )}
+                <>
+                  <div className="price">${foundProduct.price}</div>
+                  <div className="price old-price">
+                    ${foundProduct.fullPrice}
+                  </div>
+                </>
               </div>
 
               <FavoritesAddButton productId={foundId} product={foundProduct} />
@@ -283,9 +291,11 @@ export const ProductInfoPage: React.FC = () => {
             </div>
           </div>
         </div>
+        <SwiperSection
+          title="You may also like"
+          products={discountedProducts}
+        />
       </div>
-
-      <SwiperSection title="You may also like" products={discountedProducts} />
     </>
   );
 };

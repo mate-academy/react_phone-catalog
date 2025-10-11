@@ -16,35 +16,30 @@ $main-bg-color: rgba(255, 255, 255, 1);
     justify-content: center;
     align-items: center;
     width: 100%;
-    border-radius: 8px;
-    border: 1px solid $border-hover-color;
-
-    background: linear-gradient(
-      to top right,
-      rgba(33, 108, 255, 1) 30%,
-      $main-bg-color 75%
-    );
+    background: #905bff;
+    color: #f1f2f9;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    height: 30px;
 
     .button-text {
       font-weight: 700;
       font-size: 14px;
       line-height: 21px;
-      color: black;
+      color: #f1f2f9;
+    }
+
+
+    &:hover {
+      transform: scale(1.05);
     }
   }
 
   .added {
-    border: 1px solid $border-hover-color;
-
-    background: linear-gradient(
-      to top right,
-      $border-hover-color 30%,
-      $main-bg-color 75%
-    );
-
-    .button-text {
-      color: black;
-    }
+    background: #323542;
   }
 
   .favorites-button {
@@ -52,15 +47,17 @@ $main-bg-color: rgba(255, 255, 255, 1);
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    border: 1px solid $border-hover-color;
+    height: 46px;
+    width: 46px;
+    transition: all 0.3s;
 
-    background: linear-gradient(
-      to top right,
-      $border-hover-color 30%,
-      $main-bg-color 75%
-    );
+    &:hover {
+      transform: scale(1.05);
+    }
   }
+}
+
+.iconLike {
+  height: 46px;
+  width: 46px;
 }

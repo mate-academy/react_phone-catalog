@@ -41,14 +41,14 @@
   a {
     color: #75767f;
     text-decoration: none;
-    color: #75767f;
     font-weight: 700;
     letter-spacing: 0%;
     font-size: 12px;
     line-height: 100%;
+    transition: all 0.3s ease;
 
     &:hover {
-      color: #905bff;
+      color: #f1f2f9;
     }
   }
 }
