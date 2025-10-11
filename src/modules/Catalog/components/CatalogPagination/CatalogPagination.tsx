@@ -58,23 +58,14 @@ export const PaginationItems: React.FC<Props> = ({
             }
           }}
         >
-          {/* <img
-            className={styles.pagination__img}
-            src={
-              currentPage === 1
-                ? '/img/icons/left_white_arrow.png'
-                : '/img/icons/left_black_arrow.svg'
-            }
-            alt="Arrow left"
-          /> */}
           <img
             className={styles.arrowBlack}
-            src="/img/icons/left_black_arrow.svg"
+            src="./img/icons/left_black_arrow.svg"
             alt="Arrow left"
           />
           <img
             className={styles.arrowWhite}
-            src="/img/icons/left_white_arrow.png"
+            src="./img/icons/left_white_arrow.png"
             alt="Arrow left"
           />
         </Link>
@@ -115,23 +106,14 @@ export const PaginationItems: React.FC<Props> = ({
             }
           }}
         >
-          {/* <img
-            className={styles.pagination__img}
-            src={
-              currentPage === totalPages
-                ? '/img/icons/right_white_arrow.svg'
-                : '/img/icons/right_black_arrow.svg'
-            }
-            alt="Arrow right"
-          /> */}
           <img
             className={styles.arrowBlack}
-            src="/img/icons/right_black_arrow.svg"
+            src="./img/icons/right_black_arrow.svg"
             alt="Arrow right"
           />
           <img
             className={styles.arrowWhite}
-            src="/img/icons/right_white_arrow.svg"
+            src="./img/icons/right_white_arrow.svg"
             alt="Arrow right"
           />
         </Link>

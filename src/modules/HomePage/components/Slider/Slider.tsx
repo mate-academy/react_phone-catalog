@@ -11,7 +11,7 @@ import { SlideItem } from '../../interfaces/swiperInterface';
 const slides: SlideItem[] = [
   {
     id: 1,
-    image: '/img/slide_1.png',
+    image: './img/slide_1.png',
     mainTitle: 'iPhone 14 Pro',
     subTitle: 'Pro.Beyond.',
     content: {
@@ -23,7 +23,7 @@ const slides: SlideItem[] = [
   },
   {
     id: 2,
-    image: '/img/category-phones.png',
+    image: './img/category-phones.png',
     mainTitle: 'iPad 13 Max',
     subTitle: 'Pro.Beyond.',
     content: {
@@ -35,7 +35,7 @@ const slides: SlideItem[] = [
   },
   {
     id: 3,
-    image: '/img/category-tablets.png',
+    image: './img/category-tablets.png',
     mainTitle: 'iPad 13 Pro',
     subTitle: 'Pro.Beyond.',
     content: {
@@ -105,10 +105,10 @@ export const Slider: React.FC = () => {
             ))}
           </Swiper>
           <button className={`${styles.navBtn} ${styles.prevBtn}`}>
-            <img src="/img/icons/arrow_left.png" alt="Arrow left" />
+            <img src="./img/icons/arrow_left.png" alt="Arrow left" />
           </button>
           <button className={`${styles.navBtn} ${styles.nextBtn}`}>
-            <img src="/img/icons/arrow_right.png" alt="Arrow right" />
+            <img src="./img/icons/arrow_right.png" alt="Arrow right" />
           </button>
         </div>
         <div className={styles.pagination} />

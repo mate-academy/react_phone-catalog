@@ -29,7 +29,7 @@ export const CartPage: React.FC = () => {
       <div className={styles.cart__emptyWrapper}>
         <h2 className={styles.cart__empty}>Your cart is empty</h2>
         <img
-          src="/img/cart-is-empty.png"
+          src="./img/cart-is-empty.png"
           alt="Empty cart"
           className={styles.cart__emptyImage}
         />
@@ -40,7 +40,7 @@ export const CartPage: React.FC = () => {
   return (
     <div className={styles.cart}>
       <div className={styles.back}>
-        <img src="/img/icons/butnBack.png" alt="Arrow left" />
+        <img src="./img/icons/butnBack.png" alt="Arrow left" />
         <button onClick={() => navigate(-1)} className={styles.buttonBack}>
           Back
         </button>

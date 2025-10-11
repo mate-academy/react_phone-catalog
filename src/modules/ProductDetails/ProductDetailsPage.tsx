@@ -10,7 +10,6 @@ import { useProduct } from './hooks/useProduct';
 import { useProductSelection } from './hooks/useProductSelection';
 import { useEffect, useState } from 'react';
 import { PhoneDetails } from './interfaces/PhoneDetailsInterface';
-// import { useCart } from '../Cart/CartContext';
 import { CartButton } from '../Cart/components/CartButton';
 import cartBtn from '../Cart/components/CartButton.module.scss';
 
@@ -20,7 +19,6 @@ export const ProductDetailsPage: React.FC = () => {
     productId: string;
   }>();
   const { favorites, toggleFavorite } = useFavorites();
-  // const { addToCart } = useCart();
 
   const {
     product: loadedProduct,
@@ -68,7 +66,7 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.container}>
         <BreadCrumbs />
         <div className={styles.back}>
-          <img src="/img/icons/butnBack.png" alt="Arrow left" />
+          <img src="./img/icons/butnBack.png" alt="Arrow left" />
           <Link to={`/${category}`} className={styles.buttonBack}>
             Back
           </Link>
@@ -79,7 +77,7 @@ export const ProductDetailsPage: React.FC = () => {
         <div className={styles.container__detailsImg}>
           <img
             className={styles.container__img}
-            src="/img/product-not-found.png"
+            src="./img/product-not-found.png"
             alt="Product not found"
           />
         </div>
@@ -96,7 +94,7 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.container}>
         <BreadCrumbs category={product.category} product={product} />
         <div className={styles.back}>
-          <img src="/img/icons/butnBack.png" alt="Arrow left" />
+          <img src="./img/icons/butnBack.png" alt="Arrow left" />
           <Link to={`/${category}`} className={styles.buttonBack}>
             Back
           </Link>
@@ -198,19 +196,6 @@ export const ProductDetailsPage: React.FC = () => {
                   product={mapDetailsToProduct(product)}
                   className={cartBtn.large}
                 />
-                {/* <a
-                  href="#"
-                  className={styles['info__buttons-cart']}
-                  data-qa="hover"
-                  onClick={() => {
-                    if (product) {
-                      addToCart(mapDetailsToProduct(product));
-                    }
-                  }}
-                >
-                  Add to cart
-                </a> */}
-
                 <a
                   href="#"
                   className={styles['info__buttons-fav']}
@@ -225,8 +210,8 @@ export const ProductDetailsPage: React.FC = () => {
                   <img
                     src={
                       isFavorite
-                        ? '/img/icons/fav-active.png'
-                        : '/img/icons/fav.png'
+                        ? './img/icons/fav-active.png'
+                        : './img/icons/fav.png'
                     }
                     alt="favourite goods"
                   />

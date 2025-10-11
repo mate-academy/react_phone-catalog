@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
         <div className={styles.menu__left}>
           <Link to="/" className={styles.menu__logoImg}>
             <img
-              src="/img/logo/logo.png"
+              src="./img/logo/logo.png"
               alt="Nice gadgets logo"
               className={styles.logo__image}
             />
@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
           <p className={styles.menu__iconsText}>Back to top</p>
           <a href="#" className={styles.menu__iconsTop}>
             <img
-              src="/img/icons/top_button.png"
+              src="./img/icons/top_button.png"
               alt="Top button"
               className={styles.nav__icons}
             />

@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
       <div className={styles.menu__left}>
         <Link to="/" className={styles.menu__logoImg}>
           <img
-            src="/img/logo/logo.png"
+            src="./img/logo/logo.png"
             alt="Nice gadgets logo"
             className={styles.logo__image}
           />
@@ -57,7 +57,7 @@ export const Header: React.FC = () => {
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          <img src="/img/icons/burger-menu.png" alt="Menu" />
+          <img src="./img/icons/burger-menu.png" alt="Menu" />
         </button>
       </div>
 
@@ -71,7 +71,7 @@ export const Header: React.FC = () => {
           }
         >
           <img
-            src="/img/icons/like.png"
+            src="./img/icons/like.png"
             alt="Like icon"
             className={styles.nav__icons}
           />
@@ -88,7 +88,7 @@ export const Header: React.FC = () => {
           }
         >
           <img
-            src="/img/icons/cart.png"
+            src="./img/icons/cart.png"
             alt="Cart icon"
             className={styles.nav__icons}
           />
@@ -110,7 +110,7 @@ export const Header: React.FC = () => {
             onClick={() => setIsOpenMenu(false)}
           >
             <img
-              src="/img/logo/logo.png"
+              src="./img/logo/logo.png"
               alt="Logo"
               className={styles.logo__image}
             />
@@ -120,7 +120,7 @@ export const Header: React.FC = () => {
             onClick={toggleMenu}
             aria-label="Close menu"
           >
-            <img src="/img/icons/close.png" alt="Close menu" />
+            <img src="./img/icons/close.png" alt="Close menu" />
           </button>
         </div>
 
@@ -144,10 +144,10 @@ export const Header: React.FC = () => {
 
         <div className={styles.menu__bottomIcons}>
           <NavLink to={'/favorites'} className={styles.menu__bottomIcon}>
-            <img src="/img/icons/like.png" alt="Favorites" />
+            <img src="./img/icons/like.png" alt="Favorites" />
           </NavLink>
           <NavLink to={'/cart'} className={styles.menu__bottomIcon}>
-            <img src="/img/icons/cart.png" alt="Cart" />
+            <img src="./img/icons/cart.png" alt="Cart" />
           </NavLink>
         </div>
       </div>

@@ -6,7 +6,6 @@ import '@fontsource/montserrat/500.css';
 import '@fontsource/montserrat/700.css';
 import Category from './components/Category/Category';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
-// import { useProduct } from '../ProductDetails/hooks/useProduct';
 import { useEffect, useState } from 'react';
 import { PhoneDetails } from '../ProductDetails/interfaces/PhoneDetailsInterface';
 
@@ -17,7 +16,7 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`/api/phones.json`);
+        const response = await fetch(`./api/phones.json`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch');

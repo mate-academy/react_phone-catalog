@@ -100,7 +100,7 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
                 </a>
 
                 <a href="#" className={styles['card__buttons-fav']}>
-                  <img src="/img/icons/fav.png" alt="favourite goods" />
+                  <img src="./img/icons/fav.png" alt="favourite goods" />
                 </a>
               </div>
             </article>

@@ -4,19 +4,19 @@ import styles from './Category.module.scss';
 const categories: CategoryInterface[] = [
   {
     id: 1,
-    image: 'img/category/mobile.png',
+    image: './img/category/mobile.png',
     title: 'Mobile phones',
     content: '95',
   },
   {
     id: 2,
-    image: 'img/category/tablets.png',
+    image: './img/category/tablets.png',
     title: 'Tablets',
     content: '24',
   },
   {
     id: 3,
-    image: 'img/category/accessories.png',
+    image: './img/category/accessories.png',
     title: 'Accessories',
     content: '100',
   },

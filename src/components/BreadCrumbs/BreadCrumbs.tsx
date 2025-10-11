@@ -29,7 +29,7 @@ export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({
         <li className={styles.breadcrumbs__item}>
           <Link to="/" className={styles.breadcrumbs_link}>
             <img
-              src="/img/icons/Home.png"
+              src="./img/icons/Home.png"
               alt="Home icon"
               className={styles.breadcrumbs_icon}
             />
@@ -39,7 +39,7 @@ export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({
         {showFavorites && (
           <li className={styles.breadcrumbs__item}>
             <img
-              src="/img/icons/right_white_arrow.svg"
+              src="./img/icons/right_white_arrow.svg"
               alt="arrow right"
               className={styles.breadcrumbs_arrow}
             />
@@ -57,7 +57,7 @@ export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({
         {category && (
           <li className={styles.breadcrumbs__item}>
             <img
-              src="/img/icons/right_white_arrow.svg"
+              src="./img/icons/right_white_arrow.svg"
               alt="arrow"
               className={styles.breadcrumbs_arrow}
             />
@@ -70,7 +70,7 @@ export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({
         {product && (
           <li className={styles.breadcrumbs__item}>
             <img
-              src="/img/icons/right_white_arrow.svg"
+              src="./img/icons/right_white_arrow.svg"
               alt="arrow"
               className={styles.breadcrumbs_arrow}
             />

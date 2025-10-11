@@ -1,9 +1,7 @@
-// import { useState } from 'react';
 import { Product } from '../../interfaces/Product';
 import styles from './GoodCard.module.scss';
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../../../Favorites/context/FavoritesContext';
-// import { useCart } from '../../../Cart/CartContext';
 import { CartButton } from '../../../Cart/components/CartButton';
 import cartBtn from '../../../Cart/components/CartButton.module.scss';
 
@@ -13,7 +11,6 @@ interface PhoneCardProps {
 
 export const PhoneCard: React.FC<PhoneCardProps> = ({ product }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
-  // const { addToCart } = useCart();
 
   return (
     <article className={styles.card} data-qa="card">
@@ -53,23 +50,6 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ product }) => {
 
       <div className={styles.card__buttons}>
         <CartButton product={product} className={cartBtn.small} />
-        {/* <a
-          href="#"
-          className={styles['card__buttons-cart']}
-          data-qa="hover"
-          onClick={() =>
-            addToCart({
-              id: product.id,
-              name: product.name,
-              image: product.image,
-              price: product.price.toString(),
-              category: product.category,
-            })
-          }
-        >
-          Add to cart
-        </a> */}
-
         <a
           href="#"
           className={styles['card__buttons-fav']}
@@ -81,8 +61,8 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ product }) => {
           <img
             src={
               isFavorite(product.id)
-                ? '/img/icons/fav-active.png'
-                : '/img/icons/fav.png'
+                ? './img/icons/fav-active.png'
+                : './img/icons/fav.png'
             }
             alt="favourite goods"
           />
