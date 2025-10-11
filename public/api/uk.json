@@ -1,0 +1,105 @@
+{
+  "homePage": {
+    "welcomeMessage": "Ласкаво просимо до магазину Nice Gadgets!",
+    "sliderProduct": {
+      "titles": ["Інтелект і стиль", "За межею Pro", "Твори будь-де"],
+      "buttonContent": ["Замовити зараз", "Переглянути деталі"]
+    },
+    "newModelsTitle": "Нові моделі",
+    "hotPricesTitle": "Гарячі ціни"
+  },
+  "categories": {
+    "title": "Покупки за категорією",
+    "phones": "Мобільні телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари",
+    "models": "моделей"
+  },
+  "productsPage": {
+    "noPhones": "Не знайдено жодного телефону за цим фільтром",
+    "noTablets": "Не знайдено жодного планшета за цим фільтром",
+    "noAccessories": "Не знайдено жодного аксесуара за цим фільтром",
+    "filterPlaceholder": "Пошук",
+    "sortBy": "Сортувати за",
+    "itemsOnPage": "Товарів на сторінці",
+    "newest": "Найновіші",
+    "alphabetically": "За алфавітом",
+    "cheapest": "Дешевші",
+    "all": "Всі",
+    "somethingWentWrong": "Щось пішло не так",
+    "noProducts": "Поки що немає телефонів/планшетів/аксесуарів",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
+  },
+  "cartPage": {
+    "title": "Кошик",
+    "totalFor": "Всього за",
+    "item": "товар",
+    "items_2_4": "товари",
+    "items": "товарів",
+    "checkout": "Оформити замовлення",
+    "cartIsEmpty": "Кошик порожній"
+  },
+  "modal": {
+    "checkoutNotImplemented": "Оформлення замовлення ще не реалізовано. Чи хочете очистити кошик?",
+    "cancel": "Скасувати",
+    "confirm": "Підтвердити"
+  },
+  "favoritesPage": {
+    "title": "Улюблені",
+    "item": "товар",
+    "items": "товарів"
+  },
+  "productDetailsPage": {
+    "availableColors": "Доступні кольори",
+    "selectCapacity": "Виберіть об'єм",
+    "addToCart": "Додати в кошик",
+    "addedToCart": "Додано в кошик",
+    "about": "Про товар",
+    "techSpecs": "Технічні характеристики",
+    "screen": "Екран",
+    "resolution": "Роздільна здатність",
+    "processor": "Процесор",
+    "ram": "Оперативна пам'ять",
+    "builtInMemory": "Вбудована пам'ять",
+    "camera": "Камера",
+    "zoom": "Зум",
+    "cell": "Мережа",
+    "youMayAlsoLike": "Вам також може сподобатись",
+    "productNotFound": "Товар не знайдено"
+  },
+  "card": {
+    "screen": "Екран",
+    "capacity": "Об'єм",
+    "ram": "ОЗП"
+  },
+  "navbar": {
+    "favorites": "Улюблені",
+    "cart": "Кошик",
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
+  },
+  "burgerMenu": {
+    "cross": "Закрити меню",
+    "heart": "Улюблені",
+    "cart": "Кошик"
+  },
+  "breadcrumb": {
+    "home": "Головна"
+  },
+  "back": {
+    "back": "Назад"
+  },
+  "footer": {
+    "github": "Github",
+    "contacts": "Контакти",
+    "rights": "Права",
+    "backToTop": "Нагору"
+  },
+  "notFoundPage": {
+    "pageNotFound": "Сторінку не знайдено"
+  }
+}
