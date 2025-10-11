@@ -21,7 +21,7 @@ export const Logo: React.FC<{ location: 'navbar' | 'footer' }> = ({
           ${styles.img}
           ${location === 'navbar' ? styles.navbarImg : styles.footerImg}
         `}
-        src={`/img/icons/${theme}-theme/Logo.svg`}
+        src={`../../public/img/icons/${theme}-theme/Logo.svg`}
         alt="Logo"
       />
     </NavLink>

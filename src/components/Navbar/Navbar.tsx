@@ -78,7 +78,7 @@ export const Navbar: React.FC = () => {
           >
             <img
               className={styles.img}
-              src={`/img/icons/${theme}-theme/Heart.svg`}
+              src={`../../public/img/icons/${theme}-theme/Heart.svg`}
               alt={t.navbar.favorites}
             />
 
@@ -95,7 +95,7 @@ export const Navbar: React.FC = () => {
           >
             <img
               className={styles.img}
-              src={`/img/icons/${theme}-theme/Cart.svg`}
+              src={`../../public/img/icons/${theme}-theme/Cart.svg`}
               alt={t.navbar.cart}
             />
 
@@ -169,7 +169,7 @@ export const Navbar: React.FC = () => {
         `}
           >
             <img
-              src={`/img/icons/${theme}-theme/burger-menu.svg`}
+              src={`../../public/img/icons/${theme}-theme/burger-menu.svg`}
               alt="Burger menu"
             />
           </button>

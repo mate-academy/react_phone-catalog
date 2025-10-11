@@ -34,7 +34,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
         <button onClick={onClose} className={styles.crossContainer}>
           <img
             className={styles.img}
-            src={`/img/icons/${theme}-theme/Cross.svg`}
+            src={`../../public/img/icons/${theme}-theme/Cross.svg`}
             alt={t.burgerMenu.cross}
           />
         </button>
@@ -104,7 +104,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
           >
             <img
               className={styles.img}
-              src={`/img/icons/${theme}-theme/Heart.svg`}
+              src={`../../public/img/icons/${theme}-theme/Heart.svg`}
               alt={t.burgerMenu.heart}
             />
 
@@ -121,7 +121,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose }) => {
           >
             <img
               className={styles.img}
-              src={`/img/icons/${theme}-theme/Cart.svg`}
+              src={`../../public/img/icons/${theme}-theme/Cart.svg`}
               alt={t.burgerMenu.cart}
             />
 

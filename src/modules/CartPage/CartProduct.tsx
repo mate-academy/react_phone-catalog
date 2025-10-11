@@ -108,7 +108,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
           >
             <img
               className={styles.img}
-              src={`/img/icons/${theme}-theme/Minus${counterValue === 1 ? '-disabled' : ''}.svg`}
+              src={`../../public/img/icons/${theme}-theme/Minus${counterValue === 1 ? '-disabled' : ''}.svg`}
               alt="Minus"
             />
           </button>
@@ -121,7 +121,7 @@ export const CartProduct: React.FC<CartProductProps> = ({
           >
             <img
               className={styles.img}
-              src={`/img/icons/${theme}-theme/Plus.svg`}
+              src={`../../public/img/icons/${theme}-theme/Plus.svg`}
               alt="Plus"
             />
           </button>

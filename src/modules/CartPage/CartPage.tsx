@@ -122,7 +122,7 @@ export const CartPage: React.FC = () => {
     <main className={styles.main}>
       <img
         className={styles.emptyCart}
-        src="/img/cart-is-empty.png"
+        src="../../public/img/cart-is-empty.png"
         alt={t.cartPage.cartIsEmpty}
       />
     </main>
