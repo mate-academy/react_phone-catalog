@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
+
 import './footer.scss';
 
 export const Footer = () => {
@@ -32,7 +33,8 @@ export const Footer = () => {
         <button
           className="footer__backtotop__button"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        ></button>
+        >
+        </button>
       </div>
     </footer>
   );

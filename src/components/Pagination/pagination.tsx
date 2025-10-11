@@ -1,18 +1,32 @@
 import { useState } from 'react';
 import './pagination.scss';
 import { Phone } from '../../Types/type';
-import phones from '../../../public/api/phones.json';
+import phones from '../../../public/api/phones.json'
+import tablets from '../../../public/api/tablets.json'
+import accessories from '../../../public/api/accessories.json';
+import { useLocation } from 'react-router-dom';
 
 interface CatalogProps {
-  phonesOnPage: Phone[];
-  setPhonesOnPage: (x: Phone[]) => void;
+  itemsOnPage: Phone[];
+  setItemsOnPage: (x: Phone[]) => void;
 }
 
-export const Pagination = ({ setPhonesOnPage }: CatalogProps) => {
+export const Pagination = ({ setItemsOnPage }: CatalogProps) => {
   const [currentPage, setcurrentPage] = useState(1);
 
+  const location = useLocation();
+  let data: Phone[] = [];
+
+  if (location.pathname === '/phones') {
+    data = phones;
+  } else if (location.pathname === '/tablets') {
+    data = tablets;
+  } else if (location.pathname === '/accessories') {
+    data = accessories
+  }
+
   const sortNumber = 16;
-  const totalPages = Math.ceil(phones.length / sortNumber);
+  const totalPages = Math.ceil(data.length / sortNumber);
 
   const paginationNumbers = [];
 
@@ -24,7 +38,7 @@ export const Pagination = ({ setPhonesOnPage }: CatalogProps) => {
     const start = (page - 1) * sortNumber;
     const end = start + sortNumber;
 
-    setPhonesOnPage(phones.slice(start, end));
+    setItemsOnPage(data.slice(start, end));
     setcurrentPage(page);
 
     window.scrollTo({

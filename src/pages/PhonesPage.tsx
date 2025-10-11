@@ -4,23 +4,23 @@ import { Catalog } from '../components/Catalog/catalog';
 import { Pagination } from '../components/Pagination/pagination';
 import { PhonesTitle } from '../components/PhonesTitle/phones-title';
 import { Sort } from '../components/Sort/sort';
-import phones from '../../public/api/phones.json';
-import { Phone } from '../Types/type';
+import useCatalogData from '../../src/components/Hook/UseCatalogData'
+
+interface PhonesPageProps {
+}
 
 export const PhonesPage = () => {
-  const [phonesOnPage, setPhonesOnPage] = useState<Phone[]>(
-    phones.slice(0, 16),
-  );
+  const { itemsOnPage, setItemsOnPage } = useCatalogData();
 
   return (
     <>
       <Breadcrumbs />
       <PhonesTitle />
       <Sort />
-      <Catalog phonesOnPage={phonesOnPage} />
+      <Catalog itemsOnPage={itemsOnPage} />
       <Pagination
-        phonesOnPage={phonesOnPage}
-        setPhonesOnPage={setPhonesOnPage}
+        itemsOnPage={itemsOnPage}
+        setItemsOnPage={setItemsOnPage}
       />
     </>
   );

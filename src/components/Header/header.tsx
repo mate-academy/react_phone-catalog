@@ -1,7 +1,12 @@
 import './header.scss';
 import { NavLink } from 'react-router-dom';
 
+interface HeaderProps {
+  setBreadcrumbs: (x: string) => void
+}
+
 export const Header = () => {
+
   return (
     <header className="header">
       <NavLink to="/" className="header__logo">
