@@ -1,57 +1,55 @@
 import './header.scss';
-import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
 export const Header = () => {
-  const [activeLink, setActiveLink] = useState('home');
-
-  const handleLinkClick = (linkName: string, event: React.MouseEvent) => {
-    event.preventDefault();
-    setActiveLink(linkName);
-  };
-
   return (
     <header className="header">
-      <a href="#" className="header__logo">
+      <NavLink to="/" className="header__logo">
         <img
           src="../../../public/img/logo/Logo.svg"
           alt="logo"
           className="header__logo__image"
         />
-      </a>
+      </NavLink>
+
       <nav className="header__nav">
-        <a
-          className={`header__nav__link ${activeLink === 'home' ? 'is-active' : ''}`}
-          href="#"
-          onClick={e => handleLinkClick('home', e)}
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `header__nav__link ${isActive ? 'is-active' : ''}`
+          }
         >
           home
-        </a>
-        <a
-          className={`header__nav__link ${activeLink === 'phones' ? 'is-active' : ''}`}
-          href="#"
-          onClick={e => handleLinkClick('phones', e)}
+        </NavLink>
+        <NavLink
+          to="/phones"
+          className={({ isActive }) =>
+            `header__nav__link ${isActive ? 'is-active' : ''}`
+          }
         >
           phones
-        </a>
-        <a
-          className={`header__nav__link ${activeLink === 'tablets' ? 'is-active' : ''}`}
-          href="#"
-          onClick={e => handleLinkClick('tablets', e)}
+        </NavLink>
+        <NavLink
+          to="/tablets"
+          className={({ isActive }) =>
+            `header__nav__link ${isActive ? 'is-active' : ''}`
+          }
         >
           tablets
-        </a>
-        <a
-          className={`header__nav__link ${activeLink === 'accessories' ? 'is-active' : ''}`}
-          href="#"
-          onClick={e => handleLinkClick('accessories', e)}
+        </NavLink>
+        <NavLink
+          to="/accessories"
+          className={({ isActive }) =>
+            `header__nav__link ${isActive ? 'is-active' : ''}`
+          }
         >
           accessories
-        </a>
+        </NavLink>
       </nav>
 
       <div className="header__icons">
-        <a href="#" className="header__icons--favourites"></a>
-
-        <a href="#" className="header__icons--bag"></a>
+        <NavLink to="/favourites" className="header__icons--favourites" />
+        <NavLink to="/cart" className="header__icons--bag" />
       </div>
     </header>
   );

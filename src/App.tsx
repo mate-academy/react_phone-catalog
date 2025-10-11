@@ -1,16 +1,23 @@
 import './App.scss';
 import { Header } from './components/Header/header';
-import { Title } from './components/Title/title';
-import { Banner } from './components/Banner/banner';
-import { NewModels } from './components/NewModels/new-models';
+import { HomePage } from './pages/HomePages';
+import { Footer } from './components/footer/footer';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { PhonesPage } from './pages/PhonesPage';
 
 export const App = () => (
-  <div className="App">
-    <Header />
-    <div className='container'>
-      <Title />
-      <Banner />
-      <NewModels />
+  <Router>
+    <div className="App">
+      <Header />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/phones" element={<PhonesPage />} />
+          {/* <Route path="/tablets" element={<TabletsPage />} /> */}
+          {/* <Route path="/accessories" element={<AccessoriesPage />} /> */}
+        </Routes>
+        <Footer />
+      </div>
     </div>
-  </div>
+  </Router>
 );

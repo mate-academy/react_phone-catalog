@@ -1,0 +1,16 @@
+{
+  "slides": [
+    {
+      "src": "/img/banner/banner.png",
+      "alt": "banner image"
+    },
+    {
+      "src": "/img/banner-tablets.png",
+      "alt": "banner image tablets"
+    },
+    {
+      "src": "/img/banner-accessories.png",
+      "alt": "banner image accessories"
+    }
+  ]
+}

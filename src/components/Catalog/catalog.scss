@@ -1,81 +1,18 @@
 @import '../../Scss-variables/Variables';
 
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(4, (272px + 64px));
+  gap: 40px 16px;
+  justify-items: center;
 
-.newmodels {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
-    margin-bottom: 80px;
-
-
-    &__topbar {
-        flex-basis: 100%;
-				display: flex;
-        width: 100%;
-				justify-content: space-between;
-
-
-        &__title {
-            color: $active-link-color;
-            font-family: $mont-bold-font;
-            font-size: 32px;
-            line-height: 41px;
-            letter-spacing: -1%;
-
-        }
-
-        &__buttons {
-            display: flex;
-
-            &__left,
-            &__right {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 31px;
-                height: 31px;
-                border: 1px solid #3B3E4A;
-                color: $active-link-color;
-            }
-            &__right {
-                margin-left: 16px;
-            }
-
-        }
-    }
-
-
-    &__products {
-        margin-top: 24px;
-        display: flex;
-        flex-basis: 100%;
-        overflow: hidden;
-        width: 100%;
-        max-width: (((272px + 64px) * 4) + (16px * 3));
-
-				&::-webkit-scrollbar {
-        display: none; 
-    }
-
-			&__slider {
-						transition: transform 0.5s ease;
-						display: flex;
-						gap: 16px;
-					}
-			}
-			
-			&__product {
-				display: block;
+  	&__product {
+		display: block;
+        align-self: center;
         width: 272px;
         height: 508px;
+        padding: 32px;
         background-color: #161827;
-        transition: 0.15s;
-        &:hover {
-          scale: 1.01;
-          overflow: hidden;
-        }
         
         &__image {
             position: relative;
@@ -98,7 +35,6 @@
             margin-bottom: 10px;
 			height: 58px;
             padding: 0 32px;
-
         }
 
         &__price {
@@ -110,7 +46,7 @@
             line-height: 140%;
             margin-bottom: 8px;
             padding: 0 32px;
-
+            
         }
 
 				&--line {
@@ -119,8 +55,7 @@
 					height: 0;
 					margin-bottom: 16px;
                     margin-left: 32px;
-          
-        }
+				}
 
         &__description {
             background-color: #161827;
@@ -138,6 +73,7 @@
                 background-color: #161827;
                 font-weight: 700;
                 font-size: 12px;
+
             }
 
             &__screen--number,
@@ -172,8 +108,7 @@
                 background-color: #905BFF;
                 border: none;
                 margin-right: 8px;
-                transition: 0.15s;
-
+                    
                 &:hover {
                     background-color: #A378FF;
                 }
@@ -198,9 +133,6 @@
                 }
             }
         }
-
-
-
 
     }
 }

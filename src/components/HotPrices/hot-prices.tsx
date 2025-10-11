@@ -1,16 +1,13 @@
-import { useState } from 'react';
-import product from '../../../public/api/products.json';
-import type { Product } from '../../Types/type';
-import './new-models.scss';
+import React, { useEffect, useState } from 'react';
+import phones from '../../../public/api/phones.json';
+import type { Phone } from '../../Types/type';
+import './hot-prices.scss';
 
-export const NewModels = () => {
+export const HotPrices = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const newProducts: Product[] = product.filter(
-    (product: Product) => product.year === 2022,
-  );
 
   const itemsPerPage = 4;
-  const maxIndex = Math.max(0, newProducts.length - itemsPerPage);
+  const maxIndex = Math.max(0, phones.length - itemsPerPage);
 
   const handlePrev = () => {
     setCurrentIndex(prev => Math.max(0, prev - 1));
@@ -23,7 +20,7 @@ export const NewModels = () => {
   return (
     <div className="newmodels">
       <div className="newmodels__topbar">
-        <h2 className="newmodels__topbar__title">Brand new models</h2>
+        <h2 className="newmodels__topbar__title">Hot prices</h2>
         <div className="newmodels__topbar__buttons">
           <button
             className="newmodels__topbar__buttons__left"
@@ -49,15 +46,22 @@ export const NewModels = () => {
             transform: `translateX(-${currentIndex * (272 + 64 + 16)}px)`,
           }}
         >
-          {newProducts.map((product: Product) => (
-            <article className="newmodels__product" key={product.id}>
+          {phones.map((phone: Phone) => (
+            <article className="newmodels__product" key={phone.id}>
               <img
                 className="newmodels__product__image"
-                src={product.image}
-                alt={product.itemId}
+                src={phone.images[0]}
+                alt={phone.id}
               />
-              <p className="newmodels__product__name">{product.name}</p>
-              <h4 className="newmodels__product__price">${product.price}</h4>
+              <p className="newmodels__product__name">{phone.name}</p>
+              <div className="newmodels__product__prices">
+                <h4 className="newmodels__product__prices__price">
+                  ${phone.priceDiscount}
+                </h4>
+                <h4 className="newmodels__product__prices__discount">
+                  ${phone.priceRegular}
+                </h4>
+              </div>
               <hr className="newmodels__product--line" />
 
               <div className="newmodels__product__description">
@@ -65,7 +69,7 @@ export const NewModels = () => {
                   Screen
                 </p>
                 <p className="newmodels__product__description__screen--number">
-                  {product.screen}
+                  {phone.screen}
                 </p>
               </div>
               <div className="newmodels__product__description">
@@ -73,13 +77,13 @@ export const NewModels = () => {
                   Capacity
                 </p>
                 <p className="newmodels__product__description__capacity--number">
-                  {product.capacity}
+                  {phone.capacity}
                 </p>
               </div>
               <div className="newmodels__product__description">
                 <p className="newmodels__product__description__ram">RAM</p>
                 <p className="newmodels__product__description__ram--number">
-                  {product.ram}
+                  {phone.ram}
                 </p>
               </div>
 

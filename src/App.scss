@@ -1,4 +1,4 @@
-@import './Scss-variables/Variables.scss';
+@import './Scss-variables/Variables';
 
 * {
     margin: 0;
@@ -7,6 +7,22 @@
 
 
 .container {
-    width: 1430px;
+    max-width: 1430px;
     margin: 0 auto;
+    padding: 0 152px;
+
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 16px; 
+  }
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
 }

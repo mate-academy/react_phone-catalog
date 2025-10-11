@@ -1,20 +1,18 @@
 @import '../../Scss-variables/Variables';
 
-
 .newmodels {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    width: 1136px;
     flex-wrap: wrap;
     margin-bottom: 80px;
 
-
     &__topbar {
         flex-basis: 100%;
-				display: flex;
+		display: flex;
         width: 100%;
-				justify-content: space-between;
+		justify-content: space-between;
 
 
         &__title {
@@ -34,11 +32,13 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 31px;
-                height: 31px;
+                width: 32px;
+                height: 32px;
+                box-sizing: border-box;
                 border: 1px solid #3B3E4A;
                 color: $active-link-color;
             }
+
             &__right {
                 margin-left: 16px;
             }
@@ -68,14 +68,10 @@
 			
 			&__product {
 				display: block;
-        width: 272px;
-        height: 508px;
-        background-color: #161827;
-        transition: 0.15s;
-        &:hover {
-          scale: 1.01;
-          overflow: hidden;
-        }
+                width: 272px;
+                height: 508px;
+                padding: 32px;
+                background-color: #161827;
         
         &__image {
             position: relative;
@@ -101,17 +97,36 @@
 
         }
 
-        &__price {
-            font-family: $mont-bold-font;
-            color: $active-link-color;
+        &__prices {
+            display: flex;
             background-color: #161827;
-            font-weight: 800;
-            font-size: 22px;
-            line-height: 140%;
-            margin-bottom: 8px;
             padding: 0 32px;
 
+          
+
+          &__price {
+              font-family: $mont-bold-font;
+              color: $active-link-color;
+              background-color: #161827;
+              font-weight: 800;
+              font-size: 22px;
+              line-height: 140%;
+              margin-bottom: 8px;
+              margin-right: 8px;
+          }
+  
+          &__discount {
+              font-family: $mont-bold-font;
+              color: #75767F;
+              background-color: #161827;
+              font-weight: 800;
+              font-size: 22px;
+              line-height: 140%;
+              margin-bottom: 8px;
+              text-decoration: line-through;
+            }
         }
+
 
 				&--line {
 					border: 1px solid #3B3E4A;
@@ -119,8 +134,7 @@
 					height: 0;
 					margin-bottom: 16px;
                     margin-left: 32px;
-          
-        }
+				}
 
         &__description {
             background-color: #161827;
@@ -138,6 +152,7 @@
                 background-color: #161827;
                 font-weight: 700;
                 font-size: 12px;
+
             }
 
             &__screen--number,
@@ -163,7 +178,7 @@
             justify-content: center;
             align-items: center;
             background-color: #161827;
-
+            
 
             &__button__add {
                 color: $active-link-color;
@@ -172,8 +187,7 @@
                 background-color: #905BFF;
                 border: none;
                 margin-right: 8px;
-                transition: 0.15s;
-
+                
                 &:hover {
                     background-color: #A378FF;
                 }
@@ -198,9 +212,5 @@
                 }
             }
         }
-
-
-
-
     }
 }
