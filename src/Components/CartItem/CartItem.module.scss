@@ -46,7 +46,6 @@ $desktop-min-width: 1200px;
   width: 80px;
   height: 80px;
   object-fit: contain;
-  margin-right: 12px;
 }
 
 .info {
@@ -70,6 +69,7 @@ $desktop-min-width: 1200px;
 }
 
 .controls {
+  min-width: 200px;
   justify-content: space-between;
   width: 100%;
   display: flex;
@@ -130,6 +130,7 @@ $desktop-min-width: 1200px;
 }
 
 .removeBtn {
+  cursor: pointer;
   margin-right: 24px;
   background: none;
   border: none;

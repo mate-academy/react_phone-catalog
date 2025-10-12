@@ -12,13 +12,30 @@ export const PhonesPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const productsPerPage = searchParams.get('perPage') || '16';
   const sort = searchParams.get('sort') || 'age';
+  const currentPage = Number(searchParams.get('page')) || 1;
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  const setCurrentPage = (page: number) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('page', String(page));
+    setSearchParams(newParams);
+  };
 
   useEffect(() => {
-    setCurrentPage(1);
+    if (isFirstRender) {
+      setIsFirstRender(false);
+
+      return;
+    }
+
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('page', '1');
+    setSearchParams(newParams);
   }, [productsPerPage, sort]);
 
   const fetchProducts = async () => {

@@ -1,10 +1,8 @@
 import React from 'react';
 import styles from './Footer.module.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
-  const navigate = useNavigate();
-
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -14,13 +12,31 @@ export const Footer: React.FC = () => {
 
         <ul className={styles.links}>
           <li>
-            <a href="https://github.com/BogdanS1nb">GITHUB</a>
+            <a
+              href="https://github.com/BogdanS1nb"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GITHUB
+            </a>
           </li>
           <li>
-            <a href="https://github.com/BogdanS1nb">CONTACTS</a>
+            <a
+              href="https://github.com/BogdanS1nb"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CONTACTS
+            </a>
           </li>
           <li>
-            <a href="https://github.com/BogdanS1nb">RIGHTS</a>
+            <a
+              href="https://github.com/BogdanS1nb"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              RIGHTS
+            </a>
           </li>
         </ul>
 
