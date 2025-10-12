@@ -1,0 +1,134 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+.card {
+  background: #161827;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s;
+  width: 272px;
+  height: 506px;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.image {
+  cursor: pointer;
+  width: 208px;
+  height: 196px;
+  margin-bottom: 8px;
+  object-fit: contain;
+}
+
+.title {
+  cursor: pointer;
+  line-height: 21px;
+  font-size: 14px;
+  letter-spacing: 0%;
+  font-weight: 600;
+  color: #f1f2f9;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.prices {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  .price {
+    color: #f1f2f9;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+  }
+
+  .fullPrice {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #75767f;
+    text-decoration: line-through;
+  }
+}
+
+.details {
+  color: #aaa;
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #3b3e4a;
+  padding-top: 12px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #f1f2f9;
+    margin-bottom: 8px;
+  }
+}
+
+strong {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #75767f;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+
+  .addToCart {
+    flex: 1;
+    background: #905bff;
+    color: #f1f2f9;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .addToCartActive {
+    background: #323542;
+  }
+
+  .fav {
+    background-size: cover;
+    background-position: center;
+    background-image: url(/img/iconLike.svg);
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .favActive {
+    background-image: url(/public/img/heart-filled.svg);
+  }
+}

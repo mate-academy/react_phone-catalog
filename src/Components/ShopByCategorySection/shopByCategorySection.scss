@@ -1,0 +1,122 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+.category-block {
+  padding: 0 16px;
+  margin-bottom: 56px;
+
+  @media (min-width: $tablet-min-width) {
+    margin-bottom: 64px;
+    padding: 0 24px 0 0;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    margin-bottom: 80px;
+    padding: 0;
+  }
+
+  .section-link-block {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $tablet-min-width) {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    .link-container {
+      flex: 1;
+
+      .category-link {
+        display: flex;
+        aspect-ratio: 1 / 1;
+        margin: 24px 0;
+        overflow: hidden;
+        position: relative;
+        border-radius: 8px;
+        transition: all 0.3s linear;
+
+        .category-link-img {
+          transition: all 0.3s linear;
+          position: absolute;
+          width: 100%;
+          top: 18%;
+          left: 18%;
+          object-fit: cover;
+          filter: drop-shadow(-6px -6px 10px rgba(0, 0, 0, 0.4));
+
+          &.accessories {
+            width: 170%;
+            object-fit: contain;
+            bottom: 0;
+            object-position: 60px 120%;
+            position: static;
+          }
+
+          &.phone {
+            top: 24%;
+            left: 24%;
+          }
+        }
+
+        &:hover .category-link-img {
+          top: 12%;
+          left: 12%;
+
+          &.accessories {
+            object-position: 30px 100%;
+          }
+
+          &.phone {
+            top: 18%;
+            left: 18%;
+          }
+        }
+      }
+
+      .category-properties {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .bg-phone {
+        background-color: rgba(109, 100, 116, 1);
+      }
+      .bg-tablets {
+        background-color: rgba(141, 141, 146, 1);
+      }
+      .bg-accessories {
+        background-color: #97334A;
+      }
+    }
+  }
+}
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  padding: 0;
+  margin: 0;
+  color: #F1F2F9;
+}
+
+.category-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  padding: 0;
+  margin: 0;
+  color: #F1F2F9;
+}
+
+.main-body-text-14 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 0;
+  margin: 0;
+  color: #75767F;
+}

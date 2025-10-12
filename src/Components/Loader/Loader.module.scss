@@ -1,0 +1,36 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  height: calc(100vh - 257px - 49px);
+
+  @media (min-width: $tablet-min-width) {
+    height: calc(100vh - 96px - 49px);
+  }
+
+  @media (min-width: $desktop-min-width) {
+    height: calc(100vh - 96px - 65px);
+  }
+}
+
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
