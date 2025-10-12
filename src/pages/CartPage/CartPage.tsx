@@ -6,18 +6,29 @@ import cartIsEmpty from '../../../public/img/cart-is-empty.png';
 import remove from '../../images/icons/remove.svg';
 import minus from '../../images/icons/minus.svg';
 import plus from '../../images/icons/plus.svg';
-
 import './CartPage.scss';
+import { useState } from 'react';
 
 export const CartPage: React.FC = () => {
-  const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
+  const { cart, removeFromCart, increaseQuantity, decreaseQuantity, setCart } =
     useGlobalContext();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
   const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const handleCheckout = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setCart([]);
+  };
 
   return (
     <div className="cart container">
@@ -103,7 +114,23 @@ export const CartPage: React.FC = () => {
             <div className="cart__total-amount">
               Total for {totalCount} items
             </div>
-            <button className="cart__checkout-button">Checkout</button>
+            <button className="cart__checkout-button" onClick={handleCheckout}>
+              Checkout
+            </button>
+          </div>
+        </div>
+      )}
+
+      {isModalOpen && (
+        <div className="cart__modal-overlay" onClick={handleCloseModal}>
+          <div className="cart__modal" onClick={e => e.stopPropagation()}>
+            <h3 className="cart__modal-title">Thank you for your order!</h3>
+            <p className="cart__modal-text">
+              Checkout is not implemented yet, but thanks for your order!
+            </p>
+            <button className="cart__modal-button" onClick={handleCloseModal}>
+              Close
+            </button>
           </div>
         </div>
       )}

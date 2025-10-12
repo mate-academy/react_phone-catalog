@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import leftArrowDisabled from '../../images/icons/arrow-left-disabled.svg';
-import leftArrowActive from '../../images/icons/arrow-left-active.svg';
-import rightArrowDisabled from '../../images/icons/arrow-right-disabled.svg';
-import rightArrowActive from '../../images/icons/arrow-right-active.svg';
-import classNames from 'classnames';
+/* eslint-disable max-len */
+import React, { useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
-
+import 'swiper/css';
 import './ProductsSlider.scss';
+
+import leftArrowActive from '../../images/icons/arrow-left-active.svg';
+import leftArrowDisabled from '../../images/icons/arrow-left-disabled.svg';
+import rightArrowActive from '../../images/icons/arrow-right-active.svg';
+import rightArrowDisabled from '../../images/icons/arrow-right-disabled.svg';
 
 type ProductSliderProps = {
   title: string;
@@ -20,19 +23,22 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({
   products,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleCount = 4;
+  const [slidesPerView, setSlidesPerView] = useState(4);
+  const swiperRef = useRef<SwiperType | null>(null);
 
-  const maxIndex = Math.max(products.length - visibleCount, 0);
+  const handlePrev = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
+  };
 
-  const handlePrev = () =>
-    setCurrentIndex(prev => Math.max(prev - visibleCount, 0));
-  const handleNext = () =>
-    setCurrentIndex(prev => Math.min(prev + visibleCount, maxIndex));
+  const handleNext = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
+  };
 
-  const visibleProducts = products.slice(
-    currentIndex,
-    currentIndex + visibleCount,
-  );
+  const getMaxIndex = () => Math.max(products.length - slidesPerView, 0);
 
   return (
     <div className="products-slider">
@@ -40,9 +46,7 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({
         <div className="products-slider__title">{title}</div>
         <div className="products-slider__buttons">
           <button
-            className={classNames('products-slider__button', {
-              'products-slider__button--disabled': currentIndex === 0,
-            })}
+            className={`products-slider__button ${currentIndex === 0 ? 'products-slider__button--disabled' : ''}`}
             onClick={handlePrev}
             disabled={currentIndex === 0}
           >
@@ -52,15 +56,13 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({
             />
           </button>
           <button
-            className={classNames('products-slider__button', {
-              'products-slider__button--disabled': currentIndex === maxIndex,
-            })}
+            className={`products-slider__button ${currentIndex === getMaxIndex() ? 'products-slider__button--disabled' : ''}`}
             onClick={handleNext}
-            disabled={currentIndex === maxIndex}
+            disabled={currentIndex === getMaxIndex()}
           >
             <img
               src={
-                currentIndex === maxIndex
+                currentIndex === getMaxIndex()
                   ? rightArrowDisabled
                   : rightArrowActive
               }
@@ -70,11 +72,29 @@ export const ProductsSlider: React.FC<ProductSliderProps> = ({
         </div>
       </div>
 
-      <div className="products-slider__items">
-        {visibleProducts.map(product => (
-          <ProductCard key={product.itemId} product={product} />
+      <Swiper
+        onSwiper={swiper => {
+          swiperRef.current = swiper;
+          setSlidesPerView(swiper.params.slidesPerView as number);
+        }}
+        onSlideChange={swiper => setCurrentIndex(swiper.activeIndex)}
+        spaceBetween={24}
+        slidesPerView={4}
+        speed={600}
+        breakpoints={{
+          320: { slidesPerView: 1.1, spaceBetween: 12 },
+          480: { slidesPerView: 2, spaceBetween: 16 },
+          640: { slidesPerView: 3, spaceBetween: 20 },
+          1200: { slidesPerView: 4, spaceBetween: 24 },
+        }}
+        className="products-slider__swiper"
+      >
+        {products.map(product => (
+          <SwiperSlide key={product.itemId}>
+            <ProductCard product={product} />
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </div>
   );
 };

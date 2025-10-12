@@ -3,10 +3,6 @@
 .products-slider {
   overflow: hidden;
 
-  @include on-desktop {
-    overflow: visible;
-  }
-
   &:last-child {
     margin-bottom: 80px;
   }

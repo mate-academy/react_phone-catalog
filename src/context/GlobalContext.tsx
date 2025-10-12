@@ -19,6 +19,7 @@ type GlobalContextType = {
   decreaseQuantity: (productId: string) => void;
   toggleFavorite: (product: Product) => void;
   isFavorite: (productId: string) => boolean;
+  setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
 };
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
@@ -133,6 +134,7 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({
         decreaseQuantity,
         toggleFavorite,
         isFavorite,
+        setCart,
       }}
     >
       {children}

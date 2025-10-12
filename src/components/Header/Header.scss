@@ -50,6 +50,10 @@
       @include on-tablet {
         margin-right: 32px;
       }
+
+      @include on-desktop {
+        margin-right: 64px;
+      }
     }
 
     &--item:first-child {
