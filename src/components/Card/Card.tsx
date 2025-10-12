@@ -47,7 +47,7 @@ export const Card: React.FC<Props> = ({ card }) => {
         <div className={styles.imageContainer}>
           <img
             className={styles.image}
-            src={`/${card.image}`}
+            src={`./${card.image}`}
             alt={card.name}
           />
         </div>

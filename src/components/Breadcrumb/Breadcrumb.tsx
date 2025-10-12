@@ -16,7 +16,7 @@ export const Breadcrumb: React.FC = () => {
     <div className={styles.path}>
       <Link className={styles.home} to="/">
         <img
-          src={`../../public/img/icons/${theme}-theme/Home.svg`}
+          src={`./img/icons/${theme}-theme/Home.svg`}
           alt={t.breadcrumb.home}
         />
       </Link>

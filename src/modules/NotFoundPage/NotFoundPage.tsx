@@ -8,10 +8,7 @@ export const NotFoundPage = () => {
 
   return (
     <main className={styles.main}>
-      <img
-        src="../../public/img/page-not-found.png"
-        alt={t.notFoundPage.pageNotFound}
-      />
+      <img src="./img/page-not-found.png" alt={t.notFoundPage.pageNotFound} />
     </main>
   );
 };

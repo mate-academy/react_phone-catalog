@@ -115,31 +115,29 @@ export const PicturesSlider: React.FC = () => {
           >
             <SliderProduct
               title={t.homePage.sliderProduct.titles[currentPicture]}
-              image="../../../img/accessories/apple-watch-series-6/space-gray/00.webp"
+              image="./img/accessories/apple-watch-series-6/space-gray/00.webp"
               buttonContent={t.homePage.sliderProduct.buttonContent[0]}
               onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                 event.stopPropagation();
-                navigate('../../accessories/apple-watch-series-6-space-gray');
+                navigate('/accessories/apple-watch-series-6-44mm-space-gray');
               }}
             />
             <SliderProduct
               title={t.homePage.sliderProduct.titles[currentPicture]}
               buttonContent={t.homePage.sliderProduct.buttonContent[1]}
-              image="../../../img/phones/apple-iphone-14-pro/spaceblack/00.webp"
+              image="./img/phones/apple-iphone-14-pro/spaceblack/00.webp"
               onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                 event.stopPropagation();
-                navigate('../../phones/apple-iphone-14-pro-512gb-spaceblack');
+                navigate('/phones/apple-iphone-14-pro-512gb-spaceblack');
               }}
             />
             <SliderProduct
               title={t.homePage.sliderProduct.titles[currentPicture]}
-              image="../../../../img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp"
+              image="./img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp"
               buttonContent={t.homePage.sliderProduct.buttonContent[0]}
               onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                 event.stopPropagation();
-                navigate(
-                  '../../tablets/apple-ipad-pro-11-2021-512gb-spacegray',
-                );
+                navigate('/tablets/apple-ipad-pro-11-2021-512gb-spacegray');
               }}
             />
           </ul>

@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable no-console */
+
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/indent */
@@ -25,6 +28,7 @@ import { useAppState, useAppDispatch } from '../../Context/AppContext';
 import { Loader } from '../../components/Loader';
 import { Back } from '../../components/Back';
 import { getTranslation } from '../Base/utils/getTranslation';
+import { getAssetPath } from '../Base/utils/getAssetPath';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
@@ -208,6 +212,12 @@ export const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     if (product) {
+      console.log('=== PRODUCT LOADED ===');
+      console.log('product.images:', product.images);
+      console.log('product.id:', product.id);
+      console.log('BASE_URL:', import.meta.env.BASE_URL);
+      console.log('Full image URL:', getAssetPath(product.images[0]));
+
       setCurrentCapacity(product.capacity);
       setCurrentColor(product.color);
       setCurrentPicture(product.images[0]);
@@ -248,7 +258,11 @@ export const ProductDetailsPage: React.FC = () => {
                         ${currentPicture === url ? styles.pictureActive : ''}
                       `}
                     >
-                      <img className={styles.img} src={`/${url}`} alt="Phone" />
+                      <img
+                        className={styles.img}
+                        src={getAssetPath(url)}
+                        alt="Phone"
+                      />
                     </div>
                   ))}
                 </div>
@@ -269,7 +283,7 @@ export const ProductDetailsPage: React.FC = () => {
                     {product.images.map(url => (
                       <li key={url} className={styles.currentPictureItem}>
                         <img
-                          src={`/${url}`}
+                          src={getAssetPath(url)}
                           className={styles.img}
                           alt="Image"
                         />

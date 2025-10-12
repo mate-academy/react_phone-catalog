@@ -16,7 +16,7 @@ export const LikeButton: React.FC<Props> = ({ onClick, isSelected }) => {
       onClick={onClick}
     >
       <img
-        src={`/img/icons/${theme}-theme/Heart${isSelected ? '-selected' : ''}.svg`}
+        src={`./img/icons/${theme}-theme/Heart${isSelected ? '-selected' : ''}.svg`}
         alt="Heart"
       />
     </button>

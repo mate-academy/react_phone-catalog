@@ -18,7 +18,7 @@ export const Close: React.FC<Props> = ({ onClick }) => {
       `}
     >
       <svg
-        xmlns="public/img/icons/light-theme/Close.svg"
+        xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         strokeWidth="2"
         strokeLinecap="round"
