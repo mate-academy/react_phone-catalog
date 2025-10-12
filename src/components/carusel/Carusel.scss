@@ -15,10 +15,12 @@
 
   &__bttn {
     display: none;
-    border: 1px solid rgba(180, 189, 195, 1);
+    border: 1px solid rgba(226, 230, 233, 1);
     background-color: #fff;
     cursor: pointer;
     height: auto;
+
+    @include hover-black-hover;
 
     @include on-tablet {
       display: block;
@@ -27,7 +29,7 @@
 
   &__imgs {
     width: 100%;
-    height: 400px;
+    // height: 400px;
     overflow: hidden;
     display: flex;
     justify-content: center;

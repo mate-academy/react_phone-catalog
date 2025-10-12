@@ -1,0 +1,118 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/vars.scss';
+
+.page__menu__wrapper {
+  @include content-padding-inline;
+
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 48px);
+  background-color: $main-white-color;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  // padding-bottom: 10px;
+}
+
+.menu__nav {
+  width: 100%;
+}
+
+.menu__nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__nav__item {
+  margin: 0 auto;
+}
+
+.menu__nav__item__link {
+  display: inline-block;
+  padding: 8px 0;
+  text-decoration: none;
+  color: $main-grey-color;
+  text-transform: uppercase;
+
+  @include mont(800, 12px);
+  line-height: 11px;
+
+  transition: color 0.3s;
+
+  @include hover-active-hover;
+
+  &--active {
+    color: $main-black-color;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -40%; // лінія на самому низу лінку
+      left: 0;
+      width: 100%;
+      height: 2px; // товщина лінії
+      background-color: $main-black-color;
+    }
+  }
+}
+
+// Нижній блок з іконками
+.menu__btns {
+  display: flex; // Вмикаємо Flexbox
+  width: 100vw; // Розтягуємо на всю ширину
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Окремий елемент списку (кнопка)
+.menu__btns__item {
+  flex: 1; // Кожна кнопка займає однакову частину ширини (50%)
+
+  // Верхня рамка для кожної кнопки
+  border-top: 1px solid #e2e6e9; // Використовуйте змінну, напр. $elements-color
+
+  // Вертикальна рамка для всіх, крім першої кнопки
+  &:not(:first-child) {
+    border-left: 1px solid #e2e6e9;
+  }
+}
+
+// Посилання всередині кнопки (для центрування іконки)
+.menu__btns__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0; // Створює висоту кнопки
+
+  &--active {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+
+      bottom: 0; // Позиціонуємо на 12px вище нижнього краю кнопки
+      left: 50%; // Центруємо
+      transform: translateX(-50%); // Точне центрування
+      width: 100%; // Робимо лінію трохи ширшою за іконку
+      height: 2px;
+      background-color: $main-black-color;
+    }
+  }
+}
+
+// Сама іконка
+.menu__btns__logo {
+  height: 16px;
+  width: 16px;
+}

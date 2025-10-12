@@ -1,4 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import './Carusel.scss';
 
 const images = [
@@ -18,52 +25,48 @@ interface Props {
 }
 
 export const Carusel: React.FC<Props> = ({ duration = 4000 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const prevSlide = () => setCurrentIndex(prev => (prev - 1 + images.length) % images.length);
-  const nextSlide = () => setCurrentIndex(prev => (prev + 1) % images.length);
-
-  useEffect(() => {
-    if (duration) {
-      const interval = setInterval(nextSlide, duration);
-      return () => clearInterval(interval);
-    }
-  }, [duration]);
-
   return (
     <div className="carusel">
       <div className="carusel__content">
-        <button className="carusel__bttn carusel__bttn--prev" onClick={prevSlide}>
-          <img src="/img/left.png" alt="leftBtn" />
+        <button className="carusel__bttn carusel__bttn--prev">
+          <img src="./img/left.png" alt="leftBtn" />
         </button>
 
-        <div className="carusel__imgs">
-          <picture>
-            <source media="(max-width: 639px)" srcSet={imagesMini[currentIndex]} />
-            <img
-              src={images[currentIndex]}
-              alt={`slide-${currentIndex}`}
-              className="carusel__img"
-            />
-          </picture>
-        </div>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          navigation={{
+            nextEl: '.carusel__bttn--next',
+            prevEl: '.carusel__bttn--prev',
+          }}
+          pagination={{
+            el: '.carusel__slider',
+            clickable: true,
+            bulletClass: 'carusel__slide',
+            bulletActiveClass: 'carusel__slide--active',
+          }}
+          autoplay={{
+            delay: duration,
+            disableOnInteraction: false,
+          }}
+          loop
+          className="carusel__imgs"
+        >
+          {images.map((src, index) => (
+            <SwiperSlide key={index}>
+              <picture>
+                <source media="(max-width: 639px)" srcSet={imagesMini[index]} />
+                <img src={src} alt={`slide-${index}`} className="carusel__img" />
+              </picture>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-        <button className="carusel__bttn carusel__bttn--next" onClick={nextSlide}>
-          <img src="/img/right.png" alt="rightBtn" />
+        <button className="carusel__bttn carusel__bttn--next">
+          <img src="./img/right.png" alt="rightBtn" />
         </button>
       </div>
 
-      <div className="carusel__slider">
-        <div
-          className={`${currentIndex === 0 ? `carusel__slide` : 'carusel__slide--active'}`}
-        ></div>
-        <div
-          className={`${currentIndex === 1 ? `carusel__slide` : 'carusel__slide--active'}`}
-        ></div>
-        <div
-          className={`${currentIndex === 2 ? `carusel__slide` : 'carusel__slide--active'}`}
-        ></div>
-      </div>
+      <div className="carusel__slider"></div>
     </div>
   );
 };

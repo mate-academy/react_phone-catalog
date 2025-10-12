@@ -1,10 +1,14 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
+import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import { MainPage } from './components/MainPage';
 
 export const App = () => (
   <div className="App">
     <Header />
-    <MainPage />
+    <div className="App__content">
+      <Outlet />
+    </div>
+    <Footer />
   </div>
 );

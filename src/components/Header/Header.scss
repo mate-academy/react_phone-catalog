@@ -8,6 +8,11 @@
   padding-left: 16px;
   justify-content: space-between;
   box-shadow: 0 1px 0 rgba(226, 230, 233, 1);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #fff;
 
   height: 48px;
 
@@ -137,5 +142,47 @@
         }
       }
     }
+  }
+}
+
+.favourites {
+  position: relative;
+
+  &__counter {
+    @include mont(700, 9px);
+
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    background-color: rgba(235, 87, 87, 1);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: -4px;
+    right: -4px;
+  }
+}
+
+.cart {
+  position: relative;
+
+  &__counter {
+    @include mont(700, 9px);
+
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    background-color: rgba(235, 87, 87, 1);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: -4px;
+    right: -4px;
   }
 }

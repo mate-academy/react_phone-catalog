@@ -1,0 +1,155 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+
+.product-card {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid rgba(226, 230, 233, 1);
+  box-sizing: border-box;
+  height: 100%;
+  justify-content: space-between;
+
+
+  @include hover-black-hover;
+
+  @include on-tablet {
+    width: 100%; // можна залишити, якщо хочеш 2 в ряд через grid/flex
+    padding: 28px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    padding: 32px;
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @include hover-scale-hover;
+
+    &__link {
+      width: 70%;
+      height: auto;
+      object-fit: contain;
+
+
+
+      @include on-desktop {
+        width: 80%;
+        height: 180px;
+      }
+    }
+  }
+
+  &__title {
+    @include mont(600, 14px);
+
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      color: $main-grey-color;
+    }
+
+    // min-height: 90px;
+
+    @media (min-width: 550px) {
+      min-height: 90px;
+    }
+  }
+
+  &__price {
+    @include mont(800, 22px);
+
+    display: flex;
+    gap: 8px;
+
+    border-bottom: 1px solid rgba(226, 230, 233, 1);
+
+    &--discount {
+      color: $main-grey-color;
+      text-decoration: line-through;
+    }
+  }
+
+  &__specs {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    // align-items: center;
+    width: 100%;
+  }
+
+  &__spec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__label {
+    margin: 0;
+    padding: 0;
+    color: $main-grey-color;
+
+    @include mont(700, 12px);
+  }
+
+  &__value {
+    margin: 0;
+    padding: 0;
+
+    @include mont(700, 12px);
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    &--add {
+      width: 100%;
+      height: 40px;
+      @include mont(700, 14px);
+      color: $main-white-color;
+      background-color: $main-black-color;
+      cursor: pointer;
+
+
+      @include hover-shadow-hover;
+
+
+      &--active {
+        background-color: #fff;
+        color: rgba(39, 174, 96, 1);
+        border: 1px solid rgba(226, 230, 233, 1);
+      }
+    }
+
+    &--like {
+      display: flex;
+      background-color: $main-white-color;
+      padding: 12px;
+      border: 1px solid $main-grey-color;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      @include hover-black-hover;
+
+      &--ink {
+        width: 12px;
+        height: 12px;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}
