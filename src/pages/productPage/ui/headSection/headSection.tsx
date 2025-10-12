@@ -1,5 +1,4 @@
-import { ArrowIcon } from '@shared/icons';
-import { Breadcrumbs } from '@ui/index';
+import { Breadcrumbs, ReturnButton } from '@ui/index';
 import styles from '../../styles/headSection.module.scss';
 
 type Props = {
@@ -9,20 +8,16 @@ type Props = {
       to: string;
     }[];
   };
-  onButton: () => void;
   name: string;
 };
 
-export const HeadSection = ({ breadcrumbs, onButton, name }: Props) => {
+export const HeadSection = ({ breadcrumbs, name }: Props) => {
   return (
     <>
       <nav aria-label="breadcrumb">
         <Breadcrumbs {...breadcrumbs} />
       </nav>
-      <button className={styles['return-button']} onClick={onButton}>
-        <ArrowIcon direction="left" />
-        Back
-      </button>
+      <ReturnButton />
       <h1 className={styles.h1}>{name}</h1>
     </>
   );

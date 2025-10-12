@@ -1,50 +1,44 @@
 import { CartItem } from '@features/globalStore/types';
-import { useLoadItems } from '@features/index';
-import { get } from '@shared/api';
 import { CrossIcon } from '@shared/icons';
 import { Product } from '@shared/types';
-import { useEffect } from 'react';
 import styles from '../styles/CartItemWidget.module.scss';
+import { useCartItemWidget } from '../model';
+import { CartItemSkeleton } from './CartItemSkeleton';
 
 type Props = {
-  item: CartItem;
+  cartItem: CartItem;
   updatePrice: (id: string, price: number) => void;
 };
 
-export const CartItemWidget = ({ item, updatePrice }: Props) => {
-  const { items, loadItems } = useLoadItems(() => get.product(item.id));
-
-  useEffect(() => {
-    loadItems();
-  }, [item.id]);
-
-  useEffect(() => {
-    if (typeof items !== 'string') {
-      updatePrice(item.id, (items as Product).priceRegular);
-    }
-  }, [typeof items]);
+export const CartItemWidget = ({ cartItem, updatePrice }: Props) => {
+  const { items, onButton, getPrice } = useCartItemWidget({
+    cartItem,
+    updatePrice,
+  });
 
   return (
     <li>
       {typeof items === 'string' ? (
-        <span>Loading...</span>
+        <CartItemSkeleton />
       ) : (
         <section className={styles['item-container']}>
           <h3 className={styles.name}>{(items as Product).name}</h3>
 
           <img src={(items as Product).images[0]} className={styles.image} />
 
-          <button className={styles.clear}>
+          <button className={styles.clear} onClick={() => onButton(-Infinity)}>
             <CrossIcon />
           </button>
           <div className={styles['buttons-block']}>
-            <button className={styles.button}>-</button>
-            <output className={styles.output}>{item.amount}</output>
-            <button className={styles.button}>+</button>
+            <button className={styles.button} onClick={() => onButton(-1)}>
+              -
+            </button>
+            <output className={styles.output}>{cartItem.amount}</output>
+            <button className={styles.button} onClick={() => onButton(1)}>
+              +
+            </button>
           </div>
-          <span className={styles.price}>
-            {`$${(items as Product).priceRegular}`}
-          </span>
+          <span className={styles.price}>{getPrice()}</span>
         </section>
       )}
     </li>

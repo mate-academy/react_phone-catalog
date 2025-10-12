@@ -5,3 +5,4 @@ export {
   loaderTextMap,
 } from './loadingUI';
 export { Breadcrumbs } from './breadcrumbs';
+export { ReturnButton } from './returnButton';

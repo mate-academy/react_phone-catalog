@@ -49,8 +49,6 @@ Real-world readiness: Production-like patterns
 
 Original requirements were intentionally exceeded for learning purposes.
 
-## 📚 Дополнительные файлы:
-
 ### **`docs/ARCHITECTURE.md`:**
 ```markdown
 # Architecture Overview

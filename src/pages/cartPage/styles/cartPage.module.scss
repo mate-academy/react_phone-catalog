@@ -2,7 +2,7 @@
 
 .layout-container {
   @include s.page-layout;
-  
+
   display: flex;
   flex-direction: column;
 }
@@ -19,3 +19,24 @@ h1 {
   flex-direction: column;
   gap: 16px;
 }
+
+.widgets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media(min-width: s.$c-BREAKPOINT_WIDE) {
+    display: grid;
+    grid-template: 56px 1fr / 1fr 368px;
+    gap: 32px 16px;
+
+    > :last-child {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+
+    > ul {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+  }
+}
+

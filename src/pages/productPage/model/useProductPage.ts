@@ -2,7 +2,7 @@ import { Status, useLoadItems } from '@features/index';
 import { Category, get, ItemsAmount, Order } from '@shared/api';
 import { Product } from '@shared/types';
 import { useEffect } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const featured = () =>
   get.catalogue({
@@ -17,22 +17,6 @@ export const useProductPage = () => {
   const item = useLoadItems(() => get.product(productId as string));
   const sliderData = useLoadItems(featured);
 
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const from = location.state?.from || '/';
-
-  const onButton = () => {
-    navigate(from);
-  };
-
-  const onLink = (e: React.MouseEvent, link: string) => {
-    e.preventDefault();
-    navigate(link, {
-      state: { from: from },
-    });
-  };
-
   useEffect(() => {
     item.loadItems();
     sliderData.loadItems();
@@ -40,8 +24,6 @@ export const useProductPage = () => {
 
   return {
     prod: item.items as Product | Status,
-    onButton,
-    onLink,
     sliderItems: sliderData.items,
   };
 };

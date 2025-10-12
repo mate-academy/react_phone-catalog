@@ -30,13 +30,17 @@ type Action =
   | { type: 'UPDATE_CART_ITEM'; payload: CartItem };
 
 const processCart = (array: CartItem[], patchObj: CartItem) => {
-  const withoutItem = array.filter(el => el.id !== patchObj.id);
-
   if (patchObj.amount === 0) {
-    return withoutItem;
+    return array.filter(el => el.id !== patchObj.id);
   }
 
-  return [...withoutItem, patchObj];
+  const exists = array.some(el => el.id === patchObj.id);
+
+  if (exists) {
+    return array.map(el => (el.id === patchObj.id ? patchObj : el));
+  } else {
+    return [...array, patchObj];
+  }
 };
 
 function appReducer(state: State, action: Action): State {

@@ -4,6 +4,7 @@ import styles from './styles/productCard.module.scss';
 import { CardButtons } from './ui/buttons';
 import { CatalogueProduct, Product } from '@shared/types';
 import { Item } from '@features/globalStore/types';
+import { useNavigationTracker } from '@features/index';
 
 type Props = {
   product: CatalogueProduct | Product;
@@ -15,11 +16,10 @@ type Props = {
     toggleCart: (e: React.MouseEvent, item: Item) => void;
     toggleFav: (e: React.MouseEvent, item: Item) => void;
   };
-  linkHandler: (e: React.MouseEvent, id: string) => void;
 };
 
 export const ProductCard = forwardRef<HTMLLIElement, Props>(
-  ({ product, isIn, stateHandlers, linkHandler }, ref) => {
+  ({ product, isIn, stateHandlers }, ref) => {
     const {
       id,
       name,
@@ -34,12 +34,14 @@ export const ProductCard = forwardRef<HTMLLIElement, Props>(
     const { toggleCart, toggleFav } = stateHandlers;
     const item = { id: id };
 
+    const { trackLinkHandler } = useNavigationTracker();
+
     return (
       <li ref={ref} className={styles.container}>
         <Link
           to={`/product/${id}`}
           className={styles['product-card']}
-          onClick={e => linkHandler(e, id)}
+          onClick={e => trackLinkHandler(e, `/product/${id}`)}
         >
           <div className={styles['image-wrapper']}>
             <img className={styles.image} src={images[0]} alt={name} />

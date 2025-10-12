@@ -1,30 +1,38 @@
-import { Status, useGlobalData } from '@features/index';
-import { get } from '@shared/api';
-import { Product } from '@shared/types';
-import { useEffect, useState } from 'react';
+import { useGlobalData } from '@features/index';
+import { useCallback, useMemo, useState } from 'react';
 
 export const useCartPage = () => {
   const { itemsInCart } = useGlobalData();
-  const [renderList, setRenderList] = useState<Product[] | Status>(
-    Status.LOADING,
-  );
-  const length = itemsInCart.length;
+  const [unitPrices, setUnitPrices] = useState<Record<string, number>>(() => {
+    const initial: Record<string, number> = {};
 
-  const load = async () => {
-    try {
-      const promises = itemsInCart.map(el => get.product(el.id));
-      const products = await Promise.all(promises);
-      const valid = products.filter(el => el !== Status.ERROR);
+    itemsInCart.forEach(item => {
+      initial[item.id] = 0;
+    });
 
-      setRenderList(valid as Product[]);
-    } catch (e) {
-      return;
-    }
-  };
+    return initial;
+  });
 
-  useEffect(() => {
-    load();
-  }, [itemsInCart]);
+  const updatePrice = useCallback((id: string, unitPrice: number) => {
+    setUnitPrices(prev => ({
+      ...prev,
+      [id]: unitPrice,
+    }));
+  }, []);
 
-  return { renderList, length };
+  const allPricesLoaded = useMemo(() => {
+    return itemsInCart.every(
+      item => unitPrices[item.id] && unitPrices[item.id] !== 0,
+    );
+  }, [unitPrices, itemsInCart]);
+
+  const totalPrice = useMemo(() => {
+    return itemsInCart.reduce((sum, item) => {
+      const unitPrice = unitPrices[item.id] || 0;
+
+      return sum + unitPrice * item.amount;
+    }, 0);
+  }, [unitPrices, itemsInCart]);
+
+  return { itemsInCart, updatePrice, allPricesLoaded, totalPrice };
 };

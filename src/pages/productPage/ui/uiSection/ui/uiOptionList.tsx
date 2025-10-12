@@ -2,24 +2,20 @@ import { Capacity, Colors } from '@shared/types';
 import styles from '../../../styles/uiSection/optionList.module.scss';
 import { Link } from 'react-router-dom';
 import { getOption } from '../../../model';
+import { useNavigationTracker } from '@features/index';
 
 type Props = {
   options: Capacity[] | Colors[];
   heading: string;
   link: string[];
   active: Capacity | Colors;
-  onLink: (e: React.MouseEvent, link: string) => void;
 };
 
-export const UIOptionList = ({
-  options,
-  heading,
-  link,
-  active,
-  onLink,
-}: Props) => {
+export const UIOptionList = ({ options, heading, link, active }: Props) => {
   const isCapacity = parseInt(options[0]) > 0;
   const id = isCapacity ? 'Capacity options' : 'Color options';
+
+  const { preserveFrom } = useNavigationTracker();
 
   return (
     <section className={styles['options-list']} aria-labelledby={id}>
@@ -36,7 +32,10 @@ export const UIOptionList = ({
               aria-label={`Select ${el} model`}
               aria-current={active ? 'page' : undefined}
               onClick={e =>
-                onLink(e, `/product/${getOption.link(el, link, isCapacity)}`)
+                preserveFrom(
+                  e,
+                  `/product/${getOption.link(el, link, isCapacity)}`,
+                )
               }
             >
               {isCapacity && el}

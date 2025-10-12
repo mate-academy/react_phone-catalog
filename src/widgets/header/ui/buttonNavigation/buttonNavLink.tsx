@@ -1,4 +1,4 @@
-import { useGlobalData } from '@features/index';
+import { useGlobalData, useNavigationTracker } from '@features/index';
 import { ItemsCounter } from '@shared/icons';
 import { NavAriaLabels, RoutePath } from '@shared/types';
 import classNames from 'classnames';
@@ -17,6 +17,7 @@ export const HeaderButtonNavLink: React.FC<Props> = ({
   icon,
 }) => {
   const { cartAmount, favAmount } = useGlobalData();
+  const { trackLinkHandler } = useNavigationTracker();
   const IconComponent: React.ComponentType = icon;
   const amount = ariaName === NavAriaLabels.Cart ? cartAmount : favAmount;
 
@@ -29,6 +30,7 @@ export const HeaderButtonNavLink: React.FC<Props> = ({
           [styles['nav-link--is-active']]: isActive,
         })
       }
+      onClick={e => trackLinkHandler(e, to)}
     >
       <IconComponent />
       {amount > 0 && <ItemsCounter amount={amount} />}

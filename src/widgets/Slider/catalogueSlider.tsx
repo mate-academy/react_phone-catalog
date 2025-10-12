@@ -15,7 +15,7 @@ export const CatalogueSlider: React.FC<Props> = ({ array, title }: Props) => {
   const { animationSpeed, gap, styles } = catalogueConfig;
   const { DOM, measure, mechanics } = useSliderData();
   const { handlers, setByIndex } = useSliderCore(amount, gap);
-  const { isIn, stateHandlers, linkHandler } = useProdCard();
+  const { isIn, stateHandlers } = useProdCard();
 
   const disableButtons = [
     mechanics.index.current === 0,
@@ -51,7 +51,6 @@ export const CatalogueSlider: React.FC<Props> = ({ array, title }: Props) => {
               key={el.key}
               isIn={isIn}
               stateHandlers={stateHandlers}
-              linkHandler={linkHandler}
               ref={
                 array.indexOf(el) === 0
                   ? (DOM.item as React.RefObject<HTMLLIElement>)

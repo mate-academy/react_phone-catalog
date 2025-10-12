@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import { useGlobalActions, useGlobalData } from '../globalStore/appContext';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { Item } from '@features/globalStore/types';
 
 const handler = (e: React.MouseEvent, fn: (item: Item) => void, item: Item) => {
@@ -13,8 +12,6 @@ const handler = (e: React.MouseEvent, fn: (item: Item) => void, item: Item) => {
 export const useProdCard = () => {
   const { itemsInFav, itemsInCart } = useGlobalData();
   const { toggleFav, setCart } = useGlobalActions();
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const items = {
     favorites: useMemo(
@@ -45,18 +42,5 @@ export const useProdCard = () => {
     toggleFav: (e: React.MouseEvent, item: Item) => handler(e, toggleFav, item),
   };
 
-  const linkHandler = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-
-    navigate(`/product/${id}`, {
-      state: { from: location },
-    });
-  };
-
-  return {
-    stateHandlers,
-    items,
-    isIn,
-    linkHandler,
-  };
+  return { stateHandlers, items, isIn };
 };

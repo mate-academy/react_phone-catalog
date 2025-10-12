@@ -1,0 +1,47 @@
+@use '@shared/styles' as s;
+
+.checkout-widget {
+  display: flex;
+  width: 100%;
+  height: max-content;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 24px;
+  gap: 16px;
+  border: 1px solid s.$c-elements;
+
+  @media(min-width: s.$c-BREAKPOINT_WIDE) {
+    max-width: 368px;
+  }
+}
+
+.checkout-summary {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-bottom: 16px;
+  border-bottom: 1px solid s.$c-elements;
+  align-items: center;
+
+  @media(min-width: s.$c-BREAKPOINT_WIDE) {
+    padding-bottom: 25px;
+  }
+}
+
+.checkout-button {
+  @include s.m-btn-btn-blc;
+
+  display: flex;
+  width: 100%;
+  height: 48px;
+}
+
+.total-price {
+  @include s.t-h2;
+}
+
+.total-amount {
+  @include s.t-body-text;
+
+  color: s.$c-grey-secondary;
+}

@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const CatalogueGrid = ({ data, category }: Props) => {
-  const { isIn, stateHandlers, linkHandler } = useProdCard();
+  const { isIn, stateHandlers } = useProdCard();
 
   if (typeof data === 'string') {
     return createLoaderMap(data, styles.message, styles.message)[data];
@@ -33,7 +33,6 @@ export const CatalogueGrid = ({ data, category }: Props) => {
           product={el}
           isIn={isIn}
           stateHandlers={stateHandlers}
-          linkHandler={linkHandler}
         />
       ))}
     </ul>

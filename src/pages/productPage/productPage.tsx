@@ -10,7 +10,8 @@ type Props = {
 };
 
 export const ProductPageMain = ({ prod }: Props) => {
-  const { onButton, onLink, sliderItems } = useProductPage();
+  const { sliderItems } = useProductPage();
+
   //make slider props only images and name
   const SKU = 'ID: 424242';
 
@@ -18,13 +19,9 @@ export const ProductPageMain = ({ prod }: Props) => {
 
   return (
     <div className={styles.container}>
-      <HeadSection
-        breadcrumbs={props.breadcrumbs}
-        onButton={onButton}
-        name={prod.name}
-      />
+      <HeadSection breadcrumbs={props.breadcrumbs} name={prod.name} />
       <main className={styles['main-container']}>
-        <UISection props={props.ui} onLink={onLink} SKU={SKU} />
+        <UISection props={props.ui} SKU={SKU} />
         <ArticleSection
           description={prod.description}
           specs={props.extendedSpecs}

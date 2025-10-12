@@ -6,18 +6,17 @@ import styles from '../../styles/uiSection/uiSection.module.scss';
 
 type Props = {
   props: UISectionProps;
-  onLink: (e: React.MouseEvent, link: string) => void;
   SKU: string;
 };
 
-export const UISection = ({ props, onLink, SKU }: Props) => {
+export const UISection = ({ props, SKU }: Props) => {
   return (
     <div className={styles['ui-container']}>
       <InfiniteSlider data={props.slider} />
       <div className={styles['ui-block']}>
         <span className={styles.sku}>{SKU}</span>
-        <UIOptionList {...props.colorsOptions} onLink={onLink} />
-        <UIOptionList {...props.capacityOptions} onLink={onLink} />
+        <UIOptionList {...props.colorsOptions} />
+        <UIOptionList {...props.capacityOptions} />
         <PurchaseBlock {...props.purchase} />
         <dl className={styles.descr}>
           {Object.entries(props.baseSpecs).map(([key, value]) => (
