@@ -79,7 +79,7 @@ export const Header = () => {
                 className="header__bttns__item header__bttns__item--phone"
                 onClick={() => setIsMenuOpen(true)}
               >
-                <img src="/img/menu.png" alt="burgerLogo" className="header__bttns__logo" />
+                <img src="./img/menu.png" alt="burgerLogo" className="header__bttns__logo" />
               </li>
             )}
             {isMenuOpen && (
@@ -87,13 +87,13 @@ export const Header = () => {
                 className="header__bttns__item header__bttns__item--phone"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <img src="/img/close.svg" alt="closeLogo" className="header__bttns__logo" />
+                <img src="./img/close.svg" alt="closeLogo" className="header__bttns__logo" />
               </li>
             )}
             <li className="header__bttns__item header__bttns__item--tablet">
               <NavLink to="/favourites" className="favourites">
                 <img
-                  src="/img/favourites.png"
+                  src="./img/favourites.png"
                   alt="favouritesLogo"
                   className="header__bttns__logo"
                 />
@@ -103,7 +103,7 @@ export const Header = () => {
             <li className="header__bttns__item header__bttns__item--tablet">
               <NavLink to="/cart" className="cart">
                 <img
-                  src="/img/cart.png"
+                  src="./img/cart.png"
                   alt="favocart"
                   className="header__bttns__logo"
                 />

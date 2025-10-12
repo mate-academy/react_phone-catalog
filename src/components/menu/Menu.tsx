@@ -44,13 +44,13 @@ export const Menu: React.FC<Props> = ({ onClose }) => {
         <li className="menu__btns__item">
           {/* 👇 Використовуємо нову функцію тут */}
           <NavLink to="/favourites" className={getIconLinkClassName} onClick={onClose}>
-            <img src="/img/favourites.png" alt="favouritesLogo" className="menu__btns__logo" />
+            <img src="./img/favourites.png" alt="favouritesLogo" className="menu__btns__logo" />
           </NavLink>
         </li>
         <li className="menu__btns__item">
           {/* 👇 І тут */}
           <NavLink to="/cart" className={getIconLinkClassName} onClick={onClose}>
-            <img src="/img/cart.png" alt="cartLogo" className="menu__btns__logo" />
+            <img src="./img/cart.png" alt="cartLogo" className="menu__btns__logo" />
           </NavLink>
         </li>
       </ul>
