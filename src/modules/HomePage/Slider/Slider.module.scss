@@ -25,10 +25,10 @@ $text-grey: #9b9b9b;
 }
 
 .slider-container {
-  @include page-grid;
-
   flex-direction: column;
   background-color: #fff;
+
+  @include page-grid;
 
   @include on-tablet {
     margin-inline: 0;

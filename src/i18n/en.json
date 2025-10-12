@@ -7,6 +7,14 @@
   },
 
   "home": {
-    "welcome_to_store": "Welcome to Nice Gadgets store!"
+    "welcome_to_store": "Welcome to Nice Gadgets store!",
+    "brand_new": "Brand new models",
+    "hot_prices": "Hot prices"
+  },
+
+  "product-card": {
+    "screen": "screen",
+    "capacity": "Capacity",
+    "ram": "RAM"
   }
 }

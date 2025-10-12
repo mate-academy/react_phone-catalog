@@ -1,0 +1,31 @@
+.card {
+  display: grid;
+}
+
+.image {
+  width: 208px;
+  height: 105px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.prices {
+  display: flex;
+}
+
+.newPrice {
+  font-size: 22px;
+  line-height: 140%;
+}
+
+.oldPrice {
+  color: #89939a;
+  font-size: 22px;
+  line-height: 140%;
+  text-decoration: line-through;
+}
+
+.specLine {
+  display: flex;
+  justify-content: space-between;
+}

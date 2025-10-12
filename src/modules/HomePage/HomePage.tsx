@@ -1,9 +1,26 @@
 import { useTranslation } from 'react-i18next';
 import styles from './HomePage.module.scss';
 import Slider from './Slider';
+import HomeCatalog from './HomeCatalog';
+import { Product } from '../../types/product';
+import products from '../../../public/api/products.json';
+import { SLIDER_COUNT } from '../constants';
+
+const getBrandNewProducts = (allProducts: Product[]): Product[] => {
+  return allProducts.sort((a, b) => b.year - a.year).slice(0, SLIDER_COUNT);
+};
+
+const getHotPriceProducts = (allProducts: Product[]): Product[] => {
+  return allProducts
+    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+    .slice(0, SLIDER_COUNT);
+};
 
 export const HomePage = () => {
   const { t } = useTranslation();
+
+  const brandNewProducts = getBrandNewProducts(products);
+  const hotPricesProducts = getHotPriceProducts(products);
 
   return (
     <div className={styles.container}>
@@ -13,6 +30,11 @@ export const HomePage = () => {
 
       <div className={styles['slider-wrapper']}>
         <Slider />
+        <HomeCatalog title={t('home.brand_new')} products={brandNewProducts} />
+        <HomeCatalog
+          title={t('home.hot_prices')}
+          products={hotPricesProducts}
+        />
       </div>
     </div>
   );

@@ -1,0 +1,18 @@
+.title {
+  font-size: 32px;
+}
+
+.top {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.slider {
+  display: grid;
+  width: 100%;
+  gap: 20px;
+  grid-auto-columns: 200px;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+}
