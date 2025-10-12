@@ -11,28 +11,36 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.specLine}>
+    <div className={styles.product}>
       <h3>{product.name}</h3>
-      <img className={styles.image} src={product.image} alt={product.name} />
-      <div className={styles.prices}>
-        <p className={styles.newPrice}>{CURRENCY_SYMBOL + product.price}</p>
-        <p className={styles.oldPrice}>{CURRENCY_SYMBOL + product.fullPrice}</p>
+      <img
+        className={styles.product__image}
+        src={product.image}
+        alt={product.name}
+      />
+      <div className={styles.product__prices}>
+        <p className={styles.product__newPrice}>
+          {CURRENCY_SYMBOL + product.price}
+        </p>
+        <p className={styles.product__oldPrice}>
+          {CURRENCY_SYMBOL + product.fullPrice}
+        </p>
       </div>
 
       <div>
-        <p className={styles.specLine}>
+        <p className={styles.product__specLine}>
           <span>{t('product-card.screen')}</span>
           <span>{product.screen}</span>
         </p>
-        <p className={styles.specLine}>
+        <p className={styles.product__specLine}>
           <span>{t('product-card.capacity')}</span>
           <span>{product.capacity}</span>
         </p>
-        <p className={styles.specLine}>
+        <p className={styles.product__specLine}>
           <span>{t('product-card.ram')}</span>
           <span>{product.ram}</span>
         </p>
-        <div className={styles.bottom}></div>
+        <div className={styles.product__bottom}></div>
       </div>
     </div>
   );
