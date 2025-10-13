@@ -12,7 +12,6 @@
   height: 100%;
   justify-content: space-between;
 
-
   @include hover-black-hover;
 
   @include on-tablet {
@@ -38,8 +37,6 @@
       height: auto;
       object-fit: contain;
 
-
-
       @include on-desktop {
         width: 80%;
         height: 180px;
@@ -52,6 +49,8 @@
 
     text-decoration: none;
     color: inherit;
+
+    transition: color $main-transition-time ease;
 
     &:hover {
       color: $main-grey-color;
@@ -121,9 +120,7 @@
       background-color: $main-black-color;
       cursor: pointer;
 
-
       @include hover-shadow-hover;
-
 
       &--active {
         background-color: #fff;

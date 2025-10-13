@@ -9,6 +9,7 @@ import './ProductDetails.scss';
 import { useEffect, useState } from 'react';
 import { useFavourites } from '../../contexts/Favourites';
 import { useCart } from '../../contexts/Cart';
+import { BackBtn } from '../BabkBtn';
 
 export const ProductDetails = () => {
   const { productId } = useParams();
@@ -81,12 +82,7 @@ export const ProductDetails = () => {
 
           <div className="product-details">
             <div className="product-details__back">
-              <div className="product-details__back__img">
-                <img src="./img/left.png" alt="back" className="product-details__back__img__link" />
-              </div>
-              <button onClick={() => navigate(-1)} className="product-details__back__btn">
-                Back
-              </button>
+              <BackBtn />
             </div>
 
             <h1 className="product-details__title" autoFocus>

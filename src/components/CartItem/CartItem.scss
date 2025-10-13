@@ -65,6 +65,12 @@
     overflow: hidden;
     max-width: 220px;
 
+    transition: color $main-transition-time ease;
+
+    &:hover {
+      color: $main-grey-color;
+    }
+
     @include on-tablet {
       text-align: left;
       flex: 1;

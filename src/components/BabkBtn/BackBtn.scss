@@ -1,0 +1,29 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/vars.scss';
+
+.back {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  cursor: pointer;
+
+  &__img {
+    display: flex;
+    align-items: center;
+
+    &__link {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__btn {
+    background-color: #fff;
+    border: none;
+    color: $main-grey-color;
+    cursor: pointer;
+    padding-top: 1.1px;
+
+    @include mont(700, 12px);
+  }
+}

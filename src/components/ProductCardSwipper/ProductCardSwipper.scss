@@ -32,6 +32,12 @@
       height: 16px;
       width: 16px;
     }
+
+    &--disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+  }
   }
 }
 

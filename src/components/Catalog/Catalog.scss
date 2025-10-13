@@ -65,14 +65,30 @@
 
     &__value {
       @include mont(700, 12px);
+
+      border: 1px solid $main-grey-color;
     }
 
     &__select {
-      width: 136px;
-      height: 40px;
-      border-radius: 0;
 
-      @include mont(700, 14px);
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+      width: 175px;
+      height: 40px;
+      border: 1px solid #b7c0c7;
+      border-radius: 0;
+      padding: 0 32px 0 12px;
+      background-color: #fff;
+      cursor: pointer;
+
+      @include mont(600, 14px);
+
+      &:focus {
+        outline: none;
+        border-color: $main-black-color;
+      }
     }
   }
 

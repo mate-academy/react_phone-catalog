@@ -4,6 +4,7 @@ interface CartContextType {
   isInCart: (id: number) => boolean;
   toggleCart: (id: number) => void;
   cartList: CartItemType[];
+  clearCartList: () => void;
   count: number;
   increaseQuantity: (id: number) => void;
   decreaseQuantity: (id: number) => void;
@@ -13,6 +14,7 @@ const CartContext = createContext<CartContextType>({
   isInCart: () => false,
   toggleCart: () => {},
   cartList: [],
+  clearCartList: () => {},
   count: 0,
   increaseQuantity: () => {},
   decreaseQuantity: () => {},
@@ -68,9 +70,13 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
     );
   };
 
+  const clearCartList = () => {
+    setCartList([]);
+  }
+
   return (
     <CartContext.Provider
-      value={{ isInCart, toggleCart, cartList, count, increaseQuantity, decreaseQuantity }}
+      value={{ isInCart, toggleCart, cartList, clearCartList, count, increaseQuantity, decreaseQuantity }}
     >
       {children}
     </CartContext.Provider>
