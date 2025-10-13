@@ -1,0 +1,59 @@
+@import '../../src/styles/utils/mixins';
+
+@font-face {
+  font-family: Mont;
+  src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.modelsContainer {
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+
+    &__title {
+      color: #F1F2F9;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      grid-column: 2 / span 22;
+    }
+
+    &__cards {
+      grid-column: 2 / span 22;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    &__card {
+      width: 100%;
+      height: auto;
+    }
+
+    img {
+      height: 196px;
+      width: 100%;
+      object-fit: contain;
+    }
+    
+}

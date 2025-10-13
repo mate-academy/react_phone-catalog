@@ -1,4 +1,4 @@
-@import '../../styles/utils/mixins';
+@import '../styles/utils/mixins';
 
 @font-face {
   font-family: Mont;
@@ -28,7 +28,7 @@ body {
   background-color: #0F1121;
 }
 
-.main {
+.container {
   font-family: Mont, Arial, Helvetica, sans-serif;
   width: 100%;
   margin-inline: auto;
@@ -85,16 +85,6 @@ body {
       transform: translateX(-100%);
       animation: slideInLeft 0.2s forwards;
     }
-  }
-
-  @keyframes slideInRight {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-  }
-
-  @keyframes slideInLeft {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(0); }
   }
 
   &__buttonPrev {
