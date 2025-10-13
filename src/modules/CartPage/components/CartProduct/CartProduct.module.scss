@@ -1,0 +1,129 @@
+@use '../../../../styles/fonts.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+@use '../../../../styles/variables.scss' as *;
+
+.cart_product {
+  display: grid;
+  grid-template-columns: 16px 80px auto auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background-color: $cardColor;
+  margin-bottom: 16px;
+
+  @include respond-to(phone) {
+    grid-template-columns: 16px 80px 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    padding: 16px;
+  }
+}
+
+.cart_product_remove_btn {
+  height: 16px;
+  width: 16px;
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include respond-to(tablet) {
+    justify-self: start;
+  }
+}
+
+.cart_product_img {
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.cart_product_quantity {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  @include respond-to(phone) {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    margin-top: 16px;
+  }
+}
+
+.cart_product_decrease_btn,
+.cart_product_increase_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  background-color: $gray-surface;
+  border: 1px solid $gray-elements;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: $gray-elements;
+  }
+
+  &:focus {
+    background-color: $addBtn;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    transform: none;
+
+    &:hover,
+    &:focus {
+      transform: none;
+      background-color: $gray-surface;
+    }
+  }
+}
+
+.cart_product_qty {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $gray-white;
+}
+
+.cart_product_item_name {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: $gray-white;
+
+  @include respond-to(tablet) {
+    white-space: normal;
+  }
+
+  @include respond-to(phone) {
+    white-space: normal;
+  }
+}
+
+.cart_product_price {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  text-align: right;
+  align-items: center;
+  color: $gray-white;
+
+  @include respond-to(phone) {
+    margin-top: 16px;
+  }
+}

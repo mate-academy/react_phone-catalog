@@ -1,31 +1,60 @@
-import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import logoFooter from '/img/logo/Logo.png';
 import arrowUp from '/icons/arrow-up-icon.png';
 
 export const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className={styles.footer}>
-      <div className={styles.logo_footer}>
-        <img src={logoFooter} alt="logo" className={styles.logo_footer_img} />
-      </div>
+      <div className={styles.footer__container}>
+        <div className={styles.logo_footer}>
+          <img src={logoFooter} alt="logo" className={styles.logo_footer_img} />
+        </div>
 
-      <div className={styles.footer_navigation}>
-        <NavLink
-          to={
-            'https://github.com/annaabramovaa/react_phone-catalog/tree/develop'
-          }
-        >
-          GitHub
-        </NavLink>
-        <NavLink to={'/'}>Contacts</NavLink>
-        <NavLink to={'/'}>Rights</NavLink>
-      </div>
-      <div className={styles.footer_backToTop}>
-        <p>Back to top</p>
-        <button className={styles.footer_btn}>
-          <img src={arrowUp} alt="arrowUp" />
-        </button>
+        <nav className={styles.footer_navigation}>
+          <ul className={styles.footer_nav_list}>
+            <li className={styles.footer_nav_item}>
+              <a
+                href="https://github.com/annaabramovaa"
+                className={styles.footer_nav}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+            </li>
+            <li className={styles.footer_nav_item}>
+              <a
+                href="https://github.com/annaabramovaa"
+                className={styles.footer_nav}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contacts
+              </a>
+            </li>
+            <li className={styles.footer_nav_item}>
+              <a
+                href="https://github.com/annaabramovaa"
+                className={styles.footer_nav}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Rights
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div className={styles.footer_backToTop}>
+          <p className={styles.footer_btn_text}>Back to top</p>
+          <button onClick={scrollToTop} className={styles.footer_btn}>
+            <img src={arrowUp} alt="arrowUp" />
+          </button>
+        </div>
       </div>
     </div>
   );

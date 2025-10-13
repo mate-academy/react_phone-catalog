@@ -42,10 +42,14 @@ export const Header: React.FC = () => {
             </button>
           </div>
 
-          <HeaderNavItems className={styles.burgerNav} />
+          <HeaderNavItems
+            className={styles.burgerNav}
+            onLinkClick={toggleBurger}
+          />
           <FavoriteAndCart
             className={styles.burgerFavAndCartIcons}
             isBurger={true}
+            onLinkClick={toggleBurger}
           />
         </div>
       )}

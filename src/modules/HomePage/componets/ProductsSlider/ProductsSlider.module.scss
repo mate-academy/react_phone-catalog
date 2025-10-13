@@ -6,7 +6,7 @@
   color: $gray-white;
   font-size: 32px;
   line-height: 41px;
-  letter-spacing: -1%;
+  letter-spacing: -0.01em;
   margin-top: 80px;
   margin-bottom: 24px;
 
@@ -37,6 +37,10 @@
   color: $gray-white;
   border: none;
   cursor: pointer;
+
+  &:hover {
+    background-color: $gray-elements;
+  }
 }
 
 .product_button[aria-disabled="true"],

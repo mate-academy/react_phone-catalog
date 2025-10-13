@@ -1,5 +1,24 @@
+@use './styles/mixins.scss' as *;
 
 body {
   background-color: #0f1121;
+  scroll-behavior: smooth;
 }
 
+.container {
+   padding-inline: 16px;
+
+  @include respond-to(tablet) {
+    padding-inline: 24px;
+  }
+
+  @include respond-to(desktop) {
+    padding-inline: 32px;
+  }
+
+  @media (min-width: 1201px) {
+    padding-inline: 152px;
+    margin-inline: auto;
+    max-width: 100%;
+  }
+}

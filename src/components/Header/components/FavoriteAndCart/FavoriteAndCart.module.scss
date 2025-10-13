@@ -7,12 +7,14 @@
   justify-content: center;
   height: 48px;
   width: 100%;
+
   @include respond-to(desktop) {
     height: 64px;
   }
 }
 
 .icon {
+  position: relative;
   flex: 1;
   display: flex;
   align-items: center;
@@ -38,17 +40,17 @@
   }
 }
 
-.burgerIcon.active,
-.burgerIconSecond.active {
+.burgerIcon,
+.burgerIconSecond {
   position: relative;
+}
 
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 2px;
-    width: 100%;
-    height: 2px;
-    background-color: $gray-white
-  }
+.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 2px;
+  background-color: $gray-white;
 }

@@ -26,12 +26,18 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  cursor: pointer;
+  margin-bottom: 8px;
+
+   &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .card__title {
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0%;
+  letter-spacing: 0;
   margin-top: 8px;
   height: 42px;
 }
@@ -41,7 +47,7 @@
   align-items: center;
   gap: 8px;
   font-size: 22px;
-  letter-spacing: 0%;
+  letter-spacing: 0;
 }
 
 .card__price {
@@ -67,7 +73,7 @@
   display: grid;
   grid-template-columns: max-content 1fr;
   font-size: 12px;
-  letter-spacing: 0%;
+  letter-spacing: 0;
   gap: 8px 20px;
 }
 
@@ -96,9 +102,17 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0%;
+  letter-spacing: 0;
   text-align: center;
   cursor: pointer;
+
+  &:hover {
+    background-color: $hover-btn;
+  }
+}
+
+.card__addBtn__disabled {
+  background-color: $gray-surface;
 }
 
 .card__favBtn {

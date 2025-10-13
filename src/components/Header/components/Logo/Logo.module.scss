@@ -4,12 +4,13 @@
 .logo {
   display: flex;
   align-items: center;
-  margin-right: 16px;
+  margin-right: 48px;
+  margin-left: 24px;
   width: auto;
   height: 48px;
 
-  @include respond-to(desktop) {
-    margin-right: 24px;
+  @include respond-to(tablet) {
+    margin-right: 32px;
   }
 
   @include respond-to(desktop) {

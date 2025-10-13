@@ -32,19 +32,3 @@
   }
 }
 
-.container {
-  padding-inline: 0;
-
-  @include respond-to(tablet) {
-    padding-inline: 24px;
-  }
-  @include respond-to(desktop) {
-    padding-inline: 32px;
-  }
-
-  @media (min-width: 1201px) {
-    padding-inline: 152px;
-    margin-inline: auto;
-    max-width: 100%;
-  }
-}

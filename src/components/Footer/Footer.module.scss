@@ -2,19 +2,141 @@
 @use '../../styles/mixins.scss' as *;
 
 .footer {
-  position: fixed;
-  width: 100%;
+  margin-top: 80px;
+  background-color: $background;
+  position: relative;
   height: 96px;
 
-  background-color: $background;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: $gray-secondary;
+  }
 
-  // &::after {
-  //   content: '';
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 0;
-  //   right: 0;
-  //   height: 1px;
-  //   background-color: $gray-secondary;
-  // }
+  @include respond-to(phone) {
+    height: 257px;
+  }
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-inline: 16px;
+
+  @include respond-to(tablet) {
+    padding-inline: 32px;
+  }
+
+  @include respond-to(desktop) {
+    padding-inline: 152px;
+  }
+
+  @include respond-to(phone) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 16px;
+  }
+}
+
+.logo_footer {
+  margin-right: 289px;
+
+  @include respond-to(tablet) {
+    margin-right: 103px;
+  }
+
+  @include respond-to(phone) {
+    margin: 32px 0;
+  }
+}
+
+.logo_footer_img {
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.footer_nav_list {
+  display: flex;
+  gap: 106px;
+  list-style: none;
+  padding-left: 0;
+
+  @include respond-to(tablet) {
+    gap: 13.5px;
+  }
+
+  @include respond-to(phone) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+  }
+}
+
+.footer_nav {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $gray-white;
+}
+
+.footer_backToTop {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-wrap: nowrap;
+
+  @include respond-to(tablet) {
+    margin-left: 74px;
+  }
+
+  @include respond-to(phone) {
+    width: 100%;
+    justify-content: center;
+    margin:  32px 0;
+  }
+}
+
+.footer_btn_text {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 12px;
+  color: $gray-secondary;
+  letter-spacing: 0;
+  line-height: 100%;
+  margin-right: 16px;
+}
+
+.footer_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: $gray-surface;
+  border: none;
+  cursor: pointer;
+}
+
+.footer_btn img {
+  padding: 8px;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }

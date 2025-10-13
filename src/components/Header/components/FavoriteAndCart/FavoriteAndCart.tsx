@@ -6,9 +6,14 @@ import cartIcon from '/icons/cart-icon.png';
 type Props = {
   className?: string;
   isBurger?: boolean;
+  onLinkClick?: () => void;
 };
 
-export const FavoriteAndCart: React.FC<Props> = ({ className, isBurger }) => {
+export const FavoriteAndCart: React.FC<Props> = ({
+  className,
+  isBurger,
+  onLinkClick,
+}) => {
   return (
     <div
       className={`${styles.fav_cart_icons} ${className || ''} ${
@@ -19,9 +24,10 @@ export const FavoriteAndCart: React.FC<Props> = ({ className, isBurger }) => {
         to="/favorites"
         className={({ isActive }) =>
           `${styles.icon} ${isBurger ? styles.burgerIcon : ''} ${
-            isActive && isBurger ? styles.active : ''
+            isActive ? styles.active : ''
           }`
         }
+        onClick={onLinkClick}
       >
         <img src={favoriteIcon} alt="favoriteIcon" />
       </NavLink>
@@ -30,9 +36,10 @@ export const FavoriteAndCart: React.FC<Props> = ({ className, isBurger }) => {
         to="/cart"
         className={({ isActive }) =>
           `${styles.icon} ${isBurger ? styles.burgerIconSecond : ''} ${
-            isActive && isBurger ? styles.active : ''
+            isActive ? styles.active : ''
           }`
         }
+        onClick={onLinkClick}
       >
         <img src={cartIcon} alt="cartIcon" />
       </NavLink>

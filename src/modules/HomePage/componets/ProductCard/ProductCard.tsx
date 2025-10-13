@@ -1,3 +1,4 @@
+import { useCart } from '../../../../contexts/CartContext';
 import { Product } from '../../../../types/Product';
 import styles from './ProductCard.module.scss';
 import favIcon from '/icons/favorite-icon.png';
@@ -12,6 +13,8 @@ export const ProductCard: React.FC<Props> = ({
   showDiscount = false,
 }) => {
   const hasDiscount = product.fullPrice > product.price;
+  const { cart, addToCart, removeFromCart } = useCart();
+  const inCart = cart.some(item => item.id === product.id);
 
   return (
     <div className={styles.card}>
@@ -41,9 +44,20 @@ export const ProductCard: React.FC<Props> = ({
           </dl>
         </div>
         <div className={styles.card__actions}>
-          <button type="button" className={styles.card__addBtn}>
-            Add to cart
+          <button
+            type="button"
+            className={`${styles.card__addBtn} ${inCart ? styles.card__addBtn__disabled : ''}`}
+            onClick={() => {
+              if (inCart) {
+                removeFromCart(product.id);
+              } else {
+                addToCart(product);
+              }
+            }}
+          >
+            {inCart ? 'Added to cart' : 'Add to cart'}
           </button>
+
           <button type="button" className={styles.card__favBtn}>
             <img src={favIcon} alt="Add to favorites" />
           </button>

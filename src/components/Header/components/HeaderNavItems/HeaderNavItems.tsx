@@ -3,9 +3,10 @@ import styles from './HeaderNavItems.module.scss';
 
 type Props = {
   className?: string;
+  onLinkClick?: () => void;
 };
 
-export const HeaderNavItems: React.FC<Props> = ({ className }) => {
+export const HeaderNavItems: React.FC<Props> = ({ className, onLinkClick }) => {
   return (
     <div className={`${styles.navigation} ${className || ''}`}>
       <NavLink
@@ -13,6 +14,7 @@ export const HeaderNavItems: React.FC<Props> = ({ className }) => {
         className={({ isActive }) =>
           `${styles.navigation_item} ${isActive ? styles.activeLink : ''}`
         }
+        onClick={onLinkClick}
       >
         Home
       </NavLink>
@@ -21,6 +23,7 @@ export const HeaderNavItems: React.FC<Props> = ({ className }) => {
         className={({ isActive }) =>
           `${styles.navigation_item} ${isActive ? styles.activeLink : ''}`
         }
+        onClick={onLinkClick}
       >
         Phones
       </NavLink>
@@ -29,6 +32,7 @@ export const HeaderNavItems: React.FC<Props> = ({ className }) => {
         className={({ isActive }) =>
           `${styles.navigation_item} ${isActive ? styles.activeLink : ''}`
         }
+        onClick={onLinkClick}
       >
         Tablets
       </NavLink>
@@ -37,6 +41,7 @@ export const HeaderNavItems: React.FC<Props> = ({ className }) => {
         className={({ isActive }) =>
           `${styles.navigation_item} ${isActive ? styles.activeLink : ''}`
         }
+        onClick={onLinkClick}
       >
         Accessories
       </NavLink>
