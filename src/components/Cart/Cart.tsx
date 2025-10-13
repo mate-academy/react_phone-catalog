@@ -7,7 +7,7 @@ import { useCart } from '../../context/CartContext';
 import { Products } from '../../types/types';
 import HeaderLogoMenu from '../HeaderLogoMenu/HeaderLogoMenu';
 import { useNavigate } from 'react-router-dom';
-import ModalContent from '../ModalContent/ModalContent';
+import ModalContent from '../ModalContent';
 import Footer from '../Footer';
 import { useState } from 'react';
 import cn from 'classnames';
