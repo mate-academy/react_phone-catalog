@@ -17,7 +17,7 @@
     &::before {
       position: absolute;
       content: '';
-      background-image: url('./img/icons/arrow-left.svg');
+      background-image: url('../img/icons/arrow-left.svg');
       width: 16px;
       height: 16px;
       left: 0;
@@ -26,7 +26,7 @@
     }
 
     &:hover::before {
-      background-image: url('./img/icons/arrow-left-hover.svg');
+      background-image: url('../img/icons/arrow-left-hover.svg');
     }
   }
 
@@ -267,7 +267,7 @@
     background-color: $btn-color;
     border: none;
     cursor: pointer;
-    background-image: url('./img/icons/heart.svg');
+    background-image: url('../img/icons/heart.svg');
     background-repeat: no-repeat;
     background-position: center;
 
@@ -277,7 +277,7 @@
   &__characteristics-link-favourite--selected {
     background-color: transparent;
     border: 1px solid #3B3E4A;
-    background-image: url('./img/icons/heart-selected.svg');
+    background-image: url('../img/icons/heart-selected.svg');
   }
 
   &__characteristics-descr {

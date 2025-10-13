@@ -151,7 +151,7 @@
 
     @include on-phone {
       display: block;
-      background-image: url('./img/icons/menu.svg');
+      background-image: url('../img/icons/menu.svg');
       background-repeat: no-repeat;
       background-position: center;
       width: 16px;
@@ -167,7 +167,7 @@
       transition: all 0.5s;
 
       @include on-phone {
-        background-image: url('./img/icons/close.svg');
+        background-image: url('../img/icons/close.svg');
         width: 16px;
         height: 16px;
         padding: 24px;
