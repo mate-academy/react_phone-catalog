@@ -94,7 +94,7 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.container}>
         <BreadCrumbs category={product.category} product={product} />
         <div className={styles.back}>
-          <img src="/img/icons/butnBack.png" alt="Arrow left" />
+          <img src="./img/icons/butnBack.png" alt="Arrow left" />
           <Link to={`/${category}`} className={styles.buttonBack}>
             Back
           </Link>
@@ -109,7 +109,7 @@ export const ProductDetailsPage: React.FC = () => {
                 {product.images.map((src, i) => (
                   <img
                     key={i}
-                    src={`/${src}`}
+                    src={`./${src}`}
                     className={`${styles.thumbnail} ${mainImage === src ? styles.activeThumb : ''}`}
                     onClick={() => setMainImage(src)}
                     alt={`Thumbnail ${i}`}
@@ -119,7 +119,7 @@ export const ProductDetailsPage: React.FC = () => {
 
               <div className={styles.mainImageWrapper}>
                 <img
-                  src={`/${mainImage}`}
+                  src={`./${mainImage}`}
                   alt="Main product"
                   className={styles.mainImage}
                 />
