@@ -33,6 +33,11 @@
     }
   }
 
+  &__empty-text {
+    font-size: 22px;
+    line-height: 140%;
+  }
+
   &__content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

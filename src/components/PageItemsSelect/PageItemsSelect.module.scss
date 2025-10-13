@@ -3,6 +3,7 @@
 .dropdown {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   &__page-items-name {
     font-size: 12px;
@@ -44,10 +45,14 @@
   }
 
   &__page-items-options {
-    margin-top: 4px;
     outline: none;
     border: 1px solid #3B3E4A;
     box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    z-index: 10;
   }
 
   &__page-items-option {

@@ -158,13 +158,23 @@
   &__name {
     @extend %mont-600;
 
+    width: 336px;
     color: $main-color;
+
+    @media (max-width: 1199px) {
+      width: 176px;
+    }
+
+    @include on-phone {
+      width: 128px;
+    }
   }
 
   &__box-btns {
     display: flex;
     align-items: center;
     gap: 14px;
+    width: 96px;
   }
 
   &__remove-btn {
@@ -210,6 +220,7 @@
 
     font-size: 22px;
     line-height: 140%;
+    width: 80px;
   }
 
   &__checkout {

@@ -34,7 +34,10 @@ export const FavouritesPage = () => {
         <h1 className={styles.favourites__title}>Favourites</h1>
         <p className={styles.favourites__items}>{count} items</p>
         {isLoading && <SkeletonLoader count={count} />}
-        {!isLoading && (
+        {!isLoading && count === 0 && (
+          <p className="favorites__empty-text">No favourite items selected</p>
+        )}
+        {!isLoading && count !== 0 && (
           <div className={styles.favourites__content}>
             {favoriteProducts.map(product => (
               <ProductCard
