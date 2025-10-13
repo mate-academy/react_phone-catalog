@@ -30,10 +30,9 @@ img.arrowWhite {
     height: 32px;
     border: none;
     background-color: $menu-border-color;
+    text-decoration: none;
 
     @include hover(background-color, $catalogHoverBtnColor);
-
-    text-decoration: none;
 
     &:hover {
       background-color: $catalogHoverBtnColor;
@@ -81,10 +80,9 @@ img.arrowWhite {
     height: 32px;
     border: none;
     background-color: $card-backColor;
+    cursor: pointer;
 
     @include hover(background-color, $card-settings-buttonBackColor);
-
-    cursor: pointer;
 
     &:hover {
       background-color: $card-settings-buttonBackColor;

@@ -5,12 +5,9 @@ interface EmptyMessageProps {
   imageSrc?: string;
 }
 
-export const EmptyMessage = ({
-  text = 'There are no phones yet',
-  imageSrc,
-}: EmptyMessageProps) => (
+export const EmptyMessage = ({ text, imageSrc }: EmptyMessageProps) => (
   <div className={styles.empty}>
     {imageSrc && <img src={imageSrc} alt="Empty" className={styles.image} />}
-    <p>{text}</p>
+    {text && <p>{text}</p>}
   </div>
 );

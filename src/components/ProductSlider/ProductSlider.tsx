@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -6,6 +7,10 @@ import 'swiper/scss/navigation';
 import styles from './ProductSlider.module.scss';
 import { ProductSliderInterface } from '../../types/ProductSliderInterface';
 import { Link } from 'react-router-dom';
+import { CartButton } from '../../modules/Cart/components/CartButton';
+import { useFavorites } from '../../modules/Favorites/context/FavoritesContext';
+import cartBtn from '../../modules/Cart/components/CartButton.module.scss';
+import { mapDetailsToProduct } from '../../modules/ProductDetails/utils/mapDetailsToProduct';
 
 export const ProductSlider: React.FC<ProductSliderInterface> = ({
   title,
@@ -14,6 +19,7 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
   products = [],
 }) => {
   const itemsToShow = limit ? products.slice(0, limit) : products;
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   return (
     <div className={styles.wrapper}>
@@ -43,75 +49,91 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
           1200: { slidesPerView: 4, spaceBetween: 16 },
         }}
       >
-        {itemsToShow.map(product => (
-          <SwiperSlide key={product.id}>
-            <article className={styles.card} data-qa="card">
-              <div className={styles.card__top}>
-                <Link to={`/${product.category}/${product.id}`}>
-                  <img
-                    src={`/${product.images[0]}`}
-                    alt={product.name}
-                    className={styles.card__image}
+        {itemsToShow.map(product => {
+          const productForCart = mapDetailsToProduct(product);
+
+          return (
+            <SwiperSlide key={product.id}>
+              <article className={styles.card} data-qa="card">
+                <div className={styles.card__top}>
+                  <Link to={`/${product.category}/${product.id}`}>
+                    <img
+                      src={`./${product.images[0]}`}
+                      alt={product.name}
+                      className={styles.card__image}
+                    />
+                  </Link>
+                </div>
+
+                <h2 className={styles.card__name}>
+                  <Link to={`/${product.category}/${product.id}`}>
+                    {product.name}
+                  </Link>
+                </h2>
+
+                <div className={styles.card__prices}>
+                  <span className={styles.card__fullPrice}>
+                    ${product.priceRegular}
+                  </span>
+                  {showOldPrice && (
+                    <span className={styles.card__price}>
+                      ${product.priceDiscount}
+                    </span>
+                  )}
+                </div>
+
+                <div className={styles.card__settings}>
+                  <div className={styles.card__row}>
+                    <span className={styles['card__settings-name']}>
+                      Screen
+                    </span>
+                    <span className={styles['card__settings-value']}>
+                      {product.screen}
+                    </span>
+                  </div>
+                  <div className={styles.card__row}>
+                    <span className={styles['card__settings-name']}>
+                      Capacity
+                    </span>
+                    <span className={styles['card__settings-value']}>
+                      {product.capacity}
+                    </span>
+                  </div>
+                  <div className={styles.card__row}>
+                    <span className={styles['card__settings-name']}>RAM</span>
+                    <span className={styles['card__settings-value']}>
+                      {product.ram}
+                    </span>
+                  </div>
+                </div>
+
+                <div className={styles.card__buttons}>
+                  <CartButton
+                    product={productForCart}
+                    className={cartBtn.small}
                   />
-                </Link>
-              </div>
-
-              <h2 className={styles.card__name}>
-                <Link to={`/${product.category}/${product.id}`}>
-                  {product.name}
-                </Link>
-              </h2>
-
-              <div className={styles.card__prices}>
-                <span className={styles.card__fullPrice}>
-                  ${product.priceRegular}
-                </span>
-                {showOldPrice && (
-                  <span className={styles.card__price}>
-                    ${product.priceDiscount}
-                  </span>
-                )}
-              </div>
-
-              <p className={styles.card__settings}>
-                <div className={styles.card__row}>
-                  <span className={styles['card__settings-name']}>Screen</span>
-                  <span className={styles['card__settings-value']}>
-                    {product.screen}
-                  </span>
+                  <a
+                    href="#"
+                    className={styles['card__buttons-fav']}
+                    onClick={e => {
+                      e.preventDefault();
+                      toggleFavorite(productForCart);
+                    }}
+                  >
+                    <img
+                      src={
+                        isFavorite(product.id)
+                          ? './img/icons/fav-active.png'
+                          : './img/icons/fav.png'
+                      }
+                      alt="favourite goods"
+                    />
+                  </a>
                 </div>
-                <div className={styles.card__row}>
-                  <span className={styles['card__settings-name']}>
-                    Capacity
-                  </span>
-                  <span className={styles['card__settings-value']}>
-                    {product.capacity}
-                  </span>
-                </div>
-                <div className={styles.card__row}>
-                  <span className={styles['card__settings-name']}>RAM</span>
-                  <span className={styles['card__settings-value']}>
-                    {product.ram}
-                  </span>
-                </div>
-              </p>
-
-              <div className={styles.card__buttons}>
-                <a
-                  href="#buy"
-                  className={styles['card__buttons-cart']}
-                  data-qa="hover"
-                >
-                  Add to cart
-                </a>
-
-                <a href="#" className={styles['card__buttons-fav']}>
-                  <img src="./img/icons/fav.png" alt="favourite goods" />
-                </a>
-              </div>
-            </article>
-          </SwiperSlide>
-        ))}
+              </article>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );

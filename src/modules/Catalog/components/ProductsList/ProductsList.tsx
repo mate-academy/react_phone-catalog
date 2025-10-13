@@ -28,7 +28,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({ type }) => {
       try {
         setLoading(true);
         setError(false);
-        const res = await fetch('/api/products.json');
+        const res = await fetch('./api/products.json');
 
         if (!res.ok) {
           throw new Error('Network response was not ok');
@@ -74,11 +74,17 @@ export const ProductsList: React.FC<ProductsListProps> = ({ type }) => {
   }
 
   if (products.length === 0) {
-    return <EmptyMessage imageSrc={emptyImage} />;
+    return (
+      <EmptyMessage imageSrc={emptyImage} text={`There are no ${type} yet`} />
+    );
   }
 
   return (
     <div className={styles.wrapper}>
+      {visible.length > 0 && (
+        <p className={styles.catalogText}>{sorted.length} models</p>
+      )}
+
       <div className={styles.controls}>
         <SortSelect sort={sort} handleSortChange={setSort} />
         <PageItemsSelect perPage={perPage} handlePerPageChange={setPerPage} />
@@ -88,7 +94,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({ type }) => {
         {visible.length === 0 ? (
           <EmptyMessage
             imageSrc={emptyImage}
-            text="No products match your filters"
+            text={`There are no ${type} yet`}
           />
         ) : (
           visible.map(p => <PhoneCard key={p.id} product={p} />)
