@@ -74,20 +74,26 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
               </div>
 
               <p className={styles.card__settings}>
-                <span className={styles['card__settings-name']}>Screen</span>
-                <span className={styles['card__settings-value']}>
-                  {product.screen}
-                </span>
-
-                <span className={styles['card__settings-name']}>Capacity</span>
-                <span className={styles['card__settings-value']}>
-                  {product.capacity}
-                </span>
-
-                <span className={styles['card__settings-name']}>RAM</span>
-                <span className={styles['card__settings-value']}>
-                  {product.ram}
-                </span>
+                <div className={styles.card__row}>
+                  <span className={styles['card__settings-name']}>Screen</span>
+                  <span className={styles['card__settings-value']}>
+                    {product.screen}
+                  </span>
+                </div>
+                <div className={styles.card__row}>
+                  <span className={styles['card__settings-name']}>
+                    Capacity
+                  </span>
+                  <span className={styles['card__settings-value']}>
+                    {product.capacity}
+                  </span>
+                </div>
+                <div className={styles.card__row}>
+                  <span className={styles['card__settings-name']}>RAM</span>
+                  <span className={styles['card__settings-value']}>
+                    {product.ram}
+                  </span>
+                </div>
               </p>
 
               <div className={styles.card__buttons}>

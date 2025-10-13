@@ -1,4 +1,5 @@
 @use '../../../../shared/styles/variables.scss' as *;
+@use '../../../../shared/styles/mixins.scss' as *;
 
 // .wrapper {
 //   padding-left: 40px;
@@ -14,8 +15,20 @@
 .grid {
   margin-top: 24px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 16px;
+  grid-template-columns: repeat(1, 1fr);
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-big-tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .paginationWrapper {
@@ -141,8 +154,7 @@
   &__settings {
     display: grid;
     grid-template-columns: 115px 1fr;
-    row-gap: 4px;
-    column-gap: 15px;
+    gap: 4px 15px;
 
     &-name {
       color: $card-settings-nameColor;

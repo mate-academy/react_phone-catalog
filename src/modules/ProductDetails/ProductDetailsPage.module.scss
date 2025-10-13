@@ -1,11 +1,13 @@
 @use '../../shared/styles/variables.scss' as *;
+@use '../../shared/styles/mixins.scss' as *;
 
 .container {
   display: flex;
   flex-direction: column;
   padding: 20px;
   background-color: $menu-background-color;
-  padding-left: 152px;
+
+  @include content-padding-inline;
 
   &__errorTitle {
     color: $menu-color;
@@ -29,6 +31,7 @@
   display: flex;
   gap: 4px;
   margin-top: 25px;
+  padding-bottom: 16px;
 }
 
 .buttonBack {
@@ -38,9 +41,17 @@
 }
 
 .name {
-  font-size: 24px;
   color: $menu-color;
   margin-bottom: 40px;
+  font-size: 22px;
+
+  @include on-tablet {
+    font-size: 32px;
+  }
+
+  @include on-desktop {
+    font-size: 32px;
+  }
 }
 
 .wrapper {
@@ -53,26 +64,73 @@
 .top {
   display: flex;
   align-items: flex-start;
-  gap: 64px;
+  flex-direction: column;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+    gap: 17px;
+  }
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+  }
 }
 
 .images {
   display: flex;
   gap: 16px;
+  flex-direction: column-reverse;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 .thumbnails {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   gap: 16px;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+  }
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+  }
 }
 
 .thumbnail {
-  width: 80px;
-  height: 80px;
+  width: 51.2px;
+  height: 49px;
   object-fit: contain;
   cursor: pointer;
   border: 1px solid $slider-back-color;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
 
   &:hover {
     border: 1px solid $menu-color;
@@ -80,11 +138,21 @@
 }
 
 .mainImageWrapper {
-  width: 464px;
-  height: 464px;
+  width: 288px;
+  height: 288px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include on-tablet {
+    width: 287px;
+    height: 287px;
+  }
+
+  @include on-desktop {
+    width: 464px;
+    height: 464px;
+  }
 }
 
 .mainImage {
@@ -106,34 +174,6 @@
     gap: 8px;
     margin-bottom: 16px;
 
-    // &-cart {
-    //   font-weight: 500;
-    //   font-size: 14px;
-    //   line-height: 14px;
-    //   color: $menu-color;
-    //   text-decoration: none;
-    //   background-color: $card-settings-buttonBackColor;
-    //   width: 263px;
-    //   height: 48px;
-    //   outline: none;
-    //   box-shadow: none;
-    //   border: none;
-    //   cursor: pointer;
-    //   justify-content: center;
-    //   align-items: center;
-    //   display: flex;
-
-    //   &:hover {
-    //     background-color: $card-settings-buttonHoverColor;
-    //     color: $menu-color;
-    //   }
-
-    //   &:active {
-    //     background-color: $card-settings-buttonSelectedColor;
-    //     color: $menu-color;
-    //   }
-    // }
-
     &-fav img {
       width: 48px;
       height: 48px;
@@ -154,7 +194,6 @@
   object-fit: contain;
 }
 
-
 .IdProduct {
   font-size: 12px;
   color: $catalogHoverBtnColor;
@@ -168,12 +207,12 @@
 
 .colors {
   gap: 8px;
-  margin-top: 8px;
 
   &__title {
     font-size: 12px;
     color: $card-contentColor;
     font-weight: 500;
+    padding-bottom: 8px;
   }
 }
 
@@ -214,6 +253,7 @@
     font-size: 12px;
     color: $card-contentColor;
     font-weight: 500;
+    padding-bottom: 8px;
   }
 }
 
@@ -298,19 +338,46 @@
 .descr {
   display: flex;
   align-items: flex-start;
-  gap: 64px;
+  gap: 56px;
+  flex-direction: column;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+    display: flex;
+    gap: 64px;
+  }
 }
 
 .about {
-  width: 559px;
+  width: 287px;
+
+  @include on-tablet {
+    width: 591px;
+  }
+
+  @include on-desktop {
+    width: 559px;
+  }
 
   &__name {
-    font-size: 22px;
+    font-size: 20px;
     color: $menu-color;
     font-weight: 600;
     border-bottom: 1px solid $slider-back-color;
     padding-bottom: 16px;
     margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 22px;
+    }
+
+    @include on-desktop {
+      font-size: 22px;
+    }
   }
 
   &__section {
@@ -320,9 +387,17 @@
   }
 
   &__title {
-    font-size: 20px;
+    font-size: 16px;
     color: $menu-color;
     margin-bottom: 16px;
+
+    @include on-tablet {
+      font-size: 20px;
+    }
+
+    @include on-desktop {
+      font-size: 20px;
+    }
   }
 
   &__text {
@@ -332,15 +407,31 @@
 }
 
 .tech {
-  width: 512px;
+  width: 288px;
+
+  @include on-tablet {
+    width: 591px;
+  }
+
+  @include on-desktop {
+    width: 512px;
+  }
 
   &__title {
-    font-size: 22px;
+    font-size: 20px;
     color: $menu-color;
     font-weight: 600;
     border-bottom: 1px solid $slider-back-color;
     padding-bottom: 16px;
     margin-bottom: 25px;
+
+    @include on-tablet {
+      font-size: 22px;
+    }
+
+    @include on-desktop {
+      font-size: 22px;
+    }
   }
 
   &__row {
@@ -364,4 +455,3 @@
     font-weight: 500;
   }
 }
-

@@ -94,7 +94,7 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.container}>
         <BreadCrumbs category={product.category} product={product} />
         <div className={styles.back}>
-          <img src="./img/icons/butnBack.png" alt="Arrow left" />
+          <img src="/img/icons/butnBack.png" alt="Arrow left" />
           <Link to={`/${category}`} className={styles.buttonBack}>
             Back
           </Link>
@@ -210,8 +210,8 @@ export const ProductDetailsPage: React.FC = () => {
                   <img
                     src={
                       isFavorite
-                        ? './img/icons/fav-active.png'
-                        : './img/icons/fav.png'
+                        ? '/img/icons/fav-active.png'
+                        : '/img/icons/fav.png'
                     }
                     alt="favourite goods"
                   />

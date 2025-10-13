@@ -34,15 +34,26 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <div className={styles.header}>
-        <h1 className={styles.header__title}>Welcome to Nice Gadgets store!</h1>
-        <Slider />
+        <h1 className={styles.header__title}>
+          Welcome to Nice{' '}
+          <span className={styles.header__lineBreak}>Gadgets store!</span>
+        </h1>
+      </div>
+
+      <Slider />
+
+      <div className={styles.container}>
         <ProductSlider
           title="Brand new models"
           showOldPrice={false}
           limit={10}
           products={productsHomeSlider || []}
         />
-        <Category />
+      </div>
+
+      <Category />
+
+      <div className={styles.container}>
         <ProductSlider
           title="Hot prices"
           showOldPrice={true}

@@ -1,12 +1,27 @@
 @use '../../../../shared/styles/variables.scss' as *;
 @use '../../../../shared/styles/mixins.scss' as *;
 
+img.arrowBlack {
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+}
+
+img.arrowWhite {
+  display: none;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
   margin-bottom: 80px;
+  padding-left: 0;
 
   list-style: none;
 
@@ -15,7 +30,9 @@
     height: 32px;
     border: none;
     background-color: $menu-border-color;
+
     @include hover(background-color, $catalogHoverBtnColor);
+
     text-decoration: none;
 
     &:hover {
@@ -59,26 +76,14 @@
     height: 16px;
   }
 
-  img.arrowBlack {
-    display: block;
-    width: 16px;
-    height: 16px;
-    position: absolute;
-  }
-
-  img.arrowWhite {
-    display: none;
-    width: 16px;
-    height: 16px;
-    position: absolute;
-  }
-
   &__item {
     width: 32px;
     height: 32px;
     border: none;
     background-color: $card-backColor;
+
     @include hover(background-color, $card-settings-buttonBackColor);
+
     cursor: pointer;
 
     &:hover {

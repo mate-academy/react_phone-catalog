@@ -1,4 +1,5 @@
 @use '../../shared/styles/variables.scss' as *;
+@use '../../shared/styles/mixins.scss' as *;
 
 html,
 body,
@@ -10,44 +11,139 @@ p {
   padding: 0;
   box-sizing: border-box;
 }
+/* stylelint-disable-next-line no-descending-specificity */
+// .container__minus,
+// .container__plus {
+//   width: 32px;
+//   height: 32px;
+//   border: 1px solid $menu-border-color;
+//   background-color: $menu-border-color;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   cursor: pointer;
+//   padding: 0;
+// }
+
+// .container__minus svg,
+// .container__plus svg {
+//   width: 16px;
+//   height: 16px;
+//   color: $menu-color;
+// }
+
+// .container__minus:disabled,
+// .container__plus:disabled {
+//   background-color: transparent;
+//   border-color: $menu-border-color;
+// }
+
+// .container__minus:disabled svg,
+// .container__plus:disabled svg {
+//   color: $menu-border-color;
+// }
+
+// .container__minus:not(:disabled):hover,
+// .container__plus:not(:disabled):hover {
+//   background-color: $catalogHoverBtnColor;
+//   border: 1px solid $catalogHoverBtnColor;
+// }
+.container__minus,
+.container__plus {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $menu-border-color;
+  background-color: $menu-border-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border-color: #4a4d58;
+
+    svg {
+      color: #4a4d58;
+    }
+  }
+
+  &:not(:disabled):hover {
+    background-color: $catalogHoverBtnColor;
+    border: 1px solid $catalogHoverBtnColor;
+  }
+}
 
 .cart {
-  padding-left: 152px;
+  @include content-padding-inline;
 
   &__content {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
     margin-top: 32px;
     margin-bottom: 80px;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      display: flex;
+      gap: 16px;
+      flex-direction: row;
+    }
   }
 
   &__items {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include on-desktop {
+      max-width: 752px;
+    }
   }
 
   &__item {
     background-color: $card-backColor;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    gap: 24px;
-    flex-wrap: nowrap;
-    width: 752px;
-    height: 128px;
+    gap: 16px;
+    flex-flow: row nowrap;
+    width: 100%;
+    min-height: 128px;
+
+    box-sizing: border-box;
+
+    @include on-tablet {
+      width: 592px;
+      gap: 24px;
+    }
+
+    @include on-desktop {
+      width: 752px;
+      gap: 24px;
+    }
   }
 
   &__image {
     width: 80px;
     height: 80px;
-  }
 
-  &__name {
-    font-size: 14px;
-    color: $menu-color;
+    img {
+      flex-shrink: 0;
+    }
   }
 
   &__quantity {
@@ -60,15 +156,26 @@ p {
     color: $menu-color;
     font-size: 22px;
     font-weight: 600;
+    margin-left: auto;
   }
 
   &__summary {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 368px;
-    height: 206px;
+    width: 288px;
+    height: 190px;
     border: 1px solid $catalogHoverBtnColor;
+
+    @include on-tablet {
+      width: 592px;
+      height: 190px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 206px;
+    }
   }
 
   &__total {
@@ -83,8 +190,16 @@ p {
     color: $card-contentColor;
     border-bottom: 1px solid $card-contentColor;
     padding-bottom: 25px;
-    width: 321px;
+    width: 240px;
     text-align: center;
+
+    @include on-tablet {
+      width: 544px;
+    }
+
+    @include on-desktop {
+      width: 321px;
+    }
   }
 
   &__checkout {
@@ -94,7 +209,7 @@ p {
     color: $menu-color;
     text-decoration: none;
     background-color: $card-settings-buttonBackColor;
-    width: 320px;
+    width: 240px;
     height: 48px;
     outline: none;
     box-shadow: none;
@@ -103,7 +218,17 @@ p {
     justify-content: center;
     align-items: center;
     display: flex;
-    margin-top: 23px;
+    margin-top: 16px;
+
+    @include on-tablet {
+      width: 544px;
+      margin-top: 16px;
+    }
+
+    @include on-desktop {
+      width: 320px;
+      margin-top: 24px;
+    }
   }
 
   &__remove {
@@ -152,57 +277,42 @@ p {
   display: flex;
   align-items: center;
   gap: 24px;
+  padding: 0;
+  flex-direction: column;
+  min-width: 0;
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    overflow: hidden;
+  }
 
   &__name {
     color: $menu-color;
     font-size: 14px;
     margin: 0;
-    width: 336px;
+    width: 128px;
     height: 42px;
     display: flex;
     align-items: center;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-desktop {
+      width: 336px;
+    }
   }
 
   &__quantity {
     display: flex;
     align-items: center;
     gap: 14px;
-  }
-}
-
-.container__minus,
-.container__plus {
-  width: 32px;
-  height: 32px;
-  border: 1px solid $menu-border-color;
-  background-color: $menu-border-color;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
-
-  svg {
-    width: 16px;
-    height: 16px;
-    color: white;
-  }
-
-  &:disabled {
-    background-color: transparent;
-    border-color: #4a4d58;
-
-    svg {
-      color: #4a4d58;
-    }
-  }
-
-  &:not(:disabled):hover {
-    background-color: $catalogHoverBtnColor;
-    border: 1px solid $catalogHoverBtnColor;
   }
 }
 

@@ -1,5 +1,5 @@
 @use '../../shared/styles/variables.scss' as *;
-// @use '../../shared/styles/mixins.scss' as *;
+@use '../../shared/styles/mixins.scss' as *;
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -12,39 +12,34 @@ html, body, h2 {
 }
 
 .catalogPage {
-  font-family: 'Montserrat', sans-serif;
+  @include content-padding-inline;
+
+  font-family: Montserrat, sans-serif;
   background-color: $menu-background-color;
   min-height: 100vh;
-  padding: 8px 152px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.catalogPage :global(.breadCrumbs) {
+.breadCrumbsWrapper {
   margin-bottom: 24px;
 }
 
 .catalogTitle {
   font-weight: 700;
-  font-size: 48px;
+  font-size: 32px;
   color: $menu-color;
   line-height: 1.3;
-  padding-top: 40px;
+  padding-top: 24px;
+
+  @include on-desktop {
+    font-size: 48px;
+    padding-top: 40px;
+  }
 }
 
 .catalogText {
   font-size: 14px;
   color: $catalogTextColor;
 }
-
-@media (max-width: 768px) {
-  .catalogPage {
-    padding: 24px 16px;
-  }
-
-  .catalogTitle {
-    font-size: 24px;
-  }
-}
-

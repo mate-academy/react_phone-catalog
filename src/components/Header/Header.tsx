@@ -51,15 +51,15 @@ export const Header: React.FC = () => {
             ))}
           </ul>
         </nav>
-
-        <button
-          className={styles.menu__burger}
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          <img src="./img/icons/burger-menu.png" alt="Menu" />
-        </button>
       </div>
+
+      <button
+        className={styles.menu__burger}
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        <img src="./img/icons/burger-menu.png" alt="Menu" />
+      </button>
 
       <div className={styles.menu__icons}>
         <NavLink
@@ -69,6 +69,7 @@ export const Header: React.FC = () => {
               [styles.isActive]: isActive,
             })
           }
+          onClick={() => setIsOpenMenu(false)}
         >
           <img
             src="./img/icons/like.png"
@@ -86,6 +87,7 @@ export const Header: React.FC = () => {
               [styles.isActive]: isActive,
             })
           }
+          onClick={() => setIsOpenMenu(false)}
         >
           <img
             src="./img/icons/cart.png"

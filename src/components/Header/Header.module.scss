@@ -15,14 +15,19 @@ body {
 }
 
 .menu {
+  // @include content-padding-inline;
+  // margin: 0;
+
   background-color: $menu-background-color;
   border-bottom: 1px solid $menu-border-color;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 64px;
   position: relative;
   gap: 0;
+  padding: 0 16px;
 
   @include on-desktop {
     padding: 0 24px;
@@ -48,26 +53,12 @@ body {
     }
   }
 
-  &__logoImg {
-    display: flex;
-    align-items: center;
-    width: 64px;
-    height: 22px;
-    padding-left: 16px;
-
-    @include on-desktop {
-      padding-left: 24px;
-      width: 80px;
-      height: 28px;
-    }
-
-    // @include on-tablet {
-    //   padding-left: 16px;
-    // }
-  }
-
   &__icons {
     display: none;
+
+    @include on-desktop {
+      gap: 64px;
+    }
 
     a {
       @include on-desktop {
@@ -76,8 +67,25 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        border-left: 1px solid $menu-border-color;
         position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: -24px;
+          top: 0;
+          width: 1px;
+          height: 64px;
+          background-color: $menu-border-color;
+        }
+
+        &:first-child {
+          padding-right: 24px;
+        }
+
+        &:last-child {
+          padding-right: 24px;
+        }
       }
     }
 
@@ -102,11 +110,25 @@ body {
 
   &__burger {
     display: flex;
+    position: relative;
     width: 24px;
     height: 24px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    background: none;
+    border: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -16px;
+      top: 50%;
+      width: 1px;
+      height: 60px;
+      transform: translateY(-50%);
+      background-color: $menu-border-color;
+    }
 
     @include on-tablet {
       display: none;
@@ -148,43 +170,15 @@ body {
 
   &__dropdown {
     display: none;
-    // position: absolute;
     position: fixed;
-    top: 0px;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     background-color: $menu-background-color;
     border-top: 1px solid $menu-border-color;
     flex-direction: column;
-    padding: 16px;
-    z-index: 10;
+    z-index: 9999;
+    padding-left: 0;
 
-    &.isOpen {
-      display: flex;
-    }
-
-    &Header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 32px;
-    }
-  }
-
-  &__close {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-
-    img {
-      width: 24px;
-      height: 24px;
-    }
-  }
-
-  &__list {
+    &__list {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -196,12 +190,56 @@ body {
     list-style: none;
   }
 
+    &.isOpen {
+      display: flex;
+
+      .menu__list {
+        padding-left: 0;
+      }
+    }
+
+    &Header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      padding: 16px;
+      border-bottom: 1px solid $menu-border-color;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -16px;
+      top: 50%;
+      width: 1px;
+      height: 60px;
+      transform: translateY(-50%);
+      background-color: $menu-border-color;
+    }
+  }
+
   &__bottomIcons {
     display: none;
     display: flex;
     justify-content: space-between;
     margin-top: auto;
-    padding-top: 16px;
+    border-top: 1px solid $menu-border-color;
+    width: 100%;
+    gap: 16px;
 
     @include on-tablet {
       display: none;
@@ -218,6 +256,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -15%;
+      width: 1px;
+      height: 100%;
+      background-color: $menu-border-color;
+    }
   }
 }
 
@@ -285,8 +334,17 @@ body {
 }
 
 .logo__image {
-  height: 40px;
-  width: auto;
+  width: 64px;
+  height: 22px;
+
+  @include on-tablet {
+    height: 22px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+  }
 }
 
 .isActive {

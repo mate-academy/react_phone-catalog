@@ -4,6 +4,18 @@
   }
 }
 
+@mixin on-big-tablet {
+  @media (min-width: 768px) and (max-width: 1199px) {
+    @content
+  }
+}
+
+@mixin on-small-desktop {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
 @mixin on-desktop {
   @media (min-width: 1200px) {
     @content;
@@ -11,10 +23,14 @@
 }
 
 @mixin content-padding-inline {
-   padding-inline: 16px;
+  padding-inline: 16px;
 
   @include on-tablet {
     padding-inline: 24px;
+  }
+
+  @include on-small-desktop {
+    padding-inline: 32px;
   }
 
   @include on-desktop {
@@ -50,6 +66,7 @@
 
   @include on-desktop {
     --columns: 24;
+
     gap: 16px;
   }
 }

@@ -3,7 +3,7 @@
 
 .wrapper {
   // @include page-grid;
-  @include content-padding-inline;
+  // @include content-padding-inline;
 }
 
 .header {
@@ -45,7 +45,10 @@
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-  transition: background-color 0.3s, border 0.3s, background-image 0.3s;
+  transition:
+    background-color 0.3s,
+    border 0.3s,
+    background-image 0.3s;
 
   &:disabled {
     border-color: $slider-back-color;
@@ -77,7 +80,6 @@
   background-image: url('/img/icons/right_black_arrow.svg');
 }
 
-
 .card {
   width: 212px;
   min-height: 439px;
@@ -86,10 +88,11 @@
   flex-direction: column;
   overflow: hidden;
   padding: 0 32px;
+  gap: 16px;
 
   @include on-tablet {
     width: 237px;
-    min-height: 512px;
+    height: 512px;
   }
 
   @include on-desktop {
@@ -118,7 +121,7 @@
 
     @include on-tablet {
       width: 173px;
-      height: 202px;
+      height: 181px;
     }
 
     @include on-desktop {
@@ -148,8 +151,8 @@
     -webkit-box-orient: vertical;
 
     a {
-    color: inherit;
-    text-decoration: none;
+      color: inherit;
+      text-decoration: none;
     }
 
     @include on-tablet {
@@ -188,10 +191,16 @@
 
   &__settings {
     display: grid;
-    grid-template-columns: 90px 1fr;
-    row-gap: 1px;
-    column-gap: 15px;
+    width: 148px;
     min-height: auto;
+
+    @include on-tablet {
+      width: 173px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+    }
 
     &-name {
       color: $card-settings-nameColor;
@@ -236,18 +245,13 @@
         line-height: 18px;
       }
     }
+  }
 
-    @include on-tablet {
-      grid-template-columns: 115px 1fr;
-      row-gap: 5px;
-      column-gap: 18px;
-    }
-
-     @include on-desktop {
-      grid-template-columns: 115px 1fr;
-      row-gap: 8px;
-      column-gap: 40px;
-    }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
   }
 
   &__buttons {

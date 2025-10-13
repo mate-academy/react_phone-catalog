@@ -4,12 +4,13 @@
 .sliderWrapper {
   @include content-padding-inline;
   @include page-grid;
+
   grid-column: 1 / -1;
   position: relative;
   width: 100%;
   height: auto;
   margin: 0 auto;
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,15 +18,13 @@
 
   @include on-tablet {
     position: relative;
-    width: 592px;
-    // height: 221px;
+    max-width: 700px;
     height: auto;
   }
 
   @include on-desktop {
     position: relative;
     width: 1440px;
-    // height: 432px;
     height: auto;
   }
 }
@@ -35,6 +34,14 @@
   width: 100%;
   max-width: 1136px;
   margin: 0 auto;
+
+  @include on-tablet {
+    padding-left: 25px;
+  }
+
+  @include on-desktop {
+    padding-left: 44px;
+  }
 }
 
 .navBtn {
@@ -47,7 +54,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 100;
+  z-index: 10;
   border: none;
 
   @include on-tablet {
@@ -82,24 +89,22 @@
 }
 
 .prevBtn {
-
   @include on-desktop {
-    left: -48px;
+    left: 0;
   }
 
   @include on-tablet {
-    left: -48px;
+    left: -34px;
   }
 }
 
 .nextBtn {
-
   @include on-desktop {
-    right: 48px;
+    right: 4px;
   }
 
   @include on-tablet{
-    right: -48px;
+    right: -37px;
   }
 }
 
@@ -114,7 +119,7 @@
 
   @include on-tablet {
     height: 189px;
-    width: 550px;
+    width: 600px;
   }
 
   @include on-desktop {
@@ -177,7 +182,6 @@
   &__image {
     flex: 1;
     display: flex;
-    margin-top: auto;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
@@ -188,7 +192,6 @@
     gap: 8px;
 
     @include on-tablet {
-
       justify-content: flex-end;
       bottom: 13%;
       left: 80%;
@@ -196,7 +199,6 @@
     }
 
     @include on-desktop {
-
       justify-content: flex-end;
       left: 75%;
       transform: translateX(-50%);
@@ -206,7 +208,6 @@
       width: 240px;
       height: 150px;
       max-width: 100%;
-      // height: auto;
 
       @include on-tablet {
         width: 160px;
@@ -270,20 +271,19 @@
   &__content {
     width: 320px;
     height: 320px;
-    padding-bottom: 20px;
     justify-content: flex-start;
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    padding: 16px;
+    padding: 16px 16px 20px;
 
     @include on-tablet {
       justify-content: flex-start;
-      padding-top: 10px;
       display: flex;
       width: 280px;
       height: 250px;
       padding: 40px 12px;
+      padding-top: 10px;
       background-color: $slider-color;
       text-align: left;
       align-items: flex-start;
@@ -294,11 +294,11 @@
 
     @include on-desktop {
       justify-content: flex-start;
-      padding-top: 40px;
       display: block;
       width: 468px;
       height: 380px;
       padding: 24px 32px;
+      padding-top: 40px;
       background-color: $slider-color;
       text-align: left;
       align-items: flex-start;
@@ -425,7 +425,6 @@
   justify-content: center;
   transform: none;
   margin-top: 10px;
-  justify-content: center;
   left: 0;
   right: 0;
   gap: 8px;
@@ -440,11 +439,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  &:after {
+
+  &::after {
     content: '';
     width: 14px;
     height: 4px;
-    // border-radius: 2px;
     background-color: $slider-color-button;
   }
 }
@@ -452,7 +451,8 @@
 .activeBullet {
   cursor: auto;
   pointer-events: none;
-  &:after {
+
+  &::after {
     background-color: grey;
   }
 }

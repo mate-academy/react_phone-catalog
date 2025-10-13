@@ -1,13 +1,14 @@
 @use '../../../../shared/styles/variables.scss' as *;
 @use '../../../../shared/styles/fonts.scss' as *;
+@use '../../../../shared/styles/mixins.scss' as *;
 
 .wrapper {
   padding-left: 40px;
 }
 
 .card {
-  width: 272px;
-  min-height: 506px;
+  width: 287px;
+  min-height: 440px;
   background-color: $card-backColor;
   display: flex;
   flex-direction: column;
@@ -16,6 +17,21 @@
   box-sizing: border-box;
   border: 1px solid transparent;
   transition: border 0.3s ease;
+
+  @include on-tablet {
+    width: 288px;
+    min-height: 506px;
+  }
+
+  @include on-big-tablet {
+    width: 229px;
+    min-height: 506px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    min-height: 506px;
+  }
 
   &__slider-buttons {
     display: flex;
@@ -29,12 +45,27 @@
   &__image {
     top: 0;
     left: 0;
-    width: 208px;
-    height: 196px;
+    width: 223px;
+    height: 130px;
     display: block;
 
     object-fit: contain;
     object-position: center;
+
+    @include on-tablet {
+      width: 224px;
+      height: 196px;
+    }
+
+    @include on-big-tablet {
+      width: 165px;
+      height: 196px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+      height: 196px;
+    }
   }
 
   &__image > img {
@@ -86,30 +117,41 @@
 
   &__settings {
     display: grid;
-    grid-template-columns: 115px 1fr;
-    row-gap: 4px;
-    column-gap: 15px;
-    min-height: 108px;
+    width: 224px;
+    min-height: auto;
 
-    grid-auto-rows: 36px;
-    align-items: start;
+    @include on-tablet {
+      width: 165px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+    }
 
     &-name {
       color: $card-settings-nameColor;
       font-size: 12px;
-      line-height: 18px;
+      line-height: 16px;
       font-weight: 600;
       -webkit-line-clamp: 2;
-      min-height: 42px;
-      max-height: 42px;
+      overflow: hidden;
+      min-height: auto;
+      max-height: none;
+
+      @include on-tablet {
+        line-height: 18px;
+      }
+
+      @include on-desktop {
+        line-height: 18px;
+      }
     }
 
     &-value {
       color: $menu-color;
       font-weight: 400;
       font-size: 12px;
-      line-height: 18px;
-
+      line-height: 16px;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
@@ -119,8 +161,23 @@
 
       overflow-wrap: anywhere;
       word-break: break-word;
-      max-height: 36px;
+      max-height: none;
+
+      @include on-tablet {
+        line-height: 18px;
+      }
+
+      @include on-desktop {
+        line-height: 18px;
+      }
     }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
   }
 
   &__buttons {
@@ -128,34 +185,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 16px;
-
-    // &-cart {
-    //   font-weight: 500;
-    //   font-size: 14px;
-    //   line-height: 14px;
-    //   color: $menu-color;
-    //   text-decoration: none;
-    //   background-color: $card-settings-buttonBackColor;
-    //   width: 160px;
-    //   height: 40px;
-    //   outline: none;
-    //   box-shadow: none;
-    //   border: none;
-    //   cursor: pointer;
-    //   justify-content: center;
-    //   align-items: center;
-    //   display: flex;
-
-    //   &:hover {
-    //     background-color: $card-settings-buttonHoverColor;
-    //     color: $menu-color;
-    //   }
-
-    //   &:active {
-    //     background-color: $card-settings-buttonSelectedColor;
-    //     color: $menu-color;
-    //   }
-    // }
+    padding-top: 8px;
 
     &-fav img {
       width: 40px;

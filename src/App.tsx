@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { Header } from './components/Header';
 import { HomePage } from './modules/HomePage/HomePage';
@@ -16,7 +16,7 @@ export const App: React.FC = () => {
   return (
     <FavoritesProvider>
       <CartProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Header />
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
@@ -37,7 +37,7 @@ export const App: React.FC = () => {
             />
           </Routes>
           <Footer />
-        </BrowserRouter>
+        </HashRouter>
       </CartProvider>
     </FavoritesProvider>
   );
