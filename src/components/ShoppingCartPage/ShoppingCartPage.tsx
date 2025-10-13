@@ -61,7 +61,7 @@ export const ShoppingCartPage = () => {
                       <Link to={`/${product.category}/${product.id}`}>
                         <img
                           className={styles.cart__img}
-                          src={`.${product.image}`}
+                          src={`./${product.image}`}
                           alt="Product image"
                         />
                       </Link>
