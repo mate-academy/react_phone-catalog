@@ -1,8 +1,14 @@
+@use "/src/mixins.scss" as *;
+
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  @include page-grid;
+
+  gap: 32px;
   color: #F1F2F9;
+
+  @include on-desktop {
+    gap: 16px;
+  }
 }
 
 .cartComponent {
@@ -11,6 +17,24 @@
   padding: 16px;
   background-color: #161827;
   gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    padding: 24px;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    grid-column: 1/17;
+  }
 }
 
 .box {
@@ -20,6 +44,10 @@
   gap: 16px;
   background-color: #161827;
   align-items: center;
+
+  @include on-tablet {
+    gap: 24px;
+  }
 }
 
 .title {
@@ -63,4 +91,66 @@
 
 .price {
   font-size: 22px;
+  background-color: #161827;
+
+  @include on-tablet {
+    background-color: #161827;
+    width: 80px;
+    text-align:
+    right;
+  }
+}
+
+.gridPrice {
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    grid-column: 1/17;
+  }
+
+  @include on-desktop {
+    grid-column: 17/-1;
+  }
+}
+
+.containerPrice {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #3B3E4A;
+  padding: 24px;
+  gap: 16px;
+  width: 100%;
+}
+
+.containerTotalPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #3B3E4A;
+
+  @include on-desktop {
+    padding-bottom: 24px;
+  }
+}
+
+.totalPrice {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+}
+
+.countItems {
+  font-size: 14px;
+  color: #75767F;
+  line-height: 21px;
+}
+
+.checkout {
+  height: 48px;
+  border: none;
+  background-color: #905BFF;
+  color: #F1F2F9;
+  font-size: 14px;
+  line-height: 21px;
 }

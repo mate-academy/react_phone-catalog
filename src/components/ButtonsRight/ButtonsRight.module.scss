@@ -1,0 +1,34 @@
+@use '/src/mixins.scss' as *;
+
+.buttonsRight {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.buttonsRight a {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  border-left: 1px solid #323542;
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.buttonsRight a.active {
+  color: #F1F2F9;
+  border-bottom: 3px solid #F1F2F9;
+  padding-bottom: 4px;
+  display: flex;
+  align-items: center;
+}

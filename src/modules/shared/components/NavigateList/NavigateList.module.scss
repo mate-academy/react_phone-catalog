@@ -1,8 +1,9 @@
-.navigate {
-  color: #75767F;
-  font-weight: 700;
+@use "/src/mixins.scss" as *;
+
+.container {
   padding-bottom: 24px;
-  display: flex;
-  gap: 8px;
-  font-size: 12px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
 }

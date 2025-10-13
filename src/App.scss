@@ -35,8 +35,20 @@ iframe {
   scroll-behavior: smooth;
 }
 
+html, body {
+  height: 100%;
+}
+
+[data-cy="app"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .container {
   @include content-padding-inline;
+
+  flex: 1;
 }
 
 button {

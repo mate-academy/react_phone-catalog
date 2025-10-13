@@ -1,4 +1,4 @@
-import styles from './CartPage.module.scss';
+import styles from './CardPage.module.scss';
 import { NavigateList } from '../shared/components/NavigateList/NavigateList';
 import { useMemo, useState } from 'react';
 import { useTabs } from '../../ProductsContext/TabsContext';
@@ -113,6 +113,9 @@ export const CartPage = () => {
     }
   })();
 
+  const visibilityPagination =
+    !categoryFavourite && !categoryCart && perPageParam !== 'all';
+
   return (
     <div className={styles.container}>
       <NavigateList />
@@ -157,7 +160,7 @@ export const CartPage = () => {
         )}
       </div>
 
-      {!categoryFavourite && !categoryCart && (
+      {visibilityPagination && (
         <Pagination
           totalPage={totalPage}
           currentPage={pageParam}

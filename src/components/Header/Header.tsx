@@ -1,21 +1,14 @@
-import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
+import { useState } from 'react';
+import { BurgerMenu } from '../BurgerMenu';
+import { NavLinks } from '../NavLinks';
+import { ButtonsRight } from '../ButtonsRight';
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const getIsActive = ({ isActive }: { isActive: boolean }) =>
     isActive ? styles.active : '';
-
-  const navLinks = [
-    { to: '/', label: 'home' },
-    { to: '/phones', label: 'phones' },
-    { to: '/tablets', label: 'tablets' },
-    { to: '/accessories', label: 'accessories' },
-  ];
-
-  const buttonsNav = [
-    { to: '/favourites', img: '/img/favourites.svg', alt: 'Favourites' },
-    { to: '/cart', img: '/img/cart.png', alt: 'Cart' },
-  ];
 
   return (
     <header className={styles.header}>
@@ -24,28 +17,28 @@ export const Header = () => {
           <img src="/img/Logo.svg" alt="Logo" />
         </div>
 
-        <nav className={styles.nav}>
-          {navLinks.map(link => (
-            <NavLink key={link.to} to={link.to} className={getIsActive}>
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
+        <div className={styles.navLinks}>
+          <NavLinks />
+        </div>
       </div>
 
-      <div className={styles.buttonsRight}>
-        {buttonsNav.map(link => (
-          <NavLink key={link.to} to={link.to} className={getIsActive}>
-            <img src={link.img} alt={link.alt} />
-          </NavLink>
-        ))}
-      </div>
+      <ButtonsRight getIsActive={getIsActive} />
 
-      <div className={styles.burgerMenu}>
-        <NavLink to="/" className={getIsActive}>
+      <div
+        className={styles.burgerMenu}
+        onClick={() => setIsMenuOpen(prev => !prev)}
+      >
+        <button>
           <img src="/img/SliderImg/Menu.svg" alt="BurgerMenu" />
-        </NavLink>
+        </button>
       </div>
+
+      {isMenuOpen && (
+        <BurgerMenu
+          getIsActive={getIsActive}
+          onClose={() => setIsMenuOpen(false)}
+        />
+      )}
     </header>
   );
 };

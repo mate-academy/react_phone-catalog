@@ -3,65 +3,88 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 24px;
   background-color: #161827;
   padding: 32px;
   position: relative;
   min-width: 212px;
+  justify-content: space-between;
+
+  * {
+    background-color: inherit;
+  }
 }
 
-.imageWrapper {
+.above {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #161827;
   width: 100%;
   height: 178px;
 }
 
-.container img {
-  background-color: #161827;
-
+.above img {
   object-fit: contain;
-
   max-width: 100%;
   max-height: 100%;
 }
 
-.containerPrice {
+.bottom {
   display: flex;
-  background-color: #161827;
+  flex-direction: column;
   gap: 8px;
 }
 
+
 .title {
-  padding-top: 16px;
-  background-color: #161827;
   font-size: 14px;
   color: #F1F2F9;
   font-weight: normal;
+}
 
-  @include on-tablet {
-    height: 70px;
-  }
-
-  @include on-desktop {
-    height: auto;
-  }
+.containerPrice {
+  display: flex;
+  gap: 8px;
 }
 
 .price {
-  background-color: #161827;
   font-size: 22px;
   color: #F1F2F9;
   font-weight: 800;
 }
 
+.fullPrice {
+  font-size: 22px;
+  font-weight: 600;
+  text-decoration: line-through;
+  color: #313237;
+}
+
+.blockInform {
+  border-top: 1px solid #3B3E4A;
+  padding: 16px 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.information {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  color: #75767F;
+}
+
+.value {
+ color: #F1F2F9;
+}
+
 .blockButtons {
   display: flex;
   justify-content: space-between;
-  background-color: #161827;
   gap: 8px;
 }
 
@@ -69,7 +92,7 @@
   background-color: #905BFF;
   border: none;
   color: #F1F2F9;
-  width: 160px;
+  width: 100%;
   height: 40px;
 }
 
@@ -81,47 +104,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .favourites img {
-  background-color: #323542;
   width: 16px;
   height: 16px;
 }
 
 .addedToCart {
   background-color: #323542;
-}
-
-.fullPrice {
-  background-color: #161827;
-  font-size: 22px;
-  font-weight: 600;
-  text-decoration: line-through;
-  color: #313237;
-}
-
-.blockInform {
-  border-top: 1px solid #3B3E4A;
-  margin: 8px 0;
-}
-
-.information {
-  display: flex;
-  gap: 8px;
-  padding-top: 16px;
-  justify-content: space-between;
-  background-color: #161827;
-}
-
-.name {
-  color: #75767F;
-  background-color: #161827;
-
-}
-
-.value {
- color: #F1F2F9;
- background-color: #161827;
-
 }
