@@ -1,0 +1,103 @@
+@import '../../styles/mixins.scss';
+
+.main-page {
+  &__hello {
+    @include content-padding-inline;
+  }
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}
+
+.categories {
+  @include content-padding-inline;
+}
+
+.category__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.category {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__img {
+    overflow: hidden;
+  }
+
+  &__img__link {
+    width: 100%;
+
+    @include hover-scale-hover;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &__name {
+      margin: 0;
+      padding: 0;
+
+      @include hover-scale-hover;
+
+      overflow: hidden;
+
+      @include mont(600, 20px);
+    }
+
+    &__info {
+      margin: 0;
+      padding: 0;
+
+      @include mont(600, 14px);
+
+      color: $main-grey-color;
+    }
+  }
+}
+
+.page-top {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    gap: 56px;
+  }
+}

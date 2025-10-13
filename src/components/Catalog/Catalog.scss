@@ -1,0 +1,118 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/vars.scss';
+
+.catalog {
+  @include content-padding-inline;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__size {
+    @include mont(600, 14px);
+
+    color: $main-grey-color;
+    margin-bottom: 40px;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    &__btn {
+      background-color: #fff;
+      color: $main-black-color;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(226, 230, 233, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include hover-black-hover;
+
+      @include mont(600, 14px);
+    }
+  }
+}
+
+.catalog-page {
+  &__search-params {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    &__element {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &__lebel {
+      @include mont(700, 12px);
+
+      color: $main-grey-color;
+    }
+
+    &__value {
+      @include mont(700, 12px);
+
+      border: 1px solid $main-grey-color;
+    }
+
+    &__select {
+
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+      width: 175px;
+      height: 40px;
+      border: 1px solid #b7c0c7;
+      border-radius: 0;
+      padding: 0 32px 0 12px;
+      background-color: #fff;
+      cursor: pointer;
+
+      @include mont(600, 14px);
+
+      &:focus {
+        outline: none;
+        border-color: $main-black-color;
+      }
+    }
+  }
+
+  &__items {
+    justify-items: center;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    @media (min-width: 550px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 800px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+.catalog__pagination__btn--active {
+  background-color: $main-black-color;
+  color: #fff;
+}

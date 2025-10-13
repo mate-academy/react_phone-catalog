@@ -1,0 +1,71 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+
+.bread-crumbs {
+  // margin-top: -15px;
+  // padding-inline: 16px;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  margin-bottom: 24px;
+
+
+  @include content-padding-inline;
+
+  display: flex;
+  gap: 8px;
+
+  align-items: center;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__home {
+    display: flex;
+    align-items: center;
+
+    &__link {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__next {
+    display: flex;
+
+    &__link {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__item {
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+    color: $main-grey-color;
+    text-decoration: none;
+    color: inherit;
+    border: none;
+
+    @include mont(600, 16px);
+
+    &__link {
+      display: flex;
+      line-height: 1;
+      align-items: center;
+      margin: 0;
+      text-decoration: none;
+      color: $main-grey-color;
+
+      &--active {
+        color: $main-black-color;
+        text-decoration: none;
+      }
+    }
+  }
+}
