@@ -1,0 +1,48 @@
+@import '../../../../styles/variables';
+
+.themeSwitcher {
+  padding-inline: 16px;
+}
+
+.toggleInput {
+  display: none;
+}
+
+.toggleLabel {
+  padding-block: 2px;
+  padding-inline: 2px;
+  display: flex;
+  justify-content: space-between;
+  width: 46px;
+  height: 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid var(--secondary);
+  transition: $transition-base;
+}
+
+.icon {
+  height: 100%;
+}
+
+.iconSun {
+  filter: var(--icon-filter);
+}
+
+.toggleCircle {
+  position: absolute;
+  top: 5%;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(0deg, var(--pink), var(--main-bg));
+  transition: all 0.3s ease;
+}
+
+.toggleInput:checked + .toggleLabel .toggleCircle {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, var(--purple), var(--accent));
+}

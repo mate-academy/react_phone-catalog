@@ -1,0 +1,10 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.productsList {
+  @include grid-container($padding-mobile: 0, $padding-tablet: 0);
+
+  & > * {
+    @include grid-columns($cols-mobile: 4, $cols-tablet: 4, $cols-desktop: 6);
+  }
+}

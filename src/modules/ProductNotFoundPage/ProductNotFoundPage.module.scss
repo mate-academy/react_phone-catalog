@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.page {
+  @include page-min-height;
+  @include page-wrapper;
+
+  background-image: url('/img/page-not-found.png');
+  background-position-x: center;
+  background-position-y: 80px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.container {
+  @include grid-columns;
+
+  height: 100%;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pageTitle {
+  align-self: center;
+  text-shadow: 3px 3px 1px var(--main-bg);
+}

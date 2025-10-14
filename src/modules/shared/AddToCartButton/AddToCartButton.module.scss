@@ -1,0 +1,32 @@
+@import '../../../styles/variables';
+
+.addToCartButton {
+  flex: 1;
+  height: 40px;
+
+  color: var(--main-bg);
+  background-color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &:active {
+    color: var(--button-hover);
+    background-color: var(--main-bg);
+    border: 1px solid var(--elements);
+    box-shadow: none;
+  }
+}
+
+.addedToCart {
+  color: var(--button-hover);
+  background-color: var(--main-bg);
+
+  &:hover {
+    box-shadow: none;
+  }
+}

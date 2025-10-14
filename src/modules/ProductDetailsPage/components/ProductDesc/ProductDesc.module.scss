@@ -1,0 +1,46 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.additionalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.aboutSection {
+  @include on-tablet {
+    grid-column: 1 / 7;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 12;
+  }
+}
+
+.descriptionItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.descriptionText {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--secondary);
+}
+
+.techSpecsSection {
+  @include on-tablet {
+    grid-column: 7 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 13 / -1;
+  }
+}
+
+.divider {
+  display: block;
+  border: 1px solid var(--icons);
+}

@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.cartPage {
+  @include page-wrapper;
+}
+
+.isEmpty {
+  @include page-min-height;
+
+  background-image: url('/img/cart-is-empty.png');
+  background-repeat: no-repeat;
+  background-position: center 80px;
+  background-size: contain;
+}
+
+.productList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-desktop {
+    grid-column: 1 / 16;
+    gap: 25px;
+  }
+}
