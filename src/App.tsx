@@ -18,6 +18,7 @@ export const App: React.FC = () => {
       <CartProvider>
         <HashRouter>
           <Header />
+          <h1 className="appTitle">Product Catalog</h1>
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
             <Route path="/phones" element={<Catalog type={'phones'} />}></Route>

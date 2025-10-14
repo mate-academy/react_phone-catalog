@@ -145,11 +145,18 @@ export const Header: React.FC = () => {
         </ul>
 
         <div className={styles.menu__bottomIcons}>
-          <NavLink to={'/favorites'} className={styles.menu__bottomIcon}>
+          <NavLink to="/favorites" className={styles.menu__bottomIcon}>
             <img src="./img/icons/like.png" alt="Favorites" />
+            {favorites.length > 0 && (
+              <span className={styles.menu__badge}>{favorites.length}</span>
+            )}
           </NavLink>
-          <NavLink to={'/cart'} className={styles.menu__bottomIcon}>
+
+          <NavLink to="/cart" className={styles.menu__bottomIcon}>
             <img src="./img/icons/cart.png" alt="Cart" />
+            {totalQuantity > 0 && (
+              <span className={styles.menu__countCart}>{totalQuantity}</span>
+            )}
           </NavLink>
         </div>
       </div>

@@ -8,6 +8,6 @@ interface EmptyMessageProps {
 export const EmptyMessage = ({ text, imageSrc }: EmptyMessageProps) => (
   <div className={styles.empty}>
     {imageSrc && <img src={imageSrc} alt="Empty" className={styles.image} />}
-    {text && <p>{text}</p>}
+    {text && <p className={styles.emptyText}>{text}</p>}
   </div>
 );

@@ -15,95 +15,75 @@ body {
 }
 
 .menu {
-  // @include content-padding-inline;
-  // margin: 0;
-
   background-color: $menu-background-color;
   border-bottom: 1px solid $menu-border-color;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 64px;
+  height: 48px;
   position: relative;
   gap: 0;
-  padding: 0 16px;
-
-  @include on-desktop {
-    padding: 0 24px;
-  }
 
   @include on-tablet {
-    padding: 0 16px;
+    height: 48px;
+  }
+
+  @include on-desktop {
+    height: 64px;
   }
 
   &__left {
     gap: 0;
+    padding-left: 16px;
 
     @include on-tablet {
       gap: 16px;
       display: flex;
       align-items: center;
+      padding-left: 16px;
     }
 
     @include on-desktop {
       gap: 24px;
       display: flex;
       align-items: center;
+      padding-left: 16px;
     }
   }
 
   &__icons {
     display: none;
 
-    @include on-desktop {
-      gap: 64px;
-    }
-
     a {
-      @include on-desktop {
-        width: 64px;
-        height: 64px;
+      @include on-tablet {
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
+        border: 1px solid $menu-border-color;
+        padding: 16px;
+      }
 
-        &::before {
-          content: '';
-          position: absolute;
-          left: -24px;
-          top: 0;
-          width: 1px;
-          height: 64px;
-          background-color: $menu-border-color;
-        }
-
-        &:first-child {
-          padding-right: 24px;
-        }
-
-        &:last-child {
-          padding-right: 24px;
-        }
+      @include on-desktop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid $menu-border-color;
+        padding: 24px;
       }
     }
 
     @include on-tablet {
-      width: 48px;
-      height: 48px;
       display: flex;
       align-items: center;
-      gap: 16px;
       margin-left: auto;
     }
 
     @include on-desktop {
-      width: 64px;
-      height: 64px;
       display: flex;
       align-items: center;
-      gap: 24px;
       margin-left: auto;
     }
   }
@@ -111,24 +91,13 @@ body {
   &__burger {
     display: flex;
     position: relative;
-    width: 24px;
-    height: 24px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     background: none;
-    border: none;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: -16px;
-      top: 50%;
-      width: 1px;
-      height: 60px;
-      transform: translateY(-50%);
-      background-color: $menu-border-color;
-    }
+    border: 1px solid $menu-border-color;
+    border-bottom: none;
+    padding: 16px;
 
     @include on-tablet {
       display: none;
@@ -148,9 +117,19 @@ body {
     border-radius: 50%;
     position: absolute;
     top: 22px;
-    right: 22px;
+    right: 68px;
     transform: translate(50%, -50%);
     z-index: 1;
+
+    @include on-tablet {
+      top: 15px;
+      right: 15px;
+    }
+
+    @include on-desktop {
+      top: 22px;
+      right: 22px;
+    }
   }
 
   &__countCart {
@@ -163,9 +142,19 @@ body {
     position: absolute;
     text-decoration: none;
     top: 22px;
-    right: 22px;
+    right: 68px;
     transform: translate(50%, -50%);
     z-index: 1;
+
+    @include on-tablet {
+      top: 15px;
+      right: 15px;
+    }
+
+    @include on-desktop {
+      top: 22px;
+      right: 22px;
+    }
   }
 
   &__dropdown {
@@ -179,22 +168,29 @@ body {
     padding-left: 0;
 
     &__list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex-grow: 1;
-    align-items: center;
-    color: $card-contentColor;
-    font-size: 12px;
-    font-weight: 600;
-    list-style: none;
-  }
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+      color: $card-contentColor;
+      font-size: 12px;
+      font-weight: 600;
+      list-style: none;
+    }
 
     &.isOpen {
       display: flex;
 
       .menu__list {
-        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+        list-style: none;
+        padding: 0;
       }
     }
 
@@ -202,8 +198,8 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 32px;
-      padding: 16px;
+      // padding: 16px;
+      height: 48px;
       border-bottom: 1px solid $menu-border-color;
     }
   }
@@ -212,24 +208,10 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
     position: relative;
-
-    img {
-      width: 24px;
-      height: 24px;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: -16px;
-      top: 50%;
-      width: 1px;
-      height: 60px;
-      transform: translateY(-50%);
-      background-color: $menu-border-color;
-    }
+    border: 1px solid $menu-border-color;
+    border-bottom: none;
+    padding: 16px;
   }
 
   &__bottomIcons {
@@ -315,9 +297,12 @@ body {
   &__link {
     display: block;
     text-decoration: none;
-    color: var(--typical-color);
+    color: $card-contentColor;
     line-height: 60px;
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
   }
 
   &__iconsLike {
@@ -334,8 +319,9 @@ body {
 }
 
 .logo__image {
-  width: 64px;
+  width: auto;
   height: 22px;
+  padding-left: 16px;
 
   @include on-tablet {
     height: 22px;
@@ -355,7 +341,7 @@ body {
     content: '';
     display: block;
     background-color: $menu-color;
-    height: 4px;
+    height: 2px;
     position: absolute;
     bottom: 0;
     left: 0;

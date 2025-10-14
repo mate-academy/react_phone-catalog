@@ -52,32 +52,34 @@ export const CartPage: React.FC = () => {
         <div className={styles.cart__items}>
           {cartItems.map(item => (
             <div key={item.id} className={styles.cart__item}>
-              <button
-                className={styles.cart__remove}
-                onClick={() => removeFromCart(item.id)}
-                aria-label="Remove item"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M18 6L6 18M6 6l12 12"
-                    stroke="#4A4D58"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-              <img
-                src={item.image}
-                alt={item.name}
-                className={styles.cart__image}
-              />
+              <div className={styles.cart__itemLeft}>
+                <button
+                  className={styles.cart__remove}
+                  onClick={() => removeFromCart(item.id)}
+                  aria-label="Remove item"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M18 6L6 18M6 6l12 12"
+                      stroke="#4A4D58"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className={styles.cart__image}
+                />
+                <p className={styles.cart__name}>{item.name}</p>
+              </div>
 
-              <div className={styles.container}>
-                <p className={styles.container__name}>{item.name}</p>
-                <div className={styles.container__quantity}>
+              <div className={styles.cart__itemRight}>
+                <div className={styles.cart__quantity}>
                   <button
-                    className={styles.container__minus}
+                    className={styles.button__minus}
                     onClick={() => decreaseQuantity(item.id)}
                     aria-label="Decrease quantity"
                     disabled={item.quantity === 1}
@@ -95,7 +97,7 @@ export const CartPage: React.FC = () => {
                   </button>
                   <span className={styles.cart__quantity}>{item.quantity}</span>
                   <button
-                    className={styles.container__plus}
+                    className={styles.button__plus}
                     onClick={() => increaseQuantity(item.id)}
                     aria-label="Increase quantity"
                   >
@@ -119,13 +121,13 @@ export const CartPage: React.FC = () => {
                     </svg>
                   </button>
                 </div>
+                <p className={styles.cart__price}>
+                  $
+                  {(typeof item.price === 'string'
+                    ? Number(item.price.replace(/[^0-9.]/g, ''))
+                    : item.price) * item.quantity}
+                </p>
               </div>
-              <p className={styles.cart__price}>
-                $
-                {(typeof item.price === 'string'
-                  ? Number(item.price.replace(/[^0-9.]/g, ''))
-                  : item.price) * item.quantity}
-              </p>
             </div>
           ))}
         </div>
