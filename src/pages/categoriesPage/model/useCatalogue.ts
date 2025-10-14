@@ -1,8 +1,13 @@
 import { Category, get } from '@shared/api';
 import { useEffect } from 'react';
 import { useUrlReducer } from './useUrlReducer';
-import { CatalogueConf, ItemsAmount, Order } from '@shared/api/types';
-import { useLoadItems } from '@features/index';
+import {
+  CatalogueConf,
+  CatalogueData,
+  ItemsAmount,
+  Order,
+} from '@shared/api/types';
+import { Status, useLoadItems } from '@features/index';
 
 type Props = {
   category: Category;
@@ -37,10 +42,10 @@ export const useCatalogue = ({ category }: Props) => {
   };
 
   return {
-    data: products.items,
+    data: products.items as CatalogueData | Status,
     length: length.items,
     set,
-    currentOrder: apiConfig.sort as string,
-    currentPerPage: apiConfig.perPage as string,
+    currentOrder: apiConfig.sort,
+    currentPerPage: apiConfig.perPage,
   };
 };

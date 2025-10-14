@@ -1,5 +1,6 @@
 import { Status, useLoadItems } from '@features/index';
 import { Category, get, ItemsAmount, Order } from '@shared/api';
+import { CatalogueData } from '@shared/api/types';
 import { Product } from '@shared/types';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -24,6 +25,6 @@ export const useProductPage = () => {
 
   return {
     prod: item.items as Product | Status,
-    sliderItems: sliderData.items,
+    sliderItems: sliderData.items as CatalogueData | Status,
   };
 };

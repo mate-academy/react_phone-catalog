@@ -1,8 +1,8 @@
 import React from 'react';
 import { UISectionProps, techSpecUIBase } from '../../model';
 import { UIOptionList, PurchaseBlock } from './ui';
-import { InfiniteSlider } from '@widgets/slider';
 import styles from '../../styles/uiSection/uiSection.module.scss';
+import { Slider } from '@widgets/slider';
 
 type Props = {
   props: UISectionProps;
@@ -12,7 +12,7 @@ type Props = {
 export const UISection = ({ props, SKU }: Props) => {
   return (
     <div className={styles['ui-container']}>
-      <InfiniteSlider data={props.slider} />
+      <Slider data={props.slider} />
       <div className={styles['ui-block']}>
         <span className={styles.sku}>{SKU}</span>
         <UIOptionList {...props.colorsOptions} />

@@ -16,7 +16,7 @@ const isDataBannerData = (
   return Array.isArray(data);
 };
 
-export const Slider: React.FC<Props> = ({ data }: Props) => {
+export const InfiniteSlider: React.FC<Props> = ({ data }: Props) => {
   const bannerMode = isDataBannerData(data);
   const { buttons, styles, gap, animationSpeed } = config[+bannerMode];
   const { DOM } = useSliderData();

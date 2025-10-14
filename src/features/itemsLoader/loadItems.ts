@@ -15,12 +15,6 @@ const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
     setItems(Status.LOADING);
     const data = await loadFn();
 
-    if (!data || (data as T[]).length === 0) {
-      setItems(Status.ERROR);
-
-      return;
-    }
-
     setItems(data);
   };
 
@@ -42,12 +36,6 @@ const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
         const data = await loadFn();
 
         if (signal.aborted) {
-          return;
-        }
-
-        if (!data || (data as T[]).length === 0) {
-          setItems(Status.ERROR);
-
           return;
         }
 

@@ -2,7 +2,7 @@
 import { Status } from '@features/index';
 import { BannerData, CatalogueProduct } from '@shared/types';
 import { SliderDataProvider } from '@shared/lib/useSlider';
-import { Slider } from './infiniteSlider';
+import { InfiniteSlider } from './infiniteSlider';
 import { CatalogueSlider } from './catalogueSlider';
 
 type ProductProps = {
@@ -40,7 +40,7 @@ const isCatalogue = (data: Check): data is CatalogueProps => {
 const INFINITE_START_INDEX = 1;
 const REGULAR_START_INDEX = 1;
 
-export const InfiniteSlider = ({ data }: Props) => {
+export const Slider = ({ data }: Props) => {
   if (isStatus(data)) {
     return <div></div>;
   } else {
@@ -53,7 +53,7 @@ export const InfiniteSlider = ({ data }: Props) => {
     } else {
       return (
         <SliderDataProvider startIdx={INFINITE_START_INDEX}>
-          <Slider data={data} />
+          <InfiniteSlider data={data} />
         </SliderDataProvider>
       );
     }

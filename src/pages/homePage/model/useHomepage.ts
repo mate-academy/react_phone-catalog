@@ -1,6 +1,7 @@
 import { Category, get, ItemsAmount, Order } from '@shared/api/';
 import { useCallback, useEffect } from 'react';
-import { useLoadItems } from '@features/index';
+import { Status, useLoadItems } from '@features/index';
+import { CatalogueData } from '@shared/api/types';
 
 const DATA_LOAD = {
   NEW: () =>
@@ -50,8 +51,8 @@ export const useHomePage = () => {
 
   return {
     amount,
-    newItems: products.new.items,
-    promoItems: products.promo.items,
+    newItems: products.new.items as CatalogueData | Status,
+    promoItems: products.promo.items as CatalogueData | Status,
     banners: banners.items,
   };
 };

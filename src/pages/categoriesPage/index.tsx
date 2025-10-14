@@ -1,10 +1,10 @@
 import { Category } from '@shared/api';
 import styles from './styles/categoriesPage.module.scss';
-import { Dropdown, CataloguePagination, CatalogueGrid } from './ui';
+import { Dropdown, CataloguePagination } from './ui';
 import { useCatalogue, filter, pPage } from './model';
 import { Breadcrumbs } from '@ui/index';
 import { Status } from '@features/index';
-import { CatalogueData } from '@shared/api/types';
+import { Catalogue } from '@widgets/index';
 
 type Props = {
   category: Category;
@@ -33,7 +33,12 @@ export const CategoriesPage = ({ category }: Props) => {
         <Dropdown data={filter} setFilter={set.order} active={currentOrder} />
         <Dropdown data={pPage} setFilter={set.amount} active={currentPerPage} />
       </div>
-      <CatalogueGrid data={data as CatalogueData} category={category} />
+      <Catalogue
+        data={data}
+        category={category}
+        currentPerPage={currentPerPage}
+      />
+
       {typeof data === 'object' && data.pages > 1 && (
         <CataloguePagination
           pages={data.pages}

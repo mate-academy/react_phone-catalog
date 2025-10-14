@@ -2,10 +2,11 @@ import React from 'react';
 import { categories, useHomePage } from './model';
 import styles from './styles/HomePage.module.scss';
 import { CategoryElement } from './ui';
-import { BannerData } from '@server/types';
-import { InfiniteSlider } from '@widgets/slider';
 import { Status } from '@features/index';
-import { CatalogueData } from '@shared/api/types';
+import { BannerData } from '@shared/types';
+import { Slider } from '@widgets/slider';
+import { CatalogueSlider } from '@widgets/sliders/catalogueSlider/catalogueSlider';
+import { SliderDataProvider } from '@shared/lib';
 
 export const HomePage = () => {
   const { amount, newItems, promoItems, banners } = useHomePage();
@@ -17,17 +18,13 @@ export const HomePage = () => {
         <span className={styles.welcome__text}>
           Welcome to Nice Gadgets store!
         </span>
-        <InfiniteSlider data={banners as BannerData[] | Status} />
+        <Slider data={banners as BannerData[] | Status} />
       </div>
       <div className={styles['home-catalogue']}>
-        {typeof newItems !== 'string' && (
-          <InfiniteSlider
-            data={{
-              array: (newItems as CatalogueData).items,
-              title: 'Brand new Models',
-            }}
-          />
-        )}
+        <SliderDataProvider startIdx={0}>
+          <CatalogueSlider data={newItems} title={'Brand new Models'} />
+        </SliderDataProvider>
+
         <section
           className={styles.categories}
           style={{ '--fields-count': categories.length } as React.CSSProperties}
@@ -41,14 +38,9 @@ export const HomePage = () => {
             />
           ))}
         </section>
-        {typeof promoItems !== 'string' && (
-          <InfiniteSlider
-            data={{
-              array: (promoItems as CatalogueData).items,
-              title: 'Hot prices',
-            }}
-          />
-        )}
+        <SliderDataProvider startIdx={0}>
+          <CatalogueSlider data={promoItems} title={'Hot prices'} />
+        </SliderDataProvider>
       </div>
     </main>
   );

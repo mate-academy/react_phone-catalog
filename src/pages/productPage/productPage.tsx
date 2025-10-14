@@ -1,9 +1,9 @@
 import styles from './styles/productPage.module.scss';
 import { useProductPage, getProps } from './model';
 import { ArticleSection, HeadSection, UISection } from './ui';
-import { Product } from '@shared/types';
-import { InfiniteSlider } from '@widgets/slider';
+import { CatalogueProduct, Product } from '@shared/types';
 import { CatalogueData } from '@shared/api/types';
+import { Slider } from '@widgets/slider';
 
 type Props = {
   prod: Product;
@@ -27,9 +27,9 @@ export const ProductPageMain = ({ prod }: Props) => {
           specs={props.extendedSpecs}
         />
         {typeof sliderItems !== 'string' && (
-          <InfiniteSlider
+          <Slider
             data={{
-              array: (sliderItems as CatalogueData).items,
+              array: (sliderItems as CatalogueData).items as CatalogueProduct[],
               title: 'You may also like',
             }}
           />

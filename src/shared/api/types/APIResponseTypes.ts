@@ -2,7 +2,7 @@ import { BannerData, CatalogueProduct, Product } from '@shared/types';
 import { Request } from '.';
 
 interface CatalogueData {
-  items: CatalogueProduct[] | Product[];
+  items: CatalogueProduct[];
   currentPage: number;
   pages: number;
 }

@@ -1,0 +1,1 @@
+export { Catalogue } from './catalogue';
