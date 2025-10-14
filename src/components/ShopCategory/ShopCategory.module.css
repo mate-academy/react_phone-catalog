@@ -1,0 +1,16 @@
+.ShopCategory {
+  width: 368px;
+  height: 443px;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageShop {
+  width: 368px;
+  height: 368px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

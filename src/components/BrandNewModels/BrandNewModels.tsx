@@ -19,7 +19,7 @@ export const BrandNewModels: React.FC<BrandNewModelsProps> = ({
   'data-testid': dataTestId = 'Brand-title',
   onButtonClick,
 }) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const Tag = `h${level ?? 2}` as keyof JSX.IntrinsicElements;
 
   return (
     <div

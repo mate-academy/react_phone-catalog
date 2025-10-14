@@ -17,7 +17,7 @@
 .containerImg {
   width: 208px;
   height: 196px;
-  margin: 24px auto 0;
+  margin: 20px auto 0;
   background-image: url('../../assets/img/bnm1.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -25,26 +25,15 @@
   display: block;
 }
 
-.containerTitle {
-  width: 208px;
-  height: 58px;
-  font-weight: 100;
-  font-style: normal;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: 0%;
-  margin: 20px auto 0;
-}
-
 .containerPrice {
   width: 208px;
-  height: 58px;
+  height: auto;
   margin: -6px auto;
 }
 
 .price {
   width: 208px;
-  height: 58px;
+  height: auto;
   font-weight: 700;
   font-style: normal;
   font-size: 24px;

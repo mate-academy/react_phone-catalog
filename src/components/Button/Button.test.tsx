@@ -11,6 +11,7 @@ describe('Button component', () => {
       </Button>,
     );
     const btn = screen.getByTestId('btn') as HTMLButtonElement;
+
     expect(btn).toBeInTheDocument();
     expect(btn).toHaveTextContent('Click me');
     expect(btn.className).toContain('extra');
@@ -19,17 +20,20 @@ describe('Button component', () => {
   it('renders with text prop when no children', () => {
     render(<Button data-testid="btn-text" text="Press" />);
     const btn = screen.getByTestId('btn-text');
+
     expect(btn).toHaveTextContent('Press');
   });
 
   it('fires onClick when clicked', () => {
     const handleClick = vi.fn();
+
     render(
       <Button data-testid="btn-click" onClick={handleClick}>
         Ok
       </Button>,
     );
     const btn = screen.getByTestId('btn-click');
+
     fireEvent.click(btn);
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
@@ -47,6 +51,7 @@ describe('Button component', () => {
       </Button>,
     );
     const btn = screen.getByTestId('btn-props') as HTMLButtonElement;
+
     expect(btn.getAttribute('aria-label')).toBe('my-button');
     expect(btn.type).toBe('submit');
     expect(btn).toBeDisabled();
@@ -65,6 +70,7 @@ describe('Button component', () => {
       </Button>,
     );
     const btn = screen.getByTestId('btn-classes');
+
     expect(btn.className).toContain('custom-class');
     expect(btn.className).toContain('secundary');
     expect(btn.className).toContain('lg');

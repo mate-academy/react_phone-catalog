@@ -22,12 +22,12 @@
   margin-top: 12px;
 }
 
-.sectionBrandNewModels {
-  display: block;
-  align-items: center;
-  justify-content: center;
-  margin: 0 10.7rem;
+.TitleSection {
+  font-size: 1.2rem;
+  margin-top: 80px;
 }
+
+/* BRAND NEW MODELS */
 
 .containerBrandFlex {
   display: flex;
@@ -35,6 +35,7 @@
   justify-content: center;
   width: 1168px;
   gap: 16px;
+  margin-bottom: 50px;
 }
 
 .container {
@@ -50,7 +51,7 @@
 .containerImgSilver {
   width: 208px;
   height: 196px;
-  margin: 24px auto 0;
+  margin: 16px auto 0;
   background-image: url('../../assets/img/Phone_Silver.png');
   background-repeat: no-repeat;
   background-position: center;
@@ -71,7 +72,7 @@
 
 .containerImgGold {
   width: 208px;
-  height: 196px;
+  height: 175px;
   margin: 24px auto 0;
   background-image: url('../../assets/img/Phone_Gold.png');
   background-repeat: no-repeat;
@@ -93,13 +94,13 @@
 
 .containerTitle {
   width: 208px;
-  height: 58px;
+  height: auto;
   font-weight: 100;
   font-style: normal;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0%;
-  margin: 20px auto 0;
+  margin: 16px auto;
 }
 
 .containerPrice {
@@ -176,4 +177,90 @@
   height: 40px;
   cursor: pointer;
   background-image: url('../../assets/img/favourites.png');
+}
+
+.brandNewModels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column; /* Garante que o texto fique abaixo da imagem */
+  align-items: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* SHOPCATEGORY */
+.containerShopFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+  margin: 20px -40px;
+}
+
+.title {
+  padding-top: 20px;
+  padding-bottom: 4px;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* SUBTITLE CARD*/
+.subtitle {
+  margin: 20px 0 auto;
+  font-size: 0.9rem;
+}
+
+.Mobile {
+  background-image: url('./../../assets/img/Mobile.png');
+}
+
+.Tablets {
+  background-image: url('./../../assets/img/Tablets.png');
+}
+
+/* HOT PRICES */
+
+.priceOff {
+  margin: 0 8px;
+  width: 208px;
+  height: 58px;
+  text-decoration: line-through;
+  color: #89939a;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.containerHotPrice1 {
+  width: 208px;
+  height: 196px;
+  margin: 10px auto 0;
+  background-image: url('../../assets/img/HotPrice1.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: block;
+}
+
+.sectionBrandNewModels {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10.7rem;
 }
