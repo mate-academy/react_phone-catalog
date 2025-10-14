@@ -12,8 +12,6 @@ import bannerMain from './../../images/img/banner.jpg';
 import bannerAccess from './../../images/img/banner-accessories.png';
 import bannerPhones from './../../images/img/banner-phones.png';
 import bannerTablets from './../../images/img/banner-tablets.png';
-import arrowIcon from './../../images/icons/arrow-up.svg';
-import { useMemo } from 'react';
 
 const images = [bannerMain, bannerAccess, bannerPhones, bannerTablets];
 
@@ -28,8 +26,12 @@ export const Banner = () => {
           className="my-swiper"
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           slidesPerView={1}
-           spaceBetween= {20}
+          spaceBetween={20}
           navigation
+          // navigation={{
+          //   nextEl: '.next-banner',
+          //   prevEl: '.prev-banner',
+          // }}
           pagination={{ clickable: true }}
         >
           {images.map((img, i) => (

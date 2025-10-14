@@ -10,6 +10,17 @@ import { Navigation, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+//
+//
+//  .swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after {
+// content: '';
+// }
+
+// .swiper-button-prev:after, .swiper-container-rtl .swiper-button-prev:after {
+// content: '';
+// }
+//
+
 export const NewModels = () => {
   return (
     <section className="new-models slider">
@@ -21,7 +32,10 @@ export const NewModels = () => {
           modules={[Navigation, A11y]}
           slidesPerView={4}
           spaceBetween={16}
-          navigation
+          navigation={{
+            nextEl: '.custom-next',
+            prevEl: '.custom-prev',
+          }}
           pagination={{ clickable: true }}
         >
           <SwiperSlide>

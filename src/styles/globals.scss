@@ -24,7 +24,7 @@ body {
 }
 
 
-h1 {
+.h1 {
   font-size: 32px;
   margin-top: 0;
   margin-bottom: 24px;
@@ -41,20 +41,20 @@ h1 {
 
 }
 
-h2 {
+.h2 {
   font-size: rem(38);
   line-height: 1;
   letter-spacing: -1px;
 
 }
 
-h3 {
+.h3 {
   font-size: rem(28);
   line-height: 1.2;
 
 }
 
-h4 {
+.h4 {
   font-size: rem(24);
   line-height: 1.25;
 }
