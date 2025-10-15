@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
           <img
             className="logo__image"
             alt="logo"
-            src="/icons/logo/Logo-footer.png"
+            src="../../../public/img/general/icons/logo-bottom.svg"
           />
         </a>
         <nav className="footer__navigation">
@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
             <img
               className="footer__icon"
               alt="up-arrow"
-              src="/icons/arrow/Arrow.png"
+              src="../../../public/img/general/icons/arrow-white.svg"
             />
           </div>
         </a>

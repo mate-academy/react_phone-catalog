@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../../components/header/header/Header';
+import { Header } from '../../components/header/Header';
 import { Footer } from '../../components/footer/Footer';
 
 export const Catalog: React.FC = () => {
@@ -15,14 +15,14 @@ export const Catalog: React.FC = () => {
                   <a className="breadcrumbs__home">
                     <img
                       className="breadcrumbs__icon"
-                      src="../../../public/icons/home/Home.png"
+                      src="../../../public/img/general/icons/home.svg"
                       alt="Home"
                     />
                   </a>
                 </li>
                 <li className="breadcrumbs__item">
                   <img
-                    src="../../../public/icons/arrow/Arrow.png"
+                    src="../../../public/img/general/icons/arrow.svg"
                     alt="arrow"
                     className="breadcrumbs__arrow"
                   />
@@ -100,7 +100,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -150,7 +150,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -200,7 +200,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -250,7 +250,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -300,7 +300,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -350,7 +350,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -400,7 +400,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -450,7 +450,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -500,7 +500,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -550,7 +550,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -600,7 +600,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -650,7 +650,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -700,7 +700,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -750,7 +750,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -800,7 +800,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -850,7 +850,7 @@ export const Catalog: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -863,35 +863,61 @@ export const Catalog: React.FC = () => {
         <section className="pagination">
           <div className="container">
             <nav className="pagination__nav">
-              <a href="#" className="pagination__button">
+              <a
+                href="#"
+                className="pagination__button
+                button
+                disabled"
+              >
+                {/*<img*/}
+                {/*  src="../../../public/img/general/icons/arrow-white.svg"*/}
+                {/*  alt="arrow right"*/}
+                {/*  className="pagination__icon pagination__icon--left"*/}
+                {/*/>*/}
                 <img
-                  src="../../../public/icons/arrow/Arrow.png"
+                  src="../../../public/img/general/icons/arrow.svg"
                   alt="arrow right"
                   className="pagination__icon pagination__icon--left"
                 />
               </a>
               <div className="pagination__list">
-                <a href="#" className="pagination__number text-body">
+                <a
+                  href="#"
+                  className="pagination__number
+                  text-body
+                  button
+                  pagination__number--selected"
+                >
                   1
                 </a>
                 <a
                   href="#"
                   className="pagination__number
                   text-body
-                  pagination__number--selected"
+                  button"
                 >
                   2
                 </a>
-                <a href="#" className="pagination__number text-body">
+                <a
+                  href="#"
+                  className="pagination__number
+                text-body
+                button"
+                >
                   3
                 </a>
-                <a href="#" className="pagination__number text-body">
+                <a
+                  href="#"
+                  className="pagination__number
+                  text-body
+                  button"
+                >
                   4
                 </a>
               </div>
-              <a href="#" className="pagination__button">
+              <a href="#" className="pagination__button button">
                 <img
-                  src="../../../public/icons/arrow/Arrow.png"
+                  src="../../../public/img/general/icons/arrow-white.svg"
                   alt="arrow left"
                   className="pagination__icon"
                 />

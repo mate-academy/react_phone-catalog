@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../../components/header/header/Header';
+import { Header } from '../../components/header/Header';
 import { Footer } from '../../components/footer/Footer';
 
 export const ProductDetails: React.FC = () => {
@@ -15,14 +15,14 @@ export const ProductDetails: React.FC = () => {
                   <a className="breadcrumbs__home">
                     <img
                       className="breadcrumbs__icon"
-                      src="/icons/home/Home.png"
+                      src="../../../public/img/general/icons/home.svg"
                       alt="Home"
                     />
                   </a>
                 </li>
                 <li className="breadcrumbs__item">
                   <img
-                    src="/icons/arrow/Arrow.png"
+                    src="../../../public/img/general/icons/arrow.svg"
                     alt="arrow"
                     className="breadcrumbs__arrow"
                   />
@@ -30,7 +30,7 @@ export const ProductDetails: React.FC = () => {
                 </li>
                 <li className="breadcrumbs__item breadcrumbs__item--cut">
                   <img
-                    src="/icons/arrow/Arrow.png"
+                    src="../../../public/img/general/icons/arrow.svg"
                     alt="arrow"
                     className="breadcrumbs__arrow"
                   />
@@ -43,7 +43,7 @@ export const ProductDetails: React.FC = () => {
             </nav>
             <a className="back-button details__back-button text-small">
               <img
-                src="/icons/arrow/Arrow.png"
+                src="../../../public/img/general/icons/arrow.svg"
                 alt="arrow"
                 className="back-button-arrow"
               />
@@ -194,7 +194,7 @@ export const ProductDetails: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src="../../../public/img/general/icons/heart.svg"
                         alt="heart"
                       />
                     </button>
@@ -324,242 +324,234 @@ export const ProductDetails: React.FC = () => {
               </div>
             </section>
           </div>
-          <section className="products">
-            <div className="container">
-              <div className="heading">
-                <h2 className="heading__title title text-h2">
-                  You may also like
-                </h2>
-                <div className="heading__buttons">
-                  <button className="heading__left-button disabled button">
-                    <img
-                      className="heading__icon-left"
-                      alt="arrow-left"
-                      src="/icons/arrow/Arrow.png"
-                    />
-                  </button>
-                  <button className="heading__right-button button">
-                    <img
-                      className="heading__icon-right"
-                      alt="arrow-right"
-                      src="/icons/arrow/Arrow.png"
-                    />
-                  </button>
-                </div>
-              </div>
-              <ul className="product">
-                <li className="product__item">
-                  <img
-                    className="product__image"
-                    alt="Iphone"
-                    src="/img/phones/apple-iphone-14-pro/gold/00.webp"
-                  />
-                  <div className="product__wrapper">
-                    <h3 className="product__title text-body">
-                      Apple iPhone 14 Pro 128GB Silver (MQ023)
-                    </h3>
-                    <p className="price text-h2">$1099</p>
-
-                    <div className="characteristics">
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Screen
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          6.1” OLED
-                        </p>
-                      </div>
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Capacity
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          128 GB
-                        </p>
-                      </div>
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Capacity
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          128 GB
-                        </p>
-                      </div>
-                    </div>
-                    <div className="action">
-                      <button className="action__add text-button">
-                        Add to cart
-                      </button>
-                      <button className="action__like">
-                        <img
-                          className="action__icon"
-                          src="/icons/heart/Heart.png"
-                          alt="heart"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                </li>
-                <li className="product__item">
-                  <img
-                    className="product__image"
-                    alt="Iphone"
-                    src="/img/phones/apple-iphone-14-pro/gold/00.webp"
-                  />
-                  <div className="product__wrapper">
-                    <h3 className="product__title text-body">
-                      Apple iPhone 14 Pro 128GB Silver (MQ023)
-                    </h3>
-                    <p className="price text-h2">$1099</p>
-
-                    <div className="characteristics">
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Screen
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          6.1” OLED
-                        </p>
-                      </div>
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Capacity
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          128 GB
-                        </p>
-                      </div>
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Capacity
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          128 GB
-                        </p>
-                      </div>
-                    </div>
-                    <div className="action">
-                      <button className="action__add text-button">
-                        Add to cart
-                      </button>
-                      <button className="action__like">
-                        <img
-                          className="action__icon"
-                          src="/icons/heart/Heart.png"
-                          alt="heart"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                </li>
-                <li className="product__item">
-                  <img
-                    className="product__image"
-                    alt="Iphone"
-                    src="/img/phones/apple-iphone-14-pro/gold/00.webp"
-                  />
-                  <div className="product__wrapper">
-                    <h3 className="product__title text-body">
-                      Apple iPhone 14 Pro 128GB Silver (MQ023)
-                    </h3>
-                    <p className="price text-h2">$1099</p>
-
-                    <div className="characteristics">
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Screen
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          6.1” OLED
-                        </p>
-                      </div>
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Capacity
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          128 GB
-                        </p>
-                      </div>
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Capacity
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          128 GB
-                        </p>
-                      </div>
-                    </div>
-                    <div className="action">
-                      <button className="action__add text-button">
-                        Add to cart
-                      </button>
-                      <button className="action__like">
-                        <img
-                          className="action__icon"
-                          src="/icons/heart/Heart.png"
-                          alt="heart"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                </li>
-                <li className="product__item">
-                  <img
-                    className="product__image"
-                    alt="Iphone"
-                    src="/img/phones/apple-iphone-14-pro/gold/00.webp"
-                  />
-                  <div className="product__wrapper">
-                    <h3 className="product__title text-body">
-                      Apple iPhone 14 Pro 128GB Silver (MQ023)
-                    </h3>
-                    <p className="price text-h2">$1099</p>
-
-                    <div className="characteristics">
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Screen
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          6.1” OLED
-                        </p>
-                      </div>
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Capacity
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          128 GB
-                        </p>
-                      </div>
-                      <div className="characteristics__row">
-                        <p className="characteristics__key text-small">
-                          Capacity
-                        </p>
-                        <p className="characteristics__value text-uppercase">
-                          128 GB
-                        </p>
-                      </div>
-                    </div>
-                    <div className="action">
-                      <button className="action__add text-button">
-                        Add to cart
-                      </button>
-                      <button className="action__like">
-                        <img
-                          className="action__icon"
-                          src="/icons/heart/Heart.png"
-                          alt="heart"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </section>
         </div>
+        <section className="products">
+          <div className="container">
+            <div className="heading">
+              <h2 className="heading__title title text-h2">
+                You may also like
+              </h2>
+              <div className="heading__buttons">
+                <button className="heading__left-button disabled button">
+                  <img
+                    className="heading__icon-left"
+                    alt="arrow-left"
+                    src="../../../public/img/general/icons/arrow.svg"
+                  />
+                </button>
+                <button className="heading__right-button button">
+                  <img
+                    className="heading__icon-right"
+                    alt="arrow-right"
+                    src="../../../public/img/general/icons/arrow-white.svg"
+                  />
+                </button>
+              </div>
+            </div>
+            <ul className="product">
+              <li className="product__item">
+                <img
+                  className="product__image"
+                  alt="Iphone"
+                  src="/img/phones/apple-iphone-14-pro/gold/00.webp"
+                />
+                <div className="product__wrapper">
+                  <h3 className="product__title text-body">
+                    Apple iPhone 14 Pro 128GB Silver (MQ023)
+                  </h3>
+                  <p className="price text-h2">$1099</p>
+
+                  <div className="characteristics">
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">Screen</p>
+                      <p className="characteristics__value text-uppercase">
+                        6.1” OLED
+                      </p>
+                    </div>
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">
+                        Capacity
+                      </p>
+                      <p className="characteristics__value text-uppercase">
+                        128 GB
+                      </p>
+                    </div>
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">
+                        Capacity
+                      </p>
+                      <p className="characteristics__value text-uppercase">
+                        128 GB
+                      </p>
+                    </div>
+                  </div>
+                  <div className="action">
+                    <button className="action__add text-button selected">
+                      Added
+                    </button>
+                    <button className="action__like">
+                      <img
+                        className="action__icon"
+                        src="../../../public/img/general/icons/heart.svg"
+                        alt="heart"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li className="product__item">
+                <img
+                  className="product__image"
+                  alt="Iphone"
+                  src="/img/phones/apple-iphone-14-pro/gold/00.webp"
+                />
+                <div className="product__wrapper">
+                  <h3 className="product__title text-body">
+                    Apple iPhone 14 Pro 128GB Silver (MQ023)
+                  </h3>
+                  <p className="price text-h2">$1099</p>
+
+                  <div className="characteristics">
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">Screen</p>
+                      <p className="characteristics__value text-uppercase">
+                        6.1” OLED
+                      </p>
+                    </div>
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">
+                        Capacity
+                      </p>
+                      <p className="characteristics__value text-uppercase">
+                        128 GB
+                      </p>
+                    </div>
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">
+                        Capacity
+                      </p>
+                      <p className="characteristics__value text-uppercase">
+                        128 GB
+                      </p>
+                    </div>
+                  </div>
+                  <div className="action">
+                    <button className="action__add text-button">
+                      Add to cart
+                    </button>
+                    <button className="action__like">
+                      <img
+                        className="action__icon"
+                        src="../../../public/img/general/icons/heart.svg"
+                        alt="heart"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li className="product__item">
+                <img
+                  className="product__image"
+                  alt="Iphone"
+                  src="/img/phones/apple-iphone-14-pro/gold/00.webp"
+                />
+                <div className="product__wrapper">
+                  <h3 className="product__title text-body">
+                    Apple iPhone 14 Pro 128GB Silver (MQ023)
+                  </h3>
+                  <p className="price text-h2">$1099</p>
+
+                  <div className="characteristics">
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">Screen</p>
+                      <p className="characteristics__value text-uppercase">
+                        6.1” OLED
+                      </p>
+                    </div>
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">
+                        Capacity
+                      </p>
+                      <p className="characteristics__value text-uppercase">
+                        128 GB
+                      </p>
+                    </div>
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">
+                        Capacity
+                      </p>
+                      <p className="characteristics__value text-uppercase">
+                        128 GB
+                      </p>
+                    </div>
+                  </div>
+                  <div className="action">
+                    <button className="action__add text-button">
+                      Add to cart
+                    </button>
+                    <button className="action__like">
+                      <img
+                        className="action__icon"
+                        src="../../../public/img/general/icons/heart.svg"
+                        alt="heart"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li className="product__item">
+                <img
+                  className="product__image"
+                  alt="Iphone"
+                  src="/img/phones/apple-iphone-14-pro/gold/00.webp"
+                />
+                <div className="product__wrapper">
+                  <h3 className="product__title text-body">
+                    Apple iPhone 14 Pro 128GB Silver (MQ023)
+                  </h3>
+                  <p className="price text-h2">$1099</p>
+
+                  <div className="characteristics">
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">Screen</p>
+                      <p className="characteristics__value text-uppercase">
+                        6.1” OLED
+                      </p>
+                    </div>
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">
+                        Capacity
+                      </p>
+                      <p className="characteristics__value text-uppercase">
+                        128 GB
+                      </p>
+                    </div>
+                    <div className="characteristics__row">
+                      <p className="characteristics__key text-small">
+                        Capacity
+                      </p>
+                      <p className="characteristics__value text-uppercase">
+                        128 GB
+                      </p>
+                    </div>
+                  </div>
+                  <div className="action">
+                    <button className="action__add text-button">
+                      Add to cart
+                    </button>
+                    <button className="action__like">
+                      <img
+                        className="action__icon"
+                        src="../../../public/img/general/icons/heart.svg"
+                        alt="heart"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

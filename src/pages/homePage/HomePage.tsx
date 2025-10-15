@@ -1,6 +1,13 @@
 import React from 'react';
-import { Header } from '../../components/header/header/Header';
+import { Header } from '../../components/header/Header';
 import { Footer } from '../../components/footer/Footer';
+
+const iconsPath = {
+  bannerMobile: '../../../public/img/banner_mobile.png',
+  bannerTablet: '../../../public/img/banner_tablet.png',
+  arrowWhite: '../../../public/img/general/icons/arrow-white.svg',
+  heart: '../../../public/img/general/icons/heart.svg',
+};
 
 export const HomePage: React.FC = () => {
   return (
@@ -16,18 +23,18 @@ export const HomePage: React.FC = () => {
           <img
             className="banner__image"
             alt="Banner"
-            src="/img/banner/Banner.png"
+            src={iconsPath.bannerMobile}
           />
           <div className="slider">
             <button className="slider__left-btn button">
               <img
                 className="slider__arrow-left"
                 alt="up-arrow"
-                src="/icons/arrow/Arrow.png"
+                src={iconsPath.arrowWhite}
               />
             </button>
             <img
-              src="/img/banner/Banner-tablet.png"
+              src={iconsPath.bannerTablet}
               alt="banner"
               className="slider__img"
             />
@@ -35,7 +42,7 @@ export const HomePage: React.FC = () => {
               <img
                 className="slider__arrow-right"
                 alt="up-arrow"
-                src="/icons/arrow/Arrow.png"
+                src={iconsPath.arrowWhite}
               />
             </button>
           </div>
@@ -50,14 +57,14 @@ export const HomePage: React.FC = () => {
                   <img
                     className="heading__icon-left"
                     alt="arrow-left"
-                    src="/icons/arrow/Arrow.png"
+                    src={iconsPath.arrowWhite}
                   />
                 </button>
                 <button className="heading__right-button button">
                   <img
                     className="heading__icon-right"
                     alt="arrow-right"
-                    src="/icons/arrow/Arrow.png"
+                    src={iconsPath.arrowWhite}
                   />
                 </button>
               </div>
@@ -106,7 +113,7 @@ export const HomePage: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src={iconsPath.heart}
                         alt="heart"
                       />
                     </button>
@@ -156,7 +163,7 @@ export const HomePage: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src={iconsPath.heart}
                         alt="heart"
                       />
                     </button>
@@ -206,7 +213,7 @@ export const HomePage: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src={iconsPath.heart}
                         alt="heart"
                       />
                     </button>
@@ -256,7 +263,7 @@ export const HomePage: React.FC = () => {
                     <button className="action__like">
                       <img
                         className="action__icon"
-                        src="/icons/heart/Heart.png"
+                        src={iconsPath.heart}
                         alt="heart"
                       />
                     </button>
@@ -276,7 +283,7 @@ export const HomePage: React.FC = () => {
               <li className="category__item">
                 <a href="#" className="category__link">
                   <img
-                    src="/img/category/Phones.png"
+                    src="../../../public/img/category-phones.webp"
                     alt="Phones"
                     className="category__image"
                   />
@@ -289,7 +296,7 @@ export const HomePage: React.FC = () => {
               <li className="category__item">
                 <a href="#" className="category__link">
                   <img
-                    src="/img/category/Tablets.png"
+                    src="../../../public/img/category-phones.webp"
                     alt="Tablets"
                     className="category__image"
                   />
@@ -302,7 +309,7 @@ export const HomePage: React.FC = () => {
               <li className="category__item">
                 <a href="#" className="category__link">
                   <img
-                    src="/img/category/Accessories.png"
+                    src="../../../public/img/category-phones.webp"
                     alt="Accessories"
                     className="category__image"
                   />
