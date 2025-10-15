@@ -27,15 +27,20 @@ export const NewModels = () => {
       <div className="container slider__container">
         <h2 className="slider__title">Brand new models</h2>
 
+        <div className="slider__nav">
+          <button className="swiper-button-prev"></button>
+          <button className="swiper-button-next"></button>
+        </div>
         <Swiper
           className="swiper-slider"
           modules={[Navigation, A11y]}
           slidesPerView={4}
           spaceBetween={16}
           navigation={{
-            nextEl: '.custom-next',
-            prevEl: '.custom-prev',
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
           }}
+          // navigation
           pagination={{ clickable: true }}
         >
           <SwiperSlide>

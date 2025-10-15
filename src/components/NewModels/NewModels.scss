@@ -50,3 +50,52 @@
 //     }
 //   }
 // }
+
+.swiper-wrapper {
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: flex;
+    align-items: center;
+
+
+  }
+
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-icons);
+    color: var(--color-primary);
+    background: var(--color-bg, #fff);
+    cursor: pointer;
+    top: 6px;
+    position: absolute;
+
+    &::after {
+      font-size: 24px;
+    }
+  }
+
+  .swiper-button-next::after {
+    content: '>';
+  }
+
+  .swiper-button-prev::after {
+    content: '<';
+  }
+
+  .slider__title {
+    font-size: 48px;
+  }
+
+  .swiper-button-prev {}
+}
+
+.slider__title {
+  font-size: 48px;
+}
