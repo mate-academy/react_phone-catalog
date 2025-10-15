@@ -6,9 +6,19 @@ import { ButtonsRight } from '../ButtonsRight';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
-  const getIsActive = ({ isActive }: { isActive: boolean }) =>
-    isActive ? styles.active : '';
+  const handleToggleMenu = () => {
+    if (isMenuOpen) {
+      setIsClosing(true);
+      setTimeout(() => {
+        setIsMenuOpen(false);
+        setIsClosing(false);
+      }, 200);
+    } else {
+      setIsMenuOpen(true);
+    }
+  };
 
   return (
     <header className={styles.header}>
@@ -22,22 +32,23 @@ export const Header = () => {
         </div>
       </div>
 
-      <ButtonsRight getIsActive={getIsActive} />
+      <ButtonsRight />
 
-      <div
-        className={styles.burgerMenu}
-        onClick={() => setIsMenuOpen(prev => !prev)}
-      >
+      <div className={styles.burgerMenu} onClick={handleToggleMenu}>
         <button>
-          <img src="/img/SliderImg/Menu.svg" alt="BurgerMenu" />
+          <img
+            src={
+              isMenuOpen
+                ? '/img/SliderImg/Close.svg'
+                : '/img/SliderImg/Menu.svg'
+            }
+            alt="BurgerMenu"
+          />
         </button>
       </div>
 
       {isMenuOpen && (
-        <BurgerMenu
-          getIsActive={getIsActive}
-          onClose={() => setIsMenuOpen(false)}
-        />
+        <BurgerMenu isClosing={isClosing} onClose={handleToggleMenu} />
       )}
     </header>
   );

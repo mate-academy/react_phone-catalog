@@ -1,7 +1,10 @@
 import styles from './NavLinks.module.scss';
 import { NavLink, useParams } from 'react-router-dom';
 
-export const NavLinks = () => {
+interface NavLinksProps {
+  onClose?: () => void;
+}
+export const NavLinks: React.FC<NavLinksProps> = ({ onClose }) => {
   const { category } = useParams();
 
   const navLinks = [
@@ -17,6 +20,7 @@ export const NavLinks = () => {
         <NavLink
           key={link.to}
           to={link.to}
+          onClick={onClose}
           className={({ isActive }) =>
             category === link.to || isActive ? styles.active : ''
           }

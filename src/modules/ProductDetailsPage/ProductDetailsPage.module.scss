@@ -1,0 +1,86 @@
+@use '/src/mixins.scss' as *;
+
+.container {
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+}
+
+.navigateButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 0 16px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+}
+
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+}
+
+.title {
+  font-weight: 800;
+  color: #F1F2F9;
+  font-size: 22px;
+  line-height: 140%;
+
+  @include on-tablet {
+  font-size: 32px;
+  line-height: 41px;
+  }
+}
+
+
+.grigContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.switchPhotos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switchPhotos img {
+  width: 288px;
+  height: auto;
+}
+
+.imgSliders {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.imgBox {
+  height: 50px;
+  width: 50px;
+}
+
+.imgBox img {
+  height: 100%;
+}
+
+
+
+.colorsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.color {
+  border: 1px solid gray;
+  height: 32px;
+  width: 32px;
+}

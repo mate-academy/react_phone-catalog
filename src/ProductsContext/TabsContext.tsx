@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import {
   ReactNode,
   createContext,
@@ -20,6 +21,26 @@ export interface Product {
   ram: string;
   year: number;
   favourit?: boolean;
+  details?: ProductDetails;
+  colorHex?: string;
+}
+
+export interface ProductDetails {
+  id: string;
+  category: string;
+  namespaceId: string;
+  name: string;
+  images: string[];
+  description: { title: string; text: string[] }[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  capacityAvailable?: string[];
+  colorsAvailable?: string[];
+  camera?: string;
+  zoom?: string;
+  cell?: string[];
 }
 
 type TabsContextType = {
@@ -40,22 +61,64 @@ export const TabsProvider = ({ children }: { children: ReactNode }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch('/api/products.json')
-      .then(res => {
-        if (!res) {
-          throw new Error('Error throw');
-        }
+    const loadData = async () => {
+      const colorStyle: Record<string, string> = {
+        silver: '#C0C0C0',
+        'rose gold': '#FCDBC1',
+        green: '#5F7170',
+        'sky blue': '#87CEEB',
+        'space gray': '#4C4C4C',
+        gold: '#FCDBC1',
+        black: '#0F1121',
+        yellow: '#FFD700',
+        white: '#F0F0F0',
+        purple: '#905BFF',
+        red: '#EB5757',
+      };
 
-        return res.json();
-      })
-      .then(data => {
-        setProductsList(data);
+      try {
+        const responses = await Promise.all([
+          fetch('/api/products.json'),
+          fetch('/api/phones.json'),
+          fetch('/api/tablets.json'),
+          fetch('/api/accessories.json'),
+        ]);
+
+        const [products, phones, tablets, accessories] = await Promise.all(
+          responses.map(r => r.json()),
+        );
+
+        const merged = products.map((product: Product) => {
+          const details =
+            phones.find((p: ProductDetails) => p.id === product.itemId) ||
+            tablets.find((p: ProductDetails) => p.id === product.itemId) ||
+            accessories.find((p: ProductDetails) => p.id === product.itemId);
+
+          const detailsWithColorsHex = details
+            ? {
+                ...details,
+                colorsAvailable: details.colorsAvailable?.map(
+                  (c: string) => colorStyle[c],
+                ),
+              }
+            : undefined;
+
+          return {
+            ...product,
+            details: detailsWithColorsHex,
+            colorHex: colorStyle[product.color] ?? '#000000',
+          };
+        });
+
+        setProductsList(merged);
+      } catch (err) {
+        setError(true);
+      } finally {
         setLoading(false);
-      })
-      .catch(err => {
-        setError(err);
-        setLoading(false);
-      });
+      }
+    };
+
+    loadData();
   }, []);
 
   return (
