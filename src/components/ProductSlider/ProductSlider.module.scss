@@ -2,8 +2,7 @@
 @use '../../shared/styles/mixins.scss' as *;
 
 .wrapper {
-  // @include page-grid;
-  // @include content-padding-inline;
+  gap: 16px;
 }
 
 .header {
@@ -88,7 +87,7 @@
   flex-direction: column;
   overflow: hidden;
   padding: 0 32px;
-  gap: 16px;
+  // gap: 16px;
 
   @include on-tablet {
     width: 237px;
@@ -308,4 +307,5 @@
   width: auto !important;
   flex-shrink: 0 !important;
   margin: 0 !important;
+  margin-right: 0;
 }

@@ -38,12 +38,14 @@ body {
       flex-direction: row;
       justify-content: space-between;
       padding: 0 32px;
+      height: 96px;
     }
 
     @include on-desktop {
       flex-direction: row;
       justify-content: space-between;
-      padding: 0 152px;
+      padding: 0 32px;
+      height: 96px;
     }
   }
 

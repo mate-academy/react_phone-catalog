@@ -7,7 +7,7 @@ export const Favorites: React.FC = () => {
   const { favorites } = useFavorites();
 
   return (
-    <main className={`${styles.wrapper} pageContent`}>
+    <div className={`${styles.wrapper} pageContent`}>
       <BreadCrumbs category="favorites" />
       <h1 className={styles.title}>Favourites</h1>
 
@@ -26,6 +26,6 @@ export const Favorites: React.FC = () => {
           </div>
         </>
       )}
-    </main>
+    </div>
   );
 };

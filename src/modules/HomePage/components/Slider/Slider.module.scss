@@ -2,8 +2,8 @@
 @use '../../../../shared/styles/mixins.scss' as *;
 
 .sliderWrapper {
-  @include content-padding-inline;
-  @include page-grid;
+  // @include content-padding-inline;
+  // @include page-grid;
 
   grid-column: 1 / -1;
   position: relative;
@@ -18,13 +18,14 @@
 
   @include on-tablet {
     position: relative;
-    max-width: 700px;
+    max-width: 592px;
     height: auto;
+    margin: 0;
   }
 
   @include on-desktop {
     position: relative;
-    width: 1440px;
+    width: 1136px;
     height: auto;
   }
 }
@@ -32,15 +33,15 @@
 .sliderInner {
   position: relative;
   width: 100%;
-  max-width: 1136px;
+  max-width: 1040px;
   margin: 0 auto;
 
   @include on-tablet {
-    padding-left: 25px;
+    max-width: 409px;
   }
 
   @include on-desktop {
-    padding-left: 44px;
+    max-width: 1040px;
   }
 }
 
@@ -90,7 +91,7 @@
 
 .prevBtn {
   @include on-desktop {
-    left: 0;
+    left: -48px;
   }
 
   @include on-tablet {
@@ -100,7 +101,7 @@
 
 .nextBtn {
   @include on-desktop {
-    right: 4px;
+    right: -48px;
   }
 
   @include on-tablet{
@@ -119,7 +120,7 @@
 
   @include on-tablet {
     height: 189px;
-    width: 600px;
+    width: 490px;
   }
 
   @include on-desktop {
@@ -144,8 +145,8 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      width: 592px;
-      height: 280px;
+      width: 490px;
+      height: 189px;
       gap: 20px;
     }
 

@@ -6,11 +6,9 @@
 }
 
 .wrapper {
-  @include content-padding-inline;
+  // @include content-padding-inline;
 
   flex: 1 0 auto;
-
-  height: calc(100vh - 65px - 96px - 1px);
   box-sizing: border-box;
 }
 

@@ -1,9 +1,24 @@
 // not empty
 @use '../src/shared/styles/variables.scss' as *;
+@use '../src/shared/styles/mixins.scss' as *;
 
 body {
   font-family: Mont-Regular, sans-serif;
   background-color: $menu-background-color;
+}
+
+.root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  @include content-padding-inline;
+
+  flex: 1 0 auto;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .appTitle {

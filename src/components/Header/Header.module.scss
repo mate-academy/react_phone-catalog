@@ -62,7 +62,12 @@ body {
         justify-content: center;
         position: relative;
         border: 1px solid $menu-border-color;
+        border-bottom: none;
         padding: 16px;
+
+        &:not(:first-child) {
+          border-left: none;
+        }
       }
 
       @include on-desktop {
@@ -71,7 +76,12 @@ body {
         justify-content: center;
         position: relative;
         border: 1px solid $menu-border-color;
+        border-bottom: none;
         padding: 24px;
+
+        &:not(:first-child) {
+          border-left: none;
+        }
       }
     }
 
@@ -198,7 +208,6 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      // padding: 16px;
       height: 48px;
       border-bottom: 1px solid $menu-border-color;
     }
@@ -206,7 +215,6 @@ body {
 
   &__close {
     background: none;
-    border: none;
     cursor: pointer;
     position: relative;
     border: 1px solid $menu-border-color;
@@ -346,5 +354,9 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+
+    @include on-tablet {
+      bottom: 4px;
+    }
   }
 }

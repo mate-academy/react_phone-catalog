@@ -19,24 +19,29 @@ export const App: React.FC = () => {
         <HashRouter>
           <Header />
           <h1 className="appTitle">Product Catalog</h1>
-          <Routes>
-            <Route path="/" element={<HomePage />}></Route>
-            <Route path="/phones" element={<Catalog type={'phones'} />}></Route>
-            <Route
-              path="/tablets"
-              element={<Catalog type={'tablets'} />}
-            ></Route>
-            <Route
-              path="/accessories"
-              element={<Catalog type={'accessories'} />}
-            ></Route>
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route
-              path="/:category/:productId"
-              element={<ProductDetailsPage />}
-            />
-          </Routes>
+          <main className="main">
+            <Routes>
+              <Route path="/" element={<HomePage />}></Route>
+              <Route
+                path="/phones"
+                element={<Catalog type={'phones'} />}
+              ></Route>
+              <Route
+                path="/tablets"
+                element={<Catalog type={'tablets'} />}
+              ></Route>
+              <Route
+                path="/accessories"
+                element={<Catalog type={'accessories'} />}
+              ></Route>
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route
+                path="/:category/:productId"
+                element={<ProductDetailsPage />}
+              />
+            </Routes>
+          </main>
           <Footer />
         </HashRouter>
       </CartProvider>

@@ -42,25 +42,21 @@ export const HomePage: React.FC = () => {
 
       <Slider />
 
-      <div className={styles.container}>
-        <ProductSlider
-          title="Brand new models"
-          showOldPrice={false}
-          limit={10}
-          products={productsHomeSlider || []}
-        />
-      </div>
+      <ProductSlider
+        title="Brand new models"
+        showOldPrice={false}
+        limit={10}
+        products={productsHomeSlider || []}
+      />
 
       <Category />
 
-      <div className={styles.container}>
-        <ProductSlider
-          title="Hot prices"
-          showOldPrice={true}
-          limit={10}
-          products={productsHomeSlider || []}
-        />
-      </div>
+      <ProductSlider
+        title="Hot prices"
+        showOldPrice={true}
+        limit={10}
+        products={productsHomeSlider || []}
+      />
     </>
   );
 };

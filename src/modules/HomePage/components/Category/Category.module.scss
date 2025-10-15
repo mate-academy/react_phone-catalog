@@ -15,8 +15,6 @@
 }
 
 .title {
-  @include content-padding-inline;
-
   font-size: 22px;
   color: $menu-color;
   margin-top: 80px;
@@ -33,18 +31,17 @@
   gap: 16px;
   justify-content: center;
 
-  @include content-padding-inline;
+  // @include content-padding-inline;
 
   @include on-tablet {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
     gap: 16px;
   }
 
   @include on-desktop {
-    grid-template-columns: repeat(auto-fit, 368px);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     margin: 0 auto;
-    max-width: 1440px;
   }
 }
 

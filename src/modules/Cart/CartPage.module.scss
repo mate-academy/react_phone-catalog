@@ -46,7 +46,7 @@ p {
 }
 
 .cart {
-  @include content-padding-inline;
+  // @include content-padding-inline;
 
   &__content {
     display: flex;
@@ -83,7 +83,6 @@ p {
     background-color: $card-backColor;
     display: flex;
     align-items: center;
-    // flex-flow: row nowrap;
     flex-direction: column;
     width: 100%;
     min-height: 128px;
@@ -102,7 +101,6 @@ p {
     @include on-desktop {
       flex-direction: row;
       width: 752px;
-      // gap: 24px;
       padding: 24px;
     }
   }
