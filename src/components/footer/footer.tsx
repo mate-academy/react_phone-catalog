@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
 
 import './footer.scss';
 
@@ -9,7 +7,7 @@ export const Footer = () => {
       <div className="footer__logo">
         <a href="" className="footer__link">
           <img
-            src="../../../public/img/logo/Logo.svg"
+            src="./img/logo/Logo.svg"
             alt=""
             className="footer__logo__link--image"
           />

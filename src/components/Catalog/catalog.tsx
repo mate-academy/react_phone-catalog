@@ -1,28 +1,12 @@
 import './catalog.scss';
 import { Phone } from '../../Types/type';
-import { useLocation } from 'react-router-dom';
-import phones from '../../../public/api/phones.json'
-import tablets from '../../../public/api/tablets.json'
-import accessories from '../../../public/api/accessories.json'
 
 interface CatalogProps {
-  itemsOnPage: Phone[];
+  itemsOnPage: Phone[]
 }
 
 export const Catalog = ({ itemsOnPage }: CatalogProps) => {
-  const location = useLocation();
 
-  let data: Phone[] = [];
-  
-  if (location.pathname === '/phones') {
-    data = phones;
-  } else if (location.pathname === '/tablets') {
-    data = tablets;
-  } else if (location.pathname === '/accessories') {
-    data = accessories
-  }
-
-  
   return (
     <div className="catalog">
       {itemsOnPage.map((phone: Phone) => (

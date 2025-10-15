@@ -15,7 +15,7 @@ export const Category = () => {
               className="categories__list__category--image
               categories__list__category--phones
               "
-              src="'../../../public/img/category-phones.webp"
+              src="./img/category-phones.webp"
             />
           </NavLink>
           <p className="categories__list__category__name">Mobile phones</p>
@@ -27,7 +27,7 @@ export const Category = () => {
               className="categories__list__category--image
               categories__list__category--tablets
               "
-              src="../../../public/img/category-tablets.png"
+              src="./img/category-tablets.png"
             />
           </NavLink>
           <p className="categories__list__category__name">Tablets</p>
@@ -42,7 +42,7 @@ export const Category = () => {
               className="categories__list__category--image
               categories__list__category--accessories
               "
-              src="../../../public/img/category-accessories.png"
+              src="./img/category-accessories.png"
             />
           </NavLink>
           <p className="categories__list__category__name">Accessories</p>
