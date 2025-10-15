@@ -1,14 +1,13 @@
-import { Phone, SortType } from '../../Types/type';
+import { SortType } from '../../Types/type';
 import './sort.scss';
 
 interface SortProps {
   sortNumber: number,
   setSortNumber: (x: number) => void;
-  products:Phone[]
   onSortChange: (x: SortType) => void
 }
 
-export const Sort = ({ setSortNumber, products, onSortChange }: SortProps) => {
+export const Sort = ({ setSortNumber, onSortChange }: SortProps) => {
 
   const sortByNumber = (number: number) => {
     setSortNumber(number);
