@@ -1,0 +1,48 @@
+.containerFooter {
+  display: flex;
+  align-items: center;
+  height: 96px;
+  padding-left: 184px;
+  border-top: 1px solid #e6e6e6;
+  background: #fff;
+}
+
+.leftBlock {
+  display: flex;
+  align-items: center;
+
+  background-image: url('../../assets/img/Logo_footer.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  background-origin: content-box;
+}
+
+.centerBlock {
+  display: flex;
+  align-items: center;
+  height: 32px;
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    .link {
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.8rem;
+      margin-right: 40px;
+      color: #89939a;
+    }
+  }
+}
+
+.rightBlocks {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-left: 236px;
+  height: 32px;
+  gap: 16px;
+}

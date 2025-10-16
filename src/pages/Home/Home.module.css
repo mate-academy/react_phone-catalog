@@ -10,7 +10,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6; /* espaço entre chevrons e banner */
+  gap: 6;
 }
 
 /* wrapper externo dos dots (na Home) — usado como ponto de entrada para o CSS dos dots */
@@ -28,7 +28,6 @@
 }
 
 /* BRAND NEW MODELS */
-
 .containerBrandFlex {
   display: flex;
   align-items: center;
@@ -188,7 +187,7 @@
 
 .figure {
   display: flex;
-  flex-direction: column; /* Garante que o texto fique abaixo da imagem */
+  flex-direction: column;
   align-items: center;
 }
 
@@ -220,7 +219,7 @@
   font-weight: 600;
 }
 
-/* SUBTITLE CARD*/
+/* SUBTITLE CARD */
 .subtitle {
   margin: 20px 0 auto;
   font-size: 0.9rem;

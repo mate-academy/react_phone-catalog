@@ -5,6 +5,7 @@ import Phones from './pages/Phones';
 import Tablets from './pages/Tablets';
 import Accessories from './pages/Accessories';
 import './App.scss';
+import Footer from './components/Footer';
 
 export const App = () => (
   <Router>
@@ -15,6 +16,6 @@ export const App = () => (
       <Route path="/tablets" element={<Tablets />} />
       <Route path="/accessories" element={<Accessories />} />
     </Routes>
-    =
+    <Footer />
   </Router>
 );
