@@ -1,7 +1,12 @@
-import './App.scss';
+import { Header } from '@Header';
+import { HomePage } from '@HomePage';
+import './assets/styles/main.scss';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return (
+    <>
+      <Header />
+      <HomePage />
+    </>
+  );
+};

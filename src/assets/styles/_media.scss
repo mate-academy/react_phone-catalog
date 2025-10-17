@@ -1,0 +1,35 @@
+$dekstop: 1280px;
+
+$tablet: 1023px;
+
+$mobile: 650px;
+
+@mixin dekstop {
+  @media (max-width: $dekstop) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 16px;
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include dekstop {
+    padding-inline: 32px;
+  }
+}

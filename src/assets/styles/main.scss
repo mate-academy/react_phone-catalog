@@ -1,0 +1,38 @@
+body {
+  background-color: var(--color-black);
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--color-secondary);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+.container {
+  width: 100%;
+
+  @include contentPaddingInline;
+}
+
+h1 {
+  @include fluid-text(48, 32);
+}
+
+h2 {
+  @include fluid-text(32, 22);
+}
+
+h3 {
+  @include fluid-text(22, 20);
+}
+
+h4 {
+  @include fluid-text(20, 16);
+}
