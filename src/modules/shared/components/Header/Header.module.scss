@@ -256,23 +256,7 @@
   }
 }
 
-@media (max-width: $desktop-md) {
-  .header__nav {
-    gap: $spacing-2xl;
-  }
-  .header__navLink {
-    font-size: 11px;
-    padding: $spacing-xl 0;
-  }
-}
-
-@media (max-width: $desktop-sm) {
-  .header__nav {
-    gap: $spacing-lg;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .header__nav {
     display: none;
   }

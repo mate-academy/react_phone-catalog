@@ -1,4 +1,4 @@
-import { Product, ProductDetails } from '../types';
+import { Product } from '../types';
 
 const API_BASE =
   process.env.NODE_ENV === 'production' ? '/react_phone-catalog/api' : 'api';
@@ -21,7 +21,7 @@ export const api = {
     }
   },
 
-  async getProductDetails(itemId: string): Promise<ProductDetails | null> {
+  async getProductDetails(itemId: string): Promise<Product | null> {
     try {
       const response = await fetch(`${API_BASE}/products.json`);
 
@@ -29,9 +29,9 @@ export const api = {
         throw new Error('Failed to fetch product details');
       }
 
-      const products: ProductDetails[] = await response.json();
+      const products: Product[] = await response.json();
 
-      return products.find(p => p.id === itemId) || null;
+      return products.find(p => p.id == itemId) || null;
     } catch (error) {
       //console.error('Error fetching product details:', error);
       return null;

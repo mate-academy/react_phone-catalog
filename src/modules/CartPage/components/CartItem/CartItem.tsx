@@ -40,7 +40,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
       </button>
 
       <Link
-        to={`/product/${item.product.itemId}`}
+        to={`/product/${item.product.id}`}
         className={styles.cartItem__imageLink}
       >
         <img
@@ -51,7 +51,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
       </Link>
 
       <Link
-        to={`/product/${item.product.itemId}`}
+        to={`/product/${item.product.id}`}
         className={styles.cartItem__name}
       >
         {item.product.name}

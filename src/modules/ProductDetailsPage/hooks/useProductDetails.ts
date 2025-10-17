@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ProductDetails } from '../../../types';
+import { Product } from '../../../types';
 import { api } from '../../../utils/api';
 
 export const useProductDetails = (productId: string) => {
-  const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

@@ -21,11 +21,15 @@ body {
   &__main {
     flex: 1;
     padding-top: 0;
+
+    // Márgenes laterales consistentes
     padding-left: 8%;
     padding-right: 8%;
 
     @include mobile {
       padding-top: $spacing-4xl;
+      padding-left: 5%;
+      padding-right: 5%;
     }
   }
 
@@ -41,14 +45,5 @@ body {
       padding-left: 4%;
       padding-right: 4%;
     }
-  }
-
-  &__title {
-    @include font-mont(clamp(24px, 5vw, 32px), $font-weight-bold);
-
-    color: $secondary;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
   }
 }

@@ -20,6 +20,7 @@ import { NotFoundPage } from './modules/NotFoundPage';
 import { ROUTES } from './modules/shared/constants/routes';
 
 import './App.scss';
+
 export const App: React.FC = () => {
   return (
     <ThemeProvider>
@@ -39,7 +40,7 @@ export const App: React.FC = () => {
                     element={<AccessoriesPage />}
                   />
                   <Route
-                    path={`${ROUTES.PRODUCT}`}
+                    path={ROUTES.PRODUCT}
                     element={<ProductDetailsPage />}
                   />
                   <Route path={ROUTES.CART} element={<CartPage />} />

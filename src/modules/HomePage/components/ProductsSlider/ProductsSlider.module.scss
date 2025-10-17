@@ -1,60 +1,53 @@
 @import '../../../../utils/style/main';
 
 .productsSlider {
-  margin-bottom: 80px;
+  margin-bottom: $spacing-7xl;
   position: relative;
 
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: $spacing-2xl;
   }
 
   &__title {
-    font-size: 32px;
-    font-weight: 700;
-    color: #f1f2f9;
-    margin-bottom: 24px;
-    margin-top: 80px;
+    @include font-mont($font-size-4xl, $font-weight-bold);
+
+    color: $secondary;
+    margin-bottom: $spacing-2xl;
+    margin-top: $spacing-7xl;
   }
 
   &__navigation {
     display: flex;
-    gap: 16px;
+    gap: $spacing-lg;
   }
 
   &__navButton {
-    width: 32px;
-    height: 32px;
-    border: none;
-    background: #3b3e4a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    @include icon-button(32px);
 
+    transition: all $transition-normal ease;
+    border: none;
     &:hover {
-      border-color: #75767f;
-      background: #323542;
+      background: $icons;
     }
 
     &_disabled {
-      background: #25262c;
-      border: 1px solid #535459;
+      background: $surface1;
+      border: 1px solid $gray-border;
       cursor: not-allowed;
       opacity: 0.6;
 
       &:hover {
-        background: #25262c;
-        border-color: #535459;
+        background: $surface1;
+        border-color: $gray-border;
       }
     }
 
     img {
-      width: 16px;
-      height: 16px;
+      width: $spacing-lg;
+      height: $spacing-lg;
     }
   }
 
@@ -62,7 +55,6 @@
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding: 0 32px;
 
     &::-webkit-scrollbar {
       display: none;
@@ -71,14 +63,18 @@
 
   &__track {
     display: flex;
-    gap: 16px;
-    padding: 4px;
+    gap: $spacing-lg;
     width: max-content;
   }
 
   &__slide {
-    min-width: 272px;
-    flex-shrink: 0;
     height: 506px;
+    width: 272px;
+    flex-shrink: 0;
+
+    .productCard {
+      width: 100%;
+      height: 100%;
+    }
   }
 }

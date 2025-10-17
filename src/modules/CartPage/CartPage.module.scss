@@ -4,13 +4,34 @@
   padding: $spacing-4xl 0;
   text-align: center;
 
-  h1 {
-    font-size: $font-size-4xl;
-    margin-bottom: $spacing-lg;
-    color: $gray-primary;
+  &__title {
+    font-family: 'Mont', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #f1f2f9;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: flex-start;
   }
 
-  p {
+  &__emptyText {
     color: $gray-secondary;
+  }
+
+  &__emptyImage {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 24px;
+    opacity: 0.6;
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    text-align: center;
   }
 }

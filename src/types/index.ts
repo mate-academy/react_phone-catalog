@@ -14,30 +14,6 @@ export interface Product {
   image: string;
 }
 
-export interface ProductDetails {
-  id: string;
-  namespaceId: string;
-  name: string;
-  capacityAvailable: string[];
-  colorsAvailable: string[];
-  color: string;
-  capacity: string;
-  priceRegular: number;
-  priceDiscount: number;
-  images: string[];
-  description: Array<{
-    title: string;
-    text: string[];
-  }>;
-  screen: string;
-  resolution: string;
-  processor: string;
-  ram: string;
-  camera: string;
-  zoom: string;
-  cell: string[];
-}
-
 export interface CartItem {
   id: string;
   product: Product;

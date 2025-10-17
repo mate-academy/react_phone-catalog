@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import { ProductDetails } from '../../../../types';
+import { Product } from '../../../../types';
 import { useCart } from '../../../../contexts/CartContext';
 import { useFavorites } from '../../../../contexts/FavoritesContext';
 import styles from './ProductInfo.module.scss';
 
 interface Props {
-  product: ProductDetails;
+  product: Product;
 }
 
 export const ProductInfo: React.FC<Props> = ({ product }) => {
-  const [selectedColor, setSelectedColor] = useState(product.color);
-  const [selectedCapacity, setSelectedCapacity] = useState(product.capacity);
-
   const { state: cartState, dispatch: cartDispatch } = useCart();
   const { state: favoritesState, dispatch: favoritesDispatch } = useFavorites();
 
@@ -23,71 +20,43 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
 
   const handleAddToCart = () => {
     if (!isInCart) {
-      // Convert ProductDetails to Product for cart
-      const cartProduct = {
-        id: product.id,
-        itemId: product.id,
-        name: product.name,
-        fullPrice: product.priceRegular,
-        price: product.priceDiscount,
-        screen: product.screen,
-        capacity: selectedCapacity,
-        color: selectedColor,
-        ram: product.ram,
-        year: new Date().getFullYear(), // Fallback
-        image: product.images[0] || '',
-        category: product.namespaceId as 'phones' | 'tablets' | 'accessories',
-      };
-
-      cartDispatch({ type: 'ADD_ITEM', payload: cartProduct });
+      cartDispatch({
+        type: 'ADD_ITEM',
+        payload: {
+          id: product.id,
+          product: product,
+          quantity: 1,
+        },
+      });
     }
   };
 
   const handleToggleFavorite = () => {
-    const cartProduct = {
-      id: product.id,
-      itemId: product.id,
-      name: product.name,
-      fullPrice: product.priceRegular,
-      price: product.priceDiscount,
-      screen: product.screen,
-      capacity: selectedCapacity,
-      color: selectedColor,
-      ram: product.ram,
-      year: new Date().getFullYear(),
-      image: product.images[0] || '',
-      category: product.namespaceId as 'phones' | 'tablets' | 'accessories',
-    };
-
     if (isInFavorites) {
-      const favoriteItem = favoritesState.items.find(
-        item => item.product.id === product.id,
-      );
-
-      if (favoriteItem) {
-        favoritesDispatch({
-          type: 'REMOVE_FAVORITE',
-          payload: favoriteItem.id,
-        });
-      }
+      favoritesDispatch({
+        type: 'REMOVE_FAVORITE',
+        payload: product.id,
+      });
     } else {
-      favoritesDispatch({ type: 'ADD_FAVORITE', payload: cartProduct });
+      favoritesDispatch({
+        type: 'ADD_FAVORITE',
+        payload: product,
+      });
     }
   };
 
-  const discount = product.priceRegular - product.priceDiscount;
+  const availableColors = product.colorsAvailable || [product.color];
+  const availableCapacities = product.capacityAvailable || [product.capacity];
 
   return (
     <div className={styles.productInfo}>
       <h1 className={styles.productInfo__title}>{product.name}</h1>
 
       <div className={styles.productInfo__prices}>
-        <span className={styles.productInfo__price}>
-          ${product.priceDiscount}
-        </span>
-        {discount > 0 && (
+        <span className={styles.productInfo__price}>${product.price}</span>
+        {product.fullPrice > product.price && (
           <span className={styles.productInfo__fullPrice}>
-            ${product.priceRegular}
+            ${product.fullPrice}
           </span>
         )}
       </div>
@@ -96,15 +65,14 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
       <div className={styles.productInfo__section}>
         <h3 className={styles.productInfo__sectionTitle}>Available colors</h3>
         <div className={styles.productInfo__colors}>
-          {product.colorsAvailable.map(color => (
+          {availableColors.map(color => (
             <button
               key={color}
               className={classNames(styles.productInfo__color, {
-                [styles.productInfo__color_active]: color === selectedColor,
+                [styles.productInfo__color_active]: color === product.color,
               })}
-              onClick={() => setSelectedColor(color)}
               style={{ backgroundColor: color.toLowerCase() }}
-              aria-label={`Select ${color} color`}
+              title={color}
             />
           ))}
         </div>
@@ -114,14 +82,13 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
       <div className={styles.productInfo__section}>
         <h3 className={styles.productInfo__sectionTitle}>Select capacity</h3>
         <div className={styles.productInfo__capacities}>
-          {product.capacityAvailable.map(capacity => (
+          {availableCapacities.map(capacity => (
             <button
               key={capacity}
               className={classNames(styles.productInfo__capacity, {
                 [styles.productInfo__capacity_active]:
-                  capacity === selectedCapacity,
+                  capacity === product.capacity,
               })}
-              onClick={() => setSelectedCapacity(capacity)}
             >
               {capacity}
             </button>
@@ -136,7 +103,6 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
             [styles.productInfo__cartBtn_added]: isInCart,
           })}
           onClick={handleAddToCart}
-          disabled={isInCart}
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
@@ -161,7 +127,7 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
         </button>
       </div>
 
-      {/* Specs */}
+      {/* Tech Specs */}
       <div className={styles.productInfo__specs}>
         <div className={styles.productInfo__spec}>
           <span className={styles.productInfo__specName}>Screen</span>
@@ -185,26 +151,17 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
           <span className={styles.productInfo__specName}>RAM</span>
           <span className={styles.productInfo__specValue}>{product.ram}</span>
         </div>
-      </div>
-
-      {/* Description */}
-      {product.description && product.description.length > 0 && (
-        <div className={styles.productInfo__about}>
-          <h2 className={styles.productInfo__aboutTitle}>About</h2>
-          {product.description.map((section, index) => (
-            <div key={index} className={styles.productInfo__aboutSection}>
-              <h3 className={styles.productInfo__aboutSectionTitle}>
-                {section.title}
-              </h3>
-              {section.text.map((paragraph, pIndex) => (
-                <p key={pIndex} className={styles.productInfo__aboutText}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          ))}
+        <div className={styles.productInfo__spec}>
+          <span className={styles.productInfo__specName}>Camera</span>
+          <span className={styles.productInfo__specValue}>
+            {product.camera}
+          </span>
         </div>
-      )}
+        <div className={styles.productInfo__spec}>
+          <span className={styles.productInfo__specName}>Zoom</span>
+          <span className={styles.productInfo__specValue}>{product.zoom}</span>
+        </div>
+      </div>
     </div>
   );
 };

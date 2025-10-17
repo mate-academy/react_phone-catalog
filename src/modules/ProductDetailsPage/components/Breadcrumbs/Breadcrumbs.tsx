@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ProductDetails } from '../../../../types';
+import { Product } from '../../../../types';
 import { CATEGORY_NAMES } from '../../../shared/constants/categories';
 import styles from './Breadcrumbs.module.scss';
 
 interface Props {
-  product: ProductDetails;
+  product: Product;
 }
 
 export const Breadcrumbs: React.FC<Props> = ({ product }) => {
   const navigate = useNavigate();
 
-  const categoryName = product.namespaceId as keyof typeof CATEGORY_NAMES;
+  const categoryName = product.itemId as keyof typeof CATEGORY_NAMES;
 
   return (
     <div className={styles.breadcrumbs}>
