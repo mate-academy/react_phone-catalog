@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import vaforiteImg from './../../images/icons/Favourites (Heart Like).svg';
 import vaforiteImgSelected from './../../images/icons/Favourites (Heart Like)_2.svg';
 import fakeImg from './../../images/img/phones//apple-iphone-11/black/00.webp';
 
 import './ProductCard.scss';
 
-export const ProductCard = () => {
+type Props = {
+  product: {};
+};
+
+export const ProductCard: FC<Props> = ({ product }) => {
   return (
     <div className="card">
       <a href="#" className="card__link">

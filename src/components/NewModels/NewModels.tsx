@@ -1,12 +1,7 @@
-import React from 'react';
-import vaforiteImg from './../../images/icons/Favourites (Heart Like).svg';
-import vaforiteImgSelected from './../../images/icons/Favourites (Heart Like)_2.svg';
-import fakeImg from './../../images/img/phones//apple-iphone-11/black/00.webp';
 import { ProductCard } from '../ProductCard';
 import './NewModels.scss';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, A11y } from 'swiper/modules';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -27,38 +22,7 @@ export const NewModels = () => {
       <div className="container slider__container">
         <h2 className="slider__title">Brand new models</h2>
 
-        <div className="slider__nav">
-          <button className="swiper-button-prev"></button>
-          <button className="swiper-button-next"></button>
-        </div>
-        <Swiper
-          className="swiper-slider"
-          modules={[Navigation, A11y]}
-          slidesPerView={4}
-          spaceBetween={16}
-          navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          }}
-          // navigation
-          pagination={{ clickable: true }}
-        >
-          <SwiperSlide>
-            <ProductCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard />
-          </SwiperSlide>
-        </Swiper>
+
 
         {/* <div className="slider__wrapper"> */}
         {/* <ProductCard />
