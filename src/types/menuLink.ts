@@ -1,4 +1,6 @@
 export interface MenuLink {
-  to: string;
+  to?: string;
+  href?: string;
   label: string;
+  external?: boolean;
 }

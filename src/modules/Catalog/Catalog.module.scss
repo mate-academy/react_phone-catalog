@@ -12,7 +12,7 @@ html, body, h2 {
 }
 
 .catalogPage {
-  // @include content-padding-inline;
+  @include content-padding-inline;
 
   font-family: Montserrat, sans-serif;
   background-color: $menu-background-color;

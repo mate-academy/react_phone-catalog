@@ -298,12 +298,14 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
 
-          <ProductSlider
-            title={'You may also like'}
-            showOldPrice={true}
-            limit={10}
-            products={suggestedProducts || []}
-          />
+          <div className={styles.containerSlider}>
+            <ProductSlider
+              title={'You may also like'}
+              showOldPrice={true}
+              limit={10}
+              products={suggestedProducts || []}
+            />
+          </div>
         </div>
       </div>
     </>

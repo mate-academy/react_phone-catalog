@@ -46,7 +46,7 @@ p {
 }
 
 .cart {
-  // @include content-padding-inline;
+  @include content-padding-inline;
 
   &__content {
     display: flex;

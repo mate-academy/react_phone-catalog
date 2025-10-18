@@ -2,14 +2,13 @@
 @use '../../../../shared/styles/mixins.scss' as *;
 
 .wrapper {
-  // padding-top: 80px;
+  @include content-padding-inline;
 
   @include on-tablet {
     row-gap: 64px;
   }
 
   @include on-desktop {
-    padding-top: 80px;
     row-gap: 80px;
   }
 }
@@ -30,8 +29,6 @@
   grid-template-columns: 1fr;
   gap: 16px;
   justify-content: center;
-
-  // @include content-padding-inline;
 
   @include on-tablet {
     grid-template-columns: repeat(3, minmax(150px, 1fr));

@@ -4,7 +4,11 @@ import { MenuLink } from '../../types/menuLink';
 // import classNames from 'classnames';
 
 const menuLinks: MenuLink[] = [
-  { to: '/', label: 'GitHub' },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/ElisabethPO/react_phone-catalog',
+    external: true,
+  },
   { to: '/contacts', label: 'Contacts' },
   { to: '/right', label: 'Right' },
 ];
@@ -26,10 +30,21 @@ export const Footer: React.FC = () => {
         <nav className={styles.nav}>
           <ul className={styles.nav__list}>
             {menuLinks.map(link => (
-              <li key={link.to} className={styles.nav__item}>
-                <NavLink to={link.to} className={styles.nav__link}>
-                  {link.label}
-                </NavLink>
+              <li key={link.label} className={styles.nav__item}>
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.nav__link}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <NavLink to={link.to || '#'} className={styles.nav__link}>
+                    {link.label}
+                  </NavLink>
+                )}
               </li>
             ))}
           </ul>

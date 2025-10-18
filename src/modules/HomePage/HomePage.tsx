@@ -38,9 +38,9 @@ export const HomePage: React.FC = () => {
           Welcome to Nice{' '}
           <span className={styles.header__lineBreak}>Gadgets store!</span>
         </h1>
-      </div>
 
-      <Slider />
+        <Slider />
+      </div>
 
       <ProductSlider
         title="Brand new models"

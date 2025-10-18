@@ -1,118 +1,209 @@
-import styles from './Slider.module.scss';
+/* eslint-disable import/no-extraneous-dependencies */
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/scss';
-import 'swiper/scss/navigation';
-import 'swiper/scss/pagination';
-import 'swiper/scss/navigation';
-import 'swiper/scss';
-import { SlideItem } from '../../interfaces/swiperInterface';
+import styles from './Slider.module.scss';
+import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/modules';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
+import 'swiper/css';
 
-const slides: SlideItem[] = [
-  {
-    id: 1,
-    image: './img/slide_1.png',
-    mainTitle: 'iPhone 14 Pro',
-    subTitle: 'Pro.Beyond.',
-    content: {
-      title: 'Now available in our store!',
-      text: 'Be the first!',
-      buttonText: 'Order now',
-      buttonLink: '#',
-    },
-  },
-  {
-    id: 2,
-    image: './img/category-phones.png',
-    mainTitle: 'iPad 13 Max',
-    subTitle: 'Pro.Beyond.',
-    content: {
-      title: 'Check our latest arrivals!',
-      text: 'New Edition!',
-      buttonText: 'Buy now',
-      buttonLink: '#',
-    },
-  },
-  {
-    id: 3,
-    image: './img/category-tablets.png',
-    mainTitle: 'iPad 13 Pro',
-    subTitle: 'Pro.Beyond.',
-    content: {
-      title: 'Special offers today!',
-      text: 'Be the first!',
-      buttonText: 'Shop now',
-      buttonLink: '#',
-    },
-  },
-];
-
-export const Slider: React.FC = () => {
+export const Slider = () => {
   return (
     <>
-      <div className={styles.sliderWrapper}>
-        <div className={styles.sliderInner}>
-          <Swiper
-            spaceBetween={50}
-            slidesPerView={1}
-            modules={[Navigation, Pagination, Autoplay]}
-            loop
-            navigation={{
-              prevEl: `.${styles.prevBtn}`,
-              nextEl: `.${styles.nextBtn}`,
-            }}
-            pagination={{
-              el: `.${styles.pagination}`,
-              clickable: true,
-              bulletClass: styles.bullet,
-              bulletActiveClass: styles.activeBullet,
-            }}
-            autoplay={{ delay: 5000 }}
-          >
-            {slides.map(slide => (
-              <SwiperSlide key={slide.id}>
-                <div className={styles.slide}>
-                  <div className={styles.slide__wrapper}>
-                    <div className={styles.slide__content}>
-                      <h3 className={styles.slide__title}>
-                        {slide.content.title}{' '}
-                        <span className={styles.slide__emoji}>{'👌'}</span>
-                      </h3>
-                      <p className={styles.slide__text}>{slide.content.text}</p>
-                      <a
-                        className={styles.slide__link}
-                        href={slide.content.buttonLink}
-                      >
-                        {slide.content.buttonText}
-                      </a>
-                    </div>
-                    <div className={styles.slide__image}>
-                      <h3 className={styles['slide__image-title']}>
-                        {slide.mainTitle}
-                      </h3>
-                      <p className={styles['slide__image-text']}>
-                        {slide.subTitle}
-                      </p>
-                      <img
-                        className={styles.slide__img}
-                        src={slide.image}
-                        alt={slide.mainTitle}
-                      />
-                    </div>
-                  </div>
+      <div className={styles['slider-wrapper']}>
+        <button className={`slide-btn__prev ${styles.myCustomBtn__prev}`}>
+          <img src="./img/icons/arrow_left.png" alt="Arrow left" />
+        </button>
+        <Swiper
+          slidesPerView={1}
+          modules={[Navigation, Pagination, EffectFade, Autoplay]}
+          loop={true}
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          navigation={{
+            nextEl: '.slide-btn__next',
+            prevEl: '.slide-btn__prev',
+          }}
+          pagination={{ clickable: true, el: '#main-slider-pagination' }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+        >
+          <SwiperSlide>
+            <div className={styles.slide}>
+              <div className={styles.slide__wrapper}>
+                <div className={styles.slide__content}>
+                  <h3 className={styles.slide__title}>
+                    Now available in our store!
+                    <img
+                      className={styles['slide__title-img']}
+                      src="./img/icons/hand.png"
+                      alt="ok hand"
+                    />
+                  </h3>
+                  <p className={styles.slide__text}>Be the first!</p>
+                  <a className={styles.slide__link} href="#">
+                    Order now
+                  </a>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <button className={`${styles.navBtn} ${styles.prevBtn}`}>
-            <img src="./img/icons/arrow_left.png" alt="Arrow left" />
-          </button>
-          <button className={`${styles.navBtn} ${styles.nextBtn}`}>
-            <img src="./img/icons/arrow_right.png" alt="Arrow right" />
-          </button>
-        </div>
-        <div className={styles.pagination} />
+                <div className={styles.slide__image}>
+                  <div className={styles['slide__img-box']}>
+                    <h3 className={styles['slide__image-title']}>
+                      iPhone 14 Pro
+                    </h3>
+                    <p className={styles['slide__image-text']}>Pro. Beyond.</p>
+                  </div>
+                  <img
+                    className={styles.slide__img}
+                    src="./img/slide_1.png"
+                    alt="iPhone 14 Pro"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={styles['slide-phone']}>
+              <div className={styles['slide-phone__content']}>
+                <h3 className={styles['slide-phone__title']}>
+                  Now available in our store!
+                </h3>
+                <div className={styles.slide__image}>
+                  <div className={styles['slide-phone__img-box']}>
+                    <h3 className={styles['slide-phone__image-title']}>
+                      iPhone 14 Pro
+                    </h3>
+                    <p className={styles['slide-phone__image-text']}>
+                      Pro. Beyond.
+                    </p>
+                  </div>
+                  <img
+                    className={styles['slide-phone__img']}
+                    src="./img/slide_1_ph.png"
+                    alt="iPhone 14 Pro"
+                  />
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className={styles.slide}>
+              <div className={styles.slide__wrapper}>
+                <div className={styles.slide__content}>
+                  <h3 className={styles.slide__title}>
+                    Now available in our store!
+                    <img
+                      className={styles['slide__title-img']}
+                      src="./img/icons/hand.png"
+                      alt="ok hand"
+                    />
+                  </h3>
+                  <p className={styles.slide__text}>New Edition!</p>
+                  <a className={styles.slide__link} href="#">
+                    Buy now
+                  </a>
+                </div>
+                <div className={styles.slide__image}>
+                  <div className={styles['slide__img-box']}>
+                    <h3 className={styles['slide__image-title']}>
+                      iPad 13 Max
+                    </h3>
+                    <p className={styles['slide__image-text']}>Pro. Beyond.</p>
+                  </div>
+                  <img
+                    className={styles.slide__img}
+                    src="./img/category-phones.png"
+                    alt="iPad 13 Max"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={styles['slide-phone']}>
+              <div className={styles['slide-phone__content']}>
+                <h3 className={styles['slide-phone__title']}>
+                  Now available in our store!
+                </h3>
+                <div className={styles.slide__image}>
+                  <div className={styles['slide-phone__img-box']}>
+                    <h3 className={styles['slide-phone__image-title']}>
+                      iPhone 14 Pro
+                    </h3>
+                    <p className={styles['slide-phone__image-text']}>
+                      Pro. Beyond.
+                    </p>
+                  </div>
+                  <img
+                    className={styles['slide-phone__img']}
+                    src="./img/category-phones-ph.png"
+                    alt="iPhone 14 Pro"
+                  />
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className={styles.slide}>
+              <div className={styles.slide__wrapper}>
+                <div className={styles.slide__content}>
+                  <h3 className={styles.slide__title}>
+                    Now available in our store!
+                    <img
+                      className={styles['slide__title-img']}
+                      src="./img/icons/hand.png"
+                      alt="ok hand"
+                    />
+                  </h3>
+                  <p className={styles.slide__text}>Be the first!</p>
+                  <a className={styles.slide__link} href="#">
+                    Shop now
+                  </a>
+                </div>
+                <div className={styles.slide__image}>
+                  <div className={styles['slide__img-box']}>
+                    <h3 className={styles['slide__image-title']}>
+                      iPad 13 Pro
+                    </h3>
+                    <p className={styles['slide__image-text']}>Pro. Beyond.</p>
+                  </div>
+                  <img
+                    className={styles.slide__img}
+                    src="./img/category-tablets.png"
+                    alt="iPhone 13 Pro"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={styles['slide-phone']}>
+              <div className={styles['slide-phone__content']}>
+                <h3 className={styles['slide-phone__title']}>
+                  Now available in our store!
+                </h3>
+                <div className={styles.slide__image}>
+                  <div className={styles['slide-phone__img-box']}>
+                    <h3 className={styles['slide-phone__image-title']}>
+                      iPhone 14 Pro
+                    </h3>
+                    <p className={styles['slide-phone__image-text']}>
+                      Pro. Beyond.
+                    </p>
+                  </div>
+                  <img
+                    className={styles['slide-phone__img']}
+                    src="./img/category-tablets_ph.png"
+                    alt="iPhone 14 Pro"
+                  />
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+        <button className={`slide-btn__next ${styles.myCustomBtn__next}`}>
+          <img src="./img/icons/arrow_right.png" alt="Arrow right" />
+        </button>
       </div>
+      <div
+        id="main-slider-pagination"
+        className={`swiper-pagination ${styles.myPagination}`}
+      ></div>
     </>
   );
 };

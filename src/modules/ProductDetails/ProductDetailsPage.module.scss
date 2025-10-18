@@ -455,3 +455,19 @@
     font-weight: 500;
   }
 }
+
+// .containerSlider {
+//   padding-inline: 0;
+// }
+.containerSlider {
+  padding: 0;
+  margin-inline: -16px;
+
+  @include on-tablet {
+    margin-inline: -32px;
+  }
+
+  @include on-desktop {
+    margin-inline: calc(-1 * var(--content-padding-inline, 152px));
+  }
+}

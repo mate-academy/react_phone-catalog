@@ -3,6 +3,15 @@
 
 .wrapper {
   gap: 16px;
+  padding-left: 16px;
+
+  @include on-tablet {
+    padding-left: 32px;
+  }
+
+  @include on-desktop {
+    @include content-padding-inline;
+  }
 }
 
 .header {
