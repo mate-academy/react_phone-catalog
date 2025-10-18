@@ -1,0 +1,112 @@
+// ============================================
+// LAYOUT
+// ============================================
+
+// ============================================
+// MAIN CONTAINER
+// ============================================
+
+.main {
+  padding-inline: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  max-width: 1200px;
+  min-width: 320px;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-inline: 0;
+  }
+}
+
+// ============================================
+// SECTIONS
+// ============================================
+
+.section {
+  &--full-width {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+
+    @include on-tablet {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  &__title {
+    @include h2;
+    color: $color-primary;
+  }
+}
+
+// ============================================
+// DIVIDER
+// ============================================
+
+.divider {
+  width: 100vw;
+  height: 1px;
+  margin-left: calc(50% - 50vw);
+  background-color: $color-elements;
+}
+
+// ============================================
+// BEM LAYOUT MIXINS
+// Міксини для позиціювання блоків згідно BEM
+// ============================================
+
+.page {
+  &__header {
+    margin-bottom: 24px;
+  }
+
+  &__main {
+    margin: 80px auto;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__body {
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    // transition: all $image-hover-duration ease;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: auto;
+
+      transform: translateX(0);
+    }
+  }
+}
+
+// ============================================
+// CONTAINER (якщо використовується)
+// ============================================
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}

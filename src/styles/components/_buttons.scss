@@ -1,0 +1,142 @@
+// ============================================
+// BUTTON COMPONENTS
+// ============================================
+
+// ============================================
+// PRIMARY BUTTON
+// ============================================
+
+.button {
+  @include button-text;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 100px;
+  color: $color-white;
+  background-color: $color-primary;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  @include on-tablet {
+    width: 125px;
+  }
+
+  @include on-desktop {
+    width: 160px;
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &:hover {
+    filter: drop-shadow(0 3px 13px rgba(23, 32, 49, 0.4));
+  }
+
+  &--selected {
+    background-color: $color-white;
+    color: $color-green;
+    border: 1px solid $color-elements;
+  }
+}
+
+// ============================================
+// ICON BUTTON
+// ============================================
+
+.button-icon {
+  box-sizing: border-box;
+  height: 32px;
+  width: 32px;
+  border: 1px solid $color-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background-color: $color-white;
+  cursor: pointer;
+  transition: border 0.3s ease;
+
+  &:hover {
+    border: 1px solid black;
+  }
+
+  &--disabled {
+    border: 1px solid $color-elements;
+    color: $color-icons;
+    cursor: not-allowed;
+
+    .icon {
+      background-color: $color-icons;
+      mask-image: var(--icon-url);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      background-image: none;
+    }
+
+    &:hover {
+      border: 1px solid $color-elements;
+    }
+  }
+
+  &--red {
+    .icon {
+      background-color: $color-red;
+      mask-image: var(--icon-url);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      background-image: none;
+    }
+  }
+
+  &--size-large {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    flex-shrink: 0;
+  }
+
+  &--full-width {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+// ============================================
+// ROUND BUTTON (Color Picker)
+// ============================================
+
+.button-round {
+  box-sizing: border-box;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: $color-white;
+  display: inline-block;
+  border: 1px solid $color-elements;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 50%;
+    background-color: #fcd8bb;
+  }
+
+  &:hover {
+    border: 1px solid $color-icons;
+  }
+
+  &--selected {
+    border: 1px solid $color-primary;
+  }
+}

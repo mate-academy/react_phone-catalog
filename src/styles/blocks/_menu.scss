@@ -1,0 +1,99 @@
+// ============================================
+// MENU BLOCK (Mobile Side Menu)
+// ============================================
+
+// Блокуємо скрол body коли меню відкрите
+body:has(.menu:target) {
+  overflow: hidden;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+
+  // Показуємо меню через :target
+  &:target {
+    transform: translateX(0);
+  }
+
+  @include on-tablet {
+    display: none; // Ховаємо на tablet+
+  }
+
+  // Header всередині меню (переиспользуємо стилі)
+  .header {
+    flex-shrink: 0;
+  }
+
+  &__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    overflow-y: auto;
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__nav-item {
+
+    &--active {
+      .menu__nav-link {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__nav-link {
+    @include uppercase;
+    color: $color-secondary;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__footer {
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid $color-elements;
+  }
+
+  &__footer-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:first-child {
+      border-right: 1px solid $color-elements;
+    }
+
+    &:hover {
+      background-color: $color-hover-bg;
+    }
+  }
+}

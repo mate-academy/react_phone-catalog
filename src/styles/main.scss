@@ -1,0 +1,26 @@
+// ============================================
+// MAIN STYLESHEET
+// ============================================
+// Імпорт модулів у правильній послідовності
+
+// 1. Abstracts (змінні, міксини - без реального CSS)
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// 2. Base (ресети, шрифти, базові стилі)
+@import 'base/fonts';
+@import 'base/reset';
+@import 'base/layout';
+
+// 3. Components (дрібні переиспользуемі компоненти)
+@import 'components/icon';
+@import 'components/buttons';
+@import 'components/product-card';
+
+// 4. Blocks (великі блоки сторінки)
+@import 'blocks/header';
+@import 'blocks/menu';
+@import 'blocks/footer';
+@import 'blocks/hero';
+@import 'blocks/product-slider';
+@import 'blocks/shop-by-category';

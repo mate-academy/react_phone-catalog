@@ -1,1 +1,1258 @@
-// not empty
+:root {
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+}
+
+// #region variables
+$color-primary: #313237;
+$color-secondary: #89939A;
+$color-icons: #B4BDC3;
+$color-elements: #E2E6E9;
+$color-hover-bg: #F4F6F8;
+$color-white: #FFFFFF;
+$color-green: #27AE60;
+$color-red: #EB5757;
+
+// Breakpoints
+$tablet-breakpoint: 640px;
+$desktop-breakpoint: 1200px;
+
+// #endregion
+
+// #region reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+// body - базові стилі для body
+body {
+  min-width: 320px;
+  font-family: 'Mont', sans-serif;
+  background-color: $color-white;
+  color: $color-primary;
+  overflow-x: hidden;
+}
+
+
+
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.App {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+// #endregion
+
+// #region _fonts.scss
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// #endregion
+
+// #region _mixins.scss
+
+@mixin on-tablet() {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns-count: 4;
+
+  column-gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(var(--columns-count), 1fr);
+
+  @include on-tablet {
+    --columns-count: 12;
+
+    column-gap: 16px;
+  }
+
+  @include on-desktop {
+    --columns-count: 24;
+
+    column-gap: 16px;
+  }
+}
+
+// ==============================
+// TYPOGRAPHY MIXINS (mobile-first)
+// ==============================
+
+$font-main: 'Mont', sans-serif;
+
+// Мобільна типографія — базова
+@mixin h1 {
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin h2 {
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin h3 {
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include on-tablet {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+@mixin h4 {
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin uppercase {
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin button-text {
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin body-text {
+  font-family: $font-main;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+// =====================================
+// 🎨 2. Spacing / sizing tokens
+// =====================================
+$sizes: (
+  mobile: (xs: 4px,
+    sm: 8px,
+    md: 16px,
+    lg: 24px,
+    xl: 32px,
+    xxl: 48px,
+    xxxl: 64px),
+  tablet: (xs: 6px,
+    sm: 12px,
+    md: 20px,
+    lg: 28px,
+    xl: 40px,
+    xxl: 56px,
+    xxxl: 72px),
+  desktop: (xs: 8px,
+    sm: 16px,
+    md: 24px,
+    lg: 32px,
+    xl: 48px,
+    xxl: 64px,
+    xxxl: 80px)
+);
+
+// =====================================
+// 🧮 3. Функція отримання значення
+// =====================================
+@function size($key, $device: mobile) {
+  @return map-get(map-get($sizes, $device), $key);
+}
+
+// =====================================
+// 💡 4. Головний mixin responsive()
+// =====================================
+// Використання: @include responsive(height, xxl);
+@mixin responsive($property, $key) {
+  #{$property}: size($key, mobile);
+
+  @include on-tablet {
+    #{$property}: size($key, tablet);
+  }
+
+  @include on-desktop {
+    #{$property}: size($key, desktop);
+  }
+}
+
+
+// #endregion
+
+// Модифікатор для секцій на повну ширину (виходять за межі padding)
+.section--full-width {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+
+  @include on-tablet {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+//
+
+.section__title {
+  @include h2;
+  color: $color-primary;
+}
+
+// #region BEM layout mixins
+// Міксини для позиціювання блоків згідно BEM
+
+.page {
+  &__header {
+    margin-bottom: 24px;
+  }
+
+  &__main {
+    margin: 80px auto;
+  }
+}
+
+// #endregion
+
+.main {
+  padding-inline: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  max-width: 1200px;
+  min-width: 320px;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-inline: 0;
+  }
+}
+
+
+.divider {
+  width: 100vw;
+  height: 1px;
+  margin-left: calc(50% - 50vw);
+  background-color: $color-elements;
+}
+
+
+// #region icons
+.icon {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__arrow-left {
+    --icon-url: url('/img/icons/arrow-left.svg');
+    background-image: var(--icon-url);
+  }
+
+  &__arrow-right {
+    --icon-url: url('/img/icons/arrow-right.svg');
+    background-image: var(--icon-url);
+  }
+
+  &__arrow-up {
+    --icon-url: url('/img/icons/arrow-up.svg');
+    background-image: var(--icon-url);
+  }
+
+  &__close {
+    --icon-url: url('/img/icons/close.svg');
+    background-image: var(--icon-url);
+  }
+
+  &__search {
+    --icon-url: url('/img/icons/search.svg');
+    background-image: var(--icon-url);
+  }
+
+  &__like {
+    --icon-url: url('/img/icons/like.svg');
+    background-image: var(--icon-url);
+  }
+
+  &__menu {
+    --icon-url: url('/img/icons/menu.svg');
+    background-image: var(--icon-url);
+  }
+
+  &__cart {
+    --icon-url: url('/img/icons/cart.svg');
+    background-image: var(--icon-url);
+  }
+
+  &__badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: $color-red;
+    border: 1px solid $color-white;
+    color: $color-white;
+    font-family: $font-main;
+    font-weight: 400;
+    font-size: 9px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
+
+// #region buttons
+.button {
+  @include button-text;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 100px;
+  color: $color-white;
+  background-color: $color-primary;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  @include on-tablet {
+    width: 125px;
+  }
+
+  @include on-desktop {
+    width: 160px;
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &:hover {
+    filter: drop-shadow(0 3px 13px rgba(23, 32, 49, 0.4));
+  }
+
+  // Модифікатор: вибраний стан (правильний BEM - подвійне тире)
+  &--selected {
+    background-color: $color-white;
+    color: $color-green;
+    border: 1px solid $color-elements;
+  }
+}
+
+.button-icon {
+  box-sizing: border-box; // Включаємо border у розміри
+  height: 32px;
+  width: 32px;
+  border: 1px solid $color-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background-color: $color-white;
+  cursor: pointer;
+  transition: border 0.3s ease;
+
+  &:hover {
+    border: 1px solid black;
+  }
+
+  // Модифікатор: disabled стан (подвійне тире)
+  &--disabled {
+    border: 1px solid $color-elements;
+    color: $color-icons;
+    cursor: not-allowed;
+
+    .icon {
+      background-color: $color-icons; // #B4BDC3
+      mask-image: var(--icon-url);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      background-image: none;
+    }
+
+    &:hover {
+      border: 1px solid $color-elements; // Не змінюється при hover
+    }
+  }
+
+  // Модифікатор: червона іконка для важливих дій
+  &--red {
+    .icon {
+      background-color: $color-red; // #EB5757
+      mask-image: var(--icon-url);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      background-image: none;
+    }
+  }
+
+  &--size-large {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  &--full-width {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.button-round {
+  box-sizing: border-box;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: $color-white;
+  display: inline-block;
+  border: 1px solid $color-elements;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 50%;
+    background-color: #fcd8bb; // бежевий центр
+  }
+
+  &:hover {
+    border: 1px solid $color-icons;
+  }
+
+  &--selected {
+    border: 1px solid $color-primary;
+  }
+}
+
+
+// #endregion
+
+// #region product-card
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.product-card {
+  max-width: 272px;
+  min-width: 212px;
+  padding: 32px;
+  box-sizing: border-box;
+  border: 1px solid $color-elements;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: contain;
+    height: 129px;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @include body-text;
+    color: $color-primary;
+    margin-bottom: 8px;
+    flex-grow: 1; // Займає весь доступний простір
+  }
+
+  &__price {
+    margin-bottom: 8px;
+    display: inline-flex;
+    gap: 8px;
+  }
+
+  &__price-regular {
+    @include h3;
+    color: $color-primary;
+  }
+
+  &__price-sale {
+    font-size: 22px;
+    text-decoration: line-through;
+    color: $color-secondary;
+  }
+
+  &__divider {
+    width: 100%; // Додаємо ширину
+    height: 1px;
+    background-color: $color-elements;
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+    margin-bottom: 8px;
+  }
+
+  &__info-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info-label {
+    @include small-text;
+    color: $color-secondary;
+  }
+
+  &__info-value {
+    @include small-text;
+    color: $color-primary;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  // Картка автоматично адаптується до grid контейнера через CSS змінні
+  // За замовчуванням займає всю ширину (для простих списків)
+  grid-column: span var(--card-columns, var(--columns-count));
+}
+
+// #endregion
+
+// #region product-slider
+
+.product-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__header {
+    @include page-grid;
+    align-items: center;
+  }
+
+  &__title {
+    @include h2;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 10;
+    }
+  }
+
+  &__controls {
+    grid-column: span 1 / -1;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__wrapper {
+    position: relative;
+
+    // Градієнт справа для натяку на скрол (тільки на мобільних)
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 80px;
+      background: linear-gradient(to left,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(255, 255, 255, 0.7) 30%,
+          rgba(255, 255, 255, 0) 100%);
+      pointer-events: none; // Не блокує клікти
+      z-index: 1;
+    }
+
+    @include on-tablet {
+
+      // На планшетах і десктопах прибираємо градієнт
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__list {
+    @include page-grid;
+
+    // Задаємо скільки колонок займає картка в слайдері
+    --card-columns: 3; // Mobile: 3 з 4 (peek effect)
+
+    @include on-tablet {
+      --card-columns: 5; // Tablet: 5 з 12
+    }
+
+    @include on-desktop {
+      --card-columns: 6; // Desktop: 6 з 24
+    }
+
+    // Картки йдуть в одну лінію (не переносяться)
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+
+    // Mobile: горизонтальний скрол з плавним snap
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    // Scroll snap для дочірніх елементів
+    >* {
+      scroll-snap-align: start;
+    }
+
+    // Ховаємо scrollbar для чистішого вигляду
+    scrollbar-width: none; // Firefox
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Edge
+    }
+  }
+}
+
+// #endregion
+
+// #region shop-by-category 
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__list {
+    @include page-grid;
+    gap: 32px;
+
+  }
+
+  &__container {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+
+    &--color-mobile {
+      background-color: #6D6474;
+    }
+
+    &--color-tablet {
+      background-color: #8D8D92;
+    }
+
+    &--color-accessories {
+      background-color: #973D5F;
+    }
+  }
+
+  &__item {
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    overflow: hidden;
+
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__item-image {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+
+
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 24px;
+
+    transition: transform 0.3s ease;
+  }
+
+  &__item-title {
+    @include h4;
+    color: $color-primary;
+  }
+
+  &__item-count {
+    @include body-text;
+    color: $color-secondary;
+  }
+}
+
+// #endregion
+
+// #region banner
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    @include h1;
+  }
+}
+
+
+.picturesSlider {
+  &__container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    transition: height 0.3s ease;
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__container-image {
+    position: relative;
+    flex: 1;
+    aspect-ratio: 1/1;
+    width: 100%;
+    transition: min-height 0.3s ease, max-height 0.3s ease;
+
+    @include on-tablet {
+      min-height: 189px;
+      max-height: 190px;
+      aspect-ratio: auto;
+    }
+
+    @include on-desktop {
+      max-height: 400px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    width: 100%;
+    background-color: #000;
+    transition: margin 0.3s ease, padding 0.3s ease;
+
+    @include on-tablet {
+      margin-inline: 16px;
+      padding: 16px;
+    }
+  }
+
+  &__aside {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: #222;
+    transition: padding 0.3s ease;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-desktop {
+      padding-left: 40px;
+      padding-block: 30px;
+    }
+  }
+
+  &__aside-title {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 1;
+    color: #fff;
+    background-image: linear-gradient(90deg, #7c4af4, #d862ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    transition: font-size 0.3s ease;
+
+    @include on-desktop {
+      font-size: 42px;
+    }
+  }
+
+  &__aside-ok {
+    height: 24px;
+
+    @include on-desktop {
+      font-size: 36px;
+    }
+  }
+
+  &__aside-description {
+    margin-top: 10px;
+    font-family: Mont-Regular, sans-serif;
+    font-size: 12px;
+    color: #aeaeae;
+  }
+
+  &__aside-action {
+    width: fit-content;
+    padding: 12px 24px;
+    border: 1px solid #444;
+    border-radius: 22px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #7c4af4;
+      transform: scale(1.05);
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    object-fit: contain;
+    transition: opacity 0.5s ease-in-out;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__button {
+    display: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+
+    @include on-tablet {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      border: 1px solid $color-hover-bg;
+    }
+
+    &:hover {
+      border-color: var(--color-gray-primary);
+      background-color: var(--color-hover);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    height: 24px;
+    margin: 0 auto;
+  }
+
+  &__dot {
+    cursor: pointer;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 4px;
+      background-color: $color-elements;
+      border-radius: 2px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    &:hover::after {
+      transform: scale(1.15);
+    }
+
+    &--active::after {
+      background-color: $color-primary;
+      width: 18px;
+    }
+  }
+}
+
+// #endregion
+
+// # endregion
+
+
+// #region header
+.header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $color-elements;
+
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+
+  }
+
+  &__logo-image {
+    height: 22px;
+    width: auto;
+    display: block;
+
+    @include on-desktop {
+      height: 30px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      height: 100%;
+      display: flex;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+  }
+
+  &__wrap {
+    display: flex;
+    gap: 16px;
+    height: 100%;
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: stretch;
+  }
+
+  &__nav-link {
+    @include uppercase;
+    color: $color-secondary;
+
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    position: relative;
+    transition: color 0.3s ease;
+
+    // Підкреслення знизу
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__nav-item--active &__nav-link {
+    color: $color-primary;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    height: 100%;
+  }
+
+  &__actions-desktop {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__actions-mobile {
+    display: flex;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border-left: 1px solid $color-elements;
+    background: none;
+    cursor: pointer;
+
+  }
+}
+
+// #endregion
+
+// #region footer
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 32px 16px;
+  border-top: 1px solid $color-elements;
+
+  @include on-tablet {
+    padding: 32px;
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      gap: 0;
+    }
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; // По лівій стороні на мобільному
+
+    @include on-tablet {
+      justify-content: flex-start;
+    }
+
+    &--nav {
+
+      // Навігація по центру тільки на tablet+
+      @include on-tablet {
+        justify-content: center;
+      }
+    }
+
+    &--back {
+      gap: 16px;
+      justify-content: center; // По центру на мобільному
+
+      @include on-tablet {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &__logo {
+    height: 32px;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 0;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  &__nav-item {
+    text-align: left; // По лівій стороні на мобільному
+
+    @include on-tablet {
+      text-align: left;
+    }
+  }
+
+  &__nav-link {
+    @include body-text;
+    text-transform: uppercase;
+    color: $color-secondary;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__back-link {
+    @include button-text;
+    color: $color-secondary;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__back-button {
+    flex-shrink: 0;
+  }
+}
+
+// #endregion

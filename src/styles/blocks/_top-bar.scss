@@ -1,0 +1,134 @@
+/* #region menu */
+
+.menu {
+  box-sizing: border-box;
+  background-color: #e5e6e8;
+  width: 100%;
+  height: 100vh;
+  overflow: auto; /* to scroll the menu if needed */
+
+  &__nav {
+    margin-bottom: 48px;
+  }
+
+  &__content {
+    @include content-padding-inline;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-weight: 700;
+    color: $color-primary;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    color: $color-primary;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    position: relative;
+
+    &:hover {
+      @include custom-cursor;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      bottom: -8px;
+      transform: scaleX(0);
+      // transition: transform $image-hover-duration ease;
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__link__phone {
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  &__link__cta {
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: inherit;
+    text-decoration: none;
+    width: max-content;
+  }
+}
+
+.top-bar {
+  grid-column: 1 / -1; /* Span all grid columns when inside header grid */
+  padding-block: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  @include on-desktop {
+    padding-block: 32px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 16px;
+    // transition: transform $image-hover-duration $image-hover-timing;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @include on-tablet {
+      height: 24px;
+    }
+  }
+
+  // Modifier for top-bar in menu context
+  &.menu__top {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    background-color: #e5e5e5;
+    margin-bottom: 32px;
+
+    // @include content-padding-inline; /* Add consistent horizontal padding */
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+}

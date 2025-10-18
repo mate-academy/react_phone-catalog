@@ -1,0 +1,41 @@
+// ============================================
+// VARIABLES
+// ============================================
+
+// CSS Custom Properties (можна змінювати в runtime)
+:root {
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+}
+
+// ============================================
+// COLORS
+// ============================================
+
+$color-primary: #313237;
+$color-secondary: #89939A;
+$color-icons: #B4BDC3;
+$color-elements: #E2E6E9;
+$color-hover-bg: #F4F6F8;
+$color-white: #FFFFFF;
+$color-green: #27AE60;
+$color-red: #EB5757;
+
+// Additional colors (якщо потрібно розширити палітру)
+$color-hover: $color-hover-bg;
+$color-gray-primary: $color-primary;
+
+// ============================================
+// BREAKPOINTS
+// ============================================
+
+$tablet-breakpoint: 640px;
+$desktop-breakpoint: 1200px;
+
+// ============================================
+// FONTS
+// ============================================
+
+$font-main: 'Mont', sans-serif;

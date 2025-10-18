@@ -1,0 +1,198 @@
+// ============================================
+// MIXINS
+// ============================================
+
+// ============================================
+// RESPONSIVE BREAKPOINTS
+// ============================================
+
+@mixin on-tablet() {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+// pading
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+// ============================================
+// GRID SYSTEM
+// ============================================
+
+@mixin page-grid {
+  --columns-count: 4;
+
+  column-gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(var(--columns-count), 1fr);
+
+  @include on-tablet {
+    --columns-count: 12;
+    column-gap: 16px;
+  }
+
+  @include on-desktop {
+    --columns-count: 24;
+    column-gap: 16px;
+  }
+}
+
+// ============================================
+// TYPOGRAPHY MIXINS (mobile-first)
+// ============================================
+
+@mixin h1 {
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin h2 {
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin h3 {
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include on-tablet {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+@mixin h4 {
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin uppercase {
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin button-text {
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin body-text {
+  font-family: $font-main;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+// ============================================
+// SPACING TOKENS
+// ============================================
+
+$sizes: (
+  mobile: (xs: 4px,
+    sm: 8px,
+    md: 16px,
+    lg: 24px,
+    xl: 32px,
+    xxl: 48px,
+    xxxl: 64px),
+  tablet: (xs: 6px,
+    sm: 12px,
+    md: 20px,
+    lg: 28px,
+    xl: 40px,
+    xxl: 56px,
+    xxxl: 72px),
+  desktop: (xs: 8px,
+    sm: 16px,
+    md: 24px,
+    lg: 32px,
+    xl: 48px,
+    xxl: 64px,
+    xxxl: 80px)
+);
+
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
+@function size($key, $device: mobile) {
+  @return map-get(map-get($sizes, $device), $key);
+}
+
+// ============================================
+// RESPONSIVE PROPERTY MIXIN
+// ============================================
+// Використання: @include responsive(height, xxl);
+
+@mixin responsive($property, $key) {
+  #{$property}: size($key, mobile);
+
+  @include on-tablet {
+    #{$property}: size($key, tablet);
+  }
+
+  @include on-desktop {
+    #{$property}: size($key, desktop);
+  }
+}
+
+
+@mixin custom-cursor {
+  cursor: url('../images/icons/cursor.png'), pointer;
+}
