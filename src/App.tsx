@@ -162,7 +162,9 @@ export const App = () => (
                   <img
                     src="img/phones/apple-iphone-14/purple/00.webp"
                     alt="Slide"
-                    className="picturesSlider__image picturesSlider__image--active"
+                    className={
+                      'picturesSlider__image picturesSlider__image--active'
+                    }
                   />
                   <img
                     src="img/phones/apple-iphone-14/yellow/00.webp"
@@ -222,7 +224,7 @@ export const App = () => (
               <dl className="product-card__info">
                 <div className="product-card__info-row">
                   <dt className="product-card__info-label">Screen</dt>
-                  <dd className="product-card__info-value">6.1" OLED</dd>
+                  <dd className="product-card__info-value">6.16.1" OLEDquot; OLED</dd>
                 </div>
                 <div className="product-card__info-row">
                   <dt className="product-card__info-label">Capacity</dt>
@@ -269,7 +271,7 @@ export const App = () => (
               <dl className="product-card__info">
                 <div className="product-card__info-row">
                   <dt className="product-card__info-label">Screen</dt>
-                  <dd className="product-card__info-value">6.1" OLED</dd>
+                  <dd className="product-card__info-value">6.16.1" OLEDquot; OLED</dd>
                 </div>
                 <div className="product-card__info-row">
                   <dt className="product-card__info-label">Capacity</dt>
@@ -316,7 +318,7 @@ export const App = () => (
               <dl className="product-card__info">
                 <div className="product-card__info-row">
                   <dt className="product-card__info-label">Screen</dt>
-                  <dd className="product-card__info-value">6.1" OLED</dd>
+                  <dd className="product-card__info-value">6.16.1" OLEDquot; OLED</dd>
                 </div>
                 <div className="product-card__info-row">
                   <dt className="product-card__info-label">Capacity</dt>
@@ -362,7 +364,7 @@ export const App = () => (
               <dl className="product-card__info">
                 <div className="product-card__info-row">
                   <dt className="product-card__info-label">Screen</dt>
-                  <dd className="product-card__info-value">6.1" OLED</dd>
+                  <dd className="product-card__info-value">6.16.1" OLEDquot; OLED</dd>
                 </div>
                 <div className="product-card__info-row">
                   <dt className="product-card__info-label">Capacity</dt>
@@ -479,7 +481,7 @@ export const App = () => (
                 <dl className="product-card__info">
                   <div className="product-card__info-row">
                     <dt className="product-card__info-label">Screen</dt>
-                    <dd className="product-card__info-value">6.1" OLED</dd>
+                    <dd className="product-card__info-value">6.16.1" OLEDquot; OLED</dd>
                   </div>
                   <div className="product-card__info-row">
                     <dt className="product-card__info-label">Capacity</dt>
@@ -525,7 +527,7 @@ export const App = () => (
                 <dl className="product-card__info">
                   <div className="product-card__info-row">
                     <dt className="product-card__info-label">Screen</dt>
-                    <dd className="product-card__info-value">6.1" OLED</dd>
+                    <dd className="product-card__info-value">6.16.1" OLEDquot; OLED</dd>
                   </div>
                   <div className="product-card__info-row">
                     <dt className="product-card__info-label">Capacity</dt>
