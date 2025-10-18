@@ -1,0 +1,22 @@
+@use '@shared/styles/constants/' as c;
+
+@mixin shimmering-element {
+ 	background: linear-gradient(
+		90deg,
+		#EDEDED 30%,
+		#DCDCDC 50%,
+		#EDEDED 70%
+	);
+  animation: shimmer 1.5s infinite linear;
+  background-size: 400%;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: 100% 100%;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}

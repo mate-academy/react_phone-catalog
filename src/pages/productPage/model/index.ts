@@ -1,16 +1,16 @@
-export {
-  ColorsToHex,
-  techSpecUIBase,
-  techSpecUIExtended,
-} from './dataToUiMappers';
-export { getProps } from './getProps';
-export { getOption } from './optionListHelpers';
-export {
-  type TechSpecsBase,
-  type TechSpecsExtended,
-  type CapacityOptionProps,
-  type ColorOptionProps,
-  type PurchaseProps,
-  type UISectionProps,
-} from './types';
+export { apiToUiMapper } from './dataToUiMappers';
 export { useProductPage } from './useProductPage';
+export { organizeProps } from './organizeProps';
+export { ColorsToHex } from './colorsToHex';
+export {
+  type ColorButtonConfig,
+  type CapacityButtonConfig,
+  type ColorOptionProps,
+  type CapacityOptionProps,
+  type OptionsProps,
+  type PurchaseBlockProps,
+  type UiProps,
+  type InfoProps,
+  type Conf,
+} from './types';
+export { getSkeletonArray } from './getSkeletonArray';

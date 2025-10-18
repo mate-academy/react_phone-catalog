@@ -1,57 +1,82 @@
-import { Capacity, Category, Colors } from '@shared/types';
+import { Status } from '@features/index';
+import { Capacity, Colors } from '@shared/types';
 
-interface TechSpecsBase {
-  screen: string;
-  resolution: string;
-  processor: string;
-  ram: string;
-}
+type ColorButtonConfig = {
+  to: string;
+  className: string;
+  style: React.CSSProperties;
+  'aria-label': string;
+  'aria-current'?: 'page' | undefined;
+  onClick: (e: React.MouseEvent) => void;
+};
 
-interface TechSpecsExtended extends TechSpecsBase {
-  capacity: string;
-  camera?: string;
-  zoom?: string;
-  cell?: string[];
-}
+type CapacityButtonConfig = {
+  to: string;
+  className: string;
+  'aria-label': string;
+  'aria-current'?: 'page' | undefined;
+  onClick: (e: React.MouseEvent) => void;
+};
 
-interface BaseOptionProps {
-  heading: string;
-  link: string[];
-}
-
-interface ColorOptionProps extends BaseOptionProps {
+interface ColorOptionProps {
   options: Colors[];
   active: Colors;
 }
 
-interface CapacityOptionProps extends BaseOptionProps {
+interface CapacityOptionProps {
   options: Capacity[];
   active: Capacity;
 }
 
-interface PurchaseProps {
+type OptionsProps = {
+  arrays: [ColorOptionProps, CapacityOptionProps];
+  link: string[];
+};
+
+type PurchaseBlockProps = {
   priceRegular: number;
-  priceDiscount: number;
+  priceDiscount?: number;
   id: string;
-  category: Category;
+};
+
+type Breadcrumbs = {
+  name: string;
+  to: string;
+}[];
+
+type ProdSliderData = {
+  images: string[];
+  name: string;
+};
+
+interface UiProps {
+  slider: ProdSliderData | Status;
+  SKU: string;
+  optionsData: Status | OptionsProps;
+  purchaseData: Status | PurchaseBlockProps;
+  baseDetailedList: Record<string, string | null>;
 }
 
-interface UISectionProps {
-  colorsOptions: ColorOptionProps;
-  capacityOptions: CapacityOptionProps;
-  purchase: PurchaseProps;
-  baseSpecs: TechSpecsBase;
-  slider: {
-    images: string[];
-    name: string;
-  };
+interface InfoProps {
+  description: { title: string; text: string[] }[] | null;
+  extendedDetailedList: Record<string, string | null>;
+}
+
+interface Conf {
+  breadcrumbs: Breadcrumbs | undefined;
+  h1: string;
+  uiProps: UiProps;
+  infoProps: InfoProps;
 }
 
 export {
-  type TechSpecsBase,
-  type TechSpecsExtended,
-  type CapacityOptionProps,
+  type ColorButtonConfig,
+  type CapacityButtonConfig,
   type ColorOptionProps,
-  type PurchaseProps,
-  type UISectionProps,
+  type CapacityOptionProps,
+  type OptionsProps,
+  type PurchaseBlockProps,
+  type UiProps,
+  type InfoProps,
+  type Conf,
 };

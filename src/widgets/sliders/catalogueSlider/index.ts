@@ -1,0 +1,1 @@
+export { CatalogueSlider } from './catalogueSlider';

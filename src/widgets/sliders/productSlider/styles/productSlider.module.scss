@@ -1,0 +1,32 @@
+@use '@shared/styles' as s;
+
+.product-slider {
+  position: relative;
+  display: flex;
+  overflow-y: hidden;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  scrollbar-width: none;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    flex-direction: row-reverse;
+    align-items: start;
+
+    gap: 16px;
+  }
+}
+
+.viewport {
+  display: block;
+  overflow: hidden;
+}
+
+.track {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  aspect-ratio: 1 / 1;
+  gap: var(--gap);
+  transition: var(--animation-speed) ease-in-out;
+}

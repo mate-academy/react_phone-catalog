@@ -1,0 +1,20 @@
+@use '@shared/styles' as s;
+
+.color-btn {
+  width: 32px;
+  aspect-ratio: 1 / 1;
+  border: 1px solid s.$c-elements;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: var(--bgc);
+
+  box-shadow: inset 0 0 0 3px white;
+
+  &:hover {
+    border-color: s.$c-icons;
+  }
+
+  &-is-active {
+    border-color: s.$c-grey-primary;
+  }
+}

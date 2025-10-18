@@ -5,7 +5,6 @@ export {
   type Product,
   type BannerData,
 } from './APIReturnTypes';
-export { type Item, type CartItem } from './appReducerTypes';
 export {
   Processors,
   Resolutions,
@@ -17,3 +16,4 @@ export {
   Capacity,
   PhoneZoom,
 } from './productValuesTypes';
+export { SliderType } from './sliderTypes';

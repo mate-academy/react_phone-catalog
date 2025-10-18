@@ -1,0 +1,1 @@
+export { DetailedList } from './detailedList';

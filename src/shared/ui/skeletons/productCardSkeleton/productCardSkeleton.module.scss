@@ -23,39 +23,43 @@
   flex-direction: column;
   padding: 32px;
   box-sizing: border-box;
-  gap: 8px;
+
+  > :first-child {
+    width: 196px;
+    height: 196px;
+  }
 }
 
 .name {
   width: 100%;
-  height: 20px;
-  margin: 5px 0;
+  height: 15px;
+  margin: 30px 0;
 
-  @include shimmering-element
+  @include shimmering-element;
 }
 
 .price {
-  width: 40%;
+  width: 50%;
   height: 27px;
 
-  @include shimmering-element
+  @include shimmering-element;
 }
 
 .spacer {
   width: 100%;
   height: 1px;
   background-color: s.$c-elements;
+  margin-top: 8px;
 }
 
 .descr {
   display: grid;
+  margin: 16px 0;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(4, 15px);
+  grid-template-rows: repeat(3, 15px);
   row-gap: 8px;
-
   box-sizing: border-box;
   width: 100%;
-  padding: 8px 0;
 
   @include s.t-small-text;
 
@@ -69,13 +73,16 @@
 
     @include shimmering-element;
   }
-}
 
-.image-wrapper {
-  position: relative;
-  height: 196px;
-  aspect-ratio: 1 / 1;
-  margin-bottom: 10px;
+  > :nth-child(2) {
+    width: 50%;
+  }
+  > :nth-child(4) {
+    width: 30%;
+  }
+  > :nth-child(6) {
+    width: 40%;
+  }
 }
 
 @keyframes shimmer {
@@ -85,86 +92,4 @@
 	100% {
 		background-position: 0 0;
 	}
-}
-
-
-$color1: #a5a7bb;
-$color2: #a496a4;
-$color3: #554d73;
-
-.loader {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-svg {
-  width: 90%;
-  fill: none;
-}
-
-.load {
-  transform-origin: 50% 50%;
-  stroke-dasharray: 570;
-  stroke-width: 20px;
-
-  &.one {
-    stroke: $color3;
-    animation: load 1.5s infinite;
-  }
-
-  &.two {
-    stroke: $color2;
-    animation: load 1.5s infinite;
-    animation-delay: 0.1s;
-  }
-
-  &.three {
-    stroke: $color1;
-    animation: load 1.5s infinite;
-    animation-delay: 0.2s;
-  }
-}
-
-.point {
-  animation: bounce 1s infinite ease-in-out;
-
-  &.one {
-    fill: $color1;
-    animation-delay: 0s;
-  }
-
-  &.two {
-    fill: $color2;
-    animation-delay: 0.1s;
-  }
-
-  &.three {
-    fill: $color3;
-    animation-delay: 0.2s;
-  }
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-@keyframes load {
-  0% {
-    stroke-dashoffset: 570;
-  }
-  50% {
-    stroke-dashoffset: 530;
-  }
-  100% {
-    stroke-dashoffset: 570;
-    transform: rotate(360deg);
-  }
 }

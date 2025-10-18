@@ -3,10 +3,8 @@ import { categories, useHomePage } from './model';
 import styles from './styles/HomePage.module.scss';
 import { CategoryElement } from './ui';
 import { Status } from '@features/index';
-import { BannerData } from '@shared/types';
-import { Slider } from '@widgets/slider';
-import { CatalogueSlider } from '@widgets/sliders/catalogueSlider/catalogueSlider';
-import { SliderDataProvider } from '@shared/lib';
+import { SliderType } from '@shared/types/sliderTypes';
+import { Slider } from '@widgets/index';
 
 export const HomePage = () => {
   const { amount, newItems, promoItems, banners } = useHomePage();
@@ -18,13 +16,13 @@ export const HomePage = () => {
         <span className={styles.welcome__text}>
           Welcome to Nice Gadgets store!
         </span>
-        <Slider data={banners as BannerData[] | Status} />
+        <Slider model={SliderType.BANNER} props={banners} />
       </div>
       <div className={styles['home-catalogue']}>
-        <SliderDataProvider startIdx={0}>
-          <CatalogueSlider data={newItems} title={'Brand new Models'} />
-        </SliderDataProvider>
-
+        <Slider
+          model={SliderType.CATALOGUE}
+          props={{ data: newItems, title: 'Brand new Models' }}
+        />
         <section
           className={styles.categories}
           style={{ '--fields-count': categories.length } as React.CSSProperties}
@@ -38,9 +36,10 @@ export const HomePage = () => {
             />
           ))}
         </section>
-        <SliderDataProvider startIdx={0}>
-          <CatalogueSlider data={promoItems} title={'Hot prices'} />
-        </SliderDataProvider>
+        <Slider
+          model={SliderType.CATALOGUE}
+          props={{ data: promoItems, title: 'Hot prices' }}
+        />
       </div>
     </main>
   );

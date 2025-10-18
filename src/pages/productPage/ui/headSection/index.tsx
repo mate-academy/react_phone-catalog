@@ -1,1 +1,0 @@
-export { HeadSection } from './headSection';

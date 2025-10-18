@@ -15,5 +15,6 @@ export const App = () => (
 );
 
 // todo: clean Categories enum, types
+// add buttons from prodCard => shared
 // make type selectors null / undefined / data => loading.LOAD === null loading.ERR etc
 // make slider autoplay

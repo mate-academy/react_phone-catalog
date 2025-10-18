@@ -4,7 +4,7 @@ import styles from './breadcrumbs.module.scss';
 import { AriaNames } from '@shared/types/ButtonProps';
 
 type Props = {
-  links: {
+  links?: {
     name: string;
     to: string;
   }[];
@@ -18,12 +18,13 @@ export const Breadcrumbs = ({ links }: Props) => {
           <HomeIcon />
         </Link>
       </li>
-      {links.map(el => (
-        <li key={el.name}>
-          <ArrowIcon direction="right" />
-          <Link to={`/${el.to}`}>{el.name}</Link>
-        </li>
-      ))}
+      {links &&
+        links.map(el => (
+          <li key={el.name}>
+            <ArrowIcon direction="right" />
+            <Link to={`/${el.to}`}>{el.name}</Link>
+          </li>
+        ))}
     </ul>
   );
 };

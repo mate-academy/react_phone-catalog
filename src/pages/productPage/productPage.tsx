@@ -1,39 +1,40 @@
+import { Breadcrumbs, DetailedList, ReturnButton } from '@ui/index';
 import styles from './styles/productPage.module.scss';
-import { useProductPage, getProps } from './model';
-import { ArticleSection, HeadSection, UISection } from './ui';
-import { CatalogueProduct, Product } from '@shared/types';
-import { CatalogueData } from '@shared/api/types';
-import { Slider } from '@widgets/slider';
+import { organizeProps, useProductPage } from './model';
+import { SliderType } from '@shared/types';
+import { Slider } from '@widgets/sliders';
+import { InfoSection } from './ui';
+import { Options, PurchaseUI } from './widgets';
 
-type Props = {
-  prod: Product;
-};
+export const ProductPage = () => {
+  const { prod, sliderItems } = useProductPage();
 
-export const ProductPageMain = ({ prod }: Props) => {
-  const { sliderItems } = useProductPage();
-
-  //make slider props only images and name
-  const SKU = 'ID: 424242';
-
-  const props = getProps(prod);
+  const { breadcrumbs, h1, uiProps, infoProps } = organizeProps(prod);
 
   return (
-    <div className={styles.container}>
-      <HeadSection breadcrumbs={props.breadcrumbs} name={prod.name} />
-      <main className={styles['main-container']}>
-        <UISection props={props.ui} SKU={SKU} />
-        <ArticleSection
-          description={prod.description}
-          specs={props.extendedSpecs}
+    <div className={styles.layout}>
+      <nav aria-label="breadcrumb">
+        <Breadcrumbs links={breadcrumbs} />
+      </nav>
+      <ReturnButton />
+      <h1 className={styles.h1}>{h1}</h1>
+      <main className={styles.main}>
+        <div className={styles['ui-container']}>
+          <Slider model={SliderType.PRODUCT} props={uiProps.slider} />
+
+          <div className={styles['ui-block']}>
+            <span className={styles.sku}>{uiProps.SKU}</span>
+            <Options data={uiProps.optionsData} />
+            <PurchaseUI data={uiProps.purchaseData} />
+
+            <DetailedList listData={uiProps.baseDetailedList} />
+          </div>
+        </div>
+        <InfoSection data={infoProps} />
+        <Slider
+          model={SliderType.CATALOGUE}
+          props={{ data: sliderItems, title: 'You may also like' }}
         />
-        {typeof sliderItems !== 'string' && (
-          <Slider
-            data={{
-              array: (sliderItems as CatalogueData).items as CatalogueProduct[],
-              title: 'You may also like',
-            }}
-          />
-        )}
       </main>
     </div>
   );
