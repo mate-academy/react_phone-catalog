@@ -12,17 +12,22 @@
         width: 272px;
         height: 508px;
         padding: 32px;
-        background-color: #161827;
-        
-        &__image {
-            position: relative;
-            width: 206px;
-            height: 196px;
-            top: 32px;
-            left: 32px;
-            margin-bottom: 48px;
-            background-color: #161827;
+      background-color: #161827;
+
+        &__link {
+          background-color: #161827;
+            
+					&__image {
+							position: relative;
+							width: 196px;
+							height: 196px;
+							top: 32px;
+							left: 32px;
+							margin-bottom: 48px;
+							background-color: #161827;
+					}
         }
+        
 
         &__name {
             font-family: $mont-regular-font;

@@ -1,7 +1,8 @@
 @import '../../Scss-variables/Variables';
 
 
-.phonestitle {
+.phonestitle,
+.idtitle {
   font-family: $mont-bold-font;
   font-weight: 800;
   font-size: 48px;
@@ -19,4 +20,8 @@
   line-height: 150%;
   color: #75767F;
   margin-bottom: 40px;
+  }
+
+  .idtitle {
+    margin-bottom: 40px;
   }

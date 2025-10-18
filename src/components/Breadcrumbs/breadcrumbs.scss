@@ -5,6 +5,7 @@
   justify-content: flex-start;
   align-items: center;
   margin-top: 24px;
+  margin-bottom: 41px;
 
   &__home {
     margin-right: 16px;
@@ -24,5 +25,22 @@
     font-family: $mont-regular-font;
     font-weight: 700;
     font-size: 12px;
+    margin-right: 16px;
+  }
+
+  &__back {
+    display: flex;
+
+    &__arrow {
+      margin-right: 10px;
+      color: $active-link-color;
+    }
+
+    &__text {
+      font-family: $mont-regular-font;
+      font-weight: 700;
+      font-size: 12px;
+      color: $active-link-color;
+    }
   }
 }
