@@ -58,7 +58,7 @@
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist --no-history"
+    "deploy": "gh-pages -d dist --no-history --dotfiles --repo https://github.com/Juliovergueiro/react_phone-catalog.git"
   },
   "browserslist": {
     "production": [
