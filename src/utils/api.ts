@@ -21,7 +21,7 @@ export const api = {
     }
   },
 
-  async getProductDetails(itemId: string): Promise<Product | null> {
+  async getProductDetails(productId: string): Promise<Product | null> {
     try {
       const response = await fetch(`${API_BASE}/products.json`);
 
@@ -31,9 +31,16 @@ export const api = {
 
       const products: Product[] = await response.json();
 
-      return products.find(p => p.id == itemId) || null;
+      const foundProduct = products.find(
+        p =>
+          p.id === productId ||
+          p.itemId === productId ||
+          p.id?.toString() === productId ||
+          p.itemId?.toString() === productId,
+      );
+
+      return foundProduct || null;
     } catch (error) {
-      //console.error('Error fetching product details:', error);
       return null;
     }
   },

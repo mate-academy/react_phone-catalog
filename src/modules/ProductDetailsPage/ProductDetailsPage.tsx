@@ -10,7 +10,6 @@ import styles from './ProductDetails.module.scss';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId?: string }>();
-
   const { product, loading, error } = useProductDetails(productId || '');
 
   if (!productId) {
@@ -25,11 +24,19 @@ export const ProductDetailsPage: React.FC = () => {
     return <Navigate to="/404" replace />;
   }
 
+  // Prepare images for ProductGallery
+  // Use images array if available, otherwise use single image
+  const galleryImages = product.images || [product.image];
+
   return (
     <div className={styles.productDetailsPage}>
       <Breadcrumbs product={product} />
       <div className={styles.productDetailsPage__main}>
-        <ProductGallery images={product.image} name={product.name} />
+        <ProductGallery
+          images={galleryImages}
+          name={product.name}
+          category={product.category}
+        />
         <ProductInfo product={product} />
       </div>
       <SuggestedProducts currentProductId={product.id} />

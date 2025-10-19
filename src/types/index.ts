@@ -12,6 +12,19 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
+
+  // ProductInfo.tsx
+  colorsAvailable?: string[];
+  capacityAvailable?: string[];
+  resolution?: string;
+  processor?: string;
+  camera?: string;
+  zoom?: string;
+  images?: string[]; //ProductGallery
+  description?: {
+    title: string;
+    text: string[];
+  }[];
 }
 
 export interface CartItem {
