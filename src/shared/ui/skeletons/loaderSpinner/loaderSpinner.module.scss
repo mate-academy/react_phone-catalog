@@ -17,12 +17,14 @@ $color3: #554d73;
   aspect-ratio: 1 / 1;
   justify-content: center;
   align-items: center;
+
+  > svg {
+    width: 90%;
+    fill: none;
+    max-width: 200px;
+  }
 }
 
-svg {
-  width: 90%;
-  fill: none;
-}
 
 .load {
   transform-origin: 50% 50%;

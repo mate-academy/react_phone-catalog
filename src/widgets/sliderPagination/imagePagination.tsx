@@ -1,33 +1,35 @@
+import { Status } from '@features/index';
 import { useSliderData } from '@shared/lib';
 import { usePagination } from './model/usePagination';
 import styles from './styles/sliderPagination.module.scss';
 import classNames from 'classnames';
-import { Status } from '@features/index';
+import { LoaderSpinner } from '@ui/skeletons';
 
-type BlockPaginationProps = {
-  amount: number;
+type ImagePaginationProps = {
   setByIndex: (idx: number) => void;
+  images: string[];
 };
 
 type Props = {
-  data: BlockPaginationProps | Status;
+  data: ImagePaginationProps | Status;
 };
 
 const FALLBACK_AMOUNT = 4;
 
-export const SliderPagination = ({ data }: Props) => {
+export const ImagePagination = ({ data }: Props) => {
   const { startIndex } = useSliderData();
 
-  const length = typeof data === 'string' ? FALLBACK_AMOUNT : data.amount;
+  const length =
+    typeof data === 'string' ? FALLBACK_AMOUNT : data.images.length;
 
   const { getCurrent, dataIDs } = usePagination(length);
 
   return (
-    <ul className={styles['block-pagination']} role="tablist">
+    <ul className={styles['image-pagination']} role="tablist">
       {dataIDs.map(el => (
         <button
-          className={classNames(styles['pagination-button'], {
-            [styles['pagination-button-is-active']]: getCurrent(el),
+          className={classNames(styles['image-button'], {
+            [styles['image-button-is-active']]: getCurrent(el),
           })}
           key={el}
           role="tab"
@@ -39,7 +41,11 @@ export const SliderPagination = ({ data }: Props) => {
           aria-current={getCurrent(el)}
           aria-label={`Show slide #${el + 1}`}
         >
-          <div className={styles['pagination-block']} />
+          {typeof data === 'string' ? (
+            <LoaderSpinner />
+          ) : (
+            <img className={styles['product-image']} src={data.images[el]} />
+          )}
         </button>
       ))}
     </ul>

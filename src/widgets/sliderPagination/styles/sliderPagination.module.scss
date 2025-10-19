@@ -1,13 +1,22 @@
 @use '@shared/styles' as s;
 
-.img-pagination {
+.block-pagination {
   display: flex;
   justify-content: center;
+  gap: 4px;
+}
+
+.image-pagination {
+  display: flex;
+  justify-content: start;
   background-color: #fff;
   gap: 8px;
+  height: 100%;
+
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
     flex-direction: column;
+    width: 100%;
   }
 
   @media (min-width: s.$c-BREAKPOINT_WIDE) {
@@ -16,13 +25,36 @@
   }
 }
 
+
+.pagination-button {
+  border: none;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-is-active {
+    > div {
+      background-color: s.$c-grey-primary !important;
+    }
+  }
+}
+
+.pagination-block {
+  display: block;
+  background-color: s.$c-elements;
+  width: 14px;
+  height: 4px;
+}
+
 .image-button {
   border: 1px solid s.$c-elements;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  height: 50px;
-  width: 50px;
+  height: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: fill;
   position: relative;
 
@@ -45,3 +77,4 @@
   display: block;
   height: 100%;
 }
+

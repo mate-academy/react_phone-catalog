@@ -1,11 +1,5 @@
 @use '@shared/styles' as s;
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-}
-
 .pagination-button {
   border: none;
   height: 100%;

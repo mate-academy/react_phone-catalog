@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { BannerData } from '@shared/types';
 import { useInfinite, useSliderCore, useSliderData } from '@shared/lib';
 import { SliderPagination } from '@widgets/sliderPagination';
@@ -19,6 +20,14 @@ export const BannerSlider: React.FC<Props> = ({ data }: Props) => {
   const array = data;
   const ariaLabel = 'Featured promotions';
   const { handlers, setByIndex } = useSliderCore(array.length, gap);
+
+  const paginationProps =
+    typeof data === 'string'
+      ? Status.LOADING
+      : {
+        amount: array.length,
+        setByIndex: setByIndex,
+      };
 
   useInfinite(array.length, animationSpeed, gap);
 
@@ -44,10 +53,7 @@ export const BannerSlider: React.FC<Props> = ({ data }: Props) => {
           )}
         </div>
       </div>
-      <SliderPagination
-        amount={data === Status.LOADING ? 4 : array.length}
-        setByIndex={setByIndex}
-      />
+      <SliderPagination data={paginationProps} />
     </section>
   );
 };

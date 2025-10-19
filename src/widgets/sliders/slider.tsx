@@ -5,7 +5,6 @@ import { BannerData, SliderType } from '@shared/types';
 import { BannerSlider } from './bannerSlider';
 import { ProductSlider } from './productSlider';
 import { CatalogueSlider } from './catalogueSlider';
-import { LoaderSpinner } from '@ui/skeletons';
 
 type BannerProps = {
   model: SliderType.BANNER;
@@ -37,15 +36,11 @@ export const Slider = ({ model, props }: Props) => {
       );
 
     case SliderType.PRODUCT:
-      if (props === Status.LOADING || props === Status.ERROR) {
-        return <LoaderSpinner />;
-      } else {
-        return (
-          <SliderDataProvider startIdx={1}>
-            <ProductSlider data={props} />
-          </SliderDataProvider>
-        );
-      }
+      return (
+        <SliderDataProvider startIdx={1}>
+          <ProductSlider data={props} />
+        </SliderDataProvider>
+      );
 
     case SliderType.CATALOGUE:
       return (

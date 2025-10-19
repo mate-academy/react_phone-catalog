@@ -13,7 +13,7 @@ const baseDetailList = {
 export const organizeProps = (prod: Product | Status) => {
   const conf: Conf = {
     breadcrumbs: undefined,
-    h1: 'Loading...',
+    h1: `Loading...                `,
 
     uiProps: {
       slider: Status.LOADING,

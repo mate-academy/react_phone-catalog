@@ -16,4 +16,4 @@ export {
   Capacity,
   PhoneZoom,
 } from './productValuesTypes';
-export { SliderType } from './sliderTypes';
+export { SliderType, PaginationType } from './sliderTypes';

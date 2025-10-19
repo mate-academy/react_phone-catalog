@@ -11,16 +11,28 @@
   align-items: start;
 
 
-  > :first-child {
+  > nav {
     margin-bottom: 24px;
     max-width: 100%;
+
+    @media (min-width: s.$c-BREAKPOINT_TAB) {
+      margin-bottom: 40px;
+    }
   }
 }
 
 .h1 {
   @include s.t-h1;
 
-  margin-bottom: 32px;
+  margin: 16px 0 32px;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    margin-bottom: 40px;
+  }
+
+  @media(max-width: s.$c-BREAKPOINT_TAB) {
+    min-height: 82px;
+  }
 }
 
 .main {
@@ -49,6 +61,8 @@
   @media (min-width: s.$c-BREAKPOINT_TAB) {
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+
   }
 
   @media (min-width: s.$c-BREAKPOINT_WIDE) {
