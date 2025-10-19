@@ -117,7 +117,7 @@
   grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
 
   @media (max-width: 639px) {
-    grid-template-columns: 1fr; // тільки 1 картка в ряд
+    grid-template-columns: 1fr;
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;

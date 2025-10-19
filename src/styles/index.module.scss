@@ -19,14 +19,12 @@
   font-style: normal;
 }
 
-/* Сброс базовых стилей */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Глобальные стили */
 body {
   font-family: Mont, sans-serif;
   background-color: #0F1121;
@@ -34,13 +32,11 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Ссылки без подчёркивания */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Убрать стили списков */
 ul,
 ol {
   list-style: none;

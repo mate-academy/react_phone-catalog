@@ -23,7 +23,6 @@ export const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
   setActiveHeart,
   updateList,
 }) => {
-  // ✅ Перевірка чи товар уже в кошику — при відкритті сторінки
   useEffect(() => {
     if (!chosedItemDemo) {
       return;

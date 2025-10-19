@@ -134,13 +134,11 @@
 }
 
 .submit {
-  /* Контейнер для кнопки, чтобы не прыгал контент, когда она сменит позиционирование */
   &_container {
     align-items: center;
     justify-content: center;
   }
 
-  /* Кнопка для открытия */
   &_container summary {
     display: flex;
     justify-content: center;
@@ -165,7 +163,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  right: -50px; // залишаємо, бо потрібен відступ
+  right: -50px;
   border-right: 50px solid transparent;
   border-top: 50px solid #a378ff;
   transition: transform 0.5s;
@@ -179,14 +177,10 @@
   transform: translateX(0);
 }
 
-
-
-  /*  при открытом окне переход на весь экран */
   &_container details[open] summary {
     display: none;
   }
 
-  /* затемняет страницу */
   &_container details .cmc {
     display: flex;
     align-items: center;
@@ -204,7 +198,6 @@
     background: rgba(31, 37, 52, 0.7);
   }
 
-  /* модальное окно */
   &_container details .cmt {
     font-size: 16px;
     padding: 20px;
@@ -249,7 +242,6 @@
   }
 }
 
-/* Анимации */
 @keyframes scale {
   0% {
     transform: scale(0);

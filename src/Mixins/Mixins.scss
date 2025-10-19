@@ -10,6 +10,6 @@ $breakpoints: (
       @content;
     }
   } @else {
-    @warn "Нет брейкпоинта с именем `#{$device}`";
+    @warn "Não existe breakpoint com esse nome `#{$device}`";
   }
 }

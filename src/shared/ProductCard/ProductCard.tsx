@@ -80,7 +80,7 @@ export const ProductCard = React.memo(
       };
 
       checkTheStorage();
-    }, [activeHeart, activeAdd, product.itemId]); // 👈 додано залежність
+    }, [activeHeart, activeAdd, product.itemId]);
 
     return (
       <div className={styles.embla__slide}>

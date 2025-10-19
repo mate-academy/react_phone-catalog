@@ -14,7 +14,7 @@ export const Cart: React.FC = () => {
 
   const [orderList, setOrderList] = useState<ProductDemo[]>([]);
   const [amountPrice, setAmountPrice] = useState(0);
-  const [totalItems, setTotalItems] = useState(0); // ✅ новий стейт
+  const [totalItems, setTotalItems] = useState(0);
   const [checkout, setCheckout] = useState(false);
 
   const confirmModal = () => {
@@ -34,7 +34,6 @@ export const Cart: React.FC = () => {
     details?.removeAttribute('open');
   };
 
-  // отримуємо список замовлень із localStorage
   useEffect(() => {
     const orders = products.filter(item => {
       const orderInStorage = localStorage.getItem(`cart_${item.itemId}`);
@@ -45,10 +44,9 @@ export const Cart: React.FC = () => {
     setOrderList(orders);
   }, [products, addIsPressed, checkout]);
 
-  // рахуємо totalPrice і totalItems
   useEffect(() => {
     let totalPrice = 0;
-    let itemsCount = 0; // ✅ не конфліктує зі стейтом
+    let itemsCount = 0;
 
     orderList.forEach(product => {
       const jsonItem = localStorage.getItem(`cart_${product.itemId}`);

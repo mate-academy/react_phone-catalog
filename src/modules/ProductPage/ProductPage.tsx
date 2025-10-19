@@ -218,7 +218,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ typeOFProduct }) => {
 
                   {/* pagination */}
                   {isTablet ? (
-                    // pagination for tablet and desktop
                     filteredProducts.length !== itemsPerPage && (
                       <div className={styles.pagination}>
                         <button
