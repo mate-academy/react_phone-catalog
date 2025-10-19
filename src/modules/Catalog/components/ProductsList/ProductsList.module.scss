@@ -1,10 +1,6 @@
 @use '../../../../shared/styles/variables.scss' as *;
 @use '../../../../shared/styles/mixins.scss' as *;
 
-// .wrapper {
-//   padding-left: 40px;
-// }
-
 .controls {
   display: flex;
   align-items: flex-end;
@@ -49,48 +45,6 @@
   font-size: 32px;
   margin-bottom: 24px;
 }
-
-// .navBtn {
-//   width: 32px;
-//   height: 32px;
-//   border: 1px solid #ccc;
-//   background-color: transparent;
-//   background-size: 16px 16px;
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   cursor: pointer;
-//   transition: background-color 0.3s, border 0.3s, background-image 0.3s;
-
-//   &:disabled {
-//     border-color: $slider-back-color;
-//     background-color: transparent;
-//     background-image: url('/img/icons/left_black_arrow.svg');
-//     cursor: default;
-//   }
-
-//   &:not(:disabled) {
-//     border-color: $slider-back-color;
-//     background-color: $slider-back-color;
-//   }
-// }
-
-// .prevBtn:not(:disabled) {
-//   background-image: url('/img/icons/left_white_arrow.png');
-//   background-size: 16px 16px;
-// }
-
-// .prevBtn:disabled {
-//   background-image: url('/img/icons/left_black_arrow.svg');
-// }
-
-// .nextBtn:not(:disabled) {
-//   background-image: url('/img/icons/right_white_arrow.svg');
-// }
-
-// .nextBtn:disabled {
-//   background-image: url('/img/icons/right_black_arrow.svg');
-// }
-
 
 .card {
   width: 272px;

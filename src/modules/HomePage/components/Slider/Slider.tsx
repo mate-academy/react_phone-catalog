@@ -10,8 +10,8 @@ import 'swiper/css';
 export const Slider = () => {
   return (
     <>
-      <div className={styles['slider-wrapper']}>
-        <button className={`slide-btn__prev ${styles.myCustomBtn__prev}`}>
+      <div className={styles['slider-container']}>
+        <button className={`slide-btn__prev ${styles.button__prev}`}>
           <img src="./img/icons/arrow_left.png" alt="Arrow left" />
         </button>
         <Swiper
@@ -37,9 +37,9 @@ export const Slider = () => {
                   <h3 className={styles.slide__title}>
                     Now available in our store!
                     <img
-                      className={styles['slide__title-img']}
+                      className={styles['slide__title-icon']}
                       src="./img/icons/hand.png"
-                      alt="ok hand"
+                      alt="hand"
                     />
                   </h3>
                   <p className={styles.slide__text}>Be the first!</p>
@@ -48,7 +48,7 @@ export const Slider = () => {
                   </a>
                 </div>
                 <div className={styles.slide__image}>
-                  <div className={styles['slide__img-box']}>
+                  <div className={styles['slide__image-block']}>
                     <h3 className={styles['slide__image-title']}>
                       iPhone 14 Pro
                     </h3>
@@ -62,22 +62,22 @@ export const Slider = () => {
                 </div>
               </div>
             </div>
-            <div className={styles['slide-phone']}>
-              <div className={styles['slide-phone__content']}>
-                <h3 className={styles['slide-phone__title']}>
+            <div className={styles['slide-mobile']}>
+              <div className={styles['slide-mobile__content']}>
+                <h3 className={styles['slide-mobile__title']}>
                   Now available in our store!
                 </h3>
                 <div className={styles.slide__image}>
-                  <div className={styles['slide-phone__img-box']}>
-                    <h3 className={styles['slide-phone__image-title']}>
+                  <div className={styles['slide-mobile__image-block']}>
+                    <h3 className={styles['slide-mobile__image-title']}>
                       iPhone 14 Pro
                     </h3>
-                    <p className={styles['slide-phone__image-text']}>
+                    <p className={styles['slide-mobile__image-text']}>
                       Pro. Beyond.
                     </p>
                   </div>
                   <img
-                    className={styles['slide-phone__img']}
+                    className={styles['slide-mobile__img']}
                     src="./img/slide_1_ph.png"
                     alt="iPhone 14 Pro"
                   />
@@ -92,9 +92,9 @@ export const Slider = () => {
                   <h3 className={styles.slide__title}>
                     Now available in our store!
                     <img
-                      className={styles['slide__title-img']}
+                      className={styles['slide__title-icon']}
                       src="./img/icons/hand.png"
-                      alt="ok hand"
+                      alt="hand"
                     />
                   </h3>
                   <p className={styles.slide__text}>New Edition!</p>
@@ -103,7 +103,7 @@ export const Slider = () => {
                   </a>
                 </div>
                 <div className={styles.slide__image}>
-                  <div className={styles['slide__img-box']}>
+                  <div className={styles['slide__image-block']}>
                     <h3 className={styles['slide__image-title']}>
                       iPad 13 Max
                     </h3>
@@ -117,22 +117,22 @@ export const Slider = () => {
                 </div>
               </div>
             </div>
-            <div className={styles['slide-phone']}>
-              <div className={styles['slide-phone__content']}>
-                <h3 className={styles['slide-phone__title']}>
+            <div className={styles['slide-mobile']}>
+              <div className={styles['slide-mobile__content']}>
+                <h3 className={styles['slide-mobile__title']}>
                   Now available in our store!
                 </h3>
                 <div className={styles.slide__image}>
-                  <div className={styles['slide-phone__img-box']}>
-                    <h3 className={styles['slide-phone__image-title']}>
+                  <div className={styles['slide-mobile__image-block']}>
+                    <h3 className={styles['slide-mobile__image-title']}>
                       iPhone 14 Pro
                     </h3>
-                    <p className={styles['slide-phone__image-text']}>
+                    <p className={styles['slide-mobile__image-text']}>
                       Pro. Beyond.
                     </p>
                   </div>
                   <img
-                    className={styles['slide-phone__img']}
+                    className={styles['slide-mobile__img']}
                     src="./img/category-phones-ph.png"
                     alt="iPhone 14 Pro"
                   />
@@ -147,9 +147,9 @@ export const Slider = () => {
                   <h3 className={styles.slide__title}>
                     Now available in our store!
                     <img
-                      className={styles['slide__title-img']}
+                      className={styles['slide__title-icon']}
                       src="./img/icons/hand.png"
-                      alt="ok hand"
+                      alt="hand"
                     />
                   </h3>
                   <p className={styles.slide__text}>Be the first!</p>
@@ -158,7 +158,7 @@ export const Slider = () => {
                   </a>
                 </div>
                 <div className={styles.slide__image}>
-                  <div className={styles['slide__img-box']}>
+                  <div className={styles['slide__image-block']}>
                     <h3 className={styles['slide__image-title']}>
                       iPad 13 Pro
                     </h3>
@@ -172,22 +172,22 @@ export const Slider = () => {
                 </div>
               </div>
             </div>
-            <div className={styles['slide-phone']}>
-              <div className={styles['slide-phone__content']}>
-                <h3 className={styles['slide-phone__title']}>
+            <div className={styles['slide-mobile']}>
+              <div className={styles['slide-mobile__content']}>
+                <h3 className={styles['slide-mobile__title']}>
                   Now available in our store!
                 </h3>
                 <div className={styles.slide__image}>
-                  <div className={styles['slide-phone__img-box']}>
-                    <h3 className={styles['slide-phone__image-title']}>
+                  <div className={styles['slide-mobile__image-block']}>
+                    <h3 className={styles['slide-mobile__image-title']}>
                       iPhone 14 Pro
                     </h3>
-                    <p className={styles['slide-phone__image-text']}>
+                    <p className={styles['slide-mobile__image-text']}>
                       Pro. Beyond.
                     </p>
                   </div>
                   <img
-                    className={styles['slide-phone__img']}
+                    className={styles['slide-mobile__img']}
                     src="./img/category-tablets_ph.png"
                     alt="iPhone 14 Pro"
                   />
@@ -196,13 +196,13 @@ export const Slider = () => {
             </div>
           </SwiperSlide>
         </Swiper>
-        <button className={`slide-btn__next ${styles.myCustomBtn__next}`}>
+        <button className={`slide-btn__next ${styles.button__next}`}>
           <img src="./img/icons/arrow_right.png" alt="Arrow right" />
         </button>
       </div>
       <div
         id="main-slider-pagination"
-        className={`swiper-pagination ${styles.myPagination}`}
+        className={`swiper-pagination ${styles.sliderPagination}`}
       ></div>
     </>
   );

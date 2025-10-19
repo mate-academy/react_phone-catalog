@@ -19,11 +19,23 @@ export const useProductSelection = (
   }, [initialProduct]);
 
   useEffect(() => {
-    setProduct(initialProduct);
-    if (initialProduct?.images?.length) {
-      setMainImage(initialProduct.images[0]);
+    if (initialProduct) {
+      setProduct(initialProduct);
+      setSelectedColor(initialProduct.color);
+      setSelectedCapacity(initialProduct.capacity);
+
+      if (initialProduct.images?.length) {
+        setMainImage(initialProduct.images[0]);
+      }
     }
   }, [initialProduct]);
+
+  // useEffect(() => {
+  //   setProduct(initialProduct);
+  //   if (initialProduct?.images?.length) {
+  //     setMainImage(initialProduct.images[0]);
+  //   }
+  // }, [initialProduct]);
 
   const handleColorChange = (color: string) => {
     setSelectedColor(color);

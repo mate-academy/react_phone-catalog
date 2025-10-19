@@ -14,8 +14,6 @@ body {
 }
 
 main {
-  // @include content-padding-inline;
-
   flex: 1 0 auto;
   box-sizing: border-box;
   width: 100%;
@@ -32,44 +30,3 @@ main {
   white-space: nowrap;
   border: 0;
 }
-
-// html, body, #root {
-//   height: 100%;
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-// }
-
-// body {
-//   background-color: $menu-background-color;
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 100%;
-// }
-
-// #root {
-//   flex: 1;
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .swiper-pagination {
-//     bottom: -30px;
-//     display: flex;
-//     justify-content: center;
-//     gap: 8px;
-//   }
-
-//   .swiper-pagination-bullet {
-//     width: 14px;
-//     height: 4px;
-//     border-radius: 4px;
-//     background-color: $slider-back-color;
-//     opacity: 0.5;
-//     transition: opacity 0.3s, background-color 0.3s;
-//   }
-
-//   .swiper-pagination-bullet-active {
-//     opacity: 1;
-//     background-color: $menu-color;
-//   }

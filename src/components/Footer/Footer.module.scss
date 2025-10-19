@@ -1,5 +1,6 @@
 @use '../../shared/styles/variables.scss' as *;
 @use '../../shared/styles/mixins.scss' as *;
+@use '../../shared/styles/fonts.scss' as *;
 
 *,
 *::before,
@@ -106,7 +107,6 @@ body {
 
   &__item {
     font-size: 12px;
-    font-weight: 800;
     text-transform: uppercase;
   }
 
@@ -138,7 +138,8 @@ body {
 
   &__link {
     text-decoration: none;
-    font-weight: 500;
+    font-family: 'Mont', sans-serif;
+    font-weight: 600;
     color: $menu-color;
   }
 

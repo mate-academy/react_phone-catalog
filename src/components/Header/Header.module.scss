@@ -45,7 +45,7 @@ body {
     }
 
     @include on-desktop {
-      gap: 24px;
+      gap: 48px;
       display: flex;
       align-items: center;
       padding-left: 16px;
@@ -336,7 +336,6 @@ body {
   }
 
   @include on-desktop {
-    width: 80px;
     height: 28px;
   }
 }

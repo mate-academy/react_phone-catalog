@@ -289,49 +289,6 @@ p {
   }
 }
 
-// .container {
-//   display: flex;
-//   align-items: center;
-//   gap: 24px;
-//   padding: 0;
-//   flex-direction: column;
-//   min-width: 0;
-
-//   @include on-desktop {
-//     display: flex;
-//     flex-direction: row;
-//     flex: 1;
-//     overflow: hidden;
-//   }
-
-//   &__name {
-//     color: $menu-color;
-//     font-size: 14px;
-//     margin: 0;
-//     width: 128px;
-//     height: 42px;
-//     display: flex;
-//     align-items: center;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//     white-space: nowrap;
-
-//     @include on-tablet {
-//       width: 176px;
-//     }
-
-//     @include on-desktop {
-//       width: 336px;
-//     }
-//   }
-
-//   &__quantity {
-//     display: flex;
-//     align-items: center;
-//     gap: 14px;
-//   }
-// }
-
 .back {
   margin-top: 40px;
   display: flex;

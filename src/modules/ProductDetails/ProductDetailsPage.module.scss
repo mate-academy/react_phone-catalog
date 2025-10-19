@@ -4,10 +4,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  // padding: 20px;
   background-color: $menu-background-color;
-
-  // @include content-padding-inline;
 
   &__errorTitle {
     color: $menu-color;
@@ -105,12 +102,14 @@
   @include on-tablet {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     margin-top: 16px;
   }
 
   @include on-desktop {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     margin-top: 16px;
   }
 }
@@ -456,9 +455,6 @@
   }
 }
 
-// .containerSlider {
-//   padding-inline: 0;
-// }
 .containerSlider {
   padding: 0;
   margin-inline: -16px;
