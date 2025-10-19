@@ -1,15 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-enum Status {
-  LOADING = 'Loading...',
-  ERROR = 'Error',
-}
+import { Status } from './Status';
 
 const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
   const [items, setItems] = useState<T | Status>(Status.LOADING);
   const abortControllerRef = useRef<AbortController | null>(null);
-  const navigate = useNavigate();
 
   const load = async () => {
     setItems(Status.LOADING);
@@ -57,12 +51,6 @@ const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
       }
     }
   };
-
-  useEffect(() => {
-    if (items === Status.ERROR) {
-      navigate('/404');
-    }
-  }, [items]);
 
   useEffect(() => {
     return () => {

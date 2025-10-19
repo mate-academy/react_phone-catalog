@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Status } from '../../../features/itemsLoader/loadItems';
+import { Status } from '@features/itemsLoader/Status';
 import { Spinner } from '@ui/loadingUI/spinner';
 import { ErrorElement } from '@ui/loadingUI/errorElement';
 

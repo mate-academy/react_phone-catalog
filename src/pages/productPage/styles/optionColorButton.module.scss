@@ -7,6 +7,7 @@
   border-radius: 50%;
   box-sizing: border-box;
   background-color: var(--bgc);
+  position: relative;
 
   box-shadow: inset 0 0 0 3px white;
 
@@ -16,5 +17,42 @@
 
   &-is-active {
     border-color: s.$c-grey-primary;
+  }
+
+&-is-loading {
+  border: none;
+  position: relative;
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      s.$c-icons,
+      s.$c-grey-primary,
+      s.$c-icons
+    );
+    animation: spin-border 1.5s linear infinite;
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 3px; // создаем "дырку" внутри
+    border-radius: 50%;
+    background-color: var(--bgc);
+    box-shadow: 0 0 0 3px white; // белое кольцо внутри
+    z-index: 1;
+  }
+}
+}
+
+@keyframes spin-border {
+  to {
+    transform: rotate(360deg);
   }
 }

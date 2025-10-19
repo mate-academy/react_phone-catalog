@@ -13,8 +13,8 @@ type Props = {
 
 const baseConfig: ColorButtonConfig = {
   to: '/',
-  className: styles['color-btn'],
-  style: { '--bgc': ColorsToHex[Colors.WHITE] } as React.CSSProperties,
+  className: classNames(styles['color-btn'], [styles['color-btn-is-loading']]),
+  style: { '--bgc': '#e2e6e9' } as React.CSSProperties,
   'aria-label': '',
   onClick: (e: React.MouseEvent) => e.preventDefault(),
 };
