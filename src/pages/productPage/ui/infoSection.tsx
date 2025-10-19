@@ -1,5 +1,5 @@
 import { DetailedList } from '@ui/index';
-import styles from '../../styles/infoSection/infoSection.module.scss';
+import styles from '../styles/infoSection/infoSection.module.scss';
 import { Article } from './article';
 
 type Props = {

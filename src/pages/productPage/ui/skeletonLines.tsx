@@ -1,5 +1,5 @@
 import { getWholeRandom } from '@shared/helpers';
-import styles from '../../styles/infoSection/skeletonLines.module.scss';
+import styles from '../styles/infoSection/skeletonLines.module.scss';
 //last line is not included, so it's basically lines - 1;
 const MAX_LINES = 3;
 const MIN_LINES = 2;

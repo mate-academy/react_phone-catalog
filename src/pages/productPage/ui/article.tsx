@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import { getSkeletonArray } from '../../model';
-import styles from '../../styles/infoSection/article.module.scss';
-import { SkeletonLines } from './skeletonLines';
+import { getSkeletonArray } from '../model';
+import styles from '../styles/infoSection/article.module.scss';
+import { SkeletonLines } from '.';
 
 type Props = {
   description: { title: string; text: string[] }[] | null;
