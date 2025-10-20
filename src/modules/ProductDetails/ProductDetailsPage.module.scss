@@ -136,6 +136,10 @@
   }
 }
 
+.activeThumb {
+  border-color: $menu-color;
+}
+
 .mainImageWrapper {
   width: 288px;
   height: 288px;

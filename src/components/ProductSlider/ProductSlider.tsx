@@ -56,7 +56,12 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
             <SwiperSlide key={product.id}>
               <article className={styles.card} data-qa="card">
                 <div className={styles.card__top}>
-                  <Link to={`/${product.category}/${product.id}`}>
+                  <Link
+                    to={`/${product.category}/${product.id}`}
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
                     <img
                       src={`./${product.images[0]}`}
                       alt={product.name}
@@ -66,7 +71,12 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
                 </div>
 
                 <h2 className={styles.card__name}>
-                  <Link to={`/${product.category}/${product.id}`}>
+                  <Link
+                    to={`/${product.category}/${product.id}`}
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
                     {product.name}
                   </Link>
                 </h2>
