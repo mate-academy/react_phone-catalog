@@ -1,7 +1,15 @@
 import styles from './ButtonsRight.module.scss';
 import { NavLink, useParams } from 'react-router-dom';
 
-export const ButtonsRight = () => {
+interface ButtonsRightProps {
+  isBurgerMenu?: boolean;
+  onClose?: () => void;
+}
+
+export const ButtonsRight: React.FC<ButtonsRightProps> = ({
+  isBurgerMenu,
+  onClose,
+}) => {
   const { category } = useParams();
 
   const buttonsNav = [
@@ -10,13 +18,20 @@ export const ButtonsRight = () => {
   ];
 
   return (
-    <div className={styles.buttonsRight}>
-      {buttonsNav.map(link => (
+    <div
+      className={`${styles.buttonsRight} ${isBurgerMenu ? styles.burgerMenuBox : ''}`}
+    >
+      {buttonsNav.map((link, i) => (
         <NavLink
           key={link.to}
           to={link.to}
+          onClick={onClose}
+          style={{ borderRight: i === 0 ? '1px solid #323542' : '' }}
           className={({ isActive }) =>
-            category === link.to || isActive ? styles.active : ''
+            `
+              ${isActive || category === link.to ? styles.active : ''}
+              ${isBurgerMenu ? styles.burgerMenu : styles.homePage}
+            `
           }
         >
           <img src={link.img} alt={link.alt} />

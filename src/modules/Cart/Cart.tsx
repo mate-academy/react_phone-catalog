@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react';
 import { useCart } from '../../ProductsContext/CartContext';
 import { useTabs } from '../../ProductsContext/TabsContext';
 import styles from './Cart.module.scss';
+import { CommonButton } from './components/CommonButton';
+import { CountBox } from './components/CountBox';
+import { TotalPrice } from './components/TotalPrice';
 
 export const Cart = () => {
   const { productsList } = useTabs();
-  const { cartItems, toggleCart } = useCart();
+  const { cartItems } = useCart();
   const [countItems, setCountItems] = useState<Record<number, number>>({});
 
   const addItemInCart = (id: number) => {
@@ -59,21 +62,7 @@ export const Cart = () => {
           return (
             <div className={styles.cartComponent} key={element.id}>
               <div className={styles.box}>
-                <button
-                  className={styles.commonButton}
-                  onClick={() => {
-                    toggleCart(element.id);
-                    setCountItems(prev => {
-                      const updated = { ...prev };
-
-                      delete updated[element.id];
-
-                      return updated;
-                    });
-                  }}
-                >
-                  <img src="/img/SliderImg/Union.svg" alt="Union" />
-                </button>
+                <CommonButton setCountItems={setCountItems} element={element} />
 
                 <img
                   className={styles.picture}
@@ -85,21 +74,12 @@ export const Cart = () => {
               </div>
 
               <div className={styles.box}>
-                <div className={styles.countBox}>
-                  <button
-                    onClick={() => removeItemfromCart(element.id)}
-                    className={`${styles.button} ${styles.commonButton} ${count > 1 ? styles.buttonActive : ''}`}
-                  >
-                    -
-                  </button>
-                  <div className={styles.commonButton}>{count}</div>
-                  <button
-                    onClick={() => addItemInCart(element.id)}
-                    className={`${styles.button} ${styles.commonButton} ${styles.buttonActive}`}
-                  >
-                    +
-                  </button>
-                </div>
+                <CountBox
+                  count={count}
+                  removeItemfromCart={removeItemfromCart}
+                  addItemInCart={addItemInCart}
+                  element={element}
+                />
 
                 <div className={styles.price}>${element.price * count}</div>
               </div>
@@ -108,17 +88,7 @@ export const Cart = () => {
         })}
       </div>
 
-      <div className={styles.gridPrice}>
-        <div className={styles.containerPrice}>
-          <div className={styles.containerTotalPrice}>
-            <div className={styles.totalPrice}>${commonPrice}</div>
-            <div className={styles.countItems}>
-              Total for {totalItems} items
-            </div>
-          </div>
-          <button className={styles.checkout}>Checkout</button>
-        </div>
-      </div>
+      <TotalPrice commonPrice={commonPrice} totalItems={totalItems} />
     </div>
   );
 };

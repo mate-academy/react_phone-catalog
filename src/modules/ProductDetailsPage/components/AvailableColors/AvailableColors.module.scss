@@ -1,0 +1,41 @@
+@use '/src/mixins.scss' as *;
+
+.availableColors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 24px;
+}
+
+.titleAvailable {
+  display: flex;
+  justify-content: space-between;
+  color: #75767F;
+  font-size: 12px;
+}
+
+.colorsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.color {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+}
+
+.colorBorder {
+  border-radius: 50%;
+  padding: 3px;
+  border: 1px solid #3B3E4A;
+
+  &:hover {
+    border-color: #75767F;
+  }
+}
+
+.activeColor {
+  border-color: #F1F2F9;
+
+}

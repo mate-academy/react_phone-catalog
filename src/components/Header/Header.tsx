@@ -32,7 +32,9 @@ export const Header = () => {
         </div>
       </div>
 
-      <ButtonsRight />
+      <div className={styles.buttonsRight}>
+        <ButtonsRight />
+      </div>
 
       <div className={styles.burgerMenu} onClick={handleToggleMenu}>
         <button>

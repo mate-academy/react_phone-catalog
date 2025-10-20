@@ -1,3 +1,4 @@
+import { ProductsStyleMode } from '../shared/types/types';
 import styles from './HomePage.module.scss';
 import { Categories } from './components/Categories';
 import { PicturesSlider } from './components/PicturesSlider';
@@ -11,11 +12,11 @@ export const HomePage = () => {
       <div className={styles.elements}>
         <PicturesSlider />
 
-        <ProductsList productsStyle="NewModelsSlider" />
+        <ProductsList productsStyle={ProductsStyleMode.New} />
 
         <Categories />
 
-        <ProductsList productsStyle="HotPrices" />
+        <ProductsList productsStyle={ProductsStyleMode.Hot} />
       </div>
     </div>
   );

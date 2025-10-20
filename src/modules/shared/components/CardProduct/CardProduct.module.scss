@@ -8,6 +8,7 @@
   padding: 32px;
   position: relative;
   min-width: 212px;
+  width: 100%;
   justify-content: space-between;
 
   * {
@@ -37,83 +38,8 @@
   gap: 8px;
 }
 
-
-.title {
-  font-size: 14px;
-  color: #F1F2F9;
-  font-weight: normal;
-  cursor: pointer;
-}
-
-.containerPrice {
-  display: flex;
-  gap: 8px;
-}
-
-.price {
-  font-size: 22px;
-  color: #F1F2F9;
-  font-weight: 800;
-}
-
-.fullPrice {
-  font-size: 22px;
-  font-weight: 600;
-  text-decoration: line-through;
-  color: #313237;
-}
-
-.blockInform {
-  border-top: 1px solid #3B3E4A;
-  padding: 16px 0 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.information {
-  display: flex;
-  justify-content: space-between;
-}
-
-.name {
-  color: #75767F;
-}
-
-.value {
- color: #F1F2F9;
-}
-
-.blockButtons {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.add {
-  background-color: #905BFF;
-  border: none;
-  color: #F1F2F9;
+.line {
+  height: 1px;
   width: 100%;
-  height: 40px;
-}
-
-.favourites {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: #323542;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.favourites img {
-  width: 16px;
-  height: 16px;
-}
-
-.addedToCart {
-  background-color: #323542;
+  background-color: #3B3E4A;
 }

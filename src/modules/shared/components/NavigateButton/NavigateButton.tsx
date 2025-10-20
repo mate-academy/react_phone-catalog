@@ -2,12 +2,20 @@ import React from 'react';
 import styles from './NavigateButton.module.scss';
 import { NavLink, useParams } from 'react-router-dom';
 import { Product } from '../../../../ProductsContext/TabsContext';
+import { useSafeProduct } from '../../hooks/SafeProduct';
 
 interface NavigateButtonProps {
-  product?: Product;
+  productElement?: Product;
 }
-export const NavigateButton: React.FC<NavigateButtonProps> = ({ product }) => {
+
+export const NavigateButton: React.FC<NavigateButtonProps> = ({
+  productElement,
+}) => {
   const { category } = useParams();
+  const productFromContext = useSafeProduct();
+
+  const product: Product | undefined =
+    productFromContext?.product || productElement;
 
   const getCategoryName = (categoryName?: string) => {
     switch (categoryName) {

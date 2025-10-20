@@ -1,10 +1,11 @@
 import styles from './ProductsList.module.scss';
 import { useTabs } from '../../../../ProductsContext/TabsContext';
 import { useState } from 'react';
-import { CardProduct } from '../../../shared/components/CardProduct';
+import { CardProduct, ProductsStyleTitleMap } from '../../../shared';
+import { ProductsStyleMode } from '../../../shared/types/types';
 
 interface ProductsListType {
-  productsStyle: string;
+  productsStyle: ProductsStyleMode;
 }
 
 export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
@@ -16,7 +17,7 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
 
   let sale = true;
 
-  if (productsStyle === 'NewModelsSlider') {
+  if (productsStyle === ProductsStyleMode.New) {
     const newestYear = Math.max(...productsList.map(p => p.year));
 
     products = productsList.filter(product => product.year === newestYear);
@@ -54,9 +55,11 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
     <div className={styles.container}>
       <div className={styles.elementsTitle}>
         <h1 className={styles.title}>
-          {productsStyle === 'NewModelsSlider'
-            ? 'Brand new models'
-            : 'Hot prices'}
+          {productsStyle === ProductsStyleMode.New
+            ? ProductsStyleTitleMap.new
+            : productsStyle === ProductsStyleMode.Hot
+              ? ProductsStyleTitleMap.hot
+              : ProductsStyleTitleMap.also}
         </h1>
 
         <div className={styles.buttons}>

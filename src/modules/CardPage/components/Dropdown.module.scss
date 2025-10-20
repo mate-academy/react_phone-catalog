@@ -1,5 +1,6 @@
 @use "/src/mixins.scss" as *;
 
+.itemsOnPage,
 .sortBy {
   grid-column: span 2;
   position: relative;
@@ -20,22 +21,40 @@
   color: #F1F2F9;
   padding: 12px 10px;
   margin-top: 4px;
+
+
+  &:hover {
+    border: 1px solid #4A4D58;
+  }
+}
+
+.activeButton {
+  border: 1px solid #905BFF;
+}
+
+.valueCurrent {
+  background-color: #0F1121;
+  border: 1px solid #0F1121;
 }
 
 .sortList {
-  background-color: #323542;
-  position: fixed;
   position: absolute;
   top: 100%;
+  margin-top: 4px;
   width: 100%;
   z-index: 1;
+  border: 1px solid #3B3E4A;
+  background-color: inherit;
+  padding: 8px 0;
 }
 
 .item {
-  background-color: #323542;
   cursor: pointer;
+  list-style: none;
+  padding: 6px 12px;
 
   &:hover {
     color: #F1F2F9;
+    background-color: #323542;
   }
 }

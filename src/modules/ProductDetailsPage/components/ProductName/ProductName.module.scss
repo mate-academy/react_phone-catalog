@@ -1,0 +1,13 @@
+@use '/src/mixins.scss' as *;
+
+.title {
+  font-weight: 800;
+  color: #F1F2F9;
+  font-size: 22px;
+  line-height: 140%;
+
+  @include on-tablet {
+  font-size: 32px;
+  line-height: 41px;
+  }
+}

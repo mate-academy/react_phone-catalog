@@ -57,6 +57,14 @@
   }
 }
 
+.buttonsRight {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
 .left {
   display: flex;
   align-items: center;

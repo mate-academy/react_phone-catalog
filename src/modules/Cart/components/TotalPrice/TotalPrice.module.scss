@@ -1,0 +1,56 @@
+@use "/src/mixins.scss" as *;
+
+.gridPrice {
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    grid-column: 1/17;
+  }
+
+  @include on-desktop {
+    grid-column: 17/-1;
+  }
+}
+
+.containerPrice {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #3B3E4A;
+  padding: 24px;
+  gap: 16px;
+  width: 100%;
+}
+
+
+.containerTotalPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #3B3E4A;
+
+  @include on-desktop {
+    padding-bottom: 24px;
+  }
+}
+
+.totalPrice {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+}
+
+.countItems {
+  font-size: 14px;
+  color: #75767F;
+  line-height: 21px;
+}
+
+.checkout {
+  height: 48px;
+  border: none;
+  background-color: #905BFF;
+  color: #F1F2F9;
+  font-size: 14px;
+  line-height: 21px;
+}

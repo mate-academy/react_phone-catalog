@@ -1,16 +1,15 @@
 import styles from './CardPage.module.scss';
-import { NavigateList } from '../shared/components/NavigateList/NavigateList';
 import { useMemo, useState } from 'react';
 import { useTabs } from '../../ProductsContext/TabsContext';
-import { CardProduct } from '../shared/components/CardProduct';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Pagination } from './components/Pagination';
-import { SortBy } from './components/SortBy';
-import { ItemsOnPage } from './components/ItemsOnPage';
 import { useFavourite } from '../../ProductsContext/FavouriteContext';
 import { Cart } from '../Cart/Cart';
+import { CardProduct, NavigateList } from '../shared';
+import { SortBy } from './components/SortBy';
+import { ItemsOnPage } from './components/ItemsOnPage';
 
-export const CartPage = () => {
+export const CardPage = () => {
   const { productsList } = useTabs();
   const { category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();

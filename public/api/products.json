@@ -13,7 +13,7 @@
     "year": 2016,
     "image": "img/phones/apple-iphone-7/black/00.webp"
   },
-  { 
+  {
     "id": 2,
     "category": "phones",
     "itemId": "apple-iphone-7-plus-32gb-black",
@@ -1001,7 +1001,7 @@
     "fullPrice": 1056,
     "price": 980,
     "screen": "6.1' IPS",
-    "capacity": "32GB",
+    "capacity": "128GB",
     "color": "midnight",
     "ram": "6GB",
     "year": 2022,

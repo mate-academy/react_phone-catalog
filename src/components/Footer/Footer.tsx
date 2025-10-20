@@ -1,8 +1,22 @@
-import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { BackToTopButton } from '../BackToTopButton/BackToTopButton';
 
 export const Footer = () => {
+  const linkList = [
+    {
+      name: 'Github',
+      href: 'https://github.com/AlbinaAlbi/react_phone-catalog',
+    },
+    {
+      name: 'Contacts',
+      href: 'https://github.com/AlbinaAlbi/react_phone-catalog',
+    },
+    {
+      name: 'rights',
+      href: 'https://github.com/AlbinaAlbi/react_phone-catalog',
+    },
+  ];
+
   return (
     <div className={styles.footer}>
       <div className={styles.containerLogo}>
@@ -10,15 +24,11 @@ export const Footer = () => {
       </div>
 
       <nav className={styles.nav}>
-        <a
-          href="https://github.com/AlbinaAlbi/react_phone-catalog"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Github
-        </a>
-        <NavLink to={'/Contacts'}>Contacts</NavLink>
-        <NavLink to={'/rights'}>rights</NavLink>
+        {linkList.map((el, i) => (
+          <a key={i} href={el.href} target="_blank" rel="noreferrer">
+            {el.name}
+          </a>
+        ))}
       </nav>
 
       <BackToTopButton />

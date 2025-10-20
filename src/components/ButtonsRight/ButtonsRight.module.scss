@@ -1,15 +1,11 @@
 @use '/src/mixins.scss' as *;
 
 .buttonsRight {
-  display: none;
-
-  @include on-tablet {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
 }
 
-.buttonsRight a {
+.homePage {
   width: 48px;
   height: 48px;
   display: flex;
@@ -23,6 +19,25 @@
     width: 64px;
     height: 64px;
   }
+}
+
+.burgerMenu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.burgerMenuBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 64px;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid #323542;
+
 }
 
 .buttonsRight a.active {

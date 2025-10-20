@@ -1,0 +1,42 @@
+.blockButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  height: 40px;
+}
+
+.productPage {
+  height: 48px;
+}
+
+.add {
+  background-color: #905BFF;
+  border: none;
+  color: #F1F2F9;
+  width: 100%;
+}
+
+.addedToCart {
+  background-color: #323542;
+}
+
+.favourites {
+  height: 100%;
+  width: 40px;
+  border: none;
+  background-color: #323542;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.productPageFavourites {
+  width: 48px;
+}
+
+.favourites img {
+  width: 16px;
+  height: 16px;
+  background-color: inherit;
+}

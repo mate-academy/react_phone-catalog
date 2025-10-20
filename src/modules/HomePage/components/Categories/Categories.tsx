@@ -39,7 +39,7 @@ export const Categories = () => {
           return (
             <Link
               key={cat.title}
-              to={`/category/${cat.category}`}
+              to={`${cat.category}`}
               className={styles.block}
             >
               <div className={styles.blockImg}>

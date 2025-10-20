@@ -68,12 +68,15 @@ export const TabsProvider = ({ children }: { children: ReactNode }) => {
         green: '#5F7170',
         'sky blue': '#87CEEB',
         'space gray': '#4C4C4C',
+        spacegray: '#4C4C4C',
+        spaceblack: '#1C1C1E',
         gold: '#FCDBC1',
         black: '#0F1121',
         yellow: '#FFD700',
         white: '#F0F0F0',
         purple: '#905BFF',
         red: '#EB5757',
+        midnight: '#1E2732',
       };
 
       try {

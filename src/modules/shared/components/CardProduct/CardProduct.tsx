@@ -1,8 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import { useCart } from '../../../../ProductsContext/CartContext';
-import { useFavourite } from '../../../../ProductsContext/FavouriteContext';
 import { Product } from '../../../../ProductsContext/TabsContext';
 import styles from './CardProduct.module.scss';
+import { ContainerPrice } from './components/ContainerPrice';
+import { BlockButtons } from './components/BlockButtons';
+import { BlockInform } from './components/BlockInform';
+import { Title } from './components/Title';
+import { useProductActions } from '../../hooks/useProductActions';
 
 interface CardProductProps {
   element: Product;
@@ -10,22 +12,7 @@ interface CardProductProps {
 }
 
 export const CardProduct: React.FC<CardProductProps> = ({ element, sale }) => {
-  const { favourites, toggleFavourite } = useFavourite();
-  const { cartItems, toggleCart } = useCart();
-  const navigate = useNavigate();
-
-  const openProduct = () => {
-    navigate(`/product/${element.id}`);
-  };
-
-  const isFavourite = favourites.includes(element.id);
-  const isInCart = cartItems.includes(element.id);
-
-  const inform = [
-    { name: 'Screen', value: element.screen },
-    { name: 'Capacity', value: element.capacity },
-    { name: 'RAM', value: element.ram },
-  ];
+  const { openProduct } = useProductActions(element);
 
   return (
     <div className={styles.container}>
@@ -34,47 +21,15 @@ export const CardProduct: React.FC<CardProductProps> = ({ element, sale }) => {
       </div>
 
       <div className={styles.bottom}>
-        <div className={styles.title} onClick={openProduct}>
-          {element.name}
-        </div>
+        <Title element={element} />
 
-        <div className={styles.containerPrice}>
-          <div className={styles.price}>${element.price}</div>
+        <ContainerPrice element={element} sale={sale} />
 
-          {sale && <div className={styles.fullPrice}>${element.fullPrice}</div>}
-        </div>
+        <div className={styles.line}></div>
 
-        <div className={styles.blockInform}>
-          {inform.map((inf, index) => (
-            <div key={index} className={styles.information}>
-              <div className={styles.name}>{inf.name}</div>
-              <div className={styles.value}>{inf.value}</div>
-            </div>
-          ))}
-        </div>
+        <BlockInform element={element} />
 
-        <div className={styles.blockButtons}>
-          <button
-            className={`${styles.add} ${isInCart ? styles.addedToCart : ''}`}
-            onClick={() => toggleCart(element.id)}
-          >
-            {isInCart ? 'Added' : 'Add to cart'}
-          </button>
-
-          <button
-            className={styles.favourites}
-            onClick={() => toggleFavourite(element.id)}
-          >
-            <img
-              src={
-                isFavourite
-                  ? '/img/favourites-active.svg'
-                  : '/img/favourites.svg'
-              }
-              alt="Favourites"
-            />
-          </button>
-        </div>
+        <BlockButtons element={element} />
       </div>
     </div>
   );

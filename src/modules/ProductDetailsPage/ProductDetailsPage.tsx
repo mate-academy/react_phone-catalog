@@ -1,12 +1,27 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
-import { NavigateButton } from '../shared/components/NavigateButton';
 import { useTabs } from '../../ProductsContext/TabsContext';
-import { BackButton } from '../shared/components/BackButton';
+import { ProductsStyleMode } from '../shared/types/types';
+import { ProductsList } from '../HomePage/components/ProductsList';
+import { ProductProvider } from './hooks/ProductContext';
+import { ProductName } from './components/ProductName/ProductName';
+import { NavigateButtons } from './components/NavigateButtons';
+import { AboutAndTechSpecs } from './components/AboutAndTechSpecs';
+import { SwitchPhotos } from './components/SwitchPhotos';
+import { ImgSliders } from './components/ImgSliders';
+import { InformContainer } from './components/InformContainer';
 
 export const ProductDetailsPage = () => {
   const { id } = useParams();
   const { productsList, loading, error } = useTabs();
+  const location = useLocation();
+
+  const product = productsList.find(e => e.id === Number(id));
+
+  const isProductPage =
+    location.pathname === `/${product?.category}/product/${product?.id}`;
+
+  const sale = product?.price !== product?.fullPrice;
 
   if (loading) {
     return <div className={styles.status}>Loading...</div>;
@@ -16,61 +31,33 @@ export const ProductDetailsPage = () => {
     return <div className={styles.status}>error...</div>;
   }
 
-  const product = productsList.find(e => e.id === Number(id));
-
   if (!product) {
     return <div className={styles.status}>Product not found...</div>;
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.navigateButtons}>
-        <NavigateButton product={product} />
-        <BackButton />
-      </div>
+    <ProductProvider
+      product={product}
+      sale={sale}
+      isProductPage={isProductPage}
+    >
+      <div className={styles.container}>
+        <NavigateButtons />
 
-      <div className={styles.productContainer}>
-        <div className={styles.title}>{product.name}</div>
+        <ProductName />
 
-        <div className={styles.productInform}>
-          <div className={styles.grigContainer}>
-            <div className={styles.switchPhotos}>
-              <img
-                className={styles.img}
-                src={product.image}
-                alt={product.itemId}
-              />
-            </div>
+        <div className={styles.grigContainer}>
+          <SwitchPhotos />
 
-            <div className={styles.imgSliders}>
-              {product.details?.images.map((el, i) => (
-                <div className={styles.imgBox} key={i}>
-                  <img className={styles.img} src={el} alt="hd" />
-                </div>
-              ))}
-            </div>
+          <ImgSliders />
 
-            <div className={styles.informContainer}>
-              <div className={styles.availableColors}>
-                <div className={styles.title}>
-                  Available colors
-                  <span></span>
-                </div>
-
-                <div className={styles.colorsContainer}>
-                  {product.details?.colorsAvailable?.map((p, i) => (
-                    <span
-                      className={styles.color}
-                      key={i}
-                      style={{ backgroundColor: `${p}` }}
-                    ></span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          <InformContainer />
         </div>
+
+        <AboutAndTechSpecs />
+
+        <ProductsList productsStyle={ProductsStyleMode.Also} />
       </div>
-    </div>
+    </ProductProvider>
   );
 };

@@ -1,0 +1,12 @@
+@use '/src/mixins.scss' as *;
+
+.navigateButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 0 16px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+}

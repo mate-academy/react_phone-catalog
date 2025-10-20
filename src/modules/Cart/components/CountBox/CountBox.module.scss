@@ -1,0 +1,28 @@
+@use "/src/mixins.scss" as *;
+
+.countBox {
+  display: flex;
+  flex-direction: row;
+  background-color: #161827;
+}
+
+.commonButton {
+  display: flex;
+  border: none;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+  justify-content: center;
+  background-color: #161827;
+}
+
+.button {
+  border: 1px solid #3B3E4A;
+  color: #3B3E4A;
+  font-size: 16px;
+}
+
+.buttonActive {
+  background-color: #323542;
+  color: #F1F2F9;
+}

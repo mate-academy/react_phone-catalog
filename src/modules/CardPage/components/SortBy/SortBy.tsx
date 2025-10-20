@@ -1,4 +1,4 @@
-import styles from './SortBy.module.scss';
+import styles from '../Dropdown.module.scss';
 
 interface SortByProps {
   sortBy: string;
@@ -18,7 +18,14 @@ export const SortBy: React.FC<SortByProps> = ({
   return (
     <div className={styles.sortBy}>
       <div>Sort by</div>
-      <button className={styles.button} onClick={() => setSortOpen(!sortOpen)}>
+      <button
+        className={`
+          ${styles.button}
+          ${sortOpen ? styles.activeButton : ''}
+          ${sortBy !== 'Newest' ? styles.valueCurrent : ''}
+        `}
+        onClick={() => setSortOpen(!sortOpen)}
+      >
         {sortBy}
         <img
           src="./img/SliderImg/Down.svg"

@@ -1,0 +1,21 @@
+@use '/src/mixins.scss' as *;
+
+.goBuy {
+  margin:  32px 0;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.informContainer {
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    grid-column: 8/-1;
+    grid-row: 1/2;
+  }
+
+  @include on-desktop {
+    grid-column: 14/21;
+  }
+}

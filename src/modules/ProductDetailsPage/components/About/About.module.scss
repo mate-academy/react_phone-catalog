@@ -1,0 +1,34 @@
+@use '/src/mixins.scss' as *;
+
+.contentAboutTech {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    width: 50%;
+  }
+}
+
+.titleAboutTech {
+  border-bottom: 1px solid #3B3E4A;
+  padding-bottom: 16px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.titleText {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.text {
+  font-size: 14px;
+  color: #89939A;
+}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './ItemsOnPage.module.scss';
+import styles from '../Dropdown.module.scss';
 
 interface ItemsOnPageProps {
   current: string;
@@ -17,7 +17,14 @@ export const ItemsOnPage: React.FC<ItemsOnPageProps> = ({
   return (
     <div className={styles.itemsOnPage}>
       <div>Items on page</div>
-      <button className={styles.button} onClick={() => setOpen(prev => !prev)}>
+      <button
+        className={`
+          ${styles.button}
+          ${open ? styles.activeButton : ''}
+          ${current !== 'all' ? styles.valueCurrent : ''}
+        `}
+        onClick={() => setOpen(prev => !prev)}
+      >
         {current}
         <img
           src="./img/SliderImg/Down.svg"
