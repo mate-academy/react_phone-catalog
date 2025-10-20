@@ -9,6 +9,7 @@ import MenuDark from '../../assets/images/Icons/dark/menuDark.png';
 import CloseLight from '../../assets/images/Icons/light/closeLight.svg';
 import CloseDark from '../../assets/images/Icons/dark/closeDark.png';
 import ArrowPrevLight from '../../assets/images/Icons/light/arrowLeftLight.png';
+// eslint-disable-next-line max-len
 import ArrowNextLight from '../../assets/images/Icons/light/arrowRightLight.png';
 import ArrowPrewDark from '../../assets/images/Icons/dark/arrowLeftDark.png';
 import ArrowNextDark from '../../assets/images/Icons/dark/arrowRightDark.png';
@@ -26,7 +27,6 @@ import PlusLight from '../../assets/images/Icons/light/plusActiveLight.png';
 import HomeDark from '../../assets/images/Icons/dark/homeDark.png';
 import HomeLight from '../../assets/images/Icons/light/homeLight.png';
 import { useTheme } from '../../hooks/useTheme';
-import classNames from 'classnames';
 
 type Props = {
   type: IconType;

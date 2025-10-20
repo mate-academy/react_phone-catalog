@@ -9,8 +9,8 @@
   padding: 20px;
   border-radius: 8px;
   z-index: 1000;
-  height: 100px;
-  width: 300px;
+  height: 150px;
+  width: 400px;
 
   // подобрать для телефона настройки
   @include on-mobile {
@@ -33,6 +33,7 @@
 
   &__text {
     @include body-text;
+    font-size: 20px;
 
     margin-bottom: 20px;
     display: flex;
@@ -47,6 +48,7 @@
 
   &__btns {
     display: flex;
+    padding-top: 25px;
     justify-content: center;
     gap: 100px;
 
@@ -61,10 +63,12 @@
     border: 1px solid #e2e6e9;
     color: #313237;
     cursor: pointer;
-    height: 32px;
-    width: 60px;
+    height: 45px;
+    width: 50px;
+    border-radius: 15%;
 
     @include body-text;
+    font-size: 20px;
   }
 
   &__yes {

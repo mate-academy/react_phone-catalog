@@ -124,6 +124,7 @@
     text-align: right;
     padding-left: 30px;
     justify-self: end;
+    min-width: 90px;
 
     &::before {
       content: '$';

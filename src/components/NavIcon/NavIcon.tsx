@@ -12,10 +12,21 @@ type Props = {
 };
 
 export const NavIcon = ({ path, type, isMenu }: Props) => {
-  const { likedProducts, cartProducts } = useProductsContext();
+  const { likedProducts, cartProducts, countProductsMap } =
+    useProductsContext();
 
-  const count =
-    type === 'favourite' ? likedProducts.length : cartProducts.length;
+  let count = 0;
+
+  if (type === 'favourite') {
+    count = likedProducts.length;
+  } else {
+    count = cartProducts.reduce((total, productId) => {
+      const productCount = countProductsMap[productId] || 1;
+
+      return total + productCount;
+    }, 0);
+  }
+
   return (
     <NavLink
       to={path}

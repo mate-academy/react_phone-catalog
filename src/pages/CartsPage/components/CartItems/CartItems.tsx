@@ -84,7 +84,9 @@ export const CartItems = () => {
                   <button
                     className={styles.item__btn}
                     disabled={countProducts === 10}
-                    onClick={() => handleProductCountChange(productId, 1)}
+                    onClick={() => {
+                      handleProductCountChange(productId, 1);
+                    }}
                   >
                     <Icon type="plus" />
                   </button>
