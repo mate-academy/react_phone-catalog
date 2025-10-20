@@ -9,11 +9,11 @@
     gap: $spacing-7xl;
 
     @include tablet {
-      grid-template-columns: 1fr;
       gap: $spacing-4xl;
     }
 
     @include mobile {
+      grid-template-columns: 1fr;
       gap: $spacing-3xl;
     }
   }

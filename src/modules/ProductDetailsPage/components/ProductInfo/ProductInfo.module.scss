@@ -5,7 +5,7 @@
   min-width: 0;
 
   &__title {
-    @include font-mont($font-size-3xl, $font-weight-extra-bold);
+    @include font-mont($font-size-4xl, $font-weight-extra-bold);
 
     color: $secondary;
     margin-bottom: $spacing-3xl;
@@ -56,6 +56,7 @@
     width: 32px;
     height: 32px;
     border: 2px solid transparent;
+    border-radius: 50%;
     cursor: pointer;
 
     @include smooth-transition;
@@ -185,6 +186,38 @@
   }
 
   &__aboutText {
+    @include font-mont($font-size-md);
+
+    color: $gray-secondary;
+    line-height: 1.6;
+    margin-bottom: $spacing-lg;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__description {
+    margin-top: $spacing-lg;
+  }
+
+  &__descriptionSection {
+    margin-bottom: $spacing-2xl;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__descriptionTitle {
+    @include font-mont($font-size-lg, $font-weight-bold);
+
+    color: $secondary;
+    margin-bottom: $spacing-lg;
+    line-height: 1.4;
+  }
+
+  &__descriptionText {
     @include font-mont($font-size-md);
 
     color: $gray-secondary;

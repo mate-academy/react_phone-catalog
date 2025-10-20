@@ -13,14 +13,15 @@ export interface Product {
   year: number;
   image: string;
 
-  // ProductInfo.tsx
+  //ProductInfo
   colorsAvailable?: string[];
   capacityAvailable?: string[];
   resolution?: string;
   processor?: string;
   camera?: string;
   zoom?: string;
-  images?: string[]; //ProductGallery
+  cell?: string[];
+  images?: string[];
   description?: {
     title: string;
     text: string[];

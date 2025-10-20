@@ -23,11 +23,6 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
       cartDispatch({
         type: 'ADD_ITEM',
         payload: product,
-        // payload: {
-        //   id: product.id,
-        //   product: product,
-        //   quantity: 1,
-        // },
       });
     }
   };
@@ -51,6 +46,25 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
   const availableCapacities = product.capacityAvailable || [product.capacity];
   const hasDiscount = product.fullPrice > product.price;
 
+  // Technical specifications with safe access
+  const techSpecs = [
+    { label: 'Screen', value: product.screen },
+    { label: 'Resolution', value: product.resolution },
+    { label: 'Processor', value: product.processor },
+    { label: 'RAM', value: product.ram },
+    { label: 'Built in memory', value: product.capacity },
+    { label: 'Camera', value: product.camera },
+    { label: 'Zoom', value: product.zoom },
+    {
+      label: 'Cell',
+      value: product.cell
+        ? Array.isArray(product.cell)
+          ? product.cell.join(', ')
+          : product.cell
+        : undefined,
+    },
+  ].filter(spec => spec.value);
+
   return (
     <div className={styles.productInfo}>
       <h1 className={styles.productInfo__title}>{product.name}</h1>
@@ -64,7 +78,7 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
         )}
       </div>
 
-      {/* Color Selection - show only if colors available */}
+      {/* Color Selection */}
       {availableColors.length > 0 && (
         <div className={styles.productInfo__section}>
           <h3 className={styles.productInfo__sectionTitle}>Available colors</h3>
@@ -83,7 +97,7 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
         </div>
       )}
 
-      {/* Capacity Selection - show only if capacities available */}
+      {/* Capacity Selection */}
       {availableCapacities.length > 0 && (
         <div className={styles.productInfo__section}>
           <h3 className={styles.productInfo__sectionTitle}>Select capacity</h3>
@@ -134,56 +148,53 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
         </button>
       </div>
 
-      {/* Tech Specs - show only available specifications */}
-      <div className={styles.productInfo__specs}>
-        <div className={styles.productInfo__spec}>
-          <span className={styles.productInfo__specName}>Screen</span>
-          <span className={styles.productInfo__specValue}>
-            {product.screen}
-          </span>
+      {/* Tech Specs */}
+      {techSpecs.length > 0 && (
+        <div className={styles.productInfo__section}>
+          <h3 className={styles.productInfo__sectionTitle}>Tech specs</h3>
+          <div className={styles.productInfo__specs}>
+            {techSpecs.map((spec, index) => (
+              <div key={index} className={styles.productInfo__spec}>
+                <span className={styles.productInfo__specName}>
+                  {spec.label}
+                </span>
+                <span className={styles.productInfo__specValue}>
+                  {spec.value}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
+      )}
 
-        {product.resolution && (
-          <div className={styles.productInfo__spec}>
-            <span className={styles.productInfo__specName}>Resolution</span>
-            <span className={styles.productInfo__specValue}>
-              {product.resolution}
-            </span>
+      {/* Product Description */}
+      {product.description && product.description.length > 0 && (
+        <div className={styles.productInfo__section}>
+          <h3 className={styles.productInfo__sectionTitle}>About</h3>
+          <div className={styles.productInfo__description}>
+            {product.description.map((section, index) => (
+              <div
+                key={index}
+                className={styles.productInfo__descriptionSection}
+              >
+                {section.title && (
+                  <h4 className={styles.productInfo__descriptionTitle}>
+                    {section.title}
+                  </h4>
+                )}
+                {section.text.map((paragraph, pIndex) => (
+                  <p
+                    key={pIndex}
+                    className={styles.productInfo__descriptionText}
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            ))}
           </div>
-        )}
-
-        {product.processor && (
-          <div className={styles.productInfo__spec}>
-            <span className={styles.productInfo__specName}>Processor</span>
-            <span className={styles.productInfo__specValue}>
-              {product.processor}
-            </span>
-          </div>
-        )}
-
-        <div className={styles.productInfo__spec}>
-          <span className={styles.productInfo__specName}>RAM</span>
-          <span className={styles.productInfo__specValue}>{product.ram}</span>
         </div>
-
-        {product.camera && (
-          <div className={styles.productInfo__spec}>
-            <span className={styles.productInfo__specName}>Camera</span>
-            <span className={styles.productInfo__specValue}>
-              {product.camera}
-            </span>
-          </div>
-        )}
-
-        {product.zoom && (
-          <div className={styles.productInfo__spec}>
-            <span className={styles.productInfo__specName}>Zoom</span>
-            <span className={styles.productInfo__specValue}>
-              {product.zoom}
-            </span>
-          </div>
-        )}
-      </div>
+      )}
     </div>
   );
 };
