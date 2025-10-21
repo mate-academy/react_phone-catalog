@@ -1,3 +1,16 @@
+import { Carusel } from '../Carusel/Carusel';
+import style from './HeroSection.module.scss';
+
 export const HeroSection = () => {
-  return <h1>Welcome to Nice Gadgets store!</h1>;
+  return (
+    <>
+      <div className="container">
+        <h1 className={`${style.title} title`}>
+          Welcome to Nice Gadgets store!
+        </h1>
+      </div>
+
+      <Carusel />
+    </>
+  );
 };

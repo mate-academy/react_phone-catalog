@@ -37,10 +37,14 @@ const Navbar = () => {
         </ul>
 
         <div className={`${style.actions}  `}>
-          <a className={style.navbar__link}>
+          <a
+            className={`${style.navbar__link} ${style['navbar__link--action']}`}
+          >
             <img src={like} alt="like" />
           </a>
-          <a className={style.navbar__link}>
+          <a
+            className={`${style.navbar__link} ${style['navbar__link--action']}`}
+          >
             <img src={shopping} alt="shopping" />
           </a>
         </div>

@@ -1,35 +1,28 @@
-$dekstop: 1280px;
+$mobile: 639px;
+$tablet: 640px;
+$desktop: 1023px;
 
-$tablet: 1023px;
-
-$mobile: 650px;
-
-@mixin dekstop {
-  @media (max-width: $dekstop) {
+@mixin onTablet {
+  @media (min-width: $tablet) {
     @content;
   }
 }
-
-@mixin tablet {
-  @media (max-width: $tablet) {
-    @content;
-  }
-}
-
-@mixin mobile {
-  @media (max-width: $mobile) {
+@mixin onDekstop {
+  @media (min-width: $desktop) {
     @content;
   }
 }
 
 @mixin contentPaddingInline() {
-  padding-inline: 16px;
+  & {
+    padding-inline: 16px;
+  }
 
-  @include tablet {
+  @include onTablet {
     padding-inline: 24px;
   }
 
-  @include dekstop {
+  @include onDekstop {
     padding-inline: 32px;
   }
 }

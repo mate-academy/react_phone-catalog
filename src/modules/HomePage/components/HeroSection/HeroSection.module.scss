@@ -1,0 +1,11 @@
+.title {
+  grid-column: span 4;
+
+  @include onTablet {
+    grid-column: span 9;
+  }
+
+  @include onDekstop {
+    grid-column: span 21;
+  }
+}

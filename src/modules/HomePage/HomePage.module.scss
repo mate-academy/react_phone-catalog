@@ -1,4 +1,7 @@
 .main {
   padding-top: 80px;
 
+  @include onTablet {
+    padding-top: 100px;
+  }
 }

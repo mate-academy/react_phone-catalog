@@ -1,9 +1,10 @@
 import logo from '@Images/logo.png';
+import style from './logo.module.scss';
 
 const Logo = () => {
   return (
-    <a className="logo" href="">
-      <img className="logo__img" src={logo} alt="" />
+    <a className={style.logo} href="">
+      <img className={style.logo__img} src={logo} alt="" />
     </a>
   );
 };

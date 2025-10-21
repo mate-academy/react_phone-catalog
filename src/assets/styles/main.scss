@@ -4,7 +4,7 @@ body {
   font-weight: 800;
   font-size: 14px;
   line-height: 21px;
-  color: var(--color-secondary);
+  // color: var(--color-secondary);
 }
 
 a,
@@ -18,21 +18,33 @@ svg * {
 .container {
   width: 100%;
 
+  @include pageGrid;
   @include contentPaddingInline;
 }
 
-h1 {
-  @include fluid-text(48, 32);
+.title {
+  color: var(--color-white);
+  font-size: 32px;
+  line-height: 41px;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
 }
 
-h2 {
-  @include fluid-text(32, 22);
-}
+// h1 {
+//   @include fluid-text(48, 32);
+// }
 
-h3 {
-  @include fluid-text(22, 20);
-}
+// h2 {
+//   @include fluid-text(32, 22);
+// }
 
-h4 {
-  @include fluid-text(20, 16);
-}
+// h3 {
+//   @include fluid-text(22, 20);
+// }
+
+// h4 {
+//   @include fluid-text(20, 16);
+// }
