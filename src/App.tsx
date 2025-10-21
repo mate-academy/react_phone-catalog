@@ -1,4 +1,4 @@
-import './Index.scss';
+import './index.scss';
 import './App.module.scss';
 import { Outlet } from 'react-router-dom';
 import { Footer } from './modules/shared/components/Footer/Footer';
