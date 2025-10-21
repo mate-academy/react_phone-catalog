@@ -70,10 +70,8 @@ export const ProductDetailsPage = () => {
     return productData.find(i => i.itemId === id);
   }
 
-  const recomended = product
-    ? productData.filter(
-        prod => prod.category === typeOfProduct && prod.price >= product.priceDiscount,
-      )
+  const rec = product
+    ? productData.filter(p => p.category === typeOfProduct && p.price >= product.priceDiscount)
     : productData;
 
   useEffect(() => {
@@ -403,7 +401,7 @@ export const ProductDetailsPage = () => {
             </section>
 
             <section className={styles.product__slider}>
-              <Slider items={recomended} title={TITLE} />
+              <Slider items={rec} title={TITLE} />
             </section>
           </div>
         )}

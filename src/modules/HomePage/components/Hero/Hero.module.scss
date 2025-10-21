@@ -140,7 +140,7 @@
       background: none;
       border-radius: none;
       margin: 0;
-      padding: 48px 68px 0 68px;
+      padding: 48px 68px 0;
     }
   }
 }
@@ -166,6 +166,7 @@
     }
   }
 }
+
 .banner__offer__emoji {
   &__1 {
     background: none;
@@ -176,6 +177,7 @@
     }
   }
 }
+
 .banner__offer__description {
   &__1 {
     font-weight: 300;
@@ -191,6 +193,7 @@
     }
   }
 }
+
 .banner__offer__button {
   &__1 {
     margin-top: auto;
@@ -266,6 +269,7 @@
     }
   }
 }
+
 .banner__graphyc__image {
   &__1 {
     position: absolute;

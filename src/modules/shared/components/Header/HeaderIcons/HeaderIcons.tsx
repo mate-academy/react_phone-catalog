@@ -20,6 +20,7 @@ export const HeaderIcons = () => {
       >
         <div className={styles.icon__favourites}>
           {itemsInFavorites.length > 0 && (
+            // eslint-disable-next-line max-len
             <span className={styles.icon__counter}>{itemsInFavorites.length}</span>
           )}
         </div>

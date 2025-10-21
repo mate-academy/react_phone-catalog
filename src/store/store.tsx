@@ -46,9 +46,7 @@ store.subscribe(() => {
         favorites: state.favorites,
       }),
     );
-  } catch (e) {
-    console.error('error in subscribe', e);
-  }
+  } catch (e) {}
 });
 
 export type RootState = ReturnType<typeof store.getState>;

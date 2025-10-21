@@ -164,6 +164,7 @@
 
 .icon__cart {
   position: relative;
+
   @include header-icon('/img/icons/Shopping_bag_cart.svg');
 
   @include on-mobile {

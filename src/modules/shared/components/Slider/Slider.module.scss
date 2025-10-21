@@ -7,7 +7,7 @@
 }
 
 .slider__title {
-  margin: 0 0 24px 0;
+  margin: 0 0 24px;
   font-size: 32px;
 }
 
@@ -52,8 +52,7 @@
 .slider__card {
   display: flex;
   gap: 16px;
-  overflow-x: auto;
-  overflow-y: visible;
+  overflow: auto visible;
   scroll-snap-type: x mandatory;
   scroll-snap-stop: always;
   -webkit-overflow-scrolling: touch;

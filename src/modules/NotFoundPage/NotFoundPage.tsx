@@ -1,3 +1,23 @@
+import styles from './NotFoundPage.module.scss';
+
 export const NotFoundPage = () => {
-  return <h1 className="title">Page not found</h1>;
+  return (
+    <div className={styles.notfound}>
+      <div className={styles.notfound__wrapper}>
+        <div className={styles.notfound__container}>
+          <section className={styles.notfound__header}>
+            <h1 className={styles.notfound__title}>Page not found</h1>
+            {
+              // eslint-disable-next-line prettier/prettier
+              <img
+                src="public/img/page-not-found.png"
+                alt="404"
+                className={styles.notfound__img}
+              />
+            }
+          </section>
+        </div>
+      </div>
+    </div>
+  );
 };

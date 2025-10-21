@@ -6,7 +6,6 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../shared/components/ProductCard/ProductCard';
 import classNames from 'classnames';
 import { Breadcrumb } from '../shared/components/Breadcrumb/Breadcrumb';
-import { useState } from 'react';
 
 const SORT_OPTIONS = [
   { value: 'newest', label: 'Newest' },

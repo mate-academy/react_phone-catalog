@@ -16,16 +16,16 @@
 }
 
 .cart__container {
-  margin: 32px 0 80px 0;
+  margin: 32px 0 80px;
 }
 
 .product__header {
-  margin: 0 0 32px 0;
+  margin: 0 0 32px;
 }
 
 .cart__title {
   margin: 0;
-  padding: 16px 0 0 0;
+  padding: 16px 0 0;
   font-weight: 600;
   font-size: 48px;
   line-height: 56px;
@@ -187,6 +187,7 @@
 .items__empty__image {
   height: 144px;
 }
+
 .items__title {
   font-weight: 300;
   font-size: 24px;
@@ -248,7 +249,7 @@
   background-color: $main-text-color;
   opacity: 50%;
 
-  animation: fadeIn 320ms ease-in-out forwards;
+  animation: fade-in 320ms ease-in-out forwards;
 }
 
 .popup {
@@ -266,7 +267,7 @@
   box-shadow: 0 20px 60px rgba(30, 7, 49, 0.35);
 
   opacity: 0;
-  animation: popIn 560ms ease-in-out forwards;
+  animation: pop-in 560ms ease-in-out forwards;
 }
 
 .cart__popup__container {
@@ -346,7 +347,7 @@
   background-color: $main-border-color;
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -355,7 +356,7 @@
   }
 }
 
-@keyframes popIn {
+@keyframes pop-in {
   from {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.96);
