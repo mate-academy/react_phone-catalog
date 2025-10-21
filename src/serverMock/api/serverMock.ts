@@ -15,19 +15,16 @@ async function getRequest(conf: string): Promise<string> {
     });
   }
 
-  if (!(await validate[request as RequestType](body))) {
+  if (!validate[request as RequestType](body)) {
     return JSON.stringify({
       status: Status.ERROR,
       data: `Invalid parameters: ${body}`,
     });
   }
 
-  const res = await getService[request as RequestType](body && body);
+  const res = await getService[request as RequestType](body);
 
-  return JSON.stringify({
-    status: Status.SUCCESS,
-    data: res,
-  });
+  return JSON.stringify(res);
 }
 
 export { getRequest };

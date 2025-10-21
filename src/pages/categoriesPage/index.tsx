@@ -38,7 +38,6 @@ export const CategoriesPage = ({ category }: Props) => {
         category={category}
         currentPerPage={currentPerPage}
       />
-
       {typeof data === 'object' && data.pages > 1 && (
         <CataloguePagination
           pages={data.pages}

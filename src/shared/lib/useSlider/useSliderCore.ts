@@ -13,12 +13,15 @@ export const useSliderCore = (amount: number, gap: number) => {
 
   useLayoutEffect(() => {
     updateSizes();
-    if (initialSetup.current || !amount) {
+
+    if (!amount || !DOM.item?.current) {
       return;
     }
 
-    snap(startIndex, false);
-    initialSetup.current = true;
+    if (!initialSetup.current) {
+      snap(startIndex, false);
+      initialSetup.current = true;
+    }
   }, [DOM.item, DOM.viewport, DOM.track, amount]);
 
   const setByIndex = (idx: number, clamped: boolean = false) => {

@@ -3,26 +3,27 @@ import styles from './styles/catalogueSlider.module.scss';
 import { SliderButtons } from '../sharedUI';
 import { CatalogueData } from '@shared/api/types';
 import { Status } from '@features/index';
-import { ProductCardList } from './ui/productCardList';
-import { SkeletonList } from './ui/skeletonList';
+import { ProductCards } from '@ui/productCards/productCards';
 
 type Props = {
   data: CatalogueData | Status;
   title: string;
 };
 
+const FALLBACK_AMOUNT = 8;
+const ANIMATION_SPEED = 300;
+const GAP = 16;
+
 export const CatalogueSlider: React.FC<Props> = ({ data, title }: Props) => {
   const amount = typeof data === 'string' ? 0 : data.items.length;
-  const animationSpeed = 300;
-  const gap = 16;
   const { DOM, measure, mechanics } = useSliderData();
-  const { handlers, setByIndex } = useSliderCore(amount, gap);
+  const { handlers, setByIndex } = useSliderCore(amount, GAP);
 
   const disableButtons = [
     mechanics.index.current === 0,
     mechanics.index.current ===
       amount -
-        Math.ceil(measure.VPWidth.current / (measure.itemWidth.current + gap)),
+        Math.ceil(measure.VPWidth.current / (measure.itemWidth.current + GAP)),
   ];
 
   return (
@@ -44,16 +45,16 @@ export const CatalogueSlider: React.FC<Props> = ({ data, title }: Props) => {
           tabIndex={0}
           style={
             {
-              '--gap': `${gap}px`,
-              '--animation-speed': `${animationSpeed}ms`,
+              '--gap': `${GAP}px`,
+              '--animation-speed': `${ANIMATION_SPEED}ms`,
             } as React.CSSProperties
           }
         >
-          {data === Status.LOADING || data === Status.ERROR ? (
-            <SkeletonList />
-          ) : (
-            <ProductCardList data={data.items} />
-          )}
+          <ProductCards
+            data={data}
+            firstItemRef={DOM.item as React.RefObject<HTMLLIElement>}
+            fallbackAmount={FALLBACK_AMOUNT}
+          />
         </ul>
       </div>
     </section>

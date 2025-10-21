@@ -50,22 +50,21 @@ interface BannerData {
   ariaLabel: string;
   href: string;
 }
+enum Status {
+  ERROR = 'error',
+  SUCCESS = 'success',
+}
 
 interface ErrorObject {
-  status: false;
+  status: Status.ERROR;
   message: string;
 }
 
 interface ValidResponse {
-  status: true;
-  items: BaseProduct[] | Product[] | BannerData[] | number;
+  status: Status.SUCCESS;
+  items: BaseProduct[] | Product | BannerData[] | number;
   currentPage?: number;
   pages?: number;
-}
-
-enum Status {
-  ERROR = 'error',
-  SUCCESS = 'success',
 }
 
 export {

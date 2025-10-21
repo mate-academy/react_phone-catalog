@@ -12,7 +12,7 @@ import { Status } from '@features/index';
 
 async function makeApiRequest<T extends Request>(
   requestData: GetRequestBody<T>,
-): Promise<GetResponseData<T> | Status> {
+): Promise<GetResponseData<T> | Status.ERROR> {
   const response = JSON.parse(await getRequest(JSON.stringify(requestData)));
 
   if (response.status === ResponseStatus.ERROR) {

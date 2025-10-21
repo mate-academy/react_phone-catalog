@@ -11,7 +11,7 @@ interface ValidAmountParams {
   category: ServerCategory;
 }
 
-interface ValidProdParams extends ValidAmountParams {
+interface ValidProdParams {
   itemId: string;
 }
 

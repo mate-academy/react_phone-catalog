@@ -1,7 +1,22 @@
 import { Breadcrumbs } from '@ui/breadcrumbs';
 import styles from './styles/favouritesPage.module.scss';
 import { useFavouritePage } from './model/useFavouritePage';
-import { CatalogueGrid } from '@pages/categoriesPage/ui';
+import { Status } from '@features/index';
+import { ItemsAmount } from '@shared/api';
+import { CatalogueData, Category } from '@shared/api/types';
+import { Catalogue } from '@widgets/index';
+
+type CatalogueProps = {
+  data: CatalogueData | Status;
+  category: Category | 'favourites';
+  currentPerPage: ItemsAmount;
+};
+
+const catalogueProps: CatalogueProps = {
+  data: Status.LOADING,
+  category: 'favourites',
+  currentPerPage: ItemsAmount.FOUR,
+};
 
 export const FavouritesPage = () => {
   const links = [
@@ -13,6 +28,10 @@ export const FavouritesPage = () => {
 
   const { renderList, favAmount } = useFavouritePage();
 
+  if (typeof renderList !== 'string') {
+    catalogueProps.data = { items: renderList, currentPage: 1, pages: 1 };
+  }
+
   return (
     <div className={styles['layout-container']}>
       <nav aria-label="breadcrumb" className={styles.breadcrumbs}>
@@ -22,14 +41,7 @@ export const FavouritesPage = () => {
         <h1 id="fav-heading">Favourites</h1>
         <span className={styles.length}>{`${favAmount} items`}</span>
 
-        <CatalogueGrid
-          data={
-            typeof renderList === 'string'
-              ? renderList
-              : { items: renderList, currentPage: 1, pages: 1 }
-          }
-          category="favourites"
-        />
+        <Catalogue {...catalogueProps} />
       </section>
     </div>
   );

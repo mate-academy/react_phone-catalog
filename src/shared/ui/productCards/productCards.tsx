@@ -1,22 +1,20 @@
-import { ProductCard } from '@entities/prodCard';
 import { Status, useProdCard } from '@features/index';
 import { CatalogueData } from '@shared/api/types';
-import { useSliderData } from '@shared/lib';
-import { organizeCardProps } from '../model/organizeListProps';
+import { organizeCardProps } from './organizeCardProps';
+import { ProductCard } from '@entities/prodCard';
 
 type Props = {
   data: CatalogueData | Status;
+  firstItemRef?: React.RefObject<HTMLLIElement> | null;
+  fallbackAmount: number;
 };
 
-const FALLBACK_ARRAY_LENGTH = 8;
-
-export const ProductCardList = ({ data }: Props) => {
+export const ProductCards = ({ data, firstItemRef, fallbackAmount }: Props) => {
   const { isIn, stateHandlers } = useProdCard();
-  const { DOM } = useSliderData();
 
   const array =
     typeof data === 'string'
-      ? Array.from({ length: FALLBACK_ARRAY_LENGTH }, (_, i) => i)
+      ? Array.from({ length: fallbackAmount }, (_, i) => i)
       : data.items;
 
   return array.map((el, index) => {
@@ -26,7 +24,7 @@ export const ProductCardList = ({ data }: Props) => {
       <ProductCard
         key={key}
         {...props}
-        ref={index === 0 ? (DOM.item as React.RefObject<HTMLLIElement>) : null}
+        ref={index === 0 && firstItemRef ? firstItemRef : null}
       />
     );
   });

@@ -7,6 +7,8 @@ import {
   BaseProduct,
   ValidResponse,
   ServerCategory,
+  ErrorObject,
+  Status,
 } from '@server/types';
 
 // Mutation is essential, because this is server mock,
@@ -14,7 +16,7 @@ import {
 
 async function getCatalogueItems(
   params: ValidCatalogueParams,
-): Promise<Omit<ValidResponse, 'status'>> {
+): Promise<ValidResponse | ErrorObject> {
   const { itemType, sort, perPage, page } = params;
 
   let initialArray = (await apiFetch(ApiEndpoint.PRODUCTS)) as BaseProduct[];
@@ -71,9 +73,19 @@ async function getCatalogueItems(
     const end = start + +(perPage as Exclude<ItemsOnPage, ItemsOnPage.ALL>);
 
     response.items = initialArray.slice(start, end);
+
+    if (response.items.length === 0 && page > 1) {
+      return {
+        status: Status.ERROR,
+        message: 'Requested page does not exist',
+      };
+    }
   }
 
-  return response;
+  return {
+    status: Status.SUCCESS,
+    ...response,
+  };
 }
 
 export { getCatalogueItems };

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useInfinite, useSliderCore, useSliderData } from '@shared/lib';
 import { ImagePagination } from '@widgets/sliderPagination';
 import styles from './styles/productSlider.module.scss';
@@ -10,42 +9,37 @@ type Props = {
   data: { images: string[]; name: string } | Status;
 };
 
-const FALLBACK_LENGTH = 4;
+const GAP = 16;
+const ANIMATION_SPEED = 300;
 
 export const ProductSlider: React.FC<Props> = ({ data }: Props) => {
-  const gap = 16;
-  const animationSpeed = 300;
   const { DOM } = useSliderData();
 
-  const length =
-    typeof data === 'string' ? FALLBACK_LENGTH : data.images.length;
+  const length = typeof data === 'string' ? 0 : data.images.length;
 
-  const ariaLabel = 'Product image gallery';
-  const { handlers, setByIndex } = useSliderCore(length, gap);
+  const { handlers, setByIndex } = useSliderCore(length, GAP);
 
-  useInfinite(length, animationSpeed, gap);
-
-  const trackHight = typeof data === 'string' ? '100%' : 'auto';
+  useInfinite(length, ANIMATION_SPEED, GAP);
 
   const paginationProps =
     typeof data === 'string'
       ? Status.LOADING
-      : {
-        images: data.images,
-        setByIndex: setByIndex,
-      };
+      : { images: data.images, setByIndex: setByIndex };
 
   return (
-    <section className={styles['product-slider']} aria-label={ariaLabel}>
+    <section
+      className={styles['product-slider']}
+      aria-label="Product image gallery"
+    >
       <div className={styles.viewport} ref={DOM.viewport} {...handlers}>
         <div
           className={styles.track}
           ref={DOM.track as React.RefObject<HTMLDivElement>}
           tabIndex={0}
           style={
-            { 'height': trackHight,
-              '--gap': `${gap}px`,
-              '--animation-speed': `${animationSpeed}ms`,
+            {
+              '--gap': `${GAP}px`,
+              '--animation-speed': `${ANIMATION_SPEED}ms`,
             } as React.CSSProperties
           }
         >

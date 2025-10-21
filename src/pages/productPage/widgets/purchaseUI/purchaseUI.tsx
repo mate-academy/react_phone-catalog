@@ -1,7 +1,7 @@
 import { Status, useProdCard } from '@features/index';
 import { PurchaseBlockProps } from '../../model';
 import styles from './purchaseUI.module.scss';
-import { CardButtons } from '@entities/prodCard/ui/buttons';
+import { CardButtons } from '@entities/prodCard/ui/cardButtons';
 import classNames from 'classnames';
 
 type Props = {
@@ -9,7 +9,6 @@ type Props = {
 };
 
 const defaultButtonProps = {
-  item: { id: 'template' },
   isInFav: false,
   isInCart: false,
   handleCart: (e: React.MouseEvent) => e.preventDefault(),
@@ -27,11 +26,10 @@ export const PurchaseUI = ({ data }: Props) => {
     }
 
     return {
-      item: { id: data.id },
       isInFav: fav(data.id),
       isInCart: cart(data.id),
-      handleCart: toggleCart,
-      handleFav: toggleFav,
+      handleCart: (e: React.MouseEvent) => toggleCart(e, { id: data.id }),
+      handleFav: (e: React.MouseEvent) => toggleFav(e, { id: data.id }),
     };
   };
 

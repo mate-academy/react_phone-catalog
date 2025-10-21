@@ -2,6 +2,7 @@
 
 .container {
   display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   width: s.$c-card-width;
   height: s.$c-card-height;
@@ -19,6 +20,14 @@
   width: 100%;
   height: 100%;
   padding: 32px;
+
+  & > :last-child {
+    margin-top: 8px;
+  }
+
+  & > dl > dd {
+    max-width: 120px;
+  }
 }
 
 .name {
@@ -36,6 +45,7 @@
   width: 100%;
   padding-bottom: 8px;
   border-bottom: 1px solid s.$c-elements;
+  margin-bottom: 8px;
 
   font-size: s.$c-lg;
   font-weight: s.$c-s-u;
@@ -65,27 +75,3 @@
   object-fit: contain;
 }
 
-.descr {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(3, 15px);
-  row-gap: 8px;
-
-  box-sizing: border-box;
-  width: 100%;
-  padding: 8px 0;
-
-  @include s.t-small-text;
-
-  &__type {
-    color: s.$c-grey-secondary;
-  }
-
-  &__val {
-    justify-self: end;
-    white-space: nowrap;
-    overflow: hidden;
-    max-width: 130px;
-    text-overflow: ellipsis;
-  }
-}

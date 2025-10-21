@@ -8,6 +8,10 @@
   box-sizing: border-box;
 
   @include s.page-layout;
+
+  > :nth-child(5) {
+    margin-top: 24px;
+  }
 }
 
 .navigation {

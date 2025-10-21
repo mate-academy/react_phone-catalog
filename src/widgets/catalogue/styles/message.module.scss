@@ -1,0 +1,11 @@
+@use '@shared/styles' as s;
+
+.message {
+  display: flex;
+  height: 80vh;
+  width: 100%;
+  justify-content: start;
+  align-items: start;
+
+  @include s.t-h4;
+}

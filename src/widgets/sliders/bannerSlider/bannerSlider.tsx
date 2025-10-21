@@ -12,24 +12,25 @@ type Props = {
   data: BannerData[] | Status;
 };
 
+const GAP = 16;
+const ANIMATION_SPEED = 300;
+
 export const BannerSlider: React.FC<Props> = ({ data }: Props) => {
-  const gap = 16;
-  const animationSpeed = 300;
   const { DOM } = useSliderData();
 
-  const array = data;
+  const length = typeof data === 'string' ? 0 : data.length;
   const ariaLabel = 'Featured promotions';
-  const { handlers, setByIndex } = useSliderCore(array.length, gap);
+  const { handlers, setByIndex } = useSliderCore(length, GAP);
 
   const paginationProps =
     typeof data === 'string'
       ? Status.LOADING
       : {
-        amount: array.length,
+        amount: data.length,
         setByIndex: setByIndex,
       };
 
-  useInfinite(array.length, animationSpeed, gap);
+  useInfinite(length, ANIMATION_SPEED, GAP);
 
   return (
     <section className={styles['hero-slider']} aria-label={ariaLabel}>
@@ -41,8 +42,8 @@ export const BannerSlider: React.FC<Props> = ({ data }: Props) => {
           tabIndex={0}
           style={
             {
-              '--gap': `${gap}px`,
-              '--animation-speed': `${animationSpeed}ms`,
+              '--gap': `${GAP}px`,
+              '--animation-speed': `${ANIMATION_SPEED}ms`,
             } as React.CSSProperties
           }
         >
