@@ -8,7 +8,7 @@ async function getBanners(): Promise<ValidResponse> {
 
   return {
     status: Status.SUCCESS,
-    items: banners,
+    data: banners,
   };
 }
 

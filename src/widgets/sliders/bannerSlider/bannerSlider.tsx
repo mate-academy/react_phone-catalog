@@ -20,7 +20,7 @@ export const BannerSlider: React.FC<Props> = ({ data }: Props) => {
 
   const length = typeof data === 'string' ? 0 : data.length;
   const ariaLabel = 'Featured promotions';
-  const { handlers, setByIndex } = useSliderCore(length, GAP);
+  const { handlers, setByIndex } = useSliderCore(length, GAP, true);
 
   const paginationProps =
     typeof data === 'string'

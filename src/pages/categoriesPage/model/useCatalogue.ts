@@ -8,6 +8,7 @@ import {
   Order,
 } from '@shared/api/types';
 import { Status, useLoadItems } from '@features/index';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   category: Category;
@@ -23,8 +24,16 @@ export const useCatalogue = ({ category }: Props) => {
     page: +state.page || 1,
   };
 
+  const navigate = useNavigate();
+
   const products = useLoadItems(() => get.catalogue(apiConfig));
   const length = useLoadItems(() => get.length(category));
+
+  useEffect(() => {
+    if (products.items === Status.ERROR) {
+      navigate('/404');
+    }
+  }, [products.items]);
 
   useEffect(() => {
     products.loadItems();

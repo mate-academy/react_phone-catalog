@@ -84,7 +84,7 @@ async function getCatalogueItems(
 
   return {
     status: Status.SUCCESS,
-    ...response,
+    data: response,
   };
 }
 

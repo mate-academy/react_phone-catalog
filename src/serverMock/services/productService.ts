@@ -28,7 +28,7 @@ async function getProduct(
 
   return {
     status: Status.SUCCESS,
-    items: product[0],
+    data: product[0],
   };
 }
 
@@ -42,7 +42,7 @@ async function getAmount(params: ValidAmountParams): Promise<ValidResponse> {
 
   return {
     status: Status.SUCCESS,
-    items: length,
+    data: length,
   };
 }
 

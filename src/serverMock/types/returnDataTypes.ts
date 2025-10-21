@@ -60,11 +60,15 @@ interface ErrorObject {
   message: string;
 }
 
-interface ValidResponse {
-  status: Status.SUCCESS;
+interface CatalogueResponse {
   items: BaseProduct[] | Product | BannerData[] | number;
   currentPage?: number;
   pages?: number;
+}
+
+interface ValidResponse {
+  status: Status.SUCCESS;
+  data: CatalogueResponse | Product | BannerData[] | number;
 }
 
 export {

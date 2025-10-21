@@ -3,8 +3,13 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useSliderUtils } from './useSliderUtils';
 import { useAnimation } from './useAnimation';
 import { useSliderData } from './sliderContext';
+import { useAutoplay } from '.';
 
-export const useSliderCore = (amount: number, gap: number) => {
+export const useSliderCore = (
+  amount: number,
+  gap: number,
+  autoplay: boolean = false,
+) => {
   const { DOM, mechanics, startIndex } = useSliderData();
   const { toggleTrackClass, snap, af } = useAnimation(gap);
   const { drag, updateSizes, math } = useSliderUtils(startIndex, amount, gap);
@@ -34,12 +39,15 @@ export const useSliderCore = (amount: number, gap: number) => {
     snap(newIdx, true);
   };
 
+  const { pause, resume } = useAutoplay(autoplay, setByIndex);
+
   const handlers = {
     onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => {
       e.preventDefault();
       toggleTrackClass(false);
       startX.current = e.clientX;
       mechanics.dragging.current = false;
+      pause();
     },
 
     onPointerMove: (e: React.PointerEvent<HTMLDivElement>) => {
@@ -73,6 +81,7 @@ export const useSliderCore = (amount: number, gap: number) => {
 
       snap(math.getNewIndex(), true);
       mechanics.drag.current = null;
+      resume();
     },
 
     onPointerCancel: (e: React.PointerEvent<HTMLDivElement>) => {
