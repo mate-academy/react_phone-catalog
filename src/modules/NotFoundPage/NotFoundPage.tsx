@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPage = () => {
@@ -7,14 +8,7 @@ export const NotFoundPage = () => {
         <div className={styles.notfound__container}>
           <section className={styles.notfound__header}>
             <h1 className={styles.notfound__title}>Page not found</h1>
-            {
-              // eslint-disable-next-line prettier/prettier
-              <img
-                src="public/img/page-not-found.png"
-                alt="404"
-                className={styles.notfound__img}
-              />
-            }
+            <img src="public/img/page-not-found.png" alt="404" className={styles.notfound__img} />
           </section>
         </div>
       </div>

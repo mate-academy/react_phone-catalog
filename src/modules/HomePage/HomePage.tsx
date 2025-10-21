@@ -60,7 +60,7 @@ export const HomePage = () => {
       <div className={styles.home__wrapper}>
         <div className={styles.home__container}>
           <section className={hero.hero} data-slide style={heroSlideStyle}>
-            <h1 className={hero.hero__title}>Welcome to Nice Gadgets store!</h1>
+            <h1 className={hero.hero__title}>Product Catalog</h1>
             <Hero />
           </section>
           <section className={styles.newmodels} data-slide style={newmodelsSlideStyle}>
