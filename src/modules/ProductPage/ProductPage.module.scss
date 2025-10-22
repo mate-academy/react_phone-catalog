@@ -2,7 +2,6 @@
 @import '/src/styles/typography';
 
 .product-page {
-
   @include content-padding-inline;
 
   &__wrapper {
@@ -74,7 +73,7 @@
       border: 1px solid $others-gray;
       cursor: pointer;
 
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-weight: 700;
       font-size: 14px;
       line-height: 21px;

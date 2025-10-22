@@ -1,7 +1,7 @@
-import { Product } from './ProductPreview';
+import { ProductPreview } from './ProductPreview';
 
 export type CartItem = {
   id: string;
   quantity: number;
-  product: Product;
+  product: ProductPreview;
 };

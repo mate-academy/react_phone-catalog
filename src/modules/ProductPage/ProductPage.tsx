@@ -42,7 +42,10 @@ export const ProductPage: React.FC = () => {
     ? filteredCategoryProducts.length
     : startIndex + itemsPerPage;
 
-  const totalPages = Math.ceil(filteredCategoryProducts.length / itemsPerPage);
+  const totalPages =
+    itemsPerPage > 0
+      ? Math.ceil(filteredCategoryProducts.length / itemsPerPage)
+      : 0;
 
   const visibleProducts = filteredCategoryProducts.slice(startIndex, endIndex);
 
@@ -57,8 +60,9 @@ export const ProductPage: React.FC = () => {
     setIsLoading(true);
     getAllProducts()
       .then(setAllProducts)
-      .catch(() => {
-        'error';
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.error('Failed to fetch products:', error);
       })
       .finally(() => {
         setIsLoading(false);
@@ -149,6 +153,9 @@ export const ProductPage: React.FC = () => {
                       className={productPage['product-page__dropdown__trigger']}
                       onClick={handleSortDropdown}
                       name="sort-by"
+                      aria-haspopup="listbox"
+                      aria-controls="dropdownList"
+                      aria-expanded={sortDropdownIsOpen}
                     >
                       {sortOptions.find(o => o.value === sortBy)?.label}
                       {sortDropdownIsOpen ? (
@@ -172,6 +179,9 @@ export const ProductPage: React.FC = () => {
                     {sortDropdownIsOpen && (
                       <ul
                         className={productPage['product-page__dropdown__list']}
+                        role="listbox"
+                        tabIndex={-1}
+                        aria-labelledby="dropdownButton"
                       >
                         {sortOptions.map(option => (
                           <li
@@ -180,6 +190,8 @@ export const ProductPage: React.FC = () => {
                               productPage['product-page__dropdown__item']
                             }
                             onClick={() => handleOptionClick(option.value)}
+                            role="option"
+                            tabIndex={-1}
                           >
                             {option.label}
                           </li>
@@ -202,9 +214,12 @@ export const ProductPage: React.FC = () => {
                       className={productPage['product-page__dropdown__trigger']}
                       onClick={handleItemsDropdown}
                       name="items-on-page"
+                      aria-haspopup="listbox"
+                      aria-controls="dropdownList"
+                      aria-expanded={itemsDropdownIsOpen}
                     >
                       {perPage}
-                      {sortDropdownIsOpen ? (
+                      {itemsDropdownIsOpen ? (
                         <img
                           src="img/icons/arrows/arrow-top-disabled.svg"
                           alt=""
@@ -225,6 +240,9 @@ export const ProductPage: React.FC = () => {
                     {itemsDropdownIsOpen && (
                       <ul
                         className={productPage['product-page__dropdown__list']}
+                        role="listbox"
+                        tabIndex={-1}
+                        aria-labelledby="dropdownButton"
                       >
                         {itemsOnPage.map(option => (
                           <li
@@ -233,6 +251,8 @@ export const ProductPage: React.FC = () => {
                               productPage['product-page__dropdown__item']
                             }
                             onClick={() => handleItemsClick(option)}
+                            role="option"
+                            tabIndex={-1}
                           >
                             {option}
                           </li>

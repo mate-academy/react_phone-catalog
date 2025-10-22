@@ -1,10 +1,9 @@
 @import '../../../../styles/mixins.module';
 
 .title {
+  @include content-padding-inline;
 
-  @include content-padding-inline();
-
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 32px;
   font-weight: 800;
   margin-top: 24px;

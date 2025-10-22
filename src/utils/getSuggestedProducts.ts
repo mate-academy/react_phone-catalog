@@ -1,6 +1,8 @@
-import { Product } from '../types/ProductPreview';
+import { ProductPreview } from '../types/ProductPreview';
 
-export function getSuggestedProducts(products: Product[]): Product[] {
+export function getSuggestedProducts(
+  products: ProductPreview[],
+): ProductPreview[] {
   if (!products || products.length === 0) {
     return [];
   }

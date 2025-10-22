@@ -2,12 +2,11 @@
 @import '/src/styles/typography';
 
 .favorites-page {
-
-  @include content-padding-inline();
+  @include content-padding-inline;
 
   &__title {
     @extend %h2-style;
-    
+
     margin-top: 24px;
 
     @include on-tablet {

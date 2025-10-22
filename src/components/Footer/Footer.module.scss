@@ -84,6 +84,24 @@
   }
 }
 
+.arrow-top {
+  all: unset;
+  position: relative;
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $others-gray;
+  transition: border $effect-duration;
+}
+
+.button-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: $main-gray;
+  transition: color $effect-duration;
+}
+
 .back-to-top-button-wpapper {
   align-self: center;
 
@@ -106,24 +124,6 @@
   align-items: center;
   cursor: pointer;
   align-self: center;
-}
-
-.button-text {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 100%;
-  color: $main-gray;
-  transition: color $effect-duration;
-}
-
-.arrow-top {
-  all: unset;
-  position: relative;
-  display: block;
-  width: 32px;
-  height: 32px;
-  border: 1px solid $others-gray;
-  transition: border $effect-duration;
 }
 
 .arrow-top::before {

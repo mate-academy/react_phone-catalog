@@ -1,6 +1,6 @@
-import { Product } from 'types/ProductPreview';
+import { ProductPreview } from 'types/ProductPreview';
 
-export function getSortedProducts(products: Product[], sortBy: string) {
+export function getSortedProducts(products: ProductPreview[], sortBy: string) {
   const sortedProducts = [...products];
 
   if (sortBy === 'year') {

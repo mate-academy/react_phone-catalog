@@ -16,7 +16,6 @@
   }
 
   &__content {
-
     @include on-desktop {
       @include page-grid;
     }
@@ -67,6 +66,7 @@
 
     &__items {
       @extend %quantity-style;
+
       margin-top: 0;
       align-self: center;
     }

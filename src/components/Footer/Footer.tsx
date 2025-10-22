@@ -1,5 +1,6 @@
 import React from 'react';
 import footer from './Footer.module.scss';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -12,43 +13,43 @@ export const Footer: React.FC = () => {
   return (
     <footer className={footer.footer}>
       <div className={footer.footer__container}>
-        <a href="/" className={footer.footer__logo}>
+        <Link to="/" className={footer.footer__logo}>
           <img
             src="img/icons/Logo-main.png"
             alt="Nice Gadgets logo"
             className={footer.footer__logo__image}
           />
-        </a>
+        </Link>
         <ul className={footer.footer__list}>
           <li className={footer.footer__item}>
-            <a
-              href="https://github.com/mykytalandar"
+            <Link
+              to="https://github.com/mykytalandar"
               className={footer.footer__link}
               target="_blank"
               rel="noopener noreferrer"
             >
               Github
-            </a>
+            </Link>
           </li>
           <li className={footer.footer__item}>
-            <a
-              href="https://github.com/mykytalandar"
+            <Link
+              to="https://github.com/mykytalandar"
               className={footer.footer__link}
               target="_blank"
               rel="noopener noreferrer"
             >
               Contacts
-            </a>
+            </Link>
           </li>
           <li className={footer.footer__item}>
-            <a
-              href="https://github.com/mykytalandar"
+            <Link
+              to="https://github.com/mykytalandar"
               className={footer.footer__link}
               target="_blank"
               rel="noopener noreferrer"
             >
               Rights
-            </a>
+            </Link>
           </li>
         </ul>
         <div className={footer['back-to-top-button-wpapper']}>
