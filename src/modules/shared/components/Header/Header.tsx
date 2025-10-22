@@ -94,9 +94,15 @@ export const Header: React.FC = () => {
           {/* Favorites Icon */}
           <Link
             to={ROUTES.FAVORITES}
-            className={classNames(styles.header__iconLink, {
-              [styles.header__iconLink_active]: isActiveLink(ROUTES.FAVORITES),
-            })}
+            className={classNames(
+              styles.header__iconLink,
+              styles.header__iconLink_favorites,
+              {
+                [styles.header__iconLink_active]: isActiveLink(
+                  ROUTES.FAVORITES,
+                ),
+              },
+            )}
           >
             <div className={styles.header__iconWrapper}>
               <img
@@ -233,7 +239,7 @@ export const Header: React.FC = () => {
           >
             <div className={styles.header__iconWrapper}>
               <img
-                src="img/icons/icon-shopping-bag"
+                src="img/icons/icon-shopping-bag.png"
                 alt="Shopping Cart"
                 className={styles.header__icon}
               />
