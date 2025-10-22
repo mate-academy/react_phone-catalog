@@ -1,20 +1,4 @@
-// src/index.tsx - Entry point of the application
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
-import './styles/global.scss';
+import { Root } from './Root';
 
-const container = document.getElementById('root');
-
-if (!container) {
-  throw new Error('Root container not found');
-}
-
-createRoot(container).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
-);
+createRoot(document.getElementById('root') as HTMLElement).render(<Root />);

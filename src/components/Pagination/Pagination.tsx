@@ -1,69 +1,86 @@
-// src/components/Pagination/Pagination.tsx - Pagination control component
-import s from './Pagination.module.scss';
+import React from 'react';
+import cn from 'classnames';
+import { useSearchParams } from 'react-router-dom';
+import { getPaginationLinks } from '../../utils/paginationHelper';
+import styles from './Pagination.module.scss';
 
-type Props = {
-  total: number;
-  perPage: number;
-  currentPage?: number; // 1-based
-  onPageChange: (page: number) => void;
-};
+interface PaginationProps {
+  currentPage?: number;
+  totalPages: number;
+  className: string;
+}
 
-export const Pagination: React.FC<Props> = ({
-  total,
-  perPage,
+export const Pagination: React.FC<PaginationProps> = ({
   currentPage = 1,
-  onPageChange,
+  totalPages,
+  className,
 }) => {
-  const pages = Math.max(1, Math.ceil(total / Math.max(1, perPage)));
-  const isFirst = currentPage <= 1;
-  const isLast = currentPage >= pages;
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const go = (p: number) => {
-    const clamped = Math.min(pages, Math.max(1, p));
+  const onPageChange = (page: number) => {
+    const params = new URLSearchParams(searchParams);
 
-    if (clamped !== currentPage) {
-      onPageChange(clamped);
+    if (page <= 1) {
+      params.delete('page');
+    } else {
+      params.set('page', String(page));
     }
+
+    setSearchParams(params);
   };
 
-  if (pages <= 1) {
-    return null;
-  }
+  const pageNumbers = getPaginationLinks(totalPages, currentPage);
 
   return (
-    <nav className={s.root} aria-label="Pagination">
-      <ul className={s.ul}>
-        <li className={`${s.li} ${isFirst ? s.disabled : ''}`}>
-          <a
-            className={s.a}
-            aria-disabled={isFirst}
-            onClick={isFirst ? undefined : () => go(currentPage - 1)}
-          >
-            «
-          </a>
-        </li>
+    <div className={cn(styles.pagination, className)}>
+      {/* ← Prev */}
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className={cn(
+          'icon',
+          'icon--arrow',
+          'icon--arrow--left',
+          styles.pagination__button,
+          styles['pagination__button--arrow'],
+        )}
+      ></button>
 
-        {Array.from({ length: pages }, (_, i) => i + 1).map(page => (
-          <li
+      {/* Pages */}
+      {pageNumbers.map((page, index) => {
+        if (page === -1 || page === 0) {
+          return (
+            <span key={`dots-${index}`} className={styles.pagination__dots}>
+              ...
+            </span>
+          );
+        }
+
+        return (
+          <button
             key={page}
-            className={`${s.li} ${page === currentPage ? s.active : ''}`}
+            onClick={() => onPageChange(page)}
+            className={cn(styles.pagination__button, {
+              [styles['pagination__button--active']]: page === currentPage,
+            })}
           >
-            <a className={s.a} onClick={() => go(page)}>
-              {page}
-            </a>
-          </li>
-        ))}
+            {page}
+          </button>
+        );
+      })}
 
-        <li className={`${s.li} ${isLast ? s.disabled : ''}`}>
-          <a
-            className={s.a}
-            aria-disabled={isLast}
-            onClick={isLast ? undefined : () => go(currentPage + 1)}
-          >
-            »
-          </a>
-        </li>
-      </ul>
-    </nav>
+      {/* → Next */}
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className={cn(
+          'icon',
+          'icon--arrow',
+          'icon--arrow--right',
+          styles.pagination__button,
+          styles['pagination__button--arrow'],
+        )}
+      ></button>
+    </div>
   );
 };

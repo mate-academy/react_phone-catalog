@@ -1,60 +1,57 @@
-// src/components/ProductsSlider/ProductsSlider.module.scss - Styles for the products slider component
+@use '../../styles/utils' as utils;
 
-/* Ensure all links with images scale on hover within the slider */
-.root a:hover img {
-  transform: scale(1.1);
-  transition: transform 0.2s ease;
+.slider {
+  grid-column: 1 / -1;
+  position: static;
 }
 
-.root {
-  position: relative;
+.slide {
+  margin-right: 16px;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
+.arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid #E2E6E9;
+  box-sizing: border-box;
 
-.frame {
-  overflow: hidden;
-  padding: 10px; /* Add padding to prevent clipping of scaled images */
-}
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../assets/img/icons/arrow-up.svg);
+  transition: all 0.3s;
 
-.track {
-  display: flex;
-  gap: 16px;
-  transition: transform .6s ease;
-  will-change: transform;
-}
+  &:hover {
+    background-position: center;
+    background-image: url(../../assets/img/icons/arrow-up.svg);
+    background-color: #FAFBFC;
+    border: 1px solid #B4BDC3;
+  }
 
-.item {
-  flex-shrink: 0;
-
-  /* Width will be set dynamically */
-
-  /* Additional styling for image containers */
-  div {
-    overflow: hidden;
+  &::before {
+    content: none;
   }
 }
 
-.arrows {
-  display: flex;
-  gap: 8px;
+.next {
+  transform: rotateZ(90deg);
+
+  &:hover {
+    background-repeat: no-repeat;
+    background-color: utils.$hover;
+  }
 }
 
-.btn {
-  border: 1px solid #ddd;
-  background: #fff;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-}
+.prev {
+  transform: rotateZ(-90deg);
+  right: 60px;
+  left: auto;
 
-.btn:disabled {
-  opacity: .5;
+  &:hover {
+    background-repeat: no-repeat;
+    background-color: utils.$hover;
+  }
 }

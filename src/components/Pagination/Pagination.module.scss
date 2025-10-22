@@ -1,35 +1,43 @@
-// src/components/Pagination/Pagination.module.scss - Styles for the pagination component
-.root {
+@use '../../styles/utils' as utils;
+
+.pagination {
+  grid-column: 1 / -1;
+
   display: flex;
-  gap: 8px;
-  align-items: center;
-  margin-top: 16px;
-}
+  justify-content: center;
+  gap: 16px;
 
-.ul {
-  list-style: none;
-  display: flex;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-}
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid utils.$elements;
+    font-family: Mont, sans-serif;
 
-.li {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-}
+    font-size: 14px;
+    line-height: 21px;
 
-.a {
-  display: block;
-  padding: 6px 10px;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.active .a {
-  background: #000;
-  color: #fff;
-}
+    transition: all .3s;
+    cursor: pointer;
 
-.disabled {
-  opacity: .6;
+    &--arrow {
+      border-color: utils.$icons;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: utils.$primary;
+    }
+
+    &:hover {
+      border-color: utils.$primary;
+    }
+
+    &:disabled {
+      border-color: utils.$elements;
+    }
+  }
 }

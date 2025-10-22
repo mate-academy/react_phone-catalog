@@ -1,23 +1,69 @@
-// src/components/Footer/Footer.tsx - Footer component with back-to-top functionality
-import s from './Footer.module.scss';
+import classNames from 'classnames';
 
-export const Footer: React.FC = () => {
-  const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+import styles from './Footer.module.scss';
+import { Logo } from '../Logo';
+
+export const Footer = () => {
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
 
   return (
-    <footer className={s.root}>
-      <div className={`container ${s.inner}`}>
-        <a
-          href="https://github.com/mersy-28/react_phone-catalog"
-          target="_blank"
-          rel="noreferrer"
-        >
-          GitHub Repo
-        </a>
+    <footer className={styles.footer}>
+      <div className="container">
+        <div className={styles.footer__content}>
+          <Logo className={styles.footer__logo} />
 
-        <button className="backToTop" onClick={toTop}>
-          Back to top ⤴
-        </button>
+          <ul className={styles.footer__list}>
+            <li className={styles.footer__item}>
+              <a
+                href="https://github.com/IrbisKronos"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer__link}
+              >
+                Github
+              </a>
+            </li>
+
+            <li className={styles.footer__item}>
+              <a
+                href="https://github.com/IrbisKronos"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer__link}
+              >
+                Contacts
+              </a>
+            </li>
+
+            <li className={styles.footer__item}>
+              <a
+                href="https://github.com/IrbisKronos"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer__link}
+              >
+                rights
+              </a>
+            </li>
+          </ul>
+
+          <div className={styles.footer__actions}>
+            <button onClick={handleScrollTop} className={styles['back-to-top']}>
+              Back to top
+              <span
+                className={classNames(
+                  'icon',
+                  'icon--arrow',
+                  styles['back-to-top__icon'],
+                )}
+              ></span>
+            </button>
+          </div>
+        </div>
       </div>
     </footer>
   );

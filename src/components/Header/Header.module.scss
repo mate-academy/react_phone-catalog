@@ -1,39 +1,28 @@
-// src/components/Header/Header.module.scss - Styles for the header component
-@use '../../styles/app' as *;
+@use '../../styles/utils' as utils;
 
-.root {
-  @extend %header;
-}
+.header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
 
-.inner {
-  @extend %header-inner;
-}
-
-.brand {
-  font-weight: 700;
-}
-
-.counters {
   display: flex;
-  gap: 12px;
-  margin-left: 12px;
-}
+  gap: 16px;
+  justify-content: space-between;
 
-.badge {
-  background: #000;
-  color: #fff;
-  border-radius: 10px;
-  padding: 0 6px;
-  font-size: 12px;
-}
+  background-color: #fff;
 
-.searchWrap {
-  margin-left: auto;
-}
+  @include utils.on-desktop {
+    gap: 24px;
+  }
 
-.search {
-  width: 240px;
-  padding: 8px 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  &__nav {
+    display: none;
+
+    @include utils.on-tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }
