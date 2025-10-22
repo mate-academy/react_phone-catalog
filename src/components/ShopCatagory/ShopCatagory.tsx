@@ -8,15 +8,33 @@ import tablets from '../../../public/api/tablets.json';
 import accessories from '../../../public/api/accessories.json';
 
 import './ShopCatagory.scss';
-import { Link } from 'react-router-dom';
+import { Category } from './Category';
 
 export const ShopCatagory = () => {
   const categories = useMemo(() => {
-    return {
-      phones: phones.length,
-      tablets: tablets.length,
-      accessories: accessories.length,
-    };
+    return [
+      {
+        id: 0,
+        linkTo: 'phones',
+        name: 'Mobile phones',
+        image: image1,
+        countModels: phones.length,
+      },
+      {
+        id: 1,
+        linkTo: 'tablets',
+        name: 'Tablets',
+        image: image2,
+        countModels: tablets.length,
+      },
+      {
+        id: 2,
+        linkTo: 'accessories',
+        name: 'Accessories',
+        image: image3,
+        countModels: accessories.length,
+      },
+    ];
   }, []);
 
   return (
@@ -24,27 +42,9 @@ export const ShopCatagory = () => {
       <div className="container">
         <h2 className="shop-category__title">Shop by category</h2>
         <div className="shop-category__wrapper">
-          <Link to="phone" className="shop-category__block">
-            <img src={image1} alt="" className="shop-category__image" />
-            <h4 className="shop-category__name">Mobile phones</h4>
-            <div className="shop-category__count">
-              {categories.phones} models
-            </div>
-          </Link>
-          <Link to="tablets" className="shop-category__block">
-            <img src={image2} alt="" className="shop-category__image" />
-            <h4 className="shop-category__name">Tablets</h4>
-            <div className="shop-category__count">
-              {categories.tablets} models
-            </div>
-          </Link>
-          <Link to="accessories" className="shop-category__block">
-            <img src={image3} alt="" className="shop-category__image" />
-            <h4 className="shop-category__name">Accessories</h4>
-            <div className="shop-category__count">
-              {categories.accessories} models
-            </div>
-          </Link>
+          {categories.map(category => (
+            <Category key={category.id} category={category} />
+          ))}
         </div>
       </div>
     </section>
