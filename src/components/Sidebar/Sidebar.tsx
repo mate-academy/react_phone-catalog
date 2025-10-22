@@ -60,13 +60,13 @@ export const Sidebar: React.FC<Props> = ({ isOpen }) => {
           to="/favorites"
           className={({ isActive }) => (isActive ? 'sidebar__icon is-active' : 'sidebar__icon')}
         >
-          <img src="./img/icons/Favourites.svg" alt="favorite-icon" />
+          <img src="/img/icons/Favourites.svg" alt="favorite-icon" />
         </NavLink>
         <NavLink
           to="/cart"
           className={({ isActive }) => (isActive ? 'sidebar__icon is-active' : 'sidebar__icon')}
         >
-          <img src="./img/icons/Cart.svg" alt="cart-icon" />
+          <img src="/img/icons/Cart.svg" alt="cart-icon" />
         </NavLink>
       </div>
     </aside>

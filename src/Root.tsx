@@ -1,18 +1,18 @@
 import {
   Navigate,
   Route,
-  HashRouter as Router, // или HashRouter, если нужно github pages
+  HashRouter as Router, // BrowserRouter или HashRouter, если нужно github pages
   Routes,
 } from 'react-router-dom';
 import App from './App';
 import PageNotFound from './components/PageNotFound/PageNotFound';
+import Cart from './pages/Cart';
 import Accessories from './pages/Extra/Accessories';
+import Favourites from './pages/Extra/Favourites';
+import ProductDetails from './pages/Extra/ProductDetails/ProductDetails';
 import Home from './pages/Home';
 import Phones from './pages/Phones';
 import Tablets from './pages/Tablets';
-import Favourites from './pages/Extra/Favourites'
-import ProductDetails from './pages/Extra/ProductDetails/ProductDetails'
-import Cart from './pages/Cart'
 
 export const Root = () => (
   <Router>
