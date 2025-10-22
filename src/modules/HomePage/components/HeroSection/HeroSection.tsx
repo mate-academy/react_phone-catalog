@@ -10,7 +10,9 @@ export const HeroSection = () => {
         </h1>
       </div>
 
-      <Carusel />
+      <div className={style.container}>
+        <Carusel />
+      </div>
     </>
   );
 };

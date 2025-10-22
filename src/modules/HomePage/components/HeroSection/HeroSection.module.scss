@@ -9,3 +9,17 @@
     grid-column: span 21;
   }
 }
+
+.container {
+  @include onTablet {
+    @include pageGrid;
+    @include contentPaddingInline;
+  }
+
+  @include onDekstop {
+    margin-top: 50px;
+
+    @include pageGrid;
+    @include contentPaddingInline;
+  }
+}

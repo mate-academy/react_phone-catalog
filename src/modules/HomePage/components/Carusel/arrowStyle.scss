@@ -1,0 +1,48 @@
+@use '@GlobalStyle/media' as *;
+@use '@GlobalStyle/mixins' as *;
+
+.arrow__prev,
+.arrow__next {
+  @include onTablet {
+    position: absolute;
+    background-color: var(--color-surface-2);
+    bottom: 33px;
+    height: 100%;
+    width: 32px;
+
+    @include flex-center;
+  }
+}
+
+.arrow__prev {
+  @include onTablet {
+    left: 0;
+    z-index: 1001;
+  }
+}
+
+.arrow__next {
+  @include onTablet {
+    right: 0;
+    z-index: 1001;
+  }
+}
+
+.arrow__left,
+.arrow__right {
+  @include onTablet {
+    left: 0;
+
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    background-image: url('@Images/icons/Arrow-right.svg');
+  }
+}
+
+.arrow__left {
+  @include onTablet {
+    background-image: url('@Images/icons/Arrow-left.svg');
+  }
+}
