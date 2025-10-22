@@ -94,7 +94,7 @@ const Cart = () => {
                         ? `/${item.images[0]}`
                         : item.image
                           ? `/${item.image}`
-                          : '/img/no-image.webp'
+                          : 'img/no-image.webp'
                     }
                     alt={item.name}
                   />

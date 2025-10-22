@@ -278,7 +278,7 @@ const ProductDetails = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <img src="/img/icons/Favourites.svg" alt="Add to Wishlist" />
+                <img src="img/icons/Favourites.svg" alt="Add to Wishlist" />
               </motion.button>
             </div>
 

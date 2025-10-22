@@ -63,7 +63,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, hideDiscount }) => {
             >
               <img
                 src={
-                  isFavorite(id) ? '/img/icons/Favourites--active.svg' : '/img/icons/Favourites.svg'
+                  isFavorite(id) ? 'img/icons/Favourites--active.svg' : 'img/icons/Favourites.svg'
                 }
                 alt={isFavorite(id) ? 'Remove from Wishlist' : 'Add to Wishlist'}
               />

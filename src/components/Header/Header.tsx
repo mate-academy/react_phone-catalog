@@ -20,9 +20,9 @@ export const Header: React.FC<Props> = ({ onMenuClick, isOpen }) => {
       <div className="header__left">
         <div className="header__logo">
           <Link to="/">
-            <img src="/img/logo.svg" alt="site-logo" className="header__dekstop-logo" />
+            <img src="img/logo.svg" alt="site-logo" className="header__dekstop-logo" />
           </Link>
-          <img src="/img/logo.svg" alt="mobile-logo" className="header__mobile-logo" />
+          <img src="img/logo.svg" alt="mobile-logo" className="header__mobile-logo" />
         </div>
         <Navbar />
       </div>
@@ -31,27 +31,27 @@ export const Header: React.FC<Props> = ({ onMenuClick, isOpen }) => {
           to="/favorites"
           className={({ isActive }) => (isActive ? 'header__icon is-active' : 'header__icon')}
         >
-          <img src="/img/icons/Favourites.svg" alt="favorite-icon" />
+          <img src="img/icons/Favourites.svg" alt="favorite-icon" />
           {favorites.length > 0 && <div className="header__icon-quantity">{favorites.length}</div>}
         </NavLink>
         <NavLink
           to="/cart"
           className={({ isActive }) => (isActive ? 'header__icon is-active' : 'header__icon')}
         >
-          <img src="/img/icons/Cart.svg" alt="cart-icon" />
+          <img src="img/icons/Cart.svg" alt="cart-icon" />
           {cart.length > 0 && <div className="header__icon-quantity">{totalQuantity}</div>}
         </NavLink>
         <div
           className={`header__icon header__menu-icon ${isOpen ? 'hidden' : ''}`}
           onClick={onMenuClick}
         >
-          <img src="/img/icons/Menu.svg" alt="menu-icon" />
+          <img src="img/icons/Menu.svg" alt="menu-icon" />
         </div>
         <div
           className={`header__icon header__menu-icon ${isOpen ? '' : 'hidden'}`}
           onClick={onMenuClick}
         >
-          <img src="/img/icons/Close.svg" alt="menu-icon" />
+          <img src="img/icons/Close.svg" alt="menu-icon" />
         </div>
       </div>
     </header>
