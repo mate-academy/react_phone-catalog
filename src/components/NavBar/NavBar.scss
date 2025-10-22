@@ -1,0 +1,83 @@
+@use '../../styles/mixins' as *;
+
+.navbar {
+  height: 100%;
+
+  &__list {
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 64px;
+
+    @include respond-to('md') {
+      gap: 32px;
+    }
+
+    @include respond-to('sm') {
+      display: none;
+    }
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    position: relative;
+    height: 100%;
+    color: #75767f;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.09;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #f1f2f9;
+      transition: width 0.3s;
+
+      @include respond-to('md') {
+        bottom: -2px;
+      }
+    }
+
+    &:hover {
+      color: #f1f2f9;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.is-active {
+  color: #f1f2f9 !important;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #f1f2f9;
+
+    @include respond-to('md') {
+      bottom: -2px;
+    }
+  }
+}

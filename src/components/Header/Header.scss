@@ -1,0 +1,121 @@
+@use '../../styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 17;
+  background-color: #0f1121;
+  border-bottom: 1px solid #3b3e4a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 24px;
+  margin-bottom: 56px;
+  box-sizing: border-box;
+  height: 64px;
+
+  @include respond-to('md') {
+    height: 48px;
+    padding-left: 16px;
+  }
+
+  @include respond-to('sm') {
+    height: auto;
+  }
+
+  &__dekstop-logo {
+    display: block;
+
+    @include respond-to('md') {
+      display: none;
+    }
+
+    @include respond-to('sm') {
+      display: none;
+    }
+  }
+
+  &__mobile-logo {
+    display: none;
+
+    @include respond-to('md') {
+      display: block;
+    }
+
+    @include respond-to('sm') {
+      display: block;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    height: 100%;
+
+    @include respond-to('md') {
+      gap: 32px;
+    }
+
+    @include respond-to('sm') {
+      gap: 16px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon {
+    position: relative;
+    border-left: 1px solid #3b3e4a;
+    transition: 0.3s;
+    padding: 24px;
+    display: flex;
+
+    @include respond-to('md') {
+      padding: 16px;
+    }
+
+    @include respond-to('sm') {
+      display: none;
+    }
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+  }
+
+  &__icon-quantity {
+    position: absolute;
+    color: #f1f2f9;
+    font-size: 9px;
+    font-weight: 700;
+    background: #eb5757;
+    border: 1px solid #0f1121;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 15px;
+    right: 17px;
+  }
+
+  &__menu-icon {
+    display: none;
+
+    @include respond-to('sm') {
+      display: flex;
+    }
+
+    @include respond-to('md') {
+      display: none;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,79 @@
+@use '../../styles/colors' as *;
+
+.sort {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  &-title {
+    color: $secondary;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 4px;
+  }
+}
+
+.sort-select {
+  &__single-value {
+    color: $white !important;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px;
+  }
+
+  &__control {
+    display: flex !important;
+    background-color: $surface2 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  &__menu {
+    background-color: #0f1121 !important;
+    animation: scaleIn 0.35s ease !important;
+    border: 1px solid $secondary !important;
+  }
+  &__option {
+    transition: all 0.3s ease !important;
+    color: $secondary !important;
+
+    font-size: 14px !important;
+    padding-left: 12px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 21px !important;
+    background-color: transparent !important;
+
+    &:hover {
+      color: $white !important;
+      background-color: $surface2 !important;
+    }
+  }
+
+  &__indicator-separator {
+    display: none !important;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

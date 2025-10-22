@@ -1,0 +1,518 @@
+@use '../../../styles/colors' as *;
+@use '../../../styles/mixins' as *;
+
+.product-details {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+
+  &__breadcrumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+
+    &--btn {
+      display: flex;
+      background-color: transparent;
+      border: none;
+      align-items: center;
+      padding: 0;
+
+      color: $white;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: normal;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &__main {
+    display: flex;
+    margin-top: 16px;
+    gap: 100px;
+
+    @include respond-to('md') {
+      gap: 20px;
+    }
+    @include respond-to('sm') {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  &__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &--name {
+      color: $white;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+      margin-bottom: 47px;
+    }
+
+    &--galary {
+      display: flex;
+      align-items: center;
+      margin-bottom: 80px;
+
+      @include respond-to('sm') {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-bottom: 0;
+      }
+
+      &-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        @include respond-to('sm') {
+          flex-direction: row;
+          align-items: center;
+          margin-bottom: 0;
+          margin-top: 20px;
+        }
+
+        img {
+          transition: border 0.3s ease;
+          border: 1px solid $elements;
+
+          object-fit: contain;
+          width: 80px;
+          height: 80px;
+          @include respond-to('md') {
+            width: 32px;
+            height: 32px;
+          }
+          @include respond-to('sm') {
+            width: 50px;
+            height: 50px;
+          }
+        }
+
+        img.active {
+          border: 1px solid $accent;
+        }
+      }
+
+      &-main {
+        display: flex;
+        margin-left: 100px;
+        @include respond-to('md') {
+          margin-left: 23px;
+        }
+        @include respond-to('sm') {
+          margin-left: 0;
+        }
+      }
+      &-active {
+        width: 450px;
+        object-fit: contain;
+        height: 450px;
+
+        @include respond-to('md') {
+          width: 273.392px;
+          height: 273.392px;
+        }
+        @include respond-to('sm') {
+          width: 274.345px;
+          height: 274.345px;
+        }
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+
+    &--colors {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid $elements;
+
+      h2 {
+        margin-bottom: 8px;
+
+        color: $secondary;
+
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+      &-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+
+        span {
+          cursor: pointer;
+          height: 32px;
+          width: 32px;
+          border-radius: 50%;
+          border: 1px solid $elements;
+          transition: all 0.3s ease;
+
+          &:hover {
+            scale: 1.2;
+          }
+        }
+
+        span.active {
+          height: 40px;
+          width: 40px;
+          border: 1px solid $white;
+        }
+      }
+    }
+
+    &--capacity {
+      cursor: pointer;
+      padding-bottom: 24px;
+      border-bottom: 1px solid $elements;
+      margin-bottom: 32px;
+
+      h2 {
+        color: $secondary;
+
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 12px;
+      }
+
+      &-info {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+
+        span {
+          transition: all 0.3s ease;
+          color: $white;
+          text-align: center;
+
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 21px;
+
+          padding: 8px;
+          border-radius: 2px;
+          border: 1px solid $white;
+
+          &:hover {
+            color: #0f1121;
+            background-color: $white;
+          }
+
+          &:active {
+            scale: 1.1;
+          }
+        }
+
+        span.active {
+          color: #0f1121;
+          background-color: $white;
+        }
+      }
+    }
+
+    &--buy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      &-price {
+        display: flex;
+        flex-direction: row;
+        color: $white;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 16px;
+
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 41px;
+        letter-spacing: -0.32px;
+
+        del {
+          color: $secondary;
+          font-size: 22px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+        }
+      }
+
+      &-btn {
+        width: 320px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 32px;
+        @include respond-to('md') {
+          width: 220px;
+        }
+
+        &__button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: none;
+          padding: 9.5px 95.5px;
+          background-color: $accent;
+          color: $white;
+          text-align: center;
+          font-size: 14px;
+          font-style: normal;
+          line-height: 21px;
+          transition: 0.3s;
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          z-index: 1;
+          @include respond-to('md') {
+            padding: 9.5px 50px;
+          }
+
+          &::after,
+          &::before {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 100%;
+            transform: skew(90deg) translate(-50%, -50%);
+            position: absolute;
+            inset: 50%;
+            left: 25%;
+            z-index: -1;
+            transition: 0.3s ease-out;
+            background-color: #a378ff;
+          }
+
+          &::before {
+            top: -50%;
+            left: -25%;
+            transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+          }
+
+          &:hover::before {
+            transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+          }
+
+          &:hover::after {
+            transform: skew(45deg) translate(-50%, -50%);
+          }
+
+          &:active {
+            filter: brightness(0.7);
+            transform: scale(0.98);
+          }
+        }
+
+        &__button-favorite {
+          cursor: pointer;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          padding: 12px;
+          background-color: $surface2;
+          transition: 0.2s all ease;
+
+          &:hover {
+            background-color: $elements;
+          }
+
+          &:active {
+            filter: brightness(0.7);
+            transform: scale(0.98);
+          }
+        }
+      }
+
+      &__tags {
+        display: flex;
+        flex-direction: column;
+
+        gap: 8px;
+        margin-bottom: 16px;
+        width: 320px;
+        @include respond-to('md') {
+          width: auto;
+        }
+      }
+    }
+
+    &__tag {
+      display: flex;
+
+      justify-content: space-between;
+      color: $secondary;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    &__tag-info {
+      color: $white;
+
+      text-align: right;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-left: 0 auto;
+    }
+  }
+
+  &-bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+
+    @include respond-to('md') {
+      flex-direction: column;
+    }
+    @include respond-to('sm') {
+      flex-direction: column;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    &__about {
+      color: $white;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 140%;
+      padding-bottom: 16px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid $elements;
+    }
+
+    &__title {
+      color: white;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      margin-bottom: 16px;
+    }
+
+    &__text {
+      margin-bottom: 32px;
+
+      color: $secondary;
+
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 21px;
+    }
+  }
+
+  &__tech {
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      color: $white;
+
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 140%;
+      padding-bottom: 16px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid $elements;
+
+      @include respond-to('sm') {
+        font-size: 18px;
+      }
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+
+      @include respond-to('sm') {
+        margin-bottom: 56px;
+      }
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: row;
+      gap: 150px;
+      padding-bottom: 8px;
+      white-space: nowrap;
+      justify-content: space-between;
+
+      @include respond-to('sm') {
+        gap: 20px;
+      }
+    }
+
+    &-name {
+      color: $secondary;
+
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+    }
+
+    &-value {
+      color: $white;
+      text-align: right;
+
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 21px;
+
+      @include respond-to('sm') {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &-carousel {
+    margin-bottom: 80px;
+
+    @include respond-to('sm') {
+      margin-bottom: 56px;
+    }
+  }
+}

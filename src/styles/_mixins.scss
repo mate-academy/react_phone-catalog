@@ -1,0 +1,28 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'xs' {
+    // До 319px
+    @media (max-width: 319px) {
+      @content;
+    }
+  } @else if $breakpoint == 'sm' {
+    // 320px–639px
+    @media (min-width: 320px) and (max-width: 639px) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    // 640px–1023px (планшеты и landscape телефоны)
+    @media (min-width: 640px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    // 1024px–1439px (ноутбуки и стандартные десктопы)
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      @content;
+    }
+  } @else if $breakpoint == 'ml' {
+    // 640px–1023px (планшеты и landscape телефоны)
+    @media (min-width: 400px) and (max-width: 768px) {
+      @content;
+    }
+  }
+}

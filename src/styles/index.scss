@@ -1,0 +1,41 @@
+@use './reset';
+@use './font';
+@use './_mixins' as *;
+@use './colors' as color;
+
+body {
+  background-color: color.$black;
+  color: color.$white;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.main {
+  flex: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include respond-to('lg') {
+    padding: 0 24px;
+  }
+  @include respond-to('md') {
+    padding: 0 24px;
+  }
+
+  @include respond-to('sm') {
+    padding: 0 16px;
+  }
+}
