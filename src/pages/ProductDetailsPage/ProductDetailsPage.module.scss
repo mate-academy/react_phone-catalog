@@ -1,0 +1,85 @@
+@import '../../styles/utils';
+
+.product {
+  // @include page-grid;
+}
+
+.product-name {
+  @extend %h2;
+
+  margin-bottom: 40px;
+  color: #0F0F11;
+}
+
+.product-content {
+  // display: grid;
+  // grid-template-columns: 1fr 1fr;
+  // column-gap: 64px;
+  @include page-grid;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+  }
+
+  // grid-template-areas:
+  //   "imageGallery options"
+  //   "about techSpecs";
+}
+
+.product-image-gallery {
+  // grid-area: imageGallery;
+  grid-column: 1 / 5;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    grid-column: 1 / 8;
+    margin-bottom: 0;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.product-options {
+  // grid-area: options;
+  grid-column: 1 / 5;
+
+  @include on-tablet {
+    grid-column: 8 / 13;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / 25;
+  }
+}
+
+.product-about {
+  // grid-area: about;
+  grid-column: 1 / 5;
+
+  @include on-tablet {
+    grid-column: 1 / 8;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.product-tech-specs {
+  // grid-area: techSpecs;
+  grid-column: 1 / 5;
+
+  @include on-tablet {
+    grid-column: 8 / 13;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / 25;
+  }
+}

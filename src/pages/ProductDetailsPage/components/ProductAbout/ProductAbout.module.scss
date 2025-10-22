@@ -1,0 +1,37 @@
+@import '../../../../styles/utils';
+
+.product-about {
+
+}
+
+.product-about__title {
+  @extend %h3;
+}
+
+.product-about__divider {
+  width: 100%;
+  border-bottom: 1px solid #E2E6E9;
+
+  margin-top: 16px;
+  // @include on-desktop {
+  //   margin-block: 24px;
+  // }
+}
+
+.product-about__description {
+  margin-top: 32px;
+}
+
+.product-about__description-block {
+
+}
+
+.product-about__description-block-title {
+  @extend %h4;
+}
+
+.product-about__description-block-paragraph {
+  @extend %body_text;
+
+  color: #89939A;
+}

@@ -1,0 +1,83 @@
+@import '../../../../../../styles/utils';
+
+.available-colors__title {
+  @extend %small_text;
+
+  font-weight: 600;
+  color: #89939A;
+  margin-bottom: 8px;
+}
+
+.available-colors__divider {
+  @extend %divider;
+}
+
+.available-colors__list {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.available-colors__item {
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #E2E6E9;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex; /* Для центрування можливого дочірнього елемента */
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* NavLink за замовчуванням має підкреслення */
+}
+
+.available-colors__item-circle {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 2px solid #FFFFFF;
+}
+
+/* Стиль для активного (обраного) кольору */
+.available-colors__item--active {
+  border-color: #0F0F11;
+}
+
+.available-colors__item:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+
+
+/* product-colors */
+
+/* .product-colors {
+
+}
+
+.product-colors__title {
+
+}
+
+.product-colors__list {
+
+}
+
+.product-colors__item {
+
+}
+
+.product-colors__item--active {
+
+}
+
+.product-colors__item--black {
+
+}
+
+.product-colors__item--white {
+
+} */

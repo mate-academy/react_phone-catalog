@@ -1,0 +1,90 @@
+@import '../../styles/utils';
+
+.customSelect {
+  position: relative;
+  cursor: pointer;
+  width: 64px;
+  height: 64px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    display: flex;
+    box-shadow: -1px 0px 0px 0px #E2E6E9;
+  }
+
+  &--menu {
+    display: block;
+    order: -1;
+
+    @include on-tablet {
+      order: 0;
+    }
+  }
+}
+
+.selectedOption {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 8px;
+  border: 1px solid #0F0F11;
+
+
+  // @include hover(transform, scale(1.15));
+
+  // @include on-tablet {
+  //   @include hover(transform, scale(1.2));
+  // }
+}
+
+.arrowDown {
+  width: 16px;
+  height: 16px;
+  background-image: url(../../images/icons/arrow-down.svg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.arrowDown.up {
+  transform: rotateX(180deg);
+}
+
+.options {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  top: 100%;
+  right: 0;
+  left: 12px;
+
+  z-index: 10;
+  border-top: none;
+  display: none;
+  text-align: left;
+  border-radius: 8px;
+  border: 1px solid #0F0F11;
+}
+
+.options.open {
+  display: block;
+}
+
+.options li {
+  padding: 8px 0;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  // @include hover(transform, scale(1.15));
+
+  // @include on-tablet {
+  //   @include hover(transform, scale(1.2));
+  // }
+}
+
+.active {
+  color: lawngreen;
+}

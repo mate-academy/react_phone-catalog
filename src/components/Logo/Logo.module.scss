@@ -1,0 +1,17 @@
+@import '../../styles/utils';
+
+.logo {
+  display: flex;
+}
+
+.logo-link {
+  display: block;
+}
+
+.logo__img {
+  display: flex;
+  width: 80px;
+  height: 28px;
+
+  @include hover(transform, scale(1.2));
+}

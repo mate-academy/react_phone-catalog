@@ -1,0 +1,224 @@
+@import '../../../../styles/utils';
+
+.bannerSlider {
+  // position: relative;
+  // border-radius: 16px;
+  // overflow: hidden;
+  display: flex;
+  // gap: 19px;
+
+  @include on-tablet {
+    gap: 19px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+
+  .swiperWrapper {
+    border-radius: 8px;
+    height: 100%;
+    width: 100%;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  .swiperSlide {
+  }
+
+  .slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    // border-radius: 16px;
+    overflow: hidden;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    // @media (max-width: 768px) {
+    //   flex-direction: column;
+    //   text-align: center;
+    // }
+
+    .left {
+      // flex: 1;
+      background: #222222;
+      border-radius: 8px;
+      width: 100%; // На мобільних займає всю ширину
+      padding: 30px 20px; // Важливий padding для мобільного вигляду
+
+      @include on-tablet {
+        width: 50%; // На планшеті/десктопі займає половину
+        padding: 60px 40px; // Більший padding
+        align-self: flex-start; // Вирівнювання нагорі
+      }
+
+      h2 {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        background: linear-gradient(90deg, #8b5cf6, #ec4899);
+        -webkit-text-fill-color: transparent;
+      }
+
+      p {
+        font-size: 18px;
+        color: #aaa;
+        margin-bottom: 24px;
+      }
+
+      button {
+        background: transparent;
+        color: #fff;
+        border: 1px solid #555;
+        border-radius: 32px;
+        padding: 12px 28px;
+        font-weight: 600;
+        transition: all 0.2s;
+
+        &:hover {
+          background: #fff;
+          color: #000;
+        }
+      }
+    }
+
+    .right {
+      // flex: 1;
+      width: 100%; // На мобільних займає всю ширину
+      background: #000;
+      text-align: center;
+      padding: 20px 0; // Невеликий padding зверху/знизу на мобільному
+      position: relative; // Для позиціонування контенту
+
+      @include on-tablet {
+        width: 50%;
+        padding: 0; // Можна прибрати padding на планшеті
+      }
+
+      .rightContent {
+        // Контент (заголовки) розмістимо поверх зображення на мобільних
+        // або залишимо в потоці, якщо вони не заважають.
+        // Для спрощення, залишимо в потоці, але відрегулюємо їх стилі.
+        @include on-tablet {
+          text-align: left; // Вирівняти контент на планшеті/десктопі
+          padding: 40px 40px 0 40px;
+          position: absolute; // Розміщення контенту над зображенням
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 2; // Переконатися, що текст над зображенням
+        }
+      }
+
+      h3 {
+        font-size: 32px;
+        font-weight: 700;
+      }
+
+      p {
+        color: #999;
+        margin-bottom: 16px;
+      }
+
+      // img {
+      //   width: 100%;
+      //   // max-width: 500px;
+      //   margin: 0 auto;
+      //   display: block;
+      //   position: relative;
+      //   bottom: 0;
+      // }
+
+      img {
+        // Обмежимо висоту зображення на мобільних, щоб не було занадто великим
+        max-height: 250px;
+        object-fit: contain; // Зберігаємо пропорції
+
+        @include on-tablet {
+          max-height: 100%;
+          position: absolute; // Дозволяє займати всю доступну висоту
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: auto; // Дозволити зображенню бути більшим за 100% ширини, якщо потрібно
+          max-width: none;
+        }
+      }
+    }
+  }
+
+  /* Кнопки навігації */
+  .navBtn {
+    // position: absolute;
+    // top: 50%;
+    // transform: translateY(-50%);
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 189px;
+      background: none;
+      cursor: pointer;
+      border-radius: 48px;
+      border: 1px solid #B4BDC3;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+
+    &:hover {
+      border-color: #0F0F11;
+    }
+  }
+
+  .navBtnImg {
+    display: flex;
+  }
+
+  // .prevBtn {
+  //   left: -20px;
+  // }
+
+  // .nextBtn {
+  //   right: -20px;
+  // }
+
+  /* Прямокутні індикатори */
+  :global(.swiper-pagination) {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    cursor: pointer;
+  }
+
+  .customBullet {
+    width: 24px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .activeBullet {
+    background: #3b31c9;
+  }
+}

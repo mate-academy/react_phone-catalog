@@ -1,0 +1,23 @@
+.skeleton {
+  background-color: #e2e5e7;
+  // Налаштовуємо скруглення, щоб відповідати макету
+  border-radius: 4px;
+
+  // Ефект блиску (shine)
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 40px 100%;
+  background-repeat: no-repeat;
+  background-position: left -40px top 0;
+  animation: shine 1s ease infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: right calc(100% + 40px) top 0;
+  }
+}

@@ -1,0 +1,95 @@
+@import '../../styles/utils';
+
+$primary-orange: #ff7a00;
+$border-color: #B4BDC3;
+$border-color-hover: #0F0F11;
+$border-color-disable: #E2E6E9;
+$light-gray: #f9f9f9;
+
+.sliderContainer {
+  max-width: 1162px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 13px;
+  }
+}
+
+.title {
+  @extend %h2;
+
+  color: #0F0F11;
+}
+
+.navigation {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  background: none;
+  border: 1px solid $border-color;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  transition: background-color 0.2s, border-color 0.2s;
+
+  // Стиль для відключеного стану (прозорість)
+  &.disabled {
+    cursor: default;
+    border-color: $border-color-disable;
+
+    // Скасовуємо ефект hover, коли кнопка відключена
+    &:hover {
+      border-color: $border-color-disable;
+    }
+  }
+
+  // Стиль, коли кнопка не відключена
+  &:not(.disabled):hover {
+    border-color: $border-color-hover;
+  }
+}
+
+.navButtonImg {
+  display: flex;
+}
+
+.swiperWrapper {
+  // Swiper встановлює свою ширину, ми лише забезпечуємо контекст
+  width: 100%;
+  padding-top: 18px;
+  padding-bottom: 10px;
+  padding-left: 16px;
+  max-width: 1136px;
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+}
+
+.swiperSlide {
+  height: auto;
+}

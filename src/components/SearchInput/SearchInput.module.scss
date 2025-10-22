@@ -1,0 +1,26 @@
+.search-input-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 64px;
+  box-shadow: -1px 0px 0px 0px #E2E6E9;
+}
+
+.search-input {
+  display: block;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.search-icon {
+  display: flex;
+}
+
+.search-icon-img {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  margin-left: 14px;
+}
