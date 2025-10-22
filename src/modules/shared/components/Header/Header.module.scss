@@ -70,6 +70,7 @@
   }
 
   // Desktop Navigation styles
+
   &__nav {
     display: flex;
     justify-content: flex-start;
@@ -132,26 +133,8 @@
     height: 100%;
     padding: 0 $spacing-xl;
 
-    &__icon {
-      width: $spacing-xl;
-      height: $spacing-xl;
-      filter: brightness(0) saturate(100%) invert(70%) sepia(10%) saturate(200%)
-        hue-rotate(200deg) brightness(90%) contrast(90%);
-      transition: filter 0.3s ease;
-    }
-
-    &_active {
-      .header__icon {
-        filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
-          saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-      }
-    }
-
     &:hover {
-      .header__icon {
-        filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
-          saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-      }
+      transform: scale(1.1);
     }
 
     &_favorites {
@@ -186,7 +169,13 @@
     border: 1px solid $surface1;
   }
 
-  // Desktop Icons Container
+  &__icon {
+    width: $spacing-xl;
+    height: $spacing-xl;
+    filter: brightness(0) saturate(100%) invert(70%) sepia(10%) saturate(200%)
+      hue-rotate(200deg) brightness(90%) contrast(90%);
+    transition: filter 0.3s ease;
+  }
 
   &__icons {
     display: flex;
@@ -201,8 +190,6 @@
       border-left: none;
     }
   }
-
-  // Mobile Menu Button
 
   &__menuButton {
     display: none;
@@ -228,8 +215,6 @@
     filter: brightness(0) saturate(100%) invert(70%) sepia(10%) saturate(200%)
       hue-rotate(200deg) brightness(90%) contrast(90%);
   }
-
-  // Mobile Menu Specific Styles
 
   &__mobileMenu {
     position: fixed;
@@ -313,9 +298,7 @@
     &::before {
       content: '';
       position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
+      inset: 0 auto 0 50%;
       width: 1px;
       background: $elements;
       transform: translateX(-50%);
@@ -327,11 +310,6 @@
       padding: 0;
       height: 100%;
       position: relative;
-
-      &__icon {
-        filter: brightness(0) saturate(100%) invert(70%) sepia(10%)
-          saturate(200%) hue-rotate(200deg) brightness(90%) contrast(90%);
-      }
 
       &:hover {
         transform: none;
@@ -346,6 +324,7 @@
     .header__badge {
       top: -10px;
       right: -10px;
+
       width: 20px;
       height: 20px;
       min-width: 20px;
