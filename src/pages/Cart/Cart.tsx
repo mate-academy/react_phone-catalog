@@ -91,9 +91,9 @@ const Cart = () => {
                     className="cart-img"
                     src={
                       item.images?.[0]
-                        ? `/${item.images[0]}`
+                        ? `${item.images[0]}`
                         : item.image
-                          ? `/${item.image}`
+                          ? `${item.image}`
                           : 'img/no-image.webp'
                     }
                     alt={item.name}

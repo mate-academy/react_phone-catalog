@@ -171,7 +171,7 @@ const ProductDetails = () => {
                     img === activeImg ? 'active' : ''
                   }`}
                   key={index}
-                  src={`/${img}`}
+                  src={`${img}`}
                   alt={`${product?.name} ${index + 1}`}
                   onClick={() => setActiveImg(img)}
                   whileHover={{ scale: 1.05 }}
@@ -192,7 +192,7 @@ const ProductDetails = () => {
             >
               <img
                 className="product-details__left--galary-active"
-                src={`/${activeImg}`}
+                src={`${activeImg}`}
                 alt={`${product?.name}`}
               />
             </motion.div>
