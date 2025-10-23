@@ -1,30 +1,154 @@
 /* wrapper do banner com botões laterais */
+.wrapperHome {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+  box-sizing: border-box;
+}
+
 .sectionBanner {
   display: block;
-  align-items: center;
-  justify-content: center;
-  margin: 0 10rem;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  margin: 2rem 1rem;
 }
 
 .containerBanner {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 6;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0.25rem;
 }
 
-/* wrapper externo dos dots (na Home) — usado como ponto de entrada para o CSS dos dots */
-.containerDots {
+/* tornar wrappers fluidos */
+.containerDots,
+.containerBrandFlex,
+.sectionBrandNewModels {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 12px auto;
+  box-sizing: border-box;
+  padding: 0 0.5rem;
+}
+
+/* cards responsivos: largura fluida com max-width preservando desktop */
+.brandNewModels {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0.5rem;
+}
+
+.container,
+.containerBlock {
+  width: 100%;
+  max-width: var(--card-width);
+  margin: 0 auto 1rem;
+  box-sizing: border-box;
+  height: auto; /* evita overflow em mobile */
+}
+
+/* imagens: usar max-width + aspect-ratio para manter proporção */
+.containerImgSilver,
+.containerImgPurple,
+.containerImgGold,
+.containerImgRed,
+.containerHotPrice1 {
+  width: 100%;
+  max-width: var(--card-img-width);
+  margin: 1rem auto 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: block;
+  aspect-ratio: 208 / 196;
+  box-sizing: border-box;
+}
+
+/* ajustar caso gold tenha outra proporção */
+.containerImgGold {
+  aspect-ratio: 208 / 175;
+  width: 208px;
+  height: 175px;
+  margin: 24px auto 0;
+  background-image: url('../../assets/img/Phone_Gold.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: block;
+}
+
+/* textos e blocos internos fluem com max-width */
+.containerTitle,
+.containerPrice,
+.price,
+.separator,
+.priceOff {
+  width: 100%;
+  max-width: var(--card-img-width);
+  box-sizing: border-box;
+  padding: 0 0.25rem;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* remover margens fixas que deslocam itens em telas pequenas */
+
+.containerButton {
+  margin: 8px 0 0;
+  width: 100%;
+  max-width: var(--card-img-width);
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 1168px;
-  margin-top: 12px;
+  justify-content: space-between;
+  gap: 0.5rem;
+  box-sizing: border-box;
 }
 
-.TitleSection {
-  font-size: 1.2rem;
-  margin-top: 80px;
+/* botões com alvo de toque mínimo e largura adaptável */
+.addButton {
+  min-width: 44px;
+  min-height: 40px;
+  max-width: 100%;
+  width: auto;
+  padding: 0 0.75rem;
+  box-sizing: border-box;
+}
+
+/* favoritos como ícone adaptável */
+.addFavourites {
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+}
+
+/* figura e imagens internas */
+.figure {
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* corrige overflow de shopcategory margin negativo */
+.containerShopFlex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 20px 0;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
 }
 
 /* BRAND NEW MODELS */
@@ -63,17 +187,6 @@
   height: 196px;
   margin: 24px auto 0;
   background-image: url('../../assets/img/Phone_Purple.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: block;
-}
-
-.containerImgGold {
-  width: 208px;
-  height: 175px;
-  margin: 24px auto 0;
-  background-image: url('../../assets/img/Phone_Gold.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -131,10 +244,12 @@
 
 .containerScreen {
   margin: 0 1px 10px 30px;
-  width: 208px;
+  width: clamp(160px, 12.5vw, var(--card-img-width));
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
+  gap: 0.5rem;
 }
 
 .screen {
@@ -149,80 +264,13 @@
   color: #313237;
 }
 
-.containerButton {
-  margin: 16px 1px 0 30px;
-  width: 208px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.addButton {
-  width: 160px;
-  height: 40px;
-  font-size: 1rem;
-  border: none;
-  color: #fff;
-  background-color: #313237;
-  cursor: pointer;
-}
-
 .addButton:hover {
   background-color: #535252;
-}
-
-.addFavourites {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  background-image: url('../../assets/img/favourites.png');
-}
-
-.brandNewModels {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.figure {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.image {
-  width: 100%;
-  height: auto;
 }
 
 .caption {
   margin-top: 8px;
   text-align: center;
-}
-
-/* SHOPCATEGORY */
-.containerShopFlex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 16px;
-  margin: 20px -40px;
-}
-
-.title {
-  padding-top: 20px;
-  padding-bottom: 4px;
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-/* SUBTITLE CARD */
-.subtitle {
-  margin: 20px 0 auto;
-  font-size: 0.9rem;
 }
 
 .Mobile {

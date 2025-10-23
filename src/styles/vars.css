@@ -1,0 +1,7 @@
+:root {
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 1024px;
+  --gap: 1rem;
+  --container-max: 1200px;
+  --font-base: 16px;
+}

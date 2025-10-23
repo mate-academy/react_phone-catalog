@@ -8,6 +8,7 @@ describe('Footer component', () => {
 
     // logo image
     const logo = getByAltText('MinhaMarca') as HTMLImageElement;
+
     expect(logo).toBeInTheDocument();
     expect(logo.tagName).toBe('IMG');
 
@@ -21,6 +22,7 @@ describe('Footer component', () => {
     const rightsLink = getByRole('link', {
       name: /RIGHTS/i,
     }) as HTMLAnchorElement;
+
     expect(githubLink).toBeInTheDocument();
     expect(contactsLink).toBeInTheDocument();
     expect(rightsLink).toBeInTheDocument();
@@ -31,6 +33,7 @@ describe('Footer component', () => {
     // back to top elements
     const backText = getByText(/Back To Top/i);
     const backImg = getByAltText('BackTop') as HTMLImageElement;
+
     expect(backText).toBeInTheDocument();
     expect(backImg).toBeInTheDocument();
     expect(backImg.tagName).toBe('IMG');
@@ -40,6 +43,7 @@ describe('Footer component', () => {
     const extraClass = 'my-extra-class';
     const { container } = render(<Footer className={extraClass} />);
     const footer = container.querySelector('footer');
+
     expect(footer).toBeInTheDocument();
     // should contain module class and the extra class passed as prop
     expect(footer).toHaveClass(styles.containerFooter);

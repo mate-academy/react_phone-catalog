@@ -2,9 +2,18 @@
   background-image: url('../../assets/img/Banner-Home.png');
   background-size: cover;
   background-position: center;
-  width: 1040px;
+  width: 100%;
+  max-width: 1024px;
   height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .container {
+    background-image: url('../../assets/img/Banner_mobile.png');
+    width: 320px;
+    height: 320px;
+  }
 }

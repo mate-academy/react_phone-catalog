@@ -4,3 +4,18 @@
   line-height: 1.1;
   margin: 2rem 11rem;
 }
+
+/* Breakpoint médio (até 1024px) */
+@media (max-width: var(--breakpoint-md)) {
+  .SubTitle {
+    margin: 2rem 6rem;
+  }
+}
+
+/* Breakpoint pequeno (até 600px) */
+@media (max-width: var(--breakpoint-sm)) {
+  .SubTitle {
+    margin: 1.5rem 2rem;
+    font-size: 1rem; /* opcional: ajuste para melhor leitura em telas pequenas */
+  }
+}

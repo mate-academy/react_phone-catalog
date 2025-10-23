@@ -9,7 +9,6 @@
   padding: 0;
   cursor: pointer;
   box-sizing: border-box;
-  margin: 1rem;
 }
 
 .icon {
@@ -19,4 +18,11 @@
 
 .rotate {
   transform: rotate(180deg);
+}
+
+/* Responsividade: esconder no mobile */
+@media (max-width: 640px) {
+  .container {
+    display: none;
+  }
 }

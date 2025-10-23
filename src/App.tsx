@@ -6,6 +6,7 @@ import Tablets from './pages/Tablets';
 import Accessories from './pages/Accessories';
 import './App.scss';
 import Footer from './components/Footer';
+import './styles/vars.css';
 
 export const App = () => (
   <Router>
