@@ -14,7 +14,7 @@
 
   &__item {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: $spacing-lg;
 
     @include mobile {
@@ -25,14 +25,14 @@
   &__label {
     @include font-mont($font-size-base, $font-weight-semibold);
 
-    color: $secondary;
+    color: $gray-secondary;
     white-space: nowrap;
   }
 
   &__select {
-    padding: $spacing-sm $spacing-lg;
+    padding: $spacing-sm $spacing-sm;
     border: 1px solid $elements;
-    background: $surface2;
+    background: $elements;
     color: $secondary;
     min-width: 136px;
 

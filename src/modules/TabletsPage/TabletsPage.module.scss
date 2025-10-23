@@ -7,12 +7,11 @@
     @include font-mont($font-size-4xl, $font-weight-bold);
 
     color: $secondary;
-    margin-bottom: $spacing-sm;
   }
 
   &__count {
     color: $gray-secondary;
-    margin-bottom: $spacing-3xl;
+    margin-bottom: $spacing-4xl;
   }
 
   &__controls {

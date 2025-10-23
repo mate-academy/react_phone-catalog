@@ -2,15 +2,17 @@
 
 .phonesPage {
   padding: $spacing-4xl 0;
-  text-align: center;
 
   h1 {
-    font-size: $font-size-4xl;
-    margin-bottom: $spacing-lg;
-    color: $gray-primary;
+    @include font-mont($font-size-4xl, $font-weight-bold);
+
+    color: $secondary;
+    margin-bottom: 0 0 8px;
+    display: flex;
   }
 
   p {
     color: $gray-secondary;
+    margin-bottom: $spacing-4xl;
   }
 }

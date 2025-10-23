@@ -8,6 +8,7 @@
   padding: $spacing-2xl;
   border: 1px solid $elements;
   background: $surface2;
+  margin-bottom: 16px;
 
   @include tablet {
     grid-template-columns: auto auto 1fr;
@@ -55,8 +56,6 @@
     color: $secondary;
     text-decoration: none;
 
-    // @include smooth-transition();
-
     &:hover {
       color: $primary;
     }
@@ -84,11 +83,10 @@
 
   &__quantityBtn {
     @include icon-button(32px);
-    @include font-mont($font-size-lg, $font-weight-semibold);
 
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
+    img {
+      width: $spacing-lg;
+      height: $spacing-lg;
     }
   }
 
@@ -101,7 +99,7 @@
   }
 
   &__price {
-    @include font-mont($font-size-2xl, $font-weight-bold);
+    @include font-mont($font-size-2xl, $font-weight-extra-bold);
 
     @include tablet {
       grid-column: 3;

@@ -6,7 +6,6 @@ import { sortProducts } from '../../utils/helpers';
 import { useLocalStorage } from '../shared/hooks/useLocalStorage';
 import { Loader } from '../../components/Loader';
 import { ProductsList } from '../../components/ProductsList';
-import { Search } from '../../components/Search';
 import { Filters } from './Filters';
 import { Pagination } from '../AccessoriesPage/components/Pagination';
 import styles from './AccessoriesPage.module.scss';
@@ -16,7 +15,6 @@ export const AccessoriesPage: React.FC = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
   const [sortBy, setSortBy] = useLocalStorage<SortBy>(
@@ -48,16 +46,10 @@ export const AccessoriesPage: React.FC = () => {
   useEffect(() => {
     let filtered = products;
 
-    if (searchQuery) {
-      filtered = products.filter(product =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
-    }
-
     filtered = sortProducts(filtered, sortBy);
     setFilteredProducts(filtered);
     setCurrentPage(1);
-  }, [products, searchQuery, sortBy]);
+  }, [products, sortBy]);
 
   const itemsPerPageNumber =
     itemsPerPage === 'all' ? filteredProducts.length : parseInt(itemsPerPage);
@@ -91,8 +83,6 @@ export const AccessoriesPage: React.FC = () => {
       <p className={styles.accessoriesPage__count}>{products.length} models</p>
 
       <div className={styles.accessoriesPage__controls}>
-        <Search onSearch={setSearchQuery} placeholder="Search accessories..." />
-
         <Filters
           sortBy={sortBy}
           itemsPerPage={itemsPerPage}
