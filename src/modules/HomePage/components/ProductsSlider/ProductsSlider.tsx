@@ -4,6 +4,9 @@ import { Product } from '../../../../types';
 import { ProductCard } from '../../../../components/ProductCard';
 import styles from './ProductsSlider.module.scss';
 
+const SPACING_LG = 16;
+const SLIDE_WIDTH = 272;
+
 interface ProductsSliderProps {
   title: string;
   products: Product[];
@@ -22,15 +25,28 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   const isHotPricesSlider = title === 'Hot prices';
   const showDiscountBadge = isHotPricesSlider;
 
+  const getVisibleSlidesCount = () => {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth >= 1200) {
+      return 4;
+    } else if (screenWidth >= 640 && screenWidth < 1200) {
+      return 2.5;
+    } else {
+      return 1.5;
+    }
+  };
+
   const updateButtonVisibility = () => {
     if (!sliderRef.current) {
       return;
     }
 
     const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+    const scrollRightLimit = scrollWidth - clientWidth;
 
     setCanScrollLeft(scrollLeft > 0);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    setCanScrollRight(scrollLeft < scrollRightLimit - 1);
   };
 
   useEffect(() => {
@@ -47,7 +63,17 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       return;
     }
 
-    const scrollAmount = 300;
+    const visibleSlides = getVisibleSlidesCount();
+    let scrollAmount: number;
+
+    if (visibleSlides === 4) {
+      scrollAmount = (SLIDE_WIDTH + SPACING_LG) * 4;
+    } else if (visibleSlides === 2.5) {
+      scrollAmount = (SLIDE_WIDTH + SPACING_LG) * 2.5;
+    } else {
+      scrollAmount = (SLIDE_WIDTH + SPACING_LG) * 1.5;
+    }
+
     const newScrollLeft =
       sliderRef.current.scrollLeft +
       (direction === 'right' ? scrollAmount : -scrollAmount);

@@ -16,7 +16,6 @@
 
     color: $secondary;
     margin-bottom: $spacing-2xl;
-    margin-top: $spacing-7xl;
   }
 
   &__navigation {
@@ -68,8 +67,6 @@
   }
 
   &__slide {
-    height: 506px;
-    width: 272px;
     flex-shrink: 0;
 
     .productCard {
