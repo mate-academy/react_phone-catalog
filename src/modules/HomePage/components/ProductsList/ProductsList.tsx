@@ -9,7 +9,7 @@ interface ProductsListType {
 }
 
 export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
-  const { productsList, loading, error } = useTabs();
+  const { productsList } = useTabs();
 
   let products = productsList
     .filter(product => product.fullPrice > product.price)
@@ -42,14 +42,6 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
   };
 
   const visibleProducts = products.slice(index, index + itemsPerPage);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p style={{ color: 'red' }}>{error}</p>;
-  }
 
   return (
     <div className={styles.container}>

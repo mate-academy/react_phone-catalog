@@ -8,9 +8,12 @@ import { Cart } from '../Cart/Cart';
 import { CardProduct, NavigateList } from '../shared';
 import { SortBy } from './components/SortBy';
 import { ItemsOnPage } from './components/ItemsOnPage';
+import { Loader } from '../shared/components/Loader';
+import { Error } from '../shared/components/Error';
+import { NoCategory } from '../shared/components/NoCategory';
 
 export const CardPage = () => {
-  const { productsList } = useTabs();
+  const { productsList, loading, error } = useTabs();
   const { category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const { favourites } = useFavourite();
@@ -114,6 +117,18 @@ export const CardPage = () => {
 
   const visibilityPagination =
     !categoryFavourite && !categoryCart && perPageParam !== 'all';
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <Error />;
+  }
+
+  if (!productsList || productsList.length === 0) {
+    return <NoCategory />;
+  }
 
   return (
     <div className={styles.container}>

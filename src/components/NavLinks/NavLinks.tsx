@@ -1,11 +1,11 @@
 import styles from './NavLinks.module.scss';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 interface NavLinksProps {
   onClose?: () => void;
 }
 export const NavLinks: React.FC<NavLinksProps> = ({ onClose }) => {
-  const { category } = useParams();
+  const location = useLocation();
 
   const navLinks = [
     { to: '/', label: 'home' },
@@ -21,9 +21,7 @@ export const NavLinks: React.FC<NavLinksProps> = ({ onClose }) => {
           key={link.to}
           to={link.to}
           onClick={onClose}
-          className={({ isActive }) =>
-            category === link.to || isActive ? styles.active : ''
-          }
+          className={location.pathname === link.to ? styles.active : ''}
         >
           {link.label}
         </NavLink>

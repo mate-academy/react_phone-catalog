@@ -2,17 +2,33 @@ import { Outlet } from 'react-router-dom';
 import './App.scss';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
+import { useTabs } from './ProductsContext/TabsContext';
+import { Loader } from './modules/shared/components/Loader';
+import { Helmet } from 'react-helmet';
 
 export const App = () => {
+  const { loading } = useTabs();
+
   return (
-    <div data-cy="app">
-      <Header />
+    <>
+      <Helmet>
+        <link rel="icon" type="icon/svg+xml" href="img/Logo.png" />
+        <title></title>
+      </Helmet>
 
-      <div className="container">
-        <Outlet />
+      <div data-cy="app">
+        <Header />
+
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className="container">
+            <Outlet />
+          </div>
+        )}
+
+        <Footer />
       </div>
-
-      <Footer />
-    </div>
+    </>
   );
 };

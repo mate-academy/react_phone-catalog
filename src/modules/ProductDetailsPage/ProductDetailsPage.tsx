@@ -10,6 +10,7 @@ import { AboutAndTechSpecs } from './components/AboutAndTechSpecs';
 import { SwitchPhotos } from './components/SwitchPhotos';
 import { ImgSliders } from './components/ImgSliders';
 import { InformContainer } from './components/InformContainer';
+import { Loader } from '../shared/components/Loader';
 
 export const ProductDetailsPage = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ export const ProductDetailsPage = () => {
   const sale = product?.price !== product?.fullPrice;
 
   if (loading) {
-    return <div className={styles.status}>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {
