@@ -38,7 +38,9 @@ const slideIn: Variants = {
 
 const ProductDetails = () => {
   const { category, itemId } = useParams();
-  const [product, setProduct] = useState<Phone | Tablet | Accessory | null>(null);
+  const [product, setProduct] = useState<Phone | Tablet | Accessory | null>(
+    null,
+  );
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -47,6 +49,11 @@ const ProductDetails = () => {
   const location = useLocation();
 
   const [activeImg, setActiveImg] = useState('');
+
+  // hooks must be called unconditionally and in the same order on every render
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const { toggleCart, isInCart } = useCart();
+  const id = product ? String(product.id) : '';
 
   useEffect(() => {
     if (product?.images?.length) {
@@ -103,13 +110,20 @@ const ProductDetails = () => {
 
   const handleCapacityChange = (capacity: string) => {
     const currentPath = location.pathname;
-
-    const newPath = currentPath.replace(/-(\d+(gb|tb|mm))-/, `-${capacity.toLowerCase()}-`);
+    const newPath = currentPath.replace(
+      /-(\d+(gb|tb|mm))-/,
+      `-${capacity.toLowerCase()}-`,
+    );
     navigate(newPath);
   };
 
-  const { toggleFavorite } = useFavorites();
-  const { toggleCart } = useCart();
+  const handleToggleCartClick = async () => {
+    await handleProductAction(itemId, toggleCart);
+  };
+
+  const handleToggleFavoriteClick = async () => {
+    await handleProductAction(itemId, toggleFavorite);
+  };
   const handleProductAction = async (
     itemId: string | undefined,
     action: (product: Product) => void,
@@ -121,7 +135,11 @@ const ProductDetails = () => {
       const product = allProducts.find(p => p.itemId === itemId);
 
       if (product) {
-        action(product);
+        const normalized: Product = {
+          ...product,
+          id: String(product.itemId),
+        } as Product;
+        action(normalized);
       } else {
         console.error('Product not found in API');
       }
@@ -190,11 +208,13 @@ const ProductDetails = () => {
               viewport={{ once: true, amount: 0.2 }}
               custom={0.1}
             >
-              <img
-                className="product-details__left--galary-active"
-                src={`${activeImg}`}
-                alt={`${product?.name}`}
-              />
+              {activeImg ? (
+                <img
+                  src={activeImg}
+                  alt={`${product?.name}`}
+                  className="product-details__left--galary-active"
+                />
+              ) : null}
             </motion.div>
           </div>
           {/* End Product Images */}
@@ -213,7 +233,8 @@ const ProductDetails = () => {
             <div className="product-details__right--colors-wrapper">
               {product?.colorsAvailable.map((i, index) => {
                 const colorValue = colorMap[i.toLowerCase()] || i;
-                const isActive = product.color?.toLowerCase() === i.toLowerCase();
+                const isActive =
+                  product.color?.toLowerCase() === i.toLowerCase();
 
                 return (
                   <motion.span
@@ -233,7 +254,8 @@ const ProductDetails = () => {
             <h2>Select capacity</h2>
             <div className="product-details__right--capacity-info">
               {product?.capacityAvailable.map((i, index) => {
-                const isActive = product.capacity?.toLowerCase() === i.toLowerCase();
+                const isActive =
+                  product.capacity?.toLowerCase() === i.toLowerCase();
 
                 return (
                   <motion.span
@@ -263,39 +285,54 @@ const ProductDetails = () => {
 
             <div className="product-details__right--buy-btn">
               <motion.button
-                className="product-details__right--buy-btn__button"
-                onClick={() => {
-                  handleProductAction(itemId, toggleCart);
-                }}
+                className={`product-details__right--buy-btn__button ${isInCart(id) ? ' added' : ''}`}
+                onClick={handleToggleCartClick}
                 whileTap={{ scale: 0.97 }}
               >
-                Add to cart
+                {isInCart(id) ? 'Added to cart' : 'Add to cart'}
               </motion.button>
               <motion.button
-                className="product-details__right--buy-btn__button-favorite"
-                onClick={() => {
-                  handleProductAction(itemId, toggleFavorite);
-                }}
+                className={`product-details__right--buy-btn__button-favorite ${isFavorite(id) ? ' active' : ''}`}
+                onClick={handleToggleFavoriteClick}
                 whileTap={{ scale: 0.95 }}
               >
-                <img src="img/icons/Favourites.svg" alt="Add to Wishlist" />
+                <img
+                  src={
+                    isFavorite(id)
+                      ? 'img/icons/Favourites--active.svg'
+                      : 'img/icons/Favourites.svg'
+                  }
+                  alt={
+                    isFavorite(id) ? 'Remove from Wishlist' : 'Add to Wishlist'
+                  }
+                />
               </motion.button>
             </div>
 
             <div className="product-details__right--buy__tags">
               <span className="product-details__right__tag">
-                Screen: <span className="product-details__right__tag-info">{product?.screen}</span>
+                Screen:{' '}
+                <span className="product-details__right__tag-info">
+                  {product?.screen}
+                </span>
               </span>
               <span className="product-details__right__tag">
                 Resolution:{' '}
-                <span className="product-details__right__tag-info">{product?.resolution}</span>
+                <span className="product-details__right__tag-info">
+                  {product?.resolution}
+                </span>
               </span>
               <span className="product-details__right__tag">
                 Processor{' '}
-                <span className="product-details__right__tag-info">{product?.processor}</span>
+                <span className="product-details__right__tag-info">
+                  {product?.processor}
+                </span>
               </span>
               <span className="product-details__right__tag">
-                RAM <span className="product-details__right__tag-info">{product?.ram}</span>
+                RAM{' '}
+                <span className="product-details__right__tag-info">
+                  {product?.ram}
+                </span>
               </span>
             </div>
           </div>
@@ -335,43 +372,57 @@ const ProductDetails = () => {
             {product?.screen && (
               <li className="product-details__tech-item">
                 <p className="product-details__tech-name">Screen</p>
-                <span className="product-details__tech-value">{product.screen}</span>
+                <span className="product-details__tech-value">
+                  {product.screen}
+                </span>
               </li>
             )}
             {product?.resolution && (
               <li className="product-details__tech-item">
                 <p className="product-details__tech-name">Resolution</p>
-                <span className="product-details__tech-value">{product.resolution}</span>
+                <span className="product-details__tech-value">
+                  {product.resolution}
+                </span>
               </li>
             )}
             {product?.processor && (
               <li className="product-details__tech-item">
                 <p className="product-details__tech-name">Processor</p>
-                <span className="product-details__tech-value">{product.processor}</span>
+                <span className="product-details__tech-value">
+                  {product.processor}
+                </span>
               </li>
             )}
             {product?.ram && (
               <li className="product-details__tech-item">
                 <p className="product-details__tech-name">RAM</p>
-                <span className="product-details__tech-value">{product.ram}</span>
+                <span className="product-details__tech-value">
+                  {product.ram}
+                </span>
               </li>
             )}
             {product?.capacity && (
               <li className="product-details__tech-item">
                 <p className="product-details__tech-name">Built in memory</p>
-                <span className="product-details__tech-value">{product.capacity}</span>
+                <span className="product-details__tech-value">
+                  {product.capacity}
+                </span>
               </li>
             )}
             {product?.camera && (
               <li className="product-details__tech-item">
                 <p className="product-details__tech-name">Camera</p>
-                <span className="product-details__tech-value">{product.camera}</span>
+                <span className="product-details__tech-value">
+                  {product.camera}
+                </span>
               </li>
             )}
             {product?.zoom && (
               <li className="product-details__tech-item">
                 <p className="product-details__tech-name">Zoom</p>
-                <span className="product-details__tech-value">{product.zoom}</span>
+                <span className="product-details__tech-value">
+                  {product.zoom}
+                </span>
               </li>
             )}
             {product?.cell && product.cell.length > 0 && (
@@ -399,7 +450,11 @@ const ProductDetails = () => {
         viewport={{ once: true, amount: 0.15 }}
         custom={0.08}
       >
-        <ProductCarousel title="You may also like" showDiscount={true} isRandom={true} />
+        <ProductCarousel
+          title="You may also like"
+          showDiscount={true}
+          isRandom={true}
+        />
       </motion.div>
     </div>
   );

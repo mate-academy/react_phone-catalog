@@ -1,7 +1,7 @@
 import {
   Navigate,
   Route,
-  HashRouter as Router, // BrowserRouter или HashRouter, если нужно github pages
+  HashRouter as Router, // BrowserRouter или HashRouter - если нужно github pages
   Routes,
 } from 'react-router-dom';
 import App from './App';

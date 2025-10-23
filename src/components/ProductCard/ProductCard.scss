@@ -164,6 +164,15 @@
       filter: brightness(0.7);
       transform: scale(0.98);
     }
+
+    &.added {
+      background-color: $surface2;
+
+      &::after,
+      &::before {
+        background-color: $surface2;
+      }
+    }
   }
 
   &__button-favorite {

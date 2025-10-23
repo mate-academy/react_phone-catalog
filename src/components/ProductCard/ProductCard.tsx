@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
@@ -13,9 +13,13 @@ type ProductCardProps = {
 
 const ProductCard: FC<ProductCardProps> = ({ product, hideDiscount }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
-  const { toggleCart } = useCart();
+  const { toggleCart, isInCart } = useCart();
 
-  const id = String(product.id);
+  const id = product.itemId;
+
+  const handleToggleCart = useCallback(() => {
+    toggleCart({ ...product, id });
+  }, [toggleCart, product, id]);
 
   return (
     <>
@@ -62,10 +66,11 @@ const ProductCard: FC<ProductCardProps> = ({ product, hideDiscount }) => {
 
           <div className="product-card__actions">
             <button
-              className="product-card__button"
-              onClick={() => toggleCart({ ...product, id })}
+              type="button"
+              className={`product-card__button ${isInCart(id) ? ' added' : ''}`}
+              onClick={handleToggleCart}
             >
-              Add to cart
+              {isInCart(id) ? 'Added to cart' : 'Add to cart'}
             </button>
             <button
               className={`product-card__button-favorite${isFavorite(id) ? ' active' : ''}`}
