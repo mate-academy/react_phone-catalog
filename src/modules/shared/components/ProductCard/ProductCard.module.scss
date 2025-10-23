@@ -5,12 +5,8 @@
   height: 506px;
   min-width: 272px;
   max-width: 290px;
-  // flex: 0 0 272px;
   scroll-snap-align: start;
   box-sizing: border-box;
-  // flex-shrink: 0;
-
-  // grid-column: span;
 
   @include on-mobile {
     max-width: none;
