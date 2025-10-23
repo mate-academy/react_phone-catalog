@@ -10,7 +10,7 @@
       "@HomePage": ["src/modules/HomePage"],
       "@Images/*": ["src/assets/images/*"],
       "@GlobalStyle/*": ["src/assets/styles/*"],
-      // "@GlobalComponents": ["src/components/"]
+      "@GlobalComponents": ["src/components/"]
     }
   }
 }

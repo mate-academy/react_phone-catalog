@@ -11,29 +11,23 @@ import {
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-// import './HomeArrowStyle.scss';
-// import './'
-// import style from './swiper.module.scss';
-
-import './HomeSwiper.scss';
-import './HomeArrowStyle.scss';
-import './HomePagination.scss';
+import style from './HomeSwiper.module.scss';
 
 const photo = [banner1, banner2, banner3];
 
 export const HomeCarusel = () => {
   return (
     <>
-      <div className={'main-swiper'}>
-        <div className="main-container">
+      <div className={style['main-swiper']}>
+        <div className={style['main-container']}>
           <Swiper
             modules={[Pagination, Autoplay, Navigation]}
             pagination={{
               clickable: true,
             }}
             navigation={{
-              nextEl: '.arrow__next',
-              prevEl: '.arrow__prev',
+              nextEl: `.${style.arrow__next}`,
+              prevEl: `.${style.arrow__prev}`,
               disabledClass: 'swiper-button-disabled',
             }}
             grabCursor
@@ -50,7 +44,7 @@ export const HomeCarusel = () => {
             {photo.map((s, i) => (
               <SwiperSlide key={i}>
                 {s === banner1 ? (
-                  <picture className="img__picture">
+                  <picture className={style.img__picture}>
                     <source
                       srcSet={banner1}
                       media="(max-width: 639px)"
@@ -62,22 +56,22 @@ export const HomeCarusel = () => {
                       type="image/png"
                     />
                     <img
-                      className="img__slider-p"
+                      className={style['img__slider-p']}
                       src={banner1_dekstop}
                       alt="photo-banner"
                     />
                   </picture>
                 ) : (
-                  <img className="img__slider" src={s} alt={`${i}`} />
+                  <img className={style.img__slider} src={s} alt={`${i}`} />
                 )}
               </SwiperSlide>
             ))}
 
-            <div className="arrow__next">
-              <span className="arrow__right"></span>
+            <div className={style.arrow__next}>
+              <span className={style.arrow__right}></span>
             </div>
-            <div className="arrow__prev">
-              <span className="arrow__left"></span>
+            <div className={style.arrow__prev}>
+              <span className={style.arrow__left}></span>
             </div>
           </Swiper>
         </div>
