@@ -1,3 +1,7 @@
+.main-container {
+  width: 100%;
+}
+
 .main-swiper {
   display: flex;
   align-items: center;
@@ -9,10 +13,6 @@
   @include onTablet {
     grid-column: 1 / -1;
   }
-}
-
-.main-container {
-  width: 100%;
 }
 
 .swiper {
@@ -40,6 +40,7 @@
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
+  object-position: top;
 }
 
 .img__picture {

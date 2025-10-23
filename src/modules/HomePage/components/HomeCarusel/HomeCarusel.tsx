@@ -24,7 +24,7 @@ const photo = [banner1, banner2, banner3];
 export const HomeCarusel = () => {
   return (
     <>
-      <div className="main-swiper">
+      <div className={'main-swiper'}>
         <div className="main-container">
           <Swiper
             modules={[Pagination, Autoplay, Navigation]}
@@ -33,7 +33,7 @@ export const HomeCarusel = () => {
             }}
             navigation={{
               nextEl: '.arrow__next',
-              prevEl: '.arrow__left',
+              prevEl: '.arrow__prev',
               disabledClass: 'swiper-button-disabled',
             }}
             grabCursor
@@ -68,7 +68,7 @@ export const HomeCarusel = () => {
                     />
                   </picture>
                 ) : (
-                  <img className="img__slider " src={s} alt={`${i}`} />
+                  <img className="img__slider" src={s} alt={`${i}`} />
                 )}
               </SwiperSlide>
             ))}
@@ -77,7 +77,7 @@ export const HomeCarusel = () => {
               <span className="arrow__right"></span>
             </div>
             <div className="arrow__prev">
-              <span className=".arrow__left"></span>
+              <span className="arrow__left"></span>
             </div>
           </Swiper>
         </div>
