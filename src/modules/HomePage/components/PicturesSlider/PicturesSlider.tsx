@@ -70,6 +70,7 @@ export const PicturesSlider: React.FC = () => {
           loop={true}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           slidesPerView={1}
+          speed={1000}
           onInit={handleSwiperInit}
           pagination={{ clickable: true, el: `.${styles.slider__pagination}` }}
           className={styles.swiperContainer}

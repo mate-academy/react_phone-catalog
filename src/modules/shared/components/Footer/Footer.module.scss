@@ -92,7 +92,6 @@
     font-weight: $font-weight-bold;
 
     @include smooth-transition(transform);
-
     @include smooth-transition(color);
 
     text-transform: uppercase;
