@@ -22,4 +22,10 @@
     @include pageGrid;
     @include contentPaddingInline;
   }
+
+  @include largeDekstop {
+    max-width: 1200px;
+    margin: 56px auto;
+    padding-inline: 0;
+  }
 }

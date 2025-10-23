@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@Header': path.resolve(__dirname, 'src/components/Header'),
+      // '@GlobalComponents': path.resolve(__dirname, 'src/components'),
       '@HomePage': path.resolve(__dirname, 'src/modules/HomePage'),
       '@Images': path.resolve(__dirname, 'src/assets/images'),
       '@GlobalStyle': path.resolve(__dirname, 'src/assets/styles'),

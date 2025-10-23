@@ -9,7 +9,8 @@
       "@Header": ["src/components/Header"],
       "@HomePage": ["src/modules/HomePage"],
       "@Images/*": ["src/assets/images/*"],
-      "@GlobalStyle/*": ["src/assets/styles/*"]
+      "@GlobalStyle/*": ["src/assets/styles/*"],
+      // "@GlobalComponents": ["src/components/"]
     }
   }
 }

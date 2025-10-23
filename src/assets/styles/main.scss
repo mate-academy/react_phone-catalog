@@ -20,6 +20,12 @@ svg * {
 
   @include pageGrid;
   @include contentPaddingInline;
+
+  @include largeDekstop {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 0;
+  }
 }
 
 .title {
@@ -31,6 +37,17 @@ svg * {
     font-size: 48px;
     line-height: 56px;
   }
+}
+
+.title-section {
+  font-size: 22px;
+  color: var(--color-white);
+  font-weight: 800;
+  line-height: 140%;
+}
+
+.section {
+  margin-bottom: 56px;
 }
 
 // h1 {

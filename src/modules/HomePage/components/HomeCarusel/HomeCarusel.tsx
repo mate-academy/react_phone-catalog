@@ -1,15 +1,27 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
-import { banner1, banner2, banner3, banner1_tablet_X2 } from '@Images/banner';
+import {
+  banner1,
+  banner2,
+  banner3,
+  banner1_tablet_X2,
+  banner1_dekstop,
+} from '@Images/banner';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import './swiper.scss';
+// import './HomeArrowStyle.scss';
+// import './'
+// import style from './swiper.module.scss';
+
+import './HomeSwiper.scss';
+import './HomeArrowStyle.scss';
+import './HomePagination.scss';
 
 const photo = [banner1, banner2, banner3];
 
-export const Carusel = () => {
+export const HomeCarusel = () => {
   return (
     <>
       <div className="main-swiper">
@@ -51,12 +63,12 @@ export const Carusel = () => {
                     />
                     <img
                       className="img__slider-p"
-                      src={banner1}
+                      src={banner1_dekstop}
                       alt="photo-banner"
                     />
                   </picture>
                 ) : (
-                  <img className="img__slider" src={s} alt={`${i}`} />
+                  <img className="img__slider " src={s} alt={`${i}`} />
                 )}
               </SwiperSlide>
             ))}
@@ -65,7 +77,7 @@ export const Carusel = () => {
               <span className="arrow__right"></span>
             </div>
             <div className="arrow__prev">
-              <span className="arrow__left"></span>
+              <span className=".arrow__left"></span>
             </div>
           </Swiper>
         </div>

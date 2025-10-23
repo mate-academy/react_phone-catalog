@@ -1,18 +1,20 @@
-import { Carusel } from '../Carusel/Carusel';
+import { HomeCarusel } from '../HomeCarusel/HomeCarusel';
 import style from './HeroSection.module.scss';
 
 export const HeroSection = () => {
   return (
     <>
-      <div className="container">
-        <h1 className={`${style.title} title`}>
-          Welcome to Nice Gadgets store!
-        </h1>
-      </div>
+      <section className="section">
+        <div className="container">
+          <h1 className={`${style.title} title`}>
+            Welcome to Nice Gadgets store!
+          </h1>
+        </div>
 
-      <div className={style.container}>
-        <Carusel />
-      </div>
+        <div className={style.container}>
+          <HomeCarusel />
+        </div>
+      </section>
     </>
   );
 };
