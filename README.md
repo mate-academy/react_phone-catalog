@@ -143,4 +143,4 @@ Show `input:search` in the header when a page contains a `ProductList` to search
 3. Add `debounce` to the search field.
 
 ## Instructions
-- Replace `<your_account>` with your Github username in the [DEMO LINK](https://Whslv.github.io/react_phone-catalog/)
+- Replace `<your_account>` with your Github username in the [DEMO LINK](https://Whslv.github.io/)

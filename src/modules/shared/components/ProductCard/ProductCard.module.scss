@@ -3,16 +3,17 @@
 
 .card {
   height: 506px;
-  min-width: 229px;
-  flex: 0 0 272px;
+  min-width: 272px;
+  max-width: 290px;
+  // flex: 0 0 272px;
   scroll-snap-align: start;
   box-sizing: border-box;
-  flex-shrink: 0;
+  // flex-shrink: 0;
 
-  grid-column: span 6;
+  // grid-column: span;
 
-  @include on-tablet {
-    grid-column: span 4;
+  @include on-mobile {
+    max-width: none;
   }
 }
 
@@ -93,4 +94,3 @@
   justify-content: space-between;
   gap: 8px;
 }
-

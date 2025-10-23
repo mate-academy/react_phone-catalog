@@ -2,11 +2,11 @@ import { NavLink } from 'react-router-dom';
 import styles from '../Header.module.scss';
 import classNames from 'classnames';
 import { useAppSelector } from '../../../../../store/hooks';
-import { selectItemIds } from '../../../../../store/slices/cartSlice';
+import { selectCartTotals } from '../../../../../store/slices/cartSlice';
 import { selectFavorites } from '../../../../../store/slices/favoritesSlice';
 
 export const HeaderIcons = () => {
-  const itemsInCart = useAppSelector(selectItemIds);
+  const itemsInCart = useAppSelector(selectCartTotals);
   const itemsInFavorites = useAppSelector(selectFavorites);
 
   return (
@@ -33,8 +33,8 @@ export const HeaderIcons = () => {
         }
       >
         <div className={styles.icon__cart}>
-          {itemsInCart.length > 0 && (
-            <span className={styles.icon__counter}>{itemsInCart.length}</span>
+          {itemsInCart.totalQty > 0 && (
+            <span className={styles.icon__counter}>{itemsInCart.totalQty}</span>
           )}
         </div>
       </NavLink>

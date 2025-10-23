@@ -10,10 +10,20 @@ export const Footer = () => (
         </Link>
 
         <ul className={styles.footer__list}>
-          <Link to={'https://github.com/Whslv'} className={styles.footer__item}>
+          <Link
+            to={'https://github.com/Whslv'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.footer__item}
+          >
             Github
           </Link>
-          <Link to={{ pathname: '/contacts' }} className={styles.footer__item}>
+          <Link
+            to={{ pathname: 'https://www.linkedin.com/in/vladislav-belenov/' }}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.footer__item}
+          >
             Contacts
           </Link>
           <Link to={{ pathname: '/rights' }} className={styles.footer__item}>

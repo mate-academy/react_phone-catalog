@@ -9,7 +9,7 @@ export const FavoritesPage = () => {
   const favoritesTotal = itemsInFavorites.length;
 
   return (
-    <div className={styles.favorite}>
+    <main className={styles.favorite}>
       <div className={styles.favorite__wrapper}>
         <div className={styles.favorite__container}>
           <section className={styles.favorite__navigation}>
@@ -39,6 +39,6 @@ export const FavoritesPage = () => {
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 };

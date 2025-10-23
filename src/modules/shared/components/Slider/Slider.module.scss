@@ -21,14 +21,14 @@
   width: 32px;
   background: none;
   border: none;
-  background-image: url('/public/img/Buttons/Slider_button-Default_right.svg');
+  background-image: url('/img/Buttons/Slider_button-Default_right.svg');
 
   &:hover {
-    background-image: url('/public/img/Buttons/Slider_button-Hover_right.svg');
+    background-image: url('/img/Buttons/Slider_button-Hover_right.svg');
   }
 
   &:disabled {
-    background-image: url('/public/img/Buttons/Slider_button-Disabled_right.svg');
+    background-image: url('/img/Buttons/Slider_button-Disabled_right.svg');
   }
 }
 
@@ -38,21 +38,29 @@
   transform: rotate(180deg);
   background: none;
   border: none;
-  background-image: url('/public/img/Buttons/Slider_button-Default_right.svg');
+  background-image: url('/img/Buttons/Slider_button-Default_right.svg');
 
   &:hover {
-    background-image: url('/public/img/Buttons/Slider_button-Hover_right.svg');
+    background-image: url('/img/Buttons/Slider_button-Hover_right.svg');
   }
 
   &:disabled {
-    background-image: url('/public/img/Buttons/Slider_button-Disabled_right.svg');
+    background-image: url('/img/Buttons/Slider_button-Disabled_right.svg');
   }
 }
 
+.slider__slider {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .slider__card {
-  display: flex;
+  display: grid;
   gap: 16px;
-  overflow: auto visible;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(272px);
+
+  overflow: auto hidden;
   scroll-snap-type: x mandatory;
   scroll-snap-stop: always;
   -webkit-overflow-scrolling: touch;

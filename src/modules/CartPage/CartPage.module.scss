@@ -88,7 +88,7 @@
   height: 16px;
 
   background: none;
-  background-image: url('/public/img/Buttons/Icons/Close.svg');
+  background-image: url('/img/Buttons/Icons/Close.svg');
   background-color: none;
   background-repeat: no-repeat;
   background-position: center;
@@ -118,7 +118,6 @@
 .item__controlers {
   display: flex;
   align-items: center;
-  gap: 14px;
 }
 
 .item__take {
@@ -127,7 +126,7 @@
   height: 32px;
   width: 32px;
 
-  background-image: url('public/img/Buttons/Icons/Minus.svg');
+  background-image: url('/img/Buttons/Icons/Minus.svg');
   background-color: $arrow-button-default-bg-color;
   background-repeat: no-repeat;
   background-position: center;
@@ -145,13 +144,21 @@
   }
 }
 
+.item__qty {
+  margin: 0;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  align-content: center;
+}
+
 .item__add {
   display: block;
   padding: 0;
   height: 32px;
   width: 32px;
 
-  background-image: url('public/img/Buttons/Icons/Plus.svg');
+  background-image: url('/img/Buttons/Icons/Plus.svg');
   background-color: $arrow-button-default-bg-color;
   background-repeat: no-repeat;
   background-position: center;
@@ -292,7 +299,7 @@
   width: 32px;
   align-self: flex-end;
 
-  background-image: url('/public/img/icons/Close.svg');
+  background-image: url('/img/icons/Close.svg');
   background-color: $arrow-button-default-bg-color;
   background-repeat: no-repeat;
   background-position: center;

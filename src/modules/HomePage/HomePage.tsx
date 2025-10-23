@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
-import { useEffect, useMemo, CSSProperties } from 'react';
+import { useEffect, CSSProperties, useState } from 'react';
 import styles from './HomePage.module.scss';
 import hero from './components/Hero/Hero.module.scss';
 import { Hero } from './components/Hero/Hero';
-import productsData from '../../../public/api/products.json';
 import phonesData from '../../../public/api/phones.json';
 import accessoriesData from '../../../public/api/accessories.json';
 import tabletsData from '../../../public/api/tablets.json';
@@ -12,6 +11,11 @@ import { Link } from 'react-router-dom';
 import { Slider } from '../shared/components/Slider/Slider';
 
 export const HomePage = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const [products, setProducts] = useState<ProductData[]>([]);
+
   function filterUniqueProduct(arr: ProductData[], paramName: keyof ProductData) {
     const find = new Set();
 
@@ -31,24 +35,64 @@ export const HomePage = () => {
   const NEW_MODELS = 'Brand new models';
   const HOT_MODELS = 'Hot prices';
 
-  const phones = productsData.filter(item => item.category === 'phones');
+  const phones = products.filter(item => item.category === 'phones');
 
   const uniqueProducts = filterUniqueProduct(phones, 'image');
 
-  const newItems = useMemo(() => uniqueProducts.filter(p => p.year >= 2022), [uniqueProducts]);
-  const bestPriceItems = useMemo(
-    () =>
-      [...newItems].sort((p1, p2) => {
-        return p2.fullPrice - p2.price - (p1.fullPrice - p1.price);
-      }),
-    [productsData],
-  );
+  const newItems = uniqueProducts.filter(p => p.year >= 2022);
+  const bestPriceItems = [...newItems].sort((p1, p2) => {
+    return p2.fullPrice - p2.price - (p1.fullPrice - p1.price);
+  });
 
   useEffect(() => {
     document.body.classList.add(styles.home__loaded);
 
     return () => document.body.classList.remove(styles.home__loaded);
   }, []);
+
+  useEffect(() => {
+    const ac = new AbortController();
+    const base = import.meta.env.BASE_URL;
+
+    (async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const [prodRes] = await Promise.all([
+          fetch(`${base}api/products.json`, { signal: ac.signal }),
+        ]);
+
+        const ok = (r: Response, name: string) => {
+          if (!r.ok) {
+            throw new Error(`${name} ${r.status} ${r.statusText}`);
+          }
+
+          return r;
+        };
+
+        const [prod] = await Promise.all([ok(prodRes, 'products').json()]);
+
+        setProducts(prod);
+      } catch (e: any) {
+        if (e?.name !== 'AbortError') {
+          setError(e?.message ?? 'Failed to load data');
+        }
+      } finally {
+        setLoading(false);
+      }
+    })();
+
+    return () => ac.abort();
+  }, []);
+
+  if (loading) {
+    return <main className={hero.hero__title}>Loading…</main>;
+  }
+
+  if (error) {
+    return <main className={hero.hero__title}>Failed to load: {error}</main>;
+  }
 
   const heroSlideStyle = { ['--delay']: '80ms' } as CSSProperties;
   const newmodelsSlideStyle = { ['--delay']: '240ms' } as CSSProperties;

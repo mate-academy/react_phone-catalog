@@ -105,10 +105,10 @@
 
 .sidepanel {
   position: fixed;
-  top: $navbar-height-mobile;
+  top: $navbar-height-tablet;
   left: 0;
   width: 100%;
-  height: calc(100vh - $navbar-height-mobile);
+  height: calc(100vh - $navbar-height-tablet);
 
   background-color: $dark-background-color;
 

@@ -66,14 +66,14 @@
   width: 32px;
   background: none;
   border: none;
-  background-image: url('/public/img/Buttons/Slider_button-Default_right.svg');
+  background-image: url('/img/Buttons/Slider_button-Default_right.svg');
 
   &:hover {
-    background-image: url('/public/img/Buttons/Slider_button-Hover_right.svg');
+    background-image: url('/img/Buttons/Slider_button-Hover_right.svg');
   }
 
   &:disabled {
-    background-image: url('/public/img/Buttons/Slider_button-Disabled_right.svg');
+    background-image: url('/img/Buttons/Slider_button-Disabled_right.svg');
   }
 }
 
@@ -83,14 +83,14 @@
   transform: rotate(180deg);
   background: none;
   border: none;
-  background-image: url('/public/img/Buttons/Slider_button-Default_right.svg');
+  background-image: url('/img/Buttons/Slider_button-Default_right.svg');
 
   &:hover {
-    background-image: url('/public/img/Buttons/Slider_button-Hover_right.svg');
+    background-image: url('/img/Buttons/Slider_button-Hover_right.svg');
   }
 
   &:disabled {
-    background-image: url('/public/img/Buttons/Slider_button-Disabled_right.svg');
+    background-image: url('/img/Buttons/Slider_button-Disabled_right.svg');
   }
 }
 
@@ -130,6 +130,10 @@
   gap: 24px;
   text-decoration: none;
   color: $main-text-color;
+}
+
+.category__image{
+  max-width: 100%;
 }
 
 .category__subtitle {

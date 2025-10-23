@@ -23,7 +23,7 @@
   height: 16px;
   rotate: (180deg);
 
-  background-image: url('/public/img/Buttons/Icons/Chevron_Arrow_Right.svg');
+  background-image: url('/img/Buttons/Icons/Chevron_Arrow_Right.svg');
 }
 
 .action__button {
@@ -52,7 +52,7 @@
   flex-shrink: 0;
 
   background: $arrow-button-default-bg-color;
-  background-image: url('/public/img/icons/Favourites_Heart_Like.svg');
+  background-image: url('/img/icons/Favourites_Heart_Like.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px;
@@ -71,7 +71,7 @@
   flex-shrink: 0;
 
   background-color: transparent;
-  background-image: url('/public/img/icons/Favourites_Heart_Like_Active.svg');
+  background-image: url('/img/icons/Favourites_Heart_Like_Active.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px;

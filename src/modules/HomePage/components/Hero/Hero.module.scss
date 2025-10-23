@@ -93,7 +93,7 @@
   }
 
   @include on-mobile {
-    width: 100vw;
+    width: calc(100vw - 16px);
     aspect-ratio: 1/1;
   }
 
@@ -275,7 +275,7 @@
     position: absolute;
     margin-top: 32px;
     inset: 0;
-    background: url('img/6d5898fcedef263c3e568fc0edfbfbe3-removebg-preview.png');
+    background: url('/img/6d5898fcedef263c3e568fc0edfbfbe3-removebg-preview.png');
     background-size: contain;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -293,11 +293,11 @@
   height: 24px;
   width: 24px;
 
-  background-image: url('img/icons/slider_dot.png');
+  background-image: url('/img/icons/slider_dot.png');
   background-size: cover;
   background-repeat: no-repeat;
 
   &__active {
-    background-image: url('img/icons/slider_dot_active.png');
+    background-image: url('/img/icons/slider_dot_active.png');
   }
 }
