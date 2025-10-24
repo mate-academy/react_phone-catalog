@@ -232,7 +232,7 @@ export const ProductDetailsPage = () => {
                 ))}
               </div>
               <div className={styles.product__photo}>
-                <img src={`/${productPhoto}`} className={styles.product__heroimg}></img>
+                <img src={`./${productPhoto}`} className={styles.product__heroimg}></img>
               </div>
 
               <div className={styles.product__filters}>

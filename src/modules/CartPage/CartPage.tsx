@@ -12,6 +12,7 @@ import { BackButton } from '../shared/components/Buttons/BackButton/BackButton';
 import styles from './CartPage.module.scss';
 import buttonStyle from '../shared/components/Buttons/Button.module.scss';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const CartPage = () => {
   const dispatch = useAppDispatch();
@@ -61,12 +62,17 @@ export const CartPage = () => {
                                 dispatch(removeFromCart({ itemId }));
                               }}
                             ></button>
-                            <img
-                              className={styles.item__image}
-                              src={`./${item.image}`}
-                              alt={item.image}
-                            />
-                            <p className={styles.item__title}>{item.name}</p>
+                            <Link
+                              to={{ pathname: `/${item.category}/${itemId}` }}
+                              className={styles.item__link}
+                            >
+                              <img
+                                className={styles.item__image}
+                                src={`./${item.image}`}
+                                alt={item.image}
+                              />
+                              <p className={styles.item__title}>{item.name}</p>
+                            </Link>
                           </div>
                           <div className={styles.item__right}>
                             <div className={styles.item__controlers}>

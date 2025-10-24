@@ -191,6 +191,14 @@
   justify-content: center;
 }
 
+.item__link {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  color: $main-text-color;
+  text-decoration: none;
+}
+
 .items__empty__image {
   height: 144px;
 }
