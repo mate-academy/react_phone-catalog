@@ -1,10 +1,13 @@
 import React from 'react';
 import { Provider as AppState } from 'react-redux';
-import { store } from './store';
+import { persistor, store } from './store';
 import { AppRouter } from './router';
+import { PersistGate } from 'redux-persist/integration/react';
 
 export const Root: React.FC = () => (
   <AppState store={store}>
-    <AppRouter />
+    <PersistGate loading={null} persistor={persistor}>
+      <AppRouter />
+    </PersistGate>
   </AppState>
 );

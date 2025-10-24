@@ -1,52 +1,16 @@
-/* eslint-disable no-param-reassign */
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getProducts } from '../api/products';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { Product } from '../types';
 
-type ProductsState = {
-  products: Product[];
-  loading: boolean;
-  error: string;
-};
-
-const initialState: ProductsState = {
-  products: [],
-  loading: false,
-  error: '',
-};
-
-export const fetchProducts = createAsyncThunk('products/fetch', () => {
-  return getProducts();
+export const productsAdapter = createEntityAdapter({
+  selectId: (product: Product) => product.itemId,
+  sortComparer: (a, b) => b.year - a.year,
 });
 
 const productsSlice = createSlice({
   name: 'products',
-  initialState,
+  initialState: productsAdapter.getInitialState(),
   reducers: {
-    set: (state, action: PayloadAction<Product[]>) => {
-      state.products = action.payload;
-    },
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
-    },
-    setError: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
-    },
-  },
-  extraReducers: builder => {
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.products = action.payload.slice(0, 3);
-      state.loading = false;
-    });
-
-    builder.addCase(fetchProducts.pending, state => {
-      state.loading = true;
-    });
-
-    builder.addCase(fetchProducts.rejected, state => {
-      state.error = 'Something went wrong!';
-      state.loading = false;
-    });
+    setProducts: productsAdapter.setAll,
   },
 });
 

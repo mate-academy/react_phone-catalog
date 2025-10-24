@@ -1,78 +1,124 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #313237;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover-bg: #fafbfc;
+  --color-hover-bs: #17203166;
+  --color-surface2: #323542;
+  --color-surface1: #161827;
+  --color-black: #0f1121;
+  --color-white: #fff;
+  --color-accent: #e8e9ee;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1440px;
+  --font-mont: 'Mont', sans-serif;
+  --shadow-inner: inset 0 0 0 1px;
+  --shadow-up: 0 -1px 0 0;
+  --shadow-down: 0 1px 0 0;
+  --shadow-left: -1px 0 0 0;
+  --shadow-right: 1px 0 0 0;
+}
+
 @layer base {
   @font-face {
     font-family: Mont;
-    font-style: normal;
     font-weight: 400;
-    src: url(/fonts/Mont-Regular.otf) format('opentype');
+    font-style: normal;
+    src: url('/fonts/Mont-Regular.otf') format('opentype');
   }
 
   @font-face {
     font-family: Mont;
-    font-style: normal;
     font-weight: 600;
-    src: url(/fonts/Mont-SemiBold.otf) format('opentype');
+    font-style: normal;
+    src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   }
 
   @font-face {
     font-family: Mont;
-    font-style: normal;
     font-weight: 700;
-    src: url(/fonts/Mont-Bold.otf) format('opentype');
+    font-style: normal;
+    src: url('/fonts/Mont-Bold.otf') format('opentype');
   }
 
   html {
-    @apply font-sans text-primary ;
+    @apply font-mont text-primary scroll-smooth;
   }
 
-  h1 {
-    @apply font-bold text-[32px] md:text-[48px] leading-[41px] md:leading-[56px] tracking-[-0.01em];
-  }
-
-  h2 {
-    @apply font-bold text-[22px] md:text-[32px] leading-[31px] md:leading-[41px] tracking-[-0.01em];
-  }
-
-  h3 {
-    @apply font-semibold md:font-bold text-[20px] md:text-[22px] leading-[26px] md:leading-[31px];
-  }
-
-  h4 {
-    @apply font-semibold text-[16px] md:text-[20px] leading-[20px] md:leading-[26px];
+  button, a {
+    @apply cursor-pointer;
   }
 }
 
-@layer components {
-  .container {
-    @apply w-full px-4 md:px-6 lg:max-w-[1200px] lg:mx-auto lg:px-8;
-  }
+@utility container {
+  @apply mx-auto w-full px-[16px] max-w-[1200px] sm:px-[24px] sm:max-w-[1200px] xl:px-[32px] xl:max-w-[1200px];
+}
 
-  .uppercase-text {
-    @apply uppercase font-bold text-[12px] leading-[11px] tracking-[0.04em];
-  }
+@utility pageGrid {
+  @apply grid grid-cols-4 gap-x-[16px] gap-y-[40px] sm:grid-cols-12 xl:grid-cols-24;
+}
 
-  .buttons-text {
-    @apply font-semibold text-[14px] leading-[21px];
-  }
+@utility text-h1 {
+  @apply font-bold text-[32px] leading-[41px] tracking-[-0.01em] sm:text-[48px] sm:leading-[56px];
+}
 
-  .body-text {
-    @apply font-normal text-[14px] leading-[21px];
-  }
+@utility text-h2 {
+  @apply font-bold text-[22px] leading-[31px] tracking-[0] sm:text-[32px] sm:leading-[41px] sm:tracking-[-0.01em];
+}
 
-  .small-text {
-    @apply font-semibold text-[12px] leading-[15px];
-  }
+@utility text-h3 {
+  @apply font-semibold text-[20px] leading-[26px] tracking-[0] sm:font-bold sm:text-[22px] sm:leading-[31px];
+}
 
-  .header-nav-link {
-    @apply relative flex items-center hover:text-primary font-bold text-[12px] leading-[11px] tracking-[0.04em] uppercase transition after:content-[''] after:absolute after:bottom-0 after:h-[3px] after:w-full after:bg-primary;
-  }
+@utility text-h4 {
+  @apply font-semibold text-[16px] leading-[20px] tracking-[0] sm:text-[20px] sm:leading-[26px];
+}
 
-  .header-button-counter {
-    @apply absolute top-[-6px] right-[-6px] flex justify-center items-center size-[14px] rounded-full border border-white bg-red text-white text-[9px] font-semibold leading-[11.5px];
-  }
+@utility text-uppercase {
+  @apply font-bold uppercase text-[12px] leading-[11px] tracking-[0.04em];
+}
 
-  .footer-nav-link {
-    @apply ;
-  }
+@utility text-buttons {
+  @apply font-semibold text-[14px] leading-[21px];
+}
+
+@utility text-body {
+  @apply font-normal text-[14px] leading-[21px];
+}
+
+@utility text-small {
+  @apply font-semibold text-[12px] leading-[15px];
+}
+
+@utility icon {
+  @apply block h-full w-full bg-contain bg-center bg-no-repeat;
+}
+
+@utility icon--favourites {
+  @apply bg-[url(/img/icons/favourites.svg)];
+}
+
+@utility icon--favourites-filled {
+  @apply bg-[url(/img/icons/favourites-filled.svg)];
+}
+
+@utility icon--cart {
+  @apply bg-[url(/img/icons/cart.svg)];
+}
+
+@utility icon--menu {
+  @apply bg-[url(/img/icons/menu.svg)];
+}
+
+@utility icon--arrow-up {
+  @apply bg-[url(/img/icons/arrow-up.svg)];
 }

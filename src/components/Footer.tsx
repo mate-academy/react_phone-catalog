@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { NavLink } from 'react-router-dom';
-import cn from 'classnames';
+import { NavLink } from 'react-router';
+import cn from 'clsx';
 import Logo from '/src/assets/logo.svg?react';
 import ArrowUp from '/src/assets/icons/arrow-up.svg?react';
 
@@ -8,22 +8,22 @@ export const Footer: FC = () => {
   return (
     <footer className="flex items-stretch shadow-up shadow-elements">
       <div className="container">
-        <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-8 md:gap-0 py-8">
-          <div className="flex justify-start md:grow">
-            <NavLink to="/public" className="flex">
+        <div className="flex flex-col items-start justify-center gap-8 py-8 sm:flex-row sm:items-center sm:gap-0">
+          <div className="flex justify-start sm:grow">
+            <NavLink to="../public" className="flex">
               <Logo className="h-8" />
             </NavLink>
           </div>
 
-          <nav className="md:grow ">
-            <ul className="flex flex-col md:flex-row md:justify-between items-start md:items-start gap-4 md:gap-0 h-full">
+          <nav className="sm:grow">
+            <ul className="flex h-full flex-col items-start gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-0">
               <li className="flex self-stretch">
                 <NavLink
                   to="https://github.com/4xmplme"
                   target="_blank"
                   className={({ isActive }) =>
                     cn(
-                      'uppercase-text transition',
+                      'text-uppercase transition',
                       isActive ? 'text-primary' : 'text-secondary',
                     )
                   }
@@ -37,7 +37,7 @@ export const Footer: FC = () => {
                   to="contacts"
                   className={({ isActive }) =>
                     cn(
-                      'uppercase-text transition',
+                      'text-uppercase transition',
                       isActive ? 'text-primary' : 'text-secondary',
                     )
                   }
@@ -51,7 +51,7 @@ export const Footer: FC = () => {
                   to="rights"
                   className={({ isActive }) =>
                     cn(
-                      'uppercase-text transition',
+                      'text-uppercase transition',
                       isActive ? 'text-primary' : 'text-secondary',
                     )
                   }
@@ -62,10 +62,15 @@ export const Footer: FC = () => {
             </ul>
           </nav>
 
-          <div className="self-center md:grow md:flex md:justify-end">
-            <button className="flex items-center gap-4 text-secondary hover:text-primary transition group">
-              <span className="small-text">Back to top</span>
-              <div className="size-8 p-2 shadow-inner shadow-elements group-hover:shadow-primary transition">
+          <div className="self-center sm:flex sm:grow sm:justify-end">
+            <button
+              onClick={() =>
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+              }
+              className="flex items-center gap-4 transition text-secondary group hover:text-primary"
+            >
+              <span className="text-small">Back to top</span>
+              <div className="shadow-inner transition size-8 p-[8px] shadow-elements group-hover:shadow-primary">
                 {/*<div className="icon icon--arrow-up"></div>*/}
                 <ArrowUp className="fill-primary" />
               </div>

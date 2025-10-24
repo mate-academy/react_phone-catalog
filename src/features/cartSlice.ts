@@ -1,9 +1,8 @@
-/* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Accessory } from '../types';
+import { Product } from '../types';
 
 type CartState = {
-  cart: Accessory[];
+  cart: Product[];
   loading: boolean;
   error: string;
 };
@@ -18,7 +17,8 @@ const accessoriesSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    set: (state, action: PayloadAction<Accessory[]>) => {
+    /* eslint-disable no-param-reassign */
+    set: (state, action: PayloadAction<Product[]>) => {
       state.cart = action.payload;
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
@@ -27,6 +27,7 @@ const accessoriesSlice = createSlice({
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
     },
+    /* eslint-enable no-param-reassign */
   },
 });
 

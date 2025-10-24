@@ -1,33 +1,62 @@
 import {
+  Action,
   combineReducers,
   configureStore,
   ThunkAction,
-  Action,
 } from '@reduxjs/toolkit';
 import {
-  products,
-  productDetails,
-  phones,
-  tablets,
-  accessories,
-  favourites,
-  cart,
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { productsApi } from '../services/productsApi';
+import { productDetailsApi } from '../services/productDetailsApi';
+import {
+  cartReducer,
+  favouritesReducer,
+  productDetailsReducer,
+  productsReducer,
 } from './reducers';
 
+const cartPersistConfig = {
+  key: 'cart',
+  version: 1,
+  storage,
+};
+
+const favouritesPersistConfig = {
+  key: 'favourites',
+  version: 1,
+  storage,
+};
+
 const rootReducer = combineReducers({
-  products,
-  phones,
-  tablets,
-  accessories,
-  favourites,
-  cart,
-  productDetails,
+  [productsApi.reducerPath]: productsApi.reducer,
+  [productDetailsApi.reducerPath]: productDetailsApi.reducer,
+  products: productsReducer,
+  productDetails: productDetailsReducer,
+  cart: persistReducer(cartPersistConfig, cartReducer),
+  favourites: persistReducer(favouritesPersistConfig, favouritesReducer),
 });
 
 // eslint-disable-next-line import/no-cycle
 export const store = configureStore({
   reducer: rootReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(productsApi.middleware, productDetailsApi.middleware),
 });
+
+export const persistor = persistStore(store);
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
@@ -37,6 +66,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,
   unknown,
-  Action<string>
+  Action
 >;
 /* eslint-enable @typescript-eslint/indent */
