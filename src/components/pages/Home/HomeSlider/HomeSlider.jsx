@@ -15,7 +15,7 @@ export const HomeSlider = () => {
   const [transitioning, setTransitioning] = useState(true);
   const sliderRef = useRef(null);
   const intervalRef = useRef(null);
-  const [slideHeight, setSlideHeight] = useState(0);
+  const [slideHeight] = useState(0);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
@@ -79,34 +79,6 @@ export const HomeSlider = () => {
 
     startAutoSlide();
   };
-
-  useEffect(() => {
-    const sliderTrackEl = sliderRef.current;
-
-    if (sliderTrackEl) {
-      const slide = sliderTrackEl.querySelector('.image-slide');
-
-      if (slide) {
-        setSlideHeight(slide.clientHeight);
-      }
-    }
-
-    const handleResize = () => {
-      const sliderTrackElResize = sliderRef.current;
-
-      if (sliderTrackElResize) {
-        const slide = sliderTrackElResize.querySelector('.image-slide');
-
-        if (slide) {
-          setSlideHeight(slide.clientHeight);
-        }
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, [current]);
 
   useEffect(() => {
     startAutoSlide();
