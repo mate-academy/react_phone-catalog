@@ -223,7 +223,7 @@ export const ProductDetailsPage = () => {
                 {product?.images.map(img => (
                   <img
                     key={img}
-                    src={`/${img}`}
+                    src={`./${img}`}
                     className={styles.product__preview}
                     onClick={() => {
                       setProductPhoto(`${img}`);

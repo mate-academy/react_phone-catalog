@@ -30,7 +30,7 @@ export const FavoritesPage = () => {
           ) : (
             <div className={styles.favorite__empty}>
               <img
-                src="public/img/product-not-found.png"
+                src="./img/product-not-found.png"
                 alt="product-not-found"
                 className={styles.favorite__empty__image}
               />
