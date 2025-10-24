@@ -17,4 +17,5 @@ const alias = {
 export default defineConfig({
   plugins: [react()],
   resolve: { alias },
+  base: '/react_phone-catalog/',
 })
