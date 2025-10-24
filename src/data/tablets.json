@@ -10,8 +10,8 @@
     "capacity": "128GB",
     "priceRegular": 799,
     "priceDiscount": 749,
-    "colorsAvailable": ["spacegray", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["darkgray", "spacegray"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
       "images/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
@@ -59,8 +59,8 @@
     "capacity": "256GB",
     "priceRegular": 829,
     "priceDiscount": 799,
-    "colorsAvailable": ["spacegray", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["darkgray", "spacegray"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
       "images/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
@@ -108,8 +108,8 @@
     "capacity": "512GB",
     "priceRegular": 869,
     "priceDiscount": 819,
-    "colorsAvailable": ["spacegray", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["darkgray", "spacegray"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
       "images/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
@@ -157,8 +157,8 @@
     "capacity": "1TB",
     "priceRegular": 899,
     "priceDiscount": 879,
-    "colorsAvailable": ["spacegray", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["darkgray", "spacegray"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
       "images/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
@@ -206,8 +206,8 @@
     "capacity": "2TB",
     "priceRegular": 999,
     "priceDiscount": 939,
-    "colorsAvailable": ["spacegray", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["darkgray", "spacegray"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
       "images/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
@@ -255,8 +255,8 @@
     "capacity": "128GB",
     "priceRegular": 799,
     "priceDiscount": 749,
-    "colorsAvailable": ["spacegray", "silver"],
-    "color": "silver",
+    "colorsAvailable": ["darkgray", "spacegray"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-pro-11-2021/silver/00.webp",
       "images/tablets/apple-ipad-pro-11-2021/silver/01.webp",
@@ -304,8 +304,8 @@
     "capacity": "256GB",
     "priceRegular": 829,
     "priceDiscount": 799,
-    "colorsAvailable": ["spacegray", "silver"],
-    "color": "silver",
+    "colorsAvailable": ["darkgray", "spacegray"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-pro-11-2021/silver/00.webp",
       "images/tablets/apple-ipad-pro-11-2021/silver/01.webp",
@@ -353,8 +353,8 @@
     "capacity": "512GB",
     "priceRegular": 869,
     "priceDiscount": 819,
-    "colorsAvailable": ["spacegray", "silver"],
-    "color": "silver",
+    "colorsAvailable": ["darkgray", "spacegray"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-pro-11-2021/silver/00.webp",
       "images/tablets/apple-ipad-pro-11-2021/silver/01.webp",
@@ -402,8 +402,8 @@
     "capacity": "1TB",
     "priceRegular": 899,
     "priceDiscount": 879,
-    "colorsAvailable": ["spacegray", "silver"],
-    "color": "silver",
+    "colorsAvailable": ["darkgray", "spacegray"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-pro-11-2021/silver/00.webp",
       "images/tablets/apple-ipad-pro-11-2021/silver/01.webp",
@@ -451,8 +451,8 @@
     "capacity": "2TB",
     "priceRegular": 999,
     "priceDiscount": 939,
-    "colorsAvailable": ["spacegray", "silver"],
-    "color": "silver",
+    "colorsAvailable": ["darkgray", "spacegray"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-pro-11-2021/silver/00.webp",
       "images/tablets/apple-ipad-pro-11-2021/silver/01.webp",
@@ -500,8 +500,8 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "rose gold",
+    "colorsAvailable": ["lightpink", "spacegray", "lightgreen", "skyblue"],
+    "color": "lightpink",
     "images": [
       "images/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
       "images/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
@@ -550,8 +550,8 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "rose gold",
+    "colorsAvailable": ["lightpink", "spacegray", "lightgreen", "skyblue"],
+    "color": "lightpink",
     "images": [
       "images/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
       "images/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
@@ -600,8 +600,8 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "silver",
+    "colorsAvailable": ["lightpink", "spacegray", "lightgreen", "skyblue"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-air-4th-gen/silver/00.webp",
       "images/tablets/apple-ipad-air-4th-gen/silver/01.webp",
@@ -650,8 +650,8 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "silver",
+    "colorsAvailable": ["lightpink", "spacegray", "lightgreen", "skyblue"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-air-4th-gen/silver/00.webp",
       "images/tablets/apple-ipad-air-4th-gen/silver/01.webp",
@@ -700,8 +700,8 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "green",
+    "colorsAvailable": ["lightpink", "spacegray", "lightgreen", "skyblue"],
+    "color": "lightgreen",
     "images": [
       "images/tablets/apple-ipad-air-4th-gen/green/00.webp",
       "images/tablets/apple-ipad-air-4th-gen/green/01.webp",
@@ -750,8 +750,8 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "green",
+    "colorsAvailable": ["lightpink", "spacegray", "lightgreen", "skyblue"],
+    "color": "lightgreen",
     "images": [
       "images/tablets/apple-ipad-air-4th-gen/green/00.webp",
       "images/tablets/apple-ipad-air-4th-gen/green/01.webp",
@@ -800,8 +800,8 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "sky blue",
+    "colorsAvailable": ["lightpink", "spacegray", "lightgreen", "skyblue"],
+    "color": "skyblue",
     "images": [
       "images/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
       "images/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
@@ -850,8 +850,8 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "sky blue",
+    "colorsAvailable": ["lightpink", "spacegray", "lightgreen", "skyblue"],
+    "color": "skyblue",
     "images": [
       "images/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
       "images/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
@@ -900,8 +900,8 @@
     "capacity": "64GB",
     "priceRegular": 499,
     "priceDiscount": 469,
-    "colorsAvailable": ["spacegray", "starlight", "pink"],
-    "color": "spacegray",
+    "colorsAvailable": ["darkgray", "starlight", "pink"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
       "images/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
@@ -949,8 +949,8 @@
     "capacity": "256GB",
     "priceRegular": 649,
     "priceDiscount": 599,
-    "colorsAvailable": ["spacegray", "starlight", "pink"],
-    "color": "spacegray",
+    "colorsAvailable": ["darkgray", "starlight", "pink"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
       "images/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
@@ -998,7 +998,7 @@
     "capacity": "256GB",
     "priceRegular": 649,
     "priceDiscount": 599,
-    "colorsAvailable": ["spacegray", "starlight", "pink"],
+    "colorsAvailable": ["darkgray", "starlight", "pink"],
     "color": "starlight",
     "images": [
       "images/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
@@ -1047,7 +1047,7 @@
     "capacity": "64GB",
     "priceRegular": 499,
     "priceDiscount": 469,
-    "colorsAvailable": ["spacegray", "starlight", "pink"],
+    "colorsAvailable": ["darkgray", "starlight", "pink"],
     "color": "starlight",
     "images": [
       "images/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
@@ -1096,7 +1096,7 @@
     "capacity": "64GB",
     "priceRegular": 499,
     "priceDiscount": 469,
-    "colorsAvailable": ["spacegray", "starlight", "pink"],
+    "colorsAvailable": ["darkgray", "starlight", "pink"],
     "color": "pink",
     "images": [
       "images/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
@@ -1145,7 +1145,7 @@
     "capacity": "256GB",
     "priceRegular": 649,
     "priceDiscount": 619,
-    "colorsAvailable": ["spacegray", "starlight", "pink"],
+    "colorsAvailable": ["darkgray", "starlight", "pink"],
     "color": "pink",
     "images": [
       "images/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
@@ -1194,7 +1194,7 @@
     "capacity": "128GB",
     "priceRegular": 429,
     "priceDiscount": 399,
-    "colorsAvailable": ["gold", "silver", "spacegray"],
+    "colorsAvailable": ["gold", "spacegray", "darkgray"],
     "color": "gold",
     "images": [
       "images/tablets/apple-ipad-10-2-2020/gold/00.webp",
@@ -1244,7 +1244,7 @@
     "capacity": "32GB",
     "priceRegular": 329,
     "priceDiscount": 299,
-    "colorsAvailable": ["gold", "silver", "spacegray"],
+    "colorsAvailable": ["gold", "spacegray", "darkgray"],
     "color": "gold",
     "images": [
       "images/tablets/apple-ipad-10-2-2020/gold/00.webp",
@@ -1294,8 +1294,8 @@
     "capacity": "32GB",
     "priceRegular": 329,
     "priceDiscount": 299,
-    "colorsAvailable": ["gold", "silver", "spacegray"],
-    "color": "silver",
+    "colorsAvailable": ["gold", "spacegray", "darkgray"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-10-2-2020/silver/00.webp",
       "images/tablets/apple-ipad-10-2-2020/silver/01.webp",
@@ -1344,8 +1344,8 @@
     "capacity": "128GB",
     "priceRegular": 429,
     "priceDiscount": 399,
-    "colorsAvailable": ["gold", "silver", "spacegray"],
-    "color": "silver",
+    "colorsAvailable": ["gold", "spacegray", "darkgray"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-10-2-2020/silver/00.webp",
       "images/tablets/apple-ipad-10-2-2020/silver/01.webp",
@@ -1394,8 +1394,8 @@
     "capacity": "128GB",
     "priceRegular": 429,
     "priceDiscount": 399,
-    "colorsAvailable": ["gold", "silver", "spacegray"],
-    "color": "spacegray",
+    "colorsAvailable": ["gold", "spacegray", "darkgray"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
       "images/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
@@ -1444,8 +1444,8 @@
     "capacity": "32GB",
     "priceRegular": 329,
     "priceDiscount": 299,
-    "colorsAvailable": ["gold", "silver", "spacegray"],
-    "color": "spacegray",
+    "colorsAvailable": ["gold", "spacegray", "darkgray"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
       "images/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
@@ -1494,8 +1494,8 @@
     "capacity": "256GB",
     "priceRegular": 549,
     "priceDiscount": 499,
-    "colorsAvailable": ["silver", "spacegray", "gold"],
-    "color": "silver",
+    "colorsAvailable": ["spacegray", "darkgray", "gold"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
       "images/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
@@ -1542,8 +1542,8 @@
     "capacity": "64GB",
     "priceRegular": 549,
     "priceDiscount": 499,
-    "colorsAvailable": ["silver", "spacegray", "gold"],
-    "color": "silver",
+    "colorsAvailable": ["spacegray", "darkgray", "gold"],
+    "color": "spacegray",
     "images": [
       "images/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
       "images/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
@@ -1590,8 +1590,8 @@
     "capacity": "64GB",
     "priceRegular": 549,
     "priceDiscount": 499,
-    "colorsAvailable": ["silver", "spacegray", "gold"],
-    "color": "spacegray",
+    "colorsAvailable": ["spacegray", "darkgray", "gold"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
       "images/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
@@ -1638,8 +1638,8 @@
     "capacity": "256GB",
     "priceRegular": 549,
     "priceDiscount": 499,
-    "colorsAvailable": ["silver", "spacegray", "gold"],
-    "color": "spacegray",
+    "colorsAvailable": ["spacegray", "darkgray", "gold"],
+    "color": "darkgray",
     "images": [
       "images/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
       "images/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
@@ -1686,7 +1686,7 @@
     "capacity": "256GB",
     "priceRegular": 549,
     "priceDiscount": 499,
-    "colorsAvailable": ["silver", "spacegray", "gold"],
+    "colorsAvailable": ["spacegray", "darkgray", "gold"],
     "color": "gold",
     "images": [
       "images/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
@@ -1734,7 +1734,7 @@
     "capacity": "64GB",
     "priceRegular": 549,
     "priceDiscount": 499,
-    "colorsAvailable": ["silver", "spacegray", "gold"],
+    "colorsAvailable": ["spacegray", "darkgray", "gold"],
     "color": "gold",
     "images": [
       "images/tablets/apple-ipad-mini-5th-gen/gold/00.webp",

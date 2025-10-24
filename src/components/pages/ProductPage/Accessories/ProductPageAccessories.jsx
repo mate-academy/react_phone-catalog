@@ -320,7 +320,7 @@ export default function ProductPage() {
         </div>
 
         <div className="product-id">
-          <p>ID: {product.id}</p>
+          <p>ID: {product.priceDiscount}</p>
         </div>
       </div>
 

@@ -274,7 +274,7 @@
     "capacity": "40mm",
     "priceRegular": 399,
     "priceDiscount": 329,
-    "colorsAvailable": ["black", "silver", "pink", "blue", "red"],
+    "colorsAvailable": ["black", "silver", "pink", "darkblue", "red"],
     "color": "black",
     "images": [
       "images/accessories/apple-watch-series-6/black/00.webp",
@@ -318,7 +318,7 @@
     "capacity": "44mm",
     "priceRegular": 429,
     "priceDiscount": 359,
-    "colorsAvailable": ["black", "silver", "pink", "blue", "red"],
+    "colorsAvailable": ["black", "silver", "pink", "darkblue", "red"],
     "color": "black",
     "images": [
       "images/accessories/apple-watch-series-6/black/00.webp",
@@ -362,7 +362,7 @@
     "capacity": "40mm",
     "priceRegular": 399,
     "priceDiscount": 329,
-    "colorsAvailable": ["black", "silver", "pink", "blue", "red"],
+    "colorsAvailable": ["black", "silver", "pink", "darkblue", "red"],
     "color": "silver",
     "images": [
       "images/accessories/apple-watch-series-6/silver/00.webp",
@@ -406,7 +406,7 @@
     "capacity": "44mm",
     "priceRegular": 429,
     "priceDiscount": 359,
-    "colorsAvailable": ["black", "silver", "pink", "blue", "red"],
+    "colorsAvailable": ["black", "silver", "pink", "darkblue", "red"],
     "color": "silver",
     "images": [
       "images/accessories/apple-watch-series-6/silver/00.webp",
@@ -450,7 +450,7 @@
     "capacity": "40mm",
     "priceRegular": 399,
     "priceDiscount": 329,
-    "colorsAvailable": ["black", "silver", "pink", "blue", "red"],
+    "colorsAvailable": ["black", "silver", "pink", "darkblue", "red"],
     "color": "pink",
     "images": [
       "images/accessories/apple-watch-series-6/pink/00.webp",
@@ -494,7 +494,7 @@
     "capacity": "44mm",
     "priceRegular": 429,
     "priceDiscount": 359,
-    "colorsAvailable": ["black", "silver", "pink", "blue", "red"],
+    "colorsAvailable": ["black", "silver", "pink", "darkblue", "red"],
     "color": "pink",
     "images": [
       "images/accessories/apple-watch-series-6/pink/00.webp",
@@ -538,8 +538,8 @@
     "capacity": "40mm",
     "priceRegular": 399,
     "priceDiscount": 329,
-    "colorsAvailable": ["black", "silver", "pink", "blue", "red"],
-    "color": "blue",
+    "colorsAvailable": ["black", "silver", "pink", "darkblue", "red"],
+    "color": "darkblue",
     "images": [
       "images/accessories/apple-watch-series-6/blue/00.webp",
       "images/accessories/apple-watch-series-6/blue/01.webp",
@@ -582,8 +582,8 @@
     "capacity": "44mm",
     "priceRegular": 429,
     "priceDiscount": 359,
-    "colorsAvailable": ["black", "silver", "pink", "blue", "red"],
-    "color": "blue",
+    "colorsAvailable": ["black", "silver", "pink", "darkblue", "red"],
+    "color": "darkblue",
     "images": [
       "images/accessories/apple-watch-series-6/blue/00.webp",
       "images/accessories/apple-watch-series-6/blue/01.webp",
@@ -626,7 +626,7 @@
     "capacity": "40mm",
     "priceRegular": 399,
     "priceDiscount": 329,
-    "colorsAvailable": ["black", "silver", "pink", "blue", "red"],
+    "colorsAvailable": ["black", "silver", "pink", "darkblue", "red"],
     "color": "red",
     "images": [
       "images/accessories/apple-watch-series-6/red/00.webp",
@@ -670,7 +670,7 @@
     "capacity": "44mm",
     "priceRegular": 429,
     "priceDiscount": 359,
-    "colorsAvailable": ["black", "silver", "pink", "blue", "red"],
+    "colorsAvailable": ["black", "silver", "pink", "darkblue", "red"],
     "color": "red",
     "images": [
       "images/accessories/apple-watch-series-6/red/00.webp",
