@@ -1,10 +1,10 @@
 import './App.scss';
-import { Header } from './components/Header/header';
-import { HomePage } from './pages/HomePages';
-import { Footer } from './components/footer/footer';
+import { Header } from './modules/Shared/Header/Header';
+import { HomePage } from './modules/HomePage/HomePages';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import { CatalogPage } from './pages/CatalogPage';
-import { ProductPage } from './pages/ProductPage';
+import { CatalogPage } from './modules/CatalogPage/CatalogPage';
+import { ProductPage } from './modules/ProductPage/ProductPage';
+import { Footer } from './modules/Shared/Footer/Footer';
 
 export const App = () => (
   <Router>

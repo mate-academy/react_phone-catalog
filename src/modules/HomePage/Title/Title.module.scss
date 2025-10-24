@@ -1,0 +1,12 @@
+@import '../../../Scss-variables/Variables.scss';
+
+.title {
+    text-align: start;
+    font-family: $mont-bold-font;
+    font-size: 48px;
+    line-height: 117%;
+    letter-spacing: -0.01em;
+    color: $active-link-color;
+    margin: 56px 0;
+    cursor: default;
+}

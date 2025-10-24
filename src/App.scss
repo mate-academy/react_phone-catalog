@@ -2,8 +2,11 @@
 
 * {
     margin: 0;
-    background-color: $main-background-color;
-    cursor: url(./img/cursor/Cursor\ Mouse\ Mice.svg);
+}
+
+body {
+  background-color: $main-background-color;
+  cursor: url(./img/cursor/Cursor\ Mouse\ Mice.svg);
 }
 
 

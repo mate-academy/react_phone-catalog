@@ -1,0 +1,27 @@
+@import '../../../Scss-variables/Variables.scss';
+
+
+.phonestitle,
+.idtitle {
+  font-family: $mont-bold-font;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 117%;
+  letter-spacing: -0.01em;
+  color: $active-link-color;
+  margin-top: 40px;
+  margin-bottom: 8px;
+}
+
+.quantity {
+  font-family: $mont-regular-font;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  color: #75767F;
+  margin-bottom: 40px;
+  }
+
+  .idtitle {
+    margin-bottom: 40px;
+  }

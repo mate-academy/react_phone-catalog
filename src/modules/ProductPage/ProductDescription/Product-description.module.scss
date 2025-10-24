@@ -1,0 +1,68 @@
+@import '../../../Scss-variables/Variables.scss';
+
+.description {
+  display: flex;
+  margin-bottom: 80px;
+  &__product {
+    width: 559px;
+    margin-right: 64px;
+    &__title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      color: #f1f2f9;
+      margin-bottom: 16px;
+    }
+    &__text {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 150%;
+      color: #75767f;
+      margin-bottom: 32px;
+      white-space: pre-wrap;
+    }
+
+    &__line {
+      color: #3b3e4a;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__info {
+    width: 512px;
+    &__title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      color: #f1f2f9;
+      margin-bottom: 16px;
+    }
+
+    &__line {
+      color: #3b3e4a;
+      width: 512px;
+      margin-bottom: 32px;
+    }
+
+    &__parametr {
+      font-family: $mont-regular-font;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 150%;
+      color: #75767F;
+    }
+
+
+    &__number {
+      font-family: $mont-regular-font;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 150%;
+      text-align: right;
+      color: $active-link-color;
+    }
+  }
+}
