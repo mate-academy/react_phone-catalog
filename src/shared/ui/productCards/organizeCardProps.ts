@@ -1,6 +1,6 @@
 import { Item } from '@features/globalStore/types';
-import { Status } from '@features/index';
-import { CatalogueProduct } from '@shared/types';
+import { LoadStatus } from '@shared/api';
+import { CatalogueProduct, Product } from '@shared/types';
 
 type IsIn = {
   fav: (itemId: string) => boolean;
@@ -20,14 +20,14 @@ const FALLBACK_ARRAY = Array.from(
 );
 
 const organizeCardProps = (
-  el: number | CatalogueProduct,
+  el: number | CatalogueProduct | Product,
   isIn: IsIn,
   stateHandlers: StateHandlers,
 ) => {
   if (typeof el === 'number') {
     return {
       key: el,
-      data: Status.LOADING,
+      data: LoadStatus.LOADING,
     };
   }
 

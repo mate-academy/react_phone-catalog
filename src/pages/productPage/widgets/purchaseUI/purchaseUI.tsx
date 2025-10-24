@@ -1,11 +1,12 @@
-import { Status, useProdCard } from '@features/index';
+import { useProdCard } from '@features/index';
 import { PurchaseBlockProps } from '../../model';
 import styles from './purchaseUI.module.scss';
 import { CardButtons } from '@entities/prodCard/ui/cardButtons';
 import classNames from 'classnames';
+import { LoadStatus } from '@shared/api';
 
 type Props = {
-  data: PurchaseBlockProps | Status;
+  data: PurchaseBlockProps | LoadStatus;
 };
 
 const defaultButtonProps = {

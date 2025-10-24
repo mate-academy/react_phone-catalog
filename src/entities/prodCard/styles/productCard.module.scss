@@ -3,10 +3,11 @@
 .container {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
+
   box-sizing: border-box;
   width: s.$c-card-width;
   height: s.$c-card-height;
-  flex-shrink: 0;
 }
 
 .product-card {
@@ -14,12 +15,12 @@
   flex-direction: column;
   gap: 8px;
   justify-content: space-between;
-  border: 1px solid s.$c-elements;
 
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: 32px;
+  border: 1px solid s.$c-elements;
 
   & > :last-child {
     margin-top: 8px;
@@ -27,6 +28,12 @@
 
   & > dl > dd {
     max-width: 120px;
+  }
+
+  &:hover {
+    > .image-wrapper > img {
+      transform: scale(1.1);
+    }
   }
 }
 
@@ -43,35 +50,40 @@
 
 .price {
   width: 100%;
+  margin-bottom: 8px;
   padding-bottom: 8px;
   border-bottom: 1px solid s.$c-elements;
-  margin-bottom: 8px;
 
   font-size: s.$c-lg;
   font-weight: s.$c-s-u;
-
   letter-spacing: 0;
 }
 
 .full-price {
   display: inline-block;
+
   margin-left: 8px;
+
+  font-weight: s.$c-r;
   color: s.$c-grey-secondary;
   text-decoration: line-through;
-  font-weight: s.$c-r;
 }
 
 .image-wrapper {
   display: flex;
+  justify-content: center;
   width: 100%;
   height: 196px;
-  justify-content: center;
 }
 
 .image {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: contain;
+
+  transition: transform 0.3s ease;
 }
 

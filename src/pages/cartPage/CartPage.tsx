@@ -1,7 +1,6 @@
-import { CartItemWidget } from './ui/CartItemWidget';
-import styles from './styles/cartPage.module.scss';
 import { useCartPage } from './model';
-import { CheckoutWidget } from './ui/checkoutWidget';
+import { CartItemWidget, CheckoutWidget } from './ui';
+import styles from './styles/cartPage.module.scss';
 import { ReturnButton } from '@ui/returnButton';
 
 export const CartPage = () => {

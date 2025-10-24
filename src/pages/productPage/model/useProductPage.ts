@@ -1,7 +1,11 @@
-import { Status, useLoadItems } from '@features/index';
-import { Category, get, ItemsAmount, Order } from '@shared/api';
-import { CatalogueData } from '@shared/api/types';
-import { Product } from '@shared/types';
+import {
+  Category,
+  get,
+  ItemsAmount,
+  LoadStatus,
+  Order,
+  useLoadItems,
+} from '@shared/api';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -25,13 +29,19 @@ export const useProductPage = () => {
   }, [productId]);
 
   useEffect(() => {
-    if (item.items === Status.ERROR) {
-      navigate('/404');
+    if (item.items === LoadStatus.ERROR) {
+      navigate('/404', {
+        state: {
+          message: 'Product was not found',
+          from: location.pathname,
+        },
+        replace: true,
+      });
     }
   }, [item.items]);
 
   return {
-    prod: item.items as Product | Status,
-    sliderItems: sliderData.items as CatalogueData | Status,
+    prod: item.items,
+    sliderItems: sliderData.items,
   };
 };

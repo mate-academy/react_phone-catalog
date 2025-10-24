@@ -1,14 +1,15 @@
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles/productCard.module.scss';
-import { Status, useNavigationTracker } from '@features/index';
+import { useNavigationTracker } from '@features/index';
 import { DetailedList } from '@ui/index';
 import { ProductProps, organizeProps } from './model';
 import { LoaderSpinner } from '@ui/skeletons';
 import { CardButtons } from './ui/cardButtons';
+import { LoadStatus } from '@shared/api';
 
 type Props = {
-  data: ProductProps | Status;
+  data: ProductProps | LoadStatus;
 };
 
 export const ProductCard = forwardRef<HTMLLIElement, Props>(({ data }, ref) => {

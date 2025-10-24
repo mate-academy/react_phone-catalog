@@ -2,11 +2,11 @@ import { useInfinite, useSliderCore, useSliderData } from '@shared/lib';
 import { ImagePagination } from '@widgets/sliderPagination';
 import styles from './styles/productSlider.module.scss';
 import { ProductSlideList } from './ui/productSlideList';
-import { Status } from '@features/index';
 import { LoaderSpinner } from '@ui/skeletons';
+import { LoadStatus } from '@shared/api';
 
 type Props = {
-  data: { images: string[]; name: string } | Status;
+  data: { images: string[]; name: string } | LoadStatus;
 };
 
 const GAP = 16;
@@ -23,7 +23,7 @@ export const ProductSlider: React.FC<Props> = ({ data }: Props) => {
 
   const paginationProps =
     typeof data === 'string'
-      ? Status.LOADING
+      ? LoadStatus.LOADING
       : { images: data.images, setByIndex: setByIndex };
 
   return (

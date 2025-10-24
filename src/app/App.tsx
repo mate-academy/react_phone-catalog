@@ -9,12 +9,15 @@ export const App = () => (
     <GlobalProvider>
       <Header />
       <Outlet />
-      <Footer />
     </GlobalProvider>
+    <Footer />
   </div>
 );
 
 // todo: clean Categories enum, types
-// add buttons from prodCard => shared
-// make type selectors null / undefined / data => loading.LOAD === null loading.ERR etc
-// make slider autoplay
+
+// refactor pagination to show only few pages not all at once
+// add picture tag to bannerSlider
+// add random product catalogue method
+
+//for RM: -dataflow -api -loader -errorHandling -cssFirst

@@ -7,17 +7,27 @@
   padding-bottom: 8px;
 
   &__link {
-    grid-row: 1;
     display: block;
-    width: 100%;
+    grid-row: 1;
+
     aspect-ratio: 1 / 1;
+    width: 100%;
+
     object-fit: fill;
+
+    &:hover {
+      > img {
+        z-index: s.$c-focus;
+        transform: scale(1.1);
+      }
+    }
   }
 
   &__image {
     display: block;
     width: 100%;
     height: 100%;
+    transition: transform 0.3s ease;
   }
 
   &__name {
@@ -32,8 +42,8 @@
     @include s.t-body-text;
 
     grid-row: 5;
-    color: s.$c-grey-secondary;
     line-height: 21px;
+    color: s.$c-grey-secondary;
   }
 }
 

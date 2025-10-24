@@ -1,13 +1,7 @@
-import { Category, get } from '@shared/api';
+import { Category, get, LoadStatus, useLoadItems } from '@shared/api';
 import { useEffect } from 'react';
 import { useUrlReducer } from './useUrlReducer';
-import {
-  CatalogueConf,
-  CatalogueData,
-  ItemsAmount,
-  Order,
-} from '@shared/api/types';
-import { Status, useLoadItems } from '@features/index';
+import { CatalogueConf, ItemsAmount, Order } from '@shared/api/';
 import { useNavigate } from 'react-router-dom';
 
 type Props = {
@@ -30,7 +24,7 @@ export const useCatalogue = ({ category }: Props) => {
   const length = useLoadItems(() => get.length(category));
 
   useEffect(() => {
-    if (products.items === Status.ERROR) {
+    if (products.items === LoadStatus.ERROR) {
       navigate('/404');
     }
   }, [products.items]);
@@ -51,7 +45,7 @@ export const useCatalogue = ({ category }: Props) => {
   };
 
   return {
-    data: products.items as CatalogueData | Status,
+    data: products.items,
     length: length.items,
     set,
     currentOrder: apiConfig.sort,

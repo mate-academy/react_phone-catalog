@@ -1,21 +1,27 @@
 import { Link } from 'react-router-dom';
-import styles from './styles/header.module.scss';
-import { HeaderButtonNavigation, HeaderMainNavigation } from './ui';
+import styles from './header.module.scss';
+import { ButtonNavigation } from '.';
 import { NavAriaLabels } from '@shared/types';
 import { BurgerMenuIcon, CrossIcon } from '@shared/icons';
 import classNames from 'classnames';
 import { useState } from 'react';
+import { MainNavigation } from '.';
 
 export const Header: React.FC = () => {
   const [isOpened, setOpened] = useState<boolean>(false);
 
-  const getClassName = () =>
-    classNames(styles.header, {
-      [styles['header--is-active']]: isOpened,
-    });
+  const closeMenu = () => {
+    if (isOpened) {
+      setOpened(false);
+    }
+  };
 
   return (
-    <header className={getClassName()}>
+    <header
+      className={classNames(styles.header, {
+        [styles['header--active']]: isOpened,
+      })}
+    >
       <Link
         to="/"
         className={styles['header-logo']}
@@ -37,8 +43,8 @@ export const Header: React.FC = () => {
       >
         {!isOpened ? <BurgerMenuIcon /> : <CrossIcon />}
       </button>
-      <HeaderMainNavigation />
-      <HeaderButtonNavigation />
+      <MainNavigation closeMenu={closeMenu} />
+      <ButtonNavigation closeMenu={closeMenu} />
     </header>
   );
 };

@@ -4,8 +4,9 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  width: 100%;
+
   box-sizing: border-box;
+  width: 100%;
 
   @include s.page-layout;
 
@@ -16,8 +17,8 @@
 
 .navigation {
   display: flex;
-  margin-bottom: 24px;
   box-sizing: border-box;
+  margin-bottom: 24px;
 
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
@@ -32,15 +33,15 @@
 .h1 {
   @include s.t-h1;
 
-  text-transform: capitalize;
   margin-bottom: 8px;
+  text-transform: capitalize;
 }
 
 .models {
   @include s.t-body-text;
 
-  color: s.$c-grey-secondary;
   margin-bottom: 32px;
+  color: s.$c-grey-secondary;
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
     margin-bottom: 40px;

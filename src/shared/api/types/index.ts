@@ -15,5 +15,7 @@ export {
 export {
   type CatalogueData,
   type ResponseDataMap,
-  type GetResponseData,
+  type ErrorObject,
+  type ServerResponseMap,
+  LoadStatus,
 } from './APIResponseTypes';

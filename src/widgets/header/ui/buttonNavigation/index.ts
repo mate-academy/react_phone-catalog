@@ -1,2 +1,1 @@
-export { HeaderButtonNavigation } from './buttonNavList';
-export { HeaderButtonNavLink } from './buttonNavLink';
+export { ButtonNavigation } from './ButtonNavigation';

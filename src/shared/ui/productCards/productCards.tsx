@@ -1,10 +1,11 @@
-import { Status, useProdCard } from '@features/index';
-import { CatalogueData } from '@shared/api/types';
+import { useProdCard } from '@features/index';
+import { CatalogueData, LoadStatus } from '@shared/api';
 import { organizeCardProps } from './organizeCardProps';
 import { ProductCard } from '@entities/prodCard';
+import { Product } from '@shared/types';
 
 type Props = {
-  data: CatalogueData | Status;
+  data: CatalogueData | Product[] | LoadStatus;
   firstItemRef?: React.RefObject<HTMLLIElement> | null;
   fallbackAmount: number;
 };
@@ -15,7 +16,9 @@ export const ProductCards = ({ data, firstItemRef, fallbackAmount }: Props) => {
   const array =
     typeof data === 'string'
       ? Array.from({ length: fallbackAmount }, (_, i) => i)
-      : data.items;
+      : Array.isArray(data)
+        ? data
+        : data.items;
 
   return array.map((el, index) => {
     const { key, ...props } = organizeCardProps(el, isIn, stateHandlers);

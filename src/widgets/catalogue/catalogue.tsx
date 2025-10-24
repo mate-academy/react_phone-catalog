@@ -1,11 +1,15 @@
-import { Status } from '@features/index';
-import { CatalogueData, Category, ItemsAmount } from '@shared/api/types';
+import {
+  CatalogueData,
+  Category,
+  ItemsAmount,
+  LoadStatus,
+} from '@shared/api/types';
 import styles from './styles/catalogue.module.scss';
 import { ProductCards } from '@ui/productCards/productCards';
 import { ErrorMessage } from './ui';
 
 type Props = {
-  data: CatalogueData | Status;
+  data: CatalogueData | LoadStatus;
   category: Category | 'favourites';
   currentPerPage: ItemsAmount;
 };
@@ -14,8 +18,8 @@ export const Catalogue = ({ data, category, currentPerPage }: Props) => {
   const fallbackAmount =
     currentPerPage === ItemsAmount.ALL ? 8 : +currentPerPage;
 
-  if (data === Status.ERROR) {
-    return <ErrorMessage msg={'Something went wrong...'} />;
+  if (data === LoadStatus.ERROR) {
+    return <ErrorMessage msg={'Something went wrong...'} reload={true} />;
   }
 
   if (typeof data !== 'string' && data.items.length === 0) {

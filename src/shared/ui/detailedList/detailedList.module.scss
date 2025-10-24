@@ -18,17 +18,17 @@
 }
 
 .value {
-  color: s.$c-grey-primary;
-  white-space: nowrap;
   overflow: hidden;
+  color: s.$c-grey-primary;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .skeleton {
   width: var(--width);
-  background-color: s.$c-elements;
-  border-radius: 5px;
   height: 100%;
+  border-radius: 5px;
+  background-color: s.$c-elements;
 
   @include s.e-shimmering-element;
 }

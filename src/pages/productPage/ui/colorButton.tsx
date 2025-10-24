@@ -3,7 +3,8 @@ import styles from '../styles/optionColorButton.module.scss';
 import { Colors } from '@shared/types';
 import { ColorButtonConfig, ColorsToHex } from '../model';
 import classNames from 'classnames';
-import { Status, useNavigationTracker } from '@features/index';
+import { useNavigationTracker } from '@features/index';
+import { LoadStatus } from '@shared/api';
 
 type Props = {
   to: string;
@@ -19,7 +20,7 @@ const baseConfig: ColorButtonConfig = {
   onClick: (e: React.MouseEvent) => e.preventDefault(),
 };
 
-export const ColorButton = ({ data }: { data: Props | Status }) => {
+export const ColorButton = ({ data }: { data: Props | LoadStatus }) => {
   const { preserveFrom } = useNavigationTracker();
 
   const getConfig = (): ColorButtonConfig => {

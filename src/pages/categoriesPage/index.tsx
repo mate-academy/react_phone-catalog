@@ -1,9 +1,8 @@
-import { Category } from '@shared/api';
+import { Category, LoadStatus } from '@shared/api';
 import styles from './styles/categoriesPage.module.scss';
 import { Dropdown, CataloguePagination } from './ui';
 import { useCatalogue, filter, pPage } from './model';
 import { Breadcrumbs } from '@ui/index';
-import { Status } from '@features/index';
 import { Catalogue } from '@widgets/index';
 
 type Props = {
@@ -27,7 +26,9 @@ export const CategoriesPage = ({ category }: Props) => {
 
       <h1 className={styles.h1}>{category}</h1>
       <span className={styles.models}>
-        {length === Status.LOADING ? Status.LOADING : `${length} models`}
+        {length === LoadStatus.LOADING
+          ? LoadStatus.LOADING
+          : `${length} models`}
       </span>
       <div className={styles.wrapper}>
         <Dropdown data={filter} setFilter={set.order} active={currentOrder} />

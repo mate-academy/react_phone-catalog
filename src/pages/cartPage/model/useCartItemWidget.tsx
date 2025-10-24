@@ -1,6 +1,6 @@
-import { useGlobalActions, useLoadItems } from '@features/index';
-import { get } from '@shared/api';
-import { CartItem, Product } from '@shared/types';
+import { CartItem } from '@features/globalStore/types';
+import { useGlobalActions } from '@features/index';
+import { get, useLoadItems } from '@shared/api';
 import { useEffect } from 'react';
 
 type Props = {
@@ -28,21 +28,13 @@ export const useCartItemWidget = ({ cartItem, updatePrice }: Props) => {
 
   useEffect(() => {
     if (typeof items !== 'string') {
-      const price = (items as Product).priceDiscount
-        ? (items as Product).priceDiscount
-        : (items as Product).priceRegular;
+      const price = items.priceDiscount
+        ? items.priceDiscount
+        : items.priceRegular;
 
       updatePrice(cartItem.id, price);
     }
   }, [items]);
 
-  const getPrice = () => {
-    const price =
-      ((items as Product).priceDiscount || (items as Product).priceRegular) *
-      cartItem.amount;
-
-    return `$${price}`;
-  };
-
-  return { items, onButton, getPrice };
+  return { items, onButton };
 };

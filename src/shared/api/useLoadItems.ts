@@ -1,16 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { Status } from './Status';
+import { LoadStatus } from './types';
 
-const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
-  const [items, setItems] = useState<T | Status>(Status.LOADING);
+const useLoadItems = <T>(loadFn: () => Promise<T | LoadStatus.ERROR>) => {
+  const [items, setItems] = useState<T | LoadStatus>(LoadStatus.LOADING);
   const abortControllerRef = useRef<AbortController | null>(null);
-
-  const load = async () => {
-    setItems(Status.LOADING);
-    const data = await loadFn();
-
-    setItems(data);
-  };
 
   const loadItems = async () => {
     if (abortControllerRef.current) {
@@ -26,14 +19,12 @@ const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
           return;
         }
 
-        setItems(Status.LOADING);
+        setItems(LoadStatus.LOADING);
         const data = await loadFn();
 
         if (signal.aborted) {
           return;
         }
-
-        await load();
 
         setItems(data);
 
@@ -44,7 +35,7 @@ const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
         }
 
         if (attempt === 2) {
-          setItems(Status.ERROR);
+          setItems(LoadStatus.ERROR);
         } else {
           await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
         }
@@ -63,4 +54,4 @@ const useLoadItems = <T>(loadFn: () => Promise<T | Status>) => {
   return { items, loadItems };
 };
 
-export { Status, useLoadItems };
+export { useLoadItems };

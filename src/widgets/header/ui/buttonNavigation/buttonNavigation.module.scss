@@ -1,0 +1,61 @@
+@use '@shared/styles' as s;
+@use '../../lib/headerConst' as lc;
+@use '../../lib/underscoreMixin' as *;
+
+.container {
+  overflow: visible;
+  display: flex;
+  flex-direction: row;
+
+
+  > :first-child {
+    margin-right: -1px;
+
+    & :hover {
+      clip-path: inset(0 -1px 0 0) !important;
+      box-shadow: 0 0 0 1px transparent;
+    }
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    height: lc.$button-size-wide;
+  }
+}
+
+.nav-link {
+  width: 100%;
+  height: 100%;
+  border-bottom: 0;
+
+  &:hover, &:focus {
+    @include s.m-btn-hover-reg;
+
+    z-index: s.$c-attention;
+    border-bottom: 0;
+  }
+
+  &--is-active {
+    @include underscore;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    display: flex;
+
+    @include s.m-btn-btn-reg;
+
+    border-top: 0;
+
+    &:hover, &:focus {
+      @include s.m-btn-hover-reg;
+
+      border-top: 0;
+    }
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    width: lc.$button-size-wide;
+  }
+
+  @include s.m-btn-btn-reg;
+}
+

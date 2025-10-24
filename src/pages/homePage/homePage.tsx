@@ -2,7 +2,6 @@ import React from 'react';
 import { categories, useHomePage } from './model';
 import styles from './styles/HomePage.module.scss';
 import { CategoryElement } from './ui';
-import { Status } from '@features/index';
 import { SliderType } from '@shared/types/sliderTypes';
 import { Slider } from '@widgets/index';
 
@@ -32,7 +31,7 @@ export const HomePage = () => {
             <CategoryElement
               key={el.id}
               category={el}
-              amount={amount[el.link].items as number | Status}
+              amount={amount[el.link].items}
             />
           ))}
         </section>

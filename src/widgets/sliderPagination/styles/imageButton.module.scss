@@ -1,27 +1,30 @@
 @use '@shared/styles' as s;
 
 .image-button {
-  border: 1px solid s.$c-elements;
-  box-sizing: border-box;
+  position: relative;
+
   display: flex;
   justify-content: center;
-  height: 50px;
+
+  box-sizing: border-box;
   width: 50px;
+  height: 50px;
+  border: 1px solid s.$c-elements;
+
   object-fit: fill;
-  position: relative;
 
   &-is-active {
     border: 1px solid s.$c-grey-primary;
   }
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
-    height: 35px;
     width: 35px;
+    height: 35px;
   }
 
   @media (min-width: s.$c-BREAKPOINT_WIDE) {
-    height: 80px;
     width: 80px;
+    height: 80px;
   }
 }
 

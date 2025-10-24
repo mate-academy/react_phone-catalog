@@ -1,4 +1,4 @@
-import { Status } from '@features/index';
+import { LoadStatus } from '@features/index';
 import { useSliderData } from '@shared/lib';
 import { usePagination } from './model/usePagination';
 import styles from './styles/sliderPagination.module.scss';
@@ -11,7 +11,7 @@ type ImagePaginationProps = {
 };
 
 type Props = {
-  data: ImagePaginationProps | Status;
+  data: ImagePaginationProps | LoadStatus;
 };
 
 const FALLBACK_AMOUNT = 4;

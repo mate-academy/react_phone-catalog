@@ -5,24 +5,25 @@ $primary-grey-border: 1px solid c.$grey-primary;
 
 // #region Base
 @mixin button-base {
-  display: flex;
   cursor: pointer;
+
   position: relative;
   z-index: c.$regular;
+
+  display: flex;
   align-items: center;
   justify-content: center;
+
   box-sizing: border-box;
-  outline: none;
 
   @include t.button-text;
 
   &:hover {
-    outline: none;
     z-index: c.$attention;
   }
 
   &:active {
-    outline: none;
+    z-index: c.$focus;
   }
 }
 
@@ -30,14 +31,17 @@ $primary-grey-border: 1px solid c.$grey-primary;
 
 // #region Buttons
 @mixin btn-blc {
-  background-color: c.$grey-primary;
   color: c.$white;
+  background-color: c.$grey-primary;
+  box-shadow: 0 3px 13px transparent;
+  transition: box-shadow 0.5s ease;
 
   @include button-base;
 }
 
 @mixin btn-reg {
-  border: 1px solid c.$elements;
+  box-shadow: inset 0 0 0 1px c.$elements;
+  transition: box-shadow 0.3s ease;
 
   @include button-base;
 }
@@ -52,7 +56,9 @@ $primary-grey-border: 1px solid c.$grey-primary;
 
 // #region Hover
 @mixin hover-reg {
-  border: $primary-grey-border;
+  z-index: c.$focus;
+  box-shadow: inset 0 0 0 1px c.$grey-primary;
+  transition: box-shadow 0.3s ease;
 }
 
 @mixin hover-black {
@@ -63,8 +69,8 @@ $primary-grey-border: 1px solid c.$grey-primary;
 
 // #region Active
 @mixin active-green {
-  color: c.$green;
   border: c.$elements;
+  color: c.$green;
   background-color: c.$white;
   box-shadow: none;
 }

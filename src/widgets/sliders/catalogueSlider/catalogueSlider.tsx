@@ -2,11 +2,11 @@ import { useSliderCore, useSliderData } from '@shared/lib';
 import styles from './styles/catalogueSlider.module.scss';
 import { SliderButtons } from '../sharedUI';
 import { CatalogueData } from '@shared/api/types';
-import { Status } from '@features/index';
+import { LoadStatus } from '@features/index';
 import { ProductCards } from '@ui/productCards/productCards';
 
 type Props = {
-  data: CatalogueData | Status;
+  data: CatalogueData | LoadStatus;
   title: string;
 };
 

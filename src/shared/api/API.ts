@@ -3,35 +3,54 @@ import { getRequest } from '@server/api/serverMock';
 import {
   CatalogueConf,
   Category,
-  GetRequestBody,
-  GetResponseData,
+  ErrorObject,
+  LoadStatus,
   Request,
+  RequestBodyMap,
+  ResponseDataMap,
   ResponseStatus,
+  ServerResponseMap,
 } from './types';
-import { Status } from '@features/index';
+
+function isErrorResponse(
+  response: ServerResponseMap[Request] | ErrorObject,
+): response is ErrorObject {
+  return response.status === ResponseStatus.ERROR;
+}
 
 async function makeApiRequest<T extends Request>(
-  requestData: GetRequestBody<T>,
-): Promise<GetResponseData<T> | Status.ERROR> {
-  const response = JSON.parse(await getRequest(JSON.stringify(requestData)));
+  requestData: RequestBodyMap[T],
+): Promise<ResponseDataMap[T] | LoadStatus.ERROR> {
+  const response: ServerResponseMap[T] | ErrorObject = JSON.parse(
+    await getRequest(JSON.stringify(requestData)),
+  );
 
-  if (response.status === ResponseStatus.ERROR) {
+  if (isErrorResponse(response)) {
     console.warn(`Unable to load data, error: ${response.message}`);
 
-    return Status.ERROR;
+    return LoadStatus.ERROR;
   }
 
-  return response.data;
+  return response.data as ResponseDataMap[T];
 }
 
 const get = {
-  banners: () => makeApiRequest({ request: Request.BANNER }),
+  banners: () => makeApiRequest<Request.BANNER>({ request: Request.BANNER }),
   product: (conf: string) =>
-    makeApiRequest({ request: Request.PRODUCT, body: { itemId: conf } }),
+    makeApiRequest<Request.PRODUCT>({
+      request: Request.PRODUCT,
+      body: { itemId: conf },
+    }),
   catalogue: (conf: CatalogueConf) =>
-    makeApiRequest({ request: Request.CATALOGUE, body: conf }),
+    makeApiRequest<Request.CATALOGUE>({
+      request: Request.CATALOGUE,
+      body: conf,
+    }),
   length: (category: Category) =>
-    makeApiRequest({ request: Request.AMOUNT, body: { category: category } }),
+    makeApiRequest<Request.AMOUNT>({
+      request: Request.AMOUNT,
+      body: { category: category },
+    }),
 };
 
 export { get };

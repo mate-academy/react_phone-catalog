@@ -10,9 +10,9 @@
   justify-content: space-between;
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
-    width: 45vw;
     flex-direction: row;
     gap: auto;
+    width: 45vw;
     height: 100%;
   }
 }
@@ -24,10 +24,9 @@
 .link {
   @include s.t-uppercase;
 
-  color: s.$c-grey-secondary;
-
   display: inline-block;
   padding: 16px 16px 8px;
+  color: s.$c-grey-secondary;
 
   &:focus {
     color: s.$c-grey-primary;

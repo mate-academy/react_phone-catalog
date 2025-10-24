@@ -1,0 +1,1 @@
+export { RoutePath } from './config';

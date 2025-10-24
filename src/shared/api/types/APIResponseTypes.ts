@@ -7,13 +7,57 @@ interface CatalogueData {
   pages: number;
 }
 
-type ResponseDataMap = {
-  [Request.BANNER]: BannerData[];
-  [Request.PRODUCT]: Product;
-  [Request.CATALOGUE]: CatalogueData;
-  [Request.AMOUNT]: number;
+enum ResponseStatus {
+  ERROR = 'error',
+  SUCCESS = 'success',
+}
+
+interface ErrorObject {
+  status: ResponseStatus.ERROR;
+  message: string;
+}
+
+interface SuccessResponse {
+  status: ResponseStatus.SUCCESS;
+}
+
+interface BannerResponse extends SuccessResponse {
+  data: BannerData[];
+}
+
+interface ProductResponse extends SuccessResponse {
+  data: Product;
+}
+
+interface CatalogueResponse extends SuccessResponse {
+  data: CatalogueData;
+}
+
+interface AmountResponse extends SuccessResponse {
+  data: number;
+}
+
+enum LoadStatus {
+  LOADING = 'Loading...',
+  ERROR = 'Error',
+}
+
+type ServerResponseMap = {
+  [Request.BANNER]: BannerResponse;
+  [Request.PRODUCT]: ProductResponse;
+  [Request.CATALOGUE]: CatalogueResponse;
+  [Request.AMOUNT]: AmountResponse;
 };
 
-type GetResponseData<T extends Request> = ResponseDataMap[T];
+type ResponseDataMap = {
+  [K in Request]: ServerResponseMap[K]['data'];
+};
 
-export { type CatalogueData, type ResponseDataMap, type GetResponseData };
+export {
+  type CatalogueData,
+  type ResponseDataMap,
+  ResponseStatus,
+  type ErrorObject,
+  type ServerResponseMap,
+  LoadStatus,
+};

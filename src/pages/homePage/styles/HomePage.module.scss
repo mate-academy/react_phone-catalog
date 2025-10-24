@@ -58,9 +58,9 @@ $GRID_SPACER: 24px;
 
 .categories {
   display: grid;
-  width: 100%;
   grid-template-rows: 31px repeat(3, 1fr);
   gap: 24px;
+  width: 100%;
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
     grid-template: 41px 1fr / repeat(3, 1fr);

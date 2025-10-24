@@ -2,16 +2,13 @@
 
 .container {
   display: flex;
-  height: 100%;
+  flex-wrap: wrap;
+  gap: 8px;
   align-self: center;
   justify-content: center;
-  margin-top: 24px;
-  gap: 8px;
-  flex-wrap: wrap;
 
-  @media (min-width: s.$c-BREAKPOINT_TAB) {
-    margin-top: 40px;
-  }
+  height: 100%;
+  margin-top: 24px;
 
   > :first-child {
     margin-right: 8px;
@@ -27,12 +24,16 @@
       @include s.m-btn-disabled;
     }
   }
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    margin-top: 40px;
+  }
 }
 
 .button {
+  cursor: pointer;
   width: 32px;
   height: 32px;
-  cursor: pointer;
 
   @include s.m-btn-btn-reg;
 

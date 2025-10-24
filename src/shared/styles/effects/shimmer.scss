@@ -1,15 +1,15 @@
 @use '@shared/styles/constants/' as c;
 
 @mixin shimmering-element {
+  border-radius: 6px;
  	background: linear-gradient(
 		90deg,
 		#EDEDED 30%,
 		#DCDCDC 50%,
 		#EDEDED 70%
 	);
-  animation: shimmer 1.5s infinite linear;
   background-size: 400%;
-  border-radius: 6px;
+  animation: shimmer 1.5s infinite linear;
 }
 
 @keyframes shimmer {

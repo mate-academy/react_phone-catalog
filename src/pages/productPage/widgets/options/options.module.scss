@@ -1,18 +1,20 @@
 @use '@shared/styles' as s;
 
 .options-list {
-  display: flex;
   position: relative;
+
+  display: flex;
   flex-direction: column;
   gap: 8px;
+
   padding-bottom: 24px;
   border-bottom: 1px solid s.$c-elements;
 
   &--buttons {
     display: flex;
-    width: 100%;
-    justify-items: start;
     gap: 8px;
+    justify-items: start;
+    width: 100%;
   }
 
   &--heading {

@@ -1,0 +1,61 @@
+@use '@shared/styles' as s;
+@use '../../lib/underscoreMixin' as *;
+
+.main-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  margin-top: 24px;
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    flex-direction: row;
+    gap: 32px;
+    justify-content: start;
+    justify-items: start;
+
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+    padding-left: 16px;
+    border-bottom: 1px solid s.$c-elements;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_WIDE) {
+    gap: 64px;
+    padding-left: 24px;
+  }
+}
+
+.listitem {
+  height: 100%;
+}
+
+.link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+  padding: 0 0 8px;
+
+  color: s.$c-grey-secondary;
+
+  &:focus {
+    color: s.$c-grey-primary;
+  }
+
+  &--active {
+    color: s.$c-grey-primary;
+
+    @include underscore;
+  }
+
+  @media (min-width: s.$c-BREAKPOINT_TAB) {
+    padding: 0;
+  }
+
+  @include s.t-uppercase;
+}

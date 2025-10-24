@@ -1,4 +1,5 @@
 @use '@shared/styles' as s;
+
 @import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap';
 @import '@shared/styles/normalize';
 
@@ -16,8 +17,10 @@
 
   display: flex;
   flex-direction: column;
+
   width: 100%;
   min-height: 100vh;
+
   background-color: s.$c-white;
 
   & > header {

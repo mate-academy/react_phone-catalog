@@ -2,7 +2,7 @@ import { useSliderData } from '@shared/lib';
 import { usePagination } from './model/usePagination';
 import styles from './styles/sliderPagination.module.scss';
 import classNames from 'classnames';
-import { Status } from '@features/index';
+import { LoadStatus } from '@features/index';
 
 type BlockPaginationProps = {
   amount: number;
@@ -10,7 +10,7 @@ type BlockPaginationProps = {
 };
 
 type Props = {
-  data: BlockPaginationProps | Status;
+  data: BlockPaginationProps | LoadStatus;
 };
 
 const FALLBACK_AMOUNT = 4;

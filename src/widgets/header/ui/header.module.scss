@@ -1,23 +1,23 @@
 @use '@shared/styles' as s;
-@use './headerConst' as lc;
+@use '../lib/headerConst' as lc;
 
 .header {
   display: grid;
   grid-template: lc.$grid-mob-inactive;
-  background-color: s.$c-white;
   width: 100%;
+  background-color: s.$c-white;
 
 
   > :nth-child(3) {
-    grid-area: 2 / 1 / 3 / 3;
     display: none;
+    grid-area: 2 / 1 / 3 / 3;
   }
   > :last-child {
-    grid-area: 3 / 1 / 4 / 3;
     display: none;
+    grid-area: 3 / 1 / 4 / 3;
   }
 
-  &--is-active {
+  &--active {
     grid-template: lc.$grid-mob-active;
 
     > :nth-child(3) {
@@ -32,12 +32,12 @@
     grid-template: lc.$grid-tab;
 
     > :nth-child(3) {
-      grid-area: 1 / 2 / 2 / 3;
       display: block;
+      grid-area: 1 / 2 / 2 / 3;
     }
     > :last-child {
-      grid-area: 1 / 3 / 2 / 4;
       display: flex;
+      grid-area: 1 / 3 / 2 / 4;
     }
   }
 
@@ -53,12 +53,8 @@
 
   @include s.m-btn-btn-reg;
 
-  border-top: 0;
-
   &:hover, &:focus {
     @include s.m-btn-hover-reg;
-
-    border-top: 0;
   }
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
@@ -67,8 +63,8 @@
 }
 
 .header-logo {
-  grid-area: 1 / 1 / 2 / 2;
   display: grid;
+  grid-area: 1 / 1 / 2 / 2;
   grid-template-columns: lc.$logo-width-mob 1fr;
   border-bottom: 1px solid s.$c-elements;
 
@@ -87,3 +83,4 @@
     padding: 18px 24px;
   }
 }
+

@@ -1,19 +1,20 @@
 @use '@shared/styles' as s;
 
 .pagination-button {
-  border: none;
-  height: 100%;
-  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  border: none;
 }
 
 .pagination-block {
   display: block;
-  background-color: s.$c-elements;
   width: 14px;
   height: 4px;
+  background-color: s.$c-elements;
 
   &-is-active {
     background-color: s.$c-grey-primary;

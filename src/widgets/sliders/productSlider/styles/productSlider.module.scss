@@ -1,14 +1,17 @@
 @use '@shared/styles' as s;
 
 .product-slider {
+  scrollbar-width: none;
+
   position: relative;
-  display: grid;
+
   overflow-y: hidden;
+  display: grid;
   grid-template: 1fr 49px / 1fr;
   gap: 16px 0;
+
   width: 100%;
   height: 100%;
-  scrollbar-width: none;
 
   > :first-child {
     min-width: 100%;
@@ -16,7 +19,6 @@
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
     grid-template: 1fr / 35px 1fr;
-
     gap: 0 16px;
   }
 
@@ -27,8 +29,8 @@
 }
 
 .viewport {
-  display: block;
   overflow: hidden;
+  display: block;
   grid-area: 1 / 1 / 2 / 2;
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
@@ -37,9 +39,11 @@
 }
 
 .track {
-  width: 100%;
   display: flex;
-  aspect-ratio: 1 / 1;
   gap: var(--gap);
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
+
   transition: var(--animation-speed) ease-in-out;
 }

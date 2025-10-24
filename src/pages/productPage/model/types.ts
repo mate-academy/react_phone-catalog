@@ -1,4 +1,4 @@
-import { Status } from '@features/index';
+import { LoadStatus } from '@shared/api';
 import { Capacity, Colors } from '@shared/types';
 
 type ColorButtonConfig = {
@@ -50,10 +50,10 @@ type ProdSliderData = {
 };
 
 interface UiProps {
-  slider: ProdSliderData | Status;
+  slider: ProdSliderData | LoadStatus;
   SKU: string;
-  optionsData: Status | OptionsProps;
-  purchaseData: Status | PurchaseBlockProps;
+  optionsData: LoadStatus | OptionsProps;
+  purchaseData: LoadStatus | PurchaseBlockProps;
   baseDetailedList: Record<string, string | null>;
 }
 

@@ -1,5 +1,5 @@
 import { Item } from '@features/globalStore/types';
-import { Status } from '@features/index';
+import { LoadStatus } from '@features/index';
 import { CatalogueProduct } from '@shared/types';
 
 type IsIn = {
@@ -20,7 +20,7 @@ export const organizeCardProps = (
   if (typeof el === 'number') {
     return {
       key: el,
-      data: Status.LOADING,
+      data: LoadStatus.LOADING,
     };
   }
 

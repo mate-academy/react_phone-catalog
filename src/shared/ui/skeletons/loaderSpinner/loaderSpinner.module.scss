@@ -3,25 +3,28 @@ $color2: #a496a4;
 $color3: #554d73;
 
 .image-wrapper {
-  display: flex;
   position: relative;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
+
+  display: flex;
   align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
 }
 
 .loader {
   display: flex;
-  height: 100%;
-  aspect-ratio: 1 / 1;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 1 / 1;
+  height: 100%;
 
   > svg {
     width: 90%;
-    fill: none;
     max-width: 200px;
+    fill: none;
   }
 }
 
@@ -86,7 +89,7 @@ $color3: #554d73;
     stroke-dashoffset: 530;
   }
   100% {
-    stroke-dashoffset: 570;
     transform: rotate(360deg);
+    stroke-dashoffset: 570;
   }
 }
