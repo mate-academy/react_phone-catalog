@@ -19,7 +19,7 @@ export const Footer = () => (
             Github
           </Link>
           <Link
-            to={{ pathname: 'https://www.linkedin.com/in/vladislav-belenov/' }}
+            to={'https://www.linkedin.com/in/vladislav-belenov/'}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.footer__item}
