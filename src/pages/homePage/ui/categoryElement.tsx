@@ -18,7 +18,7 @@ export const CategoryElement = ({ category, amount }: Props) => (
     >
       <img
         className={styles.category__image}
-        src={`/src/shared/img/${category.src}`}
+        src={`api/${category.src}`}
         alt={category.name}
         loading="lazy"
       />

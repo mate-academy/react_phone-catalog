@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
         tabIndex={-1}
       >
         <img
-          src="/src/shared/icons/logo.svg"
+          src="api/logo.svg"
           alt=""
           aria-hidden="true"
           className={styles['logo-image']}
