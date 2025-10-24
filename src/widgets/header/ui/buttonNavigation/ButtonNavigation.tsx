@@ -1,7 +1,7 @@
 import { useGlobalData, useNavigationTracker } from '@features/index';
 import styles from './buttonNavigation.module.scss';
 import { getButtonLinks } from '../../model';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { ItemsCounter } from '@shared/icons';
 type Props = {
@@ -11,6 +11,7 @@ export const ButtonNavigation = ({ closeMenu }: Props) => {
   const { cartAmount, favAmount } = useGlobalData();
   const { trackLinkHandler } = useNavigationTracker();
   const buttonLinks = getButtonLinks(cartAmount, favAmount);
+  const location = useLocation();
 
   return (
     <nav aria-label="User actions menu" className={styles.container}>
@@ -24,7 +25,7 @@ export const ButtonNavigation = ({ closeMenu }: Props) => {
             to={link.to}
             aria-label={link.ariaName}
             className={classNames([styles['nav-link']], {
-              [styles['nav-link--is-active']]: isActive,
+              [styles['nav-link--active']]: isActive,
             })}
             {...(isActive && { 'aria-current': 'page' })}
             onClick={e => {

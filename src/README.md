@@ -97,8 +97,3 @@ This project serves as a learning exercise in:
 - Scalable architecture patterns
 - TypeScript best practices
 - Real-world development workflows
-
-### Simple Version Available
-
-A simplified version matching original requirements exactly is available in the `simple-version` branch.
-

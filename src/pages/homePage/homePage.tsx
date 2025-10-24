@@ -37,7 +37,7 @@ export const HomePage = () => {
         </section>
         <Slider
           model={SliderType.CATALOGUE}
-          props={{ data: promoItems, title: 'Hot prices' }}
+          props={{ data: promoItems, title: 'Hot prices', lazy: true }}
         />
       </div>
     </main>

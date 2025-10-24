@@ -12,7 +12,8 @@ import {
 
 type BannerData = {
   id: number;
-  src: string;
+  srcWide: string;
+  srcSquare: string;
   alt: string;
   ariaLabel: string;
   href: string;

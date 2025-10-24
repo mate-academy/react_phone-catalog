@@ -1,30 +1,34 @@
 [
   {
     "id": 0,
-    "src": "/api/banners/swiperbanner_1.webp",
-    "alt": "iPhone 15",
-    "ariaLabel": "Go to *** page",
-    "href": "#"
+    "srcWide": "/api/banners/banner1_wide.webp",
+    "srcSquare": "/api/banners/banner1_square.webp",
+    "alt": "iPhone 20",
+    "ariaLabel": "Advertisement banner Iphone 20",
+    "href": "/product/apple-iphone-14-512gb-midnight"
   },
   {
     "id": 1,
-    "src": "/api/banners/swiperbanner_2.webp",
+    "srcWide": "/api/banners/banner2_wide.webp",
+    "srcSquare": "/api/banners/banner2_square.webp",
     "alt": "iPhone 15",
-    "ariaLabel": "Go to *** page",
-    "href": "#"
+    "ariaLabel": "Check our iPhone 15 page",
+    "href": "/product/apple-iphone-14-pro-128gb-spaceblack"
   },
   {
     "id": 2,
-    "src": "/api/banners/swiperbanner_3.webp",
-    "alt": "iPhone 15",
-    "ariaLabel": "Go to *** page",
-    "href": "#"
+    "srcWide": "/api/banners/banner3_wide.webp",
+    "srcSquare": "/api/banners/banner3_square.webp",
+    "alt": "iPhone 15 Pro",
+    "ariaLabel": "Check our iPhone 15 pro page",
+    "href": "/product/apple-iphone-14-pro-512gb-spaceblack"
   },
   {
     "id": 3,
-    "src": "/api/banners/swiperbanner_4.webp",
-    "alt": "iPhone 15",
-    "ariaLabel": "Go to *** page",
-    "href": "#"
+    "srcWide": "/api/banners/banner4_wide.webp",
+    "srcSquare": "/api/banners/banner4_square.webp",
+    "alt": "iPhone 15 pro titanium",
+    "ariaLabel": "Check our iPhone 15 pro Titanium page",
+    "href": "/product/apple-iphone-14-pro-1tb-spaceblack"
   }
 ]

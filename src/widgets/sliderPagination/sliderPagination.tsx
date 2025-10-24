@@ -2,7 +2,7 @@ import { useSliderData } from '@shared/lib';
 import { usePagination } from './model/usePagination';
 import styles from './styles/sliderPagination.module.scss';
 import classNames from 'classnames';
-import { LoadStatus } from '@features/index';
+import { LoadStatus } from '@shared/api';
 
 type BlockPaginationProps = {
   amount: number;

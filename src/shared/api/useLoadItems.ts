@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { LoadStatus } from './types';
 
 const useLoadItems = <T>(loadFn: () => Promise<T | LoadStatus.ERROR>) => {
   const [items, setItems] = useState<T | LoadStatus>(LoadStatus.LOADING);
   const abortControllerRef = useRef<AbortController | null>(null);
 
-  const loadItems = async () => {
+  const loadItems = useCallback(async () => {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
@@ -41,7 +41,7 @@ const useLoadItems = <T>(loadFn: () => Promise<T | LoadStatus.ERROR>) => {
         }
       }
     }
-  };
+  }, [loadFn]);
 
   useEffect(() => {
     return () => {

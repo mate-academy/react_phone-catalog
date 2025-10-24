@@ -8,9 +8,15 @@ type Props = {
   data: CatalogueData | Product[] | LoadStatus;
   firstItemRef?: React.RefObject<HTMLLIElement> | null;
   fallbackAmount: number;
+  lazy: boolean;
 };
 
-export const ProductCards = ({ data, firstItemRef, fallbackAmount }: Props) => {
+export const ProductCards = ({
+  data,
+  firstItemRef,
+  fallbackAmount,
+  lazy = false,
+}: Props) => {
   const { isIn, stateHandlers } = useProdCard();
 
   const array =
@@ -28,6 +34,7 @@ export const ProductCards = ({ data, firstItemRef, fallbackAmount }: Props) => {
         key={key}
         {...props}
         ref={index === 0 && firstItemRef ? firstItemRef : null}
+        lazy={lazy}
       />
     );
   });

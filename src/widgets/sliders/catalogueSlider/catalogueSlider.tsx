@@ -1,20 +1,25 @@
 import { useSliderCore, useSliderData } from '@shared/lib';
 import styles from './styles/catalogueSlider.module.scss';
 import { SliderButtons } from '../sharedUI';
-import { CatalogueData } from '@shared/api/types';
-import { LoadStatus } from '@features/index';
+import { CatalogueData, LoadStatus } from '@shared/api/types';
+
 import { ProductCards } from '@ui/productCards/productCards';
 
 type Props = {
   data: CatalogueData | LoadStatus;
   title: string;
+  lazy?: boolean;
 };
 
 const FALLBACK_AMOUNT = 8;
 const ANIMATION_SPEED = 300;
 const GAP = 16;
 
-export const CatalogueSlider: React.FC<Props> = ({ data, title }: Props) => {
+export const CatalogueSlider: React.FC<Props> = ({
+  data,
+  title,
+  lazy = false,
+}: Props) => {
   const amount = typeof data === 'string' ? 0 : data.items.length;
   const { DOM, measure, mechanics } = useSliderData();
   const { handlers, setByIndex } = useSliderCore(amount, GAP);
@@ -52,6 +57,7 @@ export const CatalogueSlider: React.FC<Props> = ({ data, title }: Props) => {
         >
           <ProductCards
             data={data}
+            lazy={lazy}
             firstItemRef={DOM.item as React.RefObject<HTMLLIElement>}
             fallbackAmount={FALLBACK_AMOUNT}
           />

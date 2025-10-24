@@ -14,10 +14,7 @@ export const App = () => (
   </div>
 );
 
-// todo: clean Categories enum, types
-
 // refactor pagination to show only few pages not all at once
-// add picture tag to bannerSlider
 // add random product catalogue method
 
 //for RM: -dataflow -api -loader -errorHandling -cssFirst

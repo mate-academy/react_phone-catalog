@@ -1,9 +1,9 @@
-import { LoadStatus } from '@features/index';
 import { useSliderData } from '@shared/lib';
 import { usePagination } from './model/usePagination';
 import styles from './styles/sliderPagination.module.scss';
 import classNames from 'classnames';
 import { LoaderSpinner } from '@ui/skeletons';
+import { LoadStatus } from '@shared/api';
 
 type ImagePaginationProps = {
   setByIndex: (idx: number) => void;

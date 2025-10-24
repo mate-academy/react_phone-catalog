@@ -1,7 +1,7 @@
 import { CartItem } from '@features/globalStore/types';
 import { useGlobalActions } from '@features/index';
 import { get, useLoadItems } from '@shared/api';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 type Props = {
   cartItem: CartItem;
@@ -9,7 +9,9 @@ type Props = {
 };
 
 export const useCartItemWidget = ({ cartItem, updatePrice }: Props) => {
-  const { items, loadItems } = useLoadItems(() => get.product(cartItem.id));
+  const fetcher = useCallback(() => get.product(cartItem.id), [cartItem.id]);
+
+  const { items, loadItems } = useLoadItems(fetcher);
   const { setCart } = useGlobalActions();
 
   useEffect(() => {

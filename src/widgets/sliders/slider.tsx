@@ -1,5 +1,4 @@
-import { LoadStatus } from '@features/index';
-import { CatalogueData } from '@shared/api/types';
+import { CatalogueData, LoadStatus } from '@shared/api/types';
 import { SliderDataProvider } from '@shared/lib';
 import { BannerData, SliderType } from '@shared/types';
 import { BannerSlider } from './bannerSlider';
@@ -21,6 +20,7 @@ type CatalogueProps = {
   props: {
     data: CatalogueData | LoadStatus;
     title: string;
+    lazy?: boolean;
   };
 };
 

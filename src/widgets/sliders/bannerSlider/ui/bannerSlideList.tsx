@@ -14,13 +14,23 @@ export const BannerSlideList = ({ data, onClick }: Props) => {
   return (
     <>
       <figure className={styles.link} aria-hidden="true">
-        <img src={data[data.length - 1].src} alt="" className={styles.image} />
+        <picture>
+          <source
+            media="(min-width: 640px)"
+            srcSet={data[data.length - 1].srcWide}
+          />
+          <img
+            src={data[data.length - 1].srcSquare}
+            alt=""
+            className={styles.image}
+          />
+        </picture>
       </figure>
       {data.map((item, index) => (
         <Link
-          key={index}
+          key={item.id}
           aria-label={item.ariaLabel}
-          to={'/phones'}
+          to={item.href}
           className={styles.link}
           onClick={onClick}
           ref={
@@ -29,16 +39,27 @@ export const BannerSlideList = ({ data, onClick }: Props) => {
               : null
           }
         >
-          <img
-            src={item.src}
-            alt={item.alt}
-            className={styles.image}
-            loading={index === 0 ? 'eager' : 'lazy'}
-          />
+          <picture>
+            <source media="(min-width: 640px)" srcSet={item.srcWide} />
+            <img
+              src={item.srcSquare}
+              alt={item.alt}
+              className={styles.image}
+              loading={index === 0 ? 'eager' : 'lazy'}
+            />
+          </picture>
         </Link>
       ))}
       <figure className={styles.link} aria-hidden="true">
-        <img src={data[0].src} alt="" className={styles.image} loading="lazy" />
+        <picture>
+          <source media="(min-width: 640px)" srcSet={data[0].srcWide} />
+          <img
+            src={data[0].srcSquare}
+            alt=""
+            className={styles.image}
+            loading="lazy"
+          />
+        </picture>
       </figure>
     </>
   );

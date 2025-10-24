@@ -20,6 +20,7 @@ export const CategoryElement = ({ category, amount }: Props) => (
         className={styles.category__image}
         src={`/src/shared/img/${category.src}`}
         alt={category.name}
+        loading="lazy"
       />
     </Link>
     <h3 className={styles.category__name}>{category.name}</h3>
