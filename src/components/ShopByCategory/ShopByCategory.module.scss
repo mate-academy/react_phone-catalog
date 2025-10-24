@@ -1,7 +1,9 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
+
+/* stylelint-disable no-duplicate-selectors */
 
 .containerShopByCategory__divCategory__Button {
   cursor: pointer;
@@ -16,7 +18,7 @@
 
   &__titleCategories {
     width: 85%;
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 22px;
     font-weight: 800px;
     color: #313237;
@@ -49,7 +51,7 @@
       flex-direction: column;
 
       &__nameCategory {
-        font-family: 'Mont';
+        font-family: Mont, sans-serif;
         font-weight: 700;
         font-size: 20px;
         color: #313237;
@@ -59,7 +61,7 @@
         margin: 0;
         margin-top: -15px;
         padding: 0;
-        font-family: 'Mont';
+        font-family: Mont, sans-serif;
         font-size: 14px;
         font-weight: 600;
         color: #89939a;
@@ -131,3 +133,4 @@
     height: 457px;
   }
 }
+/* stylelint-enable no-duplicate-selectors */

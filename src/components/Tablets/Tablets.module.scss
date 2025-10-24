@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
@@ -61,14 +61,14 @@
 
 .textPhones {
   margin-top: 17px;
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: #89939a;
 }
 
 .textTile {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: #313237;
@@ -76,7 +76,7 @@
 }
 
 .textChangeModels {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #89939a;

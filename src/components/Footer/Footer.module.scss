@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
@@ -23,7 +23,7 @@
   }
 
   &__divLinks h6 {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 12px;
     color: #89939a;
     font-weight: 800;
@@ -42,7 +42,7 @@
     margin-bottom: 30px;
 
     &__text {
-      font-family: 'Mont';
+      font-family: Mont, sans-serif;
       font-size: 12px;
       font-weight: 700;
       color: #89939a;
@@ -51,7 +51,7 @@
     &__backTop {
       width: 32px;
       height: 32px;
-      font-family: 'Mont';
+      font-family: Mont, sans-serif;
       color: #89939a;
       border: 2px solid #f4f4f4;
       text-align: center;

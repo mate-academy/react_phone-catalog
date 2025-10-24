@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
@@ -62,14 +62,14 @@
 
 .accessoriesPage__titleSmall {
   margin-top: 17px;
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: #89939a;
 }
 
 .accessoriesPage__titleLarge {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: #313237;
@@ -77,7 +77,7 @@
 }
 
 .accessoriesPage__subtitle {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #89939a;

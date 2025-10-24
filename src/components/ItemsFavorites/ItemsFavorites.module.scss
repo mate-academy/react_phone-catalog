@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
@@ -11,7 +11,7 @@
   width: 100%;
   min-height: 90%; /* tamanho mínimo desejado */
   height: 100%;
-  background: #ffffff;
+  background: #fff;
   color: rgb(68, 68, 68);
   padding-top: 40px;
   transition: left 0.3s ease;
@@ -43,7 +43,7 @@
   }
 
   &__backText {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 700;
     color: #89939a;
@@ -51,14 +51,14 @@
   }
 
   &__title {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 48px;
     font-weight: 800;
     color: #313237;
   }
 
   &__changeItems {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 600;
     color: #89939a;

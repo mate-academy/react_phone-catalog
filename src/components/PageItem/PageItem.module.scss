@@ -1,9 +1,7 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
-
-/* primeiro bloco som mudar */
 
 .breadcrumb {
   width: auto;
@@ -32,14 +30,14 @@
   }
 
   &_category {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 600;
     color: #313237;
   }
 
   &_productName {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 600;
     color: #89939a;
@@ -58,14 +56,14 @@
 
   & h3 {
     color: #89939a;
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 700;
   }
 }
 
 .productTitle {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 22px;
   font-weight: 800;
   color: #313237;
@@ -126,14 +124,14 @@
   align-items: center;
 
   &_text {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 600;
     color: #89939a;
   }
 
   &_id {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 700;
     color: #b4bdc3;
@@ -162,7 +160,7 @@
 }
 
 .selectCapacityText {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-weight: 600;
   font-size: 12px;
   color: #89939a;
@@ -181,7 +179,7 @@
     cursor: pointer;
 
     & h3 {
-      font-family: 'Mont';
+      font-family: Mont, sans-serif;
       font-size: 14px;
       font-weight: 500;
       color: #313237;
@@ -196,14 +194,14 @@
   align-items: center;
 
   &_discount {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 32px;
     font-weight: 800;
     color: #313237;
   }
 
   &_regular {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 22px;
     font-weight: 500;
     color: #89939A;
@@ -232,10 +230,10 @@
   }
 
   &_text {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 14px;
-    color: #ffffff;
+    color: #fff;
   }
 
   &_favorite {
@@ -269,14 +267,10 @@
   }
 
   &_item h3 {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-weight: 600;
     font-size: 12px;
     color: #313237;
-  }
-
-  &_item h3:first-child {
-    color: #89939A;
   }
 }
 
@@ -290,21 +284,21 @@
     margin-top: 90px;
 
     &_Title {
-      font-family: 'Mont';
+      font-family: Mont, sans-serif;
       font-size: 20px;
       font-weight: 700;
       color: #313237;
     }
 
     &_topicTitle {
-      font-family: 'Mont';
+      font-family: Mont, sans-serif;
       font-size: 16px;
       font-weight: 700;
       color: #313237;
     }
 
     &_topicdescription {
-      font-family: 'Mont';
+      font-family: Mont, sans-serif;
       font-size: 14px;
       font-weight: 600;
       color: #89939A;
@@ -315,7 +309,7 @@
     margin-top: 80px;
 
     &_title {
-      font-family: 'Mont';
+      font-family: Mont, sans-serif;
       font-size: 20px;
       font-weight: 700;
       color: #313237;
@@ -342,7 +336,7 @@
 
   .productTitle {
     display: block;
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 32px;
     font-weight: 800;
     color: #313237;
@@ -493,10 +487,6 @@
   background-color: #313237;
 }
 
-.capacityContainer_active h3 {
-  color: #ffffff;
-}
-
 .thumbnail_active {
   border: 1px solid black;
 }
@@ -511,7 +501,7 @@
 .cartFavoriteContainer_cart_active {
   width: 231px;
   height: 45px;
-  background-color: #ffffff;
+  background-color: #fff;
   border: 2px solid #E2E6E9;
   display: flex;
   justify-content: center;
@@ -523,45 +513,29 @@
   cursor: pointer;
 }
 
-.cartFavoriteContainer_cart_active h3 {
-  font-family: 'Mont';
-  font-weight: 700;
-  font-size: 14px;
-  color: #27AE60;
-}
-
-/* primeiro bloco som mudar */
-
 .techSpecItem {
   display: flex;
   justify-content: space-between;
 }
 
 .techSpecItem h3 {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #313237;
 }
 
-.techSpecItem h3:first-child {
-  color: #89939A;
+.capacityContainer_active h3 {
+  color: #fff;
 }
 
-/*@media (min-width: 629px) {
-  .containerMain629 {
-    display: flex;
-    flex-direction: row;
-  }
+.cartFavoriteContainer_cart_active h3 {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #27AE60;
+}
 
-  .containerOption629 {
-    width: 237px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mainInfo_Image {
-    display: none;
-  }
-}*/
+.productSpecs_item h3:first-child {
+  color: #89939A;
+}

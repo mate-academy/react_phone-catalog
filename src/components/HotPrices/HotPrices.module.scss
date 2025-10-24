@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
@@ -21,7 +21,7 @@
   }
 
   &Title {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 22px;
     font-weight: 800;
     color: #313237;

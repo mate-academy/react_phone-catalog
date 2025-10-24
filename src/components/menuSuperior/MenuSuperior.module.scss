@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
@@ -110,7 +110,7 @@ html, body {
   .menuLink {
     display: block;
     color: #89939a;
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 800;
     text-decoration: none;
@@ -145,9 +145,6 @@ html, body {
     display: block;
     width: 16px;
     height: 16px;
-  }
-
-  .icon {
     cursor: pointer;
   }
 }

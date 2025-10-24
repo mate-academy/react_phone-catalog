@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
@@ -11,13 +11,12 @@
   width: 100%;
   height: 100vh;
   max-height: 100vh;
-  background: #ffffff;
+  background: #fff;
   color: rgb(68, 68, 68);
   padding-top: 40px;
   transition: left 0.3s ease;
   z-index: 1000;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto hidden;
 
   &.favoritesOpen {
     left: 0;
@@ -43,7 +42,7 @@
   }
 
   &__back-text {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 700;
     color: #89939a;
@@ -51,7 +50,7 @@
   }
 
   &__title {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 48px;
     font-weight: 800;
   }
@@ -68,15 +67,22 @@
 }
 
 .favoritesHeader {
-  @extend .favorites__header;
+  margin-left: 30px;
 }
 
 .favoritesBack {
-  @extend .favorites__back;
+  width: 66px;
+  height: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .favoritesBackImg {
-  @extend .favorites__back-img;
+  width: 16px;
+  height: 16px;
 }
 
 .favoritesBackImg:hover {
@@ -84,13 +90,25 @@
 }
 
 .favoritesBackText {
-  @extend .favorites__back-text;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939a;
+  margin-top: 30px;
 }
 
 .favoritesTitle {
-  @extend .favorites__title;
+  font-family: Mont, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
 }
 
 .favoritesOverlay {
-  @extend .favorites__overlay;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }

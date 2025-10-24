@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
@@ -44,7 +44,7 @@
   .menuHamburguer_title {
     width: 148px;
     height: auto;
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     color: #313237;
     font-size: 14px;
     font-weight: 600;
@@ -68,7 +68,7 @@
   }
 
   .menuHamburguer_price {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     color: #313237;
     font-size: 22px;
     text-align: left;
@@ -78,7 +78,7 @@
   .menuHamburguer_dividingLine {
     background-color: #e2e6e9;
     width: 148px;
-    height: 0px;
+    height: 0;
     border: 1px solid #e2e6e9;
   }
 
@@ -98,7 +98,7 @@
     align-items: center;
 
     span {
-      font-family: 'Mont';
+      font-family: Mont, sans-serif;
       font-size: 12px;
       font-weight: 700;
       color: #313237;
@@ -122,8 +122,8 @@
     width: 100px;
     height: 40px;
     background-color: #313237;
-    color: #ffffff;
-    font-family: 'Mont';
+    color: #fff;
+    font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 700;
     border: none;
@@ -137,10 +137,10 @@
   .menuHamburguer_buttonAdd_active {
     width: 100px;
     height: 40px;
-    background-color: #ffffff;
+    background-color: #fff;
     color: #27AE60;
     border: 2px solid #E2E6E9;
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 700;
 

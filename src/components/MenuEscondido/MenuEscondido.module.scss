@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
@@ -9,7 +9,7 @@
   left: 110%;  /* escondido */
   width: 100%;
   height: 100%;
-  background: #ffffff;
+  background: #fff;
   color: rgb(68, 68, 68);
   padding-top: 60px;
   transition: left 0.3s ease;
@@ -32,7 +32,7 @@
   text-align: center;
   padding-right: 85px;
   text-decoration: none;
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   color: #89939a;
 }
 

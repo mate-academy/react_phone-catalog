@@ -1,7 +1,9 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
+
+/* stylelint-disable no-duplicate-selectors */
 
 .itemsPanel {
   width: 100%;
@@ -42,7 +44,7 @@
   }
 
   &__title {
-    font-family: 'Mont';
+    font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 600px;
   }
@@ -70,12 +72,12 @@
   align-items: center;
   justify-content: center;
   color: #696969;
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   text-align: center;
 }
 
 .changeItens {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 600px;
   margin-top: 8px;
@@ -98,7 +100,7 @@
 }
 
 .itemsPanelItemPrice {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 22px;
   font-weight: 800px;
 }
@@ -121,13 +123,13 @@
 }
 
 .itemsPanelSummaryTotal {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-size: 32px;
   font-weight: 800px;
 }
 
 .itemsPanelSummaryCount {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-weight: 600px;
   font-size: 14px;
   color: #89939a;
@@ -153,8 +155,8 @@
 }
 
 .itemsPanelSummaryCheckout h2 {
-  font-family: 'Mont';
-  color: #ffffff;
+  font-family: Mont, sans-serif;
+  color: #fff;
   font-size: 14px;
   font-weight: 700px;
   margin-top: 15px;
@@ -250,3 +252,5 @@
     width: 462px;
   }
 }
+
+/* stylelint-enable no-duplicate-selectors */
