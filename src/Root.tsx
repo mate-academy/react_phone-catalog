@@ -12,7 +12,7 @@ import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 
 export const Root = () => (
   <Provider store={store}>
-    <BrowserRouter basename="/react_phone-catalog">
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />

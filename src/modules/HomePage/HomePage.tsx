@@ -66,7 +66,7 @@ export const HomePage = () => {
             <h2 className={styles.category_title}>Shop by category</h2>
             <div className={styles.category__container}>
               <Link to={{ pathname: '/phones' }} className={styles.category__link}>
-                <img src="/img/Phones.png" alt="phones" className={styles.category__image} />
+                <img src={`/img/Phones.png`} alt="phones" className={styles.category__image} />
                 <div className={styles.category__description}>
                   <p className={styles.category__subtitle}>Mobile phones</p>
                   <div className={styles.category__content}>{`${phonesData.length} models`}</div>
@@ -74,7 +74,7 @@ export const HomePage = () => {
               </Link>
 
               <Link to={{ pathname: '/tablets' }} className={styles.category__link}>
-                <img src="/img/Tablets.png" alt="tablets" className={styles.category__image} />
+                <img src={`/img/Tablets.png`} alt="tablets" className={styles.category__image} />
                 <div className={styles.category__description}>
                   <p className={styles.category__subtitle}>Tablets</p>
                   <div className={styles.category__content}>{`${tabletsData.length} models`}</div>
@@ -83,7 +83,7 @@ export const HomePage = () => {
 
               <Link to={{ pathname: '/accessories' }} className={styles.category__link}>
                 <img
-                  src="/img/Accessories.png"
+                  src={`/img/Accessories.png`}
                   alt="accessories"
                   className={styles.category__image}
                 />
