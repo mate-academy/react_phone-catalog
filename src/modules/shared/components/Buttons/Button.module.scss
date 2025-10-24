@@ -44,6 +44,10 @@
   }
 }
 
+.remove {
+  background-color: $add-selected-button-color;
+}
+
 .favorite__button {
   display: block;
   width: 40px;
