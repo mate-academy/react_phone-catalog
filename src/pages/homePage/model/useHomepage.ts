@@ -47,9 +47,25 @@ export const useHomePage = () => {
     loadAllData();
   }, []);
 
+  const processNew = () => {
+    if (typeof products.new.items === 'string') {
+      return products.new.items;
+    }
+
+    const newArr = products.new.items.items;
+
+    const newData = {
+      items: newArr.map(el => ({ ...el, priceRegular: el.priceDiscount })),
+      currentPage: products.new.items.currentPage,
+      pages: products.new.items.pages,
+    };
+
+    return newData;
+  };
+
   return {
     amount,
-    newItems: products.new.items,
+    newItems: processNew(),
     promoItems: products.promo.items,
     banners: banners.items,
   };
