@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './modules/HomePage/HomePage';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
@@ -12,7 +12,7 @@ import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 
 export const Root = () => (
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
@@ -35,6 +35,6 @@ export const Root = () => (
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 );

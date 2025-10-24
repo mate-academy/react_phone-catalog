@@ -61,7 +61,11 @@ export const CartPage = () => {
                                 dispatch(removeFromCart({ itemId }));
                               }}
                             ></button>
-                            <img className={styles.item__image} src={item.image} alt={item.image} />
+                            <img
+                              className={styles.item__image}
+                              src={`./${item.image}`}
+                              alt={item.image}
+                            />
                             <p className={styles.item__title}>{item.name}</p>
                           </div>
                           <div className={styles.item__right}>
@@ -147,7 +151,7 @@ export const CartPage = () => {
           ) : (
             <div className={styles.items__empty}>
               <img
-                src="public/img/cart-is-empty.png"
+                src="./img/cart-is-empty.png"
                 alt="cart-is-empty"
                 className={styles.items__empty__image}
               />

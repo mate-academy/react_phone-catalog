@@ -28,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ productsArray }) => {
             <article key={product.id} className={styles.card}>
               <div className={styles.card__body}>
                 <Link to={{ pathname: itemPath(product) }} className={styles.card__link}>
-                  <img src={`/${product.image}`} className={styles.card__image} />
+                  <img src={`./${product.image}`} className={styles.card__image} />
 
                   <div className={styles.card__title}>{product.name}</div>
                 </Link>
