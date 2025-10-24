@@ -1,0 +1,33 @@
+html {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+
+  &__image {
+    width: 300px;
+    height: 300px;
+    margin-left: calc(50% - 150px);
+    margin-top: calc(50% - 150px);
+  }
+}
+
+@media (min-width: 629px) {
+  .container__image {
+    width: 400px;
+    height: 400px;
+    margin-left: calc(50% - 200px);
+  }
+}
+
+@media (min-width: 629px) {
+  .container__image {
+    width: 600px;
+    height: 600px;
+    margin-left: calc(50% - 300px);
+    margin-top: 40px;
+  }
+}

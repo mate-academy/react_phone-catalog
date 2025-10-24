@@ -1,0 +1,133 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.containerShopByCategory__divCategory__Button {
+  cursor: pointer;
+}
+
+.containerShopByCategory {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+
+  &__titleCategories {
+    width: 85%;
+    font-family: 'Mont';
+    font-size: 22px;
+    font-weight: 800px;
+    color: #313237;
+    text-align: left;
+  }
+
+  &__divCategory {
+    height: 363px;
+
+    &__Button {
+      width: 288px;
+      height: 288px;
+      overflow: hidden;
+      border: none;
+      position: relative;
+
+      &__img {
+        width: 302.09px;
+        height: 357.65px;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+      }
+    }
+
+    &__dateCategory {
+      width: 187px;
+      height: 305px;
+      display: flex;
+      flex-direction: column;
+
+      &__nameCategory {
+        font-family: 'Mont';
+        font-weight: 700;
+        font-size: 20px;
+        color: #313237;
+      }
+
+      &__changeModels {
+        margin: 0;
+        margin-top: -15px;
+        padding: 0;
+        font-family: 'Mont';
+        font-size: 14px;
+        font-weight: 600;
+        color: #89939a;
+      }
+    }
+  }
+}
+
+@media (min-width: 639px) {
+  .containerShopByCategory {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .containerShopByCategory__containerCategoris {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    max-width: 592px;
+    width: 100%;
+  }
+
+  .containerShopByCategory__divCategory {
+    width: 187px;
+    height: 262px;
+    row-gap: 15.5;
+
+    &__Button {
+      width: 187px;
+      height: 187px;
+
+      &__img {
+        width: 196.15px;
+        height: 232.23px;
+        top: 20px;
+        left: 30px;
+      }
+    }
+
+    &__dateCategory {
+      width: 187px;
+      height: 305px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+@media (min-width: 1199px) {
+  .containerShopByCategory__titleCategories {
+    background-size: 32px;
+  }
+  .containerShopByCategory__divCategory {
+    width: 368px;
+    height: 443px;
+  }
+
+  .containerShopByCategory__divCategory__Button {
+    width: 368px;
+    height: 368px;
+  }
+
+  .containerShopByCategory__divCategory__Button__img {
+    width: 386px;
+    height: 457px;
+  }
+}

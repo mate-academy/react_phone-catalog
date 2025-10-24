@@ -1,0 +1,119 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.filter {
+  align-items: center;
+  padding-left: 9%;
+
+  @media (min-width: 629px) {
+    padding-left: 30px;
+  }
+}
+
+.filterHeader {
+  width: 324px;
+  height: 59px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.filterSort {
+  display: flex;
+  flex-direction: column;
+}
+
+.filterSortText {
+  font-family: 'Mont';
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939a;
+}
+
+.filterSelect {
+  width: 176px;
+  height: 40px;
+  font-family: 'Mont';
+  color: #313237;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 0;
+  border: 2px solid #f4f4f4;
+
+  &:hover {
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    background-color: #696969;
+    cursor: pointer;
+  }
+}
+
+.pagination {
+  padding-top: 30px;
+  padding-bottom: 40px;
+  width: 248px;
+  height: 32px;
+  margin-left: calc(50% - 124px);
+  gap: 15px;
+  display: flex;
+}
+
+.paginationButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 0;
+  border: 2px solid #b4bdc3;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #b8b8b8;
+    color: #ffffff;
+  }
+}
+
+.paginationButtonBackImg,
+.paginationButtonNextImg {
+  width: 16px;
+  height: 16px;
+}
+
+.paginationButtonBackImg {
+  padding-top: 3px;
+}
+
+.paginationButtonNextImg {
+  padding-bottom: 3px;
+  transform: rotate(180deg);
+}
+
+.paginationIndex {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 0;
+  border: 2px solid #b4bdc3;
+  font-family: 'Mont';
+  color: #313237;
+  margin-bottom: 20px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #b8b8b8;
+    color: #ffffff;
+  }
+}
+
+.activePage {
+  background: #313237;
+  color: white;
+  border-color: #313237;
+}

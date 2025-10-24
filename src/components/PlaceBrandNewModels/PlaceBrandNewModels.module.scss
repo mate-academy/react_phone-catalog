@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 50px;
+}
+
+.inicio_sessao {
+  width: 90%;
+  height: 62px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_sessao {
+  font-family: 'Mont';
+  font-size: 22px;
+  font-weight: 800;
+  color: #313237;
+}
+
+.container_button {
+  width: 80px;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  background: white;
+  color: #525252;
+  border: 2px solid #e2e6e9;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.arrow:hover {
+  background-color: #525252;
+}
+
+.product_cards_container {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 16px;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+
+.product_cards_container::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 639px) {
+  .title_sessao {
+    font-size: 32px;
+  }
+}

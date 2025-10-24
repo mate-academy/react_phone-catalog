@@ -1,0 +1,98 @@
+@media (min-width: 320px) {
+  .carrossel__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carrossel__slide {
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    transition: opacity 3s ease-in-out;
+  }
+
+  .carrossel__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .carrossel__button {
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+    border: none;
+    background-color: #e2e6e9;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .carrossel__button:hover {
+    background-color: rgb(36, 36, 36);
+  }
+
+  .carrossel__buttonActive {
+    background-color: #313237;
+  }
+
+  .carrossel__buttonNav {
+    display: none;
+  }
+}
+
+@media (min-width: 639px) {
+  .carrossel__wrapper {
+    width: 592px;
+    height: 221px;
+    margin-left: calc(50% - (592px / 2));
+    flex-direction: row;
+    gap: 19px;
+  }
+
+  .carrossel__buttonNav {
+    width: 32px;
+    height: 189px;
+    display: flex;
+    color: #313237;
+    background-color: white;
+    border: 2px solid #f4f4f4;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .carrossel__buttonNav:hover {
+    background-color: rgb(124, 124, 124);
+    color: #ffffff;
+  }
+
+  .carrossel__slide {
+    width: 490px;
+    height: 189px;
+  }
+}
+
+@media (min-width: 1199px) {
+  .carrossel__wrapper {
+    width: 1136px;
+    height: 432px;
+    margin-left: calc(50% - (1136px / 2));
+  }
+
+  .carrossel__slide {
+    width: 1040px;
+    height: 400px;
+  }
+
+  .carrossel__buttonNav {
+    width: 32px;
+    height: 400px;
+  }
+}

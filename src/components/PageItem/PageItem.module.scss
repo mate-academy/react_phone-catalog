@@ -1,0 +1,567 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+/* primeiro bloco som mudar */
+
+.breadcrumb {
+  width: auto;
+  height: 16px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 25px;
+  margin-left: 10px;
+  position: relative;
+
+  &_homeContainer {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    &_doorIcon {
+      position: absolute;
+      left: 4px;
+      top: 6px;
+    }
+
+    &_homeIcon {
+      position: absolute;
+    }
+  }
+
+  &_category {
+    font-family: 'Mont';
+    font-size: 12px;
+    font-weight: 600;
+    color: #313237;
+  }
+
+  &_productName {
+    font-family: 'Mont';
+    font-size: 12px;
+    font-weight: 600;
+    color: #89939a;
+  }
+}
+
+.backButton {
+  width: 66px;
+  height: 16px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 6px;
+  cursor: pointer;
+
+  & h3 {
+    color: #89939a;
+    font-family: 'Mont';
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+
+.productTitle {
+  font-family: 'Mont';
+  font-size: 22px;
+  font-weight: 800;
+  color: #313237;
+  margin-left: 10px;
+}
+
+.containerGeral {
+  width: 288px;
+  height: auto;
+  margin-left: calc(50% - 144px);
+  justify-content: space-between;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  &_Image {
+    width: 274.34px;
+    height: 274.34px;
+  }
+
+  &_thumbnailList {
+    width: 288px;
+    height: 49px;
+    display: flex;
+    gap: 5px;
+    margin-left: 20px;
+    margin-top: 25px;
+  }
+
+  &_thumbnailItem {
+    width: 51.2px;
+    height: 49px;
+  }
+
+  &_thumbnailImage {
+    width: 42.24px;
+    height: 40.43px;
+    cursor: pointer;
+    border: 2px solid #e2e6e9;
+  }
+
+  &_thumbnailImage:hover {
+    border: 1px solid black;
+  }
+
+  &_ImageFor629 {
+    display: none;
+  }
+}
+
+.idAndColor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &_text {
+    font-family: 'Mont';
+    font-size: 12px;
+    font-weight: 600;
+    color: #89939a;
+  }
+
+  &_id {
+    font-family: 'Mont';
+    font-size: 12px;
+    font-weight: 700;
+    color: #b4bdc3;
+  }
+}
+
+.colorSelector {
+  display: flex;
+  gap: 5px;
+
+  &_circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 0.5px rgb(110, 110, 110);
+    cursor: pointer;
+  }
+}
+
+.divider {
+  border: 1px solid #e2e6e9;
+  height: 0;
+  width: 288px;
+  margin-top: 20px;
+}
+
+.selectCapacityText {
+  font-family: 'Mont';
+  font-weight: 600;
+  font-size: 12px;
+  color: #89939a;
+}
+
+.capacityContainer {
+  display: flex;
+  gap: 15px;
+
+  &_option {
+    width: 56px;
+    height: 32px;
+    background-color: white;
+    border: 1.5px solid #b4bdc3;
+    text-align: center;
+    cursor: pointer;
+
+    & h3 {
+      font-family: 'Mont';
+      font-size: 14px;
+      font-weight: 500;
+      color: #313237;
+      margin-top: 8px;
+    }
+  }
+}
+
+.priceContainer {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  &_discount {
+    font-family: 'Mont';
+    font-size: 32px;
+    font-weight: 800;
+    color: #313237;
+  }
+
+  &_regular {
+    font-family: 'Mont';
+    font-size: 22px;
+    font-weight: 500;
+    color: #89939A;
+    text-decoration: line-through;
+  }
+}
+
+.cartFavoriteContainer {
+  width: 288px;
+  height: 48px;
+  display: flex;
+  gap: 5px;
+
+  &_cart {
+    width: 231px;
+    height: 48px;
+    background-color: #313237;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_cart:hover {
+    transform: scale(0.8);
+    cursor: pointer;
+  }
+
+  &_text {
+    font-family: 'Mont';
+    font-weight: 700;
+    font-size: 14px;
+    color: #ffffff;
+  }
+
+  &_favorite {
+    width: 48px;
+    height: 46px;
+    border: 1px solid #B4BDC3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_favorite:hover {
+    transform: scale(0.8);
+    cursor: pointer;
+  }
+
+  &_favorite img {
+    margin-top: 4px;
+  }
+}
+
+.productSpecs {
+  width: 288px;
+  display: flex;
+  flex-direction: column;
+
+  &_item {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_item h3 {
+    font-family: 'Mont';
+    font-weight: 600;
+    font-size: 12px;
+    color: #313237;
+  }
+
+  &_item h3:first-child {
+    color: #89939A;
+  }
+}
+
+.descriptionContainer {
+  width: 288px;
+  margin-left: calc(50% - 144px);
+
+  &_about {
+    width: 287px;
+    height: auto;
+    margin-top: 90px;
+
+    &_Title {
+      font-family: 'Mont';
+      font-size: 20px;
+      font-weight: 700;
+      color: #313237;
+    }
+
+    &_topicTitle {
+      font-family: 'Mont';
+      font-size: 16px;
+      font-weight: 700;
+      color: #313237;
+    }
+
+    &_topicdescription {
+      font-family: 'Mont';
+      font-size: 14px;
+      font-weight: 600;
+      color: #89939A;
+    }
+  }
+
+  &_techSpecs {
+    margin-top: 80px;
+
+    &_title {
+      font-family: 'Mont';
+      font-size: 20px;
+      font-weight: 700;
+      color: #313237;
+    }
+  }
+}
+
+
+@media (min-width: 629px) {
+  .breadcrumb {
+    width: 592px;
+    height: auto;
+  }
+
+  .breadcrumb_homeContainer_doorIcon {
+    left: 8px;
+    top: 17px;
+  }
+
+  .breadcrumb_homeContainer_homeIcon {
+    left: 4px;
+    bottom: 13px;
+  }
+
+  .productTitle {
+    display: block;
+    font-family: 'Mont';
+    font-size: 32px;
+    font-weight: 800;
+    color: #313237;
+    margin-left: 10px;
+  }
+
+  .containerGeral {
+    width: 579px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: calc(50% - 380px);
+  }
+
+  .mainInfo {
+    justify-content: left;
+
+    &_Image {
+      display: none;
+    }
+
+    &_containerThumbnail629 {
+      width: 342px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    &_thumbnailList {
+      width: 35px;
+      flex-direction: column;
+    }
+
+    &_thumbnailItem {
+      width: 35px;
+      height: 35px;
+    }
+
+    &_ImageFor629 {
+      display: flex;
+      width: 287px;
+      height: 287px;
+      margin-left: 60px;
+    }
+  }
+
+  .containerSecondColum629 {
+    display: flex;
+    flex-direction: column;
+    width: 237px;
+    height: auto;
+    margin-left: 90px;
+  }
+
+  .descriptionContainer {
+    width: 592px;
+    height: auto;
+    margin-left: calc(50% - 296px);
+  }
+
+  .descriptionContainer_about {
+    width: 592px;
+    height: auto;
+  }
+}
+
+@media (min-width: 1199px) {
+  .breadcrumb {
+    margin-left: 50px;
+  }
+
+  .backButton {
+    margin-left: 50px;
+  }
+
+  .productTitle {
+    margin-left: 50px;
+  }
+
+  .containerGeral {
+    width: 964px;
+    margin-left: calc(50% - 482px);
+  }
+
+  .mainInfo {
+    margin-left: -340px;
+
+    &_thumbnailList {
+      width: 80px;
+      height: auto;
+    }
+
+    &_thumbnailIte {
+      width: 80px;
+      height: 80px;
+    }
+
+    &_thumbnailIte img {
+      width: 66px;
+      height: 66px;
+    }
+
+    &_ImageFor629 {
+      width: 464px;
+      height: 464px;
+      margin-left: 140px;
+    }
+  }
+
+  .containerSecondColum629 {
+    width: 320px;
+    height: auto;
+    margin-left: 300px;
+  }
+
+  .divider {
+    width: 320;
+  }
+
+  .descriptionContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 90px;
+    width: 1100px;
+    height: auto;
+    margin-left: calc(50% - 580px);
+  }
+
+  .descriptionContainer_techSpecs {
+    width: 512px;
+    height: auto;
+  }
+
+  .descriptionContainer_techSpecs div {
+    width: 512px;
+  }
+
+  .descriptionContainer_about {
+    width: 560px;
+    height: auto;
+  }
+
+  .descriptionContainer_about div {
+    width: 560px;
+  }
+}
+
+.capacityContainer_active {
+  background-color: #313237;
+}
+
+.capacityContainer_active h3 {
+  color: #ffffff;
+}
+
+.thumbnail_active {
+  border: 1px solid black;
+}
+
+.colorSelector_active {
+  border: 1px solid black;
+  box-shadow: 0 0 0 1px black;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.cartFavoriteContainer_cart_active {
+  width: 231px;
+  height: 45px;
+  background-color: #ffffff;
+  border: 2px solid #E2E6E9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartFavoriteContainer_cart_active:hover {
+  transform: scale(0.8);
+  cursor: pointer;
+}
+
+.cartFavoriteContainer_cart_active h3 {
+  font-family: 'Mont';
+  font-weight: 700;
+  font-size: 14px;
+  color: #27AE60;
+}
+
+/* primeiro bloco som mudar */
+
+.techSpecItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.techSpecItem h3 {
+  font-family: 'Mont';
+  font-size: 14px;
+  font-weight: 500;
+  color: #313237;
+}
+
+.techSpecItem h3:first-child {
+  color: #89939A;
+}
+
+/*@media (min-width: 629px) {
+  .containerMain629 {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .containerOption629 {
+    width: 237px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mainInfo_Image {
+    display: none;
+  }
+}*/

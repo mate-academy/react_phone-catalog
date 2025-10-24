@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.corpoPagina__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.corpoPagina__title {
+  width: 288px;
+  font-family: 'Mont';
+  font-weight: 800;
+  color: #313237;
+  font-size: 32px;
+}
+
+@media (min-width: 639px) {
+  .corpoPagina__title {
+    width: 592px;
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 1199px) {
+  .corpoPagina__title {
+    width: 1136px;
+    font-size: 48px;
+  }
+}

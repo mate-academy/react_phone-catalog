@@ -1,0 +1,235 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+@media (min-width: 319px) {
+  .menuHamburguer {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 16px;
+    scrollbar-width: none;
+    max-width: 100%;
+  }
+
+  .menuHamburguer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menuHamburguer_card {
+    width: 212px;
+    height: 439px;
+    border: 2px solid #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    gap: 12px;
+  }
+
+  .menuHamburguer_img {
+    width: 148px;
+    height: 129px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .menuHamburguer_title {
+    width: 148px;
+    height: auto;
+    font-family: 'Mont';
+    color: #313237;
+    font-size: 14px;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .menuHamburguer_prices {
+    width: 148px;
+    display: flex;
+    flex-direction: row;
+
+    h1:last-child {
+      text-decoration: line-through;
+      margin-left: 5px;
+      color: #89939a;
+    }
+  }
+
+  .menuHamburguer_price {
+    font-family: 'Mont';
+    color: #313237;
+    font-size: 22px;
+    text-align: left;
+    font-weight: 800;
+  }
+
+  .menuHamburguer_dividingLine {
+    background-color: #e2e6e9;
+    width: 148px;
+    height: 0px;
+    border: 1px solid #e2e6e9;
+  }
+
+  .menuHamburguer_details {
+    width: 148px;
+    height: 77px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .menuHamburguer_detail {
+    width: 148px;
+    height: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      font-family: 'Mont';
+      font-size: 12px;
+      font-weight: 700;
+      color: #313237;
+    }
+
+    &:first-child {
+      color: #89939a;
+    }
+  }
+
+  .menuHamburguer_buttons {
+    width: 148px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .menuHamburguer_buttonAdd {
+    width: 100px;
+    height: 40px;
+    background-color: #313237;
+    color: #ffffff;
+    font-family: 'Mont';
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+
+    &:hover {
+      transform: scale(0.8);
+      cursor: pointer;
+    }
+  }
+
+  .menuHamburguer_buttonAdd_active {
+    width: 100px;
+    height: 40px;
+    background-color: #ffffff;
+    color: #27AE60;
+    border: 2px solid #E2E6E9;
+    font-family: 'Mont';
+    font-size: 14px;
+    font-weight: 700;
+
+    &:hover {
+      transform: scale(0.8);
+      cursor: pointer;
+    }
+  }
+
+  .menuHamburguer_buttonFav_container {
+    width: 40px;
+    height: 38px;
+    border: 2px solid #b4bdc3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .menuHamburguer_buttonFav {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (min-width: 639px) {
+  .menuHamburguer_card {
+    width: 237px;
+    height: 512px;
+  }
+
+  .menuHamburguer_img {
+    width: 173px;
+    height: 202px;
+  }
+
+  .menuHamburguer_title {
+    width: 176px;
+  }
+
+  .menuHamburguer_details,
+  .menuHamburguer_detail,
+  .menuHamburguer_buttons,
+  .menuHamburguer_dividingLine {
+    width: 173px;
+  }
+
+  .menuHamburguer_buttonFav_container {
+    width: 40px;
+    height: 37px;
+  }
+}
+
+@media (min-width: 1199px) {
+  .menuHamburguer_card {
+    width: 272px;
+    height: 506px;
+  }
+
+  .menuHamburguer_img {
+    width: 208px;
+    height: 196px;
+  }
+
+  .menuHamburguer_title,
+  .menuHamburguer_details,
+  .menuHamburguer_detail,
+  .menuHamburguer_buttons,
+  .menuHamburguer_dividingLine {
+    width: 208px;
+  }
+
+  .menuHamburguer_buttonFav_container {
+    width: 40px;
+    height: 37px;
+  }
+
+  .menuHamburguer_buttonAdd {
+    width: 160px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 1199px) {
+  .menuHamburguer_buttonAdd_active {
+    width: 160px;
+    height: 40px;
+  }
+}
