@@ -1,0 +1,39 @@
+@use '../../styles/utils' as g;
+
+.path {
+  &__list{
+    display: flex;
+    gap: 8px;
+    justify-content: left;
+    list-style: none;
+
+    &-link{
+      cursor: pointer;
+
+      font-family: g.$font-semi;
+      font-size: 12px;
+      text-transform: capitalize;
+
+      outline: none;
+
+      &:hover{
+        color: g.$second-grey;
+      }
+    }
+
+    &-item {
+      display: flex;
+      gap: 8px;
+      justify-content: start;
+      color: g.$main-grey;
+
+      &:last-of-type{
+        color: g.$second-grey;
+      }
+    }
+
+    &-arrow{
+      color: g.$second-grey;
+    }
+  }
+}

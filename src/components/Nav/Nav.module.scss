@@ -1,0 +1,75 @@
+@use '../../styles/utils' as utils;
+
+.nav{
+  margin-top: 24px;
+
+  font-family: utils.$font-bold;
+  font-size: 12px;
+  line-height: 12px;
+  color: utils.$second-grey;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  @include utils.on-tablet {
+    height: utils.$header-height-tablet;
+    margin-top: 0;
+  }
+
+
+  @include utils.on-desktop{
+    height: utils.$header-height-desktop;
+  }
+
+  &__list{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+
+    line-height: 27px;
+
+    &--footer{
+      align-items: flex-start;
+      line-height: 1;
+
+      @include utils.on-tablet {
+        align-items: center;
+      }
+    }
+
+    @include utils.on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__item{
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    list-style: none;
+
+    @include utils.under-line;
+
+    @include utils.on-tablet {
+      height: auto;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: utils.$main-grey;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+  }
+}
+
+
+

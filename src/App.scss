@@ -1,1 +1,85 @@
-// not empty
+@use './styles/utils';
+
+
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scrollbar-width: none;
+  overflow-y: scroll;
+
+  -ms-overflow-style: none;
+
+  @include utils.on-tablet {
+    scrollbar-width: auto;
+
+    -ms-overflow-style: auto;
+  }
+}
+
+body {
+  display: block;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+  min-height: 100vh;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+
+  &:focus,
+  &:active {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+.Main {
+  display: flex;
+  flex: 1 0 100%;
+  flex-direction: column;
+  align-items: stretch;
+
+  padding-top: calc(24px + utils.$header-height-mobile);
+  padding-bottom: 64px;
+  padding-inline: utils.$mobile-main-inline-padding;
+
+  background-color: utils.$hover-bg-color;
+
+  @include utils.on-tablet {
+    padding-top: calc(32px + utils.$header-height-tablet);
+    padding-inline: 24px;
+  }
+
+   @include utils.on-desktop {
+    padding-top: calc(56px + utils.$header-height-desktop);
+    padding-bottom: 80px;
+    padding-inline: 32px;
+   }
+
+   &__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 1136px;
+    margin: 0 auto;
+   }
+}
+

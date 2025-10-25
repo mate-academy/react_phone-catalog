@@ -1,0 +1,30 @@
+:root {
+  --elements-color: #E2E6E9;
+  --second-grey: #89939A;
+  --main-grey: #0F0F11;
+  --icons-color: #B4BDC3;
+  --hover-bg-color: #FAFBFC;
+  --main-white: #FFF;
+  --red: #EB5757;
+}
+
+
+$min-mobile-width: 320px;
+$min-tablet-width: 640px;
+$min-desktop-width: 1200px;
+$header-height-mobile: 48px;
+$header-height-tablet: 48px;
+$header-height-desktop: 64px;
+$mobile-main-inline-padding: 13px;
+$tablet-main-inline-padding: 24px;
+$elements-color: #E2E6E9;
+$second-grey: #89939A;
+$main-grey: #0F0F11;
+$icons-color: #B4BDC3;
+$hover-bg-color: #FAFBFC;
+$main-white: #FFF;
+$red: #EB5757;
+$font-bold: 'Mont-Bold';
+$font-semi: 'Mont-Semi';
+$font-regular: 'Mont';
+$transition-duration: 0.3s;

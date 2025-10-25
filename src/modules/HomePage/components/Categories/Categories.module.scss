@@ -1,0 +1,23 @@
+@use '../../../../styles/utils/' as g;
+
+.categories{
+  &__title {
+    @include g.h2-title
+  }
+
+  &__content{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: start;
+
+    width: 100%;
+    margin-top: 24px;
+
+    @include g.on-tablet {
+      flex-direction: row;
+      gap: 16px;
+      justify-content: space-between;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@use '../../../styles/utils/' as g;
+
+.pagination {
+  display:  flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  @include g.on-tablet{
+    gap: 24px;
+  }
+
+  &__button{
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--icons-color);
+
+    color: var(--main-grey);
+
+    background-color: var(--main-white);
+    outline: none;
+
+    transition: border-color g.$transition-duration linear;
+
+    &:hover{
+      border-color: var(--main-grey);
+      outline: none;
+    }
+
+    &:active {
+      outline: none;
+    }
+
+    &--disable{
+      border-color: var(--elements-color);
+      color: var(--icons-color);
+    }
+  }
+
+  &__pages{
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  &__number{
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--elements-color);
+
+    color: var(--main-grey);
+
+    background-color: var(--main-white);
+
+    transition: color g.$transition-duration linear,
+      border-color g.$transition-duration linear,
+      background-color g.$transition-duration linear;
+
+    &--active {
+      border-color: var(--main-grey);
+      color: var(--main-white);
+      background-color: var(--main-grey);
+    }
+  }
+}
