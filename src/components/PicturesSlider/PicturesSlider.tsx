@@ -9,7 +9,7 @@ import classNames from 'classnames';
 
 type Dir = 'prev' | 'next';
 
-const IMG_BASE = '/img/main-photos-home-page';
+const IMG_BASE = 'src/assets/main-photos-home-page';
 
 const banners = {
   purple: `${IMG_BASE}/iphone-14-pro-purple.png`,

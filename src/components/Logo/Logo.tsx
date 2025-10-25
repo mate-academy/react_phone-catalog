@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { MenuContext } from '../../context/MenuProvider';
 import classNames from 'classnames';
 
-const logoSrc = '/img/Logo.svg';
+const logoSrc = 'src/assets/icons/Logo.svg';
 
 interface Props {
   className?: string;
