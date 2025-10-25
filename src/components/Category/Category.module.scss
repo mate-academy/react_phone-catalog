@@ -1,0 +1,74 @@
+@use '../../styles/index' as *;
+
+.category {
+  width: 100%;
+  box-sizing: border-box;
+
+  &__link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    transition: all .3s;
+
+    &--phones {
+      background-color: $color-icons;
+    }
+
+    &--tablets {
+      background-color: $color-icons;
+    }
+
+    &--accessories {
+      background-color: $color-red;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+
+      img {
+        @include hover(transform, scale(1.1));
+      }
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    transition: all .3s;
+
+    &--phones {
+      width: 100%;
+      top: 30%;
+      left: 30%;
+    }
+
+    &--tablets {
+      height: 120%;
+      left: 15%;
+    }
+
+    &--accessories {
+      height: 89%;
+      top: 27%;
+      left: 15%;
+    }
+
+  }
+
+  &__title {
+    font-size: 20px;
+    line-height: 26px;
+    color: $color-white;
+    margin-top: 24px;
+  }
+
+  &__amount {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-amount-grey;
+    margin-top: 4px;
+  }
+}

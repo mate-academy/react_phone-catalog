@@ -1,0 +1,57 @@
+@use '../../styles/index' as *;
+
+.slider {
+  grid-column: 1 / -1;
+  position: static;
+}
+
+.arrow {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+
+  & span {
+    margin: 0 auto;
+  }
+
+  &::before {
+    content: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: $color-icons;
+
+    .icon--arrow-right {
+      background-image: url('src/assets/icons/icon-arrow-right-hover.svg');
+    }
+
+    .icon--arrow-left {
+      background-image: url('src/assets/icons/icon-arrow-left-hover.svg');
+    }
+  }
+
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.prev {
+  top: 0;
+  right: 48px;
+  left: auto;
+}
+
+.next {
+  top: 0;
+  right: 0;
+  left: auto;
+}
