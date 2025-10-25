@@ -10,14 +10,14 @@ interface Props {
 const HomeCatalog: React.FC<Props> = ({ title, products }) => {
   return (
     <div>
-      <div className={styles.top}>
-        <h2 className={styles.title}>{title}</h2>
-        <div className={styles.buttons}>
+      <div className={styles['home-catalog__top']}>
+        <h2 className={styles['home-catalog__title']}>{title}</h2>
+        <div className={styles['home-catalog__buttons']}>
           <button>left</button>
           <button>right</button>
         </div>
       </div>
-      <div className={styles.slider}>
+      <div className={styles['home-catalog__slider']}>
         {products.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}

@@ -1,6 +1,7 @@
-@import 'fonts';
-@import 'mixins';
-@import 'variables';
+@forward 'fonts';
+@forward 'mixins';
+@forward 'variables';
+@forward 'extends';
 
 h1,
 h2,

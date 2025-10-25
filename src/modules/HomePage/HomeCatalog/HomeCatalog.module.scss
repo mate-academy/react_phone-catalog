@@ -1,18 +1,26 @@
-.title {
-  font-size: 32px;
-}
+@use '../../../scss/main.scss' as *;
 
-.top {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
+.home-catalog {
+  &__title {
+    font-size: 32px;
+  }
 
-.slider {
-  display: grid;
-  width: 100%;
-  gap: 20px;
-  grid-auto-columns: 200px;
-  grid-auto-flow: column;
-  overflow-x: scroll;
+  &__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__slider {
+    display: grid;
+    width: 100%;
+    gap: $grid-gap-desktop;
+    grid-auto-columns: 5 * $grid-column-desktop + 4 * $grid-gap-desktop;
+    grid-auto-flow: column;
+    overflow-x: scroll;
+  }
 }

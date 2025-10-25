@@ -1,24 +1,72 @@
+@use '../../../scss/main.scss' as *;
+
 .product {
   display: grid;
+  padding: 32px;
+  height: 506px;
+  grid-auto-flow: row;
+  grid-template-rows: auto repeat(4, min-content);
+  gap: 8px;
+
   &__image {
-    width: 208px;
-    height: 105px;
+    min-height: 0;
+    height: 100%;
+    width: 100%;
     object-fit: contain;
     object-position: center;
   }
 
-  &__prices {
-    display: flex;
+  &__title {
+    @extend %body-text;
+
+    margin-top: 16px;
+    font-weight: 600;
   }
 
-  &__oldPrice {
-    color: #89939a;
-    font-size: 22px;
-    line-height: 140%;
-    text-decoration: line-through;
+  &__prices {
+    display: flex;
+    gap: 8px;
+
+    @extend %h3;
+  }
+
+  &__price {
+    color: $primary-color;
+    &_old {
+      color: $secondary-color;
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+  }
+  &__specs {
+    display: flex;
+    padding-block: 8px;
+    flex-direction: column;
+    gap: 8px;
   }
 
   &__specLine {
+    display: flex;
+    justify-content: space-between;
+
+    color: $secondary-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__specText {
+    display: flex;
+    height: 15px;
+    align-items: center;
+    text-transform: capitalize;
+
+    &_bold {
+      color: $primary-color;
+    }
+  }
+
+  &__buttons {
     display: flex;
     justify-content: space-between;
   }

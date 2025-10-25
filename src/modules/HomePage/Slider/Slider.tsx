@@ -96,7 +96,7 @@ const Slider = () => {
                   in our store!<span className={styles.slide__logo_ok}></span>
                 </span>
               </p>
-              <p className={styles.slide__moto}>Be the first</p>
+              <p className={styles.slide__motto}>Be the first</p>
               <button className={styles.slide__order}>Order now</button>
             </div>
             <div className={styles.slide__bottom}>
