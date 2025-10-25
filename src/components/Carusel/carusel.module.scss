@@ -1,11 +1,22 @@
-.container {
-  margin-top: 24px;
-
-  @include contentPaddingInline;
-}
-
 .wrapper {
-  background-color: red;
+  margin-top: 24px;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  grid-column: 1 / -1;
+}
+
+.header {
+  margin-bottom: 24px;
+
+  @include flex-center;
+  justify-content: space-between;
+}
+
+.title {
+  width: 136px;
+}
+
+.wrapper :global(.swiper) {
+  background-color: red;
 }
