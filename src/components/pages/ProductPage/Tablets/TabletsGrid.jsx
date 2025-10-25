@@ -89,21 +89,48 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
 };
 
 export const Tablets = () => {
-  const [itemsPerPage, setItemsPerPage] = useState(16);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [sortOrder, setSortOrder] = useState('default');
-  const [colorFilter, setColorFilter] = useState(null);
   const listRef = useRef(null);
 
-  // Отримання всіх унікальних кольорів
+  // Ініціалізація стану зі значень localStorage
+  const [itemsPerPage, setItemsPerPage] = useState(
+    () => localStorage.getItem('tablets_itemsPerPage') || 16,
+  );
+  const [currentPage, setCurrentPage] = useState(
+    () => parseInt(localStorage.getItem('tablets_currentPage')) || 1,
+  );
+  const [sortOrder, setSortOrder] = useState(
+    () => localStorage.getItem('tablets_sortOrder') || 'default',
+  );
+  const [colorFilter, setColorFilter] = useState(
+    () => localStorage.getItem('tablets_colorFilter') || null,
+  );
+
+  // Збереження змін у localStorage
+  useEffect(() => {
+    localStorage.setItem('tablets_itemsPerPage', itemsPerPage);
+  }, [itemsPerPage]);
+
+  useEffect(() => {
+    localStorage.setItem('tablets_sortOrder', sortOrder);
+  }, [sortOrder]);
+
+  useEffect(() => {
+    localStorage.setItem('tablets_colorFilter', colorFilter);
+  }, [colorFilter]);
+
+  useEffect(() => {
+    localStorage.setItem('tablets_currentPage', currentPage);
+  }, [currentPage]);
+
+  // Унікальні кольори
   const availableColors = [...new Set(tablets.flatMap(p => p.color))];
 
   // Фільтрація та сортування
   let filteredTablets = [...tablets];
 
-  if (colorFilter) {
-    filteredTablets = filteredTablets.filter(phone =>
-      phone.color.includes(colorFilter),
+  if (colorFilter && colorFilter !== 'null') {
+    filteredTablets = filteredTablets.filter(item =>
+      item.color.includes(colorFilter),
     );
   }
 
@@ -116,12 +143,14 @@ export const Tablets = () => {
   const totalPages =
     itemsPerPage === 'All'
       ? 1
-      : Math.ceil(filteredTablets.length / itemsPerPage);
+      : Math.ceil(filteredTablets.length / Number(itemsPerPage));
 
   const startIndex =
-    itemsPerPage === 'All' ? 0 : (currentPage - 1) * itemsPerPage;
+    itemsPerPage === 'All' ? 0 : (currentPage - 1) * Number(itemsPerPage);
   const endIndex =
-    itemsPerPage === 'All' ? filteredTablets.length : startIndex + itemsPerPage;
+    itemsPerPage === 'All'
+      ? filteredTablets.length
+      : startIndex + Number(itemsPerPage);
 
   const visibleProducts = filteredTablets.slice(startIndex, endIndex);
 

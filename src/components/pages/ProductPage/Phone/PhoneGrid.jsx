@@ -91,11 +91,38 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
 };
 
 export const Phones = () => {
-  const [itemsPerPage, setItemsPerPage] = useState(16);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [sortOrder, setSortOrder] = useState('default');
-  const [colorFilter, setColorFilter] = useState(null);
   const listRef = useRef(null);
+
+  // Ініціалізація стану зі значень localStorage
+  const [itemsPerPage, setItemsPerPage] = useState(
+    () => localStorage.getItem('phones_itemsPerPage') || 16,
+  );
+  const [currentPage, setCurrentPage] = useState(
+    () => parseInt(localStorage.getItem('phones_currentPage')) || 1,
+  );
+  const [sortOrder, setSortOrder] = useState(
+    () => localStorage.getItem('phones_sortOrder') || 'default',
+  );
+  const [colorFilter, setColorFilter] = useState(
+    () => localStorage.getItem('phones_colorFilter') || null,
+  );
+
+  // Збереження змін у localStorage
+  useEffect(() => {
+    localStorage.setItem('phones_itemsPerPage', itemsPerPage);
+  }, [itemsPerPage]);
+
+  useEffect(() => {
+    localStorage.setItem('phones_sortOrder', sortOrder);
+  }, [sortOrder]);
+
+  useEffect(() => {
+    localStorage.setItem('phones_colorFilter', colorFilter);
+  }, [colorFilter]);
+
+  useEffect(() => {
+    localStorage.setItem('phones_currentPage', currentPage);
+  }, [currentPage]);
 
   // Отримання всіх унікальних кольорів
   const availableColors = [...new Set(phones.flatMap(p => p.color))];
@@ -103,7 +130,7 @@ export const Phones = () => {
   // Фільтрація та сортування
   let filteredPhones = [...phones];
 
-  if (colorFilter) {
+  if (colorFilter && colorFilter !== 'null') {
     filteredPhones = filteredPhones.filter(phone =>
       phone.color.includes(colorFilter),
     );
@@ -123,7 +150,9 @@ export const Phones = () => {
   const startIndex =
     itemsPerPage === 'All' ? 0 : (currentPage - 1) * itemsPerPage;
   const endIndex =
-    itemsPerPage === 'All' ? filteredPhones.length : startIndex + itemsPerPage;
+    itemsPerPage === 'All'
+      ? filteredPhones.length
+      : startIndex + Number(itemsPerPage);
 
   const visibleProducts = filteredPhones.slice(startIndex, endIndex);
 

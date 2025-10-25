@@ -89,21 +89,48 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
 };
 
 export const Accessories = () => {
-  const [itemsPerPage, setItemsPerPage] = useState(16);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [sortOrder, setSortOrder] = useState('default');
-  const [colorFilter, setColorFilter] = useState(null);
   const listRef = useRef(null);
 
-  // Отримання всіх унікальних кольорів
+  // Ініціалізація стану зі значень localStorage
+  const [itemsPerPage, setItemsPerPage] = useState(
+    () => localStorage.getItem('accessories_itemsPerPage') || 16,
+  );
+  const [currentPage, setCurrentPage] = useState(
+    () => parseInt(localStorage.getItem('accessories_currentPage')) || 1,
+  );
+  const [sortOrder, setSortOrder] = useState(
+    () => localStorage.getItem('accessories_sortOrder') || 'default',
+  );
+  const [colorFilter, setColorFilter] = useState(
+    () => localStorage.getItem('accessories_colorFilter') || null,
+  );
+
+  // Збереження змін у localStorage
+  useEffect(() => {
+    localStorage.setItem('accessories_itemsPerPage', itemsPerPage);
+  }, [itemsPerPage]);
+
+  useEffect(() => {
+    localStorage.setItem('accessories_sortOrder', sortOrder);
+  }, [sortOrder]);
+
+  useEffect(() => {
+    localStorage.setItem('accessories_colorFilter', colorFilter);
+  }, [colorFilter]);
+
+  useEffect(() => {
+    localStorage.setItem('accessories_currentPage', currentPage);
+  }, [currentPage]);
+
+  // Унікальні кольори
   const availableColors = [...new Set(accessories.flatMap(p => p.color))];
 
   // Фільтрація та сортування
   let filteredAccessories = [...accessories];
 
-  if (colorFilter) {
-    filteredAccessories = filteredAccessories.filter(phone =>
-      phone.color.includes(colorFilter),
+  if (colorFilter && colorFilter !== 'null') {
+    filteredAccessories = filteredAccessories.filter(item =>
+      item.color.includes(colorFilter),
     );
   }
 
@@ -119,11 +146,11 @@ export const Accessories = () => {
       : Math.ceil(filteredAccessories.length / itemsPerPage);
 
   const startIndex =
-    itemsPerPage === 'All' ? 0 : (currentPage - 1) * itemsPerPage;
+    itemsPerPage === 'All' ? 0 : (currentPage - 1) * Number(itemsPerPage);
   const endIndex =
     itemsPerPage === 'All'
       ? filteredAccessories.length
-      : startIndex + itemsPerPage;
+      : startIndex + Number(itemsPerPage);
 
   const visibleProducts = filteredAccessories.slice(startIndex, endIndex);
 
