@@ -3,7 +3,6 @@ import { Routes, Route, HashRouter as Router } from 'react-router-dom';
 import { App } from './App';
 import { MainPage } from './pages/MainPage';
 import { PhonesPage } from './pages/PhonesPage';
-import { ItemCard } from './components/ItemCard';
 
 export const Root = () => {
   return (
@@ -12,7 +11,6 @@ export const Root = () => {
         <Route path="/" element={<App />}>
           <Route index element={<MainPage />} />
           <Route path="phones" element={<PhonesPage />} />
-          <Route path="itemCard" element={<ItemCard />} />
           <Route path="*" element={<MainPage />} />
         </Route>
       </Routes>

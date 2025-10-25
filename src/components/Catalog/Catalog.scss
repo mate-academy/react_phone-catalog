@@ -5,12 +5,6 @@
 
   &__container {}
 
-  &__bradcrumbs {
-    margin-bottom: 40px;
-    display: flex;
-    column-gap: 8px;
-  }
-
   &__title {
     margin-bottom: 8px;
   }
@@ -154,4 +148,24 @@
 .label {
   font-size: 12px;
   color: var(--color-secondary)
+}
+
+
+.bradcrumbs {
+  margin-bottom: 40px;
+  display: flex;
+  column-gap: 8px;
+
+  color: var(--color-primary);
+
+  &__link {
+
+
+
+    &--last {
+      color: var(--color-secondary);
+
+    }
+  }
+
 }
