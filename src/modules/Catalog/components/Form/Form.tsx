@@ -74,7 +74,7 @@ export const Form: React.FC<Props> = ({
         perPage: '' + 16,
       }),
     );
-  }, []);
+  }, [searchParams]);
 
   return (
     <form className={classNames(styles.form)}>

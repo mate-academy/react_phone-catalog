@@ -78,8 +78,6 @@ export const Catalor: React.FC = () => {
     setLoading(true);
     setError(false);
 
-    console.log(errorKey);
-
     if (isInvalidCategory) {
       return;
     }

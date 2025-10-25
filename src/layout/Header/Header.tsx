@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
       <div className={classNames(styles.header__container)}>
         <Link to={'/'} className={classNames(styles.header__logo)}>
           <img
-            src="/img/logo.png"
+            src={`${process.env.PUBLIC_URL}/img/logo.png`}
             alt="logo"
             className={classNames(styles['header__logo-img'])}
           />

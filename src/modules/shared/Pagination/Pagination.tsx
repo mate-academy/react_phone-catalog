@@ -34,7 +34,7 @@ export const Pagination: React.FC<Props> = ({ pagesCount }) => {
         }),
       );
     }
-  }, [pagesCount]);
+  }, [pagesCount, searchParams]);
 
   if (page === null) {
     return <></>;
