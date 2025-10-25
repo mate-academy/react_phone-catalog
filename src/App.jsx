@@ -1,5 +1,5 @@
 import './App.scss';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
@@ -22,7 +22,7 @@ export default function App() {
         <ScrollToTop />
         <main>
           <Routes>
-            <Route path="/" element={<Navigate to="/Home" replace />} />
+            <Route path="/" element={<Home />} />
 
             <Route path="/Home" element={<Home />} />
             <Route path="/phones" element={<Phones />} />
