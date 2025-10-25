@@ -29,7 +29,7 @@ html, body {
   cursor: pointer;
 
   &--menu-burger {
-    background-image: url('src/assets/icons/icon-burger.svg');
+    background-image: url('../assets/icons/icon-burger.svg');
   }
 
   &--like, &--cart {
@@ -38,11 +38,11 @@ html, body {
   }
 
   &--like {
-    background-image: url(src/assets/icons/icon-favourite.svg);
+    background-image: url('../assets/icons/icon-favourite.svg');
   }
 
   &--favourite {
-    background-image: url(src/assets/icons/icon-liked.svg);
+    background-image: url('../assets/icons/icon-liked.svg');
   }
 
   &--cart {
@@ -54,23 +54,23 @@ html, body {
   }
 
   &--arrow-up {
-    background-image: url(src/assets/icons/icon-arrow-up.svg);
+    background-image: url('../assets/icons/icon-arrow-up.svg');
   }
 
   &--arrow-left {
-    background-image: url(src/assets/icons/icon-arrow-left.svg);
+    background-image: url('../assets/icons/icon-arrow-left.svg');
   }
 
   &--arrow-right {
-    background-image: url(src/assets/icons/icon-arrow-right.svg);
+    background-image: url('../assets/icons/icon-arrow-right.svg');
   }
 
   &--arrow-left-hover {
-    background-image: url(src/assets/icons/icon-arrow-left-hover.svg);
+    background-image: url('../assets/icons/icon-arrow-left-hover.svg');
   }
 
   &--arrow-right-hover {
-    background-image: url(src/assets/icons/icon-arrow-right-hover.svg);
+    background-image: url('../assets/icons/icon-arrow-right-hover.svg');
   }
 
 
@@ -331,4 +331,3 @@ html, body {
     }
   }
 }
-
