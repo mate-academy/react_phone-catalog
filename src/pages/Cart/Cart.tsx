@@ -29,11 +29,17 @@ const totalVariants = {
 };
 
 const Cart = () => {
-  const { cart, increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
-  const total = cart.reduce((sum, item) => sum + (item.price ?? 0) * (item.quantity ?? 1), 0);
+  const { cart, increaseQuantity, decreaseQuantity, removeFromCart } =
+    useCart();
+  const total = cart.reduce(
+    (sum, item) => sum + (item.price ?? 0) * (item.quantity ?? 1),
+    0,
+  );
   const navigate = useNavigate();
 
-  console.log(cart);
+  const clearCart = () => {
+    cart.forEach(item => removeFromCart(String(item.id)));
+  };
 
   return (
     <>
@@ -84,7 +90,10 @@ const Cart = () => {
                 layout
               >
                 <div className="cart-card">
-                  <button className="cart-remove" onClick={() => removeFromCart(String(item.id))}>
+                  <button
+                    className="cart-remove"
+                    onClick={() => removeFromCart(String(item.id))}
+                  >
                     <img src="img/icons/CloseCart.svg" alt="" />
                   </button>
                   <img
@@ -98,7 +107,10 @@ const Cart = () => {
                     }
                     alt={item.name}
                   />
-                  <a className="cart-name" href={`${item.category}/${item.itemId}`}>
+                  <a
+                    className="cart-name"
+                    href={`${item.category}/${item.itemId}`}
+                  >
                     {item.name}
                   </a>
 
@@ -123,7 +135,10 @@ const Cart = () => {
                       </svg>
                     </button>
                     <span>{item.quantity}</span>
-                    <button className="cart-plus" onClick={() => increaseQuantity(String(item.id))}>
+                    <button
+                      className="cart-plus"
+                      onClick={() => increaseQuantity(String(item.id))}
+                    >
                       <svg
                         width="16"
                         height="16"
@@ -157,8 +172,18 @@ const Cart = () => {
             layout
           >
             <h2>${total}</h2>
-            <p>Total for {cart.reduce((sum, item) => sum + (item.quantity ?? 0), 0)} items</p>
-            <button>Checkout</button>
+            <p>
+              Total for{' '}
+              {cart.reduce((sum, item) => sum + (item.quantity ?? 0), 0)} items
+            </p>
+            <button
+              className="cart-checkout"
+              onClick={() => {
+                clearCart();
+              }}
+            >
+              Checkout
+            </button>
           </motion.div>
         )}
       </div>
