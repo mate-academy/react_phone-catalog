@@ -5,7 +5,7 @@ import { GlobalProvider } from './utils/GlobalContext';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <GlobalProvider>
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <App />
     </Router>
   </GlobalProvider>,

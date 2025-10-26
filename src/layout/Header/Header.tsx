@@ -12,7 +12,12 @@ const MIN_TABLET_WIDTH = BREAKPOINTS['min-tablet'];
 export const Header: React.FC = () => {
   const [burger, setBurger] = useState(false);
   const navList = ['home', 'phone', 'tablets', 'accessories'];
-  const navPath = [`${import.meta.env.BASE_URL}`, '/phones', '/tablets', '/accessories'];
+  const navPath = [
+    `${import.meta.env.BASE_URL}`,
+    '/phones',
+    '/tablets',
+    '/accessories',
+  ];
   const { favourites, cart } = useContext(StateContext);
 
   useEffect(() => {
