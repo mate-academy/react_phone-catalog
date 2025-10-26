@@ -1,4 +1,12 @@
-import { Category, get, ItemsAmount, Order, useLoadItems } from '@shared/api/';
+import {
+  CatalogueData,
+  Category,
+  get,
+  ItemsAmount,
+  LoadStatus,
+  Order,
+  useLoadItems,
+} from '@shared/api/';
 import { useCallback, useEffect } from 'react';
 
 const DATA_LOAD = {
@@ -47,7 +55,7 @@ export const useHomePage = () => {
     loadAllData();
   }, []);
 
-  const processNew = () => {
+  const processNew = (): CatalogueData | LoadStatus => {
     if (typeof products.new.items === 'string') {
       return products.new.items;
     }
@@ -60,7 +68,7 @@ export const useHomePage = () => {
       pages: products.new.items.pages,
     };
 
-    return newData;
+    return newData as CatalogueData;
   };
 
   return {
