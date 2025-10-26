@@ -15,6 +15,7 @@ export const CategoryElement = ({ category, amount }: Props) => (
       key={category.id}
       aria-label={`Explore our ${category.name}`}
       className={styles.category__link}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
       <img
         className={styles.category__image}

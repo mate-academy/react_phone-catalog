@@ -24,12 +24,11 @@
   }
 
   @media(max-width: s.$c-BREAKPOINT_TAB) {
-    width: 100dvw;
-    margin-left: calc(-50dvw + env(safe-area-inset-left));
-    margin-right: calc(-50dvw + env(safe-area-inset-right));
-    left: 50%;
-    right: 50%;
     position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100dvw;
+    overflow-x: clip;
   }
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {

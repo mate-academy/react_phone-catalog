@@ -21,7 +21,11 @@ export const ProductCard = forwardRef<HTMLLIElement, Props>(
 
     return (
       <li ref={ref} className={styles.container}>
-        <Link {...conf.link} className={styles['product-card']}>
+        <Link
+          {...conf.link}
+          className={styles['product-card']}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
           <div className={styles['image-wrapper']}>
             {typeof data === 'string' ? (
               <LoaderSpinner />
