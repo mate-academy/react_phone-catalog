@@ -1,3 +1,5 @@
+@use '/src/vars' as *;
+
 .Loader {
   display: flex;
   width: 100%;
@@ -6,12 +8,12 @@
   align-items: center;
 
   &__content {
-    border-radius: 50%;
+    border-radius: $border-radius;
     width: 2em;
     height: 2em;
     margin: 1em auto;
-    border: 0.3em solid #ddd;
-    border-left-color: #000;
+    border: 0.3em solid $color-white;
+    border-left-color: $color-black;
     animation: load8 1.2s infinite linear;
   }
 }

@@ -1,18 +1,19 @@
 @use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
 
 .img {
   flex: 1;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 320px;
-  border-radius: 8px;
+  height: $wight-320;
+  border-radius: $wight-8;
 
   @include on-tablet {
-    height: 190px;
+    height: $wight-190;
   }
 
   @include on-desktop {
-    height: 400px;
+    height: $wight-400;
   }
 }

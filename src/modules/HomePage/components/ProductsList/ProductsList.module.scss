@@ -1,7 +1,8 @@
 @use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
 
 .container {
-  gap: 24px;
+  gap: $wight-24;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -11,7 +12,7 @@
 
 .productsList {
   display: flex;
-  gap: 16px;
+  gap: $wight-16;
   justify-content: space-between;
 }
 
@@ -22,25 +23,11 @@
 }
 
 .title {
-  color: #F1F2F9;
-  font-size: 22px;
+  color: $color-white;
+  font-size: $wight-22;
 }
 
 .buttons {
   display: flex;
-  gap: 16px;
-}
-
-.button {
-  width: 32px;
-  height: 32px;
-  color: #3B3E4A;
-  border: 1px solid #3B3E4A;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.active {
-  background-color: #3B3E4A;
-  color: #F1F2F9;
+  gap: $wight-16;
 }

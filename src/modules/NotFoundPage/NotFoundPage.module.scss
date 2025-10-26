@@ -1,0 +1,8 @@
+@use '/src/vars' as *;
+
+.status {
+  height: $wight-30;
+  width: 100%;
+  color: $color-white;
+  padding: $wight-20-0;
+}

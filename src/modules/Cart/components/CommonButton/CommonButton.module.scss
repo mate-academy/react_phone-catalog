@@ -1,11 +1,12 @@
 @use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
 
 .commonButton {
   display: flex;
   border: none;
-  height: 32px;
-  width: 32px;
+  height: $wight-32;
+  width: $wight-32;
   align-items: center;
   justify-content: center;
-  background-color: #161827;
+  background-color: $surface-1;
 }

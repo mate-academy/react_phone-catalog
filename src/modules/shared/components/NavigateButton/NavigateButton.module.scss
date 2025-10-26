@@ -1,23 +1,24 @@
+@use '/src/vars' as *;
+
 .navigate {
-  color: #75767F;
-  font-weight: 700;
-  gap: 8px;
+  color: $secondary;
+  font-weight: $font-weight-700;
+  gap: $wight-8;
   display: flex;
-  font-size: 12px;
+  font-size: $wight-12;
   align-items: center;
 }
 
 .button {
   border: none;
-  padding: 0;
   display: flex;
   align-items: center;
-  color: #F1F2F9;
+  color: $color-white;
   text-decoration: none;
 }
 
 .category {
   display: flex;
-  gap: 8px;
+  gap: $wight-8;
 }
 

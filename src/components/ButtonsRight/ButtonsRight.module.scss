@@ -1,4 +1,5 @@
 @use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
 
 .buttonsRight {
   display: flex;
@@ -6,18 +7,18 @@
 }
 
 .homePage {
-  width: 48px;
-  height: 48px;
+  width: $wight-48;
+  height: $wight-48;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
 
-  border-left: 1px solid #323542;
+  border-left: $border-surface-2;
 
   @include on-desktop {
-    width: 64px;
-    height: 64px;
+    width: $wight-64;
+    height: $wight-64;
   }
 }
 
@@ -33,17 +34,46 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 64px;
+  height: $wight-64;
   justify-content: space-between;
   width: 100%;
-  border-top: 1px solid #323542;
+  border-top: $border-surface-2;
 
 }
 
 .buttonsRight a.active {
-  color: #F1F2F9;
-  border-bottom: 3px solid #F1F2F9;
-  padding-bottom: 4px;
+  color: $color-white;
+  border-bottom: $wight-3 solid $color-white;
+  padding-bottom: $wight-4;
   display: flex;
   align-items: center;
+}
+
+.container {
+  position: relative;
+  height: $wight-28;
+  width: $wight-28;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container img {
+  height: $wight-16;
+  width: $wight-16;
+}
+
+.count {
+  position: absolute;
+  height: $wight-14;
+  width: $wight-14;
+  border-radius: 50%;
+  background-color: $color-red;
+  font-size: $wight-9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  top: 0;
+  right: 0;
 }

@@ -1,16 +1,18 @@
+@use '/src/vars' as *;
+
 .backToTop {
   display: flex;
-  gap: 16px;
+  gap: $wight-16;
   align-items: center;
-  font-size: 12px;
+  font-size: $wight-12;
   border: none;
-  color: #75767F;
+  color: $secondary;
   cursor: pointer;
   justify-content: center;
   padding: 0;
 }
 
 .backToTopArrow {
-  background-color: #323542;
-  padding: 8px;
+  background-color: $surface-2;
+  padding: $wight-8;
 }

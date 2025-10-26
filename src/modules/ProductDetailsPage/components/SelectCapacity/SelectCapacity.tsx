@@ -1,4 +1,4 @@
-import { useProduct } from '../../hooks/ProductContext';
+import { useProduct } from '../../../shared/hooks/ProductContext';
 import styles from './SelectCapacity.module.scss';
 
 export const SelectCapacity = () => {

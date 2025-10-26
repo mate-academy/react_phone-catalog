@@ -1,3 +1,4 @@
+import { NavButton } from '../../../shared/components/NavButton';
 import styles from './Pagination.module.scss';
 
 interface PaginationProps {
@@ -41,22 +42,22 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <div className={styles.pagination}>
-      <button
-        className={styles.buttonNav}
+      <NavButton
         onClick={goPrev}
-        disabled={currentPage === 0}
-      >
-        «
-      </button>
+        disabled={currentPage === 1}
+        active={currentPage > 1}
+        childrenValue={'/img/Vector left.svg'}
+      />
 
       <div className={styles.pageList}>
         {visibleNumbers.map(p => (
           <button
             key={p}
-            className={styles.buttonNav}
-            style={{
-              backgroundColor: p === currentPage ? '#905BFF' : '#161827',
-            }}
+            className={`
+              ${styles.buttonNav}
+              ${styles.number}
+              ${p === currentPage ? styles.currentPage : ''}
+            `}
             onClick={() => onPageChange(p)}
           >
             {p}
@@ -64,13 +65,12 @@ export const Pagination: React.FC<PaginationProps> = ({
         ))}
       </div>
 
-      <button
-        className={styles.buttonNav}
+      <NavButton
         onClick={goNext}
-        disabled={currentPage === totalPage - 1}
-      >
-        »
-      </button>
+        disabled={currentPage === totalPage}
+        active={currentPage < totalPage}
+        childrenValue={'/img/Vector right.svg'}
+      />
     </div>
   );
 };

@@ -9,11 +9,13 @@ import {
 type CartContextType = {
   cartItems: number[];
   toggleCart: (id: number) => void;
+  clearCart: () => void;
 };
 
 export const CartContext = createContext<CartContextType>({
   cartItems: [],
   toggleCart: () => {},
+  clearCart: () => {},
 });
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -31,6 +33,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   useEffect(() => {
     const saved = localStorage.getItem('cart');
 
@@ -40,7 +46,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <CartContext.Provider value={{ cartItems, toggleCart }}>
+    <CartContext.Provider value={{ cartItems, toggleCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );

@@ -1,4 +1,5 @@
 @use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
 
 .container {
   display: flex;
@@ -8,23 +9,23 @@
 }
 
 .title {
-  color: #F1F2F9;
-  padding-bottom: 24px;
+  color: $color-white;
+  padding-bottom: $wight-24;
 }
 
 .categories {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 32px;
+  gap: $wight-32;
 
   @include on-tablet {
-    gap: 15px;
+    gap: $wight-15;
     flex-direction: row;
   }
 
   @include on-desktop {
-    gap: 16px;
+    gap: $wight-16;
   }
 }
 
@@ -35,7 +36,7 @@
 }
 
 .blockImg {
-  padding-bottom: 24px;
+  padding-bottom: $wight-24;
 }
 
 .img {
@@ -44,13 +45,13 @@
 }
 
 .titleLink {
-  color: #F1F2F9;
+  color: $color-white;
   font-weight: normal;
-  padding-bottom: 4px;
+  padding-bottom: $wight-4;
 }
 
 .titleCount {
-  color: #75767F;
-  font-size: 14px;
+  color: $secondary;
+  font-size: $wight-14;
 }
 

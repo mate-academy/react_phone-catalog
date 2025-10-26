@@ -8,7 +8,7 @@ import { PicturesSlider } from './components/PicturesSlider';
 import { ProductsList } from './components/ProductsList';
 
 export const HomePage = () => {
-  const { productsList, loading, error } = useTabs();
+  const { loading, error } = useTabs();
 
   if (loading) {
     return <Loader />;
@@ -16,10 +16,6 @@ export const HomePage = () => {
 
   if (error) {
     return <Error />;
-  }
-
-  if (!productsList || productsList.length === 0) {
-    return;
   }
 
   return (

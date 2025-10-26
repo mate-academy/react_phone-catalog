@@ -1,8 +1,13 @@
-import { useParams } from 'react-router-dom';
 import styles from './NoCategory.module.scss';
 
-export const NoCategory = () => {
-  const { category } = useParams();
+interface NoCategoryProps {
+  category?: string | undefined;
+}
 
-  return <div className={styles.status}>There are no {category} yet</div>;
+export const NoCategory: React.FC<NoCategoryProps> = ({ category }) => {
+  return (
+    <div className={styles.status}>
+      There are no {category ? category : 'products'} yet
+    </div>
+  );
 };

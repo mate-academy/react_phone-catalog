@@ -1,10 +1,11 @@
 @use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
 
 .container {
-  color: aliceblue;
+  color: $color-white;
   display: flex;
   flex-direction: column;
-  padding-bottom: 56px;
+  padding-bottom: $wight-56;
 }
 
 .grigContainer {
@@ -12,15 +13,15 @@
 
   align-items: start;
 
-  padding-top: 32px;
+  padding-top: $wight-32;
 
   @include on-tablet {
-    padding-top: 40px;
+    padding-top: $wight-32;
   }
 }
 
 .activeColor {
-  border-color: #F1F2F9;
+  border-color: $color-white;
 }
 
 

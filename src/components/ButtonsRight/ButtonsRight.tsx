@@ -1,3 +1,5 @@
+import { useCart } from '../../ProductsContext/CartContext';
+import { useFavourite } from '../../ProductsContext/FavouriteContext';
 import styles from './ButtonsRight.module.scss';
 import { NavLink, useParams } from 'react-router-dom';
 
@@ -11,10 +13,22 @@ export const ButtonsRight: React.FC<ButtonsRightProps> = ({
   onClose,
 }) => {
   const { category } = useParams();
+  const { favourites } = useFavourite();
+  const { cartItems } = useCart();
 
   const buttonsNav = [
-    { to: '/favourites', img: '/img/favourites.svg', alt: 'Favourites' },
-    { to: '/cart', img: '/img/cart.png', alt: 'Cart' },
+    {
+      to: '/favourites',
+      img: '/img/favourites.svg',
+      alt: 'Favourites',
+      count: favourites.length,
+    },
+    {
+      to: '/cart',
+      img: '/img/cart.svg',
+      alt: 'Cart',
+      count: cartItems.length,
+    },
   ];
 
   return (
@@ -34,7 +48,10 @@ export const ButtonsRight: React.FC<ButtonsRightProps> = ({
             `
           }
         >
-          <img src={link.img} alt={link.alt} />
+          <div className={styles.container}>
+            {link.count > 0 && <div className={styles.count}>{link.count}</div>}
+            <img src={link.img} alt={link.alt} />
+          </div>
         </NavLink>
       ))}
     </div>

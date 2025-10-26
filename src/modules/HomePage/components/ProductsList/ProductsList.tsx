@@ -3,6 +3,10 @@ import { useTabs } from '../../../../ProductsContext/TabsContext';
 import { useState } from 'react';
 import { CardProduct, ProductsStyleTitleMap } from '../../../shared';
 import { ProductsStyleMode } from '../../../shared/types/types';
+import { NoCategory } from '../../../shared/components/NoCategory';
+import { useParams } from 'react-router-dom';
+import { getSuggestedProducts } from '../../hooks/SuggestedProducts';
+import { NavButton } from '../../../shared/components/NavButton';
 
 interface ProductsListType {
   productsStyle: ProductsStyleMode;
@@ -10,6 +14,9 @@ interface ProductsListType {
 
 export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
   const { productsList } = useTabs();
+  const { id } = useParams();
+
+  const isProducts = !productsList || productsList.length === 0;
 
   let products = productsList
     .filter(product => product.fullPrice > product.price)
@@ -22,6 +29,10 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
 
     products = productsList.filter(product => product.year === newestYear);
     sale = false;
+  }
+
+  if (productsStyle === ProductsStyleMode.Also && id) {
+    products = getSuggestedProducts(id, products, 8);
   }
 
   const itemsPerPage = 4;
@@ -55,29 +66,31 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
         </h1>
 
         <div className={styles.buttons}>
-          <button
-            className={`${styles.button} ${index > 0 ? styles.active : ''}`}
+          <NavButton
             onClick={goPrev}
             disabled={index === 0}
-          >
-            ‹
-          </button>
+            active={index > 0}
+            childrenValue={'/img/Vector left.svg'}
+          />
 
-          <button
-            className={`${styles.button} ${index !== totalSlides - 1 ? styles.active : ''}`}
+          <NavButton
             onClick={goNext}
             disabled={index === totalSlides - 1}
-          >
-            ›
-          </button>
+            active={index < totalSlides - 1}
+            childrenValue={'/img/Vector right.svg'}
+          />
         </div>
       </div>
 
-      <div className={styles.productsList}>
-        {visibleProducts.map(element => (
-          <CardProduct key={element.id} element={element} sale={sale} />
-        ))}
-      </div>
+      {isProducts ? (
+        <NoCategory />
+      ) : (
+        <div className={styles.productsList}>
+          {visibleProducts.map(element => (
+            <CardProduct key={element.id} element={element} sale={sale} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

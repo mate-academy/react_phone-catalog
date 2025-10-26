@@ -1,4 +1,5 @@
 @use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
 
 .gridPrice {
   grid-column: 1/-1;
@@ -15,9 +16,9 @@
 .containerPrice {
   display: flex;
   flex-direction: column;
-  border: 1px solid #3B3E4A;
-  padding: 24px;
-  gap: 16px;
+  border: $border-color-elements;
+  padding: $wight-24;
+  gap: $wight-16;
   width: 100%;
 }
 
@@ -26,31 +27,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #3B3E4A;
+  padding-bottom: $wight-16;
+  border-bottom: $border-color-elements;
 
   @include on-desktop {
-    padding-bottom: 24px;
+    padding-bottom: $wight-24;
   }
 }
 
 .totalPrice {
-  font-size: 32px;
-  font-weight: 800;
-  line-height: 41px;
+  font-size: $wight-32;
+  font-weight: $font-weight-800;
+  line-height: $wight-41;
 }
 
 .countItems {
-  font-size: 14px;
-  color: #75767F;
-  line-height: 21px;
+  font-size: $wight-14;
+  color: $secondary;
+  line-height: $wight-21;
 }
 
 .checkout {
-  height: 48px;
+  height: $wight-48;
   border: none;
-  background-color: #905BFF;
-  color: #F1F2F9;
-  font-size: 14px;
-  line-height: 21px;
+  background-color: $accent-hover;
+  color: $color-white;
+  font-size: $wight-14;
+  line-height: $wight-21;
 }

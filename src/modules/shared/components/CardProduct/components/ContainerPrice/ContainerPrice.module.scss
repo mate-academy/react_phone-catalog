@@ -1,16 +1,18 @@
+@use '/src/vars' as *;
+
 .containerPrice {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: $wight-8;
 }
 
 .price {
-  color: #F1F2F9;
-  font-weight: 800;
+  color: $color-white;
+  font-weight: $font-weight-800;
 }
 
 .fullPrice {
-  font-size: 22px;
-  font-weight: 600;
+  font-size: $wight-22;
+  font-weight: $font-weight-600;
   text-decoration: line-through;
 }

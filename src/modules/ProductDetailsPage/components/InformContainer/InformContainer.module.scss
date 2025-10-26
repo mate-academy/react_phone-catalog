@@ -1,9 +1,10 @@
 @use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
 
 .goBuy {
-  margin:  32px 0;
+  margin: $wight-32-0;
   display: flex;
-  gap: 16px;
+  gap: $wight-16;
   flex-direction: column;
 }
 

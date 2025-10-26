@@ -1,9 +1,10 @@
 @use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
 
 .imgSliders {
   display: flex;
-  gap: 8px;
-  padding-bottom: 40px;
+  gap: $wight-8;
+  padding-bottom: $wight-40;
   justify-content: center;
 
   grid-column: 1/-1;
@@ -22,10 +23,10 @@
 .imgBox {
   display: flex;
   justify-content: center;
-  height: 50px;
-  width: 50px;
-  padding: 4px;
-  border: 1px solid #3B3E4A;
+  height: $wight-50;
+  width: $wight-50;
+  padding: $wight-4;
+  border: $border-color-elements;
 }
 
 .imgBox img {
@@ -33,5 +34,5 @@
 }
 
 .activeImage {
-  border-color: #F1F2F9;
+  border-color: $color-white;
 }

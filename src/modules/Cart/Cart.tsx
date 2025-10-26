@@ -5,6 +5,7 @@ import styles from './Cart.module.scss';
 import { CommonButton } from './components/CommonButton';
 import { CountBox } from './components/CountBox';
 import { TotalPrice } from './components/TotalPrice';
+import { CartIsEmpty } from './components/CartIsEmpty';
 
 export const Cart = () => {
   const { productsList } = useTabs();
@@ -56,36 +57,43 @@ export const Cart = () => {
   return (
     <div className={styles.container}>
       <div className={styles.cartContainer}>
-        {cartProducts.map(element => {
-          const count = countItems[element.id] || 1;
+        {cartProducts.length === 0 ? (
+          <CartIsEmpty />
+        ) : (
+          cartProducts.map(element => {
+            const count = countItems[element.id] || 1;
 
-          return (
-            <div className={styles.cartComponent} key={element.id}>
-              <div className={styles.box}>
-                <CommonButton setCountItems={setCountItems} element={element} />
+            return (
+              <div className={styles.cartComponent} key={element.id}>
+                <div className={styles.box}>
+                  <CommonButton
+                    setCountItems={setCountItems}
+                    element={element}
+                  />
 
-                <img
-                  className={styles.picture}
-                  src={element.image}
-                  alt="Picture"
-                />
+                  <img
+                    className={styles.picture}
+                    src={element.image}
+                    alt="Picture"
+                  />
 
-                <div className={styles.title}>{element.name}</div>
+                  <div className={styles.title}>{element.name}</div>
+                </div>
+
+                <div className={styles.box}>
+                  <CountBox
+                    count={count}
+                    removeItemfromCart={removeItemfromCart}
+                    addItemInCart={addItemInCart}
+                    element={element}
+                  />
+
+                  <div className={styles.price}>${element.price * count}</div>
+                </div>
               </div>
-
-              <div className={styles.box}>
-                <CountBox
-                  count={count}
-                  removeItemfromCart={removeItemfromCart}
-                  addItemInCart={addItemInCart}
-                  element={element}
-                />
-
-                <div className={styles.price}>${element.price * count}</div>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
 
       <TotalPrice commonPrice={commonPrice} totalItems={totalItems} />

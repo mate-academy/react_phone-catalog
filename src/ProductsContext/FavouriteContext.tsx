@@ -35,7 +35,17 @@ export const FavouriteProvider = ({ children }: { children: ReactNode }) => {
     const saved = localStorage.getItem('favourites');
 
     if (saved) {
-      setFavourites(JSON.parse(saved));
+      try {
+        const parsed = JSON.parse(saved);
+
+        if (Array.isArray(parsed) && parsed.every(i => typeof i === 'number')) {
+          setFavourites(parsed);
+        } else {
+          setFavourites([]);
+        }
+      } catch {
+        setFavourites([]);
+      }
     }
   }, []);
 

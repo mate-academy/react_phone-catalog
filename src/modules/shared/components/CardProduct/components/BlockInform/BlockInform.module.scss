@@ -1,8 +1,10 @@
+@use '/src/vars' as *;
+
 .blockInform {
-  padding: 8px 0;
+  padding: $wight-8-0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: $wight-8;
 }
 
 .information {
@@ -11,10 +13,10 @@
 }
 
 .name {
-  color: #75767F;
+  color: $secondary;
 
 }
 
 .value {
- color: #F1F2F9;
+ color: $color-white;
 }

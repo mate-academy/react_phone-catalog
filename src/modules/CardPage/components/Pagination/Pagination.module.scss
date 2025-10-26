@@ -1,24 +1,36 @@
+@use '/src/vars' as *;
+
 .pagination {
   justify-content: center;
   display: flex;
-  gap: 16px;
+  gap: $wight-16;
   width: 100%;
 }
 
 .buttonNav {
-  height: 32px;
-  width: 32px;
+  height: $wight-32;
+  width: $wight-32;
   border: none;
-  color: #F1F2F9;
-  background-color: #323542;
+  color: $color-white;
   cursor: pointer;
 }
 
+.number {
+  background-color: $surface-1;
+  transition: $all-transition;
+
+  &:hover {
+    background-color: $color-elements;
+  }
+}
 
 .pageList {
   display: flex;
-  gap: 8px;
+  gap: $wight-8;
 }
 
+.currentPage {
+  background-color: $accent-hover;
+}
 
 

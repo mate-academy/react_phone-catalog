@@ -1,19 +1,20 @@
 @use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
 
 .aboutAndTechSpecs {
   display: flex;
   flex-direction: column;
-  padding: 56px 0;
-  gap: 56px;
+  padding: $wight-56 0;
+  gap: $wight-56;
 
   @include on-tablet {
-    gap: 64px;
-    padding: 64px 0;
+    gap: $wight-64;
+    padding: $wight-64 0;
   }
 
   @include on-desktop {
     flex-direction: row;
-    gap: 64px;
-    padding: 80px 0;
+    gap: $wight-64;
+    padding: $wight-80 0;
   }
 }

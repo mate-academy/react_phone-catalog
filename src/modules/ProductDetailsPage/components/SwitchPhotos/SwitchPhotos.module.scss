@@ -1,12 +1,13 @@
 @use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
 
 .switchPhotos {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 16px;
+  padding-bottom: $wight-16;
   width: 100%;
-  height: 288px;
+  height: $wight-288;
 
   grid-column: 1/-1;
 

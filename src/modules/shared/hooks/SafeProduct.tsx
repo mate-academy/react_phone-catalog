@@ -1,8 +1,5 @@
 import { useContext } from 'react';
-import {
-  ProductContext,
-  ProductContextType,
-} from '../../ProductDetailsPage/hooks/ProductContext';
+import { ProductContext, ProductContextType } from './ProductContext';
 
 export const useSafeProduct = (): ProductContextType | undefined => {
   return useContext(ProductContext);

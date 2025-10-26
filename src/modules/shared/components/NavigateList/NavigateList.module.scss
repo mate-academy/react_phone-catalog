@@ -1,9 +1,10 @@
 @use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
 
 .container {
-  padding-bottom: 24px;
+  padding-bottom: $wight-24;
 
   @include on-tablet {
-    padding-bottom: 40px;
+    padding-bottom: $wight-40;
   }
 }

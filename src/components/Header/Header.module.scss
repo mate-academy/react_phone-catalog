@@ -1,4 +1,5 @@
 @use '/src/mixins.scss' as *;
+@use '/src/vars' as *;
 
 .header {
   display: flex;
@@ -8,20 +9,20 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #0F1121;
-  border-bottom: 1px solid #323542;
+  background-color: $color-black;
+  border-bottom: $border-surface-2;
 }
 
 .logoWrapper {
-  padding: 0 16px;
+  padding: 0 $wight-16;
 
   @include on-desktop {
-    padding: 0 24px;
+    padding: 0 $wight-24;
   }
 }
 
 .logoWrapper img {
-  height: 22px;
+  height: $wight-22;
 }
 
 .navLinks {
@@ -42,18 +43,18 @@
 }
 
 .burgerMenu button {
-  width: 48px;
-  height: 48px;
+  width: $wight-48;
+  height: $wight-48;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
 
-  border-left: 1px solid #323542;
+  border-left: $border-surface-2;
 
   @include on-desktop {
-    width: 64px;
-    height: 64px;
+    width: $wight-64;
+    height: $wight-64;
   }
 }
 
@@ -70,10 +71,10 @@
   align-items: center;
 
   @include on-tablet {
-    gap: 24px;
+    gap: $wight-24;
   }
 
   @include on-desktop {
-    gap: 48px;
+    gap: $wight-48;
   }
 }

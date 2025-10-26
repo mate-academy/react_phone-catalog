@@ -1,30 +1,31 @@
 @use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
 
 .container {
-  padding: 24px 0 64px;
+  padding: $wight-24 0 $wight-64;
 
   @include on-desktop {
-    padding-bottom: 80px;
+    padding-bottom: $wight-80;
   }
 }
 
 .title {
-  color: #F1F2F9;
-  font-size: 32px;
-  line-height: 41px;
+  color: $color-white;
+  font-size: $wight-32;
+  line-height: $wight-41;
 
   @include on-tablet {
-    font-size: 48px;
-    line-height: 56px;
+    font-size: $wight-48;
+    line-height: $wight-56;
   }
 
   @include on-desktop {
-    line-height: 56px;
+    line-height: $wight-56;
   }
 }
 
 .sortGrid {
-  color: #75767F;
+  color: $secondary;
 
   display: flex;
   position: relative;
@@ -51,25 +52,25 @@
 }
 
 .countModels {
-  color: #75767F;
-  padding-top: 8px;
-  font-size: 14px;
-  line-height: 21px;
+  color: $secondary;
+  padding-top: $wight-8;
+  font-size: $wight-14;
+  line-height: $wight-21;
 }
 
 .box {
-  padding: 32px 0 24px;
+  padding: $wight-32 0 $wight-24;
   display: flex;
-  gap: 24px;
+  gap: $wight-24;
   flex-direction: column;
 
   @include on-tablet {
-    padding: 40px 0;
+    padding: $wight-40 0;
   }
 }
 
 .sortList {
-  background-color: #323542;
+  background-color: $surface-2;
   position: fixed;
   position: absolute;
   top: 100%;
@@ -78,11 +79,11 @@
 }
 
 .item {
-  background-color: #323542;
+  background-color: $surface-2;
   cursor: pointer;
 
   &:hover {
-    color: #F1F2F9;
+    color: $color-white;
   }
 }
 
@@ -90,7 +91,7 @@
   @include page-grid;
 
   grid-template-columns: repeat(1, 1fr);
-  gap: 40px 16px;
+  gap: $wight-40 $wight-16;
 
   @include on-tablet {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

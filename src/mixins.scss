@@ -1,3 +1,5 @@
+@use '/src/vars' as *;
+
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
   &:hover {
@@ -6,26 +8,26 @@
 };
 
 @mixin on-tablet {
-  @media (min-width: 640px) {
+  @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
 @mixin on-desktop {
-  @media (min-width: 1201px) {
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
 @mixin content-padding-inline() {
-  padding-inline: 16px;
+  padding-inline: $padding-inline-16;
 
   @include on-tablet {
-    padding-inline: 24px;
+    padding-inline: $padding-inline-24;
   }
 
   @include on-desktop {
-    padding-inline: 152px;
+    padding-inline: $padding-inline-152;
   }
 }
 

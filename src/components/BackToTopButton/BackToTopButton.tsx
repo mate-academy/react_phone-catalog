@@ -1,3 +1,4 @@
+import { NavButton } from '../../modules/shared/components/NavButton';
 import styles from './BackToTopButton.module.scss';
 
 export const BackToTopButton = () => {
@@ -9,13 +10,9 @@ export const BackToTopButton = () => {
   };
 
   return (
-    <button className={styles.backToTop} onClick={scrollToTop}>
+    <div className={styles.backToTop} onClick={scrollToTop}>
       Back to top
-      <img
-        src="/img/ArrowRigh.svg"
-        alt="ArrowRigh"
-        className={styles.backToTopArrow}
-      />
-    </button>
+      <NavButton onClick={scrollToTop} childrenValue={'/img/Vector up.svg'} />
+    </div>
   );
 };

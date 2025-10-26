@@ -4,7 +4,7 @@ import {
   ContainerPrice,
 } from '../../../shared/components/CardProduct/components';
 import { InformMode } from '../../../shared/types/types';
-import { useProduct } from '../../hooks/ProductContext';
+import { useProduct } from '../../../shared/hooks/ProductContext';
 import { AvailableColors } from '../AvailableColors';
 import { SelectCapacity } from '../SelectCapacity';
 import styles from './InformContainer.module.scss';

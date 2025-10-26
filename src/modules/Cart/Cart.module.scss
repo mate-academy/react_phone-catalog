@@ -1,35 +1,36 @@
 @use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
 
 .container {
   @include page-grid;
 
-  gap: 32px;
-  color: #F1F2F9;
+  gap: $wight-32;
+  color: $color-white;
 
   @include on-desktop {
-    gap: 16px;
+    gap: $wight-16;
   }
 }
 
 .cartComponent {
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  background-color: #161827;
-  gap: 16px;
+  padding: $wight-16;
+  background-color: $surface-1;
+  gap: $wight-16;
 
   @include on-tablet {
     flex-direction: row;
-    padding: 24px;
+    padding: $wight-24;
     justify-content: space-between;
-    gap: 24px;
+    gap: $wight-24;
   }
 }
 
 .cartContainer {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: $wight-16;
   grid-column: 1/-1;
 
   @include on-tablet {
@@ -41,34 +42,33 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 16px;
+  gap: $wight-16;
   background-color: inherit;
   align-items: center;
 
   @include on-tablet {
-    gap: 24px;
+    gap: $wight-24;
   }
 }
 
 .title {
   background-color: inherit;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: $wight-14;
+  line-height: $wight-21;
 }
 
 .picture {
-  height: 66px;
+  height: $wight-66;
   background-color: inherit;
 }
 
 .price {
-  font-size: 22px;
+  font-size: $wight-22;
   background-color: inherit;
 
   @include on-tablet {
-    width: 80px;
-    text-align:
-    right;
+    width: $wight-80;
+    text-align: right;
   }
 }
 

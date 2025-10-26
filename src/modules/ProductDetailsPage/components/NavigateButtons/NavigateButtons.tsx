@@ -1,6 +1,6 @@
 import { BackButton } from '../../../shared/components/BackButton';
 import { NavigateButton } from '../../../shared/components/NavigateButton';
-import { useProduct } from '../../hooks/ProductContext';
+import { useProduct } from '../../../shared/hooks/ProductContext';
 import styles from './NavigateButtons.module.scss';
 
 export const NavigateButtons = () => {

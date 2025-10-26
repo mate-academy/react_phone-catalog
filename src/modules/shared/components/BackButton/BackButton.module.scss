@@ -1,8 +1,16 @@
+@use '/src/vars' as *;
+
 .arrowLeft {
-  color: #F1F2F9;
+  color: $color-white;
   display: flex;
+  align-items: center;
   border: none;
-  gap: 9px;
-  font-size: 12px;
+  gap: $wight-9;
+  font-size: $wight-12;
   padding: 0;
+  margin: 0;
+
+  &:hover {
+    color: $accent;
+  }
 }

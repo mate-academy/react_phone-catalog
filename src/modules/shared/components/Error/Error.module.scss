@@ -1,21 +1,23 @@
+@use '/src/vars' as *;
+
 .container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  color: aliceblue;
+  color: $color-white;
   align-items: center;
   justify-content: center;
-  padding: 20px 0;
-  gap: 10px;
-  font-size: 25px;
+  padding: $wight-20-0;
+  gap: $wight-10;
+  font-size: $wight-25;
 }
 
 .reloadButton {
-  width: 180px;
+  width: $wight-180;
   display: flex;
   justify-content: center;
-  padding: 10px 0;
-  background-color: #323542;
-  font-size: 14px;
-  line-height: 21px;
+  padding: $wight-10-0;
+  background-color: $surface-2;
+  font-size: $wight-14;
+  line-height: $wight-21;
 }

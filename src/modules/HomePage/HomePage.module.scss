@@ -1,42 +1,43 @@
 @use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
 
 .container {
   display: flex;
   flex-direction: column;
-  padding-bottom: 64px;
+  padding-bottom: $wight-64;
 
   @include on-desktop {
-    padding-bottom: 80px;
+    padding-bottom: $wight-80;
   }
 }
 
 .title {
-  color: #F1F2F9;
-  font-size: 48px;
-  line-height: 56px;
-  margin: 24px 0;
+  color: $color-white;
+  font-size: $wight-48;
+  line-height: $wight-56;
+  margin: $wight-24-0;
 
   @include on-tablet {
-    margin: 32px 0;
+    margin: $wight-32-0;
   }
 
   @include on-desktop {
-    margin: 56px 0;
+    margin: $wight-56 0;
   }
 }
 
 .elements {
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: $wight-56;
   align-items: center;
 
   @include on-tablet {
-    gap: 64px;
+    gap: $wight-64;
   }
 
   @include on-desktop {
-    gap: 80px;
+    gap: $wight-80;
   }
 }
 

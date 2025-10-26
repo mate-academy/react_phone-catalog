@@ -1,18 +1,19 @@
 @use "/src/mixins.scss" as *;
+@use '/src/vars' as *;
 
 .footer {
   display: flex;
   bottom: 0;
-  gap: 32px;
+  gap: $wight-32;
   width: 100%;
-  background-color: #0F1121;
-  border-top: 1px solid #323542;
+  background-color: $color-black;
+  border-top: $border-surface-2;
   flex-direction: column;
-  padding: 32px 16px;
+  padding: $wight-32 $wight-16;
 
   @include on-tablet {
     align-items: center;
-    padding: 32px;
+    padding: $wight-32;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -21,8 +22,8 @@
 }
 
 .containerLogo {
-  height: 32px;
-  width: 89px;
+  height: $wight-32;
+  width: $wight-89;
 }
 
 .containerLogo img {
@@ -33,33 +34,33 @@
 .nav {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: $wight-16;
 
   @include on-tablet {
     align-items: center;
     flex-direction: row;
-    gap: 14px;
+    gap: $wight-14;
   }
 }
 
 .nav a {
   text-transform: uppercase;
-  font-weight: 800;
-  font-size: 12px;
+  font-weight: $font-weight-800;
+  font-size: $wight-12;
   text-decoration: none;
   letter-spacing: 0.04em;
   height: 100%;
 
-  color: #F1F2F9;
+  color: $color-white;
   border-bottom: none;
-  padding-bottom: 4px;
+  padding-bottom: $wight-4;
   display: flex;
   align-items: center;
 }
 
 .nav a.active {
-  color: #F1F2F9;
-  border-bottom: 3px solid #F1F2F9;
+  color: $color-white;
+  border-bottom: $wight-3 solid $color-white;
   display: flex;
   align-items: center;
 }

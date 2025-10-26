@@ -1,6 +1,6 @@
 import { BlockInform } from '../../../shared/components/CardProduct/components';
 import { InformMode } from '../../../shared/types/types';
-import { useProduct } from '../../hooks/ProductContext';
+import { useProduct } from '../../../shared/hooks/ProductContext';
 import styles from './TechSpecs.module.scss';
 
 export const TechSpecs = () => {

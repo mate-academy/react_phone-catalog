@@ -127,7 +127,7 @@ export const CardPage = () => {
   }
 
   if (!productsList || productsList.length === 0) {
-    return <NoCategory />;
+    return <NoCategory category={category} />;
   }
 
   return (

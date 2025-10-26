@@ -29,6 +29,9 @@ export const BlockButtons: React.FC<BlockButtonsProps> = ({ element }) => {
       <button
         className={`${styles.favourites} ${isProductPage ? styles.productPageFavourites : ''}`}
         onClick={toggleFavourite}
+        style={{
+          background: isFavourite ? 'none' : '',
+        }}
       >
         <img
           src={
