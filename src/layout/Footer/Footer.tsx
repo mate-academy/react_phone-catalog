@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   const navNames = ['Github', 'Contacts', 'rights'];
-  const navPath = ['/', '/', '/'];
+  const navPath = ['https://lx-y-ka.github.io/react_phone-catalog/', '/', '/'];
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
