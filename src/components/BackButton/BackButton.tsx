@@ -9,7 +9,10 @@ export const BackButton: React.FC = () => {
   return (
     <div className={classNames(styles.button)}>
       <div className={classNames(styles.button__icon)}>
-        <Icon path={'/img/icons/arrow-left-black.svg'} name={'back'} />
+        <Icon
+          path={`${import.meta.env.BASE_URL}/img/icons/arrow-left-black.svg`}
+          name={'back'}
+        />
       </div>
       <span
         onClick={() => navigate(-1)}

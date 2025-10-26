@@ -11,7 +11,9 @@ type Props = {
 export const Fav: React.FC<Props> = ({ id }) => {
   const { favourites } = useContext(StateContext);
   const { setFavourites } = useContext(ActionsContext);
-  const [FavImg, setFavImg] = useState('/img/icons/favourites.svg');
+  const [FavImg, setFavImg] = useState(
+    `${import.meta.env.BASE_URL}/img/icons/favourites.svg`,
+  );
 
   const toggleFavourites = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -29,9 +31,9 @@ export const Fav: React.FC<Props> = ({ id }) => {
 
   useEffect(() => {
     if (favourites.find(f => f === id)) {
-      setFavImg('/img/icons/favouritesFilled.svg');
+      setFavImg(`${import.meta.env.BASE_URL}/img/icons/favouritesFilled.svg`);
     } else {
-      setFavImg('/img/icons/favourites.svg');
+      setFavImg(`${import.meta.env.BASE_URL}/img/icons/favourites.svg`);
     }
   }, [favourites, id]);
 

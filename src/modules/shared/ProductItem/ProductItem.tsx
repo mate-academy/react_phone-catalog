@@ -16,7 +16,7 @@ export const ProductItem: React.FC<Props> = ({ item }) => {
     <article className={classNames(styles.item)}>
       <Link to={path} className={classNames(styles.item__content)}>
         <img
-          src={`/${item.image}`}
+          src={`${import.meta.env.BASE_URL}/${item.image}`}
           alt="product"
           className={classNames(styles.item__img)}
         />

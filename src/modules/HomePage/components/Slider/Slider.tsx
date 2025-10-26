@@ -41,6 +41,7 @@ export const Slider: React.FC<Props> = ({ images }) => {
             pagination={{
               el: '.swiper__pagination',
               clickable: true,
+              bulletActiveClass: styles['slider__pagination-item--active'],
               renderBullet: (i, className) => {
                 return `<span class="${className} ${styles['slider__pagination-item']} custom-bullet"></span>`;
               },

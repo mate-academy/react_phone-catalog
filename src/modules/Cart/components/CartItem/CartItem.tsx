@@ -27,7 +27,10 @@ export const CartItem: React.FC<Props> = ({
             onRemove(item.id);
           }}
         >
-          <Icon path={'/img/icons/exit.svg'} name="remove" />
+          <Icon
+            path={`${import.meta.env.BASE_URL}/img/icons/exit.svg`}
+            name="remove"
+          />
         </button>
         <div className={classNames(styles.item__inform)}>
           <img
@@ -47,7 +50,10 @@ export const CartItem: React.FC<Props> = ({
               onMinus(item.id);
             }}
           >
-            <Icon path={'/img/icons/minus.svg'} name="mines" />
+            <Icon
+              path={`${import.meta.env.BASE_URL}/img/icons/minus.svg`}
+              name="mines"
+            />
           </button>
           <div className={classNames(styles['item__count--amount'])}>
             {count}
@@ -61,7 +67,10 @@ export const CartItem: React.FC<Props> = ({
               onPlus(item.id);
             }}
           >
-            <Icon path={'/img/icons/plus.svg'} name="plus" />
+            <Icon
+              path={`${import.meta.env.BASE_URL}/img/icons/plus.svg`}
+              name="plus"
+            />
           </button>
         </div>
         <div className={classNames(styles.item__price)}>

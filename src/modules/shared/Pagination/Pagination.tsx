@@ -54,7 +54,10 @@ export const Pagination: React.FC<Props> = ({ pagesCount }) => {
         )}
         onClick={() => onActive(page - 1)}
       >
-        <Icon path={'/img/icons/arrow-left-black.svg'} name={'left'} />
+        <Icon
+          path={`${import.meta.env.BASE_URL}/img/icons/arrow-left-black.svg`}
+          name={'left'}
+        />
       </button>
       <div className={classNames(styles.pagination__pages)}>
         {pageList.map((p, i) => (
@@ -81,7 +84,10 @@ export const Pagination: React.FC<Props> = ({ pagesCount }) => {
         )}
         onClick={() => onActive(page + 1)}
       >
-        <Icon path={'/img/icons/arrow-right-black.svg'} name={'right'} />
+        <Icon
+          path={`${import.meta.env.BASE_URL}/img/icons/arrow-right-black.svg`}
+          name={'right'}
+        />
       </button>
     </div>
   );

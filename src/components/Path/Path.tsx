@@ -16,13 +16,19 @@ export const Path: React.FC = () => {
       <ul className={classNames(styles.path__list)}>
         <li className={classNames(styles['path__list-item'])}>
           <Link to="/" className={classNames(styles['path__list-link'])}>
-            <Icon path={'/img/icons/home.svg'} name={'home'} />
+            <Icon
+              path={`${import.meta.env.BASE_URL}/img/icons/home.svg`}
+              name={'home'}
+            />
           </Link>
         </li>
         {pathList.map((p, i) => (
           <li key={i} className={classNames(styles['path__list-item'])}>
             <div className={classNames(styles['path__list-arrow'])}>
-              <Icon path={'/img/icons/arrow-right-grey.svg'} name={'arrow'} />
+              <Icon
+                path={`${import.meta.env.BASE_URL}/img/icons/arrow-right-grey.svg`}
+                name={'arrow'}
+              />
             </div>
             <Link to={p} className={classNames(styles['path__list-link'])}>
               {location[i].replaceAll('%', ' ')}

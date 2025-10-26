@@ -59,7 +59,10 @@ export const Header: React.FC = () => {
               to={'/favourites'}
               className={classNames(styles['header__icons--item'])}
             >
-              <Icon path={'/img/icons/favourites.svg'} name={'favourites'} />
+              <Icon
+                path={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
+                name={'favourites'}
+              />
               {favourites.length !== 0 && (
                 <div
                   className={classNames(styles['header__icons--item--count'])}
@@ -72,7 +75,10 @@ export const Header: React.FC = () => {
               to={'/cart'}
               className={classNames(styles['header__icons--item'])}
             >
-              <Icon path={'/img/icons/card.svg'} name={'card'} />
+              <Icon
+                path={`${import.meta.env.BASE_URL}/img/icons/card.svg`}
+                name={'card'}
+              />
               {cart.length !== 0 && (
                 <div
                   className={classNames(styles['header__icons--item--count'])}
@@ -89,9 +95,15 @@ export const Header: React.FC = () => {
         >
           <div className={classNames(styles['header__icons--item'])}>
             {!burger ? (
-              <Icon path={'/img/icons/burger.svg'} name={'burger'} />
+              <Icon
+                path={`${import.meta.env.BASE_URL}/img/icons/burger.svg`}
+                name={'burger'}
+              />
             ) : (
-              <Icon path={'/img/icons/exit.svg'} name={'exit'} />
+              <Icon
+                path={`${import.meta.env.BASE_URL}/img/icons/exit.svg`}
+                name={'exit'}
+              />
             )}
           </div>
         </div>

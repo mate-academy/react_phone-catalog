@@ -1,6 +1,5 @@
 @use '../../../../styles/utils';
 
-
 .slider {
   position: relative;
   width: 100%;
@@ -55,11 +54,12 @@
       height: 4px;
       background-color: #E2E6E9;
 
-      // &:global(.swiper-pagination-bullet-active) {
-      //   background-color: #313237;
-      // }
+      &--active {
+        background-color: #313237;
+      }
     }
   }
+
 
   &__content {
     overflow: hidden;
