@@ -26,6 +26,15 @@
     grid-area: 2 / 1 / 3 / 4;
   }
 
+  @media(max-width: s.$c-BREAKPOINT_TAB) {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
   @media (min-width: s.$c-BREAKPOINT_TAB) {
     left: 0;
 
@@ -45,12 +54,13 @@
   overflow: hidden;
   display: block;
   grid-area: 1 / 2 / 2 / 3;
+  touch-action: pan-y;
 }
 
 .track {
   display: flex;
   gap: var(--gap);
-
+  touch-action: none;
   aspect-ratio: 1 / 1;
   height: 100%;
 
