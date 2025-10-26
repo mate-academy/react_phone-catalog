@@ -2,6 +2,9 @@
 // FOOTER BLOCK
 // ============================================
 
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
 .footer {
   display: flex;
   justify-content: center;
@@ -93,6 +96,10 @@
   &__back-link {
     @include button-text;
     color: $color-secondary;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
     transition: color 0.3s ease;
 
     &:hover {

@@ -1,0 +1,30 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.language-switcher {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  &__button {
+    padding: 6px 12px;
+    border: 1px solid $color-elements;
+    background: transparent;
+    color: $color-primary;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 4px;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--active {
+      background: $color-primary;
+      color: $color-white;
+      border-color: $color-primary;
+    }
+  }
+}

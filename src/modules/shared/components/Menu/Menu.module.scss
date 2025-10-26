@@ -1,0 +1,196 @@
+// ============================================
+// MENU BLOCK (Mobile Side Menu)
+// ============================================
+
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+
+  // Показуємо меню через клас
+  &--open {
+    transform: translateX(0);
+  }
+
+  @include on-tablet {
+    display: none; // Ховаємо на tablet+
+  }
+
+  // Header всередині меню (переиспользуємо стилі)
+  .header {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $color-elements;
+    height: 48px;
+
+    @include on-desktop {
+      height: 64px;
+    }
+
+    &__wrap {
+      display: flex;
+      gap: 16px;
+      height: 100%;
+    }
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+    }
+
+    &__logo-link {
+      display: flex;
+      align-items: center;
+    }
+
+    &__logo-image {
+      height: 22px;
+      width: auto;
+      display: block;
+
+      @include on-desktop {
+        height: 30px;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      height: 100%;
+    }
+
+    &__actions-mobile {
+      display: flex;
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      border-left: 1px solid $color-elements;
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+      background: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $color-hover-bg;
+      }
+    }
+  }
+
+  &__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    overflow-y: auto;
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__nav-item {
+
+    &--active {
+      .menu__nav-link {
+        position: relative;
+        color: $color-primary;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -8px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background-color: $color-primary;
+          transition: background-color 0.3s;
+        }
+      }
+    }
+  }
+
+  &__nav-link {
+    @include uppercase;
+    color: $color-secondary;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &--active {
+      position: relative;
+      color: $color-primary;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: $color-primary;
+        transition: background-color 0.3s;
+      }
+    }
+  }
+
+  &__footer {
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid $color-elements;
+  }
+
+  &__footer-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &--active {
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:first-child {
+      border-right: 1px solid $color-elements;
+    }
+
+    &:hover {
+      background-color: $color-hover-bg;
+    }
+  }
+}

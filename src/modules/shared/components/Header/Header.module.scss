@@ -1,6 +1,8 @@
 // ============================================
 // HEADER BLOCK
 // ============================================
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
 
 .header {
   box-sizing: border-box;
@@ -12,6 +14,14 @@
 
   @include on-desktop {
     height: 64px;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    flex: 1;
+    max-width: 600px;
   }
 
   &__logo {
@@ -119,7 +129,16 @@
     height: 100%;
     aspect-ratio: 1 / 1;
     border-left: 1px solid $color-elements;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
     background: none;
     cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $color-hover-bg;
+    }
   }
 }

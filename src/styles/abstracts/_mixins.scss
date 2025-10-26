@@ -1,7 +1,7 @@
 // ============================================
 // MIXINS
 // ============================================
-
+@use './variables' as *;
 // ============================================
 // RESPONSIVE BREAKPOINTS
 // ============================================
@@ -51,6 +51,22 @@
   @include on-desktop {
     --columns-count: 24;
     column-gap: 16px;
+  }
+}
+
+@mixin category-grid {
+  display: grid;
+  gap: 16px;
+  justify-content: center;
+
+  grid-template-columns: repeat(auto-fit, minmax(287px, 1fr));
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
   }
 }
 

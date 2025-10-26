@@ -2,6 +2,9 @@
 // SHOP BY CATEGORY BLOCK
 // ============================================
 
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
 .shop-by-category {
   display: flex;
   flex-direction: column;
@@ -32,6 +35,7 @@
     aspect-ratio: 1 / 1;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 
     &--color-mobile {
       background-color: #6D6474;
@@ -43,6 +47,10 @@
 
     &--color-accessories {
       background-color: #973D5F;
+    }
+
+    &:hover &__item-image {
+      transform: scale(1.1);
     }
   }
 

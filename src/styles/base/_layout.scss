@@ -2,6 +2,9 @@
 // LAYOUT
 // ============================================
 
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
 // ============================================
 // MAIN CONTAINER
 // ============================================
@@ -64,14 +67,19 @@
 .page {
   &__header {
     margin-bottom: 24px;
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
   }
 
   &__main {
-    margin: 80px auto;
+    margin: 0 auto 80px auto;
   }
 
   &:has(.page__menu:target) {
-    overflow: hidden; /* not to scroll the page */
+    overflow: hidden;
+    /* not to scroll the page */
   }
 
   &__body {

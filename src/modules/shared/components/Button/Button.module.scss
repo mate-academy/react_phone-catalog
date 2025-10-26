@@ -1,0 +1,114 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.button {
+  @include button-text;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: $font-main;
+  @include button-text;
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &--sm {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  &--md {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  &--lg {
+    height: 48px;
+    padding: 0 20px;
+    font-size: 16px;
+  }
+
+  // ===============================
+  // VARIANTS
+  // ===============================
+
+  &--primary {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &:hover {
+      filter: drop-shadow(0 3px 13px rgba(23, 32, 49, 0.4));
+    }
+  }
+
+  &--selected {
+    background-color: $color-white;
+    color: $color-green;
+    border: 1px solid $color-elements;
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 1px solid $color-elements;
+    color: $color-primary;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $color-primary;
+
+    &:hover {
+      color: $color-green;
+    }
+  }
+
+  &--icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    justify-content: center;
+    border: 1px solid $color-elements;
+    background-color: $color-white;
+    color: $color-primary;
+    flex-shrink: 0;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &--round {
+    border-radius: 50%;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    color: $color-primary;
+    width: 40px;
+    height: 40px;
+
+    &:hover {
+      border-color: $color-icons;
+    }
+  }
+
+  &--disabled {
+    border: 1px solid $color-elements;
+    color: $color-icons;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &--no-border {
+    border: none;
+  }
+}

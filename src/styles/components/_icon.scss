@@ -2,6 +2,8 @@
 // ICON COMPONENT
 // ============================================
 
+@use '../abstracts/variables' as *;
+
 .icon {
   display: inline-block;
   position: relative;

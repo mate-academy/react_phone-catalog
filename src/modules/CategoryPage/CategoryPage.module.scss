@@ -1,0 +1,84 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.categoryPage {
+  @include page-grid;
+}
+
+.controls {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  @include on-tablet {
+    flex-wrap: nowrap;
+  }
+}
+
+
+.sortDropdown {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.perPageDropdown {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+}
+
+
+.categoryTitle {
+  grid-column: 1 / -1;
+  @include h1;
+  margin-bottom: 16px;
+}
+
+.productCount {
+  grid-column: 1 / -1;
+  @include body-text;
+  color: $color-secondary;
+  margin-bottom: 24px;
+}
+
+.noResults {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+
+  p {
+    @include h3;
+    color: $color-secondary;
+  }
+}
+
+.productsList {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, 288px);
+  justify-content: center;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, 237px);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fill, 272px);
+  }
+}

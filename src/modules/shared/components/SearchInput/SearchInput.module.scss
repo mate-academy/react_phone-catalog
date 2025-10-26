@@ -1,0 +1,61 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.search-input {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+
+  &__field {
+    width: 100%;
+    height: 40px;
+    padding: 8px 40px 8px 16px;
+    border: 1px solid $color-elements;
+    border-radius: 8px;
+    font-size: 14px;
+    color: $color-primary;
+    background-color: $color-elements;
+    transition: border-color 0.3s;
+
+    &::placeholder {
+      color: $color-secondary;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+  }
+
+  &__icon,
+  &__clear {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-secondary;
+  }
+
+  &__clear {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__icon {
+    pointer-events: none;
+  }
+}

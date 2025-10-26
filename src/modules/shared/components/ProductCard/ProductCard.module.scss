@@ -2,8 +2,11 @@
 // PRODUCT CARD COMPONENT
 // ============================================
 
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
 .product-card {
-  max-width: 272px;
+  // max-width: 288px;
   min-width: 212px;
   padding: 32px;
   box-sizing: border-box;
@@ -13,7 +16,7 @@
   transition: box-shadow 0.3s ease;
 
   // Картка автоматично адаптується до grid контейнера через CSS змінні
-  grid-column: span var(--card-columns, var(--columns-count));
+  // grid-column: span var(--card-columns, var(--columns-count));
 
   &:hover {
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
@@ -25,6 +28,11 @@
     height: 129px;
     display: block;
     margin-bottom: 24px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover &__image {
+    transform: scale(1.1);
   }
 
   &__title {
@@ -40,12 +48,12 @@
     gap: 8px;
   }
 
-  &__price-regular {
+  &__price-sale {
     @include h3;
     color: $color-primary;
   }
 
-  &__price-sale {
+  &__price-regular {
     font-size: 22px;
     text-decoration: line-through;
     color: $color-secondary;
