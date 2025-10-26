@@ -1,0 +1,41 @@
+@use '/src/assets/styles/variables.scss' as *;
+@use '/src/assets/styles/mixins.scss' as *;
+
+.notfound__wrapper {
+  max-width: 1136px;
+  margin-inline: auto;
+  padding-inline: 32px;
+  height: calc(100vh - $navbar-height-desktop - $footer-height-desktop);
+
+  @include on-tablet {
+    padding-inline: 24px;
+    height: calc(100vh - $navbar-height-tablet - $footer-height-tablet);
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+}
+
+.notfound__container {
+  height: 100%;
+}
+
+.notfound__header {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+  justify-content: center;
+}
+
+.notfound__title {
+  margin: 0;
+  padding-top: 56px;
+}
+
+.notfound__img {
+  height: 144px;
+  align-self: center;
+  filter: invert(100%);
+}

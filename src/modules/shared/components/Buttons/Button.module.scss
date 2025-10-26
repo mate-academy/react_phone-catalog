@@ -1,0 +1,90 @@
+@use '/src/assets/styles/variables.scss' as *;
+@use '/src/assets/styles/mixins.scss' as *;
+
+.button__back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  background: none;
+  border: none;
+  padding: 0;
+
+  font-family: Mont, sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 100%;
+  color: $main-text-color;
+}
+
+.button__back__icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  rotate: (180deg);
+
+  background-image: url('/img/Buttons/Icons/Chevron_Arrow_Right.svg');
+}
+
+.action__button {
+  width: 100%;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  color: $main-text-color;
+  background-color: $add-active-button-color;
+  border: none;
+  border-radius: 48px;
+
+  &:hover {
+    background-color: $add-hover-button-color;
+  }
+
+  &:disabled {
+    background-color: $add-selected-button-color;
+  }
+}
+
+.remove {
+  background-color: $add-selected-button-color;
+}
+
+.favorite__button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  flex-shrink: 0;
+
+  background: $arrow-button-default-bg-color;
+  background-image: url('/img/icons/Favourites_Heart_Like.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+  border: none;
+  border-radius: 48px;
+
+  &:hover {
+    background-color: $arrow-button-hover-bg-color;
+  }
+}
+
+.favorite__button__active {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  flex-shrink: 0;
+
+  background-color: transparent;
+  background-image: url('/img/icons/Favourites_Heart_Like_Active.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+  border: 1px solid $main-border-color;
+  border-radius: 48px;
+
+  &:hover {
+    background-color: $arrow-button-hover-bg-color;
+  }
+}

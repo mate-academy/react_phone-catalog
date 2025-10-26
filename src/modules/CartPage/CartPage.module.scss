@@ -1,0 +1,392 @@
+@use '/src/assets/styles/variables.scss' as *;
+@use '/src/assets/styles/mixins.scss' as *;
+
+.cart__wrapper {
+  max-width: 1136px;
+  margin-inline: auto;
+  padding-inline: 32px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+}
+
+.cart__container {
+  margin: 32px 0 80px;
+}
+
+.product__header {
+  margin: 0 0 32px;
+}
+
+.cart__title {
+  margin: 0;
+  padding: 16px 0 0;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+.cart__items {
+  @include desktop-grid;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.item__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  grid-column: span 16;
+}
+
+.item__inerbody {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+
+  padding: 24px;
+
+  background-color: $card-background;
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 16px;
+  }
+}
+
+.item__left {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.item__right {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+
+  @include on-mobile {
+    justify-content: space-between;
+  }
+}
+
+.item__remove {
+  display: block;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+
+  background: none;
+  background-image: url('/img/Buttons/Icons/Close.svg');
+  background-color: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+
+  border: transparent;
+
+  &:hover {
+    border: solid 1px $main-border-color;
+  }
+}
+
+.item__image {
+  height: 80px;
+  width: 80px;
+
+  object-fit: contain;
+  display: block;
+}
+
+.item__title {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.item__controlers {
+  display: flex;
+  align-items: center;
+}
+
+.item__take {
+  display: block;
+  padding: 0;
+  height: 32px;
+  width: 32px;
+
+  background-image: url('/img/Buttons/Icons/Minus.svg');
+  background-color: $arrow-button-default-bg-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+
+  border: transparent;
+
+  &:hover {
+    background-color: $arrow-button-hover-bg-color;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border: solid 1px $main-border-color;
+  }
+}
+
+.item__qty {
+  margin: 0;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  align-content: center;
+}
+
+.item__add {
+  display: block;
+  padding: 0;
+  height: 32px;
+  width: 32px;
+
+  background-image: url('/img/Buttons/Icons/Plus.svg');
+  background-color: $arrow-button-default-bg-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+
+  border: transparent;
+
+  &:hover {
+    background-color: $arrow-button-hover-bg-color;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border: solid 1px $main-border-color;
+  }
+}
+
+.item__price {
+  margin: 0;
+  min-width: 80px;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: end;
+}
+
+.items__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.item__link {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  color: $main-text-color;
+  text-decoration: none;
+}
+
+.items__empty__image {
+  height: 144px;
+}
+
+.items__title {
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.items__total {
+  grid-column: 17 / -1;
+}
+
+.items__container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  padding: 24px;
+
+  border: solid 1px $main-border-color;
+}
+
+.items__price {
+  padding: 0;
+  margin: 0;
+
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 41px;
+  text-align: center;
+}
+
+.items__qty {
+  margin: 0;
+
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: $inactive-text-color;
+}
+
+.items_line {
+  width: 100%;
+  border: 0.5px solid $main-border-color;
+}
+
+.items_checkout {
+  height: 48px;
+  font-size: 14px;
+}
+
+.cart__popup {
+  position: fixed;
+  inset: 0;
+  height: 100%;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: $main-text-color;
+  opacity: 50%;
+
+  animation: fade-in 320ms ease-in-out forwards;
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 1136px;
+  width: 100%;
+  margin-inline: auto;
+
+  background: $card-background;
+  color: $main-text-color;
+  box-shadow: 0 20px 60px rgba(30, 7, 49, 0.35);
+
+  opacity: 0;
+  animation: pop-in 560ms ease-in-out forwards;
+}
+
+.cart__popup__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 64px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+}
+
+.popup__close {
+  display: block;
+  padding: 0;
+  height: 32px;
+  width: 32px;
+  align-self: flex-end;
+
+  background-image: url('/img/icons/Close.svg');
+  background-color: $arrow-button-default-bg-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+
+  border: transparent;
+
+  &:hover {
+    background-color: $arrow-button-hover-bg-color;
+  }
+}
+
+.popup__title {
+  margin: 0;
+  padding: 24px;
+
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 140%;
+  text-align: center;
+  white-space: pre-line;
+
+  @include on-tablet {
+    font-size: 24px;
+  }
+
+  @include on-mobile {
+    font-size: 16px;
+  }
+}
+
+.popup__subtotal {
+  margin: 0;
+  align-self: center;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 48px;
+}
+
+.popup__buttons {
+  display: flex;
+  gap: 24px;
+  height: 50px;
+}
+
+.popup__confirm {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.popup__cancel {
+  background-color: $main-border-color;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 50%;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .popup {
+    animation: none;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
