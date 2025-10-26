@@ -32,6 +32,7 @@
   overflow: hidden;
   display: block;
   grid-area: 1 / 1 / 2 / 2;
+  touch-action: pan-y;
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {
     grid-area: 1 / 2 / 2 / 3;
@@ -45,5 +46,6 @@
   aspect-ratio: 1 / 1;
   width: 100%;
 
+  touch-action: none;
   transition: var(--animation-speed) ease-in-out;
 }

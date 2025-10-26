@@ -40,6 +40,7 @@
   overflow: hidden;
   display: block;
   grid-area: 2 / 1 / 3 / 5;
+  touch-action: pan-y;
 
   width: calc(100% + 16px);
 
@@ -57,5 +58,6 @@
   gap: var(--gap);
   height: 100%;
   transition: var(--animation-speed) ease-in-out;
+  touch-action: none;
 }
 

@@ -36,7 +36,9 @@ export const ProductCard = forwardRef<HTMLLIElement, Props>(
           <h3 className={styles.name}>{conf.name}</h3>
           <span className={styles.price}>
             {conf.priceMain}
-            <span className={styles['full-price']}>{conf.priceSecondary}</span>
+            <span className={styles['full-price']} data-hide-price>
+              {conf.priceSecondary}
+            </span>
           </span>
 
           <DetailedList listData={conf.listData} />

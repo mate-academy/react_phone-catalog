@@ -56,6 +56,10 @@ $GRID_SPACER: 24px;
   }
 }
 
+.home-catalogue > :first-child [data-hide-price] {
+  display: none;
+}
+
 .categories {
   display: grid;
   grid-template-rows: 31px repeat(3, 1fr);
