@@ -15,7 +15,6 @@ $MAX_WIDTH: 1136px;
   max-width: calc(100% - $MARGIN_SIDE_MOB * 2);
   margin: $MARGIN_TOP $MARGIN_SIDE_MOB $MARGIN_BOT_MOB;
 
-
   @media (min-width: c.$BREAKPOINT_TAB) {
     max-width: calc(100% - $MARGIN_SIDE_TAB * 2);
     margin: $MARGIN_TOP $MARGIN_SIDE_TAB $MARGIN_BOT_TAB;

@@ -25,11 +25,11 @@
 
   @media(max-width: s.$c-BREAKPOINT_TAB) {
     width: 100dvw;
-    position: relative;
+    margin-left: calc(-50dvw + env(safe-area-inset-left));
+    margin-right: calc(-50dvw + env(safe-area-inset-right));
     left: 50%;
     right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    position: relative;
   }
 
   @media (min-width: s.$c-BREAKPOINT_TAB) {

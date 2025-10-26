@@ -1,13 +1,14 @@
 @use '@shared/styles' as s;
 
-.buttons {
+.button {
   display: flex;
+  height: 100%;
+  width: 100%;
   gap: 16px;
   align-items: center;
   justify-content: center;
 
   box-sizing: border-box;
-  margin: 32px 0;
 
   > span {
     @include s.t-small-text;
