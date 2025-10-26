@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import styles from './Header.module.scss';
 import Navigation from './Navigation/Navigation';
-import Icon from '../../shared/Icon';
+import Icon from '../shared/Icon';
 import MobileMenu from './MobileMenu';
+import { IconModifiers } from '../../types/iconModifiers';
 
 export const Header = () => {
   const location = useLocation();
@@ -18,7 +19,7 @@ export const Header = () => {
     setShowMobile(false);
   }, [location.pathname]);
 
-  const menuIconClass = showMobile ? 'close' : 'menu-mobile';
+  const mobileMenuIcon = showMobile ? IconModifiers.Close : IconModifiers.Menu;
 
   return (
     <>
@@ -28,14 +29,23 @@ export const Header = () => {
         })}
       >
         <div className={styles.nav}>
-          <NavLink className={styles.logo} to="/">
-            <img className={styles.image} src="img/assets/logo.svg"></img>
+          <NavLink className={styles.nav__image} to="/">
+            <img className={styles.nav__image} src="img/assets/logo.svg"></img>
           </NavLink>
           <Navigation />
-          <div className={styles.buttons}>
-            <Icon to="favorites" />
-            <Icon to="cart" />
-            <Icon to={handleMobileMenuClick} modifier={menuIconClass} />
+          <div className={styles.nav__buttons}>
+            <Icon
+              href="favorites"
+              modifiers={[IconModifiers.TabletIcon, IconModifiers.Favorites]}
+            />
+            <Icon
+              href="cart"
+              modifiers={[IconModifiers.TabletIcon, IconModifiers.Cart]}
+            />
+            <Icon
+              onClick={handleMobileMenuClick}
+              modifiers={[IconModifiers.MobileIcon, mobileMenuIcon]}
+            />
           </div>
         </div>
         {showMobile && <MobileMenu pathname={location.pathname} />}

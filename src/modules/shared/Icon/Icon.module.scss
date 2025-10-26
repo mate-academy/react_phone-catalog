@@ -1,0 +1,47 @@
+@use '../../../scss/main.scss' as *;
+
+.icon {
+  display: block;
+  height: 16px;
+  width: 16px;
+  margin: 16px;
+  border: none;
+
+  @include on-desktop {
+    margin: 24px;
+  }
+
+  &_favorites {
+    background: center center url('img/assets/icons/favorites.svg');
+
+    &_active {
+      background: center center url('img/assets/icons/favorites-selected.svg');
+    }
+  }
+
+  &_close {
+    background: center center url('img/assets/icons/close.svg');
+  }
+
+  &_cart {
+    background: center center url('img/assets/icons/cart.svg');
+  }
+
+  &_menu {
+    background: center center url('img/assets/icons/menu.svg');
+  }
+
+  &_tabletIcon {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &_mobileIcon {
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
