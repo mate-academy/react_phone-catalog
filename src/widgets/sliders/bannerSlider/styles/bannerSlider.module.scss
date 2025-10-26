@@ -10,9 +10,6 @@
   grid-template: 1fr 24px / 0 1fr 0;
   gap: 8px 0;
 
-  width: calc(100% + 32px);
-  margin-left: -16px;
-
   // buttons & pagination props-free positioning
   > :first-child {
     grid-area: 1 / 1 / 2 / 2;
