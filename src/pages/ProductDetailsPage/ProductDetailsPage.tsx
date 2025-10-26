@@ -32,8 +32,8 @@ export const ProductDetailsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setLoading(true);
-
     getProducts()
       .then(productsData => {
         setProducts(productsData);
