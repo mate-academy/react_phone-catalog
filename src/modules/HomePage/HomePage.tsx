@@ -56,11 +56,11 @@ export const HomePage = () => {
       <div className={styles.home__wrapper}>
         <div className={styles.home__container}>
           <section className={hero.hero} data-slide style={heroSlideStyle}>
-            <h1 className={hero.hero__title}>Product Catalog</h1>
+            <h1 className={hero.hero__title}>Welcome to Nice Gadgets store!</h1>
             <Hero />
           </section>
           <section className={styles.newmodels} data-slide style={newmodelsSlideStyle}>
-            <Slider items={newItems} title={NEW_MODELS} />
+            <Slider items={newItems.reverse()} title={NEW_MODELS} />
           </section>
           <section className={styles.category} data-slide style={categorySlideStyle}>
             <h2 className={styles.category_title}>Shop by category</h2>
@@ -83,7 +83,7 @@ export const HomePage = () => {
 
               <Link to={{ pathname: '/accessories' }} className={styles.category__link}>
                 <img
-                  src={`./img/Accessories.png`}
+                  src={`./img/Accessories_01.webp`}
                   alt="accessories"
                   className={styles.category__image}
                 />

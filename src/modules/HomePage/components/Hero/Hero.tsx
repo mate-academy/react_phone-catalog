@@ -60,55 +60,48 @@ export const Hero = () => {
               className={`${styles.banner__container} ${styles.banner__container__1}`}
             >
               <div className={styles.banner__offer__1}>
-                <div className={styles.banner__offer__title__1}>
-                  Now available in our store!
-                  <span className={styles.banner__offer__emoji__1}>👌</span>
-                </div>
-                <div className={styles.banner__offer__description__1}>Be the first!</div>
-                <button className={styles.banner__offer__button__1}>Order now</button>
+                <div className={styles.banner__offer__title__1}>The ultimate Pro</div>
+                <button className={styles.banner__offer__button__1}>Coming Soon</button>
               </div>
               <div className={styles.banner__graphyc__1}>
-                <div className={styles.banner__graphyc__title__1}>iPhone 14 Pro</div>
-                <div className={styles.banner__graphyc__description__1}>Pro. Beyond.</div>
                 <div className={styles.banner__graphyc__image__1}></div>
               </div>
             </Link>
             <Link
               key={'banner_02'}
-              to={{ pathname: '/phones' }}
-              className={`${styles.banner__container} ${styles.banner__container__1}`}
+              to={{ pathname: '/tablets/apple-ipad-13-2024-256gb-spaceblack' }}
+              className={`${styles.banner__container} ${styles.banner__container__2}`}
             >
-              <div className={styles.banner__offer__1}>
-                <div className={styles.banner__offer__title__1}>
-                  Now unavailable in our store!
-                  <span className={styles.banner__offer__emoji__1}>👌</span>
-                </div>
-                <div className={styles.banner__offer__description__1}>Be the first!</div>
-                <button className={styles.banner__offer__button__1}>Order now</button>
+              <div className={styles.banner__graphyc__2}>
+                <img
+                  src="./img/iPad-Pro_poster-img_transparent.webp"
+                  className={styles.banner__graphyc__image__2}
+                ></img>
               </div>
-              <div className={styles.banner__graphyc__1}>
-                <div className={styles.banner__graphyc__title__1}>iPhone 14 Pro</div>
-                <div className={styles.banner__graphyc__description__1}>Pro. Beyond.</div>
-                <div className={styles.banner__graphyc__image__1}></div>
+              <div className={styles.banner__offer__2}>
+                <button className={styles.banner__offer__button__2}>Buy</button>
               </div>
             </Link>
             <Link
               key={'banner_03'}
-              to={{ pathname: '/phones' }}
-              className={`${styles.banner__container} ${styles.banner__container__1}`}
+              to={{ pathname: '/phones/apple-iphone-14-pro-128gb-spaceblack' }}
+              className={`${styles.banner__container} ${styles.banner__container__3}`}
             >
-              <div className={styles.banner__offer__1}>
-                <div className={styles.banner__offer__title__1}>
+              <div className={styles.banner__offer__3}>
+                <div className={styles.banner__offer__title__3}>
                   Now available in our store!
-                  <span className={styles.banner__offer__emoji__1}>👌</span>
+                  <span className={styles.banner__offer__emoji__3}>👌</span>
                 </div>
-                <div className={styles.banner__offer__description__1}>Be the first!</div>
-                <button className={styles.banner__offer__button__1}>Order now</button>
+                <div className={styles.banner__offer__description__3}>Be the first!</div>
+                <button className={styles.banner__offer__button__3}>Order now</button>
               </div>
-              <div className={styles.banner__graphyc__1}>
-                <div className={styles.banner__graphyc__title__1}>iPhone 14 Pro</div>
-                <div className={styles.banner__graphyc__description__1}>Pro. Beyond.</div>
-                <div className={styles.banner__graphyc__image__1}></div>
+              <div className={styles.banner__graphyc__3}>
+                <div className={styles.banner__graphyc__title__3}>iPhone 14 Pro</div>
+                <div className={styles.banner__graphyc__description__3}>Pro. Beyond.</div>
+                <img
+                  src="./img/6d5898fcedef263c3e568fc0edfbfbe3-removebg-preview.png"
+                  className={styles.banner__graphyc__image__3}
+                ></img>
               </div>
             </Link>
           </div>

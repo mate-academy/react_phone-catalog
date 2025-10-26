@@ -18,6 +18,10 @@ import { FavoritesButton } from '../shared/components/Buttons/FavoritesButton/Fa
 const TITLE = 'You may also like';
 
 const appleColors = {
+  naturaltitanium: '#e9e4d9ff',
+  deserttitanium: '#e6ceb3ff',
+  whitetitanium: '#efefefff',
+  backtitanium: '#393939ff',
   midnightgreen: '#4e5850',
   spaceblack: '#3e3e40',
   sierrablue: '#a9c4e1ff',

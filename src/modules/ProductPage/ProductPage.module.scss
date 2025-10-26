@@ -101,6 +101,7 @@
   line-height: 21px;
   background-color: $arrow-button-default-bg-color;
   border: none;
+  border-radius: 8px;
   color: $main-text-color;
 
   &:focus {
@@ -111,6 +112,16 @@
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+}
+
+.filter__menu option {
+  color: $main-text-color;
+  background: $arrow-button-default-bg-color;
+
+
+  &:hover{
+    background: $main-text-color;
   }
 }
 

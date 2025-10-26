@@ -21,6 +21,7 @@
   width: 32px;
   background: none;
   border: none;
+  border-radius: 50%;
   background-image: url('/img/Buttons/Slider_button-Default_right.svg');
 
   &:hover {
@@ -28,6 +29,7 @@
   }
 
   &:disabled {
+    border: 1px solid $main-border-color;
     background-image: url('/img/Buttons/Slider_button-Disabled_right.svg');
   }
 }
@@ -38,6 +40,7 @@
   transform: rotate(180deg);
   background: none;
   border: none;
+  border-radius: 50%;
   background-image: url('/img/Buttons/Slider_button-Default_right.svg');
 
   &:hover {
@@ -45,6 +48,7 @@
   }
 
   &:disabled {
+    border: 1px solid $main-border-color;
     background-image: url('/img/Buttons/Slider_button-Disabled_right.svg');
   }
 }

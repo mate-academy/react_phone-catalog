@@ -28,7 +28,7 @@ export const ProductPage = () => {
   const perPage = searchParams.get('perPage') || 'all';
   const page = searchParams.get('page') ?? '1';
 
-  const typeOfProduct = pathname.split('/').find(part => part[1]);
+  const typeOfProduct = pathname.split('/')[1];
 
   const category = () => {
     switch (typeOfProduct) {
@@ -51,7 +51,10 @@ export const ProductPage = () => {
 
   const total = category().length;
 
-  const totalPages = perPage !== 'all' ? Math.ceil(total / +perPage) : 1;
+  const pageNum = Math.max(1, parseInt(page, 10) || 1);
+  const perPageNum = perPage === 'all' ? null : Math.max(1, parseInt(perPage, 10) || 1);
+
+  const totalPages = perPageNum ? Math.max(1, Math.ceil(total / perPageNum)) : 1;
 
   const sortedProduct = [...category()].sort((p1, p2) => {
     switch (sort) {
@@ -66,10 +69,10 @@ export const ProductPage = () => {
     }
   });
 
-  const start = (+page - 1) * +perPage;
-  const end = start + +perPage;
+  const start = perPageNum ? (pageNum - 1) * perPageNum : 0;
+  const end = perPageNum ? start + perPageNum : total;
 
-  const productPerPage = perPage !== 'all' ? sortedProduct.slice(start, end) : sortedProduct;
+  const productPerPage = perPageNum ? sortedProduct.slice(start, end) : sortedProduct;
 
   function handleSortBy(s: string) {
     const params = new URLSearchParams(searchParams);
@@ -97,13 +100,13 @@ export const ProductPage = () => {
     setSearchParams(params);
   }
 
-  function handlePage(pageNum: number) {
+  function handlePage(pageN: number) {
     const params = new URLSearchParams(searchParams);
 
-    if (pageNum <= 1) {
+    if (pageN <= 1) {
       params.delete('page');
     } else {
-      params.set('page', pageNum.toString());
+      params.set('page', pageN.toString());
     }
 
     setSearchParams(params);

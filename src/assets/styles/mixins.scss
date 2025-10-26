@@ -28,15 +28,16 @@
   width: 32px;
 
   background-image: url($url);
-  background-color: $arrow-button-default-bg-color;
+  background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px;
 
-  border: none;
+  border: 1px solid $arrow-button-default-bg-color;
+  border-radius: 16px;
 
   &:hover {
-    background-color: $arrow-button-hover-bg-color;
+    background-color: $main-border-color;
   }
 }
 

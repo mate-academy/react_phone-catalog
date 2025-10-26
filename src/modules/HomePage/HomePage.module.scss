@@ -132,8 +132,9 @@
   color: $main-text-color;
 }
 
-.category__image{
+.category__image {
   max-width: 100%;
+  border-radius: 8px;
 }
 
 .category__subtitle {

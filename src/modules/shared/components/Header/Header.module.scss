@@ -55,8 +55,8 @@
 
   @include on-mobile {
     flex-direction: column;
-    gap: $global-gap;
-    padding-top: $navbar-gap-mobile;
+    gap: 56px;
+    padding-top: 56px;
   }
 }
 
@@ -95,12 +95,15 @@
   }
 
   @include on-mobile {
+    font-size: 24px;
+    line-height: 32px;
     align-self: center;
   }
 }
 
 .header__icons {
   display: flex;
+  align-self: end;
 }
 
 .sidepanel {
@@ -116,10 +119,9 @@
 }
 
 .sidepanel__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: calc(100vh - $navbar-height-tablet);
 }
 
 .icon__link {

@@ -1,17 +1,30 @@
 import styles from './Header.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar/Navbar';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SidebarMenu } from './SidebarMenu/SidebarMenu';
 import { HeaderIcons } from './HeaderIcons/HeaderIcons';
 
 export const Header = () => {
+  const { pathname } = useLocation();
+
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMediaQuery('(max-width: 639px');
 
-  const openSidebar = () => setIsOpen(true);
-  const closeSidebar = () => setIsOpen(false);
+  const openSidebar = () => {
+    document.body.style.overflow = 'hidden';
+    setIsOpen(true);
+  };
+
+  const closeSidebar = () => {
+    document.body.style.overflow = 'auto';
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    closeSidebar();
+  }, [pathname]);
 
   return (
     <header className={styles.header}>
