@@ -6,8 +6,11 @@ import { useLocalStorage } from '../shared/hooks/useLocalStorage';
 import { useFavorites } from '../../contexts/FavoritesContext';
 import { ProductsList } from '../../components/ProductsList';
 import { Search } from '../../components/Search';
-import { Filters } from './components/Filters/Filters';
 import { Pagination } from '../AccessoriesPage/components/Pagination';
+import {
+  SORT_OPTIONS,
+  ITEMS_PER_PAGE_OPTIONS,
+} from '../shared/constants/sortOptions';
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage: React.FC = () => {
@@ -19,6 +22,7 @@ export const FavoritesPage: React.FC = () => {
     'favorites-sort',
     'newest',
   );
+
   const [itemsPerPage, setItemsPerPage] = useLocalStorage<ItemsPerPage>(
     'favorites-per-page',
     '16',
@@ -48,6 +52,7 @@ export const FavoritesPage: React.FC = () => {
     itemsPerPage === 'all'
       ? filteredProducts.length
       : parseInt(itemsPerPage, 10);
+
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPageNumber);
 
   const paginatedProducts =
@@ -81,16 +86,58 @@ export const FavoritesPage: React.FC = () => {
       <h1 className={styles.favoritesPage__title}>Favorites</h1>
       <p className={styles.favoritesPage__count}>{products.length} items</p>
 
-      <div className={styles.favoritesPage__controls}>
-        <Search onSearch={setSearchQuery} placeholder="Search favorites..." />
+      {/* Search */}
+      <Search onSearch={setSearchQuery} placeholder="Search favorites..." />
 
-        <Filters
-          sortBy={sortBy}
-          itemsPerPage={itemsPerPage}
-          onSortChange={setSortBy}
-          onItemsPerPageChange={setItemsPerPage}
-          totalItems={filteredProducts.length}
-        />
+      {/* Filters */}
+      <div className={styles.favoritesPage__controls}>
+        <div className={styles.favoritesPage__filters}>
+          <div className={styles.favoritesPage__item}>
+            <label
+              htmlFor="sort-select"
+              className={styles.favoritesPage__label}
+            >
+              Sort by
+            </label>
+            <select
+              id="sort-select"
+              className={styles.favoritesPage__select}
+              value={sortBy}
+              onChange={e => setSortBy(e.target.value as SortBy)}
+            >
+              {SORT_OPTIONS.map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className={styles.favoritesPage__item}>
+            <label
+              htmlFor="items-select"
+              className={styles.favoritesPage__label}
+            >
+              Items per page
+            </label>
+            <select
+              id="items-select"
+              className={styles.favoritesPage__select}
+              value={itemsPerPage}
+              onChange={e => setItemsPerPage(e.target.value as ItemsPerPage)}
+            >
+              {ITEMS_PER_PAGE_OPTIONS.map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className={styles.favoritesPage__count}>
+            {filteredProducts.length} items
+          </div>
+        </div>
       </div>
 
       {filteredProducts.length === 0 ? (
@@ -100,7 +147,6 @@ export const FavoritesPage: React.FC = () => {
       ) : (
         <>
           <ProductsList products={paginatedProducts} />
-
           {totalPages > 1 && (
             <Pagination
               currentPage={currentPage}

@@ -8,6 +8,7 @@ import { Loader } from '../../components/Loader';
 import { ProductsList } from '../../components/ProductsList';
 import { Filters } from '../../modules/AccessoriesPage/Filters';
 import { Pagination } from '../AccessoriesPage/components/Pagination';
+import { Search } from '../../components/Search';
 import styles from './PhonesPage.module.scss';
 
 export const PhonesPage: React.FC = () => {
@@ -16,6 +17,7 @@ export const PhonesPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const [sortBy, setSortBy] = useLocalStorage<SortBy>('phones-sort', 'newest');
   const [itemsPerPage, setItemsPerPage] = useLocalStorage<ItemsPerPage>(
@@ -27,7 +29,6 @@ export const PhonesPage: React.FC = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-
         const data = await api.getProductsByCategory('phones');
 
         setProducts(data);
@@ -44,10 +45,16 @@ export const PhonesPage: React.FC = () => {
   useEffect(() => {
     let filtered = products;
 
+    if (searchQuery) {
+      filtered = products.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()),
+      );
+    }
+
     filtered = sortProducts(filtered, sortBy);
     setFilteredProducts(filtered);
     setCurrentPage(1);
-  }, [products, sortBy]);
+  }, [products, sortBy, searchQuery]);
 
   const itemsPerPageNumber =
     itemsPerPage === 'all'
@@ -84,6 +91,9 @@ export const PhonesPage: React.FC = () => {
       <h1 className={styles.phonesPage__title}>Mobile phones</h1>
       <p className={styles.phonesPage__count}>{products.length} models</p>
 
+      {/* Search */}
+      <Search onSearch={setSearchQuery} placeholder="Search phones..." />
+
       <div className={styles.phonesPage__controls}>
         <Filters
           sortBy={sortBy}
@@ -101,7 +111,6 @@ export const PhonesPage: React.FC = () => {
       ) : (
         <>
           <ProductsList products={paginatedProducts} />
-
           {totalPages > 1 && (
             <Pagination
               currentPage={currentPage}

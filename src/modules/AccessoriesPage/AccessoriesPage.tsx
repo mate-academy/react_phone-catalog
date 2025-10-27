@@ -8,6 +8,7 @@ import { Loader } from '../../components/Loader';
 import { ProductsList } from '../../components/ProductsList';
 import { Filters } from './Filters';
 import { Pagination } from '../AccessoriesPage/components/Pagination';
+import { Search } from '../../components/Search';
 import styles from './AccessoriesPage.module.scss';
 
 export const AccessoriesPage: React.FC = () => {
@@ -16,6 +17,7 @@ export const AccessoriesPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const [sortBy, setSortBy] = useLocalStorage<SortBy>(
     'accessories-sort',
@@ -46,13 +48,21 @@ export const AccessoriesPage: React.FC = () => {
   useEffect(() => {
     let filtered = products;
 
+    if (searchQuery) {
+      filtered = products.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()),
+      );
+    }
+
     filtered = sortProducts(filtered, sortBy);
     setFilteredProducts(filtered);
     setCurrentPage(1);
-  }, [products, sortBy]);
+  }, [products, sortBy, searchQuery]);
 
   const itemsPerPageNumber =
-    itemsPerPage === 'all' ? filteredProducts.length : parseInt(itemsPerPage);
+    itemsPerPage === 'all'
+      ? filteredProducts.length
+      : parseInt(itemsPerPage, 10);
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPageNumber);
 
   const paginatedProducts =
@@ -72,7 +82,9 @@ export const AccessoriesPage: React.FC = () => {
       <div className={styles.error}>
         <h2>Something went wrong</h2>
         <p>{error}</p>
-        <button onClick={() => window.location.reload()}>Try again</button>
+        <button type="button" onClick={() => window.location.reload()}>
+          Try again
+        </button>
       </div>
     );
   }
@@ -81,6 +93,9 @@ export const AccessoriesPage: React.FC = () => {
     <div className={styles.accessoriesPage}>
       <h1 className={styles.accessoriesPage__title}>Accessories</h1>
       <p className={styles.accessoriesPage__count}>{products.length} models</p>
+
+      {/* Search */}
+      <Search onSearch={setSearchQuery} placeholder="Search accessories..." />
 
       <div className={styles.accessoriesPage__controls}>
         <Filters
@@ -99,7 +114,6 @@ export const AccessoriesPage: React.FC = () => {
       ) : (
         <>
           <ProductsList products={paginatedProducts} />
-
           {totalPages > 1 && (
             <Pagination
               currentPage={currentPage}

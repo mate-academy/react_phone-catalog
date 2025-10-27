@@ -12,6 +12,7 @@ interface Props {
   onSortChange: (sortBy: SortBy) => void;
   onItemsPerPageChange: (itemsPerPage: ItemsPerPage) => void;
   totalItems: number;
+  className?: string;
 }
 
 export const Filters: React.FC<Props> = ({
