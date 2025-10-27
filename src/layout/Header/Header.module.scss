@@ -72,6 +72,7 @@
 
     width: 100%;
     height: calc(100vh - g.$header-height-mobile);
+    height: calc(100dvh - g.$header-height-mobile);
 
     background-color: g.$main-white;
 
