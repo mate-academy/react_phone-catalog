@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.button {
+  padding: 9px 22px;
+  background-color: var(--color-btn-card);
+  width: 100%;
+}
+
+.button span {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--color-white);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.favourit {
+  @include square(40px);
+  background-color: var(--color-surface-2);
+}
+
+.favourit__icon {
+  display: block;
+  padding: 12px;
+}

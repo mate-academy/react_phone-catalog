@@ -12,6 +12,7 @@ export default defineConfig({
       '@HomePage': path.resolve(__dirname, 'src/modules/HomePage'),
       '@Images': path.resolve(__dirname, 'src/assets/images'),
       '@GlobalStyle': path.resolve(__dirname, 'src/assets/styles'),
+      '@Fetch': path.resolve(__dirname, 'src/api/'),
     },
   },
   css: {

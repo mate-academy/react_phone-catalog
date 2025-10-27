@@ -9,4 +9,5 @@ export interface Products {
   capacity: string;
   ram: string;
   image: string;
+  color: string;
 }

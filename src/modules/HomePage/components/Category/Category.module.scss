@@ -1,0 +1,26 @@
+.category {
+  width: 100%;
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__link {
+    img {
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 25px;
+    }
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin-bottom: 32px;
+}
+
+.bottom {
+  margin-top: 20px;
+}
