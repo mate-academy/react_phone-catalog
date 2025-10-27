@@ -54,7 +54,7 @@ export const Slider: React.FC<Props> = ({ images }) => {
               >
                 <a className={classNames(styles.slider__link)}>
                   <img
-                    src={img.url}
+                    src={`${import.meta.env.BASE_URL}${img.url}`}
                     alt={img.name}
                     className={classNames(styles.slider__img)}
                   />
