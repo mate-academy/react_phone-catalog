@@ -12,12 +12,7 @@ const MIN_TABLET_WIDTH = BREAKPOINTS['min-tablet'];
 export const Header: React.FC = () => {
   const [burger, setBurger] = useState(false);
   const navList = ['home', 'phone', 'tablets', 'accessories'];
-  const navPath = [
-    `${import.meta.env.BASE_URL}`,
-    '/phones',
-    '/tablets',
-    '/accessories',
-  ];
+  const navPath = [`/`, 'phones', 'tablets', 'accessories'];
   const { favourites, cart } = useContext(StateContext);
 
   useEffect(() => {
@@ -44,10 +39,7 @@ export const Header: React.FC = () => {
   return (
     <header className={classNames(styles.header)}>
       <div className={classNames(styles.header__container)}>
-        <Link
-          to={`${import.meta.env.BASE_URL}`}
-          className={classNames(styles.header__logo)}
-        >
+        <Link to={`/`} className={classNames(styles.header__logo)}>
           <img
             src={`${import.meta.env.BASE_URL}/img/logo.png`}
             alt="logo"

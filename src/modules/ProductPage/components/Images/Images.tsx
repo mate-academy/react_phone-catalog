@@ -21,13 +21,19 @@ export const Images: React.FC<Props> = ({ imgList }) => {
               })}
               onClick={() => setImgId(i)}
             >
-              <img src={`/${img}`} alt={`image-${i}`} />
+              <img
+                src={`${import.meta.env.BASE_URL}/${img}`}
+                alt={`image-${i}`}
+              />
             </li>
           ))}
         </ul>
       </div>
       <div className={classNames(styles.images__chosen)}>
-        <img src={`/${imgList[imgId]}`} alt={`image-${imgId}`} />
+        <img
+          src={`${import.meta.env.BASE_URL}/${imgList[imgId]}`}
+          alt={`image-${imgId}`}
+        />
       </div>
     </div>
   );
