@@ -9,7 +9,7 @@ export const Logo = () => {
       Nice
       <img
         className={s.logoEmoji}
-        src="/icons/title-emoji.svg"
+        src="icons/title-emoji.svg"
         alt="logo emoji"
       />
       <br />
