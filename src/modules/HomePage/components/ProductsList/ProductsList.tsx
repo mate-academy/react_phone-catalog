@@ -57,13 +57,13 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
   return (
     <div className={styles.container}>
       <div className={styles.elementsTitle}>
-        <h1 className={styles.title}>
+        <h2 className={styles.title}>
           {productsStyle === ProductsStyleMode.New
             ? ProductsStyleTitleMap.new
             : productsStyle === ProductsStyleMode.Hot
               ? ProductsStyleTitleMap.hot
               : ProductsStyleTitleMap.also}
-        </h1>
+        </h2>
 
         <div className={styles.buttons}>
           <NavButton

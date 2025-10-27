@@ -28,7 +28,7 @@ export const Categories = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Shop by category</h1>
+      <h2 className={styles.title}>Shop by category</h2>
 
       <div className={styles.categories}>
         {categoriesList.map(cat => {

@@ -16,6 +16,7 @@
   font-size: $wight-48;
   line-height: $wight-56;
   margin: $wight-24-0;
+  overflow: hidden;
 
   @include on-tablet {
     margin: $wight-32-0;
