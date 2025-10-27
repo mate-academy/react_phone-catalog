@@ -29,14 +29,14 @@ export const App = () => {
         <div className="Main__container">
           <Routes>
             <Route path={`/`} element={<HomePage />} />
-            <Route path="/home" element={<Navigate to="/" replace />} />
+            <Route path="home" element={<Navigate to="/" replace />} />
             <Route path="/:product" element={<ProductLayout />}>
               <Route index element={<Catalor />} /> {/* /product */}
               <Route path=":itemId" element={<ProductPage />} />{' '}
             </Route>
-            <Route path="/favourites" element={<Favourites />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/404" element={<PageNotFound />} />
+            <Route path="favourites" element={<Favourites />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="404" element={<PageNotFound />} />
           </Routes>
         </div>
       </main>
