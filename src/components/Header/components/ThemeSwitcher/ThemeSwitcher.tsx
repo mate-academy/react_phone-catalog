@@ -20,11 +20,7 @@ export const ThemeSwitcher = () => {
           alt="sun"
           className={`${s.icon} ${s.iconSun}`}
         />
-        <img
-          src="icons/moon.svg"
-          alt="moon"
-          className={s.icon}
-        />
+        <img src="icons/moon.svg" alt="moon" className={s.icon} />
         <span className={s.toggleCircle}></span>
       </label>
     </div>
