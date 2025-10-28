@@ -8,13 +8,13 @@ export const categories = [
   {
     name: 'Tablets',
     categoryId: 'tablets',
-    img: '/img/category-tablets.webp',
+    img: 'img/category-tablets.webp',
     bGColor: 'var(--icons)',
   },
   {
     name: 'Accessories',
     categoryId: 'accessories',
-    img: '/img/category-accessories.webp',
+    img: 'img/category-accessories.webp',
     bGColor: 'var(--red)',
   },
 ];

@@ -24,12 +24,12 @@ export const NavIcons = ({ variant = 'topbar' }: NavIconsProps) => {
     {
       to: '/favourites',
       label: 'Go to favourites page',
-      icon: '/icons/favourites.svg',
+      icon: 'icons/favourites.svg',
     },
     {
       to: '/cart',
       label: 'Go to shopping cart',
-      icon: '/icons/cart.svg',
+      icon: 'icons/cart.svg',
     },
   ];
 
@@ -77,7 +77,7 @@ export const NavIcons = ({ variant = 'topbar' }: NavIconsProps) => {
             aria-expanded={isMenuOpen}
           >
             <img
-              src={isMenuOpen ? '/icons/close.svg' : '/icons/menu.svg'}
+              src={isMenuOpen ? 'icons/close.svg' : 'icons/menu.svg'}
               alt=""
               aria-hidden="true"
               className={s.iconImg}

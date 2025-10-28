@@ -10,7 +10,7 @@ import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
 import { RootProvider } from './context/RootProvider';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/react_phone-catalog">
     <ScrollToTop />
     <RootProvider>
       <App />

@@ -29,10 +29,10 @@ export const ProductsProvider = ({ children }: { children: ReactNode }) => {
 
         const [productsRes, phonesRes, tabletsRes, accessoriesRes] =
           await Promise.all([
-            fetch('/api/products.json'),
-            fetch('/api/phones.json'),
-            fetch('/api/tablets.json'),
-            fetch('/api/accessories.json'),
+            fetch('api/products.json'),
+            fetch('api/phones.json'),
+            fetch('api/tablets.json'),
+            fetch('api/accessories.json'),
           ]);
 
         if (

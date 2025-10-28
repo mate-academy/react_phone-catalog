@@ -16,7 +16,6 @@ body.dark {
   @include theme($dark-theme);
 }
 
-
 main {
   @include page-min-height;
 }
