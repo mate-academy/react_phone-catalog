@@ -5,9 +5,10 @@ import { Button } from '@GlobalComponents';
 
 type Props = {
   item: Products;
+  title: string;
 };
 
-export const Card: React.FC<Props> = ({ item }) => {
+export const Card: React.FC<Props> = ({ item, title }) => {
   return (
     <article className={style.article}>
       <div className={`${style.wrapper} ${style.card}`}>
@@ -18,7 +19,12 @@ export const Card: React.FC<Props> = ({ item }) => {
         </div>
         <div className={style.card__body}>
           <h3 className={style.card__title}>{item.name}</h3>
-          <p className={style.card__price}>${item.price}</p>
+          <div className={style.price}>
+            <p className={style.card__price}>${item.fullPrice}</p>
+            {title === 'Hot prices' && (
+              <p className={style.card__discount}>${item.price}</p>
+            )}
+          </div>
           <div className={style.line}></div>
           <dl className={style.card__info}>
             <div className={style['card__info-row']}>

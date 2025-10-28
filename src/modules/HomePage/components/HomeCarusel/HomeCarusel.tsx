@@ -33,7 +33,7 @@ export const HomeCarusel = () => {
             grabCursor
             loop={true}
             slidesPerView={1}
-            autoplay={{ delay: 222000, disableOnInteraction: false }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
             slideToClickedSlide
             breakpoints={{
               320: { spaceBetween: 40 },

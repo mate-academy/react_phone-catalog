@@ -44,6 +44,11 @@ svg * {
   color: var(--color-white);
   font-weight: 800;
   line-height: 140%;
+
+  @include onTablet {
+    font-size: 32px;
+    width: 100%;
+  }
 }
 
 .section {

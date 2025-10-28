@@ -1,11 +1,7 @@
+import { useEffect, useMemo, useState } from 'react';
 import { Carusel } from '@GlobalComponents';
 import { fetchProducts } from '@Fetch';
-
-import { useEffect, useMemo, useState } from 'react';
-
 import { Products } from 'src/types/products';
-
-// import style from './NewModels.module.scss';
 
 export const NewModels = () => {
   const [newModel, setNewModel] = useState<Products[]>([]);
@@ -22,7 +18,7 @@ export const NewModels = () => {
   );
 
   useEffect(() => {
-    fetchProducts().then(products => {
+    fetchProducts().then((products: Products[]) => {
       const filtered = products.filter(
         item =>
           item.category === 'phones' &&
@@ -42,7 +38,7 @@ export const NewModels = () => {
   return (
     <section className="section">
       <div className="container">
-        <Carusel data={newModel} />
+        <Carusel data={newModel} title={'Brand new models'} />
       </div>
     </section>
   );

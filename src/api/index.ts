@@ -1,3 +1,8 @@
-import { fetchProducts } from './fetchProducts';
+import {
+  fetchProducts,
+  fetchPhones,
+  fetchAccessories,
+  fetchTablets,
+} from './fetchProducts';
 
-export { fetchProducts };
+export { fetchProducts, fetchPhones, fetchAccessories, fetchTablets };

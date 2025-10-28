@@ -10,4 +10,5 @@ export interface Products {
   ram: string;
   image: string;
   color: string;
+  year: number;
 }

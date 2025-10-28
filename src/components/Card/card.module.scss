@@ -1,5 +1,12 @@
 .article {
   background-color: var(--color-surface-1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(15, 17, 33, 0.3);
+  cursor: pointer;
+
+  &:hover {
+    border: var(--border);
+  }
 }
 .wrapper {
   padding: 32px;
@@ -12,9 +19,6 @@
 .card {
   background-color: inherit;
 
-  &__header {
-  }
-
   &__link {
     width: 100%;
     height: 200px;
@@ -23,10 +27,14 @@
   }
 
   &__img {
-    background-color: inherit;
     width: 200px;
     height: 100%;
     object-fit: contain;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__body {
@@ -38,6 +46,7 @@
     font-size: 16px;
     line-height: 21px;
     font-weight: 600;
+    height: 79px;
     color: var(--color-white);
   }
 
@@ -45,7 +54,12 @@
     font-size: 22px;
     font-weight: 800;
     color: var(--color-white);
-    margin: 10px 0 33px 0;
+  }
+
+  &__discount {
+    font-size: 22px;
+    text-decoration: line-through;
+    color: var(--color-secondary);
   }
 
   &__info {
@@ -74,6 +88,14 @@
   &__bottom {
     width: 100%;
   }
+}
+
+.price {
+  margin: 0 0 33px 0;
+  @include flex-center;
+  justify-content: flex-start;
+
+  gap: 8px;
 }
 
 .line {

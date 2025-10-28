@@ -5,9 +5,14 @@
 }
 
 .button {
+  position: relative;
   padding: 9px 22px;
   background-color: var(--color-btn-card);
   width: 100%;
+
+  &:hover {
+    background-color: var(--color-btn-card-hover);
+  }
 }
 
 .button span {
