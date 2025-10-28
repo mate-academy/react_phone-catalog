@@ -38,10 +38,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem('cart');
+    const isSaved = localStorage.getItem('cart');
 
-    if (saved) {
-      setCartItems(JSON.parse(saved));
+    if (isSaved) {
+      setCartItems(JSON.parse(isSaved));
     }
   }, []);
 

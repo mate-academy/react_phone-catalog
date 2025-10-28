@@ -32,11 +32,11 @@ export const FavouriteProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem('favourites');
+    const isSaved = localStorage.getItem('favourites');
 
-    if (saved) {
+    if (isSaved) {
       try {
-        const parsed = JSON.parse(saved);
+        const parsed = JSON.parse(isSaved);
 
         if (Array.isArray(parsed) && parsed.every(i => typeof i === 'number')) {
           setFavourites(parsed);
