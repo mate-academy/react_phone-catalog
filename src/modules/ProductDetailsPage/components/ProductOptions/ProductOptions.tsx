@@ -66,6 +66,7 @@ export const ProductOptions: React.FC<Props> = ({
               >
                 <Link
                   to={getColorLink(color)}
+                  state={{ from: location.pathname }}
                   className={s.colorCircle}
                   style={{ backgroundColor: getColor(color) }}
                   aria-label={`Select color ${color}`}
@@ -89,6 +90,7 @@ export const ProductOptions: React.FC<Props> = ({
               <Link
                 key={capacity}
                 to={getCapacityLink(capacity)}
+                state={{ from: location.pathname }}
                 className={`${s.capacityLink} ${isActive ? s.active : ''}`}
               >
                 {capacity.replace(/([0-9]+)([A-Za-z]+)/, '$1 $2')}
