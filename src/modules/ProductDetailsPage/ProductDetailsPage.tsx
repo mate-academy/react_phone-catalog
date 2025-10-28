@@ -1,24 +1,22 @@
 /* eslint-disable max-len */
 import s from './ProductDetailsPage.module.scss';
-import phones from '../../../public/api/phones.json';
-import tablets from '../../../public/api/tablets.json';
-import accessories from '../../../public/api/accessories.json';
-import productsData from '../../../public/api/products.json';
 import { Breadcrumbs } from '../shared/Breadcrumbs/Breadcrumbs';
 import { BackButton } from '../shared/BackButton';
 import { useLocation } from 'react-router-dom';
 import { useMemo } from 'react';
 import { Categories } from '../../utils/types/Categories';
 import { ProductDetailsCard } from './components/ProductDetailsCard/ProductDetailsCard';
-import { Product } from '../../utils/types/Product';
 import { ProductDetails } from '../../utils/types/ProductDetails';
 import { ProductsSlider } from '../shared/ProductsSlider';
 import { ProductNotFoundPage } from '../ProductNotFoundPage';
 import { ProductDesc } from './components/ProductDesc';
+import { useProducts } from '../../context/products/useProducts';
 /* eslint-enable max-len */
 
 export const ProductDetailsPage = () => {
   const location = useLocation();
+
+  const { phones, tablets, accessories, products: productsData } = useProducts();
 
   const [, categoryRaw, productId] = location.pathname.split('/');
   const category = categoryRaw as Categories;
@@ -57,10 +55,7 @@ export const ProductDetailsPage = () => {
 
       <ProductDesc product={product} />
 
-      <ProductsSlider
-        products={productsData as Product[]}
-        title="You may also like"
-      />
+      <ProductsSlider products={productsData} title="You may also like" />
     </section>
   );
 };
