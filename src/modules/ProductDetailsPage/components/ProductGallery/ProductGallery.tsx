@@ -16,7 +16,7 @@ export const ProductGallery: React.FC<Props> = ({ images, name }) => {
   return (
     <div className={s.gallery}>
       <div className={s.galleryMain}>
-        <img src={`/${mainImg}`} alt={name} className={s.galleryImage} />
+        <img src={`${mainImg}`} alt={name} className={s.galleryImage} />
       </div>
 
       <div className={s.galleryThumbnails}>
@@ -29,7 +29,7 @@ export const ProductGallery: React.FC<Props> = ({ images, name }) => {
             }`}
             onClick={() => setMainImg(image)}
           >
-            <img src={`/${image}`} alt={name} className={s.galleryThumbImage} />
+            <img src={`${image}`} alt={name} className={s.galleryThumbImage} />
           </button>
         ))}
       </div>
