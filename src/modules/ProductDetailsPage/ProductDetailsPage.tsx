@@ -16,7 +16,12 @@ import { useProducts } from '../../context/products/useProducts';
 export const ProductDetailsPage = () => {
   const location = useLocation();
 
-  const { phones, tablets, accessories, products: productsData } = useProducts();
+  const {
+    phones,
+    tablets,
+    accessories,
+    products: productsData,
+  } = useProducts();
 
   const [, categoryRaw, productId] = location.pathname.split('/');
   const category = categoryRaw as Categories;

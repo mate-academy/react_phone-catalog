@@ -20,7 +20,7 @@ export const slides = [
     promoMobileButtonText: 'Get yours',
   },
   {
-    src: '/img/accessories/apple-watch-series-6/space-gray/00.webp',
+    src: 'img/accessories/apple-watch-series-6/space-gray/00.webp',
     name: 'Watch Series 6',
     itemURL: '/accessories/apple-watch-series-6-40mm-space-gray',
     promoTitle: 'Time Meets Technology',
