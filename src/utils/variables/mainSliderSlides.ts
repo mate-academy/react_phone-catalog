@@ -10,9 +10,9 @@ export const slides = [
     promoMobileButtonText: 'Buy now',
   },
   {
-    src: '/img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp',
+    src: 'img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp',
     name: 'iPad Pro',
-    itemURL: 'tablets/apple-ipad-pro-11-2021-128gb-spacegray',
+    itemURL: '/tablets/apple-ipad-pro-11-2021-128gb-spacegray',
     promoTitle: 'Unleash Your Creativity!',
     promoSubtitle: 'Perfect for work, play, and everything in between.',
     tagline: 'Create. Innovate.',

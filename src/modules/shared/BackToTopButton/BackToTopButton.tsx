@@ -13,7 +13,7 @@ export const BackToTopButton = () => {
       <span>Back to top</span>
       <button type="button" className={s.button} onClick={scrollToTop}>
         <img
-          src="/icons/arrow-up.svg"
+          src="icons/arrow-up.svg"
           alt="back-to-top"
           className={s.buttonImg}
         />

@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import s from './Breadcrumbs.module.scss';
 
 export const Breadcrumbs = () => {
-  const pathnames = location.pathname.split('/').filter(x => x && x !== 'react_phone-catalog');
+  const pathnames = location.pathname
+    .split('/')
+    .filter(x => x && x !== 'react_phone-catalog');
 
   const capitalizeWords = (str: string) => {
     if (!str) {

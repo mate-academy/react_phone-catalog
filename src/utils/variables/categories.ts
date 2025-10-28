@@ -2,7 +2,7 @@ export const categories = [
   {
     name: 'Mobile phones',
     categoryId: 'phones',
-    img: '/img/category-phones.webp',
+    img: 'img/category-phones.webp',
     bGColor: '#6D6474',
   },
   {

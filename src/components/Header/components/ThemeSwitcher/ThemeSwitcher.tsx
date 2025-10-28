@@ -16,12 +16,12 @@ export const ThemeSwitcher = () => {
       />
       <label htmlFor="theme-toggle" className={s.toggleLabel}>
         <img
-          src="../../../../../public/icons/sun.svg"
+          src="icons/sun.svg"
           alt="sun"
           className={`${s.icon} ${s.iconSun}`}
         />
         <img
-          src="../../../../../public/icons/moon.svg"
+          src="icons/moon.svg"
           alt="moon"
           className={s.icon}
         />
