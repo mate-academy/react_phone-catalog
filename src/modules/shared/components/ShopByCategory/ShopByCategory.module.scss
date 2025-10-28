@@ -56,9 +56,6 @@
       background-color: #973D5F;
     }
 
-    &:hover &__item-image {
-      transform: scale(1.1);
-    }
   }
 
   &__item-image {
@@ -70,6 +67,10 @@
     display: block;
     margin-bottom: 24px;
     transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__footer {

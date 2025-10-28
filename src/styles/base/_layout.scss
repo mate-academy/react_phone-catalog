@@ -70,12 +70,17 @@
 // ============================================
 
 .page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
   &__header {
     margin-bottom: 24px;
   }
 
   &__main {
     margin: 0 auto 80px;
+    flex: 1;
   }
 
   &:has(.page__menu:target) {

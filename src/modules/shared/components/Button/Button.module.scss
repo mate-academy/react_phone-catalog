@@ -84,6 +84,14 @@
     &:hover {
       border-color: $color-primary;
     }
+
+    &.button--selected {
+      background-color: $color-primary;
+      border-color: $color-primary;
+      color: $color-white;
+      cursor: default;
+      pointer-events: none;
+    }
   }
 
   &--round {

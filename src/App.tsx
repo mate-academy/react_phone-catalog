@@ -83,7 +83,7 @@ export const App = () => {
     location.pathname !== '/' && location.pathname !== '/cart';
 
   return (
-    <div className="App">
+    <div className="App page">
       <h1 className="visually-hidden">Product Catalog</h1>
       <Header />
       <Menu />

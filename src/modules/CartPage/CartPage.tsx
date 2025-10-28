@@ -16,6 +16,7 @@ export const CartPage = () => {
     removeFromCart,
     updateQuantity,
     clearCart,
+    getTotalCount,
   } = useCart();
   const [editingItemId, setEditingItemId] = useState<string | null>(null);
   const [editValue, setEditValue] = useState('');
@@ -131,7 +132,7 @@ export const CartPage = () => {
                 ${getTotalPrice()}
               </h3>
               <h3 className={styles['cart__checkout-item-count']}>
-                {t('cart.totalFor', { count: items.length })}
+                {t('cart.totalFor', { count: getTotalCount() })}
               </h3>
               <Button
                 variant="primary"
