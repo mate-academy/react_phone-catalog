@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import s from './ShopByCategoryBlock.module.scss';
 import { categories } from '../../../../utils/variables/categories';
 import { useProducts } from '../../../../context/products/useProducts';
+import { BASE_URL } from '../../../../utils/variables/base';
 
 export const ShopByCategoryBlock = () => {
   const { phones, tablets, accessories } = useProducts();
@@ -24,7 +25,7 @@ export const ShopByCategoryBlock = () => {
               style={{ backgroundColor: category.bGColor }}
             >
               <img
-                src={category.img}
+                src={`${BASE_URL}${category.img}`}
                 alt={category.name}
                 className={s.categoryImg}
               />

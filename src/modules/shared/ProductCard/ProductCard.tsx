@@ -4,6 +4,7 @@ import { Product } from '../../../utils/types/Product';
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton';
 import { ProductFeatures } from '../ProductFeaturesTable';
+import { BASE_URL } from '../../../utils/variables/base';
 
 type Props = {
   product: Product;
@@ -38,7 +39,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         state={{ from: location.pathname }}
       >
         <div className={s.imgWrapper}>
-          <img src={`${image}`} alt={name} className={s.productImg} />
+          <img src={`${BASE_URL}${image}`} alt={name} className={s.productImg} />
         </div>
         <span className={s.productName}>{name}</span>
       </Link>

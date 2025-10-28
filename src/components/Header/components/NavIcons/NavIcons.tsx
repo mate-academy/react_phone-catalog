@@ -5,6 +5,7 @@ import { useAppContext } from '../../../../context/app/useAppContext';
 import { useCart } from '../../../../context/cart/useCart';
 import { useFavorites } from '../../../../context/favorites/useFavorites';
 import { ThemeSwitcher } from '../ThemeSwitcher';
+import { BASE_URL } from '../../../../utils/variables/base';
 
 type NavIconsProps = {
   variant?: 'topbar' | 'burger';
@@ -55,7 +56,7 @@ export const NavIcons = ({ variant = 'topbar' }: NavIconsProps) => {
             >
               <div className={s.iconWrapper}>
                 <img
-                  src={icon}
+                  src={`${BASE_URL}${icon}`}
                   alt=""
                   aria-hidden="true"
                   className={s.iconImg}
@@ -77,7 +78,7 @@ export const NavIcons = ({ variant = 'topbar' }: NavIconsProps) => {
             aria-expanded={isMenuOpen}
           >
             <img
-              src={isMenuOpen ? 'icons/close.svg' : 'icons/menu.svg'}
+              src={isMenuOpen ? `${BASE_URL}icons/close.svg` : `${BASE_URL}icons/menu.svg`}
               alt=""
               aria-hidden="true"
               className={s.iconImg}

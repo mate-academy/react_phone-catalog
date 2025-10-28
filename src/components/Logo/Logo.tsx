@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../utils/variables/base';
 import s from './Logo.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ export const Logo = () => {
       Nice
       <img
         className={s.logoEmoji}
-        src="icons/title-emoji.svg"
+        src={`${BASE_URL}icons/title-emoji.svg`}
         alt="logo emoji"
       />
       <br />

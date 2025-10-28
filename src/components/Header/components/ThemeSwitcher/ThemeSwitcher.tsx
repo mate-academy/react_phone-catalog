@@ -1,4 +1,5 @@
 import { useAppContext } from '../../../../context/app/useAppContext';
+import { BASE_URL } from '../../../../utils/variables/base';
 import s from './ThemeSwitcher.module.scss';
 
 export const ThemeSwitcher = () => {
@@ -16,11 +17,11 @@ export const ThemeSwitcher = () => {
       />
       <label htmlFor="theme-toggle" className={s.toggleLabel}>
         <img
-          src="icons/sun.svg"
+          src={`${BASE_URL}icons/sun.svg`}
           alt="sun"
           className={`${s.icon} ${s.iconSun}`}
         />
-        <img src="icons/moon.svg" alt="moon" className={s.icon} />
+        <img src={`${BASE_URL}icons/moon.svg`} alt="moon" className={s.icon} />
         <span className={s.toggleCircle}></span>
       </label>
     </div>

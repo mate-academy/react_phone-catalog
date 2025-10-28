@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import s from './CartProductCard.module.scss';
 import { Product } from '../../../../utils/types/Product';
 import { useCart } from '../../../../context/cart/useCart';
+import { BASE_URL } from '../../../../utils/variables/base';
 
 type Props = {
   cartItem: { product: Product; quantity: number };
@@ -23,7 +24,7 @@ export const CartProductCard: React.FC<Props> = ({ cartItem }) => {
           onClick={() => removeFromCart(itemId)}
         ></button>
 
-        <img src={image} alt="iPhone" className={s.productImg} />
+        <img src={`${BASE_URL}${image}`} alt="iPhone" className={s.productImg} />
 
         <Link
           to={`/${category}/${itemId}`}

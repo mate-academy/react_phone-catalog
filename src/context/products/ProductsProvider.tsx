@@ -3,6 +3,7 @@ import { Product } from '../../utils/types/Product';
 import { ProductDetails } from '../../utils/types/ProductDetails';
 import { Categories } from '../../utils/types/Categories';
 import { ProductsContext } from './ProductsContext';
+import { BASE_URL } from '../../utils/variables/base';
 
 type ProductsData = {
   products: Product[];
@@ -29,10 +30,10 @@ export const ProductsProvider = ({ children }: { children: ReactNode }) => {
 
         const [productsRes, phonesRes, tabletsRes, accessoriesRes] =
           await Promise.all([
-            fetch('api/products.json'),
-            fetch('api/phones.json'),
-            fetch('api/tablets.json'),
-            fetch('api/accessories.json'),
+            fetch(`${BASE_URL}api/products.json`),
+            fetch(`${BASE_URL}api/phones.json`),
+            fetch(`${BASE_URL}api/tablets.json`),
+            fetch(`${BASE_URL}api/accessories.json`),
           ]);
 
         if (

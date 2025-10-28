@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { slides } from '../../../../utils/variables/mainSliderSlides';
 import { Swiper as SwiperType } from 'swiper/types';
+import { BASE_URL } from '../../../../utils/variables/base';
 
 export const PicturesSlider = () => {
   const location = useLocation();
@@ -84,7 +85,7 @@ export const PicturesSlider = () => {
                         className={s.productLink}
                         state={{ from: location.pathname }}
                       >
-                        <img src={src} alt={name} className={s.productImg} />
+                        <img src={`${BASE_URL}${src}`} alt={name} className={s.productImg} />
                       </Link>
 
                       <Link

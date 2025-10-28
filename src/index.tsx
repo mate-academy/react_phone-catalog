@@ -8,16 +8,13 @@ import './styles/fonts.scss';
 import './styles/global.scss';
 import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
 import { RootProvider } from './context/RootProvider';
-
-const base =
-  import.meta.env.MODE === 'development' ? '/' : '/react_phone-catalog';
+import { BASE_URL } from './utils/variables/base';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter basename={base}>
+  <BrowserRouter basename={BASE_URL}>
     <ScrollToTop />
     <RootProvider>
       <App />
     </RootProvider>
-  </BrowserRouter>
+  </BrowserRouter>,
 );
-
