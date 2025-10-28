@@ -87,10 +87,10 @@ export const TabsProvider = ({ children }: { children: ReactNode }) => {
 
     try {
       const responses = await Promise.all([
-        fetch('/api/products.json'),
-        fetch('/api/phones.json'),
-        fetch('/api/tablets.json'),
-        fetch('/api/accessories.json'),
+        fetch('./api/products.json'),
+        fetch('./api/phones.json'),
+        fetch('./api/tablets.json'),
+        fetch('./api/accessories.json'),
       ]);
 
       const [products, phones, tablets, accessories] = await Promise.all(
