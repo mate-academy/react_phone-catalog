@@ -39,9 +39,9 @@
   }
 
   &__sectionTitle {
-    @include font-mont($font-size-sm, $font-weight-semibold);
+    @include font-mont($font-size-2xl, $font-weight-semibold);
 
-    color: $gray-secondary;
+    color: $secondary;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     margin-bottom: $spacing-lg;
@@ -76,10 +76,14 @@
   &__capacities {
     display: flex;
     gap: $spacing-sm;
+
+    @include mobile {
+      gap: $spacing-xs;
+    }
   }
 
   &__capacity {
-    padding: $spacing-sm $spacing-lg;
+    padding: $spacing-sm;
     border: 1px solid $elements;
     background: transparent;
     color: $secondary;

@@ -10,7 +10,9 @@ import styles from './ProductDetails.module.scss';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId?: string }>();
-  const { product, loading, error } = useProductDetails(productId || '');
+  const { product, loading, error, debugInfo } = useProductDetails(
+    productId || '',
+  );
 
   if (!productId) {
     return <Navigate to="/404" replace />;
@@ -21,11 +23,24 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   if (error || !product) {
-    return <Navigate to="/404" replace />;
+    return (
+      <div className={styles.errorPage}>
+        <h2>Product Not Found</h2>
+        <p>Error: {error}</p>
+        {debugInfo && (
+          <div className={styles.debugInfo}>
+            <p>Total products in database: {debugInfo.totalProducts}</p>
+            <p>Found by ID: {debugInfo.foundById ? 'Yes' : 'No'}</p>
+            <p>Found by Phone ID: {debugInfo.foundByPhoneId ? 'Yes' : 'No'}</p>
+            <p>Found by Item ID: {debugInfo.foundByItemId ? 'Yes' : 'No'}</p>
+            <p>Product ID from URL: {productId}</p>
+          </div>
+        )}
+        <Navigate to="/404" replace />
+      </div>
+    );
   }
 
-  // Prepare images for ProductGallery
-  // Use images array if available, otherwise use single image
   const galleryImages = product.images || [product.image];
 
   return (

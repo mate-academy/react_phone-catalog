@@ -41,12 +41,10 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
     }
   };
 
-  // Safe data access with fallbacks
   const availableColors = product.colorsAvailable || [product.color];
   const availableCapacities = product.capacityAvailable || [product.capacity];
   const hasDiscount = product.fullPrice > product.price;
 
-  // Technical specifications with safe access
   const techSpecs = [
     { label: 'Screen', value: product.screen },
     { label: 'Resolution', value: product.resolution },

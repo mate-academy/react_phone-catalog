@@ -51,16 +51,8 @@
   }
 
   &__main {
-    flex: 1;
-    max-width: 500px;
-
-    @include flex-center;
-
-    // background: $surface2;
-    min-height: 400px;
-
     @include mobile {
-      min-height: 300px;
+      min-height: 288px;
     }
   }
 

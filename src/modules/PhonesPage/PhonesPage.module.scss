@@ -16,3 +16,24 @@
     margin-bottom: $spacing-4xl;
   }
 }
+
+.error {
+  @include flex-column-center;
+
+  min-height: 400px;
+  text-align: center;
+
+  h2 {
+    color: $red;
+    margin-bottom: $spacing-lg;
+  }
+
+  p {
+    color: $gray-secondary;
+    margin-bottom: $spacing-2xl;
+  }
+
+  button {
+    @include button-primary;
+  }
+}

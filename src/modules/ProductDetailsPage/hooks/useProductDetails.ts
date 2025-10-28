@@ -6,6 +6,12 @@ export const useProductDetails = (productId: string) => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [debugInfo, setDebugInfo] = useState<{
+    totalProducts: number;
+    foundById: boolean;
+    foundByPhoneId: boolean;
+    foundByItemId: boolean;
+  } | null>(null);
 
   useEffect(() => {
     if (!productId) {
@@ -18,12 +24,30 @@ export const useProductDetails = (productId: string) => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const data = await api.getProductDetails(productId);
+        setError(null);
+        setDebugInfo(null);
 
-        setProduct(data);
+        const allProducts = await api.getProducts();
 
-        if (!data) {
-          setError('Product not found');
+        const foundById = allProducts.find(p => p.id === productId);
+        const foundByPhoneId = allProducts.find(p => p.phoneId === productId);
+        const foundByItemId = allProducts.find(p => p.itemId === productId);
+
+        const foundProduct = foundById || foundByPhoneId || foundByItemId;
+
+        setDebugInfo({
+          totalProducts: allProducts.length,
+          foundById: !!foundById,
+          foundByPhoneId: !!foundByPhoneId,
+          foundByItemId: !!foundByItemId,
+        });
+
+        if (foundProduct) {
+          setProduct(foundProduct);
+        } else {
+          setError(
+            `Product with ID "${productId}" not found. Available products: ${allProducts.length}`,
+          );
         }
       } catch (err) {
         setError('Failed to load product details');
@@ -35,5 +59,5 @@ export const useProductDetails = (productId: string) => {
     fetchProduct();
   }, [productId]);
 
-  return { product, loading, error };
+  return { product, loading, error, debugInfo };
 };

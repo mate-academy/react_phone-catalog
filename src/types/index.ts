@@ -28,6 +28,37 @@ export interface Product {
   }[];
 }
 
+export interface RawProduct {
+  id: string;
+  category: 'phones' | 'tablets' | 'accessories';
+  namespaceId?: string;
+  phoneId?: string;
+  itemId?: string;
+  name: string;
+  priceRegular?: number;
+  priceDiscount?: number;
+  fullPrice?: number;
+  price?: number;
+  screen?: string;
+  capacity?: string;
+  color: string;
+  ram?: string;
+  year?: number;
+  image?: string;
+  images?: string[];
+  colorsAvailable?: string[];
+  capacityAvailable?: string[];
+  resolution?: string;
+  processor?: string;
+  camera?: string;
+  zoom?: string;
+  cell?: string[];
+  description?: {
+    title: string;
+    text: string[];
+  }[];
+}
+
 export interface CartItem {
   id: string;
   product: Product;
