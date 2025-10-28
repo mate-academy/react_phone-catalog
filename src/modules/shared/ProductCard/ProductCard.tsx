@@ -39,7 +39,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         state={{ from: location.pathname }}
       >
         <div className={s.imgWrapper}>
-          <img src={`${BASE_URL}${image}`} alt={name} className={s.productImg} />
+          <img
+            src={`${BASE_URL}${image}`}
+            alt={name}
+            className={s.productImg}
+          />
         </div>
         <span className={s.productName}>{name}</span>
       </Link>

@@ -78,7 +78,11 @@ export const NavIcons = ({ variant = 'topbar' }: NavIconsProps) => {
             aria-expanded={isMenuOpen}
           >
             <img
-              src={isMenuOpen ? `${BASE_URL}icons/close.svg` : `${BASE_URL}icons/menu.svg`}
+              src={
+                isMenuOpen
+                  ? `${BASE_URL}icons/close.svg`
+                  : `${BASE_URL}icons/menu.svg`
+              }
               alt=""
               aria-hidden="true"
               className={s.iconImg}

@@ -24,7 +24,11 @@ export const CartProductCard: React.FC<Props> = ({ cartItem }) => {
           onClick={() => removeFromCart(itemId)}
         ></button>
 
-        <img src={`${BASE_URL}${image}`} alt="iPhone" className={s.productImg} />
+        <img
+          src={`${BASE_URL}${image}`}
+          alt="iPhone"
+          className={s.productImg}
+        />
 
         <Link
           to={`/${category}/${itemId}`}

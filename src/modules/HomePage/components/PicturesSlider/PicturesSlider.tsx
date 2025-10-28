@@ -85,7 +85,11 @@ export const PicturesSlider = () => {
                         className={s.productLink}
                         state={{ from: location.pathname }}
                       >
-                        <img src={`${BASE_URL}${src}`} alt={name} className={s.productImg} />
+                        <img
+                          src={`${BASE_URL}${src}`}
+                          alt={name}
+                          className={s.productImg}
+                        />
                       </Link>
 
                       <Link

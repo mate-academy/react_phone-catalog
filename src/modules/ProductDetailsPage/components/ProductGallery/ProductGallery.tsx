@@ -17,7 +17,11 @@ export const ProductGallery: React.FC<Props> = ({ images, name }) => {
   return (
     <div className={s.gallery}>
       <div className={s.galleryMain}>
-        <img src={`${BASE_URL}${mainImg}`} alt={name} className={s.galleryImage} />
+        <img
+          src={`${BASE_URL}${mainImg}`}
+          alt={name}
+          className={s.galleryImage}
+        />
       </div>
 
       <div className={s.galleryThumbnails}>
@@ -30,7 +34,11 @@ export const ProductGallery: React.FC<Props> = ({ images, name }) => {
             }`}
             onClick={() => setMainImg(image)}
           >
-            <img src={`${BASE_URL}${image}`} alt={name} className={s.galleryThumbImage} />
+            <img
+              src={`${BASE_URL}${image}`}
+              alt={name}
+              className={s.galleryThumbImage}
+            />
           </button>
         ))}
       </div>
