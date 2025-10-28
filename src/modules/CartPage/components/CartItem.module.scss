@@ -3,7 +3,7 @@
 
 .cart-item {
   display: flex;
-  align-items: flex-start; // Вирівнювання по верху для багаторядкового тексту
+  align-items: center;
   justify-content: space-between;
   padding: 16px;
   gap: 16px;
@@ -11,16 +11,16 @@
   flex-wrap: wrap;
 
   @include on-tablet {
-    flex-wrap: nowrap; // На планшетах і вище не переноситься
+    flex-wrap: nowrap;
   }
 }
 
 .cart-item__product {
   display: flex;
-  align-items: flex-start; // Вирівнювання по верху
+  align-items: center;
   gap: 16px;
   flex: 1 1 auto;
-  min-width: 0; // Дозволяє стискатися менше контенту
+  min-width: 0; 
 
   @include on-tablet {
     min-width: 65%;
@@ -31,7 +31,7 @@
   width: 80px;
   height: 80px;
   object-fit: contain;
-  flex-shrink: 0; // Зображення не стискається
+  flex-shrink: 0;
   transition: transform 0.3s ease;
 
   &:hover {
@@ -43,9 +43,9 @@
   @include body-text;
 
   color: $color-primary;
-  word-break: break-word; // Розбиває довгі слова
-  overflow-wrap: break-word; // Переносить слова
-  line-height: 1.4; // Міжрядковий інтервал
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
   align-items: center;
 }
 
@@ -54,8 +54,8 @@
   align-items: center;
   flex-grow: 4;
   justify-content: space-between;
-  flex-shrink: 0; // Деталі не стискаються, забирають стільки місця скільки потрібно
-  min-width: fit-content; // Гарантує що details займуть мінімум необхідного місця
+  flex-shrink: 0;
+  min-width: fit-content;
 
   @include on-tablet {
     justify-content: flex-start;

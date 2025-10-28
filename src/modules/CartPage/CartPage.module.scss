@@ -81,7 +81,7 @@
   min-height: 60vh;
 
   @include on-desktop {
-    grid-column: span 16;
+    grid-column: 1 / -1;
     padding: 80px 24px;
     min-height: 50vh;
   }
