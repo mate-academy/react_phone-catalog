@@ -1,5 +1,5 @@
 import { Product } from '@shared/types';
-import styles from '../styles/CartItemWidget.module.scss';
+import styles from '../ui/cartItemWidget/CartItemWidget.module.scss';
 import { LoadStatus } from '@shared/api';
 
 const baseConf = {

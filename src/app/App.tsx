@@ -14,7 +14,5 @@ export const App = () => (
   </div>
 );
 
-// refactor pagination to show only few pages not all at once
-// add random product catalogue method
-
 //for RM: -dataflow -api -loader -errorHandling -cssFirst
+// add 0 items in cart render; add modal window for cart

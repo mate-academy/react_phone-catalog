@@ -5,6 +5,7 @@
 
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 h1 {
@@ -30,13 +31,21 @@ h1 {
     grid-template: 56px 1fr / 1fr 368px;
     gap: 32px 16px;
 
-    > :last-child {
+    [data-checkout] {
       grid-area: 2 / 2 / 3 / 3;
     }
 
     > ul {
       grid-area: 2 / 1 / 3 / 2;
     }
+  }
+}
+
+.message {
+  @include s.t-h4;
+
+  @media(min-width: s.$c-BREAKPOINT_WIDE) {
+    grid-area: 2 / 1 / 3 / 2;
   }
 }
 

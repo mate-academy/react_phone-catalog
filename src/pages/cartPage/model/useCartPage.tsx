@@ -27,12 +27,16 @@ export const useCartPage = () => {
   }, [unitPrices, itemsInCart]);
 
   const totalPrice = useMemo(() => {
+    if (!allPricesLoaded) {
+      return 'Calculating...';
+    }
+
     return itemsInCart.reduce((sum, item) => {
       const unitPrice = unitPrices[item.id] || 0;
 
       return sum + unitPrice * item.amount;
     }, 0);
-  }, [unitPrices, itemsInCart]);
+  }, [unitPrices, itemsInCart, allPricesLoaded]);
 
-  return { itemsInCart, updatePrice, allPricesLoaded, totalPrice };
+  return { itemsInCart, updatePrice, totalPrice };
 };

@@ -6,9 +6,9 @@ import {
   ProductPage,
   CartPage,
   FavouritesPage,
-} from '../pages';
+} from '../../pages';
 import { Category } from '@shared/types/APIReturnTypes';
-import { App } from './App';
+import { App } from '../App';
 
 export const routes: RouteObject[] = [
   {

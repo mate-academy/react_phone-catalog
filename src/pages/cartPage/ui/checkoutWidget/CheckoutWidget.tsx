@@ -1,8 +1,8 @@
 import { useGlobalData } from '@features/index';
-import styles from '../styles/checkoutWidget.module.scss';
+import styles from './checkoutWidget.module.scss';
 
 type Props = {
-  totalPrice: number;
+  totalPrice: number | string;
 };
 
 export const CheckoutWidget = ({ totalPrice }: Props) => {
@@ -12,6 +12,7 @@ export const CheckoutWidget = ({ totalPrice }: Props) => {
 
   return (
     <div
+      data-checkout
       className={styles['checkout-widget']}
       role="region"
       aria-label="Order summary"
@@ -22,7 +23,12 @@ export const CheckoutWidget = ({ totalPrice }: Props) => {
           className={styles['total-amount']}
         >{`Total for ${cartAmount} item${cartAmount > 1 ? 's' : ''}`}</span>
       </div>
-      <button className={styles['checkout-button']}>Checkout</button>
+      <button
+        className={styles['checkout-button']}
+        disabled={typeof totalPrice === 'string'}
+      >
+        Checkout
+      </button>
     </div>
   );
 };

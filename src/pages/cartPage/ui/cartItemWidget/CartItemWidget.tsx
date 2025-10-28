@@ -1,9 +1,9 @@
 import { CartItem } from '@features/globalStore/types';
 import { CrossIcon } from '@shared/icons';
 import { Product } from '@shared/types';
-import styles from '../styles/CartItemWidget.module.scss';
-import { useCartItemWidget } from '../model';
-import { getCartWindetParams } from '../model/getCartWidgetParams';
+import styles from './CartItemWidget.module.scss';
+import { useCartItemWidget } from '../../model';
+import { getCartWindetParams } from '../../model/getCartWidgetParams';
 import { LoaderSpinner } from '@ui/skeletons';
 
 type Props = {
