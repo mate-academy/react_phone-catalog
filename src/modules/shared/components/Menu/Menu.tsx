@@ -48,7 +48,7 @@ export const Menu = () => {
           <div className={styles.header__logo}>
             <Link to="/" className={styles['header__logo-link']}>
               <img
-                src="/img/logo.svg"
+                src="img/logo.svg"
                 alt="Nice Gadgets"
                 className={styles['header__logo-image']}
               />

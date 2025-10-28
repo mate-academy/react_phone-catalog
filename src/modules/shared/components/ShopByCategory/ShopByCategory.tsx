@@ -18,7 +18,7 @@ export const ShopByCategory = () => {
           >
             <a href="#phones" className={styles['shop-by-category__link']}>
               <img
-                src="/img/category-phones.webp"
+                src="img/category-phones.webp"
                 alt={t('shopByCategory.mobilePhones')}
                 className={styles['shop-by-category__item-image']}
               />
@@ -40,7 +40,7 @@ export const ShopByCategory = () => {
           >
             <a href="#tablets" className={styles['shop-by-category__link']}>
               <img
-                src="/img/category-tablets.webp"
+                src="img/category-tablets.webp"
                 alt={t('shopByCategory.tablets')}
                 className={styles['shop-by-category__item-image']}
               />
@@ -62,7 +62,7 @@ export const ShopByCategory = () => {
           >
             <a href="#accessories" className={styles['shop-by-category__link']}>
               <img
-                src="/img/category-accessories.webp"
+                src="img/category-accessories.webp"
                 alt={t('shopByCategory.accessories')}
                 className={styles['shop-by-category__item-image']}
               />
