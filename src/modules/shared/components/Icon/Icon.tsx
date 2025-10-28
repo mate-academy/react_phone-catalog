@@ -2,8 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import styles from './Icon.module.scss';
 
-interface IconProps {
-  name:
+export type IconName =
   | 'arrow-left'
   | 'arrow-right'
   | 'arrow-up'
@@ -13,10 +12,13 @@ interface IconProps {
   | 'menu'
   | 'minus'
   | 'plus'
+  | 'home'
   | 'cart';
+
+interface IconProps {
+  name: IconName;
   size?: number;
   color?: string;
-  badge?: number | string;
   className?: string;
 }
 
@@ -24,7 +26,6 @@ export const Icon: React.FC<IconProps> = ({
   name,
   size = 16,
   color = 'currentColor',
-  badge,
   className,
 }) => {
   const classes = cn(styles.icon, styles[`icon__${name}`], className);
@@ -35,11 +36,5 @@ export const Icon: React.FC<IconProps> = ({
     color,
   };
 
-  return (
-    <span className={classes} style={style}>
-      {badge !== undefined && (
-        <span className={styles.icon__badge}>{badge}</span>
-      )}
-    </span>
-  );
+  return <span className={classes} style={style} />;
 };

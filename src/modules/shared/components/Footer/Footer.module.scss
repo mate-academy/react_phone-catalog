@@ -18,7 +18,7 @@
 
   &__content {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1136px;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -83,8 +83,8 @@
   }
 
   &__nav-link {
-    @include body-text;
-    text-transform: uppercase;
+    @include uppercase;
+
     color: $color-secondary;
     transition: color 0.3s ease;
 
@@ -95,6 +95,7 @@
 
   &__back-link {
     @include button-text;
+
     color: $color-secondary;
     background: none;
     border: none;

@@ -17,7 +17,9 @@ export const MenuProvider = ({ children }: { children: ReactNode }) => {
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
 
   return (
-    <MenuContext.Provider value={{ isMenuOpen, openMenu, closeMenu, toggleMenu }}>
+    <MenuContext.Provider
+      value={{ isMenuOpen, openMenu, closeMenu, toggleMenu }}
+    >
       {children}
     </MenuContext.Provider>
   );
@@ -25,8 +27,10 @@ export const MenuProvider = ({ children }: { children: ReactNode }) => {
 
 export const useMenu = () => {
   const context = useContext(MenuContext);
+
   if (!context) {
     throw new Error('useMenu must be used within MenuProvider');
   }
+
   return context;
 };

@@ -4,6 +4,7 @@ import { getDiscountedProducts, getNewestProducts } from '../../api/products';
 import { HeroSection } from './components/HeroSection';
 import { Product } from '../../types/Product';
 import { ProductSlider, ShopByCategory } from '../shared';
+import slyles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const { t } = useTranslation();
@@ -21,16 +22,20 @@ export const HomePage = () => {
     getDiscountedProducts().then(setDiscountedProducts);
   }, []);
 
-
   return (
     <>
-      <HeroSection imageUrls={imageUrls} />
+      <div className={slyles['home-page-container']}>
+        <HeroSection imageUrls={imageUrls} />
 
-      <ProductSlider products={newestProducts} title={t('home.brandNew')} />
+        <ProductSlider products={newestProducts} title={t('home.brandNew')} />
 
-      <ShopByCategory />
+        <ShopByCategory />
 
-      <ProductSlider products={discountedProducts} title={t('home.hotPrices')} />
+        <ProductSlider
+          products={discountedProducts}
+          title={t('home.hotPrices')}
+        />
+      </div>
     </>
   );
-}
+};

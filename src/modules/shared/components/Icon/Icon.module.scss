@@ -50,24 +50,9 @@
   &__plus {
     mask-image: url('/img/icons/plus.svg');
   }
-
-  // ============ BADGE
-  &__badge {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    background-color: $color-red;
-    border: 1px solid $color-white;
-    color: $color-white;
-    font-family: $font-main;
-    font-weight: 500;
-    font-size: 9px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
+  &__home {
+    mask-image: url('/img/icons/home.svg');
   }
+
+
 }

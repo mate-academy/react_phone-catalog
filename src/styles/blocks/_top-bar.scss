@@ -53,6 +53,7 @@
       position: absolute;
       bottom: -8px;
       transform: scaleX(0);
+
       // transition: transform $image-hover-duration ease;
       transform-origin: left;
     }
@@ -106,6 +107,7 @@
 
   &__logo {
     height: 16px;
+
     // transition: transform $image-hover-duration $image-hover-timing;
 
     &:hover {

@@ -3,31 +3,28 @@ import { useTranslation } from 'react-i18next';
 import styles from './LanguageSwitcher.module.scss';
 
 export const LanguageSwitcher: React.FC = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
-  const changeLanguage = (lng: string) => {
+  const handleLanguageChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    const lng = event.target.value;
+
     i18n.changeLanguage(lng);
     localStorage.setItem('language', lng);
   };
 
   return (
     <div className={styles['language-switcher']}>
-      <button
-        className={`${styles['language-switcher__button']} ${i18n.language === 'en' ? styles['language-switcher__button--active'] : ''
-          }`}
-        onClick={() => changeLanguage('en')}
-        aria-label="Switch to English"
+      <select
+        className={styles['language-switcher__select']}
+        value={i18n.language}
+        onChange={handleLanguageChange}
+        aria-label={t('common.selectLanguage')}
       >
-        EN
-      </button>
-      <button
-        className={`${styles['language-switcher__button']} ${i18n.language === 'uk' ? styles['language-switcher__button--active'] : ''
-          }`}
-        onClick={() => changeLanguage('uk')}
-        aria-label="Перемкнути на українську"
-      >
-        UA
-      </button>
+        <option value="en">EN</option>
+        <option value="uk">UA</option>
+      </select>
     </div>
   );
 };

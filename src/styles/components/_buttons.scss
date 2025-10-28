@@ -11,6 +11,7 @@
 
 .button {
   @include button-text;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -127,10 +128,7 @@
   &::after {
     content: "";
     position: absolute;
-    top: 2px;
-    left: 2px;
-    right: 2px;
-    bottom: 2px;
+    inset: 2px;
     border-radius: 50%;
     background-color: #fcd8bb;
   }

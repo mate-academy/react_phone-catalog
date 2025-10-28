@@ -2,6 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import styles from './Pagination.module.scss';
 import { Button } from '../Button/Button';
+import { useTranslation } from 'react-i18next';
 
 interface PaginationProps {
   currentPage: number;
@@ -16,6 +17,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
   className,
 }) => {
+  const { t } = useTranslation();
   const handlePrevious = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -75,14 +77,17 @@ export const Pagination: React.FC<PaginationProps> = ({
         iconLeft="arrow-left"
         onClick={handlePrevious}
         disabled={currentPage === 1}
-        aria-label="Previous page"
+        aria-label={t('common.previousPage')}
       />
 
       <div className={styles.pagination__pages}>
         {getPageNumbers().map((page, index) => {
           if (page === '...') {
             return (
-              <span key={`ellipsis-${index}`} className={styles.pagination__ellipsis}>
+              <span
+                key={`ellipsis-${index}`}
+                className={styles.pagination__ellipsis}
+              >
                 ...
               </span>
             );
@@ -94,7 +99,7 @@ export const Pagination: React.FC<PaginationProps> = ({
               variant="icon"
               selected={page === currentPage}
               onClick={() => onPageChange(page as number)}
-              aria-label={`Page ${page}`}
+              aria-label={t('common.page', { number: page })}
               aria-current={page === currentPage ? 'page' : undefined}
             >
               {page}
@@ -108,7 +113,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         iconRight="arrow-right"
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        aria-label="Next page"
+        aria-label={t('common.nextPage')}
       />
     </div>
   );

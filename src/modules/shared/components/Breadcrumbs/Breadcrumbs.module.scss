@@ -1,0 +1,74 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.breadcrumbs {
+  padding-top: 16px;
+  margin-bottom: 24px;
+}
+
+.breadcrumbs__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumbs__link {
+  @include small-text;
+
+  color: $color-secondary;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-primary;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+.breadcrumbs__current {
+  @include small-text;
+
+  color: $color-primary;
+  font-weight: 600;
+}
+
+.breadcrumbs__separator {
+  color: $color-secondary;
+  flex-shrink: 0;
+}
+
+// Mobile optimizations
+@media (max-width: 480px) {
+  .breadcrumbs {
+    margin-bottom: 16px;
+  }
+
+  .breadcrumbs__list {
+    gap: 6px;
+  }
+
+  .breadcrumbs__item {
+    gap: 6px;
+  }
+
+  .breadcrumbs__link,
+  .breadcrumbs__current {
+    font-size: 12px;
+  }
+}

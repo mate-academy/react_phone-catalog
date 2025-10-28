@@ -8,15 +8,14 @@ type Props = {
   placeholder?: string;
 };
 
-export const SearchInput: React.FC<Props> = ({
-  onSearch,
-  placeholder = 'Search...'
-}) => {
+export const SearchInput: React.FC<Props> = ({ onSearch, placeholder }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const queryParam = searchParams.get('query') || '';
 
   const [inputValue, setInputValue] = useState(queryParam);
   const isFirstRender = useRef(true);
+
+  const searchParamsString = searchParams.toString();
 
   // Initialize from URL on mount
   useEffect(() => {
@@ -25,7 +24,7 @@ export const SearchInput: React.FC<Props> = ({
       onSearch(queryParam);
       isFirstRender.current = false;
     }
-  }, []);
+  }, [onSearch, queryParam]);
 
   // Debounce effect
   useEffect(() => {
@@ -37,17 +36,19 @@ export const SearchInput: React.FC<Props> = ({
       onSearch(inputValue);
 
       // Update URL
-      const newParams = new URLSearchParams(searchParams);
+      const newParams = new URLSearchParams(searchParamsString);
+
       if (inputValue) {
         newParams.set('query', inputValue);
       } else {
         newParams.delete('query');
       }
+
       setSearchParams(newParams, { replace: true });
     }, 500); // 500ms debounce
 
     return () => clearTimeout(timeoutId);
-  }, [inputValue]);
+  }, [inputValue, onSearch, searchParamsString, setSearchParams]);
 
   const handleClear = () => {
     setInputValue('');
@@ -58,7 +59,7 @@ export const SearchInput: React.FC<Props> = ({
       <input
         type="text"
         value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={e => setInputValue(e.target.value)}
         placeholder={placeholder}
         className={styles['search-input__field']}
       />

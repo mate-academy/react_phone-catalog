@@ -7,11 +7,8 @@
 
 .menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100;
+  inset: 0;
+  z-index: 1100;
   background-color: $color-white;
   display: flex;
   flex-direction: column;
@@ -92,6 +89,10 @@
       padding: 0;
       transition: background-color 0.3s ease;
 
+      &--active {
+        border-bottom: 3px solid $color-primary;
+      }
+
       &:hover {
         background-color: $color-hover-bg;
       }
@@ -114,29 +115,9 @@
     gap: 24px;
   }
 
-  &__nav-item {
-
-    &--active {
-      .menu__nav-link {
-        position: relative;
-        color: $color-primary;
-
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: -8px;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background-color: $color-primary;
-          transition: background-color 0.3s;
-        }
-      }
-    }
-  }
-
   &__nav-link {
     @include uppercase;
+
     color: $color-secondary;
     display: flex;
     align-items: center;
@@ -160,6 +141,27 @@
         height: 3px;
         background-color: $color-primary;
         transition: background-color 0.3s;
+      }
+    }
+  }
+
+  &__nav-item {
+
+    &--active {
+      .menu__nav-link {
+        position: relative;
+        color: $color-primary;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -8px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background-color: $color-primary;
+          transition: background-color 0.3s;
+        }
       }
     }
   }

@@ -12,7 +12,9 @@ type FavoritesContextType = {
   getFavoritesCount: () => number;
 };
 
-const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
+const FavoritesContext = createContext<FavoritesContextType | undefined>(
+  undefined,
+);
 
 type Props = {
   children: ReactNode;
@@ -22,17 +24,17 @@ export const FavoritesProvider = ({ children }: Props) => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
 
   const addToFavorites = (product: Product) => {
-    if (!favorites.find((item) => item.itemId === product.itemId)) {
+    if (!favorites.find(item => item.itemId === product.itemId)) {
       setFavorites([...favorites, product]);
     }
   };
 
   const removeFromFavorites = (itemId: string) => {
-    setFavorites(favorites.filter((item) => item.itemId !== itemId));
+    setFavorites(favorites.filter(item => item.itemId !== itemId));
   };
 
   const toggleFavorite = (product: Product) => {
-    if (favorites.find((item) => item.itemId === product.itemId)) {
+    if (favorites.find(item => item.itemId === product.itemId)) {
       removeFromFavorites(product.itemId);
     } else {
       addToFavorites(product);
@@ -40,7 +42,7 @@ export const FavoritesProvider = ({ children }: Props) => {
   };
 
   const isFavorite = (itemId: string) => {
-    return favorites.some((item) => item.itemId === itemId);
+    return favorites.some(item => item.itemId === itemId);
   };
 
   const clearFavorites = () => {
@@ -61,7 +63,7 @@ export const FavoritesProvider = ({ children }: Props) => {
       clearFavorites,
       getFavoritesCount,
     }),
-    [favorites]
+    [favorites],
   );
 
   return (

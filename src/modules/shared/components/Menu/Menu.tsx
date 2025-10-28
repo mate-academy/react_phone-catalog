@@ -1,10 +1,11 @@
-import styles from './Menu.module.scss';
+import { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useCart, useFavorites, useMenu } from '../../../../contexts';
 import { Icon } from '../Icon/Icon';
-import cn from 'classnames';
-import { useEffect } from 'react';
+import { Badge } from '../Badge/Badge';
+import styles from './Menu.module.scss';
 
 export const Menu = () => {
   const { t } = useTranslation();
@@ -15,7 +16,6 @@ export const Menu = () => {
   const favoritesCount = getFavoritesCount();
   const totalCount = getTotalCount();
 
-  // Блокуємо скрол коли меню відкрите
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -75,34 +75,50 @@ export const Menu = () => {
             <NavLink
               to="/"
               onClick={handleLinkClick}
-              className={({ isActive }) => cn(styles['menu__nav-link'], { [styles['menu__nav-link--active']]: isActive })}
+              className={({ isActive }) =>
+                cn(styles['menu__nav-link'], {
+                  [styles['menu__nav-link--active']]: isActive,
+                })
+              }
             >
               {t('nav.home')}
             </NavLink>
           </li>
           <li className={styles['menu__nav-item']}>
             <NavLink
-              to="/category/phones"
+              to="/phones"
               onClick={handleLinkClick}
-              className={({ isActive }) => cn(styles['menu__nav-link'], { [styles['menu__nav-link--active']]: isActive })}
+              className={({ isActive }) =>
+                cn(styles['menu__nav-link'], {
+                  [styles['menu__nav-link--active']]: isActive,
+                })
+              }
             >
               {t('nav.phones')}
             </NavLink>
           </li>
           <li className={styles['menu__nav-item']}>
             <NavLink
-              to="/category/tablets"
+              to="/tablets"
               onClick={handleLinkClick}
-              className={({ isActive }) => cn(styles['menu__nav-link'], { [styles['menu__nav-link--active']]: isActive })}
+              className={({ isActive }) =>
+                cn(styles['menu__nav-link'], {
+                  [styles['menu__nav-link--active']]: isActive,
+                })
+              }
             >
               {t('nav.tablets')}
             </NavLink>
           </li>
           <li className={styles['menu__nav-item']}>
             <NavLink
-              to="/category/accessories"
+              to="/accessories"
               onClick={handleLinkClick}
-              className={({ isActive }) => cn(styles['menu__nav-link'], { [styles['menu__nav-link--active']]: isActive })}
+              className={({ isActive }) =>
+                cn(styles['menu__nav-link'], {
+                  [styles['menu__nav-link--active']]: isActive,
+                })
+              }
             >
               {t('nav.accessories')}
             </NavLink>
@@ -111,22 +127,34 @@ export const Menu = () => {
       </nav>
 
       <div className={styles.menu__footer}>
-        <Link
+        <NavLink
           to="/favorites"
           onClick={handleLinkClick}
-          className={styles['menu__footer-button']}
+          className={({ isActive }) => {
+            return cn(styles['menu__footer-button'], {
+              [styles['menu__footer-button--active']]: isActive,
+            });
+          }}
           aria-label={t('header.favorites')}
         >
-          <Icon name="like" badge={favoritesCount} />
-        </Link>
-        <Link
+          <Badge badgeContent={favoritesCount} color="error">
+            <Icon name="like" />
+          </Badge>
+        </NavLink>
+        <NavLink
           to="/cart"
           onClick={handleLinkClick}
-          className={styles['menu__footer-button']}
+          className={({ isActive }) => {
+            return cn(styles['menu__footer-button'], {
+              [styles['menu__footer-button--active']]: isActive,
+            });
+          }}
           aria-label={t('header.cart')}
         >
-          <Icon name="cart" badge={totalCount} />
-        </Link>
+          <Badge badgeContent={totalCount} color="error">
+            <Icon name="cart" />
+          </Badge>
+        </NavLink>
       </div>
     </aside>
   );

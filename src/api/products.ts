@@ -7,13 +7,13 @@ export const getProducts = () => {
   return fetchClient.get<Product[]>('/products.json');
 };
 
-export const getNewestProducts = (limit = 4) => {
+export const getNewestProducts = (limit = 12) => {
   return fetchClient
     .get<Product[]>('/products.json')
     .then(products => products.sort((a, b) => b.year - a.year).slice(0, limit));
 };
 
-export const getDiscountedProducts = (limit = 4) => {
+export const getDiscountedProducts = (limit = 12) => {
   return fetchClient.get<Product[]>('/products.json').then(products =>
     products
       .filter(product => product.fullPrice > product.price)
@@ -29,8 +29,8 @@ export const getProductsByCategoryWithPagination = (
   sortBy: SortBy = SortBy.Newest,
 ) => {
   return fetchClient.get<Product[]>('/products.json').then(products => {
-    let filtered = products.filter(product => product.category === category);
-    let sorted = [...filtered];
+    const filtered = products.filter(product => product.category === category);
+    const sorted = [...filtered];
 
     switch (sortBy) {
       case SortBy.Newest:
@@ -89,6 +89,17 @@ export const getSuggestedProducts = (limit = 10) => {
   return fetchClient.get<Product[]>('/products.json').then(products => {
     // Shuffle array and get random products
     const shuffled = [...products].sort(() => Math.random() - 0.5);
+
     return shuffled.slice(0, limit);
   });
+};
+
+export const getProductCodeById = (
+  productId: string,
+): Promise<string | undefined> => {
+  return fetchClient
+    .get<Product[]>('/products.json')
+    .then(products =>
+      products.find(product => product.itemId === productId)?.id?.toString(),
+    );
 };

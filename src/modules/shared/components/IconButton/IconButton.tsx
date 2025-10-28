@@ -23,7 +23,7 @@ export const IconButton: FC<IconButtonProps> = ({
         size === 'large' && styles.iconButtonLarge,
         variant === 'red' && styles.iconButtonRed,
         disabled && styles.iconButtonDisabled,
-        className
+        className,
       )}
       disabled={disabled}
       {...props}

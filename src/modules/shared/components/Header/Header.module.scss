@@ -11,9 +11,24 @@
   align-items: center;
   border-bottom: 1px solid $color-elements;
   height: 48px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
 
   @include on-desktop {
     height: 64px;
+  }
+
+  // Тінь при скролі (можна додати через JS клас)
+  &--scrolled {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.98);
   }
 
   &__search {
@@ -61,23 +76,9 @@
     height: 100%;
   }
 
-  &__nav-item {
-    display: flex;
-    align-items: stretch;
-
-    &--active {
-      .header__nav-link {
-        color: $color-primary;
-
-        &::after {
-          background-color: $color-primary;
-        }
-      }
-    }
-  }
-
   &__nav-link {
     @include uppercase;
+
     color: $color-secondary;
     display: flex;
     align-items: center;
@@ -98,6 +99,29 @@
 
     &:hover {
       color: $color-primary;
+    }
+
+    &--active {
+      color: $color-primary;
+
+      &::after {
+        background-color: $color-primary;
+      }
+    }
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: stretch;
+
+    &--active {
+      .header__nav-link {
+        color: $color-primary;
+
+        &::after {
+          background-color: $color-primary;
+        }
+      }
     }
   }
 
@@ -135,7 +159,13 @@
     background: none;
     cursor: pointer;
     padding: 0;
+    position: relative;
+    overflow: visible;
     transition: background-color 0.3s ease;
+
+    &--active {
+      border-bottom: 3px solid $color-primary;
+    }
 
     &:hover {
       background-color: $color-hover-bg;

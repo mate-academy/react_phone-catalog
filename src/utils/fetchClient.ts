@@ -12,7 +12,7 @@ async function request<T>(url: string): Promise<T> {
 
 export const fetchClient = {
   get: <T>(url: string) => request<T>(url),
-  
+
   getProducts: () => request('/products.json'),
   getPhones: () => request('/phones.json'),
   getTablets: () => request('/tablets.json'),

@@ -9,15 +9,20 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .productSliderHeader {
   @include page-grid;
+
   align-items: center;
 }
 
 .productSliderTitle {
   @include h2;
+
   grid-column: span 2;
 
   @include on-tablet {
@@ -33,59 +38,36 @@
 
 .productSliderWrapper {
   position: relative;
-
-  // Gradient fade для scroll hint (mobile only)
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 80px;
-    background: linear-gradient(to left,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(255, 255, 255, 0.7) 30%,
-        rgba(255, 255, 255, 0) 100%);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  @include on-tablet {
-    &::after {
-      display: none;
-    }
-  }
+  overflow: hidden;
+  padding-right: -16px;
 }
 
 .productSliderList {
-  @include page-grid;
+  width: 100%;
+  overflow: hidden !important;
 
-  // Card columns configuration
-  --card-columns: 3; // Mobile: 3/4 (peek effect)
+  // Swiper customization
+  @at-root #{&} .swiper-slide {
+    height: auto;
+    display: flex;
+    align-items: stretch;
+    box-sizing: border-box;
+    width: 212px !important; // Fixed width for cards
 
-  @include on-tablet {
-    --card-columns: 5; // Tablet: 5/12
+    @include on-tablet {
+      width: 237px !important;
+    }
+
+    @include on-desktop {
+      width: 272px !important;
+    }
   }
 
-  @include on-desktop {
-    --card-columns: 6; // Desktop: 6/24
+  @at-root #{&} .swiper-wrapper {
+    align-items: stretch;
   }
 
-  // Horizontal scroll configuration
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-
-  >* {
-    scroll-snap-align: start;
-  }
-
-  // Hide scrollbar
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  // Override any grid styles for Swiper
+  display: block !important;
+  grid-template-columns: none !important;
 }

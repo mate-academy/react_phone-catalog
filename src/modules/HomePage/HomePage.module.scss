@@ -1,0 +1,16 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+      gap: 56px;
+
+    @include on-tablet{
+      gap: 64px;
+    }
+
+    @include on-desktop{
+      gap: 80px;
+    }
+}

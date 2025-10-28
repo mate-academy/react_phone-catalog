@@ -3,6 +3,7 @@
 
 .cart__page {
   @include page-grid;
+
   row-gap: 32px;
 }
 
@@ -12,6 +13,7 @@
 
 .cart {
   grid-column: 1 / -1;
+
   @include on-desktop {
     grid-column: span 16;
   }
@@ -46,6 +48,7 @@
   flex-direction: column;
   gap: 16px;
   justify-content: center;
+  max-height: fit-content;
 
   @include on-desktop {
     grid-column: span 8;
@@ -54,10 +57,40 @@
 
 .cart__checkout-item-count {
   @include body-text;
+
+  text-align: center;
   color: $color-secondary;
+
+  padding-bottom: 8px;
+  border-bottom: 1px solid $color-elements;
 }
 
 .cart__checkout-total-price {
   @include h2;
+
+  text-align: center;
   color: $color-primary;
+}
+
+.cart__empty {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px;
+  min-height: 60vh;
+
+  @include on-desktop {
+    grid-column: span 16;
+    padding: 80px 24px;
+    min-height: 50vh;
+  }
+}
+
+.cart__empty__message {
+  @include h3;
+
+  color: $color-secondary;
+  text-align: center;
+  margin: 0;
 }

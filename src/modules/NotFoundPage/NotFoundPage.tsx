@@ -12,7 +12,10 @@ export const NotFoundPage = () => {
           {t('notFound.pageTitle', '404 - Page not found')}
         </h1>
         <p className={styles['not-found__description']}>
-          {t('notFound.pageDescription', 'The page you are looking for doesn\'t exist or has been moved.')}
+          {t(
+            'notFound.pageDescription',
+            "The page you are looking for doesn't exist or has been moved.",
+          )}
         </p>
         <Link to="/" className={styles['not-found__button']}>
           {t('notFound.backToHome', 'Back to Home')}

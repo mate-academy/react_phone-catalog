@@ -10,8 +10,15 @@
   flex-direction: column;
   gap: 24px;
 
+  &__header {
+    @include h2;
+
+    color: $color-primary;
+  }
+
   &__list {
     @include page-grid;
+
     gap: 32px;
   }
 
@@ -73,11 +80,13 @@
 
   &__item-title {
     @include h4;
+
     color: $color-primary;
   }
 
   &__item-count {
     @include body-text;
+
     color: $color-secondary;
   }
 }

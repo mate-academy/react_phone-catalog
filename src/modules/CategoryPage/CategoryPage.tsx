@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState, useCallback } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getProductsByCategoryWithPagination } from '../../api/products';
+import { getProducts } from '../../api/products';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../shared/components/ProductCard';
+import { ControlsBar } from './components/ControlsBar/ControlsBar';
 import styles from './CategoryPage.module.scss';
-import { Dropdown } from '../shared/components/Dropdown/Dropdown';
-import { Pagination } from '../shared/components/Pagination';
 import { SortBy } from '../../constants/sortOptions';
 import { useSearch } from '../../contexts';
+import { Loader, Pagination } from '../shared';
 
 export const CategoryPage = () => {
   const { category } = useParams();
@@ -16,9 +16,7 @@ export const CategoryPage = () => {
   const { t } = useTranslation();
   const { searchQuery, setShowSearch, setSearchPlaceholder } = useSearch();
   const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Read from URL params or use defaults
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
@@ -49,42 +47,81 @@ export const CategoryPage = () => {
   ];
 
   useEffect(() => {
-    if (category) {
-      setLoading(true);
-      getProductsByCategoryWithPagination(category, currentPage, productsPerPage, sortBy)
-        .then(data => {
-          setProducts(data.products);
-          setTotal(data.total);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+    if (!category) {
+      setProducts([]);
+
+      return;
     }
-  }, [category, currentPage, sortBy, productsPerPage]);
 
-  // Filter products by search query
-  useEffect(() => {
-    if (searchQuery) {
-      const filtered = products.filter(product =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      setFilteredProducts(filtered);
-    } else {
-      setFilteredProducts(products);
+    setIsLoading(true);
+    getProducts()
+      .then(allProducts => {
+        const productsFromCategory = allProducts.filter(
+          product => product.category === category,
+        );
+
+        setProducts(productsFromCategory);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [category]);
+
+  const sortedProducts = useMemo(() => {
+    const sorted = [...products];
+
+    switch (sortBy) {
+      case SortBy.Newest:
+        sorted.sort((a, b) => b.year - a.year);
+        break;
+      case SortBy.Alphabetically:
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case SortBy.Cheapest:
+        sorted.sort((a, b) => a.price - b.price);
+        break;
     }
-  }, [products, searchQuery]);
 
-  const totalPages = Math.ceil(total / productsPerPage);
+    return sorted;
+  }, [products, sortBy]);
 
-  const updateSearchParams = (updates: Record<string, string | number>) => {
-    const newParams = new URLSearchParams(searchParams);
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const hasSearchQuery = normalizedQuery.length > 0;
 
-    Object.entries(updates).forEach(([key, value]) => {
-      newParams.set(key, value.toString());
-    });
+  const filteredProducts = useMemo(() => {
+    if (!hasSearchQuery) {
+      return sortedProducts;
+    }
 
-    setSearchParams(newParams);
-  };
+    return sortedProducts.filter(product =>
+      product.name.toLowerCase().includes(normalizedQuery),
+    );
+  }, [sortedProducts, hasSearchQuery, normalizedQuery]);
+
+  const totalProducts = filteredProducts.length;
+
+  const totalPages = Math.max(1, Math.ceil(totalProducts / productsPerPage));
+
+  const safePage = Math.min(currentPage, totalPages);
+
+  const visibleProducts = useMemo(() => {
+    const start = (safePage - 1) * productsPerPage;
+
+    return filteredProducts.slice(start, start + productsPerPage);
+  }, [filteredProducts, safePage, productsPerPage]);
+
+  const updateSearchParams = useCallback(
+    (updates: Record<string, string | number>) => {
+      const newParams = new URLSearchParams(searchParams);
+
+      Object.entries(updates).forEach(([key, value]) => {
+        newParams.set(key, value.toString());
+      });
+
+      setSearchParams(newParams);
+    },
+    [searchParams, setSearchParams],
+  );
 
   const handlePageChange = (page: number) => {
     updateSearchParams({ page });
@@ -99,59 +136,59 @@ export const CategoryPage = () => {
     updateSearchParams({ perPage: value, page: 1 });
   };
 
+  useEffect(() => {
+    if (currentPage !== safePage) {
+      updateSearchParams({ page: safePage });
+    }
+  }, [currentPage, safePage, updateSearchParams]);
+
   const getCategoryName = () => {
     return category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
   };
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className={styles.categoryPage}>
       <h1 className={styles.categoryTitle}>{getCategoryName()}</h1>
-      <p className={styles.productCount}>{total} {t('category.models')}</p>
 
-      <div className={styles.controls}>
-        <div className={styles.filters}>
-          <Dropdown
-            options={sortOptions}
-            value={sortBy}
-            onChange={handleSortChange}
-            placeholder={t('category.sortBy')}
-            label={t('category.sortBy')}
-            className={styles.sortDropdown}
-          />
-          <Dropdown
-            options={productsPerPageOption}
-            value={productsPerPage}
-            onChange={handlePerPageChange}
-            placeholder={t('category.itemsOnPage')}
-            label={t('category.itemsOnPage')}
-            className={styles.perPageDropdown}
-          />
-        </div>
-      </div>
+      <ControlsBar
+        sortOptions={sortOptions}
+        sortBy={sortBy}
+        onSortChange={handleSortChange}
+        productsPerPageOptions={productsPerPageOption}
+        productsPerPage={productsPerPage}
+        onPerPageChange={handlePerPageChange}
+        totalProducts={totalProducts}
+        loading={isLoading}
+        searchQuery={searchQuery}
+      />
 
-      {loading && <p>{t('common.loading')}</p>}
-
-      {!loading && filteredProducts.length === 0 && searchQuery && (
+      {!isLoading && filteredProducts.length === 0 && searchQuery && (
         <div className={styles.noResults}>
           <p>{t('category.noProductsMatching', { category })}</p>
         </div>
       )}
 
-      {!loading && filteredProducts.length > 0 && (
+      {!isLoading && visibleProducts.length > 0 && (
         <div className={styles.productsList}>
-          {filteredProducts.map(product => (
+          {visibleProducts.map(product => (
             <ProductCard product={product} key={product.id} />
           ))}
         </div>
       )}
 
-      {!loading && filteredProducts.length > 0 && !searchQuery && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
+      {!isLoading && totalPages > 1 && (
+        <div className={styles.pagination}>
+          <Pagination
+            currentPage={safePage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </div>
       )}
     </div>
   );
-}
+};

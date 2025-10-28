@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../../styles/abstracts/variables' as *;
 @use '../../styles/abstracts/mixins' as *;
 
@@ -35,18 +36,21 @@
 
   &__title {
     @include h1;
+
     color: $color-primary;
     margin: 0;
   }
 
   &__description {
     @include body-text;
+
     color: $color-secondary;
     margin: 0;
   }
 
   &__button {
     @include button-text;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -58,7 +62,7 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: darken($color-primary, 10%);
+      background-color: color.adjust($color-primary, $lightness: -10%);
     }
   }
 }

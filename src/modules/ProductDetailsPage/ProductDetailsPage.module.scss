@@ -1,7 +1,19 @@
+@use 'sass:color';
 @use '../../styles/abstracts/variables' as *;
 @use '../../styles/abstracts/mixins' as *;
 
 .product-details {
+
+  &__title {
+    @include h2;
+
+    margin-bottom: 32px;
+    color: $color-primary;
+
+    @include on-desktop {
+      margin-bottom: 40px;
+    }
+  }
 
   &__not-found {
     display: flex;
@@ -38,12 +50,14 @@
 
   &__not-found-title {
     @include h1;
+
     color: $color-primary;
     margin: 0;
   }
 
   &__not-found-button {
     @include button-text;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -56,7 +70,7 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: darken($color-primary, 10%);
+      background-color: color.adjust($color-primary, $lightness: -10%);
     }
   }
 
@@ -77,12 +91,16 @@
   }
 
   &__section-header {
-    grid-column: 1 / -1;
-    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
   }
 
-  &__section-title {
-    @include h2;
+  &__section-options-title {
+    @include small-text;
+
+    color: $color-secondary;
+    margin-bottom: 8px;
   }
 
 
@@ -95,18 +113,28 @@
     grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
+    margin-bottom: 40px;
 
     @include on-tablet {
       grid-column: span 7;
       display: grid;
       grid-template-columns: min-content 1fr;
       gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      gap: 16px;
+      margin-bottom: 80px;
     }
   }
 
   &__main-image {
     width: 100%;
-    max-width: 400px;
+    aspect-ratio: 1 / 1;
     object-fit: contain;
     display: block;
     margin-bottom: 16px;
@@ -128,13 +156,12 @@
 
   &__thumbnails {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     flex-wrap: wrap;
     margin-bottom: 40px;
 
     @include on-tablet {
-      flex-direction: column;
-      flex-wrap: nowrap;
+      flex-flow: column nowrap;
       grid-column: 1;
       grid-row: 1;
     }
@@ -145,10 +172,15 @@
     height: 49px;
     min-width: 39px;
     padding: 0;
-    border: 2px solid $color-elements;
+    border: 1px solid $color-elements;
     background: transparent;
     cursor: pointer;
     transition: border-color 0.3s;
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
 
     &:hover {
       border-color: $color-secondary;
@@ -177,10 +209,21 @@
     grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
+    gap: 24px;
+    margin-bottom: 56px;
 
     @include on-tablet {
       grid-column: span 5;
     }
+
+    @include on-desktop {
+      grid-column: 14 / -5;
+    }
+  }
+
+  &__section {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $color-elements;
   }
 
   &__colors {
@@ -200,25 +243,27 @@
 
   &__subtitle {
     @include small-text;
+
     color: $color-secondary;
   }
 
   &__product-id {
     @include small-text;
+
     color: $color-secondary;
   }
 
   &__color-list {
     display: flex;
-    gap: 12px;
+    gap: 8px;
   }
 
   &__color-button {
     position: relative;
-    width: 39px;
-    height: 39px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    border: 2px solid $color-elements;
+    border: 1px solid $color-elements;
     cursor: pointer;
     transition: border-color 0.2s ease;
 
@@ -229,7 +274,7 @@
     &::before {
       content: "";
       position: absolute;
-      inset: 3px; // робить біле коло всередині з рівним відступом
+      inset: 2px; // робить біле коло всередині з рівним відступом
       border-radius: 50%;
       background-color: #fff;
     }
@@ -251,12 +296,15 @@
   }
 
   &__capacity-button {
+    height: 32px;
+
     @include uppercase;
     @include body-text;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 16px;
+    padding: 8px;
     border: 1px solid $color-elements;
     background-color: #fff;
     cursor: pointer;
@@ -272,6 +320,10 @@
     border-color: $color-primary;
     background-color: $color-primary;
     color: #fff;
+
+       &:hover {
+      color: $color-primary;
+    }
   }
 
   &__color-button--space-gray::after {
@@ -317,27 +369,74 @@
 
   &__capacity-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
   }
 
   &__pricing {
-    padding-top: 32px;
-    margin-bottom: 24px;
+    padding-top: 8px;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__price {
+    @include h2;
+  }
+
+  &__price-old {
+    @include h3;
+
+    text-decoration: line-through;
+    color: $color-secondary;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
   }
 
   &__about {
     grid-column: 1 / -1;
     margin-bottom: 24px;
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
   }
 
   &__specs {
     grid-column: 1 / -1;
     margin-bottom: 64px;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
   }
 
   &__section-title {
-    @include h2;
+    @include h3;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+    margin-bottom: 32px;
+  }
+
+
+  &__about-item {
     margin-bottom: 16px;
+  }
+
+  &__about-subtitle {
+    @include h4;
+
+    margin-bottom: 16px;
+  }
+
+  &__about-text {
+    @include body-text;
+
+    color: $color-secondary;
   }
 
   &__specs-info {
@@ -354,12 +453,14 @@
 
   &__specs-info-label {
     @include body-text;
+
     text-transform: capitalize;
     color: $color-secondary;
   }
 
   &__specs-info-value {
     @include body-text;
+
     color: $color-primary;
     max-width: 70%;
   }

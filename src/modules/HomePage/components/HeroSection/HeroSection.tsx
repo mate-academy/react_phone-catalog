@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from './HeroSection.module.scss';
 import { Icon } from '../../../shared/components/Icon/Icon';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   imageUrls: string[];
@@ -8,16 +9,21 @@ type Props = {
 };
 
 export const HeroSection = ({ imageUrls, delay = 5000 }: Props) => {
-
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const changeSlide = (direction: 'left' | 'right') => {
-    if (direction === 'left') {
-      setActiveIndex((prevIndex) => (prevIndex - 1 + imageUrls.length) % imageUrls.length);
-    } else {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
-    }
-  };
+  const changeSlide = useCallback(
+    (direction: 'left' | 'right') => {
+      if (direction === 'left') {
+        setActiveIndex(
+          prevIndex => (prevIndex - 1 + imageUrls.length) % imageUrls.length,
+        );
+      } else {
+        setActiveIndex(prevIndex => (prevIndex + 1) % imageUrls.length);
+      }
+    },
+    [imageUrls.length],
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,26 +31,29 @@ export const HeroSection = ({ imageUrls, delay = 5000 }: Props) => {
     }, delay);
 
     return () => clearInterval(interval);
-  }, [imageUrls, delay]);
+  }, [changeSlide, delay]);
 
   return (
     <section className={styles.hero}>
-      <h1 className={styles.hero__title}>Welcome to Nice Gadgets store!</h1>
+      <h2 className={styles.hero__title}>{t('home.welcomeTitle')}</h2>
       <div className={`${styles.hero} section--full-width`}>
         <div className={styles.picturesSlider}>
           <div className={styles.picturesSlider__container}>
-            <div className={styles.picturesSlider__button} onClick={() => changeSlide('left')}>
-              <Icon name='arrow-left'/>
+            <div
+              className={styles.picturesSlider__button}
+              onClick={() => changeSlide('left')}
+            >
+              <Icon name="arrow-left" />
             </div>
             <div className={styles.picturesSlider__content}>
               <div className={styles.picturesSlider__aside}>
                 <div>
                   <div>
                     <div className={styles['picturesSlider__aside-title']}>
-                      Now available
+                      {t('home.nowAvailable')}
                     </div>
                     <span className={styles['picturesSlider__aside-title']}>
-                      in our store!
+                      {t('home.inOurStore')}
                       <img
                         src="img/icons/ok-hand.svg"
                         alt="Ok icon"
@@ -53,14 +62,14 @@ export const HeroSection = ({ imageUrls, delay = 5000 }: Props) => {
                     </span>
                   </div>
                   <div className={styles['picturesSlider__aside-description']}>
-                    Be the first!
+                    {t('home.beTheFirst')}
                   </div>
                 </div>
                 <a
                   className={styles['picturesSlider__aside-action']}
                   href="#/phones/apple-iphone-14-128gb-purple"
                 >
-                  Order now
+                  {t('home.orderNow')}
                 </a>
               </div>
               <div className={styles['picturesSlider__container-image']}>
@@ -68,14 +77,17 @@ export const HeroSection = ({ imageUrls, delay = 5000 }: Props) => {
                   <img
                     key={url}
                     src={url}
-                    alt={`Slide ${index + 1}`}
+                    alt={t('home.slideAlt', { number: index + 1 })}
                     className={`${styles.picturesSlider__image} ${index === activeIndex ? styles['picturesSlider__image--active'] : ''}`}
                   />
                 ))}
               </div>
             </div>
-            <div className={styles.picturesSlider__button} onClick={() => changeSlide('left')}>
-              <Icon name='arrow-right'/>
+            <div
+              className={styles.picturesSlider__button}
+              onClick={() => changeSlide('right')}
+            >
+              <Icon name="arrow-right" />
             </div>
           </div>
           <div className={styles.picturesSlider__dots}>

@@ -24,18 +24,19 @@ export const Dropdown = ({
   placeholder = 'Select option',
   disabled = false,
   className,
-  label
+  label,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Знаходимо вибраний елемент
   const selectedOption = options.find(option => option.value === value);
 
-  // Закриття dropdown при кліку поза ним
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -49,7 +50,6 @@ export const Dropdown = ({
     };
   }, [isOpen]);
 
-  // Закриття при натисканні Escape
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -79,13 +79,9 @@ export const Dropdown = ({
 
   return (
     <div className={cn(styles['dropdown-wrapper'], className)}>
-      {label && (
-        <label className={styles['dropdown-label']}>
-          {label}
-        </label>
-      )}
+      {label && <label className={styles['dropdown-label']}>{label}</label>}
       <div
-        className={cn(styles['dropdown'], {
+        className={cn(styles.dropdown, {
           [styles['dropdown--disabled']]: disabled,
           [styles['dropdown--open']]: isOpen,
         })}
@@ -93,7 +89,7 @@ export const Dropdown = ({
       >
         <button
           type="button"
-          className={styles['dropdown__button']}
+          className={styles.dropdown__button}
           onClick={handleToggle}
           disabled={disabled}
           aria-haspopup="listbox"
@@ -102,22 +98,21 @@ export const Dropdown = ({
           <span className={styles['dropdown__button-text']}>
             {selectedOption ? selectedOption.label : placeholder}
           </span>
-          <span className={cn(styles['dropdown__arrow'], {
-            [styles['dropdown__arrow--up']]: isOpen,
-          })}>
+          <span
+            className={cn(styles.dropdown__arrow, {
+              [styles['dropdown__arrow--up']]: isOpen,
+            })}
+          >
             ▼
           </span>
         </button>
 
         {isOpen && (
-          <ul
-            className={styles['dropdown__menu']}
-            role="listbox"
-          >
-            {options.map((option) => (
+          <ul className={styles.dropdown__menu} role="listbox">
+            {options.map(option => (
               <li
                 key={option.value}
-                className={cn(styles['dropdown__item'], {
+                className={cn(styles.dropdown__item, {
                   [styles['dropdown__item--selected']]: option.value === value,
                 })}
                 onClick={() => handleSelect(option.value)}

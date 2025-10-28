@@ -2,6 +2,7 @@
 // MIXINS
 // ============================================
 @use './variables' as *;
+
 // ============================================
 // RESPONSIVE BREAKPOINTS
 // ============================================
@@ -45,11 +46,13 @@
 
   @include on-tablet {
     --columns-count: 12;
+
     column-gap: 16px;
   }
 
   @include on-desktop {
     --columns-count: 24;
+
     column-gap: 16px;
   }
 }

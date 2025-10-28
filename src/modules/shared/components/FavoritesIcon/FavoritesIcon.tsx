@@ -8,11 +8,7 @@ export const FavoritesIcon = () => {
   return (
     <a href="#/favorites" className={styles.favoritesIcon}>
       <span className="icon icon__like" />
-      {count > 0 && (
-        <span className={styles.favoritesIconBadge}>
-          {count}
-        </span>
-      )}
+      {count > 0 && <span className={styles.favoritesIconBadge}>{count}</span>}
     </a>
   );
 };

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-// Типи, які можна безпечно зберігати у localStorage
 type SerializableValue =
   | string
   | number
@@ -12,11 +11,6 @@ type SerializableValue =
 type SerializableObject = { [key: string]: SerializableValue };
 type SerializableArray = SerializableValue[];
 
-/**
- * Кастомний хук для збереження стану у localStorage
- * @param key - ключ збереження у localStorage
- * @param defaultValue - значення за замовчуванням, якщо в localStorage немає запису
- */
 export function useLocalStorage<T extends SerializableValue>(
   key: string,
   defaultValue: T,
@@ -24,13 +18,17 @@ export function useLocalStorage<T extends SerializableValue>(
   const [value, setValue] = useState<T>(() => {
     const savedValue = localStorage.getItem(key);
 
-    if (savedValue === null) return defaultValue;
+    if (savedValue === null) {
+      return defaultValue;
+    }
 
     try {
       return JSON.parse(savedValue);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.warn(`useLocalStorage: invalid JSON for key "${key}"`);
       localStorage.removeItem(key);
+
       return defaultValue;
     }
   });
@@ -40,6 +38,7 @@ export function useLocalStorage<T extends SerializableValue>(
     try {
       localStorage.setItem(key, JSON.stringify(newValue));
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(`useLocalStorage: cannot save key "${key}"`, error);
     }
   };

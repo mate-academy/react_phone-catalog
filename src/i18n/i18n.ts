@@ -26,12 +26,36 @@ const resources = {
         search: 'Search',
         searchPlaceholder: 'Search...',
         noResults: 'No results found',
+        backToTop: 'Back to top',
+        selectLanguage: 'Select language',
+        previous: 'Previous',
+        next: 'Next',
+        page: 'Page {{number}}',
+        nextPage: 'Next page',
+        previousPage: 'Previous page',
+      },
+      // Breadcrumbs
+      breadcrumbs: {
+        navigation: 'Breadcrumb navigation',
+        home: 'Home',
+        phones: 'Phones',
+        tablets: 'Tablets',
+        accessories: 'Accessories',
+        favorites: 'Favorites',
+        cart: 'Cart',
       },
       // Home page
       home: {
         hotPrices: 'Hot prices',
         brandNew: 'Brand new models',
         shopByCategory: 'Shop by category',
+        productCatalog: 'Product Catalog!',
+        welcomeTitle: 'Welcome to Nice Gadgets store!',
+        nowAvailable: 'Now available',
+        inOurStore: 'in our store!',
+        beTheFirst: 'Be the first!',
+        orderNow: 'Order now',
+        slideAlt: 'Slide {{number}}',
       },
       // Category page
       category: {
@@ -78,13 +102,21 @@ const resources = {
         screen: 'Screen',
         capacity: 'Capacity',
         ram: 'RAM',
+        addToFavorites: 'Add to favorites',
+        removeFromFavorites: 'Remove from favorites',
       },
-      // Not Found page
-      notFound: {
-        pageTitle: 'Page not found',
-        pageDescription:
-          "The page you are looking for doesn't exist or has been moved.",
-        backToHome: 'Back to Home',
+      // Shop by category
+      shopByCategory: {
+        title: 'Shop by category',
+        mobilePhones: 'Mobile phones',
+        tablets: 'Tablets',
+        accessories: 'Accessories',
+        models: '{{count}} models',
+      },
+      footer: {
+        rights: 'Rights',
+        contacts: 'Contacts',
+        github: 'GitHub',
       },
     },
   },
@@ -111,12 +143,36 @@ const resources = {
         search: 'Пошук',
         searchPlaceholder: 'Пошук...',
         noResults: 'Результатів не знайдено',
+        backToTop: 'Повернутися наверх',
+        selectLanguage: 'Обрати мову',
+        previous: 'Попередній',
+        next: 'Наступний',
+        page: 'Сторінка {{number}}',
+        nextPage: 'Наступна сторінка',
+        previousPage: 'Попередня сторінка',
+      },
+      // Breadcrumbs
+      breadcrumbs: {
+        navigation: 'Навігація хлібних крихт',
+        home: 'Головна',
+        phones: 'Телефони',
+        tablets: 'Планшети',
+        accessories: 'Аксесуари',
+        favorites: 'Обране',
+        cart: 'Кошик',
       },
       // Home page
       home: {
         hotPrices: 'Гарячі ціни',
         brandNew: 'Нові моделі',
         shopByCategory: 'Покупки за категоріями',
+        productCatalog: 'Каталог товарів',
+        welcomeTitle: 'Ласкаво просимо до Nice Gadgets!',
+        nowAvailable: 'Тепер доступно',
+        inOurStore: 'в нашому магазині!',
+        beTheFirst: 'Будьте першими!',
+        orderNow: 'Замовити зараз',
+        slideAlt: 'Слайд {{number}}',
       },
       // Category page
       category: {
@@ -164,13 +220,21 @@ const resources = {
         screen: 'Екран',
         capacity: 'Обсяг',
         ram: "Оперативна пам'ять",
+        addToFavorites: 'Додати до обраного',
+        removeFromFavorites: 'Видалити з обраного',
       },
-      // Not Found page
-      notFound: {
-        pageTitle: 'Сторінку не знайдено',
-        pageDescription:
-          'Сторінка, яку ви шукаєте, не існує або була переміщена.',
-        backToHome: 'Повернутися на головну',
+      // Shop by category
+      shopByCategory: {
+        title: 'Покупки за категоріями',
+        mobilePhones: 'Мобільні телефони',
+        tablets: 'Планшети',
+        accessories: 'Аксесуари',
+        models: '{{count}} моделей',
+      },
+      footer: {
+        rights: 'Права',
+        contacts: 'Контакти',
+        github: 'GitHub',
       },
     },
   },

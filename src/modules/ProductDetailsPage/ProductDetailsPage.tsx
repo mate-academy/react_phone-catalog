@@ -1,11 +1,16 @@
-import React from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
-import cn from "classnames";
-import { getProductByIdFromCategory, getProductById, getSuggestedProducts } from "../../api/products";
-import { ProductDetails } from "../../types/ProductDetails";
-import { Product } from "../../types/Product";
-import { Button, ProductSlider, Loader } from "../shared";
-import { Icon } from "../shared/components/Icon/Icon";
+import React from 'react';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import cn from 'classnames';
+import {
+  getProductByIdFromCategory,
+  getProductById,
+  getSuggestedProducts,
+  getProductCodeById,
+} from '../../api/products';
+import { ProductDetails } from '../../types/ProductDetails';
+import { Product } from '../../types/Product';
+import { Button, ProductSlider, Loader } from '../shared';
+import { Icon } from '../shared/components/Icon/Icon';
 import { useCart, useFavorites } from '../../contexts';
 import { useTranslation } from 'react-i18next';
 import styles from './ProductDetailsPage.module.scss';
@@ -31,6 +36,15 @@ const getProductSpecs = (product: ProductDetails) => {
   return specs;
 };
 
+const getShortSpec = (product: ProductDetails) => {
+  return {
+    Screen: product.screen,
+    Resolution: product.resolution,
+    Processor: product.processor,
+    RAM: product.ram,
+  };
+};
+
 // Helper function to convert ProductDetails to Product type
 const convertToProduct = (productDetails: ProductDetails): Product => ({
   id: 0, // Not used anymore, itemId is the key
@@ -49,9 +63,11 @@ const convertToProduct = (productDetails: ProductDetails): Product => ({
 
 export const ProductDetailsPage: React.FC = () => {
   // Router hooks
-  const navigate = useNavigate();
   const { product } = useParams();
-  const { state } = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Translation hook
   const { t } = useTranslation();
 
   // Context hooks
@@ -59,10 +75,14 @@ export const ProductDetailsPage: React.FC = () => {
   const { toggleFavorite, isFavorite } = useFavorites();
 
   // State
-  const [productDetails, setProductDetails] = React.useState<ProductDetails | null>(null);
-  const [suggestedProducts, setSuggestedProducts] = React.useState<Product[]>([]);
+  const [productDetails, setProductDetails] =
+    React.useState<ProductDetails | null>(null);
+  const [suggestedProducts, setSuggestedProducts] = React.useState<Product[]>(
+    [],
+  );
   const [selectedImage, setSelectedImage] = React.useState<string>('');
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
+  const [productIdDisplay, setProductIdDisplay] = React.useState<string>('');
 
   // Derived state
   const isProductInCart = isInCart(productDetails?.id || '');
@@ -72,14 +92,18 @@ export const ProductDetailsPage: React.FC = () => {
   React.useEffect(() => {
     if (!product) {
       setIsLoading(false);
+
       return;
     }
 
     setIsLoading(true);
 
+    // Decode URL parameter and normalize spaces to dashes
+    const decodedProductId = decodeURIComponent(product).replace(/\s+/g, '-');
+
     // If we have category from state, use it for faster lookup
-    if (state?.category) {
-      getProductByIdFromCategory(state.category, product)
+    if (location.state?.category) {
+      getProductByIdFromCategory(location.state.category, decodedProductId)
         .then(productData => {
           setProductDetails(productData || null);
           if (productData) {
@@ -91,7 +115,7 @@ export const ProductDetailsPage: React.FC = () => {
         });
     } else {
       // Otherwise, search in all categories
-      getProductById(product)
+      getProductById(decodedProductId)
         .then(productData => {
           setProductDetails(productData || null);
           if (productData) {
@@ -102,38 +126,66 @@ export const ProductDetailsPage: React.FC = () => {
           setIsLoading(false);
         });
     }
-  }, [product, state?.category]);
+  }, [product, location.state?.category]);
 
   React.useEffect(() => {
     getSuggestedProducts().then(setSuggestedProducts);
   }, []);
 
+  // Load product ID display when productDetails changes
+  React.useEffect(() => {
+    if (productDetails) {
+      getProductCodeById(productDetails.id).then(code => {
+        setProductIdDisplay(code || productDetails.id);
+      });
+    }
+  }, [productDetails]);
+
+  // Helper function to normalize color/capacity for URL
+  const normalizeForUrl = (value: string): string => {
+    return value.toLowerCase().replace(/\s+/g, '-');
+  };
+
   // Navigation handlers
   const handleColorChange = (newColor: string) => {
-    if (!productDetails) return;
+    if (!productDetails) {
+      return;
+    }
 
-    const newProductId = `${productDetails.namespaceId}-${productDetails.capacity.toLowerCase()}-${newColor.toLowerCase()}`;
+    const normalizedCapacity = normalizeForUrl(productDetails.capacity);
+    const normalizedColor = normalizeForUrl(newColor);
+    const newProductId = `${productDetails.namespaceId}-${normalizedCapacity}-${normalizedColor}`;
 
-    navigate(`/product/${newProductId}`, {
-      state: { category: state?.category },
-      replace: true
+    const categoryForPath = location.state?.category || productDetails.category;
+
+    navigate(`/${categoryForPath}/${newProductId}`, {
+      state: { category: categoryForPath },
+      replace: true,
     });
   };
 
   const handleCapacityChange = (newCapacity: string) => {
-    if (!productDetails) return;
+    if (!productDetails) {
+      return;
+    }
 
-    const newProductId = `${productDetails.namespaceId}-${newCapacity.toLowerCase()}-${productDetails.color.toLowerCase()}`;
+    const normalizedCapacity = normalizeForUrl(newCapacity);
+    const normalizedColor = normalizeForUrl(productDetails.color);
+    const newProductId = `${productDetails.namespaceId}-${normalizedCapacity}-${normalizedColor}`;
 
-    navigate(`/product/${newProductId}`, {
-      state: { category: state?.category },
-      replace: true
+    const categoryForPath = location.state?.category || productDetails.category;
+
+    navigate(`/${categoryForPath}/${newProductId}`, {
+      state: { category: categoryForPath },
+      replace: true,
     });
   };
 
   // Cart and favorites handlers
   const handleCartClick = () => {
-    if (!productDetails) return;
+    if (!productDetails) {
+      return;
+    }
 
     if (isProductInCart) {
       removeFromCart(productDetails.id);
@@ -143,7 +195,9 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   const handleFavoriteClick = () => {
-    if (!productDetails) return;
+    if (!productDetails) {
+      return;
+    }
 
     toggleFavorite(convertToProduct(productDetails));
   };
@@ -183,13 +237,15 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className={styles['product-details']}>
       <div className={styles['product-details__back']}>
-        <Button variant="icon" onClick={handleBackClick}>
+        <Button noBorder variant="icon" onClick={handleBackClick}>
           <Icon name="arrow-left" />
           <span>Back</span>
         </Button>
       </div>
 
-      <h1 className={styles['product-details__title']}>{productDetails.name}</h1>
+      <h1 className={styles['product-details__title']}>
+        {productDetails.name}
+      </h1>
 
       <div className={styles['product-details__content']}>
         <div className={styles['product-details__gallery']}>
@@ -200,13 +256,16 @@ export const ProductDetailsPage: React.FC = () => {
           />
           <ul className={styles['product-details__thumbnails']}>
             {productDetails.images.map((imgUrl, index) => (
-              <li key={index} className={styles['product-details__thumbnail-item']}>
+              <li
+                key={index}
+                className={styles['product-details__thumbnail-item']}
+              >
                 <button
                   type="button"
-                  className={cn(
-                    styles['product-details__thumbnail-button'],
-                    { [styles['product-details__thumbnail-button--active']]: selectedImage === imgUrl }
-                  )}
+                  className={cn(styles['product-details__thumbnail-button'], {
+                    [styles['product-details__thumbnail-button--active']]:
+                      selectedImage === imgUrl,
+                  })}
                   onClick={() => handleImageSelect(imgUrl)}
                 >
                   <img
@@ -223,8 +282,12 @@ export const ProductDetailsPage: React.FC = () => {
         <div className={styles['product-details__info']}>
           <div className={styles['product-details__section']}>
             <div className={styles['product-details__section-header']}>
-              <h3 className={styles['product-details__section-title']}>Available colors</h3>
-              <p className={styles['product-details__product-id']}>ID: {productDetails.id}</p>
+              <h3 className={styles['product-details__section-options-title']}>
+                Available colors
+              </h3>
+              <p className={styles['product-details__product-id']}>
+                ID: {productIdDisplay}
+              </p>
             </div>
             <ul className={styles['product-details__color-list']}>
               {productDetails.colorsAvailable.map((color, index) => (
@@ -238,8 +301,13 @@ export const ProductDetailsPage: React.FC = () => {
                     onClick={() => handleColorChange(color)}
                     className={cn(
                       styles['product-details__color-button'],
-                      styles[`product-details__color-button--${color.toLowerCase()}`],
-                      { [styles['product-details__color-button--active']]: productDetails.color === color }
+                      styles[
+                        `product-details__color-button--${color.toLowerCase()}`
+                      ],
+                      {
+                        [styles['product-details__color-button--active']]:
+                          productDetails.color === color,
+                      },
                     )}
                     aria-label={`Select ${color} color`}
                   />
@@ -249,16 +317,21 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
 
           <div className={styles['product-details__section']}>
-            <h3 className={styles['product-details__section-title']}>Select capacity</h3>
+            <h3 className={styles['product-details__section-options-title']}>
+              Select capacity
+            </h3>
             <ul className={styles['product-details__capacity-list']}>
               {productDetails.capacityAvailable.map((capacity, index) => (
-                <li key={index} className={styles['product-details__capacity-item']}>
+                <li
+                  key={index}
+                  className={styles['product-details__capacity-item']}
+                >
                   <button
                     type="button"
-                    className={cn(
-                      styles['product-details__capacity-button'],
-                      { [styles['product-details__capacity-button--active']]: productDetails.capacity === capacity }
-                    )}
+                    className={cn(styles['product-details__capacity-button'], {
+                      [styles['product-details__capacity-button--active']]:
+                        productDetails.capacity === capacity,
+                    })}
                     onClick={() => handleCapacityChange(capacity)}
                     aria-label={`Select ${capacity} capacity`}
                   >
@@ -270,17 +343,46 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
 
           <div className={styles['product-details__pricing']}>
-            <p className={styles['product-details__price']}>${productDetails.priceRegular}</p>
+            <p className={styles['product-details__price']}>
+              ${productDetails.priceRegular}
+            </p>
             {productDetails.priceDiscount && (
-              <p className={styles['product-details__price-old']}>${productDetails.priceDiscount}</p>
+              <p className={styles['product-details__price-old']}>
+                ${productDetails.priceDiscount}
+              </p>
             )}
           </div>
 
           <div className={styles['product-details__actions']}>
-            <Button onClick={handleCartClick}>{isProductInCart ? 'Remove from Cart' : 'Add to Cart'}</Button>
-            <Button onClick={handleFavoriteClick} variant="icon">
-              <Icon name='like' color={isProductFavorite ? 'red' : ''} />
+            <Button fullWidth size="lg" onClick={handleCartClick}>
+              {isProductInCart
+                ? t('product.removeFromCart')
+                : t('product.addToCart')}
             </Button>
+            <Button size="lg" onClick={handleFavoriteClick} variant="icon">
+              <Icon name="like" color={isProductFavorite ? 'red' : ''} />
+            </Button>
+          </div>
+          <div className="short-spec">
+            <dl className={styles['product-details__specs-info']}>
+              {Object.entries(getShortSpec(productDetails)).map(
+                ([specName, specValue]) => (
+                  <div
+                    key={specName}
+                    className={styles['product-details__specs-info-row']}
+                  >
+                    <dt className={styles['product-details__specs-info-label']}>
+                      {specName}
+                    </dt>
+                    <dd className={styles['product-details__specs-info-value']}>
+                      {Array.isArray(specValue)
+                        ? specValue.join(', ')
+                        : specValue}
+                    </dd>
+                  </div>
+                ),
+              )}
+            </dl>
           </div>
         </div>
 
@@ -288,10 +390,20 @@ export const ProductDetailsPage: React.FC = () => {
           <h2 className={styles['product-details__section-title']}>About</h2>
           <div className={styles['product-details__about-content']}>
             {productDetails.description.map(({ title, text }, index) => (
-              <div key={index} className={styles['product-details__about-item']}>
-                <h3 className={styles['product-details__about-subtitle']}>{title}</h3>
+              <div
+                key={index}
+                className={styles['product-details__about-item']}
+              >
+                <h3 className={styles['product-details__about-subtitle']}>
+                  {title}
+                </h3>
                 {text.map((desc, descIndex) => (
-                  <p key={descIndex} className={styles['product-details__about-text']}>{desc}</p>
+                  <p
+                    key={descIndex}
+                    className={styles['product-details__about-text']}
+                  >
+                    {desc}
+                  </p>
                 ))}
               </div>
             ))}
@@ -299,23 +411,36 @@ export const ProductDetailsPage: React.FC = () => {
         </section>
 
         <section className={styles['product-details__specs']}>
-          <h2 className={styles['product-details__section-title']}>Tech specs</h2>
+          <h2 className={styles['product-details__section-title']}>
+            Tech specs
+          </h2>
           <dl className={styles['product-details__specs-info']}>
-
-            {Object.entries(getProductSpecs(productDetails)).map(([specName, specValue]) => (
-              <div key={specName} className={styles['product-details__specs-info-row']}>
-                <dt className={styles['product-details__specs-info-label']}>{specName}</dt>
-                <dd className={styles['product-details__specs-info-value']}>{Array.isArray(specValue) ? specValue.join(', ') : specValue}</dd>
-              </div>
-            ))}
-
+            {Object.entries(getProductSpecs(productDetails)).map(
+              ([specName, specValue]) => (
+                <div
+                  key={specName}
+                  className={styles['product-details__specs-info-row']}
+                >
+                  <dt className={styles['product-details__specs-info-label']}>
+                    {specName}
+                  </dt>
+                  <dd className={styles['product-details__specs-info-value']}>
+                    {Array.isArray(specValue)
+                      ? specValue.join(', ')
+                      : specValue}
+                  </dd>
+                </div>
+              ),
+            )}
           </dl>
         </section>
-
       </div>
 
       {suggestedProducts.length > 0 && (
-        <ProductSlider title="You may also like" products={suggestedProducts} />
+        <ProductSlider
+          title={t('product.youMayLike')}
+          products={suggestedProducts}
+        />
       )}
     </div>
   );

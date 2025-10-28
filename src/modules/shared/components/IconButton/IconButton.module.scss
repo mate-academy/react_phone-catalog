@@ -40,9 +40,7 @@
 }
 
 .iconButtonRed {
-  :global(.icon) {
-    background-color: $color-red;
-  }
+  color: $color-red;
 
   &:hover:not(:disabled) {
     border-color: $color-red;
@@ -52,10 +50,6 @@
 .iconButtonDisabled {
   color: $color-icons;
   cursor: not-allowed;
-
-  :global(.icon) {
-    background-color: $color-icons;
-  }
 
   &:hover {
     border-color: $color-elements;

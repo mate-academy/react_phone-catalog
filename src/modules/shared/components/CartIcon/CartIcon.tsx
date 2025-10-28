@@ -8,11 +8,7 @@ export const CartIcon = () => {
   return (
     <a href="#/cart" className={styles.cartIcon}>
       <span className="icon icon__cart" />
-      {count > 0 && (
-        <span className={styles.cartIconBadge}>
-          {count}
-        </span>
-      )}
+      {count > 0 && <span className={styles.cartIconBadge}>{count}</span>}
     </a>
   );
 };

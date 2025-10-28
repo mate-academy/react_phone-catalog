@@ -21,6 +21,10 @@
   gap: 16px;
   flex: 1 1 auto;
   min-width: 0; // Дозволяє стискатися менше контенту
+
+  @include on-tablet {
+    min-width: 65%;
+  }
 }
 
 .cart-item__image {
@@ -37,6 +41,7 @@
 
 .cart-item__title {
   @include body-text;
+
   color: $color-primary;
   word-break: break-word; // Розбиває довгі слова
   overflow-wrap: break-word; // Переносить слова
@@ -53,7 +58,7 @@
   min-width: fit-content; // Гарантує що details займуть мінімум необхідного місця
 
   @include on-tablet {
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 24px;
   }
 }
@@ -69,9 +74,35 @@
   text-align: center;
   font-weight: 600;
   color: $color-primary;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background-color: $color-hover-bg;
+    border-radius: 4px;
+  }
+}
+
+.cart-item__count-input {
+  min-width: 32px;
+  width: 50px;
+  text-align: center;
+  font-weight: 600;
+  color: $color-primary;
+  border: 1px solid $color-elements;
+  padding: 4px 8px;
+  font-family: $font-main;
+  font-size: inherit;
+  background-color: $color-white;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
 }
 
 .cart-item__price {
   @include h3;
+
   color: $color-primary;
 }

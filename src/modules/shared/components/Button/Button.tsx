@@ -2,6 +2,8 @@ import React from 'react';
 import cn from 'classnames';
 import styles from './Button.module.scss';
 import { Icon } from '../Icon/Icon';
+import type { IconName } from '../Icon/Icon';
+import { Badge } from '../Badge/Badge';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'outline' | 'ghost' | 'icon' | 'round';
@@ -9,8 +11,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
   selected?: boolean;
   red?: boolean;
-  iconLeft?: string;
-  iconRight?: string;
+  iconLeft?: IconName;
+  iconRight?: IconName;
   iconBadge?: number | string;
   disabled?: boolean;
   noBorder?: boolean;
@@ -42,14 +44,28 @@ export const Button: React.FC<ButtonProps> = ({
       [styles['button--no-border']]: noBorder,
       [styles['button--icon-only']]: variant === 'icon' && !children,
     },
-    className
+    className,
   );
 
   return (
     <button className={classes} {...props}>
-      {iconLeft && <Icon name={iconLeft} badge={iconBadge} color={red ? 'red' : undefined} />}
+      {iconLeft &&
+        (iconBadge ? (
+          <Badge badgeContent={iconBadge} color="error">
+            <Icon name={iconLeft} color={red ? 'red' : undefined} />
+          </Badge>
+        ) : (
+          <Icon name={iconLeft} color={red ? 'red' : undefined} />
+        ))}
       {children && children}
-      {iconRight && <Icon name={iconRight} />}
+      {iconRight &&
+        (iconBadge ? (
+          <Badge badgeContent={iconBadge} color="error">
+            <Icon name={iconRight} />
+          </Badge>
+        ) : (
+          <Icon name={iconRight} />
+        ))}
     </button>
   );
 };

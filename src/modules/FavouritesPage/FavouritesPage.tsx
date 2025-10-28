@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useFavorites, useSearch } from '../../contexts';
-import { Button } from '../shared';
 import { Icon } from '../shared/components/Icon/Icon';
 import { ProductCard } from '../shared/components/ProductCard';
 import styles from './FavouritesPage.module.scss';
 
 export const FavouritesPage: React.FC = () => {
-  const navigate = useNavigate();
   const { favorites } = useFavorites();
   const { t } = useTranslation();
   const { searchQuery, setShowSearch, setSearchPlaceholder } = useSearch();
   const [filteredFavorites, setFilteredFavorites] = useState(favorites);
-
-  const handleBackClick = () => {
-    navigate(-1);
-  };
 
   // Enable search in header
   useEffect(() => {
@@ -32,8 +25,9 @@ export const FavouritesPage: React.FC = () => {
   useEffect(() => {
     if (searchQuery) {
       const filtered = favorites.filter(product =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()),
       );
+
       setFilteredFavorites(filtered);
     } else {
       setFilteredFavorites(favorites);
@@ -42,14 +36,9 @@ export const FavouritesPage: React.FC = () => {
 
   return (
     <div className={styles['favourites-page']}>
-      <div className={styles['favourites-page__header']}>
-        <Button variant="icon" noBorder onClick={handleBackClick}>
-          <Icon name="arrow-left" />
-          <span>{t('common.back')}</span>
-        </Button>
-      </div>
-
-      <h1 className={styles['favourites-page__title']}>{t('favorites.title')}</h1>
+      <h1 className={styles['favourites-page__title']}>
+        {t('favorites.title')}
+      </h1>
 
       {favorites.length === 0 ? (
         <div className={styles['favourites-page__empty']}>
@@ -66,8 +55,7 @@ export const FavouritesPage: React.FC = () => {
           <p className={styles['favourites-page__count']}>
             {favorites.length === 1
               ? t('favorites.item', { count: favorites.length })
-              : t('favorites.items', { count: favorites.length })
-            }
+              : t('favorites.items', { count: favorites.length })}
           </p>
 
           {filteredFavorites.length === 0 && searchQuery ? (
@@ -76,7 +64,7 @@ export const FavouritesPage: React.FC = () => {
             </div>
           ) : (
             <div className={styles['favourites-page__grid']}>
-              {filteredFavorites.map((product) => (
+              {filteredFavorites.map(product => (
                 <ProductCard key={product.itemId} product={product} />
               ))}
             </div>

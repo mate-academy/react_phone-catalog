@@ -10,14 +10,11 @@
 
 .dropdown-label {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
   color: $color-secondary;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 0.5px;
-
-  @include on-tablet {
-    font-size: 14px;
-  }
+  text-wrap: nowrap;
 }
 
 .dropdown {
@@ -44,10 +41,17 @@
   border: 1px solid $color-elements;
   background-color: $color-white;
   color: $color-primary;
+
   @include button-text;
+
   cursor: pointer;
   transition: all $duration-hover;
   outline: none;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $color-elements;
+  }
 
   &:hover:not(:disabled) {
     border-color: $color-secondary;
@@ -56,11 +60,6 @@
   &:focus:not(:disabled) {
     border-color: $color-primary;
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    background-color: $color-elements;
   }
 
   @include on-tablet {
