@@ -62,7 +62,7 @@
 
   @include on-tablet {
     width: 50%;
-    padding: 48px;
+    padding: 32px;
     background-color: var(--dark-grey);
     border-radius: 5%;
 
@@ -70,13 +70,13 @@
     flex-direction: column;
     gap: 56px;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
   }
 }
 
 .promoTitle {
   display: inline-block;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   line-height: 1.2;
   background: linear-gradient(90deg, var(--purple), var(--pink));
@@ -107,11 +107,17 @@
 }
 
 .promoButton {
-  padding: 16px 48px;
+  height: 56px;
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--white);
   border: 0.5px solid var(--secondary);
   border-radius: 30px;
   background: transparent;
+  white-space: nowrap;
   text-transform: uppercase;
   font-weight: 500;
   cursor: pointer;

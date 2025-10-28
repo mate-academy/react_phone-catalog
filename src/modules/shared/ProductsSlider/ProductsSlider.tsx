@@ -3,7 +3,6 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/parallax';
 import 'swiper/css/navigation';
 import { Product } from '../../../utils/types/Product';
 
@@ -13,16 +12,25 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
+  const uniqueId = title.toLowerCase().replaceAll(' ', '-');
   return (
     <div className={s.productSliderWrapper}>
       <div className={s.topSection}>
         <h3 className={s.title}>{title}</h3>
 
         <div className={s.topButtonsWrapper}>
-          <button type="button" className={s.prev} aria-label="Previous slide">
+          <button
+            type="button"
+            className={`${s.prev} ${uniqueId}-prev`}
+            aria-label="Previous slide"
+          >
             ‹
           </button>
-          <button type="button" className={s.next} aria-label="Next slide">
+          <button
+            type="button"
+            className={`${s.next} ${uniqueId}-next`}
+            aria-label="Next slide"
+          >
             ›
           </button>
         </div>
@@ -33,10 +41,9 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
           modules={[Navigation]}
           spaceBetween={20}
           speed={600}
-          parallax={true}
           navigation={{
-            prevEl: `.${s.prev}`,
-            nextEl: `.${s.next}`,
+            prevEl: `.${uniqueId}-prev`,
+            nextEl: `.${uniqueId}-next`,
           }}
           breakpoints={{
             320: { slidesPerView: 1.5 },

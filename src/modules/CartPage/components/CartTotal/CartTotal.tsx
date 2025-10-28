@@ -2,7 +2,7 @@ import { useCart } from '../../../../context/cart/useCart';
 import s from './CartTotal.module.scss';
 
 export const CartTotal = () => {
-  const { totalPrice, totalCount } = useCart();
+  const { totalPrice, totalCount, clearCart } = useCart();
 
   return (
     <div className={s.totalWrapper}>
@@ -13,7 +13,7 @@ export const CartTotal = () => {
 
       <span className={s.divider}></span>
 
-      <button className={s.checkoutButton} type="button">
+      <button className={s.checkoutButton} onClick={() => clearCart()} type="button">
         Checkout
       </button>
     </div>
