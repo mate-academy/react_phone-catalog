@@ -22,7 +22,7 @@ export const Footer = () => {
             styles['footer__section--logo'],
           )}
         >
-          <img src="img/logo.svg" alt="logo" className={styles.footer__logo} />
+          <img src="/react_phone-catalog/img/logo.svg" alt="logo" className={styles.footer__logo} />
         </div>
 
         <nav

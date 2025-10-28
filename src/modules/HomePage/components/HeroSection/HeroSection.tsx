@@ -55,7 +55,7 @@ export const HeroSection = ({ imageUrls, delay = 5000 }: Props) => {
                     <span className={styles['picturesSlider__aside-title']}>
                       {t('home.inOurStore')}
                       <img
-                        src="img/icons/ok-hand.svg"
+                        src="/react_phone-catalog/img/icons/ok-hand.svg"
                         alt="Ok icon"
                         className={styles['picturesSlider__aside-ok']}
                       />

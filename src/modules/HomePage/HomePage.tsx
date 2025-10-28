@@ -9,9 +9,9 @@ import slyles from './HomePage.module.scss';
 export const HomePage = () => {
   const { t } = useTranslation();
   const imageUrls = [
-    'img/phones/apple-iphone-14/midnight/00.webp',
-    'img/phones/apple-iphone-14/purple/00.webp',
-    'img/phones/apple-iphone-14/yellow/00.webp',
+    '/react_phone-catalog/img/phones/apple-iphone-14/midnight/00.webp',
+    '/react_phone-catalog/img/phones/apple-iphone-14/purple/00.webp',
+    '/react_phone-catalog/img/phones/apple-iphone-14/yellow/00.webp',
   ];
 
   const [newestProducts, setNewestProducts] = useState<Product[]>([]);

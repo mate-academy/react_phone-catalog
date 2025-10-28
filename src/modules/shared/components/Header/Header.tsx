@@ -58,7 +58,7 @@ export const Header = () => {
         <div className={styles.header__logo}>
           <Link to="/" className={styles['header__logo-link']}>
             <img
-              src="img/logo.svg"
+              src="/react_phone-catalog/img/logo.svg"
               alt="Nice Gadgets"
               className={styles['header__logo-image']}
             />

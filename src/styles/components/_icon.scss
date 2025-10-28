@@ -14,49 +14,49 @@
   background-position: center;
 
   &__arrow-left {
-    --icon-url: url('img/icons/arrow-left.svg');
+    --icon-url: url('/react_phone-catalog/img/icons/arrow-left.svg');
 
     background-image: var(--icon-url);
   }
 
   &__arrow-right {
-    --icon-url: url('img/icons/arrow-right.svg');
+    --icon-url: url('/react_phone-catalog/img/icons/arrow-right.svg');
 
     background-image: var(--icon-url);
   }
 
   &__arrow-up {
-    --icon-url: url('img/icons/arrow-up.svg');
+    --icon-url: url('/react_phone-catalog/img/icons/arrow-up.svg');
 
     background-image: var(--icon-url);
   }
 
   &__close {
-    --icon-url: url('img/icons/close.svg');
+    --icon-url: url('/react_phone-catalog/img/icons/close.svg');
 
     background-image: var(--icon-url);
   }
 
   &__search {
-    --icon-url: url('img/icons/search.svg');
+    --icon-url: url('/react_phone-catalog/img/icons/search.svg');
 
     background-image: var(--icon-url);
   }
 
   &__like {
-    --icon-url: url('img/icons/like.svg');
+    --icon-url: url('/react_phone-catalog/img/icons/like.svg');
 
     background-image: var(--icon-url);
   }
 
   &__menu {
-    --icon-url: url('img/icons/menu.svg');
+    --icon-url: url('/react_phone-catalog/img/icons/menu.svg');
 
     background-image: var(--icon-url);
   }
 
   &__cart {
-    --icon-url: url('img/icons/cart.svg');
+    --icon-url: url('/react_phone-catalog/img/icons/cart.svg');
 
     background-image: var(--icon-url);
   }
