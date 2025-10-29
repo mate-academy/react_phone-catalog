@@ -1,84 +1,321 @@
 .details {
-  max-width: 1280px;
-  margin: 80px auto;
-  padding: 0 16px;
+  padding: 20px;
+  background-color: var(--background-primary);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  h1 {
-    font-size: 32px;
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #d3d3d3;
+}
+
+.content {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.topPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.thumbnailGallery {
+  flex: 0 0 80px;
+
+  .thumbnail {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: 2px solid #333;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:hover,
+    &.selected {
+      border-color: var(--border-color);
+    }
+  }
+}
+
+.mainImageContainer {
+  flex: 2;
+  min-width: 200px;
+
+  .mainImage {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+  }
+}
+
+.colorOptions {
+  flex: 0 0 160px;
+  min-width: 130px;
+
+  h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+
+  .colorCircles {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+
+    .colorCircle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+      cursor: pointer;
+      transition: border-color 0.3s;
+
+      &:hover,
+      &.selected {
+        border-color: var(--accent-primary);
+      }
+    }
+  }
+
+  .divider {
+    height: 1px;
+    width: 320px;
+    background-color: var(--background-primary);
+    margin: 15px 5px;
+  }
+
+  .capacityOptions {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    @media (max-width: 699px) {
+      flex-direction: row;
+      flex-flow: wrap;
+    }
+
+
+    .capacityButton {
+      padding: 8px;
+      background-color: var(--button-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s;
+
+      &:hover,
+      &.selected {
+        background-color: var(--accent-hover);
+        border-color: var(--border-color);
+      }
+    }
+  }
+}
+
+.info {
+  flex: 2;
+  min-width: 250px;
+  position: relative;
+}
+
+.productId {
+  position: absolute;
+  top: -80px;
+  right: 0;
+  font-size: 14px;
+  color: var(--text-color);
+  border-radius: 4px;
+}
+
+.price {
+  font-size: 24px;
+  margin-bottom: 15px;
+
+  .discount {
+    color: var(--text-secondary);
+    font-weight: bold;
+  }
+
+  .regular {
+    color: var(--text-color);
+    text-decoration: line-through;
+    margin-left: 10px;
+  }
+}
+
+.about {
+  font-weight: 600;
+  size: 22px;
+  margin-bottom: 15px;
+  color: var(--text-secondary);
+}
+
+.description {
+  margin-bottom: 20px;
+
+  .descTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+}
+
+.specsTitle {
+  font-weight: 600;
+  size: 22px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.specs {
+  margin-bottom: 20px;
+
+  p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: var(--text-color);
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &.primary {
+      background-color: var(--button-bg);
+      color: var(--text-color);
+      border: none;
+    }
+
+    &.secondary {
+      background-color: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--accent-primary);
+
+      &.favoriteActive {
+        color: var(--danger);
+        border-color: var(--danger);
+      }
+    }
+  }
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 20px;
+
+  .errorImage {
+    max-width: 200px;
+    margin-bottom: 10px;
+  }
+}
+
+.recommendations {
+  margin-top: 40px;
+
+  .recommendationTitle {
+    font-size: 24px;
     font-weight: 700;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    color: #d3d3d3;
   }
+}
 
+@media (max-width: 699px) {
   .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-
-    @media (max-width: 767px) {
-      grid-template-columns: 1fr;
-    }
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .images {
-    img {
+  .thumbnailGallery,
+  .colorOptions,
+  .mainImageContainer,
+  .info {
+    flex: 100%;
+    min-width: 100%;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+
+  .actions {
+    flex-direction: row;
+    gap: 10px;
+
+    button {
       width: 100%;
-      height: 300px;
-      object-fit: contain;
-      margin-bottom: 16px;
     }
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1199px) {
+  .content {
+    gap: 20px;
+  }
+
+  .thumbnailGallery {
+    flex: 0 0 60px;
+  }
+
+  .colorOptions {
+    flex: 0 0 70px;
+  }
+
+  .mainImageContainer {
+    flex: 1.5;
   }
 
   .info {
-    p {
-      font-size: 16px;
-      color: var(--text-color);
-      margin-bottom: 8px;
-    }
-
-    .originalPrice {
-      text-decoration: line-through;
-      color: var(--text-secondary);
-    }
-
-    select {
-      background: var(--secondary-color);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 14px;
-      color: var(--text-color);
-      margin-bottom: 16px;
-      width: 100%;
-    }
-
-    .description {
-      margin-bottom: 16px;
-
-      h3 {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-
-      p {
-        margin: 0 0 8px;
-      }
-    }
-
-    .specs {
-      margin-bottom: 24px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 16px;
-    }
+    flex: 2;
   }
 
-  .loading,
-  .error {
-    text-align: center;
-    padding: 32px;
-    font-size: 18px;
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content {
+    gap: 30px;
+  }
+
+  .thumbnailGallery {
+    flex: 0 0 80px;
+  }
+
+  .colorOptions {
+    flex: 0 0 80px;
   }
 }

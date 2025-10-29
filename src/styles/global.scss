@@ -1,26 +1,44 @@
 :root {
-  --background-primary: #1f2526;
+  --background-primary: #0F1121;
   --background-secondary: #2d3334;
-  --text-color: #ffffff;
+  --text-color: #fff;
   --text-secondary: #a9a9a9;
   --border-color: #4a4f50;
   --secondary-color: #2d3334;
+  --accent-primary: #a100ff;
+  --accent-hover: #c14fff;
+  --accent-active: #8a00cc;
+  --danger: #f44;
+  --success: #0c8;
+  --card-bg: #1a1c2e;
+  --button-bg: #905BFF;
+  --button-hover: #A378FF;
+  --button-active: #323542;
+  --active-link: #139261;
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: Mont, sans-serif;
   background-color: var(--background-primary);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
 
   &.light {
-    --background-primary: #ffffff;
+    --background-primary: #fff;
     --background-secondary: #f5f5f5;
     --text-color: #1f2526;
     --text-secondary: #666;
     --border-color: #ccc;
     --secondary-color: #f5f5f5;
+    --accent-primary: #a100ff;
+    --accent-hover: #b84fff;
+    --accent-active: #8a00cc;
+    --danger: #f33;
+    --success: #0a7;
+    --card-bg: #fff;
+    --button-bg: #9eb8ac;
+    --button-hover: #e0e0e0;
   }
 }
 

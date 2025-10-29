@@ -1,26 +1,24 @@
 .button {
   border: none;
-  border-radius: 8px;
   padding: 8px 16px;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &.primary {
-    background-color: #6b48ff;
-    color: white;
+    background-color: var(--button-bg);
+    color: var(--text-color);
 
     &:hover {
-      background-color: #5a3edd;
+      background-color: var(--button-hover);
     }
   }
 
   &.secondary {
     background-color: transparent;
-    border: 1px solid #6b48ff;
-    color: #6b48ff;
+    color: var(--button-bg);
 
     &:hover {
-      background-color: #f0eaff;
+      background-color: var(--button-hover);
     }
   }
 

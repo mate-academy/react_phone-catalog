@@ -1,15 +1,18 @@
 .list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
 
-  @media (max-width: 767px) {
-    grid-template-columns: 1fr;
-  }
+.sliderList {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .empty {
   text-align: center;
+  color: #666;
   padding: 20px;
-  color: var(--text-secondary);
 }

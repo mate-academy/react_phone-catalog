@@ -8,7 +8,7 @@ export const NotFound: React.FC = () => {
 
   return (
     <div className={styles.notFound}>
-      <h1>404</h1>
+      <img src="/img/page-not-found.png" alt={t('Page Not Found')} />
       <p>{t('pageNotFound')}</p>
       <Link to="/" className={styles.back}>
         {t('backToHome')}

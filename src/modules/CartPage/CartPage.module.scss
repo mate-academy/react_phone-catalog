@@ -46,3 +46,16 @@
     margin-top: 24px;
   }
 }
+
+.emptyCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  object-fit: contain;
+}
+
+.emptyCart img {
+ max-width: 100%;
+ height: auto;
+}

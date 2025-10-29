@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/indent */
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './ProductCard.module.scss';
@@ -16,8 +17,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { addToCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorite = favorites.some(fav => fav.id === product.id);
+  const [imageError, setImageError] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
 
-  const imageSrc = product.images?.[0] || '/images/placeholder.jpg';
+  const imageSrc =
+    imageError || !product.images?.[0]
+      ? '/img/page-not-found.png'
+      : `/${product.images[0]}`;
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setIsAdded(true);
+  };
 
   return (
     <div className={styles.card}>
@@ -26,11 +37,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           src={imageSrc}
           alt={product.name || 'Product image'}
           className={styles.image}
-          onError={e => {
-            const imgElement = e.currentTarget;
-
-            imgElement.src = '/images/placeholder.jpg';
-          }}
+          onError={() => setImageError(true)}
+          loading="lazy"
         />
       </Link>
       <h3>
@@ -47,18 +55,28 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             <span className={styles.full}>${product.priceRegular}</span>
           )}
       </div>
+      <div className={styles.divider}></div>
+      <div className={styles.specs}>
+        <p>Screen: {product.screen || 'N/A'}</p>
+        <p>Capacity: {product.capacity || 'N/A'}</p>
+        <p>RAM: {product.ram || 'N/A'}</p>
+      </div>
       <div className={styles.actions}>
-        <Button variant="primary" size="md" onClick={() => addToCart(product)}>
-          {t('addToCart')}
+        <Button
+          variant="primary"
+          size="md"
+          onClick={() => handleAddToCart()}
+          disabled={isAdded}
+        >
+          {isAdded ? t('addedToCart') : t('addToCart')}
         </Button>
         <Button
           variant="secondary"
           size="md"
           onClick={() => toggleFavorite(product)}
-          className={`${styles.favorite} ${isFavorite ? styles.active : ''}`}
-          aria-label={isFavorite ? t('removeFromFavorite') : t('addFavorite')}
+          className={isFavorite ? styles.favoriteActive : ''}
         >
-          ❤️
+          {isFavorite ? '❤️' : '🤍'}
         </Button>
       </div>
     </div>

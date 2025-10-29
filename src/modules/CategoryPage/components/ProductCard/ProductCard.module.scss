@@ -1,14 +1,24 @@
 .card {
+  background-color: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
   text-align: center;
   transition: transform 0.2s;
-  width: 250px; // Фіксована ширина
-  height: 350px; // Фіксована висота
+  width: 272px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+
+  @media (max-width: 1199px) and (min-width: 700px) {
+    width: 237px;
+  }
+
+  @media (max-width: 699px) and (min-width: 320px) {
+    width: 212px;
+  }
 
   &:hover {
     transform: translateY(-5px);
@@ -17,23 +27,34 @@
 
 .image {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
+  height: 120px;
+  object-fit: contain;
   border-radius: 4px;
 }
 
 .title {
   font-size: 1.1rem;
-  margin: 10px 0;
+  margin: 8px 0;
+  size: 14px;
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--text-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (max-width: 699px) {
+    margin: 2px;
+  }
 }
 
 .price {
+  margin: 8px 0;
+
   .current {
     color: var(--text-success);
     font-weight: bold;
   }
+
   .full {
     text-decoration: line-through;
     color: var(--text-secondary);
@@ -41,16 +62,64 @@
   }
 }
 
+.divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 8px 0;
+}
+
+.specs {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+
+  p {
+    margin: 4px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 .actions {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 5px;
+  margin-top: 5px;
+  padding: 0;
+
+  button {
+    flex: 1;
+    min-width: 0;
+    padding: 6px;
+    font-size: 0.9rem;
+
+    &.primary {
+      background-color: var(--primary-color);
+      color: var(--text-primary);
+      border: none;
+    }
+
+    &.secondary {
+      background: none;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color,);
+      padding: 4px;
+      width: 40px;
+
+      &.active {
+        color: var(--danger);
+        border-color: var(--danger);
+      }
+    }
+  }
 
   .favorite {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    padding: 0;
+    width: 40px;
 
     &.active {
       color: var(--text-danger);

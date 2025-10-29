@@ -5,15 +5,19 @@ import styles from './ProductsList.module.scss';
 
 interface Props {
   products: Product[];
+  isSlider?: boolean;
 }
 
-export const ProductsList: React.FC<Props> = ({ products }) => {
+export const ProductsList: React.FC<Props> = ({
+  products,
+  isSlider = false,
+}) => {
   if (!products.length) {
     return <div className={styles.empty}>No products available</div>;
   }
 
   return (
-    <div className={styles.list}>
+    <div className={`${styles.list} ${isSlider ? styles.sliderList : ''}`}>
       {products.map(product => (
         <ProductCard key={product.id} product={product} />
       ))}

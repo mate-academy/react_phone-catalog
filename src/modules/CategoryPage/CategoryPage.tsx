@@ -7,6 +7,7 @@ import { ProductsList } from './components/ProductsList/ProductsList';
 import { useDebounce } from '../shared/hooks/useDebounce';
 import { Input } from '../../components/UI/Input/Input';
 import { Select } from '../../components/UI/Select/Select';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export const CategoryPage: React.FC = () => {
   const { t } = useTranslation();
@@ -16,7 +17,9 @@ export const CategoryPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('default');
-  const debouncedSearch = useDebounce(search, 300);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const debouncedSearch = useDebounce(search, 2000);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -61,6 +64,7 @@ export const CategoryPage: React.FC = () => {
         }
 
         setProducts(filtered);
+        setCurrentPage(1);
       } catch (err) {
         setError(
           t('errorLoading') + (err instanceof Error ? `${err.message}` : ''),
@@ -73,16 +77,42 @@ export const CategoryPage: React.FC = () => {
     fetchProducts();
   }, [type, debouncedSearch, sort, t]);
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleItemsPerPageChange = (
+    e: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    const newItemsPerPage = parseInt(e.target.value, 10);
+
+    setItemsPerPage(newItemsPerPage);
+    setCurrentPage(1);
+  };
+
   if (loading) {
     return <div className={styles.loading}>Loading...</div>;
   }
 
   if (error) {
-    return <div className={styles.error}>{error}</div>;
+    <div className={styles.error}>
+      <img
+        src="/img/product-not-found.png"
+        alt={t('productNotFound')}
+        className={styles.errorImage}
+      />
+      <p>{error}</p>
+    </div>;
   }
 
   return (
     <div className={styles.category}>
+      <Breadcrumbs />
       <div className={styles.filters}>
         <Input
           placeholder={t('search')}
@@ -99,12 +129,41 @@ export const CategoryPage: React.FC = () => {
           <option value={'priceLowToHigh'}>{t('priceLowToHigh')}</option>
           <option value={'priceHighToLow'}>{t('priceHighToLow')}</option>
         </Select>
+        <p className={styles.pageInfo}>{t('itemsOnPage')}</p>
+        <Select
+          value={itemsPerPage}
+          onChange={handleItemsPerPageChange}
+          className={styles.perPageSelect}
+        >
+          <option value={4}>4</option>
+          <option value={8}>8</option>
+          <option value={16}>16</option>
+        </Select>
       </div>
       <div
         className={styles.productsContainer}
         style={{ minHeight: loading ? '200px' : 'auto' }}
       >
-        {!loading && !error && <ProductsList products={products} />}
+        {!loading && !error && <ProductsList products={currentItems} />}
+      </div>
+      <div className={styles.pagination}>
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className={styles.paginationButton}
+        >
+          {t('previous')}
+        </button>
+        <span className={styles.pageInfo}>
+          {t('page')} {currentPage} {t('of')} {totalPages}
+        </span>
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className={styles.paginationButton}
+        >
+          {t('next')}
+        </button>
       </div>
     </div>
   );

@@ -1,12 +1,11 @@
 .input {
   padding: 8px 12px;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
   background: var(--background-secondary);
   color: var(--text-color);
 
   &:focus {
     outline: none;
-    border-color: #6b48ff;
+    border-color:  var(--button-bg);
   }
 }
