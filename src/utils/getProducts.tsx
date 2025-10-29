@@ -6,6 +6,6 @@ function wait(delay: number) {
 
 export async function getProducts(api: string): Promise<Product[]> {
   return wait(500)
-    .then(() => fetch(`/api/${api}.json`))
+    .then(() => fetch(`api/${api}.json`))
     .then(response => response.json());
 }

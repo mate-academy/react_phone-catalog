@@ -1,12 +1,10 @@
 @use '../../../../styles/utils' as utils;
 
 .categories {
-  margin-top: 24px;
   @include utils.page-grid;
-  row-gap: 32px;
 
-  @include utils.on-tablet {
-  }
+  margin-top: 24px;
+  row-gap: 32px;
 
   &__card {
     grid-column: 1 / -1;

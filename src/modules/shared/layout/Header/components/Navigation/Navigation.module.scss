@@ -49,7 +49,7 @@
 
       &::after {
         @include utils.link-underline;
-        // transform: scaleX(0);
+
         width: 0;
       }
 
@@ -119,14 +119,13 @@
 
       &::after {
         @include utils.link-underline;
+
         transform: scaleX(0);
-        // width: 0;
       }
 
       &:hover {
         &::after {
           transform: scaleX(1);
-          // width: 100%;
         }
       }
     }

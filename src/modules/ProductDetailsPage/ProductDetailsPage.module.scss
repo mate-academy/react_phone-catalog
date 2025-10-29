@@ -14,6 +14,7 @@
 
   &__main {
     @include utils.page-grid;
+    
     height: auto;
     grid-auto-flow: column;
   }
@@ -154,6 +155,7 @@
 
   &__description {
     @include utils.page-grid;
+
     row-gap: 56px;
 
     @include utils.on-tablet {

@@ -13,6 +13,14 @@
     position: relative;
   }
 
+  &-icon {
+    color: utils.$color-secondary;
+
+    &.is-open {
+      transform: rotateX(180deg);
+    }
+  }
+
   &-trigger {
     box-sizing: border-box;
     padding: 9px 11px;
@@ -35,14 +43,6 @@
 
     &.is-open {
       border: 1px solid utils.$color-accent;
-    }
-  }
-
-  &-icon {
-    color: utils.$color-secondary;
-
-    &.is-open {
-      transform: rotateX(180deg);
     }
   }
 

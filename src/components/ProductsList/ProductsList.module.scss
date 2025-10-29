@@ -2,6 +2,7 @@
 
 .products-list {
   @include utils.page-grid;
+
   row-gap: 40px;
 
   &__card {

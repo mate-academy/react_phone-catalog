@@ -44,6 +44,6 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
-
   </Router>,
 );
+
