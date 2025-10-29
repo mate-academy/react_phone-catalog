@@ -32,7 +32,7 @@ export const Footer = React.memo(() => {
           </Link>
 
           <Link
-            to="https://www.linkedin.com/in/%D1%96%D0%B2%D0%B0%D0%BD-%D1%88%D0%B0%D0%BC%D0%BA%D1%96%D0%B9-027734145/"
+            to="https://www.linkedin.com/in/ivan-shamkii/"
             target="_blank"
             className="footer__nav-item navigation-title"
           >
