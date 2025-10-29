@@ -15,14 +15,17 @@
 
 .logoWrapper {
   padding: 0 $wight-16;
+  width: 96px;
 
   @include on-desktop {
+    width: 128px;
     padding: 0 $wight-24;
   }
 }
 
 .logoWrapper img {
-  height: $wight-22;
+  height: 100%;
+  width: 100%;
 }
 
 .navLinks {
