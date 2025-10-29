@@ -42,7 +42,7 @@ export const Header = () => {
             src={
               isMenuOpen
                 ? './img/image/Icons/Close.svg'
-                : '/img/image/Icons/Menu.svg'
+                : './img/image/Icons/Menu.svg'
             }
             alt="BurgerMenu"
           />
