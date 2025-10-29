@@ -4,6 +4,7 @@ import styles from './TopBar.module.scss';
 import { Link } from 'react-router-dom';
 import { HeaderContext } from '../Header/context/HeaderContext';
 import classNames from 'classnames';
+import logo from '../../../../assets/img/Logo.svg';
 
 export const TopBar = () => {
   const { showNavigation, setShowNavigation } = useContext(HeaderContext);
@@ -13,7 +14,7 @@ export const TopBar = () => {
       <div className={styles['top-bar__wrapper']}>
         <div className={styles['top-bar__left-block']}>
           <Link to="/" className={styles['top-bar__logo']}>
-            <img src="./../src/assets/img/Logo.svg" alt="logo" />
+            <img src={logo} alt="logo" />
           </Link>
         </div>
 

@@ -3,6 +3,7 @@ import styles from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../../components/Button';
 import { ButtonType } from '../../../../types/ButtonType';
+import logo from '../../../../assets/img/Logo.svg';
 
 export const Footer = () => {
   return (
@@ -10,11 +11,7 @@ export const Footer = () => {
       <div className="container">
         <div className={styles.footer__wrapper}>
           <Link to={'/'} className={styles.footer__logo}>
-            <img
-              className={styles['footer__logo-img']}
-              src="./../src/assets/img/Logo.svg"
-              alt="Logo"
-            />
+            <img className={styles['footer__logo-img']} src={logo} alt="Logo" />
           </Link>
 
           <div className={styles.footer__nav}>
