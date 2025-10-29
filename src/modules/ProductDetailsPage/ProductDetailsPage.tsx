@@ -43,10 +43,33 @@ export const ProductDetailsPage: React.FC = () => {
 
   const galleryImages = product.images || [product.image];
 
+  // Technical specifications
+  const techSpecs = [
+    { label: 'Screen', value: product.screen },
+    { label: 'Resolution', value: product.resolution },
+    { label: 'Processor', value: product.processor },
+    { label: 'RAM', value: product.ram },
+    { label: 'Built in memory', value: product.capacity },
+    { label: 'Camera', value: product.camera },
+    { label: 'Zoom', value: product.zoom },
+    {
+      label: 'Cell',
+      value: product.cell
+        ? Array.isArray(product.cell)
+          ? product.cell.join(', ')
+          : product.cell
+        : undefined,
+    },
+  ].filter(spec => spec.value);
+
   return (
     <div className={styles.productDetailsPage}>
       <Breadcrumbs product={product} />
-      <div className={styles.productDetailsPage__main}>
+
+      {/* ProductInfo */}
+      <h1 className={styles.productDetailsPage__title}>{product.name}</h1>
+
+      <div className={styles.productDetailsPage__topSection}>
         <ProductGallery
           images={galleryImages}
           name={product.name}
@@ -54,6 +77,53 @@ export const ProductDetailsPage: React.FC = () => {
         />
         <ProductInfo product={product} />
       </div>
+
+      {/* About + Tech Specs */}
+      <div className={styles.productDetailsPage__bottomSection}>
+        {/* About */}
+        {product.description && product.description.length > 0 && (
+          <div className={styles.productAbout}>
+            <h3 className={styles.productAbout__title}>About</h3>
+            <div className={styles.productAbout__content}>
+              {product.description.map((section, index) => (
+                <div key={index} className={styles.productAbout__section}>
+                  {section.title && (
+                    <h4 className={styles.productAbout__sectionTitle}>
+                      {section.title}
+                    </h4>
+                  )}
+                  {section.text.map((paragraph, pIndex) => (
+                    <p key={pIndex} className={styles.productAbout__paragraph}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Tech Specs */}
+        {techSpecs.length > 0 && (
+          <div className={styles.productTechSpecs}>
+            <h3 className={styles.productTechSpecs__title}>Tech specs</h3>
+            <div className={styles.productTechSpecs__list}>
+              {techSpecs.map((spec, index) => (
+                <div key={index} className={styles.productTechSpecs__item}>
+                  <span className={styles.productTechSpecs__label}>
+                    {spec.label}
+                  </span>
+                  <span className={styles.productTechSpecs__value}>
+                    {spec.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Suggested */}
       <SuggestedProducts currentProductId={product.id} />
     </div>
   );

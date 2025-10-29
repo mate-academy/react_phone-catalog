@@ -45,7 +45,8 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
   const availableCapacities = product.capacityAvailable || [product.capacity];
   const hasDiscount = product.fullPrice > product.price;
 
-  const techSpecs = [
+  // Additional Tech Specs for the section under the button
+  const additionalTechSpecs = [
     { label: 'Screen', value: product.screen },
     { label: 'Resolution', value: product.resolution },
     { label: 'Processor', value: product.processor },
@@ -65,17 +66,6 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
 
   return (
     <div className={styles.productInfo}>
-      <h1 className={styles.productInfo__title}>{product.name}</h1>
-
-      <div className={styles.productInfo__prices}>
-        <span className={styles.productInfo__price}>${product.price}</span>
-        {hasDiscount && (
-          <span className={styles.productInfo__fullPrice}>
-            ${product.fullPrice}
-          </span>
-        )}
-      </div>
-
       {/* Color Selection */}
       {availableColors.length > 0 && (
         <div className={styles.productInfo__section}>
@@ -115,6 +105,15 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
         </div>
       )}
 
+      <div className={styles.productInfo__prices}>
+        <span className={styles.productInfo__price}>${product.price}</span>
+        {hasDiscount && (
+          <span className={styles.productInfo__fullPrice}>
+            ${product.fullPrice}
+          </span>
+        )}
+      </div>
+
       {/* Actions */}
       <div className={styles.productInfo__actions}>
         <button
@@ -138,20 +137,19 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
           <img
             src={
               isInFavorites
-                ? 'img/icons/icon-red-heart.png'
-                : 'img/icons/heart.png'
+                ? '/react_phone-catalog/img/icons/icon-red-heart.png'
+                : '/react_phone-catalog/img/icons/heart.png'
             }
             alt="Heart"
           />
         </button>
       </div>
 
-      {/* Tech Specs */}
-      {techSpecs.length > 0 && (
-        <div className={styles.productInfo__section}>
-          <h3 className={styles.productInfo__sectionTitle}>Tech specs</h3>
+      {/* Additional Tech Specs under the button */}
+      {additionalTechSpecs.length > 0 && (
+        <div className={styles.productInfo__additionalSpecs}>
           <div className={styles.productInfo__specs}>
-            {techSpecs.map((spec, index) => (
+            {additionalTechSpecs.map((spec, index) => (
               <div key={index} className={styles.productInfo__spec}>
                 <span className={styles.productInfo__specName}>
                   {spec.label}
@@ -159,35 +157,6 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
                 <span className={styles.productInfo__specValue}>
                   {spec.value}
                 </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Product Description */}
-      {product.description && product.description.length > 0 && (
-        <div className={styles.productInfo__section}>
-          <h3 className={styles.productInfo__sectionTitle}>About</h3>
-          <div className={styles.productInfo__description}>
-            {product.description.map((section, index) => (
-              <div
-                key={index}
-                className={styles.productInfo__descriptionSection}
-              >
-                {section.title && (
-                  <h4 className={styles.productInfo__descriptionTitle}>
-                    {section.title}
-                  </h4>
-                )}
-                {section.text.map((paragraph, pIndex) => (
-                  <p
-                    key={pIndex}
-                    className={styles.productInfo__descriptionText}
-                  >
-                    {paragraph}
-                  </p>
-                ))}
               </div>
             ))}
           </div>

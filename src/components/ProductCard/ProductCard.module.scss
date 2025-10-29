@@ -46,7 +46,7 @@
   &__info {
     @include flex-column;
 
-    height: calc(100% - 212px); // 506px - (196px imagen + 16px margin)
+    height: calc(100% - 212px);
   }
 
   &__title {
