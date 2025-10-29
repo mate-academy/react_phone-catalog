@@ -25,7 +25,7 @@ export const ButtonsRight: React.FC<ButtonsRightProps> = ({
     },
     {
       to: '/cart',
-      img: '/img/image/Icons/Cart.svg',
+      img: './img/image/Icons/Cart.svg',
       alt: 'Cart',
       count: cartItems.length,
     },
