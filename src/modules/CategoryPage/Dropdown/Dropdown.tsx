@@ -39,7 +39,7 @@ export const Dropdown: React.FC<Props> = React.memo(
       }
 
       if (!isOpenDropdown) {
-        setTimeout(() => {
+        timeout = setTimeout(() => {
           setStyles({ overflow: 'hidden', border: 'none' });
         }, 280);
       }

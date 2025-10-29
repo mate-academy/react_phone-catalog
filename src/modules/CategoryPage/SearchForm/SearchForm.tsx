@@ -9,7 +9,7 @@ export const SearchForm = React.memo(() => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
-  const [title, setTitle] = useState('' || query);
+  const [title, setTitle] = useState(query || '');
   const [focus, setFocus] = useState<boolean>(!!query);
 
   useEffect(() => {
