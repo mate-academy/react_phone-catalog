@@ -11,6 +11,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 interface SaveProductsContextType {
   favoriteIds: Product['id'][];
   cartIds: { id: Product['id']; quantity: number }[];
+  allCartQuantity: number;
   toggleFavorites: (v: Product['id']) => void;
   isFavorite: (id: Product['id']) => boolean;
   toggleCart: (v: Product['id']) => void;
@@ -24,6 +25,7 @@ interface SaveProductsContextType {
 export const SaveProductsContext = createContext<SaveProductsContextType>({
   favoriteIds: [],
   cartIds: [],
+  allCartQuantity: 0,
   toggleFavorites: () => {},
   isFavorite: () => false,
   toggleCart: () => {},
@@ -134,6 +136,11 @@ export const SaveProductsProvider = ({
 
       cartQuantity: (id: Product['id']) =>
         state.cartIds.find(unit => unit.id === id)?.quantity ?? 0,
+
+      allCartQuantity: state.cartIds.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.quantity,
+        0,
+      ),
 
       addCartQuantity: (id: Product['id']) =>
         dispatch({ type: 'UPDATE_CART_QUANTITY', payload: { id, delta: 1 } }),

@@ -8,7 +8,7 @@ export const useConditionalScroll = () => {
     const keepScroll = location.state && location.state.keepScroll;
 
     if (!keepScroll) {
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [location.key, location.state]);
 };

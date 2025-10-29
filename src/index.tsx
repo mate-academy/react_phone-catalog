@@ -46,3 +46,4 @@ createRoot(document.getElementById('root') as HTMLElement).render(
     </Routes>
   </Router>,
 );
+

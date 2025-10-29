@@ -5,7 +5,7 @@ import { NavButton } from './NavButton';
 import { useSaveProducts } from '../../../../../../context/SaveProductsContext';
 
 export const Navigation = () => {
-  const { favoriteIds, cartIds } = useSaveProducts();
+  const { favoriteIds, allCartQuantity } = useSaveProducts();
 
   return (
     <nav className={styles.nav}>
@@ -26,9 +26,9 @@ export const Navigation = () => {
         </NavButton>
         <NavButton to="/cart">
           <span className="icon icon--shopping" />
-          {cartIds.length > 0 && (
+          {allCartQuantity > 0 && (
             <span className={styles['nav__buttons--count']}>
-              {cartIds.length}
+              {allCartQuantity}
             </span>
           )}
         </NavButton>

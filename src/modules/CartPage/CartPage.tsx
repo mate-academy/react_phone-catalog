@@ -24,6 +24,7 @@ export const CartPage = () => {
     removeCartQuantity,
     cartQuantity,
     clearCart,
+    allCartQuantity,
   } = useSaveProducts();
   const {
     categorie: products,
@@ -73,11 +74,6 @@ export const CartPage = () => {
     );
   };
 
-  const allCount = cartIds.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.quantity,
-    0,
-  );
-
   const visibleProducts = currentProducts.map(el => ({
     ...el,
     sum: cartQuantity(el.itemId) * el.price,
@@ -119,7 +115,7 @@ export const CartPage = () => {
             <div className={styles.cart__total}>
               <h2>${allPrice}</h2>
               <p className={`body-text ${styles['cart__total-count']}`}>
-                Total for {allCount} items
+                Total for {allCartQuantity} items
               </p>
               <hr className={styles['cart__total-line']} />
               <Button
