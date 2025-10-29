@@ -35,7 +35,9 @@ export const BlockButtons: React.FC<BlockButtonsProps> = ({ element }) => {
       >
         <img
           src={
-            isFavourite ? './img/favourites-active.svg' : './img/favourites.svg'
+            isFavourite
+              ? './img/image/Icons/HartRed.svg'
+              : './img/image/Icons/Hart.svg'
           }
           alt="Favourites"
         />

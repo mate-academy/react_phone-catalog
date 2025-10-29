@@ -46,7 +46,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         onClick={goPrev}
         disabled={currentPage === 1}
         active={currentPage > 1}
-        childrenValue={'/img/Vector left.svg'}
+        childrenValue={'./img/image/Icons/VectorLeft.svg'}
       />
 
       <div className={styles.pageList}>
@@ -69,7 +69,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         onClick={goNext}
         disabled={currentPage === totalPage}
         active={currentPage < totalPage}
-        childrenValue={'/img/Vector right.svg'}
+        childrenValue={'./img/image/Icons/VectorRight.svg'}
       />
     </div>
   );

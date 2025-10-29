@@ -1,8 +1,24 @@
 @use '/src/vars' as *;
 
 .status {
-  height: $wight-30;
   width: 100%;
   color: $color-white;
-  padding: $wight-20-0;
+  padding: $wight-48;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $wight-10;
+  font-size: $wight-20;
+}
+
+.status img {
+  width: 50%;
+  height: 50%;
+}
+
+
+.status a {
+  color: inherit;
+  text-decoration: none;
+  text-shadow: 0 0 $wight-10 $accent-hover;
 }

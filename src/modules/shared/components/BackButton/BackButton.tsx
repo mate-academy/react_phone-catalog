@@ -20,8 +20,8 @@ export const BackButton = () => {
       <img
         src={
           hover
-            ? '/img/SliderImg/Arrow Left hover.svg'
-            : '/img/SliderImg/Arrow Left.svg'
+            ? './img/image/Icons/VectorLHover.svg'
+            : './img/image/Icons/VectorLeft.svg'
         }
         alt="ArrowLeft"
       />

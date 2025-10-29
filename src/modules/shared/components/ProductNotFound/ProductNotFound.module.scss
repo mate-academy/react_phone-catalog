@@ -1,8 +1,17 @@
 @use '/src/vars' as *;
 
 .status {
-  height: $wight-30;
   width: 100%;
   color: $color-white;
-  padding: $wight-20-0;
+  padding: $wight-48;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $wight-10;
+  font-size: $wight-20;
+}
+
+.status img {
+  width: 50%;
+  height: 50%;
 }

@@ -28,6 +28,9 @@ export const NavigateButton: React.FC<NavigateButtonProps> = ({
       case 'accessories':
         return 'Accessories';
 
+      case 'favourites':
+        return 'Favourites';
+
       default:
         return '';
     }
@@ -36,9 +39,11 @@ export const NavigateButton: React.FC<NavigateButtonProps> = ({
   return (
     <div className={styles.navigate}>
       <NavLink to="/" className={styles.button}>
-        <img src="/img/SliderImg/Home.svg" alt="Home" />
+        <img src="./img/image/Icons/Home.svg" alt="Home" />
       </NavLink>
-      <img src="img/SliderImg/Arrow Right.svg" alt="ArrowRight" />
+      <div className={styles.vectorRight}>
+        <img src="./img/image/Icons/VectorRight.svg" alt="ArrowRight" />
+      </div>
       {!product ? (
         <span>{getCategoryName(category)}</span>
       ) : (
@@ -46,7 +51,9 @@ export const NavigateButton: React.FC<NavigateButtonProps> = ({
           <NavLink to={`/${product.category}`} className={styles.button}>
             {getCategoryName(product.category)}
           </NavLink>
-          <img src="img/SliderImg/Arrow Right.svg" alt="ArrowRight" />
+          <div className={styles.vectorRight}>
+            <img src="./img/image/Icons/VectorRight.svg" alt="ArrowRight" />
+          </div>
           <div>{product.name}</div>
         </div>
       )}

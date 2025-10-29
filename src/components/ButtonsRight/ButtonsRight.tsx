@@ -19,13 +19,13 @@ export const ButtonsRight: React.FC<ButtonsRightProps> = ({
   const buttonsNav = [
     {
       to: '/favourites',
-      img: '/img/favourites.svg',
+      img: './img/image/Icons/Hart.svg',
       alt: 'Favourites',
       count: favourites.length,
     },
     {
       to: '/cart',
-      img: '/img/cart.svg',
+      img: '/img/image/Icons/Cart.svg',
       alt: 'Cart',
       count: cartItems.length,
     },

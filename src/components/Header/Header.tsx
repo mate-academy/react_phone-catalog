@@ -24,7 +24,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.left}>
         <div className={styles.logoWrapper}>
-          <img src="/img/Logo.svg" alt="Logo" />
+          <img src="./img/image/Logo.svg" alt="Logo" />
         </div>
 
         <div className={styles.navLinks}>
@@ -41,8 +41,8 @@ export const Header = () => {
           <img
             src={
               isMenuOpen
-                ? '/img/SliderImg/Close.svg'
-                : '/img/SliderImg/Menu.svg'
+                ? './img/image/Icons/Close.svg'
+                : '/img/image/Icons/Menu.svg'
             }
             alt="BurgerMenu"
           />

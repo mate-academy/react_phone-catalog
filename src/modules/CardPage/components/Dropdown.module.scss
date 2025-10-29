@@ -23,10 +23,17 @@
   padding: $wight-12 $wight-10;
   margin-top: $wight-4;
 
-
   &:hover {
     border: $border-icons;
   }
+
+  &:hover img {
+    opacity: 0.5;
+  }
+}
+
+.img {
+  transition: opacity 0.3s ease;
 }
 
 .activeButton {

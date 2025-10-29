@@ -69,15 +69,13 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
           <NavButton
             onClick={goPrev}
             disabled={index === 0}
-            active={index > 0}
-            childrenValue={'/img/Vector left.svg'}
+            childrenValue={'./img/image/Icons/VectorLeft.svg'}
           />
 
           <NavButton
             onClick={goNext}
             disabled={index === totalSlides - 1}
-            active={index < totalSlides - 1}
-            childrenValue={'/img/Vector right.svg'}
+            childrenValue={'./img/image/Icons/VectorRight.svg'}
           />
         </div>
       </div>

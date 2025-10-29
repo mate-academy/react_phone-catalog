@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
 import { Slider } from '../Slider';
+import { NavButton } from '../../../shared/components/NavButton';
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
-    { img: '/img/SliderImg/4.png', alt: 'Img1' },
-    { img: '/img/SliderImg/2.png', alt: 'Img2' },
-    { img: '/img/SliderImg/3.png', alt: 'Img3' },
+    { img: './img/image/SliderImg/1.png', alt: 'Img1' },
+    { img: './img/image/SliderImg/2.png', alt: 'Img2' },
+    { img: './img/image/SliderImg/3.png', alt: 'Img3' },
+    { img: './img/image/SliderImg/4.png', alt: 'Img4' },
   ];
 
   const goNext = () => {
@@ -34,16 +36,20 @@ export const PicturesSlider = () => {
   return (
     <div className={styles.picturesSlider}>
       <div className={styles.sliderTrack}>
-        <button className={styles.button} onClick={goPrev}>
-          ‹
-        </button>
+        <NavButton
+          onClick={goPrev}
+          childrenValue={'./img/image/Icons/VectorLeft.svg'}
+          slider={true}
+        />
         <Slider
           image={images[currentIndex].img}
           alt={images[currentIndex].alt}
         />
-        <button className={styles.button} onClick={goNext}>
-          ›
-        </button>
+        <NavButton
+          onClick={goNext}
+          childrenValue={'./img/image/Icons/VectorRight.svg'}
+          slider={true}
+        />
       </div>
 
       <div className={styles.pagination}>

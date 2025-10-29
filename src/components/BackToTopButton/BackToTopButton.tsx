@@ -12,7 +12,10 @@ export const BackToTopButton = () => {
   return (
     <div className={styles.backToTop} onClick={scrollToTop}>
       Back to top
-      <NavButton onClick={scrollToTop} childrenValue={'/img/Vector up.svg'} />
+      <NavButton
+        onClick={scrollToTop}
+        childrenValue={'./img/image/Icons/VectorUp.svg'}
+      />
     </div>
   );
 };

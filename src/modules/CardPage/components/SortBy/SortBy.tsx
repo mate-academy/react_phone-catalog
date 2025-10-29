@@ -28,7 +28,7 @@ export const SortBy: React.FC<SortByProps> = ({
       >
         {sortBy}
         <img
-          src="./img/SliderImg/Down.svg"
+          src="./img/image/Icons/VectorDown.svg"
           alt="Down"
           style={{
             background: 'none',

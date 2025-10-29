@@ -8,19 +8,19 @@ export const Categories = () => {
   const categoriesList = [
     {
       title: 'Mobile phones',
-      src: 'img/SliderImg/Phones.svg',
+      src: './img/image/Categories/Phones.svg',
       color: '#4A4D58',
       category: 'phones',
     },
     {
       title: 'Tablets',
-      src: 'img/SliderImg/Phones (1).svg',
+      src: './img/image/Categories/Tablets.svg',
       color: '#75767F',
       category: 'tablets',
     },
     {
       title: 'Accessories',
-      src: 'img/SliderImg/Phones (2).svg',
+      src: './img/image/Categories/Accessories.svg',
       color: '#EB5757',
       category: 'accessories',
     },

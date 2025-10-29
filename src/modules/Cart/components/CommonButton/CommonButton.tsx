@@ -28,7 +28,7 @@ export const CommonButton: React.FC<CommonButtonProps> = ({
         });
       }}
     >
-      <img src="/img/SliderImg/Union.svg" alt="Union" />
+      <img src="./img/image/Icons/Close.svg" alt="Union" />
     </button>
   );
 };

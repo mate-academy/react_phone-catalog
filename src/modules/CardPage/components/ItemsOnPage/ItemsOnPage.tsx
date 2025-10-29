@@ -27,7 +27,7 @@ export const ItemsOnPage: React.FC<ItemsOnPageProps> = ({
       >
         {current}
         <img
-          src="./img/SliderImg/Down.svg"
+          src="./img/image/Icons/VectorDown.svg"
           alt="Down"
           style={{ background: 'none' }}
         />

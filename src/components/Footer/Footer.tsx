@@ -20,7 +20,7 @@ export const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.containerLogo}>
-        <img src="/img/Logo.svg" alt="Logo" />
+        <img src="./img/image/Logo.svg" alt="Logo" />
       </div>
 
       <nav className={styles.nav}>
