@@ -12,7 +12,7 @@ export const Footer = () => {
           <Link to={'/'} className={styles.footer__logo}>
             <img
               className={styles['footer__logo-img']}
-              src="src/assets/img/Logo.svg"
+              src="./src/assets/img/Logo.svg"
               alt="Logo"
             />
           </Link>

@@ -13,7 +13,7 @@ export const TopBar = () => {
       <div className={styles['top-bar__wrapper']}>
         <div className={styles['top-bar__left-block']}>
           <Link to="/" className={styles['top-bar__logo']}>
-            <img src="src/assets/img/Logo.svg" alt="logo" />
+            <img src="./src/assets/img/Logo.svg" alt="logo" />
           </Link>
         </div>
 
