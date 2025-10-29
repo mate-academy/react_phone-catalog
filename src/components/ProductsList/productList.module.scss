@@ -1,0 +1,24 @@
+.quantity {
+  display: block;
+  font-size: 14px;
+  color: var(--color-secondary);
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.drowdowns {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+
+  div {
+    width: 100%;
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+}
