@@ -11,7 +11,7 @@ const Home = () => {
       <BrandNewSection />
       <Category />
       <HotPrice />
-      <h1 className="not-shown">Product Catalog</h1>
+      <h1 style={{ position: 'absolute', left: '-9999px' }}>Product Catalog</h1>
     </>
   );
 };
