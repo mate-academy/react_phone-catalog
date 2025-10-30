@@ -34,18 +34,24 @@ export const Header = () => {
           </NavLink>
           <Navigation />
           <div className={styles.nav__buttons}>
-            <Icon
-              href="favorites"
-              modifiers={[IconModifiers.TabletIcon, IconModifiers.Favorites]}
-            />
-            <Icon
-              href="cart"
-              modifiers={[IconModifiers.TabletIcon, IconModifiers.Cart]}
-            />
-            <Icon
-              onClick={handleMobileMenuClick}
-              modifiers={[IconModifiers.MobileIcon, mobileMenuIcon]}
-            />
+            <div className={styles.nav__tableLink}>
+              <Icon
+                href="favorites"
+                modifiers={[IconModifiers.TabletIcon, IconModifiers.Favorites]}
+              />
+            </div>
+            <div className={styles.nav__tableLink}>
+              <Icon
+                href="cart"
+                modifiers={[IconModifiers.TabletIcon, IconModifiers.Cart]}
+              />
+            </div>
+            <div className={styles.nav__mobileButton}>
+              <Icon
+                onClick={handleMobileMenuClick}
+                modifiers={[IconModifiers.MobileIcon, mobileMenuIcon]}
+              />
+            </div>
           </div>
         </div>
         {showMobile && <MobileMenu pathname={location.pathname} />}

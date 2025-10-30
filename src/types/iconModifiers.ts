@@ -4,6 +4,5 @@ export enum IconModifiers {
   Close = 'close',
   Cart = 'cart',
   Menu = 'menu',
-  TabletIcon = 'tabletIcon',
-  MobileIcon = 'mobileIcon',
+  Border = 'border',
 }

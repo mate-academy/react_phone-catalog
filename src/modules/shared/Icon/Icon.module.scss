@@ -1,47 +1,48 @@
 @use '../../../scss/main.scss' as *;
 
 .icon {
-  display: block;
-  height: 16px;
-  width: 16px;
-  margin: 16px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
   border: none;
 
-  @include on-desktop {
-    margin: 24px;
-  }
-
-  &_favorites {
-    background: center center url('img/assets/icons/favorites.svg');
-
-    &_active {
-      background: center center url('img/assets/icons/favorites-selected.svg');
+  &_border {
+    border: 1px solid $icon-color;
+    &:hover {
+      border-color: $primary-color;
     }
   }
 
-  &_close {
-    background: center center url('img/assets/icons/close.svg');
-  }
+  &__img {
+    display: block;
+    height: 16px;
+    width: 16px;
+    border: none;
 
-  &_cart {
-    background: center center url('img/assets/icons/cart.svg');
-  }
-
-  &_menu {
-    background: center center url('img/assets/icons/menu.svg');
-  }
-
-  &_tabletIcon {
-    display: none;
-
-    @include on-tablet {
-      display: flex;
+    @include on-desktop {
+      margin: 24px;
     }
-  }
 
-  &_mobileIcon {
-    @include on-tablet {
-      display: none;
+    &_favorites {
+      background: center center url('img/assets/icons/favorites.svg');
+
+      &_active {
+        background: center center url('img/assets/icons/favorites-selected.svg');
+      }
+    }
+
+    &_close {
+      background: center center url('img/assets/icons/close.svg');
+    }
+
+    &_cart {
+      background: center center url('img/assets/icons/cart.svg');
+    }
+
+    &_menu {
+      background: center center url('img/assets/icons/menu.svg');
     }
   }
 }

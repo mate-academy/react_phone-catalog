@@ -6,37 +6,45 @@ interface IconProps {
   href?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   modifiers?: IconModifiers[] | IconModifiers;
+  border?: boolean;
 }
 
 const getClassName = (modifier: string) =>
-  styles[('icon_' + modifier) as keyof typeof styles] || '';
+  styles[('icon__img_' + modifier) as keyof typeof styles] || '';
 
-const Icon: React.FC<IconProps> = ({ href, onClick, modifiers }) => {
+const Icon: React.FC<IconProps> = ({ href, onClick, modifiers, border }) => {
   const isLink = !!href;
   const isButton = !!onClick;
 
-  let additional = '';
+  const additional = Array.isArray(modifiers)
+    ? modifiers.map(getClassName).join(' ').trim()
+    : typeof modifiers === 'string'
+      ? getClassName(modifiers)
+      : '';
 
-  if (modifiers) {
-    if (typeof modifiers === 'string') {
-      additional = getClassName(modifiers);
-    } else {
-      additional = modifiers.reduce((iconStyles, modifier) => {
-        return iconStyles + ' ' + getClassName(modifier);
-      }, '');
-    }
-  }
+  const imgElement = (
+    <span className={`${styles.icon__img} ${additional}`}></span>
+  );
 
   if (isLink) {
-    return <Link to={href} className={`${styles.icon} ${additional}`} />;
+    return (
+      <Link
+        to={href}
+        className={styles.icon + ' ' + (border ? styles.icon_border : '')}
+      >
+        {imgElement}
+      </Link>
+    );
   }
 
   if (isButton) {
     return (
       <button
-        className={`${styles.icon} ${additional}`}
+        className={styles.icon + ' ' + (border ? styles.icon_border : '')}
         onClick={onClick}
-      ></button>
+      >
+        {imgElement}
+      </button>
     );
   }
 
