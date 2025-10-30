@@ -1,17 +1,19 @@
 @use '../../../../styles/utils/' as g;
 
 .form {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    width: 100%;
 
     @include g.on-tablet {
       width: auto;
+
+      display: flex;
+      gap: 16px;
     }
 
     &__item{
       display: flex;
-      flex: 1 0 50%;
       flex-direction: column;
       gap: 4px;
 
