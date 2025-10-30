@@ -92,6 +92,11 @@
       width: auto;
       height: 100%;
       margin-left: 32px;
+
+      &.is-active {
+      top: 0;
+      box-shadow: none;
+    }
     }
 
     @include g.on-desktop {

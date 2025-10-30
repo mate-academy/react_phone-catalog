@@ -15,7 +15,14 @@ export const Icon: React.FC<Props> = ({ path }) => {
     fetch(path)
       .then(res => res.text())
       .then(svg => {
-        const cleanSvg = svg.replace(/fill=".*?"/g, 'fill="currentColor"');
+        let cleanSvg = svg
+          .replace(/fill=".*?"/g, 'fill="currentColor"')
+          .replace(/fill="none"/g, 'fill="currentColor"');
+
+        cleanSvg = cleanSvg.replace(
+          /<path(?![^>]*fill=)/g,
+          '<path fill="currentColor"',
+        );
 
         setSvgText(cleanSvg);
       });

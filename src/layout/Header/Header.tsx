@@ -52,7 +52,12 @@ export const Header: React.FC = () => {
           })}
         >
           <div className={classNames(styles.header__nav)}>
-            <Nav names={navList} targets={navPath} destination={'nav'} />
+            <Nav
+              names={navList}
+              targets={navPath}
+              destination={'nav'}
+              exit={() => setBurger(!burger)}
+            />
           </div>
           <div className={classNames(styles.header__icons)}>
             <Link

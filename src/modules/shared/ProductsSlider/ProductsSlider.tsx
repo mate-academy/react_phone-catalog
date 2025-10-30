@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useElementWidth } from './hooks/useElementWidth';
 import { Product } from '../../../types/data';
 import { ProductItem } from '../ProductItem/ProductItem';
+import { useScrollLoad } from './hooks/useScrollLoad';
 
 type Props = {
   title: string;
@@ -42,6 +43,10 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
 
   useElementWidth(slider, w => {
     setSliderWidth(w);
+  });
+
+  useScrollLoad(slider, () => {
+    setCurrentIndex(prev => Math.min(prev + itemsPerPage, products.length));
   });
 
   const move = (newIndex: number) => {
