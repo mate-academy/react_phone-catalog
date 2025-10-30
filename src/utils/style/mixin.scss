@@ -56,7 +56,7 @@
 @mixin button-base {
   @include font-mont($font-size-md, $font-weight-semibold);
 
-  padding: $spacing-md $spacing-2xl;
+  // padding: $spacing-md $spacing-2xl;
   border: none;
   cursor: pointer;
   text-decoration: none;

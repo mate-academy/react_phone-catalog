@@ -3,7 +3,6 @@
 .productCard {
   @include card-base;
 
-  // width: 272px;
   height: 506px;
   padding: 32px;
   box-sizing: border-box;
@@ -57,6 +56,10 @@
     color: $secondary;
 
     @include text-ellipsis(3);
+
+    height: 60px;
+    min-height: 60px;
+    flex-shrink: 0;
   }
 
   &__prices {

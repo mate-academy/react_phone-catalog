@@ -3,7 +3,7 @@
 .productsList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-  gap: $spacing-lg;
+  gap: $spacing-4xl $spacing-lg;
 
   @include tablet-up {
     grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
