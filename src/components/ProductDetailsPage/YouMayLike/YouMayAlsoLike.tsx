@@ -25,6 +25,7 @@ function getSuggestedProducts(
   count: number = 8,
 ): RawProduct[] {
   const shuffled = [...products].sort(() => Math.random() - 0.5);
+
   return shuffled.slice(0, count);
 }
 
@@ -36,13 +37,14 @@ export function YouMayAlsoLikeSlider() {
     [products],
   );
 
-  const GAP = 16; // px gap between slides
-  const MIN_CARD = 272; // design min, used for thresholds
+  const GAP = 16;
+  const MIN_CARD = 272;
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const startIndexRef = useRef(0);
 
   const [startIndex, setStartIndex] = useState(0);
+
   useEffect(() => {
     startIndexRef.current = startIndex;
   }, [startIndex]);
@@ -61,6 +63,7 @@ export function YouMayAlsoLikeSlider() {
     if (containerWidth >= min4) return 4;
     if (containerWidth >= min3) return 3;
     if (containerWidth >= min2) return 2;
+
     return 1;
   }, []);
 
@@ -76,6 +79,7 @@ export function YouMayAlsoLikeSlider() {
     const maxStart = Math.max(0, suggestedProducts.length - newVisible);
     const curStart = startIndexRef.current;
     const newStart = Math.min(curStart, maxStart);
+
     if (newStart !== curStart) {
       setStartIndex(newStart);
       startIndexRef.current = newStart;
@@ -83,18 +87,22 @@ export function YouMayAlsoLikeSlider() {
 
     const totalGaps = GAP * (newVisible - 1);
     const w = Math.max(0, (containerWidth - totalGaps) / newVisible);
+
     setItemWidth(w);
 
     const translate = newStart * (w + GAP);
+
     setTranslatePx(translate);
   }, [computeVisibleByContainer, suggestedProducts.length]);
 
   useEffect(() => {
     recompute();
     const ro = new ResizeObserver(recompute);
+
     if (containerRef.current) ro.observe(containerRef.current);
     window.addEventListener('load', recompute);
     window.addEventListener('resize', recompute);
+
     return () => {
       ro.disconnect();
       window.removeEventListener('load', recompute);
@@ -108,6 +116,7 @@ export function YouMayAlsoLikeSlider() {
 
   useEffect(() => {
     const x = startIndex * (itemWidth + GAP);
+
     setTranslatePx(x);
   }, [startIndex, itemWidth]);
 
