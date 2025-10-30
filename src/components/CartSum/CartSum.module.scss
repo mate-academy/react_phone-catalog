@@ -1,0 +1,78 @@
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $color-text;
+  padding: 24px;
+
+  @include respond-to(desktop) {
+    width: 368px;
+    height: 206px;
+  }
+}
+
+.total {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: $color-light;
+}
+
+.itemsCount {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-text;
+}
+
+.devider {
+  width: 100%;
+  border: 1px solid $color-border;
+  margin: 16px;
+}
+
+.checkoutBtn {
+  border: 1px solid $color-lila;
+  background-color: $color-lila;
+  color: $color-light;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  padding: 14px 85px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  &:hover {
+    background-color: lighten($color-lila, 5%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+
+
+
+}

@@ -1,0 +1,133 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+  gap: 16px;
+  justify-content: center;
+
+  @include respond-to(mobile) {
+    grid-template-columns: repeat(auto-fit, 272px);
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: repeat(4, 272px);
+  }
+}
+
+.cardWrapper {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: $color-light;
+
+  @include respond-to(tablet) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.quantity {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-text;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+
+  @include respond-to(tablet) {
+    margin-top: 26px;
+  }
+}
+
+.sort {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.sort_select {
+  width: 139px;
+  height: 40px;
+  background-color: $color-border;
+  border: 1px solid $color-border;
+  color: $color-light;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0 12px;
+  padding-right: 35px; 
+  appearance: none;
+
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: $color-lila;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-lila;
+    box-shadow: 0 0 0 1px $color-lila;
+  }
+
+  option {
+    background-color: $color-card;
+    color: $color-light;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px;
+  }
+
+  @include respond-to(tablet) {
+    width: 187px;
+  }
+}
+
+@function strip-hash($color) {
+  @return str-slice(inspect($color), 2);
+}
+
+.sort_by {
+  color: $color-text;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mini_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 16px;
+    margin-bottom: 24px;
+
+    @include respond-to(tablet) {
+      justify-content: start;
+    }
+}
+
+  .item {
+  @include respond-to(tablet) {
+    width: 136px;
+  }
+
+    @include respond-to(desktop) {
+    width: 128px;
+  }
+  }
+
+
+

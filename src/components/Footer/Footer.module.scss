@@ -1,0 +1,85 @@
+
+.footer {
+  padding: 32px 16px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 32px;
+  border-top: 1px solid #e2e6e9;
+
+  margin-top: auto;
+}
+
+.logo_link img {
+  display: flex;
+  align-items: center;
+  width: 89px;
+  height: 32px;
+}
+
+.nav_link {
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  color: $color-light;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.back {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.back_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-border;
+  cursor: pointer;
+  background-color: $color-border;
+}
+
+.back_img {
+  width: 16px;
+  height: 16px;
+    path {
+    fill: $color-light;
+  }
+}
+
+.back_text {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-gray;
+}
+
+@include respond-to(tablet) {
+  .footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav {
+    gap: 16px;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@include respond-to(desktop) {
+
+  .nav {
+    gap: 107px;
+
+  }
+}

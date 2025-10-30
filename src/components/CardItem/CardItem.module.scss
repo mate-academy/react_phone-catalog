@@ -1,0 +1,114 @@
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  background-color: $color-card;
+  transition: all 0.3s ease;
+  height: 506px;
+  max-width: 288px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid $color-lila;
+  }
+}
+
+.card_imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 196px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.card_img {
+  height: 196px;
+  width: 208px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 8px;
+}
+
+.card_title {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-light;
+  margin-bottom: 8px;
+  line-height: 21px;
+
+
+  min-height: 42px;
+  overflow: hidden;
+}
+
+.card_price {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card_priceRegular {
+  color: $color-light;
+  font-weight: 800;
+  font-size: 22px;
+  margin: 0;
+}
+
+.card_priceDiscount {
+  color: $color-light;
+  font-weight: 800;
+  font-size: 22px;
+  margin: 0;
+}
+
+.card_priceRegular2{
+  color: $color-text;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0;
+  text-decoration: line-through;
+}
+
+.card_divider {
+  height: 1px;
+  background: $color-text;
+  width: 100%;
+}
+
+.card_details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.card_specLabel {
+  color: $color-text;
+}
+
+.card_specValue {
+  color: $color-light;
+}

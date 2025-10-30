@@ -1,0 +1,56 @@
+@import 'breakpoints';
+@import 'mixins';
+@import 'variables';
+
+html,
+body {
+  font-family: Mont, sans-serif;
+  transition: all 0.3s ease;
+  height: 100%;
+  margin: 0;
+  background-color: $color-main;
+}
+
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
+
+main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 16px ;
+
+  @include respond-to(tablet) {
+    padding: 0 24px;
+  }
+
+  @include respond-to(desktop) {
+    padding: 0 32px;
+  }
+
+  @include respond-to(wide) {
+    padding: 0 152px;
+  }
+
+
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}

@@ -1,0 +1,19 @@
+@import 'breakpoints';
+
+@mixin respond-to($device) {
+  @if $device == mobile {
+    @media (min-width: $mobile) { @content; }
+  }
+
+  @if $device == tablet {
+    @media (min-width: $tablet) { @content; }
+  }
+
+  @if $device == desktop {
+    @media (min-width: $desktop) { @content; }
+  }
+
+  @if $device == wide {
+    @media (min-width: $wide) { @content; }
+  }
+}
