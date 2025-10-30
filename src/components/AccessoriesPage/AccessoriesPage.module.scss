@@ -1,0 +1,70 @@
+@import '../../Mixins/mixins.scss';
+
+.AccessoriesPage {
+  @include page-grid;
+  row-gap: 20px;
+  justify-self: center;
+}
+
+h1 {
+  grid-column: 1 / -1;
+}
+
+.productsGrid {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 16px;
+
+  & > * {
+    min-width: 0;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include on-bigTablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.icon {
+  &__home {
+    display: block;
+    background-image: url('/public/icons/Home.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__right {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.text {
+  color: #75767f;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}

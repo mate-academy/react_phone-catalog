@@ -1,0 +1,24 @@
+.favourites {
+  padding: 40px 20px;
+  color: #fff;
+  min-height: 80vh;
+  background-color: #0f1121;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.empty {
+  font-size: 18px;
+  text-align: center;
+  color: #888;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}

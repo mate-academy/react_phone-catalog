@@ -1,0 +1,101 @@
+@import '../../Mixins/mixins.scss';
+
+.footer {
+  display: flex;
+  height: 96px;
+  border-top: 1px solid #323542;
+  margin-top: auto;
+  align-items: center;
+  justify-content: center;
+
+  @include on-mobile {
+    height: 257px;
+    align-items: flex-start;
+  }
+}
+
+.footer__inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 32px 16px;
+  }
+}
+
+.logo {
+  display: flex;
+  background-image: url('/public/icons/Logo.svg');
+  width: 89px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: block;
+  text-indent: -9999px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+
+  @include on-mobile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  a {
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #75767f;
+    }
+  }
+}
+
+.toTopBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  background-image: url('/public/icons/Slider-button.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.backToTop {
+  display: flex;
+  gap: 16px;
+  align-self: center;
+  justify-content: center;
+}
+
+.totop {
+  font-weight: 700;
+  font-size: 12px;
+  color: #75767F;
+  align-self: center;
+}

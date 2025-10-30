@@ -1,0 +1,136 @@
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+/* wrapper містить slides + бічні панелі */
+.slides-wrapper {
+  position: relative;
+  display: flex;
+  align-items: stretch; /* щоб side-panel розтягувалась на всю висоту slides */
+  width: 100%;
+  height: 400px; /* фіксована висота банера */
+  overflow: visible; /* панелі можуть виходити за межі, якщо потрібно */
+}
+
+/* бічна панель — займає висоту банера, фіксована ширина */
+.side-panel {
+  width: 64px; /* ширина панелі по боках */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* можна зробити напівпрозорий фон, якщо хочеш */
+  cursor: pointer;
+  z-index: 50;
+  user-select: none;
+}
+
+/* позиції панелей */
+.side-left {
+  order: 0;
+} /* зліва */
+.side-right {
+  order: 2;
+} /* справа */
+
+/* slides займає центр (розгортається між панелями) */
+.slides {
+  order: 1;
+  position: relative;
+  flex: 1 1 auto; /* заповнює весь простір між панелями */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* зображення — абсолютно поверх slides, щоб не було "дьоргання" */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* всередині бічної панелі — квадратна кнопка */
+.side-btn {
+  width: 32px;
+  height: 400px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #323542;
+  color: #fff;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    transform 120ms ease;
+}
+
+.side-btn:hover {
+  background: #2d303b;
+  transform: scale(1.03);
+}
+
+/* Dots */
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  gap: 8px;
+}
+
+.dot-container {
+  cursor: pointer;
+}
+.dot {
+  position: relative;
+  display: block;
+  width: 12px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.18);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.dot.active {
+  width: 20px;
+  background-color: rgba(255, 255, 255, 0.28);
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #905bff;
+  transition: width 0.05s linear;
+}
+
+/* адаптив */
+@media (max-width: 768px) {
+  .slides-wrapper {
+    height: 260px;
+  }
+  .side-panel {
+    width: 48px;
+  }
+  .side-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
