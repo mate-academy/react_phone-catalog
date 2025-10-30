@@ -15,6 +15,7 @@ import CardDetails from './components/CardDetails/CardDetails';
 export const App = () => {
   return (
     <div className="App">
+
       <NavBar />
       <main className="main-with-fixed-header">
         <Routes>

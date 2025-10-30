@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles.header_content}>
-        <h1 className={styles.header_title}>Welcome to Nice Gadgets store!</h1>
+        <h2 className={styles.header_title}>Welcome to Nice Gadgets store!</h2>
       </div>
 
       <SliderSwiper />
