@@ -8,25 +8,28 @@ interface IconProps {
   iconStyles?: IconStyles;
 }
 
-const getClassName = (modifier: string) =>
+const getImgClassName = (modifier: string) =>
   styles[('icon__img_' + modifier) as keyof typeof styles] || '';
+
+const getIconClassName = (modifier: undefined | string) =>
+  modifier ? styles[('icon_' + modifier) as keyof typeof styles] || '' : '';
 
 const Icon: React.FC<IconProps> = ({ href, onClick, iconStyles }) => {
   const isLink = !!href;
   const isButton = !!onClick;
 
   const imageStyles = Array.isArray(iconStyles?.image)
-    ? iconStyles.image.map(getClassName).join(' ').trim()
+    ? iconStyles.image.map(getImgClassName).join(' ').trim()
     : typeof iconStyles?.image === 'string'
-      ? getClassName(iconStyles.image)
+      ? getImgClassName(iconStyles.image)
       : '';
 
   const iconClasses = [
     styles.icon,
     iconStyles?.border ? styles.icon_border : '',
-    iconStyles?.type
-      ? styles[('icon_' + iconStyles.type) as keyof typeof styles]
-      : '',
+    getIconClassName(iconStyles?.type),
+    getIconClassName(iconStyles?.width),
+    getIconClassName(iconStyles?.borderType),
   ].join(' ');
 
   const imgElement = (

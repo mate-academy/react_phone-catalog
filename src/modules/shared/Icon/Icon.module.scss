@@ -16,6 +16,10 @@
     }
   }
 
+  &_border_bottom {
+    border-bottom: 2px solid $primary-color;
+  }
+
   &_tablet {
     display: none;
 
@@ -28,6 +32,10 @@
     @include on-tablet {
       display: none;
     }
+  }
+
+  &_width_100 {
+    width: 100%;
   }
 
   &__img {

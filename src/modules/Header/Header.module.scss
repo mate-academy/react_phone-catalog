@@ -5,7 +5,7 @@
   flex-direction: column;
   background-color: $body-background-color;
 
-  &-mobile {
+  &_mobile {
     position: absolute;
     inset: 0;
     z-index: 10;

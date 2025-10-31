@@ -9,7 +9,7 @@ interface NavigationProp {
 }
 
 const getClassName = (modifier: string) =>
-  styles[('icon__img_' + modifier) as keyof typeof styles] || '';
+  styles[('nav_' + modifier) as keyof typeof styles] || '';
 
 const Navigation: React.FC<NavigationProp> = ({ modifier }) => {
   const { t } = useTranslation();

@@ -1,4 +1,4 @@
-export type IconImageModifiers =
+type IconImageModifiers =
   | 'favorites'
   | 'close'
   | 'cart'
@@ -9,10 +9,12 @@ export type IconImageModifiers =
   | 'arrowRight'
   | 'disabled';
 
-export type IconTypes = 'tablet' | 'mobile' | 'cart';
+type IconTypes = 'tablet' | 'mobile' | 'cart';
 
 export interface IconStyles {
   border?: boolean;
+  borderType?: 'border_bottom';
+  width?: 'width_100';
   type?: IconTypes;
   image: IconImageModifiers | IconImageModifiers[];
 }

@@ -22,11 +22,11 @@ export const Header = () => {
     <>
       <header
         className={cn(styles.header, {
-          [styles['header-mobile']]: showMobile,
+          [styles.header_mobile]: showMobile,
         })}
       >
         <div className={styles.nav}>
-          <NavLink className={styles.nav__image} to="/">
+          <NavLink className={styles.nav__logo} to="/">
             <img className={styles.nav__image} src="img/assets/logo.svg"></img>
           </NavLink>
           <Navigation />
