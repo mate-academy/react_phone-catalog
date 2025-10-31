@@ -87,7 +87,7 @@ export const PicturesSlider: React.FC = () => {
                   </p>
 
                   <p className={styles.slider__subtitle}>Be the first!</p>
-                  <button className={styles.slider__ctaButton}>
+                  <button className={styles.slider__ctaButton} disabled>
                     {slide.cta}
                   </button>
                 </div>
