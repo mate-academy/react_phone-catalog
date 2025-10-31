@@ -5,7 +5,7 @@
   padding: 32px;
   height: 506px;
   grid-auto-flow: row;
-  grid-template-rows: auto repeat(4, min-content);
+  grid-template-rows: auto repeat(5, min-content);
   gap: 8px;
 
   &__image {
@@ -71,9 +71,5 @@
     height: 40px;
     gap: 8px;
     justify-content: space-between;
-  }
-
-  &__buttonFavorite {
-    flex: 0 0 40px;
   }
 }

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './HomePage.module.scss';
 import Slider from './Slider';
 import HomeCatalog from './HomeCatalog';
-import { Product } from '../../types/product';
+import { Product } from '../../types/Product';
 import products from '../../../public/api/products.json';
 import { SLIDER_COUNT } from '../constants';
 

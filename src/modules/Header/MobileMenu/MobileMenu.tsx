@@ -2,7 +2,6 @@ import styles from './MobileMenu.module.scss';
 import cn from 'classnames';
 import Navigation from '../Navigation/Navigation';
 import Icon from '../../shared/Icon';
-import { IconModifiers } from '../../../types/iconModifiers';
 
 const MobileMenu: React.FC<{ pathname: string }> = ({ pathname }) => {
   return (
@@ -11,17 +10,17 @@ const MobileMenu: React.FC<{ pathname: string }> = ({ pathname }) => {
       <div className={cn(styles.buttons)}>
         <div
           className={cn(styles.button, {
-            [styles['button--active']]: pathname.startsWith('/favorites'),
+            [styles.button_active]: pathname.startsWith('/favorites'),
           })}
         >
-          <Icon href="favorites" modifiers={IconModifiers.Favorites} />
+          <Icon href="favorites" iconStyles={{ image: 'favorites' }} />
         </div>
         <div
           className={cn(styles.button, {
-            [styles['button--active']]: pathname.startsWith('/cart'),
+            [styles.button_active]: pathname.startsWith('/cart'),
           })}
         >
-          <Icon href="cart" modifiers={IconModifiers.Cart} />
+          <Icon href="cart" iconStyles={{ image: 'cart' }} />
         </div>
       </div>
     </div>

@@ -52,27 +52,4 @@
     justify-content: end;
     align-items: center;
   }
-
-  &__tableLink {
-    display: none;
-    height: 100%;
-    width: 48px;
-
-    @include on-tablet {
-      display: flex;
-    }
-
-    @include on-tablet {
-      width: 64px;
-    }
-  }
-
-  &__mobileButton {
-    height: 100%;
-    width: 48px;
-
-    @include on-tablet {
-      display: none;
-    }
-  }
 }

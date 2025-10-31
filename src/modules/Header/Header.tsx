@@ -5,7 +5,6 @@ import styles from './Header.module.scss';
 import Navigation from './Navigation/Navigation';
 import Icon from '../shared/Icon';
 import MobileMenu from './MobileMenu';
-import { IconModifiers } from '../../types/iconModifiers';
 
 export const Header = () => {
   const location = useLocation();
@@ -18,8 +17,6 @@ export const Header = () => {
   useEffect(() => {
     setShowMobile(false);
   }, [location.pathname]);
-
-  const mobileMenuIcon = showMobile ? IconModifiers.Close : IconModifiers.Menu;
 
   return (
     <>
@@ -34,24 +31,18 @@ export const Header = () => {
           </NavLink>
           <Navigation />
           <div className={styles.nav__buttons}>
-            <div className={styles.nav__tableLink}>
-              <Icon
-                href="favorites"
-                modifiers={[IconModifiers.TabletIcon, IconModifiers.Favorites]}
-              />
-            </div>
-            <div className={styles.nav__tableLink}>
-              <Icon
-                href="cart"
-                modifiers={[IconModifiers.TabletIcon, IconModifiers.Cart]}
-              />
-            </div>
-            <div className={styles.nav__mobileButton}>
-              <Icon
-                onClick={handleMobileMenuClick}
-                modifiers={[IconModifiers.MobileIcon, mobileMenuIcon]}
-              />
-            </div>
+            <Icon
+              href="favorites"
+              iconStyles={{ type: 'tablet', image: 'favorites' }}
+            />
+            <Icon href="cart" iconStyles={{ type: 'tablet', image: 'cart' }} />
+            <Icon
+              onClick={handleMobileMenuClick}
+              iconStyles={{
+                type: 'mobile',
+                image: showMobile ? 'close' : 'menu',
+              }}
+            />
           </div>
         </div>
         {showMobile && <MobileMenu pathname={location.pathname} />}

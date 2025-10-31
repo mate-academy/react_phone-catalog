@@ -8,6 +8,9 @@ interface NavigationProp {
   modifier?: string | string[];
 }
 
+const getClassName = (modifier: string) =>
+  styles[('icon__img_' + modifier) as keyof typeof styles] || '';
+
 const Navigation: React.FC<NavigationProp> = ({ modifier }) => {
   const { t } = useTranslation();
   let navClasses = styles.nav;
@@ -16,8 +19,8 @@ const Navigation: React.FC<NavigationProp> = ({ modifier }) => {
     navClasses +=
       ' ' +
       (Array.isArray(modifier)
-        ? modifier.map(iconClass => styles[iconClass] || '').join(' ')
-        : styles[modifier]);
+        ? modifier.map(iconClass => getClassName(iconClass) || '').join(' ')
+        : getClassName(modifier));
   }
 
   const getLinkClasses = ({ isActive }: NavLinkRenderProps) =>

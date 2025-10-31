@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import styles from './ProductCard.module.scss';
-import { Product } from '../../../types/product';
+import { Product } from '../../../types/Product';
 import { CURRENCY_SYMBOL } from '../../constants';
 import Button from '../Button';
 import Icon from '../Icon';
-import { IconModifiers } from '../../../types/iconModifiers';
 
 interface Props {
   product: Product;
@@ -74,16 +73,13 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             {product.ram}
           </span>
         </p>
-        <div className={styles.product__buttons}>
-          <Button text="Add to card" />
-          <div className={styles.product__buttonFavorite}>
-            <Icon
-              onClick={() => addToFavorites(product.id)}
-              modifiers={[IconModifiers.Favorites, IconModifiers.Border]}
-              border={true}
-            />
-          </div>
-        </div>
+      </div>
+      <div className={styles.product__buttons}>
+        <Button text={t('product-card.add_to_card')} />
+        <Icon
+          onClick={() => addToFavorites(product.id)}
+          iconStyles={{ border: true, image: 'favorites' }}
+        />
       </div>
     </div>
   );

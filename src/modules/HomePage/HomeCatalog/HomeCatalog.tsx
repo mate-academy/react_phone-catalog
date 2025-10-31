@@ -1,5 +1,5 @@
 import styles from './HomeCatalog.module.scss';
-import { Product } from '../../../types/product';
+import { Product } from '../../../types/Product';
 import ProductCard from '../../shared/ProductCard';
 
 interface Props {
