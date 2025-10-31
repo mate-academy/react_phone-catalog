@@ -1,5 +1,5 @@
 .header {
-  position: sticky;  // або fixed
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -10,9 +10,7 @@
   height: 64px;
   z-index: 1000;
 
-
-
-.logo {
+  .logo {
     &_img {
       width: 80px;
       height: 28px;
@@ -63,34 +61,5 @@
     display: flex;
     margin-left: auto;
     height: 100%;
-  }
-
-  .iconBox {
-    height: 64px;
-    width: 64px;
-    border: 1px solid #E2E6E9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-    &:hover {
-      background: #f0f0f0;
-    }
-
-    &:not(:first-child) {
-      margin-left: -1px;
-    }
-
-    &:focus,
-    &:active {
-      outline: none;
-      transform: none;
-    }
-
-    img {
-      width: 20px;
-      height: 20px;
-    }
   }
 }

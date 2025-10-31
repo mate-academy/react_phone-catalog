@@ -1,0 +1,131 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+  margin-bottom: 8px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px; /* ✅ відстань до характеристик */
+
+  .current {
+    font-weight: 700;
+    font-size: 22px;
+    color: #313237;
+  }
+
+  .old {
+    font-weight: 500;
+    font-size: 22px;
+    color: #89939a;
+    text-decoration: line-through;
+  }
+}
+
+.details {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px; /* ✅ відстань до кнопок */
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+
+    span:last-child {
+      color: #313237;
+      font-weight: 600;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px; /* ✅ між Add to cart і сердечком */
+
+  .addToCart {
+    flex: 1;
+    background-color: #313237;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 14px 0; /* ~48px висота */
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: #505157;
+    }
+  }
+
+  .fav {
+    background: transparent;
+    border: 1px solid #e2e6e9;
+    border-radius: 4px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

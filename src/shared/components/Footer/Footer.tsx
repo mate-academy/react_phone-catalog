@@ -48,7 +48,9 @@ export const Footer: React.FC = () => {
       </nav>
 
       <div className={styles.actions}>
-        <span className={styles.text}>Back to top</span>
+        <span className={styles.text} tabIndex={0}>
+          Back to top
+        </span>
         <button
           onClick={scrollToTop}
           className={styles.iconBox}

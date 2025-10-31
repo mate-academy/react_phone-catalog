@@ -1,0 +1,99 @@
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1136px; /* як у Figma */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px; /* легке заокруглення кутів */
+
+  /* Адаптивність */
+  @media (max-width: 768px) {
+    .arrow {
+      width: 36px;
+      height: 36px;
+      font-size: 1.5rem;
+    }
+
+  &:hover .arrow {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #313237;
+  }
+}
+
+.sliderViewport {
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 6;
+}
+
+/* Лінія зображень */
+.sliderTrack {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Кожне зображення */
+.image {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+/* Стрілки */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 10;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #313237;
+  }
+}
+
+.left {
+  left: 16px;
+}
+
+.right {
+  right: 16px;
+}
+
+/* Індикатори */
+.dots {
+  position: absolute;
+  bottom: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &.active {
+    background-color: #fff;
+  }
+}
+}

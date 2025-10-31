@@ -1,0 +1,90 @@
+.section {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 1200px) {
+    padding: 0;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  color: #313237;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1 1 calc(33.33% - 16px);
+  text-decoration: none;
+  color: #000;
+  text-align: left;
+  transition: transform 0.3s ease;
+  max-width: 360px;
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* заповнює весь блок без спотворення */
+    object-position: center; /* базова позиція */
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .image {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    flex: 1 1 calc(50% - 16px);
+  }
+
+  @media (max-width: 480px) {
+    flex: 1 1 100%;
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 368px; /* 🎯 висота як у макеті */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background-color: #f8f8f8; /* щоб не мигало при завантаженні */
+}
+
+.card:nth-child(1) .image {
+  object-position: left center; /* телефони */
+}
+
+.card:nth-child(2) .image {
+  object-position: left center;
+}
+
+.card:nth-child(3) .image {
+  object-position: left center; /* аксесуари */
+}
+
+.name {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #313237;
+  margin-bottom: 4px;
+}
+
+.count {
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+}
