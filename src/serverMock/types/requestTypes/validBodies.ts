@@ -1,0 +1,38 @@
+import { ItemsOnPage, OrderParams, ServerCategory } from '@server/static';
+import { CartItem, Pickup, Shipment, UserDetails } from '..';
+
+interface ValidCatalogueBody {
+  itemType: ServerCategory;
+  sort: OrderParams;
+  perPage: ItemsOnPage;
+  page: number;
+}
+
+interface ValidAmountBody {
+  category: ServerCategory;
+}
+
+interface ValidProdBody {
+  itemId: string;
+}
+
+interface ValidCartBody {
+  items: CartItem[];
+}
+
+const VALID_CHECKOUT_BODY_LENGTH = 4;
+
+interface ValidCheckoutBody extends ValidCartBody {
+  userDetails: UserDetails;
+  deliveryDetails: Pickup | Shipment;
+  dataProcessingAgreement: true;
+}
+
+export {
+  type ValidCatalogueBody,
+  type ValidCartBody,
+  type ValidProdBody,
+  type ValidAmountBody,
+  type ValidCheckoutBody,
+  VALID_CHECKOUT_BODY_LENGTH,
+};

@@ -1,6 +1,7 @@
 import { validate } from '../validation';
 import { getService } from '../services';
-import { RequestType, Status } from '../types';
+import { Status } from '../types';
+import { RequestType } from '@server/static';
 
 const DELAY = 800;
 

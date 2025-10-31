@@ -1,9 +1,8 @@
 import { apiFetch } from '@server/helpers';
-import { ApiEndpoint } from '@server/static';
+import { ApiEndpoint, ServerCategory } from '@server/static';
 import {
   ErrorObject,
   Product,
-  ServerCategory,
   Status,
   ValidAmountParams,
   ValidProdParams,

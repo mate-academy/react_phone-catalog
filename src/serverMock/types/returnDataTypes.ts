@@ -9,8 +9,8 @@ import {
   Ram,
   Resolutions,
   Screens,
+  ServerCategory,
 } from '@server/static';
-import { ServerCategory } from '.';
 
 interface Base {
   id: string;
@@ -58,6 +58,8 @@ enum Status {
 
 interface ErrorObject {
   status: Status.ERROR;
+  statusCode: number;
+  error: string;
   message: string;
 }
 

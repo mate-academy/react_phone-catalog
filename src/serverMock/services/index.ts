@@ -1,7 +1,7 @@
-import { RequestType } from '@server/types';
 import { getBanners } from './bannerService';
 import { getAmount, getProduct } from './productService';
 import { getCatalogueItems } from './catalogService';
+import { RequestType } from '@server/static';
 
 const getService = {
   [RequestType.CATALOGUE]: getCatalogueItems,

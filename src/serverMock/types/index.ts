@@ -1,19 +1,4 @@
 export {
-  type ValidCatalogueParams,
-  type ValidProdParams,
-  type ValidParams,
-  type ValidAmountParams,
-  type ValidCheckoutParams,
-} from './ValidEntryParams';
-
-export {
-  OrderParams,
-  ItemsOnPage,
-  RequestType,
-  ServerCategory,
-} from './ServicesEnums';
-
-export {
   type BaseProduct,
   type Product,
   type BannerData,
@@ -27,4 +12,19 @@ export {
   type Pickup,
   type UserDetails,
   type CartItem,
+  USER_DETAILS_LENGTH,
+  type Birthday,
+  BDAY_LENGTH,
+  ADDRESS_LENGTH,
+  DeliveryTypes,
 } from './orderDetailTypes';
+export {
+  type ValidCatalogueBody,
+  type ValidCartBody,
+  type ValidProdBody,
+  type ValidAmountBody,
+  type ValidCheckoutBody,
+  type ValidRequest,
+  type MethodRequestMap,
+  type BodyRequestMap,
+} from './requestTypes';
