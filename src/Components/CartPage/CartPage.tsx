@@ -66,19 +66,19 @@ export const CartPage: React.FC = () => {
         <div className="cart-catalog__wrapper">
           {products.length > 0 ? (
             <>
-            {/* eslint-disable prettier/prettier */}
+              {/* eslint-disable prettier/prettier */}
               <div className="cart-catalog">
-                {+currentwidth > 639
-                  ? products.map(p => (
-                      <ViewCart key={p.id} product={p} onRemove={onRemove} />
-                    ))
-                  : products.map(p => (
+                {+currentwidth > 639 ? (
+                  products.map(p => (
+                    <ViewCart key={p.id} product={p} onRemove={onRemove} />
+                  ))) : (
+                    products.map(p => (
                       <MobileViewCart
                         key={p.id}
                         product={p}
                         onRemove={onRemove}
                       />
-                    ))}
+                    )))}
               </div>
               {/* eslint-disable prettier/prettier */}
 
