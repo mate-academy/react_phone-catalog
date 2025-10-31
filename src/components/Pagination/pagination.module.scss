@@ -1,0 +1,43 @@
+.pagination {
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.page-item {
+  background-color: var(--color-surface-1);
+
+  @include flex-center;
+  @include square(32px);
+
+  @include hover {
+    background-color: var(--color-surface-2);
+  }
+
+  & span {
+    color: var(--color-white);
+  }
+}
+
+.arrow-prev,
+.arrow-next {
+  background-color: var(--color-surface-2);
+}
+
+.active {
+  background-color: var(--color-pagination-active);
+
+  @include hover {
+    background-color: var(--color-pagination-active);
+  }
+}
+
+.disabled {
+  background-color: var(--color-surface-1);
+}
+
+.page-link {
+  padding: 6px 12px;
+  font-size: 14px;
+  color: var(--color-white);
+}

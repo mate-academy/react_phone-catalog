@@ -2,15 +2,24 @@ import style from './phones.module.scss';
 import home from '@Images/icons/Home.svg';
 import arrow from '@Images/icons/Arrow-black-right.svg';
 import { useEffect, useState } from 'react';
-import { fetchPhones } from '@Fetch';
+import { fetchPhones, fetchProducts } from '@Fetch';
 import { ProductList } from '@GlobalComponents';
+import { Products } from 'src/types/products';
 
 export const PhonePage = () => {
-  const [phones, setPhones] = useState([]);
+  const [phones, setPhones] = useState<Products[]>([]);
   const [loading, setLoading] = useState(false);
 
+  // useEffect(() => {
+  //   fetchPhones().then(setPhones);
+  // }, []);
+
   useEffect(() => {
-    fetchPhones().then(setPhones);
+    fetchProducts().then((data: Products[]) => {
+      const result = data.filter((el: Products) => el.category === 'phones');
+
+      setPhones(result);
+    });
   }, []);
 
   return (

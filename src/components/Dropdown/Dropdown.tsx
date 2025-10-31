@@ -1,15 +1,19 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from './dropwdown.module.scss';
 import arrow from '@Images/icons/dropdown-arrow.svg';
 import cn from 'classnames';
 
-type Props = {
-  sort: string[];
-  onSelect: (v: string) => void;
-  selected: string;
+type Props<T extends string | number> = {
+  sort: T[];
+  onSelect: (v: T) => void;
+  selected: T;
 };
 
-export const Dropdown: FC<Props> = ({ sort, onSelect, selected }) => {
+export const Dropdown = <T extends string | number>({
+  sort,
+  onSelect,
+  selected,
+}: Props<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 

@@ -6,7 +6,7 @@ export const fetchProducts = async (): Promise<[]> => {
       throw new Error(`Failed to fetch: ${response.status}`);
     }
 
-    const products: [] = await response.json();
+    const products = await response.json();
 
     return products;
   } catch (error) {
