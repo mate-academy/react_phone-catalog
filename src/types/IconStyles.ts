@@ -4,7 +4,10 @@ export type IconImageModifiers =
   | 'cart'
   | 'menu'
   | 'border'
-  | 'favorites_active';
+  | 'favorites_active'
+  | 'arrowLeft'
+  | 'arrowRight'
+  | 'disabled';
 
 export type IconTypes = 'tablet' | 'mobile' | 'cart';
 

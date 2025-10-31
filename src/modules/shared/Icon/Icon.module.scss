@@ -59,5 +59,18 @@
     &_menu {
       background: center center url('img/assets/icons/menu.svg');
     }
+
+    &_arrowLeft {
+      background-color: $primary-color;
+      mask-image: url('img/assets/icons/arrow_left.svg');
+    }
+
+    &_arrowRight {
+      background: center center url('img/assets/icons/arrow_right.svg');
+    }
+
+    &_disabled {
+      background-color: $icon-color;
+    }
   }
 }

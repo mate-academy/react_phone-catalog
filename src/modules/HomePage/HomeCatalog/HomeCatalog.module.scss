@@ -1,18 +1,25 @@
 @use '../../../scss/main.scss' as *;
 
 .catalog {
-  &__title {
-    @extend %h2;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
   &__top {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    @extend %h2;
   }
 
   &__buttons {
     display: flex;
+    height: 32px;
+    gap: 8px;
   }
 
   &__slider {
