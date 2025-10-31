@@ -29,8 +29,6 @@ const Icon: React.FC<IconProps> = ({ href, onClick, iconStyles }) => {
       : '',
   ].join(' ');
 
-  console.log(iconClasses);
-
   const imgElement = (
     <span className={`${styles.icon__img} ${imageStyles}`}></span>
   );
