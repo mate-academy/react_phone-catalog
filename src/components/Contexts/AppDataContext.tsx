@@ -104,9 +104,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const getCartItemsCount = () =>
     cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  const clearCart = () => {
-    setCart([]);
-  };
+const clearCart = () => {
+  console.log('Clearing cart...');
+  localStorage.setItem('cart', '[]');
+  setCart([]);
+  console.log('Cart cleared completely');
+};
 
   const addToFavorites = (product: Product) => {
     if (!favourites.find(p => p.id === product.id)) {

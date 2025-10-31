@@ -16,7 +16,7 @@ export const NavBar: React.FC = () => {
   const { currentCategory } = useCategory();
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
   const menuId = 'mobile-navigation';
-  const { favourites, cart } = useAppContext();
+  const { favourites, cart, getCartItemsCount } = useAppContext();
 
   const links = [
     { path: '/', title: 'Home' },
@@ -105,7 +105,7 @@ export const NavBar: React.FC = () => {
             <div className={styles.miniContainer}>
               <img src={Cart} alt="Cart" />
               {cart.length > 0 && (
-                <span className={styles.badge}>{cart.length}</span>
+                <span className={styles.badge}>{getCartItemsCount()}</span>
               )}
             </div>
           </Link>

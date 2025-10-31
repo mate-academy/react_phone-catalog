@@ -11,7 +11,11 @@ type Props = {
   option: 'new' | 'hot';
 };
 
-export const CardSlider: React.FC<Props> = ({ products, title, option }) => {
+export const CardSlider: React.FC<Props> = ({
+  products,
+  title,
+  option,
+}) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
@@ -105,7 +109,10 @@ export const CardSlider: React.FC<Props> = ({ products, title, option }) => {
         <div className={styles.slider} ref={sliderRef}>
           {products.map(product => (
             <div className={styles.cardWrapper} key={product.id}>
-              <CardItem product={product} option={option} />
+              <CardItem
+                product={product}
+                option={option}
+              />
             </div>
           ))}
         </div>

@@ -293,23 +293,12 @@
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: center;
-
-  &:hover {
-    border-color: $color-light;
-    color: $color-light;
-  }
 }
 
 .capacity_button_active {
   background-color: $color-light;
   color: $color-main;
   border-color: $color-light;
-
-  &:hover {
-    border: 1px solid $color-text;
-    background-color: transparent;
-    color: $color-light;
-  }
 }
 
 .prices {

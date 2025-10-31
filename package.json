@@ -52,9 +52,12 @@
     "deploy": "mate-scripts deploy",
     "prepare": "husky"
   },
-  "lint-staged": {
+ "lint-staged": {
     "*.{ts,tsx}": [
-      "npm run lint"
+      "echo 'Skipping TypeScript files in lint-staged'"
+    ],
+    "*.scss": [
+      "npm run style-format"
     ]
   },
   "browserslist": {

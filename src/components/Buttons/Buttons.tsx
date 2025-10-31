@@ -25,6 +25,7 @@ const Buttons = ({
     isAdded,
     removeFromCart,
     addToCart,
+    cart,
   } = useAppContext();
 
   const handleFavClicked = () => {
@@ -35,11 +36,52 @@ const Buttons = ({
     }
   };
 
-  const handleCartClicked = () => {
+  console.log(
+    'Buttons render - product:',
+    product.id,
+    'isAdded:',
+    isAdded(product.id),
+    'cart length:',
+    cart.length,
+  );
+
+  const smoothScrollToTop = () => {
+    const duration = 1000;
+    const start = window.scrollY;
+    const startTime = performance.now();
+
+    const animateScroll = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      const ease =
+        progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+      window.scrollTo(0, start * (1 - ease));
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
+  };
+
+  const handleCartClicked = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (isAdded(product.id)) {
       removeFromCart(product.id);
     } else {
       addToCart(product);
+
+      const button = event.currentTarget;
+      const alsoLikeSection = button.closest('[data-also-like="true"]');
+
+      if (alsoLikeSection) {
+        console.log('Using custom smooth scroll');
+        smoothScrollToTop();
+      }
     }
   };
 
@@ -47,13 +89,15 @@ const Buttons = ({
 
   return (
     <div
-      className={`${styles.buttons} ${styles[`buttons_${size}`]} ${styles[`buttons_${align}`]}`}
+      className={`${styles.buttons} ${styles[`buttons_${size}`]} ${
+        styles[`buttons_${align}`]
+      }`}
     >
       <button
         onClick={handleCartClicked}
         className={`${styles.button} ${styles.button_add} ${
-          isProductAdded ? styles.button_disabled : ''
-        } ${styles[`button_add_${size}`]}`}
+          styles[`button_add_${size}`]
+        }`}
         disabled={isProductAdded}
       >
         {isProductAdded ? 'Added' : 'Add to cart'}
@@ -61,7 +105,9 @@ const Buttons = ({
 
       <button
         onClick={handleFavClicked}
-        className={`${styles.button} ${styles.button_fav} ${styles[`button_fav_${size}`]}`}
+        className={`${styles.button} ${styles.button_fav} ${
+          styles[`button_fav_${size}`]
+        }`}
       >
         <img
           className={styles.img}

@@ -59,7 +59,7 @@ const AlsoLike = ({ currentProduct }: AlsoLikeProps) => {
   }
 
   return (
-    <div className={styles.section}>
+  <div className={styles.section} data-also-like="true">
       <CardSlider
         products={relatedProducts}
         title="You may also like"
