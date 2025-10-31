@@ -3,6 +3,7 @@ import { Product } from '../../../api/types';
 import { Dropdowns } from './Dropdowns';
 import scss from './ProductsList.module.scss';
 import { ProductCard } from '../../shared/components/ProductCard';
+import { useSearchParams } from 'react-router-dom';
 
 interface Props {
   items: Product[];
@@ -13,31 +14,38 @@ export const ProductsList: React.FC<Props> = ({ items }) => {
     items.sort((a, b) => b.year - a.year),
   );
 
-  const [selectedValue, setSelectedValue] = useState<string>('newest');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedValue = searchParams.get('sort') || 'age';
 
   const sortByOptions = [
-    { value: 'newest', label: 'Newest' },
+    { value: 'age', label: 'Newest' },
     { value: 'price', label: 'Cheapest' },
-    { value: 'name', label: 'Alphabetically' },
+    { value: 'title', label: 'Alphabetically' },
   ];
 
   const sortBy = (value: string) => {
     switch (value) {
-      case 'newest':
+      case 'age':
         setSortedItems([...sortedItems].sort((a, b) => b.year - a.year));
-        setSelectedValue('newest');
         break;
       case 'price':
         setSortedItems([...sortedItems].sort((a, b) => a.price - b.price));
-        setSelectedValue('price');
         break;
-      case 'name':
+      case 'title':
         setSortedItems(
           [...sortedItems].sort((a, b) => a.name.localeCompare(b.name)),
         );
-        setSelectedValue('name');
         break;
     }
+
+    setSearchParams(
+      prevParams => {
+        prevParams.set('sort', value);
+
+        return prevParams;
+      },
+      { replace: true },
+    );
   };
 
   return (

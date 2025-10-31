@@ -14,7 +14,7 @@ interface Props {
 export const Catalog: React.FC<Props> = ({ items, title }) => {
   const { isLoading } = useContext(DataContext);
 
-  const amount = 0;
+  const amount = items.length;
 
   return (
     <div className={scss.catalog}>
