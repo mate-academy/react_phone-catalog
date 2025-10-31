@@ -35,7 +35,9 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           {CURRENCY_SYMBOL + product.fullPrice}
         </p>
       </div>
+
       <div></div>
+
       <div className={styles.product__specs}>
         <p className={styles.product__specLine}>
           <span className={styles.product__specText}>
@@ -74,6 +76,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           </span>
         </p>
       </div>
+
       <div className={styles.product__buttons}>
         <Button text={t('product-card.add_to_card')} />
         <Icon

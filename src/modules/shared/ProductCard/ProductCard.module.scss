@@ -2,11 +2,15 @@
 
 .product {
   display: grid;
+  height: 439px;
   padding: 32px;
-  height: 506px;
   grid-auto-flow: row;
   grid-template-rows: auto repeat(5, min-content);
   gap: 8px;
+
+  @include on-tablet {
+    height: 506px;
+  }
 
   &__image {
     min-height: 0;
