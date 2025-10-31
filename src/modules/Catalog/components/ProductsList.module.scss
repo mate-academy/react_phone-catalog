@@ -1,0 +1,14 @@
+.productsList {
+  &__itemsList {
+    display: flex;
+    flex-direction: column;
+    gap: 4.0rem;
+
+    justify-content: center;
+  }
+
+  &__item {
+    width: 28.7rem;
+    align-self: center;
+  }
+}

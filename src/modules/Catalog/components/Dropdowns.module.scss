@@ -1,0 +1,76 @@
+.dropdown {
+  width: 13.6rem;
+  margin: 3.2rem 1.6rem 2.4rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  position: relative;
+
+  &__label {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: rgba(137, 147, 154, 1);
+  }
+
+  &__trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 13.6rem;
+    height: 4.0rem;
+
+    border: 1px solid rgba(180, 189, 195, 1);
+
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+  }
+
+  &__arrow {
+    height: 1.6rem;
+    width: 1.6rem;
+
+    transform: rotate(90deg);
+    fill: rgba(180, 189, 195, 1);
+  }
+
+  &__menu {
+    border: 0.1rem solid rgba(226, 230, 233, 1);
+    box-shadow: 0 0.2rem 1.5rem 0 rgba(0, 0, 0, 0.05);
+    background-color: white;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+  }
+
+  &__menuItem {
+    height: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Mont, sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2.1rem;;
+    color: rgba(137, 147, 154, 1);
+
+    transition: color 0.5s ease;
+
+    &:hover {
+      color: rgba(49, 50, 55, 1);
+    }
+
+    &__active {
+      border: 0.1rem solid black;
+    }
+  }
+
+}

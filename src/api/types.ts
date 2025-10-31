@@ -91,6 +91,8 @@ export type Accessory = {
   cell: string[];
 };
 
+export type CatalogItem = Phone | Tablet | Accessory;
+
 export type StorageCartItem = {
   id: number;
   quantity: number;
