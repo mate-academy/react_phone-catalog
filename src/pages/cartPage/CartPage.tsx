@@ -1,7 +1,8 @@
 import { useCartPage } from './model';
-import { CartItemWidget, CheckoutWidget, ModalCheckout } from './ui';
+import { CartItemWidget, CheckoutWidget } from './ui';
 import styles from './styles/cartPage.module.scss';
 import { ReturnButton } from '@ui/returnButton';
+import { ModalCheckout } from '@widgets/modalCheckout';
 
 export const CartPage = () => {
   const { itemsInCart, updatePrice, totalPrice } = useCartPage();
@@ -32,7 +33,7 @@ export const CartPage = () => {
           </>
         )}
       </section>
-      <ModalCheckout totalPrice={+totalPrice} itemsInCart={itemsInCart} />
+      <ModalCheckout />
     </main>
   );
 };

@@ -1,4 +1,12 @@
-import { ServerCategory, ItemsOnPage, OrderParams } from '.';
+import {
+  ServerCategory,
+  ItemsOnPage,
+  OrderParams,
+  UserDetails,
+  Pickup,
+  Shipment,
+  CartItem,
+} from '.';
 
 interface ValidCatalogueParams {
   itemType: ServerCategory;
@@ -15,6 +23,16 @@ interface ValidProdParams {
   itemId: string;
 }
 
+interface ValidCartParams {
+  items: CartItem[];
+}
+
+interface ValidCheckoutParams extends ValidCartParams {
+  userDetails: UserDetails;
+  deliveryDetails: Pickup | Shipment;
+  dataProcessingAgreement: boolean;
+}
+
 type ValidParams = ValidCatalogueParams | ValidAmountParams | ValidProdParams;
 
 export {
@@ -22,4 +40,5 @@ export {
   type ValidProdParams,
   type ValidParams,
   type ValidAmountParams,
+  type ValidCheckoutParams,
 };

@@ -8,6 +8,8 @@
   box-sizing: border-box;
   border-top: 1px solid s.$c-elements;
   scrollbar-width: none;
+  z-index: s.$c-header;
+  background-color: s.$c-white;
 
   > a, div {
     padding: 16px;

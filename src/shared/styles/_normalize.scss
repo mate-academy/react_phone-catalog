@@ -28,3 +28,9 @@ a {
 li {
   list-style: none;
 }
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}

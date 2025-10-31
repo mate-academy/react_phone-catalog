@@ -1,0 +1,99 @@
+@use '@shared/styles' as s;
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: grid;
+  place-items: center;
+
+  z-index: s.$c-header;
+}
+
+.dialog {
+  display: grid;
+  width: 100%;
+  grid-template: 30px 1fr;
+  background-color: white;
+  align-items: center;
+  max-width: 720px;
+
+  > h2 {
+    @include s.t-h2;
+  }
+
+  > * {
+    padding: 0 15px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  :first-child {
+    padding: 10px 20px;
+
+    @include s.m-btn-btn-blc;
+
+    &:hover {
+      @include s.m-btn-hover-black;
+    }
+  }
+
+  :last-child {
+    padding: 10px 15px;
+
+    @include s.m-btn-btn-reg;
+
+    &:hover {
+      @include s.m-btn-hover-reg;
+    }
+  }
+}
+
+.checkbox-container {
+  display: flex;
+
+  > input {
+    justify-self: end;
+    margin-right: 10px;
+  }
+}
+
+.agreement {
+  @include s.t-button-text;
+}
+
+#dataProcessing {
+  justify-self: end;
+}
+
+.pagination {
+  display: grid;
+  padding: 0;
+  width: 100%;
+  height: 40px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  box-sizing: border-box;
+  background-color: s.$c-icons;
+}
+
+.pagination__button {
+  @include s.m-btn-btn-blc;
+
+  background-color: s.$c-grey-secondary;
+
+  &:hover {
+    @include s.m-btn-hover-black;
+  }
+
+  &--active {
+    background-color: s.$c-grey-primary;
+  }
+}

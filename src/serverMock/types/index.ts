@@ -3,6 +3,7 @@ export {
   type ValidProdParams,
   type ValidParams,
   type ValidAmountParams,
+  type ValidCheckoutParams,
 } from './ValidEntryParams';
 
 export {
@@ -20,3 +21,10 @@ export {
   type ValidResponse,
   Status,
 } from './returnDataTypes';
+
+export {
+  type Shipment,
+  type Pickup,
+  type UserDetails,
+  type CartItem,
+} from './orderDetailTypes';
