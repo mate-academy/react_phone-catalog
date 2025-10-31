@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Paginaation.scss';
 import classNames from 'classnames';
 
@@ -7,6 +7,7 @@ type Props = {
   paginate: (n: number) => void;
   previousPage: () => void;
   nextPage: () => void;
+  isPageActive: number | undefined;
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -14,9 +15,8 @@ export const Pagination: React.FC<Props> = ({
   paginate,
   nextPage,
   previousPage,
+  isPageActive,
 }) => {
-  const [isActive, setIsActive] = useState(false);
-
   return (
     <div className="catalog__pagination-buttons">
       <img
@@ -30,11 +30,10 @@ export const Pagination: React.FC<Props> = ({
         {pageNumbers.map(number => (
           <div
             className={classNames('catalog__pagination-number-button', {
-              // "pagination-active" : isActive,
+              'pagination-active': isPageActive === number,
             })}
             key={number}
             onClick={() => {
-              setIsActive(!isActive);
               paginate(number);
             }}
           >

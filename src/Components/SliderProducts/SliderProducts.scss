@@ -58,6 +58,23 @@
   }
 }
 
+@media (max-width: 1199px) {
+  .slider-products__icon-wrapper {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .slider-products__title {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+  }
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;

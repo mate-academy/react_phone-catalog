@@ -68,6 +68,13 @@
   }
 }
 
+@media (max-width: 639px) {
+  .catalog {
+    width: 97%;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .catalog-sort-dropdowns {
   display: flex;
   gap: 16px;
@@ -104,4 +111,14 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
+}
+
+.setMargin {
+  margin: 0;
+}
+
+@media (max-width: 639px) {
+  .setMargin {
+    margin-bottom: 160px;
+  }
 }

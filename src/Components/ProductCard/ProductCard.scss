@@ -42,6 +42,7 @@
     height: 42px;
     margin: 0;
     margin-top: 16px;
+    max-width: 278px;
   }
 
   &__price {
@@ -97,6 +98,12 @@
 @media (max-width: 924px) {
   .product {
     grid-column: span 6;
+  }
+}
+
+@media (max-width: 639px) {
+  .product {
+    grid-column: span 4;
   }
 }
 

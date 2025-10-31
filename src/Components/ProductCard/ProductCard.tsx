@@ -16,7 +16,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const isFavorite = favorites.includes(product.itemId);
   const isAdded = cart.find(
-    cartProduct => cartProduct.item.itemId === product.itemId,
+    cartProduct => cartProduct.item?.itemId === product.itemId,
   );
 
   return (

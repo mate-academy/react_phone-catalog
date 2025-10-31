@@ -1,7 +1,8 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Product } from '../types/Product';
 import { useLocalStorage } from '../hooks/useLocaleStorage';
 import { Gadget } from '../types/Gadget';
+import { GetProducts } from '../services/GetProducts';
 
 export interface CartProduct {
   item: Product;
@@ -22,10 +23,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [cart, setCart] = useLocalStorage<CartProduct[]>('cart', []);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    GetProducts().then(pr => setProducts(pr));
+  }, []);
 
   const toggleCart = (addedToProduct: Product) => {
     setCart((prev: CartProduct[]) => {
-      // prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id],
       const foundItem = prev.find(
         product => product.item.itemId === addedToProduct.itemId,
       );
@@ -41,28 +46,37 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         {
           item: addedToProduct,
           count: 1,
-        },
+        } as CartProduct,
       ];
     });
   };
 
   const toggleProductPageCart = (addedGadget: Gadget) => {
     setCart((prev: CartProduct[]) => {
-      // prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id],
-      const foundItem = prev.find(
-        product => product.gadget.id === addedGadget.id,
+      const foundItem = products.find(
+        (product: Product) => product.itemId === addedGadget.id,
       );
 
-      if (foundItem) {
-        return prev.filter(favId => favId.gadget.id !== addedGadget.id);
+      if (!foundItem) {
+        return prev;
+      }
+
+      const isInCart = prev.some(
+        cartItem => cartItem.item?.itemId === foundItem?.itemId,
+      );
+
+      if (isInCart) {
+        return prev.filter(
+          cartItem => cartItem.item?.itemId !== foundItem?.itemId,
+        );
       }
 
       return [
         ...prev,
         {
-          gadget: addedGadget,
+          item: foundItem,
           count: 1,
-        },
+        } as CartProduct,
       ];
     });
   };

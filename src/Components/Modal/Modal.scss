@@ -27,7 +27,18 @@
   margin-bottom: 8px;
 }
 
+
 .modal__desc {
   color: black;
   margin-bottom: 8px;
+}
+
+@media (max-width: 639px) {
+  .modal__content {
+    padding: 15px;
+  }
+
+  .modal__title {
+    font-size: 16px;
+  }
 }

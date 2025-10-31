@@ -14,6 +14,8 @@ export const CatalogPage: React.FC = () => {
   const [itemsOnPage, setItemsOnPage] = useState('all');
   const [isLoading, setIsLoading] = useState(true);
 
+  const [isPageActive, setIsPageActive] = useState<number | undefined>();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(
     filteredProducts.length,
@@ -89,10 +91,8 @@ export const CatalogPage: React.FC = () => {
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
+    setIsPageActive(pageNumber);
   };
-
-  const nextPage = () => setCurrentPage(prev => prev + 1);
-  const previousPage = () => setCurrentPage(prev => prev - 1);
 
   const pageNumbers: number[] = [];
 
@@ -103,6 +103,32 @@ export const CatalogPage: React.FC = () => {
   ) {
     pageNumbers.push(index);
   }
+
+  const nextPage = () =>
+    setCurrentPage(prev => {
+      if (currentPage === pageNumbers.length) {
+        setIsPageActive(prev);
+
+        return prev;
+      }
+
+      setIsPageActive(prev + 1);
+
+      return prev + 1;
+    });
+
+  const previousPage = () =>
+    setCurrentPage(prev => {
+      if (currentPage === 1) {
+        setIsPageActive(prev);
+
+        return prev;
+      }
+
+      setIsPageActive(prev - 1);
+
+      return prev - 1;
+    });
 
   return (
     <>
@@ -156,6 +182,7 @@ export const CatalogPage: React.FC = () => {
                 onChange={e => {
                   setItemsOnPage(e.target.value);
                   setCurrentPage(1);
+                  setIsPageActive(1);
                 }}
               >
                 <option value="all">all</option>
@@ -178,8 +205,11 @@ export const CatalogPage: React.FC = () => {
               paginate={paginate}
               nextPage={nextPage}
               previousPage={previousPage}
+              isPageActive={isPageActive}
             />
           )}
+
+          <div className="setMargin"></div>
         </div>
       )}
     </>

@@ -7,10 +7,14 @@ import { useCart } from '../../context/cartContext';
 import { ViewCart } from '../ViewCart/ViewCart';
 import { CartEmpty } from '../CartEmpty/CartEmpty';
 import { Checkout } from '../Checkout/Checkout';
+import { MobileViewCart } from '../MobileViewCart/MobileViewCart';
 
 export const CartPage: React.FC = () => {
   const { cart } = useCart();
   const [products, setProducts] = useState<Product[]>([]);
+  const [currentwidth, setCurrentWidth] = useState(window.innerWidth);
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     GetProducts().then(data => {
@@ -19,6 +23,18 @@ export const CartPage: React.FC = () => {
       );
 
       setProducts(addedToCart);
+
+      const handleResize = () => {
+        setCurrentWidth(window.innerWidth);
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      handleResize();
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
     });
   }, [cart]);
 
@@ -50,17 +66,22 @@ export const CartPage: React.FC = () => {
         <div className="cart-catalog__wrapper">
           {products.length > 0 ? (
             <>
+            {/* eslint-disable prettier/prettier */}
               <div className="cart-catalog">
-                {products.map(product => {
-                  return (
-                    <ViewCart
-                      key={product.id}
-                      product={product}
-                      onRemove={onRemove}
-                    />
-                  );
-                })}
+                {+currentwidth > 639
+                  ? products.map(p => (
+                      <ViewCart key={p.id} product={p} onRemove={onRemove} />
+                    ))
+                  : products.map(p => (
+                      <MobileViewCart
+                        key={p.id}
+                        product={p}
+                        onRemove={onRemove}
+                      />
+                    ))}
               </div>
+              {/* eslint-disable prettier/prettier */}
+
               <Checkout />
             </>
           ) : (

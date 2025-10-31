@@ -10,7 +10,11 @@ import { SliderProducts } from '../SliderProducts/SliderProducts';
 export const ProductPage = () => {
   const [product, setProduct] = useState<Gadget | null>(null);
   const [mainPhoto, setMainPhoto] = useState<string | undefined>('');
+
   const [photoIsActive, setPhotoIsActive] = useState<string | undefined>();
+  const [colorIsActive, setColorIsActive] = useState<string | undefined>();
+  const [capIsActive, setCapIsActive] = useState<string | undefined>();
+
   const { productId } = useParams();
   const location = useLocation();
 
@@ -20,15 +24,40 @@ export const ProductPage = () => {
 
   const BASE_ID = location.pathname.split('/');
   const idToChange = BASE_ID[BASE_ID.length - 1];
-  const arrayForColorReplase = idToChange.split('-');
-  // console.log(BASE_ID);
-  // console.log(idToChange);
-  // console.log(arrayForColorReplase);
+  const arrayForReplase = idToChange.split('-');
 
-  const createLink = (cl: string) => {
-    return arrayForColorReplase
-      .splice(arrayForColorReplase.length, 1, cl)
-      .toString();
+  const createColorLink = (cl: string) => {
+    const tempArr = [...arrayForReplase];
+
+    const colorParts = cl.trim().split(' ');
+
+    const checkElement = tempArr[tempArr.length - 2];
+    const hasDigit = checkElement.split('').some(ch => ch >= '0' && ch <= '9');
+
+    if (!hasDigit) {
+      tempArr.splice(tempArr.length - 2, 2, ...colorParts);
+    } else {
+      tempArr.splice(tempArr.length - 1, 1, ...colorParts);
+    }
+
+    return tempArr.join('-');
+  };
+
+  const createCapacityLink = (value: string) => {
+    const tempArr = [...arrayForReplase];
+
+    const capacityParts = value.toLowerCase().trim().split(' ');
+
+    const checkElement = tempArr[tempArr.length - 2];
+    const hasDigit = checkElement.split('').some(ch => ch >= '0' && ch <= '9');
+
+    if (hasDigit) {
+      tempArr.splice(tempArr.length - 2, 1, ...capacityParts);
+    } else {
+      tempArr.splice(tempArr.length - 3, 1, ...capacityParts);
+    }
+
+    return tempArr.join('-');
   };
 
   // arrayForColorReplase.splice(arrayForColorReplase.length, 1, color)
@@ -44,6 +73,8 @@ export const ProductPage = () => {
         setProduct(found || null);
         setMainPhoto(found?.images[0]);
         setPhotoIsActive(found?.images[0]);
+        setColorIsActive(found?.color);
+        setCapIsActive(found?.capacity);
       });
   }, [productId, typeOfProducts]);
 
@@ -52,7 +83,7 @@ export const ProductPage = () => {
 
   const isFavorite = product ? favorites.includes(product.id) : false;
   const isAdded = cart.find(
-    cartProduct => cartProduct.gadget.id === product?.id,
+    cartProduct => cartProduct.item?.itemId === product?.id,
   );
 
   return (
@@ -117,29 +148,71 @@ export const ProductPage = () => {
         />
 
         <div className="product-page-info-container">
+          <p className="product-page-available-colors">Available colors</p>
           <div className="product-page-colors">
-            <p>Available colors</p>
             {product?.colorsAvailable.map((color, i) => {
-              const link = createLink(color);
+              const link = createColorLink(color);
 
               return (
-                <Link
-                  to={link}
+                <div
                   key={i}
-                  className="product-page-color"
-                  style={{ backgroundColor: color }}
-                ></Link>
+                  className={classNames('product-page-color-wrapper', {
+                    'product-page-color-active': colorIsActive === color,
+                  })}
+                >
+                  <Link
+                    to={`/${typeOfProducts}/${link}`}
+                    key={i}
+                    className="product-page-color"
+                    style={{
+                      backgroundColor:
+                        color === 'midnightgreen'
+                          ? '#004953'
+                          : color && color === 'spacegray'
+                            ? 'grey'
+                            : color && color === 'space gray'
+                              ? 'grey'
+                              : color && color === 'midnight'
+                                ? '#222931'
+                                : color && color === 'sierrablue'
+                                  ? '#BFDAF7'
+                                  : color && color === 'graphite'
+                                    ? '#383428'
+                                    : color && color === 'spaceblack'
+                                      ? 'black'
+                                      : color && color === 'rose gold'
+                                        ? 'pink'
+                                        : color && color === 'rosegold'
+                                          ? 'pink'
+                                          : color && color === 'sky blue'
+                                            ? '#BFDAF7'
+                                            : color && color === 'starlight'
+                                              ? '#F8F9EC'
+                                              : color,
+                    }}
+                  ></Link>
+                </div>
               );
             })}
           </div>
 
           <p className="product-page-capacity">Select capacity</p>
           <div className="product-page-capacity-select">
-            {product?.capacityAvailable.map((p, i) => (
-              <button key={i} className="capacity-button">
-                {p}
-              </button>
-            ))}
+            {product?.capacityAvailable.map((p, i) => {
+              const link = createCapacityLink(p);
+
+              return (
+                <Link
+                  to={`/${typeOfProducts}/${link}`}
+                  key={i}
+                  className={classNames('capacity-button', {
+                    'capacity-button-active': capIsActive === p,
+                  })}
+                >
+                  {p}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="product__prices-page">

@@ -12,6 +12,7 @@ type Props = {
 export const SliderProducts: React.FC<Props> = ({ title }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [startIndex, setStartIndex] = useState(0);
+  const [currentwidth, setCurrentWidth] = useState(window.innerWidth);
 
   const shuffleArray = (array: Product[]) => {
     const arr = [...array];
@@ -36,6 +37,18 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
       const shuffled = shuffleArray(filtered);
 
       setProducts(shuffled.slice(0, 20));
+
+      const handleResize = () => {
+        setCurrentWidth(window.innerWidth);
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      handleResize();
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
     });
   }, [title]);
 
@@ -81,11 +94,44 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
         </div>
 
         <div className="slider-products__products">
-          {products.slice(startIndex, startIndex + 4).map(product => (
-            <div key={product.id} className="slider-products__product-wrapper">
-              <ProductCard product={product} />
-            </div>
-          ))}
+          {(+currentwidth > 899 &&
+            +currentwidth < 1200 &&
+            products.slice(startIndex, startIndex + 3).map(product => (
+              <div
+                key={product.id}
+                className="slider-products__product-wrapper"
+              >
+                <ProductCard product={product} />
+              </div>
+            ))) ||
+            (+currentwidth < 639 &&
+              products.slice(startIndex, startIndex + 1).map(product => (
+                <div
+                  key={product.id}
+                  className="slider-products__product-wrapper"
+                >
+                  <ProductCard product={product} />
+                </div>
+              ))) ||
+            (+currentwidth > 639 &&
+              +currentwidth < 899 &&
+              products.slice(startIndex, startIndex + 2).map(product => (
+                <div
+                  key={product.id}
+                  className="slider-products__product-wrapper"
+                >
+                  <ProductCard product={product} />
+                </div>
+              ))) ||
+            (+currentwidth > 1200 &&
+              products.slice(startIndex, startIndex + 4).map(product => (
+                <div
+                  key={product.id}
+                  className="slider-products__product-wrapper"
+                >
+                  <ProductCard product={product} />
+                </div>
+              )))}
         </div>
       </div>
     </div>

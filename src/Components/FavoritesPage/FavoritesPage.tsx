@@ -55,7 +55,7 @@ export const FavoritesPage: React.FC = () => {
               <div className="favorites-empty-photo-wrapper">
                 <img
                   className="favorites-empty-photo"
-                  src="public/img/cart-is-empty.png"
+                  src="img/cart-is-empty.png"
                   alt="favorites empty"
                 />
               </div>

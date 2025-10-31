@@ -1,12 +1,12 @@
-.view-cart {
+.mobile-view-cart {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
   background-color: #161827;
-  width: 752px;
-  height: 128px;
-  padding: 24px;
-  gap: 24px;
+  width: 90%;
+  height: 160px;
+  padding-inline: 16px;
+  gap: 16px;
 
   &__close{
     width: 16px;
@@ -31,7 +31,6 @@
     text-decoration: none;
   }
 
-
   &__buttons {
     display: flex;
     justify-content: center;
@@ -55,6 +54,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0;
   }
 
   &__price {
@@ -69,13 +69,19 @@
     gap: 8px;
     text-align: right;
   }
-}
 
-@media (max-width: 1199px) {
-  .view-cart {
-    width: 100%;
-    box-sizing: border-box;
-    height: 128px;
+  &__desc-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__buttons-wrapper {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 }
+
+

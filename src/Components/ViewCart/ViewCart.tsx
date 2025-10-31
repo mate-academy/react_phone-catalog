@@ -22,28 +22,38 @@ export const ViewCart: React.FC<Props> = ({ product, onRemove }) => {
 
   return (
     <>
-      <Link to={`/${product.category}/${product.itemId}`} className="view-cart">
+      <div className="view-cart">
+        {/* <div className="view-cart-desc-wrapper"></div> */}
+
         <img
           className="view-cart__close"
-          src="public/img/ui-kit/Close.png"
+          src="img/ui-kit/Close.png"
           alt="close"
           onClick={() => {
             DeleteProduct();
           }}
         />
 
-        <img
-          className="view-cart__photo"
-          src={product.image}
-          alt="product-photo"
-        />
+        <Link to={`/${product.category}/${product.itemId}`}>
+          <img
+            className="view-cart__photo"
+            src={product.image}
+            alt="product-photo"
+          />
+        </Link>
 
-        <h1 className="view-cart__title">{product.name}</h1>
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+          className="view-cart__title"
+        >
+          {product.name}
+        </Link>
 
+        {/* <div className="view-cart__buttons-wrapper"> */}
         <div className="view-cart__buttons">
           <img
             className="view-cart__button"
-            src="public/img/ui-kit/cart-button-minus.png"
+            src="img/ui-kit/cart-button-minus.png"
             alt="-"
             onClick={() => {
               if (counter?.count === 1) {
@@ -58,7 +68,7 @@ export const ViewCart: React.FC<Props> = ({ product, onRemove }) => {
 
           <img
             className="view-cart__button"
-            src="public/img/ui-kit/cart-button-plus.png"
+            src="img/ui-kit/cart-button-plus.png"
             alt="+"
             onClick={() => {
               updateCounter(product.itemId, 'add');
@@ -69,7 +79,8 @@ export const ViewCart: React.FC<Props> = ({ product, onRemove }) => {
         <div className="view-cart__price">
           ${product.price * counter?.count}
         </div>
-      </Link>
+        {/* </div> */}
+      </div>
     </>
   );
 };

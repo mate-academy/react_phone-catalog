@@ -15,6 +15,7 @@ import { FavoritesProvider } from './context/favoritesContext';
 import { CartProvider } from './context/cartContext';
 import { CartPage } from './Components/CartPage/CartPage';
 import { ScrollToTop } from './services/ScrollToTop';
+import { Menu } from './Components/Menu/Menu';
 
 export const Root = () => (
   <Router>
@@ -45,6 +46,8 @@ export const Root = () => (
             <Route path="favorites" element={<FavoritesPage />} />
 
             <Route path="cart" element={<CartPage />} />
+
+            <Route path="menu" element={<Menu />} />
 
             <Route path="*" element={<ErrorPage />} />
           </Route>
