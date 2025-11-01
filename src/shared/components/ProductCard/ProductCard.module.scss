@@ -134,7 +134,7 @@
   border: none;
 
   &:hover {
-    background: color.adjust($text, 5%);
+    background: darken($text, 5%);
   }
 
   &:active {

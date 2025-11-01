@@ -116,7 +116,7 @@
 }
 
 .toTop:hover .iconSquare {
-  border-color: color.mix($line, $text, 20%);
+  border-color: mix($line, $text, 20%);
   transform: translateY(-1px);
 }
 

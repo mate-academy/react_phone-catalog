@@ -18,19 +18,43 @@ import HeartEmpty from '../../assets/Favourites (Heart Like).svg';
 import HeartFull from '../../assets/Favourites Filled (Heart Like).svg';
 import s from './ProductDetailsPage.module.scss';
 
-// ✅ нормализуем любой относительный путь с учётом BASE_URL (gh-pages подпапка)
 const withBase = (p: string) => {
   if (!p) {
     return p;
   }
 
-  if (/^https?:\/\//i.test(p)) {
+  // 1) Абсолютные ссылки — оставляем
+  if (/^[a-z]+:\/\//i.test(p)) {
     return p;
-  } // внешние URL не трогаем
+  }
 
-  const clean = p.replace(/^\//, '');
+  const BASE = import.meta.env.BASE_URL || '/';
+  const ORIGIN = window.location.origin;
 
-  return new URL(clean, import.meta.env.BASE_URL).toString();
+  // '/react_phone-catalog/' -> 'react_phone-catalog'
+  const baseNoSlashes = BASE.replace(/^\/|\/$/g, '');
+
+  // 2) Уже начинается с BASE (например, '/react_phone-catalog/img/..' или 'react_phone-catalog/img/..')
+  if (p.startsWith(BASE)) {
+    return `${ORIGIN}${p}`;
+  }
+
+  if (p.startsWith(`${baseNoSlashes}/`)) {
+    return `${ORIGIN}/${p}`;
+  }
+
+  // 3) Начинается с origin+BASE (бывает после других преобразований) — уже ок
+  if (p.startsWith(`${ORIGIN}${BASE}`)) {
+    return p;
+  }
+
+  // 4) Кейс с ведущим слэшем '/img/...'
+  if (p.startsWith('/')) {
+    return `${ORIGIN}${BASE}${p.slice(1)}`;
+  }
+
+  // 5) Обычный относительный путь 'img/...'
+  return `${ORIGIN}${BASE}${p}`;
 };
 
 const categoryRoutes: Record<string, string> = {

@@ -8,19 +8,24 @@ import { FavoritesPage } from '../modules/FavoritesPage';
 import { CartPage } from '../modules/CartPage';
 import { NotFoundPage } from '../modules/NotFoundPage';
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: 'phones', element: <CategoryPage type="phones" /> },
+        { path: 'tablets', element: <CategoryPage type="tablets" /> },
+        { path: 'accessories', element: <CategoryPage type="accessories" /> },
+        { path: 'product/:productId', element: <ProductDetailsPage /> },
+        { path: 'favorites', element: <FavoritesPage /> },
+        { path: 'cart', element: <CartPage /> },
+        { path: '*', element: <NotFoundPage /> },
+      ],
+    },
+  ],
   {
-    path: '/',
-    element: <Layout />,
-    children: [
-      { index: true, element: <HomePage /> },
-      { path: 'phones', element: <CategoryPage type="phones" /> },
-      { path: 'tablets', element: <CategoryPage type="tablets" /> },
-      { path: 'accessories', element: <CategoryPage type="accessories" /> },
-      { path: 'product/:productId', element: <ProductDetailsPage /> },
-      { path: 'favorites', element: <FavoritesPage /> },
-      { path: 'cart', element: <CartPage /> },
-      { path: '*', element: <NotFoundPage /> },
-    ],
+    basename: import.meta.env.BASE_URL,
   },
-]);
+);
