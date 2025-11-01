@@ -1,0 +1,177 @@
+@use '../../../styles/tokens.scss' as *;
+
+
+/* ===== БАЗА ===== */
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .root {
+    padding: 0 24px;
+  }
+}
+
+.header {
+  width: 100%;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: $text;
+  text-align: left;
+
+  @media (min-width: 640px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0;
+}
+
+.viewport {
+  flex: 1 1 auto;
+  overflow: hidden;
+  display: flex;
+}
+
+.track {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.nav {
+  display: none;
+  background: $bg;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .nav {
+    display: flex;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .sliderRow {
+    gap: 19px;
+  }
+
+  .viewport {
+    height: 189px;
+  }
+
+  .nav {
+    width: 32px;
+    height: 189px;
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sliderRow {
+    gap: 16px;
+  }
+
+  .viewport {
+    height: 400px;
+  }
+
+  .nav {
+    width: 32px;
+    height: 400px;
+    border-radius: 0;
+  }
+}
+
+.nav:hover {
+  background: #f8f8f8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== ТОЧКИ (второй ряд) ===== */
+.dots {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background: $line;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.dot:hover {
+  transform: scale(1.15);
+}
+
+.dot.active {
+  background: $text;
+}
+
+/* ===== МОБИЛКА ===== */
+@media (max-width: 639px) {
+  .sliderRow {
+    flex-direction: column;
+  }
+
+  .viewport {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .nav {
+    display: none;
+  }
+}
