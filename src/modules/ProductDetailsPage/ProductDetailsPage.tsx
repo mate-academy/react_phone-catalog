@@ -18,7 +18,6 @@ import HeartEmpty from '../../assets/Favourites (Heart Like).svg';
 import HeartFull from '../../assets/Favourites Filled (Heart Like).svg';
 import s from './ProductDetailsPage.module.scss';
 
-/** Префиксит BASE_URL, не дублируя его. Возвращает относительный путь с ведущим слэшем. */
 const withBase = (p: string) => {
   if (!p) {
     return p;
@@ -29,9 +28,14 @@ const withBase = (p: string) => {
     return p;
   }
 
-  const base = import.meta.env.BASE_URL || '/'; // например: "/react_phone-catalog/"
-  const cleanBase = base.replace(/^\/|\/$/g, ''); // "react_phone-catalog"
-  const cleanPath = p.replace(/^\/+/, ''); // убираем ведущие "/"
+  const base = import.meta.env.BASE_URL || '/'; // например: "/", "/react_phone-catalog/"
+  const cleanBase = base.replace(/^\/|\/$/g, ''); // может быть пустой строкой
+  const cleanPath = p.replace(/^\/+/, ''); // "img/phones/.../00.webp"
+
+  // если base = "/" — не префиксим, просто гарантируем один ведущий слэш
+  if (!cleanBase) {
+    return `/${cleanPath}`;
+  }
 
   // если путь уже начинается с base — оставляем как есть
   if (
