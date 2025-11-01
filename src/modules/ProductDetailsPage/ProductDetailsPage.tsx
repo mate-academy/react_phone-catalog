@@ -261,7 +261,7 @@ export const ProductDetailsPage: React.FC = () => {
       const img = new Image();
 
       img.onload = img.onerror = () => resolve();
-      img.src = withBase(src);
+      img.src = src;
     });
 
   // выключаем автоскролл браузера
