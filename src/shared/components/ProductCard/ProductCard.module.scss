@@ -134,6 +134,7 @@
   border: none;
 
   &:hover {
+    /* stylelint-disable scss/no-global-function-names */
     background: darken($text, 5%);
   }
 

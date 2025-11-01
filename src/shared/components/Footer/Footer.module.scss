@@ -116,6 +116,7 @@
 }
 
 .toTop:hover .iconSquare {
+  /* stylelint-disable scss/no-global-function-names */
   border-color: mix($line, $text, 20%);
   transform: translateY(-1px);
 }

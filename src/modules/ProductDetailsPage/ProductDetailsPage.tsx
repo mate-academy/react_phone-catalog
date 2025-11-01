@@ -18,43 +18,48 @@ import HeartEmpty from '../../assets/Favourites (Heart Like).svg';
 import HeartFull from '../../assets/Favourites Filled (Heart Like).svg';
 import s from './ProductDetailsPage.module.scss';
 
+/** Префиксит BASE_URL, не дублируя его. Возвращает относительный путь с ведущим слэшем. */
 const withBase = (p: string) => {
   if (!p) {
     return p;
   }
 
-  // 1) Абсолютные ссылки — оставляем
+  // абсолютные URL не трогаем
   if (/^[a-z]+:\/\//i.test(p)) {
     return p;
   }
 
-  const BASE = import.meta.env.BASE_URL || '/';
-  const ORIGIN = window.location.origin;
+  const base = import.meta.env.BASE_URL || '/'; // например: "/react_phone-catalog/"
+  const cleanBase = base.replace(/^\/|\/$/g, ''); // "react_phone-catalog"
+  const cleanPath = p.replace(/^\/+/, ''); // убираем ведущие "/"
 
-  // '/react_phone-catalog/' -> 'react_phone-catalog'
-  const baseNoSlashes = BASE.replace(/^\/|\/$/g, '');
-
-  // 2) Уже начинается с BASE (например, '/react_phone-catalog/img/..' или 'react_phone-catalog/img/..')
-  if (p.startsWith(BASE)) {
-    return `${ORIGIN}${p}`;
+  // если путь уже начинается с base — оставляем как есть
+  if (
+    p.startsWith(base) ||
+    p.startsWith(`/${cleanBase}/`) ||
+    p.startsWith(`${cleanBase}/`)
+  ) {
+    return p.startsWith('/') ? p : `/${p}`;
   }
 
-  if (p.startsWith(`${baseNoSlashes}/`)) {
-    return `${ORIGIN}/${p}`;
+  // нормальный случай
+  return `/${cleanBase}/${cleanPath}`;
+};
+
+/** Если в данных приходит только имя файла (01.webp), собираем полный относительный путь. */
+const buildImagePath = (prod: ProductDetailBase, file: string) => {
+  if (!file) {
+    return file;
   }
 
-  // 3) Начинается с origin+BASE (бывает после других преобразований) — уже ок
-  if (p.startsWith(`${ORIGIN}${BASE}`)) {
-    return p;
-  }
+  if (file.includes('/')) {
+    return file;
+  } // уже путь
 
-  // 4) Кейс с ведущим слэшем '/img/...'
-  if (p.startsWith('/')) {
-    return `${ORIGIN}${BASE}${p.slice(1)}`;
-  }
+  const cat = (prod.category || '').toLowerCase(); // phones/tablets/accessories
 
-  // 5) Обычный относительный путь 'img/...'
-  return `${ORIGIN}${BASE}${p}`;
+  // структура public: img/<category>/<namespaceId>/<file>
+  return `img/${cat}/${prod.namespaceId}/${file}`;
 };
 
 const categoryRoutes: Record<string, string> = {
@@ -68,7 +73,6 @@ export const ProductDetailsPage: React.FC = () => {
   const { add } = useCart();
   const { isFavorite, toggle } = useFavorites();
 
-  // локальный кэш "вариант в корзине" по productId (сохраняем в localStorage)
   const [addedIds, setAddedIds] = useState<Set<string>>(() => {
     try {
       const raw = localStorage.getItem('addedVariantIds');
@@ -88,16 +92,13 @@ export const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<ProductDetailBase | null>(null);
   const [suggested, setSuggested] = useState<ProductListItem[]>([]);
 
-  // локальные выборы
   const [activeImageIdx, setActiveImageIdx] = useState(0);
   const [color, setColor] = useState<string>('');
   const [capacity, setCapacity] = useState<string>('');
 
-  // плавная загрузка главной картинки
   const [imgSrc, setImgSrc] = useState<string>('');
   const [isImgReady, setIsImgReady] = useState(true);
 
-  // свайп
   const startX = useRef<number | null>(null);
   const lastX = useRef<number | null>(null);
   const isPointerDown = useRef(false);
@@ -105,11 +106,9 @@ export const ProductDetailsPage: React.FC = () => {
 
   const navigate = useNavigate();
 
-  // скролл и блокировка документа
   const scrollYRef = useRef(0);
   const isScrollLockedRef = useRef(false);
 
-  // рефы галереи для «заморозки» высоты (убираем CLS)
   const galleryRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
 
@@ -258,7 +257,7 @@ export const ProductDetailsPage: React.FC = () => {
       const img = new Image();
 
       img.onload = img.onerror = () => resolve();
-      img.src = withBase(src); // ✅
+      img.src = withBase(src);
     });
 
   // выключаем автоскролл браузера
@@ -298,9 +297,12 @@ export const ProductDetailsPage: React.FC = () => {
           return;
         }
 
-        const imgs = Array.isArray(p.images) ? p.images : [];
-        const preloadAll = imgs.length
-          ? Promise.all(imgs.map(preloadImg))
+        const raw = Array.isArray(p.images) ? p.images : [];
+        // собираем полные относительные пути и префиксим базой
+        const full = raw.map(f => withBase(buildImagePath(p, f)));
+
+        const preloadAll = full.length
+          ? Promise.all(full.map(preloadImg))
           : Promise.resolve();
 
         const suggestedPromise = getSuggestedProducts(
@@ -316,7 +318,7 @@ export const ProductDetailsPage: React.FC = () => {
         setColor(p.color);
         setCapacity(p.capacity);
         setActiveImageIdx(0);
-        setImgSrc(imgs.length ? withBase(imgs[0]) : ''); // ✅
+        setImgSrc(full[0] || '');
         setIsImgReady(true);
         setSuggested(sug);
       })
@@ -340,8 +342,11 @@ export const ProductDetailsPage: React.FC = () => {
 
   // список изображений с правильными URL
   const images = useMemo(
-    () => (product?.images ?? []).map(withBase),
-    [product?.images],
+    () =>
+      product
+        ? (product.images ?? []).map(f => withBase(buildImagePath(product, f)))
+        : [],
+    [product],
   );
 
   // смена варианта (цвет/ёмкость)
@@ -391,7 +396,6 @@ export const ProductDetailsPage: React.FC = () => {
 
   const title = product?.name || 'Product details';
 
-  // исходный список спеков
   const techSpecs = useMemo(() => {
     if (!product) {
       return [];
@@ -412,7 +416,6 @@ export const ProductDetailsPage: React.FC = () => {
     );
   }, [product]);
 
-  // показываем только нужные + в нужном порядке
   const visibleSpecs = useMemo(() => {
     const SPEC_ORDER = ['Screen', 'Resolution', 'Processor', 'RAM'] as const;
     const order = new Map<string, number>(SPEC_ORDER.map((k, i) => [k, i]));
