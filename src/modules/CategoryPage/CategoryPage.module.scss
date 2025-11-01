@@ -2,8 +2,9 @@
 @use '../../styles/mixins.scss' as *;
 
 .root {
-  @include grid;
   padding-inline: 16px;
+
+  @include grid;
 
   @include tablet {
     padding-inline: 24px;
@@ -172,6 +173,5 @@
   font-family: $font;
   font-weight: 600;
   font-size: 14px;
-  font-weight: 600;
   line-height: 21px;
 }

@@ -12,13 +12,14 @@
 }
 
 .inner {
-  @include grid;
   box-sizing: border-box;
   width: 100%;
   max-width: 1200px;
   margin-inline: auto;
   padding-block: 32px;
   padding-inline: 16px;
+
+  @include grid;
 
   @include tablet {
     align-items: center;
@@ -115,7 +116,7 @@
 }
 
 .toTop:hover .iconSquare {
-  border-color: mix($line, $text, 20%);
+  border-color: color.mix($line, $text, 20%);
   transform: translateY(-1px);
 }
 
@@ -136,8 +137,7 @@
     justify-self: start;
     align-items: flex-start;
     text-align: left;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-flow: column nowrap;
     gap: 16px;
     margin-bottom: 32px;
   }
@@ -162,8 +162,7 @@
     justify-self: center;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-flow: row nowrap;
     gap: 16px;
   }
 
@@ -185,8 +184,7 @@
     justify-self: center;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-flow: row nowrap;
     gap: 106px;
   }
 

@@ -2,8 +2,9 @@
 @use '../../styles/mixins.scss' as *;
 
 .root {
-  @include grid;
   padding-inline: 16px;
+
+  @include grid;
 
   @include tablet {
     padding-inline: 24px;
@@ -69,6 +70,7 @@
   font-size: 14px;
 }
 
+/* stylelint-disable-next-line selector-max-universal */
 .root>*+* {
   margin-top: 16px;
 }

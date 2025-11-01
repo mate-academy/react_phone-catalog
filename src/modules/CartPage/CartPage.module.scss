@@ -2,10 +2,11 @@
 @use '../../styles/mixins.scss' as *;
 
 .cart {
-  @include grid;
   padding-inline: 16px;
   max-width: 1200px;
   margin: 0 auto;
+
+  @include grid;
 
   @include tablet {
     padding-inline: 24px;
@@ -115,8 +116,9 @@
 }
 
 .empty {
-  @include grid;
   padding-inline: 16px;
+
+  @include grid;
 
   @include tablet {
     padding-inline: 24px;

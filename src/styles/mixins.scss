@@ -28,18 +28,13 @@ $bp-desktop-min: 1200px;
 @mixin grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 16px;
-  row-gap: 0;
+  gap: 0 16px;
 
   @include tablet {
     grid-template-columns: repeat(12, 1fr);
-    column-gap: 16px;
-    row-gap: 0;
   }
 
   @include desktop {
     grid-template-columns: repeat(24, 1fr);
-    column-gap: 16px;
-    row-gap: 0;
   }
 }

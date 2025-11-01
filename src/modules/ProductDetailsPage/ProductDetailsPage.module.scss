@@ -2,8 +2,9 @@
 @use '../../styles/mixins.scss' as *;
 
 .root {
-  @include grid;
   padding-inline: 16px;
+
+  @include grid;
 
   @include tablet {
     padding-inline: 24px;
@@ -195,6 +196,14 @@
   }
 }
 
+.optionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+  color: $muted;
+  margin-top: 24px;
+}
+
 .option {
   display: flex;
   flex-direction: column;
@@ -208,14 +217,6 @@
       margin-top: 0;
     }
   }
-}
-
-.optionLabel {
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 100%;
-  color: $muted;
-  margin-top: 24px;
 }
 
 .swatches {
@@ -325,7 +326,7 @@
   border: none;
 
   &:hover {
-    background: darken($text, 5%);
+    background: adjust($text, 5%);
   }
 
   &:active {

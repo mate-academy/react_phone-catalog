@@ -2,8 +2,9 @@
 @use '../../../styles/mixins.scss' as *;
 
 .section {
-  @include grid;
   padding-inline: 16px;
+
+  @include grid;
 
   @include tablet {
     padding-inline: 24px;
@@ -79,8 +80,7 @@
 }
 
 .scroller {
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
   overscroll-behavior-x: contain;
 }
 

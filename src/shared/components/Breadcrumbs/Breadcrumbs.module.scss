@@ -42,24 +42,6 @@
   cursor: default;
 }
 
-.segment {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-
-  &:last-child {
-    .current,
-    .link {
-      display: block;
-      max-width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-  }
-}
-
 .link {
   color: $text;
   font-size: 12px;
@@ -79,6 +61,24 @@
   font-weight: 600;
   line-height: 100%;
   cursor: default;
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+
+  &:last-child {
+    .current,
+    .link {
+      display: block;
+      max-width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
 .homeIcon {

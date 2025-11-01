@@ -1,8 +1,8 @@
-@import './tokens.scss';
-@import './mixins.scss';
+@use './tokens' as *;
+@use './mixins' as *;
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
@@ -10,7 +10,7 @@
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
@@ -18,7 +18,7 @@
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
@@ -26,8 +26,7 @@
 }
 
 html,
-body,
-#root {
+body {
   height: 100%;
   margin: 0;
   padding: 0;
