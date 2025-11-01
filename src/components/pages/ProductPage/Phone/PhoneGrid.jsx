@@ -1,6 +1,6 @@
 // src/components/pages/ProductPage/PhoneGrid.jsx
-import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../../../elements/ProductCard/ProductCard';
 import { Drowbox } from '../../../elements/Drowbox';
 import { PriceSortDropdown } from '../../../elements/DropPrice/DpopPrice';
@@ -8,7 +8,7 @@ import { DropColor } from '../../../elements/DropColor/DropColor';
 import '../styles/ProductGrid.scss';
 import phones from '../../../../data/phones.json';
 
-// Функція пагінації
+// Функція для побудови пагінації
 const renderPagination = (currentPage, totalPages, onPageChange) => {
   const pageNumbers = [];
   const visibleRange = 1;
@@ -23,6 +23,7 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
     </button>
   );
 
+  // Prev
   pageNumbers.push(
     <button
       key="prev"
@@ -38,6 +39,7 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
     </button>,
   );
 
+  // Основні сторінки
   if (totalPages <= 6) {
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(addPageButton(i));
@@ -72,6 +74,7 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
     pageNumbers.push(addPageButton(totalPages));
   }
 
+  // Next
   pageNumbers.push(
     <button
       key="next"
@@ -92,42 +95,18 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
 
 export const Phones = () => {
   const listRef = useRef(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  // Ініціалізація стану зі значень localStorage
-  const [itemsPerPage, setItemsPerPage] = useState(
-    () => localStorage.getItem('phones_itemsPerPage') || 16,
-  );
-  const [currentPage, setCurrentPage] = useState(
-    () => parseInt(localStorage.getItem('phones_currentPage')) || 1,
-  );
-  const [sortOrder, setSortOrder] = useState(
-    () => localStorage.getItem('phones_sortOrder') || 'default',
-  );
-  const [colorFilter, setColorFilter] = useState(
-    () => localStorage.getItem('phones_colorFilter') || null,
-  );
+  // Зчитуємо параметри з URL
+  const currentPage = Number(searchParams.get('page')) || 1;
+  const itemsPerPage = searchParams.get('perPage') || 'All';
+  const sortOrder = searchParams.get('sort') || 'default';
+  const colorFilter = searchParams.get('color') || null;
 
-  // Збереження змін у localStorage
-  useEffect(() => {
-    localStorage.setItem('phones_itemsPerPage', itemsPerPage);
-  }, [itemsPerPage]);
-
-  useEffect(() => {
-    localStorage.setItem('phones_sortOrder', sortOrder);
-  }, [sortOrder]);
-
-  useEffect(() => {
-    localStorage.setItem('phones_colorFilter', colorFilter);
-  }, [colorFilter]);
-
-  useEffect(() => {
-    localStorage.setItem('phones_currentPage', currentPage);
-  }, [currentPage]);
-
-  // Отримання всіх унікальних кольорів
+  // Унікальні кольори
   const availableColors = [...new Set(phones.flatMap(p => p.color))];
 
-  // Фільтрація та сортування
+  // --- Фільтрація та сортування ---
   let filteredPhones = [...phones];
 
   if (colorFilter && colorFilter !== 'null') {
@@ -142,30 +121,82 @@ export const Phones = () => {
     filteredPhones.sort((a, b) => b.priceRegular - a.priceRegular);
   }
 
+  // --- Пагінація ---
+  const perPageNumber =
+    itemsPerPage === 'All' ? filteredPhones.length : Number(itemsPerPage);
   const totalPages =
     itemsPerPage === 'All'
       ? 1
-      : Math.ceil(filteredPhones.length / itemsPerPage);
-
+      : Math.ceil(filteredPhones.length / perPageNumber);
   const startIndex =
-    itemsPerPage === 'All' ? 0 : (currentPage - 1) * itemsPerPage;
+    itemsPerPage === 'All' ? 0 : (currentPage - 1) * perPageNumber;
   const endIndex =
-    itemsPerPage === 'All'
-      ? filteredPhones.length
-      : startIndex + Number(itemsPerPage);
+    itemsPerPage === 'All' ? filteredPhones.length : startIndex + perPageNumber;
 
   const visibleProducts = filteredPhones.slice(startIndex, endIndex);
 
-  // Скидання сторінки при зміні фільтрів
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [itemsPerPage, sortOrder, colorFilter]);
+  // --- Оновлення параметрів URL ---
+  const updateParams = newParams => {
+    const params = {};
+
+    if (newParams.perPage && newParams.perPage !== 'All') {
+      params.perPage = newParams.perPage;
+    }
+
+    if (newParams.page && newParams.page > 1) {
+      params.page = newParams.page;
+    }
+
+    if (newParams.sort && newParams.sort !== 'default') {
+      params.sort = newParams.sort;
+    }
+
+    if (newParams.color && newParams.color !== 'null') {
+      params.color = newParams.color;
+    }
+
+    setSearchParams(params);
+  };
+
+  // --- Обробники подій ---
+  const handleItemsPerPageChange = newPerPage => {
+    updateParams({
+      perPage: newPerPage,
+      sort: sortOrder,
+      color: colorFilter,
+      page: 1, // скидаємо сторінку
+    });
+  };
 
   const handlePageChange = page => {
-    setCurrentPage(page);
+    updateParams({
+      perPage: itemsPerPage,
+      sort: sortOrder,
+      color: colorFilter,
+      page,
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleSortChange = order => {
+    updateParams({
+      perPage: itemsPerPage,
+      sort: order,
+      color: colorFilter,
+      page: 1,
+    });
+  };
+
+  const handleColorChange = color => {
+    updateParams({
+      perPage: itemsPerPage,
+      sort: sortOrder,
+      color,
+      page: 1,
+    });
+  };
+
+  // --- Рендер ---
   return (
     <div className="product-list-container">
       {/* Breadcrumbs */}
@@ -192,17 +223,17 @@ export const Phones = () => {
       {/* Фільтри */}
       <div className="product-list-filters">
         <div className="product-list-container-filter">
-          <Drowbox value={itemsPerPage} onChange={setItemsPerPage} />
-          <PriceSortDropdown value={sortOrder} onChange={setSortOrder} />
+          <Drowbox value={itemsPerPage} onChange={handleItemsPerPageChange} />
+          <PriceSortDropdown value={sortOrder} onChange={handleSortChange} />
           <DropColor
             value={colorFilter}
-            onChange={setColorFilter}
+            onChange={handleColorChange}
             availableColors={availableColors}
           />
         </div>
       </div>
 
-      {/* Товари */}
+      {/* Список товарів */}
       <div ref={listRef} className="product-list">
         {visibleProducts.map(product => (
           <ProductCard key={product.id} product={product} basePath="phones" />
