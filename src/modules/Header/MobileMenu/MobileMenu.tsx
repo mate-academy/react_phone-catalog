@@ -11,21 +11,19 @@ const MobileMenu: React.FC<{ pathname: string }> = ({ pathname }) => {
         <Icon
           href="favorites"
           iconStyles={{
-            width: 'width_100',
+            icon: pathname.startsWith('/favorites')
+              ? ['border_bottom', 'width_100']
+              : ['width_100'],
             image: 'favorites',
-            borderType: pathname.startsWith('/favorites')
-              ? 'border_bottom'
-              : undefined,
           }}
         />
         <Icon
           href="cart"
           iconStyles={{
-            width: 'width_100',
+            icon: pathname.startsWith('/cart')
+              ? ['border_bottom', 'width_100']
+              : ['width_100'],
             image: 'cart',
-            borderType: pathname.startsWith('/cart')
-              ? 'border_bottom'
-              : undefined,
           }}
         />
       </div>

@@ -3,6 +3,7 @@
 .icon {
   display: flex;
   height: 100%;
+  width: fit-content;
   aspect-ratio: 1 / 1;
   justify-content: center;
   align-items: center;
@@ -20,7 +21,7 @@
     border-bottom: 2px solid $primary-color;
   }
 
-  &_tablet {
+  &_type_tablet {
     display: none;
 
     @include on-tablet {
@@ -28,7 +29,7 @@
     }
   }
 
-  &_mobile {
+  &_type_mobile {
     @include on-tablet {
       display: none;
     }

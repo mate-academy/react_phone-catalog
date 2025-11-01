@@ -9,12 +9,14 @@ type IconImageModifiers =
   | 'arrowRight'
   | 'disabled';
 
-type IconTypes = 'tablet' | 'mobile' | 'cart';
+type IconTypes =
+  | 'type_tablet'
+  | 'type_mobile'
+  | 'border'
+  | 'border_bottom'
+  | 'width_100';
 
 export interface IconStyles {
-  border?: boolean;
-  borderType?: 'border_bottom';
-  width?: 'width_100';
-  type?: IconTypes;
+  icon?: IconTypes | IconTypes[];
   image: IconImageModifiers | IconImageModifiers[];
 }

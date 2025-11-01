@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './Icon.module.scss';
 import { IconStyles } from '../../../types/IconStyles';
+import { getClassNames } from '../../../utils/classNames';
 
 interface IconProps {
   href?: string;
@@ -8,29 +9,14 @@ interface IconProps {
   iconStyles?: IconStyles;
 }
 
-const getImgClassName = (modifier: string) =>
-  styles[('icon__img_' + modifier) as keyof typeof styles] || '';
-
-const getIconClassName = (modifier: undefined | string) =>
-  modifier ? styles[('icon_' + modifier) as keyof typeof styles] || '' : '';
-
 const Icon: React.FC<IconProps> = ({ href, onClick, iconStyles }) => {
   const isLink = !!href;
   const isButton = !!onClick;
 
-  const imageStyles = Array.isArray(iconStyles?.image)
-    ? iconStyles.image.map(getImgClassName).join(' ').trim()
-    : typeof iconStyles?.image === 'string'
-      ? getImgClassName(iconStyles.image)
-      : '';
+  const imageStyles = getClassNames('icon__img_', iconStyles?.image, styles);
 
-  const iconClasses = [
-    styles.icon,
-    iconStyles?.border ? styles.icon_border : '',
-    getIconClassName(iconStyles?.type),
-    getIconClassName(iconStyles?.width),
-    getIconClassName(iconStyles?.borderType),
-  ].join(' ');
+  const iconClasses =
+    styles.icon + ' ' + getClassNames('icon_', iconStyles?.icon, styles);
 
   const imgElement = (
     <span className={`${styles.icon__img} ${imageStyles}`}></span>

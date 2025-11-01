@@ -33,13 +33,16 @@ export const Header = () => {
           <div className={styles.nav__buttons}>
             <Icon
               href="favorites"
-              iconStyles={{ type: 'tablet', image: 'favorites' }}
+              iconStyles={{ icon: 'type_tablet', image: 'favorites' }}
             />
-            <Icon href="cart" iconStyles={{ type: 'tablet', image: 'cart' }} />
+            <Icon
+              href="cart"
+              iconStyles={{ icon: 'type_tablet', image: 'cart' }}
+            />
             <Icon
               onClick={handleMobileMenuClick}
               iconStyles={{
-                type: 'mobile',
+                icon: 'type_mobile',
                 image: showMobile ? 'close' : 'menu',
               }}
             />

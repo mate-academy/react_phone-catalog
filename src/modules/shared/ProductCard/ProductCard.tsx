@@ -81,7 +81,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         <Button text={t('product-card.add_to_card')} />
         <Icon
           onClick={() => addToFavorites(product.id)}
-          iconStyles={{ border: true, image: 'favorites' }}
+          iconStyles={{ icon: 'border', image: 'favorites' }}
         />
       </div>
     </div>

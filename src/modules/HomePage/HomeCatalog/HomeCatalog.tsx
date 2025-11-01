@@ -26,11 +26,11 @@ const HomeCatalog: React.FC<Props> = ({ title, products }) => {
         <div className={styles.catalog__buttons}>
           <Icon
             onClick={moveLeft}
-            iconStyles={{ border: false, image: ['arrowLeft', 'disabled'] }}
+            iconStyles={{ image: ['arrowLeft', 'disabled'] }}
           />
           <Icon
             onClick={moveRight}
-            iconStyles={{ border: true, image: 'arrowRight' }}
+            iconStyles={{ icon: 'border', image: 'arrowRight' }}
           />
         </div>
       </div>
