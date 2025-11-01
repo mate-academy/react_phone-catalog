@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../../../elements/ProductCard/ProductCard';
 import { Drowbox } from '../../../elements/Drowbox';
 import { PriceSortDropdown } from '../../../elements/DropPrice/DpopPrice';
 import { DropColor } from '../../../elements/DropColor/DropColor';
 import accessories from '../../../../data/accessories.json';
 
-// Функція пагінації
 const renderPagination = (currentPage, totalPages, onPageChange) => {
   const pageNumbers = [];
   const visibleRange = 1;
@@ -90,42 +89,73 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
 
 export const Accessories = () => {
   const listRef = useRef(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  // Ініціалізація стану зі значень localStorage
+  // Ініціалізація стану зі значень URL або localStorage
   const [itemsPerPage, setItemsPerPage] = useState(
-    () => localStorage.getItem('accessories_itemsPerPage') || 16,
+    () =>
+      searchParams.get('perPage') ||
+      localStorage.getItem('accessories_itemsPerPage') ||
+      16,
   );
   const [currentPage, setCurrentPage] = useState(
-    () => parseInt(localStorage.getItem('accessories_currentPage')) || 1,
+    () =>
+      parseInt(searchParams.get('page')) ||
+      parseInt(localStorage.getItem('accessories_currentPage')) ||
+      1,
   );
   const [sortOrder, setSortOrder] = useState(
-    () => localStorage.getItem('accessories_sortOrder') || 'default',
+    () =>
+      searchParams.get('sort') ||
+      localStorage.getItem('accessories_sortOrder') ||
+      'default',
   );
   const [colorFilter, setColorFilter] = useState(
-    () => localStorage.getItem('accessories_colorFilter') || null,
+    () =>
+      searchParams.get('color') ||
+      localStorage.getItem('accessories_colorFilter') ||
+      null,
   );
 
   // Збереження змін у localStorage
   useEffect(() => {
     localStorage.setItem('accessories_itemsPerPage', itemsPerPage);
   }, [itemsPerPage]);
-
   useEffect(() => {
     localStorage.setItem('accessories_sortOrder', sortOrder);
   }, [sortOrder]);
-
   useEffect(() => {
     localStorage.setItem('accessories_colorFilter', colorFilter);
   }, [colorFilter]);
-
   useEffect(() => {
     localStorage.setItem('accessories_currentPage', currentPage);
   }, [currentPage]);
 
-  // Унікальні кольори
+  // Оновлення URL при зміні фільтрів або пагінації
+  useEffect(() => {
+    const params = {};
+
+    if (itemsPerPage) {
+      params.perPage = itemsPerPage;
+    }
+
+    if (currentPage) {
+      params.page = currentPage;
+    }
+
+    if (sortOrder && sortOrder !== 'default') {
+      params.sort = sortOrder;
+    }
+
+    if (colorFilter && colorFilter !== 'null') {
+      params.color = colorFilter;
+    }
+
+    setSearchParams(params);
+  }, [itemsPerPage, currentPage, sortOrder, colorFilter, setSearchParams]);
+
   const availableColors = [...new Set(accessories.flatMap(p => p.color))];
 
-  // Фільтрація та сортування
   let filteredAccessories = [...accessories];
 
   if (colorFilter && colorFilter !== 'null') {
@@ -144,17 +174,14 @@ export const Accessories = () => {
     itemsPerPage === 'All'
       ? 1
       : Math.ceil(filteredAccessories.length / itemsPerPage);
-
   const startIndex =
     itemsPerPage === 'All' ? 0 : (currentPage - 1) * Number(itemsPerPage);
   const endIndex =
     itemsPerPage === 'All'
       ? filteredAccessories.length
       : startIndex + Number(itemsPerPage);
-
   const visibleProducts = filteredAccessories.slice(startIndex, endIndex);
 
-  // Скидання сторінки при зміні фільтрів
   useEffect(() => {
     setCurrentPage(1);
   }, [itemsPerPage, sortOrder, colorFilter]);
@@ -182,13 +209,11 @@ export const Accessories = () => {
         <p className="hover-link hover-link-text">Accessories</p>
       </div>
 
-      {/* Заголовки */}
       <h1 className="product-list-title">Accessories</h1>
       <p className="product-list-title-small">
         {filteredAccessories.length} models
       </p>
 
-      {/* Фільтри */}
       <div className="product-list-filters">
         <div className="product-list-container-filter">
           <Drowbox value={itemsPerPage} onChange={setItemsPerPage} />
@@ -201,14 +226,12 @@ export const Accessories = () => {
         </div>
       </div>
 
-      {/* Товари */}
       <div ref={listRef} className="product-list">
         {visibleProducts.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
-      {/* Пагінація */}
       {itemsPerPage !== 'All' && totalPages > 1 && (
         <div className="pagination">
           {renderPagination(currentPage, totalPages, handlePageChange)}

@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../../../elements/ProductCard/ProductCard';
 import { Drowbox } from '../../../elements/Drowbox';
 import { PriceSortDropdown } from '../../../elements/DropPrice/DpopPrice';
 import { DropColor } from '../../../elements/DropColor/DropColor';
 import tablets from '../../../../data/tablets.json';
 
-// Функція пагінації
 const renderPagination = (currentPage, totalPages, onPageChange) => {
   const pageNumbers = [];
   const visibleRange = 1;
@@ -90,42 +89,73 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
 
 export const Tablets = () => {
   const listRef = useRef(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  // Ініціалізація стану зі значень localStorage
+  // Ініціалізація стану зі значень URL або localStorage
   const [itemsPerPage, setItemsPerPage] = useState(
-    () => localStorage.getItem('tablets_itemsPerPage') || 16,
+    () =>
+      searchParams.get('perPage') ||
+      localStorage.getItem('tablets_itemsPerPage') ||
+      16,
   );
   const [currentPage, setCurrentPage] = useState(
-    () => parseInt(localStorage.getItem('tablets_currentPage')) || 1,
+    () =>
+      parseInt(searchParams.get('page')) ||
+      parseInt(localStorage.getItem('tablets_currentPage')) ||
+      1,
   );
   const [sortOrder, setSortOrder] = useState(
-    () => localStorage.getItem('tablets_sortOrder') || 'default',
+    () =>
+      searchParams.get('sort') ||
+      localStorage.getItem('tablets_sortOrder') ||
+      'default',
   );
   const [colorFilter, setColorFilter] = useState(
-    () => localStorage.getItem('tablets_colorFilter') || null,
+    () =>
+      searchParams.get('color') ||
+      localStorage.getItem('tablets_colorFilter') ||
+      null,
   );
 
   // Збереження змін у localStorage
   useEffect(() => {
     localStorage.setItem('tablets_itemsPerPage', itemsPerPage);
   }, [itemsPerPage]);
-
   useEffect(() => {
     localStorage.setItem('tablets_sortOrder', sortOrder);
   }, [sortOrder]);
-
   useEffect(() => {
     localStorage.setItem('tablets_colorFilter', colorFilter);
   }, [colorFilter]);
-
   useEffect(() => {
     localStorage.setItem('tablets_currentPage', currentPage);
   }, [currentPage]);
 
-  // Унікальні кольори
+  // Оновлення URL при зміні фільтрів або пагінації
+  useEffect(() => {
+    const params = {};
+
+    if (itemsPerPage) {
+      params.perPage = itemsPerPage;
+    }
+
+    if (currentPage) {
+      params.page = currentPage;
+    }
+
+    if (sortOrder && sortOrder !== 'default') {
+      params.sort = sortOrder;
+    }
+
+    if (colorFilter && colorFilter !== 'null') {
+      params.color = colorFilter;
+    }
+
+    setSearchParams(params);
+  }, [itemsPerPage, currentPage, sortOrder, colorFilter, setSearchParams]);
+
   const availableColors = [...new Set(tablets.flatMap(p => p.color))];
 
-  // Фільтрація та сортування
   let filteredTablets = [...tablets];
 
   if (colorFilter && colorFilter !== 'null') {
@@ -143,18 +173,15 @@ export const Tablets = () => {
   const totalPages =
     itemsPerPage === 'All'
       ? 1
-      : Math.ceil(filteredTablets.length / Number(itemsPerPage));
-
+      : Math.ceil(filteredTablets.length / itemsPerPage);
   const startIndex =
     itemsPerPage === 'All' ? 0 : (currentPage - 1) * Number(itemsPerPage);
   const endIndex =
     itemsPerPage === 'All'
       ? filteredTablets.length
       : startIndex + Number(itemsPerPage);
-
   const visibleProducts = filteredTablets.slice(startIndex, endIndex);
 
-  // Скидання сторінки при зміні фільтрів
   useEffect(() => {
     setCurrentPage(1);
   }, [itemsPerPage, sortOrder, colorFilter]);
@@ -182,13 +209,11 @@ export const Tablets = () => {
         <p className="hover-link hover-link-text">Tablets</p>
       </div>
 
-      {/* Заголовки */}
       <h1 className="product-list-title">Tablets</h1>
       <p className="product-list-title-small">
         {filteredTablets.length} models
       </p>
 
-      {/* Фільтри */}
       <div className="product-list-filters">
         <div className="product-list-container-filter">
           <Drowbox value={itemsPerPage} onChange={setItemsPerPage} />
@@ -201,14 +226,12 @@ export const Tablets = () => {
         </div>
       </div>
 
-      {/* Товари */}
       <div ref={listRef} className="product-list">
         {visibleProducts.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
-      {/* Пагінація */}
       {itemsPerPage !== 'All' && totalPages > 1 && (
         <div className="pagination">
           {renderPagination(currentPage, totalPages, handlePageChange)}
