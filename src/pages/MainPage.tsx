@@ -4,6 +4,7 @@ import { NewModels } from '../components/NewModels';
 import { ShopCatagory } from '../components/ShopCatagory';
 import products from '../../public/api/products.json';
 import { useLocation } from 'react-router-dom';
+import { PromotionSlider } from '../components/PromotionSlider';
 
 export const MainPage = () => {
   const location = useLocation();
@@ -19,7 +20,8 @@ export const MainPage = () => {
   return (
     <>
       <Banner />
-      <NewModels />
+      {/* <NewModels /> */}
+      <PromotionSlider products={getHotModels} title="Brand new models" />
       <ShopCatagory />
     </>
   );

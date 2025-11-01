@@ -1,7 +1,6 @@
 import { ProductCard } from '../ProductCard';
 import './NewModels.scss';
 
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -21,8 +20,6 @@ export const NewModels = () => {
     <section className="new-models slider">
       <div className="container slider__container">
         <h2 className="slider__title">Brand new models</h2>
-
-
 
         {/* <div className="slider__wrapper"> */}
         {/* <ProductCard />
