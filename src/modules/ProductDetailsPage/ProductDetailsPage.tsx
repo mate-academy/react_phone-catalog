@@ -18,6 +18,21 @@ import HeartEmpty from '../../assets/Favourites (Heart Like).svg';
 import HeartFull from '../../assets/Favourites Filled (Heart Like).svg';
 import s from './ProductDetailsPage.module.scss';
 
+// ✅ нормализуем любой относительный путь с учётом BASE_URL (gh-pages подпапка)
+const withBase = (p: string) => {
+  if (!p) {
+    return p;
+  }
+
+  if (/^https?:\/\//i.test(p)) {
+    return p;
+  } // внешние URL не трогаем
+
+  const clean = p.replace(/^\//, '');
+
+  return new URL(clean, import.meta.env.BASE_URL).toString();
+};
+
 const categoryRoutes: Record<string, string> = {
   phones: '/phones',
   tablets: '/tablets',
@@ -82,7 +97,6 @@ export const ProductDetailsPage: React.FC = () => {
     const y = window.scrollY;
 
     scrollYRef.current = y;
-
     const { body } = document;
 
     body.style.position = 'fixed';
@@ -91,7 +105,6 @@ export const ProductDetailsPage: React.FC = () => {
     body.style.right = '0';
     body.style.width = '100%';
     body.style.setProperty('scrollbar-gutter', 'stable both-edges');
-
     isScrollLockedRef.current = true;
   };
 
@@ -115,7 +128,6 @@ export const ProductDetailsPage: React.FC = () => {
     body.style.removeProperty('scrollbar-gutter');
 
     isScrollLockedRef.current = false;
-
     window.scrollTo(0, y);
   };
 
@@ -127,11 +139,8 @@ export const ProductDetailsPage: React.FC = () => {
       return;
     }
 
-    const gh = g.offsetHeight;
-    const mh = m.offsetHeight;
-
-    g.style.minHeight = `${gh}px`;
-    m.style.minHeight = `${mh}px`;
+    g.style.minHeight = `${g.offsetHeight}px`;
+    m.style.minHeight = `${m.offsetHeight}px`;
   };
 
   const unfreezeGallery = () => {
@@ -224,9 +233,8 @@ export const ProductDetailsPage: React.FC = () => {
     new Promise<void>(resolve => {
       const img = new Image();
 
-      img.onload = () => resolve();
-      img.onerror = () => resolve();
-      img.src = `/${src}`;
+      img.onload = img.onerror = () => resolve();
+      img.src = withBase(src); // ✅
     });
 
   // выключаем автоскролл браузера
@@ -278,14 +286,13 @@ export const ProductDetailsPage: React.FC = () => {
         );
 
         await Promise.all([preloadAll, suggestedPromise]);
-
         const sug = await suggestedPromise;
 
         setProduct(p);
         setColor(p.color);
         setCapacity(p.capacity);
         setActiveImageIdx(0);
-        setImgSrc(imgs.length ? `/${imgs[0]}` : '');
+        setImgSrc(imgs.length ? withBase(imgs[0]) : ''); // ✅
         setIsImgReady(true);
         setSuggested(sug);
       })
@@ -307,7 +314,13 @@ export const ProductDetailsPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId]);
 
-  // смена варианта
+  // список изображений с правильными URL
+  const images = useMemo(
+    () => (product?.images ?? []).map(withBase),
+    [product?.images],
+  );
+
+  // смена варианта (цвет/ёмкость)
   useEffect(() => {
     if (!product || !color || !capacity) {
       return;
@@ -387,11 +400,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   // предзагрузка при смене активной картинки
   useEffect(() => {
-    if (!product) {
-      return;
-    }
-
-    if (!product.images || product.images.length === 0) {
+    if (!images.length) {
       requestAnimationFrame(() => {
         forceUnlock();
       });
@@ -399,7 +408,7 @@ export const ProductDetailsPage: React.FC = () => {
       return;
     }
 
-    const nextSrc = `/${product.images[activeImageIdx]}`;
+    const nextSrc = images[activeImageIdx] ?? '';
 
     if (nextSrc === imgSrc) {
       requestAnimationFrame(() => {
@@ -432,7 +441,7 @@ export const ProductDetailsPage: React.FC = () => {
 
     img.src = nextSrc;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeImageIdx, product]);
+  }, [activeImageIdx, images]);
 
   if (loading && !product) {
     return (
@@ -461,7 +470,9 @@ export const ProductDetailsPage: React.FC = () => {
         <div className={s.breadcrumbsBack}>
           <Breadcrumbs trail={[]} variant="back" />
         </div>
+
         <h1 className={s.title}>{title}</h1>
+
         <div className={s.grid}>
           {/* Галерея */}
           <div className={s.gallery} ref={galleryRef}>
@@ -474,7 +485,7 @@ export const ProductDetailsPage: React.FC = () => {
               onPointerCancel={onPointerUp}
               tabIndex={0}
               role="button"
-              aria-label={`Image ${activeImageIdx + 1} of ${product.images.length}. Swipe or use arrow keys`}
+              aria-label={`Image ${activeImageIdx + 1} of ${images.length}. Swipe or use arrow keys`}
               onKeyDown={onKeyDown}
             >
               {/* плавная замена без мигания */}
@@ -483,13 +494,13 @@ export const ProductDetailsPage: React.FC = () => {
                 alt={product.name}
                 draggable={false}
                 className={isImgReady ? s.imgVisible : s.imgHidden}
-                // важно: фиксируем размер, чтобы браузер резервировал место (убираем CLS)
                 width={800}
                 height={800}
               />
             </div>
+
             <div className={s.thumbs}>
-              {product.images.map((src, i) => (
+              {images.map((src, i) => (
                 <button
                   key={src}
                   className={`${s.thumb} ${i === activeImageIdx ? s.active : ''}`}
@@ -497,11 +508,12 @@ export const ProductDetailsPage: React.FC = () => {
                   aria-pressed={i === activeImageIdx}
                   aria-label={`Show image ${i + 1}`}
                 >
-                  <img src={`/${src}`} alt="" />
+                  <img src={src} alt="" />
                 </button>
               ))}
             </div>
           </div>
+
           {/* Правый столбец */}
           <div className={s.panel}>
             {product.colorsAvailable?.length > 0 && (
@@ -527,7 +539,9 @@ export const ProductDetailsPage: React.FC = () => {
                 </div>
               </div>
             )}
+
             <div className={s.sep} />
+
             {product.capacityAvailable?.length > 0 && (
               <div className={s.option}>
                 <div className={s.optionLabel}>Select capacity</div>
@@ -551,7 +565,9 @@ export const ProductDetailsPage: React.FC = () => {
                 </div>
               </div>
             )}
+
             <div className={s.sep} />
+
             <div className={s.priceBlock}>
               <span className={s.price}>{money(product.priceDiscount)}</span>
               {product.priceRegular > product.priceDiscount && (
@@ -560,12 +576,13 @@ export const ProductDetailsPage: React.FC = () => {
                 </span>
               )}
             </div>
+
             <div className={s.actions}>
               <button
                 className={`${s.cartBtn} ${inCart ? s.inCart : ''}`}
                 onClick={() => {
                   if (!inCart) {
-                    add(product.id); // реальный add в контекст
+                    add(product.id);
                     setAddedIds(prev => {
                       const next = new Set(prev);
 
@@ -585,10 +602,11 @@ export const ProductDetailsPage: React.FC = () => {
               >
                 {inCart ? 'Added' : 'Add to cart'}
               </button>
+
               <button
                 className={`${s.heartBtn} ${fav ? s.active : ''}`}
                 aria-pressed={fav}
-                onClick={() => toggle(productId)} // <-- здесь productId
+                onClick={() => toggle(productId)}
                 title={fav ? 'Remove from favorites' : 'Add to favorites'}
               >
                 <img
@@ -601,6 +619,7 @@ export const ProductDetailsPage: React.FC = () => {
                 />
               </button>
             </div>
+
             {visibleSpecs.length > 0 && (
               <ul className={s.specs}>
                 {visibleSpecs.map(([k, v]) => (
@@ -612,6 +631,7 @@ export const ProductDetailsPage: React.FC = () => {
             )}
           </div>
         </div>
+
         {product.description?.length > 0 && (
           <section className={s.about}>
             <div className={s.row}>
@@ -629,6 +649,7 @@ export const ProductDetailsPage: React.FC = () => {
                   </article>
                 ))}
               </div>
+
               {techSpecs.length > 0 && (
                 <div className={s.right}>
                   <h2 className={s.specsBlockTitle}>Tech specs</h2>
@@ -645,6 +666,7 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </section>
         )}
+
         {suggested.length > 0 && (
           <section className={s.suggested}>
             <ProductsSlider title="You may also like" items={suggested} />
