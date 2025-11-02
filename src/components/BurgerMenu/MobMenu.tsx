@@ -19,7 +19,7 @@ const MobMenu = () => {
   const { currentCategory } = useCategory();
   const { isMenuOpen, setIsMenuOpen } = useMyContext();
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
-  const { favourites, cart } = useAppContext();
+  const { favourites, cart, getCartItemsCount } = useAppContext();
 
   const [activeLink, setActiveLink] = useState(currentCategory || 'home');
 
@@ -97,7 +97,7 @@ const MobMenu = () => {
             <div className={styles.miniContainer}>
               <img src={Cart} alt="cart" />
               {cart.length > 0 && (
-                <span className={styles.badge}>{cart.length}</span>
+                <span className={styles.badge}>{getCartItemsCount()}</span>
               )}
             </div>
           </Link>
