@@ -25,7 +25,6 @@ const Buttons = ({
     isAdded,
     removeFromCart,
     addToCart,
-    cart,
   } = useAppContext();
 
   const handleFavClicked = () => {
@@ -35,15 +34,6 @@ const Buttons = ({
       addToFavorites(product);
     }
   };
-
-  console.log(
-    'Buttons render - product:',
-    product.id,
-    'isAdded:',
-    isAdded(product.id),
-    'cart length:',
-    cart.length,
-  );
 
   const smoothScrollToTop = () => {
     const duration = 1000;
@@ -79,7 +69,6 @@ const Buttons = ({
       const alsoLikeSection = button.closest('[data-also-like="true"]');
 
       if (alsoLikeSection) {
-        console.log('Using custom smooth scroll');
         smoothScrollToTop();
       }
     }

@@ -22,6 +22,7 @@ const Cart = () => {
           </div>
         </div>
       ) : (
+        
         <div className={styles.cartWrapper}>
           <div className={styles.cartList}>
             {cart.map(item => (

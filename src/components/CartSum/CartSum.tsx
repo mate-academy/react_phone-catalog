@@ -14,7 +14,6 @@ const CartSummary = () => {
   const handleConfirm = () => {
     clearCart();
     setIsModalOpen(false);
-    console.log('Cart cleared after checkout confirmation');
   };
 
   const handleCancel = () => {

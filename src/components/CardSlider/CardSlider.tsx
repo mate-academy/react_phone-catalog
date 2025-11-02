@@ -68,18 +68,24 @@ export const CardSlider: React.FC<Props> = ({
     };
   }, [checkScrollPosition]);
 
-  const scroll = (direction: 'left' | 'right') => {
-    const container = sliderRef.current;
-    if (!container) return;
+const scroll = (direction: 'left' | 'right') => {
+  const container = sliderRef.current;
+  if (!container) return;
 
-    const scrollAmount = container.offsetWidth;
-    container.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth',
-    });
+  const card = container.querySelector(`.${styles.cardWrapper}`) as HTMLElement;
+  if (!card) return;
 
-    setTimeout(checkScrollPosition, 600);
-  };
+  const gap = 16;
+  const scrollAmount = card.offsetWidth + gap;
+
+  container.scrollBy({
+    left: direction === 'left' ? -scrollAmount : scrollAmount,
+    behavior: 'smooth',
+  });
+
+  setTimeout(checkScrollPosition, 600);
+};
+
 
   return (
     <div className={styles.section}>

@@ -1,13 +1,13 @@
-
 .card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 32px;
+  padding: 24px; 
   background-color: $color-card;
   transition: all 0.3s ease;
-  height: 506px;
-  max-width: 288px;
+  height: 480px;
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   border: 1px solid transparent;
 
@@ -15,20 +15,40 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     border: 1px solid $color-lila;
   }
+
+  @media (max-width: 480px) {
+    padding: 20px;
+    height: 460px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 16px;
+    height: 440px;
+  }
 }
 
 .card_imageContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 196px;
+  height: 180px;
   width: 100%;
   margin-bottom: 16px;
+
+  @media (max-width: 480px) {
+    height: 160px;
+  }
+
+  @media (max-width: 360px) {
+    height: 140px;
+  }
 }
 
 .card_img {
-  height: 196px;
-  width: 208px;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   transition: transform 0.3s ease;
 
@@ -50,10 +70,13 @@
   color: $color-light;
   margin-bottom: 8px;
   line-height: 21px;
-
-
   min-height: 42px;
   overflow: hidden;
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+    min-height: 39px;
+  }
 }
 
 .card_price {
@@ -63,26 +86,27 @@
   gap: 8px;
 }
 
-.card_priceRegular {
-  color: $color-light;
-  font-weight: 800;
-  font-size: 22px;
-  margin: 0;
-}
-
+.card_priceRegular,
 .card_priceDiscount {
   color: $color-light;
   font-weight: 800;
-  font-size: 22px;
-  margin: 0;
+  font-size: 20px;
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 }
 
-.card_priceRegular2{
+.card_priceRegular2 {
   color: $color-text;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 20px;
   margin: 0;
   text-decoration: line-through;
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 }
 
 .card_divider {
@@ -103,6 +127,10 @@
   align-items: center;
   font-size: 12px;
   font-weight: 700;
+
+  @media (max-width: 480px) {
+    font-size: 11px;
+  }
 }
 
 .card_specLabel {

@@ -59,6 +59,7 @@
   scroll-behavior: smooth;
   overflow-x: auto;
   padding-bottom: 8px;
+  transition: scroll-behavior 0.3s ease-in-out;
 
   &::-webkit-scrollbar {
     display: none;
@@ -69,3 +70,4 @@
   flex: 0 0 auto;
   width: 250px;
 }
+
