@@ -4,6 +4,7 @@ import { Dropdowns } from './Dropdowns';
 import scss from './ProductsList.module.scss';
 import { ProductCard } from '../../shared/components/ProductCard';
 import { useSearchParams } from 'react-router-dom';
+import { Pagination } from './Pagination';
 
 interface Props {
   items: Product[];
@@ -12,7 +13,7 @@ interface Props {
 export const ProductsList: React.FC<Props> = ({ items }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sortParam = searchParams.get('sort') || 'age';
-  // const pageParam = searchParams.get('page') || '1';
+  const pageParam = searchParams.get('page') || '1';
   const perPageParam = searchParams.get('perPage') || 'all';
 
   const sortByOptions = [
@@ -43,6 +44,28 @@ export const ProductsList: React.FC<Props> = ({ items }) => {
     }
   }, [items, sortParam]);
 
+  const paginatedItems = useMemo(() => {
+    if (perPageParam === 'all') {
+      return sortedItems;
+    }
+
+    const page = +pageParam;
+    const perPage = +perPageParam;
+
+    const startIndex = (page - 1) * perPage;
+    const endIndex = page * perPage;
+
+    return sortedItems.slice(startIndex, endIndex);
+  }, [sortedItems, pageParam, perPageParam]);
+
+  const totalPages = useMemo(() => {
+    if (perPageParam === 'all') {
+      return 1;
+    }
+
+    return Math.ceil(items.length / +perPageParam);
+  }, [items, perPageParam]);
+
   const sortBy = (value: string) => {
     setSearchParams(
       prevParams => {
@@ -72,6 +95,21 @@ export const ProductsList: React.FC<Props> = ({ items }) => {
     );
   };
 
+  const handlePageChange = (newPageNumber: number) => {
+    setSearchParams(
+      prevParams => {
+        if (newPageNumber === 1) {
+          prevParams.delete('page');
+        } else {
+          prevParams.set('page', newPageNumber.toString());
+        }
+
+        return prevParams;
+      },
+      { replace: true },
+    );
+  };
+
   return (
     <div className={scss.productsList}>
       <div className={scss.productsList__dropdownWrapper}>
@@ -90,12 +128,19 @@ export const ProductsList: React.FC<Props> = ({ items }) => {
       </div>
 
       <ul className={scss.productsList__itemsList}>
-        {sortedItems.map(item => (
+        {paginatedItems.map(item => (
           <li key={item.id} className={scss.productsList__item}>
             <ProductCard product={item} hasDiscount={false} />
           </li>
         ))}
       </ul>
+      {totalPages > 0 && (
+        <Pagination
+          total={totalPages}
+          currentPage={+pageParam}
+          onPageChange={newPage => handlePageChange(newPage)}
+        />
+      )}
     </div>
   );
 };

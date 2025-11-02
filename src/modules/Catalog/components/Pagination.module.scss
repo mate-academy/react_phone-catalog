@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  margin: 2.4rem 0 6.4rem;
+
+  &__pages {
+    display: flex;
+    justify-content: center;
+
+    gap: 0.8rem;
+
+    margin: 0 1.6rem;
+  }
+
+  &__page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 3.2rem;
+    width: 3.2rem;
+
+    border: 0.1rem solid rgba(226, 230, 233, 1);
+
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+
+    &_active {
+      background-color: rgba(49, 50, 55, 1);
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
