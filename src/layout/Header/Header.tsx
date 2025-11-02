@@ -69,6 +69,7 @@ export const Header: React.FC = () => {
             <Link
               to={'/favourites'}
               className={classNames(styles['header__icons--item'])}
+              onClick={() => setBurger(!burger)}
             >
               <Icon
                 path={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
@@ -85,6 +86,7 @@ export const Header: React.FC = () => {
             <Link
               to={'/cart'}
               className={classNames(styles['header__icons--item'])}
+              onClick={() => setBurger(!burger)}
             >
               <Icon
                 path={`${import.meta.env.BASE_URL}/img/icons/card.svg`}
