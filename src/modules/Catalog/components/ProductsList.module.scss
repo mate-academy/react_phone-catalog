@@ -1,4 +1,9 @@
 .productsList {
+  &__dropdownWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__itemsList {
     display: flex;
     flex-direction: column;
