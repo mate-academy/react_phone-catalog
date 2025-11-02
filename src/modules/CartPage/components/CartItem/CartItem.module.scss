@@ -21,11 +21,10 @@
 
   @include mobile {
     display: grid;
-    grid-template-columns: auto auto 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas:
+    grid-template:
       'remove image name'
-      '. quantity price';
+      '. quantity price'
+      / auto auto 1fr;
     align-items: center;
     gap: $spacing-md $spacing-lg;
     padding: $spacing-lg;
@@ -53,8 +52,7 @@
 
     @include mobile {
       grid-area: remove;
-      justify-self: start;
-      align-self: center;
+      place-self: center start;
     }
   }
 
@@ -75,9 +73,9 @@
       grid-area: image;
       width: 60px;
       height: 60px;
-      justify-self: start;
-      align-self: center;
+      place-self: center start;
     }
+
     overflow: hidden;
   }
 
@@ -136,6 +134,7 @@
 
   &__price {
     @include font-mont($font-size-lg, $font-weight-extra-bold);
+
     color: $secondary;
 
     @include tablet {
@@ -144,8 +143,7 @@
 
     @include mobile {
       grid-area: price;
-      justify-self: end;
-      align-self: center;
+      place-self: center end;
     }
   }
 }
