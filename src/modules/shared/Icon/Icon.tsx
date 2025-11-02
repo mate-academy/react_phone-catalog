@@ -7,9 +7,10 @@ interface IconProps {
   href?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   iconStyles?: IconStyles;
+  disabled?: boolean;
 }
 
-const Icon: React.FC<IconProps> = ({ href, onClick, iconStyles }) => {
+const Icon: React.FC<IconProps> = ({ href, onClick, iconStyles, disabled }) => {
   const isLink = !!href;
   const isButton = !!onClick;
 
@@ -32,7 +33,11 @@ const Icon: React.FC<IconProps> = ({ href, onClick, iconStyles }) => {
 
   if (isButton) {
     return (
-      <button className={iconClasses} onClick={onClick}>
+      <button
+        className={iconClasses}
+        onClick={onClick}
+        disabled={disabled === undefined ? false : disabled}
+      >
         {imgElement}
       </button>
     );
