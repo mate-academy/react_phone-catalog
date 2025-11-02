@@ -5,9 +5,17 @@ import s from './ProductsSlider.module.scss';
 import arrowRight from '../../../assets/Chevron (Arrow Right).svg';
 import arrowLeft from '../../../assets/Chevron Muted (Arrow Right).svg';
 
-type Props = { title: string; items: ProductListItem[] };
+type Props = {
+  title: string;
+  items: ProductListItem[];
+  priceMode?: 'discount' | 'full' | 'current';
+};
 
-export const ProductsSlider: React.FC<Props> = ({ title, items }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  items,
+  priceMode = 'full',
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const scrollBy = (dir: 1 | -1) => {
     const el = ref.current;
@@ -55,7 +63,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, items }) => {
           <div className={s.row}>
             {items.map(p => (
               <div className={s.cell} key={p.itemId}>
-                <ProductCard product={p} />
+                <ProductCard key={p.itemId} product={p} priceMode={priceMode} />
               </div>
             ))}
           </div>

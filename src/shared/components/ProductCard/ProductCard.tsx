@@ -7,10 +7,23 @@ import { money } from '../../utils/format';
 import HeartEmpty from '../../../assets/Favourites (Heart Like).svg';
 import HeartFull from '../../../assets/Favourites Filled (Heart Like).svg';
 
-type Props = { product: ProductListItem };
+type Props = {
+  product: ProductListItem;
+  /**
+   * Режим отображения цены:
+   * - "discount" — текущая цена + зачёркнутая старая (для Hot prices)
+   * - "full" — только полная (старая) цена
+   * - "current" — только текущая (скидочная) цена
+   * По умолчанию "full", чтобы везде (кроме Hot prices) была только основная цена.
+   */
+  priceMode?: 'discount' | 'full' | 'current';
+};
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { items, add } = useCart();
+export const ProductCard: React.FC<Props> = ({
+  product,
+  priceMode = 'full',
+}) => {
+  const { items, add, remove } = useCart();
   const { isFavorite, toggle } = useFavorites();
 
   const specs: [string, string][] = [
@@ -22,6 +35,34 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const fav = isFavorite(product.itemId);
   const inCart = items.some(i => i.productId === product.itemId);
 
+  const renderPrice = () => {
+    const hasDiscount = product.fullPrice > product.price;
+
+    if (priceMode === 'discount' && hasDiscount) {
+      return (
+        <div className={s.prices}>
+          <span className={s.price}>{money(product.price)}</span>
+          <span className={s.fullPrice}>{money(product.fullPrice)}</span>
+        </div>
+      );
+    }
+
+    if (priceMode === 'full') {
+      return (
+        <div className={s.prices}>
+          <span className={s.price}>{money(product.fullPrice)}</span>
+        </div>
+      );
+    }
+
+    // 'current' (или если скидки нет)
+    return (
+      <div className={s.prices}>
+        <span className={s.price}>{money(product.price)}</span>
+      </div>
+    );
+  };
+
   return (
     <article className={s.card}>
       <Link to={`/product/${product.itemId}`} className={s.imageWrap}>
@@ -32,12 +73,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         {product.name}
       </Link>
 
-      <div className={s.prices}>
-        <span className={s.price}>{money(product.price)}</span>
-        {product.fullPrice > product.price && (
-          <span className={s.fullPrice}>{money(product.fullPrice)}</span>
-        )}
-      </div>
+      {renderPrice()}
 
       <div className={s.sep} />
 
@@ -54,14 +90,19 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={s.actions}>
         <button
+          type="button"
           className={`${s.cartBtn} ${inCart ? s.inCart : ''}`}
-          onClick={() => !inCart && add(product.itemId)}
-          aria-disabled={inCart}
+          onClick={() =>
+            inCart ? remove(product.itemId) : add(product.itemId)
+          }
+          aria-pressed={inCart}
+          title={inCart ? 'Remove from cart' : 'Add to cart'}
         >
           {inCart ? 'Added' : 'Add to cart'}
         </button>
 
         <button
+          type="button"
           className={`${s.heartBtn} ${fav ? s.active : ''}`}
           aria-pressed={fav}
           onClick={() => toggle(product.itemId)}

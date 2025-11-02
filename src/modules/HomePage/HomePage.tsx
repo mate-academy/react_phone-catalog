@@ -45,11 +45,11 @@ export const HomePage = () => {
         <div>Loading…</div>
       ) : (
         <>
-          <ProductsSlider title="Brand new" items={brandNew} />
+          <ProductsSlider title="Brand new" items={brandNew} priceMode="full" />
 
           <ShopByCategory />
 
-          <ProductsSlider title="Hot prices" items={hot} />
+          <ProductsSlider title="Hot prices" items={hot} priceMode="discount" />
         </>
       )}
     </div>
