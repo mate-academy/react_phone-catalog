@@ -25,6 +25,7 @@ export const Pagination: React.FC<Props> = ({ pagesCount }) => {
 
   useEffect(() => {
     const p = searchParams.get('page');
+    const perPage = searchParams.get('perPage');
 
     if (p && +p > pagesCount - 1) {
       setPage(0);
@@ -34,7 +35,18 @@ export const Pagination: React.FC<Props> = ({ pagesCount }) => {
         }),
       );
     }
-  }, [pagesCount, searchParams]);
+
+    if (perPage && !p) {
+      if (+perPage < pagesCount * +perPage) {
+        setPage(0);
+        setSearchParams(
+          getSearchWith(searchParams, {
+            page: '0',
+          }),
+        );
+      }
+    }
+  }, [pagesCount, searchParams, setSearchParams]);
 
   if (page === null) {
     return <></>;

@@ -10,9 +10,14 @@ import { useScrollLoad } from './hooks/useScrollLoad';
 type Props = {
   title: string;
   products: Product[];
+  discount: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  discount,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const loadedProducts = useMemo(() => {
@@ -122,7 +127,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         <div className={classNames(styles.slider__content)} ref={slider}>
           {loadedProducts.map(p => (
             <div key={p.id} className={classNames(styles.slider__item)}>
-              <ProductItem item={p} />
+              <ProductItem item={p} discount={discount} />
             </div>
           ))}
         </div>

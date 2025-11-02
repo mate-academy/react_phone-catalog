@@ -124,6 +124,10 @@
     font-size: 22px;
     line-height: 140%;
     color: g.$main-grey;
+    text-align: right;
+
+    width: 150px;
+    overflow: hidden;
 
     @include g.on-tablet {
       margin-left: 24px;

@@ -5,13 +5,6 @@ import classNames from 'classnames';
 import { getSearchWith } from '../../../../utils/searchHelper';
 import { useEffect } from 'react';
 
-type Props = {
-  sortFiled: SortField;
-  setSort: (field: SortField) => void;
-  sortDitrection: SortDir;
-  setDirection: (dir: SortDir) => void;
-};
-
 type SortType = {
   name: string;
   field: SortField;
@@ -38,26 +31,9 @@ const sortFieldList: SortType[] = [
 
 const itemsCountList = [4, 8, 16, 'all'];
 
-export const Form: React.FC<Props> = ({
-  sortFiled,
-  setSort,
-  sortDitrection,
-  setDirection,
-}) => {
-  const sortOptionValue =
-    sortFieldList.find(
-      a => a.field === sortFiled && a.direction === sortDitrection,
-    )?.name || sortFieldList[0].name;
-  const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const values = e.currentTarget.value.split(',');
-    const field = values[0] as SortField;
-    const direction = values[1] as SortDir;
-
-    setSort(field);
-    setDirection(direction);
-  };
-
+export const Form: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const handleCount = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value === 'all' ? null : e.target.value;
 
@@ -68,13 +44,24 @@ export const Form: React.FC<Props> = ({
     );
   };
 
+  const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const values = e.currentTarget.value.split(',');
+
+    setSearchParams(
+      getSearchWith(searchParams, {
+        sort: values[0],
+      }),
+    );
+  };
+
   useEffect(() => {
     setSearchParams(
       getSearchWith(searchParams, {
         perPage: '' + 16,
+        sort: SortField.Year,
       }),
     );
-  }, [searchParams]);
+  }, []);
 
   return (
     <form className={classNames(styles.form)}>
@@ -86,14 +73,14 @@ export const Form: React.FC<Props> = ({
           className={classNames(styles.form__select)}
           id="sort"
           name="sort"
-          value={sortOptionValue}
+          value={searchParams.get('sort') || SortField.Year}
           onChange={e => handleSort(e)}
         >
           {sortFieldList.map((opt, i) => (
             <option
               key={i}
               className={classNames(styles.form__option)}
-              value={opt.name}
+              value={opt.field}
             >
               {opt.name}
             </option>

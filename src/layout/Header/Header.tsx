@@ -5,14 +5,20 @@ import { Nav } from '../../components/Nav';
 import { Icon } from '../../components/Icon';
 import styles from './Header.module.scss';
 import { StateContext } from '../../utils/GlobalContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const MIN_TABLET_WIDTH = BREAKPOINTS['min-tablet'];
 
 export const Header: React.FC = () => {
   const [burger, setBurger] = useState(false);
+  const location = useLocation();
   const navList = ['home', 'phone', 'tablets', 'accessories'];
-  const navPath = [`/`, 'phones', 'tablets', 'accessories'];
+  const navPath = [
+    `/`,
+    `phones${location.search}`,
+    `tablets${location.search}`,
+    `accessories${location.search}`,
+  ];
   const { favourites, cart } = useContext(StateContext);
 
   useEffect(() => {

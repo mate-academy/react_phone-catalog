@@ -98,13 +98,14 @@
     justify-content: space-between;
     margin-top: 8px;
 
+    font-family: utils.$font-semi;
+    font-size: 12px;
+
     &:first-child {
       margin-top: 0;
     }
 
     &--title {
-      font-family: utils.$font-semi;
-      font-size: 12px;
       color: utils.$second-grey;
     }
 

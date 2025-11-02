@@ -2,6 +2,7 @@
 
 .item{
   flex-basis: 100%;
+  position: relative;
 
   @include g.on-tablet {
     flex: 0 1 33.33%;
@@ -17,6 +18,12 @@
     width: 100%;
 
     background-color: aqua;
+
+    transition: transform linear g.$transition-duration;
+
+    &:hover{
+      transform: scale(1.05);
+    }
 
 
     &-img{

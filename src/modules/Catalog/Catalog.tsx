@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Form } from './components/Form/Form';
 import { ProductList } from '../shared/ProductList/ProductList';
-import { SortDir, SortField } from './types/sort';
+import { SortField } from './types/sort';
 import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { getProducts } from '../../utils/fetchProducts';
 import { CategoryTypes } from '../../types/CategoryTypes';
@@ -43,8 +43,6 @@ export const Catalor: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [itemsList, setItemsList] = useState<Product[]>([]);
-  const [sortField, setSortField] = useState<SortField>(SortField.Year);
-  const [sortDirection, setSortDirection] = useState<SortDir>(SortDir.ASC);
   const section = useRef<HTMLElement>(null);
   const [pageCount, setPageCount] = useState(1);
   const [searchParams] = useSearchParams();
@@ -53,14 +51,14 @@ export const Catalor: React.FC = () => {
   const filtredList: Product[] = useMemo(() => {
     const sortedList: Product[] = sort(
       itemsList,
-      sortField,
-      sortDirection === SortDir.DESC,
+      searchParams.get('sort') as SortField || SortField.Year,
+      false,
     );
 
     const perPage = searchParams.get('perPage');
-    const page = searchParams.get('page');
+    const page = searchParams.get('page') || 0;
 
-    if (perPage && page) {
+    if (perPage && (+page + 1)) {
       const startIndex = +page * +perPage;
       const lastIndex = startIndex + +perPage;
 
@@ -72,7 +70,7 @@ export const Catalor: React.FC = () => {
 
       return sortedList;
     }
-  }, [itemsList, sortField, sortDirection, searchParams]);
+  }, [itemsList, searchParams]);
 
   useEffect(() => {
     setLoading(true);
@@ -108,12 +106,7 @@ export const Catalor: React.FC = () => {
         </div>
       </header>
       <div className={classNames(styles.catalog__form)}>
-        <Form
-          sortFiled={sortField}
-          setSort={setSortField}
-          sortDitrection={sortDirection}
-          setDirection={setSortDirection}
-        />
+        <Form />
       </div>
       {(loading && <Loader />) ||
         (error && <Error setKey={setErrorKey} />) || (

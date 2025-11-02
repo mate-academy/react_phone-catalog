@@ -62,7 +62,11 @@ export const HomePage: React.FC = () => {
         <Slider images={images} />
       </div>
       <div className={classNames(styles.home__latest)}>
-        <ProductsSlider title={'Brand new models'} products={newBrands} />
+        <ProductsSlider
+          title={'Brand new models'}
+          products={newBrands}
+          discount={false}
+        />
       </div>
 
       <div className={classNames(styles.home__categories)}>
@@ -73,7 +77,11 @@ export const HomePage: React.FC = () => {
         />
       </div>
       <div className={classNames(styles.home__discount)}>
-        <ProductsSlider title={'Hot prices'} products={maxDiscount} />
+        <ProductsSlider
+          title={'Hot prices'}
+          products={maxDiscount}
+          discount={true}
+        />
       </div>
     </div>
   );

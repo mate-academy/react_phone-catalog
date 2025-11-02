@@ -35,7 +35,7 @@ export const CartItem: React.FC<Props> = ({
         <div className={classNames(styles.item__inform)}>
           <img
             className={classNames(styles.item__img)}
-            src={`/${item.image}`}
+            src={`${import.meta.env.BASE_URL}/${item.image}`}
             alt={`${item.name}-img`}
           />
           <span className={classNames(styles.item__name)}>{item.name}</span>

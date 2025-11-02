@@ -97,7 +97,7 @@ export const Cart = () => {
               </div>
               <div
                 className={classNames(styles['cart__price-text'])}
-              >{`Total for ${totalCost} items`}</div>
+              >{`Total for ${cart.length} items`}</div>
             </div>
             <button
               className={classNames(styles.cart__buy)}

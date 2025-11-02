@@ -7,9 +7,10 @@ import { Fav } from '../../../components/Icons/Favourite/Fav';
 
 type Props = {
   item: Product;
+  discount: boolean;
 };
 
-export const ProductItem: React.FC<Props> = ({ item }) => {
+export const ProductItem: React.FC<Props> = ({ item, discount }) => {
   const path = `/${item.category}/${item.itemId}`;
 
   return (
@@ -21,14 +22,23 @@ export const ProductItem: React.FC<Props> = ({ item }) => {
           className={classNames(styles.item__img)}
         />
         <div className={classNames(styles.item__name)}>{item.name}</div>
-        <div className={classNames(styles.item__price)}>
-          <span
-            className={classNames(styles['item__price-current'])}
-          >{`$${item.fullPrice}`}</span>
-          <span
-            className={classNames(styles['item__price-full'])}
-          >{`$${item.fullPrice}`}</span>
-        </div>
+        {discount && (
+          <div className={classNames(styles.item__price)}>
+            <span
+              className={classNames(styles['item__price-current'])}
+            >{`$${item.price}`}</span>
+            <span
+              className={classNames(styles['item__price-full'])}
+            >{`$${item.fullPrice}`}</span>
+          </div>
+        )}
+        {!discount && (
+          <div className={classNames(styles.item__price)}>
+            <span
+              className={classNames(styles['item__price-current'])}
+            >{`$${item.fullPrice}`}</span>
+          </div>
+        )}
         <div className={classNames(styles.item__specs)}>
           <div className={classNames(styles.item__spec)}>
             <div className={classNames(styles['item__spec--title'])}>
