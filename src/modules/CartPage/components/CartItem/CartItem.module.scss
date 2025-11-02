@@ -6,28 +6,55 @@
   align-items: center;
   gap: $spacing-lg;
   padding: $spacing-2xl;
-  border: 1px solid $elements;
+
   background: $surface2;
   margin-bottom: 16px;
 
   @include tablet {
-    grid-template-columns: auto auto 1fr;
-    grid-template-rows: auto auto;
-    gap: $spacing-lg;
+    grid-template-columns: auto auto 1fr auto auto;
+    align-items: center;
+  }
+
+  @include desktop {
+    grid-template-columns: auto auto 1fr auto auto;
   }
 
   @include mobile {
-    grid-template-columns: auto 1fr;
-    gap: $spacing-md;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'remove image name'
+      '. quantity price';
+    align-items: center;
+    gap: $spacing-md $spacing-lg;
     padding: $spacing-lg;
   }
 
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
   &__remove {
-    @include icon-button(32px);
+    @include icon-button(28px);
+
+    border: none;
+    background: transparent;
 
     img {
       width: $spacing-lg;
       height: $spacing-lg;
+    }
+
+    @include mobile {
+      grid-area: remove;
+      justify-self: start;
+      align-self: center;
     }
   }
 
@@ -36,18 +63,22 @@
 
     width: 80px;
     height: 80px;
-    background: $surface1;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
 
     @include mobile {
+      grid-area: image;
       width: 60px;
       height: 60px;
+      justify-self: start;
+      align-self: center;
     }
-  }
-
-  &__image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    overflow: hidden;
   }
 
   &__name {
@@ -55,14 +86,18 @@
 
     color: $secondary;
     text-decoration: none;
+    line-height: 1.4;
+    text-align: left;
 
     &:hover {
       color: $primary;
     }
 
     @include mobile {
-      grid-column: 1 / -1;
-      order: -1;
+      grid-area: name;
+      align-self: center;
+      padding-left: $spacing-sm;
+      font-size: $font-size-md;
     }
   }
 
@@ -72,17 +107,18 @@
     gap: $spacing-sm;
 
     @include tablet {
-      grid-column: 2;
-      grid-row: 2;
+      margin-right: 24px;
     }
 
     @include mobile {
+      grid-area: quantity;
       justify-self: start;
+      margin-top: $spacing-xs;
     }
   }
 
   &__quantityBtn {
-    @include icon-button(32px);
+    @include icon-button(28px);
 
     img {
       width: $spacing-lg;
@@ -99,18 +135,17 @@
   }
 
   &__price {
-    @include font-mont($font-size-2xl, $font-weight-extra-bold);
+    @include font-mont($font-size-lg, $font-weight-extra-bold);
+    color: $secondary;
 
     @include tablet {
-      grid-column: 3;
-      grid-row: 2;
       justify-self: end;
     }
 
     @include mobile {
+      grid-area: price;
       justify-self: end;
+      align-self: center;
     }
-
-    color: $secondary;
   }
 }

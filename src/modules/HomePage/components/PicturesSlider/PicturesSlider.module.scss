@@ -98,7 +98,6 @@
 }
 
 .slider__image {
-  max-width: 450px;
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -185,10 +184,6 @@
   .slider__ctaButton {
     padding: $spacing-sm $spacing-2xl;
   }
-
-  .slider__image {
-    max-width: 350px;
-  }
 }
 
 @media (max-width: #{$tablet - 1px}) {
@@ -231,7 +226,6 @@
 
   .slider__image {
     width: 85%;
-    max-width: 280px;
   }
 
   .slider__button {
