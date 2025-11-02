@@ -63,9 +63,10 @@ const HomeCatalog: React.FC<Props> = ({ title, products }) => {
 
   useEffect(() => {
     let handleScrollEnd = null;
+    let slider: HTMLDivElement;
 
     if (sliderRef.current) {
-      const slider = sliderRef.current;
+      slider = sliderRef.current;
       const slides = slider.children;
 
       const isFirstVisible = () => {
@@ -108,8 +109,8 @@ const HomeCatalog: React.FC<Props> = ({ title, products }) => {
     }
 
     return () => {
-      if (handleScrollEnd) {
-        sliderRef.current?.removeEventListener('scrollend', handleScrollEnd);
+      if (slider && handleScrollEnd) {
+        slider.removeEventListener('scrollend', handleScrollEnd);
       }
     };
   }, []);
