@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import { useTabs } from '../../ProductsContext/TabsContext';
 import { ProductsStyleMode } from '../shared/types/types';
@@ -18,7 +18,7 @@ export const ProductDetailsPage = () => {
   const { id } = useParams();
   const { productsList } = useTabs();
   const location = useLocation();
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const [localLoading, setLocalLoading] = useState(true);
 
   useEffect(() => {
@@ -34,6 +34,9 @@ export const ProductDetailsPage = () => {
 
   const sale = product?.price !== product?.fullPrice;
 
+  const initialColor = searchParams.get('color') || product?.color;
+  const initialCapacity = searchParams.get('capacity') || product?.capacity;
+
   if (localLoading) {
     return <Loader />;
   }
@@ -47,6 +50,9 @@ export const ProductDetailsPage = () => {
       product={product}
       sale={sale}
       isProductPage={isProductPage}
+      initialColor={initialColor}
+      initialCapacity={initialCapacity}
+      setSearchParams={setSearchParams}
     >
       <div className={styles.container}>
         <NavigateButtons />

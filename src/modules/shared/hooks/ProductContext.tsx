@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Product } from '../../../ProductsContext/TabsContext';
 
 export interface ProductContextType {
@@ -22,6 +22,9 @@ export interface ProductProviderProps {
   children: React.ReactNode;
   sale: boolean;
   isProductPage: boolean;
+  initialColor: string | undefined;
+  initialCapacity: string | undefined;
+  setSearchParams: (params: Record<string, string>) => void;
 }
 
 export const ProductProvider: React.FC<ProductProviderProps> = ({
@@ -29,10 +32,28 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
   children,
   sale,
   isProductPage,
+  initialColor,
+  initialCapacity,
+  setSearchParams,
 }) => {
   const [activeImage, setActiveImage] = useState(product.image);
-  const [activeColor, setActiveColor] = useState(product.colorHex);
-  const [activeCapacity, setActiveCapacity] = useState(product.capacity);
+  const [activeColor, setActiveColor] = useState(
+    initialColor || product.colorHex,
+  );
+  const [activeCapacity, setActiveCapacity] = useState(
+    initialCapacity || product.capacity,
+  );
+
+  useEffect(() => {
+    if (!setSearchParams) {
+      return;
+    }
+
+    setSearchParams({
+      color: activeColor || '',
+      capacity: activeCapacity || '',
+    });
+  }, [activeColor, activeCapacity, setSearchParams]);
 
   return (
     <ProductContext.Provider

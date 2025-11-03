@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../../ProductsContext/CartContext';
 import { useFavourite } from '../../../ProductsContext/FavouriteContext';
 import { Product } from '../../../ProductsContext/TabsContext';
+import { scrollToTop } from '../navigate/ToTop';
 
 export const useProductActions = (element: Product) => {
   const { favourites, toggleFavourite } = useFavourite();
@@ -37,6 +38,7 @@ export const useProductActions = (element: Product) => {
 
   const openProduct = () => {
     navigate(`/${element.category}/product/${element.id}`);
+    scrollToTop();
   };
 
   return {

@@ -4,12 +4,16 @@ import { useProduct } from '../../../shared/hooks/ProductContext';
 import styles from './TechSpecs.module.scss';
 
 export const TechSpecs = () => {
-  const { product } = useProduct();
+  const { product, activeCapacity } = useProduct();
 
   return (
     <div className={styles.contentAboutTech}>
       <div className={styles.titleAboutTech}>Tech specs</div>
-      <BlockInform element={product} mode={InformMode.TechSpecs} />
+      <BlockInform
+        element={product}
+        mode={InformMode.TechSpecs}
+        activeCapacity={activeCapacity}
+      />
     </div>
   );
 };

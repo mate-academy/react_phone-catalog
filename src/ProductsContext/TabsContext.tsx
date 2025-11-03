@@ -43,6 +43,31 @@ export interface ProductDetails {
   cell?: string[];
 }
 
+export const colorStyle: Record<string, string> = {
+  silver: '#C0C0C0',
+  'rose gold': '#FCDBC1',
+  green: '#5F7170',
+  'sky blue': '#87CEEB',
+  'space gray': '#4C4C4C',
+  spacegray: '#4C4C4C',
+  spaceblack: '#1C1C1E',
+  yellow: '#FFE135',
+  'space-black': '#1C1C1E',
+  gold: '#FFD700',
+  black: '#0F1121',
+  white: '#F0F0F0',
+  purple: '#905BFF',
+  red: '#EB5757',
+  midnight: '#1E2732',
+  blue: '#1F3A93',
+  starlight: '#F6F2EA',
+  pink: '#FFC0CB',
+  sierrablue: '#A3C6E0',
+  midnightgreen: '#004953',
+  coral: '#FF7F50',
+  graphite: '#383838',
+};
+
 type TabsContextType = {
   productsList: Product[];
   loading: boolean;
@@ -67,23 +92,6 @@ export const TabsProvider = ({ children }: { children: ReactNode }) => {
     setError(false);
 
     await new Promise(resolve => setTimeout(resolve, 3000));
-
-    const colorStyle: Record<string, string> = {
-      silver: '#C0C0C0',
-      'rose gold': '#FCDBC1',
-      green: '#5F7170',
-      'sky blue': '#87CEEB',
-      'space gray': '#4C4C4C',
-      spacegray: '#4C4C4C',
-      spaceblack: '#1C1C1E',
-      gold: '#FCDBC1',
-      black: '#0F1121',
-      yellow: '#FFD700',
-      white: '#F0F0F0',
-      purple: '#905BFF',
-      red: '#EB5757',
-      midnight: '#1E2732',
-    };
 
     try {
       const responses = await Promise.all([
