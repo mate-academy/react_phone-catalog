@@ -26,16 +26,12 @@
   }
 }
 
-.container {
-  @include content-padding-inline;
-}
-
 @mixin page-grid {
   --columns: 4;
 
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
-  gap: 16px;
+  gap: $grid-gap-mobile;
 
   @include on-tablet {
     --columns: 12;

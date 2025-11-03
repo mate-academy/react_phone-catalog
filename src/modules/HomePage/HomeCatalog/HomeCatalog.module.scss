@@ -25,6 +25,8 @@
   &__slider {
     display: grid;
     width: 100%;
+    padding-right: $mobile-padding-inline;
+    margin-right: $mobile-padding-inline;
     gap: $grid-gap-desktop;
     grid-auto-columns: 3 * $grid-column-mobile + 2 * $grid-gap-mobile;
     grid-auto-flow: column;
@@ -32,7 +34,13 @@
     scrollbar-width: none;
 
     @include on-tablet {
+      padding-right: $tablet-padding-inline;
+      margin-right: $tablet-padding-inline;
       grid-auto-columns: 5 * $grid-column-desktop + 4 * $grid-gap-desktop;
+    }
+
+    @include on-desktop {
+      padding-right: 0;
     }
   }
 }

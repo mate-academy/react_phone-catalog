@@ -34,14 +34,23 @@ const HomeCatalog: React.FC<Props> = ({ title, products }) => {
     }
 
     const slides = sliderRef.current.children;
-    const inline = currentSlide === slides.length - 1 ? 'center' : 'end';
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
 
+    const inline = slideNumber === slides.length - 1 ? 'center' : 'end';
+
+    setLeftButtonDisabled(true);
+    setRightButtonDisabled(true);
     setCurrentSlide(slideNumber);
 
     slides[slideNumber].scrollIntoView({
       behavior: 'smooth',
       inline,
       block: 'nearest',
+    });
+
+    window.scrollTo({
+      top: scrollY,
+      behavior: 'instant',
     });
   };
 
@@ -50,15 +59,9 @@ const HomeCatalog: React.FC<Props> = ({ title, products }) => {
   };
 
   const scrollRight = () => {
-    if (sliderRef.current) {
-      const slidesAmount = sliderRef.current.children.length - 1;
-      const newCurrentSlide = Math.min(
-        slidesAmount,
-        currentSlide + getVisibleSlidesCount(),
-      );
-
-      scrollTo(newCurrentSlide);
-    }
+    scrollTo(
+      Math.min(products.length - 1, currentSlide + getVisibleSlidesCount()),
+    );
   };
 
   useEffect(() => {
@@ -82,11 +85,14 @@ const HomeCatalog: React.FC<Props> = ({ title, products }) => {
 
         const lastBlockRect = slides[num].getBoundingClientRect();
         const containerRect = slider.getBoundingClientRect();
+        const leftPadding = parseFloat(
+          window.getComputedStyle(slider).getPropertyValue('padding-right'),
+        );
 
         return (
           containerRect.x +
             containerRect.width -
-            (lastBlockRect.x + lastBlockRect.width) >=
+            (lastBlockRect.x + lastBlockRect.width + leftPadding) >=
           0
         );
       };
@@ -97,12 +103,41 @@ const HomeCatalog: React.FC<Props> = ({ title, products }) => {
       };
 
       updateButtonsStatus();
-      console.log('count', getVisibleSlidesCount());
       setCurrentSlide(getVisibleSlidesCount() - 1);
 
       handleScrollEnd = () => {
+        if (!sliderRef.current) {
+          return;
+        }
+
+        if (isFirstVisible()) {
+          setCurrentSlide(getVisibleSlidesCount() - 1);
+        } else {
+          const containerRect = slider.getBoundingClientRect();
+          const lastSlideRect =
+            slides[slides.length - 1].getBoundingClientRect();
+
+          if (
+            containerRect.x + containerRect.width - lastSlideRect.x >=
+            lastSlideRect.width
+          ) {
+            setCurrentSlide(slides.length - 1);
+          } else {
+            for (let num = 0; num < slides.length; num++) {
+              const currentSlideRect = slides[num].getBoundingClientRect();
+
+              if (
+                containerRect.x + containerRect.width - currentSlideRect.x <
+                currentSlideRect.width
+              ) {
+                setCurrentSlide(--num);
+                break;
+              }
+            }
+          }
+        }
+
         updateButtonsStatus();
-        console.log('Scrolling has ended!');
       };
 
       slider.addEventListener('scrollend', handleScrollEnd);
@@ -142,10 +177,7 @@ const HomeCatalog: React.FC<Props> = ({ title, products }) => {
       </div>
       <div ref={sliderRef} className={styles.catalog__slider}>
         {products.map(product => (
-          <ProductCard
-            key={product.id}
-            product={{ ...product, name: product.id + ' | ' + product.name }}
-          />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>

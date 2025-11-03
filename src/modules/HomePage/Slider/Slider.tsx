@@ -36,7 +36,13 @@ const Slider = () => {
       const children = Array.from(sliderRef.current.children);
 
       if (children.length > 1) {
+        const scrollY = window.scrollY || document.documentElement.scrollTop;
+
         children[number].scrollIntoView({ behavior, block: 'center' });
+        window.scrollTo({
+          top: scrollY,
+          behavior: 'instant',
+        });
       }
     }
   };
@@ -50,8 +56,8 @@ const Slider = () => {
 
   const handleScroll = () => {
     if (sliderRef.current) {
-      const slideWidht = sliderRef.current.clientWidth;
-      let num = Math.round(sliderRef.current.scrollLeft / slideWidht);
+      const slideWidth = sliderRef.current.clientWidth;
+      let num = Math.round(sliderRef.current.scrollLeft / slideWidth);
 
       if (num === 0) {
         num = lastSlideNumber;
@@ -65,7 +71,7 @@ const Slider = () => {
 
       if (
         Math.round(
-          (sliderRef.current.scrollLeft / (slideWidht * (slides.length + 1))) *
+          (sliderRef.current.scrollLeft / (slideWidth * (slides.length + 1))) *
             100,
         ) === 100
       ) {
