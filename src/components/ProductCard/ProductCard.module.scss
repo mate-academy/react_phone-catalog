@@ -3,10 +3,8 @@
 .productCard {
   @include card-base;
 
-  height: 506px;
-  padding: 32px;
+  padding: $spacing-3xl;
   box-sizing: border-box;
-
   transition: all $transition-normal ease;
 
   &:hover {
@@ -55,11 +53,11 @@
     margin-bottom: $spacing-sm;
     color: $secondary;
 
-    @include text-ellipsis(3);
-
     height: 60px;
     min-height: 60px;
     flex-shrink: 0;
+
+    @include text-ellipsis(3);
   }
 
   &__prices {
@@ -133,6 +131,7 @@
     @include icon-button;
 
     border: none;
+
     &_active {
       background: #3b3e4a;
     }

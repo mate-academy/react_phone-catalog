@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './ProductGallery.module.scss';
 
@@ -14,7 +14,7 @@ export const ProductGallery: React.FC<Props> = ({ images, name, category }) => {
   const [loading, setLoading] = useState(true);
 
   // check if an image exists
-  const checkImageExists = (url: string): Promise<boolean> => {
+  const checkImageExists = useCallback((url: string): Promise<boolean> => {
     return new Promise(resolve => {
       const img = new Image();
 
@@ -22,32 +22,35 @@ export const ProductGallery: React.FC<Props> = ({ images, name, category }) => {
       img.onerror = () => resolve(false);
       img.src = url;
     });
-  };
+  }, []);
 
   // Find all available images for a product
-  const findAllAvailableImages = async (baseImagePath: string) => {
-    const existingImages: string[] = [];
-    const baseDir = baseImagePath.substring(
-      0,
-      baseImagePath.lastIndexOf('/') + 1,
-    );
+  const findAllAvailableImages = useCallback(
+    async (baseImagePath: string) => {
+      const existingImages: string[] = [];
+      const baseDir = baseImagePath.substring(
+        0,
+        baseImagePath.lastIndexOf('/') + 1,
+      );
 
-    // Check images(max reasonable number)
-    for (let i = 0; i <= 10; i++) {
-      const number = i.toString().padStart(2, '0');
-      const imagePath = `${baseDir}${number}.webp`;
+      // Check images(max reasonable number)
+      for (let i = 0; i <= 10; i++) {
+        const number = i.toString().padStart(2, '0');
+        const imagePath = `${baseDir}${number}.webp`;
 
-      const exists = await checkImageExists(imagePath);
+        const exists = await checkImageExists(imagePath);
 
-      if (exists) {
-        existingImages.push(imagePath);
-      } else if (i > 0) {
-        break;
+        if (exists) {
+          existingImages.push(imagePath);
+        } else if (i > 0) {
+          break;
+        }
       }
-    }
 
-    return existingImages;
-  };
+      return existingImages;
+    },
+    [checkImageExists],
+  );
 
   useEffect(() => {
     const loadAvailableImages = async () => {
@@ -84,16 +87,16 @@ export const ProductGallery: React.FC<Props> = ({ images, name, category }) => {
     };
 
     loadAvailableImages();
-  }, [images, name, category]);
+  }, [images, name, category, findAllAvailableImages]);
 
   // Function to handle image loading errors
-  const handleImageError = (detectedCategory: string) => {
+  const handleImageError = useCallback((detectedCategory: string) => {
     return (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
       const target = event.target as HTMLImageElement;
 
       target.src = `img/${detectedCategory}1.png`;
     };
-  };
+  }, []);
 
   // Determine category for fallback images
   const detectedCategory =

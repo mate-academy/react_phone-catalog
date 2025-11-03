@@ -28,6 +28,7 @@
 
     transition: all $transition-normal ease;
     border: none;
+
     &:hover {
       background: $icons;
     }

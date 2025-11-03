@@ -61,6 +61,7 @@
 
     width: 80px;
     height: 80px;
+    overflow: hidden;
 
     img {
       display: block;
@@ -75,8 +76,6 @@
       height: 60px;
       place-self: center start;
     }
-
-    overflow: hidden;
   }
 
   &__name {

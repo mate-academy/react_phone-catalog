@@ -21,13 +21,13 @@ export const useHomePageData = (): UseHomePageDataReturn => {
         setLoading(true);
         const products = await api.getProducts();
 
-        // Hot prices - products with biggest discount
+        // Hot prices - products with discount
         const hotPricesData = products
           .filter(product => product.fullPrice > product.price)
           .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
           .slice(0, 10);
 
-        // New models - newest by year
+        // New models
         const newModelsData = products
           .sort((a, b) => b.year - a.year)
           .slice(0, 10);
