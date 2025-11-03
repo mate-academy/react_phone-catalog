@@ -68,10 +68,10 @@ export const Dropdown = <T extends string | number>({
               [styled['dropdown-content--active']]: isOpen,
             })}
           >
-            {sort.map(s => {
+            {sort.map((s, index) => {
               return (
                 <div
-                  key={s}
+                  key={index}
                   onClick={() => {
                     onSelect(s);
                     setIsOpen(false);

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { Products } from 'src/types/products';
 import style from './productList.module.scss';
 
@@ -6,25 +6,33 @@ import { Dropdown } from '../Dropdown/Dropdown';
 import { Card } from '../Card/Cards';
 
 import { PaginationPage } from '../Pagination/Pagination';
-import { getNumbers } from './getNum';
-import { fetchProducts } from '@Fetch';
+
+import { sortItems } from './sortProducts';
 
 type Props = {
   data: Products[];
   title: string;
+  loading: boolean;
 };
+
+export enum SortBy {
+  Newest = 'Newest',
+  Alphabetically = 'Alphabetically',
+  Cheapest = 'Cheapest',
+}
 
 export const ProductList: FC<Props> = ({ title, data }) => {
   const [selected, setSelected] = useState('Chose One');
-
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(16);
 
-  const sortBy = ['Newest', 'Alphabetically', 'Cheapest'];
+  const [perPage, setPerPage] = useState<number | string>(16);
+  const sortPage = [16, 8, 4, 'All'];
 
-  const sortPage = [16, 8, 4];
-
-  const [phones, setPhones] = useState<Products[]>([]);
+  const sortBy: SortBy[] = [
+    SortBy.Newest,
+    SortBy.Alphabetically,
+    SortBy.Cheapest,
+  ];
 
   const handlePageChange = (numPage: number) => {
     if (numPage === currentPage) {
@@ -34,27 +42,38 @@ export const ProductList: FC<Props> = ({ title, data }) => {
     setCurrentPage(numPage);
   };
 
-  const handlePerPage = (per: number) => {
+  const filteredAndSortedData = useMemo(() => {
+    const dataCop = [...data];
+
+    setCurrentPage(1);
+
+    return sortItems(dataCop, selected);
+  }, [data, selected]);
+
+  const currentItems = useMemo(() => {
+    const total = filteredAndSortedData.length;
+    const perPages = perPage;
+    let start = 0;
+    let end = total;
+
+    if (typeof perPages !== 'string') {
+      start = (currentPage - 1) * perPages;
+      end = Math.min(start + perPages, total);
+    }
+
+    return filteredAndSortedData.slice(start, end);
+  }, [filteredAndSortedData, currentPage, perPage]);
+
+  const handlePerPage = (per: number | string) => {
     if (perPage !== per) {
       setCurrentPage(1);
       setPerPage(per);
     }
+
+    if (per === 'All') {
+      setPerPage(per);
+    }
   };
-
-  const total = data.length;
-  const perPages = perPage;
-  const start = (currentPage - 1) * perPages + 1;
-  const end = Math.min(start + perPages - 1, total);
-
-  const items = getNumbers(start, end);
-
-  useEffect(() => {
-    fetchProducts().then((api: Products[]) => {
-      const result = api.filter((el: Products) => el.category === 'phones');
-
-      setPhones(result.sort((a, b) => b.year - a.year));
-    });
-  }, [perPage, currentPage, selected]);
 
   return (
     <>
@@ -71,32 +90,33 @@ export const ProductList: FC<Props> = ({ title, data }) => {
         </div>
         <div>
           <span>Items on page</span>
-          <Dropdown<number>
+          <Dropdown<number | string>
             sort={sortPage}
             selected={perPage}
             onSelect={handlePerPage}
           />
         </div>
       </div>
+
       <div className={style.wrapper}>
-        <ul>
-          {items.map((el, index) => {
-            return (
-              <li key={index} data-cy="item">
-                <Card item={phones[start - 1 + index]} title="0" />
-              </li>
-            );
-          })}
+        <ul className={style.items}>
+          {currentItems.map((item, i) => (
+            <li key={item.id || i}>
+              <Card item={item} title="0" />
+            </li>
+          ))}
         </ul>
 
-        <div className={style.pagination}>
-          <PaginationPage
-            total={total}
-            perPage={perPage}
-            currentPage={currentPage}
-            onPageChange={handlePageChange}
-          />
-        </div>
+        {perPage !== 'All' && (
+          <div className={style.pagination}>
+            <PaginationPage
+              total={filteredAndSortedData.length}
+              perPage={perPage}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        )}
       </div>
     </>
   );

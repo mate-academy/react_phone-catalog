@@ -2,23 +2,24 @@ import style from './phones.module.scss';
 import home from '@Images/icons/Home.svg';
 import arrow from '@Images/icons/Arrow-black-right.svg';
 import { useEffect, useState } from 'react';
-import { fetchPhones, fetchProducts } from '@Fetch';
+import { fetchProducts } from '@Fetch';
 import { ProductList } from '@GlobalComponents';
 import { Products } from 'src/types/products';
 
 export const PhonePage = () => {
   const [phones, setPhones] = useState<Products[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   fetchPhones().then(setPhones);
-  // }, []);
+  const [isLoading, setIsloading] = useState(false);
 
   useEffect(() => {
+    setIsloading(true);
+
     fetchProducts().then((data: Products[]) => {
-      const result = data.filter((el: Products) => el.category === 'phones');
+      const result = [...data]
+        .filter((el: Products) => el.category === 'phones')
+        .sort((a, b) => b.year - a.year);
 
       setPhones(result);
+      setIsloading(false);
     });
   }, []);
 
@@ -40,7 +41,13 @@ export const PhonePage = () => {
             </ul>
           </nav>
 
-          <ProductList title={'Mobile phones'} data={phones} />
+          {!isLoading && (
+            <ProductList
+              loading={isLoading}
+              title={'Mobile phones'}
+              data={phones}
+            />
+          )}
         </main>
       </div>
     </>

@@ -36,7 +36,8 @@
     left: 0;
     width: 100%;
     border: var(--border-dropdown);
-    background-color: transparent;
+    background-color: var(--color-black);
+    z-index: 1001;
 
     &--active {
       pointer-events: all;

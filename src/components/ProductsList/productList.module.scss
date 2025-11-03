@@ -11,6 +11,10 @@
   gap: 16px;
   margin-top: 32px;
 
+  @include onTablet {
+    width: 300px;
+  }
+
   div {
     width: 100%;
   }
@@ -24,5 +28,17 @@
 }
 
 .wrapper {
-  margin-top: 150px;
+  margin-top: 24px;
+
+  grid-column: 1 / -1;
+}
+
+.items {
+  display: grid;
+  gap: 40px;
+
+  @include onTablet {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    column-gap: 16px;
+  }
 }

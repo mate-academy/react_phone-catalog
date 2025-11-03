@@ -5,7 +5,7 @@ import cn from 'classnames';
 
 type Props = {
   total: number;
-  perPage: number;
+  perPage: number | string;
   currentPage: number;
   onPageChange: (num: number) => void;
 };
@@ -16,7 +16,11 @@ export const PaginationPage = ({
   perPage,
   onPageChange,
 }: Props) => {
-  const pageCount = Math.ceil(total / perPage);
+  let pageCount = 0;
+
+  if (typeof perPage === 'number') {
+    pageCount = Math.ceil(total / perPage);
+  }
 
   const handlePrev = () => {
     if (currentPage > 1) {

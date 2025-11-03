@@ -1,3 +1,7 @@
+@use 'reset';
+@use './fonts';
+@forward 'variables';
+
 body {
   background-color: var(--color-black);
   font-family: Mont, sans-serif;

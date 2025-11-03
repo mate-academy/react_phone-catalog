@@ -1,9 +1,9 @@
 .main {
-  padding-top: 80px;
+  padding: 64px 0;
   grid-column: 1 / -1;
 
   @include onTablet {
-    padding-top: 100px;
+    padding: 80px 0;
   }
 }
 
