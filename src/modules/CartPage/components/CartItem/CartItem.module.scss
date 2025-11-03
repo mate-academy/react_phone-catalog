@@ -102,20 +102,33 @@
     display: flex;
     align-items: center;
     gap: $spacing-sm;
+    justify-content: center;
+    min-width: 120px;
 
     @include tablet {
       margin-right: 24px;
+      justify-self: center;
+    }
+
+    @include desktop {
+      justify-self: center;
     }
 
     @include mobile {
       grid-area: quantity;
       justify-self: start;
       margin-top: $spacing-xs;
+      min-width: auto;
     }
   }
 
   &__quantityBtn {
     @include icon-button(28px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 
     img {
       width: $spacing-lg;
@@ -127,22 +140,31 @@
     @include font-mont($font-size-md, $font-weight-semibold);
 
     color: $secondary;
-    min-width: 24px;
+    min-width: 32px;
     text-align: center;
+    padding: 0 $spacing-xs;
+    flex-shrink: 0;
   }
 
   &__price {
     @include font-mont($font-size-lg, $font-weight-extra-bold);
 
     color: $secondary;
+    min-width: 80px;
+    text-align: right;
 
     @include tablet {
+      justify-self: end;
+    }
+
+    @include desktop {
       justify-self: end;
     }
 
     @include mobile {
       grid-area: price;
       place-self: center end;
+      min-width: 60px;
     }
   }
 }

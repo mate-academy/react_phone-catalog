@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Product } from '../../../../types';
 import { useCart } from '../../../../contexts/CartContext';
 import { useFavorites } from '../../../../contexts/FavoritesContext';
+import { api } from '../../../../utils/api';
 import styles from './ProductInfo.module.scss';
 
 interface Props {
@@ -12,11 +14,24 @@ interface Props {
 export const ProductInfo: React.FC<Props> = ({ product }) => {
   const { state: cartState, dispatch: cartDispatch } = useCart();
   const { state: favoritesState, dispatch: favoritesDispatch } = useFavorites();
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   const isInCart = cartState.items.some(item => item.product.id === product.id);
   const isInFavorites = favoritesState.items.some(
     item => item.product.id === product.id,
   );
+
+  useEffect(() => {
+    const fetchAllProducts = async () => {
+      try {
+        const products = await api.getProducts();
+
+        setAllProducts(products);
+      } catch (error) {}
+    };
+
+    fetchAllProducts();
+  }, []);
 
   const handleAddToCart = () => {
     if (!isInCart) {
@@ -45,7 +60,20 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
   const availableCapacities = product.capacityAvailable || [product.capacity];
   const hasDiscount = product.fullPrice > product.price;
 
-  // Additional Tech Specs for the section under the button
+  const findProductVariant = (
+    color: string,
+    capacity: string,
+  ): string | null => {
+    const variant = allProducts.find(
+      p =>
+        p.namespaceId === product.namespaceId &&
+        p.color === color &&
+        p.capacity === capacity,
+    );
+
+    return variant ? variant.id : null;
+  };
+
   const additionalTechSpecs = [
     { label: 'Screen', value: product.screen },
     { label: 'Resolution', value: product.resolution },
@@ -71,16 +99,31 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
         <div className={styles.productInfo__section}>
           <h3 className={styles.productInfo__sectionTitle}>Available colors</h3>
           <div className={styles.productInfo__colors}>
-            {availableColors.map(color => (
-              <button
-                key={color}
-                className={classNames(styles.productInfo__color, {
-                  [styles.productInfo__color_active]: color === product.color,
-                })}
-                style={{ backgroundColor: color.toLowerCase() }}
-                title={color}
-              />
-            ))}
+            {availableColors.map(color => {
+              const variantId = findProductVariant(color, product.capacity);
+
+              return variantId ? (
+                <Link
+                  key={color}
+                  to={`/product/${variantId}`}
+                  className={classNames(styles.productInfo__color, {
+                    [styles.productInfo__color_active]: color === product.color,
+                  })}
+                  style={{ backgroundColor: color.toLowerCase() }}
+                  title={color}
+                />
+              ) : (
+                <button
+                  key={color}
+                  className={classNames(styles.productInfo__color, {
+                    [styles.productInfo__color_active]: color === product.color,
+                  })}
+                  style={{ backgroundColor: color.toLowerCase() }}
+                  title={color}
+                  disabled
+                />
+              );
+            })}
           </div>
         </div>
       )}
@@ -90,17 +133,33 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
         <div className={styles.productInfo__section}>
           <h3 className={styles.productInfo__sectionTitle}>Select capacity</h3>
           <div className={styles.productInfo__capacities}>
-            {availableCapacities.map(capacity => (
-              <button
-                key={capacity}
-                className={classNames(styles.productInfo__capacity, {
-                  [styles.productInfo__capacity_active]:
-                    capacity === product.capacity,
-                })}
-              >
-                {capacity}
-              </button>
-            ))}
+            {availableCapacities.map(capacity => {
+              const variantId = findProductVariant(product.color, capacity);
+
+              return variantId ? (
+                <Link
+                  key={capacity}
+                  to={`/product/${variantId}`}
+                  className={classNames(styles.productInfo__capacity, {
+                    [styles.productInfo__capacity_active]:
+                      capacity === product.capacity,
+                  })}
+                >
+                  {capacity}
+                </Link>
+              ) : (
+                <button
+                  key={capacity}
+                  className={classNames(styles.productInfo__capacity, {
+                    [styles.productInfo__capacity_active]:
+                      capacity === product.capacity,
+                  })}
+                  disabled
+                >
+                  {capacity}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}

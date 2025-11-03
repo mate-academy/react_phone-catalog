@@ -52,7 +52,7 @@
   }
 
   &__container {
-    overflow-x: auto;
+    overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
 
@@ -64,13 +64,23 @@
   &__track {
     display: flex;
     gap: $spacing-lg;
-    width: max-content;
+    width: 100%;
+
+    @include desktop {
+      justify-content: center;
+    }
   }
 
   &__slide {
     flex-shrink: 0;
     width: 272px;
     height: 506px;
+
+    @include desktop {
+      &:nth-child(n + 5) {
+        display: none;
+      }
+    }
 
     .productCard {
       width: 100%;
