@@ -12,19 +12,21 @@ export {
   type Pickup,
   type UserDetails,
   type CartItem,
-  USER_DETAILS_LENGTH,
   type Birthday,
-  BDAY_LENGTH,
-  ADDRESS_LENGTH,
   DeliveryTypes,
+  type Address,
 } from './orderDetailTypes';
+
 export {
+  type MethodRequestMap,
+  type BodyRequestMap,
   type ValidCatalogueBody,
   type ValidCartBody,
   type ValidProdBody,
   type ValidAmountBody,
   type ValidCheckoutBody,
   type ValidRequest,
-  type MethodRequestMap,
-  type BodyRequestMap,
-} from './requestTypes';
+  type ErrorProps,
+  type ValidationResult,
+  type ValidationCheck,
+} from './validationTypes';

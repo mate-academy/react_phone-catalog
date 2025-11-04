@@ -1,4 +1,3 @@
-import { CartRequestTypes, GetRequestTypes, Methods } from '@server/static';
 import {
   ValidAmountBody,
   ValidCartBody,
@@ -6,6 +5,7 @@ import {
   ValidCheckoutBody,
   ValidProdBody,
 } from '.';
+import { CartRequestTypes, GetRequestTypes, Methods } from '../../static';
 
 type MethodRequestMap = {
   [Methods.GET]: GetRequestTypes;

@@ -11,6 +11,14 @@ const errorsMap: Record<number, ErrorData> = {
     error: 'Bad Request',
     message: arg => `${arg} could not be read properly`,
   },
+  422: {
+    error: 'Unprocessable Entity',
+    message: arg => `${arg} is invalid value`,
+  },
+  418: {
+    error: `I'm a teapot`,
+    message: arg => `${arg} impossible. Server is a teapot`,
+  },
 };
 
 const createError = (statusCode: number, arg: unknown): ErrorObject => {

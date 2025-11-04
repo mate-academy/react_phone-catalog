@@ -20,12 +20,10 @@ interface ValidCartBody {
   items: CartItem[];
 }
 
-const VALID_CHECKOUT_BODY_LENGTH = 4;
-
 interface ValidCheckoutBody extends ValidCartBody {
   userDetails: UserDetails;
   deliveryDetails: Pickup | Shipment;
-  dataProcessingAgreement: true;
+  dataProcessingAgreement: boolean;
 }
 
 export {
@@ -34,5 +32,4 @@ export {
   type ValidProdBody,
   type ValidAmountBody,
   type ValidCheckoutBody,
-  VALID_CHECKOUT_BODY_LENGTH,
 };

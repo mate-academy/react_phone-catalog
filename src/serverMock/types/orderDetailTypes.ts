@@ -5,8 +5,6 @@ type CartItem = {
   amount: number;
 };
 
-const ADDRESS_LENGTH = 6;
-
 interface Address {
   country: string;
   city: string;
@@ -22,15 +20,11 @@ enum DeliveryTypes {
   UPS = 'ups standard',
 }
 
-const BDAY_LENGTH = 3;
-
 interface Birthday {
   day: number;
   month: Months;
   year: number;
 }
-
-const USER_DETAILS_LENGTH = 5;
 
 interface UserDetails {
   firstName: string;
@@ -56,7 +50,5 @@ export {
   type CartItem,
   type Birthday,
   DeliveryTypes,
-  USER_DETAILS_LENGTH,
-  BDAY_LENGTH,
-  ADDRESS_LENGTH,
+  type Address,
 };

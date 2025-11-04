@@ -1,9 +1,12 @@
 import { ItemsOnPage, OrderParams, ServerCategory } from '@server/static';
 import {
   ValidAmountBody,
+  ValidationResult,
   ValidCatalogueBody,
   ValidProdBody,
 } from '@server/types';
+import { isValidObject } from '../validationHelpers';
+import { basicValidation } from './basicBodyValidation';
 
 const catalogueValidators = {
   itemType: (value: unknown): value is ServerCategory =>
@@ -16,29 +19,52 @@ const catalogueValidators = {
     typeof value === 'number' && value > 0,
 };
 
-const validateCatalogueBody = (
-  params: unknown,
-): params is ValidCatalogueBody => {
-  if (!params || typeof params !== 'object') {
-    return false;
-  }
-
-  return (
-    Object.entries(catalogueValidators) as [
-      keyof typeof catalogueValidators,
-      (value: unknown) => boolean,
-    ][]
-  ).every(([key, validator]) =>
-    validator((params as Record<string, unknown>)[key]),
-  );
+const validShapes = {
+  catalogue: {
+    itemType: 'string',
+    sort: 'string',
+    perPage: 'string',
+    page: 'number',
+  },
+  prod: {
+    itemId: 'string',
+  },
+  amount: {
+    category: 'string',
+  },
 };
 
-const validateProdBody = (params: unknown): params is ValidProdBody => {
-  if (typeof params !== 'object' || params === null || !('itemId' in params)) {
-    return false;
+const validateCatalogueBody = (
+  arg: unknown,
+): ValidationResult<ValidCatalogueBody> => {
+  const basicValidated = basicValidation(arg, validShapes.catalogue);
+
+  if (!basicValidated.ok) {
+    return basicValidated;
   }
 
-  const { itemId } = params;
+  const validValues = Object.entries(catalogueValidators).every(
+    ([key, validator]) => validator((arg as Record<string, unknown>)[key]),
+  );
+
+  if (!validValues) {
+    return {
+      ok: false,
+      value: [422, `Invalid field values: ${arg}`],
+    };
+  }
+
+  return { ok: true, value: arg as ValidCatalogueBody };
+};
+
+const validateProdBody = (arg: unknown): ValidationResult<ValidProdBody> => {
+  const basicValidated = basicValidation(arg, validShapes.prod);
+
+  if (!basicValidated.ok) {
+    return basicValidated;
+  }
+
+  const { itemId } = arg as Record<'itemId', unknown>;
   const safeIdPattern = /^[a-zA-Z0-9_-]+$/;
 
   if (
@@ -47,31 +73,44 @@ const validateProdBody = (params: unknown): params is ValidProdBody => {
     itemId.length > 50 ||
     !safeIdPattern.test(itemId)
   ) {
-    return false;
+    return {
+      ok: false,
+      value: [422, `Invalid field values: ${arg}`],
+    };
   }
 
-  return true;
+  return {
+    ok: true,
+    value: arg as ValidProdBody,
+  };
 };
 
-const validateBannerBody = (params: unknown): params is {} => {
-  if (
-    typeof params !== 'object' ||
-    params === null ||
-    Object.entries(params).length !== 0
-  ) {
-    return false;
+const validateBannerBody = (arg: unknown): ValidationResult<{}> => {
+  const isObject = isValidObject(arg);
+
+  if (!isObject.ok) {
+    return isObject;
   }
 
-  return true;
+  return Object.keys(arg as object).length !== 0
+    ? { ok: false, value: [422, `Invalid field number+: ${arg}`] }
+    : { ok: true, value: {} };
 };
 
-const validateAmountBody = (params: unknown): params is ValidAmountBody => {
-  return (
-    typeof params === 'object' &&
-    params !== null &&
-    'category' in params &&
-    Object.values(ServerCategory).some(el => el === params.category)
-  );
+const validateAmountBody = (
+  arg: unknown,
+): ValidationResult<ValidAmountBody> => {
+  const basicValidated = basicValidation(arg, validShapes.catalogue);
+
+  if (!basicValidated.ok) {
+    return basicValidated;
+  }
+
+  return Object.values(ServerCategory).some(
+    el => el === ((arg as Record<string, unknown>).category as string),
+  )
+    ? { ok: true, value: arg as ValidAmountBody }
+    : { ok: false, value: [422, `Invalid field value: ${arg}`] };
 };
 
 export {

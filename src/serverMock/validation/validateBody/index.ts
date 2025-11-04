@@ -6,3 +6,4 @@ export {
 } from './validateGETBody';
 export { validateBody } from './validateBodyMapper';
 export { validateCheckoutBody, validateCartBody } from './validateCARTBody';
+export { basicValidation } from './basicBodyValidation';

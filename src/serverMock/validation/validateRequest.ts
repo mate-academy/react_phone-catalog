@@ -33,10 +33,13 @@ export const validate = (
     typeof parsed !== 'object' ||
     parsed === null ||
     !('method' in parsed) ||
-    !('request' in parsed) ||
-    !('body' in parsed)
+    !('request' in parsed)
   ) {
-    return createError(501, parsed);
+    return createError(418, '');
+  }
+
+  if (!('body' in parsed)) {
+    return createError(400, 'request');
   }
 
   const { method, request, body } = parsed;
