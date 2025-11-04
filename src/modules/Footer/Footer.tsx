@@ -31,18 +31,17 @@ export const Footer = () => {
       role="footer"
       aria-label="main footer"
     >
+      <NavLink
+        className="footer__link__logo"
+        to="/"
+        onClick={() => {
+          setClickOnLogoBar(true);
+          checkClickOnLogoBar();
+        }}
+      >
+        <img src="./img/navbar/Logo.png" alt="logo-gadgets" />
+      </NavLink>
       <ul className="footer__brand">
-        <NavLink
-          className="footer__link__logo"
-          to="/"
-          onClick={() => {
-            setClickOnLogoBar(true);
-            checkClickOnLogoBar();
-          }}
-        >
-          <img src="./img/navbar/Logo.png" alt="logo-gadgets" />
-        </NavLink>
-
         {['github', 'contacts', 'rights'].map((item, index) => (
           <li className="footer__item" key={index}>
             <NavLink

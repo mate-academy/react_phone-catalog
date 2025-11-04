@@ -61,8 +61,7 @@ export const ProductList: React.FC<ProductListProps> = ({
               <h5 className="product__list-ram-gb">{item.ram}</h5>
             </div>
             <div className="product__list-position">
-              <NavLink
-                to="/"
+              <button
                 className={classNames('swiper__add-to-cart', {
                   added: isInCart,
                 })}
@@ -70,14 +69,14 @@ export const ProductList: React.FC<ProductListProps> = ({
                   e.preventDefault();
                   if (!isInCart) {
                     addToCart(item);
-                  } else {
-                    removeFromCart(item.id);
                   }
+
+                  removeFromCart(item.id);
                 }}
                 style={{ pointerEvents: 'auto' }}
               >
                 {isInCart ? 'Added to cart' : 'Add to cart'}
-              </NavLink>
+              </button>
 
               <button
                 className="product__list-button-like"

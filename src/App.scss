@@ -579,7 +579,7 @@ body.no-scroll {
     margin-top: 64px;
     position: static;
   &__link__logo {
-    padding-top: 32px;
+    padding: 32px 0;
     transition: transform 0.3s ease-in-out;
     &:hover {
       transform: scale(1.1);
