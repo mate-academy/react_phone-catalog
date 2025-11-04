@@ -2,12 +2,12 @@ import { useProduct } from '../../../shared/hooks/ProductContext';
 import styles from './About.module.scss';
 
 export const About = () => {
-  const { product } = useProduct();
+  const { activeProduct } = useProduct();
 
   return (
     <div className={styles.contentAboutTech}>
       <div className={styles.titleAboutTech}>About</div>
-      {product.details?.description.map((desc, i) => (
+      {activeProduct?.description.map((desc, i) => (
         <div key={i} className={styles.descriptionBlock}>
           <div className={styles.titleText}>{desc.title}</div>
 

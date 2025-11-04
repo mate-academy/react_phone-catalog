@@ -6,7 +6,7 @@ export const SwitchPhotos = () => {
 
   return (
     <div className={styles.switchPhotos}>
-      <img className={styles.img} src={activeImage} alt={product.itemId} />
+      <img className={styles.img} src={activeImage} alt={product?.itemId} />
     </div>
   );
 };

@@ -1,15 +1,20 @@
-import { Product } from '../../../../../../ProductsContext/TabsContext';
+import {
+  Product,
+  ProductsDetails,
+} from '../../../../../../ProductsContext/TabsContext';
 import { useSafeProduct } from '../../../../hooks/SafeProduct';
 import styles from './ContainerPrice.module.scss';
 
 interface ContainerPriceProps {
   element: Product;
   sale: boolean;
+  activeProduct?: ProductsDetails;
 }
 
 export const ContainerPrice: React.FC<ContainerPriceProps> = ({
   element,
   sale,
+  activeProduct,
 }) => {
   const productContext = useSafeProduct();
   const isProductPage = productContext?.isProductPage ?? false;
@@ -22,7 +27,7 @@ export const ContainerPrice: React.FC<ContainerPriceProps> = ({
         }}
         className={styles.price}
       >
-        ${element.price}
+        ${activeProduct ? activeProduct.priceDiscount : element.price}
       </div>
 
       {sale && (
@@ -32,7 +37,7 @@ export const ContainerPrice: React.FC<ContainerPriceProps> = ({
           }}
           className={styles.fullPrice}
         >
-          ${element.fullPrice}
+          ${activeProduct ? activeProduct.priceRegular : element.fullPrice}
         </div>
       )}
     </div>

@@ -21,26 +21,31 @@ export interface Product {
   ram: string;
   year: number;
   favourit?: boolean;
-  details?: ProductDetails;
+  details?: ProductsDetails;
   colorHex?: string;
 }
 
-export interface ProductDetails {
+export interface ProductsDetails {
   id: string;
   category: string;
   namespaceId: string;
   name: string;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
   images: string[];
   description: { title: string; text: string[] }[];
   screen: string;
   resolution: string;
   processor: string;
   ram: string;
-  capacityAvailable?: string[];
-  colorsAvailable?: string[];
-  camera?: string;
-  zoom?: string;
-  cell?: string[];
+  camera: string;
+  zoom: string;
+  cell: string[];
+  sameModels?: ProductsDetails[];
 }
 
 export const colorStyle: Record<string, string> = {
@@ -70,6 +75,9 @@ export const colorStyle: Record<string, string> = {
 
 type TabsContextType = {
   productsList: Product[];
+  phonesList: ProductsDetails[];
+  tabletsList: ProductsDetails[];
+  accessoriesList: ProductsDetails[];
   loading: boolean;
   error: boolean;
   reloadData: () => void;
@@ -77,6 +85,9 @@ type TabsContextType = {
 
 export const TabsContext = createContext<TabsContextType>({
   productsList: [],
+  phonesList: [],
+  tabletsList: [],
+  accessoriesList: [],
   loading: true,
   error: false,
   reloadData: () => {},
@@ -107,18 +118,39 @@ export const TabsProvider = ({ children }: { children: ReactNode }) => {
 
       const merged = products.map((product: Product) => {
         const details =
-          phones.find((p: ProductDetails) => p.id === product.itemId) ||
-          tablets.find((p: ProductDetails) => p.id === product.itemId) ||
-          accessories.find((p: ProductDetails) => p.id === product.itemId);
+          phones.find((p: ProductsDetails) => p.id === product.itemId) ||
+          tablets.find((p: ProductsDetails) => p.id === product.itemId) ||
+          accessories.find((p: ProductsDetails) => p.id === product.itemId);
 
-        const detailsWithColorsHex = details
-          ? {
-              ...details,
-              colorsAvailable: details.colorsAvailable?.map(
-                (c: string) => colorStyle[c],
-              ),
-            }
-          : undefined;
+        if (!details) {
+          return {
+            ...product,
+            colorHex: colorStyle[product.color] ?? '#000000',
+          };
+        }
+
+        const { namespaceId } = details;
+
+        const sameModels =
+          product.category === 'phones'
+            ? phones.filter(
+                (p: ProductsDetails) => p.namespaceId === namespaceId,
+              )
+            : product.category === 'tablets'
+              ? tablets.filter(
+                  (p: ProductsDetails) => p.namespaceId === namespaceId,
+                )
+              : accessories.filter(
+                  (p: ProductsDetails) => p.namespaceId === namespaceId,
+                );
+
+        const detailsWithColorsHex = {
+          ...details,
+          colorsAvailable: details.colorsAvailable?.map(
+            (c: string) => colorStyle[c],
+          ),
+          sameModels,
+        };
 
         return {
           ...product,

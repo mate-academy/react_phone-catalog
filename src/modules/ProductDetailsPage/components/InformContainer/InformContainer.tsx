@@ -10,7 +10,7 @@ import { SelectCapacity } from '../SelectCapacity';
 import styles from './InformContainer.module.scss';
 
 export const InformContainer = () => {
-  const { product, sale } = useProduct();
+  const { product, sale, activeProduct } = useProduct();
 
   return (
     <div className={styles.informContainer}>
@@ -19,7 +19,11 @@ export const InformContainer = () => {
       <SelectCapacity />
 
       <div className={styles.goBuy}>
-        <ContainerPrice element={product} sale={sale} />
+        <ContainerPrice
+          element={product}
+          sale={sale}
+          activeProduct={activeProduct}
+        />
 
         <BlockButtons element={product} />
       </div>

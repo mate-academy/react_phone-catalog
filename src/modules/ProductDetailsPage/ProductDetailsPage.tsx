@@ -21,33 +21,44 @@ export const ProductDetailsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [localLoading, setLocalLoading] = useState(true);
 
+  const [currentProduct, setCurrentProduct] = useState(
+    productsList.find(p => p.id === Number(id)),
+  );
+
   useEffect(() => {
     const timer = setTimeout(() => setLocalLoading(false), 500);
 
     return () => clearTimeout(timer);
   }, [id]);
 
-  const product = productsList.find(e => e.id === Number(id));
+  useEffect(() => {
+    const found = productsList.find(p => p.id === Number(id));
+
+    setCurrentProduct(found);
+  }, [id, productsList]);
 
   const isProductPage =
-    location.pathname === `/${product?.category}/product/${product?.id}`;
+    location.pathname ===
+    `/${currentProduct?.category}/product/${currentProduct?.id}`;
 
-  const sale = product?.price !== product?.fullPrice;
+  const sale = currentProduct?.price !== currentProduct?.fullPrice;
 
-  const initialColor = searchParams.get('color') || product?.color;
-  const initialCapacity = searchParams.get('capacity') || product?.capacity;
+  const initialColor = searchParams.get('color') || currentProduct?.color;
+  const initialCapacity =
+    searchParams.get('capacity') || currentProduct?.capacity;
 
   if (localLoading) {
     return <Loader />;
   }
 
-  if (!product) {
+  if (!currentProduct) {
     return <ProductNotFound />;
   }
 
   return (
     <ProductProvider
-      product={product}
+      key={currentProduct.id}
+      product={currentProduct}
       sale={sale}
       isProductPage={isProductPage}
       initialColor={initialColor}

@@ -9,6 +9,19 @@ export const useProductActions = (element: Product) => {
   const { cartItems, toggleCart } = useCart();
   const navigate = useNavigate();
 
+  if (!element) {
+    return {
+      toggleFavourite: () => {},
+      toggleCart: () => {},
+      isFavourite: false,
+      isInCart: false,
+      openProduct: () => {},
+      informCard: [],
+      informList: [],
+      techSpecsList: [],
+    };
+  }
+
   const isFavourite = favourites.includes(element.id);
   const isInCart = cartItems.includes(element.id);
 
@@ -26,15 +39,12 @@ export const useProductActions = (element: Product) => {
   ];
 
   const techSpecsList = [
-    { name: 'Screen', value: element.screen },
-    { name: 'Resolution', value: element.details?.resolution },
-    { name: 'Processor', value: element.details?.processor },
-    { name: 'RAM', value: element.ram },
+    ...informList,
     { name: 'Built in memory', value: element.capacity },
     { name: 'Camera', value: element.details?.camera },
     { name: 'Zoom', value: element.details?.zoom },
     { name: 'Cell', value: element.details?.cell },
-  ];
+  ].filter(item => item.value);
 
   const openProduct = () => {
     navigate(`/${element.category}/product/${element.id}`);
