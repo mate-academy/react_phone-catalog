@@ -44,7 +44,7 @@ export interface CartItem {
   product: Product;
 }
 
-export interface FavoritContextType {
+export interface FavoriteContextType {
   favorites: Product[];
   toggleFavorite: (product: Product) => void;
 }

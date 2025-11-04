@@ -2,6 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   padding: 16px 24px;
   margin-bottom: 50px;
   background: var(--background-primary);
@@ -12,20 +15,6 @@
   transition: background 0.3s ease, color 0.3s ease;
   overflow: hidden;
 }
-
-// .dark {
-//   --header-bg: #1E1E1E;
-//   --text-color: #FFFFFF;
-//   --active-color: #FFD700;
-//   --border-color: #2A2A2A;
-// }
-
-// .light {
-//   --header-bg: #F5F5F5;
-//   --text-color: #333333;
-  // --active-color: #FF4500;
-//   --border-color: #E0E0E0;
-// }
 
 .logo {
   font-size: 24px;
@@ -372,6 +361,27 @@
   padding-top: 10px;
 }
 
+.mobileDropdownMenu a {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--accent-active);
+    padding-left: 5px;
+  }
+
+  &.active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: var(--accent-active);
+  }
+}
+
+
 .mobileNav a {
   font-size: 16px;
   color: var(--text-color);
@@ -414,26 +424,6 @@
     display: flex;
     opacity: 1;
     max-height: 200px;
-  }
-}
-
-.mobileDropdownMenu a {
-  padding: 8px 0;
-  font-size: 14px;
-  color: var(--text-color);
-  text-decoration: none;
-  transition: all 0.3s ease;
-
-  &:hover {
-    color: var(--accent-active);
-    padding-left: 5px;
-  }
-
-  &.active {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
-    color: var(--accent-active);
   }
 }
 

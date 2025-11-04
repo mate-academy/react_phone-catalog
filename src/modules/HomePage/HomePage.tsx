@@ -16,6 +16,12 @@ export const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const categoryBanners: { [key: string]: string } = {
+    phones: 'img/phones-1.png',
+    tablets: 'img/phones-2.png',
+    accessories: 'img/phones-3.png',
+  };
+
   const banners = [
     'img/banner-accessories.png',
     'img/banner-phones.png',
@@ -99,7 +105,8 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={styles.home}>
-      <h1 className={styles.welcome}>{t('welcome')}</h1>
+      <h1 className={styles.productCatalog}>Product Catalog</h1>
+      <h2 className={styles.welcome}>{t('welcome')}</h2>
       <PictureSlider banners={banners} />
       <section className={styles.section}>
         <h2>{t('newProducts')}</h2>
@@ -111,19 +118,11 @@ export const HomePage: React.FC = () => {
           {Object.entries(categoryProducts).map(([category, products]) => (
             <div key={category} className={styles.categoryItem}>
               <Link to={`/category/${category}`}>
-                {products[0]?.images?.[0] ? (
-                  <img
-                    src={products[0].images[0]}
-                    alt={`${category} example`}
-                    className={styles.categoryImage}
-                  />
-                ) : (
-                  <img
-                    src="/img/product-not-found.png"
-                    alt={`${category} not found`}
-                    className={styles.categoryImage}
-                  />
-                )}
+                <img
+                  src={categoryBanners[category] || 'img/product-not-found.png'}
+                  alt={`${t(category)} banner`}
+                  className={styles.categoryImage}
+                />
               </Link>
               <div className={styles.categoryInfo}>
                 <span className={styles.categoryName}>{t(category)}</span>

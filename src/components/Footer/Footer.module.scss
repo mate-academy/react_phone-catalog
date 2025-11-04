@@ -49,9 +49,7 @@
   transition: transform 0.3s ease;
 }
 
-.logo:hover img {
-  transform: scale(1.05);
-}
+/* moved below to satisfy no-descending-specificity */
 
 .links {
   display: flex;
@@ -140,4 +138,9 @@
     max-width: 200px;
     margin: 20px auto;
   }
+}
+
+/* keep more specific hover rule after any other img rules */
+.logo:hover img {
+  transform: scale(1.05);
 }

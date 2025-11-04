@@ -8,9 +8,10 @@ import { Product } from '../shared/types';
 import { useCart } from '../shared/context/CartContext';
 import { useFavorites } from '../shared/context/FavoriteContext';
 import { Button } from '../../components/UI/Button/Button';
-import { ProductsList } from '../CategoryPage/components/ProductsList';
+// import { ProductsList } from '../CategoryPage/components/ProductsList';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { BackButton } from '../../components/BackButton/BackButton';
+import { DetailsSlider } from './DetailsSlider';
 
 export const ProductDetailsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -240,7 +241,7 @@ export const ProductDetailsPage: React.FC = () => {
       </div>
       <section className={styles.recommendations}>
         <h2 className={styles.recommendationTitle}>{t('youMayLike')}</h2>
-        <ProductsList products={recommendedProducts} isSlider={false} />
+        <DetailsSlider products={recommendedProducts} />
       </section>
     </div>
   );

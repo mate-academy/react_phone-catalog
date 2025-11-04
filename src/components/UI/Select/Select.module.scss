@@ -6,6 +6,6 @@
 
   &:focus {
     outline: none;
-    border-color: #6b48ff;
+    border-color: var(--button-bg);
   }
 }

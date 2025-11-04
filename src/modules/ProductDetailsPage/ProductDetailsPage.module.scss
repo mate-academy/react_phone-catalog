@@ -103,8 +103,8 @@
     gap: 10px;
 
     @media (max-width: 699px) {
-      flex-direction: row;
       flex-flow: wrap;
+      flex-direction: row;
     }
 
 
