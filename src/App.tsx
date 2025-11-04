@@ -13,7 +13,7 @@ export const App = () => {
     <>
       <Helmet>
         <link rel="icon" type="icon/svg+xml" href="img/Logo.png" />
-        <title></title>
+        <title>Nice Gadgets store</title>
       </Helmet>
 
       <div data-cy="app">
