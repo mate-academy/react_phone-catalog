@@ -23,21 +23,18 @@ const withBase = (p: string) => {
     return p;
   }
 
-  // абсолютные URL не трогаем
   if (/^[a-z]+:\/\//i.test(p)) {
     return p;
   }
 
-  const base = import.meta.env.BASE_URL || '/'; // например: "/", "/react_phone-catalog/"
-  const cleanBase = base.replace(/^\/|\/$/g, ''); // может быть пустой строкой
-  const cleanPath = p.replace(/^\/+/, ''); // "img/phones/.../00.webp"
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanBase = base.replace(/^\/|\/$/g, '');
+  const cleanPath = p.replace(/^\/+/, '');
 
-  // если base = "/" — не префиксим, просто гарантируем один ведущий слэш
   if (!cleanBase) {
     return `/${cleanPath}`;
   }
 
-  // если путь уже начинается с base — оставляем как есть
   if (
     p.startsWith(base) ||
     p.startsWith(`/${cleanBase}/`) ||
@@ -46,11 +43,9 @@ const withBase = (p: string) => {
     return p.startsWith('/') ? p : `/${p}`;
   }
 
-  // нормальный случай
   return `/${cleanBase}/${cleanPath}`;
 };
 
-/** Если в данных приходит только имя файла (01.webp), собираем полный относительный путь. */
 const buildImagePath = (prod: ProductDetailBase, file: string) => {
   if (!file) {
     return file;
@@ -62,7 +57,6 @@ const buildImagePath = (prod: ProductDetailBase, file: string) => {
 
   const cat = (prod.category || '').toLowerCase(); // phones/tablets/accessories
 
-  // структура public: img/<category>/<namespaceId>/<file>
   return `img/${cat}/${prod.namespaceId}/${file}`;
 };
 
@@ -264,7 +258,6 @@ export const ProductDetailsPage: React.FC = () => {
       img.src = src;
     });
 
-  // выключаем автоскролл браузера
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
@@ -302,7 +295,6 @@ export const ProductDetailsPage: React.FC = () => {
         }
 
         const raw = Array.isArray(p.images) ? p.images : [];
-        // собираем полные относительные пути и префиксим базой
         const full = raw.map(f => withBase(buildImagePath(p, f)));
 
         const preloadAll = full.length
@@ -338,13 +330,11 @@ export const ProductDetailsPage: React.FC = () => {
       });
   };
 
-  // загрузка при изменении productId
   useEffect(() => {
     reload();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId]);
 
-  // список изображений с правильными URL
   const images = useMemo(
     () =>
       product
@@ -353,7 +343,6 @@ export const ProductDetailsPage: React.FC = () => {
     [product],
   );
 
-  // смена варианта (цвет/ёмкость)
   useEffect(() => {
     if (!product || !color || !capacity) {
       return;
@@ -429,7 +418,6 @@ export const ProductDetailsPage: React.FC = () => {
       .sort((a, b) => (order.get(a[0]) ?? 99) - (order.get(b[0]) ?? 99));
   }, [techSpecs]);
 
-  // предзагрузка при смене активной картинки
   useEffect(() => {
     if (!images.length) {
       requestAnimationFrame(() => {
@@ -505,7 +493,6 @@ export const ProductDetailsPage: React.FC = () => {
         <h1 className={s.title}>{title}</h1>
 
         <div className={s.grid}>
-          {/* Галерея */}
           <div className={s.gallery} ref={galleryRef}>
             <div
               className={s.mainImage}
@@ -519,7 +506,6 @@ export const ProductDetailsPage: React.FC = () => {
               aria-label={`Image ${activeImageIdx + 1} of ${images.length}. Swipe or use arrow keys`}
               onKeyDown={onKeyDown}
             >
-              {/* плавная замена без мигания */}
               <img
                 src={imgSrc}
                 alt={product.name}
@@ -545,7 +531,6 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Правый столбец */}
           <div className={s.panel}>
             {product.colorsAvailable?.length > 0 && (
               <div className={s.option}>

@@ -54,7 +54,6 @@ export const Header = () => {
     setQuery(e.target.value);
   };
 
-  // ----- мобильное меню -----
   const [open, setOpen] = useState(false);
 
   return (
@@ -112,7 +111,6 @@ export const Header = () => {
           </nav>
         </div>
 
-        {/* Поиск — только если showSearch; на мобилке скрыт стилями */}
         {showSearch && (
           <div className={s.search} role="search">
             <input
@@ -127,7 +125,6 @@ export const Header = () => {
         )}
 
         <div className={s.right}>
-          {/* бургер — виден на мобилке */}
           <button
             className={s.burger}
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -169,12 +166,10 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* мобильная панель */}
       <nav
         id="mobile-menu"
         className={`${s.navPanel} ${open ? s.navPanelOpen : ''}`}
         aria-label="Mobile"
-        // клики по ссылкам закрывают панель
         onClick={e => {
           const t = e.target as HTMLElement;
 
@@ -183,7 +178,6 @@ export const Header = () => {
           }
         }}
       >
-        {/* верхняя полоска: логотип + крестик */}
         <div className={s.panelTop}>
           <NavLink to="/" className={s.panelLogo} aria-label="Nice Gadgets">
             <img src={Logo} alt="logo" />
@@ -198,7 +192,6 @@ export const Header = () => {
           </button>
         </div>
 
-        {/* центральный блок: пункты меню */}
         <ul className={s.panelNav}>
           <li>
             <NavLink
@@ -243,7 +236,6 @@ export const Header = () => {
           </li>
         </ul>
 
-        {/* нижняя панель: две иконки */}
         <div className={s.panelBottom}>
           <NavLink to="/favorites" className={s.panelIcon}>
             <img src={Heart} alt="" aria-hidden="true" />

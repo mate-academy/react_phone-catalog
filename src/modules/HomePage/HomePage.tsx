@@ -21,14 +21,12 @@ export const HomePage = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  // Hot prices: по самой большой абсолютной скидке
   const hot = useMemo(() => {
     return [...items]
       .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
       .slice(0, 16);
   }, [items]);
 
-  // Brand new: по году
   const brandNew = useMemo(() => {
     return [...items]
       .sort((a, b) => (b.year || 0) - (a.year || 0))

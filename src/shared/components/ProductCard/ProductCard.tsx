@@ -9,13 +9,6 @@ import HeartFull from '../../../assets/Favourites Filled (Heart Like).svg';
 
 type Props = {
   product: ProductListItem;
-  /**
-   * Режим отображения цены:
-   * - "discount" — текущая цена + зачёркнутая старая (для Hot prices)
-   * - "full" — только полная (старая) цена
-   * - "current" — только текущая (скидочная) цена
-   * По умолчанию "full", чтобы везде (кроме Hot prices) была только основная цена.
-   */
   priceMode?: 'discount' | 'full' | 'current';
 };
 
@@ -55,7 +48,6 @@ export const ProductCard: React.FC<Props> = ({
       );
     }
 
-    // 'current' (или если скидки нет)
     return (
       <div className={s.prices}>
         <span className={s.price}>{money(product.price)}</span>

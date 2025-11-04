@@ -30,20 +30,16 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // показываем не мгновенные pageItems, а уже предзагруженные
   const [visibleItems, setVisibleItems] = useState<ProductListItem[]>([]);
   const [pageReady, setPageReady] = useState(true);
 
-  // 🔒 фиксация высоты контейнера карточек на время переключения
   const productsBoxRef = useRef<HTMLDivElement>(null);
   const [lockedHeight, setLockedHeight] = useState<number | null>(null);
 
-  // скролл-локер пагинатора
   const pagerRef = useRef<HTMLDivElement | null>(null);
   const lockPrevTopRef = useRef<number | null>(null);
   const needLockRef = useRef(false);
 
-  // 🆕 якорь от низа документа
   const bottomOffsetRef = useRef<number | null>(null);
 
   const sort = (params.get('sort') as SortValue) || 'age';
@@ -51,7 +47,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
   const perPage = (params.get('perPage') as PerPageValue) || 'all';
   const query = (params.get('query') || '').trim().toLowerCase();
 
-  // предзагрузка изображений с кэшем
   const imgCache = useRef<Set<string>>(new Set());
   const preloadImages = async (paths: string[] = []) => {
     const uniq = paths
@@ -76,7 +71,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
     );
   };
 
-  // вытаскиваем превью/картинку из элемента
   const getThumbFromItem = (i: ProductListItem): string => {
     if ('image' in i && typeof i.image === 'string') {
       return i.image;
@@ -113,7 +107,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
     reload(); /* eslint-disable-next-line */
   }, [type]);
 
-  // фильтрация
   const filtered = useMemo(() => {
     if (!query) {
       return items;
@@ -127,7 +120,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
     );
   }, [items, query]);
 
-  // сортировка
   const sorted = useMemo(() => {
     const arr = [...filtered];
 
@@ -143,7 +135,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
     }
   }, [filtered, sort]);
 
-  // пагинация
   const total = sorted.length;
   const per = perPage === 'all' ? total : Number(perPage);
   const totalPages = per ? Math.max(1, Math.ceil(total / per)) : 1;
@@ -152,7 +143,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
   const end = perPage === 'all' ? total : start + per;
   const pageItems = sorted.slice(start, end);
 
-  // предзагружаем карточки текущей страницы и показываем только после готовности
   useEffect(() => {
     let cancelled = false;
 
@@ -161,7 +151,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
     }
 
     (async () => {
-      // 🔒 зафиксировать текущую высоту контейнера, чтобы не было просадки/рывка
       setLockedHeight(productsBoxRef.current?.offsetHeight ?? null);
 
       setPageReady(false);
@@ -172,7 +161,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
         setVisibleItems(pageItems);
         setPageReady(true);
 
-        // отпускаем высоту на следующий кадр после отрисовки
         requestAnimationFrame(() => setLockedHeight(null));
       }
     })();
@@ -183,7 +171,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, sort, query, currentPage, perPage, items]);
 
-  // синхронизация URL-параметров
   useEffect(() => {
     const next = new URLSearchParams(params);
 
@@ -211,7 +198,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort, perPage, currentPage]);
 
-  // --- ЛОК СКРОЛЛА: сохраняем положение "от низа документа" + делаем двойную коррекцию ---
   useLayoutEffect(() => {
     if (!needLockRef.current) {
       return;
@@ -221,25 +207,20 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
       const doc = document.documentElement;
       const keep = Math.max(0, bottomOffsetRef.current ?? 0);
       const target = Math.max(0, doc.scrollHeight - window.innerHeight - keep);
-      // важно: без анимации и прямо тут, в layout-цикле
 
       window.scrollTo({ top: target, behavior: 'auto' });
     };
 
-    // 1) сразу после коммита
     applyBottomLock();
 
-    // 2) повторяем на следующий кадр — после "отпускания" высоты productsBox
     requestAnimationFrame(() => {
       applyBottomLock();
 
-      // сброс флагов
       needLockRef.current = false;
       lockPrevTopRef.current = null;
       bottomOffsetRef.current = null;
     });
   });
-  // ----------------------------------------------------------------
 
   const title = type.charAt(0).toUpperCase() + type.slice(1);
 
@@ -260,11 +241,9 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
   }
 
   const goToPage = (n: number) => {
-    // старый якорь по top — можно оставить как резерв
     lockPrevTopRef.current =
       pagerRef.current?.getBoundingClientRect().top ?? null;
 
-    // 🆕 запоминаем дистанцию до низа документа
     const doc = document.documentElement;
 
     bottomOffsetRef.current =
@@ -392,7 +371,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
               <img src={ArrowLeft} alt="Previous" width={16} height={16} />
             </button>
 
-            {/* окно страниц */}
             {(() => {
               const WINDOW_SIZE = 4;
 
@@ -439,7 +417,6 @@ export const CategoryPage: React.FC<Props> = ({ type }) => {
               ));
             })()}
 
-            {/* стрелка вправо */}
             <button
               type="button"
               aria-label="Next page"

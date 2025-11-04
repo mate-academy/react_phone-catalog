@@ -1,4 +1,3 @@
-// Breadcrumbs.tsx
 import { Link, useNavigate } from 'react-router-dom';
 import HomeIcon from '../../../assets/Home.svg';
 import ArrowIcon from '../../../assets/Chevron (Arrow Right).png';

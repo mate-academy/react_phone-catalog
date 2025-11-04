@@ -4,8 +4,8 @@ import ArrowLeft from '../../../assets/Chevron (Arrow Left).svg';
 import ArrowRight from '../../../assets/Chevron (Arrow Right).svg';
 
 type Props = {
-  images: string[]; // пути вида '/img/hero/1.jpg'
-  intervalMs?: number; // по умолчанию 5000
+  images: string[];
+  intervalMs?: number;
 };
 
 export const PictureSlider: React.FC<Props> = ({
@@ -14,21 +14,20 @@ export const PictureSlider: React.FC<Props> = ({
 }) => {
   const [idx, setIdx] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const [dragX, setDragX] = useState(0); // смещение в px во время перетаскивания
+  const [dragX, setDragX] = useState(0);
   const timer = useRef<number | null>(null);
   const startX = useRef<number | null>(null);
   const lastX = useRef<number | null>(null);
-  const hasPointer = useRef(false); // чтобы знать, что жест начался
+  const hasPointer = useRef(false);
   const viewportRef = useRef<HTMLDivElement | null>(null);
 
   const n = images.length;
-  const thresholdPx = 50; // порог для переключения
+  const thresholdPx = 50;
 
   const goto = useCallback((i: number) => setIdx((i + n) % n), [n]);
   const prev = useCallback(() => goto(idx - 1), [goto, idx]);
   const next = useCallback(() => goto(idx + 1), [goto, idx]);
 
-  // автопрокрутка
   useEffect(() => {
     if (n <= 1 || isDragging) {
       return;
@@ -51,7 +50,6 @@ export const PictureSlider: React.FC<Props> = ({
     return null;
   }
 
-  // ========== pointer events ==========
   const onPointerDown = (e: React.PointerEvent) => {
     if (!viewportRef.current) {
       return;
@@ -92,10 +90,8 @@ export const PictureSlider: React.FC<Props> = ({
 
     if (Math.abs(dx) > thresholdPx) {
       if (dx < 0) {
-        // свайп влево => след. картинка
         next();
       } else {
-        // свайп вправо => предыдущая
         prev();
       }
     }
@@ -109,7 +105,6 @@ export const PictureSlider: React.FC<Props> = ({
     lastX.current = null;
   };
 
-  // вычисляем transform: во время перетаскивания добавляем px-смещение
   const basePercent = -(idx * 100);
   const dragTransform =
     isDragging && dragX !== 0
