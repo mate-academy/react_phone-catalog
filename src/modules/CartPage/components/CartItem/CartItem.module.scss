@@ -10,6 +10,10 @@
   background: $surface2;
   margin-bottom: 16px;
 
+  &:hover {
+    box-shadow: 0 2px 32px $primary;
+  }
+
   @include tablet {
     grid-template-columns: auto auto 1fr auto auto;
     align-items: center;

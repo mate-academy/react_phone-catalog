@@ -53,6 +53,10 @@
     overflow: hidden;
     margin-bottom: $spacing-lg;
     aspect-ratio: 1 / 1;
+
+    &:hover {
+      box-shadow: 0 2px 32px $primary;
+    }
   }
 
   &__image {

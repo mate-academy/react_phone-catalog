@@ -3,14 +3,16 @@
 .productCard {
   @include card-base;
 
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
   padding: $spacing-3xl;
   box-sizing: border-box;
   transition: all $transition-normal ease;
 
   &:hover {
-    transform: scale(1.1);
-    z-index: $z-index-dropdown;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 32px $primary;
   }
 
   &__link {
