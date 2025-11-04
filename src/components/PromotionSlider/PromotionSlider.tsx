@@ -25,37 +25,37 @@ export const PromotionSlider: FC<Props> = ({ products, title }) => {
           </div>
         </div>
         <Swiper
-          className="swiper-slider"
+          className="swiper-slider swiper-slider--promotion"
           modules={[Navigation, A11y]}
           slidesPerView={4}
           spaceBetween={16}
           navigation={{
-            nextEl: '.swiper-button-prev',
-            prevEl: '.swiper-button-next',
+            nextEl: '.slider-next',
+            prevEl: '.slider-prev',
           }}
           // navigation
           pagination={{ clickable: true }}
           breakpoints={{
-            '@0.00': {
+            0: {
               slidesPerView: 1,
               spaceBetween: 10,
             },
-            '@0.75': {
+            480: {
               slidesPerView: 2,
               spaceBetween: 20,
             },
-            '@1.00': {
+            720: {
               slidesPerView: 3,
               spaceBetween: 40,
             },
-            '@1.50': {
+            1024: {
               slidesPerView: 4,
               spaceBetween: 50,
             },
           }}
         >
           {products.map(product => (
-            <SwiperSlide>
+            <SwiperSlide key={product.id}>
               <ProductCard product={product} />
             </SwiperSlide>
           ))}

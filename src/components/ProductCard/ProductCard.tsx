@@ -1,21 +1,26 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import vaforiteImg from './../../images/icons/Favourites (Heart Like).svg';
 import vaforiteImgSelected from './../../images/icons/Favourites (Heart Like)_2.svg';
 import fakeImg from './../../images/img/phones//apple-iphone-11/black/00.webp';
 
 import './ProductCard.scss';
 import { Product } from '../../types/Product';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
 };
 
 export const ProductCard: FC<Props> = ({ product }) => {
+  const [isAddToCart, setIsAddToCart] = useState<boolean>(false);
+  const [isAddToFavorite, setIsAddToFavorite] = useState<boolean>(false);
+
   const { name, price, screen, capacity, ram, fullPrice } = product;
+
   return (
     <div className="card">
       <a href="#" className="card__link">
-        <img src={fakeImg} alt="" className="card__image" />
+        <img src={product.image} alt="" className="card__image" />
         <div className="card__title">{name}</div>
         <div className="card__price">
           <span className="card__price--sale">${price}</span>
@@ -38,11 +43,24 @@ export const ProductCard: FC<Props> = ({ product }) => {
           </div>
         </div>
         <div className="card__buttons">
-          <button className="card__add card__add_selected">Add to cart</button>
-          <a className="card__favorite card__favorite_selected">
-            <img src={vaforiteImg} alt="" />
-            {/* <img src={vaforiteImgSelected} alt="" /> */}
-          </a>
+          <button
+            onClick={() => setIsAddToCart(prev => !prev)}
+            className={classNames('card__add', {
+              card__add_selected: isAddToCart,
+            })}
+          >
+            {isAddToCart ? 'Added' : 'Add to cart'}
+          </button>
+          <button
+            className="card__favorite card__favorite_selected"
+            onClick={() => setIsAddToFavorite(prev => !prev)}
+          >
+            {isAddToFavorite ? (
+              <img src={vaforiteImgSelected} alt="" />
+            ) : (
+              <img src={vaforiteImg} alt="" />
+            )}
+          </button>
         </div>
       </div>
     </div>

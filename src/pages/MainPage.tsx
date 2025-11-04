@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { Banner } from '../components/Banner';
-import { NewModels } from '../components/NewModels';
 import { ShopCatagory } from '../components/ShopCatagory';
 import products from '../../public/api/products.json';
 import { useLocation } from 'react-router-dom';
@@ -20,9 +19,9 @@ export const MainPage = () => {
   return (
     <>
       <Banner />
-      {/* <NewModels /> */}
-      <PromotionSlider products={getHotModels} title="Brand new models" />
+      <PromotionSlider products={getNewModels} title="Brand new models" />
       <ShopCatagory />
+      {/* <PromotionSlider products={getHotModels} title="Hot prices" /> */}
     </>
   );
 };

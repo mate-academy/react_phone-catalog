@@ -11,4 +11,6 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
+  isFavorite?: boolean;
+  isAddedToCart?: boolean;
 }

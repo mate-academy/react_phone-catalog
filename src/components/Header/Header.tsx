@@ -53,7 +53,7 @@ export const Header = () => {
               Phones
             </NavLink>
             <NavLink
-              to="/tables"
+              to="/tablets"
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
