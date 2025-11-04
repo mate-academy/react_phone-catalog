@@ -67,7 +67,7 @@
     width: 100%;
 
     @include desktop {
-      justify-content: center;
+      justify-content: space-between;
     }
   }
 

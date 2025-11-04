@@ -93,6 +93,7 @@
     @include font-mont($font-size-sm, $font-weight-medium);
 
     cursor: pointer;
+    text-decoration: none;
 
     @include smooth-transition;
 

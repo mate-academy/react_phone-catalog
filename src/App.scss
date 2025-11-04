@@ -34,28 +34,36 @@ body {
     flex: 1;
     padding-top: 0;
 
-    // Márgenes laterales consistentes
-    padding-left: 8%;
-    padding-right: 8%;
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+
+    @media (min-width: 768px) {
+      padding-left: $spacing-3xl;
+      padding-right: $spacing-3xl;
+    }
+
+    @media (min-width: 1200px) {
+      padding-left: $spacing-6xl;
+      padding-right: $spacing-6xl;
+    }
+
+    @media (min-width: 1400px) {
+      padding-left: 120px;
+      padding-right: 120px;
+    }
+
+    @media (min-width: 1600px) {
+      padding-left: 160px;
+      padding-right: 160px;
+    }
+
+    @media (min-width: 1920px) {
+      padding-left: 200px;
+      padding-right: 200px;
+    }
 
     @include mobile {
       padding-top: $spacing-4xl;
-      padding-left: 5%;
-      padding-right: 5%;
-    }
-  }
-
-  @media (max-width: $desktop-lg) {
-    &__main {
-      padding-left: 5%;
-      padding-right: 5%;
-    }
-  }
-
-  @include tablet-up {
-    &__main {
-      padding-left: 4%;
-      padding-right: 4%;
     }
   }
 }
