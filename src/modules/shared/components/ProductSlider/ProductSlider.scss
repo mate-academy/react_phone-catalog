@@ -1,0 +1,24 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.product-slider {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__top {
+    @include ContentPaddingInline;
+
+    &__wrapper {
+      grid-column: 1 / -1;
+      justify-content: space-between;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}

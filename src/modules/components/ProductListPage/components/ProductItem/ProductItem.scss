@@ -1,0 +1,24 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.productItem {
+  @include Grid-column();
+  margin-bottom: 56px;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__content {
+    &-wrapper {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+}

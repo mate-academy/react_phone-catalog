@@ -1,0 +1,17 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+
+  @include onTablet {
+    margin-top: 32px;
+  }
+
+  @include onDesktop {
+    margin-top: 56px;
+  }
+}

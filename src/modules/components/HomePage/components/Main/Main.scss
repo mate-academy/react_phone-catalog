@@ -1,0 +1,18 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-block: 56px;
+
+  @include onTablet {
+    margin-block: 64px;
+    gap: 64px;
+  }
+
+  @include onDesktop {
+    margin-block: 80px;
+    gap: 80px;
+  }
+}

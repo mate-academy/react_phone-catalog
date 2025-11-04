@@ -1,0 +1,5 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.btn-add {
+  @include btn-card();
+}

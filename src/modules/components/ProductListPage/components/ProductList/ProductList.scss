@@ -1,0 +1,10 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.products-list {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 40px;
+  margin-block: 24px;
+  position: relative;
+  justify-content: center;
+}

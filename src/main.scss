@@ -1,0 +1,67 @@
+@use './fonts/fonts';
+@use './modules/shared/styles/main' as *;
+
+:root {
+  font-family: 'Mont', sans-serif;
+  box-sizing: border-box;
+}
+
+iframe {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--primary-bg-color);
+}
+
+:lang(ua) {
+  font-family: 'Montserrat', sans-serif;
+}
+
+:lang(en) {
+  font-family: 'Mont', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+.container-column {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  padding-inline: 16px;
+}
+
+.container-row {
+  display: grid;
+  row-gap: 54px;
+  width: 100%;
+}

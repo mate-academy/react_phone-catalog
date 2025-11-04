@@ -1,0 +1,41 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.product-image {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 40px;
+
+  &__img {
+    display: flex;
+    width: 100%;
+    height: -webkit-fill-available;
+    object-fit: contain;
+    padding: 2px;
+  }
+
+  &__main {
+    display: flex;
+    padding: 6px;
+    height: 288px;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+
+    &__item {
+      height: 50px;
+      width: 50px;
+      border: 1px solid $light-grey;
+      border-radius: 4px;
+
+      &--active {
+        border: 1px solid $primary-text-color;
+      }
+    }
+  }
+}

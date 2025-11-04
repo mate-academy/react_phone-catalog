@@ -1,0 +1,11 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.layout-sort {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  &__item {
+    grid-column: span 2;
+  }
+}

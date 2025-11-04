@@ -1,0 +1,21 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.productList {
+  @include Grid-column();
+
+  &__content {
+    grid-column: 1/-1;
+  }
+
+  &__body {
+    grid-column: 1/-1;
+  }
+
+  &__pages {
+    grid-column: 1/-1;
+  }
+
+  &__alarm {
+    @include Font-demi-bold(14px, 21px);
+  }
+}

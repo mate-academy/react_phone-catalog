@@ -1,0 +1,19 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.btn-like {
+  @include btn_circle();
+  display: flex;
+  height: 40px;
+  margin-inline: auto;
+  position: relative;
+
+  &--is-medium {
+    height: 48px;
+  }
+
+  &__image {
+    &--select {
+      transform: translateY(-1px) scale(108%);
+    }
+  }
+}

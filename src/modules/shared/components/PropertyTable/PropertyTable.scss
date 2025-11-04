@@ -1,0 +1,28 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.property-table {
+  padding-block: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+  @include Font-demi-bold(12px, 100%);
+
+  &--is-medium {
+    @include Font-medium(14px, 21px);
+  }
+
+  &__info {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-property {
+      color: $light-grey-text;
+    }
+
+    &-value {
+      &--list {}
+    }
+  }
+}

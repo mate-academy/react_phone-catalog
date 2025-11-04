@@ -1,0 +1,22 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.categories {
+  @include ContentPaddingInline();
+  // @include Grid-column();
+
+  &__wrapper {
+
+    grid-column: 1/-1;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 24px;
+  }
+
+  &__content {
+    @include Grid-column();
+    // display: flex;
+    // flex-direction: column;
+    gap: 32px;
+    // width: 100%;
+  }
+}

@@ -1,0 +1,16 @@
+@use './color-theme-mode__light' as light;
+@use './color-theme-mode__dark' as dark;
+
+@mixin theme-vars($theme-map) {
+  @each $name, $value in $theme-map {
+    --#{$name}: #{$value};
+  }
+}
+
+.light {
+  @include theme-vars(light.$theme-light-items);
+}
+
+.dark {
+  @include theme-vars(dark.$theme-dark-items);
+}

@@ -1,0 +1,28 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.header {
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      @extend %font_h1;
+      @include ContentPaddingInline;
+      text-align: left;
+      margin-bottom: 24px;
+
+      @include onTablet {
+        margin-bottom: 32px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 56px;
+      }
+    }
+
+    &-slider {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}

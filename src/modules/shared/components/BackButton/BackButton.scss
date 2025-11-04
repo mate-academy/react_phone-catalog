@@ -1,0 +1,16 @@
+@use '@/modules/shared/styles/main.scss' as *;
+
+.back-button {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  text-decoration: none;
+  width: max-content;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 8px;
+
+  &__icon {
+    color: $primary-text-color;
+  }
+}
