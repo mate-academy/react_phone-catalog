@@ -21,7 +21,7 @@ export const MainPage = () => {
       <Banner />
       <PromotionSlider products={getNewModels} title="Brand new models" />
       <ShopCatagory />
-      {/* <PromotionSlider products={getHotModels} title="Hot prices" /> */}
+      <PromotionSlider products={getHotModels} title="Hot prices" />
     </>
   );
 };

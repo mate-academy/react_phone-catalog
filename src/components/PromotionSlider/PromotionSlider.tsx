@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
@@ -12,6 +12,9 @@ type Props = {
 };
 
 export const PromotionSlider: FC<Props> = ({ products, title }) => {
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
+
   return (
     <>
       <section className="slider">
@@ -19,21 +22,34 @@ export const PromotionSlider: FC<Props> = ({ products, title }) => {
           <div className="slider__body">
             <h2 className="slider__title">{title}</h2>
             <div className="slider__nav">
-              <button className="swiper-button-prev slider-prev"></button>
-              <button className="swiper-button-next slider-next"></button>
+              <button
+                ref={prevRef}
+                className="swiper-button-prev slider-prev"
+              ></button>
+              <button
+                ref={nextRef}
+                className="swiper-button-next slider-next"
+              ></button>
             </div>
           </div>
         </div>
         <Swiper
-          className="swiper-slider swiper-slider--promotion"
+          className="swiper-slider"
           modules={[Navigation, A11y]}
           slidesPerView={4}
           spaceBetween={16}
-          navigation={{
-            nextEl: '.slider-next',
-            prevEl: '.slider-prev',
+          onBeforeInit={swiper => {
+            swiper.params.navigation = {
+              // @ts-ignore — Swiper types не всегда позволяют прямую запись, но это стандартный приём
+              ...swiper.params.navigation,
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            };
           }}
-          // navigation
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
           pagination={{ clickable: true }}
           breakpoints={{
             0: {
@@ -53,6 +69,8 @@ export const PromotionSlider: FC<Props> = ({ products, title }) => {
               spaceBetween: 50,
             },
           }}
+          observer={true}
+          observeParents={true}
         >
           {products.map(product => (
             <SwiperSlide key={product.id}>
