@@ -1,4 +1,10 @@
 @import '../../mixins.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 
 .header {
   width: 100%;
@@ -7,8 +13,10 @@
   flex-direction: row;
   justify-content: space-between;
   height: 48px;
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #E2E6E9;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e6e9;
+  z-index: 1000;
+  align-items: center;
 
   @include onTablet {
     justify-content: start;
@@ -21,6 +29,7 @@
 
 .logoMobile {
   display: block;
+  margin-left: 16px;
 
   @include onDesktop {
     display: none;
@@ -32,6 +41,7 @@
 
   @include onDesktop {
     display: block;
+    margin-left: 24px;
   }
 }
 
@@ -75,18 +85,16 @@
       line-height: 48px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: #89939A;
+      color: #89939a;
       text-decoration: none;
 
       @include onDesktop {
         line-height: 64px;
       }
 
-
       &Active {
         color: #313237;
         border-bottom: 3px solid #313237;
-
       }
     }
   }
@@ -94,42 +102,65 @@
 
 .icon {
   display: none;
+  margin-left: auto;
 
   @include onTablet {
     display: flex;
-    margin-left: auto;
   }
 
   &Item {
+    position: relative;
     height: 48px;
     width: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 1px solid #E2E6E9;
+    cursor: pointer;
+    border-left: 1px solid #e2e6e9;
 
     @include onDesktop {
       height: 64px;
       width: 64px;
     }
 
-    &ImgActive {
+    img.iconItemImg {
+      display: block;
+    }
+
+    img.iconItemImgActive {
       display: none;
     }
   }
 
-  &Item:hover {
-    border: 1px solid #313237;
-    box-sizing: border-box;
+  .iconItemActive {
+    border-bottom: 2px solid #313237;
+
+    img.iconItemImg {
+      display: none;
+    }
+
+    img.iconItemImgActive {
+      display: block;
+    }
   }
 }
 
-.iconItemActive {
-  & .iconItemImg {
-    display: none;
-  }
+.number_none {
+  display: none;
+}
 
-  & .iconItemImgActive {
-    display: block;
-  }
+.number_item {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  color: white;
+  border-radius: 100%;
+  border: 1px solid white;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  top: -4px;
+  right: -4px;
 }

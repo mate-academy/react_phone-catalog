@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+html,
 body {
   margin: 0;
+  font-family: 'Montserrat';
+  overflow-x: hidden;
 }
+
+#root {
+  height: 100%;
+}
+
+.AppWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+}
+

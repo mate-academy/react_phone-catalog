@@ -66,12 +66,20 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
       </main>
       <footer className={styles.footer}>
         <div className={styles.footerItem}>
-          <NavLink to="/" className={styles.footerItemImg} onClick={onClose}>
+          <NavLink
+            to="/liked"
+            className={styles.footerItemImg}
+            onClick={onClose}
+          >
             <img src="/img/buttons/PhoneCatalogHeart.svg" alt="heart" />
           </NavLink>
         </div>
         <div className={styles.footerItem}>
-          <NavLink to="/" className={styles.footerItemImg} onClick={onClose}>
+          <NavLink
+            to="/cart"
+            className={styles.footerItemImg}
+            onClick={onClose}
+          >
             <img src="/img/buttons/PhoneCatalogCart.svg" alt="cart" />
           </NavLink>
         </div>
