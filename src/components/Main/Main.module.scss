@@ -1,0 +1,22 @@
+@use '../../styles/mixins.scss' as *;
+
+.container {
+  @include page-grid;
+  @include content-padding-inline;
+  row-gap: 40px;
+}
+
+.title {
+  color: white;
+  font-family: 'Mont', sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+
+  grid-column: 1 / 18;
+  grid-row: 1; // 👈 явно первая строка
+}
+
+.swiperWrapper {
+  grid-column: 1 / 18;
+  grid-row: 2; // 👈 вторая строка — под заголовком
+}

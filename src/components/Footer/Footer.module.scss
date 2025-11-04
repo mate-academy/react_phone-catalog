@@ -1,0 +1,46 @@
+@use '../../styles/mixins.scss' as *;
+
+.footer {
+  @include content-padding-inline;
+
+  height: 94px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #3b3e4a;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 64px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .link {
+    color: #f1f2f9;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.3s ease;
+  }
+}
+
+.toTop {
+  display: flex;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.p {
+  color: #75767f;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #f1f2f9;
+  }
+}
