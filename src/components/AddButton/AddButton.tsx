@@ -13,12 +13,15 @@ export const AddButton: React.FC<Props> = ({ id }) => {
   const [buttonText, setButtonText] = useState('');
   const [inCart, setInCart] = useState(false);
 
-  const addToCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const toggleInCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
     if (!inCart) {
       setCart(prev => [...prev, id]);
       setInCart(true);
+    } else {
+      setInCart(false);
+      setCart(prev => prev.filter(el => el !== id));
     }
   };
 
@@ -34,7 +37,7 @@ export const AddButton: React.FC<Props> = ({ id }) => {
 
   return (
     <button
-      onClick={e => addToCart(e)}
+      onClick={e => toggleInCart(e)}
       className={classNames(styles.cart, { [styles.cart__added]: inCart })}
     >
       {buttonText}

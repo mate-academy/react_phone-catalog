@@ -20,7 +20,6 @@
 
 @mixin under-line($background-color: v.$main-grey) {
   position: relative;
-  width: fit-content;
 
   &::after {
     content: '';

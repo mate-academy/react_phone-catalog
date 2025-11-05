@@ -12,6 +12,8 @@ import { Product } from '../../types/data';
 import { Pagination } from '../shared/Pagination/Pagination';
 import { Error } from './components/Error/Error';
 import { Loader } from '../shared/Loader/Loader';
+import { getSearchWith } from '../../utils/searchHelper';
+import { useParamsSync } from './hooks/useParamSync';
 
 const allowedCategories: string[] = Object.values(CategoryTypes);
 
@@ -37,6 +39,7 @@ function sort(list: Product[], sortField: SortField, backOrder: boolean) {
   return result;
 }
 
+
 export const Catalor: React.FC = () => {
   const category = useParams().product;
   const isInvalidCategory = !category || !allowedCategories.includes(category);
@@ -45,24 +48,25 @@ export const Catalor: React.FC = () => {
   const [itemsList, setItemsList] = useState<Product[]>([]);
   const section = useRef<HTMLElement>(null);
   const [pageCount, setPageCount] = useState(1);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [errorKey, setErrorKey] = useState<number>(0);
-
-  const filtredList: Product[] = useMemo(() => {
-    const sortedList: Product[] = sort(
+  const sortedList: Product[] = useMemo(() => {
+    return sort(
       itemsList,
       searchParams.get('sort') as SortField || SortField.Year,
       false,
     );
+  }, [itemsList, searchParams]);
 
+  const filtredList: Product[] = useMemo(() => {
     const perPage = searchParams.get('perPage');
-    const page = searchParams.get('page') || 0;
+    const page = searchParams.get('page') || 1;
 
-    if (perPage && (+page + 1)) {
-      const startIndex = +page * +perPage;
+    if (perPage && +page) {
+      const startIndex = (+page - 1) * +perPage;
       const lastIndex = startIndex + +perPage;
 
-      setPageCount(Math.ceil(itemsList.length / +perPage));
+      setPageCount(Math.ceil(sortedList.length / +perPage));
 
       return sortedList.slice(startIndex, lastIndex);
     } else {
@@ -70,7 +74,9 @@ export const Catalor: React.FC = () => {
 
       return sortedList;
     }
-  }, [itemsList, searchParams]);
+  }, [sortedList, searchParams]);
+
+  useParamsSync();
 
   useEffect(() => {
     setLoading(true);
@@ -79,6 +85,18 @@ export const Catalor: React.FC = () => {
     if (isInvalidCategory) {
       return;
     }
+
+    const sortField = searchParams.get('sort') || SortField.Year;
+    const pageNum = searchParams.get('page') || null;
+    const perPage = searchParams.get('perPage') || null;
+
+    setSearchParams(
+      getSearchWith(searchParams, {
+        sort: sortField,
+        page: pageNum,
+        perPage: perPage,
+      }),
+    );
 
     getProducts()
       .then(result => {
@@ -96,6 +114,7 @@ export const Catalor: React.FC = () => {
   if (isInvalidCategory) {
     return <Navigate to="/404" replace />;
   }
+
 
   return (
     <section className={classNames(styles.catalog)} ref={section}>

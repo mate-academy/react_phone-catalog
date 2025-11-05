@@ -42,6 +42,12 @@
     }
 
     @include utils.on-tablet {
+      gap: 32px;
+      flex-direction: row;
+    }
+
+    @include utils.on-desktop {
+      gap: 64px;
       flex-direction: row;
     }
   }
@@ -57,12 +63,31 @@
     @include utils.under-line;
 
     @include utils.on-tablet {
-      height: auto;
+      height: 100%;
     }
 
     &:hover {
       cursor: pointer;
       color: utils.$main-grey;
+    }
+
+    &--active{
+      position: relative;
+      width: fit-content;
+      color: utils.$main-grey;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+
+        background-color: utils.$main-grey;
+      }
     }
   }
 

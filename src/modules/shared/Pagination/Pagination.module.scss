@@ -5,6 +5,7 @@
   gap: 16px;
   align-items: center;
   justify-content: center;
+  padding-inline: 50px;
 
   @include g.on-tablet{
     gap: 24px;
@@ -40,7 +41,8 @@
   &__pages{
     display: flex;
     gap: 8px;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   &__number{

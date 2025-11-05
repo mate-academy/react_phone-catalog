@@ -9,15 +9,32 @@ import { Link, useLocation } from 'react-router-dom';
 
 const MIN_TABLET_WIDTH = BREAKPOINTS['min-tablet'];
 
+function correctSearchStr(search: string, delKeys: string[]): string {
+  const currParams = new URLSearchParams(search);
+  const newParams = new URLSearchParams();
+
+  currParams.forEach((val, key) => {
+    if (!delKeys.includes(key)) {
+      newParams.set(key, val);
+    }
+  });
+
+  const filteredSearch = newParams.toString() ? `?${newParams.toString()}` : '';
+
+  return filteredSearch;
+}
+
 export const Header: React.FC = () => {
   const [burger, setBurger] = useState(false);
   const location = useLocation();
-  const navList = ['home', 'phone', 'tablets', 'accessories'];
+  const page = location.pathname.slice(1);
+  const searchParams = correctSearchStr(location.search, ['page']);
+  const navList = ['home', 'phones', 'tablets', 'accessories'];
   const navPath = [
     `/`,
-    `phones${location.search}`,
-    `tablets${location.search}`,
-    `accessories${location.search}`,
+    `phones${searchParams}`,
+    `tablets${searchParams}`,
+    `accessories${searchParams}`,
   ];
   const { favourites, cart } = useContext(StateContext);
 
@@ -68,8 +85,10 @@ export const Header: React.FC = () => {
           <div className={classNames(styles.header__icons)}>
             <Link
               to={'/favourites'}
-              className={classNames(styles['header__icons--item'])}
-              onClick={() => setBurger(!burger)}
+              className={classNames(styles['header__icons--item'], {
+                [styles.active]: page === 'favourites',
+              })}
+              onClick={() => setBurger(false)}
             >
               <Icon
                 path={`${import.meta.env.BASE_URL}/img/icons/favourites.svg`}
@@ -85,8 +104,10 @@ export const Header: React.FC = () => {
             </Link>
             <Link
               to={'/cart'}
-              className={classNames(styles['header__icons--item'])}
-              onClick={() => setBurger(!burger)}
+              className={classNames(styles['header__icons--item'], {
+                [styles.active]: page === 'cart',
+              })}
+              onClick={() => setBurger(false)}
             >
               <Icon
                 path={`${import.meta.env.BASE_URL}/img/icons/card.svg`}

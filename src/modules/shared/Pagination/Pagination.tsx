@@ -12,59 +12,45 @@ type Props = {
 export const Pagination: React.FC<Props> = ({ pagesCount }) => {
   const pageList = Array.from({ length: pagesCount }, (_, i) => i + 1);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [page, setPage] = useState<number | null>(0);
+  const [page, setPage] = useState<number>(+(searchParams.get('page') || '1'));
 
   const onActive = (newPage: number) => {
     setPage(newPage);
     setSearchParams(
       getSearchWith(searchParams, {
-        page: '' + newPage || null,
+        page: newPage > 1 ? '' + newPage : null,
       }),
     );
   };
 
   useEffect(() => {
     const p = searchParams.get('page');
-    const perPage = searchParams.get('perPage');
 
-    if (p && +p > pagesCount - 1) {
-      setPage(0);
+    setPage(+(p || 1));
+
+    if (p && +p > pagesCount) {
+      setPage(1);
       setSearchParams(
         getSearchWith(searchParams, {
-          page: '0',
+          page: null,
         }),
       );
     }
-
-    if (perPage && !p) {
-      if (+perPage < pagesCount * +perPage) {
-        setPage(0);
-        setSearchParams(
-          getSearchWith(searchParams, {
-            page: '0',
-          }),
-        );
-      }
-    }
   }, [pagesCount, searchParams, setSearchParams]);
-
-  if (page === null) {
-    return <></>;
-  }
 
   return (
     <div className={classNames(styles.pagination)}>
       <button
         name="left"
-        disabled={page === 0}
+        disabled={+page === 1}
         className={classNames(
           styles.pagination__button,
           styles['pagination__button--right'],
           {
-            [styles['pagination__button--disable']]: page === 0,
+            [styles['pagination__button--disable']]: +page === 1,
           },
         )}
-        onClick={() => onActive(page - 1)}
+        onClick={() => onActive(+page - 1)}
       >
         <Icon
           path={`${import.meta.env.BASE_URL}/img/icons/arrow-left-black.svg`}
@@ -76,9 +62,9 @@ export const Pagination: React.FC<Props> = ({ pagesCount }) => {
           <button
             key={i}
             className={classNames(styles.pagination__number, {
-              [styles['pagination__number--active']]: i === page,
+              [styles['pagination__number--active']]: i === +page - 1,
             })}
-            onClick={() => onActive(i)}
+            onClick={() => onActive(i + 1)}
           >
             {p}
           </button>
@@ -86,15 +72,15 @@ export const Pagination: React.FC<Props> = ({ pagesCount }) => {
       </div>
       <button
         name="right"
-        disabled={page + 1 === pagesCount}
+        disabled={+page === pagesCount}
         className={classNames(
           styles.pagination__button,
           styles['pagination__button--right'],
           {
-            [styles['pagination__button--disable']]: page + 1 === pagesCount,
+            [styles['pagination__button--disable']]: +page === pagesCount,
           },
         )}
-        onClick={() => onActive(page + 1)}
+        onClick={() => onActive(+page + 1)}
       >
         <Icon
           path={`${import.meta.env.BASE_URL}/img/icons/arrow-right-black.svg`}

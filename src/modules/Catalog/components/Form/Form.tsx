@@ -3,7 +3,6 @@ import { SortDir, SortField } from '../../types/sort';
 import styles from './Form.module.scss';
 import classNames from 'classnames';
 import { getSearchWith } from '../../../../utils/searchHelper';
-import { useEffect } from 'react';
 
 type SortType = {
   name: string;
@@ -53,15 +52,6 @@ export const Form: React.FC = () => {
       }),
     );
   };
-
-  useEffect(() => {
-    setSearchParams(
-      getSearchWith(searchParams, {
-        perPage: '' + 16,
-        sort: SortField.Year,
-      }),
-    );
-  }, []);
 
   return (
     <form className={classNames(styles.form)}>

@@ -122,10 +122,30 @@
       flex-grow: 1;
       flex-shrink: 0;
 
-      width: g.$header-height-tablet;
       height:  g.$header-height-tablet;
+      width: g.$header-height-tablet;
 
       box-shadow: -1px -1px 0 g.$elements-color;
+
+      @include g.under-line;
+
+      &.active {
+        position: relative;
+        color: g.$main-grey;
+
+        &::before {
+          content: '';
+
+          position: absolute;
+          display: block;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+
+          background-color: g.$main-grey;
+        }
+      }
 
       &--count {
         position: absolute;
