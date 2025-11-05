@@ -9,7 +9,12 @@
   "home": {
     "welcome_to_store": "Welcome to Nice Gadgets store!",
     "brand_new": "Brand new models",
-    "hot_prices": "Hot prices"
+    "hot_prices": "Hot prices",
+    "shop_by_category": "Shop by category",
+    "category_phones": "Mobile phones",
+    "category_tablets": "Tablets",
+    "category_accessories": "Accessories",
+    "models": "models"
   },
 
   "product-card": {

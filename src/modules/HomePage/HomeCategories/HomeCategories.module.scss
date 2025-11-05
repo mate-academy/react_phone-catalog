@@ -1,7 +1,66 @@
 @use './../../../scss/main.scss' as *;
 
 .categories {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
   &__title {
     @extend %h2;
+  }
+
+  &__content {
+    @include page-grid;
+  }
+
+  &__category {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__categoryImage {
+    aspect-ratio: 1 / 1;
+    height: fit-content;
+    padding-left: 20%;
+    padding-top: 20%;
+    object-fit: cover;
+
+    &_bg_phones {
+      background-color: #6d6474;
+    }
+
+    &_bg_tablets {
+      background-color: #8d8d92;
+    }
+
+    &_bg_accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__categoryBottom {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+  }
+
+  &__categoryName {
+    @extend %h4;
+  }
+
+  &__categoryDescription {
+    color: $secondary-color;
+
+    @extend %body-text;
   }
 }

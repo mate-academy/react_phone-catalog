@@ -9,7 +9,12 @@
   "home": {
     "welcome_to_store": "Ласкаво просимо до магазину гарних гаджетів!",
     "brand_new": "Новинки",
-    "hot_prices": "Гарячі ціни"
+    "hot_prices": "Гарячі ціни",
+    "shop_by_category": "Товари за категоріями",
+    "category_phones": "Мобільні телефони",
+    "category_tablets": "Планшети",
+    "category_accessories": "Аксесуари",
+    "models": "моделей"
   },
 
   "product-card": {
