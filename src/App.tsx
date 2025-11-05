@@ -129,7 +129,7 @@ export const App = () => {
             <Routes>
               <Route path="*" element={<NotFound />} />
               <Route
-                path="/react_phone-catalog"
+                path="/"
                 element={
                   <Main
                     handleRemoveFromCart={handleRemoveFromCart}
@@ -142,7 +142,7 @@ export const App = () => {
               />
 
               <Route
-                path="/react_phone-catalog/phones"
+                path="/phones"
                 element={
                   <Products
                     handleRemoveFromCart={handleRemoveFromCart}
@@ -156,7 +156,7 @@ export const App = () => {
               />
 
               <Route
-                path="/react_phone-catalog/tablets"
+                path="/tablets"
                 element={
                   <Products
                     handleRemoveFromCart={handleRemoveFromCart}
@@ -170,7 +170,7 @@ export const App = () => {
               />
 
               <Route
-                path="/react_phone-catalog/accessories"
+                path="/accessories"
                 element={
                   <Products
                     handleRemoveFromCart={handleRemoveFromCart}
@@ -184,7 +184,7 @@ export const App = () => {
               />
 
               <Route
-                path="/react_phone-catalog/:category/:itemId"
+                path="/:category/:itemId"
                 element={
                   <ProductCard
                     handleAddToCart={handleAddToCart}
@@ -197,7 +197,7 @@ export const App = () => {
               />
 
               <Route
-                path="/react_phone-catalog/liked"
+                path="/liked"
                 element={
                   <Like
                     cart={cart}
@@ -210,7 +210,7 @@ export const App = () => {
               />
 
               <Route
-                path="/react_phone-catalog/cart"
+                path="/cart"
                 element={
                   <Cart
                     cart={cart}

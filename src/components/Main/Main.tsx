@@ -81,10 +81,7 @@ export const Main: React.FC<Props> = ({
         <div className={styles.main_categories}>
           <p className={styles.main_categories_title}>Shop by category</p>
           <div className={styles.main_categories_block}>
-            <NavLink
-              to="/react_phone-catalog/phones"
-              className={styles.main_categories_type}
-            >
+            <NavLink to="/phones" className={styles.main_categories_type}>
               <div className={styles.main_categories_type_img}>
                 <img src="img/categories/phones.svg" alt="" />
               </div>
@@ -93,10 +90,7 @@ export const Main: React.FC<Props> = ({
                 {phoneCount} models
               </p>
             </NavLink>
-            <NavLink
-              to="/react_phone-catalog/tablets"
-              className={styles.main_categories_type}
-            >
+            <NavLink to="/tablets" className={styles.main_categories_type}>
               <div className={styles.main_categories_type_img}>
                 <img src="img/categories/tablets.svg" alt="" />
               </div>
@@ -106,7 +100,7 @@ export const Main: React.FC<Props> = ({
               </p>
             </NavLink>
             <NavLink
-              to="/react_phone-catalog/accessories"
+              to="/accessories"
               className={`${styles.main_categories_type} ${styles.last_type}`}
             >
               <div

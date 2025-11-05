@@ -31,7 +31,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
       <div className={styles.menu}>
         <ul className={styles.menuList}>
           <NavLink
-            to="/react_phone-catalog"
+            to="/"
             end
             className={({ isActive }) =>
               isActive
@@ -42,7 +42,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
             home
           </NavLink>
           <NavLink
-            to="/react_phone-catalog/phones"
+            to="/phones"
             className={({ isActive }) =>
               isActive
                 ? `${styles.menuListItem} ${styles.menuListItemActive}`
@@ -52,7 +52,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
             Phones
           </NavLink>
           <NavLink
-            to="/react_phone-catalog/tablets"
+            to="/tablets"
             className={({ isActive }) =>
               isActive
                 ? `${styles.menuListItem} ${styles.menuListItemActive}`
@@ -62,7 +62,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
             tablets
           </NavLink>
           <NavLink
-            to="/react_phone-catalog/accessories"
+            to="/accessories"
             className={({ isActive }) =>
               isActive
                 ? `${styles.menuListItem} ${styles.menuListItemActive}`
@@ -77,7 +77,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
       <div className={styles.icon}>
         <div>
           <NavLink
-            to="/react_phone-catalog/liked"
+            to="/liked"
             className={({ isActive }) =>
               isActive
                 ? `${styles.iconItem} ${styles.iconItemActive}`
@@ -107,7 +107,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
         </div>
         <div>
           <NavLink
-            to="/react_phone-catalog/cart"
+            to="/cart"
             className={({ isActive }) =>
               isActive
                 ? `${styles.iconItem} ${styles.iconItemActive}`

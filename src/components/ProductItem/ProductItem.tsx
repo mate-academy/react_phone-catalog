@@ -69,7 +69,7 @@ export const ProductItem: React.FC<Props> = ({
     <div key={product.id} className={styles.product}>
       <NavLink
         className={styles.product_block}
-        to={`/react_phone-catalog/${product.category}/${product.itemId}`}
+        to={`/${product.category}/${product.itemId}`}
       >
         <img
           src={`${product.image}`}

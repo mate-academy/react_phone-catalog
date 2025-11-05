@@ -61,7 +61,7 @@ export const Cart: React.FC<Props> = ({
   return (
     <div className={styles.main}>
       <div className={styles.home}>
-        <NavLink to="/react_phone-catalog" className={styles.home_button}>
+        <NavLink to="/" className={styles.home_button}>
           <img src="img/slider/arrow_left.svg" alt="Back" />
         </NavLink>
         <p className={styles.home_text}>Back</p>
@@ -90,14 +90,14 @@ export const Cart: React.FC<Props> = ({
 
                     <NavLink
                       className={styles.product_block1_image}
-                      to={`/react_phone-catalog/${product.category}/${product.itemId}`}
+                      to={`/${product.category}/${product.itemId}`}
                     >
                       <img src={product.image} alt={product.name} />
                     </NavLink>
 
                     <NavLink
                       className={styles.product_block1_text}
-                      to={`/react_phone-catalog/${product.category}/${product.itemId}`}
+                      to={`/${product.category}/${product.itemId}`}
                     >
                       {product.name}
                     </NavLink>

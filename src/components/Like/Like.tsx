@@ -35,10 +35,10 @@ export const Like: React.FC<Props> = ({
   return (
     <div className={styles.main}>
       <div className={styles.home}>
-        <NavLink to="/react_phone-catalog">
+        <NavLink to="/">
           <img src="img/home_icon.svg" alt="button" />
         </NavLink>
-        <NavLink to="/react_phone-catalog">
+        <NavLink to="/">
           <img src="img/arrow_right.svg" alt="button" />
         </NavLink>
         <h1 className={styles.home_text}>Favourites</h1>

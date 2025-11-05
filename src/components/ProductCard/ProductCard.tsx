@@ -89,7 +89,7 @@ export const ProductCard: React.FC<Props> = ({
         <NavLink to="/">
           <img src="img/home_icon.svg" alt="button" />
         </NavLink>
-        <NavLink to="/react_phone-catalog">
+        <NavLink to="/">
           <img src="img/arrow_right.svg" alt="button" />
         </NavLink>
         <h1 className={styles.home_text}>{category}</h1>
@@ -113,7 +113,7 @@ export const ProductCard: React.FC<Props> = ({
               <div className={styles.block_images}>
                 <div className={styles.block_images_main}>
                   {chosenImage && (
-                    <img src={`/${chosenImage}`} alt={product?.name} />
+                    <img src={`${chosenImage}`} alt={product?.name} />
                   )}
                 </div>
                 <div className={styles.block_images_buttons}>
@@ -123,7 +123,7 @@ export const ProductCard: React.FC<Props> = ({
                       onClick={() => setChosenImage(a)}
                       className={`${styles.block_images_buttons_one} ${chosenImage === a && styles.block_images_buttons_one_active}`}
                     >
-                      <img src={`/${a}`} alt="" />
+                      <img src={`${a}`} alt="" />
                     </button>
                   ))}
                 </div>

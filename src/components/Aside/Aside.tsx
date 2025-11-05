@@ -25,7 +25,7 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
               ? `${styles.mainItem} ${styles.mainItemActive}`
               : styles.mainItem
           }
-          to="/react_phone-catalog"
+          to="/"
           onClick={onClose}
         >
           home
@@ -36,7 +36,7 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
               ? `${styles.mainItem} ${styles.mainItemActive}`
               : styles.mainItem
           }
-          to="/react_phone-catalog/phones"
+          to="/phones"
           onClick={onClose}
         >
           Phones
@@ -47,7 +47,7 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
               ? `${styles.mainItem} ${styles.mainItemActive}`
               : styles.mainItem
           }
-          to="/react_phone-catalog/tablets"
+          to="/tablets"
           onClick={onClose}
         >
           tablets
@@ -58,7 +58,7 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
               ? `${styles.mainItem} ${styles.mainItemActive}`
               : styles.mainItem
           }
-          to="/react_phone-catalog/accessories"
+          to="/accessories"
           onClick={onClose}
         >
           accessories
@@ -67,7 +67,7 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
       <footer className={styles.footer}>
         <div className={styles.footerItem}>
           <NavLink
-            to="/react_phone-catalog/liked"
+            to="/liked"
             className={styles.footerItemImg}
             onClick={onClose}
           >
@@ -76,7 +76,7 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
         </div>
         <div className={styles.footerItem}>
           <NavLink
-            to="/react_phone-catalog/cart"
+            to="/cart"
             className={styles.footerItemImg}
             onClick={onClose}
           >
