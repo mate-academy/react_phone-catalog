@@ -81,6 +81,10 @@
       mask-position: center center;
     }
 
+    &_rotate_90 {
+      transform: rotate(-90deg);
+    }
+
     &_disabled {
       background-color: $icon-color;
     }

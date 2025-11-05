@@ -37,6 +37,7 @@ export const HomePage = () => {
 
   return (
     <div className="container">
+      <div id="top"></div>
       <div className={styles.homePage}>
         <div>
           <h2 className={styles.homePage__title}>

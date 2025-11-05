@@ -7,7 +7,8 @@ type IconImageModifiers =
   | 'favorites_active'
   | 'arrowLeft'
   | 'arrowRight'
-  | 'disabled';
+  | 'disabled'
+  | 'rotate_90';
 
 type IconTypes =
   | 'type_tablet'
