@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { CartItem } from 'types/CartItem';
 import { ProductsSlider } from '../ProductsSlider';
 import { ProductType } from 'types/ProductType';
+import { Loader } from '../Loader';
 
 type Props = {
   handleAddToLiked: (item: number) => void;
@@ -33,33 +34,43 @@ export const ProductCard: React.FC<Props> = ({
   const [phones, setPhones] = useState<ProductItemType[]>([]);
   const [tablets, setTablets] = useState<ProductItemType[]>([]);
   const [accessories, setAccessories] = useState<ProductItemType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('api/products.json')
-      .then(res => res.json())
-      .then(data => setProductItems(data))
-      .catch(err => console.error('Error loading products.json', err));
-  }, []);
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
 
-  useEffect(() => {
-    fetch('api/tablets.json')
-      .then(res => res.json())
-      .then(data => setTablets(data))
-      .catch(err => console.error('Error loading tablets.json', err));
-  }, []);
+        await new Promise(resolve => setTimeout(resolve, 500));
 
-  useEffect(() => {
-    fetch('api/accessories.json')
-      .then(res => res.json())
-      .then(data => setAccessories(data))
-      .catch(err => console.error('Error loading accessories.json', err));
-  }, []);
+        const [phonesRes, tabletsRes, accessoriesRes, productsRes] =
+          await Promise.all([
+            fetch('api/phones.json'),
+            fetch('api/tablets.json'),
+            fetch('api/accessories.json'),
+            fetch('api/products.json'),
+          ]);
 
-  useEffect(() => {
-    fetch('api/phones.json')
-      .then(res => res.json())
-      .then(data => setPhones(data))
-      .catch(err => console.error('Error loading phones.json', err));
+        const [phonesData, tabletsData, accessoriesData, productsData] =
+          await Promise.all([
+            phonesRes.json(),
+            tabletsRes.json(),
+            accessoriesRes.json(),
+            productsRes.json(),
+          ]);
+
+        setPhones(phonesData);
+        setTablets(tabletsData);
+        setAccessories(accessoriesData);
+        setProductItems(productsData);
+      } catch (error) {
+        console.error('Error loading data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   if (category === 'phones') {
@@ -82,6 +93,10 @@ export const ProductCard: React.FC<Props> = ({
   const getSuggestedProducts = (array: ProductType[]) => {
     return array.sort(() => Math.random() - 0.5).slice(0, 10);
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.main}>

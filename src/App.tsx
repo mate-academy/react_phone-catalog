@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { Aside } from './components/Aside';
 import { Main } from './components/Main';
@@ -10,13 +10,10 @@ import { Cart } from './components/Cart';
 import { ProductCard } from './components/ProductCard';
 import { CartItem } from 'types/CartItem';
 import { Footer } from './components/Footer';
-import { Loader } from './components/Loader';
 import { NotFound } from './components/NotFoundPage';
 
 export const App = () => {
   const [isAsideOpen, setIsAsideOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const location = useLocation();
 
   const [liked, setLiked] = useState<number[]>(() => {
     const saved = localStorage.getItem('liked');
@@ -37,16 +34,6 @@ export const App = () => {
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-
-    return () => clearTimeout(timeout);
-  }, [location]);
 
   const handleAddToLiked = (item: number) => {
     setLiked(prev =>
@@ -123,107 +110,103 @@ export const App = () => {
           <Header setIsAsideOpen={setIsAsideOpen} liked={liked} cart={cart} />
         )}
 
-        {isLoading && <Loader />}
-
         <main className="mainContent">
-          {!isLoading && (
-            <Routes>
-              <Route path="*" element={<NotFound />} />
-              <Route
-                path="/"
-                element={
-                  <Main
-                    handleRemoveFromCart={handleRemoveFromCart}
-                    cart={cart}
-                    liked={liked}
-                    handleAddToCart={handleAddToCart}
-                    handleAddToLiked={handleAddToLiked}
-                  />
-                }
-              />
+          <Routes>
+            <Route path="*" element={<NotFound />} />
+            <Route
+              path="/"
+              element={
+                <Main
+                  handleRemoveFromCart={handleRemoveFromCart}
+                  cart={cart}
+                  liked={liked}
+                  handleAddToCart={handleAddToCart}
+                  handleAddToLiked={handleAddToLiked}
+                />
+              }
+            />
 
-              <Route
-                path="/phones"
-                element={
-                  <Products
-                    handleRemoveFromCart={handleRemoveFromCart}
-                    cart={cart}
-                    liked={liked}
-                    type="phones"
-                    handleAddToCart={handleAddToCart}
-                    handleAddToLiked={handleAddToLiked}
-                  />
-                }
-              />
+            <Route
+              path="/phones"
+              element={
+                <Products
+                  handleRemoveFromCart={handleRemoveFromCart}
+                  cart={cart}
+                  liked={liked}
+                  type="phones"
+                  handleAddToCart={handleAddToCart}
+                  handleAddToLiked={handleAddToLiked}
+                />
+              }
+            />
 
-              <Route
-                path="/tablets"
-                element={
-                  <Products
-                    handleRemoveFromCart={handleRemoveFromCart}
-                    cart={cart}
-                    liked={liked}
-                    type="tablets"
-                    handleAddToCart={handleAddToCart}
-                    handleAddToLiked={handleAddToLiked}
-                  />
-                }
-              />
+            <Route
+              path="/tablets"
+              element={
+                <Products
+                  handleRemoveFromCart={handleRemoveFromCart}
+                  cart={cart}
+                  liked={liked}
+                  type="tablets"
+                  handleAddToCart={handleAddToCart}
+                  handleAddToLiked={handleAddToLiked}
+                />
+              }
+            />
 
-              <Route
-                path="/accessories"
-                element={
-                  <Products
-                    handleRemoveFromCart={handleRemoveFromCart}
-                    cart={cart}
-                    liked={liked}
-                    type="accessories"
-                    handleAddToCart={handleAddToCart}
-                    handleAddToLiked={handleAddToLiked}
-                  />
-                }
-              />
+            <Route
+              path="/accessories"
+              element={
+                <Products
+                  handleRemoveFromCart={handleRemoveFromCart}
+                  cart={cart}
+                  liked={liked}
+                  type="accessories"
+                  handleAddToCart={handleAddToCart}
+                  handleAddToLiked={handleAddToLiked}
+                />
+              }
+            />
 
-              <Route
-                path="/:category/:itemId"
-                element={
-                  <ProductCard
-                    handleAddToCart={handleAddToCart}
-                    handleAddToLiked={handleAddToLiked}
-                    liked={liked}
-                    cart={cart}
-                    handleRemoveFromCart={handleRemoveFromCart}
-                  />
-                }
-              />
+            <Route
+              path="/:category/:itemId"
+              element={
+                <ProductCard
+                  handleAddToCart={handleAddToCart}
+                  handleAddToLiked={handleAddToLiked}
+                  liked={liked}
+                  cart={cart}
+                  handleRemoveFromCart={handleRemoveFromCart}
+                />
+              }
+            />
 
-              <Route
-                path="/liked"
-                element={
-                  <Like
-                    cart={cart}
-                    liked={liked}
-                    handleAddToCart={handleAddToCart}
-                    handleAddToLiked={handleAddToLiked}
-                    handleRemoveFromCart={handleRemoveFromCart}
-                  />
-                }
-              />
+            <Route
+              path="/liked"
+              element={
+                <Like
+                  cart={cart}
+                  liked={liked}
+                  handleAddToCart={handleAddToCart}
+                  handleAddToLiked={handleAddToLiked}
+                  handleRemoveFromCart={handleRemoveFromCart}
+                />
+              }
+            />
 
-              <Route
-                path="/cart"
-                element={
-                  <Cart
-                    cart={cart}
-                    handleDecreaseQuantity={handleDecreaseQuantity}
-                    handleIncreaseQuantity={handleIncreaseQuantity}
-                    handleRemoveFromCart={handleRemoveFromCart}
-                    setCart={setCart}
-                  />
-                }
-              />
-            </Routes>
-          )}
+            <Route
+              path="/cart"
+              element={
+                <Cart
+                  cart={cart}
+                  handleDecreaseQuantity={handleDecreaseQuantity}
+                  handleIncreaseQuantity={handleIncreaseQuantity}
+                  handleRemoveFromCart={handleRemoveFromCart}
+                  setCart={setCart}
+                />
+              }
+            />
+          </Routes>
         </main>
 
         {isAsideOpen && <Aside onClose={() => setIsAsideOpen(false)} />}

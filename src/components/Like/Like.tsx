@@ -4,6 +4,7 @@ import { ProductType } from 'types/ProductType';
 import styles from './Like.module.scss';
 import { NavLink } from 'react-router-dom';
 import { CartItem } from 'types/CartItem';
+import { Loader } from '../Loader';
 
 type Props = {
   liked: number[];
@@ -21,16 +22,38 @@ export const Like: React.FC<Props> = ({
   handleRemoveFromCart,
 }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    fetch('api/products.json')
-      .then(res => res.json())
-      .then(data => setProducts(data));
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        const [productsRes] = await Promise.all([fetch('api/products.json')]);
+
+        const [productsData] = await Promise.all([productsRes.json()]);
+
+        setProducts(productsData);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Error loading data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const likedProduct = products.filter((a: ProductType) =>
     liked.includes(a.id),
   );
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.main}>

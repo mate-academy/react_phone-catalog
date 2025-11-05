@@ -7,6 +7,7 @@ import styles from './Main.module.scss';
 import { ProductType } from 'types/ProductType';
 import { NavLink } from 'react-router-dom';
 import { ProductItemType } from 'types/ProductItemType';
+import { Loader } from '../Loader';
 
 type Props = {
   handleAddToLiked: (item: number) => void;
@@ -27,32 +28,43 @@ export const Main: React.FC<Props> = ({
   const [phones, setPhones] = useState<ProductItemType[]>([]);
   const [tablets, setTablets] = useState<ProductItemType[]>([]);
   const [accessories, setAccessories] = useState<ProductItemType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('api/phones.json')
-      .then(res => res.json())
-      .then(setPhones)
-      .catch(err => console.error('Error loading phones.json', err));
-  }, []);
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
 
-  useEffect(() => {
-    fetch('api/tablets.json')
-      .then(res => res.json())
-      .then(setTablets)
-      .catch(err => console.error('Error loading tablets.json', err));
-  }, []);
+        await new Promise(resolve => setTimeout(resolve, 500));
 
-  useEffect(() => {
-    fetch('api/accessories.json')
-      .then(res => res.json())
-      .then(setAccessories)
-      .catch(err => console.error('Error loading accessories.json', err));
-  }, []);
+        const [phonesRes, tabletsRes, accessoriesRes, productsRes] =
+          await Promise.all([
+            fetch('api/phones.json'),
+            fetch('api/tablets.json'),
+            fetch('api/accessories.json'),
+            fetch('api/products.json'),
+          ]);
 
-  useEffect(() => {
-    fetch('api/products.json')
-      .then(res => res.json())
-      .then(data => setProducts(data));
+        const [phonesData, tabletsData, accessoriesData, productsData] =
+          await Promise.all([
+            phonesRes.json(),
+            tabletsRes.json(),
+            accessoriesRes.json(),
+            productsRes.json(),
+          ]);
+
+        setPhones(phonesData);
+        setTablets(tabletsData);
+        setAccessories(accessoriesData);
+        setProducts(productsData);
+      } catch (error) {
+        console.error('Error loading data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const newModals = products.sort((a, b) => b.year - a.year);
@@ -64,6 +76,10 @@ export const Main: React.FC<Props> = ({
   const phoneCount = phones.length;
   const tabletsCount = tablets.length;
   const accessoriesCount = accessories.length;
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

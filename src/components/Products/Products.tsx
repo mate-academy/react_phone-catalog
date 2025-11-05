@@ -4,6 +4,7 @@ import { NavLink, useSearchParams } from 'react-router-dom';
 import { ProductItem } from '../ProductItem';
 import { ProductType } from 'types/ProductType';
 import { CartItem } from 'types/CartItem';
+import { Loader } from '../Loader';
 
 type Props = {
   type: string;
@@ -28,26 +29,40 @@ export const Products: React.FC<Props> = ({
   const perPage = searchParams.get('perPage') || 'all';
   const page = Number(searchParams.get('page')) || 1;
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    fetch('api/products.json')
-      .then(res => res.json())
-      .then(data => setProducts(data));
-  }, []);
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        const [productsRes] = await Promise.all([fetch('api/products.json')]);
+
+        const [productsData] = await Promise.all([productsRes.json()]);
+
+        setProducts(productsData);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Error loading data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [type]);
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     const params = new URLSearchParams(searchParams);
 
-    if (value === '') {
-      params.delete('sort');
-    } else {
-      params.set('sort', value);
-    }
+    params.set('sort', value);
 
     setSearchParams(params);
   };
 
-  // --- кількість на сторінці ---
   const handleItemNumberChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
@@ -65,7 +80,6 @@ export const Products: React.FC<Props> = ({
     setSearchParams(params);
   };
 
-  // --- сортування ---
   const getSortedProducts = () => {
     const sortBy = searchParams.get('sort');
     const filtered = products.filter(product => product.category === type);
@@ -89,7 +103,6 @@ export const Products: React.FC<Props> = ({
   const sortedProducts = getSortedProducts();
   const number = sortedProducts.length;
 
-  // --- пагінація ---
   const perPageNum = perPage === 'all' ? number : Number(perPage);
   const totalPages = Math.ceil(number / perPageNum);
 
@@ -106,6 +119,10 @@ export const Products: React.FC<Props> = ({
     params.set('page', newPage.toString());
     setSearchParams(params);
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -133,7 +150,6 @@ export const Products: React.FC<Props> = ({
               value={searchParams.get('sort') || ''}
               onChange={handleSortChange}
             >
-              <option value="">Select</option>
               <option value="age">Newest</option>
               <option value="title">Alphabetically</option>
               <option value="price">Cheapest</option>

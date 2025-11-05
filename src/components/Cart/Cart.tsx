@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { ProductType } from 'types/ProductType';
 import styles from './Cart.module.scss';
 import { CartItem } from 'types/CartItem';
+import { Loader } from '../Loader';
 
 type Props = {
   cart: CartItem[];
@@ -52,11 +53,34 @@ export const Cart: React.FC<Props> = ({
     }
   };
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    fetch('api/products.json')
-      .then(res => res.json())
-      .then(data => setProducts(data));
-  }, [itemsCount]);
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        const [productsRes] = await Promise.all([fetch('api/products.json')]);
+
+        const [productsData] = await Promise.all([productsRes.json()]);
+
+        setProducts(productsData);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Error loading data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.main}>

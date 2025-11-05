@@ -5,6 +5,8 @@
   margin-top: 64px;
   box-shadow: 0 -1px 0 0 #E2E6E9;
   padding: 32px 16px;
+  width: 100%;
+  box-sizing: border-box;
 
   @include on-tablet {
     display: flex;

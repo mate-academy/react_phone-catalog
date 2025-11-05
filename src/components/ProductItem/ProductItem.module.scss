@@ -7,10 +7,11 @@ body {
 
 .product {
   height: 440px;
-  width: 288px;
+  flex: 1 1 250px;
   border: 1px solid #E2E6E9;
   padding: 32px;
   box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
     transform: scale(1.05);
@@ -19,7 +20,7 @@ body {
 
   @include on-tablet {
     height: 506px;
-    width: 272px;
+    flex: 1 1 30%;
   }
 
   &:not(:last-child) {

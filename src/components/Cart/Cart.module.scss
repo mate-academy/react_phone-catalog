@@ -61,10 +61,16 @@ body {
   align-items: center;
   flex-direction: column;
   height: calc(100vh - 200px);
+  box-sizing: border-box;
+  padding: 10%;
+
+  @include on-desktop {
+    width: 1000px;
+  }
 
   img {
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 500px;
+    width: 100%;
     object-fit: contain;
   }
 }
@@ -231,9 +237,5 @@ body {
     line-height: 21px;
     letter-spacing: 0%;
     color: #FFF;
-
-
-
-
   }
 }

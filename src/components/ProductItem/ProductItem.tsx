@@ -30,24 +30,29 @@ export const ProductItem: React.FC<Props> = ({
   const [accessories, setAccessories] = useState<ProductItemType[]>([]);
 
   useEffect(() => {
-    fetch('api/phones.json')
-      .then(res => res.json())
-      .then(setPhones)
-      .catch(err => console.error('Error loading phones.json', err));
-  }, []);
+    const fetchData = async () => {
+      try {
+        const [phonesRes, tabletsRes, accessoriesRes] = await Promise.all([
+          fetch('api/phones.json'),
+          fetch('api/tablets.json'),
+          fetch('api/accessories.json'),
+        ]);
 
-  useEffect(() => {
-    fetch('api/tablets.json')
-      .then(res => res.json())
-      .then(setTablets)
-      .catch(err => console.error('Error loading tablets.json', err));
-  }, []);
+        const [phonesData, tabletsData, accessoriesData] = await Promise.all([
+          phonesRes.json(),
+          tabletsRes.json(),
+          accessoriesRes.json(),
+        ]);
 
-  useEffect(() => {
-    fetch('api/accessories.json')
-      .then(res => res.json())
-      .then(setAccessories)
-      .catch(err => console.error('Error loading accessories.json', err));
+        setPhones(phonesData);
+        setTablets(tabletsData);
+        setAccessories(accessoriesData);
+      } catch (error) {
+        console.error('Error loading data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const allProducts: Record<CategoryType, ProductItemType[]> = {
@@ -77,16 +82,12 @@ export const ProductItem: React.FC<Props> = ({
           className={styles.product_block_img}
         />
       </NavLink>
-
       <p className={styles.product_title}>{product.name}</p>
-
       <div className={styles.product_price}>
         <p className={styles.product_price_discount}>${product.price}</p>
         <p className={styles.product_price_regular}>${item?.priceRegular}</p>
       </div>
-
       <div className={styles.product_border}></div>
-
       <table className={styles.product_table}>
         <tbody>
           <tr>
@@ -103,7 +104,6 @@ export const ProductItem: React.FC<Props> = ({
           </tr>
         </tbody>
       </table>
-
       <div className={styles.product_buttons}>
         {cart.find(pr => pr.id === product.id) ? (
           <button
