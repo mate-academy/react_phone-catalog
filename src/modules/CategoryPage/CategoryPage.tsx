@@ -18,7 +18,7 @@ export const CategoryPage: React.FC = () => {
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('default');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>('all');
   const debouncedSearch = useDebounce(search, 2000);
 
   useEffect(() => {
@@ -77,10 +77,13 @@ export const CategoryPage: React.FC = () => {
     fetchProducts();
   }, [type, debouncedSearch, sort, t]);
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const effectiveItemsPerPage =
+    itemsPerPage === 'all' ? products.length : itemsPerPage;
+  const indexOfLastItem = currentPage * effectiveItemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - effectiveItemsPerPage;
   const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const totalPages =
+    itemsPerPage === 'all' ? 1 : Math.ceil(products.length / itemsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -89,7 +92,8 @@ export const CategoryPage: React.FC = () => {
   const handleItemsPerPageChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    const newItemsPerPage = parseInt(e.target.value, 10);
+    const value = e.target.value;
+    const newItemsPerPage = value === 'all' ? 'all' : parseInt(value, 10);
 
     setItemsPerPage(newItemsPerPage);
     setCurrentPage(1);
@@ -135,6 +139,7 @@ export const CategoryPage: React.FC = () => {
           onChange={handleItemsPerPageChange}
           className={styles.perPageSelect}
         >
+          <option value="all">{t('all')}</option>
           <option value={4}>4</option>
           <option value={8}>8</option>
           <option value={16}>16</option>

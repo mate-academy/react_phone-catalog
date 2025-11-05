@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/indent */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './ProductDetailsPage.module.scss';
@@ -18,96 +18,89 @@ export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const { addToCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
-  const [product, setProduct] = useState<Product | null>(null);
+  const [baseProduct, setBaseProduct] = useState<Product | null>(null);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const isFavorite = product
-    ? favorites.some(fav => fav.id === product.id)
+  const [selectedCapacity, setSelectedCapacity] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
+
+  const currentProduct = useMemo(() => {
+    if (!baseProduct || !allProducts.length) {
+      return null;
+    }
+
+    const variantId = `${baseProduct?.namespaceId}-${selectedCapacity.toLowerCase()}-${selectedColor.toLowerCase()}`;
+    const variant = allProducts.find(p => p.id === variantId);
+
+    return variant || baseProduct;
+
+  }, [baseProduct, allProducts, selectedCapacity, selectedColor]);
+
+  const isFavorite = currentProduct
+    ? favorites.some(fav => fav.id === currentProduct.id)
     : false;
-  const [selectedCapacity, setSelectedCapacity] = useState(
-    product?.capacity || '',
-  );
-  const [selectedColor, setSelectedColor] = useState(product?.color || '');
-  const [allProducts, setAllProducts] = useState<Product[]>([]);
-  const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
+
+  const recommendedProducts = useMemo(() => {
+    if (!allProducts.length || !currentProduct) {
+      return [];
+    }
+
+    return allProducts
+      .filter(p =>
+        p.id !== currentProduct.id && p.category === currentProduct.category)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 4);
+  }, [allProducts, currentProduct]);
+
 
   useEffect(() => {
-    const fetchProduct = async () => {
+    const fetchAll = async () => {
       setLoading(true);
       try {
         const categories = ['phones', 'tablets', 'accessories'];
-        let foundProduct: Product | undefined;
+        const results = await Promise.all(
+          categories.map(cat =>
+            fetch(`/api/${cat}.json`)
+              .then(res => res.ok ? res.json() : [])
+          )
+        );
 
-        for (const category of categories) {
-          const response = await fetch(`/api/${category}.json`);
+        const all = results.flat();
 
-          if (!response.ok) {
-            continue;
-          }
+        setAllProducts(all);
 
-          const data: Product[] = await response.json();
+        const found = all.find(p => p.id === productId);
 
-          foundProduct = data.find(p => p.id === productId);
-          if (foundProduct) {
-            break;
-          }
-        }
-
-        if (!foundProduct) {
+        if (!found) {
           throw new Error(t('productNotFound'));
         }
 
-        const normalizedProduct = {
-          ...foundProduct,
-          priceDiscount:
-            foundProduct.priceDiscount ??
-            foundProduct.priceRegular ??
-            foundProduct.price ??
-            0,
-          priceRegular:
-            foundProduct.priceRegular ??
-            foundProduct.fullPrice ??
-            foundProduct.price ??
-            0,
-        };
-
-        setProduct(normalizedProduct);
-
-        const allProductsData = await Promise.all(
-          categories.map(category =>
-            fetch(`/api/${category}.json`).then(res => res.json()),
-          ),
-        ).then(results => results.flat());
-
-        setAllProducts(allProductsData);
+        setBaseProduct(found);
+        setSelectedColor(found.color);
+        setSelectedCapacity(found.capacity);
       } catch (err) {
-        setError(
-          t('errorLoading') + (err instanceof Error ? `: ${err.message}` : ''),
-        );
+        setError(t('errorLoading') + (err instanceof Error ? `: ${err.message}` : ''));
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProduct();
+    fetchAll();
   }, [productId, t]);
 
   useEffect(() => {
-    if (product && allProducts.length > 0) {
-      const filteredProducts = allProducts.filter(p => p.id !== product.id);
-      const shuffled = filteredProducts.sort(() => 0.5 - Math.random());
-      const recommended = shuffled.slice(0, 4);
-
-      setRecommendedProducts(recommended);
+    if (currentProduct) {
+      setSelectedImageIndex(0);
     }
-  }, [product, allProducts]);
+  }, [currentProduct]);
 
   if (loading) {
-    return <div className={styles.loading}>Loading...</div>;
+    return <div className={styles.loading}>...Loading</div>;
   }
 
-  if (error || !product) {
+  if (error || !currentProduct) {
     return (
       <div className={styles.error}>
         <img
@@ -120,6 +113,8 @@ export const ProductDetailsPage: React.FC = () => {
     );
   }
 
+
+
   return (
     <div className={styles.details}>
       <Breadcrumbs />
@@ -127,39 +122,39 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={styles.content}>
         <div className={styles.topPanel}>
           <div className={styles.thumbnailGallery}>
-            {product.images?.map((img, index) => (
+            {currentProduct.images?.map((img, index) => (
               <img
-                key={index}
-                src={img ? `/${img}` : '/img/product-not-found.png'}
-                alt={`${product.name} image ${index + 1}`}
-                className={`${styles.thumbnail} ${selectedImageIndex === index ? styles.selected : ''}`}
-                onClick={() => setSelectedImageIndex(index)}
+              key={index}
+              src={img ? `/${img}` : '/img/prduct-not-found.png'}
+              alt={`${currentProduct.name} image ${index + 1}`}
+              className={`${styles.thumbnail} ${selectedImageIndex === index ? styles.selected : ''}`}
+              onClick={() => setSelectedImageIndex(index)}
               />
             )) || (
-              <img
-                src="/img/product-not-found.png"
-                alt={t('noImage')}
-                className={styles.thumbnail}
-              />
-            )}
+                <img
+                  src="/img/product-not-found.png"
+                  alt={t('noImage')}
+                  className={styles.thumbnail}
+                />
+              )}
           </div>
           <div className={styles.mainImageContainer}>
             <img
               src={
-                product.images?.[selectedImageIndex]
-                  ? `/${product.images[selectedImageIndex]}`
+                currentProduct.images?.[selectedImageIndex]
+                  ? `/${currentProduct.images[selectedImageIndex]}`
                   : '/img/product-not-found.png'
               }
-              alt={`${product.name} main image`}
+              alt={`${currentProduct.name} main image`}
               className={styles.mainImage}
             />
           </div>
           <div className={styles.colorOptions}>
             <h3>Available Colors</h3>
             <div className={styles.colorCircles}>
-              {product.colorsAvailable?.map((color, index) => (
+              {baseProduct?.colorsAvailable?.map((color) => (
                 <div
-                  key={index}
+                  key={color}
                   className={`${styles.colorCircle} ${selectedColor === color ? styles.selected : ''}`}
                   style={{ backgroundColor: color.toLocaleLowerCase() }}
                   onClick={() => setSelectedColor(color)}
@@ -168,9 +163,9 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
             <div className={styles.divider}></div>
             <div className={styles.capacityOptions}>
-              {product.capacityAvailable?.map((cap, index) => (
+              {baseProduct?.capacityAvailable?.map((cap) => (
                 <button
-                  key={index}
+                  key={cap}
                   className={`${styles.capacityButton} ${selectedCapacity === cap ? styles.selected : ''}`}
                   onClick={() => setSelectedCapacity(cap)}
                 >
@@ -180,29 +175,32 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
           <p className={styles.price}>
-            {product.priceDiscount ? (
+            {currentProduct.priceDiscount ? (
               <>
                 <span className={styles.discount}>
-                  {product.priceDiscount} $
+                  {currentProduct.priceDiscount} $
                 </span>
-                <span className={styles.regular}>{product.priceRegular} $</span>
+                <span
+                className={styles.regular}
+                >{currentProduct.priceRegular} $</span>
               </>
             ) : (
-              <span>{product.priceRegular || product.price} $</span>
+              <span>
+                {currentProduct.priceRegular || currentProduct.price} $</span>
             )}
           </p>
           <div className={styles.actions}>
             <Button
               variant="primary"
               size="md"
-              onClick={() => addToCart(product)}
+              onClick={() => addToCart(currentProduct)}
             >
               {t('addToCart')}
             </Button>
             <Button
               variant="secondary"
               size="md"
-              onClick={() => toggleFavorite(product)}
+              onClick={() => toggleFavorite(currentProduct)}
               className={isFavorite ? styles.favoriteActive : ''}
             >
               {isFavorite ? '❤️' : '🤍'}
@@ -211,12 +209,12 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
 
         <div className={styles.info}>
-          <div className={styles.productId}> ID: {product.id}</div>
-          {product.description && (
+          <div className={styles.productId}> ID: {currentProduct.id}</div>
+          {currentProduct.description && (
             <div className={styles.description}>
               <h1 className={styles.about}>{t('about')}</h1>
               <div className={styles.divider}></div>
-              {product.description.map((desc, index) => (
+              {currentProduct.description.map((desc, index) => (
                 <div key={index}>
                   <h3 className={styles.descTitle}>{desc.title}</h3>
                   {desc.text.map((text, i) => (
@@ -228,14 +226,14 @@ export const ProductDetailsPage: React.FC = () => {
           )}
           <h1 className={styles.specsTitle}>{t('specs')}</h1>
           <div className={styles.specs}>
-            <p>Screen: {product.screen || 'N/A'}</p>
-            <p>Resolution: {product.resolution || 'N/A'}</p>
-            <p>Processor: {product.processor || 'N/A'}</p>
-            <p>RAM: {product.ram || 'N/A'}</p>
-            <p>Camera: {product.camera || 'N/A'}</p>
-            <p>Zoom: {product.zoom || 'N/A'}</p>
-            <p>Connectivity: {product.cell?.join(', ') || 'N/A'}</p>
-            {product.year && <p>Year: {product.year}</p>}
+            <p>Screen: {currentProduct.screen || 'N/A'}</p>
+            <p>Resolution: {currentProduct.resolution || 'N/A'}</p>
+            <p>Processor: {currentProduct.processor || 'N/A'}</p>
+            <p>RAM: {currentProduct.ram || 'N/A'}</p>
+            <p>Camera: {currentProduct.camera || 'N/A'}</p>
+            <p>Zoom: {currentProduct.zoom || 'N/A'}</p>
+            <p>Connectivity: {currentProduct.cell?.join(', ') || 'N/A'}</p>
+            {currentProduct.year && <p>Year: {currentProduct.year}</p>}
           </div>
         </div>
       </div>

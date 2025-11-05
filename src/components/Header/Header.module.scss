@@ -58,8 +58,8 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background: linear-gradient(45deg, #F44, var(--danger), #00CED1);
-    color: var(--background-primary);
+    // background: linear-gradient(45deg, #F44, var(--danger), #00CED1);
+    color: var(--background-secondary);
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(255, 68, 68, 0.8);
     transform: scale(1.1);
@@ -126,7 +126,7 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background: linear-gradient(45deg, #F44, var(--active-color), #00CED1);
+    // background: linear-gradient(45deg, #F44, var(--active-color), #00CED1);
     color: var(--active-color);
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(255, 68, 68, 0.8);
@@ -157,7 +157,7 @@
   min-width: 150px;
   z-index: 1001;
   max-height: 200px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   &.open {
     display: flex;
@@ -178,10 +178,10 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background: linear-gradient(45deg, #F44, var(--accent-primary), #00CED1);
-    color: var(--background-primary);
+    // background: linear-gradient(45deg, #F44, var(--accent-primary), #00CED1);
+    color: var(--background-secondary);
     border-radius: 4px;
-    box-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
+    // box-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
     transform: scale(1.05);
   }
 

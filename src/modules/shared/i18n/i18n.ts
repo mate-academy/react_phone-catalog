@@ -42,6 +42,7 @@ i18n.use(initReactI18next).init({
         about: 'About',
         specs: 'Tech Specs',
         back: 'Back',
+        all: 'All',
       },
     },
     ua: {
@@ -83,6 +84,7 @@ i18n.use(initReactI18next).init({
         about: 'Про товар',
         specs: 'Технічні характеристики',
         back: 'Назад',
+        all: 'Усі',
       },
     },
   },
