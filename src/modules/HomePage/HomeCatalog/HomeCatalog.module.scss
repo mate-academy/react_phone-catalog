@@ -21,7 +21,7 @@
 
   &__buttons {
     grid-column: span 2;
-    align-self: center;
+    place-self: center end;
     display: flex;
     height: 32px;
     gap: 8px;
