@@ -2,6 +2,8 @@ import style from './pagination.module.scss';
 import arrowPrev from '@Images/icons/Arrow-left.svg';
 import arrowNext from '@Images/icons/Arrow-right.svg';
 import cn from 'classnames';
+import { Link, useSearchParams } from 'react-router-dom';
+import { getSearchWith } from '../../utils/getSearch';
 
 type Props = {
   total: number;
@@ -59,6 +61,27 @@ export const PaginationPage = ({
     );
   };
 
+  const [searchParams] = useSearchParams();
+
+  const nextPageIndex = currentPage + 1;
+  const prevPageIndex = currentPage + 1;
+
+  const getNextPageSearch = () => {
+    if (currentPage >= pageCount) {
+      return searchParams.toString();
+    }
+
+    return getSearchWith({ page: nextPageIndex }, searchParams);
+  };
+
+  const getPrevPageSearch = () => {
+    if (currentPage <= pageCount) {
+      return searchParams.toString();
+    }
+
+    return getSearchWith({ page: prevPageIndex }, searchParams);
+  };
+
   return (
     <>
       <ul className={style.pagination}>
@@ -68,17 +91,18 @@ export const PaginationPage = ({
           })}
         >
           {' '}
-          <a
+          <Link
             className={style['page-link-arrow']}
             aria-disabled={currentPage === 1}
-            href="#prev"
-            onClick={e => {
-              e.preventDefault();
+            to={{
+              search: getPrevPageSearch(),
+            }}
+            onClick={() => {
               handlePrev();
             }}
           >
             <img src={arrowPrev} alt="" />
-          </a>
+          </Link>
         </li>
         {getPages().map((el, i) => (
           <li
@@ -90,13 +114,17 @@ export const PaginationPage = ({
             {el === '...' ? (
               <span>...</span>
             ) : (
-              <a
+              <Link
                 className={style['page-link']}
-                onClick={() => onPageChange(el as number)}
-                href="#"
+                onClick={() => {
+                  onPageChange(el as number);
+                }}
+                to={{
+                  search: getSearchWith({ page: el }, searchParams),
+                }}
               >
                 {el}
-              </a>
+              </Link>
             )}
           </li>
         ))}
@@ -106,17 +134,18 @@ export const PaginationPage = ({
             [style.disabled]: currentPage === pageCount,
           })}
         >
-          <a
+          <Link
             className={style['page-link-arrow']}
-            href="#next"
             aria-disabled={pageCount === currentPage}
-            onClick={e => {
-              e.preventDefault();
+            onClick={() => {
               handleNext();
+            }}
+            to={{
+              search: getNextPageSearch(),
             }}
           >
             <img src={arrowNext} alt="" />
-          </a>
+          </Link>
         </li>
       </ul>
     </>

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import shopping from '@Images/icons/Shopping-bag.svg';
 import like from '@Images/icons/like-icons.svg';
 import style from './Navbar.module.scss';
@@ -15,24 +17,24 @@ const Navbar = () => {
       >
         <ul className={style.navbar__list}>
           <li>
-            <a className={style.navbar__link} href="#">
+            <Link className={style.navbar__link} to="/">
               home
-            </a>
+            </Link>
           </li>
           <li>
-            <a className={style.navbar__link} href="#">
+            <Link className={style.navbar__link} to="/phones">
               Phones
-            </a>
+            </Link>
           </li>
           <li>
-            <a className={style.navbar__link} href="#">
+            <Link className={style.navbar__link} to="/tablets">
               tablets
-            </a>
+            </Link>
           </li>
           <li>
-            <a className={style.navbar__link} href="#">
+            <Link className={style.navbar__link} to="/accessories">
               accessories
-            </a>
+            </Link>
           </li>
         </ul>
 

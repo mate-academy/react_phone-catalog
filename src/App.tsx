@@ -1,16 +1,18 @@
-import { Header } from '@Header';
-import { HomePage } from '@HomePage';
-import { Footer } from '@GlobalComponents';
+// import { Header } from '@Header';
+// import { HomePage } from '@HomePage';
+// import { Footer } from '@GlobalComponents';
+
+import { Outlet } from 'react-router-dom';
 
 import './assets/styles/main.scss';
-// import { PhonePage } from './modules/PhonesPage/PhonesPage';
+import { Header } from '@Header';
+import { Footer } from '@GlobalComponents';
 
 export const App = () => {
   return (
     <>
       <Header />
-      <HomePage />
-      {/* <PhonePage /> */}
+      <Outlet />
       <Footer />
     </>
   );

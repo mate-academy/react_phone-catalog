@@ -6,6 +6,10 @@
   font-weight: 600;
 }
 
+.title {
+  text-transform: capitalize;
+}
+
 .drowdowns {
   display: flex;
   gap: 16px;
