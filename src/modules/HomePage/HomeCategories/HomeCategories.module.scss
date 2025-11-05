@@ -1,0 +1,7 @@
+@use './../../../scss/main.scss' as *;
+
+.categories {
+  &__title {
+    @extend %h2;
+  }
+}

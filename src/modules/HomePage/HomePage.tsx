@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import styles from './HomePage.module.scss';
-import Slider from './Slider';
+import HomeSlider from './HomeSlider';
 import HomeCatalog from './HomeCatalog';
 import { Product } from '../../types/Product';
 import products from '../../../public/api/products.json';
 import { SLIDER_COUNT } from '../constants';
+import HomeCategories from './HomeCategories';
 
 const getBrandNewProducts = (allProducts: Product[]): Product[] => {
   return allProducts.sort((a, b) => b.year - a.year).slice(0, SLIDER_COUNT);
@@ -30,9 +31,10 @@ export const HomePage = () => {
             {t('home.welcome_to_store')}
           </h2>
 
-          <Slider />
+          <HomeSlider />
         </div>
         <HomeCatalog title={t('home.brand_new')} products={brandNewProducts} />
+        <HomeCategories />
         <HomeCatalog
           title={t('home.hot_prices')}
           products={hotPricesProducts}
