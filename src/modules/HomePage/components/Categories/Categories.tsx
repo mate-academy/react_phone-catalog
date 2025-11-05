@@ -27,7 +27,7 @@ export const Categories = () => {
   ];
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="categories">
       <h2 className={styles.title}>Shop by category</h2>
 
       <div className={styles.categories}>

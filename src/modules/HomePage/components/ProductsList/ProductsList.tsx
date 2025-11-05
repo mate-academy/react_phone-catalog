@@ -16,6 +16,10 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
   const { productsList } = useTabs();
   const { id } = useParams();
 
+  const styleHot = productsStyle === ProductsStyleMode.Hot;
+  const styleNew = productsStyle === ProductsStyleMode.New;
+  const styleAlso = productsStyle === ProductsStyleMode.Also;
+
   const isProducts = !productsList || productsList.length === 0;
 
   let products = productsList
@@ -24,14 +28,14 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
 
   let sale = true;
 
-  if (productsStyle === ProductsStyleMode.New) {
+  if (styleNew) {
     const newestYear = Math.max(...productsList.map(p => p.year));
 
     products = productsList.filter(product => product.year === newestYear);
     sale = false;
   }
 
-  if (productsStyle === ProductsStyleMode.Also && id) {
+  if (styleAlso && id) {
     products = getSuggestedProducts(id, products, 8);
   }
 
@@ -55,12 +59,12 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
   const visibleProducts = products.slice(index, index + itemsPerPage);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id={`${styleHot ? 'sale' : ''}`}>
       <div className={styles.elementsTitle}>
         <h2 className={styles.title}>
-          {productsStyle === ProductsStyleMode.New
+          {styleNew
             ? ProductsStyleTitleMap.new
-            : productsStyle === ProductsStyleMode.Hot
+            : styleHot
               ? ProductsStyleTitleMap.hot
               : ProductsStyleTitleMap.also}
         </h2>

@@ -2,15 +2,71 @@ import { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
 import { Slider } from '../Slider';
 import { NavButton } from '../../../shared/components/NavButton';
+import { useNavigate } from 'react-router-dom';
+import { scrollToTop } from '../../../shared/navigate/ToTop';
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
+
+  const scrollToCategories = () => {
+    const categoriesSection = document.getElementById('categories');
+
+    if (categoriesSection) {
+      categoriesSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
+  const scrollToSale = () => {
+    const saleSection = document.getElementById('sale');
+
+    if (saleSection) {
+      saleSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
+  const openProduct = () => {
+    navigate('/phones/product/81');
+    scrollToTop();
+  };
 
   const images = [
-    { img: './img/image/SliderImg/1.png', alt: 'Img1' },
-    { img: './img/image/SliderImg/2.png', alt: 'Img2' },
-    { img: './img/image/SliderImg/3.png', alt: 'Img3' },
-    { img: './img/image/SliderImg/4.png', alt: 'Img4' },
+    {
+      img: './img/image/SliderImg/1.svg',
+      alt: 'Img1',
+      name: 'iPhone 14 Pro',
+      text: 'Be the first!',
+      model: 'Pro. Beyond.',
+      link: openProduct,
+      title: 'Now available in our store!',
+      button: 'Order now',
+    },
+    {
+      img: '',
+      alt: '',
+      name: 'Shop by Category',
+      text: 'All models.',
+      model: 'Take your pick.',
+      title: 'Shopping Guides',
+      button: 'Take a look',
+      link: scrollToCategories,
+    },
+    {
+      img: './img/image/SliderImg/3.png',
+      alt: 'Img3',
+      model: '',
+      name: 'iPhones for sale',
+      text: 'Savings and offers.',
+      title: 'Exclusive deals',
+      button: 'See all',
+      link: scrollToSale,
+    },
   ];
 
   const goNext = () => {
@@ -28,7 +84,7 @@ export const PicturesSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
-    }, 5000);
+    }, 500000);
 
     return () => clearInterval(interval);
   }, [images.length]);
@@ -41,10 +97,7 @@ export const PicturesSlider = () => {
           childrenValue={'./img/image/Icons/VectorLeft.svg'}
           slider={true}
         />
-        <Slider
-          image={images[currentIndex].img}
-          alt={images[currentIndex].alt}
-        />
+        <Slider image={images[currentIndex]} />
         <NavButton
           onClick={goNext}
           childrenValue={'./img/image/Icons/VectorRight.svg'}

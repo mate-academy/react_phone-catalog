@@ -11,9 +11,15 @@
 
 .sliderTrack {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   height: 100%;
   gap: $wight-16;
+
+  @include on-tablet {
+    justify-content: space-between;
+
+  }
 }
 
 .button {
