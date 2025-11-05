@@ -53,7 +53,7 @@ export const Cart: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => res.json())
       .then(data => setProducts(data));
   }, [itemsCount]);
@@ -61,8 +61,8 @@ export const Cart: React.FC<Props> = ({
   return (
     <div className={styles.main}>
       <div className={styles.home}>
-        <NavLink to="/" className={styles.home_button}>
-          <img src="/img/slider/arrow_left.svg" alt="Back" />
+        <NavLink to="/react_phone-catalog" className={styles.home_button}>
+          <img src="img/slider/arrow_left.svg" alt="Back" />
         </NavLink>
         <p className={styles.home_text}>Back</p>
       </div>
@@ -72,7 +72,7 @@ export const Cart: React.FC<Props> = ({
       <div className={styles.main_block}>
         {cartProducts.length === 0 ? (
           <div className={styles.empty}>
-            <img src="/img/cart-is-empty.png" alt="Cart is empty" />
+            <img src="img/cart-is-empty.png" alt="Cart is empty" />
             <p>Your cart is empty</p>
           </div>
         ) : (
@@ -85,19 +85,19 @@ export const Cart: React.FC<Props> = ({
                       onClick={() => handleRemoveFromCart(product.id)}
                       className={styles.product_block1_close}
                     >
-                      <img src="/img/buttons/Close.svg" alt="Remove" />
+                      <img src="img/buttons/Close.svg" alt="Remove" />
                     </div>
 
                     <NavLink
                       className={styles.product_block1_image}
-                      to={`/${product.category}/${product.itemId}`}
+                      to={`/react_phone-catalog/${product.category}/${product.itemId}`}
                     >
                       <img src={product.image} alt={product.name} />
                     </NavLink>
 
                     <NavLink
                       className={styles.product_block1_text}
-                      to={`/${product.category}/${product.itemId}`}
+                      to={`/react_phone-catalog/${product.category}/${product.itemId}`}
                     >
                       {product.name}
                     </NavLink>
@@ -112,7 +112,7 @@ export const Cart: React.FC<Props> = ({
                         onClick={() => handleDecreaseQuantity(product.id)}
                         className={styles.product_block2_counter_button}
                       >
-                        <img src="/img/cart/Minus.svg" alt="Decrease" />
+                        <img src="img/cart/Minus.svg" alt="Decrease" />
                       </button>
 
                       <p className={styles.product_block2_counter_number}>
@@ -123,7 +123,7 @@ export const Cart: React.FC<Props> = ({
                         onClick={() => handleIncreaseQuantity(product.id)}
                         className={styles.product_block2_counter_button}
                       >
-                        <img src="/img/cart/Plus.svg" alt="Increase" />
+                        <img src="img/cart/Plus.svg" alt="Increase" />
                       </button>
                     </div>
 

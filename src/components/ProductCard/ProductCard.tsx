@@ -1,7 +1,5 @@
+/* eslint-disable no-console */
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import phones from '../../../public/api/phones.json';
-import tablets from '../../../public/api/tablets.json';
-import accessories from '../../../public/api/accessories.json';
 import { ProductItemType } from 'types/ProductItemType';
 import styles from './ProductCard.module.scss';
 import { useEffect, useState } from 'react';
@@ -32,10 +30,36 @@ export const ProductCard: React.FC<Props> = ({
 
   const [productItems, setProductItems] = useState<ProductType[]>([]);
 
+  const [phones, setPhones] = useState<ProductItemType[]>([]);
+  const [tablets, setTablets] = useState<ProductItemType[]>([]);
+  const [accessories, setAccessories] = useState<ProductItemType[]>([]);
+
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => res.json())
-      .then(data => setProductItems(data));
+      .then(data => setProductItems(data))
+      .catch(err => console.error('Error loading products.json', err));
+  }, []);
+
+  useEffect(() => {
+    fetch('api/tablets.json')
+      .then(res => res.json())
+      .then(data => setTablets(data))
+      .catch(err => console.error('Error loading tablets.json', err));
+  }, []);
+
+  useEffect(() => {
+    fetch('api/accessories.json')
+      .then(res => res.json())
+      .then(data => setAccessories(data))
+      .catch(err => console.error('Error loading accessories.json', err));
+  }, []);
+
+  useEffect(() => {
+    fetch('api/phones.json')
+      .then(res => res.json())
+      .then(data => setPhones(data))
+      .catch(err => console.error('Error loading phones.json', err));
   }, []);
 
   if (category === 'phones') {
@@ -63,20 +87,20 @@ export const ProductCard: React.FC<Props> = ({
     <div className={styles.main}>
       <div className={styles.home}>
         <NavLink to="/">
-          <img src="/img/home_icon.svg" alt="button" />
+          <img src="img/home_icon.svg" alt="button" />
         </NavLink>
-        <NavLink to="/">
-          <img src="/img/arrow_right.svg" alt="button" />
+        <NavLink to="/react_phone-catalog">
+          <img src="img/arrow_right.svg" alt="button" />
         </NavLink>
         <h1 className={styles.home_text}>{category}</h1>
         <NavLink to={`/${category}`}>
-          <img src="/img/arrow_right.svg" alt="button" />
+          <img src="img/arrow_right.svg" alt="button" />
         </NavLink>
         <h1 className={styles.home_name}>{product?.name}</h1>
       </div>
       <div className={styles.back}>
         <NavLink to={`/${category}`} className={styles.back_button}>
-          <img src="/img/slider/arrow_left.svg" alt="button" />
+          <img src="img/slider/arrow_left.svg" alt="button" />
         </NavLink>
         <p className={styles.back_text}>Back</p>
       </div>
@@ -178,13 +202,13 @@ export const ProductCard: React.FC<Props> = ({
                     {liked?.includes(productId) ? (
                       <div>
                         <img
-                          src="/img/buttons/PhoneCatalogHeartActive.svg"
+                          src="img/buttons/PhoneCatalogHeartActive.svg"
                           alt=""
                         />
                       </div>
                     ) : (
                       <div>
-                        <img src="/img/buttons/PhoneCatalogHeart.svg" alt="" />
+                        <img src="img/buttons/PhoneCatalogHeart.svg" alt="" />
                       </div>
                     )}
                   </button>

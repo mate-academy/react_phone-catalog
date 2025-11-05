@@ -13,10 +13,10 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
   return (
     <header className={styles.header}>
       <div className={styles.logoMobile}>
-        <img src="/img/logo/Logo_phone_tablet.svg" alt="logo mobile" />
+        <img src="img/logo/Logo_phone_tablet.svg" alt="logo mobile" />
       </div>
       <div className={styles.logoDesktop}>
-        <img src="/img/logo/Logo_desktop.svg" alt="logo desktop" />
+        <img src="img/logo/Logo_desktop.svg" alt="logo desktop" />
       </div>
 
       <button
@@ -25,13 +25,14 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
         }}
         className={styles.menuButton}
       >
-        <img src="/img/buttons/PhoneCatalogButton.svg" alt="button" />
+        <img src="img/buttons/PhoneCatalogButton.svg" alt="button" />
       </button>
 
       <div className={styles.menu}>
         <ul className={styles.menuList}>
           <NavLink
-            to="/"
+            to="/react_phone-catalog"
+            end
             className={({ isActive }) =>
               isActive
                 ? `${styles.menuListItem} ${styles.menuListItemActive}`
@@ -41,7 +42,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
             home
           </NavLink>
           <NavLink
-            to="/phones"
+            to="/react_phone-catalog/phones"
             className={({ isActive }) =>
               isActive
                 ? `${styles.menuListItem} ${styles.menuListItemActive}`
@@ -51,7 +52,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
             Phones
           </NavLink>
           <NavLink
-            to="/tablets"
+            to="/react_phone-catalog/tablets"
             className={({ isActive }) =>
               isActive
                 ? `${styles.menuListItem} ${styles.menuListItemActive}`
@@ -61,7 +62,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
             tablets
           </NavLink>
           <NavLink
-            to="/accessories"
+            to="/react_phone-catalog/accessories"
             className={({ isActive }) =>
               isActive
                 ? `${styles.menuListItem} ${styles.menuListItemActive}`
@@ -76,7 +77,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
       <div className={styles.icon}>
         <div>
           <NavLink
-            to="/liked"
+            to="/react_phone-catalog/liked"
             className={({ isActive }) =>
               isActive
                 ? `${styles.iconItem} ${styles.iconItemActive}`
@@ -86,12 +87,12 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
             <div style={{ position: 'relative' }}>
               <img
                 className={styles.iconItemImg}
-                src="/img/buttons/PhoneCatalogHeart.svg"
+                src="img/buttons/PhoneCatalogHeart.svg"
                 alt="button"
               />
               <img
                 className={styles.iconItemImgActive}
-                src="/img/buttons/PhoneCatalogHeartActive.svg"
+                src="img/buttons/PhoneCatalogHeartActive.svg"
                 alt="button"
               />
               <div
@@ -106,7 +107,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
         </div>
         <div>
           <NavLink
-            to="/cart"
+            to="/react_phone-catalog/cart"
             className={({ isActive }) =>
               isActive
                 ? `${styles.iconItem} ${styles.iconItemActive}`
@@ -114,7 +115,7 @@ export const Header: React.FC<Props> = ({ setIsAsideOpen, cart, liked }) => {
             }
           >
             <div style={{ position: 'relative' }}>
-              <img src="/img/buttons/PhoneCatalogCart.svg" alt="button" />
+              <img src="img/buttons/PhoneCatalogCart.svg" alt="button" />
               <div
                 className={
                   cart.length === 0 ? styles.number_none : styles.number_item

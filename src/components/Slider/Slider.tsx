@@ -43,17 +43,17 @@ export const Slider: React.FC = () => {
           >
             <SwiperSlide>
               <div className={styles.slider_image}>
-                <img src="/img/slider/first.jpg" alt="Slide 1" />
+                <img src="img/slider/first.jpg" alt="Slide 1" />
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className={styles.slider_image}>
-                <img src="/img/slider/second.jpg" alt="Slide 2" />
+                <img src="img/slider/second.jpg" alt="Slide 2" />
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className={styles.slider_image}>
-                <img src="/img/slider/third.jpg" alt="Slide 3" />
+                <img src="img/slider/third.jpg" alt="Slide 3" />
               </div>
             </SwiperSlide>
           </Swiper>
@@ -64,7 +64,7 @@ export const Slider: React.FC = () => {
           aria-label="Previous slide"
           type="button"
         >
-          <img src="/img/slider/arrow_left.svg" alt="Prev" />
+          <img src="img/slider/arrow_left.svg" alt="Prev" />
         </button>
 
         <button
@@ -73,7 +73,7 @@ export const Slider: React.FC = () => {
           aria-label="Next slide"
           type="button"
         >
-          <img src="/img/slider/arrow_right.svg" alt="Next" />
+          <img src="img/slider/arrow_right.svg" alt="Next" />
         </button>
       </div>
 

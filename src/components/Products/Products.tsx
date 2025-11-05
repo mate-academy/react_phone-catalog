@@ -29,7 +29,7 @@ export const Products: React.FC<Props> = ({
   const page = Number(searchParams.get('page')) || 1;
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(res => res.json())
       .then(data => setProducts(data));
   }, []);
@@ -111,11 +111,11 @@ export const Products: React.FC<Props> = ({
     <>
       <div className={styles.main}>
         <div className={styles.home}>
-          <NavLink to="/">
-            <img src="/img/home_icon.svg" alt="button" />
+          <NavLink to="/react_phone-catalog">
+            <img src="img/home_icon.svg" alt="button" />
           </NavLink>
-          <NavLink to="/">
-            <img src="/img/arrow_right.svg" alt="button" />
+          <NavLink to="/react_phone-catalog">
+            <img src="img/arrow_right.svg" alt="button" />
           </NavLink>
           <h1 className={styles.home_text}>{type}</h1>
         </div>

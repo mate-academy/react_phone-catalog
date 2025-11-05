@@ -40,7 +40,7 @@ export const ProductsSlider: React.FC<Props> = ({
             aria-label="Previous slide"
             type="button"
           >
-            <img src="/img/slider/arrow_left.svg" alt="Prev" />
+            <img src="img/slider/arrow_left.svg" alt="Prev" />
           </button>
           <button
             ref={nextRef}
@@ -48,7 +48,7 @@ export const ProductsSlider: React.FC<Props> = ({
             aria-label="Next slide"
             type="button"
           >
-            <img src="/img/slider/arrow_right.svg" alt="Next" />
+            <img src="img/slider/arrow_right.svg" alt="Next" />
           </button>
         </div>
       </div>

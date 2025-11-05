@@ -129,7 +129,7 @@ export const App = () => {
             <Routes>
               <Route path="*" element={<NotFound />} />
               <Route
-                path="/"
+                path="/react_phone-catalog"
                 element={
                   <Main
                     handleRemoveFromCart={handleRemoveFromCart}
@@ -142,7 +142,7 @@ export const App = () => {
               />
 
               <Route
-                path="/phones"
+                path="/react_phone-catalog/phones"
                 element={
                   <Products
                     handleRemoveFromCart={handleRemoveFromCart}
@@ -156,7 +156,7 @@ export const App = () => {
               />
 
               <Route
-                path="/tablets"
+                path="/react_phone-catalog/tablets"
                 element={
                   <Products
                     handleRemoveFromCart={handleRemoveFromCart}
@@ -170,7 +170,7 @@ export const App = () => {
               />
 
               <Route
-                path="/accessories"
+                path="/react_phone-catalog/accessories"
                 element={
                   <Products
                     handleRemoveFromCart={handleRemoveFromCart}
@@ -184,7 +184,7 @@ export const App = () => {
               />
 
               <Route
-                path="/:category/:itemId"
+                path="/react_phone-catalog/:category/:itemId"
                 element={
                   <ProductCard
                     handleAddToCart={handleAddToCart}
@@ -197,19 +197,20 @@ export const App = () => {
               />
 
               <Route
-                path="/liked"
+                path="/react_phone-catalog/liked"
                 element={
                   <Like
                     cart={cart}
                     liked={liked}
                     handleAddToCart={handleAddToCart}
                     handleAddToLiked={handleAddToLiked}
+                    handleRemoveFromCart={handleRemoveFromCart}
                   />
                 }
               />
 
               <Route
-                path="/cart"
+                path="/react_phone-catalog/cart"
                 element={
                   <Cart
                     cart={cart}

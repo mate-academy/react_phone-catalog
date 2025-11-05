@@ -11,11 +11,11 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
     <aside>
       <header className={styles.header}>
         <div className={styles.logo}>
-          <img src="/img/logo/Logo_phone_tablet.svg" alt="logo mobile" />
+          <img src="img/logo/Logo_phone_tablet.svg" alt="logo mobile" />
         </div>
 
         <button onClick={onClose} className={styles.menuButton}>
-          <img src="/img/buttons/PhoneCatalogClose.svg" alt="close" />
+          <img src="img/buttons/PhoneCatalogClose.svg" alt="close" />
         </button>
       </header>
       <main className={styles.main}>
@@ -25,7 +25,7 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
               ? `${styles.mainItem} ${styles.mainItemActive}`
               : styles.mainItem
           }
-          to="/"
+          to="/react_phone-catalog"
           onClick={onClose}
         >
           home
@@ -36,7 +36,7 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
               ? `${styles.mainItem} ${styles.mainItemActive}`
               : styles.mainItem
           }
-          to="/phones"
+          to="/react_phone-catalog/phones"
           onClick={onClose}
         >
           Phones
@@ -47,7 +47,7 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
               ? `${styles.mainItem} ${styles.mainItemActive}`
               : styles.mainItem
           }
-          to="/tablets"
+          to="/react_phone-catalog/tablets"
           onClick={onClose}
         >
           tablets
@@ -58,7 +58,7 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
               ? `${styles.mainItem} ${styles.mainItemActive}`
               : styles.mainItem
           }
-          to="/accessories"
+          to="/react_phone-catalog/accessories"
           onClick={onClose}
         >
           accessories
@@ -67,20 +67,20 @@ export const Aside: React.FC<Props> = ({ onClose }) => {
       <footer className={styles.footer}>
         <div className={styles.footerItem}>
           <NavLink
-            to="/liked"
+            to="/react_phone-catalog/liked"
             className={styles.footerItemImg}
             onClick={onClose}
           >
-            <img src="/img/buttons/PhoneCatalogHeart.svg" alt="heart" />
+            <img src="img/buttons/PhoneCatalogHeart.svg" alt="heart" />
           </NavLink>
         </div>
         <div className={styles.footerItem}>
           <NavLink
-            to="/cart"
+            to="/react_phone-catalog/cart"
             className={styles.footerItemImg}
             onClick={onClose}
           >
-            <img src="/img/buttons/PhoneCatalogCart.svg" alt="cart" />
+            <img src="img/buttons/PhoneCatalogCart.svg" alt="cart" />
           </NavLink>
         </div>
       </footer>
