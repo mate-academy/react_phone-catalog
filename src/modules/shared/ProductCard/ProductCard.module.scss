@@ -29,19 +29,39 @@
 
   &__prices {
     display: flex;
+    height: 31px;
+    align-items: stretch;
     gap: 8px;
 
     @extend %h3;
   }
 
   &__price {
+    display: flex;
+    align-items: center;
     color: $primary-color;
+    line-height: 140%;
+
     &_old {
-      color: $secondary-color;
+      position: relative;
+      color: $secondary-color-inverted;
       font-weight: 600;
-      text-decoration: line-through;
+      isolation: isolate;
+      filter: invert(100%);
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 44%;
+        height: 2px;
+        background-color: $secondary-color-inverted;
+        mix-blend-mode: difference;
+      }
     }
   }
+
   &__specs {
     display: flex;
     padding-block: 8px;
