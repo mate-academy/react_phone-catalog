@@ -47,3 +47,68 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   </Router>,
 );
 
+// import { createRoot } from 'react-dom/client';
+// import React from 'react';
+// import { RouterProvider, createHashRouter } from 'react-router-dom';
+// import { App } from './App';
+// import './styles/index.scss';
+// import { HomePage } from './modules/HomePage';
+// import { CatalogPage } from './modules/CatalogPage';
+// import { ProductsType } from './types/ProductsType';
+// import { ProductDetailsPage } from './modules/ProductDetailsPage';
+
+// // 🔧 Створюємо маршрути через createHashRouter
+// const router = createHashRouter([
+//   {
+//     path: '/',
+//     element: <App />,
+//     children: [
+//       {
+//         index: true,
+//         element: <HomePage />,
+//       },
+//       {
+//         path: ProductsType.Phones,
+//         children: [
+//           {
+//             index: true,
+//             element: <CatalogPage category={ProductsType.Phones} />,
+//           },
+//           {
+//             path: ':productId',
+//             element: <ProductDetailsPage category={ProductsType.Phones} />,
+//           },
+//         ],
+//       },
+//       {
+//         path: ProductsType.Tablets,
+//         children: [
+//           {
+//             index: true,
+//             element: <CatalogPage category={ProductsType.Tablets} />,
+//           },
+//         ],
+//       },
+//       {
+//         path: ProductsType.Accessories,
+//         children: [
+//           {
+//             index: true,
+//             element: <CatalogPage category={ProductsType.Accessories} />,
+//           },
+//         ],
+//       },
+//       {
+//         path: '*',
+//         element: <h1>Not Found</h1>,
+//       },
+//     ],
+//   },
+// ]);
+
+// // 🔧 Рендеримо через RouterProvider
+// createRoot(document.getElementById('root') as HTMLElement).render(
+//   <React.StrictMode>
+//     <RouterProvider router={router} />
+//   </React.StrictMode>,
+// );

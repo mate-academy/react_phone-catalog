@@ -12,6 +12,10 @@ import { getSuggestedProducts } from '../../utils/getSuggestedProducts';
 import classNames from 'classnames';
 import { BackLink } from '../../components/BackLink';
 import { PaymentsButtons } from '../../components/PaymentsButtons';
+import {
+  productColors,
+  ProductColorsType,
+} from '../../types/ProductColorsType';
 
 interface Props {
   category: ProductsType;
@@ -203,21 +207,34 @@ export const ProductDetailsPage = ({ category }: Props) => {
             {title}
           </p>
           <div className={styles['product-details__options-buttons']}>
-            {normalizedItems.map(el => (
-              <Button
-                key={el}
-                className="body-text"
-                isCapacity={variantChange === VariantChangeType.VariantCapacity}
-                isRatio={variantChange === VariantChangeType.VariantColor}
-                isCircle={variantChange === VariantChangeType.VariantColor}
-                isSelected={product[variantChange] === el}
-                disabled={product[variantChange] === el}
-                style={{ color: el }}
-                onClick={() => handleVariantChange(variantChange, el)}
-              >
-                {variantChange === VariantChangeType.VariantCapacity && el}
-              </Button>
-            ))}
+            {normalizedItems.map(el => {
+              const normalizedColor = el.split(' ').join('');
+              const color =
+                productColors[normalizedColor as keyof ProductColorsType] || el;
+
+              return (
+                <Button
+                  key={el}
+                  className="body-text"
+                  isCapacity={
+                    variantChange === VariantChangeType.VariantCapacity
+                  }
+                  isRatio={variantChange === VariantChangeType.VariantColor}
+                  isCircle={variantChange === VariantChangeType.VariantColor}
+                  isSelected={product[variantChange] === el}
+                  disabled={product[variantChange] === el}
+                  style={{
+                    color:
+                      variantChange === VariantChangeType.VariantColor
+                        ? color
+                        : '',
+                  }}
+                  onClick={() => handleVariantChange(variantChange, el)}
+                >
+                  {variantChange === VariantChangeType.VariantCapacity && el}
+                </Button>
+              );
+            })}
           </div>
         </div>
         <hr className={styles['product-details__options-line']} />
