@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap';
 
 html,
 body {
   margin: 0;
-  font-family: 'Montserrat';
+  font-family: Montserrat, sans-serif;
   overflow-x: hidden;
 }
-
+/* stylelint-disable-next-line selector-max-id */
 #root {
   height: 100%;
 }

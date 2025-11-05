@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
-@import '../../mixins.scss';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap';
+@import '../../mixins';
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 .main {
@@ -23,7 +23,7 @@ body {
     color: #313237;
     max-width: 136px;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 32px;
       max-width: 100%;
     }

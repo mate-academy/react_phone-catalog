@@ -115,6 +115,7 @@ export const App = () => {
     <>
       <div className="App" hidden>
         <h1>Product Catalog</h1>
+        <h2>Welcome to Nice Gadgets store!</h2>
       </div>
 
       <div className="AppWrapper">

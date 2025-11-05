@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-@import '../../mixins.scss';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap';
+@import '../../mixins';
 
 .main {
   margin: 72px 16px 0;
-  font-family: 'Montserrat';
+  font-family: Montserrat, sans-serif;
 
-  @include onTablet {
+  @include on-tablet {
     margin-left: 24px;
     margin-right: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     margin-left: 32px;
     margin-right: 32px;
   }
@@ -21,7 +21,7 @@
   gap: 8px;
   align-items: center;
 
-  @include onTablet {
+  @include on-tablet {
     margin-left: 8px;
   }
 
@@ -37,7 +37,6 @@
 }
 
 .title {
-  margin-top: 24px;
   margin: 24px 0 0;
   font-weight: 800;
   font-style: Bold;
@@ -47,7 +46,7 @@
   text-transform: capitalize;
   color: #313237;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 48px;
     line-height: 56px;
     margin-top: 40px;
@@ -69,11 +68,11 @@
   grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
   gap: 16px;
 
-  @include onTablet {
+  @include on-tablet {
     margin-top: 40px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     grid-template-columns: repeat(4, 1fr);
   }
 }

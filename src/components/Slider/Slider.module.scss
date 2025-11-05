@@ -1,19 +1,19 @@
-@import '../../mixins.scss';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
+@import '../../mixins';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap';
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 .main {
   margin-top: 72px;
   overflow-x: hidden;
 
-  @include onTablet {
+  @include on-tablet {
     margin-top: 80px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     margin-top: 120px;
   }
 }
@@ -27,13 +27,13 @@ body {
   color: #313237;
   margin: 0;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 48px;
     line-height: 56px;
     padding: 0 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 0 32px;
   }
 }
@@ -42,14 +42,14 @@ body {
   width: 100%;
   margin-top: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     box-sizing: border-box;
     padding: 32px 24px 0;
     position: relative;
     margin-top: 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 56px 32px;
     margin-top: 0;
   }
@@ -61,16 +61,15 @@ body {
     overflow: hidden;
     box-sizing: border-box;
 
-    @include onTablet {
+    @include on-tablet {
       height: 189px;
       box-sizing: border-box;
       width: 80%;
       margin: 0 auto;
-      height: 189px;
 
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 400px;
       width: 90%;
     }
@@ -85,7 +84,7 @@ body {
   &_button {
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: block;
       top: 0;
       width: 32px;
@@ -97,7 +96,7 @@ body {
       z-index: 10;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 400px;
       margin-top: 56px;
     }

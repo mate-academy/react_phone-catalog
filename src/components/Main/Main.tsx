@@ -58,7 +58,7 @@ export const Main: React.FC<Props> = ({
   const newModals = products.sort((a, b) => b.year - a.year);
   const hotPrices = products.sort(
     // eslint-disable-next-line prettier/prettier
-    (a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price),
+    (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
   );
 
   const phoneCount = phones.length;

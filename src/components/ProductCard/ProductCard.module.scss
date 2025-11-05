@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-@import '../../mixins.scss';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap';
+@import '../../mixins';
 
 .main {
   margin: 72px 16px 0;
-  font-family: 'Montserrat';
+  font-family: Montserrat, sans-serif;
 
-  @include onTablet {
+  @include on-tablet {
     margin: 72px 24px 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     margin: 88px 32px 0;
   }
 
@@ -20,7 +20,7 @@
   gap: 8px;
   align-items: center;
 
-  @include onTablet {
+  @include on-tablet {
     margin-left: 8px;
   }
 
@@ -70,11 +70,10 @@
     font-style: Bold;
     font-size: 22px;
     line-height: 140%;
-    margin: 24px 0 32px;
     color: #313237;
     margin: 16px 0 0;
 
-    @include onTablet {
+    @include on-tablet {
       font-weight: 800;
       font-size: 32px;
       line-height: 41px;
@@ -90,13 +89,12 @@
   display: flex;
   flex-direction: column;
 
-  @include onTablet {
+  @include on-tablet {
     margin: 40px 0 0;
   }
 
   &_2 {
-
-    @include onDesktop {
+    @include on-desktop {
       display: flex;
       margin-top: 80px;
       gap: 64px;
@@ -107,24 +105,23 @@
     &_end {
       width: 100%;
 
-      @include onDesktop {
+      @include on-desktop {
         width: 320px;
       }
     }
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       gap: 16px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 64px;
     }
   }
 
   &_images {
-
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       flex-direction: row-reverse;
       gap: 16px;
@@ -134,7 +131,7 @@
       display: flex;
       align-items: center;
 
-      @include onTablet {
+      @include on-tablet {
         align-items: start;
       }
     }
@@ -144,7 +141,7 @@
       max-height: 288px;
       object-fit: contain;
 
-      @include onDesktop {
+      @include on-desktop {
         width: 464px;
         max-height: 464px;
       }
@@ -156,14 +153,14 @@
       gap: 8px;
       width: 100%;
 
-      @include onTablet {
+      @include on-tablet {
         flex-direction: column;
         gap: 8px;
         margin-top: 0;
         width: 35px;
       }
 
-      @include onDesktop {
+      @include on-desktop {
         width: 80px;
       }
 
@@ -176,7 +173,7 @@
         margin: 0;
         box-sizing: border-box;
 
-        @include onDesktop {
+        @include on-desktop {
           width: 80px;
           height: 80px;
         }
@@ -205,7 +202,7 @@
       font-size: 12px;
       color: #89939A;
 
-      @include onTablet {
+      @include on-tablet {
         margin-top: 0;
       }
     }
@@ -277,7 +274,7 @@
         }
 
         &_active p {
-          color: #FFFFFF;
+          color: #FFF;
         }
       }
     }
@@ -323,12 +320,12 @@
       font-size: 14px;
       line-height: 21px;
       text-align: center;
-      color: #FFFFFF;
+      color: #FFF;
       background-color: #313237;
       border: 0;
 
       &:hover {
-        box-shadow: 0px 3px 13px 0px #17203166;
+        box-shadow: 0 3px 13px 0 #17203166;
       }
 
       &_active {
@@ -384,11 +381,11 @@
   &_about {
     margin-top: 56px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-top: 64px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       margin-top: 0;
       max-width: 560px;
     }
@@ -402,7 +399,7 @@
       padding-bottom: 16px;
       border-bottom: 1px solid #E2E6E9;
 
-      @include onDesktop {
+      @include on-desktop {
         font-size: 22px;
       }
     }
@@ -420,7 +417,7 @@
         color: #313237;
         margin: 0;
 
-        @include onTablet {
+        @include on-tablet {
           font-size: 20px;
         }
       }
@@ -438,7 +435,7 @@
   &_specs {
     margin-top: 56px;
 
-    @include onDesktop {
+    @include on-desktop {
       margin-top: 0;
       width: 512px;
     }
@@ -447,7 +444,7 @@
       width: 100%;
       margin-top: 30px;
 
-      @include onTablet {
+      @include on-tablet {
         margin-top: 25px;
       }
 

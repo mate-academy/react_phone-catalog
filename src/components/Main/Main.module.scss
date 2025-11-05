@@ -1,5 +1,5 @@
-@import '../../mixins.scss';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
+@import '../../mixins';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap';
 
 body {
   color: #313237;
@@ -8,18 +8,18 @@ body {
 .main {
   margin: 56px 16px 0;
 
-  @include onTablet {
+  @include on-tablet {
     margin: 64px 24px 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     margin: 80px 32px 0;
   }
 
   &_categories {
     margin-top: 56px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-top: 64px;
     }
 
@@ -32,7 +32,7 @@ body {
       color: #313237;
       margin: 0;
 
-      @include onTablet {
+      @include on-tablet {
         font-size: 32px;
         line-height: 41px;
 
@@ -45,7 +45,7 @@ body {
       flex-direction: column;
       gap: 32px;
 
-      @include onTablet {
+      @include on-tablet {
         flex-direction: row;
         gap: 16px;
         justify-content: space-between;
@@ -63,7 +63,7 @@ body {
         transform: scale(1.03);
       }
 
-      @include onTablet {
+      @include on-tablet {
         width: 33.3%;
       }
 
@@ -71,7 +71,7 @@ body {
         width: 100%;
         min-height: 288px;
 
-        @include onTablet {
+        @include on-tablet {
           min-height: 187px;
         }
 
@@ -109,11 +109,11 @@ body {
   &_hot_slider {
     margin-top: 56px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-top: 64px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       margin-top: 80px;
     }
   }

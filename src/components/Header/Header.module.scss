@@ -1,9 +1,9 @@
-@import '../../mixins.scss';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
+@import '../../mixins';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap';
 
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 .header {
@@ -13,16 +13,16 @@ body {
   flex-direction: row;
   justify-content: space-between;
   height: 48px;
-  background-color: #ffffff;
+  background-color: #fff;
   border-bottom: 1px solid #e2e6e9;
   z-index: 1000;
   align-items: center;
 
-  @include onTablet {
+  @include on-tablet {
     justify-content: start;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     height: 64px;
   }
 }
@@ -31,7 +31,7 @@ body {
   display: block;
   margin-left: 16px;
 
-  @include onDesktop {
+  @include on-desktop {
     display: none;
   }
 }
@@ -39,7 +39,7 @@ body {
 .logoDesktop {
   display: none;
 
-  @include onDesktop {
+  @include on-desktop {
     display: block;
     margin-left: 24px;
   }
@@ -49,7 +49,7 @@ body {
   all: unset;
   cursor: pointer;
 
-  @include onTablet {
+  @include on-tablet {
     display: none;
   }
 }
@@ -57,14 +57,14 @@ body {
 .menu {
   display: none;
 
-  @include onTablet {
+  @include on-tablet {
     display: block;
     margin-left: 16px;
     height: 100%;
     align-items: center;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     margin-left: 24px;
   }
 
@@ -79,7 +79,6 @@ body {
     height: 100%;
 
     &Item {
-      font-family: Mont;
       font-weight: 800;
       font-size: 12px;
       line-height: 48px;
@@ -88,7 +87,7 @@ body {
       color: #89939a;
       text-decoration: none;
 
-      @include onDesktop {
+      @include on-desktop {
         line-height: 64px;
       }
 
@@ -104,7 +103,7 @@ body {
   display: none;
   margin-left: auto;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
   }
 
@@ -118,7 +117,7 @@ body {
     cursor: pointer;
     border-left: 1px solid #e2e6e9;
 
-    @include onDesktop {
+    @include on-desktop {
       height: 64px;
       width: 64px;
     }
