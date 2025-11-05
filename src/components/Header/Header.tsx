@@ -68,6 +68,14 @@ export const Header = () => {
             >
               accessories
             </NavLink>
+            <NavLink
+              to="/phone"
+              className={({ isActive }) =>
+                `${header__menu_item} ${isActive ? active : ''}`
+              }
+            >
+              phone card
+            </NavLink>
           </nav>
           <div className={header__buttons}>
             <NavLink

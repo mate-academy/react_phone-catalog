@@ -20,7 +20,7 @@ export const PromotionSlider: FC<Props> = ({ products, title }) => {
       <section className="slider">
         <div className="container slider__container">
           <div className="slider__body">
-            <h2 className="slider__title">{title}</h2>
+            <h2 className="slider__title h2">{title}</h2>
             <div className="slider__nav">
               <button
                 ref={prevRef}
