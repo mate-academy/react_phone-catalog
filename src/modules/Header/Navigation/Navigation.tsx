@@ -3,23 +3,17 @@ import styles from './Navigation.module.scss';
 import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
 import './../../../i18n';
+import { getClassNames } from '../../../utils/classNames';
+
+export type NavigationModifiers = 'mobileMenu';
 
 interface NavigationProp {
-  modifier?: string | string[];
+  modifier?: NavigationModifiers;
 }
 
 const Navigation: React.FC<NavigationProp> = ({ modifier }) => {
   const { t } = useTranslation();
-  let navClasses = styles.nav;
-
-  if (modifier) {
-    navClasses +=
-      ' ' +
-      (Array.isArray(modifier)
-        ? modifier.map(iconClass => styles[iconClass] || '').join(' ')
-        : styles[modifier]);
-  }
-
+  const navClasses = styles.nav + ' ' + getClassNames('nav_', modifier, styles);
   const getLinkClasses = ({ isActive }: NavLinkRenderProps) =>
     cn(styles.item, {
       [styles.item__active]: isActive,

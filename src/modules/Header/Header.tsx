@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import styles from './Header.module.scss';
 import Navigation from './Navigation/Navigation';
-import Icon from '../../shared/Icon';
+import Icon from '../shared/Icon';
 import MobileMenu from './MobileMenu';
 
 export const Header = () => {
@@ -18,24 +18,34 @@ export const Header = () => {
     setShowMobile(false);
   }, [location.pathname]);
 
-  const menuIconClass = showMobile ? 'close' : 'menu-mobile';
-
   return (
     <>
       <header
         className={cn(styles.header, {
-          [styles['header-mobile']]: showMobile,
+          [styles.header_mobile]: showMobile,
         })}
       >
         <div className={styles.nav}>
-          <NavLink className={styles.logo} to="/">
-            <img className={styles.image} src="img/assets/logo.svg"></img>
+          <NavLink className={styles.nav__logo} to="/">
+            <img className={styles.nav__image} src="img/assets/logo.svg"></img>
           </NavLink>
           <Navigation />
-          <div className={styles.buttons}>
-            <Icon to="favorites" />
-            <Icon to="cart" />
-            <Icon to={handleMobileMenuClick} modifier={menuIconClass} />
+          <div className={styles.nav__buttons}>
+            <Icon
+              href="favorites"
+              iconStyles={{ icon: 'type_tablet', image: 'favorites' }}
+            />
+            <Icon
+              href="cart"
+              iconStyles={{ icon: 'type_tablet', image: 'cart' }}
+            />
+            <Icon
+              onClick={handleMobileMenuClick}
+              iconStyles={{
+                icon: 'type_mobile',
+                image: showMobile ? 'close' : 'menu',
+              }}
+            />
           </div>
         </div>
         {showMobile && <MobileMenu pathname={location.pathname} />}

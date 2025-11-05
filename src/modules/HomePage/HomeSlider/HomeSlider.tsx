@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
-import styles from './Slider.module.scss';
+import styles from './HomeSlider.module.scss';
 
 const slides = [
   {
@@ -23,7 +23,7 @@ const slides = [
   },
 ];
 
-const Slider = () => {
+const HomeSlider = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
@@ -83,9 +83,12 @@ const Slider = () => {
   };
 
   return (
-    <div className={styles['slider-container']}>
+    <div className={styles.homeSlider}>
       <button
-        className={cn(styles['slider-button'], styles['slider-button--left'])}
+        className={cn(
+          styles.homeSlider__button,
+          styles.homeSlider__button_left,
+        )}
         onClick={() => goToSlide(currentSlide - 1, 'smooth')}
       ></button>
       <div
@@ -119,7 +122,10 @@ const Slider = () => {
         ))}
       </div>
       <button
-        className={cn(styles['slider-button'], styles['slider-button--right'])}
+        className={cn(
+          styles.homeSlider__button,
+          styles.homeSlider__button_right,
+        )}
         onClick={() => goToSlide(currentSlide + 1, 'smooth')}
       ></button>
       <div className={styles.dots}>
@@ -134,4 +140,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default HomeSlider;

@@ -1,12 +1,19 @@
-@import 'fonts';
-@import 'mixins';
-@import 'variables';
+@use './variables.scss' as *;
+@forward 'fonts';
+@forward 'mixins';
+@forward 'variables';
+@forward 'extends';
 
 h1,
 h2,
 h3,
 p,
+button,
 picture {
   margin: 0;
   padding: 0;
+}
+
+body {
+  min-width: $body-min-width;
 }

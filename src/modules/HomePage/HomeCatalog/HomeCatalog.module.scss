@@ -1,18 +1,51 @@
-.title {
-  font-size: 32px;
-}
+@use '../../../scss/main.scss' as *;
 
-.top {
+.catalog {
   display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
+  flex-direction: column;
+  gap: 24px;
 
-.slider {
-  display: grid;
-  width: 100%;
-  gap: 20px;
-  grid-auto-columns: 200px;
-  grid-auto-flow: column;
-  overflow-x: scroll;
+  &__top {
+    @include page-grid;
+  }
+
+  &__title {
+    grid-column: span 2;
+
+    @extend %h2;
+
+    @include on-tablet {
+      grid-column: span 10;
+    }
+  }
+
+  &__buttons {
+    grid-column: span 2;
+    align-self: center;
+    display: flex;
+    height: 32px;
+    gap: 8px;
+  }
+
+  &__slider {
+    display: grid;
+    width: 100%;
+    padding-right: $mobile-padding-inline;
+    margin-right: $mobile-padding-inline;
+    gap: $grid-gap-desktop;
+    grid-auto-columns: 3 * $grid-column-mobile + 2 * $grid-gap-mobile;
+    grid-auto-flow: column;
+    overflow-x: scroll;
+    scrollbar-width: none;
+
+    @include on-tablet {
+      padding-right: $tablet-padding-inline;
+      margin-right: $tablet-padding-inline;
+      grid-auto-columns: 5 * $grid-column-desktop + 4 * $grid-gap-desktop;
+    }
+
+    @include on-desktop {
+      padding-right: 0;
+    }
+  }
 }

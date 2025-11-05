@@ -2,29 +2,7 @@
 
 $text-grey: #9b9b9b;
 
-.slider-button {
-  display: none;
-  padding: 0;
-  border: 1px solid $border-color;
-
-  &:hover {
-    border-color: $border-color-hover;
-  }
-
-  @include on-tablet {
-    display: block;
-  }
-
-  &--left {
-    background: url('img/assets/icons/arrow_left.svg') no-repeat center center;
-  }
-
-  &--right {
-    background: url('img/assets/icons/arrow_right.svg') no-repeat center center;
-  }
-}
-
-.slider-container {
+.homeSlider {
   flex-direction: column;
   background-color: #fff;
 
@@ -32,6 +10,29 @@ $text-grey: #9b9b9b;
 
   @include on-tablet {
     margin-inline: 0;
+  }
+
+  &__button {
+    display: none;
+    padding: 0;
+    border: 1px solid $border-color;
+
+    &:hover {
+      border-color: $border-color-hover;
+    }
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &_left {
+      background: url('img/assets/icons/arrow_left.svg') no-repeat center center;
+    }
+
+    &_right {
+      background: url('img/assets/icons/arrow_right.svg') no-repeat center
+        center;
+    }
   }
 }
 

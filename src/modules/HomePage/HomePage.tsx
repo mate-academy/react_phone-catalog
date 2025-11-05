@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './HomePage.module.scss';
 import Slider from './Slider';
 import HomeCatalog from './HomeCatalog';
-import { Product } from '../../types/product';
+import { Product } from '../../types/Product';
 import products from '../../../public/api/products.json';
 import { SLIDER_COUNT } from '../constants';
 
@@ -23,13 +23,15 @@ export const HomePage = () => {
   const hotPricesProducts = getHotPriceProducts(products);
 
   return (
-    <div className={styles.container}>
-      <h2 className={[styles.header__title].join(' ')}>
-        {t('home.welcome_to_store')}
-      </h2>
+    <div className="container">
+      <div className={styles.homePage}>
+        <div>
+          <h2 className={styles.homePage__title}>
+            {t('home.welcome_to_store')}
+          </h2>
 
-      <div className={styles['slider-wrapper']}>
-        <Slider />
+          <Slider />
+        </div>
         <HomeCatalog title={t('home.brand_new')} products={brandNewProducts} />
         <HomeCatalog
           title={t('home.hot_prices')}

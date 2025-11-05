@@ -1,0 +1,11 @@
+@use '../../../scss/main.scss' as *;
+
+.button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: $primary-color;
+  color: $white-color;
+
+  @extend %buttons;
+}

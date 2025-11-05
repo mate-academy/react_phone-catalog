@@ -1,7 +1,23 @@
 @use '../../scss/main.scss' as *;
 
-.header__title {
-  font-size: 32px;
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  &__title {
+    margin-block: 24px;
+
+    @extend %h1;
+
+    @include on-tablet {
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
 }
 
 .slider-wrapper {

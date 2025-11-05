@@ -1,9 +1,4 @@
-$mobile-max-width: 320px;
-$tablet-min-width: 640px;
-$desktop-min-width: 1200px;
-$body-background-color: #fff;
-$mobile-padding-inline: 16px;
-$tablet-padding-inline: 24px;
+@use './variables.scss' as *;
 
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
@@ -31,16 +26,12 @@ $tablet-padding-inline: 24px;
   }
 }
 
-.container {
-  @include content-padding-inline;
-}
-
 @mixin page-grid {
   --columns: 4;
 
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
-  gap: 16px;
+  gap: $grid-gap-mobile;
 
   @include on-tablet {
     --columns: 12;
@@ -51,4 +42,9 @@ $tablet-padding-inline: 24px;
   @include on-desktop {
     --columns: 24;
   }
+}
+
+// stylelint-disable-next-line selector-pseudo-class-no-unknown
+:global(.container) {
+  @include content-padding-inline;
 }

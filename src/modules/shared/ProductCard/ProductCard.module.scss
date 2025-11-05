@@ -1,25 +1,99 @@
+@use '../../../scss/main.scss' as *;
+
 .product {
   display: grid;
+  height: 439px;
+  padding: 32px;
+  grid-auto-flow: row;
+  grid-template-rows: auto repeat(5, min-content);
+  gap: 8px;
+
+  @include on-tablet {
+    height: 506px;
+  }
+
   &__image {
-    width: 208px;
-    height: 105px;
+    min-height: 0;
+    height: 100%;
+    width: 100%;
     object-fit: contain;
     object-position: center;
   }
 
-  &__prices {
-    display: flex;
+  &__title {
+    @extend %body-text;
+
+    margin-top: 16px;
+    font-weight: 600;
   }
 
-  &__oldPrice {
-    color: #89939a;
-    font-size: 22px;
+  &__prices {
+    display: flex;
+    height: 31px;
+    align-items: stretch;
+    gap: 8px;
+
+    @extend %h3;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    color: $primary-color;
     line-height: 140%;
-    text-decoration: line-through;
+
+    &_old {
+      position: relative;
+      color: $secondary-color-inverted;
+      font-weight: 600;
+      isolation: isolate;
+      filter: invert(100%);
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 44%;
+        height: 2px;
+        background-color: $secondary-color-inverted;
+        mix-blend-mode: difference;
+      }
+    }
+  }
+
+  &__specs {
+    display: flex;
+    padding-block: 8px;
+    flex-direction: column;
+    gap: 8px;
   }
 
   &__specLine {
     display: flex;
+    justify-content: space-between;
+
+    color: $secondary-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__specText {
+    display: flex;
+    height: 15px;
+    align-items: center;
+    text-transform: capitalize;
+
+    &_bold {
+      color: $primary-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    height: 40px;
+    gap: 8px;
     justify-content: space-between;
   }
 }
