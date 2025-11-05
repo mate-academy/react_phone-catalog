@@ -1,1 +1,18 @@
 // not empty
+
+/* App.scss */
+
+/* App.scss */
+
+@font-face {
+  font-family: MontBold;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700; /* якщо це Bold */
+  font-style: normal;
+  font-display: swap; /* текст відображається навіть до завантаження шрифту */
+}
+
+/* Далі можна застосувати шрифт глобально */
+body {
+  font-family: MontBold, sans-serif;
+}
