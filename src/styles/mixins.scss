@@ -1,0 +1,21 @@
+@use './variables.scss' as *;
+
+@mixin on-desktop {
+  @media (min-width: $desktop_min_width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet_min_width) {
+    @content;
+  }
+}
+
+@mixin icon-paddings {
+  padding: 16px;
+
+  @include on-desktop {
+    padding: 24px;
+  }
+}

@@ -1,0 +1,10 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.burgerMenu{
+  box-sizing: border-box;
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  background-color: $white;
+}

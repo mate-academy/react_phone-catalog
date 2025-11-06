@@ -1,0 +1,49 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+@use '../../../../styles/shared.scss' as *;
+
+.mainMenu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+
+  a {
+    position: relative;
+    text-decoration: none;
+    color: $secondary;
+
+    &::after {
+      content: '';
+      height: 3px;
+      width: 100%;
+      display: block;
+      position: absolute;
+      background-color: $primary;
+
+      transition: transform $duration;
+      transform: scale(0);
+      transform-origin: left;
+
+      bottom: -14px;
+
+      @include on-desktop {
+        bottom: -22px;
+      }
+    }
+
+    &.active {
+      color: $primary;
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
