@@ -27,7 +27,7 @@ export const ViewCart: React.FC<Props> = ({ product, onRemove }) => {
 
         <img
           className="view-cart__close"
-          src="img/ui-kit/Close.png"
+          src="img/ui-kit/Close-dark.png"
           alt="close"
           onClick={() => {
             DeleteProduct();

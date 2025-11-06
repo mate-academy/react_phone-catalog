@@ -1,5 +1,4 @@
 .product {
-  width: 208px;
   color: #f1f2f9;
   background-color: #161827;
   display: flex;
@@ -8,6 +7,7 @@
   padding: 32px;
   gap: 8px;
   grid-column: span 6;
+  min-width: 212px;
 
   &__prices {
     display: flex;

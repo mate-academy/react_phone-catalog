@@ -1,5 +1,5 @@
-import React from 'react';
-import './Paginaation.scss';
+import React, { useMemo } from 'react';
+import './Paginaation.scss'
 import classNames from 'classnames';
 
 type Props = {
@@ -17,6 +17,32 @@ export const Pagination: React.FC<Props> = ({
   previousPage,
   isPageActive,
 }) => {
+  const visiblePages = 7;
+
+  const visibleNumbers = useMemo(() => {
+    if (pageNumbers.length <= visiblePages) {
+      return pageNumbers;
+    }
+
+    let start = 0;
+    let end = visiblePages;
+
+    if (isPageActive && isPageActive <= 4) {
+      start = 0;
+      end = visiblePages;
+    }
+    else if (isPageActive && isPageActive >= pageNumbers.length - 3) {
+      start = pageNumbers.length - visiblePages;
+      end = pageNumbers.length;
+    }
+    else if (isPageActive) {
+      start = isPageActive - 4;
+      end = isPageActive + 3;
+    }
+
+    return pageNumbers.slice(start, end);
+  }, [pageNumbers, isPageActive]);
+
   return (
     <div className="catalog__pagination-buttons">
       <img
@@ -24,18 +50,16 @@ export const Pagination: React.FC<Props> = ({
         alt="slider-button"
         className="slider-products__slide-icon--left"
         onClick={previousPage}
-      ></img>
+      />
 
       <div className="catalog__pagination-number-buttons">
-        {pageNumbers.map(number => (
+        {visibleNumbers.map(number => (
           <div
             className={classNames('catalog__pagination-number-button', {
               'pagination-active': isPageActive === number,
             })}
             key={number}
-            onClick={() => {
-              paginate(number);
-            }}
+            onClick={() => paginate(number)}
           >
             {number}
           </div>
@@ -47,7 +71,7 @@ export const Pagination: React.FC<Props> = ({
         alt="slider-button"
         className="slider-products__slide-icon"
         onClick={nextPage}
-      ></img>
+      />
     </div>
   );
 };

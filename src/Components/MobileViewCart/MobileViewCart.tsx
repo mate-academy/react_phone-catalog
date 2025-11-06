@@ -26,7 +26,7 @@ export const MobileViewCart: React.FC<Props> = ({ product, onRemove }) => {
         <div className="mobile-view-cart__desc-wrapper">
           <img
             className="mobile-view-cart__close"
-            src="img/ui-kit/Close.png"
+            src="img/ui-kit/Close-dark.png"
             alt="close"
             onClick={() => {
               DeleteProduct();

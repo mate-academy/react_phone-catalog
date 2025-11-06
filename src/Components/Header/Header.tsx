@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
 import { useCart } from '../../context/cartContext';
@@ -7,6 +7,11 @@ import { useEffect, useState } from 'react';
 
 export const Header: React.FC = () => {
   const [currentwidth, setCurrentWidth] = useState(window.innerWidth);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [lastPath, setLastPath] = useState('/');
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -17,10 +22,25 @@ export const Header: React.FC = () => {
 
     handleResize();
 
+    if (!location.pathname.includes('/menu')) {
+      setLastPath(location.pathname);
+      setIsMenuOpen(false);
+    } else {
+      setIsMenuOpen(true);
+    }
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [location]);
+
+  const handleMenuClick = () => {
+    if (isMenuOpen) {
+      navigate(lastPath)
+    } else {
+      navigate('/menu')
+    }
+  }
 
   const ActivateLink = ({ isActive }: { isActive: boolean }) =>
     classNames('header__nav--link', {
@@ -101,9 +121,9 @@ export const Header: React.FC = () => {
           </>
         ) : (
           <div className="header__nav--icons--section">
-            <NavLink className="header__nav--icons--section--menu" to="/menu">
-              <img src="/img/ui-kit/Menu.png" alt="menu-icon" />
-            </NavLink>
+            <div className="header__nav--icons--section--menu" onClick={handleMenuClick}>
+              <img src={isMenuOpen ? "/img/ui-kit/Close.png" : "/img/ui-kit/Menu.png"} alt="menu-icon" />
+            </div>
           </div>
         )}
       </nav>

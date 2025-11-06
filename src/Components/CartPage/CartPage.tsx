@@ -72,13 +72,13 @@ export const CartPage: React.FC = () => {
                   products.map(p => (
                     <ViewCart key={p.id} product={p} onRemove={onRemove} />
                   ))) : (
-                    products.map(p => (
-                      <MobileViewCart
-                        key={p.id}
-                        product={p}
-                        onRemove={onRemove}
-                      />
-                    )))}
+                  products.map(p => (
+                    <MobileViewCart
+                      key={p.id}
+                      product={p}
+                      onRemove={onRemove}
+                    />
+                  )))}
               </div>
               {/* eslint-disable prettier/prettier */}
 

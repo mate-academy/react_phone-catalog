@@ -1,9 +1,15 @@
 import './SliderProducts.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { GetProducts } from '../../services/GetProducts';
 import { Product } from '../../types/Product';
 import classNames from 'classnames';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
+
+// import 'swiper/css/navigation';
+import 'swiper/css';
 
 type Props = {
   title: string;
@@ -11,8 +17,10 @@ type Props = {
 
 export const SliderProducts: React.FC<Props> = ({ title }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [startIndex, setStartIndex] = useState(0);
   const [currentwidth, setCurrentWidth] = useState(window.innerWidth);
+
+  const prevRef = useRef<HTMLImageElement>(null);
+  const nextRef = useRef<HTMLImageElement>(null);
 
   const shuffleArray = (array: Product[]) => {
     const arr = [...array];
@@ -52,17 +60,6 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
     });
   }, [title]);
 
-  const handleNext = () => {
-    if (startIndex < products.length - 4) {
-      setStartIndex(prev => prev + 1);
-    }
-  };
-
-  const handlePrevios = () => {
-    if (startIndex > 0) {
-      setStartIndex(prev => prev - 1);
-    }
-  };
 
   return (
     <div className="slider-products">
@@ -71,67 +68,62 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
           <h2 className="slider-products__title">{title}</h2>
           <div className="slider-products__slide-icons">
             <img
+            ref={prevRef}
               src="/img/ui-kit/Slider-button-small-right.png"
               alt="slider-button"
               className={classNames(
-                'slider-products__slide-icon',
                 'slider-products__slide-icon--left',
-                { 'slider-products__slide-icon--disabled': startIndex === 0 },
+                'swiper-button-prev',
               )}
-              onClick={handlePrevios}
             ></img>
 
             <img
+            ref={nextRef}
               src="/img/ui-kit/Slider-button-small-right.png"
               alt="slider-button"
-              className={classNames('slider-products__slide-icon', {
-                'slider-products__slide-icon--disabled':
-                  startIndex >= products.length - 4,
-              })}
-              onClick={handleNext}
+              className={classNames('slider-products__slide-icon--right',
+                'swiper-button-next')}
             ></img>
           </div>
         </div>
 
         <div className="slider-products__products">
-          {(+currentwidth > 899 &&
-            +currentwidth < 1200 &&
-            products.slice(startIndex, startIndex + 3).map(product => (
+          <Swiper
+            slidesPerView={'auto'}
+            spaceBetween={16}
+            // breakpoints={{
+            //   699: {
+            //     slidesPerView: "auto",
+            //   },
+            //   1200: {
+            //     slidesPerView: 4,
+            //   },
+            // }}
+            navigation={{
+              nextEl: '.slider-products__slide-icon--right',
+              prevEl: '.slider-products__slide-icon--left',
+            }}
+            modules={[Navigation]}
+              onBeforeInit={(swiper) => {
+              if (swiper.params.navigation) {
+                const navigation = swiper.params.navigation as any;
+                navigation.prevEl = prevRef.current;
+                navigation.nextEl = nextRef.current;
+              }
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }}
+          >
+          {(products.map(product => (
+            <SwiperSlide key={product.id}>
               <div
-                key={product.id}
                 className="slider-products__product-wrapper"
               >
                 <ProductCard product={product} />
               </div>
-            ))) ||
-            (+currentwidth < 639 &&
-              products.slice(startIndex, startIndex + 1).map(product => (
-                <div
-                  key={product.id}
-                  className="slider-products__product-wrapper"
-                >
-                  <ProductCard product={product} />
-                </div>
-              ))) ||
-            (+currentwidth > 639 &&
-              +currentwidth < 899 &&
-              products.slice(startIndex, startIndex + 2).map(product => (
-                <div
-                  key={product.id}
-                  className="slider-products__product-wrapper"
-                >
-                  <ProductCard product={product} />
-                </div>
-              ))) ||
-            (+currentwidth > 1200 &&
-              products.slice(startIndex, startIndex + 4).map(product => (
-                <div
-                  key={product.id}
-                  className="slider-products__product-wrapper"
-                >
-                  <ProductCard product={product} />
-                </div>
-              )))}
+            </SwiperSlide>
+          )))}
+          </Swiper>
         </div>
       </div>
     </div>
