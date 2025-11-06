@@ -74,6 +74,7 @@
 
   @include on-desktop {
     grid-template-columns: repeat(4, 1fr);
+    width: 1200px;
   }
 }
 
