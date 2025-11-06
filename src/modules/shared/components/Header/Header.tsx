@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import s from './Header.module.scss';
 import logo from '../../../../assets/images/logo.png';
@@ -6,8 +6,12 @@ import menu from '../../../../assets/images/icons/menu.svg';
 import heart from '../../../../assets/images/icons/heart.svg';
 import cart from '../../../../assets/images/icons/cart.svg';
 import { NavBar } from '../NavBar/NavBar';
+import { BurgerMenu } from '../BurgerMenu';
 
 export const Header: FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <header>
       <div className={s.leftPart}>
@@ -27,10 +31,14 @@ export const Header: FC = () => {
         <div className={`${s.iconWrapper} ${s.tabletVisible}`}>
           <img src={cart} alt="Shopping Cart" />
         </div>
-        <div className={`${s.iconWrapper} ${s.mobileVisible}`}>
+        <div
+          className={`${s.iconWrapper} ${s.mobileVisible}`}
+          onClick={() => setIsMenuOpen(true)}
+        >
           <img src={menu} alt="Mobile Menu" />
         </div>
       </div>
+      {isMenuOpen && <BurgerMenu onClose={closeMenu} />}
     </header>
   );
 };

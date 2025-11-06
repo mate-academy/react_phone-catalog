@@ -47,3 +47,18 @@
     }
   }
 }
+
+.horizontalNav .mainMenu {
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+}
+
+.verticalNav .mainMenu {
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  a::after {
+    bottom: -4px;
+  }
+}
