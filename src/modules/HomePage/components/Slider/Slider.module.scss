@@ -3,13 +3,12 @@
 
 .containerFirst {
   height: $wight-320;
-  border-radius: $wight-8;
   width: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   justify-content: center;
-  background-color: $color-black;
+  background-color: black;
 
 
   @include on-tablet {
