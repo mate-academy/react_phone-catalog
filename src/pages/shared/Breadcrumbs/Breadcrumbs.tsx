@@ -15,7 +15,7 @@ export const Breadcrumbs: React.FC<Props> = ({ category, endpoint }) => {
         <Link to="/">
           <img
             className={styles.breadcrumbs__icon}
-            src="/public/img/icons/home.svg"
+            src="img/icons/home.svg"
             alt="home icon"
           />
         </Link>

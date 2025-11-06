@@ -14,7 +14,7 @@ export const Footer = () => {
       <div className="container">
         <NavLink to="/" className={styles.footer__logoLink}>
           <img
-            src="/public/img/footer/footer-logo.png"
+            src="img/footer/footer-logo.png"
             alt="nice gadgets logo"
             className={styles.footer__img}
           />
@@ -58,7 +58,7 @@ export const Footer = () => {
 
           <button className={styles.footer__button}>
             <img
-              src="/public/img/icons/arrow-left-active.svg"
+              src="img/icons/arrow-left-active.svg"
               alt="back to top"
               className={styles.footer__icon}
               onClick={scrollToTop}

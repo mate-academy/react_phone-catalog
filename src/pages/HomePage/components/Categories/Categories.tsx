@@ -15,7 +15,7 @@ export const Categories = () => {
         {CATEGORIES.map(category => (
           <li key={category} className={styles.categories__item}>
             <img
-              src={`/img/homepage/category-${category}.png`}
+              src={`img/homepage/category-${category}.png`}
               alt="black iphone 14 pro front and rear"
               className={styles.categories__img}
             />

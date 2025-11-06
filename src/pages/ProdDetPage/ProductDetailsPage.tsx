@@ -60,7 +60,7 @@ export const ProductDetailsPage = () => {
             <>
               <p className="errorMessage">Product not found</p>
               <img
-                src="/public/img/product-not-found.png"
+                src="img/product-not-found.png"
                 alt="product not found image"
                 width="100%"
                 className="errorImage"

@@ -40,8 +40,8 @@ export const IconLinks: React.FC<Props> = ({
           <img
             src={
               cart.length
-                ? '/public/img/icons/cart-counter.svg'
-                : '/img/icons/cart-empty.svg'
+                ? 'img/icons/cart-counter.svg'
+                : 'img/icons/cart-empty.svg'
             }
             alt="Cart"
           />
@@ -58,9 +58,7 @@ export const IconLinks: React.FC<Props> = ({
         >
           <img
             src={
-              favs.length
-                ? '/public/img/icons/favs-counter.svg'
-                : '/img/icons/favs.svg'
+              favs.length ? 'img/icons/favs-counter.svg' : 'img/icons/favs.svg'
             }
             alt="Favourites"
           />

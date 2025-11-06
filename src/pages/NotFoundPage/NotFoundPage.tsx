@@ -20,7 +20,7 @@ export const NotFoundPage = () => {
           Page not found. You will shortly be redirected to homepage
         </p>
         <img
-          src="/public/img/page-not-found.png"
+          src="img/page-not-found.png"
           alt="page not found"
           className="errorImg"
         />

@@ -63,9 +63,7 @@ export const Header = () => {
           >
             <img
               src={
-                isMenuOpen
-                  ? '/public/img/icons/close-active.svg'
-                  : '/public/img/icons/menu.svg'
+                isMenuOpen ? 'img/icons/close-active.svg' : 'img/icons/menu.svg'
               }
               alt={isMenuOpen ? 'close' : 'open'}
             />
