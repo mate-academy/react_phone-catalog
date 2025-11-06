@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, useLocation } from 'react-router-dom';
 import { useProductDetails } from './hooks/useProductDetails';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from './components/Breadcrumbs';
@@ -10,6 +10,9 @@ import styles from './ProductDetails.module.scss';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId?: string }>();
+  const location = useLocation();
+  const shouldShowDiscount = !!location.state as boolean | undefined;
+
   const { product, loading, error, debugInfo } = useProductDetails(
     productId || '',
   );
@@ -75,7 +78,7 @@ export const ProductDetailsPage: React.FC = () => {
           name={product.name}
           category={product.category}
         />
-        <ProductInfo product={product} />
+        <ProductInfo product={product} showDiscount={shouldShowDiscount} />
       </div>
 
       {/* About + Tech Specs */}

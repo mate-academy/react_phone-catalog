@@ -9,9 +9,10 @@ import styles from './ProductInfo.module.scss';
 
 interface Props {
   product: Product;
+  showDiscount?: boolean;
 }
 
-export const ProductInfo: React.FC<Props> = ({ product }) => {
+export const ProductInfo: React.FC<Props> = ({ product, showDiscount }) => {
   const { state: cartState, dispatch: cartDispatch } = useCart();
   const { state: favoritesState, dispatch: favoritesDispatch } = useFavorites();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
@@ -58,7 +59,7 @@ export const ProductInfo: React.FC<Props> = ({ product }) => {
 
   const availableColors = product.colorsAvailable || [product.color];
   const availableCapacities = product.capacityAvailable || [product.capacity];
-  const hasDiscount = product.fullPrice > product.price;
+  const hasDiscount = showDiscount ?? product.fullPrice > product.price;
 
   const findProductVariant = (
     color: string,

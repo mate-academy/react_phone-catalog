@@ -48,6 +48,20 @@ export const api = {
     }
   },
 
+  async getProductsList(): Promise<Product[]> {
+    try {
+      const response = await fetch(`${API_BASE}/products.json`);
+
+      if (!response.ok) {
+        return [];
+      }
+
+      return await response.json();
+    } catch {
+      return [];
+    }
+  },
+
   async getPhones(): Promise<RawProduct[]> {
     try {
       const response = await fetch(`${API_BASE}/phones.json`);

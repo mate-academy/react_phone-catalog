@@ -11,6 +11,7 @@ interface ProductCardProps {
   className?: string;
   showDiscountBadge?: boolean;
   showHotPriceText?: boolean;
+  hasDiscount?: boolean;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -62,7 +63,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div className={classNames(styles.productCard, className)}>
-      <Link to={`/product/${product.id}`} className={styles.productCard__link}>
+      <Link
+        to={`/product/${product.itemId}`}
+        state={shouldShowFullPrice}
+        className={styles.productCard__link}
+      >
         {/* Product Image */}
         <div className={styles.productCard__imageContainer}>
           <img

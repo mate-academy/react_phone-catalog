@@ -19,17 +19,22 @@ export const useHomePageData = (): UseHomePageDataReturn => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const products = await api.getProducts();
+        const products = await api.getProductsList();
 
         // Hot prices - products with discount
         const hotPricesData = products
-          .filter(product => product.fullPrice > product.price)
           .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+          .sort((a, b) => a.year - b.year)
           .slice(0, 10);
 
         // New models
+        const mostRecentYear = Math.max(
+          ...products.map(product => product.year),
+        );
+
         const newModelsData = products
-          .sort((a, b) => b.year - a.year)
+          .filter(product => product.year === mostRecentYear)
+          .sort((a, b) => b.fullPrice - a.fullPrice)
           .slice(0, 10);
 
         setHotPrices(hotPricesData);
