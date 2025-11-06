@@ -1,15 +1,15 @@
 .slider {
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto 20px;
   overflow: hidden;
+  margin-bottom: 40px;
 }
 
-.slide {
-  width: 100%;
+.slideContainer {
   position: relative;
+  width: 100%;
   aspect-ratio: 16 / 6;
+  background: var(--background-primary);
 }
 
 .slideImage {
@@ -31,57 +31,103 @@
 .prev,
 .next {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  background: transparent;
   border: none;
-  padding: 10px;
+  color: transparent;
   cursor: pointer;
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.3);
+  }
 }
 
 .prev {
-  left: 10px;
+  left: 0;
+  padding-left: 16px;
+  justify-content: flex-start;
 }
 
 .next {
-  right: 10px;
+  right: 0;
+  padding-right: 16px;
+  justify-content: flex-end;
+}
+
+/* Стрілки */
+.prev::before,
+.next::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--border-color);
+  border-top: none;
+  border-right: none;
+  transition: all 0.3s ease;
+}
+
+.prev::before {
+  transform: rotate(45deg);
+  margin-left: 4px;
+}
+
+.next::before {
+  transform: rotate(-135deg);
+  margin-right: 4px;
 }
 
 .dots {
   text-align: center;
-  padding: 10px 0;
+  padding: 16px 0;
+  margin-top: 8px;
 }
 
 .dot {
   height: 8px;
   width: 24px;
-  background: #bbb;
+  background: var(--text-color);
   border-radius: 25%;
   display: inline-block;
-  margin: 0 5px;
+  margin: 0 6px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .dot.active {
-  background: #717171;
+  background: var(--background-secondary);
+  width: 32px;
 }
 
 @media (max-width: 699px) {
-  .slide {
+  .slideContainer {
     aspect-ratio: 16 / 9;
   }
 
   .prev,
   .next {
-    padding: 8px;
-    font-size: 16px;
+    width: 50px;
+  }
+
+  .prev::before,
+  .next::before {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
   }
 }
 
 @media (min-width: 1200px) {
-  .slide {
+  .slideContainer {
     aspect-ratio: 16 / 5;
   }
 }

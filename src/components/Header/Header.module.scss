@@ -6,14 +6,20 @@
   top: 0;
   z-index: 1000;
   padding: 16px 24px;
-  margin-bottom: 50px;
+  margin-bottom: 16px;
   background: var(--background-primary);
   color: var(--text-color);
-  height: 72px;
+  height: 64px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: Montserrat, sans-serif;
   transition: background 0.3s ease, color 0.3s ease;
   overflow: hidden;
+}
+
+.logoAndNav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .logo {

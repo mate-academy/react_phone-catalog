@@ -55,19 +55,26 @@ export const PictureSlider: React.FC<{ banners?: string[] }> = ({
 
   return (
     <div className={styles.slider}>
-      <button className={styles.prev} onClick={goToPrev}>
-        &lt;
-      </button>
-      <div className={styles.slide}>
-        <img
-          src={`/${banners[currentIndex]}`}
-          alt={`Banner ${currentIndex}`}
-          className={`${styles.slideImage} ${isTransitioning ? styles.transition : ''}`}
-        />
+      <div className={styles.slideContainer}>
+        <button
+          className={styles.prev}
+          onClick={goToPrev}
+          aria-label="Previous"
+        >
+          {/* &lt; */}
+        </button>
+        <div className={styles.slide}>
+          <img
+            src={`/${banners[currentIndex]}`}
+            alt={`Banner ${currentIndex + 1}`}
+            className={`${styles.slideImage} ${isTransitioning ? styles.transition : ''}`}
+          />
+        </div>
+        <button className={styles.next} onClick={goToNext} aria-label="Next">
+          {/* &gt; */}
+        </button>
       </div>
-      <button className={styles.next} onClick={goToNext}>
-        &gt;
-      </button>
+
       <div className={styles.dots}>
         {banners.map((_, index) => (
           <span

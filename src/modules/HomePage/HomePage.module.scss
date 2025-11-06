@@ -1,13 +1,12 @@
 .home {
-  margin: 0 auto;
-  padding: 16px;
+  margin: 0 16px;
 
   @media (min-width: 700px) and (max-width: 1199px) {
-    padding: 0 50px;
+    margin: 0 32px;
   }
 
   @media (min-width: 1200px) {
-    padding: 0 152px;
+    margin: 0 152px;
   }
 }
 
@@ -18,20 +17,27 @@
 .welcome {
   font-family: Montserrat, sans-serif;
   font-size: 48px;
-  font-weight: 700;
-  text-align: center;
+  font-weight: 800;
+  letter-spacing: -1%;
+  line-height: 56px;
   color: var(--text-color);
-  margin-bottom: 20px;
-  text-transform: uppercase;
+  margin-bottom: 60px;
+
+  @media (max-width: 699px) {
+    font-size: 32px;
+    line-height: 41px;
+  }
 }
 
 .categoryTitle {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
-  text-align: start;
   color: var(--text-color);
-  margin-bottom: 20px;
+  text-transform: uppercase;
   letter-spacing: 1px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
 .categoryGrid {
@@ -39,8 +45,10 @@
   flex-flow: wrap;
   flex-direction: row;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
   justify-items: center;
+  margin-bottom: 81px;
+  margin-top: 81px;
 
   @media (max-width: 699px) {
     flex-direction: column;
@@ -72,6 +80,7 @@
 .categoryInfo {
   display: flex;
   flex-direction: column;
+  text-align: left;
   gap: 5px;
   margin-top: 10px;
 

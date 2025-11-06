@@ -1,18 +1,22 @@
-.list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
 
-.sliderList {
-  display: flex;
-  flex-wrap: nowrap;
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.empty {
-  text-align: center;
-  color: #666;
-  padding: 20px;
+.sliderMode {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.sliderMode > * {
+  flex: 1;
+  min-width: 0;
 }

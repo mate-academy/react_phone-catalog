@@ -31,71 +31,74 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <Link to="/">
-          <img src="/logo/logo.png" alt="Logo" className={styles.logoImage} />
-        </Link>
-      </div>
-      <nav className={styles.nav}>
-        <Link
-          to="/"
-          className={`${styles.navLink} ${location.pathname === '/' ? styles.active : ''}`}
-        >
-          {t('home')}
-        </Link>
-        <div
-          className={styles.dropdown}
-          onMouseEnter={() => setIsDropdownOpen(true)}
-          onMouseLeave={() => setIsDropdownOpen(false)}
-        >
+      <div className={styles.logoAndNav}>
+        <div className={styles.logo}>
+          <Link to="/">
+            <img src="/logo/logo.png" alt="Logo" className={styles.logoImage} />
+          </Link>
+        </div>
+        <nav className={styles.nav}>
           <Link
-            to="/category/phones"
-            className={`${styles.dropdownToggle} ${location.pathname.startsWith('/category') ? styles.active : ''}`}
+            to="/"
+            className={`${styles.navLink} ${location.pathname === '/' ? styles.active : ''}`}
           >
-            {t('category')}
+            {t('home')}
           </Link>
           <div
-            className={`${styles.dropdownMenu} ${isDropdownOpen ? styles.open : ''}`}
+            className={styles.dropdown}
+            onMouseEnter={() => setIsDropdownOpen(true)}
+            onMouseLeave={() => setIsDropdownOpen(false)}
           >
             <Link
               to="/category/phones"
-              className={`${styles.dropdownMenuLink} ${location.pathname === '/category/phones' ? styles.active : ''}`}
+              className={`${styles.dropdownToggle} ${location.pathname.startsWith('/category') ? styles.active : ''}`}
             >
-              {t('phones')}
+              {t('category')}
             </Link>
-            <Link
-              to="/category/tablets"
-              className={`${styles.dropdownMenuLink} ${location.pathname === '/category/tablets' ? styles.active : ''}`}
+            <div
+              className={`${styles.dropdownMenu} ${isDropdownOpen ? styles.open : ''}`}
             >
-              {t('tablets')}
-            </Link>
-            <Link
-              to="/category/accessories"
-              className={`${styles.dropdownMenuLink} ${location.pathname === '/category/accessories' ? styles.active : ''}`}
-            >
-              {t('accessories')}
-            </Link>
+              <Link
+                to="/category/phones"
+                className={`${styles.dropdownMenuLink} ${location.pathname === '/category/phones' ? styles.active : ''}`}
+              >
+                {t('phones')}
+              </Link>
+              <Link
+                to="/category/tablets"
+                className={`${styles.dropdownMenuLink} ${location.pathname === '/category/tablets' ? styles.active : ''}`}
+              >
+                {t('tablets')}
+              </Link>
+              <Link
+                to="/category/accessories"
+                className={`${styles.dropdownMenuLink} ${location.pathname === '/category/accessories' ? styles.active : ''}`}
+              >
+                {t('accessories')}
+              </Link>
+            </div>
           </div>
-        </div>
-        <Link
-          to="/cart"
-          className={`${styles.navLink} ${location.pathname === '/cart' ? styles.active : ''}`}
-        >
-          {t('cart')}
-          {cart.length > 0 && (
-            <span className={styles.counter}>{cart.length}</span>
-          )}
-        </Link>
-        <Link
-          to="/favorites"
-          className={`${styles.navLink} ${location.pathname === '/favorites' ? styles.active : ''}`}
-        >
-          {t('favorites')}
-          {favorites.length > 0 && (
-            <span className={styles.counter}>{favorites.length}</span>
-          )}
-        </Link>
-      </nav>
+          <Link
+            to="/cart"
+            className={`${styles.navLink} ${location.pathname === '/cart' ? styles.active : ''}`}
+          >
+            {t('cart')}
+            {cart.length > 0 && (
+              <span className={styles.counter}>{cart.length}</span>
+            )}
+          </Link>
+          <Link
+            to="/favorites"
+            className={`${styles.navLink} ${location.pathname === '/favorites' ? styles.active : ''}`}
+          >
+            {t('favorites')}
+            {favorites.length > 0 && (
+              <span className={styles.counter}>{favorites.length}</span>
+            )}
+          </Link>
+        </nav>
+      </div>
+
       <div className={styles.actions}>
         <Button variant="secondary" size="sm" onClick={toggleTheme}>
           {theme === 'dark' ? '🌞' : '🌙'}

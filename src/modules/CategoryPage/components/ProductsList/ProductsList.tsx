@@ -17,7 +17,9 @@ export const ProductsList: React.FC<Props> = ({
   }
 
   return (
-    <div className={`${styles.list} ${isSlider ? styles.sliderList : ''}`}>
+    <div
+      className={`${styles.productGrid} ${isSlider ? styles.sliderMode : ''}`}
+    >
       {products.map(product => (
         <ProductCard key={product.id} product={product} />
       ))}

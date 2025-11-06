@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './HomePage.module.scss';
 import { Product } from '../shared/types';
-import { ProductSlider } from './components/productSlider';
+import { SliderSection } from './components/SliderSection/SliderSection';
 import { PictureSlider } from './components/pictureSlider';
 import { Link } from 'react-router-dom';
 
@@ -23,10 +23,10 @@ export const HomePage: React.FC = () => {
   };
 
   const banners = [
-    'img/banner-accessories.png',
-    'img/banner-phones.png',
-    'img/banner-tablets.png',
-    'img/Banner.png',
+    'img/banner-picture.jpg',
+    'img/banner-picture2.jpg',
+    'img/banner-picture3.jpg',
+    'img/banner-picture4.jpg',
   ];
 
   useEffect(() => {
@@ -70,11 +70,11 @@ export const HomePage: React.FC = () => {
               (a.priceRegular ?? a.fullPrice) -
               (a.priceDiscount ?? a.priceRegular),
           )
-          .slice(0, 10);
+          .slice(0, 12);
 
         const newest = allProducts
           .sort((a, b) => (b.year ?? 0) - (a.year ?? 0))
-          .slice(0, 10);
+          .slice(0, 12);
 
         const categories = {
           phones: phonesData,
@@ -109,8 +109,7 @@ export const HomePage: React.FC = () => {
       <h2 className={styles.welcome}>{t('welcome')}</h2>
       <PictureSlider banners={banners} />
       <section className={styles.section}>
-        <h2>{t('newProducts')}</h2>
-        <ProductSlider products={newProducts} />
+        <SliderSection title={t('newProducts')} products={newProducts} />
       </section>
       <section className={styles.categorySection}>
         <h2 className={styles.categoryTitle}>{t('shopByCategory')}</h2>
@@ -137,8 +136,11 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
       <section className={styles.section}>
-        <h2 className={styles.hotPrices}>{t('hotPrices')}</h2>
-        <ProductSlider products={hotProducts} />
+        <SliderSection
+          title={t('hotPrices')}
+          products={hotProducts}
+          isHot={true}
+        />
       </section>
     </div>
   );

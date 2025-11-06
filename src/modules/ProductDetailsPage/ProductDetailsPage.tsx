@@ -125,7 +125,7 @@ export const ProductDetailsPage: React.FC = () => {
             {currentProduct.images?.map((img, index) => (
               <img
               key={index}
-              src={img ? `/${img}` : '/img/prduct-not-found.png'}
+              src={img ? `/${img}` : '/img/product-not-found.png'}
               alt={`${currentProduct.name} image ${index + 1}`}
               className={`${styles.thumbnail} ${selectedImageIndex === index ? styles.selected : ''}`}
               onClick={() => setSelectedImageIndex(index)}
