@@ -2,76 +2,51 @@
 @use '../../styles/mixins' as *;
 
 .header {
+  box-sizing: border-box;
   display: flex;
   height: 64px;
-  box-shadow: 0 1px 0 0 $elements-color;
-
+  box-shadow: 0 1px 0 0 var(--elements-color);
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: var (--main-bg);
-  transition: box-shadow 0.3s;
+  background-color: var(--main-bg);
+
+  @media (max-width: 1199px) {
+    height: 48px;
+  }
 
   &--scrolled {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   &__container {
-    box-sizing: border-box;
     display: flex;
     align-items: center;
+    box-sizing: border-box;
+
+    max-width: 1440px;
+    width: 100%;
     margin: 0 auto;
-    padding-left: 24px;
-    width: 1440px;
   }
 
   &__logo {
     @include imgHover;
-
     display: block;
-    margin-right: 48px;
+    padding: 0 24px;
+    margin-right: 24px;
+
+    @media (min-width: 640px) and (max-width: 1199px) {
+      padding: 0 16px;
+      margin-right: 8px;
+    }
   }
 
-  &__links {
-    display: flex;
-    height: 100%;
+  &__menuIcon {
     margin-left: auto;
-  }
-
-  &__link {
-    display: flex;
-    justify-content: center;
-
     height: 100%;
-    width: 64px;
-    align-items: center;
-    border-left: 1px solid $elements-color;
-
-    position: relative;
-
-    &--active {
-      position: relative;
-
-      &::after {
-        position: absolute;
-        content: '';
-        height: 3px;
-        width: 100%;
-        background-color: $primary-color;
-        top: calc(100% - 2px);
-        left: 0;
-      }
-    }
-
-    &::after {
-      content: var(--count);
-      display: block;
-
-      position: absolute;
-      top: 15px;
-      right: 35%;
-      color: $main-bg;
-      font-size: 8px;
-    }
+    aspect-ratio: 1 / 1;
+    background-color: var(--main-bg);
+    border: none;
+    cursor: pointer;
   }
 }

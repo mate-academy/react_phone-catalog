@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Dropdown.module.scss';
 
 type Props = {
@@ -34,6 +34,25 @@ export const Dropdown: React.FC<Props> = ({
     setIsOpen(false);
   };
 
+  const dropdownRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className={styles.dropdown}>
       <p className={styles.dropdown__name}>{title}</p>
@@ -47,7 +66,7 @@ export const Dropdown: React.FC<Props> = ({
         </p>
       </div>
       {isOpen && (
-        <ul className={styles.dropdown__list}>
+        <ul className={styles.dropdown__list} ref={dropdownRef}>
           {options.map(([label, value]) => (
             <li
               key={label}

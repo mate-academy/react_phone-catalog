@@ -8,7 +8,7 @@
   &__name {
     @include smallText;
 
-    color: $secondary-color;
+    color: var(--secondary-color);
   }
 
   &__input {
@@ -17,17 +17,17 @@
     align-items: center;
     justify-content: space-between;
 
-    border: 1px solid $icons-color;
+    border: 1px solid var(--icons-color);
     height: 40px;
 
     transition: border-color 0.3s ease;
 
     &:hover {
-      border-color: $secondary-color;
+      border-color: var(--secondary-color);
     }
 
     &:focus {
-      border-color: $primary-color;
+      border-color: var(--primary-color);
     }
   }
 
@@ -68,13 +68,13 @@
     height: 32px;
     padding-inline: 12px;
     font-weight: 500;
-    color: $secondary-color;
+    color: var(--secondary-color);
 
     transition: color 0.3s ease;
 
     &:hover {
-      color: $primary-color;
-      background-color: $hover-bg-color;
+      color: var(--primary-color);
+      background-color: var(--hover-bg-color);
     }
   }
 }

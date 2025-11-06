@@ -1,12 +1,17 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPage = () => {
   const navigate = useNavigate();
 
-  setTimeout(() => {
-    navigate('/');
-  }, 5000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/');
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   return (
     <div className={styles.notFoundPage}>

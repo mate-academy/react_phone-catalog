@@ -23,7 +23,7 @@
 }
 
 .cartItem {
-  border: 1px solid $elements-color;
+  border: 1px solid var(--elements-color);
   transition: border-color 0.3s ease;
 
   display: flex;
@@ -31,7 +31,7 @@
   padding: 24px;
 
   &:hover {
-    border-color: $primary-color;
+    border-color: var(--primary-color);
   }
 
   @media (max-width: 639px) {

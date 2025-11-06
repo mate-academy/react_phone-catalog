@@ -5,4 +5,8 @@
   row-gap: 40px;
 
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(24, 1fr);
+  }
 }

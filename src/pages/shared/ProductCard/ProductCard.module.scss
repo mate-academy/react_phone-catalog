@@ -8,7 +8,11 @@
   gap: 8px;
   padding: 32px;
 
-  border: 1px solid $elements-color;
+  border: 1px solid var(--elements-color);
+
+  @media (min-width: 1200px) {
+      grid-column: span 6;
+    }
 
   &:hover {
     box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
@@ -64,7 +68,7 @@
   &__oldPrice {
     font-weight: 600;
     text-decoration: line-through;
-    color: $secondary-color;
+    color: var(--secondary-color);
   }
 
   &__buttons {

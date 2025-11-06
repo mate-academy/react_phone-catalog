@@ -1,16 +1,30 @@
 import { NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigation } from './components/Navigation/Navigation';
-import { ProductContext } from '../../store/ProductContext';
+import { IconLinks } from './components/IconLinks/IconLinks';
+import { MobileMenu } from './components/MobileMenu/MobileMenu';
+
+const LOGO = 'img/header/header__logo.png';
+const LOGO_SMALL = 'img/header/header__logo-small.png';
 
 export const Header = () => {
-  const { cart, favs } = useContext(ProductContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [size, setSize] = useState<number>(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setSize(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = size <= 639;
   const [scrolled, setScrolled] = useState(false);
 
-  const cartCount = cart.length;
-  const favsCount = favs.length;
+  const logoLink = size < 1199 ? LOGO_SMALL : LOGO;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,55 +50,38 @@ export const Header = () => {
           }
         >
           <img
-            src="/public/img/header/header__logo.png"
+            src={logoLink}
             alt="nice gadgets logo"
             className={styles.header__img}
           />
         </NavLink>
 
-        <Navigation />
-
-        <div className={styles.header__links}>
-          <NavLink
-            to="/cart"
-            style={{ '--count': `"${cartCount}"` } as React.CSSProperties}
-            className={({ isActive }) =>
-              isActive
-                ? `${styles.header__link} ${styles['header__link--active']}`
-                : styles.header__link
-            }
+        {isMobile ? (
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={styles.header__menuIcon}
           >
             <img
               src={
-                cart.length
-                  ? '/public/img/icons/cart-counter.svg'
-                  : '/img/icons/cart-empty.svg'
+                isMenuOpen
+                  ? '/public/img/icons/close-active.svg'
+                  : '/public/img/icons/menu.svg'
               }
-              alt="Cart"
-              className={styles.header__icon}
+              alt={isMenuOpen ? 'close' : 'open'}
             />
-          </NavLink>
-          <NavLink
-            to="/favourites"
-            style={{ '--count': `"${favsCount}"` } as React.CSSProperties}
-            className={({ isActive }) =>
-              isActive
-                ? `${styles.header__link} ${styles['header__link--active']}`
-                : styles.header__link
-            }
-          >
-            <img
-              src={
-                favs.length
-                  ? '/public/img/icons/favs-counter.svg'
-                  : '/img/icons/favs.svg'
-              }
-              alt="Cart"
-              className={styles.header__icon}
+          </button>
+        ) : (
+          <>
+            <Navigation className="navigation" setIsMenuOpen={setIsMenuOpen} />
+            <IconLinks
+              mainClass={['headerLinks']}
+              linkClass={['headerLink']}
+              iconClass={['headerIcon']}
             />
-          </NavLink>
-        </div>
+          </>
+        )}
       </div>
+      {isMenuOpen && isMobile && <MobileMenu setIsMenuOpen={setIsMenuOpen} />}
     </header>
   );
 };

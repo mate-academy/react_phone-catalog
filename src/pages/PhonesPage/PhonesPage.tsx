@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { ProductContext } from '../../store/ProductContext';
 import { Catalog } from '../shared/Catalog/Catalog';
-import styles from './PhonesPage.module.scss';
 import { Breadcrumbs } from '../shared/Breadcrumbs/Breadcrumbs';
+import styles from './PhonesPage.module.scss';
 
 export const PhonesPage = () => {
   const { products } = useContext(ProductContext);

@@ -20,6 +20,10 @@
     @include h1Title;
 
     grid-column: 1/-1;
+
+    @media (max-width: 639px) {
+      @include h1TitleMobile;
+    }
   }
 
   &__summary {
@@ -47,7 +51,7 @@
   &__empty {
     text-align: center;
     font-size: 32px;
-    color: $secondary-color;
+    color: var(--secondary-color);
     background-image: url('/public/img/cart/cart-is-empty.png');
     height: 500px;
     width: 100%;

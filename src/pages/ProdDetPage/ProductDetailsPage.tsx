@@ -33,7 +33,7 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className={styles.productDetailsPage}>
-      <div className="newContainer">
+      <div className="container">
         <div className={styles.productDetailsPage__breadcrumbs}>
           <Breadcrumbs endpoint={product?.name} category={category || ''} />
         </div>

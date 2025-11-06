@@ -71,12 +71,12 @@
   }
 
   &__label {
-    color: $secondary-color;
+    color: var(--secondary-color);
     text-transform: capitalize;
   }
 
   &__value {
-    color: $primary-color;
+    color: var(--primary-color);
   }
 }
 
@@ -85,7 +85,7 @@
   position: absolute;
   height: 1px;
   width: 100%;
-  background-color: $elements-color;
+  background-color: var(--elements-color);
 }
 
 @mixin btnCommon {
@@ -118,7 +118,7 @@
 
   background-color: $main-bg;
   border: none;
-  color: $secondary-color;
+  color: var(--secondary-color);
   padding: 0;
   left: 20px;
   cursor: pointer;
@@ -142,7 +142,7 @@
   }
 
   &:hover {
-    color: $primary-color;
+    color:var(--primary-color);
   }
 }
 
@@ -150,18 +150,18 @@
   transition: border-color 0.3s ease;
 
   &:not(&--disabled):hover {
-    border-color: $primary-color;
+    border-color: var(--primary-color);
   }
 }
 
 @mixin btnCart {
-  background-color: $primary-color;
+  background-color: var(--primary-color);
   color: $main-bg;
   font-weight: 600;
 
   &--active {
     background-color: $main-bg;
-    border: 1px solid $elements-color;
+    border: 1px solid var(--elements-color);
     color: $green;
   }
 

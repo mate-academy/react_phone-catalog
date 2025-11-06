@@ -12,7 +12,7 @@ $secondary-color-dark: #75767F;
 $icons-color-dark: #4A4D58;
 $elements-color-dark: #3B3E4A;
 $hover-bg-color-dark: #323542;
-$main-bg-dark: black;
+$main-bg-dark: #161827;
 $green-dark: #27AE60;
 $red-dark: #EB5757;
 
@@ -22,7 +22,7 @@ $red-dark: #EB5757;
   --icons-color: #{$icons-color};
   --elements-color: #{$elements-color};
   --hover-bg-color: #{$hover-bg-color};
-  --white: #{$main-bg};
+  --main-bg: #{$main-bg};
   --green: #{$green};
   --red: #{$red};
 }
@@ -33,7 +33,7 @@ $red-dark: #EB5757;
   --icons-color: #{$icons-color-dark};
   --elements-color: #{$elements-color-dark};
   --hover-bg-color: #{$hover-bg-color-dark};
-  --main-bg-dark: #{$main-bg-dark};
+  --main-bg: #{$main-bg-dark};
   --green: #{$green-dark};
   --red: #{$red-dark};
 }

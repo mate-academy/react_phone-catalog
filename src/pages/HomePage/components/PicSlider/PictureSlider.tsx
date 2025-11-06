@@ -64,6 +64,14 @@ export const PictureSlider = () => {
     }
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
   return (
     <div className={styles.pictureSlider}>
       <Button
@@ -101,6 +109,22 @@ export const PictureSlider = () => {
         className={['arrow', 'arrow--right', 'pictureSlider']}
         onClick={() => nextSlide()}
       />
+
+      <ul className={styles.pictureSlider__pagination}>
+        {visiblPictures.map((pic, index) => (
+          <li key={pic} className={styles.pictureSlider__paginationItem}>
+            <button
+              disabled={index === currentIndex}
+              className={`${styles.pictureSlider__paginationBtn} ${
+                index === currentIndex
+                  ? styles['pictureSlider__paginationBtn--active']
+                  : ''
+              }`}
+              onClick={() => setCurrentIndex(index)}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

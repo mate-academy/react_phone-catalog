@@ -18,7 +18,7 @@
   }
 
   &__link {
-    color: $primary-color;
+    color: var(--primary-color);
     text-decoration: none;
     position: relative;
 
@@ -48,7 +48,7 @@
   &__count {
     margin-top: 8px;
     font-weight: 500;
-    color: $secondary-color;
+    color: var(--secondary-color);
     grid-column: 1 / -1;
   }
 

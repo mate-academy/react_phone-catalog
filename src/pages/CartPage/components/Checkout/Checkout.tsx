@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Button } from '../../../../components/Button/Button';
 import styles from './Checkout.module.scss';
+import { ModalWindow } from '../../ModalWindow/ModalWindow';
 
 type Props = {
   total: number;
@@ -7,6 +9,8 @@ type Props = {
 };
 
 export const Checkout: React.FC<Props> = ({ total, quantity }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className={styles.checkout}>
       <h2 className={styles.checkout__total}>${total}</h2>
@@ -16,8 +20,9 @@ export const Checkout: React.FC<Props> = ({ total, quantity }) => {
       <Button
         textContent="Checkout"
         className={['button', 'checkoutButton']}
-        onClick={() => {}}
+        onClick={() => setIsModalOpen(true)}
       />
+      {isModalOpen && <ModalWindow setIsModalOpen={setIsModalOpen} />}
     </div>
   );
 };

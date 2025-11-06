@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { ProductList } from '../ProductList/ProductList';
 import { ProductFull } from '../../../types/Product_full';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { ErrorContext } from '../../../store/ErrorContext';
 import { Loader } from '../../../components/Loader';
 import { Pagination } from '../Pagination/Pagination';
@@ -55,9 +55,13 @@ export const Catalog: React.FC<Props> = ({ title, products, noDropdowns }) => {
     setSearchParams(params);
   };
 
+  const listRef = useRef<HTMLDivElement>(null);
+
   return (
     <div className={styles.catalog}>
-      <h1 className={styles.catalog__title}>{title}</h1>
+      <h1 className={styles.catalog__title} ref={listRef}>
+        {title}
+      </h1>
       <p className={styles.catalog__count}>{products.length} model(s)</p>
       {isLoading && <Loader />}
       {!isLoading && errorMessage && (
@@ -105,6 +109,7 @@ export const Catalog: React.FC<Props> = ({ title, products, noDropdowns }) => {
                 quantity={products.length}
                 itemsPerPage={+perPage}
                 page={page}
+                listRef={listRef}
               />
             </div>
           )}

@@ -33,13 +33,13 @@
     }
 
     &--endpoint {
-      color: $secondary-color;
+      color: var(--secondary-color);
     }
   }
 
   &__link {
     text-decoration: none;
-    color: $primary-color;
+    color: var(--primary-color);
     text-transform: capitalize;
 
     &:hover {

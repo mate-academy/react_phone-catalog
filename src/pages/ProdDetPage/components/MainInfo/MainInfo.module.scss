@@ -23,7 +23,7 @@
     &Label {
       @include smallText;
 
-      color: $secondary-color;
+      color: var(--secondary-color);
 
       margin-bottom: 8px;
     }
@@ -41,7 +41,7 @@
     &Link {
       @include btnHover;
 
-      border: 1px solid $elements-color;
+      border: 1px solid var(--elements-color);
       border-radius: 50%;
       cursor: pointer;
 
@@ -53,7 +53,7 @@
       background-color: transparent;
 
       &--active {
-        border-color: $primary-color;
+        border-color: var(--primary-color);
         cursor: auto;
       }
     }
@@ -69,14 +69,14 @@
       position: absolute;
       width: 100%;
       height: 1px;
-      background-color: $elements-color;
+      background-color: var(--elements-color);
       top: calc(100% + 24px);
     }
 
     &Label {
       @include smallText;
 
-      color: $secondary-color;
+      color: var(--secondary-color);
 
       margin-bottom: 8px;
     }
@@ -99,7 +99,7 @@
       align-items: center;
       justify-content: center;
 
-      border-color: $icons-color;
+      border-color: var(--icons-color);
 
       color: inherit;
       text-decoration: none;
@@ -108,8 +108,8 @@
       height: 32px;
 
       &--active {
-        border-color: $primary-color;
-        background-color: $primary-color;
+        border-color: var(--primary-color);
+        background-color: var(--primary-color);
         color: $main-bg;
         cursor: auto;
       }
@@ -129,7 +129,7 @@
     font-weight: 500;
     font-size: 22px;
     text-decoration: line-through;
-    color: $secondary-color;
+    color: var(--secondary-color);
   }
 
   &__buttons {

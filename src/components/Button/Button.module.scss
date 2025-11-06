@@ -10,21 +10,21 @@
   height: 32px;
   width: 32px;
 
-  border: 1px solid $elements-color;
+  border: 1px solid var(--elements-color);
   color: inherit;
   font-weight: 500;
 
   transition: border-color 0.3s ease;
 
   &--active {
-    background-color: $primary-color;
+    background-color: var(--primary-color);
     border: none;
     color: $main-bg;
     cursor: auto;
   }
 
   &:hover {
-    border-color: $primary-color;
+    border-color: var(--primary-color);
   }
 }
 
@@ -35,11 +35,11 @@
   height: 32px;
   width: 32px;
 
-  border: 1px solid $icons-color;
+  border: 1px solid var(--icons-color);
 
   &--disabled {
     background-image: url('/public/img/icons/arrow-left-disabled.svg');
-    border-color: $elements-color;
+    border-color: var(--elements-color);
     cursor: not-allowed;
   }
 
@@ -75,13 +75,13 @@
   width: 40px;
   height: 40px;
 
-  border-color: $icons-color;
+  border-color: var(--icons-color);
 
   background-image: url('/public/img/icons/favs.svg');
 
   &--active {
     background-image: url('/public/img/icons/favs-filled.svg');
-    border-color: $elements-color;
+    border-color: var(--elements-color);
   }
 }
 
@@ -110,7 +110,7 @@
   height: 32px;
   width: 32px;
 
-  border-color: $icons-color;
+  border-color: var(--icons-color);
 
   @include btnHover;
 }
@@ -120,7 +120,7 @@
 
   &--disabled {
     background-image: url('/public/img/icons/minus-disabled.svg');
-    border-color: $elements-color;
+    border-color: var(--elements-color);
     cursor: not-allowed;
   }
 }

@@ -7,6 +7,7 @@ type Props = {
   quantity: number;
   itemsPerPage: number;
   page: string;
+  listRef: React.RefObject<HTMLDivElement>;
 };
 
 const VISIBLE_COUNT = 4;
@@ -15,6 +16,7 @@ export const Pagination: React.FC<Props> = ({
   quantity,
   itemsPerPage,
   page,
+  listRef,
 }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -28,6 +30,8 @@ export const Pagination: React.FC<Props> = ({
 
     params.set('page', value);
     setSearchParams(params);
+
+    listRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleLeftClick = () => {
