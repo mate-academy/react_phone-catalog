@@ -111,6 +111,12 @@
   color: $color-white;
   text-transform: uppercase;
   font-size: $wight-10;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 20px $accent-hover;
+    transform: translateY(-1px);
+  }
 
   @include on-desktop {
     height: 70px;
