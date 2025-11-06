@@ -17,16 +17,16 @@ export const HomePage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const categoryBanners: { [key: string]: string } = {
-    phones: 'img/phones-1.png',
-    tablets: 'img/phones-2.png',
-    accessories: 'img/phones-3.png',
+    phones: '/img/phones-1.png',
+    tablets: '/img/phones-2.png',
+    accessories: '/img/phones-3.png',
   };
 
   const banners = [
-    'img/banner-picture.jpg',
-    'img/banner-picture2.jpg',
-    'img/banner-picture3.jpg',
-    'img/banner-picture4.jpg',
+    './img/banner-picture.jpg',
+    './img/banner-picture2.jpg',
+    './img/banner-picture3.jpg',
+    './img/banner-picture4.jpg',
   ];
 
   useEffect(() => {
