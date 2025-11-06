@@ -20,9 +20,9 @@ export const HomePage = () => {
   return (
     <div className={styles.homePage}>
       <div className="container">
-        <h1 className={styles.homePage__title}>
+        <h2 className={styles.homePage__title}>
           Welcome to Nice Gadgets store!
-        </h1>
+        </h2>
         <section
           className={`${styles.homePage__section} ${styles['homePage__section--pictureSlider']}`}
         >

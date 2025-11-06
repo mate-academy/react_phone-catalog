@@ -10,7 +10,7 @@ export const Categories = () => {
 
   return (
     <div className={styles.categories}>
-      <h1 className={styles.categories__mainTitle}>Shop by category</h1>
+      <h2 className={styles.categories__mainTitle}>Shop by category</h2>
       <ul className={styles.categories__list}>
         {CATEGORIES.map(category => (
           <li key={category} className={styles.categories__item}>
