@@ -1,62 +1,62 @@
 @use './variables' as *;
 
-@mixin h1Title {
+@mixin h1-title {
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
   font-weight: 700;
 }
 
-@mixin h1TitleMobile {
+@mixin h1-title-mobile {
   font-size: 32px;
   line-height: 41px;
 }
 
-@mixin h2Title {
+@mixin h2-title {
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
   font-weight: 700;
 }
 
-@mixin h2TitleMobile {
+@mixin h2-title-mobile {
   font-size: 22px;
   line-height: 31px;
 }
 
-@mixin h3Title {
+@mixin h3-title {
   font-size: 22px;
   line-height: 31px;
   letter-spacing: 0;
   font-weight: 700;
 }
 
-@mixin h3TitleMobile {
+@mixin h3-title-mobile {
   font-size: 20px;
   line-height: 26px;
   font-weight: 600;
 }
 
-@mixin h4Title {
+@mixin h4-title {
   font-size: 20px;
   line-height: 26px;
   letter-spacing: 0;
   font-weight: 600;
 }
 
-@mixin h4TitleMobile {
+@mixin h4-title-mobile {
   font-size: 16px;
   line-height: 20px;
 }
 
-@mixin smallText {
+@mixin small-text {
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0;
 }
 
-@mixin specsBlock {
+@mixin specs-block {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -67,7 +67,7 @@
     display: flex;
     justify-content: space-between;
 
-    @include smallText;
+    @include small-text;
   }
 
   &__label {
@@ -88,7 +88,7 @@
   background-color: var(--elements-color);
 }
 
-@mixin btnCommon {
+@mixin btn-common {
   box-sizing: border-box;
   font-family: inherit;
 
@@ -108,8 +108,8 @@
   letter-spacing: 0;
 }
 
-@mixin btnBack {
-  @include smallText;
+@mixin btn-back {
+  @include small-text;
 
   margin-bottom: 16px;
 
@@ -146,7 +146,7 @@
   }
 }
 
-@mixin btnHover {
+@mixin btn-hover {
   transition: border-color 0.3s ease;
 
   &:not(&--disabled):hover {
@@ -154,7 +154,7 @@
   }
 }
 
-@mixin btnCart {
+@mixin btn-cart {
   background-color: var(--primary-color);
   color: $main-bg;
   font-weight: 600;
@@ -170,7 +170,7 @@
   }
 }
 
-@mixin imgHover {
+@mixin img-hover {
   transition: transfrom, 0.3s ease;
 
     &:hover {

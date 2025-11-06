@@ -2,5 +2,5 @@
 @use '../../../styles/variables' as *;
 
 .specList {
-  @include specsBlock;
+  @include specs-block;
 }

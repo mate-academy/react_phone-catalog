@@ -40,7 +40,7 @@
     justify-content: space-between;
     align-items: center;
 
-                @media (max-width: 639px) {
+    @media (max-width: 639px) {
       flex-direction: column;
       align-items: flex-start;
       gap: 16px;
@@ -91,7 +91,7 @@
   }
 
   &__label {
-    @include smallText;
+    @include small-text;
 
     color: var(--secondary-color);
   }

@@ -12,7 +12,7 @@
   }
 
   &__title {
-    @include h1Title;
+    @include h1-title;
 
     margin-bottom: 56px;
 
@@ -23,7 +23,8 @@
     }
 
     @media (max-width: 639px) {
-      @include h1TitleMobile;
+      @include h1-title-mobile;
+      
       margin-bottom: 24px;
     }
   }

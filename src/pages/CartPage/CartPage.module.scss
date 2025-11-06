@@ -5,11 +5,11 @@
   padding-block: 40px 80px;
 
   @media (max-width: 1199px) {
-      padding-bottom: 64px;
-    }
+    padding-bottom: 64px;
+  }
 
   &__button {
-    @include btnBack;
+    @include btn-back;
 
     display: block;
 
@@ -17,12 +17,12 @@
   }
 
   &__title {
-    @include h1Title;
+    @include h1-title;
 
     grid-column: 1/-1;
 
     @media (max-width: 639px) {
-      @include h1TitleMobile;
+      @include h1-title-mobile;
     }
   }
 
@@ -31,20 +31,17 @@
 
     display: grid;
     grid-template-columns: repeat(24, 1fr);
-    column-gap: 16px;
+    gap: 16px;
 
     grid-column: 1/-1;
 
     @media (min-width: 640px) and (max-width: 1199px) {
       grid-template-columns: repeat(12, 1fr);
-      row-gap: 32px;
-      column-gap: 0;
+      gap: 32px 0;
     }
 
     @media (max-width: 639px) {
       grid-template-columns: repeat(4, 1fr);
-      row-gap: 32px;
-      column-gap: 0;
     }
   }
 

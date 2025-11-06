@@ -25,7 +25,7 @@
     display: flex;
     margin: 0 auto;
 
-    @include imgHover;
+    @include img-hover;
   }
 
   &__image {
@@ -50,7 +50,7 @@
   }
 
   &__price {
-    @include h3Title;
+    @include h3-title;
 
     margin-bottom: 8px;
 

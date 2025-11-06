@@ -5,12 +5,12 @@
   grid-column: 1/-1;
 
   &__title {
-    @include h1Title;
+    @include h1-title;
 
     margin-bottom: 8px;
 
     @media (max-width: 639px) {
-      @include h1TitleMobile;
+      @include h1-title-mobile;
     }
   }
 

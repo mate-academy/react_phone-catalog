@@ -4,8 +4,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: stretch;
-  column-gap: 16px;
-  row-gap: 8px;
+  gap: 8px 16px;
 
    @media (max-width: 639px) {
       grid-template-columns: 1fr;

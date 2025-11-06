@@ -5,10 +5,9 @@
   grid-column: 14 / span 7;
 
   @media (min-width: 640px) and (max-width: 1199px) {
+    @include small-text;
+    
     grid-column: 8/-1;
-  }
-
-  @media (max-width: 639px) {
   }
 
   &__colors {
@@ -21,7 +20,7 @@
     }
 
     &Label {
-      @include smallText;
+      @include small-text;
 
       color: var(--secondary-color);
 
@@ -39,7 +38,7 @@
     }
 
     &Link {
-      @include btnHover;
+      @include btn-hover;
 
       border: 1px solid var(--elements-color);
       border-radius: 50%;
@@ -74,7 +73,7 @@
     }
 
     &Label {
-      @include smallText;
+      @include small-text;
 
       color: var(--secondary-color);
 
@@ -92,8 +91,8 @@
     }
 
     &Link {
-      @include btnCommon;
-      @include btnHover;
+      @include btn-common;
+      @include btn-hover;
 
       display: flex;
       align-items: center;
@@ -122,7 +121,7 @@
     display: flex;
     gap: 8px;
 
-    @include h2Title;
+    @include h2-title;
   }
 
   &__oldPrice {
@@ -142,6 +141,6 @@
   &__specs {
     margin-top: 32px;
 
-    @include specsBlock;
+    @include specs-block;
   }
 }

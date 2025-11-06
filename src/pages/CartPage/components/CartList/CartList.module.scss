@@ -4,8 +4,7 @@
 .cartList {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
-  column-gap: 16px;
-  row-gap: 16px;
+  gap: 16px;
   grid-column: 1/17;
 
   @media (min-width: 640px) and (max-width: 1199px) {
@@ -84,6 +83,6 @@
   }
 
   &__price {
-    @include h3Title;
+    @include h3-title;
   }
 }

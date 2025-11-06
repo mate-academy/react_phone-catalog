@@ -22,10 +22,10 @@
     margin-bottom: 40px;
 
     @media (max-width: 639px) {
+      @include h2-title-mobile;
 
-    @include h2TitleMobile;
-    margin-bottom: 32px;
-  }
+      margin-bottom: 32px;
+    }
   }
 
   &__topSection {
@@ -78,11 +78,8 @@
     grid-column: 1/-1;
   }
 
-  @media (max-width: 639px) {
-  }
-
   &__title {
-    @include h3Title;
+    @include h3-title;
 
     position: relative;
     display: flex;
@@ -107,7 +104,7 @@
   }
 
   &__subtitle {
-    @include h4Title;
+    @include h4-title;
 
     margin-bottom: 16px;
   }
@@ -127,11 +124,8 @@
     grid-column: 1/-1;
   }
 
-  @media (max-width: 639px) {
-  }
-
   &__title {
-    @include h3Title;
+    @include h3-title;
 
     position: relative;
     display: flex;

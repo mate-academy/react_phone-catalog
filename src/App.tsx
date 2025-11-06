@@ -13,8 +13,6 @@ import './App.scss';
 import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
 
 export const App = () => {
-
-
   return (
     <div className="App">
       <ScrollToTop />

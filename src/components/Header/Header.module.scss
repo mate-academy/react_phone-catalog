@@ -30,7 +30,8 @@
   }
 
   &__logo {
-    @include imgHover;
+    @include img-hover;
+
     display: block;
     padding: 0 24px;
     margin-right: 24px;
