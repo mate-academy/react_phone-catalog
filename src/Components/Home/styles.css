@@ -1,6 +1,7 @@
-#app {
+.app {
   height: 100%;
 }
+
 html,
 body {
   position: relative;
@@ -10,7 +11,7 @@ body {
 body {
   background: #000;
   font-family:
-    Helvetica Neue,
+    "Helvetica Neue",
     Helvetica,
     Arial,
     sans-serif;
@@ -30,7 +31,6 @@ body {
   font-size: 18px;
   background: #444;
 
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;

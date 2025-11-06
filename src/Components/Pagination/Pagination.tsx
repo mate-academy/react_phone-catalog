@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import './Paginaation.scss'
+import './Paginaation.scss';
 import classNames from 'classnames';
 
 type Props = {
@@ -30,12 +30,10 @@ export const Pagination: React.FC<Props> = ({
     if (isPageActive && isPageActive <= 4) {
       start = 0;
       end = visiblePages;
-    }
-    else if (isPageActive && isPageActive >= pageNumbers.length - 3) {
+    } else if (isPageActive && isPageActive >= pageNumbers.length - 3) {
       start = pageNumbers.length - visiblePages;
       end = pageNumbers.length;
-    }
-    else if (isPageActive) {
+    } else if (isPageActive) {
       start = isPageActive - 4;
       end = isPageActive + 3;
     }

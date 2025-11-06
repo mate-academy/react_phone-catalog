@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import './Home.scss';
 import { useEffect, useState } from 'react';
-import classNames from 'classnames';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, Autoplay} from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 
@@ -49,32 +48,36 @@ export const Home: React.FC = () => {
               <img src="/img/ui-kit/chevron-arrow-left.png" alt="button" />
             </div>
 
-          <Swiper
-            navigation={{
-              nextEl: '.home__slider-button--right',
-              prevEl: '.home__slider-button',
-            }}
-             autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-             pagination={{
-              el: '.home-banners__pagination',
-              clickable: true,
-              bulletClass: 'paginate-button',
-              bulletActiveClass: 'active-pagination',
-            }}
-            modules={[Navigation, Autoplay, Pagination]}
-            loop={true}
-          >
-            {pageBanners.map(banner => (
-              <SwiperSlide key={banner.image}>
-                <Link to={banner.link} >
-                  <img src={banner.image} alt="banner" className="home-banner" />
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            <Swiper
+              navigation={{
+                nextEl: '.home__slider-button--right',
+                prevEl: '.home__slider-button',
+              }}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              pagination={{
+                el: '.home-banners__pagination',
+                clickable: true,
+                bulletClass: 'paginate-button',
+                bulletActiveClass: 'active-pagination',
+              }}
+              modules={[Navigation, Autoplay, Pagination]}
+              loop={true}
+            >
+              {pageBanners.map(banner => (
+                <SwiperSlide key={banner.image}>
+                  <Link to={banner.link}>
+                    <img
+                      src={banner.image}
+                      alt="banner"
+                      className="home-banner"
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
 
             <div className="home__slider-button--right">
               <img src="/img/ui-kit/chevron-arrow-left.png" alt="button" />
@@ -83,10 +86,7 @@ export const Home: React.FC = () => {
 
           <div className="home-banners__pagination">
             {pageNumbers.map(number => (
-              <div
-                key={number}
-                className='paginate-button'
-              />
+              <div key={number} className="paginate-button" />
             ))}
           </div>
         </div>

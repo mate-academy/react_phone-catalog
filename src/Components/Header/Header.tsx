@@ -36,11 +36,11 @@ export const Header: React.FC = () => {
 
   const handleMenuClick = () => {
     if (isMenuOpen) {
-      navigate(lastPath)
+      navigate(lastPath);
     } else {
-      navigate('/menu')
+      navigate('/menu');
     }
-  }
+  };
 
   const ActivateLink = ({ isActive }: { isActive: boolean }) =>
     classNames('header__nav--link', {
@@ -121,8 +121,16 @@ export const Header: React.FC = () => {
           </>
         ) : (
           <div className="header__nav--icons--section">
-            <div className="header__nav--icons--section--menu" onClick={handleMenuClick}>
-              <img src={isMenuOpen ? "/img/ui-kit/Close.png" : "/img/ui-kit/Menu.png"} alt="menu-icon" />
+            <div
+              className="header__nav--icons--section--menu"
+              onClick={handleMenuClick}
+            >
+              <img
+                src={
+                  isMenuOpen ? '/img/ui-kit/Close.png' : '/img/ui-kit/Menu.png'
+                }
+                alt="menu-icon"
+              />
             </div>
           </div>
         )}

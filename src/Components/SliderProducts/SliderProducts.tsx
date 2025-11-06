@@ -6,10 +6,10 @@ import { Product } from '../../types/Product';
 import classNames from 'classnames';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
-// import 'swiper/css/navigation';
 import 'swiper/css';
+import { NavigationOptions } from 'swiper/types';
 
 type Props = {
   title: string;
@@ -17,7 +17,6 @@ type Props = {
 
 export const SliderProducts: React.FC<Props> = ({ title }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [currentwidth, setCurrentWidth] = useState(window.innerWidth);
 
   const prevRef = useRef<HTMLImageElement>(null);
   const nextRef = useRef<HTMLImageElement>(null);
@@ -45,21 +44,8 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
       const shuffled = shuffleArray(filtered);
 
       setProducts(shuffled.slice(0, 20));
-
-      const handleResize = () => {
-        setCurrentWidth(window.innerWidth);
-      };
-
-      window.addEventListener('resize', handleResize);
-
-      handleResize();
-
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
     });
   }, [title]);
-
 
   return (
     <div className="slider-products">
@@ -68,7 +54,7 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
           <h2 className="slider-products__title">{title}</h2>
           <div className="slider-products__slide-icons">
             <img
-            ref={prevRef}
+              ref={prevRef}
               src="/img/ui-kit/Slider-button-small-right.png"
               alt="slider-button"
               className={classNames(
@@ -78,11 +64,13 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
             ></img>
 
             <img
-            ref={nextRef}
+              ref={nextRef}
               src="/img/ui-kit/Slider-button-small-right.png"
               alt="slider-button"
-              className={classNames('slider-products__slide-icon--right',
-                'swiper-button-next')}
+              className={classNames(
+                'slider-products__slide-icon--right',
+                'swiper-button-next',
+              )}
             ></img>
           </div>
         </div>
@@ -91,38 +79,31 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
           <Swiper
             slidesPerView={'auto'}
             spaceBetween={16}
-            // breakpoints={{
-            //   699: {
-            //     slidesPerView: "auto",
-            //   },
-            //   1200: {
-            //     slidesPerView: 4,
-            //   },
-            // }}
             navigation={{
               nextEl: '.slider-products__slide-icon--right',
               prevEl: '.slider-products__slide-icon--left',
             }}
             modules={[Navigation]}
-              onBeforeInit={(swiper) => {
+            onBeforeInit={swiper => {
               if (swiper.params.navigation) {
-                const navigation = swiper.params.navigation as any;
+                const navigation = swiper.params
+                  .navigation as NavigationOptions;
+
                 navigation.prevEl = prevRef.current;
                 navigation.nextEl = nextRef.current;
               }
+
               swiper.navigation.init();
               swiper.navigation.update();
             }}
           >
-          {(products.map(product => (
-            <SwiperSlide key={product.id}>
-              <div
-                className="slider-products__product-wrapper"
-              >
-                <ProductCard product={product} />
-              </div>
-            </SwiperSlide>
-          )))}
+            {products.map(product => (
+              <SwiperSlide key={product.id}>
+                <div className="slider-products__product-wrapper">
+                  <ProductCard product={product} />
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>
