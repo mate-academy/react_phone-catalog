@@ -3,21 +3,20 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { MainSlider } from './MainSlider';
 
 import bannerPhones from '../../../public/img/banner-phones.png';
-import bannerAccessories from '../../../public/img/banner-accessories.png';
+import bannerStart from '../../../public/img/Banner.svg';
 import bannerTablets from '../../../public/img/banner-tablets.png';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import styles from './PicturesSlider.module.scss';
 
-const images = [bannerPhones, bannerAccessories, bannerTablets];
+const images = [bannerStart, bannerPhones, bannerTablets];
 
 export default function SliderSwiper() {
   const { handlePrevSlide, handleNextSlide, onSwiperInit } = MainSlider();
 
   return (
-    <div className={styles.swiper}>
+    <>
       <div className={styles.swiperContainer}>
         <button className={styles.buttonPrev} onClick={handlePrevSlide}>
           {'<'}
@@ -32,11 +31,14 @@ export default function SliderSwiper() {
             prevEl: `.${styles.buttonPrev}`,
           }}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
-          effect="fade"
-          className={styles.swiperImages}
+          pagination={{
+            clickable: true,
+            el: `.${styles.sliderPagination}`,
+          }}
           onSwiper={onSwiperInit}
+          effect="fade"
           loop={true}
+          className={styles.swiperImages}
         >
           {images.map((image, index) => (
             <SwiperSlide key={index}>
@@ -53,6 +55,8 @@ export default function SliderSwiper() {
           {'>'}
         </button>
       </div>
-    </div>
+
+      <div className={styles.sliderPagination}></div>
+    </>
   );
 }

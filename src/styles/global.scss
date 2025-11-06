@@ -1,17 +1,19 @@
 @use './variables.scss' as vars;
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/public/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 400;
 }
+
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/public/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
 }
+
 @font-face {
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold;
   src: url('/public/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 800;
 }
@@ -25,10 +27,9 @@ body {
 body {
   background-color: vars.$main-bg-color;
   box-sizing: border-box;
-  font-family: 'Mont', sans-seriff;
+  font-family: Mont, sans-serif;
 }
 
-// ==== Чтобы футер был внизу страницы ====
 #root {
   display: flex;
   flex-direction: column;
@@ -36,5 +37,5 @@ body {
 }
 
 main {
-  flex: 1; // растягивает контент, чтобы футер прижимался к низу
+  flex: 1;
 }

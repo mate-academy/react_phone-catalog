@@ -1,46 +1,69 @@
-@use '../../styles/mixins.scss' as *;
-
-.swiper {
-  @include page-grid;
-}
+@use '../../styles//mixins.scss' as *;
 
 .swiperContainer {
+  position: relative;
+  width: 1136px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
+  justify-content: space-between;
+  gap: 32px;
 }
 
 .swiperImages {
-  width: 1040px;
+  width: 1136px;
   height: 400px;
   overflow: hidden;
-  align-items: center;
-  justify-content: center;
+  border-radius: 16px;
 }
 
 .banner {
-  width: 1040px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-
-  &:hover {
-    transform: scale(1.02);
-  }
 }
 
 .buttonPrev,
 .buttonNext {
-  width: 32px;
-  height: 400px;
+  background: #2d2f36;
+  color: #fff;
   border: none;
-  background: #323542;
-  color: white;
-  font-size: 28px;
+  font-size: 24px;
+  width: 40px;
+  height: 400px;
+  cursor: pointer;
+  transition: background 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.buttonPrev:hover,
+.buttonNext:hover {
+  background: #444654;
+}
+
+.buttonPrev:active,
+.buttonNext:active {
+  transform: scale(0.95);
+}
+
+.sliderPagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  gap: 8px;
   cursor: pointer;
+  :global(.swiper-pagination-bullet) {
+    width: 14px;
+    height: 4px;
+    background: #3b3e4a;
+    opacity: 0.7;
+    transition: all 0.3s;
+  }
+  :global(.swiper-pagination-bullet-active) {
+    background: #f1f2f9;
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
