@@ -1,6 +1,10 @@
 import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className={styles.main}>
       <div>
@@ -13,7 +17,7 @@ export const Footer: React.FC = () => {
       </div>
       <div className={styles.main_backTo}>
         <p>Back to top</p>
-        <button>
+        <button onClick={scrollToTop}>
           <img src="img/buttons/Arrow_Top.svg" alt="" />
         </button>
       </div>

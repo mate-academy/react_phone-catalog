@@ -58,7 +58,7 @@ body {
     height: 320px;
     width: 100%;
     display: flex;
-    overflow: hidden;
+    overflow-x: hidden;
     box-sizing: border-box;
 
     @include on-tablet {

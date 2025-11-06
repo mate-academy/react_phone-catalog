@@ -35,6 +35,7 @@ export const ProductCard: React.FC<Props> = ({
   const [tablets, setTablets] = useState<ProductItemType[]>([]);
   const [accessories, setAccessories] = useState<ProductItemType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [suggestedProducts, setSuggestedProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,6 +84,9 @@ export const ProductCard: React.FC<Props> = ({
 
   const product = products.find(pr => pr.id === itemId);
   const productId = productItems.find(item => item.itemId === itemId)?.id ?? 0;
+  const getSuggestedProducts = (array: ProductType[]) => {
+    return [...array].sort(() => Math.random() - 0.5).slice(0, 10);
+  };
 
   useEffect(() => {
     if (product?.images?.length) {
@@ -90,9 +94,13 @@ export const ProductCard: React.FC<Props> = ({
     }
   }, [product]);
 
-  const getSuggestedProducts = (array: ProductType[]) => {
-    return array.sort(() => Math.random() - 0.5).slice(0, 10);
-  };
+  useEffect(() => {
+    if (productItems.length > 0) {
+      const newSuggestions = getSuggestedProducts(productItems);
+
+      setSuggestedProducts(newSuggestions);
+    }
+  }, [product, location.pathname, productItems]);
 
   if (isLoading) {
     return <Loader />;
@@ -347,7 +355,7 @@ export const ProductCard: React.FC<Props> = ({
           handleAddToLiked={handleAddToLiked}
           handleRemoveFromCart={handleRemoveFromCart}
           title="You may also like"
-          filteredProducts={getSuggestedProducts(productItems as ProductType[])}
+          filteredProducts={suggestedProducts}
         />
       </div>
     </div>
