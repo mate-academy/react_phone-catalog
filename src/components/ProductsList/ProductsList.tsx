@@ -20,7 +20,11 @@ export const ProductsList: React.FC<Props> = ({ products, className }) => {
   return (
     <div className={`${styles.productsList} ${className || ''}`}>
       {products.map(product => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard
+          key={product.id}
+          product={product}
+          showDiscountBadge={false}
+        />
       ))}
     </div>
   );

@@ -11,7 +11,6 @@ interface ProductCardProps {
   className?: string;
   showDiscountBadge?: boolean;
   showHotPriceText?: boolean;
-  hasDiscount?: boolean;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
