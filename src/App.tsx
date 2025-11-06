@@ -15,6 +15,7 @@ import { ScrollToTop } from './components/ScrollToTop/ScrollToTop';
 export const App = () => {
   return (
     <div className="App">
+      <h1 className="hiddenText">Product Catalog</h1>
       <ScrollToTop />
       <Header />
       <Routes>

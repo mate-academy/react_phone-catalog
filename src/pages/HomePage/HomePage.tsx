@@ -20,7 +20,6 @@ export const HomePage = () => {
   return (
     <div className={styles.homePage}>
       <div className="container">
-        <h1 className="hiddenText">Product Catalog</h1>
         <h1 className={styles.homePage__title}>
           Welcome to Nice Gadgets store!
         </h1>
