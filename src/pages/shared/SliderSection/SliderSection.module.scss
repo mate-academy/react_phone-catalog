@@ -1,0 +1,46 @@
+@use '../../../styles/mixins' as *;
+
+.sliderSection {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+  row-gap: 24px;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__title {
+    @include h2Title;
+    grid-column: 1/24;
+
+    @media (max-width: 1199px) {
+      grid-column: 1/12;
+    }
+
+    @media (max-width: 639px) {
+      @include h2TitleMobile;
+      grid-column: 1/4;
+    }
+  }
+
+  &__controls {
+    margin-left: auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 32px);
+    column-gap: 16px;
+
+    @media (max-width: 1199px) {
+    }
+  }
+
+  &__slider {
+    grid-column: 1/-1;
+  }
+}

@@ -1,0 +1,77 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  display: flex;
+  height: 64px;
+  box-shadow: 0 1px 0 0 $elements-color;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var (--main-bg);
+  transition: box-shadow 0.3s;
+
+  &--scrolled {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  &__container {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding-left: 24px;
+    width: 1440px;
+  }
+
+  &__logo {
+    @include imgHover;
+
+    display: block;
+    margin-right: 48px;
+  }
+
+  &__links {
+    display: flex;
+    height: 100%;
+    margin-left: auto;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
+    width: 64px;
+    align-items: center;
+    border-left: 1px solid $elements-color;
+
+    position: relative;
+
+    &--active {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: '';
+        height: 3px;
+        width: 100%;
+        background-color: $primary-color;
+        top: calc(100% - 2px);
+        left: 0;
+      }
+    }
+
+    &::after {
+      content: var(--count);
+      display: block;
+
+      position: absolute;
+      top: 15px;
+      right: 35%;
+      color: $main-bg;
+      font-size: 8px;
+    }
+  }
+}

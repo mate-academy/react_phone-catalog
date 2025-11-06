@@ -1,0 +1,179 @@
+@use './variables' as *;
+
+@mixin h1Title {
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+@mixin h1TitleMobile {
+  font-size: 32px;
+  line-height: 41px;
+}
+
+@mixin h2Title {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+@mixin h2TitleMobile {
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin h3Title {
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+@mixin h3TitleMobile {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+}
+
+@mixin h4Title {
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+@mixin h4TitleMobile {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@mixin smallText {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+@mixin specsBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 8px;
+  padding-block: 8px;
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+
+    @include smallText;
+  }
+
+  &__label {
+    color: $secondary-color;
+    text-transform: capitalize;
+  }
+
+  &__value {
+    color: $primary-color;
+  }
+}
+
+@mixin decoration {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: $elements-color;
+}
+
+@mixin btnCommon {
+  box-sizing: border-box;
+  font-family: inherit;
+
+  display: block;
+
+  cursor: pointer;
+
+  border: 1px solid transparent;
+
+  background-color: $main-bg;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin btnBack {
+  @include smallText;
+
+  margin-bottom: 16px;
+
+  display: block;
+  align-items: center;
+
+  background-color: $main-bg;
+  border: none;
+  color: $secondary-color;
+  padding: 0;
+  left: 20px;
+  cursor: pointer;
+
+  font-family: inherit;
+  position: relative;
+
+  transition: color 0.3s ease;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/icons/arrow-left-active.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    left: -20px;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+@mixin btnHover {
+  transition: border-color 0.3s ease;
+
+  &:not(&--disabled):hover {
+    border-color: $primary-color;
+  }
+}
+
+@mixin btnCart {
+  background-color: $primary-color;
+  color: $main-bg;
+  font-weight: 600;
+
+  &--active {
+    background-color: $main-bg;
+    border: 1px solid $elements-color;
+    color: $green;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}
+
+@mixin imgHover {
+  transition: transfrom, 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+}

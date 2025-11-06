@@ -1,0 +1,47 @@
+@use '../../../../styles/variables' as *;
+
+.navigation {
+  &__list {
+    display: flex;
+    gap: 64px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    display: block;
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+    color: $secondary-color;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 92%;
+    letter-spacing: 0.04em;
+
+    transition: color 0.3s ease;
+
+    &--active {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: '';
+        height: 3px;
+        width: 100%;
+        background-color: $primary-color;
+        top: calc(100% + 24px);
+        left: 0;
+      }
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
