@@ -77,7 +77,7 @@ export const MobileViewCart: React.FC<Props> = ({ product, onRemove }) => {
           </div>
 
           <div className="mobile-view-cart__price">
-            ${product.price * counter?.count}
+            ${counter ? product.price * counter.count : 0}
           </div>
         </div>
       </div>

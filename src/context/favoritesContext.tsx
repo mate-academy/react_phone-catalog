@@ -1,5 +1,4 @@
 import React, { createContext, useContext } from 'react';
-// import { Product } from '../types/Product';
 import { useLocalStorage } from '../hooks/useLocaleStorage';
 
 type FavoritesContextType = {

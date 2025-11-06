@@ -23,7 +23,6 @@ export const ViewCart: React.FC<Props> = ({ product, onRemove }) => {
   return (
     <>
       <div className="view-cart">
-        {/* <div className="view-cart-desc-wrapper"></div> */}
 
         <img
           className="view-cart__close"
@@ -77,9 +76,8 @@ export const ViewCart: React.FC<Props> = ({ product, onRemove }) => {
         </div>
 
         <div className="view-cart__price">
-          ${product.price * counter?.count}
+          ${counter ? product.price * counter.count : 0}
         </div>
-        {/* </div> */}
       </div>
     </>
   );
