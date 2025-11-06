@@ -23,7 +23,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const toggleCart = (id: number) => {
     setCartItems(prev => {
-      const addedItemInCart = [...prev, id];
+      let addedItemInCart;
+
+      if (prev.includes(id)) {
+        addedItemInCart = prev.filter(item => item !== id);
+      } else {
+        addedItemInCart = [...prev, id];
+      }
 
       localStorage.setItem('cart', JSON.stringify(addedItemInCart));
 

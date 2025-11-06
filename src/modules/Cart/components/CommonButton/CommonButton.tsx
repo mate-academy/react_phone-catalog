@@ -19,6 +19,7 @@ export const CommonButton: React.FC<CommonButtonProps> = ({
       className={styles.commonButton}
       onClick={() => {
         toggleCart(element.id);
+        console.log('hey')
         setCountItems(prev => {
           const updated = { ...prev };
 
