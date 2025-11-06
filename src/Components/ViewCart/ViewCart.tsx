@@ -23,7 +23,6 @@ export const ViewCart: React.FC<Props> = ({ product, onRemove }) => {
   return (
     <>
       <div className="view-cart">
-
         <img
           className="view-cart__close"
           src="img/ui-kit/Close-dark.png"
