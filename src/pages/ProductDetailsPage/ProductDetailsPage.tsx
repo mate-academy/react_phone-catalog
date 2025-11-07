@@ -1,0 +1,436 @@
+import { useState, useEffect } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import {
+  IoHomeOutline,
+  IoChevronForward,
+  IoHeartOutline,
+  IoHeart,
+} from 'react-icons/io5';
+import { Product, ProductDetails } from '../../types/Product';
+import ProductSlider from '../../components/ProductSlider/ProductSlider';
+import styles from './ProductDetailsPage.module.scss';
+import { useCart } from '../../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
+import { useModal } from '../../context/ModalContext';
+
+// Mapeia nomes de cores para seus códigos hexadecimais
+const colorMap: { [key: string]: string } = {
+  black: '#000000',
+  gold: '#FCDBC1',
+  silver: '#F0F0F0',
+  spacegray: '#4C4C4C',
+  rosegold: '#E0BFB8',
+  red: '#B83A48',
+  white: '#FFFFFF',
+  purple: '#C6B9E5',
+  yellow: '#FBE27A',
+  green: '#DDE7C7',
+  midnightgreen: '#4E5851',
+  coral: '#F28B82',
+};
+
+export default function ProductDetailsPage() {
+  const { category, productId } = useParams<{
+    category: string;
+    productId: string;
+  }>();
+  const navigate = useNavigate();
+  const { addToCart, isProductInCart } = useCart();
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+  const { showSuccessModal } = useModal();
+  const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState('');
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    if (product?.id === productId) {
+      // O produto correto já está carregado, evita nova busca.
+      return;
+    }
+
+    if (!category || !productId) {
+      setError('Category or Product ID is missing.');
+      setIsLoading(false);
+
+      return;
+    }
+
+    const fetchProductDetails = async () => {
+      try {
+        // Determina se é uma navegação para um produto completamente novo
+        // (clicado no slider) ou apenas uma atualização de variante (cor/capacidade).
+        const newNamespaceId = productId.split('-').slice(0, -2).join('-');
+
+        if (product && product.namespaceId !== newNamespaceId) {
+          // Se for um produto diferente, limpa o estado do produto atual.
+          // Isso fará com que a condição `isLoading && !product` seja verdadeira,
+          // exibindo o loader de página inteira.
+          setProduct(null);
+          window.scrollTo(0, 0);
+        }
+
+        setIsLoading(true);
+        setError(null);
+        const res = await fetch(`/api/${category}.json`);
+
+        if (!res.ok) {
+          throw new Error(
+            `Failed to fetch product details for category: ${category}`,
+          );
+        }
+
+        const products: ProductDetails[] = await res.json();
+        const foundProduct = products.find(p => p.id === productId);
+
+        if (foundProduct) {
+          setProduct(foundProduct);
+        } else {
+          // If not found in the category file, it's a real "Not Found"
+          setError(`Product with ID ${productId} not found in ${category}.`);
+        }
+      } catch (e) {
+        setError(e instanceof Error ? e.message : 'An unknown error occurred');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProductDetails();
+  }, [category, productId, product]);
+
+  useEffect(() => {
+    if (product?.images && product.images.length > 0) {
+      setSelectedImage(product.images[0]);
+    }
+  }, [product]);
+
+  useEffect(() => {
+    if (product) {
+      const fetchSuggestedProducts = async () => {
+        try {
+          // Buscamos de 'products.json' que contém a lista geral de produtos
+          // no formato correto (Product) que o ProductSlider espera.
+          const res = await fetch('/api/products.json');
+
+          if (!res.ok) {
+            // Não quebra a página, apenas loga o erro no console.
+            // console.error('Failed to fetch suggested products');
+
+            return;
+          }
+
+          const allProducts: Product[] = await res.json();
+
+          // Filtra para a mesma categoria, exclui o produto atual, embaralha e pega os 10 primeiros.
+          const suggested = allProducts
+            .filter(
+              p => p.category === product.category && p.itemId !== product.id,
+            )
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 10);
+
+          setSuggestedProducts(suggested);
+        } catch (e) {
+          // console.error('Error fetching suggested products:', e);
+        }
+      };
+
+      fetchSuggestedProducts();
+    }
+  }, [product]);
+
+  if (isLoading && !product) {
+    return <div>Loading product details...</div>;
+  }
+
+  if (error && !product) {
+    return (
+      <div>
+        Error: {error}. <Link to="/">Go back to Home</Link>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div>
+        Product not found. <Link to="/">Go back to Home</Link>
+      </div>
+    );
+  }
+
+  // Função auxiliar para adaptar o objeto 'ProductDetails' para o tipo 'Product'
+  // que os contextos (Cart, Favorites) esperam.
+  const createProductFromDetails = (): Product | null => {
+    if (!product) {
+      return null;
+    }
+
+    return {
+      id: 0, // O 'id' numérico não é usado nos contextos, eles usam 'itemId'.
+      category: product.category,
+      itemId: product.id,
+      name: product.name,
+      fullPrice: product.priceRegular,
+      price: product.priceDiscount,
+      screen: product.screen,
+      capacity: product.capacity,
+      ram: product.ram,
+      image: product.images[0],
+      color: product.color,
+      year: product.year,
+    };
+  };
+
+  const handleGoBack = () => navigate(-1);
+
+  const handleColorChange = (newColor: string) => {
+    if (isLoading || !product || newColor === product.color) {
+      return;
+    }
+
+    const newProductId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${newColor}`;
+
+    navigate(`/${product.category}/${newProductId}`);
+  };
+
+  const handleCapacityChange = (newCapacity: string) => {
+    if (isLoading || !product || newCapacity === product.capacity) {
+      return;
+    }
+
+    const newProductId = `${product.namespaceId}-${newCapacity.toLowerCase()}-${product.color}`;
+
+    navigate(`/${product.category}/${newProductId}`);
+  };
+
+  const handleAddToCart = () => {
+    const productForContext = createProductFromDetails();
+
+    if (productForContext) {
+      addToCart(productForContext);
+      showSuccessModal(`${product.name} foi adicionado ao carrinho!`);
+    }
+  };
+
+  const isProductFavorite = product ? isFavorite(product.id) : false;
+
+  const handleToggleFavorite = () => {
+    if (!product) {
+      return;
+    }
+
+    const productForContext = createProductFromDetails();
+
+    if (productForContext) {
+      if (isProductFavorite) {
+        removeFromFavorites(product.id);
+      } else {
+        addToFavorites(productForContext);
+      }
+    }
+  };
+
+  return (
+    <div
+      className={`${styles.detailsPage} ${isLoading ? styles.contentLoading : ''}`}
+    >
+      <nav className={styles.breadcrumb}>
+        <Link to="/">
+          <IoHomeOutline className={styles.homeIcon} aria-hidden="true" />
+        </Link>
+        <IoChevronForward aria-hidden="true" />
+        <Link to={`/${category}`} className={styles.categoryLink}>
+          {category}
+        </Link>
+        <IoChevronForward aria-hidden="true" />
+        <span className={styles.productName}>{product.name}</span>
+      </nav>
+
+      <button onClick={handleGoBack} className={styles.backButton}>
+        <IoChevronForward style={{ transform: 'rotate(180deg)' }} />
+        <span>Back</span>
+      </button>
+
+      <h1 className={styles.title}>{product.name}</h1>
+
+      <div className={styles.mainContent}>
+        <div className={styles.imageGallery}>
+          <div className={styles.thumbnails}>
+            {product.images.map((img, index) => (
+              <button
+                key={index}
+                className={`${styles.thumbnailButton} ${selectedImage === img ? styles.active : ''}`}
+                onClick={() => setSelectedImage(img)}
+              >
+                <img
+                  src={`/${img}`}
+                  alt={`Thumbnail ${index + 1} of ${product.name}`}
+                />
+              </button>
+            ))}
+          </div>
+          <div className={styles.mainImageContainer}>
+            <img
+              src={`/${selectedImage}`}
+              alt={product.name}
+              className={styles.mainImage}
+            />
+          </div>
+        </div>
+
+        <div className={styles.productActions}>
+          <div className={styles.selectors}>
+            <div className={styles.selectorBlock}>
+              <p className={styles.selectorLabel}>Available colors</p>
+              <div className={styles.colorSelector}>
+                {product.colorsAvailable.map(color => (
+                  <button
+                    key={color}
+                    className={`${styles.colorOption} ${color === product.color ? styles.active : ''}`}
+                    onClick={() => handleColorChange(color)}
+                    aria-label={`Select color ${color}`}
+                  >
+                    <span
+                      style={{ backgroundColor: colorMap[color] || color }}
+                      className={styles.colorSwatch}
+                    ></span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.selectorBlock}>
+              <p className={styles.selectorLabel}>Select capacity</p>
+              <div className={styles.capacitySelector}>
+                {product.capacityAvailable.map(capacity => (
+                  <button
+                    key={capacity}
+                    className={`${styles.capacityOption} ${capacity === product.capacity ? styles.active : ''}`}
+                    onClick={() => handleCapacityChange(capacity)}
+                  >
+                    {capacity}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.priceSection}>
+            <span className={styles.currentPrice}>
+              ${product.priceDiscount}
+            </span>
+            {product.priceRegular > product.priceDiscount && (
+              <span className={styles.fullPrice}>${product.priceRegular}</span>
+            )}
+          </div>
+
+          <div className={styles.actionButtons}>
+            <button
+              className={styles.addToCartButton}
+              onClick={handleAddToCart}
+              disabled={product ? isProductInCart(product.id) : false}
+            >
+              {product && isProductInCart(product.id)
+                ? 'Added to cart'
+                : 'Add to cart'}
+            </button>
+            <button
+              className={styles.addToFavoritesButton}
+              onClick={handleToggleFavorite}
+              aria-label={
+                isProductFavorite ? 'Remove from favorites' : 'Add to favorites'
+              }
+            >
+              {isProductFavorite ? (
+                <IoHeart color="#EB5757" />
+              ) : (
+                <IoHeartOutline />
+              )}
+            </button>
+          </div>
+
+          <div className={styles.shortSpecs}>
+            <div className={styles.specItem}>
+              <span>Screen</span>
+              <strong>{product.screen}</strong>
+            </div>
+            <div className={styles.specItem}>
+              <span>Resolution</span>
+              <strong>{product.resolution}</strong>
+            </div>
+            <div className={styles.specItem}>
+              <span>Processor</span>
+              <strong>{product.processor}</strong>
+            </div>
+            <div className={styles.specItem}>
+              <span>RAM</span>
+              <strong>{product.ram}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.detailedContent}>
+        <section className={styles.aboutSection}>
+          <h2 className={styles.sectionTitle}>About</h2>
+          <hr className={styles.separator} />
+          {product.description.map((section, index) => (
+            <article key={index} className={styles.aboutArticle}>
+              <h3 className={styles.aboutTitle}>{section.title}</h3>
+              {section.text.map((paragraph, pIndex) => (
+                <p key={pIndex} className={styles.aboutText}>
+                  {paragraph}
+                </p>
+              ))}
+            </article>
+          ))}
+        </section>
+
+        <section className={styles.techSpecsSection}>
+          <h2 className={styles.sectionTitle}>Tech specs</h2>
+          {/* <hr className={styles.separator} /> */}
+          <div className={styles.techSpecsList}>
+            <div className={styles.specItem}>
+              <span>Screen</span>
+              <strong>{product.screen}</strong>
+            </div>
+            <div className={styles.specItem}>
+              <span>Resolution</span>
+              <strong>{product.resolution}</strong>
+            </div>
+            <div className={styles.specItem}>
+              <span>Processor</span>
+              <strong>{product.processor}</strong>
+            </div>
+            <div className={styles.specItem}>
+              <span>RAM</span>
+              <strong>{product.ram}</strong>
+            </div>
+            <div className={styles.specItem}>
+              <span>Built in memory</span>
+              <strong>{product.capacity}</strong>
+            </div>
+            <div className={styles.specItem}>
+              <span>Camera</span>
+              <strong>{product.camera}</strong>
+            </div>
+            <div className={styles.specItem}>
+              <span>Zoom</span>
+              <strong>{product.zoom}</strong>
+            </div>
+            <div className={styles.specItem}>
+              <span>Cell</span>
+              <strong>{product.cell.join(', ')}</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* You may also like */}
+      <ProductSlider title="You may also like" products={suggestedProducts} />
+    </div>
+  );
+}

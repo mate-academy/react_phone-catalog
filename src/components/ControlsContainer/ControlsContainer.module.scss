@@ -1,0 +1,108 @@
+.controlsContainer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 32px;
+  margin-top: 44px;
+}
+
+.sortByContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+}
+
+.sortByLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+  margin-bottom: 4px;
+}
+
+.itemsPerPageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+}
+
+.itemPerPageLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: #89939A;
+  margin-bottom: 4px;
+}
+
+.sortSelect {
+  width: 150px;
+}
+
+.paginationSelect {
+  width: 110px;
+}
+
+.sortSelect, .paginationSelect {
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #B4BDC3;
+  padding: 0 16px 0 8px;
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Seta cinza */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B4BDC3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+}
+
+/* Estado de focus */
+.sortSelect:focus, .paginationSelect:focus {
+  border-color: #007bff; /* ou a cor principal do seu projeto */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  background-color: #fff;
+
+  /* Seta mais escura no focus */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+/* Estado de hover */
+.sortSelect:hover, .paginationSelect:hover {
+  border-color: #9CA3AF;
+  background-color: #f8f9fa;
+}
+
+/* Personalizando as options */
+.sortSelect option, .paginationSelect option {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #fff;
+  color: #333;
+  border: none;
+}
+
+/* Option selecionada/hover */
+.sortSelect option:checked, .paginationSelect option:checked {
+  background-color: #007bff;
+  color: white;
+}
+
+.sortSelect option:hover, .paginationSelect option:hover {
+  background-color: #f0f0f0;
+}
+
+/* Para navegadores WebKit (Chrome, Safari) */
+.sortSelect option:disabled, .paginationSelect option:disabled {
+  color: #B4BDC3;
+  background-color: #f5f5f5;
+}

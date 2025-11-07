@@ -1,0 +1,236 @@
+.cartPage {
+  padding: 24px 0 64px;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #89939a;
+  font-size: 14px;
+  margin-bottom: 24px;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.title {
+  // Mobile first
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+  color: #0F0F11;
+
+  // Tablet and up
+  @media (min-width: 640px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  // Desktop and up
+  @media (min-width: 1200px) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.cartContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cartItem {
+  // Layout padrão (desktop/tablet)
+  display: grid;
+  grid-template-columns: auto 66px 1fr auto auto;
+  grid-template-areas: "remove image name quantity price";
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  background-color: #fff;
+
+  .removeButton {
+    grid-area: remove;
+    background: none;
+
+    // Borda transparente para evitar que o layout "pule" no hover
+    border: 1px solid transparent;
+    color: #89939a;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 1;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+
+  .productImage {
+    grid-area: image;
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  .productName {
+    grid-area: name;
+    font-size: 14px;
+    color: #313237;
+    min-width: 0; // Previne que o nome empurre outros elementos
+  }
+
+  .quantityControl {
+    grid-area: quantity;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #b4bdc3;
+      border-radius: 50%;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      background: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #313237;
+      transition: border-color 0.3s;
+
+      &:disabled {
+        color: #b4bdc3;
+        cursor: not-allowed;
+      }
+
+      &:hover:not(:disabled) {
+        border-color: #313237;
+      }
+    }
+
+    span {
+      font-weight: 600;
+      min-width: 12px;
+      text-align: center;
+    }
+  }
+
+  .productPrice {
+    grid-area: price;
+    font-size: 22px;
+    font-weight: 800;
+    color: #313237;
+    text-align: right;
+    width: 100px;
+  }
+
+  // Layout para mobile
+  @media (max-width: 639px) {
+    grid-template:
+      "remove image name" auto
+      ". . ."             auto / auto 66px 1fr;
+    gap: 24px 16px;
+
+    .quantityControl {
+      // Posiciona na segunda linha, ocupando todas as colunas (da 1 até a última, -1)
+      grid-row: 2;
+      grid-column: 1 / -1;
+
+      // Alinha o conteúdo no início (extremo esquerdo) da área que ele ocupa
+      justify-self: start;
+    }
+
+    .productPrice {
+      // Posiciona na segunda linha, também ocupando todas as colunas
+      grid-row: 2;
+      grid-column: 1 / -1;
+
+      // Alinha o conteúdo no final (extremo direito) da área que ele ocupa
+      justify-self: end;
+      width: auto;
+    }
+  }
+}
+
+.cartSummary {
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  padding: 24px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.totalPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.totalAmount {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  color: #0F0F11;
+  letter-spacing: -1%;
+}
+
+.totalLabel {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+  color: #89939A;
+  margin-bottom: 16px;
+}
+
+.separator {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #e2e6e9;
+  margin-bottom: 24px;
+}
+
+.checkoutButton {
+  width: 100%;
+  padding: 14px;
+  background-color: #216CFF;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/*
+.emptyMessage {
+  composes: emptyMessage from '../FavoritesPage/FavoritesPage.module.scss';
+}
+*/
