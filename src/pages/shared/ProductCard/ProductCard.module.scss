@@ -1,0 +1,78 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.productCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 32px;
+
+  border: 1px solid var(--elements-color);
+
+  @media (min-width: 1200px) {
+      grid-column: span 6;
+    }
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  &__imageLink {
+    width: 208px;
+    height: 196px;
+    overflow: hidden;
+    display: flex;
+    margin: 0 auto;
+
+    @include img-hover;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    display: inline;
+  }
+
+  &__name {
+    padding-top: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    height: 60px;
+    text-align: center;
+  }
+
+  &__price {
+    @include h3-title;
+
+    margin-bottom: 8px;
+
+    display: flex;
+    gap: 8px;
+    position: relative;
+
+    &::after {
+      @include decoration;
+
+      top: calc(100% + 8px);
+    }
+  }
+
+  &__oldPrice {
+    font-weight: 600;
+    text-decoration: line-through;
+    color: var(--secondary-color);
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

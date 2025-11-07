@@ -1,0 +1,85 @@
+@use '../../../styles/variables' as *;
+
+.modalWindow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  padding: 24px 32px;
+  background-color: var(--main-bg);
+  border: 1px solid var(--elements-color);
+  z-index: 900;
+
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 32px;
+    line-height: 150%;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 32px;
+  }
+
+  &__button {
+    display: inline-block;
+    padding-inline: 20px;
+    padding-block: 8px;
+
+    font-family: inherit;
+    font-size: 20px;
+    color: inherit;
+    background-color: var(--main-bg);
+
+    cursor: pointer;
+    border: 1px solid var(--elements-color);
+
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: var(--primary-color);
+    }
+
+    &--yes {
+      transition: border-color 0.3s ease;
+
+      &:hover {
+        color: red;
+      }
+    }
+
+    &--no {
+      transition: border-color 0.3s ease;
+
+      &:hover {
+        color: green;
+      }
+    }
+  }
+
+  &__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 800;
+}
+}
+
+

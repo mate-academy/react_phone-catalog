@@ -1,0 +1,80 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.dropdown {
+  grid-column: 1/-1;
+  position: relative;
+
+  &__name {
+    @include small-text;
+
+    color: var(--secondary-color);
+  }
+
+  &__input {
+    display: flex;
+    padding-inline: 12px;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid var(--icons-color);
+    height: 40px;
+
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: var(--secondary-color);
+    }
+
+    &:focus {
+      border-color: var(--primary-color);
+    }
+  }
+
+  &__selectedOption {
+    font-weight: 600;
+  }
+
+  &__icon {
+    background-image: url(/public/img/icons/arrow-left-disabled.svg);
+    transform: rotate(-90deg);
+    height: 16px;
+    width: 16px;
+
+    &--isActive {
+      background-image: url(/public/img/icons/arrow-left-disabled.svg);
+      transform: rotate(90deg);
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    padding: 8px 0;
+    margin: 0;
+    list-style: none;
+
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    background: $main-bg;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding-inline: 12px;
+    font-weight: 500;
+    color: var(--secondary-color);
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--primary-color);
+      background-color: var(--hover-bg-color);
+    }
+  }
+}

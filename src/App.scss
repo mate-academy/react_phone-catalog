@@ -1,1 +1,125 @@
-// not empty
+@use './styles/variables' as *;
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr auto; // header, main, footer
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.hiddenText {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+body {
+  box-sizing: border-box;
+
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  color: var(--primary-color);
+
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0;
+
+  background-color: var(--main-bg);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: 1200px;
+  padding-inline: 32px;
+  width: 100%;
+  margin: 0 auto;
+
+
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 24px;
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(4, 1fr);
+    padding-inline: 16px;
+  }
+}
+
+
+
+
+
+.error {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.errorMessage {
+  grid-column: 1/-1;
+  text-align: center;
+}
+
+.errorImg {
+  width: 700px;
+  display: block;
+  grid-column: 1/-1;
+
+  margin: 0 auto;
+}

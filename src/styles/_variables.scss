@@ -1,0 +1,38 @@
+$primary-color: #313237;
+$secondary-color: #89939A;
+$icons-color: #B4BDC3;
+$elements-color: #E2E6E9;
+$hover-bg-color: #FAFBFC;
+$main-bg: #FFF;
+$green: #27AE60;
+$red: #EB5757;
+$primary-color-dark: #FFF;
+$secondary-color-dark: #75767F;
+$icons-color-dark: #4A4D58;
+$elements-color-dark: #3B3E4A;
+$hover-bg-color-dark: #323542;
+$main-bg-dark: #161827;
+$green-dark: #27AE60;
+$red-dark: #EB5757;
+
+ :root {
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --icons-color: #{$icons-color};
+  --elements-color: #{$elements-color};
+  --hover-bg-color: #{$hover-bg-color};
+  --main-bg: #{$main-bg};
+  --green: #{$green};
+  --red: #{$red};
+}
+
+.dark-theme {
+  --primary-color: #{$primary-color-dark};
+  --secondary-color: #{$secondary-color-dark};
+  --icons-color: #{$icons-color-dark};
+  --elements-color: #{$elements-color-dark};
+  --hover-bg-color: #{$hover-bg-color-dark};
+  --main-bg: #{$main-bg-dark};
+  --green: #{$green-dark};
+  --red: #{$red-dark};
+}

@@ -1,0 +1,20 @@
+.pagination {
+  display: flex;
+  gap: 8px;
+
+  &__item {
+    list-style: none;
+  }
+}
+
+.pagination__slider {
+  width: 154px;
+  overflow: hidden;
+}
+
+.pagination__list {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}

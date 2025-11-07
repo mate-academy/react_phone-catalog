@@ -1,0 +1,16 @@
+.productSlider {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-right: 1px;
+
+  &__item {
+    width: 272px;
+  }
+
+  &__track {
+  display: flex;
+  gap: 16px;
+}
+
+}
+
