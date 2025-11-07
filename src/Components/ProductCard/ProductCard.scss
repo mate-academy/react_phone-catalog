@@ -81,6 +81,7 @@
 
   &__buttons {
     display: flex;
+    justify-content: space-between;
     gap: 8px;
     height: 40px;
     margin: 0;
@@ -131,8 +132,8 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
+  width: 80%;
   text-align: center;
-  width: 160px;
   height: 40px;
   border: 0;
   padding: 0;
@@ -162,9 +163,10 @@
 .product__button--add-to-favorite {
   width: 40px;
   height: 40px;
+  justify-self: flex-end;
   border: 0;
   padding: 0;
-  background-image: url("img/ui-kit/Add-to-favourites.png");
+  background-image: url("../img/ui-kit/Add-to-favourites.png");
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-image 0.2s ease;
 
   &:hover {
@@ -175,5 +177,5 @@
 
 .favorite-active {
   background-color: #161827;
-  background-image: url("img/ui-kit/Add-to-fovourites-Added.png");
+  background-image: url("../img/ui-kit/Add-to-favourites-Added.png");
 }
