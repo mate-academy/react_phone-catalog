@@ -1,6 +1,7 @@
 import './App.scss';
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import TopHeader from './components/TopHeader';
 import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
