@@ -1,60 +1,51 @@
+import { CartRequestTypes, GetRequestTypes, Methods } from '@server/static';
 import { createError } from '@server/helpers';
-import { methodMap, Methods } from '@server/static';
-import { ErrorObject, MethodRequestMap, ValidRequest } from '@server/types';
-import { validateBody } from './validateBody';
+import {
+  validateAmountBody,
+  validateBannerBody,
+  validateCatalogueBody,
+  validateProdBody,
+} from './validateBody/validateGETBody';
+import {
+  validateCartBody,
+  validateCheckoutBody,
+} from './validateBody/validateCARTBody';
 
-const validateMethod = (method: unknown): method is Methods => {
-  return Object.values(Methods).some(el => el === method);
+const validateGet = {
+  [GetRequestTypes.CATALOGUE]: validateCatalogueBody,
+  [GetRequestTypes.PRODUCT]: validateProdBody,
+  [GetRequestTypes.BANNER]: validateBannerBody,
+  [GetRequestTypes.AMOUNT]: validateAmountBody,
 };
 
-const validateRequest = <M extends Methods>(
-  method: M,
-  request: unknown,
-): request is MethodRequestMap[M] => {
-  return methodMap[method].some(el => el === request);
+const validateCart = {
+  [CartRequestTypes.CART]: validateCartBody,
+  [CartRequestTypes.CHECKOUT]: validateCheckoutBody,
 };
 
-export const validate = (
-  conf: unknown,
-): ValidRequest<Methods> | ErrorObject => {
-  if (typeof conf !== 'string') {
-    return createError(501, 'no body');
-  }
-
-  let parsed: unknown;
-
-  try {
-    parsed = JSON.parse(conf);
-  } catch {
-    return createError(501, 'invalid JSON');
-  }
-
-  if (
-    typeof parsed !== 'object' ||
-    parsed === null ||
-    !('method' in parsed) ||
-    !('request' in parsed)
-  ) {
-    return createError(418, '');
-  }
-
-  if (!('body' in parsed)) {
-    return createError(400, 'request');
-  }
-
-  const { method, request, body } = parsed;
-
-  if (!validateMethod(method)) {
-    return createError(501, method);
-  }
-
-  if (!validateRequest(method, request)) {
-    return createError(400, request);
-  }
-
-  if (!validateBody[request](body)) {
-    return createError(400, request);
-  }
-
-  return { method, request, body };
+const isCartRequest = (request: unknown): request is CartRequestTypes => {
+  return typeof request === 'string' && request in CartRequestTypes;
 };
+
+const isGetRequest = (request: unknown): request is GetRequestTypes => {
+  return typeof request === 'string' && request in GetRequestTypes;
+};
+
+const validateRequest = {
+  [Methods.GET]: (request: unknown, body: unknown) => {
+    if (!isGetRequest(request)) {
+      return createError(418, `${request} is a teapot`);
+    }
+
+    return validateGet[request](body);
+  },
+  [Methods.CART]: (request: unknown, body: unknown) => {
+    if (!isCartRequest(request)) {
+      return createError(418, `${request} is a teapot`);
+    }
+
+    return validateCart[request](body);
+  },
+};
+
+export { validateRequest };

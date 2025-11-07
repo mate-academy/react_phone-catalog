@@ -1,6 +1,13 @@
-export { ApiEndpoint } from './endPoints';
+export { ApiEndpoint, type FetchDataTypesMap } from './endPoints';
 export {
-  ServerCategory,
+  Methods,
+  GetRequestTypes,
+  CartRequestTypes,
+  OrderParams,
+  ItemsOnPage,
+} from './ApiEnums';
+export { ServerCategory, DeliveryTypes, Months, days } from './serviceEnums';
+export {
   Processors,
   Resolutions,
   Ram,
@@ -9,17 +16,5 @@ export {
   Cells,
   Capacity,
   Cameras,
-  type Description,
   PhoneZoom,
-  Months,
-  days,
-} from './itemsEnums';
-export {
-  Methods,
-  RequestType,
-  GetRequestTypes,
-  CartRequestTypes,
-  OrderParams,
-  ItemsOnPage,
-  methodMap,
-} from './ApiEnums';
+} from './productEnums';

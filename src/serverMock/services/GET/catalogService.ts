@@ -1,24 +1,30 @@
-import { apiFetch } from '@server/helpers';
-import { ApiEndpoint, ServerCategory } from '@server/static';
+import { apiFetch, createError } from '@server/helpers';
 import {
+  ApiEndpoint,
   ItemsOnPage,
   OrderParams,
-  ValidCatalogueParams,
+  ServerCategory,
+} from '@server/static';
+import {
   BaseProduct,
-  ValidResponse,
-  ErrorObject,
+  ValidCatalogueBody,
+  ServiceResult,
   Status,
+  CatalogueData,
 } from '@server/types';
 
-// Mutation is essential, because this is server mock,
-// I do not have DB and instruments to imply it full usage.
-
 async function getCatalogueItems(
-  params: ValidCatalogueParams,
-): Promise<ValidResponse | ErrorObject> {
+  params: ValidCatalogueBody,
+): Promise<ServiceResult<CatalogueData>> {
   const { itemType, sort, perPage, page } = params;
 
-  let initialArray = (await apiFetch(ApiEndpoint.PRODUCTS)) as BaseProduct[];
+  const fetchResult = await apiFetch(ApiEndpoint.PRODUCTS);
+
+  if (fetchResult.status !== Status.SUCCESS) {
+    return fetchResult;
+  }
+
+  let initialArray = fetchResult.data;
 
   const response = {
     items: [] as BaseProduct[],
@@ -62,22 +68,17 @@ async function getCatalogueItems(
   if (perPage === ItemsOnPage.ALL) {
     response.items = initialArray;
   } else {
-    response.pages = Math.ceil(
-      initialArray.length / +(perPage as Exclude<ItemsOnPage, ItemsOnPage.ALL>),
-    );
+    const perPageInt = +perPage;
 
-    const start =
-      ((page as number) - 1) *
-      +(perPage as Exclude<ItemsOnPage, ItemsOnPage.ALL>);
-    const end = start + +(perPage as Exclude<ItemsOnPage, ItemsOnPage.ALL>);
+    response.pages = Math.ceil(initialArray.length / perPageInt);
+
+    const start = ((page as number) - 1) * perPageInt;
+    const end = start + perPageInt;
 
     response.items = initialArray.slice(start, end);
 
     if (response.items.length === 0 && page > 1) {
-      return {
-        status: Status.ERROR,
-        message: 'Requested page does not exist',
-      };
+      return createError(404, `Page doesn't exist`);
     }
   }
 

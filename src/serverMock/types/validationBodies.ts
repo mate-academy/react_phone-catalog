@@ -1,5 +1,5 @@
 import { ItemsOnPage, OrderParams, ServerCategory } from '@server/static';
-import { CartItem, Pickup, Shipment, UserDetails } from '..';
+import { CartItem, Pickup, Shipment, UserDetails } from '.';
 
 interface ValidCatalogueBody {
   itemType: ServerCategory;
@@ -20,7 +20,7 @@ interface ValidCartBody {
   items: CartItem[];
 }
 
-interface ValidCheckoutBody extends ValidCartBody {
+interface ValidCheckoutBody {
   userDetails: UserDetails;
   deliveryDetails: Pickup | Shipment;
   dataProcessingAgreement: boolean;

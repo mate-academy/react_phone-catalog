@@ -1,60 +1,60 @@
+import { getCart, getCheckout } from '@server/services';
+import { ErrorObject, ValidCheckoutBody } from '../../types';
 import {
-  ValidationResult,
-  ValidCartBody,
-  ValidCheckoutBody,
-} from '../../types';
-import {
+  basicValidation,
   validateCartItem,
   validateDeliveryDetails,
   validateUserDetails,
 } from '../validationHelpers';
-import { basicValidation } from './basicBodyValidation';
+import { createError } from '@server/helpers';
 
 const validShapes = {
   checkout: {
-    items: 'array',
     userDetails: 'object',
     deliveryDetails: 'object',
     dataProcessingAgreement: 'boolean',
   },
+  cart: {
+    id: 'string',
+    amount: 'number',
+  },
 };
 
-const validateCartBody = (arg: unknown): ValidationResult<ValidCartBody> => {
+const validateCartBody = (arg: unknown) => {
   if (!Array.isArray(arg)) {
-    return { ok: false, value: [422, `Invalid field types: ${arg}`] };
+    return createError(422, `Invalid field types: ${arg}`);
   }
 
   const check = arg.map(el => validateCartItem(el));
 
-  if (check.some(el => !el.ok)) {
-    return check.filter(el => !el.ok)[0];
+  if (!check.every(el => el === true)) {
+    return check.filter(el => el !== true)[0];
   }
 
-  return { ok: true, value: { items: arg } as ValidCartBody };
+  return getCart(arg);
 };
 
-const validateCheckoutBody = (
-  arg: unknown,
-): ValidationResult<ValidCheckoutBody> => {
+const validateCheckoutBody = (arg: unknown) => {
   const basicValidated = basicValidation(arg, validShapes.checkout);
 
-  if (!basicValidated.ok) {
+  if (basicValidated !== true) {
     return basicValidated;
   }
 
-  const { items, userDetails, deliveryDetails } = arg as ValidCheckoutBody;
+  const { userDetails, deliveryDetails } = arg as ValidCheckoutBody;
 
-  const checks = [
-    validateCartBody(items),
+  const checks: (true | ErrorObject)[] = [
     validateUserDetails(userDetails),
     validateDeliveryDetails(deliveryDetails),
   ];
 
-  if (checks.some(el => !el.ok)) {
-    return checks.filter(el => !el.ok)[0];
+  if (checks.some(el => el !== true)) {
+    return checks.filter(el => el !== true)[0];
   }
 
-  return { ok: true, value: arg as ValidCheckoutBody };
+  const res = arg as ValidCheckoutBody;
+
+  return getCheckout(res);
 };
 
 export { validateCheckoutBody, validateCartBody };

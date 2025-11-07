@@ -1,32 +1,24 @@
-export {
-  type BaseProduct,
-  type Product,
-  type BannerData,
-  type ErrorObject,
-  type ValidResponse,
-  Status,
-} from './returnDataTypes';
+export { type ErrorObject, Status } from './returnDataTypes';
 
 export {
-  type Shipment,
-  type Pickup,
-  type UserDetails,
-  type CartItem,
-  type Birthday,
-  DeliveryTypes,
-  type Address,
-} from './orderDetailTypes';
-
-export {
-  type MethodRequestMap,
-  type BodyRequestMap,
   type ValidCatalogueBody,
   type ValidCartBody,
   type ValidProdBody,
   type ValidAmountBody,
   type ValidCheckoutBody,
-  type ValidRequest,
-  type ErrorProps,
-  type ValidationResult,
-  type ValidationCheck,
-} from './validationTypes';
+} from './validationBodies';
+export {
+  type ServiceResult,
+  type BannerData,
+  type CatalogueData,
+  type Product,
+  type BaseProduct,
+  type Address,
+  type Birthday,
+  type UserDetails,
+  type Pickup,
+  type Shipment,
+  type CartItem,
+  type CartData,
+  type BECartItem,
+} from './serviceTypes';

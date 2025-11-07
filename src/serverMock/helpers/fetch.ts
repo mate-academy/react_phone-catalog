@@ -1,24 +1,25 @@
-import { ApiEndpoint } from '@server/static/endPoints';
-import { BannerData, BaseProduct, Product } from '@server/types';
+import { ApiEndpoint, FetchDataTypesMap } from '@server/static/endPoints';
+import { ErrorObject, Status } from '@server/types';
+import { createError } from '.';
 
-export const apiFetch = async (
-  endpoint: ApiEndpoint,
-): Promise<BaseProduct[] | BannerData[] | Product[]> => {
+type FetchSuccess<M extends ApiEndpoint> = {
+  status: Status.SUCCESS;
+  data: FetchDataTypesMap[M];
+};
+export const apiFetch = async <M extends ApiEndpoint>(
+  endpoint: M,
+): Promise<FetchSuccess<M> | ErrorObject> => {
   try {
     const response = await window.fetch(endpoint);
 
     if (!response.ok) {
-      throw new Error(
-        `HTTP Error 501: ${response.status} ${response.statusText}`,
-      );
+      return createError(500, 'Unexpected server error');
     }
 
     const data = await response.json();
 
-    return data;
+    return { status: Status.SUCCESS, data: data };
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.warn(`Failed to fetch data from ${endpoint}:`, error);
-    throw error;
+    return createError(500, 'Unexpected error while accessing the database');
   }
 };

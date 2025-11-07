@@ -1,17 +1,6 @@
-import { MethodRequestMap } from '@server/types';
-
 enum Methods {
   GET = 'get',
   CART = 'cart',
-}
-
-enum RequestType {
-  CATALOGUE = 'catalogue',
-  PRODUCT = 'product',
-  BANNER = 'banner',
-  AMOUNT = 'amount',
-  CART = 'cart',
-  CHECKOUT = 'checkout',
 }
 
 enum GetRequestTypes {
@@ -41,24 +30,4 @@ enum ItemsOnPage {
   SIXTEEN = '16',
 }
 
-const methodMap: {
-  [M in Methods]: MethodRequestMap[M][];
-} = {
-  [Methods.GET]: [
-    GetRequestTypes.CATALOGUE,
-    GetRequestTypes.PRODUCT,
-    GetRequestTypes.BANNER,
-    GetRequestTypes.AMOUNT,
-  ],
-  [Methods.CART]: [CartRequestTypes.CART, CartRequestTypes.CHECKOUT],
-};
-
-export {
-  Methods,
-  RequestType,
-  GetRequestTypes,
-  CartRequestTypes,
-  OrderParams,
-  ItemsOnPage,
-  methodMap,
-};
+export { Methods, GetRequestTypes, CartRequestTypes, OrderParams, ItemsOnPage };

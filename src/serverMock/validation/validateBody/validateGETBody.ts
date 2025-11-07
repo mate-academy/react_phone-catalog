@@ -1,12 +1,17 @@
 import { ItemsOnPage, OrderParams, ServerCategory } from '@server/static';
+import { isValidObject, basicValidation } from '../validationHelpers';
+import { createError } from '@server/helpers';
+import {
+  getAmount,
+  getBanners,
+  getCatalogueItems,
+  getProduct,
+} from '@server/services/GET';
 import {
   ValidAmountBody,
-  ValidationResult,
   ValidCatalogueBody,
   ValidProdBody,
 } from '@server/types';
-import { isValidObject } from '../validationHelpers';
-import { basicValidation } from './basicBodyValidation';
 
 const catalogueValidators = {
   itemType: (value: unknown): value is ServerCategory =>
@@ -34,12 +39,10 @@ const validShapes = {
   },
 };
 
-const validateCatalogueBody = (
-  arg: unknown,
-): ValidationResult<ValidCatalogueBody> => {
+const validateCatalogueBody = (arg: unknown) => {
   const basicValidated = basicValidation(arg, validShapes.catalogue);
 
-  if (!basicValidated.ok) {
+  if (basicValidated !== true) {
     return basicValidated;
   }
 
@@ -48,19 +51,16 @@ const validateCatalogueBody = (
   );
 
   if (!validValues) {
-    return {
-      ok: false,
-      value: [422, `Invalid field values: ${arg}`],
-    };
+    return createError(422, `Invalid field values: ${arg}`);
   }
 
-  return { ok: true, value: arg as ValidCatalogueBody };
+  return getCatalogueItems(arg as ValidCatalogueBody);
 };
 
-const validateProdBody = (arg: unknown): ValidationResult<ValidProdBody> => {
+const validateProdBody = (arg: unknown) => {
   const basicValidated = basicValidation(arg, validShapes.prod);
 
-  if (!basicValidated.ok) {
+  if (basicValidated !== true) {
     return basicValidated;
   }
 
@@ -73,44 +73,36 @@ const validateProdBody = (arg: unknown): ValidationResult<ValidProdBody> => {
     itemId.length > 50 ||
     !safeIdPattern.test(itemId)
   ) {
-    return {
-      ok: false,
-      value: [422, `Invalid field values: ${arg}`],
-    };
+    return createError(422, `Invalid field values: ${arg}`);
   }
 
-  return {
-    ok: true,
-    value: arg as ValidProdBody,
-  };
+  return getProduct(arg as ValidProdBody);
 };
 
-const validateBannerBody = (arg: unknown): ValidationResult<{}> => {
+const validateBannerBody = (arg: unknown) => {
   const isObject = isValidObject(arg);
 
-  if (!isObject.ok) {
+  if (isObject !== true) {
     return isObject;
   }
 
   return Object.keys(arg as object).length !== 0
-    ? { ok: false, value: [422, `Invalid field number+: ${arg}`] }
-    : { ok: true, value: {} };
+    ? createError(422, `Invalid field number+: ${arg}`)
+    : getBanners();
 };
 
-const validateAmountBody = (
-  arg: unknown,
-): ValidationResult<ValidAmountBody> => {
+const validateAmountBody = (arg: unknown) => {
   const basicValidated = basicValidation(arg, validShapes.catalogue);
 
-  if (!basicValidated.ok) {
+  if (basicValidated !== true) {
     return basicValidated;
   }
 
   return Object.values(ServerCategory).some(
     el => el === ((arg as Record<string, unknown>).category as string),
   )
-    ? { ok: true, value: arg as ValidAmountBody }
-    : { ok: false, value: [422, `Invalid field value: ${arg}`] };
+    ? getAmount(arg as ValidAmountBody)
+    : createError(422, `Invalid field value: ${arg}`);
 };
 
 export {

@@ -1,6 +1,7 @@
-import { Birthday, DeliveryTypes, ValidationCheck } from '@server/types';
-import { validateDay, validateMonth, validateYear } from '.';
-import { basicValidation } from '../validateBody';
+import { Birthday, ErrorObject } from '../../types';
+import { basicValidation, validateDay, validateMonth, validateYear } from '.';
+import { DeliveryTypes } from '../../static';
+import { createError } from '@server/helpers';
 
 const validShapes = {
   cart: {
@@ -39,81 +40,81 @@ const validShapes = {
   },
 };
 
-const validateCartItem = (arg: unknown): ValidationCheck => {
+const validateCartItem = (arg: unknown) => {
   const basicValidated = basicValidation(arg, validShapes.cart);
 
-  if (!basicValidated.ok) {
+  if (basicValidated !== true) {
     return basicValidated;
   }
 
-  return { ok: true };
+  return true;
 };
 
-const validateBirthday = (arg: unknown): ValidationCheck => {
+const validateBirthday = (arg: unknown) => {
   const basicValidated = basicValidation(arg, validShapes.birthday);
 
-  if (!basicValidated.ok) {
+  if (basicValidated !== true) {
     return basicValidated;
   }
 
   const { day, month, year } = arg as Birthday;
-  const validDate = [
+  const validDate: (true | ErrorObject)[] = [
     validateMonth(month),
     validateDay(day, month),
     validateYear(year),
   ];
 
-  if (validDate.some(el => el.ok !== true)) {
-    return validDate.filter(el => el.ok !== true)[0];
+  if (!validDate.every(el => el === true)) {
+    return validDate.filter(el => el !== true)[0];
   }
 
-  return { ok: true };
+  return true;
 };
 
-const validateUserDetails = (arg: unknown): ValidationCheck => {
+const validateUserDetails = (arg: unknown) => {
   const basicValidated = basicValidation(
     arg,
     validShapes.userDetails,
     validShapes.userDetailsOptions,
   );
 
-  if (!basicValidated.ok) {
+  if (basicValidated !== true) {
     return basicValidated;
   }
 
   if (Object.hasOwn(arg as Record<string, unknown>, 'birthday')) {
     const check = validateBirthday((arg as Record<string, unknown>).birthday);
 
-    if (!check.ok) {
+    if (check !== true) {
       return check;
     }
   }
 
-  return { ok: true };
+  return true;
 };
 
-const validateAddress = (arg: unknown): ValidationCheck => {
+const validateAddress = (arg: unknown) => {
   const basicValidated = basicValidation(
     arg,
     validShapes.address,
     validShapes.addressOptional,
   );
 
-  if (!basicValidated.ok) {
+  if (basicValidated !== true) {
     return basicValidated;
   }
 
-  return { ok: true };
+  return true;
 };
 
-const validateDeliveryDetails = (arg: unknown): ValidationCheck => {
+const validateDeliveryDetails = (arg: unknown) => {
   const basicValidated = basicValidation(
     arg,
     validShapes.address,
     validShapes.addressOptional,
   );
 
-  if (!basicValidated.ok) {
+  if (basicValidated !== true) {
     return basicValidated;
   }
 
@@ -122,14 +123,11 @@ const validateDeliveryDetails = (arg: unknown): ValidationCheck => {
       el => el === (arg as Record<string, unknown>).type,
     )
   ) {
-    return {
-      ok: false,
-      value: [422, `Invalid field values: ${arg}`],
-    };
+    return createError(422, `Invalid field values: ${arg}`);
   }
 
   if ((arg as Record<string, unknown>).type === DeliveryTypes.PICKUP) {
-    return { ok: true };
+    return true;
   }
 
   const { deliveryAddress } = arg as Record<string, unknown>;

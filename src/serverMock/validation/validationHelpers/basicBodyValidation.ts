@@ -1,19 +1,13 @@
-import { ValidationCheck } from '@server/types';
-import {
-  isValidObject,
-  validKeyLength,
-  validKeys,
-  validValueTypes,
-} from '../validationHelpers';
+import { isValidObject, validKeyLength, validKeys, validValueTypes } from '.';
 
 const basicValidation = (
   arg: unknown,
   shapeObject: Record<string, string>,
   optionalShapeObject?: Record<string, string>,
-): ValidationCheck => {
+) => {
   const isObject = isValidObject(arg);
 
-  if (!isObject.ok) {
+  if (isObject !== true) {
     return isObject;
   }
 
@@ -29,13 +23,13 @@ const basicValidation = (
     optionalLength,
   );
 
-  if (!isValidLength.ok) {
+  if (isValidLength !== true) {
     return isValidLength;
   }
 
   const haveValidKeys = validKeys(arg as Record<string, unknown>, testObj);
 
-  if (!haveValidKeys.ok) {
+  if (haveValidKeys !== true) {
     return haveValidKeys;
   }
 
@@ -44,11 +38,11 @@ const basicValidation = (
     testObj,
   );
 
-  if (!validValTypes) {
+  if (validValTypes !== true) {
     return validValTypes;
   }
 
-  return { ok: true };
+  return true;
 };
 
 export { basicValidation };

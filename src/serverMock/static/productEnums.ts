@@ -1,40 +1,3 @@
-enum ServerCategory {
-  ALL = 'all',
-  ACCESSORIES = 'accessories',
-  PHONES = 'phones',
-  TABLETS = 'tablets',
-}
-
-enum Months {
-  JAN = 'january',
-  FEB = 'february',
-  MAR = 'march',
-  APR = 'april',
-  MAY = 'may',
-  JUN = 'june',
-  JUL = 'july',
-  AUG = 'august',
-  SEP = 'september',
-  OCT = 'october',
-  NOV = 'november',
-  DEC = 'december',
-}
-
-const days: Record<Months, number> = {
-  [Months.JAN]: 31,
-  [Months.FEB]: 29,
-  [Months.MAR]: 31,
-  [Months.APR]: 30,
-  [Months.MAY]: 31,
-  [Months.JUN]: 30,
-  [Months.JUL]: 31,
-  [Months.AUG]: 31,
-  [Months.SEP]: 30,
-  [Months.OCT]: 31,
-  [Months.NOV]: 30,
-  [Months.DEC]: 31,
-};
-
 enum Processors {
   S3 = 'Apple S3',
   S4 = 'Apple S4',
@@ -83,12 +46,10 @@ enum Ram {
 
 enum Colors {
   sg = 'spacegray',
-  sg1 = 'space-gray',
-  sg2 = 'space gray',
   sv = 'silver',
-  rg = 'rose gold',
+  rg = 'rosegold',
   gr = 'green',
-  sb = 'sky blue',
+  sb = 'skyblue',
   sl = 'starlight',
   pi = 'pink',
   blc = 'black',
@@ -147,14 +108,11 @@ enum Cells {
 enum Cameras {
   mn8 = '8MP',
   mn12 = '12MP',
-  tr12_12_12 = '12 Mp + 12 Mp + 12 Mp',
-  tr12_12_12_1 = '12 Mp + 12 Mp + 12MP',
-  db12_7 = '12 Mp + 7 Mp',
-  db12_7_1 = '12 Mp + 7 MP',
-  db12_12 = '12 Mp + 12 Mp',
+  db12_7 = '12MP + 7MP',
   db12_12_1 = '12MP + 12MP',
-  tr12_12_7 = '12 Mp + 12 Mp + 7MP',
-  qd48_12_12_12 = '48 Mp + 12 Mp + 12MP + 12Mp',
+  tr12_12_7 = '12MP + 12MP + 7MP',
+  tr12_12_12 = '12MP + 12MP + 12MP',
+  qd48_12_12_12 = '48MP + 12MP + 12MP + 12MP',
 }
 
 enum Capacity {
@@ -171,11 +129,6 @@ enum Capacity {
   mm44 = '44mm',
 }
 
-type Description = {
-  title: string;
-  text: string;
-};
-
 enum PhoneZoom {
   'Digital, 5x',
   'Digital, 10x / Optical, 2x',
@@ -185,7 +138,6 @@ enum PhoneZoom {
 }
 
 export {
-  ServerCategory,
   Processors,
   Resolutions,
   Ram,
@@ -194,8 +146,5 @@ export {
   Cells,
   Capacity,
   Cameras,
-  type Description,
   PhoneZoom,
-  Months,
-  days,
 };

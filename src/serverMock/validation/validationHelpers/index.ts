@@ -12,3 +12,4 @@ export {
   validateAddress,
   validateDeliveryDetails,
 } from './cartSubvalidation';
+export { basicValidation } from './basicBodyValidation';

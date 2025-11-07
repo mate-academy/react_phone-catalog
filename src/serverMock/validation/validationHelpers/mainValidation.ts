@@ -1,21 +1,18 @@
-import { ValidationCheck, ValidationResult } from '../../types';
+import { createError } from '@server/helpers';
 
-const isValidObject = (arg: unknown): ValidationResult<true> => {
+const isValidObject = (arg: unknown) => {
   if (!(typeof arg === 'object' && arg !== null)) {
-    return {
-      ok: false,
-      value: [400, 'Invalid request body: expected JSON object'],
-    };
+    return createError(400, 'Invalid request body: expected JSON object');
   }
 
-  return { ok: true, value: true };
+  return true;
 };
 
 const validKeyLength = (
   arg: Record<string, unknown>,
   keysObligate: number,
   keysOptional: number,
-): ValidationCheck => {
+) => {
   const amount = Object.keys(arg).length;
   const check =
     keysOptional > 0
@@ -23,47 +20,47 @@ const validKeyLength = (
       : amount === keysObligate;
 
   if (!check) {
-    return {
-      ok: false,
-      value: [400, `Invalid object shape: unexpected key number: ${arg}`],
-    };
+    return createError(
+      400,
+      `Invalid object shape: unexpected key number: ${arg}`,
+    );
   }
 
-  return { ok: true };
+  return true;
 };
 
 const validKeys = (
   arg: Record<string, unknown>,
   shapeObject: Record<string, string>,
-): ValidationCheck => {
+) => {
   const shapeKeys = Object.keys(shapeObject);
   const check = Object.keys(arg).every(el =>
     shapeKeys.some(template => template === el),
   );
 
   if (!check) {
-    return {
-      ok: false,
-      value: [400, `Invalid object structure: unknown or missing keys: ${arg}`],
-    };
+    return createError(
+      400,
+      `Invalid object structure: unknown or missing keys: ${arg}`,
+    );
   }
 
-  return { ok: true };
+  return true;
 };
 
 const validValueTypes = (
   arg: Record<string, unknown>,
   shapeObject: Record<string, string>,
-): ValidationCheck => {
+) => {
   for (const [key, value] of Object.entries(arg)) {
     const expectedType = shapeObject[key];
 
     if (expectedType === 'number') {
-      if (!(typeof value === 'number' && Number.isFinite(value))) {
-        return {
-          ok: false,
-          value: [422, `Invalid type for "${key}": expected number`],
-        };
+      if (!(typeof value === 'number' && Number.isFinite(value) && value > 0)) {
+        return createError(
+          422,
+          `Invalid type for "${key}": expected positive number`,
+        );
       }
 
       continue;
@@ -71,10 +68,7 @@ const validValueTypes = (
 
     if (expectedType === 'array') {
       if (!Array.isArray(value)) {
-        return {
-          ok: false,
-          value: [422, `Invalid type for "${key}": expected array`],
-        };
+        return createError(422, `Invalid type for "${key}": expected array`);
       }
 
       continue;
@@ -84,24 +78,21 @@ const validValueTypes = (
       if (
         !(typeof value === 'object' && value !== null && !Array.isArray(value))
       ) {
-        return {
-          ok: false,
-          value: [422, `Invalid type for "${key}": expected object`],
-        };
+        return createError(422, `Invalid type for "${key}": expected object`);
       }
 
       continue;
     }
 
     if (typeof value !== expectedType) {
-      return {
-        ok: false,
-        value: [422, `Invalid type for "${key}": expected ${expectedType}`],
-      };
+      return createError(
+        422,
+        `Invalid type for "${key}": expected ${expectedType}`,
+      );
     }
   }
 
-  return { ok: true };
+  return true;
 };
 
 export { isValidObject, validKeyLength, validKeys, validValueTypes };

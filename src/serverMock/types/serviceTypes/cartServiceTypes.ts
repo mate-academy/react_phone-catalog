@@ -1,9 +1,20 @@
-import { Months } from '@server/static';
+import { DeliveryTypes, Months } from '@server/static';
+import { ErrorObject, Product } from '..';
 
-type CartItem = {
+interface CartItem {
   id: string;
   amount: number;
-};
+}
+
+interface BECartItem {
+  product: Product;
+  amount: number;
+}
+
+interface CartData {
+  products: BECartItem[];
+  errors: { id: string; error: ErrorObject }[];
+}
 
 interface Address {
   country: string;
@@ -12,12 +23,6 @@ interface Address {
   street: string;
   buildingNumber: string;
   apartment?: number;
-}
-
-enum DeliveryTypes {
-  PICKUP = 'pickup',
-  DPD = 'dpd',
-  UPS = 'ups standard',
 }
 
 interface Birthday {
@@ -44,11 +49,12 @@ interface Shipment {
 }
 
 export {
-  type Shipment,
-  type Pickup,
-  type UserDetails,
   type CartItem,
-  type Birthday,
-  DeliveryTypes,
+  type BECartItem,
+  type CartData,
   type Address,
+  type Birthday,
+  type UserDetails,
+  type Pickup,
+  type Shipment,
 };

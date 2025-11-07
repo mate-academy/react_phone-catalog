@@ -1,13 +1,2 @@
-import { getBanners } from './bannerService';
-import { getAmount, getProduct } from './productService';
-import { getCatalogueItems } from './catalogService';
-import { RequestType } from '@server/static';
-
-const getService = {
-  [RequestType.CATALOGUE]: getCatalogueItems,
-  [RequestType.PRODUCT]: getProduct,
-  [RequestType.BANNER]: getBanners,
-  [RequestType.AMOUNT]: getAmount,
-};
-
-export { getService };
+export { getCart, filterStored, processItem, getCheckout } from './CART';
+export { getCatalogueItems, getBanners, getProduct, getAmount } from './GET';
