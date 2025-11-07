@@ -65,7 +65,7 @@ export const Header: React.FC = () => {
         <NavLink to="/">
           <img
             className="header__logo"
-            src="img/ui-kit/header-logo.png"
+            src="img/ui-kit/Header-logo.png"
             alt="header__logo"
           />
         </NavLink>
