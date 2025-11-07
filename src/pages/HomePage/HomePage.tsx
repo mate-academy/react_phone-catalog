@@ -40,9 +40,19 @@ export default function HomePage() {
   const banners = isMobile ? mobileBanners : desktopBanners;
 
   useEffect(() => {
-    fetch('/api/products.json')
-      .then(res => res.json())
-      .then(data => setProducts(data));
+    const fetchProducts = async () => {
+      try {
+        const dataUrl = `${import.meta.env.BASE_URL}api/products.json`;
+        const res = await fetch(dataUrl);
+        const data = await res.json();
+
+        setProducts(data);
+      } catch (error) {
+        // console.error('Failed to fetch products for HomePage:', error);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   // Get brand new (phones with highest price first)

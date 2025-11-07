@@ -13,15 +13,21 @@ export default function SearchPage() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch('/api/products.json')
-      .then(res => res.json())
-      .then(data => {
+    const fetchProducts = async () => {
+      try {
+        const dataUrl = `${import.meta.env.BASE_URL}api/products.json`;
+        const res = await fetch(dataUrl);
+        const data = await res.json();
+
         setProducts(data);
+      } catch (e) {
+        // console.error('Failed to fetch products for SearchPage:', e);
+      } finally {
         setIsLoading(false);
-      })
-      .catch(() => {
-        setIsLoading(false);
-      });
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
