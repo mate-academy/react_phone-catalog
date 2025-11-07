@@ -74,7 +74,7 @@ export default function RightsPage() {
             product and manufacturer.
           </p>
 
-          <h3>What's Covered</h3>
+          <h3>What&apos;s Covered</h3>
           <ul>
             <li>Manufacturing defects</li>
             <li>Hardware malfunctions under normal use</li>
