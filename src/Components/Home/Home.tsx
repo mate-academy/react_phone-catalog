@@ -8,7 +8,7 @@ import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
 const pageBanners = [
-  { image: '/img/banners/Banner.png', link: '/phones' },
+  { image: 'img/banners/Banner.png', link: '/phones' },
   { image: 'https://i.imgur.com/RgR1JJm.png', link: '/tablets' },
   { image: 'img/banners/banner-accessories.png', link: '/accessories' },
 ];
@@ -45,7 +45,7 @@ export const Home: React.FC = () => {
 
           <div className="home__banner--box">
             <div className="home__slider-button">
-              <img src="/img/ui-kit/chevron-arrow-left.png" alt="button" />
+              <img src="img/ui-kit/chevron-arrow-left.png" alt="button" />
             </div>
 
             <Swiper
@@ -80,7 +80,7 @@ export const Home: React.FC = () => {
             </Swiper>
 
             <div className="home__slider-button--right">
-              <img src="/img/ui-kit/chevron-arrow-left.png" alt="button" />
+              <img src="img/ui-kit/chevron-arrow-left.png" alt="button" />
             </div>
           </div>
 
@@ -96,7 +96,7 @@ export const Home: React.FC = () => {
 
           <Link to="/phones">
             <img
-              src="/img/banners/mobileBanner-phones.png"
+              src="img/banners/mobileBanner-phones.png"
               alt="banner"
               className="home-banner"
             />

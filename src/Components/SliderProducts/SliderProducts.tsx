@@ -55,7 +55,7 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
           <div className="slider-products__slide-icons">
             <img
               ref={prevRef}
-              src="/img/ui-kit/Slider-button-small-right.png"
+              src="img/ui-kit/Slider-button-small-right.png"
               alt="slider-button"
               className={classNames(
                 'slider-products__slide-icon--left',
@@ -65,7 +65,7 @@ export const SliderProducts: React.FC<Props> = ({ title }) => {
 
             <img
               ref={nextRef}
-              src="/img/ui-kit/Slider-button-small-right.png"
+              src="img/ui-kit/Slider-button-small-right.png"
               alt="slider-button"
               className={classNames(
                 'slider-products__slide-icon--right',

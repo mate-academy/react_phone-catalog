@@ -49,13 +49,13 @@ export const CartPage: React.FC = () => {
           <NavLink to={'/'}>
             <img
               className="cart__nav-link"
-              src="/img/ui-kit/Home.png"
+              src="img/ui-kit/Home.png"
               alt="home"
             />
           </NavLink>
           <img
             className="cart__nav-link"
-            src="/img/ui-kit/chevron-arrow-right.png"
+            src="img/ui-kit/chevron-arrow-right.png"
             alt="to-right"
           />
           <p className="cart__nav-link">cart</p>

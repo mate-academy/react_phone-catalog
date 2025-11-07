@@ -27,13 +27,13 @@ export const FavoritesPage: React.FC = () => {
           <NavLink to={'/'}>
             <img
               className="favorites__nav-link"
-              src="/img/ui-kit/Home.png"
+              src="img/ui-kit/Home.png"
               alt="home"
             />
           </NavLink>
           <img
             className="favorites__nav-link"
-            src="/img/ui-kit/chevron-arrow-right.png"
+            src="img/ui-kit/chevron-arrow-right.png"
             alt="to-right"
           />
           <p className="favorites__nav-link">favorites</p>

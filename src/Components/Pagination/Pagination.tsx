@@ -44,7 +44,7 @@ export const Pagination: React.FC<Props> = ({
   return (
     <div className="catalog__pagination-buttons">
       <img
-        src="/img/ui-kit/Slider-button-small-right.png"
+        src="img/ui-kit/Slider-button-small-right.png"
         alt="slider-button"
         className="slider-products__slide-icon--left"
         onClick={previousPage}
@@ -65,7 +65,7 @@ export const Pagination: React.FC<Props> = ({
       </div>
 
       <img
-        src="/img/ui-kit/Slider-button-small-right.png"
+        src="img/ui-kit/Slider-button-small-right.png"
         alt="slider-button"
         className="slider-products__slide-icon"
         onClick={nextPage}

@@ -65,7 +65,7 @@ export const Header: React.FC = () => {
         <NavLink to="/">
           <img
             className="header__logo"
-            src="public/img/ui-kit/header-logo.png"
+            src="img/ui-kit/header-logo.png"
             alt="header__logo"
           />
         </NavLink>
@@ -93,7 +93,7 @@ export const Header: React.FC = () => {
               <div className="header__nav--icons--section">
                 <NavLink className={IconsActivateLink} to="/favorites">
                   <img
-                    src="/img/ui-kit/favorites-icon.png"
+                    src="img/ui-kit/favorites-icon.png"
                     alt="favorites-icon"
                   />
                 </NavLink>
@@ -108,7 +108,7 @@ export const Header: React.FC = () => {
               <div className="header__nav--icons--section">
                 <NavLink className={IconsActivateLink} to="/cart">
                   <img
-                    src="/img/ui-kit/Shopping-bag.png"
+                    src="img/ui-kit/Shopping-bag.png"
                     alt="Shopping-bag.png"
                   />
                 </NavLink>
@@ -127,7 +127,7 @@ export const Header: React.FC = () => {
             >
               <img
                 src={
-                  isMenuOpen ? '/img/ui-kit/Close.png' : '/img/ui-kit/Menu.png'
+                  isMenuOpen ? 'img/ui-kit/Close.png' : 'img/ui-kit/Menu.png'
                 }
                 alt="menu-icon"
               />

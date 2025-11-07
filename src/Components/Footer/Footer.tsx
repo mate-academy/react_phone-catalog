@@ -4,7 +4,7 @@ export const Footer: React.FC = () => {
   return (
     <div className="footer">
       <div className="footer__logo">
-        <img src="/img/ui-kit/Header-logo.png" alt="header__logo" />
+        <img src="img/ui-kit/Header-logo.png" alt="header__logo" />
       </div>
 
       <div className="footer__nav--links">
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
         <div className="footer__nav--icons">
           <p>back to top</p>
           <img
-            src="/img/ui-kit/Slider-button-small-top.png"
+            src="img/ui-kit/Slider-button-small-top.png"
             alt="favorites-icon"
           />
         </div>

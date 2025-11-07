@@ -17,7 +17,7 @@ export const ShopByCategory: React.FC = () => {
             >
               <img
                 className="category__image"
-                src="/img/categories/mobile-phones.png"
+                src="img/categories/mobile-phones.png"
                 alt="category"
               />
             </Link>
@@ -34,7 +34,7 @@ export const ShopByCategory: React.FC = () => {
             >
               <img
                 className="category__image"
-                src="/img/categories/tablets.png"
+                src="img/categories/tablets.png"
                 alt="category"
               />
             </Link>
@@ -51,7 +51,7 @@ export const ShopByCategory: React.FC = () => {
             >
               <img
                 className="category__image"
-                src="/img/categories/Accessories.png"
+                src="img/categories/Accessories.png"
                 alt="category"
               />
             </Link>

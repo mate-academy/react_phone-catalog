@@ -92,14 +92,14 @@ export const ProductPage = () => {
         <Link to={'/'}>
           <img
             className="product-page__nav-link"
-            src="/img/ui-kit/Home.png"
+            src="img/ui-kit/Home.png"
             alt="home"
           />
         </Link>
 
         <img
           className="product-page__nav-link"
-          src="/img/ui-kit/chevron-arrow-right.png"
+          src="img/ui-kit/chevron-arrow-right.png"
           alt="to-right"
         />
 
@@ -109,7 +109,7 @@ export const ProductPage = () => {
 
         <img
           className="product-page__nav-link"
-          src="/img/ui-kit/chevron-arrow-right.png"
+          src="img/ui-kit/chevron-arrow-right.png"
           alt="to-right"
         />
 
@@ -117,7 +117,7 @@ export const ProductPage = () => {
       </nav>
 
       <Link to=".." className="back-button">
-        <img src="/img/ui-kit/chevron-arrow-left.png" />
+        <img src="img/ui-kit/chevron-arrow-left.png" />
         <p>Back</p>
       </Link>
 

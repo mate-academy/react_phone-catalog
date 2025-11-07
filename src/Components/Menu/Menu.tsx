@@ -33,7 +33,7 @@ export const Menu = () => {
       <div className="menu__nav--icons">
         <NavLink to="/favorites">
           <div className="menu__nav--icons--section">
-            <img src="/img/ui-kit/favorites-icon.png" alt="favorites-icon" />
+            <img src="img/ui-kit/favorites-icon.png" alt="favorites-icon" />
           </div>
         </NavLink>
 
@@ -42,7 +42,7 @@ export const Menu = () => {
             className="menu__nav--icons--section
             menu__nav--icons--section--cart"
           >
-            <img src="/img/ui-kit/Shopping-bag.png" alt="Shopping-bag.png" />
+            <img src="img/ui-kit/Shopping-bag.png" alt="Shopping-bag.png" />
           </div>
         </NavLink>
       </div>

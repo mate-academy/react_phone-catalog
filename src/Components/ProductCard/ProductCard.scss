@@ -164,7 +164,7 @@
   height: 40px;
   border: 0;
   padding: 0;
-  background-image: url("/img/ui-kit/Add-to-favourites.png");
+  background-image: url("img/ui-kit/Add-to-favourites.png");
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-image 0.2s ease;
 
   &:hover {
@@ -175,5 +175,5 @@
 
 .favorite-active {
   background-color: #161827;
-  background-image: url("public/img/ui-kit/Add-to-fovourites-Added.png");
+  background-image: url("img/ui-kit/Add-to-fovourites-Added.png");
 }
