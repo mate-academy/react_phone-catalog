@@ -29,7 +29,8 @@ export default function ProductListPage({
     try {
       setIsLoading(true);
       setError(null);
-      const res = await fetch('/api/products.json');
+      const dataUrl = `${import.meta.env.BASE_URL}api/products.json`;
+      const res = await fetch(dataUrl);
 
       if (!res.ok) {
         throw new Error(`Failed to fetch ${pageTitle.toLowerCase()}`);

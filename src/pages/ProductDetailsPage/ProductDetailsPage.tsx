@@ -73,7 +73,8 @@ export default function ProductDetailsPage() {
 
         setIsLoading(true);
         setError(null);
-        const res = await fetch(`/api/${category}.json`);
+        const detailsUrl = `${import.meta.env.BASE_URL}api/${category}.json`;
+        const res = await fetch(detailsUrl);
 
         if (!res.ok) {
           throw new Error(
@@ -112,7 +113,8 @@ export default function ProductDetailsPage() {
         try {
           // Buscamos de 'products.json' que contém a lista geral de produtos
           // no formato correto (Product) que o ProductSlider espera.
-          const res = await fetch('/api/products.json');
+          const suggestedUrl = `${import.meta.env.BASE_URL}api/products.json`;
+          const res = await fetch(suggestedUrl);
 
           if (!res.ok) {
             // Não quebra a página, apenas loga o erro no console.
@@ -266,7 +268,7 @@ export default function ProductDetailsPage() {
                 onClick={() => setSelectedImage(img)}
               >
                 <img
-                  src={`/${img}`}
+                  src={`${import.meta.env.BASE_URL}${img}`}
                   alt={`Thumbnail ${index + 1} of ${product.name}`}
                 />
               </button>
@@ -274,7 +276,7 @@ export default function ProductDetailsPage() {
           </div>
           <div className={styles.mainImageContainer}>
             <img
-              src={`/${selectedImage}`}
+              src={`${import.meta.env.BASE_URL}${selectedImage}`}
               alt={product.name}
               className={styles.mainImage}
             />
