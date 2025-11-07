@@ -59,6 +59,7 @@ export const ProductDetailsPage = () => {
     <ProductProvider
       key={currentProduct.id}
       product={currentProduct}
+      setCurrentProduct={setCurrentProduct}
       sale={sale}
       isProductPage={isProductPage}
       initialColor={initialColor}

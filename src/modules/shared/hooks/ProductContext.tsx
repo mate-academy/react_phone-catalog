@@ -3,6 +3,7 @@ import {
   Product,
   ProductsDetails,
   colorStyle,
+  useTabs,
 } from '../../../ProductsContext/TabsContext';
 
 export interface ProductContextType {
@@ -30,6 +31,7 @@ export const ProductContext = createContext<ProductContextType | undefined>(
 
 export interface ProductProviderProps {
   product: Product;
+  setCurrentProduct: (p: Product) => void;
   children: React.ReactNode;
   sale: boolean;
   isProductPage: boolean;
@@ -40,6 +42,7 @@ export interface ProductProviderProps {
 
 export const ProductProvider: React.FC<ProductProviderProps> = ({
   product,
+  setCurrentProduct,
   children,
   sale,
   isProductPage,
@@ -53,6 +56,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
     product?.details?.description || [],
   );
   const [activeProduct, setActiveProduct] = useState(product.details);
+  const { productsList } = useTabs();
 
   const productColorKey = Object.keys(colorStyle).find(
     key => colorStyle[key] === activeColor,
@@ -88,6 +92,14 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
       setActiveDescription(product?.details?.description || []);
     }
   }, [product, activeProduct]);
+
+  useEffect(() => {
+    const card = productsList.find(el => el.name === activeProduct?.name);
+
+    if (card) {
+      setCurrentProduct(card);
+    }
+  }, [activeProduct?.name, productsList, setCurrentProduct]);
 
   useEffect(() => {
     if (!setSearchParams) {
