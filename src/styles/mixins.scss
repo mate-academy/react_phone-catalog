@@ -2,18 +2,38 @@
 
 @mixin respond-to($device) {
   @if $device == mobile {
-    @media (min-width: $mobile) { @content; }
+    @media (min-width: $mobile) {
+      @content;
+    }
   }
 
   @if $device == tablet {
-    @media (min-width: $tablet) { @content; }
+    @media (min-width: $tablet) {
+      @content;
+    }
   }
 
   @if $device == desktop {
-    @media (min-width: $desktop) { @content; }
+    @media (min-width: $desktop) {
+      @content;
+    }
   }
 
   @if $device == wide {
-    @media (min-width: $wide) { @content; }
+    @media (min-width: $wide) {
+      @content;
+    }
+  }
+
+  @if $device == large {
+    @media (min-width: $large) {
+      @content;
+    }
+  }
+
+    @if $device == enormous {
+    @media (min-width: $enormous) {
+      @content;
+    }
   }
 }

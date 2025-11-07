@@ -118,6 +118,20 @@
   @include respond-to(desktop) {
     width: 380px;
   }
+
+    @include respond-to(wide) {
+    width: 410px;
+  }
+
+  @include respond-to(large) {
+    width: 490px;
+    margin-top: 32%;
+  }
+
+  @include respond-to(enormous) {
+    width: 600px;
+    margin-top: 35%;
+  }
 }
 
 .tablets .category_image {
@@ -132,6 +146,20 @@
   @include respond-to(desktop) {
     width: 383px;
   }
+
+  @include respond-to(wide) {
+    width: 410px;
+  }
+
+  @include respond-to(large) {
+    width: 490px;
+    margin-top: 32%;
+  }
+
+  @include respond-to(enormous) {
+    width: 600px;
+    margin-top: 35%;
+  }
 }
 
 .accessories .category_image {
@@ -145,6 +173,21 @@
 
   @include respond-to(desktop) {
     width: 670px;
+    margin-top: 22%;
+  }
+
+  @include respond-to(wide) {
+    width: 710px;
+  }
+
+  @include respond-to(large) {
+    width: 900px;
+    margin-top: 20%;
+  }
+
+  @include respond-to(enormous) {
+    width: 1000px;
+    margin-top: 29%;
   }
 }
 
