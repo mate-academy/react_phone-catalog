@@ -41,7 +41,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <SpecList product={product} specsToShow={4} />
       <div className={styles.productCard__buttons}>
         <Button
-          textContent="Add to cart"
+          textContent={
+            cartIds.includes(product.id) ? 'Added to cart' : 'Add to cart'
+          }
           className={
             [
               'cartSmall',
