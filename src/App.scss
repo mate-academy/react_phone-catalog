@@ -24,6 +24,12 @@
   font-display: swap;
 }
 
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr auto; // header, main, footer
+  min-height: 100vh;
+}
+
 *,
 *::before,
 *::after {
@@ -56,6 +62,8 @@ p {
 }
 
 body {
+  box-sizing: border-box;
+
   font-family: Mont, sans-serif;
   font-weight: 400;
   color: var(--primary-color);
@@ -64,7 +72,6 @@ body {
   line-height: 150%;
   letter-spacing: 0;
 
-  box-sizing: border-box;
   background-color: var(--main-bg);
   margin: 0;
   padding: 0;

@@ -53,6 +53,7 @@ export const Header = () => {
             src={logoLink}
             alt="nice gadgets logo"
             className={styles.header__img}
+            width="80px"
           />
         </NavLink>
 

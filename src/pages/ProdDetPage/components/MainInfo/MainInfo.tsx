@@ -91,7 +91,9 @@ export const MainInfo: React.FC<Props> = ({ product }) => {
       </h3>
       <div className={styles.mainInfo__buttons}>
         <Button
-          textContent="Add to cart"
+          textContent={
+            cartIds.includes(product.id) ? 'Added to cart' : 'Add to cart'
+          }
           className={
             [
               'cartBig',

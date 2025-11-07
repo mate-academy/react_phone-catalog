@@ -16,6 +16,7 @@ export const Footer = () => {
           <img
             src="img/footer/footer-logo.png"
             alt="nice gadgets logo"
+            width="89px"
             className={styles.footer__img}
           />
         </NavLink>

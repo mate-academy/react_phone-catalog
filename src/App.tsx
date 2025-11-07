@@ -18,17 +18,22 @@ export const App = () => {
       <h1 className="hiddenText">Product Catalog</h1>
       <ScrollToTop />
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<PhonesPage />} />
-        <Route path="/tablets" element={<TabletsPage />} />
-        <Route path="/accessories" element={<AccessoriesPage />} />
-        <Route path="/phones" element={<PhonesPage />} />
-        <Route path="/favourites" element={<FavsPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/:category/:productId" element={<ProductDetailsPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/phones" element={<PhonesPage />} />
+          <Route path="/tablets" element={<TabletsPage />} />
+          <Route path="/accessories" element={<AccessoriesPage />} />
+          <Route path="/phones" element={<PhonesPage />} />
+          <Route path="/favourites" element={<FavsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route
+            path="/:category/:productId"
+            element={<ProductDetailsPage />}
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
       <Footer />
     </div>
   );
