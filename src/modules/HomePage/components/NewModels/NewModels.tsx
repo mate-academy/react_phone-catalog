@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Carusel } from '@GlobalComponents';
-import { fetchProducts } from '@Fetch';
+import { getData } from '@Fetch';
 import { Products } from 'src/types/products';
 
 export const NewModels = () => {
@@ -18,7 +18,7 @@ export const NewModels = () => {
   );
 
   useEffect(() => {
-    fetchProducts().then((products: Products[]) => {
+    getData<Products[]>('/products').then((products: Products[]) => {
       const filtered = products.filter(
         item =>
           item.category === 'phones' &&

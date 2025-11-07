@@ -63,21 +63,22 @@ export const PaginationPage = ({
 
   const [searchParams] = useSearchParams();
 
-  const nextPageIndex = currentPage + 1;
-  const prevPageIndex = currentPage + 1;
-
   const getNextPageSearch = () => {
     if (currentPage >= pageCount) {
       return searchParams.toString();
     }
 
+    const nextPageIndex = currentPage + 1;
+
     return getSearchWith({ page: nextPageIndex }, searchParams);
   };
 
   const getPrevPageSearch = () => {
-    if (currentPage <= pageCount) {
+    if (currentPage === 1) {
       return searchParams.toString();
     }
+
+    const prevPageIndex = currentPage - 1;
 
     return getSearchWith({ page: prevPageIndex }, searchParams);
   };

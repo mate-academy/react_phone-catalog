@@ -17,22 +17,56 @@ const Navbar = () => {
       >
         <ul className={style.navbar__list}>
           <li>
-            <Link className={style.navbar__link} to="/">
+            <Link
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                });
+              }}
+              className={style.navbar__link}
+              to="/"
+            >
               home
             </Link>
           </li>
           <li>
-            <Link className={style.navbar__link} to="/phones">
+            <Link
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                });
+              }}
+              className={style.navbar__link}
+              to="/phones"
+            >
               Phones
             </Link>
           </li>
           <li>
-            <Link className={style.navbar__link} to="/tablets">
+            <Link
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                });
+              }}
+              className={style.navbar__link}
+              to="/tablets"
+            >
               tablets
             </Link>
           </li>
           <li>
-            <Link className={style.navbar__link} to="/accessories">
+            <Link
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+
+                  behavior: 'smooth',
+                });
+              }}
+              className={style.navbar__link}
+              to="/accessories"
+            >
               accessories
             </Link>
           </li>

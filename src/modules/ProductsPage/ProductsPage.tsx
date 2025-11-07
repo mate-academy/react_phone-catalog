@@ -1,8 +1,8 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
-import { fetchProducts } from '@Fetch';
-import { ProductList } from '@GlobalComponents';
+import { getData } from '@Fetch';
+
 import { Products } from 'src/types/products';
 
 import style from './productsPage.module.scss';
@@ -10,55 +10,87 @@ import home from '@Images/icons/Home.svg';
 import arrow from '@Images/icons/Arrow-black-right.svg';
 import { useTimer } from '../../Hooks/useTimer';
 import { getFilteredProducts } from './getProducts';
+import { ErrorComponent, ProductList, ProductsEmpty } from '@GlobalComponents';
 
 export const ProductsPage = () => {
-  const [products, setProducts] = useState<Products[]>([]);
-  const [isLoading, setIsloading] = useState(false);
   const { start, clear } = useTimer();
 
-  const { categoryName } = useParams();
+  const { pathname } = useLocation();
+  const categoryName = pathname.split('/')[1];
+
+  const [products, setProducts] = useState<Products[]>([]);
+  const [isLoading, setIsloading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const [updateAt, setUpdateAt] = useState(new Date());
+
+  function reload() {
+    setUpdateAt(new Date());
+    setIsError(false);
+  }
 
   useEffect(() => {
     setIsloading(true);
 
     start(() => {
-      setIsloading(false);
+      getData<Products[]>('/products')
+        .then((data: Products[]) => {
+          const result = getFilteredProducts(data, categoryName);
+
+          setProducts(result);
+        })
+        .catch(error => {
+          setIsError(true);
+
+          throw error;
+        })
+        .finally(() => {
+          setIsloading(false);
+        });
     }, 1000);
-
-    fetchProducts().then((data: Products[]) => {
-      const result = getFilteredProducts(data, categoryName);
-
-      setProducts(result);
-    });
 
     return () => {
       clear();
     };
-  }, [categoryName, start, clear]);
+  }, [categoryName, start, clear, updateAt]);
 
   return (
     <>
       <div className="container">
         <main className={style.main}>
-          <nav className={style.nav}>
-            <ul className={style.list}>
-              <li>
-                <Link className={style.link} to="/">
-                  <img src={home} alt="" />
-                </Link>
-              </li>
-              <li className={style.item}>
-                <img className={style['item__img-arrow']} src={arrow} alt="" />
-                <span className={style.item__text}>{categoryName}</span>
-              </li>
-            </ul>
-          </nav>
+          <section>
+            <nav className={style.nav}>
+              <ul className={style.list}>
+                <li>
+                  <Link className={style.link} to="/">
+                    <img src={home} alt="" />
+                  </Link>
+                </li>
+                <li className={style.item}>
+                  <img
+                    className={style['item__img-arrow']}
+                    src={arrow}
+                    alt=""
+                  />
+                  <span className={style.item__text}>{categoryName}</span>
+                </li>
+              </ul>
+            </nav>
 
-          <ProductList
-            isLoading={isLoading}
-            title={categoryName || 'Loading Category'}
-            data={products}
-          />
+            {isError && <ErrorComponent onRestart={reload} />}
+
+            {!isLoading && !isError && products.length === 0 && (
+              <ProductsEmpty title={categoryName || 'empty'} />
+            )}
+
+            {!isError && (isLoading || products.length > 0) && (
+              <ProductList
+                isLoading={isLoading}
+                title={categoryName || 'Loading Category'}
+                data={products}
+              />
+            )}
+          </section>
         </main>
       </div>
     </>

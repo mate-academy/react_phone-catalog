@@ -29,6 +29,11 @@
   background-color: var(--color-surface-2);
 }
 
+.arrow-prev a,
+.arrow-next a {
+  padding: 8px;
+}
+
 .active {
   background-color: var(--color-pagination-active);
 

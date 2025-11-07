@@ -15,4 +15,8 @@
 
 .title {
   width: 136px;
+
+  @include onTablet {
+    width: 100%;
+  }
 }

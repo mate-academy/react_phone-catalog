@@ -1,25 +1,53 @@
-import { fetchAccessories, fetchPhones, fetchTablets } from '@Fetch';
+import { getData } from '@Fetch';
 import style from './Category.module.scss';
 
 import { useEffect, useState } from 'react';
 import { images } from '.';
+import { Products } from 'src/types/products';
+import { CategoryCard } from '../CategoryCard/CategoryCard';
 
 export const Category = () => {
-  const [phones, setPhones] = useState([]);
-  const [tablets, setTablets] = useState([]);
-  const [accessories, setAccessories] = useState([]);
+  const [phones, setPhones] = useState<Products[]>([]);
+  const [tablets, setTablets] = useState<Products[]>([]);
+  const [accessories, setAccessories] = useState<Products[]>([]);
 
   useEffect(() => {
-    fetchPhones().then(setPhones);
+    getData<Products[]>('/phones').then(res => {
+      setPhones(res);
+    });
+    getData<Products[]>('/accessories').then(setAccessories);
+    getData<Products[]>('/tablets').then(setTablets);
   }, []);
 
-  useEffect(() => {
-    fetchAccessories().then(setAccessories);
-  }, []);
-
-  useEffect(() => {
-    fetchTablets().then(setTablets);
-  });
+  const categoriesData = [
+    {
+      id: 1,
+      path: 'phones',
+      title: 'Mobile phones',
+      count: phones.length,
+      desktopImage: images.phoneDekstop,
+      mobileImage: images.phoneMobile,
+      className: style.phones,
+    },
+    {
+      id: 2,
+      path: 'tablets',
+      title: 'Tablets',
+      count: tablets.length,
+      desktopImage: images.tableDekstop,
+      mobileImage: images.tabletMobile,
+      className: style.tablets,
+    },
+    {
+      id: 3,
+      path: 'accessories',
+      title: 'Accessories',
+      count: accessories.length,
+      desktopImage: images.accessoryDekstop,
+      mobileImage: images.accessoryMobile,
+      className: style.accessories,
+    },
+  ];
 
   return (
     <section className="section">
@@ -27,75 +55,16 @@ export const Category = () => {
         <h1 className={`${style.title} title`}>Shop by category</h1>
 
         <div className={style.category}>
-          <div className={`${style.phones} ${style.active}`}>
-            <a href="#" className={style.category__link}>
-              <picture>
-                <source
-                  media="(max-width: 1023px)"
-                  srcSet={images.phoneMobile}
-                  type="image/avif"
-                />
-
-                <source
-                  media="(min-width: 1024px)"
-                  srcSet={images.phoneDekstop}
-                  type="image/png"
-                />
-
-                <img src={images.phoneDekstop} alt="category phone" />
-              </picture>
-              <div className={style.bottom}>
-                <h2 className="title">Mobile phones</h2>
-                <span>{phones.length} models</span>
-              </div>
-            </a>
-          </div>
-          <div className={`${style.tablets} ${style.active}`}>
-            <a href="#" className={style.category__link}>
-              <picture>
-                <source
-                  media="(max-width: 1023px)"
-                  srcSet={images.tabletMobile}
-                  type="image/avif"
-                />
-
-                <source
-                  media="(min-width: 1024px)"
-                  srcSet={images.tableDekstop}
-                  type="image/png"
-                />
-
-                <img src={images.tableDekstop} alt="category phone" />
-              </picture>
-              <div className={style.bottom}>
-                <h2 className="title">Tablets</h2>
-                <span>{tablets.length} models</span>
-              </div>
-            </a>
-          </div>
-          <div className={`${style.accessories} ${style.active}`}>
-            <a href="#" className={style.category__link}>
-              <picture>
-                <source
-                  media="(max-width: 1023px)"
-                  srcSet={images.accessoryMobile}
-                  type="image/avif"
-                />
-
-                <source
-                  media="(min-width: 1024px)"
-                  srcSet={images.accessoryDekstop}
-                  type="image/png"
-                />
-
-                <img src={images.accessoryDekstop} alt="category phone" />
-              </picture>
-              <div className={style.bottom}>
-                <h2 className="title">Accessories</h2>
-                <span>{accessories.length} models</span>
-              </div>
-            </a>
-          </div>
+          {categoriesData.map(category => (
+            <CategoryCard
+              key={category.id}
+              name={category.title}
+              path={category.path}
+              count={category.count}
+              desktopImage={category.desktopImage}
+              mobileImage={category.mobileImage}
+            />
+          ))}
         </div>
       </div>
     </section>

@@ -31,15 +31,13 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoadingSort, setIsLoadingSort] = useState(false);
 
-  const { start, clear } = useTimer();
-
-  const sortBySearch = searchParams.get('sortBy') || 'Chose One';
-  const sortPerSearch = +(searchParams.get('perPage') || 16);
+  const sortBySearch = (searchParams.get('sortBy') as SortBy) || null;
+  const perPageSearch = searchParams.get('perPage') || '16';
   const currentPageSearch = +(searchParams.get('page') || 1);
 
-  const [selected, setSelected] = useState(sortBySearch);
-  const [perPage, setPerPage] = useState<number | string>(sortPerSearch);
-  const [currentPage, setCurrentPage] = useState(currentPageSearch);
+  const currentPage = +currentPageSearch;
+  const selected = sortBySearch ?? 'Chose One';
+  const perPage = perPageSearch === 'All' ? 'All' : +perPageSearch;
 
   const sortPage = [16, 8, 4, 'All'];
   const sortBy: SortBy[] = [
@@ -47,6 +45,8 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
     SortBy.Alphabetically,
     SortBy.Cheapest,
   ];
+
+  const { start, clear } = useTimer();
 
   useEffect(() => {
     setIsLoadingSort(true);
@@ -60,17 +60,7 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
     };
   }, [selected, start, clear]);
 
-  function reset() {
-    setSelected('Chose One');
-    setPerPage(16);
-    setCurrentPage(1);
-  }
-
-  useEffect(() => {
-    reset();
-  }, [title]);
-
-  function creatSkeleton() {
+  function createSkeleton() {
     const DEFAULT_SKELETON_COUNT = 16;
 
     let count: number;
@@ -97,12 +87,18 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
 
     setIsLoadingSort(true);
 
+    if (perPage !== 4) {
+      window.scrollTo({
+        top: 150,
+        behavior: 'smooth',
+      });
+    }
+
     start(() => {
       setIsLoadingSort(false);
     }, 1000);
 
     setSearchWith({ page: numPage });
-    setCurrentPage(numPage);
   };
 
   const filteredAndSortedData = useMemo(() => {
@@ -133,12 +129,11 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
     }, 1000);
 
     if (perPage !== per) {
-      setPerPage(per);
-      setCurrentPage(1);
+      setSearchWith({ page: 1, perPage: per });
     }
 
     if (per === 'All') {
-      setPerPage(per);
+      setSearchWith({ perPage: per });
     }
 
     setSearchWith({ page: 1, sortPer: per });
@@ -155,8 +150,6 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
             sort={sortBy}
             selected={selected}
             onSelect={e => {
-              setSelected(e);
-              setCurrentPage(1);
               setSearchWith({ sortBy: e, page: 1 });
             }}
           />
@@ -168,7 +161,7 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
             selected={perPage}
             onSelect={e => {
               handlePerPage(e);
-              setCurrentPage(1);
+
               setSearchWith({ perPage: e, page: 1 });
             }}
           />
@@ -183,7 +176,7 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
                   <Card item={item} title="0" />
                 </li>
               ))
-            : creatSkeleton().map((_, index) => <Skeleton key={index} />)}
+            : createSkeleton().map((_, index) => <Skeleton key={index} />)}
         </ul>
 
         {perPage !== 'All' && (

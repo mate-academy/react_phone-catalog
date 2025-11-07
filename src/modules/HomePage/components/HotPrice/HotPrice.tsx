@@ -1,4 +1,4 @@
-import { fetchProducts } from '@Fetch';
+import { getData } from '@Fetch';
 import { Carusel } from '@GlobalComponents';
 import { useEffect, useState } from 'react';
 import { Products } from 'src/types/products';
@@ -7,7 +7,7 @@ export const HotPrice = () => {
   const [hotPrice, setHotPrice] = useState<Products[]>([]);
 
   useEffect(() => {
-    fetchProducts().then((products: Products[]) => {
+    getData<Products[]>('/products').then((products: Products[]) => {
       const grouped: Record<string, Products[]> = {};
       const result: Products[] = [];
 
