@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { Product, SortBy, ItemsPerPage } from '../../types';
 import { api } from '../../utils/api';
 import { sortProducts } from '../../utils/helpers';
@@ -17,19 +16,13 @@ export const PhonesPage: React.FC = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const [sortBy, setSortBy] = useLocalStorage<SortBy>('phones-sort', 'newest');
   const [itemsPerPage, setItemsPerPage] = useLocalStorage<ItemsPerPage>(
     'phones-per-page',
     '16',
-  );
-
-  const currentPageFromUrl = searchParams.get('page');
-  const [currentPage, setCurrentPage] = useState(
-    currentPageFromUrl ? parseInt(currentPageFromUrl, 10) : 1,
   );
 
   useEffect(() => {
@@ -66,26 +59,10 @@ export const PhonesPage: React.FC = () => {
   const handleItemsPerPageChange = (newItemsPerPage: ItemsPerPage) => {
     setItemsPerPage(newItemsPerPage);
     setCurrentPage(1);
-
-    const newSearchParams = new URLSearchParams(searchParams);
-
-    newSearchParams.set('perPage', newItemsPerPage);
-    newSearchParams.set('page', '1');
-
-    if (newItemsPerPage === 'all') {
-      newSearchParams.delete('page');
-    }
-
-    setSearchParams(newSearchParams);
   };
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
-
-    const newSearchParams = new URLSearchParams(searchParams);
-
-    newSearchParams.set('page', newPage.toString());
-    setSearchParams(newSearchParams);
   };
 
   const itemsPerPageNumber =
