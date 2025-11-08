@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Breadcrumbs } from '../Catalog/Breadcrumbs';
+import unnownImg from './../../../public/img/unnown.jpg';
+import classNames from 'classnames';
+import './CardItem.scss';
+import allProducts from '../../../public/api/products.json';
+import { PromotionSlider } from '../PromotionSlider';
 
 export const CardItem = () => {
   const product = {
@@ -7,7 +12,7 @@ export const CardItem = () => {
     category: 'phones',
     namespaceId: 'apple-iphone-7-plus',
     name: 'Apple iPhone 7 Plus 32GB Silver',
-    capacityAvailable: ['32GB'],
+    capacityAvailable: ['32GB', '64GB'],
     capacity: '32GB',
     priceRegular: 540,
     priceDiscount: 500,
@@ -51,7 +56,26 @@ export const CardItem = () => {
     cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
   };
 
-  const [activePhoto, setActivePhoto] = useState(product.images[0]);
+  const [activePhoto, setActivePhoto] = useState(
+    product.images[0] || unnownImg,
+  );
+
+  const alsoLikeProducts = allProducts.slice(0, 5);
+
+  const productTech = [
+    { name: 'Screen', value: product.screen },
+    { name: 'Resolution', value: product.resolution },
+    { name: 'Processor', value: product.processor },
+    { name: 'RAM', value: product.ram },
+    { name: 'Camera', value: product.camera },
+    { name: 'Zoom', value: product.zoom },
+    { name: 'Cell', value: [...product.cell].join(', ') },
+  ];
+
+  const chosenProduct =
+    allProducts.find(
+      (item: { itemId: string }) => item.itemId === product.id,
+    ) || product;
 
   return (
     <section className="card-item">
@@ -60,33 +84,136 @@ export const CardItem = () => {
 
         <h2 className="card-item__title h2">{product.id}</h2>
         <div className="card-item__body body-card">
-          <div className="body-card__images">
-            <ul className="body-card__slider-photos">
-              {product.images.map(item => (
-                <li
-                  key={item}
-                  className="body-card__slider-item"
-                  onClick={() => setActivePhoto(item)}
+          <div className="body-card__wrapper">
+            <div className="body-card__images">
+              <ul className="body-card__slider-photos">
+                {product.images.map(item => {
+                  const isActive = item === activePhoto;
+                  return (
+                    <li
+                      key={item}
+                      className="body-card__slider-item"
+                      onClick={() => setActivePhoto(item)}
+                    >
+                      <button
+                        type="button"
+                        className={classNames('body-card__thumb-btn', {
+                          'body-card__thumb-btn--active': isActive,
+                        })}
+                        onClick={() => setActivePhoto(item)}
+                        aria-pressed={isActive}
+                        aria-label={`Показать фото ${product.name}`}
+                      >
+                        <img
+                          src={item}
+                          alt={product.name}
+                          className="body-card__slider-photo"
+                          loading="lazy"
+                          width="80"
+                          height="80"
+                        />
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="body-card__main-photo">
+                <button
+                  className="body-card__main-photo-btn"
+                  type="button"
+                  aria-label="Открыть большое изображение"
                 >
                   <img
-                    src={item}
-                    alt={product.name}
-                    className="body-card__slider-photo"
+                    src={activePhoto}
+                    alt={`${product.name} — главное фото`}
+                    className="body-card__main-img"
+                    loading="lazy"
+                    width="462"
+                    height="462"
                   />
-                </li>
-              ))}
-            </ul>
-            <img src={activePhoto} alt="" className="body-card__main-photo" />
-          </div>
+                </button>
+              </div>
+            </div>
 
-          <div className="body-card__info">
-            <div className="body-card__colors">
-              <div className="body-card__info-name">Available colors</div>
-              <ul className="body-card__items"></ul>
+            <div className="body-card__info">
+              <div className="body-card__colors">
+                <div className="body-card__info-name">Available colors</div>
+                <ul className="body-card__items">
+                  {product.colorsAvailable.map(color => (
+                    <li className="body-card__item" key={color}>
+                      <span
+                        className={classNames('body-card__item-color', color)}
+                      >
+                        {color}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="body-card__capacity">
+                <div className="body-card__info-name">Select capacity</div>
+                <ul className="body-card__items">
+                  {product.capacityAvailable.map(capacity => (
+                    <li className="body-card__item" key={capacity}>
+                      <span
+                        className={classNames(
+                          'body-card__item-capacity',
+                          capacity,
+                        )}
+                      >
+                        {capacity}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="body-card__price  card__price">
+                <span className="card__price--sale">
+                  ${product.priceDiscount}
+                </span>
+                <span className="card__price--full">
+                  ${product.priceRegular}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="body-card__descritption descritption">
+            <div className="descritption__main">
+              <h3 className="descritption__title h3">About</h3>
+              <div className="descritption__block">
+                {product.description.map(({ text, title }) => (
+                  <Fragment key={title}>
+                    <h4 className="descritption__name h4">{title}</h4>
+                    <div className="descritption__text">
+                      {text.map(item => (
+                        <p className="descritption__paragraph" key={item}>
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </Fragment>
+                ))}
+              </div>
+            </div>
+            <div className="descritption__tech">
+              <h3 className="descritption__title h3">Tech specs</h3>
+              <ul className="descritption__info">
+                {productTech.map(({ name, value }) => (
+                  <li className="descritption__param param" key={name}>
+                    <span className="param__name">{name}</span>
+                    <span className="param__value">{value}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </div>
+
+      <PromotionSlider
+        products={alsoLikeProducts}
+        title={'You may also like'}
+      />
     </section>
   );
 };
