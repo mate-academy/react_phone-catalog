@@ -1,8 +1,8 @@
 import styles from './Footer.module.scss';
 import { Link, useLocation } from 'react-router-dom';
-import logoSvg from '/img/site/Nice Gadgets.svg';
-import handOkSvg from '/img/site/hand-ok.svg';
-import arrowBackToTop from '/img/site/arrow-back-to-top.svg';
+const logoSvg = `${import.meta.env.BASE_URL}img/site/Nice Gadgets.svg`;
+const handOkSvg = `${import.meta.env.BASE_URL}img/site/hand-ok.svg`;
+const arrowBackToTop = `${import.meta.env.BASE_URL}img/site/arrow-back-to-top.svg`;
 
 export default function Footer() {
   const location = useLocation();
