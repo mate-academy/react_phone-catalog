@@ -59,7 +59,12 @@ export default function CartPage() {
                   alt={item.product.name}
                   className={styles.productImage}
                 />
-                <p className={styles.productName}>{item.product.name}</p>
+                <Link
+                  to={`/${item.product.category}/${item.product.itemId}`}
+                  className={styles.productName}
+                >
+                  {item.product.name}
+                </Link>
                 <div className={styles.quantityControl}>
                   <button
                     onClick={() =>
@@ -95,6 +100,13 @@ export default function CartPage() {
               >{`Total for ${totalItems} items`}</span>
             </div>
             <hr className={styles.separator} />
+            <Link
+              to="/"
+              className={styles.catalogButton}
+              style={{ marginBottom: '26px', marginTop: '26px', width: '100%' }}
+            >
+              Continue shopping
+            </Link>
             <button onClick={handleCheckout} className={styles.checkoutButton}>
               Checkout
             </button>
