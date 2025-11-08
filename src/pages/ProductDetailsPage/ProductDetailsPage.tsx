@@ -45,34 +45,19 @@ export default function ProductDetailsPage() {
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    if (product?.id === productId) {
-      // O produto correto já está carregado, evita nova busca.
-      return;
-    }
-
     if (!category || !productId) {
       setError('Category or Product ID is missing.');
       setIsLoading(false);
+      setProduct(null);
 
       return;
     }
 
     const fetchProductDetails = async () => {
+      setIsLoading(true);
+      setError(null);
+
       try {
-        // Determina se é uma navegação para um produto completamente novo
-        // (clicado no slider) ou apenas uma atualização de variante (cor/capacidade).
-        const newNamespaceId = productId.split('-').slice(0, -2).join('-');
-
-        if (product && product.namespaceId !== newNamespaceId) {
-          // Se for um produto diferente, limpa o estado do produto atual.
-          // Isso fará com que a condição `isLoading && !product` seja verdadeira,
-          // exibindo o loader de página inteira.
-          setProduct(null);
-          window.scrollTo(0, 0);
-        }
-
-        setIsLoading(true);
-        setError(null);
         const detailsUrl = `${import.meta.env.BASE_URL}api/${category}.json`;
         const res = await fetch(detailsUrl);
 
@@ -88,18 +73,19 @@ export default function ProductDetailsPage() {
         if (foundProduct) {
           setProduct(foundProduct);
         } else {
-          // If not found in the category file, it's a real "Not Found"
           setError(`Product with ID ${productId} not found in ${category}.`);
+          setProduct(null);
         }
       } catch (e) {
         setError(e instanceof Error ? e.message : 'An unknown error occurred');
+        setProduct(null);
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchProductDetails();
-  }, [category, productId, product]);
+  }, [category, productId]);
 
   useEffect(() => {
     if (product?.images && product.images.length > 0) {
@@ -130,7 +116,6 @@ export default function ProductDetailsPage() {
             .filter(
               p => p.category === product.category && p.itemId !== product.id,
             )
-            .sort(() => 0.5 - Math.random())
             .slice(0, 10);
 
           setSuggestedProducts(suggested);
@@ -195,7 +180,9 @@ export default function ProductDetailsPage() {
 
     const newProductId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${newColor}`;
 
-    navigate(`/${product.category}/${newProductId}`);
+    navigate(`/${product.category}/${newProductId}`, {
+      state: { isVariantChange: true },
+    });
   };
 
   const handleCapacityChange = (newCapacity: string) => {
@@ -205,7 +192,9 @@ export default function ProductDetailsPage() {
 
     const newProductId = `${product.namespaceId}-${newCapacity.toLowerCase()}-${product.color}`;
 
-    navigate(`/${product.category}/${newProductId}`);
+    navigate(`/${product.category}/${newProductId}`, {
+      state: { isVariantChange: true },
+    });
   };
 
   const handleAddToCart = () => {
