@@ -25,7 +25,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         className={styles.imageLink}
       >
         <img
-          src={`/${product.image}`}
+          src={`${import.meta.env.BASE_URL}${product.image}`}
           alt={product.name}
           className={styles.image}
         />

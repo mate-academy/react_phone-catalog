@@ -26,13 +26,13 @@ export default function HomePage() {
   const isMobile = useIsMobile();
 
   const desktopBanners = [
-    '/img/banner1.png',
+    `${import.meta.env.BASE_URL}img/banner1.png`,
     'https://placehold.co/1040x400/F447AF/fff',
     'https://placehold.co/1040x400/b11ebe/fff',
   ];
 
   const mobileBanners = [
-    '/img/banner1-mobile.png',
+    `${import.meta.env.BASE_URL}img/banner1-mobile.png`,
     'https://placehold.co/320x320/F447AF/fff',
     'https://placehold.co/320x320/b11ebe/fff',
   ];
@@ -98,7 +98,10 @@ export default function HomePage() {
       <section className={styles.bannerSlider}>
         <div className={styles.bannerContainer}>
           <button className={styles.bannerButton} onClick={goToPrevious}>
-            <img src="/img/site/arrow-left.svg" alt="Previous" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/site/arrow-left.svg`}
+              alt="Previous"
+            />
           </button>
 
           <img
@@ -108,7 +111,10 @@ export default function HomePage() {
           />
 
           <button className={styles.bannerButton} onClick={goToNext}>
-            <img src="/img/site/arrow-right.svg" alt="Next" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/site/arrow-right.svg`}
+              alt="Next"
+            />
           </button>
         </div>
 
@@ -134,19 +140,28 @@ export default function HomePage() {
 
         <div className={styles.categoryGrid}>
           <Link to="/phones" className={styles.categoryCard}>
-            <img src="/img/cat-phones.png" alt="Mobile phones" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/cat-phones.png`}
+              alt="Mobile phones"
+            />
             <h3>Mobile phones</h3>
             <p>{products.filter(p => p.category === 'phones').length} models</p>
           </Link>
           <Link to="/tablets" className={styles.categoryCard}>
-            <img src="/img/cat-tablets.png" alt="Tablets" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/cat-tablets.png`}
+              alt="Tablets"
+            />
             <h3>Tablets</h3>
             <p>
               {products.filter(p => p.category === 'tablets').length} models
             </p>
           </Link>
           <Link to="/accessories" className={styles.categoryCard}>
-            <img src="/img/cat-accessories.png" alt="Accessories" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/cat-accessories.png`}
+              alt="Accessories"
+            />
             <h3>Accessories</h3>
             <p>
               {products.filter(p => p.category === 'accessories').length} models

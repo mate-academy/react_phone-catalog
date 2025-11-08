@@ -55,7 +55,7 @@ export default function CartPage() {
                   &times;
                 </button>
                 <img
-                  src={`/${item.product.image}`}
+                  src={`${import.meta.env.BASE_URL}${item.product.image}`}
                   alt={item.product.name}
                   className={styles.productImage}
                 />
