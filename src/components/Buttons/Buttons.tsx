@@ -87,6 +87,7 @@ const Buttons = ({
         className={`${styles.button} ${styles.button_add} ${
           styles[`button_add_${size}`]
         }`}
+        disabled={isProductAdded}
       >
         {isProductAdded ? 'Added' : 'Add to cart'}
       </button>

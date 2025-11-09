@@ -38,7 +38,12 @@ const CardItem = ({ product, option = 'new' }: CardItemProps) => {
         </Link>
 
         <div className={styles.content}>
-          <h3 className={styles.card_title}>{product.name}</h3>
+          <Link
+            to={`/${product.category}/${product.id}`}
+            className={styles.card_titleLink}
+          >
+            <h3 className={styles.card_title}>{product.name}</h3>
+          </Link>
 
           <div className={styles.card_price}>
             {hasDiscount ? (
@@ -54,7 +59,7 @@ const CardItem = ({ product, option = 'new' }: CardItemProps) => {
               <p className={styles.card_priceRegular}>
                 ${product.priceRegular}
               </p>
-            )}{' '}
+            )}
           </div>
 
           <div className={styles.card_divider}></div>
