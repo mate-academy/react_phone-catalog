@@ -18,6 +18,7 @@ import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 
 import { ROUTES } from './modules/shared/constants/routes';
+import { ScrollToTop } from './components/ScrollToTop';
 
 import './App.scss';
 
@@ -29,6 +30,7 @@ export const App: React.FC = () => {
           <Router>
             <div className="App">
               <Header />
+              <ScrollToTop />
 
               <main className="App__main">
                 <Routes>
