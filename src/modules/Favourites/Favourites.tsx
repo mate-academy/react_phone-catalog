@@ -4,7 +4,7 @@ import scss from './Favourites.module.scss';
 export const Favourites = () => {
   return (
     <div className={scss.favourites}>
-      <Breadcrumbs page="Favourites" />
+      <Breadcrumbs category="Favourites" />
       <h1>Favourites</h1>
     </div>
   );

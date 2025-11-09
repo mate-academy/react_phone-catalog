@@ -5,6 +5,7 @@ import { ButtonCart } from '../ButtonCart/ButtonCart';
 import { Specs } from './Specs';
 import { Price } from './Price';
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
 
 interface Props {
   product: Product;
@@ -19,13 +20,16 @@ export const ProductCardComponent: React.FC<Props> = ({
 
   return (
     <article className={scss.productCard}>
-      <img
-        src={product.image}
-        className={scss.productCard__image}
-        alt={product.name}
-        loading="lazy"
-      ></img>
-      <h3 className={scss.productCard__name}>{product.name}</h3>
+      <Link to={`/product/${product.itemId}`}>
+        <img
+          src={product.image}
+          className={scss.productCard__image}
+          alt={product.name}
+          loading="lazy"
+        ></img>
+        <h3 className={scss.productCard__name}>{product.name}</h3>
+      </Link>
+
       <Price normal={product.fullPrice} discount={discount} />
       <div className={scss.productCard__divider}></div>
       <Specs product={product} />

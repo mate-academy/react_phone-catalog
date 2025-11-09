@@ -8,6 +8,7 @@ import { Footer } from './modules/shared/components/Footer/Footer';
 import { Catalog } from './modules/Catalog/Catalog';
 import { useContext } from 'react';
 import { DataContext } from './context/ContextProvider';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 export const App = () => {
   const { products } = useContext(DataContext);
@@ -37,6 +38,10 @@ export const App = () => {
           <Route
             path="/accessories"
             element={<Catalog items={accessories} title="Accessories" />}
+          ></Route>
+          <Route
+            path="/product/:productId"
+            element={<ProductDetailsPage />}
           ></Route>
           <Route path="/favourites" element={<Favourites />}></Route>
         </Routes>

@@ -18,7 +18,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
 
   return (
     <div className={scss.catalog}>
-      <Breadcrumbs page={title === 'Mobile phones' ? 'Phones' : title} />
+      <Breadcrumbs category={title === 'Mobile phones' ? 'Phones' : title} />
       <h1 className={scss.catalog__title}>{title}</h1>
       <span className={scss.catalog__counter}>{`${amount} models`}</span>
 

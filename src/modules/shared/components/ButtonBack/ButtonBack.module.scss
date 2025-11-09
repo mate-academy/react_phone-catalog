@@ -1,0 +1,29 @@
+.buttonBack {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 0.4rem;
+  padding: 0;
+
+  margin: 2.4rem 1.6rem 1.6rem;
+
+  &__icon {
+    height: 1.6rem;
+    width: 1.6rem;
+
+    transform: rotate(180deg);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+
+    color: rgba(137, 147, 154, 1);
+  }
+}
