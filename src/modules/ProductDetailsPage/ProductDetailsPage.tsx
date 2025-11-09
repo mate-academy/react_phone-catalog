@@ -1,34 +1,57 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Product } from '../../api/types';
+import { Accessory, Phone, Tablet } from '../../api/types';
 import { DataContext } from '../../context/ContextProvider';
 import scss from './ProductDetailsPage.module.scss';
 import { Loader } from '../shared/components/Loader';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { ButtonBack } from '../shared/components/ButtonBack';
+import { ProductGallery } from './components/ProductGallery';
 
 export const ProductDetailsPage = () => {
-  const [product, setProduct] = useState<Product | undefined>(undefined);
+  const [item, setItem] = useState<Phone | Tablet | Accessory | undefined>(
+    undefined,
+  );
   const [isError, setIsError] = useState<boolean>(false);
 
-  const { productId } = useParams();
-  const { products, isLoading } = useContext(DataContext);
+  const { category, productId } = useParams();
+  const { phones, tablets, accessories, isLoading } = useContext(DataContext);
 
   useEffect(() => {
-    if (products && products.length > 0) {
-      const detailProd = products.find(prod => prod.itemId === productId);
+    let listToSearch: Phone[] | Tablet[] | Accessory[] = [];
+
+    switch (category) {
+      case 'phones':
+        listToSearch = phones;
+        break;
+      case 'tablets':
+        listToSearch = tablets;
+        break;
+      case 'accessories':
+        listToSearch = accessories;
+        break;
+      default:
+        setIsError(true);
+        // eslint-disable-next-line no-console
+        console.error('Unknown category:', category);
+
+        return;
+    }
+
+    if (listToSearch && listToSearch.length > 0) {
+      const detailProd = listToSearch.find(prod => prod.id === productId);
 
       if (detailProd) {
-        setProduct(detailProd);
+        setItem(detailProd);
         setIsError(false);
       } else {
-        setProduct(undefined);
+        setItem(undefined);
         setIsError(true);
         // eslint-disable-next-line no-console
         console.error('Product was not found -->', productId);
       }
     }
-  }, [products, productId]);
+  }, [phones, tablets, accessories, productId, category]);
 
   const navigate = useNavigate();
 
@@ -51,15 +74,16 @@ export const ProductDetailsPage = () => {
     );
   }
 
-  if (product === undefined) {
+  if (item === undefined) {
     return <Loader />;
   }
 
   return (
     <section>
-      <Breadcrumbs category={product.category} productName={product.name} />
+      <Breadcrumbs category={item.category} productName={item.name} />
       <ButtonBack />
-      <p>Polska</p>
+      <h2>{item.name}</h2>
+      <ProductGallery item={item} />
     </section>
   );
 };

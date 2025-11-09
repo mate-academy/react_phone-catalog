@@ -44,7 +44,7 @@ export const PicturesSlider = () => {
   };
 
   return (
-    <div
+    <article
       className={scss.slider}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -56,6 +56,6 @@ export const PicturesSlider = () => {
         count={slides.length / 2}
         setActiveSlide={setActiveSlide}
       />
-    </div>
+    </article>
   );
 };

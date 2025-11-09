@@ -40,7 +40,7 @@ export const App = () => {
             element={<Catalog items={accessories} title="Accessories" />}
           ></Route>
           <Route
-            path="/product/:productId"
+            path="/:category/:productId"
             element={<ProductDetailsPage />}
           ></Route>
           <Route path="/favourites" element={<Favourites />}></Route>

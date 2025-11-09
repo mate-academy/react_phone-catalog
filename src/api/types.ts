@@ -71,6 +71,7 @@ export type Accessory = {
   id: string;
   category: string;
   namespaceId: string;
+  name: string;
   capacityAvailable: string[];
   capacity: string;
   priceRegular: number;

@@ -1,0 +1,31 @@
+.productGallery {
+  margin: 3.2rem 1.6rem 4.0rem;
+
+  &__image {
+    height: 28.8rem;
+    aspect-ratio: 1/1;
+  }
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+
+    padding: 1.6rem 0;
+  }
+
+  &__thumbnail {
+    height: 4.9rem;
+    width: 5.1rem;
+
+    border: 0.1rem solid rgba(196, 196, 196, 1);
+
+    &_active {
+      border: 0.1rem solid rgba(49, 50, 55, 1)
+    }
+  }
+
+  &__button {
+    padding: 0;
+  }
+}
