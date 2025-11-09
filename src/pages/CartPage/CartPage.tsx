@@ -40,7 +40,7 @@ export default function CartPage() {
           <IoHomeOutline className={styles.homeIcon} aria-hidden="true" />
         </Link>
         <IoChevronForward aria-hidden="true" />
-        <span className={styles.categoryLink}>Favorites</span>
+        <span className={styles.categoryLink}>Cart</span>
       </nav>
 
       <button onClick={handleGoBack} className={styles.backButton}>
