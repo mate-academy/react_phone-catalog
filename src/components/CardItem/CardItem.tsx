@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useMemo, useState } from 'react';
 import { Breadcrumbs } from '../Catalog/Breadcrumbs';
 import unnownImg from './../../../public/img/unnown.jpg';
 import classNames from 'classnames';
 import './CardItem.scss';
 import allProducts from '../../../public/api/products.json';
 import { PromotionSlider } from '../PromotionSlider';
+import { Product } from '../../types/Product';
 
 export const CardItem = () => {
   const product = {
@@ -77,6 +78,12 @@ export const CardItem = () => {
       (item: { itemId: string }) => item.itemId === product.id,
     ) || product;
 
+  const productId = useMemo(() => {
+    return Math.floor(Math.random() * 1000000);
+  }, []);
+
+  console.log(productId);
+
   return (
     <section className="card-item">
       <div className="container card-item__container">
@@ -118,39 +125,37 @@ export const CardItem = () => {
                 })}
               </ul>
               <div className="body-card__main-photo">
-                <button
-                  className="body-card__main-photo-btn"
-                  type="button"
-                  aria-label="Открыть большое изображение"
-                >
-                  <img
-                    src={activePhoto}
-                    alt={`${product.name} — главное фото`}
-                    className="body-card__main-img"
-                    loading="lazy"
-                    width="462"
-                    height="462"
-                  />
-                </button>
+                <img
+                  src={activePhoto}
+                  alt={`${product.name} — главное фото`}
+                  className="body-card__main-img"
+                  loading="lazy"
+                  width="462"
+                  height="462"
+                />
               </div>
             </div>
 
             <div className="body-card__info">
-              <div className="body-card__colors">
+              <div className="body-card__colors separator">
                 <div className="body-card__info-name">Available colors</div>
                 <ul className="body-card__items">
                   {product.colorsAvailable.map(color => (
                     <li className="body-card__item" key={color}>
                       <span
-                        className={classNames('body-card__item-color', color)}
+                        className={classNames(
+                          'body-card__item-color',
+                          `body-card__item-color--${color}`,
+                        )}
                       >
-                        {color}
+                        {}
                       </span>
                     </li>
                   ))}
                 </ul>
+                <span className="body-card__id">ID: {productId}</span>
               </div>
-              <div className="body-card__capacity">
+              <div className="body-card__capacity separator">
                 <div className="body-card__info-name">Select capacity</div>
                 <ul className="body-card__items">
                   {product.capacityAvailable.map(capacity => (
@@ -177,6 +182,7 @@ export const CardItem = () => {
               </div>
             </div>
           </div>
+
           <div className="body-card__descritption descritption">
             <div className="descritption__main">
               <h3 className="descritption__title h3">About</h3>

@@ -1,3 +1,29 @@
+@use '../../styles/mixins' as *;
+$colors: 'black',
+  'gold',
+  'yellow',
+  'green',
+  'midnightgreen',
+  'silver',
+  'spacegray',
+  'red',
+  'white',
+  'purple',
+  'coral',
+  'rosegold',
+  'midnight',
+  'spaceblack',
+  'blue',
+  'pink',
+  'sierrablue',
+  'graphite',
+  'space gray',
+  'space-gray',
+  'rose gold',
+  'sky-blue',
+  'starlight';
+
+
 .card-item {
   padding-top: 24px;
   padding-bottom: 81px;
@@ -45,7 +71,7 @@
   }
 
   &__info {
-    flex: 0 0 50%;
+    flex: 0 1 320px;
   }
 
   &__slider {
@@ -69,20 +95,8 @@
     }
 
     &-item {
-
       width: 80px;
       height: 80px;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-
-      // cursor: pointer;
-      // border: 1px solid var(--color-elements);
-      // padding: 7px;
-
-      // &--active {
-      //   border: 1px solid var(--color-gray-active);
-      // }
     }
 
     &-photo {
@@ -91,14 +105,37 @@
     }
   }
 
+  &__thumb-btn {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+    border: 1px solid var(--color-elements);
+    background-color: var(--color-white);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color var(--transition-duration),
+      scale var(--transition-duration);
+
+    &:hover {
+      scale: 1.05;
+    }
+
+    &--active {
+      border-color: var(--color-primary);
+
+      &:hover {
+        scale: 1;
+      }
+    }
+  }
+
   &__main {
     &-photo {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      height: 400px;
-      padding: 11px;
     }
 
     &-img {
@@ -106,6 +143,62 @@
     }
   }
 
+  &__colors {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    padding-bottom: 24px;
+  }
+
+  &__info-name {
+    font-weight: 600;
+    font-size: rem(14);
+    line-height: 1.2;
+    color: var(--color-secondary);
+  }
+
+  &__items {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-elements);
+
+    &-color {
+
+      width: 30px;
+      height: 30px;
+      padding: 2px;
+      border-radius: 50%;
+      border: 2px solid var(--color-elements);
+
+      @each $color in $colors {
+        &--#{$color} {
+          background-color: #{$color};
+        }
+      }
+    }
+  }
+}
+
+.separator {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-elements);
+  }
 }
 
 .descritption {
