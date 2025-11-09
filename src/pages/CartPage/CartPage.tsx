@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
-import { IoChevronForward } from 'react-icons/io5';
+import { IoHomeOutline, IoChevronForward } from 'react-icons/io5';
 // eslint-disable-next-line max-len
 import ConfirmationModal from '../../components/ConfirmationModal/ConfirmationModal';
 
@@ -35,6 +35,14 @@ export default function CartPage() {
 
   return (
     <div className={styles.cartPage}>
+      <nav className={styles.breadcrumb}>
+        <Link to="/">
+          <IoHomeOutline className={styles.homeIcon} aria-hidden="true" />
+        </Link>
+        <IoChevronForward aria-hidden="true" />
+        <span className={styles.categoryLink}>Favorites</span>
+      </nav>
+
       <button onClick={handleGoBack} className={styles.backButton}>
         <IoChevronForward style={{ transform: 'rotate(180deg)' }} />
         <span>Back</span>

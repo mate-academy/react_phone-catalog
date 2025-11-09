@@ -1,14 +1,15 @@
 .favoritesPage {
   padding-bottom: 80px;
+  margin-top: -12px;
 }
 
 .breadcrumb {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   font-size: 12px;
-  color: #89939a;
+  color: #89939A;
 
   a {
     color: #313237;
@@ -20,12 +21,12 @@
   }
 
   .homeIcon {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .categoryLink {
     text-transform: capitalize;
-    color: #313237;
+    color: #89939A;
   }
 }
 
@@ -60,15 +61,15 @@
 .emptyMessage {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 64px 0;
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  padding: 32px 0;
   min-height: 400px;
   gap: 16px;
 
   h2 {
-    font-size: 22px;
+    font-size: 26px;
     color: #313237;
   }
 
