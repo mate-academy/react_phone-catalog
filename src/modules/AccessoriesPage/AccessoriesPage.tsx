@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/indent */
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Product, SortBy, ItemsPerPage } from '../../types';
 import { api } from '../../utils/api';
 import { sortProducts } from '../../utils/helpers';
@@ -16,8 +17,9 @@ export const AccessoriesPage: React.FC = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
+
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [sortBy, setSortBy] = useLocalStorage<SortBy>(
     'accessories-sort',
@@ -27,6 +29,60 @@ export const AccessoriesPage: React.FC = () => {
     'accessories-per-page',
     '16',
   );
+
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  const initialSort = (searchParams.get('sort') as SortBy) || 'newest';
+  const initialItemsPerPage =
+    (searchParams.get('perPage') as ItemsPerPage) || '16';
+  const initialPage = searchParams.get('page')
+    ? parseInt(searchParams.get('page')!, 10)
+    : 1;
+
+  const [currentPage, setCurrentPage] = useState(initialPage);
+
+  useEffect(() => {
+    if (isInitialLoad) {
+      setSortBy(initialSort);
+      setItemsPerPage(initialItemsPerPage);
+      setCurrentPage(initialPage);
+      setIsInitialLoad(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInitialLoad]);
+
+  useEffect(() => {
+    if (isInitialLoad) {
+      return;
+    }
+
+    const newSearchParams = new URLSearchParams();
+
+    if (sortBy !== 'newest') {
+      newSearchParams.set('sort', sortBy);
+    }
+
+    if (itemsPerPage !== '16') {
+      newSearchParams.set('perPage', itemsPerPage);
+    }
+
+    if (currentPage !== 1) {
+      newSearchParams.set('page', currentPage.toString());
+    }
+
+    const currentParams = new URLSearchParams(searchParams);
+
+    if (newSearchParams.toString() !== currentParams.toString()) {
+      setSearchParams(newSearchParams, { replace: true });
+    }
+  }, [
+    sortBy,
+    itemsPerPage,
+    currentPage,
+    isInitialLoad,
+    searchParams,
+    setSearchParams,
+  ]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -56,8 +112,25 @@ export const AccessoriesPage: React.FC = () => {
 
     filtered = sortProducts(filtered, sortBy);
     setFilteredProducts(filtered);
+
+    if (!isInitialLoad) {
+      setCurrentPage(1);
+    }
+  }, [products, sortBy, searchQuery, isInitialLoad]);
+
+  const handleSortChange = (newSortBy: SortBy) => {
+    setSortBy(newSortBy);
     setCurrentPage(1);
-  }, [products, sortBy, searchQuery]);
+  };
+
+  const handleItemsPerPageChange = (newItemsPerPage: ItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+  };
 
   const itemsPerPageNumber =
     itemsPerPage === 'all'
@@ -101,8 +174,8 @@ export const AccessoriesPage: React.FC = () => {
         <Filters
           sortBy={sortBy}
           itemsPerPage={itemsPerPage}
-          onSortChange={setSortBy}
-          onItemsPerPageChange={setItemsPerPage}
+          onSortChange={handleSortChange}
+          onItemsPerPageChange={handleItemsPerPageChange}
           totalItems={filteredProducts.length}
         />
       </div>
@@ -118,7 +191,7 @@ export const AccessoriesPage: React.FC = () => {
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
-              onPageChange={setCurrentPage}
+              onPageChange={handlePageChange}
             />
           )}
         </>
