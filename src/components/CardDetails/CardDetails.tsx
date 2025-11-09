@@ -30,6 +30,13 @@ const CardDetails: React.FC = () => {
     { label: 'RAM', value: product?.ram },
   ];
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [productId]);
+
   const fullSpecs = () => {
     const baseSpecs = [
       ...productSpecs.filter(spec => spec.value),
