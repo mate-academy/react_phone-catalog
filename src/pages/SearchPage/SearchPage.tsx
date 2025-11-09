@@ -4,30 +4,28 @@ import styles from './SearchPage.module.scss';
 import { Product } from '../../types/Product';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { getSearchWith } from '../../utils/searchHelper';
+import * as productService from '../../services/productService';
 
 export default function SearchPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
   useEffect(() => {
     setIsLoading(true);
-    const fetchProducts = async () => {
-      try {
-        const dataUrl = `${import.meta.env.BASE_URL}api/products.json`;
-        const res = await fetch(dataUrl);
-        const data = await res.json();
+    setError(null);
 
-        setProducts(data);
-      } catch (e) {
-        // console.error('Failed to fetch products for SearchPage:', e);
-      } finally {
+    productService
+      .getAllProducts()
+      .then(setProducts)
+      .catch(e => {
+        setError(e instanceof Error ? e.message : 'An unknown error occurred');
+      })
+      .finally(() => {
         setIsLoading(false);
-      }
-    };
-
-    fetchProducts();
+      });
   }, []);
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,6 +47,10 @@ export default function SearchPage() {
   }, [products, query]);
 
   const resultsCount = filteredProducts.length;
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className={styles.searchPage}>

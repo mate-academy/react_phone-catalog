@@ -7,6 +7,7 @@ import {
   IoHeart,
 } from 'react-icons/io5';
 import { Product, ProductDetails } from '../../types/Product';
+import * as productService from '../../services/productService';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
 import styles from './ProductDetailsPage.module.scss';
 import { useCart } from '../../context/CartContext';
@@ -53,38 +54,26 @@ export default function ProductDetailsPage() {
       return;
     }
 
-    const fetchProductDetails = async () => {
-      setIsLoading(true);
-      setError(null);
+    setIsLoading(true);
+    setError(null);
 
-      try {
-        const detailsUrl = `${import.meta.env.BASE_URL}api/${category}.json`;
-        const res = await fetch(detailsUrl);
-
-        if (!res.ok) {
-          throw new Error(
-            `Failed to fetch product details for category: ${category}`,
-          );
-        }
-
-        const products: ProductDetails[] = await res.json();
-        const foundProduct = products.find(p => p.id === productId);
-
+    productService
+      .getProductDetails(category, productId)
+      .then(foundProduct => {
         if (foundProduct) {
           setProduct(foundProduct);
         } else {
           setError(`Product with ID ${productId} not found in ${category}.`);
           setProduct(null);
         }
-      } catch (e) {
+      })
+      .catch(e => {
         setError(e instanceof Error ? e.message : 'An unknown error occurred');
         setProduct(null);
-      } finally {
+      })
+      .finally(() => {
         setIsLoading(false);
-      }
-    };
-
-    fetchProductDetails();
+      });
   }, [category, productId]);
 
   useEffect(() => {
@@ -95,36 +84,16 @@ export default function ProductDetailsPage() {
 
   useEffect(() => {
     if (product) {
-      const fetchSuggestedProducts = async () => {
-        try {
-          // Buscamos de 'products.json' que contém a lista geral de produtos
-          // no formato correto (Product) que o ProductSlider espera.
-          const suggestedUrl = `${import.meta.env.BASE_URL}api/products.json`;
-          const res = await fetch(suggestedUrl);
-
-          if (!res.ok) {
-            // Não quebra a página, apenas loga o erro no console.
-            // console.error('Failed to fetch suggested products');
-
-            return;
-          }
-
-          const allProducts: Product[] = await res.json();
-
-          // Filtra para a mesma categoria, exclui o produto atual, embaralha e pega os 10 primeiros.
-          const suggested = allProducts
-            .filter(
-              p => p.category === product.category && p.itemId !== product.id,
-            )
-            .slice(0, 10);
-
+      productService
+        .getSuggestedProducts(product)
+        .then(suggested => {
           setSuggestedProducts(suggested);
-        } catch (e) {
-          // console.error('Error fetching suggested products:', e);
-        }
-      };
-
-      fetchSuggestedProducts();
+        })
+        .catch(() => {
+          // Não quebra a página se a busca por sugestões falhar,
+          // apenas não mostra nada.
+          setSuggestedProducts([]);
+        });
     }
   }, [product]);
 

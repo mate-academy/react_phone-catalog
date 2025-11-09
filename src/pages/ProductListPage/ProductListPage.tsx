@@ -7,6 +7,7 @@ import ControlsContainer from '../../components/ControlsContainer/ControlsContai
 import styles from './ProductListPage.module.scss';
 import { Product } from '../../types/Product';
 import ProductsList from '../../components/ProductsList';
+import * as productService from '../../services/productService';
 
 interface ProductListPageProps {
   category: 'phones' | 'tablets' | 'accessories';
@@ -25,31 +26,28 @@ export default function ProductListPage({
   const [sortBy, setSortBy] = useState('age');
   const [itemsPerPage, setItemsPerPage] = useState('8');
 
-  const fetchProducts = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const dataUrl = `${import.meta.env.BASE_URL}api/products.json`;
-      const res = await fetch(dataUrl);
+  const fetchProducts = useCallback(() => {
+    setIsLoading(true);
+    setError(null);
 
-      if (!res.ok) {
-        throw new Error(`Failed to fetch ${pageTitle.toLowerCase()}`);
-      }
+    productService
+      .getAllProducts()
+      .then(allProducts => {
+        const categoryProducts = allProducts.filter(
+          p => p.category === category,
+        );
 
-      const data: Product[] = await res.json();
-      const categoryProducts = data.filter(p => p.category === category);
-
-      setProducts(categoryProducts);
-    } catch (e) {
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError('An unknown error occurred');
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  }, [category, pageTitle]);
+        setProducts(categoryProducts);
+      })
+      .catch(e => {
+        if (e instanceof Error) {
+          setError(e.message);
+        } else {
+          setError('An unknown error occurred');
+        }
+      })
+      .finally(() => setIsLoading(false));
+  }, [category]);
 
   useEffect(() => {
     fetchProducts();

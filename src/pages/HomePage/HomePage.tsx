@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './HomePage.module.scss';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
+import * as productService from '../../services/productService';
 import { Product } from '../../types/Product';
 
 const useIsMobile = () => {
@@ -22,6 +23,9 @@ const useIsMobile = () => {
 export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentBanner, setCurrentBanner] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
   const isMobile = useIsMobile();
 
@@ -40,19 +44,18 @@ export default function HomePage() {
   const banners = isMobile ? mobileBanners : desktopBanners;
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const dataUrl = `${import.meta.env.BASE_URL}api/products.json`;
-        const res = await fetch(dataUrl);
-        const data = await res.json();
+    setIsLoading(true);
+    setError(null);
 
-        setProducts(data);
-      } catch (error) {
-        // console.error('Failed to fetch products for HomePage:', error);
-      }
-    };
-
-    fetchProducts();
+    productService
+      .getAllProducts()
+      .then(setProducts)
+      .catch(e => {
+        setError(e instanceof Error ? e.message : 'An unknown error occurred');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   // Get brand new (phones with highest price first)
@@ -73,12 +76,26 @@ export default function HomePage() {
   );
 
   // Banner navigation functions
+  const resetBannerTimer = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+
+    const newIntervalId = setInterval(() => {
+      setCurrentBanner(prev => (prev + 1) % banners.length);
+    }, 5000);
+
+    setIntervalId(newIntervalId);
+  };
+
   const goToPrevious = () => {
     setCurrentBanner(prev => (prev === 0 ? banners.length - 1 : prev - 1));
+    resetBannerTimer();
   };
 
   const goToNext = () => {
     setCurrentBanner(prev => (prev + 1) % banners.length);
+    resetBannerTimer();
   };
 
   // Auto-change banner every 5 seconds = 5000
@@ -87,8 +104,18 @@ export default function HomePage() {
       setCurrentBanner(prev => (prev + 1) % banners.length);
     }, 5000);
 
+    setIntervalId(interval);
+
     return () => clearInterval(interval);
   }, [banners.length]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading products: {error}</div>;
+  }
 
   return (
     <>
@@ -123,7 +150,10 @@ export default function HomePage() {
             <button
               key={index}
               className={`${styles.dot} ${index === currentBanner ? styles.dotActive : ''}`}
-              onClick={() => setCurrentBanner(index)}
+              onClick={() => {
+                setCurrentBanner(index);
+                resetBannerTimer();
+              }}
             />
           ))}
         </div>

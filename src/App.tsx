@@ -2,25 +2,31 @@ import './App.scss';
 import { useState, useEffect } from 'react';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Components
 import TopHeader from './components/TopHeader';
-import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import MenuMobile from './components/MenuMobile';
-import PhonesPage from './pages/PhonesPage/PhonesPage';
-import TabletsPage from './pages/TabletsPage/TabletsPage';
-import AccessoriesPage from './pages/AccessoriesPage/AccessoriesPage';
-import ProductDetailsPage from './pages/ProductDetailsPage/ProductDetailsPage';
-import SearchPage from './pages/SearchPage/SearchPage';
+import ScrollToTop from './components/ScrollToTop';
+import BackToTopButton from './components/BackToTopButton';
+
+// Pages
+import HomePage from './pages/HomePage';
+import PhonesPage from './pages/PhonesPage';
+import TabletsPage from './pages/TabletsPage';
+import AccessoriesPage from './pages/AccessoriesPage';
+import ProductDetailsPage from './pages/ProductDetailsPage';
+import SearchPage from './pages/SearchPage';
+import FavoritesPage from './pages/FavoritesPage';
+import CartPage from './pages/CartPage';
+import ContactsPage from './pages/ContactsPage';
+import RightsPage from './pages/RightsPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+// Context
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
 import { ModalProvider } from './context/ModalContext';
-import FavoritesPage from './pages/FavoritesPage';
-import CartPage from './pages/CartPage/CartPage';
-import ContactsPage from './pages/ContactsPage';
-import RightsPage from './pages/RightsPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import ScrollToTop from './components/ScrollToTop/ScrollToTop';
-import BackToTopButton from './components/BackToTopButton/BackToTopButton';
 
 export const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

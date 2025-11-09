@@ -30,18 +30,35 @@ interface ModalProviderProps {
 export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
-  const showSuccessModal = useCallback((message: string) => {
-    setModalMessage(message);
-    setIsModalOpen(true);
+  const showSuccessModal = useCallback(
+    (message: string) => {
+      // Limpa o timeout anterior se existir
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
 
-    // Fecha o modal automaticamente após n segundos
-    setTimeout(() => {
-      setIsModalOpen(false);
-    }, 5000);
-  }, []);
+      setModalMessage(message);
+      setIsModalOpen(true);
+
+      // Cria um novo timeout
+      const newTimeoutId = setTimeout(() => {
+        setIsModalOpen(false);
+      }, 5000);
+
+      setTimeoutId(newTimeoutId);
+    },
+    [timeoutId],
+  );
 
   const closeModal = () => {
+    // Limpa o timeout quando o modal é fechado manualmente
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      setTimeoutId(null);
+    }
+
     setIsModalOpen(false);
   };
 
