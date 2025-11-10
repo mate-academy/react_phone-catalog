@@ -185,7 +185,9 @@ export const CardPage = () => {
         <Pagination
           totalPage={totalPage}
           currentPage={pageParam}
-          onPageChange={newPage => updateParams(newPage, perPageParam)}
+          onPageChange={newPage =>
+            updateParams({ page: String(newPage), perPage: perPageParam })
+          }
         />
       )}
     </div>
