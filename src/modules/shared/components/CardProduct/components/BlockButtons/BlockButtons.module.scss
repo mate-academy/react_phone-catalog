@@ -24,9 +24,10 @@
 
 .addedToCart {
   background-color: $surface-2;
+  transition: $all-transition;
 
   &:hover {
-    background-color: $surface-2;
+    background-color: $icons;
   }
 }
 
