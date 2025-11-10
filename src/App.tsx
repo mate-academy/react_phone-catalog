@@ -5,9 +5,12 @@ import { Header } from './components/Header';
 import { useTabs } from './ProductsContext/TabsContext';
 import { Loader } from './modules/shared/components/Loader';
 import { Helmet } from 'react-helmet';
+import { useScrollToTop } from './modules/shared/navigate/useScrollToTop';
 
 export const App = () => {
   const { loading } = useTabs();
+
+  useScrollToTop();
 
   return (
     <>

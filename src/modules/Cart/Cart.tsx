@@ -6,11 +6,13 @@ import { CommonButton } from './components/CommonButton';
 import { CountBox } from './components/CountBox';
 import { TotalPrice } from './components/TotalPrice';
 import { CartIsEmpty } from './components/CartIsEmpty';
+import { useOpenProduct } from '../shared/hooks/useOpenProduct';
 
 export const Cart = () => {
   const { productsList } = useTabs();
   const { cartItems } = useCart();
   const [countItems, setCountItems] = useState<Record<number, number>>({});
+  const { openProduct } = useOpenProduct();
 
   const addItemInCart = (id: number) => {
     setCountItems(prev => ({
@@ -75,9 +77,16 @@ export const Cart = () => {
                     className={styles.picture}
                     src={element.image}
                     alt="Picture"
+                    onClick={() => openProduct(element.category, element.id)}
+
                   />
 
-                  <div className={styles.title}>{element.name}</div>
+                  <div
+                    className={styles.title}
+                    onClick={() => openProduct(element.category, element.id)}
+                  >
+                    {element.name}
+                  </div>
                 </div>
 
                 <div className={styles.box}>

@@ -3,7 +3,6 @@ import styles from './PicturesSlider.module.scss';
 import { Slider } from '../Slider';
 import { NavButton } from '../../../shared/components/NavButton';
 import { useNavigate } from 'react-router-dom';
-import { scrollToTop } from '../../../shared/navigate/ToTop';
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,7 +32,6 @@ export const PicturesSlider = () => {
 
   const openProduct = () => {
     navigate('/phones/product/81');
-    scrollToTop();
   };
 
   const images = [

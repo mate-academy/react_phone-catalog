@@ -22,7 +22,6 @@ export const BlockButtons: React.FC<BlockButtonsProps> = ({ element }) => {
       <button
         className={`${styles.add} ${isInCart ? styles.addedToCart : ''}`}
         onClick={toggleCart}
-        disabled={isInCart}
       >
         {isInCart ? 'Added' : 'Add to cart'}
       </button>
