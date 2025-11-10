@@ -13,9 +13,26 @@
 }
 
 @mixin icon-paddings {
-  padding: 16px;
+  padding: $space-3xl;
 
   @include on-desktop {
-    padding: 24px;
+    padding: $space-6xl;
   }
 }
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: $space-3xl;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+

@@ -17,7 +17,7 @@
 
 .upperText{
   font-family: $fontMontBold;
-  size: 12px;
+  size: $font-size-base;
   line-height: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -25,14 +25,14 @@
 
 .buttonText{
   font-family: $fontMontSemiBold;
-  size: 14px;
+  size: $font-size-md;
   line-height: 21px;
   letter-spacing: 0;
 }
 
 .smallText{
   font-family: $fontMontSemiBold;
-  size: 12px;
+  size: $font-size-base;
   line-height: 15px;
   letter-spacing: 0;
 }

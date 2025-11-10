@@ -19,8 +19,8 @@ header {
 
 .leftPart {
   display: flex;
-  gap: 64px;
-  padding-right: 16px;
+  gap: $space-8xl;
+  padding-right: $space-3xl;
 }
 
 .rightPart {
@@ -34,10 +34,10 @@ header {
 }
 
 .logoWrapper {
-  padding: 13px 16px;
+  padding: $space-2lg $space-3xl;
 
   @include on-desktop {
-    padding: 18px 24px;
+    padding: $space-4xl $space-6xl;
   }
 
   img {

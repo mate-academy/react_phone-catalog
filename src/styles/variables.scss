@@ -1,9 +1,3 @@
-$fontMont: 'Mont', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-$fontMontSemiBold: 'MontSemiBold', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-$fontMontBold: 'MontBold', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-$tablet_min_width: 640px;
-$desktop_min_width: 1200px;
-
 /* colors */
 $white: #fff;
 $primary: #0f0f11;
@@ -16,6 +10,53 @@ $secondaryAccent: #f447af;
 $green: #27ae60;
 $red: #eb5757;
 $boxShadowColors: rgba(226, 230, 233, 1);
+
+/* Breakpoints */
+$tablet_min_width: 640px;
+$desktop_min_width: 1200px;
+
+/* Fonts */
+$fontMont: 'Mont', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+$fontMontSemiBold: 'MontSemiBold', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+$fontMontBold: 'MontBold', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+$font-size-xs: 9px;
+$font-size-sm: 11px;
+$font-size-base: 12px;
+$font-size-md: 14px;
+$font-size-lg: 16px;
+$font-size-xl: 18px;
+$font-size-2xl: 20px;
+$font-size-3xl: 22px;
+$font-size-4xl: 24px;
+$font-size-5xl: 32px;
+$font-size-6xl: 48px;
+$font-size-7xl: 120px;
+
+/* Line Height */
+$line-height-xs: 11px;
+$line-height-md: 15px;
+$line-height-xl: 20px;
+$line-height-2xl: 21px;
+$line-height-3xl: 26px;
+$line-height-5xl: 31px;
+$line-height-6xl: 41px;
+$line-height-7xl: 56px;
+
+/* Space */
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 10px;
+$space-lg: 12px;
+$space-2lg: 13px;
+$space-xl: 14px;
+$space-2xl: 15px;
+$space-3xl: 16px;
+$space-4xl: 18px;
+$space-5xl: 20px;
+$space-6xl: 24px;
+$space-7xl: 32px;
+$space-8xl: 64px;
+
 
 /* animation */
 $duration: 0.3s;
