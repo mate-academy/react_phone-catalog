@@ -4,19 +4,49 @@ import { Pagination } from './Pagination/Pagination';
 import { PhonesTitle } from './PhonesTitle/Phones-title';
 import { Sort } from './Sort/Sort';
 import useCatalogData from './Hooks/UseCatalogData';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SortType } from '../../Types/type';
+import { Loading } from '../Shared/Loading/Loading';
+import { ErrorPage } from '../Shared/ErrorPage/ErrorPage';
 
 export const CatalogPage = () => {
   const [sortNumber, setSortNumber] = useState(16);
   const [sortType, setSortType] = useState<SortType>('');
-  const { itemsOnPage, setItemsOnPage, products, setProducts } = useCatalogData();
+  const { itemsOnPage, setItemsOnPage, products, setProducts, loading, error, reload } = useCatalogData();
+
+  useEffect(() => {
+    if (products.length > 0) {
+      if (sortNumber >= products.length) {
+        setItemsOnPage(products);
+      } else {
+        setItemsOnPage(products.slice(0, sortNumber));
+      }
+    }
+  }, [sortNumber, products, setItemsOnPage]);
+
+  if (loading) {
+    return <Loading />; 
+  }
+  
+  if (error) {
+    return <ErrorPage onReload={reload}/>
+  }
+
+  if (products.length === 0) {
+    return (
+      <>
+        <Breadcrumbs />
+        <PhonesTitle />
+        <div>No products found</div>
+      </>
+    );
+  }
 
   const handleSort = (type: SortType) => {
     if (products.length === 0) return;
-    
+
     let sortedProducts = [...products];
-    
+
     if (type === 'expensive') {
       sortedProducts.sort((a, b) => b.priceRegular - a.priceRegular);
     } else if (type === 'cheaper') {
@@ -24,14 +54,12 @@ export const CatalogPage = () => {
     } else if (type === 'discount') {
       sortedProducts.sort((a, b) => b.priceDiscount - a.priceDiscount);
     }
-    
+
     setProducts(sortedProducts);
     setSortType(type);
   };
 
-  if (products.length === 0) {
-    return <div className="loading">Loading...</div>;
-  }
+  const showPagination = sortNumber < products.length;
 
   return (
     <>
@@ -41,13 +69,17 @@ export const CatalogPage = () => {
         sortNumber={sortNumber}
         setSortNumber={setSortNumber}
         onSortChange={handleSort}
+        products={products}
       />
       <Catalog itemsOnPage={itemsOnPage} />
-      <Pagination
-        products={products}
-        sortNumber={sortNumber}
-        setItemsOnPage={setItemsOnPage}
-      />
+      
+      {showPagination && (
+        <Pagination
+          products={products}
+          sortNumber={sortNumber}
+          setItemsOnPage={setItemsOnPage}
+        />
+      )}
     </>
   );
 };

@@ -5,6 +5,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { CatalogPage } from './modules/CatalogPage/CatalogPage';
 import { ProductPage } from './modules/ProductPage/ProductPage';
 import { Footer } from './modules/Shared/Footer/Footer';
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
 export const App = () => (
   <Router>
@@ -19,6 +20,7 @@ export const App = () => (
           <Route path="/phones/:productId" element={<ProductPage />} />
           <Route path="/tablets/:productId" element={<ProductPage />} />
           <Route path="/accessories/:productId" element={<ProductPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </div>

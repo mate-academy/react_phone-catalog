@@ -1,0 +1,21 @@
+@import '../../Scss-variables/Variables.scss';
+
+
+.notfound {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__image {
+    width: 100px;
+    height: 80px;
+  }
+
+  &__text {
+    color: $active-link-color;
+    font-family: $mont-regular-font;
+    margin-bottom: 20px;
+    font-size: 45px;
+  }
+}

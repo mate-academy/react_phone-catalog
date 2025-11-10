@@ -81,10 +81,11 @@
             position: relative;
             width: 206px;
             height: 196px;
-            top: 32px;
             left: 32px;
             margin-bottom: 48px;
             background-color: #161827;
+            padding: 0 30px;
+            box-sizing: border-box;
         }
 
         &__name {

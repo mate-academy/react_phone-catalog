@@ -1,16 +1,21 @@
-import { SortType } from '../../../Types/type';
+import { Phone, SortType } from '../../../Types/type';
 import style from'./Sort.module.scss';
 
 interface SortProps {
   sortNumber: number,
+  products: Phone[]
   setSortNumber: (x: number) => void;
   onSortChange: (x: SortType) => void
 }
 
-export const Sort = ({ setSortNumber, onSortChange }: SortProps) => {
+export const Sort = ({ setSortNumber, onSortChange, products }: SortProps) => {
 
-  const sortByNumber = (number: number) => {
-    setSortNumber(number);
+  const sortByNumber = (query: string) => {
+    if (query === 'all') {
+      setSortNumber(products.length)
+    } else {
+      setSortNumber(Number(query));
+    }
   }
 
   return (
@@ -40,7 +45,7 @@ export const Sort = ({ setSortNumber, onSortChange }: SortProps) => {
           name="sort by number"
           id="number"
           className={style[`sort__container__select--number`]}
-          onChange={(e) => sortByNumber(Number(e.target.value))}
+          onChange={(e) => sortByNumber(e.target.value)}
           defaultValue={'16'}
         >
           <option
@@ -57,6 +62,11 @@ export const Sort = ({ setSortNumber, onSortChange }: SortProps) => {
           value="32"
           >
             32
+          </option>
+          <option
+          value="all"
+          >
+            all
           </option>
         </select>
       </div>

@@ -22,15 +22,20 @@ export const Banner = ({ data }: BannerProps) => {
   }, [maxIndex]);
 
   const handlePrev = () => {
-    setCurrentIndex(prev => Math.max(0, prev - 1));
+    setCurrentIndex(prev => (prev > 0 ? prev - 1 : 2)
+  );
   };
 
   const handleNext = () => {
-    setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
+    setCurrentIndex(prev => (prev < 2 ? prev + 1 : 0));
   };
 
   const getSlideWidth = () => {
     return wrapperRef.current?.offsetWidth || 0;
+  };
+
+  const setSlide = (number: number) => {
+    setCurrentIndex(number);
   };
 
   return (
@@ -38,7 +43,6 @@ export const Banner = ({ data }: BannerProps) => {
       <button
         className={`${styles.banner__arrow} ${styles[`banner__arrow--left`]}`}
         onClick={handlePrev}
-        disabled={currentIndex === 0}
       >
         &lt;
       </button>
@@ -59,12 +63,22 @@ export const Banner = ({ data }: BannerProps) => {
             />
           ))}
         </div>
+        <div className={styles.banner__dashes}>
+          <button className={styles.banner__dashes__dash}
+          onClick={() => setSlide(0)}
+          ></button>
+          <button className={styles.banner__dashes__dash}
+          onClick={() => setSlide(1)}
+          ></button>
+          <button className={styles.banner__dashes__dash}
+          onClick={() => setSlide(2)}
+          ></button>
+        </div>
       </div>
 
       <button
         className={`${styles.banner__arrow} ${styles[`banner__arrow--right`]}`}
         onClick={handleNext}
-        disabled={currentIndex >= maxIndex}
       >
         &gt;
       </button>

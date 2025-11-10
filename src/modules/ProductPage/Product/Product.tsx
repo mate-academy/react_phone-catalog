@@ -130,18 +130,18 @@ export const Product =
               </p>
             </div>
             <div className={style.product__cart__description}>
-              <p className={style.product__cart__description__capacity}>
+              <p className={style.product__cart__description__resolution}>
                 Resolution
               </p>
-              <p className={style[`product__cart__description__capacity--number`]}>
+              <p className={style[`product__cart__description__resolution--number`]}>
                 {productResolution}
               </p>
             </div>
             <div className={style.product__cart__description}>
-              <p className={style.product__cart__description__capacity}>
+              <p className={style.product__cart__description__resolution}>
                 Processor
               </p>
-              <p className={style[`product__cart__description__capacity--number`]}>
+              <p className={style[`product__cart__description__resolution--number`]}>
                 {productProcessor}
               </p>
             </div>

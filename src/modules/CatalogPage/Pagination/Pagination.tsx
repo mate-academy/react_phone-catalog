@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom'; 
 import { Phone } from '../../../Types/type';
 import style from './Pagination.module.scss';
 
@@ -10,7 +11,12 @@ interface PaginationProps {
 }
 
 export const Pagination = ({ setItemsOnPage, sortNumber, products }: PaginationProps) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams(); 
+  
+  const [currentPage, setCurrentPage] = useState(() => {
+    const pageFromUrl = searchParams.get('page');
+    return pageFromUrl ? Number(pageFromUrl) : 1;
+  });
 
   const totalPages = Math.ceil(products.length / sortNumber);
 
@@ -37,6 +43,14 @@ export const Pagination = ({ setItemsOnPage, sortNumber, products }: PaginationP
     setItemsOnPage(products.slice(start, end));
     setCurrentPage(page);
 
+    const newParams = new URLSearchParams(searchParams);
+    if (page === 1) {
+      newParams.delete('page'); 
+    } else {
+      newParams.set('page', String(page));
+    }
+    setSearchParams(newParams);
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -50,7 +64,7 @@ export const Pagination = ({ setItemsOnPage, sortNumber, products }: PaginationP
   };
 
   const nextPage = () => {
-    if (currentPage <= totalPages) {
+    if (currentPage < totalPages) {
       handleSort(currentPage + 1);
     }
   };

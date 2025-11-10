@@ -29,3 +29,25 @@ a {
 button {
   border: none;
 }
+
+@media screen and (width: 1200px) {
+  .container {
+    max-width: 1430px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .container {
+    max-width: 630px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+}
+@media screen and (max-width: 639px) {
+  .container {
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+}

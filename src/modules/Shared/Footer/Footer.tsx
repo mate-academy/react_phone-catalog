@@ -1,5 +1,5 @@
 
-import style from'./Footer.module.scss';
+import style from './Footer.module.scss';
 
 export const Footer = () => {
   return (
@@ -15,7 +15,11 @@ export const Footer = () => {
       </div>
 
       <div className={style.footer__items}>
-        <a href="" className={style.footer__items__link}>
+        <a
+        href="https://github.com/Korochenko/react_phone-catalog"
+        className={style.footer__items__link}
+        target='_blank'
+        >
           Github
         </a>
         <a href="" className={style.footer__items__link}>

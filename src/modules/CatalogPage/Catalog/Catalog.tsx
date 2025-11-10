@@ -20,6 +20,7 @@ export const Catalog = ({ itemsOnPage }: CatalogProps) => {
       currentPage = 'accessories';
     }
 
+
   return (
     <div className={style.catalog}>
       {itemsOnPage.map((phone: Phone) => (

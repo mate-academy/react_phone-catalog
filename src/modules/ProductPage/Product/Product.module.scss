@@ -3,19 +3,29 @@
 .product {
   display: flex;
   margin-bottom: $pixels80;
+  
   &__images {
     display: flex;
     margin-right: 135px;
+    
     &__available {
       display: flex;
       flex-direction: column;
       gap: 16px;
       margin-right: 16px;
+      
       &--image {
         height: 80px;
         width: 80px;
         padding: 0 12px;
         box-sizing: border-box;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: border-color 0.15s ease;
+        
+        &:hover {
+          border-color: #4a4d58;
+        }
       }
     }
 
@@ -32,6 +42,7 @@
   &__cart {
     width: 320px;
     margin-right: 16px;
+    
     &__name {
       font-family: $mont-regular-font;
       font-weight: 700;
@@ -39,131 +50,171 @@
       color: #75767F;
       margin-bottom: 8px;
     }
+    
     &__colors {
       display: flex;
       gap: 9px;
       margin-bottom: 24px;
-      cursor: pointer;
 
       &__color {
-        border: 2px solid #fff;
-        border-radius: 36px;
+        border: 2px solid transparent;
+        border-radius: 50%;
         width: 30px;
         height: 30px;
+        cursor: pointer;
+        transition: border-color 0.15s ease;
+        
+        &:hover {
+          border-color: #fff;
+        }
       }
     }
+    
     &__capacity {
       display: flex;
       gap: 8px;
       margin-bottom: 24px;
+      
       &--available {
         box-sizing: border-box;
         border: 1px solid #4a4d58;
+        background-color: transparent;
         color: $active-link-color;
         width: 56px;
         height: 32px;
         cursor: pointer;
-        transition: 0.15s ease;
+        transition: all 0.15s ease;
+        font-family: $mont-regular-font;
+        font-weight: 600;
+        font-size: 14px;
 
-        &:focus {
+        &:hover {
+          border-color: $active-link-color;
+        }
+
+        &:focus,
+        &:active {
           color: #2a2932;
           background-color: $active-link-color;
+          border-color: $active-link-color;
+          outline: none;
         }
       }
     }
 
     &--line {
       width: 320px;
+      height: 1px;
+      background-color: #4a4d58;
+      border: none;
       margin-bottom: 24px;
     }
-
 
     &__prices {
       display: flex;
       align-items: center;
       margin-bottom: 16px;
-        &__price{
-          font-family: $mont-bold-font;
-          color: $active-link-color;
-          font-weight: 800;
-          font-size: 32px;
-          line-height: 128%;
-          margin-right: 8px;
-        }
-    
-        &__discount {
-          font-family: $mont-bold-font;
-          color: #75767F;
-          font-weight: 600;
-          font-size: 22px;
-          line-height: 140%;
-          text-decoration: line-through;
-        }
-      }
-
-      &__description {
-        display: flex;
-        justify-content: space-between;
+      
+      &__price {
+        font-family: $mont-bold-font;
         color: $active-link-color;
-        padding-bottom: 8px;
-        &__screen,
-        &__capacity,
-        &__ram {
-          color: #75767F;
-          font-weight: 700;
-          font-size: 12px;
-        }
-         &__screen--number,
-         &__capacity--number,
-         &__ram--number {
-          color: $active-link-color;
-          font-weight: 700;
-          font-size: 12px;
-        }
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 128%;
+        margin: 0 8px 0 0;
+      }
+  
+      &__discount {
+        font-family: $mont-bold-font;
+        color: #75767F;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 140%;
+        text-decoration: line-through;
+        margin: 0;
+      }
+    }
 
-        &__ram {
-            margin-bottom: 16px;
+    &__buttons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+
+      &__button__add {
+        color: #fff;
+        width: 263px;
+        height: 48px;
+        background-color: #905BFF;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.15s ease;
+        font-family: $mont-regular-font;
+        font-weight: 700;
+        font-size: 14px;
+              
+        &:hover {
+          background-color: #A378FF;
+        }
+        
+        &:active {
+          background-color: #7A4FD9;
         }
       }
 
-      &__buttons {
+      &__button__favourites {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
-        margin-bottom: 32px;
-
-        &__button__add {
-          color: $active-link-color;
-          width: 263px;
-          height: 48px;
-          background-color: #905BFF;
-          border: none;
-          margin-right: 8px;
-                
-          &:hover {
-            background-color: #A378FF;
-          }
+        background-color: transparent;
+        border: 1px solid #4a4d58;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        transition: border-color 0.15s ease;
+        
+        &:hover {
+          border-color: $active-link-color;
         }
 
-        &__button__favourites {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: #323542;
-          width: 48px;
-          height: 48px;
-          border: none;
-        }
-
-        &__button__favourites--heart {
-          background-color: #323542;
+        &--heart {
           width: 15.34px;
           height: 13.55px;
           background-image: url(/img/logo/Heart.svg);
           background-repeat: no-repeat;
-          border: none;
+          background-size: contain;
+          background-position: center;
         }
       }
+    }
+
+    &__description {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 8px;
+      
+      &__screen,
+      &__resolution,
+      &__processor,
+      &__ram {
+        color: #75767F;
+        font-family: $mont-regular-font;
+        font-weight: 700;
+        font-size: 12px;
+        margin: 0;
+      }
+      
+      &__screen--number,
+      &__resolution--number,
+      &__processor--number,
+      &__ram--number {
+        color: $active-link-color;
+        font-family: $mont-regular-font;
+        font-weight: 700;
+        font-size: 12px;
+        margin: 0;
+        text-align: right;
+      }
+    }
   }
 
   &__id {

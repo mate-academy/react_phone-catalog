@@ -18,13 +18,15 @@
           background-color: #161827;
             
 					&__image {
-							position: relative;
-							width: 196px;
-							height: 196px;
-							top: 32px;
-							left: 32px;
-							margin-bottom: 48px;
-							background-color: #161827;
+						position: relative;
+						width: 196px;
+						height: 196px;
+						top: 32px;
+						left: 32px;
+						margin-bottom: 48px;
+						background-color: #161827;
+						padding: 0 20px;
+						box-sizing: border-box;
 					}
         }
         

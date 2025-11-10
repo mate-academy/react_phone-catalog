@@ -2,6 +2,7 @@ import { useState } from 'react';
 import phones from '../../../../public/api/phones.json';
 import type { Phone } from '../../../Types/type';
 import style from './Hot-Prices.module.scss';
+import { Link, useLocation } from 'react-router-dom';
 
 export const HotPrices = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,6 +18,26 @@ export const HotPrices = () => {
     setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
   };
 
+  const sortedProduct = phones.sort((a, b) => b.priceRegular - a.priceRegular);
+
+
+  const location = useLocation();
+
+  const getCurrentPage = () => {
+    const path = location.pathname;
+
+    if (path.includes('/phones')) {
+      return 'phones';
+    } else if (path.includes('/tablets')) {
+      return 'tablets';
+    } else if (path.includes('/accessories')) {
+      return 'accessories';
+    }
+
+    return 'phones';
+  };
+
+  const currentPage = getCurrentPage();
   return (
     <div className={style.newmodels}>
       <div className={style.newmodels__topbar}>
@@ -46,13 +67,15 @@ export const HotPrices = () => {
             transform: `translateX(-${currentIndex * (272 + 64 + 16)}px)`,
           }}
         >
-          {phones.map((phone: Phone) => (
+          {sortedProduct.map((phone: Phone) => (
             <article className={style.newmodels__product} key={phone.id}>
-              <img
-                className={style.newmodels__product__image}
-                src={phone.images[0]}
-                alt={phone.id}
-              />
+              <Link to={`/${currentPage}/${phone.id}`}>
+                <img
+                  className={style.newmodels__product__image}
+                  src={phone.images[0]}
+                  alt={phone.id}
+                />
+              </Link>
               <p className={style.newmodels__product__name}>{phone.name}</p>
               <div className={style.newmodels__product__prices}>
                 <h4 className={style.newmodels__product__prices__price}>

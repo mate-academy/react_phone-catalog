@@ -1,0 +1,21 @@
+@import '../../Scss-variables/Variables.scss';
+
+.notFoundPage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &__text {
+    font-family: $mont-bold-font;
+    color: $active-link-color;
+    font-size: 50px;
+    margin-top: 70px;
+  }
+  &__image {
+    margin-top: 70px;
+    height: 70%;
+    width: 50%;
+  }
+}
