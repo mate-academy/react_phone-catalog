@@ -16,7 +16,7 @@ export const CardProduct: React.FC<CardProductProps> = ({ element, sale }) => {
 
   return (
     <div className={styles.container}>
-      <div 
+      <div
         className={styles.above}
         onClick={() => openProduct(element.category, element.id)}
       >

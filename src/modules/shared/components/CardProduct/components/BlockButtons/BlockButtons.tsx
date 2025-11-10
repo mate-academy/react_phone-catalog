@@ -14,7 +14,7 @@ export const BlockButtons: React.FC<BlockButtonsProps> = ({ element }) => {
 
   const { toggleFavourite, toggleCart, isFavourite, isInCart } =
     useProductActions(element);
- 
+
   return (
     <div
       className={`${styles.blockButtons} ${isProductPage ? styles.productPage : ''}`}
