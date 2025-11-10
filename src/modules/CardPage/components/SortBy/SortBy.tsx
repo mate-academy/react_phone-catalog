@@ -1,30 +1,31 @@
-import styles from '../Dropdown.module.scss';
+import { useState } from 'react';
+import styles from './SortBy.module.scss';
 
 interface SortByProps {
+  title: string;
   sortBy: string;
-  setSortOpen: (p: boolean) => void;
-  sortOpen: boolean;
   sortOptions: string[];
-  setSortBy: (p: string) => void;
+  onChange: (newValue: string) => void;
 }
 
 export const SortBy: React.FC<SortByProps> = ({
+  title,
   sortBy,
-  setSortOpen,
-  sortOpen,
   sortOptions,
-  setSortBy,
+  onChange,
 }) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className={styles.sortBy}>
-      <div>Sort by</div>
+      <div>{title}</div>
       <button
         className={`
           ${styles.button}
-          ${sortOpen ? styles.activeButton : ''}
-          ${sortBy !== 'Newest' ? styles.valueCurrent : ''}
+          ${open ? styles.activeButton : ''}
+          ${sortBy !== 'Newest' && sortBy !== 'all' ? styles.valueCurrent : ''}
         `}
-        onClick={() => setSortOpen(!sortOpen)}
+        onClick={() => setOpen(prev => !prev)}
       >
         {sortBy}
         <img
@@ -36,15 +37,15 @@ export const SortBy: React.FC<SortByProps> = ({
         />
       </button>
 
-      {sortOpen && (
+      {open && (
         <ul className={styles.sortList}>
           {sortOptions.map(option => (
             <li
               key={option}
               className={styles.item}
               onClick={() => {
-                setSortBy(option);
-                setSortOpen(false);
+                onChange(option);
+                setOpen(false);
               }}
             >
               {option}

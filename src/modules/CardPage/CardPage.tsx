@@ -1,5 +1,5 @@
 import styles from './CardPage.module.scss';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useTabs } from '../../ProductsContext/TabsContext';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { Pagination } from './components/Pagination';
@@ -7,7 +7,6 @@ import { useFavourite } from '../../ProductsContext/FavouriteContext';
 import { Cart } from '../Cart/Cart';
 import { CardProduct, NavigateList } from '../shared';
 import { SortBy } from './components/SortBy';
-import { ItemsOnPage } from './components/ItemsOnPage';
 import { Loader } from '../shared/components/Loader';
 import { Error } from '../shared/components/Error';
 import { NoCategory } from '../shared/components/NoCategory';
@@ -26,11 +25,9 @@ export const CardPage = () => {
 
   const pageParam = Number(searchParams.get('page') || 1);
   const perPageParam = searchParams.get('perPage') || 'all';
+  const sortByParam = searchParams.get('sortBy') || 'Newest';
 
-  const [sortOpen, setSortOpen] = useState(false);
   const sortOptions = ['Newest', 'Alphabetically', 'Cheapest'];
-  const [sortBy, setSortBy] = useState('Newest');
-
   const items = ['4', '8', '16', 'all'];
 
   const productsFilters = useMemo(
@@ -38,10 +35,41 @@ export const CardPage = () => {
     [productsList, category],
   );
 
+  const updateParams = (newParams: Record<string, string>) => {
+    const updated = new URLSearchParams(searchParams);
+
+    Object.entries(newParams).forEach(([key, value]) => {
+      if (value) {
+        updated.set(key, value);
+      } else {
+        updated.delete(key);
+      }
+    });
+
+    setSearchParams(updated);
+  };
+
+  const elementsSorted = [
+    {
+      title: 'Sort by',
+      sortBy: sortByParam,
+      option: sortOptions,
+      onChange: (newValue: string) =>
+        updateParams({ sortBy: newValue, page: '1' }),
+    },
+    {
+      title: 'Items on page',
+      sortBy: perPageParam,
+      option: items,
+      onChange: (newValue: string) =>
+        updateParams({ page: '1', perPage: newValue }),
+    },
+  ];
+
   const sortedProducts = useMemo(() => {
     const copy = [...productsFilters];
 
-    switch (sortBy) {
+    switch (sortByParam) {
       case 'Newest':
         return copy.sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
       case 'Alphabetically':
@@ -51,7 +79,7 @@ export const CardPage = () => {
       default:
         return copy;
     }
-  }, [productsFilters, sortBy]);
+  }, [productsFilters, sortByParam]);
 
   const perPage =
     perPageParam === 'all' ? sortedProducts.length : Number(perPageParam);
@@ -80,23 +108,6 @@ export const CardPage = () => {
     perPage,
     perPageParam,
   ]);
-
-  const updateParams = (page: number, perPageItems: string | number) => {
-    const params: Record<string, string> = {};
-
-    if (page > 1) {
-      params.page = String(page);
-    }
-
-    if (
-      perPageItems !== 'all' &&
-      Number(perPageItems) !== sortedProducts.length
-    ) {
-      params.perPage = String(perPageItems);
-    }
-
-    setSearchParams(params);
-  };
 
   const titleCategory = (() => {
     switch (category) {
@@ -147,19 +158,15 @@ export const CardPage = () => {
       <div className={styles.box}>
         {!categoryFavourite && !categoryCart && (
           <div className={styles.sortGrid}>
-            <SortBy
-              sortBy={sortBy}
-              setSortOpen={setSortOpen}
-              sortOpen={sortOpen}
-              sortOptions={sortOptions}
-              setSortBy={setSortBy}
-            />
-
-            <ItemsOnPage
-              current={perPageParam}
-              items={items}
-              onChange={newPerPage => updateParams(1, newPerPage)}
-            />
+            {elementsSorted.map((el, i) => (
+              <SortBy
+                key={i}
+                title={el.title}
+                sortBy={el.sortBy}
+                sortOptions={el.option}
+                onChange={el.onChange}
+              />
+            ))}
           </div>
         )}
 

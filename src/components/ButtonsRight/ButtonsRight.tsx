@@ -46,7 +46,7 @@ export const ButtonsRight: React.FC<ButtonsRightProps> = ({
               ${isActive || category === link.to ? styles.active : ''}
               ${isBurgerMenu ? styles.burgerMenu : styles.homePage}
             `
-          } 
+          }
         >
           <div className={styles.container}>
             {link.count > 0 && <div className={styles.count}>{link.count}</div>}
