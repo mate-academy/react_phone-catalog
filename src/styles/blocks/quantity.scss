@@ -1,0 +1,93 @@
+.quantity {
+  padding: 16px;
+  border: 1px solid $lightGray;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 53px;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+
+    @include on-tablet {
+      display: flex;
+      gap: 24px;
+    }
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__foto {
+    height: 80px;
+    width: 80px;
+    display: flex;
+  }
+
+  &__main-foto {
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 53px;
+    }
+  }
+
+}
+
+.buttons-quantity {
+  &__main {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $mediumGray;
+    border-radius: 48px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &--menos {
+      background-image: url('../../../public/img/icons/menos.svg');
+    }
+
+    &--plus {
+      background-image: url('../../../public/img/icons/plus.svg');
+    }
+
+    &:disabled{
+      cursor: not-allowed;    /* Курсор "заборонено" */
+      border-color: $lightGray;
+      background-image: url('../../../public/img/icons/menos_disabled.svg');
+    }
+  }
+
+  &__text {
+    margin: 0 14px;
+  }
+}

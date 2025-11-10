@@ -1,0 +1,8 @@
+.not-found-page {
+  padding: 16px 0;
+  height: 40vh;
+
+  @include on-tablet {
+    height: 71vh;
+  }
+}

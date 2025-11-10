@@ -1,0 +1,34 @@
+.icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+
+  &--active {
+    border-bottom: 3px solid $primaryText;
+  }
+  
+  &--menu {
+    background-image: url(../../../public/img/icons/menu.png);
+  }
+
+  &--close {
+    background-image: url(../../../public/img/icons/close.png);
+
+    &-button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+
+  &--bag {
+    background-image: url(../../../public/img/icons/Shopping_bag.png);
+  }
+
+  &--favourite {
+    background-image: url(../../../public/img/icons/Favourites.png);
+  }
+}

@@ -1,0 +1,58 @@
+.new-models {
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    grid-column: 1 / 3;
+
+    @include on-tablet {
+      grid-column: 1 / 11;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+    
+    &__left {
+      padding: 5px 13px;
+      border: 1px solid $mediumGray;
+      border-radius: 38px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__right {
+      padding: 5px 13px;
+      border: 1px solid $mediumGray;
+      border-radius: 38px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__slider {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  
+}

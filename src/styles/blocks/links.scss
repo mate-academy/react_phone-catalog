@@ -1,0 +1,28 @@
+.link {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $secondaryText;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  &__arrow {
+    background-image: url('../../../public/img/icons/Vector_Left.svg');
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__type {
+    text-decoration: none;
+  }
+}

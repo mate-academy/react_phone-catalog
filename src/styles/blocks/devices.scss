@@ -1,0 +1,402 @@
+.devices {
+  &__path {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+  
+
+  &__type {
+    text-decoration: none;
+
+    &--active {
+      font-weight: 700;
+      color: $primaryText;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__filters {
+    @include page-grid;
+
+    margin-bottom: 24px;
+  }
+
+  &__sort-area {
+    position: relative;
+
+    &--items {
+      grid-column: 3 / 5;
+
+      @include on-tablet {
+        grid-column: 5 / 8;
+      }
+    }
+
+    &--sort {
+      grid-column: 1 / 3;
+
+      @include on-tablet {
+        grid-column: 1 / 5;
+      }
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: $secondaryText;
+
+    &--smaller {
+      font-weight: 600;
+      display: grid;
+      gap: 8px;
+    }
+
+    &--id {
+      color: $mediumGray;
+      text-align: right;
+    }
+  }
+
+  &__color-label {
+    grid-row: 2;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 228px);
+      column-gap: 16px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(auto-fill, 272px);
+    }
+  }
+
+  
+
+  &__slider-link {
+    width: 35px;
+    height: 35px;
+    display: block;
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__slider-photo {
+    height: 100%;
+
+    @include on-desktop {
+      width: auto;
+    }
+
+    &-main {
+      margin: 0 auto;
+      height: 288px;
+
+      @include on-desktop {
+        height: 464px;
+      }
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 16px;
+  }
+
+  &__slider .slick-dots li {
+    width: 35px !important;
+    height: 35px;
+    margin: 0 8px !important;
+    border: 1px solid $lightGray;
+    border-radius: 4px;
+
+    @include on-tablet {
+      margin: 0 !important;
+    }
+
+    @include on-desktop {
+      width: 80px !important;
+      height: 80px;
+    }
+
+  }
+
+  &__slider .slick-dots li.slick-active {
+    border-color: $primaryText !important;
+  }
+
+  & .slick-dots {
+    bottom: -58px !important;
+
+    @include on-tablet {
+      display: flex !important;
+      flex-direction: column;
+      gap: 8px;
+      grid-column: 1 / 2;
+      top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+      gap: 16px;
+    }
+  }
+
+  &__slider {
+    grid-column: 1 / 5;
+    margin-bottom: 105px;
+
+    @include on-tablet {
+      position: relative;
+      grid-column: 1 / 8;
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+
+    & .slider-container .slick-slider {
+      @include on-tablet {
+        grid-template-columns: repeat(7, 1fr);
+      }
+    }
+  }
+
+  & .slick-list {
+    @include on-tablet {
+      grid-column: 2 / 8;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / 13;
+    }
+  }
+
+  & .slick-active {
+    border-color: $primaryText;
+  }
+
+  & .devices-slider li {
+    border: 1px solid $lightGray;
+  }
+
+  &__main-content {
+    @include page-grid;
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      position: relative;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__main-info {
+    grid-column: 1 / 5;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      grid-column: 8 / 13;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+      margin-bottom: 109px;
+    }
+  }
+
+  &__colors-and-id {
+    grid-column: 1 / 5;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 24px;
+    margin-bottom: 24px;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $lightGray;
+      grid-column: 1 / 3;
+
+      @include on-tablet {
+        grid-row: 2;
+      }
+
+    }
+
+    @include on-tablet {
+      grid-column: 8 / 13;
+      height: max-content;
+    }
+
+  }
+
+  &__capacity {
+    display: grid;
+    row-gap: 24px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      grid-column: 8 / 13;
+    }
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $lightGray;
+    }
+  }
+
+  &__color-indicator {
+    background-color: #fff; // Застосовуємо колір з масиву
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid $lightGray;
+  }
+
+  &__colors input:checked + .devices__color-indicator {
+    border-color: $primaryText;
+  }
+
+  &__colors-radio, &__capacities-radio {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__radio {
+    &:hover {
+      border-color: $mediumGray !important;
+    }
+  }
+
+  &__capacities input:checked + .devices__radio {
+    background-color: $primaryText;
+    color: #fff;
+  }
+
+  &__id {
+    @include on-desktop {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+
+    &-fullPrice {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28.12px;
+      color:$secondaryText;
+      text-decoration: line-through;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__main-properties {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 8px;
+  }
+
+  &__properties {
+    text-align: right;
+  }
+
+  &__about {
+    grid-column: 1 / 5;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__tech-specs {
+    grid-column: 1 / 5;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 25;
+    }
+  }
+}
+
+.main-product-card {
+  padding: 24px 0 56px;
+
+  @include on-tablet {
+    padding: 24px 0 64px;
+  }
+
+  @include on-desktop {
+    padding: 24px 0 80px;
+  }
+}

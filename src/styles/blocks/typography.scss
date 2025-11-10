@@ -1,0 +1,47 @@
+.smallText {
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondaryText;
+}
+
+.small-text-700 {
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondaryText;
+
+  &--dark {
+    color: $primaryText;
+  }
+  &--grey-light {
+    color: $mediumGray;
+  }
+}
+
+.body-text-600 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+
+  &--gray {
+    color: $secondaryText;
+
+    &-homepage {
+      @include on-desktop {
+        font-weight: 500;
+      }
+    }
+
+  }
+
+  &--black {
+    color: $primaryText;
+  }
+
+}
+
+.homepage-text-gray {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondaryText;
+}

@@ -1,0 +1,25 @@
+.path {
+  display: flex;
+  column-gap: 8px;
+
+  &__home {
+    background-image: url('../../../public/img/icons/home.svg');
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-position: center;
+  }
+
+  &__arrow {
+    background-image: url('../../../public/img/icons/Vector_\(Stroke\).svg');
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__type {
+    text-decoration: none;
+  }
+}

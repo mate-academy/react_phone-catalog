@@ -1,0 +1,15 @@
+.tech-specs {
+  &__main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+  }
+
+  &__name-properties {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $secondaryText;
+    margin-bottom: 8px;
+  }
+}

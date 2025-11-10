@@ -1,0 +1,27 @@
+.nav {
+  &__list {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;  
+  }
+
+  &__link {
+    box-sizing: border-box;
+    display: block;
+    padding-bottom: 7px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: $secondaryText;
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+      color: #313237;
+      border-bottom: 2px solid #313237;
+    }
+  }
+}

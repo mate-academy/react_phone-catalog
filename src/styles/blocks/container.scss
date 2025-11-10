@@ -1,0 +1,22 @@
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+
+  &--hide {
+    padding: 0;
+  }
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+  }
+
+  &--relative {
+    position: relative;
+
+    @include page-grid;
+  }
+}

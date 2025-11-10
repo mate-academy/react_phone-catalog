@@ -1,0 +1,140 @@
+.circle {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $mediumGray;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.arrow-up {
+  width: 9px;
+  height: 9px;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+  transform: rotate(135deg);
+  position: absolute;
+  margin-bottom: -3px;
+}
+
+.addToCart {
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  background-color: $blueColor;
+  color: #fff;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  &--active {
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 1px solid $lightGray;
+    color: $blueColor;
+  }
+
+  &--bigger {
+    height: 48px;
+  }
+}
+
+.addToFavourite {
+  background-image: url('../../../public/img/icons/Favourites.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0 19px;
+  border-radius: 48px;
+  border: 1px solid $mediumGray;
+
+  &:hover {
+    cursor: pointer;
+    border-color: $primaryText;
+  }
+
+  &--active {
+    background-image: url('../../../public/img/icons/Favourites.svg');
+  }
+
+  &--bigger {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.Loader {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    margin: 1em auto;
+    border: 0.3em solid #ddd;
+    border-left-color: #000;
+    animation: load8 1.2s infinite linear;
+  }
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center; /* Вирівнювання по вертикалі */
+  justify-content: center; /* Вирівнювання по горизонталі */
+
+  &__content {
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  &__text {
+    margin-bottom: 20px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+  }
+}

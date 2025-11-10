@@ -1,0 +1,14 @@
+.hot-prices {
+  &__title {
+    margin-bottom: 24px;
+    grid-column: 1 / 3;
+
+    @include on-tablet {
+      grid-column: 1 / 11;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+}

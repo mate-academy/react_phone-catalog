@@ -1,0 +1,75 @@
+.pagina {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+
+  &__page {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $lightGray;
+    border-radius: 48px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primaryText;
+    margin: 0 4px;
+    &:hover {
+      border-color: $primaryText;
+      cursor: pointer;
+    }
+
+    &--active {
+      background-color: $primaryText;
+      color:#fff;
+    }
+
+  }
+
+  &__switcher {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $lightGray;
+    border-radius: 48px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      border-color: $primaryText;
+      cursor: pointer;
+    }
+
+    &--previous {
+      background-image: url('../../../public/img/icons/Right_arrow.svg');
+      margin-right: 12px;
+    }
+
+    &--next {
+      background-image: url('../../../public/img/icons/Left_arrow.svg');
+      margin-left: 12px;
+    }
+
+    &--all {
+      display: none;
+    }
+  }
+
+  &__disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: default;
+
+    &:hover {
+      border-color: $lightGray;
+      cursor: default;
+    }
+  }
+
+  .break a{
+    color: $primaryText;
+  }
+}

@@ -1,0 +1,40 @@
+.caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+
+  h2 {
+    font-size: 24px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 18px;
+  }
+}
+
+.slider-header {
+  &__title {
+    margin-bottom: 24px;
+  
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+  
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+  }
+  
+  &__bottom {
+    margin-bottom: 88px;
+  }
+}

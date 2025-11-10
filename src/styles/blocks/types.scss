@@ -1,0 +1,38 @@
+.types {
+  &__link {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    text-decoration: none;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    &--phones {
+      background-color: #6D6474;
+    }
+
+    &--tablets {
+      background-color: #8D8D92;
+    }
+  }
+
+  &__foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 38px 30px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    margin-bottom: 4px;
+    display: block;
+    text-decoration: none;
+  }
+
+}

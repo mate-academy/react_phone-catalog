@@ -1,0 +1,92 @@
+.slick-dots {
+  bottom: -38px !important;
+}
+
+.slick-dots li {
+  width: 14px !important;
+  margin: 0 12px !important;
+}
+
+.slick-dots li.slick-active div {
+  background-color: black !important; /* Колір активної точки */
+}
+
+.slider-picture {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    content: url('../../../public/img/header/banner_tablet.png');
+    aspect-ratio: auto;
+    
+  }
+
+  @include on-desktop {
+    content: url('../../../public/img/header/banner_desktop.png');
+  }
+}
+
+.slider-container .slick-slider {
+  @include page-grid;
+}
+
+.slick-list {
+  grid-column: 1 / 5;
+
+  @include on-tablet {
+    grid-column: 2 / 12;
+  }
+
+  @include on-desktop {
+    grid-column: 2 / 24;
+  }
+}
+
+.slick-prev {
+  @include on-tablet {
+    grid-column: 1 / 2;
+  }
+}
+
+.slick-next {
+  @include on-tablet {
+    grid-column: 12 / 13;
+  }
+
+  @include on-desktop {
+    grid-column: 24 / 25;
+  }
+}
+
+.slick-prev::before, .slick-next::before {
+  font-size: 26px !important;
+  content: none !important;
+}
+
+.custom-next-arrow {
+  right: 16px !important;
+
+  @include on-tablet {
+    right: 0 !important;
+  }
+}
+
+.custom-prev-arrow {
+  right: 64px !important;
+
+  @include on-tablet {
+    grid-column: 11 / 12;
+    right: 0 !important;
+  }
+
+  @include on-desktop {
+    grid-column: 23 / 24;
+  }
+}
+
+.slick-disabled.custom-next-arrow, 
+.slick-disabled.custom-prev-arrow {
+  color: $lightGray; /* Новий колір кнопки, коли вона неактивна */
+  border-color: $lightGray; /* Зміна кольору обвідки */
+}
+

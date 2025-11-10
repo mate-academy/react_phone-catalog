@@ -1,0 +1,50 @@
+.header-nav {
+  height: 100%;
+  display: none;
+  align-items: center;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &__list {
+    height: 100%;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    padding-left: 32px;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+
+    @include on-desktop {
+      padding-left: 48px;
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: $secondaryText;
+    height: 100%;
+    line-height: 11px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    border-bottom: 3px solid transparent;
+    &:hover {
+      color: $primaryText;
+      border-bottom: 3px solid $primaryText;
+    }
+  }
+}

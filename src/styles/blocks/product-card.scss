@@ -1,0 +1,114 @@
+.product {
+  @include on-desktop {
+    width: 270px !important;
+  }
+  p {
+    margin: 0;
+  }
+  
+  padding: 32px;
+  background-color: #fff;
+  min-width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  &__foto {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 24px;
+    transition: transform 0.3s ease;
+
+    @include on-tablet {
+      aspect-ratio: auto;
+      height: 200px;
+      margin: 0 auto 24px;
+      display: block;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      height: 63px;
+    }
+
+    @include on-desktop {
+      height: 42px;
+    }
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30.8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $lightGray;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__hot-price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30.8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $lightGray;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__discount {
+    margin-left: 8px;
+    font-weight: 600;
+    line-height: 28.12px;
+    color: $secondaryText;
+    text-decoration: line-through;
+  }
+
+  &__characters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__value {
+    text-align: right;
+    
+
+    &--screen {
+      height: 30px;
+      align-self: center;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}
