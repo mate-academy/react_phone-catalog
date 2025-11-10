@@ -22,7 +22,7 @@
   @include on-desktop {
     margin-inline: auto;
     max-width: $desktop-min-width;
-    padding-inline: 0;
+    padding-inline: $desktop-padding-inline;
   }
 }
 
@@ -46,5 +46,7 @@
 
 // stylelint-disable-next-line selector-pseudo-class-no-unknown
 :global(.container) {
+  box-sizing: border-box;
+
   @include content-padding-inline;
 }

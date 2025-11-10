@@ -15,16 +15,21 @@
     @extend %h2;
 
     @include on-tablet {
-      grid-column: span 10;
+      grid-column: span 12;
     }
   }
 
   &__buttons {
     grid-column: span 2;
-    align-self: center;
+    place-self: center end;
     display: flex;
+    justify-content: end;
     height: 32px;
     gap: 8px;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
   }
 
   &__slider {
@@ -41,7 +46,7 @@
     @include on-tablet {
       padding-right: $tablet-padding-inline;
       margin-right: $tablet-padding-inline;
-      grid-auto-columns: 5 * $grid-column-desktop + 4 * $grid-gap-desktop;
+      grid-auto-columns: 6 * $grid-column-desktop + 5 * $grid-gap-desktop;
     }
 
     @include on-desktop {
