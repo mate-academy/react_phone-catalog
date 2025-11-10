@@ -6,7 +6,6 @@
   gap: $wight-8;
   padding-bottom: $wight-40;
   justify-content: center;
-
   grid-column: 1/-1;
 
   @include on-tablet {
@@ -21,6 +20,7 @@
 }
 
 .imgBox {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   height: $wight-50;

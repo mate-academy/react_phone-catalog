@@ -78,7 +78,6 @@ export const Cart = () => {
                     src={element.image}
                     alt="Picture"
                     onClick={() => openProduct(element.category, element.id)}
-
                   />
 
                   <div

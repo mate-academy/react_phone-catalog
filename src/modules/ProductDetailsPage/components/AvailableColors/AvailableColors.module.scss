@@ -30,6 +30,7 @@
   border-radius: 50%;
   padding: $wight-3;
   border: $border-color-elements;
+  cursor: pointer;
 
   &:hover {
     border-color: $secondary;
