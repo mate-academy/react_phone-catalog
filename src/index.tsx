@@ -13,27 +13,29 @@ import { CardPage } from './modules/CardPage';
 import { TabsProvider } from './ProductsContext/TabsContext';
 import { FavouriteProvider } from './ProductsContext/FavouriteContext';
 import { CartProvider } from './ProductsContext/CartContext';
+import { NavigationProvider } from './ProductsContext/NavigationContext';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <TabsProvider>
     <CartProvider>
       <FavouriteProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<HomePage />} />
-              <Route path="home" element={<Navigate to="/" replace />} />
-              <Route path=":category" element={<CardPage />} />
-              <Route path=":category" element={<CardPage />} />
+        <NavigationProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route index element={<HomePage />} />
+                <Route path="home" element={<Navigate to="/" replace />} />
+                <Route path=":category" element={<CardPage />} />
 
-              <Route
-                path=":category/product/:id"
-                element={<ProductDetailsPage />}
-              />
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-        </Router>
+                <Route
+                  path=":category/product/:id"
+                  element={<ProductDetailsPage />}
+                />
+                <Route path="*" element={<NotFoundPage />} />
+              </Route>
+            </Routes>
+          </Router>
+        </NavigationProvider>
       </FavouriteProvider>
     </CartProvider>
   </TabsProvider>,

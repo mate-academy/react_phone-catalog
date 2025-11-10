@@ -21,19 +21,7 @@ export const CartContext = createContext<CartContextType>({
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<number[]>([]);
 
-  const cleanCartData = (data: unknown): number[] => {
-    try {
-      if (Array.isArray(data)) {
-        return data.filter(n => typeof n === 'number');
-      }
-
-      return [];
-    } catch {
-      return [];
-    }
-  };
-
-  const toggleCart = (id: number) => {
+  const toggleCart = (id: number) =>
     setCartItems(prev => {
       let addedItemInCart;
 
@@ -47,7 +35,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
       return addedItemInCart;
     });
-  };
 
   const clearCart = () => {
     setCartItems([]);
@@ -58,10 +45,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     if (isSaved) {
       const parsed = JSON.parse(isSaved);
-      const cleaned = cleanCartData(parsed);
 
-      setCartItems(cleaned);
-      localStorage.setItem('cart', JSON.stringify(cleaned));
+      setCartItems(parsed);
+      localStorage.setItem('cart', JSON.stringify(parsed));
     }
   }, []);
 

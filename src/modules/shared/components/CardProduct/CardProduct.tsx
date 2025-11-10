@@ -4,7 +4,7 @@ import { ContainerPrice } from './components/ContainerPrice';
 import { BlockButtons } from './components/BlockButtons';
 import { BlockInform } from './components/BlockInform';
 import { Title } from './components/Title';
-import { useProductActions } from '../../hooks/useProductActions';
+import { useOpenProduct } from '../../hooks/useOpenProduct';
 
 interface CardProductProps {
   element: Product;
@@ -12,11 +12,14 @@ interface CardProductProps {
 }
 
 export const CardProduct: React.FC<CardProductProps> = ({ element, sale }) => {
-  const { openProduct } = useProductActions(element);
+  const { openProduct } = useOpenProduct();
 
   return (
     <div className={styles.container}>
-      <div className={styles.above} onClick={openProduct}>
+      <div
+        className={styles.above}
+        onClick={() => openProduct(element.category, element.id)}
+      >
         <img src={element.image} alt={element.name} />
       </div>
 

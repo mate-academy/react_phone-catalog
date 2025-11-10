@@ -1,13 +1,13 @@
-import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../../ProductsContext/CartContext';
 import { useFavourite } from '../../../ProductsContext/FavouriteContext';
 import { Product } from '../../../ProductsContext/TabsContext';
-import { scrollToTop } from '../navigate/ToTop';
+import { useOpenProduct } from './useOpenProduct';
 
-export const useProductActions = (element: Product) => {
+export const useProductActions = (element: Product | undefined) => {
   const { favourites, toggleFavourite } = useFavourite();
   const { cartItems, toggleCart } = useCart();
-  const navigate = useNavigate();
+
+  const { openProduct } = useOpenProduct();
 
   if (!element) {
     return {
@@ -46,17 +46,12 @@ export const useProductActions = (element: Product) => {
     { name: 'Cell', value: element.details?.cell },
   ].filter(item => item.value);
 
-  const openProduct = () => {
-    navigate(`/${element.category}/product/${element.id}`);
-    scrollToTop();
-  };
-
   return {
     toggleFavourite: () => toggleFavourite(element.id),
     toggleCart: () => toggleCart(element.id),
     isFavourite,
     isInCart,
-    openProduct,
+    openProduct: () => openProduct(element.category, element.id),
     informCard,
     informList,
     techSpecsList,

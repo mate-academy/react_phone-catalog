@@ -13,16 +13,11 @@ export interface ProductContextType {
   activeImage?: string;
   activeColor?: string;
   activeCapacity?: string;
+  activeProduct?: ProductsDetails;
   setActiveImage: (image: string) => void;
   setActiveColor: (color: string) => void;
   setActiveCapacity: (capacity: string) => void;
-  activeProduct?: ProductsDetails;
-  activeImagesList: string[];
   setActiveProduct: (product: ProductsDetails | undefined) => void;
-  activeDescription: {
-    title: string;
-    text: string[];
-  }[];
 }
 
 export const ProductContext = createContext<ProductContextType | undefined>(
@@ -35,9 +30,6 @@ export interface ProductProviderProps {
   children: React.ReactNode;
   sale: boolean;
   isProductPage: boolean;
-  initialColor: string | undefined;
-  initialCapacity: string | undefined;
-  setSearchParams: (params: Record<string, string>) => void;
 }
 
 export const ProductProvider: React.FC<ProductProviderProps> = ({
@@ -46,15 +38,10 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
   children,
   sale,
   isProductPage,
-  setSearchParams,
 }) => {
   const [activeImage, setActiveImage] = useState(product?.image);
-  const [activeImagesList, setActiveImagesList] = useState<string[]>([]);
   const [activeColor, setActiveColor] = useState(product?.colorHex);
   const [activeCapacity, setActiveCapacity] = useState(product?.capacity);
-  const [activeDescription, setActiveDescription] = useState(
-    product?.details?.description || [],
-  );
   const [activeProduct, setActiveProduct] = useState(product.details);
   const { productsList } = useTabs();
 
@@ -81,15 +68,10 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
 
   useEffect(() => {
     if (activeProduct) {
-      setActiveProduct(activeProduct);
       setActiveImage(activeProduct.images[0]);
-      setActiveImagesList(activeProduct.images);
-      setActiveDescription(activeProduct.description);
     } else {
       setActiveProduct(product?.details);
       setActiveImage(product?.image);
-      setActiveImagesList(product?.details?.images || []);
-      setActiveDescription(product?.details?.description || []);
     }
   }, [product, activeProduct]);
 
@@ -101,17 +83,6 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
     }
   }, [activeProduct?.name, productsList, setCurrentProduct]);
 
-  useEffect(() => {
-    if (!setSearchParams) {
-      return;
-    }
-
-    setSearchParams({
-      color: activeColor || '',
-      capacity: activeCapacity || '',
-    });
-  }, [activeColor, activeCapacity, setSearchParams]);
-
   return (
     <ProductContext.Provider
       value={{
@@ -119,15 +90,13 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
         sale,
         isProductPage,
         activeImage,
-        setActiveImage,
         activeColor,
         setActiveColor,
         activeCapacity,
         setActiveCapacity,
         activeProduct,
-        activeImagesList,
         setActiveProduct,
-        activeDescription,
+        setActiveImage,
       }}
     >
       {children}
