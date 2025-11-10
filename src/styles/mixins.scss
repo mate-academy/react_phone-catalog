@@ -1,5 +1,13 @@
 @use './variables.scss' as *;
 
+@mixin smooth-transition(
+  $properties: all,
+  $duration: $duration,
+  $timing: ease
+) {
+  transition: $properties $duration $timing;
+}
+
 @mixin on-desktop {
   @media (min-width: $desktop_min_width) {
     @content;
@@ -36,3 +44,46 @@
   }
 }
 
+@mixin button-base {
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-md;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  @include smooth-transition;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-blue {
+  @include button-base;
+
+  background: $accent;
+  color: $white;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-grey {
+  @include button-base;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background: $icons;
+    border-color: $secondary;
+  }
+}

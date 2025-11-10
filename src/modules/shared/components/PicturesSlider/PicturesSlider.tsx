@@ -1,38 +1,40 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperCore } from 'swiper';
+import next from '../../../../assets/images/icons/arrow-right.svg';
+import prev from '../../../../assets/images/icons/arrow-left.svg';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import styles from './PicturesSlider.module.scss';
+import s from './PicturesSlider.module.scss';
 
-const SLIDER_DATA = [
+const images = [
   {
-    imageSrc: 'img/phones.jpg',
-    descriptionText: 'Now available in our store! ',
-    descriptionEmoji: '👌',
+    imageSrc: 'img/banner-iphone-14-pro.png',
+    descriptionText: 'Innovation in your hands.',
+    emoji: '🌟',
     title: 'iPhone 14 Pro',
-    subtitle: 'Pro. Beyond.',
-    cta: 'ORDER NOW',
+    subtitle: 'Designed to impress.',
+    buttonText: 'SHOP NOW',
   },
   {
-    imageSrc: 'img/tablets.jpg',
-    descriptionText: 'Check our latest tablets! ',
-    descriptionEmoji: '✨',
-    title: 'iPad Air',
-    subtitle: 'Light. Bright. Full of might.',
-    cta: 'SHOP NOW',
+    imageSrc: 'img/category-tablets.webp',
+    descriptionText: 'Unleash your creativity today!',
+    emoji: '💡',
+    title: 'Apple iPad Series',
+    subtitle: 'Your ideas, your way.',
+    buttonText: 'EXPLORE NOW',
   },
   {
-    imageSrc: 'img/watches.jpg',
-    descriptionText: 'Complete Your Setup. ',
-    descriptionEmoji: '🎧',
-    title: 'Accessories',
-    subtitle: 'Find what you need.',
-    cta: 'DISCOVER',
+    imageSrc: 'img/category-accessories.webp',
+    descriptionText: 'Stay connected. Stay active.',
+    emoji: '⌚',
+    title: 'Apple Watch Collection',
+    subtitle: 'Your ultimate daily companion.',
+    buttonText: 'VIEW COLLECTION',
   },
 ];
 
@@ -40,29 +42,34 @@ export const PicturesSlider: React.FC = () => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
 
-  const handleSwiperInit = (swiper: SwiperCore) => {
-    if (
-      swiper.params.navigation &&
-      typeof swiper.params.navigation === 'object'
-    ) {
-      const navigation = swiper.params.navigation;
+  const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null);
 
-      navigation.prevEl = prevRef.current;
-      navigation.nextEl = nextRef.current;
-      swiper.navigation.init();
-      swiper.navigation.update();
+  useEffect(() => {
+    if (
+      swiperInstance &&
+      prevRef.current &&
+      nextRef.current &&
+      swiperInstance.params.navigation &&
+      typeof swiperInstance.params.navigation === 'object'
+    ) {
+      swiperInstance.params.navigation.prevEl = prevRef.current;
+      swiperInstance.params.navigation.nextEl = nextRef.current;
+
+      swiperInstance.navigation.destroy();
+      swiperInstance.navigation.init();
+      swiperInstance.navigation.update();
     }
-  };
+  }, [swiperInstance]);
 
   return (
-    <div className={styles.slider}>
-      <div className={styles.slider__mainLayout}>
+    <div className={s.slider}>
+      <div className={s.sliderMain}>
         <button
           ref={prevRef}
-          className={classNames(styles.slider__button, styles.slider__prevBtn)}
+          className={classNames(s.sliderNavButton, s.sliderPrevButton)}
           aria-label="Previous slide"
         >
-          <img src="img/icons/icon-left.png" alt="Previous" />
+          <img src={prev} alt="Previous" />
         </button>
 
         <Swiper
@@ -71,43 +78,45 @@ export const PicturesSlider: React.FC = () => {
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           slidesPerView={1}
           speed={1000}
-          onInit={handleSwiperInit}
-          pagination={{ clickable: true, el: `.${styles.slider__pagination}` }}
-          className={styles.swiperContainer}
+          onSwiper={setSwiperInstance}
+          pagination={{ clickable: true, el: `.${s.sliderPagination}` }}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          className={s.swiperContainer}
         >
-          {SLIDER_DATA.map((slide, index) => (
-            <SwiperSlide key={index} className={styles.slider__slide}>
-              <div className={styles.slider__layout}>
-                <div className={styles.slider__contentBox}>
-                  <p className={styles.slider__description}>
-                    <span className={styles.slider__gradientText}>
+          {images.map((slide, index) => (
+            <SwiperSlide key={index} className={s.sliderSlide}>
+              <div className={s.sliderLayout}>
+                <div className={s.sliderContent}>
+                  <p className={s.sliderDescription}>
+                    <span className={s.sliderGradientText}>
                       {slide.descriptionText}
                     </span>
-                    <span>{slide.descriptionEmoji}</span>
+                    <span>{slide.emoji}</span>
                   </p>
 
-                  <p className={styles.slider__subtitle}>Be the first!</p>
-                  <button className={styles.slider__ctaButton} disabled>
-                    {slide.cta}
+                  <p className={s.sliderSubtitle}>Be the first!</p>
+                  <button className={s.sliderButton} disabled>
+                    {slide.buttonText}
                   </button>
                 </div>
 
-                <div className={styles.slider__imageArea}>
-                  <p className={styles.slider__mobileDescription}>
-                    <span className={styles.slider__gradientText}>
+                <div className={s.sliderImageWrapper}>
+                  <p className={s.sliderMobileDescription}>
+                    <span className={s.sliderGradientText}>
                       {slide.descriptionText}
                     </span>
-                    <span>{slide.descriptionEmoji}</span>
+                    <span>{slide.emoji}</span>
                   </p>
 
-                  <h2 className={styles.slider__title}>{slide.title}</h2>
-                  <p className={styles.slider__imageSubtitle}>
-                    {slide.subtitle}
-                  </p>
+                  <h2 className={s.sliderTitle}>{slide.title}</h2>
+                  <p className={s.sliderImageSubtitle}>{slide.subtitle}</p>
                   <img
                     src={slide.imageSrc}
                     alt={slide.title}
-                    className={styles.slider__image}
+                    className={s.sliderImage}
                   />
                 </div>
               </div>
@@ -117,14 +126,14 @@ export const PicturesSlider: React.FC = () => {
 
         <button
           ref={nextRef}
-          className={classNames(styles.slider__button, styles.slider__nextBtn)}
+          className={classNames(s.sliderNavButton, s.sliderNextButton)}
           aria-label="Next slide"
         >
-          <img src="img/icons/icon-right.png" alt="Next" />
+          <img src={next} alt="Next" />
         </button>
       </div>
 
-      <div className={styles.slider__pagination}></div>
+      <div className={s.sliderPagination}></div>
     </div>
   );
 };

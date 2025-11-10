@@ -5,7 +5,7 @@
   margin-bottom: 80px;
 }
 
-.slider__mainLayout {
+.sliderMain {
   display: flex;
   align-items: stretch;
   gap: $space-3xl;
@@ -17,67 +17,66 @@
   overflow: hidden;
 }
 
-.slider__slide {
+.sliderSlide {
   display: block;
   aspect-ratio: 1040 / 400;
   background-color: #000;
   position: relative;
 }
 
-.slider__layout {
+.sliderLayout {
   position: absolute;
   inset: 24px;
   display: flex;
   gap: $space-3xl;
 }
 
-.slider__contentBox {
+.sliderContent {
   flex-basis: 45%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: $space-7xl;
-  background-color: #333333ac;
+  background-color: $darkGrey;
   border-radius: 24px;
 }
 
-.slider__description {
-  /* @include font-mont($font-size-4xl, $font-weight-bold); */
-
+.sliderDescription {
+  font-family: $fontMontBold;
+  font-size: $font-size-4xl;
   line-height: 1.2;
   margin-bottom: 8px;
 }
 
-.slider__gradientText {
-  background: linear-gradient(90deg, #905bff, #f1f2f9);
+.sliderGradientText {
+  background: linear-gradient(90deg, #8a2be2, #f6c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
 }
 
-.slider__subtitle {
-  /* @include font-mont($font-size-md, $font-weight-regular); */
+.sliderSubtitle {
+  font-family: $fontMont;
+  font-size: $font-size-md;
 
   color: $secondary;
   margin-bottom: 40px;
 }
 
-.slider__ctaButton {
-  /* @include button-secondary; */
-
-  background-color: #333333ac;
+.sliderButton {
+  background: $darkGrey;
+  color: $white;
   border: 1px solid $icons;
-  padding: $space-lg $space-7xl;
-  width: fit-content;
   border-radius: 20px;
 
-  &:hover {
-    border-color: $secondary;
-  }
+  padding: $space-lg $space-7xl;
+  width: fit-content;
+
+  @include button-grey;
 }
 
-.slider__imageArea {
+.sliderImageWrapper {
   flex-basis: 55%;
   display: flex;
   flex-direction: column;
@@ -85,49 +84,54 @@
   text-align: left;
 }
 
-.slider__title {
-  /* @include font-mont($font-size-4xl, $font-weight-bold); */
+.sliderTitle {
+  font-family: $fontMontBold;
+  font-size: $font-size-4xl;
 
   color: $white;
   text-align: center;
 }
 
-.slider__imageSubtitle {
-  /* @include font-mont($font-size-md, $font-weight-regular); */
+.sliderImageSubtitle {
+  font-family: $fontMont;
+  font-size: $font-size-md;
 
   color: $secondary;
   text-align: center;
 }
 
-.slider__image {
+.sliderImage {
   width: 100%;
   height: auto;
   object-fit: contain;
   align-self: center;
 }
 
-.slider__mobileDescription {
+.sliderMobileDescription {
   display: none;
 }
 
-.slider__button {
+.sliderNavButton {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 32px;
 
   height: auto;
-  background-color: $elements;
 
-  border: none;
+  border: 1px solid $elements;
+  border-radius: 50px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+  background-color: $white;
   cursor: pointer;
   flex-shrink: 0;
   z-index: 10;
 
-  /* @include smooth-transition; */
+  @include smooth-transition;
 
   &:hover {
-    background-color: $icons;
+    background-color: $elements;
+    box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.1);
   }
 
   img {
@@ -136,7 +140,7 @@
   }
 }
 
-.slider__pagination {
+.sliderPagination {
   display: flex;
   justify-content: center;
   gap: $space-sm;
@@ -150,7 +154,7 @@
   opacity: 1;
   border-radius: 0;
 
-  /* @include smooth-transition; */
+  @include smooth-transition;
 
   &:hover {
     background: $icons;
@@ -161,56 +165,55 @@
   background: $secondary;
 }
 
-// --- Responsiveness ---
-
 @media (max-width: $desktop_min_width) {
-  .slider__layout {
+  .sliderLayout {
     inset: 16px;
     gap: $space-lg;
   }
 
-  .slider__contentBox {
+  .sliderContent {
     padding: $space-6xl;
   }
 
-  .slider__description,
-  .slider__title {
-    font-size: 20px;
+  .sliderDescription,
+  .sliderTitle {
+    font-size: $font-size-2xl;
   }
 
-  .slider__subtitle,
-  .slider__imageSubtitle {
-    font-size: 11px;
+  .sliderSubtitle,
+  .sliderImageSubtitle {
+    font-size: $font-size-sm;
   }
 
-  .slider__ctaButton {
+  .sliderButton {
     padding: $space-sm $space-6xl;
   }
 }
 
 @media (max-width: #{$tablet_min_width - 1px}) {
-  .slider__slide {
+  .sliderSlide {
     aspect-ratio: 1 / 1;
   }
 
-  .slider__layout {
+  .sliderLayout {
     inset: 0;
   }
 
-  .slider__contentBox {
+  .sliderContent {
     display: none;
   }
 
-  .slider__mobileDescription {
+  .sliderMobileDescription {
     display: block;
     text-align: center;
 
-   /*  @include font-mont($font-size-4xl, $font-weight-bold); */
+    font-family: $fontMontBold;
+    font-size: $font-size-4xl;
 
     line-height: 1.2;
   }
 
-  .slider__imageArea {
+  .sliderImageWrapper {
     flex-basis: 100%;
     padding: $space-7xl $space-3xl;
     justify-content: space-between;
@@ -218,23 +221,23 @@
     text-align: center;
   }
 
-  .slider__title {
-    font-size: 32px;
+  .sliderTitle {
+    font-size: $font-size-5xl;
   }
 
-  .slider__imageSubtitle {
-    font-size: 12px;
+  .sliderImageSubtitle {
+    font-size: $font-size-base;
   }
 
-  .slider__image {
+  .sliderImage {
     width: 85%;
   }
 
-  .slider__button {
+  .sliderNavButton {
     display: none;
   }
 
-  .slider__mainLayout {
+  .sliderMain {
     gap: 0;
   }
 }
