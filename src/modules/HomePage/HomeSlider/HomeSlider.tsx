@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import styles from './HomeSlider.module.scss';
+import { HOME_SLIDER_TIME } from '../../constants';
 
 const slides = [
   {
@@ -26,35 +27,32 @@ const slides = [
 const HomeSlider = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-
+  const [isSliderHovered, setSliderHovered] = useState(false);
   const firstSlide = { ...slides[slides.length - 1] };
   const lastSlide = { ...slides[0] };
   const fullSlides = [firstSlide, ...slides, lastSlide];
   const lastSlideNumber = slides.length;
-  const goToSlide = (number: number, behavior: ScrollBehavior = 'instant') => {
-    if (sliderRef.current) {
-      const children = Array.from(sliderRef.current.children);
 
-      if (children.length > 1) {
-        const scrollY = window.scrollY || document.documentElement.scrollTop;
+  const goToSlide = useCallback(
+    (number: number, behavior: ScrollBehavior = 'instant') => {
+      if (sliderRef.current) {
+        const children = Array.from(sliderRef.current.children);
 
-        children[number].scrollIntoView({ behavior, block: 'center' });
-        window.scrollTo({
-          top: scrollY,
-          behavior: 'instant',
-        });
+        if (children.length > 1) {
+          const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+          children[number].scrollIntoView({ behavior, block: 'center' });
+          window.scrollTo({
+            top: scrollY,
+            behavior: 'instant',
+          });
+        }
       }
-    }
-  };
+    },
+    [],
+  );
 
-  firstSlide.id = slides[0].id - 1;
-  lastSlide.id = slides[slides.length - 1].id + 1;
-
-  useEffect(() => {
-    goToSlide(1);
-  }, []);
-
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (sliderRef.current) {
       const slideWidth = sliderRef.current.clientWidth;
       let num = Math.round(sliderRef.current.scrollLeft / slideWidth);
@@ -80,10 +78,48 @@ const HomeSlider = () => {
 
       setCurrentSlide(num);
     }
-  };
+  }, [lastSlideNumber, goToSlide, setCurrentSlide]);
+
+  firstSlide.id = slides[0].id - 1;
+  lastSlide.id = slides[slides.length - 1].id + 1;
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+
+    if (slider) {
+      slider.addEventListener('scrollend', handleScroll);
+    }
+
+    return () => {
+      if (slider) {
+        slider.removeEventListener('scrollend', handleScroll);
+      }
+    };
+  }, [handleScroll]);
+
+  useEffect(() => {
+    let timerId: number | null = null;
+
+    if (!isSliderHovered) {
+      timerId = setTimeout(
+        () => goToSlide(currentSlide + 1, 'smooth'),
+        HOME_SLIDER_TIME,
+      );
+    }
+
+    return () => {
+      void (timerId && clearTimeout(timerId));
+    };
+  }, [currentSlide, isSliderHovered, goToSlide]);
 
   return (
-    <div className={styles.homeSlider}>
+    <div
+      className={styles.homeSlider}
+      onMouseEnter={() => {
+        setSliderHovered(true);
+      }}
+      onMouseLeave={() => setSliderHovered(false)}
+    >
       <button
         className={cn(
           styles.homeSlider__button,
