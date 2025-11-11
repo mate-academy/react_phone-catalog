@@ -9,12 +9,13 @@
   overflow: hidden;
   justify-content: center;
   background-color: black;
-
+  padding: 0 $wight-20;
 
   @include on-tablet {
     height: $wight-190;
     flex-direction: row;
     gap: $wight-40;
+    padding: 0;
   }
 
   @include on-desktop {
@@ -26,7 +27,7 @@
   display: flex;
   flex-direction: column;
   background-color: $color-black;
-  padding-top: $wight-30;
+  margin-top: $wight-30;
 
   @include on-tablet {
     background-color: $color-dark-gray;
@@ -44,7 +45,7 @@
 }
 
 .containerTitle {
-  background-color: inherit;
+  background-color: black;
 
   @include on-tablet {
     background-color: $color-dark-gray;
@@ -127,31 +128,29 @@
 
 
 .box {
+  background-color: inherit;
+  padding-top: $wight-30;
+  position: relative;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: $wight-8;
-  padding-top: $wight-30;
-  background-color: inherit;
 
   @include on-tablet {
     width: 50%;
     padding: 0;
   }
+
+  @include on-desktop {
+    gap: $wight-8;
+  }
 }
 
 .box img {
-  width: 70%;
+  height: 50%;
   background-color: inherit;
-
-  @include on-tablet {
-    width: 70%;
-  }
-
-  @include on-desktop {
-    width: 50%;
-  }
+  bottom: 0;
+  position: absolute;
 }
 
 .iphone {
@@ -167,5 +166,6 @@
 
   @include on-desktop {
     font-size: $wight-35;
+    padding-top: $wight-50;
   }
 }
