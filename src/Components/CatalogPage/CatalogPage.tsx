@@ -1,18 +1,21 @@
-// import { Footer } from "../Footer/Footer";
 import './CatalogPage.scss';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { GetProducts } from '../../services/GetProducts';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../types/Product';
 import { Loader } from '../Loader/Loader';
 import { Pagination } from '../Pagination/Pagination';
+import { CustomDropdown } from '../CustomDropdown/CustomDropdown';
 
 export const CatalogPage: React.FC = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [sortField, setSortField] = useState('newest');
-  const [itemsOnPage, setItemsOnPage] = useState('all');
   const [isLoading, setIsLoading] = useState(true);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortField = searchParams.get('sortBy') || null;
+  const itemsOnPage = searchParams.get('perPage') || null;
+  const activeCurrentPage = searchParams.get('activePage') || null;
 
   const [isPageActive, setIsPageActive] = useState<number | undefined>();
 
@@ -30,6 +33,30 @@ export const CatalogPage: React.FC = () => {
   }, [location.pathname]);
 
   useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    let changed = false;
+
+    if (!params.has('sortBy')) {
+      params.set('sortBy', 'newest');
+      changed = true;
+    }
+
+    if (!params.has('perPage')) {
+      params.set('perPage', 'all');
+      changed = true;
+    }
+
+    if (!params.has('activePage')) {
+      params.set('activePage', '1');
+      changed = true;
+    }
+
+    if (changed) {
+      setSearchParams(params);
+    }
+  }, [gadgets, searchParams, setSearchParams]);
+
+  useEffect(() => {
     GetProducts().then(data => {
       const productsFilter = data.filter(
         (item: Product) => item.category === gadgets,
@@ -41,8 +68,15 @@ export const CatalogPage: React.FC = () => {
         setIsLoading(true);
       }, 1000);
 
-      const lastIndex = currentPage * productsPerPage;
-      const firstIndex = lastIndex - productsPerPage;
+      const activePageNumber =
+        location.pathname !== `/${gadgets}`
+          ? 1
+          : activeCurrentPage
+            ? +activeCurrentPage
+            : 1;
+
+      setCurrentPage(activePageNumber);
+      setIsPageActive(activePageNumber);
 
       switch (sortField) {
         case 'newest':
@@ -80,7 +114,13 @@ export const CatalogPage: React.FC = () => {
           break;
       }
 
-      currentProducts = currentProducts.slice(firstIndex, lastIndex);
+      const lastIndex = currentPage * productsPerPage;
+      const firstIndex = lastIndex - productsPerPage;
+
+      const safeFirst = Math.max(firstIndex, 0);
+      const safeLast = Math.min(lastIndex, productsFilter.length);
+
+      currentProducts = currentProducts.slice(safeFirst, safeLast);
 
       setFilteredProducts(currentProducts);
       setTimeout(() => {
@@ -89,20 +129,28 @@ export const CatalogPage: React.FC = () => {
     });
   }, [gadgets, sortField, itemsOnPage, productsPerPage, currentPage]);
 
+  const pageNumbers: number[] = [];
+
+  if (productsPerPage > 0 && totalProducts > 0) {
+    for (
+      let index = 1;
+      index <= Math.ceil(totalProducts / productsPerPage);
+      index++
+    ) {
+      pageNumbers.push(index);
+    }
+  }
+
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
     setIsPageActive(pageNumber);
+
+    const params = new URLSearchParams(searchParams);
+
+    params.set('activePage', pageNumber.toString());
+
+    setSearchParams(params);
   };
-
-  const pageNumbers: number[] = [];
-
-  for (
-    let index = 1;
-    index <= Math.ceil(totalProducts / productsPerPage);
-    index++
-  ) {
-    pageNumbers.push(index);
-  }
 
   const nextPage = () =>
     setCurrentPage(prev => {
@@ -112,9 +160,17 @@ export const CatalogPage: React.FC = () => {
         return prev;
       }
 
-      setIsPageActive(prev + 1);
+      const toNextPage = prev + 1;
 
-      return prev + 1;
+      setIsPageActive(toNextPage);
+
+      const params = new URLSearchParams(searchParams);
+
+      params.set('activePage', toNextPage.toString());
+
+      setSearchParams(params);
+
+      return toNextPage;
     });
 
   const previousPage = () =>
@@ -125,10 +181,25 @@ export const CatalogPage: React.FC = () => {
         return prev;
       }
 
-      setIsPageActive(prev - 1);
+      const toPrevPage = prev - 1;
 
-      return prev - 1;
+      setIsPageActive(toPrevPage);
+
+      const params = new URLSearchParams(searchParams);
+
+      params.set('activePage', toPrevPage.toString());
+
+      setSearchParams(params);
+
+      return toPrevPage;
     });
+
+  const optionsItemsOnPage = [
+    { label: 'all', value: 'all' },
+    { label: '4', value: '4' },
+    { label: '8', value: '8' },
+    { label: '16', value: '16' },
+  ];
 
   return (
     <>
@@ -158,38 +229,52 @@ export const CatalogPage: React.FC = () => {
             <h1 className="catalog__page-title">{gadgets}</h1>
           )}
 
-          <h3 className="catalog__page-models">
-            {filteredProducts.length} models
-          </h3>
+          <h3 className="catalog__page-models">{totalProducts} models</h3>
 
           <div className="catalog-sort-dropdowns">
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="catalog-sort-label sort-by">
               Sort by
-              <select
-                className="catalog-sort"
-                onChange={e => setSortField(e.target.value)}
-                value={sortField}
-              >
-                <option value="newest">newest</option>
-                <option value="cheapest">cheapest</option>
-              </select>
+              <CustomDropdown
+                options={[
+                  { label: 'newest', value: 'newest' },
+                  { label: 'cheapest', value: 'cheapest' },
+                ]}
+                value={sortField ? sortField : ''}
+                onChange={val => {
+                  const params = new URLSearchParams(searchParams);
+
+                  params.set('sortBy', val);
+                  params.set('activePage', '1');
+
+                  setIsPageActive(1);
+                  setCurrentPage(1);
+                  setSearchParams(params);
+                }}
+              />
             </label>
-            <label className="catalog-sort-label items-on-page">
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label
+              className="catalog-sort-label items-on-page"
+            >
               Items on page
-              <select
-                className="catalog-sort"
-                value={itemsOnPage}
-                onChange={e => {
-                  setItemsOnPage(e.target.value);
+              <CustomDropdown
+                options={optionsItemsOnPage}
+                value={itemsOnPage ? itemsOnPage : ''}
+                onChange={val => {
                   setCurrentPage(1);
                   setIsPageActive(1);
+
+                  const params = new URLSearchParams(searchParams);
+
+                  params.set('perPage', val);
+                  params.set('activePage', '1');
+
+                  setIsPageActive(1);
+                  setCurrentPage(1);
+                  setSearchParams(params);
                 }}
-              >
-                <option value="all">all</option>
-                <option value="4">4</option>
-                <option value="8">8</option>
-                <option value="16">16</option>
-              </select>
+              />
             </label>
           </div>
 
