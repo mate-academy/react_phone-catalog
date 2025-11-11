@@ -1,5 +1,5 @@
 export function getDevices() {
-  return fetch('http://localhost:3000/api/products.json')
+  return fetch('api/products.json')
     .then(response => {
       if (!response.ok) {
       }
@@ -12,7 +12,7 @@ export function getDevices() {
 }
 
 export function getDevicesProperties(type: string | undefined) {
-  return fetch(`http://localhost:3000/api/${type}.json`)
+  return fetch(`api/${type}.json`)
     .then(response => {
       if (!response.ok) {
       }
