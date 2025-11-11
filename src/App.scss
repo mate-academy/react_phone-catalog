@@ -34,3 +34,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.App__container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}

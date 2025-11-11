@@ -1,8 +1,16 @@
+@use './../../../scss/main.scss' as *;
+
 .menu {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  height: calc(100dvh - 48px);
+  width: 100dvw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+  background-color: $body-background-color;
 }
 
 .buttons {

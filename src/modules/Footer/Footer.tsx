@@ -47,33 +47,37 @@ export const Footer = () => {
   );
 
   return (
-    <div className="container">
-      <footer className={styles.footer}>
-        <div className={styles.footer__left}>
-          <NavLink className={styles.footer__logo} to="/">
-            <img src="img/assets/logo.svg" alt="logo"></img>
-          </NavLink>
+    <footer className={styles.footer}>
+      <div className="container">
+        <div className={styles.footer__content}>
+          <div className={styles.footer__left}>
+            <NavLink className={styles.footer__logo} to="/">
+              <img src="img/assets/logo.svg" alt="logo"></img>
+            </NavLink>
+          </div>
+          <div className={styles.footer__menu}>
+            <Link to="#">Github</Link>
+            <Link to="#">Contacts</Link>
+            <Link to="#">Rights</Link>
+            <Select
+              value={language}
+              options={langOptions}
+              onChange={selectLanguage}
+            />
+          </div>
+          <div className={styles.footer__right}>
+            <a>Back to top</a>
+            <Icon
+              onClick={scrollToTop}
+              iconStyles={{
+                icon: 'border',
+                image: ['arrowRight', 'rotate_90'],
+              }}
+            />
+          </div>
         </div>
-        <div className={styles.footer__menu}>
-          <Link to="#">Github</Link>
-          <Link to="#">Contacts</Link>
-          <Link to="#">Rights</Link>
-          <Select
-            value={language}
-            options={langOptions}
-            onChange={selectLanguage}
-            hideBorder
-          />
-        </div>
-        <div className={styles.footer__right}>
-          <a>Back to top</a>
-          <Icon
-            onClick={scrollToTop}
-            iconStyles={{ icon: 'border', image: ['arrowRight', 'rotate_90'] }}
-          />
-        </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 };
 

@@ -5,7 +5,7 @@ import Footer from './modules/Footer';
 
 export const App = () => {
   return (
-    <div className="App">
+    <div className="App App__container">
       <Header />
       <Outlet />
       <Footer />

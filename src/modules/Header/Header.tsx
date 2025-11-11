@@ -1,6 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import cn from 'classnames';
 import styles from './Header.module.scss';
 import Navigation from './Navigation/Navigation';
 import Icon from '../shared/Icon';
@@ -18,13 +17,17 @@ export const Header = () => {
     setShowMobile(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    document.body.classList.toggle('no-scroll', showMobile);
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [showMobile]);
+
   return (
     <>
-      <header
-        className={cn(styles.header, {
-          [styles.header_mobile]: showMobile,
-        })}
-      >
+      <header className={styles.header}>
         <div className={styles.nav}>
           <NavLink className={styles.nav__logo} to="/">
             <img className={styles.nav__image} src="img/assets/logo.svg"></img>

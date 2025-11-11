@@ -1,15 +1,16 @@
 @use '../../scss/main.scss' as *;
 
 .header {
+  position: sticky;
+  justify-self: center;
+  width: 100%;
+  max-width: $header-max-width;
+  margin-inline: auto;
+  top: 0;
   display: flex;
   flex-direction: column;
   background-color: $body-background-color;
-
-  &_mobile {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-  }
+  z-index: 100;
 }
 
 .nav {

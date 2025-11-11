@@ -1,20 +1,26 @@
 @use './../../scss/main.scss' as *;
 
 .footer {
-  margin-top: 64px;
-  padding-block: 32px;
-  grid-row-gap: 32px;
+  display: flex;
+  flex-grow: 1;
+  align-items: end;
 
-  color: $secondary-color;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: 0.04em;
+  &__content {
+    @include page-grid;
 
-  @include page-grid;
+    margin-top: 64px;
+    padding-block: 32px;
+    color: $secondary-color;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
 
-  @include on-tablet {
-    margin-top: 80px;
+    grid-row-gap: 32px;
+
+    @include on-tablet {
+      margin-top: 80px;
+    }
   }
 
   &__left {
@@ -34,12 +40,14 @@
     grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 16px;
+    align-items: start;
     justify-content: center;
+    gap: 16px;
     text-transform: uppercase;
 
     @include on-tablet {
+      align-items: center;
+      justify-content: center;
       flex-direction: row;
       gap: 13.5px;
       grid-column: span 8;

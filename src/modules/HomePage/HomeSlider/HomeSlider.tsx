@@ -98,15 +98,15 @@ const HomeSlider = () => {
   }, [handleScroll]);
 
   useEffect(() => {
-    let timerId: number | null = null;
+    /* eslint-disable @typescript-eslint/indent */
+    const timerId: number | null = isSliderHovered
+      ? setTimeout(
+          () => goToSlide(currentSlide + 1, 'smooth'),
+          HOME_SLIDER_TIME,
+        )
+      : null;
 
-    if (!isSliderHovered) {
-      timerId = setTimeout(
-        () => goToSlide(currentSlide + 1, 'smooth'),
-        HOME_SLIDER_TIME,
-      );
-    }
-
+    /* eslint-enable @typescript-eslint/indent */
     return () => {
       void (timerId && clearTimeout(timerId));
     };
