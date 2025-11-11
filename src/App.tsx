@@ -18,7 +18,7 @@ export const App = () => {
         <link
           rel="icon"
           type="icon/svg+xml"
-          href="../public/img/image/Logo.svg"
+          href="../public/img/image/Favicon.png"
         />
         <title>Nice Gadgets store</title>
       </Helmet>
