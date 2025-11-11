@@ -19,7 +19,7 @@
     line-height: 20.45px;
     color: $primaryText;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 20px;
       line-height: 25.56px;
     }
