@@ -38,7 +38,7 @@
     gap: 32px;
 
     @include on-desktop {
-      @include pageGrid;
+      @include page-grid;
     }
   }
 }
