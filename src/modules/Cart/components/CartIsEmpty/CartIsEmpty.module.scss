@@ -1,8 +1,17 @@
 @use '/src/vars' as *;
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .status {
   height: $wight-30;
   width: 100%;
   color: $color-white;
   padding: $wight-20-0;
+}
+
+.container img {
+  width: 50%;
 }

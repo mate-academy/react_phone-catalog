@@ -32,7 +32,7 @@
   flex-direction: column;
   gap: $wight-16;
   grid-column: 1/-1;
-
+  
   @include on-tablet {
     grid-column: 1/17;
   }

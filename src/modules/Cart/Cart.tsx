@@ -32,6 +32,8 @@ export const Cart = () => {
     cartItems.includes(product.id),
   );
 
+  const isNotCartProducts = cartProducts.length === 0;
+
   useEffect(() => {
     const saved = localStorage.getItem('cartCounts');
 
@@ -59,7 +61,7 @@ export const Cart = () => {
   return (
     <div className={styles.container}>
       <div className={styles.cartContainer}>
-        {cartProducts.length === 0 ? (
+        {isNotCartProducts ? (
           <CartIsEmpty />
         ) : (
           cartProducts.map(element => {
@@ -104,7 +106,9 @@ export const Cart = () => {
         )}
       </div>
 
-      <TotalPrice commonPrice={commonPrice} totalItems={totalItems} />
+      {!isNotCartProducts && (
+        <TotalPrice commonPrice={commonPrice} totalItems={totalItems} />
+      )}
     </div>
   );
 };
