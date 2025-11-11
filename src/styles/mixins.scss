@@ -87,3 +87,17 @@
     border-color: $secondary;
   }
 }
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    max-width: 1200px;
+  }
+}
+

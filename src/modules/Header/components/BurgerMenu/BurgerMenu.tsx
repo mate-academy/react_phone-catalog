@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import s from './BurgerMenu.module.scss';
-import { NavBar } from '../NavBar/NavBar';
+import { NavBar } from '../../../shared/components/NavBar/NavBar';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../../assets/images/logo-black.png';
 import close from '../../../../assets/images/icons/close.svg';

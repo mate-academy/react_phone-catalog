@@ -1,21 +1,21 @@
 @use './variables.scss' as *;
 @use './mixins.scss' as *;
 
-.mobileVisible{
-  @include on-tablet{
+.mobileVisible {
+  @include on-tablet {
     display: none;
   }
 }
 
-.tabletVisible{
+.tabletVisible {
   display: none;
 
-  @include on-tablet{
+  @include on-tablet {
     display: flex;
   }
 }
 
-.upperText{
+.upperText {
   font-family: $fontMontBold;
   size: $font-size-base;
   line-height: 11px;
@@ -23,17 +23,37 @@
   text-transform: uppercase;
 }
 
-.buttonText{
+.buttonText {
   font-family: $fontMontSemiBold;
   size: $font-size-md;
   line-height: 21px;
   letter-spacing: 0;
 }
 
-.smallText{
+.smallText {
   font-family: $fontMontSemiBold;
   size: $font-size-base;
   line-height: 15px;
   letter-spacing: 0;
 }
 
+.container {
+  margin: 0 auto;
+
+  @include content-padding-inline;
+}
+
+.sliderWrapper
+ {
+  margin: 0 auto;
+  padding-inline: 0;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    max-width: 1200px;
+  }
+ }

@@ -1,8 +1,8 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { HomePage } from './modules/HomePage';
 import { PhonesPage } from './modules/PhonesPage';
-import { Header } from './modules/shared/components/Header';
-import { Footer } from './modules/shared/components/Footer';
+import { Header } from './modules/Header';
+import { Footer } from './modules/Footer';
 
 import './styles/main.scss';
 
