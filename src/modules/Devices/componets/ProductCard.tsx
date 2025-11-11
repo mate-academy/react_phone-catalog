@@ -56,8 +56,10 @@ export const ProductCard = () => {
                 phone.color === selectedColor &&
                 phone.capacity === selectedCapacity
               ) {
-                return phone;
+                return true;
               }
+
+              return false;
             });
           }
 
