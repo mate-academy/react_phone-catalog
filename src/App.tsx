@@ -15,7 +15,11 @@ export const App = () => {
   return (
     <>
       <Helmet>
-        <link rel="icon" type="icon/svg+xml" href="./img/image/Logo.png" />
+        <link
+          rel="icon"
+          type="icon/svg+xml"
+          href="../public/img/image/Logo.svg"
+        />
         <title>Nice Gadgets store</title>
       </Helmet>
 
