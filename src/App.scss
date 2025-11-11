@@ -31,9 +31,7 @@ iframe {
   margin: 0;
   box-sizing: border-box;
   background-color: $color-black;
-  font-family: Mont, sans-serif;
-  scroll-behavior: smooth;
-}
+  font-family: Mont, sans-serif;}
 
 html, body {
   height: 100%;
@@ -48,7 +46,7 @@ html, body {
 
 .container {
   @include content-padding-inline;
-
+  
   flex: 1;
 }
 
