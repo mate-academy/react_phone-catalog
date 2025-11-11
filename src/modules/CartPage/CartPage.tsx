@@ -3,12 +3,12 @@ import styles from './CartPage.module.scss';
 import { BackLink } from '../../components/BackLink';
 import { ButtonType } from '../../types/ButtonType';
 import { Button } from '../../components/Button';
-import { useCategories } from '../../hooks/useCategories';
 import { ProductsType } from '../../types/ProductsType';
 import { useSaveProducts } from '../../context/SaveProductsContext';
 import { Product } from '../../types/ProductType';
 import { Loader } from '../../components/Loader';
 import { Modal } from '../../components/Modal';
+import { useCategoriesRTK } from '../../hooks/useCategoriesRTK';
 
 export type CartItem = Product & {
   quantity: number;
@@ -30,7 +30,7 @@ export const CartPage = () => {
     categorie: products,
     loading,
     error,
-  } = useCategories(ProductsType.Products);
+  } = useCategoriesRTK(ProductsType.Products);
 
   const [showModalCheckout, setShowModalCheckout] = useState(false);
 

@@ -3,9 +3,11 @@ import styles from './Navigation.module.scss';
 import { NavItem } from './NavItem';
 import { NavButton } from './NavButton';
 import { useSaveProducts } from '../../../../../../context/SaveProductsContext';
+import { useAppSelector } from '../../../../../../app/hooks';
 
 export const Navigation = () => {
-  const { favoriteIds, allCartQuantity } = useSaveProducts();
+  const { allCartQuantity } = useSaveProducts();
+  const { items: favorites } = useAppSelector(state => state.favorites);
 
   return (
     <nav className={styles.nav}>
@@ -18,9 +20,9 @@ export const Navigation = () => {
       <ul className={styles.nav__buttons}>
         <NavButton to="/favorites">
           <span className={`icon icon--favorites`} />
-          {favoriteIds.length > 0 && (
+          {favorites.length > 0 && (
             <span className={styles['nav__buttons--count']}>
-              {favoriteIds.length}
+              {favorites.length}
             </span>
           )}
         </NavButton>

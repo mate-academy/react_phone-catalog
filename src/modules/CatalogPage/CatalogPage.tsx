@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import styles from './CatalogPage.module.scss';
 import { ProductsType } from '../../types/ProductsType';
 import { ProductsList } from '../../components/ProductsList';
-import { useCategories } from '../../hooks/useCategories';
 import { Loader } from '../../components/Loader';
 import { Dropdown } from '../../components/Dropdown';
 import { Pagination } from '../../components/Pagination';
@@ -10,6 +9,7 @@ import { useSearchParams } from 'react-router-dom';
 import { SearchLabelsType } from '../../types/SearchLabelsType';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { PageInfo } from '../../components/PageInfo';
+import { useCategoriesRTK } from '../../hooks/useCategoriesRTK';
 
 enum SortByValue {
   Newest = 'year',
@@ -50,7 +50,7 @@ export const CatalogPage = ({ category }: Props) => {
     categorie: products,
     loading,
     error,
-  } = useCategories(ProductsType.Products);
+  } = useCategoriesRTK(ProductsType.Products);
 
   const filteredProducts = useMemo(() => {
     return [...products].filter(product => product.category === category);

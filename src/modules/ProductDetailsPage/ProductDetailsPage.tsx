@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useCategories } from '../../hooks/useCategories';
 import { ProductsType } from '../../types/ProductsType';
 import { Loader } from '../../components/Loader';
 import { Button } from '../../components/Button';
@@ -16,6 +15,7 @@ import {
   productColors,
   ProductColorsType,
 } from '../../types/ProductColorsType';
+import { useCategoriesRTK } from '../../hooks/useCategoriesRTK';
 
 interface Props {
   category: ProductsType;
@@ -28,12 +28,12 @@ enum VariantChangeType {
 
 export const ProductDetailsPage = ({ category }: Props) => {
   const { productId } = useParams();
-  const { categorie: products, loading, error } = useCategories(category);
+  const { categorie: products, loading, error } = useCategoriesRTK(category);
   const {
     categorie: allProducts,
     loading: allProductsLoading,
     error: allProductsError,
-  } = useCategories(ProductsType.Products);
+  } = useCategoriesRTK(ProductsType.Products);
 
   const navigate = useNavigate();
 

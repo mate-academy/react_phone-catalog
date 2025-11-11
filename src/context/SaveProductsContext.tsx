@@ -9,11 +9,8 @@ import { Product } from '../types/ProductType';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 interface SaveProductsContextType {
-  favoriteIds: Product['id'][];
   cartIds: { id: Product['id']; quantity: number }[];
   allCartQuantity: number;
-  toggleFavorites: (v: Product['id']) => void;
-  isFavorite: (id: Product['id']) => boolean;
   toggleCart: (v: Product['id']) => void;
   isCart: (id: Product['id']) => boolean;
   cartQuantity: (id: Product['id']) => number;
@@ -23,11 +20,8 @@ interface SaveProductsContextType {
 }
 
 export const SaveProductsContext = createContext<SaveProductsContextType>({
-  favoriteIds: [],
   cartIds: [],
   allCartQuantity: 0,
-  toggleFavorites: () => {},
-  isFavorite: () => false,
   toggleCart: () => {},
   clearCart: () => {},
   isCart: () => false,
@@ -37,12 +31,10 @@ export const SaveProductsContext = createContext<SaveProductsContextType>({
 });
 
 type InitialState = Readonly<{
-  favoriteIds: Product['id'][];
   cartIds: { id: Product['id']; quantity: number }[];
 }>;
 
 type Action =
-  | { type: 'TOGGLE_FAVORITE'; payload: Product['id'] }
   | { type: 'ADD_CART_QUANTITY'; payload: Product['id'] }
   | { type: 'REMOVE_CART_QUANTITY'; payload: Product['id'] }
   | {
@@ -54,16 +46,6 @@ type Action =
 
 function reducer(state: InitialState, action: Action): InitialState {
   switch (action.type) {
-    case 'TOGGLE_FAVORITE':
-      const existsFavorite = state.favoriteIds.includes(action.payload);
-
-      return {
-        ...state,
-        favoriteIds: existsFavorite
-          ? state.favoriteIds.filter(id => id !== action.payload)
-          : [...state.favoriteIds, action.payload],
-      };
-
     case 'TOGGLE_CART':
       const existsCart = state.cartIds.some(unit => unit.id === action.payload);
 
@@ -102,32 +84,19 @@ export const SaveProductsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [favoritesItems, setFavoritesItems] = useLocalStorage<Product['id'][]>(
-    'favorites',
-    [],
-  );
   const [cartItems, setCartItems] = useLocalStorage<
     { id: Product['id']; quantity: number }[]
   >('cart', []);
   const [state, dispatch] = useReducer(reducer, {
-    favoriteIds: favoritesItems,
     cartIds: cartItems,
   });
 
   useEffect(() => {
     setCartItems(state.cartIds);
-    setFavoritesItems(state.favoriteIds);
-  }, [setCartItems, setFavoritesItems, state.cartIds, state.favoriteIds]);
+  }, [setCartItems, , state.cartIds]);
 
   const value = useMemo(() => {
-    const favoritesSet = new Set(state.favoriteIds);
-
     return {
-      favoriteIds: Array.from(state.favoriteIds),
-      toggleFavorites: (product: Product['id']) =>
-        dispatch({ type: 'TOGGLE_FAVORITE', payload: product }),
-      isFavorite: (id: Product['id']) => favoritesSet.has(id),
-
       cartIds: Array.from(state.cartIds),
       toggleCart: (product: Product['id']) =>
         dispatch({ type: 'TOGGLE_CART', payload: product }),
@@ -148,7 +117,7 @@ export const SaveProductsProvider = ({
       removeCartQuantity: (id: Product['id']) =>
         dispatch({ type: 'UPDATE_CART_QUANTITY', payload: { id, delta: -1 } }),
     };
-  }, [state.cartIds, state.favoriteIds]);
+  }, [state.cartIds]);
 
   return (
     <SaveProductsContext.Provider value={value}>

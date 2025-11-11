@@ -2,20 +2,20 @@ import React, { useCallback, useMemo } from 'react';
 import styles from './HomePage.module.scss';
 import { BannerSlider } from '../../components/BannerSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import { useCategories } from '../../hooks/useCategories';
 import { ProductsType } from '../../types/ProductsType';
 import { Loader } from '../../components/Loader';
 import { CategoriesBlock } from './components/CategoriesBlock';
 import { CategoryType } from '../../types/CategorieType';
 import { Product } from '../../types/ProductType';
 import { useSortedProducts } from '../../hooks/useSortedProducts';
+import { useCategoriesRTK } from '../../hooks/useCategoriesRTK';
 
 export const HomePage = () => {
   const {
     categorie: products,
     loading,
     error,
-  } = useCategories(ProductsType.Products);
+  } = useCategoriesRTK(ProductsType.Products);
 
   const sortByBiggestDiscount = useCallback(
     (a: Product, b: Product) => b.fullPrice - b.price - (a.fullPrice - a.price),

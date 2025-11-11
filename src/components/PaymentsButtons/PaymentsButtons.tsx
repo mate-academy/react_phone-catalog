@@ -5,6 +5,8 @@ import { ButtonType } from '../../types/ButtonType';
 import classNames from 'classnames';
 import { useSaveProducts } from '../../context/SaveProductsContext';
 import { Product } from '../../types/ProductType';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { toggleFavorite } from '../../features/favorites/favoritesSlice';
 
 export const PaymentsButtons = ({
   isPage = false,
@@ -13,8 +15,10 @@ export const PaymentsButtons = ({
   isPage?: boolean;
   product: Product['id'];
 }) => {
-  const { isFavorite, toggleFavorites, isCart, toggleCart } = useSaveProducts();
+  const { isCart, toggleCart } = useSaveProducts();
   const isActiveCart = isCart(product);
+  const { items: favorites } = useAppSelector(state => state.favorites);
+  const dispatch = useAppDispatch();
 
   return (
     <div
@@ -35,8 +39,9 @@ export const PaymentsButtons = ({
         icon={ButtonType.Heart}
         isFavorite={true}
         iconActive={ButtonType.HeartFilled}
-        isSelected={isFavorite(product)}
-        onClick={() => toggleFavorites(product)}
+        isSelected={favorites.includes(product)}
+        // onClick={() => toggleFavorites(product)}
+        onClick={() => dispatch(toggleFavorite(product))}
       />
     </div>
   );
