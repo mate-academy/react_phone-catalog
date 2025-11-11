@@ -15,7 +15,7 @@ export const App = () => {
   return (
     <>
       <Helmet>
-        <link rel="icon" type="icon/svg+xml" href="./img/Logo.png" />
+        <link rel="icon" type="icon/svg+xml" href="./img/image/Logo.png" />
         <title>Nice Gadgets store</title>
       </Helmet>
 

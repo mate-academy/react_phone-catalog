@@ -18,7 +18,7 @@ export const BlockButtons: React.FC<BlockButtonsProps> = ({ element }) => {
   return (
     <div
       className={`${styles.blockButtons} ${isProductPage ? styles.productPage : ''}`}
-    > 
+    >
       <button
         className={`${styles.add} ${isInCart ? styles.addedToCart : ''}`}
         onClick={toggleCart}
