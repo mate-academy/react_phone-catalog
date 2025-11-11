@@ -4,7 +4,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import arrow from '@Images/icons/Arrow-black-right.svg';
 import { FC, useEffect, useState } from 'react';
 import { getData } from '@Fetch';
-import { Phones } from '../../types/phones';
+import { Device } from '../../types/Device';
 import { useTimer } from '../../Hooks/useTimer';
 import { Skeleton } from '../../components/Skeleton/Skeleton';
 import 'yet-another-react-lightbox/styles.css';
@@ -18,6 +18,9 @@ import 'yet-another-react-lightbox/plugins/counter.css';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import Lightbox from 'yet-another-react-lightbox';
 import cn from 'classnames';
+import { Products } from 'src/types/products';
+import { Button } from '@GlobalComponents';
+import { HotPrice } from '../HomePage/components/HotPrice/HotPrice';
 
 interface ImagesProps {
   images: string[] | undefined;
@@ -50,9 +53,7 @@ export const ProductCard = () => {
   const { productId } = useParams();
   const categoryName = pathname.split('/')[1];
 
-  console.log(categoryName);
-
-  const [item, setItem] = useState<Phones>();
+  const [item, setItem] = useState<Device>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const { start, clear } = useTimer();
@@ -62,16 +63,18 @@ export const ProductCard = () => {
   const [OpenGallery, setOpenGallery] = useState(false);
   const [mainImg, setMainImg] = useState<string>('');
   const [isColor, setColor] = useState<string>('');
-  const [iscapacity, setIsCapacity] = useState<string>('');
+  const [isCapacity, setIsCapacity] = useState<string>('');
+
+  //
 
   useEffect(() => {
     setIsLoading(true);
 
     const loadData = async () => {
       try {
-        const fetchedProduct = await getData<Phones[]>('phones');
+        const fetchedProduct = await getData<Device[]>(categoryName);
         const productData = fetchedProduct.find(
-          phone => phone.id === productId,
+          product => product.id === productId,
         );
 
         if (!productData) {
@@ -80,6 +83,7 @@ export const ProductCard = () => {
 
         setItem(productData);
         setMainImg(productData.images[0]);
+        setIsCapacity(productData.capacity);
 
         const productName = productData.name;
 
@@ -106,7 +110,7 @@ export const ProductCard = () => {
     }, 200);
 
     return () => clear();
-  }, [productId, start, clear]);
+  }, [productId, start, clear, categoryName]);
 
   return (
     <>
@@ -153,7 +157,7 @@ export const ProductCard = () => {
                   </Link>
                 </div>
                 <div>
-                  <article>
+                  <article className={style.article}>
                     <div className={style.card}>
                       <h1 className={`title ${style.title}`}>{item.name}</h1>
                       <div className={style.top}>
@@ -249,7 +253,10 @@ export const ProductCard = () => {
                                 (capacity, icapacity) => (
                                   <li
                                     key={icapacity}
-                                    className={style.capacity__items}
+                                    className={cn(style.capacity__items, {
+                                      [style['capacity__items--active']]:
+                                        isCapacity === capacity,
+                                    })}
                                   >
                                     <Link
                                       className={style.capacity__link}
@@ -266,18 +273,86 @@ export const ProductCard = () => {
                           </div>
                         </div>
 
-                        <div className={style.price}></div>
-                        <div className={style.info}></div>
+                        <div className={style.price}>
+                          <p className={style.price__device}>
+                            ${item.priceRegular}
+                          </p>
+                          {item.priceDiscount && (
+                            <p className={style.price__discount}>
+                              ${item.priceDiscount}
+                            </p>
+                          )}
+                        </div>
+                        <div className={style.card__button}>
+                          <Button />
+                        </div>
+                        <div className={style.info}>
+                          <div>
+                            <span>Screen</span>
+                            <span>Resolution</span>
+                            <span>Processor</span>
+                            <span>RAM</span>
+                          </div>
+                          <div>
+                            <span>{item.screen}</span>
+                            <span>{item.resolution}</span>
+                            <span>{item.processor}</span>
+                            <span>{item.ram}</span>
+                          </div>
+                        </div>
                       </div>
                       <div className={style.bottom}>
                         <div className={style.about}>
-                          <h3>About</h3>
-                          <div></div>
-                          <div></div>
-                          <div></div>
+                          <h4 className={`${style['bottom--title']} title`}>
+                            About
+                          </h4>
+                          <div className={style.about__items}>
+                            {item.description.map((info, iInfo) => (
+                              <div key={iInfo} className={style.about__item}>
+                                <h3
+                                  className={`${style['about__item--title']} title`}
+                                >
+                                  {info.title}
+                                </h3>
+                                <p className={style['about__item--info']}>
+                                  {info.text}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                      <div className={style.techspecs}></div>
+
+                      <div className={style.techspecs}>
+                        <h4 className={`${style['bottom--title']} title`}>
+                          Tech specs
+                        </h4>
+
+                        <div className={style.techspecs__content}>
+                          <div>
+                            <span>Screen</span>
+                            <span>Resolution</span>
+                            <span>Processor</span>
+                            <span>RAM</span>
+                            <span>Built in memory</span>
+                            {item.camera && <span>Camera</span>}
+                            {item.zoom && <span>Zoom</span>}
+                            {item.cell && <span>Cell</span>}
+                          </div>
+                          <div>
+                            <span>{item.screen}</span>
+                            <span>{item.resolution}</span>
+                            <span>{item.processor}</span>
+                            <span>{item.ram}</span>
+                            <span>{item.capacity}</span>
+                            {item.camera && <span>{item.camera}</span>}
+                            {item.zoom && <span>{item.zoom}</span>}
+                            {item.cell && (
+                              <span>{item.cell.slice(-2).join(', ')}</span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </article>
                 </div>

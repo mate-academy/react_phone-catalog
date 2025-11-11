@@ -1,6 +1,12 @@
-export interface Phones {
+export interface DescriptionDevice {
+  title: string;
+  text: string[];
+}
+
+export interface Device {
   id: string;
   name: string;
+  capacity: string;
   colorsAvailable: string[];
   capacityAvailable: string[];
   priceRegular: number;
@@ -10,7 +16,8 @@ export interface Phones {
   resolution: string;
   processor: string;
   ram: string;
-  camera: string;
-  zoom: string;
-  cell: string[];
+  camera?: string;
+  zoom?: string;
+  cell?: string[];
+  description: DescriptionDevice[];
 }

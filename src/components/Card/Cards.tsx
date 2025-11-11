@@ -2,7 +2,7 @@ import React from 'react';
 import { Products } from 'src/types/products';
 import style from './card.module.scss';
 import { Button } from '@GlobalComponents';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 type Props = {
   item: Products;
@@ -11,7 +11,6 @@ type Props = {
 
 export const Card: React.FC<Props> = ({ item, title }) => {
   const { pathname } = useLocation();
-  // const { productId } = useParams();
 
   return (
     <>
