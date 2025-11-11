@@ -19,7 +19,7 @@ export const ProductsPage = () => {
   const categoryName = pathname.split('/')[1];
 
   const [products, setProducts] = useState<Products[]>([]);
-  const [isLoading, setIsloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const [updateAt, setUpdateAt] = useState(new Date());
@@ -30,7 +30,7 @@ export const ProductsPage = () => {
   }
 
   useEffect(() => {
-    setIsloading(true);
+    setIsLoading(true);
 
     start(() => {
       getData<Products[]>('/products')
@@ -45,7 +45,7 @@ export const ProductsPage = () => {
           throw error;
         })
         .finally(() => {
-          setIsloading(false);
+          setIsLoading(false);
         });
     }, 1000);
 
