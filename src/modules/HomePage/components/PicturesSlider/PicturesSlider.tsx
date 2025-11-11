@@ -46,7 +46,7 @@ export const PicturesSlider = () => {
       button: 'Order now',
     },
     {
-      img: '',
+      img: './img/image/SliderImg/2.webp',
       alt: '',
       name: 'Shop by Category',
       text: 'All models.',
