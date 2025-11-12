@@ -19,14 +19,21 @@ export const Breadcrumbs: React.FC<Props> = ({ product }) => {
 
   return (
     <nav className={styles.breadcrumbs}>
-      <Link to="/" className={styles.breadcrumbs__link}>
-        Home
+      <Link
+        to="/"
+        className={`${styles.breadcrumbs__link} ${styles.breadcrumbs__home}`}
+      >
+        <img src={'img/icons/icon-home.png'} alt="Home" />
       </Link>
-      <span className={styles.breadcrumbs__separator}>/</span>
+      <span className={styles.breadcrumbs__separator}>
+        <img src={'img/icons/icon-right.png'} alt="Arrow Right" />
+      </span>
       <Link to={`/${product.category}`} className={styles.breadcrumbs__link}>
         {categoryName}
       </Link>
-      <span className={styles.breadcrumbs__separator}>/</span>
+      <span className={styles.breadcrumbs__separator}>
+        <img src={'img/icons/icon-right.png'} alt="Arrow Right" />
+      </span>
       <span className={styles.breadcrumbs__current}>{product.name}</span>
     </nav>
   );

@@ -7,6 +7,20 @@ import { useFavorites } from '../../../../contexts/FavoritesContext';
 import { api } from '../../../../utils/api';
 import styles from './ProductInfo.module.scss';
 
+const colorCssMap: { [key: string]: string } = {
+  spacegray: '#888B8D',
+  midnightgreen: '#5f7170',
+  rosegold: '#B76E79',
+  silver: '#F0F0F0',
+  sierrablue: '#7287A5',
+  graphite: '#474A4F',
+  black: '#4c4c4c',
+  white: '#FFFFFF',
+  red: '#FF0000',
+  gold: '#fcdbc1',
+  purple: '#905bff',
+};
+
 interface Props {
   product: Product;
   showDiscount?: boolean;
@@ -102,6 +116,8 @@ export const ProductInfo: React.FC<Props> = ({ product, showDiscount }) => {
           <div className={styles.productInfo__colors}>
             {availableColors.map(color => {
               const variantId = findProductVariant(color, product.capacity);
+              const cssColor =
+                colorCssMap[color.toLowerCase()] || color.toLowerCase();
 
               return variantId ? (
                 <Link
@@ -110,7 +126,7 @@ export const ProductInfo: React.FC<Props> = ({ product, showDiscount }) => {
                   className={classNames(styles.productInfo__color, {
                     [styles.productInfo__color_active]: color === product.color,
                   })}
-                  style={{ backgroundColor: color.toLowerCase() }}
+                  style={{ backgroundColor: cssColor }}
                   title={color}
                 />
               ) : (
@@ -119,7 +135,7 @@ export const ProductInfo: React.FC<Props> = ({ product, showDiscount }) => {
                   className={classNames(styles.productInfo__color, {
                     [styles.productInfo__color_active]: color === product.color,
                   })}
-                  style={{ backgroundColor: color.toLowerCase() }}
+                  style={{ backgroundColor: cssColor }}
                   title={color}
                   disabled
                 />

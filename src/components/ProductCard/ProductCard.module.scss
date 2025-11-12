@@ -137,7 +137,8 @@
     border: none;
 
     &_active {
-      background: #3b3e4a;
+      border: 1px solid$icons;
+      background: transparent;
     }
   }
 

@@ -55,17 +55,20 @@
   }
 
   &__color {
-    width: 32px;
-    height: 32px;
-    border: 2px solid transparent;
+    width: $spacing-3xl;
+    height: $spacing-3xl;
+    border: 2px solid $gray-elements;
+    box-shadow:
+      0 0 0 2px $surface1,
+      0 0 0 4px $gray-primary;
     border-radius: 50%;
     cursor: pointer;
 
     @include smooth-transition;
 
-    &:hover {
-      transform: scale(1.1);
-    }
+    // &:hover {
+    //   transform: scale(1.1);
+    // }
 
     &_active {
       border-color: $secondary;
@@ -131,8 +134,8 @@
     @include icon-button(48px);
 
     &_active {
-      background: rgba($red, 0.1);
-      border-color: $red;
+      background: transparent;
+      border-color: $icons;
     }
 
     img {

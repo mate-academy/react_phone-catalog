@@ -3,6 +3,35 @@
 .productDetailsPage {
   padding: $spacing-4xl 0;
 
+  .backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    background: none;
+    border: none;
+    color: $secondary;
+    text-decoration: none;
+    cursor: pointer;
+
+    @include font-mont($font-size-base, $font-weight-semibold);
+
+    margin-top: $spacing-2xl;
+    margin-bottom: $spacing-3xl;
+    padding: 0;
+
+    @include smooth-transition;
+
+    &:hover {
+      color: $primary;
+    }
+
+    img {
+      width: $spacing-lg;
+      height: $spacing-lg;
+      color: $secondary;
+    }
+  }
+
   &__title {
     @include font-mont($font-size-4xl, $font-weight-extra-bold);
 

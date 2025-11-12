@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Navigate, useLocation } from 'react-router-dom';
+import { useParams, Navigate, useLocation, Link } from 'react-router-dom';
 import { useProductDetails } from './hooks/useProductDetails';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from './components/Breadcrumbs';
@@ -68,6 +68,12 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className={styles.productDetailsPage}>
       <Breadcrumbs product={product} />
+
+      {/* Link de regreso */}
+      <Link to={-1} className={styles.backLink}>
+        <img src={'img/icons/icon-left.png'} alt="Back" />
+        Back
+      </Link>
 
       {/* ProductInfo */}
       <h1 className={styles.productDetailsPage__title}>{product.name}</h1>

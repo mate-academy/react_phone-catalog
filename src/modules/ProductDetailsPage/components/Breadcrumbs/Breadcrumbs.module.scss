@@ -2,6 +2,8 @@
 
 .breadcrumbs {
   margin-bottom: $spacing-3xl;
+  display: flex;
+  gap: 5px;
 
   &__back {
     display: flex;
@@ -23,8 +25,8 @@
     }
 
     img {
-      width: $spacing-lg;
-      height: $spacing-lg;
+      width: $spacing-xl;
+      height: $spacing-xl;
     }
   }
 
@@ -36,8 +38,13 @@
   }
 
   &__link {
-    color: $gray-secondary;
+    color: $secondary;
     text-decoration: none;
+
+    img {
+      width: $spacing-xl;
+      height: $spacing-xl;
+    }
 
     @include smooth-transition;
 
@@ -48,9 +55,14 @@
 
   &__separator {
     color: $gray-secondary;
+
+    img {
+      width: $spacing-xl;
+      height: $spacing-xl;
+    }
   }
 
   &__current {
-    color: $secondary;
+    color: $gray-secondary;
   }
 }
