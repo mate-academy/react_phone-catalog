@@ -1,0 +1,125 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.productCard {
+  padding: 32px;
+  width: 212px;
+  height: 439px;
+
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  justify-content: space-between;
+
+  border: 1px solid $elements;
+  border-radius: 8px;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
+}
+
+.productImage {
+  display: flex;
+  justify-content: center;
+  height: 129px;
+
+  @include on-tablet {
+    height: 202px;
+  }
+
+  @include on-desktop {
+    height: 208px;
+  }
+
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.productTitle {
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-md;
+  color: $primary;
+  text-decoration: none;
+  margin-top: 16px;
+}
+
+.productPrice {
+  margin-top: 8px;
+  font-family: $fontMontBold;
+  font-size: $font-size-3xl;
+  line-height: 140%;
+
+  display: flex;
+  gap: $space-sm;
+
+  .oldPrice {
+    font-family: $fontMont;
+    color: $secondary;
+    text-decoration: line-through;
+    letter-spacing: 0%;
+  }
+}
+
+.productInfo {
+  padding-top: $space-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+
+  border-top: 1px solid $elements;
+  .infoItem {
+    display: flex;
+    justify-content: space-between;
+
+    font-family: $fontMontBold;
+    font-size: $font-size-base;
+
+    .greyText {
+      font-family: $fontMontSemiBold;
+      color: $secondary;
+    }
+  }
+}
+
+.productButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-sm;
+}
+
+.addToCart {
+  flex: 1 1 auto;
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+
+  @include button-primary;
+}
+
+.addToFav {
+  @include smooth-transition;
+
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+
+  background-image: url('../../../../assets/images/icons/add-fav-default.svg');
+
+  &:hover {
+    background-image: url('../../../../assets/images/icons/add-fav-hover.svg');
+  }
+
+  &.inFav {
+    background-image: url('../../../../assets/images/icons/add-fav-added.svg');
+  }
+}

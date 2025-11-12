@@ -47,6 +47,8 @@
 @mixin button-base {
   font-family: $fontMontSemiBold;
   font-size: $font-size-md;
+
+  border: none;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -60,31 +62,49 @@
     opacity: 0.6;
     cursor: not-allowed;
   }
-}
-
-@mixin button-blue {
-  @include button-base;
-
-  background: $accent;
-  color: $white;
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-}
-
-@mixin button-grey {
-  @include button-base;
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
 
   &:hover:not(:disabled) {
     background: $icons;
     border-color: $secondary;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+
+  & {
+    background: $accent;
+    color: $white;
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+
+  & {
+    background: $elements;
+    color: $secondary;
+  }
+}
+
+@mixin button-icon {
+  @include button-base;
+
+  & {
+    border: 1px solid $primary;
+    border-radius: 50%;
+    background: none;
+    padding: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background: none;
+    opacity: 0.6;
   }
 }
 
@@ -100,4 +120,3 @@
     max-width: 1200px;
   }
 }
-

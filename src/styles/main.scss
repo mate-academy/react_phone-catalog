@@ -25,6 +25,12 @@
   font-display: swap;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: $fontMont;
   size: $font-size-md;

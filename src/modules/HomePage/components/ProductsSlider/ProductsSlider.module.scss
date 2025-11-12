@@ -1,0 +1,16 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+@use '../../../../styles/shared.scss' as *;
+
+.sliderWrapper {
+  overflow: hidden;
+  overscroll-behavior-inline: contain;
+}
+
+.sliderRow {
+  display: flex;
+}
+
+.sliderNavButton {
+  @include button-icon;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperCore } from 'swiper';
@@ -66,7 +66,7 @@ export const PicturesSlider: React.FC = () => {
       <div className={s.sliderMain}>
         <button
           ref={prevRef}
-          className={classNames(s.sliderNavButton, s.sliderPrevButton)}
+          className={cn(s.sliderNavButton, s.sliderPrevButton)}
           aria-label="Previous slide"
         >
           <img src={prev} alt="Previous" />
@@ -126,7 +126,7 @@ export const PicturesSlider: React.FC = () => {
 
         <button
           ref={nextRef}
-          className={classNames(s.sliderNavButton, s.sliderNextButton)}
+          className={cn(s.sliderNavButton, s.sliderNextButton)}
           aria-label="Next slide"
         >
           <img src={next} alt="Next" />

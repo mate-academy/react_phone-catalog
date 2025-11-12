@@ -73,7 +73,7 @@
   padding: $space-lg $space-7xl;
   width: fit-content;
 
-  @include button-grey;
+  @include button-base;
 }
 
 .sliderImageWrapper {
@@ -125,7 +125,6 @@
   background-color: $white;
   cursor: pointer;
   flex-shrink: 0;
-  z-index: 10;
 
   @include smooth-transition;
 

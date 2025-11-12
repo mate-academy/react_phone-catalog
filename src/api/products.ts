@@ -1,7 +1,7 @@
 import { Product } from '../types/Product';
 import { getData } from './clients';
 
-export const getAllProducts = () => getData<Product>('products');
+export const getAllProducts = () => getData<Product[]>('products');
 
 /* usage:
   useEffect(() => {
