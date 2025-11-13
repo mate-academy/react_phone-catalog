@@ -6,6 +6,13 @@
     "accessories": "Accessories"
   },
 
+  "bread_crumps": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+
   "home": {
     "welcome_to_store": "Welcome to Nice Gadgets store!",
     "brand_new": "Brand new models",
@@ -15,6 +22,12 @@
     "category_tablets": "Tablets",
     "category_accessories": "Accessories",
     "models": "models"
+  },
+
+  "products_page": {
+    "phones": "Mobile phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
   },
 
   "product-card": {

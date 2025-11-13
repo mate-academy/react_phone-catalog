@@ -1,0 +1,13 @@
+@use './../../scss/main.scss' as *;
+
+.productPage {
+  &__title {
+    margin-top: 24px;
+
+    @extend %h1;
+
+    @include on-desktop {
+      margin-top: 40px;
+    }
+  }
+}

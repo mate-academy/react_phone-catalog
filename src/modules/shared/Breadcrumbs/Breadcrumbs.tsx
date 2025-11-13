@@ -1,16 +1,28 @@
 import styles from './Breadcrumbs.module.scss';
 import Icon from '../Icon';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-const Breadcrumbs: React.FC = () => {
+interface Props {
+  marginTop?: 'marginTop';
+}
+
+const Breadcrumbs: React.FC<Props> = ({ marginTop }) => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
-  // Split the pathname into segments, filtering out any empty strings (like the initial '/')
   const pathSegments = pathname.split('/').filter(segment => segment !== '');
 
   let currentPath = '';
 
   return (
-    <nav className={styles.breadcrumbs} aria-label="breadcrumb">
+    <nav
+      className={
+        styles.breadcrumbs +
+        ' ' +
+        (marginTop ? styles.breadcrumbs_marginTop : '')
+      }
+      aria-label="breadcrumb"
+    >
       <ol className={styles.breadcrumbs__list}>
         <li className={styles.breadcrumbs__item} key="home">
           <Icon href={'/'} iconStyles={{ image: 'home' }} />
@@ -27,10 +39,12 @@ const Breadcrumbs: React.FC = () => {
             >
               <Icon iconStyles={{ image: ['arrowRight', 'disabled'] }} />{' '}
               {isLast ? (
-                <span className={styles.breadcrumbs__segment}>{segment}</span>
+                <span className={styles.breadcrumbs__segment}>
+                  {t('bread_crumps.' + segment)}
+                </span>
               ) : (
                 <Link className={styles.breadcrumbs__item} to={currentPath}>
-                  {segment}
+                  {t('bread_crumps.' + segment)}
                 </Link>
               )}
             </li>

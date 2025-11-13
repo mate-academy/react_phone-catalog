@@ -3,6 +3,7 @@
 @forward 'mixins';
 @forward 'variables';
 @forward 'extends';
+@forward 'global';
 
 html {
   scroll-behavior: smooth;

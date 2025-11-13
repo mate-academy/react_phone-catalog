@@ -24,13 +24,13 @@ const Navigation: React.FC<NavigationProp> = ({ modifier }) => {
       <NavLink className={getLinkClasses} to="/" end>
         {t('nav.home')}
       </NavLink>
-      <NavLink className={getLinkClasses} to="/phones">
+      <NavLink className={getLinkClasses} to="/phones" state="phones">
         {t('nav.phones')}
       </NavLink>
-      <NavLink className={getLinkClasses} to="/tablets">
+      <NavLink className={getLinkClasses} to="/tablets" state="tablets">
         {t('nav.tablets')}
       </NavLink>
-      <NavLink className={getLinkClasses} to="/accessories">
+      <NavLink className={getLinkClasses} to="/accessories" state="accessories">
         {t('nav.accessories')}
       </NavLink>
     </nav>

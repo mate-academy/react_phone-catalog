@@ -1,7 +1,8 @@
 type IconImageModifiers =
   | 'favorites'
-  | 'close'
   | 'cart'
+  | 'close'
+  | 'home'
   | 'menu'
   | 'border'
   | 'favorites_active'

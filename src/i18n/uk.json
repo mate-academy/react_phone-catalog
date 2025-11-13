@@ -6,6 +6,13 @@
     "accessories": "Аксессуари"
   },
 
+  "bread_crumps": {
+    "home": "Головна",
+    "phones": "Телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксессуари"
+  },
+
   "home": {
     "welcome_to_store": "Ласкаво просимо до магазину гарних гаджетів!",
     "brand_new": "Новинки",
@@ -15,6 +22,12 @@
     "category_tablets": "Планшети",
     "category_accessories": "Аксесуари",
     "models": "моделей"
+  },
+
+  "products_page": {
+    "phones": "Мобільні телефони",
+    "tablets": "Планшети",
+    "accessories": "Аксесуари"
   },
 
   "product-card": {
