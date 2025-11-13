@@ -58,12 +58,18 @@
       }
     }
 
+    &_cart {
+      background: center center url('img/assets/icons/cart.svg');
+    }
+
     &_close {
       background: center center url('img/assets/icons/close.svg');
     }
 
-    &_cart {
-      background: center center url('img/assets/icons/cart.svg');
+    &_home {
+      background-color: $primary-color;
+      mask-image: url('img/assets/icons/home.svg');
+      mask-position: center center;
     }
 
     &_menu {
