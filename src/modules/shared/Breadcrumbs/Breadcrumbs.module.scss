@@ -1,0 +1,24 @@
+@use './../../../scss/main.scss' as *;
+
+.breadcrumbs {
+  height: 16px;
+
+  &__list {
+    display: flex;
+    height: 100%;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__segment {
+    color: $secondary-color;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    text-transform: capitalize;
+  }
+}
