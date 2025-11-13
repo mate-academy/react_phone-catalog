@@ -32,7 +32,7 @@
   --columns: 4;
 
   display: grid;
-  column-gap: $space-3xl;
+  gap: $space-7xl $space-3xl;
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
@@ -118,5 +118,25 @@
   @include on-desktop {
     padding-inline: 32px;
     max-width: 1200px;
+  }
+}
+
+@mixin block-margin-bottom{
+  margin-bottom: $space-8xl;
+
+  @include on-tablet{
+      margin-bottom: $space-9xl;
+  }
+
+  @include on-desktop{
+      margin-bottom: $space-10xl;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $duration;
+
+  &:hover {
+    #{$property}: $toValue;
   }
 }

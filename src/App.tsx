@@ -7,15 +7,13 @@ import { Footer } from './modules/Footer';
 import './styles/main.scss';
 
 export const App = () => (
-  <div className="app-wrapper">
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<PhonesPage />} />
-      </Routes>
+  <Router>
+    <Header />
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/phones" element={<PhonesPage />} />
+    </Routes>
 
-      <Footer />
-    </Router>
-  </div>
+    <Footer />
+  </Router>
 );

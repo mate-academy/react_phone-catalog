@@ -2,7 +2,7 @@
 @use '../../../../styles/mixins.scss' as *;
 
 .slider {
-  margin-bottom: 80px;
+  @include block-margin-bottom;
 }
 
 .sliderMain {

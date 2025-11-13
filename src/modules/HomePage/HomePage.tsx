@@ -1,6 +1,7 @@
 /* eslint no-console: [,{ allow: ["warn", "log", "error"] }] */
-import { BrandNewModels } from './components/BrandNewModels/BrandNewModels';
 import { PicturesSlider } from './components/PicturesSlider';
+import { ProductsSlider } from './components/ProductsSlider';
+import { ShopByCategories } from './components/ShopByCategories';
 import s from './HomePage.module.scss';
 import { useHomePageProducts } from './hooks/useHomePageProducts';
 
@@ -8,20 +9,28 @@ export const HomePage = () => {
   const { newProducts, hotPrices, loading, errorMessage } =
     useHomePageProducts();
 
-  console.log(newProducts);
-  console.log(hotPrices);
-  console.log('loading', loading);
-  console.log('errorMessage', errorMessage);
-
   return (
-    <>
-      <div className={s.container}>
-        <h1>Welcome to Nice Gadgets store!</h1>
-      </div>
-      <div className={s.sliderWrapper}>
+    <main>
+      <h1 className={s.h1Hidden}>Product Catalog</h1>
+      <section className={s.container}>
+        <div className={s.h1Title}>Welcome to Nice Gadgets store!</div>
+      </section>
+      <section className={s.sliderWrapper}>
         <PicturesSlider />
-      </div>
-      {!loading && !errorMessage && <BrandNewModels products={newProducts} />}
-    </>
+      </section>
+      {!loading && !errorMessage && (
+        <ProductsSlider products={newProducts} title="Brand new models" />
+      )}
+      <section className={s.container}>
+        <ShopByCategories />
+      </section>
+      {!loading && !errorMessage && (
+        <ProductsSlider
+          products={hotPrices}
+          title="Hot prices"
+          priceMode="discount"
+        />
+      )}
+    </main>
   );
 };

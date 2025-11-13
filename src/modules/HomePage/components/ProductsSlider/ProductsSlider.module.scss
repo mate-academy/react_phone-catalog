@@ -2,13 +2,30 @@
 @use '../../../../styles/mixins.scss' as *;
 @use '../../../../styles/shared.scss' as *;
 
-.sliderWrapper {
+.productSlider{
+  @include block-margin-bottom;
+}
+
+.sliderContent {
   overflow: hidden;
   overscroll-behavior-inline: contain;
 }
 
 .sliderRow {
   display: flex;
+  gap: $space-3xl;
+}
+
+.sliderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sliderNavButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-sm;
 }
 
 .sliderNavButton {

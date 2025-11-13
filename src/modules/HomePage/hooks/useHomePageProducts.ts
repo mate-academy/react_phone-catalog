@@ -26,8 +26,6 @@ export const useHomePageProducts = () => {
 
         setNewProducts(newProductsData);
         setHotPrices(hotPricesData);
-
-        console.log(products); // should now log your data
       } catch (error) {
         console.error(error);
         setErrorMessage('Unable to load products');
