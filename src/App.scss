@@ -46,6 +46,11 @@ body {
       padding-right: $spacing-3xl;
     }
 
+    @media (min-width: 1200px) and (max-width: 1224px) {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+
     @media (min-width: 1200px) {
       padding-left: $spacing-6xl;
       padding-right: $spacing-6xl;

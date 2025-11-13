@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import classNames from 'classnames';
 import { Product } from '../../../../types';
 import { ProductCard } from '../../../../components/ProductCard';
 import styles from './ProductsSlider.module.scss';
 
 const VISIBLE_SLIDES = 4;
+const SLIDE_WIDTH = 272;
+const GAP = 24;
 
 interface ProductsSliderProps {
   title: string;
@@ -20,10 +22,11 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const isHotPricesSlider = title === 'Hot prices';
   const showDiscountBadge = isHotPricesSlider;
-
   const maxIndex = Math.max(0, products.length - VISIBLE_SLIDES);
 
   const updateButtonVisibility = useCallback(() => {
@@ -36,26 +39,45 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   }, [updateButtonVisibility, products]);
 
   const scroll = (direction: 'left' | 'right') => {
-    if (direction === 'right') {
-      const newIndex = Math.min(currentIndex + 1, maxIndex);
-
-      setCurrentIndex(newIndex);
-    } else {
-      const newIndex = Math.max(currentIndex - 1, 0);
-
-      setCurrentIndex(newIndex);
+    if (isAnimating) {
+      return;
     }
+
+    const newIndex =
+      direction === 'right'
+        ? Math.min(currentIndex + 1, maxIndex)
+        : Math.max(currentIndex - 1, 0);
+
+    setIsAnimating(true);
+    setCurrentIndex(newIndex);
+
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translateX(-${newIndex * (SLIDE_WIDTH + GAP)}px)`;
+    }
+
+    setTimeout(() => setIsAnimating(false), 500);
   };
 
-  const getVisibleProducts = () => {
-    return products.slice(currentIndex, currentIndex + VISIBLE_SLIDES);
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (trackRef.current) {
+        trackRef.current.style.transition = 'none';
+        trackRef.current.style.transform = `translateX(-${currentIndex * (SLIDE_WIDTH + GAP)}px)`;
+        setTimeout(
+          () => trackRef.current?.style.removeProperty('transition'),
+          10,
+        );
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [currentIndex]);
 
   if (products.length === 0) {
     return null;
   }
-
-  const visibleProducts = getVisibleProducts();
 
   return (
     <section className={classNames(styles.productsSlider, className)}>
@@ -96,8 +118,8 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       </div>
 
       <div className={styles.productsSlider__container}>
-        <div className={styles.productsSlider__track}>
-          {visibleProducts.map(product => (
+        <div className={styles.productsSlider__track} ref={trackRef}>
+          {products.map(product => (
             <div key={product.id} className={styles.productsSlider__slide}>
               <ProductCard
                 product={product}

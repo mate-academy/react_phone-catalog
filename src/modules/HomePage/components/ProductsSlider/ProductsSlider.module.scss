@@ -65,20 +65,31 @@
     display: flex;
     gap: $spacing-lg;
     width: 100%;
-
-    @include desktop {
-      justify-content: space-between;
-    }
+    transition: transform $transition-slow cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   &__slide {
-    flex-shrink: 0;
-    width: 272px;
+    flex: 0 0 calc(25% - #{$spacing-lg * 0.75});
+    width: calc(25% - #{$spacing-lg * 0.75});
+    min-width: 272px;
     height: 506px;
+    transform-origin: center center;
+    transition:
+      transform $transition-normal ease,
+      opacity $transition-fast ease;
+
+    &:not(.active) {
+      transform: scale(0.95);
+    }
 
     @include desktop {
       &:nth-child(n + 5) {
-        display: none;
+        display: block;
+      }
+
+      @media (min-width: 1200px) and (max-width: 1224px) {
+        flex: 0 0 calc(25% - 12px);
+        width: calc(25% - 12px);
       }
     }
   }

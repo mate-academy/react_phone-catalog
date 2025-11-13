@@ -7,9 +7,10 @@
   height: 100%;
   margin: 0;
 
-  padding: $spacing-3xl;
   box-sizing: border-box;
   transition: all $transition-normal ease;
+  position: relative;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0 2px 32px $primary;
@@ -17,6 +18,7 @@
 
   &__link {
     text-decoration: none;
+    padding: $spacing-3xl;
     color: inherit;
     display: block;
   }
@@ -137,7 +139,7 @@
     border: none;
 
     &_active {
-      border: 1px solid$icons;
+      border: 1px solid $icons;
       background: transparent;
     }
   }
