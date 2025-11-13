@@ -49,7 +49,7 @@ export const CardItem: React.FC<CardItemProps> = ({ product }) => {
           }}
           id={product.itemId}
         >
-          <img src={`/${image}`} className="product-card__image" />
+          <img src={`${image}`} className="product-card__image" />
         </Link>
         <div className="product-card__container-info">
           <Link
