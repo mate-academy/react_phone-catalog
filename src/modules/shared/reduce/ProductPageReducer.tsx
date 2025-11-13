@@ -3,6 +3,7 @@ import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
 type State = {
+  wasVisited: boolean;
   currentProducts: Product[];
   currentProductsDetails: ProductDetails[];
   loader: boolean;
@@ -11,6 +12,7 @@ type State = {
 };
 
 const initState = {
+  wasVisited: false,
   currentProducts: [],
   currentProductsDetails: [],
   loader: true,
@@ -30,6 +32,7 @@ const productsReducer = (state: State, action: Action) => {
     case 'setCurrentProducts':
       return {
         ...state,
+        wasVisited: true,
         currentProducts: action.payload,
       };
     case 'setCurrentProductsDetails':

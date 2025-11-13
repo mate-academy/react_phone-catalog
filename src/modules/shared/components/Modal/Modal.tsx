@@ -35,7 +35,9 @@ export const Modal: React.FC<ModalProps> = React.memo(
             <div className="modal__header">
               <span className="modal__title">{notifMessage.notif}</span>
             </div>
-            <div className="modal__body">{message}</div>
+            <div className="modal__body" style={{ whiteSpace: 'pre-line' }}>
+              {message}
+            </div>
             <div className="modal__footer">
               {type === 'cartModal' && handleModal ? (
                 <>

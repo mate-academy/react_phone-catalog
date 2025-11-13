@@ -4,8 +4,9 @@ $delayStep: 0.2s;
 
 .loader {
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin-top: 30px;
+  margin-left: 30px;
 
   &__content {
     display: flex;

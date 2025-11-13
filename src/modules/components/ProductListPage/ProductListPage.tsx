@@ -1,7 +1,13 @@
 import './ProductListPage.scss';
 import { LayoutSort } from './components/LayoutSort';
 import { ProductList } from './components/ProductList';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import {
+  Navigate,
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { Loader } from '../../shared/components/Loader';
 import { ProductListContext } from '../../shared/context/ProductListContext';
@@ -21,17 +27,25 @@ import { ImageNotif } from '../../shared/components/ImageNotif';
 import { Product } from '../../shared/types/Product';
 import { TranslationContext } from '../../../i18next/shared';
 import { getText } from '../../shared/servises/getText';
+import { categoryList } from '../../shared/variables';
+import { SortByAmount } from '../../shared/Enum/Sort';
 
 export const ProductListPage = () => {
+  const [searchParams] = useSearchParams();
   const { productList } = useContext(ProductListContext);
   const { category } = useParams();
   const { notifMessage, additionalText, categoryItem } =
     useContext(TranslationContext);
   const navigate = useNavigate();
   const location = useLocation();
-
   const productsDispatch = useContext(ProductsDispatch);
   const productsState = useContext(ProductsState);
+  const perPage = searchParams.get('perPage') || SortByAmount.ALL;
+
+  const isValidCategory = categoryList.some(path => path === category);
+  if (!isValidCategory) {
+    return <Navigate to="/not-found" replace />;
+  }
 
   useEffect(() => {
     productsDispatch({ type: 'setLoader', payload: true });
@@ -112,9 +126,11 @@ export const ProductListPage = () => {
               <div className="productList__items">
                 <ProductList products={productsState.currentProducts} />
               </div>
-              <div className="productList__pages">
-                <PagePagination />
-              </div>
+              {perPage !== 'all' && (
+                <div className="productList__pages">
+                  <PagePagination />
+                </div>
+              )}
             </>
           )}
         </div>

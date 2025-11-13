@@ -10,9 +10,7 @@ import classNames from 'classnames';
 import { langs } from '../../variables';
 import { Lang } from '../../Enum/Lang';
 
-type SwitcherProps = {};
-
-export const Switcher: React.FC<SwitcherProps> = ({}) => {
+export const Switcher: React.FC = () => {
   const [activeLang, setActiveLang] = useState<boolean>(false);
   const ThemeLightIcon = icons.themeLight.valuePath;
   const ThemeDarkIcon = icons.themeDark.valuePath;
@@ -22,10 +20,8 @@ export const Switcher: React.FC<SwitcherProps> = ({}) => {
   const settingsDispatch = useContext(UISettingsDispatch);
 
   useEffect(() => {
-    const body = document.querySelector('body');
-
-    body?.classList.remove('light', 'dark');
-    body?.classList.add(settingsState.theme);
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(settingsState.theme);
   }, [settingsState.theme]);
 
   useEffect(() => {
@@ -90,7 +86,7 @@ export const Switcher: React.FC<SwitcherProps> = ({}) => {
           <span className="switcher__lang__value">{settingsState.lang}</span>
           <IconArrowSmall className="switcher__lang__icon" />
         </button>
-        {/* content */}
+
         <div
           className={classNames('switcher__lang__content', {
             'switcher__lang__content--active': activeLang,

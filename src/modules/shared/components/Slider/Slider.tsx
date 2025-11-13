@@ -1,6 +1,6 @@
 import './Slider.scss';
 import classNames from 'classnames';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useRef, useState, useEffect } from 'react';
 import { icons } from '../../../../global-assets/static';
 import { TranslationContext } from '../../../../i18next/shared';
 
@@ -8,7 +8,6 @@ type SliderProps = {
   content: {
     src: string;
     alt: string;
-    link: string;
   }[];
 };
 
@@ -33,22 +32,22 @@ export const Slider: React.FC<SliderProps> = ({ content }) => {
     setSlideIndex(currentIndex);
   };
 
-  // useEffect(() => {
-  //   if (!autoScroll) {
-  //     return;
-  //   }
+  useEffect(() => {
+    if (!autoScroll) {
+      return;
+    }
 
-  //   const interval = setInterval(() => {
-  //     setSlideIndex(prev => {
-  //       const nextIndex = (prev + 1) % content.length;
-  //       handleScroll(nextIndex);
+    const interval = setInterval(() => {
+      setSlideIndex(prev => {
+        const nextIndex = (prev + 1) % content.length;
+        handleScroll(nextIndex);
 
-  //       return nextIndex;
-  //     });
-  //   }, 5000);
+        return nextIndex;
+      });
+    }, 5000);
 
-  //   return () => clearInterval(interval);
-  // }, [content, autoScroll]);
+    return () => clearInterval(interval);
+  }, [content, autoScroll]);
 
   const onRelease = () => {
     if (slideIndex === 5) {

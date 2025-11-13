@@ -1,20 +1,14 @@
 @use '@/modules/shared/styles/main.scss' as *;
 
 .slider {
+  @include onTablet {
+    grid-column: 1/-1;
+  }
 
   &__container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    @include onTablet {
-      @include ContentPaddingInline;
-
-    }
-
-    @include onDesktop {
-      @include ContentPaddingInline;
-    }
   }
 
   &__arrow {
@@ -26,6 +20,7 @@
       border-radius: 48px;
 
       &__icon {
+        color: $primary-text-color;
         padding-inline: 8px;
         padding-block: 87px;
       }
@@ -51,6 +46,10 @@
       border-radius: 8px
     }
 
+    @include onDesktop {
+      height: 400px;
+    }
+
     &::-webkit-scrollbar {
       display: none;
     }
@@ -69,6 +68,9 @@
       width: 60%;
       object-fit: cover;
       border-radius: 8px;
+      margin-block: 10px;
+      height: auto;
+      margin-right: 10px;
     }
 
     &__container {
@@ -110,15 +112,20 @@
       display: none;
 
       @include onTablet {
-        display: flex;
         @include Font-bold(21px, 24px);
+        display: flex;
         background: linear-gradient(to right, $primary-light-pink, $button-yellow-color);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        padding-block: 20px;
-        padding-inline: 10px;
+        margin: 20px;
+        margin-inline: 10px;
       }
 
+      @include onDesktop {
+        @include Font-bold(55px, 54px);
+        margin: 35px;
+        margin-inline: 25px;
+      }
     }
 
     &__btn {
@@ -133,7 +140,13 @@
       padding-block: 15px;
       margin-left: 10px;
       margin-bottom: 20px;
-      // border-radius: 8px;
+
+      @include onDesktop {
+        padding-inline: 30px;
+        padding-block: 20px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
     }
   }
 
@@ -142,6 +155,10 @@
     flex-direction: row;
     gap: 4px;
     justify-content: center;
+
+    @include onTablet {
+      grid-column: 1/-1;
+    }
 
     &-button {
       height: 24px;

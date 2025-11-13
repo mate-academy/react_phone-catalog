@@ -4,9 +4,9 @@ import './NavAside.scss';
 import { TopBar } from '../TopBar';
 import { icons } from '../../../global-assets/static';
 import classNames from 'classnames';
-import { Navlist } from '../../shared/Enum/NavList';
 import { ProductListContext } from '../../shared/context/ProductListContext';
 import { TranslationContext } from '../../../i18next/shared';
+import { getPath } from '../../shared/servises/getPath';
 
 type NavAsideProps = {};
 
@@ -15,17 +15,6 @@ export const NavAside: React.FC<NavAsideProps> = ({}) => {
   const location = useLocation();
   const IconLike = icons.like.valuePath;
   const IconCart = icons.cart.valuePath;
-
-  const getPath = (button: Partial<Navlist>) => {
-    switch (button) {
-      case Navlist.phones:
-      case Navlist.tablets:
-      case Navlist.accessories:
-        return `/${button.toLowerCase()}`;
-      default:
-        return '/';
-    }
-  };
 
   useEffect(() => {
     setIsAside(false);

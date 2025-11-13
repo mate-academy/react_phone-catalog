@@ -7,9 +7,7 @@ import '../../../../i18next';
 import { LinkList } from '../../types/LinkList';
 import { TranslationContext } from '../../../../i18next/shared';
 
-type BreadcrumbsProps = {};
-
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({}) => {
+export const Breadcrumbs: React.FC = () => {
   const { navList } = useContext(TranslationContext);
   const [searchParams] = useSearchParams();
   const IconHome = icons.home.valuePath;

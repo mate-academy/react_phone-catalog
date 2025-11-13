@@ -16,7 +16,7 @@ const initState: State = {
 };
 
 type Action =
-  | { type: 'setProduct'; payload: ProductDetails }
+  | { type: 'setProduct'; payload: ProductDetails | null }
   | { type: 'loader'; payload: boolean }
   | { type: 'error'; payload: string }
   | { type: 'alarm'; payload: string };

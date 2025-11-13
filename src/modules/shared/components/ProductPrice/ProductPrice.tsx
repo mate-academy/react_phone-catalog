@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './ProductPrice.scss';
-import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import { ProductListContext } from '../../context/ProductListContext';
 
 type ProductPriceProps = {
   price: number;

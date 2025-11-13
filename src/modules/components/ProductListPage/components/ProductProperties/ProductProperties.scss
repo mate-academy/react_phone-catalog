@@ -5,6 +5,10 @@
   flex-direction: column;
   gap: 32px;
 
+  @include onDesktop {
+    width: -webkit-fill-available;
+  }
+
   &__btn-selection {
     display: flex;
     flex-direction: column;

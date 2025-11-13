@@ -8,7 +8,12 @@
   width: max-content;
   align-items: center;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 24px;
+  margin-bottom: 16px;
+
+  @include onTablet {
+    margin-top: 40px;
+  }
 
   &__icon {
     color: $primary-text-color;

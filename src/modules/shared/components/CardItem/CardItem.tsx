@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import './CardItem.scss';
 import type { Product } from '../../types/Product';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -6,16 +6,31 @@ import { BtnAdd } from '../BtnAdd';
 import { BtnLike } from '../BtnLike';
 import { ProductPrice } from '../ProductPrice';
 import { PropertyTable } from '../PropertyTable';
-import classNames from 'classnames';
+import { SliderContext } from '../../context/SliderContext';
 
 type CardItemProps = {
   product: Product;
-  cardSize: 'small' | 'normal';
 };
 
-export const CardItem: React.FC<CardItemProps> = ({ product, cardSize }) => {
+export const CardItem: React.FC<CardItemProps> = ({ product }) => {
   const [searchParams] = useSearchParams();
+  const { setSlideWidth } = useContext(SliderContext);
+  const slideRef = useRef<HTMLDivElement>(null);
   const { image, name, price, screen, capacity, ram, fullPrice } = product;
+
+  useEffect(() => {
+    const handleResizeSlide = () => {
+      if (slideRef.current) {
+        setSlideWidth(slideRef.current.offsetWidth);
+      }
+    };
+
+    handleResizeSlide();
+
+    window.addEventListener('resize', handleResizeSlide);
+
+    return () => window.removeEventListener('resize', handleResizeSlide);
+  }, [setSlideWidth]);
 
   const productProperties = [
     { name: 'screen', value: screen },
@@ -24,16 +39,11 @@ export const CardItem: React.FC<CardItemProps> = ({ product, cardSize }) => {
   ];
 
   return (
-    <div
-      className={classNames('product-card', {
-        'product-card--cardSmall': cardSize === 'small',
-        'product-card--cardNormal': cardSize === 'normal',
-      })}
-    >
+    <div ref={slideRef} className="product-card">
       <div className="product-card__container">
         <Link
           className="product-card__image-wrapper"
-          to={`${product.itemId}`}
+          to={`/${product.category}/${product.itemId}`}
           state={{
             search: searchParams.toString(),
           }}
@@ -44,7 +54,7 @@ export const CardItem: React.FC<CardItemProps> = ({ product, cardSize }) => {
         <div className="product-card__container-info">
           <Link
             className="product-card__title"
-            to={`${product.itemId}`}
+            to={`/${product.category}/${product.itemId}`}
             state={{
               search: searchParams.toString(),
             }}
@@ -53,8 +63,6 @@ export const CardItem: React.FC<CardItemProps> = ({ product, cardSize }) => {
             <p className="product-card__title">{name}</p>
           </Link>
           <ProductPrice price={price} fullPrice={fullPrice} textStyle="small" />
-
-          <hr className="product-card__separator" />
 
           <PropertyTable properties={productProperties} textStyle="small" />
 

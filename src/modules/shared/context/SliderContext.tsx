@@ -10,6 +10,8 @@ type SliderContextType = {
   setButton: Dispatch<SetStateAction<string | null>>;
   currentSlideIndex: number;
   setCurrentSlideIndex: Dispatch<SetStateAction<number>>;
+  slideWidth: number;
+  setSlideWidth: Dispatch<SetStateAction<number>>;
 };
 
 export const SliderContext = createContext<SliderContextType>({
@@ -17,15 +19,25 @@ export const SliderContext = createContext<SliderContextType>({
   setButton: () => {},
   currentSlideIndex: 0,
   setCurrentSlideIndex: () => {},
+  slideWidth: 0,
+  setSlideWidth: () => {},
 });
 
 export const SliderProvider = ({ children }: { children: React.ReactNode }) => {
   const [button, setButton] = useState<string | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
+  const [slideWidth, setSlideWidth] = useState(0);
 
   return (
     <SliderContext.Provider
-      value={{ button, setButton, currentSlideIndex, setCurrentSlideIndex }}
+      value={{
+        button,
+        setButton,
+        currentSlideIndex,
+        setCurrentSlideIndex,
+        slideWidth,
+        setSlideWidth,
+      }}
     >
       {children}
     </SliderContext.Provider>

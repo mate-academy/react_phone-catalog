@@ -2,4 +2,10 @@
 
 .btn-add {
   @include btn-card();
+
+  &--added {
+    background-color: $primary-bg-color;
+    color: $primary-blue;
+    border: 1px solid $light-grey;
+  }
 }

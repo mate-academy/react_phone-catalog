@@ -14,10 +14,9 @@ import { Modal } from '../../shared/components/Modal';
 import { ImageNotif } from '../../shared/components/ImageNotif';
 import { TranslationContext } from '../../../i18next/shared';
 import { getText } from '../../shared/servises/getText';
+import { AnimatePresence, motion } from 'framer-motion';
 
-type CartProps = {};
-
-export const Cart: React.FC<CartProps> = ({}) => {
+export const Cart: React.FC = () => {
   const { btnsTitle, notifMessage, navList, additionalText } =
     useContext(TranslationContext);
   const [modal, setModal] = useState(false);
@@ -75,22 +74,32 @@ export const Cart: React.FC<CartProps> = ({}) => {
                   <SectionTitle text={cartPageTitle} />
                 </div>
                 <div className="cart-content__main">
-                  <div className="cart-content card-content__product-list">
-                    {cartList.map(productItem => (
-                      <CartItem product={productItem} key={productItem.id} />
-                    ))}
-                  </div>
+                  <motion.div
+                    className="cart-content__product-list"
+                    layout
+                    transition={{
+                      layout: { duration: 0.1, ease: 'easeInOut' },
+                    }}
+                  >
+                    <AnimatePresence>
+                      {cartList.map(productItem => (
+                        <CartItem product={productItem} key={productItem.id} />
+                      ))}
+                    </AnimatePresence>
+                  </motion.div>
                   <div className="cart-content__total-price">
-                    <div className="cart-content__total-price__sum">{`$${sum}`}</div>
-                    <div className="cart-content__total-price__product-amount">
-                      {`${getText(additionalText.cartProductAmount, cartList.length.toString())}`}
+                    <div className="cart-content__total-price__wrapper">
+                      <div className="cart-content__total-price__sum">{`$${sum}`}</div>
+                      <div className="cart-content__total-price__product-amount">
+                        {`${getText(additionalText.cartProductAmount, cartList.length.toString())}`}
+                      </div>
+                      <button
+                        onClick={handleModal}
+                        className="cart-content__total-price__btn-confirm"
+                      >
+                        {btnsTitle.cartConfirmBtn}
+                      </button>
                     </div>
-                    <button
-                      onClick={handleModal}
-                      className="cart-content__total-price__btn-confirm"
-                    >
-                      {btnsTitle.cartConfirmBtn}
-                    </button>
                   </div>
                 </div>
               </>

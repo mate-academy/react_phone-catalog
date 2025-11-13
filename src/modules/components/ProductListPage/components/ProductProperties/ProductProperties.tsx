@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './ProductProperties.scss';
 import type { ProductDetails } from '../../../../shared/types/ProductDetails';
-import { SelectSection } from '../../../../shared/components/SelectSection';
+import { SelectOption } from '../../../../shared/components/SelectOption';
 import { ProductPrice } from '../../../../shared/components/ProductPrice';
 import { BtnAdd } from '../../../../shared/components/BtnAdd';
 import { BtnLike } from '../../../../shared/components/BtnLike';
@@ -26,7 +26,7 @@ export const ProductProperties: React.FC<ProductPropertiesProps> = ({
   return (
     <div className="product-properties">
       <div className="product-properties__btn-selection">
-        <SelectSection
+        <SelectOption
           content={{
             product: product,
             title: propDetailsTitle.colors,
@@ -36,7 +36,7 @@ export const ProductProperties: React.FC<ProductPropertiesProps> = ({
             optionType: 'color',
           }}
         />
-        <SelectSection
+        <SelectOption
           content={{
             product: product,
             title: propDetailsTitle.capacity,

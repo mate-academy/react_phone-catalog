@@ -1,6 +1,10 @@
 import { Lang } from './Enum/Lang';
 
 export const langs = Object.values(Lang);
+export const mobileWidth = window.innerWidth < 640;
+export const desktopWidth = window.innerWidth >= 1200;
+
+export const categoryList = ['phones', 'tablets', 'accessories'];
 
 export const productsColorsHex = {
   black: '#000000',

@@ -1,19 +1,23 @@
 @use '@/modules/shared/styles/main.scss' as *;
 
-@keyframes switch {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(calc(100% + 12px));
-  }
-}
-
 .switcher {
+  position: static;
   display: flex;
   flex-direction: row;
   gap: 5px;
+
+  @include onTablet {
+    position: absolute;
+    top: 70px;
+    right: 5px;
+  }
+
+  @include onDesktop {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+  }
 
   &__theme {
     display: flex;
@@ -139,6 +143,7 @@
     }
 
     &__icon {
+      color: $primary-text-color;
       width: 16px;
       height: 16px;
     }

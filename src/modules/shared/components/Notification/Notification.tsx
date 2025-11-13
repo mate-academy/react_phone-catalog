@@ -1,22 +1,23 @@
 import React, { useContext } from 'react';
 import './Notification.scss';
 import classNames from 'classnames';
-import { StateContext } from '../../reduce/NotificationReduce';
+import { NotifStateContext } from '../../reduce/NotificationReduce';
 
 type NotificationProps = {
   title: string;
 };
 
 export const Notification: React.FC<NotificationProps> = ({ title }) => {
-  const state = useContext(StateContext);
+  const notifState = useContext(NotifStateContext);
 
   return (
     <div
       className={classNames('notification', {
-        'notification--active': state.status,
+        'notification--active': notifState.status,
         'notification--successfully':
-          state.status || state.actionResult === 'successfully',
-        'notification--alarm': state.status || state.actionResult === 'alarm',
+          notifState.status || notifState.actionResult === 'successfully',
+        'notification--alarm':
+          notifState.status || notifState.actionResult === 'alarm',
       })}
     >
       <span className="notification__title">{title}</span>

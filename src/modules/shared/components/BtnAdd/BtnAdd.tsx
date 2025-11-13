@@ -1,30 +1,34 @@
 import React, { useContext } from 'react';
 import './BtnAdd.scss';
-import { DispatchContext } from '../../reduce/NotificationReduce';
+import { NotifDispatchContext } from '../../reduce/NotificationReduce';
 import {
   DispatchCartContext,
   StateCartContext,
 } from '../../reduce/CartReducer';
 import { Product } from '../../types/Product';
 import '../../../../i18next';
-import { ProductsState } from '../../reduce/ProductPageReducer';
-import '../../../../i18next';
 import { TranslationContext } from '../../../../i18next/shared';
+import classNames from 'classnames';
+import { ProductListContext } from '../../context/ProductListContext';
 
 type BtnAddProps = {
   selectedProductID: string;
 };
 
 export const BtnAdd: React.FC<BtnAddProps> = ({ selectedProductID }) => {
-  const dispatch = useContext(DispatchContext);
+  const notifDispatch = useContext(NotifDispatchContext);
   const cartState = useContext(StateCartContext);
   const cartDispatch = useContext(DispatchCartContext);
-  const { currentProducts } = useContext(ProductsState);
+  const { productList } = useContext(ProductListContext);
   const { cartList } = cartState;
   const { btnsTitle, additionalText } = useContext(TranslationContext);
 
-  const product: Product | null = currentProducts.find(
+  const product: Product = productList.filter(
     p => p.itemId === selectedProductID,
+  )[0];
+
+  const isAdded: boolean = cartState.cartList.some(
+    item => item.id === selectedProductID,
   );
 
   const addToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -32,6 +36,12 @@ export const BtnAdd: React.FC<BtnAddProps> = ({ selectedProductID }) => {
     event.stopPropagation();
 
     if (!product) {
+      return;
+    }
+
+    if (isAdded) {
+      cartDispatch({ type: 'removeItem', payload: selectedProductID });
+
       return;
     }
 
@@ -50,7 +60,7 @@ export const BtnAdd: React.FC<BtnAddProps> = ({ selectedProductID }) => {
           },
         });
 
-        dispatch({
+        notifDispatch({
           type: 'addProduct',
           payload: `${cartState.cartList.length + 1} ${additionalText.itemsInCart}`,
         });
@@ -68,18 +78,23 @@ export const BtnAdd: React.FC<BtnAddProps> = ({ selectedProductID }) => {
           },
         },
       });
-      dispatch({
+      notifDispatch({
         type: 'addProduct',
         payload: `${cartState.cartList.length + 1} ${additionalText.itemsInCart}`,
       });
     } finally {
-      setTimeout(() => dispatch({ type: 'cancel' }), 2000);
+      setTimeout(() => notifDispatch({ type: 'cancel' }), 4000);
     }
   };
 
   return (
-    <button onClick={addToCart} className="btn-add">
-      {btnsTitle.add}
+    <button
+      onClick={addToCart}
+      className={classNames('btn-add', {
+        'btn-add--added': isAdded,
+      })}
+    >
+      {isAdded ? btnsTitle.added : btnsTitle.add}
     </button>
   );
 };

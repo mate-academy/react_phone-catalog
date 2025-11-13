@@ -1,11 +1,6 @@
-export interface CategoryInfo {
+export interface Category {
+  category: string;
   src: string;
   title: string;
   info: string;
-}
-
-export interface Category {
-  title: string;
-  category: string;
-  details: string;
 }

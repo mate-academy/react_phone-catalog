@@ -5,8 +5,9 @@ export const getFilteredList = (
   list: Product[],
   query: {
     sort: SortByProp;
-    perPage: SortByAmount;
+    perPageValue: SortByAmount;
     page: string;
+    sortByText: string;
   },
 ) => {
   let sortedList = [...list];
@@ -28,13 +29,17 @@ export const getFilteredList = (
       sortedList = [...list];
   }
 
-  if (query.perPage !== SortByAmount.ALL) {
-    const startIndex = (+query.page - 1) * +query.perPage;
-    const endIndex = startIndex + +query.perPage;
+  if (query.perPageValue !== SortByAmount.ALL) {
+    const startIndex = (+query.page - 1) * +query.perPageValue;
+    const endIndex = startIndex + +query.perPageValue;
 
     sortedList = sortedList.slice(startIndex, endIndex);
-  } else {
-    return sortedList;
+  }
+
+  if (query.sortByText) {
+    sortedList = sortedList.filter((product: Product) =>
+      product.name.toLowerCase().includes(query.sortByText.toLowerCase()),
+    );
   }
 
   return sortedList;

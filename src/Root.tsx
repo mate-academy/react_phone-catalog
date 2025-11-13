@@ -5,6 +5,7 @@ import { ProductListPage } from './modules/components/ProductListPage';
 import { ProductItem } from './modules/components/ProductListPage/components/ProductItem';
 import { Favourites } from './modules/components/Favourites';
 import { Cart } from './modules/components/Cart';
+import { NotFoundPage } from './modules/components/NotFoundPage';
 
 export const Root = () => {
   return (
@@ -16,6 +17,7 @@ export const Root = () => {
         <Route path=":category/:productId" element={<ProductItem />} />
         <Route path="favourites" element={<Favourites />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="not-found" element={<NotFoundPage />} />
       </Route>
       <Route path="*" element={<span>Nothig was found</span>} />
     </Routes>

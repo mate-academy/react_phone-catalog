@@ -6,25 +6,26 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
+  text-decoration: none;
 
   @include onTablet {
     grid-column: span 4;
   }
 
-  &:nth-of-type(1) .category__image-wrapper {
-    background-color: $category-bg-violet;
+  @include onDesktop {
+    grid-column: span 8;
   }
 
-  &:nth-of-type(2) .category__image-wrapper {
-    background-color: $category-bg-grey;
-  }
-
-  &:nth-of-type(3) .category__image-wrapper {
-    background-color: $primary-pink;
+  @for $i from 1 through length($category-bg-color-list) {
+    &:nth-of-type(#{$i}) .category__image-wrapper {
+      background-color: nth($category-bg-color-list, $i);
+    }
   }
 
   &:nth-of-type(3) .category__image {
     width: 190%;
+    bottom: 0px;
+    top: auto;
   }
 
   &__image-wrapper {
@@ -33,10 +34,8 @@
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-
-    @include onTablet {
-      height: 187px;
-    }
+    height: 100%;
+    aspect-ratio: 1 / 1;
   }
 
   &__image {
@@ -51,7 +50,7 @@
     flex-direction: column;
     gap: 4px;
 
-    &>* {
+    text-str &>* {
       margin: 0;
       padding: 0;
     }

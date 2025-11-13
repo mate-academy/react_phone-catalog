@@ -14,7 +14,7 @@ export const Main: React.FC<MainProps> = ({}) => {
 
   const productsByDate = [...productList]
     .sort((a, b) => b.year - a.year)
-    .slice(0, 5);
+    .slice(0, 10);
 
   const productsByDiscount = [...productList]
     .sort((a, b) => {
@@ -23,7 +23,7 @@ export const Main: React.FC<MainProps> = ({}) => {
 
       return bDiscount - aDiscount;
     })
-    .slice(0, 5);
+    .slice(0, 10);
 
   return (
     <main className="main">

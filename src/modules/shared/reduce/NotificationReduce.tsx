@@ -42,23 +42,27 @@ export const reducer = (state: State, action: Action) => {
   }
 };
 
-export const StateContext = createContext<State>(initState);
+export const NotifStateContext = createContext<State>(initState);
 
-export const DispatchContext = createContext<React.Dispatch<Action>>(() => {});
+export const NotifDispatchContext = createContext<React.Dispatch<Action>>(
+  () => {},
+);
 
 export const GlobalNotifProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [state, dispatch] = useReducer<React.Reducer<State, Action>>(
+  const [notifState, notifDispatch] = useReducer<React.Reducer<State, Action>>(
     reducer,
     initState,
   );
 
   return (
-    <DispatchContext.Provider value={dispatch}>
-      <StateContext.Provider value={state}>{children}</StateContext.Provider>
-    </DispatchContext.Provider>
+    <NotifDispatchContext.Provider value={notifDispatch}>
+      <NotifStateContext.Provider value={notifState}>
+        {children}
+      </NotifStateContext.Provider>
+    </NotifDispatchContext.Provider>
   );
 };

@@ -4,6 +4,7 @@ import { CircleButton } from '../CircleButton';
 import { icons } from '../../../../global-assets/static';
 import { DispatchCartContext } from '../../reduce/CartReducer';
 import { CartElement } from '../../types/CartElement';
+import { motion } from 'framer-motion';
 
 type CartItemProps = {
   product: CartElement;
@@ -26,7 +27,14 @@ export const CartItem: React.FC<CartItemProps> = React.memo(({ product }) => {
   };
 
   return (
-    <div className="cart-item">
+    <motion.div
+      className="cart-item"
+      layout
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -60 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="cart-item__content">
         <div className="cart-item__product-info">
           <button className="cart-item__product-info__btn-close">
@@ -69,7 +77,7 @@ export const CartItem: React.FC<CartItemProps> = React.memo(({ product }) => {
           <div className="cart-item__price-info__price">{`$${product.product.price * product.quantity}`}</div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 });
 

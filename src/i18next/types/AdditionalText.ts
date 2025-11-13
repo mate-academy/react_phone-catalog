@@ -3,4 +3,5 @@ export type AdditionalText = {
   cartProductAmount: string;
   noCategoryMessage: string;
   productAmountCategory: string;
+  searchPlaceholder: string;
 };

@@ -1,7 +1,8 @@
 @use '@/modules/shared/styles/main.scss' as *;
 
 .cart {
-  @include Grid-column();
+  @include ContentPaddingInline;
+  @include Grid-column;
   justify-items: center;
 
   &__empty {
@@ -46,20 +47,52 @@
   }
 
   &-content {
-    grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
+    grid-column: 1 / -1;
     gap: 32px;
     align-items: center;
     width: 100%;
 
-    &__main {
+    &__product-list {
       display: flex;
       flex-direction: column;
+      gap: 16px;
+      grid-column: 1 / -1;
+      justify-self: center;
+      transition: height 1s ease-in-out;
+
+      @include onTablet {
+        grid-column: 1 / -1;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / 16;
+        justify-self: auto;
+      }
+    }
+
+    &__main {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 32px;
+      column-gap: 16px;
+      width: 100%;
+
+      @include onTablet {
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(24, 1fr);
+        grid-column: 1 / 16;
+
+      }
     }
 
     &__header {
+      gap: 8px;
+      grid-column: 1/-1;
       width: 100%;
     }
 
@@ -68,16 +101,32 @@
     }
 
     &__total-price {
+      grid-column: 1/-1;
       background-color: white;
       border: 1px solid $light-grey;
       border-radius: 16px;
-      min-width: 288px;
-      max-width: 388px;
-      padding: 24px;
+      width: 288px;
+      height: fit-content;
+      justify-self: center;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      @include onTablet {
+        grid-column: 1/-1;
+        width: 592px;
+      }
+
+      @include onDesktop {
+        grid-column: 17/-1;
+        width: 100%;
+        justify-self: auto;
+      }
+
+      &__wrapper {
+        margin: 24px;
+      }
 
       &__sum {
         @include Font-extra-bold(32px, 41px);

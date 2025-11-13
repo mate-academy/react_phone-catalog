@@ -13,32 +13,35 @@ import { GlobalProductDetailsProvider } from '../../shared/reduce/SelectedProduc
 import { Outlet } from 'react-router-dom';
 import { GlobalUISettingsProvider } from '../../shared/reduce/LangThemeReducer';
 import { TranslationProvider } from '../../../i18next/shared';
+import { SortProvider } from '../../shared/context/SortContext';
 
 export const App: React.FC = () => {
   return (
     <TranslationProvider>
       <GlobalUISettingsProvider>
         <ProductListProvider>
-          <GlobalProductsProvider>
-            <GlobalProductDetailsProvider>
-              <FavesProvider>
-                <GlobalCartListProvider>
-                  <GlobalNotifProvider>
-                    <div className="app">
-                      <div className="app__content">
-                        <NavAside />
-                        <div className="app__content-top">
-                          <TopBar buttonData={icons.menu} />
-                          <Outlet />
+          <SortProvider>
+            <GlobalProductsProvider>
+              <GlobalProductDetailsProvider>
+                <FavesProvider>
+                  <GlobalCartListProvider>
+                    <GlobalNotifProvider>
+                      <div className="app">
+                        <div className="app__content">
+                          <NavAside />
+                          <div className="app__content-top">
+                            <TopBar buttonData={icons.menu} />
+                            <Outlet />
+                          </div>
                         </div>
+                        <Footer />
                       </div>
-                      <Footer />
-                    </div>
-                  </GlobalNotifProvider>
-                </GlobalCartListProvider>
-              </FavesProvider>
-            </GlobalProductDetailsProvider>
-          </GlobalProductsProvider>
+                    </GlobalNotifProvider>
+                  </GlobalCartListProvider>
+                </FavesProvider>
+              </GlobalProductDetailsProvider>
+            </GlobalProductsProvider>
+          </SortProvider>
         </ProductListProvider>
       </GlobalUISettingsProvider>
     </TranslationProvider>

@@ -75,12 +75,14 @@ export const TranslationContext = createContext<TranslationContextType>({
 
   btnsTitle: {
     add: '',
+    added: '',
     footerBack: '',
     back: '',
     cartConfirmBtn: '',
     confirm: '',
     deny: '',
     reload: '',
+    sliderBtn: '',
   },
 
   navList: {
@@ -93,12 +95,14 @@ export const TranslationContext = createContext<TranslationContextType>({
     cartProductAmount: '',
     noCategoryMessage: '',
     productAmountCategory: '',
+    searchPlaceholder: '',
   },
 
   sliderTitle: {
     productsNew: '',
     goodPrices: '',
     productDetailsSlider: '',
+    sliderMain: [],
   },
 });
 

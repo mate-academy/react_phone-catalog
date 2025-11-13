@@ -2,18 +2,14 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import './PagePagination.scss';
 import { icons } from '../../../../../global-assets/static';
 import { CircleButton } from '../../../../shared/components/CircleButton';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { ProductsState } from '../../../../shared/reduce/ProductPageReducer';
 import { getSequence } from '../../../../shared/servises/createVar';
 
-type PagePaginationProps = {};
-
-export const PagePagination: React.FC<PagePaginationProps> = ({}) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [searchParams] = useSearchParams();
-  const perPage = location.state?.perPage || 'all';
-  const [page, setPage] = useState('1');
+export const PagePagination: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const perPage = searchParams.get('perPage');
+  const page = searchParams.get('page') || '1';
   const productList = useContext(ProductsState);
   const maxPages = 5;
   const [visiblePages, setVisiblePages] = useState<string[]>();
@@ -40,7 +36,6 @@ export const PagePagination: React.FC<PagePaginationProps> = ({}) => {
   }, [getPages]);
 
   const handleNext = () => {
-    // debugger;
     if (!visiblePages?.length) {
       return;
     }
@@ -61,14 +56,10 @@ export const PagePagination: React.FC<PagePaginationProps> = ({}) => {
     ) {
       const nextPage = (+page + 1).toString();
 
-      setPage(nextPage);
+      const params = new URLSearchParams(searchParams);
 
-      navigate(`.?${searchParams.toString()}`, {
-        state: {
-          ...location.state,
-          page: nextPage,
-        },
-      });
+      params.set('page', nextPage);
+      setSearchParams(params);
 
       return;
     }
@@ -81,14 +72,11 @@ export const PagePagination: React.FC<PagePaginationProps> = ({}) => {
     const nextPage = nextPages[nextPages.length - 1];
 
     setVisiblePages(nextPages);
-    setPage(nextPage);
 
-    navigate(`.?${searchParams.toString()}`, {
-      state: {
-        ...location.state,
-        page: nextPage,
-      },
-    });
+    const params = new URLSearchParams(searchParams);
+
+    params.set('page', nextPage);
+    setSearchParams(params);
   };
 
   const handlePrev = () => {
@@ -107,14 +95,10 @@ export const PagePagination: React.FC<PagePaginationProps> = ({}) => {
     if (currentPageIndex > currentStartIndex) {
       const prevPage = (+page - 1).toString();
 
-      setPage(prevPage);
+      const params = new URLSearchParams(searchParams);
 
-      navigate(`.?${searchParams.toString()}`, {
-        state: {
-          ...location.state,
-          page: prevPage,
-        },
-      });
+      params.set('page', prevPage);
+      setSearchParams(params);
 
       return;
     }
@@ -127,25 +111,18 @@ export const PagePagination: React.FC<PagePaginationProps> = ({}) => {
     const prevPage = nextPages[0];
 
     setVisiblePages(nextPages);
-    setPage(prevPage);
 
-    navigate(`.?${searchParams.toString()}`, {
-      state: {
-        ...location.state,
-        page: prevPage,
-      },
-    });
+    const params = new URLSearchParams(searchParams);
+
+    params.set('page', prevPage);
+    setSearchParams(params);
   };
 
   const handlePagination = (pageTitle: string) => {
-    setPage(pageTitle);
+    const params = new URLSearchParams(searchParams);
 
-    navigate(`.?${searchParams.toString()}`, {
-      state: {
-        ...location.state,
-        page: pageTitle,
-      },
-    });
+    params.set('page', pageTitle);
+    setSearchParams(params);
   };
 
   if (!visiblePages) {

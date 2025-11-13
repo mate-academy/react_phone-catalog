@@ -38,17 +38,7 @@
   }
 
   &__link {
-    @include Font-extra-bold(12px, 11px);
-    color: $light-grey-text;
-    text-decoration: none;
-    justify-self: center;
-    display: flex;
-    padding-block: 8px;
-
-    &--active {
-      color: $primary-text-color;
-      border-bottom: 2px solid $primary-text-color;
-    }
+    @include navLink();
   }
 
   &__bottom {
@@ -69,7 +59,6 @@
         background-color: rgba($primary-blue, $alpha: 0.2);
         color: $primary-text-color;
       }
-
     }
   }
 }

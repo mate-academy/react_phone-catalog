@@ -48,7 +48,7 @@
     "noProducts": "Немає продуктів в категорії",
     "cartFilledNotif": "Кошик наповнений",
     "cartEmptyNotif": "Кошик пустий",
-    "cartModalMessage": "Оформлення замовлення ще неможливе, але ми над цим працюємо. Очистити кошик?",
+    "cartModalMessage": "Оформлення замовлення ще неможливе, але ми над цим працюємо.\nОчистити кошик?",
     "notif": "Ууупс"
   },
   "footerNavItems": ["Github", "Contacts", "rights"],
@@ -60,13 +60,14 @@
   },
   "btnsTitle": {
     "add": "До кошика",
+    "added": "Додано",
     "footerBack": "На початок",
     "back": "Назад",
     "cartConfirmBtn": "Оформити",
     "confirm": "Підтвердити",
     "deny": "Відмінити",
     "reload": "Перезавантажити",
-    "sliderBtn": "Замовити зараз"
+    "sliderBtn": "До товарів"
   },
   "navList": [
     { "link": "home", "title": "Головна" },
@@ -81,7 +82,8 @@
     "itemsInCart": "товарів у вашому кошику",
     "cartProductAmount": "Всього за ${count} товарів",
     "noCategoryMessage": "Зараз тут немає ${category}",
-    "productAmountCategory": "${count} товарів"
+    "productAmountCategory": "${count} товарів",
+    "searchPlaceholder": "Шукаю..."
   },
 
   "sliderTitle": {
@@ -90,7 +92,7 @@
     "productDetailsSlider": "Також вас можуть зацікавити",
     "sliderMain": [
       "Вже у продажу в нашому магазині!",
-      "Онови свою техніку вже сьогодні",
+      "Онови техніку вже сьогодні",
       "Розумні знижки на розумні гаджети",
       "Заряди своє життя новими технологіями",
       "Майбутнє — в один клік",

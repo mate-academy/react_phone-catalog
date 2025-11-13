@@ -2,27 +2,40 @@ import React, { useContext, useEffect } from 'react';
 import './ProductList.scss';
 import type { Product } from '../../../../shared/types/Product';
 import { CardItem } from '../../../../shared/components/CardItem';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 import { Notification } from '../../../../shared/components/Notification';
-import { StateContext } from '../../../../shared/reduce/NotificationReduce';
+import { NotifStateContext } from '../../../../shared/reduce/NotificationReduce';
 import { SortByAmount, SortByProp } from '../../../../shared/Enum/Sort';
 import { getFilteredList } from '../../../../shared/servises/getFilteredList';
+import { SectionTitle } from '../../../../shared/components/SectionTitle/SectionTitle';
+import { getText } from '../../../../shared/servises/getText';
+import { TranslationContext } from '../../../../../i18next/shared';
 
 type ProductListProps = {
   products: Product[];
 };
 
 export const ProductList: React.FC<ProductListProps> = ({ products }) => {
+  const { additionalText } = useContext(TranslationContext);
+  const { category } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const currentProduct = location.state?.productId;
 
-  const state = useContext(StateContext); // notification
+  const notifState = useContext(NotifStateContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sort = (searchParams.get('sort') as SortByProp) || SortByProp.YEAR;
-  const perPage = (location.state?.perPage as SortByAmount) || SortByAmount.ALL;
-  const page = (location.state?.page as string) || '1';
+  const perPageValue =
+    (searchParams.get('perPage') as SortByAmount) || SortByAmount.ALL;
+  const page = (searchParams.get('page') as string) || '1';
+  const sortByText = (searchParams.get('query') as string) || '';
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
@@ -49,26 +62,36 @@ export const ProductList: React.FC<ProductListProps> = ({ products }) => {
   }, [currentProduct, location]);
 
   useEffect(() => {
-    if (location.state?.productId) {
-      return;
+    if (!currentProduct) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location.state?.productId, page]);
+  }, [currentProduct, location.search, page]);
 
   const query = {
     sort,
-    perPage,
+    perPageValue,
     page,
+    sortByText,
   };
 
   const filteredList = getFilteredList(products, query);
 
+  if (!category) {
+    navigate('/');
+
+    return;
+  }
+
   return (
     <div className="products-list">
-      <Notification title={state.title} />
+      {filteredList.length === 0 && (
+        <SectionTitle
+          text={getText(additionalText.noCategoryMessage, category)}
+        />
+      )}
+      <Notification title={notifState.title} />
       {filteredList.map(product => (
-        <CardItem product={product} cardSize={'normal'} key={product.id} />
+        <CardItem product={product} key={product.id} />
       ))}
     </div>
   );

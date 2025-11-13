@@ -7,9 +7,7 @@ import { CardItem } from '../../shared/components/CardItem';
 import { getCartList } from '../../shared/servises/getCartList';
 import { TranslationContext } from '../../../i18next/shared';
 
-type FavouritesProps = {};
-
-export const Favourites: React.FC<FavouritesProps> = ({}) => {
+export const Favourites: React.FC = () => {
   const pageTitleList = useContext(TranslationContext).navList;
   const { favourites } = useContext(FavesContext);
   const { productList } = useContext(ProductListContext);

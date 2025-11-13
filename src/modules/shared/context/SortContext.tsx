@@ -1,51 +1,49 @@
-// import {
-//   createContext,
-//   useState,
-//   type Dispatch,
-//   type SetStateAction,
-// } from 'react';
-// import { SortByAmount, SortByProp } from '../Enum/Sort';
-// import { useSearchParams } from 'react-router-dom';
+import React, { createContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Params } from '../types/Params';
 
-// type SortContextType = {
-//   selectedSortBy: SortByProp;
-//   setSelectedSortBy: Dispatch<SetStateAction<SortByProp>>;
-//   selectedSortByAmount: SortByAmount;
-//   setSelectedSortByAmount: Dispatch<SetStateAction<SortByAmount>>;
-//   dropdownIsActive: boolean;
-//   setDropdownIsActive: Dispatch<SetStateAction<boolean>>;
-// };
+type SortContextType = {
+  getSearchWith: (params: Params, search?: URLSearchParams | string) => string;
+  setSearchWith: (
+    params: Params,
+    prevParams?: URLSearchParams | string,
+  ) => void;
+};
 
-// export const SortContext = createContext<SortContextType>({
-//   selectedSortBy: SortByProp.NEWEST,
-//   setSelectedSortBy: () => {},
-//   selectedSortByAmount: SortByAmount.FOUR,
-//   setSelectedSortByAmount: () => {},
-//   dropdownIsActive: false,
-//   setDropdownIsActive: () => {},
-// });
+export const SortContext = createContext<SortContextType>({
+  getSearchWith: () => '',
+  setSearchWith: () => {},
+});
 
-// export const SortProvider = ({ children }: { children: React.ReactNode }) => {
-//   const [selectedSortBy, setSelectedSortBy] = useState<SortByProp>(
-//     SortByProp.NEWEST,
-//   );
-//   const [selectedSortByAmount, setSelectedSortByAmount] =
-//     useState<SortByAmount>(SortByAmount.FOUR);
+export const SortProvider = ({ children }: { children: React.ReactNode }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
 
-//   const [dropdownIsActive, setDropdownIsActive] = useState<boolean>(false);
+  const getSearchWith = (params: Params, search?: URLSearchParams | string) => {
+    const newSearchParams = new URLSearchParams(search);
 
-//   return (
-//     <SortContext.Provider
-//       value={{
-//         selectedSortBy,
-//         setSelectedSortBy,
-//         selectedSortByAmount,
-//         setSelectedSortByAmount,
-//         dropdownIsActive,
-//         setDropdownIsActive,
-//       }}
-//     >
-//       {children}
-//     </SortContext.Provider>
-//   );
-// };
+    for (const [key, value] of Object.entries(params)) {
+      if (value === null) {
+        newSearchParams.delete(key);
+      } else {
+        newSearchParams.set(key, value.toString());
+      }
+    }
+
+    return newSearchParams.toString();
+  };
+
+  const setSearchWith = (
+    params: Params,
+    prevParams?: URLSearchParams | string,
+  ) => {
+    const search = getSearchWith(params, prevParams);
+
+    setSearchParams(search);
+  };
+
+  return (
+    <SortContext.Provider value={{ getSearchWith, setSearchWith }}>
+      {children}
+    </SortContext.Provider>
+  );
+};

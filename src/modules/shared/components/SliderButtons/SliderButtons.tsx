@@ -2,33 +2,38 @@ import React, { useContext } from 'react';
 import './SliderButtons.scss';
 import { SliderContext } from '../../context/SliderContext';
 import { icons } from '../../../../global-assets/static';
+import { ScreenState } from '../../reduce/LangThemeReducer';
 
 type SliderButtonProps = {
   itemAmount: number;
 };
 
 export const SliderButtons: React.FC<SliderButtonProps> = ({ itemAmount }) => {
-  const { setButton, setCurrentSlideIndex, currentSlideIndex } =
+  const { setButton, setCurrentSlideIndex, currentSlideIndex, slideWidth } =
     useContext(SliderContext);
-
+  const { screenWidth } = useContext(ScreenState);
   const IconRight = icons.arrowRight.valuePath;
   const IconLeft = icons.arrowLeft.valuePath;
+  const slidesPerView = Math.floor(screenWidth / slideWidth);
 
   const handlePrevSlide = () => {
     setButton('prev');
 
-    const index = currentSlideIndex === 0 ? 0 : currentSlideIndex - 1;
-
-    setCurrentSlideIndex(index);
+    if (currentSlideIndex + slidesPerView >= itemAmount) {
+      setCurrentSlideIndex(0);
+    } else {
+      setCurrentSlideIndex(currentSlideIndex - 1);
+    }
   };
 
   const handleNextSlide = () => {
     setButton('next');
 
-    const index =
-      currentSlideIndex === itemAmount - 1 ? 0 : currentSlideIndex + 1;
-
-    setCurrentSlideIndex(index);
+    if (currentSlideIndex + slidesPerView >= itemAmount) {
+      setCurrentSlideIndex(0);
+    } else {
+      setCurrentSlideIndex(currentSlideIndex + 1);
+    }
   };
 
   return (

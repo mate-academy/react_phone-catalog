@@ -4,6 +4,7 @@
 :root {
   font-family: 'Mont', sans-serif;
   box-sizing: border-box;
+  scrollbar-width: thin;
 }
 
 iframe {
@@ -16,6 +17,16 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--primary-bg-color);
+}
+
+a {
+  img {
+    @include Hover;
+
+    &:hover {
+      transform: scale(110%);
+    }
+  }
 }
 
 :lang(ua) {
@@ -39,6 +50,7 @@ ul {
 }
 
 button {
+  @include Hover;
   padding: 0;
   margin: 0;
   border: none;
@@ -47,6 +59,10 @@ button {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  &:hover {
+    @include Hover;
+  }
 }
 
 li {

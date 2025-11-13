@@ -1,5 +1,6 @@
 export type BtnsTitle = {
   add: string;
+  added: string;
   footerBack: string;
   back: string;
   cartConfirmBtn: string;

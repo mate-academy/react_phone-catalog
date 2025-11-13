@@ -18,14 +18,14 @@
   @include onTablet() {
     padding-inline: 24px;
   }
-
-  @include onDesktop() {
-    padding-inline: 32px;
-  }
 }
 
-@mixin Grid-column() {
+@mixin Hover {
+  transition: all 0.2s ease-in-out;
+}
 
+
+@mixin Grid-column() {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 16px;
@@ -34,13 +34,13 @@
     grid-template-columns: repeat(12, 1fr);
   }
 
-  // @include onDesktop() {
-  //   grid-template-columns: repeat(24, 32px);
-  // }
+  @include onDesktop() {
+    grid-template-columns: repeat(24, 32px);
+    justify-content: center;
+  }
 }
 
 @mixin Font-extra-bold ($fontSize, $lineHeight) {
-  // font-family: 'Mont';
   font-weight: 800;
   font-size: $fontSize;
   line-height: $lineHeight;
@@ -48,7 +48,6 @@
 }
 
 @mixin Font-bold ($fontSize, $lineHeight) {
-  // font-family: 'Mont';
   font-weight: 700;
   font-size: $fontSize;
   line-height: $lineHeight;
@@ -56,7 +55,6 @@
 }
 
 @mixin Font-demi-bold ($fontSize, $lineHeight) {
-  // font-family: 'Mont';
   font-weight: 600;
   font-size: $fontSize;
   line-height: $lineHeight;
@@ -64,7 +62,6 @@
 }
 
 @mixin Font-medium ($fontSize, $lineHeight) {
-  // font-family: 'Mont';
   font-weight: 500;
   font-size: $fontSize;
   line-height: $lineHeight;
@@ -150,6 +147,20 @@
   height: -webkit-fill-available;
 
   &:hover {
-    box-shadow: 0px 3px 13px 0px #17203166;
+    box-shadow: 0px 3px 13px 0px $box-shadow;
+  }
+}
+
+@mixin navLink() {
+  @include Font-extra-bold(12px, 11px);
+  color: $light-grey-text;
+  text-decoration: none;
+  justify-self: center;
+  display: flex;
+  padding-block: 8px;
+
+  &--active {
+    color: $primary-text-color;
+    border-bottom: 2px solid $primary-text-color;
   }
 }

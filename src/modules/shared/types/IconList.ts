@@ -61,4 +61,12 @@ export type IconList = {
     valuePath: React.FC<React.SVGProps<SVGSVGElement>>;
     valueName: string;
   };
+  search: {
+    valuePath: React.FC<React.SVGProps<SVGSVGElement>>;
+    valueName: string;
+  };
+  cancel: {
+    valuePath: React.FC<React.SVGProps<SVGSVGElement>>;
+    valueName: string;
+  };
 };

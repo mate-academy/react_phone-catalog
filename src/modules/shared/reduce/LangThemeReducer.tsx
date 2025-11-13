@@ -1,4 +1,11 @@
-import { createContext, useReducer } from 'react';
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react';
 import { Lang } from '../Enum/Lang';
 
 type State = {
@@ -33,8 +40,23 @@ const reducer = (state: State, action: Action) => {
   }
 };
 
+type ScreenContextType = {
+  isDesktop: boolean;
+  setIsDesktop: Dispatch<SetStateAction<boolean>>;
+  isMobile: boolean;
+  setIsMobile: Dispatch<SetStateAction<boolean>>;
+  screenWidth: number;
+  setScreenWidth: Dispatch<SetStateAction<number>>;
+};
+export const ScreenState = createContext<ScreenContextType>({
+  isDesktop: true,
+  setIsDesktop: () => {},
+  isMobile: false,
+  setIsMobile: () => {},
+  screenWidth: window.innerWidth,
+  setScreenWidth: () => {},
+});
 export const UISettingsState = createContext<State>(initUISettings);
-
 export const UISettingsDispatch = createContext<React.Dispatch<Action>>(
   () => {},
 );
@@ -44,15 +66,43 @@ export const GlobalUISettingsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1200);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 670);
   const [settingsState, settingsDispatch] = useReducer<
     React.Reducer<State, Action>
   >(reducer, initUISettings);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+      setIsDesktop(window.innerWidth >= 1200);
+      setIsMobile(window.innerWidth < 670);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <UISettingsDispatch.Provider value={settingsDispatch}>
-      <UISettingsState.Provider value={settingsState}>
-        {children}
-      </UISettingsState.Provider>
-    </UISettingsDispatch.Provider>
+    <ScreenState.Provider
+      value={{
+        isDesktop,
+        setIsDesktop,
+        isMobile,
+        setIsMobile,
+        screenWidth,
+        setScreenWidth,
+      }}
+    >
+      <UISettingsDispatch.Provider value={settingsDispatch}>
+        <UISettingsState.Provider value={settingsState}>
+          {children}
+        </UISettingsState.Provider>
+      </UISettingsDispatch.Provider>
+    </ScreenState.Provider>
   );
 };

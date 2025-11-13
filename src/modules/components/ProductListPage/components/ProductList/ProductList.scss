@@ -2,9 +2,19 @@
 
 .products-list {
   display: grid;
-  grid-auto-flow: row;
-  gap: 40px;
-  margin-block: 24px;
   position: relative;
   justify-content: center;
+  grid-template-columns: repeat(auto-fill, 287px);
+  justify-content: center;
+  row-gap: 40px;
+  column-gap: 16px;
+
+  @include onTablet {
+    grid-template-columns: repeat(auto-fill, 288px);
+    column-gap: 16px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(auto-fill, 272px);
+  }
 }

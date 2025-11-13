@@ -1,20 +1,40 @@
 import './TopBar.scss';
-import { logoLightMode, logoDarkMode } from '../../../global-assets/static';
+import {
+  logoLightMode,
+  logoDarkMode,
+  icons,
+} from '../../../global-assets/static';
 import type { IconList } from '../../shared/types/IconList';
 import { useContext } from 'react';
 import { ProductListContext } from '../../shared/context/ProductListContext';
-import { UISettingsState } from '../../shared/reduce/LangThemeReducer';
+import {
+  ScreenState,
+  UISettingsState,
+} from '../../shared/reduce/LangThemeReducer';
 import { Switcher } from '../../shared/components/Switcher';
+import { getPath } from '../../shared/servises/getPath';
+import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
+import { TranslationContext } from '../../../i18next/shared';
+import { FavesContext } from '../../shared/context/FavesContext';
+import { StateCartContext } from '../../shared/reduce/CartReducer';
 
 type TopBarProps = {
   buttonData: IconList['menu'] | IconList['close'];
 };
 
 export const TopBar: React.FC<TopBarProps> = ({ buttonData }) => {
+  const { favourites } = useContext(FavesContext);
+  const { cartList } = useContext(StateCartContext);
   const { setIsAside } = useContext(ProductListContext);
-  const IconSvg = buttonData.valuePath;
-
   const settingsState = useContext(UISettingsState);
+  const { isDesktop, isMobile } = useContext(ScreenState);
+  const IconSvg = buttonData.valuePath;
+  const IconLike = icons.like.valuePath;
+  const IconCart = icons.cart.valuePath;
+
+  const navTitleList = useContext(TranslationContext).navList;
+  const navigationList = navTitleList.slice(0, 4);
 
   const handleClose = () => {
     setIsAside(false);
@@ -29,45 +49,63 @@ export const TopBar: React.FC<TopBarProps> = ({ buttonData }) => {
           <img src={logoDarkMode} alt="Compamy logo" />
         )}
       </div>
-      {/* <section className="global-settings">
-        <div className="global-settings__container">
-          <button
-            className={classNames('global-settings__btn', {
-              'global-settings__btn--active': settingsState.theme === 'light',
-            })}
-            onClick={() => handleSwitchTheme('light')}
+
+      {isMobile && <Switcher />}
+
+      <nav className="top-bar__nav-wrapper">
+        <ul className="top-bar__nav-list">
+          {navigationList.map(listItem => (
+            <li key={listItem.link}>
+              <NavLink
+                to={getPath(listItem.link)}
+                className={({ isActive }) =>
+                  classNames('top-bar__nav-link', {
+                    'top-bar__nav-link--active': isActive,
+                  })
+                }
+              >
+                {listItem.title.toUpperCase()}
+                <br />
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
+        <div className="top-bar__btns">
+          {isDesktop && <Switcher />}
+          <NavLink
+            to="favourites"
+            className={({ isActive }) =>
+              classNames('top-bar__button', {
+                'top-bar__button-is-active': isActive,
+              })
+            }
           >
-            <ThemeLightIcon />
-          </button>
-          <button
-            className={classNames('global-settings__btn', {
-              'global-settings__btn--active': settingsState.theme === 'dark',
-            })}
-            onClick={() => handleSwitchTheme('dark')}
+            {favourites.length > 0 && (
+              <div className="top-bar__button__amount-indicator">
+                {favourites.length}
+              </div>
+            )}
+            <IconLike className="top-bar__button--icon" />
+          </NavLink>
+          <NavLink
+            to="cart"
+            className={({ isActive }) =>
+              classNames('top-bar__button', {
+                'top-bar__button-is-active': isActive,
+              })
+            }
           >
-            <ThemeDarkIcon />
-          </button>
+            {cartList.length > 0 && (
+              <div className="top-bar__button__amount-indicator">
+                {cartList.length}
+              </div>
+            )}
+            <IconCart className="top-bar__button--icon" />
+          </NavLink>
         </div>
-        <div className="global-settings__container">
-          <button
-            className={classNames('global-settings__btn', {
-              'global-settings__btn--active': settingsState.lang === 'en',
-            })}
-            onClick={() => handleSwitchLang('en')}
-          >
-            en
-          </button>
-          <button
-            className={classNames('global-settings__btn', {
-              'global-settings__btn--active': settingsState.lang === 'ua',
-            })}
-            onClick={() => handleSwitchLang('ua')}
-          >
-            ua
-          </button>
-        </div>
-      </section> */}
-      <Switcher />
+      </nav>
+
       <div className="top-bar__nav">
         {buttonData.valueName === 'menu' ? (
           <button className="top-bar__button" onClick={() => setIsAside(true)}>

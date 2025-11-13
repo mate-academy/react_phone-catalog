@@ -1,4 +1,4 @@
-import { ProductList } from '../../../components/HomePage/components/ProductList';
+import { SliderProductList } from '../../../components/HomePage/components/SliderProductList';
 import { SliderButtons } from '../SliderButtons';
 import { SectionTitle } from '../SectionTitle/SectionTitle';
 import './ProductSlider.scss';
@@ -28,7 +28,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
           <SliderButtons itemAmount={content.data.length} />
         </div>
       </div>
-      <ProductList productList={content.data} />
+      <SliderProductList productList={content.data} />
     </section>
   );
 };

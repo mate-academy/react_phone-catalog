@@ -1,12 +1,13 @@
 @use '@/modules/shared/styles/main.scss' as *;
 
 .notification {
-  position: sticky;
+  position: fixed;
   z-index: 2;
-  top: 25px;
+  top: 80px;
   display: none;
+  width: 100%;
 
-  border-radius: 8px;
+  border-radius: 16px;
   width: 95%;
   opacity: 0;
   transform: translateY(-200%);
@@ -25,8 +26,8 @@
   }
 
   &--alarm {
-    border: 1px solid lightgreen;
-    background-color: green;
+    border: 1px solid $primary-text-color;
+    background-color: $notif-bg-color;
   }
 
   &__title {

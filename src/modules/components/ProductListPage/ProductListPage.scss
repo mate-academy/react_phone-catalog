@@ -2,6 +2,21 @@
 
 .productList {
   @include Grid-column();
+  @include ContentPaddingInline;
+
+  @include onTablet {
+    justify-content: center;
+  }
+
+  &__items {
+    margin-block: 24px;
+    width: 100%;
+
+    @include onTablet {
+      margin-top: 24px;
+      margin-bottom: 40px;
+    }
+  }
 
   &__content {
     grid-column: 1/-1;

@@ -1,5 +1,3 @@
-// import iconStroke from './icons/icon-stroke.svg';
-// import iconStrokeDark from './icons/icon-stroke.svg';
 import logoCompanyLight from './logo-light.svg';
 import logoCompanyDark from './logo-dark.svg';
 
@@ -18,11 +16,13 @@ import MinusIcon from './icons/icon-minus.svg?react';
 import ThemeLightIcon from './icons/theme-light-mode.svg?react';
 import ThemeDarkIcon from './icons/theme-dark-mode.svg?react';
 import ArrowSmall from './icons/arrow-small.svg?react';
+import Search from './icons/search-input.svg?react';
+import Cancel from './icons/cancel-input.svg?react';
 
 import banner_1 from './images/banner_1.jpg';
 import banner_2 from './images/banner_2.jpg';
 import banner_3 from './images/banner_3.jpg';
-import banner_4 from './images/banner_4.jpg';
+import banner_4 from './images/banner_4.png';
 import banner_5 from './images/banner_5.jpg';
 import banner_6 from './images/banner_6.jpg';
 
@@ -32,7 +32,6 @@ import tablets from './images/category-tablets.png';
 
 import type { ImageData } from '../modules/shared/types/Image';
 import type { IconList } from '../modules/shared/types/IconList';
-import { newProduct } from '../modules/shared/variables';
 
 export const icons: IconList = {
   menu: { valuePath: MenuIcon, valueName: 'menu' },
@@ -50,38 +49,34 @@ export const icons: IconList = {
   themeLight: { valuePath: ThemeLightIcon, valueName: 'themeLight' },
   themeDark: { valuePath: ThemeDarkIcon, valueName: 'themeDark' },
   arrowSmall: { valuePath: ArrowSmall, valueName: 'arrowSmall' },
+  search: { valuePath: Search, valueName: 'search' },
+  cancel: { valuePath: Cancel, valueName: 'cancel' },
 };
 
 export const images: ImageData[] = [
   {
     src: banner_1,
     alt: 'Banner',
-    link: 'phones',
   },
   {
     src: banner_2,
     alt: 'Banner',
-    link: 'phones',
   },
   {
     src: banner_3,
     alt: 'Banner',
-    link: 'phones',
   },
   {
     src: banner_4,
     alt: 'Banner',
-    link: 'tablets',
   },
   {
     src: banner_5,
     alt: 'Banner',
-    link: 'accessories',
   },
   {
     src: banner_6,
     alt: 'Banner',
-    link: 'tablets',
   },
 ];
 

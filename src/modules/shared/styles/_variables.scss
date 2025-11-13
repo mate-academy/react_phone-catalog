@@ -12,8 +12,10 @@ $primary-light-pink: var(--primary-light-pink);
 $button-primary-color: var(--button-primary-color);
 $button-yellow-color: var(--button-yellow-color);
 $category-bg-violet: var(--category-bg-violet);
+$notif-bg-color: var(--notif-bg-color);
+$box-shadow: var(--box-shadow);
 
-$min-tablet-screen: 670px;
+$min-tablet-screen: 640px;
 $min-desktop-screen: 1200px;
 
 $standart-radius: 8px;
@@ -21,3 +23,5 @@ $standart-border: 1px;
 
 $button-animation-speed: 200ms;
 $gap: 8px;
+
+$category-bg-color-list: #6D6474, #161827, #973D5F;

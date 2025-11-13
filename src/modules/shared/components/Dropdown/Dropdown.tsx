@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Dropdown.scss';
 import { icons } from '../../../../global-assets/static';
 import classNames from 'classnames';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { SortOption } from '../../../../i18next/types/SortOption';
 import { SortType } from '../../types/Sort';
+import { SortContext } from '../../context/SortContext';
 
 type DropdownProps = {
   content: {
@@ -17,14 +18,12 @@ type DropdownProps = {
 export const Dropdown: React.FC<DropdownProps> = React.memo(({ content }) => {
   const IconArrowDown = icons.arrowDown.valuePath;
   const location = useLocation();
-  const navigate = useNavigate();
+  const { setSearchWith } = useContext(SortContext);
   const [contentIsActive, setContentIsActive] = useState<boolean>(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const sortValue = searchParams.get('sort') || 'year';
-  const [perPageValue, setPerPageValue] = useState(() => {
-    return location.state?.perPage || 'all';
-  });
+  const perPageValue = searchParams.get('perPage') || 'all';
 
   useEffect(() => {
     setContentIsActive(false);
@@ -35,30 +34,11 @@ export const Dropdown: React.FC<DropdownProps> = React.memo(({ content }) => {
   };
 
   const handleSort = (sort: string) => {
-    const params = new URLSearchParams(searchParams);
-
-    params.set('sort', sort);
-    setSearchParams(params);
-
-    navigate(`.?${params.toString()}`, {
-      state: {
-        ...location.state,
-        perPage: location.state?.perPage || 'all',
-        page: 1,
-      },
-    });
+    setSearchWith({ sort: sort, page: '1' }, searchParams);
   };
 
   const handleSortPerPage = (perPage: string) => {
-    setPerPageValue(perPage);
-
-    navigate(`.?${searchParams.toString()}`, {
-      state: {
-        ...location.state,
-        perPage: perPage,
-        page: 1,
-      },
-    });
+    setSearchWith({ perPage: perPage }, searchParams);
   };
 
   const currentValue =
@@ -76,7 +56,7 @@ export const Dropdown: React.FC<DropdownProps> = React.memo(({ content }) => {
             {currentValue || content.options[0].label}
           </span>
         </button>
-        {/* content */}
+
         <div
           className={classNames('dropdown__content', {
             'dropdown__content--active': contentIsActive,

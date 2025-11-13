@@ -19,6 +19,10 @@
   align-items: center;
   margin-top: 100px;
 
+  @include onTablet {
+    width: 20%;
+  }
+
   &--cart-is-filled {
     animation: 2s linear cartImgAppear;
   }
