@@ -28,9 +28,9 @@
     position: relative;
     text-decoration: none;
     font-family: $font-mont-bold;
-    font-size: var($uppercase-size);
-    line-height: var($uppercase-line);
-    letter-spacing: var($uppercase-track);
+    font-size: $uppercase-size;
+    line-height: $uppercase-line;
+    letter-spacing: $uppercase-track;
     color: $color-secondary;
     font-weight: 800;
     height: 100%;
