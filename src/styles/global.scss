@@ -1,0 +1,17 @@
+@use './variables' as *;   // Sass vars & mixins
+@import './fonts.scss';     // loads the 'Mont' family
+@import './normilize.scss';
+
+body {
+  font-family: $font-mont-regular; // 'Mont' family
+  font-weight: 400;
+  background-color: $color-bg;
+  color: $color-primary;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
