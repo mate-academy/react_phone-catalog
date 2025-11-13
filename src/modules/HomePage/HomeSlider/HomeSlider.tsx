@@ -98,13 +98,17 @@ const HomeSlider = () => {
   }, [handleScroll]);
 
   useEffect(() => {
+    goToSlide(1);
+  }, []);
+
+  useEffect(() => {
     /* eslint-disable @typescript-eslint/indent */
     const timerId: number | null = isSliderHovered
-      ? setTimeout(
+      ? null
+      : setTimeout(
           () => goToSlide(currentSlide + 1, 'smooth'),
           HOME_SLIDER_TIME,
-        )
-      : null;
+        );
 
     /* eslint-enable @typescript-eslint/indent */
     return () => {
@@ -168,7 +172,7 @@ const HomeSlider = () => {
         {slides.map(slide => (
           <div
             key={slide.id}
-            className={`${styles.dots__dot} ${slide.id === currentSlide ? styles['dots__dot--active'] : ''}`}
+            className={`${styles.dots__dot} ${slide.id === currentSlide ? styles.dots__dot_active : ''}`}
           ></div>
         ))}
       </div>
