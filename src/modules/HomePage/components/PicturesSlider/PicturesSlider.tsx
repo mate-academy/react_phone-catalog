@@ -82,7 +82,7 @@ export const PicturesSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
-    }, 500000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [images.length]);
