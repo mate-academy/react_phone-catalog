@@ -43,6 +43,7 @@ export const ProductListPage = () => {
   const perPage = searchParams.get('perPage') || SortByAmount.ALL;
 
   const isValidCategory = categoryList.some(path => path === category);
+
   if (!isValidCategory) {
     return <Navigate to="/not-found" replace />;
   }

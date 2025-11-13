@@ -22,7 +22,9 @@ export const Slider: React.FC<SliderProps> = ({ content }) => {
   const ArrowLeft = icons.arrowLeft.valuePath;
 
   const handleScroll = (currentIndex: number) => {
-    if (!containerRef.current) return;
+    if (!containerRef.current) {
+      return;
+    }
 
     containerRef.current.scrollTo({
       left: currentIndex * containerRef.current.offsetWidth,
@@ -40,6 +42,7 @@ export const Slider: React.FC<SliderProps> = ({ content }) => {
     const interval = setInterval(() => {
       setSlideIndex(prev => {
         const nextIndex = (prev + 1) % content.length;
+
         handleScroll(nextIndex);
 
         return nextIndex;
@@ -68,7 +71,10 @@ export const Slider: React.FC<SliderProps> = ({ content }) => {
 
       return;
     }
-    if (!containerRef.current) return;
+
+    if (!containerRef.current) {
+      return;
+    }
 
     let closestIndex = 0;
     let minDiff = Infinity;
@@ -99,6 +105,7 @@ export const Slider: React.FC<SliderProps> = ({ content }) => {
 
   const goToDiscounts = () => {
     const el = document.getElementById('discounts');
+
     if (el) {
       el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
@@ -125,7 +132,9 @@ export const Slider: React.FC<SliderProps> = ({ content }) => {
 
     setSlideIndex(newSlide);
 
-    if (!containerRef.current) return;
+    if (!containerRef.current) {
+      return;
+    }
 
     containerRef.current.scrollTo({
       left: newSlide * containerRef.current.offsetWidth,
