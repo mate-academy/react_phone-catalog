@@ -1,19 +1,26 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { HomePage } from './modules/HomePage';
-import { PhonesPage } from './modules/PhonesPage';
+import { CategoryPage } from './modules/CategoryPage';
 import { Header } from './modules/Header';
 import { Footer } from './modules/Footer';
 
 import './styles/main.scss';
 
 export const App = () => (
-  <Router>
-    <Header />
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/phones" element={<PhonesPage />} />
-    </Routes>
+  <div className="app-wrapper">
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/phones" element={<CategoryPage category="phones" />} />
+        <Route path="/tablets" element={<CategoryPage category="tablets" />} />
+        <Route
+          path="/accessories"
+          element={<CategoryPage category="accessories" />}
+        />
+      </Routes>
 
-    <Footer />
-  </Router>
+      <Footer />
+    </Router>
+  </div>
 );
