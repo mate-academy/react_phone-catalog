@@ -101,7 +101,8 @@
 
     padding: $spacing-2xl 0;
     &:hover {
-      color: $white;
+      color: $primary;
+      transform: scale(1.05);
     }
 
     &_active {

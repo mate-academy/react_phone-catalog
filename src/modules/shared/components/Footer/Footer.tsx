@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
 
         <nav className={styles.footer__nav}>
           <a
-            href="https://github.com/your-username/react_phone-catalog"
+            href="#github"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.footer__link}

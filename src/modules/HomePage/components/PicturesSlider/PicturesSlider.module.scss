@@ -192,6 +192,18 @@
     aspect-ratio: 1 / 1;
   }
 
+  @media (max-width: 320px) {
+    .slider {
+      margin-left: -$spacing-lg;
+      margin-right: -$spacing-lg;
+      width: calc(100% + #{$spacing-lg * 2});
+    }
+
+    .slider__slide {
+      border-radius: 0;
+    }
+  }
+
   .slider__layout {
     inset: 0;
   }

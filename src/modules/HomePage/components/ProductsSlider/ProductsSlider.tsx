@@ -7,6 +7,7 @@ import styles from './ProductsSlider.module.scss';
 const VISIBLE_SLIDES = 4;
 const SLIDE_WIDTH = 272;
 const GAP = 24;
+const SWIPE_THRESHOLD = 50;
 
 interface ProductsSliderProps {
   title: string;
@@ -24,6 +25,11 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // touch
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const isHotPricesSlider = title === 'Hot prices';
   const showDiscountBadge = isHotPricesSlider;
@@ -56,6 +62,32 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
     }
 
     setTimeout(() => setIsAnimating(false), 500);
+  };
+
+  // Touch event handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) {
+      return;
+    }
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > SWIPE_THRESHOLD;
+    const isRightSwipe = distance < -SWIPE_THRESHOLD;
+
+    if (isLeftSwipe && canScrollRight) {
+      scroll('right');
+    } else if (isRightSwipe && canScrollLeft) {
+      scroll('left');
+    }
   };
 
   useEffect(() => {
@@ -117,7 +149,14 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
         )}
       </div>
 
-      <div className={styles.productsSlider__container}>
+      <div
+        className={styles.productsSlider__container}
+        ref={containerRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        style={{ cursor: 'grab' }}
+      >
         <div className={styles.productsSlider__track} ref={trackRef}>
           {products.map(product => (
             <div key={product.id} className={styles.productsSlider__slide}>

@@ -55,9 +55,14 @@
     overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    user-select: none;
 
     &::-webkit-scrollbar {
       display: none;
+    }
+
+    &:active {
+      cursor: grabbing;
     }
   }
 
@@ -66,6 +71,7 @@
     gap: $spacing-lg;
     width: 100%;
     transition: transform $transition-slow cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    touch-action: pan-y;
   }
 
   &__slide {
@@ -77,6 +83,9 @@
     transition:
       transform $transition-normal ease,
       opacity $transition-fast ease;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
 
     &:not(.active) {
       transform: scale(0.95);
@@ -91,6 +100,14 @@
         flex: 0 0 calc(25% - 12px);
         width: calc(25% - 12px);
       }
+    }
+  }
+}
+
+@media (max-width: #{$tablet - 1px}) {
+  .productsSlider {
+    &__container {
+      -webkit-overflow-scrolling: touch;
     }
   }
 }

@@ -137,5 +137,3 @@ Show `input:search` in the header when a page contains a `ProductList` to search
 1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
 2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
 3. Add `debounce` to the search field.
-
-   DemoLink: "https://yuliimar.github.io/react_phone-catalog",

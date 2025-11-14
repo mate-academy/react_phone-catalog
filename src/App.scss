@@ -70,9 +70,5 @@ body {
       padding-left: 200px;
       padding-right: 200px;
     }
-
-    @include mobile {
-      padding-top: $spacing-4xl;
-    }
   }
 }
