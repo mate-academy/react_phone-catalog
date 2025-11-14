@@ -1,0 +1,268 @@
+@import '../../utils/main';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__top-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    background-color: var(--header-bg-color);
+    box-shadow: 0 1px 0 0 var(--gray-elements-color);
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__list {
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    height: 48px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+
+    @extend %uppercase;
+
+    &:hover {
+      color: var(--gray-primary-color);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--gray-primary-color);
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+
+    &--active {
+      color: var(--gray-primary-color);
+    }
+
+    &--active::after {
+      transform: scaleX(1);
+    }
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 16px;
+
+    @include on-desktop {
+      padding-inline: 24px;
+    }
+  }
+
+  &__logo {
+    height: 22px;
+    width: 64px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__icons-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    background-color: var(--header-bg-color);
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__icons-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+  }
+
+  &__icons {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__icon-container {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    border: 0;
+    box-shadow: -1px 0 0 0 var(--gray-elements-color);
+    background-color: var(--header-bg-color);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--gray-primary-color);
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+
+    @include hover(background, var(--hover-color));
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+
+    &--active::after {
+      transform: scaleX(1);
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__search {
+    padding: 10px;
+    width: 100%;
+    height: 48px;
+    outline: none;
+    border: 0;
+
+    box-shadow: -1px 0 0 0 var(--gray-elements-color);
+
+    font-family: $main-font;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--gray-primary-color);
+    background-color: var(--header-bg-color);
+
+    @include on-desktop {
+      height: 64px;
+      padding: 18px;
+    }
+
+    &::placeholder {
+      color: var(--gray-secondary-color);
+    }
+  }
+
+  &__search::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+  }
+
+  &__search-wrapper {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: 10px;
+
+    @include on-desktop {
+      margin-right: 18px;
+    }
+  }
+
+  &__search-icon,
+  &__search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--header-bg-color);
+  }
+
+  &__search-btn {
+    cursor: pointer;
+  }
+
+  &__switch-theme {
+    position: relative;
+
+    flex-shrink: 0;
+    box-sizing: border-box;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 48px;
+    font-family: $main-font;
+
+
+    background: none;
+    color: var(--gray-secondary-color);
+
+    cursor: pointer;
+
+    @include on-desktop {
+      line-height: 64px;
+    }
+
+    @include hover(color, var(--gray-primary-color));
+  }
+}

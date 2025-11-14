@@ -1,0 +1,48 @@
+@import '../../utils/main';
+
+.button-cart {
+  flex: 1;
+  border: 0;
+  border-radius: 48px;
+  transition: all 0.4s ease;
+  color: var(--button-cart-text-color);
+  background-color: var(--accent-color);
+
+  @extend %button;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  &:hover {
+    box-sizing: border-box;
+    box-shadow: 0 3px 13px 0 var(--button-cart-hover-shadow);
+  }
+
+  &:active {
+    background-color: var(--bg-color);
+    color: var(--accent-color);
+    border-color: var(--gray-elements-color);
+  }
+
+  &--disabled {
+    border: 1px solid var(--gray-elements-color);
+    background-color: var(--surface-2-color);
+    color: var(--button-cart-disabled-color);
+    cursor: not-allowed;
+
+    &:hover {
+      box-shadow: none;
+      background-color: var(--surface-2-color);
+      color: var(--button-cart-disabled-color);
+    }
+  }
+
+  &--small {
+    height: 40px;
+  }
+
+  &--large {
+    height: 48px;
+  }
+}

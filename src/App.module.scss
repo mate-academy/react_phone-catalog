@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+
+  &__main {
+    flex: 1;
+  }
+}

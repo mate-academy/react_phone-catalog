@@ -1,0 +1,57 @@
+@import '../shared/utils/main';
+
+.home {
+  &__wrapper {
+    margin-block: 24px 64px;
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px 80px;
+    }
+  }
+
+  &__visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+
+    @extend %h1;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+    }
+  }
+}

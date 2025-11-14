@@ -1,0 +1,124 @@
+@import '../../../shared/utils/main';
+
+.cart-product {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  border: 1px solid var(--gray-icons-color);
+  border-radius: 16px;
+  padding: 16px;
+  background-color: var(--product-card-bg-color);
+  transition: box-shadow 0.4s ease;
+  cursor: pointer;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  &__image {
+    display: block;
+    object-fit: contain;
+    width: 66px;
+    height: 66px;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
+
+    .cart-product__image {
+      transition: transform 0.4s ease;
+      transform: scale(1.1);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+    flex: 1;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__button {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__icon-close {
+    opacity: 0.5;
+
+    @include hover(opacity, 1);
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    align-self: center;
+
+    width: 80px;
+    height: 80px;
+
+    text-decoration: none;
+  }
+
+  &__title {
+    min-width: 128px;
+
+    @extend %body-text-14;
+
+    color: var(--gray-primary-color);
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__count {
+    width: 32px;
+    height: 32px;
+
+    @extend %body-text-14;
+
+    color: var(--gray-primary-color);
+    line-height: 32px;
+    text-align: center;
+  }
+
+  &__price {
+    @extend %price;
+
+    text-align: right;
+
+    @include on-tablet {
+      width: 80px;
+    }
+  }
+}
