@@ -4,6 +4,7 @@ import { Category, Product } from '../../types/Product';
 import s from './CategoryPage.module.scss';
 import { getProductList } from '../../api/products';
 import { ProductList } from './components/ProductList';
+import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 
 interface Props {
   category: Category;
@@ -33,10 +34,12 @@ export const CategoryPage: FC<Props> = ({ category }) => {
     fetchProducts();
   }, [category]);
 
+  const breadcrumbs = [{ link: null, label: categoryTitles[category] }];
+
   return (
     <main>
       <div className={s.container}>
-        <div>Breadcrumps</div>
+        <Breadcrumbs paths={breadcrumbs} />
         <h1>{categoryTitles[category]}</h1>
         <div>{count && count} models</div>
         <div>Filter</div>

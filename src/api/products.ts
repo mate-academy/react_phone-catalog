@@ -9,8 +9,8 @@ const getProductsByCategoty = (category: Category) =>
 export const getProductList = async (category: Category) => {
   const list = await getProductsByCategoty(category);
 
-  return list.map(item => ({
-    id: Math.floor(Math.random() * 1000) + 1,
+  return list.map((item, index) => ({
+    id: index + 1,
     category,
     itemId: item.id,
     name: item.name,
@@ -24,19 +24,3 @@ export const getProductList = async (category: Category) => {
     image: item.images[0],
   }));
 };
-
-/* usage:
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const products = await getAllProducts();
-
-        console.log(products); // should now log your data
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-*/
