@@ -1,10 +1,11 @@
 /* eslint no-console: [,{ allow: ["warn", "log", "error"] }] */
 import { FC, useEffect, useState } from 'react';
 import { Category, Product } from '../../types/Product';
-import s from './CategoryPage.module.scss';
 import { getProductList } from '../../api/products';
 import { ProductList } from './components/ProductList';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
+import { Filter } from './components/Filter';
+import s from './CategoryPage.module.scss';
 
 interface Props {
   category: Category;
@@ -41,8 +42,8 @@ export const CategoryPage: FC<Props> = ({ category }) => {
       <div className={s.container}>
         <Breadcrumbs paths={breadcrumbs} />
         <h1>{categoryTitles[category]}</h1>
-        <div>{count && count} models</div>
-        <div>Filter</div>
+        <div className={s.count}>{count && count} models</div>
+        <Filter />
         <ProductList products={products} />
       </div>
     </main>

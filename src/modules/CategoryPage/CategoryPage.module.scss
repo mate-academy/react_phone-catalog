@@ -1,3 +1,8 @@
 @use '../../styles/variables.scss' as *;
 @use '../../styles/mixins.scss' as *;
 @use '../../styles/shared.scss' as *;
+
+.count{
+  color: $secondary;
+  font-size: $font-size-base;
+}
