@@ -67,6 +67,15 @@
         justify-content: space-between;
       }
     }
+    &__priceContainer {
+      display: flex;
+      column-gap: 8px;
+    }
+    &__price {
+      font-weight: 600;
+      color: $color-secondary;
+      text-decoration-line: line-through;
+    }
     &__buttonContainer {
       display: flex;
       column-gap: 8px;

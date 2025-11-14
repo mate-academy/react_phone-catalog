@@ -14,7 +14,7 @@ const Carousel = () => {
     setActiveIndex(prev => (prev - 1 + slides.length) % slides.length);
   return (
     <>
-      <div className={styles.carousel}>
+      <section className={styles.carousel}>
         <div className={styles.carousel__body}>
           <div className={styles.carousel__button} onClick={prev}>
             <img src="/img/arrow-left.svg" alt="Previous" />
@@ -31,7 +31,7 @@ const Carousel = () => {
           </div>
         </div>
         <CarouselIndicator activeIndex={activeIndex} />
-      </div>
+      </section>
     </>
   );
 };
