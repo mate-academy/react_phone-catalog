@@ -13,6 +13,7 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const uniqueId = title.toLowerCase().replaceAll(' ', '-');
+
   return (
     <div className={s.productSliderWrapper}>
       <div className={s.topSection}>
