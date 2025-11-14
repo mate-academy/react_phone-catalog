@@ -1,0 +1,27 @@
+@import '../../../styles/main';
+
+.button {
+  display: flex;
+  cursor: pointer;
+  gap: 2px;
+  align-items: center;
+  margin-block: 24px 16px;
+  background-color: var(--color-bg);
+  border: none;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &-title {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 13px;
+    color: var(--color-gray-primary);
+  }
+}
