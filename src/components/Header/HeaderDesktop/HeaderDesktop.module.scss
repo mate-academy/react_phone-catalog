@@ -39,12 +39,12 @@
 
   @include on-bigTablet {
     width: 64px;
-    height: 22px;
+    height: 28px;
   }
 
   @include on-tablet {
     width: 64px;
-    height: 22px;
+    height: 28px;
   }
 }
 
@@ -121,6 +121,7 @@
   background-size: contain;
   background-position: center;
   border: none;
+  position: relative;
   background-color: transparent;
   cursor: pointer;
   display: flex;
@@ -129,6 +130,11 @@
   padding: 0;
   background-size: 16px 16px;
   border-left: 1px solid #323542;
+  transition: box-shadow 0.3s ease;
+
+  &__active {
+    box-shadow: inset 0 -4px 0 #fff;
+  }
 
   @include on-tablet {
     width: 48px;
@@ -150,6 +156,7 @@
   background-position: center;
   border: none;
   background-color: transparent;
+  position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -157,6 +164,11 @@
   padding: 0;
   background-size: 16px 16px;
   border-left: 1px solid #323542;
+  transition: box-shadow 0.3s ease;
+
+  &__active {
+    box-shadow: inset 0 -4px 0 #fff;
+  }
 
   @include on-tablet {
     width: 48px;
@@ -166,5 +178,31 @@
   @include on-bigTablet {
     width: 48px;
     height: 48px;
+  }
+}
+
+.badge {
+  font-weight: 700;
+  font-size: 12px;
+  position: absolute;
+  top: 17px;
+  right: 15px;
+  background-color: #eb5757;
+  color: white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include on-bigTablet {
+    top: 8px;
+    right: 7px;
+  }
+
+  @include on-tablet {
+    top: 8px;
+    right: 7px;
   }
 }

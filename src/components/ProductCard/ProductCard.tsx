@@ -22,7 +22,7 @@ type Props = {
 };
 
 export function ProductCard({ product }: Props) {
-  const { addToCart, addToFavourites, favourites, cartItems } = useCart();
+  const { addToCart, removeFromCart, addToFavourites, favourites, cartItems } = useCart();
 
   const thumb =
     product.images && product.images.length
@@ -81,7 +81,7 @@ export function ProductCard({ product }: Props) {
         <div className={styles.buttons}>
           <button
             className={isAddedToCart ? styles.addedToCart : styles.addToCart}
-            onClick={() => addToCart(product)}
+            onClick={() => isAddedToCart ? removeFromCart(product.id) : addToCart(product)}
           >
             {isAddedToCart ? 'Added' : 'Add to cart'}
           </button>

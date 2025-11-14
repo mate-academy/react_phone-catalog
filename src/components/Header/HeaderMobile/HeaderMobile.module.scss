@@ -93,6 +93,7 @@
   background-color: #0f1121;
 
   .iconButton {
+    position: relative;
     width: 50%;
     height: 64px;
     background: transparent;
@@ -102,6 +103,11 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: box-shadow 0.3s ease;
+
+    &__active {
+      box-shadow: inset 0 -4px 0 #fff;
+    }
 
     &:last-child {
       border-right: none;
@@ -118,4 +124,20 @@
       }
     }
   }
+}
+
+.badge {
+  font-weight: 700;
+  font-size: 12px;
+  position: absolute;
+  top: 17px;
+  right: 131px;
+  background-color: #eb5757;
+  color: white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

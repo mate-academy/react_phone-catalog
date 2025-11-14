@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styles from './HeaderMobile.module.scss';
 import logoImg from '../../../../public/icons/Logo.svg';
 import menuIcon from '../../../../public/icons/Menu.svg';
 import closeIcon from '../../../../public/icons/Close.svg';
 import heartIcon from '../../../../public/icons/Favourites-(Heart-Like).svg';
 import bagIcon from '../../../../public/icons/Shopping-bag-(Cart).svg';
+import { useCart } from '../../../context/CartContext';
 
 export function HeaderMobile() {
   const [isOpen, setIsOpen] = useState(false);
+  const { cartItems, favourites } = useCart();
 
   const toggleMenu = () => setIsOpen(prev => !prev);
 
@@ -51,31 +53,64 @@ export function HeaderMobile() {
           </button>
         </div>
         <nav className={styles.nav}>
-          <Link to="/" onClick={toggleMenu} className={styles.active}>
+          <NavLink
+            to="/"
+            onClick={toggleMenu}
+            className={({ isActive }) => (isActive ? styles.active : '')}
+          >
             Home
-          </Link>
-          <Link to="/phones" onClick={toggleMenu}>
+          </NavLink>
+
+          <NavLink
+            to="/phones"
+            onClick={toggleMenu}
+            className={({ isActive }) => (isActive ? styles.active : '')}
+          >
             Phones
-          </Link>
-          <Link to="/tablets" onClick={toggleMenu}>
+          </NavLink>
+
+          <NavLink
+            to="/tablets"
+            onClick={toggleMenu}
+            className={({ isActive }) => (isActive ? styles.active : '')}
+          >
             Tablets
-          </Link>
-          <Link to="/accessories" onClick={toggleMenu}>
+          </NavLink>
+
+          <NavLink
+            to="/accessories"
+            onClick={toggleMenu}
+            className={({ isActive }) => (isActive ? styles.active : '')}
+          >
             Accessories
-          </Link>
+          </NavLink>
         </nav>
 
         <div className={styles.bottomBar}>
-          <Link
+          <NavLink
             to="/favorites"
-            className={styles.iconButton}
+            className={({ isActive }) =>
+              isActive ? `${styles.iconButton} ${styles.iconButton__active}` : styles.iconButton
+            }
             onClick={toggleMenu}
           >
             <img src={heartIcon} alt="Favorites" />
-          </Link>
-          <Link to="/cart" className={styles.iconButton} onClick={toggleMenu}>
+            {favourites.length > 0 && (
+              <span className={styles.badge}>{favourites.length}</span>
+            )}
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              isActive ? `${styles.iconButton} ${styles.iconButton__active}` : styles.iconButton
+            }
+            onClick={toggleMenu}
+          >
             <img src={bagIcon} alt="Cart" />
-          </Link>
+            {cartItems.length > 0 && (
+              <span className={styles.badge}>{cartItems.length}</span>
+            )}
+          </NavLink>
         </div>
       </aside>
     </header>

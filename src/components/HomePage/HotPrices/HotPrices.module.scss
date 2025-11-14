@@ -1,3 +1,5 @@
+@import '../../../Mixins/mixins.scss';
+
 .block {
   max-width: var(--container-max);
   margin: 28px auto;
@@ -12,10 +14,17 @@
 }
 
 .title {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
   color: var(--text);
   margin: 0;
+
+  @include on-mobile {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
 }
 
 .controls {

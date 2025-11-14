@@ -53,7 +53,8 @@ export function ProductDetailsPage(): JSX.Element {
   const [selectedCapacity, setSelectedCapacity] = useState<string>();
   const [isFav, setIsFav] = useState(false);
 
-  const { addToCart, addToFavourites, favourites, cartItems } = useCart();
+  const { addToCart, removeFromCart, addToFavourites, favourites, cartItems } =
+    useCart();
 
   useEffect(() => {
     if (!product?.images?.length) {
@@ -94,6 +95,7 @@ export function ProductDetailsPage(): JSX.Element {
         if (!found) {
           setError('Product not found');
           setProduct(null);
+
           return;
         }
 
@@ -322,7 +324,11 @@ export function ProductDetailsPage(): JSX.Element {
                 className={
                   isAddedToCart ? styles.addedToCart : styles.addToCart
                 }
-                onClick={handleAddToCart}
+                onClick={() =>
+                  isAddedToCart
+                    ? removeFromCart(product.id)
+                    : addToCart(product)
+                }
               >
                 {isAddedToCart ? 'Added' : 'Add to cart'}
               </button>

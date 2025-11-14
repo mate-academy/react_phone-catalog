@@ -11,16 +11,41 @@
   @include on-mobile {
     height: 257px;
     align-items: flex-start;
+    margin-top: 56px;
+  }
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-bigTablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
   }
 }
 
 .footer__inner {
   width: 100%;
   max-width: 1200px;
+  padding-left: 32px;
+  padding-right: 32px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include on-bigTablet {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include on-tablet {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
   @include on-mobile {
     display: flex;
@@ -96,6 +121,6 @@
 .totop {
   font-weight: 700;
   font-size: 12px;
-  color: #75767F;
+  color: #75767f;
   align-self: center;
 }

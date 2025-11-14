@@ -59,12 +59,152 @@ h1 {
   align-items: center;
   gap: 8px;
   margin-top: 24px;
+  margin-right: auto;
 }
 
 .text {
-  color: #75767F;
+  color: #75767f;
   font-weight: 700;
   font-size: 12px;
   line-height: 100%;
   letter-spacing: 0%;
+}
+
+.sortBlock {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  // width: 100%;
+
+  &__container1 {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 180px;
+    flex-shrink: 0;
+  }
+}
+
+.sortLabel {
+  font-size: 14px;
+  color: #75767f;
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.sortSelect {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  background-color: #323542;
+  color: #fff;
+  border: 1px solid #3b3e4a;
+  border-radius: 6px;
+  padding: 8px 36px 8px 12px;
+  font-size: 14px;
+  font-family: 'Mont', sans-serif;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  background-image: url('/public/icons/Vector_down.svg');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    border-color: #565b6b;
+    background-color: #2a2d36;
+  }
+
+  &:focus {
+    border-color: #6d7280;
+  }
+
+  &__wide {
+    max-width: 176px;
+  }
+
+  &__narrow {
+    max-width: 128px;
+  }
+}
+
+.sortSelect::-ms-expand {
+  display: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+  margin-bottom: 80px;
+}
+
+.pageButton {
+  background-color: #1f222a;
+  color: #fff;
+  border: 1px solid #3b3e4a;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #565b6b;
+    background-color: #2a2d36;
+  }
+}
+
+.active {
+  background-color: #3b3e4a;
+  border-color: #6d7280;
+}
+
+/* === PAGINATION === */
+.pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1f27;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #2a2a35;
+  }
+}
+
+.pageButton.active {
+  background-color: #905bff;
+  color: #fff;
+}
+
+.pageButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

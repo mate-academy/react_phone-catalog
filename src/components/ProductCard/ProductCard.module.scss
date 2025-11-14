@@ -136,7 +136,13 @@
   background-color: #21af61;
   border: none;
   color: #f1f2f9;
+  cursor: pointer;
   transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #13743f;
+    transform: translateY(-2px);
+  }
 }
 
 .addToFavourites {
