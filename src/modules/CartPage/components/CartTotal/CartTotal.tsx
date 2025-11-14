@@ -13,7 +13,11 @@ export const CartTotal = () => {
 
       <span className={s.divider}></span>
 
-      <button className={s.checkoutButton} onClick={() => clearCart()} type="button">
+      <button
+        className={s.checkoutButton}
+        onClick={() => clearCart()}
+        type="button"
+      >
         Checkout
       </button>
     </div>
