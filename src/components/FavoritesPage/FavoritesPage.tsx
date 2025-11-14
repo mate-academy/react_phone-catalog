@@ -5,6 +5,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 
 export function FavoritesPage() {
   const { favourites } = useCart();
+  const lastOne = 3;
 
   return (
     <div className={styles.favourites}>
