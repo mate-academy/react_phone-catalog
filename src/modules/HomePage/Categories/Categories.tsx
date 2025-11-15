@@ -5,48 +5,53 @@ export const Category = () => {
   return (
     <div className={style.categories}>
       <div className={style.categories__top}>
-        <h4 className={style.categories__top__title}>Shop by category</h4>
+        <h2 className={style.categories__top__title}>Shop by category</h2>
       </div>
       <div className={style.categories__list}>
-        <div className={style.categories__list__category}>
-          <NavLink className={style[`categories__list__category--link`]} to="/phones">
+        <NavLink
+          to="/phones"
+          className={style.categories__list__category}
+        >
+          <div className={style['categories__list__category--image']}>
             <img
-              className={`${style[`categories__list__category--image`]}
-              ${style[`categories__list__category--phones`]}
-              `}
+              className={style['categories__list__category--phones']}
               src="./img/category-phones.webp"
+              alt="Mobile phones"
             />
-          </NavLink>
-          <p className={style.categories__list__category__name}>Mobile phones</p>
+          </div>
+          <h3 className={style.categories__list__category__name}>Mobile phones</h3>
           <p className={style.categories__list__category__quantity}>95 models</p>
-        </div>
-        <div className={style.categories__list__category}>
-          <NavLink className={style[`categories__list__category--link`]} to="/tablets">
+        </NavLink>
+
+        <NavLink
+          to="/tablets"
+          className={style.categories__list__category}
+        >
+          <div className={style['categories__list__category--image']}>
             <img
-              className={`${style[`categories__list__category--image`]}
-              ${style[`categories__list__category--tablets`]}
-              `}
+              className={style['categories__list__category--tablets']}
               src="./img/category-tablets.png"
+              alt="Tablets"
             />
-          </NavLink>
-          <p className={style.categories__list__category__name}>Tablets</p>
+          </div>
+          <h3 className={style.categories__list__category__name}>Tablets</h3>
           <p className={style.categories__list__category__quantity}>24 models</p>
-        </div>
-        <div className={style.categories__list__category}>
-          <NavLink
-            className={style[`categories__list__category--link`]}
-            to="/accessories"
-          >
+        </NavLink>
+
+        <NavLink
+          to="/accessories"
+          className={style.categories__list__category}
+        >
+          <div className={style['categories__list__category--image']}>
             <img
-              className={`${style[`categories__list__category--image`]}
-              ${style[`categories__list__category--accessories`]}
-              `}
+              className={style['categories__list__category--accessories']}
               src="./img/category-accessories.png"
+              alt="Accessories"
             />
-          </NavLink>
-          <p className={style.categories__list__category__name}>Accessories</p>
+          </div>
+          <h3 className={style.categories__list__category__name}>Accessories</h3>
           <p className={style.categories__list__category__quantity}>100 models</p>
-        </div>
+        </NavLink>
       </div>
     </div>
   );

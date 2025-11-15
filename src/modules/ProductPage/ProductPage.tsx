@@ -29,9 +29,9 @@ export const ProductPage = () => {
 
     setLoading(true);
     setProductNotFound(false);
-    
+
     let url = '';
-    
+
     if (location.pathname.includes('/phones')) {
       url = './api/phones.json';
     } else if (location.pathname.includes('/tablets')) {
@@ -46,12 +46,12 @@ export const ProductPage = () => {
           if (!response.ok) {
             throw new Error('Failed to fetch');
           }
-          return response.json(); 
+          return response.json();
         })
         .then(data => {
           const product = data.find((item: any) => item.id === productId);
           console.log('Found product:', product);
-          
+
           if (product) {
             setProductScreen(product.screen);
             setProductRam(product.ram);
@@ -62,7 +62,7 @@ export const ProductPage = () => {
           } else {
             setProductNotFound(true);
           }
-          
+
           setLoading(false);
         })
         .catch(error => {
@@ -90,7 +90,7 @@ export const ProductPage = () => {
   if (productNotFound) {
     return (
       <div className={style.notfound}>
-        <img className={style.notfound__image} src='./img/product-not-found.png' alt="Not found"/>
+        <img className={style.notfound__image} src='./img/product-not-found.png' alt="Not found" />
         <p className={style.notfound__text}>Product not found</p>
       </div>
     );

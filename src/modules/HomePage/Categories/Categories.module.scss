@@ -1,68 +1,92 @@
 @import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
 
 .categories {
-  margin: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 100%;
-  height: 508px;
-  margin-bottom: 150px;
+  margin-bottom: 80px;
 
   &__top {
     width: 100%;
-    height: 41px;
     margin-bottom: 24px;
+    
     &__title {
       font-family: $mont-bold-font;
       font-weight: 800;
-      font-size: 32px;
-      line-height: 128%;
+      font-size: 22px;
+      line-height: 140%;
       letter-spacing: -0.01em;
       color: $active-link-color;
+
+      @include onDesktop {
+        font-size: 32px;
+        line-height: 128%;
+      }
     }
   }
 
   &__list {
     display: flex;
-    overflow: hidden;
-    width: 100%;
+    flex-direction: column;
     gap: 16px;
-    flex-basis: 100%;
+    width: 100%;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+    
     &__category {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: transform 0.3s;
+      
+      &:hover {
+        transform: translateY(-8px);
+      }
 
       &--image {
         width: 100%;
-        height: 457px;
+        height: 0;
+        padding-bottom: 100%;
+        position: relative;
+        overflow: hidden;
         margin-bottom: 24px;
-        background-color: #6D6474;
-        
       }
-      &--phones {
-        object-fit: cover;
-        object-position: 58px 120px;;
-        
-      }
-      &--tablets {
-        width: 457px;
-        height: 457px;
-        object-fit: cover;
-        object-position: 75px 91px;
-        background-color: gray;
-        
-      }
+      
+      &--phones,
+      &--tablets,
       &--accessories {
-        width: 457px;
-        height: 457px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        object-position:-19px 99px;
+      }
+      
+      &--phones {
+        background-color: #6D6474;
+         object-position: 58px 120px;
+      }
+      
+      &--tablets {
+        background-color: #8D8D92;
+        object-position: 75px 91px;
+      }
+      
+      &--accessories {
         background-color: #D53C51;
+        object-position:-19px 99px;
       }
 
       &__name {
         font-family: $mont-regular-font;
         font-weight: 700;
         font-size: 20px;
+        line-height: 140%;
         color: $active-link-color;
         margin-bottom: 4px;
       }

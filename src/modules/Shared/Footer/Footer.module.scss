@@ -1,26 +1,40 @@
 @import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
 
 .footer {
   width: 100%;
   height: 96px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
   color: $active-link-color;
-
+  
+  @include onDesktop {
+    flex-direction: row;
+    justify-content: space-between;
+  }
   &__logo {
     width: 378px;
     height: 32px;
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 32px;
   }
 
   &__items {
     width: 378px;
     height: 32px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      flex-direction: row;
+      margin-bottom: 0;
+    }
     &__link {
       text-decoration: none;
       color: $active-link-color;
@@ -30,15 +44,22 @@
       font-size: 12px;
       line-height: 92%;
       letter-spacing: 0.04em;
+      margin-bottom: 16px;
     }
   }
 
   &__backtotop {
-    width: 378px;
+    width: 100%;
     height: 32px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+    padding-bottom: 32px;
+    
+    @include onDesktop {
+      justify-content: flex-end;
+      width: 378px;
+    }
     &__name {
       font-family: $mont-regular-font;
       font-weight: 700;

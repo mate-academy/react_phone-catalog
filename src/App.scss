@@ -1,26 +1,39 @@
 @import './Scss-variables/Variables';
+@import '/src/modules/Utils/mixins.scss';
 
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
   background-color: $main-background-color;
   cursor: url(./img/cursor/Cursor\ Mouse\ Mice.svg);
+  overflow-x: hidden;
 }
 
-
 .container {
-    max-width: 1430px;
+    width: 100%;
+    max-width: 100%; 
     margin: 0 auto;
-    padding: 0 152px;
-  }
+    padding: 0 16px;
+
+    @include onTablet {
+      max-width: 640px; 
+      padding: 0 24px;
+    }
+    
+    @include onDesktop {
+      max-width: 1200px; 
+      padding: 0 32px;
+    }
+}
   
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(24, 1fr);
-    gap: 16px; 
-  }
+// .grid {
+//     display: grid;
+//     grid-template-columns: repeat(24, 1fr);
+//     gap: 16px; 
+// }
 
 a {
   text-decoration: none;
@@ -28,26 +41,4 @@ a {
 
 button {
   border: none;
-}
-
-@media screen and (width: 1200px) {
-  .container {
-    max-width: 1430px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-}
-@media screen and (max-width: 1199px) {
-  .container {
-    max-width: 630px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-}
-@media screen and (max-width: 639px) {
-  .container {
-    max-width: 320px;
-    margin: 0 auto;
-    padding: 0 16px;
-  }
 }

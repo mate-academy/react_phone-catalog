@@ -22,12 +22,11 @@ export const Banner = ({ data }: BannerProps) => {
   }, [maxIndex]);
 
   const handlePrev = () => {
-    setCurrentIndex(prev => (prev > 0 ? prev - 1 : 2)
-  );
+    setCurrentIndex(prev => (prev > 0 ? prev - 1 : maxIndex));
   };
 
   const handleNext = () => {
-    setCurrentIndex(prev => (prev < 2 ? prev + 1 : 0));
+    setCurrentIndex(prev => (prev < maxIndex ? prev + 1 : 0));
   };
 
   const getSlideWidth = () => {
@@ -39,45 +38,47 @@ export const Banner = ({ data }: BannerProps) => {
   };
 
   return (
-    <div className={styles.banner}>
+    <div className={`${styles.banner} ${styles['banner--margin']}`}>
       <button
-        className={`${styles.banner__arrow} ${styles[`banner__arrow--left`]}`}
+        className={`${styles.banner__arrow} ${styles['banner__arrow--left']}`}
         onClick={handlePrev}
       >
         &lt;
       </button>
 
-      <div className={styles.banner__wrapper} ref={wrapperRef}>
-        <div
-          className={styles.banner__track}
-          style={{
-            transform: `translateX(-${currentIndex * getSlideWidth()}px)`,
-          }}
-        >
-          {data.map((item, index) => (
-            <img
-              src={item.src}
-              alt={item.alt}
+      <div className={styles.banner__content}>
+        <div className={styles.banner__wrapper} ref={wrapperRef}>
+          <div
+            className={styles.banner__track}
+            style={{
+              transform: `translateX(-${currentIndex * getSlideWidth()}px)`,
+            }}
+          >
+            {data.map((item, index) => (
+              <img
+                src={item.src}
+                alt={item.alt}
+                key={index}
+                className={styles.banner__slide}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.banner__dashes}>
+          {data.map((_, index) => (
+            <button
               key={index}
-              className={styles.banner__slide}
+              className={`${styles.banner__dashes__dash} ${currentIndex === index ? styles['banner__dashes__dash--active'] : ''
+                }`}
+              onClick={() => setSlide(index)}
             />
           ))}
-        </div>
-        <div className={styles.banner__dashes}>
-          <button className={styles.banner__dashes__dash}
-          onClick={() => setSlide(0)}
-          ></button>
-          <button className={styles.banner__dashes__dash}
-          onClick={() => setSlide(1)}
-          ></button>
-          <button className={styles.banner__dashes__dash}
-          onClick={() => setSlide(2)}
-          ></button>
         </div>
       </div>
 
       <button
-        className={`${styles.banner__arrow} ${styles[`banner__arrow--right`]}`}
+        className={`${styles.banner__arrow} ${styles['banner__arrow--right']}`}
         onClick={handleNext}
       >
         &gt;
