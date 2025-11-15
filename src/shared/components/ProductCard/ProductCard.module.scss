@@ -46,7 +46,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 32px; /* ✅ відстань до характеристик */
+  margin-bottom: 32px;
 
   .current {
     font-weight: 700;
@@ -65,7 +65,7 @@
 .details {
   list-style: none;
   padding: 0;
-  margin: 0 0 32px; /* ✅ відстань до кнопок */
+  margin: 0 0 32px;
 
   li {
     display: flex;
@@ -88,15 +88,15 @@
 
 .buttons {
   display: flex;
-  gap: 8px; /* ✅ між Add to cart і сердечком */
+  gap: 8px;
 
   .addToCart {
-    flex: 1;
     background-color: #313237;
     color: #fff;
     border: none;
     border-radius: 4px;
-    padding: 14px 0; /* ~48px висота */
+    width: 160px;
+    height: 40px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -107,12 +107,11 @@
     }
   }
 
-  .fav {
+  .favorite {
     background: transparent;
-    border: 1px solid #e2e6e9;
-    border-radius: 4px;
-    width: 48px;
-    height: 48px;
+    border: none;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -120,7 +119,7 @@
     transition: background 0.3s;
 
     &:hover {
-      background: #f5f5f5;
+      content: url('/public/icons/heart_hover.svg');
     }
 
     img {

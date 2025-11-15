@@ -45,8 +45,8 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className={styles.buttons}>
         <button className={styles.addToCart}>Add to cart</button>
-        <button className={styles.fav}>
-          <img src="/icons/heard.svg" alt="Add to favorites" />
+        <button className={styles.favorite}>
+          <img src="/icons/heart_default.svg" alt="Add to favorites" />
         </button>
       </div>
     </article>
