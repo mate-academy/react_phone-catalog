@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import phones from '../../../../public/api/phones.json';
 import type { Phone } from '../../../Types/type';
 import style from './Hot-Prices.module.scss';
@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 export const HotPrices = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const itemsPerPage = 4;
   const maxIndex = Math.max(0, phones.length - itemsPerPage);
@@ -18,8 +19,18 @@ export const HotPrices = () => {
     setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
   };
 
-  const sortedProduct = phones.sort((a, b) => b.priceRegular - a.priceRegular);
+  // Функція для отримання ширини картки + gap
+  const getCardWidth = () => {
+    if (cardRef.current) {
+      const card = cardRef.current;
+      const cardWidth = card.offsetWidth;
+      const gap = 16; // gap з CSS
+      return cardWidth + gap;
+    }
+    return 288; // fallback значення (272px ширина + 16px gap)
+  };
 
+  const sortedProduct = phones.sort((a, b) => b.priceRegular - a.priceRegular);
 
   const location = useLocation();
 
@@ -38,6 +49,7 @@ export const HotPrices = () => {
   };
 
   const currentPage = getCurrentPage();
+
   return (
     <div className={style.newmodels}>
       <div className={style.newmodels__topbar}>
@@ -64,16 +76,20 @@ export const HotPrices = () => {
         <div
           className={style.newmodels__products__slider}
           style={{
-            transform: `translateX(-${currentIndex * (272 + 64 + 16)}px)`,
+            transform: `translateX(-${currentIndex * getCardWidth()}px)`,
           }}
         >
-          {sortedProduct.map((phone: Phone) => (
-            <article className={style.newmodels__product} key={phone.id}>
+          {sortedProduct.map((phone: Phone, index: number) => (
+            <article 
+              className={style.newmodels__product} 
+              key={phone.id}
+              ref={index === 0 ? cardRef : null}
+            >
               <Link to={`/${currentPage}/${phone.id}`}>
                 <img
                   className={style.newmodels__product__image}
                   src={phone.images[0]}
-                  alt={phone.id}
+                  alt={phone.name}
                 />
               </Link>
               <p className={style.newmodels__product__name}>{phone.name}</p>
@@ -85,13 +101,13 @@ export const HotPrices = () => {
                   ${phone.priceRegular}
                 </h4>
               </div>
-              <hr className={style[`newmodels__product--line`]} />
+              <hr className={style['newmodels__product--line']} />
 
               <div className={style.newmodels__product__description}>
                 <p className={style.newmodels__product__description__screen}>
                   Screen
                 </p>
-                <p className={style[`newmodels__product__description__screen--number`]}>
+                <p className={style['newmodels__product__description__screen--number']}>
                   {phone.screen}
                 </p>
               </div>
@@ -99,13 +115,13 @@ export const HotPrices = () => {
                 <p className={style.newmodels__product__description__capacity}>
                   Capacity
                 </p>
-                <p className={style[`newmodels__product__description__capacity--number`]}>
+                <p className={style['newmodels__product__description__capacity--number']}>
                   {phone.capacity}
                 </p>
               </div>
               <div className={style.newmodels__product__description}>
                 <p className={style.newmodels__product__description__ram}>RAM</p>
-                <p className={style[`newmodels__product__description__ram--number`]}>
+                <p className={style['newmodels__product__description__ram--number']}>
                   {phone.ram}
                 </p>
               </div>
@@ -115,7 +131,7 @@ export const HotPrices = () => {
                   Add to cart
                 </button>
                 <button className={style.newmodels__product__buttons__button__favourites}>
-                  <span className={style[`newmodels__product__buttons__button__favourites--heart`]}></span>
+                  <span className={style['newmodels__product__buttons__button__favourites--heart']}></span>
                 </button>
               </div>
             </article>
