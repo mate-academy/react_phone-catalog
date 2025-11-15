@@ -19,7 +19,7 @@ type Props = {
     updates: Partial<{ color: string; capacity: string }>,
   ) => void;
   inCart: boolean;
-  addToCart: (product: Product) => void;
+  toggleCart: (product: Product) => void;
   toggleFavorite: (product: Product) => void;
   isFavorite: (id: string) => boolean;
 };
@@ -33,7 +33,7 @@ export const ProductMainInfo: FC<Props> = ({
   selectedCapacity,
   handleVariantChange,
   inCart,
-  addToCart,
+  toggleCart,
   toggleFavorite,
   isFavorite,
 }) => {
@@ -153,7 +153,7 @@ export const ProductMainInfo: FC<Props> = ({
             <div className={styles['product-main-info__buttons']}>
               <ButtonCart
                 inCart={inCart}
-                onClick={() => addToCart(currentProductAsProduct)}
+                onClick={() => toggleCart(currentProductAsProduct)}
                 size="large"
               />
 

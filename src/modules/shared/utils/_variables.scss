@@ -18,7 +18,7 @@ $main-font: 'Mont', Arial, Helvetica, sans-serif;
   --product-card-bg-color: #fff;
   --drop-down-bg-color: #fff;
   --product-card-shadow: #0000001a;
-  --button-cart-disabled-color: var(--accent-color);
+  --button-cart-active-color: var(--accent-color);
   --button-cart-hover-shadow: #17203166;
   --back-text-color: var(--gray-secondary-color);
 }
@@ -41,7 +41,7 @@ $main-font: 'Mont', Arial, Helvetica, sans-serif;
   --drop-down-bg-color: var(--surface-2-color);
   --product-card-shadow: rgba(255, 255, 255, 0.05);
   --hover-color: var(--surface-2-color);
-  --button-cart-disabled-color: var(--gray-primary-color);
+  --button-cart-active-color: var(--gray-primary-color);
   --button-cart-hover-shadow: rgba(255, 255, 255, 0.2);
   --back-text-color: var(--gray-primary-color);
 }

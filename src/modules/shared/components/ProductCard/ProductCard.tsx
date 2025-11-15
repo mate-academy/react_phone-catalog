@@ -14,7 +14,7 @@ type Props = {
 };
 
 export const ProductCard: FC<Props> = ({ product }) => {
-  const { addToCart, cart } = useCart();
+  const { toggleCart, cart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const inCart = cart.some(p => p.id === product.id);
@@ -79,7 +79,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
         <div className={styles['product-card__buttons']}>
           <ButtonCart
             inCart={inCart}
-            onClick={() => addToCart(product)}
+            onClick={() => toggleCart(product)}
             size="small"
           />
 

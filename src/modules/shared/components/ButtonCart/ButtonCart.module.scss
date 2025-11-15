@@ -25,16 +25,14 @@
     border-color: var(--gray-elements-color);
   }
 
-  &--disabled {
+  &--active {
     border: 1px solid var(--gray-elements-color);
     background-color: var(--surface-2-color);
-    color: var(--button-cart-disabled-color);
-    cursor: not-allowed;
+    color: var(--button-cart-active-color);
 
     &:hover {
-      box-shadow: none;
       background-color: var(--surface-2-color);
-      color: var(--button-cart-disabled-color);
+      color: var(--button-cart-active-color);
     }
   }
 

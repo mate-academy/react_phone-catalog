@@ -15,10 +15,9 @@ export const ButtonCart: React.FC<Props> = ({
 }) => (
   <button
     className={cn(styles['button-cart'], styles[`button-cart--${size}`], {
-      [styles['button-cart--disabled']]: inCart,
+      [styles['button-cart--active']]: inCart,
     })}
     onClick={onClick}
-    disabled={inCart}
   >
     {inCart ? 'Added to cart' : 'Add to cart'}
   </button>

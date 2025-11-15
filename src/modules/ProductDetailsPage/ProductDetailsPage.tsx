@@ -39,7 +39,7 @@ export const ProductDetailsPage: FC<Props> = ({ category }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const { addToCart, cart } = useCart();
+  const { toggleCart, cart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const currentProductAsProduct = allProducts.find(
@@ -168,7 +168,7 @@ export const ProductDetailsPage: FC<Props> = ({ category }) => {
             selectedCapacity={selectedCapacity}
             handleVariantChange={handleVariantChange}
             inCart={inCart}
-            addToCart={addToCart}
+            toggleCart={toggleCart}
             toggleFavorite={toggleFavorite}
             isFavorite={isFavorite}
           />
