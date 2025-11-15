@@ -31,7 +31,8 @@ export const ProductInfo: React.FC<Props> = ({ product, showDiscount }) => {
   const { state: favoritesState, dispatch: favoritesDispatch } = useFavorites();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
 
-  const isInCart = cartState.items.some(item => item.product.id === product.id);
+  const cartItem = cartState.items.find(item => item.product.id === product.id);
+  const isInCart = !!cartItem;
   const isInFavorites = favoritesState.items.some(
     item => item.product.id === product.id,
   );
@@ -48,8 +49,13 @@ export const ProductInfo: React.FC<Props> = ({ product, showDiscount }) => {
     fetchAllProducts();
   }, []);
 
-  const handleAddToCart = () => {
-    if (!isInCart) {
+  const handleToggleCart = () => {
+    if (isInCart && cartItem) {
+      cartDispatch({
+        type: 'REMOVE_ITEM',
+        payload: cartItem.id,
+      });
+    } else {
       cartDispatch({
         type: 'ADD_ITEM',
         payload: product,
@@ -196,9 +202,9 @@ export const ProductInfo: React.FC<Props> = ({ product, showDiscount }) => {
           className={classNames(styles.productInfo__cartBtn, {
             [styles.productInfo__cartBtn_added]: isInCart,
           })}
-          onClick={handleAddToCart}
+          onClick={handleToggleCart}
         >
-          {isInCart ? 'Added to cart' : 'Add to cart'}
+          {isInCart ? 'Remove from cart' : 'Add to cart'}
         </button>
 
         <button
