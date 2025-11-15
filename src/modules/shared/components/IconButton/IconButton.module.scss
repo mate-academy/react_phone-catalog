@@ -1,0 +1,33 @@
+@import '../../utils/main';
+
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid var(--gray-icons-color);
+  border-radius: 48px;
+  background-color: var(--surface-2-color);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.3s ease;
+
+  @extend %button;
+
+  cursor: pointer;
+
+  @include hover(border-color, var(--gray-primary-color));
+
+  &.rotated {
+    transform: rotate(90deg);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    border-color: var(--gray-elements-color);
+    cursor: not-allowed;
+  }
+}

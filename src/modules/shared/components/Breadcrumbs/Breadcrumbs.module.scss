@@ -1,0 +1,45 @@
+@import '../../utils/main';
+
+.breadcrumbs {
+  &__container {
+    display: flex;
+    gap: 8px;
+    margin-block: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__text {
+    @extend %small-text-12;
+
+    color: var(--gray-secondary-color);
+
+    text-decoration: none;
+    align-content: center;
+
+    &--active {
+      font-weight: 700;
+      color: var(--gray-primary-color);
+    }
+
+    &--truncate {
+      max-width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      font-weight: 700;
+
+      @include on-tablet {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__link {
+    width: 16px;
+    height: 16px;
+  }
+}

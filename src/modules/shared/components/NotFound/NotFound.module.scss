@@ -1,0 +1,36 @@
+@import '../../../shared/utils/main';
+
+.not-found {
+  @include content-padding-inline;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+
+    @extend %h1;
+
+    color: var(--gray-secondary-color);
+  }
+
+  &__image {
+    width: 35%;
+  }
+}

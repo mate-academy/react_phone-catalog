@@ -1,0 +1,47 @@
+$desktop-min-width: 1200px;
+$tablet-min-width: 640px;
+$main-font: 'Mont', Arial, Helvetica, sans-serif;
+
+:root {
+  --bg-color: #fafbfc;
+  --gray-primary-color: #0f0f11;
+  --gray-secondary-color: #89939a;
+  --gray-icons-color: #b4bdc3;
+  --gray-elements-color: #e2e6e9;
+  --hover-color: #fafbfc;
+  --accent-color: #4219d0;
+  --header-bg-color: #fff;
+  --pagination-color: var(--gray-primary-color);
+  --pagination-text-color: #000;
+  --arrow-border-color: var(--gray-icons-color);
+  --button-cart-text-color: #fff;
+  --product-card-bg-color: #fff;
+  --drop-down-bg-color: #fff;
+  --product-card-shadow: #0000001a;
+  --button-cart-active-color: var(--accent-color);
+  --button-cart-hover-shadow: #17203166;
+  --back-text-color: var(--gray-secondary-color);
+}
+
+[data-theme='dark'] {
+  --bg-color: #0f1121;
+  --gray-primary-color: #f1f2f9;
+  --gray-secondary-color: #75767f;
+  --gray-icons-color: #4a4d58;
+  --gray-elements-color: #3b3e4a;
+  --surface-1-color: #161827;
+  --surface-2-color: #323542;
+  --accent-color: #905bff;
+  --header-bg-color: #0f1121;
+  --pagination-color: var(--accent-color);
+  --pagination-text-color: #fff;
+  --arrow-border-color: var(--surface-2-color);
+  --button-cart-text-color: var(--gray-primary-color);
+  --product-card-bg-color: var(--surface-1-color);
+  --drop-down-bg-color: var(--surface-2-color);
+  --product-card-shadow: rgba(255, 255, 255, 0.05);
+  --hover-color: var(--surface-2-color);
+  --button-cart-active-color: var(--gray-primary-color);
+  --button-cart-hover-shadow: rgba(255, 255, 255, 0.2);
+  --back-text-color: var(--gray-primary-color);
+}
