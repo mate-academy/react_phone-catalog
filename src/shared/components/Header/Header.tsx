@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
-import { IconButton } from '../IconButton/IconButton';
+import { IconButton } from '../IconButton';
 
 const menuItems = [
   { to: '/', label: 'Home' },
@@ -10,17 +10,11 @@ const menuItems = [
 ];
 
 export const Header = () => {
-  // Тут підключаєш свій контекст або redux для cart/favorites
-  const cart = [
-    /* дані Cart */
-  ];
-  const favorites = [
-    /* дані Favorites */
-  ];
+  const cart = [];
+  const favorites = [];
 
   return (
     <header className={styles.header}>
-      {/* Логотип */}
       <div className={styles.logo}>
         <NavLink to="/">
           <img
@@ -31,7 +25,6 @@ export const Header = () => {
         </NavLink>
       </div>
 
-      {/* Меню */}
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           {menuItems.map(item => (
@@ -51,11 +44,10 @@ export const Header = () => {
         </ul>
       </nav>
 
-      {/* Іконки Favorites / Cart */}
       <div className={styles.actions}>
         <IconButton
           to="/favorites"
-          src="/icons/heard.svg"
+          src="/icons/heart.svg"
           alt="Favorites"
           count={favorites.length}
         />
