@@ -1,11 +1,14 @@
 import React, { createContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Params } from '../types/Params';
+import { ParamsMap } from '../types/ParamsMap';
 
 type SortContextType = {
-  getSearchWith: (params: Params, search?: URLSearchParams | string) => string;
+  getSearchWith: (
+    params: ParamsMap,
+    search?: URLSearchParams | string,
+  ) => string;
   setSearchWith: (
-    params: Params,
+    params: ParamsMap,
     prevParams?: URLSearchParams | string,
   ) => void;
 };
@@ -18,7 +21,10 @@ export const SortContext = createContext<SortContextType>({
 export const SortProvider = ({ children }: { children: React.ReactNode }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const getSearchWith = (params: Params, search?: URLSearchParams | string) => {
+  const getSearchWith = (
+    params: ParamsMap,
+    search?: URLSearchParams | string,
+  ) => {
     const newSearchParams = new URLSearchParams(search);
 
     for (const [key, value] of Object.entries(params)) {
@@ -33,7 +39,7 @@ export const SortProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const setSearchWith = (
-    params: Params,
+    params: ParamsMap,
     prevParams?: URLSearchParams | string,
   ) => {
     const search = getSearchWith(params, prevParams);

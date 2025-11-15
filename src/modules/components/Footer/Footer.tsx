@@ -1,18 +1,16 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
-import { CircleButton } from '../../shared/components/CircleButton';
+import { CircleButton } from '../../shared/components/Buttons/CircleButton';
 import {
   logoLightMode,
   logoDarkMode,
   icons,
 } from '../../../global-assets/static';
-import { UISettingsState } from '../../shared/reduce/LangThemeReducer';
-import { TranslationContext } from '../../../i18next/shared';
+import { UISettingsState } from '../../shared/reducer/LangThemeReducer';
+import { TranslationContext } from '../../../i18next/shared/TranslationContext';
 
-type FooterProps = {};
-
-export const Footer: React.FC<FooterProps> = React.memo(({}) => {
+export const Footer: React.FC = React.memo(() => {
   const footerNavItems = useContext(TranslationContext).footerNavItems;
   const btnFooterBack = useContext(TranslationContext).btnsTitle.footerBack;
 

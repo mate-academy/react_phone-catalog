@@ -1,5 +1,3 @@
-export type IconListPartial = 'menu' | 'like' | 'arrow' | 'home' | 'close';
-
 export type IconList = {
   menu: {
     valuePath: React.FC<React.SVGProps<SVGSVGElement>>;

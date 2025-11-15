@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import './Main.scss';
-import { Categories } from '../Categories';
-import { ProductSlider } from '../../../../shared/components/ProductSlider';
+import { HomeCategoryLinks } from '../HomeCategoryLinks';
+import { ProductSliderSection } from '../../../../shared/components/ProductSliderSection';
 import { ProductListContext } from '../../../../shared/context/ProductListContext';
 import { SliderProvider } from '../../../../shared/context/SliderContext';
-import { TranslationContext } from '../../../../../i18next/shared';
+import { TranslationContext } from '../../../../../i18next/shared/TranslationContext';
 
 type MainProps = {};
 
@@ -28,17 +28,17 @@ export const Main: React.FC<MainProps> = ({}) => {
   return (
     <main className="main">
       <SliderProvider>
-        <ProductSlider
+        <ProductSliderSection
           content={{
             title: text.sliderTitle.productsNew,
             data: productsByDate,
           }}
         />
-        <Categories />
+        <HomeCategoryLinks />
       </SliderProvider>
 
       <SliderProvider>
-        <ProductSlider
+        <ProductSliderSection
           content={{
             title: text.sliderTitle.goodPrices,
             data: productsByDiscount,

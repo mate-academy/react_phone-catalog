@@ -10,14 +10,14 @@ import { ProductListContext } from '../../shared/context/ProductListContext';
 import {
   ScreenState,
   UISettingsState,
-} from '../../shared/reduce/LangThemeReducer';
-import { Switcher } from '../../shared/components/Switcher';
+} from '../../shared/reducer/LangThemeReducer';
+import { ThemeLanguageSwitcher } from '../../shared/components/ui/ThemeLanguageSwitcher';
 import { getPath } from '../../shared/servises/getPath';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import { TranslationContext } from '../../../i18next/shared';
+import { TranslationContext } from '../../../i18next/shared/TranslationContext';
 import { FavesContext } from '../../shared/context/FavesContext';
-import { StateCartContext } from '../../shared/reduce/CartReducer';
+import { StateCartContext } from '../../shared/reducer/CartReducer';
 
 type TopBarProps = {
   buttonData: IconList['menu'] | IconList['close'];
@@ -50,7 +50,7 @@ export const TopBar: React.FC<TopBarProps> = ({ buttonData }) => {
         )}
       </div>
 
-      {isMobile && <Switcher />}
+      {isMobile && <ThemeLanguageSwitcher />}
 
       <nav className="top-bar__nav-wrapper">
         <ul className="top-bar__nav-list">
@@ -72,7 +72,7 @@ export const TopBar: React.FC<TopBarProps> = ({ buttonData }) => {
         </ul>
 
         <div className="top-bar__btns">
-          {isDesktop && <Switcher />}
+          {isDesktop && <ThemeLanguageSwitcher />}
           <NavLink
             to="favourites"
             className={({ isActive }) =>
