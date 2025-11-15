@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
   const updateQuery = useMemo(
     () =>
       debounce((value: string) => {
-        const params = new URLSearchParams(window.location.search);
+        const params = new URLSearchParams(searchParams);
 
         if (value) {
           params.set('query', value);
@@ -32,15 +32,15 @@ export const Header: React.FC = () => {
         }
 
         setSearchParams(params);
-      }, 500),
-    [setSearchParams],
+      }, 5000),
+    [searchParams, setSearchParams],
   );
 
   useEffect(() => {
     updateQuery(query);
 
     return updateQuery.cancel;
-  }, [query, updateQuery]);
+  }, [query]);
 
   const isProductPage = [
     '/phones',
