@@ -1,3 +1,19 @@
 .PageTitle {
   margin-bottom: 56px;
 }
+
+.categoryGrid{
+  display: flex;
+  column-gap: 16px;
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+.categoryInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}

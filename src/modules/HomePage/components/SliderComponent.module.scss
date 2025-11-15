@@ -29,8 +29,9 @@
   &__item {
     display: flex;
     padding: 32px;
+    box-sizing: border-box; // Включає padding і border у загальну ширину
+    width: 272px;
     flex-direction: column;
-    align-items: center;
     border: 1px solid $color-elements;
     &__imageContainer {
       width: 208px;
@@ -82,7 +83,7 @@
     }
     &__cartButton {
       background-color: $color-primary;
-      width: 160px;
+      width: 158px;
       height: 40px;
       border: none;
       cursor: pointer;

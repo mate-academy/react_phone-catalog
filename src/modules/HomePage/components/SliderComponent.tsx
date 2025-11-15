@@ -21,7 +21,7 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
 
   const preparedProducts = products.sort((a, b) => b.year - a.year);
   const visible = preparedProducts.slice(index, index + 4);
-  
+
   return (
     <>
       <div className={styles.SliderComponent__headerContainer}>
