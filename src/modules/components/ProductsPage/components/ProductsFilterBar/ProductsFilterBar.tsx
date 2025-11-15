@@ -5,8 +5,10 @@ import { TranslationContext } from '../../../../../i18next/shared/TranslationCon
 import debounce from 'lodash.debounce';
 import { SortContext } from '../../../../shared/context/SortContext';
 import { icons } from '../../../../../global-assets/static';
+import { useSearchParams } from 'react-router-dom';
 
 export const ProductsFilterBar: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const { additionalText } = useContext(TranslationContext);
   const { setSearchWith } = useContext(SortContext);
   const { sortTitle, sortBy, sortByAmount } = useContext(TranslationContext);
@@ -27,13 +29,13 @@ export const ProductsFilterBar: React.FC = () => {
       handleApplyQuery.cancel();
       setSearchWith({ query: null });
     } else {
-      handleApplyQuery({ query: value });
+      handleApplyQuery({ query: value }, searchParams);
     }
   };
 
   const handleClearQuery = () => {
     setQueryTitle('');
-    setSearchWith({ query: null });
+    setSearchWith({ query: null }, searchParams);
   };
 
   return (

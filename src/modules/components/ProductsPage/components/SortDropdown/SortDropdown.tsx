@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import React, { useContext, useEffect, useState } from 'react';
 import './SortDropdown.scss';
 import { icons } from '../../../../../global-assets/static';

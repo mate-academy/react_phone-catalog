@@ -49,7 +49,7 @@ export const ProductList: React.FC<ProductListProps> = ({ products }) => {
     if (changed) {
       setSearchParams(params);
     }
-  }, []);
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
     if (currentProduct) {

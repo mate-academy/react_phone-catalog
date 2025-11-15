@@ -16,7 +16,7 @@ export const MobileNavigation: React.FC = () => {
 
   useEffect(() => {
     setIsAside(false);
-  }, [location]);
+  }, [location, setIsAside]);
 
   const navTitleList = useContext(TranslationContext).navList;
   const navigationList = navTitleList.slice(0, 4);

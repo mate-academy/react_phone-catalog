@@ -60,10 +60,10 @@ export const CartPage: React.FC = () => {
           <div className="cart-content">
             {cartFilled ? (
               <CartStatusNotif
-                cartType="cartEmpty"
+                cartType="cartFilled"
                 image={{
                   src: cartIsFilled,
-                  alt: 'Cart is empty',
+                  alt: 'Cart is filled',
                 }}
                 message={notifMessage.cartFilledNotif}
               />

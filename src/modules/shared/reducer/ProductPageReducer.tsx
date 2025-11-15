@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { createContext, useReducer } from 'react';
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';

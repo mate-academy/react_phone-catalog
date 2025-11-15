@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import type { Product } from '../types/Product';
 import phonesData from '../../../../public/api/phones.json';
 import tabletsData from '../../../../public/api/tablets.json';

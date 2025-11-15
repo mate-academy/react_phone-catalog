@@ -44,10 +44,6 @@ export const ProductsPage: React.FC = () => {
 
   const isValidCategory = categoryList.some(path => path === category);
 
-  if (!isValidCategory) {
-    return <Navigate to="/not-found" replace />;
-  }
-
   useEffect(() => {
     productsDispatch({ type: 'setLoader', payload: true });
 
@@ -92,7 +88,19 @@ export const ProductsPage: React.FC = () => {
       .finally(() => {
         productsDispatch({ type: 'setLoader', payload: false });
       });
-  }, [category, location.pathname]);
+  }, [
+    additionalText.noCategoryMessage,
+    category,
+    location.pathname,
+    navigate,
+    notifMessage.errorTitle,
+    productList,
+    productsDispatch,
+  ]);
+
+  if (!isValidCategory) {
+    return <Navigate to="/not-found" replace />;
+  }
 
   if (!category) {
     navigate('/');

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { createContext, useEffect, useReducer, useRef } from 'react';
 import { useLocaleStorage } from '../hooks/useLocaleStorage';
 import { CartElement } from '../types/CartElement';
