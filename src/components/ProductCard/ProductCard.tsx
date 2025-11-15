@@ -22,17 +22,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const { state: cartState, dispatch: cartDispatch } = useCart();
   const { state: favoritesState, dispatch: favoritesDispatch } = useFavorites();
 
-  const isInCart = cartState.items.some(item => item.product.id === product.id);
+  const cartItem = cartState.items.find(item => item.product.id === product.id);
+  const isInCart = !!cartItem;
   const isInFavorites = favoritesState.items.some(
     item => item.product.id === product.id,
   );
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const handleToggleCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
-    if (!isInCart) {
-      cartDispatch({ type: 'ADD_ITEM', payload: product });
+    if (isInCart && cartItem) {
+      //remove
+      cartDispatch({
+        type: 'REMOVE_ITEM',
+        payload: cartItem.id,
+      });
+    } else {
+      cartDispatch({
+        type: 'ADD_ITEM',
+        payload: product,
+      });
     }
   };
 
@@ -52,12 +62,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         });
       }
     } else {
-      favoritesDispatch({ type: 'ADD_FAVORITE', payload: product });
+      favoritesDispatch({
+        type: 'ADD_FAVORITE',
+        payload: product,
+      });
     }
   };
 
   const discount = product.fullPrice - product.price;
-
   const shouldShowFullPrice = showDiscountBadge && discount > 0;
 
   return (
@@ -123,9 +135,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               className={classNames(styles.productCard__cartBtn, {
                 [styles.productCard__cartBtn_added]: isInCart,
               })}
-              onClick={handleAddToCart}
+              onClick={handleToggleCart}
             >
-              {isInCart ? 'Added to cart' : 'Add to cart'}
+              {isInCart ? 'Remove from cart' : 'Add to cart'}
             </button>
 
             <button
