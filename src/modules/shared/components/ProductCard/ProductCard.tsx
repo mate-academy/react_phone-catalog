@@ -11,13 +11,18 @@ import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
+  displayType?: 'regular' | 'discount';
 };
 
-export const ProductCard: FC<Props> = ({ product }) => {
+export const ProductCard: FC<Props> = ({
+  product,
+  displayType = 'discount',
+}) => {
   const { toggleCart, cart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const inCart = cart.some(p => p.id === product.id);
+  const hasDiscount = product.price < product.fullPrice;
 
   return (
     <article className={styles['product-card']}>
@@ -45,9 +50,11 @@ export const ProductCard: FC<Props> = ({ product }) => {
             ${product.price}
           </span>
 
-          <span className={styles['product-card__price-regular']}>
-            ${product.fullPrice}
-          </span>
+          {displayType === 'discount' && hasDiscount && (
+            <span className={styles['product-card__price-regular']}>
+              ${product.fullPrice}
+            </span>
+          )}
         </div>
 
         <div className={styles['product-card__line']}></div>

@@ -9,9 +9,14 @@ import styles from './ProductSlider.module.scss';
 type Props = {
   products: Product[];
   header: string;
+  displayType?: 'regular' | 'discount';
 };
 
-export const ProductSlider: FC<Props> = ({ products, header }) => {
+export const ProductSlider: FC<Props> = ({
+  products,
+  header,
+  displayType = 'regular',
+}) => {
   const [cardWidth, setCardWidth] = useState(272);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [viewportWidth, setViewportWidth] = useState(1136);
@@ -113,7 +118,7 @@ export const ProductSlider: FC<Props> = ({ products, header }) => {
           >
             {products.map(product => (
               <div key={product.id} style={{ width: `${cardWidth}px` }}>
-                <ProductCard product={product} />
+                <ProductCard product={product} displayType={displayType} />
               </div>
             ))}
           </div>

@@ -31,7 +31,11 @@ export const HomePage = () => {
           <PicturesSlider />
 
           {products.length > 0 && !error && (
-            <ProductSlider products={newProducts} header="Brand new models" />
+            <ProductSlider
+              products={newProducts}
+              header="Brand new models"
+              displayType="regular"
+            />
           )}
 
           <ShopByCategory />
@@ -40,6 +44,7 @@ export const HomePage = () => {
             <ProductSlider
               products={bestDiscountProducts}
               header="Hot prices"
+              displayType="discount"
             />
           )}
         </div>
