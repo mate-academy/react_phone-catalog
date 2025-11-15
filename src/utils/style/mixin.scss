@@ -7,6 +7,13 @@
   transition: $properties $duration $timing;
 }
 
+// Specific range mixin
+@mixin mobile-range($min: 320px, $max: 639px) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
 // Flexbox mixins
 @mixin flex-center {
   display: flex;

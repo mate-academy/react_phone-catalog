@@ -192,7 +192,7 @@
     aspect-ratio: 1 / 1;
   }
 
-  @media (max-width: 320px) {
+  @include mobile-range {
     .slider {
       margin-left: -$spacing-lg;
       margin-right: -$spacing-lg;
