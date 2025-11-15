@@ -4,7 +4,7 @@
   justify-content: space-between;
   border: 1px solid #e2e6e9;
   border-radius: 8px;
-  padding: 16px;
+  padding: 32px;
   background-color: #fff;
   transition: box-shadow 0.3s ease;
 
@@ -118,13 +118,8 @@
     justify-content: center;
     transition: background 0.3s;
 
-    &:hover {
+    &:not([data-selected="true"]):hover img {
       content: url('/public/icons/heart_hover.svg');
-    }
-
-    img {
-      width: 20px;
-      height: 20px;
     }
   }
 }
