@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
         }
 
         setSearchParams(params);
-      }, 5000),
+      }, 500),
     [searchParams, setSearchParams],
   );
 

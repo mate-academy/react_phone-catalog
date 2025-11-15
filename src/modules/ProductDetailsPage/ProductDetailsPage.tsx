@@ -80,6 +80,10 @@ export const ProductDetailsPage: FC<Props> = ({ category }) => {
   }, [itemId, products]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [itemId]);
+
+  useEffect(() => {
     if (currentProduct) {
       const imageIndex = location.state?.imageIndex ?? 0;
 

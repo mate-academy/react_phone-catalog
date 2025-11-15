@@ -15,7 +15,7 @@ type Props = {
 export const ProductSlider: FC<Props> = ({
   products,
   header,
-  displayType = 'regular',
+  displayType = 'discount',
 }) => {
   const [cardWidth, setCardWidth] = useState(272);
   const [currentIndex, setCurrentIndex] = useState(0);
