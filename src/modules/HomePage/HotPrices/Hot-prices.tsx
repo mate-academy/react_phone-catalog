@@ -80,8 +80,8 @@ export const HotPrices = () => {
           }}
         >
           {sortedProduct.map((phone: Phone, index: number) => (
-            <article 
-              className={style.newmodels__product} 
+            <article
+              className={style.newmodels__product}
               key={phone.id}
               ref={index === 0 ? cardRef : null}
             >
