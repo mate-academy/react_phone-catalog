@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styles from './ProductCard.module.scss';
 import { UiProduct } from '../ProductsSlider/ProductSlider';
+import { FavoriteContext } from '../../contexts/FavoriteContext';
+import { CartContext, CartItem } from '../../contexts/CartContext';
 
 type Props = {
   product: UiProduct;
@@ -12,7 +14,32 @@ export const ProductCard: React.FC<Props> = ({
   showOldPrice = true,
 }) => {
   const { title, img, price, oldPrice, screen, capacity, ram } = product;
-  const [favorite, setFavorite] = useState(false);
+  const { favorites, setFavorites } = useContext(FavoriteContext);
+  const { cartItems, setCartItems } = useContext(CartContext);
+
+  const favorite = favorites.map(e => e.id).includes(product.id);
+
+  const hasCartItem = cartItems.some(item => item.product.id === product.id);
+
+  function handleToggleFavorite() {
+    if (!favorite) {
+      setFavorites(prev => [...prev, product]);
+    } else {
+      setFavorites(prev => prev.filter(p => product.id !== p.id));
+    }
+  }
+
+  function handleAddToCart() {
+    if (!hasCartItem) {
+      const newCartItem: CartItem = {
+        id: product.id,
+        quantity: 1,
+        product,
+      };
+
+      setCartItems(prev => [...prev, newCartItem]);
+    }
+  }
 
   return (
     <article className={styles.card}>
@@ -45,13 +72,18 @@ export const ProductCard: React.FC<Props> = ({
       </ul>
 
       <div className={styles.buttons}>
-        <button className={styles.addToCart}>Add to cart</button>
+        <button
+          data-added={hasCartItem}
+          className={styles.addToCart}
+          onClick={handleAddToCart}
+        >
+          {hasCartItem ? 'Added' : 'Added to cart'}
+        </button>
+
         <button
           data-selected={favorite}
           className={styles.favorite}
-          onClick={() => {
-            setFavorite(!favorite);
-          }}
+          onClick={handleToggleFavorite}
         >
           <img
             src={

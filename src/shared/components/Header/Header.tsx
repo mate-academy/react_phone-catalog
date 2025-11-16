@@ -1,6 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { IconButton } from '../IconButton';
+import { useContext } from 'react';
+import { FavoriteContext } from '../../contexts/FavoriteContext';
+import { CartContext } from '../../contexts/CartContext';
 
 const menuItems = [
   { to: '/', label: 'Home' },
@@ -10,8 +13,8 @@ const menuItems = [
 ];
 
 export const Header = () => {
-  const cart = [];
-  const favorites = [];
+  const { favorites } = useContext(FavoriteContext);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <header className={styles.header}>
@@ -55,7 +58,7 @@ export const Header = () => {
           to="/cart"
           src="/icons/basket.svg"
           alt="Cart"
-          count={cart.length}
+          count={cartItems.length}
         />
       </div>
     </header>

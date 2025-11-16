@@ -6,19 +6,29 @@ import { PhonesPage } from './modules/PhonesPage/PhonesPage';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import './styles/fonts.scss';
 import './App.scss';
+import { FavoriteProvider } from './shared/contexts/FavoriteContext';
+import { FavoritesPage } from './modules/FavoritesPage';
+import { CartProvider } from './shared/contexts/CartContext';
+import { CartPage } from './modules/CartPage';
 
 export const App = () => (
-  <BrowserRouter>
-    <div className="app-wrapper">
-      <Header />
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/phones" element={<PhonesPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
-  </BrowserRouter>
+  <CartProvider>
+    <FavoriteProvider>
+      <BrowserRouter>
+        <div className="app-wrapper">
+          <Header />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/phones" element={<PhonesPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/cart" element={<CartPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </FavoriteProvider>
+  </CartProvider>
 );

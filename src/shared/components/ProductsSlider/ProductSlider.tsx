@@ -3,7 +3,7 @@ import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 
 export type UiProduct = {
-  id: string;
+  id: number;
   title: string;
   img: string;
   price: number;
