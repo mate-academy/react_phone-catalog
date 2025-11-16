@@ -26,13 +26,10 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
     .filter(product => product.fullPrice > product.price)
     .sort((a, b) => b.price - a.price);
 
-  let sale = true;
-
   if (styleNew) {
     const newestYear = Math.max(...productsList.map(p => p.year));
 
     products = productsList.filter(product => product.year === newestYear);
-    sale = false;
   }
 
   if (styleAlso && id) {
@@ -88,9 +85,14 @@ export const ProductsList: React.FC<ProductsListType> = ({ productsStyle }) => {
         <NoCategory />
       ) : (
         <div className={styles.productsList}>
-          {visibleProducts.map(element => (
-            <CardProduct key={element.id} element={element} sale={sale} />
-          ))}
+          {visibleProducts.map(element => {
+            const sale =
+              element.details?.priceDiscount !== element.details?.priceRegular;
+
+            return (
+              <CardProduct key={element.id} element={element} sale={sale} />
+            );
+          })}
         </div>
       )}
     </div>

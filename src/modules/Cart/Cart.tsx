@@ -45,7 +45,6 @@ export const Cart = () => {
   useEffect(() => {
     localStorage.setItem('cartCounts', JSON.stringify(countItems));
   }, [countItems]);
-
   const commonPrice = cartProducts.reduce((sum, product) => {
     const count = countItems[product.id] || 1;
 

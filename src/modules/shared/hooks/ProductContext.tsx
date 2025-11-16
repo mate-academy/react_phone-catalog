@@ -36,7 +36,6 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
   product,
   setCurrentProduct,
   children,
-  sale,
   isProductPage,
 }) => {
   const [activeImage, setActiveImage] = useState(product?.image);
@@ -44,6 +43,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
   const [activeCapacity, setActiveCapacity] = useState(product?.capacity);
   const [activeProduct, setActiveProduct] = useState(product.details);
   const { productsList } = useTabs();
+  const sale = product.details?.priceDiscount !== product.details?.priceRegular;
 
   const productColorKey = Object.keys(colorStyle).find(
     key => colorStyle[key] === activeColor,

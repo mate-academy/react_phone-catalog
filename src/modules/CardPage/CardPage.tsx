@@ -174,9 +174,15 @@ export const CardPage = () => {
           <Cart />
         ) : (
           <div className={styles.elementsContainer}>
-            {visibleProducts.map(product => (
-              <CardProduct key={product.id} element={product} sale={true} />
-            ))}
+            {visibleProducts.map(product => {
+              const sale =
+                product.details?.priceDiscount !==
+                product.details?.priceRegular;
+
+              return (
+                <CardProduct key={product.id} element={product} sale={sale} />
+              );
+            })}
           </div>
         )}
       </div>
