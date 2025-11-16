@@ -14,7 +14,6 @@ interface ContainerPriceProps {
 export const ContainerPrice: React.FC<ContainerPriceProps> = ({
   element,
   sale,
-  activeProduct,
 }) => {
   const productContext = useSafeProduct();
   const isProductPage = productContext?.isProductPage ?? false;
@@ -27,7 +26,7 @@ export const ContainerPrice: React.FC<ContainerPriceProps> = ({
         }}
         className={styles.price}
       >
-        ${activeProduct ? activeProduct.priceDiscount : element.price}
+        ${element.price}
       </div>
 
       {sale && (
@@ -37,7 +36,7 @@ export const ContainerPrice: React.FC<ContainerPriceProps> = ({
           }}
           className={styles.fullPrice}
         >
-          ${activeProduct ? activeProduct.priceRegular : element.fullPrice}
+          ${element.fullPrice}
         </div>
       )}
     </div>
