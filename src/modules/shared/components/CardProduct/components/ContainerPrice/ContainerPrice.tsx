@@ -16,7 +16,7 @@ export const ContainerPrice: React.FC<ContainerPriceProps> = ({
   sale,
 }) => {
   const productContext = useSafeProduct();
-  const isProductPage = productContext?.isProductPage ?? false;
+  const isProductPage = productContext?.isProductPage !== undefined;
 
   return (
     <div className={styles.containerPrice}>
