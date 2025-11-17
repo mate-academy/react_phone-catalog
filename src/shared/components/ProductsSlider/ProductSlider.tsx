@@ -6,7 +6,7 @@ export type UiProduct = {
   id: number;
   title: string;
   img: string;
-  price: number;
+  priceRegular: number;
   oldPrice?: number;
   year: number;
   screen: string;

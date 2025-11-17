@@ -9,7 +9,7 @@ import './App.scss';
 import { FavoriteProvider } from './shared/contexts/FavoriteContext';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { CartProvider } from './shared/contexts/CartContext';
-import { CartPage } from './modules/CartPage';
+import { CartPage } from './modules/CartPage/CartPage';
 
 export const App = () => (
   <CartProvider>
