@@ -49,8 +49,6 @@
 }
 
 .devices__slider-may-also {
-  @include page-grid;
-
   .slider-product {
     grid-column: 1 / -1;
   }
