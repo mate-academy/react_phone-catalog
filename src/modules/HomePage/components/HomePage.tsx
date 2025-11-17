@@ -5,6 +5,7 @@ import { Product } from '@/types';
 import SliderComponent from './SliderComponent';
 import productsList from '../../../../public/api/products.json';
 import { Link } from 'react-router-dom';
+import PageHeader from '@/modules/shared/components/PageHeader/PageHeader';
 
 const HomePage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>(productsList);
@@ -19,6 +20,7 @@ const HomePage: React.FC = () => {
       counters[item.category]++;
     }
   }
+
   const hotProducts = [...products].sort(
     (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
   );
@@ -27,18 +29,18 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <div className={styles.pageTitleAndBanner}>
-        <h1 className={styles.pageTitle}>Welcome to Nice Gadgets store!</h1>
-        <Carousel />
-      </div>
-
+      <PageHeader
+        title="Welcome to Nice Gadgets store!"
+        showBreadCrumbs={false}
+      />
+      <Carousel />
       <SliderComponent products={newProducts} title="Brand new models" />
       <section className={styles.categorySection}>
         <h2 className={styles.categoryTitle}>Shop by Category</h2>
         <div className={styles.categoryGrid}>
           <Link to="/phones" className={styles.categoryCard}>
             <img
-              src="/img/Phones.svg"
+              src="img/Phones.svg"
               alt="Mobile Phones"
               className={styles.categoryImage}
             />
@@ -51,7 +53,7 @@ const HomePage: React.FC = () => {
           </Link>
           <Link to="/tablets" className={styles.categoryCard}>
             <img
-              src="/img/Tablets.svg"
+              src="img/Tablets.svg"
               alt="Tablets"
               className={styles.categoryImage}
             />
@@ -64,7 +66,7 @@ const HomePage: React.FC = () => {
           </Link>
           <Link to="/accessories" className={styles.categoryCard}>
             <img
-              src="/img/Accessories.svg"
+              src="img/Accessories.svg"
               alt="Accessories"
               className={styles.categoryImage}
             />

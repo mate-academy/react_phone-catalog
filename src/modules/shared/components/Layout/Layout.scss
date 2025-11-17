@@ -3,11 +3,15 @@
   max-width: 1136px; // or 1440px
   margin: 0 auto; // centers content
   // padding: 0 20px;
+
+  > section {
+    margin-bottom: 80px;
+  }
 }
+
 header {
   position: sticky;
   top: 0;
   z-index: 1000; /* so it stays above content */
   background: white; /* avoid transparency when scrolling */
 }
-

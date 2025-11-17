@@ -23,8 +23,9 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
   };
 
   const visible = products.slice(index, index + 4);
+
   return (
-    <>
+    <section>
       <div className={styles.SliderComponent__headerContainer}>
         <h2>{title}</h2>
         <div className={styles.SliderComponent__buttonGroup}>
@@ -33,14 +34,14 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
             disabled={index === 0}
             onClick={prev}
           >
-            <img src="/img/arrow-left.svg" alt="Previous" />
+            <img src="img/arrow-left.svg" alt="Previous" />
           </button>
           <button
             className={styles.SliderComponent__buttonContainer}
             disabled={index + 4 >= products.length}
             onClick={next}
           >
-            <img src="/img/arrow-right.svg" alt="Next" />
+            <img src="img/arrow-right.svg" alt="Next" />
           </button>
         </div>
       </div>
@@ -49,7 +50,7 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
           <SliderItem key={prod.id} item={prod} showDiscount={showDiscount} />
         ))}
       </div>
-    </>
+    </section>
   );
 };
 

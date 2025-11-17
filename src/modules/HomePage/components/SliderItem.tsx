@@ -15,13 +15,13 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
       <div className={styles.SliderComponent__item__infoContainer}>
         <span className={styles.SliderComponent__itemName}>{item.name}</span>
         <div className={styles.SliderComponent__item__priceContainer}>
-          <h3 className={styles.SliderComponent__item__fullPrice}>
+          <div className={styles.SliderComponent__item__fullPrice}>
             ${item.fullPrice}
-          </h3>
+          </div>
           {showDiscount && (
-            <h3 className={styles.SliderComponent__item__price}>
+            <div className={styles.SliderComponent__item__price}>
               ${item.price}
-            </h3>
+            </div>
           )}
         </div>
         <div className={styles.SliderComponent__item__divider}></div>
@@ -44,7 +44,7 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
             Add to Cart
           </button>
           <button className={styles.SliderComponent__item__favoriteButton}>
-            <img src="/img/icons/heart.svg" alt="Add to Favorites" />
+            <img src="img/icons/heart.svg" alt="Add to Favorites" />
           </button>
         </div>
       </div>

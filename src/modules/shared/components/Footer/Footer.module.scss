@@ -1,0 +1,14 @@
+.footer {
+  box-shadow: 0 -1px 0 0 $color-elements;
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 152px;
+  &__link {
+    @include type($small-size, $small-line, $small-track, $small-weight);
+    color: $color-secondary;
+  }
+  &__links {
+    display: flex;
+    align-items: center;
+  }
+}

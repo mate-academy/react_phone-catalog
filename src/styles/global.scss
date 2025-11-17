@@ -1,4 +1,4 @@
-@use './variables' as *;   // Sass vars & mixins
+@use './variables.scss' as *;   // Sass vars & mixins
 @import './fonts.scss';     // loads the 'Mont' family
 @import './normilize.scss';
 @import './typography.scss';
