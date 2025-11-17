@@ -6,6 +6,7 @@ import './CardItem.scss';
 import allProducts from '../../../public/api/products.json';
 import { PromotionSlider } from '../PromotionSlider';
 import { Product } from '../../types/Product';
+import { NavLink } from 'react-router-dom';
 
 export const CardItem = () => {
   const product = {
@@ -17,7 +18,7 @@ export const CardItem = () => {
     capacity: '32GB',
     priceRegular: 540,
     priceDiscount: 500,
-    colorsAvailable: ['black', 'rosegold', 'gold', 'silver'],
+    colorsAvailable: ['black', 'mistyrose', 'gold', 'silver'],
     color: 'silver',
     images: [
       'img/phones/apple-iphone-7-plus/silver/00.webp',
@@ -82,8 +83,6 @@ export const CardItem = () => {
     return Math.floor(Math.random() * 1000000);
   }, []);
 
-  console.log(productId);
-
   return (
     <section className="card-item">
       <div className="container card-item__container">
@@ -142,18 +141,15 @@ export const CardItem = () => {
                 <ul className="body-card__items">
                   {product.colorsAvailable.map(color => (
                     <li className="body-card__item" key={color}>
-                      <span
-                        className={classNames(
-                          'body-card__item-color',
-                          `body-card__item-color--${color}`,
-                        )}
-                      >
-                        {}
-                      </span>
+                      <NavLink
+                        to={`./${color}`}
+                        className={({ isActive }) =>
+                          `body-card__item-color body-card__item-color--${color} ${isActive ? 'body-card__item-color--active' : ''}`
+                        }
+                      ></NavLink>
                     </li>
                   ))}
                 </ul>
-                <span className="body-card__id">ID: {productId}</span>
               </div>
               <div className="body-card__capacity separator">
                 <div className="body-card__info-name">Select capacity</div>
@@ -180,6 +176,7 @@ export const CardItem = () => {
                   ${product.priceRegular}
                 </span>
               </div>
+              <span className="body-card__id">ID: {productId}</span>
             </div>
           </div>
 
