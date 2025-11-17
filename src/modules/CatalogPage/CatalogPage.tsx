@@ -3,7 +3,7 @@ import { Catalog } from './Catalog/Catalog';
 import { Pagination } from './Pagination/Pagination';
 import { PhonesTitle } from './PhonesTitle/Phones-title';
 import { Sort } from './Sort/Sort';
-import useCatalogData from './Hooks/UseCatalogData';
+import useCatalogData from '../Hooks/UseCatalogData';
 import { useState, useEffect } from 'react';
 import { SortType } from '../../Types/type';
 import { Loading } from '../Shared/Loading/Loading';

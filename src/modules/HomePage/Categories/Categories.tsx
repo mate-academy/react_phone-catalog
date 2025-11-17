@@ -3,7 +3,7 @@ import style from './Categories.module.scss';
 
 export const Category = () => {
   return (
-    <div className={style.categories}>
+    <div className={`${style['categories']} ${style['categories--margin']}`}>
       <div className={style.categories__top}>
         <h2 className={style.categories__top__title}>Shop by category</h2>
       </div>

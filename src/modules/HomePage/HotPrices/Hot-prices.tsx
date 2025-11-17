@@ -3,10 +3,12 @@ import phones from '../../../../public/api/phones.json';
 import type { Phone } from '../../../Types/type';
 import style from './Hot-Prices.module.scss';
 import { Link, useLocation } from 'react-router-dom';
+import useAddToFavourite from '../../Hooks/UseAddToFavourite';
 
 export const HotPrices = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
+  const { favourites, toggleFavourite } = useAddToFavourite();
 
   const itemsPerPage = 4;
   const maxIndex = Math.max(0, phones.length - itemsPerPage);
@@ -19,15 +21,14 @@ export const HotPrices = () => {
     setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
   };
 
-  // Функція для отримання ширини картки + gap
   const getCardWidth = () => {
     if (cardRef.current) {
       const card = cardRef.current;
       const cardWidth = card.offsetWidth;
-      const gap = 16; // gap з CSS
+      const gap = 16;
       return cardWidth + gap;
     }
-    return 288; // fallback значення (272px ширина + 16px gap)
+    return 288;
   };
 
   const sortedProduct = phones.sort((a, b) => b.priceRegular - a.priceRegular);
@@ -51,7 +52,7 @@ export const HotPrices = () => {
   const currentPage = getCurrentPage();
 
   return (
-    <div className={style.newmodels}>
+    <div className={`${style['newmodels']} ${style['newmodels--margin']}`}>
       <div className={style.newmodels__topbar}>
         <h2 className={style.newmodels__topbar__title}>Hot prices</h2>
         <div className={style.newmodels__topbar__buttons}>
@@ -79,63 +80,75 @@ export const HotPrices = () => {
             transform: `translateX(-${currentIndex * getCardWidth()}px)`,
           }}
         >
-          {sortedProduct.map((phone: Phone, index: number) => (
-            <article
-              className={style.newmodels__product}
-              key={phone.id}
-              ref={index === 0 ? cardRef : null}
-            >
-              <Link to={`/${currentPage}/${phone.id}`}>
-                <img
-                  className={style.newmodels__product__image}
-                  src={phone.images[0]}
-                  alt={phone.name}
-                />
-              </Link>
-              <p className={style.newmodels__product__name}>{phone.name}</p>
-              <div className={style.newmodels__product__prices}>
-                <h4 className={style.newmodels__product__prices__price}>
-                  ${phone.priceDiscount}
-                </h4>
-                <h4 className={style.newmodels__product__prices__discount}>
-                  ${phone.priceRegular}
-                </h4>
-              </div>
-              <hr className={style['newmodels__product--line']} />
+          {sortedProduct.map((phone: Phone, index: number) => {
+            const isFavourite = favourites.has(phone.id);
+            
+            return (
+              <article
+                className={style.newmodels__product}
+                key={phone.id}
+                ref={index === 0 ? cardRef : null}
+              >
+                <Link to={`/${currentPage}/${phone.id}`}>
+                  <img
+                    className={style.newmodels__product__image}
+                    src={phone.images[0]}
+                    alt={phone.name}
+                  />
+                </Link>
+                <p className={style.newmodels__product__name}>{phone.name}</p>
+                <div className={style.newmodels__product__prices}>
+                  <h4 className={style.newmodels__product__prices__price}>
+                    ${phone.priceDiscount}
+                  </h4>
+                  <h4 className={style.newmodels__product__prices__discount}>
+                    ${phone.priceRegular}
+                  </h4>
+                </div>
+                <hr className={style['newmodels__product--line']} />
 
-              <div className={style.newmodels__product__description}>
-                <p className={style.newmodels__product__description__screen}>
-                  Screen
-                </p>
-                <p className={style['newmodels__product__description__screen--number']}>
-                  {phone.screen}
-                </p>
-              </div>
-              <div className={style.newmodels__product__description}>
-                <p className={style.newmodels__product__description__capacity}>
-                  Capacity
-                </p>
-                <p className={style['newmodels__product__description__capacity--number']}>
-                  {phone.capacity}
-                </p>
-              </div>
-              <div className={style.newmodels__product__description}>
-                <p className={style.newmodels__product__description__ram}>RAM</p>
-                <p className={style['newmodels__product__description__ram--number']}>
-                  {phone.ram}
-                </p>
-              </div>
+                <div className={style.newmodels__product__description}>
+                  <p className={style.newmodels__product__description__screen}>
+                    Screen
+                  </p>
+                  <p className={style['newmodels__product__description__screen--number']}>
+                    {phone.screen}
+                  </p>
+                </div>
+                <div className={style.newmodels__product__description}>
+                  <p className={style.newmodels__product__description__capacity}>
+                    Capacity
+                  </p>
+                  <p className={style['newmodels__product__description__capacity--number']}>
+                    {phone.capacity}
+                  </p>
+                </div>
+                <div className={style.newmodels__product__description}>
+                  <p className={style.newmodels__product__description__ram}>RAM</p>
+                  <p className={style['newmodels__product__description__ram--number']}>
+                    {phone.ram}
+                  </p>
+                </div>
 
-              <div className={style.newmodels__product__buttons}>
-                <button className={style.newmodels__product__buttons__button__add}>
-                  Add to cart
-                </button>
-                <button className={style.newmodels__product__buttons__button__favourites}>
-                  <span className={style['newmodels__product__buttons__button__favourites--heart']}></span>
-                </button>
-              </div>
-            </article>
-          ))}
+                <div className={style.newmodels__product__buttons}>
+                  <button className={style.newmodels__product__buttons__button__add}>
+                    Add to cart
+                  </button>
+                  <button 
+                    className={style.newmodels__product__buttons__button__favourites}
+                    onClick={() => toggleFavourite(phone.id)}
+                  >
+                    <span 
+                      className={`
+                        ${style['newmodels__product__buttons__button__favourites--heart']}
+                        ${isFavourite ? style['newmodels__product__buttons__button__favourites--heart--active'] : ''}
+                      `}
+                    ></span>
+                  </button>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -18,14 +18,7 @@
 		box-sizing: border-box;
 
 		@include onTablet {
-			max-width: 1199px;
 			justify-content: space-between;
-		}
-
-		@include onDesktop {
-			max-width: 1200px;
-			justify-content: space-between;
-		
 		}
 	}
 
@@ -37,9 +30,16 @@
 	}
 
 	&__logo {
-		padding-left: 24px;
-		padding-right: 48px;
+		padding-left: 16px;
 		flex-shrink: 0;
+		@include onTablet {
+			padding-left: 24px;
+			padding-right: 32px;
+		}
+
+		@include onDesktop {
+			padding-right: 48px;
+		}
 
 		&__image {
 			display: block;
@@ -64,22 +64,60 @@
 		}
 
 		&__link {
-			margin-right: 64px;
-			color: $not-active-link-color;
-			text-decoration: none;
-			text-transform: uppercase;
-			transition: 0.20s;
-			white-space: nowrap;
+    margin-right: 32px;
+    color: $not-active-link-color;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.20s;
+    white-space: nowrap;
+    position: relative;
 
-			&:hover {
-				color: $active-link-color;
-			}
+    @include onDesktop {
+      margin-right: 64px;
+    }
 
-			&:last-child {
-				margin-right: 0;
-			}
-		}
-	}
+    &:hover {
+      color: $active-link-color;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: $active-link-color;
+      height: 4px;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.is-active {
+  color: $active-link-color;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: $active-link-color;
+    height: 4px;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    transform: scaleX(1); 
+  }
+}
 
 	&__icons {
 		display: flex;
@@ -110,22 +148,10 @@
 
 		&--bag {
 			background-image: url(/img/logo/Union.svg);
+
+			@include onDesktop {
+				background-image: url(/img/logo/Bag.svg);
+			}
 		}
-	}
-}
-
-.is-active {
-	color: $active-link-color;
-	position: relative;
-
-	&::after {
-		content: '';
-		display: block;
-		position: absolute;
-		background-color: $active-link-color;
-		height: 4px;
-		bottom: -10px;
-		left: 0;
-		width: 100%;
 	}
 }

@@ -2,10 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import type { Product } from '../../../Types/type';
 import style from './New-models.module.scss';
 import { Link, useLocation } from 'react-router-dom';
+import useAddToFavourite from '../../Hooks/UseAddToFavourite';
 
 export const NewModels = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [products, setProducts] = useState<Product[]>([]);
+  const { favourites, toggleFavourite } = useAddToFavourite();
+
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,17 +32,17 @@ export const NewModels = () => {
     if (cardRef.current) {
       const card = cardRef.current;
       const cardWidth = card.offsetWidth;
-      const gap = 16; 
+      const gap = 16;
       return cardWidth + gap;
     }
-    return 272; 
+    return 272;
   };
 
   const sortedProduct = Array.from(
     products
       .reduce((map, product) => {
-        const baseId = product.itemId.split('-').slice(0, -2).join('-'); 
-        
+        const baseId = product.itemId.split('-').slice(0, -2).join('-');
+
         if (!map.has(baseId)) {
           map.set(baseId, product);
         }
@@ -67,10 +70,12 @@ export const NewModels = () => {
   const currentPage = getCurrentPage();
 
   return (
-    <div className={style.newmodels}>
+    <div className={`${style['newmodels']} ${style['newmodels--margin']}`}>
       <div className={style.newmodels__topbar}>
         <h2 className={style.newmodels__topbar__title}>
-          Brand new models
+          Brand new
+          <br />
+          {' '}models
         </h2>
         <div className={style.newmodels__topbar__buttons}>
           <button
@@ -97,9 +102,11 @@ export const NewModels = () => {
             transform: `translateX(-${currentIndex * getCardWidth()}px)`,
           }}
         >
-          {sortedProduct.map((product: Product, index: number) => (
-            <article 
-              className={style.newmodels__product} 
+          {sortedProduct.map((product: Product, index: number) => {
+            const isFavourite = favourites.has(product.itemId);
+            return (
+            <article
+              className={style.newmodels__product}
               key={product.id}
               ref={index === 0 ? cardRef : null}
             >
@@ -141,12 +148,19 @@ export const NewModels = () => {
                 <button className={style.newmodels__product__buttons__button__add}>
                   Add to cart
                 </button>
-                <button className={style.newmodels__product__buttons__button__favourites}>
-                  <span className={style['newmodels__product__buttons__button__favourites--heart']}></span>
+                <button
+                className={style.newmodels__product__buttons__button__favourites}
+                onClick={() => toggleFavourite(product.itemId)}
+                >
+                  <span className={`
+                  ${style['newmodels__product__buttons__button__favourites--heart']}
+                  ${isFavourite ? style['newmodels__product__buttons__button__favourites--heart--active'] : ''}
+                  `}></span>
                 </button>
               </div>
             </article>
-          ))}
+          );
+})}
         </div>
       </div>
     </div>

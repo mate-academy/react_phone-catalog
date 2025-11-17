@@ -10,7 +10,7 @@
   align-items: start;
   color: $active-link-color;
   
-  @include onDesktop {
+  @include onTablet {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -31,7 +31,7 @@
     align-items: start;
     margin-bottom: 64px;
 
-    @include onDesktop {
+    @include onTablet {
       flex-direction: row;
       margin-bottom: 0;
     }
@@ -56,7 +56,7 @@
     align-items: center;
     padding-bottom: 32px;
     
-    @include onDesktop {
+    @include onTablet {
       justify-content: flex-end;
       width: 378px;
     }

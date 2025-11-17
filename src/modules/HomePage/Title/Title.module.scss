@@ -9,11 +9,14 @@
 	font-size: 32px;
 	line-height: 128%;
 	letter-spacing: -0.01em;
+
+	@include onTablet {
+		font-size: 48px;
+		line-height: 117%;
+	}
 	
   @include onDesktop {
 		text-align: start;
-		font-size: 48px;
-		line-height: 117%;
   }
 	&--margin {
   	margin: 24px 0;

@@ -19,7 +19,7 @@ body {
     padding: 0 16px;
 
     @include onTablet {
-      max-width: 640px; 
+      min-width: 640px; 
       padding: 0 24px;
     }
     

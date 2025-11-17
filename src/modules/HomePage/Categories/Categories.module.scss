@@ -5,7 +5,16 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 80px;
+  margin-bottom: 56px;
+  &--margin {
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
 
   &__top {
     width: 100%;
@@ -16,10 +25,10 @@
       font-weight: 800;
       font-size: 22px;
       line-height: 140%;
-      letter-spacing: -0.01em;
       color: $active-link-color;
-
-      @include onDesktop {
+      
+      @include onTablet {
+        letter-spacing: -0.01em;
         font-size: 32px;
         line-height: 128%;
       }
@@ -32,7 +41,7 @@
     gap: 16px;
     width: 100%;
 
-    @include onDesktop {
+    @include onTablet {
       flex-direction: row;
     }
     
@@ -69,17 +78,40 @@
       
       &--phones {
         background-color: #6D6474;
-         object-position: 58px 120px;
-      }
+         object-position: 50px -50%;
+          @include onTablet {
+            object-position: 45px 25px;
+          }
+
+          @include onDesktop {
+            object-position: 45px 95px;
+            
+          }
+        }
       
       &--tablets {
         background-color: #8D8D92;
         object-position: 75px 91px;
+
+        @include onTablet {
+          object-position: 45px 25px;
+        }
+
+        @include onDesktop {
+          object-position: 45px 75px;
+        }
       }
       
       &--accessories {
         background-color: #D53C51;
-        object-position:-19px 99px;
+        object-position: 5% 10px;
+          @include onTablet {
+            object-position: 45px 25px;
+          }
+
+        @include onDesktop {
+          object-position: 45px 100px;
+        }
       }
 
       &__name {

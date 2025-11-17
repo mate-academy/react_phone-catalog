@@ -1,4 +1,4 @@
-import { Phone } from "../../../Types/type";
+import { Phone } from "../../Types/type";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
 

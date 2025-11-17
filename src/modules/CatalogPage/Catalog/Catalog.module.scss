@@ -7,11 +7,10 @@
   justify-items: center;
 
   	&__product {
-		display: block;
-        align-self: center;
-        width: 272px;
-        height: 508px;
-        padding: 32px;
+			display: block;
+			align-self: center;
+			width: 272px;
+			padding: 32px;
       background-color: #161827;
 
         &__link {
@@ -32,28 +31,27 @@
         
 
         &__name {
-            font-family: $mont-regular-font;
-            color: $active-link-color;
-            background-color: #161827;
-            text-align: left;
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 150%;
-            margin-bottom: 10px;
-			height: 58px;
-            padding: 0 32px;
+					font-family: $mont-regular-font;
+					color: $active-link-color;
+					background-color: #161827;
+					text-align: left;
+					font-weight: 600;
+					font-size: 14px;
+					line-height: 150%;
+					margin-bottom: 10px;
+					height: 58px;
+					padding: 0 32px;
         }
 
         &__price {
-            font-family: $mont-bold-font;
-            color: $active-link-color;
-            background-color: #161827;
-            font-weight: 800;
-            font-size: 22px;
-            line-height: 140%;
-            margin-bottom: 8px;
-            padding: 0 32px;
-            
+					font-family: $mont-bold-font;
+					color: $active-link-color;
+					background-color: #161827;
+					font-weight: 800;
+					font-size: 22px;
+					line-height: 140%;
+					margin-bottom: 8px;
+					padding: 0 32px;
         }
 
 				&--line {
@@ -61,85 +59,97 @@
 					width: 208px;
 					height: 0;
 					margin-bottom: 16px;
-                    margin-left: 32px;
+					margin-left: 32px;
 				}
 
         &__description {
-            background-color: #161827;
-            padding: 0 32px;
+					background-color: #161827;
+					padding: 0 32px;
+					display: flex;
+					justify-content: space-between;
+					color: $active-link-color;
+					padding-bottom: 8px;
 
-            display: flex;
-            justify-content: space-between;
-            color: $active-link-color;
-            padding-bottom: 8px;
+					&__screen,
+					&__capacity,
+					&__ram {
+						color: #75767F;
+						background-color: #161827;
+						font-weight: 700;
+						font-size: 12px;
+					}
 
-            &__screen,
-            &__capacity,
-            &__ram {
-                color: #75767F;
-                background-color: #161827;
-                font-weight: 700;
-                font-size: 12px;
+					&__screen--number,
+					&__capacity--number,
+					&__ram--number {
+						background-color: #161827;
+						color: $active-link-color;
+						font-weight: 700;
+						font-size: 12px;
+					}
 
-            }
-
-            &__screen--number,
-            &__capacity--number,
-            &__ram--number {
-                background-color: #161827;
-                color: $active-link-color;
-                font-weight: 700;
-                font-size: 12px;
-
-
-            }
-
-            &__ram {
-                margin-bottom: 16px;
-
-            }
-
-        }
+					&__ram {
+						margin-bottom: 16px;
+					}
+			}
 
         &__buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #161827;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					background-color: #161827;
+					&__button__add {
+							color: $active-link-color;
+							width: 160px;
+							height: 40px;
+							background-color: #905BFF;
+							border: none;
+							margin-right: 8px;
+									
+							&:hover {
+									background-color: #A378FF;
+							}
+					}
 
+					&__button__favourites {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						width: 40px;
+						height: 40px;
+						background-color: #323542;
+						border: none;
 
-            &__button__add {
-                color: $active-link-color;
-                width: 160px;
-                height: 40px;
-                background-color: #905BFF;
-                border: none;
-                margin-right: 8px;
-                    
-                &:hover {
-                    background-color: #A378FF;
-                }
-            }
+						&--heart {
+							background-color: #323542;
+							width: 15.34px;
+							height: 13.55px;
+							background-image: url(/img/logo/Heart.svg);
+							background-repeat: no-repeat;
+							border: none;
 
-            &__button__favourites {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 40px;
-                height: 40px;
-                background-color: #323542;
-                border: none;
+							&:hover {
+								background-image: url(/img/logo/Favourites.svg);
+							}
 
-                &--heart {
-                    background-color: #323542;
-                    width: 15.34px;
-                    height: 13.55px;
-                    background-image: url(/img/logo/Heart.svg);
-                    background-repeat: no-repeat;
-                    border: none;
-                }
-            }
+							&--active {
+								background-image: url(/img/logo/Favourites.svg);
+								animation: addToFavourite 0.4s ease;
+							}
+
+							@keyframes addToFavourite {
+								0% {
+									transform: scale(1);
+								}
+								50% {
+									transform: scale(1.4);
+								}
+								100% {
+									transform: scale(1);
+								}
+							}
+						}
+					}
         }
-
     }
 }

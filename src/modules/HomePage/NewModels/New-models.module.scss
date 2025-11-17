@@ -1,12 +1,21 @@
 @import '../../../Scss-variables/Variables.scss';
-
+@import '../../Utils/mixins.scss';
 
 .newmodels {
 	display: flex;
 	justify-content: flex-start;
 	width: 100%;
 	flex-wrap: wrap;
-	margin-bottom: 80px;
+	&--margin {
+		margin-bottom: 57px;
+
+		@include onTablet {
+			margin-bottom: 64px;
+		}
+		@include onDesktop {
+			margin-bottom: 80px;
+		}
+	}
 
 
 	&__topbar {
@@ -19,13 +28,21 @@
 		&__title {
 			color: $active-link-color;
 			font-family: $mont-bold-font;
-			font-size: 32px;
-			line-height: 41px;
-			letter-spacing: -1%;
+			font-size: 22px;
+			line-height: 140%;
+
+			@include onTablet {
+				font-size: 32px;
+				line-height: 41px;
+				br {
+					display: none;
+				}
+			}
 		}
 
 		&__buttons {
 			display: flex;
+			align-items: center;
 
 			&__left,
 			&__right {
@@ -35,8 +52,14 @@
 				width: 31px;
 				height: 31px;
 				border: 1px solid #3B3E4A;
-				color: $active-link-color;
-				background-color: #323542;
+				color: #4A4D58;
+				background-color: #0F1121;
+				transition: 0.15s ease;
+				
+				&:focus {
+					background-color: #323542;
+					color: $active-link-color;
+				}
 			}
 			&__right {
 				margin-left: 16px;
@@ -71,6 +94,10 @@
 			padding: 32px 0; 
 			width: 272px;
 			flex-shrink: 0;
+
+			@include onDesktop {
+				width: 272px;
+			}
 			
 			&:hover {
 				transform: scale(1.01); 
@@ -189,6 +216,27 @@
 							background-image: url(/img/logo/Heart.svg);
 							background-repeat: no-repeat;
 							border: none;
+
+														&:hover {
+								background-image: url(/img/logo/Favourites.svg);
+							}
+
+							&--active {
+								background-image: url(/img/logo/Favourites.svg);
+								animation: addToFavourite 0.4s ease;
+							}
+
+							@keyframes addToFavourite {
+								0% {
+									transform: scale(1);
+								}
+								50% {
+									transform: scale(1.4);
+								}
+								100% {
+									transform: scale(1);
+								}
+							}
 						}
 					}
 			}

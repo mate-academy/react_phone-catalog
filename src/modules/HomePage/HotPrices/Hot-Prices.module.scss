@@ -1,12 +1,19 @@
 @import '../../../Scss-variables/Variables.scss';
-
+@import '../../Utils/mixins.scss';
 
 .newmodels {
 	display: flex;
 	justify-content: flex-start;
 	width: 100%;
 	flex-wrap: wrap;
-	margin-bottom: 80px;
+
+	&--margin {
+			margin-bottom: 64px;
+
+			@include onDesktop {
+			margin-bottom: 80px;
+		}
+	}
 
 
 	&__topbar {
@@ -208,6 +215,28 @@
 							background-image: url(/img/logo/Heart.svg);
 							background-repeat: no-repeat;
 							border: none;
+							transition: 0.15s ease;
+
+							&:hover {
+								background-image: url(/img/logo/Favourites.svg);
+							}
+
+							&--active {
+								background-image: url(/img/logo/Favourites.svg);
+								animation: addToFavourite 0.4s ease;
+							}
+
+							@keyframes addToFavourite {
+								0% {
+									transform: scale(1);
+								}
+								50% {
+									transform: scale(1.4);
+								}
+								100% {
+									transform: scale(1);
+								}
+							}
 						}
 					}
 			}
