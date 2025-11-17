@@ -9,7 +9,7 @@
   color: $secondary;
   font-family: $fontMontSemiBold;
   font-size: $font-size-base;
-  padding-bottom: $space-7xl;
+  padding-block: $space-7xl;
 
   @include page-grid;
 }
