@@ -46,5 +46,10 @@
       color: $primaryText;
       border-bottom: 3px solid $primaryText;
     }
+
+    &--active {
+      color: $primaryText;
+      border-bottom: 3px solid $primaryText;
+    }
   }
 }

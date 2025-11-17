@@ -20,6 +20,8 @@ interface SelectedProductContextType {
   setLoading: (load: boolean) => void;
   isError: boolean;
   setIsError: (load: boolean) => void;
+  additionalNumber: number;
+  setAdditionalNumber: (value: number) => void;
 }
 
 const SelectedProductContext = createContext<
@@ -45,6 +47,7 @@ export const SelectedProductProvider: React.FC<{
   const [cartProducts, setCartProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [additionalNumber, setAdditionalNumber] = useState(0);
 
   const toggleActiveProduct = (product: ProductType) => {
     setActiveProducts(prev => {
@@ -90,6 +93,8 @@ export const SelectedProductProvider: React.FC<{
         setLoading,
         isError,
         setIsError,
+        additionalNumber,
+        setAdditionalNumber,
       }}
     >
       {children}

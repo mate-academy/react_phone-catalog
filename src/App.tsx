@@ -18,7 +18,7 @@ import { NotFoundPage } from './modules/Devices/componets/NotFoundPage';
 
 export const App = () => {
   const location = useLocation();
-  const { activeProducts, cartProducts, loading, isError } =
+  const { activeProducts, cartProducts, loading, isError, additionalNumber } =
     useSelectedProduct();
 
   const staticRoutes = [
@@ -72,14 +72,21 @@ export const App = () => {
             <nav className="header-nav">
               <ul className="header-nav__list">
                 <li className="header-nav__item">
-                  <NavLink to="/" className="header-nav__link">
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      `header-nav__link ${isActive ? 'header-nav__link--active' : ''}`
+                    }
+                  >
                     Home
                   </NavLink>
                 </li>
                 <li className="header-nav__item">
                   <NavLink
                     to={{ pathname: '/phones', search: '?page=1&perPage=4' }}
-                    className="header-nav__link"
+                    className={({ isActive }) =>
+                      `header-nav__link ${isActive ? 'header-nav__link--active' : ''}`
+                    }
                   >
                     Phones
                   </NavLink>
@@ -87,7 +94,9 @@ export const App = () => {
                 <li className="header-nav__item">
                   <NavLink
                     to={{ pathname: '/tablets', search: '?page=1&perPage=4' }}
-                    className="header-nav__link"
+                    className={({ isActive }) =>
+                      `header-nav__link ${isActive ? 'header-nav__link--active' : ''}`
+                    }
                   >
                     Tablets
                   </NavLink>
@@ -98,7 +107,9 @@ export const App = () => {
                       pathname: '/accessories',
                       search: '?page=1&perPage=4',
                     }}
-                    className="header-nav__link"
+                    className={({ isActive }) =>
+                      `header-nav__link ${isActive ? 'header-nav__link--active' : ''}`
+                    }
                   >
                     Accessories
                   </NavLink>
@@ -131,7 +142,7 @@ export const App = () => {
               ></NavLink>
               {cartProducts.length > 0 && (
                 <span className="header__tablet-icons__1__circle">
-                  {cartProducts.length}
+                  {cartProducts.length + additionalNumber}
                 </span>
               )}
             </div>
@@ -203,7 +214,7 @@ export const App = () => {
             ></NavLink>
             {cartProducts.length > 0 && (
               <span className="menu__bottom-icon__1__circle">
-                {cartProducts.length}
+                {cartProducts.length + additionalNumber}
               </span>
             )}
           </div>

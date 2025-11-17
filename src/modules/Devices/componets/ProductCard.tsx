@@ -13,6 +13,7 @@ import { DeviceType } from '../../../types/deviceType';
 export const ProductCard = () => {
   const {
     selectedProduct,
+    setSelectedProduct,
     setSelectedColor,
     setSelectedCapacity,
     cartProducts,
@@ -105,6 +106,20 @@ export const ProductCard = () => {
       });
   }, [selectedColor, selectedCapacity]);
 
+  useEffect(() => {
+    if (!foundProduct || allDevices.length === 0) {
+      return;
+    }
+
+    const matchedProduct = allDevices.find(
+      product => product.itemId === foundProduct.id,
+    );
+
+    if (matchedProduct) {
+      setSelectedProduct(matchedProduct);
+    }
+  }, [foundProduct, allDevices, setSelectedProduct]);
+
   const colorHexMap: { [key: string]: string } = {
     rosegold: '#B76E79',
     midnightgreen: '#004953',
@@ -130,7 +145,7 @@ export const ProductCard = () => {
   };
 
   const handleAddToCart = () => {
-    if (!selectedProduct?.itemId || selectedProduct?.price === undefined) {
+    if (!selectedProduct?.id || selectedProduct?.price === undefined) {
       return;
     }
 
@@ -313,13 +328,13 @@ export const ProductCard = () => {
                     <button
                       className={classNames('addToCart', 'addToCart--bigger', {
                         'addToCart--active': cartProducts.some(
-                          product => product.itemId === selectedProduct?.itemId,
+                          product => product.itemId === foundProduct.id,
                         ),
                       })}
                       onClick={handleAddToCart}
                     >
                       {cartProducts.some(
-                        product => product.itemId === selectedProduct?.itemId,
+                        product => product.itemId === foundProduct.id,
                       )
                         ? 'Added to cart'
                         : 'Add to cart'}
@@ -329,8 +344,8 @@ export const ProductCard = () => {
                         'addToFavourite',
                         'addToFavourite--bigger',
                         {
-                          'addToFavourite--active': activeProducts.includes(
-                            selectedProduct as ProductType,
+                          'addToFavourite--active': activeProducts.some(
+                            product => product.id === selectedProduct?.id,
                           ),
                         },
                       )}

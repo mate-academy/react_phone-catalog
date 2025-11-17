@@ -13,7 +13,12 @@ function countSum(products: ProductQuantity[]) {
 }
 
 export const Cart = () => {
-  const { cartProducts, setCartProducts } = useSelectedProduct();
+  const {
+    cartProducts,
+    setCartProducts,
+    additionalNumber,
+    setAdditionalNumber,
+  } = useSelectedProduct();
   const [productsWithQuantity, setProductsWithQuantity] = useState<
     ProductQuantity[]
   >(() => {
@@ -109,7 +114,10 @@ export const Cart = () => {
                             buttons-quantity__main 
                             buttons-quantity__main--menos
                           "
-                          onClick={() => decreaseQuantity(index)}
+                          onClick={() => {
+                            decreaseQuantity(index);
+                            setAdditionalNumber(additionalNumber - 1);
+                          }}
                           disabled={cartProduct.quantity === 1}
                         ></button>
                         <span className="buttons-quantity__text">
@@ -120,7 +128,10 @@ export const Cart = () => {
                             buttons-quantity__main 
                             buttons-quantity__main--plus
                           "
-                          onClick={() => increaseQuantity(index)}
+                          onClick={() => {
+                            increaseQuantity(index);
+                            setAdditionalNumber(additionalNumber + 1);
+                          }}
                         ></button>
                       </div>
                       <div className="quantity__price title-h3">{`${cartProduct.price * cartProduct.quantity}€`}</div>
@@ -130,7 +141,7 @@ export const Cart = () => {
               </div>
               <div className="cart__total-price total-price">
                 <p className="total-price__price">{`${totalCount}€`}</p>
-                <p className="total-price__label body-text-600 body-text-600--gray body-text-600--gray-homepage">{`Total for ${cartProducts.length} items`}</p>
+                <p className="total-price__label body-text-600 body-text-600--gray body-text-600--gray-homepage">{`Total for ${cartProducts.length + additionalNumber} items`}</p>
                 <button
                   className="addToCart addToCart--bigger"
                   onClick={() => setIsOpen(true)}
