@@ -3,11 +3,10 @@
   align-items: center;
   padding: 8px 15px;
   background-color: var(--button-bg);
-  border: 1px solid #444;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  margin-bottom: 20px;
   transition: background-color 0.3s;
 
   &:hover {

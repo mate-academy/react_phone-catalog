@@ -1,83 +1,121 @@
-/* eslint-disable @typescript-eslint/indent */
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import styles from './ProductCard.module.scss';
+import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Product } from '../../../shared/types';
 import { useCart } from '../../../shared/context/CartContext';
 import { useFavorites } from '../../../shared/context/FavoriteContext';
-import { Button } from '../../../../components/UI/Button/Button';
+import { useTranslation } from 'react-i18next';
+import styles from './ProductCard.module.scss';
 
-interface Props {
+interface ProductCardProps {
   product: Product;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { t } = useTranslation();
-  const { addToCart } = useCart();
+  const navigate = useNavigate();
+  const { addToCart, cart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
-  const isFavorite = favorites.some(fav => fav.id === product.id);
-  const [imageError, setImageError] = useState(false);
-  const [isAdded, setIsAdded] = useState(false);
 
-  const imageSrc =
-    imageError || !product.images?.[0]
-      ? '/img/page-not-found.png'
-      : `/${product.images[0]}`;
+  const isFavorite = favorites.some(f => f.id === product.id);
+  const hasDiscount =
+    product.priceDiscount && product.priceDiscount < product.priceRegular;
 
-  const handleAddToCart = () => {
-    addToCart(product);
-    setIsAdded(true);
+  const isInCart = cart.some(item => item.product.id === product.id);
+
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const clickedButton = (e.target as HTMLElement).closest('button');
+
+    if (clickedButton && cardRef.current?.contains(clickedButton)) {
+      return;
+    }
+
+    navigate(`/product/${product.id}`);
+  };
+
+  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    if (!isInCart) {
+      addToCart(product);
+    }
   };
 
   return (
-    <div className={styles.card}>
-      <Link to={`/product/${product.id}`}>
+    <div
+      ref={cardRef}
+      className={styles.card}
+      onClick={handleCardClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const target = e.target as HTMLElement;
+
+          if (!target.closest('button')) {
+            navigate(`/product/${product.id}`);
+          }
+        }
+      }}
+    >
+      <div className={styles.image}>
         <img
-          src={imageSrc}
-          alt={product.name || 'Product image'}
-          className={styles.image}
-          onError={() => setImageError(true)}
-          loading="lazy"
+          src={`/${product.images?.[0] || 'img/product-not-found.png'}`}
+          alt={product.name}
         />
-      </Link>
-      <h3>
-        <Link to={`/product/${product.id}`} className={styles.title}>
-          {product.name}
-        </Link>
-      </h3>
+      </div>
+
+      <h3 className={styles.name}>{product.name}</h3>
+
       <div className={styles.price}>
         <span className={styles.current}>
-          ${product.priceDiscount ?? product.priceRegular}
+          ${hasDiscount ? product.priceDiscount : product.priceRegular}
         </span>
-        {product.priceDiscount &&
-          product.priceDiscount < product.priceRegular && (
-            <span className={styles.full}>${product.priceRegular}</span>
-          )}
+        {hasDiscount && (
+          <span className={styles.old}>${product.priceRegular}</span>
+        )}
       </div>
-      <div className={styles.divider}></div>
+
       <div className={styles.specs}>
-        <p>Screen: {product.screen || 'N/A'}</p>
-        <p>Capacity: {product.capacity || 'N/A'}</p>
-        <p>RAM: {product.ram || 'N/A'}</p>
+        {product.screen && (
+          <div className={styles.spec}>
+            <span className={styles.label}>Screen</span>
+            <span className={styles.value}>{product.screen}</span>
+          </div>
+        )}
+        {product.capacity && (
+          <div className={styles.spec}>
+            <span className={styles.label}>Capacity</span>
+            <span className={styles.value}>{product.capacity}</span>
+          </div>
+        )}
+        {product.ram && (
+          <div className={styles.spec}>
+            <span className={styles.label}>RAM</span>
+            <span className={styles.value}>{product.ram}</span>
+          </div>
+        )}
       </div>
+
       <div className={styles.actions}>
-        <Button
-          variant="primary"
-          size="md"
-          onClick={() => handleAddToCart()}
-          disabled={isAdded}
+        <button
+          className={`${styles.addBtn} ${isInCart ? styles.added : ''}`}
+          onClick={handleAddToCart}
+          disabled={isInCart}
         >
-          {isAdded ? t('addedToCart') : t('addToCart')}
-        </Button>
-        <Button
-          variant="secondary"
-          size="md"
-          onClick={() => toggleFavorite(product)}
-          className={isFavorite ? styles.favoriteActive : ''}
+          {isInCart ? t('addedToCart') : t('addToCart')}
+        </button>
+
+        <button
+          className={`${styles.favBtn} ${isFavorite ? styles.active : ''}`}
+          onClick={e => {
+            e.stopPropagation();
+            toggleFavorite(product);
+          }}
         >
           {isFavorite ? '❤️' : '🤍'}
-        </Button>
+        </button>
       </div>
     </div>
   );

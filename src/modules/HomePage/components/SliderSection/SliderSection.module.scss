@@ -2,20 +2,6 @@
   margin-bottom: 64px;
 }
 
-.page {
-  flex: 0 0 100%;
-  width: 100%;
-  padding: 0 20px;
-  gap: 16px;
-  box-sizing: border-box;
-}
-
-.page > * {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -32,8 +18,6 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
-  padding: 0;
-  text-align: left;
 }
 
 .hot {
@@ -58,62 +42,78 @@
 .navButton {
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,.1);
   color: var(--text-color);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  // border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.2);
   font-size: 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all .3s ease;
   backdrop-filter: blur(4px);
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.7);
+  &:hover:not(:disabled) {
+    background: rgba(0,0,0,.7);
     transform: scale(1.1);
     color: white;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
   }
 }
 
 .container {
   position: relative;
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   padding: 20px 0;
 }
 
 .track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 1fr);
+  gap: 40px;
+  padding: 10px 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-.page {
-  flex: 0 0 100%;
-  width: 100%;
+.cardWrapper {
+  scroll-snap-align: start;
+  min-width: 0;
 }
 
-.dots {
-  text-align: center;
-  padding: 16px 0;
-  margin-top: 8px;
+.peekCard {
+  scroll-snap-align: start;
+  opacity: 0.5;
+  pointer-events: none;
+  transform: translateX(20px);
 }
 
-.dot {
-  height: 8px;
-  width: 24px;
-  background: #bbb;
-  border-radius: 25%;
-  display: inline-block;
-  margin: 0 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+@media (max-width: 1199px) {
+  .track {
+    grid-auto-columns: minmax(240px, 1fr);
+  }
 }
 
-.dot.active {
-  background: #717171;
-  width: 32px;
+@media (max-width: 699px) {
+  .track {
+    grid-auto-columns: minmax(200px, 1fr);
+  }
+  .header {
+    padding-right: 80px;
+  }
+  .nav {
+    right: 16px;
+  }
 }

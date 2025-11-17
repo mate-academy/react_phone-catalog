@@ -43,6 +43,8 @@ i18n.use(initReactI18next).init({
         specs: 'Tech Specs',
         back: 'Back',
         all: 'All',
+        avColor: 'Available colors',
+        avCapacity: 'Select capacity',
       },
     },
     ua: {
@@ -85,6 +87,8 @@ i18n.use(initReactI18next).init({
         specs: 'Технічні характеристики',
         back: 'Назад',
         all: 'Усі',
+        avColor: 'Доступні кольори',
+        avCapacity: 'Оберіть об`єм',
       },
     },
   },

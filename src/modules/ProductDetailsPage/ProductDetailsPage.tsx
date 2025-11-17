@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/indent */
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -8,16 +7,17 @@ import { Product } from '../shared/types';
 import { useCart } from '../shared/context/CartContext';
 import { useFavorites } from '../shared/context/FavoriteContext';
 import { Button } from '../../components/UI/Button/Button';
-// import { ProductsList } from '../CategoryPage/components/ProductsList';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { BackButton } from '../../components/BackButton/BackButton';
-import { DetailsSlider } from './DetailsSlider';
+// eslint-disable-next-line max-len
+import { SliderSection } from '../HomePage/components/SliderSection/SliderSection';
 
 export const ProductDetailsPage: React.FC = () => {
   const { t } = useTranslation();
   const { productId } = useParams<{ productId: string }>();
-  const { addToCart } = useCart();
+  const { addToCart, cart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
+
   const [baseProduct, setBaseProduct] = useState<Product | null>(null);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,15 +31,17 @@ export const ProductDetailsPage: React.FC = () => {
       return null;
     }
 
-    const variantId = `${baseProduct?.namespaceId}-${selectedCapacity.toLowerCase()}-${selectedColor.toLowerCase()}`;
-    const variant = allProducts.find(p => p.id === variantId);
+    const variantId = `${baseProduct.namespaceId}-${selectedCapacity.toLowerCase()}-${selectedColor.toLowerCase()}`;
 
-    return variant || baseProduct;
-
+    return allProducts.find(p => p.id === variantId) || baseProduct;
   }, [baseProduct, allProducts, selectedCapacity, selectedColor]);
 
   const isFavorite = currentProduct
-    ? favorites.some(fav => fav.id === currentProduct.id)
+    ? favorites.some(f => f.id === currentProduct.id)
+    : false;
+
+  const isInCart = currentProduct
+    ? cart.some(item => item.product.id === currentProduct.id)
     : false;
 
   const recommendedProducts = useMemo(() => {
@@ -48,12 +50,13 @@ export const ProductDetailsPage: React.FC = () => {
     }
 
     return allProducts
-      .filter(p =>
-        p.id !== currentProduct.id && p.category === currentProduct.category)
+      .filter(
+        p =>
+          p.id !== currentProduct.id && p.category === currentProduct.category,
+      )
       .sort(() => 0.5 - Math.random())
-      .slice(0, 4);
+      .slice(0, 8);
   }, [allProducts, currentProduct]);
-
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -62,11 +65,9 @@ export const ProductDetailsPage: React.FC = () => {
         const categories = ['phones', 'tablets', 'accessories'];
         const results = await Promise.all(
           categories.map(cat =>
-            fetch(`/api/${cat}.json`)
-              .then(res => res.ok ? res.json() : [])
-          )
+            fetch(`/api/${cat}.json`).then(res => (res.ok ? res.json() : [])),
+          ),
         );
-
         const all = results.flat();
 
         setAllProducts(all);
@@ -78,10 +79,14 @@ export const ProductDetailsPage: React.FC = () => {
         }
 
         setBaseProduct(found);
-        setSelectedColor(found.color);
-        setSelectedCapacity(found.capacity);
+        setSelectedColor(found.color || found.colorsAvailable?.[0] || '');
+        setSelectedCapacity(
+          found.capacity || found.capacityAvailable?.[0] || '',
+        );
       } catch (err) {
-        setError(t('errorLoading') + (err instanceof Error ? `: ${err.message}` : ''));
+        setError(
+          t('errorLoading') + (err instanceof Error ? `: ${err.message}` : ''),
+        );
       } finally {
         setLoading(false);
       }
@@ -103,144 +108,201 @@ export const ProductDetailsPage: React.FC = () => {
   if (error || !currentProduct) {
     return (
       <div className={styles.error}>
-        <img
-          src="/img/product-not-found.png"
-          alt={t('productNotFound')}
-          className={styles.errorImage}
-        />
+        <img src="/img/product-not-found.png" alt={t('productNotFound')} />
         <p>{error || t('productNotFound')}</p>
       </div>
     );
   }
 
+  const hasDiscount =
+    currentProduct.priceDiscount &&
+    currentProduct.priceDiscount < currentProduct.priceRegular;
 
+  const handleAddToCart = () => {
+    if (!isInCart) {
+      addToCart(currentProduct);
+    }
+  };
 
   return (
-    <div className={styles.details}>
-      <Breadcrumbs />
-      <BackButton />
-      <div className={styles.content}>
-        <div className={styles.topPanel}>
-          <div className={styles.thumbnailGallery}>
-            {currentProduct.images?.map((img, index) => (
+    <div className={styles.page}>
+      <div className={styles.container}>
+        <Breadcrumbs />
+        <BackButton />
+
+        <h1 className={styles.title}>{currentProduct.name}</h1>
+
+        <div className={styles.grid}>
+          <div className={styles.gallery}>
+            {currentProduct.images?.map((img, i) => (
               <img
-              key={index}
-              src={img ? `/${img}` : '/img/product-not-found.png'}
-              alt={`${currentProduct.name} image ${index + 1}`}
-              className={`${styles.thumbnail} ${selectedImageIndex === index ? styles.selected : ''}`}
-              onClick={() => setSelectedImageIndex(index)}
+                key={i}
+                src={`/${img}`}
+                alt=""
+                className={`${styles.thumb} ${i === selectedImageIndex ? styles.active : ''}`}
+                onClick={() => setSelectedImageIndex(i)}
               />
-            )) || (
-                <img
-                  src="/img/product-not-found.png"
-                  alt={t('noImage')}
-                  className={styles.thumbnail}
-                />
-              )}
+            ))}
           </div>
-          <div className={styles.mainImageContainer}>
+
+          <div className={styles.mainImage}>
             <img
-              src={
-                currentProduct.images?.[selectedImageIndex]
-                  ? `/${currentProduct.images[selectedImageIndex]}`
-                  : '/img/product-not-found.png'
-              }
-              alt={`${currentProduct.name} main image`}
-              className={styles.mainImage}
+              src={`/${currentProduct.images?.[selectedImageIndex] || 'img/product-not-found.png'}`}
+              alt={currentProduct.name}
             />
           </div>
-          <div className={styles.colorOptions}>
-            <h3>Available Colors</h3>
-            <div className={styles.colorCircles}>
-              {baseProduct?.colorsAvailable?.map((color) => (
-                <div
-                  key={color}
-                  className={`${styles.colorCircle} ${selectedColor === color ? styles.selected : ''}`}
-                  style={{ backgroundColor: color.toLocaleLowerCase() }}
-                  onClick={() => setSelectedColor(color)}
-                />
-              )) || <p>{t('noColors')}</p>}
-            </div>
-            <div className={styles.divider}></div>
-            <div className={styles.capacityOptions}>
-              {baseProduct?.capacityAvailable?.map((cap) => (
-                <button
-                  key={cap}
-                  className={`${styles.capacityButton} ${selectedCapacity === cap ? styles.selected : ''}`}
-                  onClick={() => setSelectedCapacity(cap)}
-                >
-                  {cap}
-                </button>
-              )) || <p>{t('noCapacity')}</p>}
-            </div>
-          </div>
-          <p className={styles.price}>
-            {currentProduct.priceDiscount ? (
-              <>
-                <span className={styles.discount}>
-                  {currentProduct.priceDiscount} $
-                </span>
-                <span
-                className={styles.regular}
-                >{currentProduct.priceRegular} $</span>
-              </>
-            ) : (
-              <span>
-                {currentProduct.priceRegular || currentProduct.price} $</span>
+
+          <div className={styles.rightPanel}>
+            <div className={styles.id}>ID: {currentProduct.id}</div>
+
+            {baseProduct?.colorsAvailable && (
+              <div className={styles.option}>
+                <h3>{t('avColor')}</h3>
+                <div className={styles.colors}>
+                  {baseProduct.colorsAvailable.map(color => (
+                    <div
+                      key={color}
+                      className={`${styles.color} ${selectedColor === color ? styles.selected : ''}`}
+                      style={{ backgroundColor: color.toLowerCase() }}
+                      onClick={() => setSelectedColor(color)}
+                    />
+                  ))}
+                </div>
+                <hr className={styles.divider} />
+              </div>
             )}
-          </p>
-          <div className={styles.actions}>
-            <Button
-              variant="primary"
-              size="md"
-              onClick={() => addToCart(currentProduct)}
-            >
-              {t('addToCart')}
-            </Button>
-            <Button
-              variant="secondary"
-              size="md"
-              onClick={() => toggleFavorite(currentProduct)}
-              className={isFavorite ? styles.favoriteActive : ''}
-            >
-              {isFavorite ? '❤️' : '🤍'}
-            </Button>
+
+            {baseProduct?.capacityAvailable && (
+              <div className={styles.option}>
+                <h3>{t('avCapacity')}</h3>
+                <div className={styles.capacities}>
+                  {baseProduct.capacityAvailable.map(cap => (
+                    <button
+                      key={cap}
+                      className={`${styles.capacityBtn} ${selectedCapacity === cap ? styles.selected : ''}`}
+                      onClick={() => setSelectedCapacity(cap)}
+                    >
+                      {cap}
+                    </button>
+                  ))}
+                </div>
+                <hr className={styles.divider} />
+              </div>
+            )}
+
+            <div className={styles.price}>
+              <span className={styles.discount}>
+                $
+                {hasDiscount
+                  ? currentProduct.priceDiscount
+                  : currentProduct.priceRegular}
+              </span>
+              {hasDiscount && (
+                <span className={styles.regular}>
+                  ${currentProduct.priceRegular}
+                </span>
+              )}
+            </div>
+
+            <div className={styles.actions}>
+              <Button
+                variant="primary"
+                onClick={handleAddToCart}
+                className={`${styles.addBtn} ${isInCart ? styles.added : ''}`}
+                disabled={isInCart}
+              >
+                {isInCart ? t('addedToCart') : t('addToCart')}
+              </Button>
+              <Button
+                // variant="icon"
+                onClick={() => toggleFavorite(currentProduct)}
+                className={isFavorite ? styles.favorite : ''}
+              >
+                {isFavorite ? '❤️' : '🤍'}
+              </Button>
+            </div>
+
+            <div className={styles.specs}>
+              <div className={styles.specGrid}>
+                {currentProduct.screen && (
+                  <>
+                    <div>Screen</div>
+                    <div>{currentProduct.screen}</div>
+                  </>
+                )}
+                {currentProduct.resolution && (
+                  <>
+                    <div>Resolution</div>
+                    <div>{currentProduct.resolution}</div>
+                  </>
+                )}
+                {currentProduct.processor && (
+                  <>
+                    <div>Processor</div>
+                    <div>{currentProduct.processor}</div>
+                  </>
+                )}
+                {currentProduct.ram && (
+                  <>
+                    <div>RAM</div>
+                    <div>{currentProduct.ram}</div>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className={styles.info}>
-          <div className={styles.productId}> ID: {currentProduct.id}</div>
-          {currentProduct.description && (
-            <div className={styles.description}>
-              <h1 className={styles.about}>{t('about')}</h1>
-              <div className={styles.divider}></div>
-              {currentProduct.description.map((desc, index) => (
-                <div key={index}>
-                  <h3 className={styles.descTitle}>{desc.title}</h3>
-                  {desc.text.map((text, i) => (
-                    <p key={i}>{text}</p>
-                  ))}
-                </div>
-              ))}
+        <div className={styles.aboutSpecs}>
+          <div className={styles.about}>
+            <h2>{t('about')}</h2>
+            <hr className={styles.divider} />
+            {currentProduct.description?.map((section, i) => (
+              <div key={i} className={styles.section}>
+                <h3>{section.title}</h3>
+                {section.text.map((p, j) => (
+                  <p key={j}>{p}</p>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.techSpecs}>
+            <h2>{t('specs')}</h2>
+            <hr className={styles.divider} />
+            <div className={styles.specsGrid}>
+              {[
+                { label: 'Screen', value: currentProduct.screen },
+                { label: 'Resolution', value: currentProduct.resolution },
+                { label: 'Processor', value: currentProduct.processor },
+                { label: 'Ram', value: currentProduct.ram },
+                { label: 'Storage', value: currentProduct.storage },
+                { label: 'Camera', value: currentProduct.camera },
+                { label: 'Zoom', value: currentProduct.zoom },
+                { label: 'Cell', value: currentProduct.cell?.join(', ') },
+                { label: 'Year', value: currentProduct.year },
+                { label: 'Capacity', value: currentProduct.capacity },
+                { label: 'Color', value: currentProduct.color },
+              ]
+                .filter(s => s.value)
+                .map((s, i) => (
+                  <div key={i} className={styles.specRow}>
+                    <span className={styles.specLabel}>{t(s.label)}</span>
+                    <span className={styles.specValue}>{s.value}</span>
+                  </div>
+                ))}
             </div>
-          )}
-          <h1 className={styles.specsTitle}>{t('specs')}</h1>
-          <div className={styles.specs}>
-            <p>Screen: {currentProduct.screen || 'N/A'}</p>
-            <p>Resolution: {currentProduct.resolution || 'N/A'}</p>
-            <p>Processor: {currentProduct.processor || 'N/A'}</p>
-            <p>RAM: {currentProduct.ram || 'N/A'}</p>
-            <p>Camera: {currentProduct.camera || 'N/A'}</p>
-            <p>Zoom: {currentProduct.zoom || 'N/A'}</p>
-            <p>Connectivity: {currentProduct.cell?.join(', ') || 'N/A'}</p>
-            {currentProduct.year && <p>Year: {currentProduct.year}</p>}
           </div>
         </div>
+
+        <section className={styles.recommendations}>
+          <SliderSection
+            title={t('youMayLike')}
+            products={recommendedProducts}
+            isHot={false}
+          />
+        </section>
       </div>
-      <section className={styles.recommendations}>
-        <h2 className={styles.recommendationTitle}>{t('youMayLike')}</h2>
-        <DetailsSlider products={recommendedProducts} />
-      </section>
     </div>
   );
 };

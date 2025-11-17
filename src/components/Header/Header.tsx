@@ -17,6 +17,8 @@ export const Header: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
 
+  const logoSrc = theme === 'dark' ? '/logo/logo.png' : '/logo/logo_dark.png';
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -34,7 +36,7 @@ export const Header: React.FC = () => {
       <div className={styles.logoAndNav}>
         <div className={styles.logo}>
           <Link to="/">
-            <img src="/logo/logo.png" alt="Logo" className={styles.logoImage} />
+            <img src={logoSrc} alt="Logo" className={styles.logoImage} />
           </Link>
         </div>
         <nav className={styles.nav}>

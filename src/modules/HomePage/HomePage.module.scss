@@ -41,71 +41,88 @@
 }
 
 .categoryGrid {
-  display: flex;
-  flex-flow: wrap;
-  flex-direction: row;
-  justify-content: center;
+  display: grid;
   gap: 16px;
-  justify-items: center;
-  margin-bottom: 81px;
-  margin-top: 81px;
+  margin: 81px 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  @media (max-width: 1199px) and (min-width: 700px) {
+    grid-template-columns: repeat(12, 1fr);
+  }
 
   @media (max-width: 699px) {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
+
 .categoryItem {
-  text-align: center;
+  grid-column: span 8;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.3s ease;
+  text-decoration: none;
+
+  @media (max-width: 1199px) and (min-width: 700px) {
+    grid-column: span 4;
+  }
+
+  @media (max-width: 699px) {
+    grid-column: span 4;
+  }
 }
 
 .categoryItem:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+  z-index: 1;
 }
 
 .categoryImage {
-  width: 368px;
-  height: 368px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
 
-  @media (max-width: 1199px) {
-    width: 187px;
-    height: 187px;
-  }
+.categoryItem:hover .categoryImage {
+  transform: scale(1.02);
 }
 
 .categoryInfo {
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
+  gap: 4px;
   text-align: left;
-  gap: 5px;
-  margin-top: 10px;
+}
 
-  .categoryName {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
+.categoryName {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
-    &:hover {
-      color: var(--active-color);
-    }
-  }
+.categoryName:hover {
+  color: var(--active-color);
+}
 
-  .categoryCount {
-    font-size: 14px;
-    font-weight: 400;
-    color: #666;
-    transition: color 0.3s ease;
+.categoryCount {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  transition: color 0.3s ease;
+}
 
-    &:hover {
-      color: var(--active-color);
-    }
-  }
+.categoryCount:hover {
+  color: var(--active-color);
 }
 
 .section {

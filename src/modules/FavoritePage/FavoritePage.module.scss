@@ -1,17 +1,41 @@
 .favorites {
-  max-width: 1280px;
+  padding: 24px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 16px;
+}
 
-  p {
-    text-align: center;
-    font-weight: 800;
-    font-size: 48px;
-    line-height: 56px;
+.title {
+  font-size: 32px;
+  margin: 16px 0 8px;
+}
+
+.counter {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-secondary);
+  font-size: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  h1 {
-    font-size: 24px;
-    margin-bottom: 16px;
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

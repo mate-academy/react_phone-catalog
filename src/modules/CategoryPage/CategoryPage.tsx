@@ -3,11 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import styles from './CategoryPage.module.scss';
 import { Product } from '../shared/types';
-import { ProductsList } from './components/ProductsList/ProductsList';
+// import { ProductsList } from './components/ProductsList/ProductsList';
 import { useDebounce } from '../shared/hooks/useDebounce';
 import { Input } from '../../components/UI/Input/Input';
 import { Select } from '../../components/UI/Select/Select';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { ProductCard } from './components/ProductCard';
 
 export const CategoryPage: React.FC = () => {
   const { t } = useTranslation();
@@ -79,6 +80,7 @@ export const CategoryPage: React.FC = () => {
 
   const effectiveItemsPerPage =
     itemsPerPage === 'all' ? products.length : itemsPerPage;
+
   const indexOfLastItem = currentPage * effectiveItemsPerPage;
   const indexOfFirstItem = indexOfLastItem - effectiveItemsPerPage;
   const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
@@ -118,38 +120,56 @@ export const CategoryPage: React.FC = () => {
     <div className={styles.category}>
       <Breadcrumbs />
       <div className={styles.filters}>
-        <Input
-          placeholder={t('search')}
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          className={styles.search}
-        />
-        <Select
-          value={sort}
-          onChange={e => setSort(e.target.value)}
-          className={styles.sort}
-        >
-          <option value={'default'}>{t('sort')}</option>
-          <option value={'priceLowToHigh'}>{t('priceLowToHigh')}</option>
-          <option value={'priceHighToLow'}>{t('priceHighToLow')}</option>
-        </Select>
-        <p className={styles.pageInfo}>{t('itemsOnPage')}</p>
-        <Select
-          value={itemsPerPage}
-          onChange={handleItemsPerPageChange}
-          className={styles.perPageSelect}
-        >
-          <option value="all">{t('all')}</option>
-          <option value={4}>4</option>
-          <option value={8}>8</option>
-          <option value={16}>16</option>
-        </Select>
+        <div className={styles.filterGroup}>
+          <label className={styles.label}>{t('search')}</label>
+          <Input
+            placeholder={t('search')}
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            className={styles.search}
+          />
+        </div>
+
+        <div className={styles.filterGroup}>
+          <label className={styles.label}>{t('sort')}</label>
+
+          <Select
+            value={sort}
+            onChange={e => setSort(e.target.value)}
+            className={styles.sort}
+          >
+            <option value={'default'}>{t('sort')}</option>
+            <option value={'priceLowToHigh'}>{t('priceLowToHigh')}</option>
+            <option value={'priceHighToLow'}>{t('priceHighToLow')}</option>
+          </Select>
+        </div>
+
+        {/* <p className={styles.pageInfo}>{t('itemsOnPage')}</p> */}
+
+        <div className={styles.filterGroup}>
+          <label className={styles.label}>{t('itemsOnPage')}</label>
+
+          <Select
+            value={itemsPerPage}
+            onChange={handleItemsPerPageChange}
+            className={styles.perPageSelect}
+          >
+            <option value="all">{t('all')}</option>
+            <option value={4}>4</option>
+            <option value={8}>8</option>
+            <option value={16}>16</option>
+          </Select>
+        </div>
       </div>
       <div
         className={styles.productsContainer}
         style={{ minHeight: loading ? '200px' : 'auto' }}
       >
-        {!loading && !error && <ProductsList products={currentItems} />}
+        <div className={styles.productsGrid}>
+          {currentItems.map(product => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       </div>
       <div className={styles.pagination}>
         <button

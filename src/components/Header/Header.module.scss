@@ -3,13 +3,14 @@
   align-items: center;
   justify-content: space-between;
   position: sticky;
+  opacity: 0.9;
   top: 0;
   z-index: 1000;
   padding: 16px 24px;
   margin-bottom: 16px;
   background: var(--background-primary);
   color: var(--text-color);
-  height: 64px;
+  height: 48px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: Montserrat, sans-serif;
   transition: background 0.3s ease, color 0.3s ease;
@@ -57,15 +58,14 @@
   font-size: 16px;
   font-weight: 400;
   text-transform: uppercase;
-  color: var(--text-color);
+  color: var(--text-secondary);
   text-decoration: none;
   margin: 0 16px;
   padding: 8px 12px;
   transition: all 0.3s ease;
 
   &:hover {
-    // background: linear-gradient(45deg, #F44, var(--danger), #00CED1);
-    color: var(--background-secondary);
+    color: var(--text-color);
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(255, 68, 68, 0.8);
     transform: scale(1.1);
@@ -75,7 +75,7 @@
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
-    color: var(--active-link);
+    color: var(--text-color);
   }
 
   @media (max-width: 1199px) and (min-width: 700px) {
@@ -125,14 +125,13 @@
   text-align: center;
   font-size: 16px;
   font-weight: 400;
-  color: var(--text-color);
+  color: var(--text-secondary);
   text-transform: uppercase;
   text-decoration: none;
   padding: 8px 12px;
   transition: all 0.3s ease;
 
   &:hover {
-    // background: linear-gradient(45deg, #F44, var(--active-color), #00CED1);
     color: var(--active-color);
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(255, 68, 68, 0.8);
@@ -163,7 +162,6 @@
   min-width: 150px;
   z-index: 1001;
   max-height: 200px;
-  // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   &.open {
     display: flex;
@@ -179,15 +177,13 @@
 .dropdownMenuLink {
   display: block;
   padding: 8px 16px;
-  color: var(--text-color);
+  color: var(--text-secondary);
   text-decoration: none;
   transition: all 0.3s ease;
 
   &:hover {
-    // background: linear-gradient(45deg, #F44, var(--accent-primary), #00CED1);
-    color: var(--background-secondary);
+    color: var(--text-color);
     border-radius: 4px;
-    // box-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
     transform: scale(1.05);
   }
 
@@ -367,27 +363,6 @@
   padding-top: 10px;
 }
 
-.mobileDropdownMenu a {
-  padding: 8px 0;
-  font-size: 14px;
-  color: var(--text-color);
-  text-decoration: none;
-  transition: all 0.3s ease;
-
-  &:hover {
-    color: var(--accent-active);
-    padding-left: 5px;
-  }
-
-  &.active {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
-    color: var(--accent-active);
-  }
-}
-
-
 .mobileNav a {
   font-size: 16px;
   color: var(--text-color);
@@ -398,6 +373,26 @@
 
   &:hover {
     color: var(--accent-active);
+  }
+
+  &.active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: var(--accent-active);
+  }
+}
+
+.mobileDropdownMenu a {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--accent-active);
+    padding-left: 5px;
   }
 
   &.active {

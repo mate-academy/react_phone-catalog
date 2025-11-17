@@ -14,20 +14,6 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-.dark {
-  --background-primary: #1e1e1e;
-  --text-color: #fff;
-  --active-color: #ffd700;
-  --border-color: #2a2a2a;
-}
-
-.light {
-  --background-primary: #f5f5f5;
-  --text-color: #333;
-  --active-color: #ff4500;
-  --border-color: #e0e0e0;
-}
-
 .content {
   display: flex;
   justify-content: space-between;
@@ -48,8 +34,6 @@
   height: auto;
   transition: transform 0.3s ease;
 }
-
-/* moved below to satisfy no-descending-specificity */
 
 .links {
   display: flex;
@@ -140,7 +124,6 @@
   }
 }
 
-/* keep more specific hover rule after any other img rules */
 .logo:hover img {
   transform: scale(1.05);
 }
