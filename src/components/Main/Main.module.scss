@@ -1,15 +1,4 @@
-@use '../../styles/mixins.scss' as *;
-
-.container {
-  @include content-padding-inline;
-
-  row-gap: 40px;
-}
-
-.title {
-  color: white;
-  font-weight: 800;
-  font-size: 48px;
-  display: flex;
-  text-align: center;
-}
+// .container {
+//   @include content-padding-inline;
+//   row-gap: 40px;
+// }

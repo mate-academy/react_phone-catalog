@@ -75,11 +75,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease; // плавность для цвета и фона
 
     img {
       width: 16px;
       height: 16px;
+    }
+
+    &:hover {
+      background-color: #323542; // 👈 фон при наведении
     }
   }
 }

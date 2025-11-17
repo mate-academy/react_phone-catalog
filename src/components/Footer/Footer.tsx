@@ -2,7 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import figmaLogo from '../../../public/img/Icons/Logo.svg';
 // eslint-disable-next-line max-len
-import toTop from '../../../public/img/Icons/Slider button - Default (right).svg';
+import toTop from '../../../public/img/Icons/arrow-top-Icon.svg';
 
 export const Footer = () => {
   return (

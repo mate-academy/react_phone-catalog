@@ -1,8 +1,8 @@
 // import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './Header.module.scss';
-import bag from '../../../public/img/Icons/Shopping bag (Cart).svg';
-import favorite from '../../../public/img/Icons/Vector (Stroke).svg';
+import bag from '../../../public/img/Icons/bag-Icon.svg';
+import favorite from '../../../public/img/Icons/favoriteIcon.svg';
 import figmaLogo from '../../../public/img/Icons/Logo.svg';
 
 export const Header = () => {

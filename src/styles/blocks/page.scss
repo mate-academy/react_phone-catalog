@@ -1,0 +1,38 @@
+.page {
+  font-family: 'Mont', sans-serif;
+  color: $text-main-color;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+}
+// .app {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+// }
+
+.page__body {
+  margin: 0;
+  height: 100%;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  // margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.title {
+  color: white;
+  font-weight: 800;
+  font-size: 48px;
+  display: flex;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}

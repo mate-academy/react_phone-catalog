@@ -1,9 +1,6 @@
-@use '../../styles//mixins.scss' as *;
-
 .swiperContainer {
-  position: relative;
   width: 1136px;
-  margin: 0 auto;
+  // margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -25,8 +22,8 @@
 
 .buttonPrev,
 .buttonNext {
-  background: #2d2f36;
-  color: #fff;
+  background: #fff;
+  color: #000;
   border: none;
   font-size: 24px;
   width: 40px;
@@ -36,11 +33,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid $border-hover-color;
 }
 
 .buttonPrev:hover,
 .buttonNext:hover {
   background: #444654;
+  color: #fff;
 }
 
 .buttonPrev:active,
