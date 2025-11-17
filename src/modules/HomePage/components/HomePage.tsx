@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Product } from '@/types';
 import SliderComponent from './SliderComponent';
 import productsList from '../../../../public/api/products.json';
+import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>(productsList);
@@ -18,17 +19,26 @@ const HomePage: React.FC = () => {
       counters[item.category]++;
     }
   }
+  const hotProducts = [...products].sort(
+    (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
+  );
+
+  const newProducts = [...products].sort((a, b) => b.year - a.year);
+
   return (
     <>
-      <h1 className={styles.PageTitle}>Welcome to Nice Gadgets store!</h1>
-      <Carousel />
-      <SliderComponent products={products} title="Brand new models" />
+      <div className={styles.pageTitleAndBanner}>
+        <h1 className={styles.pageTitle}>Welcome to Nice Gadgets store!</h1>
+        <Carousel />
+      </div>
+
+      <SliderComponent products={newProducts} title="Brand new models" />
       <section className={styles.categorySection}>
         <h2 className={styles.categoryTitle}>Shop by Category</h2>
         <div className={styles.categoryGrid}>
-          <div className={styles.categoryCard}>
+          <Link to="/phones" className={styles.categoryCard}>
             <img
-              src="/img/1.svg"
+              src="/img/Phones.svg"
               alt="Mobile Phones"
               className={styles.categoryImage}
             />
@@ -38,10 +48,10 @@ const HomePage: React.FC = () => {
                 {counters.phones} models
               </span>
             </div>
-          </div>
-          <div className={styles.categoryCard}>
+          </Link>
+          <Link to="/tablets" className={styles.categoryCard}>
             <img
-              src="/img/Phones.svg"
+              src="/img/Tablets.svg"
               alt="Tablets"
               className={styles.categoryImage}
             />
@@ -51,10 +61,10 @@ const HomePage: React.FC = () => {
                 {counters.tablets} models
               </span>
             </div>
-          </div>
-          <div className={styles.categoryCard}>
+          </Link>
+          <Link to="/accessories" className={styles.categoryCard}>
             <img
-              src="/img/3.svg"
+              src="/img/Accessories.svg"
               alt="Accessories"
               className={styles.categoryImage}
             />
@@ -64,9 +74,10 @@ const HomePage: React.FC = () => {
                 {counters.accessories} models
               </span>
             </div>
-          </div>
+          </Link>
         </div>
       </section>
+      <SliderComponent products={hotProducts} title="Hot prices" showDiscount />
     </>
   );
 };

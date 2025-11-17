@@ -3,13 +3,10 @@ import React from 'react';
 import styles from './SliderComponent.module.scss';
 type SliderItemProps = {
   item: Product;
-  showDiscount?: boolean;
+  showDiscount: boolean;
 };
 
-const SliderItem: React.FC<SliderItemProps> = ({
-  item,
-  showDiscount = false,
-}) => {
+const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
   return (
     <div className={styles.SliderComponent__item}>
       <div className={styles.SliderComponent__item__imageContainer}>
@@ -17,7 +14,7 @@ const SliderItem: React.FC<SliderItemProps> = ({
       </div>
       <div className={styles.SliderComponent__item__infoContainer}>
         <span className={styles.SliderComponent__itemName}>{item.name}</span>
-        <div className={styles.SliderComponent__priceContainer}>
+        <div className={styles.SliderComponent__item__priceContainer}>
           <h3 className={styles.SliderComponent__item__fullPrice}>
             ${item.fullPrice}
           </h3>

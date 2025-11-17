@@ -5,23 +5,24 @@ import SliderItem from './SliderItem';
 type SliderComponentProps = {
   products: Product[];
   title: string;
+  showDiscount?: boolean;
 };
 const SliderComponent: React.FC<SliderComponentProps> = ({
   products,
   title,
+  showDiscount = false,
 }) => {
   const [index, setIndex] = useState(0);
 
   const next = () => {
     setIndex(prev => Math.min(prev + 4, products.length - 4));
   };
+
   const prev = () => {
     setIndex(prev => Math.max(prev - 4, 0));
   };
 
-  const preparedProducts = products.sort((a, b) => b.year - a.year);
-  const visible = preparedProducts.slice(index, index + 4);
-
+  const visible = products.slice(index, index + 4);
   return (
     <>
       <div className={styles.SliderComponent__headerContainer}>
@@ -45,7 +46,7 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
       </div>
       <div className={styles.SliderComponent__itemsContainer}>
         {visible.map(prod => (
-          <SliderItem key={prod.id} item={prod} />
+          <SliderItem key={prod.id} item={prod} showDiscount={showDiscount} />
         ))}
       </div>
     </>

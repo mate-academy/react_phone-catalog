@@ -30,9 +30,9 @@
     display: flex;
     padding: 32px;
     box-sizing: border-box; // Включає padding і border у загальну ширину
-    width: 272px;
+    // width: 272px;
     flex-direction: column;
-    border: 1px solid $color-elements;
+    outline: 1px solid $color-elements;
     &__imageContainer {
       width: 208px;
       height: 196px;
@@ -56,6 +56,10 @@
       display: flex;
       row-gap: 8px;
       flex-direction: column;
+    }
+    &__priceContainer {
+      display: flex;
+      column-gap: 8px;
     }
     &__specContainer {
       display: flex;
@@ -83,7 +87,7 @@
     }
     &__cartButton {
       background-color: $color-primary;
-      width: 158px;
+      flex: 1;
       height: 40px;
       border: none;
       cursor: pointer;
