@@ -20,6 +20,10 @@
     width: 100%;
     height: auto;
   }
+
+  @include hover {
+    scale: 1.2;
+  }
 }
 
 .list {

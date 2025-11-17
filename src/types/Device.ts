@@ -6,6 +6,8 @@ export interface DescriptionDevice {
 export interface Device {
   id: string;
   name: string;
+  category: string;
+  color: string;
   capacity: string;
   colorsAvailable: string[];
   capacityAvailable: string[];

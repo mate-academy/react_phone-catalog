@@ -78,11 +78,12 @@ const Navbar = () => {
           >
             <img src={like} alt="like" />
           </a>
-          <a
+          <Link
+            to={'cart'}
             className={`${style.navbar__link} ${style['navbar__link--action']}`}
           >
             <img src={shopping} alt="shopping" />
-          </a>
+          </Link>
         </div>
       </nav>
 

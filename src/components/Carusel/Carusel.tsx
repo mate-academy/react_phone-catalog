@@ -12,9 +12,10 @@ import { Card } from '../Card/Cards';
 type Props = {
   data: Products[];
   title: string;
+  type?: string;
 };
 
-export const Carusel: React.FC<Props> = ({ data, title }) => {
+export const Carusel: React.FC<Props> = ({ data, title, type }) => {
   return (
     <>
       <div className={style.wrapper}>
@@ -54,7 +55,7 @@ export const Carusel: React.FC<Props> = ({ data, title }) => {
         >
           {data.map(item => (
             <SwiperSlide key={item.id}>
-              <Card item={item} title={title} />
+              <Card type={type} item={item} title={title} />
             </SwiperSlide>
           ))}
         </Swiper>

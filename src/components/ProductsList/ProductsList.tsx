@@ -29,6 +29,7 @@ export enum SortBy {
 
 export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const [isLoadingSort, setIsLoadingSort] = useState(false);
 
   const sortBySearch = (searchParams.get('sortBy') as SortBy) || null;

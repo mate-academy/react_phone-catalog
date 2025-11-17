@@ -5,6 +5,7 @@ import { Products } from 'src/types/products';
 
 export const NewModels = () => {
   const [newModel, setNewModel] = useState<Products[]>([]);
+  const [typeProducts, setTypeProducts] = useState<string>('');
 
   const newModels = useMemo(
     () => [
@@ -32,13 +33,18 @@ export const NewModels = () => {
       setNewModel(
         uniqueByColor.sort(a => (a.name.includes('iPhone 13 Pro') ? -1 : 1)),
       );
+      setTypeProducts('phones');
     });
   }, [newModels]);
 
   return (
     <section className="section">
       <div className="container">
-        <Carusel data={newModel} title={'Brand new models'} />
+        <Carusel
+          type={typeProducts}
+          data={newModel}
+          title={'Brand new models'}
+        />
       </div>
     </section>
   );
