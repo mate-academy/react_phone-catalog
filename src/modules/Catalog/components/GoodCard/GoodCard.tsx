@@ -67,8 +67,8 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ product }) => {
           <img
             src={
               isFavorite(product.id)
-                ? '/img/icons/fav-active.png'
-                : '/img/icons/fav.png'
+                ? './img/icons/fav-active.png'
+                : './img/icons/fav.png'
             }
             alt="favourite goods"
           />
