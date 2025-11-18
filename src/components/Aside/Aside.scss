@@ -1,0 +1,43 @@
+@import '../variables';
+
+.aside {
+  flex-grow: 1;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 27px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+
+  // border: 1px solid;
+
+  &__container {
+    margin-top: 24px;
+    margin-inline: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 156px;
+    // border: 1px solid;
+  }
+
+  &__menu {
+    display: flex;
+    height: 27px;
+    color: #89939a;
+    text-decoration: none;
+    // border: 1px solid;
+
+    &--home {
+    }
+
+    &--phones {
+    }
+
+    &--tablets {
+    }
+
+    &--accessories {
+    }
+  }
+}

@@ -1,0 +1,628 @@
+@import '../variables';
+@import '../mixins';
+
+.product-card {
+  box-sizing: border-box;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  width: 212px;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+
+  // border: 1px solid;
+
+  @include productCard;
+
+  &__photo {
+    width: 148px;
+    height: 129px;
+
+    @include modelImage;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
+      @include hover(transform, scale(1.1));
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: end;
+    width: 148px;
+    height: 58px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    font-weight: 600;
+    list-style: none;
+    // border: 1px solid;
+
+    @include contentWidth;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 148px;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    // border: 1px solid;
+
+    @include contentWidth;
+
+    &__price-discount {
+      width: fit-content;
+      // border: 1px solid;
+    }
+
+    &__price-regular {
+      width: fit-content;
+      color: #89939a;
+      text-decoration: line-through;
+
+      // border: 1px solid;
+    }
+  }
+
+  &__line {
+    width: 148px;
+    border: 1px solid;
+
+    @include contentWidth;
+  }
+
+  &__characteristics {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-weight: 700;
+    width: 148px;
+    font-size: 12px;
+    line-height: 100%;
+    height: 77px;
+    // border: 1px solid;
+
+    @include contentWidth;
+
+    &__container {
+      display: flex;
+      gap: 52px;
+      justify-content: space-between;
+      align-items: center;
+      // border: 1px solid;
+    }
+
+    &__name {
+      display: flex;
+      color: #89939a;
+      // border: 1px solid;
+    }
+
+    &__info {
+      display: flex;
+      white-space: nowrap;
+      overflow: hidden;
+      // border: 1px solid;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 148px;
+    height: 40px;
+    // border: 1px solid;
+
+    @include contentWidth;
+
+    &__add-to-cart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 40px;
+      font-size: 14px;
+      line-height: 40px;
+      color: #ffffff;
+      background-color: #313237;
+      // border: 1px solid;
+
+      @include hover(transform, scale(1.1));
+      @include buttonAddToCart;
+    }
+
+    &__add-to-favourites {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid #b4bdc3;
+
+      @include hover(transform, scale(1.1));
+
+      &__image {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &--phones {
+    box-sizing: border-box;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    min-width: 287px;
+    height: 440px;
+
+    // border: 1px solid;
+
+    @include productCardPhones;
+
+    .product-card__photo {
+      width: 223px;
+      height: 130px;
+      // border: 1px solid;
+
+      @include productCardPhotoPhones;
+
+      &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .product-card__title {
+      display: flex;
+      align-items: end;
+      width: 223px;
+      height: 58px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+    }
+
+    .product-card__price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 223px;
+      height: 31px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+
+      &__price-discount {
+        width: fit-content;
+        // border: 1px solid;
+      }
+
+      &__price-regular {
+        width: fit-content;
+        // border: 1px solid;
+      }
+    }
+
+    .product-card__line {
+      width: 223px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+    }
+
+    .product-card__characteristics {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 223px;
+      height: 77px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+
+      &__container {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        line-height: 100%;
+        // border: 1px solid;
+
+        &__name {
+          display: flex;
+          // border: 1px solid;
+        }
+
+        &__info {
+          display: flex;
+          white-space: nowrap;
+          overflow: hidden;
+          // border: 1px solid;
+        }
+      }
+    }
+
+    .product-card__buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 223px;
+      height: 40px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+
+      &__add-to-cart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 175px;
+        // border: 1px solid;
+
+        @include phonesAddToCart;
+      }
+
+      &__add-to-favourites {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        // border: 1px solid;
+      }
+    }
+  }
+
+  &--tablets {
+    box-sizing: border-box;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    min-width: 287px;
+    height: 440px;
+
+    // border: 1px solid;
+
+    @include productCardPhones;
+
+    .product-card__photo {
+      width: 223px;
+      height: 130px;
+      // border: 1px solid;
+
+      @include productCardPhotoPhones;
+
+      &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .product-card__title {
+      display: flex;
+      align-items: end;
+      width: 223px;
+      height: 58px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+    }
+
+    .product-card__price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 223px;
+      height: 31px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+
+      &__price-discount {
+        width: fit-content;
+        // border: 1px solid;
+      }
+
+      &__price-regular {
+        width: fit-content;
+        // border: 1px solid;
+      }
+    }
+
+    .product-card__line {
+      width: 223px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+    }
+
+    .product-card__characteristics {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 223px;
+      height: 77px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+
+      &__container {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        line-height: 100%;
+        // border: 1px solid;
+
+        &__name {
+          display: flex;
+          // border: 1px solid;
+        }
+
+        &__info {
+          display: flex;
+          white-space: nowrap;
+          overflow: hidden;
+          // border: 1px solid;
+        }
+      }
+    }
+
+    .product-card__buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 223px;
+      height: 40px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+
+      &__add-to-cart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 175px;
+        // border: 1px solid;
+
+        @include phonesAddToCart;
+      }
+
+      &__add-to-favourites {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        // border: 1px solid;
+      }
+    }
+  }
+
+  &--accessories {
+    box-sizing: border-box;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    min-width: 287px;
+    height: 440px;
+
+    // border: 1px solid;
+
+    @include productCardPhones;
+
+    .product-card__photo {
+      width: 223px;
+      height: 130px;
+      list-style: none;
+      // border: 1px solid;
+
+      @include productCardPhotoPhones;
+
+      &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .product-card__title {
+      display: flex;
+      align-items: end;
+      width: 223px;
+      height: 58px;
+      list-style: none;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+    }
+
+    .product-card__price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 223px;
+      height: 31px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+
+      &__price-discount {
+        width: fit-content;
+        // border: 1px solid;
+      }
+
+      &__price-regular {
+        width: fit-content;
+        // border: 1px solid;
+      }
+    }
+
+    .product-card__line {
+      width: 223px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+    }
+
+    .product-card__characteristics {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 223px;
+      height: 77px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+
+      &__container {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        line-height: 100%;
+        // border: 1px solid;
+
+        &__name {
+          display: flex;
+          // border: 1px solid;
+        }
+
+        &__info {
+          display: flex;
+          white-space: nowrap;
+          overflow: hidden;
+          // border: 1px solid;
+        }
+      }
+    }
+
+    .product-card__buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 223px;
+      height: 40px;
+      // border: 1px solid;
+
+      @include characteristicsWidth;
+
+      &__add-to-cart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 175px;
+        // border: 1px solid;
+
+        @include phonesAddToCart;
+      }
+
+      &__add-to-favourites {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        // border: 1px solid;
+      }
+    }
+  }
+
+  &--item {
+    width: 212px;
+
+    @include product-card-item;
+
+    .product-card__photo {
+      width: 148px;
+      height: 108px;
+      // border: 1px solid;
+
+      @include product-card-item-photo;
+
+      &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .product-card__title {
+      width: 148px;
+      height: 79px;
+      // border: 1px solid;
+
+      @include product-card-item-content;
+    }
+  }
+
+  &--favourites {
+    width: 100%;
+
+    @include favourites-product-card;
+
+    .product-card__photo {
+      width: 223px;
+      height: 130px;
+      // border: 1px solid;
+
+      @include favourites-product-card-photo;
+    }
+
+    .product-card__title {
+      width: 223px;
+      height: 58px;
+
+      @include favourites-product-width-content;
+    }
+
+    .product-card__price {
+      width: 223px;
+      height: 31px;
+      font-size: 22px;
+
+      @include favourites-product-width-content;
+    }
+
+    .product-card__line {
+      width: 223px;
+
+      @include favourites-product-width-content;
+    }
+
+    .product-card__characteristics {
+      width: 223px;
+
+      @include favourites-product-width-content;
+    }
+
+    .product-card__buttons {
+      display: flex;
+      gap: 8px;
+      width: 223px;
+      // border: 1px solid;
+
+      @include favourites-product-width-content;
+
+      &__add-to-cart {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+// ctrl + shift + f показывает все места, где есть выделенный элемент
+
+// transition-duration: 1s; // изменения будут происходить в течении 1 секунды. если через запятую указать несколько значений, то они будут применены для разных свойств
+
+// transition-property: height; // изменения будут применены для свойства height высоты. можно указать несколько свойств через запятую
+// transition-delay: 500ms; // задержка перед выполнением изменения
+// transition-timing-function: linear; // функция определяющая как будут происходить изменения (в этом случае линейно)
+// transition-timing-function: steps(4, end); // изменения за 4 шага в конце цикла
+// transition-timing-function: ease-in; // плавное изменение
+
+// transition: height 1s steps(4, end) 500ms; // сокращённая версия, заменяющая все предыдущие
+
+//                animation             //
+
+// для подключения к элементу прописывается свойство animation-name: move:
+
+// @keyframes move {
+//   from {         // начало (от)
+//     left: 0;
+//   }
+
+//   to {
+//     left: 300px; // конец  (до)
+//   }
+// }
+
+// @keyframes round {
+//   o {         // начало (от)
+//     border-radius: 0;
+//   }
+
+//   o {
+//     border-radius: 10%; // промежуточное значение
+//   }
+
+//   100% {
+//     border-radius: 50%; // конец  (до)
+//   }
+// }
+
+// и указывается время animation-duration: 500ms;
+// если указать animation-fill-mode: forwards; то, анимация зафиксируется в конце, применятся конечные значения стилей
+// если в значении будет backwards, то зафиксируется начальное значение стилей
+// для многократного выполнения анимации animation-iteration-count: 2:
+// для выполнения анимации в обратную сторону animation-direction: reverse;
+// если прописать animation-direction: alternate; анимация будет туда и обратно
+// animation-play-state: paused; останавливает анимацию
+// animation-timing-function: ease-in-out; плавность анимации в начале и в конце
+// animation-delay: -200ms; задержка выполнения, если значение отрицательное, то начало будет за -200ms до конца анимации
+
+// заменить все свойства анимации можно animation: move 500ms ease-in-out 2 alternate;
+
+// можно использовать несколько анимаций в одном месте
+// animation:
+//   move: 500ms ease-in-out 4 alternate,
+//   round: 1000ms linear 2 alternate;
+
+// ----------------смещение---------------//
+
+// transform: translate(20px); // сдвигает элемент на 20 пикселей
+// если к этому добавить к этому // transition: transform 300ms; // ерансформация будет плавной
+// transform: translate(20px, 60px); // сдвигает элемент по двум осям
+
+// transform: translateZ(100px); // сдвиг по Z будет, если указать на элементе // perspective: 400px // точку отсчёта
+
+// transfom: scale(2); // увеличивает размер без перспективы
+
+// transfom: rotate(30deg): // поворачивает на 30 градусов, по умолчанию вокруг центра
+// для поворота можно указать ось
+
+// transform-origin: top right; // поворот вокруг верхнего правого угла
+// transform-origin: 10px 30px; // поворот вокруг указанного смещения
+
+// transform: skew(30deg); // деформация
+// transform: skew(30deg, 15deg); // деформация двум осям
+
+// можно применя деформайию и смещение одновременно // transform: skew(30deg, 15deg) transform: translate(20px, 60px);
+
+$header-hight: 48px;
+$footer-hight: 257px;
+
+$positio-shift: 4;
+
+//  #region Colors //
+$color-black: #000000;
+$color-midnight: #191970;
+$color-green: #34C759;
+$color-yellow: #FFD60A;
+$color-white: #FFFFFF;
+$color-purple: #BF5AF2;
+$color-red: #FF3B30;
+$color-rose-gold: #B76E79;
+$color-coral: #FF6F61;
+$color-graphite: #4B4B4B;
+$color-space-gray: #54524F;
+$color-midnight-green: #004953;
+$color-gold: #FAD7A0;
+$color-silver: #C0C0C0;
+$color-space-black: #1D1D1F;
+$color-blue: #007AFF;
+$color-pink: #FFB6C1;
+$color-sky-blue: #87CEEB;
+$color-sierra-blue: #9BB5CE;
+$color-star-light: #F5F5DC;
+// #endregion //

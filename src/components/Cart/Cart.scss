@@ -1,0 +1,233 @@
+@import '../variables';
+@import '../mixins';
+
+.cart {
+  flex-grow: 1;
+  margin-top: 24px;
+  margin-inline: 16px;
+
+  @include cart;
+
+  &__buttons-back {
+    height: 16px;
+    display: flex;
+    gap: 4px;
+
+    // border: 1px solid;
+
+    @include cart-buttons-back;
+
+    &__arrow-left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+
+      // border: 1px solid;
+
+      &__image {
+        width: 5.33px;
+        height: 9.33px;
+      }
+    }
+  }
+
+  &__title {
+    margin-top: 24px;
+    height: 41px;
+
+    font-weight: 800;
+    font-size: 32px;
+
+    // border: 1px solid;
+
+    @include cart-title;
+  }
+
+  &__items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    // border: 1px solid;
+  }
+
+  &__total {
+    width: 100%;
+    margin-bottom: 56px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    // border: 1px solid;
+
+    @include cart-total;
+
+    &__price {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      width: 100%;
+      // border: 1px solid;
+
+      &__total-price {
+        font-weight: 800;
+        font-size: 32px;
+
+        // border: 1px solid;
+      }
+
+      &__total-items {
+        font-weight: 600;
+        font-size: 14px;
+        color: #89939a;
+
+        // border: 1px solid;
+      }
+    }
+
+    &__line {
+      width: 100%;
+      color: #E2E6E9;
+      border: 1px solid;
+    }
+
+    &__button {
+      height: 48px;
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-weight: 700;
+      font-size: 14px;
+      color: #ffffff;
+      background: #313237;
+
+      // border: 1px solid;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  // border: 1px solid;
+
+  @include item;
+
+  &__info {
+    margin-top: 16px;
+    margin-inline: 16px;
+    height: 80px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    // border: 1px solid;
+
+    @include item-info;
+
+    &__delete {
+      width: 16px;
+      height: 16px;
+      // border: 1px solid;
+
+      &__image {
+        width: 100%;
+      }
+    }
+
+    &__item-image {
+      width: 80px;
+      height: 80px;
+      // border: 1px solid;
+
+      &__photo {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+      }
+    }
+
+    &__item-title {
+      width: 128px;
+      height: 63px;
+
+      // border: 1px solid;
+
+      @include item-title;
+    }
+  }
+
+  &__counter-price {
+    margin-bottom: 16px;
+    margin-inline: 16px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 32px;
+
+    // border: 1px solid;
+
+    @include item-counter-price;
+
+    &__counter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 96px;
+      // border: 1px solid;
+
+      &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        width: 32px;
+        // border: 1px solid;
+
+        &__image {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      &__quantity {
+        // border: 1px solid;
+      }
+    }
+
+    &__price {
+      font-weight: 800;
+      font-size: 22px;
+
+      // border: 1px solid;
+    }
+  }
+}
+
+.item-container {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include item-container;
+}

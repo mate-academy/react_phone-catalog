@@ -1,0 +1,44 @@
+@import '../variables';
+@import '../mixins';
+
+.favourites {
+  flex-grow: 1;
+  margin-inline: 16px;
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid;
+
+  @include favourites;
+
+  &__title {
+    height: 41px;
+    font-weight: 800;
+    font-size: 32px;
+    // border: 1px solid;
+
+    @include favourites-title;
+  }
+
+  &__quantity-of-favourites {
+    margin-top: 8px;
+    color: #89939a;
+    // border: 1px solid;
+  }
+}
+
+.adress {
+  margin-block: 24px;
+
+  @include adress;
+}
+
+.block-items {
+  margin-top: 32px;
+  margin-bottom: 56px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include favourites-block-items;
+}
