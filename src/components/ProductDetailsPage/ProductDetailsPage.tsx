@@ -10,11 +10,9 @@ import favImage from '../../../public/icons/Favourites-Filled-(Heart-Like).svg';
 
 import { YouMayAlsoLikeSlider } from './YouMayLike/YouMayAlsoLike';
 import { useCart } from '../../context/CartContext';
+import { getImgUrl } from '../../utils/getImgUrl';
 
-type DescriptionSection = {
-  title: string;
-  text: string[];
-};
+type DescriptionSection = { title: string; text: string[] };
 
 type Product = {
   id: string;
@@ -56,21 +54,20 @@ export function ProductDetailsPage(): JSX.Element {
   const { addToCart, removeFromCart, addToFavourites, favourites, cartItems } =
     useCart();
 
+  // Load product after selecting it
   useEffect(() => {
     if (!product?.images?.length) {
       setMainImage(undefined);
-
       return;
     }
 
-    const raw = product.images[0];
-    const normalized = raw.startsWith('/') ? raw : `/${raw}`;
+    const raw = product.images[0]; // "img/phones/..."
+    const url = getImgUrl(raw);
 
-    setMainImage(normalized);
-
-    console.log('product loaded, set mainImage ->', normalized);
+    setMainImage(url);
   }, [product]);
 
+  // Fetch product list
   useEffect(() => {
     if (!productId) return;
 
@@ -88,6 +85,7 @@ export function ProductDetailsPage(): JSX.Element {
           ...(tablets || []),
           ...(accessories || []),
         ] as Product[];
+
         setAllProducts(all);
 
         const found = all.find(p => String(p.id) === String(productId));
@@ -95,20 +93,15 @@ export function ProductDetailsPage(): JSX.Element {
         if (!found) {
           setError('Product not found');
           setProduct(null);
-
           return;
         }
 
         setSelectedColor(found.color ?? found.colorsAvailable?.[0]);
         setSelectedCapacity(found.capacity ?? found.capacityAvailable?.[0]);
         setProduct(found);
-        if (found.images?.length) {
-          const m = found.images[0].startsWith('/')
-            ? found.images[0]
-            : `/${found.images[0]}`;
 
-          setMainImage(m);
-          console.log('initial mainImage set from fetch ->', m);
+        if (found.images?.length) {
+          setMainImage(getImgUrl(found.images[0]));
         }
 
         try {
@@ -118,14 +111,11 @@ export function ProductDetailsPage(): JSX.Element {
           setIsFav(false);
         }
       })
-      .catch(err => {
-        console.error(err);
-        setError('Failed to load data');
-      })
+      .catch(() => setError('Failed to load data'))
       .finally(() => setLoading(false));
   }, [productId]);
 
-  // update product variant when color or capacity changes
+  // Updating when color/capacity changes
   useEffect(() => {
     if (!product || !selectedColor || !selectedCapacity) return;
 
@@ -138,31 +128,11 @@ export function ProductDetailsPage(): JSX.Element {
 
     if (variant) {
       setProduct(variant);
-
       if (variant.images?.length) {
-        const m = variant.images[0].startsWith('/')
-          ? variant.images[0]
-          : `/${variant.images[0]}`;
-
-        setMainImage(m);
-        console.log('variant selected, set mainImage ->', m);
+        setMainImage(getImgUrl(variant.images[0]));
       }
     }
   }, [selectedColor, selectedCapacity, allProducts]);
-
-  const handleAddToCart = () => {
-    if (!product || !selectedColor || !selectedCapacity) {
-      return alert('Please select color and capacity');
-    }
-
-    const itemToAdd = {
-      ...product,
-      color: selectedColor,
-      capacity: selectedCapacity,
-    };
-
-    addToCart(itemToAdd);
-  };
 
   const isFavourite = product
     ? favourites.some(item => String(item.id) === String(product.id))
@@ -187,8 +157,9 @@ export function ProductDetailsPage(): JSX.Element {
   const renderDescription = () => {
     if (!product?.description) return null;
 
-    if (typeof product.description === 'string')
+    if (typeof product.description === 'string') {
       return <p>{product.description}</p>;
+    }
 
     return product.description.map((section, idx) => (
       <div key={idx} className={styles.descSection}>
@@ -202,15 +173,14 @@ export function ProductDetailsPage(): JSX.Element {
     ));
   };
 
-  if (loading) {
+  if (loading)
     return (
       <div className={styles.page}>
         <p className={styles.loading}>Loading product...</p>
       </div>
     );
-  }
 
-  if (error) {
+  if (error)
     return (
       <div className={styles.page}>
         <p className={styles.error}>{error}</p>
@@ -219,9 +189,8 @@ export function ProductDetailsPage(): JSX.Element {
         </p>
       </div>
     );
-  }
 
-  if (!product) {
+  if (!product)
     return (
       <div className={styles.page}>
         <h2>Product not found</h2>
@@ -230,7 +199,6 @@ export function ProductDetailsPage(): JSX.Element {
         </p>
       </div>
     );
-  }
 
   return (
     <div className={styles.page}>
@@ -243,16 +211,17 @@ export function ProductDetailsPage(): JSX.Element {
       </nav>
 
       <button className={styles.backButton} onClick={() => navigate(-1)}>
-        <img src={iconBack} alt="icon__back" className={styles.icon__back} />
+        <img src={iconBack} alt="back" className={styles.icon__back} />
         <div className={styles.navText__1}>Back</div>
       </button>
 
       <h1 className={styles.product__name}>{product.name}</h1>
+
       <div className={styles.content}>
         <div className={styles.images}>
           <div className={styles.thumbnails}>
             {product.images?.map((img, i) => {
-              const src = img.startsWith('/') ? img : `/${img}`;
+              const src = getImgUrl(img);
 
               return (
                 <img
@@ -265,6 +234,7 @@ export function ProductDetailsPage(): JSX.Element {
               );
             })}
           </div>
+
           <div className={styles.mainImage}>
             {mainImage ? (
               <img src={mainImage} alt={product.name} />
@@ -284,7 +254,7 @@ export function ProductDetailsPage(): JSX.Element {
                     key={c}
                     type="button"
                     className={`${styles.colorDot} ${selectedColor === c ? styles.colorActive : ''}`}
-                    style={{ backgroundColor: c } as React.CSSProperties}
+                    style={{ backgroundColor: c }}
                     onClick={() => setSelectedColor(c)}
                   />
                 ))}
@@ -319,6 +289,7 @@ export function ProductDetailsPage(): JSX.Element {
                 <span className={styles.priceOld}>${product.priceRegular}</span>
               )}
             </div>
+
             <div className={styles.actionsRow}>
               <button
                 className={
@@ -332,10 +303,10 @@ export function ProductDetailsPage(): JSX.Element {
               >
                 {isAddedToCart ? 'Added' : 'Add to cart'}
               </button>
+
               <button
                 className={styles.addToFavourites}
                 onClick={handleToggleFav}
-                aria-pressed={isFav}
               >
                 <img
                   className={
@@ -350,30 +321,22 @@ export function ProductDetailsPage(): JSX.Element {
 
           <div className={styles.block}>
             <ul className={styles.specList}>
-              {product.screen && (
-                <li>
-                  <span>Screen</span>
-                  <span>{product.screen}</span>
-                </li>
-              )}
-              {product.resolution && (
-                <li>
-                  <span>Resolution</span>
-                  <span>{product.resolution}</span>
-                </li>
-              )}
-              {product.processor && (
-                <li>
-                  <span>Processor</span>
-                  <span>{product.processor}</span>
-                </li>
-              )}
-              {product.ram && (
-                <li>
-                  <span>RAM</span>
-                  <span>{product.ram}</span>
-                </li>
-              )}
+              <li>
+                <span>Screen</span>
+                <span>{product.screen}</span>
+              </li>
+              <li>
+                <span>Resolution</span>
+                <span>{product.resolution}</span>
+              </li>
+              <li>
+                <span>Processor</span>
+                <span>{product.processor}</span>
+              </li>
+              <li>
+                <span>RAM</span>
+                <span>{product.ram}</span>
+              </li>
             </ul>
           </div>
         </aside>
@@ -385,6 +348,7 @@ export function ProductDetailsPage(): JSX.Element {
           <div className={styles.poloska}></div>
           <div className={styles.info}>{renderDescription()}</div>
         </div>
+
         <div className={styles.tech}>
           <h3>Tech specs</h3>
           <div className={styles.poloska}></div>
@@ -420,6 +384,7 @@ export function ProductDetailsPage(): JSX.Element {
           </ul>
         </div>
       </div>
+
       <YouMayAlsoLikeSlider />
     </div>
   );

@@ -20,7 +20,7 @@ import { CartPage } from './components/CartPage/CartPage';
 export function App() {
   return (
     <CartProvider>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <Header />
         <main>
           <Routes>

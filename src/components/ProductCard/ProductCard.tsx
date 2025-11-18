@@ -4,6 +4,7 @@ import styles from './ProductCard.module.scss';
 import image from '../../../public/icons/Add to fovourites - Default.svg';
 import favImage from '../../../public/icons/Favourites-Filled-(Heart-Like).svg';
 import { useCart } from '../../context/CartContext';
+import { getImgUrl } from '../../utils/getImgUrl';
 
 type Product = {
   id: string | number;
@@ -22,12 +23,13 @@ type Props = {
 };
 
 export function ProductCard({ product }: Props) {
-  const { addToCart, removeFromCart, addToFavourites, favourites, cartItems } = useCart();
+  const { addToCart, removeFromCart, addToFavourites, favourites, cartItems } =
+    useCart();
 
   const thumb =
     product.images && product.images.length
-      ? `/${product.images[0]}`
-      : '/img/placeholder.png';
+      ? getImgUrl(product.images[0])
+      : getImgUrl('img/placeholder.png');
 
   const hasDiscount =
     product.priceDiscount && product.priceDiscount < product.priceRegular;
@@ -81,7 +83,9 @@ export function ProductCard({ product }: Props) {
         <div className={styles.buttons}>
           <button
             className={isAddedToCart ? styles.addedToCart : styles.addToCart}
-            onClick={() => isAddedToCart ? removeFromCart(product.id) : addToCart(product)}
+            onClick={() =>
+              isAddedToCart ? removeFromCart(product.id) : addToCart(product)
+            }
           >
             {isAddedToCart ? 'Added' : 'Add to cart'}
           </button>
@@ -102,3 +106,8 @@ export function ProductCard({ product }: Props) {
     </article>
   );
 }
+
+// const thumb =
+//     product.images && product.images.length
+//       ? `/${product.images[0]}`
+//       : '/img/placeholder.png';
