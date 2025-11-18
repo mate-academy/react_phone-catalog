@@ -23,10 +23,10 @@ export const HomePage: React.FC = () => {
   };
 
   const banners = [
-    'img/banner-picture.jpg',
-    'img/banner-picture2.jpg',
-    'img/banner-picture3.jpg',
-    'img/banner-picture4.jpg',
+    '/img/banner-picture.jpg',
+    '/img/banner-picture2.jpg',
+    '/img/banner-picture3.jpg',
+    '/img/banner-picture4.jpg',
   ];
 
   useEffect(() => {
