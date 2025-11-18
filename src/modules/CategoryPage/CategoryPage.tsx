@@ -26,7 +26,7 @@ export const CategoryPage: React.FC = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/${type}.json`);
+        const response = await fetch(`api/${type}.json`);
 
         if (!response.ok) {
           throw new Error(`Failed to fetch ${type}: ${response.statusText}`);
@@ -108,7 +108,7 @@ export const CategoryPage: React.FC = () => {
   if (error) {
     <div className={styles.error}>
       <img
-        src="/img/product-not-found.png"
+        src="img/product-not-found.png"
         alt={t('productNotFound')}
         className={styles.errorImage}
       />
