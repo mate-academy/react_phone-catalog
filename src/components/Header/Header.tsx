@@ -105,6 +105,7 @@ export const Header: React.FC = () => {
         <Button variant="secondary" size="sm" onClick={toggleTheme}>
           {theme === 'dark' ? '🌞' : '🌙'}
         </Button>
+        <div className={styles.actionsDivider}></div>
         <select
           id="language-select"
           name="language"

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './styles/global.scss';
 import App from './App';
 import './modules/shared/i18n/i18n';
+import { HashRouter } from 'react-router-dom';
 
 const rootElement = document.getElementById('root');
 
@@ -14,6 +15,8 @@ const root = ReactDOM.createRoot(rootElement as HTMLElement);
 
 root.render(
   <React.StrictMode>
-    <App />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </React.StrictMode>,
 );

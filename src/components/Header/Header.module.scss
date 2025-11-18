@@ -204,10 +204,23 @@
 .actions {
   display: flex;
   align-items: center;
+  gap: 16px;
 
   @media (max-width: 1199px) and (min-width: 700px) {
     gap: 10px;
   }
+
+  @media (max-width: 699px) {
+    display: none;
+  }
+}
+
+.actionsDivider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-color);
+  opacity: 0.6;
+  border-radius: 1px;
 
   @media (max-width: 699px) {
     display: none;

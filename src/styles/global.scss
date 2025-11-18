@@ -44,13 +44,30 @@ body {
   }
 }
 
-/* stylelint-disable-next-line selector-max-id */
+html,
+body,
 #root {
-  min-height: 100vh;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-  flex: 1;
+  flex:1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
 }
