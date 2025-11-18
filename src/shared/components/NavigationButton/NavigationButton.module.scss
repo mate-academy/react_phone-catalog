@@ -1,0 +1,29 @@
+.button {
+display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0;
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  height: 16px;
+
+  transition: opacity 0.2s;
+  &:hover {
+    opacity: 0.6;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .text {
+    font-size: 14px;
+    color: #89939a;
+    font-weight: 500;
+  }
+}
