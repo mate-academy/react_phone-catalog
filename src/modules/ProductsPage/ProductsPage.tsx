@@ -2,6 +2,7 @@ import styles from './ProductsPage.module.scss';
 import { useTranslation } from 'react-i18next';
 import Breadcrumbs from '../shared/Breadcrumbs/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
+import ProductsList from './ProductsList';
 
 export const ProductsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -18,6 +19,8 @@ export const ProductsPage: React.FC = () => {
         <h1 className={styles.productPage__title}>
           {t(`products_page.${title}`)}
         </h1>
+        <p>conunt {t(`products_page.models`)}</p>
+        <ProductsList />
       </div>
     </div>
   );

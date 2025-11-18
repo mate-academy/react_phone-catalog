@@ -6,3 +6,8 @@ export const siteLanguages = {
   uk: 'UA',
   en: 'EN',
 };
+
+export const productsListMenu = {
+  sortBy: ['newest', 'alphabetically', 'cheapest'],
+  itemsOnPage: ['4', '8', '16', 'all'],
+};

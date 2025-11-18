@@ -63,6 +63,7 @@ export const Footer = () => {
               value={language}
               options={langOptions}
               onChange={selectLanguage}
+              menuPlacementTop
             />
           </div>
           <div className={styles.footer__right}>

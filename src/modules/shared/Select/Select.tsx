@@ -7,14 +7,21 @@ interface Props {
   options: SelectOption[];
   onChange: (selectedOption: SelectOption | null) => void;
   hideBorder?: boolean;
+  menuPlacementTop?: boolean;
 }
 
-const Select: React.FC<Props> = ({ value, options, onChange, hideBorder }) => {
+const Select: React.FC<Props> = ({
+  value,
+  options,
+  onChange,
+  hideBorder,
+  menuPlacementTop: top,
+}) => {
   const customStyles: StylesConfig<SelectOption, false> = {
     control: (_provided, state) => ({
       borderColor: hideBorder ? (state.isFocused ? '' : 'transparent') : '',
     }),
-    menu: () => ({}),
+    menu: provided => ({ top: provided.top, bottom: provided.bottom }),
     option: () => ({}),
     placeholder: () => ({}),
   };
@@ -26,7 +33,7 @@ const Select: React.FC<Props> = ({ value, options, onChange, hideBorder }) => {
       options={options}
       onChange={onChange}
       value={value}
-      menuPlacement="top"
+      menuPlacement={top ? 'top' : 'bottom'}
       isSearchable={false}
       unstyled={true}
       styles={customStyles}

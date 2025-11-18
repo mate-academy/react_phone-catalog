@@ -27,7 +27,16 @@
   "products_page": {
     "phones": "Mobile phones",
     "tablets": "Tablets",
-    "accessories": "Accessories"
+    "accessories": "Accessories",
+    "models": "models",
+    "menu_sort": "Sort by",
+    "menu_sort_values": {
+      "newest": "Newest",
+      "alphabetically": "Alphabetically",
+      "cheapest": "Cheapest"
+    },
+    "menu_items": "Items on page",
+    "menu_items_values": { "all": "all" }
   },
 
   "product-card": {

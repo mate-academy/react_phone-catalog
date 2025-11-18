@@ -1,0 +1,25 @@
+@use './../../../scss/main.scss' as *;
+
+.productsList {
+  margin-top: 40px;
+}
+
+.listMenu {
+  @include page-grid;
+
+  &__sort {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__items {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+}
