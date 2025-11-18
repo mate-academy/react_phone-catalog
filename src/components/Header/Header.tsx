@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
 
-  const logoSrc = theme === 'dark' ? '/logo/logo.png' : '/logo/logo_dark.png';
+  const logoSrc = theme === 'dark' ? './logo/logo.png' : './logo/logo_dark.png';
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
