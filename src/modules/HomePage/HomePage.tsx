@@ -17,9 +17,9 @@ export const HomePage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const categoryBanners: { [key: string]: string } = {
-    phones: '/img/phones-1.png',
-    tablets: '/img/phones-2.png',
-    accessories: '/img/phones-3.png',
+    phones: 'img/phones-1.png',
+    tablets: 'img/phones-2.png',
+    accessories: 'img/phones-3.png',
   };
 
   const banners = [
@@ -33,9 +33,9 @@ export const HomePage: React.FC = () => {
     const fetchProducts = async () => {
       try {
         const [phonesResp, tabletResp, accessoriesResp] = await Promise.all([
-          fetch('/api/phones.json'),
-          fetch('/api/tablets.json'),
-          fetch('/api/accessories.json'),
+          fetch('api/phones.json'),
+          fetch('api/tablets.json'),
+          fetch('api/accessories.json'),
         ]);
 
         if (!phonesResp.ok || !tabletResp.ok || !accessoriesResp.ok) {
