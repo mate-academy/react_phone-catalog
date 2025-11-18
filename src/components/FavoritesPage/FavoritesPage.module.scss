@@ -1,3 +1,5 @@
+@import '../../Mixins/mixins.scss';
+
 .favourites {
   padding: 40px 20px;
   color: #fff;
@@ -8,9 +10,19 @@
 }
 
 .title {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 48px;
+  font-weight: 800;
+  font-style: bold;
   margin-bottom: 32px;
+  line-height: 56px;
+
+  @include on-mobile {
+    font-size: 32px;
+    font-weight: 800;
+    font-style: bold;
+    margin-bottom: 32px;
+    line-height: 41px;
+  }
 }
 
 .empty {
@@ -23,4 +35,55 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 24px;
+}
+
+.backButton {
+  all: unset;
+  display: flex;
+  background: transparent;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.backButton img {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.icon {
+  &__home {
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__right {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__back {
+    align-self: center;
+  }
+}
+
+.navText {
+  color: #75767f;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  &__1 {
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+  }
 }

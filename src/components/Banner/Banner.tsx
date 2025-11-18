@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Banner.scss';
+import { getImgUrl } from '../../utils/getImgUrl';
 
 export function Banner() {
   const banners = [
-    '/img/banner-accessories.png',
-    '/img/banner-phones.png',
-    '/img/banner-tablets.png',
+    getImgUrl('img/banner-accessories.png'),
+    getImgUrl('img/banner-phones.png'),
+    getImgUrl('img/banner-tablets.png'),
   ];
 
   const [current, setCurrent] = useState(0);
@@ -48,7 +49,6 @@ export function Banner() {
   useEffect(() => {
     startProgress();
     return () => cancelAnim();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current]);
 
   const goTo = (index: number) => {
@@ -61,18 +61,10 @@ export function Banner() {
   const next = () => goTo(current + 1);
 
   return (
-    <div className="slider" role="region" aria-label="Promotional banners">
+    <div className="slider">
       <div className="slides-wrapper">
-        {/* left side panel */}
-        <div
-          className="side-panel side-left"
-          onClick={prev}
-          role="button"
-          aria-label="Previous slide"
-        >
-          <button className="side-btn" aria-hidden>
-            ‹
-          </button>
+        <div className="side-panel side-left" onClick={prev}>
+          <button className="side-btn">‹</button>
         </div>
 
         <div className="slides" style={{ height: 400 }}>
@@ -87,26 +79,17 @@ export function Banner() {
           ))}
         </div>
 
-        <div
-          className="side-panel side-right"
-          onClick={next}
-          role="button"
-          aria-label="Next slide"
-        >
-          <button className="side-btn" aria-hidden>
-            ›
-          </button>
+        <div className="side-panel side-right" onClick={next}>
+          <button className="side-btn">›</button>
         </div>
       </div>
 
-      <div className="dots" aria-hidden={false}>
+      <div className="dots">
         {banners.map((_, index) => (
           <div
             key={index}
             className="dot-container"
             onClick={() => goTo(index)}
-            role="button"
-            aria-label={`Go to slide ${index + 1}`}
           >
             <span className={`dot ${index === current ? 'active' : ''}`}>
               {index === current && (

@@ -1,11 +1,14 @@
 import React from 'react';
 import styles from './CartPage.module.scss';
 import { useCart } from '../../context/CartContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import closeImg from '../../../public/icons/Close.svg';
+import iconBack from '../../../public/icons/Vector (Stroke).svg';
+import { getImgUrl } from '../../utils/getImgUrl';
 
 export const CartPage: React.FC = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
+  const navigate = useNavigate();
 
   const increaseQty = (id: string | number) => {
     const item = cartItems.find(i => i.id === id);
@@ -33,13 +36,14 @@ export const CartPage: React.FC = () => {
 
   return (
     <div className={styles.cart}>
-      <Link to="/" className={styles.back}>
-        ← Back
-      </Link>
+      <button className={styles.backButton} onClick={() => navigate(-1)}>
+        <img src={iconBack} alt="back" className={styles.icon__back} />
+        <div className={styles.navText__1}>Back</div>
+      </button>
       <h1 className={styles.title}>Cart</h1>
 
       {cartItems.length === 0 ? (
-        <p className={styles.empty}>Твоя корзина порожня 😔</p>
+        <p className={styles.empty}>Your cart is empty 😔</p>
       ) : (
         <div className={styles.container}>
           <div className={styles.items}>
@@ -57,7 +61,7 @@ export const CartPage: React.FC = () => {
                     />
                   </button>
                   <img
-                    src={`/${product.images?.[0]}`}
+                    src={getImgUrl(product.images?.[0] || '')}
                     alt={product.name}
                     className={styles.image}
                   />

@@ -75,9 +75,15 @@ export function ProductDetailsPage(): JSX.Element {
     setError(null);
 
     Promise.all([
-      fetch('/api/phones.json').then(r => (r.ok ? r.json() : [])),
-      fetch('/api/tablets.json').then(r => (r.ok ? r.json() : [])),
-      fetch('/api/accessories.json').then(r => (r.ok ? r.json() : [])),
+      fetch(`${import.meta.env.BASE_URL}api/phones.json`).then(r =>
+        r.ok ? r.json() : [],
+      ),
+      fetch(`${import.meta.env.BASE_URL}api/tablets.json`).then(r =>
+        r.ok ? r.json() : [],
+      ),
+      fetch(`${import.meta.env.BASE_URL}api/accessories.json`).then(r =>
+        r.ok ? r.json() : [],
+      ),
     ])
       .then(([phones, tablets, accessories]) => {
         const all = [
