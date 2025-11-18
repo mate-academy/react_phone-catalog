@@ -1,0 +1,19 @@
+@import './variables';
+@import './media';
+
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include on-desktop {
+    width: 1136px;
+  }
+
+  @include on-tablet {
+    width: 576px;
+  }
+
+  @include on-mobile {
+    width: 100%;
+  }
+}
