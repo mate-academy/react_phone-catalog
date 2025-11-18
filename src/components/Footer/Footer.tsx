@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   const { t } = useTranslation();
   const { theme } = useTheme();
 
-  const logoSrc = theme === 'dark' ? '/logo/logo.png' : '/logo/logo_dark.png';
+  const logoSrc = theme === 'dark' ? './logo/logo.png' : './logo/logo_dark.png';
 
   return (
     <footer className={styles.footer}>

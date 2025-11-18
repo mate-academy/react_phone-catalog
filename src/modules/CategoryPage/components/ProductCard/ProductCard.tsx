@@ -61,7 +61,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     >
       <div className={styles.image}>
         <img
-          src={`/${product.images?.[0] || 'img/product-not-found.png'}`}
+          src={`./${product.images?.[0] || 'img/product-not-found.png'}`}
           alt={product.name}
         />
       </div>
