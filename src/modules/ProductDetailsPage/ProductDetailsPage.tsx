@@ -65,7 +65,7 @@ export const ProductDetailsPage: React.FC = () => {
         const categories = ['phones', 'tablets', 'accessories'];
         const results = await Promise.all(
           categories.map(cat =>
-            fetch(`/api/${cat}.json`).then(res => (res.ok ? res.json() : [])),
+            fetch(`api/${cat}.json`).then(res => (res.ok ? res.json() : [])),
           ),
         );
         const all = results.flat();
