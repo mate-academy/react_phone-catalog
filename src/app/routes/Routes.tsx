@@ -7,8 +7,8 @@ import {
   CartPage,
   FavouritesPage,
 } from '../../pages';
-import { Category } from '@shared/types/APIReturnTypes';
 import { App } from '../App';
+import { Category } from '@shared/types';
 
 export const routes: RouteObject[] = [
   {

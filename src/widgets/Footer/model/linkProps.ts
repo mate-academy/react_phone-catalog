@@ -1,16 +1,16 @@
-import { RoutePath } from '@shared/config';
+import { NavTitles, RoutePath } from '@shared/types';
 
 const links = [
   {
-    title: 'github',
+    title: NavTitles.GIT,
     to: RoutePath.GITHUB,
   },
   {
-    title: 'contacts',
+    title: NavTitles.CONTACTS,
     to: RoutePath.CONTACTS,
   },
   {
-    title: 'rights',
+    title: NavTitles.RIGHTS,
     to: RoutePath.RIGHTS,
   },
 ];

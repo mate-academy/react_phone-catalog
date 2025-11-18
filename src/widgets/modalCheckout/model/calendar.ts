@@ -17,7 +17,7 @@ enum Months {
 const days: Record<Months, number | string> = {
   [Months.NS]: 'Please, select day',
   [Months.JAN]: 31,
-  [Months.FEB]: 29,
+  [Months.FEB]: 28,
   [Months.MAR]: 31,
   [Months.APR]: 30,
   [Months.MAY]: 31,

@@ -1,4 +1,4 @@
-import { ErrorObject, Status } from '@server/types';
+import { ErrorObject } from '@server/types';
 
 const errorsMap: Record<number, string> = {
   400: 'Bad Request',
@@ -9,13 +9,18 @@ const errorsMap: Record<number, string> = {
   501: 'Not Implemented',
 };
 
-const createError = (statusCode: number, arg?: string): ErrorObject => {
+const formError = (
+  statusCode: number,
+  message: string,
+): { ok: false; error: ErrorObject } => {
   return {
-    status: Status.ERROR,
-    statusCode: statusCode,
-    error: errorsMap[statusCode],
-    message: arg ?? 'An unknown error occurred',
+    ok: false,
+    error: {
+      statusCode: statusCode,
+      error: errorsMap[statusCode],
+      message: message,
+    },
   };
 };
 
-export { createError };
+export { formError };

@@ -1,24 +1,20 @@
-import {
-  CatalogueData,
-  Category,
-  ItemsAmount,
-  LoadStatus,
-} from '@shared/api/types';
 import styles from './styles/catalogue.module.scss';
 import { ProductCards } from '@ui/productCards/productCards';
 import { ErrorMessage } from './ui';
+import { CatalogueData, PerPage } from '@shared/api';
+import { UILoadStatus } from '@features/useUILoader';
+import { Category } from '@shared/types';
 
 type Props = {
-  data: CatalogueData | LoadStatus;
+  data: CatalogueData | UILoadStatus;
   category: Category | 'favourites';
-  currentPerPage: ItemsAmount;
+  currentPerPage: PerPage;
 };
 
 export const Catalogue = ({ data, category, currentPerPage }: Props) => {
-  const fallbackAmount =
-    currentPerPage === ItemsAmount.ALL ? 8 : +currentPerPage;
+  const fallbackAmount = currentPerPage === PerPage.ALL ? 8 : +currentPerPage;
 
-  if (data === LoadStatus.ERROR) {
+  if (data === UILoadStatus.ERROR) {
     return <ErrorMessage msg={'Something went wrong...'} reload={true} />;
   }
 
@@ -28,7 +24,7 @@ export const Catalogue = ({ data, category, currentPerPage }: Props) => {
 
   return (
     <ul className={styles.catalogue}>
-      <ProductCards data={data} fallbackAmount={fallbackAmount} />
+      <ProductCards data={data} fallbackAmount={fallbackAmount} lazy={false} />
     </ul>
   );
 };

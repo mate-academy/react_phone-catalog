@@ -1,4 +1,5 @@
-import { CatalogueData, LoadStatus } from '@shared/api/types';
+import { CatalogueData } from '@shared/api';
+import { UILoadStatus } from '@features/useUILoader';
 import { SliderDataProvider } from '@shared/lib';
 import { BannerData, SliderType } from '@shared/types';
 import { BannerSlider } from './bannerSlider';
@@ -7,18 +8,18 @@ import { CatalogueSlider } from './catalogueSlider';
 
 type BannerProps = {
   model: SliderType.BANNER;
-  props: BannerData[] | LoadStatus;
+  props: BannerData[] | UILoadStatus;
 };
 
 type ProductProps = {
   model: SliderType.PRODUCT;
-  props: { images: string[]; name: string } | LoadStatus;
+  props: { images: string[]; name: string } | UILoadStatus;
 };
 
 type CatalogueProps = {
   model: SliderType.CATALOGUE;
   props: {
-    data: CatalogueData | LoadStatus;
+    data: CatalogueData | UILoadStatus;
     title: string;
     lazy?: boolean;
   };

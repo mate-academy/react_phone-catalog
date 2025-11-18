@@ -2,10 +2,10 @@ import { Capacity, Colors } from '@shared/types';
 import styles from './options.module.scss';
 import { CapacityButton, ColorButton } from '../../ui';
 import { OptionsProps } from '../../model';
-import { LoadStatus } from '@shared/api';
+import { UILoadStatus } from '@features/useUILoader';
 
 type Props = {
-  data: OptionsProps | LoadStatus;
+  data: OptionsProps | UILoadStatus;
 };
 
 const BACKUP_AMOUNT = 3;
@@ -26,7 +26,7 @@ export const Options = ({ data }: Props) => {
 
   const getProps = <T extends Colors | Capacity>(
     item: T,
-  ): OptionProps<T> | LoadStatus => {
+  ): OptionProps<T> | UILoadStatus => {
     if (typeof data === 'string') {
       return data;
     }

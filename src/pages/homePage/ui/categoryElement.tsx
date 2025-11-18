@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { HomePageCategory } from '../model';
 import styles from '../styles/category.module.scss';
-import { LoadStatus } from '@shared/api';
+import { UILoadStatus } from '@features/useUILoader';
 
 type Props = {
   category: HomePageCategory;
-  amount: LoadStatus | number;
+  amount: UILoadStatus | number;
 };
 
 export const CategoryElement = ({ category, amount }: Props) => (

@@ -36,7 +36,9 @@ export const Header: React.FC = () => {
         />
       </Link>
       <button
-        aria-label={isOpened ? NavAriaLabels.CloseMenu : NavAriaLabels.Menu}
+        aria-label={
+          isOpened ? NavAriaLabels.CLOSE_MENU : NavAriaLabels.OPEN_MENU
+        }
         aria-expanded={isOpened}
         className={styles['burger-button']}
         onClick={() => setOpened(!isOpened)}

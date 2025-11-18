@@ -1,20 +1,21 @@
 import { Breadcrumbs } from '@ui/breadcrumbs';
 import styles from './styles/favouritesPage.module.scss';
 import { useFavouritePage } from './model/useFavouritePage';
-import { ItemsAmount, LoadStatus } from '@shared/api';
-import { CatalogueData, Category } from '@shared/api/types';
 import { Catalogue } from '@widgets/index';
+import { CatalogueData, PerPage } from '@shared/api';
+import { UILoadStatus } from '@features/useUILoader';
+import { Category } from '@shared/types';
 
 type CatalogueProps = {
-  data: CatalogueData | LoadStatus;
+  data: CatalogueData | UILoadStatus;
   category: Category | 'favourites';
-  currentPerPage: ItemsAmount;
+  currentPerPage: PerPage;
 };
 
 const catalogueProps: CatalogueProps = {
-  data: LoadStatus.LOADING,
+  data: UILoadStatus.LOADING,
   category: 'favourites',
-  currentPerPage: ItemsAmount.FOUR,
+  currentPerPage: PerPage.FOUR,
 };
 
 export const FavouritesPage = () => {

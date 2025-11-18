@@ -1,42 +1,47 @@
-import { useGlobalData } from '@features/index';
-import { useCallback, useMemo, useState } from 'react';
+import { CartItem } from '@features/globalStore/types';
+import { useGlobalData, useLoadItems } from '@features/index';
+import { get } from '@shared/api';
+import { Product } from '@shared/types';
+import { useEffect } from 'react';
+
+type TrueCartItem = {
+  product: Product;
+  amount: number;
+  total: number;
+};
 
 export const useCartPage = () => {
   const { itemsInCart } = useGlobalData();
-  const [unitPrices, setUnitPrices] = useState<Record<string, number>>(() => {
-    const initial: Record<string, number> = {};
 
-    itemsInCart.forEach(item => {
-      initial[item.id] = 0;
-    });
+  const cart = useLoadItems(() => get.cart(itemsInCart));
 
-    return initial;
-  });
+  useEffect(() => {
+    cart.reload();
+  }, [itemsInCart]);
 
-  const updatePrice = useCallback((id: string, unitPrice: number) => {
-    setUnitPrices(prev => ({
-      ...prev,
-      [id]: unitPrice,
-    }));
-  }, []);
+  const getWidgetProps = (el: CartItem | TrueCartItem) => {
+    const nullConf = {
+      name: '',
+      id: (el as CartItem).id,
+      total: '---',
+      amount: el.amount,
+      image: '',
+    };
 
-  const allPricesLoaded = useMemo(() => {
-    return itemsInCart.every(
-      item => unitPrices[item.id] && unitPrices[item.id] !== 0,
-    );
-  }, [unitPrices, itemsInCart]);
+    if (Object.hasOwn(el, 'id')) {
+      return nullConf;
+    } else {
+      const item = el as TrueCartItem;
 
-  const totalPrice = useMemo(() => {
-    if (!allPricesLoaded) {
-      return 'Calculating...';
+      return {
+        name: item.product.name,
+        id: item.product.id,
+        total: item.total,
+        amount: item.amount,
+        image: item.product.images[0],
+      };
     }
+  };
 
-    return itemsInCart.reduce((sum, item) => {
-      const unitPrice = unitPrices[item.id] || 0;
-
-      return sum + unitPrice * item.amount;
-    }, 0);
-  }, [unitPrices, itemsInCart, allPricesLoaded]);
-
-  return { itemsInCart, updatePrice, totalPrice };
+  return { cart: cart.data, itemsInCart, getWidgetProps };
 };

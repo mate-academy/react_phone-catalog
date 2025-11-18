@@ -1,23 +1,23 @@
-import { ItemsAmount, Order } from '@shared/api';
+import { PerPage, SortOrder } from '@shared/api';
 
-const uiToApiMap = new Map<string, Order | ItemsAmount>([
-  ['Newest', Order.AGE],
-  ['Alphabetically', Order.TITLE],
-  ['Cheapest', Order.PRICE_ASC],
-  ['4', ItemsAmount.FOUR],
-  ['8', ItemsAmount.EIGHT],
-  ['16', ItemsAmount.SIXTEEN],
-  ['all', ItemsAmount.ALL],
+const uiToApiMap = new Map<string, SortOrder | PerPage>([
+  ['Newest', SortOrder.AGE],
+  ['Alphabetically', SortOrder.TITLE],
+  ['Cheapest', SortOrder.PRICE_ASC],
+  ['4', PerPage.FOUR],
+  ['8', PerPage.EIGHT],
+  ['16', PerPage.SIXTEEN],
+  ['all', PerPage.ALL],
 ]);
 
 const apiToUIMap = new Map<string, string>([
-  [Order.AGE, 'Newest'],
-  [Order.TITLE, 'Alphabetically'],
-  [Order.PRICE_ASC, 'Cheapest'],
-  [ItemsAmount.FOUR, '4'],
-  [ItemsAmount.EIGHT, '8'],
-  [ItemsAmount.SIXTEEN, '16'],
-  [ItemsAmount.ALL, 'all'],
+  [SortOrder.AGE, 'Newest'],
+  [SortOrder.TITLE, 'Alphabetically'],
+  [SortOrder.PRICE_ASC, 'Cheapest'],
+  [PerPage.FOUR, '4'],
+  [PerPage.EIGHT, '8'],
+  [PerPage.SIXTEEN, '16'],
+  [PerPage.ALL, 'all'],
 ]);
 
 export { uiToApiMap, apiToUIMap };

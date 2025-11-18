@@ -1,22 +1,21 @@
 import { CartIcon, HeartIcon } from '@shared/icons';
-import { RoutePath } from '@shared/index';
-import { Category } from '@shared/types';
+import { NavAriaLabels, NavTitles, RoutePath } from '@shared/types';
 
 const navLinks = [
   {
-    title: 'home',
+    title: NavTitles.HOME,
     to: RoutePath.HOME,
   },
   {
-    title: Category.PHONES,
+    title: NavTitles.PHONES,
     to: RoutePath.PHONES,
   },
   {
-    title: Category.TABLETS,
+    title: NavTitles.TABLETS,
     to: RoutePath.TABLETS,
   },
   {
-    title: Category.ACCESSORIES,
+    title: NavTitles.ACCESSORIES,
     to: RoutePath.ACCESSORIES,
   },
 ];
@@ -24,13 +23,13 @@ const navLinks = [
 const getButtonLinks = (cartAmount: number, favAmount: number) => {
   return [
     {
-      ariaName: 'Go to favourites page',
+      ariaName: NavAriaLabels.FAVOURITES,
       to: RoutePath.FAVOURITES,
       icon: HeartIcon,
       amount: favAmount,
     },
     {
-      ariaName: 'Go to cart page',
+      ariaName: NavAriaLabels.CART,
       to: RoutePath.CART,
       icon: CartIcon,
       amount: cartAmount,

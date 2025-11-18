@@ -1,9 +1,10 @@
-import { Category, LoadStatus } from '@shared/api';
 import styles from './styles/categoriesPage.module.scss';
 import { Dropdown, CataloguePagination } from './ui';
 import { useCatalogue, filter, pPage } from './model';
 import { Breadcrumbs } from '@ui/index';
 import { Catalogue } from '@widgets/index';
+import { Category } from '@shared/types';
+import { UILoadStatus } from '@features/useUILoader';
 
 type Props = {
   category: Category;
@@ -14,7 +15,7 @@ export const CategoriesPage = ({ category }: Props) => {
     name: category,
     to: category,
   };
-  const { data, set, currentOrder, currentPerPage, length } = useCatalogue({
+  const { products, set, currentOrder, currentPerPage, length } = useCatalogue({
     category,
   });
 
@@ -26,8 +27,8 @@ export const CategoriesPage = ({ category }: Props) => {
 
       <h1 className={styles.h1}>{category}</h1>
       <span className={styles.models}>
-        {length === LoadStatus.LOADING
-          ? LoadStatus.LOADING
+        {length === UILoadStatus.LOADING
+          ? UILoadStatus.LOADING
           : `${length} models`}
       </span>
       <div className={styles.wrapper}>
@@ -35,14 +36,14 @@ export const CategoriesPage = ({ category }: Props) => {
         <Dropdown data={pPage} setFilter={set.amount} active={currentPerPage} />
       </div>
       <Catalogue
-        data={data}
+        data={products}
         category={category}
         currentPerPage={currentPerPage}
       />
-      {typeof data === 'object' && data.pages > 1 && (
+      {typeof products === 'object' && products.pages > 1 && (
         <CataloguePagination
-          pages={data.pages}
-          currentPage={data.currentPage}
+          pages={products.pages}
+          currentPage={products.currentPage}
           setPage={set.page}
         />
       )}

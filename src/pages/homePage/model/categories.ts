@@ -1,4 +1,4 @@
-import { Category } from '@shared/types/APIReturnTypes';
+import { Category } from '@shared/types';
 
 interface HomePageCategory {
   id: number;

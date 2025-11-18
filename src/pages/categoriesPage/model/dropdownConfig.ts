@@ -1,4 +1,4 @@
-import { ItemsAmount } from '@shared/api';
+import { PerPage } from '@shared/api';
 
 interface DropdownProps {
   title: string;
@@ -14,13 +14,8 @@ const filter: DropdownProps = {
 
 const pPage: DropdownProps = {
   title: 'Items on page',
-  defaultLabel: ItemsAmount.ALL,
-  names: [
-    ItemsAmount.ALL,
-    ItemsAmount.FOUR,
-    ItemsAmount.EIGHT,
-    ItemsAmount.SIXTEEN,
-  ],
+  defaultLabel: PerPage.ALL,
+  names: [PerPage.ALL, PerPage.FOUR, PerPage.EIGHT, PerPage.SIXTEEN],
 };
 
 export { filter, pPage, type DropdownProps };

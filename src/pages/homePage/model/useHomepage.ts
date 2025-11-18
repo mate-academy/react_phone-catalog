@@ -1,56 +1,45 @@
-import { Category, get, ItemsAmount, Order, useLoadItems } from '@shared/api/';
-import { useCallback, useEffect } from 'react';
+import { useLoadItems } from '@features/useUILoader';
+import { get, PerPage, SortOrder } from '@shared/api';
+import { Category } from '@shared/types';
 
 const DATA_LOAD = {
   NEW: () =>
     get.catalogue({
-      itemType: Category.ALL,
-      sort: Order.AGE,
-      perPage: ItemsAmount.ALL,
+      category: Category.ALL,
+      sort: SortOrder.AGE,
+      perPage: PerPage.ALL,
       page: 1,
     }),
   HOT: () =>
     get.catalogue({
-      itemType: Category.ALL,
-      sort: Order.FULL_PRICE_DECS_PROMO,
-      perPage: ItemsAmount.ALL,
+      category: Category.ALL,
+      sort: SortOrder.FULL_PRICE_DECS_PROMO,
+      perPage: PerPage.ALL,
       page: 1,
     }),
 };
 
 export const useHomePage = () => {
-  const products = {
-    new: useLoadItems(DATA_LOAD.NEW),
-    promo: useLoadItems(DATA_LOAD.HOT),
-  };
-
+  const newProducts = useLoadItems(() => DATA_LOAD.NEW());
+  const promoProducts = useLoadItems(() => DATA_LOAD.HOT());
   const banners = useLoadItems(() => get.banners());
 
-  const amount = {
-    phones: useLoadItems(() => get.length(Category.PHONES)),
-    tablets: useLoadItems(() => get.length(Category.TABLETS)),
-    accessories: useLoadItems(() => get.length(Category.ACCESSORIES)),
-  };
-
-  const loadAllData = useCallback(async () => {
-    await Promise.all([
-      products.new.loadItems(),
-      products.promo.loadItems(),
-      banners.loadItems(),
-      amount.phones.loadItems(),
-      amount.tablets.loadItems(),
-      amount.accessories.loadItems(),
-    ]);
-  }, []);
-
-  useEffect(() => {
-    loadAllData();
-  }, []);
+  const phonesAmount = useLoadItems(() => get.length(Category.PHONES));
+  const tabletsAmount = useLoadItems(() => get.length(Category.TABLETS));
+  const accessoriesAmount = useLoadItems(() =>
+    get.length(Category.ACCESSORIES),
+  );
 
   return {
-    amount,
-    newItems: products.new.items,
-    promoItems: products.promo.items,
-    banners: banners.items,
+    products: {
+      new: newProducts.data,
+      promo: promoProducts.data,
+    },
+    banners: banners.data,
+    amount: {
+      phones: phonesAmount.data,
+      tablets: tabletsAmount.data,
+      accessories: accessoriesAmount.data,
+    },
   };
 };

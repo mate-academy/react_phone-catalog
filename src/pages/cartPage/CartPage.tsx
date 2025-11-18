@@ -5,7 +5,9 @@ import { ReturnButton } from '@ui/returnButton';
 import { ModalCheckout } from '@widgets/modalCheckout';
 
 export const CartPage = () => {
-  const { itemsInCart, updatePrice, totalPrice } = useCartPage();
+  const { cart, itemsInCart, getWidgetProps } = useCartPage();
+
+  const products = typeof cart === 'string' ? itemsInCart : cart.products;
 
   return (
     <main className={styles['layout-container']}>
@@ -15,21 +17,21 @@ export const CartPage = () => {
         className={styles['widgets-container']}
       >
         <h1 id="fav-heading">Cart</h1>
-        {itemsInCart.length < 1 ? (
+        {itemsInCart.length === 0 ? (
           <span className={styles.message}>Your cart is empty</span>
         ) : (
           <>
             <ul className={styles['cart-list']}>
-              {itemsInCart.map(el => (
-                <CartItemWidget
-                  key={el.id}
-                  cartItem={el}
-                  updatePrice={updatePrice}
-                />
-              ))}
+              {products.map(el => {
+                const { ...data } = getWidgetProps(el);
+
+                return <CartItemWidget key={data.id} {...data} />;
+              })}
             </ul>
 
-            <CheckoutWidget totalPrice={totalPrice} />
+            <CheckoutWidget
+              totalPrice={typeof cart === 'string' ? cart : cart.total}
+            />
           </>
         )}
       </section>

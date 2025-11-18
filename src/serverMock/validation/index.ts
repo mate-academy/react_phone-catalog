@@ -1,1 +1,2 @@
-export { validate } from './validateEntryPoint';
+export { shapeValidator } from './shape.validator';
+export { isValidObject, enumValidator } from './helpers/helpers.validator';

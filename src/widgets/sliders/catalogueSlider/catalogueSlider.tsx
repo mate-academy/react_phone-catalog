@@ -1,12 +1,12 @@
 import { useSliderCore, useSliderData } from '@shared/lib';
 import styles from './styles/catalogueSlider.module.scss';
 import { SliderButtons } from '../sharedUI';
-import { CatalogueData, LoadStatus } from '@shared/api/types';
-
 import { ProductCards } from '@ui/productCards/productCards';
+import { UILoadStatus } from '@features/useUILoader';
+import { CatalogueData } from '@shared/api';
 
 type Props = {
-  data: CatalogueData | LoadStatus;
+  data: CatalogueData | UILoadStatus;
   title: string;
   lazy?: boolean;
 };

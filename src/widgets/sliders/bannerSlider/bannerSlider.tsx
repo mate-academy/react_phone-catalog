@@ -6,10 +6,10 @@ import styles from './styles/bannerSlider.module.scss';
 import { SliderButtons } from '../sharedUI';
 import { BannerSlideList } from './ui';
 import { LoaderSpinner } from '@ui/skeletons';
-import { LoadStatus } from '@shared/api';
+import { UILoadStatus } from '@features/useUILoader';
 
 type Props = {
-  data: BannerData[] | LoadStatus;
+  data: BannerData[] | UILoadStatus;
 };
 
 const GAP = 16;
@@ -24,7 +24,7 @@ export const BannerSlider: React.FC<Props> = ({ data }: Props) => {
 
   const paginationProps =
     typeof data === 'string'
-      ? LoadStatus.LOADING
+      ? UILoadStatus.LOADING
       : {
         amount: data.length,
         setByIndex: setByIndex,
@@ -47,7 +47,7 @@ export const BannerSlider: React.FC<Props> = ({ data }: Props) => {
             } as React.CSSProperties
           }
         >
-          {data === LoadStatus.LOADING || data === LoadStatus.ERROR ? (
+          {data === UILoadStatus.LOADING || data === UILoadStatus.ERROR ? (
             <LoaderSpinner />
           ) : (
             <BannerSlideList data={data} onClick={handlers.onClick} />

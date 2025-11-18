@@ -1,11 +1,8 @@
-export { get } from './API';
 export {
-  Category,
+  type Error,
   type CatalogueData,
-  ItemsAmount,
-  Request,
-  Order,
-  LoadStatus,
-  type CatalogueConf,
-} from './types';
-export { useLoadItems } from './useLoadItems';
+  type ApiOKResponse,
+  type CartData,
+} from './types/api.types';
+export { PerPage, SortOrder } from './types/bodies.enums';
+export { get, post } from './API';

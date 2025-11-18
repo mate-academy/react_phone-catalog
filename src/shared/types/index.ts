@@ -1,11 +1,11 @@
-export { RoutePath, NavElementName, NavAriaLabels } from './navLinksTypes';
+export { RoutePath, NavTitles, NavAriaLabels } from './navLink.enums';
 export {
-  Category,
+  type BannerData,
   type CatalogueProduct,
   type Product,
-  type BannerData,
-} from './APIReturnTypes';
+} from './entities.types';
 export {
+  Category,
   Processors,
   Resolutions,
   Ram,
@@ -15,5 +15,5 @@ export {
   Cameras,
   Capacity,
   PhoneZoom,
-} from './productValuesTypes';
-export { SliderType, PaginationType } from './sliderTypes';
+} from './entities.enums';
+export { SliderType, PaginationType } from './slider.enums';

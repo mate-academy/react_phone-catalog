@@ -1,6 +1,6 @@
-import { AriaNames } from '@shared/types/ButtonProps';
 import styles from '../styles/buttons.module.scss';
 import { HeartIcon } from '@shared/icons';
+import { NavAriaLabels } from '@shared/types';
 
 type Props = {
   isInFav: boolean;
@@ -14,9 +14,9 @@ export const CardButtons = ({ ...data }: Props) => {
 
   const cartParams = data.isInCart
     ? { className: styles['cart-button__active'], text: 'Added' }
-    : { className: styles['cart-button'], text: AriaNames.AddCart };
+    : { className: styles['cart-button'], text: NavAriaLabels.ADD_TO_CART };
 
-  const favLabel = isInFav ? AriaNames.RmFav : AriaNames.AddFav;
+  const favLabel = isInFav ? NavAriaLabels.RM_FAM : NavAriaLabels.ADD_TO_FAV;
 
   return (
     <div className={styles.container}>

@@ -1,4 +1,4 @@
-import { ItemsAmount, Order } from '@shared/api';
+import { PerPage, SortOrder } from '@shared/api';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -7,8 +7,8 @@ export const useUrlReducer = () => {
 
   const state = useMemo(
     () => ({
-      sort: (searchParams.get('sort') as Order) || '',
-      perPage: (searchParams.get('perPage') as ItemsAmount) || '',
+      sort: (searchParams.get('sort') as SortOrder) || '',
+      perPage: (searchParams.get('perPage') as PerPage) || '',
       page: searchParams.get('page') || '',
     }),
     [searchParams],
@@ -16,8 +16,8 @@ export const useUrlReducer = () => {
 
   type FilterAction =
     | { type: 'SET_PAGE'; payload: number }
-    | { type: 'SET_SORT'; payload: Order }
-    | { type: 'SET_PER_PAGE'; payload: ItemsAmount }
+    | { type: 'SET_SORT'; payload: SortOrder }
+    | { type: 'SET_PER_PAGE'; payload: PerPage }
     | { type: 'RESET_FILTERS' };
 
   const dispatch = (action: FilterAction) => {
@@ -32,7 +32,7 @@ export const useUrlReducer = () => {
 
           return params;
         case 'SET_SORT':
-          if (action.payload === Order.NONE) {
+          if (action.payload === SortOrder.NONE) {
             params.delete('sort');
           } else {
             params.delete('page');
@@ -42,7 +42,7 @@ export const useUrlReducer = () => {
           return params;
 
         case 'SET_PER_PAGE':
-          if (action.payload === ItemsAmount.ALL) {
+          if (action.payload === PerPage.ALL) {
             params.delete('perPage');
           } else {
             params.delete('page');

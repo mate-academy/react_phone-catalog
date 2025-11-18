@@ -1,7 +1,7 @@
 import { ArrowIcon, HomeIcon } from '@shared/icons';
 import { Link } from 'react-router-dom';
 import styles from './breadcrumbs.module.scss';
-import { AriaNames } from '@shared/types/ButtonProps';
+import { NavTitles } from '@shared/types';
 
 type Props = {
   links?: {
@@ -14,7 +14,7 @@ export const Breadcrumbs = ({ links }: Props) => {
   return (
     <ul className={styles.breadcrumbs}>
       <li>
-        <Link to="/" aria-label={AriaNames.Home}>
+        <Link to="/" aria-label={NavTitles.HOME}>
           <HomeIcon />
         </Link>
       </li>

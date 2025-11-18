@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import styles from './modalCheckout.module.scss';
-import { PersonalDataForm } from './personalDataForm/PersonalDataForm';
-import { DeliveryForm } from './deliveryForm/DeliveryForm';
+import { PersonalDataForm } from './personalDataForm';
 
 export const ModalCheckout = () => {
   return (
@@ -20,7 +19,7 @@ export const ModalCheckout = () => {
               I agree to the processing of my personal data
             </label>
           </div>
-
+          <PersonalDataForm />
           <div className={styles.buttons}>
             <button type="submit">Place Order ($9000)</button>
             <button type="button">Cancel</button>

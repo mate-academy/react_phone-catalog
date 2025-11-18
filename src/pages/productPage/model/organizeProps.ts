@@ -1,7 +1,7 @@
 import { Product } from '@shared/types';
 import { Conf } from './types';
 import { apiToUiMapper } from './dataToUiMappers';
-import { LoadStatus } from '@shared/api';
+import { UILoadStatus } from '@features/useUILoader';
 
 const baseDetailList = {
   [apiToUiMapper.screen]: null,
@@ -10,16 +10,16 @@ const baseDetailList = {
   [apiToUiMapper.ram]: null,
 };
 
-export const organizeProps = (prod: Product | LoadStatus) => {
+export const organizeProps = (prod: Product | UILoadStatus) => {
   const conf: Conf = {
     breadcrumbs: undefined,
     h1: `Loading...`,
 
     uiProps: {
-      slider: LoadStatus.LOADING,
+      slider: UILoadStatus.LOADING,
       SKU: 'ID: 424242',
-      optionsData: LoadStatus.LOADING,
-      purchaseData: LoadStatus.LOADING,
+      optionsData: UILoadStatus.LOADING,
+      purchaseData: UILoadStatus.LOADING,
       baseDetailedList: baseDetailList,
     },
 
@@ -32,7 +32,7 @@ export const organizeProps = (prod: Product | LoadStatus) => {
     },
   };
 
-  if (prod === LoadStatus.LOADING || prod === LoadStatus.ERROR) {
+  if (prod === UILoadStatus.LOADING || prod === UILoadStatus.ERROR) {
     return conf;
   }
 

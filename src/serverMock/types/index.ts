@@ -1,4 +1,38 @@
-export { type ErrorObject, Status } from './returnDataTypes';
+export {
+  Methods,
+  GetRequests,
+  PostRequests,
+  ProductCategory,
+  SortParams,
+  PerPage,
+  DeliveryTypes,
+  EdgeCasesKeys,
+} from './request.enums';
+
+export {
+  type ErrorObject,
+  type BannerData,
+  type CatalogueData,
+  type BaseProduct,
+  type Product,
+} from './entities/entities.types';
+
+export {
+  Months,
+  type CartItem,
+  type BECartItem,
+  type CartData,
+  type Address,
+  type Birthday,
+  type UserDetails,
+  type Pickup,
+  type Shipment,
+} from './types';
+
+export {
+  type ValidatorResponce,
+  type ProcessingResult,
+} from './validator.types';
 
 export {
   type ValidCatalogueBody,
@@ -6,19 +40,4 @@ export {
   type ValidProdBody,
   type ValidAmountBody,
   type ValidCheckoutBody,
-} from './validationBodies';
-export {
-  type ServiceResult,
-  type BannerData,
-  type CatalogueData,
-  type Product,
-  type BaseProduct,
-  type Address,
-  type Birthday,
-  type UserDetails,
-  type Pickup,
-  type Shipment,
-  type CartItem,
-  type CartData,
-  type BECartItem,
-} from './serviceTypes';
+} from './requestBody.types';

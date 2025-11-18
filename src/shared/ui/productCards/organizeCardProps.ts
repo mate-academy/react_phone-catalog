@@ -1,5 +1,5 @@
 import { Item } from '@features/globalStore/types';
-import { LoadStatus } from '@shared/api';
+import { UILoadStatus } from '@features/useUILoader';
 import { CatalogueProduct, Product } from '@shared/types';
 
 type IsIn = {
@@ -27,7 +27,7 @@ const organizeCardProps = (
   if (typeof el === 'number') {
     return {
       key: el,
-      data: LoadStatus.LOADING,
+      data: UILoadStatus.LOADING,
     };
   }
 

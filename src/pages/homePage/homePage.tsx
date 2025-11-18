@@ -2,11 +2,11 @@ import React from 'react';
 import { categories, useHomePage } from './model';
 import styles from './styles/HomePage.module.scss';
 import { CategoryElement } from './ui';
-import { SliderType } from '@shared/types/sliderTypes';
+import { SliderType } from '@shared/types/slider.enums';
 import { Slider } from '@widgets/index';
 
 export const HomePage = () => {
-  const { amount, newItems, promoItems, banners } = useHomePage();
+  const { amount, products, banners } = useHomePage();
 
   return (
     <main className={styles.container}>
@@ -20,7 +20,7 @@ export const HomePage = () => {
       <div className={styles['home-catalogue']}>
         <Slider
           model={SliderType.CATALOGUE}
-          props={{ data: newItems, title: 'Brand new Models' }}
+          props={{ data: products.new, title: 'Brand new Models' }}
         />
         <section
           className={styles.categories}
@@ -31,13 +31,13 @@ export const HomePage = () => {
             <CategoryElement
               key={el.id}
               category={el}
-              amount={amount[el.link].items}
+              amount={amount[el.link]}
             />
           ))}
         </section>
         <Slider
           model={SliderType.CATALOGUE}
-          props={{ data: promoItems, title: 'Hot prices', lazy: true }}
+          props={{ data: products.promo, title: 'Hot prices', lazy: true }}
         />
       </div>
     </main>

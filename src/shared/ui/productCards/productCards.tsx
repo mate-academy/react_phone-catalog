@@ -1,11 +1,11 @@
-import { useProdCard } from '@features/index';
-import { CatalogueData, LoadStatus } from '@shared/api';
+import { UILoadStatus, useProdCard } from '@features/index';
 import { organizeCardProps } from './organizeCardProps';
 import { ProductCard } from '@entities/prodCard';
 import { Product } from '@shared/types';
+import { CatalogueData } from '@shared/api';
 
 type Props = {
-  data: CatalogueData | Product[] | LoadStatus;
+  data: CatalogueData | Product[] | UILoadStatus;
   firstItemRef?: React.RefObject<HTMLLIElement> | null;
   fallbackAmount: number;
   lazy: boolean;
