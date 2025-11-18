@@ -54,20 +54,21 @@ export function ProductDetailsPage(): JSX.Element {
   const { addToCart, removeFromCart, addToFavourites, favourites, cartItems } =
     useCart();
 
-  // Load product after selecting it
   useEffect(() => {
     if (!product?.images?.length) {
       setMainImage(undefined);
       return;
     }
 
-    const raw = product.images[0]; // "img/phones/..."
-    const url = getImgUrl(raw);
+    const firstImage = product.images?.[0];
 
-    setMainImage(url);
+    if (firstImage) {
+      setMainImage(getImgUrl(firstImage));
+    } else {
+      setMainImage(getImgUrl('img/placeholder.png'));
+    }
   }, [product]);
 
-  // Fetch product list
   useEffect(() => {
     if (!productId) return;
 
@@ -121,7 +122,6 @@ export function ProductDetailsPage(): JSX.Element {
       .finally(() => setLoading(false));
   }, [productId]);
 
-  // Updating when color/capacity changes
   useEffect(() => {
     if (!product || !selectedColor || !selectedCapacity) return;
 
@@ -179,14 +179,15 @@ export function ProductDetailsPage(): JSX.Element {
     ));
   };
 
-  if (loading)
+  if (loading)  {
     return (
       <div className={styles.page}>
         <p className={styles.loading}>Loading product...</p>
       </div>
     );
+  }
 
-  if (error)
+  if (error) {
     return (
       <div className={styles.page}>
         <p className={styles.error}>{error}</p>
@@ -195,8 +196,9 @@ export function ProductDetailsPage(): JSX.Element {
         </p>
       </div>
     );
+  }
 
-  if (!product)
+  if (!product) {
     return (
       <div className={styles.page}>
         <h2>Product not found</h2>
@@ -205,6 +207,7 @@ export function ProductDetailsPage(): JSX.Element {
         </p>
       </div>
     );
+  }
 
   return (
     <div className={styles.page}>

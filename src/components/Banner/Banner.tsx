@@ -30,9 +30,13 @@ export function Banner() {
     startRef.current = performance.now();
 
     const animate = (time: number) => {
-      if (!startRef.current) startRef.current = time;
+      if (!startRef.current) {
+        startRef.current = time;
+      }
+
       const elapsed = time - startRef.current!;
       const newProgress = Math.min((elapsed / duration) * 100, 100);
+
       progressRef.current = newProgress;
       setProgress(newProgress);
 
@@ -48,6 +52,7 @@ export function Banner() {
 
   useEffect(() => {
     startProgress();
+
     return () => cancelAnim();
   }, [current]);
 
