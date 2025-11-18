@@ -23,19 +23,19 @@ export const HomePage: React.FC = () => {
   };
 
   const banners = [
-    '/img/banner-picture.jpg',
-    '/img/banner-picture2.jpg',
-    '/img/banner-picture3.jpg',
-    '/img/banner-picture4.jpg',
+    'img/banner-picture.jpg',
+    'img/banner-picture2.jpg',
+    'img/banner-picture3.jpg',
+    'img/banner-picture4.jpg',
   ];
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const [phonesResp, tabletResp, accessoriesResp] = await Promise.all([
-          fetch('api/phones.json'),
-          fetch('api/tablets.json'),
-          fetch('api/accessories.json'),
+          fetch('./api/phones.json'),
+          fetch('./api/tablets.json'),
+          fetch('./api/accessories.json'),
         ]);
 
         if (!phonesResp.ok || !tabletResp.ok || !accessoriesResp.ok) {
