@@ -8,7 +8,7 @@ export const AllRoutes = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route index element={<HomePageLazy />}/> */}
+          <Route index element={<HomePageLazy />}/>
 
           {/* <Route path="phones"> */}
           <Route path="/">

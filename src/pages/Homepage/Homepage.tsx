@@ -2,13 +2,10 @@ import './Homepage.scss';
 import { useContext, useMemo } from 'react';
 import { Product } from '../../types/Product';
 
-import { Header } from '../../components/Header';
 import { PicturesSlider } from '../../components/PicturesSlider';
-import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { ProductsSwiper } from '../../components/ProductsSwiper/ProductsSwiper';
 import { GlobalContext } from '../../context/GlobalContext';
 import { ShopByCategory } from '../../components/ShopByCategory';
-import { Footer } from '../../components/Footer';
 
 export const Homepage = () => {
   const { allProducts } = useContext(GlobalContext);
