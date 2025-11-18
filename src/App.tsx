@@ -3,6 +3,8 @@ import { HomePage } from './modules/HomePage';
 import { CategoryPage } from './modules/CategoryPage';
 import { Header } from './modules/Header';
 import { Footer } from './modules/Footer';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import { NotFoundPage } from './modules/NotFoundPage';
 
 import './styles/main.scss';
 
@@ -18,6 +20,8 @@ export const App = () => (
           path="/accessories"
           element={<CategoryPage category="accessories" />}
         />
+        <Route path="/product/:productId" element={<ProductDetailsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
       <Footer />

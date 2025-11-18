@@ -20,8 +20,8 @@ export const Breadcrumbs: FC<Props> = ({ paths }) => {
       {paths.map(path =>
         path.link ? (
           <span className={s.breadcrumbsItem} key={path.label}>
-            <Link to="/" className={s.breadcrumbsLink}>
-              Phones
+            <Link to={path.link} className={s.breadcrumbsLink}>
+              {path.label}
             </Link>
             <img src={right} alt="icon right" className={s.breadcrumbsImg} />
           </span>

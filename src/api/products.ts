@@ -24,3 +24,9 @@ export const getProductList = async (category: Category) => {
     image: item.images[0],
   }));
 };
+
+export const getProductById = async (category: Category, productId: string) => {
+  const productsList = await getProductsByCategoty(category);
+
+  return productsList.find(product => product.id === productId);
+};

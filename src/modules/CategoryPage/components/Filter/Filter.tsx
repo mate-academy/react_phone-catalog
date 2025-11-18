@@ -32,7 +32,7 @@ export const Filter: FC = () => {
         <span className={s.label}>Items on page</span>
         <CustomSelect
           options={itemsOptions}
-          placeholder="16"
+          placeholder="All"
           onSelect={() => {}}
         />
       </div>

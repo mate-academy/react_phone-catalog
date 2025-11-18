@@ -78,6 +78,16 @@
   }
 }
 
+@mixin button-accent {
+  @include button-base;
+
+  & {
+    background: $secondaryAccent;
+    color: $white;
+  }
+}
+
+
 @mixin button-secondary {
   @include button-base;
 
@@ -86,6 +96,7 @@
     color: $secondary;
   }
 }
+
 
 @mixin button-icon {
   @include button-base;

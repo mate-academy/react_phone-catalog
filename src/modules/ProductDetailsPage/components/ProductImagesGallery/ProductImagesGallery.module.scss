@@ -1,0 +1,55 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+@use '../../../../styles/shared.scss' as *;
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 400px; // adjust for layout
+}
+
+.mainImageWrapper {
+  width: 288px;
+  height: 288px;
+}
+
+.mainImage {
+  width: auto;
+  height: 288px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+%thumb-base {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 2px solid transparent;
+  object-fit: cover;
+  transition: all 0.2s;
+}
+
+.thumb {
+  @extend %thumb-base;
+}
+
+.thumb:hover {
+  opacity: 0.8;
+}
+
+.thumbActive {
+  @extend %thumb-base;
+
+  opacity: 1;
+  border-color: #000;
+}

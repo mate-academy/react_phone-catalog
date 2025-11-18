@@ -30,10 +30,18 @@ export const ProductCard: FC<Props> = ({ product, priceMode = 'full' }) => {
 
   return (
     <article className={s.productCard}>
-      <Link to="/product" className={s.productImage}>
+      <Link
+        to={`/product/${product.itemId}`}
+        state={{ category: product.category }}
+        className={s.productImage}
+      >
         <img src={product.image} alt={product.name} />
       </Link>
-      <Link className={s.productTitle} to="/product">
+      <Link
+        className={s.productTitle}
+        to={`/product/${product.itemId}`}
+        state={{ category: product.category }}
+      >
         {product.name}
       </Link>
       {renderPriceBox()}

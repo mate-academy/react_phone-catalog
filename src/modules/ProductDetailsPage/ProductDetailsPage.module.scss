@@ -2,8 +2,8 @@
 @use '../../styles/mixins.scss' as *;
 @use '../../styles/shared.scss' as *;
 
-.count{
-  color: $secondary;
-  font-size: $font-size-base;
+.productNotFound{
+  img{
+    max-width: 100%;
+  }
 }
-
