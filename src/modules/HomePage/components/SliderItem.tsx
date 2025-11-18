@@ -13,7 +13,9 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
         <img src={item.image} alt={item.name} />
       </div>
       <div className={styles.SliderComponent__item__infoContainer}>
-        <span className={styles.SliderComponent__itemName}>{item.name}</span>
+        <span className={styles.SliderComponent__item__itemName}>
+          {item.name}
+        </span>
         <div className={styles.SliderComponent__item__priceContainer}>
           <div className={styles.SliderComponent__item__fullPrice}>
             ${item.fullPrice}
@@ -27,16 +29,26 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
         <div className={styles.SliderComponent__item__divider}></div>
         <div className={styles.SliderComponent__item__specContainer}>
           <div>
-            <span>Screen</span>
-            <span>{item.screen}</span>
+            <span className={styles.SliderComponent__item__infoName}>
+              Screen
+            </span>
+            <span className={styles.SliderComponent__item__infoValue}>
+              {item.screen}
+            </span>
           </div>
           <div>
-            <span>Capacity</span>
-            <span>{item.capacity} </span>
+            <span className={styles.SliderComponent__item__infoName}>
+              Capacity
+            </span>
+            <span className={styles.SliderComponent__item__infoValue}>
+              {item.capacity}{' '}
+            </span>
           </div>
           <div>
-            <span>RAM</span>
-            <span>{item.ram} </span>
+            <span className={styles.SliderComponent__item__infoName}>RAM</span>
+            <span className={styles.SliderComponent__item__infoValue}>
+              {item.ram}{' '}
+            </span>
           </div>
         </div>
         <div className={styles.SliderComponent__item__buttonContainer}>

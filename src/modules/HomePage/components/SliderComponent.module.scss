@@ -30,10 +30,24 @@
   &__item {
     display: flex;
     padding: 32px;
-    box-sizing: border-box; // Включає padding і border у загальну ширину
-    // width: 272px;
     flex-direction: column;
+    width: 100%;
+    max-width: 272px;
     outline: 1px solid $color-elements;
+    min-height: 500px; // або height, якщо контент завжди влазить
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__itemName {
+      // min-height: 42px;
+      min-height: 42px; // або max-height
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; // кількість рядків
+      -webkit-box-orient: vertical;
+      @include type($body-size, $body-line, $body-track, $body-weight);
+    }
     &__imageContainer {
       width: 208px;
       height: 196px;
@@ -73,16 +87,26 @@
         justify-content: space-between;
       }
     }
-    &__priceContainer {
-      display: flex;
-      column-gap: 8px;
+    &__infoName {
+      color: $color-secondary;
+      @include type($small-size, $small-line, $small-track, $small-weight);
+    }
+    &__infoValue {
+      @include type(12px, normal, 0, 700, $font-mont-semibold);
     }
     &__price {
       font-weight: 600;
       color: $color-secondary;
       text-decoration-line: line-through;
+      line-height: normal;
+      font-size: $h3-size;
     }
+    &__fullPrice {
+      @include type($h3-size, $h3-line, $h3-track, $h3-weight, $font-mont-bold);
+    }
+
     &__buttonContainer {
+      margin-top: auto;
       display: flex;
       column-gap: 8px;
     }
