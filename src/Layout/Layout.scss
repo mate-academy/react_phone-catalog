@@ -1,0 +1,45 @@
+@import '/src/utils/fonts/fonts';
+@import '/src/utils/mixins';
+
+* {
+  box-sizing: border-box;
+}
+
+html, 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  background-color: $gray-white;
+}
+
+p, ul, h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: $maxWidthContainer + px;
+
+  @include adaptiv-value(padding-inline, 16, 32, 1);
+ }
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__main {
+   flex: 1;
+  }
+
+  &__footer {
+    width: 100%;
+    box-shadow: -1px -1px 0 0 $gray-elements;
+
+    @include adaptiv-value(margin-top, 51, 81, 1);
+  }
+}

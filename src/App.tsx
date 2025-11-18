@@ -1,7 +1,9 @@
 import './App.scss';
+import { GlobalProvider } from './context/GlobalContext';
+import { AllRoutes } from './routes';
 
 export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
+  <GlobalProvider>
+    <AllRoutes />
+  </GlobalProvider>
 );

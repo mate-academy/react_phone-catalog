@@ -1,0 +1,105 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.footer {
+  &__logo {
+    display: flex;
+    align-items: center;
+    transition: all .3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    img {
+      display: block;
+      height: 32px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    height: 257px;
+    align-items: start;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    @include on-tablet {
+      max-width: none;
+      height: 96px;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    @include adaptiv-value(gap, 14, 106, 1);
+
+    @include phone-max {
+      flex-direction: column;
+      align-items: start;
+      gap: 12px;
+    }
+
+    li {
+      height: 20px;
+      list-style: none;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-decoration: none;
+    color: $gray-secondary;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 20px;
+    transition: all .3s ease;
+
+    @include adaptiv-value(letter-spacing, 1.1, 1.6, 1);
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.03);
+    }
+  }
+
+  &__block {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+
+    @include phone-max {
+      align-self: center;
+    }
+  }
+
+  &__btn {
+    background-image: url(../../assets/icons/arrow-right--default.svg);
+    transform: rotate(-90deg);
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &-title {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      color: $gray-secondary;
+    }
+  }
+
+}

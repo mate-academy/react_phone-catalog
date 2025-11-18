@@ -1,0 +1,304 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+$header-height--desktop: 64px;
+$header-height--tablet: 48px;
+$nav-gap--desktop: 64px;
+$nav-gap--tablet: 32px;
+$gap-header--desktop: 24px;
+$gap-header--tablet: 16px;
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: $gray-white;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__body {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    box-shadow: 0 1px 0 0 $gray-elements;
+    z-index: 10;
+
+    @include adaptiv-value(gap, 16, 24, 1);
+    @include adaptiv-value(height, 48, 64, 1);
+    @include phone-max {
+      justify-content: space-between;
+      height: 48px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    height: 100%;
+    margin: 0 24px;
+    align-items: center;
+    z-index: 5;
+
+    img {
+      display: block;
+      height: 28px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex: 1 1 100%;
+    align-items: center;
+    justify-content: space-between;
+    transition: all .3s ease;
+    
+    @include phone-max {
+      flex-direction: column;
+      position: fixed;
+      padding-top: 30px;
+      left: +100%;
+      top: 49px;
+      width: 100%;
+      height: calc(100vh - #{$header-height--tablet} - 1px);
+      background-color: $gray-background;
+    }
+  }
+
+  &__menu {
+    @include phone-max {
+      padding-top: 20px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+
+    @include phone-max {
+      width: 100%;
+    }
+  }
+
+  &__btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px -1px 0 0 $gray-elements;
+
+    @include adaptiv-value(height, 48, 64, 1);
+    @include adaptiv-value(width, 48, 64, 1);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      height: 1px;
+      width: 0;
+
+      background-color: $gray-primary;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &--fav {
+      position: relative;
+      background-image: url(../../assets/icons/favorite-icon--default.svg);
+    
+      @include phone-max {
+        height: 64px;
+        width: 100%;
+      }
+    }
+  
+    &--cart {
+      position: relative;
+      background-image: url(../../assets/icons/shopping-bag-cart.svg);
+    
+      @include phone-max {
+        height: 64px;
+        width: 100%;
+      }
+    }
+
+    &--burger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+    }
+  }
+
+  &__value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    top: 22%;
+    right: 22%;
+    font-size: 10px;
+    line-height: 5px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: blue;
+
+    @include phone-max {
+      top: 22%;
+      right: 44%;
+    }
+  }
+
+  &__burger {
+    @include on-tablet {
+      display: none;
+    }
+
+    &-btn {
+      display: block;
+      position: relative;
+      height: 18px;
+      width: 25px;
+      transition: all .3s ease-in-out;
+      
+      span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        top: 8px;
+        background-color: $gray-primary;
+      }
+
+      &::after,
+      &::before {
+        content: '';
+        position: absolute;
+        background-color: $gray-primary;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        transition: all .3s ease-in-out;
+      }
+
+      &::before {
+        top: 0;
+      }
+
+      &::after {
+        bottom: 0;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    z-index: 2;
+
+    @include adaptiv-value(gap, 32, 64, 1);
+    @include phone-max {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    li {
+      list-style: none;
+
+      @include adaptiv-value(line-height, 48, 64, 1);
+      @include phone-max {
+        line-height: 15px;
+        text-align: center;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    height: 100%;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: .08em;
+    color: $gray-secondary;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+
+    @include adaptiv-value(line-height, 48, 64, 1);
+    @include phone-max {
+      font-size: 14px;
+      line-height: 30px;
+      display: inline-block;
+    }
+    
+    &:hover {
+      color: $gray-primary;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      height: 1px;
+      width: 0;
+
+      background-color: $gray-primary;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+
+      @include phone-max {
+        height: 2px;
+      }
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+  }
+}
+
+body.lock {
+  overflow: hidden;
+}
+
+.header__wrapper.is-active {
+  left: 0;
+}
+
+.header__burger.is-active .header__burger-btn::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.header__burger.is-active .header__burger-btn::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.header__burger.is-active .header__burger-btn span {
+  opacity: 0;
+}
+
+

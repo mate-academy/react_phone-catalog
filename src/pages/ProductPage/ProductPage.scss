@@ -1,0 +1,10 @@
+@import '/src/utils/variables';
+@import '/src/utils/mixins';
+
+.productPage {
+  height: 300px;
+  width: 300px;
+  background-color: rgb(179, 181, 183);
+  @include adaptiv-value(margin-top, 74, 106, 1);
+
+}
