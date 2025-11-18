@@ -1,12 +1,13 @@
 .home {
   margin: 0 16px;
+  max-width: 1200px;
 
   @media (min-width: 700px) and (max-width: 1199px) {
     margin: 0 32px;
   }
 
   @media (min-width: 1200px) {
-    margin: 0 152px;
+    margin: 0 auto;
   }
 }
 
