@@ -54,14 +54,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           const target = e.target as HTMLElement;
 
           if (!target.closest('button')) {
-            navigate(`/product/${product.id}`);
+            navigate(`./product/${product.id}`);
           }
         }
       }}
     >
       <div className={styles.image}>
         <img
-          src={`./${product.images?.[0] || 'img/product-not-found.png'}`}
+          src={`./${product.images?.[0] || './img/product-not-found.png'}`}
           alt={product.name}
         />
       </div>
