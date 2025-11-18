@@ -65,7 +65,7 @@ export const PictureSlider: React.FC<{ banners?: string[] }> = ({
         </button>
         <div className={styles.slide}>
           <img
-            src={`./${banners[currentIndex]}`}
+            src={`${banners[currentIndex]}`}
             alt={`Banner ${currentIndex + 1}`}
             className={`${styles.slideImage} ${isTransitioning ? styles.transition : ''}`}
           />
