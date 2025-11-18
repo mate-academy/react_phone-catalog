@@ -63,7 +63,7 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
                     }}
                   >
                     <img
-                      src={`./${product.images[0]}`}
+                      src={`/${product.images[0]}`}
                       alt={product.name}
                       className={styles.card__image}
                     />
@@ -133,8 +133,8 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
                     <img
                       src={
                         isFavorite(product.id)
-                          ? './img/icons/fav-active.png'
-                          : './img/icons/fav.png'
+                          ? '/img/icons/fav-active.png'
+                          : '/img/icons/fav.png'
                       }
                       alt="favourite goods"
                     />
