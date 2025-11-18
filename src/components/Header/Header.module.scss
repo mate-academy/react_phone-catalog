@@ -63,7 +63,7 @@ body {
         position: relative;
         border: 1px solid $menu-border-color;
         border-bottom: none;
-        padding: 16px;
+        padding: 16px 12px;
 
         &:not(:first-child) {
           border-left: none;
