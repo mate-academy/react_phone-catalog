@@ -15,7 +15,7 @@ export const CartRecord: React.FC<Props> = ({
   onDecrement,
   onRemove,
 }) => {
-  const totalPrice = item.price * item.quantity;
+  const totalPrice = item.product.price * item.quantity;
 
   return (
     <article className={styles.card}>
@@ -32,10 +32,14 @@ export const CartRecord: React.FC<Props> = ({
         />
       </button>
 
-      <img className={styles.image} src={item.image} alt={item.name} />
+      <img
+        className={styles.image}
+        src={item.product.img}
+        alt={item.product.name}
+      />
 
       <div className={styles.info}>
-        <p className={styles.meta}>{item.capacity}</p>
+        <p className={styles.name}>{item.product.name}</p>
       </div>
 
       <div className={styles.counter}>

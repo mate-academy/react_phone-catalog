@@ -3,10 +3,6 @@ import React, { createContext, useEffect, useMemo, useState } from 'react';
 
 export type CartItem = {
   id: number;
-  price: number;
-  capacity: string;
-  name: string;
-  image: string;
   quantity: number;
   product: UiProduct;
 };

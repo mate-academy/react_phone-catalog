@@ -6,20 +6,18 @@ import { CartContext, CartItem } from '../../contexts/CartContext';
 
 type Props = {
   product: UiProduct;
-  showOldPrice?: boolean;
+  showOldPrice: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({
-  product,
-  showOldPrice = true,
-}) => {
-  const { title, img, price, oldPrice, screen, capacity, ram } = product;
+export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
+  const { title, img, price, fullPrice, screen, capacity, ram } = product;
+
   const { favorites, setFavorites } = useContext(FavoriteContext);
   const { cartItems, setCartItems } = useContext(CartContext);
 
   const favorite = favorites.map(e => e.id).includes(product.id);
 
-  const hasCartItem = cartItems.some(item => item.product.id === product.id);
+  const hasCartItem = cartItems.some(item => item.id === product.id);
 
   function handleToggleFavorite() {
     if (!favorite) {
@@ -51,11 +49,8 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className={styles.priceBlock}>
         <span className={styles.price}>${price}</span>
-        {showOldPrice && oldPrice && (
-          <span className={styles.oldPrice}>${oldPrice}</span>
-        )}
+        {showOldPrice && <span className={styles.oldPrice}>${fullPrice}</span>}
       </div>
-
       <ul className={styles.details}>
         <li>
           <span>Screen</span>

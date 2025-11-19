@@ -4,10 +4,11 @@ import { ProductCard } from '../ProductCard';
 
 export type UiProduct = {
   id: number;
+  name: string;
   title: string;
   img: string;
-  priceRegular: number;
-  oldPrice?: number;
+  price: number;
+  fullPrice: number;
   year: number;
   screen: string;
   capacity: string;
@@ -35,7 +36,6 @@ export const ProductsSlider: React.FC<Props> = ({
 
   const visible = products.slice(start, start + itemsToShow);
 
-  // ✅ логіка: якщо це "Hot prices", показуємо стару ціну, інакше — ні
   const showOldPrice = title === 'Hot prices';
 
   return (

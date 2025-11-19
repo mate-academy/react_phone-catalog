@@ -1,57 +1,55 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { CartRecord } from '../../shared/components/CartItem/CartRecord';
-import { CartItem } from '../../shared/contexts/CartContext';
+import { CartContext } from '../../shared/contexts/CartContext';
 import styles from './CartPage.module.scss';
 // eslint-disable-next-line max-len
 import { NavigationButton } from '../../shared/components/NavigationButton/NavigationButton';
 
-const demoItem: CartItem = {
-  id: 1,
-  name: 'Demo iPhone',
-  image: '/img/phones/apple-iphone-14-pro.webp',
-  price: 999,
-  quantity: 1,
-  capacity: '128GB',
-  color: 'Silver',
-};
-
 export const CartPage: React.FC = () => {
+  const { cartItems } = useContext(CartContext); // setCartItems
+
+  const totalPrice = cartItems.reduce(
+    (sum, item) => sum + item.product.fullPrice * item.quantity,
+    0,
+  );
+
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  // const handleIncrement = (id: number) => {};
+  //
+  // const handleDecrement = (id: number) => {};
+  //
+  // const handleRemove = (id: number) => {};
+
   return (
     <div className={styles.lid}>
-      <NavigationButton title={'Back'} />
+      <NavigationButton title="Back" />
       <h1>Cart</h1>
+
       <section>
         <div className={styles.container}>
           <div className={styles.cartList}>
-            <CartRecord
-              item={demoItem}
-              onIncrement={() => {}}
-              onDecrement={() => {}}
-              onRemove={() => {}}
-            />
-            <CartRecord
-              item={demoItem}
-              onIncrement={() => {}}
-              onDecrement={() => {}}
-              onRemove={() => {}}
-            />
-            <CartRecord
-              item={demoItem}
-              onIncrement={() => {}}
-              onDecrement={() => {}}
-              onRemove={() => {}}
-            />
-          </div>
-          <div>
-            <aside className={styles.summary}>
-              <p className={styles.totalPrice}>totalPrice</p>
-              <p className={styles.totalText}>Total for</p>
+            {cartItems.map(item => (
+              <CartRecord
+                key={item.id}
+                item={item}
+                onIncrement={handleIncrement}
+                onDecrement={handleDecrement}
+                onRemove={handleRemove}
+              />
+            ))}
 
-              <hr className={styles.divider} />
-
-              <button className={styles.checkoutBtn}>Checkout</button>
-            </aside>
+            {cartItems.length === 0 && <p>Your cart is empty</p>}
           </div>
+
+          <aside className={styles.summary}>
+            <p className={styles.totalPrice}>${totalPrice}</p>
+            <p className={styles.totalText}>Total for {totalQuantity} items</p>
+
+            <hr className={styles.divider} />
+
+            <button className={styles.checkoutBtn}>Checkout</button>
+          </aside>
         </div>
       </section>
     </div>
