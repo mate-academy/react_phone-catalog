@@ -10,12 +10,12 @@ const menuLinks: MenuLink[] = [
     external: true,
   },
   {
-    href: '//www.apple.com/contact/',
+    href: 'https://github.com/ElisabethPO/react_phone-catalog',
     label: 'Contacts',
     external: true,
   },
   {
-    href: 'https://www.apple.com/legal/',
+    href: 'https://github.com/ElisabethPO/react_phone-catalog',
     label: 'Right',
     external: true,
   },
