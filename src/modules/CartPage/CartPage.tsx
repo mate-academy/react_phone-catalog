@@ -51,6 +51,10 @@ export const CartPage: React.FC = () => {
     setCartItems(remove);
   };
 
+  const handleCheckout = () => {
+    setCartItems([]);
+  };
+
   return (
     <div className={styles.lid}>
       <NavigationButton title="Back" />
@@ -69,17 +73,30 @@ export const CartPage: React.FC = () => {
               />
             ))}
 
-            {cartItems.length === 0 && <p>Your cart is empty</p>}
+            {cartItems.length === 0 && (
+              <div className={styles.empty}>
+                <img
+                  className={styles.emtyImage}
+                  src="/img/cart-is-empty.png"
+                  alt="Empty cart"
+                />
+              </div>
+            )}
           </div>
+          {cartItems.length > 0 && (
+            <aside className={styles.summary}>
+              <p className={styles.totalPrice}>${totalPrice}</p>
+              <p className={styles.totalText}>
+                Total for {totalQuantity} items
+              </p>
 
-          <aside className={styles.summary}>
-            <p className={styles.totalPrice}>${totalPrice}</p>
-            <p className={styles.totalText}>Total for {totalQuantity} items</p>
+              <hr className={styles.divider} />
 
-            <hr className={styles.divider} />
-
-            <button className={styles.checkoutBtn}>Checkout</button>
-          </aside>
+              <button className={styles.checkoutBtn} onClick={handleCheckout}>
+                Checkout
+              </button>
+            </aside>
+          )}
         </div>
       </section>
     </div>

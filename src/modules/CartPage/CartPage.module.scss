@@ -26,6 +26,14 @@
   gap: 16px;
 }
 
+.empty {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .summary {
   width: 368px;
   padding: 32px 24px;
@@ -105,3 +113,5 @@
     margin: 0;
   }
 }
+
+

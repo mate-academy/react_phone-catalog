@@ -39,7 +39,7 @@ export const CartRecord: React.FC<Props> = ({
       />
 
       <div className={styles.info}>
-        <p className={styles.name}>{item.product.name}</p>
+        <p className={styles.title}>{item.product.title}</p>
       </div>
 
       <div className={styles.counter}>
