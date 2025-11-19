@@ -75,10 +75,9 @@ const sortOptions: OptionType[] = [
 export const Devices: React.FC<Props> = ({ type }) => {
   const [devices, setDevices] = useState<ProductType[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [selectedOption, setSelectedOption] = useState<OptionType | null>({
-    value: '4',
-    label: '4',
-  });
+
+  const [selectedOption, setSelectedOption] = useState<OptionType | null>(null);
+
   const [selectedSortOption, setSelectedSortOption] =
     useState<OptionType | null>(null);
   const [itemOffset, setItemOffset] = useState(0);
@@ -101,17 +100,48 @@ export const Devices: React.FC<Props> = ({ type }) => {
   }, [type]);
 
   useEffect(() => {
-    setItemOffset(0);
-    const params = new URLSearchParams(searchParams);
+    const perPage = searchParams.get('perPage') || '4';
+    const page = Number(searchParams.get('page')) || 1;
+    const sortParam = searchParams.get('sort');
 
-    if (selectedOption?.value === 'all') {
-      params.delete('page');
+    const optionFromParam =
+      options.find(option => option.value === perPage) || options[0];
+
+    setSelectedOption(optionFromParam);
+
+    const perPageNumber =
+      optionFromParam.value === 'all'
+        ? devices.length || 0
+        : Number(optionFromParam.value);
+
+    const safePage = page < 1 ? 1 : page;
+
+    const newOffset =
+      optionFromParam.value === 'all' ? 0 : (safePage - 1) * perPageNumber;
+
+    setItemOffset(newOffset);
+
+    let sortOption: OptionType | null = null;
+
+    if (sortParam === 'title') {
+      sortOption =
+        sortOptions.find(option => option.label === 'Alphabetically') || null;
+    } else if (sortParam === 'age') {
+      sortOption =
+        sortOptions.find(option => option.label === 'Newest') || null;
+    } else if (sortParam === 'price') {
+      sortOption =
+        sortOptions.find(option => option.label === 'Cheapest') || null;
     } else {
-      params.set('page', '1');
+      sortOption = null;
     }
 
-    setSearchParams(params);
-  }, [selectedSortOption, selectedOption]);
+    setSelectedSortOption(sortOption);
+  }, [type, searchParams, devices.length]);
+
+  useEffect(() => {
+    setSelectedSortOption(null);
+  }, [type]);
 
   const sortedProducts = getReadyProducts(devices, selectedSortOption);
 
@@ -127,16 +157,24 @@ export const Devices: React.FC<Props> = ({ type }) => {
     selectedOption?.value === 'all'
       ? sortedProducts // Якщо "all", показуємо всі продукти
       : sortedProducts.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(sortedProducts.length / itemsPerPageValue);
+  const pageCount =
+    itemsPerPageValue === 0
+      ? 0
+      : Math.ceil(sortedProducts.length / itemsPerPageValue);
 
   const handlePageClick = (event: { selected: number }) => {
-    const newOffset = event.selected * itemsPerPageValue;
+    const newPage = event.selected + 1;
+
     const params = new URLSearchParams(searchParams);
 
-    params.set('page', `${+event.selected + 1}`);
+    params.set('page', String(newPage));
     setSearchParams(params);
-    setItemOffset(newOffset);
   };
+
+  const currentPageFromUrl =
+    selectedOption?.value === 'all'
+      ? 0
+      : Math.max(0, (Number(searchParams.get('page')) || 1) - 1);
 
   if (isError && !loading) {
     return (
@@ -221,7 +259,7 @@ export const Devices: React.FC<Props> = ({ type }) => {
 
             <ProductList products={currentProducts1} />
 
-            {selectedOption?.value !== 'all' && (
+            {selectedOption?.value !== 'all' && pageCount > 1 && (
               <ReactPaginate
                 breakLabel="..."
                 nextLabel=""
@@ -249,7 +287,7 @@ export const Devices: React.FC<Props> = ({ type }) => {
                 pageCount={pageCount}
                 previousLabel=""
                 renderOnZeroPageCount={null}
-                forcePage={Math.floor(itemOffset / itemsPerPageValue)}
+                forcePage={currentPageFromUrl}
               />
             )}
           </div>
