@@ -1,6 +1,6 @@
 /* eslint no-console: [,{ allow: ["warn", "log", "error"] }] */
 import { PicturesSlider } from './components/PicturesSlider';
-import { ProductsSlider } from './components/ProductsSlider';
+import { ProductsSlider } from '../shared/components/ProductsSlider';
 import { ShopByCategories } from './components/ShopByCategories';
 import s from './HomePage.module.scss';
 import { useHomePageProducts } from './hooks/useHomePageProducts';

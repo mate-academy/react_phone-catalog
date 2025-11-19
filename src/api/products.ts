@@ -3,7 +3,7 @@ import { getData } from './clients';
 
 export const getAllProducts = () => getData<Product[]>('products');
 
-const getProductsByCategoty = (category: Category) =>
+export const getProductsByCategoty = (category: Category) =>
   getData<ProductDetails[]>(category);
 
 export const getProductList = async (category: Category) => {
@@ -25,8 +25,26 @@ export const getProductList = async (category: Category) => {
   }));
 };
 
-export const getProductById = async (category: Category, productId: string) => {
-  const productsList = await getProductsByCategoty(category);
+export const getProductById = async (
+  productId: string,
+): Promise<ProductDetails | null> => {
+  const [phones, tablets, accessories] = await Promise.all([
+    getProductsByCategoty('phones'),
+    getProductsByCategoty('tablets'),
+    getProductsByCategoty('accessories'),
+  ]);
 
-  return productsList.find(product => product.id === productId);
+  const productsList = [
+    ...phones,
+    ...tablets,
+    ...accessories,
+  ] as ProductDetails[];
+
+  const product = productsList.find(prod => prod.id === productId);
+
+  if (product) {
+    product.productId = Math.ceil(Math.random() * 100000);
+  }
+
+  return product || null;
 };

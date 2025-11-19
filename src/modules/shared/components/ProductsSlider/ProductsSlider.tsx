@@ -1,7 +1,7 @@
 /* eslint no-console: [,{ allow: ["warn", "log", "error"] }] */
 import { FC, useEffect, useRef, useState } from 'react';
 import { Product } from '../../../../types/Product';
-import { ProductCard } from '../../../shared/components/ProductCard';
+import { ProductCard } from '../ProductCard';
 import next from '../../../../assets/images/icons/arrow-right.svg';
 import prev from '../../../../assets/images/icons/arrow-left.svg';
 

@@ -15,6 +15,7 @@ export interface Product {
 }
 
 export interface ProductDetails {
+  productId?: number;
   id: string;
   category: Category;
   namespaceId: string;

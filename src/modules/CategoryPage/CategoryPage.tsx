@@ -8,21 +8,16 @@ import { useCategoryProducts } from './hooks/useCategoryProducts';
 import s from './CategoryPage.module.scss';
 import { Loader } from '../shared/components/Loader';
 import { ErrorNotification } from '../shared/components/ErrorNotification';
+import { CATEGORIES } from '../shared/components/constants';
 
 interface Props {
   category: Category;
 }
 
-const categoryTitles = {
-  phones: 'Mobile Phones',
-  tablets: 'Tablets',
-  accessories: 'Accessories',
-};
-
 export const CategoryPage: FC<Props> = ({ category }) => {
   const { products, isLoading, errorMessage } = useCategoryProducts(category);
   const count = products.length;
-  const breadcrumbs = [{ link: null, label: categoryTitles[category] }];
+  const breadcrumbs = [{ link: null, label: CATEGORIES[category].name }];
   const handleReload = () => {
     window.location.reload();
   };
@@ -31,7 +26,7 @@ export const CategoryPage: FC<Props> = ({ category }) => {
     <main>
       <section className={s.container}>
         <Breadcrumbs paths={breadcrumbs} />
-        <h1>{categoryTitles[category]}</h1>
+        <h1>{CATEGORIES[category].title}</h1>
         {isLoading && <Loader />}
         {errorMessage && (
           <ErrorNotification message={errorMessage} onReload={handleReload} />

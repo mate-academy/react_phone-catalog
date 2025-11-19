@@ -24,7 +24,7 @@
 }
 
 .productCard:hover {
-box-shadow: 0 2px 15px 0 #0000001A;
+  box-shadow: 0 2px 15px 0 #0000001a;
 }
 
 .productImage {
@@ -92,39 +92,5 @@ box-shadow: 0 2px 15px 0 #0000001A;
       font-family: $fontMontSemiBold;
       color: $secondary;
     }
-  }
-}
-
-.productButtons {
-  display: flex;
-  justify-content: space-between;
-  gap: $space-sm;
-}
-
-.addToCart {
-  flex: 1 1 auto;
-  border: none;
-  border-radius: 8px;
-  height: 40px;
-
-  @include button-primary;
-}
-
-.addToFav {
-  @include smooth-transition;
-
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: none;
-
-  background-image: url('../../../../assets/images/icons/add-fav-default.svg');
-
-  &:hover {
-    background-image: url('../../../../assets/images/icons/add-fav-hover.svg');
-  }
-
-  &.inFav {
-    background-image: url('../../../../assets/images/icons/add-fav-added.svg');
   }
 }

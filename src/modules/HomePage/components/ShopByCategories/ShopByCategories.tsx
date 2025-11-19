@@ -1,21 +1,16 @@
 import { Link } from 'react-router-dom';
 import s from './ShopByCategories.module.scss';
 import { FC, useEffect, useState } from 'react';
+import { CATEGORIES } from '../../../shared/components/constants';
 
 interface CategoryData {
+  path: string;
   name: string;
   title: string;
   imgSrc: string;
 }
-const categories: CategoryData[] = [
-  { name: 'phones', title: 'Mobile phones', imgSrc: 'img/home-phones.png' },
-  { name: 'tablets', title: 'Tablets', imgSrc: 'img/home-tablets.png' },
-  {
-    name: 'accessories',
-    title: 'Accessories',
-    imgSrc: 'img/home-accessories.png',
-  },
-];
+
+const categories: CategoryData[] = Object.values(CATEGORIES);
 
 interface HomeCategoryProps {
   category: CategoryData;
@@ -25,7 +20,7 @@ interface HomeCategoryProps {
 const HomeCategory: FC<HomeCategoryProps> = ({ category, count }) => {
   return (
     <div className={s.homeCategory}>
-      <Link to={`/${category.name}`} className={s.categoryLink}>
+      <Link to={`/${category.path}`} className={s.categoryLink}>
         <img
           className={s.categoryImage}
           src={category.imgSrc}
@@ -47,7 +42,7 @@ export const ShopByCategories = () => {
     const loadCounts = async () => {
       const data = await Promise.all(
         categories.map(async category => {
-          const response = await fetch(`api\\${category.name}.json`);
+          const response = await fetch(`api\\${category.path}.json`);
           const items = await response.json();
 
           return [category.name, items.length] as const;

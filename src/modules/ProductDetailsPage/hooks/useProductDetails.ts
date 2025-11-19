@@ -1,17 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Category, ProductDetails } from '../../../types/Product';
+import { ProductDetails } from '../../../types/Product';
 import { getProductById } from '../../../api/products';
 
-export const useProductDetails = (
-  productId: string,
-  category: Category | null,
-) => {
+export const useProductDetails = (productId: string) => {
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    if (!category || !productId) {
+    if (!productId) {
       setProduct(null);
 
       return;
@@ -20,11 +17,10 @@ export const useProductDetails = (
     const fetchProducts = async () => {
       setIsLoading(true);
       setErrorMessage('');
-      setProduct(null);
       try {
-        const productData = await getProductById(category, productId);
+        const productData = await getProductById(productId);
 
-        setProduct(productData || null);
+        setProduct(productData ?? null);
       } catch (error) {
         setErrorMessage('Something went wrong');
       } finally {
@@ -33,7 +29,7 @@ export const useProductDetails = (
     };
 
     fetchProducts();
-  }, [productId, category]);
+  }, [productId]);
 
   return { product, isLoading, errorMessage };
 };

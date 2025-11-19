@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Product } from '../../../../types/Product';
 import s from './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
+import { ProductButtons } from '../ProductButtons/ProductButtons';
 
 interface Props {
   product: Product;
@@ -25,8 +26,6 @@ export const ProductCard: FC<Props> = ({ product, priceMode = 'full' }) => {
       </div>
     );
   };
-
-  const inFav = false;
 
   return (
     <article className={s.productCard}>
@@ -59,15 +58,7 @@ export const ProductCard: FC<Props> = ({ product, priceMode = 'full' }) => {
           <span>{product.ram}</span>
         </p>
       </div>
-      <div className={s.productButtons}>
-        <button className={s.addToCart} type="button">
-          Add to Cart
-        </button>
-        <button
-          className={inFav ? `${s.addToFav} ${s.inFav}` : `${s.addToFav}`}
-          type="button"
-        />
-      </div>
+      <ProductButtons />
     </article>
   );
 };
