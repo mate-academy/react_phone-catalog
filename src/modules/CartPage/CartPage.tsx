@@ -6,20 +6,50 @@ import styles from './CartPage.module.scss';
 import { NavigationButton } from '../../shared/components/NavigationButton/NavigationButton';
 
 export const CartPage: React.FC = () => {
-  const { cartItems } = useContext(CartContext); // setCartItems
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.product.fullPrice * item.quantity,
+    (sum, item) => sum + item.product.price * item.quantity,
     0,
   );
 
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
-  // const handleIncrement = (id: number) => {};
-  //
-  // const handleDecrement = (id: number) => {};
-  //
-  // const handleRemove = (id: number) => {};
+  const handleIncrement = (id: number) => {
+    const increment = cartItems.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+
+      return item;
+    });
+
+    setCartItems(increment);
+  };
+
+  const handleDecrement = (id: number) => {
+    const decrement = cartItems.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+        };
+      }
+
+      return item;
+    });
+
+    setCartItems(decrement);
+  };
+
+  const handleRemove = (id: number) => {
+    const remove = cartItems.filter(item => item.id !== id);
+
+    setCartItems(remove);
+  };
 
   return (
     <div className={styles.lid}>
