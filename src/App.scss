@@ -2,6 +2,10 @@
 @use '../src/shared/styles/variables.scss' as *;
 @use '../src/shared/styles/mixins.scss' as *;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Mont-Regular, sans-serif;
   background-color: $menu-background-color;

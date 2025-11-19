@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-// import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/scss';
@@ -39,10 +38,6 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
           nextEl: `.${styles.nextBtn}`,
         }}
         centeredSlides={false}
-        // slidesOffsetAfter={8}
-        // slidesOffsetBefore={8}
-        // spaceBetween={16}
-        // slidesPerView={1}
         breakpoints={{
           0: { slidesPerView: 1.5, spaceBetween: 8 },
           768: { slidesPerView: 2.5, spaceBetween: 16 },

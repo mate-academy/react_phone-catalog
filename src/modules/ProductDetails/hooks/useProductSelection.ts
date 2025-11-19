@@ -15,37 +15,35 @@ export const useProductSelection = (
   const [mainImage, setMainImage] = useState(initialProduct?.images[0] || '');
 
   useEffect(() => {
-    setProduct(initialProduct);
-  }, [initialProduct]);
-
-  useEffect(() => {
     if (initialProduct) {
       setProduct(initialProduct);
       setSelectedColor(initialProduct.color);
       setSelectedCapacity(initialProduct.capacity);
-
-      if (initialProduct.images?.length) {
-        setMainImage(initialProduct.images[0]);
-      }
+      setMainImage(initialProduct.images[0]);
     }
   }, [initialProduct]);
-
-  // useEffect(() => {
-  //   setProduct(initialProduct);
-  //   if (initialProduct?.images?.length) {
-  //     setMainImage(initialProduct.images[0]);
-  //   }
-  // }, [initialProduct]);
 
   const handleColorChange = (color: string) => {
     setSelectedColor(color);
 
-    const found = allProducts.find(
-      p => p.color === color && p.capacity === selectedCapacity,
-    );
+    if (!product) {
+      return;
+    }
+
+    const found =
+      allProducts.find(
+        p =>
+          p.namespaceId === product.namespaceId &&
+          p.color === color &&
+          p.capacity === selectedCapacity,
+      ) ||
+      allProducts.find(
+        p => p.namespaceId === product.namespaceId && p.color === color,
+      );
 
     if (found) {
       setProduct(found);
+      setSelectedColor(found.color);
       setSelectedCapacity(found.capacity);
       setMainImage(found.images[0]);
     }
@@ -54,12 +52,25 @@ export const useProductSelection = (
   const handleCapacityChange = (capacity: string) => {
     setSelectedCapacity(capacity);
 
-    const found = allProducts.find(
-      p => p.color === selectedColor && p.capacity === capacity,
-    );
+    if (!product) {
+      return;
+    }
+
+    const found =
+      allProducts.find(
+        p =>
+          p.namespaceId === product.namespaceId &&
+          p.color === selectedColor &&
+          p.capacity === capacity,
+      ) ||
+      allProducts.find(
+        p => p.namespaceId === product.namespaceId && p.capacity === capacity,
+      );
 
     if (found) {
       setProduct(found);
+      setSelectedColor(found.color);
+      setSelectedCapacity(found.capacity);
       setMainImage(found.images[0]);
     }
   };

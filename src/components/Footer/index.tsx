@@ -9,8 +9,16 @@ const menuLinks: MenuLink[] = [
     href: 'https://github.com/ElisabethPO/react_phone-catalog',
     external: true,
   },
-  { to: '/contacts', label: 'Contacts' },
-  { to: '/right', label: 'Right' },
+  {
+    href: '//www.apple.com/contact/',
+    label: 'Contacts',
+    external: true,
+  },
+  {
+    href: 'https://www.apple.com/legal/',
+    label: 'Right',
+    external: true,
+  },
 ];
 
 export const Footer: React.FC = () => {

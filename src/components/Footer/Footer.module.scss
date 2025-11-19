@@ -85,12 +85,14 @@ body {
     gap: 16px;
     text-decoration: none;
     font-weight: 500;
+    scroll-behavior: smooth;
   }
 
   &__iconsText {
     font-size: 12px;
     color: $card-settings-nameColor;
     font-weight: 400;
+    scroll-behavior: smooth;
   }
 }
 
