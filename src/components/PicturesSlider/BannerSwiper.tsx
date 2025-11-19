@@ -8,11 +8,11 @@ import bannerTablets from '../../../public/img/banner-tablets.png';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import styles from './PicturesSlider.module.scss';
+import styles from './BannerSwiper.module.scss';
 
 const images = [bannerStart, bannerPhones, bannerTablets];
 
-export default function SliderSwiper() {
+export default function BannerSwiper() {
   const { handlePrevSlide, handleNextSlide, onSwiperInit } = MainSlider();
 
   return (

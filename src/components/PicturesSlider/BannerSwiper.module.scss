@@ -48,11 +48,13 @@
 }
 
 .sliderPagination {
+  position: relative;
   display: flex;
   justify-content: center;
-  padding-top: 10px;
+  height: 24px;
+  align-items: center;
   gap: 8px;
-  cursor: pointer;
+
   :global(.swiper-pagination-bullet) {
     width: 14px;
     height: 4px;
@@ -60,6 +62,7 @@
     opacity: 0.7;
     transition: all 0.3s;
   }
+
   :global(.swiper-pagination-bullet-active) {
     background: #f1f2f9;
     opacity: 1;

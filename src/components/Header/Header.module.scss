@@ -1,11 +1,15 @@
 .header {
   height: 64px;
+  top: 0;
   position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   box-shadow: 0 1px 0 0 #323542;
+
+  background-color: $main-bg-color;
+  z-index: 100;
 }
 
 .left {
@@ -33,6 +37,7 @@
     color: #75767f;
     text-decoration: none;
     font-size: 12px;
+    font-weight: 800;
     transition: color 0.3s ease;
 
     &::after {

@@ -5,7 +5,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #000;
+  background-color: $main-bg-color;
 }
 // .app {
 //   display: flex;
@@ -21,10 +21,29 @@
 .main {
   flex: 1;
   width: 100%;
-  // margin: auto;
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 56px;
+
+  > *:last-child {
+    margin-bottom: 64px;
+  }
+
+  @include on-tablet {
+    padding: 0 0 0 24px;
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    max-width: $main-max-width;
+    padding: 0;
+    gap: 80px;
+
+    > *:last-child {
+      margin-bottom: 80px;
+    }
+  }
 }
 
 .title {

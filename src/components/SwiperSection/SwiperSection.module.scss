@@ -2,7 +2,7 @@
   padding-left: 16px;
 
   @include on-tablet {
-    padding-left: 0px;
+    padding-left: 0;
   }
 
   .titleContainer {
@@ -29,6 +29,7 @@
 }
 
 .swiper {
+  // display: flex;
   :global(.swiper-slide) {
     width: 212px;
     height: 439px;
@@ -50,6 +51,7 @@
   gap: 16px;
 
   .arrow {
+    user-select: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,11 +68,11 @@
 
     img {
       transition: 0.3s ease;
-      filter: brightness(0) saturate(100%) invert(0); // обычный цвет (черный)
+      filter: brightness(0) saturate(100%) invert(0);
     }
 
     &:hover img {
-      filter: brightness(0) saturate(100%) invert(1); // белый
+      filter: brightness(0) saturate(100%) invert(1);
     }
   }
 

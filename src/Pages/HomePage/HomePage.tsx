@@ -3,7 +3,8 @@ import style from './HomePage.module.scss';
 import { useState, useEffect } from 'react';
 import { getProductsData } from '../../api/products';
 import { SwiperSection } from '../../components/SwiperSection';
-import PicturesSlider from '../../components/PicturesSlider/PicturesSlider';
+import BannerSwiper from '../../components/PicturesSlider/BannerSwiper';
+import { ShopByCategorySection } from '../../components/ShopByCategorySection';
 
 export const HomePage = () => {
   const [newPhones, setNewPhones] = useState<AllProductsType[]>([]);
@@ -38,11 +39,26 @@ export const HomePage = () => {
   return (
     <>
       <h1 className={style.visuallyHidden}>Product Catalog</h1>
-      <h2 className="title">Welcome to Nice Gadgets store!</h2>
+      <div className="section">
+        <h2 className="title">Welcome to Nice Gadgets store!</h2>
 
-      <PicturesSlider />
+        <BannerSwiper />
+      </div>
 
       <SwiperSection title="Brand New Models" products={newPhones} />
+
+      <ShopByCategorySection
+        title="Shop By Category"
+        totalPhoneModels={totalPhoneModels}
+        totalTabletsModels={totalTabletsModels}
+        totalAccessoriesModels={totalAccessoriesModels}
+      />
+
+      <SwiperSection
+        title="Hot Prices"
+        products={discountedProducts}
+        showDiscount={true}
+      />
     </>
   );
 };
