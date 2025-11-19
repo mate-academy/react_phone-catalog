@@ -1,7 +1,13 @@
 @import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap';
 
+/* Reset e font-family */
+html,
 body {
+  margin: 0;
+  height: 100%;
   font-family: Montserrat, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 aside {
@@ -15,17 +21,6 @@ aside {
   display: flex;
   flex-direction: column;
   z-index: 10;
-}
-
-html,
-body {
-  margin: 0;
-  height: 100%;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
 }
 
 .header {

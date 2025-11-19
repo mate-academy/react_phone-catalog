@@ -116,7 +116,8 @@ body {
   margin-top: 18px;
   margin-bottom: 10px;
 
-  :global(.swiper-pagination-bullet) {
+  /* Estiliza as bullets do Swiper normalmente, sem :global */
+  .swiper-pagination-bullet {
     width: 14px;
     height: 4px;
     border-radius: 0;
@@ -127,18 +128,7 @@ body {
     cursor: pointer;
   }
 
-  :global(.swiper-pagination-bullet) {
-    width: 14px;
-    height: 4px;
-    border-radius: 0;
-    background: #e2e6e9;
-    opacity: 0.7;
-    margin: 0 6px;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-
-  :global(.swiper-pagination-bullet-active) {
+  .swiper-pagination-bullet-active {
     background: #313237;
     opacity: 1;
   }
