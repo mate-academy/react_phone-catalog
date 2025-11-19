@@ -13,7 +13,7 @@ import {
 
 //#region React-router
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 //#endregion
 
 //#region TS
@@ -33,6 +33,10 @@ import Lightbox from 'yet-another-react-lightbox';
 //#endregion
 
 import cn from 'classnames';
+import { CartContext } from '../../context/Cart';
+
+import { Slide, toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ProductCard = () => {
   //Route
@@ -52,6 +56,9 @@ export const ProductCard = () => {
 
   //Hooks
   const { start, clear } = useTimer();
+
+  //Context
+  const { increaseToCart } = useContext(CartContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -108,6 +115,19 @@ export const ProductCard = () => {
     return () => clear();
   }, [productId, start, clear, categoryName]);
 
+  const notifyAddedToCart = (newItem: Device) =>
+    toast.success(`${newItem.name} added to cart!`, {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      transition: Slide,
+    });
+
   return (
     <>
       {isLoading && <Skeleton />}
@@ -118,6 +138,7 @@ export const ProductCard = () => {
           <section className="section">
             <div className="container">
               <div className={style.wrapper}>
+                <ToastContainer />
                 <div className={style.nav}>
                   <ul className={style.list}>
                     <li className={style.item}>
@@ -292,7 +313,10 @@ export const ProductCard = () => {
                           <div
                             className={`${style.card__button} ${style.container}`}
                           >
-                            <Button />
+                            <Button
+                              notifyAdded={() => notifyAddedToCart(item)}
+                              increaseToCart={() => increaseToCart(item)}
+                            />
                           </div>
                           <div className={`${style.info} ${style.container}`}>
                             <div>

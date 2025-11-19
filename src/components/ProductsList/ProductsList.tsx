@@ -14,6 +14,7 @@ import { sortItems } from './sortProducts';
 import { Params, getSearchWith } from '../../utils/getSearch';
 import { Skeleton } from '../Skeleton/Skeleton';
 import { useTimer } from '../../Hooks/useTimer';
+import { ToastContainer } from 'react-toastify';
 
 type Props = {
   data: Products[];
@@ -170,6 +171,7 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
       </div>
 
       <div className={style.wrapper}>
+        <ToastContainer />
         <ul className={style.items}>
           {!isLoading && !isLoadingSort
             ? currentItems.map((item, i) => (

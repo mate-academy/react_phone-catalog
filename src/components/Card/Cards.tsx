@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Products } from 'src/types/products';
 import style from './card.module.scss';
 import { Button } from '@GlobalComponents';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/Cart';
+
+import { Slide, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
   item: Products;
@@ -11,11 +15,26 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ item, title }) => {
+  const { increaseToCart } = useContext(CartContext);
+
+  const notifyAddedToCart = (newItem: Products) =>
+    toast.success(`${newItem.name} added to cart!`, {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      transition: Slide,
+    });
+
   return (
     <>
-      <Link to={`/${item.category}/${item.itemId}`}>
-        <article className={style.article}>
-          <div className={`${style.wrapper} ${style.card}`}>
+      <article className={style.article}>
+        <div className={`${style.wrapper} ${style.card}`}>
+          <Link to={`/${item.category}/${item.itemId}`}>
             <div className={style.card__header}>
               <div className={style.card__link}>
                 <img className={style.card__img} src={item.image} alt="" />
@@ -46,12 +65,15 @@ export const Card: React.FC<Props> = ({ item, title }) => {
                 </div>
               </dl>
             </div>
-            <div className={style.card__bottom}>
-              <Button />
-            </div>
+          </Link>
+          <div className={style.card__bottom}>
+            <Button
+              notifyAdded={() => notifyAddedToCart(item)}
+              increaseToCart={() => increaseToCart(item)}
+            />
           </div>
-        </article>
-      </Link>
+        </div>
+      </article>
     </>
   );
 };

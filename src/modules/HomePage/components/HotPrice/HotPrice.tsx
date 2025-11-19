@@ -2,6 +2,7 @@ import { getData } from '@Fetch';
 import { Carusel } from '@GlobalComponents';
 import { useEffect, useState } from 'react';
 import { Products } from 'src/types/products';
+import { ToastContainer } from 'react-toastify';
 
 export const HotPrice = () => {
   const [hotPrice, setHotPrice] = useState<Products[]>([]);
@@ -40,6 +41,7 @@ export const HotPrice = () => {
   return (
     <div className="section">
       <div className="container">
+        <ToastContainer />
         <Carusel data={hotPrice} title={'Hot prices'} />
       </div>
     </div>

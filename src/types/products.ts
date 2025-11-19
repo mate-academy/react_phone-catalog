@@ -11,4 +11,5 @@ export interface Products {
   image: string;
   color: string;
   year: number;
+  quantity: number;
 }

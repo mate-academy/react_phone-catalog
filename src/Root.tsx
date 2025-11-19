@@ -5,6 +5,7 @@ import { ProductsPage } from './modules/ProductsPage/ProductsPage';
 import { ScrollTop } from './utils/ScrollTop';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { ProductCard } from './modules/ProductCard/ProductCard';
+import { ShoppingCart } from './modules/ShoppingCart/ShoppingCart';
 
 export const Root = () => (
   <Router>
@@ -27,10 +28,11 @@ export const Root = () => (
           <Route index element={<ProductsPage />} />
           <Route path=":productId?" element={<ProductCard />} />
         </Route>
+
+        <Route path="cart" element={<ShoppingCart />} />
       </Route>
 
       <Route path="favourites" element={''} />
-      <Route path="cart" element={''} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
