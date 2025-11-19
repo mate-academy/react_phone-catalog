@@ -1,0 +1,250 @@
+/* stylelint-disable no-descending-specificity */
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  box-shadow: 1px #e2e6e9;
+  padding: 0 16px;
+  z-index: 100;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    &_link {
+      display: block;
+      cursor: pointer;
+      padding: 16px;
+    }
+
+    &_img {
+      width: 80px;
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+    z-index: 1002;
+    position: relative;
+
+    span {
+      display: block;
+      height: 2px;
+      background: $primary-color;
+      border-radius: 1px;
+      transition: all 0.3s ease;
+    }
+
+    &_open {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+    }
+  }
+
+  &__nav_desktop {
+    flex: 1;
+    display: flex;
+
+    .header__nav_list {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li a {
+        text-decoration: none;
+        color: $secondary-color;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        padding: 24px 0;
+        display: inline-block;
+        position: relative;
+        transition: color 0.3s ease;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+          width: 100%;
+          height: 3px;
+          background-color: $primary-color;
+          transform: scaleX(0);
+          transform-origin: center;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover {
+          color: $primary-color;
+
+          &::after {
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+  }
+
+  .active {
+    color: $primary-color !important;
+
+    &::after {
+      transform: scaleX(1) !important;
+    }
+  }
+
+  &__actions_desktop {
+    display: flex;
+    gap: 16px;
+    margin-left: auto;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-left: 1px solid #e2e6e9;
+      transition: background-color 0.3s ease;
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .activeActions {
+      color: $primary-color !important;
+      border: 2px solid $primary-color;
+    }
+  }
+
+  &__menuOverlay {
+    display: none;
+    position: fixed;
+    inset: 55px 0 0;
+    width: 100%;
+    background: $white-color;
+    z-index: 1001;
+
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+
+    &_open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__nav_mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px);
+
+    .header__nav_list_mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li a {
+        text-decoration: none;
+        color: $secondary-color;
+        font-size: 22px;
+        font-weight: 700;
+        text-transform: uppercase;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &.active {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__actions_mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    background: $white-color;
+    justify-content: space-evenly;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      width: 64px;
+      height: 64px;
+      border-radius: 0;
+      border: 1px solid #e2e6e9;
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+
+      &.activeActions {
+        border-bottom: 4px solid #000;
+      }
+    }
+  }
+
+  @include mobile {
+    &__burger {
+      display: flex;
+    }
+
+    &__nav_desktop,
+    &__actions_desktop {
+      display: none;
+    }
+
+    &__menuOverlay {
+      display: block;
+    }
+
+    &__logo_img {
+      width: 64px;
+    }
+  }
+}
