@@ -63,7 +63,7 @@ export const ProductSlider: React.FC<ProductSliderInterface> = ({
                     }}
                   >
                     <img
-                      src={`./${product.images[0]}`}
+                      src={`${product.images[0]}`}
                       alt={product.name}
                       className={styles.card__image}
                     />

@@ -20,6 +20,24 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   });
 
+  // const [imgPrefix, setImgPrefix] = useState('');
+
+  // const isChrome = () => {
+  //   const w = window as any;
+
+  //   return (
+  //     !!w.chrome &&
+  //     navigator.vendor === 'Google Inc.' &&
+  //     navigator.userAgent.includes('Chrome')
+  //   );
+  // };
+
+  // useEffect(() => {
+  //   if (isChrome()) {
+  //     setImgPrefix('.');
+  //   }
+  // }, []);
+
   useEffect(() => {
     const stored = localStorage.getItem('favorites');
 
