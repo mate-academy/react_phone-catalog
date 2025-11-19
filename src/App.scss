@@ -1,1 +1,30 @@
-// not empty
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap';
+@import './mixins';
+
+html,
+body {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+}
+/* stylelint-disable-next-line selector-max-id */
+#root {
+  height: 100%;
+}
+
+.AppWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.mainContent {
+  flex: 1;
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+}
