@@ -1,0 +1,93 @@
+.favoritesPage {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.clearButton {
+  background: #6a0572;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  margin-bottom: 20px;
+
+  &:hover {
+    background: #52045a;
+  }
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.name {
+  font-size: 18px;
+  color: #222;
+}
+
+.price {
+  color: #888;
+  margin-top: 4px;
+}
+
+.removeButton {
+  background: transparent;
+  border: none;
+  color: #e63946;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    color: #c7202f;
+  }
+}
+
+/* Página vazia */
+.empty {
+  padding: 50px;
+  text-align: center;
+  color: #666;
+  font-size: 20px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

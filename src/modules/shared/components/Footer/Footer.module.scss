@@ -1,0 +1,213 @@
+// src/components/Footer/Footer.module.scss
+
+// Variáveis
+$primary-color: #313237;
+$secondary-color: #89939A;
+$border-color: #E2E6E9;
+$bg-white: #ffffff;
+$text-dark: #313237;
+$text-light: #89939A;
+$blue-primary: #4219D0;
+$yellow-accent: #FACC15;
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+.footer {
+  display: flex; /* Para organizar os itens lado a lado */
+  justify-content: space-between; /* Espaça os itens nas extremidades */
+  align-items: center; /* Centraliza os itens verticalmente */
+  padding: 5px 40px; /* Preenchimento interno (altura e laterais) */
+  background-color: $bg-white; /* Fundo branco */
+  border-top: 1px solid $border-color; /* Linha sutil no topo */
+  font-family: $font-family; /* Fonte consistente com o resto da aplicação */
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04); /* Sombra sutil para dar profundidade */
+  margin-top: auto; /* Para empurrar o footer para o final da página */
+  min-height: 96px; /* Altura mínima para manter proporções */
+}
+
+.logo {
+  font-size: 24px; /* Tamanho da fonte do logo */
+  font-weight: 800; /* Peso da fonte bem bold */
+  color: $primary-color; /* Cor escura para o NICE GADGETS */
+  line-height: 1.1; /* Ajusta a altura da linha para o texto de duas linhas */
+  text-transform: uppercase; /* Deixa o texto em maiúsculas */
+  letter-spacing: -0.5px; /* Espaçamento entre letras mais apertado */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logoAccent {
+  color: $yellow-accent; /* Cor amarela para o "gadget" */
+  font-size: 1.2em; /* Deixa o emoji ligeiramente maior */
+  vertical-align: middle; /* Ajuda a alinhar o emoji com o texto */
+  display: inline-block;
+  margin-left: 4px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)); /* Sombra sutil no emoji */
+}
+
+.navLinks {
+  display: flex; /* Para organizar os links um ao lado do outro */
+  gap: 40px; /* Espaço entre os links */
+  align-items: center;
+}
+
+.navLink {
+  color: $text-light; /* Cor cinza para os links */
+  text-decoration: none; /* Remove sublinhado padrão */
+  font-size: 12px;
+  font-weight: 700; /* Peso da fonte bold */
+  letter-spacing: 0.5px; /* Espaçamento entre letras */
+  transition: color 0.3s ease; /* Transição suave na cor ao passar o mouse */
+  text-transform: uppercase; /* Deixa o texto em maiúsculas */
+  position: relative;
+
+  &:hover {
+    color: $blue-primary; /* Muda a cor ao passar o mouse */
+  }
+
+  &:focus {
+    outline: 2px solid $blue-primary;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  // Efeito de underline no hover
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $blue-primary;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.backToTopContainer {
+  display: flex; /* Para alinhar o texto e o botão lado a lado */
+  align-items: center;
+  gap: 16px; /* Espaço entre o texto e o botão */
+}
+
+.backToTopText {
+  color: $text-light; /* Cor cinza para o texto */
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.backToTopButton {
+  width: 32px; /* Largura do botão circular */
+  height: 32px; /* Altura do botão circular */
+  border-radius: 50%; /* Transforma o botão em círculo */
+  border: 1px solid $border-color; /* Borda cinza clara */
+  background-color: $bg-white; /* Fundo branco */
+  display: flex; /* Para centralizar o ícone */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; /* Indica que é clicável */
+  transition: all 0.3s ease; /* Transições suaves */
+  padding: 0; /* Remove padding padrão do botão */
+  outline: none; /* Remove a borda de foco padrão */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+
+  &:hover {
+    border-color: $blue-primary; /* Muda a cor da borda ao passar o mouse */
+    background-color: rgba(66, 25, 208, 0.05); /* Fundo sutil ao passar o mouse */
+    transform: translateY(-1px); /* Leve elevação no hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  &:active {
+    transform: translateY(0); /* Remove a elevação quando clicado */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  &:focus {
+    outline: 2px solid $blue-primary;
+    outline-offset: 2px;
+  }
+}
+
+.arrowIcon {
+  font-size: 12px; /* Tamanho da seta */
+  color: $text-light; /* Cor cinza para a seta */
+  line-height: 1; /* Garante que a seta esteja bem centralizada verticalmente */
+  display: block; /* Para aplicar line-height corretamente */
+  transition: color 0.3s ease;
+
+  .backToTopButton:hover & {
+    color: $blue-primary;
+  }
+}
+
+/* Estilos responsivos para telas menores */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column; /* Empilha os itens verticalmente */
+    gap: 24px; /* Espaço entre os itens empilhados */
+    padding: 24px 20px; /* Reduz o padding lateral */
+    text-align: center; /* Centraliza o texto */
+    min-height: auto;
+  }
+
+  .logo {
+    align-items: center;
+    font-size: 20px; /* Ajusta o tamanho do logo */
+  }
+
+  .navLinks {
+    flex-direction: column; /* Empilha os links de navegação */
+    gap: 16px;
+  }
+
+  .backToTopContainer {
+    flex-direction: row; /* Mantém o texto e botão Back to top lado a lado */
+    justify-content: center; /* Centraliza eles */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .navLinks {
+    gap: 12px;
+  }
+
+  .navLink {
+    font-size: 11px;
+  }
+
+  .backToTopText {
+    font-size: 11px;
+  }
+
+  .backToTopButton {
+    width: 28px;
+    height: 28px;
+  }
+
+  .arrowIcon {
+    font-size: 10px;
+  }
+}
+
+/* Estilo para quando o footer está fixo no final da página */
+.footer.sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}

@@ -1,0 +1,52 @@
+.alsoLikeSection {
+  margin-top: 40px;
+}
+
+.suggestedProductsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.suggestedProductCard {
+  display: block;
+  background: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  padding: 12px;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 1px solid #ddd;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.suggestedProductImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.suggestedProductName {
+  font-weight: bold;
+  margin: 10px 0 4px;
+}
+
+.suggestedProductPrice {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.suggestedProductSpecs {
+  font-size: 0.85rem;
+  color: #555;
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
+}

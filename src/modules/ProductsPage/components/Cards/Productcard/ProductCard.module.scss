@@ -1,0 +1,97 @@
+/* ProductCard.module.scss */
+
+.productCard {
+  background-color: #fff; /* Fundo branco */
+  border: 1px solid #eee; /* Borda sutil */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 16px; /* Espaçamento interno */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Centraliza o texto */
+  width: 250px; /* Largura fixa */
+  box-sizing: border-box; /* Inclui padding e border na largura */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animação no hover */
+
+  &:hover {
+    transform: translateY(-5px); /* Eleva o card no hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+  }
+}
+
+.favoriteButton {
+  background-color: transparent;
+  border: none;
+  color: #666;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  transition: color 0.2s ease;
+
+  &.active {
+    color: #ff69b4; /* Rosa para itens favoritados */
+  }
+
+  &:hover {
+    color: #007bff; /* Azul no hover */
+  }
+}
+
+.productLink {
+  text-decoration: none; /* Remove o sublinhado */
+  color: inherit; /* Mantém a cor do texto */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productImage {
+  max-width: 100%;
+  max-height: 150px; /* Altura máxima para a imagem */
+  object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
+  margin-bottom: 16px; /* Espaçamento abaixo da imagem */
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+  display: -webkit-box; /* Para truncar texto em várias linhas */
+  -webkit-line-clamp: 2; /* Limita a 2 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.productPrice {
+  font-size: 16px;
+  font-weight: bold;
+  color: #007bff; /* Azul de destaque */
+  margin-bottom: 4px;
+
+  .productPriceRegular {
+    font-size: 14px;
+    font-weight: normal;
+    color: #999;
+    text-decoration: line-through; /* Preço riscado */
+    margin-left: 8px; /* Espaçamento entre os preços */
+  }
+}
+
+.functionButtons {
+  display: flex;
+  align-items: center; // deixa na mesma altura
+  gap: 12px;           // espaçamento horizontal entre os botões
+  margin-top: 16px;    // opcional, só pra dar respiro
+}

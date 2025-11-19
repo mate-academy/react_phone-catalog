@@ -1,0 +1,269 @@
+// src/components/Header/Header.module.scss
+
+// Variáveis
+$primary-color: #313237;
+$secondary-color: #89939A;
+$border-color: #E2E6E9;
+$bg-white: #ffffff;
+$text-dark: #313237;
+$text-light: #89939A;
+$blue-primary: #4219D0;
+$yellow-accent: #FACC15;
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px; // Padding lateral
+  background-color: $bg-white;
+  border-bottom: 1px solid $border-color; // Linha sutil na parte inferior
+  height: 64px; // Altura fixa do cabeçalho
+  width: 100%;
+  position: sticky; // Mantém o cabeçalho fixo no topo ao rolar
+  top: 0;
+  z-index: 1000; // Garante que o cabeçalho fique acima de outros elementos
+  box-sizing: border-box;
+  font-family: $font-family;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04); // Sombra sutil
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.brand {
+  cursor: pointer; // Indica que o logo é clicável
+  display: flex;
+  align-items: center;
+  margin-right: 48px; // Espaço entre o logo e a navegação
+  transition: opacity 0.2s ease;
+  height: 100%;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+}
+
+.niceText {
+  color: $primary-color; // Cor escura para "NICE"
+  margin-bottom: -2px; // Ajusta o espaçamento entre as linhas
+}
+
+.gadgetsText {
+  color: $primary-color; // Mesma cor para "GADGETS"
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 0; // Remove gap para usar borders como separadores
+}
+
+.navButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  color: $text-light;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0 24px; // Padding horizontal
+  height: 100%; // Ocupa toda a altura do header
+  position: relative;
+  transition: all 0.2s ease;
+  font-family: $font-family;
+  border-right: 1px solid $border-color; // Linha separadora à direita
+  
+  &:first-child {
+    border-left: 1px solid $border-color; // Linha separadora à esquerda do primeiro item
+  }
+  
+  &:hover {
+    color: $primary-color;
+    background-color: rgba(66, 25, 208, 0.02);
+  }
+  
+  &:active {
+    background-color: rgba(66, 25, 208, 0.05);
+  }
+  
+  &:focus {
+    outline: none;
+    background-color: rgba(66, 25, 208, 0.05);
+    color: $blue-primary;
+  }
+  
+  // Indicador de página ativa (você pode adicionar uma prop 'active' depois)
+  &.active {
+    color: $blue-primary;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $blue-primary;
+    }
+  }
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 0; // Remove gap para usar borders
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $text-light;
+  transition: all 0.2s ease;
+  width: 48px; // Largura fixa para os botões de ícone
+  height: 100%; // Ocupa toda a altura do header
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid $border-color; // Linha separadora à esquerda
+  position: relative;
+  
+  &:hover {
+    color: $primary-color;
+    background-color: rgba(66, 25, 208, 0.02);
+  }
+  
+  &:active {
+    background-color: rgba(66, 25, 208, 0.05);
+  }
+  
+  &:focus {
+    outline: none;
+    background-color: rgba(66, 25, 208, 0.05);
+    color: $blue-primary;
+  }
+  
+  // Badge de notificação (para futuras implementações)
+  &::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    right: 14px;
+    width: 6px;
+    height: 6px;
+    background-color: $yellow-accent;
+    border-radius: 50%;
+    opacity: 0; // Escondido por padrão
+    transition: opacity 0.2s ease;
+  }
+  
+  // Classe para mostrar badge quando houver itens
+  &.hasItems::after {
+    opacity: 1;
+  }
+}
+
+.icon {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+  
+  .iconButton:hover & {
+    transform: scale(1.1);
+  }
+}
+
+/* Estilos responsivos */
+@media (max-width: 1024px) {
+  .header {
+    padding: 0 24px;
+  }
+  
+  .brand {
+    margin-right: 32px;
+  }
+  
+  .navButton {
+    padding: 0 16px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+    height: 56px;
+  }
+  
+  .brand {
+    margin-right: 24px;
+  }
+  
+  .logoText {
+    font-size: 14px;
+  }
+  
+  .nav {
+    display: none; // Esconde a navegação em telas pequenas (você pode implementar um menu hambúrguer depois)
+  }
+  
+  .iconButton {
+    width: 44px;
+  }
+  
+  .icon {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 12px;
+    height: 52px;
+  }
+  
+  .logoText {
+    font-size: 12px;
+  }
+  
+  .iconButton {
+    width: 40px;
+  }
+  
+  .icon {
+    font-size: 16px;
+  }
+}
+
+/* Animação para o logo */
+@keyframes logoGlow {
+  0%, 100% {
+    text-shadow: none;
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(66, 25, 208, 0.3);
+  }
+}
+
+.brand:hover .logoText {
+  animation: logoGlow 1s ease-in-out;
+}

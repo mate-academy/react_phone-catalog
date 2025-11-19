@@ -1,0 +1,215 @@
+// src/components/Breadcrumbs/Breadcrumbs.module.scss
+
+// Variáveis de cores
+:root {
+  --breadcrumb-text: #89939a;
+  --breadcrumb-current: #313237;
+  --breadcrumb-hover: #0f3460;
+  --breadcrumb-separator: #b4bdc4;
+  --breadcrumb-focus: #0f3460;
+}
+
+// Container principal do breadcrumb
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.33;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+  // Responsividade
+  @media (max-width: 768px) {
+    font-size: 11px;
+    gap: 6px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 10px;
+    gap: 4px;
+  }
+}
+
+// Links do breadcrumb
+.breadcrumbLink {
+  display: inline-flex;
+  align-items: center;
+  color: var(--breadcrumb-text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  padding: 2px 4px;
+  
+  // Estados de interação
+  &:hover {
+    color: var(--breadcrumb-hover);
+    background-color: rgba(15, 52, 96, 0.05);
+  }
+  
+  &:focus {
+    outline: none;
+    color: var(--breadcrumb-focus);
+    box-shadow: 0 0 0 2px rgba(15, 52, 96, 0.2);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+  
+  // Responsividade
+  @media (max-width: 480px) {
+    padding: 1px 2px;
+  }
+}
+
+// Ícone de casa
+.homeIcon {
+  font-size: 14px;
+  color: inherit;
+  transition: color 0.2s ease;
+  
+  // Responsividade
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+}
+
+// Separadores ">"
+.separator {
+  color: var(--breadcrumb-separator);
+  font-size: 10px;
+  font-weight: 400;
+  user-select: none;
+  
+  // Responsividade
+  @media (max-width: 768px) {
+    font-size: 9px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 8px;
+  }
+}
+
+// Página atual (não clicável)
+.currentPage {
+  color: var(--breadcrumb-current);
+  font-weight: 600;
+  user-select: none;
+}
+
+// Animação de entrada
+.breadcrumbs {
+  animation: fadeInSlide 0.3s ease-out;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Variante para tema escuro
+@media (prefers-color-scheme: dark) {
+  .breadcrumbs {
+    --breadcrumb-text: #b4bdc4;
+    --breadcrumb-current: #ffffff;
+    --breadcrumb-hover: #4fb3d9;
+    --breadcrumb-separator: #89939a;
+    --breadcrumb-focus: #4fb3d9;
+  }
+}
+
+// Estados especiais
+.breadcrumbLink {
+  // Estado de carregamento
+  &.loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  
+  // Estado desabilitado
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Melhorias de acessibilidade
+.breadcrumbs {
+  // Para leitores de tela
+  &[aria-label] {
+    position: relative;
+  }
+  
+  // Foco visível melhorado
+  .breadcrumbLink:focus-visible {
+    outline: 2px solid var(--breadcrumb-focus);
+    outline-offset: 2px;
+  }
+}
+
+// Variação compacta (se necessário)
+.breadcrumbs.compact {
+  font-size: 11px;
+  gap: 6px;
+  
+  .homeIcon {
+    font-size: 12px;
+  }
+  
+  .separator {
+    font-size: 9px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 10px;
+    gap: 4px;
+    
+    .homeIcon {
+      font-size: 11px;
+    }
+    
+    .separator {
+      font-size: 8px;
+    }
+  }
+}
+
+// Truncamento para textos longos (se necessário)
+.currentPage,
+.breadcrumbLink {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+  @media (max-width: 768px) {
+    max-width: 150px;
+  }
+  
+  @media (max-width: 480px) {
+    max-width: 100px;
+  }
+}
+
+// Tooltip para textos truncados
+.breadcrumbLink[title],
+.currentPage[title] {
+  cursor: help;
+}

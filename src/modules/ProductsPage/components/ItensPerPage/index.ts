@@ -1,0 +1,1 @@
+export { ItensPerPage } from './ItemsPerPage';

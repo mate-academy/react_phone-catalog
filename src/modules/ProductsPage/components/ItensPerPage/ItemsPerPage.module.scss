@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  color: #89939a;
+}
+
+.select {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #e2e6e9;
+  cursor: pointer;
+  background-color: #fff;
+
+  &:hover {
+    border-color: #b4bdc3;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #313237;
+  }
+}
