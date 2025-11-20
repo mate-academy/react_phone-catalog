@@ -9,7 +9,7 @@
   padding: 9px 22px;
   width: 100%;
 
-  &:hover {
+  @include hover {
     background-color: var(--color-btn-card-hover);
   }
 }

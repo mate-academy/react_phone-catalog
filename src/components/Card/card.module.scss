@@ -4,7 +4,7 @@
   border: 1px solid rgba(15, 17, 33, 0.3);
   cursor: pointer;
 
-  &:hover {
+  @include hover {
     border: var(--border);
   }
 }
@@ -32,7 +32,7 @@
     object-fit: contain;
     transition: transform 0.3s ease;
 
-    &:hover {
+    @include hover {
       transform: scale(1.05);
     }
   }
