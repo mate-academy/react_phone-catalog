@@ -18,6 +18,10 @@ export const Header: React.FC = () => {
   const location = useLocation();
 
   const logoSrc = theme === 'dark' ? './logo/logo.png' : './logo/logo_dark.png';
+  const menuIcon =
+    theme === 'dark' ? '../img/icons/menu.png' : '../img/icons/menu_dark.png';
+  const closeIcon =
+    theme === 'dark' ? '../img/icons/close.png' : '../img/icons/close_dark.png';
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -118,19 +122,23 @@ export const Header: React.FC = () => {
         </select>
       </div>
 
-      <div className={styles.burger} onClick={toggleMobileMenu}></div>
+      <div
+        className={styles.burger}
+        onClick={toggleMobileMenu}
+        style={{ backgroundImage: `url(${menuIcon})` }}
+      ></div>
       <div
         className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.open : ''}`}
       >
         <div className={styles.mobileHeader}>
           <Link to="/">
-            <img
-              src="/logo/logo.png"
-              alt="logo"
-              className={styles.mobileLogo}
-            />
+            <img src={logoSrc} alt="Logo" className={styles.logoImage} />
           </Link>
-          <div className={styles.mobileClose} onClick={toggleMobileMenu}></div>
+          <div
+            className={styles.mobileClose}
+            onClick={toggleMobileMenu}
+            style={{ backgroundImage: `url(${closeIcon})` }}
+          ></div>
         </div>
         <div className={styles.mobileNav}>
           <Link

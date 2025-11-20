@@ -138,7 +138,7 @@ export const ProductDetailsPage: React.FC = () => {
               <img
                 key={i}
                 src={`${img}`}
-                alt=""
+                alt="product"
                 className={`${styles.thumb} ${i === selectedImageIndex ? styles.active : ''}`}
                 onClick={() => setSelectedImageIndex(i)}
               />
@@ -153,7 +153,7 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
 
           <div className={styles.rightPanel}>
-            <div className={styles.id}>ID: {currentProduct.id}</div>
+            {/* <div className={styles.id}>ID: {currentProduct.id}</div> */}
 
             {baseProduct?.colorsAvailable && (
               <div className={styles.option}>

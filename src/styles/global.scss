@@ -1,8 +1,9 @@
+
 :root {
-  --background-primary: #0F1121;
+  --background-primary: #0f1121;
   --background-secondary: #2d3334;
   --text-color: #fff;
-  --text-secondary: #75767F;
+  --text-secondary: #75767f;
   --border-color: #4a4f50;
   --secondary-color: #2d3334;
   --accent-primary: #a100ff;
@@ -11,43 +12,35 @@
   --danger: #f44;
   --success: #0c8;
   --card-bg: #1a1c2e;
-  --button-bg: #905BFF;
-  --button-hover: #A378FF;
+  --button-bg: #905bff;
+  --button-hover: #a378ff;
   --button-active: #323542;
   --active-link: #139261;
-  --card-name: #F1F2F9;
+  --card-name: #f1f2f9;
 }
 
-body {
-  margin: 0;
-  font-family: Mont, sans-serif;
-  background-color: var(--background-primary);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
-
-  &.light {
-    --background-primary: #fff;
-    --background-secondary: #f5f5f5;
-    --text-color: #1f2526;
-    --text-secondary: #666;
-    --border-color: #ccc;
-    --secondary-color: #f5f5f5;
-    --accent-primary: #a100ff;
-    --accent-hover: #b84fff;
-    --accent-active: #8a00cc;
-    --danger: #f33;
-    --success: #0a7;
-    --card-bg: #fff;
-    --button-bg: #9eb8ac;
-    --button-hover: #e0e0e0;
-    --card-name: #1d1919;
-  }
+:root.light,
+body.light {
+  --background-primary: #fff;
+  --background-secondary: #f5f5f5;
+  --text-color: #1f2526;
+  --text-secondary: #666;
+  --border-color: #ccc;
+  --secondary-color: #f5f5f5;
+  --accent-primary: #a100ff;
+  --accent-hover: #b84fff;
+  --accent-active: #8a00cc;
+  --danger: #f33;
+  --success: #0a7;
+  --card-bg: #fff;
+  --button-bg: #9eb8ac;
+  --button-hover: #e0e0e0;
+  --card-name: #1d1919;
 }
 
 html,
-body,
-#root {
-  min-height: 100%;
+body {
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -56,6 +49,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: Mont, sans-serif;
+  background: var(--background-primary);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .app {
@@ -65,7 +62,7 @@ body {
 }
 
 main {
-  flex:1 0 auto;
+  flex: 1 0 auto;
 }
 
 footer {

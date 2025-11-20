@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-8px);
@@ -101,19 +101,19 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s ease;
+}
 
-  &:hover:not(:disabled) {
-    background: #7a5bff;
-  }
+.addBtn.added {
+  background: var(--accent-active);
+}
 
-  &:disabled {
-    background: var(--accent-hover);
-    cursor: default;
-  }
+.addBtn:disabled {
+  background: var(--accent-hover);
+  cursor: default;
+}
 
-  &.added {
-    background: var(--accent-active);
-  }
+.addBtn:hover:not(:disabled) {
+  background: #7a5bff;
 }
 
 .buttonText {

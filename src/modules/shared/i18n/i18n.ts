@@ -45,6 +45,7 @@ i18n.use(initReactI18next).init({
         all: 'All',
         avColor: 'Available colors',
         avCapacity: 'Select capacity',
+        newestFirst: 'Newest First',
       },
     },
     ua: {
@@ -89,6 +90,7 @@ i18n.use(initReactI18next).init({
         all: 'Усі',
         avColor: 'Доступні кольори',
         avCapacity: 'Оберіть об`єм',
+        newestFirst: 'Спочатку найновіші',
       },
     },
   },

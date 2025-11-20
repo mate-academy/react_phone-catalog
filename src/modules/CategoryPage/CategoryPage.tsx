@@ -3,12 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import styles from './CategoryPage.module.scss';
 import { Product } from '../shared/types';
-// import { ProductsList } from './components/ProductsList/ProductsList';
 import { useDebounce } from '../shared/hooks/useDebounce';
 import { Input } from '../../components/UI/Input/Input';
-import { Select } from '../../components/UI/Select/Select';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductCard } from './components/ProductCard';
+import { CustomSelect } from '../../components/UI/CustomSelect/CustomSelect';
 
 export const CategoryPage: React.FC = () => {
   const { t } = useTranslation();
@@ -91,16 +90,6 @@ export const CategoryPage: React.FC = () => {
     setCurrentPage(page);
   };
 
-  const handleItemsPerPageChange = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    const value = e.target.value;
-    const newItemsPerPage = value === 'all' ? 'all' : parseInt(value, 10);
-
-    setItemsPerPage(newItemsPerPage);
-    setCurrentPage(1);
-  };
-
   if (loading) {
     return <div className={styles.loading}>Loading...</div>;
   }
@@ -123,25 +112,25 @@ export const CategoryPage: React.FC = () => {
         <div className={styles.filterGroup}>
           <label className={styles.label}>{t('search')}</label>
           <Input
+            className={styles.search}
             placeholder={t('search')}
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className={styles.search}
           />
         </div>
 
         <div className={styles.filterGroup}>
           <label className={styles.label}>{t('sort')}</label>
-
-          <Select
+          <CustomSelect
             value={sort}
-            onChange={e => setSort(e.target.value)}
-            className={styles.sort}
-          >
-            <option value={'default'}>{t('sort')}</option>
-            <option value={'priceLowToHigh'}>{t('priceLowToHigh')}</option>
-            <option value={'priceHighToLow'}>{t('priceHighToLow')}</option>
-          </Select>
+            onChange={val => setSort(val as string)}
+            options={[
+              { value: 'default', label: t('newestFirst') },
+              { value: t('priceLowToHigh'), label: t('priceLowToHigh') },
+              { value: t('priceHighToLow'), label: t('priceHighToLow') },
+            ]}
+            placeholder={t('sort')}
+          />
         </div>
 
         {/* <p className={styles.pageInfo}>{t('itemsOnPage')}</p> */}
@@ -149,16 +138,20 @@ export const CategoryPage: React.FC = () => {
         <div className={styles.filterGroup}>
           <label className={styles.label}>{t('itemsOnPage')}</label>
 
-          <Select
+          <CustomSelect
             value={itemsPerPage}
-            onChange={handleItemsPerPageChange}
-            className={styles.perPageSelect}
-          >
-            <option value="all">{t('all')}</option>
-            <option value={4}>4</option>
-            <option value={8}>8</option>
-            <option value={16}>16</option>
-          </Select>
+            onChange={val => {
+              setItemsPerPage(val === 'all' ? 'all' : +val);
+              setCurrentPage(1);
+            }}
+            options={[
+              { value: 'all', label: t('all') },
+              { value: '4', label: '4' },
+              { value: '8', label: '8' },
+              { value: '16', label: '16' },
+            ]}
+            placeholder={t('itemsOnPage')}
+          />
         </div>
       </div>
       <div

@@ -19,14 +19,29 @@
 
   @media (max-width: 1199px) {
     grid-template-columns: 1fr 1fr;
-    .thumbnails { grid-column: 1 / -1; flex-direction: row; }
-    .mainImage { grid-column: 1; }
-    .rightPanel { grid-column: 2; }
+
+    .thumbnails {
+      grid-column: 1 / -1;
+      flex-direction: row;
+    }
+
+    .mainImage {
+      grid-column: 1;
+    }
+
+    .rightPanel {
+      grid-column: 2;
+    }
   }
 
   @media (max-width: 639px) {
     grid-template-columns: 1fr;
-    .thumbnails, .mainImage, .rightPanel { grid-column: 1; }
+
+    .thumbnails,
+    .mainImage,
+    .rightPanel {
+      grid-column: 1;
+    }
   }
 }
 
@@ -52,8 +67,8 @@
   transition: border 0.3s;
 
   @media (max-width: 1199px) {
-    height: 35px;
     width: 35px;
+    height: 35px;
   }
 
   &.active,
@@ -69,14 +84,12 @@
   }
 }
 
-.mainImage {
-  img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    object-fit: contain;
-  }
+.mainImage img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  object-fit: contain;
 }
 
 .rightPanel {
@@ -131,7 +144,7 @@
   transition: all 0.3s;
 
   &.selected {
-    border-color: white;
+    border-color: var(--text-color);
     box-shadow: 0 0 0 2px var(--accent-primary);
   }
 }
@@ -231,15 +244,14 @@
 .specGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 40px; 
+  gap: 8px 40px;
 
   @media (max-width: 999px) {
     gap: 8px 20px;
   }
 
   @media (max-width: 639px) {
-    grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 8px 100px;
   }
 }
 
@@ -255,7 +267,8 @@
   }
 }
 
-.about, .techSpecs {
+.about,
+.techSpecs {
   h2 {
     font-size: 1.8rem;
     font-weight: 700;
@@ -266,8 +279,7 @@
   .divider {
     border: none;
     border-top: 1px solid var(--border-color);
-    margin: 16px 0;
-    margin-bottom: 32px;
+    margin: 16px 0 32px;
   }
 }
 
@@ -331,7 +343,8 @@
   }
 }
 
-.loading, .error {
+.loading,
+.error {
   text-align: center;
   padding: 60px 20px;
   font-size: 18px;
