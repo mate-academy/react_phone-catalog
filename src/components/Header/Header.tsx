@@ -19,9 +19,9 @@ export const Header: React.FC = () => {
 
   const logoSrc = theme === 'dark' ? './logo/logo.png' : './logo/logo_dark.png';
   const menuIcon =
-    theme === 'dark' ? '../img/icons/menu.png' : '../img/icons/menu_dark.png';
+    theme === 'dark' ? './img/icons/menu.png' : './img/icons/menu_dark.png';
   const closeIcon =
-    theme === 'dark' ? '../img/icons/close.png' : '../img/icons/close_dark.png';
+    theme === 'dark' ? './img/icons/close.png' : './img/icons/close_dark.png';
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
