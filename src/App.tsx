@@ -10,6 +10,8 @@ import { FavoriteProvider } from './shared/contexts/FavoriteContext';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { CartProvider } from './shared/contexts/CartContext';
 import { CartPage } from './modules/CartPage/CartPage';
+// eslint-disable-next-line max-len
+import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 
 export const App = () => (
   <CartProvider>
@@ -24,6 +26,10 @@ export const App = () => (
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route
+                path="/product/:productId"
+                element={<ProductDetailsPage />}
+              />
             </Routes>
           </main>
           <Footer />

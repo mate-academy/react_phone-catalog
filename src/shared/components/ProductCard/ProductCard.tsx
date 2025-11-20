@@ -3,6 +3,7 @@ import styles from './ProductCard.module.scss';
 import { UiProduct } from '../ProductsSlider/ProductSlider';
 import { FavoriteContext } from '../../contexts/FavoriteContext';
 import { CartContext, CartItem } from '../../contexts/CartContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: UiProduct;
@@ -41,11 +42,13 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
 
   return (
     <article className={styles.card}>
-      <div className={styles.imageWrapper}>
+      <Link to={`/product/${product.id}`} className={styles.imageWrapper}>
         <img src={img} alt={title} className={styles.image} />
-      </div>
+      </Link>
 
-      <h3 className={styles.title}>{title}</h3>
+      <h3 className={styles.title}>
+        <Link to={`/product/${product.id}`}>{title}</Link>
+      </h3>
 
       <div className={styles.priceBlock}>
         <span className={styles.price}>${price}</span>

@@ -1,0 +1,52 @@
+.colorCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e2e6e9;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-right: 8px;
+}
+
+.black {
+  background-color: #1a1a1a;
+}
+
+.green {
+  background-color: #3ddc84;
+}
+
+.yellow {
+  background-color: #ffd400;
+}
+
+.white {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.purple {
+  background-color: #b366ff;
+}
+
+.red {
+  background-color: #ff3b30;
+}
+
+.capacityBtn {
+  padding: 8px 16px;
+  border: 1px solid #b4bdc3;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.activeCapacity {
+  background: #313237;
+  color: #fff;
+  border-color: #313237;
+}
