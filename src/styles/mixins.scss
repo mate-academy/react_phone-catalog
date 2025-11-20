@@ -1,3 +1,9 @@
+@mixin on-mobile {
+  @media (min-width: $mobile-min-width) {
+    @content;
+  }
+}
+
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -8,4 +14,12 @@
   @media (min-width: $desktop-min-width) {
     @content;
   }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+    &:hover {
+      #{$property}: $toValue;
+    }
 }

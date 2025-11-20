@@ -1,19 +1,10 @@
 @import './styles/variables.scss';
 @import './styles/mixins.scss';
 
-
-$tablet-min-width: 640px;
-$desktop-min-width: 1200px;
-
 body {
   margin: 0;
-  --secondary-color: #89939A;
-  $tablet-min-width: 640px;
-$desktop-min-width: 1200px;
-}
-
-@font-face {
-  font-family: "Uppercase";
-  src: url(/Users/mac/projects/react_phone-catalog/public/fonts/Mont-Bold.otf);
+  padding: 0;
+  min-width: 320px;
+  width: 100%;
 }
 

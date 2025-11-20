@@ -1,0 +1,85 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/fonts.scss';
+
+.footer {
+  --column: 4;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(var(--column), 1fr);
+  row-gap: 32px;
+  flex-direction: column;
+
+  border-top: 1px solid #E2E6E9;
+  box-sizing: border-box;
+
+  padding: 32px 16px;
+
+  @include on-tablet {
+    --column: 12;
+  }
+
+  &__logo {
+    grid-column: 1/-1;
+    height: 32px;
+    width: 89px;
+  }
+
+  &__list {
+    grid-column: 1/-1;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__item {
+    line-height: 11px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $secondary-color;
+    @extend %font-uppercase;
+  }
+
+  &__back {
+    grid-column: 1/-1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    &__text {
+      margin: 0;
+      @extend %font-small-text;
+      color: $secondary-color;
+      font-weight: 700;
+    }
+
+    &__button {
+      height: 32px;
+      width: 32px;
+      padding: 0;
+      box-sizing: border-box;
+      border: 1px solid $elements-color;
+      background-color: $white-color;
+      background-image: url(/public/img/icons/icon-arrow-up.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include hover (border-color, $primary-color);
+    }
+  }
+}
