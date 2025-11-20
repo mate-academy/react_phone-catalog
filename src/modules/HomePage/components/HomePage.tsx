@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import PageHeader from '@/modules/shared/components/PageHeader/PageHeader';
 //TODO fix categoy section styles
 const HomePage: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>(productsList);
+  const [products] = useState<Product[]>(productsList);
   const counters = {
     phones: 0,
     tablets: 0,
@@ -16,8 +16,8 @@ const HomePage: React.FC = () => {
   };
 
   for (const item of products) {
-    if (counters.hasOwnProperty(item.category)) {
-      counters[item.category]++;
+    if (item.category in counters) {
+      counters[item.category as keyof typeof counters]++;
     }
   }
 

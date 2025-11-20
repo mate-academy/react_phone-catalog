@@ -35,6 +35,9 @@
     width: 32px;
     cursor: pointer;
     background-color: #ffffff;
-    border: 1px solid #b4bdc3;
+    border: 1px solid $color-icons;
+    &:hover {
+      border: 1px solid $color-primary;
+    }
   }
 }

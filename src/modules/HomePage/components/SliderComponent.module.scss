@@ -17,9 +17,17 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    border: 1px solid #b4bdc3;
+    border: 1px solid $color-icons;
     cursor: pointer;
     background-color: #ffffff;
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+    &__disabled {
+      border: 1px solid $color-elements;
+      cursor: default;
+      pointer-events: none;
+    }
   }
 
   &__itemsContainer {
@@ -44,6 +52,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
+      line-clamp: 2; // кількість рядків
       -webkit-line-clamp: 2; // кількість рядків
       -webkit-box-orient: vertical;
       @include type($body-size, $body-line, $body-track, $body-weight);
@@ -118,16 +127,28 @@
       cursor: pointer;
       color: $color-text;
       @include type($button-size, $button-line, $button-track, $button-weight);
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
+
+      &__added {
+        color: $color-green;
+        background-color: #fff;
+        border: 1px solid $color-elements;
+      }
     }
     &__favoriteButton {
       background: none;
       width: 40px;
       height: 40px;
-      border: 1px solid $color-icons;
+      border: 1px solid $color-elements;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      &:hover {
+        border: 1px solid $color-primary;
+      }
     }
   }
 }

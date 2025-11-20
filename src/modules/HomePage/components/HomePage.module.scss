@@ -18,4 +18,14 @@
   row-gap: 4px;
 }
 
+.categoryTitle {
+  margin-bottom: 24px;
+}
 
+.categoryName {
+  @include type($h4-size, $h4-line, $h4-track, $h4-weight);
+}
+.categoryCount {
+  @include type($body-size, $body-line, $body-track, $body-weight);
+  color: $color-secondary;
+}

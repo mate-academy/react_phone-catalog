@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CarouselIndicator } from './CarouselIndicator';
 import styles from './Carousel.module.scss';
 
