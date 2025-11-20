@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 import shopping from '@Images/icons/Shopping-bag.svg';
 import like from '@Images/icons/like-icons.svg';
 import style from './Navbar.module.scss';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { CartContext } from '../../context/Cart';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { cartItems } = useContext(CartContext);
+
+  console.log(cartItems);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -72,7 +77,7 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className={`${style.actions}  `}>
+        <div className={`${style.actions}`}>
           <a
             className={`${style.navbar__link} ${style['navbar__link--action']}`}
           >
@@ -83,6 +88,9 @@ const Navbar = () => {
             className={`${style.navbar__link} ${style['navbar__link--action']}`}
           >
             <img src={shopping} alt="shopping" />
+            {!!cartItems.length && (
+              <span className={style.shopping}>{cartItems.length}</span>
+            )}
           </Link>
         </div>
       </nav>

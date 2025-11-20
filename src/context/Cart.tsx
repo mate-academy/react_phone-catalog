@@ -20,19 +20,11 @@ type Props = {
 export const CartContext = createContext({} as CartContexType);
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    const storedItems = localStorage.getItem('cartItems');
-
-    if (storedItems) {
-      try {
-        return JSON.parse(storedItems) as CartItem[];
-      } catch {
-        return [];
-      }
-    }
-
-    return [];
-  });
+  const [cartItems, setCartItems] = useState<CartItem[]>(
+    localStorage.getItem('cartItems')
+      ? JSON.parse(localStorage.getItem('cartItems') as string)
+      : [],
+  );
 
   const increaseToCart = (item: CartItem) => {
     const isItemInCart = cartItems.find(cartItem => cartItem.id === item.id);

@@ -58,7 +58,7 @@ export const ProductCard = () => {
   const { start, clear } = useTimer();
 
   //Context
-  const { increaseToCart } = useContext(CartContext);
+  const { cartItems, increaseToCart } = useContext(CartContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -117,7 +117,7 @@ export const ProductCard = () => {
 
   const notifyAddedToCart = (newItem: Device) =>
     toast.success(`${newItem.name} added to cart!`, {
-      position: 'top-right',
+      position: 'bottom-right',
       autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -127,6 +127,10 @@ export const ProductCard = () => {
       theme: 'dark',
       transition: Slide,
     });
+
+  const selected = cartItems.find(device => {
+    return device.name === item?.name;
+  });
 
   return (
     <>
@@ -314,6 +318,7 @@ export const ProductCard = () => {
                             className={`${style.card__button} ${style.container}`}
                           >
                             <Button
+                              isAdded={!!selected}
                               notifyAdded={() => notifyAddedToCart(item)}
                               increaseToCart={() => increaseToCart(item)}
                             />

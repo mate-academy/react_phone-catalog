@@ -157,41 +157,6 @@
   }
 }
 
-// .actions {
-//   // position: absolute;
-//   // bottom: 0;
-//   // width: 100%;
-//   // display: flex;
-//   // justify-content: center;
-
-//   @include onTablet {
-//     display: flex;
-//     position: static;
-
-//     & a {
-//       position: relative;
-//       display: inline-flex;
-//       align-items: center;
-//       justify-content: center;
-//       padding: 12px 0;
-//       @include square(48px);
-//       border-left: var(--border);
-
-//       &:hover {
-//         @include hover {
-//           background-color: var(--color-surface-2);
-//         }
-//       }
-//     }
-//   }
-
-//   @include onDekstop {
-//     & a {
-//       @include square(64px);
-//     }
-//   }
-// }
-
 .burger {
   display: block;
   z-index: 1001;
@@ -237,4 +202,20 @@
   @include onTablet {
     display: none;
   }
+}
+
+.shopping {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  background-color: var(--color-red-icon);
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 15px;
+
+  @include square(14px);
 }

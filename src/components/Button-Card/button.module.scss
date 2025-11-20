@@ -7,7 +7,6 @@
 .button {
   position: relative;
   padding: 9px 22px;
-  background-color: var(--color-btn-card);
   width: 100%;
 
   &:hover {
@@ -31,4 +30,17 @@
 .favourit__icon {
   display: block;
   padding: 12px;
+}
+
+.button__added {
+  background-color: #27ae60;
+  pointer-events: none;
+
+  @include hover {
+    background-color: #27ae60;
+  }
+}
+
+.button__empty {
+  background-color: var(--color-btn-card);
 }

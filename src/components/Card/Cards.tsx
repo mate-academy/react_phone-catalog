@@ -15,11 +15,15 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ item, title }) => {
-  const { increaseToCart } = useContext(CartContext);
+  const { cartItems, increaseToCart } = useContext(CartContext);
+
+  const selected = cartItems.find(device => {
+    return device.name === item.name;
+  });
 
   const notifyAddedToCart = (newItem: Products) =>
     toast.success(`${newItem.name} added to cart!`, {
-      position: 'top-right',
+      position: 'bottom-right',
       autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -68,6 +72,7 @@ export const Card: React.FC<Props> = ({ item, title }) => {
           </Link>
           <div className={style.card__bottom}>
             <Button
+              isAdded={!!selected}
               notifyAdded={() => notifyAddedToCart(item)}
               increaseToCart={() => increaseToCart(item)}
             />

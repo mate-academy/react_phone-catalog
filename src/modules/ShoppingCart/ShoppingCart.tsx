@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../context/Cart';
 import Cart from './Cart/Cart';
 import { Link } from 'react-router-dom';
+import { ProductsEmpty } from '@GlobalComponents';
 
 export const ShoppingCart = () => {
   const { cartItems, getCartTotal } = useContext(CartContext);
@@ -19,27 +20,31 @@ export const ShoppingCart = () => {
                 </Link>
               </div>
               <h1 className={`title ${style.title}`}>Cart</h1>
-              <div className={style.content}>
-                <div className={style.cards}>
-                  {cartItems.map(item => (
-                    <Cart item={item} key={item.id} />
-                  ))}
-                </div>
+              {cartItems.length > 0 ? (
+                <div className={style.content}>
+                  <div className={style.cards}>
+                    {cartItems.map(item => (
+                      <Cart item={item} key={item.id} />
+                    ))}
+                  </div>
 
-                <div className={style['cart-price']}>
-                  <span className={style['cart-price__total']}>
-                    ${getCartTotal()}
-                  </span>
-                  <span className={style['cart-price__quantity']}>
-                    Total for 3 items
-                  </span>
+                  <div className={style['cart-price']}>
+                    <span className={style['cart-price__total']}>
+                      ${getCartTotal()}
+                    </span>
+                    <span className={style['cart-price__quantity']}>
+                      Total for 3 items
+                    </span>
 
-                  <div className={style['cart-price__button']}>
-                    <button>Checkout</button>
-                    <span className={style.line}></span>
+                    <div className={style['cart-price__button']}>
+                      <button>Checkout</button>
+                      <span className={style.line}></span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <ProductsEmpty title="Cart" />
+              )}
             </div>
           </div>
         </section>
