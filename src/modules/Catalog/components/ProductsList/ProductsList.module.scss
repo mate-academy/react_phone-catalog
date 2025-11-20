@@ -31,7 +31,6 @@
   margin-top: 40px;
 }
 
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -47,7 +46,10 @@
 }
 
 .card {
-  width: 272px;
+  // width: 272px;
+  width: 100%;
+  max-width: 272px;
+  margin: 0 auto;
   min-height: 506px;
   background-color: $card-backColor;
   display: flex;

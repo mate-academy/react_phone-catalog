@@ -47,6 +47,7 @@ p {
 
 .cart {
   @include content-padding-inline;
+  padding-top: 24px;
 
   &__content {
     display: flex;
@@ -130,6 +131,7 @@ p {
   &__image {
     width: 80px;
     height: 80px;
+    object-fit: contain;
 
     img {
       flex-shrink: 0;

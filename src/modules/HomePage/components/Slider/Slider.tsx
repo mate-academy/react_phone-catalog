@@ -12,7 +12,7 @@ export const Slider = () => {
     <>
       <div className={styles['slider-container']}>
         <button className={`slide-btn__prev ${styles.button__prev}`}>
-          <img src="./img/icons/arrow_left.png" alt="Arrow left" />
+          <img src="./img/icons/left_white_arrow.png" alt="Arrow left" />
         </button>
         <Swiper
           slidesPerView={1}
@@ -197,7 +197,7 @@ export const Slider = () => {
           </SwiperSlide>
         </Swiper>
         <button className={`slide-btn__next ${styles.button__next}`}>
-          <img src="./img/icons/arrow_right.png" alt="Arrow right" />
+          <img src="./img/icons/right_white_arrow.svg" alt="Arrow right" />
         </button>
       </div>
       <div
