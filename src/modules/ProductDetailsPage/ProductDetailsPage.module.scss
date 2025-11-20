@@ -1,3 +1,71 @@
+.page {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 64px;
+  align-items: flex-start;
+}
+
+.leftPart {
+  display: grid;
+  grid-template-columns: 80px 464px;
+  column-gap: 24px;
+  align-items: flex-start;
+}
+
+.mainImage {
+  width: 464px;
+  height: 464px;
+  object-fit: contain;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.galleryImage {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  padding: 8px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: 0.2s;
+}
+
+.galleryImage:hover {
+  border-color: #313237;
+}
+
+.activeThumb {
+  border-color: #313237;
+  box-shadow: 0 0 0 2px #313237;
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+}
+
 .colorCircle {
   width: 32px;
   height: 32px;
@@ -5,7 +73,6 @@
   border: 1px solid #e2e6e9;
   cursor: pointer;
   transition: 0.2s;
-  margin-right: 8px;
 }
 
 .black {
@@ -33,6 +100,11 @@
   background-color: #ff3b30;
 }
 
+.capacity {
+  display: flex;
+  gap: 8px;
+}
+
 .capacityBtn {
   padding: 8px 16px;
   border: 1px solid #b4bdc3;
@@ -49,4 +121,77 @@
   background: #313237;
   color: #fff;
   border-color: #313237;
+}
+
+
+.detailsShort {
+  margin-top: 24px;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.detailLabel {
+  color: #89939a;
+}
+
+.detailValue {
+  font-weight: 600;
+}
+
+.priceBlock {
+  margin: 24px 0;
+}
+
+.priceNew {
+  font-size: 32px;
+  font-weight: 800;
+  margin-right: 12px;
+}
+
+.priceOld {
+  font-size: 22px;
+  color: #b4bdc3;
+  text-decoration: line-through;
+}
+
+.bottomSection {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 64px;
+}
+
+.bottomTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.aboutSectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+.aboutText {
+  margin-top: 8px;
+  color: #313237;
+}
+
+.techRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.techLabel {
+  color: #89939a;
+}
+
+.techValue {
+  font-weight: 600;
 }

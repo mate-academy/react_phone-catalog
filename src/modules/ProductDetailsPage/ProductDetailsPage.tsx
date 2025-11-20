@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import { useParams } from 'react-router-dom';
+import { Loader } from '../../shared/components/Loader/Loader';
 
 type Product = {
   id: string;
@@ -67,7 +68,11 @@ export const ProductDetailsPage: React.FC = () => {
   }, [product]);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <h1>
+        <Loader />
+      </h1>
+    );
   }
 
   if (!product) {
@@ -89,89 +94,93 @@ export const ProductDetailsPage: React.FC = () => {
       <h1 className={styles.title}>{product.name}</h1>
 
       <div className={styles.topSection}>
-        <img
-          className={styles.mainImage}
-          src={`/${selectedImg}`}
-          alt={product.name}
-        />
+        <div className={styles.leftPart}>
+          <img
+            className={styles.mainImage}
+            src={`/${selectedImg}`}
+            alt={product.name}
+          />
 
-        <div className={styles.gallery}>
-          {product.images.map(img => (
-            <img
-              key={img}
-              className={styles.galleryImage}
-              src={`/${img}`}
-              alt={product.name}
-              onClick={() => setSelectedImg(img)}
-            />
-          ))}
+          <div className={styles.gallery}>
+            {product.images.map(img => (
+              <img
+                key={img}
+                className={`${styles.galleryImage} ${selectedImg === img ? styles.activeThumb : ''}`}
+                src={`/${img}`}
+                alt={product.name}
+                onClick={() => setSelectedImg(img)}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.infoBlock}>
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Available colors</p>
+
+            <div className={styles.colors}>
+              {product.colorsAvailable.map(color => (
+                <button
+                  key={color}
+                  className={`${styles.colorCircle} ${styles[color]}`}
+                ></button>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Select capacity</p>
+
+            <div className={styles.capacity}>
+              {product.capacityAvailable.map(cap => (
+                <button
+                  key={cap}
+                  className={`${styles.capacityBtn} ${
+                    selectedCapacity === cap ? styles.activeCapacity : ''
+                  }`}
+                  onClick={() => setSelectedCapacity(cap)}
+                >
+                  {cap}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.priceBlock}>
+            <span className={styles.priceNew}>{product.priceRegular}</span>
+            <span className={styles.priceOld}>{product.priceDiscount}</span>
+          </div>
+
+          <div className={styles.buttons}>
+            <button className={styles.addToCart}>Add to cart</button>
+            <button className={styles.favoriteButton}>favorite</button>
+          </div>
+
+          <div className={styles.detailsShort}>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Screen</span>
+              <span className={styles.detailValue}>{product.screen}</span>
+            </div>
+
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Resolution</span>
+              <span className={styles.detailValue}>{product.resolution}</span>
+            </div>
+
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Processor</span>
+              <span className={styles.detailValue}>{product.processor}</span>
+            </div>
+
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>Ram</span>
+              <span className={styles.detailValue}>{product.ram}</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className={styles.infoBlock}>
-        <div className={styles.section}>
-          <p className={styles.sectionTitle}>Available colors</p>
-
-          <div className={styles.colors}>
-            {product.colorsAvailable.map(color => (
-              <button
-                key={color}
-                className={`${styles.colorCircle} ${styles[color]}`}
-              ></button>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.section}>
-          <p className={styles.sectionTitle}>Select capacity</p>
-
-          <div className={styles.capacity}>
-            {product.capacityAvailable.map(cap => (
-              <button
-                key={cap}
-                className={`${styles.capacityBtn} ${
-                  selectedCapacity === cap ? styles.activeCapacity : ''
-                }`}
-                onClick={() => setSelectedCapacity(cap)}
-              >
-                {cap}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.priceBlock}>
-          <span className={styles.priceNew}>{product.priceRegular}</span>
-          <span className={styles.priceOld}>{product.priceDiscount}</span>
-        </div>
-
-        <div className={styles.buttons}>
-          <button className={styles.addToCart}>Add to cart</button>
-          <button className={styles.favoriteButton}>favorite</button>
-        </div>
-
-        <div className={styles.detailsShort}>
-          <div className={styles.detailRow}>
-            <span className={styles.detailLabel}>Screen</span>
-            <span className={styles.detailValue}>{product.screen}</span>
-          </div>
-
-          <div className={styles.detailRow}>
-            <span className={styles.detailLabel}>Resolution</span>
-            <span className={styles.detailValue}>{product.resolution}</span>
-          </div>
-
-          <div className={styles.detailRow}>
-            <span className={styles.detailLabel}>Processor</span>
-            <span className={styles.detailValue}>{product.processor}</span>
-          </div>
-
-          <div className={styles.detailRow}>
-            <span className={styles.detailLabel}>Ram</span>
-            <span className={styles.detailValue}>{product.ram}</span>
-          </div>
-        </div>
-
+      <div className={styles.bottomSection}>
         <div className={styles.abutBlock}>
           <h2 className={styles.botomTitle}>About</h2>
 
