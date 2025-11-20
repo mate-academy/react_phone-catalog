@@ -34,6 +34,7 @@ export function HomePage() {
           <div className={styles.mobilePhones__text}>Mobile phones</div>
           <p className={styles.p}>95 models</p>
         </div>
+
         <div className={styles.tablets}>
           <Link to="/tablets">
             <div className={styles.backgroundTablets}>
@@ -47,6 +48,7 @@ export function HomePage() {
           <div className={styles.tablets__text}>Tablets</div>
           <p className={styles.p}>24 models</p>
         </div>
+
         <div className={styles.accessories}>
           <Link to="/accessories">
             <div className={styles.backgroundAccessories}>
@@ -61,6 +63,7 @@ export function HomePage() {
           <p className={styles.p}>100 models</p>
         </div>
       </div>
+
       <div className={styles.HotPrices}>
         <HotPricesSlider />
       </div>

@@ -72,7 +72,7 @@ export function Banner() {
           <button className="side-btn">‹</button>
         </div>
 
-        <div className="slides" style={{ height: 400 }}>
+        <div className="slides">
           {banners.map((banner, index) => (
             <img
               key={index}

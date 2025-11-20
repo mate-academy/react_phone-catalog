@@ -90,26 +90,37 @@ export function HeaderMobile() {
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
-              isActive ? `${styles.iconButton} ${styles.iconButton__active}` : styles.iconButton
+              isActive
+                ? `${styles.iconButton} ${styles.iconButton__active}`
+                : styles.iconButton
             }
             onClick={toggleMenu}
           >
-            <img src={heartIcon} alt="Favorites" />
-            {favourites.length > 0 && (
-              <span className={styles.badge}>{favourites.length}</span>
-            )}
+            <div className={styles.iconWrapper}>
+              <img src={heartIcon} alt="Favorites" />
+
+              {favourites.length > 0 && (
+                <span className={styles.badge}>{favourites.length}</span>
+              )}
+            </div>
           </NavLink>
+
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              isActive ? `${styles.iconButton} ${styles.iconButton__active}` : styles.iconButton
+              isActive
+                ? `${styles.iconButton} ${styles.iconButton__active}`
+                : styles.iconButton
             }
             onClick={toggleMenu}
           >
-            <img src={bagIcon} alt="Cart" />
-            {cartItems.length > 0 && (
-              <span className={styles.badge}>{cartItems.length}</span>
-            )}
+            <div className={styles.iconWrapper}>
+              <img src={bagIcon} alt="Cart" />
+
+              {cartItems.length > 0 && (
+                <span className={styles.badge}>{cartItems.length}</span>
+              )}
+            </div>
           </NavLink>
         </div>
       </aside>

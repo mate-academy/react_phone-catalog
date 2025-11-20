@@ -181,3 +181,15 @@
   display: block;
   background-color: #18192c;
 }
+
+@media (pointer: coarse) {
+  .addToCart:hover,
+  .addedToCart:hover,
+  .addToFavourites:hover,
+  .image:hover {
+    background-color: inherit !important;
+    transform: none !important;
+    scale: 1 !important;
+    box-shadow: none !important;
+  }
+}

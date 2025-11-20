@@ -33,7 +33,6 @@
 }
 
 .Banner {
-
   @include on-desktop {
     grid-column: 1 / -1;
   }
@@ -47,9 +46,7 @@
   }
 
   @include on-mobile {
-    margin-bottom: 56px;
     grid-column: 1 / -1;
-    margin-bottom: 56px;
   }
 }
 
@@ -97,8 +94,8 @@
   grid-column: 1 / -1;
 
   @include on-mobile {
-    gap: 32px;
     flex-direction: column;
+    gap: 32px;
   }
 }
 
@@ -128,22 +125,18 @@
 
   &__image {
     position: absolute;
-    bottom: -170px;
-    right: -130px;
-    width: 110%;
-    height: auto;
-    object-fit: contain;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display: block;
-    transition: all 0.2s ease;
-    z-index: 2;
+    top: 45px;
+    left: 40px;
 
-    @include on-mobile {
-      bottom: -250px;
-      right: -190px;
-    }
+    height: auto;
+    width: auto;
+
+    max-height: 130%;
+    max-width: none;
+
+    object-fit: contain;
+    pointer-events: none;
+    transition: transform 0.25s ease;
 
     &:hover {
       transform: scale(110%);
@@ -162,22 +155,18 @@
 
   &__image {
     position: absolute;
-    bottom: -270px;
-    right: -190px;
-    width: 155%;
-    height: auto;
-    object-fit: contain;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display: block;
-    transition: all 0.2s ease;
-    z-index: 2;
+    top: 45px;
+    left: 40px;
 
-    @include on-mobile {
-      bottom: -420px;
-      right: -370px;
-    }
+    height: auto;
+    width: auto;
+
+    max-height: 130%;
+    max-width: none;
+
+    object-fit: contain;
+    pointer-events: none;
+    transition: transform 0.25s ease;
 
     &:hover {
       transform: scale(110%);
@@ -196,22 +185,18 @@
 
   &__image {
     position: absolute;
-    bottom: -10px;
-    right: -230px;
-    width: 155%;
-    height: auto;
-    object-fit: contain;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    display: block;
-    transition: all 0.2s ease;
-    z-index: 2;
+    top: 45px;
+    left: 40px;
 
-    @include on-mobile {
-      bottom: -30px;
-      right: -425px;
-    }
+    height: auto;
+    width: auto;
+
+    max-height: 130%;
+    max-width: none;
+
+    object-fit: contain;
+    pointer-events: none;
+    transition: transform 0.25s ease;
 
     &:hover {
       transform: scale(110%);
@@ -219,31 +204,24 @@
   }
 }
 
-.backgroundPhones {
+.backgroundPhones,
+.backgroundTablets,
+.backgroundAccessories {
   position: relative;
-  background-color: #6d6474;
-  top: 0;
-  left: 0;
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   margin-bottom: 24px;
+}
+
+.backgroundPhones {
+  background-color: #6d6474;
 }
 
 .backgroundTablets {
-  position: relative;
   background-color: #8d8d92;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  margin-bottom: 24px;
 }
 
 .backgroundAccessories {
-  position: relative;
   background-color: #d53c51;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  margin-bottom: 24px;
 }

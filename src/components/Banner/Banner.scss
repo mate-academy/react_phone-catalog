@@ -5,46 +5,50 @@
   margin: 20px auto;
 }
 
-/* wrapper містить slides + бічні панелі */
 .slides-wrapper {
   position: relative;
   display: flex;
-  align-items: stretch; /* щоб side-panel розтягувалась на всю висоту slides */
   width: 100%;
-  height: 400px; /* фіксована висота банера */
-  overflow: visible; /* панелі можуть виходити за межі, якщо потрібно */
+
+  aspect-ratio: 16 / 6;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* бічна панель — займає висоту банера, фіксована ширина */
 .side-panel {
-  width: 64px; /* ширина панелі по боках */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  cursor: pointer;
+  user-select: none;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent; /* можна зробити напівпрозорий фон, якщо хочеш */
-  cursor: pointer;
-  z-index: 50;
-  user-select: none;
+
+  width: 48px;
+  height: 100%;
 }
 
-/* позиції панелей */
 .side-left {
-  order: 0;
-} /* зліва */
-.side-right {
-  order: 2;
-} /* справа */
+  left: 0;
+}
 
-/* slides займає центр (розгортається між панелями) */
+.side-right {
+  right: 0;
+}
+
 .slides {
   order: 1;
   position: relative;
-  flex: 1 1 auto; /* заповнює весь простір між панелями */
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   border-radius: 12px;
 }
 
-/* зображення — абсолютно поверх slides, щоб не було "дьоргання" */
 .slide {
   position: absolute;
   inset: 0;
@@ -61,7 +65,6 @@
   pointer-events: auto;
 }
 
-/* всередині бічної панелі — квадратна кнопка */
 .side-btn {
   width: 32px;
   height: 400px;
@@ -85,7 +88,6 @@
   transform: scale(1.03);
 }
 
-/* Dots */
 .dots {
   display: flex;
   justify-content: center;
@@ -120,14 +122,15 @@
   transition: width 0.05s linear;
 }
 
-/* адаптив */
 @media (max-width: 768px) {
   .slides-wrapper {
-    height: 260px;
+    aspect-ratio: 16 / 13;
   }
+
   .side-panel {
-    width: 48px;
+    display: none !important;
   }
+
   .side-btn {
     width: 36px;
     height: 36px;

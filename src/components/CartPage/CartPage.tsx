@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CartPage.module.scss';
 import { useCart } from '../../context/CartContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import closeImg from '../../../public/icons/Close.svg';
 import iconBack from '../../../public/icons/Vector (Stroke).svg';
 import { getImgUrl } from '../../utils/getImgUrl';
@@ -86,7 +86,9 @@ export const CartPage: React.FC = () => {
                   </div>
 
                   <p className={styles.price}>
-                    ${product.priceDiscount || product.priceRegular}
+                    $
+                    {(product.priceDiscount || product.priceRegular) *
+                      product.quantity}
                   </p>
                 </div>
               </div>

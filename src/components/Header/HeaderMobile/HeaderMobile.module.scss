@@ -123,21 +123,26 @@
         opacity: 1;
       }
     }
-  }
-}
 
-.badge {
-  font-weight: 700;
-  font-size: 12px;
-  position: absolute;
-  top: 17px;
-  right: 131px;
-  background-color: #eb5757;
-  color: white;
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    .iconWrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .badge {
+      font-weight: 700;
+      font-size: 12px;
+      position: absolute;
+      bottom: 17px;
+      left: 13px;
+      background-color: #eb5757;
+      color: white;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
