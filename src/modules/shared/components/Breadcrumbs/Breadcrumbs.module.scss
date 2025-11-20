@@ -4,7 +4,7 @@
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: $space-sm;
+  gap: $gap-8;
   font-size: $font-size-base;
   font-family: $fontMontSemiBold;
   margin: 24px 0;
@@ -17,7 +17,7 @@
 .breadcrumbsItem {
   display: flex;
   align-items: center;
-  gap: $space-sm;
+  gap: $gap-8;
 }
 
 .breadcrumbsLink {

@@ -12,6 +12,7 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
+  productId?: number;
 }
 
 export interface ProductDetails {

@@ -9,10 +9,10 @@
 
   display: flex;
   align-items: center;
-  gap: $space-7xl;
+  gap: $gap-32;
 
   @include on-desktop {
-    gap: $space-8xl;
+    gap: $gap-56;
   }
 
   a {
@@ -57,7 +57,7 @@
 .verticalNav .mainMenu {
   flex-direction: column;
   align-items: center;
-  gap: $space-3xl;
+  gap: $gap-16;
   a::after {
     bottom: -4px;
   }

@@ -9,7 +9,7 @@
   color: $secondary;
   font-family: $fontMontSemiBold;
   font-size: $font-size-base;
-  padding-block: $space-7xl;
+  padding-block: $gap-32;
 
   @include page-grid;
 }
@@ -30,7 +30,7 @@
 .footerNav {
   display: flex;
   flex-direction: column;
-  gap: $space-xl;
+  gap: $gap-14;
   justify-content: space-between;
 
   grid-column: 1 / span 4;
@@ -50,7 +50,7 @@
   a {
     color: $secondary;
     font-family: $fontMontBold;
-    line-height: $line-height-xs;
+    line-height: $line-height-11;
     letter-spacing: 4%;
     text-transform: uppercase;
   }

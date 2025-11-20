@@ -21,10 +21,10 @@
 }
 
 @mixin icon-paddings {
-  padding: $space-3xl;
+  padding: $gap-16;
 
   @include on-desktop {
-    padding: $space-6xl;
+    padding: $gap-24;
   }
 }
 
@@ -32,7 +32,7 @@
   --columns: 4;
 
   display: grid;
-  gap: $space-7xl $space-3xl;
+  gap: $gap-32 $gap-16;
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
@@ -133,14 +133,14 @@
 }
 
 @mixin block-margin-bottom{
-  margin-bottom: $space-8xl;
+  margin-bottom: $gap-56;
 
   @include on-tablet{
-      margin-bottom: $space-9xl;
+      margin-bottom: $gap-64;
   }
 
   @include on-desktop{
-      margin-bottom: $space-10xl;
+      margin-bottom: $gap-80;
   }
 }
 

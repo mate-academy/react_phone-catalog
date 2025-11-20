@@ -5,14 +5,23 @@
 header {
   position: sticky;
   top: 0;
-  display: flex;
-  justify-content: space-between;
   box-shadow: 0 1px 0 0 $boxShadowColors;
   box-sizing: border-box;
   width: 100%;
-  height: 48px;
   background-color: $white;
   z-index: 2;
+}
+
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $gap-8;
+  height: 48px;
+
+  @include on-tablet {
+    overflow-x: hidden;
+  }
 
   @include on-desktop {
     height: 64px;
@@ -21,12 +30,25 @@ header {
 
 .leftPart {
   display: flex;
-  gap: $space-8xl;
-  padding-right: $space-3xl;
+  align-items: center;
+  gap: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+
+  @include on-tablet {
+    gap: $gap-32;
+  }
+
+  @include on-desktop {
+    gap: $gap-48;
+  }
 }
 
 .rightPart {
   display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 0 0 auto;
 }
 
 .iconWrapper {
@@ -36,10 +58,14 @@ header {
 }
 
 .logoWrapper {
-  padding: $space-2lg $space-3xl;
+  padding: $gap-13 $gap-16;
+  width: 96px;
+  height: 48px;
 
   @include on-desktop {
-    padding: $space-4xl $space-6xl;
+    padding: $gap-18 $gap-24;
+    width: 128px;
+    height: 64px;
   }
 
   img {

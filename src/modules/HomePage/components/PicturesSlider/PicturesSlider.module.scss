@@ -8,7 +8,7 @@
 .sliderMain {
   display: flex;
   align-items: stretch;
-  gap: $space-3xl;
+  gap: $gap-16;
 }
 
 .swiperContainer {
@@ -28,7 +28,7 @@
   position: absolute;
   inset: 24px;
   display: flex;
-  gap: $space-3xl;
+  gap: $gap-16;
 }
 
 .sliderContent {
@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: $space-7xl;
+  padding: $gap-32;
   background-color: $darkGrey;
   border-radius: 24px;
 }
@@ -70,7 +70,7 @@
   border: 1px solid $icons;
   border-radius: 20px;
 
-  padding: $space-lg $space-7xl;
+  padding: $gap-12 $gap-32;
   width: fit-content;
 
   @include button-base;
@@ -142,7 +142,7 @@
 .sliderPagination {
   display: flex;
   justify-content: center;
-  gap: $space-sm;
+  gap: $gap-8;
   margin-top: 16px;
 }
 
@@ -167,11 +167,11 @@
 @media (max-width: $desktop_min_width) {
   .sliderLayout {
     inset: 16px;
-    gap: $space-lg;
+    gap: $gap-12;
   }
 
   .sliderContent {
-    padding: $space-6xl;
+    padding: $gap-24;
   }
 
   .sliderDescription,
@@ -185,7 +185,7 @@
   }
 
   .sliderButton {
-    padding: $space-sm $space-6xl;
+    padding: $gap-8 $gap-24;
   }
 }
 
@@ -214,7 +214,7 @@
 
   .sliderImageWrapper {
     flex-basis: 100%;
-    padding: $space-7xl $space-3xl;
+    padding: $gap-32 $gap-16;
     justify-content: space-between;
     align-items: center;
     text-align: center;

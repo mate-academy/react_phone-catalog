@@ -15,28 +15,30 @@ export const Header: FC = () => {
   return (
     <header>
       {isMenuOpen && <BurgerMenu onClose={closeMenu} />}
-      <div className={s.leftPart}>
-        <Link to="/">
-          <div className={s.logoWrapper}>
-            <img src={logo} alt="Logo" />
+      <div className={s.headerWrapper}>
+        <div className={s.leftPart}>
+          <Link to="/">
+            <div className={s.logoWrapper}>
+              <img src={logo} alt="Logo" />
+            </div>
+          </Link>
+          <div className={`${s.tabletVisible} ${s.menuWrapper}`}>
+            <NavBar />
           </div>
-        </Link>
-        <div className={`${s.tabletVisible} ${s.menuWrapper}`}>
-          <NavBar />
         </div>
-      </div>
-      <div className={s.rightPart}>
-        <div className={`${s.iconWrapper} ${s.tabletVisible}`}>
-          <img src={heart} alt="Favourite" />
-        </div>
-        <div className={`${s.iconWrapper} ${s.tabletVisible}`}>
-          <img src={cart} alt="Shopping Cart" />
-        </div>
-        <div
-          className={`${s.iconWrapper} ${s.mobileVisible}`}
-          onClick={() => setIsMenuOpen(true)}
-        >
-          <img src={menu} alt="Mobile Menu" />
+        <div className={s.rightPart}>
+          <div className={`${s.iconWrapper} ${s.tabletVisible}`}>
+            <img src={heart} alt="Favourite" />
+          </div>
+          <div className={`${s.iconWrapper} ${s.tabletVisible}`}>
+            <img src={cart} alt="Shopping Cart" />
+          </div>
+          <div
+            className={`${s.iconWrapper} ${s.mobileVisible}`}
+            onClick={() => setIsMenuOpen(true)}
+          >
+            <img src={menu} alt="Mobile Menu" />
+          </div>
         </div>
       </div>
     </header>

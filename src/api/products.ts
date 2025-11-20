@@ -48,3 +48,20 @@ export const getProductById = async (
 
   return product || null;
 };
+
+export const getSuggestedProducts = async (
+  number: number,
+  category: Category,
+): Promise<Product[]> => {
+  const allProducts = await getAllProducts();
+  const suggestedProducts = allProducts
+    .filter(product => product.category === category)
+    .map(product => ({
+      ...product,
+      productId: Math.random(),
+    }))
+    .sort((a, b) => a.productId - b.productId)
+    .slice(0, number);
+
+  return suggestedProducts;
+};

@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $space-3xl;
+  gap: $gap-16;
 
   @include on-tablet{
     flex-direction: row-reverse;
@@ -37,7 +37,7 @@
 
 .thumbnails {
   display: flex;
-  gap: $space-sm;
+  gap: $gap-8;
   justify-content: center;
 
   @include on-tablet{

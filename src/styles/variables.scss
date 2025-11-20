@@ -34,31 +34,32 @@ $font-size-6xl: 48px;
 $font-size-7xl: 120px;
 
 /* Line Height */
-$line-height-xs: 11px;
-$line-height-md: 15px;
-$line-height-xl: 20px;
-$line-height-2xl: 21px;
-$line-height-3xl: 26px;
-$line-height-5xl: 31px;
-$line-height-6xl: 41px;
-$line-height-7xl: 56px;
+$line-height-11: 11px;
+$line-height-15: 15px;
+$line-height-20: 20px;
+$line-height-21: 21px;
+$line-height-26: 26px;
+$line-height-31: 31px;
+$line-height-41: 41px;
+$line-height-56: 56px;
 
-/* Space */
-$space-xs: 4px;
-$space-sm: 8px;
-$space-md: 10px;
-$space-lg: 12px;
-$space-2lg: 13px;
-$space-xl: 14px;
-$space-2xl: 15px;
-$space-3xl: 16px;
-$space-4xl: 18px;
-$space-5xl: 20px;
-$space-6xl: 24px;
-$space-7xl: 32px;
-$space-8xl: 56px;
-$space-9xl: 64px;
-$space-10xl: 80px;
+/* Padding, gap */
+$gap-4: 4px;
+$gap-8: 8px;
+$gap-10: 10px;
+$gap-12: 12px;
+$gap-13: 13px;
+$gap-14: 14px;
+$gap-15: 15px;
+$gap-16: 16px;
+$gap-18: 18px;
+$gap-20: 20px;
+$gap-24: 24px;
+$gap-32: 32px;
+$gap-48: 48px;
+$gap-56: 56px;
+$gap-64: 64px;
+$gap-80: 80px;
 
 
 /* animation */

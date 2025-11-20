@@ -34,7 +34,7 @@
 body {
   font-family: $fontMont;
   size: $font-size-md;
-  line-height: $line-height-2xl;
+  line-height: $line-height-21;
   letter-spacing: 0;
   margin: 0;
   padding: 0;
@@ -54,50 +54,50 @@ main {
 h1 {
   font-family: $fontMontBold;
   font-size: $font-size-5xl;
-  line-height: $line-height-6xl;
+  line-height: $line-height-41;
   letter-spacing: -0.01em;
 
   @include on-tablet {
     font-size: $font-size-6xl;
-    line-height: $line-height-7xl;
+    line-height: $line-height-56;
   }
 }
 
 h2 {
   font-family: $fontMontBold;
   font-size: $font-size-3xl;
-  line-height: $line-height-5xl;
+  line-height: $line-height-31;
   letter-spacing: 0;
   margin-bottom: 24px;
 
   @include on-tablet {
     font-size: $font-size-5xl;
-    line-height: $line-height-6xl;
+    line-height: $line-height-41;
   }
 }
 
 h3 {
   font-family: $fontMontSemiBold;
   font-size: $font-size-2xl;
-  line-height: $line-height-3xl;
+  line-height: $line-height-26;
   letter-spacing: 0;
 
   @include on-tablet {
     font-family: $fontMontBold;
     font-size: $font-size-3xl;
-    line-height: $line-height-5xl;
+    line-height: $line-height-31;
   }
 }
 
 h4 {
   font-family: $fontMontSemiBold;
   font-size: $font-size-lg;
-  line-height: $line-height-xl;
+  line-height: $line-height-20;
   letter-spacing: 0;
 
   @include on-tablet {
     font-size: $font-size-2xl;
-    line-height: $line-height-3xl;
+    line-height: $line-height-26;
   }
 }
 

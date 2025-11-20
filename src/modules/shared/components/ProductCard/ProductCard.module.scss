@@ -8,7 +8,7 @@
 
   display: flex;
   flex-direction: column;
-  gap: $space-sm;
+  gap: $gap-8;
   justify-content: space-between;
 
   border: 1px solid $elements;
@@ -64,7 +64,7 @@
   line-height: 140%;
 
   display: flex;
-  gap: $space-sm;
+  gap: $gap-8;
 
   .oldPrice {
     font-family: $fontMont;
@@ -75,10 +75,10 @@
 }
 
 .productInfo {
-  padding-top: $space-sm;
+  padding-top: $gap-8;
   display: flex;
   flex-direction: column;
-  gap: $space-sm;
+  gap: $gap-8;
 
   border-top: 1px solid $elements;
   .infoItem {

@@ -7,7 +7,7 @@ import { Filter } from './components/Filter';
 import { useCategoryProducts } from './hooks/useCategoryProducts';
 import s from './CategoryPage.module.scss';
 import { Loader } from '../shared/components/Loader';
-import { ErrorNotification } from '../shared/components/ErrorNotification';
+import { ErrorNotice } from '../shared/components/ErrorNotice';
 import { CATEGORIES } from '../shared/components/constants';
 
 interface Props {
@@ -29,7 +29,7 @@ export const CategoryPage: FC<Props> = ({ category }) => {
         <h1>{CATEGORIES[category].title}</h1>
         {isLoading && <Loader />}
         {errorMessage && (
-          <ErrorNotification message={errorMessage} onReload={handleReload} />
+          <ErrorNotice message={errorMessage} onReload={handleReload} />
         )}
         {!isLoading && !errorMessage && (
           <>

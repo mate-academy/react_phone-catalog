@@ -5,12 +5,13 @@ import { useProductDetails } from './hooks/useProductDetails';
 import { Loader } from '../shared/components/Loader';
 import productNotFound from '../../assets/images/product-not-found.png';
 import { ProductImagesGallery } from './components/ProductImagesGallery';
-import { ErrorNotification } from '../shared/components/ErrorNotification';
+import { ErrorNotice } from '../shared/components/ErrorNotice';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { CATEGORIES } from '../shared/components/constants';
 import s from './ProductDetailsPage.module.scss';
 import { ProductButtons } from '../shared/components/ProductButtons';
 import { ProductTechSpec } from './components/ProductTechSpec';
+import { SuggestedProducts } from './components/SuggestedProducts';
 
 const normalizeString = (string: string, separator: string = '') =>
   string.replace(/\s+/g, separator).toLowerCase();
@@ -53,7 +54,7 @@ export const ProductDetailsPage: FC = () => {
 
   if (errorMessage) {
     return (
-      <ErrorNotification
+      <ErrorNotice
         message={errorMessage}
         onReload={() => window.location.reload()}
       />
@@ -81,7 +82,7 @@ export const ProductDetailsPage: FC = () => {
     <main>
       <section className={s.container}>
         <Breadcrumbs paths={paths} />
-        <h2>{product.name}</h2>
+        <h2 className={s.productDetailsH2}>{product.name}</h2>
         <div className={s.productDetailsContent}>
           <div className={s.productContentLeft}>
             <ProductImagesGallery images={product.images} alt={product.name} />
@@ -163,7 +164,7 @@ export const ProductDetailsPage: FC = () => {
             </div>
           </div>
           <div className={s.productContentBoth}>
-            <h2 className={s.blockTitle}>You may also like slider</h2>
+            <SuggestedProducts category={product.category} />
           </div>
         </div>
       </section>

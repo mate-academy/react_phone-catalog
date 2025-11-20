@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import s from './ErrorNotification.module.scss';
+import s from './ErrorNotice.module.scss';
 
 interface Props {
   message: string;
   onReload: () => void;
 }
 
-export const ErrorNotification: FC<Props> = ({ message, onReload }) => {
+export const ErrorNotice: FC<Props> = ({ message, onReload }) => {
   return (
     <div className={s.errorMessage}>
       <span>{message}</span>

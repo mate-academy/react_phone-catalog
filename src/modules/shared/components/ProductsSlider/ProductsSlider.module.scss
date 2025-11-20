@@ -13,7 +13,7 @@
 
 .sliderRow {
   display: flex;
-  gap: $space-3xl;
+  gap: $gap-16;
 }
 
 .sliderHeader {
@@ -25,7 +25,7 @@
 .sliderNavButtons {
   display: flex;
   justify-content: space-between;
-  gap: $space-sm;
+  gap: $gap-8;
 }
 
 .sliderNavButton {
