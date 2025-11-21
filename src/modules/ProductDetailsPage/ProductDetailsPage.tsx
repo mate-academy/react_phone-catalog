@@ -140,7 +140,7 @@ export const ProductDetailsPage: FC = () => {
                 <span className={s.newPrice}>${product.priceDiscount}</span>
                 <span className={s.oldPrice}>${product.priceRegular}</span>
               </div>
-              <ProductButtons />
+              <ProductButtons itemId={productId} />
               <div className={s.productTechShort}>
                 <ProductTechSpec techSpec={techSpecs.slice(1, 4)} />
               </div>

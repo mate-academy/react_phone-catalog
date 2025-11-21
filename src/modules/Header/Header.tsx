@@ -7,9 +7,11 @@ import heart from '../../assets/images/icons/heart.svg';
 import cart from '../../assets/images/icons/cart.svg';
 import { NavBar } from '../shared/components/NavBar/NavBar';
 import { BurgerMenu } from './components/BurgerMenu';
+import { useFavouriteContext } from '../../context/FavoritesContext';
 
 export const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { count } = useFavouriteContext();
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
@@ -28,7 +30,10 @@ export const Header: FC = () => {
         </div>
         <div className={s.rightPart}>
           <div className={`${s.iconWrapper} ${s.tabletVisible}`}>
-            <img src={heart} alt="Favourite" />
+            <Link to="/favorites" className={s.favWrapper}>
+              <span className={s.favCount}>{count}</span>
+              <img src={heart} alt="Favourite" />
+            </Link>
           </div>
           <div className={`${s.iconWrapper} ${s.tabletVisible}`}>
             <img src={cart} alt="Shopping Cart" />

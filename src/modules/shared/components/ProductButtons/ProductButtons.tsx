@@ -1,7 +1,15 @@
+import { FC } from 'react';
 import s from './ProductButtons.module.scss';
+import { useFavouriteContext } from '../../../../context/FavoritesContext';
 
-export const ProductButtons = () => {
-  const inFav = false;
+interface Props {
+  itemId: string;
+}
+
+export const ProductButtons: FC<Props> = ({ itemId }) => {
+  const { isFavorite, toggle } = useFavouriteContext();
+
+  const inFav = isFavorite(itemId);
 
   return (
     <div className={s.productButtons}>
@@ -11,6 +19,7 @@ export const ProductButtons = () => {
       <button
         className={inFav ? `${s.addToFav} ${s.inFav}` : `${s.addToFav}`}
         type="button"
+        onClick={() => toggle(itemId)}
       />
     </div>
   );

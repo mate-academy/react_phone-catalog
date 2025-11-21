@@ -58,7 +58,7 @@ export const ProductCard: FC<Props> = ({ product, priceMode = 'full' }) => {
           <span>{product.ram}</span>
         </p>
       </div>
-      <ProductButtons />
+      <ProductButtons itemId={product.itemId} />
     </article>
   );
 };
