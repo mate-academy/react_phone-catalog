@@ -7,7 +7,7 @@ export const siteLanguages = {
   en: 'EN',
 };
 
-export const productsListMenu = {
+export const PRODUCT_LIST_MENU = {
   sortBy: ['newest', 'alphabetically', 'cheapest'],
   itemsOnPage: ['4', '8', '16', 'all'],
 };

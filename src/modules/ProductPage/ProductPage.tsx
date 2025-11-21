@@ -3,8 +3,11 @@ import { useTranslation } from 'react-i18next';
 import Breadcrumbs from '../shared/Breadcrumbs/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
 import ProductList from './ProductList';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ProductCatalogContext } from '../../ProductsContext';
+import ProductListMenu from './ProductListMenu';
+import { SelectOption } from '../../types/SelectOptions';
+import { PRODUCT_LIST_MENU } from '../constants';
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
@@ -20,6 +23,37 @@ export const ProductPage: React.FC = () => {
     product => product.category === (title || ''),
   );
 
+  const sortByOptions: SelectOption[] = PRODUCT_LIST_MENU.sortBy.map(value => ({
+    value,
+    label: t(`products_page.menu_sort_values.${value}`),
+  }));
+  const itemsOnPageOptions: SelectOption[] = PRODUCT_LIST_MENU.itemsOnPage.map(
+    value => {
+      return {
+        value,
+        label: Number.isInteger(Number(value))
+          ? value
+          : t(`products_page.menu_items_values.${value}`),
+      };
+    },
+  );
+  const [sortValue, setSortValue] = useState<SelectOption>(sortByOptions[0]);
+  const [itemsOnPageValue, setItemsOnPageValue] = useState<SelectOption>(
+    itemsOnPageOptions[0],
+  );
+
+  const handleSortChange = (option: SelectOption | null) => {
+    if (option) {
+      setSortValue(option);
+    }
+  };
+
+  const handleItemsOnPageChange = (option: SelectOption | null) => {
+    if (option) {
+      setItemsOnPageValue(option);
+    }
+  };
+
   return (
     <div className="container">
       <div>
@@ -28,6 +62,14 @@ export const ProductPage: React.FC = () => {
           {t(`products_page.${title}`)}
         </h1>
         <p>{modelAmount}</p>
+        <ProductListMenu
+          sortValue={sortValue}
+          itemsOnPageValue={itemsOnPageValue}
+          handleSortChange={handleSortChange}
+          handleItemsOnPageChange={handleItemsOnPageChange}
+          sortByOptions={sortByOptions}
+          itemsOnPageOptions={itemsOnPageOptions}
+        />
         <ProductList />
         {pageProducts.map(product => (
           <p key={product.name}>{product.name}</p>

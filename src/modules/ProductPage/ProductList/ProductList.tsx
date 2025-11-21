@@ -1,6 +1,6 @@
 import styles from './ProductList.module.scss';
 
-const ProductsList = () => {
+const ProductsList: React.FC = () => {
   return <div className={styles.productsList}></div>;
 };
 

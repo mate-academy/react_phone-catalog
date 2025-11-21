@@ -1,4 +1,4 @@
-@use './../../scss/main.scss' as *;
+@use './../../../scss/main.scss' as *;
 
 .listMenu {
   @include page-grid;
@@ -28,5 +28,13 @@
     text-overflow: ellipsis;
 
     @extend %small-text;
+  }
+
+  &_marginTop {
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
   }
 }
