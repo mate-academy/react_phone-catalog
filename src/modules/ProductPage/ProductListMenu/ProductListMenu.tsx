@@ -1,12 +1,13 @@
-import styles from './ProductsList.module.scss';
-import { useTranslation } from 'react-i18next';
+import styles from './ProductListMenu.module.scss';
 import Select from '../../shared/Select';
-import { productsListMenu } from '../../constants';
+import { useTranslation } from 'react-i18next';
 import { SelectOption } from '../../../types/SelectOptions';
+import { productsListMenu } from '../../constants';
 import { useState } from 'react';
 
-const ProductsList = () => {
+const ProductListMenu: React.FC = () => {
   const { t } = useTranslation();
+
   const sortByOptions: SelectOption[] = productsListMenu.sortBy.map(value => ({
     value,
     label: t(`products_page.menu_sort_values.${value}`),
@@ -25,44 +26,42 @@ const ProductsList = () => {
   const [itemsOnPageValue, setItemsOnPageValue] = useState<SelectOption>(
     itemsOnPageOptions[0],
   );
+
   const handleSortChange = (option: SelectOption | null) => {
     if (option) {
       setSortValue(option);
-    } else {
-      setSortValue(sortByOptions[0]);
     }
   };
 
   const handleItemsOnPageChange = (option: SelectOption | null) => {
     if (option) {
       setItemsOnPageValue(option);
-    } else {
-      setItemsOnPageValue(sortByOptions[0]);
     }
   };
 
   return (
-    <div className={styles.productsList}>
-      <menu className={styles.listMenu}>
-        <li className={styles.listMenu__sort}>
-          <span>{t('products_page.menu_sort')}</span>
-          <Select
-            value={sortValue}
-            options={sortByOptions}
-            onChange={handleSortChange}
-          />
-        </li>
-        <li className={styles.listMenu__items}>
-          <span>{t('products_page.menu_items')}</span>
-          <Select
-            value={itemsOnPageValue}
-            options={itemsOnPageOptions}
-            onChange={handleItemsOnPageChange}
-          />
-        </li>
-      </menu>
-    </div>
+    <menu className={styles.listMenu}>
+      <li className={styles.listMenu__sort}>
+        <span className={styles.listMenu__title}>
+          {t('products_page.menu_sort')}
+        </span>
+        <Select
+          value={sortValue}
+          options={sortByOptions}
+          onChange={handleSortChange}
+        />
+      </li>
+      <li className={styles.listMenu__items}>
+        <span className={styles.listMenu__title}>
+          {t('products_page.menu_items')}
+        </span>
+        <Select
+          value={itemsOnPageValue}
+          options={itemsOnPageOptions}
+          onChange={handleItemsOnPageChange}
+        />
+      </li>
+    </menu>
   );
 };
-
-export default ProductsList;
+export default ProductListMenu;

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styles from './ProductCard.module.scss';
-import { Product } from '../../../types/Product';
+import { Product } from '../../../types/ProductCatalogItem';
 import { CURRENCY_SYMBOL } from '../../constants';
 import Button from '../Button';
 import Icon from '../Icon';
