@@ -12,6 +12,7 @@ import { useFavouriteContext } from '../../context/FavoritesContext';
 export const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { count } = useFavouriteContext();
+  const cartCount = 3;
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
@@ -30,13 +31,18 @@ export const Header: FC = () => {
         </div>
         <div className={s.rightPart}>
           <div className={`${s.iconWrapper} ${s.tabletVisible}`}>
-            <Link to="/favorites" className={s.favWrapper}>
-              <span className={s.favCount}>{count}</span>
+            <Link to="/favorites" className={s.linkWrapper}>
+              {count > 0 && <span className={s.iconCount}>{count}</span>}
               <img src={heart} alt="Favourite" />
             </Link>
           </div>
           <div className={`${s.iconWrapper} ${s.tabletVisible}`}>
-            <img src={cart} alt="Shopping Cart" />
+            <Link to="/cart" className={s.linkWrapper}>
+              {cartCount > 0 && (
+                <span className={s.iconCount}>{cartCount}</span>
+              )}
+              <img src={cart} alt="Shopping Cart" />
+            </Link>
           </div>
           <div
             className={`${s.iconWrapper} ${s.mobileVisible}`}

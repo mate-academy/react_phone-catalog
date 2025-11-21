@@ -5,10 +5,10 @@ import { Header } from './modules/Header';
 import { Footer } from './modules/Footer';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
-
-import './styles/main.scss';
 import { FavouritesContextProvider } from './context/FavoritesContext';
 import { FavouritesPage } from './modules/FavouritesPage';
+import { CartPage } from './modules/CartPage';
+import './styles/main.scss';
 
 export const App = () => (
   <div className="app-wrapper">
@@ -28,6 +28,7 @@ export const App = () => (
           />
           <Route path="/product/:productId" element={<ProductDetailsPage />} />
           <Route path="/favorites" element={<FavouritesPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 

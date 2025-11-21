@@ -12,6 +12,7 @@ import s from './ProductDetailsPage.module.scss';
 import { ProductButtons } from '../shared/components/ProductButtons';
 import { ProductTechSpec } from './components/ProductTechSpec';
 import { SuggestedProducts } from './components/SuggestedProducts';
+import { GoBackLink } from '../shared/components/GoBackLink';
 
 const normalizeString = (string: string, separator: string = '') =>
   string.replace(/\s+/g, separator).toLowerCase();
@@ -82,6 +83,7 @@ export const ProductDetailsPage: FC = () => {
     <main>
       <section className={s.container}>
         <Breadcrumbs paths={paths} />
+        <GoBackLink />
         <h2 className={s.productDetailsH2}>{product.name}</h2>
         <div className={s.productDetailsContent}>
           <div className={s.productContentLeft}>
