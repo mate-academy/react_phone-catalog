@@ -34,20 +34,22 @@ export const ProductCatalogProvider = ({
   useEffect(() => {
     setLoading(true);
     getProducts()
-      .then(products => {
-        setProducts(products);
+      .then(loadedProducts => {
+        setProducts(loadedProducts);
         const loadedCategories: Categories = {};
 
         for (const categoryName of HOME_CATEGORIES_LIST) {
-          loadedCategories[categoryName] = products.filter(
+          loadedCategories[categoryName] = loadedProducts.filter(
             product => product.category === categoryName,
           ).length;
         }
+
         setCategories(loadedCategories);
         setLoaded(true);
       })
-      .catch(error => {
-        console.error(error);
+      .catch(fetchError => {
+        // eslint-disable-next-line no-console
+        console.error(fetchError);
         setError(true);
       })
       .finally(() => setLoading(false));
