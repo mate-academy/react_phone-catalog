@@ -1,6 +1,10 @@
 import { ProductCatalogItem } from '../types/ProductCatalogItem';
 
-type ProductSortTypes = 'newest' | 'alphabetically' | 'cheapest' | 'hotPrice';
+export type ProductSortTypes =
+  | 'newest'
+  | 'alphabetically'
+  | 'cheapest'
+  | 'hotPrice';
 
 export const getSortedProducts = (
   products: ProductCatalogItem[],
@@ -13,12 +17,12 @@ export const getSortedProducts = (
       );
     case 'alphabetically':
       return products.sort((a: ProductCatalogItem, b: ProductCatalogItem) =>
-        b.name.localeCompare(a.name),
+        a.name.localeCompare(b.name),
       );
     case 'cheapest':
       return products.sort(
         (a: ProductCatalogItem, b: ProductCatalogItem) =>
-          b.fullPrice - a.fullPrice,
+          a.fullPrice - b.fullPrice,
       );
     case 'hotPrice':
       return products.sort(

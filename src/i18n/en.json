@@ -28,7 +28,8 @@
     "phones": "Mobile phones",
     "tablets": "Tablets",
     "accessories": "Accessories",
-    "models": "models",
+    "models": "{{count}} models",
+    "models_one": "1 model",
     "menu_sort": "Sort by",
     "menu_sort_values": {
       "newest": "Newest",

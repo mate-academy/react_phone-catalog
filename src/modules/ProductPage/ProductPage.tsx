@@ -8,6 +8,7 @@ import { ProductCatalogContext } from '../../ProductsContext';
 import ProductListMenu from './ProductListMenu';
 import { SelectOption } from '../../types/SelectOptions';
 import { PRODUCT_LIST_MENU } from '../constants';
+import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
@@ -19,14 +20,11 @@ export const ProductPage: React.FC = () => {
       : location.pathname.split('/').at(-1);
   const count = title ? categories[title] : 0;
   const modelAmount = t('products_page.models', { count });
-  const pageProducts = products.filter(
-    product => product.category === (title || ''),
-  );
-
   const sortByOptions: SelectOption[] = PRODUCT_LIST_MENU.sortBy.map(value => ({
     value,
     label: t(`products_page.menu_sort_values.${value}`),
   }));
+
   const itemsOnPageOptions: SelectOption[] = PRODUCT_LIST_MENU.itemsOnPage.map(
     value => {
       return {
@@ -54,6 +52,11 @@ export const ProductPage: React.FC = () => {
     }
   };
 
+  const pageProducts = getSortedProducts(
+    products.filter(product => product.category === (title || '')),
+    sortValue.value as ProductSortTypes,
+  );
+
   return (
     <div className="container">
       <div>
@@ -72,7 +75,9 @@ export const ProductPage: React.FC = () => {
         />
         <ProductList />
         {pageProducts.map(product => (
-          <p key={product.name}>{product.name}</p>
+          <p key={product.name}>
+            {product.name} {product.year} {product.fullPrice}
+          </p>
         ))}
       </div>
     </div>

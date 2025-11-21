@@ -47,4 +47,5 @@ const ProductListMenu: React.FC<Props> = ({
     </menu>
   );
 };
+
 export default ProductListMenu;
