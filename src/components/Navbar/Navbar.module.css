@@ -170,6 +170,148 @@
   }
 }
 
+/* ------------------ MOBILE TINY (<= 320px) ------------------ */
+
+@media (max-width: 20rem) {
+  /* garante hamburger visível */
+  .hamburger {
+    display: inline-flex;
+    z-index: 10001;
+  }
+
+  /* manter apenas a logo visível dentro do leftGroup */
+  .leftGroup > .logo {
+    display: inline-block;
+  }
+
+  /* ocultar nav completo (centro) */
+  .menu,
+  .menu ul,
+  .navCenter,
+  .menuList,
+  .linkContainer,
+  .navLink {
+    display: none !important;
+  }
+
+  /* ocultar ícones à direita */
+  .containerIcon,
+  .iconCart,
+  .iconFavourites {
+    display: none !important;
+  }
+
+  /* quando o menu mobile estiver aberto (via classe ou aria-hidden), exibir o painel */
+  .menuOpen,
+  .menu[aria-hidden='false'] {
+    display: block !important;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ------------------ MOBILE / TABLET (<= 640px) ------------------ */
+@media (max-width: 40rem) {
+  /* 640px */
+  .navbar {
+    padding: 12px;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .logo {
+    height: 1.5rem;
+    width: 4rem;
+    margin: 8px 12px;
+  }
+
+  .hamburger {
+    display: inline-flex;
+  }
+
+  /* menu mobile padrão (fechado) permanece; .menuOpen exibirá o menu em cima */
+  .menu {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    display: none;
+  }
+
+  .menuOpen,
+  .menu[aria-hidden='false'] {
+    display: block;
+  }
+
+  .menu ul {
+    gap: 12px;
+  }
+
+  .leftGroup {
+    gap: 1rem;
+  }
+  .containerIcon {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+/* ------------------ DESKTOP MÉDIO (641px — 1199px) ------------------ */
+@media (min-width: 40.06rem) and (max-width: 74.93rem) {
+  /* 641px - 1199px */
+  .navbar {
+    justify-content: flex-start;
+    gap: 1.5rem;
+    padding: 8px 12px;
+  }
+
+  .logo {
+    height: 2rem;
+    width: 5rem;
+    margin: 16px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    background: transparent;
+    box-shadow: none;
+    display: block;
+  }
+
+  .menu ul {
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .containerIcon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+  }
+
+  .leftGroup {
+    gap: 1.25rem;
+  }
+
+  .linkContainer::after {
+    bottom: -28px;
+  }
+}
+
 /* ------------------ DESKTOP (≥1200px) ------------------ */
 @media (min-width: 1200px) {
   .logo {

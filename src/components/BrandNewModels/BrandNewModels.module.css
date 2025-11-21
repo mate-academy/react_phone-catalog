@@ -1,102 +1,216 @@
-.sectionBrandNewModels {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+:root {
+  --card-w: 320px;
+  --card-h: 506px;
+  --img-w: 208px;
+  --img-h: 196px;
+  --gap: 8px;
+  --muted: #89939a;
+  --accent: #313237;
 }
 
+/* base */
 .container {
-  display: block;
-  align-items: center;
-  justify-content: center;
-  width: 272px;
-  height: 506px;
-  background-color: #fff;
+  width: var(--card-w);
+  height: var(--card-h);
+  box-sizing: border-box;
+  background: #fff;
   border: 1px solid #e2e6e9;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .containerImg {
-  width: 208px;
-  height: 196px;
-  margin: 20px auto 0;
-  background-image: url('../../assets/img/bnm1.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  width: var(--img-w);
+  height: var(--img-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 6px;
+  margin: 20px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
 }
 
-.containerPrice {
-  width: 208px;
-  height: auto;
-  margin: -6px auto;
+.imgPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #eee 25%, #f7f7f7 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+.title {
+  width: 100%;
+  max-width: var(--img-w);
+  margin: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+  text-align: left;
+  line-height: 1.2;
+}
+
+/* preços lado a lado à esquerda */
+.priceContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  width: 65%;
+  margin-bottom: 1rem;
 }
 
 .price {
-  width: 208px;
-  height: auto;
+  font-size: 1.3rem;
   font-weight: 700;
-  font-style: normal;
-  font-size: 24px;
+  color: #111;
+  margin: 0;
+}
+
+.priceOff {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--muted); /* visível em fundo branco */
+  margin: 0;
+  text-decoration: line-through;
 }
 
 .separator {
-  margin: -12px auto 16px;
-  width: 208px;
+  width: var(--img-w);
   height: 1px;
   background: #e0e0e0;
-}
-
-.containerBlock {
-  width: 272px;
-  display: block;
+  margin-bottom: 1rem;
   box-sizing: border-box;
 }
 
-.containerScreen {
-  margin: 0 1px 10px 30px;
-  width: 208px;
+.specRow {
+  width: 100%;
+  max-width: var(--img-w);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.specLabel {
+  text-align: left;
+}
+
+.specValue {
+  text-align: right;
+}
+
+.buttonRow {
+  width: 100%;
+  max-width: var(--img-w);
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.screen {
-  font-weight: 400;
-  font-size: 12px;
-  color: #89939a;
-}
-
-.screenBold {
-  font-weight: 600;
-  font-size: 12px;
-  color: #313237;
-}
-
-.containerButton {
-  margin: 16px 1px 0 30px;
-  width: 208px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  gap: 8px;
+  margin: 20px;
 }
 
 .addButton {
-  width: 160px;
-  height: 40px;
-  font-size: 1rem;
-  border: none;
+  flex: 1 1 auto;
+  min-height: 40px;
+  padding: 0 8px;
+  font-size: 0.95rem;
   color: #fff;
-  background-color: #313237;
-  cursor: pointer;
+  background-color: #111827;
 }
 
-.addButton:hover {
-  background-color: #535252;
-}
-
-.addFavourites {
+.favButton {
   width: 40px;
   height: 40px;
+  flex: 0 0 40px;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   cursor: pointer;
   background-image: url('../../assets/img/favourites.png');
+  background-color: transparent;
+}
+
+/* =====≤640px===== */
+@media (max-width: 640px) {
+  :root {
+    --card-w: 280px;
+    --card-h: 480px;
+    --img-w: 188px;
+    --img-h: 176px;
+    --gap: 6px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .priceContainer {
+    width: 65%; /* ocupa toda a largura do card */
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .price {
+    font-size: 1.1rem;
+  }
+
+  .priceOff {
+    font-size: 1.05rem;
+  }
+
+  .buttonRow {
+    gap: 6px;
+    margin: 16px;
+  }
+}
+
+/* =====≤320px===== */
+@media (max-width: 320px) {
+  :root {
+    --card-w: 266px;
+    --card-h: 460px;
+    --img-w: 176px;
+    --img-h: 164px;
+    --gap: 6px;
+  }
+
+  .title {
+    font-size: 0.85rem;
+    margin: 0.5rem;
+  }
+
+  .priceContainer {
+    width: 65%;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap; /* evita quebrar o layout; itens seguem para a linha de baixo */
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+
+  .priceOff {
+    font-size: 0.95rem;
+  }
+
+  .buttonRow {
+    margin: 12px;
+    gap: 6px;
+  }
 }

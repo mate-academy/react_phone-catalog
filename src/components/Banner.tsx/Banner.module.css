@@ -1,19 +1,109 @@
-.container {
-  background-image: url('../../assets/img/Banner-Home.png');
-  background-size: cover;
-  background-position: center;
+:root {
+  --banner-h-default: 25rem; /* 400px */
+  --banner-h-lg: 32.5rem; /* 520px */
+  --banner-h-md: 20rem; /* 320px */
+  --banner-w-max: 80rem; /* 1280px */
+  --side-w-default: 2.5rem; /* 40px */
+  --side-w-lg: 3rem; /* 48px */
+}
+
+/* wrapper principal do banner (titulo + banner + chevrons) */
+.containerBlock {
   width: 100%;
-  max-width: 1024px;
-  height: 400px;
+  box-sizing: border-box;
+  padding: 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* flex que contém left - banner - right */
+.containerFlex {
+  display: flex;
+  align-items: stretch; /* faz .side ter a mesma altura do .containerImg */
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* imagem central do banner */
+.containerImg {
+  background-image: url('../../assets/img/Banner-Home.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: var(--banner-w-max);
+  height: var(--banner-h-default);
+  display: flex; /* permite centralizar conteúdo interno se tiver */
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* botões laterais: não definimos height, o flex vai esticar */
+.side {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: var(--side-w-default);
+  box-sizing: border-box;
 }
 
-@media (max-width: 640px) {
-  .container {
+/* <= 640px: banner reduz */
+@media (max-width: 40rem) {
+  /* 640px */
+  .containerImg {
+    width: 20rem;
+    height: var(--banner-h-md);
+    border-radius: 0.38rem;
+  }
+  .containerFlex {
+    padding: 0 0.75rem 16px;
+  }
+}
+
+/* desktop médio: 641 - 1200 */
+@media (min-width: 640px) and (max-width: 75rem) {
+  .containerImg {
+    width: 100%;
+  }
+  .side {
+    width: var(--side-w-default);
+  }
+}
+
+/* desktop grande 1200+ */
+@media (min-width: 1440px) {
+  .containerImg {
+    max-width: var(--banner-w-max);
+    height: var(--banner-h-lg);
+  }
+  .side {
+    width: var(--side-w-lg);
+  }
+}
+
+/* <= 320px: forçar largura do banner para 320px (20rem) e garantir responsividade */
+@media (max-width: 20rem) {
+  /* 320px */
+  .containerBlock,
+  .containerFlex,
+  .containerImg {
+    width: 20rem; /* 320px */
+    max-width: 100%;
     background-image: url('../../assets/img/Banner_mobile.png');
-    width: 320px;
-    height: 320px;
+    background-image: no-repeat;
+  }
+
+  /* se os chevrons estiverem presentes, esconda-os nesse breakpoint */
+  .side {
+    display: none;
+    width: 0;
+    height: 0;
   }
 }

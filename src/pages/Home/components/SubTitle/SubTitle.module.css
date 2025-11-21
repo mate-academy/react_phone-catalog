@@ -1,21 +1,29 @@
 .SubTitle {
+  display: block;
+  max-width: 1150px; /* alinha com o container principal */
+  margin: 2rem 10rem; /* centra horizontalmente */
+  padding: 0 1rem; /* espaço lateral fluido em telas pequenas */
   font-weight: 700;
   color: #313237;
   line-height: 1.1;
-  margin: 2rem 11rem;
+  font-size: 1.5rem; /* tamanho base para desktop */
+  text-align: left; /* alinhamento padrão */
+  box-sizing: border-box;
 }
 
-/* Breakpoint médio (até 1024px) */
-@media (max-width: var(--breakpoint-md)) {
+/* médio: ajustar espaçamento e tamanho */
+@media (max-width: 1024px) {
   .SubTitle {
-    margin: 2rem 6rem;
+    margin: 1.75rem;
+    font-size: 1.35rem;
   }
 }
 
-/* Breakpoint pequeno (até 600px) */
-@media (max-width: var(--breakpoint-sm)) {
+/* pequeno: centralizar e reduzir tamanho para melhor leitura */
+@media (max-width: 600px) {
   .SubTitle {
-    margin: 1.5rem 2rem;
-    font-size: 1rem; /* opcional: ajuste para melhor leitura em telas pequenas */
+    margin: 1rem 0;
+    font-size: 1.05rem;
+    text-align: left;
   }
 }

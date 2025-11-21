@@ -1,2 +1,1 @@
-export { BrandNewModels } from './BrandNewModels';
-export type { BrandNewModelsProps } from './BrandNewModels';
+export { default as BrandNewModels } from './BrandNewModels';

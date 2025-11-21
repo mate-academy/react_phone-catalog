@@ -1,3 +1,12 @@
+/* grid que envolve os ShopCategory */
+.brandGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* cards padrão (>=640px): lado a lado */
 .ShopCategory {
   width: 368px;
   height: 443px;
@@ -7,10 +16,72 @@
   flex-direction: column;
 }
 
+/* imagem */
 .imageShop {
   width: 368px;
   height: 368px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+/* textos */
+.textContent {
+  padding: 1rem;
+}
+
+.textContent h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #0f0f0f;
+}
+
+.textContent p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+/* ------------------ BREAKPOINTS ------------------ */
+
+/* até 320px: cards em coluna (vertical) */
+@media (max-width: 20rem) {
+  /* 320px */
+  .brandGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ShopCategory {
+    width: 100%; /* ocupar largura total */
+    max-width: 320px;
+  }
+
+  .imageShop {
+    width: 100%;
+    height: auto; /* opcional: ajusta altura proporcional */
+    aspect-ratio: 1 / 1; /* mantém quadrado */
+  }
+}
+
+/* entre 321px e 640px: horizontal */
+@media (min-width: 20.06rem) and (max-width: 40rem) {
+  .brandGrid {
+    flex-direction: row;
+  }
+}
+
+/* entre 641px e 1200px: horizontal */
+@media (min-width: 40.06rem) and (max-width: 75rem) {
+  .brandGrid {
+    flex-direction: row;
+  }
+}
+
+/* 1200px+: horizontal */
+@media (min-width: 75rem) {
+  .brandGrid {
+    flex-direction: row;
+  }
 }

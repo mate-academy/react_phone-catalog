@@ -1,313 +1,72 @@
-/* wrapper do banner com botões laterais */
-.wrapperHome {
-  width: 100%;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 var(--side-padding);
-  box-sizing: border-box;
-}
+/* base */
 
-.sectionBanner {
-  display: block;
-  box-sizing: border-box;
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  justify-content: flex-start;
   width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
   max-width: 1440px;
-  margin: 2rem 1rem;
-}
-
-.containerBanner {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 0.25rem;
-}
-
-/* tornar wrappers fluidos */
-.containerDots,
-.containerBrandFlex,
-.sectionBrandNewModels {
-  width: 100%;
-  max-width: var(--container-max);
-  margin: 12px auto;
-  box-sizing: border-box;
-  padding: 0 0.5rem;
-}
-
-/* cards responsivos: largura fluida com max-width preservando desktop */
-.brandNewModels {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--gap);
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 0.5rem;
-}
-
-.container,
-.containerBlock {
-  width: 100%;
-  max-width: var(--card-width);
-  margin: 0 auto 1rem;
-  box-sizing: border-box;
-  height: auto; /* evita overflow em mobile */
-}
-
-/* imagens: usar max-width + aspect-ratio para manter proporção */
-.containerImgSilver,
-.containerImgPurple,
-.containerImgGold,
-.containerImgRed,
-.containerHotPrice1 {
-  width: 100%;
-  max-width: var(--card-img-width);
-  margin: 1rem auto 0;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: block;
-  aspect-ratio: 208 / 196;
-  box-sizing: border-box;
-}
-
-/* ajustar caso gold tenha outra proporção */
-.containerImgGold {
-  aspect-ratio: 208 / 175;
-  width: 208px;
-  height: 175px;
-  margin: 24px auto 0;
-  background-image: url('../../assets/img/Phone_Gold.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: block;
-}
-
-/* textos e blocos internos fluem com max-width */
-.containerTitle,
-.containerPrice,
-.price,
-.separator,
-.priceOff {
-  width: 100%;
-  max-width: var(--card-img-width);
-  box-sizing: border-box;
-  padding: 0 0.25rem;
-  word-wrap: break-word;
-  white-space: normal;
-}
-
-/* remover margens fixas que deslocam itens em telas pequenas */
-
-.containerButton {
-  margin: 8px 0 0;
-  width: 100%;
-  max-width: var(--card-img-width);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  box-sizing: border-box;
-}
-
-/* botões com alvo de toque mínimo e largura adaptável */
-.addButton {
-  min-width: 44px;
-  min-height: 40px;
-  max-width: 100%;
-  width: auto;
-  padding: 0 0.75rem;
-  box-sizing: border-box;
-}
-
-/* favoritos como ícone adaptável */
-.addFavourites {
-  width: 40px;
-  height: 40px;
-  background-size: contain;
-}
-
-/* figura e imagens internas */
-.figure {
-  width: 100%;
-}
-
-.image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-/* corrige overflow de shopcategory margin negativo */
-.containerShopFlex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin: 20px 0;
-  padding: 0 0.5rem;
-  box-sizing: border-box;
-}
-
-/* BRAND NEW MODELS */
-.containerBrandFlex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1168px;
-  gap: 16px;
-  margin-bottom: 50px;
-}
-
-.container {
-  display: block;
-  align-items: center;
-  justify-content: center;
-  width: 272px;
-  height: 506px;
-  background-color: #fff;
-  border: 1px solid #e2e6e9;
-}
-
-.containerImgSilver {
-  width: 208px;
-  height: 196px;
-  margin: 16px auto 0;
-  background-image: url('../../assets/img/Phone_Silver.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: block;
-}
-
-.containerImgPurple {
-  width: 208px;
-  height: 196px;
-  margin: 24px auto 0;
-  background-image: url('../../assets/img/Phone_Purple.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: block;
-}
-
-.containerImgRed {
-  width: 208px;
-  height: 196px;
-  margin: 24px auto 0;
-  background-image: url('../../assets/img/Phone_Red.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: block;
+  margin: 0 auto;
 }
 
 .containerTitle {
-  width: 208px;
-  height: auto;
-  font-weight: 100;
-  font-style: normal;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: 0%;
-  margin: 16px auto;
-}
-
-.containerPrice {
-  width: 208px;
-  height: 58px;
-  margin: -6px auto;
-}
-
-.price {
-  width: 208px;
-  height: 58px;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 24px;
-}
-
-.separator {
-  margin: -12px auto 16px;
-  width: 208px;
-  height: 1px;
-  background: #e0e0e0;
-}
-
-.containerBlock {
-  width: 272px;
+  width: 100%;
   display: block;
+  align-self: flex-start;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 1.2rem; /* mantém 14px se desejar: 0.875rem */
+}
+
+.TitleBanner {
+  font-size: 1.8rem;
+}
+
+.brandGrid {
+  display: grid; /* mude para grid para controlar colunas */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
   box-sizing: border-box;
 }
 
-.containerScreen {
-  margin: 0 1px 10px 30px;
-  width: clamp(160px, 12.5vw, var(--card-img-width));
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  gap: 0.5rem;
+/* =====≤640px===== */
+@media (max-width: 640px) {
+  .brandSection {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .containerTitle {
+    padding: 0 1rem;
+    font-size: 0.87rem; /* ~14px */
+  }
+
+  .brandGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
 }
 
-.screen {
-  font-weight: 400;
-  font-size: 12px;
-  color: #89939a;
-}
+/* =====≤320px===== */
+@media (max-width: 320px) {
+  .brandSection {
+    padding: 12px;
+    gap: 12px;
+  }
 
-.screenBold {
-  font-weight: 600;
-  font-size: 12px;
-  color: #313237;
-}
+  .containerTitle {
+    padding: 0 0.75rem;
+    font-size: 0.85rem;
+  }
 
-.addButton:hover {
-  background-color: #535252;
-}
-
-.caption {
-  margin-top: 8px;
-  text-align: center;
-}
-
-.Mobile {
-  background-image: url('./../../assets/img/Mobile.png');
-}
-
-.Tablets {
-  background-image: url('./../../assets/img/Tablets.png');
-}
-
-/* HOT PRICES */
-
-.priceOff {
-  margin: 0 8px;
-  width: 208px;
-  height: 58px;
-  text-decoration: line-through;
-  color: #89939a;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 24px;
-}
-
-.containerHotPrice1 {
-  width: 208px;
-  height: 196px;
-  margin: 10px auto 0;
-  background-image: url('../../assets/img/HotPrice1.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  display: block;
-}
-
-.sectionBrandNewModels {
-  display: block;
-  align-items: center;
-  justify-content: center;
-  margin: 0 10.7rem;
+  .brandGrid {
+    grid-template-columns: 1fr; /* uma coluna */
+    gap: 0.75rem;
+  }
 }

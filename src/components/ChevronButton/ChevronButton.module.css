@@ -1,6 +1,8 @@
+/* chevron button base */
 .container {
   width: 32px;
-  height: 400px;
+  height: 37rem; /* tamanho desejado conforme especificado */
+  max-height: 520px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -11,18 +13,35 @@
   box-sizing: border-box;
 }
 
-.icon {
-  display: block;
-  color: #313237;
-}
-
-.rotate {
-  transform: rotate(180deg);
-}
-
-/* Responsividade: esconder no mobile */
-@media (max-width: 640px) {
+/* 320px ou menos: esconder chevrons */
+@media (max-width: 20rem) {
+  /* 320px */
   .container {
     display: none;
+  }
+}
+
+/* 640px e 1200 / 1200+ usam a mesma altura (37rem) — reforço opcional */
+@media (max-width: 40rem) {
+  /* <=640px */
+  .container {
+    height: 37rem;
+    max-height: 520px;
+  }
+}
+
+@media (max-width: 74.97rem) {
+  /* 641px */
+  .container {
+    height: 12rem;
+    max-height: 520px;
+  }
+}
+
+@media (min-width: 75rem) {
+  /* 1200px+ */
+  .container {
+    height: 31rem;
+    max-height: 520px;
   }
 }

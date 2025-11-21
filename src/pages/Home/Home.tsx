@@ -1,504 +1,203 @@
+// src/pages/Home/Home.tsx
+import React, { useState } from 'react';
 import styles from './Home.module.css';
-import Title from './components/Title';
-import ChevronButton from '../../components/ChevronButton';
 import Banner from '../../components/Banner.tsx';
-import IndicatorDots from '../../components/IndicatorDots/IndicatorDots';
-import { BrandNewModels } from '../../components/BrandNewModels';
-import SubTitle from './components/SubTitle';
-import { Card as ShopCategory } from '../../components/ShopCategory/ShopCategory';
+import Title from '../../components/Title';
+import ShopCategory from '../../components/ShopCategory/ShopCategory';
+import phonesImg from '../../assets/img/shop-phones .png';
+import tabletsImg from '../../assets/img/shop-tablets.png';
+import accessoriesImg from '../../assets/img/shop-accessories.png';
 
-const Home = () => {
+import { BrandNewModels } from '../../components/BrandNewModels';
+import { products } from '../../data/products';
+import { hotPrices } from '../../data/hotPrice';
+
+export type TitleSections = {
+  title?: string;
+  titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  'data-testid'?: string;
+  className?: string;
+};
+
+type SectionWithTitleProps = {
+  title?: string;
+  titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  sectionClassName?: string;
+  titleClassName?: string;
+  titleTestId?: string;
+  sectionTestId?: string;
+  ariaLabel?: string;
+  children?: React.ReactNode;
+};
+
+const TitleSection: React.FC<TitleSections> = ({
+  title = '',
+  titleLevel = 1,
+  'data-testid': dataTestId,
+  className = '',
+}) => {
+  if (!title) {
+    return null;
+  }
+
+  return (
+    <div
+      className={`${styles.containerTitle} ${className}`}
+      data-testid={dataTestId}
+    >
+      <Title text={title} level={titleLevel} />
+    </div>
+  );
+};
+
+const SectionWithTitle: React.FC<SectionWithTitleProps> = ({
+  title,
+  titleLevel = 1,
+  sectionClassName = '',
+  titleClassName = '',
+  titleTestId,
+  sectionTestId,
+  ariaLabel,
+  children,
+}) => {
+  return (
+    <section
+      className={`${styles.brandSection} ${sectionClassName}`}
+      aria-label={ariaLabel}
+      data-testid={sectionTestId}
+    >
+      {title ? (
+        <TitleSection
+          title={title}
+          titleLevel={titleLevel}
+          className={titleClassName}
+          data-testid={titleTestId}
+        />
+      ) : null}
+
+      {children}
+    </section>
+  );
+};
+
+const Home: React.FC = () => {
+  const [favourites, setFavourites] = useState<Record<string, boolean>>({});
+
+  const toggleFavourite = (id: string) => {
+    setFavourites(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
   return (
     <main>
-      <Title text="Welcome to Nice Gadgets store!" level={1} />
-      <section className={styles.sectionBanner} data-testid="section-banner">
-        <div className={styles.containerBanner} data-testid="container-banner">
-          <ChevronButton onClick={() => {}} />
-          <Banner></Banner>
-
-          <ChevronButton
-            onClick={() => {}}
-            direction="right"
-            aria-label="Avançar"
-          />
-        </div>
-
-        <div className={styles.containerDots} data-testid="container-dots">
-          <IndicatorDots
-            count={3}
-            activeIndex={0} // índice fixo já que os botões não alteram o banner
-            size={10}
-            gap={10}
-            activeColor="#000"
-            inactiveColor="#ddd"
-          />
-        </div>
-      </section>
-
-      <div className={styles.TitleSection}>
-        <SubTitle text="Brand new models" />
+      <SectionWithTitle
+        title="Product Catalog"
+        titleLevel={1}
+        titleTestId="banner-section"
+        ariaLabel="Banner section"
+        sectionClassName={styles.sectionBanner}
+        titleClassName={styles.TitleBanner}
+      ></SectionWithTitle>
+      <div className={styles.containerBanner} data-testid="container-banner">
+        <Banner />
       </div>
 
-      <section
-        className={styles.sectionBrandNewModels}
-        data-testid="section-bannerNewModels"
+      {/* BRAND NEW MODELS */}
+      <SectionWithTitle
+        title="Brand new models"
+        titleLevel={2}
+        titleTestId="brand-title"
+        sectionTestId="brand-section"
+        ariaLabel="Brand new models"
       >
-        <div
-          className={styles.containerBrandFlex}
-          data-testid="container-brand"
-        >
-          <BrandNewModels>
-            <div
-              className={`${styles.containerImgSilver}`.trim()}
-              role="img"
-              aria-label="Card Brand New Models"
+        <div className={styles.brandGrid}>
+          {products.map(p => (
+            <BrandNewModels
+              key={p.id}
+              title={p.title}
+              imageSrc={p.imageSrc}
+              imageAlt={p.title}
+              price={p.price}
+              specs={p.specs}
+              onFavouriteClick={() => toggleFavourite(p.id)}
+              isFavourite={!!favourites[p.id]}
+              data-testid={`brand-card-${p.id}`}
             />
-            <div
-              className={styles.containerTitle}
-              aria-label="Title Brand New Models"
-            >
-              <span className={styles.subtitle}>
-                Apple iPhone 14 Pro 128GB Silver (MQ023)
-              </span>
-            </div>
-            <div
-              className={styles.containerPrice}
-              aria-label="Price Brand New Models"
-            >
-              <span className={styles.price}>$ 999</span>
-            </div>
-            <div
-              className={styles.separator}
-              aria-label="Price Brand New Models"
-            ></div>
-            <div
-              className={styles.containerBlock}
-              aria-label="Screen Brand New Models"
-            >
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Screen</span>
-                <span className={styles.screenBold}>{'6.1" OLED'}</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Capacity</span>
-                <span className={styles.screenBold}>128 GB</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>RAM</span>
-                <span className={styles.screenBold}>6 GB</span>
-              </div>
-            </div>
-          </BrandNewModels>
-          <BrandNewModels>
-            <div
-              className={`${styles.containerImgPurple}`.trim()}
-              role="img"
-              aria-label="Card Brand New Models"
-            />
-            <div
-              className={styles.containerTitle}
-              aria-label="Title Brand New Models"
-            >
-              <span className={styles.subtitle}>
-                Apple iPhone 14 Pro 128GB Deep Purple (MQ0G3)
-              </span>
-            </div>
-            <div
-              className={styles.containerPrice}
-              aria-label="Price Brand New Models"
-            >
-              <span className={styles.price}>$ 999</span>
-            </div>
-            <div
-              className={styles.separator}
-              aria-label="Price Brand New Models"
-            ></div>
-            <div
-              className={styles.containerBlock}
-              aria-label="Screen Brand New Models"
-            >
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Screen</span>
-                <span className={styles.screenBold}>{'6.1" OLED'}</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Capacity</span>
-                <span className={styles.screenBold}>128 GB</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>RAM</span>
-                <span className={styles.screenBold}>6 GB</span>
-              </div>
-            </div>
-          </BrandNewModels>
-          <BrandNewModels>
-            <div
-              className={`${styles.containerImgGold}`.trim()}
-              role="img"
-              aria-label="Card Brand New Models"
-            />
-            <div
-              className={styles.containerTitle}
-              aria-label="Title Brand New Models"
-            >
-              <span className={styles.subtitle}>
-                Apple iPhone 14 Pro 128GB Gold (MQ083)
-              </span>
-            </div>
-            <div
-              className={styles.containerPrice}
-              aria-label="Price Brand New Models"
-            >
-              <span className={styles.price}>$ 999</span>
-            </div>
-            <div
-              className={styles.separator}
-              aria-label="Price Brand New Models"
-            ></div>
-            <div
-              className={styles.containerBlock}
-              aria-label="Screen Brand New Models"
-            >
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Screen</span>
-                <span className={styles.screenBold}>{'6.1" OLED'}</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Capacity</span>
-                <span className={styles.screenBold}>128 GB</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>RAM</span>
-                <span className={styles.screenBold}>6 GB</span>
-              </div>
-            </div>
-          </BrandNewModels>
-          <BrandNewModels>
-            <div
-              className={`${styles.containerImgRed}`.trim()}
-              role="img"
-              aria-label="Card Brand New Models"
-            />
-            <div
-              className={styles.containerTitle}
-              aria-label="Title Brand New Models"
-            >
-              <span className={styles.subtitle}>
-                Apple iPhone 14 Plus 128GB PRODUCT Red (MQ513)
-              </span>
-            </div>
-            <div
-              className={styles.containerPrice}
-              aria-label="Price Brand New Models"
-            >
-              <span className={styles.price}>$ 859</span>
-            </div>
-            <div
-              className={styles.separator}
-              aria-label="Price Brand New Models"
-            ></div>
-            <div
-              className={styles.containerBlock}
-              aria-label="Screen Brand New Models"
-            >
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Screen</span>
-                <span className={styles.screenBold}>{'6.1" OLED'}</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Capacity</span>
-                <span className={styles.screenBold}>128 GB</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>RAM</span>
-                <span className={styles.screenBold}>6 GB</span>
-              </div>
-            </div>
-          </BrandNewModels>
+          ))}
         </div>
-      </section>
-      <div className={styles.TitleSection}>
-        <SubTitle text="Shop by category" level={2} />
-      </div>
+      </SectionWithTitle>
 
-      <section className={styles.ShopByCategory} data-testid="Shop-ByCategory">
-        <div className={styles.containerShopFlex} data-testid="container-brand">
-          <ShopCategory imageClassName={styles.Mobile}>
-            <div>
-              <p className={styles.title}>Mobile phones</p>
-              <span className={styles.subtitle}>95 models</span>
+      {/* SHOP CATEGORY */}
+      <SectionWithTitle
+        title="Shop by category"
+        titleLevel={2}
+        titleTestId="shop-title"
+        sectionTestId="shop-section"
+        ariaLabel="Shop by category"
+      >
+        <div className={styles.brandGrid}>
+          <ShopCategory
+            imageAlt="Smartphones"
+            className={styles.shopCard}
+            backgroundImage={phonesImg}
+            data-testid="shop-card-smartphones"
+          >
+            <div className={styles.textContent}>
+              <h3>Smartphones</h3>
+              <p>Latest models and deals</p>
             </div>
           </ShopCategory>
-          <ShopCategory imageClassName={styles.Tablets}>
-            <div>
-              <p className={styles.title}>Tablets</p>
-              <span className={styles.subtitle}>24 models</span>
+
+          <ShopCategory
+            imageAlt="Tablets"
+            className={styles.shopCard}
+            backgroundImage={tabletsImg}
+            data-testid="shop-card-tablets"
+          >
+            <div className={styles.textContent}>
+              <h3>Tablets</h3>
+              <p>Portable and powerful</p>
             </div>
           </ShopCategory>
-          <ShopCategory imageClassName={styles.Mobile}>
-            <div>
-              <p className={styles.title}>Mobile phones</p>
-              <span className={styles.subtitle}>95 models</span>
+
+          <ShopCategory
+            imageAlt="Accessories"
+            className={styles.shopCard}
+            backgroundImage={accessoriesImg}
+            data-testid="shop-card-accessories"
+          >
+            <div className={styles.textContent}>
+              <h3>Accessories</h3>
+              <p>Cases, chargers and more</p>
             </div>
           </ShopCategory>
         </div>
-      </section>
+      </SectionWithTitle>
 
-      <div className={styles.TitleSection}>
-        <SubTitle text="Hot Price" />
-      </div>
-
-      <section className={styles.sectionBrandNewModels} data-testid="Hot-Price">
-        <div
-          className={styles.containerBrandFlex}
-          data-testid="container-brand"
-        >
-          <BrandNewModels>
-            <div
-              className={`${styles.containerHotPrice1}`.trim()}
-              role="img"
-              aria-label="Card Brand New Models"
+      {/* HOT PRICE */}
+      <SectionWithTitle
+        title="Hot prices"
+        titleLevel={2}
+        titleTestId="hot-title"
+        sectionTestId="hot-section"
+        ariaLabel="Hot prices"
+      >
+        <div className={styles.brandGrid}>
+          {hotPrices.map(p => (
+            <BrandNewModels
+              key={p.id}
+              title={p.title}
+              imageSrc={p.imageSrc}
+              imageAlt={p.title}
+              price={p.price}
+              specs={p.specs}
+              onButtonClick={() => addToCart(p)}
+              onFavouriteClick={() => toggleFavourite(p.id)}
+              isFavourite={!!favourites[p.id]}
+              data-testid={`hot-card-${p.id}`}
             />
-            <div
-              className={styles.containerTitle}
-              aria-label="Title Brand New Models"
-            >
-              <span className={styles.subtitle}>
-                Apple iPhone 11 Pro Max 512GB Midnight Green (iMT9G2FS/A)
-              </span>
-            </div>
-            <div
-              className={styles.containerPrice}
-              aria-label="Price Brand New Models"
-            >
-              <span className={styles.price}>$ 849</span>
-              <span className={styles.priceOff}>$ 1199</span>
-            </div>
-            <div
-              className={styles.separator}
-              aria-label="Price Brand New Models"
-            ></div>
-            <div
-              className={styles.containerBlock}
-              aria-label="Screen Brand New Models"
-            >
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Screen</span>
-                <span className={styles.screenBold}>{'6.1" OLED'}</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Capacity</span>
-                <span className={styles.screenBold}>512 GB</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>RAM</span>
-                <span className={styles.screenBold}>4 GB</span>
-              </div>
-            </div>
-          </BrandNewModels>
-          <BrandNewModels>
-            <div
-              className={`${styles.containerHotPrice1}`.trim()}
-              role="img"
-              aria-label="Card Brand New Models"
-            />
-            <div
-              className={styles.containerTitle}
-              aria-label="Title Brand New Models"
-            >
-              <span className={styles.subtitle}>
-                Apple iPhone 11 Pro Max 512GB Midnight Green (iMT9G2FS/A)
-              </span>
-            </div>
-            <div
-              className={styles.containerPrice}
-              aria-label="Price Brand New Models"
-            >
-              <span className={styles.price}>$ 849</span>
-              <span className={styles.priceOff}>$ 1199</span>
-            </div>
-            <div
-              className={styles.separator}
-              aria-label="Price Brand New Models"
-            ></div>
-            <div
-              className={styles.containerBlock}
-              aria-label="Screen Brand New Models"
-            >
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Screen</span>
-                <span className={styles.screenBold}>{'6.1" OLED'}</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Capacity</span>
-                <span className={styles.screenBold}>512 GB</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>RAM</span>
-                <span className={styles.screenBold}>4 GB</span>
-              </div>
-            </div>
-          </BrandNewModels>
-          <BrandNewModels>
-            <div
-              className={`${styles.containerHotPrice1}`.trim()}
-              role="img"
-              aria-label="Card Brand New Models"
-            />
-            <div
-              className={styles.containerTitle}
-              aria-label="Title Brand New Models"
-            >
-              <span className={styles.subtitle}>
-                Apple iPhone 11 Pro Max 512GB Midnight Green (iMT9G2FS/A)
-              </span>
-            </div>
-            <div
-              className={styles.containerPrice}
-              aria-label="Price Brand New Models"
-            >
-              <span className={styles.price}>$ 849</span>
-              <span className={styles.priceOff}>$ 1199</span>
-            </div>
-            <div
-              className={styles.separator}
-              aria-label="Price Brand New Models"
-            ></div>
-            <div
-              className={styles.containerBlock}
-              aria-label="Screen Brand New Models"
-            >
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Screen</span>
-                <span className={styles.screenBold}>{'6.1" OLED'}</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Capacity</span>
-                <span className={styles.screenBold}>512 GB</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>RAM</span>
-                <span className={styles.screenBold}>4 GB</span>
-              </div>
-            </div>
-          </BrandNewModels>
-          <BrandNewModels>
-            <div
-              className={`${styles.containerHotPrice1}`.trim()}
-              role="img"
-              aria-label="Card Brand New Models"
-            />
-            <div
-              className={styles.containerTitle}
-              aria-label="Title Brand New Models"
-            >
-              <span className={styles.subtitle}>
-                Apple iPhone 11 Pro Max 512GB Midnight Green (iMT9G2FS/A)
-              </span>
-            </div>
-            <div
-              className={styles.containerPrice}
-              aria-label="Price Brand New Models"
-            >
-              <span className={styles.price}>$ 849</span>
-              <span className={styles.priceOff}>$ 1199</span>
-            </div>
-            <div
-              className={styles.separator}
-              aria-label="Price Brand New Models"
-            ></div>
-            <div
-              className={styles.containerBlock}
-              aria-label="Screen Brand New Models"
-            >
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Screen</span>
-                <span className={styles.screenBold}>{'6.1" OLED'}</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>Capacity</span>
-                <span className={styles.screenBold}>512 GB</span>
-              </div>
-              <div
-                className={styles.containerScreen}
-                aria-label="Screen Brand New Models"
-              >
-                <span className={styles.screen}>RAM</span>
-                <span className={styles.screenBold}>4 GB</span>
-              </div>
-            </div>
-          </BrandNewModels>
+          ))}
         </div>
-      </section>
+      </SectionWithTitle>
     </main>
   );
 };

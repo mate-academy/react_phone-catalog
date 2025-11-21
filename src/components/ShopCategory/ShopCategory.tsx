@@ -12,15 +12,17 @@ export interface ShopCategoryProps {
   imageClassName?: string;
   onClick?: () => void;
   'data-testid'?: string;
+  backgroundImage?: string; // <== nova prop
 }
 
-export const Card: React.FC<ShopCategoryProps> = ({
+export const ShopCategory: React.FC<ShopCategoryProps> = ({
   imageAlt = 'Imagem do card',
   children,
   className = '',
   imageClassName = '',
   onClick,
   'data-testid': dataTestId = 'ShopCategory',
+  backgroundImage, // <== nova prop recebida
 }) => {
   return (
     <div
@@ -32,10 +34,11 @@ export const Card: React.FC<ShopCategoryProps> = ({
         className={`${styles.imageShop} ${imageClassName}`.trim()}
         role="img"
         aria-label={imageAlt}
+        style={{ backgroundImage: `url(${backgroundImage})` }} // <== aplique inline
       />
-      {children}
+      <div className={`${styles.textContent}`.trim()}>{children}</div>
     </div>
   );
 };
 
-export default Card;
+export default ShopCategory;
