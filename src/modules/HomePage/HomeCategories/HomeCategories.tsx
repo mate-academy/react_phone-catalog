@@ -3,6 +3,7 @@ import { getClassNames } from '../../../utils/classNames';
 import styles from './HomeCategories.module.scss';
 import { useContext } from 'react';
 import { ProductCatalogContext } from '../../../ProductsContext';
+import { NavLink } from 'react-router-dom';
 
 const HomeCategories: React.FC = () => {
   const { t } = useTranslation();
@@ -14,16 +15,25 @@ const HomeCategories: React.FC = () => {
       <div className={styles.categories__content}>
         {Object.keys(categories).map(category => (
           <div key={category} className={styles.categories__category}>
-            <img
-              className={
-                styles.categories__categoryImage +
-                ' ' +
-                getClassNames('categories__categoryImage_bg_', category, styles)
-              }
-              src={`/img/assets/categories/${category}.png`}
-              alt={category}
-            />
-
+            <NavLink
+              className={styles.categories__categoryLink}
+              to={'/' + category}
+              state={category}
+            >
+              <img
+                className={
+                  styles.categories__categoryImage +
+                  ' ' +
+                  getClassNames(
+                    'categories__categoryImage_bg_',
+                    category,
+                    styles,
+                  )
+                }
+                src={`/img/assets/categories/${category}.png`}
+                alt={category}
+              />
+            </NavLink>
             <div className={styles.categories__categoryBottom}>
               <p className={styles.categories__categoryName}>
                 {t('home.category_' + category)}
