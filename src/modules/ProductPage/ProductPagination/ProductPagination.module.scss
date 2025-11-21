@@ -1,0 +1,16 @@
+.pagination {
+  display: flex;
+  width: fit-content;
+  height: 32px;
+  gap: 8px;
+  margin-inline: auto;
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    aspect-ratio: 1/1;
+    width: fit-content;
+  }
+}

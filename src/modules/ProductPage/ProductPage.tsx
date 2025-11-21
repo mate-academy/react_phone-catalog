@@ -2,17 +2,19 @@ import styles from './ProductPage.module.scss';
 import { useTranslation } from 'react-i18next';
 import Breadcrumbs from '../shared/Breadcrumbs/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
+import { PRODUCT_LIST_MENU } from '../constants';
 import ProductList from './ProductList';
 import { useContext, useState } from 'react';
 import { ProductCatalogContext } from '../../ProductsContext';
 import ProductListMenu from './ProductListMenu';
 import { SelectOption } from '../../types/SelectOptions';
-import { PRODUCT_LIST_MENU } from '../constants';
 import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
+import ProductPagination from './ProductPagination';
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
   const { products, categories } = useContext(ProductCatalogContext);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const location = useLocation();
   const title =
     typeof location.state === 'string'
@@ -74,6 +76,14 @@ export const ProductPage: React.FC = () => {
           itemsOnPageOptions={itemsOnPageOptions}
         />
         <ProductList />
+        {Number(itemsOnPageValue.value) > 0 && (
+          <ProductPagination
+            total={pageProducts.length}
+            perPage={Number(itemsOnPageValue.value)}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+          />
+        )}
         {pageProducts.map(product => (
           <p key={product.name}>
             {product.name} {product.year} {product.fullPrice}
