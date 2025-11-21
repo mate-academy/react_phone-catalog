@@ -1,5 +1,4 @@
 enum Months {
-  NS = 'Month',
   JAN = 'january',
   FEB = 'february',
   MAR = 'march',
@@ -14,8 +13,7 @@ enum Months {
   DEC = 'december',
 }
 
-const days: Record<Months, number | string> = {
-  [Months.NS]: 'Please, select day',
+const days: Record<Months, number> = {
   [Months.JAN]: 31,
   [Months.FEB]: 28,
   [Months.MAR]: 31,

@@ -76,4 +76,9 @@ export {
   type CartBody,
   type CheckoutBody,
   type CartItem,
+  type UserDetails,
+  type Birthday,
+  type Pickup,
+  type Shipment,
+  type Address,
 };

@@ -1,0 +1,18 @@
+@use '@shared/styles' as s;
+
+.checkbox-container {
+  display: flex;
+
+  > input {
+    justify-self: end;
+    margin-right: 10px;
+  }
+}
+
+.agreement {
+  @include s.t-button-text;
+}
+
+.checkbox {
+  justify-self: end;
+}

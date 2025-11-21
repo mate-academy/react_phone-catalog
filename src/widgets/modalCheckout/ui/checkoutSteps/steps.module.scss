@@ -1,0 +1,30 @@
+@use '@shared/styles' as s;
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: white;
+  align-items: center;
+  max-width: 720px;
+
+  > h2 {
+    @include s.t-h2;
+
+    text-transform: capitalize;
+  }
+
+  > * {
+    padding: 15px;
+  }
+}
+
+.warning {
+  @include s.t-button-text;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
