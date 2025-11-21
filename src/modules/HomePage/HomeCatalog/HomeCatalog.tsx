@@ -1,14 +1,14 @@
 /* eslint-disable no-console */
 
 import styles from './HomeCatalog.module.scss';
-import { Product } from '../../../types/Product';
+import { ProductCatalogItem } from '../../../types/ProductCatalogItem';
 import ProductCard from '../../shared/ProductCard';
 import Icon from '../../shared/Icon';
 import { useEffect, useRef, useState } from 'react';
 
 interface Props {
   title: string;
-  products: Product[];
+  products: ProductCatalogItem[];
 }
 
 const HomeCatalog: React.FC<Props> = ({ title, products }) => {

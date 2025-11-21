@@ -46,10 +46,6 @@
     border: none;
     box-sizing: border-box;
 
-    @include on-desktop {
-      margin: 24px;
-    }
-
     &_favorites {
       background: center center url('img/assets/icons/favorites.svg');
 
