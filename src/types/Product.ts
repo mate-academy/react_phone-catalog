@@ -13,30 +13,23 @@ export interface Product {
   ram: string;
 }
 
-export interface DescriptionSection {
-  title: string;
-  text: string[];
-}
-
 export interface ProductDetails {
   id: string;
-  category: string;
-  phoneId?: string;
-  itemId?: string;
   name: string;
-  fullPrice: number;
-  price: number;
-  year: number;
-  mainImage: string;
-  images: string[]; // всі фото
+  priceDiscount: number;
+  priceRegular: number;
+  images: string[];
   colorsAvailable: string[];
   capacityAvailable: string[];
   screen: string;
-  ram: string;
-  description: DescriptionSection[];
   resolution: string;
-  processor: string;
+  ram: string;
   camera: string;
   zoom: string;
   cell: string[];
-}
+  processor: string;
+  description: {
+    title: string;
+    text: string[];
+  }[];
+};
