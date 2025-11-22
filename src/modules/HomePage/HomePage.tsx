@@ -15,7 +15,7 @@ export const HomePage = () => {
   );
 
   const brandNewProducts = loaded
-    ? getSortedProducts(products, 'newest').slice(0, SLIDER_COUNT)
+    ? getSortedProducts(products, 'age').slice(0, SLIDER_COUNT)
     : [];
   const hotPricesProducts = loaded
     ? getSortedProducts(products, 'hotPrice').slice(0, SLIDER_COUNT)

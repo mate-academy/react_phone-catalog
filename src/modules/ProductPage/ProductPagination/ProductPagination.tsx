@@ -1,15 +1,15 @@
 import styles from './ProductPagination.module.scss';
 import { useState } from 'react';
 import Icon from '../../shared/Icon';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const PAGES_IN_REGION = 4;
+const PAGE_PARAM_NAME = 'page';
 
 interface Props {
   total: number;
   perPage: number;
   currentPage: number;
-  onPageChange: (newPage: number) => void;
 }
 
 const ProductPagination: React.FC<Props> = ({
@@ -17,6 +17,19 @@ const ProductPagination: React.FC<Props> = ({
   perPage,
   currentPage,
 }) => {
+  const location = useLocation();
+  const currentSearchParams = new URLSearchParams(location.search);
+
+  const getSearchParams = (pageNumber: number) => {
+    if (pageNumber === 1) {
+      currentSearchParams.delete(PAGE_PARAM_NAME);
+    } else {
+      currentSearchParams.set(PAGE_PARAM_NAME, String(pageNumber));
+    }
+
+    return currentSearchParams.toString();
+  };
+
   const [region, setRegion] = useState<number>(
     Math.floor((currentPage - 1) / PAGES_IN_REGION),
   );
@@ -42,6 +55,7 @@ const ProductPagination: React.FC<Props> = ({
   return (
     <div className={styles.pagination}>
       <Icon
+        className={styles.pagination__button_marginRight}
         onClick={handleDecreaseRegion}
         iconStyles={
           increaseDisabled
@@ -53,13 +67,21 @@ const ProductPagination: React.FC<Props> = ({
       {numbers.map(number => (
         <Link
           key={number}
-          className={styles.pagination__link}
-          to={`?page=${number}`}
+          className={
+            styles.pagination__link +
+            ' ' +
+            (number === currentPage && styles.pagination__link_active)
+          }
+          to={{
+            pathname: location.pathname,
+            search: getSearchParams(number),
+          }}
         >
           {number}
         </Link>
       ))}
       <Icon
+        className={styles.pagination__button_marginLeft}
         onClick={handleIncreaseRegion}
         iconStyles={
           decreaseDisabled
@@ -73,12 +95,3 @@ const ProductPagination: React.FC<Props> = ({
 };
 
 export default ProductPagination;
-
-/*
-
-  total={42} // total number of items to paginate
-  perPage={5} // number of items per page
-  currentPage={1} // optional with 1 by default 
-  onPageChange={(page) => { ... }}
-
-*/

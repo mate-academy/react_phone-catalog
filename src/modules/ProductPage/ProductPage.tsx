@@ -2,19 +2,25 @@ import styles from './ProductPage.module.scss';
 import { useTranslation } from 'react-i18next';
 import Breadcrumbs from '../shared/Breadcrumbs/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
-import { PRODUCT_LIST_MENU } from '../constants';
 import ProductList from './ProductList';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { ProductCatalogContext } from '../../ProductsContext';
 import ProductListMenu from './ProductListMenu';
-import { SelectOption } from '../../types/SelectOptions';
 import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
 import ProductPagination from './ProductPagination';
+import { useMenuSelectors } from './ProductPage.hooks';
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
   const { products, categories } = useContext(ProductCatalogContext);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const {
+    sortValue,
+    itemsOnPageValue,
+    itemsOnPageOptions,
+    sortByOptions,
+    handleSortChange,
+    handleItemsOnPageChange,
+  } = useMenuSelectors();
   const location = useLocation();
   const title =
     typeof location.state === 'string'
@@ -22,42 +28,27 @@ export const ProductPage: React.FC = () => {
       : location.pathname.split('/').at(-1);
   const count = title ? categories[title] : 0;
   const modelAmount = t('products_page.models', { count });
-  const sortByOptions: SelectOption[] = PRODUCT_LIST_MENU.sortBy.map(value => ({
-    value,
-    label: t(`products_page.menu_sort_values.${value}`),
-  }));
 
-  const itemsOnPageOptions: SelectOption[] = PRODUCT_LIST_MENU.itemsOnPage.map(
-    value => {
-      return {
-        value,
-        label: Number.isInteger(Number(value))
-          ? value
-          : t(`products_page.menu_items_values.${value}`),
-      };
-    },
-  );
-  const [sortValue, setSortValue] = useState<SelectOption>(sortByOptions[0]);
-  const [itemsOnPageValue, setItemsOnPageValue] = useState<SelectOption>(
-    itemsOnPageOptions[0],
-  );
+  const searchParams = new URLSearchParams(location.search);
+  const currentPage = Number(searchParams.get('page')) || 1;
 
-  const handleSortChange = (option: SelectOption | null) => {
-    if (option) {
-      setSortValue(option);
-    }
-  };
-
-  const handleItemsOnPageChange = (option: SelectOption | null) => {
-    if (option) {
-      setItemsOnPageValue(option);
-    }
-  };
-
-  const pageProducts = getSortedProducts(
+  let pageProducts = getSortedProducts(
     products.filter(product => product.category === (title || '')),
     sortValue.value as ProductSortTypes,
   );
+
+  const hasPagination = Number(itemsOnPageValue.value) > 0;
+
+  if (hasPagination) {
+    const perPage = Number(itemsOnPageValue.value);
+    const firstElementNumber = (currentPage - 1) * perPage;
+    const lastElementNumber = Math.min(
+      currentPage * perPage,
+      pageProducts.length - 1,
+    );
+
+    pageProducts = pageProducts.slice(firstElementNumber, lastElementNumber);
+  }
 
   return (
     <div className="container">
@@ -76,12 +67,11 @@ export const ProductPage: React.FC = () => {
           itemsOnPageOptions={itemsOnPageOptions}
         />
         <ProductList />
-        {Number(itemsOnPageValue.value) > 0 && (
+        {hasPagination && (
           <ProductPagination
             total={pageProducts.length}
             perPage={Number(itemsOnPageValue.value)}
             currentPage={currentPage}
-            onPageChange={setCurrentPage}
           />
         )}
         {pageProducts.map(product => (

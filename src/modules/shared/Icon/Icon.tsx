@@ -4,20 +4,31 @@ import { IconStyles } from '../../../types/IconStyles';
 import { getClassNames } from '../../../utils/classNames';
 
 interface IconProps {
+  className?: string;
   href?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   iconStyles?: IconStyles;
   disabled?: boolean;
 }
 
-const Icon: React.FC<IconProps> = ({ href, onClick, iconStyles, disabled }) => {
+const Icon: React.FC<IconProps> = ({
+  className,
+  href,
+  onClick,
+  iconStyles,
+  disabled,
+}) => {
   const isLink = !!href;
   const isButton = !!onClick;
 
   const imageStyles = getClassNames('icon__img_', iconStyles?.image, styles);
 
   const iconClasses =
-    styles.icon + ' ' + getClassNames('icon_', iconStyles?.icon, styles);
+    styles.icon +
+    ' ' +
+    getClassNames('icon_', iconStyles?.icon, styles) +
+    ' ' +
+    (className ?? '');
 
   const imgElement = (
     <span className={`${styles.icon__img} ${imageStyles}`}></span>

@@ -33,9 +33,9 @@
     "models_few": "{{count}} моделі",
     "menu_sort": "Сортувати по",
     "menu_sort_values": {
-      "newest": "Найновіші",
-      "alphabetically": "за алфавітом",
-      "cheapest": "Найдешевші"
+      "age": "Найновіші",
+      "title": "за алфавітом",
+      "price": "Найдешевші"
     },
     "menu_items": "Продуктів на сторінці",
     "menu_items_values": { "all": "всі" }

@@ -4,7 +4,6 @@ type IconImageModifiers =
   | 'close'
   | 'home'
   | 'menu'
-  | 'border'
   | 'favorites_active'
   | 'arrowLeft'
   | 'arrowRight'

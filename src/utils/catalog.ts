@@ -1,25 +1,21 @@
 import { ProductCatalogItem } from '../types/ProductCatalogItem';
 
-export type ProductSortTypes =
-  | 'newest'
-  | 'alphabetically'
-  | 'cheapest'
-  | 'hotPrice';
+export type ProductSortTypes = 'age' | 'title' | 'price' | 'hotPrice';
 
 export const getSortedProducts = (
   products: ProductCatalogItem[],
   sortType: ProductSortTypes,
 ): ProductCatalogItem[] => {
   switch (sortType) {
-    case 'newest':
+    case 'age':
       return products.sort(
         (a: ProductCatalogItem, b: ProductCatalogItem) => b.year - a.year,
       );
-    case 'alphabetically':
+    case 'title':
       return products.sort((a: ProductCatalogItem, b: ProductCatalogItem) =>
         a.name.localeCompare(b.name),
       );
-    case 'cheapest':
+    case 'price':
       return products.sort(
         (a: ProductCatalogItem, b: ProductCatalogItem) =>
           a.fullPrice - b.fullPrice,

@@ -32,9 +32,9 @@
     "models_one": "1 model",
     "menu_sort": "Sort by",
     "menu_sort_values": {
-      "newest": "Newest",
-      "alphabetically": "Alphabetically",
-      "cheapest": "Cheapest"
+      "age": "Newest",
+      "title": "Alphabetically",
+      "price": "Cheapest"
     },
     "menu_items": "Items on page",
     "menu_items_values": { "all": "all" }
