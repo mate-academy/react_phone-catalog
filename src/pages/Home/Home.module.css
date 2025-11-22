@@ -4,11 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
   justify-content: flex-start;
   width: 100%;
   box-sizing: border-box;
-  padding: 24px;
+  padding: 0;
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -20,19 +19,59 @@
   padding: 0;
   box-sizing: border-box;
   margin: 0;
-  font-size: 1.2rem; /* mantém 14px se desejar: 0.875rem */
+  font-size: 1.2rem;
 }
 
 .TitleBanner {
+  padding: 0;
+  margin: 0;
+  margin-top: 2rem;
   font-size: 1.8rem;
 }
 
 .brandGrid {
-  display: grid; /* mude para grid para controlar colunas */
+  display: grid; /* grid para controlar colunas */
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   width: 100%;
   box-sizing: border-box;
+}
+
+.titleBlank {
+  color: #ffff;
+  font-size: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+/* linha de título + botões */
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.titleRowButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.titleRowButtons img {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.titleRowButtons img:hover {
+  transform: scale(1.1);
+}
+
+.ProductCatalog {
+  font-size: 1px;
+  color: #ffff;
 }
 
 /* =====≤640px===== */
@@ -51,6 +90,11 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+
+  .titleRowButtons img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 /* =====≤320px===== */
@@ -68,5 +112,10 @@
   .brandGrid {
     grid-template-columns: 1fr; /* uma coluna */
     gap: 0.75rem;
+  }
+
+  .titleRowButtons img {
+    width: 18px;
+    height: 18px;
   }
 }

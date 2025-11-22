@@ -34,3 +34,7 @@ body {
   background-color: #fff;
   color: #111;
 }
+
+main {
+  padding-top: var(--navbar-height); /* evita conteúdo atrás da navbar fixa */
+}

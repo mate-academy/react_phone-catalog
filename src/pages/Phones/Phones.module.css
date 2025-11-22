@@ -1,0 +1,24 @@
+.container {
+  padding: 0 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin-top: 6rem;
+  margin-bottom: 1.5rem;
+  padding-left: 3.5rem;
+  text-align: left;
+}
+
+/* Grid dos cards */
+.grid {
+  display: flex;
+  flex-wrap: wrap; /* permite quebrar linha */
+  gap: 1.5rem; /* espaço entre os cards */
+  justify-content: center; /* centraliza os cards na horizontal */
+}
+
+/* Cada card pode ter largura fixa para alinhar melhor */
+.grid > * {
+  flex: 0 1 280px; /* largura mínima de 250px */
+}

@@ -12,6 +12,8 @@ import { BrandNewModels } from '../../components/BrandNewModels';
 import { products } from '../../data/products';
 import { hotPrices } from '../../data/hotPrice';
 
+import btnLeft from '../../assets/img/Btn-Left.svg';
+import btnRight from '../../assets/img/Btn-Right.svg';
 export type TitleSections = {
   title?: string;
   titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -82,35 +84,70 @@ const SectionWithTitle: React.FC<SectionWithTitleProps> = ({
 
 const Home: React.FC = () => {
   const [favourites, setFavourites] = useState<Record<string, boolean>>({});
+  const [brandIndex, setBrandIndex] = useState(0);
+  const [hotIndex, setHotIndex] = useState(0);
+
+  const ITEMS_PER_PAGE = 4;
 
   const toggleFavourite = (id: string) => {
     setFavourites(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
+  const handleBrandPrev = () => {
+    setBrandIndex(prev => Math.max(prev - ITEMS_PER_PAGE, 0));
+  };
+
+  const handleBrandNext = () => {
+    setBrandIndex(prev =>
+      Math.min(prev + ITEMS_PER_PAGE, products.length - ITEMS_PER_PAGE),
+    );
+  };
+
+  const handleHotPrev = () => {
+    setHotIndex(prev => Math.max(prev - ITEMS_PER_PAGE, 0));
+  };
+
+  const handleHotNext = () => {
+    setHotIndex(prev =>
+      Math.min(prev + ITEMS_PER_PAGE, hotPrices.length - ITEMS_PER_PAGE),
+    );
+  };
+
   return (
     <main>
       <SectionWithTitle
-        title="Product Catalog"
-        titleLevel={1}
+        title="Welcome to Nice Gadgets store!"
+        titleLevel={2}
         titleTestId="banner-section"
         ariaLabel="Banner section"
         sectionClassName={styles.sectionBanner}
         titleClassName={styles.TitleBanner}
-      ></SectionWithTitle>
+      />
+      <div>
+        <h1 className={styles.ProductCatalog}>Product Catalog</h1>
+      </div>
       <div className={styles.containerBanner} data-testid="container-banner">
         <Banner />
       </div>
 
       {/* BRAND NEW MODELS */}
       <SectionWithTitle
-        title="Brand new models"
+        title=""
         titleLevel={2}
         titleTestId="brand-title"
         sectionTestId="brand-section"
         ariaLabel="Brand new models"
       >
+        <div className={styles.titleRow}>
+          <h2>Brand new models</h2>
+          <div className={styles.titleRowButtons}>
+            <img src={btnLeft} alt="Previous" onClick={handleBrandPrev} />
+            <img src={btnRight} alt="Next" onClick={handleBrandNext} />
+          </div>
+        </div>
+
         <div className={styles.brandGrid}>
-          {products.map(p => (
+          {products.slice(brandIndex, brandIndex + ITEMS_PER_PAGE).map(p => (
             <BrandNewModels
               key={p.id}
               title={p.title}
@@ -175,14 +212,22 @@ const Home: React.FC = () => {
 
       {/* HOT PRICE */}
       <SectionWithTitle
-        title="Hot prices"
+        title=""
         titleLevel={2}
         titleTestId="hot-title"
         sectionTestId="hot-section"
         ariaLabel="Hot prices"
       >
+        <div className={styles.titleRow}>
+          <h2>Hot prices</h2>
+          <div className={styles.titleRowButtons}>
+            <img src={btnLeft} alt="Previous" onClick={handleHotPrev} />
+            <img src={btnRight} alt="Next" onClick={handleHotNext} />
+          </div>
+        </div>
+
         <div className={styles.brandGrid}>
-          {hotPrices.map(p => (
+          {hotPrices.slice(hotIndex, hotIndex + ITEMS_PER_PAGE).map(p => (
             <BrandNewModels
               key={p.id}
               title={p.title}
@@ -190,7 +235,7 @@ const Home: React.FC = () => {
               imageAlt={p.title}
               price={p.price}
               specs={p.specs}
-              onButtonClick={() => addToCart(p)}
+              onButtonClick={() => 'addToCart'}
               onFavouriteClick={() => toggleFavourite(p.id)}
               isFavourite={!!favourites[p.id]}
               data-testid={`hot-card-${p.id}`}

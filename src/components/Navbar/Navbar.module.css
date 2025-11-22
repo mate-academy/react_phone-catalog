@@ -1,12 +1,21 @@
+:root {
+  --navbar-height: 64px; /* ajuste conforme necessário (mobile/desktp) */
+}
+
 /* ------------------ BASE ------------------ */
 .navbar {
-  position: relative;
+  position: fixed; /* corrigido: fixed */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 16px;
   background: #fff;
   border-bottom: 1px solid #e6e6e6;
+  z-index: 9999;
 }
 
 .logo {
@@ -71,9 +80,10 @@
 }
 
 /* ------------------ MENU MOBILE ------------------ */
+
 .menu {
   position: fixed;
-  top: 60px;
+  top: calc(var(--navbar-height)); /* posiciona logo abaixo da navbar fixa */
   right: 0;
   left: 0;
   background: #fff;
@@ -113,10 +123,15 @@
 
 /* ------------------ TABLET (≥640px) ------------------ */
 @media (min-width: 640px) {
+  :root {
+    --navbar-height: 72px; /* aumenta a navbar em breakpoints maiores */
+  }
+
   .navbar {
     justify-content: flex-start;
     gap: 2rem;
     padding: 0;
+    height: var(--navbar-height);
   }
 
   .logo {
@@ -220,6 +235,7 @@
     gap: 0.75rem;
     flex-wrap: wrap;
     align-items: center;
+    height: var(--navbar-height);
   }
 
   .logo {
@@ -235,7 +251,7 @@
   /* menu mobile padrão (fechado) permanece; .menuOpen exibirá o menu em cima */
   .menu {
     position: fixed;
-    top: 56px;
+    top: calc(var(--navbar-height));
     left: 0;
     right: 0;
     padding: 12px;
@@ -268,6 +284,7 @@
     justify-content: flex-start;
     gap: 1.5rem;
     padding: 8px 12px;
+    height: var(--navbar-height);
   }
 
   .logo {

@@ -16,18 +16,30 @@ export interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ className = '' }) => {
   return (
     <footer className={`${styles.containerFooter} ${className}`.trim()}>
-      <div className={styles.LeftBlock}>
+      <div className={styles.leftBlock}>
         <img src={logoUrl} alt="MinhaMarca" className={styles.logoImg} />
       </div>
 
       <div className={styles.centerBlock}>
-        <nav className={styles.nav}>
-          <a className={styles.link} href="#github">
+        <nav className={styles.nav} aria-label="Footer navigation">
+          <a
+            className={styles.link}
+            href="https://github.com/DemetriodosAnjos/react_phone-catalog"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             GITHUB
           </a>
-          <a className={styles.link} href="#contacts">
-            CONTACTS
+
+          <a
+            className={styles.link}
+            href="https://wa.me/qr/3YKLDKONQ5A7E1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CONTACT
           </a>
+
           <a className={styles.link} href="#rights">
             RIGHTS
           </a>
@@ -35,8 +47,12 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
       </div>
 
       <div className={styles.rightBlocks}>
-        <span className={styles.textBackTop}>Back To Top</span>
-        <img src={btnBackTop} alt="BackTop" className={styles.backTopImg} />
+        <a className={styles.textBackTop} href="#top" aria-label="Back to top">
+          Back To Top
+        </a>
+        <a href="#top" aria-label="Back to top">
+          <img src={btnBackTop} alt="BackTop" className={styles.backTopImg} />
+        </a>
       </div>
     </footer>
   );

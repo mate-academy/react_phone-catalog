@@ -1,3 +1,4 @@
+// src/components/IndicatorDots/IndicatorDots.tsx
 import React from 'react';
 
 type Props = {
@@ -9,9 +10,10 @@ type Props = {
   gap?: number; // espaçamento entre dots em px
   activeColor?: string;
   inactiveColor?: string;
+  onClick?: (index: number) => void; // nova prop para clique
 };
 
-export default function IndicatorDots({
+function IndicatorDots({
   count = 3,
   activeIndex,
   width = 14,
@@ -20,6 +22,7 @@ export default function IndicatorDots({
   gap = 8,
   activeColor = '#000',
   inactiveColor = '#ddd',
+  onClick,
 }: Props) {
   const items = Array.from({ length: count }, (_, i) => i);
 
@@ -40,11 +43,11 @@ export default function IndicatorDots({
     display: 'inline-block',
     borderRadius: 0,
     transition: 'width 160ms ease, background-color 160ms ease',
-    pointerEvents: 'none', // não clicável
+    cursor: onClick ? 'pointer' : 'default', // cursor visível se clicável
   });
 
   return (
-    <div style={containerStyle} aria-hidden="true" data-testid="indicator-dots">
+    <div style={containerStyle} data-testid="indicator-dots">
       {items.map(i => {
         const isActive = i === activeIndex;
 
@@ -54,9 +57,12 @@ export default function IndicatorDots({
             data-testid={`indicator-dot-${i}`}
             data-active={isActive ? 'true' : 'false'}
             style={baseDotStyle(isActive)}
+            onClick={() => onClick?.(i)} // dispara clique
           />
         );
       })}
     </div>
   );
 }
+
+export default IndicatorDots;

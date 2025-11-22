@@ -5,6 +5,7 @@
   --banner-w-max: 80rem; /* 1280px */
   --side-w-default: 2.5rem; /* 40px */
   --side-w-lg: 3rem; /* 48px */
+  --fade-duration: 0.5s; /* tempo da transição */
 }
 
 /* wrapper principal do banner (titulo + banner + chevrons) */
@@ -29,7 +30,6 @@
 
 /* imagem central do banner */
 .containerImg {
-  background-image: url('../../assets/img/Banner-Home.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,15 +43,31 @@
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
+
+  /* animação de fade */
+  transition: opacity var(--fade-duration) ease-in-out;
+  opacity: 1;
 }
 
-/* botões laterais: não definimos height, o flex vai esticar */
+/* classe aplicada durante a transição */
+.fade {
+  opacity: 0;
+}
+
+/* botões laterais */
 .side {
   display: flex;
   align-items: center;
   justify-content: center;
   width: var(--side-w-default);
   box-sizing: border-box;
+}
+
+/* indicadores */
+.indicatorWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
 }
 
 /* <= 640px: banner reduz */
@@ -97,10 +113,11 @@
     width: 20rem; /* 320px */
     max-width: 100%;
     background-image: url('../../assets/img/Banner_mobile.png');
-    background-image: no-repeat;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
-  /* se os chevrons estiverem presentes, esconda-os nesse breakpoint */
+  /* esconder chevrons nesse breakpoint */
   .side {
     display: none;
     width: 0;

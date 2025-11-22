@@ -1,8 +1,10 @@
 :root {
   --footer-h: 6rem; /* 96px */
-  --footer-gap-lg: 14.75rem; /* 236px (used for margin-left on rightBlocks) */
-  --footer-padding-left-lg: 11.5rem; /* 184px */
-  --footer-logo-size: 8rem; /* ajusta se quiser alterar visual */
+  --footer-gap-lg: 14.75rem; /* mantido apenas como referência se precisar */
+  --footer-padding-lg: 6rem; /* padding lateral em telas grandes */
+  --footer-padding-md: 3rem; /* padding lateral padrão */
+  --footer-padding-sm: 1rem; /* padding lateral mobile */
+  --footer-logo-size: 8rem;
   --nav-gap-lg: 3.12rem; /* 50px */
   --nav-gap-md: 2rem; /* 32px */
   --nav-gap-sm: 1rem; /* 16px */
@@ -10,27 +12,33 @@
   --link-color: #89939a;
 }
 
-/* base */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ------------------ BASE ------------------ */
 .containerFooter {
   display: flex;
   align-items: center;
+  justify-content: space-between; /* distribui left / center / right */
+  margin-top: 3rem;
   height: var(--footer-h);
-  padding-left: var(--footer-padding-left-lg);
-  padding-right: 1rem;
+  width: 100%;
+  max-width: 100%;
   border-top: 1px solid #e6e6e6;
   background: #fff;
   box-sizing: border-box;
   gap: 1rem;
 }
 
-/* logo bloco à esquerda */
+/* left block: logo como background (pequena caixa à esquerda) */
 .leftBlock {
-  display: flex;
-  align-items: center;
+  display: block;
   min-width: var(--footer-logo-size);
-  background-image: url('../../assets/img/Logo_footer.png');
+  height: var(--footer-h);
+
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: left center; /* logo encostada à esquerda do bloco */
   background-size: contain;
   background-origin: content-box;
 }
@@ -41,11 +49,11 @@
   align-items: center;
   flex: 1 1 auto; /* ocupa espaço disponível */
   height: 32px;
-  justify-content: center; /* centraliza a nav */
+  justify-content: center; /* centraliza a nav por padrão */
   box-sizing: border-box;
 }
 
-/* nav interna (use classes .nav e .link conforme estrutura) */
+/* nav interna */
 .centerBlock .nav {
   display: flex;
   align-items: center;
@@ -57,6 +65,7 @@
   font-weight: 800;
   font-size: var(--link-font);
   color: var(--link-color);
+  white-space: nowrap;
 }
 
 /* blocos à direita */
@@ -64,54 +73,70 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-left: var(--footer-gap-lg);
+  margin-left: 0; /* removido deslocamento forçado */
   height: 32px;
   gap: 1rem;
   flex: 0 0 auto;
 }
 
-/* ===== Breakpoints ===== */
+.textBackTop {
+  text-decoration: none;
+}
 
-/* 1200+ (telas muito largas) */
+/* ================= Breakpoints ================= */
+
+/* DESKTOP (≥1200px) */
 @media (min-width: 75rem) {
-  /* 1200px */
-  .containerFooter {
-    padding-left: var(--footer-padding-left-lg);
+  :root {
+    --footer-padding-md: var(--footer-padding-lg);
   }
+
+  .containerFooter {
+    padding: 0 var(--footer-padding-lg);
+    height: var(--footer-h);
+  }
+
   .centerBlock .nav {
     gap: var(--nav-gap-lg);
   }
+
+  .leftBlock {
+    min-width: var(--footer-logo-size);
+    background-position: left center;
+    background-size: contain;
+  }
+
   .rightBlocks {
-    margin-left: var(--footer-gap-lg);
+    gap: 1rem;
   }
 }
 
-/* 1200 (641px - 1200px) - desktop / tablet grande */
-@media (min-width: 40.06rem) and (max-width: 75rem) {
-  /* 641px - 1200px */
+/* DESKTOP MÉDIO (641px — 1199px) */
+@media (min-width: 40.06rem) and (max-width: 74.93rem) {
   .containerFooter {
-    padding-left: 2rem; /* reduzir espaçamento lateral */
+    padding: 0 calc(var(--footer-padding-md) / 1.5); /* leve redução */
     height: calc(var(--footer-h) * 0.95);
   }
+
   .centerBlock .nav {
     gap: var(--nav-gap-md);
   }
+
   .rightBlocks {
-    margin-left: 2rem; /* reduzir deslocamento para a direita */
     gap: 0.75rem;
   }
+
   .leftBlock {
     min-width: 6.5rem;
+    background-position: left center;
   }
 }
 
-/* 640px (<= 640px) — tablet/large mobile */
+/* TABLET / MOBILE (≤ 640px) */
 @media (max-width: 40rem) {
-  /* 640px */
   .containerFooter {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    height: auto; /* permite crescer se necessário */
+    padding: 0 var(--footer-padding-sm);
+    height: auto;
     align-items: flex-start;
     gap: 0.5rem;
     flex-wrap: wrap;
@@ -119,8 +144,11 @@
 
   .leftBlock {
     min-width: 5.5rem;
+    height: auto;
     background-position: left center;
+    background-size: 5.5rem;
     order: 1;
+    padding-top: 0.5rem;
   }
 
   .centerBlock {
@@ -141,30 +169,23 @@
     order: 3;
     width: 100%;
     gap: 0.5rem;
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.5rem;
   }
 }
 
-/* 320px (<= 320px) — mobile tiny: empilha tudo verticalmente */
+/* MOBILE TINY (≤ 320px) */
 @media (max-width: 20rem) {
-  /* 320px */
   .containerFooter {
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    padding-left: 0.75rem;
-
+    padding: 1.25rem 0.76rem 1rem;
     gap: 0.5rem;
   }
 
   .leftBlock {
     width: 100%;
-    padding-top: 2rem;
+    padding-top: 0.5rem;
     background-position: center left;
     background-size: 6rem;
-
-    .logoImg {
-      margin-top: 2rem;
-    }
+    order: 1;
   }
 
   .centerBlock {
@@ -173,22 +194,33 @@
     font-size: 0.78rem;
     margin-right: 0;
     order: 2;
+  }
 
-    .nav {
-      margin-top: 3rem;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
+  .centerBlock .nav {
+    margin-top: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 
   .rightBlocks {
     width: 100%;
     display: flex;
-    padding-top: 3rem;
+    padding-top: 0.5rem;
     justify-content: center;
     align-items: center;
     order: 3;
     gap: 0.5rem;
   }
+}
+
+/* ---------------- visuals tweaks ---------------- */
+.centerBlock .nav .link:hover {
+  color: #313237;
+}
+
+/* small accessibility helper to ensure footer content doesn't overflow */
+.containerFooter * {
+  box-sizing: border-box;
+  max-width: 100%;
 }

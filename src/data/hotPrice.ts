@@ -4,6 +4,12 @@ import hotGoldImg from '../assets/img/hot-gold.png';
 import hotPurpleImg from '../assets/img/hot-purple.png';
 import hotRedImg from '../assets/img/hot-red.png';
 
+// novas imagens para o segundo bloco
+import phoneGreenImg from '../assets/img/phones/apple-iphone-11/green/00.webp';
+import phoneBlackImg from '../assets/img/phones/apple-iphone-11/black/00.webp';
+import phoneWhiteImg from '../assets/img/phones/apple-iphone-11/White/00.webp';
+import phoneYellowImg from '../assets/img/phones/apple-iphone-11/yellow/00.webp';
+
 export interface Product {
   id: string;
   sku?: string;
@@ -53,4 +59,50 @@ export const hotRed: Product = {
   specs: { screen: '6.2" OLED', capacity: '128 GB', ram: '4 GB' },
 };
 
-export const hotPrices: Product[] = [hotGreen, hotPurple, hotGold, hotRed];
+// Bloco 2
+export const phoneGreen: Product = {
+  id: 'phoneGreen',
+  sku: 'MQ777',
+  title: 'Apple iPhone 14 Pro 128GB Green (MQ777)',
+  price: 'R$ 899',
+  imageSrc: phoneGreenImg,
+  specs: { screen: '6.1" OLED', capacity: '128 GB', ram: '6 GB' },
+};
+
+export const phoneBlack: Product = {
+  id: 'phoneBlack',
+  sku: 'MQ778',
+  title: 'Apple iPhone 14 Pro 128GB Black (MQ778)',
+  price: 'R$ 799',
+  imageSrc: phoneBlackImg,
+  specs: { screen: '6.1" OLED', capacity: '128 GB', ram: '6 GB' },
+};
+
+export const phoneWhite: Product = {
+  id: 'phoneWhite',
+  sku: 'MQ779',
+  title: 'Apple iPhone 14 Pro 128GB White (MQ779)',
+  price: 'R$ 699',
+  imageSrc: phoneWhiteImg,
+  specs: { screen: '6.1" OLED', capacity: '128 GB', ram: '6 GB' },
+};
+
+export const phoneYellow: Product = {
+  id: 'phoneYellow',
+  sku: 'MQ780',
+  title: 'Apple iPhone 14 Pro 128GB Yellow (MQ780)',
+  price: 'R$ 599',
+  imageSrc: phoneYellowImg,
+  specs: { screen: '6.1" OLED', capacity: '128 GB', ram: '6 GB' },
+};
+
+export const hotPrices: Product[] = [
+  hotGreen,
+  hotPurple,
+  hotGold,
+  hotRed,
+  phoneGreen,
+  phoneBlack,
+  phoneWhite,
+  phoneYellow,
+];
