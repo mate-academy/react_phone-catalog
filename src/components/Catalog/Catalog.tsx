@@ -8,9 +8,15 @@ import { Product } from '../../types/Product';
 
 type Props = {
   products: Product[];
+  dropdown?: boolean;
+  pagination?: boolean;
 };
 
-export const Catalog: FC<Props> = ({ products }) => {
+export const Catalog: FC<Props> = ({
+  products,
+  dropdown = true,
+  pagination = true,
+}) => {
   return (
     <section className="catalog">
       <div className="container catalog__container">
@@ -19,14 +25,14 @@ export const Catalog: FC<Props> = ({ products }) => {
         <h1 className="catalog__title">Mobile phones</h1>
         <div className="catalog__counter">95 models</div>
 
-        <Dropdowns />
+        {dropdown && <Dropdowns />}
 
         <div className="catalog__wrapper">
           {products.map(item => (
             <ProductCard key={item.id} product={item} />
           ))}
         </div>
-        <Pagination />
+        {pagination && <Pagination />}
       </div>
     </section>
   );

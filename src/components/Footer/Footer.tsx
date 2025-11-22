@@ -19,6 +19,10 @@ const {
   footer__image,
 } = styles;
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 export const Footer = () => {
   return (
     <footer className={footer}>
@@ -46,12 +50,9 @@ export const Footer = () => {
               </li>
             </ul>
           </nav>
-          <div className={footer__back}>
+          <div className={footer__back} onClick={scrollToTop}>
             <div className={footer__top}>Back to top</div>
-            <button
-              className={footer__button}
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
+            <button className={footer__button}>
               <img className={footer__image} src={arrowUp} alt="Back to top" />
             </button>
           </div>

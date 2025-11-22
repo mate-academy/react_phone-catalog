@@ -7,6 +7,7 @@ import allProducts from '../../../public/api/products.json';
 import { PromotionSlider } from '../PromotionSlider';
 import { Product } from '../../types/Product';
 import { NavLink } from 'react-router-dom';
+import { ProductCardButtons } from '../ProductCard/ProductCardButtons';
 
 export const CardItem = () => {
   const product = {
@@ -140,7 +141,10 @@ export const CardItem = () => {
                 <div className="body-card__info-name">Available colors</div>
                 <ul className="body-card__items">
                   {product.colorsAvailable.map(color => (
-                    <li className="body-card__item" key={color}>
+                    <li
+                      className="body-card__item body-card__item-block-color"
+                      key={color}
+                    >
                       <NavLink
                         to={`./${color}`}
                         className={({ isActive }) =>
@@ -155,7 +159,11 @@ export const CardItem = () => {
                 <div className="body-card__info-name">Select capacity</div>
                 <ul className="body-card__items">
                   {product.capacityAvailable.map(capacity => (
-                    <li className="body-card__item" key={capacity}>
+                    <li
+                      className="body-card__item body-card__item-block-capacity"
+                      // 'body-card__item-block-capacity--active' added conditionally
+                      key={capacity}
+                    >
                       <span
                         className={classNames(
                           'body-card__item-capacity',
@@ -169,40 +177,54 @@ export const CardItem = () => {
                 </ul>
               </div>
               <div className="body-card__price  card__price">
-                <span className="card__price--sale">
-                  ${product.priceDiscount}
-                </span>
-                <span className="card__price--full">
-                  ${product.priceRegular}
-                </span>
+                <div className="card__price-block">
+                  <span className="card__price--sale">
+                    ${product.priceDiscount}
+                  </span>
+                  <span className="card__price--full">
+                    ${product.priceRegular}
+                  </span>
+                </div>
+                <ProductCardButtons />
               </div>
+
+              <ul className="body-card__param param">
+                {productTech.map(
+                  ({ name, value }, index) =>
+                    index < 4 && (
+                      <li className="param__descritption" key={name}>
+                        <span className="param__name">{name}</span>
+                        <span className="param__value">{value}</span>
+                      </li>
+                    ),
+                )}
+              </ul>
               <span className="body-card__id">ID: {productId}</span>
             </div>
           </div>
 
           <div className="body-card__descritption descritption">
             <div className="descritption__main">
-              <h3 className="descritption__title h3">About</h3>
-              <div className="descritption__block">
-                {product.description.map(({ text, title }) => (
-                  <Fragment key={title}>
-                    <h4 className="descritption__name h4">{title}</h4>
-                    <div className="descritption__text">
-                      {text.map(item => (
-                        <p className="descritption__paragraph" key={item}>
-                          {item}
-                        </p>
-                      ))}
-                    </div>
-                  </Fragment>
-                ))}
-              </div>
+              <h3 className="descritption__title h3 separator">About</h3>
+
+              {product.description.map(({ text, title }) => (
+                <div className="descritption__block" key={title}>
+                  <h4 className="descritption__name h4">{title}</h4>
+                  <div className="descritption__text">
+                    {text.map(item => (
+                      <p className="descritption__paragraph" key={item}>
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
             <div className="descritption__tech">
-              <h3 className="descritption__title h3">Tech specs</h3>
-              <ul className="descritption__info">
+              <h3 className="descritption__title h3 separator">Tech specs</h3>
+              <ul className="descritption__info param">
                 {productTech.map(({ name, value }) => (
-                  <li className="descritption__param param" key={name}>
+                  <li className="param__descritption" key={name}>
                     <span className="param__name">{name}</span>
                     <span className="param__value">{value}</span>
                   </li>
