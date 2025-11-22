@@ -2,57 +2,27 @@ import React, { useEffect, useState } from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import { useParams } from 'react-router-dom';
 import { Loader } from '../../shared/components/Loader/Loader';
-
-type Product = {
-  id: string;
-  name: string;
-  priceDiscount: number;
-  priceRegular: number;
-  images: string[];
-  colorsAvailable: string[];
-  capacityAvailable: string[];
-  screen: string;
-  resolution: string;
-  ram: string;
-  camera: string;
-  zoom: string;
-  cell: string[];
-  processor: string;
-  description: {
-    title: string;
-    text: string[];
-  }[];
-};
+import { getProductDetailsById } from '../../services/productsService';
+import { ProductDetails } from '../../types/Product';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
 
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<ProductDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedImg, setSelectedImg] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
 
   useEffect(() => {
+    if (!productId) {
+      return;
+    }
+
     async function loadData() {
       try {
-        const [phonesRes, tabletsRes, accessoriesRes] = await Promise.all([
-          fetch('/api/phones.json'),
-          fetch('/api/tablets.json'),
-          fetch('/api/accessories.json'),
-        ]);
+        const result = await getProductDetailsById(productId!);
 
-        const [phones, tablets, accessories] = await Promise.all([
-          phonesRes.json(),
-          tabletsRes.json(),
-          accessoriesRes.json(),
-        ]);
-
-        const found =
-          phones.find((p: { id: string }) => p.id === productId) ||
-          tablets.find((p: { id: string }) => p.id === productId) ||
-          accessories.find((p: { id: string }) => p.id === productId);
-
-        setProduct(found);
+        setProduct(result);
       } finally {
         setIsLoading(false);
       }
