@@ -18,7 +18,6 @@ const HomeCategories: React.FC = () => {
             <NavLink
               className={styles.categories__categoryLink}
               to={'/' + category}
-              state={category}
             >
               <img
                 className={
