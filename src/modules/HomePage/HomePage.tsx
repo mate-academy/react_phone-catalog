@@ -5,7 +5,7 @@ import HomeSlider from './HomeSlider';
 import HomeCatalog from './HomeCatalog';
 import HomeCategories from './HomeCategories';
 import { useContext } from 'react';
-import { getSortedProducts } from '../../utils/catalog';
+import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
 import { ProductCatalogContext } from '../../ProductsContext';
 
 export const HomePage = () => {
@@ -15,11 +15,16 @@ export const HomePage = () => {
   );
 
   const brandNewProducts = loaded
-    ? getSortedProducts(products, 'age').slice(0, SLIDER_COUNT)
+    ? getSortedProducts(products, ProductSortTypes.Age).slice(0, SLIDER_COUNT)
     : [];
+  /* eslint-disable @typescript-eslint/indent */
   const hotPricesProducts = loaded
-    ? getSortedProducts(products, 'hotPrice').slice(0, SLIDER_COUNT)
+    ? getSortedProducts(products, ProductSortTypes.HotPrice).slice(
+        0,
+        SLIDER_COUNT,
+      )
     : [];
+  /* eslint-enable @typescript-eslint/indent */
 
   return (
     <div className="container">

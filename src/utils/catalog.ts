@@ -1,26 +1,31 @@
 import { ProductCatalogItem } from '../types/ProductCatalogItem';
 
-export type ProductSortTypes = 'age' | 'title' | 'price' | 'hotPrice';
+export enum ProductSortTypes {
+  Age = 'age',
+  Title = 'title',
+  Price = 'price',
+  HotPrice = 'hotPrice',
+}
 
 export const getSortedProducts = (
   products: ProductCatalogItem[],
   sortType: ProductSortTypes,
 ): ProductCatalogItem[] => {
   switch (sortType) {
-    case 'age':
+    case ProductSortTypes.Age:
       return products.sort(
         (a: ProductCatalogItem, b: ProductCatalogItem) => b.year - a.year,
       );
-    case 'title':
+    case ProductSortTypes.Title:
       return products.sort((a: ProductCatalogItem, b: ProductCatalogItem) =>
         a.name.localeCompare(b.name),
       );
-    case 'price':
+    case ProductSortTypes.Price:
       return products.sort(
         (a: ProductCatalogItem, b: ProductCatalogItem) =>
           a.fullPrice - b.fullPrice,
       );
-    case 'hotPrice':
+    case ProductSortTypes.HotPrice:
       return products.sort(
         (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
       );
