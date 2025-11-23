@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Accessory, Phone, Tablet } from '../../api/types';
 import { DataContext } from '../../context/ContextProvider';
@@ -17,7 +17,13 @@ export const ProductDetailsPage = () => {
   const [isError, setIsError] = useState<boolean>(false);
   const [color, setColor] = useState<keyof typeof COLOR_MAP | null>(null);
   const { category, productId } = useParams();
-  const { phones, tablets, accessories, isLoading } = useContext(DataContext);
+  const { phones, tablets, accessories, products, isLoading } =
+    useContext(DataContext);
+  const idForCart = useMemo(() => {
+    const found = products.find(p => p.itemId === productId);
+
+    return found ? found.id : 0;
+  }, [products, productId]);
 
   useEffect(() => {
     let listToSearch: Phone[] | Tablet[] | Accessory[] = [];
@@ -82,9 +88,6 @@ export const ProductDetailsPage = () => {
     return <Loader />;
   }
 
-  // eslint-disable-next-line no-console
-  console.log(color);
-
   return (
     <section>
       <Breadcrumbs category={item.category} productName={item.name} />
@@ -95,6 +98,7 @@ export const ProductDetailsPage = () => {
         availableColors={item.colorsAvailable}
         currentColor={color}
         setColor={setColor}
+        id={idForCart}
       />
     </section>
   );
