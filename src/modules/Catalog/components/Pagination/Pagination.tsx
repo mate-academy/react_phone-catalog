@@ -1,5 +1,5 @@
 import scss from './Pagination.module.scss';
-import { ButtonArrow } from '../../shared/components/ButtonArrow';
+import { ButtonArrow } from '../../../shared/components/ButtonArrow';
 import classNames from 'classnames';
 
 interface Props {

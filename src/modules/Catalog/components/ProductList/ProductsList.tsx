@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
-import { Product } from '../../../api/types';
-import { Dropdowns } from './Dropdowns';
+import { Product } from '../../../../api/types';
+import { Dropdowns } from '../Dropdowns/Dropdowns';
 import scss from './ProductsList.module.scss';
-import { ProductCard } from '../../shared/components/ProductCard';
+import { ProductCard } from '../../../shared/components/ProductCard';
 import { useSearchParams } from 'react-router-dom';
-import { Pagination } from './Pagination';
+import { Pagination } from '../Pagination/Pagination';
 
 interface Props {
   items: Product[];

@@ -3,7 +3,7 @@ import { Product } from '../../api/types';
 import { DataContext } from '../../context/ContextProvider';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import scss from './Catalog.module.scss';
-import { ProductsList } from './components';
+import { ProductsList } from './components/ProductList';
 import { Loader } from '../shared/components/Loader';
 
 interface Props {

@@ -6,14 +6,16 @@ import scss from './ProductDetailsPage.module.scss';
 import { Loader } from '../shared/components/Loader';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { ButtonBack } from '../shared/components/ButtonBack';
-import { ProductGallery } from './components/ProductGallery';
+import { ProductGallery } from './components/ProductGallery/ProductGallery';
+import { ColorSelection } from './components/ColorSelection/ColorSelection';
+import { COLOR_MAP } from './utility/colorMap';
 
 export const ProductDetailsPage = () => {
   const [item, setItem] = useState<Phone | Tablet | Accessory | undefined>(
     undefined,
   );
   const [isError, setIsError] = useState<boolean>(false);
-
+  const [color, setColor] = useState<keyof typeof COLOR_MAP | null>(null);
   const { category, productId } = useParams();
   const { phones, tablets, accessories, isLoading } = useContext(DataContext);
 
@@ -43,9 +45,11 @@ export const ProductDetailsPage = () => {
 
       if (detailProd) {
         setItem(detailProd);
+        setColor(detailProd.color);
         setIsError(false);
       } else {
         setItem(undefined);
+        setColor(null);
         setIsError(true);
         // eslint-disable-next-line no-console
         console.error('Product was not found -->', productId);
@@ -74,9 +78,12 @@ export const ProductDetailsPage = () => {
     );
   }
 
-  if (item === undefined) {
+  if (item === undefined || color === null) {
     return <Loader />;
   }
+
+  // eslint-disable-next-line no-console
+  console.log(color);
 
   return (
     <section>
@@ -84,6 +91,11 @@ export const ProductDetailsPage = () => {
       <ButtonBack />
       <h2>{item.name}</h2>
       <ProductGallery item={item} />
+      <ColorSelection
+        availableColors={item.colorsAvailable}
+        currentColor={color}
+        setColor={setColor}
+      />
     </section>
   );
 };

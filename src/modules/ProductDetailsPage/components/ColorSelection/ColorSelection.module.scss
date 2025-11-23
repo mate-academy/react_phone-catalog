@@ -1,0 +1,58 @@
+.colorSelection {
+  &__label {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 100%;
+
+    color: rgba(137, 147, 154, 1);
+  }
+
+  &__colorOptions {
+    display: flex;
+    gap: 0.9rem;
+    padding: 0.8rem 0 2.4rem;
+  }
+
+  &__colorOption {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  &__colorSwatch {
+    display: block;
+    width: 3.2rem;
+    height: 3.2rem;
+
+    box-sizing: border-box;
+
+    border: 0.2rem solid rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 0.1rem #EBEBEB;
+    border-radius: 50%;
+
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  &__colorOption:checked + .colorSelection__colorSwatch {
+    box-shadow: 0 0 0 0.1rem rgba(49, 50, 55, 1);
+  }
+
+  &__colorOption:not(:checked) + .colorSelection__colorSwatch:hover {
+    box-shadow: 0 0 0 0.1rem rgba(180, 189, 195, 1);
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -1,3 +1,5 @@
+import { COLOR_MAP } from '../modules/ProductDetailsPage/utility/colorMap';
+
 export type Phone = {
   id: string;
   category: string;
@@ -7,8 +9,8 @@ export type Phone = {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
+  colorsAvailable: (keyof typeof COLOR_MAP)[];
+  color: keyof typeof COLOR_MAP;
   images: string[];
   description: [
     {
@@ -34,8 +36,8 @@ export type Tablet = {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
+  colorsAvailable: (keyof typeof COLOR_MAP)[];
+  color: keyof typeof COLOR_MAP;
   images: string[];
   description: [
     {
@@ -61,7 +63,7 @@ export type Product = {
   price: number;
   screen: string;
   capacity: string;
-  color: string;
+  color: keyof typeof COLOR_MAP;
   ram: string;
   year: number;
   image: string;
@@ -76,8 +78,8 @@ export type Accessory = {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
+  colorsAvailable: (keyof typeof COLOR_MAP)[];
+  color: keyof typeof COLOR_MAP;
   images: string[];
   description: [
     {
