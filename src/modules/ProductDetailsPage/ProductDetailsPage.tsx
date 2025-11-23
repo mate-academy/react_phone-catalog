@@ -3,7 +3,7 @@ import styles from './ProductDetailsPage.module.scss';
 import { useParams } from 'react-router-dom';
 import { Loader } from '../../shared/components/Loader/Loader';
 import { getProductDetailsById } from '../../services/productsService';
-import { ProductDetails } from '../../types/Product';
+import { ProductDetails } from '../../types/product';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();

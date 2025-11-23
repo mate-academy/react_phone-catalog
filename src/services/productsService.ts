@@ -1,4 +1,4 @@
-import { ProductDetails } from '../types/Product';
+import { Product, ProductDetails } from '../types/product';
 
 export async function fetchJson<T>(url: string): Promise<T> {
   const response = await fetch(url);
@@ -10,15 +10,19 @@ export async function fetchJson<T>(url: string): Promise<T> {
   return response.json();
 }
 
-export function getAllPhones() {
+export function getAllProducts() {
+  return fetchJson<Product[]>('/api/products.json');
+}
+
+function getAllPhones() {
   return fetchJson<ProductDetails[]>('/api/phones.json');
 }
 
-export function getAllTablets() {
+function getAllTablets() {
   return fetchJson<ProductDetails[]>('/api/tablets.json');
 }
 
-export function getAllAccessories() {
+function getAllAccessories() {
   return fetchJson<ProductDetails[]>('/api/accessories.json');
 }
 

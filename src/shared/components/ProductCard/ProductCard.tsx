@@ -54,6 +54,9 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
         <span className={styles.price}>${price}</span>
         {showOldPrice && <span className={styles.oldPrice}>${fullPrice}</span>}
       </div>
+
+      <hr className={styles.divider} />
+
       <ul className={styles.details}>
         <li>
           <span>Screen</span>

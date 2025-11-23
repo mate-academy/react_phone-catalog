@@ -3,50 +3,33 @@ import { PicturesSlider } from '../../shared/components/PicturesSlider';
 import { ProductsSlider } from '../../shared/components/ProductsSlider';
 import { ShopByCategory } from '../../shared/components/ShopByCategory';
 import styles from './HomePage.module.scss';
-
-type RawProduct = {
-  id: string;
-  name: string;
-  fullPrice: number;
-  price: number;
-  year: number;
-  image: string;
-  screen: string;
-  capacity: string;
-  ram: string;
-};
+import { Product } from '../../types/product';
+import { getAllProducts } from '../../services/productsService';
+import { mapProductToUiModel } from '../../mappers/productMapper';
 
 export const HomePage = () => {
-  const [all, setAll] = useState<RawProduct[]>([]);
+  const [all, setAll] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
-      .then(res => res.json())
-      .then((data: RawProduct[]) => setAll(data));
-  }, []);
+    async function loadAllProducts() {
+      const productsFromServer = await getAllProducts();
 
-  const toUi = (p: RawProduct) => ({
-    id: p.id,
-    title: p.name,
-    img: p.image,
-    price: p.price,
-    oldPrice: p.fullPrice > p.price ? p.fullPrice : undefined,
-    year: p.year,
-    screen: p.screen,
-    capacity: p.capacity,
-    ram: p.ram,
-  });
+      setAll(productsFromServer);
+    }
+
+    loadAllProducts();
+  }, []);
 
   const brandNew = [...all]
     .sort((a, b) => b.year - a.year)
     .slice(0, 10)
-    .map(toUi);
+    .map(mapProductToUiModel);
 
   const hotPrices = [...all]
     .filter(p => p.fullPrice > p.price)
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
     .slice(0, 10)
-    .map(toUi);
+    .map(mapProductToUiModel);
 
   return (
     <div className={styles.homePage}>

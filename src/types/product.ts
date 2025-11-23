@@ -1,18 +1,17 @@
 export interface Product {
-  id: string;
+  id: number;
+  itemId: string;
   category: string;
-  phoneId?: string;
-  itemId?: string;
+  name: string;
   fullPrice: number;
   price: number;
-  year: number;
-  image: string;
   screen: string;
   capacity: string;
   color: string;
   ram: string;
+  year: number;
+  image: string;
 }
-
 export interface ProductDetails {
   id: string;
   name: string;
@@ -32,4 +31,4 @@ export interface ProductDetails {
     title: string;
     text: string[];
   }[];
-};
+}
