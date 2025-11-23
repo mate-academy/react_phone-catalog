@@ -4,15 +4,24 @@ import Breadcrumbs from '../shared/Breadcrumbs/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
 import ProductList from './ProductList';
 import { useContext } from 'react';
-import { ProductCatalogContext } from '../../ProductsContext';
+import { ProductCatalogContext } from '../../ProductContext';
 import ProductListMenu from './ProductListMenu';
-import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
 import ProductPagination from './ProductPagination';
-import { useMenuSelectors } from './ProductPage.hooks';
+import { useMenuSelectors, useSelectedProduct } from './ProductPage.hooks';
+import Messages from '../shared/Message';
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
-  const { products, categories } = useContext(ProductCatalogContext);
+  const { products, categories, loading, loaded, error } = useContext(
+    ProductCatalogContext,
+  );
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const currentPage = Number(searchParams.get('page')) || 1;
+  const title = location.pathname.split('/').at(-1) || '';
+  const count = title ? categories[title] : 0;
+  const modelAmount = t('products_page.models', { count });
+
   const {
     sortValue,
     itemsOnPageValue,
@@ -21,34 +30,17 @@ export const ProductPage: React.FC = () => {
     handleSortChange,
     handleItemsOnPageChange,
   } = useMenuSelectors();
-  const location = useLocation();
-  const title =
-    typeof location.state === 'string'
-      ? location.state
-      : location.pathname.split('/').at(-1);
-  const count = title ? categories[title] : 0;
-  const modelAmount = t('products_page.models', { count });
 
-  const searchParams = new URLSearchParams(location.search);
-  const currentPage = Number(searchParams.get('page')) || 1;
-
-  let pageProducts = getSortedProducts(
-    products.filter(product => product.category === (title || '')),
-    sortValue.value as ProductSortTypes,
+  const { pageProducts, total } = useSelectedProduct(
+    products,
+    title,
+    sortValue,
+    itemsOnPageValue,
+    currentPage,
   );
 
-  const hasPagination = Number(itemsOnPageValue.value) > 0;
-
-  if (hasPagination) {
-    const perPage = Number(itemsOnPageValue.value);
-    const firstElementNumber = (currentPage - 1) * perPage;
-    const lastElementNumber = Math.min(
-      currentPage * perPage,
-      pageProducts.length - 1,
-    );
-
-    pageProducts = pageProducts.slice(firstElementNumber, lastElementNumber);
-  }
+  const isProductListEmpty = loaded && count === 0;
+  const hasProducts = loaded && count > 0;
 
   return (
     <div className="container">
@@ -57,28 +49,37 @@ export const ProductPage: React.FC = () => {
         <h1 className={styles.productPage__title}>
           {t(`products_page.${title}`)}
         </h1>
-        <p>{modelAmount}</p>
-        <ProductListMenu
-          sortValue={sortValue}
-          itemsOnPageValue={itemsOnPageValue}
-          handleSortChange={handleSortChange}
-          handleItemsOnPageChange={handleItemsOnPageChange}
-          sortByOptions={sortByOptions}
-          itemsOnPageOptions={itemsOnPageOptions}
-        />
-        <ProductList />
-        {hasPagination && (
-          <ProductPagination
-            total={pageProducts.length}
-            perPage={Number(itemsOnPageValue.value)}
-            currentPage={currentPage}
-          />
+        {loading && 'Loading'}
+        {error && <Messages type="error" />}
+        {isProductListEmpty && <Messages type="emptyList" category={title} />}
+
+        {hasProducts && (
+          <>
+            <p>{modelAmount}</p>
+            <ProductListMenu
+              sortValue={sortValue}
+              itemsOnPageValue={itemsOnPageValue}
+              handleSortChange={handleSortChange}
+              handleItemsOnPageChange={handleItemsOnPageChange}
+              sortByOptions={sortByOptions}
+              itemsOnPageOptions={itemsOnPageOptions}
+            />
+            <ProductList />
+            {+itemsOnPageValue.value > 0 && (
+              <ProductPagination
+                total={total}
+                perPage={Number(itemsOnPageValue.value)}
+                currentPage={currentPage}
+              />
+            )}
+            {pageProducts.map(product => (
+              <p key={product.name}>
+                {String(product.id).padStart(3, '0')} --- {product.name} *{' '}
+                {product.year} * ${product.price}
+              </p>
+            ))}
+          </>
         )}
-        {pageProducts.map(product => (
-          <p key={product.name}>
-            {product.name} {product.year} {product.fullPrice}
-          </p>
-        ))}
       </div>
     </div>
   );

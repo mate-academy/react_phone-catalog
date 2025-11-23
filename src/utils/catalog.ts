@@ -13,20 +13,20 @@ export const getSortedProducts = (
 ): ProductCatalogItem[] => {
   switch (sortType) {
     case ProductSortTypes.Age:
-      return products.sort(
+      return [...products].sort(
         (a: ProductCatalogItem, b: ProductCatalogItem) => b.year - a.year,
       );
     case ProductSortTypes.Title:
-      return products.sort((a: ProductCatalogItem, b: ProductCatalogItem) =>
-        a.name.localeCompare(b.name),
+      return [...products].sort(
+        (a: ProductCatalogItem, b: ProductCatalogItem) =>
+          a.name.localeCompare(b.name),
       );
     case ProductSortTypes.Price:
-      return products.sort(
-        (a: ProductCatalogItem, b: ProductCatalogItem) =>
-          a.fullPrice - b.fullPrice,
+      return [...products].sort(
+        (a: ProductCatalogItem, b: ProductCatalogItem) => a.price - b.price,
       );
     case ProductSortTypes.HotPrice:
-      return products.sort(
+      return [...products].sort(
         (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
       );
   }

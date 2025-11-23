@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { SelectOption } from '../../types/SelectOptions';
@@ -7,7 +8,9 @@ import {
   PRODUCT_LIST_MENU,
 } from './ProductPage.constants';
 import { ProductPageSearchParams } from './ProductPage.types';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { ProductCatalogItem } from '../../types/ProductCatalogItem';
+import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
 
 function checkSearchParam(
   params: string[],
@@ -107,4 +110,47 @@ export function useMenuSelectors() {
     handleSortChange,
     handleItemsOnPageChange,
   };
+}
+
+export function useSelectedProduct(
+  products: ProductCatalogItem[],
+  title: string,
+  sortValue: SelectOption,
+  itemsOnPageValue: SelectOption,
+  currentPage: number,
+) {
+  const [pageCategoryProducts, setPageCategoryProducts] = useState<
+    ProductCatalogItem[]
+  >([]);
+
+  const [sortedProduct, setSortedProduct] = useState<ProductCatalogItem[]>([]);
+  const [pageProducts, setPageProducts] = useState<ProductCatalogItem[]>([]);
+
+  useEffect(() => {
+    setPageCategoryProducts(
+      products.filter(product => product.category === (title || '')),
+    );
+  }, [products, title]);
+
+  useEffect(() => {
+    setSortedProduct(
+      getSortedProducts(
+        pageCategoryProducts,
+        sortValue.value as ProductSortTypes,
+      ),
+    );
+  }, [pageCategoryProducts, sortValue.value]);
+
+  useEffect(() => {
+    const currentPageProducts = +itemsOnPageValue.value
+      ? sortedProduct.slice(
+          (currentPage - 1) * +itemsOnPageValue.value,
+          Math.min(currentPage * +itemsOnPageValue.value, sortedProduct.length),
+        )
+      : [...sortedProduct];
+
+    setPageProducts(currentPageProducts);
+  }, [sortedProduct, itemsOnPageValue.value, currentPage]);
+
+  return { pageProducts, total: sortedProduct.length };
 }

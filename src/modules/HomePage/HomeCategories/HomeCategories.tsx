@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { getClassNames } from '../../../utils/classNames';
 import styles from './HomeCategories.module.scss';
 import { useContext } from 'react';
-import { ProductCatalogContext } from '../../../ProductsContext';
+import { ProductCatalogContext } from '../../../ProductContext';
 import { NavLink } from 'react-router-dom';
 
 const HomeCategories: React.FC = () => {

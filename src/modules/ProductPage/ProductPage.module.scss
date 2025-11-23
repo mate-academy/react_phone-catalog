@@ -10,4 +10,12 @@
       margin-top: 40px;
     }
   }
+
+  &__message {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
 }

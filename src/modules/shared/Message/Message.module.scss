@@ -1,0 +1,20 @@
+@use './../../../scss/main.scss' as *;
+
+.message {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  width: 100%;
+  gap: 14px;
+
+  @extend %body-text;
+
+  &__error {
+    padding: 16px;
+    background-color: $error-background-color;
+  }
+
+  &__warning {
+    padding: 16px;
+  }
+}

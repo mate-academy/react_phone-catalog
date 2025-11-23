@@ -8,4 +8,10 @@
   color: $body-background-color;
 
   @extend %buttons;
+
+  &_message {
+    width: fit-content;
+    height: 40px;
+    padding-inline: 20px;
+  }
 }

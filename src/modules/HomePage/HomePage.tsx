@@ -6,7 +6,8 @@ import HomeCatalog from './HomeCatalog';
 import HomeCategories from './HomeCategories';
 import { useContext } from 'react';
 import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
-import { ProductCatalogContext } from '../../ProductsContext';
+import { ProductCatalogContext } from '../../ProductContext';
+import Message from '../shared/Message';
 
 export const HomePage = () => {
   const { t } = useTranslation();
@@ -38,7 +39,7 @@ export const HomePage = () => {
           <HomeSlider />
         </div>
 
-        {error && 'Something went wrong!'}
+        {error && <Message type="error" />}
         {loading && 'Loading'}
 
         {loaded && (

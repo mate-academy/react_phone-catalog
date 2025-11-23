@@ -46,5 +46,14 @@
     "capacity": "Ємність",
     "ram": "ОЗП",
     "add_to_card": "До кошика"
+  },
+
+  "messages": {
+    "phones": "Телефонів",
+    "tablets": "Планшетів",
+    "accessories": "Аксесуарів",
+    "wrong": "Щось пошло не так!",
+    "emptyList": "{{category}} поки що немає.",
+    "reload": "Перезавантажити"
   }
 }

@@ -13,4 +13,4 @@ export const PRODUCT_LIST_MENU: {
 };
 
 export const DEFAULT_SORT: ProductSortTypes = ProductSortTypes.Age;
-export const DEFAULT_ITEMS_ON_PAGE = '4';
+export const DEFAULT_ITEMS_ON_PAGE = 'all';

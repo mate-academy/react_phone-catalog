@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import './App.scss';
 import Header from './modules/Header';
 import Footer from './modules/Footer';
-import { ProductCatalogProvider } from './ProductsContext';
+import { ProductCatalogProvider } from './ProductContext';
 
 export const App = () => {
   return (

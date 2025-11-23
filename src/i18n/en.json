@@ -45,5 +45,14 @@
     "capacity": "Capacity",
     "ram": "RAM",
     "add_to_card": "Add to card"
+  },
+
+  "messages": {
+    "phones": "phones",
+    "tablets": "tablets",
+    "accessories": "accessories",
+    "wrong": "Something went wrong!",
+    "emptyList": "There are no {{category}} yet.",
+    "reload": "Reload"
   }
 }
