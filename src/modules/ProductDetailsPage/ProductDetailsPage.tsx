@@ -14,6 +14,7 @@ import { Line } from '../shared/components/Line/Line';
 import { Price } from '../shared/components/Price';
 import { ButtonCart } from '../shared/components/ButtonCart';
 import { ButtonFav } from '../shared/components/ButtonFav';
+import { TechSpecs } from './components/TechSpecs/TechSpecs';
 
 export const ProductDetailsPage = () => {
   const [item, setItem] = useState<Phone | Tablet | Accessory | undefined>(
@@ -153,6 +154,7 @@ export const ProductDetailsPage = () => {
           className={scss.productDetailsPage__favButton}
         />
       </div>
+      <TechSpecs item={item} tech={false} />
     </section>
   );
 };
