@@ -1,6 +1,9 @@
 .catalog {
+  margin: 0 1.6rem;
+
   &__title {
-    padding-bottom: 0.8rem;
+    padding: 0;
+    margin: 2.4rem 0 0.8rem;
   }
 
   &__counter {
@@ -9,8 +12,6 @@
     line-height: 2.1rem;
     letter-spacing: 0%;
     color: rgba(137, 147, 154, 1);
-
-    margin: 0 1.6rem;
   }
 
   &__empty {
@@ -20,6 +21,6 @@
     letter-spacing: 0%;
     color: rgba(49, 50, 55, 1);
 
-    margin: 1.6rem;
+    margin: 1.6rem 0;
   }
 }

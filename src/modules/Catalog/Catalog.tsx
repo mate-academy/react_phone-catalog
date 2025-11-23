@@ -17,7 +17,7 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
   const amount = items.length;
 
   return (
-    <div className={scss.catalog}>
+    <section className={scss.catalog}>
       <Breadcrumbs category={title === 'Mobile phones' ? 'Phones' : title} />
       <h1 className={scss.catalog__title}>{title}</h1>
       <span className={scss.catalog__counter}>{`${amount} models`}</span>
@@ -31,6 +31,6 @@ export const Catalog: React.FC<Props> = ({ items, title }) => {
           There are no {title.toLowerCase()} yet
         </p>
       )}
-    </div>
+    </section>
   );
 };

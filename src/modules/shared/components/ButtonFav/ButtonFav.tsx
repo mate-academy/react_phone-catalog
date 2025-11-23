@@ -1,12 +1,14 @@
 import { useContext } from 'react';
 import scss from './ButtonFav.module.scss';
 import { DataContext } from '../../../../context/ContextProvider';
+import classNames from 'classnames';
 
 interface Props {
   productId: number;
+  className?: string;
 }
 
-export const ButtonFav: React.FC<Props> = ({ productId }) => {
+export const ButtonFav: React.FC<Props> = ({ productId, className }) => {
   const { favItems, setFavItems } = useContext(DataContext);
 
   const fav = favItems.includes(productId);
@@ -27,7 +29,7 @@ export const ButtonFav: React.FC<Props> = ({ productId }) => {
   return (
     <button
       type="button"
-      className={scss.buttonFav}
+      className={classNames(scss.buttonFav, className)}
       aria-label={fav ? 'Remove from favourites' : 'Add to favourites'}
       aria-pressed={fav}
       onClick={() => toggleFav(productId)}

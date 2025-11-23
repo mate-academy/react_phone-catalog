@@ -13,7 +13,7 @@ export const CapacitySelection: React.FC<Props> = ({
   setCapacity,
 }) => {
   return (
-    <section>
+    <section className={scss.capacitySelection}>
       <span className={scss.capacitySelection__label}>Select capacity</span>
       <div className={scss.capacitySelection__capacityOptions}>
         {availableCapacities.map(capacity => {

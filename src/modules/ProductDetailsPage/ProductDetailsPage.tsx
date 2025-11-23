@@ -10,6 +10,10 @@ import { ProductGallery } from './components/ProductGallery/ProductGallery';
 import { ColorSelection } from './components/ColorSelection/ColorSelection';
 import { COLOR_MAP } from './utility/colorMap';
 import { CapacitySelection } from './components/CapacitySelection';
+import { Line } from '../shared/components/Line/Line';
+import { Price } from '../shared/components/Price';
+import { ButtonCart } from '../shared/components/ButtonCart';
+import { ButtonFav } from '../shared/components/ButtonFav';
 
 export const ProductDetailsPage = () => {
   const [item, setItem] = useState<Phone | Tablet | Accessory | undefined>(
@@ -93,7 +97,7 @@ export const ProductDetailsPage = () => {
   }
 
   return (
-    <section>
+    <section className={scss.productDetailsPage}>
       <Breadcrumbs category={item.category} productName={item.name} />
       <ButtonBack />
       <h2>{item.name}</h2>
@@ -104,11 +108,24 @@ export const ProductDetailsPage = () => {
         setColor={setColor}
         id={idForCart}
       />
+      <Line />
       <CapacitySelection
         availableCapacities={item.capacityAvailable}
         currentCapacity={capacity}
         setCapacity={setCapacity}
       />
+      <Line />
+      <Price normal={item.priceRegular} discount={item.priceDiscount} />
+      <div className={scss.productDetailsPage__buttonsWrapper}>
+        <ButtonCart
+          productId={idForCart}
+          className={scss.productDetailsPage__cartButton}
+        />
+        <ButtonFav
+          productId={idForCart}
+          className={scss.productDetailsPage__favButton}
+        />
+      </div>
     </section>
   );
 };

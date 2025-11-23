@@ -1,4 +1,6 @@
 .capacitySelection {
+  margin: 2.4rem 0;
+
   &__label {
     font-family: Mont, sans-serif;
     font-weight: 600;
@@ -11,7 +13,7 @@
   &__capacityOptions {
     display: flex;
     gap: 0.8rem;
-    padding: 0.8rem 0 2.4rem;
+    padding-top: 0.8rem;
   }
 
   &__input {
