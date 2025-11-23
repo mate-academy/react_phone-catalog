@@ -3,6 +3,7 @@ import styles from './PhonesPage.module.scss';
 import { ProductsList } from '../../shared/components/ProductList/ProductsList';
 import { Loader } from '../../shared/components/Loader/Loader';
 import { Product } from '../../types/product';
+import { getPhonesFromProducts } from '../../services/productsService';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -13,16 +14,21 @@ export const PhonesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    setLoading(true);
-    fetch('/api/products.json')
-      .then(res => res.json())
-      .then((data: Product[]) => {
-        const filtered = data.filter(p => p.category === 'phones');
+    async function loadPhones() {
+      try {
+        setLoading(true);
 
-        setPhones(filtered);
-      })
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
+        const phonesFromServer = await getPhonesFromProducts();
+
+        setPhones(phonesFromServer);
+      } catch {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadPhones();
   }, []);
 
   const sorted = [...phones].sort((a, b) => {

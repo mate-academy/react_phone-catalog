@@ -40,3 +40,9 @@ export async function getProductDetailsById(id: string) {
     null
   );
 }
+
+export async function getPhonesFromProducts() {
+  const products = await getAllProducts();
+
+  return products.filter(p => p.category === 'phones');
+}

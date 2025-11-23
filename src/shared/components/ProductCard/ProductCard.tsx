@@ -11,13 +11,10 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
-  const { image, price, fullPrice, screen, capacity, ram } = product;
-
   const { favorites, setFavorites } = useContext(FavoriteContext);
   const { cartItems, setCartItems } = useContext(CartContext);
 
-  const favorite = favorites.map(e => e.id).includes(product.id);
-
+  const favorite = favorites.some(e => e.id === product.id);
   const hasCartItem = cartItems.some(item => item.id === product.id);
 
   function handleToggleFavorite() {
@@ -43,7 +40,11 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
   return (
     <article className={styles.card}>
       <Link to={`/product/${product.id}`} className={styles.imageWrapper}>
-        <img src={image} alt={product.name} className={styles.image} />
+        <img
+          src={`/${product.image}`}
+          alt={product.name}
+          className={styles.image}
+        />
       </Link>
 
       <h3 className={styles.title}>
@@ -51,8 +52,10 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
       </h3>
 
       <div className={styles.priceBlock}>
-        <span className={styles.price}>${price}</span>
-        {showOldPrice && <span className={styles.oldPrice}>${fullPrice}</span>}
+        <span className={styles.price}>${product.price}</span>
+        {showOldPrice && (
+          <span className={styles.oldPrice}>${product.fullPrice}</span>
+        )}
       </div>
 
       <hr className={styles.divider} />
@@ -60,15 +63,15 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
       <ul className={styles.details}>
         <li>
           <span>Screen</span>
-          <span>{screen}</span>
+          <span>{product.screen}</span>
         </li>
         <li>
           <span>Capacity</span>
-          <span>{capacity}</span>
+          <span>{product.capacity}</span>
         </li>
         <li>
           <span>RAM</span>
-          <span>{ram}</span>
+          <span>{product.ram}</span>
         </li>
       </ul>
 
