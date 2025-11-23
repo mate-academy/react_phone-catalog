@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
 import styles from './ProductCard.module.scss';
-import { UiProduct } from '../ProductsSlider/ProductSlider';
 import { FavoriteContext } from '../../contexts/FavoriteContext';
 import { CartContext, CartItem } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
+import { Product } from '../../../types/product';
 
 type Props = {
-  product: UiProduct;
+  product: Product;
   showOldPrice: boolean;
 };
 
 export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
-  const { title, img, price, fullPrice, screen, capacity, ram } = product;
+  const { image, price, fullPrice, screen, capacity, ram } = product;
 
   const { favorites, setFavorites } = useContext(FavoriteContext);
   const { cartItems, setCartItems } = useContext(CartContext);
@@ -43,11 +43,11 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
   return (
     <article className={styles.card}>
       <Link to={`/product/${product.id}`} className={styles.imageWrapper}>
-        <img src={img} alt={title} className={styles.image} />
+        <img src={image} alt={product.name} className={styles.image} />
       </Link>
 
       <h3 className={styles.title}>
-        <Link to={`/product/${product.id}`}>{title}</Link>
+        <Link to={`/product/${product.id}`}>{product.name}</Link>
       </h3>
 
       <div className={styles.priceBlock}>

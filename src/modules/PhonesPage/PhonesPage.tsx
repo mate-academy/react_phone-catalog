@@ -2,19 +2,10 @@ import { useEffect, useState } from 'react';
 import styles from './PhonesPage.module.scss';
 import { ProductsList } from '../../shared/components/ProductList/ProductsList';
 import { Loader } from '../../shared/components/Loader/Loader';
-
-type RawProduct = {
-  id: string;
-  name: string;
-  fullPrice: number;
-  price: number;
-  year: number;
-  image: string;
-  category: string;
-};
+import { Product } from '../../types/product';
 
 export const PhonesPage = () => {
-  const [phones, setPhones] = useState<RawProduct[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [sortBy, setSortBy] = useState('newest');
@@ -25,7 +16,7 @@ export const PhonesPage = () => {
     setLoading(true);
     fetch('/api/products.json')
       .then(res => res.json())
-      .then((data: RawProduct[]) => {
+      .then((data: Product[]) => {
         const filtered = data.filter(p => p.category === 'phones');
 
         setPhones(filtered);

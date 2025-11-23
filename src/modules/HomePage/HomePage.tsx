@@ -5,7 +5,6 @@ import { ShopByCategory } from '../../shared/components/ShopByCategory';
 import styles from './HomePage.module.scss';
 import { Product } from '../../types/product';
 import { getAllProducts } from '../../services/productsService';
-import { mapProductToUiModel } from '../../mappers/productMapper';
 
 export const HomePage = () => {
   const [all, setAll] = useState<Product[]>([]);
@@ -20,16 +19,12 @@ export const HomePage = () => {
     loadAllProducts();
   }, []);
 
-  const brandNew = [...all]
-    .sort((a, b) => b.year - a.year)
-    .slice(0, 10)
-    .map(mapProductToUiModel);
+  const brandNew = [...all].sort((a, b) => b.year - a.year).slice(0, 10);
 
   const hotPrices = [...all]
     .filter(p => p.fullPrice > p.price)
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-    .slice(0, 10)
-    .map(mapProductToUiModel);
+    .slice(0, 10);
 
   return (
     <div className={styles.homePage}>

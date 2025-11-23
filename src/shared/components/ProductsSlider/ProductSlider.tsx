@@ -1,23 +1,11 @@
 import React, { useState } from 'react';
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-
-export type UiProduct = {
-  id: number;
-  name: string;
-  title: string;
-  img: string;
-  price: number;
-  fullPrice: number;
-  year: number;
-  screen: string;
-  capacity: string;
-  ram: string;
-};
+import { Product } from '../../../types/product';
 
 type Props = {
   title: string;
-  products: UiProduct[];
+  products: Product[];
   itemsToShow?: number;
 };
 
