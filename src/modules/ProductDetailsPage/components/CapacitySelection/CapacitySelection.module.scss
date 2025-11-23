@@ -1,0 +1,52 @@
+.capacitySelection {
+  &__label {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 100%;
+
+    color: rgba(137, 147, 154, 1);
+  }
+
+  &__capacityOptions {
+    display: flex;
+    gap: 0.8rem;
+    padding: 0.8rem 0 2.4rem;
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  &__option {
+    width: 6.3rem;
+    height: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+    border: 0.1rem solid rgba(180, 189, 195, 1);
+
+    font-family: Mont, sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  &__input:checked + .capacitySelection__option {
+    border-color: rgba(49, 50, 55, 1);
+    background-color: rgba(49, 50, 55, 1);
+    color: rgba(255, 255, 255, 1);
+  }
+
+    &__input:not(:checked) + .capacitySelection__option:hover {
+    box-shadow: 0 0 0 0.1rem rgba(180, 189, 195, 1);
+  }
+}

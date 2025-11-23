@@ -9,6 +9,7 @@ import { ButtonBack } from '../shared/components/ButtonBack';
 import { ProductGallery } from './components/ProductGallery/ProductGallery';
 import { ColorSelection } from './components/ColorSelection/ColorSelection';
 import { COLOR_MAP } from './utility/colorMap';
+import { CapacitySelection } from './components/CapacitySelection';
 
 export const ProductDetailsPage = () => {
   const [item, setItem] = useState<Phone | Tablet | Accessory | undefined>(
@@ -16,6 +17,7 @@ export const ProductDetailsPage = () => {
   );
   const [isError, setIsError] = useState<boolean>(false);
   const [color, setColor] = useState<keyof typeof COLOR_MAP | null>(null);
+  const [capacity, setCapacity] = useState<string | null>(null);
   const { category, productId } = useParams();
   const { phones, tablets, accessories, products, isLoading } =
     useContext(DataContext);
@@ -52,10 +54,12 @@ export const ProductDetailsPage = () => {
       if (detailProd) {
         setItem(detailProd);
         setColor(detailProd.color);
+        setCapacity(detailProd.capacity);
         setIsError(false);
       } else {
         setItem(undefined);
         setColor(null);
+        setCapacity(null);
         setIsError(true);
         // eslint-disable-next-line no-console
         console.error('Product was not found -->', productId);
@@ -84,7 +88,7 @@ export const ProductDetailsPage = () => {
     );
   }
 
-  if (item === undefined || color === null) {
+  if (item === undefined || color === null || capacity === null) {
     return <Loader />;
   }
 
@@ -99,6 +103,11 @@ export const ProductDetailsPage = () => {
         currentColor={color}
         setColor={setColor}
         id={idForCart}
+      />
+      <CapacitySelection
+        availableCapacities={item.capacityAvailable}
+        currentCapacity={capacity}
+        setCapacity={setCapacity}
       />
     </section>
   );
