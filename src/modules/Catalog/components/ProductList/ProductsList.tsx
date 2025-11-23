@@ -104,6 +104,11 @@ export const ProductsList: React.FC<Props> = ({ items }) => {
           prevParams.set('page', newPageNumber.toString());
         }
 
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+
         return prevParams;
       },
       { replace: true },
