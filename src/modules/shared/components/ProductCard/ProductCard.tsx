@@ -2,7 +2,7 @@ import { Product } from '../../../../api/types';
 import scss from './ProductCard.module.scss';
 import { ButtonFav } from '../ButtonFav/ButtonFav';
 import { ButtonCart } from '../ButtonCart/ButtonCart';
-import { Specs } from '../Specs/Specs';
+import { Specs } from './Specs';
 import { Price } from '../Price/Price';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
