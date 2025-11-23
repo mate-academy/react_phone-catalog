@@ -1,10 +1,10 @@
-import { UiProduct } from '../components/ProductsSlider/ProductSlider';
 import React, { createContext, useEffect, useMemo, useState } from 'react';
+import { Product } from '../../types/product';
 
 export type CartItem = {
   id: number;
   quantity: number;
-  product: UiProduct;
+  product: Product;
 };
 
 export type Props = {

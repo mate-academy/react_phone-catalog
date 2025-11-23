@@ -34,12 +34,12 @@ export const CartRecord: React.FC<Props> = ({
 
       <img
         className={styles.image}
-        src={item.product.img}
+        src={item.product.image}
         alt={item.product.name}
       />
 
       <div className={styles.info}>
-        <p className={styles.title}>{item.product.title}</p>
+        <p className={styles.title}>{item.product.name}</p>
       </div>
 
       <div className={styles.counter}>
@@ -59,7 +59,7 @@ export const CartRecord: React.FC<Props> = ({
         <span className={styles.quantity}>{item.quantity}</span>
 
         <button
-          className={styles.counterBtn}
+          className={styles.counterButton}
           type="button"
           aria-label="Increase quantity"
           onClick={() => onIncrement(item.id)}

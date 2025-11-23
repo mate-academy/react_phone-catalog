@@ -4,18 +4,26 @@ import { CartRecord } from '../CartItem/CartRecord';
 
 type Props = {
   items: CartItem[];
+  onIncrement: (id: number) => void;
+  onDecrement: (id: number) => void;
+  onRemove: (id: number) => void;
 };
 
-export const CartItemList: React.FC<Props> = ({ items }) => {
+export const CartItemList: React.FC<Props> = ({
+  items,
+  onIncrement,
+  onDecrement,
+  onRemove,
+}) => {
   return (
     <div>
-      {items.map((item, index) => (
+      {items.map(item => (
         <CartRecord
-          key={index}
+          key={item.id}
           item={item}
-          onIncrement={}
-          onDecrement={}
-          onRemove={}
+          onIncrement={onIncrement}
+          onDecrement={onDecrement}
+          onRemove={onRemove}
         />
       ))}
     </div>
