@@ -20,58 +20,85 @@ export const ProductDetailsPage = () => {
     undefined,
   );
   const [isError, setIsError] = useState<boolean>(false);
-  const [color, setColor] = useState<keyof typeof COLOR_MAP | null>(null);
-  const [capacity, setCapacity] = useState<string | null>(null);
   const { category, productId } = useParams();
   const { phones, tablets, accessories, products, isLoading } =
     useContext(DataContext);
+
+  const navigate = useNavigate();
+
   const idForCart = useMemo(() => {
     const found = products.find(p => p.itemId === productId);
 
     return found ? found.id : 0;
   }, [products, productId]);
 
-  useEffect(() => {
-    let listToSearch: Phone[] | Tablet[] | Accessory[] = [];
+  const variants = useMemo(() => {
+    let list: Phone[] | Tablet[] | Accessory[] = [];
 
     switch (category) {
       case 'phones':
-        listToSearch = phones;
+        list = phones;
         break;
       case 'tablets':
-        listToSearch = tablets;
+        list = tablets;
         break;
       case 'accessories':
-        listToSearch = accessories;
+        list = accessories;
         break;
       default:
-        setIsError(true);
-        // eslint-disable-next-line no-console
-        console.error('Unknown category:', category);
-
-        return;
+        return [];
     }
 
-    if (listToSearch && listToSearch.length > 0) {
-      const detailProd = listToSearch.find(prod => prod.id === productId);
+    return list;
+  }, [category, phones, tablets, accessories]);
+
+  useEffect(() => {
+    if (variants.length > 0) {
+      const detailProd = variants.find(prod => prod.id === productId);
 
       if (detailProd) {
         setItem(detailProd);
-        setColor(detailProd.color);
-        setCapacity(detailProd.capacity);
         setIsError(false);
       } else {
         setItem(undefined);
-        setColor(null);
-        setCapacity(null);
         setIsError(true);
-        // eslint-disable-next-line no-console
-        console.error('Product was not found -->', productId);
       }
     }
-  }, [phones, tablets, accessories, productId, category]);
+  }, [productId, variants]);
 
-  const navigate = useNavigate();
+  const handleColorChange = (newColor: keyof typeof COLOR_MAP) => {
+    if (!item) {
+      return;
+    }
+
+    const productToNav = variants.find(
+      p =>
+        p.namespaceId === item.namespaceId &&
+        p.capacity === item.capacity &&
+        p.color === newColor,
+    );
+
+    if (productToNav) {
+      navigate(`/${category}/${productToNav.id}`);
+    }
+  };
+
+  const handleCapacityChange = (newCapacity: string) => {
+    if (!item) {
+      return;
+    }
+
+    const productToNav = variants.find(
+      p =>
+        p.namespaceId === item.namespaceId &&
+        p.capacity === newCapacity &&
+        p.color === item.color,
+    );
+
+    if (productToNav) {
+      navigate(`/${category}/${productToNav.id}`);
+    }
+  };
 
   if (isLoading) {
     return <Loader />;
@@ -92,7 +119,7 @@ export const ProductDetailsPage = () => {
     );
   }
 
-  if (item === undefined || color === null || capacity === null) {
+  if (!item) {
     return <Loader />;
   }
 
@@ -104,15 +131,15 @@ export const ProductDetailsPage = () => {
       <ProductGallery item={item} />
       <ColorSelection
         availableColors={item.colorsAvailable}
-        currentColor={color}
-        setColor={setColor}
+        currentColor={item.color}
+        setColor={handleColorChange}
         id={idForCart}
       />
       <Line />
       <CapacitySelection
         availableCapacities={item.capacityAvailable}
-        currentCapacity={capacity}
-        setCapacity={setCapacity}
+        currentCapacity={item.capacity}
+        setCapacity={handleCapacityChange}
       />
       <Line />
       <Price normal={item.priceRegular} discount={item.priceDiscount} />

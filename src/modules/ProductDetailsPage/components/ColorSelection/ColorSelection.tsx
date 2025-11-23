@@ -5,7 +5,7 @@ import React from 'react';
 interface Props {
   availableColors: (keyof typeof COLOR_MAP)[];
   currentColor: keyof typeof COLOR_MAP;
-  setColor: React.Dispatch<React.SetStateAction<keyof typeof COLOR_MAP | null>>;
+  setColor: (color: keyof typeof COLOR_MAP) => void;
   id: number;
 }
 
