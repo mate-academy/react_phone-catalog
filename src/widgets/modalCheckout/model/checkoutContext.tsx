@@ -1,12 +1,14 @@
 import { createContext, ReactNode, useRef, useState } from 'react';
-import { Pickup, Shipment, UserDetails } from '@shared/api/types/bodies.types';
-import { DeliveryTypes } from '@shared/api/types/bodies.enums';
+import { Address, Birthday, UserDetails } from '@shared/api/types/bodies.types';
+import { DeliveryTypes, Months } from '@shared/api/types/bodies.enums';
 import { createContextHook } from '@shared/helpers';
 
 type CheckoutTypes = {
   userDetails: React.MutableRefObject<UserDetails>;
-  deliveryDetails: React.MutableRefObject<Pickup | Shipment>;
+  deliveryType: React.MutableRefObject<DeliveryTypes>;
+  deliveryAddress: React.MutableRefObject<Address>;
   dataProcessingAgreement: React.MutableRefObject<boolean>;
+  birthdayRef: React.MutableRefObject<Birthday>;
 };
 
 type CheckoutStepsType = {
@@ -26,21 +28,31 @@ const CheckoutProvider = ({ children }: { children: ReactNode }) => {
     birthday: undefined,
   });
 
-  const deliveryDetails = useRef<Shipment | Pickup>({
-    type: '' as DeliveryTypes,
-    deliveryAddress: {
-      country: '',
-      city: '',
-      postalCode: 0,
-      street: '',
-      buildingNumber: '',
-      apartment: undefined,
-    },
+  const birthdayRef = useRef<Birthday>({
+    day: 0,
+    month: '' as Months,
+    year: 0,
+  } as Birthday);
+
+  const deliveryType = useRef<DeliveryTypes>('' as DeliveryTypes);
+  const deliveryAddress = useRef<Address>({
+    country: '',
+    city: '',
+    postalCode: '',
+    street: '',
+    buildingNumber: '',
+    apartment: '',
   });
 
   const dataProcessingAgreement = useRef(false);
 
-  const value = { userDetails, deliveryDetails, dataProcessingAgreement };
+  const value = {
+    userDetails,
+    deliveryType,
+    deliveryAddress,
+    dataProcessingAgreement,
+    birthdayRef,
+  };
 
   return (
     <CheckoutContext.Provider value={value}>

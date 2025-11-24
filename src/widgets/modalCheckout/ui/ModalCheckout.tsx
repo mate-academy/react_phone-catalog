@@ -2,6 +2,7 @@ import styles from './modalCheckout.module.scss';
 import { PersonalDataForm } from './personalDataForm';
 import { CheckoutProvider } from '../model';
 import { Steps } from './checkoutSteps/Steps';
+import { DeliveryForm } from './deliveryForm/DeliveryForm';
 
 export const ModalCheckout = () => {
   return (
@@ -13,7 +14,7 @@ export const ModalCheckout = () => {
           </Steps.Step>
 
           <Steps.Step step={2}>
-            <div />
+            <DeliveryForm />
           </Steps.Step>
 
           <Steps.Step step={3}>

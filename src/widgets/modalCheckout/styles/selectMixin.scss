@@ -1,0 +1,35 @@
+@use '@shared/styles' as s;
+
+@mixin modal-select {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  position: relative;
+
+  border: 1px solid s.$c-icons;
+  align-items: center;
+
+  &:hover {
+    border-color: s.$c-grey-secondary;
+  }
+
+  > select {
+    border: none;
+    padding: 0 15px;
+    width: 100%;
+    height: 100%;
+
+    > option {
+      text-transform: capitalize;
+    }
+  }
+
+  :last-child {
+    justify-self: center;
+    position: absolute;
+    right: 0;
+    width: 40px;
+    z-index: 0;
+    pointer-events: none;
+  }
+}

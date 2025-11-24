@@ -1,49 +1,47 @@
 import { ArrowIcon } from '@shared/icons';
 import styles from './deliveryForm.module.scss';
+import { useCheckout } from '@widgets/modalCheckout/model';
+import { DeliveryTypes } from '@shared/api/types/bodies.enums';
 import { useState } from 'react';
-
-enum DeliveryMethods {
-  ND = 'In-store pickup',
-  COURIER = 'Courier',
-  REG = 'Regular shipping',
-}
+import { DeliveryDetails } from './deliveryDetails/DeliveryDetails';
 
 export const DeliveryForm = () => {
-  const [delivery, setDelivery] = useState<DeliveryMethods>(DeliveryMethods.ND);
+  const { deliveryType } = useCheckout();
+  const [tick, setTick] = useState<boolean>(false);
+
+  const uiToData: Record<string, DeliveryTypes> = {
+    'In store pickup': DeliveryTypes.PICKUP,
+    'DPD express': DeliveryTypes.DPD,
+    'UPS standart': DeliveryTypes.UPS,
+  };
+
+  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    deliveryType.current = uiToData[e.target.value];
+    setTick(!tick);
+  };
 
   return (
-    <fieldset className={styles.main}>
-      <legend className={styles.h3}>Shipping details</legend>
-      <label htmlFor="deliveryMethod">Delivery method</label>
+    <fieldset className={styles['form-container']}>
+      <legend className={styles.heading}>shipping details</legend>
+      <label htmlFor="deliveryType">delivery method</label>
       <div className={styles['select-wrapper']}>
-        <select name="deliveryMethod" id="deliveryMethod" required>
-          {Object.values(DeliveryMethods).map(el => (
+        <select
+          name="deliveryType"
+          id="deliveryType"
+          required
+          onChange={handleSelect}
+        >
+          <option selected disabled>
+            Please, select delivery method
+          </option>
+          {Object.keys(uiToData).map(el => (
             <option key={el}>{el}</option>
           ))}
         </select>
         <ArrowIcon direction="down" />
       </div>
-      <div className={styles['input-wrapper']}>
-        <label htmlFor="street">street</label>
-        <input type="text" id="street" name="street" required />
-      </div>
-      <div className={styles['input-wrapper']}>
-        <label htmlFor="number">number</label>
-        <input type="text" id="number" name="number" required />
-      </div>
-      <div className={styles['input-wrapper']}>
-        <label htmlFor="zip">ZIP/Postal code</label>
-        <input type="text" id="zip" name="zip" required />
-      </div>
-      <div className={styles['input-wrapper']}>
-        <label htmlFor="city">city</label>
-        <input type="email" id="city" name="city" required />
-      </div>
-      <div className={styles['select-wrapper']}>
-        <label htmlFor="country">country</label>
-        <select name="country" id="country" required></select>
-        <ArrowIcon direction="down" />
-      </div>
+      {(deliveryType.current === DeliveryTypes.DPD ||
+        deliveryType.current === DeliveryTypes.UPS) && <DeliveryDetails />}
     </fieldset>
   );
 };

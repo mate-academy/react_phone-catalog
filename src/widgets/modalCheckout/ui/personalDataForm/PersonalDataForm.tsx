@@ -30,11 +30,11 @@ export const PersonalDataForm = () => {
   ];
 
   return (
-    <fieldset className={styles.main}>
-      <legend className={styles.h3}>Personal details</legend>
+    <fieldset className={styles['form-container']}>
+      <legend className={styles.heading}>Personal details</legend>
       {inputs.map(el => (
         <div className={styles['input-wrapper']} key={el.id}>
-          <label htmlFor="firstName">{el.title}</label>
+          <label htmlFor={el.id}>{el.title}</label>
           <input
             type="text"
             id={el.id}

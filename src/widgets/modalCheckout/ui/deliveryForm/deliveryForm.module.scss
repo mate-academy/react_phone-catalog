@@ -1,74 +1,18 @@
 @use '@shared/styles' as s;
+@use '../../styles' as l;
 
-.main {
-  display: grid;
-  padding-top: 10px;
-  grid-template-rows: repeat(4, 1fr);
-  border: none;
-  gap: 20px;
-  width: 100%;
-}
-
-.h3 {
-  @include s.t-h4;
-
-}
-
-.input-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.form-container {
+  @include l.form-column;
 
   > label {
-    @include s.t-body-text;
-
-    text-transform: capitalize;
-    color: s.$c-grey-secondary;
+    @include l.input-label;
   }
+}
 
-  > input {
-    height: 40px;
-    border: 1px solid s.$c-icons;
-    padding: 0 15px;
-
-    @include s.t-button-text;
-
-    &:hover {
-      border-color: s.$c-grey-secondary;
-    }
-
-    &:focus {
-      border-color:s.$c-grey-primary;
-    }
-  }
+.heading {
+  @include l.form-legend;
 }
 
 .select-wrapper {
-  display: flex;
-  height: 40px;
-  width: 100%;
-  position: relative;
-
-  border: 1px solid s.$c-icons;
-  align-items: center;
-
-  &:hover {
-    border-color: s.$c-grey-secondary;
-  }
-
-  > select {
-    border: none;
-    padding: 0 15px;
-    width: 100%;
-    text-transform: capitalize;
-  }
-
-  :last-child {
-    justify-self: center;
-    position: absolute;
-    right: 0;
-    width: 40px;
-    z-index: 0;
-    pointer-events: none;
-  }
+  @include l.modal-select;
 }

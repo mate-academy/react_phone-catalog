@@ -9,5 +9,6 @@
   display: grid;
   place-items: center;
 
-  z-index: s.$c-header;
+  z-index: s.$c-focus;
+  overflow-y: auto;
 }

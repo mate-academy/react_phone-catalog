@@ -20,10 +20,10 @@ type UserDetails = {
 type Address = {
   country: string;
   city: string;
-  postalCode: number;
+  postalCode: string;
   street: string;
   buildingNumber: string;
-  apartment?: number;
+  apartment?: string;
 };
 
 type Pickup = {

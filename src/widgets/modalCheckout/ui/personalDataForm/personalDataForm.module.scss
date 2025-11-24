@@ -1,46 +1,14 @@
 @use '@shared/styles' as s;
+@use '../../styles' as l;
 
-.main {
-  display: flex;
-  flex-direction: column;
-  padding-top: 10px;
-  border: none;
-  gap: 20px;
-  width: 100%;
+.form-container {
+  @include l.form-column;
 }
 
-.h3 {
-  @include s.t-h4;
-
+.heading {
+  @include l.form-legend;
 }
 
 .input-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-
-  > label {
-    @include s.t-body-text;
-
-    text-transform: capitalize;
-    color: s.$c-grey-secondary;
-  }
-
-  > input {
-    height: 40px;
-    border: 1px solid s.$c-icons;
-    padding: 0 15px;
-
-    @include s.t-button-text;
-
-    &:hover {
-      border-color: s.$c-grey-secondary;
-    }
-
-    &:focus {
-      border-color:s.$c-grey-primary;
-    }
-  }
+  @include l.text-input;
 }
-
-

@@ -1,0 +1,28 @@
+@use '@shared/styles' as s;
+@use './generalMixins.scss' as l;
+
+@mixin text-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  > label {
+    @include l.input-label;
+  }
+
+  > input {
+    height: 40px;
+    border: 1px solid s.$c-icons;
+    padding: 0 15px;
+
+    @include s.t-button-text;
+
+    &:hover {
+      border-color: s.$c-grey-secondary;
+    }
+
+    &:focus {
+      border-color:s.$c-grey-primary;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@use '@shared/styles' as s;
+
+@mixin form-legend {
+  @include s.t-h4;
+
+  color: s.$c-grey-primary;
+  padding-bottom: 10px;
+  text-transform: capitalize;
+}
+
+@mixin input-label {
+  @include s.t-body-text;
+
+  color: s.$c-grey-secondary;
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+
+@mixin form-column {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  border: none;
+  gap: 20px;
+  width: 100%;
+}

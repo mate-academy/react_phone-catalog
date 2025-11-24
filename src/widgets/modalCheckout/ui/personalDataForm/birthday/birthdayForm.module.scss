@@ -1,54 +1,36 @@
 @use '@shared/styles' as s;
+@use '../../../styles' as l;
 
 .birthdate {
   border: none;
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  gap: 20px;
 
   > legend {
-    @include s.t-body-text;
-
-    text-transform: capitalize;
-    color: s.$c-grey-secondary;
-    grid-row: 1;
+    @include l.form-legend ;
   }
 
-  > .select-wrapper {
-    display: flex;
-    height: 40px;
-    width: 100%;
-    position: relative;
-
-    border: 1px solid s.$c-icons;
-    align-items: center;
-
-    &:hover {
-      border-color: s.$c-grey-secondary;
-    }
-
-    > select {
-      border: none;
-      padding: 0 15px;
-      width: 100%;
-      text-transform: capitalize;
-    }
-
-    :last-child {
-      justify-self: center;
-      position: absolute;
-      right: 0;
-      width: 40px;
-      z-index: 0;
-      pointer-events: none;
-    }
-  }
-
-  @media (min-width: s.$c-BREAKPOINT_TAB) {
+  .inner-container {
     display: grid;
-    padding-top: 5px;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    grid-template: repeat(3, 20px 40px) / 1fr;
+    align-items: center;
+    gap: 5px;
+
+    > label {
+      @include l.input-label;
+    }
+
+    > .select-wrapper {
+      @include l.modal-select;
+    }
+
+    @media(min-width: s.$c-BREAKPOINT_TAB) {
+      grid-template: 20px 40px / repeat(3, 1fr);
+
+      > label {
+        grid-row: 1;
+      }
+    }
   }
 }
