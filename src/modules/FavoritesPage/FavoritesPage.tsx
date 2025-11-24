@@ -3,7 +3,6 @@ import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
 import { useContext, useEffect, useState } from 'react';
 import { ShoppingContex } from '../../context/ShoppingContex';
 import { Card, ProductsEmpty } from '@GlobalComponents';
-import { Products } from '../../types/products';
 import { ToastContainer } from 'react-toastify';
 import { useTimer } from '../../Hooks/useTimer';
 import { Skeleton } from '../ProductCard';
@@ -63,7 +62,7 @@ export const FavoritesPage = () => {
                   <ul className={style.items}>
                     {favoritItems.map(item => (
                       <li key={item.id}>
-                        <Card key={item.id} title="" item={item as Products} />
+                        <Card key={item.id} title="" item={item} />
                       </li>
                     ))}
                   </ul>

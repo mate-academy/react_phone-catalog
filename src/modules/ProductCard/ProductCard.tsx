@@ -320,11 +320,11 @@ export const ProductCard = () => {
 
                           <div className={style.price}>
                             <p className={style.price__device}>
-                              ${item.priceRegular}
+                              ${item.priceDiscount}
                             </p>
-                            {item.priceDiscount && (
+                            {item.priceRegular && (
                               <p className={style.price__discount}>
-                                ${item.priceDiscount}
+                                ${item.priceRegular}
                               </p>
                             )}
                           </div>
