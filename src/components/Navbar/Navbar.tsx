@@ -1,17 +1,32 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import shopping from '@Images/icons/Shopping-bag.svg';
-import like from '@Images/icons/like-icons.svg';
 import style from './Navbar.module.scss';
-import { useContext, useState } from 'react';
-import { CartContext } from '../../context/Cart';
+import { useContext, useEffect, useState } from 'react';
+import { ShoppingContex } from '../../context/ShoppingContex';
+import cn from 'classnames';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, favoritItems } = useContext(ShoppingContex);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    cn(style.navbar__link, {
+      [style['is--active']]: isActive,
+    });
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+
+    return () => document.body.classList.remove('menu-open');
+  }, [isOpen]);
 
   return (
     <>
@@ -20,76 +35,90 @@ const Navbar = () => {
       >
         <ul className={style.navbar__list}>
           <li>
-            <Link
+            <NavLink
               onClick={() => {
                 window.scrollTo({
                   top: 0,
                 });
+                toggleMenu();
               }}
-              className={style.navbar__link}
+              className={getLinkClass}
               to="/"
             >
               home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               onClick={() => {
                 window.scrollTo({
                   top: 0,
                 });
+                toggleMenu();
               }}
-              className={style.navbar__link}
+              className={getLinkClass}
               to="/phones"
             >
               Phones
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               onClick={() => {
                 window.scrollTo({
                   top: 0,
                 });
+                toggleMenu();
               }}
-              className={style.navbar__link}
+              className={getLinkClass}
               to="/tablets"
             >
               tablets
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               onClick={() => {
                 window.scrollTo({
                   top: 0,
 
                   behavior: 'smooth',
                 });
+                toggleMenu();
               }}
-              className={style.navbar__link}
+              className={getLinkClass}
               to="/accessories"
             >
               accessories
-            </Link>
+            </NavLink>
           </li>
         </ul>
 
         <div className={`${style.actions}`}>
-          <a
-            className={`${style.navbar__link} ${style['navbar__link--action']}`}
+          <NavLink
+            onClick={toggleMenu}
+            to={'favorites'}
+            className={props =>
+              cn(getLinkClass(props), style['navbar__link--action'])
+            }
           >
-            <img src={like} alt="like" />
-          </a>
-          <Link
+            <img src={shopping} alt="favorits" />
+            {!!favoritItems.length && (
+              <span className={style.shopping}>{favoritItems.length}</span>
+            )}
+          </NavLink>
+          <NavLink
+            onClick={toggleMenu}
             to={'cart'}
-            className={`${style.navbar__link} ${style['navbar__link--action']}`}
+            className={props =>
+              cn(getLinkClass(props), style['navbar__link--action'])
+            }
           >
             <img src={shopping} alt="shopping" />
             {!!cartItems.length && (
               <span className={style.shopping}>{cartItems.length}</span>
             )}
-          </Link>
+          </NavLink>
         </div>
       </nav>
 

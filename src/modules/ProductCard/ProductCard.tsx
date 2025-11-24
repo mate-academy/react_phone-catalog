@@ -32,19 +32,26 @@ import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import Lightbox from 'yet-another-react-lightbox';
 //#endregion
 
-import cn from 'classnames';
-import { CartContext } from '../../context/Cart';
+//#region Context
+import { ShoppingContex } from '../../context/ShoppingContex';
+//#endregion
 
-import { Slide, toast, ToastContainer } from 'react-toastify';
+//#region other
+import cn from 'classnames';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { findISelectedItem } from '../../utils/findSelectedItem';
+import { showNotify } from '../../utils/showNotify';
+//#endregion
 
 export const ProductCard = () => {
-  //Route
+  //#regionRoute
   const { pathname } = useLocation();
   const { productId } = useParams();
   const categoryName = pathname.split('/')[1];
+  //#endregion
 
-  //State
+  //#regionState
   const [item, setItem] = useState<Device>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
@@ -53,13 +60,19 @@ export const ProductCard = () => {
   const [baseSlug, setBaseSlug] = useState<string>('');
   const [index, setIndex] = useState<number>(0);
   const [OpenGallery, setOpenGallery] = useState(false);
+  //#endregion
 
-  //Hooks
+  //#regionHooks
   const { start, clear } = useTimer();
+  //#endregion
 
-  //Context
-  const { cartItems, increaseToCart } = useContext(CartContext);
+  //#regionContext
+  const { toggleFavorite, favoritItems, cartItems, increaseToCart } =
+    useContext(ShoppingContex);
 
+  //#endregion
+
+  //#regionFetched
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
@@ -114,23 +127,24 @@ export const ProductCard = () => {
 
     return () => clear();
   }, [productId, start, clear, categoryName]);
+  //#endregion
 
-  const notifyAddedToCart = (newItem: Device) =>
-    toast.success(`${newItem.name} added to cart!`, {
-      position: 'bottom-right',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-      transition: Slide,
-    });
+  //#regionSelectedItems
+  const selected = findISelectedItem(cartItems, item?.name);
+  const isFavorit = findISelectedItem(favoritItems, item?.name);
 
-  const selected = cartItems.find(device => {
-    return device.name === item?.name;
-  });
+  const notifyAddedFavorit = (newItem: Device) => {
+    if (!isFavorit) {
+      return showNotify(`${newItem.name} Added to favorites!`, 'dark');
+    } else {
+      return showNotify(`${newItem.name} Removed from favorites!`);
+    }
+  };
+
+  const notifyAddedToCart = (newItem: Device) => {
+    showNotify(`${newItem.name} added to cart!`, 'dark');
+  };
+  //#endregion
 
   return (
     <>
@@ -318,8 +332,13 @@ export const ProductCard = () => {
                             className={`${style.card__button} ${style.container}`}
                           >
                             <Button
+                              notifyAddedFavorit={() =>
+                                notifyAddedFavorit(item)
+                              }
                               isAdded={!!selected}
-                              notifyAdded={() => notifyAddedToCart(item)}
+                              isFavorit={!!isFavorit}
+                              toggleFavorite={() => toggleFavorite(item)}
+                              notifyAddedCart={() => notifyAddedToCart(item)}
                               increaseToCart={() => increaseToCart(item)}
                             />
                           </div>

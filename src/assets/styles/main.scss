@@ -65,3 +65,13 @@ svg * {
 .section {
   margin-bottom: 56px;
 }
+
+.menu-open {
+  height: 100vh;
+  overflow-y: hidden;
+
+  @include onTablet {
+    height: auto;
+    overflow-y: visible;
+  }
+}

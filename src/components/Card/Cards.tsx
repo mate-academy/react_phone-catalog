@@ -3,10 +3,12 @@ import { Products } from 'src/types/products';
 import style from './card.module.scss';
 import { Button } from '@GlobalComponents';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../../context/Cart';
+import { ShoppingContex } from '../../context/ShoppingContex';
 
-import { Slide, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { findISelectedItem } from '../../utils/findSelectedItem';
+import { showNotify } from '../../utils/showNotify';
 
 type Props = {
   item: Products;
@@ -15,24 +17,23 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ item, title }) => {
-  const { cartItems, increaseToCart } = useContext(CartContext);
+  const { toggleFavorite, favoritItems, cartItems, increaseToCart } =
+    useContext(ShoppingContex);
 
-  const selected = cartItems.find(device => {
-    return device.name === item.name;
-  });
+  const selected = findISelectedItem(cartItems, item.name);
+  const favorit = findISelectedItem(favoritItems, item.name);
 
-  const notifyAddedToCart = (newItem: Products) =>
-    toast.success(`${newItem.name} added to cart!`, {
-      position: 'bottom-right',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-      transition: Slide,
-    });
+  const notifyAddedToCart = (newItem: Products) => {
+    return showNotify(`${newItem.name} added to cart!`, 'dark');
+  };
+
+  const notifyAddedFavorit = (newItem: Products) => {
+    if (!favorit) {
+      return showNotify(`${newItem.name} Added to favorites!`, 'dark');
+    } else {
+      return showNotify(`${newItem.name} Removed from favorites!`);
+    }
+  };
 
   return (
     <>
@@ -73,8 +74,11 @@ export const Card: React.FC<Props> = ({ item, title }) => {
           <div className={style.card__bottom}>
             <Button
               isAdded={!!selected}
-              notifyAdded={() => notifyAddedToCart(item)}
+              isFavorit={!!favorit}
+              toggleFavorite={() => toggleFavorite(item)}
+              notifyAddedCart={() => notifyAddedToCart(item)}
               increaseToCart={() => increaseToCart(item)}
+              notifyAddedFavorit={() => notifyAddedFavorit(item)}
             />
           </div>
         </div>

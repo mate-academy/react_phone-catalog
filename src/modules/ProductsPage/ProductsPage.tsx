@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
 import { getData } from '@Fetch';
@@ -6,11 +6,11 @@ import { getData } from '@Fetch';
 import { Products } from 'src/types/products';
 
 import style from './productsPage.module.scss';
-import home from '@Images/icons/Home.svg';
-import arrow from '@Images/icons/Arrow-black-right.svg';
+
 import { useTimer } from '../../Hooks/useTimer';
 import { getFilteredProducts } from './getProducts';
 import { ErrorComponent, ProductList, ProductsEmpty } from '@GlobalComponents';
+import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
 
 export const ProductsPage = () => {
   const { start, clear } = useTimer();
@@ -59,23 +59,7 @@ export const ProductsPage = () => {
       <div className="container">
         <main className={style.main}>
           <section>
-            <nav className={style.nav}>
-              <ul className={style.list}>
-                <li>
-                  <Link className={style.link} to="/">
-                    <img src={home} alt="" />
-                  </Link>
-                </li>
-                <li className={style.item}>
-                  <img
-                    className={style['item__img-arrow']}
-                    src={arrow}
-                    alt=""
-                  />
-                  <span className={style.item__text}>{categoryName}</span>
-                </li>
-              </ul>
-            </nav>
+            <Breadcrumb />
 
             {isError && <ErrorComponent onRestart={reload} />}
 

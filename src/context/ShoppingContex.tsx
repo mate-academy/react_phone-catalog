@@ -1,14 +1,16 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { Device } from '../types/Device';
-import { Products } from '../types//products';
+import { Products } from '../types/products';
 
-type CartItem = Products | Device;
+type ShoppingItem = Products | Device;
 
-interface CartContexType {
-  cartItems: CartItem[];
-  increaseToCart: (item: CartItem) => void;
-  decreaseFromCart: (item: CartItem) => void;
-  deleteItems: (item: CartItem) => void;
+interface ShoppingContexType {
+  cartItems: ShoppingItem[];
+  favoritItems: ShoppingItem[];
+  increaseToCart: (item: ShoppingItem) => void;
+  decreaseFromCart: (item: ShoppingItem) => void;
+  deleteItems: (item: ShoppingItem) => void;
+  toggleFavorite: (item: ShoppingItem) => void;
   clearCart: () => void;
   getCartTotal: () => number;
 }
@@ -17,16 +19,22 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const CartContext = createContext({} as CartContexType);
+export const ShoppingContex = createContext({} as ShoppingContexType);
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(
+  const [cartItems, setCartItems] = useState<ShoppingItem[]>(
     localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems') as string)
       : [],
   );
 
-  const increaseToCart = (item: CartItem) => {
+  const [favoritItems, setFavoritItems] = useState<ShoppingItem[]>(
+    localStorage.getItem('favorites')
+      ? JSON.parse(localStorage.getItem('favorites') as string)
+      : [],
+  );
+
+  const increaseToCart = (item: ShoppingItem) => {
     const isItemInCart = cartItems.find(cartItem => cartItem.id === item.id);
 
     if (isItemInCart) {
@@ -42,7 +50,17 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const decreaseFromCart = (item: CartItem) => {
+  const toggleFavorite = (item: ShoppingItem) => {
+    const isItemFavorit = favoritItems.find(f => f.name === item.name);
+
+    if (isItemFavorit) {
+      setFavoritItems(favoritItems.filter(f => f.name !== item.name));
+    } else {
+      setFavoritItems([...favoritItems, { ...item }]);
+    }
+  };
+
+  const decreaseFromCart = (item: ShoppingItem) => {
     const isItemInCart = cartItems.find(cartItem => cartItem.id === item.id);
 
     if (isItemInCart?.quantity === 1) {
@@ -58,16 +76,17 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const deleteItems = (item: CartItem) => {
-    const deleteCartItems = cartItems.filter(cartItem => {
+  const deleteItems = (item: ShoppingItem) => {
+    const deleteShoppingItems = cartItems.filter(cartItem => {
       return cartItem.id !== item.id;
     });
 
-    setCartItems(deleteCartItems);
+    setCartItems(deleteShoppingItems);
   };
 
   const clearCart = () => {
     setCartItems([]);
+    setFavoritItems([]);
   };
 
   const getCartTotal = () => {
@@ -80,19 +99,25 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]);
+    localStorage.setItem('favorites', JSON.stringify(favoritItems));
+  }, [cartItems, favoritItems]);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const cartItems = localStorage.getItem('cartItems');
+    const favorites = localStorage.getItem('favorites');
 
     if (cartItems) {
       setCartItems(JSON.parse(cartItems));
     }
+
+    if (favorites) {
+      setFavoritItems(JSON.parse(favorites));
+    }
   }, []);
 
   return (
-    <CartContext.Provider
+    <ShoppingContex.Provider
       value={{
         cartItems,
         increaseToCart,
@@ -100,9 +125,11 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
         clearCart,
         getCartTotal,
         deleteItems,
+        toggleFavorite,
+        favoritItems,
       }}
     >
       {children}
-    </CartContext.Provider>
+    </ShoppingContex.Provider>
   );
 };

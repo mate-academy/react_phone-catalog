@@ -22,6 +22,7 @@
     "sweetalert2": "^11.26.3",
     "sweetalert2-react-content": "^5.1.0",
     "swiper": "^12.0.2",
+    "use-local-storage": "^3.0.0",
     "yet-another-react-lightbox": "^3.25.0"
   },
   "devDependencies": {

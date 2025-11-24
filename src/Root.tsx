@@ -6,6 +6,7 @@ import { ScrollTop } from './utils/ScrollTop';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { ProductCard } from './modules/ProductCard/ProductCard';
 import { ShoppingCart } from './modules/ShoppingCart/ShoppingCart';
+import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 
 export const Root = () => (
   <Router>
@@ -30,9 +31,9 @@ export const Root = () => (
         </Route>
 
         <Route path="cart" element={<ShoppingCart />} />
-      </Route>
 
-      <Route path="favourites" element={''} />
+        <Route path="favorites" element={<FavoritesPage />} />
+      </Route>
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

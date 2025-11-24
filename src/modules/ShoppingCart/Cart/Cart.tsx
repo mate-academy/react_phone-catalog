@@ -2,7 +2,7 @@ import { Products } from 'src/types/products';
 import style from './Cart.module.scss';
 import { Device } from 'src/types/Device';
 import { useContext } from 'react';
-import { CartContext } from '../../../context/Cart';
+import { ShoppingContex } from '../../../context/ShoppingContex';
 
 type Props = {
   item: Device | Products;
@@ -10,7 +10,7 @@ type Props = {
 
 const Cart: React.FC<Props> = ({ item }) => {
   const { increaseToCart, decreaseFromCart, deleteItems } =
-    useContext(CartContext);
+    useContext(ShoppingContex);
 
   let imageUrls: string;
   let price: number;

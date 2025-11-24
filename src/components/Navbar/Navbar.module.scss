@@ -59,6 +59,7 @@
     font-size: 12px;
     line-height: 11px;
     padding: 12px 0;
+    cursor: pointer;
 
     @include hover {
       color: var(--color-white);
@@ -102,6 +103,22 @@
   &__active {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+.is--active {
+  color: var(--color-btn-card);
+
+  @include hover {
+    color: var(--color-btn-card);
+  }
+
+  &::after {
+    width: 100%;
+
+    @include onDekstop {
+      bottom: -2px;
+    }
   }
 }
 
