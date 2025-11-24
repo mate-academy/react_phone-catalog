@@ -1,20 +1,23 @@
 import { Routes, Route } from 'react-router-dom';
 import HomePage from '@/modules/HomePage/components/HomePage';
-import PhonePage from '@/modules/PhonePage/PhonePage';
 import { Layout } from '@/modules/shared/components/Layout/Layout';
+import CatalogPage from '@/modules/shared/components/CatalogPage/CatalogPage';
+import { getAccessories, getPhones, getTablets } from '@/api/api';
 
 export const AppRouter = () => {
   return (
     <Routes>
-      {/* Layout wrapper — Navbar, Footer, etc. stay visible */}
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/phone" element={<PhonePage />} />
-        {/* <Route path="/cart" element={<CartPage />} /> */}
-      </Route>
 
-      {/* 404 fallback */}
-      {/* <Route path="*" element={<NotFoundPage />} /> */}
+        {/* Define explicit paths for each category */}
+        <Route path="phones" element={<CatalogPage fetchReq={getPhones} />} />
+        <Route path="tablets" element={<CatalogPage fetchReq={getTablets} />} />
+        <Route
+          path="accessories"
+          element={<CatalogPage fetchReq={getAccessories} />}
+        />
+      </Route>
     </Routes>
   );
 };

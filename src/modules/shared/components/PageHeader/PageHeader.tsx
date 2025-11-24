@@ -9,7 +9,16 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   title,
   showBreadCrumbs = true,
 }) => {
-  return <h1 className={styles.pageTitle}>{title}</h1>;
+  return (
+    <div>
+      {showBreadCrumbs && (
+        <nav className={styles.breadcrumbs}>
+          <a href="/">Home</a> / <span>{title}</span>
+        </nav>
+      )}
+      <h1 className={styles.pageTitle}>{title}</h1>
+    </div>
+  );
 };
 
 export default PageHeader;
