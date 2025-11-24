@@ -40,6 +40,11 @@
   line-height: 21px;
   color: #313237;
   margin-bottom: 8px;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .price {
