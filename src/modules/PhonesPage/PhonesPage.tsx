@@ -67,7 +67,12 @@ export const PhonesPage = () => {
   }
 
   if (error) {
-    return <p className={styles.message}>Something went wrong</p>;
+    return (
+      <div className={styles.message}>
+        <p>Something went wrong</p>
+        <button onClick={() => window.location.reload()}>Reload</button>
+      </div>
+    );
   }
 
   if (!phones.length) {
