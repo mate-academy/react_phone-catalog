@@ -28,6 +28,18 @@
   opacity: 0;
 }
 
+.prev {
+  left: 0;
+  padding-left: 16px;
+  justify-content: flex-start;
+}
+
+.next {
+  right: 0;
+  padding-right: 16px;
+  justify-content: flex-end;
+}
+
 .prev,
 .next {
   position: absolute;
@@ -51,19 +63,6 @@
   }
 }
 
-.prev {
-  left: 0;
-  padding-left: 16px;
-  justify-content: flex-start;
-}
-
-.next {
-  right: 0;
-  padding-right: 16px;
-  justify-content: flex-end;
-}
-
-/* Стрілки */
 .prev::before,
 .next::before {
   content: '';

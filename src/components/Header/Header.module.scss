@@ -227,6 +227,23 @@
   }
 }
 
+.mobileActions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 20px;
+
+  button {
+    width: 100%;
+    padding: 10px;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
 .actions button {
   margin-left: 16px;
   background: none;
@@ -367,15 +384,6 @@
   }
 }
 
-.mobileNav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  margin-top: 0;
-  padding-top: 10px;
-}
-
 .mobileNav a {
   font-size: 16px;
   color: var(--text-color);
@@ -394,6 +402,15 @@
     text-underline-offset: 4px;
     color: var(--accent-active);
   }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 0;
+  padding-top: 10px;
 }
 
 .mobileDropdownMenu a {
@@ -438,23 +455,6 @@
     display: flex;
     opacity: 1;
     max-height: 200px;
-  }
-}
-
-.mobileActions {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  margin-top: 20px;
-
-  button {
-    width: 100%;
-    padding: 10px;
-  }
-
-  select {
-    width: 100%;
-    padding: 10px;
   }
 }
 

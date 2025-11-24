@@ -8,6 +8,7 @@ import { Input } from '../../components/UI/Input/Input';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductCard } from './components/ProductCard';
 import { CustomSelect } from '../../components/UI/CustomSelect/CustomSelect';
+import { Loader } from '../../components/UI/Loader/Loader';
 
 export const CategoryPage: React.FC = () => {
   const { t } = useTranslation();
@@ -70,7 +71,7 @@ export const CategoryPage: React.FC = () => {
           t('errorLoading') + (err instanceof Error ? `${err.message}` : ''),
         );
       } finally {
-        setLoading(false);
+        setTimeout(() => setLoading(false), 1000);
       }
     };
 
@@ -91,7 +92,7 @@ export const CategoryPage: React.FC = () => {
   };
 
   if (loading) {
-    return <div className={styles.loading}>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {

@@ -53,15 +53,15 @@
   transition: all .3s ease;
   backdrop-filter: blur(4px);
 
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
   &:hover:not(:disabled) {
     background: rgba(0,0,0,.7);
     transform: scale(1.1);
     color: white;
-  }
-
-  &:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
   }
 }
 

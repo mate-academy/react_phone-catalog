@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './HomePage.module.scss';
 import { Product } from '../shared/types';
 import { SliderSection } from './components/SliderSection/SliderSection';
-import { PictureSlider } from './components/pictureSlider';
+import { PictureSlider } from './components/PictureSlider';
 import { Link } from 'react-router-dom';
 
 export const HomePage: React.FC = () => {

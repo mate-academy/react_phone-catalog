@@ -11,6 +11,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { BackButton } from '../../components/BackButton/BackButton';
 // eslint-disable-next-line max-len
 import { SliderSection } from '../HomePage/components/SliderSection/SliderSection';
+import { Loader } from '../../components/UI/Loader/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -88,7 +89,7 @@ export const ProductDetailsPage: React.FC = () => {
           t('errorLoading') + (err instanceof Error ? `: ${err.message}` : ''),
         );
       } finally {
-        setLoading(false);
+        setTimeout(() => setLoading(false), 1000);
       }
     };
 
@@ -102,7 +103,7 @@ export const ProductDetailsPage: React.FC = () => {
   }, [currentProduct]);
 
   if (loading) {
-    return <div className={styles.loading}>...Loading</div>;
+    return <Loader />;
   }
 
   if (error || !currentProduct) {
