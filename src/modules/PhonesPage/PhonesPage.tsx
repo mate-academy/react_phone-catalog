@@ -17,7 +17,6 @@ export const PhonesPage = () => {
     async function loadPhones() {
       try {
         setLoading(true);
-
         const phonesFromServer = await getPhonesFromProducts();
 
         setPhones(phonesFromServer);
@@ -50,6 +49,7 @@ export const PhonesPage = () => {
 
   const startIndex =
     itemsPerPage === 'all' ? 0 : (currentPage - 1) * (itemsPerPage as number);
+
   const endIndex =
     itemsPerPage === 'all' ? totalItems : startIndex + (itemsPerPage as number);
 
@@ -61,6 +61,10 @@ export const PhonesPage = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  const groupSize = 4;
+  const groupStart = Math.floor((currentPage - 1) / groupSize) * groupSize + 1;
+  const groupEnd = Math.min(groupStart + groupSize - 1, totalPages);
 
   if (loading) {
     return <Loader />;
@@ -129,15 +133,19 @@ export const PhonesPage = () => {
             &lt;
           </button>
 
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              className={currentPage === i + 1 ? styles.activePage : ''}
-              onClick={() => handlePageChange(i + 1)}
-            >
-              {i + 1}
-            </button>
-          ))}
+          {[...Array(groupEnd - groupStart + 1)].map((_, i) => {
+            const pageNum = groupStart + i;
+
+            return (
+              <button
+                key={pageNum}
+                className={currentPage === pageNum ? styles.activePage : ''}
+                onClick={() => handlePageChange(pageNum)}
+              >
+                {pageNum}
+              </button>
+            );
+          })}
 
           <button
             onClick={() => handlePageChange(currentPage + 1)}
