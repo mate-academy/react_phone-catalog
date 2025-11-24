@@ -1,6 +1,6 @@
 import { Product } from '@/types';
 import React, { useEffect, useState } from 'react';
-import styles from './SliderComponent.module.scss';
+import styles from '../../../../modules/HomePage/components/SliderComponent.module.scss';
 import {
   addToCart,
   getFavorites,
@@ -8,6 +8,7 @@ import {
   getCart,
   removeFromCart,
 } from '@/modules/shared/components/utils/StorageHelper/storageHelper';
+
 type SliderItemProps = {
   item: Product;
   showDiscount: boolean;

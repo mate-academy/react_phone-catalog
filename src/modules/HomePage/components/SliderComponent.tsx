@@ -1,7 +1,7 @@
 import { Product } from '@/types';
 import React, { useState } from 'react';
 import styles from './SliderComponent.module.scss';
-import SliderItem from './SliderItem';
+import ProductItem from '../../shared/components/SliderItem/SliderItem';
 type SliderComponentProps = {
   products: Product[];
   title: string;
@@ -115,7 +115,7 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
       </div>
       <div className={styles.SliderComponent__itemsContainer}>
         {visible.map(prod => (
-          <SliderItem key={prod.id} item={prod} showDiscount={showDiscount} />
+          <ProductItem key={prod.id} item={prod} showDiscount={showDiscount} />
         ))}
       </div>
     </section>

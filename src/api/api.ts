@@ -1,9 +1,10 @@
-import { ProductDetails } from '@/types/ProductDetails';
+import { Product } from "@/types";
 
 const ENDPOINTS = {
-  phones: '/api/phones.json',
-  tablets: '/api/tablets.json',
-  accessories: '/api/accessories.json',
+  products: '/api/products.json',
+  // phones: '/api/phones.json',
+  // tablets: '/api/tablets.json',
+  // accessories: '/api/accessories.json',
 };
 
 function wait(delay: number) {
@@ -21,7 +22,7 @@ async function get<T>(url: string): Promise<T> {
   return response.json();
 }
 
-export const getPhones = () => get<ProductDetails[]>(ENDPOINTS.phones);
-export const getTablets = () => get<ProductDetails[]>(ENDPOINTS.tablets);
-export const getAccessories = () =>
-  get<ProductDetails[]>(ENDPOINTS.accessories);
+export const getProducts = () => get<Product[]>(ENDPOINTS.products);
+// export const getTablets = () => get<ProductDetails[]>(ENDPOINTS.tablets);
+// export const getAccessories = () =>
+//   get<ProductDetails[]>(ENDPOINTS.accessories);

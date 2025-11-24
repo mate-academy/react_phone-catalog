@@ -6,7 +6,7 @@ import HeartIcon from '/img/icons/heart.svg';
 export const Navbar = () => {
   const links = [
     { path: '/', label: 'HOME' },
-    { path: '/phone', label: 'PHONE' },
+    { path: '/phones', label: 'PHONES' },
     { path: '/tablets', label: 'TABLETS' },
     { path: '/accessories', label: 'ACCESSORIES' },
   ];

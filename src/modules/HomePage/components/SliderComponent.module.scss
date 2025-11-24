@@ -41,8 +41,8 @@
     flex-direction: column;
     width: 100%;
     max-width: 272px;
-    outline: 1px solid $color-elements;
-    min-height: 500px; // або height, якщо контент завжди влазить
+    border: 1px solid $color-elements;
+    min-height: 512px; // або height, якщо контент завжди влазить
     display: flex;
     flex-direction: column;
     justify-content: space-between;
