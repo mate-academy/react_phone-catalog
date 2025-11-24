@@ -39,7 +39,7 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
 
   return (
     <article className={styles.card}>
-      <Link to={`/product/${product.id}`} className={styles.imageWrapper}>
+      <Link to={`/product/${product.itemId}`} className={styles.imageWrapper}>
         <img
           src={`/${product.image}`}
           alt={product.name}
@@ -48,7 +48,7 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
       </Link>
 
       <h3 className={styles.title}>
-        <Link to={`/product/${product.id}`}>{product.name}</Link>
+        <Link to={`/product/${product.itemId}`}>{product.name}</Link>
       </h3>
 
       <div className={styles.priceBlock}>

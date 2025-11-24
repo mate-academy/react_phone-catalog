@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { CartRecord } from '../../shared/components/CartItem/CartRecord';
 import { CartContext } from '../../shared/contexts/CartContext';
+// eslint-disable-next-line max-len
+import { CartItemList } from '../../shared/components/CartItemList/CartItemList';
 import styles from './CartPage.module.scss';
 // eslint-disable-next-line max-len
 import { NavigationButton } from '../../shared/components/NavigationButton/NavigationButton';
@@ -16,39 +17,23 @@ export const CartPage: React.FC = () => {
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleIncrement = (id: number) => {
-    const increment = cartItems.map(item => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: item.quantity + 1,
-        };
-      }
-
-      return item;
-    });
-
-    setCartItems(increment);
+    setCartItems(prev =>
+      prev.map(item =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
+    );
   };
 
   const handleDecrement = (id: number) => {
-    const decrement = cartItems.map(item => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: item.quantity - 1,
-        };
-      }
-
-      return item;
-    });
-
-    setCartItems(decrement);
+    setCartItems(prev =>
+      prev.map(item =>
+        item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+      ),
+    );
   };
 
   const handleRemove = (id: number) => {
-    const remove = cartItems.filter(item => item.id !== id);
-
-    setCartItems(remove);
+    setCartItems(prev => prev.filter(item => item.id !== id));
   };
 
   const handleCheckout = () => {
@@ -63,15 +48,12 @@ export const CartPage: React.FC = () => {
       <section>
         <div className={styles.container}>
           <div className={styles.cartList}>
-            {cartItems.map(item => (
-              <CartRecord
-                key={item.id}
-                item={item}
-                onIncrement={handleIncrement}
-                onDecrement={handleDecrement}
-                onRemove={handleRemove}
-              />
-            ))}
+            <CartItemList
+              items={cartItems}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
+              onRemove={handleRemove}
+            />
 
             {cartItems.length === 0 && (
               <div className={styles.empty}>
@@ -83,6 +65,7 @@ export const CartPage: React.FC = () => {
               </div>
             )}
           </div>
+
           {cartItems.length > 0 && (
             <aside className={styles.summary}>
               <p className={styles.totalPrice}>${totalPrice}</p>
