@@ -1,0 +1,58 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dialog {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  inset: 35%;
+  height: fit-content;
+  margin: auto;
+  background: white;
+  padding: 5px;
+
+  p,
+  h3 {
+    text-align: center;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  height: 20px;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+.content {
+  padding: 20px 20px 40px;
+  display: flex;
+  gap: $gap-16;
+  flex-direction: column;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button {
+  border-radius: 8px;
+  padding: $gap-8;
+  min-width: 60px;
+
+  @include button-primary;
+}

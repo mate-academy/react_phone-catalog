@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { GoBackLink } from '../shared/components/GoBackLink';
 import { CartItemBlock } from './components/CartItem';
 import s from './CartPage.module.scss';
 import { CartItem } from '../../types/Cart';
+import { ModalLayout } from '../shared/components/ModalLayout';
 
 const cartItems: CartItem[] = [
   {
@@ -80,6 +81,12 @@ const cartItems: CartItem[] = [
 ];
 
 export const CartPage: FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const onCheckout = () => setIsModalOpen(true);
+  const checkoutTitle = 'Checkout is not implemented yet.';
+  const checkoutText = 'Do you want to clear the Cart?';
+
   return (
     <main>
       <section className={`${s.container} ${s.cartPage}`}>
@@ -96,12 +103,19 @@ export const CartPage: FC = () => {
               <span className={s.cartPrice}>$2657</span>
               <span className={s.cartCount}>Total for 3 items</span>
             </div>
-            <button type="button" className={s.cartButton}>
+            <button type="button" className={s.cartButton} onClick={onCheckout}>
               Checkout
             </button>
           </div>
         </div>
       </section>
+      {isModalOpen && (
+        <ModalLayout
+          title={checkoutTitle}
+          text={checkoutText}
+          onCancel={() => setIsModalOpen(false)}
+        />
+      )}
     </main>
   );
 };
