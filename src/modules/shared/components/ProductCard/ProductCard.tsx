@@ -22,7 +22,7 @@ export const ProductCardComponent: React.FC<Props> = ({
     <article className={scss.productCard}>
       <Link to={`/${product.category}/${product.itemId}`}>
         <img
-          src={product.image}
+          src={`/${product.image}`}
           className={scss.productCard__image}
           alt={product.name}
           loading="lazy"

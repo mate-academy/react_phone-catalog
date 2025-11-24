@@ -1,6 +1,6 @@
 import { useCallback, useContext, useMemo, useState } from 'react';
-import { ButtonArrow } from '../../../shared/components/ButtonArrow';
-import { ProductCard } from '../../../shared/components/ProductCard';
+import { ButtonArrow } from '../ButtonArrow';
+import { ProductCard } from '../ProductCard';
 import scss from './ProductsSlider.module.scss';
 import { DataContext } from '../../../../context/ContextProvider';
 import { Product, Slider } from '../../../../api/types';
@@ -18,68 +18,49 @@ export const ProductsSlider: React.FC<Props> = ({ title, type }) => {
   const hasDiscount = type === 'new' ? false : true;
 
   const sliderProducts = useMemo(() => {
-    let filtered = [];
+    let productsToShow: Product[] = [];
 
-    const getModel = (device: Product) => {
-      const parts = device.image.split('/');
+    function shuffleArray(array: Product[]) {
+      const copy = [...array];
 
-      return parts.at(-3)?.toLowerCase();
-    };
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [copy[i], copy[j]] = [copy[j], copy[i]]; // Swap
+      }
+
+      return copy;
+    }
 
     switch (type) {
-      case 'new': {
-        let max = -Infinity;
+      case 'new':
+        const maxYear = Math.max(...products.map(p => p.year));
 
-        for (const { year } of products) {
-          if (year > max) {
-            max = year;
-          }
-        }
-
-        filtered = products.filter(device => device.year === max);
-
+        productsToShow = products.filter(p => p.year === maxYear);
         break;
-      }
-
-      case 'hot': {
-        const filteredByPrice = products.sort(
-          (a, b) => b.fullPrice - a.fullPrice,
-        );
-
-        filtered = filteredByPrice.slice(0, 20);
-
+      case 'hot':
+        productsToShow = [...products]
+          .sort((a, b) => b.fullPrice - a.fullPrice)
+          .slice(0, 20);
         break;
-      }
+      case 'rand':
+        productsToShow = shuffleArray(products).slice(0, 20);
+        break;
     }
 
-    const modelGroups = new Map<string, Product[]>();
+    const groups = new Map();
 
-    for (const prod of filtered) {
-      const key = getModel(prod);
+    productsToShow.forEach(product => {
+      const modelKey = product.image.split('/').slice(-3, -2)[0] || 'unknown';
 
-      if (key) {
-        const check = modelGroups.get(key);
-
-        if (check) {
-          check.push(prod);
-        } else {
-          modelGroups.set(key, [prod]);
-        }
-      }
-    }
-
-    const test = Array.from(modelGroups.values()).map(group => {
-      const stop = group.length > 3 ? 3 : group.length;
-      const result = [];
-
-      for (let i = 0; i < stop; i++) {
-        result.push(group[i]);
+      if (!groups.has(modelKey)) {
+        groups.set(modelKey, []);
       }
 
-      return result;
+      groups.get(modelKey).push(product);
     });
 
-    return test.flat(1);
+    return Array.from(groups.values()).flatMap(group => group.slice(0, 3));
   }, [products, type]);
 
   const prevSlide = useCallback(

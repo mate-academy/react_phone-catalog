@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { DataContext } from '../../context/ContextProvider';
 import { PicturesSlider } from './components/PicturesSlider';
-import { ProductsSlider } from './components/ProductsSlider';
+import { ProductsSlider } from '../shared/components/ProductsSlider';
 import scss from './HomePage.module.scss';
 import { Loader } from '../shared/components/Loader';
 import { Categories } from './components/Categories';

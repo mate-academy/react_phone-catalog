@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Accessory, Phone, Tablet } from '../../api/types';
+import { Accessory, Phone, SLIDER_TYPE, Tablet } from '../../api/types';
 import { DataContext } from '../../context/ContextProvider';
 import scss from './ProductDetailsPage.module.scss';
 import { Loader } from '../shared/components/Loader';
@@ -15,6 +15,8 @@ import { Price } from '../shared/components/Price';
 import { ButtonCart } from '../shared/components/ButtonCart';
 import { ButtonFav } from '../shared/components/ButtonFav';
 import { TechSpecs } from './components/TechSpecs/TechSpecs';
+import { About } from './components/About/About';
+import { ProductsSlider } from '../shared/components/ProductsSlider';
 
 export const ProductDetailsPage = () => {
   const [item, setItem] = useState<Phone | Tablet | Accessory | undefined>(
@@ -66,6 +68,14 @@ export const ProductDetailsPage = () => {
       }
     }
   }, [productId, variants]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, [productId]);
 
   const handleColorChange = (newColor: keyof typeof COLOR_MAP) => {
     if (!item) {
@@ -155,6 +165,11 @@ export const ProductDetailsPage = () => {
         />
       </div>
       <TechSpecs item={item} tech={false} />
+      <About item={item} />
+      <h3 className={scss.productDetailsPage__h3}>Tech specs</h3>
+      <Line />
+      <TechSpecs item={item} tech={true} />
+      <ProductsSlider title={'You may also like'} type={SLIDER_TYPE.RAND} />
     </section>
   );
 };

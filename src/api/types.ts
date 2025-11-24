@@ -105,6 +105,7 @@ export type StorageCartItem = {
 export const SLIDER_TYPE = {
   NEW: 'new',
   HOT: 'hot',
+  RAND: 'rand',
 } as const;
 
 export type Slider = (typeof SLIDER_TYPE)[keyof typeof SLIDER_TYPE];

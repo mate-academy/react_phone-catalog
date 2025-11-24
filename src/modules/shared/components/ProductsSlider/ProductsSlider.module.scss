@@ -6,15 +6,10 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    gap: 0.8rem;
     padding: 0 1.6rem;
 
-    &_title {
-      flex: 1;
-    }
-
     &_buttons {
-      flex: 1;
-
       width: 8rem;
       display: flex;
       justify-content: flex-end;

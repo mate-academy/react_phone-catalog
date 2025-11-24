@@ -1,0 +1,33 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin: 5.6rem 0;
+
+  &__mainTitle {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 2.0rem;
+    line-height: 100%;
+
+    margin-bottom: 1.6rem;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 100%;
+
+    color: rgba(49, 50, 55, 1);
+  }
+
+  &__text {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+
+    color: rgba(137, 147, 154, 1);
+  }
+}
