@@ -17,7 +17,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="product-card">
-      <img src={product.image || 'https://via.placeholder.com/150'} alt={product.name} />
+      <img
+        src={product.image || 'https://via.placeholder.com/150'}
+        alt={product.name}
+      />
       <h3>{product.name}</h3>
       <p>R$ {(product.price - product.discount).toFixed(2)}</p>
       <button onClick={() => toggleFavorite(product)}>

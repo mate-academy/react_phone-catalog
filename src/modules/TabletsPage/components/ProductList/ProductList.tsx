@@ -16,9 +16,12 @@ type Props = {
 export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
     <div className="products-list">
-      {products.map((p) => (
+      {products.map(p => (
         <article key={p.id} className="product-card">
-          <img src={p.image || 'https://via.placeholder.com/150x150?text=Tablet'} alt={p.name} />
+          <img
+            src={p.image || 'https://via.placeholder.com/150x150?text=Tablet'}
+            alt={p.name}
+          />
           <h3>{p.name}</h3>
           <p>
             R$ {(p.price - p.discount).toFixed(2)}{' '}

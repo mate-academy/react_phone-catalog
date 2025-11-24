@@ -17,10 +17,12 @@ type Props = {
 export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
     <div className={styles.list}>
-      {products.map((product) => (
+      {products.map(product => (
         <div key={product.id} className={styles.card}>
           <img
-            src={product.image || 'https://via.placeholder.com/150x150?text=Phone'}
+            src={
+              product.image || 'https://via.placeholder.com/150x150?text=Phone'
+            }
             alt={product.name}
             className={styles.image}
           />

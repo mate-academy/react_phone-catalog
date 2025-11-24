@@ -28,21 +28,25 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         ♥
       </button>
 
-      <Link to={`/product/${product.id}`} className={styles.productLink}>
+      
         {product.image && <img src={product.image} alt={product.name} className={styles.productImage} />}
         <div className={styles.productInfo}>
+          
           <p className={styles.productName}>{product.name}</p>
+          
           <p className={styles.productPrice}>
             ${product.priceDiscount}{' '}
             <span className={styles.productPriceRegular}>${product.priceRegular}</span>
           </p>
           <div className={styles.functionButtons}>
-  <AddToCartButton product={product} />
+            <Link to={`/product/${product.id}`} className={styles.linkWrapper}>
+    <button className= {styles.checkBtn}>Check Product!</button>
+    </Link>
   <AddToFavoritesButton productId={product.id} />
 </div>
 
         </div>
-      </Link>
+      
     </div>
   );
 };

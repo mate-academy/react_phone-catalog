@@ -29,11 +29,7 @@ export const Categories = () => {
       <div className="categories__list">
         {categories.map((cat, index) => (
           <article key={index} className="categories__item">
-            <img
-              src={cat.image}
-              alt={cat.name}
-              className="categories__image"
-            />
+            <img src={cat.image} alt={cat.name} className="categories__image" />
             <h3 className="categories__name">{cat.name}</h3>
           </article>
         ))}

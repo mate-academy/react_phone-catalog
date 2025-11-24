@@ -40,11 +40,7 @@ export const Offers = () => {
       <div className="offers__list">
         {offers.map((offer, index) => (
           <article key={index} className="offers__item">
-            <img
-              src={offer.image}
-              alt={offer.name}
-              className="offers__image"
-            />
+            <img src={offer.image} alt={offer.name} className="offers__image" />
 
             <h3 className="offers__name">{offer.name}</h3>
 

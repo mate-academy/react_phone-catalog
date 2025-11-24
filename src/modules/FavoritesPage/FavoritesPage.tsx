@@ -7,6 +7,7 @@ import { Product } from '../../types/ProductTypes/Product';
 import AddToCartButton from '../HomePage/components/AddToCart/AddToCart';
 
 import styles from './FavoritesPage.module.scss';
+import Header from '../shared/components/Header';
 
 const FavoritesPage: React.FC = () => {
   const { favorites, removeFavorite, clearFavorites } = useFavorites();
@@ -41,15 +42,24 @@ const FavoritesPage: React.FC = () => {
   );
 
   if (favoriteProducts.length === 0) {
-    return <div className={styles.empty}>Você ainda não favoritou nenhum item.</div>;
+    
+    return (
+      <div>
+        <Header />
+    <div className={styles.empty}>No favorite itens yet! 😔</div>
+      </div>
+  );
   }
 
   return (
+    <div>
+      <Header />
+    
     <div className={styles.favoritesPage}>
-      <h1 className={styles.title}>⭐ Favoritos</h1>
+      <h1 className={styles.title}>⭐ Favorites</h1>
 
       <button className={styles.clearButton} onClick={clearFavorites}>
-        Limpar Favoritos
+        Clean Favorites
       </button>
 
       <ul className={styles.list}>
@@ -76,12 +86,13 @@ const FavoritesPage: React.FC = () => {
                 className={styles.removeButton}
                 onClick={() => removeFavorite(product.itemId)}
               >
-                Remover
+                Remove product
               </button>
             </div>
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };

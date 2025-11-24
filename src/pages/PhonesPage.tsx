@@ -41,6 +41,7 @@ export const PhonesPage = () => {
   // Gera 16 itens repetindo os 4 modelos
   const phones: Phone[] = Array.from({ length: 16 }, (_, index) => {
     const base = baseModels[index % baseModels.length];
+
     return { ...base, id: index + 1 };
   });
 

@@ -27,7 +27,6 @@ export type Product = {
   }[];
 };
 
-
 // Mock products
 const allProducts: Product[] = [
   {
@@ -78,7 +77,8 @@ export const ProductDetailsPage: React.FC = () => {
     setError(false);
 
     const timer = setTimeout(() => {
-      const prod = allProducts.find((p) => p.id === Number(productId));
+      const prod = allProducts.find(p => p.id === Number(productId));
+
       if (!prod) {
         setError(true);
       } else {
@@ -87,15 +87,20 @@ export const ProductDetailsPage: React.FC = () => {
         setSelectedCapacity(prod.capacityAvailable[0] || '');
         setSelectedImage(prod.images[0] || '');
       }
+
       setLoading(false);
     }, 800);
 
     return () => clearTimeout(timer);
   }, [productId]);
 
-  if (loading) return <Loader />;
+  if (loading) {
+    return <Loader />;
+  }
 
-  if (error || !product) return <p>Product was not found</p>;
+  if (error || !product) {
+    return <p>Product was not found</p>;
+  }
 
   const handleBack = () => navigate(-1);
 
@@ -109,7 +114,7 @@ export const ProductDetailsPage: React.FC = () => {
         <div className="product-images">
           <img src={selectedImage} alt={product.name} className="main-image" />
           <div className="thumbnails">
-            {product.images.map((img) => (
+            {product.images.map(img => (
               <img
                 key={img}
                 src={img}
@@ -131,7 +136,7 @@ export const ProductDetailsPage: React.FC = () => {
           <div className="options">
             <div>
               <p>Colors:</p>
-              {product.colorsAvailable.map((color) => (
+              {product.colorsAvailable.map(color => (
                 <label key={color}>
                   <input
                     type="radio"
@@ -147,7 +152,7 @@ export const ProductDetailsPage: React.FC = () => {
 
             <div>
               <p>Capacity:</p>
-              {product.capacityAvailable.map((cap) => (
+              {product.capacityAvailable.map(cap => (
                 <label key={cap}>
                   <input
                     type="radio"

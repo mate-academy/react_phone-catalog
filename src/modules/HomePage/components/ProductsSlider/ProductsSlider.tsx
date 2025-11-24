@@ -35,22 +35,22 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
   const visibleCount = 3;
 
   const handleNext = () => {
-    setStartIndex((prev) =>
-      prev + visibleCount >= sortedProducts.length ? 0 : prev + visibleCount
+    setStartIndex(prev =>
+      prev + visibleCount >= sortedProducts.length ? 0 : prev + visibleCount,
     );
   };
 
   const handlePrev = () => {
-    setStartIndex((prev) =>
+    setStartIndex(prev =>
       prev - visibleCount < 0
         ? Math.max(sortedProducts.length - visibleCount, 0)
-        : prev - visibleCount
+        : prev - visibleCount,
     );
   };
 
   const visibleProducts = sortedProducts.slice(
     startIndex,
-    startIndex + visibleCount
+    startIndex + visibleCount,
   );
 
   return (
@@ -60,7 +60,7 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
       </button>
 
       <div className={styles.products}>
-        {visibleProducts.map((product) => (
+        {visibleProducts.map(product => (
           <div key={product.id} className={styles.card}>
             <h3>{product.name}</h3>
             <p>${product.price}</p>

@@ -9,12 +9,13 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
   return (
     <div className="cart-item">
-      <img src={item.product.image || 'https://via.placeholder.com/80'} alt={item.product.name} />
+      <img
+        src={item.product.image || 'https://via.placeholder.com/80'}
+        alt={item.product.name}
+      />
       <div className="info">
         <p>{item.product.name}</p>
-        <p>
-          R$ {(item.product.price - item.product.discount).toFixed(2)}
-        </p>
+        <p>R$ {(item.product.price - item.product.discount).toFixed(2)}</p>
         <div className="quantity">
           <button onClick={() => changeQuantity(item.id, -1)}>-</button>
           <span>{item.quantity}</span>

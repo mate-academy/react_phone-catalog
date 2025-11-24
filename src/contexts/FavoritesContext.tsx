@@ -15,14 +15,21 @@ type FavoritesContextType = {
   favoritesCount: number;
 };
 
-const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
+const FavoritesContext = createContext<FavoritesContextType | undefined>(
+  undefined,
+);
 
-export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [favorites, setFavorites] = useState<Product[]>([]);
 
   useEffect(() => {
     const stored = localStorage.getItem('favorites');
-    if (stored) setFavorites(JSON.parse(stored));
+
+    if (stored) {
+setFavorites(JSON.parse(stored));
+}
   }, []);
 
   useEffect(() => {
@@ -30,18 +37,26 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   }, [favorites]);
 
   const toggleFavorite = (product: Product) => {
-    setFavorites((prev) => {
-      if (prev.find((p) => p.id === product.id)) {
-        return prev.filter((p) => p.id !== product.id);
+    setFavorites(prev => {
+      if (prev.find(p => p.id === product.id)) {
+        return prev.filter(p => p.id !== product.id);
       }
+
       return [...prev, product];
     });
   };
 
-  const isFavorite = (id: number) => favorites.some((p) => p.id === id);
+  const isFavorite = (id: number) => favorites.some(p => p.id === id);
 
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite, favoritesCount: favorites.length }}>
+    <FavoritesContext.Provider
+      value={{
+        favorites,
+        toggleFavorite,
+        isFavorite,
+        favoritesCount: favorites.length,
+      }}
+    >
       {children}
     </FavoritesContext.Provider>
   );
@@ -49,6 +64,11 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
 export const useFavorites = (): FavoritesContextType => {
   const context = useContext(FavoritesContext);
-  if (!context) throw new Error('useFavorites must be used within FavoritesProvider');
+
+  if (!context) {
+  {
+throw new Error('useFavorites must be used within FavoritesProvider');
+}
+
   return context;
 };

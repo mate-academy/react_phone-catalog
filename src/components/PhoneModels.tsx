@@ -6,7 +6,6 @@ type PhoneModel = {
 };
 
 export const PhoneModels = () => {
-
   const phoneModels: PhoneModel[] = [
     {
       name: 'iPhone 15 Pro',
@@ -45,4 +44,3 @@ export const PhoneModels = () => {
     </section>
   );
 };
-

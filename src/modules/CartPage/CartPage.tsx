@@ -5,6 +5,8 @@ import { useCart } from './CartContext';
 import { Product } from '../../types/ProductTypes/Product';
 
 import styles from './CartPage.module.scss';
+import Header from '../shared/components/Header';
+import Footer from '../shared/components/Footer';
 
 const CartPage: React.FC = () => {
   const { cart, increaseQuantity, decreaseQuantity, removeFromCart, clearCart } = useCart();
@@ -40,8 +42,11 @@ const CartPage: React.FC = () => {
 
   if (cartProducts.length === 0) {
     return (
+      <div>
+        <Header />
       <div className={styles.empty}>
-        <p>Seu carrinho está vazio.</p>
+        <p>Your cart is empty! 😔 </p>
+      </div>   
       </div>
     );
   }
@@ -52,11 +57,13 @@ const CartPage: React.FC = () => {
   }, 0);
 
   return (
+    <div>
+      <Header />
     <div className={styles.cartPage}>
-      <h1 className={styles.title}>🛒 Seu Carrinho</h1>
+      <h1 className={styles.title}>🛒 Your Cart!</h1>
 
       <button className={styles.clearButton} onClick={clearCart}>
-        Limpar Carrinho
+        Clean Cart
       </button>
 
       <ul className={styles.list}>
@@ -91,7 +98,7 @@ const CartPage: React.FC = () => {
                 onClick={() => removeFromCart(product.itemId)}
                 className={styles.removeButton}
               >
-                Remover
+                Remove
               </button>
             </li>
           );
@@ -101,6 +108,7 @@ const CartPage: React.FC = () => {
       <h2 className={styles.total}>
         Total: <span>{totalPrice.toFixed(2)} $</span>
       </h2>
+    </div>
     </div>
   );
 };

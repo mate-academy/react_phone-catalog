@@ -17,7 +17,8 @@ export const PhonesPage: React.FC = () => {
   const perPageParam = searchParams.get('perPage');
 
   const page = pageParam ? parseInt(pageParam) : 1;
-  const perPage = perPageParam === 'all' ? products.length : parseInt(perPageParam || '8');
+  const perPage =
+    perPageParam === 'all' ? products.length : parseInt(perPageParam || '8');
 
   // Fetch API
   useEffect(() => {
@@ -25,18 +26,27 @@ export const PhonesPage: React.FC = () => {
     setError(false);
 
     fetch('/api/phones.json')
-      .then((res) => {
+      .then(res => {
         if (!res.ok) {
           throw new Error('Failed to load');
         }
+
         return res.json();
       })
       .then((data: Product[]) => {
-        let sorted = [...data];
+        const sorted = [...data];
 
-        if (sort === 'age') sorted.sort((a, b) => b.year - a.year);
-        if (sort === 'title') sorted.sort((a, b) => a.name.localeCompare(b.name));
-        if (sort === 'price') sorted.sort((a, b) => (a.price - a.discount) - (b.price - b.discount));
+        if (sort === 'age') {
+sorted.sort((a, b) => b.year - a.year);
+}
+
+        if (sort === 'title') {
+        {
+sorted.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+        if (sort === 'price')
+          {sorted.sort((a, b) => a.price - a.discount - (b.price - b.discount));}
 
         setProducts(sorted);
       })
@@ -61,7 +71,9 @@ export const PhonesPage: React.FC = () => {
         </div>
       )}
 
-      {!loading && !error && products.length === 0 && <p>There are no phones yet</p>}
+      {!loading && !error && products.length === 0 && (
+        <p>There are no phones yet</p>
+      )}
 
       {!loading && !error && products.length > 0 && (
         <>
@@ -70,11 +82,16 @@ export const PhonesPage: React.FC = () => {
             Sort:
             <select
               value={sort}
-              onChange={(e) => {
+              onChange={e => {
                 const val = e.target.value;
-                setSearchParams((prev) => {
-                  if (val === 'age') prev.delete('sort');
-                  else prev.set('sort', val);
+
+                setSearchParams(prev => {
+                  if (val === 'age') {
+prev.delete('sort');
+} else {
+prev.set('sort', val);
+}
+
                   return prev;
                 });
               }}
@@ -95,16 +112,26 @@ export const PhonesPage: React.FC = () => {
             totalItems={products.length}
             currentPage={page}
             perPage={perPage}
-            onPageChange={(p) => {
+            onPageChange={p => {
               const params = new URLSearchParams(searchParams);
-              if (p === 1) params.delete('page');
-              else params.set('page', p.toString());
+
+              if (p === 1) {
+params.delete('page');
+} else {
+params.set('page', p.toString());
+}
+
               setSearchParams(params);
             }}
-            onPerPageChange={(pp) => {
+            onPerPageChange={pp => {
               const params = new URLSearchParams(searchParams);
-              if (pp === products.length) params.delete('perPage');
-              else params.set('perPage', pp.toString());
+
+              if (pp === products.length) {
+params.delete('perPage');
+} else {
+params.set('perPage', pp.toString());
+}
+
               setSearchParams(params);
             }}
           />

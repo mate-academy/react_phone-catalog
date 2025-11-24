@@ -26,12 +26,17 @@ type CartContextType = {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [items, setItems] = useState<CartItemType[]>([]);
 
   useEffect(() => {
     const stored = localStorage.getItem('cart');
-    if (stored) setItems(JSON.parse(stored));
+
+    if (stored) {
+      setItems(JSON.parse(stored));
+    }
   }, []);
 
   useEffect(() => {
@@ -39,32 +44,49 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [items]);
 
   const addToCart = (product: Product) => {
-    setItems((prev) => {
-      if (prev.find((item) => item.product.id === product.id)) return prev;
+    setItems(prev => {
+      if (prev.find(item => item.product.id === product.id)) {
+        return prev;
+      }
+
       return [...prev, { id: Date.now(), quantity: 1, product }];
     });
   };
 
   const removeFromCart = (id: number) => {
-    setItems((prev) => prev.filter((item) => item.id !== id));
+    setItems(prev => prev.filter(item => item.id !== id));
   };
 
   const changeQuantity = (id: number, delta: number) => {
-    setItems((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item
-      )
+    setItems(prev =>
+      prev.map(item =>
+        item.id === id
+          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
+          : item,
+      ),
     );
   };
 
   const clearCart = () => setItems([]);
 
-  const totalAmount = items.reduce((sum, item) => sum + (item.product.price - item.product.discount) * item.quantity, 0);
+  const totalAmount = items.reduce(
+    (sum, item) =>
+      sum + (item.product.price - item.product.discount) * item.quantity,
+    0,
+  );
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <CartContext.Provider
-      value={{ items, addToCart, removeFromCart, changeQuantity, clearCart, totalAmount, totalQuantity }}
+      value={{
+        items,
+        addToCart,
+        removeFromCart,
+        changeQuantity,
+        clearCart,
+        totalAmount,
+        totalQuantity,
+      }}
     >
       {children}
     </CartContext.Provider>
@@ -73,6 +95,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 export const useCart = (): CartContextType => {
   const context = useContext(CartContext);
-  if (!context) throw new Error('useCart must be used within CartProvider');
+
+  if (!context) {
+    throw new Error('useCart must be used within CartProvider');
+  }
+
   return context;
 };

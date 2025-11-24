@@ -48,7 +48,7 @@ export const Pagination: React.FC<Props> = ({
         Items per page:
         <select
           value={perPage}
-          onChange={(e) => onPerPageChange(Number(e.target.value))}
+          onChange={e => onPerPageChange(Number(e.target.value))}
         >
           <option value={4}>4</option>
           <option value={8}>8</option>

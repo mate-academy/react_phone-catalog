@@ -13,9 +13,13 @@ type Props = {
   allProducts: Product[];
 };
 
-export const SuggestedProducts: React.FC<Props> = ({ currentProduct, allProducts }) => {
+export const SuggestedProducts: React.FC<Props> = ({
+  currentProduct,
+  allProducts,
+}) => {
   const getSuggestedProducts = () => {
-    const filtered = allProducts.filter((p) => p.id !== currentProduct.id);
+    const filtered = allProducts.filter(p => p.id !== currentProduct.id);
+
     return filtered.sort(() => 0.5 - Math.random()).slice(0, 4);
   };
 
@@ -25,7 +29,7 @@ export const SuggestedProducts: React.FC<Props> = ({ currentProduct, allProducts
     <section className="suggested-products">
       <h2>You may also like</h2>
       <div className="products-grid">
-        {suggested.map((p) => (
+        {suggested.map(p => (
           <Link key={p.id} to={`/product/${p.id}`} className="product-card">
             <img src={p.images[0]} alt={p.name} />
             <p>{p.name}</p>

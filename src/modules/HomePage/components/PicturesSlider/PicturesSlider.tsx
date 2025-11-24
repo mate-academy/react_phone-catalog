@@ -15,17 +15,18 @@ export const PicturesSlider: React.FC = () => {
     const timer = setInterval(() => {
       handleNext();
     }, 5000);
+
     return () => clearInterval(timer);
   }, [currentIndex]);
 
   // Próxima imagem
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
+    setCurrentIndex(prev => (prev + 1) % images.length);
   };
 
   // Imagem anterior
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    setCurrentIndex(prev => (prev - 1 + images.length) % images.length);
   };
 
   // Selecionar imagem exata via dash

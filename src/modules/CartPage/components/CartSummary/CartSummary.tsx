@@ -5,7 +5,9 @@ export const CartSummary: React.FC = () => {
   const { totalAmount, totalQuantity, clearCart } = useCart();
 
   const handleCheckout = () => {
-    if (confirm('Checkout is not implemented yet. Do you want to clear the Cart?')) {
+    if (
+      confirm('Checkout is not implemented yet. Do you want to clear the Cart?')
+    ) {
       clearCart();
     }
   };
