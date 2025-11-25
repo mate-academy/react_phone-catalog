@@ -12,6 +12,8 @@ import { CartProvider } from './shared/contexts/CartContext';
 import { CartPage } from './modules/CartPage/CartPage';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { TabletsPage } from './modules/TabletsPage/TabletsPage';
+import { AccessoriesPage } from './modules/AccessoriesPage/AccessoriesPage';
 
 export const App = () => (
   <CartProvider>
@@ -23,6 +25,8 @@ export const App = () => (
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/phones" element={<PhonesPage />} />
+              <Route path="/tablets" element={<TabletsPage />} />
+              <Route path="/accessories" element={<AccessoriesPage />} />
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
               <Route path="/cart" element={<CartPage />} />
