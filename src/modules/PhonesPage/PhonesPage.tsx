@@ -1,69 +1,27 @@
-import { useEffect, useMemo, useState } from 'react';
 import styles from './PhonesPage.module.scss';
 import { ProductsList } from '../../shared/components/ProductList/ProductsList';
 import { Loader } from '../../shared/components/Loader/Loader';
-import { Product } from '../../types/product';
 import { getPhonesFromProducts } from '../../services/productsService';
 import { Pagination } from '../../shared/components/Pagination';
+import { useProductsPage } from '../../shared/hooks/useProductPage';
 
 export const PhonesPage = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [sortBy, setSortBy] = useState('newest');
-  const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(16);
-  const [currentPage, setCurrentPage] = useState(1);
+  const {
+    loading,
+    error,
 
-  useEffect(() => {
-    async function loadPhones() {
-      try {
-        setLoading(true);
-        const phonesFromServer = await getPhonesFromProducts();
+    sorted,
+    sortBy,
+    setSortBy,
 
-        setPhones(phonesFromServer);
-      } catch {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
+    paginated,
+    itemsPerPage,
+    setItemsPerPage,
 
-    loadPhones();
-  }, []);
-
-  const sorted = useMemo(() => {
-    return [...phones].sort((a, b) => {
-      switch (sortBy) {
-        case 'alphabetically':
-          return a.name.localeCompare(b.name);
-        case 'cheapest':
-          return a.price - b.price;
-        default:
-          return b.year - a.year;
-      }
-    });
-  }, [phones, sortBy]);
-
-  const totalItems = sorted.length;
-  const totalPages =
-    itemsPerPage === 'all'
-      ? 1 // const
-      : Math.ceil(totalItems / (itemsPerPage as number));
-
-  const startIndex =
-    itemsPerPage === 'all' ? 0 : (currentPage - 1) * (itemsPerPage as number);
-
-  const endIndex =
-    itemsPerPage === 'all' ? totalItems : startIndex + (itemsPerPage as number);
-
-  const paginated = sorted.slice(startIndex, endIndex);
-
-  const handlePageChange = (page: number) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
+    currentPage,
+    totalPages,
+    handlePageChange,
+  } = useProductsPage({ fetchFn: getPhonesFromProducts });
 
   if (loading) {
     return <Loader />;
@@ -78,7 +36,7 @@ export const PhonesPage = () => {
     );
   }
 
-  if (!phones.length) {
+  if (!sorted.length) {
     return <p className={styles.message}>There are no phones yet</p>;
   }
 

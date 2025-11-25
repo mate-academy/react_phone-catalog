@@ -21,6 +21,7 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
         setError(false);
 
         const data = await fetchFn();
+
         setItems(data);
       } catch {
         setError(true);
