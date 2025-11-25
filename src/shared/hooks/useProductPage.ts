@@ -11,6 +11,9 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
   const [error, setError] = useState(false);
   const [sortBy, setSortBy] = useState('newest');
 
+  const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(16);
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     async function loadItems() {
       try {
@@ -18,7 +21,6 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
         setError(false);
 
         const data = await fetchFn();
-
         setItems(data);
       } catch {
         setError(true);
@@ -38,10 +40,38 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
         case 'cheapest':
           return a.price - b.price;
         default:
-          return b.year - a.year; // newest
+          return b.year - a.year;
       }
     });
   }, [items, sortBy]);
+
+  const totalItems = sorted.length;
+
+  const totalPages =
+    itemsPerPage === 'all'
+      ? 1
+      : Math.ceil(totalItems / (itemsPerPage as number));
+
+  const startIndex =
+    itemsPerPage === 'all' ? 0 : (currentPage - 1) * (itemsPerPage as number);
+
+  const endIndex =
+    itemsPerPage === 'all' ? totalItems : startIndex + (itemsPerPage as number);
+
+  const paginated = useMemo(() => {
+    if (itemsPerPage === 'all') {
+      return sorted;
+    }
+
+    return sorted.slice(startIndex, endIndex);
+  }, [sorted, startIndex, endIndex, itemsPerPage]);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return {
     items,
@@ -50,5 +80,14 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
     sorted,
     sortBy,
     setSortBy,
+
+    paginated,
+    itemsPerPage,
+    setItemsPerPage,
+
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    handlePageChange,
   };
 };
