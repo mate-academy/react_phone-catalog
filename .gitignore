@@ -13,6 +13,3 @@ raw_reports
 reports
 cypress/screenshots
 cypress/videos
-
-package.json
-package-lock.json

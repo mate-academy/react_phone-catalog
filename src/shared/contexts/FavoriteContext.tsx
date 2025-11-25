@@ -1,13 +1,14 @@
 import React, { createContext, useEffect, useMemo, useState } from 'react';
-import { UiProduct } from '../components/ProductsSlider/ProductSlider';
+import { Product} from '../../types/product';
+import { STORAGE_KEYS } from '../constants';
 
 type Props = {
   children: React.ReactNode;
 };
 
 type FavoriteContextType = {
-  favorites: UiProduct[];
-  setFavorites: React.Dispatch<React.SetStateAction<UiProduct[]>>;
+  favorites: Product[];
+  setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
 };
 
 export const FavoriteContext = createContext<FavoriteContextType>({
@@ -19,10 +20,10 @@ export const FavoriteProvider: React.FC<Props> = ({ children }) => {
   const saved = localStorage.getItem('favorites');
   const listOfFavoritesItems = saved ? JSON.parse(saved) : [];
 
-  const [favorites, setFavorites] = useState<UiProduct[]>(listOfFavoritesItems);
+  const [favorites, setFavorites] = useState<Product[]>(listOfFavoritesItems);
 
   useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify(favorites));
   }, [favorites]);
 
   const value = useMemo(
