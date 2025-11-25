@@ -1,11 +1,11 @@
-import styles from './TabletPage.module.scss';
+import styles from './TabletsPage.module.scss';
 import { ProductsList } from '../../shared/components/ProductList/ProductsList';
 import { Loader } from '../../shared/components/Loader/Loader';
 import { getTabletsFromProducts } from '../../services/productsService';
 import { Pagination } from '../../shared/components/Pagination';
 import { useProductsPage } from '../../shared/hooks/useProductPage';
 
-export const TabletPage = () => {
+export const TabletsPage = () => {
   const {
     loading,
     error,

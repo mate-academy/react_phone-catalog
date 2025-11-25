@@ -12,9 +12,9 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
-  const groupSize = 4;
-  const groupStart = Math.floor((currentPage - 1) / groupSize) * groupSize + 1;
-  const groupEnd = Math.min(groupStart + groupSize - 1, totalPages);
+  const pageSize = 4;
+  const pageStart = Math.floor((currentPage - 1) / pageSize) * pageSize + 1;
+  const pageEnd = Math.min(pageStart + pageSize - 1, totalPages);
 
   return (
     <div className={styles.pagination}>
@@ -25,8 +25,8 @@ export const Pagination: React.FC<Props> = ({
         &lt;
       </button>
 
-      {[...Array(groupEnd - groupStart + 1)].map((_, i) => {
-        const pageNum = groupStart + i;
+      {[...Array(pageEnd - pageStart + 1)].map((_, i) => {
+        const pageNum = pageStart + i;
 
         return (
           <button
