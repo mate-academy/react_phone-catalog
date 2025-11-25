@@ -14,7 +14,9 @@
   display: grid;
   grid-template-columns: repeat(var(--column), 1fr);
   row-gap: 32px;
+  column-gap: 16px;
   flex-direction: column;
+  align-items: center;
 
   border-top: 1px solid #E2E6E9;
   box-sizing: border-box;
@@ -23,12 +25,30 @@
 
   @include on-tablet {
     --column: 12;
+    flex-direction: row;
+    justify-content: center;
+
+    padding-inline: 32px;
+    row-gap: 0;
+  }
+
+  @include on-desktop {
+    --column: 24;
+    grid-template-columns: repeat(var(--column), 32px);
   }
 
   &__logo {
     grid-column: 1/-1;
     height: 32px;
     width: 89px;
+
+    @include on-tablet {
+      grid-column: 1/5;
+    }
+
+    @include on-desktop {
+      grid-column: 1/9;
+    }
   }
 
   &__list {
@@ -39,18 +59,28 @@
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items:flex-start;
     gap: 16px;
+
+    @include on-tablet {
+      grid-column: 5/9;
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      grid-column: 9/17;
+    }
   }
 
   &__item {
-    line-height: 11px;
   }
 
   &__link {
     text-decoration: none;
     color: $secondary-color;
-    @extend %font-uppercase;
+    @include font-uppercase;
+    line-height: 11px;
   }
 
   &__back {
@@ -61,9 +91,18 @@
     align-items: center;
     gap: 16px;
 
+    @include on-tablet {
+      grid-column: 9/-1;
+      justify-content: end;
+    }
+
+    @include on-desktop {
+      grid-column: 17/-1;
+    }
+
     &__text {
       margin: 0;
-      @extend %font-small-text;
+      @include font-small-text;
       color: $secondary-color;
       font-weight: 700;
     }

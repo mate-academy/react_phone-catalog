@@ -59,7 +59,7 @@
       height: $header-height-mobile;
       text-decoration: none;
       color: $secondary-color;
-      @extend %font-uppercase;
+      @include font-uppercase;
       position: relative;
 
       @include on-desktop {

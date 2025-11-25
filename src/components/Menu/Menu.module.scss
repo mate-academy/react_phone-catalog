@@ -80,7 +80,7 @@
       padding-block: 8px;
       text-decoration: none;
       color: $secondary-color;
-      @extend %font-uppercase;
+      @include font-uppercase;
       position: relative;
 
       &::after {

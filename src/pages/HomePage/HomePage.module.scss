@@ -1,0 +1,36 @@
+@import '/src/styles/fonts.scss';
+@import '/src/styles/variables.scss';
+@import '/src/styles/mixins.scss';
+
+.main {
+  display: grid;
+  row-gap: 56px;
+
+  padding-block: 64px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+
+    padding-block: 80px;
+  }
+
+  &__title {
+    margin: 0;
+    @include font-h1-mobile;
+    color: $primary-color;
+
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+
+    @include on-tablet {
+      @include font-h1;
+    }
+  }
+}

@@ -13,35 +13,35 @@
   src: url(/public/fonts/Mont-SemiBold.otf);
 }
 
-%font-h1 {
+@mixin font-h1 {
   font-family: 'MontBold', sans-serif;
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
 }
 
-%font-h2 {
+@mixin font-h2 {
   font-family: 'MontBold', sans-serif;
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
 }
 
-%font-h3 {
+@mixin font-h3 {
   font-family: 'MontBold', sans-serif;
   font-size: 22px;
   line-height: 31px;
   letter-spacing: 0;
 }
 
-%font-h4 {
+@mixin font-h4 {
   font-family: 'MontSemiBold', sans-serif;
   font-size: 20px;
   line-height: 26px;
   letter-spacing: 0;
 }
 
-%font-uppercase {
+@mixin font-uppercase {
   font-family: "MontBold", sans-serif;
   font-size: 12px;
   line-height: 11px;
@@ -49,49 +49,49 @@
   letter-spacing: 0.04em;
 }
 
-%font-buttons {
+@mixin font-buttons {
   font-family: 'MontSemiBold', sans-serif;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
 }
 
-%font-body {
+@mixin font-body {
   font-family: 'MontRegular', sans-serif;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
 }
 
-%font-small-text {
+@mixin font-small-text {
   font-family: 'MontSemiBold', sans-serif;
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0;
 }
 
-%font-h1-mobile {
+@mixin font-h1-mobile {
   font-family: 'MontBold', sans-serif;
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
 }
 
-%font-h2-mobile {
+@mixin font-h2-mobile {
   font-family: 'MontBold', sans-serif;
   font-size: 22px;
   line-height: 31px;
   letter-spacing: 0;
 }
 
-%font-h3-mobile {
+@mixin font-h3-mobile {
   font-family: 'MontSemiBold', sans-serif;
   font-size: 20px;
   line-height: 26px;
   letter-spacing: 0;
 }
 
-%font-h4-mobile {
+@mixin font-h4-mobile {
   font-family: 'MontSemiBold', sans-serif;
   font-size: 16px;
   line-height: 20px;
