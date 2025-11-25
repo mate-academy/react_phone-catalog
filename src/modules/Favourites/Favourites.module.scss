@@ -1,3 +1,43 @@
 .favourites {
-  color: aliceblue;
+  margin: 0 1.6rem;
+
+  &__counter {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+
+    color: rgba(137, 147, 154, 1);
+
+    margin-top: 0.8rem;
+  }
+
+  &__items {
+    margin: 3.2rem 0 5.6rem;
+  }
+
+  h1 {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 3.2rem;
+    line-height: 4.1rem;
+    letter-spacing: -1%;
+
+    padding: 2.4rem 0 0;
+  }
 }
+
+.errorNotification {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 2.2rem;
+  line-height: 140%;
+
+  color: rgba(49, 50, 55, 1);
+
+  margin-top: 0.8rem;
+}
+
+

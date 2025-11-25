@@ -94,6 +94,11 @@ export type Accessory = {
   cell: string[];
 };
 
+export type Fav = {
+  productId: number;
+  hasDiscount: boolean;
+};
+
 export type CatalogItem = Phone | Tablet | Accessory;
 
 export type StorageCartItem = {
@@ -123,8 +128,8 @@ export type DataContextProps = {
   tablets: Tablet[];
   accessories: Accessory[];
   isLoading: boolean;
-  favItems: number[];
-  setFavItems: React.Dispatch<React.SetStateAction<number[]>>;
+  favItems: Fav[];
+  setFavItems: React.Dispatch<React.SetStateAction<Fav[]>>;
   cartItems: StorageCartItem[];
   setCartItems: React.Dispatch<React.SetStateAction<StorageCartItem[]>>;
 };

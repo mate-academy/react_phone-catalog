@@ -35,7 +35,15 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
           </svg>
         </li>
         <li aria-current={productName ? false : 'page'}>
-          <Link to={categoryPath} className={scss.breadcrumbs__link}>
+          <Link
+            to={categoryPath}
+            className={scss.breadcrumbs__link}
+            style={{
+              color: productName
+                ? 'rgba(49, 50, 55, 1)'
+                : 'rgba(137, 147, 154, 1)',
+            }}
+          >
             {capitalize(category)}
           </Link>
         </li>

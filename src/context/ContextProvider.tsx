@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react';
 import {
   Accessory,
   DataContextProps,
+  Fav,
   Phone,
   Product,
   StorageCartItem,
@@ -44,7 +45,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const [favItems, setFavItems] = useState<number[]>(
+  const [favItems, setFavItems] = useState<Fav[]>(
     getInitialStorage('FAVOURITES'),
   );
   const [cartItems, setCartItems] = useState<StorageCartItem[]>(
