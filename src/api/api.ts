@@ -1,10 +1,7 @@
-import { Product } from "@/types";
+import { Product } from '../types/Product';
 
 const ENDPOINTS = {
   products: '/api/products.json',
-  // phones: '/api/phones.json',
-  // tablets: '/api/tablets.json',
-  // accessories: '/api/accessories.json',
 };
 
 function wait(delay: number) {
