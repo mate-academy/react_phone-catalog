@@ -1,9 +1,8 @@
-/* eslint no-console: [,{ allow: ["warn", "log", "error"] }] */
 import { useEffect, useState } from 'react';
-import { Category, Product } from '../../../types/Product';
-import { getProductList } from '../../../api/products';
+import { Product } from '../../../types/Product';
+import { getAllProducts } from '../../../api/products';
 
-export const useCategoryProducts = (category: Category) => {
+export const useAllProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -12,7 +11,7 @@ export const useCategoryProducts = (category: Category) => {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const productList = await getProductList(category);
+        const productList = await getAllProducts();
 
         setProducts(productList);
       } catch (error) {
@@ -23,7 +22,7 @@ export const useCategoryProducts = (category: Category) => {
     };
 
     fetchProducts();
-  }, [category]);
+  }, []);
 
   return { products, isLoading, errorMessage };
 };

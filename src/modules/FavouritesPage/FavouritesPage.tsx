@@ -4,7 +4,7 @@ import s from './FavouritesPage.module.scss';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { useFavouriteContext } from '../../context/FavoritesContext';
 import { Product } from '../../types/Product';
-import { getFavouriteProducts } from '../../api/products';
+import { getProductsByIds } from '../../api/products';
 import { ProductList } from '../CategoryPage/components/ProductList';
 import { Loader } from '../shared/components/Loader';
 import { ErrorNotice } from '../shared/components/ErrorNotice';
@@ -17,14 +17,12 @@ export const FavouritesPage: FC = () => {
 
   const breadcrumbs = [{ link: null, label: 'Favourites' }];
 
-  console.log(ids, count);
-
   useEffect(() => {
-    const fetchSuggested = async () => {
+    const fetchFavourites = async () => {
       setIsLoading(true);
       setErrorMessage('');
       try {
-        const products = await getFavouriteProducts(ids);
+        const products = await getProductsByIds(ids);
 
         setFavouriteProducts(products);
       } catch (error) {
@@ -35,7 +33,7 @@ export const FavouritesPage: FC = () => {
       }
     };
 
-    fetchSuggested();
+    fetchFavourites();
   }, [ids]);
 
   return (

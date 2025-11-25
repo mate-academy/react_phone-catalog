@@ -66,7 +66,7 @@ export const getSuggestedProducts = async (
   return suggestedProducts;
 };
 
-export const getFavouriteProducts = async (ids: Set<string>) => {
+export const getProductsByIds = async (ids: Set<string>) => {
   const [phones, tablets, accessories] = await Promise.all([
     getProductList('phones'),
     getProductList('tablets'),

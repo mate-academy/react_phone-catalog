@@ -9,31 +9,40 @@ import { FavouritesContextProvider } from './context/FavoritesContext';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { CartPage } from './modules/CartPage';
 import './styles/main.scss';
+import { CartContextProvider } from './context/CartContext';
 
 export const App = () => (
   <div className="app-wrapper">
-    <FavouritesContextProvider>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/phones" element={<CategoryPage category="phones" />} />
-          <Route
-            path="/tablets"
-            element={<CategoryPage category="tablets" />}
-          />
-          <Route
-            path="/accessories"
-            element={<CategoryPage category="accessories" />}
-          />
-          <Route path="/product/:productId" element={<ProductDetailsPage />} />
-          <Route path="/favorites" element={<FavouritesPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+    <CartContextProvider>
+      <FavouritesContextProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/phones"
+              element={<CategoryPage category="phones" />}
+            />
+            <Route
+              path="/tablets"
+              element={<CategoryPage category="tablets" />}
+            />
+            <Route
+              path="/accessories"
+              element={<CategoryPage category="accessories" />}
+            />
+            <Route
+              path="/product/:productId"
+              element={<ProductDetailsPage />}
+            />
+            <Route path="/favorites" element={<FavouritesPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
 
-        <Footer />
-      </Router>
-    </FavouritesContextProvider>
+          <Footer />
+        </Router>
+      </FavouritesContextProvider>
+    </CartContextProvider>
   </div>
 );

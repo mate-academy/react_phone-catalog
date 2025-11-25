@@ -7,7 +7,7 @@ import productNotFound from '../../assets/images/product-not-found.png';
 import { ProductImagesGallery } from './components/ProductImagesGallery';
 import { ErrorNotice } from '../shared/components/ErrorNotice';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
-import { CATEGORIES } from '../shared/components/constants';
+import { CATEGORIES } from '../shared/constants';
 import s from './ProductDetailsPage.module.scss';
 import { ProductButtons } from '../shared/components/ProductButtons';
 import { ProductTechSpec } from './components/ProductTechSpec';

@@ -8,11 +8,12 @@ import cart from '../../assets/images/icons/cart.svg';
 import { NavBar } from '../shared/components/NavBar/NavBar';
 import { BurgerMenu } from './components/BurgerMenu';
 import { useFavouriteContext } from '../../context/FavoritesContext';
+import { useCartContext } from '../../context/CartContext';
 
 export const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { count } = useFavouriteContext();
-  const cartCount = 3;
+  const { cartCount } = useCartContext();
   const closeMenu = () => setIsMenuOpen(false);
 
   return (

@@ -8,7 +8,7 @@ import { useCategoryProducts } from './hooks/useCategoryProducts';
 import s from './CategoryPage.module.scss';
 import { Loader } from '../shared/components/Loader';
 import { ErrorNotice } from '../shared/components/ErrorNotice';
-import { CATEGORIES } from '../shared/components/constants';
+import { CATEGORIES } from '../shared/constants';
 
 interface Props {
   category: Category;

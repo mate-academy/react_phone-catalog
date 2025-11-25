@@ -1,89 +1,54 @@
-import { FC, useState } from 'react';
+/* eslint no-console: [,{ allow: ["warn", "log", "error"] }] */
+import { FC, useEffect, useState } from 'react';
 import { GoBackLink } from '../shared/components/GoBackLink';
 import { CartItemBlock } from './components/CartItem';
 import s from './CartPage.module.scss';
-import { CartItem } from '../../types/Cart';
+import { CartProduct } from '../../types/Cart';
 import { ModalLayout } from '../shared/components/ModalLayout';
-
-const cartItems: CartItem[] = [
-  {
-    id: 1,
-    quantity: 1,
-    product: {
-      id: 116,
-      category: 'phones',
-      itemId: 'apple-iphone-13-pro-max-1tb-gold',
-      name: 'Apple iPhone 13 Pro Max 1TB Gold',
-      fullPrice: 1740,
-      price: 1520,
-      screen: "6.1' OLED",
-      capacity: '1TB',
-      color: 'gold',
-      ram: '6GB',
-      year: 2022,
-      image: 'img/phones/apple-iphone-13-pro-max/gold/00.webp',
-    },
-  },
-  {
-    id: 2,
-    quantity: 1,
-    product: {
-      id: 121,
-      category: 'accessories',
-      itemId: 'apple-watch-series-3-38mm-space-gray',
-      name: 'Apple Watch Series 3 38mm Space Gray',
-      fullPrice: 199,
-      price: 169,
-      screen: "1.3' OLED",
-      capacity: '38mm',
-      color: 'space gray',
-      ram: '768MB',
-      year: 2017,
-      image: 'img/accessories/apple-watch-series-3/space-gray/00.webp',
-    },
-  },
-  {
-    id: 3,
-    quantity: 3,
-    product: {
-      id: 118,
-      category: 'phones',
-      itemId: 'apple-iphone-13-pro-max-256gb-graphite',
-      name: 'Apple iPhone 13 Pro Max 256GB Graphite',
-      fullPrice: 1300,
-      price: 1220,
-      screen: "6.1' OLED",
-      capacity: '256GB',
-      color: 'graphite',
-      ram: '6GB',
-      year: 2022,
-      image: 'img/phones/apple-iphone-13-pro-max/graphite/00.webp',
-    },
-  },
-  {
-    id: 4,
-    quantity: 2,
-    product: {
-      id: 119,
-      category: 'phones',
-      itemId: 'apple-iphone-13-pro-max-512gb-graphite',
-      name: 'Apple iPhone 13 Pro Max 512GB Graphite',
-      fullPrice: 1600,
-      price: 1530,
-      screen: "6.1' OLED",
-      capacity: '512GB',
-      color: 'graphite',
-      ram: '6GB',
-      year: 2022,
-      image: 'img/phones/apple-iphone-13-pro-max/graphite/00.webp',
-    },
-  },
-];
+import { useCartContext } from '../../context/CartContext';
+//import { getAllProducts } from '../../api/products';
+import { Product } from '../../types/Product';
+import { Loader } from '../shared/components/Loader';
+import { ErrorNotice } from '../shared/components/ErrorNotice';
+import { useAllProducts } from './hooks/useAllProducts';
 
 export const CartPage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
 
+  const { cartItems, cartCount, clearCart } = useCartContext();
+  const { products, isLoading, errorMessage } = useAllProducts();
+
+  useEffect(() => {
+    if (!products.length) {
+      return;
+    }
+
+    const mapped = cartItems.map(item => {
+      const product = products.find(
+        p => p.itemId === item.productId,
+      ) as Product;
+
+      return {
+        product,
+        quantity: item.quantity,
+        id: Math.random(),
+      };
+    });
+
+    setCartProducts(mapped);
+  }, [cartItems, products]);
+
+  const cartTotalAmount = cartProducts.reduce(
+    (amount, item) => amount + item.quantity * item.product.price,
+    0,
+  );
   const onCheckout = () => setIsModalOpen(true);
+  const onConfirm = () => {
+    clearCart();
+    setIsModalOpen(false);
+  };
+
   const checkoutTitle = 'Checkout is not implemented yet.';
   const checkoutText = 'Do you want to clear the Cart?';
 
@@ -92,28 +57,43 @@ export const CartPage: FC = () => {
       <section className={`${s.container} ${s.cartPage}`}>
         <GoBackLink />
         <h1>Cart</h1>
-        <div className={s.cartContent}>
-          <div className={s.cartItems}>
-            {cartItems.map(item => (
-              <CartItemBlock key={item.id} item={item} />
-            ))}
-          </div>
-          <div className={s.cartTotalBlock}>
-            <div className={s.cartTotal}>
-              <span className={s.cartPrice}>$2657</span>
-              <span className={s.cartCount}>Total for 3 items</span>
+        {isLoading && <Loader />}
+        {errorMessage && (
+          <ErrorNotice
+            message={errorMessage}
+            onReload={() => window.location.reload()}
+          />
+        )}
+        {cartProducts.length === 0 && 'Your cart is empty'}
+        {!isLoading && !errorMessage && cartProducts.length > 0 && (
+          <div className={s.cartContent}>
+            <div className={s.cartItems}>
+              {cartProducts.map(item => (
+                <CartItemBlock key={item.product.itemId} item={item} />
+              ))}
             </div>
-            <button type="button" className={s.cartButton} onClick={onCheckout}>
-              Checkout
-            </button>
+            <div className={s.cartTotalBlock}>
+              <div className={s.cartTotal}>
+                <span className={s.cartPrice}>${cartTotalAmount}</span>
+                <span className={s.cartCount}>Total for {cartCount} items</span>
+              </div>
+              <button
+                type="button"
+                className={s.cartButton}
+                onClick={onCheckout}
+              >
+                Checkout
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </section>
       {isModalOpen && (
         <ModalLayout
           title={checkoutTitle}
           text={checkoutText}
           onCancel={() => setIsModalOpen(false)}
+          onConfirm={onConfirm}
         />
       )}
     </main>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import s from './ShopByCategories.module.scss';
 import { FC, useEffect, useState } from 'react';
-import { CATEGORIES } from '../../../shared/components/constants';
+import { CATEGORIES } from '../../../shared/constants';
 
 interface CategoryData {
   path: string;

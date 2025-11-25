@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
+import { useLocalStorage } from '../modules/shared/useLocalStorage';
 
 interface FavouritesContextProps {
   ids: Set<string>;
@@ -16,21 +17,23 @@ export const FavouritesContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [ids, setIds] = useState<Set<string>>(() => new Set());
+  //const [ids, setIds] = useState<Set<string>>(() => new Set());
+  const [idsArray, setIdsArray] = useLocalStorage<string[]>('favourites', []);
+  const ids = new Set(idsArray);
 
   const isFavorite = (id: string) => ids.has(id);
 
   const toggle = (id: string) => {
-    setIds(prev => {
-      const newSet = new Set(prev);
+    setIdsArray(prev => {
+      const set = new Set(prev);
 
-      if (newSet.has(id)) {
-        newSet.delete(id);
+      if (set.has(id)) {
+        set.delete(id);
       } else {
-        newSet.add(id);
+        set.add(id);
       }
 
-      return newSet;
+      return Array.from(set);
     });
   };
 
