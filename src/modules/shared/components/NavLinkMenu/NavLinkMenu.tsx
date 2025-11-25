@@ -2,6 +2,8 @@
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import scss from './NavLinkMenu.module.scss';
+import { useContext } from 'react';
+import { DataContext } from '../../../../context/ContextProvider';
 
 const styleMap = {
   text: scss.link,
@@ -20,6 +22,10 @@ export const NavLinkMenu: React.FC<Props> = ({
   icon,
   end,
 }) => {
+  const { favItems } = useContext(DataContext);
+  const countFav = favItems.length;
+  const showBadge = countFav > 0 && icon === 'heart-icon';
+
   return (
     <NavLink
       to={to}
@@ -34,9 +40,16 @@ export const NavLinkMenu: React.FC<Props> = ({
       {type === 'text' ? (
         label
       ) : (
-        <svg className={scss.iconLink__icon}>
-          <use href={`/icons/icons.svg#${icon}`}></use>
-        </svg>
+        <>
+          <svg className={scss.iconLink__icon}>
+            <use href={`/icons/icons.svg#${icon}`}></use>
+          </svg>
+          {showBadge && (
+            <span className={scss.iconLink__favCounter} aria-hidden="true">
+              {countFav}
+            </span>
+          )}
+        </>
       )}
     </NavLink>
   );
