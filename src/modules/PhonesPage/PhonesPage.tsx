@@ -4,6 +4,7 @@ import { Loader } from '../../shared/components/Loader/Loader';
 import { getPhonesFromProducts } from '../../services/productsService';
 import { Pagination } from '../../shared/components/Pagination';
 import { useProductsPage } from '../../shared/hooks/useProductPage';
+import { ITEMS_PER_PAGE_OPTIONS, SORT, SortBy } from '../../shared/constants';
 
 export const PhonesPage = () => {
   const {
@@ -50,12 +51,12 @@ export const PhonesPage = () => {
           <select
             id="sort"
             value={sortBy}
-            onChange={e => setSortBy(e.target.value)}
+            onChange={e => setSortBy(e.target.value as SortBy)}
             className={styles.select}
           >
-            <option value="newest">Newest</option>
-            <option value="alphabetically">Alphabetically</option>
-            <option value="cheapest">Cheapest</option>
+            <option value={SORT.NEWEST}>Newest</option>
+            <option value={SORT.ALPHA}>Alphabetically</option>
+            <option value={SORT.CHEAPEST}>Cheapest</option>
           </select>
         </div>
 
@@ -64,17 +65,20 @@ export const PhonesPage = () => {
           <select
             id="perPage"
             value={itemsPerPage}
-            onChange={e =>
+            onChange={event =>
               setItemsPerPage(
-                e.target.value === 'all' ? 'all' : Number(e.target.value),
+                event.target.value === 'all'
+                  ? 'all'
+                  : (Number(event.target.value) as 4 | 8 | 16),
               )
             }
             className={styles.select}
           >
-            <option value="all">All</option>
-            <option value="16">16</option>
-            <option value="8">8</option>
-            <option value="4">4</option>
+            {ITEMS_PER_PAGE_OPTIONS.map(option => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
           </select>
         </div>
       </div>

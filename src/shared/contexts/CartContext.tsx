@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useMemo, useState } from 'react';
 import { Product } from '../../types/product';
+import { STORAGE_KEYS } from '../constants';
 
 export type CartItem = {
   id: number;
@@ -22,13 +23,13 @@ export const CartContext = createContext<CartContextType>({
 });
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
-  const saved = localStorage.getItem('cart');
+  const saved = localStorage.getItem(STORAGE_KEYS.CART);
   const listOfCartItems = saved ? JSON.parse(saved) : [];
 
   const [cartItems, setCartItems] = useState<CartItem[]>(listOfCartItems);
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cartItems));
+    localStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(cartItems));
   }, [cartItems]);
 
   const value = useMemo(

@@ -14,6 +14,7 @@ import { CartPage } from './modules/CartPage/CartPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 import { TabletsPage } from './modules/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage/AccessoriesPage';
+import { ROUTES } from './shared/constants';
 
 export const App = () => (
   <CartProvider>
@@ -23,13 +24,13 @@ export const App = () => (
           <Header />
           <main className="main-content">
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/phones" element={<PhonesPage />} />
-              <Route path="/tablets" element={<TabletsPage />} />
-              <Route path="/accessories" element={<AccessoriesPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-              <Route path="/favorites" element={<FavoritesPage />} />
-              <Route path="/cart" element={<CartPage />} />
+              <Route path={ROUTES.HOME} element={<HomePage />} />
+              <Route path={ROUTES.PHONES} element={<PhonesPage />} />
+              <Route path={ROUTES.TABLETS} element={<TabletsPage />} />
+              <Route path={ROUTES.ACCESSORIES} element={<AccessoriesPage />} />
+              <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
+              <Route path={ROUTES.FAVORITES} element={<FavoritesPage />} />
+              <Route path={ROUTES.CART} element={<CartPage />} />
               <Route
                 path="/product/:productId"
                 element={<ProductDetailsPage />}
