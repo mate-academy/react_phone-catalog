@@ -162,6 +162,7 @@ export const ProductDetailsPage = () => {
         <ButtonFav
           productId={idForCart}
           className={scss.productDetailsPage__favButton}
+          hasDiscount={false}
         />
       </div>
       <TechSpecs item={item} tech={false} />

@@ -1,14 +1,15 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import '../src/App.scss';
 import '../src/modules/shared/styles/base/_base.scss';
-import { Header } from './modules/shared/components/Header/Header';
-import { HomePage } from './modules/HomePage/HomePage';
-import { Favourites } from './modules/Favourites/Favourites';
-import { Footer } from './modules/shared/components/Footer/Footer';
-import { Catalog } from './modules/Catalog/Catalog';
+import { Header } from './modules/shared/components/Header';
+import { HomePage } from './modules/HomePage';
+import { Favourites } from './modules/Favourites';
+import { Footer } from './modules/shared/components/Footer';
+import { Catalog } from './modules/Catalog';
 import { useContext } from 'react';
 import { DataContext } from './context/ContextProvider';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import { Cart } from './modules/Cart';
 
 export const App = () => {
   const { products } = useContext(DataContext);
@@ -25,8 +26,8 @@ export const App = () => {
       <Header />
       <div className="main">
         <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/home" element={<Navigate to="/" replace />}></Route>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
           <Route
             path="/phones"
             element={<Catalog items={phones} title="Mobile phones" />}
@@ -43,7 +44,8 @@ export const App = () => {
             path="/:category/:productId"
             element={<ProductDetailsPage />}
           ></Route>
-          <Route path="/favourites" element={<Favourites />}></Route>
+          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
       <Footer />
