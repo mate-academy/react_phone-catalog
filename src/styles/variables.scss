@@ -46,6 +46,7 @@ $color-text: #fff;
 $color-bg: #fff;
 $color-green: #27AE60;
 $container-width: 1136px;
+$loading-grey: #ededed;
 
 // Handy mixin
 @mixin type($size, $line, $track, $weight, $family: $font-mont-regular) {
@@ -54,4 +55,10 @@ $container-width: 1136px;
   line-height: $line;
   letter-spacing: $track;
   font-weight: $weight;
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -20%;
+  }
 }

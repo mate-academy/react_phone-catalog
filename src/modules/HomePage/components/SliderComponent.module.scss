@@ -46,6 +46,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background: #fff;
+
+    &:hover {
+      box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+      transform: scale(1.1);
+      transition: transform 0.3s ease-in-out;
+      z-index: 10;
+    }
     &__itemName {
       // min-height: 42px;
       min-height: 42px; // або max-height
@@ -149,6 +157,83 @@
       &:hover {
         border: 1px solid $color-primary;
       }
+    }
+  }
+  /* === SKELETON STYLES === */
+  &__skeleton {
+    // Блокуємо будь-які ховери та кліки
+    pointer-events: none;
+    user-select: none;
+    border-color: transparent; // Прибираємо бордер картки, якщо треба
+
+    // Міксін для ефекту завантаження (з вашого прикладу)
+    @mixin skeleton-bg {
+      background-color: $loading-grey;
+      background: linear-gradient(
+          100deg,
+          rgba(255, 255, 255, 0) 40%,
+          rgba(255, 255, 255, 0.5) 50%,
+          rgba(255, 255, 255, 0) 60%
+        )
+        $loading-grey;
+      background-size: 200% 100%;
+      background-position-x: 180%;
+      animation: 1s loading ease-in-out infinite;
+      color: transparent !important; // Ховаємо текст
+      border-color: transparent !important;
+      border-radius: 4px;
+    }
+
+    // Застосовуємо ефект до конкретних частин вашої картки
+
+    // 1. Картинка
+    .SliderComponent__item__imageContainer {
+      @include skeleton-bg;
+      img {
+        opacity: 0; // Ховаємо іконку битої картинки
+      }
+    }
+
+    // 2. Назва товару
+    .SliderComponent__item__itemName {
+      @include skeleton-bg;
+      height: 1.5rem; // Фіксуємо висоту скелетону
+      margin-bottom: 8px;
+      display: block; // Щоб спрацювала висота
+    }
+
+    // 3. Ціна
+    .SliderComponent__item__fullPrice,
+    .SliderComponent__item__price {
+      @include skeleton-bg;
+      display: inline-block;
+      width: 60px; // Ширина заглушки ціни
+      height: 24px;
+    }
+
+    // 4. Характеристики (Specs)
+    .SliderComponent__item__infoName,
+    .SliderComponent__item__infoValue {
+      @include skeleton-bg;
+      display: inline-block;
+      width: 40px; // Маленькі блочки для тексту
+      height: 14px;
+    }
+
+    // Трохи розширимо значення характеристик
+    .SliderComponent__item__infoValue {
+      width: 60px;
+    }
+
+    // 5. Кнопки
+    .SliderComponent__item__cartButton,
+    .SliderComponent__item__favoriteButton {
+      @include skeleton-bg;
+      border: none;
+      box-shadow: none;
+      img {
+        opacity: 0;
+      } // Ховаємо іконку серця
     }
   }
 }

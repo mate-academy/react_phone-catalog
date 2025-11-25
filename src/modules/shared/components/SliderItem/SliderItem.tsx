@@ -57,11 +57,11 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
         </span>
         <div className={styles.SliderComponent__item__priceContainer}>
           <div className={styles.SliderComponent__item__fullPrice}>
-            ${item.fullPrice}
+            ${item.price}
           </div>
           {showDiscount && (
             <div className={styles.SliderComponent__item__price}>
-              ${item.price}
+              ${item.fullPrice}
             </div>
           )}
         </div>
