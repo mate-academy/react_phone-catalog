@@ -84,32 +84,3 @@ h1 {
     border-color: #313237;
   }
 }
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 32px;
-
-  button {
-    padding: 6px 10px;
-    border: 1px solid #e2e6e9;
-    background: #fff;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: background 0.3s ease, color 0.3s ease;
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
-
-  .activePage {
-    background: #313237;
-    color: #fff;
-    border-color: #313237;
-  }
-}

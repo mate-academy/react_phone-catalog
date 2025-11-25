@@ -4,6 +4,7 @@ import { ProductsList } from '../../shared/components/ProductList/ProductsList';
 import { Loader } from '../../shared/components/Loader/Loader';
 import { Product } from '../../types/product';
 import { getPhonesFromProducts } from '../../services/productsService';
+import { Pagination } from '../../shared/components/Pagination';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -61,10 +62,6 @@ export const PhonesPage = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
-
-  const groupSize = 4;
-  const groupStart = Math.floor((currentPage - 1) / groupSize) * groupSize + 1;
-  const groupEnd = Math.min(groupStart + groupSize - 1, totalPages);
 
   if (loading) {
     return <Loader />;
@@ -125,35 +122,11 @@ export const PhonesPage = () => {
       <ProductsList products={paginated} />
 
       {itemsPerPage !== 'all' && totalPages > 1 && (
-        <div className={styles.pagination}>
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            &lt;
-          </button>
-
-          {[...Array(groupEnd - groupStart + 1)].map((_, i) => {
-            const pageNum = groupStart + i;
-
-            return (
-              <button
-                key={pageNum}
-                className={currentPage === pageNum ? styles.activePage : ''}
-                onClick={() => handlePageChange(pageNum)}
-              >
-                {pageNum}
-              </button>
-            );
-          })}
-
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            &gt;
-          </button>
-        </div>
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
       )}
     </div>
   );
