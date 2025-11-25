@@ -52,3 +52,9 @@ export async function getTabletsFromProducts() {
 
   return products.filter(p => p.category === 'tablets');
 }
+
+export async function getAccessoriesFromProducts() {
+  const products = await getAllProducts();
+
+  return products.filter(p => p.category === 'accessories');
+}
