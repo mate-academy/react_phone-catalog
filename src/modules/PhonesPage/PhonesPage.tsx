@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styles from './PhonesPage.module.scss';
 import { ProductsList } from '../../shared/components/ProductList/ProductsList';
 import { Loader } from '../../shared/components/Loader/Loader';
@@ -31,21 +31,23 @@ export const PhonesPage = () => {
     loadPhones();
   }, []);
 
-  const sorted = [...phones].sort((a, b) => {
-    switch (sortBy) {
-      case 'alphabetically':
-        return a.name.localeCompare(b.name);
-      case 'cheapest':
-        return a.price - b.price;
-      default:
-        return b.year - a.year;
-    }
-  });
+  const sorted = useMemo(() => {
+    return [...phones].sort((a, b) => {
+      switch (sortBy) {
+        case 'alphabetically':
+          return a.name.localeCompare(b.name);
+        case 'cheapest':
+          return a.price - b.price;
+        default:
+          return b.year - a.year;
+      }
+    });
+  }, [phones, sortBy]);
 
   const totalItems = sorted.length;
   const totalPages =
     itemsPerPage === 'all'
-      ? 1
+      ? 1 // const
       : Math.ceil(totalItems / (itemsPerPage as number));
 
   const startIndex =
