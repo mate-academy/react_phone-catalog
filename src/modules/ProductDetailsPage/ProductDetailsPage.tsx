@@ -25,7 +25,6 @@ export const ProductDetailsPage: FC = () => {
 
   console.log(product);
 
-  // Technical specifications
   const techSpecs = [
     { label: 'Screen', value: product?.screen ?? '' },
     { label: 'Resolution', value: product?.resolution ?? '' },
@@ -66,6 +65,7 @@ export const ProductDetailsPage: FC = () => {
     return (
       <div className={s.productNotFound}>
         <h1>Product was not found</h1>
+        <button onClick={() => navigate(-1)}>Go Back</button>
         <img src={productNotFound} />
       </div>
     );
