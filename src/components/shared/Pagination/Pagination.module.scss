@@ -1,0 +1,28 @@
+@import '../../../utils/vars';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #161827;
+    color: $color-text;
+    margin: 24px 0;
+
+    &:first-child, &:last-child {
+      background-color: $color-text-gray;
+    }
+
+    &:hover {
+      background-color: $color-accent-hover;
+    }
+  }
+}
+
+

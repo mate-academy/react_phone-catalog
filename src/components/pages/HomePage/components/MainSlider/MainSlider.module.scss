@@ -1,0 +1,126 @@
+@import '../../../../../utils/mixins';
+@import '../../../../../utils/vars';
+
+.slider {
+  display: grid;
+
+  @include pageGrid;
+
+  position: relative;
+
+  &__container {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    position: relative;
+    width: 100%;
+    height: 352px;
+    overflow: hidden;
+    margin: 0 auto;
+
+    @include on-tablet {
+      height: 188px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    transition: transform $effectDuration ease-in-out;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 2 / -2;
+    }
+  }
+
+  &__item {
+    flex: 0 0 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__dots {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 4px;
+    background-color: $color-text-gray;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: $effectDuration;
+
+    &.active {
+      background-color: $color-text;
+    }
+  }
+}
+
+.icon {
+  display: none;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+  transition: $effectDuration;
+
+  @include on-tablet {
+    display: block;
+    position: absolute;
+    width: 32px;
+    height: 189px;
+    background-color: #161827;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+
+  &--prev {
+    @include on-tablet {
+      background: url('../../../../../icons/Prev.svg') no-repeat center ;
+      grid-column: 1 / 2;
+    }
+
+    &:hover {
+      background: url('../../../../../icons/Prev-white.svg') no-repeat center ;
+      background-color: $background-color;
+
+    }
+  }
+
+  &--next {
+    @include on-tablet {
+      background: url('../../../../../icons/Next.svg') no-repeat center;
+      grid-column: -2 / -1;
+    }
+
+    &:hover {
+      background: url('../../../../../icons/Next-white.svg') no-repeat center ;
+      background-color: $background-color;
+    }
+
+  }
+}

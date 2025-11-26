@@ -1,0 +1,72 @@
+@import '../../../../../App';
+@import '../../../../../utils/fonts';
+@import '../../../../../utils/mixins';
+@import '../../../../../utils/vars';
+
+.category {
+  @include pageGrid;
+
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  place-items: center;
+  margin-bottom: 56px;
+  margin-top: 24px;
+  gap: 24px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 24px;
+    width: 100%;
+    height: auto;
+  }
+
+  &__link {
+    width: 288px;
+    height: 288px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #161827;
+    transition: $effectDuration;
+
+    &:hover {
+      scale: 0.9;
+      box-shadow: 0 4px 22px rgba(255, 255, 255, 0.2);
+      transform: scale(1.01);
+    }
+
+
+    @include on-tablet {
+      width: 368px;
+      height: 368px;
+    }
+
+    &--phones {
+      background-image: url('/img/category-phones.png');
+    }
+
+    &--tablets {
+      background-image: url('/img/category-tablets.png');
+    }
+
+    &--accessories {
+      background-image: url('/img/category-accessories.png');
+    }
+  }
+
+
+  &__title--models {
+    font-size: 14px;
+    color: $color-text-gray;
+  }
+}

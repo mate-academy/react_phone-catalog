@@ -1,0 +1,67 @@
+@import '../../../../utils/mixins';
+@import '../../../../utils/vars';
+
+.icons {
+  display: flex;
+
+  &__icon {
+    height: 48px;
+    width: 48px;
+    position: relative;
+    border: 1px solid $color-text-gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-desktop {
+      height: $header-height-desktop;
+      width: 64px;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &--type-like,
+    &--type-cart {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+
+    &--type-menu {
+      display: flex;
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &--active {
+      border-bottom: 3px solid $color-text;
+    }
+  }
+
+  &__count {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: red;
+    color: $color-text;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-desktop {
+      top: 14px;
+      right: 14px;
+    }
+  }
+}

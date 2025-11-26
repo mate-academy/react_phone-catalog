@@ -1,0 +1,56 @@
+@import '../../../../../utils/mixins';
+@import '../../../../../utils/vars';
+
+.dropdown {
+  position: relative;
+  min-width: auto;
+  width: 100%;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 9px 12px;
+    min-width: auto;
+    width: 100%;
+    cursor: pointer;
+    font-family: Mont, sans-serif;
+
+    &::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background-image: url(../../../../../icons/Up.png);
+    }
+
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 50%;
+      right: 0;
+    }
+
+    &--active::before {
+      background-image: url(../../../../../icons/Up.png)
+  }
+
+  &__content {
+    position: absolute;
+    margin-top: 4px;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $background-color;
+    z-index: 10;
+  }
+}
+
+.content {
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+
+  &__item {
+    padding: 6px 0 5px 12px;
+    cursor: pointer;
+
+  }
+}

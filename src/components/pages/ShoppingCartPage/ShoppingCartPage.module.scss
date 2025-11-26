@@ -1,0 +1,99 @@
+@import '../../../utils/vars';
+@import '../../../utils/mixins';
+
+.shoppingCard {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: $color-text;
+  padding: 0;
+
+  &__arrLeft {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-image: url('../../../icons/Prev-white.svg');
+    cursor: pointer;
+    transition: $effectDuration;
+  }
+
+
+  &__back {
+    display: flex;
+    align-items: center;
+    color: $color-text;
+    padding: 24px 0;
+
+    @include on-tablet {
+      padding-top: 40px;
+      padding-bottom: 16px;
+    }
+  }
+
+  &__productContainer {
+    display: grid;
+
+    @include pageGrid;
+
+    margin-top: 32px;
+    margin-bottom: 16px;
+    width: 100%;
+    gap: 16px;
+  }
+
+  &__productList {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__checkout {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    border: 1px solid $color-text-gray;
+    height: fit-content;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__checkoutPrice {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+  }
+
+  &__checkoutItems {
+    text-align: center;
+    padding: 16px;
+    font-family: Mont, sans-serif;
+    color: $color-text-gray;
+  }
+
+  &__checkoutButton {
+    width: 100%;
+    height: 48px;
+    margin-top: 24px;
+    cursor: pointer;
+    background-color: $color-accent;
+    color: #fff;
+
+    &:hover {
+      background-color: $color-accent-hover;
+    }
+  }
+
+  &__isEmpty {
+    grid-column: 1 / -1;
+
+  }
+}
+
+

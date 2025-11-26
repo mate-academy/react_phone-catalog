@@ -1,4 +1,18 @@
-import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { CartProvider } from './providers/CartProvider';
+import { FavoritesProvider } from './providers/FavoritesProvider';
+import { HotPriceProvider } from './providers/HotPriceProvider';
+import { Root } from './Root';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <HotPriceProvider>
+      <CartProvider>
+        <FavoritesProvider>
+          <Root />
+        </FavoritesProvider>
+      </CartProvider>
+    </HotPriceProvider>
+  </React.StrictMode>,
+);

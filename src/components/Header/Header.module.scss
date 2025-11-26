@@ -1,0 +1,49 @@
+@import '../../utils/mixins';
+@import '../../utils/fonts';
+@import '../../utils/vars';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: $header-height-mobile-tablet;
+  background-color: $primary-color;
+  border-bottom: 1px solid $color-text-gray;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  @include on-desktop {
+    height: $header-height-desktop;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    padding: 13px 16px;
+
+    @include on-desktop {
+      padding: 18px 24px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__subMenuWrapper {
+    display: flex;
+    justify-self: end;
+  }
+}
