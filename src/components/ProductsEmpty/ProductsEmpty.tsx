@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import img from '../../../public/img/cart-is-empty.png';
 
 import style from './productsEmpty.module.scss';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +16,7 @@ export const ProductsEmpty: React.FC<Props> = ({ title }) => {
         <h2 className={`title ${style.title}`}>
           {title} {t('page.isEmpty')}
         </h2>
-        <img className={style.img} src={img} alt="" />
+        <img className={style.img} src={'/img/cart-is-empty.png'} alt="" />
         <div className={style.button}>
           <Link to={'/'} className={style.link}>
             {t('page.BacktoHome')}
