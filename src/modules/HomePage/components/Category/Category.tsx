@@ -54,7 +54,7 @@ export const Category = () => {
   return (
     <section className="section">
       <div className="container">
-        <h1 className={`${style.title} title`}>{t('carusel.shopBy')}</h1>
+        <h2 className={`${style.title} title`}>{t('carusel.shopBy')}</h2>
 
         <div className={style.category}>
           {categoriesData.map(category => (
