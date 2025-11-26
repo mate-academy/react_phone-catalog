@@ -1,14 +1,36 @@
 /* eslint no-console: [,{ allow: ["warn", "log", "error"] }] */
-import { FC } from 'react';
-import { Category } from '../../types/Product';
+import { FC, useMemo } from 'react';
+import { Category, Product } from '../../types/Product';
 import { ProductList } from './components/ProductList';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { Filter } from './components/Filter';
 import { useCategoryProducts } from './hooks/useCategoryProducts';
-import s from './CategoryPage.module.scss';
 import { Loader } from '../shared/components/Loader';
 import { ErrorNotice } from '../shared/components/ErrorNotice';
 import { CATEGORIES } from '../shared/constants';
+import { Pagination } from '../shared/components/Pagination';
+import s from './CategoryPage.module.scss';
+import { useSearchParamsState } from './hooks/useSearchParamsState';
+
+const sortProducts = (products: Product[], sortBy: string) => {
+  const sorted = [...products];
+
+  switch (sortBy) {
+    case 'age':
+      sorted.sort((a, b) => b.year - a.year);
+      break;
+    case 'title':
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case 'price':
+      sorted.sort((a, b) => a.price - b.price);
+      break;
+    default:
+      break;
+  }
+
+  return sorted;
+};
 
 interface Props {
   category: Category;
@@ -16,8 +38,32 @@ interface Props {
 
 export const CategoryPage: FC<Props> = ({ category }) => {
   const { products, isLoading, errorMessage } = useCategoryProducts(category);
-  const count = products.length;
-  const breadcrumbs = [{ link: null, label: CATEGORIES[category].name }];
+
+  const {
+    sortBy,
+    perPage,
+    currentPage,
+    setSortBy,
+    setPerPage,
+    setCurrentPage,
+  } = useSearchParamsState();
+
+  const sortedProducts = useMemo(() => {
+    return sortProducts(products, sortBy);
+  }, [products, sortBy]);
+
+  const total = sortedProducts.length;
+
+  const paginatedProducts = useMemo(() => {
+    if (perPage === 'all') {
+      return sortedProducts;
+    }
+
+    const start = (currentPage - 1) * Number(perPage);
+
+    return sortedProducts.slice(start, start + Number(perPage));
+  }, [sortedProducts, perPage, currentPage]);
+
   const handleReload = () => {
     window.location.reload();
   };
@@ -25,7 +71,9 @@ export const CategoryPage: FC<Props> = ({ category }) => {
   return (
     <main>
       <section className={s.container}>
-        <Breadcrumbs paths={breadcrumbs} />
+        <Breadcrumbs
+          paths={[{ link: null, label: CATEGORIES[category].name }]}
+        />
         <h1>{CATEGORIES[category].title}</h1>
         {isLoading && <Loader />}
         {errorMessage && (
@@ -33,9 +81,22 @@ export const CategoryPage: FC<Props> = ({ category }) => {
         )}
         {!isLoading && !errorMessage && (
           <>
-            <div className={s.count}>{count && count} models</div>
-            <Filter />
-            <ProductList products={products} />
+            <div className={s.count}>{total && total} models</div>
+            <Filter
+              sortBy={sortBy}
+              onSort={setSortBy}
+              perPage={String(perPage)}
+              onPerPageChange={setPerPage}
+            />
+            <ProductList products={paginatedProducts} />
+            {perPage !== 'all' && (
+              <Pagination
+                total={total}
+                perPage={Number(perPage)}
+                currentPage={currentPage}
+                onPageChange={setCurrentPage}
+              />
+            )}
           </>
         )}
       </section>

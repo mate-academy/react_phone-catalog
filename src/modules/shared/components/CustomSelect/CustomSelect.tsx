@@ -1,24 +1,31 @@
 import { FC, useEffect, useRef, useState } from 'react';
+import { Option } from '../../../../types/Options';
 import s from './CustomSelect.module.scss';
-
-export type Option = { value: string; label: string };
 
 interface Props {
   options: Option[];
   onSelect: (value: string) => void;
-  placeholder: string;
+  value: string;
+  placeholder?: string;
 }
 
-export const CustomSelect: FC<Props> = ({ options, onSelect, placeholder }) => {
+export const CustomSelect: FC<Props> = ({
+  options,
+  onSelect,
+  value,
+  placeholder = '',
+}) => {
+  const selectedOption = options.find(o => o.value === value) || null;
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState<Option | null>(null);
+  const [selectedValue, setSelectedValue] = useState<Option | null>(
+    selectedOption,
+  );
   const [focusedIndex, setFocusedIndex] = useState<number>(-1);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
 
   const handleToggle = () => setIsOpen(prev => !prev);
-
   const handleOptionClick = (option: Option, index: number) => {
     setSelectedValue(option);
     onSelect(option.value);

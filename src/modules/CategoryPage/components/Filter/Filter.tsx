@@ -1,39 +1,33 @@
 import { FC } from 'react';
-// eslint-disable-next-line max-len
-import { CustomSelect } from '../../../shared/components/CustomSelect/CustomSelect';
-import { Option } from '../../../shared/components/CustomSelect/CustomSelect';
+import { CustomSelect } from '../../../shared/components/CustomSelect';
+import { PER_PAGE_OPTIONS, SORT_OPTIONS } from '../../../shared/constants';
 import s from './Filter.module.scss';
 
-export const Filter: FC = () => {
-  const sortOptions: Option[] = [
-    { value: 'age', label: 'Newest' },
-    { value: 'title', label: 'Alphabetically' },
-    { value: 'price', label: 'Cheapest' },
-  ];
+interface Props {
+  sortBy: string;
+  onSort: (sortBy: string) => void;
+  perPage: string;
+  onPerPageChange: (perPage: string) => void;
+}
 
-  const itemsOptions: Option[] = [
-    { value: '4', label: '4' },
-    { value: '8', label: '8' },
-    { value: '16', label: '16' },
-    { value: 'all', label: 'All' },
-  ];
-
+export const Filter: FC<Props> = ({
+  sortBy,
+  onSort,
+  perPage,
+  onPerPageChange,
+}) => {
   return (
     <div className={s.filterContainer}>
       <div className={s.sortFilter}>
         <span className={s.label}>Sort by</span>
-        <CustomSelect
-          options={sortOptions}
-          placeholder="Newest"
-          onSelect={() => {}}
-        />
+        <CustomSelect options={SORT_OPTIONS} value={sortBy} onSelect={onSort} />
       </div>
       <div className={s.itemsFilter}>
         <span className={s.label}>Items on page</span>
         <CustomSelect
-          options={itemsOptions}
-          placeholder="All"
-          onSelect={() => {}}
+          options={PER_PAGE_OPTIONS}
+          value={perPage}
+          onSelect={onPerPageChange}
         />
       </div>
     </div>

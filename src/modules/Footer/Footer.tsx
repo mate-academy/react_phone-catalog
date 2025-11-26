@@ -12,7 +12,7 @@ export const Footer: FC = () => (
       </Link>
     </div>
     <nav className={s.footerNav}>
-      <Link to="https://github.com/tvk777/">Github</Link>
+      <Link to="https://tvk777.github.io/react_phone-catalog/">Github</Link>
       <Link to="#">Contacts</Link>
       <Link to="#">Rights</Link>
     </nav>

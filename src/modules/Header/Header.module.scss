@@ -20,7 +20,7 @@ header {
   height: 48px;
 
   @include on-tablet {
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   @include on-desktop {
