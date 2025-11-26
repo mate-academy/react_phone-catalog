@@ -3,6 +3,7 @@ import { Carusel } from '@GlobalComponents';
 import { useEffect, useState } from 'react';
 import { Products } from 'src/types/products';
 import { ToastContainer } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 export const HotPrice = () => {
   const [hotPrice, setHotPrice] = useState<Products[]>([]);
@@ -38,11 +39,13 @@ export const HotPrice = () => {
     });
   }, []);
 
+  const { t } = useTranslation();
+
   return (
     <div className="section">
       <div className="container">
         <ToastContainer />
-        <Carusel data={hotPrice} title={'Hot prices'} />
+        <Carusel data={hotPrice} title={t('carusel.hotPrice')} />
       </div>
     </div>
   );

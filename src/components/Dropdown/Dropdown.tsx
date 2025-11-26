@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import styled from './dropwdown.module.scss';
 import arrow from '@Images/icons/dropdown-arrow.svg';
 import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 type Props<T extends string | number> = {
   sort: T[];
@@ -16,6 +17,8 @@ export const Dropdown = <T extends string | number>({
 }: Props<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handle = (e: Event) => {
@@ -78,7 +81,7 @@ export const Dropdown = <T extends string | number>({
                   }}
                   className={styled['dropdown-item']}
                 >
-                  {s}
+                  {t(`sortBy.${s.toString()}`)}
                 </div>
               );
             })}

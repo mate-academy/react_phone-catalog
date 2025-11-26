@@ -44,6 +44,11 @@
       height: 100%;
       justify-content: flex-start;
       flex-direction: row;
+      gap: 40px;
+    }
+
+    @include onDekstop {
+      gap: 63px;
     }
   }
 
@@ -110,7 +115,7 @@
   color: var(--color-btn-card);
 
   @include hover {
-    color: var(--color-btn-card);
+    color: var(--color-white);
   }
 
   &::after {

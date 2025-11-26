@@ -1,20 +1,38 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useSearchParams } from 'react-router-dom';
 
+//#region StateApp
 import { FC, useEffect, useMemo, useState } from 'react';
-import { Products } from 'src/types/products';
-import style from './productList.module.scss';
+//#endregion
 
+//#region Types
+import { Products } from 'src/types/products';
+//#endregion
+
+//#region Styles
+import style from './productList.module.scss';
+//#endregion
+
+//#region Global / Shared Components
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Card } from '../Card/Cards';
-
 import { PaginationPage } from '../Pagination/Pagination';
+//#endregion
 
+//#region Business logic / Utilities
 import { sortItems } from './sortProducts';
 import { Params, getSearchWith } from '../../utils/getSearch';
 import { Skeleton } from '../Skeleton/Skeleton';
+//#endregion
+
+//#region Hooks
 import { useTimer } from '../../Hooks/useTimer';
+//#endregion
+
+//#region Other
 import { ToastContainer } from 'react-toastify';
+import { t } from 'i18next';
+//#endregion
 
 type Props = {
   data: Products[];
@@ -30,15 +48,13 @@ export enum SortBy {
 
 export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const [isLoadingSort, setIsLoadingSort] = useState(false);
-
   const sortBySearch = (searchParams.get('sortBy') as SortBy) || null;
   const perPageSearch = searchParams.get('perPage') || '16';
   const currentPageSearch = +(searchParams.get('page') || 1);
 
   const currentPage = +currentPageSearch;
-  const selected = sortBySearch ?? 'Chose One';
+  const selected = sortBySearch ?? t('sortBy.Chose');
   const perPage = perPageSearch === 'All' ? 'All' : +perPageSearch;
 
   const sortPage = [16, 8, 4, 'All'];
@@ -147,7 +163,7 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
       <span className={style.quantity}>{data.length}</span>
       <div className={style.drowdowns}>
         <div>
-          <span>Sort by</span>
+          <span>{t('sortBy.sortBy')}</span>
           <Dropdown<string>
             sort={sortBy}
             selected={selected}
@@ -157,7 +173,7 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
           />
         </div>
         <div>
-          <span>Items on page</span>
+          <span>{t('sortBy.itemsOnPage')}</span>
           <Dropdown<number | string>
             sort={sortPage}
             selected={perPage}

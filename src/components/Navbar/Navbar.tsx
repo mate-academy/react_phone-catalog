@@ -1,13 +1,19 @@
 import { NavLink } from 'react-router-dom';
 
 import shopping from '@Images/icons/Shopping-bag.svg';
+import favorite from '@Images/icons/like-icons.svg';
 import style from './Navbar.module.scss';
 import { useContext, useEffect, useState } from 'react';
 import { ShoppingContex } from '../../context/ShoppingContex';
 import cn from 'classnames';
 
+import { LanguageSelector } from '../languageSelector/language-selector';
+import { useTranslation } from 'react-i18next';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   const { cartItems, favoritItems } = useContext(ShoppingContex);
 
@@ -45,7 +51,7 @@ const Navbar = () => {
               className={getLinkClass}
               to="/"
             >
-              home
+              {t('navbar.home')}
             </NavLink>
           </li>
           <li>
@@ -59,7 +65,7 @@ const Navbar = () => {
               className={getLinkClass}
               to="/phones"
             >
-              Phones
+              {t('navbar.phones')}
             </NavLink>
           </li>
           <li>
@@ -73,7 +79,7 @@ const Navbar = () => {
               className={getLinkClass}
               to="/tablets"
             >
-              tablets
+              {t('navbar.tablets')}
             </NavLink>
           </li>
           <li>
@@ -89,10 +95,12 @@ const Navbar = () => {
               className={getLinkClass}
               to="/accessories"
             >
-              accessories
+              {t('navbar.accessories')}
             </NavLink>
           </li>
         </ul>
+
+        <LanguageSelector />
 
         <div className={`${style.actions}`}>
           <NavLink
@@ -102,7 +110,7 @@ const Navbar = () => {
               cn(getLinkClass(props), style['navbar__link--action'])
             }
           >
-            <img src={shopping} alt="favorits" />
+            <img src={favorite} alt="favorits" />
             {!!favoritItems.length && (
               <span className={style.shopping}>{favoritItems.length}</span>
             )}

@@ -1,15 +1,41 @@
+//#region Styles
 import style from './favorites.module.scss';
-import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
-import { useContext, useEffect, useState } from 'react';
-import { ShoppingContex } from '../../context/ShoppingContex';
-import { Card, ProductsEmpty } from '@GlobalComponents';
-import { ToastContainer } from 'react-toastify';
-import { useTimer } from '../../Hooks/useTimer';
+//endregion
+
+//#region Local Components
 import { Skeleton } from '../ProductCard';
+import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
+//endregion
+
+//#region stateApp
+import { useContext, useEffect, useState } from 'react';
+//endregion
+
+//#region Context
+import { ShoppingContex } from '../../context/ShoppingContex';
+//endregion
+
+//#region Global Components
+import { Card, ProductsEmpty } from '@GlobalComponents';
+//endregion
+
+//#region Hooks
+import { useTimer } from '../../Hooks/useTimer';
+//endregion
+
+//#region Router
 import { useLocation } from 'react-router-dom';
+//endregion
+
+//#region other
+import { useTranslation } from 'react-i18next';
+import { ToastContainer } from 'react-toastify';
+//endregion
 
 export const FavoritesPage = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
+
+  const { t } = useTranslation();
 
   const { favoritItems } = useContext(ShoppingContex);
   const { start, clear } = useTimer();
@@ -51,13 +77,15 @@ export const FavoritesPage = () => {
                   ))}
                 </div>
               ) : favoritItems.length === 0 ? (
-                <ProductsEmpty title={categoryName} />
+                <ProductsEmpty title={t(`categoryDevice.${categoryName}`)} />
               ) : (
                 <>
                   <Breadcrumb />
-                  <h1 className={`title ${style.title}`}>Favorites</h1>
+                  <h1 className={`title ${style.title}`}>
+                    {t(`categoryDevice.${categoryName}`)}
+                  </h1>
                   <span className={style.quantity}>
-                    {favoritItems.length} items
+                    {favoritItems.length} {t('page.quantity')}
                   </span>
                   <ul className={style.items}>
                     {favoritItems.map(item => (

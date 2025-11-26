@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Carusel } from '@GlobalComponents';
 import { getData } from '@Fetch';
 import { Products } from 'src/types/products';
+import { useTranslation } from 'react-i18next';
 
 export const NewModels = () => {
   const [newModel, setNewModel] = useState<Products[]>([]);
@@ -37,14 +38,14 @@ export const NewModels = () => {
     });
   }, [newModels]);
 
+  const { t } = useTranslation();
+
+  const title = t('carusel.newModels');
+
   return (
     <section className="section">
       <div className="container">
-        <Carusel
-          type={typeProducts}
-          data={newModel}
-          title={'Brand new models'}
-        />
+        <Carusel type={typeProducts} data={newModel} title={title} />
       </div>
     </section>
   );

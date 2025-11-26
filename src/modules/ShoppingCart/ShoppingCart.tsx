@@ -1,21 +1,52 @@
+//#region Styles
 import style from './ShoppingCart.module.scss';
-import { useContext, useEffect, useState } from 'react';
-import { ShoppingContex } from '../../context/ShoppingContex';
-import Cart from './Cart/Cart';
-import { Link } from 'react-router-dom';
-import { ProductsEmpty } from '@GlobalComponents';
+//#endregion
 
+//#region StateApp
+import { useContext, useEffect, useState } from 'react';
+//#endregion
+
+//#region Context
+import { ShoppingContex } from '../../context/ShoppingContex';
+//#endregion
+
+//#region Local Components
+
+import Cart from './Cart/Cart';
+//#endregion
+
+//#region Router
+
+import { Link } from 'react-router-dom';
+//#endregion
+
+//#region Global Components
+
+import { ProductsEmpty } from '@GlobalComponents';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+//#endregion
+
+//#region SweetAlert
+// Модальное окно уведомлений с React поддержкой.
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+//#endregion
 
+//#region Hooks
 import { useTimer } from '../../Hooks/useTimer';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+//#endregion
+
+//#region i18n
+import { useTranslation } from 'react-i18next';
+//#endregion
 
 export const ShoppingCart = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { clearCart, cartItems, getCartTotal } = useContext(ShoppingContex);
   const { start, clear } = useTimer();
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,21 +64,22 @@ export const ShoppingCart = () => {
 
   const handleClick = () => {
     return MySwal.fire({
-      title: '....Oops, something went wrong',
-      text: 'Checkout is not implemented yet. Do you want to clear the Cart?',
+      title: t('checkoutError.title'),
+      text: t('checkoutError.text'),
       icon: 'error',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, clear!',
+      confirmButtonText: t('checkoutError.confirmButtonText'),
+      cancelButtonText: t('checkoutError.cancelButtonText'),
       didOpen: () => {
         MySwal.isLoading();
       },
     }).then(result => {
       if (result.isConfirmed) {
         Swal.fire({
-          title: 'Deleted!',
-          text: 'Your cart has been cleared.',
+          title: t('checkoutError.success.title'),
+          text: t('checkoutError.success.text'),
           icon: 'success',
         });
 
@@ -73,10 +105,10 @@ export const ShoppingCart = () => {
                   <>
                     <div className={style.back}>
                       <Link className={style.back__link} to={'/'}>
-                        Back
+                        {t('page.back')}
                       </Link>
                     </div>
-                    <h1 className={`title ${style.title}`}>Cart</h1>
+                    <h1 className={`title ${style.title}`}>{t('page.cart')}</h1>
 
                     <div className={style.content}>
                       <div className={style.cards}>
@@ -90,18 +122,22 @@ export const ShoppingCart = () => {
                           ${getCartTotal()}
                         </span>
                         <span className={style['cart-price__quantity']}>
-                          Total for 3 items
+                          {t('page.totalItems', {
+                            count: cartItems.length,
+                          })}
                         </span>
 
                         <div className={style['cart-price__button']}>
-                          <button onClick={handleClick}>Checkout</button>
+                          <button onClick={handleClick}>
+                            {t('page.checkout')}
+                          </button>
                           <span className={style.line}></span>
                         </div>
                       </div>
                     </div>
                   </>
                 ) : (
-                  <ProductsEmpty title="Cart" />
+                  <ProductsEmpty title={t('page.cart')} />
                 )}
               </div>
             </div>

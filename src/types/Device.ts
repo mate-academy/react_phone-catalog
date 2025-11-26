@@ -22,6 +22,7 @@ export interface Device {
   zoom?: string;
   cell?: string[];
   quantity: number;
+  namespaceId?: string;
 
   description: DescriptionDevice[];
 }

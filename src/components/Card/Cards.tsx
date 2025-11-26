@@ -1,15 +1,49 @@
+//#region React / Core
+
 import React, { useContext } from 'react';
+//endregion
+
+//#region Types
+
 import { Products } from 'src/types/products';
 import { Device } from 'src/types/Device';
+//endregion
+
+//#region Styles
+
 import style from './card.module.scss';
+//endregion
+
+//#region Global Components
+
 import { Button } from '@GlobalComponents';
+//endregion
+
+//#region Router
+
 import { Link } from 'react-router-dom';
+//endregion
+
+//#region Context
+
 import { ShoppingContex } from '../../context/ShoppingContex';
+//endregion
+
+//#region Global Styles
 
 import 'react-toastify/dist/ReactToastify.css';
+//endregion
+
+//#region Utils
 
 import { findISelectedItem } from '../../utils/findSelectedItem';
 import { showNotify } from '../../utils/showNotify';
+//endregion
+
+//#region i18n
+
+import { useTranslation } from 'react-i18next';
+//endregion
 
 type Items = Products | Device;
 
@@ -39,6 +73,7 @@ const normalizeItem = (item: Items) => {
 
 export const Card: React.FC<Props> = ({ item, title }) => {
   const product = normalizeItem(item);
+  const { t } = useTranslation();
 
   const { toggleFavorite, favoritItems, cartItems, increaseToCart } =
     useContext(ShoppingContex);
@@ -47,14 +82,22 @@ export const Card: React.FC<Props> = ({ item, title }) => {
   const favorit = findISelectedItem(favoritItems, item.name);
 
   const notifyAddedToCart = (newItem: Items) => {
-    return showNotify(`${newItem.name} added to cart!`, 'dark');
+    return showNotify(
+      t('notifications.addedToCart', { name: newItem.name }),
+      'dark',
+    );
   };
 
   const notifyAddedFavorit = (newItem: Items) => {
     if (!favorit) {
-      return showNotify(`${newItem.name} Added to favorites!`, 'dark');
+      return showNotify(
+        t('notifications.addedToFavorites', { name: newItem.name }),
+        'dark',
+      );
     } else {
-      return showNotify(`${newItem.name} Removed from favorites!`);
+      return showNotify(
+        t('notifications.removedFromFavorites', { name: newItem.name }),
+      );
     }
   };
 
@@ -73,18 +116,18 @@ export const Card: React.FC<Props> = ({ item, title }) => {
               <h3 className={style.card__title}>{item.name}</h3>
               <div className={style.price}>
                 <p className={style.card__price}>${product.price}</p>
-                {title === 'Hot prices' && (
+                {title === t('carusel.hotPrice') && (
                   <p className={style.card__discount}>${product.fullPrice}</p>
                 )}
               </div>
               <div className={style.line}></div>
               <dl className={style.card__info}>
                 <div className={style['card__info-row']}>
-                  <dt>Screen</dt>
+                  <dt>{t('product.screen')}</dt>
                   <dd>{item.screen}</dd>
                 </div>
                 <div className={style['card__info-row']}>
-                  <dt>Сapacity</dt>
+                  <dt>{t('product.capacity')}</dt>
                   <dd>{item.capacity}</dd>
                 </div>
                 <div className={style['card__info-row']}>

@@ -4,6 +4,7 @@ import favourit from '@Images/icons/like-icons.svg';
 import favouritActive from '@Images/icons/Favourites-active.svg';
 
 import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   increaseToCart: () => void;
@@ -23,6 +24,7 @@ export const Button: React.FC<Props> = ({
   notifyAddedFavorit,
 }) => {
   const [isAddItem, setIsAddItem] = useState(false);
+  const { t } = useTranslation();
 
   const toggle = () => {
     setIsAddItem(!isAddItem);
@@ -44,7 +46,7 @@ export const Button: React.FC<Props> = ({
           disabled={isAddItem}
         >
           <span className={style.button__text}>
-            {isAddItem ? 'Added' : 'Add to cart'}
+            {isAddItem ? t('cart.added') : t('cart.add')}
           </span>
         </button>
         <button

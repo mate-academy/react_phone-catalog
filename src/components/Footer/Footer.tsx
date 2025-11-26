@@ -1,7 +1,11 @@
+import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import style from './footer.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <footer className="footer">
@@ -14,25 +18,35 @@ export const Footer = () => {
               <div className={style.nav}>
                 <ul>
                   <li>
-                    <a className={style.link} href="#">
+                    <Link
+                      className={style.link}
+                      to={'https://github.com/backstage2000'}
+                    >
                       Github
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className={style.link} href="#">
-                      Contacts
-                    </a>
+                    <Link className={style.link} to={'.'}>
+                      {t('page.Contacts')}
+                    </Link>
                   </li>
                   <li>
-                    <a className={style.link} href="#">
-                      rights
-                    </a>
+                    <Link className={style.link} to=".">
+                      {t('page.rights')}
+                    </Link>
                   </li>
                 </ul>
               </div>
-              <div className={style.bottom}>
+              <div
+                onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                  });
+                }}
+                className={style.bottom}
+              >
                 <button className={style.button}>
-                  Back to top <span></span>
+                  {t('page.backTop')} <span></span>
                 </button>
               </div>
             </div>

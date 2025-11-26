@@ -42,6 +42,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { findISelectedItem } from '../../utils/findSelectedItem';
 import { showNotify } from '../../utils/showNotify';
+import { useTranslation } from 'react-i18next';
 //#endregion
 
 export const ProductCard = () => {
@@ -60,6 +61,11 @@ export const ProductCard = () => {
   const [baseSlug, setBaseSlug] = useState<string>('');
   const [index, setIndex] = useState<number>(0);
   const [OpenGallery, setOpenGallery] = useState(false);
+  //#endregion
+
+  //#regionTranslate
+  const { t } = useTranslation();
+
   //#endregion
 
   //#regionHooks
@@ -171,7 +177,7 @@ export const ProductCard = () => {
                         alt=""
                       />
                       <Link to={`..`} className={style.item__text}>
-                        {categoryName}
+                        {t(`categoryDevice.${categoryName}`)}
                       </Link>
                     </li>
                     <li className={`${style.item} ${style.items}`}>
@@ -191,7 +197,7 @@ export const ProductCard = () => {
                 </div>
                 <div className={style.back}>
                   <Link className={style.back__link} to={'..'}>
-                    Back
+                    {t('page.back')}
                   </Link>
                 </div>
                 <div>
@@ -250,7 +256,7 @@ export const ProductCard = () => {
                           <div className={`${style.main__box}`}>
                             <div className={`${style.box__color} ${style.box}`}>
                               <div>
-                                <span>Available colors</span>
+                                <span>{t('product.AvailableColor')}</span>
                                 <span>ID: 802390</span>
                               </div>
 
@@ -289,7 +295,11 @@ export const ProductCard = () => {
                             <div
                               className={`${style.capacity} ${style.box} ${style.container}`}
                             >
-                              <span>Select capacity</span>
+                              <span>
+                                {item.capacity.includes('mm')
+                                  ? t('product.capacityMM')
+                                  : t('product.capacity')}
+                              </span>
                               <ul className={`${style.capacity__list}`}>
                                 {item.capacityAvailable.map(
                                   (capacity, icapacity) => (
@@ -344,9 +354,9 @@ export const ProductCard = () => {
                           </div>
                           <div className={`${style.info} ${style.container}`}>
                             <div>
-                              <span>Screen</span>
-                              <span>Resolution</span>
-                              <span>Processor</span>
+                              <span>{t('product.screen')}</span>
+                              <span>{t('product.resolution')}</span>
+                              <span>{t('product.processor')}</span>
                               <span>RAM</span>
                             </div>
                             <div>
@@ -362,7 +372,7 @@ export const ProductCard = () => {
                       <div className={style.bottom}>
                         <div className={style.about}>
                           <h4 className={`${style['bottom--title']} title`}>
-                            About
+                            {t('product.about')}
                           </h4>
                           <div className={style.about__items}>
                             {item.description.map((info, iInfo) => (
@@ -382,16 +392,16 @@ export const ProductCard = () => {
 
                         <div className={style.techspecs}>
                           <h4 className={`${style['bottom--title']} title`}>
-                            Tech specs
+                            {t('product.techSpecs')}
                           </h4>
 
                           <div className={style.techspecs__content}>
                             <div>
-                              <span>Screen</span>
-                              <span>Resolution</span>
-                              <span>Processor</span>
+                              <span>{t('product.screen')}</span>
+                              <span>{t('product.resolution')}</span>
+                              <span>{t('product.processor')}</span>
                               <span>RAM</span>
-                              <span>Built in memory</span>
+                              <span>{t('product.builtInMemory')}</span>
                               {item.camera && <span>Camera</span>}
                               {item.zoom && <span>Zoom</span>}
                               {item.cell && <span>Cell</span>}

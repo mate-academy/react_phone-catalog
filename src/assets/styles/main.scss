@@ -75,3 +75,14 @@ svg * {
     overflow-y: visible;
   }
 }
+
+.menu-flags {
+  z-index: 1001;
+  width: 71px;
+}
+
+.menu-flags-button {
+  @include hover {
+    background-color: var(--color-surface-2);
+  }
+}

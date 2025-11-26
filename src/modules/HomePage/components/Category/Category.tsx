@@ -5,11 +5,13 @@ import { useEffect, useState } from 'react';
 import { images } from '.';
 import { Products } from 'src/types/products';
 import { CategoryCard } from '../CategoryCard/CategoryCard';
+import { useTranslation } from 'react-i18next';
 
 export const Category = () => {
   const [phones, setPhones] = useState<Products[]>([]);
   const [tablets, setTablets] = useState<Products[]>([]);
   const [accessories, setAccessories] = useState<Products[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     getData<Products[]>('/phones').then(res => {
@@ -23,7 +25,7 @@ export const Category = () => {
     {
       id: 1,
       path: 'phones',
-      title: 'Mobile phones',
+      title: t('categoryDevice.phones'),
       count: phones.length,
       desktopImage: images.phoneDekstop,
       mobileImage: images.phoneMobile,
@@ -32,7 +34,7 @@ export const Category = () => {
     {
       id: 2,
       path: 'tablets',
-      title: 'Tablets',
+      title: t('categoryDevice.tablets'),
       count: tablets.length,
       desktopImage: images.tableDekstop,
       mobileImage: images.tabletMobile,
@@ -41,7 +43,7 @@ export const Category = () => {
     {
       id: 3,
       path: 'accessories',
-      title: 'Accessories',
+      title: t('categoryDevice.accessories'),
       count: accessories.length,
       desktopImage: images.accessoryDekstop,
       mobileImage: images.accessoryMobile,
@@ -52,7 +54,7 @@ export const Category = () => {
   return (
     <section className="section">
       <div className="container">
-        <h1 className={`${style.title} title`}>Shop by category</h1>
+        <h1 className={`${style.title} title`}>{t('carusel.shopBy')}</h1>
 
         <div className={style.category}>
           {categoriesData.map(category => (
