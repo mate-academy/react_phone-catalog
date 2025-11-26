@@ -1,0 +1,44 @@
+.cartItem {
+  border: 0.1rem solid rgba(226, 230, 233, 1);
+
+  &__firstRow {
+    display: flex;
+    gap: 1.6rem;
+    padding-top: 1.6rem;
+  }
+
+  &__cross {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: rgba(180, 189, 195, 1);
+  }
+
+  &__image {
+    width: 6.6rem;
+    height: 6.6rem;
+  }
+
+  &__name {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+
+    color: rgba(49, 50, 55, 1);
+  }
+
+  &__secondRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.6rem;
+  }
+
+  &__price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 140%;
+
+    color: rgba(49, 50, 55, 1);
+  }
+}

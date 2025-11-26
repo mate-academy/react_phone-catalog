@@ -12,7 +12,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { Cart } from './modules/Cart';
 
 export const App = () => {
-  const { products } = useContext(DataContext);
+  const { products, cartItems } = useContext(DataContext);
 
   const phones = products.filter(product => product.category === 'phones');
   const tablets = products.filter(product => product.category === 'tablets');
@@ -45,7 +45,7 @@ export const App = () => {
             element={<ProductDetailsPage />}
           ></Route>
           <Route path="/favourites" element={<Favourites />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart items={cartItems} />} />
         </Routes>
       </div>
       <Footer />

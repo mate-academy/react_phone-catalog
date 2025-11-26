@@ -2,24 +2,51 @@ import { useContext } from 'react';
 import scss from './ButtonCart.module.scss';
 import { DataContext } from '../../../../context/ContextProvider';
 import classNames from 'classnames';
+import { StorageCartItem } from '../../../../api/types';
 
 interface Props {
   productId: number;
+  image: string;
+  name: string;
+  price: number;
   className?: string;
 }
 
-export const ButtonCart: React.FC<Props> = ({ productId, className }) => {
+export const ButtonCart: React.FC<Props> = ({
+  productId,
+  image,
+  name,
+  price,
+  className,
+}) => {
   const { cartItems, setCartItems } = useContext(DataContext);
 
   const isInCart = cartItems.some(item => item.productId === productId);
 
-  const toggleCart = (id: number) => {
-    setCartItems(prev => {
-      const next = prev.some(item => item.productId === id)
-        ? prev.filter(item => item.productId !== id)
-        : [...prev, { id: id, quantity: 1, productId: id }];
+  const toggleCart = (productIdToToggle: number) => {
+    setCartItems((prevItems: StorageCartItem[]) => {
+      const exists = prevItems.some(
+        (cartItem: StorageCartItem) => cartItem.productId === productIdToToggle,
+      );
 
-      return next;
+      if (exists) {
+        return prevItems.filter(
+          (cartItem: StorageCartItem) =>
+            cartItem.productId !== productIdToToggle,
+        );
+      } else {
+        return [
+          ...prevItems,
+          {
+            id: productIdToToggle,
+            quantity: 1,
+            productId: productIdToToggle,
+            image: image,
+            name: name,
+            price: price,
+          },
+        ];
+      }
     });
   };
 

@@ -105,6 +105,9 @@ export type StorageCartItem = {
   id: number;
   quantity: number;
   productId: number;
+  image: string;
+  name: string;
+  price: number;
 };
 
 export const SLIDER_TYPE = {

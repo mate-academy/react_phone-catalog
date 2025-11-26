@@ -34,7 +34,12 @@ export const ProductCardComponent: React.FC<Props> = ({
       <div className={scss.productCard__divider}></div>
       <Specs product={product} />
       <div className={scss.productCard__buttons}>
-        <ButtonCart productId={product.id} />
+        <ButtonCart
+          productId={product.id}
+          image={product.image}
+          name={product.name}
+          price={hasDiscount ? product.price : product.fullPrice}
+        />
         <ButtonFav productId={product.id} hasDiscount={hasDiscount} />
       </div>
     </article>
