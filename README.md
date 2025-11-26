@@ -1,6 +1,6 @@
 # React Product Catalog
 
-- Replace `https://github.com/backstage2000/` with your Github username in the [DEMO LINK](https://backstage2000.github.io/react_people-table-advanced/) and add it to the PR description.
+- Replace `https://github.com/backstage2000/` with your Github username in the [DEMO LINK](https://backstage2000.github.io/react_phone-catalog/) and add it to the PR description.
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
