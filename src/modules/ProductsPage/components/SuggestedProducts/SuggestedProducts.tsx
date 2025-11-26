@@ -17,7 +17,7 @@ const SuggestedProducts: React.FC<Props> = ({ products }) => {
       <h2>You may also like</h2>
 
       <div className={styles.suggestedProductsGrid}>
-        {products.map((p) => (
+        {products.map(p => (
           <Link
             key={p.id}
             to={`/product/${p.itemId}`}
@@ -38,9 +38,18 @@ const SuggestedProducts: React.FC<Props> = ({ products }) => {
             </p>
 
             <div className={styles.suggestedProductSpecs}>
-              <div><span>Screen</span><span>{p.screen}</span></div>
-              <div><span>Capacity</span><span>{p.capacity}</span></div>
-              <div><span>RAM</span><span>{p.ram}</span></div>
+              <div>
+                <span>Screen</span>
+                <span>{p.screen}</span>
+              </div>
+              <div>
+                <span>Capacity</span>
+                <span>{p.capacity}</span>
+              </div>
+              <div>
+                <span>RAM</span>
+                <span>{p.ram}</span>
+              </div>
             </div>
           </Link>
         ))}

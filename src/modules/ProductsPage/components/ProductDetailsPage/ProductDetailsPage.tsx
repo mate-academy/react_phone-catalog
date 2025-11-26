@@ -17,7 +17,7 @@ import { any } from 'cypress/types/bluebird';
 import { data } from 'cypress/types/jquery';
 import AddToFavoritesButton from '../../../HomePage/components/AddToFavorite/AddToFavorite';
 import SuggestedProducts from '../SuggestedProducts/SuggestedProducts';
-
+import YouMayAlsoLike from './components/YouMayAlsoLike/YouMayAlsoLike';
 
 const HeartIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,109 +41,119 @@ const ProductDetailsPage: React.FC = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   useEffect(() => {
-    if(!productId) return;
-
+    if (!productId) {
+      return;
+    }
 
     setLoading(true);
     setError(false);
 
     fetch('/api/products.json')
-    .then(res => res.json())
-    .then((data: Product[]) => {
-      const found = data.find(p => p.itemId === productId);
+      .then(res => res.json())
+      .then((data: Product[]) => {
+        const found = data.find(p => p.itemId === productId);
 
-      if (!found) {
-        throw new Error('Produto não encontrado em products.json');
-      }
+        if (!found) {
+          throw new Error('Produto não encontrado em products.json');
+        }
 
-      setProduct(found);
+        setProduct(found);
 
+        let apiUrl = '';
 
-      let apiUrl = '';
+        if (found.category === 'phones') {
+          apiUrl = '/api/phones.json';
+        } else if (found.category === 'tablets') {
+          apiUrl = '/api/tablets.json';
+        } else if (found.category === 'accessories') {
+          apiUrl = '/api/accessories.json';
+        } else {
+          throw new Error('Categoria não reconhecida');
+        }
 
-      if (found.category === 'phones') {
-        apiUrl = '/api/phones.json';
-      } else if (found.category === 'tablets') {
-        apiUrl = '/api/tablets.json';
-      } else if (found.category === 'accessories') {
-        apiUrl = '/api/accessories.json';
-      } else {
-        throw new Error('Categoria não reconhecida');
-      }
+        return fetch(apiUrl).then(res => res.json());
+      })
+      .then((categoryData: any[]) => {
+        const detailed = categoryData.find(item => item.id === productId);
 
-      return fetch(apiUrl).then(res => res.json());
-    })
-    .then((categoryData: any[]) => {
+        if (!detailed) {
+          throw new Error('Produto não encontrado na API da categoria');
+        }
 
-      const detailed = categoryData.find(item => item.id === productId);
+        setProduct(prev =>
+          prev
+            ? {
+                ...prev,
+                ...detailed,
+              }
+            : detailed,
+        );
 
-      if (!detailed) {
-        throw new Error('Produto não encontrado na API da categoria');
-      }
+        getSuggestedProducts(categoryData, detailed.id);
 
-      setProduct(prev => prev ? {
-        ...prev,
-        ...detailed,
-      } : detailed);
-
-      getSuggestedProducts(categoryData, detailed.id);
-
-      setLoading(false);
-    })
-    .catch(err => {
-      console.error('Erro:', err);
-      setError(true);
-      setLoading(false);
-    });
-}, [productId]);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Erro:', err);
+        setError(true);
+        setLoading(false);
+      });
+  }, [productId]);
 
   const getSuggestedProducts = (allProducts: Product[], currentId: number) => {
-    const filtered = allProducts.filter((p) => p.id !== currentId && p.category === product?.category);
+    const filtered = allProducts.filter(
+      p => p.id !== currentId && p.category === product?.category,
+    );
     const shuffled = filtered.sort(() => 0.5 - Math.random());
+
     setSuggestedProducts(shuffled.slice(0, 4));
   };
 
   const addtoCart = useCart();
 
-  if (loading) return <Loader />;
-  if (error) return <ErrorMessage onReload={() => window.location.reload()} />;
-  if (!product) return <p>Product not found.</p>;
+  if (loading) {
+    return <Loader />;
+  }
 
+  if (error) {
+    return <ErrorMessage onReload={() => window.location.reload()} />;
+  }
 
-const {
-  images = [],
-  description = [],
-  colorsAvailable = [],
-  capacityAvailable = [],
-  priceRegular,
-  priceDiscount,
-  resolution,
-  processor,
-  zoom,
-  cell = [],
-  camera,
-} = product;
+  if (!product) {
+    return <p>Product not found.</p>;
+  }
 
+  const {
+    images = [],
+    description = [],
+    colorsAvailable = [],
+    capacityAvailable = [],
+    priceRegular,
+    priceDiscount,
+    resolution,
+    processor,
+    zoom,
+    cell = [],
+    camera,
+  } = product;
 
+  const productImages = images.length > 0 ? images : [product.image ?? ''];
 
-const productImages = images.length > 0 ? images : [product.image ?? ''];
-
-
-
-
-const availableCapacities = product.capacityAvailable ?? [product.capacity];
-const availableColors = product.colorsAvailable ?? [product.color];
-
+  const availableCapacities = product.capacityAvailable ?? [product.capacity];
+  const availableColors = product.colorsAvailable ?? [product.color];
 
   return (
     <div>
-      
       <Header />
 
       <div className={styles.container}>
         <Breadcrumbs category={product.category} productName={product.name} />
 
-        <Link to="#" onClick={() => window.history.back()} className={styles.goBack}>
+        <Link
+          to="#"
+          onClick={() => window.history.back()}
+          className={styles.goBack}
+        >
           ← Back
         </Link>
 
@@ -172,17 +182,18 @@ const availableColors = product.colorsAvailable ?? [product.color];
             </div>
           </div>
 
-
           <div className={styles.productDetailsColumn}>
             <div className={styles.availableColors}>
               <p className={styles.sectionLabel}>Available colors</p>
               <div className={styles.colorOptions}>
-                {availableColors.map((color) => (
+                {availableColors.map(color => (
                   <div
                     key={color}
                     className={`${styles.colorOption} ${selectedColor === color ? styles.selected : ''}`}
                     onClick={() => setSelectedColor(color)}
-                    style={{ backgroundColor: color === 'black' ? '#000' : color }}
+                    style={{
+                      backgroundColor: color === 'black' ? '#000' : color,
+                    }}
                     title={color}
                   />
                 ))}
@@ -192,7 +203,7 @@ const availableColors = product.colorsAvailable ?? [product.color];
             <div className={styles.capacitySection}>
               <p className={styles.sectionLabel}>Select capacity</p>
               <div className={styles.capacityOptions}>
-                {availableCapacities.map((capacity) => (
+                {availableCapacities.map(capacity => (
                   <button
                     key={capacity}
                     className={`${styles.capacityButton} ${selectedCapacity === capacity ? styles.selected : ''}`}
@@ -227,7 +238,7 @@ const availableColors = product.colorsAvailable ?? [product.color];
                 }}
                 className={styles.addToCartButton}
               />
-              <AddToFavoritesButton productId={product.itemId}/>
+              <AddToFavoritesButton productId={product.itemId} />
             </div>
 
             <div className={styles.shortSpecs}>
@@ -253,21 +264,20 @@ const availableColors = product.colorsAvailable ?? [product.color];
 
         <div className={styles.descriptionAndSpecs}>
           <div className={styles.aboutSection}>
-  <h2>About</h2>
-  {description && description.length > 0 ? (
-    description.map((descItem, index) => (
-      <div key={index}>
-        <h3>{descItem.title}</h3>
-        {descItem.text.map((line, i) => (
-          <p key={i}>{line}</p>
-        ))}
-      </div>
-    ))
-  ) : (
-    <p>No description available.</p>
-  )}
-</div>
-
+            <h2>About</h2>
+            {description && description.length > 0 ? (
+              description.map((descItem, index) => (
+                <div key={index}>
+                  <h3>{descItem.title}</h3>
+                  {descItem.text.map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))}
+                </div>
+              ))
+            ) : (
+              <p>No description available.</p>
+            )}
+          </div>
 
           <div className={styles.techSpecsSection}>
             <h2>Tech specs</h2>
@@ -298,18 +308,30 @@ const availableColors = product.colorsAvailable ?? [product.color];
               </div>
               <div className={styles.specRow}>
                 <span>Cell</span>
-                <span>{cell.length > 0 ? cell.join(', '): 'N/A'}</span>
+                <span>{cell.length > 0 ? cell.join(', ') : 'N/A'}</span>
               </div>
             </div>
           </div>
         </div>
+            <section>
+              <h2>You may also like:</h2>
+                  <div className='ProductBox'>
+                    <div>
+                      <YouMayAlsoLike />
+                      <YouMayAlsoLike />
+                      <YouMayAlsoLike />
+                      <YouMayAlsoLike />
+                    </div>
 
-        
-      <SuggestedProducts products={suggestedProducts} />
-
-    
 
 
+
+
+                  </div>
+
+
+
+            </section>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ import FavoritesPage from './modules/FavoritesPage/FavoritesPage';
 import { FavoritesProvider } from './modules/FavoritesPage/FavoritesContext';
 import CartPage from './modules/CartPage/CartPage';
 import { CartProvider } from './modules/CartPage/CartContext';
-import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
 
 
