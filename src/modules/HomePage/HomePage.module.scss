@@ -14,28 +14,6 @@
     }
   }
 
-  .container {
-    width: 100%;
-    max-width: 1136px;
-    margin: 0 auto;
-    padding: 0 16px;
-
-    @media (min-width: 1200px) {
-      max-width: 1200px;
-      padding: 0;
-    }
-
-    @media (max-width: 1199px) and (min-width: 640px) {
-      max-width: 768px;
-      padding: 0 24px;
-    }
-
-    @media (max-width: 639px) {
-      max-width: 100%;
-      padding: 0 16px;
-    }
-  }
-
   h2,
   h3 {
     text-align: left;

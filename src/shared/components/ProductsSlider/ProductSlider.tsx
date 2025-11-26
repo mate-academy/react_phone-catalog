@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-import { Product } from '../../../types/product';
+import { Product } from '../../../types';
 
 type Props = {
   title: string;

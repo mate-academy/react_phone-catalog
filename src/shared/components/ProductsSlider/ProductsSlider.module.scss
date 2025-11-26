@@ -12,6 +12,7 @@
 }
 
 .title {
+  display: block;
   font-size: 32px;
   font-weight: 800;
   color: #313237;
@@ -25,7 +26,6 @@
 .arrow {
   border: 1px solid #e2e6e9;
   background: #fff;
-  border-radius: 50%;
   width: 32px;
   height: 32px;
   font-size: 18px;

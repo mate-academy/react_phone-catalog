@@ -3,7 +3,7 @@ import { PicturesSlider } from '../../shared/components/PicturesSlider';
 import { ProductsSlider } from '../../shared/components/ProductsSlider';
 import { ShopByCategory } from '../../shared/components/ShopByCategory';
 import styles from './HomePage.module.scss';
-import { Product } from '../../types/product';
+import { Product } from '../../types';
 import { getAllProducts } from '../../services/productsService';
 
 export const HomePage = () => {
@@ -30,29 +30,48 @@ export const HomePage = () => {
     <div className={styles.homePage}>
       <main>
         <section className={styles.section}>
-          <div className={styles.container}>
-            <PicturesSlider />
+          <div className="container">
+            <div className="grid-24">
+              <div className="col-22">
+                <PicturesSlider />
+              </div>
+            </div>
           </div>
         </section>
 
         {brandNew.length > 0 && (
           <section className={styles.section}>
-            <div className={styles.container}>
-              <ProductsSlider title="Brand new models" products={brandNew} />
+            <div className="container">
+              <div className="grid-24">
+                <div className="col-24">
+                  <ProductsSlider
+                    title="Brand new models"
+                    products={brandNew}
+                  />
+                </div>
+              </div>
             </div>
           </section>
         )}
 
         <section className={styles.section}>
-          <div className={styles.container}>
-            <ShopByCategory />
+          <div className="container">
+            <div className="grid-24">
+              <div className="col-24">
+                <ShopByCategory />
+              </div>
+            </div>
           </div>
         </section>
 
         {hotPrices.length > 0 && (
           <section className={styles.section}>
-            <div className={styles.container}>
-              <ProductsSlider title="Hot prices" products={hotPrices} />
+            <div className="container">
+              <div className="grid-24">
+                <div className="col-24">
+                  <ProductsSlider title="Hot prices" products={hotPrices} />
+                </div>
+              </div>
             </div>
           </section>
         )}

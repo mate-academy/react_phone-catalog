@@ -46,51 +46,51 @@ export const PicturesSlider: React.FC = () => {
     <div className={styles.sliderSection}>
       <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
 
-      <div
-        className={styles.sliderWrapper}
-        onMouseEnter={stopTimer}
-        onMouseLeave={startTimer}
-      >
-        <button
-          className={`${styles.arrow} ${styles.left}`}
-          onClick={prevSlide}
-          aria-label="Previous slide"
+      <div className={`${styles.sliderContainer} ${styles.sliderGrid}`}>
+        <div
+          className={styles.sliderWrapper}
+          onMouseEnter={stopTimer}
+          onMouseLeave={startTimer}
         >
-          &#10094;
-        </button>
+          <div className={styles.sliderViewport}>
+            <div
+              className={styles.sliderTrack}
+              style={{ transform: `translateX(-${current * 100}%)` }}
+            >
+              {images.map((img, idx) => (
+                <img
+                  key={idx}
+                  src={img}
+                  alt={`Banner ${idx + 1}`}
+                  className={styles.image}
+                />
+              ))}
+            </div>
+          </div>
 
-        <div className={styles.sliderViewport}>
-          <div
-            className={styles.sliderTrack}
-            style={{ transform: `translateX(-${current * 100}%)` }}
+          <button
+            className={`${styles.arrow} ${styles.left}`}
+            onClick={prevSlide}
           >
-            {images.map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={`Banner ${idx + 1}`}
-                className={styles.image}
+            &#10094;
+          </button>
+
+          <button
+            className={`${styles.arrow} ${styles.right}`}
+            onClick={nextSlide}
+          >
+            &#10095;
+          </button>
+
+          <div className={styles.dots}>
+            {images.map((_, slideIndex) => (
+              <span
+                key={slideIndex}
+                className={`${styles.dot} ${current === slideIndex ? styles.active : ''}`}
+                onClick={() => goToSlide(slideIndex)}
               />
             ))}
           </div>
-        </div>
-
-        <button
-          className={`${styles.arrow} ${styles.right}`}
-          onClick={nextSlide}
-          aria-label="Next slide"
-        >
-          &#10095;
-        </button>
-
-        <div className={styles.dots}>
-          {images.map((_, idx) => (
-            <span
-              key={idx}
-              className={`${styles.dot} ${current === idx ? styles.active : ''}`}
-              onClick={() => goToSlide(idx)}
-            />
-          ))}
         </div>
       </div>
     </div>
