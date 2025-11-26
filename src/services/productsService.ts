@@ -1,4 +1,4 @@
-import { Product, ProductDetails } from '../types/product';
+import { Product, ProductDetails } from '../types';
 
 export async function fetchJson<T>(url: string): Promise<T> {
   const response = await fetch(url);
@@ -26,7 +26,7 @@ function getAllAccessories() {
   return fetchJson<ProductDetails[]>('/api/accessories.json');
 }
 
-export async function getProductDetailsById(id: string) {
+export async function getProductDetailsById(id: string | undefined) {
   const [phones, tablets, accessories] = await Promise.all([
     getAllPhones(),
     getAllTablets(),
@@ -57,4 +57,12 @@ export async function getAccessoriesFromProducts() {
   const products = await getAllProducts();
 
   return products.filter(p => p.category === 'accessories');
+}
+
+export async function getSuggestedProducts(count: number = 4) {
+  const products = await getAllProducts();
+
+  const shuffled = [...products].sort(() => 0.5 - Math.random());
+
+  return shuffled.slice(0, count);
 }

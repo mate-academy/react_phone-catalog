@@ -1,55 +1,44 @@
 .page {
-  max-width: 1136px;
-  margin: 0 auto;
-  padding: 40px 0;
+  margin: 40px 0;
 }
 
 .title {
+  grid-column: span 24;
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 40px;
 }
 
 .topSection {
+  grid-column: span 24;
   display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 64px;
-  align-items: flex-start;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
 }
 
 .leftPart {
+  grid-column: span 14;
   display: grid;
-  grid-template-columns: 80px 464px;
-  column-gap: 24px;
-  align-items: flex-start;
-}
-
-.mainImage {
-  width: 464px;
-  height: 464px;
-  object-fit: contain;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  padding: 20px;
-  background-color: #fff;
+  grid-template-columns: repeat(14, 1fr);
+  column-gap: 16px;
 }
 
 .gallery {
+  grid-column: span 2;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 .galleryImage {
-  width: 80px;
+  width: 100%;
   height: 80px;
   object-fit: contain;
-  padding: 8px;
   border: 1px solid #e5e5e5;
+  padding: 8px;
   border-radius: 8px;
+  background: #fff;
   cursor: pointer;
-  background-color: #fff;
-  transition: 0.2s;
 }
 
 .galleryImage:hover {
@@ -59,6 +48,34 @@
 .activeThumb {
   border-color: #313237;
   box-shadow: 0 0 0 2px #313237;
+}
+
+.mainImageWrapper {
+  grid-column: span 12;
+}
+
+.mainImage {
+  max-width: 464px;
+  max-height: 464px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+}
+
+.infoBlock {
+  grid-column: span 10;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .colors {
@@ -71,33 +88,6 @@
   height: 32px;
   border-radius: 50%;
   border: 1px solid #e2e6e9;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.black {
-  background-color: #1a1a1a;
-}
-
-.green {
-  background-color: #3ddc84;
-}
-
-.yellow {
-  background-color: #ffd400;
-}
-
-.white {
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-.purple {
-  background-color: #b366ff;
-}
-
-.red {
-  background-color: #ff3b30;
 }
 
 .capacity {
@@ -108,13 +98,7 @@
 .capacityBtn {
   padding: 8px 16px;
   border: 1px solid #b4bdc3;
-  background: white;
-  cursor: pointer;
-  transition: 0.3s;
-
-  &:hover {
-    border-color: #313237;
-  }
+  background: #fff;
 }
 
 .activeCapacity {
@@ -123,9 +107,35 @@
   border-color: #313237;
 }
 
+.priceBlock {
+  margin-bottom: 24px;
+}
+
+.priceNew {
+  font-size: 32px;
+  font-weight: 800;
+  margin-right: 12px;
+}
+
+.priceOld {
+  font-size: 22px;
+  text-decoration: line-through;
+  color: #b4bdc3;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.addToCart,
+.favoriteButton {
+  padding: 12px 24px;
+}
 
 .detailsShort {
-  margin-top: 24px;
+  margin-top: 16px;
 }
 
 .detailRow {
@@ -142,27 +152,16 @@
   font-weight: 600;
 }
 
-.priceBlock {
-  margin: 24px 0;
-}
-
-.priceNew {
-  font-size: 32px;
-  font-weight: 800;
-  margin-right: 12px;
-}
-
-.priceOld {
-  font-size: 22px;
-  color: #b4bdc3;
-  text-decoration: line-through;
-}
-
 .bottomSection {
+  grid-column: span 24;
   margin-top: 64px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 64px;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+}
+
+.aboutBlock {
+  grid-column: span 12;
 }
 
 .bottomTitle {
@@ -182,6 +181,10 @@
   color: #313237;
 }
 
+.techSpecsBlock {
+  grid-column: span 12;
+}
+
 .techRow {
   display: flex;
   justify-content: space-between;
@@ -194,4 +197,15 @@
 
 .techValue {
   font-weight: 600;
+}
+
+.recommendedSection {
+  grid-column: span 24;
+  margin-top: 64px;
+}
+
+.recommendedTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 32px;
 }
