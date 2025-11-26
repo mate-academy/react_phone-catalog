@@ -20,7 +20,7 @@ interface HomeCategoryProps {
 const HomeCategory: FC<HomeCategoryProps> = ({ category, count }) => {
   return (
     <div className={s.homeCategory}>
-      <Link to={`/${category.path}`} className={s.categoryLink}>
+      <Link to={`${category.path}`} className={s.categoryLink}>
         <img
           className={s.categoryImage}
           src={category.imgSrc}
