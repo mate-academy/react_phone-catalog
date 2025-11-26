@@ -1,4 +1,4 @@
-import { Product } from '../../types/product';
+import { Product } from '../../types';
 import { useEffect, useMemo, useState } from 'react';
 import { DEFAULT_ITEMS_PER_PAGE, FIRST_PAGE, ItemsPerPage } from '../constants';
 import { SortBy, SORT } from '../constants';

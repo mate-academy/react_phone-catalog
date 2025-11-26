@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useMemo, useState } from 'react';
-import { Product } from '../../types/product';
+import { Product } from '../../types';
 import { STORAGE_KEYS } from '../constants';
 
 type Props = {

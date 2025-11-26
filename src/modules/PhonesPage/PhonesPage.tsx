@@ -4,7 +4,7 @@ import { Loader } from '../../shared/components/Loader/Loader';
 import { getPhonesFromProducts } from '../../services/productsService';
 import { Pagination } from '../../shared/components/Pagination';
 import { useProductsPage } from '../../shared/hooks/useProductPage';
-import { ITEMS_PER_PAGE_OPTIONS, SORT, SortBy } from '../../shared/constants';
+import { ProductsControls } from '../../shared/components/ProductsControls';
 
 export const PhonesPage = () => {
   const {
@@ -45,43 +45,12 @@ export const PhonesPage = () => {
     <div className={styles.phonesPage}>
       <h1>Mobile Phones</h1>
 
-      <div className={styles.controls}>
-        <div className={styles.selectGroup}>
-          <label htmlFor="sort">Sort by:</label>
-          <select
-            id="sort"
-            value={sortBy}
-            onChange={e => setSortBy(e.target.value as SortBy)}
-            className={styles.select}
-          >
-            <option value={SORT.NEWEST}>Newest</option>
-            <option value={SORT.ALPHA}>Alphabetically</option>
-            <option value={SORT.CHEAPEST}>Cheapest</option>
-          </select>
-        </div>
-
-        <div className={styles.selectGroup}>
-          <label htmlFor="perPage">Items on page:</label>
-          <select
-            id="perPage"
-            value={itemsPerPage}
-            onChange={event =>
-              setItemsPerPage(
-                event.target.value === 'all'
-                  ? 'all'
-                  : (Number(event.target.value) as 4 | 8 | 16),
-              )
-            }
-            className={styles.select}
-          >
-            {ITEMS_PER_PAGE_OPTIONS.map(option => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+      <ProductsControls
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+        itemsPerPage={itemsPerPage}
+        setItemsPerPage={setItemsPerPage}
+      />
 
       <ProductsList products={paginated} />
 
