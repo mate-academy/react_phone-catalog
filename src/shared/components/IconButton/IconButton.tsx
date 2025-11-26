@@ -16,7 +16,9 @@ export const IconButton: React.FC<IconButtonProps> = ({
   count,
 }) => (
   <NavLink to={to} className={styles.iconBox}>
-    <img className={styles.icon} src={src} alt={alt} />
-    {count && count > 0 && <span className={styles.badge}>{count}</span>}
+    <div className={styles.iconWrapper}>
+      <img className={styles.icon} src={src} alt={alt} />
+      {count! > 0 && <span className={styles.badge}>{count}</span>}
+    </div>
   </NavLink>
 );

@@ -9,3 +9,11 @@
   grid-template-columns: repeat(24, minmax(0, 1fr));
   gap: 40px 16px;
 }
+
+.col-24 {
+  grid-column: span 24;
+}
+
+.col-22 {
+  grid-column: span 22;
+}
