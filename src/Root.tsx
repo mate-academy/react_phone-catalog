@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { FavoritesPage } from './components/pages/FavoritesPage';
 import { HomePage } from './components/pages/HomePage';
@@ -14,7 +14,7 @@ import { Tablet } from './components/pages/ProductPage/components/Tablet';
 import { Accessory } from './components/pages/ProductPage/components/Accessory';
 
 export const Root: React.FC = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
@@ -39,5 +39,5 @@ export const Root: React.FC = () => (
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );
