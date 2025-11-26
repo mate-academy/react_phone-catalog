@@ -32,11 +32,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    @include abs-center;
     width: 100%;
     height: 100vh;
     z-index: 10;
     gap: 63px;
+
+    @include abs-center;
 
     @include onTablet {
       position: static;
@@ -60,7 +61,6 @@
     color: var(--color-secondary);
     font-weight: 800;
     font-family: Mont, sans-serif;
-    text-transform: uppercase;
     font-size: 12px;
     line-height: 11px;
     padding: 12px 0;
@@ -95,9 +95,6 @@
       &::after {
         bottom: -1px;
       }
-    }
-
-    @include onTablet {
     }
 
     @include onDekstop {
@@ -184,11 +181,13 @@
   z-index: 1001;
   position: relative;
   border-left: var(--border);
+
   @include square(48px);
 
   &::after,
   &::before {
     @include abs-center;
+
     content: '';
     width: 16px;
     height: 2px;

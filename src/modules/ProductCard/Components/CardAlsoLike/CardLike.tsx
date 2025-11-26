@@ -1,7 +1,9 @@
 import { getData } from '@Fetch';
 import { Carusel } from '@GlobalComponents';
+
 import { useEffect, useState } from 'react';
 import { Products } from 'src/types/products';
+
 import { shuffle } from '../../../../utils/shuffleArray';
 import { useTranslation } from 'react-i18next';
 
