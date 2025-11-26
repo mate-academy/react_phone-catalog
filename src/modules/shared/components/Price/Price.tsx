@@ -3,10 +3,11 @@ import scss from './Price.module.scss';
 
 interface Props {
   normal: number;
-  discount: number | null;
+  discount: number;
+  hasDiscount: boolean;
 }
 
-export const Price: React.FC<Props> = ({ normal, discount = 0 }) => {
+export const Price: React.FC<Props> = ({ normal, discount, hasDiscount }) => {
   const formatter = useMemo(
     () =>
       new Intl.NumberFormat('en-US', {
@@ -26,7 +27,7 @@ export const Price: React.FC<Props> = ({ normal, discount = 0 }) => {
       <p className={scss.price__value}>
         {discount ? discountPrice : normalPrice}
       </p>
-      {discount && <p className={scss.price__discount}>{normalPrice}</p>}
+      {hasDiscount && <p className={scss.price__discount}>{normalPrice}</p>}
     </div>
   );
 };

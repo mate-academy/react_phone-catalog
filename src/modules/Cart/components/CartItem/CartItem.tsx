@@ -10,7 +10,6 @@ interface Props {
 
 export const CartItem: React.FC<Props> = ({ item }) => {
   const { setCartItems } = useContext(DataContext);
-  const totalPrice = item.price * item.quantity;
 
   const handleQuantityChange = (newQuantity: number) => {
     setCartItems(prevItems =>
@@ -48,7 +47,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           quantity={item.quantity}
           onQuantityChange={handleQuantityChange}
         />
-        <span className={scss.cartItem__price}>{`$${totalPrice}`}</span>
+        <span className={scss.cartItem__price}>{`$${item.price}`}</span>
       </div>
     </article>
   );

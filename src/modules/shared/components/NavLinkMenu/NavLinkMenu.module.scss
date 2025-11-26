@@ -1,12 +1,15 @@
 @use '../../styles/utils/constants' as constants;
 
+a {
+  text-decoration: none;
+}
+
 .link {
   font-weight: 800;
     font-size: 1.2rem;
     line-height: 1.1rem;
     letter-spacing: 0.04rem;
     text-transform: uppercase;
-    text-decoration: none;
     padding-bottom: 0.8rem;
     color: constants.$secondary-color;
 
@@ -23,7 +26,6 @@
   align-items: center;
   flex: 1;
 
-
   &:not(:last-child) {
     border-right: 1px solid constants.$border-color;
   }
@@ -33,7 +35,7 @@
   width: 16px;
   }
 
-  &__favCounter {
+  &__counter {
     position: relative;
     top: -0.5rem;
     right: 0.75rem;
@@ -52,7 +54,6 @@
     line-height: 1;
     white-space: nowrap;
     pointer-events: none;
-    text-decoration: none;
     transition: opacity .15s ease, transform .15s ease;
   }
 }

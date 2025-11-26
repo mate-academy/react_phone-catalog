@@ -1,5 +1,5 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Accessory, Phone, SLIDER_TYPE, Tablet } from '../../api/types';
 import { DataContext } from '../../context/ContextProvider';
 import scss from './ProductDetailsPage.module.scss';
@@ -28,6 +28,9 @@ export const ProductDetailsPage = () => {
     useContext(DataContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const hasDiscount = location.state?.hasDiscount;
 
   const idForCart = useMemo(() => {
     const found = products.find(p => p.itemId === productId);
@@ -146,18 +149,25 @@ export const ProductDetailsPage = () => {
         setColor={handleColorChange}
         id={idForCart}
       />
-      <Line />
+      <Line marginTop={2.4} marginBottom={2.4} />
       <CapacitySelection
         availableCapacities={item.capacityAvailable}
         currentCapacity={item.capacity}
         setCapacity={handleCapacityChange}
       />
-      <Line />
-      <Price normal={item.priceRegular} discount={item.priceDiscount} />
+      <Line marginTop={2.4} marginBottom={2.4} />
+      <Price
+        normal={item.priceRegular}
+        discount={item.priceDiscount}
+        hasDiscount={hasDiscount}
+      />
       <div className={scss.productDetailsPage__buttonsWrapper}>
         <ButtonCart
           productId={idForCart}
           className={scss.productDetailsPage__cartButton}
+          image={item.images[0]}
+          name={item.name}
+          price={item.priceDiscount}
         />
         <ButtonFav
           productId={idForCart}
@@ -168,7 +178,7 @@ export const ProductDetailsPage = () => {
       <TechSpecs item={item} tech={false} />
       <About item={item} />
       <h3 className={scss.productDetailsPage__h3}>Tech specs</h3>
-      <Line />
+      <Line marginTop={1.6} marginBottom={3.0} />
       <TechSpecs item={item} tech={true} />
       <ProductsSlider title={'You may also like'} type={SLIDER_TYPE.RAND} />
     </section>

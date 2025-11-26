@@ -4,4 +4,24 @@
   &__title {
     padding: 0;
   }
+
+  &__itemWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    padding: 3.2rem 0;
+  }
+
+  &__emptyCart {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 2.2rem;
+    line-height: 140%;
+
+    color: rgba(49, 50, 55, 1);
+
+    margin-top: 0.8rem;
+  }
 }

@@ -1,5 +1,15 @@
 import scss from './Line.module.scss';
 
-export const Line = () => {
-  return <hr className={scss.line}></hr>;
+interface Props {
+  marginTop: number;
+  marginBottom: number;
+}
+
+export const Line: React.FC<Props> = ({ marginTop, marginBottom }) => {
+  return (
+    <hr
+      className={scss.line}
+      style={{ margin: `${marginTop}rem 0 ${marginBottom}rem` }}
+    ></hr>
+  );
 };

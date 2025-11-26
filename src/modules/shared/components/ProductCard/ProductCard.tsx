@@ -16,11 +16,12 @@ export const ProductCardComponent: React.FC<Props> = ({
   product,
   hasDiscount,
 }) => {
-  const discount = hasDiscount ? product.price : null;
-
   return (
     <article className={scss.productCard}>
-      <Link to={`/${product.category}/${product.itemId}`}>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        state={{ hasDiscount: hasDiscount }}
+      >
         <img
           src={`/${product.image}`}
           className={scss.productCard__image}
@@ -30,7 +31,11 @@ export const ProductCardComponent: React.FC<Props> = ({
         <h3 className={scss.productCard__name}>{product.name}</h3>
       </Link>
 
-      <Price normal={product.fullPrice} discount={discount} />
+      <Price
+        normal={product.fullPrice}
+        discount={product.price}
+        hasDiscount={hasDiscount}
+      />
       <div className={scss.productCard__divider}></div>
       <Specs product={product} />
       <div className={scss.productCard__buttons}>

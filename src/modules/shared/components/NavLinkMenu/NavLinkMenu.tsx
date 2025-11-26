@@ -22,9 +22,11 @@ export const NavLinkMenu: React.FC<Props> = ({
   icon,
   end,
 }) => {
-  const { favItems } = useContext(DataContext);
+  const { favItems, cartItems } = useContext(DataContext);
   const countFav = favItems.length;
-  const showBadge = countFav > 0 && icon === 'heart-icon';
+  const countCart = cartItems.length;
+  const showFavBadge = countFav > 0 && icon === 'heart-icon';
+  const showCartBadge = countCart > 0 && icon === 'shopping-bag';
 
   return (
     <NavLink
@@ -44,9 +46,14 @@ export const NavLinkMenu: React.FC<Props> = ({
           <svg className={scss.iconLink__icon}>
             <use href={`/icons/icons.svg#${icon}`}></use>
           </svg>
-          {showBadge && (
-            <span className={scss.iconLink__favCounter} aria-hidden="true">
+          {showFavBadge && (
+            <span className={scss.iconLink__counter} aria-hidden="true">
               {countFav}
+            </span>
+          )}
+          {showCartBadge && (
+            <span className={scss.iconLink__counter} aria-hidden="true">
+              {countCart}
             </span>
           )}
         </>

@@ -17,7 +17,7 @@ export const Favourites = () => {
       <section className={scss.favourites}>
         <Breadcrumbs category="Favourites" />
         <h1>Favourites</h1>
-        <p className={scss.errorNotification}>
+        <p className={scss.emptyFav}>
           Your favourites list is currently empty.
         </p>
       </section>
