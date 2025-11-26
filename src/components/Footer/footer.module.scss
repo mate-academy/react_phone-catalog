@@ -10,7 +10,7 @@
   justify-content: space-between;
   gap: 32px;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
     align-items: center;
   }
@@ -21,13 +21,13 @@
   flex-direction: column;
   gap: 8px;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
     justify-content: space-between;
     gap: 80px;
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     gap: 106px;
   }
 }
@@ -85,6 +85,7 @@
 
   span {
     display: inline-block;
+
     @include square(32px);
   }
 

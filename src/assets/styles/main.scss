@@ -8,6 +8,7 @@ body {
   font-weight: 800;
   font-size: 14px;
   line-height: 21px;
+  height: 100%;
 }
 
 a,
@@ -21,10 +22,10 @@ svg * {
 .container {
   width: 100%;
 
-  @include pageGrid;
-  @include contentPaddingInline;
+  @include page-grid;
+  @include content-padding-inline;
 
-  @include largeDekstop {
+  @include large-dekstop {
     max-width: 1200px;
     margin: 0 auto;
     padding-inline: 0;
@@ -36,7 +37,7 @@ svg * {
   font-size: 32px;
   line-height: 41px;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 48px;
     line-height: 56px;
   }
@@ -48,7 +49,7 @@ svg * {
   font-weight: 800;
   line-height: 140%;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 32px;
     width: 100%;
   }
@@ -56,8 +57,9 @@ svg * {
 
 .main {
   padding-top: 80px;
+  
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: 100px;
   }
 }
@@ -70,7 +72,7 @@ svg * {
   height: 100vh;
   overflow-y: hidden;
 
-  @include onTablet {
+  @include on-tablet {
     height: auto;
     overflow-y: visible;
   }

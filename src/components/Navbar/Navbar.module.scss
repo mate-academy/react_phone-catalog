@@ -15,7 +15,7 @@
 
   background-color: var(--color-black);
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
     justify-content: space-between;
     transform: none;
@@ -39,7 +39,7 @@
 
     @include abs-center;
 
-    @include onTablet {
+    @include on-tablet {
       position: static;
       translate: 0 0;
       height: 100%;
@@ -48,7 +48,7 @@
       gap: 40px;
     }
 
-    @include onDekstop {
+    @include on-dekstop {
       gap: 63px;
     }
   }
@@ -86,7 +86,7 @@
       background-color: var(--color-white);
       transition-duration: inherit;
 
-      @include onDekstop {
+      @include on-dekstop {
         bottom: -2px;
       }
     }
@@ -97,7 +97,7 @@
       }
     }
 
-    @include onDekstop {
+    @include on-dekstop {
       padding: 26px 0;
     }
   }
@@ -118,7 +118,7 @@
   &::after {
     width: 100%;
 
-    @include onDekstop {
+    @include on-dekstop {
       bottom: -2px;
     }
   }
@@ -152,7 +152,7 @@
       }
     }
 
-    @include onTablet {
+    @include on-tablet {
       @include square(48px);
 
       &:first-child {
@@ -161,7 +161,7 @@
     }
   }
 
-  @include onTablet {
+  @include on-tablet {
     position: static;
     bottom: auto;
     justify-content: flex-start;
@@ -169,7 +169,7 @@
     border-top: none;
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     a {
       @include square(64px);
     }
@@ -220,7 +220,7 @@
     }
   }
 
-  @include onTablet {
+  @include on-tablet {
     display: none;
   }
 }

@@ -1,16 +1,16 @@
 .loadingSpinner {
-  border: calc(50px / 5) solid #dddddddd;
+  border: calc(50px / 5) solid #dddd;
   border-top-color: var(--color-surface-1);
   border-radius: 50%;
   animation: loading 0.75s ease infinite;
 
   @include square(40px);
 
-  @include onTablet {
+  @include on-tablet {
     @include square(60px);
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     @include square(70px);
   }
 }

@@ -1,29 +1,29 @@
 .title {
   grid-column: span 4;
 
-  @include onTablet {
+  @include on-tablet {
     grid-column: span 9;
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     grid-column: span 21;
   }
 }
 
 .container {
-  @include onTablet {
-    @include pageGrid;
-    @include contentPaddingInline;
+  @include on-tablet {
+    @include page-grid;
+    @include content-padding-inline;
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     margin-top: 50px;
 
-    @include pageGrid;
-    @include contentPaddingInline;
+    @include page-grid;
+    @include content-padding-inline;
   }
 
-  @include largeDekstop {
+  @include large-dekstop {
     max-width: 1200px;
     margin: 56px auto;
     padding-inline: 0;

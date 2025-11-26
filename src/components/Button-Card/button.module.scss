@@ -23,8 +23,9 @@
 }
 
 .favourit {
-  @include square(40px);
   background-color: var(--color-surface-2);
+
+  @include square(40px);
 
   @include hover {
     background-color: var(--color-secondary);

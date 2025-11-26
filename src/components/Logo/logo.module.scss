@@ -1,9 +1,10 @@
 .logo {
   display: block;
   height: 100%;
+
   @include flex-center;
 
-  @include onDekstop {
+  @include on-dekstop {
     width: 100px;
   }
 }
@@ -13,7 +14,7 @@
   height: 22px;
   object-fit: contain;
 
-  @include onDekstop {
+  @include on-dekstop {
     width: 80px;
     height: 27px;
   }

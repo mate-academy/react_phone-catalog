@@ -10,11 +10,11 @@
   width: 60%;
   height: 100%;
 
-  @include onTablet {
+  @include on-tablet {
     width: 30%;
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     width: 25%;
     margin-bottom: 10px;
   }
@@ -25,11 +25,11 @@
   font-size: 27px;
   color: #3f4570;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 37px;
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     font-size: 44px;
     margin-right: auto;
   }
@@ -46,7 +46,7 @@
     color: var(--color-black);
   }
 
-  @include onTablet {
+  @include on-tablet {
     width: 40%;
   }
 }

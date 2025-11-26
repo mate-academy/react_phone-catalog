@@ -10,7 +10,7 @@
   transition: border var(--transition-duration) ease;
   cursor: pointer;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
   }
 
@@ -30,17 +30,8 @@
 
     @include square(16px);
 
-    @include onTablet {
+    @include on-tablet {
       top: -10px;
-    }
-
-    &:hover {
-      opacity: 1;
-
-      &::before,
-      &::after {
-        background: var(--color-red);
-      }
     }
 
     &::after,
@@ -61,6 +52,15 @@
     &::after {
       transform: rotate(-45deg);
     }
+
+    &:hover {
+      opacity: 1;
+
+      &::before,
+      &::after {
+        background: var(--color-red);
+      }
+    }
   }
 }
 
@@ -70,7 +70,7 @@
   align-items: center;
   gap: 16px;
 
-  @include onTablet {
+  @include on-tablet {
     flex: 2 1 0;
     gap: 24px;
   }
@@ -79,7 +79,7 @@
 .img {
   @include square(80px);
 
-  @include onTablet {
+  @include on-tablet {
     @include square(90px);
   }
 
@@ -95,7 +95,7 @@
   font-size: 14px;
   line-height: 21px;
 
-  @include onTablet {
+  @include on-tablet {
     width: 100%;
   }
 }
@@ -111,7 +111,7 @@
     width: 100%;
   }
 
-  @include onTablet {
+  @include on-tablet {
     flex: 1 1 0;
   }
 }
@@ -203,7 +203,7 @@
 .price {
   font-weight: 800;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 22px;
   }
 }

@@ -54,17 +54,18 @@
   }
 }
 
-@mixin pageGrid {
+@mixin page-grid {
   --columns: 4;
+
   display: grid;
   column-gap: 16px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include onTablet {
+  @include on-tablet {
     --columns: 12;
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     --columns: 24;
   }
 }

@@ -3,7 +3,7 @@
 
 .arrow__prev,
 .arrow__next {
-  @include onTablet {
+  @include on-tablet {
     position: absolute;
     background-color: var(--color-surface-2);
     bottom: 33px;
@@ -15,14 +15,28 @@
 }
 
 .arrow__prev {
-  @include onTablet {
+  cursor: pointer;
+  transition: background-color var(--transition-duration) ease;
+
+  @include hover {
+    background-color: var(--color-secondary);
+  }
+
+  @include on-tablet {
     left: 0;
     z-index: 1001;
   }
 }
 
 .arrow__next {
-  @include onTablet {
+  cursor: pointer;
+  transition: background-color var(--transition-duration) ease;
+
+  @include hover {
+    background-color: var(--color-secondary);
+  }
+
+  @include on-tablet {
     right: 0;
     z-index: 1001;
   }
@@ -30,7 +44,7 @@
 
 .arrow__left,
 .arrow__right {
-  @include onTablet {
+  @include on-tablet {
     left: 0;
 
     cursor: pointer;
@@ -43,7 +57,7 @@
 }
 
 .arrow__left {
-  @include onTablet {
+  @include on-tablet {
     background-image: url('@Images/icons/Arrow-left.svg');
   }
 }

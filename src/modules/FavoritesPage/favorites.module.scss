@@ -1,8 +1,8 @@
 .main {
-  padding: 64px 0;
+  padding-top: 64px;
 
-  @include onTablet {
-    padding: 80px 0;
+  @include on-tablet {
+    padding-top: 70px;
   }
 }
 
@@ -20,7 +20,7 @@
   display: grid;
   gap: 40px;
 
-  @include onTablet {
+  @include on-tablet {
     grid-template-columns: repeat(auto-fit, minmax(260px, 350px));
     column-gap: 16px;
   }

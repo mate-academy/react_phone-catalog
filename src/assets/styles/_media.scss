@@ -3,33 +3,34 @@ $tablet: 640px;
 $desktop: 1023px;
 $large-desktop: 1200px;
 
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: $tablet) {
     @content;
   }
 }
-@mixin onDekstop {
+
+@mixin on-dekstop {
   @media (min-width: $desktop) {
     @content;
   }
 }
 
-@mixin largeDekstop {
+@mixin large-dekstop {
   @media (min-width: $large-desktop) {
     @content;
   }
 }
 
-@mixin contentPaddingInline() {
+@mixin content-padding-inline() {
   & {
     padding-inline: 16px;
   }
 
-  @include onTablet {
+  @include on-tablet {
     padding-inline: 24px;
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     padding-inline: 32px;
   }
 }

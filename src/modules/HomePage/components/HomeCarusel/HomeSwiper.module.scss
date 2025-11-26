@@ -12,27 +12,29 @@
   overflow: hidden;
   position: relative;
 
-  @include onTablet {
+  @include on-tablet {
     grid-column: 1 / -1;
   }
 }
 
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 .main-swiper :global(.swiper) {
   width: 100%;
   padding-bottom: 30px;
 
-  @include onDekstop {
+  @include on-dekstop {
     height: 400px;
   }
 }
 
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 .main-swiper :global(.swiper-slide) {
   height: auto;
   position: relative;
   overflow: hidden;
   user-select: none;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 0 50px;
   }
 }
@@ -56,6 +58,7 @@
   height: 100%;
 }
 
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 .main-swiper :global(.swiper-pagination) {
   position: absolute;
   display: flex;
@@ -67,6 +70,7 @@
   bottom: 0 !important;
 }
 
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
 .main-swiper :global(.swiper-pagination-bullet) {
   width: 14px;
   height: 4px;

@@ -15,7 +15,7 @@
     justify-content: space-between;
     gap: 32px;
 
-    @include onDekstop {
+    @include on-dekstop {
       height: 64px;
       gap: 48px;
     }

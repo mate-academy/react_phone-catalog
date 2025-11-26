@@ -7,11 +7,11 @@
 }
 
 .wrapper {
-  padding: 70px 0;
+  padding-top: 70px;
   grid-column: 1 / -1;
 
-  @include onTablet {
-    padding: 90px 0;
+  @include on-dekstop {
+    padding-top: 90px;
   }
 }
 
@@ -20,7 +20,7 @@
   flex-direction: column;
   gap: 32px;
 
-  @include onDekstop {
+  @include on-dekstop {
     flex-direction: row;
   }
 }
@@ -34,7 +34,7 @@
   flex-direction: column;
   gap: 16px;
 
-  @include onDekstop {
+  @include on-dekstop {
     flex: 2 1 0;
   }
 }
@@ -79,7 +79,7 @@
     }
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     height: 210px;
     flex: 1 1 0;
   }
@@ -107,6 +107,7 @@
     display: flex;
     gap: 4px;
     align-items: center;
+
     @include square(16px);
 
     &::before {

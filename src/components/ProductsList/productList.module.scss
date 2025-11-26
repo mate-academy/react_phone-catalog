@@ -15,7 +15,7 @@
   gap: 16px;
   margin-top: 32px;
 
-  @include onTablet {
+  @include on-tablet {
     width: 300px;
   }
 
@@ -41,7 +41,7 @@
   display: grid;
   gap: 40px;
 
-  @include onTablet {
+  @include on-tablet {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     column-gap: 16px;
   }

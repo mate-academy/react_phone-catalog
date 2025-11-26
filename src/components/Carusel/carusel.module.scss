@@ -8,15 +8,14 @@
 
 .header {
   margin-bottom: 24px;
-
-  @include flex-center;
+  display: flex;
   justify-content: space-between;
 }
 
 .title {
   width: 136px;
 
-  @include onTablet {
+  @include on-tablet {
     width: 100%;
   }
 }

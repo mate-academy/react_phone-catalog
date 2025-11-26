@@ -2,7 +2,7 @@
   padding: 64px 0;
   grid-column: 1 / -1;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 80px 0;
   }
 }

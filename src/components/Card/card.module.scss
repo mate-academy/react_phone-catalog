@@ -8,12 +8,13 @@
     border: var(--border);
   }
 }
+
 .wrapper {
   padding: 32px;
-
-  @include flex-center;
   flex-direction: column;
   gap: 20px;
+
+  @include flex-center;
 }
 
 .card {
@@ -31,9 +32,10 @@
     height: 100%;
     object-fit: contain;
     transition: transform 0.3s ease;
+    margin-bottom: 20px;
 
     @include hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
   }
 
@@ -91,10 +93,9 @@
 }
 
 .price {
-  margin: 0 0 33px 0;
-  @include flex-center;
+  margin: 0 0 33px;
+  display: flex;
   justify-content: flex-start;
-
   gap: 8px;
 }
 
