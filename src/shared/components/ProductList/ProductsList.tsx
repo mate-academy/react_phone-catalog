@@ -1,20 +1,23 @@
 import { ProductCard } from '../ProductCard';
-import styles from './ProductsList.module.scss';
+import { Product } from '../../../types';
 import React from 'react';
-import { Product } from '../../../types/product';
+import styles from './ProductsList.module.scss';
 
 type Props = {
   products: Product[];
 };
 
-export const ProductsList: React.FC<Props> = ({ products }) => (
-  <div className={styles.list}>
-    {products.map(product => (
-      <ProductCard
-        key={product.id}
-        product={product}
-        showOldPrice={product.fullPrice > product.price}
-      />
-    ))}
-  </div>
-);
+export const ProductsList: React.FC<Props> = ({ products }) => {
+  return (
+    <ul className={styles.list}>
+      {products.map(product => (
+        <li key={product.id} className={styles.item}>
+          <ProductCard
+            product={product}
+            showOldPrice={product.fullPrice > product.price}
+          />
+        </li>
+      ))}
+    </ul>
+  );
+};

@@ -1,19 +1,11 @@
-@import './variables';
-@import './media';
-
 .container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding-inline: 16px;
+}
 
-  @include on-desktop {
-    width: 1136px;
-  }
-
-  @include on-tablet {
-    width: 576px;
-  }
-
-  @include on-mobile {
-    width: 100%;
-  }
+.grid-24 {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  gap: 40px 16px;
 }

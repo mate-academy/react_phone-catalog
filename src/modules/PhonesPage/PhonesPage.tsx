@@ -42,7 +42,7 @@ export const PhonesPage = () => {
   }
 
   return (
-    <div className={styles.phonesPage}>
+    <div className={`container ${styles.phonesPage}`}>
       <h1>Mobile Phones</h1>
 
       <ProductsControls
@@ -52,7 +52,9 @@ export const PhonesPage = () => {
         setItemsPerPage={setItemsPerPage}
       />
 
-      <ProductsList products={paginated} />
+      <div className="grid-24">
+        <ProductsList products={paginated} />
+      </div>
 
       {itemsPerPage !== 'all' && totalPages > 1 && (
         <Pagination
