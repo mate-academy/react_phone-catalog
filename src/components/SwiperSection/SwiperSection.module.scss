@@ -57,23 +57,23 @@
     align-items: center;
     height: 32px;
     width: 32px;
-    background-color: #fff;
+    background-color: #000;
     border-radius: 50%;
     border: 1px solid $border-hover-color;
     transition: all 0.3s ease;
 
-    &:hover {
-      background-color: #444654;
-    }
+    // &:hover {
+    //   background-color: #444654;
+    // }
 
-    img {
-      transition: 0.3s ease;
-      filter: brightness(0) saturate(100%) invert(0);
-    }
+    // img {
+    //   transition: 0.3s ease;
+    //   filter: brightness(0) saturate(100%) invert(0);
+    // }
 
-    &:hover img {
-      filter: brightness(0) saturate(100%) invert(1);
-    }
+    // &:hover img {
+    //   filter: brightness(0) saturate(100%) invert(1);
+    // }
   }
 
   :global(.arrowDisabled) {

@@ -16,17 +16,17 @@
   }
 }
 
-@mixin content-padding-inline() {
-  padding-inline: 16px;
+// @mixin content-padding-inline() {
+//   padding-inline: 16px;
 
-  @include on-tablet {
-    padding-inline: 24px;
-  }
+//   @include on-tablet {
+//     padding-inline: 24px;
+//   }
 
-  @include on-desktop {
-    padding-inline: 152px;
-  }
-}
+//   @include on-desktop {
+//     padding-inline: 152px;
+//   }
+// }
 
 // @mixin page-grid {
 //   --columns: 4;

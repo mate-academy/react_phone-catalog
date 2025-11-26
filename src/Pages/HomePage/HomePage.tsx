@@ -3,8 +3,9 @@ import style from './HomePage.module.scss';
 import { useState, useEffect } from 'react';
 import { getProductsData } from '../../api/products';
 import { SwiperSection } from '../../components/SwiperSection';
-import BannerSwiper from '../../components/PicturesSlider/BannerSwiper';
+import BannerSwiper from '../../components/BannerSwiper/BannerSwiper';
 import { ShopByCategorySection } from '../../components/ShopByCategorySection';
+import { AllProductsType } from '../../types/AllProductsType';
 
 export const HomePage = () => {
   const [newPhones, setNewPhones] = useState<AllProductsType[]>([]);
@@ -40,7 +41,9 @@ export const HomePage = () => {
     <>
       <h1 className={style.visuallyHidden}>Product Catalog</h1>
       <div className="section">
-        <h2 className="title">Welcome to Nice Gadgets store!</h2>
+        <div className="title-section">
+          <h2 className="title">Welcome to Nice Gadgets store!</h2>
+        </div>
 
         <BannerSwiper />
       </div>

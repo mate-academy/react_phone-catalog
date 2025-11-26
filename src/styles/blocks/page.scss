@@ -2,16 +2,17 @@
   font-family: 'Mont', sans-serif;
   color: $text-main-color;
   scroll-behavior: smooth;
-  min-height: 100vh;
+  height: 100vh;
+  background-color: $main-bg-color;
+
+  overflow-y: scroll;
+}
+
+.app {
   display: flex;
   flex-direction: column;
-  background-color: $main-bg-color;
+  min-height: 100vh;
 }
-// .app {
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 100vh;
-// }
 
 .page__body {
   margin: 0;
@@ -46,12 +47,35 @@
   }
 }
 
-.title {
-  color: white;
-  font-weight: 800;
-  font-size: 48px;
-  display: flex;
-  text-align: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
+.title-section {
+  padding: 24px 16px;
+
+  @include on-tablet {
+    padding: 32px 0;
+  }
+
+  @include on-desktop {
+    padding: 56px 0;
+  }
+
+  .title {
+    // color: white;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+}
+
+.hasShadow {
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 10px #fff;
+  }
 }

@@ -1,48 +1,57 @@
-// import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+// import { BurgerNavigation } from '../BurgerNavigation';
+import { HeaderNavigation } from '../HeaderNavigation';
+
+import close from '../../../public/img/Icons/close-icon.svg';
+import menu from '../../../public/img/Icons/menu-icon.svg';
+import logo from '../../../public/img/Icons/Logo.svg';
+
 import styles from './Header.module.scss';
-import bag from '../../../public/img/Icons/bag-Icon.svg';
-import favorite from '../../../public/img/Icons/favoriteIcon.svg';
-import figmaLogo from '../../../public/img/Icons/Logo.svg';
 
 export const Header = () => {
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    `${styles.link} ${isActive ? styles.active : ''}`;
+  const [isBurgerMenu, setIsBurgerMenu] = useState(false);
 
   return (
-    <header className={styles.header}>
-      <div className={styles.left}>
-        <Link to="/" className={styles.logo}>
-          <img src={figmaLogo} alt="NiceGadgets logo" />
-        </Link>
+    <>
+      <div className={styles.header}>
+        <div className={styles.header__container}>
+          <div className={styles.header__logo}>
+            <Link
+              to="/"
+              className={styles.header__link}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setIsBurgerMenu(false);
+              }}
+            >
+              <img src={logo} alt="Company logo" className={styles.logo} />
+            </Link>
+          </div>
 
-        <nav className={styles.nav}>
-          <NavLink to="/" end className={getLinkClass}>
-            HOME
-          </NavLink>
+          <HeaderNavigation />
 
-          <NavLink to="/phones" className={getLinkClass}>
-            PHONES
-          </NavLink>
-
-          <NavLink to="/tablets" className={getLinkClass}>
-            TABLETS
-          </NavLink>
-
-          <NavLink to="/accessories" className={getLinkClass}>
-            ACCESSORIES
-          </NavLink>
-        </nav>
+          <div
+            className={styles.burger__menu}
+            onClick={() => {
+              setIsBurgerMenu(prev => !prev);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
+            <img
+              src={isBurgerMenu ? close : menu}
+              alt="menu icon"
+              className={styles.icon}
+            />
+          </div>
+        </div>
       </div>
 
-      <div className={styles.icons}>
-        <Link to="/favorites">
-          <img src={favorite} alt="favorites" />
-        </Link>
-        <Link to="/cart">
-          <img src={bag} alt="cart" />
-        </Link>
-      </div>
-    </header>
+      {/* <BurgerNavigation
+        isBurgerMenu={isBurgerMenu}
+        onClose={() => setIsBurgerMenu(false)}
+      /> */}
+    </>
   );
 };

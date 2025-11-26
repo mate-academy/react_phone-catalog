@@ -1,0 +1,133 @@
+.headerNavigation {
+  display: none;
+
+  @include on-tablet {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.headerList {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.headerListItem {
+  display: flex;
+  align-items: center;
+}
+
+.headerLink {
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: 12px;
+  font-weight: 800;
+  height: 100%;
+  box-sizing: border-box;
+
+  color: $text-not-active-color;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover {
+    color: $text-main-color;
+  }
+
+  &:hover::after {
+    background-color: $text-main-color;
+  }
+}
+
+.isActive {
+  color: $text-main-color;
+
+  &::after {
+    background-color: $text-main-color;
+  }
+}
+
+.headerActions {
+  display: flex;
+}
+
+.headerIconContainer {
+  display: flex;
+  width: 48px;
+  height: 100%;
+  border-left: 0.5px solid $border-color;
+  position: relative;
+
+  @include on-desktop {
+    width: 64px;
+  }
+}
+
+.headerActionsLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover::after {
+    background-color: $text-not-active-color;
+  }
+}
+
+.icon {
+  position: relative;
+}
+
+.quantityBox {
+  background-color: rgba(244, 71, 175, 1);
+  height: 14px;
+  width: 14px;
+  border: 1px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+
+  transform: translate(50%, -50%);
+}
+
+.quantity {
+  color: white;
+  font-size: 9px;
+}

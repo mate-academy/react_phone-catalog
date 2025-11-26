@@ -30,10 +30,10 @@ export const SwiperSection: React.FC<Props> = ({
         </div>
 
         <div className={style.miniSwiper}>
-          <div className={style.arrow} id="prev-button">
+          <div className={`${style.arrow} hasShadow`} id="prev-button">
             <img src={arrowLeft} alt="Arrow Left" />
           </div>
-          <div className={style.arrow} id="next-button">
+          <div className={`${style.arrow} hasShadow`} id="next-button">
             <img src={arrowRight} alt="Arrow Right" />
           </div>
         </div>
