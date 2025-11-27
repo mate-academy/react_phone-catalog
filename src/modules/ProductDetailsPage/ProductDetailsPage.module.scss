@@ -9,7 +9,7 @@
   gap: $gap-24;
   padding: $gap-20;
 
-  img{
+  img {
     width: 300px;
   }
 
@@ -25,7 +25,6 @@
     @include button-primary;
   }
 }
-
 
 .productDetailsH2 {
   margin-bottom: 32px;
@@ -191,6 +190,10 @@
   border-radius: 50%;
   position: relative;
 
+  &:not(.selected):hover {
+    border-color: $secondary;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -202,13 +205,14 @@
   &::after {
     content: '';
     position: absolute;
-    inset: 4px;
+    inset: 3px;
     border-radius: 50%;
   }
 }
 
 .selected {
   border: 1px solid $primary;
+  cursor: default;
 }
 
 /* Modifier classes for each color */
