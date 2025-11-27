@@ -168,7 +168,7 @@ export const ProductList: FC<Props> = ({ title, data, isLoading }) => {
             sort={sortBy}
             selected={selected}
             onSelect={e => {
-              setSearchWith({ sortBy: e, page: 1 });
+              setSearchWith({ sortBy: e, page: currentPage });
             }}
           />
         </div>

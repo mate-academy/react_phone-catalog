@@ -7,21 +7,22 @@ import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 type Props = {
-  increaseToCart: () => void;
   notifyAddedCart: () => void;
   toggleFavorite: () => void;
   notifyAddedFavorit: () => void;
+  toggleItems: () => void;
+
   isAdded?: boolean;
   isFavorit?: boolean;
 };
 
 export const Button: React.FC<Props> = ({
-  increaseToCart,
   notifyAddedCart,
   isAdded,
   toggleFavorite,
   isFavorit,
   notifyAddedFavorit,
+  toggleItems,
 }) => {
   const [isAddItem, setIsAddItem] = useState(false);
   const { t } = useTranslation();
@@ -37,13 +38,12 @@ export const Button: React.FC<Props> = ({
           onClick={() => {
             toggle();
             notifyAddedCart();
-            increaseToCart();
+            toggleItems();
           }}
           className={cn(style.button, {
             [style.button__added]: isAdded,
             [style.button__empty]: !isAdded,
           })}
-          disabled={isAddItem}
         >
           <span className={style.button__text}>
             {isAddItem ? t('cart.added') : t('cart.add')}

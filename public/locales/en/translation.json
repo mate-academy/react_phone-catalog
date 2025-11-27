@@ -83,6 +83,7 @@
 
   "notifications": {
     "addedToCart": "{{name}} added to cart!",
+    "removeToCart": "{{name}} remove to cart!",
     "addedToFavorites": "{{name}} added to favorites!",
     "removedFromFavorites": "{{name}} removed from favorites!"
   }

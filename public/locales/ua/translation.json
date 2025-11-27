@@ -84,7 +84,7 @@
 
   "notifications": {
     "addedToCart": "{{name}} додано до кошика!",
-    "addedToFavorites": "{{name}} додано до вибраного!",
+    "removeToCart": "{{name}} видалено з кошика!",
     "removedFromFavorites": "{{name}} видалено з вибраного!"
   }
 }

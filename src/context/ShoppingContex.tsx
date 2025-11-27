@@ -13,6 +13,7 @@ interface ShoppingContexType {
   toggleFavorite: (item: ShoppingItem) => void;
   clearCart: () => void;
   getCartTotal: () => number;
+  toggleItems: (item: ShoppingItem) => void;
 }
 
 type Props = {
@@ -45,8 +46,6 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
             : cartItem,
         ),
       );
-    } else {
-      setCartItems([...cartItems, { ...item, quantity: 1 }]);
     }
   };
 
@@ -57,6 +56,16 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
       setFavoritItems(favoritItems.filter(f => f.name !== item.name));
     } else {
       setFavoritItems([...favoritItems, { ...item }]);
+    }
+  };
+
+  const toggleItems = (item: ShoppingItem) => {
+    const isItem = cartItems.find(f => f.name === item.name);
+
+    if (isItem) {
+      setCartItems(cartItems.filter(f => f.name !== item.name));
+    } else {
+      setCartItems([...cartItems, { ...item, quantity: 1 }]);
     }
   };
 
@@ -127,6 +136,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
         deleteItems,
         toggleFavorite,
         favoritItems,
+        toggleItems,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from '@HomePage';
 import { ProductsPage } from './modules/ProductsPage/ProductsPage';
-import { ScrollTop } from './utils/ScrollTop';
+
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { ProductCard } from './modules/ProductCard/ProductCard';
 import { ShoppingCart } from './modules/ShoppingCart/ShoppingCart';
@@ -10,8 +10,6 @@ import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 
 export const Root = () => (
   <Router>
-    <ScrollTop />
-
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />

@@ -75,17 +75,23 @@ export const Card: React.FC<Props> = ({ item, title }) => {
   const product = normalizeItem(item);
   const { t } = useTranslation();
 
-  const { toggleFavorite, favoritItems, cartItems, increaseToCart } =
+  const { toggleFavorite, favoritItems, cartItems, toggleItems } =
     useContext(ShoppingContex);
 
   const selected = findISelectedItem(cartItems, item.name);
   const favorit = findISelectedItem(favoritItems, item.name);
 
   const notifyAddedToCart = (newItem: Items) => {
-    return showNotify(
-      t('notifications.addedToCart', { name: newItem.name }),
-      'dark',
-    );
+    if (!selected) {
+      return showNotify(
+        t('notifications.addedToCart', { name: newItem.name }),
+        'dark',
+      );
+    } else {
+      return showNotify(
+        t('notifications.removeToCart', { name: newItem.name }),
+      );
+    }
   };
 
   const notifyAddedFavorit = (newItem: Items) => {
@@ -141,9 +147,9 @@ export const Card: React.FC<Props> = ({ item, title }) => {
             <Button
               isAdded={!!selected}
               isFavorit={!!favorit}
+              toggleItems={() => toggleItems(item)}
               toggleFavorite={() => toggleFavorite(item)}
               notifyAddedCart={() => notifyAddedToCart(item)}
-              increaseToCart={() => increaseToCart(item)}
               notifyAddedFavorit={() => notifyAddedFavorit(item)}
             />
           </div>

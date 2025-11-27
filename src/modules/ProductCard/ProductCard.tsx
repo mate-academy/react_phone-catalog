@@ -6,7 +6,6 @@ import {
   Button,
   NotFoundPage,
   getData,
-  Skeleton,
   CardLike,
 } from './index';
 //#endregion
@@ -18,7 +17,7 @@ import { useContext, useEffect, useState } from 'react';
 
 //#region TS
 import { Device } from '../../types/Device';
-import { useTimer } from '../../Hooks/useTimer';
+
 //#endregion
 
 //#region Gallery
@@ -54,13 +53,13 @@ export const ProductCard = () => {
 
   //#regionState
   const [item, setItem] = useState<Device>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [mainImg, setMainImg] = useState<string>('');
   const [isColor, setColor] = useState<string>('');
   const [baseSlug, setBaseSlug] = useState<string>('');
   const [index, setIndex] = useState<number>(0);
   const [OpenGallery, setOpenGallery] = useState(false);
+
   //#endregion
 
   //#regionTranslate
@@ -68,19 +67,14 @@ export const ProductCard = () => {
 
   //#endregion
 
-  //#regionHooks
-  const { start, clear } = useTimer();
-  //#endregion
-
   //#regionContext
-  const { toggleFavorite, favoritItems, cartItems, increaseToCart } =
+  const { toggleFavorite, favoritItems, cartItems, toggleItems } =
     useContext(ShoppingContex);
 
   //#endregion
 
   //#regionFetched
   useEffect(() => {
-    setIsLoading(true);
     setIsError(false);
 
     const loadData = async () => {
@@ -122,17 +116,11 @@ export const ProductCard = () => {
         }
 
         throw error;
-      } finally {
-        setIsLoading(false);
       }
     };
 
-    start(() => {
-      loadData();
-    }, 200);
-
-    return () => clear();
-  }, [productId, start, clear, categoryName]);
+    loadData();
+  }, [productId, categoryName]);
   //#endregion
 
   //#regionSelectedItems
@@ -148,16 +136,24 @@ export const ProductCard = () => {
   };
 
   const notifyAddedToCart = (newItem: Device) => {
-    showNotify(`${newItem.name} added to cart!`, 'dark');
+    if (!selected) {
+      return showNotify(
+        t('notifications.addedToCart', { name: newItem.name }),
+        'dark',
+      );
+    } else {
+      return showNotify(
+        t('notifications.removeToCart', { name: newItem.name }),
+      );
+    }
   };
   //#endregion
 
   return (
     <>
-      {isLoading && <Skeleton />}
       {isError && <NotFoundPage />}
 
-      {!isLoading && item && !isError && (
+      {item && !isError && (
         <main className="main">
           <section className="section">
             <div className="container">
@@ -349,7 +345,7 @@ export const ProductCard = () => {
                               isFavorit={!!isFavorit}
                               toggleFavorite={() => toggleFavorite(item)}
                               notifyAddedCart={() => notifyAddedToCart(item)}
-                              increaseToCart={() => increaseToCart(item)}
+                              toggleItems={() => toggleItems(item)}
                             />
                           </div>
                           <div className={`${style.info} ${style.container}`}>
