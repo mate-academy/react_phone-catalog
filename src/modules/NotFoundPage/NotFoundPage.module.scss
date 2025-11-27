@@ -1,8 +1,5 @@
 .notFoundPage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin: 0 1.6rem;
 
   &__title {
     font-family: Mont, sans-serif;
@@ -36,6 +33,6 @@
 
     color: rgba(255, 255, 255, 1);
 
-    margin-bottom: 1.6rem;
+    margin: 0 auto 1.6rem;
   }
 }
