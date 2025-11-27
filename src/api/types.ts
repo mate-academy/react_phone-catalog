@@ -135,4 +135,5 @@ export type DataContextProps = {
   setFavItems: React.Dispatch<React.SetStateAction<Fav[]>>;
   cartItems: StorageCartItem[];
   setCartItems: React.Dispatch<React.SetStateAction<StorageCartItem[]>>;
+  clearCartItems: () => void;
 };

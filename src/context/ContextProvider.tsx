@@ -21,6 +21,7 @@ const defaultContext: DataContextProps = {
   setFavItems: () => {},
   cartItems: [],
   setCartItems: () => {},
+  clearCartItems: () => {},
 };
 
 export const DataContext = createContext(defaultContext);
@@ -51,6 +52,10 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<StorageCartItem[]>(
     getInitialStorage('CART'),
   );
+
+  const clearCartItems = () => {
+    setCartItems([]); // Ustawiamy pustą tablicę -> koszyk wyczyszczony
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -104,6 +109,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
         setFavItems,
         cartItems,
         setCartItems,
+        clearCartItems,
       }}
     >
       {children}

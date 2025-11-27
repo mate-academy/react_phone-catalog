@@ -1,0 +1,91 @@
+.total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 2.4rem;
+  border: 0.1rem solid rgba(226, 230, 233, 1);
+
+  &__price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 3.2rem;
+    line-height: 4.1rem;
+    letter-spacing: -1%;
+    text-align: center;
+  }
+
+  &__amount {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    text-align: center;
+
+    color: rgba(137, 147, 154, 1);
+  }
+
+  &__checkout {
+    width: 24.0rem;
+    height: 4.8rem;
+
+    background-color: rgba(49, 50, 55, 1);
+
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    text-align: center;
+
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+.modalContent {
+  text-align: center;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+
+    color: rgba(49, 50, 55, 1);
+  }
+
+  &__text {
+    margin-bottom: 2.4rem;
+    color: rgba(137, 147, 154, 1);
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__button {
+    height: 40px;
+    padding: 0 24px;
+    border: 1px solid #b4bdc3;
+    background: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #fafbfc;
+    }
+
+    &_danger {
+      background-color: rgba(49, 50, 55, 1);
+      color: white;
+      border-color: rgba(49, 50, 55, 1);
+
+      &:hover {
+        background-color: #000;
+      }
+    }
+  }
+}
