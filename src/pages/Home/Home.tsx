@@ -115,6 +115,7 @@ const Home: React.FC = () => {
 
   return (
     <main>
+      {/* BANNER */}
       <SectionWithTitle
         title="Welcome to Nice Gadgets store!"
         titleLevel={2}

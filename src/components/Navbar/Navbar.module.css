@@ -64,8 +64,21 @@
   transition: color 0.2s ease;
 }
 
-.navLink:hover {
-  color: #313237;
+/* link ativo */
+.activeLink {
+  color: #111; /* cor do texto quando ativo */
+}
+
+/* força a linha aparecer quando ativo */
+.linkContainer .activeLink::after {
+  content: '';
+  position: absolute;
+  bottom: -29px; /* mesmo valor usado no hover */
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: #111;
+  transform: scaleX(1); /* mantém a linha fixa */
 }
 
 .iconCart,
@@ -170,7 +183,7 @@
   .linkContainer::after {
     content: '';
     position: absolute;
-    bottom: -32px;
+    bottom: -29px;
     left: 0;
     height: 4px;
     width: 100%;

@@ -44,9 +44,3 @@
 .grid > * {
   flex: 0 1 280px; /* largura mínima de 250px */
 }
-
-.showAll {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
