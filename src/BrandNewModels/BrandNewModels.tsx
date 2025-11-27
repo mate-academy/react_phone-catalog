@@ -1,11 +1,27 @@
 import styles from './BrandNewModels.module.scss';
-import phones from '../../public/api/phones.json';
+// import phones from '../../public/api/phones.json';
+import arrow from '../../public/img/rightButtonDef.png';
 
 export const BrandNewModels = () => {
   return (
     <section className={styles.modelsContainer}>
       <h1 className={styles.modelsContainer__title}>Brand new models</h1>
-      <div className={styles.modelsContainer__cards}>
+      <button className={styles.modelsContainer__buttonPrev}>
+        <img
+          src={arrow}
+          alt="arrowLeft"
+          className={styles.modelsContainer__buttonPrevImg}
+        />
+      </button>
+      <button className={styles.modelsContainer__buttonNext}>
+        <img
+          src={arrow}
+          alt="arrowRight"
+          className={styles.modelsContainer__buttonNextImg}
+        />
+      </button>
+
+      {/* <div className={styles.modelsContainer__cards}>
         {phones.map(phone => (
           <div key={phone.id} className={styles.card}>
             <img
@@ -25,7 +41,7 @@ export const BrandNewModels = () => {
             <button>Add to cart</button>
           </div>
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };

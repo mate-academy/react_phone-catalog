@@ -9,23 +9,16 @@ const images = [
 
 export const ProductSlider = () => {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState<'next' | 'prev' | null>(null);
   const [isAuto, setIsAuto] = useState(true);
 
   const handleNext = () => {
+    setCurrent(prev => (prev + 1) % images.length);
     setIsAuto(false);
-    setDirection('next');
-    setTimeout(() => {
-      setCurrent(prev => (prev + 1) % images.length);
-    }, 200);
   };
 
   const handlePrev = () => {
+    setCurrent(prev => (prev === 0 ? images.length - 1 : prev - 1));
     setIsAuto(false);
-    setDirection('prev');
-    setTimeout(() => {
-      setCurrent(prev => (prev === 0 ? images.length - 1 : prev - 1));
-    }, 200);
   };
 
   useEffect(() => {
@@ -34,7 +27,6 @@ export const ProductSlider = () => {
     }
 
     const interval = setInterval(() => {
-      setDirection('next');
       setCurrent(prev => (prev + 1) % images.length);
     }, 5000);
 
@@ -45,13 +37,23 @@ export const ProductSlider = () => {
     <section className={styles.container}>
       <div className={styles.container__sliderContainer}>
         <h1>Welcome to Nice Gadgets store!</h1>
+
         <button
           className={styles.container__buttonPrev}
           onClick={handlePrev}
         ></button>
 
-        <div className={`${styles.container__box} ${direction}`}>
-          <img key={current} src={images[current]} alt="banner" />
+        <div className={styles.container__listWrapper}>
+          <div
+            className={styles.container__list}
+            style={{ transform: `translateX(-${current * 100}%)` }}
+          >
+            {images.map((img, index) => (
+              <div key={index} className={styles.container__item}>
+                <img src={img} alt={`banner ${index}`} />
+              </div>
+            ))}
+          </div>
         </div>
 
         <button
@@ -63,7 +65,9 @@ export const ProductSlider = () => {
           {images.map((_, index) => (
             <li className={styles.container__dot} key={index}>
               <button
-                className={`${styles.container__dotButton} ${current === index ? styles.active : ''}`}
+                className={`${styles.container__dotButton} ${
+                  current === index ? styles.active : ''
+                }`}
                 onClick={() => setCurrent(index)}
               ></button>
             </li>
