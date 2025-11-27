@@ -1,43 +1,40 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+
 import { SelectOption } from '../../types/SelectOptions';
+import { ProductPageSearchParams } from './ProductPage.types';
+import { ProductCatalogItem } from '../../types/ProductCatalogItem';
+
 import {
   DEFAULT_ITEMS_ON_PAGE,
   DEFAULT_SORT,
   PRODUCT_LIST_MENU,
+  PRODUCT_MENU_KEY,
 } from './ProductPage.constants';
-import { ProductPageSearchParams } from './ProductPage.types';
-import { useEffect, useMemo, useState } from 'react';
-import { ProductCatalogItem } from '../../types/ProductCatalogItem';
 import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
 
-const PRODUCT_MENU_KEY = 'productMenuKey';
-
-type MenuParams =
+type MenuParamKey =
   | ProductPageSearchParams.sort
   | ProductPageSearchParams.perPage;
 
-const menuParams: MenuParams[] = [
+const MENU_PARAM_KEYS: MenuParamKey[] = [
   ProductPageSearchParams.sort,
   ProductPageSearchParams.perPage,
 ];
 
-const defaultMenuValues: Record<MenuParams, string> = {
+const DEFAULT_MENU_VALUES: Record<MenuParamKey, string> = {
   [ProductPageSearchParams.sort]: DEFAULT_SORT,
   [ProductPageSearchParams.perPage]: DEFAULT_ITEMS_ON_PAGE,
 };
 
-function checkSearchParam(
-  params: string[],
-  param: string,
+function getValidParam(
+  allowedValues: string[],
+  currentValue: string,
   defaultParam: string,
 ) {
-  if (params.includes(param)) {
-    return param;
-  }
-
-  return defaultParam;
+  return allowedValues.includes(currentValue) ? currentValue : defaultParam;
 }
 
 function useMenuParams() {
@@ -50,52 +47,64 @@ function useMenuParams() {
     setSearchParams(loadParams);
   }
 
-  const sortParam = checkSearchParam(
+  const sortParam = getValidParam(
     PRODUCT_LIST_MENU.sortBy,
     searchParams.get(ProductPageSearchParams.sort) || '',
     DEFAULT_SORT,
   );
 
-  const itemsOnPageParam = checkSearchParam(
-    PRODUCT_LIST_MENU.itemsOnPage,
+  const perPageParam = getValidParam(
+    PRODUCT_LIST_MENU.perPage,
     searchParams.get(ProductPageSearchParams.perPage) || '',
     DEFAULT_ITEMS_ON_PAGE,
   );
 
-  const setMenuParams = (paramName: MenuParams, paramValue: string) => {
-    setSearchParams(prevSearchParams => {
-      if (defaultMenuValues[paramName] === paramValue) {
-        prevSearchParams.delete(paramName);
+  const updateMenuParam = (key: MenuParamKey, value: string) => {
+    setSearchParams(prevParams => {
+      if (DEFAULT_MENU_VALUES[key] === value) {
+        prevParams.delete(key);
       } else {
-        prevSearchParams.set(paramName, paramValue);
-        prevSearchParams.sort();
+        prevParams.set(key, value);
+        prevParams.sort();
       }
 
-      localStorage.setItem(
-        PRODUCT_MENU_KEY,
-        menuParams
-          .filter(curParamName => prevSearchParams.get(curParamName))
-          .map(
-            curParamName =>
-              `${curParamName}=${prevSearchParams.get(curParamName) || ''}`,
-          )
-          .reduce((searchString, paramPair) => `${searchString}&${paramPair}`),
-      );
+      const serializedParams = MENU_PARAM_KEYS.filter(paramKey =>
+        prevParams.get(paramKey),
+      )
+        .map(paramKey => `${paramKey}=${prevParams.get(paramKey) || ''}`)
+        .join('&');
 
-      return prevSearchParams;
+      localStorage.setItem(PRODUCT_MENU_KEY, serializedParams);
+
+      return prevParams;
     });
   };
 
-  return { sortParam, itemsOnPageParam, setMenuParams };
+  return {
+    sortParam,
+    itemsOnPageParam: perPageParam,
+    updateMenuParam,
+  };
 }
 
-export function useMenuSelectors() {
+export function useMenuSelectors(): {
+  selectedSort: SelectOption;
+  selectedPerPage: SelectOption;
+  perPageOptions: SelectOption[];
+  sortOptions: SelectOption[];
+  handleSortChange: (option: SelectOption | null) => void;
+  handleItemsOnPageChange: (option: SelectOption | null) => void;
+} {
   const { t } = useTranslation();
-  const { sortParam, itemsOnPageParam, setMenuParams } = useMenuParams();
+  const {
+    sortParam,
+    itemsOnPageParam: perPageParam,
+    updateMenuParam: setMenuParams,
+  } = useMenuParams();
 
-  const itemsOnPageOptions: SelectOption[] = useMemo(
+  const perPageOptions: SelectOption[] = useMemo(
     () =>
-      PRODUCT_LIST_MENU.itemsOnPage.map(value => ({
+      PRODUCT_LIST_MENU.perPage.map(value => ({
         value,
         label: Number.isInteger(Number(value))
           ? value
@@ -104,7 +113,7 @@ export function useMenuSelectors() {
     [t],
   );
 
-  const sortByOptions: SelectOption[] = useMemo(
+  const sortOptions: SelectOption[] = useMemo(
     () =>
       PRODUCT_LIST_MENU.sortBy.map(value => ({
         value,
@@ -113,12 +122,12 @@ export function useMenuSelectors() {
     [t],
   );
 
-  const sortValue = sortByOptions.find(
+  const selectedSort: SelectOption = sortOptions.find(
     sortOption => sortOption.value === sortParam,
-  ) as SelectOption;
+  )!;
 
-  const itemsOnPageValue = itemsOnPageOptions.find(
-    item => item.value === itemsOnPageParam,
+  const selectedPerPage = perPageOptions.find(
+    item => item.value === perPageParam,
   ) as SelectOption;
 
   const handleSortChange = (option: SelectOption | null) => {
@@ -138,31 +147,44 @@ export function useMenuSelectors() {
   };
 
   return {
-    sortValue,
-    itemsOnPageValue,
-    itemsOnPageOptions,
-    sortByOptions,
+    selectedSort,
+    selectedPerPage,
+    perPageOptions,
+    sortOptions,
     handleSortChange,
     handleItemsOnPageChange,
   };
 }
 
-export function useSelectedProduct(
-  products: ProductCatalogItem[],
-  title: string,
-  sortValue: SelectOption,
-  itemsOnPageValue: SelectOption,
-  currentPage: number,
-) {
-  const [pageCategoryProducts, setPageCategoryProducts] = useState<
+interface UseSelectedProductOptions {
+  products: ProductCatalogItem[];
+  title: string;
+  selectedSort: SelectOption;
+  selectedPerPage: SelectOption;
+  currentPage: number;
+}
+
+export function useSelectedProduct({
+  products,
+  title,
+  selectedSort,
+  selectedPerPage,
+  currentPage,
+}: UseSelectedProductOptions): {
+  pageProducts: ProductCatalogItem[];
+  total: number;
+} {
+  const [filteredProducts, setFilteredProduct] = useState<ProductCatalogItem[]>(
+    [],
+  );
+
+  const [sortedProducts, setSortedProduct] = useState<ProductCatalogItem[]>([]);
+  const [paginatedProducts, setPaginatedProduct] = useState<
     ProductCatalogItem[]
   >([]);
 
-  const [sortedProduct, setSortedProduct] = useState<ProductCatalogItem[]>([]);
-  const [pageProducts, setPageProducts] = useState<ProductCatalogItem[]>([]);
-
   useEffect(() => {
-    setPageCategoryProducts(
+    setFilteredProduct(
       products.filter(product => product.category === (title || '')),
     );
   }, [products, title]);
@@ -170,22 +192,26 @@ export function useSelectedProduct(
   useEffect(() => {
     setSortedProduct(
       getSortedProducts(
-        pageCategoryProducts,
-        sortValue.value as ProductSortTypes,
+        filteredProducts,
+        selectedSort.value as ProductSortTypes,
       ),
     );
-  }, [pageCategoryProducts, sortValue.value]);
+  }, [filteredProducts, selectedSort.value]);
 
   useEffect(() => {
-    const currentPageProducts = +itemsOnPageValue.value
-      ? sortedProduct.slice(
-          (currentPage - 1) * +itemsOnPageValue.value,
-          Math.min(currentPage * +itemsOnPageValue.value, sortedProduct.length),
-        )
-      : [...sortedProduct];
+    const perPage = Number(selectedPerPage.value);
+    const startIndex = (currentPage - 1) * +selectedPerPage.value;
+    const endIndex = Math.min(
+      currentPage * +selectedPerPage.value,
+      sortedProducts.length,
+    );
 
-    setPageProducts(currentPageProducts);
-  }, [sortedProduct, itemsOnPageValue.value, currentPage]);
+    const currentPageProducts = perPage
+      ? sortedProducts.slice(startIndex, endIndex)
+      : [...sortedProducts];
 
-  return { pageProducts, total: sortedProduct.length };
+    setPaginatedProduct(currentPageProducts);
+  }, [sortedProducts, selectedPerPage.value, currentPage]);
+
+  return { pageProducts: paginatedProducts, total: sortedProducts.length };
 }

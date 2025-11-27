@@ -23,21 +23,21 @@ export const ProductPage: React.FC = () => {
   const modelAmount = t('products_page.models', { count });
 
   const {
-    sortValue,
-    itemsOnPageValue,
-    itemsOnPageOptions,
-    sortByOptions,
+    selectedSort,
+    selectedPerPage,
+    perPageOptions,
+    sortOptions,
     handleSortChange,
     handleItemsOnPageChange,
   } = useMenuSelectors();
 
-  const { pageProducts, total } = useSelectedProduct(
+  const { pageProducts, total } = useSelectedProduct({
     products,
     title,
-    sortValue,
-    itemsOnPageValue,
+    selectedSort,
+    selectedPerPage,
     currentPage,
-  );
+  });
 
   const isProductListEmpty = loaded && count === 0;
   const hasProducts = loaded && count > 0;
@@ -57,18 +57,18 @@ export const ProductPage: React.FC = () => {
           <>
             <p>{modelAmount}</p>
             <ProductListMenu
-              sortValue={sortValue}
-              itemsOnPageValue={itemsOnPageValue}
+              sortValue={selectedSort}
+              itemsOnPageValue={selectedPerPage}
               handleSortChange={handleSortChange}
               handleItemsOnPageChange={handleItemsOnPageChange}
-              sortByOptions={sortByOptions}
-              itemsOnPageOptions={itemsOnPageOptions}
+              sortByOptions={sortOptions}
+              itemsOnPageOptions={perPageOptions}
             />
             <ProductList />
-            {+itemsOnPageValue.value > 0 && (
+            {+selectedPerPage.value > 0 && (
               <ProductPagination
                 total={total}
-                perPage={Number(itemsOnPageValue.value)}
+                perPage={Number(selectedPerPage.value)}
                 currentPage={currentPage}
               />
             )}
