@@ -1,16 +1,51 @@
 /* eslint-disable max-len */
-import { FC, useRef } from 'react';
-import s from './SearchBar.module.scss';
+import { FC, useEffect, useRef, useState } from 'react';
 import { useSearchParamsState } from '../../../CategoryPage/hooks/useSearchParamsState';
+import { debounce } from '../../utils';
+import s from './SearchBar.module.scss';
 
 export const SearchBar: FC = () => {
   const { query, setQuery } = useSearchParamsState();
-  const inputRef = useRef(null);
+  const [localValue, setLocalValue] = useState(query);
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // store timer to cancel debounce on unmount
+  const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const debouncedSetQuery = useRef(
+    debounce((value: string) => {
+      setQuery(value);
+    }, 500),
+  ).current;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    setLocalValue(value);
+
+    debounceTimer.current = debouncedSetQuery(value);
+  };
 
   const clearSearch = () => {
+    setLocalValue('');
     setQuery('');
-    //inputRef.current.focus();
+    inputRef.current?.focus();
   };
+
+  // Sync UI when URL query changes externally
+  useEffect(() => {
+    setLocalValue(query);
+  }, [query]);
+
+  // Cancel pending debounce when component unmounts
+  useEffect(() => {
+    return () => {
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current);
+      }
+    };
+  }, []);
 
   return (
     <div className={s.wrapper}>
@@ -21,11 +56,11 @@ export const SearchBar: FC = () => {
         type="text"
         placeholder="Search"
         className={s.input}
-        value={query}
-        onChange={e => setQuery(e.target.value)}
+        value={localValue}
+        onChange={handleChange}
       />
 
-      {query && (
+      {localValue && (
         <button className={s.clearBtn} onClick={clearSearch}>
           ×
         </button>

@@ -1,9 +1,19 @@
-export function getNumbers(from: number, to: number): number[] {
-  const numbers = [];
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export const debounce = <T extends (...args: any[]) => void>(
+  callback: T,
+  delay: number,
+) => {
+  let timerId: ReturnType<typeof setTimeout> | null = null;
 
-  for (let n = from; n <= to; n += 1) {
-    numbers.push(n);
-  }
+  return (...args: Parameters<T>) => {
+    if (timerId) {
+      clearTimeout(timerId);
+    }
 
-  return numbers;
-}
+    timerId = setTimeout(() => {
+      callback(...args);
+    }, delay);
+
+    return timerId;
+  };
+};
