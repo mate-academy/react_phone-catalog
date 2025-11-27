@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import { DataContext } from './context/ContextProvider';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { Cart } from './modules/Cart';
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
 export const App = () => {
   const { products, cartItems } = useContext(DataContext);
@@ -46,6 +47,7 @@ export const App = () => {
           ></Route>
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/cart" element={<Cart items={cartItems} />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
       <Footer />
