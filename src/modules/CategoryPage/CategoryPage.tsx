@@ -43,14 +43,21 @@ export const CategoryPage: FC<Props> = ({ category }) => {
     sortBy,
     perPage,
     currentPage,
+    query,
     setSortBy,
     setPerPage,
     setCurrentPage,
   } = useSearchParamsState();
 
   const sortedProducts = useMemo(() => {
-    return sortProducts(products, sortBy);
-  }, [products, sortBy]);
+    const normalizedQuery = query.trim().toLowerCase();
+
+    const filtered = products.filter(prod =>
+      prod.name.toLowerCase().includes(normalizedQuery),
+    );
+
+    return sortProducts(filtered, sortBy);
+  }, [products, sortBy, query]);
 
   const total = sortedProducts.length;
 
@@ -82,7 +89,17 @@ export const CategoryPage: FC<Props> = ({ category }) => {
         {!isLoading && !errorMessage && (
           <>
             {paginatedProducts.length === 0 ? (
-              <p>There are no {CATEGORIES[category].name.toLowerCase()} yet.</p>
+              <>
+                <Filter
+                  sortBy={sortBy}
+                  onSort={setSortBy}
+                  perPage={String(perPage)}
+                  onPerPageChange={setPerPage}
+                />
+                <p>
+                  There are no {CATEGORIES[category].name.toLowerCase()} yet.
+                </p>
+              </>
             ) : (
               <>
                 <div className={s.count}>{total && total} models</div>

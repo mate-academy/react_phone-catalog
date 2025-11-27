@@ -13,7 +13,7 @@
   justify-content: space-between;
 
   width: 100%;
-  padding: 10px 14px;
+  padding: 9px 14px;
 
   background: $white;
   border: 1px solid $elements;
@@ -21,7 +21,7 @@
   cursor: pointer;
 
   font-size: 14px;
-  color: #111;
+  color: $primary;
 
   transition:
     border-color 0.2s,

@@ -111,3 +111,11 @@ header {
   justify-content: center;
   align-items: center;
 }
+
+.searchWrapper {
+  display: none;
+
+  @include on-desktop {
+    display: flex;
+  }
+}

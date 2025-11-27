@@ -36,3 +36,11 @@
   display: block;
   margin-bottom: 4px;
 }
+
+.searchWrapper{
+  grid-column: 1 / span 4;
+
+  @include on-desktop{
+    display: none;
+  }
+}

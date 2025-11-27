@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 import s from './Header.module.scss';
 import logo from '../../assets/images/logo.png';
 import menu from '../../assets/images/icons/menu.svg';
@@ -9,11 +9,18 @@ import { NavBar } from '../shared/components/NavBar/NavBar';
 import { BurgerMenu } from './components/BurgerMenu';
 import { useFavouriteContext } from '../../context/FavoritesContext';
 import { useCartContext } from '../../context/CartContext';
+import { SearchBar } from '../shared/components/SearchBar';
 
 export const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { count } = useFavouriteContext();
   const { cartCount } = useCartContext();
+  const matchPhones = useMatch('/phones/*');
+  const matchTablets = useMatch('/tablets/*');
+  const matchAccessories = useMatch('/accessories/*');
+
+  const isSearch = !!matchPhones || !!matchTablets || !!matchAccessories;
+
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
@@ -31,6 +38,11 @@ export const Header: FC = () => {
           </div>
         </div>
         <div className={s.rightPart}>
+          {isSearch && (
+            <div className={`${s.iconWrapper} ${s.searchWrapper}`}>
+              <SearchBar />
+            </div>
+          )}
           <div className={`${s.iconWrapper} ${s.tabletVisible}`}>
             <Link to="/favorites" className={s.linkWrapper}>
               {count > 0 && <span className={s.iconCount}>{count}</span>}

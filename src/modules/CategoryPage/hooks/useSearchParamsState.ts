@@ -10,8 +10,8 @@ export const useSearchParamsState = () => {
   const currentPage = Number(
     searchParams.get('page') || DEFAULT_SEARCH_PARAMS.page,
   );
-
   const perPage = perPageParam === 'all' ? 'all' : Number(perPageParam);
+  const query = searchParams.get('query') || DEFAULT_SEARCH_PARAMS.query;
 
   const updateParams = (updates: Record<string, string>) => {
     const newParams = new URLSearchParams(searchParams);
@@ -55,12 +55,21 @@ export const useSearchParamsState = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const setQuery = (value: string) => {
+    updateParams({
+      query: value,
+      page: DEFAULT_SEARCH_PARAMS.page,
+    });
+  };
+
   return {
     sortBy,
     perPage,
     currentPage,
+    query,
     setSortBy,
     setPerPage,
     setCurrentPage,
+    setQuery,
   };
 };

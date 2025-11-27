@@ -38,4 +38,5 @@ export const DEFAULT_SEARCH_PARAMS = {
   sort: 'age',
   perPage: 'all',
   page: '1',
+  query: '',
 };
