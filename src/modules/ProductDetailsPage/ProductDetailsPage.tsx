@@ -17,6 +17,7 @@ import { ButtonFav } from '../shared/components/ButtonFav';
 import { TechSpecs } from './components/TechSpecs/TechSpecs';
 import { About } from './components/About/About';
 import { ProductsSlider } from '../shared/components/ProductsSlider';
+import { ProductNotFound } from './components/ProductNotFound';
 
 export const ProductDetailsPage = () => {
   const [item, setItem] = useState<Phone | Tablet | Accessory | undefined>(
@@ -119,18 +120,7 @@ export const ProductDetailsPage = () => {
   }
 
   if (isError) {
-    return (
-      <div className={scss.errorNotification}>
-        <h2>Product was not found</h2>
-        <button
-          type="button"
-          onClick={() => navigate(-1)}
-          className={scss.errorNotification__button}
-        >
-          Go back to previous page
-        </button>
-      </div>
-    );
+    return <ProductNotFound />;
   }
 
   if (!item) {
