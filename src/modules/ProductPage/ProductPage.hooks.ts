@@ -12,6 +12,22 @@ import { useEffect, useMemo, useState } from 'react';
 import { ProductCatalogItem } from '../../types/ProductCatalogItem';
 import { getSortedProducts, ProductSortTypes } from '../../utils/catalog';
 
+const PRODUCT_MENU_KEY = 'productMenuKey';
+
+type MenuParams =
+  | ProductPageSearchParams.sort
+  | ProductPageSearchParams.perPage;
+
+const menuParams: MenuParams[] = [
+  ProductPageSearchParams.sort,
+  ProductPageSearchParams.perPage,
+];
+
+const defaultMenuValues: Record<MenuParams, string> = {
+  [ProductPageSearchParams.sort]: DEFAULT_SORT,
+  [ProductPageSearchParams.perPage]: DEFAULT_ITEMS_ON_PAGE,
+};
+
 function checkSearchParam(
   params: string[],
   param: string,
@@ -24,9 +40,15 @@ function checkSearchParam(
   return defaultParam;
 }
 
-export function useMenuSelectors() {
-  const { t } = useTranslation();
+function useMenuParams() {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  if (searchParams.toString() === '') {
+    const saveMenuParams = localStorage.getItem(PRODUCT_MENU_KEY) || '';
+    const loadParams = new URLSearchParams(saveMenuParams);
+
+    setSearchParams(loadParams);
+  }
 
   const sortParam = checkSearchParam(
     PRODUCT_LIST_MENU.sortBy,
@@ -39,6 +61,37 @@ export function useMenuSelectors() {
     searchParams.get(ProductPageSearchParams.perPage) || '',
     DEFAULT_ITEMS_ON_PAGE,
   );
+
+  const setMenuParams = (paramName: MenuParams, paramValue: string) => {
+    setSearchParams(prevSearchParams => {
+      if (defaultMenuValues[paramName] === paramValue) {
+        prevSearchParams.delete(paramName);
+      } else {
+        prevSearchParams.set(paramName, paramValue);
+        prevSearchParams.sort();
+      }
+
+      localStorage.setItem(
+        PRODUCT_MENU_KEY,
+        menuParams
+          .filter(curParamName => prevSearchParams.get(curParamName))
+          .map(
+            curParamName =>
+              `${curParamName}=${prevSearchParams.get(curParamName) || ''}`,
+          )
+          .reduce((searchString, paramPair) => `${searchString}&${paramPair}`),
+      );
+
+      return prevSearchParams;
+    });
+  };
+
+  return { sortParam, itemsOnPageParam, setMenuParams };
+}
+
+export function useMenuSelectors() {
+  const { t } = useTranslation();
+  const { sortParam, itemsOnPageParam, setMenuParams } = useMenuParams();
 
   const itemsOnPageOptions: SelectOption[] = useMemo(
     () =>
@@ -73,16 +126,7 @@ export function useMenuSelectors() {
       return;
     }
 
-    setSearchParams(prevSearchParams => {
-      if (option.value === DEFAULT_SORT) {
-        prevSearchParams.delete(ProductPageSearchParams.sort);
-      } else {
-        prevSearchParams.set(ProductPageSearchParams.sort, option.value);
-        prevSearchParams.sort();
-      }
-
-      return prevSearchParams;
-    });
+    setMenuParams(ProductPageSearchParams.sort, option.value);
   };
 
   const handleItemsOnPageChange = (option: SelectOption | null) => {
@@ -90,16 +134,7 @@ export function useMenuSelectors() {
       return;
     }
 
-    setSearchParams(prevSearchParams => {
-      if (option.value === DEFAULT_ITEMS_ON_PAGE) {
-        prevSearchParams.delete(ProductPageSearchParams.perPage);
-      } else {
-        prevSearchParams.set(ProductPageSearchParams.perPage, option.value);
-        prevSearchParams.sort();
-      }
-
-      return prevSearchParams;
-    });
+    setMenuParams(ProductPageSearchParams.perPage, option.value);
   };
 
   return {
