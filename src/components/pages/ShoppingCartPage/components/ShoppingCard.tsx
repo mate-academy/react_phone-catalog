@@ -35,10 +35,10 @@ export const ShoppingCard: React.FC<Props> = ({ item }) => {
         <button className={styles.card__delete} onClick={remove} />
         <img
           className={styles.card__image}
-          src={`/${item.product.images[0]}`}
+          src={`./${item.product.images[0]}`}
           alt={item.product.name}
         />
-        <Link to={`/${item.product.category}/${item.product.id}`}>
+        <Link to={`../../${item.product.category}/${item.product.id}`}>
           <p className={styles.card__title}>{item.product.name}</p>
         </Link>
       </div>

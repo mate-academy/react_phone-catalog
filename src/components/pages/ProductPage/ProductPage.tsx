@@ -6,12 +6,12 @@ import { Loader } from '../../shared/Loader';
 import { TopNav } from '../../shared/TopNav';
 import { Btns } from '../../shared/Btns';
 import { SliderBtns } from '../../shared/SliderBtns';
-import { Slider } from '../../shared/Slider';
 import { Categories } from '../../../types/Categories';
 import styles from './ProductPage.module.scss';
 import classNames from 'classnames';
 import { getProductsByCategory } from '../../../server/products';
 import { DescriptionBlock } from '../../../types/DescriptioBlock';
+import { Slider } from './components/Slider';
 
 type Props = {
   category: Categories;
@@ -53,14 +53,12 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     loadProduct();
   }, [category, productId]);
 
-  const handleColorChange = async (color: string) => {
+  const handleColorChange = (color: string) => {
     if (!product) {
       return;
     }
 
-    const data = await getProductsByCategory(category);
-
-    const sameModel = data.find(
+    const sameModel = products.find(
       item =>
         item.namespaceId === product.namespaceId &&
         item.color === color &&
@@ -68,18 +66,16 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     );
 
     if (sameModel) {
-      navigate(`/${category}/${sameModel.id}`);
+      navigate(`../../${category}/${sameModel.id}`);
     }
   };
 
-  const handleCapacityChange = async (capacity: string) => {
+  const handleCapacityChange = (capacity: string) => {
     if (!product) {
       return;
     }
 
-    const data = await getProductsByCategory(category);
-
-    const sameModel = data.find(
+    const sameModel = products.find(
       item =>
         item.namespaceId === product.namespaceId &&
         item.capacity === capacity &&
@@ -87,7 +83,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     );
 
     if (sameModel) {
-      navigate(`/${category}/${sameModel.id}`);
+      navigate(`../../${category}/${sameModel.id}`);
     }
   };
 
@@ -116,7 +112,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
                       })}
                     >
                       <img
-                        src={`/${image}`}
+                        src={`./${image}`}
                         alt={`Product preview ${i + 1}`}
                         onClick={() => setActiveImage(image)}
                       />
@@ -125,7 +121,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
                 </ul>
 
                 <div className={styles.product__mainImage}>
-                  <img src={`/${activeImage}`} alt="Main product" />
+                  <img src={`./${activeImage}`} alt="Main product" />
                 </div>
               </div>
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useHotPrice } from '../../../providers/HotPriceProvider';
-import { Product } from '../../../types/Product';
-import { Btns } from '../Btns';
+import { useHotPrice } from '../../../../../providers/HotPriceProvider';
+import { Product } from '../../../../../types/Product';
+import { Btns } from '../../../../shared/Btns';
 import styles from './ProductCard.module.scss';
 
 type Props = {
@@ -9,15 +9,12 @@ type Props = {
   category: string;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, category }) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const { isHotPrice } = useHotPrice();
 
   return (
     <div className={styles.productCart__slide}>
-      <Link
-        to={`../${category}/${product.id}`}
-        className={styles.productCart__link}
-      >
+      <Link to={`../${product.id}`} className={styles.productCart__link}>
         <div className={styles.productCart__imgWraper}>
           <img
             src={`./${product.images[0]}`}

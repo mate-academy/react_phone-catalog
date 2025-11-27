@@ -23,7 +23,7 @@ export const ShoppingCartPage: React.FC = () => {
     <div className={styles.shoppingCard}>
       <div className={styles.shoppingCard__back}>
         <span className={styles.shoppingCard__arrLeft} />
-        <button onClick={() => navigate(-1)}>Back</button>
+        <button onClick={() => navigate('/')}>Back</button>
       </div>
 
       <h1 className={styles.shoppingCard__title}>Cart</h1>

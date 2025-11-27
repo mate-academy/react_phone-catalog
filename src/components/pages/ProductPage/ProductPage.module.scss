@@ -179,11 +179,8 @@
   }
 
   &__container{
-    max-width: 320px;
-    margin: 0 auto;
-
     @include on-tablet {
-       margin: 0;
+      max-width: 320px;
     }
   }
 
