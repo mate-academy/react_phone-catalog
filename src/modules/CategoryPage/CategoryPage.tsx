@@ -81,21 +81,27 @@ export const CategoryPage: FC<Props> = ({ category }) => {
         )}
         {!isLoading && !errorMessage && (
           <>
-            <div className={s.count}>{total && total} models</div>
-            <Filter
-              sortBy={sortBy}
-              onSort={setSortBy}
-              perPage={String(perPage)}
-              onPerPageChange={setPerPage}
-            />
-            <ProductList products={paginatedProducts} />
-            {perPage !== 'all' && (
-              <Pagination
-                total={total}
-                perPage={Number(perPage)}
-                currentPage={currentPage}
-                onPageChange={setCurrentPage}
-              />
+            {paginatedProducts.length === 0 ? (
+              <p>There are no {CATEGORIES[category].name.toLowerCase()} yet.</p>
+            ) : (
+              <>
+                <div className={s.count}>{total && total} models</div>
+                <Filter
+                  sortBy={sortBy}
+                  onSort={setSortBy}
+                  perPage={String(perPage)}
+                  onPerPageChange={setPerPage}
+                />
+                <ProductList products={paginatedProducts} />
+                {perPage !== 'all' && (
+                  <Pagination
+                    total={total}
+                    perPage={Number(perPage)}
+                    currentPage={currentPage}
+                    onPageChange={setCurrentPage}
+                  />
+                )}
+              </>
             )}
           </>
         )}

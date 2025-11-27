@@ -36,6 +36,6 @@ export const PER_PAGE_OPTIONS: Option[] = [
 
 export const DEFAULT_SEARCH_PARAMS = {
   sort: 'age',
-  perPage: '16',
+  perPage: 'all',
   page: '1',
 };
