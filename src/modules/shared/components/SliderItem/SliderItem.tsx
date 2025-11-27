@@ -8,6 +8,7 @@ import {
   getCart,
   removeFromCart,
 } from '@/modules/shared/components/utils/StorageHelper/storageHelper';
+import { Link } from 'react-router-dom';
 
 type SliderItemProps = {
   item: Product;
@@ -47,7 +48,7 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
   };
 
   return (
-    <div className={styles.SliderComponent__item}>
+    <Link to={`/${item.category}/${item.itemId}`} className={styles.SliderComponent__item}>
       <div className={styles.SliderComponent__item__imageContainer}>
         <img src={item.image} alt={item.name} />
       </div>
@@ -110,7 +111,7 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

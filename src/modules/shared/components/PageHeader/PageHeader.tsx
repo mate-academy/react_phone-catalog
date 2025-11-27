@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './PageHeader.module.scss';
+import BreadCrumbs from './BreadCrumbs';
 
 type PageHeaderProps = {
   title: string;
@@ -11,11 +12,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 }) => {
   return (
     <div>
-      {showBreadCrumbs && (
-        <nav className={styles.breadcrumbs}>
-          <a href="/">Home</a> / <span>{title}</span>
-        </nav>
-      )}
+      {showBreadCrumbs && <BreadCrumbs title={title} />}
       <h1 className={styles.pageTitle}>{title}</h1>
     </div>
   );

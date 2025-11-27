@@ -29,6 +29,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
         setLoading(false);
       });
   }, [category]);
+  
   let preparedProducts = products;
 
   if (category) {
