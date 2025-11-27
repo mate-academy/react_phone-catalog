@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './ProductSlider.module.scss';
 
 const images = [
-  '/img/slider1/Banner.png',
+  '/img/slider1/banner1.png',
   '/img/slider1/banner2.png',
   '/img/slider1/banner3.png',
 ];
