@@ -62,13 +62,13 @@
   border-bottom: 1px solid $elements;
 }
 
-.cartPrice{
+.cartPrice {
   font-size: $font-size-5xl;
   font-family: $fontMontBold;
   line-height: $line-height-41;
 }
 
-.cartCount{
+.cartCount {
   color: $secondary;
   font-size: $font-size-md;
   line-height: $line-height-21;
@@ -80,4 +80,21 @@
   border-radius: 8px;
 
   @include button-primary;
+}
+
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-24;
+  padding: $gap-20;
+
+  img {
+    width: 300px;
+  }
+
+  p {
+    font-size: $font-size-2xl;
+    color: $secondary;
+  }
 }

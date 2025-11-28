@@ -2,15 +2,15 @@
 import { FC, useEffect, useState } from 'react';
 import { GoBackLink } from '../shared/components/GoBackLink';
 import { CartItemBlock } from './components/CartItem';
-import s from './CartPage.module.scss';
 import { CartProduct } from '../../types/Cart';
 import { ModalLayout } from '../shared/components/ModalLayout';
 import { useCartContext } from '../../context/CartContext';
-//import { getAllProducts } from '../../api/products';
 import { Product } from '../../types/Product';
 import { Loader } from '../shared/components/Loader';
 import { ErrorNotice } from '../shared/components/ErrorNotice';
 import { useAllProducts } from './hooks/useAllProducts';
+import emptyCart from '../../assets/images/cart-is-empty.png';
+import s from './CartPage.module.scss';
 
 export const CartPage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,7 +64,12 @@ export const CartPage: FC = () => {
             onReload={() => window.location.reload()}
           />
         )}
-        {cartProducts.length === 0 && 'Your cart is empty'}
+        {cartProducts.length === 0 && (
+          <div className={s.emptyCart}>
+            <p>Your cart is empty</p>
+            <img src={emptyCart} alt="Your cart is empty" />
+          </div>
+        )}
         {!isLoading && !errorMessage && cartProducts.length > 0 && (
           <div className={s.cartContent}>
             <div className={s.cartItems}>
