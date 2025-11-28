@@ -93,9 +93,15 @@
     }
 
     &__link {
+      font-family: $mont-regular-font;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+
       color: $not-active-link-color;
       text-decoration: none;
-      text-transform: uppercase;
       transition: 0.2s;
       white-space: nowrap;
       position: relative;
