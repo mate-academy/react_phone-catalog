@@ -64,7 +64,7 @@ export const ProductsSlider: FC<Props> = ({
   }, []);
 
   return (
-    <section className={`${s.container} ${s.productSlider}`}>
+    <div className={s.productSlider}>
       <div className={s.sliderHeader}>
         <h2>{title}</h2>
         <div className={s.sliderNavButtons}>
@@ -96,6 +96,6 @@ export const ProductsSlider: FC<Props> = ({
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };

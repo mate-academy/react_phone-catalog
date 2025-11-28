@@ -1,5 +1,5 @@
 /* eslint no-console: [,{ allow: ["warn", "log", "error"] }] */
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useProductDetails } from './hooks/useProductDetails';
 import { Loader } from '../shared/components/Loader';
@@ -23,8 +23,6 @@ export const ProductDetailsPage: FC = () => {
 
   const { product, isLoading, errorMessage } = useProductDetails(productId);
 
-  console.log(product);
-
   const techSpecs = [
     { label: 'Screen', value: product?.screen ?? '' },
     { label: 'Resolution', value: product?.resolution ?? '' },
@@ -47,6 +45,13 @@ export const ProductDetailsPage: FC = () => {
 
     navigate(path);
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [productId]);
 
   if (isLoading) {
     return <Loader />;

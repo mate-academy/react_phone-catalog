@@ -19,17 +19,21 @@ export const HomePage = () => {
         <PicturesSlider />
       </section>
       {!loading && !errorMessage && (
-        <ProductsSlider products={newProducts} title="Brand new models" />
+        <section className={s.container}>
+          <ProductsSlider products={newProducts} title="Brand new models" />
+        </section>
       )}
       <section className={`${s.container} ${s.paddingBlock}`}>
         <ShopByCategories />
       </section>
       {!loading && !errorMessage && (
-        <ProductsSlider
-          products={hotPrices}
-          title="Hot prices"
-          priceMode="discount"
-        />
+        <section className={s.container}>
+          <ProductsSlider
+            products={hotPrices}
+            title="Hot prices"
+            priceMode="discount"
+          />
+        </section>
       )}
     </main>
   );
