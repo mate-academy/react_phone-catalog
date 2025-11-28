@@ -6,9 +6,7 @@ import { Footer } from '../Footer';
 export const Layout = () => {
   return (
     <>
-      <header className="header">
-        <Navbar />
-      </header>
+      <Navbar />
       <main className="container">
         <Outlet /> {/* <- this renders the current route's element */}
       </main>

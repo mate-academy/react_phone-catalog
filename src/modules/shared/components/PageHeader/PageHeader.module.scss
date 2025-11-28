@@ -1,22 +1,60 @@
 .pageTitle {
   margin: 56px 0;
+  &.pageTitleWithBreadcrumbs {
+    margin-top: 40px;
+    margin-bottom: 8px;
+  }
 }
+.headerWrapper {
+  // Контейнер для хедера
+  display: flex;
+  flex-direction: column;
+}
+
+.breadcrumbs {
+  margin-top: 24px;
+}
+
 .breadcrumbsList {
   display: flex;
-  align-items: center;
-  list-style: none; /* Remove default bullet points */
-  padding: 0;
-  margin: 0;
-  gap: 8px; /* Adds space between items */
+  align-items: center; // Центрує іконки та текст по вертикалі
+  flex-wrap: wrap;
 }
 
 .item {
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
-.separator {
-  /* Optional: Ensure icon alignment */
+// Іконки
+.icon {
+  display: block; // Прибирає зайві відступи SVG
+  color: $color-primary;
+}
+
+.chevron {
   display: block;
+  color: $color-secondary;
+  margin: 0 8px; // Відступи навколо стрілочки
+}
+
+// Посилання та текст
+.link {
+  font-size: $small-size;
+  font-weight: 600;
+  color: $color-primary;
+  text-decoration: none;
+  display: flex; // Важливо для центрування іконки Home всередині Link
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.current {
+  font-size: $small-size;
+  font-weight: 600;
+  color: $color-secondary; // Активний елемент зазвичай темніший
+  cursor: default;
+  &:hover {
+    color: $color-primary;
+  }
 }

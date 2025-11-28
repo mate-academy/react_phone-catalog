@@ -5,6 +5,7 @@ import { Product } from '@/types/Product';
 import { useParams } from 'react-router-dom';
 import { CardSkeleton } from '../SliderItem/CardSkeleton';
 import styles from './CatalogPage.module.scss';
+import CustomSelect from '../CustomSelect/CustomSelect';
 
 type CatalogPageProps = {
   fetchReq: () => Promise<Product[]>;
@@ -13,6 +14,9 @@ type CatalogPageProps = {
 const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
+  const [sortSelectValue, setSortSelectValue] = useState<string>('');
+  const [displayCountSelectValue, setDisplayCountSelectValue] =
+    useState<number>(0);
   const { category } = useParams();
   useEffect(() => {
     const newTitle = formatTitle(category);
@@ -29,7 +33,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
         setLoading(false);
       });
   }, [category]);
-  
+
   let preparedProducts = products;
 
   if (category) {
@@ -63,15 +67,25 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
   };
 
   return (
-    <div>
+    <div className={styles.catalog}>
       <PageHeader title={formatTitle(category)} />
-      <div>{preparedProducts.length} models</div>
-      <div>
-        <select name="sortBy" id=""></select>
-        <select name="displayCount" id=""></select>
+
+      <div className={styles.catalog__modelsCount}>
+        {preparedProducts.length} models
       </div>
 
-      <div className={styles.catalogContainer}>
+      <div className={styles.catalog__controls}>
+        <CustomSelect
+          setSelectValue={setSortSelectValue}
+          arrayOptions={['Price: Low to High', 'Price: High to Low', 'Newest']}
+        />
+        <CustomSelect
+          setSelectValue={setDisplayCountSelectValue}
+          arrayOptions={[8, 16, 32, 64]}
+        />
+      </div>
+
+      <div className={styles.catalog__container}>
         {loading
           ? skeletons.map((_, index) => <CardSkeleton key={index} />)
           : preparedProducts.map(product => (

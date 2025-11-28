@@ -1,5 +1,13 @@
-.catalogContainer {
+.catalog__container {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.catalog {
+  &__modelsCount {
+    font-size: $body-size;
+    color: $color-secondary;
+    margin-bottom: 40px;
+  }
 }

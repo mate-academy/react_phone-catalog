@@ -26,17 +26,17 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
     setIsFav(favs.includes(item.id));
     setIsInCart(cartItems.some((cartItem: Product) => cartItem.id === item.id));
   }, [item.id]);
-  // const handleBuy = () => {
-  //   addToCart(item);
-  //   alert('Додано в корзину!');
-  //   // Тут можна викликати оновлення стейту корзини в хедерах/контексті
-  // };
-  const handleFav = () => {
+
+  const handleFav = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
     toggleFavorite(item.id);
     setIsFav(!isFav); // Оновлюємо кнопку візуально
   };
 
-  const handleCartClick = () => {
+  const handleCartClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (isInCart) {
       removeFromCart(item.id); // Видаляємо
       setIsInCart(false); // Миттєво оновлюємо вигляд кнопки
@@ -48,14 +48,17 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
   };
 
   return (
-    <Link to={`/${item.category}/${item.itemId}`} className={styles.SliderComponent__item}>
-      <div className={styles.SliderComponent__item__imageContainer}>
+    <div className={styles.SliderComponent__item}>
+      <Link to={`/${item.category}/${item.itemId}`} className={styles.SliderComponent__item__imageContainer}>
         <img src={item.image} alt={item.name} />
-      </div>
+      </Link>
       <div className={styles.SliderComponent__item__infoContainer}>
-        <span className={styles.SliderComponent__item__itemName}>
+        <Link
+          to={`/${item.category}/${item.itemId}`}
+          className={styles.SliderComponent__item__itemName}
+        >
           {item.name}
-        </span>
+        </Link>
         <div className={styles.SliderComponent__item__priceContainer}>
           <div className={styles.SliderComponent__item__fullPrice}>
             ${item.price}
@@ -111,7 +114,7 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
           </button>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

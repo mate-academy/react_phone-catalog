@@ -6,14 +6,22 @@ type PageHeaderProps = {
   title: string;
   showBreadCrumbs?: boolean;
 };
+
 const PageHeader: React.FC<PageHeaderProps> = ({
   title,
   showBreadCrumbs = true,
 }) => {
   return (
-    <div>
+    <div className={styles.headerWrapper}>
       {showBreadCrumbs && <BreadCrumbs title={title} />}
-      <h1 className={styles.pageTitle}>{title}</h1>
+
+      <h1
+        className={`${styles.pageTitle} ${
+          showBreadCrumbs ? styles.pageTitleWithBreadcrumbs : ''
+        }`}
+      >
+        {title}
+      </h1>
     </div>
   );
 };
