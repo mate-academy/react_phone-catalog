@@ -7,13 +7,13 @@ export const NotFoundPage: React.FC = () => {
   return (
     <div>
       <Header />
-    <main style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1>Page not found</h1>
-      <p>
-        Go back to <Link to="/">Home</Link>
-      </p>
-    </main>
-    <Footer />
+      <main style={{ padding: '2rem', textAlign: 'center' }}>
+        <h1>Page not found</h1>
+        <p>
+          Go back to <Link to="/">Home</Link>
+        </p>
+      </main>
+      <Footer />
     </div>
   );
 };

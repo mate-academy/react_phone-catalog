@@ -6,10 +6,15 @@ import { Product } from '../../types/ProductTypes/Product';
 
 import styles from './CartPage.module.scss';
 import Header from '../shared/components/Header';
-import Footer from '../shared/components/Footer';
 
 const CartPage: React.FC = () => {
-  const { cart, increaseQuantity, decreaseQuantity, removeFromCart, clearCart } = useCart();
+  const {
+    cart,
+    increaseQuantity,
+    decreaseQuantity,
+    removeFromCart,
+    clearCart,
+  } = useCart();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -19,8 +24,11 @@ const CartPage: React.FC = () => {
     setError(false);
 
     fetch('/api/products.json')
-      .then((res) => {
-        if (!res.ok) throw new Error('Network response not ok');
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Network response not ok');
+        }
+
         return res.json();
       })
       .then((data: Product[]) => {
@@ -33,82 +41,92 @@ const CartPage: React.FC = () => {
       });
   }, []);
 
-  if (loading) return <Loader />;
-  if (error) return <ErrorMessage onReload={() => window.location.reload()} />;
+  if (loading) {
+    return <Loader />;
+  }
 
-  const cartProducts = allProducts.filter((p) =>
-    cart.some((item) => item.id === p.itemId)
+  if (error) {
+    return <ErrorMessage onReload={() => window.location.reload()} />;
+  }
+
+  const cartProducts = allProducts.filter(p =>
+    cart.some(item => item.id === p.itemId),
   );
 
   if (cartProducts.length === 0) {
     return (
       <div>
         <Header />
-      <div className={styles.empty}>
-        <p>Your cart is empty! 😔 </p>
-      </div>   
+        <div className={styles.empty}>
+          <p>Your cart is empty! 😔 </p>
+        </div>
       </div>
     );
   }
 
   const totalPrice = cartProducts.reduce((sum, product) => {
-    const item = cart.find((c) => c.id === product.itemId);
+    const item = cart.find(c => c.id === product.itemId);
+
     return sum + product.price * (item?.quantity || 1);
   }, 0);
 
   return (
     <div>
       <Header />
-    <div className={styles.cartPage}>
-      <h1 className={styles.title}>🛒 Your Cart!</h1>
+      <div className={styles.cartPage}>
+        <h1 className={styles.title}>🛒 Your Cart!</h1>
 
-      <button className={styles.clearButton} onClick={clearCart}>
-        Clean Cart
-      </button>
+        <button className={styles.clearButton} onClick={clearCart}>
+          Clean Cart
+        </button>
 
-      <ul className={styles.list}>
-        {cartProducts.map((product) => {
-          const item = cart.find((c) => c.id === product.itemId);
+        <ul className={styles.list}>
+          {cartProducts.map(product => {
+            const item = cart.find(c => c.id === product.itemId);
 
-          return (
-            <li key={product.itemId} className={styles.item}>
-              <div className={styles.left}>
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className={styles.image}
-                />
-                <div>
-                  <h3 className={styles.name}>{product.name}</h3>
-                  <p className={styles.price}>{product.price} $</p>
+            return (
+              <li key={product.itemId} className={styles.item}>
+                <div className={styles.left}>
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className={styles.image}
+                  />
+                  <div>
+                    <h3 className={styles.name}>{product.name}</h3>
+                    <p className={styles.price}>{product.price} $</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className={styles.quantityControl}>
-                <button onClick={() => decreaseQuantity(product.itemId)}>-</button>
-                <span>{item?.quantity}</span>
-                <button onClick={() => increaseQuantity(product.itemId)}>+</button>
-              </div>
+                <div className={styles.quantityControl}>
+                  <button onClick={() => decreaseQuantity(product.itemId)}>
+                    -
+                  </button>
+                  <span>{item?.quantity}</span>
+                  <button onClick={() => increaseQuantity(product.itemId)}>
+                    +
+                  </button>
+                </div>
 
-              <div className={styles.subtotal}>
-                {(product.price * (item?.quantity || 1)).toFixed(2)} $
-              </div>
+                <div className={styles.subtotal}>
+                  {(product.price * (item?.quantity || 1)).toFixed(2)} $
+                </div>
 
-              <button
-                onClick={() => removeFromCart(product.itemId)}
-                className={styles.removeButton}
-              >
-                Remove
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+                <button
+                  onClick={() => removeFromCart(product.itemId)}
+                  className={styles.removeButton}
+                >
+                  Remove
+                </button>
+              </li>
+            );
+          })}
+        </ul>
 
-      <h2 className={styles.total}>
-        Total: <span>{totalPrice.toFixed(2)} $</span>
-      </h2>
-    </div>
+        <h2 className={styles.total}>
+          Total: <span>{totalPrice.toFixed(2)} $</span>
+        </h2>
+      </div>
     </div>
   );
 };

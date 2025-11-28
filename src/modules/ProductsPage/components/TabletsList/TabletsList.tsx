@@ -15,7 +15,7 @@ const TabletsList: React.FC<TabletsListProps> = ({ products }) => {
   return (
     <div className={styles.tabletsListContainer}>
       <div className={styles.tabletsGrid}>
-        {products.map((t) => (
+        {products.map(t => (
           <TabletCard
             key={t.id}
             tablet={{

@@ -1,22 +1,20 @@
-/* PhoneCard.module.scss */
-
 .phoneCard {
-  background-color: #fff; /* Fundo branco */
-  border: 1px solid #eee; /* Borda sutil */
-  border-radius: 8px; /* Bordas arredondadas */
-  padding: 16px; /* Espaçamento interno */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center; /* Centraliza o texto */
-  width: 250px; /* Largura fixa */
-  box-sizing: border-box; /* Inclui padding e border na largura */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animação no hover */
+  text-align: center;
+  width: 250px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    transform: translateY(-5px); /* Eleva o card no hover */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 }
 
@@ -25,23 +23,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150px; /* Altura fixa para o container da imagem */
+  height: 150px;
   width: 100%;
 }
 
 .phoneImage {
   max-width: 100%;
-  max-height: 100%; /* Garante que a imagem se ajuste ao container */
-  object-fit: contain; /* Redimensiona a imagem para caber sem cortar */
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .phoneName {
   font-size: 14px;
   color: #333;
   margin-bottom: 8px;
-  min-height: 40px; /* Evita mudança de layout se os nomes tiverem alturas diferentes */
-  display: -webkit-box; /* Para ellipsis em várias linhas */
-  -webkit-line-clamp: 2; /* Limita a 2 linhas */
+  min-height: 40px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -52,14 +50,14 @@
   align-items: baseline;
   gap: 8px;
   margin-bottom: 16px;
-  justify-content: center; /* Centraliza os preços */
+  justify-content: center;
   width: 100%;
 }
 
 .currentPrice {
   font-size: 18px;
   font-weight: bold;
-  color: #007bff; /* Azul de destaque */
+  color: #007bff;
 }
 
 .oldPrice {
@@ -73,49 +71,47 @@
   align-items: center;
   gap: 8px;
   width: 100%;
-  margin-top: auto; /* Empurra os botões para a parte inferior do card */
+  margin-top: auto;
 }
 
 .addToCartButton {
-  background-color: #007bff; /* Azul principal */
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   padding: 10px 16px;
   font-size: 14px;
   cursor: pointer;
-  flex-grow: 1; /* Faz o botão preencher o espaço disponível */
+  flex-grow: 1;
   text-align: center;
-  transition: background-color 0.2s ease; /* Transição suave no hover */
-
-  /* Para alinhar o ícone e o texto */
+  transition: background-color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .icon {
-  margin-right: 8px; /* Espaço entre o ícone e o texto */
+  margin-right: 8px;
 }
 
 .addToCartButton:hover {
-  background-color: #0056b3; /* Azul mais escuro no hover */
+  background-color: #0056b3;
 }
 
 .favoriteButton {
   background-color: transparent;
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 8px; /* Botão quadrado */
+  padding: 8px;
   cursor: pointer;
   color: #666;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: border-color 0.2s ease, color 0.2s ease;
-  width: 40px; /* Largura fixa para garantir aspecto quadrado */
-  height: 40px; /* Altura fixa */
-  flex-shrink: 0; /* Evita que o botão encolha */
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
 }
 
 .favoriteButton:hover {
@@ -124,7 +120,7 @@
 }
 
 .favoriteButton.isFavorite {
-  color: #ff69b4; /* Rosa para favorito */
+  color: #ff69b4;
   border-color: #ff69b4;
 }
 

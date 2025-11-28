@@ -1,8 +1,9 @@
-// Variáveis
+@use "sass:color";
+
 $primary-color: #313237;
 $secondary-color: #89939A;
 $border-color: #E2E6E9;
-$bg-white: #ffffff;
+$bg-white: #fff;
 $bg-gray-light: #F8F9FA;
 $text-dark: #313237;
 $text-light: #89939A;
@@ -92,7 +93,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    border-color: darken($border-color, 10%);
+    border-color: color.adjust($border-color, $lightness: -10%);
   }
 }
 
@@ -128,7 +129,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   font-size: 14px;
   font-weight: 600;
   color: $text-dark;
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
   line-height: 1.4;
   min-height: 40px;
   display: -webkit-box;
@@ -232,7 +233,6 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   color: $text-light;
 }
 
-// Media Queries para responsividade
 @media (max-width: 1200px) {
   .productsWrapper {
     grid-template-columns: repeat(3, 1fr);
@@ -275,10 +275,6 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
     &:last-child {
       order: 3;
     }
-  }
-  
-  .productsWrapper {
-    order: 2;
   }
   
   .hotPricesTitle {

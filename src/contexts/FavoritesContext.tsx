@@ -28,8 +28,8 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
     const stored = localStorage.getItem('favorites');
 
     if (stored) {
-setFavorites(JSON.parse(stored));
-}
+      setFavorites(JSON.parse(stored));
+    }
   }, []);
 
   useEffect(() => {
@@ -66,9 +66,10 @@ export const useFavorites = (): FavoritesContextType => {
   const context = useContext(FavoritesContext);
 
   if (!context) {
-  {
-throw new Error('useFavorites must be used within FavoritesProvider');
-}
+    {
+      throw new Error('useFavorites must be used within FavoritesProvider');
+    }
 
-  return context;
+    return context;
+  }
 };

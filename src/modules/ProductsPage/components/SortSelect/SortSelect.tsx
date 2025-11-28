@@ -18,6 +18,7 @@ const SortSelect: React.FC<SortSelectProps> = ({ onSortChange, value }) => {
   const handleChange = (newSort: string) => {
     onSortChange(newSort);
     const params = new URLSearchParams(location.search);
+
     params.set('sort', newSort);
     navigate({ search: params.toString() }, { replace: true });
   };
@@ -25,11 +26,13 @@ const SortSelect: React.FC<SortSelectProps> = ({ onSortChange, value }) => {
   return (
     <div className={styles.sortSelectContainer}>
       <label htmlFor={selectId} className={styles.sortLabel}>
+        Sort
       </label>
+
       <select
         id={selectId}
         value={value}
-        onChange={(e) => handleChange(e.target.value)}
+        onChange={e => handleChange(e.target.value)}
         className={styles.sortSelect}
       >
         <option value="age">Newest</option>

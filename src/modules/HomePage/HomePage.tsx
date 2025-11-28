@@ -5,18 +5,15 @@ import ProductsSlider from './components/ProductSlider/ProductSlider';
 import PictureSlider from './components/PictureSlider/PictureSlider';
 import ShopByCategory from './components/ShopByCategory/ShopByCategory';
 import ProductsSliderNew from './components/ProductSliderNew/ProductSliderNew';
-import FloatingButtons from '../shared/components/FloatingButtons/FloatingButtons';
-import YouMayAlsoLike from '../ProductsPage/components/ProductDetailsPage/components/YouMayAlsoLike/YouMayAlsoLike';
 
-
+import styles from './HomePage.module.scss';
 
 const HomePage: React.FC = () => {
   return (
     <div>
-      
       <Header />
 
-      <h1 className="visually-hidden">Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.visuallyHidden}>Product Catalog</h1>
 
       <PictureSlider />
 
@@ -25,8 +22,6 @@ const HomePage: React.FC = () => {
       <ShopByCategory />
 
       <ProductsSlider />
-
-      
 
       <Footer />
     </div>

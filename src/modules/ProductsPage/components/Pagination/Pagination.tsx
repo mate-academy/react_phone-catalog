@@ -19,20 +19,27 @@ const Pagination: React.FC<PaginationProps> = ({
   const totalPages = perPage === 0 ? 1 : Math.ceil(total / perPage);
 
   const handlePrev = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value === 'all' ? 0 : parseInt(e.target.value);
+
     setPerPage(value);
     setCurrentPage(1);
   };
 
-  if (totalPages <= 1) return null;
+  if (totalPages <= 1) {
+    return null;
+  }
 
   return (
     <div className={styles.pagination}>
@@ -65,7 +72,6 @@ const Pagination: React.FC<PaginationProps> = ({
         <option value="16">16</option>
         <option value="all">All</option>
       </select>
-      
     </div>
   );
 };

@@ -10,7 +10,6 @@ import Header from '../../../shared/components/Header/Header';
 import { ItensPerPage } from '../ItensPerPage/ItemsPerPage';
 
 import styles from './PhonesPage.module.scss';
-import FloatingButtons from '../../../shared/components/FloatingButtons/FloatingButtons';
 
 const PhonesPage: React.FC = () => {
   const [products, setProducts] = useState<Phone[]>([]);
@@ -31,8 +30,11 @@ const PhonesPage: React.FC = () => {
     setError(false);
 
     fetch('/api/phones.json')
-      .then((res) => {
-        if (!res.ok) throw new Error('Network response was not ok');
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+
         return res.json();
       })
       .then((data: Phone[]) => {
@@ -56,51 +58,71 @@ const PhonesPage: React.FC = () => {
   };
 
   useEffect(() => {
-    if (currentPage !== 1) searchParams.set('page', currentPage.toString());
-    else searchParams.delete('page');
+    const params = new URLSearchParams(searchParams);
 
-    if (perPage !== 8) searchParams.set('perPage', perPage.toString());
-    else searchParams.delete('perPage');
+    if (currentPage !== 1) {
+      params.set('page', currentPage.toString());
+    } else {
+      params.delete('page');
+    }
 
-    setSearchParams(searchParams);
-  }, [currentPage, perPage]);
+    if (perPage !== 8) {
+      params.set('perPage', perPage.toString());
+    } else {
+      params.delete('perPage');
+    }
+
+    setSearchParams(params);
+  }, [currentPage, perPage, searchParams, setSearchParams]);
 
   useEffect(() => {
     setCurrentPage(1);
   }, [perPage]);
 
-  if (loading) return <Loader />;
-  if (error) return <ErrorMessage onReload={fetchPhones} />;
-  if (products.length === 0) return <p>There are no phones yet.</p>;
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <ErrorMessage onReload={fetchPhones} />;
+  }
+
+  if (products.length === 0) {
+    return <p>There are no phones yet.</p>;
+  }
 
   const sortedPhones = [...products].sort((a, b) => {
-    if (sortValue === 'age') return b.year - a.year;
-    if (sortValue === 'title') return a.name.localeCompare(b.name);
-    if (sortValue === 'price') return a.priceDiscount - b.priceDiscount;
+    if (sortValue === 'age') {
+      return b.year - a.year;
+    }
+
+    if (sortValue === 'title') {
+      return a.name.localeCompare(b.name);
+    }
+
+    if (sortValue === 'price') {
+      return a.priceDiscount - b.priceDiscount;
+    }
+
     return 0;
   });
 
   const start = (currentPage - 1) * perPage;
   const end = perPage === 0 ? sortedPhones.length : start + perPage;
-  const visiblePhones = perPage === 0 ? sortedPhones : sortedPhones.slice(start, end);
+  const visiblePhones =
+    perPage === 0 ? sortedPhones : sortedPhones.slice(start, end);
 
   return (
     <div>
       <Header />
 
       <div className={styles.phonesPage}>
-        
-        {/* TÍTULO */}
         <div className={styles.header}>
           <h1 className={styles.title}>Mobile Phones</h1>
-          <p className={styles.modelsCount}>
-            {products.length} models
-          </p>
+          <p className={styles.modelsCount}>{products.length} models</p>
         </div>
 
-        {/* SORT + ITEMS PER PAGE */}
         <div className={styles.filterControls}>
-          
           <div className={styles.sortWrapper}>
             <span className={styles.label}>Sort by</span>
             <SortSelect onSortChange={handleSortChange} value={sortValue} />
@@ -114,15 +136,12 @@ const PhonesPage: React.FC = () => {
               options={[4, 8, 16, 24]}
             />
           </div>
-
         </div>
 
-        {/* LISTA */}
         <div className={styles.phonesList}>
           <PhonesList products={visiblePhones} />
         </div>
 
-        {/* PAGINAÇÃO */}
         <div className={styles.paginationWrapper}>
           <Pagination
             currentPage={currentPage}
@@ -132,9 +151,8 @@ const PhonesPage: React.FC = () => {
             total={sortedPhones.length}
           />
         </div>
-
       </div>
-      <div> <FloatingButtons /></div>
+      <div></div>
     </div>
   );
 };

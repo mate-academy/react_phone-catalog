@@ -1,4 +1,10 @@
-import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from 'react';
 
 type FavoriteContextType = {
   favorites: string[];
@@ -16,9 +22,12 @@ const FavoritesContext = createContext<FavoriteContextType>({
   isFavorite: () => false,
 });
 
-export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [favorites, setFavorites] = useState<string[]>(() => {
     const stored = localStorage.getItem('favorites');
+
     return stored ? JSON.parse(stored) : [];
   });
 
@@ -42,7 +51,13 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children 
 
   return (
     <FavoritesContext.Provider
-      value={{ favorites, addFavorite, removeFavorite, clearFavorites, isFavorite }}
+      value={{
+        favorites,
+        addFavorite,
+        removeFavorite,
+        clearFavorites,
+        isFavorite,
+      }}
     >
       {children}
     </FavoritesContext.Provider>

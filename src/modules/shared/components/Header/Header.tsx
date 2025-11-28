@@ -19,26 +19,23 @@ const Header: React.FC = () => {
 
         {/* Links de navegação */}
         <nav className={styles.nav}>
-          <button 
-            className={styles.navButton} 
-            onClick={() => navigate('/')}
-          >
+          <button className={styles.navButton} onClick={() => navigate('/')}>
             HOME
           </button>
-          <button 
-            className={styles.navButton} 
+          <button
+            className={styles.navButton}
             onClick={() => navigate('/phones')}
           >
             PHONES
           </button>
-          <button 
-            className={styles.navButton} 
+          <button
+            className={styles.navButton}
             onClick={() => navigate('/tablets')}
           >
             TABLETS
           </button>
-          <button 
-            className={styles.navButton} 
+          <button
+            className={styles.navButton}
             onClick={() => navigate('/accessories')}
           >
             ACCESSORIES
@@ -48,16 +45,16 @@ const Header: React.FC = () => {
 
       {/* Seção direita para ícones de favoritos e carrinho */}
       <div className={styles.rightSection}>
-        <button 
-          className={styles.iconButton} 
+        <button
+          className={styles.iconButton}
           onClick={() => navigate('/favorites')}
           aria-label="Favoritos"
         >
           <FaRegHeart className={styles.icon} />
         </button>
-        
-        <button 
-          className={styles.iconButton} 
+
+        <button
+          className={styles.iconButton}
           onClick={() => navigate('/cart')}
           aria-label="Carrinho de compras"
         >

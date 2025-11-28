@@ -3,20 +3,20 @@ export type Product = {
   category: 'phones' | 'tablets' | 'accessories';
   itemId: string;
   name: string;
-  fullPrice?: any;
-  price?: any;
+  fullPrice?: number;
+  price?: number;
   screen: string;
   capacity: string;
   color: string;
   ram: string;
   year: number;
   image?: string;
-  discount?: any;
-  Accessory?: any;
+  discount?: number;
+  Accessory?: number | string;
   images?: string[];
   colorsAvailable?: string[];
   capacityAvailable?: string[];
-  description?:{
+  description?: {
     title: string;
     text: string[];
   }[];
@@ -27,5 +27,4 @@ export type Product = {
   resolution?: string | number;
   priceRegular?: number;
   priceDiscount?: number;
-
 };

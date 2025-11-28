@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../../../hooks/useFavorites';
-import styles from './ProductCard.module.scss'; // Importa os estilos do módulo SCSS
-import AddToCartButton from '../../../../HomePage/components/AddToCart/AddToCart';
+import styles from './ProductCard.module.scss';
+// eslint-disable-next-line max-len
 import AddToFavoritesButton from '../../../../HomePage/components/AddToFavorite/AddToFavorite';
 
 type ProductCardProps = {
@@ -28,25 +28,29 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         ♥
       </button>
 
-      
-        {product.image && <img src={product.image} alt={product.name} className={styles.productImage} />}
-        <div className={styles.productInfo}>
-          
-          <p className={styles.productName}>{product.name}</p>
-          
-          <p className={styles.productPrice}>
-            ${product.priceDiscount}{' '}
-            <span className={styles.productPriceRegular}>${product.priceRegular}</span>
-          </p>
-          <div className={styles.functionButtons}>
-            <Link to={`/product/${product.id}`} className={styles.linkWrapper}>
-    <button className= {styles.checkBtn}>Check Product!</button>
-    </Link>
-  <AddToFavoritesButton productId={product.id} />
-</div>
+      {product.image && (
+        <img
+          src={product.image}
+          alt={product.name}
+          className={styles.productImage}
+        />
+      )}
+      <div className={styles.productInfo}>
+        <p className={styles.productName}>{product.name}</p>
 
+        <p className={styles.productPrice}>
+          ${product.priceDiscount}{' '}
+          <span className={styles.productPriceRegular}>
+            ${product.priceRegular}
+          </span>
+        </p>
+        <div className={styles.functionButtons}>
+          <Link to={`/product/${product.id}`} className={styles.linkWrapper}>
+            <button className={styles.checkBtn}>Check Product!</button>
+          </Link>
+          <AddToFavoritesButton productId={product.id} />
         </div>
-      
+      </div>
     </div>
   );
 };

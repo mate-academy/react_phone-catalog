@@ -1,1 +1,1 @@
-import TabletsList from '../TabletsList';
+export { default } from './TabletsPage';

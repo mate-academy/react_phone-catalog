@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../../../hooks/useFavorites';
-import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 type AllProductCardProps = {
   product: {
-    itemId: string;
+    itemId: string | number;
     name: string;
     priceDiscount: number;
     priceRegular: number;
@@ -27,17 +26,24 @@ const AllProductsCard: React.FC<AllProductCardProps> = ({ product }) => {
       </button>
 
       <Link to={`/product/${product.itemId}`} className="productLink">
-        {product.image && <img src={product.image} alt={product.name} className="productImage" />}
+        {product.image && (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="productImage"
+          />
+        )}
         <div className="productInfo">
           <p className="productName">{product.name}</p>
-          <p className="productPrice">Preço com desconto: 
-            ${product.priceDiscount}{' '}
-            <span className="productPriceRegular">Preço regular: ${product.priceRegular}</span>
+          <p className="productPrice">
+            Preço com desconto: ${product.priceDiscount}{' '}
+            <span className="productPriceRegular">
+              Preço regular: ${product.priceRegular}
+            </span>
           </p>
         </div>
       </Link>
     </div>
-    
   );
 };
 

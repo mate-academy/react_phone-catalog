@@ -19,6 +19,6 @@ export type Accessory = {
   processor: string;
   ram: string;
   cell: string[];
-  year?: any;
+  year?: number;
   image?: string;
 };

@@ -19,9 +19,9 @@ export const ItensPerPage: React.FC<ItensPerPageProps> = ({
       <select
         className={styles.select}
         value={perPage}
-        onChange={(e) => onChange(Number(e.target.value))}
+        onChange={e => onChange(Number(e.target.value))}
       >
-        {options.map((opt) => (
+        {options.map(opt => (
           <option key={opt} value={opt}>
             {opt}
           </option>

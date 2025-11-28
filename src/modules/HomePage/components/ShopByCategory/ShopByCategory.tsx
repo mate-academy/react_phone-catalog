@@ -37,12 +37,16 @@ const ShopByCategory: React.FC = () => {
       <h2 className={styles.shopByCategoryTitle}>Shop by category</h2>
       <div className={styles.shopCategoryList}>
         {categories.map((category, index) => (
-          <Link to={category.link} key={index} className={styles.shopCategoryCard}>
+          <Link
+            to={category.link}
+            key={index}
+            className={styles.shopCategoryCard}
+          >
             <div className={styles.imageContainer}>
-              <img 
-                src={category.image} 
-                alt={category.name} 
-                className={styles.shopCategoryImage} 
+              <img
+                src={category.image}
+                alt={category.name}
+                className={styles.shopCategoryImage}
               />
             </div>
             <div className={styles.categoryInfo}>

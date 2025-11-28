@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // src/components/ProductDetailsPage/ProductDetailsPage.tsx
 
 import React, { useEffect, useState } from 'react';
@@ -8,34 +9,17 @@ import ErrorMessage from '../../../ErrorMessage/ErrorMessage';
 import Breadcrumbs from '../../../Breadcrumbs/Breadcrumbs';
 import Header from '../../../shared/components/Header/Header';
 import AddToCartButton from '../../../HomePage/components/AddToCart/AddToCart';
-import { useCart } from '../../../CartPage/CartContext';
-import ColorSelector from '../ColorSelector/ColorSelector';
-import FloatingButtons from '../../../shared/components/FloatingButtons/FloatingButtons';
-import styles from './ProductDetailsPage.module.scss';
-import { set } from 'cypress/types/lodash';
-import { any } from 'cypress/types/bluebird';
-import { data } from 'cypress/types/jquery';
+// eslint-disable-next-line max-len
 import AddToFavoritesButton from '../../../HomePage/components/AddToFavorite/AddToFavorite';
-import SuggestedProducts from '../SuggestedProducts/SuggestedProducts';
 import YouMayAlsoLike from './components/YouMayAlsoLike/YouMayAlsoLike';
-
-const HeartIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M12 5.071L10.343 3.414C8.216 1.287 4.707 1.287 2.58 3.414C0.453 5.541 0.453 9.05 2.58 11.177L12 20.597L21.42 11.177C23.547 9.05 23.547 5.541 21.42 3.414C19.293 1.287 15.784 1.287 13.657 3.414L12 5.071ZM12 18.243L4.05 10.293C2.88 9.123 2.88 7.228 4.05 6.058C5.22 4.888 7.115 4.888 8.285 6.058L12 9.773L15.715 6.058C16.885 4.888 18.78 4.888 19.95 6.058C21.12 7.228 21.12 9.123 19.95 10.293L12 18.243Z"
-      fill="currentColor"
-    />
-  </svg>
-);
+import styles from './ProductDetailsPage.module.scss';
 
 const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+  const [, setSuggestedProducts] = useState<Product[]>([]);
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -73,7 +57,7 @@ const ProductDetailsPage: React.FC = () => {
 
         return fetch(apiUrl).then(res => res.json());
       })
-      .then((categoryData: any[]) => {
+      .then((categoryData: Product[]) => {
         const detailed = categoryData.find(item => item.id === productId);
 
         if (!detailed) {
@@ -83,33 +67,27 @@ const ProductDetailsPage: React.FC = () => {
         setProduct(prev =>
           prev
             ? {
+              // eslint-disable-next-line @typescript-eslint/indent
                 ...prev,
-                ...detailed,
-              }
+              ...detailed,
+            }
             : detailed,
         );
 
-        getSuggestedProducts(categoryData, detailed.id);
+        const filtered = categoryData.filter(
+          p => p.id !== detailed.id && p.category === detailed.category,
+        );
+        const shuffled = filtered.sort(() => 0.5 - Math.random());
+
+        setSuggestedProducts(shuffled.slice(0, 4));
 
         setLoading(false);
       })
-      .catch(err => {
-        console.error('Erro:', err);
+      .catch(() => {
         setError(true);
         setLoading(false);
       });
   }, [productId]);
-
-  const getSuggestedProducts = (allProducts: Product[], currentId: number) => {
-    const filtered = allProducts.filter(
-      p => p.id !== currentId && p.category === product?.category,
-    );
-    const shuffled = filtered.sort(() => 0.5 - Math.random());
-
-    setSuggestedProducts(shuffled.slice(0, 4));
-  };
-
-  const addtoCart = useCart();
 
   if (loading) {
     return <Loader />;
@@ -126,10 +104,6 @@ const ProductDetailsPage: React.FC = () => {
   const {
     images = [],
     description = [],
-    colorsAvailable = [],
-    capacityAvailable = [],
-    priceRegular,
-    priceDiscount,
     resolution,
     processor,
     zoom,
@@ -160,7 +134,6 @@ const ProductDetailsPage: React.FC = () => {
         <h1 className={styles.productTitle}>{product.name}</h1>
 
         <div className={styles.productMainInfo}>
-          {/* Coluna das Imagens */}
           <div className={styles.productImagesColumn}>
             <div className={styles.mainImageContainer}>
               <img
@@ -173,7 +146,9 @@ const ProductDetailsPage: React.FC = () => {
               {productImages.map((image, index) => (
                 <div
                   key={index}
-                  className={`${styles.thumbnailItem} ${selectedImageIndex === index ? styles.active : ''}`}
+                  className={`${styles.thumbnailItem} ${
+                    selectedImageIndex === index ? styles.active : ''
+                  }`}
                   onClick={() => setSelectedImageIndex(index)}
                 >
                   <img src={`/${image}`} alt={`${product.name} ${index + 1}`} />
@@ -189,7 +164,9 @@ const ProductDetailsPage: React.FC = () => {
                 {availableColors.map(color => (
                   <div
                     key={color}
-                    className={`${styles.colorOption} ${selectedColor === color ? styles.selected : ''}`}
+                    className={`${styles.colorOption} ${
+                      selectedColor === color ? styles.selected : ''
+                    }`}
                     onClick={() => setSelectedColor(color)}
                     style={{
                       backgroundColor: color === 'black' ? '#000' : color,
@@ -206,7 +183,9 @@ const ProductDetailsPage: React.FC = () => {
                 {availableCapacities.map(capacity => (
                   <button
                     key={capacity}
-                    className={`${styles.capacityButton} ${selectedCapacity === capacity ? styles.selected : ''}`}
+                    className={`${styles.capacityButton} ${
+                      selectedCapacity === capacity ? styles.selected : ''
+                    }`}
                     onClick={() => setSelectedCapacity(capacity)}
                   >
                     {capacity}
@@ -313,25 +292,18 @@ const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
         </div>
-            <section>
-              <h2>You may also like:</h2>
-                  <div className='ProductBox'>
-                    <div>
-                      <YouMayAlsoLike />
-                      <YouMayAlsoLike />
-                      <YouMayAlsoLike />
-                      <YouMayAlsoLike />
-                    </div>
 
-
-
-
-
-                  </div>
-
-
-
-            </section>
+        <section>
+          <h2>You may also like:</h2>
+          <div className="ProductBox">
+            <div>
+              <YouMayAlsoLike />
+              <YouMayAlsoLike />
+              <YouMayAlsoLike />
+              <YouMayAlsoLike />
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

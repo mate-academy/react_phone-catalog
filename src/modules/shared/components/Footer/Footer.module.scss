@@ -1,10 +1,7 @@
-// src/components/Footer/Footer.module.scss
-
-// Variáveis
 $primary-color: #313237;
 $secondary-color: #89939A;
 $border-color: #E2E6E9;
-$bg-white: #ffffff;
+$bg-white: #fff;
 $text-dark: #313237;
 $text-light: #89939A;
 $blue-primary: #4219D0;
@@ -12,57 +9,57 @@ $yellow-accent: #FACC15;
 $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
 .footer {
-  display: flex; /* Para organizar os itens lado a lado */
-  justify-content: space-between; /* Espaça os itens nas extremidades */
-  align-items: center; /* Centraliza os itens verticalmente */
-  padding: 5px 40px; /* Preenchimento interno (altura e laterais) */
-  background-color: $bg-white; /* Fundo branco */
-  border-top: 1px solid $border-color; /* Linha sutil no topo */
-  font-family: $font-family; /* Fonte consistente com o resto da aplicação */
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04); /* Sombra sutil para dar profundidade */
-  margin-top: auto; /* Para empurrar o footer para o final da página */
-  min-height: 96px; /* Altura mínima para manter proporções */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 40px;
+  background-color: $bg-white;
+  border-top: 1px solid $border-color;
+  font-family: $font-family;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+  margin-top: auto;
+  min-height: 96px;
 }
 
 .logo {
-  font-size: 24px; /* Tamanho da fonte do logo */
-  font-weight: 800; /* Peso da fonte bem bold */
-  color: $primary-color; /* Cor escura para o NICE GADGETS */
-  line-height: 1.1; /* Ajusta a altura da linha para o texto de duas linhas */
-  text-transform: uppercase; /* Deixa o texto em maiúsculas */
-  letter-spacing: -0.5px; /* Espaçamento entre letras mais apertado */
+  font-size: 24px;
+  font-weight: 800;
+  color: $primary-color;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 .logoAccent {
-  color: $yellow-accent; /* Cor amarela para o "gadget" */
-  font-size: 1.2em; /* Deixa o emoji ligeiramente maior */
-  vertical-align: middle; /* Ajuda a alinhar o emoji com o texto */
+  color: $yellow-accent;
+  font-size: 1.2em;
+  vertical-align: middle;
   display: inline-block;
   margin-left: 4px;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)); /* Sombra sutil no emoji */
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
 }
 
 .navLinks {
-  display: flex; /* Para organizar os links um ao lado do outro */
-  gap: 40px; /* Espaço entre os links */
+  display: flex;
+  gap: 40px;
   align-items: center;
 }
 
 .navLink {
-  color: $text-light; /* Cor cinza para os links */
-  text-decoration: none; /* Remove sublinhado padrão */
+  color: $text-light;
+  text-decoration: none;
   font-size: 12px;
-  font-weight: 700; /* Peso da fonte bold */
-  letter-spacing: 0.5px; /* Espaçamento entre letras */
-  transition: color 0.3s ease; /* Transição suave na cor ao passar o mouse */
-  text-transform: uppercase; /* Deixa o texto em maiúsculas */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
   position: relative;
 
   &:hover {
-    color: $blue-primary; /* Muda a cor ao passar o mouse */
+    color: $blue-primary;
   }
 
   &:focus {
@@ -71,7 +68,6 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
     border-radius: 2px;
   }
 
-  // Efeito de underline no hover
   &::after {
     content: '';
     position: absolute;
@@ -89,13 +85,13 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
 }
 
 .backToTopContainer {
-  display: flex; /* Para alinhar o texto e o botão lado a lado */
+  display: flex;
   align-items: center;
-  gap: 16px; /* Espaço entre o texto e o botão */
+  gap: 16px;
 }
 
 .backToTopText {
-  color: $text-light; /* Cor cinza para o texto */
+  color: $text-light;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -103,29 +99,29 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
 }
 
 .backToTopButton {
-  width: 32px; /* Largura do botão circular */
-  height: 32px; /* Altura do botão circular */
-  border-radius: 50%; /* Transforma o botão em círculo */
-  border: 1px solid $border-color; /* Borda cinza clara */
-  background-color: $bg-white; /* Fundo branco */
-  display: flex; /* Para centralizar o ícone */
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $border-color;
+  background-color: $bg-white;
+  display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer; /* Indica que é clicável */
-  transition: all 0.3s ease; /* Transições suaves */
-  padding: 0; /* Remove padding padrão do botão */
-  outline: none; /* Remove a borda de foco padrão */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 
   &:hover {
-    border-color: $blue-primary; /* Muda a cor da borda ao passar o mouse */
-    background-color: rgba(66, 25, 208, 0.05); /* Fundo sutil ao passar o mouse */
-    transform: translateY(-1px); /* Leve elevação no hover */
+    border-color: $blue-primary;
+    background-color: rgba(66, 25, 208, 0.05);
+    transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
   }
 
   &:active {
-    transform: translateY(0); /* Remove a elevação quando clicado */
+    transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   }
 
@@ -136,10 +132,10 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
 }
 
 .arrowIcon {
-  font-size: 12px; /* Tamanho da seta */
-  color: $text-light; /* Cor cinza para a seta */
-  line-height: 1; /* Garante que a seta esteja bem centralizada verticalmente */
-  display: block; /* Para aplicar line-height corretamente */
+  font-size: 12px;
+  color: $text-light;
+  line-height: 1;
+  display: block;
   transition: color 0.3s ease;
 
   .backToTopButton:hover & {
@@ -147,29 +143,28 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   }
 }
 
-/* Estilos responsivos para telas menores */
 @media (max-width: 768px) {
   .footer {
-    flex-direction: column; /* Empilha os itens verticalmente */
-    gap: 24px; /* Espaço entre os itens empilhados */
-    padding: 24px 20px; /* Reduz o padding lateral */
-    text-align: center; /* Centraliza o texto */
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 20px;
+    text-align: center;
     min-height: auto;
   }
 
   .logo {
     align-items: center;
-    font-size: 20px; /* Ajusta o tamanho do logo */
+    font-size: 20px;
   }
 
   .navLinks {
-    flex-direction: column; /* Empilha os links de navegação */
+    flex-direction: column;
     gap: 16px;
   }
 
   .backToTopContainer {
-    flex-direction: row; /* Mantém o texto e botão Back to top lado a lado */
-    justify-content: center; /* Centraliza eles */
+    flex-direction: row;
+    justify-content: center;
   }
 }
 
@@ -205,7 +200,6 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   }
 }
 
-/* Estilo para quando o footer está fixo no final da página */
 .footer.sticky {
   position: sticky;
   bottom: 0;

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 export const useFavorites = () => {
   const [favorites, setFavorites] = useState<number[]>(() => {
     const stored = localStorage.getItem('favorites');
+
     return stored ? JSON.parse(stored) : [];
   });
 
@@ -11,8 +12,8 @@ export const useFavorites = () => {
   }, [favorites]);
 
   const toggleFavorite = (id: number) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]
+    setFavorites(prev =>
+      prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id],
     );
   };
 

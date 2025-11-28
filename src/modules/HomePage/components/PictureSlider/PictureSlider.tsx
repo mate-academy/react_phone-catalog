@@ -14,11 +14,13 @@ const PictureSlider: React.FC = () => {
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % pictures.length);
     }, 5000);
+
     return () => clearInterval(interval);
   }, [pictures.length]);
 
   const goToNext = () => setCurrentIndex(prev => (prev + 1) % pictures.length);
-  const goToPrev = () => setCurrentIndex(prev => (prev - 1 + pictures.length) % pictures.length);
+  const goToPrev = () =>
+    setCurrentIndex(prev => (prev - 1 + pictures.length) % pictures.length);
 
   return (
     <div className={styles.sliderContainer}>
@@ -31,10 +33,16 @@ const PictureSlider: React.FC = () => {
         />
       ))}
 
-      <button className={`${styles.sliderButton} ${styles.prev}`} onClick={goToPrev}>
+      <button
+        className={`${styles.sliderButton} ${styles.prev}`}
+        onClick={goToPrev}
+      >
         &#10094;
       </button>
-      <button className={`${styles.sliderButton} ${styles.next}`} onClick={goToNext}>
+      <button
+        className={`${styles.sliderButton} ${styles.next}`}
+        onClick={goToNext}
+      >
         &#10095;
       </button>
 

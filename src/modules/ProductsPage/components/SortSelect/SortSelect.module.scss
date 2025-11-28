@@ -1,29 +1,24 @@
-// src/components/SortSelect/SortSelect.module.scss
-
-// Variáveis de cores
 :root {
   --text-primary: #313237;
   --text-secondary: #89939a;
   --border-light: #e2e6ea;
-  --background-white: #ffffff;
+  --background-white: #fff;
   --focus-blue: #0f3460;
   --hover-border: #b4bdc4;
 }
 
-// Container principal
 .sortSelectContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  
+
   @media (max-width: 768px) {
     width: 100%;
   }
 }
 
-// Label "Sort by"
 .sortLabel {
   font-size: 12px;
   font-weight: 600;
@@ -32,25 +27,19 @@
   letter-spacing: 0.5px;
   margin-bottom: 0;
   line-height: 1;
-  
+
   @media (max-width: 768px) {
     font-size: 11px;
   }
 }
 
-// Select estilizado
 .sortSelect {
-  // Reset de estilos padrão
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  
-  // Layout e dimensões
   min-width: 176px;
   padding: 10px 40px 10px 16px;
   height: 40px;
-  
-  // Estilo visual
   background-color: var(--background-white);
   border: 1px solid var(--border-light);
   border-radius: 8px;
@@ -59,36 +48,28 @@
   font-weight: 600;
   line-height: 1.4;
   cursor: pointer;
-  
-  // Remove outline padrão
   outline: none;
-  
-  // Transições suaves
   transition: all 0.2s ease;
-  
-  // Seta customizada usando SVG
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2389939a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px;
-  
-  // Estados de interação
+
   &:hover {
     border-color: var(--hover-border);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23313237' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   }
-  
+
   &:focus {
     border-color: var(--focus-blue);
     box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.1);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f3460' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   }
-  
+
   &:active {
     transform: translateY(1px);
   }
-  
-  // Responsividade
+
   @media (max-width: 768px) {
     width: 100%;
     min-width: unset;
@@ -98,7 +79,7 @@
     background-size: 14px;
     background-position: right 10px center;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 12px;
     padding: 8px 32px 8px 12px;
@@ -108,46 +89,39 @@
   }
 }
 
-// Estilização das opções (limitada, mas funciona em alguns navegadores)
 .sortSelect option {
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
   background-color: var(--background-white);
-  
+
   &:hover {
     background-color: rgba(15, 52, 96, 0.05);
   }
-  
+
   &:checked {
     background-color: var(--focus-blue);
     color: var(--background-white);
   }
-  
+
   @media (max-width: 768px) {
     font-size: 13px;
     padding: 6px 14px;
   }
 }
 
-// Estado desabilitado
 .sortSelect:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   background-color: #f8f9fa;
-  
+
   &:hover {
     border-color: var(--border-light);
   }
 }
 
-// Animação de entrada
-.sortSelectContainer {
-  animation: fadeInUp 0.3s ease-out;
-}
-
-@keyframes fadeInUp {
+@keyframes fade-in-up {
   from {
     opacity: 0;
     transform: translateY(10px);
@@ -158,33 +132,31 @@
   }
 }
 
-// Variante para tema escuro (se necessário)
 @media (prefers-color-scheme: light) {
   .sortSelectContainer {
-    --text-primary: #ffffff;
+    --text-primary: #fff;
     --text-secondary: #b4bdc4;
     --border-light: #3a3a3a;
     --background-white: #1a1a1a;
-    --hover-border: #555555;
+    --hover-border: #555;
   }
-  
+
   .sortSelect {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b4bdc4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    
+
     &:hover {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     }
-    
+
     &:focus {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f3460' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     }
   }
 }
 
-// Estado de loading (se necessário)
 .sortSelect.loading {
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;

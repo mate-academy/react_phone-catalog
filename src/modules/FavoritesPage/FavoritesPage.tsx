@@ -20,8 +20,11 @@ const FavoritesPage: React.FC = () => {
     setError(false);
 
     fetch('/api/products.json')
-      .then((res) => {
-        if (!res.ok) throw new Error('Network response not ok');
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Network response not ok');
+        }
+
         return res.json();
       })
       .then((data: Product[]) => {
@@ -34,65 +37,67 @@ const FavoritesPage: React.FC = () => {
       });
   }, []);
 
-  if (loading) return <Loader />;
-  if (error) return <ErrorMessage onReload={() => window.location.reload()} />;
+  if (loading) {
+    return <Loader />;
+  }
 
-  const favoriteProducts = allProducts.filter((p) =>
-    favorites.includes(p.itemId)
+  if (error) {
+    return <ErrorMessage onReload={() => window.location.reload()} />;
+  }
+
+  const favoriteProducts = allProducts.filter(p =>
+    favorites.includes(p.itemId),
   );
 
   if (favoriteProducts.length === 0) {
-    
     return (
       <div>
         <Header />
-    <div className={styles.empty}>No favorite itens yet! 😔</div>
+        <div className={styles.empty}>No favorite itens yet! 😔</div>
       </div>
-  );
+    );
   }
 
   return (
     <div>
       <Header />
-    
-    <div className={styles.favoritesPage}>
-      <h1 className={styles.title}>⭐ Favorites</h1>
 
-      <button className={styles.clearButton} onClick={clearFavorites}>
-        Clean Favorites
-      </button>
+      <div className={styles.favoritesPage}>
+        <h1 className={styles.title}>⭐ Favorites</h1>
 
-      <ul className={styles.list}>
-        {favoriteProducts.map((product) => (
-          <li key={product.itemId} className={styles.item}>
-            <div className={styles.left}>
-              <img
-                src={product.image}
-                alt={product.name}
-                className={styles.image}
-              />
-              <div>
-                <h3 className={styles.name}>{product.name}</h3>
-                <p className={styles.price}>{product.price} $</p>
+        <button className={styles.clearButton} onClick={clearFavorites}>
+          Clean Favorites
+        </button>
+
+        <ul className={styles.list}>
+          {favoriteProducts.map(product => (
+            <li key={product.itemId} className={styles.item}>
+              <div className={styles.left}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.image}
+                />
+                <div>
+                  <h3 className={styles.name}>{product.name}</h3>
+                  <p className={styles.price}>{product.price} $</p>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.right}>
-              
-              <AddToCartButton product={product} />
+              <div className={styles.right}>
+                <AddToCartButton product={product} />
 
-              
-              <button
-                className={styles.removeButton}
-                onClick={() => removeFavorite(product.itemId)}
-              >
-                Remove product
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+                <button
+                  className={styles.removeButton}
+                  onClick={() => removeFavorite(product.itemId)}
+                >
+                  Remove product
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

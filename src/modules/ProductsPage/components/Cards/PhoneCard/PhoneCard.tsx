@@ -9,11 +9,11 @@ const PhoneCard: React.FC<PhonesCardProps> = ({ phone }) => {
     <ProductCard
       product={{
         id: phone.id,
-        itemId: phone.itemId,       
+        itemId: phone.itemId,
         name: phone.name,
         priceDiscount: phone.priceDiscount,
         priceRegular: phone.priceRegular,
-        image: phone.images?.[0],   
+        image: phone.images?.[0],
       }}
     />
   );

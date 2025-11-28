@@ -1,10 +1,7 @@
-// src/components/Header/Header.module.scss
-
-// Variáveis
 $primary-color: #313237;
 $secondary-color: #89939A;
 $border-color: #E2E6E9;
-$bg-white: #ffffff;
+$bg-white: #fff;
 $text-dark: #313237;
 $text-light: #89939A;
 $blue-primary: #4219D0;
@@ -15,17 +12,17 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40px; // Padding lateral
+  padding: 0 40px;
   background-color: $bg-white;
-  border-bottom: 1px solid $border-color; // Linha sutil na parte inferior
-  height: 64px; // Altura fixa do cabeçalho
+  border-bottom: 1px solid $border-color;
+  height: 64px;
   width: 100%;
-  position: sticky; // Mantém o cabeçalho fixo no topo ao rolar
+  position: sticky;
   top: 0;
-  z-index: 1000; // Garante que o cabeçalho fique acima de outros elementos
+  z-index: 1000;
   box-sizing: border-box;
   font-family: $font-family;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04); // Sombra sutil
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .leftSection {
@@ -35,10 +32,10 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
 }
 
 .brand {
-  cursor: pointer; // Indica que o logo é clicável
+  cursor: pointer;
   display: flex;
   align-items: center;
-  margin-right: 48px; // Espaço entre o logo e a navegação
+  margin-right: 48px;
   transition: opacity 0.2s ease;
   height: 100%;
   
@@ -61,19 +58,19 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
 }
 
 .niceText {
-  color: $primary-color; // Cor escura para "NICE"
-  margin-bottom: -2px; // Ajusta o espaçamento entre as linhas
+  color: $primary-color;
+  margin-bottom: -2px;
 }
 
 .gadgetsText {
-  color: $primary-color; // Mesma cor para "GADGETS"
+  color: $primary-color;
 }
 
 .nav {
   display: flex;
   align-items: center;
   height: 100%;
-  gap: 0; // Remove gap para usar borders como separadores
+  gap: 0;
 }
 
 .navButton {
@@ -85,15 +82,15 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   color: $text-light;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 0 24px; // Padding horizontal
-  height: 100%; // Ocupa toda a altura do header
+  padding: 0 24px;
+  height: 100%;
   position: relative;
   transition: all 0.2s ease;
   font-family: $font-family;
-  border-right: 1px solid $border-color; // Linha separadora à direita
+  border-right: 1px solid $border-color;
   
   &:first-child {
-    border-left: 1px solid $border-color; // Linha separadora à esquerda do primeiro item
+    border-left: 1px solid $border-color;
   }
   
   &:hover {
@@ -111,7 +108,6 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
     color: $blue-primary;
   }
   
-  // Indicador de página ativa (você pode adicionar uma prop 'active' depois)
   &.active {
     color: $blue-primary;
     
@@ -131,7 +127,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   display: flex;
   align-items: center;
   height: 100%;
-  gap: 0; // Remove gap para usar borders
+  gap: 0;
 }
 
 .iconButton {
@@ -140,12 +136,12 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   cursor: pointer;
   color: $text-light;
   transition: all 0.2s ease;
-  width: 48px; // Largura fixa para os botões de ícone
-  height: 100%; // Ocupa toda a altura do header
+  width: 48px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 1px solid $border-color; // Linha separadora à esquerda
+  border-left: 1px solid $border-color;
   position: relative;
   
   &:hover {
@@ -163,7 +159,6 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
     color: $blue-primary;
   }
   
-  // Badge de notificação (para futuras implementações)
   &::after {
     content: '';
     position: absolute;
@@ -173,11 +168,10 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
     height: 6px;
     background-color: $yellow-accent;
     border-radius: 50%;
-    opacity: 0; // Escondido por padrão
+    opacity: 0;
     transition: opacity 0.2s ease;
   }
   
-  // Classe para mostrar badge quando houver itens
   &.hasItems::after {
     opacity: 1;
   }
@@ -192,7 +186,6 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   }
 }
 
-/* Estilos responsivos */
 @media (max-width: 1024px) {
   .header {
     padding: 0 24px;
@@ -223,7 +216,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   }
   
   .nav {
-    display: none; // Esconde a navegação em telas pequenas (você pode implementar um menu hambúrguer depois)
+    display: none;
   }
   
   .iconButton {
@@ -254,8 +247,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   }
 }
 
-/* Animação para o logo */
-@keyframes logoGlow {
+@keyframes logo-glow {
   0%, 100% {
     text-shadow: none;
   }
@@ -265,5 +257,5 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
 }
 
 .brand:hover .logoText {
-  animation: logoGlow 1s ease-in-out;
+  animation: logo-glow 1s ease-in-out;
 }

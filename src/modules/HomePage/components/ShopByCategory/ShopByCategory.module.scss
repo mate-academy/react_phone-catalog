@@ -1,4 +1,3 @@
-// Variáveis para cores e fontes
 $text-color-primary: #333;
 $text-color-secondary: #666;
 $text-color-light: #999;
@@ -62,8 +61,8 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px 20px 20px 20px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 30px 20px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
   min-height: 200px;
 }
 
@@ -81,7 +80,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
 }
 
 .categoryInfo {
-  padding: 20px 24px 24px 24px;
+  padding: 20px 24px 24px;
   text-align: center;
   background-color: $bg-color-card;
   border-top: 1px solid $border-color-light;
@@ -91,7 +90,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   font-size: 20px;
   font-weight: 600;
   color: $text-color-primary;
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   line-height: 1.3;
 }
 
@@ -170,7 +169,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   }
   
   .categoryInfo {
-    padding: 15px 20px 20px 20px;
+    padding: 15px 20px 20px;
   }
   
   .shopCategoryName {

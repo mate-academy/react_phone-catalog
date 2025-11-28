@@ -9,13 +9,15 @@ type AccessoriesListProps = {
 
 const AccessoriesList: React.FC<AccessoriesListProps> = ({ products }) => {
   if (products.length === 0) {
-    return <p className={styles.noAccessories}>There are no accessories yet.</p>;
+    return (
+      <p className={styles.noAccessories}>There are no accessories yet.</p>
+    );
   }
 
   return (
     <div className={styles.accessoriesListContainer}>
       <div className={styles.accessoriesGrid}>
-        {products.map((a) => (
+        {products.map(a => (
           <AccessoriesCard
             key={a.id}
             accessory={{

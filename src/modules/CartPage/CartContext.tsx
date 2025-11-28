@@ -1,4 +1,10 @@
-import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from 'react';
 
 type CartItem = {
   id: string;
@@ -25,9 +31,12 @@ const CartContext = createContext<CartContextType>({
   getItemQuantity: () => 0,
 });
 
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const CartProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
     const stored = localStorage.getItem('cart');
+
     return stored ? JSON.parse(stored) : [];
   });
 
@@ -36,12 +45,13 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   }, [cart]);
 
   const addToCart = (id: string) => {
-    setCart((prev) => {
-      const existingItem = prev.find((item) => item.id === id);
+    setCart(prev => {
+      const existingItem = prev.find(item => item.id === id);
+
       if (existingItem) {
         // se já existe, só aumenta a quantidade
-        return prev.map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        return prev.map(item =>
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
         );
       } else {
         // se não existe, adiciona novo
@@ -51,7 +61,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const removeFromCart = (id: string) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
+    setCart(prev => prev.filter(item => item.id !== id));
   };
 
   const clearCart = () => {
@@ -59,25 +69,27 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const increaseQuantity = (id: string) => {
-    setCart((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
+    setCart(prev =>
+      prev.map(item =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
     );
   };
 
   const decreaseQuantity = (id: string) => {
-    setCart((prev) =>
+    setCart(prev =>
       prev
-        .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        .map(item =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
         )
-        .filter((item) => item.quantity > 0)
+        .filter(item => item.quantity > 0),
     );
   };
 
   const getItemQuantity = (id: string) => {
-    const item = cart.find((item) => item.id === id);
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const item = cart.find(item => item.id === id);
+
     return item ? item.quantity : 0;
   };
 
@@ -97,6 +109,5 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     </CartContext.Provider>
   );
 };
-
 
 export const useCart = () => useContext(CartContext);

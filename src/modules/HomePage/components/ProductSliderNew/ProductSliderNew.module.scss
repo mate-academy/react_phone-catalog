@@ -1,4 +1,3 @@
-/* Variáveis para cores e fontes */
 $text-color-primary: #333;
 $text-color-secondary: #666;
 $text-color-light: #999;
@@ -9,7 +8,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
 .productSliderContainer {
   font-family: $font-family;
   padding: 30px 20px;
-  max-width: 1200px; // Ajuste conforme a largura desejada do seu layout
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -18,9 +17,8 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  padding-bottom: 15px; // Espaçamento abaixo do título/botões
-  border-bottom: 1px solid #f0f0f0; // Linha sutil abaixo do cabeçalho
-  
+  padding-bottom: 15px;
+
   h2 {
     font-size: 24px;
     font-weight: 700;
@@ -52,44 +50,35 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   }
 
   svg {
-    stroke: $text-color-primary; // Cor da seta
-    width: 10px; // Tamanho do ícone
+    stroke: $text-color-primary;
+    width: 10px;
     height: 10px;
   }
 }
 
 .productCardsWrapper {
+  flex-wrap: nowrap;
   display: flex;
-  // Permite que os itens não quebrem e cria um scroll se houver mais itens.
-  // No seu caso, a lógica de `prev`/`next` já move os itens, então o overflow seria para casos específicos.
-  // Para 4 itens lado a lado, `flex-wrap: nowrap` é o ideal.
-  flex-wrap: nowrap; 
-  gap: 20px; // Espaçamento entre os cartões
-  overflow-x: hidden; // Esconde o scrollbar horizontal, já que a navegação é pelos botões
-  // Se você quiser que o slide funcione com scroll manual também, mude para `auto`
+  gap: 20px;
+  overflow-x: hidden;
 }
 
 .productCard {
   background-color: $bg-color-card;
-  border: 1px solid #f0f0f0; // Borda sutil
+  border: 1px solid #f0f0f0;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
-  
-  // Flex basis para que 4 itens caibam na largura total com gap de 20px
-  // (100% - 3 * 20px) / 4 = (100% - 60px) / 4 = 25% - 15px
   flex: 0 0 calc(25% - 15px);
-  box-sizing: border-box; // Inclui padding e border na largura
-  min-width: 240px; // Largura mínima para o cartão não ficar muito pequeno
-  display: flex; // Para usar flexbox para alinhar conteúdo verticalmente
-  flex-direction: column; // Conteúdo empilhado
-
-  // Sombra sutil para dar profundidade, similar à imagem
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+  box-sizing: border-box;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   &:hover {
-    transform: translateY(-3px); // Efeito de levantar no hover
+    transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   }
 }
@@ -97,9 +86,9 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
 .productImage {
   max-width: 100%;
   height: auto;
-  object-fit: contain; // Garante que a imagem se encaixe sem distorcer
+  object-fit: contain;
   margin-bottom: 15px;
-  min-height: 150px; // Para ter um tamanho consistente se imagens tiverem alturas diferentes
+  min-height: 150px;
 }
 
 .productName {
@@ -123,7 +112,7 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   border-top: 1px solid $border-color-light;
   text-align: left;
   margin-bottom: 20px;
-  flex-grow: 1; // Permite que esta seção ocupe o espaço restante, empurrando as ações para baixo
+  flex-grow: 1;
 }
 
 .detailRow {
@@ -151,12 +140,11 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto; // Isso é crucial para empurrar as ações para a parte inferior do cartão
-  width: 100%; // Garante que o flexbox ocupe toda a largura
-  gap: 10px; // Espaçamento entre os botões
+  margin-top: auto;
+  width: 100%;
+  gap: 10px;
 }
 
-// Estilização do botão de wishlist (coração)
 .wishlistButton {
   width: 40px;
   height: 40px;
@@ -167,33 +155,33 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $text-color-light; // Cor do ícone de coração
+  color: $text-color-light;
   transition: all 0.2s ease-in-out;
-  flex-shrink: 0; // Impede que o botão encolha
+  flex-shrink: 0;
 
   &:hover {
-    border-color: #007bff; // Cor de destaque no hover (azul do AddToCart)
+    border-color: #007bff;
     color: #007bff;
     background-color: #e6f2ff;
   }
 
   svg {
-    width: 18px; // Tamanho do ícone de coração
+    width: 18px;
     height: 18px;
   }
 }
 
-// Media Queries para responsividade (opcional, mas recomendado)
 @media (max-width: 1024px) {
   .productCard {
-    flex: 0 0 calc(33.33% - 13.33px); // 3 itens por linha
+    flex: 0 0 calc(33.33% - 13.33px);
   }
 }
 
 @media (max-width: 768px) {
   .productCard {
-    flex: 0 0 calc(50% - 10px); // 2 itens por linha
+    flex: 0 0 calc(50% - 10px);
   }
+
   .sliderHeader h2 {
     font-size: 20px;
   }
@@ -201,11 +189,13 @@ $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 
 
 @media (max-width: 480px) {
   .productCard {
-    flex: 0 0 100%; // 1 item por linha
+    flex: 0 0 100%;
   }
+
   .productSliderContainer {
     padding: 20px 10px;
   }
+
   .productImage {
     min-height: 120px;
   }

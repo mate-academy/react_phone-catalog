@@ -6,11 +6,7 @@ import { Link } from 'react-router-dom';
 import AddToFavoritesButton from '../AddToFavorite/AddToFavorite';
 
 // Interface estendida para incluir especificações que aparecem na imagem
-interface ProductWithSpecs extends Product {
-  screen?: string;
-  capacity?: string;
-  ram?: string;
-}
+interface ProductWithSpecs extends Product {}
 
 const ProductsSlider: React.FC = () => {
   const [products, setProducts] = useState<ProductWithSpecs[]>([]);
@@ -19,13 +15,15 @@ const ProductsSlider: React.FC = () => {
 
   useEffect(() => {
     fetch('/api/products.json')
-      .then((res) => res.json())
+      .then(res => res.json())
       .then((data: Product[]) => {
         // Ordena pelo preço decrescente
-        const sorted = data.sort((a, b) => (b.fullPrice || 0) - (a.fullPrice || 0));
+        const sorted = data.sort(
+          (a, b) => (b.fullPrice || 0) - (a.fullPrice || 0),
+        );
         // Limita a 8 produtos para ter 2 slides completos
         const top8 = sorted.slice(0, 8);
-        
+
         // Mock de especificações para demonstração (em produção, viriam da API)
         const productsWithSpecs: ProductWithSpecs[] = top8.map(product => ({
           ...product,
@@ -33,23 +31,27 @@ const ProductsSlider: React.FC = () => {
           capacity: product.capacity || '128 GB',
           ram: product.ram || '6 GB',
         }));
-        
+
         setProducts(productsWithSpecs);
       })
-      .catch(error => {
-        console.error("Erro ao buscar produtos:", error);
+      .catch(() => {
+        return -1;
       });
   }, []);
 
   const prev = () => {
-    setCurrentIndex((prev) =>
-      prev - itemsPerSlide >= 0 ? prev - itemsPerSlide : Math.max(products.length - itemsPerSlide, 0)
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    setCurrentIndex(prev =>
+      prev - itemsPerSlide >= 0
+        ? prev - itemsPerSlide
+        : Math.max(products.length - itemsPerSlide, 0),
     );
   };
 
   const next = () => {
-    setCurrentIndex((prev) =>
-      prev + itemsPerSlide < products.length ? prev + itemsPerSlide : 0
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    setCurrentIndex(prev =>
+      prev + itemsPerSlide < products.length ? prev + itemsPerSlide : 0,
     );
   };
 
@@ -61,7 +63,10 @@ const ProductsSlider: React.FC = () => {
     );
   }
 
-  const visibleProducts = products.slice(currentIndex, currentIndex + itemsPerSlide);
+  const visibleProducts = products.slice(
+    currentIndex,
+    currentIndex + itemsPerSlide,
+  );
 
   return (
     <section className={styles.productSliderSection}>
@@ -70,9 +75,8 @@ const ProductsSlider: React.FC = () => {
       </div>
 
       <div className={styles.hotPricesContainer}>
-        {/* Botão voltar */}
-        <button 
-          className={styles.sliderButton} 
+        <button
+          className={styles.sliderButton}
           onClick={prev}
           aria-label="Produtos anteriores"
         >
@@ -80,26 +84,30 @@ const ProductsSlider: React.FC = () => {
         </button>
 
         <div className={styles.productsWrapper}>
-          {visibleProducts.map((product) => (
+          {visibleProducts.map(product => (
             <div key={product.id} className={styles.productCard}>
               <div className={styles.imageContainer}>
                 {product.image && (
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.name}
                     className={styles.productImage}
                   />
                 )}
               </div>
-              
-              <div className={styles.productInfo}>
-                <Link to={`/product/${product.itemId}`} className={styles.productName}>
-  <h3>{product.name}</h3>
-</Link>
 
-                
+              <div className={styles.productInfo}>
+                <Link
+                  to={`/product/${product.itemId}`}
+                  className={styles.productName}
+                >
+                  <h3>{product.name}</h3>
+                </Link>
+
                 <div className={styles.priceContainer}>
-                  <span className={styles.currentPrice}>${product.fullPrice}</span>
+                  <span className={styles.currentPrice}>
+                    ${product.fullPrice}
+                  </span>
                   {product.discount && product.discount > 0 && (
                     <span className={styles.oldPrice}>
                       ${(product.fullPrice + product.discount).toFixed(0)}
@@ -126,7 +134,7 @@ const ProductsSlider: React.FC = () => {
                 {/* Ações do produto */}
                 <div className={styles.productActions}>
                   <AddToCartButton product={product} />
-                  <AddToFavoritesButton productId = {product.itemId} />
+                  <AddToFavoritesButton productId={product.itemId} />
                 </div>
               </div>
             </div>
@@ -134,8 +142,8 @@ const ProductsSlider: React.FC = () => {
         </div>
 
         {/* Botão avançar */}
-        <button 
-          className={styles.sliderButton} 
+        <button
+          className={styles.sliderButton}
           onClick={next}
           aria-label="Próximos produtos"
         >

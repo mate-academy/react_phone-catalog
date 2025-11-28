@@ -1,22 +1,20 @@
-/* ProductCard.module.scss */
-
 .productCard {
-  background-color: #fff; /* Fundo branco */
-  border: 1px solid #eee; /* Borda sutil */
-  border-radius: 8px; /* Bordas arredondadas */
-  padding: 16px; /* Espaçamento interno */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center; /* Centraliza o texto */
-  width: 250px; /* Largura fixa */
-  box-sizing: border-box; /* Inclui padding e border na largura */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animação no hover */
+  text-align: center;
+  width: 250px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    transform: translateY(-5px); /* Eleva o card no hover */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 }
 
@@ -32,17 +30,17 @@
   transition: color 0.2s ease;
 
   &.active {
-    color: #ff69b4; /* Rosa para itens favoritados */
+    color: #ff69b4;
   }
 
   &:hover {
-    color: #007bff; /* Azul no hover */
+    color: #007bff;
   }
 }
 
 .productLink {
-  text-decoration: none; /* Remove o sublinhado */
-  color: inherit; /* Mantém a cor do texto */
+  text-decoration: none;
+  color: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,9 +48,9 @@
 
 .productImage {
   max-width: 100%;
-  max-height: 150px; /* Altura máxima para a imagem */
-  object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
-  margin-bottom: 16px; /* Espaçamento abaixo da imagem */
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 16px;
 }
 
 .productInfo {
@@ -66,8 +64,8 @@
   font-weight: 500;
   color: #333;
   margin-bottom: 8px;
-  display: -webkit-box; /* Para truncar texto em várias linhas */
-  -webkit-line-clamp: 2; /* Limita a 2 linhas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -77,23 +75,23 @@
 .productPrice {
   font-size: 16px;
   font-weight: bold;
-  color: #007bff; /* Azul de destaque */
+  color: #007bff;
   margin-bottom: 4px;
 
   .productPriceRegular {
     font-size: 14px;
     font-weight: normal;
     color: #999;
-    text-decoration: line-through; /* Preço riscado */
-    margin-left: 8px; /* Espaçamento entre os preços */
+    text-decoration: line-through;
+    margin-left: 8px;
   }
 }
 
 .functionButtons {
   display: flex;
-  align-items: center; // deixa na mesma altura
-  gap: 12px;           // espaçamento horizontal entre os botões
-  margin-top: 16px;    // opcional, só pra dar respiro
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .linkWrapper {
@@ -109,11 +107,9 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   transition: all 0.25s ease;
   box-shadow: 0 4px 12px rgba(0, 85, 255, 0.25);
 

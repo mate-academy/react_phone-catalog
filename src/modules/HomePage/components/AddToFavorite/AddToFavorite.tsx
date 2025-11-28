@@ -6,13 +6,16 @@ type AddToFavoritesButtonProps = {
   productId: string;
 };
 
-const AddToFavoritesButton: React.FC<AddToFavoritesButtonProps> = ({ productId }) => {
+const AddToFavoritesButton: React.FC<AddToFavoritesButtonProps> = ({
+  productId,
+}) => {
   const { favorites, addFavorite, removeFavorite } = useFavorites();
 
   const isFavorite = favorites.includes(productId);
 
   const toggle = (e: React.MouseEvent) => {
     e.preventDefault();
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     isFavorite ? removeFavorite(productId) : addFavorite(productId);
   };
 

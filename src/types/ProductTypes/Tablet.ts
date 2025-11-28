@@ -21,6 +21,6 @@ export type Tablet = {
   camera: string;
   zoom: string;
   cell: string[];
-  year?: any;
+  year?: number;
   image?: string;
 };
