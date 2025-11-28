@@ -2,6 +2,7 @@
 @use '../../../../styles/mixins.scss' as *;
 
 .productCard {
+  background-color: $white;
   padding: 32px;
   width: 212px;
   height: 100%;
@@ -15,7 +16,7 @@
   border-radius: 8px;
 
   @include on-tablet {
-    width: 237px;
+    width: 225px;
   }
 
   @include on-desktop {

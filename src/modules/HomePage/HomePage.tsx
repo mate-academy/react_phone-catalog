@@ -21,7 +21,7 @@ export const HomePage = () => {
       {!loading && !errorMessage && (
         <ProductsSlider products={newProducts} title="Brand new models" />
       )}
-      <section className={s.container}>
+      <section className={`${s.container} ${s.paddingBlock}`}>
         <ShopByCategories />
       </section>
       {!loading && !errorMessage && (

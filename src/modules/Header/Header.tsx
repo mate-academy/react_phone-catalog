@@ -58,7 +58,7 @@ export const Header: FC = () => {
             </Link>
           </div>
           <div
-            className={`${s.iconWrapper} ${s.mobileVisible}`}
+            className={`${s.iconWrapper} ${s.mobileVisible} ${s.openMenu}`}
             onClick={() => setIsMenuOpen(true)}
           >
             <img src={menu} alt="Mobile Menu" />

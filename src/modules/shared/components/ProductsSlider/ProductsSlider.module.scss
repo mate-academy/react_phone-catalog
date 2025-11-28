@@ -2,10 +2,6 @@
 @use '../../../../styles/mixins.scss' as *;
 @use '../../../../styles/shared.scss' as *;
 
-.productSlider{
-  @include block-margin-bottom;
-}
-
 .sliderContent {
   overflow: hidden;
   overscroll-behavior-inline: contain;

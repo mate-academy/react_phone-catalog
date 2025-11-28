@@ -25,6 +25,33 @@
   @include icon-paddings;
 }
 
+.closeIcon {
+  cursor: pointer;
+}
+
+.iconCountWrapper {
+  position: relative;
+}
+
+.iconCount {
+  position: absolute;
+  bottom: 12px;
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  background-color: $secondaryAccent;
+  color: $white;
+  font-family: $fontMontSemiBold;
+  font-size: $font-size-xs;
+  line-height: $line-height-16;
+  padding: $gap-4;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .logoWrapper {
   padding: $gap-13 $gap-16;
 }
