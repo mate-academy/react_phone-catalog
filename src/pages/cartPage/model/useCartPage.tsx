@@ -1,5 +1,5 @@
 import { CartItem } from '@features/globalStore/types';
-import { useGlobalData, useLoadItems } from '@features/index';
+import { useGlobalActions, useGlobalData, useLoadItems } from '@features/index';
 import { get } from '@shared/api';
 import { Product } from '@shared/types';
 import { useEffect } from 'react';
@@ -12,7 +12,7 @@ type TrueCartItem = {
 
 export const useCartPage = () => {
   const { itemsInCart } = useGlobalData();
-
+  const { toggleModal } = useGlobalActions();
   const cart = useLoadItems(() => get.cart(itemsInCart));
 
   useEffect(() => {
@@ -43,5 +43,5 @@ export const useCartPage = () => {
     }
   };
 
-  return { cart: cart.data, itemsInCart, getWidgetProps };
+  return { cart: cart.data, itemsInCart, getWidgetProps, toggleModal };
 };

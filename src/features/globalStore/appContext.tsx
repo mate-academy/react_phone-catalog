@@ -14,11 +14,13 @@ type GlobalDataType = {
   itemsInCart: CartItem[];
   favAmount: number;
   cartAmount: number;
+  modalIsOpened: boolean;
 };
 
 type GlobalActionsType = {
   toggleFav: (arg: Item) => void;
   setCart: (arg: CartItem) => void;
+  toggleModal: () => void;
 };
 
 const GlobalDataContext = createContext<GlobalDataType | null>(null);
@@ -43,8 +45,9 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         (sum, { amount }) => sum + amount,
         0,
       ),
+      modalIsOpened: state.modalIsOpened,
     }),
-    [state.itemsInCart, state.itemsInFav],
+    [state.itemsInCart, state.itemsInFav, state.modalIsOpened],
   );
 
   const actions = useMemo(
@@ -55,6 +58,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       setCart: (arg: CartItem) => {
         dispatch({ type: 'UPDATE_CART_ITEM', payload: arg });
       },
+      toggleModal: () => dispatch({ type: 'TOGGLE_MODAL' }),
     }),
     [],
   );

@@ -28,7 +28,7 @@ export const BirthdayForm = () => {
             name="birthDay"
             id="birthDay"
             disabled={daysData.array === null}
-            onChange={onChange.month}
+            onChange={onChange.day}
           >
             <option selected disabled>
               {daysData.placeholder}

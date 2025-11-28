@@ -23,6 +23,7 @@ const cartBodyCase = (test: unknown): ValidatorResponce => {
     id: '',
     amount: 0,
   };
+
   const check = (test as unknown[]).map(el =>
     shapeValidator(el, cartItemShape),
   );
@@ -34,7 +35,7 @@ const cartBodyCase = (test: unknown): ValidatorResponce => {
   }
 
   const idCheck = (test as CartItem[]).filter(el =>
-    products.some(it => it.id === el.id),
+    products.every(it => it.id !== el.id),
   );
 
   if (idCheck.length !== 0) {

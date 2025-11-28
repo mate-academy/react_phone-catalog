@@ -3,9 +3,10 @@ import styles from './checkoutWidget.module.scss';
 
 type Props = {
   totalPrice: number | string;
+  toggleModal: () => void;
 };
 
-export const CheckoutWidget = ({ totalPrice }: Props) => {
+export const CheckoutWidget = ({ totalPrice, toggleModal }: Props) => {
   const { cartAmount } = useGlobalData();
 
   const price = totalPrice === 0 ? 'Calculating...' : `$${totalPrice}`;
@@ -26,6 +27,7 @@ export const CheckoutWidget = ({ totalPrice }: Props) => {
       <button
         className={styles['checkout-button']}
         disabled={typeof totalPrice === 'string'}
+        onClick={() => toggleModal()}
       >
         Checkout
       </button>

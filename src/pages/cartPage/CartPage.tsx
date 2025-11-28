@@ -5,7 +5,7 @@ import { ReturnButton } from '@ui/returnButton';
 import { ModalCheckout } from '@widgets/modalCheckout';
 
 export const CartPage = () => {
-  const { cart, itemsInCart, getWidgetProps } = useCartPage();
+  const { cart, itemsInCart, getWidgetProps, toggleModal } = useCartPage();
 
   const products = typeof cart === 'string' ? itemsInCart : cart.products;
 
@@ -31,6 +31,7 @@ export const CartPage = () => {
 
             <CheckoutWidget
               totalPrice={typeof cart === 'string' ? cart : cart.total}
+              toggleModal={toggleModal}
             />
           </>
         )}

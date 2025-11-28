@@ -3,11 +3,13 @@ import { CartItem, Item } from './types';
 type State = {
   itemsInFav: Item[];
   itemsInCart: CartItem[];
+  modalIsOpened: boolean;
 };
 
 const initialState: State = {
   itemsInFav: [],
   itemsInCart: [],
+  modalIsOpened: false,
 };
 
 const getInit = () => {
@@ -17,6 +19,7 @@ const getInit = () => {
   return {
     itemsInFav: fav ? JSON.parse(fav) : [],
     itemsInCart: cart ? JSON.parse(cart) : [],
+    modalIsOpened: false,
   } as State;
 };
 
@@ -27,7 +30,8 @@ const init = (initialArg: State): State => {
 
 type Action =
   | { type: 'TOGGLE_FAV'; payload: Item }
-  | { type: 'UPDATE_CART_ITEM'; payload: CartItem };
+  | { type: 'UPDATE_CART_ITEM'; payload: CartItem }
+  | { type: 'TOGGLE_MODAL' };
 
 const processCart = (array: CartItem[], patchObj: CartItem) => {
   if (patchObj.amount === 0) {
@@ -56,6 +60,11 @@ function appReducer(state: State, action: Action): State {
       return {
         ...state,
         itemsInCart: processCart(state.itemsInCart, action.payload),
+      };
+    case 'TOGGLE_MODAL':
+      return {
+        ...state,
+        modalIsOpened: !state.modalIsOpened,
       };
     default:
       return state;

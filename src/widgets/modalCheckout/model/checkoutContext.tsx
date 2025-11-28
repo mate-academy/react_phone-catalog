@@ -61,9 +61,12 @@ const CheckoutProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const CheckoutStepsProvider = ({ children }: { children: ReactNode }) => {
-  const [step, setStep] = useState<number>(1);
+type Props = {
+  children: ReactNode;
+};
 
+const CheckoutStepsProvider = ({ children }: Props) => {
+  const [step, setStep] = useState<number>(1);
   const value = { step, setStep };
 
   return (

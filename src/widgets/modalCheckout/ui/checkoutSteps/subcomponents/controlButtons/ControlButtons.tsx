@@ -1,5 +1,6 @@
 import { useSteps } from '@widgets/modalCheckout/model';
 import styles from './controlButtons.module.scss';
+import { useGlobalActions } from '@features/index';
 type Props = {
   totalSteps: number;
   totalPrice: number;
@@ -7,9 +8,10 @@ type Props = {
 
 export const ControlButtons = ({ totalSteps, totalPrice }: Props) => {
   const { step, setStep } = useSteps();
+  const { toggleModal } = useGlobalActions();
 
   const defaultProps = {
-    title: 'Proceed',
+    title: 'Next',
     onClick: (e: React.FormEvent) => {
       e.preventDefault();
       setStep(step + 1);
@@ -36,7 +38,7 @@ export const ControlButtons = ({ totalSteps, totalPrice }: Props) => {
         type="button"
         onClick={e => {
           e.preventDefault();
-          setStep(1);
+          toggleModal();
         }}
       >
         cancel
