@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PageHeader from '../PageHeader/PageHeader';
 import SliderItem from '../SliderItem/SliderItem';
 import { Product } from '@/types/Product';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { CardSkeleton } from '../SliderItem/CardSkeleton';
 import styles from './CatalogPage.module.scss';
 import CustomSelect from '../CustomSelect/CustomSelect';
@@ -14,25 +14,38 @@ type CatalogPageProps = {
 const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
-  const [sortSelectValue, setSortSelectValue] = useState<string>('');
-  const [displayCountSelectValue, setDisplayCountSelectValue] =
-    useState<number>(0);
+  const [searchParams] = useSearchParams();
   const { category } = useParams();
+  const sort = searchParams.get('sort');
+  const limit = searchParams.get('limit');
+
   useEffect(() => {
     const newTitle = formatTitle(category);
-
-    // Встановлюємо новий заголовок сторінки
-
     setLoading(true);
     fetchReq()
       .then(products => {
+        if (sort) {
+          products = products.sort((a, b) => {
+            if (sort === 'age') {
+              return b.year - a.year; // Новіші спочатку
+            }
+            if (sort === 'title') {
+              return a.name.localeCompare(b.name);
+            }
+            if (sort === 'price') {
+              return a.price - b.price;
+            }
+            return 0;
+          });
+        }
+
         setProducts(products);
       })
       .finally(() => {
         document.title = `${newTitle}`;
         setLoading(false);
       });
-  }, [category]);
+  }, [category, sort]);
 
   let preparedProducts = products;
 
@@ -76,12 +89,24 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
 
       <div className={styles.catalog__controls}>
         <CustomSelect
-          setSelectValue={setSortSelectValue}
-          arrayOptions={['Price: Low to High', 'Price: High to Low', 'Newest']}
+          param="sort"
+          label="Sort by"
+          arrayOptions={[
+            { label: 'Newest', value: 'age' },
+            { label: 'Alphabetically', value: 'title' },
+            { label: 'Cheapest', value: 'price' },
+          ]}
         />
+
         <CustomSelect
-          setSelectValue={setDisplayCountSelectValue}
-          arrayOptions={[8, 16, 32, 64]}
+          param="limit"
+          label="Items on page"
+          arrayOptions={[
+            { label: '4', value: 4 },
+            { label: '8', value: 8 },
+            { label: '16', value: 16 },
+            { label: 'All', value: 'all' },
+          ]}
         />
       </div>
 

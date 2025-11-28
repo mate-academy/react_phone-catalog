@@ -10,4 +10,9 @@
     color: $color-secondary;
     margin-bottom: 40px;
   }
+  &__controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
 }

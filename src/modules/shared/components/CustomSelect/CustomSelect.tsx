@@ -1,19 +1,47 @@
 import React, { useState } from 'react';
 import styles from './CustomSelect.module.scss';
+import { useSearchParams } from 'react-router-dom';
+type Option = {
+  label: string;
+  value: string | number;
+};
+
 type CustomSelectProps = {
-  setSelectValue: (value: string | number) => void;
-  arrayOptions?: (string | number)[];
+  arrayOptions: Option[];
+  param: string;
+  label: string;
 };
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
-  setSelectValue,
   arrayOptions,
+  param,
+  label,
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const currentValue = searchParams.get(param) || String(arrayOptions[0].value);
+
+  const currentLabel =
+    arrayOptions.find(opt => String(opt.value) === currentValue)?.label ||
+    arrayOptions[0].label;
+
+  const handleSelect = (option: Option) => {
+    const params = new URLSearchParams(searchParams);
+    params.set(param, String(option.value)); // 🔥 у URL записуємо value
+    setSearchParams(params);
+    setIsOpen(false);
+  };
   return (
     <div className={styles.customSelect}>
-      <div className={styles.customSelect__control}>
-        <div onClick={() => setIsOpen(!isOpen)}>Custom Select Component</div>
+      <div className={styles.customSelect__label}>{label}</div>
+
+      <div
+        className={styles.customSelect__controls}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span>{currentLabel}</span>
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -31,16 +59,13 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       </div>
       {isOpen && (
         <div className={styles.customSelect__options}>
-          {arrayOptions?.map(option => (
+          {arrayOptions.map(option => (
             <div
-              key={option}
+              key={String(option.value)}
               className={styles.customSelect__option}
-              onClick={() => {
-                setSelectValue(option);
-                setIsOpen(false);
-              }}
+              onClick={() => handleSelect(option)}
             >
-              {option}
+              {option.label}
             </div>
           ))}
         </div>
