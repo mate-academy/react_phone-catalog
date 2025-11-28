@@ -6,9 +6,13 @@ import { useState } from 'react';
 
 import burgerIcon from '/icons/menu-icon.png';
 import closeIcon from '/icons/close-icon.png';
+import { useCart } from '../../contexts/CartContext';
+import { useFavorites } from '../../contexts/FavoritesContext';
 
 export const Header: React.FC = () => {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const { totalQuantity } = useCart();
+  const { totalFavorites } = useFavorites();
 
   const toggleBurger = () => {
     setIsBurgerOpen(prev => !prev);
@@ -24,7 +28,7 @@ export const Header: React.FC = () => {
       </div>
 
       <nav className={styles.right}>
-        <FavoriteAndCart />
+        <FavoriteAndCart cartCount={totalQuantity} favCount={totalFavorites} />
       </nav>
 
       <div className={styles.burger_container}>
@@ -50,6 +54,8 @@ export const Header: React.FC = () => {
             className={styles.burgerFavAndCartIcons}
             isBurger={true}
             onLinkClick={toggleBurger}
+            cartCount={totalQuantity}
+            favCount={totalFavorites}
           />
         </div>
       )}

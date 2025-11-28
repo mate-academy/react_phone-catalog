@@ -1,0 +1,21 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+@use '../../styles/fonts.scss' as *;
+
+.accessories_nav {
+  @include nav-responsive;
+}
+
+.accessories {
+  @include margin-top-responsive;
+}
+
+.accessories_header {
+  margin-bottom: 0;
+
+  @include header-responsive;
+}
+
+.accessories_quantity {
+  @include total-amount-of-products;
+}

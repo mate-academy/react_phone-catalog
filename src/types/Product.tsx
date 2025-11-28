@@ -11,4 +11,5 @@ export type Product = {
   ram: string;
   year: number;
   image: string;
+  type: 'phones' | 'tablets' | 'accessories';
 };

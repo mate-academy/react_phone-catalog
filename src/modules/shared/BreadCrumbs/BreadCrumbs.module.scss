@@ -1,0 +1,23 @@
+@use '../../../styles/mixins.scss' as *;
+
+.breadcrumbs {
+  @include margin-top-responsive;
+}
+
+.breadcrumbs_list {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.breadcrumbs_item {
+  @include nav-responsive;
+}
+
+.breadcrumbs_link {
+  list-style: none;
+  text-decoration: none;
+
+  @include pages;
+}

@@ -1,14 +1,19 @@
 import styles from './Footer.module.scss';
 import logoFooter from '/img/logo/Logo.png';
 import arrowUp from '/icons/arrow-up-icon.png';
+import React from 'react';
 
-export const Footer = () => {
+type FooterProps = {
+  className?: string;
+};
+
+export const Footer: React.FC<FooterProps> = ({ className }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className={styles.footer}>
+    <div className={`${styles.footer} ${className || ''}`}>
       <div className={styles.footer__container}>
         <div className={styles.logo_footer}>
           <img src={logoFooter} alt="logo" className={styles.logo_footer_img} />

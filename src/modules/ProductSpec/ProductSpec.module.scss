@@ -1,0 +1,40 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.spec_colors_container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.spec_colors_title {
+  color: $gray-secondary;
+  
+  @include small-text;
+}
+
+.spec_color {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid $gray-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $gray-secondary;
+    transform: scale(1.1);
+  }
+
+  &--active {
+    border-color: $gray-white;
+  }
+}
+
+.spec_item_color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}

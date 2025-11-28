@@ -2,47 +2,14 @@
 @use '../../styles/variables.scss' as *;
 @use '../../styles/fonts.scss' as *;
 
-.backBtn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  font-family: Mont-SemiBold, sans-serif;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: 0;
-  color: $gray-white;
-}
-
 .cart {
-  margin-top: 72px;
-
-  @include respond-to(desktop) {
-    margin-top: 105px;
-  }
-
-  @include respond-to(tablet) {
-    margin-top: 88px;
-  }
+  @include margin-top-responsive;
 }
 
 .cart_header {
-  margin-top: 16px;
-  font-family: Mont-Bold, sans-serif;
-  font-size: 48px;
-  line-height: -0.01em;
-  line-height: 56px;
-  color: $gray-white;
+  margin-bottom: 32px;
 
-  @include respond-to(phone) {
-    margin-top: 24px;
-    font-size: 32px;
-    line-height: 41px;
-  }
+  @include header-responsive;
 }
 
 .cart_content {
@@ -124,11 +91,8 @@
 }
 
 .cart_checkout_total_amout {
-  font-family: Mont-Bold, sans-serif;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -0.01em;
-  color: $gray-white;
+  @include header-h2;
+  
   margin: 0;
 }
 
@@ -136,7 +100,6 @@
   font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0;
   color: $gray-secondary;
 }
 
@@ -151,13 +114,13 @@
 .cart_checkout_btn {
   height: 48px;
   width: 100%;
-  background-color: $addBtn;
+  background-color: $purple;
   border: none;
   cursor: pointer;
   color: $gray-white;
 
   &:hover {
-    background-color: $hover-btn;
+    background-color: $light-purple;
   }
 
   &:active {

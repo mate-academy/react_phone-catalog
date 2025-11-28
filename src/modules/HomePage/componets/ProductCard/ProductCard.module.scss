@@ -29,7 +29,7 @@
   cursor: pointer;
   margin-bottom: 8px;
 
-   &:hover {
+  &:hover {
     transform: scale(1.1);
   }
 }
@@ -96,7 +96,7 @@
 .card__addBtn {
   width: 100%;
   height: 40px;
-  background-color: $addBtn;
+  background-color: $purple;
   color: $gray-white;
   border: none;
   font-weight: 700;
@@ -107,18 +107,39 @@
   cursor: pointer;
 
   &:hover {
-    background-color: $hover-btn;
+    background-color: $light-purple;
   }
 }
 
-.card__addBtn__disabled {
+.card__btn__disabled {
   background-color: $gray-surface;
 }
 
 .card__favBtn {
   height: 40px;
+  width: 40px;
   background-color: $gray-surface;
   border: none;
   padding: 12px;
   cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $light-gray;
+  }
+
+  &--active {
+    background-color: $background;
+    box-shadow: 0 0 0 1px $gray-elements inset;
+  }
+}
+
+.card__favBtn__img {
+  width: 16px;
+  height: 16px;
+}
+
+.card_link {
+  color: inherit;
+  text-decoration: none;
 }

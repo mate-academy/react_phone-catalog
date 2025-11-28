@@ -2,13 +2,10 @@
 @use '../../../../styles/mixins.scss' as *;
 
 .product_title {
-  font-family: Mont-Bold, sans-serif;
-  color: $gray-white;
-  font-size: 32px;
-  line-height: 41px;
-  letter-spacing: -0.01em;
   margin-top: 80px;
   margin-bottom: 24px;
+
+  @include header-h2;
 
   @include respond-to(phone) {
     font-size: 22px;
@@ -24,7 +21,6 @@
 .product_buttons {
   display: flex;
   gap: 16px;
-  margin-bottom: 48px;
 }
 
 .product_button {
@@ -43,7 +39,7 @@
   }
 }
 
-.product_button[aria-disabled="true"],
+.product_button[aria-disabled='true'],
 .product_button[disabled] {
   background-color: $background;
   border: 1px solid $gray-surface;

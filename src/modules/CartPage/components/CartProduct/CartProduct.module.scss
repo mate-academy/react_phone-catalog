@@ -4,7 +4,7 @@
 
 .cart_product {
   display: grid;
-  grid-template-columns: 16px 80px auto auto auto;
+  grid-template-columns: 16px 1fr auto;
   align-items: center;
   gap: 24px;
   padding: 24px;
@@ -12,10 +12,29 @@
   margin-bottom: 16px;
 
   @include respond-to(phone) {
-    grid-template-columns: 16px 80px 1fr;
-    grid-template-rows: auto auto;
     gap: 16px;
     padding: 16px;
+  }
+}
+
+.cart_product_left {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.cart_product_right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: flex-end;
+
+  @include respond-to(phone) {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+    justify-content: space-between;
   }
 }
 
@@ -48,7 +67,7 @@
 }
 
 .cart_product_quantity {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 13px;
 
@@ -72,11 +91,7 @@
 
   &:hover {
     transform: scale(1.1);
-    background-color: $gray-elements;
-  }
-
-  &:focus {
-    background-color: $addBtn;
+    background-color: $purple;
   }
 
   &:disabled {
@@ -103,16 +118,7 @@
   font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0;
   color: $gray-white;
-
-  @include respond-to(tablet) {
-    white-space: normal;
-  }
-
-  @include respond-to(phone) {
-    white-space: normal;
-  }
 }
 
 .cart_product_price {
@@ -122,6 +128,7 @@
   text-align: right;
   align-items: center;
   color: $gray-white;
+  width: 90px;
 
   @include respond-to(phone) {
     margin-top: 16px;

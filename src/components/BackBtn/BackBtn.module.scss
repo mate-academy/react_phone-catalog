@@ -1,0 +1,22 @@
+@use '../../styles/variables.scss' as *;
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin-top: 40px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 15px;
+  color: $gray-white;
+
+   &:hover {
+    color: $purple;
+  }
+}

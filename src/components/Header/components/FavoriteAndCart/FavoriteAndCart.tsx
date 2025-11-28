@@ -7,12 +7,16 @@ type Props = {
   className?: string;
   isBurger?: boolean;
   onLinkClick?: () => void;
+  cartCount: number;
+  favCount: number;
 };
 
 export const FavoriteAndCart: React.FC<Props> = ({
   className,
   isBurger,
   onLinkClick,
+  cartCount,
+  favCount,
 }) => {
   return (
     <div
@@ -30,6 +34,11 @@ export const FavoriteAndCart: React.FC<Props> = ({
         onClick={onLinkClick}
       >
         <img src={favoriteIcon} alt="favoriteIcon" />
+        {favCount > 0 && (
+          <span className={`${styles.badge} ${styles.favCount}`}>
+            {favCount}
+          </span>
+        )}
       </NavLink>
 
       <NavLink
@@ -42,6 +51,11 @@ export const FavoriteAndCart: React.FC<Props> = ({
         onClick={onLinkClick}
       >
         <img src={cartIcon} alt="cartIcon" />
+        {cartCount > 0 && (
+          <span className={`${styles.badge} ${styles.cartCount}`}>
+            {cartCount}
+          </span>
+        )}
       </NavLink>
     </div>
   );

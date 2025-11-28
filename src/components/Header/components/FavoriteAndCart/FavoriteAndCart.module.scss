@@ -54,3 +54,36 @@
   height: 2px;
   background-color: $gray-white;
 }
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+  border: 1px solid $background;
+  border-radius: 50%;
+
+  font-size: 9px;
+  font-weight: 700;
+  color: $gray-white;
+  background-color: $color-red;
+
+  @include respond-to(phone) {
+    top: 15px;
+    right: 45%;
+    transform: translateX(50%);
+  }
+
+  @include respond-to(desktop) {
+    top: 15px;
+    right: 40%;
+    transform: translateX(50%);
+  }
+}
+
+

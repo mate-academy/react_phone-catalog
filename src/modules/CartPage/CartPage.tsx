@@ -1,12 +1,11 @@
 import { CartProduct } from './components/CartProduct';
 import { useCart } from '../../contexts/CartContext';
-import { useNavigate } from 'react-router-dom';
+
 import styles from './CartPage.module.scss';
-import backIcon from '/icons/back-icon.png';
 import emptyCart from '/img/cart-is-empty.png';
+import { BackBtn } from '../../components/BackBtn';
 
 export const CartPage = () => {
-  const navigate = useNavigate();
   const { cart, totalAmount, totalQuantity, clearCart } = useCart();
 
   const handleCheckout = () => {
@@ -20,10 +19,7 @@ export const CartPage = () => {
   return (
     <>
       <div className={styles.cart}>
-        <button className={styles.backBtn} onClick={() => navigate(-1)}>
-          <img src={backIcon} alt="backIcon" />
-          Back
-        </button>
+        <BackBtn />
         <h1 className={styles.cart_header}>Cart</h1>
 
         <div className={styles.cart_content}>
