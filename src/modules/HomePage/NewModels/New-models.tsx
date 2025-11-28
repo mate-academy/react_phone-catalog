@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import type { Product } from '../../../Types/type';
 import style from './New-models.module.scss';
 import { Link, useLocation } from 'react-router-dom';
@@ -7,9 +8,11 @@ import useAddToFavourite from '../../Hooks/UseAddToFavourite';
 export const NewModels = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [products, setProducts] = useState<Product[]>([]);
+  const [cardWidth, setCardWidth] = useState(0);
   const { favourites, toggleFavourite } = useAddToFavourite();
 
   const cardRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch('./api/products.json')
@@ -20,23 +23,35 @@ export const NewModels = () => {
   const itemsPerPage = 4;
   const maxIndex = Math.max(0, products.length - itemsPerPage);
 
-  const handlePrev = () => {
+  useLayoutEffect(() => {
+    const updateCardWidth = () => {
+      if (cardRef.current) {
+        const width = cardRef.current.offsetWidth;
+        const gap = 16;
+        setCardWidth(width + gap);
+      }
+    };
+
+    updateCardWidth();
+    window.addEventListener('resize', updateCardWidth);
+    return () => window.removeEventListener('resize', updateCardWidth);
+  }, [products]);
+
+  const handlePrev = useCallback(() => {
     setCurrentIndex(prev => Math.max(0, prev - 1));
-  };
+  }, []);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
-  };
+  }, [maxIndex]);
 
-  const getCardWidth = () => {
-    if (cardRef.current) {
-      const card = cardRef.current;
-      const cardWidth = card.offsetWidth;
-      const gap = 16;
-      return cardWidth + gap;
-    }
-    return 272;
-  };
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+    delta: 10,
+  });
 
   const sortedProduct = Array.from(
     products
@@ -95,72 +110,74 @@ export const NewModels = () => {
         </div>
       </div>
 
-      <div className={style.newmodels__products}>
+      <div {...handlers} className={style.newmodels__products} ref={sliderRef}>
         <div
           className={style.newmodels__products__slider}
           style={{
-            transform: `translateX(-${currentIndex * getCardWidth()}px)`,
+            transform: `translateX(-${currentIndex * cardWidth}px)`,
+            transition: 'transform 0.3s ease-out',
           }}
         >
           {sortedProduct.map((product: Product, index: number) => {
             const isFavourite = favourites.has(product.itemId);
             return (
-            <article
-              className={style.newmodels__product}
-              key={product.id}
-              ref={index === 0 ? cardRef : null}
-            >
-              <Link to={`/${currentPage}/${product.itemId}`}>
-                <img
-                  className={style.newmodels__product__image}
-                  src={product.image}
-                  alt={product.itemId}
-                />
-              </Link>
-              <p className={style.newmodels__product__name}>{product.name}</p>
-              <h4 className={style.newmodels__product__price}>${product.price}</h4>
-              <hr className={style['newmodels__product--line']} />
+              <article
+                className={style.newmodels__product}
+                key={product.id}
+                ref={index === 0 ? cardRef : null}
+              >
+                <Link to={`/${currentPage}/${product.itemId}`}>
+                  <img
+                    className={style.newmodels__product__image}
+                    src={product.image}
+                    alt={product.itemId}
+                    draggable={false}
+                  />
+                </Link>
+                <p className={style.newmodels__product__name}>{product.name}</p>
+                <h4 className={style.newmodels__product__price}>${product.price}</h4>
+                <hr className={style['newmodels__product--line']} />
 
-              <div className={style.newmodels__product__description}>
-                <p className={style.newmodels__product__description__screen}>
-                  Screen
-                </p>
-                <p className={style['newmodels__product__description__screen--number']}>
-                  {product.screen}
-                </p>
-              </div>
-              <div className={style.newmodels__product__description}>
-                <p className={style.newmodels__product__description__capacity}>
-                  Capacity
-                </p>
-                <p className={style['newmodels__product__description__capacity--number']}>
-                  {product.capacity}
-                </p>
-              </div>
-              <div className={style.newmodels__product__description}>
-                <p className={style.newmodels__product__description__ram}>RAM</p>
-                <p className={style['newmodels__product__description__ram--number']}>
-                  {product.ram}
-                </p>
-              </div>
+                <div className={style.newmodels__product__description}>
+                  <p className={style.newmodels__product__description__screen}>
+                    Screen
+                  </p>
+                  <p className={style['newmodels__product__description__screen--number']}>
+                    {product.screen}
+                  </p>
+                </div>
+                <div className={style.newmodels__product__description}>
+                  <p className={style.newmodels__product__description__capacity}>
+                    Capacity
+                  </p>
+                  <p className={style['newmodels__product__description__capacity--number']}>
+                    {product.capacity}
+                  </p>
+                </div>
+                <div className={style.newmodels__product__description}>
+                  <p className={style.newmodels__product__description__ram}>RAM</p>
+                  <p className={style['newmodels__product__description__ram--number']}>
+                    {product.ram}
+                  </p>
+                </div>
 
-              <div className={style.newmodels__product__buttons}>
-                <button className={style.newmodels__product__buttons__button__add}>
-                  Add to cart
-                </button>
-                <button
-                className={style.newmodels__product__buttons__button__favourites}
-                onClick={() => toggleFavourite(product.itemId)}
-                >
-                  <span className={`
-                  ${style['newmodels__product__buttons__button__favourites--heart']}
-                  ${isFavourite ? style['newmodels__product__buttons__button__favourites--heart--active'] : ''}
-                  `}></span>
-                </button>
-              </div>
-            </article>
-          );
-})}
+                <div className={style.newmodels__product__buttons}>
+                  <button className={style.newmodels__product__buttons__button__add}>
+                    Add to cart
+                  </button>
+                  <button
+                    className={style.newmodels__product__buttons__button__favourites}
+                    onClick={() => toggleFavourite(product.itemId)}
+                  >
+                    <span className={`
+                      ${style['newmodels__product__buttons__button__favourites--heart']}
+                      ${isFavourite ? style['newmodels__product__buttons__button__favourites--heart--active'] : ''}
+                    `}></span>
+                  </button>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import styles from './Banner.module.scss';
 
 interface BannerProps {
@@ -10,32 +11,46 @@ interface BannerProps {
 
 export const Banner = ({ data }: BannerProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [slideWidth, setSlideWidth] = useState(0);
   const maxIndex = data.length - 1;
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
-    }, 5000);
+  useLayoutEffect(() => {
+    const updateWidth = () => {
+      if (wrapperRef.current) {
+        setSlideWidth(wrapperRef.current.offsetWidth);
+      }
+    };
 
-    return () => clearInterval(interval);
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex(prev => (prev > 0 ? prev - 1 : maxIndex));
   }, [maxIndex]);
 
-  const handlePrev = () => {
-    setCurrentIndex(prev => (prev > 0 ? prev - 1 : maxIndex));
-  };
-
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex(prev => (prev < maxIndex ? prev + 1 : 0));
-  };
-
-  const getSlideWidth = () => {
-    return wrapperRef.current?.offsetWidth || 0;
-  };
+  }, [maxIndex]);
 
   const setSlide = (number: number) => {
     setCurrentIndex(number);
   };
+
+  useEffect(() => {
+    const interval = setInterval(handleNext, 5000);
+    return () => clearInterval(interval);
+  }, [handleNext]);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+    delta: 10,
+  });
 
   return (
     <div className={`${styles.banner} ${styles['banner--margin']}`}>
@@ -47,11 +62,12 @@ export const Banner = ({ data }: BannerProps) => {
       </button>
 
       <div className={styles.banner__content}>
-        <div className={styles.banner__wrapper} ref={wrapperRef}>
+        <div {...handlers} className={styles.banner__wrapper} ref={wrapperRef}>
           <div
             className={styles.banner__track}
             style={{
-              transform: `translateX(-${currentIndex * getSlideWidth()}px)`,
+              transform: `translateX(-${currentIndex * slideWidth}px)`,
+              transition: 'transform 0.5s ease-in-out',
             }}
           >
             {data.map((item, index) => (
@@ -60,6 +76,7 @@ export const Banner = ({ data }: BannerProps) => {
                 alt={item.alt}
                 key={index}
                 className={styles.banner__slide}
+                draggable={false}
               />
             ))}
           </div>
@@ -69,8 +86,9 @@ export const Banner = ({ data }: BannerProps) => {
           {data.map((_, index) => (
             <button
               key={index}
-              className={`${styles.banner__dashes__dash} ${currentIndex === index ? styles['banner__dashes__dash--active'] : ''
-                }`}
+              className={`${styles.banner__dashes__dash} ${
+                currentIndex === index ? styles['banner__dashes__dash--active'] : ''
+              }`}
               onClick={() => setSlide(index)}
             />
           ))}

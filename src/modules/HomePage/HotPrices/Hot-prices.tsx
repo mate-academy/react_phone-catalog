@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useLayoutEffect, useCallback } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import phones from '../../../../public/api/phones.json';
 import type { Phone } from '../../../Types/type';
 import style from './Hot-Prices.module.scss';
@@ -7,32 +8,45 @@ import useAddToFavourite from '../../Hooks/UseAddToFavourite';
 
 export const HotPrices = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardWidth, setCardWidth] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
   const { favourites, toggleFavourite } = useAddToFavourite();
 
   const itemsPerPage = 4;
   const maxIndex = Math.max(0, phones.length - itemsPerPage);
 
-  const handlePrev = () => {
+  useLayoutEffect(() => {
+    const updateCardWidth = () => {
+      if (cardRef.current) {
+        const width = cardRef.current.offsetWidth;
+        const gap = 16;
+        setCardWidth(width + gap);
+      }
+    };
+
+    updateCardWidth();
+    window.addEventListener('resize', updateCardWidth);
+    return () => window.removeEventListener('resize', updateCardWidth);
+  }, []);
+
+  const handlePrev = useCallback(() => {
     setCurrentIndex(prev => Math.max(0, prev - 1));
-  };
+  }, []);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
-  };
+  }, [maxIndex]);
 
-  const getCardWidth = () => {
-    if (cardRef.current) {
-      const card = cardRef.current;
-      const cardWidth = card.offsetWidth;
-      const gap = 16;
-      return cardWidth + gap;
-    }
-    return 288;
-  };
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+    delta: 10,
+  });
 
   const sortedProduct = phones.sort((a, b) => b.priceRegular - a.priceRegular);
-
   const location = useLocation();
 
   const getCurrentPage = () => {
@@ -73,11 +87,12 @@ export const HotPrices = () => {
         </div>
       </div>
 
-      <div className={style.newmodels__products}>
+      <div {...handlers} className={style.newmodels__products} ref={sliderRef}>
         <div
           className={style.newmodels__products__slider}
           style={{
-            transform: `translateX(-${currentIndex * getCardWidth()}px)`,
+            transform: `translateX(-${currentIndex * cardWidth}px)`,
+            transition: 'transform 0.3s ease-out',
           }}
         >
           {sortedProduct.map((phone: Phone, index: number) => {
@@ -94,6 +109,7 @@ export const HotPrices = () => {
                     className={style.newmodels__product__image}
                     src={phone.images[0]}
                     alt={phone.name}
+                    draggable={false}
                   />
                 </Link>
                 <p className={style.newmodels__product__name}>{phone.name}</p>

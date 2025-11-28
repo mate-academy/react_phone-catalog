@@ -75,6 +75,8 @@
 			flex-basis: 100%;
 			overflow: hidden;
 			width: 100%;
+			cursor: grab;
+
 
 			&::-webkit-scrollbar {
 				display: none; 

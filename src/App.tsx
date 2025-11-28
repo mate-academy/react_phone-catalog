@@ -22,8 +22,8 @@ export const App = () => (
           <Route path="/accessories/:productId" element={<ProductPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        <Footer />
       </div>
     </div>
+      <Footer />
   </Router>
 );

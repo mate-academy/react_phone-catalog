@@ -2,9 +2,10 @@
 
 .catalog {
   display: grid;
-  grid-template-columns: repeat(4, (272px + 64px));
-  gap: 40px 16px;
+  grid-template-columns: repeat(auto-fill, 272px);
+  gap: 40px 15px;
   justify-items: center;
+	justify-content: center;
 
   	&__product {
 			display: block;
@@ -21,7 +22,6 @@
 						width: 196px;
 						height: 196px;
 						top: 32px;
-						left: 32px;
 						margin-bottom: 48px;
 						background-color: #161827;
 						padding: 0 20px;
@@ -40,7 +40,6 @@
 					line-height: 150%;
 					margin-bottom: 10px;
 					height: 58px;
-					padding: 0 32px;
         }
 
         &__price {
@@ -51,7 +50,6 @@
 					font-size: 22px;
 					line-height: 140%;
 					margin-bottom: 8px;
-					padding: 0 32px;
         }
 
 				&--line {
@@ -59,12 +57,10 @@
 					width: 208px;
 					height: 0;
 					margin-bottom: 16px;
-					margin-left: 32px;
 				}
 
         &__description {
 					background-color: #161827;
-					padding: 0 32px;
 					display: flex;
 					justify-content: space-between;
 					color: $active-link-color;
