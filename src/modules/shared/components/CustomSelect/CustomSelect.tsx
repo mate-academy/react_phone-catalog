@@ -10,28 +10,38 @@ type CustomSelectProps = {
   arrayOptions: Option[];
   param: string;
   label: string;
+  defaultOption?: number;
 };
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
   arrayOptions,
   param,
   label,
+  defaultOption = 0,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const currentValue = searchParams.get(param) || String(arrayOptions[0].value);
+  const currentValue =
+    searchParams.get(param) || String(arrayOptions[defaultOption].value);
 
   const currentLabel =
     arrayOptions.find(opt => String(opt.value) === currentValue)?.label ||
-    arrayOptions[0].label;
+    arrayOptions[defaultOption].label;
 
   const handleSelect = (option: Option) => {
     const params = new URLSearchParams(searchParams);
-    params.set(param, String(option.value)); // 🔥 у URL записуємо value
+
+    if (option.value === 'all') {
+      params.delete(param);
+    } else {
+      params.set(param, String(option.value));
+    }
+
     setSearchParams(params);
     setIsOpen(false);
   };
+
   return (
     <div className={styles.customSelect}>
       <div className={styles.customSelect__label}>{label}</div>

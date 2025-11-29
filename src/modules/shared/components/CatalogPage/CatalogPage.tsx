@@ -6,6 +6,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { CardSkeleton } from '../SliderItem/CardSkeleton';
 import styles from './CatalogPage.module.scss';
 import CustomSelect from '../CustomSelect/CustomSelect';
+import PaginationComponent from '../PaginationComponent/PaginationComponent';
 
 type CatalogPageProps = {
   fetchReq: () => Promise<Product[]>;
@@ -14,11 +15,17 @@ type CatalogPageProps = {
 const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [page, setPage] = useState<number>(
+    Number(searchParams.get('page')) || 1,
+  );
+  // const [productsPerPage, setProductsPerPage] = useState<number | 'all'>('all');
   const { category } = useParams();
   const sort = searchParams.get('sort');
-  const limit = searchParams.get('limit');
-
+  const perPage = searchParams.get('perPage');
+  useEffect(() => {
+    setPage(Number(searchParams.get('page')) || 1);
+  }, [searchParams]);
   useEffect(() => {
     const newTitle = formatTitle(category);
     setLoading(true);
@@ -27,7 +34,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
         if (sort) {
           products = products.sort((a, b) => {
             if (sort === 'age') {
-              return b.year - a.year; // Новіші спочатку
+              return b.year - a.year;
             }
             if (sort === 'title') {
               return a.name.localeCompare(b.name);
@@ -38,7 +45,6 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
             return 0;
           });
         }
-
         setProducts(products);
       })
       .finally(() => {
@@ -46,30 +52,44 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
         setLoading(false);
       });
   }, [category, sort]);
-
-  let preparedProducts = products;
-
+  useEffect(() => {
+    if (perPage === 'all') {
+      setPage(1);
+    }
+  }, [perPage]);
+  let filteredProducts = products;
+  if (perPage === 'all') {
+    const params = new URLSearchParams(searchParams);
+    params.delete('page');
+    setSearchParams(params);
+  }
   if (category) {
     const normalized = category.toLowerCase();
-    preparedProducts = products.filter(
+    filteredProducts = products.filter(
       product => product.category.toLowerCase() === normalized,
     );
+  }
+
+  const totalCount = filteredProducts.length; // 👈 важливо: до slice()
+  let visibleProducts = filteredProducts;
+
+  if (perPage && perPage !== 'all') {
+    const limit = Number(perPage);
+    const start = (page - 1) * limit;
+    visibleProducts = filteredProducts.slice(start, start + limit);
   }
   const skeletons = Array(8).fill(null);
 
   const formatTitle = (param: string | undefined): string => {
     // Приклад: "smartphones" -> "Смартфони"
-    // Приклад: "laptops" -> "Ноутбуки"
     switch (param) {
       case 'phones':
         return 'Mobile phones';
       case 'tablets':
         return 'Tablets';
-      // Додайте більше кейсів
       case 'accessories':
         return 'Accessories';
       default:
-        // Перетворюємо 'some-category' на 'Some Category'
         return param
           ? param
               .split('-')
@@ -83,9 +103,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
     <div className={styles.catalog}>
       <PageHeader title={formatTitle(category)} />
 
-      <div className={styles.catalog__modelsCount}>
-        {preparedProducts.length} models
-      </div>
+      <div className={styles.catalog__modelsCount}>{totalCount} models</div>
 
       <div className={styles.catalog__controls}>
         <CustomSelect
@@ -99,7 +117,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
         />
 
         <CustomSelect
-          param="limit"
+          param="perPage"
           label="Items on page"
           arrayOptions={[
             { label: '4', value: 4 },
@@ -107,16 +125,24 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
             { label: '16', value: 16 },
             { label: 'All', value: 'all' },
           ]}
+          defaultOption={3}
         />
       </div>
 
       <div className={styles.catalog__container}>
         {loading
           ? skeletons.map((_, index) => <CardSkeleton key={index} />)
-          : preparedProducts.map(product => (
+          : visibleProducts.map(product => (
               <SliderItem key={product.id} item={product} showDiscount={true} />
             ))}
       </div>
+      {perPage !== 'all' && (
+        <PaginationComponent
+          totalCount={totalCount}
+          perPage={Number(perPage || 0)}
+          currentPage={page}
+        />
+      )}
     </div>
   );
 };

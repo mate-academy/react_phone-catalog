@@ -1,0 +1,42 @@
+.paginationComponent {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 80px;
+
+  column-gap: 16px;
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $color-icons;
+    background-color: $color-bg;
+    color: $color-primary;
+  }
+  &__pages {
+    display: flex;
+    column-gap: 8px;
+  }
+  &__page {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $color-elements;
+    background-color: $color-bg;
+    color: $color-primary;
+    &_active {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color-bg;
+ border: 1px solid $color-elements;
+      background-color: $color-primary;
+    }
+  }
+}
