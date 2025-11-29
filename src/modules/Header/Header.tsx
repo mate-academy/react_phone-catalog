@@ -1,6 +1,5 @@
-import { FC, useState } from 'react';
-import { Link, useMatch } from 'react-router-dom';
-import s from './Header.module.scss';
+import { FC, useEffect, useState } from 'react';
+import { Link, useMatch, useLocation } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import menu from '../../assets/images/icons/menu.svg';
 import heart from '../../assets/images/icons/heart.svg';
@@ -10,9 +9,11 @@ import { BurgerMenu } from './components/BurgerMenu';
 import { useFavouriteContext } from '../../context/FavoritesContext';
 import { useCartContext } from '../../context/CartContext';
 import { SearchBar } from '../shared/components/SearchBar';
+import s from './Header.module.scss';
 
 export const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
   const { count } = useFavouriteContext();
   const { cartCount } = useCartContext();
   const matchPhones = useMatch('/phones/*');
@@ -22,6 +23,22 @@ export const Header: FC = () => {
   const isSearch = !!matchPhones || !!matchTablets || !!matchAccessories;
 
   const closeMenu = () => setIsMenuOpen(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <header>
