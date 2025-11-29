@@ -15,7 +15,13 @@ export const Header = () => {
     <>
       <header className={style.header}>
         <div className={style.header__container}>
-          <NavLink to="/" className={style.header__logo}>
+          <NavLink
+            to="/"
+            className={style.header__logo}
+            onClick={() => {
+              document.body.classList.remove('body--noscroll');
+            }}
+          >
             <img
               src="./img/logo/Logo.svg"
               alt="logo"

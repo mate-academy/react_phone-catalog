@@ -1,4 +1,5 @@
 @import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
 
 .breadcrumbs {
   display: flex;
@@ -30,6 +31,11 @@
 
   &__back {
     display: flex;
+    margin-top: 24px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
 
     &__arrow {
       margin-right: 10px;

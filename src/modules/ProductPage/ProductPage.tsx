@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Breadcrumbs } from '../Shared/Breadcrumbs/Breadcrumbs';
-import { PhonesTitle } from '../CatalogPage/PhonesTitle/Phones-title';
+import { PhonesTitle } from '../Shared/PhonesTitle/Phones-title';
 import { Product } from './Product/Product';
 import { ProductDescription } from './ProductDescription/Product-description';
 import { useLocation, useParams } from 'react-router-dom';

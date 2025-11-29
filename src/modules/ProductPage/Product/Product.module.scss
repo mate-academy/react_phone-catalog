@@ -1,28 +1,76 @@
 @import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
 
 .product {
   display: flex;
-  margin-bottom: $pixels80;
+  flex-direction: column;
+  gap: 40px;
   
+  @include onTablet {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  @include onDesktop {
+    gap: 64px;
+  }
+
+  &--margin {
+    margin-bottom: 56px;
+    @include onTablet {
+      margin-bottom: $pixels80;
+    }
+  }
+
   &__images {
     display: flex;
-    margin-right: 135px;
+    flex-direction: column-reverse;
+    width: 100%;
+    box-sizing: border-box;
     
+    @include onTablet {
+      flex-direction: row;
+      flex: 1;
+      max-width: 50%; 
+    }
+
+    @include onDesktop {
+      max-width: 560px;
+    }
+
     &__available {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-right: 16px;
-      
+      flex-direction: row;
+      gap: 8px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+
+      @include onTablet {
+        flex-direction: column;
+        margin-right: 16px;
+        margin-bottom: 0;
+        overflow-x: visible;
+        flex-shrink: 0;
+      }
+
       &--image {
-        height: 80px;
-        width: 80px;
-        padding: 0 12px;
+        height: 50px;
+        width: 50px;
+        min-width: 50px;
+        padding: 4px;
         box-sizing: border-box;
         cursor: pointer;
         border: 1px solid transparent;
         transition: border-color 0.15s ease;
-        
+        object-fit: contain;
+
+        @include onTablet {
+          height: 80px;
+          width: 80px;
+          min-width: 80px;
+          padding: 0 12px;
+        }
+
         &:hover {
           border-color: #4a4d58;
         }
@@ -30,57 +78,104 @@
     }
 
     &__image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      min-width: 0;
+
       &--main {
-        width: 442px;
-        height: 442px;
-        padding: 0 65px;
-        box-sizing: border-box;
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        aspect-ratio: 1;
+        object-fit: contain;
+
+        @include onTablet {
+          max-width: 100%;
+        }
       }
     }
   }
 
   &__cart {
-    width: 320px;
-    margin-right: 16px;
+    width: 100%;
+    box-sizing: border-box;
     
-    &__name {
-      font-family: $mont-regular-font;
-      font-weight: 700;
-      font-size: 12px;
-      color: #75767F;
-      margin-bottom: 8px;
+    @include onTablet {
+      width: 320px;
+      min-width: 280px;
+      flex-shrink: 1; 
     }
-    
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      max-width: 512px;
+      margin-bottom: 8px;
+      
+      @include onDesktop {
+        width: 160%;
+      }
+      
+      &__name {
+          font-family: $mont-regular-font;
+          font-weight: 700;
+          font-size: 12px;
+          color: #75767f;
+        }
+
+        &__id {
+          width: auto;
+          font-family: $mont-regular-font;
+          font-weight: 700;
+          font-size: 12px;
+          text-align: right;
+          color: #4a4d58;
+          margin-left: auto;
+        }
+    }
+
+    &__flex {
+      display: flex;
+      justify-content: space-between;
+    }
+
+
     &__colors {
       display: flex;
       gap: 9px;
       margin-bottom: 24px;
+      flex-wrap: wrap;
 
       &__color {
         border: 2px solid transparent;
         border-radius: 50%;
         width: 30px;
         height: 30px;
+        min-width: 30px;
         cursor: pointer;
         transition: border-color 0.15s ease;
-        
+
         &:hover {
           border-color: #fff;
         }
       }
     }
-    
+
     &__capacity {
       display: flex;
       gap: 8px;
       margin-bottom: 24px;
-      
+      flex-wrap: wrap;
+
       &--available {
         box-sizing: border-box;
         border: 1px solid #4a4d58;
         background-color: transparent;
         color: $active-link-color;
-        width: 56px;
+        min-width: 56px;
+        padding: 0 12px;
         height: 32px;
         cursor: pointer;
         transition: all 0.15s ease;
@@ -103,7 +198,7 @@
     }
 
     &--line {
-      width: 320px;
+      width: 100%;
       height: 1px;
       background-color: #4a4d58;
       border: none;
@@ -114,19 +209,20 @@
       display: flex;
       align-items: center;
       margin-bottom: 16px;
-      
+      gap: 8px;
+
       &__price {
         font-family: $mont-bold-font;
         color: $active-link-color;
         font-weight: 800;
         font-size: 32px;
         line-height: 128%;
-        margin: 0 8px 0 0;
+        margin: 0;
       }
-  
+
       &__discount {
         font-family: $mont-bold-font;
-        color: #75767F;
+        color: #75767f;
         font-weight: 600;
         font-size: 22px;
         line-height: 140%;
@@ -142,22 +238,23 @@
 
       &__button__add {
         color: #fff;
-        width: 263px;
+        flex: 1;
+        min-width: 0;
         height: 48px;
-        background-color: #905BFF;
+        background-color: #905bff;
         border: none;
         cursor: pointer;
         transition: background-color 0.15s ease;
         font-family: $mont-regular-font;
         font-weight: 700;
         font-size: 14px;
-              
+
         &:hover {
-          background-color: #A378FF;
+          background-color: #a378ff;
         }
-        
+
         &:active {
-          background-color: #7A4FD9;
+          background-color: #7a4fd9;
         }
       }
 
@@ -169,9 +266,10 @@
         border: 1px solid #4a4d58;
         width: 48px;
         height: 48px;
+        min-width: 48px;
         cursor: pointer;
         transition: border-color 0.15s ease;
-        
+
         &:hover {
           border-color: $active-link-color;
         }
@@ -183,6 +281,10 @@
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
+
+          &--active {
+          background-image: url(/img/logo/Favourites.svg);
+          }
         }
       }
     }
@@ -191,18 +293,18 @@
       display: flex;
       justify-content: space-between;
       padding-bottom: 8px;
-      
+
       &__screen,
       &__resolution,
       &__processor,
       &__ram {
-        color: #75767F;
+        color: #75767f;
         font-family: $mont-regular-font;
         font-weight: 700;
         font-size: 12px;
         margin: 0;
       }
-      
+
       &__screen--number,
       &__resolution--number,
       &__processor--number,
@@ -217,13 +319,5 @@
     }
   }
 
-  &__id {
-    width: 176px;
-    font-family: $mont-regular-font;
-    font-weight: 700;
-    font-size: 12px;
-    text-align: right;
-    color: #4A4D58;
-    margin-left: auto;
-  }
+
 }

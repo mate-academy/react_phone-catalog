@@ -6,6 +6,8 @@ import { CatalogPage } from './modules/CatalogPage/CatalogPage';
 import { ProductPage } from './modules/ProductPage/ProductPage';
 import { Footer } from './modules/Shared/Footer/Footer';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
+import { CartPage } from './modules/CartPage';
+import { FavouritesPage } from './modules/FavouritesPage';
 
 export const App = () => (
   <Router>
@@ -20,6 +22,8 @@ export const App = () => (
           <Route path="/phones/:productId" element={<ProductPage />} />
           <Route path="/tablets/:productId" element={<ProductPage />} />
           <Route path="/accessories/:productId" element={<ProductPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>

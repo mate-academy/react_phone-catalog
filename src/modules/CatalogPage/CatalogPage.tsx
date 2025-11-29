@@ -1,7 +1,7 @@
 import { Breadcrumbs } from '../Shared/Breadcrumbs/Breadcrumbs';
 import { Catalog } from './Catalog/Catalog';
 import { Pagination } from './Pagination/Pagination';
-import { PhonesTitle } from './PhonesTitle/Phones-title';
+import { PhonesTitle } from '../Shared/PhonesTitle/Phones-title';
 import { Sort } from './Sort/Sort';
 import useCatalogData from '../Hooks/UseCatalogData';
 import { useState, useEffect } from 'react';
