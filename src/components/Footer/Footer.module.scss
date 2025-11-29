@@ -72,7 +72,6 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: 16px;
   font-weight: 800;
   font-size: 12px;
   line-height: 11px;
@@ -80,9 +79,30 @@
   text-transform: uppercase;
 
   @include on-mobile {
+    gap: 16px;
+
     flex-direction: column;
     align-items: flex-start;
   }
+
+  @include on-desktop {
+    justify-content: space-between;
+    width: 380px;
+    max-width: 100%;
+  }
+
+  @include on-tablet {
+    justify-content: space-between;
+    width: 200px;
+    max-width: 100%;
+  }
+
+  @include on-bigTablet {
+    justify-content: space-between;
+    width: 200px;
+    max-width: 100%;
+  }
+
 
   a {
     font-weight: 800;

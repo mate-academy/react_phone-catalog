@@ -212,6 +212,12 @@
   aspect-ratio: 1 / 1;
   overflow: hidden;
   margin-bottom: 24px;
+
+  &:hover .mobilePhones__image,
+  &:hover .tablets__image,
+  &:hover .accessories__image {
+    transform: scale(1.08);
+  }
 }
 
 .backgroundPhones {

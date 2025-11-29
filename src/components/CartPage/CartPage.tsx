@@ -9,6 +9,7 @@ import { getImgUrl } from '../../utils/getImgUrl';
 export const CartPage: React.FC = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
   const navigate = useNavigate();
+  const totalCount = cartItems.reduce((s, i) => s + (i.quantity || 0), 0);
 
   const increaseQty = (id: string | number) => {
     const item = cartItems.find(i => i.id === id);
@@ -71,6 +72,7 @@ export const CartPage: React.FC = () => {
                 <div className={styles.itemMobileBot}>
                   <div className={styles.qty}>
                     <button
+                      type="button"
                       className={styles.btnDecrease}
                       onClick={() => decreaseQty(product.id)}
                     >
@@ -78,6 +80,7 @@ export const CartPage: React.FC = () => {
                     </button>
                     <span>{product.quantity}</span>
                     <button
+                      type="button"
                       className={styles.btnIncrease}
                       onClick={() => increaseQty(product.id)}
                     >
@@ -98,8 +101,7 @@ export const CartPage: React.FC = () => {
           <div className={styles.summary}>
             <p className={styles.totalPrice}>${getTotalPrice()}</p>
             <p className={styles.totalItems}>
-              Total for {cartItems.length}{' '}
-              {cartItems.length === 1 ? 'item' : 'items'}
+              Total for {totalCount} {cartItems.length === 1 ? 'item' : 'items'}
             </p>
             <div className={styles.border}></div>
             <button className={styles.checkout}>Checkout</button>

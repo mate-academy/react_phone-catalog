@@ -6,6 +6,8 @@ import { useCart } from '../../../context/CartContext';
 
 export function HeaderDesktop() {
   const { cartItems, favourites } = useCart();
+  const totalCount = cartItems.reduce((s, i) => s + (i.quantity || 0), 0);
+  const totalFav = favourites.length;
 
   return (
     <header className={styles.header}>
@@ -24,12 +26,12 @@ export function HeaderDesktop() {
         <NavLink
           to="/favorites"
           className={({ isActive }) =>
-            isActive ? `${styles.favorites} ${styles.favorites__active}` : styles.favorites
+            isActive
+              ? `${styles.favorites} ${styles.favorites__active}`
+              : styles.favorites
           }
         >
-          {favourites.length > 0 && (
-            <div className={styles.badge}>{favourites.length}</div>
-          )}
+          {totalFav > 0 && <div className={styles.badge}>{totalFav}</div>}
         </NavLink>
 
         <NavLink
@@ -38,9 +40,7 @@ export function HeaderDesktop() {
             isActive ? `${styles.cart} ${styles.cart__active}` : styles.cart
           }
         >
-          {cartItems.length > 0 && (
-            <div className={styles.badge}>{cartItems.length}</div>
-          )}
+          {totalCount > 0 && <div className={styles.badge}>{totalCount}</div>}
         </NavLink>
       </div>
     </header>

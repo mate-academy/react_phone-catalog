@@ -83,15 +83,22 @@ export function ProductCard({ product }: Props) {
         <div className={styles.buttons}>
           <button
             className={isAddedToCart ? styles.addedToCart : styles.addToCart}
-            onClick={() =>
-              isAddedToCart ? removeFromCart(product.id) : addToCart(product)
-            }
+            onClick={e => {
+              isAddedToCart ? removeFromCart(product.id) : addToCart(product);
+
+              e.currentTarget.blur();
+            }}
           >
             {isAddedToCart ? 'Added' : 'Add to cart'}
           </button>
+
           <button
             className={styles.addToFavourites}
-            onClick={() => addToFavourites(product)}
+            onClick={e => {
+              addToFavourites(product);
+
+              e.currentTarget.blur();
+            }}
           >
             <img
               className={
@@ -106,8 +113,3 @@ export function ProductCard({ product }: Props) {
     </article>
   );
 }
-
-// const thumb =
-//     product.images && product.images.length
-//       ? `/${product.images[0]}`
-//       : '/img/placeholder.png';
