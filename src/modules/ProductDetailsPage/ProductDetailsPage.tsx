@@ -34,7 +34,10 @@ export const ProductDetailsPage = () => {
       }
 
       const newImages = product.images.map(img =>
-        img.replace(product.color.toLowerCase(), color.toLowerCase()),
+        img.replace(
+          product.color.toLowerCase().replace(' ', '-'),
+          color.toLowerCase(),
+        ),
       );
 
       setImages(newImages);
