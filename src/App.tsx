@@ -1,3 +1,4 @@
+import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { AppRouter } from './router/AppRouter';
 
@@ -8,6 +9,7 @@ const App = () => {
       <main>
         <AppRouter />
       </main>
+      <Footer />
     </>
   );
 };

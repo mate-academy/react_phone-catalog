@@ -1,6 +1,5 @@
-// types/Products.ts
-export type Product = {
-  id: number;
+export type ProductCardData = {
+  id: string;
   category: string;
   itemId: string;
   name: string;
@@ -10,8 +9,8 @@ export type Product = {
   capacity: string;
   color: string;
   ram: string;
-  year: number;
+  year?: number;
   image: string;
 };
 
-export type Products = Product[];
+export type ProductCards = ProductCardData[];

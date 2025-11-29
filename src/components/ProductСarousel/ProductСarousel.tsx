@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Products } from '../../types/Products';
+import { Products } from '../../types/product.types';
 import styles from './ProductСarousel.module.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { ProductCarouselProps } from '../../types/ProductCarouselProps';

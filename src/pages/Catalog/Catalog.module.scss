@@ -1,0 +1,319 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0 16px;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include tablet {
+    padding: 0 24px;
+  }
+
+  @include mobile {
+    padding: 0 16px;
+  }
+
+  &__iconParams {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 24px 0 0;
+
+    &_icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: $font-primary;
+      color: $secondary-color;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    &_arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 48px;
+    font-family: $font-primary;
+    font-weight: 800;
+    color: $primary-color;
+    width: 100%;
+    text-align: left;
+
+    @include mobile {
+      font-size: 32px;
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    font-family: $font-primary;
+    font-weight: 600;
+    color: $secondary-color;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__labels {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0 24px;
+
+    @include mobile {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+
+      @include mobile {
+        width: 100%;
+        min-width: 0;
+        flex: 1;
+      }
+    }
+
+    &_label {
+      font-family: $font-primary;
+      color: $secondary-color;
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 10px;
+      white-space: nowrap;
+    }
+
+    &_select {
+      padding: 10px 36px 10px 14px;
+      border: 1px solid $secondary-color;
+      border-radius: 1px;
+      background-color: white;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+      appearance: none;
+      transition: all 0.2s;
+      width: 100%;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  &__empty {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    padding: 60px 20px;
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+    padding: 20px 0;
+
+    @include tablet {
+      gap: 4px;
+      padding: 16px 0;
+    }
+
+    @include mobile {
+      gap: 4px;
+      padding: 12px 0;
+    }
+
+    &_btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $icons-color;
+      border-radius: 6px;
+      background: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+
+      @include tablet {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+      }
+
+      @include mobile {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+      }
+
+      &:hover:not(:disabled) {
+        border-color: $primary-color;
+        background: $hover_bg-color;
+      }
+
+      &:active:not(:disabled) {
+        transform: scale(0.95);
+      }
+    }
+
+    &_pages {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      overflow-x: auto;
+      max-width: 100%;
+      padding: 0 4px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      @include tablet {
+        gap: 2px;
+      }
+    }
+
+    &_page {
+      min-width: 40px;
+      height: 40px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $icons-color;
+      border-radius: 6px;
+      background: white;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+
+      @include tablet {
+        min-width: 36px;
+        height: 36px;
+        padding: 0 8px;
+        font-size: 13px;
+      }
+
+      @include mobile {
+        min-width: 32px;
+        height: 32px;
+        padding: 0 6px;
+        font-size: 12px;
+      }
+
+      &:hover {
+        border-color: $primary-color;
+        background: $hover_bg-color;
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      &_active {
+        background: $primary-color;
+        color: white;
+        border-color: $primary-color;
+
+        &:hover {
+          background: $primary-color;
+          border-color: $primary-color;
+        }
+      }
+    }
+
+    &_dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+      color: $secondary-color;
+      font-weight: 600;
+      user-select: none;
+
+      @include tablet {
+        min-width: 36px;
+        height: 36px;
+        font-size: 14px;
+      }
+
+      @include mobile {
+        min-width: 24px;
+        height: 32px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .loading,
+  .error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+
+    h1 {
+      font-size: 24px;
+      color: $secondary-color;
+    }
+  }
+}

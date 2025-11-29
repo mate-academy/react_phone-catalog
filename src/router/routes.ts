@@ -1,13 +1,19 @@
 export const routes = {
-  home: '/',
-  phones: '/phones',
-  tablets: '/tablets',
-  accessories: '/accessories',
+  home: '/home',
 
-  productDetails: '/product/:productId',
+  catalog: '/catalog/:category',
+  phones: '/catalog/phones',
+  tablets: '/catalog/tablets',
+  accessories: '/catalog/accessories',
+
+  product: '/product/:id',
 
   cart: '/cart',
   favorites: '/favorites',
+
+  github: '/github',
+  contacts: '/contacts',
+  rights: '/rights',
 
   notFound: '*',
 };

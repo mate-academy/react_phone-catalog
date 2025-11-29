@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
+import { routes } from '../../router/routes';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,7 @@ const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}>
-        <NavLink to="/" className={styles.header__logo_link}>
+        <NavLink to={routes.home} className={styles.header__logo_link}>
           <img
             src="../../../img/Logo.png"
             alt="Nice Gadgets Logo"
@@ -36,7 +37,7 @@ const Header: React.FC = () => {
         <ul className={styles.header__nav_list}>
           <li>
             <NavLink
-              to="/"
+              to={routes.home}
               className={({ isActive }) => (isActive ? styles.active : '')}
             >
               HOME
@@ -44,7 +45,7 @@ const Header: React.FC = () => {
           </li>
           <li>
             <NavLink
-              to="/Phones"
+              to={routes.phones}
               className={({ isActive }) => (isActive ? styles.active : '')}
             >
               PHONES
@@ -52,7 +53,7 @@ const Header: React.FC = () => {
           </li>
           <li>
             <NavLink
-              to="/Tablets"
+              to={routes.tablets}
               className={({ isActive }) => (isActive ? styles.active : '')}
             >
               TABLETS
@@ -60,7 +61,7 @@ const Header: React.FC = () => {
           </li>
           <li>
             <NavLink
-              to="/Accessories"
+              to={routes.accessories}
               className={({ isActive }) => (isActive ? styles.active : '')}
             >
               ACCESSORIES
@@ -71,10 +72,10 @@ const Header: React.FC = () => {
 
       {/* Desktop cart */}
       <div className={styles.header__actions_desktop}>
-        <NavLink to="/favorites">
+        <NavLink to={routes.favorites}>
           <img src="../../../img/Favorites Hurt.png" alt="Favorites" />
         </NavLink>
-        <NavLink to="/cart">
+        <NavLink to={routes.cart}>
           <img src="../../../img/Shopping bag (Cart).png" alt="Cart" />
         </NavLink>
       </div>
@@ -100,7 +101,7 @@ const Header: React.FC = () => {
           <ul className={styles.header__nav_list_mobile}>
             <li>
               <NavLink
-                to="/"
+                to={routes.home}
                 onClick={toggleMenu}
                 className={({ isActive }) => (isActive ? styles.active : '')}
               >
@@ -109,7 +110,7 @@ const Header: React.FC = () => {
             </li>
             <li>
               <NavLink
-                to="/Phones"
+                to={routes.phones}
                 onClick={toggleMenu}
                 className={({ isActive }) => (isActive ? styles.active : '')}
               >
@@ -118,7 +119,7 @@ const Header: React.FC = () => {
             </li>
             <li>
               <NavLink
-                to="/Tablets"
+                to={routes.tablets}
                 onClick={toggleMenu}
                 className={({ isActive }) => (isActive ? styles.active : '')}
               >
@@ -127,7 +128,7 @@ const Header: React.FC = () => {
             </li>
             <li>
               <NavLink
-                to="/Accessories"
+                to={routes.accessories}
                 onClick={toggleMenu}
                 className={({ isActive }) => (isActive ? styles.active : '')}
               >

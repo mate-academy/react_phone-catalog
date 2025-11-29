@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Product } from '../../types/Products';
+import type { ProductCardData } from '../../types/product.types';
 import styles from './ProductCard.module.scss';
 
 type ProductCardProps = {
-  product: Product;
+  product: ProductCardData;
   hotPrice?: boolean;
 };
 
@@ -11,6 +11,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   hotPrice = false,
 }) => {
+  // eslint-disable-next-line no-console
+  console.log(product);
+
   return (
     <Link to={`/product/${product.id}`} className={styles.card}>
       <img
