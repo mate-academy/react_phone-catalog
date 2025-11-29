@@ -1,0 +1,49 @@
+@import 'src/styles/media';
+@import 'src/styles/mixins';
+@import 'src/styles/variables';
+
+.categories {
+    display: flex;
+    justify-content: center;
+    margin-top: 56px;
+    padding: 0 16px;
+}
+
+.category__list{
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1136px;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    @include tablet{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &-item{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        transition: 0.5s;
+
+        @include tablet {
+            max-width: 187px;
+        }
+
+        @include desktop {
+            max-width: 368px;
+        }
+
+        &:hover{
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+    }
+}

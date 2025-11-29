@@ -1,0 +1,103 @@
+@import 'src/styles/media';
+@import 'src/styles/mixins';
+@import 'src/styles/variables';
+
+.iphone-14{
+    background-image: url('../../../images/344a35d3d4580db3ba8a1b2575c558d64ab02a7b.png');
+
+    @include tablet{
+        background-image: url('../../../images/slider-img-desktop.png');
+    }
+}
+
+.slider{
+    position: relative;
+    width: 100%;
+    max-width: 1040px;
+
+    @include tablet{
+       padding: 0 75px;
+    }
+}
+
+.carousel{
+    max-width: 1040px;
+}
+
+.carousel-inner{
+    max-width: 1040px;
+}
+
+.carousel-item {
+    max-width: 1040px;
+}
+
+.slider__img {
+  flex: 1;
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include tablet{
+    aspect-ratio: 26 / 10;
+    width: 100%;
+    min-width: 0;
+    max-width: 1040px;
+  }
+}
+
+.custom-prev, .custom-next {
+  display: none;
+
+  @include tablet{
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 100%;
+  border: 1px solid $icons;
+  }
+}
+
+.custom-prev {
+  left: -50px;
+}
+
+.custom-next {
+  right: -50px;
+}
+
+.slider__indicators {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.slider__dot {
+  cursor: pointer;
+
+  width: 14px;
+  height: 4px;
+  border: none;
+
+  background: $elements;
+
+  transition: background 0.3s;
+
+  &.is-active {
+    background: $primary-color;
+  }
+}

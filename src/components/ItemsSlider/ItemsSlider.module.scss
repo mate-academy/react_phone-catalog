@@ -1,0 +1,81 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/media';
+
+.models__section{
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    align-items: center;
+
+    width: 100%;
+    margin-top: 50px;
+    padding: 0 16px;
+}
+
+.title__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 1136px;
+}
+
+.title{
+    @include h2-MB;
+
+    width: 50%;
+    color: $primary-color;
+}
+
+.slider__buttons{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border: 1px solid $elements;
+
+    background-color: $white;
+
+    transition-duration: 0.5s;
+}
+
+.button:hover{
+    border: 1px solid $icons;
+    transition-duration: 0.5s;
+    
+    .slider__svg path{
+        fill: $primary-color;
+        transition-duration: 0.5s;
+    }
+}
+
+.models{
+    scroll-behavior: smooth;
+
+    overflow-x: hidden;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1136px;
+    padding: 0;
+
+    list-style: none;
+}
+
+.models__item{
+    height: 100%;
+}

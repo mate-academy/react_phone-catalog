@@ -1,0 +1,60 @@
+
+@import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/media';
+
+.pagination__wrapper{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    margin-top: 24px;
+
+    @include tablet{
+        margin-top: 40px;
+    }
+}
+
+.page-selector__wrapper{
+    display: flex;
+    gap: 8px;
+}
+
+
+
+.pagination__button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border: 1px solid $elements;
+
+    color: $primary-color;
+
+    background-color: $white;
+
+    transition-duration: 0.5s;
+
+    @include bodyText-DT;
+    
+    &:hover{
+        border: 1px solid $icons;
+        transition-duration: 0.5s;
+
+        svg path{
+            fill: $primary-color;
+            transition-duration: 0.5s;
+        }
+    }
+}
+
+.is-active{
+    color: $white;
+    background-color: $primary-color;
+    transition-duration: 0.5s;
+}

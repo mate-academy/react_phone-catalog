@@ -1,0 +1,89 @@
+import { Link } from 'react-router-dom';
+import './BurgerMenu.scss';
+import favourites from '../../Icons/Vector (Stroke).svg';
+import cart from '../../Icons/Group 17.svg';
+import { useContext, useMemo } from 'react';
+import { CartContext } from '../../contexts/CartContext';
+import { FavoritesContext } from '../../contexts/FavoritesContext';
+import { ItemsCounter } from '../ItemsCounter';
+
+interface Props {
+  isOpen: boolean;
+  handleSetIsOpen: () => void;
+}
+
+export const BurgerMenu: React.FC<Props> = ({ isOpen, handleSetIsOpen }) => {
+  const { favorites } = useContext(FavoritesContext);
+  const { cartProducts } = useContext(CartContext);
+
+  const cartCounter = useMemo(() => {
+    return cartProducts.reduce((prev, product) => {
+      return prev + product.quantity;
+    }, 0);
+  }, [cartProducts]);
+
+  return (
+    isOpen && (
+      <aside className="burger__aside">
+        <nav className="burger__aside__nav">
+          <ul className="nav__list--menu">
+            <li className="nav__list--menu-items">
+              <Link className="nav__link" to="/" onClick={handleSetIsOpen}>
+                HOME
+              </Link>
+            </li>
+            <li className="nav__list--menu-items">
+              <Link
+                className="nav__link"
+                to="/phones"
+                onClick={handleSetIsOpen}
+              >
+                PHONES
+              </Link>
+            </li>
+            <li className="nav__list--menu-items">
+              <Link
+                className="nav__link"
+                to="/tablets"
+                onClick={handleSetIsOpen}
+              >
+                TABLETS
+              </Link>
+            </li>
+            <li className="nav__list--menu-items">
+              <Link
+                className="nav__link"
+                to="/accessories"
+                onClick={handleSetIsOpen}
+              >
+                ACCESSORIES
+              </Link>
+            </li>
+          </ul>
+          <div className="nav__buttons--menu">
+            <Link
+              to="/favourites"
+              className="icon__link"
+              onClick={handleSetIsOpen}
+            >
+              <div className="img__wrapper">
+                <img src={favourites} alt="favourites"></img>
+                {favorites.length >= 1 && (
+                  <ItemsCounter quantity={favorites.length}></ItemsCounter>
+                )}
+              </div>
+            </Link>
+            <Link to="/cart" className="icon__link" onClick={handleSetIsOpen}>
+              <div className="img__wrapper">
+                <img src={cart} alt="cart" />
+                {cartProducts.length >= 1 && (
+                  <ItemsCounter quantity={cartCounter}></ItemsCounter>
+                )}
+              </div>
+            </Link>
+          </div>
+        </nav>
+      </aside>
+    )
+  );
+};

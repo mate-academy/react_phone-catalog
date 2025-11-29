@@ -1,0 +1,31 @@
+@mixin onTablet {
+  @media (width >= 640px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (width >= 1200px) {
+    @content;
+  }
+}
+
+@mixin inlinePadding() {
+  padding-inline: 16px;
+
+  @include onTablet {
+    padding-inline: 24px;
+  }
+
+  @include onDesktop {
+    padding-inline: 32px;
+  }
+
+  // @media (min-width: 1200px) {
+  //   padding-inline: 0;
+  // }
+}
+
+@mixin font-main {
+  font-family: Mont, sans-serif;
+}

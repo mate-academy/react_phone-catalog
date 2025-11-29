@@ -26,8 +26,9 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 12,
-    project: './tsconfig.json',
     sourceType: 'module',
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json'],
   },
   plugins: [
     'jsx-a11y',
