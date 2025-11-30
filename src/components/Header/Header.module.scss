@@ -1,0 +1,363 @@
+@use '../../shared/styles/variables.scss' as *;
+@use '../../shared/styles/mixins.scss' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: $menu-background-color;
+  border-bottom: 1px solid $menu-border-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  gap: 0;
+
+  @include on-tablet {
+    height: 48px;
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__left {
+    gap: 0;
+    padding-left: 16px;
+
+    @include on-tablet {
+      gap: 16px;
+      display: flex;
+      align-items: center;
+      padding-left: 16px;
+    }
+
+    @include on-desktop {
+      gap: 48px;
+      display: flex;
+      align-items: center;
+      padding-left: 16px;
+    }
+  }
+
+  &__icons {
+    display: none;
+
+    a {
+      @include on-tablet {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid $menu-border-color;
+        border-bottom: none;
+        padding: 16px 12px;
+
+        &:not(:first-child) {
+          border-left: none;
+        }
+      }
+
+      @include on-desktop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid $menu-border-color;
+        border-bottom: none;
+        padding: 24px;
+
+        &:not(:first-child) {
+          border-left: none;
+        }
+      }
+    }
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+  }
+
+  &__burger {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: 1px solid $menu-border-color;
+    border-bottom: none;
+    padding: 16px;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__badge {
+    background-color: $countBadgeColor;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: 22px;
+    right: 68px;
+    transform: translate(50%, -50%);
+    z-index: 1;
+
+    @include on-tablet {
+      top: 15px;
+      right: 15px;
+    }
+
+    @include on-desktop {
+      top: 22px;
+      right: 22px;
+    }
+  }
+
+  &__countCart {
+    background-color: $countBadgeColor;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    text-decoration: none;
+    top: 22px;
+    right: 68px;
+    transform: translate(50%, -50%);
+    z-index: 1;
+
+    @include on-tablet {
+      top: 15px;
+      right: 15px;
+    }
+
+    @include on-desktop {
+      top: 22px;
+      right: 22px;
+    }
+  }
+
+  &__dropdown {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: $menu-background-color;
+    border-top: 1px solid $menu-border-color;
+    flex-direction: column;
+    z-index: 9999;
+    padding-left: 0;
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+      color: $card-contentColor;
+      font-size: 12px;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    &.isOpen {
+      display: flex;
+
+      .menu__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+        list-style: none;
+        padding: 0;
+      }
+    }
+
+    &Header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 48px;
+      border-bottom: 1px solid $menu-border-color;
+    }
+  }
+
+  &__close {
+    background: none;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid $menu-border-color;
+    border-bottom: none;
+    padding: 16px;
+  }
+
+  &__bottomIcons {
+    display: none;
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    border-top: 1px solid $menu-border-color;
+    width: 100%;
+    gap: 16px;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__bottomIcon {
+    width: 160px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -15%;
+      width: 1px;
+      height: 100%;
+      background-color: $menu-border-color;
+    }
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    padding-left: 24px;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__item {
+    color: $menu-color;
+    display: inline-block;
+    text-decoration: none;
+    list-style-type: none;
+    font-size: 12px;
+    font-weight: 800;
+    margin-right: 20px;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      display: flex;
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: $card-contentColor;
+    line-height: 60px;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+  }
+
+  &__iconsLike {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+}
+
+.logo__image {
+  width: auto;
+  height: 22px;
+  padding-left: 16px;
+
+  @include on-tablet {
+    height: 22px;
+  }
+
+  @include on-desktop {
+    height: 28px;
+  }
+}
+
+.isActive {
+  color: $menu-color;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    background-color: $menu-color;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    @include on-tablet {
+      bottom: 4px;
+    }
+  }
+}

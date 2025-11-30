@@ -1,0 +1,78 @@
+@mixin on-phone {
+  @media (min-width: 320px) and (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin on-big-tablet {
+  @media (min-width: 768px) and (max-width: 1199px) {
+    @content
+  }
+}
+
+@mixin on-small-desktop {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-small-desktop {
+    padding-inline: 32px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+
+    column-gap: 16px;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+
+    gap: 16px;
+  }
+}

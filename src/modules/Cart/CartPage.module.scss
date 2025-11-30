@@ -1,0 +1,314 @@
+@use '../../shared/styles/variables.scss' as *;
+@use '../../shared/styles/mixins.scss' as *;
+
+html,
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.button__minus,
+.button__plus {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $menu-border-color;
+  background-color: $menu-border-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border-color: #4a4d58;
+
+    svg {
+      color: #4a4d58;
+    }
+  }
+
+  &:not(:disabled):hover {
+    background-color: $catalogHoverBtnColor;
+    border: 1px solid $catalogHoverBtnColor;
+  }
+}
+
+.cart {
+  @include content-padding-inline;
+  padding-top: 24px;
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 32px;
+    margin-bottom: 80px;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      display: flex;
+      gap: 16px;
+      flex-direction: row;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      max-width: 752px;
+    }
+  }
+
+  &__item {
+    background-color: $card-backColor;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 128px;
+    gap: 16px;
+    padding: 16px;
+
+    box-sizing: border-box;
+
+    @include on-tablet {
+      flex-direction: row;
+      width: 592px;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      width: 752px;
+      padding: 24px;
+    }
+  }
+
+  &__itemLeft {
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__itemRight {
+    display: flex;
+    gap: 109px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+
+    img {
+      flex-shrink: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__name {
+    color: $menu-color;
+    font-size: 14px;
+    margin: 0;
+    width: 128px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-desktop {
+      width: 336px;
+    }
+  }
+
+  &__quantity {
+    font-size: 14px;
+    color: $menu-color;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__price {
+    color: $menu-color;
+    font-size: 22px;
+    font-weight: 600;
+    margin-left: auto;
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 288px;
+    height: 190px;
+    border: 1px solid $catalogHoverBtnColor;
+
+    @include on-tablet {
+      width: 592px;
+      height: 190px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 206px;
+    }
+  }
+
+  &__total {
+    font-size: 32px;
+    font-weight: 600;
+    color: $menu-color;
+    margin-top: 23px;
+  }
+
+  &__summaryTotal {
+    font-size: 14px;
+    color: $card-contentColor;
+    border-bottom: 1px solid $card-contentColor;
+    padding-bottom: 25px;
+    width: 240px;
+    text-align: center;
+
+    @include on-tablet {
+      width: 544px;
+    }
+
+    @include on-desktop {
+      width: 321px;
+    }
+  }
+
+  &__checkout {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    color: $menu-color;
+    text-decoration: none;
+    background-color: $card-settings-buttonBackColor;
+    width: 240px;
+    height: 48px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 16px;
+
+    @include on-tablet {
+      width: 544px;
+      margin-top: 16px;
+    }
+
+    @include on-desktop {
+      width: 320px;
+      margin-top: 24px;
+    }
+  }
+
+  &__remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      stroke: $catalogHoverBtnColor;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover svg {
+      transform: scale(1.2);
+    }
+  }
+
+  &__emptyWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding-left: 152px;
+    padding-top: 32px;
+  }
+
+  &__emptyImage {
+    width: 500px;
+    height: auto;
+    margin-bottom: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__empty {
+    font-size: 32px;
+    color: $menu-color;
+  }
+}
+
+.back {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.buttonBack {
+  color: $menu-color;
+  font-size: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 48px;
+  color: $menu-color;
+  margin-top: 16px;
+}

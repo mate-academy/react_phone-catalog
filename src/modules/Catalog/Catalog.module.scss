@@ -1,0 +1,54 @@
+@use '../../shared/styles/variables.scss' as *;
+@use '../../shared/styles/mixins.scss' as *;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, h2 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .catalogPage, .wrapper {
+    padding-inline: 8px;
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
+
+.catalogPage {
+  @include content-padding-inline;
+
+  font-family: Montserrat, sans-serif;
+  background-color: $menu-background-color;
+  // margin-inline: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.breadCrumbsWrapper {
+  margin-bottom: 24px;
+}
+
+// .catalogTitle {
+//   font-weight: 700;
+//   font-size: 32px;
+//   color: $menu-color;
+//   line-height: 1.3;
+//   padding-top: 24px;
+//   // margin-inline: auto;
+
+//   @include on-desktop {
+//     font-size: 48px;
+//   }
+// }
+
+.catalogText {
+  font-size: 14px;
+  color: $catalogTextColor;
+}

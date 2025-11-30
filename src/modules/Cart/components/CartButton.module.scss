@@ -1,0 +1,67 @@
+@use '../../../shared/styles/variables.scss' as *;
+@use '../../../shared/styles/mixins.scss' as *;
+
+.cartButton {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  color: $menu-color;
+  text-decoration: none;
+  background-color: $card-settings-buttonBackColor;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  &:hover {
+    background-color: $card-settings-buttonHoverColor;
+    color: $menu-color;
+  }
+
+  &:active {
+    background-color: $card-settings-buttonSelectedColor;
+    color: $menu-color;
+  }
+}
+
+.added {
+  background: $card-settings-buttonSelectedColor;
+  cursor: default;
+
+  &:hover {
+    background: $card-settings-buttonSelectedColor;
+  }
+}
+
+.small {
+  width: 175px;
+  height: 40px;
+
+  @include on-tablet {
+    width: 176px;
+  }
+
+  @include on-big-tablet {
+    width: 117px;
+  }
+
+  @include on-desktop {
+    width: 160px;
+  }
+}
+
+.large {
+  width: 231px;
+  height: 48px;
+
+  @include on-tablet {
+    width: 180px;
+  }
+
+  @include on-desktop {
+    width: 263px;
+  }
+}

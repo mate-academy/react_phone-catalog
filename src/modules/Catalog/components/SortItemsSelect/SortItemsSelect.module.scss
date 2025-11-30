@@ -1,0 +1,79 @@
+@use '../../../../shared/styles/variables.scss' as *;
+@use '../../../../shared/styles/mixins.scss' as *;
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__sort-name {
+    font-size: 12px;
+    line-height: 100%;
+    color: $card-contentColor;
+    margin-bottom: 4px;
+  }
+
+  &__sort-select {
+    text-align: start;
+    background-color: $menu-border-color;
+    padding: 10px 12px;
+    color: $menu-color;
+    border: 1px solid transparent;
+    width: 136px;
+    cursor: pointer;
+    outline: none;
+    transition: all .3s;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('/img/icons/arrow_down.png');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+
+    @include on-tablet {
+      width: 187px;
+    }
+
+    @include on-desktop {
+      width: 176px;
+    }
+
+    &:hover {
+      outline: none !important;
+      border: 1px solid $catalogHoverBtnColor;
+      background-image: url('/img/icons/arrow_down.png');
+    }
+
+    &[data-headlessui-state~="open"] {
+      outline: none !important;
+      border: 1px solid $card-settings-buttonBackColor;
+      background-image: url('/img/icons/arrow_up.png');
+    }
+  }
+
+  &__sort-options {
+    position: absolute;
+    top: 100%;
+    margin-top: 4px;
+    outline: none;
+    border: 1px solid $slider-back-color;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    width: 100%;
+  }
+
+  &__sort-option {
+    font-weight: 600;;
+    padding: 6px 12px;
+    color: $card-contentColor;
+    background-color: $menu-background-color;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      color: $menu-color;
+      background-color: $menu-border-color;
+    }
+  }
+}

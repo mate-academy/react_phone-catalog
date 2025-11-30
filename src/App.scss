@@ -1,1 +1,36 @@
 // not empty
+@use '../src/shared/styles/variables.scss' as *;
+@use '../src/shared/styles/mixins.scss' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Mont-Regular, sans-serif;
+  background-color: $menu-background-color;
+}
+
+.root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.appTitle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
