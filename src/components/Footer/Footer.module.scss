@@ -1,4 +1,4 @@
-@import '../../styles/utils.scss';
+@import '../../styles/utils';
 
 .footer {
   border-top: 1px solid #E2E6E9;
@@ -49,6 +49,25 @@
   }
 }
 
+.arrowButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #B4BDC3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+  background-color: transparent;
+  padding: 0;
+
+  img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+}
+
 .backToTop {
   display: flex;
   align-items: center;
@@ -73,21 +92,3 @@
   }
 }
 
-.arrowButton {
-  width: 32px;
-  height: 32px;
-  border: 1px solid #B4BDC3;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s;
-  background-color: transparent;
-  padding: 0;
-
-  img {
-    width: 14px;
-    height: 14px;
-    object-fit: contain;
-  }
-}

@@ -1,4 +1,4 @@
-@import '../../../../styles/utils.scss';
+@import '../../../../styles/utils';
 
 .categories {
   margin-bottom: 80px
@@ -20,35 +20,6 @@
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
     gap: 32px;
-  }
-}
-
-.categoryCard {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s;
-
-  &:hover {
-    .image {
-      transform: scale(1.05);
-    }
-
-    .categoryName {
-      color: $accent; // Or $orange
-    }
-  }
-
-  &:nth-child(1) .imageWrapper {
-    background-color: #FCDBC1;
-  }
-
-  &:nth-child(2) .imageWrapper {
-    background-color: #8D8D92;
-  }
-
-  &:nth-child(3) .imageWrapper {
-    background-color: rgb(89, 119, 89);
   }
 }
 
@@ -83,4 +54,33 @@
   font-size: 14px;
   font-weight: 600;
   color: $secondary;
+}
+
+.categoryCard {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
+
+  &:hover {
+    .image {
+      transform: scale(1.05);
+    }
+
+    .categoryName {
+      color: $accent; // Or $orange
+    }
+  }
+
+  &:nth-child(1) .imageWrapper {
+    background-color: #FCDBC1;
+  }
+
+  &:nth-child(2) .imageWrapper {
+    background-color: #8D8D92;
+  }
+
+  &:nth-child(3) .imageWrapper {
+    background-color: rgb(89, 119, 89);
+  }
 }

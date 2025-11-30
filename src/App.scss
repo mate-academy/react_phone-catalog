@@ -15,14 +15,14 @@ a {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   background-color: $hover-bg;
   color: $primary
 }
 
 body {
-  margin: 0px auto;
-  font-family: 'Mont', sans-serif;
+  margin: 0 auto;
+  font-family: Mont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

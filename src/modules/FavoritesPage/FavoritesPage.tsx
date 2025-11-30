@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './FavoritesPage.module.scss';
 import { useFavorites } from '../../modules/shared/context/FavoritesContext';
 import { ProductCard } from '../shared/components/ProductCard/ProductCard';

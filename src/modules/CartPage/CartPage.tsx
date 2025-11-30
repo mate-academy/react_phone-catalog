@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './CartPage.module.scss';
 import { useCart } from '../shared/context/CartContext';

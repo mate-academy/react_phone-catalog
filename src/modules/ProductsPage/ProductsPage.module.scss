@@ -1,7 +1,7 @@
-@import '../../styles/utils.scss';
+@import '../../styles/utils';
 
 .count {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
@@ -16,7 +16,7 @@
 }
 
 .title {
-  font-family: 'Mont';
+  font-family: Mont, sans-serif;
   display: flex;
   font-size: 48px;
   font-weight: 800;
@@ -105,6 +105,12 @@
   color: $primary;
   transition: all 0.3s;
 
+  &:disabled {
+    color: $secondary;
+    border-color: #E2E6E9;
+    cursor: default;
+  }
+
   &:hover:not(:disabled) {
     border-color: $primary;
   }
@@ -113,12 +119,6 @@
     background-color: $primary;
     color: $white;
     border-color: $primary;
-  }
-
-  &:disabled {
-    color: $secondary;
-    border-color: #E2E6E9;
-    cursor: default;
   }
 }
 
@@ -133,12 +133,12 @@
   align-items: center;
   cursor: pointer;
 
-  &:hover:not(:disabled) {
-    border-color: $primary;
-  }
-
   &:disabled {
     cursor: default;
     opacity: 0.5;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $primary;
   }
 }

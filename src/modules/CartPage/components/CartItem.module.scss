@@ -1,4 +1,4 @@
-@import '../../../styles/utils.scss';
+@import '../../../styles/utils';
 
 .cartItem {
   display: grid;
@@ -51,8 +51,6 @@
   font-size: 14px;
   line-height: 21px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 

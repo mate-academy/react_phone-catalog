@@ -1,4 +1,4 @@
-@import '../../styles/utils.scss';
+@import '../../styles/utils';
 
 .page {
   padding-bottom: 80px;
@@ -141,7 +141,7 @@
     &::after {
       content: '';
       position: absolute;
-      top: -4px; left: -4px; right: -4px; bottom: -4px;
+      inset: -4px;
       border: 1px solid $primary;
       border-radius: 50%;
     }
