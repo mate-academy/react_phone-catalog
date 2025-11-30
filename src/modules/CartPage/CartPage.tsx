@@ -8,7 +8,13 @@ import { BackButton } from '../../components/BackButton/BackButton';
 
 export const CartPage: React.FC = () => {
   const { t } = useTranslation();
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
+
+  const handleClearCart = () => {
+    if (window.confirm(t('clearCartConfirm') || 'Очистити всю корзину')) {
+      clearCart();
+    }
+  };
 
   const total = cart.reduce(
     (sum, item) =>
@@ -68,6 +74,9 @@ export const CartPage: React.FC = () => {
               </li>
             ))}
           </ul>
+          <button onClick={handleClearCart} className={styles.clearCartButton}>
+            {t('clearCart') || 'Очистити корзину'}
+          </button>
           <div className={styles.summary}>
             <p>Total: ${total.toFixed(2)}</p>
             <Button variant="primary" size="md">

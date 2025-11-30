@@ -96,6 +96,8 @@ i18n.use(initReactI18next).init({
           'You have the right to access, correct, or delete your personal data.',
         contactUs: 'Contact Us',
         contactUsText: 'Email: support@nicegadgets.store',
+        clearCart: 'Clear cart',
+        clearCartConfirm: 'Are you sure you want to clear the entire cart?',
       },
     },
     ua: {
@@ -190,6 +192,8 @@ i18n.use(initReactI18next).init({
           'Ви можете отримати доступ, виправити або видалити свої дані.',
         contactUs: 'Зв’язатися з нами',
         contactUsText: 'Email: support@nicegadgets.store',
+        clearCart: 'Очистити кошик',
+        clearCartConfirm: 'Ви впевнені, що хочете очистити весь кошик?',
       },
     },
   },

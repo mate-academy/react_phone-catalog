@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, useSearchParams } from 'react-router-dom';
 import styles from './CategoryPage.module.scss';
@@ -24,8 +24,28 @@ export const CategoryPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(
     Number(searchParams.get('page')) || 1,
   );
-  const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>('all');
+  const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>(() => {
+    const perPageParam = searchParams.get('perPage');
+
+    if (perPageParam === 'all') {
+      return 'all';
+    }
+
+    const perPageNum = Number(perPageParam);
+
+    if (perPageNum === 4 || perPageNum === 8 || perPageNum === 16) {
+      return perPageNum;
+    }
+
+    return 'all';
+  });
   const debouncedSearch = useDebounce(search, 2000);
+  const prevFiltersRef = useRef({ debouncedSearch, sort, type });
+  const isFirstLoadRef = useRef(true);
+
+  useEffect(() => {
+    isFirstLoadRef.current = true;
+  }, [type]);
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -42,8 +62,12 @@ export const CategoryPage: React.FC = () => {
       params.set('page', String(currentPage));
     }
 
+    if (itemsPerPage !== 'all') {
+      params.set('perPage', String(itemsPerPage));
+    }
+
     setSearchParams(params);
-  }, [search, sort, currentPage, setSearchParams]);
+  }, [search, sort, currentPage, itemsPerPage, setSearchParams]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -88,7 +112,45 @@ export const CategoryPage: React.FC = () => {
         }
 
         setProducts(filtered);
-        setCurrentPage(1);
+
+        const totalPagesCalc =
+          itemsPerPage === 'all'
+            ? 1
+            : Math.ceil(filtered.length / itemsPerPage);
+
+        if (isFirstLoadRef.current) {
+          const savedPage = Number(searchParams.get('page')) || 1;
+
+          if (savedPage > 1 && savedPage <= totalPagesCalc) {
+            setCurrentPage(savedPage);
+          } else if (savedPage > totalPagesCalc && totalPagesCalc > 0) {
+            setCurrentPage(totalPagesCalc);
+          } else {
+            setCurrentPage(1);
+          }
+
+          isFirstLoadRef.current = false;
+          prevFiltersRef.current = { debouncedSearch, sort, type };
+        } else {
+          const filtersChanged =
+            prevFiltersRef.current.debouncedSearch !== debouncedSearch ||
+            prevFiltersRef.current.sort !== sort ||
+            prevFiltersRef.current.type !== type;
+
+          if (filtersChanged) {
+            setCurrentPage(1);
+          } else {
+            const savedPage = Number(searchParams.get('page')) || 1;
+
+            if (savedPage > totalPagesCalc && totalPagesCalc > 0) {
+              setCurrentPage(totalPagesCalc);
+            } else if (savedPage < 1) {
+              setCurrentPage(1);
+            }
+          }
+
+          prevFiltersRef.current = { debouncedSearch, sort, type };
+        }
       } catch (err) {
         setError(
           t('errorLoading') + (err instanceof Error ? `${err.message}` : ''),
@@ -99,7 +161,8 @@ export const CategoryPage: React.FC = () => {
     };
 
     fetchProducts();
-  }, [type, debouncedSearch, sort, t]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type, debouncedSearch, sort, itemsPerPage, t]);
 
   const effectiveItemsPerPage =
     itemsPerPage === 'all' ? products.length : itemsPerPage;

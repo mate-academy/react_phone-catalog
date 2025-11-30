@@ -115,7 +115,7 @@ export const HomePage: React.FC = () => {
           hideDiscount={true}
         />
       </section>
-      <section className={styles.categorySection}>
+      <section id="categories-section" className={styles.categorySection}>
         <h2 className={styles.categoryTitle}>{t('shopByCategory')}</h2>
         <div className={styles.categoryGrid}>
           {Object.entries(categoryProducts).map(([category, products]) => (

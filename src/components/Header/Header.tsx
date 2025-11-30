@@ -89,8 +89,10 @@ export const Header: React.FC = () => {
             className={`${styles.navLink} ${location.pathname === '/cart' ? styles.active : ''}`}
           >
             {t('cart')}
-            {cart.length > 0 && (
-              <span className={styles.counter}>{cart.length}</span>
+            {cart.reduce((sum, item) => sum + item.quantity, 0) > 0 && (
+              <span className={styles.counter}>
+                {cart.reduce((sum, item) => sum + item.quantity, 0)}
+              </span>
             )}
           </Link>
           <Link

@@ -102,6 +102,10 @@ export const ProductDetailsPage: React.FC = () => {
     }
   }, [currentProduct]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [productId]);
+
   if (loading) {
     return <Loader />;
   }
