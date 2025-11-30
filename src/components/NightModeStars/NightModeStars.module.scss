@@ -21,12 +21,7 @@
   animation: twinkle linear infinite;
 }
 
-@keyframes twinkle {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: 0.8; transform: scale(1); }
-}
-
-@keyframes moonGlow {
-  0% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.6), inset -10px -10px 0 4px #ccc; }
-  100% { box-shadow: 0 0 50px rgba(255, 255, 255, 0.9), inset -10px -10px 0 4px #ddd; }
-}
+// @keyframes twinkle {
+//   0%, 100% { opacity: 0; transform: scale(0.5); }
+//   50% { opacity: 0.8; transform: scale(1); }
+// }
