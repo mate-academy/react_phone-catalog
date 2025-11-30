@@ -13,9 +13,10 @@ import { SortSelect } from '../SortItemsSelect/SortItemsSelect';
 
 interface ProductsListProps {
   type: 'phones' | 'tablets' | 'accessories';
+  title: string;
 }
 
-export const ProductsList: React.FC<ProductsListProps> = ({ type }) => {
+export const ProductsList: React.FC<ProductsListProps> = ({ type, title }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -81,6 +82,8 @@ export const ProductsList: React.FC<ProductsListProps> = ({ type }) => {
 
   return (
     <div className={styles.wrapper}>
+      <h2 className={styles.catalogTitle}>{title}</h2>
+
       {visible.length > 0 && (
         <p className={styles.catalogText}>{sorted.length} models</p>
       )}

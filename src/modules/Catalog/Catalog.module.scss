@@ -11,12 +11,21 @@ html, body, h2 {
   box-sizing: border-box;
 }
 
+@media (max-width: 480px) {
+  .catalogPage, .wrapper {
+    padding-inline: 8px;
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
+
 .catalogPage {
   @include content-padding-inline;
 
   font-family: Montserrat, sans-serif;
   background-color: $menu-background-color;
-  min-height: 100vh;
+  // margin-inline: auto;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -26,17 +35,18 @@ html, body, h2 {
   margin-bottom: 24px;
 }
 
-.catalogTitle {
-  font-weight: 700;
-  font-size: 32px;
-  color: $menu-color;
-  line-height: 1.3;
-  padding-top: 24px;
+// .catalogTitle {
+//   font-weight: 700;
+//   font-size: 32px;
+//   color: $menu-color;
+//   line-height: 1.3;
+//   padding-top: 24px;
+//   // margin-inline: auto;
 
-  @include on-desktop {
-    font-size: 48px;
-  }
-}
+//   @include on-desktop {
+//     font-size: 48px;
+//   }
+// }
 
 .catalogText {
   font-size: 14px;

@@ -18,8 +18,8 @@ export const Catalog: React.FC<CatalogInterface> = ({ type }) => {
         <div className={styles.breadCrumbsWrapper}>
           <BreadCrumbs category={type} />
         </div>
-        <h2 className={styles.catalogTitle}>{title}</h2>
-        <ProductsList type={type} />
+        {/* <h2 className={styles.catalogTitle}>{title}</h2> */}
+        <ProductsList type={type} title={title} />
       </div>
     </>
   );
