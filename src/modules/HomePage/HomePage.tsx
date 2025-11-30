@@ -28,7 +28,7 @@ export const HomePage = () => {
     <div className={styles.homePage}>
       <h1 className={styles.title}>Product Catalog</h1>
 
-      <h1 className={styles.heading}>Welcome to Nice Gadgets store!</h1>
+      <h2 className={styles.heading}>Welcome to Nice Gadgets store!</h2>
 
       <section className={styles.section}>
         <PicturesSlider />
