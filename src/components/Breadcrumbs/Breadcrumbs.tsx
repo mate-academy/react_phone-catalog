@@ -13,11 +13,11 @@ export const Breadcrumbs: React.FC<Props> = ({ category, lastItem }) => {
   return (
     <div className={styles.breadcrumbs} data-cy="breadCrumbs">
       <Link to="/" className={styles.homeLink}>
-        <img src="/img/icons/Home.png" alt="Home" />
+        <img src="img/icons/Home.png" alt="Home" />
       </Link>
 
       <div className={styles.separator}>
-        <img src="/img/icons/ArrowRight.png" alt=">" />
+        <img src="img/icons/ArrowRight.png" alt=">" />
       </div>
 
       <Link to={`/${category}`} className={styles.link}>
@@ -27,7 +27,7 @@ export const Breadcrumbs: React.FC<Props> = ({ category, lastItem }) => {
       {lastItem && (
         <>
           <div className={styles.separator}>
-            <img src="/img/icons/ArrowRight.png" alt=">" />
+            <img src="img/icons/ArrowRight.png" alt=">" />
           </div>
           <span className={styles.lastItem}>{lastItem}</span>
         </>

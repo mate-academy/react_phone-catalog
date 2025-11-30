@@ -36,7 +36,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles.imageWrapper}>
         <Link to={`/product/${product.itemId}`}>
           <img
-            src={`/${product.image}`}
+            src={product.image}
             alt={product.name}
             className={styles.image}
           />
@@ -86,9 +86,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             onClick={handleFavoriteClick}
           >
             {isFav ? (
-              <img src="/img/icons/FavoriteFilled.png" alt="FavoriteFilled" />
+              <img src="img/icons/FavoriteFilled.png" alt="FavoriteFilled" />
             ) : (
-              <img src="/img/icons/Favorites.png" alt="FavoriteOutlined" />
+              <img src="img/icons/Favorites.png" alt="FavoriteOutlined" />
             )}
           </button>
         </div>

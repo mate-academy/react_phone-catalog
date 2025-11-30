@@ -150,7 +150,7 @@ export const ProductsPage = () => {
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
           >
-            <img src="/img/icons/ArrowLeft.png" alt="Back" />
+            <img src="img/icons/ArrowLeft.png" alt="Back" />
           </button>
 
           {pages.map(page => (
@@ -170,7 +170,7 @@ export const ProductsPage = () => {
             disabled={currentPage === totalPages}
             onClick={() => handlePageChange(currentPage + 1)}
           >
-            <img src="/img/icons/ArrowRight.png" alt="Back" />
+            <img src="img/icons/ArrowRight.png" alt="Back" />
           </button>
         </div>
       )}

@@ -32,7 +32,7 @@ export const CartPage = () => {
   return (
     <div className={styles.page}>
       <button className={styles.backButton} onClick={handleBack}>
-        <img src="/img/icons/ArrowLeft.png" alt="Back" />
+        <img src="img/icons/ArrowLeft.png" alt="Back" />
         Back
       </button>
 

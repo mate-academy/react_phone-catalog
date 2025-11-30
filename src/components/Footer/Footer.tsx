@@ -14,7 +14,7 @@ export const Footer = () => {
       <div className="container">
         <div className={styles.content}>
           <Link to="/" className={styles.logo}>
-            <img src="/img/logo/Logo.png" alt="Logo" />
+            <img src="img/logo/Logo.png" alt="Logo" />
           </Link>
 
           <div className={styles.links}>
@@ -36,7 +36,7 @@ export const Footer = () => {
               onClick={handleScrollToTop}
               aria-label="Scroll to top"
             >
-              <img src="/img/icons/ArrowUp.png" alt="Up" />
+              <img src="img/icons/ArrowUp.png" alt="Up" />
             </button>
           </div>
         </div>

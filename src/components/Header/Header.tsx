@@ -34,7 +34,7 @@ export const Header = () => {
       <div className={styles.container}>
         <div className={styles.left}>
           <NavLink to="/" className={styles.logo}>
-            <img src="/img/logo/Logo.png" alt="SiteLogo.png" />
+            <img src="img/logo/Logo.png" alt="SiteLogo.png" />
           </NavLink>
 
           <nav className={styles.nav}>
@@ -57,7 +57,7 @@ export const Header = () => {
           <div className={styles.icons}>
             <NavLink to="/favorites" className={getIconClass}>
               <div className={styles.iconWrapper}>
-                <img src="/img/icons/Favorites.png" alt="Favorites" />
+                <img src="img/icons/Favorites.png" alt="Favorites" />
                 {favorites.length > 0 && (
                   <span className={styles.iconBadge}>{favorites.length}</span>
                 )}
@@ -66,7 +66,7 @@ export const Header = () => {
             <NavLink to="/cart" className={getIconClass}>
               <div className={styles.iconWrapper}>
                 <img
-                  src="/img/icons/Shoppingbag.png"
+                  src="img/icons/Shoppingbag.png"
                   alt="ShoppingBagIcon.png"
                 />
                 {totalCount > 0 && (
@@ -80,9 +80,9 @@ export const Header = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <img src="/img/icons/Close.png" alt="Close" />
+              <img src="img/icons/Close.png" alt="Close" />
             ) : (
-              <img src="/img/icons/Menu.png" alt="Menu" />
+              <img src="img/icons/Menu.png" alt="Menu" />
             )}
           </button>
         </div>
@@ -111,7 +111,7 @@ export const Header = () => {
         <div className={styles.mobileIcons}>
           <NavLink to="/favorites" className={getIconClass}>
             <div className={styles.iconWrapper}>
-              <img src="/img/icons/Favorites.png" alt="Favorites" />
+              <img src="img/icons/Favorites.png" alt="Favorites" />
               {favorites.length > 0 && (
                 <span className={styles.iconBadge}>{favorites.length}</span>
               )}
@@ -120,7 +120,7 @@ export const Header = () => {
 
           <NavLink to="/cart" className={getIconClass}>
             <div className={styles.iconWrapper}>
-              <img src="/img/icons/Shoppingbag.png" alt="ShoppingBagIcon.png" />
+              <img src="img/icons/Shoppingbag.png" alt="ShoppingBagIcon.png" />
               {totalCount > 0 && (
                 <span className={styles.iconBadge}>{totalCount}</span>
               )}

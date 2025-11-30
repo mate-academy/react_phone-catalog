@@ -41,8 +41,8 @@ export const PicturesSlider = () => {
           <img
             src={
               isLeftHovered
-                ? '/img/icons/ArrowLeftHover.png'
-                : '/img/icons/ArrowLeftHollow.png'
+                ? 'img/icons/ArrowLeftHover.png'
+                : 'img/icons/ArrowLeftHollow.png'
             }
             alt="Previous"
           />
@@ -55,11 +55,7 @@ export const PicturesSlider = () => {
           >
             {images.map((img, index) => (
               <div key={index} className={styles.slide}>
-                <img
-                  src={`/${img}`}
-                  alt="BannerImage"
-                  className={styles.image}
-                />
+                <img src={img} alt="BannerImage" className={styles.image} />
               </div>
             ))}
           </div>
@@ -74,8 +70,8 @@ export const PicturesSlider = () => {
           <img
             src={
               isRightHovered
-                ? '/img/icons/ArrowRightHover.png'
-                : '/img/icons/ArrowRightHollow.png'
+                ? 'img/icons/ArrowRightHover.png'
+                : 'img/icons/ArrowRightHollow.png'
             }
             alt="Next"
           />

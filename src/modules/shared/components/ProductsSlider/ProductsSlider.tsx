@@ -48,8 +48,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             <img
               src={
                 isPrevHovered
-                  ? '/img/icons/ArrowLeft.png'
-                  : '/img/icons/ArrowLeftHollow.png'
+                  ? 'img/icons/ArrowLeft.png'
+                  : 'img/icons/ArrowLeftHollow.png'
               }
               alt="Previous"
             />
@@ -67,8 +67,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             <img
               src={
                 isNextHovered
-                  ? '/img/icons/ArrowRight.png'
-                  : '/img/icons/ArrowRightHollow.png'
+                  ? 'img/icons/ArrowRight.png'
+                  : 'img/icons/ArrowRightHollow.png'
               }
               alt="Next"
             />

@@ -1,8 +1,7 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
-const BASE_URL = '/api/products.json';
-// const BASE_DETAIL_URL = './api/';
+const BASE_URL = 'api/products.json';
 
 export function getProducts(): Promise<Product[]> {
   return fetch(BASE_URL).then(response => {
@@ -15,7 +14,7 @@ export function getProducts(): Promise<Product[]> {
 }
 
 const fetchFromCategory = (category: string, productId: string) => {
-  const url = `/api/${category}.json`;
+  const url = `api/${category}.json`;
 
   return fetch(url)
     .then(response => {

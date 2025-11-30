@@ -121,7 +121,7 @@ export const ProductDetailsPage = () => {
       />
 
       <button className={styles.backButton} onClick={handleBack}>
-        <img src="/img/icons/ArrowLeft.png" alt="Back" />
+        <img src="img/icons/ArrowLeft.png" alt="Back" />
         Back
       </button>
 
@@ -138,13 +138,13 @@ export const ProductDetailsPage = () => {
                 })}
                 onClick={() => setSelectedImage(image)}
               >
-                <img src={`/${image}`} alt="Thumbnail" />
+                <img src={image} alt="Thumbnail" />
               </div>
             ))}
           </div>
 
           <div className={styles.mainImage}>
-            <img src={`/${selectedImage}`} alt={product.name} />
+            <img src={selectedImage || ''} alt={product.name} />
           </div>
         </div>
 
@@ -206,9 +206,9 @@ export const ProductDetailsPage = () => {
               onClick={handleFavoriteClick}
             >
               {isFav ? (
-                <img src="/img/icons/FavoriteFilled.png" alt="FavoriteFilled" />
+                <img src="img/icons/FavoriteFilled.png" alt="FavoriteFilled" />
               ) : (
-                <img src="/img/icons/Favorites.png" alt="FavoriteOutlined" />
+                <img src="img/icons/Favorites.png" alt="FavoriteOutlined" />
               )}
             </button>
           </div>
