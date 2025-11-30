@@ -1,0 +1,307 @@
+@import '../../styles/utils.scss';
+
+.page {
+  padding-bottom: 80px;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: $secondary;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  margin: 24px 0;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.title {
+  margin-bottom: 40px;
+  font-size: 32px;
+  color: $primary;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 80px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.gallery {
+  display: flex;
+  gap: 16px;
+  height: 450px;
+
+  @media (max-width: 640px) {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: 640px) {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 16px;
+  }
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #E2E6E9;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &.selected {
+    border-color: $primary;
+  }
+}
+
+.mainImage {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 320px;
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+}
+
+.selectorBlock {
+  border-bottom: 1px solid #E2E6E9;
+  padding-bottom: 24px;
+}
+
+.selectorLabel {
+  display: block;
+  color: $secondary;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.colorsGrid, .capacityGrid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.colorCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #E2E6E9;
+  cursor: pointer;
+  position: relative;
+
+  &.selected {
+    border-color: $primary;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -4px; left: -4px; right: -4px; bottom: -4px;
+      border: 1px solid $primary;
+      border-radius: 50%;
+    }
+  }
+}
+
+.capacityButton {
+  padding: 8px 16px;
+  border: 1px solid #E2E6E9;
+  background: $white;
+  color: $primary;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &.selected {
+    background-color: $primary;
+    color: $white;
+    border-color: $primary;
+  }
+
+  &:hover:not(.selected) {
+    border-color: $primary;
+  }
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.priceDiscount {
+  font-size: 32px;
+  font-weight: 800;
+  color: $primary;
+}
+
+.priceRegular {
+  font-size: 22px;
+  color: $secondary;
+  text-decoration: line-through;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+
+  button {
+    height: 48px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+}
+
+.addToCart {
+  flex-grow: 1;
+  background-color: $orange;
+  color: $white;
+  border: none;
+  border-radius: 8px;
+
+  &:hover {
+    opacity: 0.9
+  }
+}
+
+.addToFavorite {
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: 1px solid #B4BDC3;
+  display: flex;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+.specsSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+
+    .specRow {
+      display: flex;
+      justify-content: space-between;
+    }
+
+  .specName {
+    color: $secondary;
+  }
+  .specValue {
+    color: $primary;
+  }
+}
+
+.bottomSection  {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 80px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about {
+  h3 {
+    font-size: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 16px;
+  }
+
+  .aboutSection {
+    margin-bottom: 32px;
+    h4 {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    p {
+      color: $secondary;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.techSpecs {
+  h3 {
+    font-size: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 16px;
+  }
+
+  .specRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .specName {
+    color: $secondary
+  }
+
+  .specValue {
+    color: $primary;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,238 @@
+@import '../../styles/utils';
+
+$header-height-desktop: 64px;
+$header-height-mobile: 48px;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $white;
+  border-bottom: 1px solid #E2E6E9;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  transition: height 0.3s ease;
+
+  @media (max-width: 1199px) {
+    height: $header-height-mobile;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  padding-left: 24px;
+  padding-right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.left, .right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 100%;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  height: 100%;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: $secondary;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &.is-active {
+    color: $primary;
+    border-bottom: 3px solid $primary;
+  }
+}
+
+.iconButton {
+  width: $header-height-desktop;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #E2E6E9;
+  transition: background-color 0.3s;
+  padding: 0;
+  box-sizing: border-box;
+  border-bottom: 3px solid transparent;
+
+  &:hover {
+    background-color: $hover-bg;
+  }
+
+  &.is-active {
+    color: $primary;
+    border-bottom: 3px solid $primary;
+  }
+
+  @media (max-width: 1199px) {
+    width: $header-height-mobile;
+  }
+}
+
+.icons {
+  display: flex;
+  height: 100%;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.iconBadge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: $accent;
+  border: 1px solid $white;
+  color: $white;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 10px;
+
+  @media (max-width: 1199px) {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+.menuButton {
+  display: none;
+  width: $header-height-mobile;
+  height: 100%;
+  background: transparent;
+  border: none;
+  border-left: 1px solid #E2E6E9;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 640px) {
+    display: flex;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: $header-height-mobile;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $white;
+  z-index: 99;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid #E2E6E9;
+  padding-top: 24px;
+
+  &.isOpen {
+    transform: translateX(0);
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+
+  .link {
+    width: 100%;
+    height: 27px;
+    justify-content: center;
+    border-bottom: none;
+
+    span {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      border-bottom: 3px solid transparent;
+      box-sizing: border-box;
+    }
+
+    &.is-active {
+      color: $primary;
+      border-bottom: none;
+
+      span {
+        border-bottom: 3px solid $primary;
+      }
+    }
+  }
+}
+
+.mobileIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  border-top: 1px solid #E2E6E9;
+
+  .iconButton {
+    width: 50%;
+    height: 64px;
+    border-left: none;
+    border-right: 1px solid #E2E6E9;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &.is-active {
+    color: $primary;
+    border-bottom: 3px solid $primary;
+  }
+}
+

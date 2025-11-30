@@ -1,0 +1,144 @@
+@import '../../styles/utils.scss';
+
+.count {
+  font-family: 'Mont';
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: $secondary;
+  margin-bottom: 40px;
+}
+
+.page {
+  max-width: 1136px;
+  padding-bottom: 80px;
+}
+
+.title {
+  font-family: 'Mont';
+  display: flex;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -1%;
+  color: $primary;
+  margin-bottom: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+  justify-items: center;
+  margin-bottom: 40px;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.controlBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: $secondary;
+}
+
+.select {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #B4BDC3;
+  border-radius: 8px;
+  background-color: $white;
+  color: $primary;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  min-width: 130px;
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &:focus {
+    border-color: $primary;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #E2E6E9;
+  background-color: $white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  color: $primary;
+  transition: all 0.3s;
+
+  &:hover:not(:disabled) {
+    border-color: $primary;
+  }
+
+  &.active {
+    background-color: $primary;
+    color: $white;
+    border-color: $primary;
+  }
+
+  &:disabled {
+    color: $secondary;
+    border-color: #E2E6E9;
+    cursor: default;
+  }
+}
+
+.pageArrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #E2E6E9;
+  background-color: $white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    border-color: $primary;
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}

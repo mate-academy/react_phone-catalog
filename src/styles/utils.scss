@@ -1,0 +1,23 @@
+$accent: #2196F3;
+$primary: #313237;
+$secondary: #89939A;
+$white: #FFFFFF;
+$hover-bg: #FAFBFC;
+$orange: #F86800;
+
+$desktop-width: 1200px;
+$col-gap: 16px;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin container {
+  max-width: $desktop-width;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
