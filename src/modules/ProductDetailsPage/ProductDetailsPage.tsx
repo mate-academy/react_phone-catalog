@@ -16,7 +16,7 @@ import { Loader } from '../../components/UI/Loader/Loader';
 export const ProductDetailsPage: React.FC = () => {
   const { t } = useTranslation();
   const { productId } = useParams<{ productId: string }>();
-  const { addToCart, cart } = useCart();
+  const { addToCart, removeFromCart, cart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
 
   const [baseProduct, setBaseProduct] = useState<Product | null>(null);
@@ -120,7 +120,9 @@ export const ProductDetailsPage: React.FC = () => {
     currentProduct.priceDiscount < currentProduct.priceRegular;
 
   const handleAddToCart = () => {
-    if (!isInCart) {
+    if (isInCart) {
+      removeFromCart(currentProduct.id);
+    } else {
       addToCart(currentProduct);
     }
   };
@@ -210,7 +212,6 @@ export const ProductDetailsPage: React.FC = () => {
                 variant="primary"
                 onClick={handleAddToCart}
                 className={`${styles.addBtn} ${isInCart ? styles.added : ''}`}
-                disabled={isInCart}
               >
                 {isInCart ? t('addedToCart') : t('addToCart')}
               </Button>

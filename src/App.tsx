@@ -7,6 +7,7 @@ import { FavoritesProvider } from './modules/shared/context/FavoriteContext';
 import { ThemeProvider } from './modules/shared/context/ThemeContext';
 import { AppRoutes } from './Routes';
 import './styles/global.scss';
+import { NightModeStars } from './components/NightModeStars/NightModeStars';
 
 const App: React.FC = () => {
   useTranslation();
@@ -16,6 +17,7 @@ const App: React.FC = () => {
       <CartProvider>
         <FavoritesProvider>
           <div className="app">
+            <NightModeStars />
             <Header />
             <main>
               <AppRoutes />

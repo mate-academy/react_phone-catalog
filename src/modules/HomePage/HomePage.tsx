@@ -109,7 +109,11 @@ export const HomePage: React.FC = () => {
       <h2 className={styles.welcome}>{t('welcome')}</h2>
       <PictureSlider banners={banners} />
       <section className={styles.section}>
-        <SliderSection title={t('newProducts')} products={newProducts} />
+        <SliderSection
+          title={t('newProducts')}
+          products={newProducts}
+          hideDiscount={true}
+        />
       </section>
       <section className={styles.categorySection}>
         <h2 className={styles.categoryTitle}>{t('shopByCategory')}</h2>

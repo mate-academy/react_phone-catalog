@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import styles from './CategoryPage.module.scss';
 import { Product } from '../shared/types';
 import { useDebounce } from '../shared/hooks/useDebounce';
@@ -13,14 +13,37 @@ import { Loader } from '../../components/UI/Loader/Loader';
 export const CategoryPage: React.FC = () => {
   const { t } = useTranslation();
   const { type } = useParams<{ type: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [search, setSearch] = useState('');
-  const [sort, setSort] = useState('default');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState(searchParams.get('q') || '');
+  const [sort, setSort] = useState<string>(
+    searchParams.get('sort') || 'default',
+  );
+  const [currentPage, setCurrentPage] = useState(
+    Number(searchParams.get('page')) || 1,
+  );
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>('all');
   const debouncedSearch = useDebounce(search, 2000);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+
+    if (search) {
+      params.set('q', search);
+    }
+
+    if (sort !== 'default') {
+      params.set('sort', sort);
+    }
+
+    if (currentPage > 1) {
+      params.set('page', String(currentPage));
+    }
+
+    setSearchParams(params);
+  }, [search, sort, currentPage, setSearchParams]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -127,8 +150,8 @@ export const CategoryPage: React.FC = () => {
             onChange={val => setSort(val as string)}
             options={[
               { value: 'default', label: t('newestFirst') },
-              { value: t('priceLowToHigh'), label: t('priceLowToHigh') },
-              { value: t('priceHighToLow'), label: t('priceHighToLow') },
+              { value: 'priceLowToHigh', label: t('priceLowToHigh') },
+              { value: 'priceHighToLow', label: t('priceHighToLow') },
             ]}
             placeholder={t('sort')}
           />
@@ -147,9 +170,9 @@ export const CategoryPage: React.FC = () => {
             }}
             options={[
               { value: 'all', label: t('all') },
-              { value: '4', label: '4' },
-              { value: '8', label: '8' },
-              { value: '16', label: '16' },
+              { value: 4, label: '4' },
+              { value: 8, label: '8' },
+              { value: 16, label: '16' },
             ]}
             placeholder={t('itemsOnPage')}
           />

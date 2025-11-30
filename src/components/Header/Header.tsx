@@ -99,7 +99,9 @@ export const Header: React.FC = () => {
           >
             {t('favorites')}
             {favorites.length > 0 && (
-              <span className={styles.counter}>{favorites.length}</span>
+              <span className={`${styles.counter} ${styles.favoritesCounter}`}>
+                {favorites.length}
+              </span>
             )}
           </Link>
         </nav>

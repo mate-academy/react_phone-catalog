@@ -8,17 +8,23 @@ import styles from './ProductCard.module.scss';
 
 interface ProductCardProps {
   product: Product;
+  hideDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  hideDiscount = false,
+}) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { addToCart, cart } = useCart();
+  const { addToCart, removeFromCart, cart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
 
   const isFavorite = favorites.some(f => f.id === product.id);
   const hasDiscount =
-    product.priceDiscount && product.priceDiscount < product.priceRegular;
+    !hideDiscount &&
+    product.priceDiscount &&
+    product.priceDiscount < product.priceRegular;
 
   const isInCart = cart.some(item => item.product.id === product.id);
 
@@ -36,7 +42,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    if (!isInCart) {
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
       addToCart(product);
     }
   };
@@ -102,7 +110,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <button
           className={`${styles.addBtn} ${isInCart ? styles.added : ''}`}
           onClick={handleAddToCart}
-          disabled={isInCart}
         >
           {isInCart ? t('addedToCart') : t('addToCart')}
         </button>

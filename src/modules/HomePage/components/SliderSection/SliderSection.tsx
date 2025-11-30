@@ -7,12 +7,14 @@ interface SliderSectionProps {
   title: string;
   products: Product[];
   isHot?: boolean;
+  hideDiscount?: boolean;
 }
 
 export const SliderSection: React.FC<SliderSectionProps> = ({
   title,
   products,
   isHot,
+  hideDiscount,
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -92,12 +94,12 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
         <div ref={scrollRef} className={styles.track} onScroll={checkScroll}>
           {products.map(product => (
             <div key={product.id} className={styles.cardWrapper}>
-              <ProductCard product={product} />
+              <ProductCard product={product} hideDiscount={hideDiscount} />
             </div>
           ))}
           {products.length > 0 && (
             <div className={styles.peekCard}>
-              <ProductCard product={products[0]} />
+              <ProductCard product={products[0]} hideDiscount={hideDiscount} />
             </div>
           )}
         </div>

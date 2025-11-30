@@ -7,6 +7,8 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsP
 import { CartPage } from './modules/CartPage';
 import { FavoritePage } from './modules/FavoritePage/FavoritePage';
 import { NotFound } from './components/NotFound';
+import { TermsPage } from './pages/TermsPage';
+import { PrivacyPage } from './pages/PrivacyPage';
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -16,6 +18,8 @@ export const AppRoutes: React.FC = () => {
       <Route path="/product/:productId" element={<ProductDetailsPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/favorites" element={<FavoritePage />} />
+      <Route path="/terms" element={<TermsPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

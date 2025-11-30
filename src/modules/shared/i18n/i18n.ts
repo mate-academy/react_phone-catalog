@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -11,12 +13,14 @@ i18n.use(initReactI18next).init({
         favorites: 'Favorites',
         addToCart: 'Add to Cart',
         addedToCart: 'Added to Cart',
+        removeFromCart: 'Remove from Cart',
         removeFavorite: 'Remove from Favorites',
         addFavorite: 'Add to Favorites',
         error: 'Something went wrong',
         productNotFound: 'Product not found',
         search: 'Search...',
         sort: 'Sort by',
+        sortBy: 'Sort by',
         priceLowToHigh: 'Price: Low to High',
         priceHighToLow: 'Price: High to Low',
         backToTop: 'Back to Top',
@@ -30,7 +34,7 @@ i18n.use(initReactI18next).init({
         next: 'Next',
         page: 'Page',
         of: 'of',
-        itemsOnPage: 'Items on page',
+        itemsOnPage: 'Items per page',
         items: 'items',
         phones: 'Phones',
         tablets: 'Tablets',
@@ -46,7 +50,52 @@ i18n.use(initReactI18next).init({
         avColor: 'Available colors',
         avCapacity: 'Select capacity',
         newestFirst: 'Newest First',
-        gadgetsLoad: 'Gadgets Loading...',
+        gadgetsLoad: 'Loading gadgets...',
+        loading: 'Loading...',
+        errorLoading: 'Error loading data',
+
+        termsOfService: 'Terms of Service',
+        termsAcceptance: 'Acceptance of Terms',
+        termsAcceptanceText:
+          'By using Nice Gadgets, you agree to these Terms of Service.',
+        useOfService: 'Use of Service',
+        useOfServiceText:
+          'You may use our service only for lawful purposes and in accordance with these Terms.',
+        userResponsibilities: 'User Responsibilities',
+        userResponsibilitiesText:
+          'You are responsible for maintaining the confidentiality of your account.',
+        ordersAndPayments: 'Orders and Payments',
+        ordersAndPaymentsText:
+          'All payments are processed securely through our payment partners.',
+        returnsAndRefunds: 'Returns and Refunds',
+        returnsAndRefundsText:
+          'We may update these terms at any time. Continued use means acceptance.',
+        lastUpdated: 'Last updated',
+
+        privacyPolicy: 'Privacy Policy',
+        privacyIntro: 'Introduction',
+        privacyIntroText:
+          'We respect your privacy and are committed to protecting your personal data.',
+        informationWeCollect: 'Information We Collect',
+        informationWeCollectText:
+          'We collect name, email, shipping address, and payment information.',
+        howWeUseInfo: 'How We Use Your Information',
+        howWeUseInfoText:
+          'To process orders, improve our service, and send promotional offers.',
+        dataProtection: 'Data Protection',
+        dataProtectionText:
+          'We use encryption and secure servers to protect your data.',
+        cookies: 'Cookies',
+        cookiesText:
+          'We use cookies to enhance your experience and analyze traffic.',
+        thirdParty: 'Third-Party Services',
+        thirdPartyText:
+          'We may share data with trusted partners for analytics and marketing.',
+        yourRights: 'Your Rights',
+        yourRightsText:
+          'You have the right to access, correct, or delete your personal data.',
+        contactUs: 'Contact Us',
+        contactUsText: 'Email: support@nicegadgets.store',
       },
     },
     ua: {
@@ -57,31 +106,33 @@ i18n.use(initReactI18next).init({
         favorites: 'Обране',
         addToCart: 'Додати в кошик',
         addedToCart: 'Додано в кошик',
+        removeFromCart: 'Видалити з кошика',
         removeFavorite: 'Видалити з обраного',
         addFavorite: 'Додати в обране',
         error: 'Щось пішло не так',
-        productNotFound: 'Продукт не знайдено',
+        productNotFound: 'Товар не знайдено',
         search: 'Пошук...',
         sort: 'Сортувати за',
-        priceLowToHigh: 'Ціна: від низької до високої',
-        priceHighToLow: 'Ціна: від високої до низької',
-        backToTop: 'Повернутися вверх',
+        sortBy: 'Сортувати за',
+        priceLowToHigh: 'Ціна: від дешевих до дорогих',
+        priceHighToLow: 'Ціна: від дорогих до дешевих',
+        backToTop: 'Повернутися наверх',
         hotPrices: 'Гарячі ціни',
-        newProducts: 'Нові продукти',
+        newProducts: 'Нові моделі',
         cartEmpty: 'Ваш кошик порожній',
-        favoritesEmpty: 'Ваш список обраного порожній',
+        favoritesEmpty: 'Список обраного порожній',
         pageNotFound: 'Сторінку не знайдено',
-        backToHome: 'Повернутися додому',
+        backToHome: 'На головну',
         previous: 'Попередня',
         next: 'Наступна',
         page: 'Сторінка',
         of: 'з',
-        itemsOnPage: 'Товари на сторінці',
+        itemsOnPage: 'Товарів на сторінці',
         items: 'товарів',
         phones: 'Телефони',
         tablets: 'Планшети',
         accessories: 'Аксесуари',
-        welcome: 'Nice Gadgets Store!',
+        welcome: 'Ласкаво просимо до Nice Gadgets!',
         shopByCategory: 'Купуйте за категоріями',
         models: 'моделей',
         youMayLike: 'Вам також може сподобатись',
@@ -91,8 +142,54 @@ i18n.use(initReactI18next).init({
         all: 'Усі',
         avColor: 'Доступні кольори',
         avCapacity: 'Оберіть об`єм',
-        newestFirst: 'Спочатку найновіші',
-        gadgetsLoad: 'Завантаження Гаджетів...',
+        newestFirst: 'Спочатку нові',
+        gadgetsLoad: 'Завантаження гаджетів...',
+        loading: 'Завантаження...',
+        errorLoading: 'Помилка завантаження',
+
+        termsOfService: 'Умови використання',
+        termsAcceptance: 'Прийняття умов',
+        termsAcceptanceText:
+          'Використовуючи Nice Gadgets, ви погоджуєтесь з цими умовами.',
+        useOfService: 'Використання сервісу',
+        useOfServiceText:
+          'Ви можете використовувати сервіс лише в законних цілях.',
+        userResponsibilities: 'Обов’язки користувача',
+        userResponsibilitiesText: 'Ви відповідаєте за безпеку свого акаунту.',
+        ordersAndPayments: 'Замовлення та оплата',
+        ordersAndPaymentsText:
+          'Усі платежі обробляються безпечно через наших партнерів.',
+        returnsAndRefunds: 'Повернення та відшкодування',
+        returnsAndRefundsText:
+          '30 днів на повернення. Зв’яжіться з нами для інструкцій.',
+        limitationOfLiability: 'Обмеження відповідальності',
+        limitationOfLiabilityText:
+          'Ми не несемо відповідальності за непрямі збитки.',
+        changesToTerms: 'Зміни умов',
+        changesToTermsText: 'Ми можемо оновлювати умови в будь-який час.',
+        lastUpdated: 'Останнє оновлення',
+
+        privacyPolicy: 'Політика конфіденційності',
+        privacyIntro: 'Вступ',
+        privacyIntroText:
+          'Ми поважаємо вашу приватність і захищаємо ваші дані.',
+        informationWeCollect: 'Яку інформацію ми збираємо',
+        informationWeCollectText:
+          'Ім’я, email, адреса доставки, платіжні дані.',
+        howWeUseInfo: 'Як ми використовуємо інформацію',
+        howWeUseInfoText:
+          'Для обробки замовлень, покращення сервісу та маркетингу.',
+        dataProtection: 'Захист даних',
+        dataProtectionText: 'Використовуємо шифрування та безпечні сервери.',
+        cookies: 'Cookies',
+        cookiesText: 'Ми використовуємо cookies для покращення вашого досвіду.',
+        thirdParty: 'Сторонні сервіси',
+        thirdPartyText: 'Можемо передавати дані довіреним партнерам.',
+        yourRights: 'Ваші права',
+        yourRightsText:
+          'Ви можете отримати доступ, виправити або видалити свої дані.',
+        contactUs: 'Зв’язатися з нами',
+        contactUsText: 'Email: support@nicegadgets.store',
       },
     },
   },
