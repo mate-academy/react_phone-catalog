@@ -26,6 +26,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
   useEffect(() => {
     setPage(Number(searchParams.get('page')) || 1);
   }, [searchParams]);
+
   useEffect(() => {
     const newTitle = formatTitle(category);
     setLoading(true);
@@ -98,6 +99,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
           : '';
     }
   };
+  console.log(perPage);
 
   return (
     <div className={styles.catalog}>
@@ -123,7 +125,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
             { label: '4', value: 4 },
             { label: '8', value: 8 },
             { label: '16', value: 16 },
-            { label: 'All', value: 'all' },
+            { label: 'All', value: null },
           ]}
           defaultOption={3}
         />
@@ -136,7 +138,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
               <SliderItem key={product.id} item={product} showDiscount={true} />
             ))}
       </div>
-      {perPage !== 'all' && (
+      {perPage && (
         <PaginationComponent
           totalCount={totalCount}
           perPage={Number(perPage || 0)}
@@ -144,6 +146,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
         />
       )}
     </div>
+    //TODO: fix catalogpage component(when i choise all items per page, it breaks. also need to fix pages when i set values that cant be)
   );
 };
 

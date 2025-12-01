@@ -3,7 +3,7 @@ import styles from './CustomSelect.module.scss';
 import { useSearchParams } from 'react-router-dom';
 type Option = {
   label: string;
-  value: string | number;
+  value: string | number | null;
 };
 
 type CustomSelectProps = {
@@ -32,7 +32,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   const handleSelect = (option: Option) => {
     const params = new URLSearchParams(searchParams);
 
-    if (option.value === 'all') {
+    if (!option.value) {
       params.delete(param);
     } else {
       params.set(param, String(option.value));

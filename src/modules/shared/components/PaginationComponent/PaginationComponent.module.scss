@@ -14,6 +14,7 @@
     border: 1px solid $color-icons;
     background-color: $color-bg;
     color: $color-primary;
+    cursor: pointer;
   }
   &__pages {
     display: flex;
@@ -28,6 +29,7 @@
     border: 1px solid $color-elements;
     background-color: $color-bg;
     color: $color-primary;
+    cursor: pointer;
     &_active {
       width: 32px;
       height: 32px;
@@ -35,8 +37,18 @@
       justify-content: center;
       align-items: center;
       color: $color-bg;
- border: 1px solid $color-elements;
+      border: 1px solid $color-elements;
       background-color: $color-primary;
     }
   }
+}
+.paginationComponent__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; // Такий самий розмір як у кнопок
+  height: 32px;
+  color: #313237;
+  // Курсор не pointer, щоб показати, що це не клікабельно
+  cursor: default;
 }
