@@ -15,4 +15,10 @@
     gap: 16px;
     margin-bottom: 24px;
   }
+  &__container_hasPagination {
+    margin-bottom: 40px; // Adjust based on header, footer, and pagination heights
+  }
+  &__container_noPagination {
+    margin-bottom: 80px; // Adjust based on header and footer heights
+  }
 }

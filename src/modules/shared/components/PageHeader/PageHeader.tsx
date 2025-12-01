@@ -1,27 +1,37 @@
 import React from 'react';
 import styles from './PageHeader.module.scss';
 import BreadCrumbs from './BreadCrumbs';
-
+import cn from 'classnames';
 type PageHeaderProps = {
   title: string;
   showBreadCrumbs?: boolean;
+  extraContent?: React.ReactNode;
+  variant?: string;
 };
 
 const PageHeader: React.FC<PageHeaderProps> = ({
   title,
   showBreadCrumbs = true,
+  extraContent,
+  variant = '',
 }) => {
   return (
-    <div className={styles.headerWrapper}>
-      {showBreadCrumbs && <BreadCrumbs title={title} />}
+    <div
+      className={cn(styles.headerWrapper, {
+        [styles[`headerWrapper--${variant}`]]: variant,
+      })}
+    >
+      {showBreadCrumbs && (
+        <div className={styles.breadcrumbsWrapper}>
+          <BreadCrumbs title={title} />
+        </div>
+      )}
 
-      <h1
-        className={`${styles.pageTitle} ${
-          showBreadCrumbs ? styles.pageTitleWithBreadcrumbs : ''
-        }`}
-      >
-        {title}
-      </h1>
+      {extraContent && (
+        <div className={styles.extraContentWrapper}>{extraContent}</div>
+      )}
+
+      <h1 className={styles.pageTitle}>{title}</h1>
     </div>
   );
 };

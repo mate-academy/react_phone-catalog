@@ -32,6 +32,7 @@ const HomePage: React.FC = () => {
       <PageHeader
         title="Welcome to Nice Gadgets store!"
         showBreadCrumbs={false}
+        variant="homePage"
       />
       <Carousel />
       <SliderComponent products={newProducts} title="Brand new models" />

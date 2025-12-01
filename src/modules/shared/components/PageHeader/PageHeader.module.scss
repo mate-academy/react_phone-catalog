@@ -1,5 +1,6 @@
 .pageTitle {
-  margin: 56px 0;
+  // margin: 56px 0;
+
   &.pageTitleWithBreadcrumbs {
     margin-top: 40px;
     margin-bottom: 8px;
@@ -7,14 +8,30 @@
 }
 .headerWrapper {
   // Контейнер для хедера
+  // margin-top: 56px;
   display: flex;
   flex-direction: column;
 }
 
-.breadcrumbs {
-  margin-top: 24px;
+.headerWrapper--homePage {
+  margin: $spacing-lg 0;
 }
 
+.headerWrapper--catalogPage {
+  margin-bottom: $spacing-sm;
+  margin-top: 25px;
+}
+
+.headerWrapper--productPage {
+  margin-top: 25px;
+  margin-bottom: $spacing-md;
+}
+.breadcrumbsWrapper {
+  margin-bottom: $spacing-md;
+}
+.extraContentWrapper {
+  margin-bottom: 16px;
+}
 .breadcrumbsList {
   display: flex;
   align-items: center; // Центрує іконки та текст по вертикалі

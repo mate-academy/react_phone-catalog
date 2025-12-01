@@ -1,7 +1,7 @@
 .paginationComponent {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  // margin-top: 40px;
   margin-bottom: 80px;
 
   column-gap: 16px;
@@ -15,6 +15,9 @@
     background-color: $color-bg;
     color: $color-primary;
     cursor: pointer;
+    &:hover{
+    border-color: $color-primary;
+  }
   }
   &__pages {
     display: flex;
@@ -29,6 +32,9 @@
     border: 1px solid $color-elements;
     background-color: $color-bg;
     color: $color-primary;
+    &:hover{
+    border-color: $color-primary;
+  }
     cursor: pointer;
     &_active {
       width: 32px;
@@ -46,9 +52,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px; // Такий самий розмір як у кнопок
+  border: 1px solid $color-elements;
+  background-color: $color-bg;
+  width: 32px;
   height: 32px;
-  color: #313237;
-  // Курсор не pointer, щоб показати, що це не клікабельно
-  cursor: default;
+  color: $color-primary;
+  cursor: pointer;
+  &:hover{
+    border-color: $color-primary;
+  }
 }

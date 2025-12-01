@@ -49,6 +49,12 @@ $color-green: #27AE60;
 $container-width: 1136px;
 $loading-grey: #ededed;
 
+//spacing
+
+$spacing-sm: 8px;
+$spacing-md: 40px;
+$spacing-lg: 56px;
+
 // Handy mixin
 @mixin type($size, $line, $track, $weight, $family: $font-mont-regular) {
   font-family: $family;

@@ -7,7 +7,7 @@ import { CardSkeleton } from '../SliderItem/CardSkeleton';
 import styles from './CatalogPage.module.scss';
 import CustomSelect from '../CustomSelect/CustomSelect';
 import PaginationComponent from '../PaginationComponent/PaginationComponent';
-
+import {getProducts} from '@/api/api';
 type CatalogPageProps = {
   fetchReq: () => Promise<Product[]>;
 };
@@ -19,7 +19,6 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
   const [page, setPage] = useState<number>(
     Number(searchParams.get('page')) || 1,
   );
-  // const [productsPerPage, setProductsPerPage] = useState<number | 'all'>('all');
   const { category } = useParams();
   const sort = searchParams.get('sort');
   const perPage = searchParams.get('perPage');
@@ -30,7 +29,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
   useEffect(() => {
     const newTitle = formatTitle(category);
     setLoading(true);
-    fetchReq()
+    getProducts()
       .then(products => {
         if (sort) {
           products = products.sort((a, b) => {
@@ -53,11 +52,13 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
         setLoading(false);
       });
   }, [category, sort]);
+
   useEffect(() => {
     if (perPage === 'all') {
       setPage(1);
     }
   }, [perPage]);
+
   let filteredProducts = products;
   if (perPage === 'all') {
     const params = new URLSearchParams(searchParams);
@@ -71,7 +72,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
     );
   }
 
-  const totalCount = filteredProducts.length; // 👈 важливо: до slice()
+  const totalCount = filteredProducts.length;
   let visibleProducts = filteredProducts;
 
   if (perPage && perPage !== 'all') {
@@ -99,11 +100,10 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
           : '';
     }
   };
-  console.log(perPage);
 
   return (
     <div className={styles.catalog}>
-      <PageHeader title={formatTitle(category)} />
+      <PageHeader title={formatTitle(category)} variant="catalogPage" />
 
       <div className={styles.catalog__modelsCount}>{totalCount} models</div>
 
@@ -131,7 +131,13 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
         />
       </div>
 
-      <div className={styles.catalog__container}>
+      <div
+        className={`${styles.catalog__container} ${
+          perPage
+            ? styles.catalog__container_hasPagination
+            : styles.catalog__container_noPagination
+        }`}
+      >
         {loading
           ? skeletons.map((_, index) => <CardSkeleton key={index} />)
           : visibleProducts.map(product => (
