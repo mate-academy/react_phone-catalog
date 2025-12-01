@@ -1,5 +1,5 @@
 import scss from './Menu.module.scss';
-import { NavLinkMenu } from '../NavLinkMenu/NavLinkMenu';
+import { NavLinkMenu } from '../NavLinkMenu';
 import classNames from 'classnames';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';

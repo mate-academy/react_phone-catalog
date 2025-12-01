@@ -1,12 +1,12 @@
-@use '../../styles/utils/constants' as constants;
+@use '../../styles/_constants' as constants;
 
 .menu {
   position: fixed;
-  inset: 49px 0 0;
+  inset: 4.9rem 0 0;
   z-index: 900;
 
   overflow-y: auto;
-  transform: translateY(-8px); opacity:0; visibility:hidden; pointer-events:none;
+  transform: translateY(-0.8rem); opacity:0; visibility:hidden; pointer-events:none;
   transition: transform 0.7s ease, opacity 0.7s ease, visibility 0s ease 0.7s;
   will-change: transform, opacity;
 
@@ -15,6 +15,8 @@
   justify-content: space-between;
 
   background-color: white;
+
+
 
   &_open {
     transform: translateY(0); opacity:1; visibility:visible; pointer-events:auto;
@@ -52,13 +54,13 @@
   }
 
   &__iconsWrapper {
-    height: 64px;
+    height: 6.4rem;
     display: flex;
-    border: 1px solid constants.$border-color;
+    border: 0.1rem solid constants.$border-color;
   }
 
   &__iconLink {
-    height: 64px;
+    height: 6.4rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,13 +68,13 @@
 
 
     &:not(:last-child) {
-      border-right: 1px solid constants.$border-color;
+      border-right: 0.1rem solid constants.$border-color;
     }
   }
 
   &__icon {
-    height: 16px;
-    width: 16px;
+    height: 1.6rem;
+    width: 1.6rem;
   }
 }
 

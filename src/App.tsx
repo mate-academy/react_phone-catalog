@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import '../src/App.scss';
-import '../src/modules/shared/styles/base/_base.scss';
+import '../src/modules/shared/styles/_base.scss';
 import { Header } from './modules/shared/components/Header';
 import { HomePage } from './modules/HomePage';
 import { Favourites } from './modules/Favourites';
