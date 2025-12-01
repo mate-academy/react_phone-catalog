@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as *;
+
 .header {
   position: sticky;
   z-index: 1000;
@@ -8,10 +10,25 @@
   background-color: white;
   border: 0.1rem solid rgba(226, 230, 233, 1);
 
+  box-sizing: border-box;
+
+    @include for-tablets {
+      display: flex;
+      gap: 1.6rem;
+    }
+
   &__container {
     display: flex;
     justify-content: space-between;
     padding: 1.4rem 1.6rem;
+
+    @include for-tablets {
+      padding: 1.3rem 1.6rem 1.2rem;
+
+      button {
+        display: none;
+      }
+    }
   }
 }
 

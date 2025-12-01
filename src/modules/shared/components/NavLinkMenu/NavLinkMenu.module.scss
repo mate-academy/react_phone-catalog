@@ -1,4 +1,5 @@
 @use '../../styles/_constants' as constants;
+@use '../../styles/mixins' as *;
 
 a {
   text-decoration: none;
@@ -6,55 +7,78 @@ a {
 
 .link {
   font-weight: 800;
-    font-size: 1.2rem;
-    line-height: 1.1rem;
-    letter-spacing: 0.04rem;
-    text-transform: uppercase;
-    padding-bottom: 0.8rem;
-    color: constants.$secondary-color;
+  font-size: 1.2rem;
+  line-height: 1.1rem;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+  padding-bottom: 0.8rem;
+  color: constants.$secondary-color;
 
-    &_active {
-      color: constants.$primary-color;
-      border-bottom: 2px solid constants.$primary-color;
-    }
+  &_active {
+    color: constants.$primary-color;
+    border-bottom: 0.3rem solid constants.$primary-color;
+  }
+
+  @include for-tablets {
+    padding-bottom: 1.35rem;
+  }
 }
 
 .iconLink {
-  height: 64px;
+  height: 6.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
 
+  position: relative;
+
+  @include for-tablets {
+    height: 4.8rem;
+    width: 4.8rem;
+
+    flex: none;
+  }
+
   &:not(:last-child) {
-    border-right: 1px solid constants.$border-color;
+    border-right: 0.1rem solid constants.$border-color;
   }
 
   &__icon {
-  height: 16px;
-  width: 16px;
+    height: 1.6rem;
+    width: 1.6rem;
   }
 
   &__counter {
-    position: relative;
-    top: -0.5rem;
-    right: 0.75rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    padding: 0 0.3rem;
+
+    display: inline-flex;
+    block-size: 1.4rem;
     min-inline-size: 1.4rem;
     inline-size: auto;
-    block-size: 1.4rem;
     border-radius: 50%;
-    padding: 0 .3rem;
-    display: inline-flex;
     align-items: center;
     justify-content: center;
+
     background: #ef4444;
     color: #fff;
+
     font-weight: 600;
-    font-size: .9rem;
+    font-size: 0.9rem;
     line-height: 1;
     white-space: nowrap;
+
     pointer-events: none;
+    transform: translate(0.2rem, -1.4rem);
     transition: opacity .15s ease, transform .15s ease;
+
+    @include for-tablets {
+       transform: translate(0.2rem, -1.4rem);
+    }
   }
 }
 
