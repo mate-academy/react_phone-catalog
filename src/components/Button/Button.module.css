@@ -4,12 +4,12 @@
   font-size: 1rem;
   border: none;
   color: #fff;
-  background-color: #313237;
+  background-color: #111;
   cursor: pointer;
 }
 
 .addButton:hover {
-  background-color: #2d47ad;
+  background-color: #272727;
 }
 
 .addFavourites {

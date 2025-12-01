@@ -1,10 +1,29 @@
+/* ==========================================================================
+   Navbar.module.css
+   Estilos completos para a Navbar, incluindo ícones, badge do carrinho,
+   menu responsivo e comportamentos de foco/hover.
+   Atualizado: corrige tamanho dos ícones, evita que regras globais encolham
+   imagens e garante posicionamento consistente do badge.
+   ========================================================================== */
+
+/* =========================
+   VARIÁVEIS GLOBAIS
+   ========================= */
 :root {
-  --navbar-height: 64px; /* ajuste conforme necessário (mobile/desktp) */
+  --navbar-height: 64px;
+  --bg: #fff;
+  --border: #e6e6e6;
+  --text-muted: #828282;
+  --text: #111;
+  --accent: #e53935; /* vermelho do badge */
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* ------------------ BASE ------------------ */
+/* =========================
+     BASE / LAYOUT
+     ========================= */
 .navbar {
-  position: fixed; /* corrigido: fixed */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -13,16 +32,34 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background: #fff;
-  border-bottom: 1px solid #e6e6e6;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
   z-index: 9999;
+  box-sizing: border-box;
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .logo {
   height: 1.5rem;
   width: 4rem;
+  display: block;
+  object-fit: contain;
 }
 
+/* =========================
+     HAMBURGER (mobile)
+     ========================= */
 .hamburger {
   display: inline-flex;
   flex-direction: column;
@@ -39,67 +76,20 @@
 .bar {
   width: 22px;
   height: 2px;
-  background: #111;
+  background: var(--text);
   display: block;
+  border-radius: 2px;
 }
 
-.leftGroup {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.containerIcon {
-  display: none;
-}
-
-.linkContainer {
-  position: relative;
-}
-
-.navLink {
-  color: #828282;
-  text-decoration: none;
-  font-weight: 800;
-  transition: color 0.2s ease;
-}
-
-/* link ativo */
-.activeLink {
-  color: #111; /* cor do texto quando ativo */
-}
-
-/* força a linha aparecer quando ativo */
-.linkContainer .activeLink::after {
-  content: '';
-  position: absolute;
-  bottom: -29px; /* mesmo valor usado no hover */
-  left: 0;
-  height: 4px;
-  width: 100%;
-  background-color: #111;
-  transform: scaleX(1); /* mantém a linha fixa */
-}
-
-.iconCart,
-.iconFavourites {
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.iconCart:hover,
-.iconFavourites:hover {
-  background-color: #f2f3f7;
-}
-
-/* ------------------ MENU MOBILE ------------------ */
-
+/* =========================
+     LINKS PRINCIPAIS
+     ========================= */
 .menu {
   position: fixed;
-  top: calc(var(--navbar-height)); /* posiciona logo abaixo da navbar fixa */
+  top: calc(var(--navbar-height));
   right: 0;
   left: 0;
-  background: #fff;
+  background: var(--bg);
   transform: translateY(-10%);
   opacity: 0;
   pointer-events: none;
@@ -107,9 +97,17 @@
     opacity 0.2s ease,
     transform 0.2s ease;
   padding: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow);
   display: none;
   z-index: 10000;
+}
+
+.menuOpen,
+.menu[aria-hidden='false'] {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .menu ul {
@@ -121,98 +119,136 @@
   gap: 12px;
 }
 
-.menuOpen,
-.menu[aria-hidden='false'] {
-  display: block;
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
 .menuList a {
   text-decoration: none;
   font-weight: 800;
 }
 
-/* ------------------ TABLET (≥640px) ------------------ */
-@media (min-width: 640px) {
-  :root {
-    --navbar-height: 72px; /* aumenta a navbar em breakpoints maiores */
-  }
-
-  .navbar {
-    justify-content: flex-start;
-    gap: 2rem;
-    padding: 0;
-    height: var(--navbar-height);
-  }
-
-  .logo {
-    height: 2rem;
-    width: 5rem;
-    margin: 24px;
-  }
-
-  .hamburger {
-    display: none;
-  }
-
-  .menu {
-    position: static;
-    transform: none;
-    opacity: 1;
-    pointer-events: auto;
-    background: transparent;
-    box-shadow: none;
-    display: block;
-  }
-
-  .menu ul {
-    flex-direction: row;
-    gap: 24px;
-    align-items: center;
-  }
-
-  .containerIcon {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1;
-  }
-
-  .linkContainer::after {
-    content: '';
-    position: absolute;
-    bottom: -29px;
-    left: 0;
-    height: 4px;
-    width: 100%;
-    background-color: #111;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.2s ease;
-  }
-
-  .linkContainer:hover::after {
-    transform: scaleX(1);
-  }
+.linkContainer {
+  position: relative;
 }
 
-/* ------------------ MOBILE TINY (<= 320px) ------------------ */
+.navLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 800;
+  transition: color 0.2s ease;
+  padding: 6px 4px;
+  display: inline-block;
+}
 
+/* link ativo */
+.activeLink {
+  color: var(--text);
+}
+
+/* linha decorativa (hover / active) */
+.linkContainer::after {
+  content: '';
+  position: absolute;
+  bottom: -29px;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: var(--text);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.linkContainer:hover::after {
+  transform: scaleX(1);
+}
+
+/* =========================
+     ICONS (favoritos + carrinho)
+     ========================= */
+
+/* wrapper clicável do ícone (referência para badge) */
+.iconButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  min-width: 48px; /* evita que o wrapper fique menor que o ícone */
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+/* evita que regras globais de img encolham os ícones */
+.containerIcon img,
+.iconButton img {
+  max-width: none;
+  width: auto;
+  height: auto;
+}
+
+/* ícones: tamanho explícito e sem !important para manter previsibilidade */
+.iconCart,
+.iconFavourites {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+/* hover sutil */
+.iconButton:hover .iconCart,
+.iconButton:hover .iconFavourites {
+  transform: translateY(-1px);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* badge circular sobreposto no canto superior direito */
+.cartBadge,
+.favBadge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  margin-top: 10px;
+  padding: 6px 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  background: var(--accent); /* usa variável global */
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: 999px;
+  transform: translate(0, -25%);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ajuste para números maiores */
+.cartBadge[data-testid],
+.favBadge[data-testid] {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+/* =========================
+     MENU / LAYOUT RESPONSIVO
+     ========================= */
+
+/* MOBILE TINY (<= 320px) */
 @media (max-width: 20rem) {
-  /* garante hamburger visível */
   .hamburger {
     display: inline-flex;
     z-index: 10001;
   }
 
-  /* manter apenas a logo visível dentro do leftGroup */
   .leftGroup > .logo {
     display: inline-block;
   }
 
-  /* ocultar nav completo (centro) */
   .menu,
   .menu ul,
   .navCenter,
@@ -222,14 +258,12 @@
     display: none !important;
   }
 
-  /* ocultar ícones à direita */
   .containerIcon,
   .iconCart,
   .iconFavourites {
     display: none !important;
   }
 
-  /* quando o menu mobile estiver aberto (via classe ou aria-hidden), exibir o painel */
   .menuOpen,
   .menu[aria-hidden='false'] {
     display: block !important;
@@ -239,9 +273,8 @@
   }
 }
 
-/* ------------------ MOBILE / TABLET (<= 640px) ------------------ */
+/* MOBILE / TABLET (<= 640px) */
 @media (max-width: 40rem) {
-  /* 640px */
   .navbar {
     padding: 12px;
     justify-content: space-between;
@@ -261,14 +294,13 @@
     display: inline-flex;
   }
 
-  /* menu mobile padrão (fechado) permanece; .menuOpen exibirá o menu em cima */
   .menu {
     position: fixed;
     top: calc(var(--navbar-height));
     left: 0;
     right: 0;
     padding: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow);
     display: none;
   }
 
@@ -284,15 +316,16 @@
   .leftGroup {
     gap: 1rem;
   }
+
   .containerIcon {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
   }
 }
 
-/* ------------------ DESKTOP MÉDIO (641px — 1199px) ------------------ */
+/* DESKTOP MÉDIO (641px — 1199px) */
 @media (min-width: 40.06rem) and (max-width: 74.93rem) {
-  /* 641px - 1199px */
   .navbar {
     justify-content: flex-start;
     gap: 1.5rem;
@@ -342,7 +375,71 @@
   }
 }
 
-/* ------------------ DESKTOP (≥1200px) ------------------ */
+/* TABLET (≥640px) */
+@media (min-width: 640px) {
+  :root {
+    --navbar-height: 72px;
+  }
+
+  .navbar {
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 0;
+    height: var(--navbar-height);
+  }
+
+  .logo {
+    height: 2rem;
+    width: 5rem;
+    margin: 24px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    background: transparent;
+    box-shadow: none;
+    display: block;
+  }
+
+  .menu ul {
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .containerIcon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+  }
+
+  .linkContainer::after {
+    content: '';
+    position: absolute;
+    bottom: -29px;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background-color: var(--text);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+  }
+
+  .linkContainer:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* DESKTOP (≥1200px) */
 @media (min-width: 1200px) {
   .logo {
     height: 2rem;
@@ -368,5 +465,59 @@
   .menu[aria-hidden='true'],
   .menu.menuOpen {
     display: flex !important;
+  }
+}
+
+/* =========================
+     UTILITÁRIOS / A11Y
+     ========================= */
+.iconButton:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.08);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.hamburger:focus,
+.navLink:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.08);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* =========================
+     OVERRIDES PARA CASOS ESPECÍFICOS
+     ========================= */
+
+/* Se existir uma regra global img { max-width: 100% }, garantimos que
+     os ícones da navbar não sejam afetados. */
+.containerIcon img,
+.iconButton img,
+.logo,
+.iconCart,
+.iconFavourites {
+  max-width: none;
+  box-sizing: content-box;
+}
+
+/* Aumenta ícones em telas maiores para melhor legibilidade */
+@media (min-width: 640px) {
+  .iconCart,
+  .iconFavourites {
+    width: 32px;
+    height: 32px;
+  }
+
+  .iconButton {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .cartBadge {
+    top: 6px;
+    right: 8px;
+    min-width: 20px;
+    height: 20px;
+    font-size: 12px;
+    transform: translate(0, -30%);
   }
 }

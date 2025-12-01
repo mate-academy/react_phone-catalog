@@ -1,9 +1,14 @@
 // src/components/BrandNewModels/BrandNewModels.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import styles from './BrandNewModels.module.css';
+import { useCart } from '../../pages/ShoppingCart/cartContext';
+import { useFavorites } from '../../pages/Favorites/FavoritesContext';
 
 export interface BrandNewModelsProps {
+  id?: string;
+  detailsLink?: string;
   className?: string;
   title?: string;
   titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -17,11 +22,11 @@ export interface BrandNewModelsProps {
   };
   'data-testid'?: string;
   onButtonClick?: () => void;
-  onFavouriteClick?: () => void;
-  isFavourite?: boolean;
 }
 
 const BrandNewModels: React.FC<BrandNewModelsProps> = ({
+  id,
+  detailsLink,
   className = '',
   title,
   titleLevel = 3,
@@ -31,11 +36,52 @@ const BrandNewModels: React.FC<BrandNewModelsProps> = ({
   specs,
   'data-testid': dataTestId = 'brand-new-model',
   onButtonClick,
-  onFavouriteClick,
-  isFavourite = false,
 }) => {
   const Tag = `h${titleLevel}` as keyof JSX.IntrinsicElements;
   const imgSrc = imageSrc;
+  const linkTo = detailsLink ?? (id ? `/product/${id}` : undefined);
+
+  const { addItem, isInCart } = useCart();
+  const { isFavorite, toggleFavorite } = useFavorites();
+
+  const alreadyInCart = id ? isInCart(id) : false;
+
+  const product = {
+    id: id ?? '',
+    title: title ?? '',
+    price,
+    imageSrc: imgSrc,
+    specs: specs ?? {},
+  };
+
+  const handleAddToCart = () => {
+    if (!id || alreadyInCart) {
+      return;
+    }
+
+    addItem(product);
+    if (onButtonClick) {
+      onButtonClick();
+    }
+  };
+
+  const Image = imgSrc ? (
+    <img
+      src={imgSrc}
+      alt={imageAlt ?? title}
+      className={styles.img}
+      loading="lazy"
+      data-testid="brand-image"
+    />
+  ) : (
+    <div className={styles.imgPlaceholder} aria-hidden="true" />
+  );
+
+  const Title = (
+    <Tag className={styles.title} data-testid={`${dataTestId}-title`}>
+      {title}
+    </Tag>
+  );
 
   return (
     <article
@@ -46,23 +92,27 @@ const BrandNewModels: React.FC<BrandNewModelsProps> = ({
     >
       {/* imagem */}
       <div className={styles.containerImg} data-testid="brand-image-wrapper">
-        {imgSrc ? (
-          <img
-            src={imgSrc}
-            alt={imageAlt ?? title}
-            className={styles.img}
-            loading="lazy"
-            data-testid="brand-image"
-          />
+        {linkTo ? (
+          <Link to={linkTo} aria-label={`Ver detalhes de ${title}`}>
+            {Image}
+          </Link>
         ) : (
-          <div className={styles.imgPlaceholder} aria-hidden="true" />
+          Image
         )}
       </div>
 
       {/* título */}
-      <Tag className={styles.title} data-testid={`${dataTestId}-title`}>
-        {title}
-      </Tag>
+      {linkTo ? (
+        <Link
+          to={linkTo}
+          className={styles.titleLink}
+          aria-label={`Ver detalhes de ${title}`}
+        >
+          {Title}
+        </Link>
+      ) : (
+        Title
+      )}
 
       {/* preço */}
       <div
@@ -105,26 +155,32 @@ const BrandNewModels: React.FC<BrandNewModelsProps> = ({
       {/* botões */}
       <div className={styles.buttonRow}>
         <Button
-          onClick={onButtonClick}
-          variant="primary"
+          onClick={handleAddToCart}
+          variant={alreadyInCart ? 'disabled' : 'primary'}
           size="md"
           className={styles.addButton}
           data-testid={`${dataTestId}-add-button`}
-          ariaLabel="Add to cart"
+          ariaLabel={
+            alreadyInCart ? 'Adicionado ao carrinho' : 'Adicionar ao carrinho'
+          }
         >
-          Add to cart
+          {alreadyInCart ? 'Adicionado ao carrinho' : 'Adicionar ao carrinho'}
         </Button>
 
         <button
           type="button"
-          onClick={onFavouriteClick}
-          className={styles.favButton}
+          onClick={() => toggleFavorite(product)}
+          className={`${styles.favButton} ${isFavorite(product.id) ? styles.active : ''}`}
           aria-label={
-            isFavourite ? 'Remove from favourites' : 'Add to favourites'
+            isFavorite(product.id)
+              ? 'Remove from favourites'
+              : 'Add to favourites'
           }
-          aria-pressed={isFavourite ? 'true' : 'false'}
+          aria-pressed={isFavorite(product.id) ? 'true' : 'false'}
           data-testid={`${dataTestId}-fav-button`}
-        />
+        >
+          {isFavorite(product.id) ? '❤️' : '🤍'}
+        </button>
       </div>
     </article>
   );

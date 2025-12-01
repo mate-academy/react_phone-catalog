@@ -1,27 +1,45 @@
 .container {
   padding: 0 2rem;
+  margin: 0;
 }
 
+/* Cabeçalho com título à esquerda e ações à direita */
 .headerRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-top: 7rem; /* espaço superior sem exagero */
+  margin-bottom: 2rem;
 }
 
+/* Título sem grandes deslocamentos */
 .title {
   font-size: 2rem;
-  margin-top: 6rem;
-  margin-bottom: 1.5rem;
-  padding-left: 3.5rem;
+  margin: 0; /* remove margens excessivas */
+  padding: 0; /* remove padding lateral */
   text-align: left;
 }
 
+/* Linha de ações: Select + link "Ver todos" */
+.actionsRow {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  gap: 30px; /* espaçamento de 20px entre Select e link */
+}
+
+.label,
+.select {
+  margin: 0;
+}
+
+/* Link "Ver todos" sem paddings grandes */
 .viewAllLink {
-  padding-top: 5.5rem;
-  padding-right: 4rem;
+  margin: 0;
+  padding: 0;
   font-weight: 600;
-  color: #313237;
+  color: #0029f8;
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease;
@@ -36,11 +54,18 @@
 .grid {
   display: flex;
   flex-wrap: wrap; /* permite quebrar linha */
-  gap: 1.5rem; /* espaço entre os cards */
-  justify-content: center; /* centraliza os cards na horizontal */
+  gap: 1.5rem; /* espaço entre os cards (horizontal e vertical) */
+  justify-content: center;
 }
 
-/* Cada card pode ter largura fixa para alinhar melhor */
+/* Cada card com largura fixa para alinhamento consistente */
 .grid > * {
-  flex: 0 1 280px; /* largura mínima de 250px */
+  flex: 0 1 320px; /* largura base alinhada ao card (var(--card-w): 320px) */
+}
+
+/* Container opcional para outras ações (se necessário) */
+.showAll {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

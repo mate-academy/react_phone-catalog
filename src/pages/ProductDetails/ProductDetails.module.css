@@ -1,0 +1,354 @@
+/* src/pages/ProductDetails/ProductDetails.module.css */
+:root {
+  --max-w: 1100px;
+  --muted: #89939a;
+  --accent: #313237;
+  --gap: 1rem;
+}
+
+.container {
+  max-width: var(--max-w);
+  margin: 8rem auto;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+}
+
+.breadcrumbs {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.breadcrumbs a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.sep {
+  color: #ccc;
+  margin: 0 0.25rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  margin: 0;
+  color: #111827;
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.media {
+  flex: 0 0 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.mainImageWrapper {
+  width: 360px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e6e9eb;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.imagePlaceholder {
+  width: 360px;
+  height: 260px;
+  background: linear-gradient(90deg, #eee 25%, #f7f7f7 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+.thumbs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.thumbButton {
+  border: 1px solid transparent;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.thumbActive {
+  border: 1px solid #111;
+  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.06);
+}
+
+/* destaque extra quando a thumb está ativa (acessibilidade visual) */
+.thumbButton:focus-visible,
+.thumbButton:hover {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(49, 50, 55, 0.06);
+}
+
+.info {
+  flex: 1 1 420px;
+  min-width: 280px;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 1rem;
+}
+
+.optionGroup {
+  margin-bottom: 1rem;
+}
+
+.optionLabel {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #313237;
+}
+
+.optionsRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.optionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #e2e6e9;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+}
+
+/* mantém o input acessível mas estilizado */
+.optionButton input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #cfd6da;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  flex: 0 0 16px;
+}
+
+/* indicador interno quando checked */
+.optionButton input[type='radio']:checked {
+  background: #111;
+  border-color: #111;
+  box-shadow: inset 0 0 0 4px #fff;
+}
+
+/* foco visível para leitores de teclado */
+.optionButton input[type='radio']:focus-visible {
+  outline: 2px solid rgba(49, 50, 55, 0.12);
+  outline-offset: 2px;
+}
+
+/* texto da opção */
+.optionText {
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+/* permite clicar no label inteiro */
+.optionButton:hover {
+  transform: translateY(-1px);
+  transition: transform 120ms ease;
+}
+
+.about {
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+  color: #111827;
+}
+
+.description {
+  color: #333;
+  line-height: 1.4;
+  white-space: pre-wrap; /* respeita quebras de linha em description */
+}
+
+.specs {
+  margin-bottom: 1rem;
+}
+
+.specList {
+  border-top: 1px solid #e6e6e6;
+  padding-top: 0.75rem;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+  color: var(--muted);
+}
+
+.specLabel {
+  font-weight: 600;
+  color: #313237;
+}
+
+.specValue {
+  color: #111;
+}
+
+.related {
+  margin-top: 2rem;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.relatedLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.addButton {
+  width: 16rem;
+  height: 40px;
+  font-size: 1rem;
+  border: none;
+  color: #fff;
+  background-color: #111;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background-color: #272727;
+}
+
+/* link "Voltar" estilizado para parecer botão secundário */
+.backLink {
+  width: 8rem;
+  text-align: center;
+  padding: 0.45rem 0.75rem;
+  text-decoration: none;
+  color: #111;
+  background: transparent;
+  border: 2px solid #111;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* hover/focus para o link voltar */
+.backLink:hover {
+  background: rgba(49, 50, 55, 0.04);
+  text-decoration: none;
+}
+
+.backLink:focus-visible {
+  outline: 2px solid rgba(49, 50, 55, 0.12);
+  outline-offset: 2px;
+}
+
+/* shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* responsividade */
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .media {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .mainImageWrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .thumbButton {
+    width: 56px;
+    height: 56px;
+  }
+
+  .actions .btn,
+  .actions .button,
+  .actions .c-button {
+    min-width: 140px;
+    height: 40px;
+  }
+}

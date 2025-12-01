@@ -1,6 +1,8 @@
-//__________
+// src/components/Navbar/Navbar.tsx
+
+// ======================
 // BLOCO IMPORT
-//__________
+// ======================
 import React, {
   useState,
   useMemo,
@@ -14,10 +16,12 @@ import logoMobile from '../../assets/img/phones/Logo_mobile.png';
 import logoDesktop from '../../assets/img/phones/Logo_desktop.png';
 import cartMobile from '../../assets/img/Cart.svg';
 import favouritesMobile from '../../assets/img/Favourites.svg';
+import { useCart } from '../../pages/ShoppingCart/cartContext';
+import { useFavorites } from '../../pages/Favorites/FavoritesContext';
 
-//__________
+// ======================
 // BLOCO TYPES
-//__________
+// ======================
 type LinkItem = { id: string; label: string; href: string };
 type Props = { links?: LinkItem[] };
 
@@ -36,9 +40,9 @@ const isLinkItem = (obj: unknown): obj is LinkItem => {
   );
 };
 
-//__________
-// BLOCO EXPORT (com otimizações, foco e validação runtime)
-//__________
+// ======================
+// BLOCO COMPONENTE (export default)
+// ======================
 export default function Navbar({ links }: Props): JSX.Element {
   // BLOCO STATE
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -170,16 +174,29 @@ export default function Navbar({ links }: Props): JSX.Element {
     [close, location.pathname],
   );
 
+  // ======================
+  // BLOCO CART (consome contexto do carrinho)
+  // ======================
+  const { totalQty } = useCart();
+
+  // BLOCO FAVORITES (consome contexto de favoritos)
+  const { favorites } = useFavorites();
+
   // BLOCO RENDER
   return (
     <header className={styles.navbar}>
       <div className={styles.leftGroup}>
-        <a href="/" onClick={close} aria-label="Ir para home">
+        <Link
+          to="/"
+          onClick={close}
+          aria-label="Ir para home"
+          className={styles.logoLink}
+        >
           <picture>
             <source srcSet={logoDesktop} media="(min-width: 640px)" />
             <img src={logoMobile} alt="Logo" className={styles.logo} />
           </picture>
-        </a>
+        </Link>
       </div>
 
       <button
@@ -204,13 +221,53 @@ export default function Navbar({ links }: Props): JSX.Element {
       >
         <ul className={styles.menuList}>{renderLinks(effectiveLinks)}</ul>
       </nav>
+
+      {/* ======================
+          BLOCO ICONS (Favourites + Cart com badge e rota /cart)
+          ====================== */}
       <div className={styles.containerIcon}>
-        <img
-          src={favouritesMobile}
-          alt="Ícone Cart"
-          className={styles.iconFavourites}
-        />
-        <img src={cartMobile} alt="Ícone Cart" className={styles.iconCart} />
+        <Link
+          to="/favoritos"
+          className={styles.iconButton}
+          aria-label="Favoritos"
+          data-testid="nav-favorites-link"
+        >
+          <img
+            src={favouritesMobile}
+            alt="Ícone Favoritos"
+            className={styles.iconFavourites}
+          />
+          {favorites.length > 0 && (
+            <span
+              className={styles.favBadge}
+              aria-live="polite"
+              data-testid="nav-favorites-qty"
+            >
+              {favorites.length}
+            </span>
+          )}
+        </Link>
+        <Link
+          to="/cart"
+          className={styles.iconButton}
+          aria-label="Ver carrinho"
+          data-testid="nav-cart-link"
+        >
+          <img
+            src={cartMobile}
+            alt="Ícone Carrinho"
+            className={styles.iconCart}
+          />
+          {totalQty > 0 && (
+            <span
+              className={styles.cartBadge}
+              aria-live="polite"
+              data-testid="nav-cart-qty"
+            >
+              {totalQty}
+            </span>
+          )}
+        </Link>
       </div>
     </header>
   );
