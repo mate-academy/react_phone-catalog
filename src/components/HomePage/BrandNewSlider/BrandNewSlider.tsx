@@ -1,3 +1,4 @@
+// BrandNewSlider.tsx (заміни свій файл цим кодом, ProductCard залишається без змін)
 import React, {
   useMemo,
   useState,
@@ -75,6 +76,22 @@ export function BrandNewSlider() {
     return arr;
   }, [products]);
 
+  // --- NEW: sanitizedProducts: remove priceDiscount so ProductCard won't show it
+  const sanitizedProducts = useMemo(() => {
+    return uniqueByNamespace.map(p => {
+      // choose displayed price: prefer priceRegular, fallback to priceDiscount, else 0
+      const displayPrice = p.priceRegular ?? p.priceDiscount ?? 0;
+
+      return {
+        ...p,
+        // remove discount so ProductCard's hasDiscount becomes false
+        priceDiscount: undefined,
+        // ensure priceRegular contains the price we want shown
+        priceRegular: displayPrice,
+      } as RawProduct;
+    });
+  }, [uniqueByNamespace]);
+
   const GAP = 16; // px gap between slides
   const MIN_CARD = 272; // design min, used for thresholds
 
@@ -82,6 +99,7 @@ export function BrandNewSlider() {
   const startIndexRef = useRef(0);
 
   const [startIndex, setStartIndex] = useState(0);
+
   useEffect(() => {
     startIndexRef.current = startIndex;
   }, [startIndex]);
@@ -115,9 +133,10 @@ export function BrandNewSlider() {
 
     setVisibleCount(prev => (prev === newVisible ? prev : newVisible));
 
-    const maxStart = Math.max(0, uniqueByNamespace.length - newVisible);
+    const maxStart = Math.max(0, sanitizedProducts.length - newVisible);
     const curStart = startIndexRef.current;
     const newStart = Math.min(curStart, maxStart);
+
     if (newStart !== curStart) {
       setStartIndex(newStart);
       startIndexRef.current = newStart;
@@ -129,7 +148,7 @@ export function BrandNewSlider() {
 
     const translate = newStart * (w + GAP);
     setTranslatePx(translate);
-  }, [computeVisibleByContainer, uniqueByNamespace.length]);
+  }, [computeVisibleByContainer, sanitizedProducts.length]);
 
   useEffect(() => {
     recompute();
@@ -144,7 +163,7 @@ export function BrandNewSlider() {
     };
   }, [recompute]);
 
-  const maxStart = Math.max(0, uniqueByNamespace.length - visibleCount);
+  const maxStart = Math.max(0, sanitizedProducts.length - visibleCount);
   const prev = () => setStartIndex(i => Math.max(0, i - 1));
   const next = () => setStartIndex(i => Math.min(maxStart, i + 1));
 
@@ -185,7 +204,7 @@ export function BrandNewSlider() {
             transform: `translateX(-${translatePx}px)`,
           }}
         >
-          {uniqueByNamespace.map(p => (
+          {sanitizedProducts.map(p => (
             <div
               key={p.id}
               className={styles.slideItem}

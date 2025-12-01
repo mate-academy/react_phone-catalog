@@ -8,6 +8,7 @@ import { Footer } from './components/Footer/Footer';
 import { ProductList } from './components/ProductList/ProductList';
 import { Banner } from './components/Banner/Banner';
 import { CartProvider } from './context/CartContext';
+import { ScrollRestoration } from './components/ScrollRestoration/ScrollRestoration';
 
 import { HomePage } from './components/HomePage/HomePage';
 import { PhonesPage } from './components/PhonesPage/PhonesPage';
@@ -21,7 +22,9 @@ import { CartPage } from './components/CartPage/CartPage';
 export function App() {
   return (
     <CartProvider>
-      <Router basename={import.meta.env.BASE_URL}>
+      <Router>
+        <ScrollRestoration />
+        {/* <Router basename={import.meta.env.BASE_URL}> */}
         <Header />
         <main>
           <Routes>

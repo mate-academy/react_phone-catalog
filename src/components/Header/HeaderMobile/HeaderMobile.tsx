@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './HeaderMobile.module.scss';
 import logoImg from '../../../../public/icons/Logo.svg';
@@ -13,6 +13,18 @@ export function HeaderMobile() {
   const { cartItems, favourites } = useCart();
 
   const toggleMenu = () => setIsOpen(prev => !prev);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
   return (
     <header className={styles.header}>
