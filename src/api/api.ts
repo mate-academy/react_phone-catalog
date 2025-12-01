@@ -9,7 +9,7 @@ const ENDPOINTS = {
   tablets: '/api/tablets.json',
   accessories: '/api/accessories.json',
 };
-
+type Category = keyof typeof ENDPOINTS;
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
 }
@@ -26,7 +26,16 @@ async function get<T>(url: string): Promise<T> {
 }
 
 export const getProducts = () => get<Product[]>(ENDPOINTS.products);
-// export const getProductDetails = (category: string) =>
-  // get<ProductDetails[]>(ENDPOINTS[category]);
+export const getProductDetails = (category: string | undefined) => {
+  if (!category) {
+    throw new Error('Category is missing');
+  }
+
+  if (!(category in ENDPOINTS)) {
+    throw new Error(`Unknown category: ${category}`);
+  }
+
+  return get<ProductDetails[]>(ENDPOINTS[category as Category]);
+};
 // export const getTablets = () => get<Product[]>(ENDPOINTS.tablets);
 // export const getAccessories = () => get<Product[]>(ENDPOINTS.accessories);

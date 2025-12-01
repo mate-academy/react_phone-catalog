@@ -12,3 +12,49 @@
     color: $color-primary;
   }
 }
+.productGallery {
+  display: flex;
+  gap: 16px;
+  &_thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &_thumbnailImage {
+    max-width: 66px;
+    max-height: 66px;
+    display: block;
+    padding: 7px;
+  }
+  &_thumbnail {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    object-fit: cover;
+    border: 1px solid $color-elements;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+  &_thumbnailActive {
+    border-color: $color-primary;
+  }
+  &_mainPhoto{
+    width: 464px;
+    height: 464px;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // border: 1px solid $color-elements;
+  }
+  &_mainPhotoImage{
+    max-width: 442px;
+    max-height: 442px;
+    display: block;
+    padding: 11px;
+  }
+}

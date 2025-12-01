@@ -4,23 +4,23 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Product } from '@/types/Product';
 import styles from './ProductPage.module.scss';
 import ProductGallery from './ProductGallery';
-type ProductPageProps = {
-  fetchReq: () => Promise<Product[]>;
-};
+import { getProductDetails } from '@/api/api';
+import { ProductDetails } from '@/types/ProductDetails';
 
-const ProductPage: React.FC<ProductPageProps> = ({ fetchReq }) => {
+const ProductPage: React.FC = () => {
   const { category, productSlug } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [product, setProduct] = useState<Product | null>(null);
+  // const [products, setProducts] = useState<Product[]>([]);
+  const [product, setProduct] = useState<ProductDetails | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
-    fetchReq()
+    getProductDetails(category)
       .then(products => {
-        setProducts(products);
-        const foundProduct = products.find(p => p.itemId === productSlug);
+        console.log(products);
+
+        const foundProduct = products.find(p => p.id === productSlug);
         setProduct(foundProduct || null);
       })
       .finally(() => {
@@ -54,8 +54,8 @@ const ProductPage: React.FC<ProductPageProps> = ({ fetchReq }) => {
         }
       />
       <section className="product-hero">
-        {/* або ProductOverview */}
-
+        <ProductGallery photos={product?.images} />
+        {/* <ProductConfigurator /> */}
       </section>
     </>
   );

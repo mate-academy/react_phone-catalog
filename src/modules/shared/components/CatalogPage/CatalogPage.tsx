@@ -7,12 +7,10 @@ import { CardSkeleton } from '../SliderItem/CardSkeleton';
 import styles from './CatalogPage.module.scss';
 import CustomSelect from '../CustomSelect/CustomSelect';
 import PaginationComponent from '../PaginationComponent/PaginationComponent';
-import {getProducts} from '@/api/api';
-type CatalogPageProps = {
-  fetchReq: () => Promise<Product[]>;
-};
+import { getProducts } from '@/api/api';
 
-const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
+
+const CatalogPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,6 +20,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
   const { category } = useParams();
   const sort = searchParams.get('sort');
   const perPage = searchParams.get('perPage');
+
   useEffect(() => {
     setPage(Number(searchParams.get('page')) || 1);
   }, [searchParams]);
@@ -65,6 +64,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ fetchReq }) => {
     params.delete('page');
     setSearchParams(params);
   }
+
   if (category) {
     const normalized = category.toLowerCase();
     filteredProducts = products.filter(
