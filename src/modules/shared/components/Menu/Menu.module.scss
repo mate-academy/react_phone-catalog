@@ -2,11 +2,15 @@
 
 .menu {
   position: fixed;
-  inset: 4.9rem 0 0;
+  inset: 4.8rem 0 0;
   z-index: 900;
 
-  overflow-y: auto;
-  transform: translateY(-0.8rem); opacity:0; visibility:hidden; pointer-events:none;
+  overflow-y: hidden;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
   transition: transform 0.7s ease, opacity 0.7s ease, visibility 0s ease 0.7s;
   will-change: transform, opacity;
 
@@ -19,7 +23,11 @@
 
 
   &_open {
-    transform: translateY(0); opacity:1; visibility:visible; pointer-events:auto;
+    transform: translateY(0);
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+
     transition: transform 0.7s ease, opacity 0.7s ease, visibility 0s;
   }
 
@@ -49,7 +57,7 @@
 
     &_active {
       color: constants.$primary-color;
-      border-bottom: 2px solid constants.$primary-color;
+      border-bottom: 0.2rem solid constants.$primary-color;
     }
   }
 
