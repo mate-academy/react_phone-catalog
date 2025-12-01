@@ -16,6 +16,7 @@ export function ScrollRestoration() {
       window.scrollTo(0, saved);
     } else {
       window.scrollTo(0, 0);
+    }
 
     oldPath.current = pathname;
   }, [pathname]);
