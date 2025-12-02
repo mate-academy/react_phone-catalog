@@ -3,7 +3,7 @@ import styles from './ProductCard.module.scss';
 import { FavoriteContext } from '../../contexts/FavoriteContext';
 import { CartContext, CartItem } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
-import { Product } from '../../../types/product';
+import { Product } from '../../../types';
 
 type Props = {
   product: Product;
