@@ -35,7 +35,7 @@ export const CartPage = () => {
     setProducts(productsInCart);
   }, [cart, allProducts]);
 
-  const cartTotalSum = 0;
+  let cartTotalSum = 0;
   const itemInCart = cart.length;
 
   const getProductLink = (product: AllProductsType) => {
@@ -44,7 +44,7 @@ export const CartPage = () => {
 
   const handleCheckout = () => {
     clearCart();
-    setOrderMessage('Your message has been sent successfully.');
+    setOrderMessage('Ваше замовлення успішно відправлено');
 
     setTimeout(() => setOrderMessage(null), 5000);
   };
@@ -83,7 +83,7 @@ export const CartPage = () => {
               const quantity = cartItem?.quantity ?? 1;
               const modelSum = price * quantity;
 
-              // cartTotalSum += modelSum;
+              cartTotalSum += modelSum;
 
               const productLink = getProductLink(product);
 
