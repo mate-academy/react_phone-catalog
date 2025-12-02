@@ -7,12 +7,13 @@ export const FavoritesPage: React.FC = () => {
   const { favorites } = useContext(FavoriteContext);
 
   return (
-    <div className="container">
+    <div className={`${styles.page} container`}>
       <div className="grid-24">
         <div className={styles.headerBlock}>
           <h1 className={styles.title}>Favorites</h1>
-          <p className={styles.count}>{favorites.length} items </p>
+          <p className={styles.count}>{favorites.length} items</p>
         </div>
+
         <ProductsList products={favorites} />
       </div>
     </div>
