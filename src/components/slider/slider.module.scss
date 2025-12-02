@@ -1,0 +1,180 @@
+@import '../../styles/main';
+
+.embla {
+  position: relative;
+
+  @include min-screen($tablet) {
+    padding-inline: 24px;
+    height: 225px;
+  }
+
+  @include min-screen($laptop) {
+    padding-inline: 32px;
+    height: 432px;
+  }
+
+  @include min-screen($largeDesktop) {
+    padding-inline: 152px;
+  }
+
+  &__viewport {
+    overflow: hidden;
+    width: 100%;
+
+    @include min-screen($tablet) {
+      height: 100%;
+    }
+  }
+
+  &__container {
+    display: flex;
+    
+
+    @include min-screen($tablet) {
+      height: 100%;
+      width: 100%
+    }
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+
+    @include min-screen($tablet) {
+      height: 100%;
+      width: 100%; 
+      margin-inline: auto;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin-top: 0;
+
+    @include min-screen($tablet) {
+      height: 189px;
+      width: 490px;
+      margin-inline: auto;
+    }
+
+    @include min-screen($laptop) {
+      width: 90%;
+      height: 400px;
+    }
+  }
+}
+
+.arrow {
+  display: none;
+  
+  @include min-screen($tablet) {
+    display: block;
+    height: 189px;
+    width: 32px;
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    border: none;
+    background: $footerButtonBGC;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+    backdrop-filter: blur(2px); 
+  }
+
+  @include min-screen($laptop) {
+    height: 400px;
+    top: 47%;
+  }
+
+  &__img {
+    background: $footerButtonBGC;
+  }
+}
+
+.arrow--left {
+  left: 12px;
+   
+  @include min-screen($tablet) {
+    left: 24px;
+  }
+
+  @include min-screen($laptop) {
+    left: 32px;
+  }
+
+  @include min-screen($largeDesktop) {
+    left: 152px;
+  }
+}
+
+.arrow--right { 
+  right: 12px;
+
+  @include min-screen($tablet) {
+    right: 24px;
+  }
+  
+  @include min-screen($laptop) {
+    right: 32px;
+  }
+
+  @include min-screen($largeDesktop) {
+    right: 152px;
+  }
+}
+
+.arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.embla__dots {
+  display: flex;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 10px;
+  border: none;
+  z-index: 2;
+  text-decoration: none;
+  outline: none; 
+  
+  @include min-screen($tablet) {
+    bottom: 10px;
+    text-decoration: none;
+    outline: none;
+    border: 1px solid $mainColor;    
+  }  
+}
+
+.embla__dot {
+  width: 14px;
+  height: 4px;
+  background-color: $linkColor;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+  
+  @include min-screen($tablet) {
+    outline: none;
+    width: 14px;
+    height: 4px; 
+  }  
+}
+
+.embla__dot:hover {
+  background-color: $whitColor;
+  outline: none;
+}
+
+.embla__dot.is-selected {
+  background-color: white;
+  outline: none;
+  border: none;
+}

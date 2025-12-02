@@ -1,0 +1,157 @@
+@import '../../styles/main';
+
+.card {
+  width: 212px;
+  height: 100%;
+  margin-top: 24px;
+  padding: 32px;
+  background-color: $cardBgColor;
+  margin-inline: auto;
+
+  @include min-screen($tablet) {
+    width: 278px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @include min-screen($laptop) {
+    width: 227px;
+  }
+
+  @include min-screen($desktop) {
+    width: 272px;
+  }
+
+  &__img{
+    width: 130px;
+    height: 150px;
+    margin-bottom: 24px;
+    background-color: $cardBgColor;
+    margin-inline: auto;
+    display: block;
+  }
+
+  &__title{
+    width: 100%;
+    height: 42px;
+    color: $textColor;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: $cardBgColor;
+  }
+
+  &__price{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    height: 31px;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: $textColor;
+    background-color: $cardBgColor;
+    margin-bottom: 24px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;      
+      height: 1px;
+      width: 100%;            
+      transform-origin: center;
+      transition: width 0.3s ease;
+      background-color: $cardTextColor;      
+    }
+  }
+
+  &__priceOld{
+    height: 28px;
+    font-family: Mont, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: $cardTextColor;
+    background-color: $cardBgColor;
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  &__text{
+    display: flex;
+    
+    height: 15px;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: $cardTextColor;
+    background-color: $cardBgColor;
+    margin-top: 8px;
+  }
+
+  &__addText{
+    height: 15px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: $cardTextColor;
+    background-color: $cardBgColor;
+    margin-left: auto;    
+  }
+
+  &__action{
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    background-color: $cardBgColor;
+    margin-top: 23px;
+  }
+
+  &__button{
+    width: 70%;
+    height: 40px;
+    background-color: $buttonBgColor;
+    color: $textColor;   
+    font-family: Mont, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    box-sizing: border-box;
+    border: 1px solid $buttonBgColor;    
+  }
+
+  &__button_added{
+    background-color: $footerButtonBGC;
+    border: 1px solid $footerButtonBGC;
+  }
+
+  &__favorite{
+    height: 40px;
+    width: 30%;
+    background-color: $cardFavoriteBG;
+    border: 1px solid $cardFavoriteBG;
+    box-sizing: border-box;
+  }
+
+  &__favorite_added{
+    background-color: $mainColor;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+ }
+
+.favoriteImg{
+  width: 16px;
+  height: 16px;
+  background-color: $cardFavoriteBG;
+}
+
+.favoriteImg_added {
+  background-color: $mainColor;
+}

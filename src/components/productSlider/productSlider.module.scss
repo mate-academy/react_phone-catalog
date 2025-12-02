@@ -1,0 +1,131 @@
+@import '../../styles/main';
+
+.embla{
+  width: 95%;
+  position: relative;
+  background-color: $mainColor;
+  margin-top: 76px; 
+
+  @include min-screen($tablet) {
+    width: 95%;
+    margin-top: 64px;
+    
+  }
+
+  @include min-screen($laptop) {
+    width: 97%;
+    margin-top: 80px;    
+  }
+
+  @include min-screen($largeDesktop) {
+    width: 92%;
+  }
+
+  &__viewport{
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    column-gap: 16px;
+    padding-left: 16px;
+
+    @include min-screen($tablet) {
+      padding-left: 24px;
+    }
+
+    @include min-screen($laptop) {
+      padding-left: 32px;
+    }
+
+    @include min-screen($largeDesktop) {
+      padding-inline: 152px;
+    }
+  }
+
+  &__slide {
+    display: flex;    
+    width: 212px;
+    height: 100%;
+
+    @include min-screen($laptop){
+      width: 275px;
+    }
+  }
+
+  &__title{
+    width: 136px;
+    height: 62px;
+    color: $textColor;
+    text-align: start;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    margin:0 0 0 16px;
+    background-color: $mainColor;
+
+    @include min-screen($tablet) {
+      width: 491px;
+      height: 41px;
+      line-height: 41px;
+      font-size: 32px;
+      margin-left: 24px;
+    }
+    
+    @include min-screen($laptop) {
+      width: 560px;
+      margin-left: 32px;
+    }
+
+    @include min-screen($largeDesktop) {
+      margin-left: 152px;
+    }
+  }
+}
+
+.arrow{
+  display: inline-flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: 20px;
+  width: 32px;
+  height: 32px;  
+  border: 1px solid $arrowBorderColor;  
+  box-shadow: none;
+  transition: border-color .2s, background-color .2s;
+
+  @include min-screen($tablet) {
+    top: 5px;
+  }
+
+  &:hover{
+    background-color: $cardFavoriteBG;
+  }
+
+  &__img{
+    color: $arrowBorderColor;
+    background-color: transparent;
+
+    &:hover{
+      background-color: $cardFavoriteBG;
+    }
+  }
+}
+
+.arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.arrow--left{
+  right: 60px; 
+}
+
+.arrow--right{
+  margin: 0;
+}
+

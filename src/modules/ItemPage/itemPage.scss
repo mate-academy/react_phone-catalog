@@ -1,0 +1,571 @@
+@import '../../styles/main';
+
+.item-page {
+  margin-top: 24px;
+  padding-inline: 16px;
+
+  @include min-screen($tablet) {
+    padding-inline: 24px;
+  }
+
+  @include min-screen($laptop) {
+    padding-inline: 32px;
+  }
+
+  @include min-screen($largeDesktop) {
+    padding-inline: 152px;
+  }
+
+  &__back {
+    display: flex;
+    height: 16px;
+    column-gap: 8px;
+    margin-top: 25px;
+    text-decoration: none;
+    color: $textColor;
+    align-items: center;
+  }
+
+  &__arrowBack {
+    height: 10px;
+    width: 6px;
+    color: $textColor;
+  }
+
+  &__text {
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: $textColor;
+    letter-spacing: 0.5px;
+  }
+
+  &__title {
+    height: 62px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: $textColor;
+
+    @include min-screen($tablet) {
+      height: 82px;
+      line-height: 82px;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+
+    @include min-screen($tablet) {
+      flex-direction: row;
+      column-gap: 17px;
+    }
+
+    @include min-screen($laptop) {
+      margin-bottom: 80px;
+    }
+
+    @include min-screen($desktop) {
+      column-gap: 64px;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include min-screen($tablet) {
+      flex-direction: row-reverse;
+      column-gap: 16px;
+    }
+  }
+
+  &__preview {
+    display: flex;
+    width: 100%;
+    height: 288px;
+    justify-content: center;
+
+    @include min-screen($laptop){
+      height: 464px;
+    }
+  }
+
+  &__mainImg {
+    height: 275px;
+
+    @include min-screen($laptop){
+      height: 100%;
+    }
+  }
+
+  &__thumbs {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px ;
+    width: 100%;
+    height: 42px;
+    justify-content: space-between;
+
+    @include min-screen($tablet) {
+      margin-top: 0;
+      flex-direction: column;
+      justify-content: start;
+      width: 42px;
+      height: auto;
+      align-self: self-start;
+      row-gap: 5px;
+    }
+
+    @include min-screen($laptop){
+      height: 464px;
+      width: auto;
+      row-gap: 16px;
+    }
+  }
+
+  &__thumb {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    border: 1px solid $afterElementColor;
+    justify-content: center;
+
+    @include min-screen($tablet) {
+      justify-content: start;
+      flex: 0 0 auto;
+    }
+
+     @include min-screen($laptop){
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__rowImg {
+    @include min-screen($tablet) {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__thumb--active {
+    border: 2px solid $textColor;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 100%;
+
+    @include min-screen($tablet) {
+      margin-top: 0;
+    }
+  }
+
+  &__colorsBlock {
+    position: relative;
+    width: 100%;
+    padding-bottom: 24px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;      
+      left: 0;      
+      height: 1px;
+      width: 100%;
+       z-index: 11;            
+      transform-origin: center;
+      transition: width 0.3s ease;
+      background-color: $afterElementColor;
+
+      @include min-screen($laptop) {
+        width: 60%;
+      }
+    }
+  }
+
+  &__colors-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__colors-title {
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;    
+    color: $cardTextColor;    
+  }
+
+  &__colors-id {
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10px;    
+    color: $cardTextColor;
+  }
+
+  &__colors {
+    display: flex;
+    column-gap: 9px; 
+  }
+
+  &__color {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    border: 2px solid $mainColor;
+    background-color: var(--color);
+    outline: none;
+
+    appearance: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid $afterElementColor;
+      pointer-events: none
+    }
+  }
+
+  &__color--active::before {
+    border-color: $textColor;
+  }
+
+  &__capacity-block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    row-gap: 8px;
+    padding-bottom: 25px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;      
+      left: 0;      
+      height: 1px;
+      width: 100%;
+       z-index: 11;            
+      transform-origin: center;
+      transition: width 0.3s ease;
+      background-color: $afterElementColor;
+      
+      @include min-screen($laptop) {
+        width: 60%;
+      }
+    }
+  }
+
+  &__capacity-list {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__capacity {
+    width: 56px;
+    height: 32px;
+    color: $textColor;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    line-height: 32px;
+    border: 1px solid $afterElementColor;
+  }
+
+  &__capacity--active {
+    background-color: $textColor;
+    border: 1px solid $mainColor;
+    color: $mainColor;
+  }
+
+  &__prices {
+    display: flex;
+    column-gap: 8px;
+    height: 41px;
+    align-items: center;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+
+  &__price-new {
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: $textColor;
+  }
+
+  &__price-old {
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: $cardTextColor;
+    text-decoration: line-through;
+  }
+
+  &__action {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 48px;
+
+    @include min-screen($laptop) {
+      width: 60%;
+    }
+  }
+
+  &__button {
+    height: 100%;
+    width: 231px;
+    background-color: $buttonBgColor;
+    color: $textColor;
+    font-family: Mont, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    box-sizing: border-box;
+    border: 1px solid $buttonBgColor
+  }
+
+  &__button-added{
+    background-color: $footerButtonBGC;
+    border: 1px solid $footerButtonBGC;
+  }
+
+  &__favorite {
+    height: 100%;
+    width: 48px;
+    background-color: $cardFavoriteBG;
+    border: 1px solid $cardFavoriteBG;
+    box-sizing: border-box;
+  }
+
+  &__favorite-added{
+    background-color: $mainColor;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin: 32px 0 56px;
+
+    
+  }
+
+  &__spec-block {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 15px;
+    align-items: center;
+
+    @include min-screen($laptop) {
+      width: 60%;
+    }
+  }
+
+  &__spec-label {
+    height: 100%;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: $cardTextColor;
+  }
+
+  &__spec-value {
+    height: 100%;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: $textColor;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include min-screen($laptop) {
+      flex-direction: row;
+      column-gap: 17px;
+    }
+
+    @include min-screen($desktop) {
+      column-gap: 64px;
+    }
+  }
+
+  &__description-flex{
+    @include min-screen($laptop) {
+      width: 50%;
+    }
+  }
+
+  &__description-title {
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: $textColor;
+    margin-bottom: 16px;
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: $afterElementColor;
+    border: 1px solid $afterElementColor;
+    margin-bottom: 32px;
+  }
+
+  &__about-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__about-subtitle {
+    width: 100%;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: $textColor;
+    margin-bottom: 16px;
+  }
+
+  &__about-text {
+    width: 100%;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: $cardTextColor;
+    margin-bottom: 32px;
+  }
+
+  &__tech{
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin: 32px 0 56px;
+
+    @include min-screen($laptop) {
+      width: 50%;
+      margin-top: 0;
+    }
+  }
+
+  &__tech-block {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 21px;
+    align-items: center;
+  }
+
+  &__tech-label {
+    height: 100%;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    color: $cardTextColor;
+  }
+
+  &__tech-value {
+    height: 100%;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    color: $textColor;
+  }
+}
+
+.navigation {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+
+
+  &__back {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+  }
+
+  &__back-home {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__gap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__arrow {
+    width: 6px;
+    height: 10px;
+    color: $arrowBorderColor;
+  }
+
+  &__title {
+    height: 15px;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $textColor;
+    text-decoration: none;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+  }
+
+  &__name {
+    height: 15px;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 15px;
+    color: $cardTextColor;    
+  }
+}
+
+.favoriteImg{
+  width: 16px;
+  height: 16px;
+  background-color: $cardFavoriteBG;
+}
+
+.favoriteImg_added {
+  background-color: $mainColor;
+}

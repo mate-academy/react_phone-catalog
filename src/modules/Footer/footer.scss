@@ -1,0 +1,199 @@
+@import '../../styles/main';
+
+.footer {
+  display: flex;
+  position: relative;
+  flex-direction: column;  
+  width: 100%;
+  background-color: $mainColor;
+  transition: height 0.3s ease;
+  z-index: 10;
+  margin-top: 65px;
+
+  &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;      
+      height: 1px;
+      width: 100%;
+       z-index: 11;            
+      transform-origin: center;
+      transition: width 0.3s ease;
+      background-color: $cardTextColor;      
+    }
+      
+
+   @include min-screen($tablet) {
+      flex-direction: row;
+      height: 96px;
+      justify-content: center;
+      align-items: center;
+      padding-inline: 24px;
+    }
+
+   @include min-screen($laptop) {
+      height: 96px;
+      padding: 32px;
+      margin-top: 80px;
+    }
+
+    @include min-screen($largeDesktop) {
+      padding-inline: 152px;
+    }
+  
+  &__top {
+    position: static;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color:$mainColor;
+    margin-top: 33px;
+
+
+    @include min-screen($tablet) {
+      height: 64px;
+      margin-top: 0;
+      width: 190px;
+    }
+
+    @include min-screen($laptop){
+      margin-right: 200px;
+    }
+  } 
+
+  &__logo {
+    display: block;
+    width: 96px;
+    height: 100%;
+
+    @include min-screen($tablet) {
+      width: 118px;
+    }
+    
+    @include min-screen($laptop) {
+      width: 128px;
+      
+    }
+  }
+
+  &__menu {
+    display: flex;    
+    flex-direction: column;
+    width:100%;
+    height: fit-content;    
+    row-gap: 16px;
+    top: 65px;
+    right: 0;
+    bottom: 0;
+    background-color: $mainColor;
+    box-sizing: border-box;    
+    opacity: 1;
+    z-index: 10;
+    
+    @include min-screen($tablet) {
+      flex-direction: row;
+      width: calc(100% - 130px); // width navbar__menu = 100% - (width navbar__logo + 34px)
+      justify-content: space-between;      
+      align-items: center;
+      opacity: 1;
+      left: 128px;
+      visibility: visible;
+      transform: none;
+      pointer-events: all;
+      height: 64px;
+      top:0;
+    }
+
+    @include min-screen($laptop) {
+      left: 152px;
+      width: calc(100% - 155px);// width navbar__menu = 100% - (width navbar__logo + 34px)
+    }
+  }
+
+  &__link {
+    position: relative;
+    font-family: Mont, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    height: 30px;
+    width: footer;
+    text-decoration: none;
+    color: $textColor;
+    text-align: start;
+    padding-block: 10px;
+    text-transform: uppercase;
+
+    @include min-screen($tablet) {
+      height: 100%;
+      padding-block: 25px;      
+    }
+  }
+
+  &__container {
+  display: flex;
+  margin-top:0;
+  width: 100%;
+  height: 100%;  
+  flex-direction: column;
+  row-gap: 16px;  
+  background-color: $mainColor;
+  box-sizing: border-box;
+  padding-inline: 16px;
+
+  @include min-screen($tablet) {
+    flex-direction: row;
+    column-gap: 32px;
+    margin: 0;
+  }
+
+  @include min-screen($laptop) {
+    column-gap: 100px;
+  }
+}
+
+  &__back {
+    display: flex;
+    height: 32px;
+    width: 100%;
+    column-gap: 16px;
+    justify-content: center;
+    text-decoration: none;
+    color: $cardTextColor;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    align-items: center;
+    line-height: 100%;
+    font-size: 12px;
+    margin-top: 32px;
+    margin-bottom: 41px;
+
+    @include min-screen($tablet) {
+      justify-content: right;
+      padding-right: 32px;
+    }
+
+    @include min-screen($laptop) {
+      padding-right: 0;
+    }
+  }
+
+  &__button{
+    display: flex;
+    height: 32px;
+    width: 32px;
+   justify-content: center;
+   align-items: center;
+   background-color: $footerButtonBGC;
+  }
+
+  &__backImg{
+    height: 10px;
+    width: 6px;
+    color: $textColor;
+    background-color: $footerButtonBGC;
+  }
+}
+
+

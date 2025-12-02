@@ -1,0 +1,126 @@
+@import '../../styles/main';
+
+.catalog {
+  width: 100%;
+  padding-inline: 16px;
+
+  @include min-screen($tablet) {
+    padding-inline: 0;
+  }
+
+  &__title {
+    height: 41px;
+    width: 100%;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    color: $textColor;
+    margin-bottom: 10px;
+
+    @include min-screen($tablet) {
+      height: 56px;
+      line-height: 56px;
+      font-size: 48px;
+    }
+  }
+
+  &__models{
+    width: 100%;
+    height: 21px;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $cardTextColor;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+
+    @include min-screen($tablet) {
+      margin-top: 40px;
+      column-gap: 16px;
+      justify-content: start;
+    }
+  }
+
+  &__control {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+  }
+
+  &__controlLable {
+    width: 100%;
+    height: 15px;
+    color: $cardTextColor;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__select {
+    width: 135px;
+    height: 40px;
+    background-color: $footerButtonBGC;
+    color: $textColor;
+    padding-left: 12px;
+    line-height: 40px;
+  }
+
+  &__select--sort {
+    @include min-screen($tablet) {
+      width: 187px;
+    }
+  }
+
+  &__list {
+    @include min-screen($tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 16px;
+    }
+  }
+
+  &__pagination{
+    display: flex;
+    width: 100%;
+    height: 32px;
+    padding-inline: auto;
+    justify-content: space-between;
+    margin-top: 24px;
+
+    @include min-screen($tablet) {
+      margin-top: 40px;
+      justify-content: center;
+      column-gap: 16px;
+    }
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    color: $textColor;
+    background-color: $cardFavoriteBG;
+    font-family: Mont, Arial, sans-serif;
+    border: 1px solid $cardFavoriteBG;
+  }
+
+  &__pageBtn {
+    width: 32px;
+    height: 32px;
+    color: $textColor;
+    background-color: $cardBgColor;
+    border: 1px solid $mainColor;
+
+  }
+
+  &__pageBtn--active{
+    background-color: $buttonBgColor;
+    border: 1px solid $buttonBgColor;
+  }
+}
