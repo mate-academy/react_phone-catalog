@@ -8,6 +8,7 @@ import {
 } from '../../services/productsService';
 import { Product, ProductDetails } from '../../types';
 import { ProductsList } from '../../shared/components/ProductList/ProductsList';
+import { ProductButtons } from '../../shared/components/ProductButtons';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
@@ -59,6 +60,26 @@ export const ProductDetailsPage: React.FC = () => {
   if (!product) {
     return <h1 className={styles.message}>Product not found</h1>;
   }
+
+  const simpleProduct: {
+    id: number;
+    itemId: string;
+    name: string;
+    price: number;
+    fullPrice: number;
+    image: string;
+    screen: string;
+    ram: string;
+  } = {
+    id: Number(product.id),
+    itemId: product.id,
+    name: product.name,
+    price: product.priceDiscount,
+    fullPrice: product.priceRegular,
+    image: `/${product.images[0]}`,
+    screen: product.screen,
+    ram: product.ram,
+  };
 
   const specs = [
     { label: 'Screen', value: product.screen },
@@ -135,10 +156,7 @@ export const ProductDetailsPage: React.FC = () => {
               <span className={styles.priceOld}>{product.priceDiscount}</span>
             </div>
 
-            <div className={styles.buttons}>
-              <button className={styles.addToCart}>Add to cart</button>
-              <button className={styles.favoriteButton}>favorite</button>
-            </div>
+            <ProductButtons product={simpleProduct} />
 
             <div className={styles.detailsShort}>
               {specs.slice(0, 4).map(s => (
@@ -181,7 +199,6 @@ export const ProductDetailsPage: React.FC = () => {
 
         <div className={styles.recommendedSection}>
           <h2 className={styles.recommendedTitle}>You may also like</h2>
-
           <div className="grid-24">
             <ProductsList products={suggested} />
           </div>
