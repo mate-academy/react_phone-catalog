@@ -2,21 +2,22 @@ import { useEffect, useState } from 'react';
 import { getProductsByCategory } from '../../../../../server/products';
 import { Product } from '../../../../../types/Product';
 import { Loader } from '../../../../shared/Loader';
-import { Slider } from '../../../../shared/Slider/Slider';
 import { SliderBtns } from '../../../../shared/SliderBtns';
+import { Slider } from '../Slider';
 import styles from './NewProductsSlider.module.scss';
 
 export const NewProductsSlider = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     setLoading(true);
     getProductsByCategory('phones')
       .then(data => {
-        setProducts(data.filter(item => item.name.includes('14')));
+        const filtered = data.filter(item => item.namespaceId.includes('14'))
+        setProducts(filtered);
       })
       .catch(() => setError('Try again later'))
       .finally(() => setLoading(false));

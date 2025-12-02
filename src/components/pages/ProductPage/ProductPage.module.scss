@@ -230,11 +230,12 @@
     margin-top: 32px;
     margin-bottom: 16px;
 
-    &--gray {
-      font-family: Mont, sans-serif;
-      color: $color-text-gray;
-      text-decoration: line-through;
-    }
+  }
+  
+  &__priceGray{
+    font-family: Mont, sans-serif;
+    color: $color-text-gray;
+    text-decoration: line-through;
   }
 
   &__properties {

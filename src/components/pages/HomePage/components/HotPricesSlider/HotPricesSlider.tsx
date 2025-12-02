@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useHotPrice } from '../../../../../providers/HotPriceProvider';
 import { getProductsByCategory } from '../../../../../server/products';
 import { Product } from '../../../../../types/Product';
 import { Loader } from '../../../../shared/Loader';
-import { Slider } from '../../../../shared/Slider';
 import { SliderBtns } from '../../../../shared/SliderBtns';
+import { Slider } from '../Slider';
 import styles from './HotPricesSlider.module.scss';
 
 export const HotPricesSlider = () => {
@@ -12,23 +11,18 @@ export const HotPricesSlider = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [current, setCurrent] = useState<number>(0);
-  const { setIsHotPrice } = useHotPrice();
 
   useEffect(() => {
     setLoading(true);
     getProductsByCategory('phones')
       .then(data => {
         const filtered = data.filter(
-          item => item.priceDiscount < item.priceRegular,
+          item => item.priceDiscount < item.priceRegular
         );
-
         setProducts(filtered);
-        setIsHotPrice(true);
       })
       .catch(() => setError('Try again later'))
       .finally(() => setLoading(false));
-
-    return () => setIsHotPrice(false);
   }, []);
 
   return (
@@ -47,7 +41,7 @@ export const HotPricesSlider = () => {
       )}
 
       {!loading && products.length > 0 && (
-        <Slider products={products} current={current} />
+        <Slider products={products} current={current}  />
       )}
 
       {!loading && products.length === 0 && <p>There are no hot products</p>}

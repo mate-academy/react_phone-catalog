@@ -70,11 +70,12 @@
     position: relative;
     margin-top: 8px;
 
-    &--gray {
-      font-family: Mont, sans-serif;
-      color: $color-text-gray;
-      text-decoration: line-through;
-    }
+  }
+  
+  &__priceGray{
+    font-family: Mont, sans-serif;
+    color: $color-text-gray;
+    text-decoration: line-through;
   }
 
   &__description {

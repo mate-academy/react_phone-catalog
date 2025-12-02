@@ -13,7 +13,7 @@ export const Slider: React.FC<Props> = ({ products, current }) => {
     <div className={styles.slider}>
       <div
         className={styles.slider__slides}
-        style={{ transform: `translateX(-${current * (212 + 16)}px)` }}
+        style={{ transform: `translateX(-${current * 202 + 16}px)` }}
       >
         {products.map(product => (
           <ProductCard
@@ -26,3 +26,4 @@ export const Slider: React.FC<Props> = ({ products, current }) => {
     </div>
   );
 };
+

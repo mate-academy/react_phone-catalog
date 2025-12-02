@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useHotPrice } from '../../../../../providers/HotPriceProvider';
 import { Product } from '../../../../../types/Product';
 import { Btns } from '../../../../shared/Btns';
 import styles from './ProductCard.module.scss';
@@ -9,12 +8,15 @@ type Props = {
   category: string;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { isHotPrice } = useHotPrice();
+export const ProductCard: React.FC<Props> = ({ product, category }) => {
+const showDiscount = product.priceDiscount < product.priceRegular;
 
   return (
     <div className={styles.productCart__slide}>
-      <Link to={`../${product.id}`} className={styles.productCart__link}>
+      <Link
+        to={`../../${category}/${product.id}`}
+        className={styles.productCart__link}
+      >
         <div className={styles.productCart__imgWraper}>
           <img
             src={`./${product.images[0]}`}
@@ -26,12 +28,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <h4 className={styles.productCart__name}>{product.name}</h4>
 
         <div className={styles.productCart__prices}>
-          {isHotPrice ? (
+          {showDiscount ? (
             <p className={styles.productCart__price}>
               ${product.priceDiscount}{' '}
-              <span
-                className={`${styles.productCart__price} ${styles['productCart__price--gray']}`}
-              >
+              <span className={styles.productCart__priceGray}>
                 ${product.priceRegular}
               </span>
             </p>

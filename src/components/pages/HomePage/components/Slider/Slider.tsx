@@ -1,4 +1,3 @@
-import React from 'react';
 import { Product } from '../../../../../types/Product';
 import { ProductCard } from '../ProductCard';
 import styles from './Slider.module.scss';
@@ -13,7 +12,7 @@ export const Slider: React.FC<Props> = ({ products, current }) => {
     <div className={styles.slider}>
       <div
         className={styles.slider__slides}
-        style={{ transform: `translateX(-${current * (212 + 16)}px)` }}
+        style={{ transform: `translateX(-${current * 228}px)` }}
       >
         {products.map(product => (
           <ProductCard

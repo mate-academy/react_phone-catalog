@@ -26,6 +26,7 @@ export const Btns: React.FC<Props> = ({ product }) => {
           inCart ? styles['btns__add--selected'] : ''
         }`}
         onClick={handleAddToCart}
+        disabled={inCart}
       >
         {inCart ? 'Added' : 'Add to cart'}
       </button>
