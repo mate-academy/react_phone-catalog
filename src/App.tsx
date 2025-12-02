@@ -10,8 +10,7 @@ import { FavoriteProvider } from './shared/contexts/FavoriteContext';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { CartProvider } from './shared/contexts/CartContext';
 import { CartPage } from './modules/CartPage/CartPage';
-// eslint-disable-next-line max-len
-import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { TabletsPage } from './modules/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage/AccessoriesPage';
 import { ROUTES } from './shared/constants';
