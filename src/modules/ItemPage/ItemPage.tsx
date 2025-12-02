@@ -54,7 +54,8 @@ export const ItemPage: React.FC = () => {
     }
   }, [category, itemId]);
 
-  const normalizeImg = (path: string) => path;
+  const normalizeImg = (path: string) =>
+    path.startsWith('/') ? path : `/${path}`;
 
   const [activeImg, setActiveImg] = useState<string>('');
   const [activeColor, setActiveColor] = useState<string>('');

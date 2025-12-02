@@ -3,14 +3,12 @@ import { Phone } from './Phone';
 import { Product } from './Product';
 import { CardItem } from './СardItem';
 
+const normalizeImg = (path: string): string => path.replace(/^\//, '');
+
 export const fromPhone = (p: Phone): CardItem => ({
   id: String(p.id),
   name: p.name,
-  img: p.images?.[0]
-    ? p.images[0].startsWith('/')
-      ? p.images[0]
-      : `/${p.images[0]}`
-    : '',
+  img: p.images?.[0] ? normalizeImg(p.images[0]) : '',
   price: p.priceDiscount ?? p.priceRegular,
   screen: p.screen,
   capacity: p.capacity,
@@ -21,7 +19,7 @@ export const fromPhone = (p: Phone): CardItem => ({
 export const fromProduct = (p: Product): CardItem => ({
   id: String(p.itemId),
   name: p.name,
-  img: p.image.startsWith('/') ? p.image : `/${p.image}`,
+  img: normalizeImg(p.image),
   price: p.price,
   oldPrice: p.fullPrice,
   screen: p.screen,
@@ -38,6 +36,6 @@ export const fromAccessories = (acc: Accessories): CardItem => ({
   screen: acc.screen,
   capacity: acc.capacity,
   ram: acc.ram,
-  img: acc.images[0],
+  img: normalizeImg(acc.images[0]),
   link: `/${acc.category}/${acc.namespaceId}`,
 });
