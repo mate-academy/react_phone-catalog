@@ -1,3 +1,5 @@
+ @use '../../../shared/styles/mixins' as *;
+
  .slider {
     position: relative;
     z-index: 800;
@@ -5,10 +7,24 @@
     overflow: hidden;
     aspect-ratio: 1/1;
 
-    @media (min-width: 320px) and (max-width: 639px) {
-      aspect-ratio: 1/1;
+    @include for-tablets {
+      display: flex;
+      width: 59.2rem;
+      height: 22.1rem;
+      aspect-ratio: initial;
     }
   }
+
+  .slider .desktopOnly {
+    display: none;
+
+    @include for-tablets {
+      display: flex;
+    }
+  }
+
+
+
 
 
 
