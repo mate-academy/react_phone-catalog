@@ -6,6 +6,7 @@ import styles from './ProductPage.module.scss';
 import ProductGallery from './ProductGallery';
 import { getProductDetails } from '@/api/api';
 import { ProductDetails } from '@/types/ProductDetails';
+import ProductConfigurator from './ProductConfigurator';
 
 const ProductPage: React.FC = () => {
   const { category, productSlug } = useParams();
@@ -53,9 +54,13 @@ const ProductPage: React.FC = () => {
           </button>
         }
       />
-      <section className="product-hero">
-        <ProductGallery photos={product?.images} />
-        {/* <ProductConfigurator /> */}
+      <section className={styles.productPage_hero}>
+        {product && (
+          <>
+            <ProductGallery photos={product?.images} />
+            <ProductConfigurator product={product} />
+          </>
+        )}
       </section>
     </>
   );

@@ -1,13 +1,27 @@
 import { useState } from 'react';
 import { CarouselIndicator } from './CarouselIndicator';
 import styles from './Carousel.module.scss';
+import { Link } from 'react-router-dom';
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0); // This would typically be stateful to reflect the current slide
   const slides = [
-    'img/banner.png',
-    'img/banner-accessories.png',
-    'img/banner-tablets.png',
+    {
+      image: 'img/phone-banner.png',
+      link: '/phones',
+    },
+    {
+      image: 'img/tablet-banner.png',
+      link: '/tablets',
+    },
+      {
+      image: 'img/headphones-banner.png',
+      link: '/accessories',
+    },
+    {
+      image: 'img/watch-banner.png',
+      link: '/accessories',
+    },
   ];
   const next = () => setActiveIndex(prev => (prev + 1) % slides.length);
   const prev = () =>
@@ -20,13 +34,16 @@ const Carousel = () => {
           <button className={styles.carousel__button} onClick={prev}>
             <img src="img/arrow-left.svg" alt="Previous" />
           </button>
-          <div className={styles.carousel__imageContainer}>
+          <Link
+            to={slides[activeIndex].link}
+            className={styles.carousel__imageContainer}
+          >
             <img
               className={styles.carousel__image}
-              src={slides[activeIndex]}
+              src={slides[activeIndex].image}
               alt="Carousel Slide"
             />
-          </div>
+          </Link>
           <button className={styles.carousel__button} onClick={next}>
             <img src="img/arrow-right.svg" alt="Next" />
           </button>

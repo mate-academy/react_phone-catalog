@@ -9,7 +9,6 @@ import CustomSelect from '../CustomSelect/CustomSelect';
 import PaginationComponent from '../PaginationComponent/PaginationComponent';
 import { getProducts } from '@/api/api';
 
-
 const CatalogPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);

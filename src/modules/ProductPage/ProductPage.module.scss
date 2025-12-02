@@ -1,3 +1,11 @@
+.productPage {
+  &_hero {
+    display: flex;
+    gap: $spacing-lg;
+  }
+
+}
+
 .backBtn {
   display: flex;
   align-items: center;
@@ -15,6 +23,7 @@
 .productGallery {
   display: flex;
   gap: 16px;
+  width: 50%;
   &_thumbnails {
     display: flex;
     flex-direction: column;
@@ -42,19 +51,24 @@
   &_thumbnailActive {
     border-color: $color-primary;
   }
-  &_mainPhoto{
+  &_mainPhoto {
     width: 464px;
     height: 464px;
     object-fit: cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    // border: 1px solid $color-elements;
   }
-  &_mainPhotoImage{
+  &_mainPhotoImage {
     max-width: 442px;
     max-height: 442px;
     display: block;
     padding: 11px;
   }
+}
+.productConfigurator {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  // gap: $spacing-lg;
 }

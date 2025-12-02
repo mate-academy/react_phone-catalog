@@ -43,7 +43,7 @@ console.log(hotProducts);
         <div className={styles.categoryGrid}>
           <Link to="/phones" className={styles.categoryCard}>
             <img
-              src="img/Phones.svg"
+              src="img/phone-category.png"
               alt="Mobile Phones"
               className={styles.categoryImage}
             />
@@ -56,7 +56,7 @@ console.log(hotProducts);
           </Link>
           <Link to="/tablets" className={styles.categoryCard}>
             <img
-              src="img/Tablets.svg"
+              src="img/tablet-category.png"
               alt="Tablets"
               className={styles.categoryImage}
             />
@@ -69,7 +69,7 @@ console.log(hotProducts);
           </Link>
           <Link to="/accessories" className={styles.categoryCard}>
             <img
-              src="img/Accessories.svg"
+              src="img/accessories-category.jpeg"
               alt="Accessories"
               className={styles.categoryImage}
             />

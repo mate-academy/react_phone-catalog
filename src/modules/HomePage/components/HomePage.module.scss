@@ -13,6 +13,8 @@
   row-gap: 24px;
 }
 .categoryImage {
+  max-width: 368px;
+  max-height: 368px;
   &:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease-in-out;
