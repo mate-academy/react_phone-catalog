@@ -3,6 +3,7 @@ import { AllProductsType } from '../../types/AllProductsType';
 //TODO: in the future, imports for the roads!!!
 //TODO:in the future, imports for FavAddButton!!!
 import style from './ProductCard.module.scss';
+import { FavoritesAddButton } from '../FavoritesAddButton';
 
 type Props = {
   product: AllProductsType;
@@ -17,7 +18,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const modelId = product.itemId;
   const category = product.category;
   // айди будет в кнопки фаворит
-  // const id = product.id;
+  const id = product.id;
   const priceRegular = `$${product.fullPrice}`;
   const priceDiscount = `$${product.price}`;
 
@@ -83,7 +84,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
         </div>
       </div>
 
-      {/* TODO: <FavoritesAddButton productId={id} /> */}
+      <FavoritesAddButton productId={id} />
     </div>
   );
 };

@@ -1,0 +1,50 @@
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+
+  .pButton {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    background: $main-bg-color;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 2px 10px #fff;
+    }
+  }
+
+  .paginationStepButton {
+    border: 1px solid $border-hover-color;
+  }
+
+  .paginationPageButton {
+    border: 1px solid $border-color;
+  }
+
+  .paginationStepButton:disabled {
+    opacity: 0.5;
+  }
+
+  .isActive {
+    border-color: $border-hover-color;
+    background-color: $page-body-bg-color;
+    color: $text-main-color;
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.6);
+  }
+
+  .notActive {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: default;
+  }
+}

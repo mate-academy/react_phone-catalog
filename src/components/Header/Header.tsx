@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// import { BurgerNavigation } from '../BurgerNavigation';
+import { BurgerNavigation } from '../BurgerNavigation';
 import { HeaderNavigation } from '../HeaderNavigation';
 
 import close from '../../../public/img/Icons/close-icon.svg';
@@ -48,10 +48,10 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* <BurgerNavigation
+      <BurgerNavigation
         isBurgerMenu={isBurgerMenu}
         onClose={() => setIsBurgerMenu(false)}
-      /> */}
+      />
     </>
   );
 };

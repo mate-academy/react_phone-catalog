@@ -52,7 +52,6 @@ export const HeaderNavigation: React.FC = () => {
         </ul>
 
         <div className={styles.headerActions}>
-          {/* Favorites */}
           <div className={styles.headerIconContainer}>
             <Link
               to="/favorites"
@@ -74,7 +73,6 @@ export const HeaderNavigation: React.FC = () => {
             </Link>
           </div>
 
-          {/* Cart */}
           <div className={styles.headerIconContainer}>
             <Link
               to="/cart"
