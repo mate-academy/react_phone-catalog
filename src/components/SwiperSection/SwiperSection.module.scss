@@ -34,10 +34,12 @@
   :global(.swiper-slide) {
     width: 212px;
     height: 439px;
+
     @include on-tablet {
       width: 237px;
       height: 512px;
     }
+
     @include on-desktop {
       width: 272px;
       height: 506px;
