@@ -1,6 +1,7 @@
 import React from 'react';
 import { CartItem } from '../../contexts/CartContext';
-import { CartRecord } from '../CartItem/CartRecord';
+import { CartRecord } from '../CartItem';
+import styles from './CartItemList.module.scss';
 
 type Props = {
   items: CartItem[];
@@ -17,15 +18,17 @@ export const CartItemList: React.FC<Props> = ({
 }) => {
   return (
     <div>
-      {items.map(item => (
-        <CartRecord
-          key={item.id}
-          item={item}
-          onIncrement={onIncrement}
-          onDecrement={onDecrement}
-          onRemove={onRemove}
-        />
-      ))}
+      <div className={styles.list}>
+        {items.map(item => (
+          <CartRecord
+            key={item.id}
+            item={item}
+            onIncrement={onIncrement}
+            onDecrement={onDecrement}
+            onRemove={onRemove}
+          />
+        ))}
+      </div>
     </div>
   );
 };
