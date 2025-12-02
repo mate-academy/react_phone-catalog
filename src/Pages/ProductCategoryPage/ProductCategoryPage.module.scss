@@ -38,9 +38,10 @@
 
   .categoryModels {
     --column-count: auto-fill;
+
     display: grid;
-    row-gap: 40px;
-    column-gap: 16px;
+
+    gap: 40px 16px;
 
     grid-template-columns: repeat(var(--column-count), minmax(212px, 1fr));
 

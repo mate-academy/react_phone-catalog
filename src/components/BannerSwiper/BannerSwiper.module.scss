@@ -80,6 +80,7 @@
   align-items: center;
   gap: 8px;
 
+  /* stylelint-disable-next-line */
   :global(.swiper-pagination-bullet) {
     width: 14px;
     height: 4px;
@@ -88,6 +89,7 @@
     transition: all 0.3s;
   }
 
+  /* stylelint-disable-next-line */
   :global(.swiper-pagination-bullet-active) {
     background: #f1f2f9;
     opacity: 1;

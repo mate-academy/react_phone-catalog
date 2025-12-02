@@ -30,6 +30,7 @@
 
 .swiper {
   // display: flex;
+  /* stylelint-disable-next-line */
   :global(.swiper-slide) {
     width: 212px;
     height: 439px;
@@ -76,6 +77,7 @@
     // }
   }
 
+  /* stylelint-disable-next-line */
   :global(.arrowDisabled) {
     opacity: 0.3;
     cursor: auto;
