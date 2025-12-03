@@ -53,9 +53,17 @@ export const ItemPage: React.FC = () => {
         return null;
     }
   }, [category, itemId]);
-  
-  const normalizeImg = (path: string) =>
-    path.startsWith('/') ? path : `/${path}`;
+
+  const BASE = import.meta.env.BASE_URL;
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const normalizeImg = (path: string) => {
+    if (!path) {
+      return '';
+    }
+
+    return `${BASE}${path.startsWith('/') ? path.slice(1) : path}`;
+  };
 
   const [activeImg, setActiveImg] = useState<string>('');
   const [activeColor, setActiveColor] = useState<string>('');
@@ -82,7 +90,8 @@ export const ItemPage: React.FC = () => {
 
       return normalizeImg(withColor);
     });
-  }, [item, activeColor, category]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [item, category, activeColor]);
 
   useEffect(() => {
     if (!item) {

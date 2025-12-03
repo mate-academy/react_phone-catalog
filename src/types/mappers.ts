@@ -3,13 +3,13 @@ import { Phone } from './Phone';
 import { Product } from './Product';
 import { CardItem } from './СardItem';
 
+const BASE = import.meta.env.BASE_URL;
+
 export const fromPhone = (p: Phone): CardItem => ({
   id: String(p.id),
   name: p.name,
   img: p.images?.[0]
-    ? p.images[0].startsWith('/')
-      ? p.images[0]
-      : `/${p.images[0]}`
+    ? `${BASE}${p.images[0].startsWith('/') ? p.images[0].slice(1) : p.images[0]}`
     : '',
   price: p.priceDiscount ?? p.priceRegular,
   screen: p.screen,
@@ -21,7 +21,7 @@ export const fromPhone = (p: Phone): CardItem => ({
 export const fromProduct = (p: Product): CardItem => ({
   id: String(p.itemId),
   name: p.name,
-  img: p.image.startsWith('/') ? p.image : `/${p.image}`,
+  img: `${BASE}${p.image.startsWith('/') ? p.image.slice(1) : p.image}`,
   price: p.price,
   oldPrice: p.fullPrice,
   screen: p.screen,
