@@ -1,3 +1,5 @@
+@import '../../../styles/media';
+
 .card {
   display: flex;
   flex-direction: column;
@@ -11,6 +13,31 @@
   &:hover {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
+
+  @include on-tablet {
+    padding: 16px;
+    max-width: 280px;
+    margin-inline: auto;
+  }
+
+  @include on-tablet {
+    .title {
+      text-align: center;
+    }
+
+    .buttons {
+      justify-content: center;
+    }
+
+    .addToCart {
+      width: 125px;
+    }
+  }
+
+  @include on-mobile {
+    padding: 16px;
+    max-width: 100%;
+  }
 }
 
 .imageWrapper {
@@ -21,6 +48,11 @@
   justify-content: center;
   overflow: hidden;
   margin-bottom: 16px;
+
+  @include on-tablet {
+    max-width: 200px;
+    margin-inline: auto;
+  }
 }
 
 .image {
@@ -54,6 +86,10 @@
   gap: 8px;
   margin-bottom: 32px;
 
+  @include on-tablet {
+    margin-bottom: 24px;
+  }
+
   .current {
     font-weight: 700;
     font-size: 22px;
@@ -79,6 +115,11 @@
   list-style: none;
   padding: 0;
   margin: 0 0 32px;
+  min-height: 72px;
+
+  @include on-tablet {
+    margin-bottom: 24px;
+  }
 
   li {
     display: flex;
@@ -100,6 +141,7 @@
 }
 
 .buttons {
+  margin-top: auto;
   display: flex;
   gap: 8px;
 
@@ -114,6 +156,12 @@
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s, color 0.3s;
+
+    @include on-tablet {
+      width: 140px;
+      height: 36px;
+      font-size: 13px;
+    }
 
     &:hover {
       background-color: #505157;
@@ -140,6 +188,11 @@
     align-items: center;
     justify-content: center;
     transition: background 0.3s;
+
+    @include on-tablet {
+      width: 36px;
+      height: 36px;
+    }
 
     &:not([data-selected="true"]):hover img {
       content: url('/public/icons/heart_hover.svg');

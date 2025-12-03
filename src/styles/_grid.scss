@@ -1,7 +1,21 @@
+@import './media';
+
 .container {
-  max-width: 1200px;
+  max-width: 1136px;
   margin: 0 auto;
   padding-inline: 16px;
+}
+
+@include on-tablet {
+  .container {
+    padding-inline: 24px;
+  }
+}
+
+@include on-mobile {
+  .container {
+    padding-inline: 16px;
+  }
 }
 
 .grid-24 {
@@ -16,4 +30,42 @@
 
 .col-22 {
   grid-column: span 22;
+}
+
+@include on-tablet {
+  .grid-24 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .col-24,
+  .col-22 {
+    grid-column: span 12;
+  }
+}
+
+@include on-mobile {
+  .grid-24 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .col-24,
+  .col-22 {
+    grid-column: span 4;
+  }
+}
+
+.col-6 {
+  grid-column: span 6;
+}
+
+@include on-tablet {
+  .col-6 {
+    grid-column: span 4;
+  }
+}
+
+@include on-mobile {
+  .col-6 {
+    grid-column: span 2;
+  }
 }

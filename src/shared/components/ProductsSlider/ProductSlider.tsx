@@ -51,9 +51,11 @@ export const ProductsSlider: React.FC<Props> = ({
         </div>
       </div>
 
-      <div className={styles.slider}>
+      <div className="grid-24">
         {visible.map(p => (
-          <ProductCard key={p.id} product={p} showOldPrice={showOldPrice} />
+          <div key={p.id} className="col-6">
+            <ProductCard product={p} showOldPrice={showOldPrice} />
+          </div>
         ))}
       </div>
     </section>
