@@ -3,7 +3,6 @@
     display: flex;
     gap: $spacing-lg;
   }
-
 }
 
 .backBtn {
@@ -71,4 +70,47 @@
   display: flex;
   flex-direction: column;
   // gap: $spacing-lg;
+  &_colorLabel {
+    font-size: $small-size;
+    font-weight: 600;
+    color: $color-secondary;
+  }
+  &_colorContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: $spacing-sm;
+  }
+  &_colorOptions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: $spacing-lg;
+  }
+  &_colorLayout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $color-elements;
+    background-color: $color-bg;
+    cursor: pointer;
+    &:hover {
+      border-color: $color-icons;
+    }
+  }
+  &_colorLayoutActive {
+    border-color: $color-primary;
+    // box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+  }
+  &_colorLayoutActive:hover {
+    border-color: $color-primary; // залишаємо як в активному стані
+    // cursor: default; // необовʼязково
+  }
+  &_colorOption {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    // border: 2px solid $color-bg;
+  }
 }

@@ -58,7 +58,7 @@
 // Посилання та текст
 .link {
   font-size: $small-size;
-  font-weight: 600;
+  font-weight: 700;
   color: $color-primary;
   text-decoration: none;
   display: flex; // Важливо для центрування іконки Home всередині Link
@@ -68,7 +68,7 @@
 
 .current {
   font-size: $small-size;
-  font-weight: 600;
+  font-weight: 700;
   color: $color-secondary; // Активний елемент зазвичай темніший
   cursor: default;
   &:hover {

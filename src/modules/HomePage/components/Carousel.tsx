@@ -7,21 +7,18 @@ const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0); // This would typically be stateful to reflect the current slide
   const slides = [
     {
-      image: 'img/phone-banner.png',
+      image: 'img/phone-banner.webp',
       link: '/phones',
     },
     {
-      image: 'img/tablet-banner.png',
+      image: 'img/tablet-banner.webp',
       link: '/tablets',
     },
       {
-      image: 'img/headphones-banner.png',
+      image: 'img/headset-banner.webp',
       link: '/accessories',
     },
-    {
-      image: 'img/watch-banner.png',
-      link: '/accessories',
-    },
+  
   ];
   const next = () => setActiveIndex(prev => (prev + 1) % slides.length);
   const prev = () =>

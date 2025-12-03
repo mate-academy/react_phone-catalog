@@ -14,15 +14,16 @@ const ProductPage: React.FC = () => {
   // const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const navigate = useNavigate();
+  const [selectedColor, setSelectedColor] = useState<string>('');
+  const [selectedCapacity, setSelectedCapacity] = useState<string>('');
 
   useEffect(() => {
     setLoading(true);
     getProductDetails(category)
       .then(products => {
-        console.log(products);
-
         const foundProduct = products.find(p => p.id === productSlug);
         setProduct(foundProduct || null);
+        setSelectedColor(foundProduct?.color || '');
       })
       .finally(() => {
         setLoading(false);
@@ -58,7 +59,13 @@ const ProductPage: React.FC = () => {
         {product && (
           <>
             <ProductGallery photos={product?.images} />
-            <ProductConfigurator product={product} />
+            <ProductConfigurator
+              product={product}
+              setSelectedColor={setSelectedColor}
+              selectedColor={selectedColor}
+              setSelectedCapacity={setSelectedCapacity}
+              selectedCapacity={selectedCapacity}
+            />
           </>
         )}
       </section>
