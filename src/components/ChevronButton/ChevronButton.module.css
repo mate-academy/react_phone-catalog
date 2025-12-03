@@ -6,11 +6,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #b4bdc3;
+  border: 1px solid var(--card-border); /* borda dinâmica */
   background: transparent;
   padding: 0;
   cursor: pointer;
   box-sizing: border-box;
+  filter: var(
+    --icon-filter,
+    none
+  ); /* permite ajuste de contraste para ícones no dark */
 }
 
 /* 320px ou menos: esconder chevrons */

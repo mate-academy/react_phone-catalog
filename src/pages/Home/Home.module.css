@@ -10,6 +10,8 @@
   padding: 0;
   max-width: 1440px;
   margin: 0 auto;
+  background-color: var(--bg-color); /* fundo dinâmico */
+  color: var(--text-color); /* texto dinâmico */
 }
 
 .containerTitle {
@@ -20,6 +22,7 @@
   box-sizing: border-box;
   margin: 0;
   font-size: 1.2rem;
+  color: var(--text-color); /* texto dinâmico */
 }
 
 .TitleBanner {
@@ -27,6 +30,7 @@
   margin: 0;
   margin-top: 2rem;
   font-size: 1.8rem;
+  color: var(--link-color); /* destaque dinâmico → usa cor de link */
 }
 
 .brandGrid {
@@ -38,7 +42,7 @@
 }
 
 .titleBlank {
-  color: #ffff;
+  color: var(--bg-color); /* usa cor de fundo para "esconder" */
   font-size: 1px;
   margin: 0;
   padding: 0;
@@ -51,6 +55,7 @@
   justify-content: space-between;
   width: 100%;
   margin-bottom: 1rem;
+  color: var(--text-color); /* texto dinâmico */
 }
 
 .titleRowButtons {
@@ -63,6 +68,7 @@
   width: 24px;
   height: 24px;
   transition: transform 0.2s ease;
+  filter: var(--icon-filter, none); /* opcional: inverter ícones no dark */
 }
 
 .titleRowButtons img:hover {
@@ -71,7 +77,7 @@
 
 .ProductCatalog {
   font-size: 1px;
-  color: #ffff;
+  color: var(--bg-color); /* usa cor de fundo */
 }
 
 /* =====≤640px===== */
@@ -84,6 +90,7 @@
   .containerTitle {
     padding: 0 1rem;
     font-size: 0.87rem; /* ~14px */
+    color: var(--text-color);
   }
 
   .brandGrid {
@@ -107,6 +114,7 @@
   .containerTitle {
     padding: 0 0.75rem;
     font-size: 0.85rem;
+    color: var(--text-color);
   }
 
   .brandGrid {

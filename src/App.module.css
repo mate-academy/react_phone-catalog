@@ -1,0 +1,90 @@
+/* src/App.module.css */
+
+/* Contêiner raiz da aplicação */
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Navbar | conteúdo | Footer */
+  background: var(--bg-color, var(--card-bg, #fff)); /* fallback curto */
+  color: var(--text-color, #000);
+}
+
+/* Área principal onde ficam as rotas */
+.content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Ajustes de tipografia base (herda do tema) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-color, #000);
+  margin: 0 0 12px;
+}
+
+p {
+  color: var(--text-color, #000);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+/* Links respeitando tema */
+a {
+  color: var(--link-color, #3b82f6);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Botões genéricos (se quiser usar) */
+.button {
+  background: var(--primary-bg, #3b82f6);
+  color: var(--primary-text, #fff); /* uso de shorthand #fff */
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    transform 120ms ease;
+}
+
+/* estado desabilitado */
+.button:disabled,
+.button[aria-disabled='true'] {
+  background: var(--disabled-bg, #9ca3af);
+  color: var(--disabled-text, #f9fafb);
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+/* foco acessível para botões */
+.button:focus-visible {
+  outline: 2px solid rgba(49, 50, 55, 0.12);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* pequenas utilidades */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsivo básico */
+@media (max-width: 768px) {
+  .content {
+    padding: 16px;
+  }
+}

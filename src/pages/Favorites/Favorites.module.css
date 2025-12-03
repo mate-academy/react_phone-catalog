@@ -1,5 +1,3 @@
-/* Favorites.module.css */
-
 .grid {
   display: flex;
   flex-flow: row wrap; /* direção + quebra de linha */
@@ -11,35 +9,41 @@
 .container {
   padding: 0 2rem;
   margin: 0;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }
 
-/* Cabeçalho com título à esquerda e ações à direita */
 .headerRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 7rem; /* espaço superior sem exagero */
   margin-bottom: 2rem;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }
 
-/* Título sem grandes deslocamentos */
 .title {
   font-size: 2rem;
-  margin: 0; /* remove margens excessivas */
-  padding: 0; /* remove padding lateral */
+  margin: 0;
+  padding: 0;
   text-align: left;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }
 
 .cardLink {
-  flex: 0 0 auto; /* impede que os cards estiquem demais */
+  flex: 0 0 auto;
   text-decoration: none;
+  color: var(--link-color); /* ✅ link dinâmico */
 }
 
-/* Linha de ações: Select + link "Ver todos" */
+.cardLink:hover {
+  color: var(--link-hover); /* ✅ hover dinâmico */
+}
+
 .actionsRow {
   display: flex;
   align-items: center;
   margin: 0;
   padding: 0;
-  gap: 30px; /* espaçamento de 20px entre Select e link */
+  gap: 30px;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }

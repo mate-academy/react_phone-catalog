@@ -1,5 +1,9 @@
+//----------------------------------------------------------
 // src/pages/ProductDetails/ProductDetails.tsx
-// 1. Imports
+//----------------------------------------------------------
+
+// 1. IMPORTS
+//----------------------------------------------------------
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styles from './ProductDetails.module.css';
@@ -10,16 +14,19 @@ import { phones } from '../../data/phones';
 import { tablets } from '../../data/tablets';
 import { accessories } from '../../data/accessories';
 import { useCart } from '../ShoppingCart/cartContext';
+import { products } from '../../data/products';
 
-// 2. Interface Product
-// Product shape usado na página de detalhes
+//----------------------------------------------------------
+// 2. INTERFACE
+// Estrutura de dados usada para representar um produto
+//----------------------------------------------------------
 export interface Product {
   id: string;
   sku?: string;
   title: string;
   price: string;
   imageSrc?: string;
-  images?: string[]; // várias imagens
+  images?: string[];
   description?: string;
   specs?: {
     screen?: string;
@@ -29,19 +36,21 @@ export interface Product {
     camera?: string;
     [k: string]: string | undefined;
   };
-  colorsAvailable?: string[]; // ex: ['Preto','Branco']
-  capacityAvailable?: string[]; // ex: ['64GB','128GB']
+  colorsAvailable?: string[];
+  capacityAvailable?: string[];
   category?: 'Celulares' | 'Tablets' | 'Acessórios' | string;
   age?: number;
 }
 
-// 3. Constantes e utilitários
-// conjunto de todos os produtos (phones, tablets, accessories)
+//----------------------------------------------------------
+// 3. CONSTANTES E UTILIÁRIOS
+//----------------------------------------------------------
+
+// Conjunto de todos os produtos
 const ALL_PRODUCTS: Product[] = [...phones, ...tablets, ...accessories];
 
 /**
- * Simula fetch de produto por id (delay intencional para loader)
- * Retorna Promise<Product | null>
+ * Simula fetch de produto por id (com delay para loader)
  */
 const fetchProductById = (id?: string): Promise<Product | null> => {
   return new Promise(resolve => {
@@ -58,7 +67,7 @@ const fetchProductById = (id?: string): Promise<Product | null> => {
 };
 
 /**
- * Retorna uma lista de produtos sugeridos (aleatórios) excluindo o atual
+ * Retorna lista de produtos sugeridos (aleatórios)
  */
 const getSuggestedProducts = (
   currentId: string | undefined,
@@ -70,12 +79,15 @@ const getSuggestedProducts = (
   return shuffled.slice(0, Math.min(count, shuffled.length));
 };
 
-// 4. Componente principal: estados e efeitos
+//----------------------------------------------------------
+// 4. COMPONENTE PRINCIPAL: ESTADOS E EFEITOS
+//----------------------------------------------------------
 const ProductDetails: React.FC = () => {
   // params da rota
   const { id } = useParams<{ id: string }>();
+  const productFound = products.find(p => p.id === id);
 
-  // cart context (adicionar e verificar se já está no carrinho)
+  // contexto do carrinho
   const { addItem, isInCart } = useCart();
 
   // estados locais
@@ -86,7 +98,7 @@ const ProductDetails: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [suggested, setSuggested] = useState<Product[]>([]);
 
-  // busca do produto quando id muda
+  // efeito: busca produto quando id muda
   useEffect(() => {
     let mounted = true;
 
@@ -106,7 +118,6 @@ const ProductDetails: React.FC = () => {
           p.capacityAvailable?.[0] ?? p.specs?.capacity ?? null,
         );
 
-        // inicializa imagem conforme cor (se houver mapeamento por índice)
         const initialImage =
           p.colorsAvailable &&
           p.images &&
@@ -125,7 +136,9 @@ const ProductDetails: React.FC = () => {
     };
   }, [id]);
 
-  // 5. Handlers para seleção de cor e capacidade
+  //----------------------------------------------------------
+  // 5. HANDLERS PARA SELEÇÃO DE COR E CAPACIDADE
+  //----------------------------------------------------------
   const handleColorChange = (color: string) => {
     if (!product) {
       return;
@@ -133,7 +146,6 @@ const ProductDetails: React.FC = () => {
 
     setSelectedColor(color);
 
-    // se houver mapeamento 1:1 entre colorsAvailable e images, usa o índice
     if (
       product.colorsAvailable &&
       product.images &&
@@ -148,7 +160,6 @@ const ProductDetails: React.FC = () => {
       }
     }
 
-    // fallback para primeira imagem ou imageSrc
     setSelectedImage(product.images?.[0] ?? product.imageSrc ?? null);
   };
 
@@ -156,7 +167,7 @@ const ProductDetails: React.FC = () => {
     setSelectedCapacity(cap);
   };
 
-  // determina link de categoria para o breadcrumb / voltar
+  // determina link de categoria para breadcrumb
   const categoryLink: string = useMemo(() => {
     if (!product?.category) {
       return '/';
@@ -183,7 +194,7 @@ const ProductDetails: React.FC = () => {
     return '/';
   }, [product]);
 
-  // verifica se já está no carrinho e handler para adicionar
+  // verifica se já está no carrinho
   const alreadyInCart = product ? isInCart(product.id) : false;
 
   const handleAddToCart = () => {
@@ -197,71 +208,60 @@ const ProductDetails: React.FC = () => {
       price: product.price,
       imageSrc: selectedImage ?? product.imageSrc,
       specs: product.specs ?? {},
-      color: selectedColor, // agora incluímos a cor selecionada
-      capacity: selectedCapacity, // e a capacidade selecionada
+      color: selectedColor,
+      capacity: selectedCapacity,
     };
 
     addItem(productToAdd);
   };
+
+  //----------------------------------------------------------
+  // 6. RENDERIZAÇÃO, PRODUTO NÃO ENCONTRADO
+  //----------------------------------------------------------
+  if (!productFound) {
+    return (
+      <main className={styles.container}>
+        <h1 className={styles.title}>Produto não encontrado</h1>
+        <p className={styles.text}>
+          O produto que você tentou acessar não existe.
+        </p>
+        <Link to="/" className={styles.backLink}>
+          Voltar para a Home
+        </Link>
+      </main>
+    );
+  }
 
   // loader
   if (isLoading) {
     return <Loader message="Carregando detalhes do produto..." />;
   }
 
-  // 6. Renderização / produto não encontrado
-  if (!product) {
-    return (
-      <main
-        className={styles.container}
-        data-testid="product-details-not-found"
-      >
-        <nav className={styles.breadcrumbs}>
-          <Link to="/">Início</Link>
-          <span className={styles.sep}>/</span>
-          <span>Produto</span>
-        </nav>
-
-        <div className={styles.header}>
-          <h1 className={styles.title}>Produto não encontrado</h1>
-          <div className={styles.headerActions}>
-            <Link
-              to="/"
-              className={styles.backLink}
-              data-testid="product-back-link"
-            >
-              Voltar
-            </Link>
-          </div>
-        </div>
-
-        <p className={styles.notFoundText}>Produto não encontrado</p>
-      </main> // <-- fechamento que estava faltando
-    );
-  }
-
-  // ✅ specsToShow deve estar fora do if
+  const safeProduct = product!;
   const specsToShow = ['screen', 'ram', 'capacity', 'battery', 'camera'];
 
+  //----------------------------------------------------------
+  // 7. RENDERIZAÇÃO PRINCIPAL
+  //----------------------------------------------------------
   return (
     <main className={styles.container} data-testid="product-details">
       {/* Breadcrumbs */}
       <nav className={styles.breadcrumbs}>
         <Link to="/">Início</Link>
         <span className={styles.sep}>/</span>
-        <Link to={categoryLink}>{product.category ?? 'Categoria'}</Link>
+        <Link to={categoryLink}>{safeProduct.category ?? 'Categoria'}</Link>
         <span className={styles.sep}>/</span>
-        <span aria-current="page">{product.title}</span>
+        <span aria-current="page">{safeProduct.title}</span>
       </nav>
 
-      {/* Cabeçalho com título */}
+      {/* Cabeçalho */}
       <div className={styles.header}>
         <h1 className={styles.title} data-testid="product-details-title">
-          {product.title}
+          {safeProduct.title}
         </h1>
       </div>
 
-      {/* 7. Conteúdo principal: mídia + info */}
+      {/* Conteúdo principal: mídia + info */}
       <section className={styles.content}>
         {/* Coluna de mídia */}
         <div className={styles.media}>
@@ -269,7 +269,7 @@ const ProductDetails: React.FC = () => {
             {selectedImage ? (
               <img
                 src={selectedImage}
-                alt={product.title}
+                alt={safeProduct.title}
                 className={styles.image}
                 data-testid="product-main-image"
               />
@@ -282,20 +282,22 @@ const ProductDetails: React.FC = () => {
           </div>
 
           {/* Miniaturas */}
-          {product.images && product.images.length > 0 && (
+          {safeProduct.images && safeProduct.images.length > 0 && (
             <div className={styles.thumbs} data-testid="product-thumbs">
-              {product.images.map((img, idx) => (
+              {safeProduct.images.map((img, idx) => (
                 <button
                   key={idx}
                   type="button"
-                  className={`${styles.thumbButton} ${selectedImage === img ? styles.thumbActive : ''}`}
+                  className={`${styles.thumbButton} ${
+                    selectedImage === img ? styles.thumbActive : ''
+                  }`}
                   onClick={() => setSelectedImage(img)}
                   aria-label={`Selecionar imagem ${idx + 1}`}
                   data-testid={`product-thumb-${idx}`}
                 >
                   <img
                     src={img}
-                    alt={`${product.title} ${idx + 1}`}
+                    alt={`${safeProduct.title} ${idx + 1}`}
                     className={styles.thumbImg}
                   />
                 </button>
@@ -304,50 +306,50 @@ const ProductDetails: React.FC = () => {
           )}
         </div>
 
-        {/* 8. Coluna de informações */}
+        {/* Coluna de informações */}
         <div className={styles.info}>
           <p className={styles.price} data-testid="product-price">
-            {product.price}
+            {safeProduct.price}
           </p>
 
           {/* Cores disponíveis */}
-          {product.colorsAvailable && product.colorsAvailable.length > 0 && (
-            <div className={styles.optionGroup} data-testid="product-colors">
-              <div className={styles.optionLabel}>Cores</div>
-              <div className={styles.optionsRow}>
-                {product.colorsAvailable.map(color => (
-                  <label key={color} className={styles.optionButton}>
-                    <input
-                      type="radio"
-                      name="color"
-                      value={color}
-                      checked={selectedColor === color}
-                      onChange={() => handleColorChange(color)}
-                      data-testid={`color-option-${color}`}
-                    />
-                    <span className={styles.optionText}>{color}</span>
-                  </label>
-                ))}
+          {safeProduct.colorsAvailable &&
+            safeProduct.colorsAvailable.length > 0 && (
+              <div className={styles.optionGroup} data-testid="product-colors">
+                <div className={styles.optionLabel}>Cores</div>
+                <div className={styles.optionsRow}>
+                  {safeProduct.colorsAvailable.map(color => (
+                    <label key={color} className={styles.optionButton}>
+                      <input
+                        type="radio"
+                        name="color"
+                        value={color}
+                        checked={selectedColor === color}
+                        onChange={() => handleColorChange(color)}
+                        data-testid={`color-option-${color}`}
+                      />
+                      <span className={styles.optionText}>{color}</span>
+                    </label>
+                  ))}
+                </div>
+                {selectedColor && (
+                  <p className={styles.selectedInfo}>
+                    Cor selecionada: {selectedColor}
+                  </p>
+                )}
               </div>
-              {selectedColor && (
-                <p className={styles.selectedInfo}>
-                  Cor selecionada: {selectedColor}
-                </p>
-              )}
-            </div>
-          )}
+            )}
 
           {/* Capacidades disponíveis */}
-          {product.capacityAvailable &&
-            product.capacityAvailable.length > 0 && (
+          {safeProduct.capacityAvailable &&
+            safeProduct.capacityAvailable.length > 0 && (
               <div
                 className={styles.optionGroup}
                 data-testid="product-capacities"
               >
                 <div className={styles.optionLabel}>Capacidade</div>
-
                 <div className={styles.optionsRow}>
-                  {product.capacityAvailable.map(cap => (
+                  {safeProduct.capacityAvailable.map(cap => (
                     <label key={cap} className={styles.optionButton}>
                       <input
                         type="radio"
@@ -361,7 +363,6 @@ const ProductDetails: React.FC = () => {
                     </label>
                   ))}
                 </div>
-
                 {selectedCapacity && (
                   <p className={styles.selectedInfo}>
                     Capacidade selecionada: {selectedCapacity}
@@ -370,11 +371,11 @@ const ProductDetails: React.FC = () => {
               </div>
             )}
 
-          {/* Sobre */}
-          {product.description && (
+          {/* Sobre o produto */}
+          {safeProduct.description && (
             <div className={styles.about} data-testid="product-about">
               <h2 className={styles.sectionTitle}>Sobre</h2>
-              <p className={styles.description}>{product.description}</p>
+              <p className={styles.description}>{safeProduct.description}</p>
             </div>
           )}
 
@@ -385,8 +386,8 @@ const ProductDetails: React.FC = () => {
               {specsToShow.map(key => {
                 const value =
                   key === 'capacity'
-                    ? (selectedCapacity ?? product.specs?.capacity)
-                    : product.specs?.[key];
+                    ? (selectedCapacity ?? safeProduct.specs?.capacity)
+                    : safeProduct.specs?.[key];
 
                 if (!value) {
                   return null;
@@ -404,7 +405,7 @@ const ProductDetails: React.FC = () => {
             </div>
           </div>
 
-          {/* Ações */}
+          {/* Ações: adicionar ao carrinho e voltar */}
           <div className={styles.actions}>
             <Button
               className={styles.addButton}
@@ -434,7 +435,9 @@ const ProductDetails: React.FC = () => {
         </div>
       </section>
 
-      {/* 9. Produtos sugeridos */}
+      {/*----------------------------------------------------------*/}
+      {/* 9. PRODUTOS SUGERIDOS */}
+      {/*----------------------------------------------------------*/}
       {suggested.length > 0 && (
         <section className={styles.related} data-testid="product-related">
           <h3 className={styles.sectionTitle}>Você também pode gostar</h3>
@@ -466,5 +469,8 @@ const ProductDetails: React.FC = () => {
   );
 };
 
+//----------------------------------------------------------
+// 10. EXPORT
+//----------------------------------------------------------
 export default ProductDetails;
 export { ProductDetails };

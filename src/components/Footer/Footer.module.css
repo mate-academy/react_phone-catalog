@@ -9,7 +9,6 @@
   --nav-gap-md: 2rem; /* 32px */
   --nav-gap-sm: 1rem; /* 16px */
   --link-font: 0.8rem;
-  --link-color: #89939a;
 }
 
 html {
@@ -25,8 +24,8 @@ html {
   height: var(--footer-h);
   width: 100%;
   max-width: 100%;
-  border-top: 1px solid #e6e6e6;
-  background: #fff;
+  border-top: 1px solid var(--border-color); /* ✅ variável global */
+  background: var(--bg-color); /* ✅ variável global */
   box-sizing: border-box;
   gap: 1rem;
 }
@@ -64,7 +63,7 @@ html {
   text-decoration: none;
   font-weight: 800;
   font-size: var(--link-font);
-  color: var(--link-color);
+  color: var(--link-color); /* ✅ variável global */
   white-space: nowrap;
 }
 
@@ -216,7 +215,7 @@ html {
 
 /* ---------------- visuals tweaks ---------------- */
 .centerBlock .nav .link:hover {
-  color: #313237;
+  color: var(--link-hover); /* ✅ variável global */
 }
 
 /* small accessibility helper to ensure footer content doesn't overflow */

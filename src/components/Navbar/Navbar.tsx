@@ -18,6 +18,7 @@ import cartMobile from '../../assets/img/Cart.svg';
 import favouritesMobile from '../../assets/img/Favourites.svg';
 import { useCart } from '../../pages/ShoppingCart/cartContext';
 import { useFavorites } from '../../pages/Favorites/FavoritesContext';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 // ======================
 // BLOCO TYPES
@@ -268,6 +269,7 @@ export default function Navbar({ links }: Props): JSX.Element {
             </span>
           )}
         </Link>
+        <ThemeToggle />
       </div>
     </header>
   );

@@ -25,7 +25,7 @@
   display: inline-block;
   width: 20px; /* largura inativa padrão */
   height: 6px; /* altura padrão */
-  background: #ddd; /* cor inativa padrão */
+  background: var(--card-border); /* cor inativa dinâmica */
   border-radius: 0;
   transition:
     width 160ms ease,
@@ -38,5 +38,5 @@
 /* estado ativo */
 .containerDots [data-testid^='indicator-dot-'][data-active='true'] {
   width: 40px; /* largura do dot ativo */
-  background: #000; /* cor do dot ativo */
+  background: var(--text-color); /* cor do dot ativo dinâmica */
 }

@@ -1,8 +1,6 @@
 /* src/pages/ProductDetails/ProductDetails.module.css */
 :root {
   --max-w: 1100px;
-  --muted: #89939a;
-  --accent: #313237;
   --gap: 1rem;
 }
 
@@ -15,7 +13,7 @@
 
 .breadcrumbs {
   font-size: 0.9rem;
-  color: var(--muted);
+  color: var(--text-muted); /* ✅ variável global */
   margin-bottom: 0.75rem;
   display: flex;
   gap: 0.5rem;
@@ -23,12 +21,12 @@
 }
 
 .breadcrumbs a {
-  color: var(--accent);
+  color: var(--link-color); /* ✅ variável global */
   text-decoration: none;
 }
 
 .sep {
-  color: #ccc;
+  color: var(--card-border); /* ✅ variável global */
   margin: 0 0.25rem;
 }
 
@@ -42,7 +40,7 @@
 .title {
   font-size: 1.6rem;
   margin: 0;
-  color: #111827;
+  color: var(--text-color); /* ✅ variável global */
 }
 
 .headerActions {
@@ -72,9 +70,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e6e9eb;
+  border: 1px solid var(--card-border); /* ✅ variável global */
   border-radius: 8px;
-  background: #fff;
+  background: var(--card-bg); /* ✅ variável global */
   overflow: hidden;
 }
 
@@ -121,11 +119,10 @@
 }
 
 .thumbActive {
-  border: 1px solid #111;
+  border: 1px solid var(--text-color); /* ✅ variável global */
   box-shadow: 0 4px 12px rgba(17, 17, 17, 0.06);
 }
 
-/* destaque extra quando a thumb está ativa (acessibilidade visual) */
 .thumbButton:focus-visible,
 .thumbButton:hover {
   outline: none;
@@ -140,7 +137,7 @@
 .price {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #111;
+  color: var(--text-color); /* ✅ variável global */
   margin: 0 0 1rem;
 }
 
@@ -151,7 +148,7 @@
 .optionLabel {
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #313237;
+  color: var(--text-color); /* ✅ variável global */
 }
 
 .optionsRow {
@@ -164,21 +161,20 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border: 1px solid #e2e6e9;
+  border: 1px solid var(--card-border); /* ✅ variável global */
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
   cursor: pointer;
-  background: #fff;
+  background: var(--card-bg); /* ✅ variável global */
   user-select: none;
 }
 
-/* mantém o input acessível mas estilizado */
 .optionButton input[type='radio'] {
   appearance: none;
   -webkit-appearance: none;
   width: 16px;
   height: 16px;
-  border: 1px solid #cfd6da;
+  border: 1px solid var(--card-border); /* ✅ variável global */
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -186,29 +182,20 @@
   flex: 0 0 16px;
 }
 
-/* indicador interno quando checked */
 .optionButton input[type='radio']:checked {
-  background: #111;
-  border-color: #111;
-  box-shadow: inset 0 0 0 4px #fff;
+  background: var(--text-color); /* ✅ variável global */
+  border-color: var(--text-color);
+  box-shadow: inset 0 0 0 4px var(--bg-color); /* ✅ variável global */
 }
 
-/* foco visível para leitores de teclado */
 .optionButton input[type='radio']:focus-visible {
   outline: 2px solid rgba(49, 50, 55, 0.12);
   outline-offset: 2px;
 }
 
-/* texto da opção */
 .optionText {
   font-size: 0.95rem;
-  color: #111827;
-}
-
-/* permite clicar no label inteiro */
-.optionButton:hover {
-  transform: translateY(-1px);
-  transition: transform 120ms ease;
+  color: var(--text-color); /* ✅ variável global */
 }
 
 .about {
@@ -218,13 +205,13 @@
 .sectionTitle {
   font-size: 1rem;
   margin: 0 0 0.5rem;
-  color: #111827;
+  color: var(--text-color); /* ✅ variável global */
 }
 
 .description {
-  color: #333;
+  color: var(--text-color); /* ✅ variável global */
   line-height: 1.4;
-  white-space: pre-wrap; /* respeita quebras de linha em description */
+  white-space: pre-wrap;
 }
 
 .specs {
@@ -232,7 +219,7 @@
 }
 
 .specList {
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid var(--card-border); /* ✅ variável global */
   padding-top: 0.75rem;
 }
 
@@ -241,16 +228,16 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 0.35rem 0;
-  color: var(--muted);
+  color: var(--text-muted); /* ✅ variável global */
 }
 
 .specLabel {
   font-weight: 600;
-  color: #313237;
+  color: var(--text-color); /* ✅ variável global */
 }
 
 .specValue {
-  color: #111;
+  color: var(--text-color); /* ✅ variável global */
 }
 
 .related {
@@ -280,29 +267,27 @@
   height: 40px;
   font-size: 1rem;
   border: none;
-  color: #fff;
-  background-color: #111;
+  color: var(--primary-text); /* ✅ variável global */
+  background-color: var(--primary-bg); /* ✅ variável global */
   cursor: pointer;
 }
 
 .addButton:hover {
-  background-color: #272727;
+  background-color: var(--link-hover); /* ✅ variável global */
 }
 
-/* link "Voltar" estilizado para parecer botão secundário */
 .backLink {
   width: 8rem;
   text-align: center;
   padding: 0.45rem 0.75rem;
   text-decoration: none;
-  color: #111;
+  color: var(--text-color); /* ✅ variável global */
   background: transparent;
-  border: 2px solid #111;
+  border: 2px solid var(--text-color); /* ✅ variável global */
   font-weight: 600;
   cursor: pointer;
 }
 
-/* hover/focus para o link voltar */
 .backLink:hover {
   background: rgba(49, 50, 55, 0.04);
   text-decoration: none;
@@ -313,7 +298,6 @@
   outline-offset: 2px;
 }
 
-/* shimmer */
 @keyframes shimmer {
   0% {
     background-position: 200% 0;
@@ -323,7 +307,6 @@
   }
 }
 
-/* responsividade */
 @media (max-width: 900px) {
   .content {
     flex-direction: column;

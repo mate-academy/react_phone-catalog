@@ -15,6 +15,7 @@
   padding: 24px;
   max-width: 1440px;
   margin: 0 auto;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }
 
 /* flex que contém left - banner - right */
@@ -33,6 +34,7 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: var(--card-bg); /* ✅ fundo dinâmico */
   width: 100%;
   max-width: var(--banner-w-max);
   height: var(--banner-h-default);
@@ -61,6 +63,7 @@
   justify-content: center;
   width: var(--side-w-default);
   box-sizing: border-box;
+  filter: var(--icon-filter, none); /* ✅ garante contraste no dark */
 }
 
 /* indicadores */
@@ -68,6 +71,7 @@
   display: flex;
   justify-content: center;
   margin-top: 12px;
+  color: var(--text-muted); /* ✅ cor dinâmica */
 }
 
 /* <= 640px: banner reduz */
@@ -115,6 +119,7 @@
     background-image: url('../../assets/img/Banner_mobile.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: var(--card-bg); /* ✅ fundo dinâmico */
   }
 
   /* esconder chevrons nesse breakpoint */

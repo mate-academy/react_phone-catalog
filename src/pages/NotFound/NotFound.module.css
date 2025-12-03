@@ -6,26 +6,27 @@
   min-height: 70vh;
   text-align: center;
   padding: 2rem;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }
 
 .title {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #e53935; /* vermelho de destaque */
+  color: var(--accent-color); /* ✅ destaque dinâmico */
 }
 
 .text {
   font-size: 1rem;
-  color: #555;
+  color: var(--text-muted); /* ✅ texto secundário */
   margin-bottom: 2rem;
 }
 
 .backLink {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background: #111;
-  color: #fff;
+  background: var(--primary-bg); /* ✅ botão principal */
+  color: var(--primary-text); /* ✅ texto do botão */
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
@@ -33,5 +34,61 @@
 }
 
 .backLink:hover {
-  background: #333;
+  background: var(--link-hover); /* ✅ hover dinâmico */
+}
+
+/* -------------------------------
+   Responsividade
+-------------------------------- */
+
+/* Telas muito grandes (1200px+) */
+@media (min-width: 1200px) {
+  .title {
+    font-size: 3rem;
+  }
+  .text {
+    font-size: 1.25rem;
+  }
+  .backLink {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+  }
+}
+
+/* Telas médias (até 1200px) */
+@media (max-width: 1200px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  .text {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablets (até 640px) */
+@media (max-width: 640px) {
+  .title {
+    font-size: 2rem;
+  }
+  .text {
+    font-size: 1rem;
+  }
+  .backLink {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Smartphones pequenos (até 320px) */
+@media (max-width: 320px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  .text {
+    font-size: 0.9rem;
+  }
+  .backLink {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
 }

@@ -1,0 +1,42 @@
+/* Tema claro */
+:root.light-theme {
+  --bg-color: #fff;
+  --text-color: #000;
+  --link-color: #2563eb;
+  --link-hover: #1e40af;
+  --card-bg: #f9fafb;
+  --card-border: #e5e7eb;
+  --primary-bg: #3b82f6;
+  --primary-text: #fff;
+  --disabled-bg: #9ca3af;
+  --disabled-text: #f9fafb;
+}
+
+/* Tema escuro */
+:root.dark-theme {
+  --bg-color: #121212;
+  --text-color: #fff;
+  --link-color: #93c5fd;
+  --link-hover: #bfdbfe;
+  --card-bg: #1f2937;
+  --card-border: #374151;
+  --primary-bg: #2563eb;
+  --primary-text: #fff;
+  --disabled-bg: #4b5563;
+  --disabled-text: #d1d5db;
+}
+
+/* Aplicação global */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  margin: 0;
+  padding: 0;
+}

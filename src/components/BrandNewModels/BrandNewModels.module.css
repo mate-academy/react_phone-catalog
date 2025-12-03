@@ -4,8 +4,10 @@
   --img-w: 208px;
   --img-h: 196px;
   --gap: 8px;
-  --muted: #89939a;
-  --accent: #313237;
+
+  /* mapeamentos locais para variáveis de tema globais */
+  --muted: var(--card-border);
+  --accent: var(--text-color);
 }
 
 /* base */
@@ -13,8 +15,8 @@
   width: var(--card-w);
   height: var(--card-h);
   box-sizing: border-box;
-  background: #fff;
-  border: 1px solid #e2e6e9;
+  background: var(--card-bg); /* fundo dinâmico */
+  border: 1px solid var(--card-border); /* borda dinâmica */
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -26,7 +28,7 @@
 
 .container:hover {
   transform: scale(1.1); /* aumenta 10% */
-  border-color: #111; /* borda escura */
+  border-color: var(--text-color); /* borda escura dinâmica */
 }
 
 .containerImg {
@@ -63,7 +65,7 @@
   margin: 1rem;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--text-color); /* texto dinâmico */
   text-align: left;
   line-height: 1.2;
 }
@@ -81,14 +83,14 @@
 .price {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #111;
+  color: var(--text-color); /* texto dinâmico */
   margin: 0;
 }
 
 .priceOff {
   font-size: 1.3rem;
   font-weight: 400;
-  color: var(--muted); /* visível em fundo branco */
+  color: var(--muted); /* visível em ambos os temas */
   margin: 0;
   text-decoration: line-through;
 }
@@ -96,7 +98,7 @@
 .separator {
   width: var(--img-w);
   height: 1px;
-  background: #e0e0e0;
+  background: var(--card-border); /* linha dinâmica */
   margin-bottom: 1rem;
   box-sizing: border-box;
 }
@@ -136,13 +138,15 @@
   min-height: 40px;
   padding: 0 8px;
   font-size: 0.95rem;
-  color: #fff;
-  background-color: #111;
+  color: var(--primary-text); /* texto do botão dinâmico */
+  background-color: var(--primary-bg); /* botão principal dinâmico */
+  border: none;
+  border-radius: 6px;
 }
 
 .addButton:hover {
   cursor: pointer;
-  background-color: #1d1d1d;
+  background-color: var(--link-hover); /* hover dinâmico */
 }
 
 .favButton {
@@ -156,6 +160,7 @@
   cursor: pointer;
   background-image: url('../../assets/img/favourites.png');
   background-color: transparent;
+  filter: var(--icon-filter, none); /* permite ajuste de contraste no dark */
 }
 
 /* =====≤640px===== */
@@ -226,5 +231,15 @@
   .buttonRow {
     margin: 12px;
     gap: 6px;
+  }
+}
+
+/* shimmer keyframes (mantido) */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }

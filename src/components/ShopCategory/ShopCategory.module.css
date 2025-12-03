@@ -10,7 +10,7 @@
 .ShopCategory {
   width: 368px;
   height: 443px;
-  background-color: #fff;
+  background-color: var(--card-bg); /* fundo dinâmico */
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -29,6 +29,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: var(--card-bg); /* garante contraste em áreas sem imagem */
 }
 
 /* textos */
@@ -40,12 +41,12 @@
   font-size: 1.2rem;
   font-weight: 700;
   margin: 0 0 0.5rem;
-  color: #0f0f0f;
+  color: var(--text-color); /* texto dinâmico */
 }
 
 .textContent p {
   font-size: 0.9rem;
-  color: #555;
+  color: var(--text-muted); /* texto secundário dinâmico */
   margin: 0;
 }
 

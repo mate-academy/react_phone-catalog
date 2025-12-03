@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import styles from './BrandNewModels.module.css';
 import { useCart } from '../../pages/ShoppingCart/cartContext';
-import { useFavorites } from '../../pages/Favorites/FavoritesContext';
 
 export interface BrandNewModelsProps {
   id?: string;
@@ -22,6 +21,8 @@ export interface BrandNewModelsProps {
   };
   'data-testid'?: string;
   onButtonClick?: () => void;
+  onFavouriteClick?: () => void;
+  isFavourite?: boolean;
 }
 
 const BrandNewModels: React.FC<BrandNewModelsProps> = ({
@@ -36,13 +37,14 @@ const BrandNewModels: React.FC<BrandNewModelsProps> = ({
   specs,
   'data-testid': dataTestId = 'brand-new-model',
   onButtonClick,
+  onFavouriteClick,
+  isFavourite,
 }) => {
   const Tag = `h${titleLevel}` as keyof JSX.IntrinsicElements;
   const imgSrc = imageSrc;
   const linkTo = detailsLink ?? (id ? `/product/${id}` : undefined);
 
   const { addItem, isInCart } = useCart();
-  const { isFavorite, toggleFavorite } = useFavorites();
 
   const alreadyInCart = id ? isInCart(id) : false;
 
@@ -169,17 +171,15 @@ const BrandNewModels: React.FC<BrandNewModelsProps> = ({
 
         <button
           type="button"
-          onClick={() => toggleFavorite(product)}
-          className={`${styles.favButton} ${isFavorite(product.id) ? styles.active : ''}`}
+          onClick={onFavouriteClick}
+          className={`${styles.favButton} ${isFavourite ? styles.active : ''}`}
           aria-label={
-            isFavorite(product.id)
-              ? 'Remove from favourites'
-              : 'Add to favourites'
+            isFavourite ? 'Remove from favourites' : 'Add to favourites'
           }
-          aria-pressed={isFavorite(product.id) ? 'true' : 'false'}
+          aria-pressed={isFavourite ? 'true' : 'false'}
           data-testid={`${dataTestId}-fav-button`}
         >
-          {isFavorite(product.id) ? '❤️' : '🤍'}
+          {isFavourite ? '❤️' : '🤍'}
         </button>
       </div>
     </article>

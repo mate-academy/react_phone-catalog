@@ -1,6 +1,7 @@
 .container {
   padding: 0 2rem;
   margin: 0;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }
 
 /* Cabeçalho com título à esquerda e ações à direita */
@@ -10,14 +11,16 @@
   align-items: center;
   margin-top: 7rem; /* espaço superior sem exagero */
   margin-bottom: 2rem;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }
 
 /* Título sem grandes deslocamentos */
 .title {
   font-size: 2rem;
-  margin: 0; /* remove margens excessivas */
-  padding: 0; /* remove padding lateral */
+  margin: 0;
+  padding: 0;
   text-align: left;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }
 
 /* Linha de ações: Select + link "Ver todos" */
@@ -26,12 +29,14 @@
   align-items: center;
   margin: 0;
   padding: 0;
-  gap: 30px; /* espaçamento de 20px entre Select e link */
+  gap: 30px;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }
 
 .label,
 .select {
   margin: 0;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }
 
 /* Link "Ver todos" sem paddings grandes */
@@ -39,28 +44,28 @@
   margin: 0;
   padding: 0;
   font-weight: 600;
-  color: #0029f8;
+  color: var(--link-color); /* ✅ link dinâmico */
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .viewAllLink:hover {
-  color: #111;
+  color: var(--link-hover); /* ✅ hover dinâmico */
   text-decoration: none;
 }
 
 /* Grid dos cards */
 .grid {
   display: flex;
-  flex-wrap: wrap; /* permite quebrar linha */
-  gap: 1.5rem; /* espaço entre os cards (horizontal e vertical) */
+  flex-wrap: wrap;
+  gap: 1.5rem;
   justify-content: center;
 }
 
 /* Cada card com largura fixa para alinhamento consistente */
 .grid > * {
-  flex: 0 1 320px; /* largura base alinhada ao card (var(--card-w): 320px) */
+  flex: 0 1 320px;
 }
 
 /* Container opcional para outras ações (se necessário) */
@@ -68,4 +73,5 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: var(--text-color); /* ✅ texto dinâmico */
 }

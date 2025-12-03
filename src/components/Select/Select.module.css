@@ -7,24 +7,32 @@
 .label {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #313237;
+  color: var(--text-color); /* texto dinâmico */
 }
 
 .select {
   padding: 0.5rem 0.75rem;
-  border: 1px solid #e2e6e9;
+  border: 1px solid var(--card-border); /* borda dinâmica */
   border-radius: 6px;
-  background-color: #fff;
+  background-color: var(--card-bg); /* fundo dinâmico */
+  color: var(--text-color); /* texto dinâmico */
   font-size: 0.95rem;
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
+/* hover mantém comportamento visual, agora com variável de tema */
 .select:hover {
-  border-color: #111;
+  border-color: var(--text-color);
 }
 
-.select:focus {
+/* foco acessível: mantém estilo sem alterar layout funcional */
+.select:focus,
+.select:focus-visible {
   outline: none;
-  border-color: #313237;
+  border-color: var(--accent-color, var(--text-color));
+  box-shadow: 0 0 0 3px rgba(49, 50, 55, 0.06);
 }

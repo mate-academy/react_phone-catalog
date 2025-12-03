@@ -1,5 +1,7 @@
 .container {
   padding: 1rem;
+  color: var(--text-color);
+  background: transparent;
 }
 
 .headerRow {
@@ -13,43 +15,65 @@
 .title {
   font-size: 2rem;
   font-weight: bold;
+  color: var(--text-color);
 }
 
 .backLink {
   font-weight: 600;
-  color: #313237;
+  color: var(--accent-color);
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .backLink:hover {
-  color: #111;
+  color: var(--text-color);
   text-decoration: none;
 }
 
+/* Grid responsivo de produtos */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
+/* Linha de botões no rodapé da listagem */
 .buttonRow {
   display: flex;
   justify-content: flex-end;
   margin-top: 2rem;
 }
 
+/* Botão de voltar / ação principal */
 .backButton {
-  background-color: #111;
-  color: #fff;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
   font-weight: 600;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 120ms ease;
+  border: none;
+  cursor: pointer;
 }
 
+/* Hover e foco acessível */
 .backButton:hover {
-  cursor: pointer;
-  background-color: #313237;
+  transform: translateY(-1px);
+  background-color: var(--link-hover);
+}
+
+.backButton:focus-visible {
+  outline: 2px solid rgba(49, 50, 55, 0.12);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* pequenas melhorias de acessibilidade e contraste */
+.backLink:focus-visible {
+  outline: 2px solid rgba(49, 50, 55, 0.08);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
