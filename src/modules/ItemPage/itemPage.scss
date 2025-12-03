@@ -505,6 +505,23 @@
     line-height: 100%;
     color: $textColor;
   }
+
+  &__notProduct{
+    display: block;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+
+    @include min-screen($tablet) {
+      width: 200px;
+      height: 200px;
+    }
+    
+    @include min-screen($laptop) {
+      width: 400px;
+      height: 400px;
+    }
+  }
 }
 
 .navigation {

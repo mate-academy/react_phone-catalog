@@ -13,6 +13,20 @@ const FavoriteContext = createContext<FavoriteContextType>({
 
 export const useFavorites = () => useContext(FavoriteContext);
 
+const BASE = import.meta.env.BASE_URL;
+
+const normalizeImg = (path: string) => {
+  if (!path) {
+    return '';
+  }
+
+  if (path.startsWith(BASE)) {
+    return path;
+  }
+
+  return `${BASE}${path.startsWith('/') ? path.slice(1) : path}`;
+};
+
 export const FavoriteProvider = ({
   children,
 }: {
@@ -29,14 +43,19 @@ export const FavoriteProvider = ({
   }, [favorites]);
 
   const toggleFavorite = (item: CardItem) => {
+    const normalizedItem: CardItem = {
+      ...item,
+      img: normalizeImg(item.img),
+    };
+
     setFavorites(prev => {
-      const exists = prev.some(fav => fav.id === item.id);
+      const exists = prev.some(fav => fav.id === normalizedItem.id);
 
       if (exists) {
-        return prev.filter(fav => fav.id !== item.id);
+        return prev.filter(fav => fav.id !== normalizedItem.id);
       }
 
-      return [...prev, item];
+      return [...prev, normalizedItem];
     });
   };
 

@@ -60,7 +60,7 @@
     }
 
     @include min-screen($largeDesktop) {
-      width: 530px;
+      width: 525px;
     }
   }
 
@@ -73,6 +73,11 @@
     text-decoration: none;
     padding: 45px 0 0 45px;
     margin-top: 35px;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+       
 
     @include min-screen($tablet) {
       margin-top: 25px;
@@ -89,7 +94,23 @@
 
   &__img{
     background-color:$sectionBgPhone;
-    object-fit: cover;
+    object-fit:cover;
+   
+    @include min-screen($tablet) {      
+      height: 145px;
+    }
+
+    @include min-screen($laptop) {      
+      height: 266px;
+    }
+
+    @include min-screen($desktop) {      
+      height: 327px;
+    }
+
+    @include min-screen($largeDesktop) {      
+      height: 495px;
+    }
   }
 
    &__img--tablets {

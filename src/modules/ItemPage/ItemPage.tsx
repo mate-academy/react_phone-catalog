@@ -19,6 +19,7 @@ import favorite from '../../modules/Navbar/NavbarImg/Vector (Stroke).svg';
 import heartLike from '../../modules/Navbar/NavbarImg/Heart Like.svg';
 import { CardItem } from '../../types/СardItem';
 import './itemPage.scss';
+import notProduct from '../../../public/img/page-not-found.png';
 
 type RouteParams = {
   category?: string;
@@ -77,7 +78,7 @@ export const ItemPage: React.FC = () => {
     if (category === 'products') {
       const product = item as Product;
 
-      return [normalizeImg(product.image)];
+      return [product.image];
     }
 
     const phoneLike = item as Phone | Accessories;
@@ -86,11 +87,8 @@ export const ItemPage: React.FC = () => {
     const currentColor = activeColor || baseColor;
 
     return phoneLike.images.map((img: string) => {
-      const withColor = img.replace(`/${baseColor}/`, `/${currentColor}/`);
-
-      return normalizeImg(withColor);
+      return img.replace(`/${baseColor}/`, `/${currentColor}/`);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [item, category, activeColor]);
 
   useEffect(() => {
@@ -104,8 +102,9 @@ export const ItemPage: React.FC = () => {
 
   useEffect(() => {
     if (imagesForActiveColor.length > 0) {
-      setActiveImg(imagesForActiveColor[0]);
+      setActiveImg(normalizeImg(imagesForActiveColor[0]));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imagesForActiveColor]);
 
   if (!item) {
@@ -120,6 +119,11 @@ export const ItemPage: React.FC = () => {
           />
           <div className="item-page__text">Go back</div>
         </Link>
+        <img
+          src={notProduct}
+          alt="Product not found"
+          className="item-page__notProduct"
+        />
       </div>
     );
   }

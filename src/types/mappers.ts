@@ -38,6 +38,8 @@ export const fromAccessories = (acc: Accessories): CardItem => ({
   screen: acc.screen,
   capacity: acc.capacity,
   ram: acc.ram,
-  img: acc.images[0],
+  img: acc.images?.[0]
+    ? `${BASE}${acc.images[0].startsWith('/') ? acc.images[0].slice(1) : acc.images[0]}`
+    : '',
   link: `/${acc.category}/${acc.namespaceId}`,
 });

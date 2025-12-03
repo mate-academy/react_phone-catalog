@@ -12,8 +12,26 @@ import { FooterPage } from './modules/Footer/footer';
 import { FavoriteProvider } from './components/Context/FavoriteContext';
 import { CartProvider } from './components/Context/CartContext';
 import { ItemPage } from './modules/ItemPage/ItemPage';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Lenis from '@studio-freight/lenis';
+import { useEffect } from 'react';
 
 export const App = () => {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
   return (
     <div className="App">
       <CartProvider>

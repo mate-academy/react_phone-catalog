@@ -9,6 +9,7 @@ type CatalogProps<T> = {
   totalLabel?: string;
   items: T[];
   mapToCardItem: (item: T) => CardItem;
+  showControls?: boolean;
 };
 type SortBy = 'newest' | 'alphabetically' | 'cheapest';
 
@@ -21,6 +22,7 @@ export function Catalog<T>({
   totalLabel,
   items,
   mapToCardItem,
+  showControls = true,
 }: CatalogProps<T>) {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -99,42 +101,83 @@ export function Catalog<T>({
   const end = start + perPage;
   const visibleCards = sortedCards.slice(start, end);
 
+  const getVisiblePages = (
+    current: number,
+    total: number,
+  ): (number | '...')[] => {
+    if (total <= 7) {
+      return Array.from({ length: total }, (_, i) => i + 1);
+    }
+
+    const pages: (number | '...')[] = [];
+
+    const addPage = (p: number | '...') => {
+      if (pages[pages.length - 1] === p) {
+        return;
+      }
+
+      pages.push(p);
+    };
+
+    addPage(1);
+
+    if (current > 3) {
+      addPage('...');
+    }
+
+    for (let p = current - 1; p <= current + 1; p += 1) {
+      if (p > 1 && p < total) {
+        addPage(p);
+      }
+    }
+
+    if (current < total - 2) {
+      addPage('...');
+    }
+
+    addPage(total);
+
+    return pages;
+  };
+
+  const visiblePages = getVisiblePages(safePage, totalPages);
+
   return (
     <section className="catalog">
       <div className="catalog_header">
         <h1 className="catalog__title">{title}</h1>
         {totalLabel && <p className="catalog__models">{totalLabel}</p>}
       </div>
-
-      <div className="catalog__controls">
-        <div className="catalog__control">
-          <span className="catalog__controlLable">Sort by</span>
-          <select
-            className="catalog__select catalog__select--sort"
-            value={sortBy}
-            onChange={e => handleSortChange(e.target.value as SortBy)}
-          >
-            <option value="newest">Newest</option>
-            <option value="alphabetically">Alphabetically</option>
-            <option value="cheapest">Cheapest</option>
-          </select>
+      {showControls && (
+        <div className="catalog__controls">
+          <div className="catalog__control">
+            <span className="catalog__controlLable">Sort by</span>
+            <select
+              className="catalog__select catalog__select--sort"
+              value={sortBy}
+              onChange={e => handleSortChange(e.target.value as SortBy)}
+            >
+              <option value="newest">Newest</option>
+              <option value="alphabetically">Alphabetically</option>
+              <option value="cheapest">Cheapest</option>
+            </select>
+          </div>
+          <div className="catalog__control">
+            <span className="catalog__controlLable">Items on page</span>
+            <select
+              className="catalog__select"
+              value={perPage}
+              onChange={e => handlePerPageChange(Number(e.target.value))}
+            >
+              {PER_PAGE_OPTIONS.map(option => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div className="catalog__control">
-          <span className="catalog__controlLable">Items on page</span>
-          <select
-            className="catalog__select"
-            value={perPage}
-            onChange={e => handlePerPageChange(Number(e.target.value))}
-          >
-            {PER_PAGE_OPTIONS.map(option => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
+      )}
       <div className="catalog__list">
         {visibleCards.map(card => (
           <ProductCard key={card.id} item={card} />
@@ -149,18 +192,24 @@ export function Catalog<T>({
           {'<'}
         </button>
 
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
-          <button
-            key={p}
-            className={
-              'catalog__pageBtn' +
-              (p === safePage ? ' catalog__pageBtn--active' : '')
-            }
-            onClick={() => handlePageChange(p)}
-          >
-            {p}
-          </button>
-        ))}
+        {visiblePages.map(p =>
+          p === '...' ? (
+            <span key={Math.random()} className="catalog__pageDots">
+              ...
+            </span>
+          ) : (
+            <button
+              key={p}
+              className={
+                'catalog__pageBtn' +
+                (p === safePage ? ' catalog__pageBtn--active' : '')
+              }
+              onClick={() => handlePageChange(p)}
+            >
+              {p}
+            </button>
+          ),
+        )}
 
         <button
           className="catalog__arrow"

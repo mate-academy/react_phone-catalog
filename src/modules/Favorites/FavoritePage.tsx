@@ -26,6 +26,7 @@ export const FavoritePage: React.FC = () => {
           totalLabel={`${favorites.length} items`}
           items={favorites}
           mapToCardItem={item => item}
+          showControls={false}
         />
       </div>
     </>

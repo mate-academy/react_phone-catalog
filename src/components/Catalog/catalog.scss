@@ -119,6 +119,15 @@
 
   }
 
+  &__pageDots{
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    font-size: 30px;
+    color: $textColor;    
+    border: 1px solid $mainColor;
+  }
+
   &__pageBtn--active{
     background-color: $buttonBgColor;
     border: 1px solid $buttonBgColor;
