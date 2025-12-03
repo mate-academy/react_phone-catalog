@@ -3,14 +3,19 @@ import { Phone } from './Phone';
 import { Product } from './Product';
 import { CardItem } from './СardItem';
 
-const BASE = import.meta.env.BASE_URL;
+const RAW_BASE = import.meta.env.BASE_URL;
+const BASE = RAW_BASE.endsWith('/') ? RAW_BASE : `${RAW_BASE}/`;
+
+const buildImgUrl = (path: string) => {
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+
+  return BASE + cleanPath;
+};
 
 export const fromPhone = (p: Phone): CardItem => ({
   id: String(p.id),
   name: p.name,
-  img: p.images?.[0]
-    ? `${BASE}${p.images[0].startsWith('/') ? p.images[0].slice(1) : p.images[0]}`
-    : '',
+  img: p.images?.[0] ? buildImgUrl(p.images[0]) : '',
   price: p.priceDiscount ?? p.priceRegular,
   screen: p.screen,
   capacity: p.capacity,
@@ -21,7 +26,7 @@ export const fromPhone = (p: Phone): CardItem => ({
 export const fromProduct = (p: Product): CardItem => ({
   id: String(p.itemId),
   name: p.name,
-  img: `${BASE}${p.image.startsWith('/') ? p.image.slice(1) : p.image}`,
+  img: buildImgUrl(p.image),
   price: p.price,
   oldPrice: p.fullPrice,
   screen: p.screen,
@@ -38,8 +43,6 @@ export const fromAccessories = (acc: Accessories): CardItem => ({
   screen: acc.screen,
   capacity: acc.capacity,
   ram: acc.ram,
-  img: acc.images?.[0]
-    ? `${BASE}${acc.images[0].startsWith('/') ? acc.images[0].slice(1) : acc.images[0]}`
-    : '',
+  img: acc.images?.[0] ? buildImgUrl(acc.images[0]) : '',
   link: `/${acc.category}/${acc.namespaceId}`,
 });

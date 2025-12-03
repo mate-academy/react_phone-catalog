@@ -55,7 +55,9 @@ export const ItemPage: React.FC = () => {
     }
   }, [category, itemId]);
 
-  const BASE = import.meta.env.BASE_URL;
+  const RAW_BASE = import.meta.env.BASE_URL;
+
+  const BASE = RAW_BASE.endsWith('/') ? RAW_BASE : `${RAW_BASE}/`;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const normalizeImg = (path: string) => {
@@ -63,7 +65,9 @@ export const ItemPage: React.FC = () => {
       return '';
     }
 
-    return `${BASE}${path.startsWith('/') ? path.slice(1) : path}`;
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+
+    return BASE + cleanPath;
   };
 
   const [activeImg, setActiveImg] = useState<string>('');
