@@ -11,8 +11,9 @@ type TrueCartItem = {
 };
 
 export const useCartPage = () => {
-  const { itemsInCart } = useGlobalData();
+  const { itemsInCart, modalIsOpened } = useGlobalData();
   const { toggleModal } = useGlobalActions();
+
   const cart = useLoadItems(() => get.cart(itemsInCart));
 
   useEffect(() => {
@@ -43,5 +44,18 @@ export const useCartPage = () => {
     }
   };
 
-  return { cart: cart.data, itemsInCart, getWidgetProps, toggleModal };
+  useEffect(() => {
+    if (modalIsOpened) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [modalIsOpened]);
+
+  return {
+    cart: cart.data,
+    itemsInCart,
+    getWidgetProps,
+    toggleModal,
+  };
 };

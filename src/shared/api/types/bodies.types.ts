@@ -63,10 +63,10 @@ interface CartBody {
   }[];
 }
 
-interface CheckoutBody {
+interface CheckoutBody extends CartBody {
   userDetails: UserDetails;
   deliveryDetails: Pickup | Shipment;
-  dataProcessingAgreement: true;
+  dataProcessingAgreement: boolean;
 }
 
 export {

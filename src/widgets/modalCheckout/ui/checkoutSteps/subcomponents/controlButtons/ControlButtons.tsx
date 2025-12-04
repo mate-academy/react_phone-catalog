@@ -1,47 +1,45 @@
-import { useSteps } from '@widgets/modalCheckout/model';
+import { useCheckout, useSteps } from '../../../../model';
 import styles from './controlButtons.module.scss';
 import { useGlobalActions } from '@features/index';
-type Props = {
-  totalSteps: number;
-  totalPrice: number;
-};
+import { ButtonProps, FormIDs } from '../../../../types';
+import { CartData } from '@shared/api';
 
-export const ControlButtons = ({ totalSteps, totalPrice }: Props) => {
-  const { step, setStep } = useSteps();
+export const ControlButtons = () => {
+  const { step } = useSteps();
   const { toggleModal } = useGlobalActions();
+  const { cart } = useCheckout();
 
-  const defaultProps = {
-    title: 'Next',
-    onClick: (e: React.FormEvent) => {
-      e.preventDefault();
-      setStep(step + 1);
+  const total = cart === '' ? '' : (cart as CartData).total;
+
+  const submit: Record<number, ButtonProps> = {
+    1: {
+      title: 'next',
+      form: FormIDs.DATA,
+    },
+    2: {
+      title: 'next',
+      form: FormIDs.DELIVERY,
+    },
+    3: {
+      title: `place order ($${total})`,
+      form: FormIDs.AGREEMENT,
     },
   };
 
-  const checkout = {
-    title: `Place order (${totalPrice})`,
-    onClick: (e: React.FormEvent) => {
-      e.preventDefault();
-
-      return;
+  const cancel = {
+    title: 'cancel',
+    props: {
+      onClick: toggleModal,
     },
   };
-
-  const params = step === totalSteps ? checkout : defaultProps;
 
   return (
     <div className={styles.buttons}>
-      <button type="submit" onClick={e => params.onClick(e)}>
-        {params.title}
+      <button type="submit" form={submit[step].form}>
+        {submit[step].title}
       </button>
-      <button
-        type="button"
-        onClick={e => {
-          e.preventDefault();
-          toggleModal();
-        }}
-      >
-        cancel
+      <button type="button" {...cancel.props}>
+        {cancel.title}
       </button>
     </div>
   );

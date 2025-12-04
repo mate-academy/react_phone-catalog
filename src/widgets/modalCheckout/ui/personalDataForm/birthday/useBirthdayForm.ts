@@ -1,4 +1,5 @@
-import { days, Months, useCheckout } from '@widgets/modalCheckout/model';
+import { Months } from '@shared/api/types/bodies.enums';
+import { days, useCheckout } from '@widgets/modalCheckout/model';
 import { useState } from 'react';
 
 export const useBirthdayForm = () => {
@@ -9,6 +10,21 @@ export const useBirthdayForm = () => {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
   const months = Object.values(Months);
+
+  const BDMap: Record<string, Months> = {
+    January: Months.JAN,
+    February: Months.FEB,
+    March: Months.MAR,
+    April: Months.APR,
+    May: Months.MAY,
+    June: Months.JUN,
+    July: Months.JUL,
+    August: Months.AUG,
+    September: Months.SEP,
+    October: Months.OCT,
+    November: Months.NOV,
+    December: Months.DEC,
+  };
 
   const getDays = () => {
     const isLeap =
@@ -28,15 +44,15 @@ export const useBirthdayForm = () => {
 
   const daysData = {
     placeholder:
-      birthdayRef.current.month === ('' as Months)
+      birthdayRef.current.month === (0 as Months)
         ? 'Please, select month first'
         : 'Please, select day',
-    array: birthdayRef.current.month === ('' as Months) ? null : [...getDays()],
+    array: birthdayRef.current.month === (0 as Months) ? null : [...getDays()],
   };
 
   const onChange = {
     month: (e: React.ChangeEvent<HTMLSelectElement>) => {
-      birthdayRef.current.month = e.target.value as Months;
+      birthdayRef.current.month = BDMap[e.target.value];
       rerender();
     },
     day: (e: React.ChangeEvent<HTMLSelectElement>) => {

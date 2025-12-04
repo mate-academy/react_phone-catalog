@@ -13,6 +13,3 @@ export const App = () => (
     <Footer />
   </div>
 );
-
-//for RM: -dataflow -api -loader -errorHandling -cssFirst
-// add 0 items in cart render; add modal window for cart

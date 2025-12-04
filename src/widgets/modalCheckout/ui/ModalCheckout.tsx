@@ -4,20 +4,17 @@ import { CheckoutProvider } from '../model';
 import { Steps } from './checkoutSteps/Steps';
 import { DeliveryForm } from './deliveryForm/DeliveryForm';
 import { useGlobalData } from '@features/index';
+import { CheckoutResume } from './checkoutResume/CheckoutResume';
+import classNames from 'classnames';
 
 export const ModalCheckout = () => {
   const { modalIsOpened } = useGlobalData();
 
-  const display = modalIsOpened ? 'grid' : 'none';
-
   return (
     <div
-      className={styles['modal-backdrop']}
-      style={
-        {
-          '--visible': `${display}`,
-        } as React.CSSProperties
-      }
+      className={classNames(styles['modal-backdrop'], {
+        [styles['modal-backdrop-hidden']]: !modalIsOpened,
+      })}
     >
       <CheckoutProvider>
         <Steps>
@@ -30,7 +27,7 @@ export const ModalCheckout = () => {
           </Steps.Step>
 
           <Steps.Step step={3}>
-            <div />
+            <CheckoutResume />
           </Steps.Step>
         </Steps>
       </CheckoutProvider>

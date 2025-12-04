@@ -1,17 +1,4 @@
-enum Months {
-  JAN = 'january',
-  FEB = 'february',
-  MAR = 'march',
-  APR = 'april',
-  MAY = 'may',
-  JUN = 'june',
-  JUL = 'july',
-  AUG = 'august',
-  SEP = 'september',
-  OCT = 'october',
-  NOV = 'november',
-  DEC = 'december',
-}
+import { Months } from '@shared/api/types/bodies.enums';
 
 const days: Record<Months, number> = {
   [Months.JAN]: 31,
@@ -28,4 +15,4 @@ const days: Record<Months, number> = {
   [Months.DEC]: 31,
 };
 
-export { Months, days };
+export { days };

@@ -1,9 +1,25 @@
 import { ArrowIcon } from '@shared/icons';
 import styles from './birthdayForm.module.scss';
 import { useBirthdayForm } from './useBirthdayForm';
+import { Months } from '@shared/api/types/bodies.enums';
 
 export const BirthdayForm = () => {
-  const { years, months, daysData, onChange } = useBirthdayForm();
+  const { years, daysData, onChange } = useBirthdayForm();
+
+  const BDMap: Record<Months, string> = {
+    [Months.JAN]: 'January',
+    [Months.FEB]: 'February',
+    [Months.MAR]: 'March',
+    [Months.APR]: 'April',
+    [Months.MAY]: 'May',
+    [Months.JUN]: 'June',
+    [Months.JUL]: 'July',
+    [Months.AUG]: 'August',
+    [Months.SEP]: 'September',
+    [Months.OCT]: 'October',
+    [Months.NOV]: 'November',
+    [Months.DEC]: 'December',
+  };
 
   return (
     <fieldset className={styles.birthdate}>
@@ -15,7 +31,7 @@ export const BirthdayForm = () => {
             <option selected disabled>
               Please, select month
             </option>
-            {months.map(el => (
+            {Object.values(BDMap).map(el => (
               <option key={el}>{el}</option>
             ))}
           </select>

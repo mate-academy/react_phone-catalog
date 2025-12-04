@@ -1,34 +1,47 @@
 @use '@shared/styles' as s;
 
 .dialog {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  height: calc(100vh - 43px);
+  grid-template-rows: 40px 40px 1fr 30px 40px 10px;
+  margin-top: 43px;
   width: 100%;
   background-color: white;
-  align-items: center;
-  max-width: 720px;
-  z-index: s.$c-focus;
+  overflow: hidden;
 
   > h2 {
     @include s.t-h2;
 
     text-transform: capitalize;
+    place-self: center;
   }
 
-  > * {
-    padding: 15px;
+  @media(min-width: s.$c-BREAKPOINT_TAB) {
+    grid-template-rows: 40px 60px 1fr 30px 40px 20px;
+    max-height: 70vh;
+    max-width: 720px;
+    margin: auto;
   }
 }
 
-.warning {
+.required-message {
   @include s.t-button-text;
+
+  align-self: center;
+  padding-left: 10px;
 }
 
-.form {
+.viewport {
   display: flex;
   flex-direction: column;
+  grid-row: 3;
   width: 100%;
-  padding: 25px;
+  padding: 0 10px;
   box-sizing: border-box;
-  gap: 15px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.hidden {
+  display: none;
 }

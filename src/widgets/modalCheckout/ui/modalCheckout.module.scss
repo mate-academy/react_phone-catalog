@@ -2,13 +2,17 @@
 
 .modal-backdrop {
   position: fixed;
+  display: grid;
   inset: 0;
-  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 
-  display: var(--visible);
-  place-items: center;
+  place-items: start center;
+  margin-top: 5px;
 
   z-index: s.$c-focus;
-  overflow-y: auto;
+  overflow-y: hidden;
+}
+
+.modal-backdrop-hidden {
+  display: none;
 }

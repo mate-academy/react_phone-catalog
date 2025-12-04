@@ -64,9 +64,10 @@ export const DeliveryDetails = () => {
         <select
           name="country"
           id="country"
+          required
           onChange={e => onChange(e, 'country')}
         >
-          <option selected disabled>
+          <option selected disabled value="">
             Please, select destination country
           </option>
           {deliveryCountries.map(el => (

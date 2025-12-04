@@ -4,7 +4,7 @@
   @include s.t-h4;
 
   color: s.$c-grey-primary;
-  padding-bottom: 10px;
+
   text-transform: capitalize;
 }
 
@@ -18,9 +18,9 @@
 
 @mixin form-column {
   display: flex;
+  margin-top: 10px;
+  gap: 10px;
   flex-direction: column;
-  padding-top: 10px;
   border: none;
-  gap: 20px;
   width: 100%;
 }

@@ -2,24 +2,24 @@ import { ErrorObject, Product } from '.';
 import { DeliveryTypes } from './request.enums';
 
 enum Months {
-  JAN = 'january',
-  FEB = 'february',
-  MAR = 'march',
-  APR = 'april',
-  MAY = 'may',
-  JUN = 'june',
-  JUL = 'july',
-  AUG = 'august',
-  SEP = 'september',
-  OCT = 'october',
-  NOV = 'november',
-  DEC = 'december',
+  JAN = 1,
+  FEB = 2,
+  MAR = 3,
+  APR = 4,
+  MAY = 5,
+  JUN = 6,
+  JUL = 7,
+  AUG = 8,
+  SEP = 9,
+  OCT = 10,
+  NOV = 11,
+  DEC = 12,
 }
 
 interface Address {
   country: string;
   city: string;
-  postalCode: number;
+  postalCode: string;
   street: string;
   buildingNumber: string;
   apartment?: number;

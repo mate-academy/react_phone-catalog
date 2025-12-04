@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   max-width: 100%;
+  gap: 10px;
 
   > legend {
     @include l.form-legend ;
@@ -15,7 +16,7 @@
     display: grid;
     grid-template: repeat(3, 20px 40px) / 1fr;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 
     > label {
       @include l.input-label;

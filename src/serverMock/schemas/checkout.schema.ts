@@ -35,7 +35,7 @@ const userDetailsOptionsSchema = {
 const addressShape: Address = {
   country: '',
   city: '',
-  postalCode: 0,
+  postalCode: '',
   street: '',
   buildingNumber: '',
 };

@@ -10,6 +10,12 @@ export const Navigation = ({ totalSteps }: Props) => {
 
   const arr = Array.from({ length: totalSteps }, (_, i) => i + 1);
 
+  const names: Record<number, string> = {
+    1: 'Personal data',
+    2: 'Delivery',
+    3: 'Order review',
+  };
+
   const getProps = (number: number) => {
     return {
       className: classNames(styles.pagination__button, {
@@ -23,7 +29,7 @@ export const Navigation = ({ totalSteps }: Props) => {
     <nav className={styles.pagination}>
       {arr.map(el => (
         <button key={el} {...getProps(el)}>
-          {el}
+          {names[el]}
         </button>
       ))}
     </nav>
