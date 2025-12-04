@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import styles from './BrandNewModels.module.css';
 import { useCart } from '../../pages/ShoppingCart/cartContext';
+import { useFavorites } from '../../pages/Favorites/FavoritesContext';
+import { useToast } from '../Toast/ToastContext';
 
 export interface BrandNewModelsProps {
   id?: string;
@@ -38,15 +40,17 @@ const BrandNewModels: React.FC<BrandNewModelsProps> = ({
   'data-testid': dataTestId = 'brand-new-model',
   onButtonClick,
   onFavouriteClick,
-  isFavourite,
 }) => {
   const Tag = `h${titleLevel}` as keyof JSX.IntrinsicElements;
   const imgSrc = imageSrc;
   const linkTo = detailsLink ?? (id ? `/product/${id}` : undefined);
 
   const { addItem, isInCart } = useCart();
+  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
+  const { showToast } = useToast();
 
   const alreadyInCart = id ? isInCart(id) : false;
+  const favActive = id ? isFavorite(id) : false;
 
   const product = {
     id: id ?? '',
@@ -56,14 +60,45 @@ const BrandNewModels: React.FC<BrandNewModelsProps> = ({
     specs: specs ?? {},
   };
 
+  // 1) Não altera o texto do botão; 2) showToast sempre após addItem
   const handleAddToCart = () => {
-    if (!id || alreadyInCart) {
+    if (!id) {
       return;
     }
 
+    if (alreadyInCart) {
+      // opcional: feedback informativo sem alterar texto do botão
+      showToast('Item já está no carrinho', 'info');
+      {
+        return;
+      }
+    }
+
     addItem(product);
+    showToast('Adicionado ao carrinho!', 'success');
+
     if (onButtonClick) {
       onButtonClick();
+    }
+  };
+
+  // showToast tanto ao adicionar quanto ao remover favoritos
+  const handleFavouriteClick = () => {
+    if (!id) {
+      return;
+    }
+
+    if (favActive) {
+      removeFavorite(id);
+      showToast('Removido dos favoritos', 'info');
+    } else {
+      addFavorite(product);
+      showToast('Adicionado a favoritos!', 'success');
+    }
+
+    // Notifica o pai se ele passou um handler
+    if (typeof onFavouriteClick === 'function') {
+      onFavouriteClick();
     }
   };
 
@@ -158,28 +193,26 @@ const BrandNewModels: React.FC<BrandNewModelsProps> = ({
       <div className={styles.buttonRow}>
         <Button
           onClick={handleAddToCart}
-          variant={alreadyInCart ? 'disabled' : 'primary'}
+          variant="primary" // mantém aparência consistente; não muda texto
           size="md"
           className={styles.addButton}
           data-testid={`${dataTestId}-add-button`}
-          ariaLabel={
-            alreadyInCart ? 'Adicionado ao carrinho' : 'Adicionar ao carrinho'
-          }
+          ariaLabel="Adicionar ao carrinho"
         >
-          {alreadyInCart ? 'Adicionado ao carrinho' : 'Adicionar ao carrinho'}
+          Adicionar ao carrinho
         </Button>
 
         <button
           type="button"
-          onClick={onFavouriteClick}
-          className={`${styles.favButton} ${isFavourite ? styles.active : ''}`}
+          onClick={handleFavouriteClick}
+          className={`${styles.favButton} ${favActive ? styles.active : ''}`}
           aria-label={
-            isFavourite ? 'Remove from favourites' : 'Add to favourites'
+            favActive ? 'Remove from favourites' : 'Add to favourites'
           }
-          aria-pressed={isFavourite ? 'true' : 'false'}
+          aria-pressed={favActive ? 'true' : 'false'}
           data-testid={`${dataTestId}-fav-button`}
         >
-          {isFavourite ? '❤️' : '🤍'}
+          {favActive ? '❤️' : '🤍'}
         </button>
       </div>
     </article>

@@ -5,24 +5,17 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-
-export type CartProduct = {
-  id: string;
-  title: string;
-  price: string; // ex: "R$ 1.999"
-  imageSrc?: string;
-  specs?: Record<string, string | undefined>;
-};
+import { Product } from '../../types/Product'; // ✅ import do tipo centralizado
 
 export type CartItem = {
   id: string;
   quantity: number;
-  product: CartProduct;
+  product: Product; // ✅ usa Product direto
 };
 
 type CartContextValue = {
   items: CartItem[];
-  addItem: (product: CartProduct) => void;
+  addItem: (product: Product) => void; // ✅ recebe Product
   removeItem: (id: string) => void;
   updateQty: (id: string, qty: number) => void;
   clearCart: () => void;
@@ -58,7 +51,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   const isInCart = (productId: string) =>
     items.some(i => i.product.id === productId);
 
-  const addItem = (product: CartProduct) => {
+  const addItem = (product: Product) => {
     setItems(prev => {
       if (prev.some(i => i.product.id === product.id)) {
         return prev;
@@ -96,7 +89,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       return s + (isNaN(numeric) ? 0 : numeric * i.quantity);
     }, 0);
 
-    // formata com vírgula como separador decimal
     return `R$ ${sum.toFixed(2).replace('.', ',')}`;
   }, [items]);
 

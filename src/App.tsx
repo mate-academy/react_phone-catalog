@@ -15,31 +15,34 @@ import Favorites from './pages/Favorites/Favorites';
 import NotFound from './pages/NotFound/NotFound';
 import { ThemeProvider } from './context/ThemeContext';
 import styles from './App.module.css';
+import { ToastProvider } from './components/Toast/ToastContext';
 
 export const App: React.FC = () => (
   <ThemeProvider>
-    <FavoritesProvider>
-      <CartProvider>
-        <Router>
-          <div className={styles.app}>
-            <Navbar />
-            <main className={styles.content}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/phones" element={<Phones />} />
-                <Route path="/tablets" element={<Tablets />} />
-                <Route path="/accessories" element={<Accessories />} />
-                <Route path="/product/:id" element={<ProductDetails />} />
-                <Route path="/cart" element={<ShoppingCart />} />
-                <Route path="/favoritos" element={<Favorites />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
-        </Router>
-      </CartProvider>
-    </FavoritesProvider>
+    <Router>
+      <FavoritesProvider>
+        <CartProvider>
+          <ToastProvider>
+            <div className={styles.app}>
+              <Navbar />
+              <main className={styles.content}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/phones" element={<Phones />} />
+                  <Route path="/tablets" element={<Tablets />} />
+                  <Route path="/accessories" element={<Accessories />} />
+                  <Route path="/product/:id" element={<ProductDetails />} />
+                  <Route path="/cart" element={<ShoppingCart />} />
+                  <Route path="/favorites" element={<Favorites />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </ToastProvider>
+        </CartProvider>
+      </FavoritesProvider>
+    </Router>
   </ThemeProvider>
 );
 

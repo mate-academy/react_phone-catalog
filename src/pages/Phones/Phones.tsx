@@ -1,3 +1,4 @@
+// src/pages/Phones/Phones.tsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Phones.module.css';
@@ -7,6 +8,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import { BrandNewModels } from '../../components/BrandNewModels';
 import { Loader } from '../../components/Loader';
 import { Select } from '../../components/Select';
+import { Product } from '../../types/Product'; // ✅ tipo centralizado
 
 const Phones: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
@@ -37,7 +39,7 @@ const Phones: React.FC = () => {
     return (
       <ViewAllProducts
         title="Phones"
-        products={phones}
+        products={phones as Product[]} // ✅ tipagem correta
         onBackClick={() => setShowAll(false)}
         dataTestIdPrefix="phones"
       />
@@ -45,7 +47,7 @@ const Phones: React.FC = () => {
   }
 
   // aplica ordenação
-  const orderedItems = [...phones];
+  const orderedItems: Product[] = [...phones];
 
   if (order === 'alphabetical') {
     orderedItems.sort((a, b) => a.title.localeCompare(b.title));
@@ -60,7 +62,7 @@ const Phones: React.FC = () => {
   // lógica de paginação
   const start = (currentPage - 1) * perPage;
   const end = start + perPage;
-  const currentItems = orderedItems.slice(start, end);
+  const currentItems: Product[] = orderedItems.slice(start, end);
 
   return (
     <main className={styles.container}>
@@ -91,12 +93,12 @@ const Phones: React.FC = () => {
             data-testid={`phone-sample-link-${samplePhone.id}`}
           >
             <BrandNewModels
+              id={samplePhone.id} // ✅ importante passar o id
               title={samplePhone.title}
               imageSrc={samplePhone.imageSrc}
               imageAlt={samplePhone.title}
               price={samplePhone.price}
               specs={samplePhone.specs}
-              onButtonClick={() => samplePhone}
               onFavouriteClick={() => toggleFavourite(samplePhone.id)}
               isFavourite={!!favourites[samplePhone.id]}
               data-testid={`phone-card-${samplePhone.id}`}
@@ -104,25 +106,20 @@ const Phones: React.FC = () => {
           </Link>
         )}
 
-        {currentItems.map(p => (
-          <Link
-            to={`/product/${p.id}`}
+        {currentItems.map((p: Product) => (
+          <BrandNewModels
             key={p.id}
-            className={styles.cardLink}
-            data-testid={`phone-link-${p.id}`}
-          >
-            <BrandNewModels
-              title={p.title}
-              imageSrc={p.imageSrc}
-              imageAlt={p.title}
-              price={p.price}
-              specs={p.specs}
-              onButtonClick={() => p}
-              onFavouriteClick={() => toggleFavourite(p.id)}
-              isFavourite={!!favourites[p.id]}
-              data-testid={`phones-card-${p.id}`}
-            />
-          </Link>
+            id={p.id} // ✅ necessário para addItem
+            detailsLink={`/product/${p.id}`} // ✅ título/imagem navegam para detalhes
+            title={p.title}
+            imageSrc={p.imageSrc}
+            imageAlt={p.title}
+            price={p.price}
+            specs={p.specs}
+            onFavouriteClick={() => toggleFavourite(p.id)}
+            isFavourite={!!favourites[p.id]}
+            data-testid={`phones-card-${p.id}`}
+          />
         ))}
       </div>
 

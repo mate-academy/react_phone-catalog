@@ -1,5 +1,5 @@
+// src/pages/Tablets/Tablets.tsx
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { tablets, sampleTablet } from '../../data/tablets';
 import styles from './Tablets.module.css';
 import { ViewAllProducts } from '../../pages/ViewAllProducts';
@@ -7,10 +7,10 @@ import Pagination from '../../components/Pagination/Pagination';
 import { BrandNewModels } from '../../components/BrandNewModels';
 import { Loader } from '../../components/Loader';
 import { Select } from '../../components/Select';
+import { Product } from '../../types/Product';
 
 const Tablets: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
-  const [favourites, setFavourites] = useState<Record<string, boolean>>({});
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [isLoading, setIsLoading] = useState(true);
@@ -25,10 +25,6 @@ const Tablets: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const toggleFavourite = (id: string) => {
-    setFavourites(prev => ({ ...prev, [id]: !prev[id] }));
-  };
-
   if (isLoading) {
     return <Loader message="Carregando Tablets..." />;
   }
@@ -37,7 +33,7 @@ const Tablets: React.FC = () => {
     return (
       <ViewAllProducts
         title="Tablets"
-        products={tablets}
+        products={tablets as Product[]}
         onBackClick={() => setShowAll(false)}
         dataTestIdPrefix="tablets"
       />
@@ -45,7 +41,7 @@ const Tablets: React.FC = () => {
   }
 
   // aplica ordenação
-  const orderedItems = [...tablets];
+  const orderedItems: Product[] = [...tablets];
 
   if (order === 'alphabetical') {
     orderedItems.sort((a, b) => a.title.localeCompare(b.title));
@@ -60,7 +56,7 @@ const Tablets: React.FC = () => {
   // lógica de paginação
   const start = (currentPage - 1) * perPage;
   const end = start + perPage;
-  const currentItems = tablets.slice(start, end);
+  const currentItems: Product[] = orderedItems.slice(start, end);
 
   return (
     <main className={styles.container}>
@@ -82,49 +78,34 @@ const Tablets: React.FC = () => {
 
       <div className={styles.grid}>
         {sampleTablet && (
-          <Link
-            to={`/product/${sampleTablet.id}`}
+          <BrandNewModels
             key={sampleTablet.id}
-            className={styles.cardLink}
-            data-testid={`tablet-sample-link-${sampleTablet.id}`}
-          >
-            <BrandNewModels
-              title={sampleTablet.title}
-              imageSrc={sampleTablet.imageSrc}
-              imageAlt={sampleTablet.title}
-              price={sampleTablet.price}
-              specs={sampleTablet.specs}
-              onButtonClick={() => sampleTablet}
-              onFavouriteClick={() => toggleFavourite(sampleTablet.id)}
-              isFavourite={!!favourites[sampleTablet.id]}
-              data-testid={`tablet-card-${sampleTablet.id}`}
-            />
-          </Link>
+            id={sampleTablet.id}
+            detailsLink={`/product/${sampleTablet.id}`}
+            title={sampleTablet.title}
+            imageSrc={sampleTablet.imageSrc}
+            imageAlt={sampleTablet.title}
+            price={sampleTablet.price}
+            specs={sampleTablet.specs}
+            data-testid={`tablet-card-${sampleTablet.id}`}
+          />
         )}
 
-        {currentItems.map(t => (
-          <Link
-            to={`/product/${t.id}`}
-            key={t.id}
-            className={styles.cardLink}
-            data-testid={`tablet-link-${t.id}`}
-          >
-            <BrandNewModels
-              title={t.title}
-              imageSrc={t.imageSrc}
-              imageAlt={t.title}
-              price={t.price}
-              specs={t.specs}
-              onButtonClick={() => t}
-              onFavouriteClick={() => toggleFavourite(t.id)}
-              isFavourite={!!favourites[t.id]}
-              data-testid={`tablets-card-${t.id}`}
-            />
-          </Link>
+        {currentItems.map((t: Product) => (
+          <BrandNewModels
+            key={t.id} // ✅ corrige lint
+            id={t.id} // ✅ necessário para addItem
+            detailsLink={`/product/${t.id}`} // ✅ título/imagem navegam para detalhes
+            title={t.title}
+            imageSrc={t.imageSrc}
+            imageAlt={t.title}
+            price={t.price}
+            specs={t.specs}
+            data-testid={`tablets-card-${t.id}`}
+          />
         ))}
       </div>
 
-      {/* Pagination deve ficar fora do map */}
       <Pagination
         total={tablets.length}
         perPage={perPage}

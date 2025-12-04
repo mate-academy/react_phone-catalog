@@ -7,6 +7,7 @@ import ShopCategory from '../../components/ShopCategory/ShopCategory';
 import phonesImg from '../../assets/img/shop-phones .png';
 import tabletsImg from '../../assets/img/shop-tablets.png';
 import accessoriesImg from '../../assets/img/shop-accessories.png';
+import { Product } from '../../types/Product';
 
 import { BrandNewModels } from '../../components/BrandNewModels';
 import { products } from '../../data/products';
@@ -14,6 +15,7 @@ import { hotPrices } from '../../data/hotPrice';
 
 import btnLeft from '../../assets/img/Btn-Left.svg';
 import btnRight from '../../assets/img/Btn-Right.svg';
+
 export type TitleSections = {
   title?: string;
   titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -148,19 +150,22 @@ const Home: React.FC = () => {
         </div>
 
         <div className={styles.brandGrid}>
-          {products.slice(brandIndex, brandIndex + ITEMS_PER_PAGE).map(p => (
-            <BrandNewModels
-              key={p.id}
-              title={p.title}
-              imageSrc={p.imageSrc}
-              imageAlt={p.title}
-              price={p.price}
-              specs={p.specs}
-              onFavouriteClick={() => toggleFavourite(p.id)}
-              isFavourite={!!favourites[p.id]}
-              data-testid={`brand-card-${p.id}`}
-            />
-          ))}
+          {products
+            .slice(brandIndex, brandIndex + ITEMS_PER_PAGE)
+            .map((p: Product) => (
+              <BrandNewModels
+                id={p.id}
+                key={p.id}
+                title={p.title}
+                imageSrc={p.imageSrc}
+                imageAlt={p.title}
+                price={p.price}
+                specs={p.specs}
+                onFavouriteClick={() => toggleFavourite(p.id)}
+                isFavourite={!!favourites[p.id]}
+                data-testid={`brand-card-${p.id}`}
+              />
+            ))}
         </div>
       </SectionWithTitle>
 
@@ -228,20 +233,22 @@ const Home: React.FC = () => {
         </div>
 
         <div className={styles.brandGrid}>
-          {hotPrices.slice(hotIndex, hotIndex + ITEMS_PER_PAGE).map(p => (
-            <BrandNewModels
-              key={p.id}
-              title={p.title}
-              imageSrc={p.imageSrc}
-              imageAlt={p.title}
-              price={p.price}
-              specs={p.specs}
-              onButtonClick={() => 'addToCart'}
-              onFavouriteClick={() => toggleFavourite(p.id)}
-              isFavourite={!!favourites[p.id]}
-              data-testid={`hot-card-${p.id}`}
-            />
-          ))}
+          {hotPrices
+            .slice(hotIndex, hotIndex + ITEMS_PER_PAGE)
+            .map((p: Product) => (
+              <BrandNewModels
+                key={p.id}
+                title={p.title}
+                imageSrc={p.imageSrc}
+                imageAlt={p.title}
+                price={p.price}
+                specs={p.specs}
+                onButtonClick={() => 'addToCart'}
+                onFavouriteClick={() => toggleFavourite(p.id)}
+                isFavourite={!!favourites[p.id]}
+                data-testid={`hot-card-${p.id}`}
+              />
+            ))}
         </div>
       </SectionWithTitle>
     </main>

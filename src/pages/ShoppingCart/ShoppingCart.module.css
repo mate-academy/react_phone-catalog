@@ -129,3 +129,27 @@ h1 {
   border-radius: 6px;
   cursor: pointer;
 }
+
+/* Subtotal por item */
+.subtotal {
+  color: var(--text-muted); /* texto secundário */
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* Botão de quantidade desabilitado */
+.qtyBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Melhor feedback visual para hover nos botões de quantidade */
+.qtyBtn:hover:not(:disabled) {
+  background: var(--link-hover); /* cor dinâmica de hover */
+  color: var(--primary-text);
+}
+
+/* Ajuste no botão remover para hover */
+.remove:hover {
+  color: var(--danger-color, red); /* cor de destaque para remoção */
+}

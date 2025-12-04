@@ -10,45 +10,14 @@ import styles from './ProductDetails.module.css';
 import Button from '../../components/Button/Button';
 import { Loader } from '../../components/Loader';
 import { BrandNewModels } from '../../components/BrandNewModels';
-import { phones } from '../../data/phones';
-import { tablets } from '../../data/tablets';
-import { accessories } from '../../data/accessories';
 import { useCart } from '../ShoppingCart/cartContext';
+import { useFavorites } from '../Favorites/FavoritesContext'; // novo contexto
 import { products } from '../../data/products';
-
-//----------------------------------------------------------
-// 2. INTERFACE
-// Estrutura de dados usada para representar um produto
-//----------------------------------------------------------
-export interface Product {
-  id: string;
-  sku?: string;
-  title: string;
-  price: string;
-  imageSrc?: string;
-  images?: string[];
-  description?: string;
-  specs?: {
-    screen?: string;
-    capacity?: string;
-    ram?: string;
-    battery?: string;
-    camera?: string;
-    [k: string]: string | undefined;
-  };
-  colorsAvailable?: string[];
-  capacityAvailable?: string[];
-  category?: 'Celulares' | 'Tablets' | 'Acessórios' | string;
-  age?: number;
-}
+import { Product } from '../../types/Product';
 
 //----------------------------------------------------------
 // 3. CONSTANTES E UTILIÁRIOS
 //----------------------------------------------------------
-
-// Conjunto de todos os produtos
-const ALL_PRODUCTS: Product[] = [...phones, ...tablets, ...accessories];
-
 /**
  * Simula fetch de produto por id (com delay para loader)
  */
@@ -59,7 +28,7 @@ const fetchProductById = (id?: string): Promise<Product | null> => {
         return resolve(null);
       }
 
-      const found = ALL_PRODUCTS.find(p => p.id === id) ?? null;
+      const found = products.find(p => p.id === id) ?? null;
 
       resolve(found);
     }, 600);
@@ -73,22 +42,25 @@ const getSuggestedProducts = (
   currentId: string | undefined,
   count = 4,
 ): Product[] => {
-  const pool = ALL_PRODUCTS.filter(p => p.id !== currentId);
+  const pool = products.filter(p => p.id !== currentId);
+
   const shuffled = pool.sort(() => 0.5 - Math.random());
 
-  return shuffled.slice(0, Math.min(count, shuffled.length));
+  {
+    return shuffled.slice(0, Math.min(count, shuffled.length));
+  }
 };
 
 //----------------------------------------------------------
 // 4. COMPONENTE PRINCIPAL: ESTADOS E EFEITOS
 //----------------------------------------------------------
 const ProductDetails: React.FC = () => {
-  // params da rota
   const { id } = useParams<{ id: string }>();
   const productFound = products.find(p => p.id === id);
 
-  // contexto do carrinho
+  // contexto do carrinho e favoritos
   const { addItem, isInCart } = useCart();
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   // estados locais
   const [isLoading, setIsLoading] = useState(true);
@@ -155,8 +127,9 @@ const ProductDetails: React.FC = () => {
 
       if (idx >= 0 && product.images[idx]) {
         setSelectedImage(product.images[idx]);
-
-        return;
+        {
+          return;
+        }
       }
     }
 
@@ -167,7 +140,9 @@ const ProductDetails: React.FC = () => {
     setSelectedCapacity(cap);
   };
 
-  // determina link de categoria para breadcrumb
+  //----------------------------------------------------------
+  // 6. LÓGICA DE CARRINHO
+  //----------------------------------------------------------
   const categoryLink: string = useMemo(() => {
     if (!product?.category) {
       return '/';
@@ -194,7 +169,6 @@ const ProductDetails: React.FC = () => {
     return '/';
   }, [product]);
 
-  // verifica se já está no carrinho
   const alreadyInCart = product ? isInCart(product.id) : false;
 
   const handleAddToCart = () => {
@@ -214,10 +188,10 @@ const ProductDetails: React.FC = () => {
 
     addItem(productToAdd);
   };
+  //----------------------------------------------------------
+  // 7. RENDERIZAÇÃO PRINCIPAL
+  //----------------------------------------------------------
 
-  //----------------------------------------------------------
-  // 6. RENDERIZAÇÃO, PRODUTO NÃO ENCONTRADO
-  //----------------------------------------------------------
   if (!productFound) {
     return (
       <main className={styles.container}>
@@ -232,7 +206,6 @@ const ProductDetails: React.FC = () => {
     );
   }
 
-  // loader
   if (isLoading) {
     return <Loader message="Carregando detalhes do produto..." />;
   }
@@ -240,9 +213,6 @@ const ProductDetails: React.FC = () => {
   const safeProduct = product!;
   const specsToShow = ['screen', 'ram', 'capacity', 'battery', 'camera'];
 
-  //----------------------------------------------------------
-  // 7. RENDERIZAÇÃO PRINCIPAL
-  //----------------------------------------------------------
   return (
     <main className={styles.container} data-testid="product-details">
       {/* Breadcrumbs */}
@@ -261,7 +231,7 @@ const ProductDetails: React.FC = () => {
         </h1>
       </div>
 
-      {/* Conteúdo principal: mídia + info */}
+      {/* Conteúdo principal */}
       <section className={styles.content}>
         {/* Coluna de mídia */}
         <div className={styles.media}>
@@ -288,9 +258,7 @@ const ProductDetails: React.FC = () => {
                 <button
                   key={idx}
                   type="button"
-                  className={`${styles.thumbButton} ${
-                    selectedImage === img ? styles.thumbActive : ''
-                  }`}
+                  className={`${styles.thumbButton} ${selectedImage === img ? styles.thumbActive : ''}`}
                   onClick={() => setSelectedImage(img)}
                   aria-label={`Selecionar imagem ${idx + 1}`}
                   data-testid={`product-thumb-${idx}`}
@@ -312,7 +280,7 @@ const ProductDetails: React.FC = () => {
             {safeProduct.price}
           </p>
 
-          {/* Cores disponíveis */}
+          {/* Cores */}
           {safeProduct.colorsAvailable &&
             safeProduct.colorsAvailable.length > 0 && (
               <div className={styles.optionGroup} data-testid="product-colors">
@@ -443,24 +411,19 @@ const ProductDetails: React.FC = () => {
           <h3 className={styles.sectionTitle}>Você também pode gostar</h3>
           <div className={styles.relatedGrid}>
             {suggested.map(s => (
-              <Link
+              <BrandNewModels
                 key={s.id}
-                to={`/product/${s.id}`}
-                className={styles.relatedLink}
-              >
-                <BrandNewModels
-                  id={s.id}
-                  title={s.title}
-                  imageSrc={s.imageSrc}
-                  imageAlt={s.title}
-                  price={s.price}
-                  specs={s.specs}
-                  onButtonClick={() => {}}
-                  onFavouriteClick={() => {}}
-                  isFavourite={false}
-                  data-testid={`suggested-${s.id}`}
-                />
-              </Link>
+                id={s.id}
+                title={s.title}
+                imageSrc={s.imageSrc}
+                imageAlt={s.title}
+                price={s.price}
+                specs={s.specs}
+                onButtonClick={() => addItem(s)} // conecta ao carrinho
+                onFavouriteClick={() => toggleFavorite(s)} // conecta aos favoritos
+                isFavourite={isFavorite(s.id)}
+                data-testid={`suggested-${s.id}`}
+              />
             ))}
           </div>
         </section>

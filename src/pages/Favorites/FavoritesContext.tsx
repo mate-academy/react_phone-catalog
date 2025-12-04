@@ -1,61 +1,52 @@
-//---------------------------------------
-// 1. IMPORTS
-//---------------------------------------
+// src/pages/Favorites/FavoritesContext.tsx
 import React, {
   createContext,
   useContext,
-  useEffect,
   useMemo,
   useCallback,
   useState,
   PropsWithChildren,
+  useEffect,
 } from 'react';
+import { Product } from '../../types/Product';
 
-//---------------------------------------
-// 2. INTERFACE
-//---------------------------------------
-export interface Product {
-  id: string;
-  title: string;
-  imageSrc?: string;
-  price?: string;
-  specs?: Record<string, string>;
-}
-
-//---------------------------------------
-// 3. CONTEXTO E PROVIDER
-//---------------------------------------
-interface FavoritesContextValue {
+export interface FavoritesContextValue {
   favorites: Product[];
+  toggleFavorite: (product: Product) => void;
   isFavorite: (id: string) => boolean;
   addFavorite: (product: Product) => void;
   removeFavorite: (id: string) => void;
-  toggleFavorite: (product: Product) => void;
 }
+
+const STORAGE_KEY = 'favorites';
 
 const FavoritesContext = createContext<FavoritesContextValue | undefined>(
   undefined,
 );
 
-const FavoritesProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [favorites, setFavorites] = useState<Product[]>([]);
+const safeLoad = (): Product[] => {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
 
-  // Carrega favoritos do localStorage ao iniciar
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+};
+
+export const FavoritesProvider: React.FC<PropsWithChildren> = ({
+  children,
+}) => {
+  // ✅ Hidrata sincronamente a partir do localStorage (evita sobrescrever com [])
+  const [favorites, setFavorites] = useState<Product[]>(safeLoad);
+
+  // ✅ Salva apenas após mudanças reais (não roda antes da hidratação)
   useEffect(() => {
-    const stored = localStorage.getItem('favorites');
-
-    if (stored) {
-      try {
-        setFavorites(JSON.parse(stored));
-      } catch {
-        setFavorites([]);
-      }
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+    } catch {
+      // falha silenciosa para ambientes sem storage
     }
-  }, []);
-
-  // Salva favoritos no localStorage a cada alteração
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
   const isFavorite = useCallback(
@@ -64,7 +55,13 @@ const FavoritesProvider: React.FC<PropsWithChildren> = ({ children }) => {
   );
 
   const addFavorite = useCallback((product: Product) => {
-    setFavorites(prev => [...prev, product]);
+    setFavorites(prev => {
+      if (prev.some(p => p.id === product.id)) {
+        return prev;
+      } // evita duplicados
+
+      return [...prev, product];
+    });
   }, []);
 
   const removeFavorite = useCallback((id: string) => {
@@ -97,22 +94,14 @@ const FavoritesProvider: React.FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-//---------------------------------------
-// 4. HOOK DE ACESSO AO CONTEXTO
-//---------------------------------------
 export const useFavorites = (): FavoritesContextValue => {
-  const context = useContext(FavoritesContext);
+  const ctx = useContext(FavoritesContext);
 
-  if (!context) {
+  if (!ctx) {
     throw new Error(
       'useFavorites deve ser usado dentro de um FavoritesProvider',
     );
   }
 
-  return context;
+  return ctx;
 };
-
-//---------------------------------------
-// 5. EXPORTAÇÃO
-//---------------------------------------
-export { FavoritesProvider };

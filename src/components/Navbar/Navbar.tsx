@@ -228,7 +228,7 @@ export default function Navbar({ links }: Props): JSX.Element {
           ====================== */}
       <div className={styles.containerIcon}>
         <Link
-          to="/favoritos"
+          to="/favorites"
           className={styles.iconButton}
           aria-label="Favoritos"
           data-testid="nav-favorites-link"

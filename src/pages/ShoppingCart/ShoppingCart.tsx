@@ -34,57 +34,69 @@ const ShoppingCart: React.FC = () => {
       <h1>Seu carrinho</h1>
 
       <ul className={styles.list}>
-        {items.map(item => (
-          <li
-            key={item.id}
-            className={styles.item}
-            data-testid={`cart-item-${item.id}`}
-          >
-            <img
-              src={item.product.imageSrc ?? '/assets/img/placeholder.png'}
-              alt={item.product.title}
-              className={styles.thumb}
-            />
+        {items.map(item => {
+          // calcula subtotal por item
+          const numericPrice = parseFloat(
+            (item.product.price ?? '0').replace(/[^\d.-]/g, ''),
+          );
+          const subtotal = numericPrice * item.quantity;
 
-            <div className={styles.info}>
-              <div className={styles.title}>{item.product.title}</div>
-              <div className={styles.price}>{item.product.price}</div>
-            </div>
-
-            <div className={styles.controls}>
-              <button
-                aria-label={`Diminuir quantidade ${item.product.title}`}
-                onClick={() => updateQty(item.id, item.quantity - 1)}
-                className={styles.qtyBtn}
-                data-testid={`decrease-${item.id}`}
-              >
-                -
-              </button>
-
-              <span className={styles.qty} data-testid={`qty-${item.id}`}>
-                {item.quantity}
-              </span>
-
-              <button
-                aria-label={`Aumentar quantidade ${item.product.title}`}
-                onClick={() => updateQty(item.id, item.quantity + 1)}
-                className={styles.qtyBtn}
-                data-testid={`increase-${item.id}`}
-              >
-                +
-              </button>
-            </div>
-
-            <button
-              className={styles.remove}
-              onClick={() => removeItem(item.id)}
-              aria-label={`Remover ${item.product.title}`}
-              data-testid={`remove-${item.id}`}
+          return (
+            <li
+              key={item.id}
+              className={styles.item}
+              data-testid={`cart-item-${item.id}`}
             >
-              ×
-            </button>
-          </li>
-        ))}
+              <img
+                src={item.product.imageSrc ?? '/assets/img/placeholder.png'}
+                alt={item.product.title}
+                className={styles.thumb}
+              />
+
+              <div className={styles.info}>
+                <div className={styles.title}>{item.product.title}</div>
+                <div className={styles.price}>{item.product.price}</div>
+                <div className={styles.subtotal}>
+                  Subtotal: R$ {subtotal.toFixed(2).replace('.', ',')}
+                </div>
+              </div>
+
+              <div className={styles.controls}>
+                <button
+                  aria-label={`Diminuir quantidade ${item.product.title}`}
+                  onClick={() => updateQty(item.id, item.quantity - 1)}
+                  className={styles.qtyBtn}
+                  data-testid={`decrease-${item.id}`}
+                  disabled={item.quantity === 1} // ✅ desabilita se qtd = 1
+                >
+                  -
+                </button>
+
+                <span className={styles.qty} data-testid={`qty-${item.id}`}>
+                  {item.quantity}
+                </span>
+
+                <button
+                  aria-label={`Aumentar quantidade ${item.product.title}`}
+                  onClick={() => updateQty(item.id, item.quantity + 1)}
+                  className={styles.qtyBtn}
+                  data-testid={`increase-${item.id}`}
+                >
+                  +
+                </button>
+              </div>
+
+              <button
+                className={styles.remove}
+                onClick={() => removeItem(item.id)}
+                aria-label={`Remover ${item.product.title}`}
+                data-testid={`remove-${item.id}`}
+              >
+                ×
+              </button>
+            </li>
+          );
+        })}
       </ul>
 
       <div className={styles.summary}>

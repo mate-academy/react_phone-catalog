@@ -1,6 +1,3 @@
-//------------------------------
-// IMPORTS
-//------------------------------
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Favorites.module.css';
@@ -10,51 +7,30 @@ import Pagination from '../../components/Pagination/Pagination';
 import { Select } from '../../components/Select';
 import { useFavorites } from './FavoritesContext';
 
-//------------------------------
-// 2. INTERFACE
-//------------------------------
 export interface FavoritesProps {
-  // título da página (ex.: "Favoritos")
   title?: string;
-
-  // quantidade de itens por página (para paginação)
   perPage?: number;
-
-  // data-testid prefixo para testes
   dataTestIdPrefix?: string;
 }
 
-//------------------------------
-// 3. ESTADOS
-//------------------------------
 const Favorites: React.FC<FavoritesProps> = ({
   title = 'Favoritos',
   perPage = 5,
   dataTestIdPrefix = 'favorites',
 }) => {
-  // paginação
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(perPage);
-
-  // ordenação (opções: 'recent', 'alphabetical', 'cheap')
   const [order, setOrder] = useState('recent');
-
-  // carregamento inicial
   const [isLoading, setIsLoading] = useState(true);
 
-  // favoritos vêm do contexto
-  const { favorites } = useFavorites();
+  const { favorites, toggleFavorite } = useFavorites();
 
-  // simula carregamento inicial
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000); // 1 segundo só para feedback
+    const timer = setTimeout(() => setIsLoading(false), 1000);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // aplica ordenação
   const orderedItems = useMemo(() => {
     const items = [...favorites];
 
@@ -71,17 +47,14 @@ const Favorites: React.FC<FavoritesProps> = ({
     return items;
   }, [favorites, order]);
 
-  // lógica de paginação
   const start = (currentPage - 1) * itemsPerPage;
   const end = start + itemsPerPage;
   const currentItems = orderedItems.slice(start, end);
 
-  // loader
   if (isLoading) {
     return <Loader message="Carregando favoritos..." />;
   }
 
-  // caso não haja favoritos
   if (favorites.length === 0) {
     return (
       <main
@@ -99,15 +72,10 @@ const Favorites: React.FC<FavoritesProps> = ({
     );
   }
 
-  //------------------------------
-  // 4. RENDERIZAÇÃO
-  //------------------------------
   return (
     <main className={styles.container} data-testid={`${dataTestIdPrefix}-page`}>
       <div className={styles.headerRow}>
         <h1 className={styles.title}>{title}</h1>
-
-        {/* Select para ordenação */}
         <div className={styles.actionsRow}>
           <Select value={order} onChange={setOrder} />
         </div>
@@ -115,26 +83,33 @@ const Favorites: React.FC<FavoritesProps> = ({
 
       <div className={styles.grid}>
         {currentItems.map(p => (
-          <Link
-            to={`/product/${p.id}`}
-            key={p.id}
-            className={styles.cardLink}
-            data-testid={`${dataTestIdPrefix}-link-${p.id}`}
-          >
-            <BrandNewModels
-              id={p.id}
-              title={p.title}
-              imageSrc={p.imageSrc}
-              imageAlt={p.title}
-              price={p.price}
-              specs={p.specs}
-              data-testid={`${dataTestIdPrefix}-card-${p.id}`}
-            />
-          </Link>
+          <div key={p.id} className={styles.cardWrapper}>
+            <Link
+              to={`/product/${p.id}`}
+              className={styles.cardLink}
+              data-testid={`${dataTestIdPrefix}-link-${p.id}`}
+            >
+              <BrandNewModels
+                id={p.id}
+                title={p.title}
+                imageSrc={p.imageSrc}
+                imageAlt={p.title}
+                price={p.price}
+                specs={p.specs}
+                data-testid={`${dataTestIdPrefix}-card-${p.id}`}
+              />
+            </Link>
+            <button
+              className={styles.removeButton}
+              onClick={() => toggleFavorite(p)}
+              data-testid={`${dataTestIdPrefix}-remove-${p.id}`}
+            >
+              Remover
+            </button>
+          </div>
         ))}
       </div>
 
-      {/* paginação */}
       <Pagination
         total={favorites.length}
         perPage={itemsPerPage}
@@ -149,8 +124,5 @@ const Favorites: React.FC<FavoritesProps> = ({
   );
 };
 
-//---------------------------------------
-// 5. EXPORTS
-//---------------------------------------
 export default Favorites;
 export { Favorites };

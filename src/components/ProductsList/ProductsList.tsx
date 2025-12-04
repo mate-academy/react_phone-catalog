@@ -1,23 +1,12 @@
 import React, { useState } from 'react';
 import styles from './ProductsList.module.css';
-
+import { Product } from '../../types/Product';
 import Pagination from '../Pagination/Pagination';
 import { BrandNewModels } from '../BrandNewModels';
 
 interface ProductsListProps {
   title: string;
-  products: {
-    id: string;
-    sku?: string;
-    title: string;
-    price: string;
-    imageSrc: string;
-    specs: {
-      screen?: string;
-      capacity?: string;
-      ram?: string;
-    };
-  }[];
+  products: Product[];
   dataTestIdPrefix: string;
 }
 
