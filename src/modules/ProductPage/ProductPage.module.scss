@@ -3,6 +3,88 @@
     display: flex;
     gap: $spacing-lg;
   }
+  &__details {
+    display: flex;
+    flex-direction: row;
+    column-gap: $spacing-lg;
+  }
+  &__description {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+  }
+  &__descriptionTitle {
+    font-size: $h3-size;
+    line-height: $h3-line;
+    letter-spacing: $h3-track;
+    font-weight: 800;
+    color: $color-primary;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+  }
+  &__descriptionText {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+  }
+  &__descriptionBlock {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+  &__descriptionBlockTitle {
+    font-size: $h4-size;
+    line-height: $h4-line;
+    letter-spacing: $h4-track;
+    font-weight: 700;
+    color: $color-primary;
+  }
+  &__descriptionBlockParagraph {
+    font-size: $body-size;
+    line-height: $body-line;
+    letter-spacing: $body-track;
+    font-weight: 500;
+    color: $color-secondary;
+  }
+  &__specs {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+  }
+  &__specsTitle {
+    font-size: $h3-size;
+    line-height: $h3-line;
+    letter-spacing: $h3-track;
+    font-weight: 800;
+    color: $color-primary;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+  }
+  &__specsList {
+    display: flex;
+    flex-direction: column;
+    row-gap: $spacing-sm;
+  }
+  &__specsItem {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__specsItemLabel {
+    font-size: $body-size;
+    line-height: $body-line;
+    letter-spacing: $body-track;
+    font-weight: 500;
+    color: $color-secondary;
+  }
+  &__specsItemValue {
+    font-size: $body-size;
+    line-height: $body-line;
+    letter-spacing: $body-track;
+    font-weight: 500;
+    color: $color-primary;
+  }
 }
 
 .backBtn {
@@ -80,19 +162,20 @@
 /* ============ PRODUCT CONFIGURATOR ============ */
 
 .productConfigurator {
-  width: 50%;
   display: flex;
   flex-direction: column;
+  width: 320px;
+  row-gap: 32px;
 
   &__controls {
     display: flex;
     flex-direction: column;
-    max-width: 320px;
-    flex: 1;
+
     row-gap: 24px;
   }
 
-  &__id { }
+  &__id {
+  }
 
   /* COLORS */
   &__colorLabel {
@@ -185,6 +268,79 @@
     color: $color-bg;
   }
 
+  /* PRICE */
+  &__buySection {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  &__priceContainer {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
+  &__priceDiscount {
+    font-size: $h2-size;
+    letter-spacing: $h2-track;
+    line-height: $h2-line;
+    font-weight: 800;
+    color: $color-primary;
+  }
+
+  &__priceRegular {
+    // Базові стилі тексту (сірий)
+    font-size: $h3-size;
+    line-height: $h3-line;
+    letter-spacing: $h3-track;
+    font-weight: 500;
+    color: $color-secondary; // Сірий колір
+
+    // Важливі налаштування для позиціювання
+    position: relative;
+    display: inline-block;
+    text-decoration: none; // Прибираємо стандартне закреслення
+
+    // Налаштування товщини лінії (змініть за бажанням)
+    $line-height: 2px;
+    $line-color: $color-secondary; // Колір лінії (зазвичай такий же, як у тексту)
+    $center-pos: 47%;
+    // 1. Малюємо ЛІНІЮ (Середній шар)
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: $line-height;
+      background-color: $color-secondary; // Колір лінії
+      z-index: 1;
+
+      // Позиціонування
+      top: $center-pos;
+      transform: translateY(
+        -50%
+      ); // Центруємо саму лінію відносно точки $center-pos
+    }
+
+    &::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+      z-index: 2;
+
+      // Складна формула, щоб "віконце" маски рухалося разом із лінією
+      // inset(top right bottom left)
+      clip-path: inset(
+        calc(#{$center-pos} - #{$line-height} / 2) 0
+          calc(100% - (#{$center-pos} + #{$line-height} / 2)) 0
+      );
+    }
+  }
+
   /* BOTTOM BUTTONS */
   &__buttonContainer {
     display: flex;
@@ -225,5 +381,25 @@
     &:hover {
       border: 1px solid $color-primary;
     }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    row-gap: $spacing-sm;
+  }
+  &__descriptionItem {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__descriptionLabel {
+    font-size: $small-size;
+    font-weight: 600;
+    color: $color-secondary;
+  }
+  &__descriptionValue {
+    font-size: $small-size;
+    font-weight: 600;
+    color: $color-primary;
   }
 }

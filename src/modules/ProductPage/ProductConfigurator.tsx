@@ -1,91 +1,87 @@
-import { ProductDetails } from '@/types/ProductDetails';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './ProductPage.module.scss';
-import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import {
-  addToCart,
-  getCart,
-  getFavorites,
-  removeFromCart,
-  toggleFavorite,
-} from '../shared/components/utils/StorageHelper/storageHelper';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import { ProductDetails } from '@/types/ProductDetails';
 import { Product } from '@/types/Product';
+import { useCart } from '@/modules/CartFavContext/CartContext';
 
 type ProductConfiguratorProps = {
   product?: ProductDetails;
-  setSelectedColor: React.Dispatch<React.SetStateAction<string>>;
   selectedColor: string;
-  setSelectedCapacity: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedColor: React.Dispatch<React.SetStateAction<string>>;
   selectedCapacity: string;
+  setSelectedCapacity: React.Dispatch<React.SetStateAction<string>>;
   foundProductFromProducts: Product | undefined;
 };
 
 const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
   product,
-  setSelectedColor,
   selectedColor,
-  setSelectedCapacity,
+  setSelectedColor,
   selectedCapacity,
+  setSelectedCapacity,
   foundProductFromProducts,
 }) => {
-  const { category, productSlug } = useParams();
   const navigate = useNavigate();
+  const { category, productSlug } = useParams();
 
+  const {
+    isFavorite,
+    isInCart,
+    addToFavorites,
+    removeFromFavorites,
+    addToCart,
+    removeFromCart,
+  } = useCart();
+
+  if (!product) return null;
+
+  // --- ROUTE SLUG UPDATER (color / capacity) ---
   const updateSlug = (type: 'color' | 'capacity', value: string) => {
-    if (!product) return;
-    if (selectedColor === value && type === 'color') return;
-    if (selectedCapacity === value && type === 'capacity') return;
+    if (!productSlug || !category) return;
 
-    const oldPart = product[type]; // product.color або product.capacity
-    const newSlug = productSlug?.replace(
-      oldPart.toLowerCase(),
-      value.toLowerCase(),
-    );
+    // do nothing if user selects same option
+    if (type === 'color' && value === selectedColor) return;
+    if (type === 'capacity' && value === selectedCapacity) return;
 
-    if (type === 'color') {
-      setSelectedColor(value);
-    }
+    const oldPart = product[type].toLowerCase();
+    const newSlug = productSlug.replace(oldPart, value.toLowerCase());
 
-    if (type === 'capacity') {
-      setSelectedCapacity(value);
-    }
+    if (type === 'color') setSelectedColor(value);
+    if (type === 'capacity') setSelectedCapacity(value);
 
     navigate(`/${category}/${newSlug}`);
   };
 
-  const [isFav, setIsFav] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
+  // --- FAV + CART STATES FROM CONTEXT ---
+  const fav = isFavorite(foundProductFromProducts?.itemId || '');
+  const inCart = isInCart(foundProductFromProducts?.id || 0);
 
-  useEffect(() => {
-    const favs = getFavorites();
-    const cartItems = getCart();
-
-    setIsFav(favs.includes(foundProductFromProducts?.id));
-    setIsInCart(
-      cartItems.some(
-        (cartItem: Product) => cartItem.id === foundProductFromProducts?.id,
-      ),
-    );
-  }, []);
-  console.log(isInCart);
-
-  const handleFav = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleCartClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toggleFavorite(foundProductFromProducts?.id);
-    setIsFav(!isFav); // Оновлюємо кнопку візуально
+
+    if (!foundProductFromProducts) return;
+
+    if (inCart) {
+      removeFromCart(foundProductFromProducts?.id || 0);
+    } else {
+      addToCart(foundProductFromProducts);
+    }
   };
 
-  const handleCartClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleFav = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (isInCart) {
-      removeFromCart(foundProductFromProducts?.id); // Видаляємо
-      setIsInCart(false); // Миттєво оновлюємо вигляд кнопки
+
+    if (!foundProductFromProducts) return;
+
+    if (fav) {
+      removeFromFavorites(foundProductFromProducts?.itemId || '');
     } else {
-      addToCart(foundProductFromProducts); // Додаємо
-      setIsInCart(true); // Миттєво оновлюємо вигляд кнопки
+      addToFavorites(foundProductFromProducts);
     }
   };
 
@@ -99,7 +95,7 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
           </span>
 
           <div className={styles.productConfigurator__colorOptions}>
-            {product?.colorsAvailable.map(color => (
+            {product.colorsAvailable.map(color => (
               <div
                 key={color}
                 className={classNames(styles.productConfigurator__colorLayout, {
@@ -124,7 +120,7 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
           </span>
 
           <div className={styles.productConfigurator__capacityOptions}>
-            {product?.capacityAvailable.map(capacity => (
+            {product.capacityAvailable.map(capacity => (
               <button
                 key={capacity}
                 className={classNames(
@@ -141,31 +137,79 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
             ))}
           </div>
         </div>
-        
-           {/* BUTTONS */}
+      </div>
+      <div className={styles.productConfigurator__buySection}>
+        {/* PRICE CONTAINER */}
+        <div className={styles.productConfigurator__priceContainer}>
+          <span className={styles.productConfigurator__priceDiscount}>
+            ${product.priceDiscount}
+          </span>
+          <span
+            className={styles.productConfigurator__priceRegular}
+            data-text={`$${product.priceRegular}`} // <--- Додаємо цей атрибут
+          >
+            ${product.priceRegular}
+          </span>
+        </div>
+
+        {/* ACTION BUTTONS */}
         <div className={styles.productConfigurator__buttonContainer}>
           <button
-            onClick={handleCartClick}
             className={classNames(styles.productConfigurator__cartButton, {
-              [styles.productConfigurator__cartButton_added]: isInCart,
+              [styles.productConfigurator__cartButton_added]: inCart,
             })}
+            onClick={handleCartClick}
           >
-            {isInCart ? 'Added to Cart' : 'Add to Cart'}
+            {inCart ? 'Added to cart' : 'Add to cart'}
           </button>
-
           <button
-            onClick={handleFav}
             className={styles.productConfigurator__favoriteButton}
+            onClick={handleFav}
           >
             <img
-              src={isFav ? 'img/icons/red-heart.svg' : 'img/icons/heart.svg'}
-              alt="Add to Favorites"
+              src={fav ? 'img/icons/red-heart.svg' : 'img/icons/heart.svg'}
+              alt="Favorite"
             />
           </button>
         </div>
       </div>
+      <div className={styles.productConfigurator__description}>
+        <div className={styles.productConfigurator__descriptionItem}>
+          <span className={styles.productConfigurator__descriptionLabel}>
+            Screen
+          </span>
+          <span className={styles.productConfigurator__descriptionValue}>
+            {product.screen}
+          </span>
+        </div>
 
-      {/* PRICE + ACTIONS — must use only existing classes */}
+        <div className={styles.productConfigurator__descriptionItem}>
+          <span className={styles.productConfigurator__descriptionLabel}>
+            Resolution
+          </span>
+          <span className={styles.productConfigurator__descriptionValue}>
+            {product.resolution}
+          </span>
+        </div>
+
+        <div className={styles.productConfigurator__descriptionItem}>
+          <span className={styles.productConfigurator__descriptionLabel}>
+            Processor
+          </span>
+          <span className={styles.productConfigurator__descriptionValue}>
+            {product.processor}
+          </span>
+        </div>
+
+        <div className={styles.productConfigurator__descriptionItem}>
+          <span className={styles.productConfigurator__descriptionLabel}>
+            RAM
+          </span>
+          <span className={styles.productConfigurator__descriptionValue}>
+            {product.ram}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

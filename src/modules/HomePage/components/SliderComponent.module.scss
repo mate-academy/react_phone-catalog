@@ -114,14 +114,55 @@
       @include type(12px, normal, 0, 700, $font-mont-semibold);
     }
     &__price {
-      font-weight: 600;
-      color: $color-secondary;
-      text-decoration-line: line-through;
-      line-height: normal;
-      font-size: $h3-size;
+      @include type($h3-size, $h3-line, $h3-track, $h3-weight, $font-mont-bold);
     }
     &__fullPrice {
-      @include type($h3-size, $h3-line, $h3-track, $h3-weight, $font-mont-bold);
+      font-weight: 600;
+      color: $color-secondary;
+      line-height: normal;
+      font-size: $h3-size;
+      position: relative;
+      display: inline-block;
+      text-decoration: none; // Прибираємо стандартне закреслення
+
+      // Налаштування товщини лінії (змініть за бажанням)
+      $line-height: 2px;
+      $line-color: $color-secondary; // Колір лінії (зазвичай такий же, як у тексту)
+      $center-pos: 47%;
+      // 1. Малюємо ЛІНІЮ (Середній шар)
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: $line-height;
+        background-color: $color-secondary; // Колір лінії
+        z-index: 1;
+
+        // Позиціонування
+        top: $center-pos;
+        transform: translateY(
+          -50%
+        ); // Центруємо саму лінію відносно точки $center-pos
+      }
+
+      &::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        z-index: 2;
+
+        // Складна формула, щоб "віконце" маски рухалося разом із лінією
+        // inset(top right bottom left)
+        clip-path: inset(
+          calc(#{$center-pos} - #{$line-height} / 2) 0
+            calc(100% - (#{$center-pos} + #{$line-height} / 2)) 0
+        );
+      }
     }
 
     &__buttonContainer {

@@ -9,6 +9,7 @@ import {
   removeFromCart,
 } from '@/modules/shared/components/utils/StorageHelper/storageHelper';
 import { Link } from 'react-router-dom';
+import { useCart } from '@/modules/CartFavContext/CartContext';
 
 type SliderItemProps = {
   item: Product;
@@ -16,40 +17,52 @@ type SliderItemProps = {
 };
 
 const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
-  const [isFav, setIsFav] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
+  const {
+    isFavorite,
+    isInCart,
+    addToFavorites,
+    removeFromFavorites,
+    addToCart,
+    removeFromCart,
+  } = useCart();
 
-  useEffect(() => {
-    const favs = getFavorites();
-    const cartItems = getCart();
+  if (!item) return null;
 
-    setIsFav(favs.includes(item.id));
-    setIsInCart(cartItems.some((cartItem: Product) => cartItem.id === item.id));
-  }, [item.id]);
+  const fav = isFavorite(item.itemId || '');
+  const inCart = isInCart(item.id || 0);
 
-  const handleFav = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleCartClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toggleFavorite(item.id);
-    setIsFav(!isFav); // Оновлюємо кнопку візуально
+
+    if (!item) return;
+
+    if (inCart) {
+      removeFromCart(item.id || 0);
+    } else {
+      addToCart(item);
+    }
   };
 
-  const handleCartClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleFav = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (isInCart) {
-      removeFromCart(item.id); // Видаляємо
-      setIsInCart(false); // Миттєво оновлюємо вигляд кнопки
+
+    if (!item) return;
+
+    if (fav) {
+      removeFromFavorites(item.itemId || '');
     } else {
-      addToCart(item); // Додаємо
-      setIsInCart(true); // Миттєво оновлюємо вигляд кнопки
-      // alert('Додано в корзину!'); // Алерт краще замінити на тостер або прибрати, якщо змінюється кнопка
+      addToFavorites(item);
     }
   };
 
   return (
     <div className={styles.SliderComponent__item}>
-      <Link to={`/${item.category}/${item.itemId}`} className={styles.SliderComponent__item__imageContainer}>
+      <Link
+        to={`/${item.category}/${item.itemId}`}
+        className={styles.SliderComponent__item__imageContainer}
+      >
         <img src={item.image} alt={item.name} />
       </Link>
       <div className={styles.SliderComponent__item__infoContainer}>
@@ -60,13 +73,16 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
           {item.name}
         </Link>
         <div className={styles.SliderComponent__item__priceContainer}>
-          <div className={styles.SliderComponent__item__fullPrice}>
+          <div className={styles.SliderComponent__item__price}>
             ${item.price}
           </div>
           {showDiscount && (
-            <div className={styles.SliderComponent__item__price}>
+            <span
+              className={styles.SliderComponent__item__fullPrice}
+              data-text={`$${item.fullPrice}`}
+            >
               ${item.fullPrice}
-            </div>
+            </span>
           )}
         </div>
         <div className={styles.SliderComponent__item__divider}></div>
@@ -98,17 +114,17 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
           <button
             onClick={handleCartClick}
             className={`${styles.SliderComponent__item__cartButton} ${
-              isInCart ? styles.SliderComponent__item__cartButton__added : ''
+              inCart ? styles.SliderComponent__item__cartButton__added : ''
             }`}
           >
-            {isInCart ? 'Added to Cart' : 'Add to Cart'}
+            {inCart ? 'Added to Cart' : 'Add to Cart'}
           </button>
           <button
             onClick={handleFav}
             className={styles.SliderComponent__item__favoriteButton}
           >
             <img
-              src={isFav ? 'img/icons/red-heart.svg' : 'img/icons/heart.svg'}
+              src={fav ? 'img/icons/red-heart.svg' : 'img/icons/heart.svg'}
               alt="Add to Favorites"
             />
           </button>

@@ -7,6 +7,8 @@ import ProductGallery from './ProductGallery';
 import { getProductDetails, getProducts } from '@/api/api';
 import { ProductDetails } from '@/types/ProductDetails';
 import ProductConfigurator from './ProductConfigurator';
+import { specsConfig } from '../shared/components/utils/constants/constants';
+import SliderComponent from '../HomePage/components/SliderComponent';
 
 const ProductPage: React.FC = () => {
   const { category, productSlug } = useParams();
@@ -36,9 +38,14 @@ const ProductPage: React.FC = () => {
         setLoading(false);
       });
   }, [productSlug]);
-
+  const shuffle = <T,>(array: T[]): T[] =>
+    [...array].sort(() => Math.random() - 0.5);
+  const getRandomProducts = (products: Product[]) => {
+    const randomCount = Math.floor(Math.random() * 10) + 3; // від 3 до 12
+    return shuffle(products).slice(0, randomCount);
+  };
   const foundProductFromProducts = products.find(p => p.itemId === productSlug);
-
+  if (!product) return null;
   return (
     <>
       <PageHeader
@@ -62,14 +69,14 @@ const ProductPage: React.FC = () => {
             </svg>
 
             {/* FIXED: BEM Element */}
-            <span >Back</span>
+            <span>Back</span>
           </button>
         }
       />
 
       {/* FIXED: productPage__hero */}
       <section className={styles.productPage__hero}>
-        {product && (
+        {
           <>
             <ProductGallery photos={product.images} />
 
@@ -82,8 +89,60 @@ const ProductPage: React.FC = () => {
               foundProductFromProducts={foundProductFromProducts}
             />
           </>
-        )}
+        }
       </section>
+      <section className={styles.productPage__details}>
+        <div className={styles.productPage__description}>
+          <h3 className={styles.productPage__descriptionTitle}>About</h3>
+
+          <div className={styles.productPage__descriptionText}>
+            {product.description.map((block, index) => (
+              <div key={index} className={styles.productPage__descriptionBlock}>
+                <h4 className={styles.productPage__descriptionBlockTitle}>
+                  {block.title}
+                </h4>
+
+                {block.text.map((paragraph, pIndex) => (
+                  <p
+                    key={pIndex}
+                    className={styles.productPage__descriptionBlockParagraph}
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.productPage__specs}>
+          <h3 className={styles.productPage__specsTitle}>Tech specs</h3>
+
+          <ul className={styles.productPage__specsList}>
+            {specsConfig.map(({ label, key, optional }) => {
+              const value = product[key];
+
+              if (optional && !value) return null;
+
+              return (
+                <li key={key} className={styles.productPage__specsItem}>
+                  <span className={styles.productPage__specsItemLabel}>
+                    {label}
+                  </span>
+                  <span className={styles.productPage__specsItemValue}>
+                    {Array.isArray(value) ? value.join(', ') : value}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+      <SliderComponent
+        products={getRandomProducts(products)}
+        title="You may also like"
+        showDiscount
+      />
     </>
   );
 };
