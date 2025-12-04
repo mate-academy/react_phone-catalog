@@ -48,7 +48,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <h1 className="homeTitle">Welcome to Nice Gadgets store!</h1>
+      <h1 className="homeTitle">Product Catalog</h1>
       <Slider images={images} />
       <ProductsSlider
         title="Brand new models"

@@ -101,6 +101,13 @@
   &__mainImg {
     height: 275px;
 
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(236, 231, 231, 0.2);
+      transform: translateY(-10px);
+    }
+
     @include min-screen($laptop){
       height: 100%;
     }
@@ -137,6 +144,13 @@
     height: 42px;
     border: 1px solid $afterElementColor;
     justify-content: center;
+
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(236, 231, 231, 0.2);
+      transform: translateY(-10px);
+    }
 
     @include min-screen($tablet) {
       justify-content: start;
@@ -236,6 +250,13 @@
 
     appearance: none;
 
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(236, 231, 231, 0.2);
+      transform: translateY(-10px);
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -291,6 +312,13 @@
     text-align: center;
     line-height: 32px;
     border: 1px solid $afterElementColor;
+
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(236, 231, 231, 0.2);
+      transform: translateY(-10px);
+    }
   }
 
   &__capacity--active {
@@ -344,7 +372,14 @@
     font-weight: 700;
     line-height: 21px;
     box-sizing: border-box;
-    border: 1px solid $buttonBgColor
+    border: 1px solid $buttonBgColor;
+
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(236, 231, 231, 0.2);
+      transform: translateY(-10px);
+    }
   }
 
   &__button-added{
@@ -358,6 +393,13 @@
     background-color: $cardFavoriteBG;
     border: 1px solid $cardFavoriteBG;
     box-sizing: border-box;
+
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(236, 231, 231, 0.2);
+      transform: translateY(-10px);
+    }
   }
 
   &__favorite-added{

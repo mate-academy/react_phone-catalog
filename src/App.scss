@@ -3,10 +3,16 @@
 
 
 .App {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;  
   padding: 0;
   margin: 0;  
   background-color: $mainColor;
-  box-sizing: border-box;  
+  box-sizing: border-box;
+  
+  &__content {
+    flex: 1 0 auto;
+  }
 }
 

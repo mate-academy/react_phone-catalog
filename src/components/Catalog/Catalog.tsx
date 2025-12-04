@@ -183,42 +183,44 @@ export function Catalog<T>({
           <ProductCard key={card.id} item={card} />
         ))}
       </div>
-      <div className="catalog__pagination">
-        <button
-          className="catalog__arrow"
-          disabled={safePage === 1}
-          onClick={() => handlePageChange(Math.max(1, safePage - 1))}
-        >
-          {'<'}
-        </button>
+      {sortedCards.length > 0 && (
+        <div className="catalog__pagination">
+          <button
+            className="catalog__arrow"
+            disabled={safePage === 1}
+            onClick={() => handlePageChange(Math.max(1, safePage - 1))}
+          >
+            {'<'}
+          </button>
 
-        {visiblePages.map(p =>
-          p === '...' ? (
-            <span key={Math.random()} className="catalog__pageDots">
-              ...
-            </span>
-          ) : (
-            <button
-              key={p}
-              className={
-                'catalog__pageBtn' +
-                (p === safePage ? ' catalog__pageBtn--active' : '')
-              }
-              onClick={() => handlePageChange(p)}
-            >
-              {p}
-            </button>
-          ),
-        )}
+          {visiblePages.map(p =>
+            p === '...' ? (
+              <span key={Math.random()} className="catalog__pageDots">
+                ...
+              </span>
+            ) : (
+              <button
+                key={p}
+                className={
+                  'catalog__pageBtn' +
+                  (p === safePage ? ' catalog__pageBtn--active' : '')
+                }
+                onClick={() => handlePageChange(p)}
+              >
+                {p}
+              </button>
+            ),
+          )}
 
-        <button
-          className="catalog__arrow"
-          disabled={safePage === totalPages}
-          onClick={() => handlePageChange(Math.min(totalPages, safePage + 1))}
-        >
-          {'>'}
-        </button>
-      </div>
+          <button
+            className="catalog__arrow"
+            disabled={safePage === totalPages}
+            onClick={() => handlePageChange(Math.min(totalPages, safePage + 1))}
+          >
+            {'>'}
+          </button>
+        </div>
+      )}
     </section>
   );
 }

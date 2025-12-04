@@ -5,10 +5,11 @@
   position: relative;
   flex-direction: column;  
   width: 100%;
+  height: 50px;
   background-color: $mainColor;
   transition: height 0.3s ease;
   z-index: 10;
-  margin-top: 65px;
+  margin-top: auto;
 
   &::before {
       content: '';
@@ -125,6 +126,12 @@
     padding-block: 10px;
     text-transform: uppercase;
 
+    transition: 0.2s;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+
     @include min-screen($tablet) {
       height: 100%;
       padding-block: 25px;      
@@ -169,6 +176,8 @@
     margin-top: 32px;
     margin-bottom: 41px;
 
+    
+
     @include min-screen($tablet) {
       justify-content: right;
       padding-right: 32px;
@@ -183,9 +192,16 @@
     display: flex;
     height: 32px;
     width: 32px;
-   justify-content: center;
-   align-items: center;
-   background-color: $footerButtonBGC;
+    justify-content: center;
+    align-items: center;
+    background-color: $footerButtonBGC;
+
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(236, 231, 231, 0.2);
+      transform: translateY(-10px);
+    }
   }
 
   &__backImg{

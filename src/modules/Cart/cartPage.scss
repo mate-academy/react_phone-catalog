@@ -162,13 +162,13 @@
     height: 150px;
 
     @include min-screen($tablet) {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
     }
 
     @include min-screen($laptop) {
-      width: 400px;
-      height: 400px;
+      width: 350px;
+      height: 350px;
     }
 
     
