@@ -7,7 +7,7 @@ export const Categories = () => {
   const { phones, tablets, accessories } = useContext(DataContext);
 
   return (
-    <div className={scss.categories}>
+    <section className={scss.categories}>
       <h2>Shop by category</h2>
       <Shop
         category={'phones'}
@@ -27,6 +27,6 @@ export const Categories = () => {
         amount={accessories.length}
         background={'rgba(213, 60, 81, 1)'}
       />
-    </div>
+    </section>
   );
 };

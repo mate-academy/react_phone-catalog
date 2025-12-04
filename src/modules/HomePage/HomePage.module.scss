@@ -1,7 +1,19 @@
+@use '../shared/styles/mixins' as *;
+
 .home {
   overflow-x: hidden;
+
+  margin: 0 1.6rem;
+
+  @include for-tablets {
+    margin: 0 2.4rem;
+  }
 }
 
 h1 {
-  padding: 2.4rem 1.6rem;
+  padding: 2.4rem 0;
+
+  @include for-tablets {
+    padding: 3.2rem 0;
+  }
 }

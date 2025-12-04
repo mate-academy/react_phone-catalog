@@ -1,13 +1,17 @@
 @use './../../../shared/styles/_constants' as constants;
+@use '../../styles/mixins' as *;
 
 .slider {
   margin: 5.6rem 0;
+
+  @include for-tablets {
+    margin: 6.4rem 0;
+  }
 
   &__header {
     display: flex;
     justify-content: space-between;
     gap: 0.8rem;
-    padding: 0 1.6rem;
 
     &_buttons {
       width: 8rem;
@@ -22,7 +26,7 @@
   }
 
   &__productCard {
-    margin: 2.4rem 1.6rem 0;
+    margin-top: 2.4rem;
 
     display: flex;
     gap: constants.$mobile-product-card-gap;
@@ -32,8 +36,18 @@
 
     transform: translateX(calc(var(--index) * (constants.$mobile-product-card-gap + constants.$mobile-product-card-width)));
 
+    @include for-tablets {
+      transform: translateX(calc(var(--index) * (constants.$mobile-product-card-gap + constants.$tablet-product-card-width)));
+    }
+
     &__container {
       width: constants.$mobile-product-card-width;
+
+      flex-shrink: 0;
+
+      @include for-tablets {
+      width: constants.$tablet-product-card-width;
+    }
     }
   }
 }

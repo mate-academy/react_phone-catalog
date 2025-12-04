@@ -14,7 +14,11 @@ export const Shop: React.FC<Props> = ({
   background,
 }) => {
   return (
-    <a className={scss.shopLink} href={`/${category}`}>
+    <a
+      className={scss.shopLink}
+      href={`/${category}`}
+      style={{ gridArea: category }}
+    >
       <div
         className={scss.shopLink__media}
         style={{ backgroundColor: background }}

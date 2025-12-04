@@ -1,3 +1,5 @@
+@use '../../../shared/styles/mixins' as *;
+
 .shopLink {
   text-decoration: none;
 
@@ -5,7 +7,9 @@
     aspect-ratio: 1/1;
     overflow: hidden;
 
-    margin-top: 2.4rem;
+    @include for-tablets {
+      width: 18.7rem;
+    }
   }
 
   &__image {

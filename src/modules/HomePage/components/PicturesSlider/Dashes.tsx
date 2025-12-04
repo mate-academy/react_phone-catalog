@@ -12,7 +12,7 @@ export const Dashes: React.FC<Props> = ({
   setActiveSlide,
 }) => {
   return (
-    <div role="group" aria-label="Slides" className={scss.dashes__container}>
+    <div role="group" aria-label="Slides" className={scss.dashes}>
       {Array.from({ length: count }).map((_, i) => {
         return (
           <button

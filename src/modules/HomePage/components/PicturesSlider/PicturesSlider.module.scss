@@ -8,10 +8,19 @@
     aspect-ratio: 1/1;
 
     @include for-tablets {
-      display: flex;
-      width: 59.2rem;
-      height: 22.1rem;
+      display: grid;
+      /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+      grid-template-columns: max-content 1fr max-content;
+      grid-template-rows: 18.9rem auto;
+      grid-template-areas:
+        "prev image next"
+        "dash dash dash";
+
       aspect-ratio: initial;
+      overflow: visible;
+
+      height: auto;
+      gap: 1.6rem;
     }
   }
 
@@ -20,6 +29,16 @@
 
     @include for-tablets {
       display: flex;
+
+      &:first-child {
+        grid-area: prev;
+        height: auto;
+      }
+
+      &:last-child {
+        grid-area: next;
+        height: auto;
+      }
     }
   }
 
