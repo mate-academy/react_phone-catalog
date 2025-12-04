@@ -1,0 +1,55 @@
+@use '@/styles/index' as *;
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 24px;
+  width: 90%;
+  max-width: 360px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+.title {
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+
+.text {
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancel {
+  padding: 8px 16px;
+  background: $primary;
+  color: $white;
+  cursor: pointer;
+  border: none;
+
+  @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.4));
+}
+
+.confirm {
+  padding: 8px 16px;
+  background: $red;
+  color: $white;
+  cursor: pointer;
+  border: none;
+
+  @include hover(box-shadow, 0 3px 13px rgba(23, 32, 49, 0.4));
+}

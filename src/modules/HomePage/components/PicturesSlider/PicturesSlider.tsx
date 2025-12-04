@@ -1,0 +1,111 @@
+// import { useState } from "react"
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import style from './PicturesSlider.module.scss';
+import { useRef } from 'react';
+
+export const PicturesSlider = () => {
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
+  const paginationRef = useRef<HTMLDivElement | null>(null);
+
+  // const [swiperReady, setSwiperReady] = useState(false);
+
+  // useEffect(() => {
+  //   setSwiperReady(true);
+  // }, []);
+
+  // const updateSwiperNavigation = (swiper: any) => {
+  //   const updated = { ...swiper };
+  //   updated.params = { ...swiper.params };
+  //   updated.params.navigation = {
+  //     ...swiper.params.navigation,
+  //     prevEl: prevRef.current,
+  //     nextEl: nextRef.current,
+  //   };
+
+  //   return updated;
+  // };
+
+  const pictures = [
+    { src: '/public/img/sliderImages/banner-7.png', alt: 'Banner 1' },
+    { src: '/public/img/sliderImages/banner-6.png', alt: 'Banner 2' },
+    { src: '/public/img/sliderImages/banner-8.png', alt: 'Banner 3' },
+  ];
+
+  return (
+    <section className={style.pictureSlider}>
+      <Swiper
+        modules={[Navigation, Autoplay, Pagination]}
+        spaceBetween={20}
+        loop
+        // autoplay={{
+        //   delay: 5000,
+        //   disableOnInteraction: false,
+        // }}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        pagination={{
+          clickable: true,
+          el: paginationRef.current,
+        }}
+        // onBeforeInit={swiper => {
+        //   const updated = updateSwiperNavigation(swiper)
+        //   //@ts-expect-error: swiper types do not allow assigning prevEl
+        //   swiper.params.navigation.prevEl = prevRef.current;
+        //   //@ts-expect-error: swiper types do not allow assigning nextEl
+        //   swiper.params.navigation.nextEl = nextRef.current;
+        // }}
+
+        onBeforeInit={swiper => {
+          const navigation = {
+            ...swiper.params.navigation,
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          };
+
+          Object.assign(swiper.params, {
+            ...swiper.params,
+            navigation,
+          });
+        }}
+      >
+        {pictures.map((picture, index) => (
+          <SwiperSlide key={index}>
+            <div className={style['pictureSlider-image']}>
+              <img src={picture.src} alt={picture.alt} />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <button
+        ref={prevRef}
+        className={`${style.navButton} ${style.prevButton}`}
+      >
+        <img
+          src="/public/img/icons/ChevronArrowLeft.svg"
+          alt="Prev slide"
+        ></img>
+      </button>
+
+      <button
+        ref={nextRef}
+        className={`${style.navButton} ${style.nextButton}`}
+      >
+        <img
+          src="/public/img/icons/ChevronArrowRight.svg"
+          alt="Next slide"
+        ></img>
+      </button>
+
+      <div ref={paginationRef} className={style.customPagination}></div>
+    </section>
+  );
+};
