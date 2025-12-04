@@ -4,18 +4,24 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Product } from '@/types/Product';
 import styles from './ProductPage.module.scss';
 import ProductGallery from './ProductGallery';
-import { getProductDetails } from '@/api/api';
+import { getProductDetails, getProducts } from '@/api/api';
 import { ProductDetails } from '@/types/ProductDetails';
 import ProductConfigurator from './ProductConfigurator';
 
 const ProductPage: React.FC = () => {
   const { category, productSlug } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
-  // const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const navigate = useNavigate();
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
+
+  useEffect(() => {
+    getProducts()
+      .then(data => setProducts(data))
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -24,11 +30,14 @@ const ProductPage: React.FC = () => {
         const foundProduct = products.find(p => p.id === productSlug);
         setProduct(foundProduct || null);
         setSelectedColor(foundProduct?.color || '');
+        setSelectedCapacity(foundProduct?.capacity || '');
       })
       .finally(() => {
         setLoading(false);
       });
   }, [productSlug]);
+
+  const foundProductFromProducts = products.find(p => p.itemId === productSlug);
 
   return (
     <>
@@ -51,20 +60,26 @@ const ProductPage: React.FC = () => {
                 fill="#313237"
               />
             </svg>
-            <span className={styles.backBtnText}>Back</span>
+
+            {/* FIXED: BEM Element */}
+            <span >Back</span>
           </button>
         }
       />
-      <section className={styles.productPage_hero}>
+
+      {/* FIXED: productPage__hero */}
+      <section className={styles.productPage__hero}>
         {product && (
           <>
-            <ProductGallery photos={product?.images} />
+            <ProductGallery photos={product.images} />
+
             <ProductConfigurator
               product={product}
               setSelectedColor={setSelectedColor}
               selectedColor={selectedColor}
               setSelectedCapacity={setSelectedCapacity}
               selectedCapacity={selectedCapacity}
+              foundProductFromProducts={foundProductFromProducts}
             />
           </>
         )}

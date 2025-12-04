@@ -11,28 +11,29 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ photos }) => {
 
   return (
     <div className={styles.productGallery}>
-      <div className={styles.productGallery_thumbnails}>
+      <div className={styles.productGallery__thumbnails}>
         {photos?.map((photo, index) => (
           <div
             key={photo}
             className={cn(
-              styles.productGallery_thumbnail,
+              styles.productGallery__thumbnail,
               index === currentPhotoIndex &&
-                styles.productGallery_thumbnailActive,
+                styles.productGallery__thumbnail_active
             )}
             onClick={() => setCurrentPhotoIndex(index)}
           >
             <img
-              className={styles.productGallery_thumbnailImage}
+              className={styles.productGallery__thumbnailImage}
               src={photo}
               alt={`Product Photo ${index + 1}`}
             />
           </div>
         ))}
       </div>
-      <div className={styles.productGallery_mainPhoto}>
+
+      <div className={styles.productGallery__mainPhoto}>
         <img
-          className={styles.productGallery_mainPhotoImage}
+          className={styles.productGallery__mainPhotoImage}
           src={photos?.[currentPhotoIndex]}
           alt={`Product Photo ${currentPhotoIndex + 1}`}
         />

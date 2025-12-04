@@ -1,5 +1,5 @@
 .productPage {
-  &_hero {
+  &__hero {
     display: flex;
     gap: $spacing-lg;
   }
@@ -15,26 +15,33 @@
   font-weight: 700;
   cursor: pointer;
   color: $color-secondary;
+
   &:hover {
     color: $color-primary;
   }
 }
+
+/* ============ PRODUCT GALLERY ============ */
+
 .productGallery {
   display: flex;
   gap: 16px;
   width: 50%;
-  &_thumbnails {
+
+  &__thumbnails {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
-  &_thumbnailImage {
+
+  &__thumbnailImage {
     max-width: 66px;
     max-height: 66px;
     display: block;
     padding: 7px;
   }
-  &_thumbnail {
+
+  &__thumbnail {
     width: 80px;
     height: 80px;
     display: flex;
@@ -43,14 +50,17 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
     &:hover {
       border-color: $color-primary;
     }
   }
-  &_thumbnailActive {
+
+  &__thumbnail_active {
     border-color: $color-primary;
   }
-  &_mainPhoto {
+
+  &__mainPhoto {
     width: 464px;
     height: 464px;
     object-fit: cover;
@@ -58,34 +68,53 @@
     align-items: center;
     justify-content: center;
   }
-  &_mainPhotoImage {
+
+  &__mainPhotoImage {
     max-width: 442px;
     max-height: 442px;
     display: block;
     padding: 11px;
   }
 }
+
+/* ============ PRODUCT CONFIGURATOR ============ */
+
 .productConfigurator {
   width: 50%;
   display: flex;
   flex-direction: column;
-  // gap: $spacing-lg;
-  &_colorLabel {
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    flex: 1;
+    row-gap: 24px;
+  }
+
+  &__id { }
+
+  /* COLORS */
+  &__colorLabel {
     font-size: $small-size;
     font-weight: 600;
     color: $color-secondary;
   }
-  &_colorContainer {
+
+  &__colorContainer {
     display: flex;
     flex-direction: column;
     row-gap: $spacing-sm;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $color-elements;
   }
-  &_colorOptions {
+
+  &__colorOptions {
     display: flex;
-    gap: 12px;
-    margin-bottom: $spacing-lg;
+    gap: $spacing-sm;
   }
-  &_colorLayout {
+
+  &__colorLayout {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,22 +124,106 @@
     border: 1px solid $color-elements;
     background-color: $color-bg;
     cursor: pointer;
+
     &:hover {
       border-color: $color-icons;
     }
   }
-  &_colorLayoutActive {
+
+  &__colorLayout_active {
     border-color: $color-primary;
-    // box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
   }
-  &_colorLayoutActive:hover {
-    border-color: $color-primary; // залишаємо як в активному стані
-    // cursor: default; // необовʼязково
+
+  &__colorLayout_active:hover {
+    border-color: $color-primary;
   }
-  &_colorOption {
+
+  &__colorOption {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    // border: 2px solid $color-bg;
+  }
+
+  /* CAPACITY */
+  &__capacityContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: $spacing-sm;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $color-elements;
+  }
+
+  &__capacityLabel {
+    font-size: $small-size;
+    font-weight: 600;
+    color: $color-secondary;
+  }
+
+  &__capacityOptions {
+    display: flex;
+    column-gap: $spacing-sm;
+  }
+
+  &__capacityOption {
+    padding: 7px 8px 4px;
+    font-size: $body-size;
+    font-weight: 500;
+    color: $color-primary;
+    background: $color-bg;
+    border: 1px solid $color-icons;
+    line-height: $body-line;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__capacityOption_active {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: $color-bg;
+  }
+
+  /* BOTTOM BUTTONS */
+  &__buttonContainer {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__cartButton {
+    background-color: $color-primary;
+    flex: 1;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    color: $color-text;
+
+    @include type($button-size, $button-line, $button-track, $button-weight);
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+
+  &__cartButton_added {
+    color: $color-green;
+    background-color: #fff;
+    border: 1px solid $color-elements;
+  }
+
+  &__favoriteButton {
+    background: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $color-elements;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
   }
 }
