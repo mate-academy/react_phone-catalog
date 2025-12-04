@@ -10,7 +10,8 @@ interface Sidebarprops {
 export const Sidebar = ({ isMenuOpen, setIsMenuOpen }: Sidebarprops) => {
   const closeSideBar = () => {
     setIsMenuOpen(false);
-    document.body.classList.remove('body--noscroll');
+    document.querySelector('.App')?.classList.remove('app--noscroll')
+    // document.body.classList.remove('body--noscroll');
   };
   return (
     <aside className={`${style.menu} ${isMenuOpen ? style.active : ''}`}>

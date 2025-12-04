@@ -47,7 +47,6 @@ export const PhonesTitle = () => {
           <h1 className={style.phonestitle}>{title.title}</h1>
           {title.models &&
             <p className={style.quantity}>{`${title.models} models`}</p>
-
           }
         </>
         : <h1 className={style.idtitle}>{productName}</h1>

@@ -1,4 +1,5 @@
 @import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
 
 
 .phonestitle,
@@ -9,8 +10,12 @@
   line-height: 117%;
   letter-spacing: -0.01em;
   color: $active-link-color;
-  margin-top: 40px;
+  margin-top: 24px;
   margin-bottom: 8px;
+
+  @include onTablet {
+    margin-top: 16px;
+  }
 }
 
 .quantity {

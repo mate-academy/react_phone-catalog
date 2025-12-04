@@ -1,14 +1,15 @@
 import style from './Catalog.module.scss';
 import { Phone } from '../../../Types/type';
 import { Link, useLocation } from 'react-router-dom';
-import useAddToFavourite from '../../Hooks/UseAddToFavourite';
+import useAddToFavourite from '../../Hooks/UseAddToCart';
 
 interface CatalogProps {
-  itemsOnPage: Phone[]
+  itemsOnPage: Phone[];
+  favourites: Set<string>;
+  toggleFavourite: (product: Phone) => void;
 }
 
-export const Catalog = ({ itemsOnPage }: CatalogProps) => {
-  const { favourites, toggleFavourite } = useAddToFavourite();
+export const Catalog = ({ itemsOnPage, favourites, toggleFavourite }: CatalogProps) => {
 
   const location = useLocation();
 
@@ -60,12 +61,14 @@ export const Catalog = ({ itemsOnPage }: CatalogProps) => {
             </div>
 
             <div className={style.catalog__product__buttons}>
-              <button className={style.catalog__product__buttons__button__add}>
+              <button
+                className={style.catalog__product__buttons__button__add}
+                onClick={() => toggleFavourite(phone)}
+              >
                 Add to cart
               </button>
               <button
                 className={style.catalog__product__buttons__button__favourites}
-                onClick={() => toggleFavourite(phone.id)}
               >
                 <span className={`
                 ${style[`catalog__product__buttons__button__favourites--heart`]}

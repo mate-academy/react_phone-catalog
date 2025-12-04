@@ -1,7 +1,8 @@
 import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import style from './Product.module.scss';
-import useAddToFavourite from '../../Hooks/UseAddToFavourite';
+import useAddToFavourite from '../../Hooks/UseAddToCart';
+import { Phone } from '../../../Types/type';
 
 interface ProductProps {
   productScreen: string;
@@ -9,6 +10,8 @@ interface ProductProps {
   productProcessor: string;
   productResolution: string;
   capacity: string[];
+  favourites: Set<string>;
+  toggleFavourite: (product: Phone) => void;
 }
 
 export const Product = ({
@@ -17,6 +20,8 @@ export const Product = ({
   productProcessor,
   productResolution,
   capacity,
+  favourites,
+  toggleFavourite
 }: ProductProps) => {
   const [productImages, setProductImages] = useState([]);
   const { productId } = useParams<{ productId: string }>();
@@ -24,7 +29,7 @@ export const Product = ({
   const [colors, setColors] = useState([]);
   const [productPrice, setProductPrice] = useState();
   const [productDiscount, setProductDiscount] = useState();
-  const { favourites, toggleFavourite } = useAddToFavourite();
+  const [currentProduct, setCurrentProduct] = useState<Phone | null>(null);
   const location = useLocation();
 
   const isFavourite = productId ? favourites.has(productId) : false;
@@ -46,6 +51,7 @@ export const Product = ({
           .then((data) => {
             const product = data.find((item: any) => item.id === productId);
             if (product) {
+              setCurrentProduct(product);
               setProductImages(product.images);
               setImage(product.images[0]);
               setColors(product.colorsAvailable);
@@ -126,13 +132,16 @@ export const Product = ({
         </div>
 
         <div className={style.product__cart__buttons}>
-          <button className={style.product__cart__buttons__button__add}>
+          <button
+            className={style.product__cart__buttons__button__add}
+            onClick={() => currentProduct && toggleFavourite(currentProduct)}
+          >
             Add to cart
           </button>
-          
+
           <button
             className={style.product__cart__buttons__button__favourites}
-            onClick={() => productId && toggleFavourite(productId)}
+            disabled={!currentProduct}
           >
             <span
               className={`

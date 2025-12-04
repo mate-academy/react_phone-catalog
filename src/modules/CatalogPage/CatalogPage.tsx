@@ -5,11 +5,16 @@ import { PhonesTitle } from '../Shared/PhonesTitle/Phones-title';
 import { Sort } from './Sort/Sort';
 import useCatalogData from '../Hooks/UseCatalogData';
 import { useState, useEffect } from 'react';
-import { SortType } from '../../Types/type';
+import { Phone, SortType } from '../../Types/type';
 import { Loading } from '../Shared/Loading/Loading';
 import { ErrorPage } from '../Shared/ErrorPage/ErrorPage';
 
-export const CatalogPage = () => {
+interface CatalogProps {
+  favourites: Set<string>;                    
+  toggleFavourite: (product: Phone) => void; 
+}
+
+export const CatalogPage = ({ favourites, toggleFavourite }: CatalogProps) => {
   const [sortNumber, setSortNumber] = useState(16);
   const [sortType, setSortType] = useState<SortType>('');
   const { itemsOnPage, setItemsOnPage, products, setProducts, loading, error, reload } = useCatalogData();
@@ -71,7 +76,11 @@ export const CatalogPage = () => {
         onSortChange={handleSort}
         products={products}
       />
-      <Catalog itemsOnPage={itemsOnPage} />
+      <Catalog 
+      itemsOnPage={itemsOnPage} 
+      toggleFavourite={toggleFavourite}
+      favourites={favourites} 
+      />
       
       {showPagination && (
         <Pagination

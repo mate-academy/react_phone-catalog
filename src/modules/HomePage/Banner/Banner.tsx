@@ -53,7 +53,7 @@ export const Banner = ({ data }: BannerProps) => {
   });
 
   return (
-    <div className={`${styles.banner} ${styles['banner--margin']}`}>
+    <div {...handlers} className={`${styles.banner} ${styles['banner--margin']}`}>
       <button
         className={`${styles.banner__arrow} ${styles['banner__arrow--left']}`}
         onClick={handlePrev}
@@ -62,7 +62,7 @@ export const Banner = ({ data }: BannerProps) => {
       </button>
 
       <div className={styles.banner__content}>
-        <div {...handlers} className={styles.banner__wrapper} ref={wrapperRef}>
+        <div  className={styles.banner__wrapper} ref={wrapperRef}>
           <div
             className={styles.banner__track}
             style={{

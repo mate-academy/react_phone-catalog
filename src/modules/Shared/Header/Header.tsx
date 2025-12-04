@@ -19,7 +19,9 @@ export const Header = () => {
             to="/"
             className={style.header__logo}
             onClick={() => {
-              document.body.classList.remove('body--noscroll');
+              document.querySelector('.App')?.classList.remove('app--noscroll')
+
+              // document.body.classList.remove('body--noscroll');
             }}
           >
             <img
@@ -74,7 +76,9 @@ export const Header = () => {
               className={style['header__icons__burger']}
               onClick={() => {
                 setIsMenuOpen(true);
-                document.body.classList.add('body--noscroll');
+                document.querySelector('.App')?.classList.add('app--noscroll')
+
+                // document.body.classList.add('body--noscroll');
               }}
             />
           </div>

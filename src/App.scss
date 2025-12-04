@@ -9,9 +9,13 @@
 body {
   background-color: $main-background-color;
   cursor: url(./img/cursor/Cursor\ Mouse\ Mice.svg);
-  overflow-x: hidden;
+  height: 100vh;
+  
+}
 
-  &.body--noscroll {
+.App {
+  overflow-x: hidden;
+  &.app--noscroll {
     overflow: hidden;
   }
 }

@@ -8,8 +8,15 @@ import { HotPrices } from '../HomePage/HotPrices/Hot-prices';
 import { Loading } from '../Shared/Loading/Loading';
 import { ErrorPage } from '../Shared/ErrorPage/ErrorPage';
 import style from './ProductPage.module.scss'
+import { Phone } from '../../Types/type';
 
-export const ProductPage = () => {
+interface ProductPageProps {
+  favourites: Set<string>;
+  toggleFavourite: (product: Phone) => void;
+}
+
+
+export const ProductPage = ({ favourites, toggleFavourite }: ProductPageProps) => {
   const { productId } = useParams<{ productId: string }>();
   const [productScreen, setProductScreen] = useState('');
   const [productRam, setProductRam] = useState('');
@@ -106,6 +113,8 @@ export const ProductPage = () => {
         productProcessor={productProcessor}
         productResolution={productResolution}
         capacity={capacity}
+        favourites={favourites}
+        toggleFavourite={toggleFavourite}
       />
       <ProductDescription
         productScreen={productScreen}
@@ -114,7 +123,10 @@ export const ProductPage = () => {
         capacity={capacity}
         productResolution={productResolution}
       />
-      <HotPrices />
+      <HotPrices
+        favourites={favourites}
+        toggleFavourite={toggleFavourite}
+      />
     </>
   );
 };

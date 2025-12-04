@@ -4,14 +4,17 @@ import phones from '../../../../public/api/phones.json';
 import type { Phone } from '../../../Types/type';
 import style from './Hot-Prices.module.scss';
 import { Link, useLocation } from 'react-router-dom';
-import useAddToFavourite from '../../Hooks/UseAddToFavourite';
 
-export const HotPrices = () => {
+interface HomePageProps {
+  favourites: Set<string>;
+  toggleFavourite: (product: Phone) => void;
+}
+
+export const HotPrices = ({ favourites, toggleFavourite}: HomePageProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
-  const { favourites, toggleFavourite } = useAddToFavourite();
 
   const itemsPerPage = 4;
   const maxIndex = Math.max(0, phones.length - itemsPerPage);
@@ -66,7 +69,7 @@ export const HotPrices = () => {
   const currentPage = getCurrentPage();
 
   return (
-    <div className={`${style['newmodels']} ${style['newmodels--margin']}`}>
+    <div {...handlers} className={`${style['newmodels']} ${style['newmodels--margin']}`}>
       <div className={style.newmodels__topbar}>
         <h2 className={style.newmodels__topbar__title}>Hot prices</h2>
         <div className={style.newmodels__topbar__buttons}>
@@ -87,7 +90,7 @@ export const HotPrices = () => {
         </div>
       </div>
 
-      <div {...handlers} className={style.newmodels__products} ref={sliderRef}>
+      <div  className={style.newmodels__products} ref={sliderRef}>
         <div
           className={style.newmodels__products__slider}
           style={{
@@ -147,12 +150,15 @@ export const HotPrices = () => {
                 </div>
 
                 <div className={style.newmodels__product__buttons}>
-                  <button className={style.newmodels__product__buttons__button__add}>
+                  <button
+                  className={style.newmodels__product__buttons__button__add}
+                  onClick={() => toggleFavourite(phone)}
+                  >
                     Add to cart
                   </button>
                   <button 
                     className={style.newmodels__product__buttons__button__favourites}
-                    onClick={() => toggleFavourite(phone.id)}
+                    // onClick={() => toggleFavourite(phone)}
                   >
                     <span 
                       className={`

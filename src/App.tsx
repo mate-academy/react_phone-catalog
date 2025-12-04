@@ -8,26 +8,58 @@ import { Footer } from './modules/Shared/Footer/Footer';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { CartPage } from './modules/CartPage';
 import { FavouritesPage } from './modules/FavouritesPage';
+import useAddToFavourite from './modules/Hooks/UseAddToCart';
 
-export const App = () => (
-  <Router>
-    <div className="App">
-      <Header />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/phones" element={<CatalogPage />} />
-          <Route path="/tablets" element={<CatalogPage />} />
-          <Route path="/accessories" element={<CatalogPage />} />
-          <Route path="/phones/:productId" element={<ProductPage />} />
-          <Route path="/tablets/:productId" element={<ProductPage />} />
-          <Route path="/accessories/:productId" element={<ProductPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/favourites" element={<FavouritesPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+export const App = () => {
+  const { itemsInCart, favourites, toggleFavourite } = useAddToFavourite();
+  return (
+
+    <Router>
+      <div className="App">
+        <Header />
+        <div className="container">
+          <Routes>
+            <Route path="/" element=
+              {<HomePage
+                toggleFavourite={toggleFavourite}
+                favourites={favourites}
+              />} />
+            <Route path="/phones" element=
+              {<CatalogPage
+                toggleFavourite={toggleFavourite}
+                favourites={favourites}
+              />} />
+            <Route path="/tablets" element=
+              {<CatalogPage
+                toggleFavourite={toggleFavourite}
+                favourites={favourites} />} />
+            <Route path="/accessories" element=
+              {<CatalogPage
+                toggleFavourite={toggleFavourite}
+                favourites={favourites} />} />
+            <Route path="/phones/:productId" element=
+              {<ProductPage
+                toggleFavourite={toggleFavourite}
+                favourites={favourites} />} />
+            <Route path="/tablets/:productId" element=
+              {<ProductPage
+                toggleFavourite={toggleFavourite}
+                favourites={favourites} />} />
+            <Route path="/accessories/:productId" element=
+              {<ProductPage
+                toggleFavourite={toggleFavourite}
+                favourites={favourites} />} />
+            <Route path="/cart" element=
+              {<CartPage
+                itemsInCart={itemsInCart}
+                toggleFavourite={toggleFavourite}
+              />} />
+            <Route path="/favourites" element={<FavouritesPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
       </div>
-    </div>
       <Footer />
-  </Router>
-);
+    </Router>
+  );
+};
