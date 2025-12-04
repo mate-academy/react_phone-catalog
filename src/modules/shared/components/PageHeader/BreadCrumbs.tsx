@@ -56,14 +56,13 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ title }) => {
   const formatCategory = (slug: string) => {
     return slug
       .split('-')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
   };
 
   return (
     <nav className={styles.breadcrumbs}>
       <div className={styles.breadcrumbsList}>
-
         {/* 1. Home */}
         <Link to="/" className={styles.link} aria-label="Home">
           <HomeIcon />
@@ -80,15 +79,19 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ title }) => {
               </Link>
             ) : (
               // Якщо продукту немає -> категорія це поточний текст
-              <span className={styles.current}>
-                {formatCategory(category)}
-              </span>
+              <span className={styles.current}>{formatCategory(category)}</span>
             )}
           </div>
         )}
 
         {/* 3. Product (Title) */}
         {productSlug && title && (
+          <div className={styles.item}>
+            <ChevronIcon />
+            <span className={styles.current}>{title}</span>
+          </div>
+        )}
+        {!category && title && (
           <div className={styles.item}>
             <ChevronIcon />
             <span className={styles.current}>{title}</span>

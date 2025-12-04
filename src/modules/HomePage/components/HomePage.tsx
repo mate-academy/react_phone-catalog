@@ -6,7 +6,6 @@ import SliderComponent from './SliderComponent';
 import productsList from '../../../../public/api/products.json';
 import { Link } from 'react-router-dom';
 import PageHeader from '@/modules/shared/components/PageHeader/PageHeader';
-//TODO fix categoy section styles
 const HomePage: React.FC = () => {
   const [products] = useState<Product[]>(productsList);
   const counters = {

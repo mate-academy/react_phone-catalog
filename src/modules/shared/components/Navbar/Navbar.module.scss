@@ -1,5 +1,5 @@
 @use '../../../../styles/variables.scss' as *;
-.header{
+.header {
   display: flex;
   justify-content: center;
 }
@@ -70,6 +70,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: -1px 0 0 0 #e2e6e9;
+    box-shadow: inset 1px 0 0 0 #e2e6e9;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      // left: -1px;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0; // start hidden
+      background-color: $color-primary;
+      transition: width 0.3s ease;
+    }
+    &--active {
+      color: $color-primary;
+      &::after {
+        width: 100%; // full width when active
+      }
+    }
   }
 }

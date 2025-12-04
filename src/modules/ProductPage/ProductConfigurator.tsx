@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ProductDetails } from '@/types/ProductDetails';
 import { Product } from '@/types/Product';
 import { useCart } from '@/modules/CartFavContext/CartContext';
+import { COLOR_MAP } from '../shared/components/utils/constants/constants';
 
 type ProductConfiguratorProps = {
   product?: ProductDetails;
@@ -37,7 +38,9 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
   } = useCart();
 
   if (!product) return null;
-
+  const normilizeValue = (color: string): string => {
+    return color.replace(' ', '-').toLowerCase();
+  };
   // --- ROUTE SLUG UPDATER (color / capacity) ---
   const updateSlug = (type: 'color' | 'capacity', value: string) => {
     if (!productSlug || !category) return;
@@ -45,11 +48,12 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     // do nothing if user selects same option
     if (type === 'color' && value === selectedColor) return;
     if (type === 'capacity' && value === selectedCapacity) return;
-
+    const normilizedValue = normilizeValue(value);
     const oldPart = product[type].toLowerCase();
-    const newSlug = productSlug.replace(oldPart, value.toLowerCase());
+    const newSlug = productSlug.replace(oldPart, normilizedValue);
 
     if (type === 'color') setSelectedColor(value);
+
     if (type === 'capacity') setSelectedCapacity(value);
 
     navigate(`/${category}/${newSlug}`);
@@ -106,7 +110,7 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               >
                 <div
                   className={styles.productConfigurator__colorOption}
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: COLOR_MAP[normilizeValue(color)] }}
                 />
               </div>
             ))}

@@ -1,5 +1,5 @@
 import styles from './Navbar.module.scss';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Logo from '/img/Logo.svg';
 import CartIcon from '/img/icons/cart.svg';
 import HeartIcon from '/img/icons/heart.svg';
@@ -36,12 +36,26 @@ export const Navbar = () => {
         </ul>
 
         <div className={styles.navbar__icons}>
-          <div className={styles.navbar__icon}>
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              isActive
+                ? `${styles.navbar__icon} ${styles['navbar__icon--active']}`
+                : styles.navbar__icon
+            }
+          >
             <img src={HeartIcon} alt="Favorites" />
-          </div>
-          <div className={styles.navbar__icon}>
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              isActive
+                ? `${styles.navbar__icon} ${styles['navbar__icon--active']}`
+                : styles.navbar__icon
+            }
+          >
             <img src={CartIcon} alt="Cart" />
-          </div>
+          </NavLink>
         </div>
       </nav>{' '}
     </header>
