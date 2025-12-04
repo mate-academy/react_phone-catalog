@@ -31,7 +31,7 @@ export const Header = () => {
           <div className={style['img-box']}>
             <img
               className={style.fav__icon}
-              src="/public/img/icons/Favourites (Heart Like).svg"
+              src="img/icons/Favourites (Heart Like).svg"
               alt="Favourites"
             />
             {favorites.length > 0 && (
@@ -44,7 +44,7 @@ export const Header = () => {
           <div className={style['img-box']}>
             <img
               className={style.cart__icon}
-              src="/public/img/icons/Shopping bag (Cart).svg"
+              src="img/icons/Shopping bag (Cart).svg"
               alt="Cart"
             />
             {cart.length > 0 && (
@@ -58,8 +58,8 @@ export const Header = () => {
             className="{style.burger__icon"
             src={
               !isMenuOpen
-                ? '/public/img/icons/Menu.svg'
-                : '/public/img/icons/Close.svg'
+                ? 'img/icons/Menu.svg'
+                : 'img/icons/Close.svg'
             }
             alt={!isMenuOpen ? 'Open Menu' : 'Close Menu'}
           />

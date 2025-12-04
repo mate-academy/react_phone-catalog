@@ -3,7 +3,7 @@ export const Search = () => {
     <div className="search">
       <input type="text" className="search__input" />
       <img
-        src="/public/img/icons/Search.svg"
+        src="img/icons/Search.svg"
         alt="Search"
         className="search__icon"
       />

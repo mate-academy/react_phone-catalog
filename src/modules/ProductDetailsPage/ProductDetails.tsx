@@ -55,9 +55,7 @@ export const ProductDetails = () => {
 
         setBaseProduct(foundedBaseProduct);
         setBaseProducts(
-          allProducts.filter(
-            (prod: Product) => prod.category === category,
-          ),
+          allProducts.filter((prod: Product) => prod.category === category),
         );
 
         const foundProduct = products.find(
@@ -169,8 +167,8 @@ export const ProductDetails = () => {
                   <img
                     src={
                       isFavorite
-                        ? '/public/img/icons/Favourites Filled (Heart Like).svg'
-                        : '/public/img/icons/Favourites (Heart Like).svg'
+                        ? 'img/icons/Favourites Filled (Heart Like).svg'
+                        : 'img/icons/Favourites (Heart Like).svg'
                     }
                     alt="Favourites"
                   />

@@ -21,7 +21,7 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
         <button className={style.close} onClick={onClose}>
           <img
             className="{style.burger__icon"
-            src="/public/img/icons/Close.svg"
+            src="img/icons/Close.svg"
             alt="Close Menu"
           />
         </button>
@@ -44,12 +44,12 @@ export const BurgerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
       <div className={style.menu__bottom}>
         <NavLink to="/favourites" className={style.iconFav} onClick={onClose}>
           <img
-            src="/public/img/icons/Favourites (Heart Like).svg"
+            src="img/icons/Favourites (Heart Like).svg"
             alt="Favourites"
           />
         </NavLink>
         <NavLink to="/cart" className={style.iconCart} onClick={onClose}>
-          <img src="/public/img/icons/Shopping bag (Cart).svg" alt="Cart" />
+          <img src="img/icons/Shopping bag (Cart).svg" alt="Cart" />
         </NavLink>
       </div>
     </aside>

@@ -42,23 +42,24 @@ export const CatalogPage = () => {
 
   const updateParam = useCallback(
     (param: string, value: string | number | null) => {
-    const newParams = new URLSearchParams(searchParams);
+      const newParams = new URLSearchParams(searchParams);
 
-    const stringValue = value?.toString() ?? '';
+      const stringValue = value?.toString() ?? '';
 
-    const isDefault =
-      (param === 'page' && stringValue === '1') ||
-      (param === 'perPage' && stringValue === 'all');
+      const isDefault =
+        (param === 'page' && stringValue === '1') ||
+        (param === 'perPage' && stringValue === 'all');
 
-    if (!stringValue || isDefault) {
-      newParams.delete(param);
-    } else {
-      newParams.set(param, stringValue);
-    }
+      if (!stringValue || isDefault) {
+        newParams.delete(param);
+      } else {
+        newParams.set(param, stringValue);
+      }
 
-    setSearchParams(newParams);
-  }, [searchParams, setSearchParams]
-);
+      setSearchParams(newParams);
+    },
+    [searchParams, setSearchParams],
+  );
 
   useEffect(() => {
     setIsLoading(true);

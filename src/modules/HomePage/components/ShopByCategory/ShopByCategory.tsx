@@ -14,17 +14,17 @@ export const ShopByCategory: React.FC<Props> = ({
 }) => {
   const categories = [
     {
-      src: '/public/img/phones-category.png',
+      src: 'img/phones-category.png',
       title: 'Mobile Phones',
       qnt: phonesQnt,
     },
     {
-      src: '/public/img/tablets-category.png',
+      src: 'img/tablets-category.png',
       title: 'Tablets',
       qnt: tabletsQnt,
     },
     {
-      src: '/public/img/accessories-category.png',
+      src: 'img/accessories-category.png',
       title: 'Accessories',
       qnt: accessoriesQnt,
     },

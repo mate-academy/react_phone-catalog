@@ -35,7 +35,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
             className={`${styles.navButton} ${styles.prevButton} ${!isBeginning ? styles.isActive : ''}`}
           >
             <img
-              src="/public/img/icons/ChevronArrowLeft.svg"
+              src="img/icons/ChevronArrowLeft.svg"
               alt="Prev slide"
             ></img>
           </button>
@@ -45,7 +45,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
             className={`${styles.navButton} ${styles.nextButton} ${!isEnd ? styles.isActive : ''}`}
           >
             <img
-              src="/public/img/icons/ChevronArrowRight.svg"
+              src="img/icons/ChevronArrowRight.svg"
               alt="Next slide"
             ></img>
           </button>

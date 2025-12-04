@@ -12,7 +12,7 @@ export const BackBtn = () => {
     >
       <img
         className={styles['breadcrumbs-arrow']}
-        src="/public/img/icons/ChevronArrowLeft.svg"
+        src="img/icons/ChevronArrowLeft.svg"
         alt="icon"
       />
       Back

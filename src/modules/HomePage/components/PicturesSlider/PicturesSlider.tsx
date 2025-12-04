@@ -13,28 +13,10 @@ export const PicturesSlider = () => {
   const nextRef = useRef<HTMLButtonElement>(null);
   const paginationRef = useRef<HTMLDivElement | null>(null);
 
-  // const [swiperReady, setSwiperReady] = useState(false);
-
-  // useEffect(() => {
-  //   setSwiperReady(true);
-  // }, []);
-
-  // const updateSwiperNavigation = (swiper: any) => {
-  //   const updated = { ...swiper };
-  //   updated.params = { ...swiper.params };
-  //   updated.params.navigation = {
-  //     ...swiper.params.navigation,
-  //     prevEl: prevRef.current,
-  //     nextEl: nextRef.current,
-  //   };
-
-  //   return updated;
-  // };
-
   const pictures = [
-    { src: '/public/img/sliderImages/banner-7.png', alt: 'Banner 1' },
-    { src: '/public/img/sliderImages/banner-6.png', alt: 'Banner 2' },
-    { src: '/public/img/sliderImages/banner-8.png', alt: 'Banner 3' },
+    { src: 'img/sliderImages/banner-7.png', alt: 'Banner 1' },
+    { src: 'img/sliderImages/banner-6.png', alt: 'Banner 2' },
+    { src: 'img/sliderImages/banner-8.png', alt: 'Banner 3' },
   ];
 
   return (
@@ -43,10 +25,7 @@ export const PicturesSlider = () => {
         modules={[Navigation, Autoplay, Pagination]}
         spaceBetween={20}
         loop
-        // autoplay={{
-        //   delay: 5000,
-        //   disableOnInteraction: false,
-        // }}
+
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -55,13 +34,6 @@ export const PicturesSlider = () => {
           clickable: true,
           el: paginationRef.current,
         }}
-        // onBeforeInit={swiper => {
-        //   const updated = updateSwiperNavigation(swiper)
-        //   //@ts-expect-error: swiper types do not allow assigning prevEl
-        //   swiper.params.navigation.prevEl = prevRef.current;
-        //   //@ts-expect-error: swiper types do not allow assigning nextEl
-        //   swiper.params.navigation.nextEl = nextRef.current;
-        // }}
 
         onBeforeInit={swiper => {
           const navigation = {
@@ -90,7 +62,7 @@ export const PicturesSlider = () => {
         className={`${style.navButton} ${style.prevButton}`}
       >
         <img
-          src="/public/img/icons/ChevronArrowLeft.svg"
+          src="img/icons/ChevronArrowLeft.svg"
           alt="Prev slide"
         ></img>
       </button>
@@ -100,7 +72,7 @@ export const PicturesSlider = () => {
         className={`${style.navButton} ${style.nextButton}`}
       >
         <img
-          src="/public/img/icons/ChevronArrowRight.svg"
+          src="img/icons/ChevronArrowRight.svg"
           alt="Next slide"
         ></img>
       </button>
