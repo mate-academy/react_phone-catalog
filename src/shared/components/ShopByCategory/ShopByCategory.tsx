@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './ShopByCategory.module.scss';
 import { useEffect, useState } from 'react';
-import { Product } from '../../../types/product';
+import { Product } from '../../../types';
 import { getAllProducts } from '../../../services/productsService';
 
 export const ShopByCategory = () => {

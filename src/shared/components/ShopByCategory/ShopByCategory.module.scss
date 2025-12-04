@@ -9,18 +9,9 @@
   }
 }
 
-.title {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 41px;
-  color: #313237;
-  margin-bottom: 24px;
-  text-align: left;
-}
-
 .categories {
   display: grid;
-  gap: 16px;
+  gap: 10px;
   grid-template-columns: repeat(3, 1fr);
 
   @media (max-width: 1199px) {
@@ -49,6 +40,10 @@
   overflow: hidden;
   margin-bottom: 16px;
   background-color: #f8f8f8;
+}
+
+.title {
+  margin-top: 50px;
 }
 
 .image {

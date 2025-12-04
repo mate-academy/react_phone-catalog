@@ -44,7 +44,7 @@ export const PicturesSlider: React.FC = () => {
 
   return (
     <div className={styles.sliderSection}>
-      <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
+      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
 
       <div className={`${styles.sliderContainer} ${styles.sliderGrid}`}>
         <div

@@ -1,9 +1,17 @@
+@import "../../../styles/media";
+
 .sliderSection {
   width: 100%;
 }
 
 .sliderContainer {
   width: 100%;
+}
+
+.title {
+  font-size: 48px;
+  margin-bottom: 56px;
+  margin-top: 56px;
 }
 
 .sliderWrapper {
@@ -18,6 +26,22 @@
       height: 36px;
       font-size: 1.5rem;
     }
+  }
+}
+
+.sliderGrid {
+  grid-column: span 24;
+}
+
+@include on-tablet {
+  .sliderGrid {
+    grid-column: span 12;
+  }
+}
+
+@include on-mobile {
+  .sliderGrid {
+    grid-column: span 4;
   }
 }
 
