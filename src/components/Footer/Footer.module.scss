@@ -21,7 +21,7 @@
 }
 }
 
-.footer__wrapper{
+.footer-wrapper{
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -42,17 +42,17 @@
 
 }
 
-.footer__logo {
+.footer-logo {
     width: 100%;
     height: 32px;
 
-    .footer__img {
+    .footer-img {
         height: 100%;
 
     }
 }
 
-.footer__contacts{
+.footer-contacts{
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -73,7 +73,7 @@
     }
 }
 
-.contacts__item{
+.contacts-item{
     color: $secondary-color;
     text-decoration: none;
 }

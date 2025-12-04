@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Carousel } from 'react-bootstrap';
-import './HeroSlider.scss';
+import styles from './HeroSlider.module.scss';
 import { useEffect, useState } from 'react';
 
 export const HeroSlider = () => {
@@ -19,14 +19,14 @@ export const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="slider">
+    <div className={styles.slider}>
       <Carousel
         indicators={false}
         activeIndex={index}
         onSelect={handleSelect}
         interval={null}
         prevIcon={
-          <span className="custom-prev">
+          <span className={styles['custom-prev']}>
             <svg
               width="6"
               height="10"
@@ -45,7 +45,7 @@ export const HeroSlider = () => {
           </span>
         }
         nextIcon={
-          <span className="custom-next">
+          <span className={styles['custom-next']}>
             <svg
               width="6"
               height="10"
@@ -65,20 +65,26 @@ export const HeroSlider = () => {
         }
       >
         <Carousel.Item>
-          <div className="slider__img iphone-14 d-block w-100"></div>
+          <div
+            className={`${styles.slider__img} ${styles['iphone-14']} ${'d-block w-100'}`}
+          ></div>
         </Carousel.Item>
         <Carousel.Item>
-          <div className="slider__img iphone-14 d-block w-100"></div>
+          <div
+            className={`${styles.slider__img} ${styles['iphone-14']} ${'d-block w-100'}`}
+          ></div>
         </Carousel.Item>
         <Carousel.Item>
-          <div className="slider__img iphone-14 d-block w-100"></div>
+          <div
+            className={`${styles.slider__img} ${styles['iphone-14']} ${'d-block w-100'}`}
+          ></div>
         </Carousel.Item>
       </Carousel>
-      <div className="slider__indicators">
+      <div className={styles.slider__indicators}>
         {[0, 1, 2].map(i => (
           <button
             key={i}
-            className={`slider__dot ${index === i ? 'is-active' : ''}`}
+            className={`${styles.slider__dot} ${index === i ? styles['is-active'] : ''}`}
             onClick={() => setIndex(i)}
           />
         ))}

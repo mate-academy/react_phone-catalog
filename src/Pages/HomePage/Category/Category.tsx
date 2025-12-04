@@ -1,5 +1,5 @@
 import React from 'react';
-import './Category.scss';
+import styles from './Category.module.scss';
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -16,14 +16,16 @@ export const Category: React.FC<Props> = ({
   categoryPath,
 }) => {
   return (
-    <Link to={`/${categoryPath}`} className="category__card">
-      <div className="category__card-content">
-        <div className="category__photo">
-          <img src={imgSrc} alt="" className="category__img" />
+    <Link to={`/${categoryPath}`} className={styles.category__card}>
+      <div className={styles['category__card-content']}>
+        <div className={styles.category__photo}>
+          <img src={imgSrc} alt="" className={styles.category__img} />
         </div>
-        <div className="card__title-wrapper">
-          <h4 className="category__title">{categoryName}</h4>
-          <span className="category__quantity">{categoryLength} models</span>
+        <div className={styles['card__title-wrapper']}>
+          <h4 className={styles.category__title}>{categoryName}</h4>
+          <span className={styles.category__quantity}>
+            {categoryLength} models
+          </span>
         </div>
       </div>
     </Link>

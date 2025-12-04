@@ -45,7 +45,7 @@
 
         align-self: flex-start;
         margin-top: 8px;
-        font-weight: 800;
+        font-weight: 700;
         color: $primary-color;
     }
 }
@@ -126,7 +126,7 @@
     height: 40px;
 }
 
-.model__button{
+.model-button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -136,14 +136,8 @@
     border: 0;
 }
 
-.add__to__cart{
-    font-size: 14px;
-    color: $white;
-    text-align: center;
-    background-color: $primary-color;
-}
 
-.add__to__fovourites{
+.add--to__fovourites{
     max-width: 40px;
     border: 1px solid $icons;
     background-color: $white;

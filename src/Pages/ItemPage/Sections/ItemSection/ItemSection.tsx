@@ -38,7 +38,9 @@ export const ItemSection: React.FC<Props> = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [mainSwiper, setMainSwiper] = useState<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [currentModel, setCurrentModel] = useState<AccessoriesModel | PhoneModel | TabletModel>(model);
+  const [currentModel, setCurrentModel] = useState<
+  AccessoriesModel | PhoneModel | TabletModel
+  >(model);
 
   const normalizeColorName = (colorName: string): string => {
     return colorName.toLowerCase().replace(/\s/g, '');
@@ -56,7 +58,6 @@ export const ItemSection: React.FC<Props> = ({
 
   const navigate = useNavigate();
 
-
   const isInCart = useMemo(() => {
     return cartProducts.some(p => p.itemId === currentModel.id);
   }, [model, cartProducts]);
@@ -68,8 +69,6 @@ export const ItemSection: React.FC<Props> = ({
 
     setActiveIndex(index);
   };
-
-  
 
   const product = products.find(p => p.itemId === currentModel.id);
   const isFavorite = useMemo(() => {
@@ -282,7 +281,9 @@ export const ItemSection: React.FC<Props> = ({
             <article key={index}>
               <h4 className={styles.description__title}>{desc.title}</h4>
               {desc.text.map((paragraph, i) => (
-                <p key={i} className={styles.paragraph}>{paragraph}</p>
+                <p key={i} className={styles.paragraph}>
+                  {paragraph}
+                </p>
               ))}
             </article>
           ))}

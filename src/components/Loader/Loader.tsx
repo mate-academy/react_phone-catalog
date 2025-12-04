@@ -8,11 +8,11 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    @media (min-width: 768px) {
-      height: 400px;
+    @media (min-width: 640px) {
+      height: 380px;
     }
     @media (min-width: 1200px) {
-      height: 500px;
+      height: 480px;
     }
   }
 

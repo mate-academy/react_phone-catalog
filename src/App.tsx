@@ -8,7 +8,7 @@ import { SkeletonTheme } from 'react-loading-skeleton';
 import { Header } from './components/Header';
 
 export const App = () => (
-  <div className="App">
+  <div className="app">
     <SkeletonTheme baseColor="#202020" highlightColor="#444">
       <CartProvider>
         <FavoritesProvider>

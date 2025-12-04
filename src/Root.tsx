@@ -8,9 +8,11 @@ import { ItemPage } from './Pages/ItemPage';
 import { FavoritesPage } from './Pages/FavoritesPage';
 import { CartPage } from './Pages/CartPage';
 import { NotFoundPage } from './Pages/NotFoundPage';
+import ScrollToTop from './components/ScrollToTop';
 
 export const Root = () => (
   <Router>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<App></App>}>
         <Route index element={<HomePage></HomePage>} />

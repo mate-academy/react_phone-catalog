@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../../images/Logo.svg';
-import './Header.scss';
+import styles from './Header.module.scss';
 import { useContext, useMemo, useState } from 'react';
 import { BurgerMenu } from '../BurgerMenu';
 import favourites from '../../Icons/Vector (Stroke).svg';
@@ -33,69 +33,81 @@ export const Header = () => {
 
   return (
     <header
-      className={cn('header', {
-        on__allpage: isOpen,
+      className={cn(styles.header, {
+        [styles.on__allpage]: isOpen,
       })}
     >
       {isOpen}
-      <div className="header__top">
+      <div className={styles.header__top}>
         <NavLink to="/">
           <img src={logo} alt="logo-img" />
         </NavLink>
-        <nav className="nav-bar">
-          <ul className="nav__list">
-            <li className="nav__list--menu-items">
+        <nav className={styles['nav-bar']}>
+          <ul className={styles.nav__list}>
+            <li className={styles['nav__list--menu-items']}>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? 'nav__link nav__link--active' : 'nav__link'
+                  isActive
+                    ? `${styles.nav__link} ${styles['nav__link--active']}`
+                    : styles.nav__link
                 }
               >
                 HOME
               </NavLink>
             </li>
-            <li className="nav__list--menu-items">
+            <li className={styles['nav__list--menu-items']}>
               <NavLink
                 to="/phones"
                 className={({ isActive }) =>
-                  isActive ? 'nav__link nav__link--active' : 'nav__link'
+                  isActive
+                    ? `${styles.nav__link} ${styles['nav__link--active']}`
+                    : styles.nav__link
                 }
               >
                 PHONES
               </NavLink>
             </li>
-            <li className="nav__list--menu-items">
+            <li className={styles['nav__list--menu-items']}>
               <NavLink
                 to="/tablets"
                 className={({ isActive }) =>
-                  isActive ? 'nav__link nav__link--active' : 'nav__link'
+                  isActive
+                    ? `${styles.nav__link} ${styles['nav__link--active']}`
+                    : styles.nav__link
                 }
               >
                 TABLETS
               </NavLink>
             </li>
-            <li className="nav__list--menu-items">
+            <li className={styles['nav__list--menu-items']}>
               <NavLink
                 to="/accessories"
                 className={({ isActive }) =>
-                  isActive ? 'nav__link nav__link--active' : 'nav__link'
+                  isActive
+                    ? `${styles.nav__link} ${styles['nav__link--active']}`
+                    : styles.nav__link
                 }
               >
                 ACCESSORIES
               </NavLink>
             </li>
           </ul>
-          <div className="nav__buttons">
-            <Link to="/favourites" className="icon__link">
-              <div className="img__wrapper">
+          <div className={styles.nav__buttons}>
+            <Link to="/favourites" className={styles.icon__link}>
+              <div className={styles.img__wrapper}>
                 <img src={favourites} alt="favourites"></img>
                 {favorites.length >= 1 && (
                   <ItemsCounter quantity={favorites.length}></ItemsCounter>
                 )}
               </div>
             </Link>
-            <Link to="/cart" className="icon__link" state={{ from: pathname }}>
-              <div className="img__wrapper">
+            <Link
+              to="/cart"
+              className={styles.icon__link}
+              state={{ from: pathname }}
+            >
+              <div className={styles.img__wrapper}>
                 <img src={cart} alt="cart" />
                 {cartProducts.length >= 1 && (
                   <ItemsCounter quantity={cartCounter}></ItemsCounter>
@@ -107,12 +119,12 @@ export const Header = () => {
 
         {!isOpen ? (
           <button
-            className="icon icon--menu"
+            className={`${styles.icon} ${styles['icon--menu']}`}
             onClick={handleSetIsOpen}
           ></button>
         ) : (
           <button
-            className="icon icon--menu--cross"
+            className={`${styles.icon} ${styles['icon--menu--cross']}`}
             onClick={handleSetIsOpen}
           ></button>
         )}

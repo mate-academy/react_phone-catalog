@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import './ModelesSortForm.scss';
+import styles from './ModelesSortForm.module.scss';
 
 export const ModelsSortForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,9 +44,11 @@ export const ModelsSortForm = () => {
   };
 
   return (
-    <div className="models__sort-form">
-      <div className="models__sort-formwrapper">
-        <label className="model__select-label model__select-label--longer">
+    <div className={styles['models__sort-form']}>
+      <div className={styles['models__sort-formwrapper']}>
+        <label
+          className={`${styles['model__select-label']} ${styles['model__select-label--longer']}`}
+        >
           Sort by
           <select
             value={querySelectValue}
@@ -54,14 +56,14 @@ export const ModelsSortForm = () => {
               handleChangeSort(e);
               handleChangeSelectQuery(e);
             }}
-            className="model__select"
+            className={styles.model__select}
           >
             <option value="age">Newest</option>
             <option value="title">Alphabetically</option>
             <option value="price">Cheapest</option>
           </select>
         </label>
-        <label className="model__select-label">
+        <label className={styles['model__select-label']}>
           Items on page
           <select
             value={quantitySelectValue}
@@ -69,7 +71,7 @@ export const ModelsSortForm = () => {
               handleChangeQuantity(e);
               handleChangeSelectQuantity(e);
             }}
-            className="model__select"
+            className={styles.model__select}
           >
             <option value="">16</option>
             <option value="8">8</option>

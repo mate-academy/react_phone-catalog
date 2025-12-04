@@ -27,12 +27,18 @@ export const ItemPage: React.FC<Props> = ({ kindOfModel, category }) => {
   const loadCards = [0, 0, 0, 0];
 
   // Список всіх моделей даної категорії
-  const [currentModels, setCurrentModels] = useState<PhoneModel[] | TabletModel[] | AccessoriesModel[]>([]);
+  const [currentModels, setCurrentModels] = useState<
+  PhoneModel[] | TabletModel[] | AccessoriesModel[]
+  >([]);
 
   // Конкретна вибрана модель
-  const [model, setModel] = useState<PhoneModel | TabletModel | AccessoriesModel | null>(null);
+  const [model, setModel] = useState<
+  PhoneModel | TabletModel | AccessoriesModel | null
+  >(null);
 
-  const [youMayLikeModels, setYouMayLikeModels] = useState<PhoneModel[] | TabletModel[] | AccessoriesModel[]>([]);
+  const [youMayLikeModels, setYouMayLikeModels] = useState<
+  PhoneModel[] | TabletModel[] | AccessoriesModel[]
+  >([]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const shuffleArray = (arr: any[]): any[] => {

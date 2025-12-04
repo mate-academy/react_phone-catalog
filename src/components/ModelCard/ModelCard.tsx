@@ -1,7 +1,7 @@
 import { AccessoriesModel, PhoneModel, TabletModel } from '../../types/model';
 import favoritesNonActive from '../../Icons/Vector (Stroke).svg';
 
-import './ModelCard.scss';
+import styles from './ModelCard.module.scss';
 import cn from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/products';
@@ -77,7 +77,7 @@ export const ModelCard: React.FC<ModelCardProps> = ({
   };
 
   useEffect(() => {
-    if (kindOfModel === 'products') {
+    if (kindOfModel === 'product') {
       setToLinkCategory((model as Product).category);
     } else {
       setToLinkCategory(kindOfModel);
@@ -102,43 +102,45 @@ export const ModelCard: React.FC<ModelCardProps> = ({
   const location = useLocation();
 
   return (
-    <div className="card__item">
+    <div className={styles.card__item}>
       <Link
-        className="card__link"
+        className={styles.card__link}
         to={`/${toLinkCategory}/${id}`}
         state={{ from: location.pathname }}
       >
-        <img className="model__img" src={image} alt={namespaceId} />
-        <h4 className="card__item__title">{name}</h4>
+        <img className={styles.model__img} src={image} alt={namespaceId} />
+        <h4 className={styles.card__item__title}>{name}</h4>
       </Link>
-      <span className="card__item__price">
+      <span className={styles.card__item__price}>
         {hotPrice && (
-          <span className="card__item__hotPrice">${priceDiscount} </span>
+          <span className={styles.card__item__hotPrice}>${priceDiscount} </span>
         )}
         <span
           className={cn({
-            'cross__regular-price': hotPrice,
+            [styles['cross__regular-price']]: hotPrice,
           })}
         >
           ${priceRegular}
         </span>
       </span>
-      <div className="card__line"></div>
-      <ul className="characteristics__list-short">
-        <li className="characteristics__item-short">
-          <span className="characteristic-key">Screen</span>
-          <span className="characteristic-value">{screen}</span>
+      <div className={styles.card__line}></div>
+      <ul className={styles['characteristics__list-short']}>
+        <li className={styles['characteristics__item-short']}>
+          <span className={styles['characteristic-key']}>Screen</span>
+          <span className={styles['characteristic-value']}>{screen}</span>
         </li>
-        <li className="characteristics__item-short">
-          <span className="characteristic-key">Capacity</span>
-          <span className="characteristic-value">{modelCapacity}</span>
+        <li className={styles['characteristics__item-short']}>
+          <span className={styles['characteristic-key']}>Capacity</span>
+          <span className={styles['characteristic-value']}>
+            {modelCapacity}
+          </span>
         </li>
-        <li className="characteristics__item-short">
-          <span className="characteristic-key">RAM</span>
-          <span className="characteristic-value">{ram}</span>
+        <li className={styles['characteristics__item-short']}>
+          <span className={styles['characteristic-key']}>RAM</span>
+          <span className={styles['characteristic-value']}>{ram}</span>
         </li>
       </ul>
-      <div className="card__buttons">
+      <div className={styles.card__buttons}>
         <PrimaryButton
           isSelected={isInCart}
           action={handleAddToCart}
@@ -146,20 +148,20 @@ export const ModelCard: React.FC<ModelCardProps> = ({
           height="40"
         ></PrimaryButton>
         <button
-          className="add__to__fovourites model__button"
+          className={`${styles['add--to__fovourites']} ${styles['model-button']}`}
           onClick={handleToggleFavorite}
         >
           {isFavorite ? (
             <img
               src={favoritesActive}
               alt="favoritesActive"
-              className="favorite__img"
+              className={styles.favorite__img}
             />
           ) : (
             <img
               src={favoritesNonActive}
               alt="favoritesNonActive"
-              className="favorite__img"
+              className={styles.favorite__img}
             />
           )}
         </button>

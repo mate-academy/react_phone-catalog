@@ -41,8 +41,8 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   };
 
   return (
-    <div className={styles.cart__item}>
-      <div className={styles.top__content}>
+    <div className={styles['cart-item']}>
+      <div className={styles['top-content']}>
         <button className={styles.cross} onClick={() => handleDeleteItem(item)}>
           <svg
             width="16"
@@ -60,15 +60,15 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             />
           </svg>
         </button>
-        <div className={styles.img__wrapper}>
+        <div className={styles['img-wrapper']}>
           <img src={item.image} alt={item.itemId} />
         </div>
-        <span className={styles.item__span}>{item.name}</span>
+        <span className={styles['item-span']}>{item.name}</span>
       </div>
-      <div className={styles.quantity__wrapper}>
-        <div className={styles.quantity__button__wrapper}>
+      <div className={styles['quantity-wrapper']}>
+        <div className={styles['quantity-button-wrapper']}>
           <button
-            className={styles.quantity__button}
+            className={styles['quantity-button']}
             onClick={() => handleChangeQuantity(item, '-')}
             disabled={item.quantity === 1}
           >
@@ -90,7 +90,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           </button>
           {item.quantity}
           <button
-            className={styles.quantity__button}
+            className={styles['quantity-button']}
             onClick={() => handleChangeQuantity(item, '+')}
           >
             <svg
@@ -110,7 +110,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             </svg>
           </button>
         </div>
-        <h3 className={styles.item__price}>${item.price}</h3>
+        <h3 className={styles['item-price']}>${item.price}</h3>
       </div>
     </div>
   );

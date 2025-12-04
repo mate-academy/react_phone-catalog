@@ -5,6 +5,7 @@ import { getProducts } from '../../api';
 import { ItemsSlider } from '../../components/ItemsSlider';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { Categories } from './Categories';
+import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -39,6 +40,7 @@ export const HomePage = () => {
 
   return (
     <main>
+      <h1 className={styles.hidden__title}>Product Catalog</h1>
       {error ? (
         <ErrorMessage errorMessage={error} />
       ) : (

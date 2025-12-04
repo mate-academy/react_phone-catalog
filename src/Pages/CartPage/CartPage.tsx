@@ -27,9 +27,9 @@ export const CartPage = () => {
         itemsContent={false}
         isBeadCrumbs={false}
       ></PageTop>
-      <section className={styles.items__section}>
-        <main className={styles.items__main}>
-          <ul className={styles[`cart__item-list`]}>
+      <section className={styles['items-section']}>
+        <main className={styles['items-main']}>
+          <ul className={styles[`cart-item-list`]}>
             {cartProducts.map(product => {
               return (
                 <li key={product.id}>
@@ -39,12 +39,12 @@ export const CartPage = () => {
             })}
           </ul>
 
-          <div className={styles.total__wrapper}>
-            <h2 className={styles.total__wrapper__title}>${totalAmount}</h2>
-            <span className={styles.total__wrapper__span}>
+          <div className={styles['total-wrapper']}>
+            <h2 className={styles['total-wrapper__title']}>${totalAmount}</h2>
+            <span className={styles['total-wrapper__span']}>
               Total for {totalLength} items
             </span>
-            <div className={styles.total__wrapper__line}></div>
+            <div className={styles['total-wrapper__line']}></div>
             <PrimaryButton isSelected={false} height="48" text="Checkout" />
           </div>
         </main>

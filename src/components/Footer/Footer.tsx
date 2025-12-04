@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import logo from '../../images/Logo.svg';
 import { Link } from 'react-router-dom';
-import './Footer.scss';
+import styles from './Footer.module.scss';
 export const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -11,35 +11,38 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="footer">
-      <div className="footer__wrapper">
-        <Link to="/" className="footer__logo">
-          <img className="footer__img" src={logo} alt="logo" />
+    <footer className={styles.footer}>
+      <div className={styles['footer-wrapper']}>
+        <Link to="/" className={styles['footer-logo']}>
+          <img className={styles['footer-img']} src={logo} alt="logo" />
         </Link>
 
-        <ul className="footer__contacts">
-          <li className="contacts__item">
-            <Link to="/" className="contacts__item">
+        <ul className={styles['footer-contacts']}>
+          <li className={styles['contacts-item']}>
+            <Link to="/" className={styles['contacts-item']}>
               Github
             </Link>
           </li>
-          <li className="contacts__item">
-            <Link to="/" className="contacts__item">
+          <li className={styles['contacts-item']}>
+            <Link to="/" className={styles['contacts-item']}>
               Contacts
             </Link>
           </li>
-          <li className="contacts__item">
-            <Link to="/" className="contacts__item">
+          <li className={styles['contacts-item']}>
+            <Link to="/" className={styles['contacts-item']}>
               rights
             </Link>
           </li>
         </ul>
 
-        <div className="back-to-top__wrapper">
-          <span className="back-to-top">Back to top</span>
-          <button className="back-to-top__button" onClick={scrollToTop}>
+        <div className={styles['back-to-top__wrapper']}>
+          <span className={styles['back-to-top']}>Back to top</span>
+          <button
+            className={styles['back-to-top__button']}
+            onClick={scrollToTop}
+          >
             <svg
-              className="back-to-top__button-svg"
+              className={styles['back-to-top__button-svg']}
               width="10"
               height="6"
               viewBox="0 0 10 6"
