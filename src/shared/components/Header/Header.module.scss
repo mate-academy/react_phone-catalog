@@ -1,63 +1,79 @@
+@import "../../../styles/media";
+
 .header {
-  top: 0;
-  left: 0;
   width: 100%;
-  display: flex;
-  align-items: center;
   background: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  height: 64px;
+  display: block;
+}
 
+.grid {
+  display: grid;
+  grid-template-columns: inherit;
+  align-items: center;
+  height: 64px;
+}
+
+.logo_img {
+  width: 80px;
+  height: 28px;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.navLink {
+  display: inline-block;
+  position: relative;
+  font-weight: 800;
+  font-size: 12px;
+  text-decoration: none;
+  color: #89939A;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.navLink:hover {
+  color: #313237;
+}
+
+.navLink.active {
+  color: #313237;
+}
+
+.navLink.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  width: 100%;
+  height: 2px;
+  background-color: #313237;
+}
+
+.actions {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-self: end;
+}
+
+@include on-desktop {
   .logo {
-    &_img {
-      width: 80px;
-      height: 28px;
-      padding-left: 10px;
-    }
+    grid-column: 1 / span 3;
+    padding-left: 24px;
   }
 
   .nav {
-    flex: 1;
-  }
-
-  .navList {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-
-    .navLink {
-      display: inline-block;
-      position: relative;
-      font-weight: 800;
-      font-size: 12px;
-      text-decoration: none;
-      color: #89939A;
-      text-transform: uppercase;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #313237;
-      }
-
-      &.active {
-        color: #313237;
-
-        &::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          bottom: -20px;
-          width: 100%;
-          height: 2px;
-          background-color: #313237;
-        }
-      }
-    }
+    grid-column: 4 / span 12;
   }
 
   .actions {
-    display: flex;
-    margin-left: auto;
-    height: 100%;
+    grid-column: 17 / span 8;
   }
 }

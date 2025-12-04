@@ -1,18 +1,14 @@
 @import "../../styles/media";
 
-.lid {
-  margin-top: 40px;
-}
-
 .grid {
   margin-bottom: 80px;
 }
 
 .title {
-  grid-column: span 24;
+  grid-column: 1 / span 4;
   font-size: 48px;
   font-weight: 800;
-  margin-bottom: 32px;
+  margin: 0;
 }
 
 .cartList {

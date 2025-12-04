@@ -18,48 +18,50 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <NavLink to="/">
-          <img
-            className={styles.logo_img}
-            src="/logo/img.png"
-            alt="Nice Gadgets logo"
+      <div className={`${styles.inner} grid-24 ${styles.grid}`}>
+        <div className={styles.logo}>
+          <NavLink to="/">
+            <img
+              className={styles.logo_img}
+              src="/logo/img.png"
+              alt="Nice Gadgets logo"
+            />
+          </NavLink>
+        </div>
+
+        <nav className={styles.nav}>
+          <ul className={styles.navList}>
+            {menuItems.map(item => (
+              <li key={item.to}>
+                <NavLink
+                  to={item.to}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.navLink} ${styles.active}`
+                      : styles.navLink
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className={styles.actions}>
+          <IconButton
+            to="/favorites"
+            src="/icons/heart.svg"
+            alt="Favorites"
+            count={favorites.length}
           />
-        </NavLink>
-      </div>
-
-      <nav className={styles.nav}>
-        <ul className={styles.navList}>
-          {menuItems.map(item => (
-            <li key={item.to}>
-              <NavLink
-                to={item.to}
-                className={({ isActive }) =>
-                  isActive
-                    ? `${styles.navLink} ${styles.active}`
-                    : styles.navLink
-                }
-              >
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <div className={styles.actions}>
-        <IconButton
-          to="/favorites"
-          src="/icons/heart.svg"
-          alt="Favorites"
-          count={favorites.length}
-        />
-        <IconButton
-          to="/cart"
-          src="/icons/basket.svg"
-          alt="Cart"
-          count={cartItems.length}
-        />
+          <IconButton
+            to="/cart"
+            src="/icons/basket.svg"
+            alt="Cart"
+            count={cartItems.length}
+          />
+        </div>
       </div>
     </header>
   );
