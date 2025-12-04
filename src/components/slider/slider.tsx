@@ -24,6 +24,7 @@ export const Slider: React.FC<SliderProps> = ({ images, loop = false }) => {
   const [canNext, setCanNext] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
 
   const onSelect = useCallback(() => {
     if (!emblaApi) {
@@ -55,6 +56,32 @@ export const Slider: React.FC<SliderProps> = ({ images, loop = false }) => {
   );
   const prev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const next = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) {
+      return;
+    }
+
+    const id = setInterval(() => {
+      if (direction === 'forward') {
+        if (emblaApi.canScrollNext()) {
+          emblaApi.scrollNext();
+        } else {
+          setDirection('backward');
+          emblaApi.scrollPrev();
+        }
+      } else {
+        if (emblaApi.canScrollPrev()) {
+          emblaApi.scrollPrev();
+        } else {
+          setDirection('forward');
+          emblaApi.scrollNext();
+        }
+      }
+    }, 3000);
+
+    return () => clearInterval(id);
+  }, [emblaApi, direction]);
 
   return (
     <div className={s.embla}>

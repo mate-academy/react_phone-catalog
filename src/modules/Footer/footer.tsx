@@ -17,7 +17,7 @@ export const FooterPage = () => {
       <menu className={classNames('footer__menu')}>
         <div className="footer__container">
           <NavLink
-            to="/github"
+            to="https://github.com/Ga1dar"
             className={({ isActive }) => {
               return classNames('footer__link', {
                 'footer__link--active': isActive,

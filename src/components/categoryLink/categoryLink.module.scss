@@ -47,21 +47,9 @@
   }
 
   &__flexContainer {
-    @include min-screen($tablet) {
-      width: 187px;
-    }
-
-    @include min-screen($laptop) {
-      width: 320px;      
-    }
-
-    @include min-screen($desktop) {
-      width: 430px;  
-    }
-
-    @include min-screen($largeDesktop) {
-      width: 525px;
-    }
+    height: 100%;
+    width: 100%;
+    
   }
 
   &__link{
@@ -81,6 +69,7 @@
 
     @include min-screen($tablet) {
       margin-top: 25px;
+      
     }
   }
 
@@ -95,22 +84,17 @@
   &__img{
     background-color:$sectionBgPhone;
     object-fit:cover;
-   
-    @include min-screen($tablet) {      
-      height: 145px;
+    height: 100%;
+    width: 100%;
+
+    @include min-screen($laptop) {
+      height: 260px;
     }
 
-    @include min-screen($laptop) {      
-      height: 266px;
+    @include min-screen($largeDesktop) {
+      height: 460px;
     }
-
-    @include min-screen($desktop) {      
-      height: 327px;
-    }
-
-    @include min-screen($largeDesktop) {      
-      height: 495px;
-    }
+    
   }
 
    &__img--tablets {
