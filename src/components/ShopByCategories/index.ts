@@ -1,0 +1,1 @@
+export { ShopByCategories } from './ShopByCategories';

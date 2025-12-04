@@ -1,0 +1,20 @@
+.like-button{
+    width: 40px;
+    height: 40px;
+    background-color: rgba(50, 53, 66, 0.5);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    
+    
+    &:hover {
+        background-color: #4A4D58;
+    }
+
+
+    &--medium{
+        height: 48px;
+        width: 48px;
+    }
+        
+}

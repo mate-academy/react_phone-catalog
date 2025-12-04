@@ -1,0 +1,12 @@
+@import '../../utils/mediaQuery';
+@import '../../utils/gridTemplate';
+
+.product-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    gap: 40px 16px;
+
+    @include tablet{
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    }
+}

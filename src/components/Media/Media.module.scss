@@ -1,0 +1,49 @@
+@import '../../utils/mediaQuery';
+
+.media{
+    display: flex;
+    gap:16px;
+
+    @include mobile{
+        flex-direction: column;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        list-style: none;
+        width: 100%;
+
+        @include mobile{
+            flex-direction: row;
+            gap:8px;
+        }
+    }
+    
+        
+    &__item {
+        border: 1px solid #3B3E4A;
+        width: 100%;
+        aspect-ratio: 1/1;
+        text-align: center;
+
+        @include tablet{
+            width: 100%;
+        }
+
+        @include mobile{
+            min-height: 51px;
+            min-width: 51px;
+        }
+        
+    }
+        
+    &__list-img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+    }
+
+   
+}
