@@ -30,10 +30,7 @@ export const App = () => (
               <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
               <Route path={ROUTES.FAVORITES} element={<FavoritesPage />} />
               <Route path={ROUTES.CART} element={<CartPage />} />
-              <Route
-                path="/product/:productId"
-                element={<ProductDetailsPage />}
-              />
+              <Route path="/product/:itemId" element={<ProductDetailsPage />} />
             </Routes>
           </main>
           <Footer />

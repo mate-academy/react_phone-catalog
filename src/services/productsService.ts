@@ -66,3 +66,9 @@ export async function getSuggestedProducts(count: number = 4) {
 
   return shuffled.slice(0, count);
 }
+
+export async function getProductsByItemId(itemId: string | undefined) {
+  const products = await getAllProducts();
+
+  return products.find(p => p.itemId === itemId) || null;
+}

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Loader } from '../../shared/components/Loader/Loader';
 import {
   getProductDetailsById,
+  getProductsByItemId,
   getSuggestedProducts,
 } from '../../services/productsService';
 import { Product, ProductDetails } from '../../types';
@@ -11,13 +12,30 @@ import { ProductsList } from '../../shared/components/ProductList/ProductsList';
 import { ProductButtons } from '../../shared/components/ProductButtons';
 
 export const ProductDetailsPage: React.FC = () => {
-  const { productId } = useParams();
+  const { itemId } = useParams();
 
-  const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [productDetails, setProductDetails] = useState<ProductDetails | null>(
+    null,
+  );
+  const [genericProduct, setGenericProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedImg, setSelectedImg] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
   const [suggested, setSuggested] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function loadGeneric() {
+      if (!itemId) {
+        return;
+      }
+
+      const item = await getProductsByItemId(itemId);
+
+      setGenericProduct(item);
+    }
+
+    loadGeneric();
+  }, [itemId]);
 
   useEffect(() => {
     async function loadSuggested() {
@@ -30,83 +48,63 @@ export const ProductDetailsPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!productId) {
+    if (!itemId) {
       return;
     }
 
     async function loadData() {
       try {
-        const result = await getProductDetailsById(productId);
+        const result = await getProductDetailsById(itemId);
 
-        setProduct(result);
+        setProductDetails(result);
       } finally {
         setIsLoading(false);
       }
     }
 
     loadData();
-  }, [productId]);
+  }, [itemId]);
 
   useEffect(() => {
-    if (product) {
-      setSelectedImg(product.images[0]);
+    if (productDetails) {
+      setSelectedImg(productDetails.images[0]);
     }
-  }, [product]);
+  }, [productDetails]);
 
   if (isLoading) {
     return <Loader />;
   }
 
-  if (!product) {
+  if (!productDetails) {
     return <h1 className={styles.message}>Product not found</h1>;
   }
 
-  const simpleProduct: {
-    id: number;
-    itemId: string;
-    name: string;
-    price: number;
-    fullPrice: number;
-    image: string;
-    screen: string;
-    ram: string;
-  } = {
-    id: Number(product.id),
-    itemId: product.id,
-    name: product.name,
-    price: product.priceDiscount,
-    fullPrice: product.priceRegular,
-    image: `/${product.images[0]}`,
-    screen: product.screen,
-    ram: product.ram,
-  };
-
   const specs = [
-    { label: 'Screen', value: product.screen },
-    { label: 'Resolution', value: product.resolution },
-    { label: 'Processor', value: product.processor },
-    { label: 'RAM', value: product.ram },
-    { label: 'Camera', value: product.camera },
-    { label: 'Zoom', value: product.zoom },
-    { label: 'Cell', value: product.cell.join(', ') },
+    { label: 'Screen', value: productDetails.screen },
+    { label: 'Resolution', value: productDetails.resolution },
+    { label: 'Processor', value: productDetails.processor },
+    { label: 'RAM', value: productDetails.ram },
+    { label: 'Camera', value: productDetails.camera },
+    { label: 'Zoom', value: productDetails.zoom },
+    { label: 'Cell', value: productDetails.cell.join(', ') },
   ];
 
   return (
     <div className="container">
       <div className={`grid-24 ${styles.page}`}>
-        <h1 className={styles.title}>{product.name}</h1>
+        <h1 className={styles.title}>{productDetails.name}</h1>
 
         <div className={styles.topSection}>
           <div className={styles.leftPart}>
             <div className={styles.gallery}>
-              {product.images.map(img => (
+              {productDetails.images.map(img => (
                 <img
                   key={img}
                   className={`${styles.galleryImage} ${
                     selectedImg === img ? styles.activeThumb : ''
                   }`}
                   src={`/${img}`}
-                  alt={product.name}
+                  alt={productDetails.name}
                   onClick={() => setSelectedImg(img)}
                 />
               ))}
@@ -116,7 +114,7 @@ export const ProductDetailsPage: React.FC = () => {
               <img
                 className={styles.mainImage}
                 src={`/${selectedImg}`}
-                alt={product.name}
+                alt={productDetails.name}
               />
             </div>
           </div>
@@ -125,7 +123,7 @@ export const ProductDetailsPage: React.FC = () => {
             <div className={styles.section}>
               <p className={styles.sectionTitle}>Available colors</p>
               <div className={styles.colors}>
-                {product.colorsAvailable.map(color => (
+                {productDetails.colorsAvailable.map(color => (
                   <button
                     key={color}
                     className={`${styles.colorCircle} ${styles[color]}`}
@@ -137,7 +135,7 @@ export const ProductDetailsPage: React.FC = () => {
             <div className={styles.section}>
               <p className={styles.sectionTitle}>Select capacity</p>
               <div className={styles.capacity}>
-                {product.capacityAvailable.map(cap => (
+                {productDetails.capacityAvailable.map(cap => (
                   <button
                     key={cap}
                     className={`${styles.capacityBtn} ${
@@ -152,11 +150,15 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className={styles.priceBlock}>
-              <span className={styles.priceNew}>{product.priceRegular}</span>
-              <span className={styles.priceOld}>{product.priceDiscount}</span>
+              <span className={styles.priceNew}>
+                {productDetails.priceRegular}
+              </span>
+              <span className={styles.priceOld}>
+                {productDetails.priceDiscount}
+              </span>
             </div>
 
-            <ProductButtons product={simpleProduct} />
+            {genericProduct && <ProductButtons product={genericProduct} />}
 
             <div className={styles.detailsShort}>
               {specs.slice(0, 4).map(s => (
@@ -173,7 +175,7 @@ export const ProductDetailsPage: React.FC = () => {
           <div className={styles.aboutBlock}>
             <h2 className={styles.bottomTitle}>About</h2>
 
-            {product.description.map(section => (
+            {productDetails.description.map(section => (
               <div key={section.title}>
                 <h3 className={styles.aboutSectionTitle}>{section.title}</h3>
                 {section.text.map((paragraph, index) => (
