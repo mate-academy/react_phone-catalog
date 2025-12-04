@@ -37,15 +37,18 @@ module.exports = {
     'prettier'
   ],
   rules: {
+    
     // JS
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
     curly: [2, 'all'],
     'max-len': ['error', {
+      "code": 100,
       ignoreTemplateLiterals: true,
       ignoreComments: true,
     }],
+    
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,
     'operator-linebreak': 0,
@@ -98,6 +101,7 @@ module.exports = {
         },
       },
     ],
+   
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
   settings: {

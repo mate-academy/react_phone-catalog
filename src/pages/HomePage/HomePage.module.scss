@@ -25,12 +25,12 @@
     }
 
     &__title{
-        @include H1-title;
+        @include h1-title;
 
         margin: 0; 
         
         @include mobile{
-            @include H1-mobile;
+            @include h1-mobile;
         }
     }
 

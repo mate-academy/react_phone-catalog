@@ -1,0 +1,64 @@
+.dropdown {
+  position: relative;
+  z-index: 1;
+}
+.dropdown__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #323542;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #323542;
+}
+.dropdown__button:hover {
+  border: 1px solid #4A4D58;
+}
+.dropdown__button--open {
+  border: 1px solid #905BFF;
+}
+.dropdown__button--open:hover {
+  border: 1px solid #905BFF;
+}
+.dropdown__button-title {
+  font-size: 14px;
+  color: #F1F2F9;
+  line-height: 21px;
+  font-weight: 700;
+}
+.dropdown__button-icon {
+  width: 16px;
+  height: 16px;
+}
+.dropdown__list {
+  background-color: #0F1121;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  border: 1px solid #905BFF;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  margin-top: 4px;
+  opacity: 0;
+  visibility: hidden;
+}
+.dropdown__list--open {
+  opacity: 1;
+  visibility: visible;
+}
+.dropdown__item {
+  display: flex;
+  color: #75767F;
+  width: 100%;
+  height: 32px;
+  list-style: none;
+  padding-left: 12px;
+  align-items: center;
+}
+.dropdown__item:hover {
+  background-color: #323542;
+  color: #F1F2F9;
+}
+.dropdown__item--active {
+  color: #F1F2F9;
+}/*# sourceMappingURL=Dropdown.module.css.map */

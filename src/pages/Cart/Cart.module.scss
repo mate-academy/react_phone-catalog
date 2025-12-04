@@ -34,7 +34,7 @@
     }
 
     &__title{
-        @include H1-title;
+        @include h1-title;
 
         margin-top: 16px;
     }
@@ -74,7 +74,7 @@
     }
 
    &__total{
-        @include H2-title;
+        @include h2-title;
    }
 
    &__desc{

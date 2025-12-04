@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-len
 import { useFavouriteContext } from '../../../../context/ShopContext/FavoutiteContext';
 import { Product } from '../../../../types/Producst';
 import s from './LikeButton.module.scss';
@@ -15,7 +16,11 @@ export const LikeButton: React.FC<Props> = ({ size, product }) => {
     <button
       className={`${s['like-button']} ${s[`like-button--${size}`]} `}
       onClick={() => {
-        isLiked ? deleteFavourite(product) : addFavourite(product);
+        if (isLiked) {
+          deleteFavourite(product);
+        } else {
+          addFavourite(product);
+        }
       }}
     >
       <img

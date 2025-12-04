@@ -9,7 +9,7 @@ export const BackButton = () => {
     <button
       onClick={() => {
         navigate(-1);
-      }} 
+      }}
       className={s.backButton}
     >
       <img

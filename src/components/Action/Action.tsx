@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import s from './Action.module.scss';
 import { useShopContext } from '../../context/ShopContext/ShopContext';
-import { useFavouriteContext } from '../../context/ShopContext/FavoutiteContext'
+// eslint-disable-next-line max-len
+import { useFavouriteContext } from '../../context/ShopContext/FavoutiteContext';
 
 type Props = {
   setMenuIsOpen: (v: boolean) => void;

@@ -26,101 +26,129 @@ const getSuggestedProducts = async (count: number) => {
 const VALID_CATEGORY = ['phones', 'tablets', 'accessories'];
 
 export const ProductDetailsPage = () => {
-  const {productId, category} = useParams();
-
-  if(!category || !VALID_CATEGORY.includes(category)){
-    return <Navigate to='/error404'/>;
-  }
-
-  const {item, isLoading, error, fetchData} = useProductItem(productId, category);
-  const {products} = useProductContext();
-  const product = products.find(item => item.itemId === productId);
+  const { productId, category } = useParams();
+  const { item, isLoading, error, fetchData } = useProductItem(
+    productId,
+    category,
+  );
+  const { products } = useProductContext();
+  const product = products.find(good => good.itemId === productId);
   const [mainPhoto, setMainPhoto] = useState(item?.images[0] || '');
   const [suggestedProducts, setSuggestedProduct] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (item) {
       setMainPhoto(item.images[0]);
-      getSuggestedProducts(7)
-        .then(setSuggestedProduct);
+      getSuggestedProducts(7).then(setSuggestedProduct);
     }
   }, [item]);
 
-  if(error) {
-    return <Error errorMEssage="Something went wrong" action={fetchData}/>;
+  if (!category || !VALID_CATEGORY.includes(category)) {
+    return <Navigate to="/error404" />;
   }
 
-  return(
-    isLoading ? <Loader/> : (!item || !product) ? <Error errorMEssage="can not find the item"/> :
+  if (error) {
+    return <Error errorMEssage="Something went wrong" action={fetchData} />;
+  }
+
+  return isLoading ? (
+    <Loader />
+  ) : !item || !product ? (
+    <Error errorMEssage="can not find the item" />
+  ) : (
     <div className={s.productDetailsPage}>
-        <Crumb/>
+      <Crumb />
 
       <div className={s.productDetailsPage__back}>
-          <BackButton/>
+        <BackButton />
       </div>
 
-      <h1 className={s.productDetailsPage__title}>{item?.name}</h1>
+      <h1 className={s.productDetailsPage__title}>{item.name}</h1>
 
-        <div className={s.productDetailsPage__media}>
-          <Media images={item.images} setMainPhoto={setMainPhoto}/>
-        </div> 
+      <div className={s.productDetailsPage__media}>
+        <Media images={item.images} setMainPhoto={setMainPhoto} />
+      </div>
 
       <div className={s['productDetailsPage__main-photo']}>
-          <img className={s.productDetailsPage__img} src={`/${mainPhoto}`} alt="mainphoto" />
-        </div>
+        <img
+          className={s.productDetailsPage__img}
+          src={`/${mainPhoto}`}
+          alt="mainphoto"
+        />
+      </div>
 
-        <div className={s.productDetailsPage__info}>            
+      <div className={s.productDetailsPage__info}>
         <div className={s.productDetailsPage__options}>
           <Options
-              title = {'Available colors'} 
-              options={item.colorsAvailable} 
+            title={'Available colors'}
+            options={item.colorsAvailable}
             optionType="color"
-              item = {item}
+            item={item}
           />
 
-            <Options 
-              title = {'Select capacity'} 
-              options={item.capacityAvailable} 
+          <Options
+            title={'Select capacity'}
+            options={item.capacityAvailable}
             optionType="capacity"
-              item = {item}
+            item={item}
           />
-          </div>
+        </div>
 
         <div className={s['productDetailsPage__price-block']}>
-            <span className={s['productDetailsPage__price-discount']}>{item.priceDiscount}$</span>
-            <span className={s['productDetailsPage__price-full']}>{item.priceRegular}$</span>
-          </div>
+          <span className={s['productDetailsPage__price-discount']}>
+            {item.priceDiscount}$
+          </span>
+          <span className={s['productDetailsPage__price-full']}>
+            {item.priceRegular}$
+          </span>
+        </div>
 
         <div className={s.productDetailsPage__action}>
-            <AddButton size="medium" product={product}/>
+          <AddButton size="medium" product={product} />
 
-            <LikeButton size="medium" product={product}/>
-          </div>
-
-          <TechSpecs specs={['screen', 'resolution', 'processor', 'ram']} product={item} />
+          <LikeButton size="medium" product={product} />
         </div>
+
+        <TechSpecs
+          specs={['screen', 'resolution', 'processor', 'ram']}
+          product={item}
+        />
+      </div>
 
       <div className={s.productDetailsPage__desc}>
         <div className={s.productDetailsPage__about}>
-            <h3 className={s.productDetailsPage__subtitle}>About</h3>
-            <div className={s['productDetailsPage__desc-line']}></div>
+          <h3 className={s.productDetailsPage__subtitle}>About</h3>
+          <div className={s['productDetailsPage__desc-line']}></div>
           <div className={s['productDetailsPage__about-desc']}>
-              <About product={item}/>
+            <About product={item} />
           </div>
         </div>
 
         <div className={s['productDetailsPage__tech-info']}>
           <h3 className={s.productDetailsPage__subtitle}>Tech specs</h3>
-            <div className={s['productDetailsPage__desc-line']}></div>
+          <div className={s['productDetailsPage__desc-line']}></div>
           <div className={s['productDetailsPage__tech-desc']}>
-              <TechSpecs specs={['screen', 'resolution','processor','ram', 'camera','zoom']} product={item}/>
-            </div>
-          </div> 
-        </div>                
-
-        <div className={s.productDetailsPage__suggestions}>
-          <ProductsSlider title={"You may also like"} products={suggestedProducts}/>
+            <TechSpecs
+              specs={[
+                'screen',
+                'resolution',
+                'processor',
+                'ram',
+                'camera',
+                'zoom',
+              ]}
+              product={item}
+            />
+          </div>
+        </div>
       </div>
-      </div> 
-  )
+
+      <div className={s.productDetailsPage__suggestions}>
+        <ProductsSlider
+          title={'You may also like'}
+          products={suggestedProducts}
+        />
+      </div>
+    </div>
+  );
 };

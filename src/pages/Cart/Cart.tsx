@@ -6,33 +6,32 @@ import { useShopContext } from '../../context/ShopContext/ShopContext';
 import s from './Cart.module.scss';
 
 export const Cart = () => {
-  const {inCart,clearStorage } = useShopContext();
+  const { inCart, clearStorage } = useShopContext();
   const [openModal, setOpenModal] = useState(false);
 
-  const totalSum = inCart.reduce(function(accum, current){
-    return  accum + (current.quantity * current.price);
+  const totalSum = inCart.reduce(function (accum, current) {
+    return accum + current.quantity * current.price;
   }, 0);
 
-  const totalAmount = inCart.reduce(function(accum, current){
-    return  accum + current.quantity;
+  const totalAmount = inCart.reduce(function (accum, current) {
+    return accum + current.quantity;
   }, 0);
 
-  const checkout = ()=>{
+  const checkout = () => {
     clearStorage();
     setOpenModal(false);
   };
 
-
   return (
     <section className={s.cart}>
-      <BackButton/>
+      <BackButton />
       <h1 className={s.cart__title}>Cart</h1>
 
-      {inCart.length
-        ?  <div className={s.cart__container}>
+      {inCart.length ? (
+        <div className={s.cart__container}>
           <div className={s.cart__list}>
             {inCart.map((item, index) => {
-              return <ItemCard item={item} key={index}/>;
+              return <ItemCard item={item} key={index} />;
             })}
           </div>
 
@@ -44,22 +43,37 @@ export const Cart = () => {
 
             <div className={s.cart__line}></div>
 
-            <button className={s['cart__checkout-button']} onClick={()=> setOpenModal(true)}>Checkout</button>
+            <button
+              className={s['cart__checkout-button']}
+              onClick={() => setOpenModal(true)}
+            >
+              Checkout
+            </button>
           </div>
-        </div> 
-        : <Empty message='Your cart is empty' img ='cart'/>
-      }  
+        </div>
+      ) : (
+        <Empty message="Your cart is empty" img="cart" />
+      )}
 
-     
-      <div className={`${s.cart__modal} ${openModal ? s['cart__modal--open'] : ''}`}>
+      <div
+        className={`${s.cart__modal} ${openModal ? s['cart__modal--open'] : ''}`}
+      >
         <div className={s['cart__modal-content']}>
-          <h2 className={s['cart__modal-title']}>Checkout is not implemented yet. 
-            <br/> Do you want to clear the Cart?
+          <h2 className={s['cart__modal-title']}>
+            Checkout is not implemented yet.
+            <br /> Do you want to clear the Cart?
           </h2>
 
           <div className={s.cart__btns}>
-            <button className={s['cart__modal-btn']} onClick={checkout}>Yes</button>
-            <button className={s['cart__modal-btn']} onClick={()=> setOpenModal(false)}>No</button>
+            <button className={s['cart__modal-btn']} onClick={checkout}>
+              Yes
+            </button>
+            <button
+              className={s['cart__modal-btn']}
+              onClick={() => setOpenModal(false)}
+            >
+              No
+            </button>
           </div>
         </div>
       </div>

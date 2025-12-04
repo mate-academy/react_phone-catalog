@@ -6,11 +6,13 @@
     @include grid;
 
     padding: 24px 0 80px;
-    grid-auto-rows: max-content;
+
 
     @include tablet{
         padding: 24px 32px 64px;
+
         @include grid-tablet;
+
         width: 100%;
     }
 

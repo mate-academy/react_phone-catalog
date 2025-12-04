@@ -52,14 +52,22 @@ export const ShopProvider: React.FC<Props> = ({ children }) => {
   const changeQuantity = (product: Product, type: 'increase' | 'decrease') => {
     const newGoods = inCart.map(item => {
       if (item.id === product.id) {
-        type === 'increase' ? item.quantity++ : item.quantity--;
+        const newQuantity =
+          type === 'increase' ? item.quantity + 1 : item.quantity - 1;
+
+        return {
+          ...item,
+          quantity: newQuantity,
+        };
       }
 
       return item;
     });
 
-    localStorage.setItem('inCart', JSON.stringify(newGoods));
-    setinCart(newGoods);
+    const filteredGoods = newGoods.filter(item => item.quantity > 0);
+
+    localStorage.setItem('inCart', JSON.stringify(filteredGoods));
+    setinCart(filteredGoods);
   };
 
   const clearStorage = () => {

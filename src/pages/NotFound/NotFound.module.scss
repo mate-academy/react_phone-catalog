@@ -14,13 +14,13 @@
     }
 
     &__title{
-        @include H1-title;
+        @include h1-title;
 
         color: #75767F;
     }
 
     &__subTitle{
-        @include H2-title;
+        @include h2-title;
 
         color: #75767F;
     }

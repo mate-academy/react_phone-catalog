@@ -15,13 +15,13 @@
     }
 
     &__title{
-        @include H2-title;
+        @include h2-title;
 
         color: #F1F2F9;
         margin: 0;
 
         @include mobile{
-            @include H2-mobile;
+            @include h2-mobile;
         }
     }
 

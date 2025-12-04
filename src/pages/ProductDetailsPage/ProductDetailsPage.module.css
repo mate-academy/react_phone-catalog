@@ -1,0 +1,208 @@
+.productDetailsPage {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  grid-auto-rows: max-content;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  padding: 24px 0 81px;
+}
+@media (max-width: 1199px) {
+  .productDetailsPage {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: max-content;
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+    width: 100%;
+    padding: 24px 24px 64px;
+  }
+}
+@media (max-width: 639px) {
+  .productDetailsPage {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: max-content;
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+    padding: 24px 16px 64px;
+  }
+}
+.productDetailsPage > * {
+  grid-column: 1/-1;
+}
+.productDetailsPage__back {
+  margin-top: 40px;
+}
+@media (max-width: 639px) {
+  .productDetailsPage__back {
+    margin-top: 24px;
+  }
+}
+.productDetailsPage__title {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-top: 16px;
+}
+@media (max-width: 639px) {
+  .productDetailsPage__title {
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+}
+.productDetailsPage__media {
+  grid-column: 1/3;
+  margin-top: 40px;
+}
+@media (max-width: 1199px) {
+  .productDetailsPage__media {
+    grid-column: 1/2;
+  }
+}
+@media (max-width: 639px) {
+  .productDetailsPage__media {
+    grid-column: 1/-1;
+    margin-top: 32px;
+    grid-row: 5;
+  }
+}
+.productDetailsPage__main-photo {
+  grid-column: 3/13;
+  margin-top: 40px;
+}
+@media (max-width: 1199px) {
+  .productDetailsPage__main-photo {
+    grid-column: 2/8;
+  }
+}
+@media (max-width: 639px) {
+  .productDetailsPage__main-photo {
+    grid-column: 1/-1;
+    margin-top: 32px;
+    grid-row: 4;
+  }
+}
+.productDetailsPage__img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  aspect-ratio: 1/1;
+}
+.productDetailsPage__info {
+  grid-column: 14/21;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
+}
+@media (max-width: 1199px) {
+  .productDetailsPage__info {
+    grid-column: 8/13;
+  }
+}
+@media (max-width: 639px) {
+  .productDetailsPage__info {
+    grid-column: 1/-1;
+  }
+}
+.productDetailsPage__options {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.productDetailsPage__price-block {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.productDetailsPage__price-discount {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #F1F2F9;
+}
+.productDetailsPage__price-full {
+  font-weight: 600;
+  font-size: 22px;
+  text-decoration: line-through;
+  color: #75767F;
+}
+.productDetailsPage__action {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.productDetailsPage__desc {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 64px;
+  margin-top: 80px;
+}
+@media (max-width: 1199px) {
+  .productDetailsPage__desc {
+    flex-direction: column;
+    margin-top: 64px;
+  }
+}
+@media (max-width: 639px) {
+  .productDetailsPage__desc {
+    margin-top: 56px;
+    gap: 56px;
+  }
+}
+.productDetailsPage__desc-line {
+  height: 1px;
+  width: 100%;
+  background-color: #3B3E4A;
+  margin-top: 16px;
+}
+.productDetailsPage__about {
+  width: 560px;
+}
+@media (max-width: 1199px) {
+  .productDetailsPage__about {
+    width: 100%;
+  }
+}
+.productDetailsPage__about-desc {
+  margin-top: 32px;
+}
+.productDetailsPage__tech-info {
+  width: 512px;
+}
+@media (max-width: 1199px) {
+  .productDetailsPage__tech-info {
+    width: 100%;
+  }
+}
+.productDetailsPage__tech-desc {
+  margin-top: 25px;
+}
+.productDetailsPage__subtitle {
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+@media (max-width: 639px) {
+  .productDetailsPage__subtitle {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+}
+.productDetailsPage__suggestions {
+  grid-column: 1/-1;
+  margin-top: 80px;
+}
+@media (max-width: 639px) {
+  .productDetailsPage__suggestions {
+    margin-top: 56px;
+  }
+}/*# sourceMappingURL=ProductDetailsPage.module.css.map */

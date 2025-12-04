@@ -52,9 +52,9 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
           setProduct(data);
           setIsLoading(false);
         })
-        .catch(error => {
+        .catch(er => {
           setIsLoading(false);
-          setError(error.message);
+          setError(er.message);
         });
     }, 2000);
   };

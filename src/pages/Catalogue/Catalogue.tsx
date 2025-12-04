@@ -15,6 +15,8 @@ type Props = {
   title: string;
 };
 
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 export const Catalogue: React.FC<Props> = ({ type, title }) => {
   const { products, error, isLoading, fetchData } = useProductContext();
   const [searchParams] = useSearchParams();
@@ -59,23 +61,25 @@ export const Catalogue: React.FC<Props> = ({ type, title }) => {
       {filtredProducts.length ? (
         <div className={s['catalogue__product-container']}>
           <div className={s['catalogue__filter-sort']}>
-            <label className={s['catalogue__filter-label']}>Sort by</label>
-            <Dropdown
-              type={'sort'}
-              openFilter={openFilter}
-              setOpenFilter={setOpenFilter}
-            />
+            <label className={s['catalogue__filter-label']}>
+              Sort by
+              <Dropdown
+                type="sort"
+                openFilter={openFilter}
+                setOpenFilter={setOpenFilter}
+              />
+            </label>
           </div>
 
           <div className={s['catalogue__filter-perPage']}>
             <label className={s['catalogue__filter-label']}>
               Items on page
+              <Dropdown
+                type="perPage"
+                openFilter={openFilter}
+                setOpenFilter={setOpenFilter}
+              />
             </label>
-            <Dropdown
-              type={'perPage'}
-              openFilter={openFilter}
-              setOpenFilter={setOpenFilter}
-            />
           </div>
 
           <div className={s['catalogue__product-list']}>

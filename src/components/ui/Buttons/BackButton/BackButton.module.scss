@@ -1,7 +1,7 @@
 @import '../../../../utils/mixins';
 
 .backButton{
-    @include small_text;
+    @include small-text;
 
     display: flex;
     align-items: center;

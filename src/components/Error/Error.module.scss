@@ -31,9 +31,8 @@
     }
 
     &__title{
-        @include H1-title;
-
-        font-size: 60px;
+        @include h1-title;
+        
         color: #75767F;
     }
 

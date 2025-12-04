@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import s from './ShopByCategories.module.scss';
-import { useProductContext } from '../../context/ShopContext/ProductContext';
+import { useShopDataContext } from '../../context/ShopContext/ShopDataContext';
 
 export const ShopByCategories = () => {
-  const { phones, tablets, accessories } = useProductContext();
+  const { phones, tablets, accessories } = useShopDataContext();
   const categories = ['phones', 'tablets', 'accessories'];
 
   const getData = (category: string) => {
@@ -28,12 +28,12 @@ export const ShopByCategories = () => {
           return (
             <div key={index} className={s['shop-by-categories__item']}>
               <NavLink
-                to="/phones"
+                to={`/${category}`}
                 className={`${s['shop-by-categories__link']} ${s[`shop-by-categories__link--${category}`]}`}
               >
                 <img
                   src={`img/category-${category}.webp`}
-                  alt=""
+                  alt="category"
                   className={s['shop-by-categories__img']}
                 />
               </NavLink>
@@ -43,10 +43,10 @@ export const ShopByCategories = () => {
                   to={`/${category}`}
                   className={s['shop-by-categories__subtitle']}
                 >
-                  {category}
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
                 </NavLink>
                 <p className={s['shop-by-categories__counter']}>
-                  {data?.length} models
+                  {data.data.length} models
                 </p>
               </div>
             </div>

@@ -51,7 +51,7 @@
     }
 
     &__title{
-        @include H3-title;
+        @include h3-title;
 
         background: linear-gradient(90deg,
                     rgba(26, 18, 148, 1) 0%,
@@ -63,19 +63,19 @@
         text-transform: uppercase;
 
         @include mobile{
-            @include H3-mobile;
+            @include h3-mobile;
         }
 
     }
 
     &__sub-title{
-        @include H4-title;
+        @include h4-title;
 
         margin: 0;
         color: #9899a0;
 
         @include mobile {
-            @include H4-mobile;
+            @include h4-mobile;
         }
     }
 

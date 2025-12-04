@@ -96,22 +96,26 @@ export const ShopDataProvider: React.FC<Props> = ({ children }) => {
     const newStates = results.reduce(
       (acc, result, index) => {
         const key = resourceKeys[index];
+        let newStatePart;
 
         if (result.status === 'fulfilled') {
-          acc[key] = {
+          newStatePart = {
             data: result.value,
             isLoading: false,
             error: null,
           };
         } else {
-          acc[key] = {
+          newStatePart = {
             data: initialValues[key].data,
             isLoading: false,
             error: `Something went wrong`,
           };
         }
 
-        return acc;
+        return {
+          ...acc,
+          [key]: newStatePart,
+        };
       },
       {} as Pick<typeof initialValues, 'phones' | 'accessories' | 'tablets'>,
     );

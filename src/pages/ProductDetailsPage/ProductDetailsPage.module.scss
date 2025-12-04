@@ -35,12 +35,12 @@
     }
     
     &__title{
-        @include H2-title;
+        @include h2-title;
 
         margin-top: 16px; 
 
         @include mobile{
-            @include H2-mobile;
+            @include h2-mobile;
         }
     }
 
@@ -112,13 +112,13 @@
     }
 
     &__price-discount{
-        @include H2-title;
+        @include h2-title;
+
         color: #F1F2F9;
         
     }
 
     &__price-full{
-        font-family: Mont;
         font-weight: 600;
         font-size: 22px;
         text-decoration: line-through;
@@ -180,10 +180,10 @@
     }
 
     &__subtitle{
-        @include H3-title;
+        @include h3-title;
 
         @include mobile{
-            @include H3-mobile;
+            @include h3-mobile;
         }
     }
 

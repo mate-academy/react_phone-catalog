@@ -5,12 +5,12 @@
     width: 100%;
 
     &__title{
-        @include H2-title;
+        @include h2-title;
 
         margin: 0 0 24px;
 
         @include mobile{
-            @include H2-mobile;
+            @include h2-mobile;
         }
     }
 
@@ -46,9 +46,10 @@
     }
 
     &__subtitle{
-        @include H4-title;
+        @include h4-title;
 
         color: #F1F2F9;
+        text-decoration: none;
     
         &:hover{
             color: #905BFF;

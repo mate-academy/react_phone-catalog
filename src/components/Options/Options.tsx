@@ -4,11 +4,10 @@ import { useState } from 'react';
 import { Item } from '../../types/Item';
 
 type Props = {
-  title: string,
-  options: string[],
-  optionType: 'color'| 'capacity',
-  item: Item
-
+  title: string;
+  options: string[];
+  optionType: 'color' | 'capacity';
+  item: Item;
 };
 
 export const Options: React.FC<Props> = ({
@@ -17,17 +16,26 @@ export const Options: React.FC<Props> = ({
   optionType,
   item,
 }) => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [choosenColor, setChoosenColor] = useState(item.color);
   const [choosenCapacity, setChoosenCapacity] = useState(item.capacity);
 
   const handleChangeProduct = (type: 'color' | 'capacity', newChar: string) => {
-    type === 'color'? setChoosenColor(newChar) : setChoosenCapacity(newChar);
-    const color = type === 'color' ? newChar : item.color;
-    const capacity = type === 'capacity' ? newChar : item.capacity;
+    let finalColor: string;
+    let finalCapacity: string;
+
+    if (type === 'color') {
+      setChoosenColor(newChar);
+      finalColor = newChar;
+      finalCapacity = choosenCapacity;
+    } else {
+      setChoosenCapacity(newChar);
+      finalCapacity = newChar;
+      finalColor = choosenColor;
+    }
 
     navigate(
-      `/product/${item.namespaceId}-${capacity.toLowerCase()}-${color.replace(' ', '-')}`
+      `/product/${item.namespaceId}-${finalCapacity.toLowerCase()}-${finalColor.replace(' ', '-')}`,
     );
   };
 
@@ -37,32 +45,34 @@ export const Options: React.FC<Props> = ({
 
       <div className={s.options__list}>
         {options.map((option, index) => {
-          const isActive = 
+          const isActive =
             (optionType === 'color' && choosenColor === option) ||
             (optionType === 'capacity' && choosenCapacity === option);
 
           const baseClass = s[`options__${optionType}`];
-        
-          const colorClass = optionType === 'color' ? s[`options__color--${option}`] : '';
-            
-          const activeClass = isActive ? s[`options__${optionType}--active`] : '';
 
+          const colorClass =
+            optionType === 'color' ? s[`options__color--${option}`] : '';
 
-          return(
+          const activeClass = isActive
+            ? s[`options__${optionType}--active`]
+            : '';
+
+          return (
             <label
               key={index}
-              className={`${baseClass} ${colorClass} ${activeClass}`} 
+              className={`${baseClass} ${colorClass} ${activeClass}`}
             >
               {optionType === 'capacity' && option}
 
-              <input 
+              <input
                 className={s.options__btn}
-                type="radio" 
-                name={optionType} 
+                type="radio"
+                name={optionType}
                 value={option}
                 onChange={() => {
-                  handleChangeProduct(optionType, option)
-                }} 
+                  handleChangeProduct(optionType, option);
+                }}
               />
             </label>
           );
@@ -72,41 +82,3 @@ export const Options: React.FC<Props> = ({
     </div>
   );
 };
-
-//   return(
-//     <div className={s.options}>
-//       <span className={s.options__title}>{title}</span>
-
-//       <div className={s.options__list}>
-//         {options.map((option, index) => {
-//           return(
-//             <label
-//               key={index}
-//               className={`
-//                 ${s[`options__${optionType}`]}
-//                                                 ${s[`options__color--${option}`]} 
-//                                                 ${choosenColor === option ? s[`options__color--active`] : null}
-//                                                 ${choosenCapacity === option ? s[`options__capacity--active`] : null}
-//                                             `}
-//             >
-//               {optionType=== 'capacity' && option}
-
-//               <input 
-//                 className={s.options__btn}
-//                 type="radio" 
-//                 name="color" 
-//                 value={option}
-//                 onChange={()=> {
-// handleChangeProduct(optionType, option)
-// }} 
-//                 }}
-//               />
-//             </label>
-//           );
-//         })}
-//       </div>
-
-//       <div className={s.options__line}></div>
-//     </div>
-//   );
-// };

@@ -1,6 +1,7 @@
 import { Crumb } from '../../components/Crumb';
 import { Empty } from '../../components/Empty';
 import { ProductList } from '../../components/ProductList';
+// eslint-disable-next-line max-len
 import { useFavouriteContext } from '../../context/ShopContext/FavoutiteContext';
 import s from './Favourite.module.scss';
 
