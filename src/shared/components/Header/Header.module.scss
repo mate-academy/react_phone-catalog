@@ -1,7 +1,6 @@
 @import "../../../styles/media";
 
 .header {
-  width: 100%;
   background: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: block;
@@ -65,15 +64,37 @@
 
 @include on-desktop {
   .logo {
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 4;
     padding-left: 24px;
   }
 
   .nav {
-    grid-column: 4 / span 12;
+    grid-column: 5 / span 16;
+    display: flex;
+    justify-content: start;
   }
 
   .actions {
-    grid-column: 17 / span 8;
+    grid-column: 21 / span 4;
+  }
+}
+
+@include on-tablet {
+  .logo {
+    grid-column: 1 / span 2;
+    padding-left: 16px;
+  }
+
+  .logo_img {
+    width: 64px;
+    height: 22px;
+  }
+
+  .nav {
+    grid-column: 3 / span 8;
+  }
+
+  .actions {
+    grid-column: 11 / span 2;
   }
 }

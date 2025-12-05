@@ -6,10 +6,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  margin-bottom: 24px;
 }
 
 .title {
-  display: block;
   font-size: 32px;
   font-weight: 800;
   color: #313237;
@@ -21,21 +22,32 @@
 }
 
 .arrow {
-  border: 1px solid #e2e6e9;
-  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 32px;
   height: 32px;
-  font-size: 18px;
+
+  border: 1px solid #e2e6e9;
+  background: #fff;
+  border-radius: 4px;
+
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: background 0.2s, border-color 0.2s;
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background: #f5f5f5;
+    border-color: #bfc4c9;
+  }
 
   &:disabled {
     opacity: 0.4;
     cursor: not-allowed;
-  }
-
-  &:hover:not(:disabled) {
-    background: #f5f5f5;
-    transform: scale(1.1);
   }
 }

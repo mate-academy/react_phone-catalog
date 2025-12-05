@@ -1,30 +1,25 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../../types';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { NavigationOptions } from 'swiper/types';
+
 type Props = {
   title: string;
   products: Product[];
-  itemsToShow?: number;
 };
 
-export const ProductsSlider: React.FC<Props> = ({
-  title,
-  products,
-  itemsToShow = 4,
-}) => {
-  const [start, setStart] = useState(0);
-
-  const canPrev = start > 0;
-  const canNext = start < Math.max(products.length - itemsToShow, 0);
-
-  const prev = () => canPrev && setStart(i => i - 1);
-  const next = () => canNext && setStart(i => i + 1);
-
-  const visible = products.slice(start, start + itemsToShow);
-
+export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const showOldPrice = title === 'Hot prices';
+
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
     <section className={styles.section}>
@@ -32,32 +27,43 @@ export const ProductsSlider: React.FC<Props> = ({
         <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.controls}>
-          <button
-            className={styles.arrow}
-            onClick={prev}
-            disabled={!canPrev}
-            aria-label="Previous"
-          >
-            &#10094;
+          <button ref={prevRef} className={styles.arrow} aria-label="Previous">
+            <img src="/icons/ChevronArrowLeft.svg" alt="Previous" />
           </button>
-          <button
-            className={styles.arrow}
-            onClick={next}
-            disabled={!canNext}
-            aria-label="Next"
-          >
-            &#10095;
+
+          <button ref={nextRef} className={styles.arrow} aria-label="Next">
+            <img src="/icons/ChevronArrowRight.svg" alt="Next" />
           </button>
         </div>
       </div>
 
-      <div className="grid-24">
-        {visible.map(p => (
-          <div key={p.id} className="col-6">
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={24}
+        slidesPerView={4}
+        breakpoints={{
+          0: { slidesPerView: 1.6, spaceBetween: 8 },
+          640: { slidesPerView: 2.5, spaceBetween: 12 },
+          1200: { slidesPerView: 4, spaceBetween: 24 },
+        }}
+
+        onBeforeInit={(swiper) => {
+          const nav = swiper.params.navigation as NavigationOptions;
+
+          nav.prevEl = prevRef.current;
+          nav.nextEl = nextRef.current;
+        }}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+      >
+        {products.map(p => (
+          <SwiperSlide key={p.id}>
             <ProductCard product={p} showOldPrice={showOldPrice} />
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </section>
   );
 };
