@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
-import favourites from '../../Icons/Vector (Stroke).svg';
+import favourites from '../../Icons/Favourites (Heart Like).svg';
 import cart from '../../Icons/Group 17.svg';
 import { useContext, useMemo } from 'react';
 import { CartContext } from '../../contexts/CartContext';

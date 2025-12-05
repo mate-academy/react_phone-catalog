@@ -110,12 +110,18 @@
 
     transition: 0.5s;
 
+    &-svg {
+        color: $icons;
+        transition: 0.5s;
+        rotate: -90deg;
+    }
+
     &:hover{
         border: 1px solid $icons;
         transition: 0.5s;
 
-        .back-to-top__button-svg path{
-            fill: $primary-color;
+        .back-to-top__button-svg{
+            color: $primary-color;
             transition: 0.5s;
         }
     }

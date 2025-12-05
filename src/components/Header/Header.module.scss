@@ -126,7 +126,7 @@
 
   box-sizing: border-box;
   width: 100% !important  ;
-  height: 48px;
+  height: 100%;
   margin-left: clamp(16px, 5vw, 24px);
 
   @include tablet {
@@ -140,6 +140,7 @@
   display: flex;
   gap: clamp(32px, 5vw, 64px);
   align-items: center;
+  height: 100%;
 
   width: 100%;
   max-width: 425px;
@@ -154,6 +155,7 @@
     font-weight: 600;
     color: $secondary-color;
     letter-spacing: 4%;
+    height: 100%;
 
     transition: all 0.3s ease;
 
@@ -171,7 +173,7 @@
     align-items: center;
     justify-content: center;
 
-    height: 27px;
+    height: 100%;
 
     font-size: $small-font;
     font-weight: 700;
@@ -187,7 +189,7 @@
       content: '';
 
       position: absolute;
-      bottom: -6px;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
 
@@ -218,7 +220,7 @@
         content: '';
 
         position: absolute;
-        bottom: -6px;
+        bottom: 0;
         transform: translateX(-50%);
 
         width: 100%;

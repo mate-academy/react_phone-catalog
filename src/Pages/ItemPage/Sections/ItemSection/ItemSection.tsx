@@ -10,7 +10,7 @@ import {
 } from '../../../../types/model';
 // eslint-disable-next-line max-len
 import favoritesActive from '../../../../Icons/Favourites Filled (Heart Like).svg';
-import favoritesNonActive from '../../../../Icons/Vector (Stroke).svg';
+import favoritesNonActive from '../../../../Icons/Favourites (Heart Like).svg';
 import { useNavigate } from 'react-router-dom';
 import styles from './ItemSection.module.scss';
 import cn from 'classnames';

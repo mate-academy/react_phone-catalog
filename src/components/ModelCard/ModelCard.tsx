@@ -1,5 +1,5 @@
 import { AccessoriesModel, PhoneModel, TabletModel } from '../../types/model';
-import favoritesNonActive from '../../Icons/Vector (Stroke).svg';
+import favoritesNonActive from '../../Icons/Favourites (Heart Like).svg';
 
 import styles from './ModelCard.module.scss';
 import cn from 'classnames';

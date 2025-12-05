@@ -52,7 +52,8 @@
     "stylelint-config-clean-order": "^8.0.0",
     "stylelint-config-standard-scss": "^16.0.0",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vite-plugin-svgr": "^4.5.0"
   },
   "scripts": {
     "start": "mate-scripts start -l",

@@ -54,11 +54,11 @@
 .button:hover{
     border: 1px solid $icons;
     transition-duration: 0.5s;
-    
-    .slider__svg path{
-        fill: $primary-color;
-        transition-duration: 0.5s;
-    }
+     
+}
+
+.slider__svg {
+    color: $primary-color;
 }
 
 .models{

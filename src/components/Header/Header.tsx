@@ -3,7 +3,7 @@ import logo from '../../images/Logo.svg';
 import styles from './Header.module.scss';
 import { useContext, useMemo, useState } from 'react';
 import { BurgerMenu } from '../BurgerMenu';
-import favourites from '../../Icons/Vector (Stroke).svg';
+import favourites from '../../Icons/Favourites (Heart Like).svg';
 import cart from '../../Icons/Group 17.svg';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';

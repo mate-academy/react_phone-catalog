@@ -26,12 +26,11 @@ export const ItemPage: React.FC<Props> = ({ kindOfModel, category }) => {
 
   const loadCards = [0, 0, 0, 0];
 
-  // Список всіх моделей даної категорії
   const [currentModels, setCurrentModels] = useState<
   PhoneModel[] | TabletModel[] | AccessoriesModel[]
   >([]);
 
-  // Конкретна вибрана модель
+  // Specific model state
   const [model, setModel] = useState<
   PhoneModel | TabletModel | AccessoriesModel | null
   >(null);

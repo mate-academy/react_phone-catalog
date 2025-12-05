@@ -43,6 +43,16 @@ export const ModelsSortForm = () => {
     setSearchParams(params);
   };
 
+  const generalQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    handleChangeQuantity(e);
+    handleChangeSelectQuantity(e);
+  };
+
+  const generalSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    handleChangeSort(e);
+    handleChangeSelectQuery(e);
+  };
+
   return (
     <div className={styles['models__sort-form']}>
       <div className={styles['models__sort-formwrapper']}>
@@ -52,10 +62,7 @@ export const ModelsSortForm = () => {
           Sort by
           <select
             value={querySelectValue}
-            onChange={e => {
-              handleChangeSort(e);
-              handleChangeSelectQuery(e);
-            }}
+            onChange={e => generalSortChange(e)}
             className={styles.model__select}
           >
             <option value="age">Newest</option>
@@ -67,10 +74,7 @@ export const ModelsSortForm = () => {
           Items on page
           <select
             value={quantitySelectValue}
-            onChange={e => {
-              handleChangeQuantity(e);
-              handleChangeSelectQuantity(e);
-            }}
+            onChange={e => generalQuantityChange(e)}
             className={styles.model__select}
           >
             <option value="">16</option>
