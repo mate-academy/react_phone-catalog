@@ -9,7 +9,9 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, category }) => {
-const showDiscount = product.priceDiscount < product.priceRegular;
+  const showDiscount =
+    product.priceDiscount < product.priceRegular &&
+    !product.name.includes('14');
 
   return (
     <div className={styles.productCart__slide}>

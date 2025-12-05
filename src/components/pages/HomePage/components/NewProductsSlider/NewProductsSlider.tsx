@@ -16,7 +16,8 @@ export const NewProductsSlider = () => {
     setLoading(true);
     getProductsByCategory('phones')
       .then(data => {
-        const filtered = data.filter(item => item.namespaceId.includes('14'))
+        const filtered = data.filter(item => item.namespaceId.includes('14'));
+
         setProducts(filtered);
       })
       .catch(() => setError('Try again later'))

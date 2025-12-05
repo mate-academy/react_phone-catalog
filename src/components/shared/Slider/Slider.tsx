@@ -26,4 +26,3 @@ export const Slider: React.FC<Props> = ({ products, current }) => {
     </div>
   );
 };
-

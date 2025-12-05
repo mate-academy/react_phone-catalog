@@ -26,12 +26,15 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   // --- URL PARAMS ---
   const sortByFromURL = (searchParams.get('sortBy') as SortBy) || 'Newest';
   const pageFromURL = Number(searchParams.get('page') || 1);
-  const perPageFromURL = Number(searchParams.get('itemsPerPage') || 16) as ItemsOnPage;
+  const perPageFromURL = Number(
+    searchParams.get('itemsPerPage') || 16,
+  ) as ItemsOnPage;
 
   // LOCAL STATE synced with URL
   const [sortOption, setSortOption] = useState<SortBy>(sortByFromURL);
   const [currentPage, setCurrentPage] = useState(pageFromURL);
-  const [perPageOption, setPerPageOption] = useState<ItemsOnPage>(perPageFromURL);
+  const [perPageOption, setPerPageOption] =
+    useState<ItemsOnPage>(perPageFromURL);
 
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
@@ -45,14 +48,20 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   // CLOSE DROPDOWNS
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (perPageRef.current?.contains(event.target as Node)) return;
-      if (sortRef.current?.contains(event.target as Node)) return;
+      if (perPageRef.current?.contains(event.target as Node)) {
+        return;
+      }
+
+      if (sortRef.current?.contains(event.target as Node)) {
+        return;
+      }
 
       setIsPerPageOpen(false);
       setIsSortOpen(false);
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
@@ -63,7 +72,10 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
 
     getProductsByCategory(category)
       .then(data => {
-        const filtered = data.filter(item => item.priceDiscount < item.priceRegular);
+        const filtered = data.filter(
+          item => item.priceDiscount < item.priceRegular,
+        );
+
         setItems(filtered);
       })
       .catch(() => setError('Failed to load products'))
@@ -106,8 +118,13 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   const nextPage = () => setCurrentPage(prev => prev + 1);
   const prevPage = () => setCurrentPage(prev => prev - 1);
 
-  if (loading) return <Loader />;
-  if (error) return <p>{error}</p>;
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <section className={styles.products}>

@@ -6,9 +6,9 @@ type Props = {
   to: string;
   img: string;
   count?: number;
-  className: string; // головний BEM-клас блоку (icons__icon / burgerMenu__icon)
-  activeClass?: string; // модифікатор --active
-  countClass?: string; // клас лічильника
+  className: string;
+  activeClass?: string;
+  countClass?: string;
   onClick?: () => void;
 };
 

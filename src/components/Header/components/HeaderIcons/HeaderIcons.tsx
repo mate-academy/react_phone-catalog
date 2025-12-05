@@ -11,6 +11,7 @@ import closeIcon from '../../../../icons/Close.png';
 import { FavoritesContext } from '../../../../providers/FavoritesProvider';
 import { CartContext } from '../../../../providers/CartProvider';
 import { HeaderIconItem } from '../HeaderIconItem/HeaderIconItem';
+import { getCartCount } from '../../../../utils/cartUtils';
 
 type Props = {
   toggleBurger: () => void;
@@ -41,7 +42,7 @@ export const HeaderIcons: React.FC<Props> = ({
       <HeaderIconItem
         to="/cart"
         img={cartIcon}
-        count={cart.length}
+        count={getCartCount(cart)}
         className={classNames(
           styles.icons__icon,
           styles['icons__icon--type-cart'],

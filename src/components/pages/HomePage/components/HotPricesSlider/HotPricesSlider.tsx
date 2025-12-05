@@ -17,8 +17,9 @@ export const HotPricesSlider = () => {
     getProductsByCategory('phones')
       .then(data => {
         const filtered = data.filter(
-          item => item.priceDiscount < item.priceRegular
+          item => item.priceDiscount < item.priceRegular,
         );
+
         setProducts(filtered);
       })
       .catch(() => setError('Try again later'))
@@ -41,7 +42,7 @@ export const HotPricesSlider = () => {
       )}
 
       {!loading && products.length > 0 && (
-        <Slider products={products} current={current}  />
+        <Slider products={products} current={current} />
       )}
 
       {!loading && products.length === 0 && <p>There are no hot products</p>}

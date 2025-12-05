@@ -52,17 +52,17 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     loadProduct();
   }, [category, productId]);
 
-
-
   // CHANGECOLOR
   const handleColorChange = (color: string) => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
 
     const sameModel = products.find(
       item =>
         item.namespaceId === product.namespaceId &&
         item.color === color &&
-        item.capacity === product.capacity
+        item.capacity === product.capacity,
     );
 
     if (sameModel) {
@@ -72,13 +72,15 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
 
   // CANGECAPACITY
   const handleCapacityChange = (capacity: string) => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
 
     const sameModel = products.find(
       item =>
         item.namespaceId === product.namespaceId &&
         item.capacity === capacity &&
-        item.color === product.color
+        item.color === product.color,
     );
 
     if (sameModel) {
@@ -87,12 +89,22 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   };
 
   // SHOWDISCOUNT
-  const hasDiscount = product && product.priceDiscount < product.priceRegular;
+  const hasDiscount =
+    product &&
+    product.priceDiscount < product.priceRegular &&
+    !product.name.includes('14');
 
+  if (loading) {
+    return <Loader />;
+  }
 
-  if (loading) return <Loader />;
-  if (error) return <p>{error}</p>;
-  if (!product) return null;
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  if (!product) {
+    return null;
+  }
 
   return (
     <section className={styles.productPage}>
@@ -102,7 +114,6 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
 
       <div className={styles.productPage__product}>
         <div className={styles.product}>
-
           {/* IMAGES */}
           <div className={styles.product__images}>
             <ul className={styles.product__additionalImages}>
@@ -225,9 +236,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
           <div className={styles.productPage__about}>
             {product.description.map((block: DescriptionBlock, i: number) => (
               <div key={i}>
-                <h4 className={styles.productPage__subTitle}>
-                  {block.title}
-                </h4>
+                <h4 className={styles.productPage__subTitle}>{block.title}</h4>
                 {block.text.map((t: string, j: number) => (
                   <p key={j} className={styles.productPage__text}>
                     {t}
@@ -266,9 +275,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
 
             <div className={styles.productPage__property}>
               <p className={styles.productPage__propertyName}>RAM</p>
-              <p className={styles.productPage__propertyValue}>
-                {product.ram}
-              </p>
+              <p className={styles.productPage__propertyValue}>{product.ram}</p>
             </div>
 
             <div className={styles.productPage__property}>

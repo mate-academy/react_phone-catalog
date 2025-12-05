@@ -20,52 +20,41 @@ export const Category = () => {
 
   return (
     <div className={styles.category}>
-      <div className={styles.category__phones}>
-        <div className={styles.category__card}>
-          <Link
-            to="/phones"
-            className={`${styles.category__link} ${styles['category__link--phones']}`}
-          />
-          <div className={styles.category__title}>
-            <h3 className={styles['category__title--category']}>
-              Mobile phones
-            </h3>
-            <p className={styles['category__title--models']}>
-              {error ? '0' : `${countProductsByCategory('phones')} models`}
-            </p>
-          </div>
+      <Link to="/phones" className={styles.category__card}>
+        <div className={`${styles.category__img}`}>
+          <img src={'./img/category-phones.webp'} alt="phones" />
         </div>
-      </div>
+        <div className={styles.category__title}>
+          <p className={styles['category__title--category']}>Mobile phones</p>
+          <p className={styles['category__title--models']}>
+            {error ? '0' : `${countProductsByCategory('phones')} models`}
+          </p>
+        </div>
+      </Link>
 
-      <div className={styles.category__tablets}>
-        <div className={styles.category__card}>
-          <Link
-            to="/tablets"
-            className={`${styles.category__link} ${styles['category__link--tablets']}`}
-          />
-          <div className={styles.category__title}>
-            <h3 className={styles['category__title--category']}>Tablets</h3>
-            <p className={styles['category__title--models']}>
-              {error ? '0' : `${countProductsByCategory('tablets')} models`}
-            </p>
-          </div>
+      <Link to="/tablets" className={styles.category__card}>
+        <div className={`${styles.category__img}`}>
+          <img src={'./img/category-tablets.webp'} alt="tablets" />
         </div>
-      </div>
+        <div className={styles.category__title}>
+          <p className={styles['category__title--category']}>Tablets</p>
+          <p className={styles['category__title--models']}>
+            {error ? '0' : `${countProductsByCategory('tablets')} models`}
+          </p>
+        </div>
+      </Link>
 
-      <div className={styles.category__accessories}>
-        <div className={styles.category__card}>
-          <Link
-            to="/accessories"
-            className={`${styles.category__link} ${styles['category__link--accessories']}`}
-          />
-          <div className={styles.category__title}>
-            <h3 className={styles['category__title--category']}>Accessories</h3>
-            <p className={styles['category__title--models']}>
-              {error ? '0' : `${countProductsByCategory('accessories')} models`}
-            </p>
-          </div>
+      <Link to="/accessories" className={styles.category__card}>
+        <div className={`${styles.category__img}`}>
+          <img src={'./img/category-accessories.webp'} alt="accessories" />
         </div>
-      </div>
+        <div className={styles.category__title}>
+          <p className={styles['category__title--category']}>Accessories</p>
+          <p className={styles['category__title--models']}>
+            {error ? '0' : `${countProductsByCategory('accessories')} models`}
+          </p>
+        </div>
+      </Link>
     </div>
   );
 };

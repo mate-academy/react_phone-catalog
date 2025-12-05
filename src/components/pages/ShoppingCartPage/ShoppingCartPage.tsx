@@ -1,23 +1,13 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../../providers/CartProvider';
-import { CartItem } from '../../../providers/CartReducer';
+import { getCartCount, getTotalPrice } from '../../../utils/cartUtils';
 import { ShoppingCard } from './components/ShoppingCard';
 import styles from './ShoppingCartPage.module.scss';
 
 export const ShoppingCartPage: React.FC = () => {
   const { cart } = useContext(CartContext);
   const navigate = useNavigate();
-
-  const totalPrice = (carts: CartItem[]) => {
-    return carts.reduce((sum, item) => {
-      return sum + item.quantity * item.product.priceRegular;
-    }, 0);
-  };
-
-  const cartLength = (carts: CartItem[]) => {
-    return carts.reduce((sum, item) => sum + item.quantity, 0);
-  };
 
   return (
     <div className={styles.shoppingCard}>
@@ -38,10 +28,10 @@ export const ShoppingCartPage: React.FC = () => {
 
             <div className={styles.shoppingCard__checkout}>
               <p className={styles.shoppingCard__checkoutPrice}>
-                Total: ${totalPrice(cart)}
+                Total: ${getTotalPrice(cart)}
               </p>
               <p className={styles.shoppingCard__checkoutItems}>
-                Total for {cartLength(cart)} items
+                Total for ${getCartCount(cart)} items
               </p>
 
               <button className={styles.shoppingCard__checkoutButton}>

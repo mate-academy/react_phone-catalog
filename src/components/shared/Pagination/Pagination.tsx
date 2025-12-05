@@ -30,7 +30,10 @@ export const Pagination: React.FC<Props> = ({
   return (
     <ul className={styles.pagination}>
       <li
-        className={`${styles.pagination__item} ${isFirstPage ? styles['pagination__item--disabled'] : ''}`}
+        className={`
+        ${styles.pagination__item}
+        ${styles['pagination__item--firstPage']}
+        ${isFirstPage ? styles['pagination__item--disabled'] : ''}`}
       >
         <button
           data-cy="prevLink"
@@ -58,7 +61,10 @@ export const Pagination: React.FC<Props> = ({
       ))}
 
       <li
-        className={`${styles.pagination__item} ${isLastPage ? styles['pagination__item--disabled'] : ''}`}
+        className={`
+        ${styles.pagination__item}
+        ${styles['pagination__item--lastPage']}
+        ${isLastPage ? styles['pagination__item--disabled'] : ''}`}
       >
         <button
           data-cy="nextLink"

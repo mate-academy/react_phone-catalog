@@ -8,7 +8,6 @@ type Props = {
   category: string;
 };
 
-
 export const ProductCard: React.FC<Props> = ({ product, category }) => {
   const hasDiscount = product.priceDiscount < product.priceRegular;
 
@@ -73,4 +72,3 @@ export const ProductCard: React.FC<Props> = ({ product, category }) => {
     </div>
   );
 };
-

@@ -8,11 +8,11 @@ import { Root } from './Root';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     {/* <HotPriceProvider> */}
-      <CartProvider>
-        <FavoritesProvider>
-          <Root />
-        </FavoritesProvider>
-      </CartProvider>
+    <CartProvider>
+      <FavoritesProvider>
+        <Root />
+      </FavoritesProvider>
+    </CartProvider>
     {/* </HotPriceProvider> */}
   </React.StrictMode>,
 );
