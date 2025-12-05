@@ -46,8 +46,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
           640: { slidesPerView: 2.5, spaceBetween: 12 },
           1200: { slidesPerView: 4, spaceBetween: 24 },
         }}
-
-        onBeforeInit={(swiper) => {
+        onBeforeInit={swiper => {
           const nav = swiper.params.navigation as NavigationOptions;
 
           nav.prevEl = prevRef.current;
