@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PageHeader from '../shared/components/PageHeader/PageHeader';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Product } from '@/types/Product';
@@ -19,7 +19,9 @@ const ProductPage: React.FC = () => {
   const navigate = useNavigate();
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productSlug]);
   useEffect(() => {
     getProducts()
       .then(data => setProducts(data))
@@ -41,10 +43,16 @@ const ProductPage: React.FC = () => {
   }, [productSlug]);
   const shuffle = <T,>(array: T[]): T[] =>
     [...array].sort(() => Math.random() - 0.5);
+
   const getRandomProducts = (products: Product[]) => {
-    const randomCount = Math.floor(Math.random() * 10) + 3; // від 3 до 12
+    const randomCount = Math.floor(Math.random() * 10) + 3;
     return shuffle(products).slice(0, randomCount);
   };
+
+  const suggestedProducts = useMemo(() => {
+    if (products.length === 0) return [];
+    return getRandomProducts(products);
+  }, [products, productSlug]);
   const foundProductFromProducts = products.find(p => p.itemId === productSlug);
   if (!product) return null;
   return (
@@ -120,7 +128,7 @@ const ProductPage: React.FC = () => {
         </div>
       </section>
       <SliderComponent
-        products={getRandomProducts(products)}
+        products={suggestedProducts}
         title="You may also like"
         showDiscount
       />

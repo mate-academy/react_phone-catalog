@@ -17,6 +17,9 @@
       $uppercase-weight
     );
     color: $color-secondary;
+    &:hover {
+      color: $color-primary;
+    }
   }
   &__links {
     display: flex;
@@ -47,5 +50,8 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    &:hover {
+      border-color: $color-primary;
+    }
   }
 }

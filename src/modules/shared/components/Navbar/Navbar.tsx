@@ -49,9 +49,11 @@ export const Navbar = () => {
           >
             <div className={styles.navbar__iconImage}>
               <img src={HeartIcon} alt="Favorites" />
-              <div className={styles.navbar__iconCount}>
-                {totalFavoritesCount}
-              </div>
+              {totalFavoritesCount > 0 && (
+                <div className={styles.navbar__iconCount}>
+                  {totalFavoritesCount}
+                </div>
+              )}
             </div>
           </NavLink>
           <NavLink
@@ -64,7 +66,9 @@ export const Navbar = () => {
           >
             <div className={styles.navbar__iconImage}>
               <img src={CartIcon} alt="Cart" />
-              <div className={styles.navbar__iconCount}>{totalCount}</div>
+              {totalCount > 0 && (
+                <div className={styles.navbar__iconCount}>{totalCount}</div>
+              )}
             </div>
           </NavLink>
         </div>
