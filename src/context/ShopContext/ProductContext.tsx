@@ -40,7 +40,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     setIsLoading(true);
 
     setTimeout(() => {
-      fetch('/api/products.json')
+      fetch('api/products.json')
         .then(response => {
           if (!response.ok) {
             throw new Error('Something went wrong');

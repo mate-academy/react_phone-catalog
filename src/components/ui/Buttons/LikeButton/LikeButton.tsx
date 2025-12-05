@@ -24,7 +24,7 @@ export const LikeButton: React.FC<Props> = ({ size, product }) => {
       }}
     >
       <img
-        src={isLiked ? '/img/icons/liked.svg' : '/img/icons/Favourites.png'}
+        src={isLiked ? 'img/icons/liked.svg' : 'img/icons/Favourites.png'}
         alt="favourite"
       />
     </button>

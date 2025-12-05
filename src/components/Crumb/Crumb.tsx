@@ -18,7 +18,7 @@ export const Crumb = () => {
           <NavLink className={s.crumb__link} to={'/'}>
             <img
               className={s.crumb__icon}
-              src="/img/icons/Home.svg"
+              src="img/icons/Home.svg"
               alt="home"
             />
           </NavLink>
@@ -29,7 +29,7 @@ export const Crumb = () => {
             <li className={s.crumb__item} key={index}>
               <img
                 className={s.crumb__icon}
-                src="/img/icons/back.svg"
+                src="img/icons/back.svg"
                 alt="back"
               />
               <span className={s.crumb__text}>{crumb}</span>
@@ -38,7 +38,7 @@ export const Crumb = () => {
             <li className={s.crumb__item} key={index}>
               <img
                 className={s.crumb__icon}
-                src="/img/icons/back.svg"
+                src="img/icons/back.svg"
                 alt="back"
               />
               <NavLink className={s.crumb__link} to={`/${crumb}`}>

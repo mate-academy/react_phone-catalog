@@ -13,7 +13,7 @@ export const BackButton = () => {
       className={s.backButton}
     >
       <img
-        src="/img/icons/Arrow_left.svg"
+        src="img/icons/Arrow_left.svg"
         alt="back"
         className={s.backButton__icon}
       />

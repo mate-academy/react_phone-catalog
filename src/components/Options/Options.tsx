@@ -21,21 +21,12 @@ export const Options: React.FC<Props> = ({
   const [choosenCapacity, setChoosenCapacity] = useState(item.capacity);
 
   const handleChangeProduct = (type: 'color' | 'capacity', newChar: string) => {
-    let finalColor: string;
-    let finalCapacity: string;
-
-    if (type === 'color') {
-      setChoosenColor(newChar);
-      finalColor = newChar;
-      finalCapacity = choosenCapacity;
-    } else {
-      setChoosenCapacity(newChar);
-      finalCapacity = newChar;
-      finalColor = choosenColor;
-    }
+    type === 'color' ? setChoosenColor(newChar) : setChoosenCapacity(newChar);
+    const color = type === 'color' ? newChar : item.color;
+    const capacity = type === 'capacity' ? newChar : item.capacity;
 
     navigate(
-      `/product/${item.namespaceId}-${finalCapacity.toLowerCase()}-${finalColor.replace(' ', '-')}`,
+      `/${item.category}/${item.namespaceId}-${capacity.toLowerCase()}-${color.replace(' ', '-')}`,
     );
   };
 

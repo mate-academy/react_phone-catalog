@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import './styles/index.scss';
 import { ShopProvider } from './context/ShopContext/ShopContext';
 import { ProductProvider } from './context/ShopContext/ProductContext';
@@ -8,7 +8,7 @@ import { FavouriteProvider } from './context/ShopContext/FavoutiteContext';
 import { ShopDataProvider } from './context/ShopContext/ShopDataContext';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
+  <HashRouter>
     <ProductProvider>
       <ShopDataProvider>
         <FavouriteProvider>
@@ -18,5 +18,5 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         </FavouriteProvider>
       </ShopDataProvider>
     </ProductProvider>
-  </BrowserRouter>,
+  </HashRouter>,
 );

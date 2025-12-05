@@ -84,9 +84,9 @@ export const ShopDataProvider: React.FC<Props> = ({ children }) => {
     }));
 
     const promises = [
-      fetch('/api/phones.json').then(res => res.json()),
-      fetch('/api/accessories.json').then(res => res.json()),
-      fetch('/api/tablets.json').then(res => res.json()),
+      fetch('api/phones.json').then(res => res.json()),
+      fetch('api/accessories.json').then(res => res.json()),
+      fetch('api/tablets.json').then(res => res.json()),
     ];
 
     const results = await Promise.allSettled(promises);

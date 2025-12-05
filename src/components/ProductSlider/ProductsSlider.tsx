@@ -24,10 +24,10 @@ export const ProductsSlider: React.FC<Props> = ({
 
         <div className={s['product-slider__navigation']}>
           <button className={s['product-slider__prev']}>
-            <img src="/img/icons/Arrow_left.png" alt="" />
+            <img src="img/icons/Arrow_left.png" alt="left" />
           </button>
           <button className={s['product-slider__next']}>
-            <img src="/img/icons/Arrow_right.png" alt="" />
+            <img src="img/icons/Arrow_right.png" alt="right" />
           </button>
         </div>
       </div>

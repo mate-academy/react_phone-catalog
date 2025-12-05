@@ -74,7 +74,7 @@ export const Dropdown: React.FC<Props> = ({
         <p className={s['dropdown__button-title']}>{filterParam}</p>
         <img
           className={s['dropdown__button-icon']}
-          src={isOpen ? '/img/icons/up.svg' : '/img/icons/down.svg'}
+          src={isOpen ? 'img/icons/up.svg' : 'img/icons/down.svg'}
           alt="down"
         />
       </div>

@@ -5,7 +5,7 @@ export const NotFound = () => {
   return (
     <main className={s.notFound}>
       <img
-        src="/img/error-404.png"
+        src="img/error-404.png"
         alt="404_error"
         className={s.notFound__img}
       />

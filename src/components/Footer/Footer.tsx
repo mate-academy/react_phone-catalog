@@ -13,13 +13,13 @@ export const Footer = () => {
           <picture>
             <source
               media="(max-width: 1199px)"
-              srcSet="/img/icons/Logo-tab.svg"
+              srcSet="img/icons/Logo-tab.svg"
             />
             <source
               media="(max-width: 639px)"
-              srcSet="/img/icons/Logo-mob.svg"
+              srcSet="img/icons/Logo-mob.svg"
             />
-            <img src="/img/icons/Logo.png" alt="logo" />
+            <img src="img/icons/Logo.png" alt="logo" />
           </picture>
         </NavLink>
 
@@ -48,7 +48,7 @@ export const Footer = () => {
           <span className={s['footer__button-wrapper']}>
             <img
               className={s['footer__button-img']}
-              src="/img/icons/Arrow_up.png"
+              src="img/icons/Arrow_up.png"
               alt="up button"
             />
           </span>

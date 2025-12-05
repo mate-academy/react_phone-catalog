@@ -16,7 +16,7 @@ export const Media: React.FC<Props> = ({ images, setMainPhoto }) => {
               className={s.media__item}
               onClick={() => setMainPhoto(`${img}`)}
             >
-              <img className={s['media__list-img']} src={`/${img}`} alt={img} />
+              <img className={s['media__list-img']} src={`${img}`} alt={img} />
             </li>
           );
         })}

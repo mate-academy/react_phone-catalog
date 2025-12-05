@@ -19,7 +19,7 @@ export const ItemCard: React.FC<Props> = ({ item }) => {
           className={s['cartItem__link-img']}
         >
           <img
-            src={`/${item.image}`}
+            src={`${item.image}`}
             alt="card-img"
             className={s.cartItem__img}
           />

@@ -12,7 +12,7 @@ export const Slider = () => {
     <div className={s.slider}>
       <div className={s.slider__wrapper}>
         <button className={s.slider__prev}>
-          <img src="/img/icons/Arrow_left.png" alt="left" />
+          <img src="img/icons/Arrow_left.png" alt="left" />
         </button>
 
         <Swiper

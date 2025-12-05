@@ -41,12 +41,9 @@ export const Pagination: React.FC<Props> = ({ currentPage, totalPages }) => {
   const handlePage = (pageNumber: number) => {
     const newParams = new URLSearchParams(searchParams);
 
-    if (pageNumber === 1) {
-      newParams.delete('page');
-    } else {
-      newParams.set('page', String(pageNumber));
-    }
-
+    pageNumber === 1
+      ? newParams.delete('page')
+      : newParams.set('page', String(pageNumber));
     setSearchParams(newParams);
   };
 

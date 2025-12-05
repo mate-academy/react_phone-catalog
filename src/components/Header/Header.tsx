@@ -23,16 +23,9 @@ export const Header = () => {
         onClick={() => setMenuIsOpen(false)}
       >
         <picture>
-          <source
-            media="(max-width: 1199px)"
-            srcSet="/img/icons/Logo-tab.svg"
-          />
-          <source media="(max-width: 639px)" srcSet="/img/icons/Logo-mob.svg" />
-          <img
-            className={s.header__icon}
-            src="/img/icons/Logo.svg"
-            alt="logo"
-          />
+          <source media="(max-width: 1199px)" srcSet="img/icons/Logo-tab.svg" />
+          <source media="(max-width: 639px)" srcSet="img/icons/Logo-mob.svg" />
+          <img className={s.header__icon} src="img/icons/Logo.svg" alt="logo" />
         </picture>
       </NavLink>
 
@@ -40,7 +33,7 @@ export const Header = () => {
         className={s['header__burger-btn']}
         onClick={() => setMenuIsOpen(true)}
       >
-        <img src={'/img/icons/Menu.png'} alt="burger_menu" />
+        <img src={'img/icons/Menu.png'} alt="burger_menu" />
       </button>
       <div
         className={`${s.header__menu} ${menuIsOpen ? `${s['header__menu--active']}` : ''}`}
@@ -60,7 +53,7 @@ export const Header = () => {
           >
             <img
               className={s.header__icon}
-              src="/img/icons/Logo-mob.svg"
+              src="img/icons/Logo-mob.svg"
               alt="logo"
             />
           </NavLink>
@@ -69,7 +62,7 @@ export const Header = () => {
             className={s['header__burger-btn']}
             onClick={() => setMenuIsOpen(false)}
           >
-            <img src={'/img/icons/Close.png'} alt="burger_menu" />
+            <img src={'img/icons/Close.png'} alt="burger_menu" />
           </button>
         </div>
         <div className={s.header__nav}>

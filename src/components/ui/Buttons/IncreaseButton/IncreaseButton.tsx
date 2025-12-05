@@ -17,7 +17,7 @@ export const IncreaseButton: React.FC<Props> = ({ item }) => {
       className={s.increaseButton}
       onClick={() => changeQuantity(item, 'increase')}
     >
-      <img src="/img/icons/Plus.png" alt="increase" />
+      <img src="img/icons/Plus.png" alt="increase" />
     </button>
   );
 };

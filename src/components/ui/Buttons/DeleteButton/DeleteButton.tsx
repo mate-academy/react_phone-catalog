@@ -1,10 +1,9 @@
 import { useShopContext } from '../../../../context/ShopContext/ShopContext';
-import { Item } from '../../../../types/Item';
-import { Product } from '../../../../types/Producst';
+import { CartProduct } from '../../../../types/CartProduct';
 import s from './DeleteButton.module.scss';
 
 type Props = {
-  product: Product | Item;
+  product: CartProduct;
 };
 
 export const DeleteButton: React.FC<Props> = ({ product }) => {
@@ -14,10 +13,10 @@ export const DeleteButton: React.FC<Props> = ({ product }) => {
     <button
       className={s.deleteButton}
       onClick={() => {
-        deleteItem(product, 'inCart');
+        deleteItem(product);
       }}
     >
-      <img src="/img/icons/delete.svg" alt="delete" />
+      <img src="img/icons/delete.svg" alt="delete" />
     </button>
   );
 };

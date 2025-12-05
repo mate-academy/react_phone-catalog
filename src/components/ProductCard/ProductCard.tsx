@@ -18,7 +18,7 @@ export const ProductCard: React.FC<Props> = ({
     <div className={s['product-card']}>
       <NavLink to={`/${product.category}/${product.itemId}`}>
         <img
-          src={`/${product.image}`}
+          src={`${product.image}`}
           alt={product.name}
           className={s['product-card__img']}
         />

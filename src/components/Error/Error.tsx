@@ -24,7 +24,7 @@ export const Error: React.FC<Props> = ({ errorMEssage, action }) => {
         )}
       </div>
 
-      <img className={s.error__img} src="/img/error.png" alt="error" />
+      <img className={s.error__img} src="img/error.png" alt="error" />
     </main>
   );
 };

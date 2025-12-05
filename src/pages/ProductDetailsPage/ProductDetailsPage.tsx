@@ -16,7 +16,7 @@ import { useProductContext } from '../../context/ShopContext/ProductContext';
 import { Loader } from '../../components/Loader';
 
 const getSuggestedProducts = async (count: number) => {
-  const response = await fetch('/api/products.json');
+  const response = await fetch('api/products.json');
   const products = await response.json();
   const shuffled = products.sort(() => Math.random() - 0.5);
 
@@ -72,7 +72,7 @@ export const ProductDetailsPage = () => {
       <div className={s['productDetailsPage__main-photo']}>
         <img
           className={s.productDetailsPage__img}
-          src={`/${mainPhoto}`}
+          src={`${mainPhoto}`}
           alt="mainphoto"
         />
       </div>

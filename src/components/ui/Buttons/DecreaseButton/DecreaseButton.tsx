@@ -18,7 +18,7 @@ export const DecreaseButton: React.FC<Props> = ({ item }) => {
           : changeQuantity(item, 'decrease')
       }
     >
-      <img src="/img/icons/minus.png" alt="descrease" />
+      <img src="img/icons/minus.png" alt="descrease" />
     </button>
   );
 };

@@ -11,7 +11,7 @@ export const Empty: React.FC<Props> = ({ message, img }) => {
       <h2 className={s.empty__title}>{message}</h2>
 
       <img
-        src={`/img/empty_${img}.png`}
+        src={`img/empty_${img}.png`}
         alt="icon_pic"
         className={s.empty__img}
       />

@@ -42,7 +42,7 @@ export const ShopProvider: React.FC<Props> = ({ children }) => {
     setinCart(existing);
   };
 
-  const deleteItem = (product: Product) => {
+  const deleteItem = (product: CartProduct) => {
     const filtered = inCart.filter(item => item.id !== product.id);
 
     localStorage.setItem('inCart', JSON.stringify(filtered));
