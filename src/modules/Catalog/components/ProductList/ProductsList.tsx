@@ -116,7 +116,7 @@ export const ProductsList: React.FC<Props> = ({ items }) => {
   };
 
   return (
-    <div className={scss.productsList}>
+    <section className={scss.productsList}>
       <div className={scss.productsList__dropdownWrapper}>
         <Dropdowns
           label="Sort by"
@@ -146,6 +146,6 @@ export const ProductsList: React.FC<Props> = ({ items }) => {
           onPageChange={newPage => handlePageChange(newPage)}
         />
       )}
-    </div>
+    </section>
   );
 };

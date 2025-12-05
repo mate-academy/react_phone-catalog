@@ -1,8 +1,14 @@
+@use '../../../shared/styles/mixins' as *;
+
 .pagination {
   display: flex;
   justify-content: center;
 
   margin: 2.4rem 0 6.4rem;
+
+  @include for-tablets {
+    margin: 4.0rem 0 6.4rem;
+  }
 
   &__pages {
     display: flex;

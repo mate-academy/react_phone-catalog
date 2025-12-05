@@ -1,5 +1,11 @@
+@use '../../styles/mixins' as *;
+
 .backToTheTop {
   margin-top: 3.2rem;
+
+  @include for-tablets {
+    margin-top: 0;
+  }
 
   &__text {
     font-weight: 700;
