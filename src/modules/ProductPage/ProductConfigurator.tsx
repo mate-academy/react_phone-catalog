@@ -37,24 +37,40 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     removeFromCart,
   } = useCart();
 
-  if (!product) return null;
+  if (!product) {
+    return null;
+  }
+
   const normilizeValue = (color: string): string => {
     return color.replace(' ', '-').toLowerCase();
   };
+
   // --- ROUTE SLUG UPDATER (color / capacity) ---
   const updateSlug = (type: 'color' | 'capacity', value: string) => {
-    if (!productSlug || !category) return;
+    if (!productSlug || !category) {
+      return;
+    }
 
     // do nothing if user selects same option
-    if (type === 'color' && value === selectedColor) return;
-    if (type === 'capacity' && value === selectedCapacity) return;
+    if (type === 'color' && value === selectedColor) {
+      return;
+    }
+
+    if (type === 'capacity' && value === selectedCapacity) {
+      return;
+    }
+
     const normilizedValue = normilizeValue(value);
-    const oldPart = product[type].toLowerCase();
+    const oldPart = normilizeValue(product[type]).toLowerCase();
     const newSlug = productSlug.replace(oldPart, normilizedValue);
 
-    if (type === 'color') setSelectedColor(value);
+    if (type === 'color') {
+      setSelectedColor(value);
+    }
 
-    if (type === 'capacity') setSelectedCapacity(value);
+    if (type === 'capacity') {
+      setSelectedCapacity(value);
+    }
 
     navigate(`/${category}/${newSlug}`);
   };
@@ -67,7 +83,9 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     e.preventDefault();
     e.stopPropagation();
 
-    if (!foundProductFromProducts) return;
+    if (!foundProductFromProducts) {
+      return;
+    }
 
     if (inCart) {
       removeFromCart(foundProductFromProducts?.id || 0);
@@ -80,7 +98,9 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     e.preventDefault();
     e.stopPropagation();
 
-    if (!foundProductFromProducts) return;
+    if (!foundProductFromProducts) {
+      return;
+    }
 
     if (fav) {
       removeFromFavorites(foundProductFromProducts?.itemId || '');

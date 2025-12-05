@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
     (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
   );
 
-console.log(hotProducts);
+  console.log(hotProducts);
 
   const newProducts = [...products].sort((a, b) => b.year - a.year);
 

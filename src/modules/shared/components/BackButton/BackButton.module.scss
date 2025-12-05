@@ -1,0 +1,15 @@
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: $color-bg;
+  border: none;
+  font-size: $small-size;
+  font-weight: 700;
+  cursor: pointer;
+  color: $color-secondary;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

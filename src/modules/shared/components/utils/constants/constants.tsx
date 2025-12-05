@@ -39,7 +39,7 @@ export const COLOR_MAP: Record<string, string> = {
   sierrablue: '#9bb5ce',
   silver: '#e2e4e1',
   spaceblack: '#302e32',
-  "space-gray": '#535150',
-  "spacegray": '#535150',
+  'space-gray': '#535150',
+  spacegray: '#535150',
   white: '#f0f0f0',
 };

@@ -1,6 +1,7 @@
 .catalog__container {
   display: flex;
-  gap: 16px;
+  column-gap: 16px;
+  row-gap: 40px;
   flex-wrap: wrap;
 }
 

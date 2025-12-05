@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Product } from '@/types/Product';
+import { CartItem } from '@/types/CartItem';
 
 const CART_KEY = 'shop_cart';
 const FAV_KEY = 'shop_favorites';
-
-type CartItem = Product & { quantity: number };
 
 type CartContextType = {
   cart: CartItem[];
@@ -69,7 +68,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   const removeFromFavorites = (productId: string) => {
     setFavorites(prev => prev.filter(item => item.itemId !== productId));
   };
-
 
   const isInCart = (productId: number) =>
     cart.some(item => item.id === productId);

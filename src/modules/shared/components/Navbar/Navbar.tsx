@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Logo from '/img/Logo.svg';
 import CartIcon from '/img/icons/cart.svg';
 import HeartIcon from '/img/icons/heart.svg';
+import { useCart } from '@/modules/CartFavContext/CartContext';
 export const Navbar = () => {
   const links = [
     { path: '/', label: 'HOME' },
@@ -10,7 +11,8 @@ export const Navbar = () => {
     { path: '/tablets', label: 'TABLETS' },
     { path: '/accessories', label: 'ACCESSORIES' },
   ];
-
+  const { cart } = useCart();
+  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
@@ -54,7 +56,10 @@ export const Navbar = () => {
                 : styles.navbar__icon
             }
           >
-            <img src={CartIcon} alt="Cart" />
+            <div className={styles.navbar__iconImage}>
+              <img src={CartIcon} alt="Cart" />
+              <div className={styles.navbar__iconCount}>{cartItemCount}</div>
+            </div>
           </NavLink>
         </div>
       </nav>{' '}
