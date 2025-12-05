@@ -1,32 +1,53 @@
 import { CartItem } from '@/types/CartItem';
 import React from 'react';
 import styles from './Cart.module.scss';
+import { useCart } from '../CartFavContext/CartContext';
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 type CartItemProps = {
   item: CartItem;
 };
 const CartItemComponent: React.FC<CartItemProps> = ({ item }) => {
+  const { reduceQuantity, increaseQuantity, removeFromCart, addToCart } =
+    useCart();
+
   return (
     <div className={styles.cartItem}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
+      <button
+        onClick={() => removeFromCart(item.id)}
+        className={styles.cartItem__removeButton}
       >
-        <path
-          d="M11.5293 3.52863C11.7896 3.26833 12.2113 3.26844 12.4717 3.52863C12.732 3.78897 12.732 4.21066 12.4717 4.47101L8.94238 7.99933L12.4717 11.5286C12.732 11.789 12.732 12.2107 12.4717 12.471C12.2113 12.7314 11.7896 12.7314 11.5293 12.471L8 8.94171L4.47168 12.471C4.21133 12.7314 3.78965 12.7314 3.5293 12.471C3.26911 12.2106 3.269 11.7889 3.5293 11.5286L7.05762 7.99933L3.5293 4.47101C3.26911 4.21065 3.269 3.78892 3.5293 3.52863C3.78959 3.26833 4.21132 3.26844 4.47168 3.52863L8 7.05695L11.5293 3.52863Z"
-          fill="#B4BDC4"
-        />
-      </svg>
-      <div className={styles.cartItem__imageWrapper}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+        >
+          <path
+            d="M11.5293 3.52863C11.7896 3.26833 12.2113 3.26844 12.4717 3.52863C12.732 3.78897 12.732 4.21066 12.4717 4.47101L8.94238 7.99933L12.4717 11.5286C12.732 11.789 12.732 12.2107 12.4717 12.471C12.2113 12.7314 11.7896 12.7314 11.5293 12.471L8 8.94171L4.47168 12.471C4.21133 12.7314 3.78965 12.7314 3.5293 12.471C3.26911 12.2106 3.269 11.7889 3.5293 11.5286L7.05762 7.99933L3.5293 4.47101C3.26911 4.21065 3.269 3.78892 3.5293 3.52863C3.78959 3.26833 4.21132 3.26844 4.47168 3.52863L8 7.05695L11.5293 3.52863Z"
+            fill="#B4BDC4"
+          />
+        </svg>
+      </button>
+      <Link
+        to={`/${item.category}/${item.itemId}`}
+        className={styles.cartItem__imageWrapper}
+      >
         <img src={item.image} alt={item.name} />
-      </div>
+      </Link>
       <div className={styles.cartItem__nameWrapper}>
         <span className={styles.cartItem__name}>{item.name}</span>
       </div>
       <div className={styles.cartItem__quantityBlock}>
-        <button className={styles.cartItem__quantityButton}>
+        {/* Кнопка МІНУС */}
+        <button
+          className={classNames(styles.cartItem__quantityButton, {
+            [styles.cartItem__quantityButtonDisabled]: item.quantity <= 1,
+          })}
+          disabled={item.quantity <= 1}
+          onClick={() => reduceQuantity(item.id)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -35,15 +56,21 @@ const CartItemComponent: React.FC<CartItemProps> = ({ item }) => {
             fill="none"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M2.66602 7.99998C2.66602 7.63179 2.96449 7.33331 3.33268 7.33331H12.666C13.0342 7.33331 13.3327 7.63179 13.3327 7.99998C13.3327 8.36817 13.0342 8.66665 12.666 8.66665H3.33268C2.96449 8.66665 2.66602 8.36817 2.66602 7.99998Z"
               fill="#B4BDC4"
             />
           </svg>
         </button>
+
         <span className={styles.cartItem__quantity}>{item.quantity}</span>
-        <button className={styles.cartItem__quantityButton}>
+
+        {/* Кнопка ПЛЮС */}
+        <button
+          className={styles.cartItem__quantityButton}
+          onClick={() => increaseQuantity(item.id)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

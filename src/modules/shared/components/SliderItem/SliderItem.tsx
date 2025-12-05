@@ -1,13 +1,5 @@
 import { Product } from '@/types';
-import React, { useEffect, useState } from 'react';
 import styles from '../../../../modules/HomePage/components/SliderComponent.module.scss';
-import {
-  addToCart,
-  getFavorites,
-  toggleFavorite,
-  getCart,
-  removeFromCart,
-} from '@/modules/shared/components/utils/StorageHelper/storageHelper';
 import { Link } from 'react-router-dom';
 import { useCart } from '@/modules/CartFavContext/CartContext';
 

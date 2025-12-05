@@ -1,6 +1,13 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { Product } from '@/types/Product';
 import { CartItem } from '@/types/CartItem';
+import { log } from 'console';
 
 const CART_KEY = 'shop_cart';
 const FAV_KEY = 'shop_favorites';
@@ -14,6 +21,11 @@ type CartContextType = {
   removeFromFavorites: (productId: string) => void;
   isInCart: (productId: number) => boolean;
   isFavorite: (productId: string) => boolean;
+  reduceQuantity: (productId: number) => void;
+  increaseQuantity: (productId: number) => void;
+  totalAmount: number;
+  totalCount: number;
+  totalFavoritesCount: number;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -21,17 +33,36 @@ const CartContext = createContext<CartContextType | null>(null);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [favorites, setFavorites] = useState<Product[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    try {
+      const storedCart = localStorage.getItem(CART_KEY);
+      return storedCart ? JSON.parse(storedCart) : [];
+    } catch (error) {
+      return [];
+    }
+  });
 
+  const [favorites, setFavorites] = useState<Product[]>(() => {
+    try {
+      const storedFav = localStorage.getItem(FAV_KEY);
+      return storedFav ? JSON.parse(storedFav) : [];
+    } catch (error) {
+      return [];
+    }
+  });
+
+  const totalAmount = useMemo(() => {
+    return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  }, [cart]);
+
+  const totalCount = useMemo(() => {
+    return cart.reduce((sum, item) => sum + item.quantity, 0);
+  }, [cart]);
+
+  const totalFavoritesCount = useMemo(() => {
+    return favorites.length;
+  }, [favorites]);
   // Load from localStorage once
-  useEffect(() => {
-    const storedCart = localStorage.getItem(CART_KEY);
-    const storedFav = localStorage.getItem(FAV_KEY);
-
-    if (storedCart) setCart(JSON.parse(storedCart));
-    if (storedFav) setFavorites(JSON.parse(storedFav));
-  }, []);
 
   // Sync cart to localStorage
   useEffect(() => {
@@ -56,6 +87,25 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       return [...prev, { ...product, quantity: 1 }];
     });
   };
+  const increaseQuantity = (productId: number) => {
+    setCart(prev =>
+      prev.map(item =>
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
+    );
+  };
+
+  const reduceQuantity = (productId: number) => {
+    setCart(prev =>
+      prev
+        .map(item =>
+          item.id === productId
+            ? { ...item, quantity: Math.max(item.quantity - 1, 1) }
+            : item,
+        )
+        .filter(item => item.quantity > 0),
+    );
+  };
 
   const removeFromCart = (productId: number) => {
     setCart(prev => prev.filter(item => item.id !== productId));
@@ -79,12 +129,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         cart,
         favorites,
+        totalAmount,
+        totalCount,
+        totalFavoritesCount,
         addToCart,
         removeFromCart,
         addToFavorites,
         removeFromFavorites,
         isInCart,
         isFavorite,
+        reduceQuantity,
+        increaseQuantity,
       }}
     >
       {children}

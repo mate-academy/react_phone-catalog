@@ -11,8 +11,9 @@ export const Navbar = () => {
     { path: '/tablets', label: 'TABLETS' },
     { path: '/accessories', label: 'ACCESSORIES' },
   ];
-  const { cart } = useCart();
-  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
+
+  const { totalCount, totalFavoritesCount } = useCart();
+
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
@@ -46,7 +47,12 @@ export const Navbar = () => {
                 : styles.navbar__icon
             }
           >
-            <img src={HeartIcon} alt="Favorites" />
+            <div className={styles.navbar__iconImage}>
+              <img src={HeartIcon} alt="Favorites" />
+              <div className={styles.navbar__iconCount}>
+                {totalFavoritesCount}
+              </div>
+            </div>
           </NavLink>
           <NavLink
             to="/cart"
@@ -58,7 +64,7 @@ export const Navbar = () => {
           >
             <div className={styles.navbar__iconImage}>
               <img src={CartIcon} alt="Cart" />
-              <div className={styles.navbar__iconCount}>{cartItemCount}</div>
+              <div className={styles.navbar__iconCount}>{totalCount}</div>
             </div>
           </NavLink>
         </div>

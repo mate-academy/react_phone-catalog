@@ -3,6 +3,7 @@
   max-width: 1136px; // or 1440px
   margin: 0 auto; // centers content
   // padding: 0 20px;
+  flex: 1;
 
   > section {
     margin-bottom: 80px;
@@ -15,5 +16,3 @@ header {
   z-index: 1000; /* so it stays above content */
   background: white; /* avoid transparency when scrolling */
 }
-
-

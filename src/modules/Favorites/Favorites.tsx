@@ -7,7 +7,6 @@ import styles from './Favorites.module.scss';
 const Favorites: React.FC = () => {
   const { favorites } = useCart();
 
-  console.log(favorites);
 
   return (
     <div className={styles.favoritesPage_container}>

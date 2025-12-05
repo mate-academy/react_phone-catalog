@@ -251,6 +251,12 @@
       display: inline-block;
       width: 60px; // Ширина заглушки ціни
       height: 24px;
+      &::before,
+      &::after {
+        content: none;     // Прибирає контент псевдоелементів
+        display: none;     // Гарантує, що вони не займають місця
+        background: none;  // На всяк випадок прибирає фон
+      }
     }
 
     // 4. Характеристики (Specs)
