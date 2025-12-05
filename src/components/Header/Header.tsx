@@ -56,11 +56,7 @@ export const Header = () => {
         <button className={style.burger__wrapper} onClick={handleMenuToggle}>
           <img
             className="{style.burger__icon"
-            src={
-              !isMenuOpen
-                ? 'img/icons/Menu.svg'
-                : 'img/icons/Close.svg'
-            }
+            src={!isMenuOpen ? 'img/icons/Menu.svg' : 'img/icons/Close.svg'}
             alt={!isMenuOpen ? 'Open Menu' : 'Close Menu'}
           />
         </button>

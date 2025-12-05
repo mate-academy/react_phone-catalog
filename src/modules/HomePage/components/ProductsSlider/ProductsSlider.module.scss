@@ -14,16 +14,7 @@
 
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global(.swiper-slide) {
-     width: calc((100% - 1 * 16px) / 1.4) !important;
-    flex-shrink: 0 !important;
-
-    @include on-tablet {
-      width: calc((100% - 2 * 24px) / 2.5) !important;
-    }
-
-    @include on-desctop {
-      width: calc((100% - 3 * 16px) / 4) !important;
-    }
+    flex-shrink: 0;
   }
 
 

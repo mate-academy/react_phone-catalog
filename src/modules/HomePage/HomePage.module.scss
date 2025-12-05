@@ -16,5 +16,7 @@
 
   @include on-desctop {
     padding: 56px 0;
+    align-self: flex-start;
+    width: 1136px;
   }
 }

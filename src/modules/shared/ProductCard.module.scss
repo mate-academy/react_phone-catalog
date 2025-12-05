@@ -13,6 +13,10 @@
     width: 237px;
   }
 
+  @include on-desctop{
+    width: 100%;
+  }
+
   @include hover(transform, scale(1.03));
 
   &:hover {

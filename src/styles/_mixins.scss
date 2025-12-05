@@ -18,7 +18,11 @@
   }
 
   @include on-desctop {
-    padding-inline: 152px;
+    max-width: 1136px;
+    margin: 0 auto;
+    padding-inline: 32px;
+    display: flex;
+    flex-direction: column
   }
 }
 

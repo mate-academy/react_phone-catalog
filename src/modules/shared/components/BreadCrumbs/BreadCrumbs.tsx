@@ -16,7 +16,7 @@ export const BreadCrumbs: React.FC<Props> = ({ category, itemName }) => {
       <NavLink to="/" className={styles['breadcrumbs-home']}>
         <img src="img/icons/Home.svg" alt="Home page" />
       </NavLink>
-      {/* <span className={styles["breadcrumbs-arrow"]}></span> */}
+
       <img
         className={styles['breadcrumbs-arrow']}
         src="img/icons/ChevronArrowRight.svg"

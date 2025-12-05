@@ -39,6 +39,11 @@ export const CartPage = () => {
     );
   };
 
+  const confirmHandler = () => {
+    clearCart();
+    setIsOpenModal(false);
+  }
+
   const total = getTotalPrice();
 
   return (
@@ -77,10 +82,7 @@ export const CartPage = () => {
           {isOpenModal && (
             <Modal
               onClose={() => setIsOpenModal(false)}
-              onConfirm={() => {
-                clearCart();
-                setIsOpenModal(false);
-              }}
+              onConfirm={() => confirmHandler()}
             />
           )}
         </div>

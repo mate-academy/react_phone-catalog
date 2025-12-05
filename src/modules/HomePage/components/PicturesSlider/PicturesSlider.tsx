@@ -25,7 +25,6 @@ export const PicturesSlider = () => {
         modules={[Navigation, Autoplay, Pagination]}
         spaceBetween={20}
         loop
-
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
@@ -34,7 +33,6 @@ export const PicturesSlider = () => {
           clickable: true,
           el: paginationRef.current,
         }}
-
         onBeforeInit={swiper => {
           const navigation = {
             ...swiper.params.navigation,
@@ -61,20 +59,14 @@ export const PicturesSlider = () => {
         ref={prevRef}
         className={`${style.navButton} ${style.prevButton}`}
       >
-        <img
-          src="img/icons/ChevronArrowLeft.svg"
-          alt="Prev slide"
-        ></img>
+        <img src="img/icons/ChevronArrowLeft.svg" alt="Prev slide"></img>
       </button>
 
       <button
         ref={nextRef}
         className={`${style.navButton} ${style.nextButton}`}
       >
-        <img
-          src="img/icons/ChevronArrowRight.svg"
-          alt="Next slide"
-        ></img>
+        <img src="img/icons/ChevronArrowRight.svg" alt="Next slide"></img>
       </button>
 
       <div ref={paginationRef} className={style.customPagination}></div>

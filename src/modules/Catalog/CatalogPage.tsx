@@ -75,6 +75,29 @@ export const CatalogPage = () => {
     updateParam('page', '1');
   }, [perPage, sort, updateParam]);
 
+  useEffect(() => {
+    setProducts(prev => {
+      const sorted = [...prev];
+
+      switch (sort) {
+        case 'title':
+          sorted.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+
+        case 'price':
+          sorted.sort((a, b) => a.price - b.price);
+          break;
+
+        case 'age':
+        default:
+          sorted.sort((a, b) => b.year - a.year);
+          break;
+      }
+
+      return sorted;
+    });
+  }, [sort]);
+
   return (
     <div className="container">
       {loadingError && !isLoading && <h1>Something went wrong</h1>}

@@ -24,6 +24,18 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
     }
   }, []);
 
+  const onInitHandler = (swiper) => {
+    swiperRef.current = swiper;
+
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  }
+
+  const onSlideChangeHandler = (swiper) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  }
+
   return (
     <div className={styles.productsSlider}>
       <div className={styles['productsSlider-top']}>
@@ -34,20 +46,14 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
             ref={prevRef}
             className={`${styles.navButton} ${styles.prevButton} ${!isBeginning ? styles.isActive : ''}`}
           >
-            <img
-              src="img/icons/ChevronArrowLeft.svg"
-              alt="Prev slide"
-            ></img>
+            <img src="img/icons/ChevronArrowLeft.svg" alt="Prev slide"></img>
           </button>
 
           <button
             ref={nextRef}
             className={`${styles.navButton} ${styles.nextButton} ${!isEnd ? styles.isActive : ''}`}
           >
-            <img
-              src="img/icons/ChevronArrowRight.svg"
-              alt="Next slide"
-            ></img>
+            <img src="img/icons/ChevronArrowRight.svg" alt="Next slide"></img>
           </button>
         </div>
       </div>
@@ -58,11 +64,11 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
           prevEl: prevRef.current,
           nextEl: nextRef.current,
         }}
-        slidesPerView="auto"
-        slidesPerGroup={1}
+        spaceBetween={16}
+        slidesPerView={1.4}
         breakpoints={{
-          320: { slidesPerView: 'auto' },
-          1024: { slidesPerView: 4, spaceBetween: 16 },
+          640: { slidesPerView: 2.5, spaceBetween: 24 },
+          1200: { slidesPerView: 4, spaceBetween: 16 },
         }}
         onBeforeInit={swiper => {
           const navigation = {
@@ -76,16 +82,8 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
             navigation,
           });
         }}
-        onInit={swiper => {
-          swiperRef.current = swiper;
-
-          setIsBeginning(swiper.isBeginning);
-          setIsEnd(swiper.isEnd);
-        }}
-        onSlideChange={swiper => {
-          setIsBeginning(swiper.isBeginning);
-          setIsEnd(swiper.isEnd);
-        }}
+        onInit={swiper => onInitHandler(swiper)}
+        onSlideChange={swiper => onSlideChangeHandler(swiper)}
       >
         {products.map(product => (
           <SwiperSlide key={product.id}>

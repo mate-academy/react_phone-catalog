@@ -1,7 +1,6 @@
 @use '@/styles/index' as *;
 
 .pictureSlider {
-  // margin-top: 24px;
   width: 100%;
 
   @include on-tablet {
@@ -12,8 +11,9 @@
   }
 
   @include on-desctop {
+    max-width: 1136px;
     padding: 0 32px;
-    margin-top: 0;
+    margin: 0 auto;
   }
 
   &-image {
@@ -49,6 +49,7 @@
     position: absolute;
     border: 1px solid $icons;
     z-index: 10;
+    cursor: pointer;
 
     @include on-tablet {
       display: block;

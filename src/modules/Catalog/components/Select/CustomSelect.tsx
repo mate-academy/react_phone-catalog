@@ -46,7 +46,7 @@ export const CustomSelect: React.FC<Props> = ({ value, onChange, options }) => {
         className={styles.trigger}
         onClick={() => setOpen(!open)}
       >
-        <span>{selected?.label}</span>
+        <span>{selected?.label || "Choose"}</span>
         <img src="/img/icons/ChevronArrowDown.svg" alt="" />
       </button>
 
@@ -58,7 +58,7 @@ export const CustomSelect: React.FC<Props> = ({ value, onChange, options }) => {
               className={opt.value === value ? styles.active : ''}
               onClick={() => handleSelect(opt.value)}
             >
-              {opt.label}
+              {opt?.label}
             </li>
           ))}
         </ul>

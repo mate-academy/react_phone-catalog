@@ -24,7 +24,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     const loadCart = async () => {
       const storedCart = await getCart();
 
-      setCart(storedCart);
+      setCartState(storedCart);
     };
 
     loadCart();

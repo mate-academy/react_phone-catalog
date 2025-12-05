@@ -3,6 +3,15 @@
 .nav__wrapper {
   display: none;
   vertical-align: middle;
+
+  @include on-tablet {
+    margin-left: 16px;
+  }
+
+  @include on-desctop {
+    margin-left: 24px;
+  }
+
   .navbar {
     display: flex;
     gap: 32px;
