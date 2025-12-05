@@ -42,7 +42,7 @@ export const CartPage = () => {
   const confirmHandler = () => {
     clearCart();
     setIsOpenModal(false);
-  }
+  };
 
   const total = getTotalPrice();
 

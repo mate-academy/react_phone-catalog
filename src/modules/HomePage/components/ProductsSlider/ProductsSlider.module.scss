@@ -45,6 +45,7 @@
       background-color: #fff;
       border: 1px solid $elements;
       transition: border-color 0.3s ease-in-out;
+      cursor: pointer;
 
       &:hover {
         border-color: $primary;

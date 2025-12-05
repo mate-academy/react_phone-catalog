@@ -1,9 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
-// import { Logo } from '../Logo';
 import styles from './Footer.module.scss';
 
 export const Footer = () => (
-  <div className="container">
+  <div>
     <footer className={styles.footer}>
       <NavLink to="/" className={styles.logo}>
         <img src="img/logo/Logo.svg" alt="Nice gadgets logo" />

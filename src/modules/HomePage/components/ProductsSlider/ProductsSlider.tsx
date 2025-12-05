@@ -24,17 +24,17 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
     }
   }, []);
 
-  const onInitHandler = (swiper) => {
+  const onInitHandler = swiper => {
     swiperRef.current = swiper;
 
     setIsBeginning(swiper.isBeginning);
     setIsEnd(swiper.isEnd);
-  }
+  };
 
-  const onSlideChangeHandler = (swiper) => {
+  const onSlideChangeHandler = swiper => {
     setIsBeginning(swiper.isBeginning);
     setIsEnd(swiper.isEnd);
-  }
+  };
 
   return (
     <div className={styles.productsSlider}>

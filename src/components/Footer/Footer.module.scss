@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 32px 0;
+  padding: 32px 16px;
   margin-top: 64px;
   border-top: 1px solid $elements;
 
@@ -16,6 +16,11 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 32px 32px;
+  }
+
+  @include on-desctop {
+    max-width: 100%;
   }
 
   &-list {
