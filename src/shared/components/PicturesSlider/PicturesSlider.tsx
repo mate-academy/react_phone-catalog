@@ -44,43 +44,35 @@ export const PicturesSlider: React.FC = () => {
 
   return (
     <div className={styles.sliderSection}>
-      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+      <div className={styles.titleWrapper}>
+        <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+      </div>
 
-      <div className={`${styles.sliderContainer} ${styles.sliderGrid}`}>
-        <div
-          className={styles.sliderWrapper}
-          onMouseEnter={stopTimer}
-          onMouseLeave={startTimer}
-        >
+      <div className={styles.sliderGrid}>
+        <div className={styles.leftCol} onClick={prevSlide}>
+          <img
+            src="/icons/ChevronArrowLeftSlider.svg"
+            className={styles.arrowIcon}
+            alt="ChevronArrowLeft"
+          />
+        </div>
+
+        <div className={styles.sliderWrapper}>
           <div className={styles.sliderViewport}>
             <div
               className={styles.sliderTrack}
               style={{ transform: `translateX(-${current * 100}%)` }}
             >
-              {images.map((img, idx) => (
+              {images.map((img, index) => (
                 <img
-                  key={idx}
+                  key={index}
                   src={img}
-                  alt={`Banner ${idx + 1}`}
                   className={styles.image}
+                  alt={`Slide ${index + 1}`}
                 />
               ))}
             </div>
           </div>
-
-          <button
-            className={`${styles.arrow} ${styles.left}`}
-            onClick={prevSlide}
-          >
-            &#10094;
-          </button>
-
-          <button
-            className={`${styles.arrow} ${styles.right}`}
-            onClick={nextSlide}
-          >
-            &#10095;
-          </button>
 
           <div className={styles.dots}>
             {images.map((_, slideIndex) => (
@@ -91,6 +83,14 @@ export const PicturesSlider: React.FC = () => {
               />
             ))}
           </div>
+        </div>
+
+        <div className={styles.rightCol} onClick={nextSlide}>
+          <img
+            className={styles.arrowIcon}
+            src="/icons/ChevronArrowRight.svg"
+            alt="ChevronArrowRight"
+          />
         </div>
       </div>
     </div>

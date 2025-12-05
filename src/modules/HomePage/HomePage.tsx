@@ -30,13 +30,7 @@ export const HomePage = () => {
     <div className={styles.homePage}>
       <main>
         <section className={styles.section}>
-          <div className="container">
-            <div className="grid-24">
-              <div className="col-22">
-                <PicturesSlider />
-              </div>
-            </div>
-          </div>
+          <PicturesSlider />
         </section>
 
         {brandNew.length > 0 && (
