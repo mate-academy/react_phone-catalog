@@ -12,6 +12,10 @@ export const Action: React.FC<Props> = ({ setMenuIsOpen }) => {
   const { inCart } = useShopContext();
   const { liked } = useFavouriteContext();
 
+  const totalAmount = inCart.reduce(function (accum, current) {
+    return accum + current.quantity;
+  }, 0);
+
   return (
     <div className={s.action}>
       <NavLink
@@ -38,7 +42,7 @@ export const Action: React.FC<Props> = ({ setMenuIsOpen }) => {
         onClick={() => setMenuIsOpen(false)}
       >
         <div className={`${s.action__icon} ${s['action__icon--bag']} `}>
-          <div className={s.action__counter}>{inCart.length}</div>
+          <div className={s.action__counter}>{totalAmount}</div>
         </div>
       </NavLink>
     </div>

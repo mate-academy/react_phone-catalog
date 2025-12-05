@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const AddButton: React.FC<Props> = ({ size, product }) => {
-  const { inCart, addItems } = useShopContext();
+  const { inCart, addItems, deleteItem } = useShopContext();
   const isAdded = inCart.find(item => item.id === product.id);
   const title = isAdded ? 'Added to cart' : 'Add to cart';
   const addedProduct = {
@@ -19,7 +19,7 @@ export const AddButton: React.FC<Props> = ({ size, product }) => {
   return (
     <button
       className={`${s['add-button']}  ${s[`add-button--${size}`]} ${isAdded ? s[`add-button--disabled`] : null}`}
-      onClick={() => (isAdded ? null : addItems(addedProduct))}
+      onClick={() => (isAdded ? deleteItem(isAdded) : addItems(addedProduct))}
     >
       {title}
     </button>

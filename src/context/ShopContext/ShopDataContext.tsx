@@ -127,7 +127,7 @@ export const ShopDataProvider: React.FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
-      fetchData();
+    fetchData();
   }, []);
 
   return (

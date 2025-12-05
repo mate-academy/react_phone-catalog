@@ -39,22 +39,22 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     setError('');
     setIsLoading(true);
 
-      fetch('api/products.json')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Something went wrong');
-          }
+    fetch('api/products.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Something went wrong');
+        }
 
-          return response.json();
-        })
-        .then(data => {
-          setProduct(data);
-          setIsLoading(false);
-        })
-        .catch(er => {
-          setIsLoading(false);
-          setError(er.message);
-        });
+        return response.json();
+      })
+      .then(data => {
+        setProduct(data);
+        setIsLoading(false);
+      })
+      .catch(er => {
+        setIsLoading(false);
+        setError(er.message);
+      });
   };
 
   useEffect(() => {
