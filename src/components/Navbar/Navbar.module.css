@@ -11,10 +11,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--line-color);
   z-index: 9999;
   box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 5);
 }
 
 .leftGroup {
@@ -68,7 +69,6 @@
   top: calc(var(--navbar-height));
   right: 0;
   left: 0;
-  background: var(--bg);
   transform: translateY(-10%);
   opacity: 0;
   pointer-events: none;
@@ -100,7 +100,7 @@
 
 .menuList a {
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .linkContainer {
@@ -116,11 +116,6 @@
   display: inline-block;
 }
 
-/* link ativo */
-.activeLink {
-  color: var(--text);
-}
-
 /* linha decorativa (hover / active) */
 .linkContainer::after {
   content: '';
@@ -129,7 +124,7 @@
   left: 0;
   height: 4px;
   width: 100%;
-  background-color: var(--text);
+  background-color: red;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.2s ease;
@@ -166,13 +161,6 @@
   height: auto;
 }
 
-.themeToggle {
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-}
-
 /* ícones: tamanho explícito e sem !important para manter previsibilidade */
 .iconCart,
 .iconFavourites {
@@ -182,30 +170,44 @@
   display: block;
 }
 
-/* hover sutil */
-.iconButton:hover .iconCart,
-.iconButton:hover .iconFavourites {
-  transform: translateY(-1px);
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
 /* badge circular sobreposto no canto superior direito */
-.cartBadge,
 .favBadge {
   position: absolute;
   top: 2px;
   right: 2px;
-  margin-top: 10px;
-  padding: 6px 0;
+  margin-top: 12px;
+  padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 20px;
   height: 20px;
-  background: var(--accent); /* usa variável global */
+  background: var(--badge-color);
   color: #fff;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  border-radius: 999px;
+  transform: translate(0, -25%);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.cartBadge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  margin-top: 9px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  background: var(--badge-color);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
   line-height: 1;
   border-radius: 999px;
   transform: translate(0, -25%);
@@ -216,8 +218,8 @@
 /* ajuste para números maiores */
 .cartBadge[data-testid],
 .favBadge[data-testid] {
-  padding-left: 6px;
-  padding-right: 6px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* =========================

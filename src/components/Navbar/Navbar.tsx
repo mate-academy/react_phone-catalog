@@ -14,10 +14,13 @@ import styles from './Navbar.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import logoMobile from '../../assets/img/phones/Logo_mobile.png';
 import logoDesktop from '../../assets/img/phones/Logo_desktop.png';
-import cartMobile from '../../assets/img/Cart.svg';
-import favouritesMobile from '../../assets/img/Favourites.svg';
+import CartWhite from '../../assets/img/Cart-white.svg?react';
+import FavouritesWhite from '../../assets/img/Favourites-white.svg?react';
+import CartDark from '../../assets/img/Cart-dark.svg?react';
+import FavouritesDark from '../../assets/img/Favourites-dark.svg?react';
 import { useCart } from '../../pages/ShoppingCart/cartContext';
 import { useFavorites } from '../../pages/Favorites/FavoritesContext';
+import { useTheme } from '../../context/ThemeContext';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 // ======================
@@ -183,6 +186,13 @@ export default function Navbar({ links }: Props): JSX.Element {
   // BLOCO FAVORITES (consome contexto de favoritos)
   const { favorites } = useFavorites();
 
+  // BLOCO THEME (consome contexto de tema)
+  const { theme } = useTheme();
+
+  // Escolhe os ícones corretos conforme o tema
+  const CartIcon = theme === 'light' ? CartWhite : CartDark;
+  const FavIcon = theme === 'light' ? FavouritesWhite : FavouritesDark;
+
   // BLOCO RENDER
   return (
     <header className={styles.navbar}>
@@ -227,17 +237,14 @@ export default function Navbar({ links }: Props): JSX.Element {
           BLOCO ICONS (Favourites + Cart com badge e rota /cart)
           ====================== */}
       <div className={styles.containerIcon}>
+        <ThemeToggle />
         <Link
           to="/favorites"
           className={styles.iconButton}
           aria-label="Favoritos"
           data-testid="nav-favorites-link"
         >
-          <img
-            src={favouritesMobile}
-            alt="Ícone Favoritos"
-            className={styles.iconFavourites}
-          />
+          <FavIcon className={styles.iconFavourites} aria-hidden="true" />
           {favorites.length > 0 && (
             <span
               className={styles.favBadge}
@@ -254,11 +261,7 @@ export default function Navbar({ links }: Props): JSX.Element {
           aria-label="Ver carrinho"
           data-testid="nav-cart-link"
         >
-          <img
-            src={cartMobile}
-            alt="Ícone Carrinho"
-            className={styles.iconCart}
-          />
+          <CartIcon className={styles.iconCart} aria-hidden="true" />
           {totalQty > 0 && (
             <span
               className={styles.cartBadge}
@@ -269,7 +272,6 @@ export default function Navbar({ links }: Props): JSX.Element {
             </span>
           )}
         </Link>
-        <ThemeToggle />
       </div>
     </header>
   );

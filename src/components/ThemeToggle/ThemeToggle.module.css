@@ -15,8 +15,8 @@
 
 /* ícones SVG dentro do botão seguem a cor do texto */
 .themeToggle svg {
-  width: 1em;
-  height: 1em;
+  width: 42px;
+  height: 42px;
   display: block;
   fill: currentColor;
 }

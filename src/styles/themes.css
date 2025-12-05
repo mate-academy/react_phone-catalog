@@ -1,6 +1,7 @@
 /* Tema claro */
 :root.light-theme {
   --bg-color: #fff;
+  --badge-color: red;
   --text-color: #000;
   --link-color: #2563eb;
   --link-hover: #1e40af;
@@ -9,12 +10,14 @@
   --primary-bg: #3b82f6;
   --primary-text: #fff;
   --disabled-bg: #9ca3af;
+  --line-color: #f2f3f7;
   --disabled-text: #f9fafb;
 }
 
 /* Tema escuro */
 :root.dark-theme {
   --bg-color: #121212;
+  --badge-color: red;
   --text-color: #fff;
   --link-color: #93c5fd;
   --link-hover: #bfdbfe;
@@ -23,6 +26,7 @@
   --primary-bg: #2563eb;
   --primary-text: #fff;
   --disabled-bg: #4b5563;
+  --line-color: #313131;
   --disabled-text: #d1d5db;
 }
 
