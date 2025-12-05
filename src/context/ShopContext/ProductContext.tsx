@@ -39,7 +39,6 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     setError('');
     setIsLoading(true);
 
-    setTimeout(() => {
       fetch('api/products.json')
         .then(response => {
           if (!response.ok) {
@@ -56,7 +55,6 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
           setIsLoading(false);
           setError(er.message);
         });
-    }, 2000);
   };
 
   useEffect(() => {

@@ -127,9 +127,7 @@ export const ShopDataProvider: React.FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
       fetchData();
-    }, 2000);
   }, []);
 
   return (
