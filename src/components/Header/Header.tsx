@@ -5,7 +5,6 @@ import { useContext, useMemo, useState } from 'react';
 import { BurgerMenu } from '../BurgerMenu';
 import favourites from '../../Icons/Favourites(HeartLike).svg';
 import cart from '../../Icons/Group17.svg';
-import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { ItemsCounter } from '../ItemsCounter';
 // eslint-disable-next-line max-len
@@ -94,17 +93,28 @@ export const Header = () => {
             </li>
           </ul>
           <div className={styles.nav__buttons}>
-            <Link to="/favourites" className={styles.icon__link}>
+            <NavLink
+              to="/favourites"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.icon__link} ${styles['icon__link--active']}`
+                  : styles.icon__link
+              }
+            >
               <div className={styles.img__wrapper}>
                 <img src={favourites} alt="favourites"></img>
                 {favorites.length >= 1 && (
                   <ItemsCounter quantity={favorites.length}></ItemsCounter>
                 )}
               </div>
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/cart"
-              className={styles.icon__link}
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.icon__link} ${styles['icon__link--active']}`
+                  : styles.icon__link
+              }
               state={{ from: pathname }}
             >
               <div className={styles.img__wrapper}>
@@ -113,7 +123,7 @@ export const Header = () => {
                   <ItemsCounter quantity={cartCounter}></ItemsCounter>
                 )}
               </div>
-            </Link>
+            </NavLink>
           </div>
         </nav>
 

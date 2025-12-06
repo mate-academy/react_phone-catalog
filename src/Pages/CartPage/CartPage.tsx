@@ -18,6 +18,19 @@ export const CartPage = () => {
     }, 0);
   }, [cartProducts]);
 
+  const checkoutHandler = () => {
+    const userConfirmation = confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (userConfirmation) {
+      localStorage.removeItem('cart');
+      window.location.reload();
+    } else {
+      return;
+    }
+  };
+
   return (
     <>
       <PageTop
@@ -45,7 +58,12 @@ export const CartPage = () => {
               Total for {totalLength} items
             </span>
             <div className={styles['total-wrapper__line']}></div>
-            <PrimaryButton isSelected={false} height="48" text="Checkout" />
+            <PrimaryButton
+              action={checkoutHandler}
+              isSelected={false}
+              height="48"
+              text="Checkout"
+            />
           </div>
         </main>
       </section>

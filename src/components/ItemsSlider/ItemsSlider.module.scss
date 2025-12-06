@@ -44,22 +44,26 @@
     width: 32px;
     height: 32px;
     border: 0;
-    border: 1px solid $elements;
-
+    border: 1px solid $icons;
+    color: $primary-color;
     background-color: $white;
+    cursor: pointer;
 
     transition-duration: 0.5s;
+    
+    &:disabled{
+        border: 1px solid $elements;
+        cursor: default;
+        color: $icons;
+        pointer-events: none;
+    }
 }
 
 .button:hover{
-    border: 1px solid $icons;
     transition-duration: 0.5s;
-     
+    transform: scale(1.1);
 }
 
-.slider__svg {
-    color: $primary-color;
-}
 
 .models{
     scroll-behavior: smooth;

@@ -254,6 +254,7 @@
 }
 
 .icon__link {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -262,6 +263,52 @@
   height: 64px;
 
   box-shadow: 0 0 1px 0 #E2E6E9;
+  
+  &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 0%;
+      height: 3px;
+
+      background-color: $primary-color;
+
+      transition: all 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+  &:hover {
+      cursor: pointer;
+      color: $primary-color;
+      transition: all 0.3s ease;
+    }
+
+  &--active{
+      position: relative;
+      color: $primary-color;
+
+      &::after{
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 100%;
+        height: 3px;
+
+        background-color: $primary-color;
+
+      }
+    }
 
   @include tablet {
     width: 48px;

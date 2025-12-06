@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
 import { ModelCard } from '../ModelCard/ModelCard';
 import styles from './ItemsSlider.module.scss';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AccessoriesModel, PhoneModel, TabletModel } from '../../types/model';
 import { Product } from '../../types/products';
 import { SkeletonCard } from '../SkeletonCard';
-import arrowLeft from '../../Icons/ChevronArrowLeft.svg';
-import arrowRight from '../../Icons/ChevronArrowRight.svg';
+import ArrowLeft from '../../Icons/ChevronArrowLeft.svg?react';
+import ArrowRight from '../../Icons/ChevronArrowRight.svg?react';
 
 interface Props {
   models: PhoneModel[] | AccessoriesModel[] | TabletModel[] | Product[];
@@ -27,6 +27,35 @@ export const ItemsSlider: React.FC<Props> = ({
 }) => {
   const listRef = useRef<HTMLUListElement | null>(null);
   const itemRef = useRef<HTMLLIElement | null>(null);
+
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const checkScrollPosition = () => {
+    if (!listRef.current) {
+      return;
+    }
+
+    const { scrollLeft, scrollWidth, clientWidth } = listRef.current;
+
+    setIsBeginning(scrollLeft <= 0);
+    setIsEnd(Math.ceil(scrollLeft + clientWidth) >= scrollWidth);
+  };
+
+  useEffect(() => {
+    const list = listRef.current;
+
+    if (list) {
+      checkScrollPosition();
+      list.addEventListener('scroll', checkScrollPosition);
+    }
+
+    return () => {
+      if (list) {
+        list.removeEventListener('scroll', checkScrollPosition);
+      }
+    };
+  }, [models]);
 
   const handleNext = () => {
     if (!listRef.current || !itemRef.current) {
@@ -62,16 +91,16 @@ export const ItemsSlider: React.FC<Props> = ({
           <button
             className={styles.button}
             onClick={handlePrev}
-            disabled={isLoading}
+            disabled={isLoading || isBeginning}
           >
-            <img src={arrowLeft} alt="" className={styles.slider__svg} />
+            <ArrowLeft className={styles.slider__svg} />
           </button>
           <button
             className={styles.button}
             onClick={handleNext}
-            disabled={isLoading}
+            disabled={isLoading || isEnd}
           >
-            <img src={arrowRight} alt="" className={styles.slider__svg} />
+            <ArrowRight className={styles.slider__svg} />
           </button>
         </div>
       </div>
