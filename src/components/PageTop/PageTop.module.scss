@@ -1,4 +1,6 @@
 @import '../../styles/media';
+@import '../../styles/mixins';
+@import '../../styles/variables';
 
 .top-content {
   display: flex;
@@ -69,6 +71,14 @@
       color: #313237;
       transition: color 0.3s;
     }
+
+    &-svg{
+      color: $primary-color;
+    }
+  }
+  
+  .top-content__arrow{
+    color: $icons;
   }
 
   @include tablet {

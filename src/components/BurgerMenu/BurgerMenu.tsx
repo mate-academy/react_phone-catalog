@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
-import favourites from '../../Icons/Favourites (Heart Like).svg';
-import cart from '../../Icons/Group 17.svg';
+import favourites from '../../Icons/Favourites(HeartLike).svg';
+import cart from '../../Icons/Group17.svg';
 import { useContext, useMemo } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import { FavoritesContext } from '../../contexts/FavoritesContext';

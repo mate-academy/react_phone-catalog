@@ -2,7 +2,7 @@
 import logo from '../../images/Logo.svg';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import arrowTop from '../../Icons/Chevron (Arrow Right).svg';
+import arrowTop from '../../Icons/ChevronArrowRight.svg';
 export const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({

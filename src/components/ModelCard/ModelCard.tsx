@@ -1,5 +1,5 @@
 import { AccessoriesModel, PhoneModel, TabletModel } from '../../types/model';
-import favoritesNonActive from '../../Icons/Favourites (Heart Like).svg';
+import favoritesNonActive from '../../Icons/Favourites(HeartLike).svg';
 
 import styles from './ModelCard.module.scss';
 import cn from 'classnames';
@@ -9,7 +9,7 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 // eslint-disable-next-line max-len
 import { FavoritesContext } from '../../contexts/FavoritesContext/FavoritesContext';
 import { getProducts } from '../../api';
-import favoritesActive from '../../Icons/Favourites Filled (Heart Like).svg';
+import favoritesActive from '../../Icons/FavouritesFilled(HeartLike).svg';
 import { CartContext } from '../../contexts/CartContext';
 import { convertToCartItem } from '../../utils/convertToCartItem';
 import { PrimaryButton } from '../PrimaryButton';

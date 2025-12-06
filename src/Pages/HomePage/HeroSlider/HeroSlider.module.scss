@@ -52,6 +52,7 @@
 
 .custom-prev, .custom-next {
   display: none;
+  color: $primary-color;
 
   @include tablet{
   cursor: pointer;
@@ -69,6 +70,7 @@
   height: 100%;
   border: 1px solid $icons;
   }
+  
 }
 
 .custom-prev {

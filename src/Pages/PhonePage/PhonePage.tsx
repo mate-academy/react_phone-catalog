@@ -9,6 +9,8 @@ import { PageTop } from '../../components/PageTop';
 import Loader from '../../components/Loader/Loader';
 import { ErrorMessage } from '../../components/ErrorMessage';
 
+// Phone Page Component
+
 export const PhonePage = () => {
   const [phones, setPhones] = useState<PhoneModel[]>([]);
   const [initialPhones, setInitialPhones] = useState<PhoneModel[]>([]);
@@ -65,6 +67,8 @@ export const PhonePage = () => {
     if (initialPhones.length === 0) {
       return;
     }
+
+    setIsLoading(true);
 
     const processPhones = async () => {
       try {

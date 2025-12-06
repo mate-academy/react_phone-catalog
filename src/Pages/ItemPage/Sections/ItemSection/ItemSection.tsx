@@ -9,8 +9,8 @@ import {
   TabletModel,
 } from '../../../../types/model';
 // eslint-disable-next-line max-len
-import favoritesActive from '../../../../Icons/Favourites Filled (Heart Like).svg';
-import favoritesNonActive from '../../../../Icons/Favourites (Heart Like).svg';
+import favoritesActive from '../../../../Icons/FavouritesFilled(HeartLike).svg';
+import favoritesNonActive from '../../../../Icons/Favourites(HeartLike).svg';
 import { useNavigate } from 'react-router-dom';
 import styles from './ItemSection.module.scss';
 import cn from 'classnames';

@@ -32,6 +32,7 @@
   border: 0;
   background-color: $white;
   transition: 0.5s;
+  color: $icons;
 
   &:hover {
     svg path {
@@ -97,20 +98,18 @@
   box-sizing: border-box;
   width: 32px;
   height: 32px;
+  color: $primary-color;
   border: 1px solid $icons;
+  transition-duration: 0.5s;
 
   background-color: $white;
   /* stylelint-disable-next-line no-descending-specificity */
-  svg path {
-    fill: #000;
-  }
 
-  &-disabled {
+  &:disabled {
     border: 1px solid $elements;
   /* stylelint-disable-next-line no-descending-specificity */
-    svg path {
-      fill: $icons;
-    }
+    color: $icons;
+    transition-duration: 0.5s;
   }
 }
 

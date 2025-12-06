@@ -5,8 +5,8 @@ import { useRef } from 'react';
 import { AccessoriesModel, PhoneModel, TabletModel } from '../../types/model';
 import { Product } from '../../types/products';
 import { SkeletonCard } from '../SkeletonCard';
-import arrowLeft from '../../Icons/Chevron (Arrow Left).svg';
-import arrowRight from '../../Icons/Chevron (Arrow Right).svg';
+import arrowLeft from '../../Icons/ChevronArrowLeft.svg';
+import arrowRight from '../../Icons/ChevronArrowRight.svg';
 
 interface Props {
   models: PhoneModel[] | AccessoriesModel[] | TabletModel[] | Product[];
