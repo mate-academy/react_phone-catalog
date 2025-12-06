@@ -104,7 +104,12 @@ export const CartPage: React.FC = () => {
               Total for {totalCount} {cartItems.length === 1 ? 'item' : 'items'}
             </p>
             <div className={styles.border}></div>
-            <button className={styles.checkout}>Checkout</button>
+            <button
+              className={styles.checkout}
+              onClick={() => alert('Thanks! Order Placed✅')}
+            >
+              Checkout
+            </button>
           </div>
         </div>
       )}

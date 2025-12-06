@@ -52,8 +52,6 @@ export function PhonesPage() {
 
     if (value !== 'age') newParams.sort = value;
     if (perPage !== 'all') newParams.perPage = perPage;
-    if (page !== 1) newParams.page = String(page);
-
     setSearchParams(newParams);
   };
 

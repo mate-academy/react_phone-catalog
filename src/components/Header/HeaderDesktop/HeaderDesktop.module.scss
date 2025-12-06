@@ -62,11 +62,20 @@
   }
 
   a {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 0;
+    text-decoration: none;
+    color: var(--secondary-text);
+    transition: color 0.2s;
+    vertical-align: middle;
+
     @include on-desktop {
       font-weight: 800;
       font-size: 12px;
       line-height: 11px;
       letter-spacing: 4%;
+      padding: 22px 0;
     }
 
     @include on-bigTablet {
@@ -74,6 +83,7 @@
       font-size: 12px;
       line-height: 11px;
       letter-spacing: 4%;
+      padding: 14px 0;
     }
 
     @include on-tablet {
@@ -81,6 +91,7 @@
       font-size: 12px;
       line-height: 11px;
       letter-spacing: 4%;
+      padding: 14px 0;
     }
 
     text-transform: uppercase;
@@ -183,7 +194,7 @@
 
 .badge {
   font-weight: 700;
-  font-size: 12px;
+  font-size: 10px;
   position: absolute;
   top: 17px;
   right: 15px;
@@ -205,4 +216,29 @@
     top: 8px;
     right: 7px;
   }
+}
+
+.activeLink {
+  position: relative;
+  // padding: 8px 0;
+  color: white;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+  }
+}
+
+.link {
+  position: relative;
+  padding: 8px 0;
+  text-decoration: none;
+  color: var(--secondary-text);
+  transition: color 0.2s;
 }

@@ -51,6 +51,12 @@ export function ProductDetailsPage(): JSX.Element {
   const [selectedCapacity, setSelectedCapacity] = useState<string>();
   const [isFav, setIsFav] = useState(false);
 
+  const categoryNames: Record<string, string> = {
+    phones: 'Phones',
+    tablets: 'Tablets',
+    accessories: 'Accessories',
+  };
+
   const { addToCart, removeFromCart, addToFavourites, favourites, cartItems } =
     useCart();
 
@@ -87,10 +93,23 @@ export function ProductDetailsPage(): JSX.Element {
       ),
     ])
       .then(([phones, tablets, accessories]) => {
+        const phonesWithCat = (phones || []).map((p: any) => ({
+          ...p,
+          category: 'phones',
+        }));
+        const tabletsWithCat = (tablets || []).map((p: any) => ({
+          ...p,
+          category: 'tablets',
+        }));
+        const accessoriesWithCat = (accessories || []).map((p: any) => ({
+          ...p,
+          category: 'accessories',
+        }));
+
         const all = [
-          ...(phones || []),
-          ...(tablets || []),
-          ...(accessories || []),
+          ...phonesWithCat,
+          ...tabletsWithCat,
+          ...accessoriesWithCat,
         ] as Product[];
 
         setAllProducts(all);
@@ -118,6 +137,7 @@ export function ProductDetailsPage(): JSX.Element {
           setIsFav(false);
         }
       })
+
       .catch(() => setError('Failed to load data'))
       .finally(() => setLoading(false));
   }, [productId]);
@@ -179,7 +199,7 @@ export function ProductDetailsPage(): JSX.Element {
     ));
   };
 
-  if (loading)  {
+  if (loading) {
     return (
       <div className={styles.page}>
         <p className={styles.loading}>Loading product...</p>
@@ -215,7 +235,19 @@ export function ProductDetailsPage(): JSX.Element {
         <Link to="/">
           <img src={iconHome} alt="home" className={styles.icon__home} />
         </Link>
+
         <img src={iconRight} alt="right" className={styles.icon__right} />
+
+        {product.category ? (
+          <>
+            <Link to={`/${product.category}`} className={styles.navText}>
+              {categoryNames[product.category] ?? product.category}
+            </Link>
+
+            <img src={iconRight} alt="right" className={styles.icon__right} />
+          </>
+        ) : null}
+
         <div className={styles.navText}>{product.name}</div>
       </nav>
 
