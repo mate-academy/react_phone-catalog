@@ -81,7 +81,7 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
           className={styles.addToCart}
           onClick={handleAddToCart}
         >
-          {hasCartItem ? 'Added' : 'Added to cart'}
+          {hasCartItem ? 'Added' : 'Add to cart'}
         </button>
 
         <button

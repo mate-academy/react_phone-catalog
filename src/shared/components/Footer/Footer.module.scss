@@ -1,3 +1,5 @@
+@import '../../../styles/media';
+
 .footer {
   display: flex;
   align-items: center;
@@ -6,6 +8,13 @@
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   height: 64px;
   padding: 0 20px;
+
+  @include on-mobile {
+    flex-direction: column;
+    height: auto;
+    padding: 24px 16px;
+    gap: 24px;
+  }
 }
 
 .logo {
@@ -13,10 +22,21 @@
     width: 80px;
     height: 28px;
   }
+
+  @include on-mobile {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
 }
 
 .nav {
   flex: 1;
+
+  @include on-mobile {
+    flex: none;
+    width: 100%;
+  }
 
   .navList {
     display: flex;
@@ -25,6 +45,13 @@
     list-style: none;
     gap: 3rem;
     padding: 0;
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
 
     .navLink {
       font-weight: 800;
@@ -66,6 +93,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
+  @include on-mobile {
+    justify-content: center;
+    width: 100%;
+    order: 3;
+  }
 
   .text {
     color: #89939a;

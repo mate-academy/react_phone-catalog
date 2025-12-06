@@ -105,3 +105,34 @@
 .dot.active {
   background-color: #fff;
 }
+
+@include on-mobile {
+  .titleWrapper,
+  .sliderGrid {
+    grid-template-columns: repeat(4, 1fr);
+    padding-inline: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .leftCol,
+  .rightCol {
+    display: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .title {
+    font-size: 32px;
+    margin: 24px 0;
+    grid-column: 1 / span 4;
+    padding-inline: 16px;
+  }
+
+  .sliderWrapper {
+    grid-column: 1 / span 4;
+    padding-inline: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

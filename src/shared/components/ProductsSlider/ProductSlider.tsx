@@ -17,12 +17,15 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const showOldPrice = title === 'Hot prices';
+  const isHotPrices = title === 'Hot prices';
 
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <section className={styles.section}>
+    <section
+      className={`${styles.section} ${isHotPrices ? styles.hotPrices : ''}`}
+    >
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
 
@@ -40,11 +43,11 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
       <Swiper
         modules={[Navigation]}
         spaceBetween={24}
-        slidesPerView={4}
+        slidesPerView={isHotPrices ? 3 : 4}
         breakpoints={{
-          0: { slidesPerView: 1.6, spaceBetween: 8 },
-          640: { slidesPerView: 2.5, spaceBetween: 12 },
-          1200: { slidesPerView: 4, spaceBetween: 24 },
+          0: { slidesPerView: isHotPrices ? 1.2 : 1.6, spaceBetween: 8 },
+          640: { slidesPerView: isHotPrices ? 2 : 2.5, spaceBetween: 12 },
+          1200: { slidesPerView: isHotPrices ? 3 : 4, spaceBetween: 24 },
         }}
         onBeforeInit={swiper => {
           const nav = swiper.params.navigation as NavigationOptions;

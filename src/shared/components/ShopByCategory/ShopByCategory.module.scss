@@ -1,3 +1,5 @@
+@import '../../../styles/media';
+
 .section {
   width: 100%;
   max-width: 1136px;
@@ -6,6 +8,12 @@
 
   @media (min-width: 1200px) {
     padding: 0;
+  }
+
+  @include on-mobile {
+    max-width: 100%;
+    padding: 0;
+    width: 100%;
   }
 }
 
@@ -18,8 +26,9 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 639px) {
+  @include on-mobile {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 }
 
@@ -31,6 +40,10 @@
   transition: transform 0.3s ease;
   max-width: 360px;
   width: 100%;
+
+  @include on-mobile {
+    max-width: 100%;
+  }
 }
 
 .imageWrapper {
@@ -44,6 +57,10 @@
 
 .title {
   margin-top: 50px;
+
+  @include on-mobile {
+    text-align: left;
+  }
 }
 
 .image {

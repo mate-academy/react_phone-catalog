@@ -3,7 +3,6 @@
 .header {
   background: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: block;
 }
 
 .grid {
@@ -34,13 +33,10 @@
   text-decoration: none;
   color: #89939A;
   text-transform: uppercase;
-  transition: color 0.3s;
+  transition: color 0.25s;
 }
 
-.navLink:hover {
-  color: #313237;
-}
-
+.navLink:hover,
 .navLink.active {
   color: #313237;
 }
@@ -97,4 +93,131 @@
   .actions {
     grid-column: 11 / span 2;
   }
+}
+
+.burgerButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@include on-mobile {
+  .grid-24 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .nav,
+  .actions {
+    display: none;
+  }
+
+  .burgerButton {
+    display: block;
+    justify-self: end;
+    margin-right: 16px;
+    grid-column: 4 / span 1;
+  }
+
+  .logo {
+    grid-column: 1 / span 1;
+    padding-left: 16px;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  background-color: #fff;
+  z-index: 2000;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileMenuHeader {
+  height: 64px;
+  padding: 0 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.mobileNav {
+  padding-top: 32px;
+}
+
+.mobileNavList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.mobileNavLink {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #89939A;
+  text-decoration: none;
+  position: relative;
+  transition: background-color 0.3s;
+
+  &:hover {
+    color: #313237;
+}
+}
+
+.mobileNavLinkActive::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 2px;
+  background-color: #313237;
+}
+
+
+.mobileActions {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+}
+
+.mobileActionsItem {
+  width: 50%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

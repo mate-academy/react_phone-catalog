@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 export const Footer: React.FC = () => {
   const scrollToTop = (): void => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+    document.body.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -48,7 +50,19 @@ export const Footer: React.FC = () => {
       </nav>
 
       <div className={styles.actions}>
-        <span className={styles.text} tabIndex={0}>
+        <span
+          className={styles.text}
+          onClick={scrollToTop}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              scrollToTop();
+            }
+          }}
+          tabIndex={0}
+          role="button"
+          aria-label="Back to top"
+        >
           Back to top
         </span>
         <button
