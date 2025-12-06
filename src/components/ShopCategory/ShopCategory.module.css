@@ -12,14 +12,34 @@
   height: 443px;
   background-color: var(--card-bg); /* fundo dinâmico */
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 
-  transition: transform 0.2s ease;
+  flex-direction: column;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  color: inherit; /* garante que o link herde a cor do texto */
+  text-decoration: none; /* remove sublinhado padrão de links */
+  display: block; /* garante que o card ocupe todo o espaço quando for <a> */
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
+/* estados de link/visited/active - evita cores padrão do navegador
+   Observação: o seletor base .ShopCategory vem primeiro para satisfazer
+   a regra no-descending-specificity */
+.ShopCategory,
+.ShopCategory:link,
+.ShopCategory:visited,
+.ShopCategory a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* hover visual */
 .ShopCategory:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
 }
 
 /* imagem */
@@ -42,12 +62,41 @@
   font-weight: 700;
   margin: 0 0 0.5rem;
   color: var(--text-color); /* texto dinâmico */
+  text-decoration: none;
 }
 
 .textContent p {
   font-size: 0.9rem;
   color: var(--text-muted); /* texto secundário dinâmico */
   margin: 0;
+  text-decoration: none;
+}
+
+/* garante que títulos e parágrafos não mudem de cor em estados visitados */
+.ShopCategory:visited .textContent h3,
+.ShopCategory:visited .textContent p {
+  color: var(--text-color);
+}
+
+/* foco acessível (visível para teclado) */
+.ShopCategory:focus,
+.ShopCategory:focus-visible {
+  outline: 3px solid var(--focus-color, #0a84ff);
+  outline-offset: 3px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+/* evita que o navegador aplique estilos de link em pseudo-classes */
+.ShopCategory:active,
+.ShopCategory:focus,
+.ShopCategory:hover {
+  text-decoration: none;
+}
+
+/* pequenas melhorias responsivas e de layout */
+.ShopCategory .imageShop {
+  display: block;
+  flex-shrink: 0;
 }
 
 /* ------------------ BREAKPOINTS ------------------ */
@@ -63,11 +112,12 @@
   .ShopCategory {
     width: 100%; /* ocupar largura total */
     max-width: 320px;
+    height: auto;
   }
 
   .imageShop {
     width: 100%;
-    height: auto; /* opcional: ajusta altura proporcional */
+    height: auto;
     aspect-ratio: 1 / 1; /* mantém quadrado */
   }
 }
@@ -77,12 +127,33 @@
   .brandGrid {
     flex-direction: row;
   }
+
+  .ShopCategory {
+    width: calc(50% - 1rem);
+    max-width: 320px;
+  }
+
+  .imageShop {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
 }
 
 /* entre 641px e 1200px: horizontal */
 @media (min-width: 40.06rem) and (max-width: 75rem) {
   .brandGrid {
     flex-direction: row;
+  }
+
+  .ShopCategory {
+    width: 368px;
+    height: 443px;
+  }
+
+  .imageShop {
+    width: 368px;
+    height: 368px;
   }
 }
 
@@ -91,4 +162,21 @@
   .brandGrid {
     flex-direction: row;
   }
+
+  .ShopCategory {
+    width: 368px;
+    height: 443px;
+  }
+
+  .imageShop {
+    width: 368px;
+    height: 368px;
+  }
+}
+
+/* utilitários opcionais (caso queira aplicar link wrapper externo) */
+.shopCardLink {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }

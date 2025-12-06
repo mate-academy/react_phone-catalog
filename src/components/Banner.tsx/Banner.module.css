@@ -1,27 +1,26 @@
 :root {
   --banner-h-default: 25rem; /* 400px */
-  --banner-h-lg: 32.5rem; /* 520px */
+  --banner-h-lg: 32rem; /* 512px */
   --banner-h-md: 20rem; /* 320px */
   --banner-w-max: 80rem; /* 1280px */
   --side-w-default: 2.5rem; /* 40px */
   --side-w-lg: 3rem; /* 48px */
-  --fade-duration: 0.5s; /* tempo da transição */
+  --fade-duration: 0.5s;
 }
 
-/* wrapper principal do banner (titulo + banner + chevrons) */
+/* wrapper principal do banner (título + banner + chevrons) */
 .containerBlock {
   width: 100%;
   box-sizing: border-box;
-  padding: 24px;
   max-width: 1440px;
   margin: 0 auto;
-  color: var(--text-color); /* ✅ texto dinâmico */
+  color: var(--text-color);
 }
 
 /* flex que contém left - banner - right */
 .containerFlex {
   display: flex;
-  align-items: stretch; /* faz .side ter a mesma altura do .containerImg */
+  align-items: stretch; /* mantém a imagem com altura total do containerImg */
   justify-content: center;
   gap: 0.5rem;
   width: 100%;
@@ -29,24 +28,36 @@
   box-sizing: border-box;
 }
 
+/* lado (chevrons) - não deve esticar para a altura do banner */
+.side {
+  flex: 0 0 auto; /* não cresce nem encolhe automaticamente */
+  align-self: center; /* anula align-items: stretch para este filho */
+  display: flex;
+  align-items: center; /* centraliza verticalmente o conteúdo do side */
+  justify-content: center;
+  width: var(--side-w-default);
+  padding: 0;
+  box-sizing: border-box;
+  overflow: visible; /* permite depuração e evita corte inesperado */
+  filter: var(--icon-filter, none);
+}
+
 /* imagem central do banner */
 .containerImg {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: var(--card-bg); /* ✅ fundo dinâmico */
+  background-color: var(--card-bg);
   width: 100%;
   max-width: var(--banner-w-max);
-  height: var(--banner-h-default);
-  display: flex; /* permite centralizar conteúdo interno se tiver */
+  height: var(--banner-h-default); /* altura padrão do banner */
+  display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
-
-  /* animação de fade */
   transition: opacity var(--fade-duration) ease-in-out;
   opacity: 1;
 }
@@ -56,61 +67,63 @@
   opacity: 0;
 }
 
-/* botões laterais */
-.side {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--side-w-default);
-  box-sizing: border-box;
-  filter: var(--icon-filter, none); /* ✅ garante contraste no dark */
-}
-
 /* indicadores */
 .indicatorWrapper {
   display: flex;
   justify-content: center;
   margin-top: 12px;
-  color: var(--text-muted); /* ✅ cor dinâmica */
+  color: var(--text-muted);
 }
 
-/* <= 640px: banner reduz */
+/* -------------------------
+   Breakpoints / Responsividade
+   ------------------------- */
+
+/* <= 640px: banner reduz para layout mobile */
 @media (max-width: 40rem) {
-  /* 640px */
   .containerImg {
-    width: 20rem;
+    width: 20rem; /* 320px */
     height: var(--banner-h-md);
     border-radius: 0.38rem;
   }
+
   .containerFlex {
     padding: 0 0.75rem 16px;
+    justify-content: center;
   }
-}
 
-/* desktop médio: 641 - 1200 */
-@media (min-width: 640px) and (max-width: 75rem) {
-  .containerImg {
-    width: 100%;
-  }
+  /* ajustar largura dos sides em mobile */
   .side {
     width: var(--side-w-default);
   }
 }
 
-/* desktop grande 1200+ */
-@media (min-width: 1440px) {
+/* 641px - 1439px: desktop médio */
+@media (min-width: 40.01rem) and (max-width: 89.99rem) {
+  .containerImg {
+    width: 100%;
+    height: var(--banner-h-default);
+  }
+
+  .side {
+    width: var(--side-w-default);
+  }
+}
+
+/* 1440px+ : desktop grande */
+@media (min-width: 90rem) {
   .containerImg {
     max-width: var(--banner-w-max);
     height: var(--banner-h-lg);
   }
+
   .side {
     width: var(--side-w-lg);
   }
 }
 
-/* <= 320px: forçar largura do banner para 320px (20rem) e garantir responsividade */
+/* <= 320px: forçar largura do banner para 320px e esconder chevrons */
 @media (max-width: 20rem) {
-  /* 320px */
   .containerBlock,
   .containerFlex,
   .containerImg {
@@ -119,10 +132,9 @@
     background-image: url('../../assets/img/Banner_mobile.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: var(--card-bg); /* ✅ fundo dinâmico */
+    background-color: var(--card-bg);
   }
 
-  /* esconder chevrons nesse breakpoint */
   .side {
     display: none;
     width: 0;

@@ -1,5 +1,6 @@
 // src/pages/Home/Home.tsx
 import React, { useState } from 'react';
+
 import styles from './Home.module.css';
 import Banner from '../../components/Banner.tsx';
 import Title from '../../components/Title';
@@ -171,14 +172,19 @@ const Home: React.FC = () => {
 
       {/* SHOP CATEGORY */}
       <SectionWithTitle
-        title="Shop by category"
+        title=""
         titleLevel={2}
         titleTestId="shop-title"
         sectionTestId="shop-section"
         ariaLabel="Shop by category"
       >
-        <div className={styles.brandGrid}>
+        <div className={styles.titleRow}>
+          <h2>Shop Category</h2>
+        </div>
+
+        <div className={styles.shopCategory}>
           <ShopCategory
+            link="/phones"
             imageAlt="Smartphones"
             className={styles.shopCard}
             backgroundImage={phonesImg}
@@ -191,6 +197,7 @@ const Home: React.FC = () => {
           </ShopCategory>
 
           <ShopCategory
+            link="/tablets"
             imageAlt="Tablets"
             className={styles.shopCard}
             backgroundImage={tabletsImg}
@@ -203,6 +210,7 @@ const Home: React.FC = () => {
           </ShopCategory>
 
           <ShopCategory
+            link="/accessories"
             imageAlt="Accessories"
             className={styles.shopCard}
             backgroundImage={accessoriesImg}
@@ -237,13 +245,13 @@ const Home: React.FC = () => {
             .slice(hotIndex, hotIndex + ITEMS_PER_PAGE)
             .map((p: Product) => (
               <BrandNewModels
+                id={p.id}
                 key={p.id}
                 title={p.title}
                 imageSrc={p.imageSrc}
                 imageAlt={p.title}
                 price={p.price}
                 specs={p.specs}
-                onButtonClick={() => 'addToCart'}
                 onFavouriteClick={() => toggleFavourite(p.id)}
                 isFavourite={!!favourites[p.id]}
                 data-testid={`hot-card-${p.id}`}

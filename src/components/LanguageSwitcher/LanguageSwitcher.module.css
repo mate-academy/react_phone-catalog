@@ -1,0 +1,39 @@
+/* src/components/LangageSwitcher/LangageSwitcher.module.css */
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 1rem;
+  gap: 0.5rem;
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: 1px solid var(--border-color, #ccc);
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: var(--text-color, #111);
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: 2px solid var(--focus-color, #6ca0ff);
+  outline-offset: 2px;
+}
+
+/* small helper for visually-hidden text (screen-reader only) */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

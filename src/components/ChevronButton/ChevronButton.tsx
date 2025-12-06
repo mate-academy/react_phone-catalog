@@ -8,6 +8,7 @@ export type ChevronButtonProps = {
   'data-testid'?: string;
   direction?: 'left' | 'right';
   disabled?: boolean;
+  size?: string;
 };
 
 const ChevronButton: React.FC<ChevronButtonProps> = ({

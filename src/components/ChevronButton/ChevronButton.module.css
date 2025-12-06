@@ -1,20 +1,30 @@
-/* chevron button base */
 .container {
-  width: 32px;
-  height: 37rem; /* tamanho desejado conforme especificado */
-  max-height: 520px;
-  display: inline-flex;
+  display: flex; /* usar flex em vez de inline-flex para altura previsível */
+  width: 40px;
+  height: 220px; /* altura que você quer testar */
+  min-height: 200px;
+  max-height: 250px;
+  align-self: center; /* reforça que não deve esticar */
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--card-border); /* borda dinâmica */
-  background: transparent;
   padding: 0;
-  cursor: pointer;
   box-sizing: border-box;
-  filter: var(
-    --icon-filter,
-    none
-  ); /* permite ajuste de contraste para ícones no dark */
+  border: 1px solid var(--card-border);
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ícone dentro do botão */
+.icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+  color: currentColor;
+}
+
+/* rotação para o chevron direito */
+.rotate {
+  transform: rotate(180deg);
 }
 
 /* 320px ou menos: esconder chevrons */

@@ -1,5 +1,5 @@
-// ShopCategory.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ShopCategory.module.css';
 
 export interface ShopCategoryProps {
@@ -12,7 +12,8 @@ export interface ShopCategoryProps {
   imageClassName?: string;
   onClick?: () => void;
   'data-testid'?: string;
-  backgroundImage?: string; // <== nova prop
+  backgroundImage?: string;
+  link?: string; // rota opcional
 }
 
 export const ShopCategory: React.FC<ShopCategoryProps> = ({
@@ -22,21 +23,45 @@ export const ShopCategory: React.FC<ShopCategoryProps> = ({
   imageClassName = '',
   onClick,
   'data-testid': dataTestId = 'ShopCategory',
-  backgroundImage, // <== nova prop recebida
+  backgroundImage,
+  link,
 }) => {
+  const content = (
+    <>
+      <div
+        className={`${styles.imageShop} ${imageClassName}`.trim()}
+        role="img"
+        aria-label={imageAlt}
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      />
+      <div className={`${styles.textContent}`.trim()}>{children}</div>
+    </>
+  );
+
+  // Se link foi passado, renderiza Link do react-router
+  if (link) {
+    return (
+      <Link
+        to={link}
+        className={`${styles.ShopCategory} ${className}`.trim()}
+        onClick={onClick}
+        data-testid={dataTestId}
+        aria-label={imageAlt}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  // Caso contrário, renderiza div padrão (comportamento atual)
   return (
     <div
       className={`${styles.ShopCategory} ${className}`.trim()}
       onClick={onClick}
       data-testid={dataTestId}
+      aria-label={imageAlt}
     >
-      <div
-        className={`${styles.imageShop} ${imageClassName}`.trim()}
-        role="img"
-        aria-label={imageAlt}
-        style={{ backgroundImage: `url(${backgroundImage})` }} // <== aplique inline
-      />
-      <div className={`${styles.textContent}`.trim()}>{children}</div>
+      {content}
     </div>
   );
 };

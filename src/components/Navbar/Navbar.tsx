@@ -22,6 +22,7 @@ import { useCart } from '../../pages/ShoppingCart/cartContext';
 import { useFavorites } from '../../pages/Favorites/FavoritesContext';
 import { useTheme } from '../../context/ThemeContext';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 
 // ======================
 // BLOCO TYPES
@@ -237,6 +238,7 @@ export default function Navbar({ links }: Props): JSX.Element {
           BLOCO ICONS (Favourites + Cart com badge e rota /cart)
           ====================== */}
       <div className={styles.containerIcon}>
+        <LanguageSwitcher />
         <ThemeToggle />
         <Link
           to="/favorites"

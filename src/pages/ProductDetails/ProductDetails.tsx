@@ -14,6 +14,7 @@ import { useCart } from '../ShoppingCart/cartContext';
 import { useFavorites } from '../Favorites/FavoritesContext'; // novo contexto
 import { products } from '../../data/products';
 import { Product } from '../../types/Product';
+import { useToast } from '../../components/Toast/ToastContext';
 
 //----------------------------------------------------------
 // 3. CONSTANTES E UTILIÁRIOS
@@ -61,6 +62,7 @@ const ProductDetails: React.FC = () => {
   // contexto do carrinho e favoritos
   const { addItem, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
+  const { showToast } = useToast();
 
   // estados locais
   const [isLoading, setIsLoading] = useState(true);
@@ -171,8 +173,19 @@ const ProductDetails: React.FC = () => {
 
   const alreadyInCart = product ? isInCart(product.id) : false;
 
-  const handleAddToCart = () => {
-    if (!product || alreadyInCart) {
+  const handleAddToCart = async () => {
+    if (!product) {
+      return;
+    }
+
+    // Recalcula alreadyInCart com base no produto atual (evita stale closure)
+    const isAlready = isInCart(product.id);
+
+    if (isAlready) {
+      if (typeof showToast === 'function') {
+        showToast('Item já está no carrinho', 'info');
+      }
+
       return;
     }
 
@@ -186,8 +199,33 @@ const ProductDetails: React.FC = () => {
       capacity: selectedCapacity,
     };
 
-    addItem(productToAdd);
+    try {
+      setLoading(true);
+
+      // Normaliza retorno de addItem (síncrono, Promise ou thenable)
+      const result = addItem(productToAdd);
+
+      await Promise.resolve(result);
+
+      // Somente após completar sem erro mostramos o toast de sucesso
+      if (typeof showToast === 'function') {
+        showToast('Adicionado ao carrinho!', 'success');
+      }
+    } catch (err) {
+      // log apenas em desenvolvimento para não poluir produção
+      if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
+        console.error('Erro ao adicionar ao carrinho:', err);
+      }
+
+      if (typeof showToast === 'function') {
+        showToast('Erro ao adicionar ao carrinho', 'error');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
+
   //----------------------------------------------------------
   // 7. RENDERIZAÇÃO PRINCIPAL
   //----------------------------------------------------------
@@ -378,18 +416,12 @@ const ProductDetails: React.FC = () => {
             <Button
               className={styles.addButton}
               onClick={handleAddToCart}
-              variant={alreadyInCart ? 'disabled' : 'primary'}
+              variant={alreadyInCart ? 'disabled' : 'primary'} // mantém aparência atual
               size="md"
               data-testid="add-to-cart"
-              ariaLabel={
-                alreadyInCart
-                  ? 'Adicionado ao carrinho'
-                  : 'Adicionar ao carrinho'
-              }
+              ariaLabel="Adicionar ao carrinho"
             >
-              {alreadyInCart
-                ? 'Adicionado ao carrinho'
-                : 'Adicionar ao carrinho'}
+              Adicionar ao carrinho
             </Button>
 
             <Link
