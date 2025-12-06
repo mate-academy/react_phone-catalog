@@ -7,13 +7,14 @@ import { Logo } from '../Logo';
 import classNames from 'classnames';
 import { useFavorites } from '../../contexts/FavoritesContext';
 import { useCart } from '../../contexts/CartContext';
+import { getTotalCartItems } from '../../utils/cart';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { favorites } = useFavorites();
   const { cart } = useCart();
 
-  const getCartItems = cart.reduce((acc, item) => acc + item.qty, 0);
+  const totalItems = getTotalCartItems(cart);
 
   const handleMenuToggle = () => setIsMenuOpen(prev => !prev);
 
@@ -48,7 +49,7 @@ export const Header = () => {
               alt="Cart"
             />
             {cart.length > 0 && (
-              <p className={style['icon-counter']}>{getCartItems}</p>
+              <p className={style['icon-counter']}>{totalItems}</p>
             )}
           </div>
         </NavLink>

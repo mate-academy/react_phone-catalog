@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   CatalogCategory,
   useCatalogCategory,
@@ -23,16 +23,15 @@ export const CatalogPage = () => {
 
   const sort = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || 'all';
-  const activePage = searchParams.get('page') || 1;
+  const activePage = Number(searchParams.get('page') || 1);
 
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(false);
 
   const [products, setProducts] = useState<Product[]>([]);
 
-  const from = (+activePage - 1) * +perPage;
-  const to = from + +perPage;
-  const productsPage = perPage === 'all' ? products : products.slice(from, to);
+  const prevSort = useRef(sort);
+  const prevPerPage = useRef(perPage);
 
   const titles: Record<ProductCategory, string> = {
     phones: 'Mobile phones',
@@ -48,7 +47,8 @@ export const CatalogPage = () => {
 
       const isDefault =
         (param === 'page' && stringValue === '1') ||
-        (param === 'perPage' && stringValue === 'all');
+        (param === 'perPage' && stringValue === 'all') ||
+        (param === 'sort' && !stringValue);
 
       if (!stringValue || isDefault) {
         newParams.delete(param);
@@ -65,38 +65,60 @@ export const CatalogPage = () => {
     setIsLoading(true);
     getProducts()
       .then(p => {
-        setProducts([...p].filter(product => product.category === category));
+        setProducts(p.filter((product: Product) => product.category === category));
       })
       .catch(() => setLoadingError(true))
       .finally(() => setIsLoading(false));
   }, [category]);
 
   useEffect(() => {
-    updateParam('page', '1');
-  }, [perPage, sort, updateParam]);
+    const sortChanged = prevSort.current !== sort;
+    const perPageChanged = prevPerPage.current !== perPage;
 
-  useEffect(() => {
-    setProducts(prev => {
-      const sorted = [...prev];
+    if (sortChanged || perPageChanged) {
+      updateParam('page', '1');
+    }
 
-      switch (sort) {
-        case 'title':
-          sorted.sort((a, b) => a.name.localeCompare(b.name));
-          break;
+    prevSort.current = sort;
+    prevPerPage.current = perPage;
+  }, [sort, perPage, updateParam]);
 
-        case 'price':
-          sorted.sort((a, b) => a.price - b.price);
-          break;
+  // useEffect(() => {
+  //   updateParam('page', '1');
+  // }, [perPage, sort, updateParam]);
 
-        case 'age':
-        default:
-          sorted.sort((a, b) => b.year - a.year);
-          break;
-      }
+  const sortedProducts = useMemo(() => {
+    if (!sort) {
+      return products;
+    }
 
-      return sorted;
-    });
-  }, [sort]);
+    const sorted = [...products];
+
+    switch (sort) {
+      case 'title':
+        return sorted.sort((a, b) => a.name.localeCompare(b.name));
+
+      case 'price':
+        return sorted.sort((a, b) => a.price - b.price);
+
+      case 'age':
+        return sorted.sort((a, b) => b.year - a.year);
+
+      default:
+        return products;
+    }
+  }, [products, sort]);
+
+  const itemsPerPage = perPage === 'all' ? sortedProducts.length : Number(perPage);
+
+  const from = (activePage - 1) * itemsPerPage;
+  const to = from + itemsPerPage;
+
+  const productsPage = useMemo(() => {
+    return perPage === 'all'
+      ? sortedProducts
+      : sortedProducts.slice(from, to);
+  }, [sortedProducts, from, to, perPage]);
 
   return (
     <div className="container">
@@ -146,9 +168,9 @@ export const CatalogPage = () => {
 
         {perPage !== 'all' && (
           <Pagination
-            total={products.length}
+            total={sortedProducts.length}
             perPage={perPage as PerPageType}
-            currentPage={+activePage}
+            currentPage={activePage}
             onPageChange={page => updateParam('page', page)}
           />
         )}

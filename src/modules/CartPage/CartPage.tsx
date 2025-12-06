@@ -6,6 +6,7 @@ import { BackBtn } from '../shared/components/BackBtn';
 import styles from './CartPage.module.scss';
 import { CartItem } from './components/CartItem';
 import { Modal } from '../shared/components/Modal';
+import { getTotalCartItems } from '../../utils/cart';
 
 export const CartPage = () => {
   const { cart, clearCart } = useCart();
@@ -39,6 +40,8 @@ export const CartPage = () => {
     );
   };
 
+  const totalItems = getTotalCartItems(cart);
+
   const confirmHandler = () => {
     clearCart();
     setIsOpenModal(false);
@@ -69,7 +72,7 @@ export const CartPage = () => {
           <div className={styles['total-block']}>
             <p className={styles.total}>${total}</p>
             <p className={styles['total-count']}>
-              Total for {cart.length} {cart.length > 1 ? 'elements' : 'element'}
+              Total for {totalItems} {totalItems > 1 ? 'elements' : 'element'}
             </p>
             <button
               className={styles.checkout}

@@ -1,10 +1,10 @@
 import React from 'react';
-import { perPageType } from '../../../Catalog';
+import { PerPageType } from '../../../Catalog';
 import styles from './Pagination.module.scss';
 
 interface Props {
   total: number;
-  perPage: perPageType;
+  perPage: PerPageType;
   currentPage: number;
   onPageChange: (page: number) => void;
 }

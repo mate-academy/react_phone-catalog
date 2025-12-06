@@ -155,10 +155,10 @@ export const ProductDetails = () => {
 
               <div className={styles['buttons-wrapper']}>
                 <button
-                  className={styles['add-to-cart']}
+                  className={`${styles['add-to-cart']} ${isProductInCart ? styles.added : ''}`}
                   onClick={() => baseProduct && addToCart(baseProduct.id)}
                 >
-                  {isProductInCart ? 'Added to cart' : 'Add to cart'}
+                  {isProductInCart ? 'Added' : 'Add to cart'}
                 </button>
                 <button
                   className={styles['add-to-favorite']}
