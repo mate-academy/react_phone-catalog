@@ -47,13 +47,12 @@ const get = {
 };
 
 const post = {
-  checkout: (body: CheckoutBody) => {
+  checkout: (body: CheckoutBody) =>
     makeApiRequest<Request.CHECKOUT>({
       method: Methods.POST,
       request: Request.CHECKOUT,
       body: body,
-    });
-  },
+    }),
 };
 
 export { get, post };

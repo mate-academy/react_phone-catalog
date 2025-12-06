@@ -7,10 +7,11 @@ import {
   UserDetails,
 } from '@shared/api/types/bodies.types';
 import { DeliveryTypes } from '@shared/api/types/bodies.enums';
-import { post } from '@shared/api';
+import { useCheckoutRes } from '@features/checkoutResult/useCheckoutResult';
 
 export const useSubmitRequest = () => {
   const { itemsInCart } = useGlobalData();
+  const { processCheckout } = useCheckoutRes();
   const {
     filled,
     dataProcessingAgreement,
@@ -110,7 +111,7 @@ export const useSubmitRequest = () => {
       return;
     }
 
-    post.checkout(request);
+    processCheckout(request);
   };
 
   return { onSubmit };

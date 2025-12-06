@@ -6,6 +6,7 @@ import {
   ProductPage,
   CartPage,
   FavouritesPage,
+  CheckoutComplete,
 } from '../../pages';
 import { App } from '../App';
 import { Category } from '@shared/types';
@@ -34,6 +35,10 @@ export const routes: RouteObject[] = [
       {
         path: 'cart',
         element: <CartPage />,
+      },
+      {
+        path: 'checkout-complete',
+        element: <CheckoutComplete />,
       },
       {
         path: '*',

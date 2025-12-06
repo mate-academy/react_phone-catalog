@@ -21,6 +21,7 @@ type GlobalActionsType = {
   toggleFav: (arg: Item) => void;
   setCart: (arg: CartItem) => void;
   toggleModal: () => void;
+  clearCart: () => void;
 };
 
 const GlobalDataContext = createContext<GlobalDataType | null>(null);
@@ -59,6 +60,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         dispatch({ type: 'UPDATE_CART_ITEM', payload: arg });
       },
       toggleModal: () => dispatch({ type: 'TOGGLE_MODAL' }),
+      clearCart: () => dispatch({ type: 'CLEAR_CART' }),
     }),
     [],
   );

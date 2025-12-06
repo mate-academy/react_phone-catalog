@@ -75,9 +75,9 @@ export const PersonalDataForm = () => {
             <input
               {...el.props}
               name={el.props.id}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                (userDetails.current[el.props.id] = e.target.value)
-              }
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                userDetails.current[el.props.id] = e.target.value;
+              }}
             />
           </div>
         ))}

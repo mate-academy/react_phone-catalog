@@ -4,3 +4,4 @@ export { CategoriesPage } from './categoriesPage';
 export { ProductPage } from './productPage';
 export { CartPage } from './cartPage';
 export { FavouritesPage } from './favouritesPage';
+export { CheckoutComplete } from './checkoutComplete';

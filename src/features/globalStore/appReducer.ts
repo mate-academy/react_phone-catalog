@@ -31,7 +31,8 @@ const init = (initialArg: State): State => {
 type Action =
   | { type: 'TOGGLE_FAV'; payload: Item }
   | { type: 'UPDATE_CART_ITEM'; payload: CartItem }
-  | { type: 'TOGGLE_MODAL' };
+  | { type: 'TOGGLE_MODAL' }
+  | { type: 'CLEAR_CART' };
 
 const processCart = (array: CartItem[], patchObj: CartItem) => {
   if (patchObj.amount === 0) {
@@ -65,6 +66,11 @@ function appReducer(state: State, action: Action): State {
       return {
         ...state,
         modalIsOpened: !state.modalIsOpened,
+      };
+    case 'CLEAR_CART':
+      return {
+        ...state,
+        itemsInCart: [],
       };
     default:
       return state;

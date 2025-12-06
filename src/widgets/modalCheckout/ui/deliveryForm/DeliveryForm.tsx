@@ -40,8 +40,9 @@ export const DeliveryForm = () => {
             id="deliveryType"
             required
             onChange={handleSelect}
+            defaultValue=""
           >
-            <option selected disabled value="">
+            <option disabled value="">
               Please, select delivery method
             </option>
             {Object.keys(uiToData).map(el => (

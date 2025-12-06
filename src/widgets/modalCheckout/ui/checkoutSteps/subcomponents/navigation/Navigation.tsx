@@ -1,12 +1,22 @@
 import classNames from 'classnames';
 import { useSteps } from '../../../../model';
 import styles from './navigation.module.scss';
+import { useGlobalData } from '@features/index';
+import { useEffect } from 'react';
 
 type Props = {
   totalSteps: number;
 };
 export const Navigation = ({ totalSteps }: Props) => {
   const { step, setStep } = useSteps();
+
+  const { modalIsOpened } = useGlobalData();
+
+  useEffect(() => {
+    if (modalIsOpened === true) {
+      setStep(1);
+    }
+  }, [modalIsOpened]);
 
   const arr = Array.from({ length: totalSteps }, (_, i) => i + 1);
 

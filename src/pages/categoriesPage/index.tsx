@@ -20,7 +20,7 @@ export const CategoriesPage = ({ category }: Props) => {
   });
 
   return (
-    <section className={styles.container}>
+    <main className={styles.container}>
       <nav aria-label="breadcrumb" className={styles.navigation}>
         <Breadcrumbs links={[links]} />
       </nav>
@@ -47,6 +47,6 @@ export const CategoriesPage = ({ category }: Props) => {
           setPage={set.page}
         />
       )}
-    </section>
+    </main>
   );
 };

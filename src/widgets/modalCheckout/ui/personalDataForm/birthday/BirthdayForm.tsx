@@ -27,10 +27,13 @@ export const BirthdayForm = () => {
       <div className={styles['inner-container']}>
         <label htmlFor="birthMonth">month</label>
         <div className={styles['select-wrapper']}>
-          <select name="birthMonth" id="birthMonth" onChange={onChange.month}>
-            <option selected disabled>
-              Please, select month
-            </option>
+          <select
+            name="birthMonth"
+            id="birthMonth"
+            onChange={onChange.month}
+            defaultValue=""
+          >
+            <option disabled>Please, select month</option>
             {Object.values(BDMap).map(el => (
               <option key={el}>{el}</option>
             ))}
@@ -44,9 +47,10 @@ export const BirthdayForm = () => {
             name="birthDay"
             id="birthDay"
             disabled={daysData.array === null}
+            defaultValue=""
             onChange={onChange.day}
           >
-            <option selected disabled>
+            <option disabled value="">
               {daysData.placeholder}
             </option>
             {daysData.array !== null &&
@@ -57,10 +61,13 @@ export const BirthdayForm = () => {
 
         <label htmlFor="birthYear">year</label>
         <div className={styles['select-wrapper']}>
-          <select name="birthYear" id="birthYear" onChange={onChange.year}>
-            <option selected disabled>
-              Please, select year
-            </option>
+          <select
+            name="birthYear"
+            id="birthYear"
+            onChange={onChange.year}
+            defaultValue=""
+          >
+            <option disabled>Please, select year</option>
             {years.map(el => (
               <option key={el}>{el}</option>
             ))}
