@@ -9,7 +9,7 @@ function wait(delay: number) {
 }
 
 export async function getPhones(): Promise<PhoneModel[]> {
-  const fullUrl = `${BASE_URL}api/phones.json`;
+  const fullUrl = `${BASE_URL}/api/phones.json`;
 
   return wait(500)
     .then(() => fetch(fullUrl))
@@ -17,7 +17,7 @@ export async function getPhones(): Promise<PhoneModel[]> {
 }
 
 export async function getTablets(): Promise<PhoneModel[]> {
-  const fullUrl = `${BASE_URL}api/tablets.json`;
+  const fullUrl = `${BASE_URL}/api/tablets.json`;
 
   return wait(500)
     .then(() => fetch(fullUrl))
@@ -25,7 +25,7 @@ export async function getTablets(): Promise<PhoneModel[]> {
 }
 
 export async function getAccessories(): Promise<AccessoriesModel[]> {
-  const fullUrl = `${BASE_URL}api/accessories.json`;
+  const fullUrl = `${BASE_URL}/api/accessories.json`;
 
   return wait(500)
     .then(() => fetch(fullUrl))
@@ -33,7 +33,7 @@ export async function getAccessories(): Promise<AccessoriesModel[]> {
 }
 
 export async function getProducts(): Promise<Product[]> {
-  const fullUrl = `${BASE_URL}api/products.json`;
+  const fullUrl = `${BASE_URL}/api/products.json`;
 
   return wait(3000)
     .then(() => fetch(fullUrl))
