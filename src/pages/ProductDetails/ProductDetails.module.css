@@ -8,7 +8,16 @@
   max-width: var(--max-w);
   margin: 8rem auto;
   padding: 0 1.25rem;
-  box-sizing: border-box;
+}
+
+.containerPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .favButton {
+    cursor: pointer;
+  }
 }
 
 .breadcrumbs {

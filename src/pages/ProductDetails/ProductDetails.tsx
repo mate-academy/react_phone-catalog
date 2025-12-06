@@ -1,9 +1,5 @@
-//----------------------------------------------------------
 // src/pages/ProductDetails/ProductDetails.tsx
-//----------------------------------------------------------
 
-// 1. IMPORTS
-//----------------------------------------------------------
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styles from './ProductDetails.module.css';
@@ -11,17 +7,16 @@ import Button from '../../components/Button/Button';
 import { Loader } from '../../components/Loader';
 import { BrandNewModels } from '../../components/BrandNewModels';
 import { useCart } from '../ShoppingCart/cartContext';
-import { useFavorites } from '../Favorites/FavoritesContext'; // novo contexto
+import { useFavorites } from '../Favorites/FavoritesContext';
 import { products } from '../../data/products';
+import { phones, samplePhone } from '../../data/phones';
+import { tablets, sampleTablet } from '../../data/tablets';
+import { accessories, sampleAccessory } from '../../data/accessories';
 import { Product } from '../../types/Product';
 import { useToast } from '../../components/Toast/ToastContext';
 
-//----------------------------------------------------------
-// 3. CONSTANTES E UTILIÁRIOS
-//----------------------------------------------------------
-/**
- * Simula fetch de produto por id (com delay para loader)
- */
+// Simula fetch de produto por id (com delay para loader)
+// Procura nas fontes na ordem: phones -> tablets -> accessories -> products -> samples
 const fetchProductById = (id?: string): Promise<Product | null> => {
   return new Promise(resolve => {
     setTimeout(() => {
@@ -29,35 +24,103 @@ const fetchProductById = (id?: string): Promise<Product | null> => {
         return resolve(null);
       }
 
-      const found = products.find(p => p.id === id) ?? null;
+      const foundInPhones = phones.find(p => p.id === id) ?? null;
 
-      resolve(found);
+      if (foundInPhones) {
+        return resolve(foundInPhones as Product);
+      }
+
+      const foundInTablets = tablets.find(p => p.id === id) ?? null;
+
+      if (foundInTablets) {
+        return resolve(foundInTablets as Product);
+      }
+
+      const foundInAccessories = accessories.find(p => p.id === id) ?? null;
+
+      if (foundInAccessories) {
+        return resolve(foundInAccessories as Product);
+      }
+
+      const foundInProducts = products.find(p => p.id === id) ?? null;
+
+      if (foundInProducts) {
+        return resolve(foundInProducts);
+      }
+
+      if (samplePhone && samplePhone.id === id) {
+        return resolve(samplePhone as Product);
+      }
+
+      if (sampleTablet && sampleTablet.id === id) {
+        return resolve(sampleTablet as Product);
+      }
+
+      if (sampleAccessory && sampleAccessory.id === id) {
+        return resolve(sampleAccessory as Product);
+      }
+
+      return resolve(null);
     }, 600);
   });
 };
 
-/**
- * Retorna lista de produtos sugeridos (aleatórios)
- */
+// Retorna lista de produtos sugeridos (aleatórios) a partir do pool combinado
 const getSuggestedProducts = (
   currentId: string | undefined,
   count = 4,
 ): Product[] => {
-  const pool = products.filter(p => p.id !== currentId);
+  const combined: Product[] = [
+    ...phones,
+    ...tablets.filter(t => !phones.some(p => p.id === t.id)),
+    ...accessories.filter(
+      a =>
+        !phones.some(p => p.id === a.id) && !tablets.some(t => t.id === a.id),
+    ),
+    ...products.filter(
+      p =>
+        !phones.some(ph => ph.id === p.id) &&
+        !tablets.some(t => t.id === p.id) &&
+        !accessories.some(a => a.id === p.id),
+    ),
+    ...(samplePhone ? [samplePhone as Product] : []),
+    ...(sampleTablet ? [sampleTablet as Product] : []),
+    ...(sampleAccessory ? [sampleAccessory as Product] : []),
+  ];
+
+  const pool = combined.filter(p => p.id !== currentId);
 
   const shuffled = pool.sort(() => 0.5 - Math.random());
 
-  {
-    return shuffled.slice(0, Math.min(count, shuffled.length));
-  }
+  return shuffled.slice(0, Math.min(count, shuffled.length));
 };
 
-//----------------------------------------------------------
-// 4. COMPONENTE PRINCIPAL: ESTADOS E EFEITOS
-//----------------------------------------------------------
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const productFound = products.find(p => p.id === id);
+
+  // combinado para checagens rápidas (evita falso negativo para samples)
+  const combinedProducts = useMemo<Product[]>(
+    () => [
+      ...phones,
+      ...tablets.filter(t => !phones.some(p => p.id === t.id)),
+      ...accessories.filter(
+        a =>
+          !phones.some(p => p.id === a.id) && !tablets.some(t => t.id === a.id),
+      ),
+      ...products.filter(
+        p =>
+          !phones.some(ph => ph.id === p.id) &&
+          !tablets.some(t => t.id === p.id) &&
+          !accessories.some(a => a.id === p.id),
+      ),
+      ...(samplePhone ? [samplePhone as Product] : []),
+      ...(sampleTablet ? [sampleTablet as Product] : []),
+      ...(sampleAccessory ? [sampleAccessory as Product] : []),
+    ],
+    [],
+  );
+
+  const productFound = combinedProducts.find(p => p.id === id);
 
   // contexto do carrinho e favoritos
   const { addItem, isInCart } = useCart();
@@ -110,9 +173,7 @@ const ProductDetails: React.FC = () => {
     };
   }, [id]);
 
-  //----------------------------------------------------------
-  // 5. HANDLERS PARA SELEÇÃO DE COR E CAPACIDADE
-  //----------------------------------------------------------
+  // handlers
   const handleColorChange = (color: string) => {
     if (!product) {
       return;
@@ -142,9 +203,6 @@ const ProductDetails: React.FC = () => {
     setSelectedCapacity(cap);
   };
 
-  //----------------------------------------------------------
-  // 6. LÓGICA DE CARRINHO
-  //----------------------------------------------------------
   const categoryLink: string = useMemo(() => {
     if (!product?.category) {
       return '/';
@@ -168,7 +226,9 @@ const ProductDetails: React.FC = () => {
       return '/accessories';
     }
 
-    return '/';
+    {
+      return '/';
+    }
   }, [product]);
 
   const alreadyInCart = product ? isInCart(product.id) : false;
@@ -178,7 +238,6 @@ const ProductDetails: React.FC = () => {
       return;
     }
 
-    // Recalcula alreadyInCart com base no produto atual (evita stale closure)
     const isAlready = isInCart(product.id);
 
     if (isAlready) {
@@ -186,7 +245,9 @@ const ProductDetails: React.FC = () => {
         showToast('Item já está no carrinho', 'info');
       }
 
-      return;
+      {
+        return;
+      }
     }
 
     const productToAdd = {
@@ -200,19 +261,16 @@ const ProductDetails: React.FC = () => {
     };
 
     try {
-      setLoading(true);
+      setIsLoading(true);
 
-      // Normaliza retorno de addItem (síncrono, Promise ou thenable)
       const result = addItem(productToAdd);
 
       await Promise.resolve(result);
 
-      // Somente após completar sem erro mostramos o toast de sucesso
       if (typeof showToast === 'function') {
         showToast('Adicionado ao carrinho!', 'success');
       }
     } catch (err) {
-      // log apenas em desenvolvimento para não poluir produção
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
         console.error('Erro ao adicionar ao carrinho:', err);
@@ -222,7 +280,34 @@ const ProductDetails: React.FC = () => {
         showToast('Erro ao adicionar ao carrinho', 'error');
       }
     } finally {
-      setLoading(false);
+      setIsLoading(false);
+    }
+  };
+
+  const handleFavouriteClick = () => {
+    if (!product) {
+      return;
+    }
+
+    // Tenta chamar toggleFavorite assumindo que aceita o objeto
+    try {
+      (toggleFavorite as unknown as (p: Product) => void)(product);
+    } catch {
+      // Fallback: tenta chamar assumindo que aceita apenas o id
+      try {
+        (toggleFavorite as unknown as (id: string) => void)(product.id);
+      } catch {
+        // silencioso: não interrompe a UI
+      }
+    }
+
+    const nowFav = isFavorite(product.id);
+
+    if (typeof showToast === 'function') {
+      showToast(
+        nowFav ? 'Removido dos favoritos' : 'Adicionado a favoritos!',
+        nowFav ? 'info' : 'success',
+      );
     }
   };
 
@@ -314,9 +399,24 @@ const ProductDetails: React.FC = () => {
 
         {/* Coluna de informações */}
         <div className={styles.info}>
-          <p className={styles.price} data-testid="product-price">
-            {safeProduct.price}
-          </p>
+          <div className={styles.containerPrice}>
+            <p className={styles.price} data-testid="product-price">
+              {safeProduct.price}
+            </p>
+            <button
+              type="button"
+              onClick={handleFavouriteClick}
+              className={`${styles.favButton} ${product && isFavorite(product.id) ? styles.active : ''}`}
+              aria-label={
+                product && isFavorite(product.id)
+                  ? 'Remover dos favoritos'
+                  : 'Adicionar aos favoritos'
+              }
+              data-testid="product-fav-button"
+            >
+              {product && isFavorite(product.id) ? '❤️' : '🤍'}
+            </button>
+          </div>
 
           {/* Cores */}
           {safeProduct.colorsAvailable &&
@@ -416,7 +516,7 @@ const ProductDetails: React.FC = () => {
             <Button
               className={styles.addButton}
               onClick={handleAddToCart}
-              variant={alreadyInCart ? 'disabled' : 'primary'} // mantém aparência atual
+              variant={alreadyInCart ? 'disabled' : 'primary'}
               size="md"
               data-testid="add-to-cart"
               ariaLabel="Adicionar ao carrinho"
@@ -435,9 +535,7 @@ const ProductDetails: React.FC = () => {
         </div>
       </section>
 
-      {/*----------------------------------------------------------*/}
-      {/* 9. PRODUTOS SUGERIDOS */}
-      {/*----------------------------------------------------------*/}
+      {/* Produtos sugeridos */}
       {suggested.length > 0 && (
         <section className={styles.related} data-testid="product-related">
           <h3 className={styles.sectionTitle}>Você também pode gostar</h3>
@@ -451,8 +549,8 @@ const ProductDetails: React.FC = () => {
                 imageAlt={s.title}
                 price={s.price}
                 specs={s.specs}
-                onButtonClick={() => addItem(s)} // conecta ao carrinho
-                onFavouriteClick={() => toggleFavorite(s)} // conecta aos favoritos
+                onButtonClick={() => addItem(s)}
+                onFavouriteClick={() => toggleFavorite(s)}
                 isFavourite={isFavorite(s.id)}
                 data-testid={`suggested-${s.id}`}
               />
@@ -464,8 +562,5 @@ const ProductDetails: React.FC = () => {
   );
 };
 
-//----------------------------------------------------------
-// 10. EXPORT
-//----------------------------------------------------------
 export default ProductDetails;
 export { ProductDetails };

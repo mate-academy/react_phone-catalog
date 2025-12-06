@@ -1,6 +1,4 @@
-// src/pages/Phones/Phones.tsx
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './Phones.module.css';
 import { ViewAllProducts } from '../../pages/ViewAllProducts';
 import { phones, samplePhone } from '../../data/phones';
@@ -8,7 +6,12 @@ import Pagination from '../../components/Pagination/Pagination';
 import { BrandNewModels } from '../../components/BrandNewModels';
 import { Loader } from '../../components/Loader';
 import { Select } from '../../components/Select';
-import { Product } from '../../types/Product'; // ✅ tipo centralizado
+import { Product } from '../../types/Product';
+
+type ProductWithDetails = Product & {
+  detailsLink?: string;
+  detailsAvailable?: boolean;
+};
 
 const Phones: React.FC = () => {
   const [showAll, setShowAll] = useState(false);
@@ -16,10 +19,9 @@ const Phones: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [isLoading, setIsLoading] = useState(true);
-  const [order, setOrder] = useState('recent'); // estado para ordenação
+  const [order, setOrder] = useState('recent');
 
   useEffect(() => {
-    // simula chamada ao servidor (2 segundos)
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
@@ -39,7 +41,7 @@ const Phones: React.FC = () => {
     return (
       <ViewAllProducts
         title="Phones"
-        products={phones as Product[]} // ✅ tipagem correta
+        products={phones as Product[]}
         onBackClick={() => setShowAll(false)}
         dataTestIdPrefix="phones"
       />
@@ -64,12 +66,47 @@ const Phones: React.FC = () => {
   const end = start + perPage;
   const currentItems: Product[] = orderedItems.slice(start, end);
 
+  /**
+   * Lista explícita de produtos que devem apontar para NotFound.
+   * Ajuste os ids conforme necessário. Alternativa: adicionar
+   * `detailsAvailable: false` ou `detailsLink` no arquivo de dados.
+   */
+  const NOT_FOUND_IDS = new Set<string>([
+    // Exemplo: 'phone-3', 'phone-12'
+    // Adicione aqui os ids que obrigatoriamente devem ir para NotFound
+  ]);
+
+  // helper para decidir a rota de detalhes (DetailsPage ou NotFound)
+  const getDetailsLink = (prod: ProductWithDetails): string => {
+    if (!prod) {
+      return '/not-found';
+    }
+
+    if (typeof prod.detailsLink === 'string') {
+      return prod.detailsLink;
+    }
+
+    if (prod.detailsAvailable === false) {
+      return '/not-found';
+    }
+
+    if (NOT_FOUND_IDS.has(prod.id)) {
+      return '/not-found';
+    }
+
+    return `/product/${prod.id}`;
+  };
+
+  // evita renderizar samplePhone com link para product se ele não existir no array phones
+  const sampleExistsInPhones = !!(
+    samplePhone && phones.some(p => p.id === samplePhone.id)
+  );
+
   return (
     <main className={styles.container}>
       <div className={styles.headerRow}>
         <h1 className={styles.title}>Phones</h1>
 
-        {/* Select + link "Ver todos" na mesma linha */}
         <div className={styles.actionsRow}>
           <Select value={order} onChange={setOrder} />
           <a
@@ -84,33 +121,29 @@ const Phones: React.FC = () => {
       </div>
 
       <div className={styles.grid}>
-        {/* samplePhone para testes rápidos (opcional) */}
-        {samplePhone && (
-          <Link
-            to={`/product/${samplePhone.id}`}
+        {/* Renderiza samplePhone somente se ele existir no array `phones`.
+            Caso contrário, evita criar um link para /product/phone-999 que não existe. */}
+        {samplePhone && sampleExistsInPhones && (
+          <BrandNewModels
+            id={samplePhone.id}
             key={samplePhone.id}
-            className={styles.cardLink}
-            data-testid={`phone-sample-link-${samplePhone.id}`}
-          >
-            <BrandNewModels
-              id={samplePhone.id} // ✅ importante passar o id
-              title={samplePhone.title}
-              imageSrc={samplePhone.imageSrc}
-              imageAlt={samplePhone.title}
-              price={samplePhone.price}
-              specs={samplePhone.specs}
-              onFavouriteClick={() => toggleFavourite(samplePhone.id)}
-              isFavourite={!!favourites[samplePhone.id]}
-              data-testid={`phone-card-${samplePhone.id}`}
-            />
-          </Link>
+            detailsLink={getDetailsLink(samplePhone)}
+            title={samplePhone.title}
+            imageSrc={samplePhone.imageSrc}
+            imageAlt={samplePhone.title}
+            price={samplePhone.price}
+            specs={samplePhone.specs}
+            onFavouriteClick={() => toggleFavourite(samplePhone.id)}
+            isFavourite={!!favourites[samplePhone.id]}
+            data-testid={`phone-card-${samplePhone.id}`}
+          />
         )}
 
         {currentItems.map((p: Product) => (
           <BrandNewModels
             key={p.id}
-            id={p.id} // ✅ necessário para addItem
-            detailsLink={`/product/${p.id}`} // ✅ título/imagem navegam para detalhes
+            id={p.id}
+            detailsLink={getDetailsLink(p)}
             title={p.title}
             imageSrc={p.imageSrc}
             imageAlt={p.title}

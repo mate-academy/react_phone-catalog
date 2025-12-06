@@ -8,12 +8,11 @@ import ShopCategory from '../../components/ShopCategory/ShopCategory';
 import phonesImg from '../../assets/img/shop-phones .png';
 import tabletsImg from '../../assets/img/shop-tablets.png';
 import accessoriesImg from '../../assets/img/shop-accessories.png';
-import { Product } from '../../types/Product';
-
+import { phones, PhoneProduct } from '../../data/phones';
+import { getDetailsLink } from '../../utils/getDetailsLink';
 import { BrandNewModels } from '../../components/BrandNewModels';
 import { products } from '../../data/products';
 import { hotPrices } from '../../data/hotPrice';
-
 import btnLeft from '../../assets/img/Btn-Left.svg';
 import btnRight from '../../assets/img/Btn-Right.svg';
 
@@ -151,12 +150,13 @@ const Home: React.FC = () => {
         </div>
 
         <div className={styles.brandGrid}>
-          {products
+          {phones
             .slice(brandIndex, brandIndex + ITEMS_PER_PAGE)
-            .map((p: Product) => (
+            .map((p: PhoneProduct) => (
               <BrandNewModels
                 id={p.id}
                 key={p.id}
+                detailsLink={getDetailsLink(p)}
                 title={p.title}
                 imageSrc={p.imageSrc}
                 imageAlt={p.title}
@@ -241,12 +241,13 @@ const Home: React.FC = () => {
         </div>
 
         <div className={styles.brandGrid}>
-          {hotPrices
+          {phones
             .slice(hotIndex, hotIndex + ITEMS_PER_PAGE)
-            .map((p: Product) => (
+            .map((p: PhoneProduct) => (
               <BrandNewModels
                 id={p.id}
                 key={p.id}
+                detailsLink={getDetailsLink(p)}
                 title={p.title}
                 imageSrc={p.imageSrc}
                 imageAlt={p.title}

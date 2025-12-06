@@ -1,4 +1,5 @@
 // src/data/phones.ts
+
 export interface PhoneProduct {
   id: string;
   sku?: string;
@@ -19,6 +20,10 @@ export interface PhoneProduct {
   capacityAvailable?: string[];
   category?: string;
   age?: number;
+
+  // Novas propriedades opcionais para controlar a rota de detalhes
+  detailsAvailable?: boolean; // se false => deve apontar para /not-found
+  detailsLink?: string; // se presente e string => usa esse link (p.ex. '/not-found')
 }
 
 // Imagens reutilizáveis (substitua pelos caminhos corretos se necessário)
@@ -36,7 +41,22 @@ const baseImages = [
 const baseColorNames = ['Verde', 'Preto', 'Branco', 'Amarelo'];
 const baseCapacities = ['64GB', '128GB', '256GB'];
 
-export const phones: PhoneProduct[] = Array.from({ length: 42 }, (_, i) => {
+/**
+ * IDs que devem obrigatoriamente apontar para NotFound.
+ * Ajuste conforme necessidade do produto/negócio.
+ */
+const FORCED_NOT_FOUND_IDS = new Set<string>([
+  'phone-3',
+  'phone-12',
+  'phone-21',
+]);
+
+/**
+ * Geramos 41 produtos dinâmicos e depois adicionamos um produto
+ * específico (PH-1001) para que o array `phones` tenha exatamente
+ * 42 itens (requisito da paginação / "Ver todos").
+ */
+export const phones: PhoneProduct[] = Array.from({ length: 41 }, (_, i) => {
   const colorIndex = i % baseImages.length;
   const capacityIndex = i % baseCapacities.length;
 
@@ -51,8 +71,12 @@ export const phones: PhoneProduct[] = Array.from({ length: 42 }, (_, i) => {
     baseImages[(colorIndex + 2) % baseImages.length],
   ];
 
+  const id = `phone-${i + 1}`;
+  const detailsLink = FORCED_NOT_FOUND_IDS.has(id) ? '/not-found' : undefined;
+  const detailsAvailable = detailsLink ? undefined : true;
+
   return {
-    id: `phone-${i + 1}`,
+    id,
     sku,
     title,
     price,
@@ -72,11 +96,13 @@ export const phones: PhoneProduct[] = Array.from({ length: 42 }, (_, i) => {
     capacityAvailable: baseCapacities,
     category: 'Celulares',
     age: i,
+    ...(detailsAvailable !== undefined ? { detailsAvailable } : {}),
+    ...(detailsLink !== undefined ? { detailsLink } : {}),
   };
 });
 
-// exemplo único para teste
-export const samplePhone = {
+// exemplo único para teste (não conta para os 42 produtos)
+export const samplePhone: PhoneProduct = {
   id: 'phone-999',
   sku: 'PH-0999',
   title: 'iPhone 11 Teste 128GB Preto (PH-0999)',
@@ -100,4 +126,36 @@ export const samplePhone = {
   capacityAvailable: ['64GB', '128GB', '256GB'],
   category: 'Celulares',
   age: 999,
+  detailsAvailable: true,
 };
+
+/**
+ * Produto específico que corresponde ao card descrito (PH-1001).
+ * Adicionamos ao final do array para garantir que `phones` tenha 42 itens.
+ */
+phones.push({
+  id: 'phone-1001',
+  sku: 'PH-1001',
+  title: 'Apple iPhone 11 128GB Preto (PH-1001)',
+  price: 'R$ 749',
+  imageSrc: '/assets/img/phones/apple-iphone-11/black/00.webp',
+  images: [
+    '/assets/img/phones/apple-iphone-11/black/00.webp',
+    '/assets/img/phones/apple-iphone-11/green/00.webp',
+    '/assets/img/phones/apple-iphone-11/white/00.webp',
+  ],
+  description:
+    'iPhone com desempenho equilibrado, boa autonomia e câmeras versáteis. Ideal para uso diário e multimídia.',
+  specs: {
+    screen: '6.5" OLED',
+    capacity: '64GB',
+    ram: '6 GB',
+    battery: '3300 mAh',
+    camera: '12 MP (simples)',
+  },
+  colorsAvailable: ['Verde', 'Preto', 'Branco', 'Amarelo'],
+  capacityAvailable: ['64GB', '128GB', '256GB'],
+  category: 'Celulares',
+  age: 1,
+  detailsAvailable: true,
+});
