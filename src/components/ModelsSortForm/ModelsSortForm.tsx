@@ -4,8 +4,12 @@ import styles from './ModelesSortForm.module.scss';
 
 export const ModelsSortForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [querySelectValue, setQuerySelectValue] = useState<string>();
-  const [quantitySelectValue, setQuantitySelectValue] = useState<string>();
+  const [querySelectValue, setQuerySelectValue] = useState<string>(
+    searchParams.get('sort') || 'age',
+  );
+  const [quantitySelectValue, setQuantitySelectValue] = useState<string>(
+    searchParams.get('quantity') || '16',
+  );
 
   const handleChangeSelectQuery = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setQuerySelectValue(e.target.value);
