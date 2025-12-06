@@ -5,13 +5,15 @@ import styles from './ProductCard.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useFavorites } from '../../contexts/FavoritesContext';
 import { useCart } from '../../contexts/CartContext';
+import { PriceView } from '../HomePage/components/ProductsSlider';
 
 type Props = {
   product: Product;
   className?: string;
+  priceView?: PriceView;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, className }) => {
+export const ProductCard: React.FC<Props> = ({ product, className, priceView }) => {
   const { cart, addToCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorite = favorites.includes(product.id);
@@ -25,9 +27,15 @@ export const ProductCard: React.FC<Props> = ({ product, className }) => {
       </NavLink>
 
       <div className={styles.prices}>
-        <p className={styles.price}>${product.price}</p>
-        {product.fullPrice !== product.price && (
-          <p className={styles.fullPrice}>${product.fullPrice}</p>
+        {priceView === 'fullOnly' ? (
+          <p className={styles.price}>${product.fullPrice}</p>
+        ) : (
+          <>
+            <p className={styles.price}>${product.price}</p>
+            {product.fullPrice !== product.price && (
+              <p className={styles.fullPrice}>${product.fullPrice}</p>
+            )}
+          </>
         )}
       </div>
 

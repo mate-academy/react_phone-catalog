@@ -65,7 +65,9 @@ export const CatalogPage = () => {
     setIsLoading(true);
     getProducts()
       .then(p => {
-        setProducts(p.filter((product: Product) => product.category === category));
+        setProducts(
+          p.filter((product: Product) => product.category === category),
+        );
       })
       .catch(() => setLoadingError(true))
       .finally(() => setIsLoading(false));
@@ -109,15 +111,14 @@ export const CatalogPage = () => {
     }
   }, [products, sort]);
 
-  const itemsPerPage = perPage === 'all' ? sortedProducts.length : Number(perPage);
+  const itemsPerPage =
+    perPage === 'all' ? sortedProducts.length : Number(perPage);
 
   const from = (activePage - 1) * itemsPerPage;
   const to = from + itemsPerPage;
 
   const productsPage = useMemo(() => {
-    return perPage === 'all'
-      ? sortedProducts
-      : sortedProducts.slice(from, to);
+    return perPage === 'all' ? sortedProducts : sortedProducts.slice(from, to);
   }, [sortedProducts, from, to, perPage]);
 
   return (

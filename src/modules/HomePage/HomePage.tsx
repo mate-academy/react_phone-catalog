@@ -47,13 +47,21 @@ export const HomePage = () => {
         <Loader />
       ) : (
         <div className="container">
-          <ProductsSlider products={sortedByAge} title="Brand new model" />
+          <ProductsSlider
+            products={sortedByAge}
+            title="Brand new model"
+            priceView='fullOnly'
+          />
           <ShopByCategory
             phonesQnt={phonesFromProducts.length}
             tabletsQnt={tabletsFromProducts.length}
             accessoriesQnt={accessoriesFromProducts.length}
           />
-          <ProductsSlider products={sortedByPrice} title="Hot prices" />
+          <ProductsSlider
+            products={sortedByPrice}
+            title="Hot prices"
+            priceView='default'
+          />
         </div>
       )}
     </>

@@ -6,11 +6,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ProductCard } from '../../../shared';
 import { Product } from '../../../../types/Product';
 
+export type PriceView = 'default' | 'fullOnly';
+
 type Props = {
   products: Product[];
   title: string;
+  priceView?: PriceView;
 };
-export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
+export const ProductsSlider: React.FC<Props> = ({ products, title, priceView }) => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const [isBeginning, setIsBeginning] = useState(true);
@@ -87,7 +90,10 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
       >
         {products.map(product => (
           <SwiperSlide key={product.id}>
-            <ProductCard product={product} />
+            <ProductCard
+              product={product}
+              priceView={priceView}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
