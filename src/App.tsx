@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 
 //style
-import './App.scss';
+import './styles/Reset.scss';
+import './App.module.scss';
 
 //react-router
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 //components
-import { Navbar } from './components/Navbar';
+import { Header } from './components/Header';
 
 //pages
 import { HomePage } from './pages/HomePage';
@@ -23,7 +24,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <Navbar />
+      <Header />
 
       <Routes>
         <Route path="/home" element={<Navigate to="/" replace={true} />} />
