@@ -84,7 +84,12 @@
 .priceBlock {
   display: flex;
   align-items: center;
+  padding-top: 10px;
   gap: 8px;
+
+  @include on-mobile {
+    padding-top: 0;
+  }
 }
 
 .price {
@@ -96,7 +101,7 @@
   margin-bottom: 5px;
 
   @include on-tablet {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     margin-top: 8px;
   }
 }
@@ -105,7 +110,6 @@
   width: 100%;
   border: none;
   border-top: 1px solid #e2e6e9;
-  margin-bottom: 8px;
 }
 
 
@@ -115,8 +119,15 @@
   line-height: 100%;
   color: #89939a;
   text-decoration: line-through;
-  transform: translateY(-4px);
+  transform: translateY(-12px);
 
+  @include on-tablet {
+    transform: translateY(-1px);
+  }
+
+  @include on-mobile{
+    transform: translateY(-2px);
+  }
 }
 
 .details {

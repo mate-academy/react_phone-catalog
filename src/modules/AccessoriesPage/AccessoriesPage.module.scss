@@ -1,3 +1,5 @@
+@import '../../styles/media';
+
 .accessoriesPage {
   display: flex;
   flex-direction: column;
@@ -7,15 +9,15 @@
   padding: 40px 16px;
 
 
-  @media (min-width: 1200px) {
-    padding: 80px 0;
+  @include on-desktop{
+    padding: 40px 0;
   }
 
   @media (max-width: 1199px) and (min-width: 640px) {
-    padding: 40px 24px;
+    padding: 60px 24px;
   }
 
-  @media (max-width: 639px) {
+  @include on-tablet{
     padding: 40px 16px;
   }
 }
