@@ -54,19 +54,15 @@ export const PromotionSlider: FC<Props> = ({ products, title }) => {
           breakpoints={{
             0: {
               slidesPerView: 1,
-              spaceBetween: 10,
             },
             480: {
               slidesPerView: 2,
-              spaceBetween: 20,
             },
             720: {
               slidesPerView: 3,
-              spaceBetween: 40,
             },
             1024: {
               slidesPerView: 4,
-              spaceBetween: 50,
             },
           }}
           observer={true}

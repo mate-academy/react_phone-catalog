@@ -32,7 +32,11 @@ export const Header = () => {
     <header className={`${header} ${isActive ? header__active : ''}`}>
       <div className={header__container}>
         <div className={header__wrapper}>
-          <Link to="/" className={header__logo}>
+          <Link
+            to="/"
+            className={header__logo}
+            onClick={() => setIsActive(false)}
+          >
             <img src={logoIcon} alt="logo"></img>
           </Link>
           <nav className={header__menu}>
@@ -41,6 +45,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
+              onClick={() => setIsActive(false)}
             >
               home
             </NavLink>
@@ -49,6 +54,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
+              onClick={() => setIsActive(false)}
             >
               Phones
             </NavLink>
@@ -57,6 +63,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
+              onClick={() => setIsActive(false)}
             >
               tablets
             </NavLink>
@@ -65,16 +72,9 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__menu_item} ${isActive ? active : ''}`
               }
+              onClick={() => setIsActive(false)}
             >
               accessories
-            </NavLink>
-            <NavLink
-              to="/phone"
-              className={({ isActive }) =>
-                `${header__menu_item} ${isActive ? active : ''}`
-              }
-            >
-              phone card
             </NavLink>
           </nav>
           <div className={header__buttons}>
@@ -83,6 +83,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__button} ${isActive ? active : ''}`
               }
+              onClick={() => setIsActive(false)}
             >
               <img
                 src={favoriteIcon}
@@ -96,6 +97,7 @@ export const Header = () => {
               className={({ isActive }) =>
                 `${header__button} ${isActive ? active : ''}`
               }
+              onClick={() => setIsActive(false)}
             >
               <img src={cartIcon} alt="cart-icon" className={header__icon} />
               {/* <span className={header__counter}>{12}</span> */}
