@@ -8,7 +8,7 @@ export type CartItem = {
 
 type CartContextType = {
   cart: CartItem[];
-  addToCart: (id: number) => void;
+  toggleCart: (id: number) => void;
   removeFromCart: (id: number) => void;
   increase: (id: number) => void;
   decrease: (id: number) => void;
@@ -35,15 +35,11 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setCart(updated);
   };
 
-  const addToCart = (id: number) => {
+  const toggleCart = (id: number) => {
     const exists = cart.find(item => item.id === id);
 
     if (exists) {
-      sync(
-        cart.map(item =>
-          item.id === id ? { ...item, qty: item.qty + 1 } : item,
-        ),
-      );
+      sync(cart.filter(item => item.id !== id))
     } else {
       sync([...cart, { id, qty: 1 }]);
     }
@@ -76,7 +72,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, increase, decrease, clearCart }}
+      value={{ cart, toggleCart, removeFromCart, increase, decrease, clearCart }}
     >
       {children}
     </CartContext.Provider>

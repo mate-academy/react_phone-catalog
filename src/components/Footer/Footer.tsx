@@ -10,19 +10,28 @@ export const Footer = () => (
 
       <ul className={styles['footer-list']}>
         <li className={styles['footer-item']}>
-          <Link to="https://github.com/oberezhnay/react_phone-catalog">
+          <a
+            href="https://github.com/oberezhnay/react_phone-catalog"
+            target="_blank"
+          >
             Github
-          </Link>
+          </a>
         </li>
         <li className={styles['footer-item']}>
-          <Link to="https://github.com/oberezhnay/react_phone-catalog">
+          <a
+            href="https://github.com/oberezhnay/react_phone-catalog"
+            target="_blank"
+          >
             Contacts
-          </Link>
+          </a>
         </li>
         <li className={styles['footer-item']}>
-          <Link to="https://github.com/oberezhnay/react_phone-catalog">
+          <a
+            href="https://docs.github.com/ru/site-policy/github-terms/github-terms-of-service"
+            target="_blank"
+          >
             Rights
-          </Link>
+          </a>
         </li>
       </ul>
 

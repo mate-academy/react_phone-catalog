@@ -19,7 +19,7 @@ export const ProductDetails = () => {
   const [baseProducts, setBaseProducts] = useState<Product[] | []>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { cart, addToCart } = useCart();
+  const { cart, toggleCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorite = baseProduct ? favorites.includes(baseProduct?.id) : false;
   const isProductInCart = baseProduct
@@ -156,7 +156,7 @@ export const ProductDetails = () => {
               <div className={styles['buttons-wrapper']}>
                 <button
                   className={`${styles['add-to-cart']} ${isProductInCart ? styles.added : ''}`}
-                  onClick={() => baseProduct && addToCart(baseProduct.id)}
+                  onClick={() => baseProduct && toggleCart(baseProduct.id)}
                 >
                   {isProductInCart ? 'Added' : 'Add to cart'}
                 </button>

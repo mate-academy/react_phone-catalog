@@ -50,7 +50,7 @@ export const HomePage = () => {
           <ProductsSlider
             products={sortedByAge}
             title="Brand new model"
-            priceView='fullOnly'
+            priceView="fullOnly"
           />
           <ShopByCategory
             phonesQnt={phonesFromProducts.length}
@@ -60,7 +60,7 @@ export const HomePage = () => {
           <ProductsSlider
             products={sortedByPrice}
             title="Hot prices"
-            priceView='default'
+            priceView="default"
           />
         </div>
       )}

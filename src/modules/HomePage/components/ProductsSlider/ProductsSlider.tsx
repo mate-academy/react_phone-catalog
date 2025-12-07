@@ -13,7 +13,11 @@ type Props = {
   title: string;
   priceView?: PriceView;
 };
-export const ProductsSlider: React.FC<Props> = ({ products, title, priceView }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  products,
+  title,
+  priceView,
+}) => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const [isBeginning, setIsBeginning] = useState(true);
@@ -90,10 +94,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title, priceView }) 
       >
         {products.map(product => (
           <SwiperSlide key={product.id}>
-            <ProductCard
-              product={product}
-              priceView={priceView}
-            />
+            <ProductCard product={product} priceView={priceView} />
           </SwiperSlide>
         ))}
       </Swiper>

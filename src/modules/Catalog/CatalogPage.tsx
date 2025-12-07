@@ -129,53 +129,57 @@ export const CatalogPage = () => {
         <h1>{`There no ${category} yet`}</h1>
       )}
 
-      <div className={styles.catalog}>
-        <BreadCrumbs category={category as ProductCategory} />
-        <h1 className={styles.title}>{titles[category as ProductCategory]}</h1>
-        <p className={styles['category-qnt']}>{products.length} models</p>
+      {isLoading && <Loader />}
 
-        <div className={styles.filters}>
-          <div className={styles['filter-sort']}>
-            <p className={styles.label}>Sort by</p>
-            <CustomSelect
-              value={sort}
-              onChange={v => updateParam('sort', v)}
-              options={[
-                { value: 'age', label: 'Newest' },
-                { value: 'title', label: 'Alphabetically' },
-                { value: 'price', label: 'Cheapest' },
-              ]}
-            />
+      {!isLoading && !loadingError && (
+        <div className={styles.catalog}>
+          <BreadCrumbs category={category as ProductCategory} />
+          <h1 className={styles.title}>{titles[category as ProductCategory]}</h1>
+          <p className={styles['category-qnt']}>{products.length} models</p>
+
+          <div className={styles.filters}>
+            <div className={styles['filter-sort']}>
+              <p className={styles.label}>Sort by</p>
+              <CustomSelect
+                value={sort}
+                onChange={v => updateParam('sort', v)}
+                options={[
+                  { value: 'age', label: 'Newest' },
+                  { value: 'title', label: 'Alphabetically' },
+                  { value: 'price', label: 'Cheapest' },
+                ]}
+              />
+            </div>
+
+            <div className={styles['filter-perPage']}>
+              <p className={styles.label}>Items on page</p>
+              <CustomSelect
+                value={perPage}
+                onChange={v => updateParam('perPage', v)}
+                options={[
+                  { value: '4', label: '4' },
+                  { value: '8', label: '8' },
+                  { value: '16', label: '16' },
+                  { value: 'all', label: 'all' },
+                ]}
+              />
+            </div>
           </div>
 
-          <div className={styles['filter-perPage']}>
-            <p className={styles.label}>Items on page</p>
-            <CustomSelect
-              value={perPage}
-              onChange={v => updateParam('perPage', v)}
-              options={[
-                { value: '4', label: '4' },
-                { value: '8', label: '8' },
-                { value: '16', label: '16' },
-                { value: 'all', label: 'all' },
-              ]}
+
+
+          {products.length > 0 && <ProductsList products={productsPage} />}
+
+          {perPage !== 'all' && (
+            <Pagination
+              total={sortedProducts.length}
+              perPage={perPage as PerPageType}
+              currentPage={activePage}
+              onPageChange={page => updateParam('page', page)}
             />
-          </div>
+          )}
         </div>
-
-        {isLoading && <Loader />}
-
-        {products.length > 0 && <ProductsList products={productsPage} />}
-
-        {perPage !== 'all' && (
-          <Pagination
-            total={sortedProducts.length}
-            perPage={perPage as PerPageType}
-            currentPage={activePage}
-            onPageChange={page => updateParam('page', page)}
-          />
-        )}
-      </div>
+      )}
     </div>
   );
 };

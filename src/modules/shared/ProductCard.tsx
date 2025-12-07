@@ -13,8 +13,12 @@ type Props = {
   priceView?: PriceView;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, className, priceView }) => {
-  const { cart, addToCart } = useCart();
+export const ProductCard: React.FC<Props> = ({
+  product,
+  className,
+  priceView,
+}) => {
+  const { cart, toggleCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorite = favorites.includes(product.id);
   const isProductInCart = cart.find(p => p.id === product.id) || 0;
@@ -57,7 +61,7 @@ export const ProductCard: React.FC<Props> = ({ product, className, priceView }) 
       <div className={styles['buttons-wrapper']}>
         <button
           className={`${styles['add-to-cart']} ${isProductInCart ? styles.added : ''}`}
-          onClick={() => addToCart(product.id)}
+          onClick={() => toggleCart(product.id)}
         >
           {isProductInCart ? 'Added' : 'Add to cart'}
         </button>
