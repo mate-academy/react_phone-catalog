@@ -4,8 +4,10 @@ import { App } from './App';
 import { MainPage } from './pages/MainPage';
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
-import { Accessories } from './pages/AccessoriesPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 import { CardItem } from './components/CardItem';
+import { FavoritesPage } from './pages/FavoritesPage';
+import { CartPage } from './pages/CartPage';
 export const Root = () => {
   return (
     <Router>
@@ -14,8 +16,10 @@ export const Root = () => {
           <Route index element={<MainPage />} />
           <Route path="phones" element={<PhonesPage />} />
           <Route path="tablets" element={<TabletsPage />} />
-          <Route path="accessories" element={<Accessories />} />
+          <Route path="accessories" element={<AccessoriesPage />} />
           <Route path="phone" element={<CardItem />} />
+          <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="cart" element={<CartPage />} />
           <Route path="*" element={<MainPage />} />
         </Route>
       </Routes>

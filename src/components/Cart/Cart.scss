@@ -1,0 +1,35 @@
+@use '../../styles/mixins' as *;
+
+.cart {
+
+  &__back {
+    padding-block: 16px;
+
+
+    &-link {
+      display: flex;
+      column-gap: 10px;
+    }
+  }
+
+
+
+  &__title {
+    font-size: rem(48);
+    line-height: 44px;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
+  &__empty {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+  }
+}

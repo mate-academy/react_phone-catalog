@@ -5,7 +5,7 @@ import '../components/Catalog/Catalog.scss';
 import { Product } from '../types/Product';
 import { Catalog } from '../components/Catalog';
 
-export const Accessories = () => {
+export const AccessoriesPage = () => {
   const products: Product[] = useMemo(() => {
     return accessoriesFromServer.filter(
       product => product.category === 'accessories',
