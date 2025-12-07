@@ -94,113 +94,114 @@ export const ProductDetailsPage: React.FC = () => {
       <div className={`grid-24 ${styles.page}`}>
         <h1 className={styles.title}>{productDetails.name}</h1>
 
-        <div className={styles.topSection}>
-          <div className={styles.leftPart}>
-            <div className={styles.gallery}>
-              {productDetails.images.map(img => (
-                <img
-                  key={img}
-                  className={`${styles.galleryImage} ${
-                    selectedImg === img ? styles.activeThumb : ''
-                  }`}
-                  src={`/${img}`}
-                  alt={productDetails.name}
-                  onClick={() => setSelectedImg(img)}
+        <div className={styles.gallery}>
+          {productDetails.images.map(img => (
+            <img
+              key={img}
+              className={`${styles.galleryImage} ${selectedImg === img ? styles.activeThumb : ''}`}
+              src={`/${img}`}
+              alt={productDetails.name}
+              onClick={() => setSelectedImg(img)}
+            />
+          ))}
+        </div>
+
+        <div className={styles.mainImageWrapper}>
+          <img
+            className={styles.mainImage}
+            src={`/${selectedImg}`}
+            alt={productDetails.name}
+          />
+        </div>
+
+        <div className={styles.infoBlock}>
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Available colors</p>
+
+            <div className={styles.colors}>
+              {productDetails.colorsAvailable.map(color => (
+                <button
+                  key={color}
+                  className={`${styles.colorCircle} ${styles[color]}`}
                 />
               ))}
             </div>
-
-            <div className={styles.mainImageWrapper}>
-              <img
-                className={styles.mainImage}
-                src={`/${selectedImg}`}
-                alt={productDetails.name}
-              />
-            </div>
           </div>
 
-          <div className={styles.infoBlock}>
-            <div className={styles.section}>
-              <p className={styles.sectionTitle}>Available colors</p>
-              <div className={styles.colors}>
-                {productDetails.colorsAvailable.map(color => (
-                  <button
-                    key={color}
-                    className={`${styles.colorCircle} ${styles[color]}`}
-                  />
-                ))}
-              </div>
-            </div>
+          <hr className={styles.dividerAbout} />
 
-            <div className={styles.section}>
-              <p className={styles.sectionTitle}>Select capacity</p>
-              <div className={styles.capacity}>
-                {productDetails.capacityAvailable.map(cap => (
-                  <button
-                    key={cap}
-                    className={`${styles.capacityBtn} ${
-                      selectedCapacity === cap ? styles.activeCapacity : ''
-                    }`}
-                    onClick={() => setSelectedCapacity(cap)}
-                  >
-                    {cap}
-                  </button>
-                ))}
-              </div>
-            </div>
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Select capacity</p>
 
-            <div className={styles.priceBlock}>
-              <span className={styles.priceNew}>
-                {productDetails.priceRegular}
-              </span>
-              <span className={styles.priceOld}>
-                {productDetails.priceDiscount}
-              </span>
-            </div>
-
-            {genericProduct && <ProductButtons product={genericProduct} />}
-
-            <div className={styles.detailsShort}>
-              {specs.slice(0, 4).map(s => (
-                <div key={s.label} className={styles.detailRow}>
-                  <span className={styles.detailLabel}>{s.label}</span>
-                  <span className={styles.detailValue}>{s.value}</span>
-                </div>
+            <div className={styles.capacity}>
+              {productDetails.capacityAvailable.map(cap => (
+                <button
+                  key={cap}
+                  className={`${styles.capacityBtn} ${selectedCapacity === cap ? styles.activeCapacity : ''}`}
+                  onClick={() => setSelectedCapacity(cap)}
+                >
+                  {cap}
+                </button>
               ))}
             </div>
           </div>
+
+          <hr className={styles.dividerAbout} />
+
+          <div className={styles.priceBlock}>
+            <span className={styles.priceNew}>
+              {productDetails.priceRegular}
+            </span>
+            <span className={styles.priceOld}>
+              {productDetails.priceDiscount}
+            </span>
+          </div>
+
+          {genericProduct && <ProductButtons product={genericProduct} />}
+
+          <div className={styles.detailsShort}>
+            {specs.slice(0, 4).map(s => (
+              <div key={s.label} className={styles.detailRow}>
+                <span className={styles.detailLabel}>{s.label}</span>
+                <span className={styles.detailValue}>{s.value}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className={styles.bottomSection}>
-          <div className={styles.aboutBlock}>
-            <h2 className={styles.bottomTitle}>About</h2>
+        <div className={styles.aboutBlock}>
+          <h2 className={styles.bottomTitle}>About</h2>
 
-            {productDetails.description.map(section => (
-              <div key={section.title}>
-                <h3 className={styles.aboutSectionTitle}>{section.title}</h3>
-                {section.text.map((paragraph, index) => (
-                  <p key={index} className={styles.aboutText}>
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            ))}
-          </div>
+          <hr className={styles.dividerAbout} />
 
-          <div className={styles.techSpecsBlock}>
-            <h2 className={styles.bottomTitle}>Tech specs</h2>
+          {productDetails.description.map(section => (
+            <div key={section.title}>
+              <h3 className={styles.aboutSectionTitle}>{section.title}</h3>
+              {section.text.map((paragraph, index) => (
+                <p key={index} className={styles.aboutText}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          ))}
+        </div>
 
-            {specs.map(spec => (
-              <div key={spec.label} className={styles.techRow}>
-                <span className={styles.techLabel}>{spec.label}</span>
-                <span className={styles.techValue}>{spec.value}</span>
-              </div>
-            ))}
-          </div>
+        <div className={styles.techSpecsBlock}>
+          <h2 className={styles.bottomTitle}>Tech specs</h2>
+
+          <hr className={styles.dividerTech} />
+
+          {specs.map(spec => (
+            <div key={spec.label} className={styles.techRow}>
+              <span className={styles.techLabel}>{spec.label}</span>
+              <span className={styles.techValue}>{spec.value}</span>
+            </div>
+          ))}
         </div>
 
         <div className={styles.recommendedSection}>
           <h2 className={styles.recommendedTitle}>You may also like</h2>
+
           <div className="grid-24">
             <ProductsList products={suggested} />
           </div>
