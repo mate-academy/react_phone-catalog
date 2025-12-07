@@ -100,7 +100,7 @@ export const CartPage: React.FC = () => {
 
           <div className={styles.summary}>
             <p className={styles.totalPrice}>${getTotalPrice()}</p>
-            <p className={styles.totalItems}>
+            <p className={styles.totalItems}>~~
               Total for {totalCount} {cartItems.length === 1 ? 'item' : 'items'}
             </p>
             <div className={styles.border}></div>
