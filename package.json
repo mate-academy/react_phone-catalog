@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "react_phone-catalog",
+  "homepage": "https://pavlosich.github.io/react_phone-catalog/",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -12,7 +12,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "swiper": "^12.0.3"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
