@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+}
+
+.homeBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+}
+
+.sectionName {
+  font-size: 14px;
+  color: #89939a;
+  text-transform: capitalize;
+}

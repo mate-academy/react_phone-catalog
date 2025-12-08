@@ -5,6 +5,8 @@ import { getAccessoriesFromProducts } from '../../services/productsService';
 import { Pagination } from '../../shared/components/Pagination';
 import { ProductsControls } from '../../shared/components/ProductsControls';
 import { useProductsPage } from '../../shared/hooks/useProductPage';
+import { LocationIndicator } from '../../shared/LocationIndicator';
+import { NavigationButton } from '../../shared/components/NavigationButton';
 
 export const AccessoriesPage = () => {
   const {
@@ -42,27 +44,31 @@ export const AccessoriesPage = () => {
   }
 
   return (
-    <div className={`container ${styles.accessoriesPage}`}>
-      <h1>Accessories</h1>
+    <>
+      <div className={`container ${styles.accessoriesPage}`}>
+        <LocationIndicator category={'Accessories'} />
+        <NavigationButton title="Back" />
+        <h1>Accessories</h1>
 
-      <ProductsControls
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-        itemsPerPage={itemsPerPage}
-        setItemsPerPage={setItemsPerPage}
-      />
-
-      <div className="grid-24">
-        <ProductsList products={paginated} />
-      </div>
-
-      {itemsPerPage !== 'all' && totalPages > 1 && (
-        <Pagination
-          totalPages={totalPages}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
+        <ProductsControls
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          itemsPerPage={itemsPerPage}
+          setItemsPerPage={setItemsPerPage}
         />
-      )}
-    </div>
+
+        <div className="grid-24">
+          <ProductsList products={paginated} />
+        </div>
+
+        {itemsPerPage !== 'all' && totalPages > 1 && (
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        )}
+      </div>
+    </>
   );
 };

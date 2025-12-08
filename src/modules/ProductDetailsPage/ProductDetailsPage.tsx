@@ -10,6 +10,8 @@ import {
 import { Product, ProductDetails } from '../../types';
 import { ProductButtons } from '../../shared/components/ProductButtons';
 import { ProductsSlider } from '../../shared/components/ProductsSlider';
+import { LocationIndicator } from '../../shared/LocationIndicator';
+import { NavigationButton } from '../../shared/components/NavigationButton';
 
 export const ProductDetailsPage: React.FC = () => {
   const { itemId } = useParams();
@@ -91,7 +93,12 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <div className="container">
+      <LocationIndicator
+        category={genericProduct?.category || 'Product'}
+        name={productDetails.name}
+      />
       <div className={`grid-24 ${styles.page}`}>
+        <NavigationButton title="Back" />
         <h1 className={`col-24 ${styles.title}`}>{productDetails.name}</h1>
 
         <div className={styles.gallery}>
