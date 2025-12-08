@@ -27,7 +27,11 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.card_content}>
         <Link
           to={`/${product.category}/${product.itemId}`}
-          state={{ category: product.category, name: product.name }}
+          state={{
+            category: product.category,
+            name: product.name,
+            showDiscount: showDiscount,
+          }}
           className={styles.card_link}
         >
           <div className={styles.card_image}>

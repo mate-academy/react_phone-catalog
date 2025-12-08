@@ -17,8 +17,15 @@ export interface ProductDetails {
   cell: string[];
   capacity: string;
   capacityAvailable: string[];
+  capacityOptions: ProductCapacityOption[];
   color: string;
   colorsAvailable: string[];
   namespaceId: string;
   category: 'phones' | 'tablets' | 'accessories';
+}
+
+export interface ProductCapacityOption {
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
 }

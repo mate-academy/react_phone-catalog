@@ -28,9 +28,8 @@ const COLOR_MAP: Record<string, string> = {
   spaceblack: '#0d0d0d',
 };
 
-const normalizeColor = (color: string) => {
-  return color.replace(/\s|-/g, '').toLowerCase();
-};
+const normalizeColor = (color: string) =>
+  color.replace(/\s|-/g, '').toLowerCase();
 
 export const ProductSpec: React.FC<Props> = ({
   product,
@@ -42,15 +41,20 @@ export const ProductSpec: React.FC<Props> = ({
   setActiveCapacityIndex,
   showDiscount,
 }) => {
+  const selectedCapacity = product.capacityAvailable[activeCapacityIndex];
+  const capacityOption = product.capacityOptions?.find(
+    option => option.capacity === selectedCapacity,
+  );
+
   const adaptedProduct: Product = {
     id: Number(product.id),
     itemId: product.namespaceId,
     name: product.name,
     category: product.category,
-    fullPrice: product.priceRegular,
-    price: product.priceDiscount,
+    fullPrice: capacityOption?.priceRegular ?? product.priceRegular,
+    price: capacityOption?.priceDiscount ?? product.priceDiscount,
     screen: product.screen,
-    capacity: product.capacity,
+    capacity: selectedCapacity,
     color: product.color,
     ram: product.ram,
     year: 0,
@@ -65,7 +69,6 @@ export const ProductSpec: React.FC<Props> = ({
         <div className={styles.spec_colors_container}>
           {product.colorsAvailable.map((color, index) => {
             const isActive = index === activeIndex;
-
             const normalized = normalizeColor(color);
             const displayColor = COLOR_MAP[normalized] || color;
 
@@ -88,9 +91,9 @@ export const ProductSpec: React.FC<Props> = ({
         </div>
         <div className={styles.spec_divide_line}></div>
       </div>
+
       <div className={styles.spec_capacity_container}>
         <p className={styles.spec_title}>Select capacity</p>
-
         <div className={styles.spec_capacity_list}>
           {product.capacityAvailable.map((capacity, index) => {
             const isActive = index === activeCapacityIndex;
@@ -110,8 +113,12 @@ export const ProductSpec: React.FC<Props> = ({
           })}
         </div>
       </div>
+
+      <div
+        className={`${styles.spec_divide_line} ${styles.spec_divide_line_last}`}
+      ></div>
+
       <ProductCardShared product={adaptedProduct} showDiscount={showDiscount} />
-      ;
     </div>
   );
 };

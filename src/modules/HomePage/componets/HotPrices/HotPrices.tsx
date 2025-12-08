@@ -17,6 +17,10 @@ export const HotPrices = () => {
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
 
   return (
-    <ProductsSlider title={'Hot prices'} products={hotPrices} showDiscount />
+    <ProductsSlider
+      title={'Hot prices'}
+      products={hotPrices}
+      showDiscount={true}
+    />
   );
 };

@@ -165,6 +165,8 @@ export const ProductDetailsPage = () => {
     return <NotFoundProduct />;
   }
 
+  const showDiscount = location.state?.showDiscount ?? false;
+
   return (
     <div>
       <BreadCrumbs productName={productName} />
@@ -175,7 +177,7 @@ export const ProductDetailsPage = () => {
         <ProductPhotos images={images} />
         <ProductSpec
           product={product}
-          showDiscount={false}
+          showDiscount={showDiscount}
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
           onColorChange={handleColorChange}
