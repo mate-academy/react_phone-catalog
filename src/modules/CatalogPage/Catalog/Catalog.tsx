@@ -6,12 +6,14 @@ interface CatalogProps {
   itemsOnPage: Phone[];
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
+  favouriteButton: Set<string>;
 }
 
 export const Catalog = ({
   itemsOnPage,
   toggleInCart,
   toggleFavourite,
+  favouriteButton,
 }: CatalogProps) => {
   const location = useLocation();
 
@@ -28,7 +30,7 @@ export const Catalog = ({
   return (
     <div className={style.catalog}>
       {itemsOnPage.map((phone: Phone) => {
-        // const isFavourite = favourites.has(phone.id);
+        const isFavourite = favouriteButton.has(phone.id);
         return (
           <article className={style.catalog__product} key={phone.id}>
             <Link
@@ -94,6 +96,7 @@ export const Catalog = ({
                 <span
                   className={`
                 ${style[`catalog__product__buttons__button__favourites--heart`]}
+                ${isFavourite ? style['catalog__product__buttons__button__favourites--heart--active'] : ''}
                 `}
                 ></span>
               </button>

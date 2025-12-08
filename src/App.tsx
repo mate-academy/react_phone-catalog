@@ -13,7 +13,7 @@ import useAddToFavourite from './modules/Hooks/UseAddtoFavourite';
 
 export const App = () => {
   const { itemsInCart, toggleInCart } = useAddToCart();
-  const { favourites, toggleFavourite } = useAddToFavourite();
+  const { favourites, toggleFavourite, favouriteButton } = useAddToFavourite();
   return (
     <Router>
       <div className="App">
@@ -24,6 +24,7 @@ export const App = () => {
               path="/"
               element={
                 <HomePage
+                  favouriteButton={favouriteButton}
                   toggleInCart={toggleInCart}
                   toggleFavourite={toggleFavourite}
                 />
@@ -33,6 +34,7 @@ export const App = () => {
               path="/phones"
               element={
                 <CatalogPage
+                  favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
                 />
@@ -42,6 +44,7 @@ export const App = () => {
               path="/tablets"
               element={
                 <CatalogPage
+                  favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
                 />
@@ -51,6 +54,7 @@ export const App = () => {
               path="/accessories"
               element={
                 <CatalogPage
+                  favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
                 />
@@ -60,6 +64,7 @@ export const App = () => {
               path="/phones/:productId"
               element={
                 <ProductPage
+                  favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
                 />
@@ -69,6 +74,7 @@ export const App = () => {
               path="/tablets/:productId"
               element={
                 <ProductPage
+                  favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
                 />
@@ -78,6 +84,7 @@ export const App = () => {
               path="/accessories/:productId"
               element={
                 <ProductPage
+                  favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
                 />

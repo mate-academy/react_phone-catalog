@@ -23,6 +23,7 @@ export type Phone = {
   images: string[];
   ram: string;
   screen: string;
+  color: string;
 };
 
- export type SortType = '' | 'expensive' | 'cheaper' | 'discount';
+export type SortType = '' | 'expensive' | 'cheaper' | 'discount';

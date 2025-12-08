@@ -9,19 +9,26 @@ import { Phone } from '../../Types/type';
 interface HomePageProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
+  favouriteButton: Set<string>;
 }
 
-export const HomePage = ({ toggleInCart, toggleFavourite }: HomePageProps) => {
+export const HomePage = ({
+  toggleInCart,
+  toggleFavourite,
+  favouriteButton,
+}: HomePageProps) => {
   return (
     <>
       <Title />
       <Banner data={slides} />
       <NewModels
+        favouriteButton={favouriteButton}
         toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
       />
       <Category />
       <HotPrices
+        favouriteButton={favouriteButton}
         toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
       />

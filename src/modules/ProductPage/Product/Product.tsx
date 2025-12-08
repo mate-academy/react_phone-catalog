@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import style from './Product.module.scss';
 import useAddToFavourite from '../../Hooks/UseAddToCart';
@@ -13,6 +13,7 @@ interface ProductProps {
   capacity: string[];
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
+  favouriteButton: Set<string>;
 }
 
 export const Product = ({
@@ -23,6 +24,7 @@ export const Product = ({
   capacity,
   toggleInCart,
   toggleFavourite,
+  favouriteButton,
 }: ProductProps) => {
   const [productImages, setProductImages] = useState([]);
   const { productId } = useParams<{ productId: string }>();
@@ -32,6 +34,9 @@ export const Product = ({
   const [productDiscount, setProductDiscount] = useState();
   const [currentProduct, setCurrentProduct] = useState<Phone | null>(null);
   const location = useLocation();
+  const isFavourite = currentProduct
+    ? favouriteButton.has(currentProduct.id)
+    : false;
 
   useEffect(() => {
     if (productId) {
@@ -60,7 +65,7 @@ export const Product = ({
           });
       }
     }
-  }, [productId, location.pathname]);
+  }, [productId, location.pathname, favouriteButton]);
 
   const mainImage = (selectedImage: string) => {
     setImage(selectedImage);
@@ -96,13 +101,21 @@ export const Product = ({
         </div>
 
         <div className={style.product__cart__colors}>
-          {colors.map((color, index) => (
-            <div
-              key={index}
-              className={style.product__cart__colors__color}
-              style={{ backgroundColor: color }}
-            />
-          ))}
+          {colors.map((color, index) => {
+            const newProductId = currentProduct?.id.replace(
+              currentProduct.color,
+              color,
+            );
+
+            return (
+              <Link
+                key={index}
+                to={`${location.pathname.split('/').slice(0, -1).join('/')}/${newProductId}`}
+                className={style.product__cart__colors__color}
+                style={{ backgroundColor: color }}
+              />
+            );
+          })}
         </div>
 
         <hr className={style['product__cart--line']} />
@@ -146,7 +159,8 @@ export const Product = ({
             <span
               className={`
                 ${style['product__cart__buttons__button__favourites--heart']}
-              `}
+                ${isFavourite ? style['product__cart__buttons__button__favourites--heart--active'] : ''}
+                `}
             />
           </button>
         </div>

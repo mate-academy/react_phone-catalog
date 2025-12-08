@@ -13,11 +13,13 @@ import { Phone } from '../../Types/type';
 interface ProductPageProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
+  favouriteButton: Set<string>;
 }
 
 export const ProductPage = ({
   toggleInCart,
   toggleFavourite,
+  favouriteButton,
 }: ProductPageProps) => {
   const { productId } = useParams<{ productId: string }>();
   const [productScreen, setProductScreen] = useState('');
@@ -121,6 +123,7 @@ export const ProductPage = ({
         capacity={capacity}
         toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
+        favouriteButton={favouriteButton}
       />
       <ProductDescription
         productScreen={productScreen}
@@ -130,6 +133,7 @@ export const ProductPage = ({
         productResolution={productResolution}
       />
       <HotPrices
+        favouriteButton={favouriteButton}
         toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
       />

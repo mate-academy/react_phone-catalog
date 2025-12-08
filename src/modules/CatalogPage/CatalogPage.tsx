@@ -12,11 +12,13 @@ import { ErrorPage } from '../Shared/ErrorPage/ErrorPage';
 interface CatalogProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
+  favouriteButton: Set<string>;
 }
 
 export const CatalogPage = ({
   toggleInCart,
   toggleFavourite,
+  favouriteButton,
 }: CatalogProps) => {
   const [sortNumber, setSortNumber] = useState(16);
   const [sortType, setSortType] = useState<SortType>('');
@@ -91,6 +93,7 @@ export const CatalogPage = ({
         itemsOnPage={itemsOnPage}
         toggleFavourite={toggleFavourite}
         toggleInCart={toggleInCart}
+        favouriteButton={favouriteButton}
       />
 
       {showPagination && (

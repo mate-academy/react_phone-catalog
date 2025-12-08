@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { Phone } from '../../Types/type';
 
 export const useAddToFavourites = () => {
+  const [favouriteButton, setFavouriteButton] = useState<Set<string>>(
+    new Set(),
+  );
   const [favourites, setAddToFavourites] = useState<Phone[]>([]);
 
   const toggleFavourite = (product: Phone) => {
@@ -14,9 +17,21 @@ export const useAddToFavourites = () => {
         return [...prev, product];
       }
     });
+
+    setFavouriteButton(prev => {
+      const newSet = new Set(prev);
+
+      if (newSet.has(product.id)) {
+        newSet.delete(product.id);
+      } else {
+        newSet.add(product.id);
+      }
+
+      return newSet;
+    });
   };
 
-  return { favourites, toggleFavourite };
+  return { favourites, toggleFavourite, favouriteButton };
 };
 
 export default useAddToFavourites;

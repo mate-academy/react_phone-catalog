@@ -1,4 +1,5 @@
 @import '../../../Scss-variables/Variables.scss';
+@import '../../Utils/mixins.scss';
 
 .favourite {
   display: grid;
@@ -7,6 +8,17 @@
   justify-items: center;
   justify-content: center;
 
+  &--margin {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
   &__product {
     display: block;
     align-self: center;
@@ -119,7 +131,7 @@
           background-color: #323542;
           width: 15.34px;
           height: 13.55px;
-          background-image: url(/img/logo/Heart.svg);
+          background-image: url(/img/logo/Favourites.svg);
           background-repeat: no-repeat;
           border: none;
 
@@ -128,7 +140,7 @@
           }
 
           &--active {
-            background-image: url(/img/logo/Favourites.svg);
+            background-image: url(/img/logo/Heart.svg);
             animation: addToFavourite 0.4s ease;
           }
 

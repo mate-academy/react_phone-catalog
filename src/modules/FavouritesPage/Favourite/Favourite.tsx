@@ -3,22 +3,25 @@ import { Phone } from '../../../Types/type';
 import style from './Favourite.module.scss';
 
 interface FavouritesPageProps {
-  toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
+  toggleFavourite: (product: Phone) => void;
   favourites: Phone[];
 }
 
 export const Favourite = ({
-  toggleFavourite,
   toggleInCart,
   favourites,
+  toggleFavourite,
 }: FavouritesPageProps) => {
   return (
-    <div className={style.catalog}>
+    <div className={`${style.favourite} ${style['favourite--margin']}`}>
       {favourites.map((phone: Phone) => {
         return (
           <article className={style.favourite__product} key={phone.id}>
-            <Link to={phone.id} className={style.favourite__product__link}>
+            <Link
+              to={`/${phone.category}/${phone.id}`}
+              className={style.favourite__product__link}
+            >
               <img
                 className={style.favourite__product__link__image}
                 src={phone.images[0]}
@@ -69,7 +72,7 @@ export const Favourite = ({
             <div className={style.favourite__product__buttons}>
               <button
                 className={style.favourite__product__buttons__button__add}
-                onClick={() => toggleFavourite(phone)}
+                onClick={() => toggleInCart(phone)}
               >
                 Add to cart
               </button>
@@ -77,6 +80,7 @@ export const Favourite = ({
                 className={
                   style.favourite__product__buttons__button__favourites
                 }
+                onClick={() => toggleFavourite(phone)}
               >
                 <span
                   className={`

@@ -8,9 +8,14 @@ import { Link, useLocation } from 'react-router-dom';
 interface HomePageProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
+  favouriteButton: Set<string>;
 }
 
-export const HotPrices = ({ toggleInCart, toggleFavourite }: HomePageProps) => {
+export const HotPrices = ({
+  toggleInCart,
+  toggleFavourite,
+  favouriteButton,
+}: HomePageProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -102,7 +107,7 @@ export const HotPrices = ({ toggleInCart, toggleFavourite }: HomePageProps) => {
           }}
         >
           {sortedProduct.map((phone: Phone, index: number) => {
-            // const isFavourite = favourites.has(phone.id);
+            const isFavourite = favouriteButton.has(phone.id);
 
             return (
               <article
@@ -184,7 +189,8 @@ export const HotPrices = ({ toggleInCart, toggleFavourite }: HomePageProps) => {
                     <span
                       className={`
                         ${style['newmodels__product__buttons__button__favourites--heart']}
-                      `}
+                        ${isFavourite ? style['newmodels__product__buttons__button__favourites--heart--active'] : ''}
+                        `}
                     ></span>
                   </button>
                 </div>

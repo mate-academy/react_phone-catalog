@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import styles from './Cart.module.scss'
+import styles from './Cart.module.scss';
 import { Phone } from '../../../Types/type';
+import { Link } from 'react-router-dom';
 
 interface CartProps {
   itemsInCart: Phone[];
   toggleInCart: (product: Phone) => void;
-
 }
 
 export const Cart = ({ itemsInCart, toggleInCart }: CartProps) => {
@@ -15,8 +15,8 @@ export const Cart = ({ itemsInCart, toggleInCart }: CartProps) => {
     setQuantities(prev => {
       const currentQty = prev[productId] || 1;
       const newQty = currentQty + delta;
-      
-      if (newQty < 1) return prev; 
+
+      if (newQty < 1) return prev;
       return { ...prev, [productId]: newQty };
     });
   };
@@ -24,7 +24,7 @@ export const Cart = ({ itemsInCart, toggleInCart }: CartProps) => {
   const totalPrice = itemsInCart.reduce((sum, product) => {
     const qty = quantities[product.id] || 1;
     const price = product.priceDiscount || product.priceRegular;
-    return sum + (price * qty);
+    return sum + price * qty;
   }, 0);
 
   const totalItems = itemsInCart.reduce((sum, product) => {
@@ -36,41 +36,64 @@ export const Cart = ({ itemsInCart, toggleInCart }: CartProps) => {
       <div className={styles.cartpage}>
         <div className={styles.cartpage__cart}>
           {itemsInCart.map((product: Phone) => {
-            const price = product.priceDiscount || product.priceRegular; 
+            const price = product.priceDiscount || product.priceRegular;
             const quantity = quantities[product.id] || 1;
 
             return (
               <div className={styles.cartpage__cart__item} key={product.id}>
                 <button
-                className={styles.cartpage__cart__item__delete}
-                onClick={() => toggleInCart(product)}
+                  className={styles.cartpage__cart__item__delete}
+                  onClick={() => toggleInCart(product)}
                 ></button>
-                <img src={product.images[0]} className={styles.cartpage__cart__item__image} alt={product.name} />
-                <p className={styles.cartpage__cart__item__id}>{product.id}</p>
+                <img
+                  src={product.images[0]}
+                  className={styles.cartpage__cart__item__image}
+                  alt={product.name}
+                />
+                <Link
+                  to={`/${product.category}/${product.id}`}
+                  className={styles.cartpage__cart__item__id}
+                >
+                  {product.id}
+                </Link>
                 <div className={styles.cartpage__cart__item__quantity}>
                   <button
                     className={styles.cartpage__cart__item__quantity__operator}
                     onClick={() => updateQuantity(product.id, -1)}
-                  >-</button>
-                  <p className={styles.cartpage__cart__item__quantity__number}>{quantity}</p>
+                  >
+                    -
+                  </button>
+                  <p className={styles.cartpage__cart__item__quantity__number}>
+                    {quantity}
+                  </p>
                   <button
                     className={styles.cartpage__cart__item__quantity__operator}
                     onClick={() => updateQuantity(product.id, 1)}
-                  >+</button>
+                  >
+                    +
+                  </button>
                 </div>
-                <p className={styles.cartpage__cart__item__price}>${price * quantity}</p>
+                <p className={styles.cartpage__cart__item__price}>
+                  ${price * quantity}
+                </p>
               </div>
-            )
+            );
           })}
         </div>
-        
+
         <div className={styles.cartpage__cart__bucket}>
-          <p className={styles.cartpage__cart__bucket__totalprice}>${totalPrice}</p>
-          <p className={styles.cartpage__cart__bucket__quantity}>Total for {totalItems} items</p>
+          <p className={styles.cartpage__cart__bucket__totalprice}>
+            ${totalPrice}
+          </p>
+          <p className={styles.cartpage__cart__bucket__quantity}>
+            Total for {totalItems} items
+          </p>
           <span className={styles.cartpage__cart__bucket__line}></span>
-          <button className={styles.cartpage__cart__bucket__submit}>Checkout</button>
+          <button className={styles.cartpage__cart__bucket__submit}>
+            Checkout
+          </button>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
