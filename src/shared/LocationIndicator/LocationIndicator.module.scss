@@ -1,9 +1,15 @@
+@import "../../styles/media";
+
 .wrapper {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 16px 0;
-}
+  flex-wrap: nowrap;
+  overflow: hidden;
+
+  justify-content: flex-start;
+  }
 
 .homeBtn {
   background: none;
@@ -26,4 +32,8 @@
   font-size: 14px;
   color: #89939a;
   text-transform: capitalize;
+
+  @include on-mobile {
+    font-size: 12px;
+  }
 }

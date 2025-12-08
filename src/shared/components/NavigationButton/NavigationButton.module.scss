@@ -1,8 +1,14 @@
+@import "../../../styles/media";
+
 .button {
 display: flex;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 20px;
   gap: 8px;
+
+  @include on-mobile {
+    margin-top: 10px;
+  }
 
   padding: 0;
   background: transparent;

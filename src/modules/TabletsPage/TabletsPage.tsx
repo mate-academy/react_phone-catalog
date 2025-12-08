@@ -5,7 +5,6 @@ import { getTabletsFromProducts } from '../../services/productsService';
 import { Pagination } from '../../shared/components/Pagination';
 import { useProductsPage } from '../../shared/hooks/useProductPage';
 import { ProductsControls } from '../../shared/components/ProductsControls';
-import { NavigationButton } from '../../shared/components/NavigationButton';
 import { LocationIndicator } from '../../shared/LocationIndicator';
 
 export const TabletsPage = () => {
@@ -47,7 +46,6 @@ export const TabletsPage = () => {
     <>
       <div className={`container ${styles.tabletsPage}`}>
         <LocationIndicator category={'Tablets'} />
-        <NavigationButton title="Back" />
         <h1>Tablets</h1>
 
         <ProductsControls

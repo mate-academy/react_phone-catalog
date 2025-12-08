@@ -1,15 +1,9 @@
 .tabletsPage {
   display: flex;
   flex-direction: column;
-  align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 16px;
-
-
-  @media (min-width: 1200px) {
-    padding: 40px 0;
-  }
+  padding: 16px;
 
   @media (max-width: 1199px) and (min-width: 640px) {
     padding: 60px 24px;
