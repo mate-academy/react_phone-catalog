@@ -18,7 +18,9 @@ import { ROUTES } from './shared/constants';
 export const App = () => (
   <CartProvider>
     <FavoriteProvider>
-      <BrowserRouter>
+      <BrowserRouter
+        basename={import.meta.env.BASE_URL || '/react_phone-catalog'}
+      >
         <div className="app-wrapper">
           <Header />
           <main className="main-content">
