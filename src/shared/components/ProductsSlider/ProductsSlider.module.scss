@@ -6,7 +6,7 @@
   color: #313237;
 
   @include on-mobile {
-    font-size: 24px;
+    font-size: 22px;
     text-align: left;
   }
 }
@@ -39,6 +39,10 @@
 .controls {
   display: flex;
   gap: 8px;
+
+  @include on-mobile {
+    padding-left: 8px;
+  }
 }
 
 .arrow {

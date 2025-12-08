@@ -8,8 +8,8 @@ import {
   getSuggestedProducts,
 } from '../../services/productsService';
 import { Product, ProductDetails } from '../../types';
-import { ProductsList } from '../../shared/components/ProductList/ProductsList';
 import { ProductButtons } from '../../shared/components/ProductButtons';
+import { ProductsSlider } from '../../shared/components/ProductsSlider';
 
 export const ProductDetailsPage: React.FC = () => {
   const { itemId } = useParams();
@@ -92,7 +92,7 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className="container">
       <div className={`grid-24 ${styles.page}`}>
-        <h1 className={styles.title}>{productDetails.name}</h1>
+        <h1 className={`col-24 ${styles.title}`}>{productDetails.name}</h1>
 
         <div className={styles.gallery}>
           {productDetails.images.map(img => (
@@ -200,11 +200,7 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
 
         <div className={styles.recommendedSection}>
-          <h2 className={styles.recommendedTitle}>You may also like</h2>
-
-          <div className="grid-24">
-            <ProductsList products={suggested} />
-          </div>
+          <ProductsSlider title="You may also like" products={suggested} />
         </div>
       </div>
     </div>
