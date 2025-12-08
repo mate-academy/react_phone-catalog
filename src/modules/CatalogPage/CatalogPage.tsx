@@ -10,14 +10,25 @@ import { Loading } from '../Shared/Loading/Loading';
 import { ErrorPage } from '../Shared/ErrorPage/ErrorPage';
 
 interface CatalogProps {
-  favourites: Set<string>;                    
-  toggleFavourite: (product: Phone) => void; 
+  toggleFavourite: (product: Phone) => void;
+  toggleInCart: (product: Phone) => void;
 }
 
-export const CatalogPage = ({ favourites, toggleFavourite }: CatalogProps) => {
+export const CatalogPage = ({
+  toggleInCart,
+  toggleFavourite,
+}: CatalogProps) => {
   const [sortNumber, setSortNumber] = useState(16);
   const [sortType, setSortType] = useState<SortType>('');
-  const { itemsOnPage, setItemsOnPage, products, setProducts, loading, error, reload } = useCatalogData();
+  const {
+    itemsOnPage,
+    setItemsOnPage,
+    products,
+    setProducts,
+    loading,
+    error,
+    reload,
+  } = useCatalogData();
 
   useEffect(() => {
     if (products.length > 0) {
@@ -30,11 +41,11 @@ export const CatalogPage = ({ favourites, toggleFavourite }: CatalogProps) => {
   }, [sortNumber, products, setItemsOnPage]);
 
   if (loading) {
-    return <Loading />; 
+    return <Loading />;
   }
-  
+
   if (error) {
-    return <ErrorPage onReload={reload}/>
+    return <ErrorPage onReload={reload} />;
   }
 
   if (products.length === 0) {
@@ -76,12 +87,12 @@ export const CatalogPage = ({ favourites, toggleFavourite }: CatalogProps) => {
         onSortChange={handleSort}
         products={products}
       />
-      <Catalog 
-      itemsOnPage={itemsOnPage} 
-      toggleFavourite={toggleFavourite}
-      favourites={favourites} 
+      <Catalog
+        itemsOnPage={itemsOnPage}
+        toggleFavourite={toggleFavourite}
+        toggleInCart={toggleInCart}
       />
-      
+
       {showPagination && (
         <Pagination
           products={products}

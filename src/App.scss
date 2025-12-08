@@ -10,13 +10,15 @@ body {
   background-color: $main-background-color;
   cursor: url(./img/cursor/Cursor\ Mouse\ Mice.svg);
   height: 100vh;
-  
+  overflow-x: hidden; // Переносимо сюди
 }
 
 .App {
-  overflow-x: hidden;
+  // Видаляємо overflow-x: hidden звідси!
+
   &.app--noscroll {
     overflow: hidden;
+    height: 100vh; // Додайте це для блокування скролу
   }
 }
 
@@ -36,12 +38,6 @@ body {
     padding: 0 32px;
   }
 }
-
-// .grid {
-//     display: grid;
-//     grid-template-columns: repeat(24, 1fr);
-//     gap: 16px;
-// }
 
 a {
   text-decoration: none;

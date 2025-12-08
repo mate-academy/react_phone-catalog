@@ -6,20 +6,15 @@ import { Phone } from '../../Types/type';
 
 interface CartProps {
   itemsInCart: Phone[];
-  toggleFavourite: (product: Phone) => void;
-
+  toggleInCart: (product: Phone) => void;
 }
 
-
-export const CartPage = ({ itemsInCart, toggleFavourite }: CartProps) => {
+export const CartPage = ({ itemsInCart, toggleInCart }: CartProps) => {
   return (
     <>
       <Breadcrumbs />
       <PhonesTitle />
-      <Cart
-        itemsInCart={itemsInCart}
-        toggleFavourite={toggleFavourite}
-      />
+      <Cart itemsInCart={itemsInCart} toggleInCart={toggleInCart} />
     </>
   );
-}
+};

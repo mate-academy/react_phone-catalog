@@ -7,16 +7,18 @@ import { useLocation, useParams } from 'react-router-dom';
 import { HotPrices } from '../HomePage/HotPrices/Hot-prices';
 import { Loading } from '../Shared/Loading/Loading';
 import { ErrorPage } from '../Shared/ErrorPage/ErrorPage';
-import style from './ProductPage.module.scss'
+import style from './ProductPage.module.scss';
 import { Phone } from '../../Types/type';
 
 interface ProductPageProps {
-  favourites: Set<string>;
   toggleFavourite: (product: Phone) => void;
+  toggleInCart: (product: Phone) => void;
 }
 
-
-export const ProductPage = ({ favourites, toggleFavourite }: ProductPageProps) => {
+export const ProductPage = ({
+  toggleInCart,
+  toggleFavourite,
+}: ProductPageProps) => {
   const { productId } = useParams<{ productId: string }>();
   const [productScreen, setProductScreen] = useState('');
   const [productRam, setProductRam] = useState('');
@@ -97,7 +99,11 @@ export const ProductPage = ({ favourites, toggleFavourite }: ProductPageProps) =
   if (productNotFound) {
     return (
       <div className={style.notfound}>
-        <img className={style.notfound__image} src='./img/product-not-found.png' alt="Not found" />
+        <img
+          className={style.notfound__image}
+          src="./img/product-not-found.png"
+          alt="Not found"
+        />
         <p className={style.notfound__text}>Product not found</p>
       </div>
     );
@@ -113,7 +119,7 @@ export const ProductPage = ({ favourites, toggleFavourite }: ProductPageProps) =
         productProcessor={productProcessor}
         productResolution={productResolution}
         capacity={capacity}
-        favourites={favourites}
+        toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
       />
       <ProductDescription
@@ -124,7 +130,7 @@ export const ProductPage = ({ favourites, toggleFavourite }: ProductPageProps) =
         productResolution={productResolution}
       />
       <HotPrices
-        favourites={favourites}
+        toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
       />
     </>

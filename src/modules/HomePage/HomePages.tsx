@@ -7,23 +7,22 @@ import { Title } from './Title/Title';
 import { Phone } from '../../Types/type';
 
 interface HomePageProps {
-  favourites: Set<string>;
   toggleFavourite: (product: Phone) => void;
+  toggleInCart: (product: Phone) => void;
 }
 
-
-export const HomePage = ({ favourites, toggleFavourite }: HomePageProps) => {
+export const HomePage = ({ toggleInCart, toggleFavourite }: HomePageProps) => {
   return (
     <>
       <Title />
       <Banner data={slides} />
       <NewModels
-        favourites={favourites}
+        toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
       />
       <Category />
       <HotPrices
-        favourites={favourites}
+        toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
       />
     </>

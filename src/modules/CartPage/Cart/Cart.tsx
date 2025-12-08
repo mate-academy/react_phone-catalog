@@ -4,11 +4,11 @@ import { Phone } from '../../../Types/type';
 
 interface CartProps {
   itemsInCart: Phone[];
-  toggleFavourite: (product: Phone) => void;
+  toggleInCart: (product: Phone) => void;
 
 }
 
-export const Cart = ({ itemsInCart, toggleFavourite }: CartProps) => {
+export const Cart = ({ itemsInCart, toggleInCart }: CartProps) => {
   const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
 
   const updateQuantity = (productId: string, delta: number) => {
@@ -43,7 +43,7 @@ export const Cart = ({ itemsInCart, toggleFavourite }: CartProps) => {
               <div className={styles.cartpage__cart__item} key={product.id}>
                 <button
                 className={styles.cartpage__cart__item__delete}
-                onClick={() => toggleFavourite(product)}
+                onClick={() => toggleInCart(product)}
                 ></button>
                 <img src={product.images[0]} className={styles.cartpage__cart__item__image} alt={product.name} />
                 <p className={styles.cartpage__cart__item__id}>{product.id}</p>

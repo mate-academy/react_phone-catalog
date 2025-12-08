@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import style from './Product.module.scss';
 import useAddToFavourite from '../../Hooks/UseAddToCart';
 import { Phone } from '../../../Types/type';
+import { Favourite } from '../../FavouritesPage/Favourite';
 
 interface ProductProps {
   productScreen: string;
@@ -10,8 +11,8 @@ interface ProductProps {
   productProcessor: string;
   productResolution: string;
   capacity: string[];
-  favourites: Set<string>;
   toggleFavourite: (product: Phone) => void;
+  toggleInCart: (product: Phone) => void;
 }
 
 export const Product = ({
@@ -20,8 +21,8 @@ export const Product = ({
   productProcessor,
   productResolution,
   capacity,
-  favourites,
-  toggleFavourite
+  toggleInCart,
+  toggleFavourite,
 }: ProductProps) => {
   const [productImages, setProductImages] = useState([]);
   const { productId } = useParams<{ productId: string }>();
@@ -31,8 +32,6 @@ export const Product = ({
   const [productDiscount, setProductDiscount] = useState();
   const [currentProduct, setCurrentProduct] = useState<Phone | null>(null);
   const location = useLocation();
-
-  const isFavourite = productId ? favourites.has(productId) : false;
 
   useEffect(() => {
     if (productId) {
@@ -47,8 +46,8 @@ export const Product = ({
 
       if (url) {
         fetch(url)
-          .then((response) => response.json())
-          .then((data) => {
+          .then(response => response.json())
+          .then(data => {
             const product = data.find((item: any) => item.id === productId);
             if (product) {
               setCurrentProduct(product);
@@ -134,19 +133,19 @@ export const Product = ({
         <div className={style.product__cart__buttons}>
           <button
             className={style.product__cart__buttons__button__add}
-            onClick={() => currentProduct && toggleFavourite(currentProduct)}
+            onClick={() => currentProduct && toggleInCart(currentProduct)}
           >
             Add to cart
           </button>
 
           <button
             className={style.product__cart__buttons__button__favourites}
+            onClick={() => currentProduct && toggleFavourite(currentProduct)}
             disabled={!currentProduct}
           >
             <span
               className={`
                 ${style['product__cart__buttons__button__favourites--heart']}
-                ${isFavourite ? style['product__cart__buttons__button__favourites--heart--active'] : ''}
               `}
             />
           </button>
@@ -163,7 +162,9 @@ export const Product = ({
           <p className={style.product__cart__description__resolution}>
             Resolution
           </p>
-          <p className={style['product__cart__description__resolution--number']}>
+          <p
+            className={style['product__cart__description__resolution--number']}
+          >
             {productResolution}
           </p>
         </div>

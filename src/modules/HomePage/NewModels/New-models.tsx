@@ -6,11 +6,11 @@ import style from './New-models.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 
 interface HomePageProps {
-  favourites: Set<string>;
   toggleFavourite: (product: Phone) => void;
+  toggleInCart: (product: Phone) => void;
 }
 
-export const NewModels = ({ favourites, toggleFavourite }: HomePageProps) => {
+export const NewModels = ({ toggleInCart, toggleFavourite }: HomePageProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -57,7 +57,7 @@ export const NewModels = ({ favourites, toggleFavourite }: HomePageProps) => {
         }
         return map;
       }, new Map<string, Phone>())
-      .values()
+      .values(),
   ).sort((a, b) => a.name.localeCompare(b.name));
   const location = useLocation();
 
@@ -78,12 +78,14 @@ export const NewModels = ({ favourites, toggleFavourite }: HomePageProps) => {
   const currentPage = getCurrentPage();
 
   return (
-    <div {...handlers} className={`${style['newmodels']} ${style['newmodels--margin']}`}>
+    <div
+      {...handlers}
+      className={`${style['newmodels']} ${style['newmodels--margin']}`}
+    >
       <div className={style.newmodels__topbar}>
         <h2 className={style.newmodels__topbar__title}>
           Brand new
-          <br />
-          {' '}models
+          <br /> models
         </h2>
         <div className={style.newmodels__topbar__buttons}>
           <button
@@ -112,7 +114,7 @@ export const NewModels = ({ favourites, toggleFavourite }: HomePageProps) => {
           }}
         >
           {sortedProduct.map((phone: Phone, index: number) => {
-            const isFavourite = favourites.has(phone.id);
+            // const isFavourite = favourites.has(phone.id);
 
             return (
               <article
@@ -129,28 +131,46 @@ export const NewModels = ({ favourites, toggleFavourite }: HomePageProps) => {
                   />
                 </Link>
                 <p className={style.newmodels__product__name}>{phone.name}</p>
-                <h4 className={style.newmodels__product__price}>${phone.priceRegular}</h4>
+                <h4 className={style.newmodels__product__price}>
+                  ${phone.priceRegular}
+                </h4>
                 <hr className={style['newmodels__product--line']} />
 
                 <div className={style.newmodels__product__description}>
                   <p className={style.newmodels__product__description__screen}>
                     Screen
                   </p>
-                  <p className={style['newmodels__product__description__screen--number']}>
+                  <p
+                    className={
+                      style['newmodels__product__description__screen--number']
+                    }
+                  >
                     {phone.screen}
                   </p>
                 </div>
                 <div className={style.newmodels__product__description}>
-                  <p className={style.newmodels__product__description__capacity}>
+                  <p
+                    className={style.newmodels__product__description__capacity}
+                  >
                     Capacity
                   </p>
-                  <p className={style['newmodels__product__description__capacity--number']}>
+                  <p
+                    className={
+                      style['newmodels__product__description__capacity--number']
+                    }
+                  >
                     {phone.capacity}
                   </p>
                 </div>
                 <div className={style.newmodels__product__description}>
-                  <p className={style.newmodels__product__description__ram}>RAM</p>
-                  <p className={style['newmodels__product__description__ram--number']}>
+                  <p className={style.newmodels__product__description__ram}>
+                    RAM
+                  </p>
+                  <p
+                    className={
+                      style['newmodels__product__description__ram--number']
+                    }
+                  >
                     {phone.ram}
                   </p>
                 </div>
@@ -158,17 +178,21 @@ export const NewModels = ({ favourites, toggleFavourite }: HomePageProps) => {
                 <div className={style.newmodels__product__buttons}>
                   <button
                     className={style.newmodels__product__buttons__button__add}
-                    onClick={() => toggleFavourite(phone)}
+                    onClick={() => toggleInCart(phone)}
                   >
                     Add to cart
                   </button>
                   <button
-                    className={style.newmodels__product__buttons__button__favourites}
+                    className={
+                      style.newmodels__product__buttons__button__favourites
+                    }
+                    onClick={() => toggleFavourite(phone)}
                   >
-                    <span className={`
+                    <span
+                      className={`
                       ${style['newmodels__product__buttons__button__favourites--heart']}
-                      ${isFavourite ? style['newmodels__product__buttons__button__favourites--heart--active'] : ''}
-                    `}></span>
+                    `}
+                    ></span>
                   </button>
                 </div>
               </article>

@@ -6,11 +6,11 @@ import style from './Hot-Prices.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 
 interface HomePageProps {
-  favourites: Set<string>;
   toggleFavourite: (product: Phone) => void;
+  toggleInCart: (product: Phone) => void;
 }
 
-export const HotPrices = ({ favourites, toggleFavourite}: HomePageProps) => {
+export const HotPrices = ({ toggleInCart, toggleFavourite }: HomePageProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -69,7 +69,10 @@ export const HotPrices = ({ favourites, toggleFavourite}: HomePageProps) => {
   const currentPage = getCurrentPage();
 
   return (
-    <div {...handlers} className={`${style['newmodels']} ${style['newmodels--margin']}`}>
+    <div
+      {...handlers}
+      className={`${style['newmodels']} ${style['newmodels--margin']}`}
+    >
       <div className={style.newmodels__topbar}>
         <h2 className={style.newmodels__topbar__title}>Hot prices</h2>
         <div className={style.newmodels__topbar__buttons}>
@@ -90,7 +93,7 @@ export const HotPrices = ({ favourites, toggleFavourite}: HomePageProps) => {
         </div>
       </div>
 
-      <div  className={style.newmodels__products} ref={sliderRef}>
+      <div className={style.newmodels__products} ref={sliderRef}>
         <div
           className={style.newmodels__products__slider}
           style={{
@@ -99,8 +102,8 @@ export const HotPrices = ({ favourites, toggleFavourite}: HomePageProps) => {
           }}
         >
           {sortedProduct.map((phone: Phone, index: number) => {
-            const isFavourite = favourites.has(phone.id);
-            
+            // const isFavourite = favourites.has(phone.id);
+
             return (
               <article
                 className={style.newmodels__product}
@@ -130,40 +133,57 @@ export const HotPrices = ({ favourites, toggleFavourite}: HomePageProps) => {
                   <p className={style.newmodels__product__description__screen}>
                     Screen
                   </p>
-                  <p className={style['newmodels__product__description__screen--number']}>
+                  <p
+                    className={
+                      style['newmodels__product__description__screen--number']
+                    }
+                  >
                     {phone.screen}
                   </p>
                 </div>
                 <div className={style.newmodels__product__description}>
-                  <p className={style.newmodels__product__description__capacity}>
+                  <p
+                    className={style.newmodels__product__description__capacity}
+                  >
                     Capacity
                   </p>
-                  <p className={style['newmodels__product__description__capacity--number']}>
+                  <p
+                    className={
+                      style['newmodels__product__description__capacity--number']
+                    }
+                  >
                     {phone.capacity}
                   </p>
                 </div>
                 <div className={style.newmodels__product__description}>
-                  <p className={style.newmodels__product__description__ram}>RAM</p>
-                  <p className={style['newmodels__product__description__ram--number']}>
+                  <p className={style.newmodels__product__description__ram}>
+                    RAM
+                  </p>
+                  <p
+                    className={
+                      style['newmodels__product__description__ram--number']
+                    }
+                  >
                     {phone.ram}
                   </p>
                 </div>
 
                 <div className={style.newmodels__product__buttons}>
                   <button
-                  className={style.newmodels__product__buttons__button__add}
-                  onClick={() => toggleFavourite(phone)}
+                    className={style.newmodels__product__buttons__button__add}
+                    onClick={() => toggleInCart(phone)}
                   >
                     Add to cart
                   </button>
-                  <button 
-                    className={style.newmodels__product__buttons__button__favourites}
-                    // onClick={() => toggleFavourite(phone)}
+                  <button
+                    className={
+                      style.newmodels__product__buttons__button__favourites
+                    }
+                    onClick={() => toggleFavourite(phone)}
                   >
-                    <span 
+                    <span
                       className={`
                         ${style['newmodels__product__buttons__button__favourites--heart']}
-                        ${isFavourite ? style['newmodels__product__buttons__button__favourites--heart--active'] : ''}
                       `}
                     ></span>
                   </button>
