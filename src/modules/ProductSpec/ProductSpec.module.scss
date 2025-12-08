@@ -2,15 +2,17 @@
 @use '../../styles/mixins.scss' as *;
 
 .spec_colors_container {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
+  @include grid-for-rows;
 }
 
-.spec_colors_title {
+.spec_title {
   color: $gray-secondary;
-  
+
   @include small-text;
+}
+
+.spec_colors {
+  margin-bottom: 24px;
 }
 
 .spec_color {
@@ -37,4 +39,46 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
+}
+
+.spec_divide_line {
+  margin-top: 24px;
+  width: 320px;
+  height: 2px;
+  background-color: $gray-elements;
+}
+
+.spec_divide_line_second {
+  margin-bottom: 32px;
+}
+
+.spec_capacity_list {
+  display: flex;
+  gap: 8px;
+}
+
+.spec_capacity_item_block {
+  width: 56px;
+  height: 32px;
+  border: 1px solid $gray-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &--active {
+    background-color: $gray-white;
+  }
+}
+
+.spec_capacity_item {
+  @include body-text;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.spec_capacity_item_block--active .spec_capacity_item {
+  color: $background;
 }

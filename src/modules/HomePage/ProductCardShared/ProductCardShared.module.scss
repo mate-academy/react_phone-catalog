@@ -1,0 +1,99 @@
+@use '../../../styles/variables.scss' as *;
+
+.card__prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  letter-spacing: 0;
+}
+
+.card__price {
+  font-family: Mont-Bold, sans-serif;
+  line-height: 31px;
+  color: $gray-white;
+}
+
+.card__fullPrice {
+  line-height: 100%;
+  text-decoration: line-through;
+  color: $gray-secondary;
+}
+
+
+.card__specs dl {
+  font-family: Mont-Regular, sans-serif;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  font-size: 12px;
+  letter-spacing: 0;
+  gap: 8px 20px;
+}
+
+.card__specs dt {
+  color: $gray-secondary;
+}
+
+.card__specs dd {
+  margin: 0;
+  white-space: nowrap;
+  text-align: right;
+  color: $gray-white;
+}
+
+.card__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card__addBtn {
+  width: 100%;
+  height: 40px;
+  background-color: $purple;
+  color: $gray-white;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $light-purple;
+  }
+}
+
+.card__btn__disabled {
+  background-color: $gray-surface;
+}
+
+.card__favBtn {
+  height: 40px;
+  width: 40px;
+  background-color: $gray-surface;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $light-gray;
+  }
+
+  &--active {
+    background-color: $background;
+    box-shadow: 0 0 0 1px $gray-elements inset;
+  }
+}
+
+.card__favBtn__img {
+  width: 16px;
+  height: 16px;
+}
+
+.card_link {
+  color: inherit;
+  text-decoration: none;
+}

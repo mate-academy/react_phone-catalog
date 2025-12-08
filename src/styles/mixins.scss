@@ -131,3 +131,16 @@
   font-size: 12px;
   line-height: 15px;
 }
+
+@mixin grid-for-rows {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+@mixin body-text {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $gray-white;
+}
