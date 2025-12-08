@@ -5,13 +5,12 @@ import { Product } from '../../types/Product';
 import accessoriesFromServer from '../../../public/api/products.json';
 import { ProductCard } from '../ProductCard';
 import { Link } from 'react-router-dom';
+import { CartItem } from './CartItem';
+import { CartProduct } from '../../types/CartProduct';
+import { useCartFavorite } from '../../context/CartFavoriteContext';
 
 export const Cart = () => {
-  const products: Product[] = useMemo(() => {
-    return accessoriesFromServer
-      .filter(product => product.category === 'accessories')
-      .splice(0, 8);
-  }, []);
+  const { cartItems } = useCartFavorite();
 
   return (
     <section className="cart">
@@ -25,9 +24,18 @@ export const Cart = () => {
         <h1 className="cart__title">Cart</h1>
 
         <div className="cart__wrapper">
-          {products.map(item => (
-            <ProductCard key={item.id} product={item} />
-          ))}
+          <div className="cart__items">
+            {cartProducts.map((item, i) => (
+              <CartItem product={item} key={item.name + i} />
+            ))}
+          </div>
+          <div className="cart__total">
+            <span className="cart__total-amount">$2997</span>
+            <span className="cart__total-text">Total for {12} items</span>
+            <button className="cart__total-checkout" type="button">
+              Checkout
+            </button>
+          </div>
         </div>
       </div>
     </section>

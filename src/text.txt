@@ -1,0 +1,214 @@
+Нижче я дам **готову, правильно структуровану архітектуру React Context**, яка закриє всі твої задачі:
+
+### ✔ зберігання масивів продуктів (phones, tablets, accessories, productsAll)
+
+### ✔ глобальні масиви cart та favorite
+
+### ✔ функції додавання / видалення
+
+### ✔ просте використання в будь-якому компоненті
+
+---
+
+# ✅ 1. Структура проекту (рекомендація)
+
+```
+src/
+  context/
+    ProductsContext.jsx
+    CartContext.jsx
+  data/
+    phones.js
+    tablets.js
+    accessories.js
+    productsAll.js
+```
+
+---
+
+# ✅ 2. ProductsContext — для товарів
+
+### ➤ `ProductsContext.jsx`
+
+```jsx
+import { createContext, useContext } from "react";
+import phones from "../data/phones";
+import tablets from "../data/tablets";
+import accessories from "../data/accessories";
+import productsAll from "../data/productsAll";
+
+const ProductsContext = createContext();
+
+export function ProductsProvider({ children }) {
+  const value = {
+    phones,
+    tablets,
+    accessories,
+    productsAll,
+  };
+
+  return (
+    <ProductsContext.Provider value={value}>
+      {children}
+    </ProductsContext.Provider>
+  );
+}
+
+export function useProducts() {
+  return useContext(ProductsContext);
+}
+```
+
+### ✔ Що дає цей контекст:
+
+* У будь-якому компоненті ти робиш:
+
+```jsx
+const { phones, tablets } = useProducts();
+```
+
+* І отримуєш масиви продуктів без імпортів із файлів.
+
+---
+
+# ✅ 3. CartContext — для cart & favorite
+
+⚠️ Дуже важливо: контекст для **cart + favorite** краще винести окремо, бо з продуктами він не пов'язаний.
+
+### ➤ `CartContext.jsx`
+
+```jsx
+import { createContext, useContext, useState } from "react";
+
+const CartContext = createContext();
+
+export function CartProvider({ children }) {
+  const [cart, setCart] = useState([]);
+  const [favorite, setFavorite] = useState([]);
+
+  // ---------- CART ----------
+  const addToCart = (product) => {
+    setCart((prev) => [...prev, product]);
+  };
+
+  const removeFromCart = (id) => {
+    setCart((prev) => prev.filter(item => item.id !== id));
+  };
+
+  const clearCart = () => setCart([]);
+
+  // ---------- FAVORITE ----------
+  const toggleFavorite = (product) => {
+    setFavorite((prev) => {
+      const exists = prev.some(item => item.id === product.id);
+      if (exists) {
+        return prev.filter(item => item.id !== product.id);
+      }
+      return [...prev, product];
+    });
+  };
+
+  const value = {
+    cart,
+    favorite,
+    addToCart,
+    removeFromCart,
+    clearCart,
+    toggleFavorite,
+  };
+
+  return (
+    <CartContext.Provider value={value}>
+      {children}
+    </CartContext.Provider>
+  );
+}
+
+export function useCart() {
+  return useContext(CCartContext);
+}
+```
+
+#### ✔ Що ти отримуєш:
+
+Додати товар в корзину:
+
+```jsx
+const { addToCart } = useCart();
+addToCart(product);
+```
+
+Додати/видалити з улюблених:
+
+```jsx
+const { toggleFavorite } = useCart();
+toggleFavorite(product);
+```
+
+Отримати масиви:
+
+```jsx
+const { cart, favorite } = useCart();
+```
+
+---
+
+# ✅ 4. Обгортаємо App.jsx контекстами
+
+```jsx
+import { ProductsProvider } from "./context/ProductsContext";
+import { CartProvider } from "./context/CartContext";
+
+function App() {
+  return (
+    <ProductsProvider>
+      <CartProvider>
+        <YourRoutesOrComponents />
+      </CartProvider>
+    </ProductsProvider>
+  );
+}
+
+export default App;
+```
+
+---
+
+# ⭐ ПОВНИЙ ПРИКЛАД ВИКОРИСТАННЯ У КОМПОНЕНТІ
+
+```jsx
+import { useProducts } from "../context/ProductsContext";
+import { useCart } from "../context/CartContext";
+
+export default function PhonesList() {
+  const { phones } = useProducts();
+  const { addToCart, toggleFavorite, favorite } = useCart();
+
+  return (
+    <div>
+      {phones.map(phone => (
+        <div key={phone.id}>
+          <h3>{phone.name}</h3>
+          <button onClick={() => addToCart(phone)}>Add to cart</button>
+          <button onClick={() => toggleFavorite(phone)}>
+            {favorite.some(item => item.id === phone.id)
+              ? "Remove from favorite"
+              : "Add to favorite"}
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+---
+
+# ❗ Хочеш — можу:
+
+* зробити **повністю готовий Context з LocalStorage**
+* зробити **типізацію з TypeScript**
+* побудувати **глобальний Store замість 2 контекстів**
+* допомогти інтегрувати в твій конкретний код (скидай файли)
+
+Сказати продовжити?

@@ -32,4 +32,141 @@
     line-height: 25px;
     font-weight: 400;
   }
+
+  &__wrapper {
+    display: flex;
+    column-gap: 16px;
+
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 67%;
+    padding: 24px;
+    row-gap: 16px;
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    flex: 0 0 33%;
+
+    &-amount {
+      font-weight: 800;
+      font-size: rem(32);
+      line-height: 1.28;
+      letter-spacing: -0.01em;
+      color: var(--color-primary);
+    }
+
+    &-text {
+      font-weight: 500;
+      font-size: rem(14);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      color: var(--color-secondary);
+
+      &:not(:last-child) {
+        margin-bottom: 43px;
+      }
+    }
+
+    &-checkout {
+      width: 100%;
+      padding: 14px;
+      font-weight: 700;
+      font-size: rem(14);
+      line-height: 1.5;
+      text-align: center;
+      color: var(--color-white);
+      background-color: var(--color-primary);
+      border: none;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+
+      }
+    }
+  }
+}
+
+.item-cart {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+
+
+  &__remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    cursor: pointer;
+
+
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    background-color: #f5f5f7;
+    padding: 7px;
+    border: 1px solid #d2d2d7;
+  }
+
+  &__name {
+    font-size: rem(14);
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--color-primary);
+    flex: 0 1 50%
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+
+    &-number {
+      font-weight: 600;
+      font-size: rem(14);
+      line-height: 1.5;
+      text-align: center;
+      color: var(--color-black);
+    }
+
+    &-btn {
+      padding: 8px;
+      cursor: pointer;
+      border: 1px solid var(--color-icons);
+      transition: scale var(--transition-duration) ease;
+
+      &:active {
+        background-color: var(--color-hoverbg);
+        scale: 0.95;
+      }
+
+
+      &:disabled {
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: rem(22);
+    line-height: 1.4;
+    text-align: right;
+    color: var(--color-primary);
+    min-width: 80px;
+  }
 }
