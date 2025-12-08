@@ -7,6 +7,19 @@ type SpecConfigItem = {
   optional?: boolean;
 };
 
+export const sortOptions = [
+  { label: 'Newest', value: 'age' },
+  { label: 'Alphabetically', value: 'title' },
+  { label: 'Cheapest', value: 'price' },
+];
+
+export const perPageOptions = [
+  { label: '4', value: '4' },
+  { label: '8', value: '8' },
+  { label: '16', value: '16' },
+  { label: 'All', value: 'all' },
+];
+
 export const specsConfig: SpecConfigItem[] = [
   { label: 'Screen', key: 'screen' },
   { label: 'Resolution', key: 'resolution' },

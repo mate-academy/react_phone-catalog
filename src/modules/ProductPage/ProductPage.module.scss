@@ -174,8 +174,6 @@
     row-gap: 24px;
   }
 
-  &__id {
-  }
 
   /* COLORS */
   &__colorLabel {
@@ -366,6 +364,10 @@
     color: $color-green;
     background-color: #fff;
     border: 1px solid $color-elements;
+    cursor: default;
+    &:hover {
+      box-shadow: none;
+    }
   }
 
   &__favoriteButton {

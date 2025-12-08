@@ -5,20 +5,26 @@ import { Product } from '@/types/Product';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { CardSkeleton } from '../SliderItem/CardSkeleton';
 import styles from './CatalogPage.module.scss';
-import CustomSelect from '../CustomSelect/CustomSelect';
+import { CustomSelect } from '../CustomSelect/CustomSelect';
 import PaginationComponent from '../PaginationComponent/PaginationComponent';
 import { getProducts } from '@/api/api';
+import { perPageOptions, sortOptions } from '../utils/constants/constants';
 
 const CatalogPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [sortOption, setSortOption] = useState<string | null>(
+    searchParams.get('sort') || '',
+  );
+
+  const [perPageOption, setPerPageOption] = useState<string | null>(
+    searchParams.get('perPage') || '',
+  );
   const [page, setPage] = useState<number>(
     Number(searchParams.get('page')) || 1,
   );
   const { category } = useParams();
-  const sort = searchParams.get('sort');
-  const perPage = searchParams.get('perPage');
 
   useEffect(() => {
     setPage(Number(searchParams.get('page')) || 1);
@@ -29,15 +35,15 @@ const CatalogPage: React.FC = () => {
     setLoading(true);
     getProducts()
       .then(products => {
-        if (sort) {
+        if (sortOption) {
           products = products.sort((a, b) => {
-            if (sort === 'age') {
+            if (sortOption === 'age') {
               return b.year - a.year;
             }
-            if (sort === 'title') {
+            if (sortOption === 'title') {
               return a.name.localeCompare(b.name);
             }
-            if (sort === 'price') {
+            if (sortOption === 'price') {
               return a.price - b.price;
             }
             return 0;
@@ -49,16 +55,46 @@ const CatalogPage: React.FC = () => {
         document.title = `${newTitle}`;
         setLoading(false);
       });
-  }, [category, sort]);
+  }, [category, sortOption]);
 
-  useEffect(() => {
-    if (perPage === 'all') {
+  const handleSortChange = (value: string | null) => {
+    setSortOption(value);
+
+    const params = new URLSearchParams(searchParams);
+
+    if (value) {
+      params.set('sort', value);
+    } else {
+      params.delete('sort');
+    }
+
+    // при зміні сорту краще скидати на першу сторінку
+    params.set('page', '1');
+    setPage(1);
+
+    setSearchParams(params);
+  };
+
+  const handlePerPageChange = (value: string | null) => {
+    setPerPageOption(value);
+
+    const params = new URLSearchParams(searchParams);
+
+    if (value && value !== 'all') {
+      params.set('perPage', value);
+      params.set('page', '1');
+      setPage(1);
+    } else {
+      // якщо "all" — показуємо все, прибираємо perPage і page з URL
+      params.delete('perPage');
+      params.delete('page');
       setPage(1);
     }
-  }, [perPage]);
 
+    setSearchParams(params);
+  };
   let filteredProducts = products;
-  if (perPage === 'all') {
+  if (perPageOption === 'all') {
     const params = new URLSearchParams(searchParams);
     params.delete('page');
     setSearchParams(params);
@@ -74,8 +110,8 @@ const CatalogPage: React.FC = () => {
   const totalCount = filteredProducts.length;
   let visibleProducts = filteredProducts;
 
-  if (perPage && perPage !== 'all') {
-    const limit = Number(perPage);
+  if (perPageOption && perPageOption !== 'all') {
+    const limit = Number(perPageOption);
     const start = (page - 1) * limit;
     visibleProducts = filteredProducts.slice(start, start + limit);
   }
@@ -108,31 +144,23 @@ const CatalogPage: React.FC = () => {
 
       <div className={styles.catalog__controls}>
         <CustomSelect
-          param="sort"
-          label="Sort by"
-          arrayOptions={[
-            { label: 'Newest', value: 'age' },
-            { label: 'Alphabetically', value: 'title' },
-            { label: 'Cheapest', value: 'price' },
-          ]}
+          label='Sort by'
+          options={sortOptions}
+          onChange={handleSortChange}
+          value={sortOption}
         />
 
         <CustomSelect
-          param="perPage"
-          label="Items on page"
-          arrayOptions={[
-            { label: '4', value: 4 },
-            { label: '8', value: 8 },
-            { label: '16', value: 16 },
-            { label: 'All', value: null },
-          ]}
-          defaultOption={3}
+          label='Items per page'
+          value={perPageOption}
+          onChange={handlePerPageChange}
+          options={perPageOptions}
         />
       </div>
 
       <div
         className={`${styles.catalog__container} ${
-          perPage
+          perPageOption
             ? styles.catalog__container_hasPagination
             : styles.catalog__container_noPagination
         }`}
@@ -143,15 +171,14 @@ const CatalogPage: React.FC = () => {
               <SliderItem key={product.id} item={product} showDiscount={true} />
             ))}
       </div>
-      {perPage && (
+      {perPageOption && (
         <PaginationComponent
           totalCount={totalCount}
-          perPage={Number(perPage || 0)}
+          perPage={Number(perPageOption || 0)}
           currentPage={page}
         />
       )}
     </div>
-    //TODO: fix catalogpage component(when i choise all items per page, it breaks. also need to fix pages when i set values that cant be)
   );
 };
 

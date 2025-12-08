@@ -15,6 +15,20 @@
     border: 1px solid $color-icons;
     background-color: $color-bg;
     user-select: none;
+    &--open {
+      border-color: $color-primary;
+    }
+  }
+  &__placeholder {
+    color: $color-secondary;
+    font-size: $body-size;
+  }
+  &__currentLabel {
+    color: $color-primary;
+    font-size: $body-size;
+    &--open {
+      border-color: $color-primary;
+    }
   }
 
   &__options {
@@ -33,6 +47,8 @@
     padding: 10px;
     color: $color-secondary;
     user-select: none;
+    font-size: $body-size;
+
     &:hover {
       background-color: $color-option-bg;
       color: $color-primary;

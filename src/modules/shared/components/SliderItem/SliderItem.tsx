@@ -15,7 +15,6 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
     addToFavorites,
     removeFromFavorites,
     addToCart,
-    removeFromCart,
   } = useCart();
 
   if (!item) return null;
@@ -29,11 +28,7 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
 
     if (!item) return;
 
-    if (inCart) {
-      removeFromCart(item.id || 0);
-    } else {
-      addToCart(item);
-    }
+    addToCart(item);
   };
 
   const handleFav = (e: React.MouseEvent) => {
