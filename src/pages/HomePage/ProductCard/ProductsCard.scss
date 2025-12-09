@@ -1,0 +1,160 @@
+@import '../../../styles/utils/mixins';
+
+.productCard {
+  display: flex;
+  box-sizing: border-box;
+  width: 212px;
+  min-width: 100%;
+  max-height: 439px;
+  padding: 32px;
+  opacity: 1;
+  transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+
+  @include on-tablet {
+    width: 237px;
+    max-height: 512px;
+  }
+
+  @include on-desktop {
+    width: 271px;
+    min-height: 506px;
+    margin: 0;
+  }
+
+  &__container {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+
+    margin: 0 16px;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(226, 230, 233, 1);
+
+    background-color: rgba(255, 255, 255, 1);
+
+        &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+
+    }
+
+    @include on-tablet {
+      margin: 0;
+
+    }
+
+    @include on-desktop {
+      margin: 0;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .price {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+    }
+
+    .price-old {
+      font-size: 22px;
+      font-weight: 600;
+      text-decoration: line-through;
+      color: rgba(137, 147, 154, 1);
+    }
+  }
+}
+
+.product {
+  &__photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      transition:
+        transform 0.3s ease;
+     &:hover {
+      transform: scale(1.05);
+
+
+    }
+  }
+
+  &__name {
+    display: flex;
+    margin-top: 16px;
+    transition:
+        transform 0.3s ease;
+     &:hover {
+      transform: scale(1.05);
+
+
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--screen,
+    &--capacity,
+    &--ram {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &--name {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(137, 147, 154, 1);
+    }
+
+    &--value {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(15, 15, 17, 1);
+    }
+  }
+}
+
+.photo {
+  width: 148px;
+  height: 129px;
+  object-fit: contain;
+
+  @include on-tablet {
+    width: 173px;
+    height: 181px;
+  }
+  
+  @include on-desktop {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+.name {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(15, 15, 17, 1);
+}
+
+.line {
+  box-sizing: border-box;
+  border: 1px solid rgba(226, 230, 233, 1);
+}

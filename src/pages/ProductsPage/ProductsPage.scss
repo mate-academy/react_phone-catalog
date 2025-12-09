@@ -1,0 +1,65 @@
+@import '../../styles/utils/mixins';
+
+.productsPage {
+  background-color: rgba(250, 251, 252, 1);
+
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+    padding: 0 16px;
+
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    padding: 0 32px;
+    margin: auto;
+  }
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: rgba(15, 15, 17, 1);
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+  &__total {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(137, 147, 154, 1);
+  }
+}
+
+.products__models {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  gap: 40px 16px;
+  align-items: center;
+  padding: 0 16px;
+
+  @include on-tablet {
+    display: grid;
+    margin: 0;
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+
+    max-width: 1136px;
+    padding: 32px;
+    margin: auto;
+  }
+}
+
+

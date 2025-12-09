@@ -1,0 +1,104 @@
+@import '/src/styles/utils/mixins';
+
+.modal {
+  background: #fff;
+  width: 90%;
+  max-width: 400px;
+
+  border-radius: 16px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include on-tablet {
+    max-width: 420px;
+  }
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    color: #313237;
+  }
+  &__label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 600;
+    color: #313237;
+    gap: 4px;
+  }
+  &__input {
+    height: 40px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e6e9;
+    font-size: 14px;
+
+    &:focus {
+      border-color: #4219d0;
+      outline: none;
+    }
+  }
+  &__error {
+    font-size: 12px;
+    color: #d00;
+    margin-top: -4px;
+  }
+  &__button {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    &--confirm {
+      height: 44px;
+      background-color: #4219d0;
+      color: #fff;
+
+      border-radius: 44px;
+      border: none;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: #5328e5;
+      }
+    }
+    &--cancel {
+      height: 44px;
+      background: #fff;
+      color: #313237;
+
+      border: 1px solid #e2e6e9;
+      border-radius: 44px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}

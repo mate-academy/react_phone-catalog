@@ -1,0 +1,123 @@
+@import '../../../styles/utils/mixins';
+
+.slider {
+  background-color: rgba(250, 251, 252, 1);
+  &__section {
+    display: flex;
+    box-sizing: border-box;
+    padding: 56px 16px 24px;
+    justify-content: space-between;
+
+    @include on-tablet {
+      padding: 64px 24px 24px;
+    }
+
+    @include on-desktop {
+      max-width: 1136px;
+      padding: 64px 0 24px;
+      margin: auto;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &--title {
+      display: flex;
+      align-items: center;
+    }
+
+    &--arrows {
+      display: flex;
+      width: 80px;
+      height: 32px;
+      gap: 16px;
+      padding-right: 16px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__buttonMini {
+    &--arrowLeft,
+    &--arrowRight {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 32px;
+      width: 32px;
+
+      border-radius: 50%;
+      border: 1px solid rgba(180, 189, 195, 1);
+      background-color: rgba(255, 255, 255, 1);
+
+      cursor: pointer;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(15, 15, 17, 1);
+      }
+    }
+  }
+}
+
+.title {
+  font-size: 22px;
+  line-height: 140%;
+  font-weight: 800;
+
+  @include on-tablet {
+    font-size: 32px;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
+}
+
+.arrow--disabled {
+  opacity: 0.3;
+  cursor: auto;
+  img {
+    filter: grayscale(100%);
+  }
+}
+
+.swiper-section {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  align-items: center;
+  margin-bottom: 64px;
+  
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: auto;
+    padding: 0;
+    margin-bottom: 80px;
+  }
+  .swiper-slide {
+    width: 212px;
+
+    transition:
+      transform 0.5s ease,
+      box-shadow 0.5s ease,
+      opacity 0.5s ease;
+
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+    }
+
+
+  }
+}

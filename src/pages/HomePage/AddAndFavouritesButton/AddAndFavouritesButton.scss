@@ -1,0 +1,122 @@
+@import '../../../styles/utils/mixins';
+
+.addAndFavourites {
+  &__container {
+    display: flex;
+    justify-content: center;
+
+    gap: 8px;
+
+  }
+}
+
+.addButton {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  min-width: 125px;
+
+  height: 40px;
+  border-radius: 48px;
+  border: 1px solid rgba(66, 25, 208, 1);
+  background-color: rgba(66, 25, 208, 1);
+  cursor: pointer;
+
+  @include on-desktop {
+    min-width: 160px;
+  }
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
+  }
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  &__added {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+    height: 40px;
+    border-radius: 48px;
+    border: 1px solid rgba(226, 230, 233, 1);
+    background-color: #fff;
+    cursor: pointer;
+
+    @include on-desktop {
+      width: 160px;
+    }
+
+    transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
+  }
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+    &--text-added {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      color: rgba(66, 25, 208, 1);
+    }
+  }
+}
+
+.favouritesButton {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(180, 189, 195, 1);
+  background-color: #fff;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
+
+  }
+
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  }
+}
