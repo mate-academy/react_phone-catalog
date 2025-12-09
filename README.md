@@ -16,7 +16,7 @@ Follow the [Work in a team guideline](https://github.com/mate-academy/react_task
 
 ## Project Setup from scratch
 
-Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
+Follow the [Instruction](https://github.com/Mishadoloh/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
 
 ## Data
 

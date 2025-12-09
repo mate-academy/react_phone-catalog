@@ -1,0 +1,65 @@
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  background-color: #0F1121;
+  color: #F1F2F9;
+  transition: all 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
