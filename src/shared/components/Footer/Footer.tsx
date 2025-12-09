@@ -2,6 +2,9 @@ import React from 'react';
 import styles from './Footer.module.scss';
 import { NavLink } from 'react-router-dom';
 
+import NiceGadgetsLogo from '../../../assets/logo/img.png';
+import arrowIcon from '../../../assets/icons/SliderButtonDefaultRight.svg';
+
 export const Footer: React.FC = () => {
   const scrollToTop = (): void => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -15,7 +18,7 @@ export const Footer: React.FC = () => {
         <NavLink to="/">
           <img
             className={styles.logo_img}
-            src="/logo/img.png"
+            src={NiceGadgetsLogo}
             alt="Nice Gadgets logo"
           />
         </NavLink>
@@ -25,7 +28,7 @@ export const Footer: React.FC = () => {
         <ul className={styles.navList}>
           <li>
             <a
-              href="https://github.com/твій-репозиторій"
+              href="https://github.com/PavloSich/react_phone-catalog"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.navLink}
@@ -72,7 +75,7 @@ export const Footer: React.FC = () => {
         >
           <img
             className={styles.icon}
-            src="/icons/SliderButtonDefault%20(right).svg"
+            src={arrowIcon}
             alt="Back to top arrow"
           />
         </button>

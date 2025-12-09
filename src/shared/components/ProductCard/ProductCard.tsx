@@ -5,6 +5,9 @@ import { CartContext, CartItem } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import { Product } from '../../../types';
 
+import heartDefaultIcon from '../../../assets/icons/heart_default.svg';
+import heartSelectedIcon from '../../../assets/icons/heart_selected.svg';
+
 type Props = {
   product: Product;
   showOldPrice: boolean;
@@ -41,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
     <article className={styles.card}>
       <Link to={`/product/${product.itemId}`} className={styles.imageWrapper}>
         <img
-          src={`/${product.image}`}
+          src={`${import.meta.env.BASE_URL}${product.image}`}
           alt={product.name}
           className={styles.image}
         />
@@ -90,9 +93,7 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
           onClick={handleToggleFavorite}
         >
           <img
-            src={
-              favorite ? 'icons/heart_selected.svg' : 'icons/heart_default.svg'
-            }
+            src={favorite ? heartSelectedIcon : heartDefaultIcon}
             alt={favorite ? 'Remove from favorites' : 'Add to favorites'}
           />
         </button>

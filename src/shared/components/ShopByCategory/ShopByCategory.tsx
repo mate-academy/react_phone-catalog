@@ -4,6 +4,10 @@ import { useEffect, useState } from 'react';
 import { Product } from '../../../types';
 import { getAllProducts } from '../../../services/productsService';
 
+import catPhones from '../../../assets/img/category-phones.png';
+import catTablets from '../../../assets/img/category-tablets.png';
+import catAccessories from '../../../assets/img/category-accessories.png';
+
 export const ShopByCategory = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -27,19 +31,19 @@ export const ShopByCategory = () => {
     {
       name: 'Mobile phones',
       path: '/phones',
-      img: '/img/category-phones.png',
+      img: catPhones,
       count: phonesCount,
     },
     {
       name: 'Tablets',
       path: '/tablets',
-      img: '/img/category-tablets.png',
+      img: catTablets,
       count: tabletsCount,
     },
     {
       name: 'Accessories',
       path: '/accessories',
-      img: '/img/category-accessories.png',
+      img: catAccessories,
       count: accessoriesCount,
     },
   ];

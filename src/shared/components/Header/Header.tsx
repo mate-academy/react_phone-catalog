@@ -5,6 +5,12 @@ import { useContext, useState } from 'react';
 import { FavoriteContext } from '../../contexts/FavoriteContext';
 import { CartContext } from '../../contexts/CartContext';
 
+import NiceGadgetsLogo from '../../../assets/logo/img.png';
+import burgerIcon from '../../../assets/icons/burgerButton.svg';
+import closeIcon from '../../../assets/icons/close.svg';
+import heartIcon from '../../../assets/icons/heart.svg';
+import basketIcon from '../../../assets/icons/basket.svg';
+
 const menuItems = [
   { to: '/', label: 'Home' },
   { to: '/phones', label: 'Phones' },
@@ -34,7 +40,7 @@ export const Header = () => {
             <NavLink to="/">
               <img
                 className={styles.logo_img}
-                src="/logo/img.png"
+                src={NiceGadgetsLogo}
                 alt="Nice Gadgets logo"
               />
             </NavLink>
@@ -64,19 +70,19 @@ export const Header = () => {
             onClick={handleMenuOpen}
             aria-label="Open menu"
           >
-            <img src="/icons/burgerButton.svg" alt="Menu" />
+            <img src={burgerIcon} alt="Menu" />
           </button>
 
           <div className={styles.actions}>
             <IconButton
               to="/favorites"
-              src="/icons/heart.svg"
+              src={heartIcon}
               alt="Favorites"
               count={favorites.length}
             />
             <IconButton
               to="/cart"
-              src="/icons/basket.svg"
+              src={basketIcon}
               alt="Cart"
               count={cartItems.length}
             />
@@ -90,7 +96,7 @@ export const Header = () => {
             <NavLink to="/" onClick={handleMenuClose}>
               <img
                 className={styles.logo_img}
-                src="/logo/img.png"
+                src={NiceGadgetsLogo}
                 alt="Nice Gadgets logo"
               />
             </NavLink>
@@ -100,7 +106,7 @@ export const Header = () => {
               onClick={handleMenuClose}
               aria-label="Close menu"
             >
-              <img src="/icons/close.svg" alt="Close" />
+              <img src={closeIcon} alt="Close" />
             </button>
           </div>
 
@@ -128,7 +134,7 @@ export const Header = () => {
             <div className={styles.mobileActionsItem} onClick={handleMenuClose}>
               <IconButton
                 to="/favorites"
-                src="/icons/heart.svg"
+                src={heartIcon}
                 alt="Favorites"
                 count={favorites.length}
               />
@@ -137,7 +143,7 @@ export const Header = () => {
             <div className={styles.mobileActionsItem} onClick={handleMenuClose}>
               <IconButton
                 to="/cart"
-                src="/icons/basket.svg"
+                src={basketIcon}
                 alt="Cart"
                 count={cartItems.length}
               />

@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './PicturesSlider.module.scss';
 
-const images = [
-  '/img/banner-home.png',
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
-  '/img/banner-accessories.png',
-];
+import bannerHome from '../../../assets/img/banner-home.png';
+import bannerPhones from '../../../assets/img/banner-phones.png';
+import bannerTablets from '../../../assets/img/banner-tablets.png';
+import bannerAccessories from '../../../assets/img/banner-accessories.png';
+
+import arrowLeftSlider from '../../../assets/icons/ChevronArrowLeftSlider.svg';
+import arrowRightSlider from '../../../assets/icons/ChevronArrowRight.svg';
+
+const images = [bannerHome, bannerPhones, bannerTablets, bannerAccessories];
 
 export const PicturesSlider: React.FC = () => {
   const [current, setCurrent] = useState(0);
@@ -51,7 +54,7 @@ export const PicturesSlider: React.FC = () => {
       <div className={styles.sliderGrid}>
         <div className={styles.leftCol} onClick={prevSlide}>
           <img
-            src="/icons/ChevronArrowLeftSlider.svg"
+            src={arrowLeftSlider}
             className={styles.arrowIcon}
             alt="ChevronArrowLeft"
           />
@@ -88,7 +91,7 @@ export const PicturesSlider: React.FC = () => {
         <div className={styles.rightCol} onClick={nextSlide}>
           <img
             className={styles.arrowIcon}
-            src="/icons/ChevronArrowRight.svg"
+            src={arrowRightSlider}
             alt="ChevronArrowRight"
           />
         </div>

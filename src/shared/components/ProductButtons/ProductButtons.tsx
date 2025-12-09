@@ -4,6 +4,9 @@ import { CartContext, CartItem } from '../../contexts/CartContext';
 import { Product } from '../../../types';
 import styles from './ProductButtons.module.scss';
 
+import heartDefaultIcon from '../../../assets/icons/heart_default.svg';
+import heartSelectedIcon from '../../../assets/icons/heart_selected.svg';
+
 type Props = {
   product: Product;
 };
@@ -51,11 +54,7 @@ export const ProductButtons: React.FC<Props> = ({ product }) => {
         onClick={handleToggleFavorite}
       >
         <img
-          src={
-            isFavorite
-              ? '/icons/heart_selected.svg'
-              : '/icons/heart_default.svg'
-          }
+          src={isFavorite ? heartSelectedIcon : heartDefaultIcon}
           alt="favorite"
         />
       </button>

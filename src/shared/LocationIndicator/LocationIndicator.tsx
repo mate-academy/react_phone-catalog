@@ -13,11 +13,11 @@ export const LocationIndicator: React.FC<Props> = ({ category, name }) => {
   return (
     <div className={styles.wrapper}>
       <button className={styles.homeBtn} onClick={() => navigate('/')}>
-        <img src="/icons/home.png" alt="Home" />
+        <img src="/src/assets/icons/home.png" alt="Home" />
       </button>
 
       <img
-        src="/icons/ChevronArrowRight.svg"
+        src="/src/assets/icons/ChevronArrowRight.svg"
         className={styles.arrow}
         alt="ChevronArrowRight"
       />
@@ -26,7 +26,7 @@ export const LocationIndicator: React.FC<Props> = ({ category, name }) => {
       {name && (
         <>
           <img
-            src="/icons/ChevronArrowRight.svg"
+            src="/src/assets/icons/ChevronArrowRight.svg"
             className={styles.arrow}
             alt="ChevronArrowRight"
           />

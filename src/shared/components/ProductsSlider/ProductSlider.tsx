@@ -10,6 +10,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { NavigationOptions } from 'swiper/types';
 
+import arrowLeft from '../../../assets/icons/ChevronArrowLeft.svg';
+import arrowRight from '../../../assets/icons/ChevronArrowRight.svg';
+
 type Props = {
   title: string;
   products: Product[];
@@ -31,11 +34,11 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
 
         <div className={styles.controls}>
           <button ref={prevRef} className={styles.arrow} aria-label="Previous">
-            <img src="/icons/ChevronArrowLeft.svg" alt="Previous" />
+            <img src={arrowLeft} alt="Previous" />
           </button>
 
           <button ref={nextRef} className={styles.arrow} aria-label="Next">
-            <img src="/icons/ChevronArrowRight.svg" alt="Next" />
+            <img src={arrowRight} alt="Next" />
           </button>
         </div>
       </div>

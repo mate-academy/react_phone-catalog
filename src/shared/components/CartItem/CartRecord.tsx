@@ -2,6 +2,10 @@ import React from 'react';
 import { CartItem } from '../../contexts/CartContext';
 import styles from './CartRecord.module.scss';
 
+import closeIcon from '../../../assets/icons/close.svg';
+import minusIcon from '../../../assets/icons/minus.svg';
+import plusIcon from '../../../assets/icons/plus.svg';
+
 type Props = {
   item: CartItem;
   onIncrement: (id: number) => void;
@@ -25,11 +29,7 @@ export const CartRecord: React.FC<Props> = ({
         aria-label="Remove"
         onClick={() => onRemove(item.id)}
       >
-        <img
-          className={styles.removeIcon}
-          src="/icons/close.svg"
-          alt="Remove item"
-        />
+        <img className={styles.removeIcon} src={closeIcon} alt="Remove item" />
       </button>
 
       <img
@@ -51,7 +51,7 @@ export const CartRecord: React.FC<Props> = ({
         >
           <img
             className={styles.counterIcon}
-            src="/icons/minus.svg"
+            src={minusIcon}
             alt="icon minus"
           />
         </button>
@@ -64,11 +64,7 @@ export const CartRecord: React.FC<Props> = ({
           aria-label="Increase quantity"
           onClick={() => onIncrement(item.id)}
         >
-          <img
-            className={styles.counterIcon}
-            src="/icons/plus.svg"
-            alt="icon plus"
-          />
+          <img className={styles.counterIcon} src={plusIcon} alt="icon plus" />
         </button>
       </div>
 

@@ -219,7 +219,7 @@
     }
 
     &:not([data-selected="true"]):hover img {
-      content: url('/public/icons/heart_hover.svg');
+      content: url('/src/assets/icons/heart_hover.svg');
     }
 
     &[data-selected="true"] {
