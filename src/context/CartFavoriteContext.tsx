@@ -12,7 +12,18 @@ type FavoriteItem = Pick<
   'name' | 'id' | 'image' | 'price' | 'screen' | 'capacity' | 'ram'
 >;
 
-const CartFavoriteContext = createContext({});
+type CartFavoriteContextType = {
+  cartItems: CartProduct[];
+  favoriteItems: FavoriteItem[];
+  addToCart?: (item: CartProduct) => void;
+  toggleFavorite?: (item: FavoriteItem) => void;
+  clearCart?: () => void;
+  removeFromCart?: (productId: number) => void;
+};
+
+const CartFavoriteContext = createContext<CartFavoriteContextType | undefined>(
+  undefined,
+);
 
 export const CartFavoriteProvider: FC<Props> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartProduct[]>([]);
@@ -62,5 +73,8 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
 };
 
 export const useCartFavorite = () => {
-  return useContext(CartFavoriteContext);
+  const context = useContext(CartFavoriteContext);
+  if (!context)
+    throw new Error('useCartFavorite must be used within CartFavoriteProvider');
+  return useContext(CartFavoriteContext) as CartFavoriteContextType;
 };

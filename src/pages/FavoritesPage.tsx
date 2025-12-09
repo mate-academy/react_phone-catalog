@@ -5,10 +5,15 @@ import '../components/Catalog/Catalog.scss';
 import { Product } from '../types/Product';
 import { Breadcrumbs } from '../components/Catalog/Breadcrumbs';
 import { ProductCard } from '../components/ProductCard';
+import { useProducts } from '../context/ProductsContext';
+import { useCartFavorite } from '../context/CartFavoriteContext';
 
 export const FavoritesPage = () => {
+  const { productsAll } = useProducts();
+  const { favoriteItems } = useCartFavorite();
+
   const products: Product[] = useMemo(() => {
-    return accessoriesFromServer
+    return productsAll
       .filter(product => product.category === 'accessories')
       .splice(0, 8);
   }, []);

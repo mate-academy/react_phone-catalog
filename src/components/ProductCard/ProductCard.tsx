@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import { ProductCardButtons } from './ProductCardButtons';
 
 type Props = {
-  product: Product;
+  product: Partial<Product>;
 };
 
 export const ProductCard: FC<Props> = ({ product }) => {

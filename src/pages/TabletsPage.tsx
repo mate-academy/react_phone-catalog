@@ -1,13 +1,15 @@
 import { useMemo } from 'react';
-import tabletsFromServer from '../../public/api/products.json';
 
 import '../components/Catalog/Catalog.scss';
 import { Product } from '../types/Product';
 import { Catalog } from '../components/Catalog';
+import { useProducts } from '../context/ProductsContext';
 
 export const TabletsPage = () => {
+  const { productsAll } = useProducts();
+
   const products: Product[] = useMemo(() => {
-    return tabletsFromServer.filter(product => product.category === 'tablets');
+    return productsAll.filter(product => product.category === 'tablets');
   }, []);
 
   return <Catalog products={products} />;
