@@ -1,7 +1,16 @@
 import { Product, ProductDetails } from '../types';
 
+function getBaseUrl() {
+  if (window.location.hostname === 'pavlovich.github.io') {
+    return '/react_phone-catalog/';
+  }
+
+  return '/';
+}
+
 export async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url);
+  const fullUrl = `${getBaseUrl()}${url}`;
+  const response = await fetch(fullUrl);
 
   if (!response.ok) {
     throw new Error(`HTTP error: ${response.status}`);
