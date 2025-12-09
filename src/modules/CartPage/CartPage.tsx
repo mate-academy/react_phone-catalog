@@ -3,7 +3,7 @@ import { CartContext } from '../../shared/contexts/CartContext';
 import { CartItemList } from '../../shared/components/CartItemList';
 import { NavigationButton } from '../../shared/components/NavigationButton';
 import styles from './CartPage.module.scss';
-import emptyCart from '../../assets/img/cart-is-empty.png';
+import emptyCart from '../../../public/img/cart-is-empty.png';
 
 export const CartPage: React.FC = () => {
   const { cartItems, setCartItems } = useContext(CartContext);

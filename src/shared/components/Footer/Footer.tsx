@@ -3,7 +3,7 @@ import styles from './Footer.module.scss';
 import { NavLink } from 'react-router-dom';
 
 import NiceGadgetsLogo from '../../../assets/logo/img.png';
-import arrowIcon from '../../../assets/icons/SliderButtonDefaultRight.svg';
+import arrowIcon from '../../../assets/icons/SliderButtonDefault (right).svg';
 
 export const Footer: React.FC = () => {
   const scrollToTop = (): void => {

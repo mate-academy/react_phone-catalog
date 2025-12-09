@@ -2,10 +2,10 @@ import { Product, ProductDetails } from '../types';
 
 function getBaseUrl() {
   if (window.location.hostname === 'pavlovich.github.io') {
-    return '/react_phone-catalog/';
+    return '/react_phone-catalog';
   }
 
-  return '/';
+  return '';
 }
 
 export async function fetchJson<T>(url: string): Promise<T> {

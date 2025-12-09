@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styles from './PicturesSlider.module.scss';
 
-import bannerHome from '../../../assets/img/banner-home.png';
-import bannerPhones from '../../../assets/img/banner-phones.png';
-import bannerTablets from '../../../assets/img/banner-tablets.png';
-import bannerAccessories from '../../../assets/img/banner-accessories.png';
+const images = [
+  'img/banner-home.png',
+  'img/banner-phones.png',
+  'img/banner-tablets.png',
+  'img/banner-accessories.png',
+];
 
 import arrowLeftSlider from '../../../assets/icons/ChevronArrowLeftSlider.svg';
 import arrowRightSlider from '../../../assets/icons/ChevronArrowRight.svg';
-
-const images = [bannerHome, bannerPhones, bannerTablets, bannerAccessories];
 
 export const PicturesSlider: React.FC = () => {
   const [current, setCurrent] = useState(0);
