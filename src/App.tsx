@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Header } from './shared/components/Header';
 import { Footer } from './shared/components/Footer';
 import { HomePage } from './modules/HomePage/HomePage';
@@ -18,7 +18,7 @@ import { ROUTES } from './shared/constants';
 export const App = () => (
   <CartProvider>
     <FavoriteProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="app-wrapper">
           <Header />
           <main className="main-content">
@@ -35,7 +35,7 @@ export const App = () => (
           </main>
           <Footer />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </FavoriteProvider>
   </CartProvider>
 );
