@@ -1,4 +1,4 @@
-@import './variables';
+@use './variables' as *;
 
 @mixin on-desktop {
   @media (min-width: $desktop) {

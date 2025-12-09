@@ -1,4 +1,4 @@
-@import "../../styles/media";
+@use '../../styles/media' as *;
 
 .title {
   @include on-desktop {

@@ -1,4 +1,4 @@
-@import './media';
+@use './media' as *;
 
 .container {
   max-width: 1200px;
