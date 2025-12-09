@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useCart } from '../CartFavContext/CartContext';
 import PageHeader from '../shared/components/PageHeader/PageHeader';
-import BackButton from '../shared/components/BackButton/BackButton';
+import { BackButton } from '../shared/components/BackButton/BackButton';
 import CartItemComponent from './CartItemComponent';
 import { CustomModal } from '../shared/components/CustomModal/CustomModal';
 import styles from './Cart.module.scss';
-const Cart = () => {
+export const Cart: React.FC = () => {
   const { cart, totalAmount, totalCount } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleCheckout = () => {
@@ -48,5 +48,3 @@ const Cart = () => {
     <div className={styles.cartPage__empty}>Your cart is empty</div>
   );
 };
-
-export default Cart;

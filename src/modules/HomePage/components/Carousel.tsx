@@ -3,7 +3,7 @@ import { CarouselIndicator } from './CarouselIndicator';
 import styles from './Carousel.module.scss';
 import { Link } from 'react-router-dom';
 
-const Carousel = () => {
+export const Carousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0); // This would typically be stateful to reflect the current slide
   const slides = [
     {
@@ -50,5 +50,3 @@ const Carousel = () => {
     </>
   );
 };
-
-export default Carousel;

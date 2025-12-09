@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import PageHeader from '../PageHeader/PageHeader';
 import { Product } from '@/types/Product';
-import { useParams, useSearchParams } from 'react-router-dom';
 import { CardSkeleton } from '../SliderItem/CardSkeleton';
-import styles from './CatalogPage.module.scss';
 import { CustomSelect } from '../CustomSelect/CustomSelect';
-import PaginationComponent from '../PaginationComponent/PaginationComponent';
+import { PaginationComponent } from '../PaginationComponent/PaginationComponent';
 import { getProducts } from '@/api/api';
 import {
   DEFAULT_PER_PAGE,
@@ -14,8 +13,9 @@ import {
 } from '../utils/constants/constants';
 import { ProductsList } from './ProductList';
 import NotFoundPage from '@/modules/NotFoundPage/NotFoundPage';
+import styles from './CatalogPage.module.scss';
 
-const CatalogPage: React.FC = () => {
+export const CatalogPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -303,5 +303,3 @@ const CatalogPage: React.FC = () => {
     </div>
   );
 };
-
-export default CatalogPage;

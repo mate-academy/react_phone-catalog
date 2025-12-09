@@ -1,17 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import PageHeader from '../shared/components/PageHeader/PageHeader';
 import { useNavigate, useParams } from 'react-router-dom';
+import PageHeader from '../shared/components/PageHeader/PageHeader';
 import { Product } from '@/types/Product';
-import styles from './ProductPage.module.scss';
-import ProductGallery from './ProductGallery';
-import { getProductDetails, getProducts } from '@/api/api';
 import { ProductDetails } from '@/types/ProductDetails';
-import ProductConfigurator from './ProductConfigurator';
+import { getProductDetails, getProducts } from '@/api/api';
 import { specsConfig } from '../shared/components/utils/constants/constants';
-import SliderComponent from '../HomePage/components/SliderComponent';
-import BackButton from '../shared/components/BackButton/BackButton';
+import ProductGallery from './ProductGallery';
+import { ProductConfigurator } from './ProductConfigurator';
+import { SliderComponent } from '../HomePage/components/SliderComponent';
+import { BackButton } from '../shared/components/BackButton/BackButton';
+import styles from './ProductPage.module.scss';
 
-const ProductPage: React.FC = () => {
+export const ProductPage: React.FC = () => {
   const { category, productSlug } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
@@ -135,5 +135,3 @@ const ProductPage: React.FC = () => {
     </>
   );
 };
-
-export default ProductPage;

@@ -17,7 +17,7 @@ type ProductConfiguratorProps = {
   foundProductFromProducts: Product | undefined;
 };
 
-const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
+export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
   product,
   selectedColor,
   setSelectedColor,
@@ -41,7 +41,7 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     return null;
   }
 
-  const normilizeValue = (color: string): string => {
+  const normalizeValue = (color: string): string => {
     return color.replace(' ', '-').toLowerCase();
   };
 
@@ -60,9 +60,9 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
       return;
     }
 
-    const normilizedValue = normilizeValue(value);
-    const oldPart = normilizeValue(product[type]).toLowerCase();
-    const newSlug = productSlug.replace(oldPart, normilizedValue);
+    const normalizedValue = normalizeValue(value);
+    const oldPart = normalizeValue(product[type]).toLowerCase();
+    const newSlug = productSlug.replace(oldPart, normalizedValue);
 
     if (type === 'color') {
       setSelectedColor(value);
@@ -127,7 +127,7 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               >
                 <div
                   className={styles.productConfigurator__colorOption}
-                  style={{ backgroundColor: COLOR_MAP[normilizeValue(color)] }}
+                  style={{ backgroundColor: COLOR_MAP[normalizeValue(color)] }}
                 />
               </div>
             ))}
@@ -234,5 +234,3 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     </div>
   );
 };
-
-export default ProductConfigurator;

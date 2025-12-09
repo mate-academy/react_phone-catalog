@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import HomePage from '@/modules/HomePage/components/HomePage';
+import { HomePage } from '@/modules/HomePage/components/HomePage';
 import { Layout } from '@/modules/shared/components/Layout/Layout';
-import CatalogPage from '@/modules/shared/components/CatalogPage/CatalogPage';
-import ProductPage from '@/modules/ProductPage/ProductPage';
-import Cart from '@/modules/Cart/Cart';
+import { CatalogPage } from '@/modules/shared/components/CatalogPage/CatalogPage';
+import { ProductPage } from '@/modules/ProductPage/ProductPage';
+import { Cart } from '@/modules/Cart/Cart';
 import Favorites from '@/modules/Favorites/Favorites';
 import NotFoundPage from '@/modules/NotFoundPage/NotFoundPage';
 

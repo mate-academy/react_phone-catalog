@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from '@/types/Product';
-import SliderItem from '../SliderItem/SliderItem';
+import { SliderItem } from '../SliderItem/SliderItem';
 import styles from './CatalogPage.module.scss';
 
 type ProductsListProps = {

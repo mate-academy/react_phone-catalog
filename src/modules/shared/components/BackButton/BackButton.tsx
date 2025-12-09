@@ -3,7 +3,7 @@ import styles from './BackButton.module.scss';
 type BackButtonProps = {
   label?: string;
 };
-const BackButton: React.FC<BackButtonProps> = ({ label }) => {
+export const BackButton: React.FC<BackButtonProps> = ({ label }) => {
   const navigate = useNavigate();
   return (
     <button className={styles.backBtn} onClick={() => navigate(-1)}>
@@ -27,5 +27,3 @@ const BackButton: React.FC<BackButtonProps> = ({ label }) => {
     </button>
   );
 };
-
-export default BackButton;

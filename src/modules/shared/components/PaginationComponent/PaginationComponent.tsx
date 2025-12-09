@@ -13,7 +13,7 @@ type PaginationItem = {
   value: number;
 };
 
-const PaginationComponent: React.FC<PaginationComponentProps> = ({
+export const PaginationComponent: React.FC<PaginationComponentProps> = ({
   totalCount,
   perPage,
   currentPage,
@@ -173,5 +173,3 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({
     </div>
   );
 };
-
-export default PaginationComponent;

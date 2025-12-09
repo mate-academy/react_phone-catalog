@@ -8,7 +8,7 @@ type SliderItemProps = {
   showDiscount: boolean;
 };
 
-const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
+export const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
   const {
     isFavorite,
     isInCart,
@@ -120,5 +120,3 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
     </div>
   );
 };
-
-export default SliderItem;

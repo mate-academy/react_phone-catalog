@@ -1,12 +1,12 @@
-import Carousel from './Carousel';
-import styles from './HomePage.module.scss';
 import { useState } from 'react';
+import { Carousel } from './Carousel';
+import { SliderComponent } from './SliderComponent';
 import { Product } from '@/types';
-import SliderComponent from './SliderComponent';
 import productsList from '../../../../public/api/products.json';
 import { Link } from 'react-router-dom';
 import PageHeader from '@/modules/shared/components/PageHeader/PageHeader';
-const HomePage: React.FC = () => {
+import styles from './HomePage.module.scss';
+export const HomePage: React.FC = () => {
   const [products] = useState<Product[]>(productsList);
   const counters = {
     phones: 0,
@@ -84,5 +84,3 @@ const HomePage: React.FC = () => {
     </>
   );
 };
-
-export default HomePage;

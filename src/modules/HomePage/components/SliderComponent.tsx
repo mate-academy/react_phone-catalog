@@ -1,13 +1,13 @@
-import { Product } from '@/types';
 import React, { useState } from 'react';
+import { Product } from '@/types';
+import { SliderItem } from '../../shared/components/SliderItem/SliderItem';
 import styles from './SliderComponent.module.scss';
-import ProductItem from '../../shared/components/SliderItem/SliderItem';
 type SliderComponentProps = {
   products: Product[];
   title: string;
   showDiscount?: boolean;
 };
-const SliderComponent: React.FC<SliderComponentProps> = ({
+export const SliderComponent: React.FC<SliderComponentProps> = ({
   products,
   title,
   showDiscount = false,
@@ -115,11 +115,9 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
       </div>
       <div className={styles.SliderComponent__itemsContainer}>
         {visible.map(prod => (
-          <ProductItem key={prod.id} item={prod} showDiscount={showDiscount} />
+          <SliderItem key={prod.id} item={prod} showDiscount={showDiscount} />
         ))}
       </div>
     </section>
   );
 };
-
-export default SliderComponent;

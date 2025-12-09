@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHeader from '../shared/components/PageHeader/PageHeader';
 import { useCart } from '../CartFavContext/CartContext';
-import SliderItem from '../shared/components/SliderItem/SliderItem';
+import { SliderItem } from '../shared/components/SliderItem/SliderItem';
 import styles from './Favorites.module.scss';
 
 const Favorites: React.FC = () => {
