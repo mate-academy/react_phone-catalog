@@ -3,10 +3,15 @@ import PageHeader from '../shared/components/PageHeader/PageHeader';
 import BackButton from '../shared/components/BackButton/BackButton';
 import CartItemComponent from './CartItemComponent';
 import styles from './Cart.module.scss';
+import { useState } from 'react';
+import CustomModal from '../shared/components/CustomModal/CustomModal';
 const Cart = () => {
   const { cart, totalAmount, totalCount } = useCart();
-
-  return (
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleCheckout = () => {
+    setIsModalOpen(prev => !prev);
+  };
+  return cart.length > 0 ? (
     <div className={styles.cartPage__container}>
       <PageHeader
         title="Cart"
@@ -29,12 +34,18 @@ const Cart = () => {
               className={styles.cartPage__checkoutBlockAmount}
             >{`Total for ${totalCount} items`}</span>
           </div>
-          <button className={styles.cartPage__checkoutBlockButton}>
+          <button
+            className={styles.cartPage__checkoutBlockButton}
+            onClick={handleCheckout}
+          >
             Checkout
           </button>
         </div>
       </div>
+      {isModalOpen && <CustomModal onClose={handleCheckout} />}
     </div>
+  ) : (
+    <div className={styles.cart_empty}>Your cart is empty</div>
   );
 };
 

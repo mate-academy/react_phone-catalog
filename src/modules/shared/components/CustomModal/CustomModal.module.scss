@@ -1,0 +1,37 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+}
+.customModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 200px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+  transform: translate(-50%, -50%) scale(0.3);
+  transform-origin: center;
+  opacity: 0;
+
+  animation: popup 0.3s ease forwards;
+}
+
+@keyframes popup {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}

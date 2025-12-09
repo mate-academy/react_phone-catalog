@@ -1,0 +1,52 @@
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  padding: 40px;
+  text-align: center;
+}
+
+.img-box {
+  position: relative;
+  width: 500px; /* Можеш змінити */
+  height: 500px; /* Можеш змінити */
+  overflow: hidden;
+}
+
+.img-box img {
+
+}
+
+/* Основна картинка показується */
+.img-default {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+/* Картинка для ховера схована */
+.img-hover {
+  top: 16%;
+  left: 16%;
+  opacity: 0;
+  position: absolute;
+  width: 65%;
+  height: 75%;
+  object-fit: contain;
+}
+
+/* При наведенні міняємо видимість */
+.img-box:hover .img-default {
+  opacity: 1;
+}
+
+.img-box:hover .img-hover {
+  opacity: 1;
+}

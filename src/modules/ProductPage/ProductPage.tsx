@@ -16,12 +16,9 @@ const ProductPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<ProductDetails | null>(null);
-  const navigate = useNavigate();
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [productSlug]);
+
   useEffect(() => {
     getProducts()
       .then(data => setProducts(data))
@@ -29,6 +26,7 @@ const ProductPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setLoading(true);
     getProductDetails(category)
       .then(products => {
@@ -41,6 +39,7 @@ const ProductPage: React.FC = () => {
         setLoading(false);
       });
   }, [productSlug]);
+
   const shuffle = <T,>(array: T[]): T[] =>
     [...array].sort(() => Math.random() - 0.5);
 
@@ -53,6 +52,7 @@ const ProductPage: React.FC = () => {
     if (products.length === 0) return [];
     return getRandomProducts(products);
   }, [products, productSlug]);
+
   const foundProductFromProducts = products.find(p => p.itemId === productSlug);
   if (!product) return null;
   return (

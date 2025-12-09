@@ -5,6 +5,7 @@ import CatalogPage from '@/modules/shared/components/CatalogPage/CatalogPage';
 import ProductPage from '@/modules/ProductPage/ProductPage';
 import Cart from '@/modules/Cart/Cart';
 import Favorites from '@/modules/Favorites/Favorites';
+import NotFoundPage from '@/modules/NotFoundPage/NotFoundPage';
 
 export const AppRouter = () => {
   return (
@@ -18,7 +19,7 @@ export const AppRouter = () => {
       </Route>
 
       {/* 404 fallback */}
-      {/* <Route path="*" element={<NotFoundPage />} /> */}
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
