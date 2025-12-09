@@ -1,4 +1,10 @@
+@use '../../styles/mixins' as *;
+
 .line {
   width: 100%;
   border: 0.05rem solid rgba(226, 230, 233, 1);
+
+  @include for-tablets {
+    grid-area: line;
+  }
 }

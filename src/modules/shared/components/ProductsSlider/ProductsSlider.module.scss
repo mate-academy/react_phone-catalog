@@ -6,6 +6,8 @@
 
   @include for-tablets {
     margin: 6.4rem 0;
+
+    grid-area: slider;
   }
 
   &__header {

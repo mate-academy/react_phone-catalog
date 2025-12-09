@@ -1,32 +1,57 @@
+@use '../shared/styles/mixins' as *;
+
 .productDetailsPage {
   margin: 0 1.6rem;
   overflow: hidden;
 
-  &__buttonsWrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.8rem;
-    margin: 1.6rem 0 3.2rem;
+  @include for-tablets {
+    display: grid;
+    // stylelint-disable declaration-block-no-redundant-longhand-properties
+    grid-template-columns: 1fr 23.7rem;
+    grid-template-rows: repeat(9, auto);
+    grid-template-areas:
+    "bread bread"
+    "back back"
+    "titleH2 titleH2"
+    "picture controls"
+    "about about"
+    "titleH3 titleH3"
+    "line line"
+    "techs techs"
+    "slider slider";
+
+    column-gap: 1.7rem;
+
+    align-items: center;
   }
 
-  &__cartButton {
-    flex-grow: 1;
-    height: 4.8rem;
-  }
+  &__h2 {
+    color: rgba(49, 50, 55, 1);
 
-  &__favButton {
-    height: 4.8rem;
-    width: 4.8rem;
+    @include for-tablets {
+      grid-area: titleH2;
+    }
   }
 
   &__h3 {
-    font-family: Mont, sans-serif;
     font-weight: 700;
     font-size: 2.0rem;
     line-height: 100%;
+
+    @include for-tablets {
+      grid-area: titleH3;
+
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+  }
+
+  & &__specsLean {
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
   }
 }
 
-h2 {
-  color: rgba(49, 50, 55, 1);
-}
+
+

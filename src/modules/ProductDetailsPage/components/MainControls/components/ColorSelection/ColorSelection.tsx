@@ -1,5 +1,5 @@
 import scss from './ColorSelection.module.scss';
-import { COLOR_MAP } from '../../utility/colorMap';
+import { COLOR_MAP } from '../../../../utility/colorMap';
 import React from 'react';
 
 interface Props {

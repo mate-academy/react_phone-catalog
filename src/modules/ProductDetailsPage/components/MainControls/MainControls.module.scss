@@ -1,0 +1,26 @@
+@use '../../../shared/styles/mixins' as *;
+
+.mainControls {
+    @include for-tablets {
+      grid-area: controls;
+
+      margin-top: 4.0rem;
+    }
+
+    &__buttonsWrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin: 1.6rem 0 3.2rem;
+  }
+
+  &__cartButton {
+    flex-grow: 1;
+    height: 4.8rem;
+  }
+
+  &__favButton {
+    height: 4.8rem;
+    width: 4.8rem;
+  }
+}

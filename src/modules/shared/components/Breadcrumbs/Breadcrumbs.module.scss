@@ -1,5 +1,11 @@
+@use '../../styles/mixins' as *;
+
 .breadcrumbs {
   padding-top: 2.4rem;
+
+  @include for-tablets {
+    grid-area: bread;
+  }
 
   &__path {
     display: flex;

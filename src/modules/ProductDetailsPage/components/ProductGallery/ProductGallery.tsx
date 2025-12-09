@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Accessory, Phone, Tablet } from '../../../api/types';
+import { Accessory, Phone, Tablet } from '../../../../api/types';
 import scss from './ProductGallery.module.scss';
 import classNames from 'classnames';
 
