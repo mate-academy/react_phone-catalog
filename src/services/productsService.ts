@@ -1,7 +1,7 @@
 import { Product, ProductDetails } from '../types';
 
 function getBaseUrl() {
-  if (window.location.hostname === 'pavlovich.github.io') {
+  if (window.location.hostname === 'pavlosich.github.io') {
     return '/react_phone-catalog';
   }
 
