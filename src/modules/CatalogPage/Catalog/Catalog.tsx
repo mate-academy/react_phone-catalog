@@ -7,6 +7,7 @@ interface CatalogProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
   favouriteButton: Set<string>;
+  itemsInCart: Phone[];
 }
 
 export const Catalog = ({
@@ -14,6 +15,7 @@ export const Catalog = ({
   toggleInCart,
   toggleFavourite,
   favouriteButton,
+  itemsInCart,
 }: CatalogProps) => {
   const location = useLocation();
 
@@ -31,6 +33,8 @@ export const Catalog = ({
     <div className={style.catalog}>
       {itemsOnPage.map((phone: Phone) => {
         const isFavourite = favouriteButton.has(phone.id);
+        const IsInCart = itemsInCart.some(item => item.id === phone.id);
+
         return (
           <article className={style.catalog__product} key={phone.id}>
             <Link
@@ -87,7 +91,7 @@ export const Catalog = ({
                 className={style.catalog__product__buttons__button__add}
                 onClick={() => toggleInCart(phone)}
               >
-                Add to cart
+                {IsInCart ? 'In a cart' : 'Add to cart'}
               </button>
               <button
                 className={style.catalog__product__buttons__button__favourites}

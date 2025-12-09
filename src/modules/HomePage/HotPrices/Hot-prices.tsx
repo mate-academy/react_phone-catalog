@@ -9,12 +9,14 @@ interface HomePageProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
   favouriteButton: Set<string>;
+  itemsInCart: Phone[];
 }
 
 export const HotPrices = ({
   toggleInCart,
   toggleFavourite,
   favouriteButton,
+  itemsInCart,
 }: HomePageProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
@@ -108,6 +110,7 @@ export const HotPrices = ({
         >
           {sortedProduct.map((phone: Phone, index: number) => {
             const isFavourite = favouriteButton.has(phone.id);
+            const IsInCart = itemsInCart.some(item => item.id === phone.id);
 
             return (
               <article
@@ -176,9 +179,11 @@ export const HotPrices = ({
                 <div className={style.newmodels__product__buttons}>
                   <button
                     className={style.newmodels__product__buttons__button__add}
-                    onClick={() => toggleInCart(phone)}
+                    onClick={() => {
+                      toggleInCart(phone);
+                    }}
                   >
-                    Add to cart
+                    {IsInCart ? 'In a cart' : 'Add to cart'}
                   </button>
                   <button
                     className={

@@ -6,16 +6,20 @@ interface FavouritesPageProps {
   toggleInCart: (product: Phone) => void;
   toggleFavourite: (product: Phone) => void;
   favourites: Phone[];
+  itemsInCart: Phone[];
 }
 
 export const Favourite = ({
   toggleInCart,
   favourites,
   toggleFavourite,
+  itemsInCart,
 }: FavouritesPageProps) => {
   return (
     <div className={`${style.favourite} ${style['favourite--margin']}`}>
       {favourites.map((phone: Phone) => {
+        const IsInCart = itemsInCart.some(item => item.id === phone.id);
+
         return (
           <article className={style.favourite__product} key={phone.id}>
             <Link
@@ -74,7 +78,7 @@ export const Favourite = ({
                 className={style.favourite__product__buttons__button__add}
                 onClick={() => toggleInCart(phone)}
               >
-                Add to cart
+                {IsInCart ? 'In a cart' : 'Add to cart'}
               </button>
               <button
                 className={

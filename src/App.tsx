@@ -24,6 +24,7 @@ export const App = () => {
               path="/"
               element={
                 <HomePage
+                  itemsInCart={itemsInCart}
                   favouriteButton={favouriteButton}
                   toggleInCart={toggleInCart}
                   toggleFavourite={toggleFavourite}
@@ -37,6 +38,7 @@ export const App = () => {
                   favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
+                  itemsInCart={itemsInCart}
                 />
               }
             />
@@ -47,6 +49,7 @@ export const App = () => {
                   favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
+                  itemsInCart={itemsInCart}
                 />
               }
             />
@@ -57,6 +60,7 @@ export const App = () => {
                   favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
+                  itemsInCart={itemsInCart}
                 />
               }
             />
@@ -67,6 +71,7 @@ export const App = () => {
                   favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
+                  itemsInCart={itemsInCart}
                 />
               }
             />
@@ -77,6 +82,7 @@ export const App = () => {
                   favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
+                  itemsInCart={itemsInCart}
                 />
               }
             />
@@ -87,6 +93,7 @@ export const App = () => {
                   favouriteButton={favouriteButton}
                   toggleFavourite={toggleFavourite}
                   toggleInCart={toggleInCart}
+                  itemsInCart={itemsInCart}
                 />
               }
             />
@@ -106,14 +113,15 @@ export const App = () => {
                   toggleInCart={toggleInCart}
                   toggleFavourite={toggleFavourite}
                   favourites={favourites}
+                  itemsInCart={itemsInCart}
                 />
               }
             />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </Router>
   );
 };

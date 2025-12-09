@@ -8,12 +8,14 @@ interface FavouritesPageProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
   favourites: Phone[];
+  itemsInCart: Phone[];
 }
 
 export const FavouritesPage = ({
   toggleFavourite,
   toggleInCart,
   favourites,
+  itemsInCart,
 }: FavouritesPageProps) => {
   return (
     <>
@@ -23,6 +25,7 @@ export const FavouritesPage = ({
         toggleFavourite={toggleFavourite}
         toggleInCart={toggleInCart}
         favourites={favourites}
+        itemsInCart={itemsInCart}
       />
     </>
   );

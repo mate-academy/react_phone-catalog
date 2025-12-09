@@ -13,12 +13,14 @@ interface CatalogProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
   favouriteButton: Set<string>;
+  itemsInCart: Phone[];
 }
 
 export const CatalogPage = ({
   toggleInCart,
   toggleFavourite,
   favouriteButton,
+  itemsInCart,
 }: CatalogProps) => {
   const [sortNumber, setSortNumber] = useState(16);
   const [sortType, setSortType] = useState<SortType>('');
@@ -94,6 +96,7 @@ export const CatalogPage = ({
         toggleFavourite={toggleFavourite}
         toggleInCart={toggleInCart}
         favouriteButton={favouriteButton}
+        itemsInCart={itemsInCart}
       />
 
       {showPagination && (

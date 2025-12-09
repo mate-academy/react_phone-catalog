@@ -3,6 +3,7 @@ import { Phone } from '../../Types/type';
 
 export const useAddToCart = () => {
   const [itemsInCart, setItemsInCart] = useState<Phone[]>([]);
+
   const toggleInCart = (product: Phone) => {
     setItemsInCart(prev => {
       const exists = prev.some(item => item.id === product.id);

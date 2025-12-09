@@ -10,12 +10,14 @@ interface HomePageProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
   favouriteButton: Set<string>;
+  itemsInCart:Phone[];
 }
 
 export const HomePage = ({
   toggleInCart,
   toggleFavourite,
   favouriteButton,
+  itemsInCart
 }: HomePageProps) => {
   return (
     <>
@@ -25,12 +27,14 @@ export const HomePage = ({
         favouriteButton={favouriteButton}
         toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
+        itemsInCart={itemsInCart}
       />
       <Category />
       <HotPrices
         favouriteButton={favouriteButton}
         toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
+        itemsInCart={itemsInCart}
       />
     </>
   );

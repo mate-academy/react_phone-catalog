@@ -1,9 +1,7 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import style from './Product.module.scss';
-import useAddToFavourite from '../../Hooks/UseAddToCart';
 import { Phone } from '../../../Types/type';
-import { Favourite } from '../../FavouritesPage/Favourite';
 
 interface ProductProps {
   productScreen: string;
@@ -14,6 +12,7 @@ interface ProductProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
   favouriteButton: Set<string>;
+  itemsInCart: Phone[];
 }
 
 export const Product = ({
@@ -25,6 +24,7 @@ export const Product = ({
   toggleInCart,
   toggleFavourite,
   favouriteButton,
+  itemsInCart,
 }: ProductProps) => {
   const [productImages, setProductImages] = useState([]);
   const { productId } = useParams<{ productId: string }>();
@@ -37,6 +37,7 @@ export const Product = ({
   const isFavourite = currentProduct
     ? favouriteButton.has(currentProduct.id)
     : false;
+  const IsInCart = itemsInCart.some(item => item.id === currentProduct?.id);
 
   useEffect(() => {
     if (productId) {
@@ -148,7 +149,7 @@ export const Product = ({
             className={style.product__cart__buttons__button__add}
             onClick={() => currentProduct && toggleInCart(currentProduct)}
           >
-            Add to cart
+            {IsInCart ? 'In a cart' : 'Add to cart'}
           </button>
 
           <button

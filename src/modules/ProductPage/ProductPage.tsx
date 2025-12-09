@@ -14,12 +14,14 @@ interface ProductPageProps {
   toggleFavourite: (product: Phone) => void;
   toggleInCart: (product: Phone) => void;
   favouriteButton: Set<string>;
+  itemsInCart: Phone[];
 }
 
 export const ProductPage = ({
   toggleInCart,
   toggleFavourite,
   favouriteButton,
+  itemsInCart,
 }: ProductPageProps) => {
   const { productId } = useParams<{ productId: string }>();
   const [productScreen, setProductScreen] = useState('');
@@ -124,6 +126,7 @@ export const ProductPage = ({
         toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
         favouriteButton={favouriteButton}
+        itemsInCart={itemsInCart}
       />
       <ProductDescription
         productScreen={productScreen}
@@ -136,6 +139,7 @@ export const ProductPage = ({
         favouriteButton={favouriteButton}
         toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
+        itemsInCart={itemsInCart}
       />
     </>
   );

@@ -9,8 +9,13 @@
 body {
   background-color: $main-background-color;
   cursor: url(./img/cursor/Cursor\ Mouse\ Mice.svg);
-  height: 100vh;
   overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -18,6 +23,7 @@ body {
   max-width: 100%;
   margin: 0 auto;
   padding: 0 16px;
+  flex: 1;
 
   @include onTablet {
     min-width: 640px;
