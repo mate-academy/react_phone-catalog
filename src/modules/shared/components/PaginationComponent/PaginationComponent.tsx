@@ -145,7 +145,7 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({
               key={item.value}
               className={
                 item.value === currentPage
-                  ? styles.paginationComponent__page_active
+                  ? `${styles.paginationComponent__page} ${styles['paginationComponent__page--active']}`
                   : styles.paginationComponent__page
               }
               onClick={() => updatePage(item.value)}

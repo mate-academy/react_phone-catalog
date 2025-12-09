@@ -120,7 +120,7 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
               <div
                 key={color}
                 className={classNames(styles.productConfigurator__colorLayout, {
-                  [styles.productConfigurator__colorLayout_active]:
+                  [styles['productConfigurator__colorLayout--active']]:
                     selectedColor === color,
                 })}
                 onClick={() => updateSlug('color', color)}
@@ -147,7 +147,7 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
                 className={classNames(
                   styles.productConfigurator__capacityOption,
                   {
-                    [styles.productConfigurator__capacityOption_active]:
+                    [styles['productConfigurator__capacityOption--active']]:
                       selectedCapacity === capacity,
                   },
                 )}
@@ -177,7 +177,7 @@ const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
         <div className={styles.productConfigurator__buttonContainer}>
           <button
             className={classNames(styles.productConfigurator__cartButton, {
-              [styles.productConfigurator__cartButton_added]: inCart,
+              [styles['productConfigurator__cartButton--added']]: inCart,
             })}
             onClick={handleCartClick}
           >

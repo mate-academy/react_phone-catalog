@@ -1,3 +1,5 @@
+@use '../../../../styles/variables.scss' as *;
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -5,24 +7,75 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; 
+  z-index: 9999;
 }
+
 .customModal {
   position: fixed;
   top: 50%;
   left: 50%;
   width: 400px;
-  height: 200px;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
+  min-height: 200px;
+  background: $color-bg;
+  padding: 32px;
+  border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-
   transform: translate(-50%, -50%) scale(0.3);
   transform-origin: center;
   opacity: 0;
-
   animation: popup 0.3s ease forwards;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+  }
+
+  &__title {
+    @include type($h2-size, $h2-line, $h2-track, $h2-weight, $font-mont-bold);
+    margin: 0;
+  }
+
+  &__closeButton {
+    background: none;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    color: $color-secondary;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__message {
+    @include type($body-size, $body-line, $body-track, $body-weight);
+    margin: 0;
+    color: $color-primary;
+  }
+
+  &__subMessage {
+    @include type($small-size, $small-line, $small-track, $small-weight);
+    margin: 0;
+    color: $color-secondary;
+  }
 }
 
 @keyframes popup {
@@ -30,6 +83,7 @@
     transform: translate(-50%, -50%) scale(0.3);
     opacity: 0;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;

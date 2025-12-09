@@ -3,6 +3,21 @@
     margin-bottom: 80px;
     position: relative;
   }
+
+  &__layout {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    font-size: $h2-size;
+    color: $color-secondary;
+  }
+
   &__checkoutBlock {
     display: flex;
     flex-direction: column;

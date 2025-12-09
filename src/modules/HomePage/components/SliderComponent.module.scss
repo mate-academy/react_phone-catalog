@@ -20,10 +20,12 @@
     border: 1px solid $color-icons;
     cursor: pointer;
     background-color: #ffffff;
+
     &:hover {
       border: 1px solid $color-primary;
     }
-    &__disabled {
+
+    &--disabled {
       border: 1px solid $color-elements;
       cursor: default;
       pointer-events: none;
@@ -177,14 +179,16 @@
       cursor: pointer;
       color: $color-text;
       @include type($button-size, $button-line, $button-track, $button-weight);
+
       &:hover {
         box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
       }
 
-      &__added {
+      &--added {
         color: $color-green;
         background-color: #fff;
         border: 1px solid $color-elements;
+
         &:hover {
           box-shadow: none;
           cursor: default;

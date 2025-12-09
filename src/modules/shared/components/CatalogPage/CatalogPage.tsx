@@ -281,8 +281,8 @@ const CatalogPage: React.FC = () => {
               <div
                 className={`${styles.catalog__container} ${
                   shouldShowPagination
-                    ? styles.catalog__container_hasPagination
-                    : styles.catalog__container_noPagination
+                    ? styles['catalog__container--hasPagination']
+                    : styles['catalog__container--noPagination']
                 }`}
               >
                 <ProductsList products={visibleProducts} />

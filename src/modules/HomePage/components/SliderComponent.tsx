@@ -32,7 +32,7 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
           <button
             className={`${styles.SliderComponent__buttonContainer} ${
               index === 0
-                ? styles.SliderComponent__buttonContainer__disabled
+                ? styles['SliderComponent__buttonContainer--disabled']
                 : ''
             }`}
             disabled={index === 0}
@@ -73,7 +73,7 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
           <button
             className={`${styles.SliderComponent__buttonContainer} ${
               index + 4 >= products.length
-                ? styles.SliderComponent__buttonContainer__disabled
+                ? styles['SliderComponent__buttonContainer--disabled']
                 : ''
             }`}
             disabled={index + 4 >= products.length}

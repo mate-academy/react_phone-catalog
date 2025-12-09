@@ -101,7 +101,7 @@ const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
           <button
             onClick={handleCartClick}
             className={`${styles.SliderComponent__item__cartButton} ${
-              inCart ? styles.SliderComponent__item__cartButton__added : ''
+              inCart ? styles['SliderComponent__item__cartButton--added'] : ''
             }`}
           >
             {inCart ? 'Added to Cart' : 'Add to Cart'}

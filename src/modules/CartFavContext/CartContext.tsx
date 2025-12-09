@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import { Product } from '@/types/Product';
 import { CartItem } from '@/types/CartItem';
-import { log } from 'console';
 
 const CART_KEY = 'shop_cart';
 const FAV_KEY = 'shop_favorites';

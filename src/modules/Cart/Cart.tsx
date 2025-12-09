@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import { useCart } from '../CartFavContext/CartContext';
 import PageHeader from '../shared/components/PageHeader/PageHeader';
 import BackButton from '../shared/components/BackButton/BackButton';
 import CartItemComponent from './CartItemComponent';
+import { CustomModal } from '../shared/components/CustomModal/CustomModal';
 import styles from './Cart.module.scss';
-import { useState } from 'react';
-import CustomModal from '../shared/components/CustomModal/CustomModal';
 const Cart = () => {
   const { cart, totalAmount, totalCount } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +19,7 @@ const Cart = () => {
         extraContent={<BackButton label="Back" />}
         variant="cartPage"
       />
-      <div style={{ display: 'flex', gap: '20px' }}>
+      <div className={styles.cartPage__layout}>
         <div className={styles.cartItemsList}>
           {cart.map(item => (
             <CartItemComponent key={item.id} item={item} />
@@ -45,7 +45,7 @@ const Cart = () => {
       {isModalOpen && <CustomModal onClose={handleCheckout} />}
     </div>
   ) : (
-    <div className={styles.cart_empty}>Your cart is empty</div>
+    <div className={styles.cartPage__empty}>Your cart is empty</div>
   );
 };
 
