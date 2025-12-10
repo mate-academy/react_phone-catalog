@@ -30,7 +30,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
    - Kep `.module.scss` files together with their components.
 2. Advaned project structure:
    - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
-   - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
+   - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`giand so on.
 3. Add the sticky header with a logo, navigation, favorites, and cart.
 4. The footer with the link to the GitHub repo and `Back to top` button.
    - The content should be limited to the same width as the page content;
