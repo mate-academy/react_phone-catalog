@@ -12,16 +12,16 @@ const request = async (url: string) => {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-  const products = await request('/api/products.json');
+  const products = await request('./api/products.json');
 
   return products;
 };
 
 export const getAllDetailedProducts = async (): Promise<ProductDetails[]> => {
   const [phones, tablets, accessories] = await Promise.all([
-    request('/api/phones.json'),
-    request('/api/tablets.json'),
-    request('/api/accessories.json'),
+    request('./api/phones.json'),
+    request('./api/tablets.json'),
+    request('./api/accessories.json'),
   ]);
 
   return [...phones, ...tablets, ...accessories];

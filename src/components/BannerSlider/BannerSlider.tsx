@@ -15,7 +15,7 @@ interface BannerData {
 const slides: BannerData[] = [
   {
     id: 1,
-    image: '/img/phones/apple-iphone-14-pro/spaceblack/00.webp',
+    image: './img/phones/apple-iphone-14-pro/spaceblack/00.webp',
     title: 'banner.slide1.title',
     subtitle: 'banner.slide1.subtitle',
     modelName: 'iPhone 14 Pro',
@@ -24,7 +24,7 @@ const slides: BannerData[] = [
   },
   {
     id: 2,
-    image: '/img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp',
+    image: './img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp',
     title: 'banner.slide2.title',
     subtitle: 'banner.slide2.subtitle',
     modelName: 'iPad Pro',
@@ -33,7 +33,7 @@ const slides: BannerData[] = [
   },
   {
     id: 3,
-    image: '/img/accessories/apple-watch-series-6/space-gray/00.webp',
+    image: './img/accessories/apple-watch-series-6/space-gray/00.webp',
     title: 'banner.slide3.title',
     subtitle: 'banner.slide3.subtitle',
     modelName: 'Apple Watch',

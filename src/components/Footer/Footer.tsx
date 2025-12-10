@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
     <footer className="footer">
       <div className="footer__content">
         <Link to="/">
-          <img src="/img/logo.png" alt="logo" className="footer__logo" />
+          <img src="./img/logo.png" alt="logo" className="footer__logo" />
         </Link>
 
         <div className="footer__contacts">

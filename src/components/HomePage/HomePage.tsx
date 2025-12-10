@@ -71,7 +71,7 @@ export const HomePage: React.FC = () => {
               <Link to="/phones">
                 {' '}
                 <img
-                  src="/img/category-phones.png"
+                  src="./img/category-phones.png"
                   alt="phones-category"
                   className="categories__category__picture"
                 />
@@ -90,7 +90,7 @@ export const HomePage: React.FC = () => {
               <Link to="/tablets">
                 {' '}
                 <img
-                  src="/img/category-tablets.png"
+                  src="./img/category-tablets.png"
                   alt="tablets-category"
                   className="categories__category__picture"
                 />
@@ -109,7 +109,7 @@ export const HomePage: React.FC = () => {
               <Link to="/accessories">
                 {' '}
                 <img
-                  src="/img/category-accessories.png"
+                  src="./img/category-accessories.png"
                   alt="accessories-category"
                   className="categories__category__picture"
                 />
