@@ -152,7 +152,7 @@ export const ProductDetailsPage: React.FC = () => {
           <div className="product-details__gallery">
             <div className="product-details__main-image">
               <img
-                src={`/${selectedImage}`}
+                src={`./${selectedImage}`}
                 alt={product.name}
                 className="product-details__main-image-img"
               />
@@ -168,7 +168,7 @@ export const ProductDetailsPage: React.FC = () => {
                   onClick={() => setSelectedImage(img)}
                 >
                   <img
-                    src={`/${img}`}
+                    src={`./${img}`}
                     alt="thumbnail"
                     className="product-details__thumbnail-image"
                   />
