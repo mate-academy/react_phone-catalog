@@ -25,7 +25,7 @@ export const LocationIndicator: React.FC<Props> = ({ category, name }) => {
       {name && (
         <>
           <img
-            src="/src/assets/icons/ChevronArrowRight.svg"
+            src={arrowIcon}
             className={styles.arrow}
             alt="ChevronArrowRight"
           />
