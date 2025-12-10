@@ -32,7 +32,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
       <nav className={cn('menu', { 'menu--open': isOpen })}>
         <div className="menu__header">
           <Link to="/">
-            <img src="/img/logo.png" alt="logo" className="menu__logo" />
+            <img src="./img/logo.png" alt="logo" className="menu__logo" />
           </Link>
 
           <div className="menu__icons">
