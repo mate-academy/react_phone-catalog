@@ -5,8 +5,6 @@ type Props = {
   total: number;
   currentPage: number;
   onPageChange: (pageNumber: number) => void;
-  nextPage: () => void;
-  prevPage: () => void;
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -14,8 +12,6 @@ export const Pagination: React.FC<Props> = ({
   total,
   currentPage,
   onPageChange,
-  nextPage,
-  prevPage,
 }) => {
   const pageNumbers = [];
   const totalPages = Math.ceil(total / perPage);
@@ -36,10 +32,9 @@ export const Pagination: React.FC<Props> = ({
         ${isFirstPage ? styles['pagination__item--disabled'] : ''}`}
       >
         <button
-          data-cy="prevLink"
           className={styles.pagination__link}
-          disabled={isFirstPage}
-          onClick={() => !isFirstPage && prevPage()}
+          disabled={currentPage === 1}
+          onClick={() => onPageChange(currentPage - 1)}
         >
           «
         </button>
@@ -51,7 +46,6 @@ export const Pagination: React.FC<Props> = ({
           className={`${styles.pagination__item} ${currentPage === n ? styles['pagination__item--active'] : ''}`}
         >
           <button
-            data-cy="pageLink"
             className={styles.pagination__link}
             onClick={() => onPageChange(n)}
           >
@@ -67,10 +61,9 @@ export const Pagination: React.FC<Props> = ({
         ${isLastPage ? styles['pagination__item--disabled'] : ''}`}
       >
         <button
-          data-cy="nextLink"
           className={styles.pagination__link}
-          disabled={isLastPage}
-          onClick={() => !isLastPage && nextPage()}
+          disabled={currentPage === totalPages}
+          onClick={() => onPageChange(currentPage + 1)}
         >
           »
         </button>

@@ -23,18 +23,12 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // --- URL PARAMS ---
+  // URL PARAMS
   const sortByFromURL = (searchParams.get('sortBy') as SortBy) || 'Newest';
   const pageFromURL = Number(searchParams.get('page') || 1);
   const perPageFromURL = Number(
     searchParams.get('itemsPerPage') || 16,
   ) as ItemsOnPage;
-
-  // LOCAL STATE synced with URL
-  const [sortOption, setSortOption] = useState<SortBy>(sortByFromURL);
-  const [currentPage, setCurrentPage] = useState(pageFromURL);
-  const [perPageOption, setPerPageOption] =
-    useState<ItemsOnPage>(perPageFromURL);
 
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
@@ -80,24 +74,22 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
       })
       .catch(() => setError('Failed to load products'))
       .finally(() => setLoading(false));
-
-    setCurrentPage(1);
   }, [category]);
 
-  // UPDATE URL anytime sort/page/perPage changes
-  useEffect(() => {
-    const params = new URLSearchParams();
+  // UPDATE URL
+  const setPage = (page: number) => {
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev);
 
-    params.set('sortBy', sortOption);
-    params.set('page', String(currentPage));
-    params.set('itemsPerPage', String(perPageOption));
+      params.set('page', String(page));
 
-    setSearchParams(params);
-  }, [sortOption, currentPage, perPageOption]);
+      return params;
+    });
+  };
 
   // SORTING
   const sortedItems = [...items].sort((a, b) => {
-    switch (sortOption) {
+    switch (sortByFromURL) {
       case 'Newest':
         return Number(b.id) - Number(a.id);
       case 'Low to High':
@@ -110,13 +102,9 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   });
 
   // PAGINATION
-  const lastIndex = perPageOption * currentPage;
-  const firstIndex = lastIndex - perPageOption;
+  const lastIndex = perPageFromURL * pageFromURL;
+  const firstIndex = lastIndex - perPageFromURL;
   const currentItems = sortedItems.slice(firstIndex, lastIndex);
-
-  const onPageChange = (page: number) => setCurrentPage(page);
-  const nextPage = () => setCurrentPage(prev => prev + 1);
-  const prevPage = () => setCurrentPage(prev => prev - 1);
 
   if (loading) {
     return <Loader />;
@@ -150,7 +138,7 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
             className={`${styles.dropdown__button} ${isSortOpen ? styles['dropdown__button--active'] : ''}`}
             onClick={() => setIsSortOpen(prev => !prev)}
           >
-            {sortOption}
+            {sortByFromURL}
           </button>
 
           {isSortOpen && (
@@ -160,8 +148,15 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
                   key={option}
                   className={styles.content__item}
                   onClick={() => {
-                    setSortOption(option);
-                    setCurrentPage(1);
+                    setSearchParams(prev => {
+                      const params = new URLSearchParams(prev);
+
+                      params.set('sortBy', option);
+                      params.set('page', '1');
+
+                      return params;
+                    });
+
                     setIsSortOpen(false);
                   }}
                 >
@@ -180,7 +175,7 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
             className={`${styles.dropdown__button} ${isPerPageOpen ? styles['dropdown__button--active'] : ''}`}
             onClick={() => setIsPerPageOpen(prev => !prev)}
           >
-            {perPageOption}
+            {perPageFromURL}
           </button>
 
           {isPerPageOpen && (
@@ -190,8 +185,15 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
                   key={option}
                   className={styles.content__item}
                   onClick={() => {
-                    setPerPageOption(option);
-                    setCurrentPage(1);
+                    setSearchParams(prev => {
+                      const params = new URLSearchParams(prev);
+
+                      params.set('itemsPerPage', String(option));
+                      params.set('page', '1');
+
+                      return params;
+                    });
+
                     setIsPerPageOpen(false);
                   }}
                 >
@@ -210,11 +212,9 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
       {/* PAGINATION */}
       <Pagination
         total={items.length}
-        currentPage={currentPage}
-        perPage={perPageOption}
-        onPageChange={onPageChange}
-        nextPage={nextPage}
-        prevPage={prevPage}
+        currentPage={pageFromURL}
+        perPage={perPageFromURL}
+        onPageChange={setPage}
       />
     </section>
   );

@@ -9,7 +9,8 @@ export type CartAction =
   | { type: 'Add'; product: Product }
   | { type: 'Remove'; id: string }
   | { type: 'Increase'; id: string }
-  | { type: 'Decrease'; id: string };
+  | { type: 'Decrease'; id: string }
+  | { type: 'Clear' };
 
 export const CartReducer = (state: CartItem[], action: CartAction) => {
   switch (action.type) {
@@ -32,6 +33,9 @@ export const CartReducer = (state: CartItem[], action: CartAction) => {
           ? { ...item, quantity: item.quantity - 1 }
           : item,
       );
+
+    case 'Clear':
+      return [];
 
     default:
       return state;

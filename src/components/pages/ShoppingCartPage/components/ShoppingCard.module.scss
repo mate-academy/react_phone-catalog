@@ -3,30 +3,44 @@
 @import '../../../../App';
 
 .card {
-  display: grid;
-  grid-template-columns: repeat(17, 1fr);
-  border: 1px solid $color-text-gray;
-  padding: 16px;
-  color: $color-text;
+  display: flex;
+  flex-direction: column;
   font-family: Mont, sans-serif;
+  border: 1px solid $color-text-gray;
+  background-color: #161827;
+  color: $color-text;
+  padding: 16px;
   margin-bottom: 16px;
+  gap: 16px;
 
-  &__info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 24px;
   }
 
   &__left {
-    grid-column: span 17;
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 24px;
-    margin-bottom: 16px;
 
     @include on-tablet {
-      grid-column: span 12;
-      margin-bottom: 0;
+      width: 50%;
+    }
+  }
+
+  &__right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include on-tablet {
+      width: 50%;
+      justify-content: flex-end;
+
     }
   }
 
@@ -43,35 +57,11 @@
   }
 
   &__image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
     height: 80px;
+    margin: 0;
 
-    &image {
-      object-fit: cover;
-      margin: 0 auto;
-    }
-
-    &__titleContainer {
-      max-width: 336px;
-    }
-
-  }
-
-  &__right {
-    grid-column: span 17;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-
-    @include on-tablet {
-      grid-column: span 5;
-      justify-content: space-around;
-
+    img {
+      object-fit: contain;
     }
   }
 
