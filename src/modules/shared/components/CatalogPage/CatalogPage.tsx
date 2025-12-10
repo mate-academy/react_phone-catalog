@@ -38,9 +38,6 @@ export const CatalogPage: React.FC = () => {
   );
   const allowedCategories = ['phones', 'tablets', 'accessories'];
 
-  if (!allowedCategories.includes(category || '')) {
-    return <NotFoundPage />;
-  }
   // форматування заголовка
   const formatTitle = (param: string | undefined): string => {
     switch (param) {
@@ -61,7 +58,7 @@ export const CatalogPage: React.FC = () => {
   };
 
   const pageTitle = formatTitle(category);
-
+  const isValid = allowedCategories.includes(category || '');
   const getCategoryNameForMessage = () => {
     switch (category) {
       case 'phones':
@@ -231,7 +228,9 @@ export const CatalogPage: React.FC = () => {
 
   const categoryNameForMessage = getCategoryNameForMessage();
 
-  return (
+  return !isValid ? (
+    <NotFoundPage />
+  ) : (
     <div className={styles.catalog}>
       {/* явний h1 */}
 

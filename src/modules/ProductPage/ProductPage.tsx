@@ -10,6 +10,7 @@ import { ProductConfigurator } from './ProductConfigurator';
 import { SliderComponent } from '../HomePage/components/SliderComponent';
 import { BackButton } from '../shared/components/BackButton/BackButton';
 import styles from './ProductPage.module.scss';
+import { recentlyViewedService } from '../shared/components/utils/RecentlyViewed/RecentlyViewed';
 
 export const ProductPage: React.FC = () => {
   const { category, productSlug } = useParams();
@@ -52,8 +53,16 @@ export const ProductPage: React.FC = () => {
     if (products.length === 0) return [];
     return getRandomProducts(products);
   }, [products, productSlug]);
+  const foundProductFromProducts = useMemo(
+    () => products.find(p => p.itemId === productSlug),
+    [products, productSlug],
+  );
+  useEffect(() => {
+    if (foundProductFromProducts) {
+      recentlyViewedService.add(foundProductFromProducts);
+    }
+  }, [foundProductFromProducts]);
 
-  const foundProductFromProducts = products.find(p => p.itemId === productSlug);
   if (!product) return null;
   return (
     <>

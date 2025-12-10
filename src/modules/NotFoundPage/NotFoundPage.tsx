@@ -1,21 +1,34 @@
 import React from 'react';
 import styles from './NotFoundPage.module.scss';
-import photo from '../../../public/img/door.webp';
-import gor from '../../../public/img/gor.jpg';
-const NotFoundPage = () => {
+import { Link } from 'react-router-dom';
+import { SliderComponent } from '../HomePage/components/SliderComponent';
+import { recentlyViewedService } from '../shared/components/utils/RecentlyViewed/RecentlyViewed';
+import { Product } from '@/types';
+
+const NotFoundPage: React.FC = () => {
+  const recentlyViewedItems = recentlyViewedService.get();
+  const normilizedItems: Product[] = recentlyViewedItems.filter(
+    (item): item is Product => item !== null,
+  );
+  console.log(normilizedItems);
+
   return (
-    <div className={styles.notFoundPage}>
-      <h1 className={styles.title}>404 - Page Not Found - Наведи на двері</h1>
-      <div className={styles['img-box']}>
-        NotFoundPage
-        <img
-          className={styles['img-default']}
-          src={photo}
-          alt="404 Not Found"
+    <section className={styles.notFoundPage}>
+      <div className={styles.notFoundPage__content}>
+        <h1 className={styles.notFoundPage__title}>Помилка 404</h1>
+        <p className={styles.notFoundPage__message}>Сторінку не знайдено</p>
+        <p className={styles.notFoundPage__suggestion}>
+          Спробуйте перевірити URL або повернутися на головну сторінку.
+        </p>
+        <Link to="/" className={styles.notFoundPage__homeLink}>
+          <button>На головну</button>
+        </Link>
+        <SliderComponent
+          products={normilizedItems}
+          title="Нещодавно переглянуті"
         />
-        <img className={styles['img-hover']} src={gor} alt="404 Not Found" />
       </div>
-    </div>
+    </section>
   );
 };
 
