@@ -12,7 +12,7 @@ type Props = {
   setSortBy: (value: SortBy) => void;
 
   itemsPerPage: ItemsPerPage;
-  setItemsPerPage: React.Dispatch<React.SetStateAction<ItemsPerPage>>;
+  setItemsPerPage: (value: ItemsPerPage) => void;
 };
 
 export const ProductsControls: React.FC<Props> = ({
