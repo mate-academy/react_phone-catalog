@@ -30,7 +30,7 @@ export const Header = () => {
             >
               <img
                 className="logo top-logo"
-                src="/public/img/icons/logo.svg"
+                src="/img/icons/Logo.svg"
                 alt="Logo Nice Gadgets"
               />
             </Link>
