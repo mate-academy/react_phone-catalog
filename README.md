@@ -22,7 +22,7 @@ Follow the [Instruction](https://github.com/Mishadoloh/react_phone-catalog/blob/
 
 Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
 
-## App
+## 
 
 1. Put components into the `src/components` folder.
    - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
