@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { CartItem } from './CartItem';
 import { CartProduct } from '../../types/CartProduct';
 import { useCartFavorite } from '../../context/CartFavoriteContext';
-import emptyCart from '../../../public/img/unnown.jpg';
+import emptyCart from '/img/unnown.jpg';
+import { ProductType } from '../../types/Product';
 
 export const Cart = () => {
   const { cartItems } = useCartFavorite();
@@ -26,7 +27,7 @@ export const Cart = () => {
         ) : (
           <div className="cart__wrapper">
             <div className="cart__items">
-              {cartItems.map((item: CartProduct, i: number) => (
+              {cartItems.map((item: ProductType, i: number) => (
                 <CartItem product={item} key={item.name + i} />
               ))}
             </div>

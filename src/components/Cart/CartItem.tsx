@@ -4,13 +4,16 @@ import close from '../../images/icons/close.svg';
 import minus from '../../images/icons/minus.svg';
 import plus from '../../images/icons/plus.svg';
 import fake from '../../images/img/fake.webp';
+import { ProductType } from '../../types/Product';
 
 type Props = {
-  product: CartProduct;
+  product: ProductType;
 };
 
 export const CartItem: FC<Props> = ({ product }) => {
-  const { name, price, image, quantity } = product;
+  const { name, priceDiscount, images } = product;
+
+  const [quantity, setQuantity] = React.useState<number>(1);
 
   const isDisabledMinus = quantity <= 1;
 
@@ -38,7 +41,7 @@ export const CartItem: FC<Props> = ({ product }) => {
           <img src={plus} alt="plus" />
         </button>
       </div>
-      <div className="item-cart__price">${price}</div>
+      <div className="item-cart__price">${priceDiscount}</div>
     </div>
   );
 };

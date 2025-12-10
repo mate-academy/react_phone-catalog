@@ -1,14 +1,15 @@
 import { useMemo } from 'react';
 
 import '../components/Catalog/Catalog.scss';
-import { Product } from '../types/Product';
+
 import { Catalog } from '../components/Catalog';
 import { useProducts } from '../context/ProductsContext';
+import { ProductType } from '../types/Product';
 
 export const TabletsPage = () => {
   const { productsAll } = useProducts();
 
-  const products: Product[] = useMemo(() => {
+  const products: ProductType[] = useMemo(() => {
     return productsAll.filter(product => product.category === 'tablets');
   }, []);
 

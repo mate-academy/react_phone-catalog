@@ -4,10 +4,10 @@ import { ProductCard } from '../ProductCard';
 import { Breadcrumbs } from './Breadcrumbs';
 import './Catalog.scss';
 import { Dropdowns } from './Dropdowns';
-import { Product } from '../../types/Product';
+import { ProductAllType, ProductType } from '../../types/Product';
 
 type Props = {
-  products: Product[];
+  products: ProductAllType[];
   dropdown?: boolean;
   pagination?: boolean;
 };

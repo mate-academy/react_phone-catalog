@@ -1,19 +1,19 @@
-export interface Product {
-  id: number;
-  category: string;
-  itemId: string;
-  name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
-  capacity: string;
-  color: string;
-  ram: string;
-  year: number;
-  image: string;
-}
+// export interface Product {
+//   id: number;
+//   category: string;
+//   itemId: string;
+//   name: string;
+//   fullPrice: number;
+//   price: number;
+//   screen: string;
+//   capacity: string;
+//   color: string;
+//   ram: string;
+//   year: number;
+//   image: string;
+// }
 
-export interface ProductTablet {
+export interface ProductType {
   id: string;
   category: string;
   namespaceId: string;
@@ -36,4 +36,19 @@ export interface ProductTablet {
   camera: string;
   zoom: string;
   cell: string[];
+}
+
+export interface ProductAllType {
+  id: number;
+  category: string;
+  itemId: string;
+  name: string;
+  fullPrice: number;
+  price: number;
+  screen: string;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+  image: string;
 }

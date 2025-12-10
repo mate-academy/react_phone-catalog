@@ -3,21 +3,43 @@ import React, { FC, useState } from 'react';
 import fakeImg from './../../images/img/phones//apple-iphone-11/black/00.webp';
 
 import './ProductCard.scss';
-import { Product } from '../../types/Product';
+import { ProductAllType, ProductType } from '../../types/Product';
 import classNames from 'classnames';
 import { ProductCardButtons } from './ProductCardButtons';
+import { useCartFavorite } from '../../context/CartFavoriteContext';
+import { useProducts } from '../../context/ProductsContext';
 
 type Props = {
-  product: Partial<Product>;
+  product: ProductType;
 };
 
 export const ProductCard: FC<Props> = ({ product }) => {
-  const { name, price, screen, capacity, ram, fullPrice } = product;
+  const {
+    category,
+    itemId,
+    image,
+    name,
+    price,
+    screen,
+    capacity,
+    ram,
+    fullPrice,
+  } = product;
+
+  const { toggleFavorite, addToCart } = useCartFavorite();
+  const { findNessesaryItem } = useProducts();
+
+  const toogleAddToCart = () => {
+    const detailedProduct = findNessesaryItem(category, itemId);
+    if (detailedProduct !== undefined) {
+      addToCart(detailedProduct);
+    }
+  };
 
   return (
     <div className="card">
       <a href="#" className="card__link">
-        <img src={product.image} alt="" className="card__image" />
+        <img src={image} alt="" className="card__image" />
         <div className="card__title">{name}</div>
         <div className="card__price">
           <span className="card__price--sale">${price}</span>

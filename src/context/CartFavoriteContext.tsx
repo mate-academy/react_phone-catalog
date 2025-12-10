@@ -1,24 +1,19 @@
 import React, { FC } from 'react';
 import { createContext, useContext, useState } from 'react';
-import { Product } from '../types/Product';
+import { ProductType } from '../types/Product';
 import { CartProduct } from '../types/CartProduct';
 
 type Props = {
   children: React.ReactNode;
 };
 
-type FavoriteItem = Pick<
-  Product,
-  'name' | 'id' | 'image' | 'price' | 'screen' | 'capacity' | 'ram'
->;
-
 type CartFavoriteContextType = {
-  cartItems: CartProduct[];
-  favoriteItems: FavoriteItem[];
-  addToCart?: (item: CartProduct) => void;
-  toggleFavorite?: (item: FavoriteItem) => void;
-  clearCart?: () => void;
-  removeFromCart?: (productId: number) => void;
+  cartItems: ProductType[];
+  favoriteItems: ProductType[];
+  addToCart: (item: ProductType) => void;
+  toggleFavorite?: (item: ProductType) => void;
+  clearCart: () => void;
+  removeFromCart?: (productId: string) => void;
 };
 
 const CartFavoriteContext = createContext<CartFavoriteContextType | undefined>(
@@ -26,16 +21,16 @@ const CartFavoriteContext = createContext<CartFavoriteContextType | undefined>(
 );
 
 export const CartFavoriteProvider: FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<CartProduct[]>([]);
-  const [favoriteItems, setFavoriteItems] = useState<FavoriteItem[]>([]);
+  const [cartItems, setCartItems] = useState<ProductType[]>([]);
+  const [favoriteItems, setFavoriteItems] = useState<ProductType[]>([]);
 
   // ----- Cart
 
-  const addToCart = (product: CartProduct) => {
+  const addToCart = (product: ProductType): void => {
     setCartItems(prev => [...prev, product]);
   };
 
-  const removeFromCart = (productId: number) => {
+  const removeFromCart = (productId: string) => {
     setCartItems(prev => prev.filter(item => item.id! === productId));
   };
 
@@ -45,7 +40,7 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
 
   // ----- Favorites
 
-  const toggleFavorite = (product: FavoriteItem) => {
+  const toggleFavorite = (product: ProductType) => {
     setFavoriteItems(prev => {
       const exists = prev.find(item => item.id === product.id);
       if (exists) {
@@ -59,10 +54,10 @@ export const CartFavoriteProvider: FC<Props> = ({ children }) => {
   const value = {
     cartItems,
     favoriteItems,
-    addToCart,
-    removeFromCart,
-    clearCart,
-    toggleFavorite,
+    addToCart: () => {},
+    removeFromCart: () => {},
+    clearCart: () => {},
+    toggleFavorite: () => {},
   };
 
   return (
