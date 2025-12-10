@@ -37,6 +37,8 @@ export const ProductCard: React.FC<Props> = ({ product, showOldPrice }) => {
       };
 
       setCartItems(prev => [...prev, newCartItem]);
+    } else {
+      setCartItems(prev => prev.filter(item => item.id !== product.id));
     }
   }
 

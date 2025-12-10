@@ -2,6 +2,7 @@ import { Product } from '../../types';
 import { useEffect, useMemo, useState } from 'react';
 import { DEFAULT_ITEMS_PER_PAGE, FIRST_PAGE, ItemsPerPage } from '../constants';
 import { SortBy, SORT } from '../constants';
+import { useSearchParams } from 'react-router-dom';
 
 type UseProductsPageParams = {
   fetchFn: () => Promise<Product[]>;
@@ -13,18 +14,67 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
   const [error, setError] = useState(false);
   const [sortBy, setSortBy] = useState<SortBy>(SORT.NEWEST);
 
-  const [itemsPerPage, setItemsPerPage] = useState<ItemsPerPage>(
-    DEFAULT_ITEMS_PER_PAGE,
-  );
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
+  const sortParam = searchParams.get('sort');
+
+  const initialSortBy: SortBy =
+    sortParam === SORT.ALPHA ||
+    sortParam === SORT.CHEAPEST ||
+    sortParam === SORT.NEWEST
+      ? sortParam
+      : SORT.NEWEST;
+
+  const initialPerPage =
+    (searchParams.get('perPage') as ItemsPerPage) || DEFAULT_ITEMS_PER_PAGE;
+
+  const [itemsPerPage, setItemsPerPage] =
+    useState<ItemsPerPage>(initialPerPage);
+
+  const initialPage = Number(searchParams.get('page')) || FIRST_PAGE;
+
+  const [currentPage, setCurrentPage] = useState(initialPage);
+
+  function updateSearchParams(patch: Record<string, string>) {
+    const next = new URLSearchParams(searchParams);
+
+    Object.entries(patch).forEach(([key, value]) => {
+      next.set(key, value);
+    });
+
+    setSearchParams(next);
+  }
+
+  const handleSortChange = (value: SortBy) => {
+    setSortBy(value);
+
+    updateSearchParams({
+      sort: value,
+      page: '1',
+    });
+
+    setCurrentPage(1);
+  };
+
+  const handlePerPageChange = (value: ItemsPerPage) => {
+    setItemsPerPage(value);
+    setCurrentPage(1);
+
+    updateSearchParams({
+      perPage: String(value),
+      page: '1',
+    });
+  };
+
+  useEffect(() => {
+    setSortBy(initialSortBy);
+  }, [initialSortBy]);
 
   useEffect(() => {
     async function loadItems() {
       try {
         setLoading(true);
         setError(false);
-
         const data = await fetchFn();
 
         setItems(data);
@@ -75,6 +125,11 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
   const handlePageChange = (page: number) => {
     if (page >= FIRST_PAGE && page <= totalPages) {
       setCurrentPage(page);
+
+      updateSearchParams({
+        page: String(page),
+      });
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -84,12 +139,13 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
     loading,
     error,
     sorted,
+
     sortBy,
-    setSortBy,
+    setSortBy: handleSortChange,
 
     paginated,
     itemsPerPage,
-    setItemsPerPage,
+    setItemsPerPage: handlePerPageChange,
 
     currentPage,
     setCurrentPage,

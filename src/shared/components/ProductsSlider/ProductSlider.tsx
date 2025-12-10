@@ -50,7 +50,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         breakpoints={{
           0: { slidesPerView: isHotPrices ? 1.2 : 1.6, spaceBetween: 8 },
           640: { slidesPerView: isHotPrices ? 2 : 2.5, spaceBetween: 12 },
-          1200: { slidesPerView: isHotPrices ? 3 : 4, spaceBetween: 24 },
+          1200: { slidesPerView: 4, spaceBetween: 24 },
         }}
         onBeforeInit={swiper => {
           const nav = swiper.params.navigation as NavigationOptions;
