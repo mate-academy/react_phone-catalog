@@ -106,7 +106,7 @@ export const ProductDetailsPage: React.FC = () => {
             <img
               key={img}
               className={`${styles.galleryImage} ${selectedImg === img ? styles.activeThumb : ''}`}
-              src={`/${img}`}
+              src={img}
               alt={productDetails.name}
               onClick={() => setSelectedImg(img)}
             />
@@ -116,7 +116,7 @@ export const ProductDetailsPage: React.FC = () => {
         <div className={styles.mainImageWrapper}>
           <img
             className={styles.mainImage}
-            src={`/${selectedImg}`}
+            src={selectedImg}
             alt={productDetails.name}
           />
         </div>
