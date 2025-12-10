@@ -33,7 +33,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
    - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`giand so on.
 3. Add the sticky header with a logo, navigation, favorites, and cart.
 4. The footer with the link to the GitHub repo and `Back to top` button.
-   - The content should be limited to the same width as the page content;
+   - The content should be limied to the same width as the page content;
    - `Back to top` button should scroll to the top smoothly;
 5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
 6. All changes the hover effects should be smooth.
