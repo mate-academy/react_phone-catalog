@@ -24,3 +24,13 @@
   font-weight: 800;
   font-style: normal;
 }
+
+.body.light {
+  background-color: rgba(250, 251, 252, 1);
+  color: rgba(15, 15, 17, 1);
+}
+
+.body.dark {
+  background-color: rgba(15, 17, 33, 1);
+  color: rgba(241, 242, 249, 1);
+}

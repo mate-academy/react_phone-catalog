@@ -1,5 +1,7 @@
 # React Product Catalog
 
+[DEMO](https://Vall-re.github.io/react_phone-catalog)
+
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
 - [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
@@ -142,4 +144,4 @@ Show `input:search` in the header when a page contains a `ProductList` to search
 2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
 3. Add `debounce` to the search field.
 
--- [DEMO](https://github.com/Vall-Re/react_phone-catalog)
+

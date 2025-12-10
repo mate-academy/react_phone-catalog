@@ -91,7 +91,7 @@
       position: relative;
 
       &:first-child {
-        border-right: 1px solid $border-color;
+        border-right: 1px solid rgba(180, 189, 195, 1);
       }
 
       &::after {

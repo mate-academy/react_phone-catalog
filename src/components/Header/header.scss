@@ -56,8 +56,26 @@
   box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
 
   transition: all 0.3s ease;
-  
+
   @include on-tablet {
     display: none;
   }
+}
+
+.theme {
+  display: flex;
+
+  &__button {
+  height: 100%;
+  width: 48px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -1px 0 0 0 rgba(226, 230, 233, 1);
+
+  transition: all 0.3s ease;
+  }
+  &__icon {
+    height: 100%;
+  }
+
 }

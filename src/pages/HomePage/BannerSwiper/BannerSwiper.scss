@@ -4,7 +4,7 @@
   &__slider {
     &--container {
       display: flex;
-      align-items: center; 
+      align-items: center;
       padding: 0;
       margin-bottom: 8px;
 
@@ -148,7 +148,7 @@
         left: 50%;
         width: 14px;
         height: 4px;
-        background-color: $border-color;
+        background-color: rgba(180, 189, 195, 1);
         transform: translate(-50%, -50%);
         transition: all 0.3s ease;
       }
