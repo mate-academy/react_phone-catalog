@@ -22,12 +22,12 @@ Follow the [Instruction](https://github.com/Mishadoloh/react_phone-catalog/blob/
 
 Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
 
-## 
+##
 
 1. Put components into the `src/components` folder.
    - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
    - Use CSS modules.
-   - Keep `.module.scss` files together with their components.
+   - Kep `.module.scss` files together with their components.
 2. Advanced project structure:
    - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
    - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
