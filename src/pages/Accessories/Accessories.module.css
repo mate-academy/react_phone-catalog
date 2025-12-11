@@ -1,7 +1,8 @@
 .container {
-  padding: 0 2rem;
+  padding-right: 95px;
+  padding-left: 95px;
   margin: 0;
-  color: var(--text-color); /* ✅ texto dinâmico */
+  color: var(--text-color);
 }
 
 /* Cabeçalho com título à esquerda e ações à direita */
@@ -9,49 +10,57 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 7rem; /* espaço superior sem exagero */
+  margin-top: 7rem;
   margin-bottom: 2rem;
-  color: var(--text-color); /* ✅ texto dinâmico */
+  color: var(--text-color);
 }
 
-/* Título sem grandes deslocamentos */
+.headerLeft {
+  display: flex;
+  align-items: center;
+}
+
 .title {
   font-size: 2rem;
   margin: 0;
   padding: 0;
   text-align: left;
-  color: var(--text-color); /* ✅ texto dinâmico */
+  color: var(--text-color);
 }
 
-/* Linha de ações: Select + link "Ver todos" */
-.actionsRow {
+/* Agrupa Search, Select e Link à direita */
+.headerRight {
   display: flex;
   align-items: center;
-  margin: 0;
-  padding: 0;
-  gap: 30px;
-  color: var(--text-color); /* ✅ texto dinâmico */
+  gap: 30px; /* distância uniforme */
 }
 
-.label,
-.select {
-  margin: 0;
-  color: var(--text-color); /* ✅ texto dinâmico */
+/* Search ocupa espaço flexível */
+.headerRight > :first-child {
+  flex: 1 1 auto;
+  min-width: 200px;
 }
 
-/* Link "Ver todos" sem paddings grandes */
+/* Select */
+.selectWrapper {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Link "Ver todos" */
 .viewAllLink {
-  margin: 0;
-  padding: 0;
+  flex: 0 0 auto;
   font-weight: 600;
-  color: var(--link-color); /* ✅ link dinâmico */
+  color: var(--link-color);
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .viewAllLink:hover {
-  color: var(--link-hover); /* ✅ hover dinâmico */
+  color: var(--link-hover);
   text-decoration: none;
 }
 
@@ -63,15 +72,6 @@
   justify-content: center;
 }
 
-/* Cada card com largura fixa para alinhamento consistente */
 .grid > * {
   flex: 0 1 320px;
-}
-
-/* Container opcional para outras ações (se necessário) */
-.showAll {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--text-color); /* ✅ texto dinâmico */
 }

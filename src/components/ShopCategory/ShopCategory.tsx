@@ -13,7 +13,7 @@ export interface ShopCategoryProps {
   onClick?: () => void;
   'data-testid'?: string;
   backgroundImage?: string;
-  link?: string; // rota opcional
+  link?: string;
 }
 
 export const ShopCategory: React.FC<ShopCategoryProps> = ({
@@ -34,27 +34,21 @@ export const ShopCategory: React.FC<ShopCategoryProps> = ({
         aria-label={imageAlt}
         style={{ backgroundImage: `url(${backgroundImage})` }}
       />
-      <div className={`${styles.textContent}`.trim()}>{children}</div>
+      <div className={styles.textContent}>{children}</div>
     </>
   );
 
-  // Se link foi passado, renderiza Link do react-router
-  if (link) {
-    return (
-      <Link
-        to={link}
-        className={`${styles.ShopCategory} ${className}`.trim()}
-        onClick={onClick}
-        data-testid={dataTestId}
-        aria-label={imageAlt}
-      >
-        {content}
-      </Link>
-    );
-  }
-
-  // Caso contrário, renderiza div padrão (comportamento atual)
-  return (
+  const Card = link ? (
+    <Link
+      to={link}
+      className={`${styles.ShopCategory} ${className}`.trim()}
+      onClick={onClick}
+      data-testid={dataTestId}
+      aria-label={imageAlt}
+    >
+      {content}
+    </Link>
+  ) : (
     <div
       className={`${styles.ShopCategory} ${className}`.trim()}
       onClick={onClick}
@@ -64,6 +58,9 @@ export const ShopCategory: React.FC<ShopCategoryProps> = ({
       {content}
     </div>
   );
+
+  // Wrapper externo para alinhar verticalmente
+  return <div className={styles.ShopCategoryBlock}>{Card}</div>;
 };
 
 export default ShopCategory;

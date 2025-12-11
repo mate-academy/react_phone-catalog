@@ -1,0 +1,70 @@
+/* src/components/Search/Search.module.css */
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-width: 220px;
+  max-width: 520px;
+  width: 40%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--input-bg, #fff);
+  color: var(--text-color, #111);
+  font-size: 14px;
+  outline: none;
+  transition:
+    box-shadow 160ms ease,
+    transform 120ms ease;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+.searchInput:focus {
+  box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.12);
+  border-color: rgba(21, 156, 228, 0.9);
+}
+
+.withIcon {
+  padding-left: 34px;
+}
+
+/* mobile: ícone que expande se necessário */
+@media (max-width: 720px) {
+  .searchWrapper {
+    width: auto;
+    min-width: 0;
+  }
+
+  .searchInput {
+    min-width: 0;
+    width: 0;
+    opacity: 0;
+    transform: scaleX(0.95);
+    transition:
+      width 180ms ease,
+      opacity 160ms ease,
+      transform 160ms ease;
+  }
+
+  .searchWrapper.expanded .searchInput {
+    width: 180px;
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}

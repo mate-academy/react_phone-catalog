@@ -1,26 +1,30 @@
 :root {
-  --banner-h-default: 25rem; /* 400px */
-  --banner-h-lg: 32rem; /* 512px */
-  --banner-h-md: 20rem; /* 320px */
+  /* Banner heights */
+  --banner-h-320: 10rem; /* mobile tiny */
+  --banner-h-640: 20rem; /* mobile / tablet */
+  --banner-h-1200: 28rem; /* desktop médio */
+  --banner-h-1200-plus: 32rem; /* desktop grande */
+
+  /* Banner width */
   --banner-w-max: 80rem; /* 1280px */
-  --side-w-default: 2.5rem; /* 40px */
-  --side-w-lg: 3rem; /* 48px */
+
+  /* Animation */
   --fade-duration: 0.5s;
 }
 
-/* wrapper principal do banner (título + banner + chevrons) */
+/* wrapper principal */
 .containerBlock {
   width: 100%;
-  box-sizing: border-box;
   max-width: 1440px;
   margin: 0 auto;
-  color: var(--text-color);
+  padding: 0 0.5rem;
+  box-sizing: border-box;
 }
 
 /* flex que contém left - banner - right */
 .containerFlex {
   display: flex;
-  align-items: stretch; /* mantém a imagem com altura total do containerImg */
+  align-items: center;
   justify-content: center;
   gap: 0.5rem;
   width: 100%;
@@ -28,29 +32,28 @@
   box-sizing: border-box;
 }
 
-/* lado (chevrons) - não deve esticar para a altura do banner */
+/* lados (chevrons) */
 .side {
-  flex: 0 0 auto; /* não cresce nem encolhe automaticamente */
-  align-self: center; /* anula align-items: stretch para este filho */
+  flex: 0 0 auto;
+  align-self: center;
   display: flex;
-  align-items: center; /* centraliza verticalmente o conteúdo do side */
+  align-items: center;
   justify-content: center;
-  width: var(--side-w-default);
-  padding: 0;
+  width: var(--side-w);
+  height: var(--side-h);
   box-sizing: border-box;
-  overflow: visible; /* permite depuração e evita corte inesperado */
-  filter: var(--icon-filter, none);
+  overflow: visible;
 }
 
-/* imagem central do banner */
+/* imagem central */
 .containerImg {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: var(--card-bg);
+  background-color: var(--card-bg, #fff);
   width: 100%;
   max-width: var(--banner-w-max);
-  height: var(--banner-h-default); /* altura padrão do banner */
+  height: var(--banner-h-1200); /* default desktop médio */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,86 +61,51 @@
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
-  transition: opacity var(--fade-duration) ease-in-out;
+  transition:
+    opacity var(--fade-duration) ease-in-out,
+    background-size 0.25s ease;
   opacity: 1;
 }
 
-/* classe aplicada durante a transição */
-.fade {
-  opacity: 0;
-}
-
-/* indicadores */
-.indicatorWrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 12px;
-  color: var(--text-muted);
-}
-
 /* -------------------------
-   Breakpoints / Responsividade
+   Breakpoints
    ------------------------- */
 
-/* <= 640px: banner reduz para layout mobile */
-@media (max-width: 40rem) {
-  .containerImg {
-    width: 20rem; /* 320px */
-    height: var(--banner-h-md);
-    border-radius: 0.38rem;
-  }
-
-  .containerFlex {
-    padding: 0 0.75rem 16px;
-    justify-content: center;
-  }
-
-  /* ajustar largura dos sides em mobile */
-  .side {
-    width: var(--side-w-default);
-  }
-}
-
-/* 641px - 1439px: desktop médio */
-@media (min-width: 40.01rem) and (max-width: 89.99rem) {
-  .containerImg {
-    width: 100%;
-    height: var(--banner-h-default);
-  }
-
-  .side {
-    width: var(--side-w-default);
-  }
-}
-
-/* 1440px+ : desktop grande */
-@media (min-width: 90rem) {
-  .containerImg {
-    max-width: var(--banner-w-max);
-    height: var(--banner-h-lg);
-  }
-
-  .side {
-    width: var(--side-w-lg);
-  }
-}
-
-/* <= 320px: forçar largura do banner para 320px e esconder chevrons */
+/* <= 320px */
 @media (max-width: 20rem) {
-  .containerBlock,
-  .containerFlex,
   .containerImg {
-    width: 20rem; /* 320px */
-    max-width: 100%;
-    background-image: url('../../assets/img/Banner_mobile.png');
-    background-repeat: no-repeat;
+    height: var(--banner-h-320);
     background-size: cover;
-    background-color: var(--card-bg);
+  }
+  .side {
+    display: none; /* oculta chevrons em telas muito pequenas */
+  }
+}
+
+/* 321px – 640px */
+@media (min-width: 20.01rem) and (max-width: 40rem) {
+  .containerImg {
+    height: var(--banner-h-640);
+    background-size: cover;
   }
 
   .side {
-    display: none;
-    width: 0;
-    height: 0;
+    height: var(--side-h);
+  }
+}
+
+/* 641px – 1200px */
+@media (min-width: 40.01rem) and (max-width: 75rem) {
+  .containerImg {
+    height: var(--banner-h-1200);
+    background-size: contain;
+  }
+}
+
+/* >= 1200px */
+@media (min-width: 75.01rem) {
+  .containerImg {
+    height: var(--banner-h-1200-plus);
+    background-size: contain;
   }
 }

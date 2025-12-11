@@ -12,7 +12,7 @@ export interface BrandNewModelsProps {
   detailsLink?: string;
   className?: string;
   title?: string;
-  titleLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  titleLevel?: 2 | 3 | 4 | 5 | 6;
   imageSrc?: string;
   imageAlt?: string;
   price?: string;

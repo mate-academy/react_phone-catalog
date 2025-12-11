@@ -1,9 +1,8 @@
 .container {
   display: flex; /* usar flex em vez de inline-flex para altura previsível */
   width: 40px;
-  height: 220px; /* altura que você quer testar */
-  min-height: 200px;
-  max-height: 250px;
+  height: 32rem; /* altura que você quer testar */
+
   align-self: center; /* reforça que não deve esticar */
   align-items: center;
   justify-content: center;
@@ -27,35 +26,27 @@
   transform: rotate(180deg);
 }
 
-/* 320px ou menos: esconder chevrons */
-@media (max-width: 20rem) {
-  /* 320px */
-  .container {
-    display: none;
-  }
-}
+/* -------------------------
+   Breakpoints
+   ------------------------- */
 
-/* 640px e 1200 / 1200+ usam a mesma altura (37rem) — reforço opcional */
+/* até 640px → altura 28rem */
 @media (max-width: 40rem) {
-  /* <=640px */
   .container {
-    height: 37rem;
-    max-height: 520px;
+    height: 28rem;
   }
 }
 
-@media (max-width: 74.97rem) {
-  /* 641px */
+/* 641px – 1199px → mantém 28rem */
+@media (min-width: 40.01rem) and (max-width: 74.99rem) {
   .container {
-    height: 12rem;
-    max-height: 520px;
+    height: 28rem;
   }
 }
 
+/* >= 1200px → altura 32rem */
 @media (min-width: 75rem) {
-  /* 1200px+ */
   .container {
-    height: 31rem;
-    max-height: 520px;
+    height: 32rem;
   }
 }

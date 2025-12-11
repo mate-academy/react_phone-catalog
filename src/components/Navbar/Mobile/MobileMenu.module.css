@@ -1,0 +1,149 @@
+/* src/components/Navbar/Mobile/MobileMenu.module.css */
+
+/* =========================
+   OVERLAY (fundo da tela)
+   ========================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  z-index: 1000;
+}
+
+/* =========================
+     CONTAINER BG (a "telinha" que fica sobre o overlay)
+     Usa as variáveis definidas em themes.css (:root.light-theme / :root.dark-theme)
+     ========================= */
+
+.containerBg {
+  position: relative;
+  z-index: 1002; /* acima do overlay */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  width: 320px; /* padrão desktop */
+  max-width: 100%;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+
+  /* usa as variáveis globais do tema */
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* =========================
+     MENU INTERNO (conteúdo dentro da telinha)
+     ========================= */
+
+.mobileMenu {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Botão fechar */
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: inherit; /* herda do containerBg */
+}
+
+/* Ícones e badges */
+.iconRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.iconButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.iconCart,
+.iconFavourites {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.favBadge,
+.cartBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 16px;
+  height: 16px;
+  background: var(--badge-color);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid var(--line-color);
+  margin: 16px 0;
+}
+
+/* Links */
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.navLink {
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: inherit;
+}
+
+.navLink:hover {
+  color: var(--link-hover);
+}
+
+/* =========================
+     BREAKPOINTS (larguras da containerBg)
+     ========================= */
+
+/* MOBILE TINY (<= 320px) → width 160px */
+@media (max-width: 320px) {
+  .containerBg {
+    width: 160px;
+  }
+}
+
+/* MOBILE / TABLET (<= 640px) → width 320px */
+@media (max-width: 640px) {
+  .containerBg {
+    width: 320px;
+  }
+}

@@ -1,29 +1,32 @@
+// src/pages/Favorites/Favorites.tsx
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Favorites.module.css';
 import { BrandNewModels } from '../../components/BrandNewModels';
 import { Loader } from '../../components/Loader';
-import Pagination from '../../components/Pagination/Pagination';
 import { Select } from '../../components/Select';
 import { useFavorites } from './FavoritesContext';
+import Search from '../../components/Search';
+import { useSearchVisibility } from '../../context/SearchVisibilityContext';
+import { Product } from '../../types/Product';
 
 export interface FavoritesProps {
   title?: string;
-  perPage?: number;
   dataTestIdPrefix?: string;
 }
 
 const Favorites: React.FC<FavoritesProps> = ({
   title = 'Favoritos',
-  perPage = 5,
   dataTestIdPrefix = 'favorites',
 }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(perPage);
-  const [order, setOrder] = useState('recent');
+  const [order, setOrder] = useState<'recent' | 'alphabetical' | 'cheap'>(
+    'recent',
+  );
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const { favorites, toggleFavorite } = useFavorites();
+  const { favorites } = useFavorites();
+  const { setVisible } = useSearchVisibility();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1000);
@@ -31,7 +34,15 @@ const Favorites: React.FC<FavoritesProps> = ({
     return () => clearTimeout(timer);
   }, []);
 
-  const orderedItems = useMemo(() => {
+  // ativa/desativa barra de busca global
+  useEffect(() => {
+    setVisible(true);
+
+    return () => setVisible(false);
+  }, [setVisible]);
+
+  // ordenação
+  const orderedItems: Product[] = useMemo(() => {
     const items = [...favorites];
 
     if (order === 'alphabetical') {
@@ -47,9 +58,37 @@ const Favorites: React.FC<FavoritesProps> = ({
     return items;
   }, [favorites, order]);
 
-  const start = (currentPage - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  const currentItems = orderedItems.slice(start, end);
+  // filtro por searchQuery
+  const filteredItems: Product[] = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+
+    if (!q) {
+      return orderedItems;
+    }
+
+    return orderedItems.filter(item => {
+      const titleMatch = item.title?.toLowerCase().includes(q);
+      const specsMatch = Object.values(item.specs ?? {})
+        .join(' ')
+        .toLowerCase()
+        .includes(q);
+      const descMatch =
+        typeof item.description === 'string' &&
+        item.description.toLowerCase().includes(q);
+
+      return Boolean(titleMatch || specsMatch || descMatch);
+    });
+  }, [orderedItems, searchQuery]);
+
+  const handleOrderChange = (value: string) => {
+    if (value === 'recent' || value === 'alphabetical' || value === 'cheap') {
+      setOrder(value);
+    }
+  };
+
+  const handleSearch = (term: string) => {
+    setSearchQuery(term);
+  };
 
   if (isLoading) {
     return <Loader message="Carregando favoritos..." />;
@@ -75,14 +114,19 @@ const Favorites: React.FC<FavoritesProps> = ({
   return (
     <main className={styles.container} data-testid={`${dataTestIdPrefix}-page`}>
       <div className={styles.headerRow}>
-        <h1 className={styles.title}>{title}</h1>
-        <div className={styles.actionsRow}>
-          <Select value={order} onChange={setOrder} />
+        <div className={styles.headerLeft}>
+          <h1 className={styles.title}>{title}</h1>
+        </div>
+        <div className={styles.headerRight}>
+          <Search onSearch={handleSearch} />
+          <div className={styles.selectWrapper}>
+            <Select value={order} onChange={handleOrderChange} />
+          </div>
         </div>
       </div>
 
       <div className={styles.grid}>
-        {currentItems.map(p => (
+        {filteredItems.map(p => (
           <div key={p.id} className={styles.cardWrapper}>
             <Link
               to={`/product/${p.id}`}
@@ -99,27 +143,15 @@ const Favorites: React.FC<FavoritesProps> = ({
                 data-testid={`${dataTestIdPrefix}-card-${p.id}`}
               />
             </Link>
-            <button
-              className={styles.removeButton}
-              onClick={() => toggleFavorite(p)}
-              data-testid={`${dataTestIdPrefix}-remove-${p.id}`}
-            >
-              Remover
-            </button>
           </div>
         ))}
-      </div>
 
-      <Pagination
-        total={favorites.length}
-        perPage={itemsPerPage}
-        currentPage={currentPage}
-        onPageChange={page => setCurrentPage(page)}
-        onPerPageChange={newPerPage => {
-          setItemsPerPage(newPerPage);
-          setCurrentPage(1);
-        }}
-      />
+        {filteredItems.length === 0 && (
+          <div className={styles.noResults} data-testid="no-results">
+            Nenhum favorito encontrado
+          </div>
+        )}
+      </div>
     </main>
   );
 };

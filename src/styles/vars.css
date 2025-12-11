@@ -1,7 +1,50 @@
+/* ----------------------------------
+BREAKPOINTS
+----------------------------------- */
 :root {
-  --breakpoint-sm: 600px;
-  --breakpoint-md: 1024px;
+  /* ----------------------------------
+TIPOGRAFIA (Tipografia geral de seções)
+----------------------------------- */
+  --section-title-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial;
+  --section-title-weight: 600;
+  --section-title-color: #0800ff;
+
+  /* Line-height e clamp */
+  --section-title-line-height: 1.2;
+  --section-title-max-lines: 2;
+
+  /* Espaçamentos relacionados */
+  --section-title-gap: 1rem;
+  --section-title-button-gap: 0.5rem;
+
+  /* Breakpoints (px e rem) */
+  --breakpoint-320: 320px; /* 20.00rem */
+  --breakpoint-640: 640px; /* 40.00rem */
+  --breakpoint-1200: 1200px; /* 75.00rem */
+
+  /* Conveniência em rem para media queries */
+  --breakpoint-320-rem: 20rem;
+  --breakpoint-640-rem: 40rem;
+  --breakpoint-1200-rem: 75rem;
+
+  /* Layout */
   --gap: 1rem;
   --container-max: 1200px;
-  --font-base: 16px;
+
+  /* ----------------------------------
+TÍTULO (usado por Banner)
+----------------------------------- */
+  --banner-title-size-640: 2.2rem;
+  --banner-title-size-1200: 4rem;
+  --banner-title-size-1200-plus: 3rem;
+
+  /* ----------------------------------
+TÍTULOS (usado por Brand New Models, Shop Category, Hot Prices)
+----------------------------------- */
+  --home-section-title-size: 1.25rem;
+  --home-section-title-size-320: 1rem;
+  --home-section-title-size-640: 3rem;
+  --home-section-title-size-1200: 1.12rem;
+  --home-section-title-size-1200-plus: 4rem;
 }

@@ -1,136 +1,483 @@
-/* base */
+/* -----------------------------------------------
+BANNER
+----------------------------------------------- */
+.sectionBanner {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-top: 6rem;
+  background-color: var(--bg-color);
+}
 
-.brandSection {
+.bannerTitle {
+  padding-left: 1.9rem;
+  padding-bottom: 2rem;
+  font-size: var(--banner-title-size-1200-plus);
+  font-weight: 700;
+  max-width: 1440px;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* -----------------------------------------------
+BRAND NEW MODELS
+----------------------------------------------- */
+
+/* container geral da seção */
+.containerGeneral {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
-  box-sizing: border-box;
-  padding-top: 3rem;
   max-width: 1440px;
   margin: 0 auto;
-  background-color: var(--bg-color); /* fundo dinâmico */
-  color: var(--text-color); /* texto dinâmico */
 }
 
-.containerTitle {
+/* bloco de título + botões */
+.brandHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  display: block;
-  align-self: flex-start;
-  padding: 0;
+  max-width: 1440px;
+  margin: 6rem auto 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   box-sizing: border-box;
-  margin: 0;
-  font-size: 1.5rem;
 }
 
-.TitleBanner {
-  padding: 0;
-  margin: 0;
-  margin-top: 2rem;
-  font-size: 1.8rem;
-  color: var(--link-color); /* destaque dinâmico → usa cor de link */
+.brandHeader .title {
+  flex: 1;
+  text-align: left;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.brandGrid {
-  display: grid; /* grid para controlar colunas */
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  width: 110%;
+.brandHeader .titleRowButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.brandScrollerGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -----------------------------------------------
+SHOP CATEGORY
+----------------------------------------------- */
+
+/* -------------------------
+   Header
+   ------------------------- */
+.shopHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  margin: 6rem auto 2rem;
+  padding: 0 2rem;
   box-sizing: border-box;
+}
+
+.titleRow {
+  flex: 1;
+  min-width: 0; /* evita compressão do título */
+}
+
+.shopTitle {
+  font-weight: 700;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* -------------------------
+     Container + grid
+     ------------------------- */
+.shopContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .shopCategory {
   display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.shopCard {
+  display: flex;
+  flex-direction: column; /* 🔧 empilha conteúdo verticalmente */
+  justify-content: flex-end; /* texto no rodapé */
+  align-items: flex-start; /* 🔧 alinha à esquerda */
+  padding: 1rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.75rem;
+  min-height: 200px;
+  color: #fff;
+}
+
+.textContent {
+  text-align: left; /* 🔧 garante alinhamento à esquerda */
+  width: 100%; /* ocupa toda a largura disponível */
+}
+
+.textContent h3,
+.textContent p {
+  margin: 0;
+  text-align: left; /* reforça alinhamento à esquerda */
+}
+
+/* -----------------------------------------------
+HOT PRICES
+----------------------------------------------- */
+
+/* container geral da seção (igual ao containerGeneral de Brand) */
+.hotContainerGeneral {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-bottom: 5rem;
 }
 
-.titleBlank {
-  color: var(--bg-color); /* usa cor de fundo para "esconder" */
-  font-size: 1px;
-  margin: 0;
-  padding: 0;
-}
-
-/* linha de título + botões */
-.titleRow {
+/* bloco de título + botões (igual ao brandHeader) */
+.hotHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 110%;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--text-color);
+  width: 100%;
+  max-width: 1440px;
+  margin: 6rem auto 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
 }
 
-.titleRowButtons {
+/* wrapper do título (igual ao .brandHeader .titleRow) */
+.hotHeader .titleRow {
+  /* importante: mesma hierarquia e classe usada em Brand */
+  width: 13rem; /* mesmo valor do Brand nos breakpoints */
+  flex-shrink: 0; /* evita compressão pelo container, replicando Brand */
+}
+
+/* título (igual ao .brandHeader .title) */
+.hotHeader .title {
+  flex: 1;
+  text-align: left;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* botões (igual ao .brandHeader .titleRowButtons) */
+.hotTitleRowButtons {
   display: flex;
+  flex-direction: row;
   gap: 0.5rem;
 }
 
-.titleRowButtons img {
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  transition: transform 0.2s ease;
-  filter: var(--icon-filter, none);
+/* grid de cards (igual ao .brandScrollerGrid) */
+.hotScrollerGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.titleRowButtons img:hover {
-  transform: scale(1.1);
-}
+/* -----------------------------------------------
+BREAKPOINTS
+----------------------------------------------- */
 
-.ProductCatalog {
-  font-size: 1px;
-  color: var(--bg-color);
-}
-
-/* =====≤640px===== */
-@media (max-width: 640px) {
-  .brandSection {
-    padding: 16px;
-    gap: 16px;
+/* <= 320px (mobile pequeno) */
+@media (max-width: 20rem) {
+  .bannerTitle {
+    font-size: var(--banner-title-size-640);
+    padding-left: 1rem;
+    padding-bottom: 1rem;
   }
 
-  .containerTitle {
+  .hotTitleRowButtons button {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 auto;
+    padding: 0;
+  }
+
+  .brandHeader {
     padding: 0 1rem;
-    font-size: 0.87rem;
-    color: var(--text-color);
   }
 
-  .brandGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .brandHeader .titleRow {
+    width: 13rem; /* define largura fixa */
+    flex-shrink: 0; /* evita que o título seja comprimido */
+  }
+
+  .brandHeader .title {
+    font-size: 1.5rem;
+    max-width: calc(100% - 60px); /* reserva espaço para botões */
+    white-space: normal; /* permite quebra de linha */
+    word-break: break-word; /* quebra palavras longas se necessário */
+    overflow-wrap: break-word; /* alternativa para navegadores */
+  }
+
+  .brandHeader .titleRowButtons {
+    width: 60px; /* 2 botões de 24px + gap */
+    justify-content: flex-end;
+  }
+
+  .brandHeader .titleRowButtons button {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 auto;
+    padding: 0;
+  }
+
+  .brandScrollerGrid {
+    display: flex;
+    flex-wrap: nowrap; /* não quebra linha */
+    justify-content: flex-start; /* começa da esquerda */
+    gap: 1rem;
+    width: 100%;
+    overflow-x: auto; /* scroll horizontal */
+    scroll-snap-type: x mandatory; /* opcional: snap para UX */
+  }
+
+  .brandScrollerGrid > * {
+    flex: 0 0 70%; /* cada card ocupa ~70% da largura */
+    scroll-snap-align: start; /* opcional: snap alinhado */
+  }
+
+  .hotHeader {
+    padding: 0 1rem;
+  }
+
+  .hotHeader .titleRow {
+    width: 13rem; /* igual ao Brand */
+    flex-shrink: 0;
+  }
+
+  .hotHeader .title {
+    font-size: 1.5rem;
+    max-width: calc(100% - 60px); /* reserva espaço para botões */
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hotTitleRowButtons {
+    width: 60px; /* 2 botões de 24px + gap */
+    justify-content: flex-end;
+  }
+
+  .hotScrollerGrid {
+    display: flex;
+    flex-wrap: nowrap; /* não quebra linha */
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+    overflow-x: auto; /* scroll horizontal */
+    scroll-snap-type: x mandatory;
+  }
+
+  .hotScrollerGrid > * {
+    flex: 0 0 70%; /* 1 inteiro + 2º parcial */
+    scroll-snap-align: start;
+  }
+
+  .shopHeader {
+    padding: 0 1rem;
+  }
+
+  .shopTitle {
+    font-size: 1.5rem;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .shopCategory {
+    display: flex;
+    flex-direction: column; /* 🔧 cards em coluna */
+    gap: 1rem; /* espaçamento vertical entre os cards */
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .shopCategory > * {
+    flex: 1 1 auto;
+  }
+
+  .shopCard {
+    min-height: 180px;
+  }
+}
+
+/* 321px – 640px (mobile médio) */
+@media (min-width: 20.01rem) and (max-width: 40rem) {
+  .bannerTitle {
+    font-size: var(--banner-title-size-640);
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .brandScrollerGrid {
+    gap: 1rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .shopTitle {
+    font-size: 1.75rem;
+  }
+  .shopCategory {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
     gap: 1rem;
   }
 
-  .titleRowButtons img {
-    width: 20px;
-    height: 20px;
+  .shopCategory > * {
+    flex: 0 0 calc(40% - 1rem);
   }
 }
 
-/* =====≤320px===== */
-@media (max-width: 320px) {
-  .brandSection {
-    padding: 12px;
-    gap: 12px;
+/* 641px – 1199px (tablet / desktop médio) */
+@media (min-width: 40.01rem) and (max-width: 74.99rem) {
+  .bannerTitle {
+    font-size: var(--banner-title-size-1200);
+    padding-left: 2rem;
+    padding-bottom: 2rem;
   }
 
-  .containerTitle {
-    padding: 0 0.75rem;
-    font-size: 0.85rem;
-    color: var(--text-color);
+  .titleRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .brandGrid {
-    grid-template-columns: 1fr; /* uma coluna */
-    gap: 0.75rem;
+  .brandScrollerGrid {
+    display: flex;
+    flex-wrap: nowrap; /* não quebra linha */
+    justify-content: flex-start; /* começa da esquerda */
+    gap: 1.25rem;
+    width: 100%;
+    overflow-x: auto; /* permite scroll horizontal */
+    scroll-snap-type: x mandatory; /* opcional: snap para melhor UX */
   }
 
-  .titleRowButtons img {
-    width: 18px;
-    height: 18px;
+  .hotScrollerGrid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .hotScrollerGrid > * {
+    flex: 0 0 calc(50% - 0.75rem); /* 2 inteiros + 3º parcial */
+  }
+
+  .hotTitleRowButtons button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .shopTitle {
+    font-size: 2rem;
+  }
+
+  .shopCategory {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 1.25rem;
+  }
+
+  .shopCategory > * {
+    flex: 0 0 calc(25% - 1rem);
+  }
+}
+
+/* >= 1200px (desktop grande) */
+@media (min-width: 75rem) {
+  .bannerTitle {
+    font-size: var(--banner-title-size-1200-plus);
+    padding-left: 1.9rem;
+    padding-bottom: 2rem;
+  }
+
+  .brandScrollerGrid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .brandScrollerGrid > * {
+    flex: 0 0 calc(25% - 1rem); /* 4 cards por linha */
+  }
+
+  .hotScrollerGrid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .hotScrollerGrid > * {
+    flex: 0 0 calc(25% - 1rem); /* 4 cards por linha */
+  }
+
+  .hotTitleRowButtons button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .shopTitle {
+    font-size: 2.25rem;
+  }
+  .shopCategory {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1.25rem;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* 3 cards por linha */
+  .shopCategory > * {
+    flex: 0 0 calc(25% - 1rem);
   }
 }

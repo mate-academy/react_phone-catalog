@@ -1,144 +1,86 @@
 /* =========================
-     BASE / LAYOUT
-     ========================= */
+   BASE / LAYOUT
+   ========================= */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: var(--navbar-height);
+  height: var(--navbar-height, 64px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
   background: var(--bg-color);
   border-bottom: 1px solid var(--line-color);
   z-index: 9999;
   box-sizing: border-box;
-  box-shadow: rgba(0, 0, 0, 5);
 }
 
 .leftGroup {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 10px;
 }
 
+.iconRightGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+/* LOGO com 50px da margem esquerda */
 .logoLink {
+  margin-left: 50px;
   display: inline-flex;
   align-items: center;
-  text-decoration: none;
 }
 
 .logo {
-  height: 1.5rem;
-  width: 4rem;
-  display: block;
+  height: 2rem;
+  width: 5rem;
   object-fit: contain;
 }
 
-/* =========================
-     HAMBURGER (mobile)
-     ========================= */
-.hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 4px;
-  background: transparent;
-  border: 0;
-  padding: 8px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10001;
-}
-
-.bar {
-  width: 22px;
-  height: 2px;
-  background: var(--text);
-  display: block;
-  border-radius: 2px;
-}
-
-/* =========================
-     LINKS PRINCIPAIS
-     ========================= */
+/* MENU LINKS (horizontal, 50px após a logo) */
 .menu {
-  position: fixed;
-  top: calc(var(--navbar-height));
-  right: 0;
-  left: 0;
-  transform: translateY(-10%);
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-  padding: 16px;
-  box-shadow: var(--shadow);
-  display: none;
-  z-index: 10000;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 }
 
-.menuOpen,
-.menu[aria-hidden='false'] {
-  display: block;
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.menu ul {
+.menuList {
+  display: flex;
+  gap: 24px;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.menuList a {
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.linkContainer {
-  position: relative;
 }
 
 .navLink {
   color: var(--text-muted);
   text-decoration: none;
-  font-weight: 800;
-  transition: color 0.2s ease;
+  font-weight: 700;
   padding: 6px 4px;
-  display: inline-block;
+  transition: color 0.2s ease;
 }
 
-/* linha decorativa (hover / active) */
-.linkContainer::after {
-  content: '';
-  position: absolute;
-  bottom: -29px;
-  left: 0;
-  height: 4px;
-  width: 100%;
-  background-color: red;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.2s ease;
+.navLink:hover {
+  color: var(--text-color);
 }
 
-.linkContainer:hover::after {
-  transform: scaleX(1);
+.activeLink {
+  color: var(--text-color);
 }
 
-/* =========================
-     ICONS (favoritos + carrinho)
-     ========================= */
+/* ÍCONES à direita com 50px de margem e 30px entre eles */
+.containerIcon {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-right: 1rem;
+}
 
-/* wrapper clicável do ícone (referência para badge) */
 .iconButton {
   position: relative;
   display: inline-flex;
@@ -148,364 +90,142 @@
   border-radius: 6px;
   text-decoration: none;
   color: inherit;
-  min-width: 48px; /* evita que o wrapper fique menor que o ícone */
-  min-height: 48px;
-  box-sizing: border-box;
 }
 
-/* evita que regras globais de img encolham os ícones */
-.containerIcon img,
-.iconButton img {
-  max-width: none;
-  width: auto;
-  height: auto;
-}
-
-/* ícones: tamanho explícito e sem !important para manter previsibilidade */
 .iconCart,
 .iconFavourites {
-  width: 48px;
-  height: 48px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
-  display: block;
 }
 
-/* badge circular sobreposto no canto superior direito */
-.favBadge {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  margin-top: 12px;
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  background: var(--badge-color);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1;
-  border-radius: 999px;
-  transform: translate(0, -25%);
-  pointer-events: none;
-  white-space: nowrap;
-}
-
+.favBadge,
 .cartBadge {
   position: absolute;
   top: 2px;
   right: 2px;
-  margin-top: 9px;
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   min-width: 20px;
   height: 20px;
   background: var(--badge-color);
   color: #fff;
   font-size: 12px;
   font-weight: 800;
-  line-height: 1;
   border-radius: 999px;
-  transform: translate(0, -25%);
-  pointer-events: none;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ajuste para números maiores */
-.cartBadge[data-testid],
-.favBadge[data-testid] {
-  padding-left: 0;
-  padding-right: 0;
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.bar {
+  width: 22px;
+  height: 2px;
+  background: var(--text-color);
+  border-radius: 2px;
 }
 
 /* =========================
-     MENU / LAYOUT RESPONSIVO
+     RESPONSIVO
      ========================= */
 
 /* MOBILE TINY (<= 320px) */
-@media (max-width: 20rem) {
+@media (max-width: 320px) {
+  .menuList {
+    display: none !important;
+  }
+
+  .containerIcon {
+    display: none !important;
+  }
+
+  .logoLink {
+    margin-left: 20px;
+  }
+
   .hamburger {
-    display: inline-flex;
-    z-index: 10001;
-  }
-
-  .leftGroup > .logo {
-    display: inline-block;
-  }
-
-  .menu,
-  .menu ul,
-  .navCenter,
-  .menuList,
-  .linkContainer,
-  .navLink {
-    display: none !important;
-  }
-
-  .containerIcon,
-  .iconCart,
-  .iconFavourites {
-    display: none !important;
-  }
-
-  .menuOpen,
-  .menu[aria-hidden='false'] {
-    display: block !important;
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+    display: inline-flex !important;
+    margin-right: 30px;
   }
 }
 
 /* MOBILE / TABLET (<= 640px) */
-@media (max-width: 40rem) {
+@media (max-width: 640px) {
   .navbar {
-    padding: 12px;
-    justify-content: space-between;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    align-items: center;
-    height: var(--navbar-height);
+    height: 56px;
+    padding: 0 12px;
   }
 
-  .logo {
-    height: 1.5rem;
-    width: 4rem;
-    margin: 8px 12px;
-  }
-
-  .hamburger {
-    display: inline-flex;
-  }
-
-  .menu {
-    position: fixed;
-    top: calc(var(--navbar-height));
-    left: 0;
-    right: 0;
-    padding: 12px;
-    box-shadow: var(--shadow);
-    display: none;
-  }
-
-  .menuOpen,
-  .menu[aria-hidden='false'] {
-    display: block;
-  }
-
-  .menu ul {
-    gap: 12px;
-  }
-
-  .leftGroup {
-    gap: 1rem;
+  .menuList {
+    display: none !important; /* ✅ esconde links horizontais */
   }
 
   .containerIcon {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-}
-
-/* DESKTOP MÉDIO (641px — 1199px) */
-@media (min-width: 40.06rem) and (max-width: 74.93rem) {
-  .navbar {
-    justify-content: flex-start;
-    gap: 1.5rem;
-    padding: 8px 12px;
-    height: var(--navbar-height);
+    display: none !important; /* ✅ esconde ícones à direita */
   }
 
-  .logo {
-    height: 2rem;
-    width: 5rem;
-    margin: 16px;
+  .logoLink {
+    margin-left: 20px;
   }
 
   .hamburger {
-    display: none;
-  }
-
-  .menu {
-    position: static;
-    transform: none;
-    opacity: 1;
-    pointer-events: auto;
-    background: transparent;
-    box-shadow: none;
-    display: block;
-  }
-
-  .menu ul {
-    flex-direction: row;
-    gap: 20px;
-    align-items: center;
-  }
-
-  .containerIcon {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1;
-  }
-
-  .leftGroup {
-    gap: 1.25rem;
-  }
-
-  .linkContainer::after {
-    bottom: -28px;
+    display: inline-flex !important; /* ✅ mostra hamburger */
+    margin-right: 30px;
   }
 }
 
-/* TABLET (≥640px) */
-@media (min-width: 640px) {
-  :root {
-    --navbar-height: 72px;
-  }
-
+/* DESKTOP MÉDIO (641px–1199px) */
+@media (min-width: 641px) and (max-width: 1199px) {
   .navbar {
-    justify-content: flex-start;
-    gap: 2rem;
-    padding: 0;
-    height: var(--navbar-height);
+    height: 56px;
+    padding: 0 12px;
   }
 
-  .logo {
-    height: 2rem;
-    width: 5rem;
-    margin: 24px;
+  .menuList {
+    display: none !important;
+  }
+
+  .containerIcon {
+    display: none !important;
+  }
+
+  .logoLink {
+    margin-left: 20px;
   }
 
   .hamburger {
-    display: none;
-  }
-
-  .menu {
-    position: static;
-    transform: none;
-    opacity: 1;
-    pointer-events: auto;
-    background: transparent;
-    box-shadow: none;
-    display: block;
-  }
-
-  .menu ul {
-    flex-direction: row;
-    gap: 24px;
-    align-items: center;
-  }
-
-  .containerIcon {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1;
-  }
-
-  .linkContainer::after {
-    content: '';
-    position: absolute;
-    bottom: -29px;
-    left: 0;
-    height: 4px;
-    width: 100%;
-    background-color: var(--text);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.2s ease;
-  }
-
-  .linkContainer:hover::after {
-    transform: scaleX(1);
+    display: inline-flex !important;
+    margin-right: 30px;
   }
 }
 
-/* DESKTOP (≥1200px) */
+/* DESKTOP GRANDE (>=1200px) */
 @media (min-width: 1200px) {
-  .logo {
-    height: 2rem;
-    width: 5rem;
-    margin: 24px;
+  .logoLink {
+    margin-left: 50px;
+  }
+
+  .menu {
+    margin-left: 50px;
+  }
+
+  .containerIcon {
+    margin-right: 50px;
+    gap: 30px;
   }
 
   .hamburger {
     display: none !important;
-  }
-
-  .menu {
-    display: flex !important;
-    gap: 1rem;
-    align-items: center;
-    background: transparent;
-    box-shadow: none;
-    transform: none;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .menu[aria-hidden='true'],
-  .menu.menuOpen {
-    display: flex !important;
-  }
-}
-
-/* =========================
-     UTILITÁRIOS / A11Y
-     ========================= */
-.iconButton:focus {
-  outline: 2px solid rgba(0, 0, 0, 0.08);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-.hamburger:focus,
-.navLink:focus {
-  outline: 2px solid rgba(0, 0, 0, 0.08);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-/* =========================
-     OVERRIDES PARA CASOS ESPECÍFICOS
-     ========================= */
-
-/* Se existir uma regra global img { max-width: 100% }, garantimos que
-     os ícones da navbar não sejam afetados. */
-.containerIcon img,
-.iconButton img,
-.logo,
-.iconCart,
-.iconFavourites {
-  max-width: none;
-  box-sizing: content-box;
-}
-
-/* Aumenta ícones em telas maiores para melhor legibilidade */
-@media (min-width: 640px) {
-  .iconCart,
-  .iconFavourites {
-    width: 32px;
-    height: 32px;
-  }
-
-  .iconButton {
-    min-width: 48px;
-    min-height: 48px;
-  }
-
-  .cartBadge {
-    top: 6px;
-    right: 8px;
-    min-width: 20px;
-    height: 20px;
-    font-size: 12px;
-    transform: translate(0, -30%);
   }
 }

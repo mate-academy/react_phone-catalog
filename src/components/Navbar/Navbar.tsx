@@ -1,8 +1,4 @@
 // src/components/Navbar/Navbar.tsx
-
-// ======================
-// BLOCO IMPORT
-// ======================
 import React, {
   useState,
   useMemo,
@@ -23,55 +19,15 @@ import { useFavorites } from '../../pages/Favorites/FavoritesContext';
 import { useTheme } from '../../context/ThemeContext';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
+import { MobileMenu } from './Mobile';
 
-// ======================
-// BLOCO TYPES
-// ======================
 type LinkItem = { id: string; label: string; href: string };
 type Props = { links?: LinkItem[] };
 
-// Type guard to avoid `any` and satisfy ESLint
-const isLinkItem = (obj: unknown): obj is LinkItem => {
-  if (typeof obj !== 'object' || obj === null) {
-    return false;
-  }
-
-  const rec = obj as Record<string, unknown>;
-
-  return (
-    typeof rec.id === 'string' &&
-    typeof rec.label === 'string' &&
-    typeof rec.href === 'string'
-  );
-};
-
-// ======================
-// BLOCO COMPONENTE (export default)
-// ======================
 export default function Navbar({ links }: Props): JSX.Element {
-  // BLOCO STATE
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  // BLOCO REFS (para a11y / foco)
-  const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
 
-  // BLOCO VALIDATION (runtime leve) sem utilizar `any`
-  const validateLinks = (maybe: unknown): LinkItem[] | null => {
-    if (!Array.isArray(maybe)) {
-      return null;
-    }
-
-    for (const item of maybe) {
-      if (!isLinkItem(item)) {
-        return null;
-      }
-    }
-
-    return maybe as LinkItem[];
-  };
-
-  // BLOCO DEFAULT LINKS (runtime)
   const defaultLinks: LinkItem[] = useMemo(
     () => [
       { id: 'home', label: 'HOME', href: '/' },
@@ -82,121 +38,38 @@ export default function Navbar({ links }: Props): JSX.Element {
     [],
   );
 
-  // BLOCO effectiveLinks com useMemo para evitar recomputações desnecessárias
-  const effectiveLinks: LinkItem[] = useMemo(() => {
-    const validated = validateLinks(links);
+  const effectiveLinks = links ?? defaultLinks;
 
-    return validated ?? defaultLinks;
-  }, [links, defaultLinks]);
-
-  // BLOCO HANDLERS com useCallback para manter referências estáveis
-  const toggle = useCallback(() => {
-    setIsOpen(v => !v);
-  }, []);
-
+  const toggle = useCallback(() => setIsOpen(v => !v), []);
   const close = useCallback(() => {
     setIsOpen(false);
-    // devolver foco ao botão hamburguer para boa experiência de teclado
     hamburgerRef.current?.focus();
   }, []);
 
-  // BLOCO EFFECTS: teclado, resize e foco
   useEffect(() => {
-    const onKey = (ev: KeyboardEvent) => {
-      if (ev.key === 'Escape') {
-        setIsOpen(false);
-        hamburgerRef.current?.focus();
-      }
-    };
-
     const onResize = () => {
       if (window.innerWidth >= 1200) {
         setIsOpen(false);
       }
     };
 
-    window.addEventListener('keydown', onKey);
     window.addEventListener('resize', onResize);
 
-    return () => {
-      window.removeEventListener('keydown', onKey);
-      window.removeEventListener('resize', onResize);
-    };
+    return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  // BLOCO EFFECT: mover foco para o primeiro link quando abrir
-  useEffect(() => {
-    if (isOpen) {
-      const id = window.setTimeout(() => {
-        firstLinkRef.current?.focus();
-      }, 0);
-
-      return () => window.clearTimeout(id);
-    }
-
-    return;
-  }, [isOpen]);
-
-  // BLOCO EFFECT: evitar scroll do body quando menu aberto
-  useEffect(() => {
-    if (isOpen) {
-      const prev = document.body.style.overflow;
-
-      document.body.style.overflow = 'hidden';
-
-      return () => {
-        document.body.style.overflow = prev;
-      };
-    }
-
-    return;
-  }, [isOpen]);
-
-  // BLOCO RENDER HELPERS
   const location = useLocation();
-
-  const renderLinks = useCallback(
-    (items: LinkItem[]) =>
-      items.map((link, idx) => {
-        const isActive = location.pathname === link.href;
-
-        return (
-          <li key={link.id}>
-            <div className={styles.linkContainer}>
-              <Link
-                to={link.href}
-                onClick={close}
-                ref={idx === 0 ? firstLinkRef : undefined}
-                aria-current={isActive ? 'page' : undefined}
-                className={`${styles.navLink} ${isActive ? styles.activeLink : ''}`}
-              >
-                {link.label}
-              </Link>
-            </div>
-          </li>
-        );
-      }),
-    [close, location.pathname],
-  );
-
-  // ======================
-  // BLOCO CART (consome contexto do carrinho)
-  // ======================
   const { totalQty } = useCart();
-
-  // BLOCO FAVORITES (consome contexto de favoritos)
   const { favorites } = useFavorites();
-
-  // BLOCO THEME (consome contexto de tema)
   const { theme } = useTheme();
 
-  // Escolhe os ícones corretos conforme o tema
   const CartIcon = theme === 'light' ? CartWhite : CartDark;
   const FavIcon = theme === 'light' ? FavouritesWhite : FavouritesDark;
 
-  // BLOCO RENDER
   return (
-    <header className={styles.navbar}>
+    <header
+      className={`${styles.navbar} ${theme === 'light' ? 'theme-light' : 'theme-dark'}`}
+    >
       <div className={styles.leftGroup}>
         <Link
           to="/"
@@ -209,6 +82,27 @@ export default function Navbar({ links }: Props): JSX.Element {
             <img src={logoMobile} alt="Logo" className={styles.logo} />
           </picture>
         </Link>
+
+        <nav id="primary-navigation" className={styles.menu} role="navigation">
+          <ul className={styles.menuList}>
+            {effectiveLinks.map(link => {
+              const isActive = location.pathname === link.href;
+
+              return (
+                <li key={link.id}>
+                  <Link
+                    to={link.href}
+                    onClick={close}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`${styles.navLink} ${isActive ? styles.activeLink : ''}`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
 
       <button
@@ -216,7 +110,6 @@ export default function Navbar({ links }: Props): JSX.Element {
         className={styles.hamburger}
         aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
         aria-expanded={String(isOpen)}
-        aria-controls="primary-navigation"
         onClick={toggle}
         type="button"
       >
@@ -225,56 +118,28 @@ export default function Navbar({ links }: Props): JSX.Element {
         <span className={styles.bar} />
       </button>
 
-      <nav
-        id="primary-navigation"
-        className={`${styles.menu} ${isOpen ? styles.menuOpen : ''}`}
-        aria-hidden={String(!isOpen)}
-        role="navigation"
-      >
-        <ul className={styles.menuList}>{renderLinks(effectiveLinks)}</ul>
-      </nav>
-
-      {/* ======================
-          BLOCO ICONS (Favourites + Cart com badge e rota /cart)
-          ====================== */}
       <div className={styles.containerIcon}>
-        <LanguageSwitcher />
-        <ThemeToggle />
+        <div className={styles.iconRightGroup}>
+          <LanguageSwitcher />
+          <ThemeToggle />
+        </div>
         <Link
           to="/favorites"
           className={styles.iconButton}
           aria-label="Favoritos"
-          data-testid="nav-favorites-link"
         >
-          <FavIcon className={styles.iconFavourites} aria-hidden="true" />
+          <FavIcon className={styles.iconFavourites} />
           {favorites.length > 0 && (
-            <span
-              className={styles.favBadge}
-              aria-live="polite"
-              data-testid="nav-favorites-qty"
-            >
-              {favorites.length}
-            </span>
+            <span className={styles.favBadge}>{favorites.length}</span>
           )}
         </Link>
-        <Link
-          to="/cart"
-          className={styles.iconButton}
-          aria-label="Ver carrinho"
-          data-testid="nav-cart-link"
-        >
-          <CartIcon className={styles.iconCart} aria-hidden="true" />
-          {totalQty > 0 && (
-            <span
-              className={styles.cartBadge}
-              aria-live="polite"
-              data-testid="nav-cart-qty"
-            >
-              {totalQty}
-            </span>
-          )}
+        <Link to="/cart" className={styles.iconButton} aria-label="Carrinho">
+          <CartIcon className={styles.iconCart} />
+          {totalQty > 0 && <span className={styles.cartBadge}>{totalQty}</span>}
         </Link>
       </div>
+
+      {isOpen && <MobileMenu links={effectiveLinks} onClose={close} />}
     </header>
   );
 }

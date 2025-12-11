@@ -14,7 +14,10 @@ export type BannerProps = {
   className?: string;
   'data-testid'?: string;
   showIndicators?: boolean;
+  mobileImages?: string[]; // opcional: imagens mobile na mesma ordem de bannerImages
 };
+
+const MOBILE_QUERY = '(max-width: 20rem)'; // 20rem = 320px
 
 const Banner: React.FC<BannerProps> = ({
   title,
@@ -23,48 +26,110 @@ const Banner: React.FC<BannerProps> = ({
   className = '',
   'data-testid': dataTestId = 'banner',
   showIndicators = true,
+  mobileImages,
 }) => {
+  const slides = Array.isArray(bannerImages) ? (bannerImages as string[]) : [];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(false);
+  const [isMobileTiny, setIsMobileTiny] = useState<boolean>(() =>
+    typeof window !== 'undefined'
+      ? window.matchMedia(MOBILE_QUERY).matches
+      : false,
+  );
 
-  // autoplay a cada 5 segundos
   useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) {
+      return;
+    }
+
+    const mq = window.matchMedia(MOBILE_QUERY);
+    const handler = (ev: MediaQueryListEvent | MediaQueryList) => {
+      setIsMobileTiny(ev.matches);
+    };
+
+    setIsMobileTiny(mq.matches);
+
+    if (typeof mq.addEventListener === 'function') {
+      mq.addEventListener('change', handler as EventListener);
+
+      return () => mq.removeEventListener('change', handler as EventListener);
+    } else if (typeof mq.addListener === 'function') {
+      mq.addListener(handler as (ev: MediaQueryListEvent) => void);
+
+      return () =>
+        mq.removeListener(handler as (ev: MediaQueryListEvent) => void);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!slides.length) {
+      return;
+    }
+
     const interval = setInterval(() => {
       setFade(true);
       setTimeout(() => {
-        setCurrentIndex(prev => (prev + 1) % bannerImages.length);
+        setCurrentIndex(prev => (prev + 1) % slides.length);
         setFade(false);
-      }, 500); // tempo do fade
-    }, 5000); // intervalo de troca
+      }, 500);
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [slides.length]);
 
   const handlePrev = () => {
+    if (!slides.length) {
+      return;
+    }
+
     setFade(true);
     setTimeout(() => {
-      setCurrentIndex(
-        prev => (prev - 1 + bannerImages.length) % bannerImages.length,
-      );
+      setCurrentIndex(prev => (prev - 1 + slides.length) % slides.length);
       setFade(false);
     }, 500);
   };
 
   const handleNext = () => {
+    if (!slides.length) {
+      return;
+    }
+
     setFade(true);
     setTimeout(() => {
-      setCurrentIndex(prev => (prev + 1) % bannerImages.length);
+      setCurrentIndex(prev => (prev + 1) % slides.length);
       setFade(false);
     }, 500);
   };
 
   const handleDotClick = (index: number) => {
+    if (!slides.length) {
+      return;
+    }
+
     setFade(true);
     setTimeout(() => {
       setCurrentIndex(index);
       setFade(false);
     }, 500);
   };
+
+  const getCurrentImage = () => {
+    if (!slides.length) {
+      return '';
+    }
+
+    if (
+      isMobileTiny &&
+      Array.isArray(mobileImages) &&
+      mobileImages[currentIndex]
+    ) {
+      return mobileImages[currentIndex];
+    }
+
+    return slides[currentIndex];
+  };
+
+  const currentImageUrl = getCurrentImage();
 
   return (
     <section className={styles.containerBlock}>
@@ -94,7 +159,14 @@ const Banner: React.FC<BannerProps> = ({
           data-testid={dataTestId}
           role="region"
           aria-label="Banner"
-          style={{ backgroundImage: `url(${bannerImages[currentIndex]})` }}
+          style={{
+            backgroundImage: currentImageUrl
+              ? `url(${currentImageUrl})`
+              : undefined,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
         />
 
         <div className={`${styles.side} ${styles.right}`}>
@@ -113,7 +185,7 @@ const Banner: React.FC<BannerProps> = ({
           data-testid="banner-indicators"
         >
           <IndicatorDots
-            count={bannerImages.length}
+            count={slides.length}
             activeIndex={currentIndex}
             width={14}
             activeWidth={14}

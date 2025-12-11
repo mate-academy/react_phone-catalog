@@ -1,58 +1,79 @@
 .container {
-  padding: 0 2rem;
+  padding-right: 95px;
+  padding-left: 95px;
   margin: 0;
-  color: var(--text-color); /* ✅ texto dinâmico */
+  color: var(--text-color);
 }
 
 /* Cabeçalho com título à esquerda e ações à direita */
 .headerRow {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* título à esquerda, ações à direita */
   align-items: center;
-  margin-top: 7rem; /* espaço superior sem exagero */
+  margin-top: 7rem;
   margin-bottom: 2rem;
-  color: var(--text-color); /* ✅ texto dinâmico */
+  color: var(--text-color);
 }
 
-/* Título sem grandes deslocamentos */
+.headerLeft {
+  display: flex;
+  align-items: center;
+}
+
 .title {
   font-size: 2rem;
   margin: 0;
   padding: 0;
   text-align: left;
-  color: var(--text-color); /* ✅ texto dinâmico */
+  color: var(--text-color);
 }
 
-/* Linha de ações: Select + link "Ver todos" */
+/* Agrupa Search, Select e Link à direita */
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* distância de 30px entre cada elemento */
+}
+
+/* Search ocupa espaço flexível */
+.headerRight > :first-child {
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+
+/* Select (ordenar por) */
 .actionsRow {
   display: flex;
   align-items: center;
-  margin: 0;
-  padding: 0;
-  gap: 30px;
-  color: var(--text-color); /* ✅ texto dinâmico */
+  flex: 0 0 auto;
 }
 
-.label,
-.select {
-  margin: 0;
-  color: var(--text-color); /* ✅ texto dinâmico */
-}
-
-/* Link "Ver todos" sem paddings grandes */
+/* Link "Ver todos" */
 .viewAllLink {
-  margin: 0;
-  padding: 0;
+  flex: 0 0 auto;
   font-weight: 600;
-  color: var(--link-color); /* ✅ link dinâmico */
+  color: var(--link-color);
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .viewAllLink:hover {
-  color: var(--link-hover); /* ✅ hover dinâmico */
+  color: var(--link-hover);
   text-decoration: none;
+}
+
+/* Mensagem de nenhum resultado */
+.noResults {
+  width: 100%;
+  text-align: center;
+  padding: 28px 12px;
+  color: #667;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  margin-top: 12px;
 }
 
 /* Grid dos cards */
@@ -63,15 +84,6 @@
   justify-content: center;
 }
 
-/* Cada card com largura fixa para alinhamento consistente */
 .grid > * {
   flex: 0 1 320px;
-}
-
-/* Container opcional para outras ações (se necessário) */
-.showAll {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--text-color); /* ✅ texto dinâmico */
 }

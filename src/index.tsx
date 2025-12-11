@@ -1,10 +1,14 @@
 // src/index.tsx
+
+import './styles/vars.css';
+import './App.module.css';
+import './../src/styles/themes.css';
 import React from 'react';
+import { App } from './App';
 import i18n from './i18n';
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
 import { ThemeProvider } from './../src/context/ThemeContext';
-import './../src/styles/themes.css';
+import { SearchVisibilityProvider } from './context/SearchVisibilityContext';
 
 export default function LanguageSwitcher() {
   return (
@@ -22,7 +26,9 @@ export default function LanguageSwitcher() {
 createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider>
-      <App />
+      <SearchVisibilityProvider>
+        <App />
+      </SearchVisibilityProvider>
     </ThemeProvider>
   </React.StrictMode>,
 );

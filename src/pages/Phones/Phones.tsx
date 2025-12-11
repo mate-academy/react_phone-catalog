@@ -1,30 +1,50 @@
-import React, { useState, useEffect } from 'react';
+// src/pages/Phones/Phones.tsx
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import styles from './Phones.module.css';
-import { ViewAllProducts } from '../../pages/ViewAllProducts';
 import { phones, samplePhone } from '../../data/phones';
 import Pagination from '../../components/Pagination/Pagination';
 import { BrandNewModels } from '../../components/BrandNewModels';
 import { Loader } from '../../components/Loader';
 import { Select } from '../../components/Select';
 import { Product } from '../../types/Product';
+import { useSearchVisibility } from '../../context/SearchVisibilityContext';
+import Search from '../../components/Search';
+import { useNavigate } from 'react-router-dom';
 
 type ProductWithDetails = Product & {
   detailsLink?: string;
   detailsAvailable?: boolean;
 };
 
+function specsToString(specs: string | string[] | undefined): string {
+  if (!specs) {
+    return '';
+  }
+
+  return Array.isArray(specs) ? specs.join(' ') : specs;
+}
+
 const Phones: React.FC = () => {
-  const [showAll, setShowAll] = useState(false);
   const [favourites, setFavourites] = useState<Record<string, boolean>>({});
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [isLoading, setIsLoading] = useState(true);
-  const [order, setOrder] = useState('recent');
+  const [order, setOrder] = useState<'recent' | 'alphabetical' | 'cheap'>(
+    'recent',
+  );
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const { setVisible } = useSearchVisibility();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+    setVisible(true);
+
+    return () => setVisible(false);
+  }, [setVisible]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -33,50 +53,64 @@ const Phones: React.FC = () => {
     setFavourites(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  if (isLoading) {
-    return <Loader message="Carregando Phones..." />;
-  }
+  // ordenação
+  const orderedItems: Product[] = useMemo(() => {
+    const arr = [...phones];
 
-  if (showAll) {
-    return (
-      <ViewAllProducts
-        title="Phones"
-        products={phones as Product[]}
-        onBackClick={() => setShowAll(false)}
-        dataTestIdPrefix="phones"
-      />
-    );
-  }
+    if (order === 'alphabetical') {
+      arr.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (order === 'cheap') {
+      arr.sort((a, b) => {
+        const aPrice = Number(String(a.price).replace(/[^\d.-]/g, '')) || 0;
+        const bPrice = Number(String(b.price).replace(/[^\d.-]/g, '')) || 0;
 
-  // aplica ordenação
-  const orderedItems: Product[] = [...phones];
+        return aPrice - bPrice;
+      });
+    }
 
-  if (order === 'alphabetical') {
-    orderedItems.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (order === 'cheap') {
-    orderedItems.sort(
-      (a, b) =>
-        parseFloat(a.price.replace(/[^\d.-]/g, '')) -
-        parseFloat(b.price.replace(/[^\d.-]/g, '')),
-    );
-  }
+    return arr;
+  }, [order]);
 
-  // lógica de paginação
+  // filtro
+  const filteredItems: Product[] = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+
+    if (!q) {
+      return orderedItems;
+    }
+
+    return orderedItems.filter(item => {
+      const titleMatch = item.title?.toLowerCase().includes(q);
+      const specsMatch = specsToString(item.specs).toLowerCase().includes(q);
+      const descMatch =
+        typeof item.description === 'string' &&
+        item.description.toLowerCase().includes(q);
+
+      return Boolean(titleMatch || specsMatch || descMatch);
+    });
+  }, [orderedItems, searchQuery]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, perPage]);
+
+  const handleSearch = useCallback((term: string) => {
+    setSearchQuery(term);
+  }, []);
+
+  // handler tipado para Select
+  const handleOrderChange = (value: string) => {
+    if (value === 'recent' || value === 'alphabetical' || value === 'cheap') {
+      setOrder(value);
+    }
+  };
+
+  // paginação
   const start = (currentPage - 1) * perPage;
   const end = start + perPage;
-  const currentItems: Product[] = orderedItems.slice(start, end);
+  const currentItems: Product[] = filteredItems.slice(start, end);
 
-  /**
-   * Lista explícita de produtos que devem apontar para NotFound.
-   * Ajuste os ids conforme necessário. Alternativa: adicionar
-   * `detailsAvailable: false` ou `detailsLink` no arquivo de dados.
-   */
-  const NOT_FOUND_IDS = new Set<string>([
-    // Exemplo: 'phone-3', 'phone-12'
-    // Adicione aqui os ids que obrigatoriamente devem ir para NotFound
-  ]);
-
-  // helper para decidir a rota de detalhes (DetailsPage ou NotFound)
+  const NOT_FOUND_IDS = new Set<string>([]);
   const getDetailsLink = (prod: ProductWithDetails): string => {
     if (!prod) {
       return '/not-found';
@@ -97,23 +131,32 @@ const Phones: React.FC = () => {
     return `/product/${prod.id}`;
   };
 
-  // evita renderizar samplePhone com link para product se ele não existir no array phones
-  const sampleExistsInPhones = !!(
-    samplePhone && phones.some(p => p.id === samplePhone.id)
+  const sampleExistsInPhones = Boolean(
+    samplePhone && phones.some(p => p.id === samplePhone.id),
   );
+
+  if (isLoading) {
+    return <Loader message="Carregando Phones..." />;
+  }
 
   return (
     <main className={styles.container}>
       <div className={styles.headerRow}>
-        <h1 className={styles.title}>Phones</h1>
+        <div className={styles.headerLeft}>
+          <h1 className={styles.title}>Phones</h1>
+        </div>
 
-        <div className={styles.actionsRow}>
-          <Select value={order} onChange={setOrder} />
+        <div className={styles.headerRight}>
+          <Search onSearch={handleSearch} />
+          <div className={styles.selectWrapper}>
+            <Select value={order} onChange={handleOrderChange} />
+          </div>
           <a
             className={styles.viewAllLink}
-            onClick={() => setShowAll(true)}
+            onClick={() => navigate('/phones/all')}
             data-testid="phones-view-all"
             aria-label="Ver todos os produtos"
+            role="button"
           >
             Ver todos
           </a>
@@ -121,17 +164,15 @@ const Phones: React.FC = () => {
       </div>
 
       <div className={styles.grid}>
-        {/* Renderiza samplePhone somente se ele existir no array `phones`.
-            Caso contrário, evita criar um link para /product/phone-999 que não existe. */}
         {samplePhone && sampleExistsInPhones && (
           <BrandNewModels
             id={samplePhone.id}
             key={samplePhone.id}
             detailsLink={getDetailsLink(samplePhone)}
             title={samplePhone.title}
-            imageSrc={samplePhone.imageSrc}
+            imageSrc={samplePhone.imageSrc ?? ''}
             imageAlt={samplePhone.title}
-            price={samplePhone.price}
+            price={samplePhone.price ?? ''}
             specs={samplePhone.specs}
             onFavouriteClick={() => toggleFavourite(samplePhone.id)}
             isFavourite={!!favourites[samplePhone.id]}
@@ -139,25 +180,31 @@ const Phones: React.FC = () => {
           />
         )}
 
-        {currentItems.map((p: Product) => (
+        {currentItems.map(p => (
           <BrandNewModels
             key={p.id}
             id={p.id}
-            detailsLink={getDetailsLink(p)}
+            detailsLink={getDetailsLink(p as ProductWithDetails)}
             title={p.title}
-            imageSrc={p.imageSrc}
+            imageSrc={p.imageSrc ?? ''}
             imageAlt={p.title}
-            price={p.price}
+            price={p.price ?? ''}
             specs={p.specs}
             onFavouriteClick={() => toggleFavourite(p.id)}
             isFavourite={!!favourites[p.id]}
             data-testid={`phones-card-${p.id}`}
           />
         ))}
+
+        {filteredItems.length === 0 && (
+          <div className={styles.noResults} data-testid="no-results">
+            Nenhum produto encontrado
+          </div>
+        )}
       </div>
 
       <Pagination
-        total={phones.length}
+        total={filteredItems.length}
         perPage={perPage}
         currentPage={currentPage}
         onPageChange={page => setCurrentPage(page)}
