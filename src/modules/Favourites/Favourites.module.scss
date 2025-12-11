@@ -1,3 +1,5 @@
+@use '../shared/styles/mixins' as *;
+
 .favourites {
   margin: 0 1.6rem;
 
@@ -14,6 +16,12 @@
 
   &__items {
     margin: 3.2rem 0 5.6rem;
+
+    @include for-tablets {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(22.9rem, 1fr));
+      gap: 1.6rem;
+    }
   }
 
   h1 {
