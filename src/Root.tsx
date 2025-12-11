@@ -9,6 +9,7 @@ import { Accessories } from './components/Accessories/Accessories';
 import { ItemCard } from './components/ItemCard/ItemCard';
 import { Favourites } from './components/Favourites/Favourites';
 import { Cart } from './components/Cart/Cart';
+import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 
 export const Root = () => (
   <DevicesProvider>
@@ -16,18 +17,26 @@ export const Root = () => (
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" element={<Main />}></Route>
+
           <Route path="aside" element={<Aside />}></Route>
+
           <Route path="phones" element={<Phones />}>
             <Route path=":Id" element={<ItemCard />} />
           </Route>
+
           <Route path="tablets" element={<Tablets />}>
             <Route path=":Id" element={<ItemCard />} />
           </Route>
+
           <Route path="accessories" element={<Accessories />}>
             <Route path=":Id" element={<ItemCard />} />
           </Route>
+
           <Route path="favourites" element={<Favourites />} />
+
           <Route path="cart" element={<Cart />} />
+
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

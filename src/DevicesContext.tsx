@@ -5,6 +5,7 @@ import { getAccessories } from './services/accessories.service';
 import { getPhones } from './services/phones.service';
 import { getTablets } from './services/tablets.service';
 import { getProducts } from './services/products.service';
+import { Cart } from './types/CartOfProducts';
 
 export interface DevicesContextType {
   accessories: Device[];
@@ -37,6 +38,12 @@ export interface DevicesContextType {
   navMenuList: string[];
 
   footerMenuList: string[];
+
+  cart: Cart;
+  setCart: React.Dispatch<React.SetStateAction<Cart>>;
+
+  favourites: Device[];
+  setFavourites: React.Dispatch<React.SetStateAction<Device[]>>;
 }
 
 type Props = {
@@ -59,6 +66,25 @@ export const DevicesProvider: React.FC<Props> = ({ children }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
   const navMenuList = ['home', 'phones', 'tablets', 'accessories'];
   const footerMenuList = ['Github', 'Contacts', 'rights'];
+  const [cart, setCart] = useState<Cart>(() => {
+    const savedCart = localStorage.getItem('cart');
+
+    return savedCart ? JSON.parse(savedCart) : {};
+  });
+
+  const [favourites, setFavourites] = useState<Device[]>(() => {
+    const savedFavourites = localStorage.getItem('favourites');
+
+    return savedFavourites ? JSON.parse(savedFavourites) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem('favourites', JSON.stringify(favourites));
+  }, [favourites]);
 
   useEffect(() => {
     const loadAllData = async () => {
@@ -77,7 +103,7 @@ export const DevicesProvider: React.FC<Props> = ({ children }) => {
         setTablets(tab);
         setProducts(prod);
       } catch (error) {
-        console.error('Error loading context data:', error);
+        throw new Error('Error loading context data:');
       } finally {
         setIsLoading(false);
       }
@@ -147,6 +173,10 @@ export const DevicesProvider: React.FC<Props> = ({ children }) => {
         setIsMobile,
         navMenuList,
         footerMenuList,
+        cart,
+        setCart,
+        favourites,
+        setFavourites,
       }}
     >
       {children}

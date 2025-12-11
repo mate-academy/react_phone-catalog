@@ -6,7 +6,6 @@
   margin-inline: 16px;
   display: flex;
   flex-direction: column;
-  // border: 1px solid;
 
   @include favourites;
 
@@ -14,7 +13,6 @@
     height: 41px;
     font-weight: 800;
     font-size: 32px;
-    // border: 1px solid;
 
     @include favourites-title;
   }
@@ -22,7 +20,6 @@
   &__quantity-of-favourites {
     margin-top: 8px;
     color: #89939a;
-    // border: 1px solid;
   }
 }
 
@@ -30,6 +27,14 @@
   margin-block: 24px;
 
   @include adress;
+
+  &__arrow-right {
+    &__image {
+      width: 5.33em;
+      height: 9.33px;
+      object-fit: contain;
+    }
+  }
 }
 
 .block-items {

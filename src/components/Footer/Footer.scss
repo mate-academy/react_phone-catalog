@@ -7,26 +7,22 @@
   padding: 32px 16px;
   height: 257px;
   gap: 32px;
-  // border: 1px solid;
 
   @include footer;
 
   &__logo {
     height: 32px;
     width: 100%;
-    // border: 1px solid;
 
     &__image {
       width: 89px;
       height: 32px;
-      // border: 1px solid;
     }
   }
 
   &__info {
     display: flex;
     align-items: center;
-    // border: 1px solid;
 
     &__list {
       padding: 0;
@@ -45,9 +41,6 @@
 
       @include footerMenu;
     }
-
-    &__item {
-    }
   }
 
   &__buttons {
@@ -56,7 +49,6 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
-    // border: 1px solid;
 
     @include footerBackToTopButton;
 
@@ -67,7 +59,7 @@
 
       text-decoration: none;
       color: #89939a;
-      // border: 1px solid;
+
       @include hover(transform, scale(1.1));
     }
 
@@ -77,14 +69,12 @@
       align-items: center;
       width: 32px;
       height: 32px;
-      // border: 1px solid;
 
       &__icon {
         width: 16px;
         height: 16px;
 
         @include hover(transform, scale(1.1));
-        // border: 1px solid;
       }
     }
   }
@@ -122,4 +112,26 @@
       @include hover(transform, scale(1.1));
     }
   }
+}
+
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-badge {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: -7px;
+  right: -7px;
+
+  background-color: #eb5757;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

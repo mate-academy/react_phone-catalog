@@ -1,22 +1,30 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import './ItemCard.scss';
 import { DevicesContext } from '../../DevicesContext';
 import { Device } from '../../types/Device';
 import classNames from 'classnames';
-import favourites from '../../images/icons/favourites-heart-like.png';
+import favouritesIcon from '../../images/icons/favourites-heart-like.png';
+import favouritesSelected from '../../images/icons/favourites-selected.png';
 import homeIcon from '../../images/icons/home-icon.png';
 import arrowRight from '../../images/icons/arrow-right.png';
 import arrowLeft from '../../images/icons/arrow-left.png';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export const ItemCard: React.FC = () => {
   const location = useLocation();
   const basePath = location.pathname.split('/').filter(Boolean);
   const [category, productId] = basePath;
 
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   const [productData, setProductData] = useState<Device | undefined>(undefined);
   const context = useContext(DevicesContext);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const [itemId, setItemId] = useState<number | undefined>(undefined);
   const techSpecs = [
@@ -33,6 +41,17 @@ export const ItemCard: React.FC = () => {
   const shortTechSpecs = [...techSpecs].slice(0, 4);
 
   const [similarProducts, setSimilarProducts] = useState<Device[]>([]);
+
+  const [indexForSimilarProducts, setIndexForSimilarProducts] = useState(0);
+  const [shiftForYouMayLike, setShiftForYouMayLike] = useState(0);
+
+  useEffect(() => {
+    if (cardRef.current) {
+      setShiftForYouMayLike(
+        (cardRef.current.offsetWidth + 16) * indexForSimilarProducts,
+      );
+    }
+  }, [indexForSimilarProducts]);
 
   useEffect(() => {
     if (!context) {
@@ -102,29 +121,102 @@ export const ItemCard: React.FC = () => {
     return <div>Loading context...</div>;
   }
 
-  const { isMobile } = context;
+  const {
+    isMobile,
+    cart,
+    setCart,
+    favourites,
+    setFavourites,
+    phones,
+    tablets,
+    accessories,
+  } = context;
+
+  const hadleShift = (n: number, sectionName: string) => {
+    if (n > 0) {
+      if (
+        sectionName === 'you may also like' &&
+        indexForSimilarProducts < similarProducts.length - 1
+      ) {
+        setIndexForSimilarProducts(indexForSimilarProducts + 1);
+      }
+    }
+
+    if (n < 0) {
+      if (sectionName === 'you may also like' && indexForSimilarProducts > 0) {
+        setIndexForSimilarProducts(indexForSimilarProducts - 1);
+      }
+    }
+
+    return;
+  };
+
+  const handleAddToCart = () => {
+    setCart(prev => {
+      if (productData.id in prev) {
+        const { [productData.id]: _, ...rest } = prev;
+
+        return rest;
+      }
+
+      return {
+        ...prev,
+        [productData.id]: {
+          item: productData,
+          quantity: 1,
+        },
+      };
+    });
+  };
+
+  const handleAddToFavourites = () => {
+    setFavourites(prev => {
+      if (prev.some(item => item.id === productData.id)) {
+        return prev.filter(item => item.id !== productData.id);
+      }
+
+      return [...prev, productData];
+    });
+  };
+
+  const getModelId = (color: string, capacity: string) => {
+    let deviceList: Device[] = [];
+
+    if (category === 'phones') {
+      deviceList = [...phones];
+    } else if (category === 'tablets') {
+      deviceList = [...tablets];
+    } else {
+      deviceList = [...accessories];
+    }
+
+    const product = deviceList.find(
+      model =>
+        model.namespaceId === productData.namespaceId &&
+        model.color === color &&
+        model.capacity === capacity,
+    );
+
+    return product?.id;
+  };
 
   return (
     <div className="item-card">
       <div className="adress">
-        <div className="adress__home-icon">
-          <img src={homeIcon} className="address__home-icon__image" />
-        </div>
+        <Link to={'/'} className="adress__home-icon">
+          <img src={homeIcon} className="adress__home-icon__image" />
+        </Link>
 
         <div className="adress__arrow-right">
-          <img
-            src={arrowRight}
-            className="phones__address__arrow-right-icon__image"
-          />
+          <img src={arrowRight} className="adress__arrow-right__image" />
         </div>
 
-        <div className="adress__category">{category}</div>
+        <Link to={`/${category}`} className="adress__category">
+          {category}
+        </Link>
 
         <div className="adress__arrow-right">
-          <img
-            src={arrowRight}
-            className="phones__address__arrow-right-icon__image"
-          />
+          <img src={arrowRight} className="adress__arrow-right__image" />
         </div>
 
         <div className="adress__product-id">{productId}</div>
@@ -132,13 +224,12 @@ export const ItemCard: React.FC = () => {
 
       <div className="buttons-back">
         <div className="buttons-back__arrow-left">
-          <img
-            src={arrowLeft}
-            className="phones__address__arrow-right-icon__image"
-          />
+          <img src={arrowLeft} className="adress__arrow-right__image" />
         </div>
 
-        <div className="buttons-back__button-back">Back</div>
+        <div className="buttons-back__button-back" onClick={handleBack}>
+          Back
+        </div>
       </div>
 
       <div className="item-card__title">{productData?.name}</div>
@@ -179,7 +270,8 @@ export const ItemCard: React.FC = () => {
 
                   <div className="product-properties__colors__options">
                     {productData?.colorsAvailable.map(color => (
-                      <div
+                      <Link
+                        to={`/${category}/${getModelId(color, productData.capacity)}`}
                         className={classNames(
                           'product-properties__colors__color-container',
                           { 'colors-activ': color === productData.color },
@@ -189,7 +281,7 @@ export const ItemCard: React.FC = () => {
                         <div
                           className={`product-properties__colors__options--${color.split(' ').join()}`}
                         ></div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -206,7 +298,8 @@ export const ItemCard: React.FC = () => {
 
                 <div className="product-properties__capacity__values">
                   {productData?.capacityAvailable.map(date => (
-                    <div
+                    <Link
+                      to={`/${category}/${getModelId(productData.color, date)}`}
                       className={classNames(
                         'product-properties__capacity__values__value',
                         {
@@ -216,7 +309,7 @@ export const ItemCard: React.FC = () => {
                       key={date}
                     >
                       {date.replace('GB', ' GB')}
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -235,17 +328,39 @@ export const ItemCard: React.FC = () => {
                 </div>
 
                 <div className="prices-buttons__buttons">
-                  <div className="prices-buttons__buttons__add-to-cart">
-                    Add to cart
-                  </div>
+                  <button
+                    className={classNames(
+                      'prices-buttons__buttons__add-to-cart',
+                      {
+                        'prices-buttons__buttons__add-to-cart--added':
+                          Object.keys(cart).some(id => id === productData.id),
+                      },
+                    )}
+                    onClick={handleAddToCart}
+                  >
+                    {Object.keys(cart).some(id => id === productData.id)
+                      ? 'Added'
+                      : 'Add to cart'}
+                  </button>
 
-                  <div className="prices-buttons__buttons__add-to-favourites">
-                    <img
-                      src={favourites}
-                      alt="heart"
-                      className="button-add-to-favourites__image"
-                    />
-                  </div>
+                  <button
+                    className="prices-buttons__buttons__add-to-favourites"
+                    onClick={handleAddToFavourites}
+                  >
+                    {favourites?.some(item => item.id === productData.id) ? (
+                      <img
+                        src={favouritesSelected}
+                        alt="heart"
+                        className="button-add-to-favourites__image"
+                      />
+                    ) : (
+                      <img
+                        src={favouritesIcon}
+                        alt="heart"
+                        className="button-add-to-favourites__image"
+                      />
+                    )}
+                  </button>
                 </div>
               </div>
 
@@ -302,7 +417,8 @@ export const ItemCard: React.FC = () => {
 
                   <div className="product-properties__colors__options">
                     {productData?.colorsAvailable.map(color => (
-                      <div
+                      <Link
+                        to={`/${category}/${getModelId(color, productData.capacity)}`}
                         className={classNames(
                           'product-properties__colors__color-container',
                           { 'colors-activ': color === productData.color },
@@ -312,7 +428,7 @@ export const ItemCard: React.FC = () => {
                         <div
                           className={`product-properties__colors__options--${color.split(' ').join()}`}
                         ></div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -329,7 +445,8 @@ export const ItemCard: React.FC = () => {
 
                 <div className="product-properties__capacity__values">
                   {productData?.capacityAvailable.map(date => (
-                    <div
+                    <Link
+                      to={`/${category}/${getModelId(productData.color, date)}`}
                       className={classNames(
                         'product-properties__capacity__values__value',
                         {
@@ -339,7 +456,7 @@ export const ItemCard: React.FC = () => {
                       key={date}
                     >
                       {date.replace('GB', ' GB')}
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -358,17 +475,39 @@ export const ItemCard: React.FC = () => {
                 </div>
 
                 <div className="prices-buttons__buttons">
-                  <div className="prices-buttons__buttons__add-to-cart">
-                    Add to cart
-                  </div>
+                  <button
+                    className={classNames(
+                      'prices-buttons__buttons__add-to-cart',
+                      {
+                        'prices-buttons__buttons__add-to-cart--added':
+                          Object.keys(cart).some(id => id === productData.id),
+                      },
+                    )}
+                    onClick={handleAddToCart}
+                  >
+                    {Object.keys(cart).some(id => id === productData.id)
+                      ? 'Added'
+                      : 'Add to cart'}
+                  </button>
 
-                  <div className="prices-buttons__buttons__add-to-favourites">
-                    <img
-                      src={favourites}
-                      alt="heart"
-                      className="button-add-to-favourites__image"
-                    />
-                  </div>
+                  <button
+                    className="prices-buttons__buttons__add-to-favourites"
+                    onClick={handleAddToFavourites}
+                  >
+                    {favourites?.some(item => item.id === productData.id) ? (
+                      <img
+                        src={favouritesSelected}
+                        alt="heart"
+                        className="button-add-to-favourites__image"
+                      />
+                    ) : (
+                      <img
+                        src={favouritesIcon}
+                        alt="heart"
+                        className="button-add-to-favourites__image"
+                      />
+                    )}
+                  </button>
                 </div>
               </div>
 
@@ -429,22 +568,39 @@ export const ItemCard: React.FC = () => {
 
           <div className="you-may-like__slider-buttons">
             <div className="you-may-like__slider-buttons__button">
-              <div className="you-may-like__slider-buttons__button__arrow">
+              <button
+                className="you-may-like__slider-buttons__button__arrow"
+                onClick={() => hadleShift(-1, 'you may also like')}
+                disabled={indexForSimilarProducts === 0}
+              >
                 <img src={arrowLeft} className="slider-buttons-image" />
-              </div>
+              </button>
             </div>
 
             <div className="you-may-like__slider-buttons__button">
-              <div className="you-may-like__slider-buttons__button__arrow">
+              <button
+                className="you-may-like__slider-buttons__button__arrow"
+                onClick={() => hadleShift(1, 'you may also like')}
+                disabled={indexForSimilarProducts > similarProducts.length - 2}
+              >
                 <img src={arrowRight} className="slider-buttons-image" />
-              </div>
+              </button>
             </div>
           </div>
         </div>
 
         <div className="you-may-like__similar-products">
           {similarProducts.map(model => (
-            <ProductCard model={model} key={model.id} />
+            <div
+              className="similar-products-content  slider-track"
+              ref={cardRef}
+              style={{
+                transform: `translateX(-${shiftForYouMayLike}px)`,
+              }}
+              key={model.id}
+            >
+              <ProductCard model={model} />
+            </div>
           ))}
         </div>
       </div>

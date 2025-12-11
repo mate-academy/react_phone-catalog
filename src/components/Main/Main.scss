@@ -4,20 +4,17 @@
 .main {
   flex-grow: 1;
   margin-bottom: 64px;
-  // border: 1px solid;
 
   @include main;
 
   &__header {
     @include headerMarginBottom;
-    // border: 1px solid;
 
     &__title {
       display: flex;
       align-items: center;
       height: 82px;
       margin: 24px 16px;
-      // border: 1px solid;
 
       @include headerTitle;
 
@@ -48,7 +45,6 @@
       gap: 19px;
       justify-content: space-between;
       margin-inline: 24px;
-      // border: 1px solid;
 
       @include headerBanner;
 
@@ -57,6 +53,7 @@
         align-items: center;
         height: inherit;
         border: 1px solid;
+        cursor: pointer;
       }
 
       &__image {
@@ -68,6 +65,7 @@
         align-items: center;
         height: inherit;
         border: 1px solid;
+        cursor: pointer;
       }
     }
 
@@ -77,7 +75,6 @@
       gap: 4px;
       width: 100%;
       height: 24px;
-      // border: 1px solid;
 
       &__dot {
         display: flex;
@@ -85,12 +82,13 @@
         align-items: center;
         width: 24px;
         height: 24px;
-        // border: 1px solid;
+        cursor: pointer;
 
         &__content {
           width: 14px;
           height: 4px;
           border: 1px solid;
+
           @include hover(transform, scale(1.1));
         }
       }
@@ -108,7 +106,6 @@
     font-size: 22px;
     line-height: 140%;
     color: #313237;
-    // border: 1px solid;
 
     @include mainSection;
   }
@@ -121,13 +118,11 @@
 .categories {
   grid-column: 1 / -1;
   margin-right: 16px;
-  // border: 1px solid;
 
   @include categories;
 
   &__title {
     height: 31px;
-    // border: 1px solid;
 
     @include categoriesTitle;
   }
@@ -136,7 +131,6 @@
     margin-top: 24px;
     display: grid;
     gap: 32px;
-    // border: 1px solid;
 
     @include categoriesContainer;
   }
@@ -146,14 +140,12 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    // border: 1px solid;
   }
 }
 
 .new-models,
 .hot-prices {
   grid-column: 1 / -1;
-  // border: 1px solid;
 
   &__content {
     margin-top: 24px;
@@ -170,7 +162,6 @@
     justify-content: space-between;
     align-items: center;
     height: 62px;
-    // border: 1px solid;
 
     @include newModelsHotPricesContainer;
   }
@@ -187,7 +178,6 @@
 
     width: 80px;
     height: 32px;
-    // border: 1px solid;
 
     &__left {
       display: flex;
@@ -196,6 +186,8 @@
       width: 32px;
       height: 32px;
       border: 1px solid;
+
+      @include hover(transform, scale(1.1));
     }
 
     &__right {
@@ -205,6 +197,8 @@
       width: 32px;
       height: 32px;
       border: 1px solid;
+
+      @include hover(transform, scale(1.1));
     }
   }
 }
@@ -245,10 +239,6 @@
   @include modelImage;
 }
 
-.hot-prices {
-  grid-column: 1 / -1;
-}
-
 .category-image {
   width: 100%;
   height: auto;
@@ -259,7 +249,6 @@
   box-sizing: border-box;
   width: 16px;
   height: 16px;
-  // border: 1px solid;
 
   @include hover(transform, scale(1.1));
 }
@@ -281,4 +270,8 @@
 .link {
   text-decoration: none;
   color: inherit;
+}
+
+.slider-track {
+  transition: transform 1s ease; // плавность
 }

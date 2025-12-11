@@ -1,20 +1,55 @@
 import '../_variables.scss';
 import './Main.scss';
-import banner from '../../images/image-16.png';
-import bannerTablet from '../../images/banner-tablet.png';
+import banner1 from '../../images/image-16.png';
+import banner2 from '../../images/banner2.png';
+import banner3 from '../../images/banner3.png';
+import bannerTablet1 from '../../images/banner-tablet.png';
+import bannerTablet2 from '../../images/banner-tablet2.png';
+import bannerTablet3 from '../../images/banner-tablet3.png';
 import buttonSliderRight from '../../images/icons/button-right.png';
 import buttonSliderLeft from '../../images/icons/button-left.png';
 import phonesImage from '../../images/phones.png';
 import tabletsImage from '../../images/tablets.png';
 import accessoriesImage from '../../images/accessories.png';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { DevicesContext, DevicesContextType } from '../../DevicesContext';
 import { Device } from '../../types/Device';
 import { ProductCard } from '../ProductCard/ProductCard';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 export const Main: React.FC = () => {
   const context = useContext<DevicesContextType | undefined>(DevicesContext);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const [indexForNewModelsPhones, setIndexForNewModelsPhones] = useState(0);
+  const [indexForHotPrices, seIndexForHotPrices] = useState(0);
+  const [shiftForNewModelsPhones, setShiftForNewModelsPhones] = useState(0);
+  const [shiftForHotPrices, setShiftForHotPrices] = useState(0);
+
+  const banners1 = [banner1, banner2, banner3];
+  const banners2 = [bannerTablet1, bannerTablet2, bannerTablet3];
+  const [currentBanner, setCurrentBanner] = useState(0);
+
+  useEffect(() => {
+    if (cardRef.current) {
+      setShiftForNewModelsPhones(
+        (cardRef.current.offsetWidth + 16) * indexForNewModelsPhones,
+      );
+
+      setShiftForHotPrices(
+        (cardRef.current.offsetWidth + 16) * indexForHotPrices,
+      );
+    }
+  }, [indexForNewModelsPhones, indexForHotPrices]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBanner(prev => (prev + 1) % 3);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   if (!context) {
     return null;
@@ -22,6 +57,46 @@ export const Main: React.FC = () => {
 
   const { tablets, accessories, phones, newModelsPhones, hotPrices, isMobile } =
     context;
+
+  const hadleShift = (n: number, sectionName: string) => {
+    if (n > 0) {
+      if (
+        sectionName === 'new models' &&
+        indexForNewModelsPhones < newModelsPhones.length - 1
+      ) {
+        setIndexForNewModelsPhones(indexForNewModelsPhones + 1);
+      }
+
+      if (
+        sectionName === 'hot prices' &&
+        indexForHotPrices < hotPrices.length - 1
+      ) {
+        seIndexForHotPrices(indexForHotPrices + 1);
+      }
+    }
+
+    if (n < 0) {
+      if (sectionName === 'new models' && indexForNewModelsPhones > 0) {
+        setIndexForNewModelsPhones(indexForNewModelsPhones - 1);
+      }
+
+      if (sectionName === 'hot prices' && indexForHotPrices > 0) {
+        seIndexForHotPrices(indexForHotPrices - 1);
+      }
+    }
+
+    return;
+  };
+
+  const handleChangingTheBannerImage = (direction: string) => {
+    if (currentBanner < 2 && direction === 'right') {
+      return setCurrentBanner(currentBanner + 1);
+    }
+
+    if (currentBanner > 0 && direction === 'left') {
+      return setCurrentBanner(currentBanner - 1);
+    }
+  };
 
   return (
     <div className="main">
@@ -35,54 +110,63 @@ export const Main: React.FC = () => {
         {isMobile ? (
           <div className={isMobile ? 'mobile-header' : 'tablet-header'}>
             <div className="main__header__banner">
-              <img src={banner} className="main__header__banner__content" />
+              <img
+                src={banners1[currentBanner]}
+                className="main__header__banner__content"
+              />
             </div>
 
             <div className="main__header__dots">
-              <div className="main__header__dots__dot">
-                <div className="main__header__dots__dot__content active"></div>
-              </div>
-
-              <div className="main__header__dots__dot">
-                <div className="main__header__dots__dot__content"></div>
-              </div>
-
-              <div className="main__header__dots__dot">
-                <div className="main__header__dots__dot__content"></div>
-              </div>
+              {banners1.map((_, ind) => (
+                <div className="main__header__dots__dot" key={ind}>
+                  <div
+                    className={classNames('main__header__dots__dot__content', {
+                      active: ind === currentBanner,
+                    })}
+                    onClick={() => setCurrentBanner(ind)}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         ) : (
           <div className={isMobile ? 'mobile-header' : 'tablet-header'}>
             <div className="main__header__banner-tablet">
-              <div className="main__header__banner-tablet__banner-slider-left">
+              <button
+                className="main__header__banner-tablet__banner-slider-left"
+                onClick={() => handleChangingTheBannerImage('left')}
+                disabled={currentBanner === 0}
+              >
                 <img src={buttonSliderLeft} className="banner-slide" />
-              </div>
+              </button>
 
               <div className="main__header__banner-tablet__image">
                 <img
-                  src={bannerTablet}
+                  src={banners2[currentBanner]}
                   className="main__header__banner__content"
                 />
               </div>
 
-              <div className="main__header__banner-tablet__banner-slider-right">
+              <button
+                className="main__header__banner-tablet__banner-slider-right"
+                onClick={() => handleChangingTheBannerImage('right')}
+                disabled={currentBanner === 2}
+              >
                 <img src={buttonSliderRight} className="banner-slide" />
-              </div>
+              </button>
             </div>
 
             <div className="main__header__dots">
-              <div className="main__header__dots__dot">
-                <div className="main__header__dots__dot__content active"></div>
-              </div>
-
-              <div className="main__header__dots__dot">
-                <div className="main__header__dots__dot__content"></div>
-              </div>
-
-              <div className="main__header__dots__dot">
-                <div className="main__header__dots__dot__content"></div>
-              </div>
+              {banners2.map((_, ind) => (
+                <div className="main__header__dots__dot" key={ind}>
+                  <div
+                    className={classNames('main__header__dots__dot__content', {
+                      active: ind === currentBanner,
+                    })}
+                    onClick={() => setCurrentBanner(ind)}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -94,19 +178,34 @@ export const Main: React.FC = () => {
             <div className="new-models__text">Brand new models</div>
 
             <div className="new-models__buttons-slider">
-              <div className="new-models__buttons-slider__left">
+              <button
+                className="new-models__buttons-slider__left"
+                onClick={() => hadleShift(-1, 'new models')}
+                disabled={indexForNewModelsPhones === 0}
+              >
                 <img src={buttonSliderLeft} className="buttons-slider"></img>
-              </div>
+              </button>
 
-              <div className="new-models__buttons-slider__right">
+              <button
+                className="new-models__buttons-slider__right"
+                onClick={() => hadleShift(1, 'new models')}
+                disabled={indexForNewModelsPhones > newModelsPhones.length - 2}
+              >
                 <img src={buttonSliderRight} className="buttons-slider"></img>
-              </div>
+              </button>
             </div>
           </div>
 
           <div className="new-models__content">
             {newModelsPhones.map(model => (
-              <div className="productCard-content" key={model.id}>
+              <div
+                ref={cardRef}
+                className="productCard-content slider-track"
+                style={{
+                  transform: `translateX(-${shiftForNewModelsPhones}px)`,
+                }}
+                key={model.id}
+              >
                 <ProductCard model={model} />
               </div>
             ))}
@@ -118,13 +217,13 @@ export const Main: React.FC = () => {
 
           <div className="categories__container">
             <div className="categories__phones">
-              <div className="categories__phones__image">
+              <Link to={'/phones'} className="categories__phones__image">
                 <img
                   src={phonesImage}
                   alt="phones"
                   className="category-image"
                 />
-              </div>
+              </Link>
 
               <div className="categories__info">
                 <div className="category-name">Mobile phones</div>
@@ -136,13 +235,13 @@ export const Main: React.FC = () => {
             </div>
 
             <div className="categories__tablets">
-              <div className="categories__tablets__image">
+              <Link to={'/tablets'} className="categories__tablets__image">
                 <img
                   src={tabletsImage}
                   alt="tablets"
                   className="category-image"
                 />
-              </div>
+              </Link>
 
               <div className="categories__info">
                 <div className="category-name">Tablets</div>
@@ -154,13 +253,16 @@ export const Main: React.FC = () => {
             </div>
 
             <div className="categories__accessories">
-              <div className="categoriesy__accessories__image">
+              <Link
+                to={'/accessories'}
+                className="categoriesy__accessories__image"
+              >
                 <img
                   src={accessoriesImage}
                   alt="accessories"
                   className="category-image"
                 />
-              </div>
+              </Link>
 
               <div className="categories__info">
                 <div className="category-name">Accessories</div>
@@ -178,19 +280,33 @@ export const Main: React.FC = () => {
             <div className="hot-prices__text">Hot prices</div>
 
             <div className="hot-prices__buttons-slider">
-              <div className="hot-prices__buttons-slider__left">
+              <button
+                className="hot-prices__buttons-slider__left"
+                onClick={() => hadleShift(-1, 'hot prices')}
+                disabled={indexForHotPrices === 0}
+              >
                 <img src={buttonSliderLeft} className="buttons-slider"></img>
-              </div>
+              </button>
 
-              <div className="hot-prices__buttons-slider__right">
+              <button
+                className="hot-prices__buttons-slider__right"
+                onClick={() => hadleShift(1, 'hot prices')}
+                disabled={indexForHotPrices === hotPrices.length - 1}
+              >
                 <img src={buttonSliderRight} className="buttons-slider"></img>
-              </div>
+              </button>
             </div>
           </div>
 
           <div className="hot-prices__content">
             {hotPrices.map((model: Device) => (
-              <div className="productCard-content" key={model.id}>
+              <div
+                className="productCard-content slider-track"
+                style={{
+                  transform: `translateX(-${shiftForHotPrices}px)`,
+                }}
+                key={model.id}
+              >
                 <ProductCard model={model} />
               </div>
             ))}

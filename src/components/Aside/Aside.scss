@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../mixins';
 
 .aside {
   flex-grow: 1;
@@ -8,8 +9,6 @@
   letter-spacing: 4%;
   text-transform: uppercase;
 
-  // border: 1px solid;
-
   &__container {
     margin-top: 24px;
     margin-inline: 16px;
@@ -18,26 +17,33 @@
     justify-content: space-between;
     align-items: center;
     height: 156px;
-    // border: 1px solid;
   }
 
   &__menu {
+    position: relative;
     display: flex;
     height: 27px;
     color: #89939a;
     text-decoration: none;
-    // border: 1px solid;
 
-    &--home {
+    @include hover(transform, scale(1.1));
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 1px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: #000000;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
     }
 
-    &--phones {
-    }
-
-    &--tablets {
-    }
-
-    &--accessories {
+    &:hover::after {
+      transform: scale(1);
     }
   }
 }

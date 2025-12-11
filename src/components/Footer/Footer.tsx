@@ -1,7 +1,7 @@
 import './Footer.scss';
 import logo from '../../images/Logo.png';
 import sliderButton from '../../images/icons/slider button.png';
-import favourites from '../../images/icons/favourites-heart-like.png';
+import favouritesIcon from '../../images/icons/favourites-heart-like.png';
 import shoppingBag from '../../images/icons/group-17.png';
 import { Link, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
@@ -15,7 +15,7 @@ export const Footer = () => {
     return null;
   }
 
-  const { footerMenuList } = context;
+  const { footerMenuList, cart, favourites } = context;
 
   return pathname !== '/aside' ? (
     <div className={pathname === '/aside' ? 'burger-footer' : 'footer'}>
@@ -49,19 +49,31 @@ export const Footer = () => {
   ) : (
     <div className={pathname === '/aside' ? 'burger-footer' : 'footer'}>
       <Link to={'/favourites'} className="burger-footer__favourites">
-        <img
-          src={favourites}
-          alt="heart"
-          className="burger-footer__favourites__image"
-        />
+        <div className="icon-wrapper">
+          <img
+            src={favouritesIcon}
+            alt="heart"
+            className="burger-footer__favourites__image"
+          />
+
+          {favourites.length > 0 && (
+            <span className="icon-badge">{favourites.length}</span>
+          )}
+        </div>
       </Link>
 
       <Link to={'/cart'} className="burger-footer__shopping-bag">
-        <img
-          src={shoppingBag}
-          alt="shopping bag"
-          className="burger-footer__shopping-bag__image"
-        />
+        <div className="icon-wrapper">
+          <img
+            src={shoppingBag}
+            alt="shopping bag"
+            className="burger-footer__shopping-bag__image"
+          />
+
+          {Object.keys(cart).length > 0 && (
+            <span className="icon-badge">{Object.keys(cart).length}</span>
+          )}
+        </div>
       </Link>
     </div>
   );
