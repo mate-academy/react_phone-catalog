@@ -15,6 +15,9 @@ export interface Product {
 export interface ProductDetails {
   id: string;
   name: string;
+  namespaceId: string;
+  capacity: string;
+  color: string;
   priceDiscount: number;
   priceRegular: number;
   images: string[];

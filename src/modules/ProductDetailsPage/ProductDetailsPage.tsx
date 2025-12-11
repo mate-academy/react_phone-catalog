@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ProductDetailsPage.module.scss';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Loader } from '../../shared/components/Loader/Loader';
 import {
   getProductDetailsById,
@@ -15,15 +15,17 @@ import { NavigationButton } from '../../shared/components/NavigationButton';
 
 export const ProductDetailsPage: React.FC = () => {
   const { itemId } = useParams();
+  const navigate = useNavigate();
 
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
     null,
   );
   const [genericProduct, setGenericProduct] = useState<Product | null>(null);
+  const [suggested, setSuggested] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
   const [selectedImg, setSelectedImg] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
-  const [suggested, setSuggested] = useState<Product[]>([]);
 
   useEffect(() => {
     async function loadGeneric() {
@@ -70,6 +72,7 @@ export const ProductDetailsPage: React.FC = () => {
   useEffect(() => {
     if (productDetails) {
       setSelectedImg(productDetails.images[0]);
+      setSelectedCapacity(productDetails.capacity);
     }
   }, [productDetails]);
 
@@ -97,6 +100,7 @@ export const ProductDetailsPage: React.FC = () => {
         category={genericProduct?.category || 'Product'}
         name={productDetails.name}
       />
+
       <div className={`grid-24 ${styles.page}`}>
         <NavigationButton title="Back" />
         <h1 className={`col-24 ${styles.title}`}>{productDetails.name}</h1>
@@ -105,7 +109,9 @@ export const ProductDetailsPage: React.FC = () => {
           {productDetails.images.map(img => (
             <img
               key={img}
-              className={`${styles.galleryImage} ${selectedImg === img ? styles.activeThumb : ''}`}
+              className={`${styles.galleryImage} ${
+                selectedImg === img ? styles.activeThumb : ''
+              }`}
               src={img}
               alt={productDetails.name}
               onClick={() => setSelectedImg(img)}
@@ -129,7 +135,18 @@ export const ProductDetailsPage: React.FC = () => {
               {productDetails.colorsAvailable.map(color => (
                 <button
                   key={color}
-                  className={`${styles.colorCircle} ${styles[color]}`}
+                  className={styles.colorCircle}
+                  style={{ backgroundColor: color }}
+                  onClick={() => {
+                    const normalizedColor = color
+                      .toLowerCase()
+                      .replace(/\s+/g, '-');
+                    const normalizedCapacity =
+                      productDetails.capacity.toLowerCase();
+                    const newId = `${productDetails.namespaceId}-${normalizedCapacity}-${normalizedColor}`;
+
+                    navigate(`/product/${newId}`);
+                  }}
                 />
               ))}
             </div>
@@ -144,8 +161,19 @@ export const ProductDetailsPage: React.FC = () => {
               {productDetails.capacityAvailable.map(cap => (
                 <button
                   key={cap}
-                  className={`${styles.capacityBtn} ${selectedCapacity === cap ? styles.activeCapacity : ''}`}
-                  onClick={() => setSelectedCapacity(cap)}
+                  className={`${styles.capacityBtn} ${
+                    selectedCapacity === cap ? styles.activeCapacity : ''
+                  }`}
+                  onClick={() => {
+                    setSelectedCapacity(cap);
+                    const normalizedCapacity = cap.toLowerCase();
+                    const normalizedColor = productDetails.color
+                      .toLowerCase()
+                      .replace(/\s+/g, '-');
+                    const newId = `${productDetails.namespaceId}-${normalizedCapacity}-${normalizedColor}`;
+
+                    navigate(`/product/${newId}`);
+                  }}
                 >
                   {cap}
                 </button>
@@ -178,7 +206,6 @@ export const ProductDetailsPage: React.FC = () => {
 
         <div className={styles.aboutBlock}>
           <h2 className={styles.bottomTitle}>About</h2>
-
           <hr className={styles.dividerAbout} />
 
           {productDetails.description.map(section => (
@@ -195,7 +222,6 @@ export const ProductDetailsPage: React.FC = () => {
 
         <div className={styles.techSpecsBlock}>
           <h2 className={styles.bottomTitle}>Tech specs</h2>
-
           <hr className={styles.dividerTech} />
 
           {specs.map(spec => (

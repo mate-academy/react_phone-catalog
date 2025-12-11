@@ -158,9 +158,15 @@
   font-size: 14px;
   cursor: pointer;
   transition: 0.2s;
+
+  &:hover {
+    border-color: #313237;
+  }
 }
 
-.capacityBtn:hover {
+.activeCapacity {
+  background: #313237;
+  color: #fff;
   border-color: #313237;
 }
 
