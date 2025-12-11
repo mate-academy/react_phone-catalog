@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { HomePage } from './modules/HomePage';
 import { PhonesPage } from './modules/PhonesPage';
 import { TabletsPage } from './modules/TabletsPage';
@@ -7,6 +7,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { CartPage } from './modules/CartPage';
+
 
 const App = () => {
   return (
