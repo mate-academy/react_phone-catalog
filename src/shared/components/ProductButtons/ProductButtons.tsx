@@ -35,6 +35,8 @@ export const ProductButtons: React.FC<Props> = ({ product }) => {
       };
 
       setCartItems(prev => [...prev, newItem]);
+    } else {
+      setCartItems(prev => prev.filter(item => item.id !== product.id));
     }
   };
 

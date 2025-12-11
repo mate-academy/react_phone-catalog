@@ -1,6 +1,11 @@
 import { Product } from '../../types';
 import { useEffect, useMemo, useState } from 'react';
-import { DEFAULT_ITEMS_PER_PAGE, FIRST_PAGE, ItemsPerPage } from '../constants';
+import {
+  DEFAULT_ITEMS_PER_PAGE,
+  FIRST_PAGE,
+  ItemsPerPage,
+  ITEMS_PER_PAGE_OPTIONS,
+} from '../constants';
 import { SortBy, SORT } from '../constants';
 import { useSearchParams } from 'react-router-dom';
 
@@ -12,11 +17,12 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
   const [items, setItems] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [sortBy, setSortBy] = useState<SortBy>(SORT.NEWEST);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortParam = searchParams.get('sort');
+  const perPageParam = searchParams.get('perPage');
+  const pageParam = searchParams.get('page');
 
   const initialSortBy: SortBy =
     sortParam === SORT.ALPHA ||
@@ -25,35 +31,42 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
       ? sortParam
       : SORT.NEWEST;
 
-  const initialPerPage =
-    (searchParams.get('perPage') as ItemsPerPage) || DEFAULT_ITEMS_PER_PAGE;
+  const initialPerPage: ItemsPerPage = ITEMS_PER_PAGE_OPTIONS.includes(
+    perPageParam as ItemsPerPage,
+  )
+    ? (perPageParam as ItemsPerPage)
+    : DEFAULT_ITEMS_PER_PAGE;
 
+  const initialPage = Number(pageParam) > 0 ? Number(pageParam) : FIRST_PAGE;
+
+  const [sortBy, setSortBy] = useState<SortBy>(initialSortBy);
   const [itemsPerPage, setItemsPerPage] =
     useState<ItemsPerPage>(initialPerPage);
-
-  const initialPage = Number(searchParams.get('page')) || FIRST_PAGE;
-
   const [currentPage, setCurrentPage] = useState(initialPage);
+
+  useEffect(() => {
+    setSortBy(initialSortBy);
+    setItemsPerPage(initialPerPage);
+    setCurrentPage(initialPage);
+  }, []);
 
   function updateSearchParams(patch: Record<string, string>) {
     const next = new URLSearchParams(searchParams);
 
-    Object.entries(patch).forEach(([key, value]) => {
-      next.set(key, value);
-    });
+    Object.entries(patch).forEach(([key, value]) => next.set(key, value));
 
     setSearchParams(next);
   }
 
   const handleSortChange = (value: SortBy) => {
     setSortBy(value);
+    setCurrentPage(1);
 
     updateSearchParams({
       sort: value,
+      perPage: String(itemsPerPage),
       page: '1',
     });
-
-    setCurrentPage(1);
   };
 
   const handlePerPageChange = (value: ItemsPerPage) => {
@@ -61,14 +74,11 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
     setCurrentPage(1);
 
     updateSearchParams({
+      sort: sortBy,
       perPage: String(value),
       page: '1',
     });
   };
-
-  useEffect(() => {
-    setSortBy(initialSortBy);
-  }, [initialSortBy]);
 
   useEffect(() => {
     async function loadItems() {
@@ -105,7 +115,7 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
 
   const totalPages =
     itemsPerPage === 'all'
-      ? FIRST_PAGE
+      ? 1
       : Math.ceil(totalItems / (itemsPerPage as number));
 
   const startIndex =
@@ -127,6 +137,8 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
       setCurrentPage(page);
 
       updateSearchParams({
+        sort: sortBy,
+        perPage: String(itemsPerPage),
         page: String(page),
       });
 
