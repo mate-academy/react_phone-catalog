@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Breadcrumbs } from '../Shared/Breadcrumbs/Breadcrumbs';
 import { PhonesTitle } from '../Shared/PhonesTitle/Phones-title';
 import { Product } from './Product/Product';
@@ -24,23 +24,49 @@ export const ProductPage = ({
   itemsInCart,
 }: ProductPageProps) => {
   const { productId } = useParams<{ productId: string }>();
-  const [productScreen, setProductScreen] = useState('');
-  const [productRam, setProductRam] = useState('');
-  const [productProcessor, setProductProcessor] = useState('');
-  const [capacity, setCapacity] = useState([]);
-  const [productResolution, setProductResolution] = useState('');
+  const location = useLocation();
+
+  // 💡 НОВІ СТАНИ: Зберігаємо всі завантажені продукти та поточний обраний варіант
+  const [allProducts, setAllProducts] = useState<Phone[]>([]);
+  const [currentProduct, setCurrentProduct] = useState<Phone | null>(null);
+
+  // СТАНИ ДЛЯ ВІДОБРАЖЕННЯ (частина логіки перенесена сюди)
+  const [productImages, setProductImages] = useState<string[]>([]);
+  const [image, setImage] = useState<string | undefined>();
+  const [colors, setColors] = useState<string[]>([]);
+  const [capacityAvailable, setCapacityAvailable] = useState<string[]>([]); // Доступні об'єми
+  const [currentCapacity, setCurrentCapacity] = useState<string>(''); // Активний об'єм
+  const [productPrice, setProductPrice] = useState<number | undefined>();
+  const [productDiscount, setProductDiscount] = useState<number | undefined>();
+
+  // СТАНИ ДЛЯ УПРАВЛІННЯ СТОРІНКОЮ
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [productNotFound, setProductNotFound] = useState(false);
-  const location = useLocation();
 
-  const loadProduct = () => {
+  const initializeProductData = (product: Phone) => {
+    setCurrentProduct(product);
+    setProductImages(product.images);
+    setImage(product.images[0]);
+    setColors(product.colorsAvailable);
+    setCapacityAvailable(product.capacityAvailable);
+    setCurrentCapacity(product.capacity);
+    setProductPrice(product.priceRegular);
+    setProductDiscount(product.priceDiscount);
+    setError(false);
+    setProductNotFound(false);
+  };
+
+  // 2. Функція для завантаження всіх продуктів
+  const loadAllProducts = useCallback(async () => {
     if (!productId) {
       setLoading(false);
+
       return;
     }
 
     setLoading(true);
+    setError(false);
     setProductNotFound(false);
 
     let url = '';
@@ -54,53 +80,95 @@ export const ProductPage = ({
     }
 
     if (url) {
-      fetch(url)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to fetch');
-          }
-          return response.json();
-        })
-        .then(data => {
-          const product = data.find((item: any) => item.id === productId);
-          console.log('Found product:', product);
+      try {
+        const response = await fetch(url);
 
-          if (product) {
-            setProductScreen(product.screen);
-            setProductRam(product.ram);
-            setProductProcessor(product.processor);
-            setProductResolution(product.resolution);
-            setCapacity(product.capacityAvailable);
-            setError(false);
-          } else {
-            setProductNotFound(true);
-          }
+        if (!response.ok) {
+          throw new Error('Failed to fetch product data');
+        }
 
-          setLoading(false);
-        })
-        .catch(error => {
-          console.error('Error loading product:', error);
-          setError(true);
-          setLoading(false);
-        });
+        const data: Phone[] = await response.json();
+
+        setAllProducts(data); // Зберігаємо весь список
+
+        // Знаходимо продукт на основі URL (з надійним порівнянням)
+        const normalizedProductId = productId.trim().toLowerCase();
+        const product = data.find(
+          (item: Phone) => item.id.trim().toLowerCase() === normalizedProductId,
+        );
+
+        if (product) {
+          initializeProductData(product);
+        } else {
+          setProductNotFound(true);
+        }
+      } catch (e) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
     } else {
       setLoading(false);
     }
+  }, [productId, location.pathname]);
+
+  // 3. Функція зміни обсягу пам'яті (capacity)
+  const findPriceByCapacity = (selectedCapacity: string) => {
+    if (!currentProduct || allProducts.length === 0) {
+      return;
+    }
+
+    const normalizedSelectedCapacity = selectedCapacity.trim().toLowerCase();
+
+    // Шукаємо варіант продукту з новим capacity
+    const productCapacity = allProducts.find(
+      item =>
+        item.namespaceId === currentProduct.namespaceId &&
+        item.capacity.trim().toLowerCase() === normalizedSelectedCapacity &&
+        item.color === currentProduct.color,
+    );
+
+    if (productCapacity) {
+      // 💡 ОНОВЛЮЄМО СТАН БЕЗ ПЕРЕЗАВАНТАЖЕННЯ СТОРІНКИ
+      setCurrentProduct(productCapacity);
+      setProductPrice(productCapacity.priceRegular);
+      setProductDiscount(productCapacity.priceDiscount);
+      setCurrentCapacity(productCapacity.capacity);
+
+      // 💡 ОНОВЛЮЄМО URL БЕЗ ПЕРЕЗАВАНТАЖЕННЯ (якщо ви хочете міняти URL при зміні capacity)
+      // ВАЖЛИВО: Для цього потрібен useHistory, або useNavigate (якщо v6),
+      // але залишаю цю логіку в ProductPage для демонстрації
+    }
   };
 
+  // 4. Функція зміни кольору (колір змінює URL, тому використовуємо Link у Product.tsx)
+  const findColor = (selectedColor: string) => {
+    // Ця функція більше не потрібна тут, оскільки зміна кольору відбувається
+    // через навігацію <Link> у Product.tsx, що змінює productId і запускає loadAllProducts.
+    // Але якщо ви хочете реалізувати зміну кольору без зміни URL, логіка тут була б аналогічна findPriceByCapacity.
+  };
+
+  const mainImage = (selectedImage: string) => {
+    setImage(selectedImage);
+  };
+
+  // --- USE EFFECT ---
+
   useEffect(() => {
-    loadProduct();
-  }, [productId, location.pathname]);
+    loadAllProducts();
+  }, [loadAllProducts]);
+
+  // --- РЕНДЕР ---
 
   if (loading) {
     return <Loading />;
   }
 
   if (error) {
-    return <ErrorPage onReload={loadProduct} />;
+    return <ErrorPage onReload={loadAllProducts} />;
   }
 
-  if (productNotFound) {
+  if (productNotFound || !currentProduct) {
     return (
       <div className={style.notfound}>
         <img
@@ -118,22 +186,36 @@ export const ProductPage = ({
       <Breadcrumbs />
       <PhonesTitle />
       <Product
-        productScreen={productScreen}
-        productRam={productRam}
-        productProcessor={productProcessor}
-        productResolution={productResolution}
-        capacity={capacity}
+        // 💡 ТЕПЕР ПЕРЕДАЄМО ВСІ ДАНІ ЗІ СТАНУ productPage
+        currentProduct={currentProduct}
+        productScreen={currentProduct.screen}
+        productRam={currentProduct.ram}
+        productProcessor={currentProduct.processor}
+        productResolution={currentProduct.resolution}
+        // Дані, що динамічно змінюються
+        productImages={productImages}
+        productImage={image}
+        colors={colors}
+        capacity={capacityAvailable} // Передаємо доступні capacity
+        currentCapacity={currentCapacity} // Передаємо активний capacity
+        productPrice={productPrice!}
+        productDiscount={productDiscount!}
+        // Функції для взаємодії
+        mainImage={mainImage}
+        findPriceByCapacity={findPriceByCapacity}
+        // Кошик/Обране
         toggleInCart={toggleInCart}
         toggleFavourite={toggleFavourite}
         favouriteButton={favouriteButton}
         itemsInCart={itemsInCart}
       />
       <ProductDescription
-        productScreen={productScreen}
-        productRam={productRam}
-        productProcessor={productProcessor}
-        capacity={capacity}
-        productResolution={productResolution}
+        productScreen={currentProduct.screen}
+        productRam={currentProduct.ram}
+        productProcessor={currentProduct.processor}
+        capacity={capacityAvailable}
+        productResolution={currentProduct.resolution}
+        // ... ви можете додати більше пропсів тут, використовуючи currentProduct
       />
       <HotPrices
         favouriteButton={favouriteButton}

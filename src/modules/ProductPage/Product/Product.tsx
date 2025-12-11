@@ -1,8 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import style from './Product.module.scss';
 import { Phone } from '../../../Types/type';
-import UseCatalogData from '../../Hooks/UseCatalogData';
 
 interface ProductProps {
   productScreen: string;
@@ -35,9 +34,10 @@ export const Product = ({
   const [productDiscount, setProductDiscount] = useState<number>();
   const [currentProduct, setCurrentProduct] = useState<Phone | null>(null);
   const [availableCapacity, setAvailableCapacity] = useState<string>('');
+  const [allProducts, setAllProducts] = useState<Phone[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const { products, loading } = UseCatalogData();
-  // const location = useLocation();
+  const location = useLocation();
 
   const isFavourite = currentProduct
     ? favouriteButton.has(currentProduct.id)
@@ -45,8 +45,35 @@ export const Product = ({
   const IsInCart = itemsInCart.some(item => item.id === currentProduct?.id);
 
   useEffect(() => {
-    if (productId && products.length > 0) {
-      const product = products.find((item: Phone) => item.id === productId);
+    if (productId) {
+      let url = '';
+
+      if (location.pathname.includes('/phones')) {
+        url = './api/phones.json';
+      } else if (location.pathname.includes('/tablets')) {
+        url = './api/tablets.json';
+      } else if (location.pathname.includes('/accessories')) {
+        url = './api/accessories.json';
+      }
+
+      if (url) {
+        setLoading(true);
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            setAllProducts(data);
+            setLoading(false);
+          });
+        // .catch(error => {
+        //   setLoading(false);
+        // });
+      }
+    }
+  }, [location.pathname, productId]);
+
+  useEffect(() => {
+    if (productId && allProducts.length > 0) {
+      const product = allProducts.find((item: Phone) => item.id === productId);
 
       if (product) {
         setCurrentProduct(product);
@@ -58,18 +85,19 @@ export const Product = ({
         setAvailableCapacity(product.capacity);
       }
     }
-  }, [productId, products]);
+  }, [productId, allProducts]);
 
+  // Функція пошуку товару за capacity
   function findPriceByCapacity(selectedCapacity: string) {
     if (!currentProduct) {
       return;
     }
 
-    const reletedCapacity = products.filter(
+    const relatedCapacity = allProducts.filter(
       item => item.namespaceId === currentProduct.namespaceId,
     );
 
-    const productCapacity = reletedCapacity.find(
+    const productCapacity = relatedCapacity.find(
       item =>
         item.capacity.trim().toLowerCase() ===
           selectedCapacity.trim().toLowerCase() &&
@@ -84,16 +112,17 @@ export const Product = ({
     }
   }
 
+  // Функція пошуку товару за кольором
   function findColor(selectedColor: string) {
     if (!currentProduct) {
       return;
     }
 
-    const reletedColor = products.filter(
+    const relatedColor = allProducts.filter(
       item => item.namespaceId === currentProduct.namespaceId,
     );
 
-    const productColor = reletedColor.find(
+    const productColor = relatedColor.find(
       item =>
         item.color === selectedColor &&
         item.capacity.trim().toLowerCase() ===
@@ -116,7 +145,7 @@ export const Product = ({
   if (loading) {
     return (
       <section className={style.product}>
-        <p>Loading product details...</p>{' '}
+        <p>Loading product details...</p>
       </section>
     );
   }
@@ -124,71 +153,65 @@ export const Product = ({
   if (!currentProduct) {
     return (
       <section className={style.product}>
-        <p>Product not found.</p>{' '}
+        <p>Product not found.</p>
       </section>
     );
   }
 
   return (
     <section className={`${style.product} ${style['product--margin']}`}>
-      {' '}
       <div className={style.product__images}>
-        {' '}
         <div className={style.product__images__available}>
-          {' '}
           {productImages.map((img: string, index) => (
             <img
               key={index}
               src={img}
               alt={`thumbnail-${index}`}
               className={`
- ${style['product__images__available--image']}
- ${image === img ? style['product__images__available--image--active'] : ''} // Активний клас для мініатюр
-`}
+                ${style['product__images__available--image']}
+                ${image === img ? style['product__images__available--image--active'] : ''}
+              `}
               onClick={() => mainImage(img)}
             />
-          ))}{' '}
-        </div>{' '}
+          ))}
+        </div>
         <div className={style.product__images__image}>
-          {' '}
           <img
             src={image}
             alt="product"
             className={style['product__images__image--main']}
-          />{' '}
-        </div>{' '}
-      </div>{' '}
+          />
+        </div>
+      </div>
+
       <div className={style.product__cart}>
-        {' '}
         <div className={style.product__cart__top}>
-          {' '}
-          <p className={style.product__cart__top__name}>
-            Available colors
-          </p>{' '}
+          <p className={style.product__cart__top__name}>Available colors</p>
           <p className={style.product__cart__top__id}>
-            ID: {currentProduct.id}{' '}
-          </p>{' '}
-        </div>{' '}
+            ID: {currentProduct.id}
+          </p>
+        </div>
+
         <div className={style.product__cart__colors}>
-          {' '}
           {colors.map((color, index) => {
             return (
               <div
                 key={index}
                 className={`
-${style.product__cart__colors__color}
-${currentProduct.color === color ? style['product__cart__colors__color--active'] : ''} // Активний клас для кольору
-`}
+                  ${style.product__cart__colors__color}
+                  ${currentProduct.color === color ? style['product__cart__colors__color--active'] : ''}
+                `}
                 style={{ backgroundColor: color }}
                 onClick={() => findColor(color)}
               />
             );
-          })}{' '}
+          })}
         </div>
-        <hr className={style['product__cart--line']} />{' '}
-        <p className={style.product__cart__top__name}>Select capacity</p>{' '}
+
+        <hr className={style['product__cart--line']} />
+
+        <p className={style.product__cart__top__name}>Select capacity</p>
         <div className={style.product__cart__capacity}>
-          {' '}
           {capacity.map((cap: string, index) => {
             const normalizedCurrent = availableCapacity.trim().toLowerCase();
             const normalizedCap = cap.trim().toLowerCase();
@@ -198,84 +221,84 @@ ${currentProduct.color === color ? style['product__cart__colors__color--active']
               <button
                 key={index}
                 className={`
-									${style['product__cart__capacity--available']}
-									${isActive ? style['product__cart__capacity--active'] : ''} // ОНОВЛЕНО: Використовуємо --active
- 								`}
+                  ${style['product__cart__capacity--available']}
+                  ${isActive ? style['product__cart__capacity--active'] : ''}
+                `}
                 onClick={() => findPriceByCapacity(cap)}
               >
-                {cap}{' '}
+                {cap}
               </button>
             );
-          })}{' '}
+          })}
         </div>
-        <hr className={style['product__cart--line']} />{' '}
+
+        <hr className={style['product__cart--line']} />
+
         <div className={style.product__cart__prices}>
-          {' '}
           <h4 className={style.product__cart__prices__price}>
-            ${productDiscount}{' '}
-          </h4>{' '}
+            ${productDiscount}
+          </h4>
           <h4 className={style.product__cart__prices__discount}>
-            ${productPrice}{' '}
-          </h4>{' '}
-        </div>{' '}
+            ${productPrice}
+          </h4>
+        </div>
+
         <div className={style.product__cart__buttons}>
-          {' '}
           <button
             className={style.product__cart__buttons__button__add}
             onClick={() => currentProduct && toggleInCart(currentProduct)}
           >
-            {IsInCart ? 'In a cart' : 'Add to cart'}{' '}
-          </button>{' '}
+            {IsInCart ? 'In a cart' : 'Add to cart'}
+          </button>
+
           <button
             className={style.product__cart__buttons__button__favourites}
             onClick={() => currentProduct && toggleFavourite(currentProduct)}
             disabled={!currentProduct}
           >
-            {' '}
             <span
               className={`
-							${style['product__cart__buttons__button__favourites--heart']}
-							${isFavourite ? style['product__cart__buttons__button__favourites--heart--active'] : ''}
-							`}
-            />{' '}
-          </button>{' '}
-        </div>{' '}
+                ${style['product__cart__buttons__button__favourites--heart']}
+                ${isFavourite ? style['product__cart__buttons__button__favourites--heart--active'] : ''}
+                `}
+            />
+          </button>
+        </div>
+
         <div className={style.product__cart__description}>
-          {' '}
-          <p className={style.product__cart__description__screen}>
-            Screen
-          </p>{' '}
+          <p className={style.product__cart__description__screen}>Screen</p>
           <p className={style['product__cart__description__screen--number']}>
-            {productScreen}{' '}
-          </p>{' '}
-        </div>{' '}
+            {productScreen}
+          </p>
+        </div>
+
         <div className={style.product__cart__description}>
-          {' '}
           <p className={style.product__cart__description__resolution}>
-            Resolution{' '}
-          </p>{' '}
+            Resolution
+          </p>
           <p
             className={style['product__cart__description__resolution--number']}
           >
-            {productResolution}{' '}
-          </p>{' '}
-        </div>{' '}
+            {productResolution}
+          </p>
+        </div>
+
         <div className={style.product__cart__description}>
-          {' '}
           <p className={style.product__cart__description__processor}>
-            Processor{' '}
-          </p>{' '}
+            Processor
+          </p>
           <p className={style['product__cart__description__processor--number']}>
-            {productProcessor}{' '}
-          </p>{' '}
-        </div>{' '}
+            {productProcessor}
+          </p>
+        </div>
+
         <div className={style.product__cart__description}>
-          <p className={style.product__cart__description__ram}>RAM</p>{' '}
+          <p className={style.product__cart__description__ram}>RAM</p>
           <p className={style['product__cart__description__ram--number']}>
-            {productRam}{' '}
-          </p>{' '}
-        </div>{' '}
-      </div>{' '}
+            {productRam}
+          </p>
+        </div>
+      </div>
     </section>
   );
 };

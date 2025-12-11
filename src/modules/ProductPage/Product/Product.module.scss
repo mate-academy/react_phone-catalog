@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  
+
   @include onTablet {
     flex-direction: row;
     gap: 24px;
@@ -27,11 +27,11 @@
     flex-direction: column-reverse;
     width: 100%;
     box-sizing: border-box;
-    
+
     @include onTablet {
       flex-direction: row;
       flex: 1;
-      max-width: 50%; 
+      max-width: 50%;
     }
 
     @include onDesktop {
@@ -74,6 +74,10 @@
         &:hover {
           border-color: #4a4d58;
         }
+
+        &--active {
+          border-color: $active-link-color !important;
+        }
       }
     }
 
@@ -101,11 +105,11 @@
   &__cart {
     width: 100%;
     box-sizing: border-box;
-    
+
     @include onTablet {
       width: 320px;
       min-width: 280px;
-      flex-shrink: 1; 
+      flex-shrink: 1;
     }
 
     &__top {
@@ -113,11 +117,11 @@
       justify-content: space-between;
       max-width: 512px;
       margin-bottom: 8px;
-      
+
       @include onDesktop {
         width: 160%;
       }
-      
+
       &__name {
           font-family: $mont-regular-font;
           font-weight: 700;
@@ -160,6 +164,10 @@
         &:hover {
           border-color: #fff;
         }
+
+        &--active {
+          border-color: $active-link-color !important;
+        }
       }
     }
 
@@ -194,6 +202,12 @@
           border-color: $active-link-color;
           outline: none;
         }
+      }
+
+      &--active {
+        color: #2a2932 !important;
+        background-color: $active-link-color !important;
+        border-color: $active-link-color !important;
       }
     }
 
