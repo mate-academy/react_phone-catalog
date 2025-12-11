@@ -1,0 +1,120 @@
+@use '../../styles/media' as *;
+
+.grid {
+  margin-bottom: 80px;
+}
+
+.title {
+  grid-column: span 24;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-mobile {
+    grid-column: span 4;
+  }
+}
+
+.cartList {
+  grid-column: span 16;
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-mobile {
+    grid-column: span 4;
+  }
+}
+
+.empty {
+  @include on-desktop {
+    grid-column: 8/ 24;
+    grid-row: 3;
+  }
+
+  @include on-tablet {
+    grid-column: 3/ 9;
+    grid-row: 3;
+  }
+
+  @include on-mobile {
+    grid-column: 2/ 4;
+  }
+}
+
+.empty img,
+.emptyImage {
+  width: 500px;
+
+  @include on-tablet {
+    width: 400px;
+  }
+
+  @include on-mobile {
+    width: 150px;
+  }
+}
+
+.summary {
+  grid-column: 17 / 25;
+  padding: 32px 24px;
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  height: fit-content;
+
+  @include on-tablet {
+    grid-column: span 12;
+    margin-top: 24px;
+  }
+
+  @include on-mobile {
+    grid-column: span 4;
+    margin-top: 24px;
+  }
+}
+
+.totalPrice {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f1121;
+  margin: 0;
+}
+
+.totalText {
+  font-size: 14px;
+  color: #89939a;
+  margin: 0;
+}
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #e2e6e9;
+  margin: 0;
+}
+
+.checkoutBtn {
+  width: 100%;
+  height: 48px;
+  background-color: #313237;
+  color: #fff;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

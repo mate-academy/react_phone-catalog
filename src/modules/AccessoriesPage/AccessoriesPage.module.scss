@@ -1,0 +1,76 @@
+@use '../../styles/media' as *;
+
+.accessoriesPage {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 16px;
+
+
+  @media (max-width: 1199px) and (min-width: 640px) {
+    padding: 60px 24px;
+  }
+
+  @include on-tablet{
+    padding: 40px 16px;
+  }
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #313237;
+  width: 100%;
+  text-align: left;
+
+  @media (max-width: 1199px) {
+    font-size: 28px;
+  }
+
+  @media (max-width: 639px) {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+.message {
+  text-align: center;
+  margin-top: 100px;
+  color: #89939a;
+  font-size: 18px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+
+  button {
+    padding: 6px 10px;
+    border: 1px solid #e2e6e9;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background 0.3s ease, color 0.3s ease;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    background: #f0f0f0;
+  }
+
+  .activePage {
+    background: #313237;
+    color: #fff;
+    border-color: #313237;
+  }
+}

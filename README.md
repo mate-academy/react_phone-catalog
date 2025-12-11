@@ -1,4 +1,4 @@
-# React Product Catalog
+    # React Product Catalog
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
@@ -19,7 +19,7 @@ Follow the [Work in a team guideline](https://github.com/mate-academy/react_task
 Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
 
 ## Data
-
+тз
 Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
 
 ## App
@@ -48,9 +48,8 @@ Implement Home page at available at `/`.
 2. `PicturesSlider`:
    - Find your own images to personalize the App;
    - Change pictures automatically every 5 seconds;
-   - The next buttons should show the first image after the last one;
+   - The next buttons shoul  d show the first image after the last one;
    - Dashes at the bottom should allow choosing an exact picture.
-3. `ProductsSlider` for the `Hot prices` block:
    - The products with a discount starting from the biggest absolute value;
    - `<` and `>` buttons should scroll products.
 4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
@@ -92,7 +91,8 @@ Create `ProductDetailsPage` available at `/product/:productId`.
    - A Home page link;
    - A category page link (`Phones`, `Tablets`, `Accessories`);
    - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+8.   Show `Product was not found` if there is no product with a given id on
+    the server.
 
 ## Shopping Cart page
 
@@ -131,7 +131,8 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 ## (*) Advanced tasks
 
 - Implement color theme switching!
-- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.
+- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make
+  loading more natural.
 - Add the ability to change page language.
 
 ### Search
