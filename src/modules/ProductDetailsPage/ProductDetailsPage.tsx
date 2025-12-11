@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { useMyContext } from '../../Context/ProductContexts';
-import { useEffect, useState } from 'react';
 import { ProductFullInfo } from '../../types/ProductFullInfo';
 import { ProductDemo } from '../../types/ProductDemo';
 import { BurgerMenu } from '../BurgerMenu';
@@ -38,46 +39,47 @@ export const ProductDetailsPage: React.FC = () => {
   const [activeAdd, setActiveAdd] = useState(false);
   const [suggestedList, setSuggestedList] = useState<ProductDemo[]>([]);
   const [fullInfoList, setFullInfoList] = useState<ProductFullInfo[]>([]);
-  const [chosedItem, setChosedItem] = useState<ProductFullInfo>();
-  const [newProduct, setNewProduct] = useState<boolean>(false);
+  const [chosedItem, setChosedItem] = useState<ProductFullInfo | undefined>();
+  const [newProduct, setNewProduct] = useState(false);
 
-  // const chosedItem = fullInfoList.find(item => item.id === productId);
   const chosedItemDemo = products.find(product => product.itemId === productId);
 
   const updateList = (item: ProductDemo, direction: Action) => {
     const chosedID = item.itemId;
 
     switch (direction) {
-      case 'toCart':
-        const existingOrder = localStorage.getItem(`cart_${chosedID}`);
+      case 'toCart': {
+        const key = `cart_${chosedID}`;
+        const existingOrder = localStorage.getItem(key);
 
         if (existingOrder) {
-          setAddIsPressed(prev => !prev);
-
-          return;
+          localStorage.removeItem(key);
+          setActiveAdd(false);
         } else {
-          localStorage.setItem(`cart_${chosedID}`, JSON.stringify(item));
-          setAddIsPressed(prev => !prev);
-
+          localStorage.setItem(key, JSON.stringify(item));
           setActiveAdd(true);
         }
 
+        setAddIsPressed(prev => !prev);
         break;
-      case 'toFavorite':
+      }
+
+      case 'toFavorite': {
         const existingProduct = localStorage.getItem(chosedID);
 
         if (existingProduct) {
           localStorage.removeItem(chosedID);
-
           setActiveHeart(false);
-          setHeartIsPressed(prev => !prev);
         } else {
           localStorage.setItem(chosedID, JSON.stringify(item));
-
           setActiveHeart(true);
-          setHeartIsPressed(prev => !prev);
         }
 
+        setHeartIsPressed(prev => !prev);
+        break;
+      }
+
+      default:
         break;
     }
   };
@@ -89,6 +91,7 @@ export const ProductDetailsPage: React.FC = () => {
       try {
         setIsLoading(true);
         setIsError(false);
+
         const iphoneList = await client.fetchIPhones();
         const tabletList = await client.fetchTablets();
         const accessoryList = await client.fetchAccessories();
@@ -106,6 +109,7 @@ export const ProductDetailsPage: React.FC = () => {
         setTablets(tabletList);
         setAccessories(accessoryList);
         setFullInfoList(fullData);
+
         if (foundProduct) {
           setChosedItem(foundProduct);
         }
@@ -117,48 +121,48 @@ export const ProductDetailsPage: React.FC = () => {
     };
 
     makeFullList();
-  }, [newProduct]);
+  }, [newProduct, productId]);
 
   useEffect(() => {
-    setSelectedImage(chosedItem ? chosedItem.images[0] : null);
+    if (!chosedItem) {
+      return;
+    }
 
-    setSelectedColor(chosedItem ? chosedItem.color : '');
-    setSelectedCapacity(chosedItem ? chosedItem.capacity : '');
-  }, [fullInfoList, chosedItem]);
+    setSelectedImage(chosedItem.images[0] || null);
+    setSelectedColor(chosedItem.color || '');
+    setSelectedCapacity(chosedItem.capacity || '');
+  }, [chosedItem]);
 
   useEffect(() => {
-    const checkTheStorage = () => {
-      if (!chosedItemDemo) {
-        return;
-      }
+    if (!chosedItemDemo) {
+      return;
+    }
 
-      const favoriteInStorage = localStorage.getItem(chosedItemDemo.itemId);
+    const favoriteInStorage = localStorage.getItem(chosedItemDemo.itemId);
 
-      if (favoriteInStorage) {
-        setActiveHeart(true);
-      } else {
-        setActiveHeart(false);
-      }
+    if (favoriteInStorage) {
+      setActiveHeart(true);
+    } else {
+      setActiveHeart(false);
+    }
 
-      const orderInStorage = localStorage.getItem(
-        `cart_${chosedItemDemo.itemId}`,
-      );
+    const orderInStorage = localStorage.getItem(`cart_${chosedItemDemo.itemId}`);
 
-      if (orderInStorage) {
-        setActiveAdd(true);
-      } else {
-        setActiveAdd(false);
-      }
-    };
+    if (orderInStorage) {
+      setActiveAdd(true);
+    } else {
+      setActiveAdd(false);
+    }
+  }, [chosedItemDemo]);
 
-    checkTheStorage();
-  }, [activeHeart, activeAdd]);
+  if (isMenuOpen) {
+    return <BurgerMenu />;
+  }
 
-  return isMenuOpen ? (
-    <BurgerMenu />
-  ) : (
+  return (
     <>
       <NavBar />
+
       {isLoading ? (
         <Loader />
       ) : chosedItem ? (
@@ -183,7 +187,7 @@ export const ProductDetailsPage: React.FC = () => {
           setNewProduct={setNewProduct}
         />
       ) : (
-        <ErrorMessage notFound={true} />
+        <ErrorMessage notFound />
       )}
     </>
   );

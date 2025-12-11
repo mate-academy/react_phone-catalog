@@ -44,6 +44,9 @@
     padding: 24px 24px 64px;
     width: 100%;
     max-width: 1200px;
+
+    /* ✨ ДОДАЙ ЦЕ — ЦЕНТРУЄ БЛОК ✨ */
+    margin: 0 auto;
   }
 
   &_order {
@@ -62,6 +65,7 @@
       gap: 64px;
     }
   }
+
   &_confirm {
     @include respond(desktop) {
       flex: 1;
