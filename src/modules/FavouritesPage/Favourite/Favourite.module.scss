@@ -19,6 +19,16 @@
       margin-bottom: 80px;
     }
   }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    &__img {
+      max-width: 500px;
+      flex-shrink: 1;
+      min-width: 50px;
+    }
+  }
   &__product {
     display: block;
     align-self: center;

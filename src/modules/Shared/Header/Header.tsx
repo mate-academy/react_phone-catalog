@@ -3,7 +3,12 @@ import style from './Header.module.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Sidebar } from '../Sidebar';
 
-export const Header = () => {
+interface HeadeProps {
+  cartCounter: number;
+  favouriteCounter: number;
+}
+
+export const Header = ({ cartCounter, favouriteCounter }: HeadeProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -19,7 +24,7 @@ export const Header = () => {
             to="/"
             className={style.header__logo}
             onClick={() => {
-              document.querySelector('.App')?.classList.remove('app--noscroll')
+              document.querySelector('.App')?.classList.remove('app--noscroll');
 
               // document.body.classList.remove('body--noscroll');
             }}
@@ -69,16 +74,27 @@ export const Header = () => {
           <div className={style.header__icons}>
             <NavLink
               to="/favourites"
-              className={style['header__icons__favourites']}
-            />
-            <NavLink to="/cart" className={style['header__icons__bag']} />
+              className={style.header__icons__favourites}
+            >
+              {' '}
+              {favouriteCounter > 0 && (
+                <span className={style.header__icons__badge}>
+                  {favouriteCounter}
+                </span>
+              )}
+            </NavLink>
+            <NavLink to="/cart" className={style.header__icons__bag}>
+              {cartCounter > 0 && (
+                <span className={style.header__icons__badge}>
+                  {cartCounter}
+                </span>
+              )}
+            </NavLink>
             <button
-              className={style['header__icons__burger']}
+              className={style.header__icons__burger}
               onClick={() => {
                 setIsMenuOpen(true);
-                document.querySelector('.App')?.classList.add('app--noscroll')
-
-                // document.body.classList.add('body--noscroll');
+                document.querySelector('.App')?.classList.add('app--noscroll');
               }}
             />
           </div>

@@ -17,6 +17,15 @@ export const Favourite = ({
 }: FavouritesPageProps) => {
   return (
     <div className={`${style.favourite} ${style['favourite--margin']}`}>
+      {favourites.length === 0 && (
+        <div className={style.favourite__image}>
+          <img
+            className={style.favourite__image__img}
+            src="./img/cart-is-empty.png"
+            alt="Cart is empty"
+          />
+        </div>
+      )}
       {favourites.map((phone: Phone) => {
         const IsInCart = itemsInCart.some(item => item.id === phone.id);
 

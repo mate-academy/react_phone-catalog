@@ -14,10 +14,14 @@ import useAddToFavourite from './modules/Hooks/UseAddtoFavourite';
 export const App = () => {
   const { itemsInCart, toggleInCart } = useAddToCart();
   const { favourites, toggleFavourite, favouriteButton } = useAddToFavourite();
+
+  const cartCounter = itemsInCart.length;
+  const favouriteCounter = favourites.length;
+
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header cartCounter={cartCounter} favouriteCounter={favouriteCounter} />
         <div className="container">
           <Routes>
             <Route

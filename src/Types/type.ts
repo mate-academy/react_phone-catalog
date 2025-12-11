@@ -24,6 +24,7 @@ export type Phone = {
   ram: string;
   screen: string;
   color: string;
+  colorsAvailable: string[];
 };
 
 export type SortType = '' | 'expensive' | 'cheaper' | 'discount';

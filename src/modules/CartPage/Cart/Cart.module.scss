@@ -21,7 +21,18 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    
+
+    &__image {
+      display: flex;
+      justify-content: center;
+
+      &__img {
+        max-width: 500px;
+        flex-shrink: 1;
+        min-width: 50px;
+      }
+    }
+
     &__item {
       background-color: #161827;
       display: grid;
@@ -30,14 +41,14 @@
       column-gap: 25px;
       align-items: center;
       padding: 10px 16px;
-  
+
       @include onTablet {
         grid-template-columns: 1fr 2fr 4fr 3fr 1fr;
         column-gap: 24px;
         row-gap: 24px;
         padding: 24px 16px;
       }
-  
+
       &__delete {
         background-image: url(/img/logo/Close.svg);
         background-color: #000000;
@@ -47,14 +58,14 @@
         width: 16px;
         height: 16px;
       }
-  
+
       &__image {
         width: 80px;
         height: 80px;
         padding: 7px;
         box-sizing: border-box;
       }
-  
+
       &__id {
         color: $active-link-color;
         font-family: $mont-regular-font;
@@ -63,32 +74,30 @@
         line-height: 21px;
         letter-spacing: 0%;
         margin-left: auto;
-  
+
         @include onTablet {
           margin-left: 0;
         }
       }
-  
+
       &__quantity {
         display: flex;
         grid-column: 1 / 3;
         align-items: center;
         gap: 15px;
-  
+
         @include onTablet {
           grid-column: 4;
         }
-        
+
         &__operator {
           padding: 16px;
-  
+
           background-color: transparent;
-          color: #4A4D58;
-          border: 1px solid #3B3E4A;
-  
+          color: #4a4d58;
+          border: 1px solid #3b3e4a;
         }
-   
-  
+
         &__number {
           color: $active-link-color;
           font-family: $mont-regular-font;
@@ -98,26 +107,25 @@
           letter-spacing: 0%;
           text-align: center;
         }
-     
       }
-  
+
       &__price {
         font-family: $mont-bold-font;
         font-weight: 800;
         font-size: 22px;
         line-height: 140%;
         letter-spacing: 0%;
-  
+
         margin-left: auto;
-  
+
         color: $active-link-color;
-  
+
         @include onTablet {
           grid-column: 5;
         }
       }
     }
-  
+
     &__bucket {
       display: flex;
       flex-direction: column;
@@ -126,14 +134,14 @@
       height: 190px;
       padding: 24px 24px;
       background-color: transparent;
-      border: 1px solid #3B3E4A;
+      border: 1px solid #3b3e4a;
       margin: 0 auto;
       margin-bottom: 54px;
-  
+
       @include onDesktop {
         max-width: 360px;
       }
-      
+
       &__totalprice {
         color: $active-link-color;
         font-family: $mont-regular-font;
@@ -143,9 +151,9 @@
         letter-spacing: 0%;
         text-align: center;
       }
-  
+
       &__quantity {
-        color: #89939A;
+        color: #89939a;
         font-family: $mont-regular-font;
         font-weight: 600;
         font-size: 14px;
@@ -153,17 +161,15 @@
         letter-spacing: 0%;
         text-align: center;
         margin-bottom: 16px;
-  
       }
-  
+
       &__line {
-        background-color: #3B3E4A;
+        background-color: #3b3e4a;
         height: 1px;
         width: 100%;
         margin-bottom: 16px;
-  
       }
-  
+
       &__submit {
         font-family: $mont-regular-font;
         font-weight: 700;
@@ -173,7 +179,7 @@
         text-align: center;
         color: $active-link-color;
         padding: 13.5px 84.5px;
-        background-color: #905BFF;
+        background-color: #905bff;
       }
     }
   }

@@ -16,7 +16,10 @@ export const Cart = ({ itemsInCart, toggleInCart }: CartProps) => {
       const currentQty = prev[productId] || 1;
       const newQty = currentQty + delta;
 
-      if (newQty < 1) return prev;
+      if (newQty < 1) {
+        return prev;
+      }
+
       return { ...prev, [productId]: newQty };
     });
   };
@@ -24,6 +27,7 @@ export const Cart = ({ itemsInCart, toggleInCart }: CartProps) => {
   const totalPrice = itemsInCart.reduce((sum, product) => {
     const qty = quantities[product.id] || 1;
     const price = product.priceDiscount || product.priceRegular;
+
     return sum + price * qty;
   }, 0);
 
@@ -35,6 +39,15 @@ export const Cart = ({ itemsInCart, toggleInCart }: CartProps) => {
     <>
       <div className={styles.cartpage}>
         <div className={styles.cartpage__cart}>
+          {itemsInCart.length === 0 && (
+            <div className={styles.cartpage__cart__image}>
+              <img
+                className={styles.cartpage__cart__image__img}
+                src="./img/cart-is-empty.png"
+                alt="Cart is empty"
+              />
+            </div>
+          )}
           {itemsInCart.map((product: Phone) => {
             const price = product.priceDiscount || product.priceRegular;
             const quantity = quantities[product.id] || 1;

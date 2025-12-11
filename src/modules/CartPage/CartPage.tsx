@@ -1,4 +1,3 @@
-import styles from './CartPage.module.scss';
 import { Breadcrumbs } from '../Shared/Breadcrumbs';
 import { PhonesTitle } from '../Shared/PhonesTitle';
 import { Cart } from './Cart/Cart';
