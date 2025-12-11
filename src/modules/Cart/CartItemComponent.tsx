@@ -1,20 +1,19 @@
-import { CartItem } from '@/types/CartItem';
 import React from 'react';
 import styles from './Cart.module.scss';
 import { useCart } from '../CartFavContext/CartContext';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { CartProduct } from './Cart';
 type CartItemProps = {
-  item: CartItem;
+  item: CartProduct;
 };
 const CartItemComponent: React.FC<CartItemProps> = ({ item }) => {
-  const { reduceQuantity, increaseQuantity, removeFromCart, addToCart } =
-    useCart();
+  const { reduceQuantity, increaseQuantity, removeFromCart } = useCart();
 
   return (
     <div className={styles.cartItem}>
       <button
-        onClick={() => removeFromCart(item.id)}
+        onClick={() => removeFromCart(item.itemId)}
         className={styles.cartItem__removeButton}
       >
         <svg
@@ -46,7 +45,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ item }) => {
             [styles.cartItem__quantityButtonDisabled]: item.quantity <= 1,
           })}
           disabled={item.quantity <= 1}
-          onClick={() => reduceQuantity(item.id)}
+          onClick={() => reduceQuantity(item.itemId)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +68,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ item }) => {
         {/* Кнопка ПЛЮС */}
         <button
           className={styles.cartItem__quantityButton}
-          onClick={() => increaseQuantity(item.id)}
+          onClick={() => increaseQuantity(item.itemId)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,5 @@
 import styles from './Navbar.module.scss';
-import {  NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Logo from '/img/Logo.svg';
 import CartIcon from '/img/icons/cart.svg';
 import HeartIcon from '/img/icons/heart.svg';
@@ -17,9 +17,9 @@ export const Navbar = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
-        <div className={styles.navbar__logo}>
+        <Link to="/" className={styles.navbar__logo}>
           <img src={Logo} alt="MyShop Logo" />
-        </div>
+        </Link>
 
         <ul className={styles.navbar__list}>
           {links.map(({ path, label }) => (
@@ -72,7 +72,7 @@ export const Navbar = () => {
             </div>
           </NavLink>
         </div>
-      </nav>{' '}
+      </nav>
     </header>
   );
 };

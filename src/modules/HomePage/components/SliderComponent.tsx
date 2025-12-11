@@ -28,7 +28,7 @@ export const SliderComponent: React.FC<SliderComponentProps> = ({
     <section>
       <div className={styles.SliderComponent__headerContainer}>
         <h2>{title}</h2>
-        <div className={styles.SliderComponent__buttonGroup}>
+      {products.length > 4 && <div className={styles.SliderComponent__buttonGroup}>
           <button
             className={`${styles.SliderComponent__buttonContainer} ${
               index === 0
@@ -111,7 +111,7 @@ export const SliderComponent: React.FC<SliderComponentProps> = ({
               </svg>
             )}
           </button>
-        </div>
+        </div>}
       </div>
       <div className={styles.SliderComponent__itemsContainer}>
         {visible.map(prod => (

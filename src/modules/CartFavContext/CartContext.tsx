@@ -5,7 +5,6 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { Product } from '@/types/Product';
 import { CartItem } from '@/types/CartItem';
 
 const CART_KEY = 'shop_cart';
@@ -14,15 +13,15 @@ const FAV_KEY = 'shop_favorites';
 type CartContextType = {
   cart: CartItem[];
   favorites: string[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (productId: number) => void;
+  addToCart: (itemId: string) => void;
+  removeFromCart: (productId: string) => void;
   addToFavorites: (productId: string) => void;
   removeFromFavorites: (productId: string) => void;
-  isInCart: (productId: number) => boolean;
+  isInCart: (productId: string) => boolean;
   isFavorite: (productId: string) => boolean;
-  reduceQuantity: (productId: number) => void;
-  increaseQuantity: (productId: number) => void;
-  totalAmount: number;
+  reduceQuantity: (productId: string) => void;
+  increaseQuantity: (productId: string) => void;
+
   totalCount: number;
   totalFavoritesCount: number;
 };
@@ -50,10 +49,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   });
 
-  const totalAmount = useMemo(() => {
-    return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  }, [cart]);
-
   const totalCount = useMemo(() => {
     return cart.reduce((sum, item) => sum + item.quantity, 0);
   }, [cart]);
@@ -73,32 +68,34 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem(FAV_KEY, JSON.stringify(favorites));
   }, [favorites]);
 
-  const addToCart = (product: Product) => {
+  const addToCart = (itemId: string) => {
     setCart(prev => {
-      const existing = prev.find(item => item.id === product.id);
+      const existing = prev.find(item => item.itemId === itemId);
       if (existing) {
         return prev.map(item =>
-          item.id === product.id
+          item.itemId === itemId
             ? { ...item, quantity: item.quantity + 1 }
             : item,
         );
       }
-      return [...prev, { ...product, quantity: 1 }];
+      return [...prev, { itemId, quantity: 1 }];
     });
   };
-  const increaseQuantity = (productId: number) => {
+  const increaseQuantity = (itemId: string) => {
     setCart(prev =>
       prev.map(item =>
-        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item,
+        item.itemId === itemId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item,
       ),
     );
   };
 
-  const reduceQuantity = (productId: number) => {
+  const reduceQuantity = (itemId: string) => {
     setCart(prev =>
       prev
         .map(item =>
-          item.id === productId
+          item.itemId === itemId
             ? { ...item, quantity: Math.max(item.quantity - 1, 1) }
             : item,
         )
@@ -106,8 +103,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  const removeFromCart = (productId: number) => {
-    setCart(prev => prev.filter(item => item.id !== productId));
+  const removeFromCart = (itemId: string) => {
+    setCart(prev => prev.filter(item => item.itemId !== itemId));
   };
 
   const addToFavorites = (productId: string) => {
@@ -118,8 +115,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     setFavorites(prev => prev.filter(id => id !== productId));
   };
 
-  const isInCart = (productId: number) =>
-    cart.some(item => item.id === productId);
+  const isInCart = (productId: string) =>
+    cart.some(item => item.itemId === productId);
 
   const isFavorite = (productId: string) =>
     favorites.some(id => id === productId);
@@ -129,7 +126,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         cart,
         favorites,
-        totalAmount,
+
         totalCount,
         totalFavoritesCount,
         addToCart,

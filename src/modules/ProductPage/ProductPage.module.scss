@@ -85,6 +85,12 @@
     font-weight: 500;
     color: $color-primary;
   }
+  &__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+  }
 }
 
 .backBtn {

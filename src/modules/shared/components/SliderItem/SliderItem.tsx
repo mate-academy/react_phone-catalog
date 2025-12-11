@@ -23,7 +23,7 @@ export const SliderItem: React.FC<SliderItemProps> = ({
   if (!item) return null;
 
   const fav = isFavorite(item.itemId || '');
-  const inCart = isInCart(item.id || 0);
+  const inCart = isInCart(item.itemId || '');
 
   const handleCartClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ export const SliderItem: React.FC<SliderItemProps> = ({
 
     if (!item) return;
 
-    addToCart(item);
+    addToCart(item.itemId);
   };
 
   const handleFav = (e: React.MouseEvent) => {

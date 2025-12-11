@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './NotFoundPage.module.scss';
 import { Link } from 'react-router-dom';
 import { SliderComponent } from '../HomePage/components/SliderComponent';
 import { recentlyViewedService } from '../shared/components/utils/RecentlyViewed/RecentlyViewed';
+import { Product } from '@/types/Product';
+import { getProducts } from '@/api/api';
 
 const NotFoundPage: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
   const recentlyViewedItems = recentlyViewedService.get();
 
-
+  useEffect(() => {
+    getProducts()
+      .then(fetchedProducts => {
+        setProducts(
+          fetchedProducts.filter(product =>
+            recentlyViewedItems.includes(product.itemId),
+          ),
+        );
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+      });
+  }, []);
 
   return (
     <section className={styles.notFoundPage}>
@@ -21,7 +36,7 @@ const NotFoundPage: React.FC = () => {
           <button>To Home</button>
         </Link>
         <SliderComponent
-          products={recentlyViewedItems}
+          products={products}
           title="Recently Viewed"
         />
       </div>

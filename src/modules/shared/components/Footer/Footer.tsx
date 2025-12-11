@@ -5,9 +5,13 @@ import styles from './Footer.module.scss';
 export const Footer: React.FC = () => {
   return (
     <div className={styles.footer}>
-      <div className={styles.footer__logo}>
+      <Link
+        to="/"
+        className={styles.footer__logo}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
         <img src="img/logo-footer.svg" alt="Footer logo" />
-      </div>
+      </Link>
       <div className={styles.footer__links}>
         <a
           className={styles.footer__link}

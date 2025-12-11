@@ -1,3 +1,6 @@
-import { Product } from './Product';
 
-export type CartItem = Product & { quantity: number };
+
+export type CartItem = {
+  itemId: string; // або itemId: string
+  quantity: number;
+};
