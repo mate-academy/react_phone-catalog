@@ -141,10 +141,15 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
         perPage: String(itemsPerPage),
         page: String(page),
       });
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }, [currentPage]);
 
   return {
     items,
