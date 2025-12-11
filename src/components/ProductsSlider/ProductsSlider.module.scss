@@ -62,12 +62,15 @@
   &__list {
     display: flex;
     flex-direction: row;
-    column-gap: 16px;
+    gap: 16px;
 
     width: calc(50% + 50vw);
 
     overflow-x: auto;
     scroll-behavior: smooth;
+
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
       display: none;

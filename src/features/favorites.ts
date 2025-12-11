@@ -31,7 +31,7 @@ const favoritesSlice = createSlice({
     toggleFavorites: (state, action: PayloadAction<Product>) => {
       const product = action.payload;
       const existingIndex = state.items.findIndex(
-        item => item.id === product.id,
+        item => item.itemId === product.itemId,
       );
 
       if (existingIndex >= 0) {
@@ -48,7 +48,7 @@ export const { toggleFavorites } = favoritesSlice.actions;
 export const selectFavorites = (state: RootState) => state.favorites.items;
 export const selectFavoritesCount = (state: RootState) =>
   state.favorites.items.length;
-export const selectIsFavorite = (state: RootState, productId: number) =>
-  state.favorites.items.some(item => item.id === productId);
+export const selectIsFavorite = (state: RootState, productId: string) =>
+  state.favorites.items.some(item => item.itemId === productId);
 
 export default favoritesSlice.reducer;

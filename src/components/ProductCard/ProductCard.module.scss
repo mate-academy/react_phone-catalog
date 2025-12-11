@@ -6,6 +6,10 @@
   border: 1px solid #E2E6E9;
   border-radius: 8px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   background-color: var(--card-bg);
 
   @include on-tablet {

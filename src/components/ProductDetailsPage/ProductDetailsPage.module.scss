@@ -320,6 +320,12 @@
         @include on-desktop {
           width: 263px;
         }
+
+        &--active {
+          color: #4219d0;
+          border-color: #e2e6e9;
+          background-color: #fff;
+        }
       }
 
       &-fav {
@@ -337,6 +343,12 @@
         cursor: pointer;
 
         @include hover(border-color, $primary-color);
+
+        &--active {
+          background-image: url(/icons/favourites-filled.svg);
+
+          border-color: #e2e6e9;
+        }
       }
     }
   }

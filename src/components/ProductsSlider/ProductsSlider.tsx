@@ -13,7 +13,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const chackScroll = () => {
+  const checkScroll = () => {
     if (scrollRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
 
@@ -26,19 +26,19 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   useEffect(() => {
     const element = scrollRef.current;
 
-    chackScroll();
+    checkScroll();
 
     if (element) {
-      element.addEventListener('scroll', chackScroll);
-      window.addEventListener('scroll', chackScroll);
+      element.addEventListener('scroll', checkScroll);
+      window.addEventListener('scroll', checkScroll);
     }
 
     return () => {
       if (element) {
-        element.removeEventListener('scroll', chackScroll);
+        element.removeEventListener('scroll', checkScroll);
       }
 
-      window.removeEventListener('scroll', chackScroll);
+      window.removeEventListener('scroll', checkScroll);
     };
   }, [products]);
 
@@ -70,9 +70,26 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
       </div>
 
       <div className="products-slider__list" ref={scrollRef}>
-        {products.map(product => (
-          <ProductsSliderCard key={product.id} product={product} />
-        ))}
+        {products.map(product => {
+          const mappedProduct = {
+            id: 0,
+            itemId: product.id,
+            category: product.category as 'phones' | 'tablets' | 'accessories',
+            name: product.name,
+            fullPrice: product.priceRegular,
+            price: product.priceDiscount,
+            screen: product.screen,
+            capacity: product.capacity,
+            color: product.color,
+            ram: product.ram,
+            year: 2020,
+            image: product.images[0],
+          };
+
+          return (
+            <ProductsSliderCard key={product.id} product={mappedProduct} />
+          );
+        })}
       </div>
     </div>
   );

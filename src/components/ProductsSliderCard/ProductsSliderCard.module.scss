@@ -7,6 +7,13 @@
   border-radius: 8px;
   background-color: var(--card-bg);
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  flex-shrink: 0;
+  scroll-snap-align: start;
+
   @include on-tablet {
     width: 237px;
     height: 512px;
@@ -136,6 +143,12 @@
       @include on-desktop {
         width: 160px;
       }
+
+      &--active {
+        color: #4219d0;
+        border-color: #e2e6e9;
+        background-color: #fff;
+      }
     }
 
     &-fav {
@@ -153,6 +166,12 @@
       cursor: pointer;
 
       @include hover(border-color, $primary-color);
+
+      &--active {
+        background-image: url(/icons/favourites-filled.svg);
+
+        border-color: #e2e6e9;
+      }
     }
   }
 }

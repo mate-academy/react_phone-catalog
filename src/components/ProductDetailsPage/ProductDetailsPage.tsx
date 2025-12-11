@@ -7,6 +7,10 @@ import { Loader } from '../Loader/Loader';
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import { ProductDetails } from '../../types/ProductDetails';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { selectIsFavorite, toggleFavorites } from '../../features/favorites';
+import { addToCart, selectIsAddedToCart } from '../../features/cart';
+import { Product } from '../../types/Product';
 
 const colorMap: Record<string, string> = {
   black: '#000000',
@@ -44,9 +48,9 @@ const colorMap: Record<string, string> = {
 
 export const ProductDetailsPage: React.FC = () => {
   const { t } = useTranslation();
-
   const { productId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [suggestedProducts, setSuggestedProducts] = useState<ProductDetails[]>(
@@ -57,6 +61,13 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState('');
   const [selectedColor, setSelectedColor] = useState<string>();
   const [selectedCapacity, setSelectedCapacity] = useState<string>();
+
+  const isFav = useAppSelector(state =>
+    selectIsFavorite(state, product?.id || ''),
+  );
+  const isAddedToCart = useAppSelector(state =>
+    selectIsAddedToCart(state, product?.id || ''),
+  );
 
   const loadData = useCallback(async () => {
     if (!productId) {
@@ -69,9 +80,9 @@ export const ProductDetailsPage: React.FC = () => {
     try {
       const foundProduct = await getProductById(productId);
 
-      setProduct(foundProduct);
-
       if (foundProduct) {
+        setProduct(foundProduct);
+
         setSelectedImage(foundProduct.images[0]);
 
         const suggested = await getSuggestedProducts(foundProduct.id);
@@ -95,6 +106,33 @@ export const ProductDetailsPage: React.FC = () => {
       setSelectedCapacity(product.capacity);
     }
   }, [product]);
+
+  const getProductsForRedux = (details: ProductDetails | null): Product => {
+    return {
+      id: 0,
+      itemId: details?.id || '',
+      category: details?.category as 'phones' | 'tablets' | 'accessories',
+      name: details?.name || '',
+      fullPrice: details?.priceRegular || 0,
+      price: details?.priceDiscount || 0,
+      screen: details?.screen || '',
+      capacity: details?.capacity || '',
+      color: details?.color || '',
+      ram: details?.ram || '',
+      year: 2023,
+      image: details?.images[0] || '',
+    };
+  };
+
+  const handleToggleFavorites = () => {
+    dispatch(toggleFavorites(getProductsForRedux(product)));
+  };
+
+  const handleAddToCart = () => {
+    if (!isAddedToCart) {
+      dispatch(addToCart(getProductsForRedux(product)));
+    }
+  };
 
   if (isLoading) {
     return <Loader />;
@@ -242,11 +280,21 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="product-details__actions">
-              <button className="product-details__actions-btn-add">
-                {t('to-cart')}
+              <button
+                className={cn('product-details__actions-btn-add', {
+                  'product-details__actions-btn-add--active': isAddedToCart,
+                })}
+                onClick={handleAddToCart}
+              >
+                {isAddedToCart ? t('to-cart-succes') : t('to-cart')}
               </button>
 
-              <button className="product-details__actions-btn-fav" />
+              <button
+                className={cn('product-details__actions-btn-fav', {
+                  'product-details__actions-btn-fav--active': isFav,
+                })}
+                onClick={handleToggleFavorites}
+              />
             </div>
 
             <div className="product-details__specs-short">
