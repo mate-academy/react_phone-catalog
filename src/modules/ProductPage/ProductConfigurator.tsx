@@ -88,7 +88,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     }
 
       addToCart(foundProductFromProducts);
-    
+
   };
 
   const handleFav = (e: React.MouseEvent) => {
@@ -102,7 +102,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     if (fav) {
       removeFromFavorites(foundProductFromProducts?.itemId || '');
     } else {
-      addToFavorites(foundProductFromProducts);
+      addToFavorites(foundProductFromProducts.itemId);
     }
   };
 

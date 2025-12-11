@@ -37,5 +37,7 @@ export const getProductDetails = (category: string | undefined) => {
 
   return get<ProductDetails[]>(ENDPOINTS[category as Category]);
 };
-// export const getTablets = () => get<Product[]>(ENDPOINTS.tablets);
-// export const getAccessories = () => get<Product[]>(ENDPOINTS.accessories);
+export const getProductsByIds = async (ids: string[]) => {
+  const products = await getProducts();
+  return products.filter(p => ids.includes(p.itemId));
+};

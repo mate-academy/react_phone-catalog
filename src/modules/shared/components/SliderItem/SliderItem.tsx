@@ -8,7 +8,10 @@ type SliderItemProps = {
   showDiscount: boolean;
 };
 
-export const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) => {
+export const SliderItem: React.FC<SliderItemProps> = ({
+  item,
+  showDiscount,
+}) => {
   const {
     isFavorite,
     isInCart,
@@ -40,7 +43,7 @@ export const SliderItem: React.FC<SliderItemProps> = ({ item, showDiscount }) =>
     if (fav) {
       removeFromFavorites(item.itemId || '');
     } else {
-      addToFavorites(item);
+      addToFavorites(item.itemId);
     }
   };
 

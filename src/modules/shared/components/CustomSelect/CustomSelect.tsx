@@ -22,7 +22,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   value,
   onChange,
   label,
-  placeholder = 'Оберіть значення',
+  placeholder = 'Choose an option',
   disabled = false,
   className = '',
 }) => {

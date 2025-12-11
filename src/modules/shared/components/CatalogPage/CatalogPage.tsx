@@ -11,7 +11,7 @@ import {
   perPageOptions,
   sortOptions,
 } from '../utils/constants/constants';
-import { ProductsList } from './ProductList';
+import { ProductsList } from '../ProductList/ProductList';
 import NotFoundPage from '@/modules/NotFoundPage/NotFoundPage';
 import styles from './CatalogPage.module.scss';
 

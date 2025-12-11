@@ -1,5 +1,5 @@
 import styles from './Navbar.module.scss';
-import { Link, NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import Logo from '/img/Logo.svg';
 import CartIcon from '/img/icons/cart.svg';
 import HeartIcon from '/img/icons/heart.svg';

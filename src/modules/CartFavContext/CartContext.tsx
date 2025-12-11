@@ -13,10 +13,10 @@ const FAV_KEY = 'shop_favorites';
 
 type CartContextType = {
   cart: CartItem[];
-  favorites: Product[];
+  favorites: string[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
-  addToFavorites: (product: Product) => void;
+  addToFavorites: (productId: string) => void;
   removeFromFavorites: (productId: string) => void;
   isInCart: (productId: number) => boolean;
   isFavorite: (productId: string) => boolean;
@@ -41,7 +41,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   });
 
-  const [favorites, setFavorites] = useState<Product[]>(() => {
+  const [favorites, setFavorites] = useState<string[]>(() => {
     try {
       const storedFav = localStorage.getItem(FAV_KEY);
       return storedFav ? JSON.parse(storedFav) : [];
@@ -110,18 +110,19 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     setCart(prev => prev.filter(item => item.id !== productId));
   };
 
-  const addToFavorites = (product: Product) => {
-    setFavorites(prev => [...prev, product]);
+  const addToFavorites = (productId: string) => {
+    setFavorites(prev => [...prev, productId]);
   };
 
   const removeFromFavorites = (productId: string) => {
-    setFavorites(prev => prev.filter(item => item.itemId !== productId));
+    setFavorites(prev => prev.filter(id => id !== productId));
   };
 
   const isInCart = (productId: number) =>
     cart.some(item => item.id === productId);
+
   const isFavorite = (productId: string) =>
-    favorites.some(item => item.itemId === productId);
+    favorites.some(id => id === productId);
 
   return (
     <CartContext.Provider
