@@ -12,6 +12,8 @@
 
   @include for-tablets {
     grid-area: back;
+
+    margin-top: 4.0rem;
   }
 
   &__icon {

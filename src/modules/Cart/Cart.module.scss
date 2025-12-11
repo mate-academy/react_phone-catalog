@@ -1,8 +1,14 @@
+@use '../shared/styles/mixins' as *;
+
 .cart {
   margin: 0 1.6rem;
 
   &__title {
     padding: 0;
+
+    @include for-tablets {
+      padding-top: -0.8rem;
+    }
   }
 
   &__itemWrapper {

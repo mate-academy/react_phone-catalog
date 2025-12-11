@@ -1,3 +1,5 @@
+@use '../../../shared/styles/mixins' as *;
+
 .total {
   display: flex;
   justify-content: center;
@@ -39,6 +41,10 @@
     text-align: center;
 
     color: rgba(255, 255, 255, 1);
+
+    @include for-tablets {
+      width: 100%;
+    }
   }
 }
 

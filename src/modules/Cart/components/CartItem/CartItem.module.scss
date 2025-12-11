@@ -1,10 +1,26 @@
+@use '../../../shared/styles/mixins' as *;
+
 .cartItem {
   border: 0.1rem solid rgba(226, 230, 233, 1);
+
+  @include for-tablets {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.4rem;
+
+    padding: 3.1rem;
+  }
 
   &__firstRow {
     display: flex;
     gap: 1.6rem;
     padding-top: 2.3rem;
+
+    @include for-tablets {
+      padding-top: 0;
+      gap: 2.4rem;
+    }
   }
 
   &__cross {
@@ -25,12 +41,21 @@
     line-height: 2.1rem;
 
     color: rgba(49, 50, 55, 1);
+
+    @include for-tablets {
+      align-self: center;
+    }
   }
 
   &__secondRow {
     display: flex;
     justify-content: space-between;
     padding: 1.6rem;
+
+    @include for-tablets {
+      padding: 0;
+      gap: 2.4rem;
+    }
   }
 
   &__price {
