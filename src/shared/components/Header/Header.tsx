@@ -84,7 +84,7 @@ export const Header = () => {
               to="/cart"
               src={basketIcon}
               alt="Cart"
-              count={cartItems.length}
+              count={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
             />
           </div>
         </div>
