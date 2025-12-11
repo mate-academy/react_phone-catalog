@@ -44,12 +44,6 @@ export const useProductsPage = ({ fetchFn }: UseProductsPageParams) => {
     useState<ItemsPerPage>(initialPerPage);
   const [currentPage, setCurrentPage] = useState(initialPage);
 
-  useEffect(() => {
-    setSortBy(initialSortBy);
-    setItemsPerPage(initialPerPage);
-    setCurrentPage(initialPage);
-  }, []);
-
   function updateSearchParams(patch: Record<string, string>) {
     const next = new URLSearchParams(searchParams);
 
