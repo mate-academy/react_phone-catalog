@@ -1,0 +1,608 @@
+@use '../../../../assets/styles/variables' as *;
+
+.product-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  margin-top: 80px;
+}
+
+.products-list-title-page {
+  display: flex;
+  margin: 0;
+}
+
+.products-list-title-page a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.products-list-arrow {
+  margin: 0 8px;
+}
+
+.hover-link {
+  font-size: $text-info-product-size;
+  font-weight: $font-semi-bold;
+  color: $secondary-color;
+
+  &:hover {
+    color: $main-color;
+    cursor: pointer;
+  }
+}
+
+.hover-link-text {
+  color: $main-color;
+  cursor: pointer;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 2px 3px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border: 1px solid rgb(121, 121, 121);
+    border-radius: 10%;
+    transform: scale(1.2);
+  }
+}
+
+.hover-link-product {
+  justify-content: center;
+  line-height: normal;
+  padding-top: 3px;
+
+  &:hover {
+    color: $secondary-color;
+    cursor: auto;
+  }
+}
+
+.products-list-icon {
+  cursor: pointer;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 5px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border: 1px solid rgb(121, 121, 121);
+    border-radius: 10%;
+    transform: scale(1.2);
+  }
+}
+
+.back-button {
+  all: unset;
+  cursor: pointer;
+}
+
+.products-list-title-small {
+  font-size: $font-title-medium-size;
+  color: $secondary-color;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.kartkat-page {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  margin-top: 70px;
+}
+
+.photo-gallery-container-one {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 32px;
+  padding: 0 32px;
+  align-items: flex-start;
+}
+
+.product-list-arrow-one {
+  margin-right: 5px;
+}
+
+.kartka-product-title-one {
+  padding: 20px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.kartka-product-title {
+  font-weight: $font-regular;
+}
+
+.photo-gallery {
+  display: flex;
+  gap: 16px;
+  max-width: 560px;
+}
+
+.photo-gallery__left-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.photo-gallery__small-photo {
+  height: 80px;
+  width: 80px;
+  border: 1px solid $border-color;
+  object-fit: contain;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.4s ease;
+
+  &:hover {
+    opacity: 1;
+    border: 1px solid $main-color;
+  }
+
+  &.active {
+    border: 1px solid $main-color;
+    opacity: 1;
+  }
+}
+
+.photo-gallery__right-photo {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-gallery__big-photo {
+  width: 464px;
+  height: 464px;
+  object-fit: contain;
+}
+
+.kartka-product-info {
+  min-width: 292px;
+}
+
+.kartka-product-info h1 {
+  margin: 00;
+  font-size: $text-info-product-size;
+  color: $secondary-color;
+}
+
+.color-button {
+  height: 30px;
+  width: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px $border-color;
+  transition: box-shadow 0.2s ease;
+  margin: 4px 5px 0 0;
+
+  &:hover {
+    box-shadow: 0 0 0 1px $main-color;
+  }
+
+  &.active {
+    box-shadow: 0 0 0 1px $main-color;
+  }
+}
+
+.capacity-button {
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid $button-border-color;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 4px 8px 0 0;
+
+  &.active {
+    background-color: $main-color;
+    color: #fff;
+    border-color: $main-color;
+  }
+
+  &:hover {
+    background-color: $main-color;
+    border: 1px solid $main-color;
+    color: #fff;
+  }
+
+  &.unavailable {
+    opacity: 0.4;
+    cursor: not-allowed;
+    position: relative;
+    background-color: #fff;
+    color: inherit;
+    border-color: $button-border-color;
+  }
+}
+
+.capacity-wrapper {
+  position: relative;
+  display: inline-block;
+
+  &:hover .capacity-warning {
+    display: block;
+  }
+}
+
+.kartka-product-border {
+  border-bottom: 1px solid $border-color;
+  margin: 20px 0;
+}
+
+.products_card_price_box {
+  margin: 32px 0 16px;
+  border: none;
+}
+
+.products_card_price {
+  font-size: $font-title-small-size;
+  font-weight: $font-bold;
+  margin: 0;
+}
+
+.products_card_old_price {
+  margin-left: 8px;
+  color: $secondary-color;
+  text-decoration: line-through;
+  font-weight: 100;
+  font-size: $text-old-price-size;
+}
+
+.products_card_info_text {
+  font-weight: $font-regular;
+  font-size: $text-info-product-size;
+  display: flex;
+  justify-content: space-between;
+  color: $secondary-color;
+}
+
+.spec-labels {
+  margin-bottom: 6px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.spec-values {
+  color: $main-color;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 70%;
+}
+
+.products_card_button {
+  display: flex;
+  gap: 8px;
+}
+
+.products_card_button_add {
+  font-family: $font-family;
+  font-weight: $font-semi-bold;
+  color: white;
+  flex: 1;
+  background-color: $main-color;
+  padding: 10px;
+  border: 1px solid $main-color;
+  font-size: $text-button-add;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 32px;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 $button-border-color-hover;
+  }
+
+  &.added {
+    background-color: $button-background;
+    color: #27ae60;
+    border: 1px solid $border-color;
+
+    &:hover {
+      background-color: $button-background;
+      border-color: $border-color;
+      box-shadow: none;
+    }
+  }
+}
+
+.products_card_button_icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $border-color;
+  background: $button-background;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+    transition: border 0.3s ease;
+
+  &:hover {
+    border: 1px solid $main-color;
+  }
+}
+
+.heart-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.products_card_button_icon.animate .heart-icon {
+  animation: heart-pop 0.3s ease forwards;
+}
+
+@keyframes heart-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.product-id {
+  width: 50px;
+  font-size: 10px;
+  color: $button-border-color;
+}
+
+.products-information {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.products-information h2,
+h3 {
+  color: $main-color;
+}
+
+.spec-item .label {
+  color: $secondary-color;
+}
+
+.spec-item .value {
+  color: $main-color;
+}
+
+.about-section,
+.tech-specs {
+  flex: 1 1 400px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-title-border {
+  border: 1px solid $border-color;
+  margin-bottom: 10px;
+}
+
+.about-block {
+  margin-bottom: 24px;
+  color: $secondary-color;
+}
+
+.about-block p {
+  font-size: $text-name-product-size;
+  line-height: 1.6;
+}
+
+.block-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 15px;
+}
+
+.spec-list {
+  margin-top: 15px;
+}
+
+.tech-specs .spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2px;
+  font-size: $text-name-product-size;
+}
+
+/* Адаптація для планшетів */
+@media (max-width: 1199px) and (min-width: 640px) {
+  .product-page-container {
+    max-width: 720px;
+    padding: 0 24px;
+    margin-top: 80px;
+  }
+
+  .hover-link-product {
+    padding-top: 3.5px;
+  }
+
+  .kartkat-page {
+    max-width: 720px;
+  }
+
+  .kartka-product-title-one {
+    padding: 20px 0;
+    max-width: 720px;
+  }
+
+  .photo-gallery-container-one {
+    justify-content: space-between;
+    padding: 0 24px;
+    gap: 3px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .photo-gallery {
+    gap: 0;
+    max-width: 320px;
+  }
+
+  .photo-gallery__left-column {
+    justify-content: start;
+    gap: 8px;
+  }
+
+  .photo-gallery__small-photo {
+    height: 35px;
+    width: 35px;
+  }
+
+  .photo-gallery__big-photo {
+    width: 287px;
+    height: 287px;
+  }
+
+  .kartka-product-info {
+    min-width: 200px;
+    max-width: 250px;
+  }
+
+  .kartka-product-info h1 {
+    margin: 0;
+  }
+
+  .kartka-product-border {
+    margin: 15px 0;
+  }
+
+  .capacity-button {
+    border-radius: 4px;
+    color: $main-color;
+    margin-bottom: 5px;
+  }
+
+  .products_card_price_box {
+    margin: 15px 0;
+  }
+
+  .spec-labels {
+    margin-bottom: 3px;
+  }
+
+  .product-id {
+    display: none;
+  }
+
+  .products-information {
+    max-width: 720px;
+    padding: 20px 24px;
+    gap: 25px;
+    margin-bottom: 20px;
+  }
+
+  .about-block p {
+    font-size: $text-name-product-size;
+    line-height: 1.6;
+  }
+
+    .spec-list {
+      margin-top: 15px;
+    }
+
+  .tech-specs .spec-list {
+    gap: 8px;
+  }
+
+  .down-page {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+}
+
+/* Адаптація для мобільних 320–639px */
+@media (max-width: 639px) {
+  .product-page-container {
+    max-width: 639px;
+    margin: 0 auto;
+    padding: 0 16px;
+    margin-top: 60px;
+  }
+
+  .photo-gallery {
+    flex-direction: column-reverse;
+    gap: 2px;
+  }
+
+  .photo-gallery-container-one {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .photo-gallery__left-column {
+    flex-direction: row;
+    width: 100%;
+    gap: 8px;
+    padding-bottom: 8px;
+  }
+
+  .kartka-product-info {
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .kartka-product-border {
+    margin: 10px 0;
+  }
+
+  .photo-gallery__small-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+  }
+
+  .photo-gallery__right-photo {
+    margin: 0 auto;
+  }
+
+  .photo-gallery__big-photo {
+    width: 330px;
+    height: 330px;
+    margin-bottom: 20px;
+  }
+
+  .color-button {
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  .capacity-button {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    color: $main-color;
+  }
+
+  .capacity-buttons {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .product-id {
+    display: none;
+  }
+}

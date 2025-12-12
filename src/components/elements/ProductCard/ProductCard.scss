@@ -1,0 +1,203 @@
+@use '../../../assets/styles/variables' as *;
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.product_card_link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+.product_card_container {
+  background-color: $button-background;
+  padding: 32px;
+  border: 1px solid $border-color;
+  transition: all 0.3s ease;
+  min-height: 320px;
+}
+
+.product_card_container:hover {
+  border: 1px solid $button-border-color-hover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product_card_foto {
+  max-height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.product_card_foto img {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease;
+}
+
+.product_card_container:hover .product_card_foto img {
+  transform: scale(1.05);
+}
+
+.product_card_price_box {
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 16px;
+}
+
+.product_card_name {
+  font-weight: $font-regular;
+  font-size: $text-name-product-size;
+  line-height: 21px;
+  color: $main-color;
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word; /* дозволити переносити слово, але не обов’язково */
+  min-height: 42px;
+}
+
+.product_card_price {
+  font-size: $text-price-size;
+  font-weight: $font-bold;
+  margin: 0 0 8px;
+}
+
+.product_card_old_price {
+  margin-left: 8px;
+  color: $secondary-color;
+  text-decoration: line-through;
+  font-weight: 100;
+  font-size: $text-old-price-size;
+}
+
+.product_card_info_text {
+  font-weight: $font-semi-bold;
+  font-size: $text-info-product-size;
+  display: flex;
+  justify-content: space-between;
+  color: $secondary-color;
+}
+
+.spec-label {
+  margin-bottom: 8px;
+  flex-shrink: 0;
+  white-space: nowrap; /* Не переносити текст */
+  overflow: hidden; /* Ховати зайвий текст */
+  text-overflow: ellipsis; /* Відображати "..." */
+  display: inline-block; /* Щоб працювало обрізання */
+  max-width: 40%; /* Щоб обмежити ширину */
+}
+
+.spec-value {
+  color: $main-color;
+  white-space: nowrap; /* Не переносити текст */
+  overflow: hidden; /* Ховати зайвий текст */
+  text-overflow: ellipsis; /* Відображати "..." */
+  display: inline-block; /* Щоб працювало обрізання */
+  max-width: 60%; /* Щоб обмежити ширину */
+}
+
+.product_card_button {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.product_card_button_add {
+  font-family: $font-family;
+  font-weight: $font-semi-bold;
+  color: white;
+  flex: 1;
+  background-color: $main-color;
+  border: 1px solid $main-color;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 10.5px 6px;
+  font-size: 13px;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #31171750;
+  }
+
+  &.added {
+    background-color: $button-background;
+    color: #27ae60;
+    border: 1px solid $border-color;
+
+    &:hover {
+      background-color: $button-background;
+      border-color: $border-color;
+      box-shadow: none;
+    }
+  }
+}
+
+.product_card_button_icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $border-color;
+  background: $button-background;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border 0.3s ease;
+
+  &:hover {
+    border: 1px solid #313237;
+  }
+}
+
+
+.heart-icon {
+  width: 16px;
+  height: 16px;
+  color: #6b7280;
+}
+
+
+.product_card_button_icon.animate .heart-icon {
+  animation: heart-pop 0.3s ease forwards;
+}
+
+@keyframes heart-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Адаптація для мобільних 320–639px */
+@media (max-width: 639px) {
+  .wrapper {
+    max-width: 639px;
+  }
+
+  .product_card_foto img {
+    height: 180px;
+    margin-bottom: 20px;
+  }
+
+  .product_card_name {
+    height: 42px;
+  }
+
+  .product_card_price {
+    font-size: 28px;
+  }
+}
