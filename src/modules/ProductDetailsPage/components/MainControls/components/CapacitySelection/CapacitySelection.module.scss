@@ -1,5 +1,11 @@
+@use '../../../../../shared/styles/mixins' as *;
+
 .capacitySelection {
   margin: 2.4rem 0;
+
+  @include for-desktops {
+    grid-area: capacity;
+  }
 
   &__label {
     font-family: Mont, sans-serif;

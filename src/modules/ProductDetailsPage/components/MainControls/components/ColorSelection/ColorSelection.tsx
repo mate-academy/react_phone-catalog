@@ -16,7 +16,7 @@ export const ColorSelection: React.FC<Props> = ({
   id,
 }) => {
   return (
-    <section>
+    <section className={scss.colorSelection}>
       <div className={scss.colorSelection__spanWrapper}>
         <span className={scss.colorSelection__label}>Available colors</span>
         <span className={scss.colorSelection__id}>ID: {id}</span>

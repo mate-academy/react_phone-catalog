@@ -1,15 +1,10 @@
+import classNames from 'classnames';
 import scss from './Line.module.scss';
 
 interface Props {
-  marginTop: number;
-  marginBottom: number;
+  className?: string;
 }
 
-export const Line: React.FC<Props> = ({ marginTop, marginBottom }) => {
-  return (
-    <hr
-      className={scss.line}
-      style={{ margin: `${marginTop}rem 0 ${marginBottom}rem` }}
-    ></hr>
-  );
+export const Line: React.FC<Props> = ({ className }) => {
+  return <hr className={classNames(scss.line, className)}></hr>;
 };

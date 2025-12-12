@@ -1,3 +1,5 @@
+@use '../../../shared/styles/mixins' as *;
+
 .price {
   display: flex;
   justify-content: start;
@@ -6,6 +8,10 @@
   height: 3.1rem;
   gap: 0.8rem;
   margin-top: 0.8rem;
+
+  @include for-desktops {
+    grid-area: price;
+  }
 
 
   &__value {

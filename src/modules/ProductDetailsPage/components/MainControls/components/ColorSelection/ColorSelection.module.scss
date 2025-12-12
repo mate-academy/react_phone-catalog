@@ -1,4 +1,10 @@
+@use '../../../../../shared/styles/mixins' as *;
+
 .colorSelection {
+  @include for-desktops {
+    grid-area: color;
+  }
+
   &__spanWrapper {
     display: flex;
     justify-content: space-between;

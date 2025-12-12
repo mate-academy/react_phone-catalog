@@ -33,7 +33,7 @@ export const Total: React.FC<Props> = ({
     <section className={scss.total}>
       <h2 className={scss.total__price}>{`$${totalPrice.toFixed(2)}`}</h2>
       <p className={scss.total__amount}>{`Total for ${totalItems} items`}</p>
-      <Line marginTop={1.6} marginBottom={1.6} />
+      <Line className={scss.total__line} />
       <button className={scss.total__checkout} onClick={handleCheckout}>
         Checkout
       </button>

@@ -4,7 +4,24 @@
     @include for-tablets {
       grid-area: controls;
 
-      margin-top: 4.0rem;
+      margin-top: 4rem;
+    }
+
+    @include for-desktops {
+      margin-top: 4rem;
+
+      display: grid;
+      // stylelint-disable declaration-block-no-redundant-longhand-properties
+      grid-template-columns: 30.0rem 1fr;
+      grid-template-rows: repeat(7, auto);
+      grid-template-areas:
+      "color color"
+      "lineTop ."
+      "capacity ."
+      "lineBottom ."
+      "price ."
+      "buttons ."
+      "techs .";
     }
 
     &__buttonsWrapper {
@@ -12,6 +29,10 @@
     justify-content: space-between;
     gap: 0.8rem;
     margin: 1.6rem 0 3.2rem;
+
+    @include for-desktops {
+      grid-area: buttons;
+    }
   }
 
   &__cartButton {
@@ -22,5 +43,15 @@
   &__favButton {
     height: 4.8rem;
     width: 4.8rem;
+  }
+
+  &__lineTop {
+    margin: 2.4rem 0;
+    grid-area: lineTop;
+  }
+
+  &__lineBottom {
+    margin: 2.4rem 0;
+    grid-area: lineBottom;
   }
 }

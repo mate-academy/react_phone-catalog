@@ -11,6 +11,10 @@
     margin: 6.4rem 0;
   }
 
+  @include for-desktops {
+    margin: 8rem 0;
+  }
+
   &__mainTitle {
     font-family: Mont, sans-serif;
     font-weight: 700;
@@ -18,7 +22,7 @@
     line-height: 100%;
 
     padding-bottom: 1.6rem;
-    border-bottom: 0.1rem solid rgba(226, 230, 233, 1);
+    border-bottom: 0.2rem solid rgba(226, 230, 233, 1);
 
     @include for-tablets {
       font-size: 2.2rem;

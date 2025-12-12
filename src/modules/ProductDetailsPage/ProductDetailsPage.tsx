@@ -85,7 +85,7 @@ export const ProductDetailsPage = () => {
       <MainControls item={item} variants={variants} />
       <About item={item} />
       <h3 className={scss.productDetailsPage__h3}>Tech specs</h3>
-      <Line marginTop={1.6} marginBottom={3.0} />
+      <Line className={scss.productDetailsPage__line} />
       <TechSpecs
         item={item}
         tech={true}

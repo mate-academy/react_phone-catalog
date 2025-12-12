@@ -23,6 +23,27 @@
     column-gap: 1.7rem;
 
     align-items: center;
+
+    margin: 0 2.4rem;
+  }
+
+  @include for-desktops {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, auto) max-content max-content 1fr auto;
+    grid-template-areas:
+    "bread bread"
+    "back back"
+    "titleH2 titleH2"
+    "picture controls"
+    "about titleH3"
+    "about line"
+    "about techs"
+    "slider slider";
+
+    margin: 0 3.2rem;
+
+    align-items: start;
+    justify-content: start;
   }
 
   &__h2 {
@@ -44,6 +65,15 @@
       font-size: 2.2rem;
       font-weight: 800;
     }
+
+    @include for-desktops {
+      margin: 8rem 0 0;
+    }
+  }
+
+  &__line {
+    margin: 1.6rem 0 3rem;
+    grid-area: line;
   }
 
   & &__specsLean {

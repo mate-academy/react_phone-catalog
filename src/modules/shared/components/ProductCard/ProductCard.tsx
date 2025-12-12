@@ -6,6 +6,7 @@ import { Specs } from './Specs';
 import { Price } from '../Price/Price';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { Line } from '../Line';
 
 interface Props {
   product: Product;
@@ -36,7 +37,7 @@ export const ProductCardComponent: React.FC<Props> = ({
         discount={product.price}
         hasDiscount={hasDiscount}
       />
-      <div className={scss.productCard__divider}></div>
+      <Line className={scss.productCard__divider} />
       <Specs product={product} />
       <div className={scss.productCard__buttons}>
         <ButtonCart

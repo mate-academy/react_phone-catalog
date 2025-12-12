@@ -73,13 +73,13 @@ export const MainControls: React.FC<Props> = ({ item, variants }) => {
         setColor={handleColorChange}
         id={idForCart}
       />
-      <Line marginTop={2.4} marginBottom={2.4} />
+      <Line className={scss.mainControls__lineTop} />
       <CapacitySelection
         availableCapacities={item.capacityAvailable}
         currentCapacity={item.capacity}
         setCapacity={handleCapacityChange}
       />
-      <Line marginTop={2.4} marginBottom={2.4} />
+      <Line className={scss.mainControls__lineBottom} />
       <Price
         normal={item.priceRegular}
         discount={item.priceDiscount}

@@ -19,6 +19,10 @@
   &__image {
     height: 28.8rem;
     aspect-ratio: 1/1;
+
+    @include for-desktops {
+      height: 46.4rem;
+    }
   }
 
   &__thumbnails {
@@ -34,6 +38,10 @@
       padding: 0;
 
     }
+
+    @include for-desktops {
+      gap: 1.6rem;
+    }
   }
 
   &__thumbnail {
@@ -41,6 +49,11 @@
     width: 5.1rem;
 
     border: 0.1rem solid rgba(196, 196, 196, 1);
+
+    @include for-desktops {
+      height: 6.6rem;
+      width: 6.6rem;
+    }
 
     &_active {
       border: 0.1rem solid rgba(49, 50, 55, 1);
