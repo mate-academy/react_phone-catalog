@@ -13,7 +13,7 @@ export const HomePage: React.FC = () => {
   const [products, setProducts] = useState<Product[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const url = '/api/products.json';
+  const url = 'api/products.json';
 
   const loadProducts = async (signal?: AbortSignal) => {
     try {
