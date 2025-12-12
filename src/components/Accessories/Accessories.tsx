@@ -8,19 +8,20 @@ import arrowRight from '../../images/icons/button-right.png';
 import vector from '../../images/icons/vector.png';
 import buttonLeft from '../../images/icons/button-left.png';
 import buttonRight from '../../images/icons/button-right.png';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { ItemCard } from '../ItemCard/ItemCard';
 import { SortType } from '../../types/SortType';
 import { Device } from '../../types/Device';
 import { SortVisibleItems } from '../../types/SortVisibleItems';
 
 export const Accessories = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const context = useContext(DevicesContext);
   const { pathname } = useLocation();
   const basePath = pathname.split('/').slice(1);
 
   const [visibleItems, setVisibleItems] = useState<'all' | '4' | '8' | '16'>(
-    'all',
+    (searchParams.get('perPage') as SortVisibleItems) || 'all',
   );
   const visibleItemsOptions = [
     { value: 'all', label: 'All' },
@@ -32,14 +33,33 @@ export const Accessories = () => {
 
   const [sortBy, setSortBy] = useState<
     'newest' | 'alphabetically' | 'cheapest'
-  >('newest');
+  >((searchParams.get('sort') as SortType) || 'newest');
   const sortOptions = [
     { value: 'newest', label: 'Newest' },
     { value: 'alphabetically', label: 'Alphabetically' },
     { value: 'cheapest', label: 'Cheapest' },
   ];
   const [openSort, setOpenSort] = useState(false);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
+
+  const updateSearchParams = (params: Record<string, string | number>) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    Object.entries(params).forEach(([key, value]) => {
+      const isDefault =
+        (key === 'sort' && value === 'newest') ||
+        (key === 'page' && value === '1') ||
+        (key === 'perPage' && value === 'all');
+
+      if (isDefault) {
+        newParams.delete(key);
+      } else {
+        newParams.set(key, String(value));
+      }
+    });
+
+    setSearchParams(newParams);
+  };
 
   if (!context) {
     return null;
@@ -181,6 +201,8 @@ export const Accessories = () => {
                     className="accessories__sort__dropdown__item"
                     onClick={() => {
                       setSortBy(o.value as SortType);
+                      updateSearchParams({ sort: o.value, page: '1' });
+                      setPage(1);
                       setOpenSort(false);
                     }}
                   >
@@ -218,6 +240,8 @@ export const Accessories = () => {
                     className="phones__sort__dropdown__item"
                     onClick={() => {
                       setVisibleItems(o.value as SortVisibleItems);
+                      updateSearchParams({ perPage: o.value, page: '1' });
+                      setPage(1);
                       setOpenSortByVisible(false);
                     }}
                   >
@@ -243,7 +267,10 @@ export const Accessories = () => {
       {visibleItems !== 'all' && (
         <div className="accessories__pagination">
           <button
-            onClick={() => setPage(page - 1)}
+            onClick={() => {
+              setPage(page - 1);
+              updateSearchParams({ page: `${String(page - 1)}` });
+            }}
             className="accessories__pagination__button-left"
             disabled={page === 1}
           >
@@ -257,7 +284,10 @@ export const Accessories = () => {
             {buttonNumber.length <= 7
               ? buttonNumber.map(num => (
                   <div
-                    onClick={() => setPage(+num)}
+                    onClick={() => {
+                      setPage(+num);
+                      updateSearchParams({ page: String(num) });
+                    }}
                     className={classNames(
                       'accessories__pagination__button-number',
                       {
@@ -273,7 +303,10 @@ export const Accessories = () => {
               : getListOfPage().map((num, ind) =>
                   typeof num === 'number' ? (
                     <div
-                      onClick={() => setPage(+num)}
+                      onClick={() => {
+                        setPage(+num);
+                        updateSearchParams({ page: String(num) });
+                      }}
                       className={classNames(
                         'accessories__pagination__button-number',
                         {
@@ -297,7 +330,10 @@ export const Accessories = () => {
           </div>
 
           <button
-            onClick={() => setPage(page + 1)}
+            onClick={() => {
+              setPage(page + 1);
+              updateSearchParams({ page: `${String(page + 1)}` });
+            }}
             className="accessories__pagination__button-right"
             disabled={page === buttonNumber.length}
           >

@@ -178,7 +178,6 @@ export const Phones = () => {
                       setSortBy(o.value as SortType);
                       updateSearchParams({ sort: o.value, page: '1' });
                       setPage(1);
-                      // updateSearchParams({ page: '1' });
                       setOpenSort(false);
                     }}
                   >

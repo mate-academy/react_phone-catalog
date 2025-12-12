@@ -6,7 +6,7 @@ import minus from '../../images/icons/minus.png';
 import plus from '../../images/icons/plus.png';
 import { useContext, useState } from 'react';
 import { DevicesContext } from '../../DevicesContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const Cart = () => {
   const navigate = useNavigate();
