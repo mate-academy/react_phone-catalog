@@ -6,6 +6,8 @@ import { PriceSortDropdown } from '../../../elements/DropPrice/DpopPrice';
 import { DropColor } from '../../../elements/DropColor/DropColor';
 import accessories from '../../../../data/accessories.json';
 
+//
+// Функція для побудови пагінації
 const renderPagination = (currentPage, totalPages, onPageChange) => {
   const pageNumbers = [];
   const visibleRange = 1;
@@ -20,6 +22,7 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
     </button>
   );
 
+  // Prev
   pageNumbers.push(
     <button
       key="prev"
@@ -35,6 +38,7 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
     </button>,
   );
 
+  // Основні сторінки
   if (totalPages <= 6) {
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(addPageButton(i));
@@ -69,6 +73,7 @@ const renderPagination = (currentPage, totalPages, onPageChange) => {
     pageNumbers.push(addPageButton(totalPages));
   }
 
+  // Next
   pageNumbers.push(
     <button
       key="next"
@@ -112,32 +117,22 @@ export const Accessories = () => {
   );
 
   const [colorFilter, setColorFilter] = useState(() => {
-    // 1. Беремо колір з URL, якщо він там є
     const urlColor = searchParams.get('color');
 
-    if (urlColor !== null) {
+    if (urlColor && urlColor !== 'null') {
       return urlColor;
     }
 
-    // 2. Відновлення зі localStorage
     const storedColor = localStorage.getItem('accessories_colorFilter');
 
-    if (storedColor !== null) {
+    if (storedColor && storedColor !== 'null') {
       return storedColor;
     }
 
-    // 3. За замовчуванням — null (All)
     return null;
   });
 
   // Збереження змін у localStorage
-  useEffect(() => {
-    if (colorFilter === null) {
-      localStorage.removeItem('accessories_colorFilter');
-    } else {
-      localStorage.setItem('accessories_colorFilter', colorFilter);
-    }
-  }, [colorFilter]);
   useEffect(() => {
     localStorage.setItem('accessories_itemsPerPage', itemsPerPage);
   }, [itemsPerPage]);
@@ -145,7 +140,10 @@ export const Accessories = () => {
     localStorage.setItem('accessories_sortOrder', sortOrder);
   }, [sortOrder]);
   useEffect(() => {
-    localStorage.setItem('accessories_colorFilter', colorFilter);
+    localStorage.setItem(
+      'accessories_colorFilter',
+      colorFilter === null ? '' : colorFilter,
+    );
   }, [colorFilter]);
   useEffect(() => {
     localStorage.setItem('accessories_currentPage', currentPage);
@@ -167,15 +165,17 @@ export const Accessories = () => {
       params.sort = sortOrder;
     }
 
-    if (colorFilter && colorFilter !== 'null') {
+    if (colorFilter) {
       params.color = colorFilter;
     }
 
     setSearchParams(params);
   }, [itemsPerPage, currentPage, sortOrder, colorFilter, setSearchParams]);
 
+  // Унікальні кольори
   const availableColors = [...new Set(accessories.flatMap(p => p.color))];
 
+  // --- Фільтрація та сортування ---
   let filteredAccessories = [...accessories];
 
   if (colorFilter && colorFilter !== 'null') {

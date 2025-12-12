@@ -117,32 +117,22 @@ export const Phones = () => {
   );
 
   const [colorFilter, setColorFilter] = useState(() => {
-    // 1. Беремо колір з URL, якщо він там є
     const urlColor = searchParams.get('color');
 
-    if (urlColor !== null) {
+    if (urlColor && urlColor !== 'null') {
       return urlColor;
     }
 
-    // 2. Відновлення зі localStorage
     const storedColor = localStorage.getItem('phones_colorFilter');
 
-    if (storedColor !== null) {
+    if (storedColor && storedColor !== 'null') {
       return storedColor;
     }
 
-    // 3. За замовчуванням — null (All)
     return null;
   });
 
   // Збереження змін у localStorage
-  useEffect(() => {
-    if (colorFilter === null) {
-      localStorage.removeItem('phones_colorFilter');
-    } else {
-      localStorage.setItem('phones_colorFilter', colorFilter);
-    }
-  }, [colorFilter]);
   useEffect(() => {
     localStorage.setItem('phones_itemsPerPage', itemsPerPage);
   }, [itemsPerPage]);
@@ -150,7 +140,10 @@ export const Phones = () => {
     localStorage.setItem('phones_sortOrder', sortOrder);
   }, [sortOrder]);
   useEffect(() => {
-    localStorage.setItem('phones_colorFilter', colorFilter);
+    localStorage.setItem(
+      'phones_colorFilter',
+      colorFilter === null ? '' : colorFilter,
+    );
   }, [colorFilter]);
   useEffect(() => {
     localStorage.setItem('phones_currentPage', currentPage);
@@ -172,7 +165,7 @@ export const Phones = () => {
       params.sort = sortOrder;
     }
 
-    if (colorFilter && colorFilter !== 'null') {
+    if (colorFilter) {
       params.color = colorFilter;
     }
 
