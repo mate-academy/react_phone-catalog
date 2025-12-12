@@ -1,4 +1,4 @@
-import { Products } from "../types/Products";
+import { Products } from '../types/Products';
 
 export function getProducts(): Promise<Products[]> {
   return fetch('/api/products.json').then(response => {
