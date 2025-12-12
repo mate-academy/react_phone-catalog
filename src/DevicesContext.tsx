@@ -71,7 +71,6 @@ export const DevicesProvider: React.FC<Props> = ({ children }) => {
 
     return savedCart ? JSON.parse(savedCart) : {};
   });
-
   const [favourites, setFavourites] = useState<Device[]>(() => {
     const savedFavourites = localStorage.getItem('favourites');
 
