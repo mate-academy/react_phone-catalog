@@ -118,6 +118,7 @@ const Home: React.FC = () => {
 
   return (
     <div role="main" className={styles.homeMain}>
+      <h1 className={styles.visuallyHidden}>Product Catalog</h1>
       {/* BANNER */}
       <section
         className={styles.sectionBanner}

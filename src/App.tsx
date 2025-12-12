@@ -76,8 +76,6 @@ export const App: React.FC = () => (
             <div className={styles.app}>
               <Navbar />
               <main className={styles.content}>
-                <h1>Product Catalog</h1>
-
                 <Routes>
                   <Route path="/" element={<Home />} />
 
