@@ -110,12 +110,14 @@ export const Tablets = () => {
       localStorage.getItem('tablets_sortOrder') ||
       'default',
   );
-  const [colorFilter, setColorFilter] = useState(
-    () =>
-      searchParams.get('color') ||
-      localStorage.getItem('tablets_colorFilter') ||
-      null,
-  );
+
+  const [colorFilter, setColorFilter] = useState(() => {
+    const urlColor = searchParams.get('color');
+
+    if (urlColor !== null) {
+      return urlColor;
+    }
+  });
 
   // Збереження змін у localStorage
   useEffect(() => {

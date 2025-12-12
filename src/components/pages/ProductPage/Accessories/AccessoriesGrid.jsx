@@ -110,12 +110,14 @@ export const Accessories = () => {
       localStorage.getItem('accessories_sortOrder') ||
       'default',
   );
-  const [colorFilter, setColorFilter] = useState(
-    () =>
-      searchParams.get('color') ||
-      localStorage.getItem('accessories_colorFilter') ||
-      null,
-  );
+
+  const [colorFilter, setColorFilter] = useState(() => {
+    const urlColor = searchParams.get('color');
+
+    if (urlColor !== null) {
+      return urlColor;
+    }
+  });
 
   // Збереження змін у localStorage
   useEffect(() => {
