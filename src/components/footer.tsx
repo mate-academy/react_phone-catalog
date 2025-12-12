@@ -9,8 +9,8 @@ export const Footer = () => (
     <button className="Footer__button">CONTACTS</button>
     <button className="Footer__button">RIGHTS</button>
     <div>
-    <button className="Footer__button__right">Back to top</button>
-    <button className="Footer__button__right">^</button>
+      <button className="Footer__button__right">Back to top</button>
+      <button className="Footer__button__right">^</button>
     </div>
   </header>
 );
