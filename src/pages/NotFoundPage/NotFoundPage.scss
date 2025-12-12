@@ -1,4 +1,3 @@
-
 .productNotFound {
   display: flex;
   position: relative;
@@ -7,31 +6,34 @@
 
   &__img {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     object-fit: contain;
   }
+
   &__box {
     display: flex;
     position: absolute;
     flex-direction: column;
     align-items: center;
-
+    justify-content: start;
   }
+
   &__title {
-    justify-content: center;
+    justify-content: start;
     font-size: 14px;
-    color: rgba(137, 147, 154, 1);
+    color: var(--elements);
   }
 }
 
 .backToHome {
   width: 100%;
   align-items: center;
+
   &__link {
     display: flex;
     justify-content: center;
     gap: 8px;
-    color: rgba(15, 15, 17, 1);
+    color: var(--primary);
     align-items: center;
     text-decoration: none;
     font-size: 12px;

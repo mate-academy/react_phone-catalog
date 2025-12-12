@@ -1,8 +1,9 @@
-@import './styles/utils/variables';
-@import './styles/blocks/reset';
-@import './styles/utils/mixins';
-@import './styles/blocks/page';
-@import './styles/blocks/icon';
+@use './styles/utils/theme' as *;
+@use './styles/blocks/page' as *;
+@use './styles/blocks/icon' as *;
+@use './styles/utils/variables' as *;
+@use './styles/blocks/reset' as *;
+@use './styles/utils/mixins' as *;
 
 @font-face {
   font-family: Mont;
@@ -25,12 +26,6 @@
   font-style: normal;
 }
 
-.body.light {
-  background-color: rgba(250, 251, 252, 1);
-  color: rgba(15, 15, 17, 1);
-}
-
-.body.dark {
-  background-color: rgba(15, 17, 33, 1);
-  color: rgba(241, 242, 249, 1);
+body {
+  background-color: var(--background);
 }

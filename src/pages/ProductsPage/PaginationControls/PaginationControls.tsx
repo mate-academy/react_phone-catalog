@@ -1,6 +1,7 @@
 import React from 'react';
 import './PaginationControls.scss';
 import classNames from 'classnames';
+import { useTheme } from '../../../components/context/ThemeContext';
 
 type Props = {
   totalItems: number;
@@ -17,6 +18,7 @@ export const PaginationControls: React.FC<Props> = ({
   onPageChange,
   siblingCount = 1,
 }) => {
+  const { theme } = useTheme();
   const totalPages = Math.ceil(totalItems / perPage);
 
   if (totalPages <= 1) {
@@ -68,7 +70,11 @@ export const PaginationControls: React.FC<Props> = ({
         }}
       >
         <img
-          src="/img/icons/Arrow-Left_icon.svg"
+          src={
+            theme === 'light'
+              ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
+              : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
+          }
           alt="arrow left"
           className="icon"
         />
@@ -105,7 +111,11 @@ export const PaginationControls: React.FC<Props> = ({
         }}
       >
         <img
-          src="/img/icons/Arrow-Right_icon.svg"
+          src={
+            theme === 'light'
+              ? import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
+              : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg'
+          }
           alt="arrow right"
           className="icon"
         />

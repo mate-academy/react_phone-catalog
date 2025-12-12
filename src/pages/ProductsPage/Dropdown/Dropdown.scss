@@ -1,10 +1,11 @@
-@import '../../../styles/utils/mixins';
+@use '../../../styles/utils/mixins' as *;
 
 .dropdown {
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
     padding: 0 16px;
+    background-color: var(--background);
 
   @include on-tablet {
     padding: 0 24px;
@@ -50,7 +51,7 @@
   &__label {
     font-size: 12px;
     font-weight: 700;
-    color: rgba(137, 147, 154, 1);
+    color: var(--elements);
 
   }
 
@@ -63,10 +64,10 @@
     height: 40px;
     border-radius: 8px;
 
-    border: 1px solid rgba(180, 189, 195, 1);
+    border: 1px solid var(--border-hover);
     cursor: pointer;
 
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--main);
      transition: transform 0.5s ease;
 
     &:hover {
@@ -77,7 +78,7 @@
     &--text {
       font-size: 14px;
       font-weight: 700;
-      color: rgba(15, 15, 17, 1);
+      color: var(--primary);
     }
   }
 
@@ -88,9 +89,9 @@
     left: 0;
     width: 100%;
 
-    background: #fff;
+    background: var(--background);
     border-radius: 8px;
-    border: 1px solid rgba(180, 189, 195, 1);
+    border: 1px solid var(--border-hover);
 
     list-style: none;
     padding: 8px 0;
@@ -111,12 +112,12 @@
     padding: 0 12px;
     font-size: 14px;
     font-weight: 600;
-    color: rgba(137, 147, 154, 1);
+    color: var(--elements);
     cursor: pointer;
 
     &--selected {
-      background-color: rgba(250, 251, 252, 1);
-      color: rgba(15, 15, 17, 1);
+      background-color: var(--main);
+      color: var(--primary);
       font-weight: 700;
     }
   }

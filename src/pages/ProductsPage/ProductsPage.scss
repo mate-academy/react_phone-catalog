@@ -1,7 +1,7 @@
-@import '../../styles/utils/mixins';
+@use '../../styles/utils/mixins' as *;
 
 .productsPage {
-  background-color: rgba(250, 251, 252, 1);
+  background-color: var(--background);
 
 }
 
@@ -25,7 +25,7 @@
   &__title {
     font-size: 32px;
     font-weight: 800;
-    color: rgba(15, 15, 17, 1);
+    color: var(--primary);
 
     @include on-tablet {
       font-size: 48px;
@@ -34,7 +34,7 @@
   &__total {
     font-size: 14px;
     font-weight: 600;
-    color: rgba(137, 147, 154, 1);
+    color: var(--elements);
   }
 }
 

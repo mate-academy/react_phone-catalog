@@ -1,10 +1,10 @@
-@import '../../styles/utils/mixins';
+@use '../../styles/utils/mixins' as *;
 
 .footer {
   display: flex;
   box-sizing: border-box;
   padding: 32px 16px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--main);
 
   @include on-tablet {
     padding: 32px;
@@ -62,10 +62,11 @@
 
   font-size: 12px;
   font-weight: 800;
-  color: rgba(137, 147, 154, 1);
-
+  color: var(--elements);
+  transition: transform 0.5s ease;
   &:hover {
-    color: rgba(49, 50, 55, 1);
+    transform: scale(1.05);
+    color: var(--primary);
   }
 }
 
@@ -77,11 +78,12 @@
   &__name {
     font-size: 12px;
     font-weight: 700;
-    color: rgba(137, 147, 154, 1);
+    color: var(--elements);
     cursor: pointer;
     transition: transform 0.5s ease;
     &:hover {
-      color: rgba(49, 50, 55, 1);
+      transform: scale(1.05);
+      color: var(--primary);
 
     }
   }
@@ -92,8 +94,8 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid rgba(180, 189, 195, 1);
-    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid var(--border);
+    background-color: var(--main);
     cursor: pointer;
     transition:
       transform 0.3s ease,
@@ -101,8 +103,8 @@
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      border: 1px solid rgba(15, 15, 17, 1);
+      box-shadow: 0 4px 12px var(--shadow);
+      border: 1px solid var(--border-hover) ;
     }
   }
 }

@@ -1,4 +1,4 @@
-@import './variables';
+@use './variables' as *;
 
 @mixin on-mobile {
   @media (max-width: 639px) {
@@ -35,7 +35,7 @@
 
   @include on-desktop {  // desktop: 1200px+
     --columns: 24;
-    
+
     column-gap: 16px;
     justify-content: center;
     align-items: center;

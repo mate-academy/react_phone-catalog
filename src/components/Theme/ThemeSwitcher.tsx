@@ -1,4 +1,4 @@
-import './ThemeSwitcher';
+import './ThemeSwitcher.scss';
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { FaMoon, FaSun } from 'react-icons/fa';
@@ -7,12 +7,14 @@ export const ThemeSwitcher: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <button onClick={toggleTheme} className="themeSwitcher">
-      {theme === 'light' ? (
-        <FaMoon className="themeSwitcher__button" />
-      ) : (
-        <FaSun className="themeSwitcher__button" />
-      )}
-    </button>
+    <div className="themeSwitcher">
+      <button onClick={toggleTheme} className="themeSwitcher__button">
+        {theme === 'light' ? (
+          <FaMoon className="icon" />
+        ) : (
+          <FaSun className="icon icon--white" />
+        )}
+      </button>
+    </div>
   );
 };

@@ -1,7 +1,7 @@
-@import '../../../styles/utils/mixins';
+@use '../../../styles/utils/mixins' as *;
 
 .slider {
-  background-color: rgba(250, 251, 252, 1);
+  background-color: var(--background);
   &__section {
     display: flex;
     box-sizing: border-box;
@@ -45,8 +45,8 @@
       width: 32px;
 
       border-radius: 50%;
-      border: 1px solid rgba(180, 189, 195, 1);
-      background-color: rgba(255, 255, 255, 1);
+      border: 1px solid var(--border);
+      background-color: var(--main);
 
       cursor: pointer;
       transition:
@@ -54,9 +54,9 @@
         box-shadow 0.3s ease;
 
       &:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        border: 1px solid rgba(15, 15, 17, 1);
+        transform: scale(1.03);
+        box-shadow: 0 6px 18px var(--shadow);
+        border: 1px solid var(--border-hover);
       }
     }
   }
@@ -87,21 +87,25 @@
 .swiper-section {
   display: flex;
   justify-content: space-between;
-  box-sizing: border-box;
+  background-color: var(--background);
+
+  padding-bottom: 16px;
 
   align-items: center;
   margin-bottom: 64px;
-  
+
   @include on-tablet {
-    padding: 0 24px;
+    padding: 24px;
   }
 
   @include on-desktop {
     max-width: 1136px;
     margin: auto;
     padding: 0;
+    padding-bottom: 32px;
     margin-bottom: 80px;
   }
+
   .swiper-slide {
     width: 212px;
 
@@ -117,7 +121,5 @@
     @include on-desktop {
       width: 272px;
     }
-
-
   }
 }

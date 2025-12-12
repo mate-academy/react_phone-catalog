@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import { useTheme } from '../context/ThemeContext';
 
 export const Footer = () => {
+  const { theme } = useTheme();
+
   return (
     <div className="footer">
       <div className="footer__container">
         <div className="footer__container--logo">
           <Link to="/" className="logo__link">
             <img
-              src="/img/icons/Logo_footer.svg"
+              src={
+                theme === 'light'
+                  ? import.meta.env.BASE_URL + 'img/icons/Logo_footer.svg'
+                  : import.meta.env.BASE_URL + 'img/icons/Logo-footer_dark.svg'
+              }
               alt="Logo icon"
               className="logo"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -39,7 +46,11 @@ export const Footer = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               <img
-                src="/img/icons/Arrow-Up_icon.svg"
+                src={
+                  theme === 'light'
+                    ? import.meta.env.BASE_URL + 'img/icons/Arrow-Up_icon.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Up_dark.svg'
+                }
                 alt="Back to top icon"
                 className="icon"
               />

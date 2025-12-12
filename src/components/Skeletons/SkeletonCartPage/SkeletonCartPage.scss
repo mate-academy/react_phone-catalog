@@ -1,5 +1,5 @@
-@import '../../../styles/skeleton';
-@import '../../../styles/utils/mixins';
+@use '../../../styles/utils/skeleton' as *;
+@use '../../../styles/utils/mixins' as *;
 
 .skeleton {
   display: flex;
@@ -90,7 +90,7 @@
       width: 66%;
     }
   }
-  
+
   &--skeletonRight {
     @include on-desktop {
       width: 33%;

@@ -1,4 +1,4 @@
-@import '../../../styles/skeleton';
+@use '../../../styles/utils/skeleton' as *;
 
 .skeleton {
   display: flex;

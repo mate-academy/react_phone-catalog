@@ -1,10 +1,10 @@
-@import '../../../styles/utils/mixins';
+@use '../../../styles/utils/mixins' as *;
 
 .breadcrumbs {
   display: flex;
   flex-direction: column;
-    padding: 0 16px;
-
+  padding: 0 16px;
+  background-color: var(--background);
 
   @include on-tablet {
     padding: 0 24px;
@@ -36,7 +36,7 @@
     text-decoration: none;
     font-size: 12px;
     font-weight: 600;
-    color: rgba(49, 50, 55, 1);
+    color: var(--primary);
     transition: transform 0.5s ease;
 
     &--home:hover {
@@ -47,8 +47,7 @@
   &__current {
     font-size: 12px;
     font-weight: 600;
-    color: rgba(137, 147, 154, 1);
-
+    color: var(--elements);
   }
 
   &__back {
@@ -56,20 +55,16 @@
     padding-bottom: 16px;
     gap: 4px;
 
-
-
     &--link {
       align-items: center;
       justify-content: center;
       text-decoration: none;
       font-size: 12px;
       font-weight: 700;
-      color: rgba(137, 147, 154, 1);
+      color: var(--elements);
 
-
-    &:hover {
-      color: black;
-    }
+      &:hover {
+        color: var(--primary);     }
     }
   }
 }

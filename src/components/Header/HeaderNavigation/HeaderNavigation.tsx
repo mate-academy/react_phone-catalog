@@ -6,12 +6,14 @@ import { useProductFilters } from '../../../hooks/useProductsFilters';
 import { useCurrentPath } from '../../context/PathContext';
 import classNames from 'classnames';
 import { CartAndFavouritesContext } from '../../context/CartAndFavouritesContext';
+import { useTheme } from '../../context/ThemeContext';
 
 export const HeaderNavigation: React.FC = () => {
   const { pathname, search } = useCurrentPath();
   const context = useContext(CartAndFavouritesContext);
   const { favourites, cart } = context;
   const { getLastSearch } = useProductFilters();
+  const { theme } = useTheme();
 
   const pages = [
     { title: 'HOME', path: '/' },
@@ -64,7 +66,11 @@ export const HeaderNavigation: React.FC = () => {
             >
               <img
                 className="icon"
-                src="/img/icons/Favourites_icon.svg"
+                src={
+                  theme === 'light'
+                    ? import.meta.env.BASE_URL + 'img/icons/Favourites_icon.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Favourites_dark.svg'
+                }
                 alt="Favourites icon"
               />
               {itemInFavourites > 0 && (
@@ -86,7 +92,13 @@ export const HeaderNavigation: React.FC = () => {
             >
               <img
                 className="icon"
-                src="/img/icons/Shopping-bag_icon.svg"
+                src={
+                  theme === 'light'
+                    ? import.meta.env.BASE_URL +
+                      'img/icons/Shopping-bag_icon.svg'
+                    : import.meta.env.BASE_URL +
+                      'img/icons/Shopping-bag_dark.svg'
+                }
                 alt="Shopping Bag icon"
               />
               {totalQuantity > 0 && (

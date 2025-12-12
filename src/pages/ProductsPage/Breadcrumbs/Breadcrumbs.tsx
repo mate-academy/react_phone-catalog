@@ -3,11 +3,13 @@ import './Breadcrumbs.scss';
 import React, { useEffect, useState } from 'react';
 import { useProductFilters } from '../../../hooks/useProductsFilters';
 import { ProductUnionType } from '../../ProductInfoPage';
+import { useTheme } from '../../../components/context/ThemeContext';
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
   const { category, itemId } = useParams();
   const { getLastSearch } = useProductFilters();
+  const { theme } = useTheme();
 
   const [modelName, setModelName] = useState('');
 
@@ -30,14 +32,14 @@ export const Breadcrumbs: React.FC = () => {
       return;
     }
 
-    fetch(`/api/${category}.json`)
+    fetch(import.meta.env.BASE_URL + `/api/${category}.json`)
       .then(res => res.json())
       .then(data => {
         const found = data.find(
           (product: ProductUnionType) => product.id === itemId,
         );
 
-        setModelName(found?.name || '');
+        setModelName(found.name || '');
       });
   }, [itemId, category]);
 
@@ -46,13 +48,24 @@ export const Breadcrumbs: React.FC = () => {
       <div className="breadcrumbs__nav">
         <Link to="/" className="breadcrumbs__link breadcrumbs__link--home">
           <img
-            src="/img/icons/Breadcrumbs-Home_icon.svg"
+            src={
+              theme === 'light'
+                ? import.meta.env.BASE_URL +
+                  'img/icons/Breadcrumbs-Home_icon.svg'
+                : import.meta.env.BASE_URL +
+                  'img/icons/Breadcrumbs-Home_dark.svg'
+            }
             alt="Home icon"
             className="icon"
           />
         </Link>
         <img
-          src="/img/icons/Breadcrumbs-Separator_icon.svg"
+          src={
+            theme === 'light'
+              ? import.meta.env.BASE_URL +
+                'img/icons/Breadcrumbs-Separator_icon.svg'
+              : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg'
+          }
           alt="Breadcrumbs Separator"
           className="icon breadcrumbs__separator"
         />
@@ -71,7 +84,12 @@ export const Breadcrumbs: React.FC = () => {
         {modelName && (
           <>
             <img
-              src="/img/icons/Breadcrumbs-Separator_icon.svg"
+              src={
+                theme === 'light'
+                  ? import.meta.env.BASE_URL +
+                    'img/icons/Breadcrumbs-Separator_icon.svg'
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg'
+              }
               alt="Breadcrumbs Separator"
               className="icon breadcrumbs__separator"
             />
@@ -89,7 +107,11 @@ export const Breadcrumbs: React.FC = () => {
         <div className="breadcrumbs__back">
           <Link to={backWithSearch} className="breadcrumbs__back--icon">
             <img
-              src="/img/icons/Arrow-Left_icon.svg"
+              src={
+                theme === 'light'
+                  ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
+              }
               alt="Back Arrow"
               className="icon"
             />

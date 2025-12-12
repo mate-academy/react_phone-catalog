@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import './Dropdown.scss';
 
 import React, { useEffect, useRef, useState } from 'react';
+import { useTheme } from '../../../components/context/ThemeContext';
 
 type Props = {
   sort: string;
@@ -18,6 +19,8 @@ export const Dropdown: React.FC<Props> = ({
 }) => {
   const [isOpenSort, setIsOpenSort] = useState(false);
   const [isOpenPerPage, setIsOpenPerPage] = useState(false);
+
+  const { theme } = useTheme();
 
   const sortRef = useRef<HTMLDivElement>(null);
   const perPageRef = useRef<HTMLDivElement>(null);
@@ -98,8 +101,12 @@ export const Dropdown: React.FC<Props> = ({
             <img
               src={
                 isOpenSort
-                  ? '/img/icons/Arrow-Up_icon.svg'
-                  : '/img/icons/Arrow-Down_icon.svg'
+                  ? theme === 'light'
+                    ? import.meta.env.BASE_URL + 'img/icons/Arrow-Up_icon.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Up_dark.svg'
+                  : theme === 'light'
+                    ? import.meta.env.BASE_URL + 'img/icons/Arrow-Down_icon.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Down_icon.svg'
               }
               alt="chevron"
               className="icon dropdown__icon"
@@ -137,8 +144,12 @@ export const Dropdown: React.FC<Props> = ({
             <img
               src={
                 isOpenPerPage
-                  ? '/img/icons/Arrow-Up_icon.svg'
-                  : '/img/icons/Arrow-Down_icon.svg'
+                  ? theme === 'light'
+                    ? import.meta.env.BASE_URL + 'img/icons/Arrow-Up_icon.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Up_dark.svg'
+                  : theme === 'light'
+                    ? import.meta.env.BASE_URL + 'img/icons/Arrow-Down_icon.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Arrow-Down_icon.svg'
               }
               alt="chevron"
               className="icon dropdown__icon"

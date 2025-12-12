@@ -2,6 +2,7 @@
 import { useContext } from 'react';
 import './AddAndFavouritesButton.scss';
 import { CartAndFavouritesContext } from '../../../components/context/CartAndFavouritesContext';
+import { useTheme } from '../../../components/context/ThemeContext';
 
 type Props = {
   productId: number;
@@ -10,6 +11,7 @@ type Props = {
 export const AddAndFavouritesButton = ({ productId }: Props) => {
   const context = useContext(CartAndFavouritesContext);
   const { toggleFavourite, isFavourite, toggleCart, isInCart } = context;
+  const { theme } = useTheme();
 
   return (
     <div className="addAndFavourites__container">
@@ -32,14 +34,24 @@ export const AddAndFavouritesButton = ({ productId }: Props) => {
       >
         {!isFavourite(productId) ? (
           <img
-            src="/img/icons/Favourites_icon.svg"
+            src={
+              theme === 'light'
+                ? import.meta.env.BASE_URL + 'img/icons/Favourites_icon.svg'
+                : import.meta.env.BASE_URL + 'img/icons/Favourites_dark.svg'
+            }
             alt="Favourites heart"
             className="icon"
           />
         ) : (
           <img
-            src="/img/icons/Favourites-added_icon.svg"
-            alt="Favourites yellow heart"
+            src={
+              theme === 'light'
+                ? import.meta.env.BASE_URL +
+                  'img/icons/Favourites-added_icon.svg'
+                : import.meta.env.BASE_URL +
+                  'img/icons/Favourites-added_dark.svg'
+            }
+            alt="Favourites heart fill"
             className="icon"
           />
         )}

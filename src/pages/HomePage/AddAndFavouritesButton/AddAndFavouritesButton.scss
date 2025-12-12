@@ -1,4 +1,4 @@
-@import '../../../styles/utils/mixins';
+@use '../../../styles/utils/mixins' as *;
 
 .addAndFavourites {
   &__container {
@@ -19,8 +19,8 @@
 
   height: 40px;
   border-radius: 48px;
-  border: 1px solid rgba(66, 25, 208, 1);
-  background-color: rgba(66, 25, 208, 1);
+  border: 1px solid var(--accent);
+  background-color: var(--accent);
   cursor: pointer;
 
   @include on-desktop {
@@ -34,20 +34,20 @@
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 18px var(--shadow);
 
   }
 
   &:active {
-    transform: scale(0.98);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px var(--shadow);
   }
 
   &__text {
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
-    color: rgba(255, 255, 255, 1);
+    color: var(--main);
   }
 
   &__added {
@@ -58,8 +58,8 @@
     width: 125px;
     height: 40px;
     border-radius: 48px;
-    border: 1px solid rgba(226, 230, 233, 1);
-    background-color: #fff;
+    border: 1px solid var(--border);
+    background-color: var(--background);
     cursor: pointer;
 
     @include on-desktop {
@@ -72,19 +72,19 @@
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 18px var(--shadow);
 
   }
 
   &:active {
-    transform: scale(0.98);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px var(--shadow);
   }
     &--text-added {
       font-size: 14px;
       font-weight: 700;
       line-height: 21px;
-      color: rgba(66, 25, 208, 1);
+      color: var(--primary);
     }
   }
 }
@@ -97,9 +97,9 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(180, 189, 195, 1);
-  background-color: #fff;
-  cursor: pointer;
+  border: 1px solid var(--border-hover);
+  background-color: var(--main);
+    cursor: pointer;
 
   transition:
     transform 0.3s ease,
@@ -109,14 +109,14 @@
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 18px var(--shadow);
 
 
   }
 
   &:active {
-    transform: scale(0.95);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px var(--shadow);
 
   }
 }

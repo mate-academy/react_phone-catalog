@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "./",
+  "homepage": "https://vall-re.github.io/react_phone-catalog/",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -42,7 +42,7 @@
     "mochawesome-merge": "^4.3.0",
     "mochawesome-report-generator": "^6.2.0",
     "prettier": "^3.3.2",
-    "sass": "^1.77.8",
+    "sass": "^1.95.1",
     "stylelint": "^16.7.0",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
@@ -59,7 +59,7 @@
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
-    "deploy": "husky install"
+    "deploy": "gh-pages -d dist"
   },
   "browserslist": {
     "production": [

@@ -30,7 +30,11 @@ export const Header = () => {
             >
               <img
                 className="logo top-logo"
-                src="/img/icons/Logo.svg"
+                src={
+                  theme === 'light'
+                    ? import.meta.env.BASE_URL + 'img/icons/Logo.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Logo_dark.svg'
+                }
                 alt="Logo Nice Gadgets"
               />
             </Link>
@@ -50,13 +54,20 @@ export const Header = () => {
                 className="icon"
                 src={
                   isBurgerMenu
-                    ? '/img/icons/Menu-close_icon.svg'
-                    : '/img/icons/Burger-menu_icon.svg'
+                    ? theme === 'light'
+                      ? import.meta.env.BASE_URL +
+                        'img/icons/Menu-close_icon.svg'
+                      : import.meta.env.BASE_URL + 'img/icons/Close_dark.svg'
+                    : theme === 'light'
+                      ? import.meta.env.BASE_URL +
+                        'img/icons/Burger-menu_icon.svg'
+                      : import.meta.env.BASE_URL +
+                        'img/icons/Burger-menu_dark.svg'
                 }
                 alt="Menu icon"
               />
             </div>
-            <div className="burger__theme"></div>
+
             <ThemeSwitcher />
           </div>
         </div>

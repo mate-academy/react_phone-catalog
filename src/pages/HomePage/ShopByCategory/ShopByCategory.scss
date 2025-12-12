@@ -1,6 +1,7 @@
-@import '../../../styles/utils/mixins';
+@use '../../../styles/utils/mixins' as *;
 
 .section {
+  background-color: var(--background);
   &__block {
     padding: 0 16px;
 
@@ -83,13 +84,13 @@
     &--title {
       font-size: 20px;
       font-weight: 700;
-      color: rgba(15, 15, 17, 1);
+      color: var(--primary);
 
     }
     &--count {
       font-size: 14px;
       font-weight: 600;
-      color: rgba(137, 147, 154, 1);
+      color: var(--elements);
     }
   }
 }

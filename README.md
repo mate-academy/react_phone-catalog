@@ -1,6 +1,7 @@
 # React Product Catalog
 
 [DEMO](https://Vall-re.github.io/react_phone-catalog)
+[Github](https://github.com/Vall-Re/react_phone-catalog/tree/develop)
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 

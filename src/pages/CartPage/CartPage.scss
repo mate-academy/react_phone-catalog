@@ -1,9 +1,10 @@
-@import '../../styles/utils/mixins';
+@use '../../styles/utils/mixins' as *;
 
 .cart {
   padding: 0 16px;
   height: 100%;
   margin-bottom: 56px;
+  background-color: var(--background);
 
   @include on-tablet {
     padding: 0 24px;
@@ -22,6 +23,11 @@
 
     height: 16px;
 
+    transition: transform 0.3s ease;
+    &:hover {
+      transform: scale(1.02);
+    }
+
     &--link {
       text-decoration: none;
       display: flex;
@@ -31,13 +37,13 @@
     &--text {
       font-size: 12px;
       font-weight: 700;
-      color: rgba(137, 147, 154, 1);
+      color: var(--primary);
     }
   }
   &__title {
     font-size: 32px;
     font-weight: 800;
-    color: rgba(49, 50, 55, 1);
+    color: var(--primary);
     margin-bottom: 32px;
   }
   &__section {
@@ -65,7 +71,7 @@
   &__totalForItem {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(226, 230, 233, 1);
+    border: 1px solid var(--border);
     border-radius: 16px;
     gap: 16px;
     padding: 24px;
@@ -81,12 +87,12 @@
     &--price {
       font-size: 32px;
       font-weight: 800;
-      color: rgba(49, 50, 55, 1);
+      color: var(--primary);
     }
     &--text {
       font-size: 14px;
       font-weight: 600;
-      color: rgba(137, 147, 154, 1);
+      color: var(--elements);
     }
     &--checkout {
       display: flex;
@@ -97,12 +103,19 @@
       border-radius: 48px;
       justify-content: center;
       align-items: center;
-      border: 1px solid rgba(66, 25, 208, 1);
-      background-color: rgba(66, 25, 208, 1);
+      border: 1px solid var(--accent);
+      background-color: var(--accent);
 
       font-size: 14px;
       font-weight: 700;
-      color: rgba(255, 255, 255, 1);
+      color: var(--main);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      &:hover {
+        transform: scale(1.03);
+        background-color: var(--accent);
+        box-shadow: 0 6px 18px var(--shadow);
+      }
 
       @include on-tablet {
         width: 100%;
@@ -123,7 +136,7 @@
       position: absolute;
       justify-content: center;
       font-size: 14px;
-      color: rgba(137, 147, 154, 1);
+      color: var(--elements);
     }
     &--img {
       width: 100%;
@@ -136,8 +149,8 @@
 .item {
   display: flex;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(226, 230, 233, 1);
+  background-color: var(--main);
+  border: 1px solid var(--border);
   border-radius: 16px;
   max-height: 160px;
 
@@ -168,6 +181,11 @@
 
       align-items: center;
       width: fit-content;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     &--photo {
@@ -176,6 +194,11 @@
       width: 80px;
       height: 80px;
       padding: 7px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
 
       @include on-tablet {
         align-items: center;
@@ -186,7 +209,7 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 600;
-      color: rgba(49, 50, 55, 1);
+      color: var(--primary);
     }
   }
   &__buttons {
@@ -212,14 +235,21 @@
       justify-content: center;
       width: 32px;
       height: 32px;
-      border: 1px solid rgba(226, 230, 233, 1);
+      border: 1px solid var(--border);
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 1);
+      background-color: var(--main);
+
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 18px var(--shadow);
+      }
     }
     &--value {
       font-size: 14px;
       font-weight: 600;
-      color: rgba(0, 0, 0, 1);
+      color: var(--primary);
     }
     &--plus {
       display: flex;
@@ -227,14 +257,20 @@
       justify-content: center;
       width: 32px;
       height: 32px;
-      border: 1px solid rgba(226, 230, 233, 1);
+      border: 1px solid var(--border);
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 1);
+      background-color: var(--main);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 18px var(--shadow);
+      }
     }
     &--price {
       font-size: 22px;
       font-weight: 800;
-      color: rgba(15, 15, 17, 1);
+      color: var(--primary);
 
       @include on-tablet {
         display: flex;
@@ -254,7 +290,7 @@
 
 .cartLine {
   width: 100%;
-  border: 1px solid rgba(226, 230, 233, 1);
+  border: 1px solid var(--border);
 }
 
 .cartPhoto {

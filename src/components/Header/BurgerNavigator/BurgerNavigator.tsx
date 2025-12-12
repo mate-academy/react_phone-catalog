@@ -5,6 +5,7 @@ import React, { useContext, useEffect } from 'react';
 import { useCurrentPath } from '../../context/PathContext';
 import { CartAndFavouritesContext } from '../../context/CartAndFavouritesContext';
 import classNames from 'classnames';
+import { useTheme } from '../../context/ThemeContext';
 
 type Props = {
   isBurgerMenu: boolean;
@@ -16,6 +17,7 @@ export const BurgerNavigator: React.FC<Props> = ({ isBurgerMenu, onClose }) => {
   const location = useLocation();
   const context = useContext(CartAndFavouritesContext);
   const { favourites, cart } = context;
+  const { theme } = useTheme();
 
   const STORAGE_KEY_LAST_PAGE = 'lastNonCartOrFavPage';
 
@@ -89,7 +91,11 @@ export const BurgerNavigator: React.FC<Props> = ({ isBurgerMenu, onClose }) => {
               }}
             >
               <img
-                src="/img/icons/Favourites_icon.svg"
+                src={
+                  theme === 'light'
+                    ? import.meta.env.BASE_URL + 'img/icons/Favourites_icon.svg'
+                    : import.meta.env.BASE_URL + 'img/icons/Favourites_dark.svg'
+                }
                 alt="Favourites icon"
                 className="icon"
               />
@@ -114,7 +120,13 @@ export const BurgerNavigator: React.FC<Props> = ({ isBurgerMenu, onClose }) => {
               }}
             >
               <img
-                src="/img/icons/Shopping-bag_icon.svg"
+                src={
+                  theme === 'light'
+                    ? import.meta.env.BASE_URL +
+                      'img/icons/Shopping-bag_icon.svg'
+                    : import.meta.env.BASE_URL +
+                      'img/icons/Shopping-bag_dark.svg'
+                }
                 alt="Shopping Bag icon"
                 className="icon"
               />

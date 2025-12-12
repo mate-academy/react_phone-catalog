@@ -1,7 +1,9 @@
-@import '../../styles/utils/mixins';
+@use '../../styles/utils/mixins' as *;
 
 .favourites {
   margin-bottom: 56px;
+  background-color: var(--background);
+
   &__title {
     display: flex;
     flex-direction: column;
@@ -21,7 +23,7 @@
     &--text {
       font-size: 32px;
       font-weight: 800;
-      color: rgba(15, 15, 17, 1);
+      color: var(--primary);
 
       @include on-tablet {
         font-size: 48px;
@@ -30,31 +32,31 @@
     &--count {
       font-size: 14px;
       font-weight: 600;
-      color: rgba(137, 147, 154, 1);
+      color: var(--elements);
     }
   }
   &__models {
     display: flex;
-  flex-direction: column;
-  margin: auto;
-  gap: 40px 16px;
-  align-items: center;
-
-  padding: 0 16px;
-
-  @include on-tablet {
-    display: grid;
-    margin: 0;
-    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
-    padding: 0 24px;
-  }
-
-  @include on-desktop {
-    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-
-    max-width: 1136px;
-    padding: 32px;
+    flex-direction: column;
     margin: auto;
+    gap: 40px 16px;
+    align-items: center;
+
+    padding: 0 16px;
+
+    @include on-tablet {
+      display: grid;
+      margin: 0;
+      grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+      padding: 0 24px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+
+      max-width: 1136px;
+      padding: 32px;
+      margin: auto;
+    }
   }
-}
 }

@@ -1,4 +1,4 @@
-@import '../../../styles/utils/mixins';
+@use '../../../styles/utils/mixins' as *;
 
 .skeleton {
   position: relative;

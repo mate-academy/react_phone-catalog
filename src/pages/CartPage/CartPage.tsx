@@ -11,12 +11,14 @@ import {
   SkeletonCartPage,
   SkeletonCartTotalItems,
 } from '../../components/Skeletons/SkeletonCartPage/SkeletonCartPage';
+import { useTheme } from '../../components/context/ThemeContext';
 
 export const CartPage = () => {
   const context = useContext(CartAndFavouritesContext);
   const { getLastPath, getLastSearch } = useProductFilters();
   const { cart, changeQuantity, clearCart } = context;
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const [products, setProducts] = useState<ProductsType[]>([]);
   const [allProducts, setAllProducts] = useState<ProductsType[]>([]);
@@ -99,7 +101,11 @@ export const CartPage = () => {
           className="cart__buttonBack--arrow"
         >
           <img
-            src="/img/icons/Arrow-Left_icon.svg"
+            src={
+              theme === 'light'
+                ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
+                : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
+            }
             alt="Back Arrow"
             className="icon"
           />
@@ -150,7 +156,13 @@ export const CartPage = () => {
                       onClick={() => changeQuantity(product.id, 'delete')}
                     >
                       <img
-                        src="/img/icons/Close_icon.svg"
+                        src={
+                          theme === 'light'
+                            ? import.meta.env.BASE_URL +
+                              'img/icons/Close_icon.svg'
+                            : import.meta.env.BASE_URL +
+                              'img/icons/Close_dark.svg'
+                        }
                         alt="Delete item icon"
                         className="icon"
                       />
@@ -180,7 +192,13 @@ export const CartPage = () => {
                         onClick={() => changeQuantity(product.id, 'minus')}
                       >
                         <img
-                          src="/img/icons/Minus_icon.svg"
+                          src={
+                            theme === 'light'
+                              ? import.meta.env.BASE_URL +
+                                'img/icons/Minus_icon.svg'
+                              : import.meta.env.BASE_URL +
+                                'img/icons/Minus_dark.svg'
+                          }
                           alt="Minus icon"
                           className="icon"
                         />
@@ -195,7 +213,13 @@ export const CartPage = () => {
                         onClick={() => changeQuantity(product.id, 'plus')}
                       >
                         <img
-                          src="/img/icons/Plus_icon.svg"
+                          src={
+                            theme === 'light'
+                              ? import.meta.env.BASE_URL +
+                                'img/icons/Plus_icon.svg'
+                              : import.meta.env.BASE_URL +
+                                'img/icons/Plus_dark.svg'
+                          }
                           alt="Plus icon"
                           className="icon"
                         />
@@ -229,7 +253,7 @@ export const CartPage = () => {
         <div className="cart__empty">
           <h3 className="cart__empty--text">Your cart is empty</h3>
           <img
-            src="/img/cart-is-empty.png"
+            src={import.meta.env.BASE_URL + 'img/cart-is-empty.png'}
             alt="Cart is empty"
             className="cart__empty--img"
           />

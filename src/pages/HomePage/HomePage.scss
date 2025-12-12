@@ -1,11 +1,11 @@
-@import '../../styles/utils/mixins';
+@use '../../styles/utils/mixins' as *;
 
 .titleMate {
   display: none;
 }
 
 .section {
-  background-color: rgba(250, 251, 252, 1);
+  background-color: var(--background);
   &__title {
     @include page-grid;
 
@@ -30,6 +30,7 @@
   font-weight: 800;
   font-size: 32px;
   grid-column: span 4;
+  color: var(--primary);
 
   @include on-tablet {
     font-size: 48px;

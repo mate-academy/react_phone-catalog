@@ -7,17 +7,19 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './BannerSwiper.scss';
 import { SkeletonBannerSwiper } from '../../../components/Skeletons/SkeletonBannerSwiper/SkeletonBannerSwiper';
+import { useTheme } from '../../../components/context/ThemeContext';
 type Props = {
   isSkeleton?: boolean;
 };
 
 export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
   const swiperRef = useRef<SwiperClass | null>(null);
+  const { theme } = useTheme();
 
   const banner = [
-    '/img/banner/Banner_apple-central-slide.png',
-    '/img/banner/Banner-first-slide.png',
-    '/img/banner/Banner-last-slide.png',
+    import.meta.env.BASE_URL + 'img/banner/Banner_apple-central-slide.png',
+    import.meta.env.BASE_URL + 'img/banner/Banner-first-slide.png',
+    import.meta.env.BASE_URL + 'img/banner/Banner-last-slide.png',
   ];
 
   return (
@@ -34,7 +36,11 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
           >
             <img
               className="icon"
-              src="/img/icons/Arrow-Left_icon.svg"
+              src={
+                theme === 'light'
+                  ? import.meta.env.BASE_URL + 'img/icons/Arrow-Left_icon.svg'
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Left_dark.svg'
+              }
               alt="Arrow Left"
             />
           </button>
@@ -78,7 +84,11 @@ export const BannerSwiper: React.FC<Props> = ({ isSkeleton }) => {
           >
             <img
               className="icon"
-              src="/img/icons/Arrow-Right_icon.svg"
+              src={
+                theme === 'light'
+                  ? import.meta.env.BASE_URL + 'img/icons/Arrow-Right_icon.svg'
+                  : import.meta.env.BASE_URL + 'img/icons/Arrow-Right_dark.svg'
+              }
               alt="Arrow Right"
             />
           </button>

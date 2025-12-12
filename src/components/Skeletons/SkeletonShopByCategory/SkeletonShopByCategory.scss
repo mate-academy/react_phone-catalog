@@ -1,4 +1,4 @@
-@import '../../../styles/skeleton';
+@use '../../../styles/utils/skeleton' as *;
 
 .skeleton {
   display: flex;
@@ -10,7 +10,7 @@
     border-radius: 8px;
     margin-bottom: 24px;
   }
-  
+
   &__categoryText {
     height: 52px;
     background: rgba(220, 220, 224, 0.5);

@@ -31,6 +31,7 @@ export const CheckoutModal: React.FC<Props> = ({
             value={name}
             onChange={event => onNameChange(event.target.value)}
             className="modal__input"
+            placeholder="Enter full name"
             required
           />
           {errors.name && <small className="modal__error">{errors.name}</small>}
@@ -43,6 +44,7 @@ export const CheckoutModal: React.FC<Props> = ({
             value={contact}
             onChange={event => onContactChange(event.target.value)}
             className="modal__input"
+            placeholder="example@gmail.com"
             required
           />
           {errors.contact && (

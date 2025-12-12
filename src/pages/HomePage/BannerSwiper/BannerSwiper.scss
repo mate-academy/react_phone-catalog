@@ -1,4 +1,4 @@
-@import '../../../styles/utils/mixins';
+@use '../../../styles/utils/mixins' as *;
 
 .banner {
   &__slider {
@@ -53,7 +53,7 @@
 
       &:hover {
         transform: scale(1.03);
-        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 6px 18px var(--shadow);
       }
     }
   }
@@ -73,18 +73,18 @@
         width: 32px;
         height: 189px;
         align-items: center;
-        border: 1px solid rgba(180, 189, 195, 1);
+        border: 1px solid var(--border);
         border-radius: 48px;
-        background-color: rgba(250, 251, 252, 1);
+        background-color: var(--background);
         cursor: pointer;
         transition:
-          transform 0.5s ease,
-          box-shadow 0.5s ease;
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
 
         &:hover {
-          transform: scale(1.05);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-          border: 1px solid rgba(15, 15, 17, 1);
+          transform: scale(1.03);
+          box-shadow: 0 6px 18px var(--shadow);
+          border: 1px solid var(--border-hover);
         }
       }
 
@@ -101,18 +101,19 @@
         width: 32px;
         height: 189px;
         align-items: center;
-        border: 1px solid rgba(180, 189, 195, 1);
+        border: 1px solid var(--border);
         border-radius: 48px;
-        background-color: rgba(250, 251, 252, 1);
+        background-color: var(--background);
         cursor: pointer;
         transition:
-          transform 0.5s ease,
-          box-shadow 0.5s ease;
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
 
         &:hover {
-          transform: scale(1.05);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-          border: 1px solid rgba(15, 15, 17, 1);
+          transform: scale(1.03);
+          box-shadow: 0 6px 18px var(--shadow);
+          border: 1px solid var(--border-hover);
+
         }
       }
 
@@ -148,17 +149,17 @@
         left: 50%;
         width: 14px;
         height: 4px;
-        background-color: rgba(180, 189, 195, 1);
+        background-color: var(--border-hover);
         transform: translate(-50%, -50%);
         transition: all 0.3s ease;
       }
 
       &:hover::before {
-        background-color: rgba(137, 147, 154, 1);
+        background-color: var(--elements);
       }
 
       &.custom-bullet-active::before {
-        background-color: rgba(15, 15, 17, 1);
+        background-color: var(--primary);
       }
     }
   }
