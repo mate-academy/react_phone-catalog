@@ -139,13 +139,19 @@ const ViewAllProducts: React.FC<ViewAllProductsProps> = ({
   return (
     <main className={styles.container}>
       <div className={styles.headerRow}>
-        <div className={styles.headerLeft}>
-          <h1 className={styles.title}>{title}</h1>
+        {/* Linha 1: título + search */}
+        <div className={styles.headerTop}>
+          <div className={styles.headerLeft}>
+            <h1 className={styles.title}>{title}</h1>
+          </div>
+
+          <div className={styles.headerSearch}>
+            <Search onSearch={handleSearch} />
+          </div>
         </div>
 
-        <div className={styles.headerRight}>
-          <Search onSearch={handleSearch} />
-
+        {/* Linha 2: select + back link */}
+        <div className={styles.headerBottom}>
           <div className={styles.selectWrapper}>
             <Select
               value={order}

@@ -7,15 +7,15 @@
 .label {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text-color); /* texto dinâmico */
+  color: var(--text-color);
 }
 
 .select {
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--card-border); /* borda dinâmica */
+  border: 1px solid var(--card-border);
   border-radius: 6px;
-  background-color: var(--card-bg); /* fundo dinâmico */
-  color: var(--text-color); /* texto dinâmico */
+  background-color: var(--card-bg);
+  color: var(--text-color);
   font-size: 0.95rem;
   cursor: pointer;
   transition:

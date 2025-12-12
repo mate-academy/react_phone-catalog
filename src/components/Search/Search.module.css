@@ -1,4 +1,7 @@
-/* src/components/Search/Search.module.css */
+/* ============================
+   BASE
+============================ */
+
 .searchWrapper {
   display: flex;
   align-items: center;
@@ -21,10 +24,9 @@
 
 .searchInput {
   width: 100%;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 10px 12px;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  background: var(--input-bg, #fff);
+  background: var(--input-bg, #f2f3f7);
   color: var(--text-color, #111);
   font-size: 14px;
   outline: none;
@@ -44,27 +46,113 @@
   padding-left: 34px;
 }
 
-/* mobile: ícone que expande se necessário */
-@media (max-width: 720px) {
+/* ============================
+   BREAKPOINT 1 — ≤ 320px
+============================ */
+
+@media (max-width: 320px) {
   .searchWrapper {
-    width: auto;
+    width: 100%;
     min-width: 0;
   }
 
   .searchInput {
-    min-width: 0;
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
+
+/* ============================
+   BREAKPOINT 2 — ≤ 640px
+   (mobile real)
+============================ */
+
+@media (max-width: 640px) {
+  /* Wrapper visível mesmo quando o input está colapsado */
+  .searchWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 40px; /* estado colapsado: mostra apenas o ícone/pílula */
+    min-width: 40px;
+    max-width: 220px;
+    padding: 10px 8px; /* garante que a borda/background apareçam */
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: var(--input-bg, #f2f3f7);
+    box-sizing: border-box;
+    transition:
+      width 180ms ease,
+      padding 120ms ease,
+      background 120ms ease;
+    z-index: 1000;
+    overflow: visible;
+  }
+
+  /* Ícone sempre posicionado à esquerda */
+  .searchIcon {
+    position: relative;
+    left: 0;
+    margin-right: 6px;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 14px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /* Input colapsado por padrão (invisível, sem borda própria) */
+  .searchInput {
     width: 0;
     opacity: 0;
-    transform: scaleX(0.95);
+    padding: 0;
+    border: none; /* borda fica no wrapper */
+    background: transparent;
+    color: var(--text-color, #111);
+    font-size: 14px;
+    outline: none;
+    transform-origin: left center;
     transition:
       width 180ms ease,
       opacity 160ms ease,
-      transform 160ms ease;
+      padding 160ms ease;
+    box-sizing: border-box;
+  }
+
+  /* Estado expandido: wrapper cresce e input aparece */
+  .searchWrapper.expanded {
+    width: 180px; /* largura final do wrapper */
+    padding: 6px 10px;
+    background: var(--input-bg, #f2f3f7);
+    border: 1px solid rgba(0, 0, 0, 0.12);
   }
 
   .searchWrapper.expanded .searchInput {
-    width: 180px;
+    width: 100%;
     opacity: 1;
-    transform: scaleX(1);
+    padding: 8px 12px;
+    background: transparent;
+  }
+}
+
+/* ============================
+   BREAKPOINT 3 — ≤ 1200px
+   (tablet / small desktop)
+============================ */
+
+@media (max-width: 1200px) {
+  .searchWrapper {
+    width: 50%;
+    min-width: 180px;
+  }
+}
+
+/* ============================
+   BREAKPOINT 4 — ≥ 1201px
+   (desktop grande)
+============================ */
+
+@media (min-width: 1201px) {
+  .searchWrapper {
+    width: 40%;
+    min-width: 220px;
   }
 }

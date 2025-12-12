@@ -21,12 +21,12 @@
 
 .containerBg {
   position: relative;
-  z-index: 1002; /* acima do overlay */
+  z-index: 1002;
   display: flex;
   flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
-  width: 320px; /* padrão desktop */
+  width: 320px;
   max-width: 100%;
   transition:
     background 160ms ease,
@@ -65,9 +65,28 @@
 .iconRow {
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: flex-start;
+}
+
+.iconsLeft {
+  display: flex;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  gap: 0;
   padding-top: 2rem;
   margin-bottom: 0.5rem;
+}
+
+.iconsRigth {
+  display: flex;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  gap: 20px;
+  padding-top: 2rem;
+  margin-bottom: 0.5rem;
+  margin-left: 6rem;
 }
 
 .iconButton {

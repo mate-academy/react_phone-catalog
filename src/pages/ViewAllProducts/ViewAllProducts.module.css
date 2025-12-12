@@ -1,20 +1,35 @@
+/* ViewAllProducts.module.css
+   Responsive: 320 / 640 / 1200 / 1200+
+*/
+
+/* Container principal */
 .container {
-  padding-right: 95px;
-  padding-left: 95px;
-  margin: 0;
+  width: 100%;
+  max-width: 1132px;
+  margin: 0 auto;
   color: var(--text-color);
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-/* Cabeçalho com título à esquerda e ações à direita */
+/* Header geral (envolve headerTop + headerBottom) */
 .headerRow {
   display: flex;
-  justify-content: space-between; /* título à esquerda, ações à direita */
-  align-items: center;
-  margin-top: 7rem;
+  flex-direction: column;
+  width: 100%;
   margin-bottom: 2rem;
   color: var(--text-color);
 }
 
+/* Linha superior: título + search */
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Área do título */
 .headerLeft {
   display: flex;
   align-items: center;
@@ -24,31 +39,49 @@
   font-size: 2rem;
   margin: 0;
   padding: 0;
-  text-align: left;
   color: var(--text-color);
 }
 
-/* Agrupa Search, Select e Link à direita */
+/* Área do search */
+.headerSearch {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: 16px;
+}
+
+/* Linha inferior: select + back link */
+.headerBottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* Compatibilidade com headerRight existente */
 .headerRight {
   display: flex;
   align-items: center;
-  gap: 30px; /* distância de 30px entre cada elemento */
+  gap: 30px;
 }
 
-/* Search ocupa espaço flexível */
-.headerRight > :first-child {
+/* Search sizing compatibility */
+.headerRight > :first-child,
+.headerTop .headerSearch > :first-child {
   flex: 1 1 auto;
   min-width: 200px;
 }
 
-/* Select (ordenar por) */
+/* Wrapper do select */
 .selectWrapper {
-  flex: 0 0 auto;
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
 }
 
-/* Link "voltar" */
+/* Link "Voltar" no header */
 .backLink {
   flex: 0 0 auto;
   font-weight: 600;
@@ -64,6 +97,19 @@
   text-decoration: none;
 }
 
+/* Grid dos cards */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.grid > * {
+  flex: 0 1 320px;
+}
+
 /* Mensagem de nenhum resultado */
 .noResults {
   width: 100%;
@@ -76,14 +122,185 @@
   margin-top: 12px;
 }
 
-/* Grid dos cards */
-.grid {
+/* Botão de voltar (rodapé) */
+.buttonRow {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
   justify-content: center;
+  margin: 2rem 0;
 }
 
-.grid > * {
-  flex: 0 1 320px;
+.backButton {
+  min-width: 140px;
+}
+
+/* =========================
+   1) <= 320px
+   ========================= */
+@media (max-width: 320px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .headerRow {
+    gap: 12px;
+    margin-top: 3.5rem;
+  }
+
+  .headerTop {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .headerSearch,
+  .headerBottom {
+    width: 100%;
+  }
+
+  .headerBottom {
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .grid > * {
+    flex: 0 1 160px;
+  }
+}
+
+/* =========================
+   2) <= 640px (mobile)
+   Linha 1: title + search
+   Linha 2: select + back link
+   Grid: 2 por linha, gap 1rem
+   ========================= */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .headerRow {
+    gap: 16px;
+    margin-top: 3.5rem;
+  }
+
+  .headerTop {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 620px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .headerSearch {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-end;
+    max-width: 220px;
+  }
+
+  .headerBottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 620px;
+    gap: 12px;
+  }
+
+  .selectWrapper {
+    flex: 0 0 auto;
+  }
+
+  .backLink {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .grid {
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .grid > * {
+    flex: 0 1 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+}
+
+/* =========================
+   3) <= 1200px
+   ========================= */
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .headerRow {
+    gap: 12px;
+    margin-top: 5.5rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .headerRight {
+    gap: 24px;
+  }
+
+  .headerRight > :first-child,
+  .headerTop .headerSearch > :first-child {
+    min-width: 180px;
+  }
+
+  .grid > * {
+    flex: 0 1 320px;
+  }
+}
+
+/* =========================
+   4) >= 1201px
+   ========================= */
+@media (min-width: 1201px) {
+  .container {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+
+  .headerRow {
+    margin-top: 8rem;
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .headerRight {
+    gap: 32px;
+  }
+
+  .headerRight > :first-child,
+  .headerTop .headerSearch > :first-child {
+    min-width: 220px;
+  }
+
+  .grid > * {
+    flex: 0 1 360px;
+  }
+
+  .headerBottom {
+    justify-content: flex-end;
+  }
 }

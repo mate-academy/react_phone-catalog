@@ -4,21 +4,19 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  margin-top: 2rem;
-  color: var(--text-color); /* texto dinâmico */
+  margin-bottom: 3rem;
+  color: var(--text-color);
 }
 
 /* Bloco esquerdo: Items per page */
 .selector {
   display: flex;
   align-items: center;
-  padding-left: 3.5rem; /* espaçamento à esquerda */
 }
 
 .selector select {
-  margin-left: 1rem;
-  width: 4rem; /* aumenta a largura */
-  height: 3rem; /* aumenta a altura */
+  width: 4rem;
+  height: 3rem;
   padding-left: 4px;
   font-size: 1rem;
   border-radius: 4px;
@@ -38,7 +36,6 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding-right: 3.6rem;
 }
 
 /* lista de páginas */
@@ -58,7 +55,6 @@
   background: var(--card-bg); /* fundo dinâmico */
   color: var(--text-color); /* texto dinâmico */
   cursor: pointer;
-  user-select: none;
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
@@ -93,13 +89,5 @@
 @media (max-width: 640px) {
   .pagination {
     gap: 12px;
-  }
-
-  .selector {
-    padding-left: 1rem;
-  }
-
-  .rightBlock {
-    padding-right: 1rem;
   }
 }

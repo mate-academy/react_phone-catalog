@@ -120,14 +120,23 @@ const Accessories: React.FC = () => {
   return (
     <main className={styles.container}>
       <div className={styles.headerRow}>
-        <div className={styles.headerLeft}>
-          <h1 className={styles.title}>Accessories</h1>
+        {/* Linha 1: título + search */}
+        <div className={styles.headerTop}>
+          <div className={styles.headerLeft}>
+            <h1 className={styles.title}>Accessories</h1>
+          </div>
+
+          <div className={styles.headerSearch}>
+            <Search onSearch={handleSearch} />
+          </div>
         </div>
-        <div className={styles.headerRight}>
-          <Search onSearch={handleSearch} />
+
+        {/* Linha 2: select + view all */}
+        <div className={styles.headerBottom}>
           <div className={styles.selectWrapper}>
             <Select value={order} onChange={handleOrderChange} />
           </div>
+
           <a
             className={styles.viewAllLink}
             onClick={() => navigate('/accessories/all')}

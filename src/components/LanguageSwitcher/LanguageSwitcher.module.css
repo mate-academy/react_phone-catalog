@@ -37,3 +37,17 @@
   white-space: nowrap;
   border: 0;
 }
+
+@media (max-width: 320px) {
+  .srOnly {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .srOnly {
+    width: 16px;
+    height: 16px;
+  }
+}

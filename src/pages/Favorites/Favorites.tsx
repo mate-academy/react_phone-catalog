@@ -114,11 +114,19 @@ const Favorites: React.FC<FavoritesProps> = ({
   return (
     <main className={styles.container} data-testid={`${dataTestIdPrefix}-page`}>
       <div className={styles.headerRow}>
-        <div className={styles.headerLeft}>
-          <h1 className={styles.title}>{title}</h1>
+        {/* Linha 1: título + search */}
+        <div className={styles.headerTop}>
+          <div className={styles.headerLeft}>
+            <h1 className={styles.title}>{title}</h1>
+          </div>
+
+          <div className={styles.headerSearch}>
+            <Search onSearch={handleSearch} />
+          </div>
         </div>
-        <div className={styles.headerRight}>
-          <Search onSearch={handleSearch} />
+
+        {/* Linha 2: select (à esquerda) */}
+        <div className={styles.headerBottom}>
           <div className={styles.selectWrapper}>
             <Select value={order} onChange={handleOrderChange} />
           </div>

@@ -446,6 +446,10 @@ BREAKPOINTS
     flex: 0 0 calc(25% - 1rem); /* 4 cards por linha */
   }
 
+  .title {
+    font-size: 2.25rem;
+  }
+
   .hotScrollerGrid {
     display: flex;
     flex-wrap: nowrap;

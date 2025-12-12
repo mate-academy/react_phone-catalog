@@ -42,28 +42,32 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ links, onClose }) => {
           </button>
 
           <div className={styles.iconRow}>
-            <LanguageSwitcher />
-            <ThemeToggle />
-            <Link
-              to="/favorites"
-              className={styles.iconButton}
-              aria-label="Favoritos"
-            >
-              <FavIcon className={styles.iconFavourites} />
-              {favorites.length > 0 && (
-                <span className={styles.favBadge}>{favorites.length}</span>
-              )}
-            </Link>
-            <Link
-              to="/cart"
-              className={styles.iconButton}
-              aria-label="Carrinho"
-            >
-              <CartIcon className={styles.iconCart} />
-              {totalQty > 0 && (
-                <span className={styles.cartBadge}>{totalQty}</span>
-              )}
-            </Link>
+            <div className={styles.iconsLeft}>
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </div>
+            <div className={styles.iconsRigth}>
+              <Link
+                to="/favorites"
+                className={styles.iconButton}
+                aria-label="Favoritos"
+              >
+                <FavIcon className={styles.iconFavourites} />
+                {favorites.length > 0 && (
+                  <span className={styles.favBadge}>{favorites.length}</span>
+                )}
+              </Link>
+              <Link
+                to="/cart"
+                className={styles.iconButton}
+                aria-label="Carrinho"
+              >
+                <CartIcon className={styles.iconCart} />
+                {totalQty > 0 && (
+                  <span className={styles.cartBadge}>{totalQty}</span>
+                )}
+              </Link>
+            </div>
           </div>
 
           <hr className={styles.divider} />
