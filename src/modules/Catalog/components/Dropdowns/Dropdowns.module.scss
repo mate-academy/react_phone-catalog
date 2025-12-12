@@ -1,3 +1,5 @@
+@use '../../../shared/styles/mixins' as *;
+
 .dropdown {
   width: 13.6rem;
   margin: 3.2rem 0 2.4rem;
@@ -7,6 +9,10 @@
   gap: 0.4rem;
 
   position: relative;
+
+  @include for-desktops {
+    margin: 4.0rem 0 2.4rem;
+  }
 
   &__label {
     font-weight: 700;

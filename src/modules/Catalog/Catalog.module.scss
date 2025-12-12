@@ -3,9 +3,21 @@
 .catalog {
   margin: 0 1.6rem;
 
+  @include for-tablets {
+    margin: 0 2.4rem;
+  }
+
+  @include for-desktops {
+    margin: 0 3.2rem;
+  }
+
   &__title {
     padding: 0;
     margin: 2.4rem 0 0.8rem;
+
+    @include for-desktops {
+      margin: 4.0rem 0 0.8rem;
+    }
   }
 
   &__counter {
@@ -17,7 +29,6 @@
   }
 
   &__empty {
-    font-family: Mont, sans-serif;
     font-size: 1.4rem;
     line-height: 2.1rem;
     letter-spacing: 0%;

@@ -26,6 +26,10 @@
 
       justify-content: initial;
     }
+
+    @include for-desktops {
+      grid-template-columns: repeat((auto-fill, minmax(27.2rem, 1fr)));
+    }
   }
 
   &__item {
