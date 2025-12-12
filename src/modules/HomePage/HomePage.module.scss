@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Mont;
+  src: url('./fonts/Mont.otf') format('opentype');
+}
+
+ h1 {
+visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  font-family: Mont;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #0F0F11;
+
+  &__body {
+    margin: 0;
+  }
+
+}
