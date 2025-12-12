@@ -8,6 +8,10 @@
   @include for-tablets {
     margin: 0 2.4rem;
   }
+
+  @include for-desktops {
+    margin: 0 3.2rem;
+  }
 }
 
 h1 {
@@ -15,5 +19,9 @@ h1 {
 
   @include for-tablets {
     padding: 3.2rem 0;
+  }
+
+  @include for-desktops {
+    padding: 5.6rem 0;
   }
 }

@@ -17,6 +17,10 @@
       gap: 1.6rem;
     }
 
+    @include for-desktops {
+      gap: 2.4rem;
+    }
+
   &__container {
     display: flex;
     justify-content: space-between;
@@ -29,12 +33,21 @@
         display: none;
       }
     }
+
+    @include for-desktops {
+      padding: 1.8rem 2.4rem;
+    }
   }
 }
 
 .logoIcon {
   height: 2.1rem;
   width: 6.4rem;
+
+  @include for-desktops {
+    height: 2.65rem;
+    width: 8rem;
+  }
 }
 
 .icon {

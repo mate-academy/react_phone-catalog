@@ -60,6 +60,10 @@
       flex-direction: row;
       gap: 3.2rem;
     }
+
+    @include for-desktops {
+      gap: 6.4rem;
+    }
   }
 
   &__item {
@@ -86,6 +90,10 @@
     @include for-tablets {
       height: 4.8rem;
     }
+
+    @include for-desktops {
+      height: 6.4rem;
+    }
   }
 
   &__iconLink {
@@ -103,6 +111,11 @@
     @include for-tablets {
       height: 4.8rem;
       flex: none;
+    }
+
+    @include for-desktops {
+      height: 6.4rem;
+      width: 6.4rem;
     }
   }
 

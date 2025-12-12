@@ -16,6 +16,10 @@
     column-gap: 1.6rem;
   }
 
+  @include for-desktops {
+    grid-template-columns: repeat(3, 36.8rem);
+  }
+
   h2 {
     margin-bottom: 2.4rem;
     grid-area: title;

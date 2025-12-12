@@ -42,14 +42,24 @@
       transform: translateX(calc(var(--index) * (constants.$mobile-product-card-gap + constants.$tablet-product-card-width)));
     }
 
+    @include for-desktops {
+      width: calc(constants.$desktop-product-card-width * 4 + constants.$mobile-product-card-gap * 3);
+
+      transform: translateX(calc(var(--index) * (constants.$mobile-product-card-gap + constants.$desktop-product-card-width)));
+    }
+
     &__container {
       width: constants.$mobile-product-card-width;
 
       flex-shrink: 0;
 
       @include for-tablets {
-      width: constants.$tablet-product-card-width;
-    }
+        width: constants.$tablet-product-card-width;
+      }
+
+      @include for-desktops {
+        width: constants.$desktop-product-card-width;
+      }
     }
   }
 }

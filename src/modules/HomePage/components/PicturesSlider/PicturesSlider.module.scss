@@ -22,6 +22,10 @@
       height: auto;
       gap: 1.6rem;
     }
+
+    @include for-desktops {
+      grid-template-rows: 40rem auto;
+    }
   }
 
   .slider .desktopOnly {

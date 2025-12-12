@@ -10,6 +10,10 @@
     @include for-tablets {
       width: 18.7rem;
     }
+
+    @include for-desktops {
+      width: 36.8rem;
+    }
   }
 
   &__image {
@@ -32,6 +36,10 @@
     line-height: 100%;
     letter-spacing: 0%;
     color: rgba(49, 50, 55, 1);
+
+    @include for-desktops {
+      font-weight: 600;
+    }
   }
 
   &__counter {
@@ -40,5 +48,9 @@
     line-height: 2.1rem;
     letter-spacing: 0%;
     color: rgba(137, 147, 154, 1);
+
+    @include for-desktops {
+      font-weight: 600;
+    }
   }
 }
