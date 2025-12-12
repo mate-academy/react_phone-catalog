@@ -1,9 +1,10 @@
 import './App.scss';
-import { Header } from './components/header';
+import { Header } from './components/Header';
 
 export const App = () => (
   <div className="App">
     <Header />
-    <h1>Product Catalog</h1>
+    <body />
+    <footer />
   </div>
 );
