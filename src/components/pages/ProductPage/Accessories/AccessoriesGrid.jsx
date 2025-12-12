@@ -112,14 +112,32 @@ export const Accessories = () => {
   );
 
   const [colorFilter, setColorFilter] = useState(() => {
+    // 1. Беремо колір з URL, якщо він там є
     const urlColor = searchParams.get('color');
 
     if (urlColor !== null) {
       return urlColor;
     }
+
+    // 2. Відновлення зі localStorage
+    const storedColor = localStorage.getItem('accessories_colorFilter');
+
+    if (storedColor !== null) {
+      return storedColor;
+    }
+
+    // 3. За замовчуванням — null (All)
+    return null;
   });
 
   // Збереження змін у localStorage
+  useEffect(() => {
+    if (colorFilter === null) {
+      localStorage.removeItem('accessories_colorFilter');
+    } else {
+      localStorage.setItem('accessories_colorFilter', colorFilter);
+    }
+  }, [colorFilter]);
   useEffect(() => {
     localStorage.setItem('accessories_itemsPerPage', itemsPerPage);
   }, [itemsPerPage]);
