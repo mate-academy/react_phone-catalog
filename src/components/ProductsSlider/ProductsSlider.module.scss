@@ -1,0 +1,83 @@
+.products-slider {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 800;
+    font-style: bold;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    flex-direction: row;
+    column-gap: 16px;
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #b4bdc3;
+    background-color: #fff;
+    cursor: pointer;
+
+    @include hover(border-color, $primary-color);
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+      border-color: #e2e6e9;
+    }
+
+    &-left {
+      background-image: url('/icons/arrow-left-black.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &-right {
+      background-image: url('/icons/arrow-right-black.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    width: calc(50% + 50vw);
+
+    overflow-x: auto;
+    scroll-behavior: smooth;
+
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include on-desktop {
+      width: 100%;
+    }
+  }
+}

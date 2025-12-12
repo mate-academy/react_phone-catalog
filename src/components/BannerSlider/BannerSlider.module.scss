@@ -1,0 +1,363 @@
+.banner-container {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  display: flex;
+  justify-content: center;
+  padding: 24px 0 56px;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    width: 100%;
+    left: auto;
+    right: auto;
+    margin: 0;
+    padding: 32px calc(19px + 32px) 74px;
+  }
+
+  @include on-desktop {
+    padding: 56px calc(16px + 32px) 90px;
+  }
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1040px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.nav-button {
+  display: none;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  border-radius: 48px;
+  border: 1px solid #B4BDC3;
+  background-color: #fff;
+  cursor: pointer;
+
+  @include on-tablet {
+    display: flex;
+    width: 32px;
+    height: 190px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+
+  @include hover(border-color, $primary-color);
+}
+
+.nav-prev {
+  left: 0;
+
+  background-image: url(/icons/arrow-left-black.svg);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: center;
+
+  @include on-tablet {
+    left: 0;
+  }
+}
+
+.nav-next {
+  right: 0;
+
+  background-image: url(/icons/arrow-right-black.svg);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: center;
+
+  @include on-tablet {
+    right: 0;
+  }
+}
+
+.slider-window {
+  width: 100%;
+  overflow: hidden;
+  background-color: #000;
+  position: relative;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    aspect-ratio: auto;
+    height: 190px;
+    border-radius: 8px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform $effect-duration ease-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.text-section {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+  z-index: 10;
+
+  @include on-tablet {
+    width: 40%;
+    height: auto;
+    padding-top: 0;
+    padding-left: 20px;
+    margin: 6px;
+    border-radius: 8px;
+    align-items: flex-start;
+    text-align: left;
+    background-color: #222;
+  }
+
+  @include on-desktop {
+    margin: 10px;
+    padding-left: 50px;
+  }
+}
+
+.gradient-title {
+  padding-inline: 60px;
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 100%;
+
+  @include on-tablet {
+    padding-inline: 0;
+    text-align: left;
+    font-size: 22px;
+    padding-right: 20px;
+    padding-top: 25px;
+    margin-bottom: 8px;
+    max-width: 300px;
+  }
+
+  @include on-desktop {
+    font-size: 36px;
+    padding-right: 0;
+    padding-top: 50px;
+    margin-bottom: 10px;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #a665ff, #ff65a6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  margin: 0;
+  display: none;
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: 500;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  @include on-desktop {
+    font-size: 22px;
+  }
+}
+
+.btn-order {
+  box-sizing: border-box;
+  display: none;
+  height: 32px;
+  width: 100px;
+  border-radius: 16px;
+  border: 1px solid #B4BDC3;
+  color: #fff;
+  background: transparent;
+  font-weight: 600;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all $effect-duration;
+  margin-top: 30px;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  @include on-desktop {
+    height: 40px;
+    width: 160px;
+    border-radius: 24px;
+    font-size: 12px;
+    margin-top: 130px;
+  }
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
+}
+
+.image-section {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  background-color: black;
+  overflow: hidden;
+
+  @include on-tablet {
+    width: 55%;
+    height: 100%;
+    justify-content: flex-end;
+  }
+}
+
+.product-info {
+  text-align: center;
+  margin-top: 0;
+  z-index: 10;
+
+  @include on-tablet {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+  }
+
+  @include on-desktop {
+    top: 60px;
+  }
+}
+
+.product-name {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0;
+
+  @include on-tablet {
+    font-size: 18px;
+  }
+
+  @include on-desktop {
+    font-size: 28px;
+  }
+}
+
+.product-slogan {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: 0;
+
+  @include on-tablet {
+    font-size: 10px;
+    margin-top: 0;
+  }
+
+  @include on-desktop {
+    font-size: 18px;
+  }
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  @include on-tablet {
+    align-items: flex-end;
+    height: 65%;
+  }
+
+  @include on-desktop {
+    height: 70%;
+  }
+}
+
+.product-img {
+  width: 85%;
+  max-height: 95%;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+  transform: translateY(10px);
+  transition: transform $effect-duration;
+
+  @include on-tablet {
+    width: auto;
+    max-width: 90%;
+    height: 100%;
+    max-height: unset;
+    transform: translateY(15px);
+  }
+
+  @include on-desktop {
+    transform: translateY(30px);
+  }
+}
+
+.pagination-slider {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 18px;
+}
+
+.pagination-slider-dot {
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+  transition: all $effect-duration;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &.active {
+    background-color: $primary-color;
+  }
+
+  &.inactive {
+    background-color: #E2E6E9;
+  }
+}

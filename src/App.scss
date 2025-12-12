@@ -1,1 +1,85 @@
 // not empty
+@import './utils/styles/fonts';
+@import './utils/styles/variables';
+@import './utils/styles/mixins';
+@import './components/NotFoundPage/NotFoundPage.module';
+@import './components/Header/Header.module';
+@import './components/Menu/Menu.module';
+@import './components/Footer/Footer.module';
+@import './components/Loader/Loader.module';
+@import './components/ErrorMessage/ErrorMessage.module';
+@import './components/BannerSlider/BannerSlider.module';
+@import './components/HomePage/HomePage.module';
+@import './components/PhonesPage/PhonesPage.module';
+@import './components/TabletsPage/TabletsPage.module';
+@import './components/AccessoriesPage/AccessoriesPage.module';
+@import './components/ProductsList/ProductsList.module';
+@import './components/ProductCard/ProductCard.module';
+@import './components/Pagination/Pagination.module';
+@import './components/ProductDetailsPage/ProductDetailsPage.module';
+@import './components/ProductsSliderCard/ProductsSliderCard.module';
+@import './components/ProductsSlider/ProductsSlider.module';
+@import './components/FavoritesPage/FavoritesPage.module';
+@import './components/CartItem/CartItem.module';
+@import './components/CartPage/CartPage.module';
+
+:root {
+  --bg-color: #fafbfc;
+  --color: #0F0F11;
+  --card-bg: #fff
+}
+
+[data-theme='dark'] {
+  --bg-color: #121212;
+  --color: #fff;
+  --card-bg: #1e1e1e
+}
+
+[data-theme='dark'] .fav-icon,
+[data-theme='dark'] .menu-icon,
+[data-theme='dark'] .icon-fav,
+[data-theme='dark'] .icon-cart,
+[data-theme='dark'] .theme-icon,
+[data-theme='dark'] .home-icon,
+[data-theme='dark'] .icon-close,
+[data-theme='dark'] .products-slider__arrow,
+[data-theme='dark'] .nav-button,
+[data-theme='dark'] .footer__navigation-button,
+[data-theme='dark'] .footer__logo,
+[data-theme='dark'] .header__logo,
+[data-theme='dark'] .products-slider-card-buttons-fav,
+[data-theme='dark'] .product-details__actions-btn-fav,
+[data-theme='dark'] .product-card-buttons-fav,
+[data-theme='dark'] .cart-item__button,
+[data-theme='dark'] .product-details__back-btn-icon,
+[data-theme='dark'] .cart-page__back-btn-icon,
+[data-theme='dark'] .cart-icon {
+  filter: invert(1);
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+
+  background-color: var(--bg-color);
+  color: var(--color);
+  transition: background-color $effect-duration;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex: 1;
+  }
+}
+
+.hidden {
+  display: none;
+}
