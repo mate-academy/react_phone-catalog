@@ -1,7 +1,9 @@
 import { Products } from '../types/Products';
 
 export function getProducts(): Promise<Products[]> {
-  return fetch('/api/products.json').then(response => {
+  const BASE_URL = import.meta.env.BASE_URL;
+
+  return fetch(`${BASE_URL}/api/products.json`).then(response => {
     if (response.ok) {
       return response.json();
     }
