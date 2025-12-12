@@ -64,7 +64,7 @@
       width: 288px;
       height: 288px;
 
-      @include hover(transform, scale(1.1));
+      @include hover(transform, scale(1.05));
 
       @include on-tablet {
         width: 187px;

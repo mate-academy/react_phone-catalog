@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectIsFavorite, toggleFavorites } from '../../features/favorites';
 import cn from 'classnames';
-import { addToCart, selectIsAddedToCart } from '../../features/cart';
+import {
+  addToCart,
+  removeFromCart,
+  selectIsAddedToCart,
+} from '../../features/cart';
 import { Product } from '../../types/Product';
 import { useTranslation } from 'react-i18next';
 
@@ -30,6 +34,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const handleAddToCart = () => {
     if (!isAddedToCart) {
       dispatch(addToCart(product));
+    } else if (isAddedToCart) {
+      dispatch(removeFromCart(product.itemId));
     }
   };
 

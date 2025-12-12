@@ -9,7 +9,11 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectIsFavorite, toggleFavorites } from '../../features/favorites';
-import { addToCart, selectIsAddedToCart } from '../../features/cart';
+import {
+  addToCart,
+  removeFromCart,
+  selectIsAddedToCart,
+} from '../../features/cart';
 import { Product } from '../../types/Product';
 
 const colorMap: Record<string, string> = {
@@ -131,7 +135,21 @@ export const ProductDetailsPage: React.FC = () => {
   const handleAddToCart = () => {
     if (!isAddedToCart) {
       dispatch(addToCart(getProductsForRedux(product)));
+    } else if (isAddedToCart) {
+      dispatch(removeFromCart(getProductsForRedux(product).itemId));
     }
+  };
+
+  const handleTechSpecsChange = (newColor: string, newCapacity: string) => {
+    const baseId =
+      product?.namespaceId || product?.id.split('-').slice(0, -2).join('-');
+
+    const normalizedColor = newColor.replace(/ /g, '-').toLowerCase();
+    const normalizedCapacity = newCapacity.toLowerCase();
+
+    const newId = `${baseId}-${normalizedCapacity}-${normalizedColor}`;
+
+    navigate(`/${product?.category}/${newId}`);
   };
 
   if (isLoading) {
@@ -236,7 +254,11 @@ export const ProductDetailsPage: React.FC = () => {
                       name="color"
                       value={color}
                       checked={color === selectedColor}
-                      onChange={() => setSelectedColor(color)}
+                      onChange={() => {
+                        if (selectedCapacity) {
+                          handleTechSpecsChange(color, selectedCapacity);
+                        }
+                      }}
                       className="product-details__radio-input"
                     />
                   </label>
@@ -261,7 +283,11 @@ export const ProductDetailsPage: React.FC = () => {
                       name="capacity"
                       value={cap}
                       checked={cap === selectedCapacity}
-                      onChange={() => setSelectedCapacity(cap)}
+                      onChange={() => {
+                        if (selectedColor) {
+                          handleTechSpecsChange(selectedColor, cap);
+                        }
+                      }}
                       className="product-details__radio-input"
                     />
                     {cap}

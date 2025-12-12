@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ProductsSliderCard } from '../ProductsSliderCard/ProductsSliderCard';
 import { ProductDetails } from '../../types/ProductDetails';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   products: ProductDetails[];
@@ -8,6 +9,8 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
+  const { t } = useTranslation();
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -71,24 +74,51 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
 
       <div className="products-slider__list" ref={scrollRef}>
         {products.map(product => {
-          const mappedProduct = {
-            id: 0,
-            itemId: product.id,
-            category: product.category as 'phones' | 'tablets' | 'accessories',
-            name: product.name,
-            fullPrice: product.priceRegular,
-            price: product.priceDiscount,
-            screen: product.screen,
-            capacity: product.capacity,
-            color: product.color,
-            ram: product.ram,
-            year: 2020,
-            image: product.images[0],
-          };
+          if (title === t('new-models')) {
+            const mappedProduct = {
+              id: 0,
+              itemId: product.id,
+              category: product.category as
+                | 'phones'
+                | 'tablets'
+                | 'accessories',
+              name: product.name,
+              fullPrice: product.priceRegular,
+              price: product.priceRegular,
+              screen: product.screen,
+              capacity: product.capacity,
+              color: product.color,
+              ram: product.ram,
+              year: 2020,
+              image: product.images[0],
+            };
 
-          return (
-            <ProductsSliderCard key={product.id} product={mappedProduct} />
-          );
+            return (
+              <ProductsSliderCard key={product.id} product={mappedProduct} />
+            );
+          } else {
+            const mappedProduct = {
+              id: 0,
+              itemId: product.id,
+              category: product.category as
+                | 'phones'
+                | 'tablets'
+                | 'accessories',
+              name: product.name,
+              fullPrice: product.priceRegular,
+              price: product.priceDiscount,
+              screen: product.screen,
+              capacity: product.capacity,
+              color: product.color,
+              ram: product.ram,
+              year: 2020,
+              image: product.images[0],
+            };
+
+            return (
+              <ProductsSliderCard key={product.id} product={mappedProduct} />
+            );
+          }
         })}
       </div>
     </div>

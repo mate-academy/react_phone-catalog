@@ -4,7 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { Product } from '../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectIsFavorite, toggleFavorites } from '../../features/favorites';
-import { addToCart, selectIsAddedToCart } from '../../features/cart';
+import {
+  addToCart,
+  removeFromCart,
+  selectIsAddedToCart,
+} from '../../features/cart';
 import cn from 'classnames';
 
 type Props = {
@@ -30,6 +34,8 @@ export const ProductsSliderCard: React.FC<Props> = ({ product }) => {
   const handleAddToCart = () => {
     if (!isAddedToCart) {
       dispatch(addToCart(product));
+    } else if (isAddedToCart) {
+      dispatch(removeFromCart(product.itemId));
     }
   };
 
@@ -56,9 +62,11 @@ export const ProductsSliderCard: React.FC<Props> = ({ product }) => {
         {product.price !== product.fullPrice ? (
           <div className="products-slider-card-prices">
             <strong className="products-slider-card-price">
-              ${product.fullPrice}
+              ${product.price}
             </strong>
-            <p className="products-slider-card-fullprice">${product.price}</p>
+            <p className="products-slider-card-fullprice">
+              ${product.fullPrice}
+            </p>
           </div>
         ) : (
           <div className="products-slider-card-prices">
