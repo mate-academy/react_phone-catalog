@@ -9,7 +9,7 @@ import { Product } from '@/types';
 import { getProducts } from '@/api/api';
 
 export type CartProduct = Product & { quantity: number };
-
+//TODO: add loader
 export const Cart: React.FC = () => {
   const { cart, totalCount } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);

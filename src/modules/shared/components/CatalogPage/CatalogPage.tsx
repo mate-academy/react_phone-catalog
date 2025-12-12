@@ -25,6 +25,7 @@ export const CatalogPage: React.FC = () => {
   const { category } = useParams();
   const isFirstCategoryRender = useRef(true);
 
+  // Ініціалізація стейту з URL
   const [sortOption, setSortOption] = useState<string | null>(
     searchParams.get('sort') || '',
   );
@@ -72,7 +73,7 @@ export const CatalogPage: React.FC = () => {
     }
   };
 
-  // При зміні категорії — ресет фільтрів до дефолтних значень
+  // 1. Скидання фільтрів при зміні категорії
   useEffect(() => {
     if (isFirstCategoryRender.current) {
       isFirstCategoryRender.current = false;
@@ -83,24 +84,26 @@ export const CatalogPage: React.FC = () => {
 
     params.delete('sort');
     params.delete('perPage');
-    params.delete('page'); // page=1 дефолт — не тримаємо в URL
+    params.delete('page');
 
-    setSortOption('');
-    setPerPageOption(DEFAULT_PER_PAGE.toString());
-    setPage(1);
+    // Тут ми не робимо set..., бо наступний useEffect (синхронізація)
+    // побачить зміну params і оновить стейт сам.
     setSearchParams(params);
   }, [category]);
 
-  // синхронізація page/sort/perPage зі змінами URL (back/forward, прямі лінки)
+  // 2. ГОЛОВНА СИНХРОНІЗАЦІЯ: URL -> State
+  // Це єдине місце, де ми оновлюємо page, sort, perPage
   useEffect(() => {
     setPage(Number(searchParams.get('page')) || 1);
     setSortOption(searchParams.get('sort') || '');
+
+    // Якщо в URL є 'all', воно запишеться сюди як рядок 'all'
     setPerPageOption(
       searchParams.get('perPage') || DEFAULT_PER_PAGE.toString(),
     );
   }, [searchParams]);
 
-  // завантаження і сортування продуктів
+  // 3. Завантаження даних
   useEffect(() => {
     const newTitle = `${pageTitle} page`;
 
@@ -116,16 +119,12 @@ export const CatalogPage: React.FC = () => {
             if (sortOption === 'age') {
               return b.year - a.year;
             }
-
             if (sortOption === 'title') {
               return a.name.localeCompare(b.name);
             }
-
             if (sortOption === 'price') {
-              // якщо треба враховувати знижку — тут враховуй поле з ціною після знижки
               return a.price - b.price;
             }
-
             return 0;
           });
         }
@@ -141,9 +140,10 @@ export const CatalogPage: React.FC = () => {
       });
   }, [category, sortOption, pageTitle]);
 
-  const handleSortChange = (value: string | null) => {
-    setSortOption(value);
+  // --- HANDLERS (Тільки оновлюють URL) ---
 
+  const handleSortChange = (value: string | null) => {
+    // Видалив setSortOption(value)
     const params = new URLSearchParams(searchParams);
 
     if (value) {
@@ -152,45 +152,39 @@ export const CatalogPage: React.FC = () => {
       params.delete('sort');
     }
 
-    // скидаємо на першу сторінку
-    params.delete('page'); // page=1 — дефолт, не додаємо в URL
-    setPage(1);
-
+    params.delete('page'); // Скидаємо на 1 сторінку
     setSearchParams(params);
   };
 
   const handlePerPageChange = (value: string | null) => {
-    setPerPageOption(value);
-
+    // Видалив setPerPageOption(value)
     const params = new URLSearchParams(searchParams);
 
-    if (value === 'all') {
-      params.delete('perPage');
-      params.delete('page');
-      setPage(1);
-    } else if (value) {
-      if (Number(value) === DEFAULT_PER_PAGE) {
-        // дефолтне значення — не тримаємо в URL
-        params.delete('perPage');
-      } else {
-        params.set('perPage', value);
-      }
+    // Завжди скидаємо сторінку на 1 при зміні кількості елементів
+    params.delete('page');
 
-      // page=1 — дефолт, тому теж видаляємо
-      params.delete('page');
-      setPage(1);
+    if (!value) {
+      // Якщо раптом прийшов null (хоча з селекта навряд чи)
+      params.delete('perPage');
+    } else if (value === DEFAULT_PER_PAGE.toString()) {
+      // Якщо це дефолтне значення (наприклад, "16"), можна не показувати в URL
+      // (або приберіть цю умову, якщо хочете бачити ?perPage=16 завжди)
+      params.delete('perPage');
+    } else {
+      // Тут обробляється і "4", і "8", і "all"
+      // В URL буде ?perPage=all або ?perPage=4
+      params.set('perPage', value);
     }
 
     setSearchParams(params);
   };
 
   const handlePageChange = (newPage: number) => {
-    setPage(newPage);
-
+    // Видалив setPage(newPage)
     const params = new URLSearchParams(searchParams);
 
     if (newPage === 1) {
-      params.delete('page'); // дефолтне — не зберігаємо
+      params.delete('page');
     } else {
       params.set('page', String(newPage));
     }
@@ -198,7 +192,8 @@ export const CatalogPage: React.FC = () => {
     setSearchParams(params);
   };
 
-  // фільтрація за категорією
+  // --- ФІЛЬТРАЦІЯ ТА ВІДОБРАЖЕННЯ ---
+
   let filteredProducts = products;
 
   if (category) {
@@ -210,11 +205,13 @@ export const CatalogPage: React.FC = () => {
 
   const totalCount = filteredProducts.length;
 
-  // пагінація
   let visibleProducts = filteredProducts;
 
-  const perPageNumber =
-    perPageOption && perPageOption !== 'all' ? Number(perPageOption) : null;
+  // Логіка для 'all':
+  // Якщо perPageOption === 'all', то perPageNumber буде null (через NaN або явну перевірку)
+  // Або перевіримо явно:
+  const isAll = perPageOption === 'all';
+  const perPageNumber = !isAll && perPageOption ? Number(perPageOption) : null;
 
   if (perPageNumber) {
     const start = (page - 1) * perPageNumber;
@@ -222,18 +219,18 @@ export const CatalogPage: React.FC = () => {
   }
 
   const shouldShowPagination =
-    !loading && !error && perPageNumber !== null && totalCount > perPageNumber;
+    !loading &&
+    !error &&
+    perPageNumber !== null && // Якщо "all", пагінації немає
+    totalCount > perPageNumber;
 
   const skeletons = Array(8).fill(null);
-
   const categoryNameForMessage = getCategoryNameForMessage();
 
   return !isValid ? (
     <NotFoundPage />
   ) : (
     <div className={styles.catalog}>
-      {/* явний h1 */}
-
       <PageHeader title={pageTitle} variant="catalogPage" />
 
       <div className={styles.catalog__modelsCount}>{totalCount} models</div>
@@ -254,7 +251,6 @@ export const CatalogPage: React.FC = () => {
         />
       </div>
 
-      {/* помилка завантаження */}
       {error && (
         <div className={styles.catalog__error}>
           <p>Something went wrong</p>
@@ -262,7 +258,6 @@ export const CatalogPage: React.FC = () => {
         </div>
       )}
 
-      {/* список / скелетони / пустий стейт */}
       {!error && (
         <>
           {loading ? (

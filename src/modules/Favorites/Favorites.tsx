@@ -8,23 +8,36 @@ import { ProductsList } from '../shared/components/ProductList/ProductList';
 import { Loader } from '../shared/components/Loader';
 import emptyFavorites from '/img/empty_favorites.svg';
 import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 
 const Favorites: React.FC = () => {
   const { favorites } = useCart();
+  const navigate = useNavigate();
 
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const navigate = useNavigate();
+
+  // 1. Якщо у нас вже є улюблені товари (ID), ставимо loading true.
+  // Якщо масив ID порожній — loading false (відразу покажемо Empty State без запиту)
+  const [loading, setLoading] = useState<boolean>(favorites.length > 0);
+
   useEffect(() => {
+    // 2. Оптимізація: Якщо улюблених немає, не робимо запит
+    if (favorites.length === 0) {
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
+
     getProducts()
       .then(fetchedProducts => {
         setProducts(fetchedProducts);
       })
+      .catch(console.error) // Варто додати обробку помилок
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [favorites.length]); // Додали залежність, щоб при додаванні товару запит міг оновитися (опціонально)
 
   const preparedFavorites = useMemo(
     () => products.filter(product => favorites.includes(product.itemId)),
@@ -32,18 +45,30 @@ const Favorites: React.FC = () => {
   );
 
   return (
-    <div className={styles.favoritesPage__container}>
-      <PageHeader title="Favourites" showBreadCrumbs variant="favPage" />
+    <div
+      className={classNames(styles.favoritesPage__container, {
+        [styles.favoritesPage__containerLoading]: loading,
+      })}
+    >
       {loading ? (
         <div className={styles.loaderWrapper}>
           <Loader />
         </div>
       ) : (
         <>
-          {preparedFavorites.length > 0 ? (
-            <div className={styles.favorites__container}>
-              <ProductsList products={preparedFavorites} />
-            </div>
+          {/* Тут також перевіряємо favorites.length, щоб уникнути ситуації,
+              коли запит пройшов, але збігів не знайдено (хоча логічно це те саме) */}
+          {favorites.length > 0 && preparedFavorites.length > 0 ? (
+            <>
+              <PageHeader
+                title="Favourites"
+                showBreadCrumbs
+                variant="favPage"
+              />
+              <div className={styles.favorites__container}>
+                <ProductsList products={preparedFavorites} />
+              </div>
+            </>
           ) : (
             <div className={styles.favorites__empty}>
               <div className={styles.favorites__imageWrapper}>

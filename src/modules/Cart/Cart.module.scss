@@ -2,8 +2,20 @@
   &__container {
     margin-bottom: 80px;
     position: relative;
+    &--loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+    }
   }
-
+  &__loaderWrapper {
+    width: 100%;
+    min-height: calc(100vh - 168px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &__layout {
     display: flex;
     gap: 20px;
