@@ -1,0 +1,43 @@
+.header {
+  position: sticky;
+  top: 0;
+  height: 64px;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  color: #75767F;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 128px;
+    height: 64px;
+    margin-right: 24px;
+
+    &__img {
+      width: 80px;
+      height: 28px;
+      padding-inline: 24px;
+      padding-block: 18px;
+    }
+  }
+
+  &__nav {
+    &__item {
+      margin-right: 64px;
+    }
+  }
+
+  &__icons {
+    width: 64px;
+    height: 64px;
+
+    &__img {
+      width: 16px;
+    }
+  }
+}
