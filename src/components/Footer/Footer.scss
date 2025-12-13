@@ -1,4 +1,5 @@
 @use '../../styles/utils/mixins' as *;
+@use '../../styles/utils/variables' as *;
 
 .footer {
   display: flex;
@@ -48,7 +49,7 @@
 }
 
 .logo {
-  transition: transform 0.3s ease;
+  transition: transform $effect-duration ease;
   &:hover {
     transform: scale(1.05);
   }
@@ -63,7 +64,7 @@
   font-size: 12px;
   font-weight: 800;
   color: var(--elements);
-  transition: transform 0.5s ease;
+  transition: transform $effect-duration ease;
   &:hover {
     transform: scale(1.05);
     color: var(--primary);
@@ -80,11 +81,11 @@
     font-weight: 700;
     color: var(--elements);
     cursor: pointer;
-    transition: transform 0.5s ease;
+
+    transition: transform $effect-duration ease;
     &:hover {
       transform: scale(1.05);
       color: var(--primary);
-
     }
   }
   &__button {
@@ -97,14 +98,12 @@
     border: 1px solid var(--border);
     background-color: var(--main);
     cursor: pointer;
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+    transition: transform $effect-duration ease;
 
     &:hover {
       transform: scale(1.05);
       box-shadow: 0 4px 12px var(--shadow);
-      border: 1px solid var(--border-hover) ;
+      border: 1px solid var(--border-hover);
     }
   }
 }

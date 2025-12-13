@@ -1,4 +1,5 @@
 @use '../../styles/utils/mixins' as *;
+@use '../../styles/utils/variables' as *;
 
 .productInfo {
   background-color: var(--background);
@@ -30,16 +31,22 @@
     gap: 16px;
     margin-bottom: 40px;
 
+    min-height: 500px;
+
     @include on-tablet {
       flex-direction: row-reverse;
       align-items: start;
       box-sizing: border-box;
       width: 55%;
+
+      min-height: 500px;
     }
 
     @include on-desktop {
       width: 50%;
       padding: 8px;
+
+      min-height: 500px;
     }
   }
 
@@ -94,8 +101,7 @@
     }
 
     transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+      transform $effect-duration ease;
 
     &:hover {
       transform: scale(1.05);
@@ -116,8 +122,7 @@
       align-items: center;
 
       transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform $effect-duration ease;
 
       &:hover {
         border-color: var(--primary);
@@ -174,8 +179,7 @@
     padding: 2px;
 
     transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+      transform $effect-duration ease;
 
     &:hover {
       transform: scale(1.05);
@@ -219,8 +223,7 @@
     font-weight: 600;
     color: var(--primary);
     transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+      transform $effect-duration ease;
 
     &:hover {
       transform: scale(1.05);
@@ -332,6 +335,8 @@
   &__about {
     display: flex;
     flex-direction: column;
+
+    min-height: 400px;
 
     @include on-desktop {
       max-width: 1136px;

@@ -29,6 +29,7 @@ export const ProductInfoPage: React.FC = () => {
   const [discountProducts, setDiscountProducts] = useState<ProductsType[]>([]);
   const [mainPhoto, setMainPhoto] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
 
   const colorMap: Record<string, string> = {
     white: 'rgba(255,255,255,1)',
@@ -89,8 +90,6 @@ export const ProductInfoPage: React.FC = () => {
       return;
     }
 
-    setIsLoading(true);
-
     Promise.all([
       fetch(`api/${category}.json`).then(res => res.json()),
       fetch(`api/products.json`).then(res => res.json()),
@@ -119,15 +118,17 @@ export const ProductInfoPage: React.FC = () => {
         setFoundProduct(foundedProduct);
         setDiscountProducts(discountedProduct);
         setMainPhoto(foundedItem.images[0]);
-
-        setIsLoading(false);
       })
       .catch(() => {
         navigate('/product-not-found');
+      })
+      .finally(() => {
+        setIsInitialLoading(false);
+        setIsLoading(false);
       });
   }, [itemId, navigate, category]);
 
-  if (isLoading) {
+  if (isInitialLoading) {
     return <SkeletonProductInfoPage />;
   }
 

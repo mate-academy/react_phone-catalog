@@ -1,4 +1,5 @@
 @use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
 
 .banner {
   &__slider {
@@ -46,10 +47,7 @@
       cursor: pointer;
       opacity: 0;
       transform: translateY(20px);
-      transition:
-        transform 0.5s ease,
-        box-shadow 0.5s ease,
-        opacity 0.6s ease;
+      transition: transform $effect-duration ease;
 
       &:hover {
         transform: scale(1.03);
@@ -77,9 +75,7 @@
         border-radius: 48px;
         background-color: var(--background);
         cursor: pointer;
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
+        transition: transform $effect-duration ease;
 
         &:hover {
           transform: scale(1.03);
@@ -105,15 +101,12 @@
         border-radius: 48px;
         background-color: var(--background);
         cursor: pointer;
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
+        transition: transform $effect-duration ease;
 
         &:hover {
           transform: scale(1.03);
           box-shadow: 0 6px 18px var(--shadow);
           border: 1px solid var(--border-hover);
-
         }
       }
 
@@ -140,7 +133,7 @@
       height: 24px;
       position: relative;
       cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      transition: transform $effect-duration ease;
 
       &::before {
         content: '';
@@ -151,7 +144,7 @@
         height: 4px;
         background-color: var(--border-hover);
         transform: translate(-50%, -50%);
-        transition: all 0.3s ease;
+        transition: transform $effect-duration ease;
       }
 
       &:hover::before {

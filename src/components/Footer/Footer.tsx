@@ -23,13 +23,28 @@ export const Footer = () => {
           </Link>
         </div>
         <div className="footer__container--contacts">
-          <a href="/" className="link">
+          <a
+            href="https://github.com/Vall-Re/react_phone-catalog/tree/develop"
+            className="link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Github
           </a>
-          <a href="/" className="link">
+          <a
+            href="https://github.com/Vall-Re/react_phone-catalog/tree/develop"
+            className="link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Contacts
           </a>
-          <a href="/" className="link">
+          <a
+            href="https://github.com/Vall-Re/react_phone-catalog/tree/develop"
+            className="link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Rights
           </a>
         </div>

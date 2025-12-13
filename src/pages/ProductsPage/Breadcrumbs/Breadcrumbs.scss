@@ -1,4 +1,5 @@
 @use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
 
 .breadcrumbs {
   display: flex;
@@ -37,7 +38,7 @@
     font-size: 12px;
     font-weight: 600;
     color: var(--primary);
-    transition: transform 0.5s ease;
+    transition: transform $effect-duration ease;
 
     &--home:hover {
       transform: scale(1.1);

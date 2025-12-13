@@ -1,4 +1,5 @@
 @use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
 
 .dropdown {
   display: flex;
@@ -68,7 +69,7 @@
     cursor: pointer;
 
     background-color: var(--main);
-     transition: transform 0.5s ease;
+     transition: transform $effect-duration ease;
 
     &:hover {
       transform: scale(1.05);

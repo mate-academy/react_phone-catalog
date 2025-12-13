@@ -1,3 +1,6 @@
+@use '../../../styles/utils/variables' as *;
+
+
 .pagination {
   display: flex;
   gap: 8px;
@@ -19,8 +22,7 @@
     margin-right: 8px;
 
     transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform $effect-duration ease;
 
   &:hover {
     transform: scale(1.05);

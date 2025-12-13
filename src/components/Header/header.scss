@@ -1,4 +1,5 @@
 @use '../../styles/utils/mixins' as *;
+@use '../../styles/utils/variables' as *;
 
 .header {
   box-sizing: border-box;
@@ -9,7 +10,7 @@
   position: sticky;
   top: 0;
 
-  transition: all 0.3s ease;
+  transition: transform $effect-duration ease;
 
   @include on-desktop {
     height: 64px;
@@ -53,7 +54,7 @@
   align-items: center;
   box-shadow: -1px 0 0 0 var(--border);
 
-  transition: all 0.3s ease;
+  transition: transform $effect-duration ease;
 
   position: relative;
 
@@ -70,7 +71,7 @@
     width: 100%;
     height: 2px;
     background-color: var(--border);
-    transition: background-color 0.5s ease;
+    transition: transform $effect-duration ease;
     border-radius: 1px;
   }
 
