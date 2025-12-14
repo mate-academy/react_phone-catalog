@@ -3,6 +3,12 @@
 .favourites {
   margin: 0 1.6rem;
 
+  @include for-desktops {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 3.2rem;
+  }
+
   &__counter {
     font-family: Mont, sans-serif;
     font-weight: 600;
@@ -24,7 +30,7 @@
     }
 
     @include for-desktops {
-      grid-template-columns: repeat(auto-fill, minmax(27.2rem, 1fr));;
+      grid-template-columns: repeat(auto-fill, minmax(27.2rem, 1fr));
     }
   }
 
