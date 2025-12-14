@@ -24,7 +24,7 @@ export const FavoritesProvider: React.FC<Props> = ({ children }) => {
       favorites,
       setFavorites,
     }),
-    [favorites],
+    [favorites, setFavorites],
   );
 
   return (

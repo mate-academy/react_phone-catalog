@@ -26,7 +26,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
       cartProducts,
       setCartProducts,
     }),
-    [cartProducts],
+    [cartProducts, setCartProducts],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
