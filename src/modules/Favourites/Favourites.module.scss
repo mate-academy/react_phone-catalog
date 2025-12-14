@@ -22,6 +22,10 @@
       grid-template-columns: repeat(auto-fill, minmax(22.9rem, 1fr));
       gap: 1.6rem;
     }
+
+    @include for-desktops {
+      grid-template-columns: repeat(auto-fill, minmax(27.2rem, 1fr));;
+    }
   }
 
   h1 {
@@ -44,9 +48,7 @@
 }
 
 .emptyFav {
-  font-family: Mont, sans-serif;
   font-weight: 800;
-  font-style: Bold;
   font-size: 2.2rem;
   line-height: 140%;
 
