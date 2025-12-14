@@ -12,6 +12,10 @@
     padding: 3.1rem;
   }
 
+  @include for-desktops {
+    margin-bottom: 1.6rem;
+  }
+
   &__firstRow {
     display: flex;
     gap: 1.6rem;

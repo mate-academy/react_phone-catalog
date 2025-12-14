@@ -17,6 +17,23 @@
     gap: 1.6rem;
 
     padding: 3.2rem 0;
+
+    @include for-desktops {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas:
+      "item checkout";
+
+      align-items: start;
+
+      padding: 3.2rem 0 1.6rem;
+    }
+  }
+
+  &__list {
+    @include for-desktops {
+      grid-area: item;
+    }
   }
 
   &__emptyCart {

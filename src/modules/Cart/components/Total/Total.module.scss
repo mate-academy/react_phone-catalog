@@ -9,6 +9,10 @@
   padding: 2.4rem;
   border: 0.1rem solid rgba(226, 230, 233, 1);
 
+  @include for-desktops {
+    grid-area: checkout;
+  }
+
   &__price {
     font-family: Mont, sans-serif;
     font-weight: 800;

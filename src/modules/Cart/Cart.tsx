@@ -26,9 +26,11 @@ export const Cart: React.FC<Props> = ({ items }) => {
       <div className={scss.cart__itemWrapper}>
         {items.length > 0 ? (
           <>
-            {items.map(item => (
-              <CartItem key={item.id} item={item} />
-            ))}
+            <div className={scss.cart__itemList}>
+              {items.map(item => (
+                <CartItem key={item.id} item={item} />
+              ))}
+            </div>
             <Total
               totalItems={totalItems}
               totalPrice={totalPrice}
