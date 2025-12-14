@@ -1,0 +1,71 @@
+@import '../../../Utills/variables';
+
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+
+
+}
+
+
+.button{
+  background-color: $gray_primary;
+  width: 100%;
+  color: #FFFF;
+  transition: all 0.3s ease; ;
+
+}
+
+.button__added{
+  width: 100%;
+  background-color: #FFFF;
+  border: 1px solid $gray_elements;
+  color: #27AE60;
+
+
+}
+
+
+.button__heart {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: border 0.3s ease; ;
+
+
+  &:hover{
+    border: 1px solid $gray_primary;
+  }
+
+}
+
+
+.heart{
+  height: 16px;
+  width: 16px;
+  background-image: url('img/imagess/Vector(Stroke).png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+
+
+}
+
+
+.heart__active{
+  height: 16px;
+  width: 16px;
+  background-image: url('img/imagess/Favourites Filled(Heart Like).png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}

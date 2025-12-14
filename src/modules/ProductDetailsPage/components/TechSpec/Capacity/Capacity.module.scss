@@ -1,0 +1,45 @@
+
+@import '../../../../shared/Utills/variables';
+
+.capacity{
+  border-bottom: 2px solid $gray_elements;
+
+
+
+  & > p {
+    margin: 0;
+    color: $gray_secondary;
+    margin-bottom: 8px;
+  }
+}
+
+
+.container{
+  margin-bottom: 24px;
+  display: flex;
+  gap: 8px;
+
+
+}
+
+
+.button{
+  box-sizing: border-box;
+    font-family: MontRegular,sans-serif;
+    padding: 3px 7px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $gray_primary;
+    border: 2px solid $gray;
+    cursor: pointer;
+}
+
+
+
+.button__active{
+  background-color: $gray_primary;
+  color:white;
+  border: none;
+}

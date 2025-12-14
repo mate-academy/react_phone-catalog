@@ -1,0 +1,115 @@
+@import '../../Utills/variables';
+
+
+
+
+.product__card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $gray_elements;
+  gap: 20px;
+  transition: transform 0.3s ease;
+  padding: 16px;
+  text-decoration: none;
+
+  @media(min-width: $mobile_width) {
+    padding: 32px;
+  }
+
+
+
+
+}
+
+
+.img__container {
+  width: 196px;
+  height: 208px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+
+  &:hover{
+    transform: scale(1.1);
+  }
+}
+
+.img {
+ max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+
+
+}
+
+
+.price__container{
+  display: flex;
+  width: 100%;
+  text-align: left;
+  gap: 5px;
+
+
+
+}
+
+
+.discount{
+  margin: 0;
+  color: $gray_primary;
+}
+
+.regular__price{
+  margin: 0;
+  font-family: MontRegular,sans-serif;
+  color: $gray_secondary;
+   display: inline-block;
+   text-decoration: line-through;
+
+}
+
+
+
+
+
+
+.product__name{
+  text-decoration: none;
+  color: $gray_primary;
+}
+
+.info__container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 2px solid $gray_elements;
+  padding-top: 20px;
+
+}
+
+
+.item{
+  display: flex;
+  justify-content: space-between;
+
+
+  :nth-child(1){
+    color: $gray_secondary;
+    font-weight: 700;
+    font-size: 12px;
+
+
+  }
+
+  :nth-child(2){
+    margin: 0;
+    color: $gray_primary;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}

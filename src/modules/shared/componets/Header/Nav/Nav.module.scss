@@ -1,0 +1,146 @@
+
+@import '../../../Utills/variables.scss';
+
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+
+
+  height: 100%;
+
+  width: 100%;
+
+
+
+   @media (max-width: $mobile_width) {
+    display: none;
+   }
+
+
+
+   &__links{
+    display: flex;
+    gap: 32px;
+
+
+    @media(min-width:$desctop_width) {
+      gap: 64px;
+    }
+
+   }
+
+
+
+  &__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-decoration: none;
+  color: #89939a;
+  font-family: MontBold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: #313237;
+
+
+
+  }
+
+
+  &.active{
+    color: #313237;
+  }
+
+  &.active::after {
+    width: 100%;
+    transition: width 0.3s ease;
+
+  }
+}
+}
+
+
+.container{
+  display: flex;
+
+
+
+
+
+
+
+  &__link{
+    position: relative;
+     border-left: #E2E6E9 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 64px;
+
+
+
+     @media (max-width: $mobile_width) {
+    display: none;
+   }
+
+
+
+
+
+    @media (min-width:$desctop_width) {
+    height: 64px;
+   }
+
+
+
+    &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: #313237;
+
+
+
+  }
+
+
+
+
+  &.active::after {
+    width: 100%;
+    transition: width 0.3s ease;
+
+  }
+
+  }
+
+
+}
+
+
+.likesImg{
+  height: 14px;
+  width: 16px;
+}
+
+.shopingBag{
+  height: 14px;
+  width: 16px;
+}

@@ -1,0 +1,50 @@
+@import '../../../shared/Utills/variables';
+
+
+
+
+.techspec{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.price{
+  display: flex;
+  gap: 5px;
+}
+
+
+
+.price h3:nth-of-type(2){
+  font-family:MontRegular,sans-serif;
+  color: $gray_secondary;
+   display: inline-block;
+   text-decoration: line-through;
+}
+
+
+.haracteristiki{
+  margin-top: 32px;
+}
+
+.haracteristiki > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+
+.haracteristiki > div > p {
+  margin: 0;
+  font-size: 12px;
+  color: $gray_primary;
+}
+
+
+.haracteristiki > div > span {
+  color: $gray_secondary;
+
+}

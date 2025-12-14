@@ -1,0 +1,28 @@
+@import '../shared/Utills/variables';
+
+.phones__page{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 16px;
+  padding-bottom: 64px;
+  gap: 24px;
+
+
+
+
+
+
+  
+}
+
+
+.info{
+
+
+
+
+  & > p {
+    color: $gray_secondary;
+  }
+}

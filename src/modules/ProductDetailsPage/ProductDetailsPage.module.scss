@@ -1,0 +1,101 @@
+@import '../shared/Utills/variables';
+
+
+
+.product__details{
+
+
+  & > h2 {
+    padding-bottom: 32px;
+
+
+    @media(min-width: $mobile_width) {
+      padding-bottom: 40px;
+    }
+  }
+
+
+}
+
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+
+
+  @media(min-width:$mobile_width) {
+    flex-direction: row;
+    justify-content: space-between;
+
+  }
+
+}
+
+
+
+.tech__spec{
+  width: 100%;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+
+
+    & > :nth-child(1) {
+    color: $gray_secondary;
+  }
+
+
+  }
+
+
+
+  & > h3 {
+   margin-bottom: 32px;
+   padding-bottom: 16px;
+    border-bottom: 2px solid $gray_elements;
+  }
+
+
+
+
+
+}
+
+
+.div{
+  @media(min-width: $desctop_width) {
+    display: flex;
+    justify-content: space-between;
+    gap: 64px;
+
+  }
+}
+
+
+.about{
+  width: 100%;
+
+
+ & > h3 {
+  margin-bottom: 32px;
+   padding-bottom: 16px;
+    border-bottom: 2px solid $gray_elements;
+ }
+
+
+ & > p {
+  color: $gray_secondary;
+ }
+}
+
+
+
+
+
+.cell__container{
+  display: flex;
+  gap: 2px;
+}

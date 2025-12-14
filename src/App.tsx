@@ -1,17 +1,27 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.scss';
-import { Layout } from './components/Layout/Layout';
-import { HomePage } from './components/pages/HomePage/HomePage';
+import { Layout } from './modules/shared/componets/Layout/Layout';
+import { HomePage } from './modules/HomePage/HomePage';
+import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
+import { ProductsPages } from './modules/ProductsPage/ProductsPages';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
+
         <Route path="home" element={<Navigate to="/" replace />} />
 
-        <Route path="phones" element={<p>Phones</p>} />
-        <Route path="favorites" element={<p>Favorites</p>} />
+        <Route
+          path=":category/product/:productId"
+          element={<ProductDetailsPage />}
+        />
+
+        <Route path=":category" element={<ProductsPages />} />
+
+        <Route path="favorites" element={<FavoritesPage />} />
         <Route path="cart" element={<p>Shoping Bag</p>} />
       </Route>
     </Routes>
