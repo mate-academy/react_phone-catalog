@@ -1,5 +1,5 @@
-@use './variables.scss' as *;   // Sass vars & mixins
-@import './fonts.scss';     // loads the 'Mont' family
+@use './variables.scss' as *; // Sass vars & mixins
+@import './fonts.scss'; // loads the 'Mont' family
 @import './normilize.scss';
 @import './typography.scss';
 
@@ -11,5 +11,4 @@ body {
   margin: 0;
   padding: 0;
 }
-
 

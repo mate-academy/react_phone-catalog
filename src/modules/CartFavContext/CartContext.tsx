@@ -21,7 +21,7 @@ type CartContextType = {
   isFavorite: (productId: string) => boolean;
   reduceQuantity: (productId: string) => void;
   increaseQuantity: (productId: string) => void;
-
+  clearCart: () => void;
   totalCount: number;
   totalFavoritesCount: number;
 };
@@ -107,6 +107,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     setCart(prev => prev.filter(item => item.itemId !== itemId));
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const addToFavorites = (productId: string) => {
     setFavorites(prev => [...prev, productId]);
   };
@@ -131,6 +135,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         totalFavoritesCount,
         addToCart,
         removeFromCart,
+        clearCart,
         addToFavorites,
         removeFromFavorites,
         isInCart,

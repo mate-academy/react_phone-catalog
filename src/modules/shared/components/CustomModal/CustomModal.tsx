@@ -3,15 +3,18 @@ import styles from './CustomModal.module.scss';
 
 type CustomModalProps = {
   onClose?: () => void;
+  onCheckout?: () => void;
+  modalBody?: React.ReactNode;
 };
 
-export const CustomModal: React.FC<CustomModalProps> = ({ onClose }) => {
+export const CustomModal: React.FC<CustomModalProps> = ({
+  onClose,
+  onCheckout,
+  modalBody,
+}) => {
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div
-        className={styles.customModal}
-        onClick={e => e.stopPropagation()}
-      >
+      <div className={styles.customModal} onClick={e => e.stopPropagation()}>
         <div className={styles.customModal__header}>
           <h2 className={styles.customModal__title}>Checkout</h2>
           <button
@@ -23,12 +26,13 @@ export const CustomModal: React.FC<CustomModalProps> = ({ onClose }) => {
           </button>
         </div>
         <div className={styles.customModal__content}>
-          <p className={styles.customModal__message}>
-            We are not ready to checkout yet, but we are working on it!
-          </p>
-          <p className={styles.customModal__subMessage}>
-            Thank you for your patience.
-          </p>
+          {modalBody}
+          <button
+            className={styles.customModal__actionButton}
+            onClick={onCheckout}
+          >
+            Checkout
+          </button>
         </div>
       </div>
     </div>

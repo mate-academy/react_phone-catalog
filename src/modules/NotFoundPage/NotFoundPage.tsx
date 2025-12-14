@@ -9,6 +9,7 @@ import { getProducts } from '@/api/api';
 const NotFoundPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const recentlyViewedItems = recentlyViewedService.get();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getProducts()
@@ -21,6 +22,9 @@ const NotFoundPage: React.FC = () => {
       })
       .catch(error => {
         console.error('Error fetching products:', error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -35,10 +39,16 @@ const NotFoundPage: React.FC = () => {
         <Link to="/" className={styles.notFoundPage__homeLink}>
           <button>To Home</button>
         </Link>
-        <SliderComponent
-          products={products}
-          title="Recently Viewed"
-        />
+
+        <div className={styles.notFoundPage__sliderContainer}>
+          {loading ? (
+            <div className={styles.skeletonLoader}></div>
+          ) : (
+            products.length > 0 && (
+              <SliderComponent products={products} title="Recently Viewed" />
+            )
+          )}
+        </div>
       </div>
     </section>
   );

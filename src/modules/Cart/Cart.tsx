@@ -7,17 +7,22 @@ import { CustomModal } from '../shared/components/CustomModal/CustomModal';
 import styles from './Cart.module.scss';
 import { Product } from '@/types';
 import { getProducts } from '@/api/api';
+import { Loader } from '../shared/components/Loader';
 
 export type CartProduct = Product & { quantity: number };
 //TODO: add loader
 export const Cart: React.FC = () => {
-  const { cart, totalCount } = useCart();
+  const { cart, totalCount, clearCart } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getProducts().then(setProducts);
+    getProducts()
+      .then(setProducts)
+      .finally(() => setIsLoading(false));
   }, []);
+
   const cartProducts = useMemo(() => {
     return cart
       .map(cartItem => {
@@ -37,8 +42,16 @@ export const Cart: React.FC = () => {
     setIsModalOpen(prev => !prev);
   };
 
+  if (isLoading) {
+    return (
+      <div className={styles.cartPage__loaderWrapper}>
+        <Loader />
+      </div>
+    );
+  }
+
   return cart.length > 0 ? (
-    <div className={styles.cartPage__container}>
+    <section className={styles.cartPage__container}>
       <PageHeader
         title="Cart"
         showBreadCrumbs={false}
@@ -68,8 +81,18 @@ export const Cart: React.FC = () => {
           </button>
         </div>
       </div>
-      {isModalOpen && <CustomModal onClose={handleCheckout} />}
-    </div>
+      {isModalOpen && (
+        <CustomModal
+          onClose={handleCheckout}
+          onCheckout={clearCart}
+          modalBody={
+            <p>
+              Checkout is not implemented yet. Do you want to clear the Cart?
+            </p>
+          }
+        />
+      )}
+    </section>
   ) : (
     <div className={styles.cartPage__empty}>Your cart is empty</div>
   );
