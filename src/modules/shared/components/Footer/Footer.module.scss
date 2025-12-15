@@ -1,8 +1,9 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/constants' as *;
 
 .footer {
   grid-area: footer;
-  box-shadow: 0 -1px 0 0 rgba(226, 230, 233, 1);
+  box-shadow: 0 -1px 0 0 $border-color;
   padding: 3.2rem 1.6rem;
 
   @include for-tablets {
@@ -39,12 +40,12 @@
   }
 
   &__link {
-    font-weight: 800;
+    font-weight: $font-weight-extra-bold;
     font-size: 1.2rem;
     line-height: 1.1rem;
     letter-spacing: 0.04rem;
     text-transform: uppercase;
     text-decoration: none;
-    color: rgba(137, 147, 154, 1);
+    color: $secondary-color;
   }
 }

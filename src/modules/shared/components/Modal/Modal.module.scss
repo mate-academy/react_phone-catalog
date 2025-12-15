@@ -1,8 +1,10 @@
+@use '../../styles/constants' as *;
+
 .modal {
   position: fixed;
   inset: 0;
 
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $overlay;
 
   display: flex;
   align-items: center;
@@ -13,10 +15,10 @@
   animation: fadeIn 0.2s ease-out;
 
   &__content {
-    background: white;
+    background: $white;
     padding: 2.4rem;
     border-radius: 0.8rem;
-    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.4rem 1.2rem $shadow(0, 0, 0, 0.15);
 
     max-width: 50.0rem;
     width: 100%;
@@ -41,6 +43,6 @@
   &__closeIcon {
     width: 1.6rem;
     height: 1.6rem;
-    fill: rgba(49, 50, 55, 1);
+    fill: $primary-color;
   }
 }

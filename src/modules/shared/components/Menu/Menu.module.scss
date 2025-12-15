@@ -1,4 +1,4 @@
-@use '../../styles/_constants' as constants;
+@use '../../styles/constants' as *;
 @use '../../styles/mixins' as *;
 
 .menu {
@@ -19,7 +19,7 @@
   flex-direction: column;
   justify-content: space-between;
 
-  background-color: white;
+  background-color: $white;
 
   @include for-tablets {
     width: 100%;
@@ -85,7 +85,7 @@
   &__iconsWrapper {
     height: 6.4rem;
     display: flex;
-    border: 0.1rem solid constants.$border-color;
+    border: $border-primary;
 
     @include for-tablets {
       height: 4.8rem;
@@ -105,7 +105,7 @@
 
 
     &:not(:last-child) {
-      border-right: 0.1rem solid constants.$border-color;
+      border-right: $border-primary;
     }
 
     @include for-tablets {

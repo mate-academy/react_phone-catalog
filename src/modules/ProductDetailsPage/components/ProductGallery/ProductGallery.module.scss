@@ -1,4 +1,5 @@
 @use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/constants' as *;
 
 .productGallery {
   margin: 3.2rem 0 4.0rem;
@@ -56,7 +57,7 @@
     }
 
     &_active {
-      border: 0.1rem solid rgba(49, 50, 55, 1);
+      border: 0.1rem solid $primary-color;
     }
   }
 

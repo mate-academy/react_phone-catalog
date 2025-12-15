@@ -1,18 +1,37 @@
+@use '../shared/styles/mixins' as *;
+@use '../shared/styles/constants' as *;
+
 .notFoundPage {
-  margin: 0 1.6rem;
+  margin: $margin-horizontal-small;
+
+  @include for-tablets {
+    margin: $margin-horizontal-medium;
+  }
+
+  @include for-desktops {
+    margin: 0 3.2rem;
+  }
 
   &__title {
-    font-family: Mont, sans-serif;
-    font-weight: 800;
-    font-size: 3.2rem;
-    line-height: 4.1rem;
+    font-weight: $font-weight-extra-bold;
+    font-size: $font-size-large;
+    line-height: $line-height-large;
 
     text-align: center;
   }
 
   &__image {
     width: 100%;
-    height: 100%;
+    height: auto;
+
+    display: block;
+    margin: 0 auto;
+
+    @include for-tablets {
+      width: 50%;
+      height: auto;
+      margin: 0 auto 3.2rem;;
+    }
   }
 
   &__link {
@@ -23,15 +42,14 @@
     width: 24.0rem;
     height: 4.8rem;
 
-    background-color: rgba(49, 50, 55, 1);
+    background-color: $primary-color;
 
-    font-family: Mont, sans-serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
     text-align: center;
 
-    color: rgba(255, 255, 255, 1);
+    color: $white;
 
     margin: 0 auto 1.6rem;
   }

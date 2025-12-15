@@ -1,8 +1,10 @@
+@use '../../styles/constants' as *;
+
 .buttonFav {
   width: 4.0rem;
   height: 4.0rem;
 
-  border: 0.1rem solid rgba(180, 189, 195, 1);
+  border: 0.1rem solid $tertiary-color;
 
   display: flex;
   justify-content: center;

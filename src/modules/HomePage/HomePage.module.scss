@@ -1,26 +1,27 @@
 @use '../shared/styles/mixins' as *;
+@use '../shared/styles/constants' as *;
 
 .home {
   overflow-x: hidden;
 
-  margin: 0 1.6rem;
+  margin: $margin-horizontal-small;
 
   @include for-tablets {
-    margin: 0 2.4rem;
+    margin: $margin-horizontal-medium;
   }
 
   @include for-desktops {
-    max-width: 120rem;
+    max-width: $max-width;
     margin: 0 auto;
-    padding: 0 3.2rem;
+    padding: $padding-horizontal-large;
   }
 }
 
 h1 {
-  padding: 2.4rem 0;
+  padding: $padding-vertical-medium;
 
   @include for-tablets {
-    padding: 3.2rem 0;
+    padding: $padding-vertical-large;
   }
 
   @include for-desktops {

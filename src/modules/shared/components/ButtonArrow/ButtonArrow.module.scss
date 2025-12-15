@@ -1,5 +1,7 @@
+@use '../../styles/constants' as *;
+
 .button {
-  border: 0.2rem solid rgba(180, 189, 195, 1);
+  border: 0.2rem solid $tertiary-color;
 
   height: 3.2rem;
   width: 3.2rem;
@@ -11,6 +13,6 @@
   &__icon {
     height: 1.6rem;
     width: 1.6rem;
-    fill: rgba(49, 50, 55, 1);
+    fill: $primary-color;
   }
 }

@@ -1,4 +1,4 @@
-@use './../../../shared/styles/_constants' as constants;
+@use './../../../shared/styles/constants' as *;
 @use '../../styles/mixins' as *;
 
 .slider {
@@ -31,34 +31,34 @@
     margin-top: 2.4rem;
 
     display: flex;
-    gap: constants.$mobile-product-card-gap;
+    gap: $mobile-product-card-gap;
 
     transition: transform 0.3s ease;
     will-change: transform;
 
-    transform: translateX(calc(var(--index) * (constants.$mobile-product-card-gap + constants.$mobile-product-card-width)));
+    transform: translateX(calc(var(--index) * ($mobile-product-card-gap + $mobile-product-card-width)));
 
     @include for-tablets {
-      transform: translateX(calc(var(--index) * (constants.$mobile-product-card-gap + constants.$tablet-product-card-width)));
+      transform: translateX(calc(var(--index) * ($mobile-product-card-gap + $tablet-product-card-width)));
     }
 
     @include for-desktops {
-      width: calc(constants.$desktop-product-card-width * 4 + constants.$mobile-product-card-gap * 3);
+      width: calc($desktop-product-card-width * 4 + $mobile-product-card-gap * 3);
 
-      transform: translateX(calc(var(--index) * (constants.$mobile-product-card-gap + constants.$desktop-product-card-width)));
+      transform: translateX(calc(var(--index) * ($mobile-product-card-gap + $desktop-product-card-width)));
     }
 
     &__container {
-      width: constants.$mobile-product-card-width;
+      width: $mobile-product-card-width;
 
       flex-shrink: 0;
 
       @include for-tablets {
-        width: constants.$tablet-product-card-width;
+        width: $tablet-product-card-width;
       }
 
       @include for-desktops {
-        width: constants.$desktop-product-card-width;
+        width: $desktop-product-card-width;
       }
     }
   }

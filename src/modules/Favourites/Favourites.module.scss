@@ -1,21 +1,22 @@
 @use '../shared/styles/mixins' as *;
+@use '../shared/styles/constants' as *;
 
 .favourites {
-  margin: 0 1.6rem;
+  margin: $margin-horizontal-small;
 
   @include for-desktops {
-    max-width: 120rem;
+    max-width: $max-width;
     margin: 0 auto;
-    padding: 0 3.2rem;
+    padding: $padding-horizontal-large;
   }
 
   &__counter {
-    font-family: Mont, sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-family: $font-family-primary;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
 
-    color: rgba(137, 147, 154, 1);
+    color: $secondary-color;
 
     margin-top: 0.8rem;
   }
@@ -35,18 +36,17 @@
   }
 
   h1 {
-    font-family: Mont, sans-serif;
-    font-weight: 800;
-    font-style: Bold;
-    font-size: 3.2rem;
-    line-height: 4.1rem;
+    font-family: $font-family-primary;
+    font-weight: $font-weight-extra-bold;
+    font-size: $font-size-large;
+    line-height: $line-height-large;
     letter-spacing: -1%;
 
     padding: 2.4rem 0 0.8rem;
 
     @include for-tablets {
-      font-size: 4.8rem;
-      line-height: 5.6rem;
+      font-size: $font-size-extra-large;
+      line-height: $line-height-extra-large;
 
       padding: 4.0rem 0 0.8rem;
     }
@@ -54,11 +54,11 @@
 }
 
 .emptyFav {
-  font-weight: 800;
-  font-size: 2.2rem;
-  line-height: 140%;
+  font-weight: $font-weight-extra-bold;
+  font-size: $font-size-medium;
+  line-height: $line-height-medium;
 
-  color: rgba(49, 50, 55, 1);
+  color: $primary-color;
 
   margin-top: 0.8rem;
 }

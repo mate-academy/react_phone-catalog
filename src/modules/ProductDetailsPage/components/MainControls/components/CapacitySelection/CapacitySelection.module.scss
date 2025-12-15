@@ -1,4 +1,5 @@
 @use '../../../../../shared/styles/mixins' as *;
+@use '../../../../../shared/styles/constants' as *;
 
 .capacitySelection {
   margin: 2.4rem 0;
@@ -8,12 +9,11 @@
   }
 
   &__label {
-    font-family: Mont, sans-serif;
-    font-weight: 600;
+    font-weight: $font-weight-medium;
     font-size: 1.2rem;
     line-height: 100%;
 
-    color: rgba(137, 147, 154, 1);
+    color: $secondary-color;
   }
 
   &__capacityOptions {
@@ -39,22 +39,21 @@
     align-items: center;
 
     box-sizing: border-box;
-    border: 0.1rem solid rgba(180, 189, 195, 1);
+    border: 0.1rem solid $tertiary-color;
 
-    font-family: Mont, sans-serif;
     font-weight: 500;
-    font-size: 1.4rem;
+    font-size: $font-size-small;
 
     transition: box-shadow 0.2s ease-in-out;
   }
 
   &__input:checked + .capacitySelection__option {
-    border-color: rgba(49, 50, 55, 1);
-    background-color: rgba(49, 50, 55, 1);
-    color: rgba(255, 255, 255, 1);
+    border-color: $primary-color;
+    background-color: $primary-color;
+    color: $white;
   }
 
     &__input:not(:checked) + .capacitySelection__option:hover {
-    box-shadow: 0 0 0 0.1rem rgba(180, 189, 195, 1);
+    box-shadow: 0 0 0 0.1rem $tertiary-color;
   }
 }

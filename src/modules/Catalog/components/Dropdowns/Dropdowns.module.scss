@@ -1,4 +1,5 @@
 @use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/constants' as *;
 
 .dropdown {
   width: 13.6rem;
@@ -15,9 +16,9 @@
   }
 
   &__label {
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     font-size: 1.2rem;
-    color: rgba(137, 147, 154, 1);
+    color: $secondary-color;
   }
 
   &__trigger {
@@ -26,12 +27,11 @@
     align-items: center;
     height: 4.0rem;
 
-    border: 1px solid rgba(180, 189, 195, 1);
+    border: 0.1rem solid rgba(180, 189, 195, 1);
 
-    font-family: Mont, sans-serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
   }
 
   &__arrow {
@@ -39,12 +39,12 @@
     width: 1.6rem;
 
     transform: rotate(90deg);
-    fill: rgba(180, 189, 195, 1);
+    fill: $tertiary-color;
   }
 
   &__menu {
-    border: 0.1rem solid rgba(226, 230, 233, 1);
-    box-shadow: 0 0.2rem 1.5rem 0 rgba(0, 0, 0, 0.05);
+    border: $border-primary;
+    box-shadow: 0 0.2rem 1.5rem 0 $shadow;
     background-color: white;
 
     position: absolute;
@@ -61,16 +61,15 @@
     justify-content: center;
     align-items: center;
 
-    font-family: Mont, sans-serif;
     font-weight: 500;
-    font-size: 1.4rem;
-    line-height: 2.1rem;;
-    color: rgba(137, 147, 154, 1);
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    color: $secondary-color;
 
     transition: color 0.5s ease;
 
     &:hover {
-      color: rgba(49, 50, 55, 1);
+      color: $primary-color;
     }
 
     &__active {

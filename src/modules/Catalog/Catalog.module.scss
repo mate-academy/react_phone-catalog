@@ -1,16 +1,17 @@
 @use '../shared/styles/mixins' as *;
+@use '../shared/styles/constants' as *;
 
 .catalog {
-  margin: 0 1.6rem;
+  margin: $margin-horizontal-small;
 
   @include for-tablets {
-    margin: 0 2.4rem;
+    margin: $margin-horizontal-medium;
   }
 
   @include for-desktops {
-    max-width: 120rem;
+    max-width: $max-width;
     margin: 0 auto;
-    padding: 0 3.2rem;
+    padding: $padding-horizontal-large;
   }
 
   &__title {
@@ -23,19 +24,19 @@
   }
 
   &__counter {
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
     letter-spacing: 0%;
-    color: rgba(137, 147, 154, 1);
+    color: $secondary-color;
   }
 
   &__empty {
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
     letter-spacing: 0%;
-    color: rgba(49, 50, 55, 1);
+    color: $primary-color;
 
-    margin: 1.6rem 0;
+    margin: $margin-vertical-small;
   }
 }

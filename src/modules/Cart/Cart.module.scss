@@ -1,12 +1,13 @@
 @use '../shared/styles/mixins' as *;
+@use '../shared/styles/constants' as *;
 
 .cart {
-  margin: 0 1.6rem;
+  margin: $margin-horizontal-small;
 
   @include for-desktops {
-    max-width: 120rem;
+    max-width: $max-width;
     margin: 0 auto;
-    padding: 0 3.2rem;
+    padding: $padding-horizontal-large;
   }
 
   &__title {
@@ -22,7 +23,7 @@
     flex-direction: column;
     gap: 1.6rem;
 
-    padding: 3.2rem 0;
+    padding: $padding-vertical-large;
 
     @include for-desktops {
       display: grid;
@@ -44,13 +45,12 @@
   }
 
   &__emptyCart {
-    font-family: Mont, sans-serif;
-    font-weight: 800;
-    font-style: Bold;
-    font-size: 2.2rem;
-    line-height: 140%;
+    font-family: $font-family-primary;
+    font-weight: $font-weight-extra-bold;
+    font-size: $font-size-medium;
+    line-height: $line-height-medium;
 
-    color: rgba(49, 50, 55, 1);
+    color: $primary-color;
 
     margin-top: 0.8rem;
   }

@@ -1,20 +1,22 @@
+@use '../../styles/constants' as *;
+
 .buttonCart {
   height: 4rem;
 
-  font-weight: 700;
-  font-size: 1.4rem;
-  line-height: 2.1rem;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-small;
+  line-height: $line-height-small;
   letter-spacing: 0%;
 
-  color: rgba(255, 255, 255, 1);
-  background-color: rgba(49, 50, 55, 1);
+  color: $white;
+  background-color: $primary-color;
 
   transition: box-shadow 250ms ease;
 
   &[aria-pressed="true"] {
     color: rgba(39, 174, 96, 1);
-    background-color: rgba(255, 255, 255, 1);
-    border: 0.1rem solid rgba(226, 230, 233, 1)
+    background-color: $white;
+    border: $border-primary;
   }
 
   &:hover{

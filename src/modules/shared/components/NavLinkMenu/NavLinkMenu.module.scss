@@ -1,4 +1,4 @@
-@use '../../styles/_constants' as constants;
+@use '../../styles/constants' as *;
 @use '../../styles/mixins' as *;
 
 a {
@@ -6,17 +6,17 @@ a {
 }
 
 .link {
-  font-weight: 800;
+  font-weight: $font-weight-extra-bold;
   font-size: 1.2rem;
   line-height: 1.1rem;
   letter-spacing: 0.04rem;
   text-transform: uppercase;
   padding-bottom: 0.8rem;
-  color: constants.$secondary-color;
+  color: $secondary-color;
 
   &_active {
-    color: constants.$primary-color;
-    border-bottom: 0.3rem solid constants.$primary-color;
+    color: $primary-color;
+    border-bottom: 0.3rem solid $primary-color;
   }
 
   @include for-tablets {
@@ -41,7 +41,7 @@ a {
   }
 
   &:not(:last-child) {
-    border-right: 0.1rem solid constants.$border-color;
+    border-right: $border-primary;
   }
 
   &__icon {
@@ -67,7 +67,7 @@ a {
     background: #ef4444;
     color: #fff;
 
-    font-weight: 600;
+    font-weight: $font-weight-medium;
     font-size: 0.9rem;
     line-height: 1;
     white-space: nowrap;

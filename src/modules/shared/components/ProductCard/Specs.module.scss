@@ -1,3 +1,5 @@
+@use '../../styles/constants' as *;
+
 .specs {
   display: flex;
   flex-direction: column;
@@ -14,16 +16,16 @@
   }
 
   &__text {
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     font-size: 1.2rem;
     line-height: 100%;
   }
 
   &__type {
-    color: rgba(137, 147, 154, 1);
+    color: $secondary-color;
   }
 
   &__value {
-    color: rgba(49, 50, 55, 1);
+    color: $primary-color;
   }
 }

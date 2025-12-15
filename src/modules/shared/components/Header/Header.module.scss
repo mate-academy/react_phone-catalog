@@ -1,4 +1,5 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/constants' as *;
 
 .header {
   position: sticky;
@@ -8,7 +9,7 @@
   grid-area: header;
 
   background-color: white;
-  border: 0.1rem solid rgba(226, 230, 233, 1);
+  border: $border-primary;
 
   box-sizing: border-box;
 

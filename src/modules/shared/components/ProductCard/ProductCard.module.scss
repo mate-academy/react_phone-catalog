@@ -1,10 +1,12 @@
+@use '../../styles/constants' as *;
+
 .productCard {
   width: 100%;
   height: 43.9rem;
 
-  padding: 0 3.2rem;
+  padding: $padding-horizontal-large;
 
-  border: 0.1rem solid rgba(226, 230, 233, 1);
+  border: $border-primary;
 
   &__image {
     width: 14.8rem;
@@ -18,11 +20,11 @@
   }
 
   &__name {
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
     letter-spacing: 0%;
-    color: rgba(0, 0, 0, 1);
+    color: $black;
 
     display: inline-block;
     align-content: end;
@@ -33,7 +35,7 @@
 
   &__divider {
     height: 0;
-    border: 0.1rem solid rgba(226, 230, 233, 1);
+    border: $border-primary;
 
     margin-top: 0.8rem;
   }

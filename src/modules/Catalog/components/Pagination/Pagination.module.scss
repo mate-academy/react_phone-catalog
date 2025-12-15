@@ -1,4 +1,5 @@
 @use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/constants' as *;
 
 .pagination {
   display: flex;
@@ -16,7 +17,7 @@
 
     gap: 0.8rem;
 
-    margin: 0 1.6rem;
+    margin: $margin-horizontal-small;
   }
 
   &__page {
@@ -27,16 +28,15 @@
     height: 3.2rem;
     width: 3.2rem;
 
-    border: 0.1rem solid rgba(226, 230, 233, 1);
+    border: $border-primary;
 
-    font-family: Mont, sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
 
     &_active {
-      background-color: rgba(49, 50, 55, 1);
-      color: rgba(255, 255, 255, 1);
+      background-color: $primary-color;
+      color: $white;
     }
   }
 }

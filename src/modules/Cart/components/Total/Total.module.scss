@@ -1,4 +1,5 @@
 @use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/constants' as *;
 
 .total {
   display: flex;
@@ -7,44 +8,41 @@
   flex-direction: column;
 
   padding: 2.4rem;
-  border: 0.1rem solid rgba(226, 230, 233, 1);
+  border: $border-primary;
 
   @include for-desktops {
     grid-area: checkout;
   }
 
   &__price {
-    font-family: Mont, sans-serif;
-    font-weight: 800;
-    font-size: 3.2rem;
-    line-height: 4.1rem;
+    font-weight: $font-weight-extra-bold;
+    font-size: $font-size-large;
+    line-height: $line-height-large;
     letter-spacing: -1%;
     text-align: center;
   }
 
   &__amount {
-    font-family: Mont, sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
     text-align: center;
 
-    color: rgba(137, 147, 154, 1);
+    color: $secondary-color;
   }
 
   &__checkout {
     width: 24.0rem;
     height: 4.8rem;
 
-    background-color: rgba(49, 50, 55, 1);
+    background-color: $primary-color;
 
-    font-family: Mont, sans-serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
     text-align: center;
 
-    color: rgba(255, 255, 255, 1);
+    color: $white;
 
     @include for-tablets {
       width: 100%;
@@ -52,7 +50,7 @@
   }
 
   &__line {
-    margin: 1.6rem 0;
+    margin: $margin-vertical-small;
   }
 }
 
@@ -60,42 +58,41 @@
   text-align: center;
 
   &__title {
-    font-family: Mont, sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
 
-    color: rgba(49, 50, 55, 1);
+    color: $primary-color;
   }
 
   &__text {
     margin-bottom: 2.4rem;
-    color: rgba(137, 147, 154, 1);
+    color: $secondary-color;
   }
 
   &__actions {
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: 1.6rem;
   }
 
   &__button {
-    height: 40px;
-    padding: 0 24px;
-    border: 1px solid #b4bdc3;
+    height: 4.0rem;
+    padding: 0 2.4rem;
+    border: $border-primary;
     background: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
+    font-weight: $font-weight-medium;
+    cursor: $cursor-pointer;
+    transition: $transition-default;
 
     &:hover {
       background-color: #fafbfc;
     }
 
     &_danger {
-      background-color: rgba(49, 50, 55, 1);
+      background-color: $primary-color;
       color: white;
-      border-color: rgba(49, 50, 55, 1);
+      border-color: $primary-color;
 
       &:hover {
         background-color: #000;

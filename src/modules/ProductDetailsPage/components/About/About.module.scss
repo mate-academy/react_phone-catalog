@@ -1,4 +1,5 @@
 @use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/constants' as *;
 
 .about {
   display: flex;
@@ -16,8 +17,7 @@
   }
 
   &__mainTitle {
-    font-family: Mont, sans-serif;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     font-size: 2.0rem;
     line-height: 100%;
 
@@ -25,18 +25,17 @@
     border-bottom: 0.2rem solid rgba(226, 230, 233, 1);
 
     @include for-tablets {
-      font-size: 2.2rem;
-      font-weight: 800;
+      font-size: $font-size-medium;
+      font-weight: $font-weight-extra-bold;
     }
   }
 
   &__title {
-    font-family: Mont, sans-serif;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     font-size: 1.6rem;
     line-height: 100%;
 
-    color: rgba(49, 50, 55, 1);
+    color: $primary-color;
 
     margin: 3.2rem 0 1.6rem;
 
@@ -46,11 +45,10 @@
   }
 
   &__text {
-    font-family: Mont, sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-small;
+    line-height: $line-height-small;
 
-    color: rgba(137, 147, 154, 1);
+    color: $secondary-color;
   }
 }

@@ -1,4 +1,5 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/constants' as *;
 
 .backToTheTop {
   margin-top: 3.2rem;
@@ -8,9 +9,9 @@
   }
 
   &__text {
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     font-size: 1.2rem;
-    color: rgba(137, 147, 154, 1);
+    color: $secondary-color;
   }
 
   &__button {
@@ -31,14 +32,14 @@
     justify-content: center;
     align-items: center;
 
-    border: 0.1rem solid rgba(180, 189, 195, 1);
+    border: 0.1rem solid $tertiary-color;
   }
 
   &__icon {
     height: 1.6rem;
     width: 1.6rem;
 
-    color: rgba(49, 50, 55, 1);
+    color: $primary-color;
 
     transform: rotate(270deg);
   }
