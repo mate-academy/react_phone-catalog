@@ -3,7 +3,7 @@
 **Live demo:**  
 👉 https://github.com/anastasiiaboreiko/react_phone-catalog
 
-This is a learning project built with **React** and **TypeScript**.  
+This is a learning project built with **React** and **TypeScript**.
 It demonstrates component structure, routing, state management, data filtering, and a production-ready deployment setup using GitHub Pages.
 
 ---
