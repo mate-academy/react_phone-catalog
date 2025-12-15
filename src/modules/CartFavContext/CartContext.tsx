@@ -72,11 +72,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     setCart(prev => {
       const existing = prev.find(item => item.itemId === itemId);
       if (existing) {
-        return prev.map(item =>
-          item.itemId === itemId
-            ? { ...item, quantity: item.quantity + 1 }
-            : item,
-        );
+        return prev.map(item => item);
       }
       return [...prev, { itemId, quantity: 1 }];
     });

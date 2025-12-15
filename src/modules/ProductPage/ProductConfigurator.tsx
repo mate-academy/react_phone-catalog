@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import styles from './ProductPage.module.scss';
 import classNames from 'classnames';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { ProductDetails } from '@/types/ProductDetails';
 import { Product } from '@/types/Product';
 import { useCart } from '@/modules/CartFavContext/CartContext';
 import { COLOR_MAP } from '../shared/components/utils/constants/constants';
+import { Button } from '@/components/ui/button/Button';
 
 type ProductConfiguratorProps = {
   product?: ProductDetails;
@@ -34,7 +34,6 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
     addToFavorites,
     removeFromFavorites,
     addToCart,
-
   } = useCart();
 
   if (!product) {
@@ -77,7 +76,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
 
   // --- FAV + CART STATES FROM CONTEXT ---
   const fav = isFavorite(foundProductFromProducts?.itemId || '');
-  const inCart = isInCart(foundProductFromProducts?.id || 0);
+  const inCart = isInCart(foundProductFromProducts?.itemId || '');
 
   const handleCartClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -87,8 +86,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
       return;
     }
 
-      addToCart(foundProductFromProducts);
-
+    addToCart(foundProductFromProducts?.itemId || '');
   };
 
   const handleFav = (e: React.MouseEvent) => {
@@ -175,14 +173,21 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
 
         {/* ACTION BUTTONS */}
         <div className={styles.productConfigurator__buttonContainer}>
-          <button
+          <Button
+            onClick={handleCartClick}
+            fullWidth
+            variant={inCart ? 'outline' : 'primary'}
+          >
+            {inCart ? 'Added to Cart' : 'Add to Cart'}
+          </Button>
+          {/* <button
             className={classNames(styles.productConfigurator__cartButton, {
               [styles['productConfigurator__cartButton--added']]: inCart,
             })}
             onClick={handleCartClick}
           >
             {inCart ? 'Added to cart' : 'Add to cart'}
-          </button>
+          </button> */}
           <button
             className={styles.productConfigurator__favoriteButton}
             onClick={handleFav}

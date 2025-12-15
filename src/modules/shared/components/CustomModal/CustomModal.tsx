@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './CustomModal.module.scss';
+import { Button } from '@/components/ui/button/Button';
 
 type CustomModalProps = {
   onClose?: () => void;
@@ -27,12 +28,7 @@ export const CustomModal: React.FC<CustomModalProps> = ({
         </div>
         <div className={styles.customModal__content}>
           {modalBody}
-          <button
-            className={styles.customModal__actionButton}
-            onClick={onCheckout}
-          >
-            Checkout
-          </button>
+          <Button onClick={onCheckout} fullWidth >Checkout</Button>
         </div>
       </div>
     </div>

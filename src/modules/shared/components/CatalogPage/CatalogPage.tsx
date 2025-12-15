@@ -79,7 +79,7 @@ export const CatalogPage: React.FC = () => {
       isFirstCategoryRender.current = false;
       return;
     }
-
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     const params = new URLSearchParams(searchParams);
 
     params.delete('sort');

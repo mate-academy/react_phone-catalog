@@ -16,9 +16,8 @@ export const AppRouter = () => {
         <Route path="/:category/:productSlug" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
-      <Route path="*" element={<NotFoundPage />} />
-      {/* 404 fallback */}
     </Routes>
   );
 };

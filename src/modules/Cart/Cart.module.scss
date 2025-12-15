@@ -170,8 +170,7 @@
     &:hover {
       border-color: $color-primary;
     }
-
-    &Disabled {
+    &:disabled {
       border-color: $color-elements;
       cursor: default;
       svg {

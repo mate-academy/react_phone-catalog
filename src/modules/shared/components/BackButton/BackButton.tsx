@@ -5,8 +5,16 @@ type BackButtonProps = {
 };
 export const BackButton: React.FC<BackButtonProps> = ({ label }) => {
   const navigate = useNavigate();
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
-    <button className={styles.backBtn} onClick={() => navigate(-1)}>
+    <button className={styles.backBtn} onClick={handleBack}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"

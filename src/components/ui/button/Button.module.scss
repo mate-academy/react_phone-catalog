@@ -1,0 +1,77 @@
+// Імпортуйте ваші глобальні змінні та міксини
+@import '@/styles/variables'; // або шлях до вашого файлу з $color-primary
+// @import '@/styles/mixins'; // якщо використовуєте міксини для шрифтів
+
+.button {
+  // --- Базові стилі для всіх кнопок ---
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+
+  font-family: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // --- Варіанти дизайну (Variants) ---
+
+  // Основна кнопка (синя/чорна)
+  &--primary {
+    background-color: $color-primary; // Ваш колір з variables
+    color: #fff;
+    border-color: $color-primary;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+
+  // Кнопка для стану "Added" (біла з рамкою)
+  &--outline {
+    background-color: #fff;
+    color: $color-green; // Зелений колір для "Added"
+    border-color: $color-elements; // Сірий бордер
+
+    &:hover {
+      box-shadow: none;
+      cursor: default;
+    }
+  }
+
+  // --- Варіанти розміру (Sizes) ---
+
+  // &--small {
+  //   height: 32px;
+  //   // padding: 0 16px;
+  //   font-size: 14px;
+  // }
+
+  &--normal {
+    height: 40px;
+    // padding: 0 20px;
+    font-size: 14px;
+  }
+
+  // &--large {
+  //   height: 48px;
+  //   padding: 0 32px;
+  //   font-size: 16px;
+  // }
+
+  // --- Додаткові модифікатори ---
+
+  &--fullWidth {
+    width: 100%; // <-- ДОДАТИ ЦЕ
+    display: flex;
+  }
+}

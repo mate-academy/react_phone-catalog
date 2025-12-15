@@ -2,6 +2,7 @@ import { Product } from '@/types';
 import styles from '../../../../modules/HomePage/components/SliderComponent.module.scss';
 import { Link } from 'react-router-dom';
 import { useCart } from '@/modules/CartFavContext/CartContext';
+import { Button } from '@/components/ui/button/Button';
 
 type SliderItemProps = {
   item: Product;
@@ -101,14 +102,21 @@ export const SliderItem: React.FC<SliderItemProps> = ({
           </div>
         </div>
         <div className={styles.SliderComponent__item__buttonContainer}>
-          <button
+          <Button
+            onClick={handleCartClick}
+            fullWidth
+            variant={inCart ? 'outline' : 'primary'}
+          >
+            {inCart ? 'Added to Cart' : 'Add to Cart'}
+          </Button>
+          {/* <button
             onClick={handleCartClick}
             className={`${styles.SliderComponent__item__cartButton} ${
               inCart ? styles['SliderComponent__item__cartButton--added'] : ''
             }`}
           >
             {inCart ? 'Added to Cart' : 'Add to Cart'}
-          </button>
+          </button> */}
           <button
             onClick={handleFav}
             className={styles.SliderComponent__item__favoriteButton}

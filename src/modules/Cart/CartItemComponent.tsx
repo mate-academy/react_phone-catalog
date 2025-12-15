@@ -41,9 +41,7 @@ const CartItemComponent: React.FC<CartItemProps> = ({ item }) => {
       <div className={styles.cartItem__quantityBlock}>
         {/* Кнопка МІНУС */}
         <button
-          className={classNames(styles.cartItem__quantityButton, {
-            [styles.cartItem__quantityButtonDisabled]: item.quantity <= 1,
-          })}
+          className={classNames(styles.cartItem__quantityButton)}
           disabled={item.quantity <= 1}
           onClick={() => reduceQuantity(item.itemId)}
         >
