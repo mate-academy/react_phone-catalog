@@ -65,6 +65,7 @@
   font-size: 22px;
   line-height: 140%;
   font-weight: 800;
+  color: var(--primary);
 
   @include on-tablet {
     font-size: 32px;

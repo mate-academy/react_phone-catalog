@@ -51,7 +51,7 @@
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
-    width: 125px;
+    max-width: 125px;
     height: 40px;
     border-radius: 48px;
     border: 1px solid var(--border);
@@ -84,7 +84,7 @@
 
 .favouritesButton {
   display: flex;
-  box-sizing: border-box;
+  // box-sizing: border-box;
   align-items: center;
   justify-content: center;
   height: 40px;
@@ -93,6 +93,7 @@
   border: 1px solid var(--border-hover);
   background-color: var(--main);
   cursor: pointer;
+  flex-shrink: 0;
 
   transition: transform $effect-duration ease;
 

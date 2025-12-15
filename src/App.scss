@@ -28,4 +28,10 @@
 
 body {
   background-color: var(--background);
+  height: 100%;
+}
+
+.main {
+  min-height: 100vh;
+
 }

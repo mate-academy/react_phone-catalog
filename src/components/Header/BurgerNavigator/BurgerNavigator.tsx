@@ -53,6 +53,15 @@ export const BurgerNavigator: React.FC<Props> = ({ isBurgerMenu, onClose }) => {
     return () => document.body.classList.remove('no-scroll');
   }, [isBurgerMenu]);
 
+  const handleNavigate = (withScroll = false) => {
+    saveLastPage();
+    onClose();
+
+    if (withScroll) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className={`menu__navigator ${isBurgerMenu ? 'is-open' : ''}`}>
       <div className="menu__container">
@@ -65,11 +74,7 @@ export const BurgerNavigator: React.FC<Props> = ({ isBurgerMenu, onClose }) => {
                     path === '/' ? pathname === '/' : pathname.startsWith(path),
                 })}
                 to={{ pathname: path, search }}
-                onClick={() => {
-                  saveLastPage();
-                  onClose();
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
+                onClick={() => handleNavigate(true)}
               >
                 {title}
               </Link>
@@ -85,10 +90,7 @@ export const BurgerNavigator: React.FC<Props> = ({ isBurgerMenu, onClose }) => {
             <Link
               className="menu__icon--link"
               to="/favourites"
-              onClick={() => {
-                saveLastPage();
-                onClose();
-              }}
+              onClick={() => handleNavigate()}
             >
               <img
                 src={
@@ -114,10 +116,7 @@ export const BurgerNavigator: React.FC<Props> = ({ isBurgerMenu, onClose }) => {
             <Link
               className="menu__icon--link"
               to="/cart"
-              onClick={() => {
-                saveLastPage();
-                onClose();
-              }}
+              onClick={() => handleNavigate()}
             >
               <img
                 src={

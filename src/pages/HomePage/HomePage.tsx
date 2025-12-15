@@ -56,7 +56,7 @@ export const HomePage: React.FC = () => {
       <h1 className="titleMate">Product Catalog</h1>
       <div className="section">
         <div className="section__title">
-          <h2 className="title">Welcome to Nice Gadgets store!</h2>
+          <h2 className="pageTitle">Welcome to Nice Gadgets store!</h2>
         </div>
         <BannerSwiper isSkeleton={isLoading} />
       </div>
