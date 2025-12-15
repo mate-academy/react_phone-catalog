@@ -6,7 +6,6 @@
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 0.04em;
-  color: #F1F2F9;
   padding-inline: 152px;
 
   &__container {
@@ -39,6 +38,8 @@
 
     &__item {
       text-decoration: none;
+      color: #F1F2F9;
+      height: 100%;
 
       &:visited {
         color: #F1F2F9;
@@ -48,17 +49,18 @@
 
   &__button {
     flex: 1;
-    align-items: flex-end;
-    justify-content: center;
+    display: flex;
+    justify-content: flex-end;
 
     &__text {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
       color: #75767F;
       font-weight: 700;
       font-size: 12px;
-      line-height: 100%;
-      width: 72px;
-      height: 15px;
+      line-height: 1;
     }
 
     &:visited {
