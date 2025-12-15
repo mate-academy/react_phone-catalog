@@ -16,16 +16,20 @@ export const Header: React.FC = () => {
               <img src={Logo} alt="Logo" className={styles.header__logo__img} />
             </NavLink>
           </div>
+
           <nav className={styles.header__nav}>
             <NavLink to="/" className={styles.header__nav__item}>
               HOME
             </NavLink>
+
             <NavLink to="/phones" className={styles.header__nav__item}>
               PHONES
             </NavLink>
+
             <NavLink to="/tablets" className={styles.header__nav__item}>
               TABLETS
             </NavLink>
+            
             <NavLink to="/accessories" className={styles.header__nav__item}>
               ACCESSORIES
             </NavLink>
