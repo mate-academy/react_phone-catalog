@@ -1,14 +1,15 @@
+//hooks
 import { useEffect } from 'react';
-
-//style
-import './styles/Reset.scss';
-import './App.module.scss';
 
 //react-router
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+//style
+import './styles/Reset.scss';
+import styles from './App.module.scss';
+
 //components
-import { Header } from './components/Header';
+import { NavBar } from './components/NavBar';
 
 //pages
 import { HomePage } from './pages/HomePage';
@@ -23,15 +24,23 @@ export const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <Header />
+    <div className={styles.app}>
+      <NavBar />
 
       <Routes>
         <Route path="/home" element={<Navigate to="/" replace={true} />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/products">
-          <Route index element={<ProductsPage />} />
-          <Route path=":productType" element={<ProductsPage />} />
+        <Route path="/phones">
+          <Route index element={<ProductsPage productsType={'phones'} />} />
+        </Route>
+        <Route path="/tablets">
+          <Route index element={<ProductsPage productsType={'tablets'} />} />
+        </Route>
+        <Route path="/accessories">
+          <Route
+            index
+            element={<ProductsPage productsType={'accessories'} />}
+          />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
