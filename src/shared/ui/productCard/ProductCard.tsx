@@ -22,7 +22,7 @@ export const ProductCard: React.FC<Props> = ({
       >
         <img
           className={styles.img}
-          src={'/' + product.image}
+          src={product.image}
           alt={product.name}
         ></img>
         <p className={`body-text ${styles.productName}`}>{product.name}</p>

@@ -3,8 +3,7 @@ import { Logo } from '../../ui/logo';
 import { Link } from 'react-router-dom';
 import { BackToTopButton } from '../../ui/buttons/backToTop/BackToTopButton';
 
-const gitHub =
-  'https://github.com/anastasiiaboreiko/phone-catalog_rounded_orange';
+const gitHub = 'https://github.com/anastasiiaboreiko/react_phone-catalog';
 
 export const Footer = () => {
   return (

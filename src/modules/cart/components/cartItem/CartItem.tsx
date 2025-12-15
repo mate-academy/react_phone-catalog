@@ -48,7 +48,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
             </button>
             <img
               className={styles.itemImg}
-              src={'/' + cartItem.product.image}
+              src={cartItem.product.image}
               alt={cartItem.product.name}
             ></img>
             <p className="body-text">{cartItem.product.name}</p>
@@ -83,7 +83,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
           </button>
           <img
             className={styles.itemImg}
-            src={'/' + cartItem.product.image}
+            src={cartItem.product.image}
             alt={cartItem.product.name}
           ></img>
           <p className="body-text">{cartItem.product.name}</p>

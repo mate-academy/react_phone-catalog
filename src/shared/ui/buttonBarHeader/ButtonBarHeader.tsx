@@ -33,7 +33,7 @@ export const ButtonBarHeader: React.FC<Props> = ({ className = '' }) => {
       >
         <div className={styles.iconWrapper} data-count={favProductsQuantity}>
           <img
-            src={`/img/icons/favorites.svg`}
+            src={`img/icons/favorites.svg`}
             alt="Favorite"
             className={styles.img}
           />
@@ -46,7 +46,7 @@ export const ButtonBarHeader: React.FC<Props> = ({ className = '' }) => {
         }
       >
         <div className={styles.iconWrapper} data-count={cartProductsQuantity}>
-          <img src={`/img/icons/cart.svg`} alt="Cart" />
+          <img src={`img/icons/cart.svg`} alt="Cart" />
         </div>
       </NavLink>
       <NavLink
@@ -54,7 +54,7 @@ export const ButtonBarHeader: React.FC<Props> = ({ className = '' }) => {
         className={styles.buttonMobile}
       >
         <img
-          src={isBurgerOpen ? `/img/icons/close.svg` : `/img/icons/menu.svg`}
+          src={isBurgerOpen ? `img/icons/close.svg` : `img/icons/menu.svg`}
           alt={isBurgerOpen ? 'Close menu' : 'Open menu'}
         />
       </NavLink>

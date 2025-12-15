@@ -1,6 +1,6 @@
 import { Product } from '../types/Product';
 
-const API_URL = '/api/products.json';
+const API_URL = `${import.meta.env.BASE_URL}api/products.json`;
 
 const DEFAULT_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',

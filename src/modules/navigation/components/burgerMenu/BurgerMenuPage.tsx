@@ -33,7 +33,7 @@ export const BurgerMenuPage = () => {
           <div className={styles.iconWrapper} data-count={favProductsQuantity}>
             <img
               className={styles.img}
-              src={`/img/icons/favorites.svg`}
+              src={`img/icons/favorites.svg`}
               alt="Favorite"
             />
           </div>
@@ -41,11 +41,7 @@ export const BurgerMenuPage = () => {
 
         <NavLink to="/cart" className={styles.footerButton}>
           <div className={styles.iconWrapper} data-count={cartProductsQuantity}>
-            <img
-              className={styles.img}
-              src={`/img/icons/cart.svg`}
-              alt="Cart"
-            />
+            <img className={styles.img} src={`img/icons/cart.svg`} alt="Cart" />
           </div>
         </NavLink>
       </footer>

@@ -39,6 +39,9 @@ export const ProductDetailsPage = () => {
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedImg, setSelectedImg] = useState<string | undefined>();
 
+  // const withBase = (path?: string) =>
+  //   path ? `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}` : '';
+
   useEffect(() => {
     if (currentProduct) {
       setSelectedCap(currentProduct.capacity);
@@ -88,7 +91,7 @@ export const ProductDetailsPage = () => {
             {isMobile ? (
               <div className={styles.allPhotos}>
                 <img
-                  src={`${process.env.PUBLIC_URL}/${selectedImg}`}
+                  src={`${selectedImg}`}
                   alt={currentProduct.name}
                   className={styles.bigPhoto}
                 />
@@ -96,7 +99,7 @@ export const ProductDetailsPage = () => {
                   {currentProduct.images.map((image, index) => (
                     <img
                       key={image}
-                      src={`${process.env.PUBLIC_URL}/${image}`}
+                      src={`${image}`}
                       alt={image}
                       className={styles.smallPhoto}
                       onClick={() =>
@@ -112,7 +115,7 @@ export const ProductDetailsPage = () => {
                   {currentProduct.images.map((image, index) => (
                     <img
                       key={image}
-                      src={`/${image}`}
+                      src={`${image}`}
                       alt={image}
                       className={styles.smallPhoto}
                       onClick={() =>
@@ -122,7 +125,7 @@ export const ProductDetailsPage = () => {
                   ))}
                 </div>
                 <img
-                  src={`/${selectedImg}`}
+                  src={`${selectedImg}`}
                   alt={currentProduct.name}
                   className={styles.bigPhoto}
                 />

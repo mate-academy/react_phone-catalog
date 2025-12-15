@@ -18,7 +18,7 @@ export const BackButton: React.FC<Props> = ({ pathname }) => {
         navigate(`/${breadcrumbsTitle}`);
       }}
     >
-      <img src={`/img/icons/arrowLeft.svg`} alt="arrow right" />
+      <img src={`img/icons/arrowLeft.svg`} alt="arrow right" />
       <p className={`small-text ${styles.backButtonTitle}`}>Back</p>
     </div>
   );

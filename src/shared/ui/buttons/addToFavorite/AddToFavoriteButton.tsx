@@ -23,9 +23,9 @@ export const AddToFavoriteButton: React.FC<Props> = ({ product }) => {
   return (
     <button className={styles.button} onClick={addToFavorite}>
       {!isProductFavorite ? (
-        <img src={`/img/icons/favorites.svg`} alt="favorite" />
+        <img src={`img/icons/favorites.svg`} alt="favorite" />
       ) : (
-        <img src={`/img/icons/favoritesSelected.svg`} alt="favoriteSelected" />
+        <img src={`img/icons/favoritesSelected.svg`} alt="favoriteSelected" />
       )}
     </button>
   );

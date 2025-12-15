@@ -18,9 +18,9 @@ export const Breadcrumbs: React.FC<Props> = ({ pathname, productName }) => {
   return (
     <div className={styles.breadcrumbs}>
       <NavLink to="/" className={styles.button}>
-        <img src={`/img/icons/home.svg`} alt="Home" className={styles.img} />
+        <img src={`img/icons/home.svg`} alt="Home" className={styles.img} />
       </NavLink>
-      <img src={`/img/icons/arrowRight.svg`} alt="arrow right" />
+      <img src={`img/icons/arrowRight.svg`} alt="arrow right" />
       {!productName ? (
         <p className={styles.sectionTitle}>{breadcrumbsTitle}</p>
       ) : (
@@ -28,7 +28,7 @@ export const Breadcrumbs: React.FC<Props> = ({ pathname, productName }) => {
           <p className={styles.sectionTitleActive}>{breadcrumbsTitle}</p>
         </NavLink>
       )}
-      <img src={`/img/icons/arrowRight.svg`} alt="arrow right" />
+      <img src={`img/icons/arrowRight.svg`} alt="arrow right" />
 
       {productName && <p className={styles.productName}>{productName}</p>}
     </div>
