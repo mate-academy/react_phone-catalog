@@ -22,6 +22,7 @@ export const HomePage = () => {
           Gadgets store!
         </span>
       </h2>
+
       {loading && <Loader />}
 
       {!loading && !errorMessage && (
