@@ -11,6 +11,8 @@ import arrowLeft from '../../images/icons/arrow-left.png';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+// const BASE_URL = import.meta.env.BASE_URL;
+
 export const ItemCard: React.FC = () => {
   const location = useLocation();
   const basePath = location.pathname.split('/').filter(Boolean);
@@ -238,11 +240,7 @@ export const ItemCard: React.FC = () => {
           <div className="item-card__image">
             {productData?.images && productData.images.length > 0 && (
               <img
-                src={
-                  productData.images[0].startsWith('/')
-                    ? productData.images[0]
-                    : `/${productData.images[0]}`
-                }
+                src={`../${productData.images[0]}`}
                 alt="product image"
                 className="item-card__image__photo"
               />
@@ -253,7 +251,7 @@ export const ItemCard: React.FC = () => {
             {productData.images.map((image, ind) => (
               <div className="item-card__photo-previews__image" key={ind}>
                 <img
-                  src={image.startsWith('/') ? image : `/${image}`}
+                  src={`../${image}`}
                   className="item-card__photo-previews__image__photo"
                 />
               </div>
@@ -386,7 +384,7 @@ export const ItemCard: React.FC = () => {
             {productData.images.map((image, ind) => (
               <div className="item-card__photo-previews__image" key={ind}>
                 <img
-                  src={image.startsWith('/') ? image : `/${image}`}
+                  src={`../${image}`}
                   className="item-card__photo-previews__image__photo"
                 />
               </div>
@@ -396,11 +394,7 @@ export const ItemCard: React.FC = () => {
           <div className="item-card__image">
             {productData?.images && productData.images.length > 0 && (
               <img
-                src={
-                  productData.images[0].startsWith('/')
-                    ? productData.images[0]
-                    : `/${productData.images[0]}`
-                }
+                src={`../${productData.images[0]}`}
                 alt="product image"
                 className="item-card__image__photo"
               />

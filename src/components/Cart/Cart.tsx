@@ -8,6 +8,8 @@ import { useContext, useState } from 'react';
 import { DevicesContext } from '../../DevicesContext';
 import { useNavigate } from 'react-router-dom';
 
+// const BASE_URL = import.meta.env.BASE_URL;
+
 export const Cart = () => {
   const navigate = useNavigate();
 
@@ -162,11 +164,7 @@ export const Cart = () => {
 
                   <div className="item__info__item-image">
                     <img
-                      src={
-                        value.item.images[0].startsWith('/')
-                          ? value.item.images[0]
-                          : `/${value.item.images[0]}`
-                      }
+                      src={value.item.images[0]}
                       className="item__info__item-image__photo"
                     />
                   </div>

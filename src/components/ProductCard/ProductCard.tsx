@@ -7,6 +7,8 @@ import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { DevicesContext } from '../../DevicesContext';
 
+// const BASE_URL = import.meta.env.BASE_URL;
+
 type Props = {
   model: Device;
 };
@@ -62,14 +64,7 @@ export const ProductCard: React.FC<Props> = ({ model }) => {
     >
       <div className="product-card__photo">
         <Link to={`/${model.category}/${model.id}`}>
-          <img
-            src={
-              model.images[0].startsWith('/')
-                ? model.images[0]
-                : `/${model.images[0]}`
-            }
-            className="product-card__photo__image"
-          />
+          <img src={model.images[0]} className="product-card__photo__image" />
         </Link>
       </div>
 

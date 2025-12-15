@@ -14,6 +14,8 @@ import { SortType } from '../../types/SortType';
 import { Device } from '../../types/Device';
 import { SortVisibleItems } from '../../types/SortVisibleItems';
 
+// const BASE_URL = import.meta.env.BASE_URL;
+
 export const Accessories = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const context = useContext(DevicesContext);
@@ -23,17 +25,20 @@ export const Accessories = () => {
   const [visibleItems, setVisibleItems] = useState<'all' | '4' | '8' | '16'>(
     (searchParams.get('perPage') as SortVisibleItems) || 'all',
   );
+
   const visibleItemsOptions = [
     { value: 'all', label: 'All' },
     { value: '4', label: '4' },
     { value: '8', label: '8' },
     { value: '16', label: '16' },
   ];
+
   const [openSortByVisible, setOpenSortByVisible] = useState(false);
 
   const [sortBy, setSortBy] = useState<
     'newest' | 'alphabetically' | 'cheapest'
   >((searchParams.get('sort') as SortType) || 'newest');
+
   const sortOptions = [
     { value: 'newest', label: 'Newest' },
     { value: 'alphabetically', label: 'Alphabetically' },

@@ -11,12 +11,14 @@ import { Favourites } from './components/Favourites/Favourites';
 import { Cart } from './components/Cart/Cart';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 export const Root = () => (
   <DevicesProvider>
-    <BrowserRouter>
+    <BrowserRouter basename={BASE_URL}>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/" element={<Main />}></Route>
+          <Route index element={<Main />}></Route>
 
           <Route path="aside" element={<Aside />}></Route>
 
