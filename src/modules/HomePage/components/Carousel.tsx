@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 export const Carousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const slides = [
     { image: 'img/phone-banner.webp', link: '/phones' },
     { image: 'img/tablet-banner.webp', link: '/tablets' },
@@ -28,7 +29,31 @@ export const Carousel: React.FC = () => {
       clearInterval(timer);
     };
   }, [activeIndex]);
+  const MIN_SWIPE_DISTANCE = 25;
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // Скидаємо попередній кінець
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return; // Ігноруємо, якщо немає початку чи кінця
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > MIN_SWIPE_DISTANCE;
+    const isRightSwipe = distance < -MIN_SWIPE_DISTANCE;
+
+    if (isLeftSwipe) {
+      next(); // Свайп вліво -> наступний слайд
+    }
+    if (isRightSwipe) {
+      prev(); // Свайп вправо -> попередній слайд
+    }
+  };
   return (
     <section className={styles.carousel}>
       <div className={styles.carousel__body}>
@@ -37,7 +62,13 @@ export const Carousel: React.FC = () => {
         </button>
 
         {/* Це наше "вікно" перегляду */}
-        <div className={styles.carousel__window}>
+        <div
+          className={styles.carousel__window}
+          // 🔥 Додаємо обробники дотику сюди:
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           {/* Це стрічка, яка рухається */}
           <div
             className={styles.carousel__list}

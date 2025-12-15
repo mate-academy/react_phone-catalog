@@ -1,10 +1,27 @@
+@use '@/styles/mixins' as *;
+
 .container {
   width: 100%;
-  max-width: 1136px; // or 1440px
-  margin: 0 auto; // centers content
-  // padding: 0 20px;
   flex: 1;
+  margin: 0 auto;
 
+  // ТУТ МАГІЯ:
+  // Як тільки екран стає планшетом:
+  @include mobile {
+    padding: 0 32px; // Збільшуємо відступи
+  }
+
+  // Як тільки екран стає ноутбуком:
+  @include tablet {
+    // max-width: 960px; // Обмежуємо ширину
+    padding: 0 32px;
+  }
+
+  // Як тільки екран стає великим десктопом:
+  @include desktop {
+    max-width: 1136px; // Обмежуємо ширину
+    padding: 0; // Відступи прибираємо
+  }
   > section {
     margin-bottom: 80px;
   }

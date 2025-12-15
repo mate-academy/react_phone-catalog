@@ -19,6 +19,7 @@
     overflow: hidden; // Приховує слайди, що виходять за межі
     aspect-ratio: 26 / 10;
     // background-color: #b4bdc3; // Можна розкоментувати для налагодження
+    touch-action: pan-y;
   }
 
   // Це довга стрічка зі слайдами
