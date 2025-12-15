@@ -1,0 +1,118 @@
+@import '../../../../shared/styles/mixins';
+@import '../../../../shared/styles/variables';
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 16px;
+  height: 160px;
+  border: 1px solid $elements-color;
+  border-radius: 16px;
+  background-color: $white-color;
+
+  @include on-tablet {
+    padding-inline: 24px;
+    height: 128px;
+  }
+}
+
+.cartItemMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.firstPart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.secondPart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteButton {
+  display: inline-flex;
+  align-items: center; // по вертикалі
+  justify-content: center; // по горизонталі
+  background-color: $white-color;
+  height: 16px;
+  width: 16px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+
+  mask-image: url('/img/icons/close.svg');
+  mask-size: cover;
+
+  background-color: $icons-color;
+}
+
+.itemImg {
+  height: 80px;
+  width: 80px;
+
+  object-fit: contain;
+}
+
+.buttonsBlock {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.button {
+  display: inline-flex; // flex, щоб центрувати вміст
+  align-items: center; // по вертикалі
+  justify-content: center; // по горизонталі
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 1px solid $icons-color;
+  background-color: $hover-BG-color;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-text-color;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    border: 1px solid $elements-color;
+    cursor: not-allowed;
+  }
+
+  &:disabled .icon {
+    background-color: $icons-color;
+  }
+}
+
+.iconMinus {
+  width: 16px;
+  height: 16px;
+
+  mask-image: url('/img/icons/minus.svg');
+  mask-size: cover;
+
+  background-color: $primary-text-color;
+}
+
+.iconPlus {
+  width: 16px;
+  height: 16px;
+
+  mask-image: url('/img/icons/plus.svg');
+  mask-size: cover;
+
+  background-color: $primary-text-color;
+}

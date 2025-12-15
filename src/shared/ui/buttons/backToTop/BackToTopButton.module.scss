@@ -1,0 +1,44 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.buttonBlock {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @include hover(transform, scale(1.1));
+}
+
+.buttonText {
+  white-space: nowrap;
+}
+
+.button {
+  padding: 0;
+  position: relative;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 1px solid $icons-color;
+  background-color: $hover-BG-color;
+  outline: none;
+  cursor: pointer;
+
+  display: flex; // щоб картинка не деформувалась
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border-color: $primary-text-color;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+
+  mask-image: url('/img/icons/arrowUp.svg');
+  mask-size: cover;
+
+  background-color: $primary-text-color;
+}

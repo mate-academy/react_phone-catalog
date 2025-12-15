@@ -1,0 +1,12 @@
+@import '../../styles/mixins';
+
+.wrapper {
+  display: block;
+
+  @include hover(transform, scale(1.1));
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+}

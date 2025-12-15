@@ -1,0 +1,19 @@
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/variables';
+
+.container {
+  @include content-padding-inline;
+}
+
+.title {
+  padding-bottom: 8px;
+}
+
+.info {
+  color: $secondary-text-color;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}

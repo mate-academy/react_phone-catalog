@@ -1,0 +1,341 @@
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/variables';
+
+.wrapper {
+  @include content-padding-inline;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.backButtonTitle {
+  color: $secondary-text-color;
+  position: relative;
+  top: 1px;
+}
+
+.productName {
+  padding-block: 16px 32px;
+
+  @include on-tablet {
+    padding-block: 16px 40px;
+  }
+}
+
+.mainInfoBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include on-tablet {
+    grid-template-columns: 1fr 1fr; 
+  }
+}
+
+.allPhotos {
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+.smallPhotos {
+  display: flex;
+  gap: 8px;
+
+  @include on-tablet {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.smallPhoto {
+  box-sizing: border-box;
+  object-fit: contain; 
+  width: 50px;
+  height: 50px;
+  border: 1px solid $elements-color;
+  border-radius: 8px;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.bigPhoto {
+  box-sizing: border-box;
+  object-fit: contain; 
+  width: 288px;
+  height: 288px;
+  padding: 6.8px;
+  border-radius: 8px;
+
+  @include on-tablet {
+    width: 287px;
+    height: 287px;
+  }
+
+  @include on-desktop {
+    padding: 11px;
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.mainSpecs {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+
+  @include on-tablet {
+    padding-top: 0;
+  }
+
+  @include on-desktop {
+    padding-left: 56px;
+  }
+}
+
+.mainSpecsTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.radioWrapper {
+  display: flex;
+}
+
+.radioInput {
+  display: none;
+}
+
+.colorsButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.colorsTite {
+  color: $secondary-text-color;
+  padding-bottom: 8px;
+}
+
+.radioLabelColor {
+  display: inline-block;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements-color;
+  padding: 2px;
+  background-color: $hover-BG-color;
+
+  background-clip: content-box;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $icons-color;
+  }
+}
+
+.radioInput:checked + .radioLabelColor {
+  border-color: $primary-text-color;
+}
+
+.capacity {
+  padding-top: 24px;
+}
+
+.capacityTite {
+  color: $secondary-text-color;
+}
+
+.capacityButtons {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.radioLabelCapacity {
+  box-sizing: border-box;
+  background-color: $white-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid $icons-color;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-text-color;
+  }
+}
+
+.radioInput:checked + .radioLabelCapacity {
+  background-color: $primary-text-color;
+  color: $white-color;
+  border-color: $primary-text-color;
+}
+
+.strike {
+  height: 1px;
+  background-color: $elements-color;
+  margin-top: 24px;
+  width: 100%;
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.itemId {
+  color: $icons-color;
+}
+
+.mainSpecsMiddle {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-block: 32px;
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.priceBlock {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-size: 32px;
+}
+
+.fullPrice {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-decoration: line-through;
+  color: $secondary-text-color;
+}
+
+.buttonBlock {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  height: 48px;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  @include on-desktop {
+    width: 320px;
+  }
+}
+
+.infoText {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoTitle {
+  color: $secondary-text-color;
+}
+
+.descriptionBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-top: 56px;
+
+  @include on-tablet {
+    padding-top: 64px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 1fr 1fr; 
+    padding-top: 80px;
+  }
+}
+
+.aboutBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.descriptionMainTitle {
+  padding-bottom: 16px;
+  font-weight: 700;
+  font-size: 20px;
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 22px;
+  }
+}
+
+.strikeLong {
+  height: 1px;
+  background-color: $elements-color;
+  width: 100%;
+}
+
+.descriptionTitle {
+  padding-bottom: 16px;
+}
+
+.descriptionText {
+  color: $secondary-text-color;
+}
+
+.techSpecsBlock {
+  padding-top: 56px;
+
+  @include on-tablet {
+    padding-top: 64px;
+  }
+
+  @include on-desktop {
+    padding-top: 0;
+    padding-left: 56px;
+  }
+}
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  gap: 8px;
+
+  @include on-tablet {
+    padding-top: 25px;
+  }
+}
+

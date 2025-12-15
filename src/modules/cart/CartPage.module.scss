@@ -1,0 +1,73 @@
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/variables';
+
+.container {
+  @include content-padding-inline;
+
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 40px;
+  }
+}
+
+.title {
+  padding-block: 24px 32px;
+
+  @include on-tablet {
+    padding-block: 16px 32px;
+  }
+}
+
+.innerContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @include on-desktop {
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+  }
+}
+
+.cartItemsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.totalPriceBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 24px;
+  border: 1px solid #E2E6E9;
+  border-radius: 16px;
+  height: 190px;
+
+  @include on-desktop {
+    height: 206px;
+  }
+}
+
+.totalItems {
+  color: $secondary-text-color;
+}
+
+.strike {
+  height: 1px;
+  background-color: $elements-color;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.checkoutButton {
+  height: 48px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: $accent-color;
+  color: $white-color;
+  border: 0;
+  padding: 0;
+}

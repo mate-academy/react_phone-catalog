@@ -1,0 +1,90 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.wrapper { // тримає загальний контент зліва
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start;
+  margin-inline: calc(50% - 50vw); 
+  overflow: hidden;
+
+  @include on-tablet {
+    margin-inline: 0;
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
+  }
+}
+
+.innerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.slider {
+  display: flex;
+  flex-direction: row; 
+  justify-content: center;
+  padding-bottom: 8px;
+
+  @include on-tablet {
+    gap: 19px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.dashes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-block: 10px;
+}
+
+.dashButton {
+  background-color: $elements-color;
+  height: 4px;
+  width: 14px;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.dashButtonActive {
+  background-color: $primary-text-color;
+  height: 4px;
+  width: 14px;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.img {
+  display: block;
+  height: 352px;
+  width: 100vw;
+  max-width: none; // зняти обмеження
+  object-fit: cover; 
+  border-radius: 0;
+
+  @include on-tablet {
+    display: block;
+    object-fit: cover; 
+    border-radius: 8px;
+    height: 189px;
+    width: 490px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+    width: 1040px;
+  } 
+}

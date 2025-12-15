@@ -1,0 +1,109 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.buttonBar {
+  display: flex; 
+  height: 100%; // кнопки успадкують всю висоту хедера
+}
+
+.button { 
+  display: none;
+
+  @include on-tablet {
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+    cursor: pointer;
+    box-shadow: -1px 0 0 0 $elements-color;
+  }
+
+  @include on-desktop {
+    padding: 0 24px;
+  }
+
+  @include hover(transform, scale(1.1));
+}
+
+.buttonMobile {
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; 
+  cursor: pointer;
+  box-shadow: -1px 0 0 0 $elements-color;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include hover(transform, scale(1.1));
+}
+
+.activeButton {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+    cursor: pointer;
+    box-shadow: -1px 0 0 0 $elements-color;
+    padding: 0 16px;
+  }
+
+  @include on-desktop {
+    padding: 0 24px;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: $primary-text-color;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::after {
+    content: attr(data-count);
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+    background-color: $secondary-accent-color;
+    color: $white-color;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 600;
+    border: 2px solid $white-color;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    left: 100%;
+    bottom: 100%;
+    transform: translate(-50%, 50%);
+  }
+
+  &[data-count='0']::after {
+    display: none;
+  }
+}
+
+.img {
+  display: block;  
+}
