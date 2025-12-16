@@ -1,0 +1,231 @@
+/* =========================
+   BASE / LAYOUT
+   ========================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--line-color);
+  z-index: 9999;
+  box-sizing: border-box;
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconRightGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+/* LOGO com 50px da margem esquerda */
+.logoLink {
+  margin-left: 50px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo {
+  height: 2rem;
+  width: 5rem;
+  object-fit: contain;
+}
+
+/* MENU LINKS (horizontal, 50px após a logo) */
+.menu {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.menuList {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 6px 4px;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--text-color);
+}
+
+.activeLink {
+  color: var(--text-color);
+}
+
+/* ÍCONES à direita com 50px de margem e 30px entre eles */
+.containerIcon {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-right: 1rem;
+}
+
+.iconButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.iconCart,
+.iconFavourites {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.favBadge,
+.cartBadge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 20px;
+  height: 20px;
+  background: var(--badge-color);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.bar {
+  width: 22px;
+  height: 2px;
+  background: var(--text-color);
+  border-radius: 2px;
+}
+
+/* =========================
+     RESPONSIVO
+     ========================= */
+
+/* MOBILE TINY (<= 320px) */
+@media (max-width: 320px) {
+  .menuList {
+    display: none !important;
+  }
+
+  .containerIcon {
+    display: none !important;
+  }
+
+  .logoLink {
+    margin-left: 20px;
+  }
+
+  .hamburger {
+    display: inline-flex !important;
+    margin-right: 30px;
+  }
+}
+
+/* MOBILE / TABLET (<= 640px) */
+@media (max-width: 640px) {
+  .navbar {
+    height: 56px;
+    padding: 0 12px;
+  }
+
+  .menuList {
+    display: none !important; /* ✅ esconde links horizontais */
+  }
+
+  .containerIcon {
+    display: none !important; /* ✅ esconde ícones à direita */
+  }
+
+  .logoLink {
+    margin-left: 20px;
+  }
+
+  .hamburger {
+    display: inline-flex !important; /* ✅ mostra hamburger */
+    margin-right: 30px;
+  }
+}
+
+/* DESKTOP MÉDIO (641px–1199px) */
+@media (min-width: 641px) and (max-width: 1199px) {
+  .navbar {
+    height: 56px;
+    padding: 0 12px;
+  }
+
+  .menuList {
+    display: none !important;
+  }
+
+  .containerIcon {
+    display: none !important;
+  }
+
+  .logoLink {
+    margin-left: 20px;
+  }
+
+  .hamburger {
+    display: inline-flex !important;
+    margin-right: 30px;
+  }
+}
+
+/* DESKTOP GRANDE (>=1200px) */
+@media (min-width: 1200px) {
+  .logoLink {
+    margin-left: 50px;
+  }
+
+  .menu {
+    margin-left: 50px;
+  }
+
+  .containerIcon {
+    margin-right: 50px;
+    gap: 30px;
+  }
+
+  .hamburger {
+    display: none !important;
+  }
+}

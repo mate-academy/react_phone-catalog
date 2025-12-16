@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* hover mantém comportamento visual, agora com variável de tema */
+.select:hover {
+  border-color: var(--text-color);
+}
+
+/* foco acessível: mantém estilo sem alterar layout funcional */
+.select:focus,
+.select:focus-visible {
+  outline: none;
+  border-color: var(--accent-color, var(--text-color));
+  box-shadow: 0 0 0 3px rgba(49, 50, 55, 0.06);
+}

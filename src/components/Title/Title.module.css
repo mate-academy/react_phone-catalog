@@ -1,0 +1,58 @@
+.title {
+  font-family: var(--section-title-font-family, system-ui);
+  font-weight: var(--section-title-weight, 600);
+  margin: 0;
+  line-height: var(--section-title-line-height, 1.2);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Title.module.css */
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* título à esquerda, ações à direita */
+  gap: 1rem;
+}
+
+.titleRowActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Banner variant */
+.bannerTitle {
+  padding-left: 5rem;
+  width: 100%;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* >= 20rem (320px) */
+@media (min-width: 20rem) {
+  .bannerTitle {
+    font-size: var(--banner-title-size-640, 3rem);
+    padding-left: 0;
+  }
+}
+
+/* >= 40rem (640px) */
+@media (min-width: 40rem) {
+  .bannerTitle {
+    font-size: var(--banner-title-size-1200);
+    padding-left: 0;
+  }
+}
+
+/* >= 75rem (1200px) */
+@media (min-width: 75rem) {
+  .bannerTitle {
+    font-size: var(--banner-title-size-1200-plus);
+    padding-left: 1.5rem;
+  }
+}

@@ -1,0 +1,26 @@
+.addButton {
+  width: 160px;
+  height: 40px;
+  font-size: 1rem;
+  border: none;
+  color: var(--primary-text); /* texto do botão dinâmico */
+  background-color: var(--primary-bg); /* fundo do botão dinâmico */
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background-color: var(--link-hover); /* hover dinâmico */
+}
+
+.addFavourites {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-image: url('../../assets/img/favourites.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  filter: var(--icon-filter, none); /* permite ajuste de contraste no dark */
+}

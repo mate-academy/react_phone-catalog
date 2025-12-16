@@ -1,0 +1,47 @@
+.themeToggle {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text-color); /* texto/ícone dinâmico */
+  padding: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition:
+    color 120ms ease,
+    transform 120ms ease;
+}
+
+/* ícones SVG dentro do botão seguem a cor do texto */
+.themeToggle svg {
+  width: 42px;
+  height: 42px;
+  display: block;
+  fill: currentColor;
+}
+
+/* hover leve para indicar interatividade */
+.themeToggle:hover {
+  color: var(--link-hover);
+  transform: translateY(-1px);
+}
+
+/* estado ativo/pressionado (quando usado como toggle) */
+.themeToggle[aria-pressed='true'] {
+  color: var(--primary-bg);
+}
+
+/* foco visível para navegação por teclado */
+.themeToggle:focus-visible {
+  outline: 2px solid rgba(49, 50, 55, 0.12);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* reduz animações para usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .themeToggle {
+    transition: none;
+  }
+}

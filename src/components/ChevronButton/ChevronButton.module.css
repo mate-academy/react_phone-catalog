@@ -1,0 +1,52 @@
+.container {
+  display: flex; /* usar flex em vez de inline-flex para altura previsível */
+  width: 40px;
+  height: 32rem; /* altura que você quer testar */
+
+  align-self: center; /* reforça que não deve esticar */
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid var(--card-border);
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ícone dentro do botão */
+.icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+  color: currentColor;
+}
+
+/* rotação para o chevron direito */
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* -------------------------
+   Breakpoints
+   ------------------------- */
+
+/* até 640px → altura 28rem */
+@media (max-width: 40rem) {
+  .container {
+    height: 28rem;
+  }
+}
+
+/* 641px – 1199px → mantém 28rem */
+@media (min-width: 40.01rem) and (max-width: 74.99rem) {
+  .container {
+    height: 28rem;
+  }
+}
+
+/* >= 1200px → altura 32rem */
+@media (min-width: 75rem) {
+  .container {
+    height: 32rem;
+  }
+}

@@ -1,0 +1,93 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 3rem;
+  color: var(--text-color);
+}
+
+/* Bloco esquerdo: Items per page */
+.selector {
+  display: flex;
+  align-items: center;
+}
+
+.selector select {
+  width: 4rem;
+  height: 3rem;
+  padding-left: 4px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--card-border); /* borda dinâmica */
+  background-color: var(--card-bg); /* fundo dinâmico */
+  color: var(--text-color); /* texto dinâmico */
+  cursor: pointer;
+}
+
+/* foco visível para teclado */
+.selector select:focus-visible {
+  outline: 2px solid rgba(49, 50, 55, 0.08);
+  outline-offset: 2px;
+}
+
+.rightBlock {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* lista de páginas */
+.list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+/* item de paginação */
+.item {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--card-border); /* borda dinâmica */
+  background: var(--card-bg); /* fundo dinâmico */
+  color: var(--text-color); /* texto dinâmico */
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+  border-radius: 6px;
+}
+
+/* estado hover */
+.item:hover {
+  background-color: var(
+    --hover-bg,
+    rgba(230, 240, 255, 0.12)
+  ); /* hover dinâmico com fallback suave */
+
+  color: var(--text-color);
+}
+
+/* estado ativo (quando a página está selecionada) */
+.item[data-active='true'] {
+  background-color: var(--primary-bg); /* botão/estado principal */
+  color: var(--primary-text); /* texto do estado ativo */
+  border-color: var(--primary-bg);
+}
+
+/* foco visível para teclado */
+.item:focus-visible {
+  outline: 2px solid rgba(49, 50, 55, 0.08);
+  outline-offset: 2px;
+}
+
+/* responsividade: garante espaçamento em telas pequenas */
+@media (max-width: 640px) {
+  .pagination {
+    gap: 12px;
+  }
+}

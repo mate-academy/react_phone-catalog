@@ -1,0 +1,42 @@
+/* Targeta a div em Home com className={styles.containerDots} */
+.containerDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Aponta para o wrapper interno do IndicatorDots (no JSX tem data-testid="indicator-dots") */
+.containerDots [data-testid='indicator-dots'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* default; pode ser sobrescrito por inline style do componente */
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 12px;
+}
+
+/* spans que o IndicatorDots renderiza (seleciona por data-testid individual) */
+.containerDots [data-testid^='indicator-dot-'] {
+  display: inline-block;
+  width: 20px; /* largura inativa padrão */
+  height: 6px; /* altura padrão */
+  background: var(--card-border); /* cor inativa dinâmica */
+  border-radius: 0;
+  transition:
+    width 160ms ease,
+    background-color 160ms ease;
+  pointer-events: none;
+  min-width: 6px;
+  min-height: 2px;
+}
+
+/* estado ativo */
+.containerDots [data-testid^='indicator-dot-'][data-active='true'] {
+  width: 40px; /* largura do dot ativo */
+  background: var(--text-color); /* cor do dot ativo dinâmica */
+}

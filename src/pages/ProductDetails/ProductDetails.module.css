@@ -1,0 +1,346 @@
+/* src/pages/ProductDetails/ProductDetails.module.css */
+:root {
+  --max-w: 1100px;
+  --gap: 1rem;
+}
+
+.container {
+  max-width: var(--max-w);
+  margin: 8rem auto;
+  padding: 0 1.25rem;
+}
+
+.containerPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .favButton {
+    cursor: pointer;
+  }
+}
+
+.breadcrumbs {
+  font-size: 0.9rem;
+  color: var(--text-muted); /* ✅ variável global */
+  margin-bottom: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.breadcrumbs a {
+  color: var(--link-color); /* ✅ variável global */
+  text-decoration: none;
+}
+
+.sep {
+  color: var(--card-border); /* ✅ variável global */
+  margin: 0 0.25rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  margin: 0;
+  color: var(--text-color); /* ✅ variável global */
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.media {
+  flex: 0 0 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.mainImageWrapper {
+  width: 360px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--card-border); /* ✅ variável global */
+  border-radius: 8px;
+  background: var(--card-bg); /* ✅ variável global */
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.imagePlaceholder {
+  width: 360px;
+  height: 260px;
+  background: linear-gradient(90deg, #eee 25%, #f7f7f7 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+.thumbs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.thumbButton {
+  border: 1px solid transparent;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.thumbActive {
+  border: 1px solid var(--text-color); /* ✅ variável global */
+  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.06);
+}
+
+.thumbButton:focus-visible,
+.thumbButton:hover {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(49, 50, 55, 0.06);
+}
+
+.info {
+  flex: 1 1 420px;
+  min-width: 280px;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-color); /* ✅ variável global */
+  margin: 0 0 1rem;
+}
+
+.optionGroup {
+  margin-bottom: 1rem;
+}
+
+.optionLabel {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color); /* ✅ variável global */
+}
+
+.optionsRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.optionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--card-border); /* ✅ variável global */
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--card-bg); /* ✅ variável global */
+  user-select: none;
+}
+
+.optionButton input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--card-border); /* ✅ variável global */
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  flex: 0 0 16px;
+}
+
+.optionButton input[type='radio']:checked {
+  background: var(--text-color); /* ✅ variável global */
+  border-color: var(--text-color);
+  box-shadow: inset 0 0 0 4px var(--bg-color); /* ✅ variável global */
+}
+
+.optionButton input[type='radio']:focus-visible {
+  outline: 2px solid rgba(49, 50, 55, 0.12);
+  outline-offset: 2px;
+}
+
+.optionText {
+  font-size: 0.95rem;
+  color: var(--text-color); /* ✅ variável global */
+}
+
+.about {
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+  color: var(--text-color); /* ✅ variável global */
+}
+
+.description {
+  color: var(--text-color); /* ✅ variável global */
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.specs {
+  margin-bottom: 1rem;
+}
+
+.specList {
+  border-top: 1px solid var(--card-border); /* ✅ variável global */
+  padding-top: 0.75rem;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+  color: var(--text-muted); /* ✅ variável global */
+}
+
+.specLabel {
+  font-weight: 600;
+  color: var(--text-color); /* ✅ variável global */
+}
+
+.specValue {
+  color: var(--text-color); /* ✅ variável global */
+}
+
+.related {
+  margin-top: 2rem;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.relatedLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.addButton {
+  width: 16rem;
+  height: 40px;
+  font-size: 1rem;
+  border: none;
+  color: var(--primary-text); /* ✅ variável global */
+  background-color: var(--primary-bg); /* ✅ variável global */
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background-color: var(--link-hover); /* ✅ variável global */
+}
+
+.backLink {
+  width: 8rem;
+  text-align: center;
+  padding: 0.45rem 0.75rem;
+  text-decoration: none;
+  color: var(--text-color); /* ✅ variável global */
+  background: transparent;
+  border: 2px solid var(--text-color); /* ✅ variável global */
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.backLink:hover {
+  background: rgba(49, 50, 55, 0.04);
+  text-decoration: none;
+}
+
+.backLink:focus-visible {
+  outline: 2px solid rgba(49, 50, 55, 0.12);
+  outline-offset: 2px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .media {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .mainImageWrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .thumbButton {
+    width: 56px;
+    height: 56px;
+  }
+
+  .actions .btn,
+  .actions .button,
+  .actions .c-button {
+    min-width: 140px;
+    height: 40px;
+  }
+}

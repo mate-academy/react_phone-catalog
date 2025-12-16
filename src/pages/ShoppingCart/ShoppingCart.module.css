@@ -1,0 +1,352 @@
+/* ShoppingCart.module.css
+   Breakpoints: 320 / 640 / 1200 / 1200+
+   Unidades em rem (1rem = 16px)
+*/
+
+/* Base */
+.container {
+  max-width: 68.75rem; /* 1100px */
+  margin: 4rem auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  color: var(--text-color);
+}
+
+/* Layout interno: lista de itens + resumo */
+.cartInner {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Lista de itens */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+/* Item do carrinho */
+.item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--card-border);
+}
+
+/* Thumb do produto */
+.thumb {
+  width: 4.5rem; /* 72px */
+  height: 4.5rem;
+  object-fit: cover;
+  border-radius: 0.37rem; /* 6px */
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  flex: 0 0 4.5rem;
+}
+
+/* Informações do produto */
+.info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.price {
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+/* Controles de quantidade e remoção */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qtyBtn {
+  width: 2rem; /* 32px */
+  height: 2rem;
+  border-radius: 0.37rem;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty {
+  min-width: 1.75rem; /* 28px */
+  text-align: center;
+  color: var(--text-color);
+}
+
+.remove {
+  background: transparent;
+  border: none;
+  color: var(--accent-color);
+  font-size: 1.25rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+/* Resumo do pedido (coluna direita em desktop) */
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-top: 1px solid var(--card-border);
+  padding-top: 1rem;
+  flex: 0 0 20rem; /* 320px */
+  min-width: 16.25rem; /* 260px */
+  background: transparent;
+}
+
+/* Linhas do resumo */
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-color);
+}
+
+/* Ações do resumo */
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.checkout {
+  background: var(--primary-bg);
+  color: var(--primary-text);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.37rem;
+  cursor: pointer;
+}
+
+.checkout:hover {
+  background: var(--link-hover);
+}
+
+.clear {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.37rem;
+  cursor: pointer;
+}
+
+/* Subtotal por item */
+.subtotal {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* Estados e hover */
+.qtyBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.qtyBtn:hover:not(:disabled) {
+  background: var(--link-hover);
+  color: var(--primary-text);
+}
+
+.remove:hover {
+  color: var(--danger-color, red);
+}
+
+/* Mensagem de carrinho vazio (centralizada) */
+.emptyCart {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-muted);
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* =========================
+   1) <= 320px (tiny mobile)
+   - layout empilhado
+   - thumbs menores, fontes reduzidas
+   ========================= */
+@media (max-width: 20rem) {
+  /* 320px */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    margin: 3rem auto;
+  }
+
+  .cartInner {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .thumb {
+    width: 3.5rem; /* 56px */
+    height: 3.5rem;
+    flex: 0 0 3.5rem;
+  }
+
+  .title {
+    font-size: 0.95rem;
+  }
+
+  .price {
+    font-size: 0.85rem;
+  }
+
+  .summary {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    border-top: 1px solid var(--card-border);
+    padding-top: 0.75rem;
+  }
+
+  .checkout {
+    width: 100%;
+    padding: 0.6rem;
+  }
+}
+
+/* =========================
+   2) <= 640px (mobile)
+   - layout: lista em cima, resumo abaixo
+   ========================= */
+@media (max-width: 40rem) {
+  /* 640px */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin: 3.5rem auto;
+  }
+
+  .cartInner {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .list {
+    order: 0;
+  }
+
+  .summary {
+    order: 1;
+    width: 100%;
+    flex: 0 0 auto;
+    min-width: 0;
+    border-top: 1px solid var(--card-border);
+    padding-top: 1rem;
+  }
+
+  .thumb {
+    width: 4rem; /* 64px */
+    height: 4rem;
+    flex: 0 0 4rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .controls {
+    gap: 0.5rem;
+  }
+
+  .checkout {
+    width: 100%;
+  }
+}
+
+/* =========================
+   3) <= 1200px (tablet / small desktop)
+   - layout em duas colunas: lista + resumo (resumo menor)
+   ========================= */
+@media (max-width: 75rem) {
+  /* 1200px */
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: 4rem auto;
+  }
+
+  .cartInner {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .list {
+    flex: 1 1 auto;
+  }
+
+  .summary {
+    flex: 0 0 18.75rem; /* 300px */
+    min-width: 16.25rem; /* 260px */
+  }
+
+  .thumb {
+    width: 4.5rem;
+    height: 4.5rem;
+    flex: 0 0 4.5rem;
+  }
+
+  .title {
+    font-size: 1.05rem;
+  }
+}
+
+/* =========================
+   4) >= 1201px (large desktop)
+   - mais espaço para resumo e itens
+   ========================= */
+@media (min-width: 75.06rem) {
+  /* 1201px */
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin: 4.5rem auto;
+  }
+
+  .cartInner {
+    gap: 2rem;
+  }
+
+  .summary {
+    flex: 0 0 22.5rem; /* 360px */
+    min-width: 18.75rem; /* 300px */
+  }
+
+  .thumb {
+    width: 5.5rem; /* 88px */
+    height: 5.5rem;
+    flex: 0 0 5.5rem;
+  }
+
+  .title {
+    font-size: 1.12rem;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+}

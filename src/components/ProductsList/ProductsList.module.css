@@ -1,0 +1,17 @@
+.container {
+  padding: 1rem;
+  color: var(--text-color); /* texto dinâmico */
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: var(--text-color); /* texto dinâmico */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
