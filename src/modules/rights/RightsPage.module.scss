@@ -1,0 +1,9 @@
+@import '../../shared/styles/mixins';
+
+.container {
+  @include content-padding-inline;
+}
+
+.title {
+  padding-top: 24px;
+}

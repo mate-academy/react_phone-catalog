@@ -1,0 +1,14 @@
+@import '../../../styles/variables';
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.backButtonTitle {
+  color: $secondary-text-color;
+  position: relative;
+  top: 1px;
+}

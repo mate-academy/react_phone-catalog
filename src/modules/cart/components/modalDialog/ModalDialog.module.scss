@@ -1,0 +1,48 @@
+@import '../../../../shared/styles/variables';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.confirmBtn,
+.cancelBtn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.confirmBtn {
+  background-color: $accent-color;
+  color: $white-color;
+  border: none;
+}
+
+.cancelBtn {
+  background-color: $hover-BG-color;
+  border: 1px solid $elements-color;
+  color: $accent-color;
+}

@@ -1,0 +1,78 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.footer {
+  box-shadow: 0 -1px 0 0 #E2E6E9;
+  color: $secondary-text-color;
+  background-color: $white-color;
+  padding-block: 32px; // регулювання висоти 
+}
+
+.footerInner {
+  @include content-padding-inline;
+  @include page-grid;
+
+  align-items: center;
+}
+
+.footerLogo {
+  grid-column: 1 / -1;
+  height: 32px;
+  width: 89px;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+    grid-row: 1;
+  }
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: column; 
+  gap: 16px;
+  align-items: flex-start;
+  grid-column: 1 / -1;
+  padding-block: 32px; // регулювання висоти 
+
+  @include on-tablet {
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
+    grid-column: span 4;
+    padding-block: 0; 
+  }
+  
+  @include on-desktop {
+    grid-column: span 8;
+    grid-row: 1;
+    padding-block: 0; 
+  }
+}
+
+.footerLink {
+  display: block;
+  text-decoration: none;
+  color: $secondary-text-color;
+  cursor: pointer; 
+
+  @include hover(transform, scale(1.1));
+}
+
+.footerButton {
+  grid-column: 1 / -1;
+  justify-self: center;
+
+  @include on-tablet {
+    grid-column: span 4;
+    justify-self: end;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+    grid-row: 1;
+  }
+}

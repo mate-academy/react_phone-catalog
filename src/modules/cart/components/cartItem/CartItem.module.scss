@@ -1,0 +1,128 @@
+@import '../../../../shared/styles/mixins';
+@import '../../../../shared/styles/variables';
+
+.cartItem {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  height: 160px;
+  border: 1px solid $elements-color;
+  border-radius: 16px;
+  background-color: $white-color;
+
+  @include on-tablet {
+    padding: 24px;
+    height: 128px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+.firstPart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.secondPart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @include on-tablet{
+    justify-content: space-between;
+    max-width: 200px;
+  }
+}
+
+.deleteButton {
+  display: inline-flex;
+  align-items: center; // по вертикалі
+  justify-content: center; // по горизонталі
+  background-color: $white-color;
+  height: 16px;
+  width: 16px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+
+  mask-image: url('/img/icons/close.svg');
+  mask-size: cover;
+
+  background-color: $icons-color;
+}
+
+.itemImg {
+  height: 80px;
+  width: 80px;
+
+  object-fit: contain;
+}
+
+.buttonsBlock {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.button {
+  display: inline-flex; // flex, щоб центрувати вміст
+  align-items: center; // по вертикалі
+  justify-content: center; // по горизонталі
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 1px solid $icons-color;
+  background-color: $hover-BG-color;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-text-color;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    border: 1px solid $elements-color;
+    cursor: not-allowed;
+  }
+
+  &:disabled .icon {
+    background-color: $icons-color;
+  }
+}
+
+.iconMinus {
+  width: 16px;
+  height: 16px;
+
+  mask-image: url('/img/icons/minus.svg');
+  mask-size: cover;
+
+  background-color: $primary-text-color;
+}
+
+.iconPlus {
+  width: 16px;
+  height: 16px;
+
+  mask-image: url('/img/icons/plus.svg');
+  mask-size: cover;
+
+  background-color: $primary-text-color;
+}
