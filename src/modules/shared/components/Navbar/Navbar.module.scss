@@ -1,4 +1,6 @@
-@use '../../../../styles/variables.scss' as *;
+@use '@/styles/variables.scss' as *;
+@use '@/styles/mixins.scss' as *;
+
 .header {
   display: flex;
   justify-content: center;
@@ -7,10 +9,16 @@
   display: flex;
   column-gap: 24px;
   box-shadow: 0 1px 0 0 #e2e6e9;
+  height: 48px;
   width: 100%;
   box-sizing: border-box;
   max-width: 1920px;
+  justify-content: space-between;
+  @include tablet {
+    height: 64px;
+  }
   &__logo {
+    display: flex;
     img {
       display: block;
     }
@@ -20,9 +28,12 @@
     align-items: stretch;
   }
   &__list {
-    display: flex;
-    gap: 64px;
-    align-items: stretch;
+    display: none;
+    @include tablet {
+      display: flex;
+      gap: 64px;
+      align-items: stretch;
+    }
   }
   &__link {
     display: flex;
@@ -58,10 +69,14 @@
     }
   }
   &__icons {
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-    align-items: center;
+    display: none;
+
+    @include tablet {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      align-items: center;
+    }
   }
   &__iconImage {
     position: relative;
@@ -80,7 +95,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    border:1px solid $color-bg;
+    border: 1px solid $color-bg;
   }
   &__icon {
     cursor: pointer;
@@ -108,6 +123,18 @@
       &::after {
         width: 100%; // full width when active
       }
+    }
+  }
+  &__burgerMenu {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 1px 0 0 0 #e2e6e9;
+
+    @include tablet {
+      display: none;
     }
   }
 }

@@ -2,13 +2,31 @@
   box-shadow: 0 -1px 0 0 $color-elements;
   display: flex;
   justify-content: space-between;
-  padding: 32px 152px;
-  align-items: center;
+  align-items: flex-start;
+
+  // 1. Change fixed padding to relative padding for mobile first
+  padding: 32px 16px;
+  width: 100%;
+
+  // 2. Add Media Query for Desktop
+  @media (min-width: 1024px) {
+    padding: 32px 152px;
+  }
+
+  // 3. Handle mobile layout (stack items vertically on phones)
+  @media (max-width: 640px) {
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
   &__logo {
     img {
       display: block;
+      // Prevent massive logos if the SVG lacks dimensions
+      max-width: 100%;
     }
   }
+
   &__link {
     @include type(
       $uppercase-size,
@@ -17,20 +35,39 @@
       $uppercase-weight
     );
     color: $color-secondary;
+    transition: color 0.3s; // Smooth hover effect
+
     &:hover {
       color: $color-primary;
     }
   }
+
   &__links {
     display: flex;
-    align-items: center;
-    column-gap: 86px;
+          align-items: flex-start;
+
+    // Use 'gap' instead of 'column-gap' for better flex support
+    gap: 32px;
+
+    // Only use the huge 86px gap on large screens
+    @media (min-width: 1024px) {
+      gap: 86px;
+    }
+
+    // Stack links on very small screens? Optional.
+    @media (max-width: 400px) {
+      flex-direction: column;
+      gap: 16px;
+    }
   }
+
   &__backtoTop {
     display: flex;
     align-items: center;
-    column-gap: 16px;
+    gap: 16px;
+    align-self: center
   }
+
   &__backtoTopText {
     @include type(
       $small-size,
@@ -41,6 +78,7 @@
     );
     color: $color-secondary;
   }
+
   &__backtoTopIcon {
     background: #fff;
     border: 1px solid $color-elements;
@@ -50,6 +88,9 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: border-color 0.3s;
+    // Usually looks better than sharp corners
+
     &:hover {
       border-color: $color-primary;
     }

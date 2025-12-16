@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Logo from '/img/Logo.svg';
 import CartIcon from '/img/icons/cart.svg';
 import HeartIcon from '/img/icons/heart.svg';
+import burgerMenu from '/img/icons/burger-menu.svg';
 import { useCart } from '@/modules/CartFavContext/CartContext';
 export const Navbar = () => {
   const links = [
@@ -71,6 +72,9 @@ export const Navbar = () => {
               )}
             </div>
           </NavLink>
+        </div>
+        <div className={styles.navbar__burgerMenu}>
+          <img src={burgerMenu} alt="Menu" />
         </div>
       </nav>
     </header>

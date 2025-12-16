@@ -37,11 +37,22 @@
 //     z-index: 10;
 //   }
 // }
+
 .categoryImage {
   width: 100%;
   height: auto;
   object-fit: cover;
   aspect-ratio: 1 / 1;
+
+  @include desktop {
+    max-width: 368px;
+    max-height: 368px;
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out;
+      z-index: 10;
+    }
+  }
 }
 .categoryInfo {
   display: flex;

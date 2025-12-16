@@ -2,16 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
+// Import images to ensure bundler (Vite/Webpack) finds them correctly
+// Adjust path based on your folder structure
+import logoFooter from '/img/Logo1.svg';
+import iconUp from '../../../../../public/img/up-icon.svg';
+
 export const Footer: React.FC = () => {
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className={styles.footer}>
-      <Link
-        to="/"
-        className={styles.footer__logo}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      >
-        <img src="img/logo-footer.svg" alt="Footer logo" />
+    <footer className={styles.footer}>
+      <Link to="/" className={styles.footer__logo} onClick={handleScrollTop}>
+        <img src={logoFooter} alt="Logo" />
       </Link>
+
       <div className={styles.footer__links}>
         <a
           className={styles.footer__link}
@@ -28,16 +34,19 @@ export const Footer: React.FC = () => {
           RIGHTS
         </Link>
       </div>
+
       <div className={styles.footer__backtoTop}>
         <span className={styles.footer__backtoTopText}>Back to top</span>
         <button
           className={styles.footer__backtoTopIcon}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={handleScrollTop}
+          aria-label="Scroll back to top" // Good for accessibility
         >
-          <img src="img/up-icon.svg" alt="Back to top" />
+          <img src={iconUp} alt="" />
+          {/* Empty alt because button has aria-label */}
         </button>
       </div>
-    </div>
+    </footer>
   );
 };
 
