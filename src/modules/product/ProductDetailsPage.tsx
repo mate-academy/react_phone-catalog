@@ -39,8 +39,8 @@ export const ProductDetailsPage = () => {
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedImg, setSelectedImg] = useState<string | undefined>();
 
-  // const withBase = (path?: string) =>
-  //   path ? `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}` : '';
+  // eslint-disable-next-line no-console
+  console.log('selectedImg: ', selectedImg);
 
   useEffect(() => {
     if (currentProduct) {
@@ -101,7 +101,11 @@ export const ProductDetailsPage = () => {
                       key={image}
                       src={`${image}`}
                       alt={image}
-                      className={styles.smallPhoto}
+                      className={
+                        selectedImg === image
+                          ? styles.smallPhotoSelected
+                          : styles.smallPhoto
+                      }
                       onClick={() =>
                         setSelectedImg(currentProduct.images[index])
                       }
@@ -117,7 +121,11 @@ export const ProductDetailsPage = () => {
                       key={image}
                       src={`${image}`}
                       alt={image}
-                      className={styles.smallPhoto}
+                      className={
+                        selectedImg === image
+                          ? styles.smallPhotoSelected
+                          : styles.smallPhoto
+                      }
                       onClick={() =>
                         setSelectedImg(currentProduct.images[index])
                       }

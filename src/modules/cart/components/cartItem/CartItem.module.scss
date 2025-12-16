@@ -42,7 +42,7 @@
 
   @include on-tablet{
     justify-content: space-between;
-    width: 200px;
+    max-width: 200px;
   }
 }
 
