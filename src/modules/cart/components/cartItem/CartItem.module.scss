@@ -2,38 +2,48 @@
 @import '../../../../shared/styles/variables';
 
 .cartItem {
+  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 16px;
   align-items: center;
-  padding-inline: 16px;
+  padding: 16px;
   height: 160px;
   border: 1px solid $elements-color;
   border-radius: 16px;
   background-color: $white-color;
 
   @include on-tablet {
-    padding-inline: 24px;
+    padding: 24px;
     height: 128px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
   }
-}
-
-.cartItemMobile {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
 }
 
 .firstPart {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
 }
 
 .secondPart {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+
+  @include on-tablet{
+    justify-content: space-between;
+    width: 200px;
+  }
 }
 
 .deleteButton {

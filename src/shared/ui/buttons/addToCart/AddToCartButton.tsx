@@ -35,11 +35,28 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
     }
   };
 
+  const removeFromCart = () => {
+    if (!isInCart) {
+      return;
+    }
+
+    if (product) {
+      cartDispatch({
+        type: 'delete_cartItem',
+        payload: {
+          id: product.id,
+        },
+      });
+    }
+  };
+
+  const handleCartButtonClick = () =>
+    isInCart ? removeFromCart() : addToCart();
+
   return (
     <button
       className={`button-text ${isInCart ? styles.addedButton : styles.addButton}`}
-      disabled={isInCart}
-      onClick={addToCart}
+      onClick={handleCartButtonClick}
     >
       {isInCart ? 'Added' : 'Add to cart'}
     </button>

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { BREAKPOINTS } from '../../../../shared/styles/constants';
 import { CartDispatchContext } from '../../../../shared/context/CartContext';
 import { CartItemType } from '../../../../shared/types/CartItemType';
 import styles from './CartItem.module.scss';
@@ -9,7 +8,6 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ cartItem }) => {
-  const isMobile = window.innerWidth < BREAKPOINTS.tablet;
   const cartDispatch = useContext(CartDispatchContext);
   const isButtonPassive = cartItem.quantity === 1;
   const fullItemPrice = cartItem.quantity * cartItem.product.price;
@@ -37,75 +35,39 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
 
   return (
     <div className={styles.cartItem}>
-      {isMobile ? (
-        <div className={styles.cartItemMobile}>
-          <div className={styles.firstPart}>
-            <button
-              className={styles.deleteButton}
-              onClick={() => handleDeleteButtonClick(cartItem.id)}
-            >
-              <span className={styles.icon} aria-hidden="true" />
-            </button>
-            <img
-              className={styles.itemImg}
-              src={cartItem.product.image}
-              alt={cartItem.product.name}
-            ></img>
-            <p className="body-text">{cartItem.product.name}</p>
-          </div>
-          <div className={styles.secondPart}>
-            <div className={styles.buttonsBlock}>
-              <button
-                className={styles.button}
-                disabled={isButtonPassive}
-                onClick={() => handleMinusButtonClick(cartItem.id)}
-              >
-                <span className={styles.iconMinus} aria-hidden="true" />
-              </button>
-              <p className="body-text">{cartItem.quantity}</p>
-              <button
-                className={styles.button}
-                onClick={() => handlePlusButtonClick(cartItem.id)}
-              >
-                <span className={styles.iconPlus} aria-hidden="true" />
-              </button>
-            </div>
-            <h3>{`$${fullItemPrice}`}</h3>
-          </div>
-        </div>
-      ) : (
-        <>
+      <div className={styles.firstPart}>
+        <button
+          className={styles.deleteButton}
+          onClick={() => handleDeleteButtonClick(cartItem.id)}
+        >
+          <span className={styles.icon} aria-hidden="true" />
+        </button>
+        <img
+          className={styles.itemImg}
+          src={cartItem.product.image}
+          alt={cartItem.product.name}
+        ></img>
+        <p className="body-text">{cartItem.product.name}</p>
+      </div>
+      <div className={styles.secondPart}>
+        <div className={styles.buttonsBlock}>
           <button
-            className={styles.deleteButton}
-            onClick={() => handleDeleteButtonClick(cartItem.id)}
+            className={styles.button}
+            disabled={isButtonPassive}
+            onClick={() => handleMinusButtonClick(cartItem.id)}
           >
-            <span className={styles.icon} aria-hidden="true" />
+            <span className={styles.iconMinus} aria-hidden="true" />
           </button>
-          <img
-            className={styles.itemImg}
-            src={cartItem.product.image}
-            alt={cartItem.product.name}
-          ></img>
-          <p className="body-text">{cartItem.product.name}</p>
-          <div className={styles.buttonsBlock}>
-            <button
-              className={styles.button}
-              disabled={isButtonPassive}
-              onClick={() => handleMinusButtonClick(cartItem.id)}
-            >
-              <span className={styles.iconMinus} aria-hidden="true" />
-            </button>
-            <p className="body-text">{cartItem.quantity}</p>
-            <button
-              className={styles.button}
-              onClick={() => handlePlusButtonClick(cartItem.id)}
-            >
-              <span className={styles.iconPlus} aria-hidden="true" />
-            </button>
-          </div>
-          <h3>{`$${fullItemPrice}`}</h3>
-        </>
-      )}
+          <p className="body-text">{cartItem.quantity}</p>
+          <button
+            className={styles.button}
+            onClick={() => handlePlusButtonClick(cartItem.id)}
+          >
+            <span className={styles.iconPlus} aria-hidden="true" />
+          </button>
+        </div>
+        <h3>{`$${fullItemPrice}`}</h3>
+      </div>
     </div>
   );
 };

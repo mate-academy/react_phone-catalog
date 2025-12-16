@@ -37,12 +37,14 @@
   position: relative;
   overflow: hidden;
 
+  @include hover(transform, scale(1.05));
+
   @include on-tablet {
     height: 187px;
     width: 187px;
     border-radius: 8px;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
   }
 
   @include on-desktop {
@@ -50,7 +52,7 @@
     width: 368px;
     border-radius: 8px;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
   }
 }
 
@@ -60,7 +62,8 @@
   left: 15%;
   width: 110%;
   height: auto;
-  object-fit: contain; 
+  object-fit: contain;
+
 }
 
 .categoryInfo {

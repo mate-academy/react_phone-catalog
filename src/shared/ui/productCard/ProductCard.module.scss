@@ -14,6 +14,8 @@
   height: 440px;
   border-radius: 8px;
 
+  @include hover(transform, scale(1.05));
+
   @include on-tablet {
     min-width: 229px;
     max-width: 288px;
