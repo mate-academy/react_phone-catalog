@@ -1,0 +1,67 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  padding-top: 24px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #89939a;
+  font-size: 12px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.breadcrumbLink {
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.separator {
+  color: #b4bdc3;
+}
+
+.current {
+  color: #313237;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 8px;
+  color: #313237;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+.subtitle {
+  margin: 0 0 32px;
+  color: #89939a;
+  font-size: 14px;
+
+  @include on-tablet {
+    margin: 0 0 40px;
+  }
+}
+
+.empty {
+  color: #89939a;
+  font-size: 14px;
+}
+
+.grid {
+  @include page-grid;
+
+  row-gap: 40px;
+}

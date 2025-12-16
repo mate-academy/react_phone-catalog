@@ -1,0 +1,23 @@
+.root {
+  padding: 64px 0;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 12px;
+}
+
+.text {
+  margin: 0 0 16px;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+  color: #313237;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #0f0f11;
+  }
+}

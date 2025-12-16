@@ -1,0 +1,221 @@
+@use '../../../../styles/mixins' as *;
+
+.slider {
+  @include page-grid;
+
+  row-gap: 16px;
+  align-items: center;
+}
+
+.imageWrapper {
+  grid-column: 1 / -1;
+  position: relative;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -16px;
+  overflow: hidden;
+
+  @include on-tablet {
+    margin: 0;
+    flex-direction: row;
+    align-items: stretch;
+    grid-column: 2 / -2;
+    height: 225px;
+    overflow: hidden;
+  }
+
+  @include on-desktop {
+    grid-column: 2 / -2;
+    min-height: 320px;
+    height: 400px;
+    width: 100%;
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  margin: 0 auto;
+
+  @include on-tablet {
+    flex: 1;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    align-self: center;
+    display: block;
+    object-fit: contain;
+  }
+}
+
+.textBlock {
+  flex: 0 0 auto;
+  align-self: stretch;
+  width: 100%;
+  margin: 0 0 35px;
+  padding: 0 70px;
+  background-color: transparent;
+  text-align: center;
+
+  @include on-tablet {
+    text-align: left;
+    flex: 0 0 45%;
+    margin: 10px;
+    padding: 32px 32px 32px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #fff;
+    border-radius: 25px;
+    background-color: rgb(47, 44, 44);
+  }
+}
+
+.title {
+  font-weight: 800;
+  font-size: 35px;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #8f5bff, #d96dff, #ffb84e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 0;
+    font-size: 20px;
+    line-height: 1.1;
+  }
+
+  @include on-desktop {
+    font-size: 32px;
+  }
+}
+
+.emoji {
+  display: none;
+  position: relative;
+  top: -3px;
+  line-height: 1;
+  background: none;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  color: #fc0;
+
+  @include on-tablet {
+    display: inline;
+  }
+}
+
+.subtitle {
+  display: none;
+
+  @include on-tablet {
+    display: inline;
+    margin-top: 10px;
+    font-size: 10px;
+    opacity: 0.8;
+  }
+
+  @include on-desktop {
+    font-size: 16px;
+  }
+}
+
+.button {
+  align-self: flex-start;
+  margin-top: auto;
+  display: none;
+  border: 1px solid #fff;
+  border-radius: 48px;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    background: #fff;
+    color: #1d1d1f;
+  }
+
+  @include on-tablet {
+    display: block;
+    padding: 10px 24px;
+    font-size: 10px;
+  }
+
+  @include on-desktop {
+    padding: 14px 38px;
+  }
+}
+
+.arrow {
+  width: 100%;
+  border: 1px solid #b4bdc3;
+  background: transparent;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  font-size: 22px;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    background: #f5f5f6;
+  }
+
+  @include on-tablet {
+    display: flex;
+    align-self: stretch;
+  }
+
+  @include on-desktop {
+    display: flex;
+    align-self: stretch;
+  }
+}
+
+.arrowLeft {
+  grid-column: 1 / 2;
+}
+
+.arrowRight {
+  grid-column: -2 / -1;
+}
+
+.dots {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 24px;
+  height: 4px;
+  border: none;
+  border-radius: 999px;
+  background: #e2e6e9;
+  cursor: pointer;
+}
+
+.dotActive {
+  background: #313237;
+}

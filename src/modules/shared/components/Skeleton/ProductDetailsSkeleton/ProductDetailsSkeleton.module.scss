@@ -1,0 +1,123 @@
+@use '../../../../../styles/mixins' as *;
+
+.root {
+  padding-bottom: 24px;
+}
+
+.titleRow {
+  margin: 24px 0 16px;
+}
+
+.title {
+  height: 28px;
+  width: 60%;
+  border-radius: 8px;
+}
+
+.main {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.imagesBlock {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+}
+
+.thumbs {
+  display: grid;
+  gap: 8px;
+}
+
+.thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+}
+
+.mainImage {
+  height: 420px;
+  border-radius: 12px;
+}
+
+.infoBlock {
+  display: grid;
+  gap: 16px;
+}
+
+.optionsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  width: 45%;
+  height: 14px;
+  border-radius: 6px;
+}
+
+.id {
+  width: 80px;
+  height: 14px;
+  border-radius: 6px;
+}
+
+.colorsRow {
+  width: 70%;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.capRow {
+  width: 80%;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.priceBlock {
+  display: grid;
+  gap: 12px;
+}
+
+.price {
+  width: 45%;
+  height: 28px;
+  border-radius: 8px;
+}
+
+.actions {
+  width: 70%;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.specs {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.specLeft {
+  width: 40%;
+  height: 14px;
+  border-radius: 6px;
+}
+
+.specRight {
+  width: 35%;
+  height: 14px;
+  border-radius: 6px;
+}

@@ -1,0 +1,23 @@
+@use '../../../../styles/mixins' as *;
+
+.skeleton {
+  display: block;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #f1f2f4 0%,
+    #e6e8eb 40%,
+    #f1f2f4 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+.rounded {
+  border-radius: 999px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

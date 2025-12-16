@@ -1,0 +1,90 @@
+@use '../../../../styles/mixins' as *;
+
+.wrapper {
+  position: relative;
+
+  @include page-grid;
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 2 / -2;
+  }
+}
+
+.slider {
+  grid-column: 1 / -1;
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b4bdc3;
+    border-radius: 999px;
+  }
+}
+
+.card {
+  scroll-snap-align: start;
+  flex: 0 0 212px;
+
+  @include on-tablet {
+    flex: 0 0 224px;
+  }
+
+  @include on-desktop {
+    flex: 0 0 272px;
+  }
+}
+
+.arrows {
+  position: absolute;
+  top: -40px;
+  right: 0;
+
+  display: flex;
+  gap: 16px;
+}
+
+.arrowButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #b4bdc3;
+  background-color: #fff;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  line-height: 1;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background: #f5f5f6;
+    border-color: #313237;
+    transform: translateY(-1px);
+  }
+}
+
+.arrowButton:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
