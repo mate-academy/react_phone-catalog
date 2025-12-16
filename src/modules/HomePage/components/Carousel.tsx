@@ -12,6 +12,11 @@ export const Carousel: React.FC = () => {
     { image: 'img/tablet-banner.webp', link: '/tablets' },
     { image: 'img/headset-banner.webp', link: '/accessories' },
   ];
+  const mobileSlides = [
+    { image: 'img/phone-banner-mobile.webp', link: '/phones' },
+    { image: 'img/tablet-banner-mobile.webp', link: '/tablets' },
+    { image: 'img/headset-banner-mobile.webp', link: '/accessories' },
+  ];
 
   const next = () => {
     setActiveIndex(prev => (prev + 1) % slides.length);
@@ -80,11 +85,17 @@ export const Carousel: React.FC = () => {
                 to={slide.link}
                 className={styles.carousel__slide}
               >
-                <img
-                  className={styles.carousel__image}
-                  src={slide.image}
-                  alt={`Slide ${index}`}
-                />
+                <picture>
+                  <source
+                    media="(max-width: 640px)"
+                    srcSet={mobileSlides[index].image}
+                  />
+                  <img
+                    className={styles.carousel__image}
+                    src={slide.image}
+                    alt={`Slide ${index}`}
+                  />
+                </picture>
               </Link>
             ))}
           </div>

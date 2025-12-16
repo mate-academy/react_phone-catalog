@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Product } from '@/types';
 import { SliderItem } from '../../shared/components/SliderItem/SliderItem';
 import styles from './SliderComponent.module.scss';
+
 type SliderComponentProps = {
   products: Product[];
   title: string;
   showDiscount?: boolean;
 };
+
 export const SliderComponent: React.FC<SliderComponentProps> = ({
   products,
   title,

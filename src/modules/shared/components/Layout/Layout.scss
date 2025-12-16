@@ -4,23 +4,18 @@
   width: 100%;
   flex: 1;
   margin: 0 auto;
-
-  // ТУТ МАГІЯ:
-  // Як тільки екран стає планшетом:
+  padding: 0 16px;
   @include mobile {
-    padding: 0 32px; // Збільшуємо відступи
   }
 
-  // Як тільки екран стає ноутбуком:
   @include tablet {
-    // max-width: 960px; // Обмежуємо ширину
-    padding: 0 32px;
+    // max-width: 960px;
+    padding: 0 24px;
   }
 
-  // Як тільки екран стає великим десктопом:
   @include desktop {
-    max-width: 1136px; // Обмежуємо ширину
-    padding: 0; // Відступи прибираємо
+    max-width: 1136px;
+    padding: 0;
   }
   > section {
     margin-bottom: 80px;
@@ -30,6 +25,6 @@
 header {
   position: sticky;
   top: 0;
-  z-index: 1000; /* so it stays above content */
-  background: white; /* avoid transparency when scrolling */
+  z-index: 1000;
+  background: white;
 }

@@ -1,25 +1,47 @@
+@use '@/styles/mixins' as *;
+
 // .PageTitle {
 //   margin-bottom: 56px;
 // }
+.categorySection {
+  width: 100%;
+  // Додаємо відступи з боків, щоб на мобільному контент не прилипав до країв
+  // padding: 0 16px;
 
+  @media tablet {
+    padding: 0; // На десктопі зазвичай відступи контролює загальний контейнер
+  }
+}
 .categoryGrid {
   display: flex;
-  column-gap: 16px;
+  flex-direction: column;
+  gap: 16px;
+
+  @include tablet {
+    flex-direction: row;
+  }
 }
 
 .categoryCard {
   display: flex;
   flex-direction: column;
   row-gap: 24px;
+  flex: 1;
 }
+// .categoryImage {
+//   max-width: 368px;
+//   max-height: 368px;
+//   &:hover {
+//     transform: scale(1.05);
+//     transition: transform 0.3s ease-in-out;
+//     z-index: 10;
+//   }
+// }
 .categoryImage {
-  max-width: 368px;
-  max-height: 368px;
-  &:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-    z-index: 10;
-  }
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 .categoryInfo {
   display: flex;

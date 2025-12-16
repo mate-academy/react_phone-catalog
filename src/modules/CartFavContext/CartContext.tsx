@@ -126,7 +126,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         cart,
         favorites,
-
         totalCount,
         totalFavoritesCount,
         addToCart,

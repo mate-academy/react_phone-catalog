@@ -1,3 +1,5 @@
+@use '@/styles/mixins' as *;
+
 .carousel {
   display: flex;
   flex-direction: column;
@@ -8,34 +10,32 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    column-gap: 16px;
-    align-items: center;
+    column-gap: 0;
     justify-content: center;
+
+    @include tablet {
+      column-gap: 16px; // Прибираємо відступ, щоб картинка була точно від краю до краю
+    }
   }
 
-  // Це "вікно", яке обрізає зайве
   &__window {
     flex: 1;
-    overflow: hidden; // Приховує слайди, що виходять за межі
-    aspect-ratio: 26 / 10;
-    // background-color: #b4bdc3; // Можна розкоментувати для налагодження
+    overflow: hidden;
     touch-action: pan-y;
+    width: 100%;
   }
 
-  // Це довга стрічка зі слайдами
   &__list {
     display: flex;
     width: 100%;
     height: 100%;
-    // 🔥 Головна магія анімації:
     transition: transform 0.5s ease-in-out;
   }
 
-  // Окремий слайд
   &__slide {
-    min-width: 100%; // Кожен слайд займає 100% ширини вікна
+    min-width: 100%;
     height: 100%;
-    display: block; // Важливо для Link
+    display: block;
   }
 
   &__image {
@@ -43,22 +43,25 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    // aspect-ratio: 1/1;
   }
 
   &__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 400px; // Краще зробити auto або 100% висоти батька, якщо можливо
-    width: 32px;
-    cursor: pointer;
-    background-color: #ffffff;
-    // Переконайтеся, що змінні кольорів імпортовані або визначені
-    border: 1px solid $color-icons;
-    transition: all 0.3s;
+    display: none;
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      cursor: pointer;
+      background-color: #ffffff;
+      border: 1px solid $color-icons;
+      transition: all 0.3s;
+    }
 
     &:hover {
-      border-color: $color-primary; // Приклад кольору primary
+      border-color: $color-primary;
     }
   }
 }

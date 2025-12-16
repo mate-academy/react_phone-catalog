@@ -1,17 +1,15 @@
 @mixin mobile {
   @media (min-width: 320px) {
-    @content; // Сюди потрапить твій код
+    @content;
   }
 }
 
-// Для ноутбуків (від 1024px)
 @mixin tablet {
   @media (min-width: 640px) {
     @content;
   }
 }
 
-// Для великих екранів (від 1280px)
 @mixin desktop {
   @media (min-width: 1200px) {
     @content;
