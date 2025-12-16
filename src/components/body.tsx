@@ -1,8 +1,8 @@
 import { List } from './list';
 
-export const Body = () => (
+export const Body = ({ phones }) => (
   <main className="body">
     <h1>Mobile phones</h1>
-    <List />
+    <List phones={phones} />
   </main>
 );
