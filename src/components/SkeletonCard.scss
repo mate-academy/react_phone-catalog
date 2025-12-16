@@ -1,0 +1,21 @@
+.skeleton-card {
+  border-radius: 8px;
+  border: 1px solid #e2e6e9;
+  padding: 16px;
+  background: #fff;
+
+  animation: skeleton-fade 1.4s linear infinite;
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 200px;
+  background: #f2f4f7;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-fade {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

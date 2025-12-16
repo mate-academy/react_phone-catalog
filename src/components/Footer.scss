@@ -1,0 +1,152 @@
+.footer {
+  background-color: #fff;
+  box-shadow: 0 -1px 0 #e2e6e9;
+  font-family: Mont, sans-serif;
+
+
+     @media (max-width: 640px) {
+      padding: 32px 16px;
+    box-shadow: none;
+    border-top: 1px solid #e2e6e9;
+     }
+
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1136px;
+    height: 96px;
+    margin: 0 auto;
+    padding: 0 24px;
+
+
+    @media (max-width: 1199px) {
+      width: 640px;
+      margin: 0 32px;
+      flex-wrap: nowrap;
+    }
+
+    @media (max-width: 639px) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px; // между блоками лого / навигация / кнопка
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__logo {
+    display: flex;
+
+ @media (max-width: 640px) {
+         margin-bottom: 0;
+      }
+
+
+    img {
+      height: 32px;
+      width: 89px;
+
+      @media (max-width: 640px) {
+        height: 24px;
+         width: auto;
+      }
+    }
+
+  }
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 378.67px;
+    width: 100%;
+
+    @media (max-width: 1199px) {
+      max-width: 192px;
+      justify-content: space-between;
+
+    }
+
+    @media (max-width: 640px) {
+     display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      width: 100%;
+    }
+
+    a {
+      color: #89939a;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #313237;
+      }
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: #89939a;
+    white-space: nowrap;
+    margin-right: 0;
+
+
+
+    @media (max-width: 1199px) {
+      margin-right: 32px;
+    }
+
+
+    @media (max-width: 640px) {
+      justify-content: flex-start;
+      padding: 0;
+      margin-top: 8px;
+      gap: 8px;
+      width: 100%;
+    }
+
+    span {
+      line-height: 15px;
+    }
+
+    &:hover {
+      color: #313237;
+
+      .footer__arrow {
+        border-color: #313237;
+      }
+    }
+
+    @media (max-width: 640px) {
+      margin-top: 8px;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+
+}
