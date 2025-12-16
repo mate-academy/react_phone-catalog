@@ -193,7 +193,7 @@ const BrandNewModels: React.FC<BrandNewModelsProps> = ({
       <div className={styles.buttonRow}>
         <Button
           onClick={handleAddToCart}
-          variant="primary" // mantém aparência consistente; não muda texto
+          variant="primary"
           size="md"
           className={styles.addButton}
           data-testid={`${dataTestId}-add-button`}

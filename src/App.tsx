@@ -69,7 +69,7 @@ const AccessoriesAllWrapper: React.FC = () => {
 
 export const App: React.FC = () => (
   <ThemeProvider>
-    <Router>
+    <Router basename="/react_phone-catalog">
       <FavoritesProvider>
         <CartProvider>
           <ToastProvider>

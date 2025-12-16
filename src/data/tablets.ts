@@ -19,6 +19,8 @@ export interface TabletProduct {
   capacityAvailable?: string[];
   category?: string;
   age?: number;
+  detailsLink?: string;
+  detailsAvailable?: boolean;
 }
 
 // Reaproveitando imagens (substitua pelos caminhos corretos)
@@ -72,6 +74,8 @@ export const tablets: TabletProduct[] = Array.from({ length: 42 }, (_, i) => {
     capacityAvailable: baseCapacities,
     category: 'Tablets',
     age: i,
+    detailsLink: '/not-found',
+    detailsAvailable: false,
   };
 });
 
@@ -100,4 +104,6 @@ export const sampleTablet: TabletProduct = {
   capacityAvailable: ['64GB', '128GB', '256GB'],
   category: 'Tablets',
   age: 999,
+  detailsLink: '/not-found',
+  detailsAvailable: false,
 };

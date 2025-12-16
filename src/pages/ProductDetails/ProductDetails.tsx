@@ -98,30 +98,6 @@ const getSuggestedProducts = (
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
-  // combinado para checagens rápidas (evita falso negativo para samples)
-  const combinedProducts = useMemo<Product[]>(
-    () => [
-      ...phones,
-      ...tablets.filter(t => !phones.some(p => p.id === t.id)),
-      ...accessories.filter(
-        a =>
-          !phones.some(p => p.id === a.id) && !tablets.some(t => t.id === a.id),
-      ),
-      ...products.filter(
-        p =>
-          !phones.some(ph => ph.id === p.id) &&
-          !tablets.some(t => t.id === p.id) &&
-          !accessories.some(a => a.id === p.id),
-      ),
-      ...(samplePhone ? [samplePhone as Product] : []),
-      ...(sampleTablet ? [sampleTablet as Product] : []),
-      ...(sampleAccessory ? [sampleAccessory as Product] : []),
-    ],
-    [],
-  );
-
-  const productFound = combinedProducts.find(p => p.id === id);
-
   // contexto do carrinho e favoritos
   const { addItem, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
@@ -315,7 +291,11 @@ const ProductDetails: React.FC = () => {
   // 7. RENDERIZAÇÃO PRINCIPAL
   //----------------------------------------------------------
 
-  if (!productFound) {
+  if (isLoading) {
+    return <Loader message="Carregando detalhes do produto..." />;
+  }
+
+  if (!product) {
     return (
       <main className={styles.container}>
         <h1 className={styles.title}>Produto não encontrado</h1>
@@ -327,10 +307,6 @@ const ProductDetails: React.FC = () => {
         </Link>
       </main>
     );
-  }
-
-  if (isLoading) {
-    return <Loader message="Carregando detalhes do produto..." />;
   }
 
   const safeProduct = product!;

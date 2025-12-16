@@ -6,35 +6,44 @@
   min-height: 70vh;
   text-align: center;
   padding: 2rem;
-  color: var(--text-color); /* ✅ texto dinâmico */
+  color: var(--text-color);
 }
 
+/* Título mais forte e com melhor contraste */
 .title {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--accent-color); /* ✅ destaque dinâmico */
+  color: var(--accent-color);
+  line-height: 1.2;
 }
 
+/* Texto mais suave e legível */
 .text {
   font-size: 1rem;
-  color: var(--text-muted); /* ✅ texto secundário */
+  color: var(--text-muted);
   margin-bottom: 2rem;
+  max-width: 420px;
 }
 
+/* Botão de retorno */
 .backLink {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background: var(--primary-bg); /* ✅ botão principal */
-  color: var(--primary-text); /* ✅ texto do botão */
+  background: var(--primary-bg);
+  color: var(--primary-text);
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
+/* Hover mais suave */
 .backLink:hover {
-  background: var(--link-hover); /* ✅ hover dinâmico */
+  background: var(--link-hover);
+  transform: translateY(-2px);
 }
 
 /* -------------------------------

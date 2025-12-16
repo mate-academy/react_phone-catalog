@@ -92,7 +92,7 @@ const Phones: React.FC = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchQuery, perPage]);
+  }, [searchQuery]);
 
   const handleSearch = useCallback((term: string) => {
     setSearchQuery(term);

@@ -75,6 +75,8 @@ export const accessories: AccessoriesProduct[] = Array.from(
       capacityAvailable: baseCapacities,
       category: 'Acessórios',
       age: i,
+      detailsLink: '/not-found',
+      detailsAvailable: false,
     };
   },
 );
@@ -105,4 +107,6 @@ export const sampleAccessory = {
   capacityAvailable: ['N/A'],
   category: 'Acessórios',
   age: 999,
+  detailsLink: '/not-found',
+  detailsAvailable: false,
 };

@@ -1,4 +1,3 @@
-// src/pages/NotFound/NotFound.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './NotFound.module.css';
@@ -7,10 +6,16 @@ const NotFound: React.FC = () => {
   return (
     <main className={styles.container}>
       <h1 className={styles.title}>Página não encontrada</h1>
+
       <p className={styles.text}>
-        O endereço que você tentou acessar não existe.
+        O endereço que você tentou acessar não existe ou foi removido.
       </p>
-      <Link to="/" className={styles.backLink}>
+
+      <Link
+        to="/"
+        className={styles.button}
+        aria-label="Voltar para a página inicial"
+      >
         Ir para a Home
       </Link>
     </main>
