@@ -111,7 +111,14 @@ export const Card: React.FC<Props> = ({ item, title }) => {
     <>
       <article className={style.article}>
         <div className={`${style.wrapper} ${style.card}`}>
-          <Link to={`/${item.category}/${product.id}`}>
+          <Link
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+              });
+            }}
+            to={`/${item.category}/${product.id}`}
+          >
             <div className={style.card__header}>
               <div className={style.card__link}>
                 <img className={style.card__img} src={product.img} alt="" />

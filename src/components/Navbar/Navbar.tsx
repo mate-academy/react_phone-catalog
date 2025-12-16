@@ -15,7 +15,9 @@ const Navbar = () => {
 
   const { t } = useTranslation();
 
-  const { cartItems, favoritItems } = useContext(ShoppingContex);
+  const { cartItems, favoritItems, getCartTotal } = useContext(ShoppingContex);
+
+  const { totalItems } = getCartTotal();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -124,7 +126,7 @@ const Navbar = () => {
           >
             <img src={shopping} alt="shopping" />
             {!!cartItems.length && (
-              <span className={style.shopping}>{cartItems.length}</span>
+              <span className={style.shopping}>{totalItems}</span>
             )}
           </NavLink>
         </div>

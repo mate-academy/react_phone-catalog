@@ -12,7 +12,7 @@ interface ShoppingContexType {
   deleteItems: (item: ShoppingItem) => void;
   toggleFavorite: (item: ShoppingItem) => void;
   clearCart: () => void;
-  getCartTotal: () => number;
+  getCartTotal: () => { totalPrice: number; totalItems: number };
   toggleItems: (item: ShoppingItem) => void;
 }
 
@@ -99,11 +99,17 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   };
 
   const getCartTotal = () => {
-    return cartItems.reduce((total, item) => {
-      const itemPrice = 'price' in item ? item.price : item.priceDiscount;
+    return cartItems.reduce(
+      (acc, item) => {
+        const itemPrice = 'price' in item ? item.price : item.priceDiscount;
 
-      return total + itemPrice * item.quantity;
-    }, 0);
+        return {
+          totalPrice: acc.totalPrice + itemPrice * item.quantity,
+          totalItems: acc.totalItems + item.quantity,
+        };
+      },
+      { totalPrice: 0, totalItems: 0 },
+    );
   };
 
   useEffect(() => {

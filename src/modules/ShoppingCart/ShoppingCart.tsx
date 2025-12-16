@@ -46,6 +46,8 @@ export const ShoppingCart = () => {
   const { clearCart, cartItems, getCartTotal } = useContext(ShoppingContex);
   const { start, clear } = useTimer();
 
+  const { totalItems, totalPrice } = getCartTotal();
+
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -119,11 +121,11 @@ export const ShoppingCart = () => {
 
                       <div className={style['cart-price']}>
                         <span className={style['cart-price__total']}>
-                          ${getCartTotal()}
+                          ${totalPrice}
                         </span>
                         <span className={style['cart-price__quantity']}>
                           {t('page.totalItems', {
-                            count: cartItems.length,
+                            count: totalItems,
                           })}
                         </span>
 

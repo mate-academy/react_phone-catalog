@@ -57,7 +57,6 @@ svg * {
 
 .main {
   padding-top: 80px;
-  
 
   @include on-tablet {
     padding-top: 100px;
@@ -81,6 +80,19 @@ svg * {
 .menu-flags {
   z-index: 1001;
   width: 71px;
+
+  ul {
+    background: var(--color-black) !important;
+    border-color: var(--color-surface-2);
+  }
+
+  li {
+    transition: background-color var(--transition-duration) ease;
+
+    @include hover {
+      background-color: var(--color-surface-2);
+    }
+  }
 }
 
 .menu-flags-button {
