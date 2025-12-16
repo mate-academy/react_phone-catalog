@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 //import ProductsSlider from './components/ProductsSlider/index';
 //import PicturesSlider from './components/PicturesSlider/index';
 
-
 interface Product {
   id?: string | number;
   name?: string;
@@ -34,8 +33,8 @@ export const HomePage: React.FC = () => {
       const data: Product[] = await response.json();
 
       setProducts(data);
-    } catch (err: any) {
-      setError(err.message || 'Unknown error');
+    } catch (err) {
+      setError('Unknown error');
     } finally {
       setLoading(false);
     }
@@ -52,7 +51,7 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <h1 className="title">Product Catalog</h1>
-      <div className="HomePage">
+      <div className="product-catalog">
         {loading && <div>Loading...</div>}
         {error && <div role="alert">Error: {error}</div>}
         {products && products.length === 0 && <div>No products found.</div>}

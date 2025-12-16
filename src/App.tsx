@@ -7,6 +7,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { CartPage } from './modules/CartPage';
+import './App.scss';
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
           <div className="top-bar">
             <a href="#">
               <img
-                src="images/logo-2x.png"
+                src="img/logo-2x.png"
                 alt="The Nice Gadgets Logo"
                 className="top-bar__logo"
               />
@@ -26,12 +27,19 @@ const App = () => {
               <a href="#menu" className="icon icon--menu"></a>
             </div>
           </div>
+        </div>
 
-          <div className="header__bottom">
-            <h2 className="header__title">Welcome to Nice Gadgets store!</h2>
+        <div className="header__bottom">
+          <div className="header__up">
+            <p>
+              <h2 className="header__title">Welcome to Nice Gadgets store!</h2>
+            </p>
           </div>
+
+          <div className="header__downn"></div>
         </div>
       </header>
+
       <aside className="menu page__menu" id="menu">
         <div className="menu__content">
           <div className="top-bar menu__top">
@@ -78,7 +86,8 @@ const App = () => {
       </aside>
       <main className="main">
         <div className="main__content">
-          <Router>
+
+  <Router>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/phones" element={<PhonesPage />} />
@@ -93,9 +102,10 @@ const App = () => {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Router>
+
         </div>
       </main>
-      <footer className="footer"></footer>
+      <footer className="footer"> footer & footer</footer>
     </>
   );
 };
