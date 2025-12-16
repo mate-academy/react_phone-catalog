@@ -1,4 +1,5 @@
 import type { Product } from '../types/Product';
+import { withBase } from '../modules/shared/utils/baseUrl';
 
 type DescriptionItem = {
   title: string;
@@ -32,7 +33,7 @@ export type PhoneDetails = PhoneFromServer;
 export type Phone = Product;
 
 export const getPhones = async (): Promise<Phone[]> => {
-  const response = await fetch('/api/phones.json');
+  const response = await fetch(withBase('api/phones.json'));
 
   if (!response.ok) {
     throw new Error('Unable to load phones');
@@ -48,7 +49,7 @@ export const getPhones = async (): Promise<Phone[]> => {
     ram: phone.ram,
     price: phone.priceDiscount,
     fullPrice: phone.priceRegular,
-    image: `/${phone.images[0]}`,
+    image: withBase(phone.images[0]),
   }));
 };
 
@@ -57,9 +58,9 @@ export const getPhoneDetails = async (
 ): Promise<PhoneDetails | null> => {
   const [phonesResponse, tabletsResponse, accessoriesResponse] =
     await Promise.all([
-      fetch('/api/phones.json'),
-      fetch('/api/tablets.json'),
-      fetch('/api/accessories.json'),
+      fetch(withBase('api/phones.json')),
+      fetch(withBase('api/tablets.json')),
+      fetch(withBase('api/accessories.json')),
     ]);
 
   if (!phonesResponse.ok || !tabletsResponse.ok || !accessoriesResponse.ok) {

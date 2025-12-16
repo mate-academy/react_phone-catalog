@@ -1,4 +1,5 @@
 import type { Product } from '../types/Product';
+import { withBase } from '../modules/shared/utils/baseUrl';
 
 type AccessoryFromServer = {
   id: string;
@@ -14,7 +15,7 @@ type AccessoryFromServer = {
 export type Accessory = Product;
 
 export const getAccessories = async (): Promise<Accessory[]> => {
-  const response = await fetch('/api/accessories.json');
+  const response = await fetch(withBase('api/accessories.json'));
 
   if (!response.ok) {
     throw new Error('Unable to load accessories');
@@ -30,6 +31,6 @@ export const getAccessories = async (): Promise<Accessory[]> => {
     ram: accessory.ram,
     price: accessory.priceDiscount,
     fullPrice: accessory.priceRegular,
-    image: `/${accessory.images[0]}`,
+    image: withBase(accessory.images[0]),
   }));
 };

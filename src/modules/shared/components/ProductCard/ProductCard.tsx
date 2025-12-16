@@ -7,6 +7,7 @@ import { useCart } from '../../context/CartContext';
 
 import HeartIcon from '../../icons/heart-like.svg?react';
 import HeartRedIcon from '../../icons/heart-like-red.svg?react';
+import { withBase } from '../../utils/baseUrl';
 
 type CardProduct = {
   id: string | number;
@@ -31,9 +32,27 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   const slug = product.itemId ?? String(product.id);
 
-  const imageSrc = product.image.startsWith('/')
-    ? product.image
-    : `/${product.image}`;
+  const base = import.meta.env.BASE_URL || '/';
+
+  const imageSrc = (() => {
+    const img = product.image;
+
+    if (!img) {
+      return img;
+    }
+
+    if (img.includes('://')) {
+      return img;
+    }
+
+    if (img.startsWith(base)) {
+      return img;
+    }
+
+    const normalized = img.replace(/^\/+/, '');
+
+    return withBase(normalized);
+  })();
 
   const { isFavorite, toggleFavorite } = useFavorites();
   const active = isFavorite(product);
@@ -41,7 +60,6 @@ export const ProductCard: React.FC<Props> = ({
   const { addToCart, cart } = useCart();
 
   const hasDiscount = product.fullPrice > product.price;
-
   const isInCart = cart.some(item => item.id === slug);
 
   const handleAddToCart = () => {

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CategoryGrid.module.scss';
+import { withBase } from '../../../shared/utils/baseUrl';
 
 type CategoryCard = {
   name: string;
@@ -13,19 +14,19 @@ const categories: CategoryCard[] = [
   {
     name: 'Mobile phones',
     models: 95,
-    image: '/img/category-phones.webp',
+    image: withBase('img/category-phones.webp'),
     link: '/phones',
   },
   {
     name: 'Tablets',
     models: 24,
-    image: '/img/category-tablets.webp',
+    image: withBase('img/category-tablets.webp'),
     link: '/tablets',
   },
   {
     name: 'Accessories',
     models: 100,
-    image: '/img/category-accessories.webp',
+    image: withBase('img/category-accessories.webp'),
     link: '/accessories',
   },
 ];

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
+import { withBase } from '../../../shared/utils/baseUrl';
 
 type Banner = {
   id: number;
@@ -14,21 +15,21 @@ const banners: Banner[] = [
     id: 1,
     title: 'Now available in our store!',
     subtitle: 'Be the first!',
-    imageUrl: '/img/phones/apple-iphone-14-pro/spaceblack/03.webp',
+    imageUrl: withBase('img/phones/apple-iphone-14-pro/spaceblack/03.webp'),
     hasEmoji: true,
   },
   {
     id: 2,
     title: 'Now available in our store!',
     subtitle: 'Pro. Beyond.',
-    imageUrl: '/img/phones/apple-iphone-14/midnight/04.webp',
+    imageUrl: withBase('img/phones/apple-iphone-14/midnight/04.webp'),
     hasEmoji: true,
   },
   {
     id: 3,
     title: 'Now available in our store!',
     subtitle: 'Check out our latest devices',
-    imageUrl: '/img/phones/apple-iphone-14/midnight/01.webp',
+    imageUrl: withBase('img/phones/apple-iphone-14/midnight/01.webp'),
     hasEmoji: true,
   },
 ];

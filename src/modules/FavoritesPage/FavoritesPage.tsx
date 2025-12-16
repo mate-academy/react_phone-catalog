@@ -13,14 +13,14 @@ export const FavoritesPage = () => {
         <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
           <Link to="/" className={styles.breadcrumbLink}>
             <img
-              src="/img/icons/home.svg"
+              src="img/icons/home.svg"
               alt="Home"
               className={styles.homeIcon}
             />
           </Link>
 
           <img
-            src="/img/icons/vector.svg"
+            src="img/icons/vector.svg"
             alt=""
             className={styles.separatorIcon}
           />

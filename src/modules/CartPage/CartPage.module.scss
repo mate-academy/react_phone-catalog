@@ -9,21 +9,24 @@
 }
 
 .back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   border: none;
   background: transparent;
   cursor: pointer;
   color: #89939a;
   padding: 0;
   margin-bottom: 24px;
-  transition: color 0.2s;
-
-  @include on-tablet {
-    margin-bottom: 16px;
-  }
 
   &:hover {
     color: #313237;
   }
+}
+
+.backIcon {
+  width: 16px;
+  height: 16px;
 }
 
 .title {

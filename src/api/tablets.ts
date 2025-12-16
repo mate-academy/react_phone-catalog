@@ -1,4 +1,5 @@
 import type { Product } from '../types/Product';
+import { withBase } from '../modules/shared/utils/baseUrl';
 
 type TabletFromServer = {
   id: string;
@@ -25,7 +26,7 @@ type TabletFromServer = {
 export type Tablet = Product;
 
 export const getTablets = async (): Promise<Tablet[]> => {
-  const response = await fetch('/api/tablets.json');
+  const response = await fetch(withBase('api/tablets.json'));
 
   if (!response.ok) {
     throw new Error('Unable to load tablets');
@@ -41,6 +42,6 @@ export const getTablets = async (): Promise<Tablet[]> => {
     ram: tablet.ram,
     price: tablet.priceDiscount,
     fullPrice: tablet.priceRegular,
-    image: `/${tablet.images[0]}`,
+    image: withBase(tablet.images[0]),
   }));
 };

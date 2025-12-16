@@ -1,3 +1,5 @@
+import { withBase } from '../modules/shared/utils/baseUrl';
+
 export type Product = {
   id: number;
   category: string;
@@ -13,10 +15,8 @@ export type Product = {
   image: string;
 };
 
-const API_URL = '/api';
-
 export const getProducts = async (): Promise<Product[]> => {
-  const response = await fetch(`${API_URL}/products.json`);
+  const response = await fetch(withBase('api/products.json'));
 
   if (!response.ok) {
     throw new Error('Unable to load products');

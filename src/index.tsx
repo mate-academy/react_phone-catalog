@@ -4,7 +4,7 @@ import { App } from './App';
 import { ScrollToTop } from './modules/shared/components/ScrollToTop';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
     <ScrollToTop />
     <App />
   </BrowserRouter>,

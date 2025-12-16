@@ -21,6 +21,7 @@ import {
   type SortParam,
 } from '../shared/utils';
 import { ProductCardSkeleton } from '../shared/components/Skeleton';
+import { withBase } from '../shared/utils/baseUrl';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -138,14 +139,14 @@ export const PhonesPage: React.FC = () => {
       <nav className={styles.breadcrumbs}>
         <Link to="/" className={styles.breadcrumbLink}>
           <img
-            src="/img/icons/home.svg"
+            src={withBase('img/icons/home.svg')}
             alt="Home"
             className={styles.homeIcon}
           />
         </Link>
 
         <img
-          src="/img/icons/vector.svg"
+          src={withBase('img/icons/vector.svg')}
           alt=""
           className={styles.separatorIcon}
         />

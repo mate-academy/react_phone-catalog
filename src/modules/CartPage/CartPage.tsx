@@ -35,7 +35,12 @@ export const CartPage: React.FC = () => {
           className={styles.back}
           onClick={() => navigate(-1)}
         >
-          ‹ Back
+          <img
+            src="img/icons/vector-left.svg"
+            alt="Back"
+            className={styles.backIcon}
+          />
+          Back
         </button>
 
         <h1 className={styles.title}>Cart</h1>

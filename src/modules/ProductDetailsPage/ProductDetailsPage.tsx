@@ -17,6 +17,7 @@ import HeartIcon from '../shared/icons/heart-like.svg?react';
 import HeartRedIcon from '../shared/icons/heart-like-red.svg?react';
 import { useCart } from '../shared/context/CartContext';
 import { ProductDetailsSkeleton } from '../shared/components/Skeleton';
+import { withBase } from '../shared/utils/baseUrl';
 
 type RouteParams = {
   productId: string;
@@ -47,7 +48,6 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const [suggested, setSuggested] = useState<Product[]>([]);
-
   const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   const refreshSuggested = (pool: Product[], excludeId: string) => {
@@ -136,7 +136,7 @@ export const ProductDetailsPage: React.FC = () => {
     return null;
   }
 
-  const currentImage = `/${product.images[selectedImageIndex]}`;
+  const currentImage = withBase(product.images[selectedImageIndex]);
 
   const cardProduct = {
     id: product.id,
@@ -147,7 +147,7 @@ export const ProductDetailsPage: React.FC = () => {
     screen: product.screen,
     capacity: product.capacity,
     ram: product.ram,
-    image: product.images[0],
+    image: currentImage,
   };
 
   const active = isFavorite(cardProduct);
@@ -173,14 +173,14 @@ export const ProductDetailsPage: React.FC = () => {
       <nav className={styles.breadcrumbs}>
         <Link to="/" className={styles.breadcrumbLink}>
           <img
-            src="/img/icons/home.svg"
+            src={withBase('img/icons/home.svg')}
             alt="Home"
             className={styles.homeIcon}
           />
         </Link>
 
         <img
-          src="/img/icons/vector.svg"
+          src={withBase('img/icons/vector.svg')}
           alt=""
           className={styles.separatorIcon}
         />
@@ -190,7 +190,7 @@ export const ProductDetailsPage: React.FC = () => {
         </Link>
 
         <img
-          src="/img/icons/vector.svg"
+          src={withBase('img/icons/vector.svg')}
           alt=""
           className={styles.separatorIcon}
         />
@@ -204,7 +204,7 @@ export const ProductDetailsPage: React.FC = () => {
         onClick={() => navigate(-1)}
       >
         <img
-          src="/img/icons/vector-left.svg"
+          src={withBase('img/icons/vector-left.svg')}
           alt="Back"
           className={styles.backIcon}
         />
@@ -230,7 +230,7 @@ export const ProductDetailsPage: React.FC = () => {
                 onClick={() => setSelectedImageIndex(index)}
               >
                 <img
-                  src={`/${img}`}
+                  src={withBase(img)}
                   alt={product.name}
                   className={styles.thumbImage}
                 />

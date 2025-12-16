@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from './Header.module.scss';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useCart } from '../../context/CartContext';
+import { withBase } from '../../utils/baseUrl';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -12,8 +13,8 @@ const navLinks = [
 ] as const;
 
 const iconLinks = [
-  { to: '/favorites', src: '/img/icons/heart.svg', alt: 'Favorites' },
-  { to: '/cart', src: '/img/icons/cart.svg', alt: 'Cart' },
+  { to: '/favorites', src: withBase('img/icons/heart.svg'), alt: 'Favorites' },
+  { to: '/cart', src: withBase('img/icons/cart.svg'), alt: 'Cart' },
 ] as const;
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
