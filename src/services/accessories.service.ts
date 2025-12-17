@@ -1,7 +1,7 @@
 import { Device } from '../types/Device';
 
 export function getAccessories(): Promise<Device[]> {
-  return fetch('/api/accessories.json').then(response => {
+  return fetch('./api/accessories.json').then(response => {
     if (response.ok) {
       return response.json();
     }
