@@ -33,18 +33,24 @@
   }
 
   &__itemsContainer {
+    overflow: hidden;
+    // padding: 10px;
+    // margin: -10px;
+  }
+  &__itemsWrapper {
     display: flex;
     gap: 16px;
+    transition: transform 0.3s ease-in-out;
   }
 
   &__item {
     display: flex;
     padding: 32px;
     flex-direction: column;
-    width: 100%;
+    width: 25%;
     max-width: 272px;
     border: 1px solid $color-elements;
-    min-height: 512px; // або height, якщо контент завжди влазить
+    min-height: 512px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

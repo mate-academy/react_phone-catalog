@@ -17,14 +17,14 @@ export const SliderComponent: React.FC<SliderComponentProps> = ({
   const [index, setIndex] = useState(0);
 
   const next = () => {
-    setIndex(prev => Math.min(prev + 4, products.length - 4));
+    setIndex(prev => prev + 1);
   };
 
   const prev = () => {
-    setIndex(prev => Math.max(prev - 4, 0));
+    setIndex(prev => prev - 1);
   };
 
-  const visible = products.slice(index, index + 4);
+  // const visible = products.slice(index, index + 4);
 
   return (
     <section>
@@ -75,14 +75,14 @@ export const SliderComponent: React.FC<SliderComponentProps> = ({
             </button>
             <button
               className={`${styles.SliderComponent__buttonContainer} ${
-                index + 4 >= products.length
+                index + 1 >= products.length
                   ? styles['SliderComponent__buttonContainer--disabled']
                   : ''
               }`}
-              disabled={index + 4 >= products.length}
+              disabled={index + 1 >= products.length}
               onClick={next}
             >
-              {index + 4 >= products.length ? (
+              {index + 1 >= products.length ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -118,9 +118,16 @@ export const SliderComponent: React.FC<SliderComponentProps> = ({
         )}
       </div>
       <div className={styles.SliderComponent__itemsContainer}>
-        {visible.map(prod => (
-          <SliderItem key={prod.id} item={prod} showDiscount={showDiscount} />
-        ))}
+        <div
+          className={styles.SliderComponent__itemsWrapper}
+          style={{
+            transform: `translateX(calc(-${index * 25}% + ${index * 18}px))`,
+          }}
+        >
+          {products.map(prod => (
+            <SliderItem key={prod.id} item={prod} showDiscount={showDiscount} />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -18,6 +18,10 @@ export const Cart: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    if (cart.length === 0) {
+      setIsLoading(false);
+      return;
+    }
     getProducts()
       .then(setProducts)
       .finally(() => setIsLoading(false));

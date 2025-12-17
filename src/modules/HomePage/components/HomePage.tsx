@@ -6,6 +6,7 @@ import productsList from '../../../../public/api/products.json';
 import { Link } from 'react-router-dom';
 import PageHeader from '@/modules/shared/components/PageHeader/PageHeader';
 import styles from './HomePage.module.scss';
+import { ProductsSlider } from './ProductsSlider';
 export const HomePage: React.FC = () => {
   const [products] = useState<Product[]>(productsList);
   const counters = {
@@ -14,18 +15,30 @@ export const HomePage: React.FC = () => {
     accessories: 0,
   };
 
+  const getRandomInt = (min: number, max: number): number =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
+  const getRandomProducts = (products: Product[], min = 10, max = 30) => {
+    const safeMax = Math.min(max, products.length);
+    const randomCount = getRandomInt(min, safeMax);
+
+    return products.slice(0, randomCount);
+  };
   for (const item of products) {
     if (item.category in counters) {
       counters[item.category as keyof typeof counters]++;
     }
   }
 
-  const hotProducts = [...products].sort(
-    (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
+  const hotProducts = getRandomProducts(
+    [...products].sort(
+      (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
+    ),
   );
 
-
-  const newProducts = [...products].sort((a, b) => b.year - a.year);
+  const newProducts = getRandomProducts(
+    [...products].sort((a, b) => b.year - a.year),
+  );
+console.log(newProducts);
 
   return (
     <>
@@ -35,7 +48,8 @@ export const HomePage: React.FC = () => {
         variant="homePage"
       />
       <Carousel />
-      <SliderComponent products={newProducts} title="Brand new models" />
+      {/* <SliderComponent products={newProducts} title="Brand new models" /> */}
+
       <section className={styles.categorySection}>
         <h2 className={styles.categoryTitle}>Shop by Category</h2>
         <div className={styles.categoryGrid}>
@@ -80,7 +94,8 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
       </section>
-      <SliderComponent products={hotProducts} title="Hot prices" showDiscount />
+      <ProductsSlider products={products} />
+      {/* <SliderComponent products={hotProducts} title="Hot prices" showDiscount /> */}
     </>
   );
 };
