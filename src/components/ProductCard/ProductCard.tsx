@@ -7,13 +7,12 @@ import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { DevicesContext } from '../../DevicesContext';
 
-// const BASE_URL = import.meta.env.BASE_URL;
-
 type Props = {
   model: Device;
+  brandNewModels?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ model }) => {
+export const ProductCard: React.FC<Props> = ({ model, brandNewModels }) => {
   const { pathname } = useLocation();
   const pathParts = pathname.split('/').filter(Boolean);
   const basePath = pathParts[0] || 'home';
@@ -70,15 +69,23 @@ export const ProductCard: React.FC<Props> = ({ model }) => {
 
       <div className="product-card__title">{model.name}</div>
 
-      <div className="product-card__price">
-        <div className="product-card__price__price-discount">
-          {`$${model.priceDiscount}`}
-        </div>
+      {!brandNewModels ? (
+        <div className="product-card__price">
+          <div className="product-card__price__price-discount">
+            {`$${model.priceDiscount}`}
+          </div>
 
-        <div className="product-card__price__price-regular">
-          {`$${model.priceRegular}`}
+          <div className="product-card__price__price-regular">
+            {`$${model.priceRegular}`}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="product-card__price">
+          <div className="product-card__price__price-discount">
+            {`$${model.priceRegular}`}
+          </div>
+        </div>
+      )}
 
       <div className="product-card__line"></div>
 

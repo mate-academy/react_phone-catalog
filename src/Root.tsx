@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { Phones } from './components/Phones/Phones';
 import { Main } from './components/Main/Main';
@@ -11,11 +11,9 @@ import { Favourites } from './components/Favourites/Favourites';
 import { Cart } from './components/Cart/Cart';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 
-const BASE_URL = import.meta.env.BASE_URL;
-
 export const Root = () => (
   <DevicesProvider>
-    <BrowserRouter basename={BASE_URL}>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Main />}></Route>
@@ -41,6 +39,6 @@ export const Root = () => (
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </DevicesProvider>
 );

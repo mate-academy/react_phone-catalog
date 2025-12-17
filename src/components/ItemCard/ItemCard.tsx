@@ -11,8 +11,6 @@ import arrowLeft from '../../images/icons/arrow-left.png';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-// const BASE_URL = import.meta.env.BASE_URL;
-
 export const ItemCard: React.FC = () => {
   const location = useLocation();
   const basePath = location.pathname.split('/').filter(Boolean);

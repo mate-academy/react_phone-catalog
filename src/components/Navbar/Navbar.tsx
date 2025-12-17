@@ -67,7 +67,11 @@ export const Navbar = () => {
 
           <div className="nav__items">
             <Link to={'favourites'} className="nav__items__icon">
-              <div className="icon-wrapper">
+              <div
+                className={classNames('icon-wrapper', {
+                  'icon-wrapper--selected': basePath === 'favourites',
+                })}
+              >
                 <img
                   src={favouritesIcon}
                   alt="favourites"
@@ -81,7 +85,11 @@ export const Navbar = () => {
             </Link>
 
             <Link to={'cart'} className="nav__items__icon">
-              <div className="icon-wrapper">
+              <div
+                className={classNames('icon-wrapper', {
+                  'icon-wrapper--selected': basePath === 'cart',
+                })}
+              >
                 <img
                   src={shoppingBag}
                   alt="shopping bag"

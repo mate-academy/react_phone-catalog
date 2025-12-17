@@ -171,8 +171,10 @@
 @mixin categoriesContainer {
   @include onScreen640 {
     margin-top: 24px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
+    width: 100%;
   }
 
   @include onScreen1200 {

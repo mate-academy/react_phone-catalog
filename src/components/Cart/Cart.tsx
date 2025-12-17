@@ -8,8 +8,6 @@ import { useContext, useState } from 'react';
 import { DevicesContext } from '../../DevicesContext';
 import { useNavigate } from 'react-router-dom';
 
-// const BASE_URL = import.meta.env.BASE_URL;
-
 export const Cart = () => {
   const navigate = useNavigate();
 

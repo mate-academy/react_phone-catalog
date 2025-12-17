@@ -17,7 +17,6 @@ import { Device } from '../../types/Device';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { Loader } from '../Loader';
 
 export const Main: React.FC = () => {
   const context = useContext<DevicesContextType | undefined>(DevicesContext);
@@ -53,7 +52,7 @@ export const Main: React.FC = () => {
   }, []);
 
   if (!context) {
-    return <Loader />;
+    return <div>Loading...</div>;
   }
 
   const { tablets, accessories, phones, newModelsPhones, hotPrices, isMobile } =
@@ -207,7 +206,7 @@ export const Main: React.FC = () => {
                 }}
                 key={model.id}
               >
-                <ProductCard model={model} />
+                <ProductCard model={model} brandNewModels={true} />
               </div>
             ))}
           </div>

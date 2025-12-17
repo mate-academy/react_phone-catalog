@@ -14,8 +14,6 @@ import { SortType } from '../../types/SortType';
 import { Device } from '../../types/Device';
 import { SortVisibleItems } from '../../types/SortVisibleItems';
 
-// const BASE_URL = import.meta.env.BASE_URL;
-
 export const Accessories = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const context = useContext(DevicesContext);

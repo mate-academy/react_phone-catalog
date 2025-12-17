@@ -1,9 +1,7 @@
 import { Device } from '../types/Device';
 
 export function getPhones(): Promise<Device[]> {
-  const BASE_URL = import.meta.env.BASE_URL;
-
-  return fetch(`${BASE_URL}/api/phones.json`).then(response => {
+  return fetch('/api/phones.json').then(response => {
     if (response.ok) {
       return response.json();
     }
