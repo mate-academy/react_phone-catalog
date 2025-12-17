@@ -1,7 +1,7 @@
 import React from 'react';
-import { useFavorites } from '../components/FavoritesContext';
-import { ProductCard } from '../components/ProductCard';
-import '../pages/Favorites.scss';
+import { useFavorites } from '../../context/FavoritesContext';
+import { ProductCard } from '../../components/ProductCard';
+import '../FavoritesPage/Favorites.scss';
 
 export const FavoritesPage: React.FC = () => {
   const { favorites } = useFavorites();

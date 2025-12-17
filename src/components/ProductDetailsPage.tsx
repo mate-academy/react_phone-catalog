@@ -1,11 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ProductDetails.scss';
 
 import { ProductCard } from './ProductCard';
 import { Product } from '../types/Product';
 import { normalizeProduct } from '../utils/normalizeProduct';
 import { useCartContext } from '../context/CartContext';
+import { getSuggestedProducts } from '../utils/getSuggestedProducts';
 
 /* ---------- Types ---------- */
 type ProductDetails = ReturnType<typeof normalizeProduct>;
@@ -22,13 +24,19 @@ const loadFav = (): string[] =>
 const saveFav = (v: string[]) =>
   localStorage.setItem(FAV_KEY, JSON.stringify(v));
 
+const categoryTitleMap: Record<string, string> = {
+  phones: 'Phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};
+
 /* ---------- Component ---------- */
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const trackRef = useRef<HTMLDivElement>(null);
 
-  const { cartItems, setCartItems } = useCartContext();
+  const { cartItems, addItem, increase } = useCartContext();
 
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [baseproduct, setBaseProduct] = useState<Product | null>(null);
@@ -137,29 +145,21 @@ export const ProductDetailsPage: React.FC = () => {
       return;
     }
 
-    const updated = [...cartItems];
-    const index = updated.findIndex(
-      it =>
-        it.id === product.id &&
-        it.capacity === activeCapacity &&
-        it.color === activeColor,
-    );
+    if (isInCart) {
+      increase(product.id);
 
-    if (index >= 0) {
-      updated[index].quantity += 1;
-    } else {
-      updated.push({
-        id: product.id,
-        name: product.name,
-        image: product.images[0],
-        price: product.price || product.fullPrice,
-        capacity: activeCapacity,
-        color: activeColor,
-        quantity: 1,
-      });
+      return;
     }
 
-    setCartItems(updated);
+    addItem({
+      id: product.id,
+      name: product.name,
+      image: product.images[0],
+      price: product.price || product.fullPrice,
+      capacity: activeCapacity,
+      color: activeColor,
+      quantity: 1,
+    });
   };
 
   /* ---------- Suggested ---------- */
@@ -168,10 +168,7 @@ export const ProductDetailsPage: React.FC = () => {
       return [];
     }
 
-    return allProducts
-      .filter(p => p.id !== product.id)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 8);
+    return getSuggestedProducts(allProducts, product.id, 8);
   }, [allProducts, product]);
 
   /* ---------- Scroll ---------- */
@@ -196,7 +193,10 @@ export const ProductDetailsPage: React.FC = () => {
   if (error || !product) {
     return (
       <div className="container">
-        <p className="product-details__error">Product not found</p>
+        <p className="product-details__error">Product was not found</p>
+        <Link to="/" className="button is-link is-light">
+          Go to Home page
+        </Link>
       </div>
     );
   }
@@ -222,23 +222,22 @@ export const ProductDetailsPage: React.FC = () => {
     <section className="product-details">
       <div className="container">
         <div className="breadcrumbs">
-          <img
-            src="/img/icons/home.svg"
-            alt="Home"
-            className="breadcrumbs__home"
-            onClick={() => navigate('/')}
-          />
+          <Link to="/" className="breadcrumbs__link">
+            <img
+              src="/img/icons/home.svg"
+              alt="Home"
+              className="breadcrumbs__home"
+              onClick={() => navigate('/')}
+            />
+          </Link>
           <img
             src="/img/icons/right.svg"
             alt=">"
             className="breadcrumbs__sep"
           />
-          <span
-            className="breadcrumbs__category"
-            onClick={() => navigate(`/${product.category}`)}
-          >
-            {product.category}
-          </span>
+          <Link to={`/${product.category}`} className="breadcrumbs__link">
+            {categoryTitleMap[product.category]}
+          </Link>
           <img
             src="/img/icons/right.svg"
             alt=">"

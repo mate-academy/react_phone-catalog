@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartItemType } from '../types/CartItemType';
-import { CartItem } from '../components/CartItem';
-import { useCartContext } from '../context/CartContext';
+import { CartItemType } from '../../types/CartItemType';
+import { CartItem } from '../../components/CartItem';
+import { useCartContext } from '../../context/CartContext';
 import './CartPage.scss';
 
 export const CartPage: React.FC = () => {

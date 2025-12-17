@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { CartItemType } from '../types/CartItemType';
 import { CartContextType } from '../types/CartContextType';
 
@@ -9,28 +15,27 @@ const CART_KEY = 'nice_gadgets_cart';
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cartItems, setCartItems] = useState<CartItemType[]>([]);
-  const [total, setTotal] = useState(0);
+  // ✅ загрузка из localStorage
+  const [cartItems, setCartItems] = useState<CartItemType[]>(() => {
+    return JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+  });
 
-  // ✅ ЗАГРУЗКА ИЗ localStorage
+  // ✅ сохранение при каждом изменении
   useEffect(() => {
-    const saved = localStorage.getItem(CART_KEY);
-
-    if (saved) {
-      setCartItems(JSON.parse(saved));
-    }
-  }, []);
-
-  // ✅ ПЕРЕСЧЁТ + СОХРАНЕНИЕ
-  useEffect(() => {
-    const sum = cartItems.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0,
-    );
-
-    setTotal(sum);
     localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
   }, [cartItems]);
+
+  // ✅ общая сумма
+  const total = useMemo(
+    () => cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [cartItems],
+  );
+
+  // ✅ общее количество (для иконки корзины)
+  const count = useMemo(
+    () => cartItems.reduce((sum, item) => sum + item.quantity, 0),
+    [cartItems],
+  );
 
   // ➕ добавить товар
   const addItem = (item: CartItemType) => {
@@ -43,11 +48,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         );
       }
 
-      return [...prev, { ...item, quantity: 1 }];
+      return [...prev, item];
     });
   };
 
-  // ➕ +
+  // ➕ увеличить
   const increase = (id: string) => {
     setCartItems(items =>
       items.map(item =>
@@ -56,7 +61,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  // ➖ -
+  // ➖ уменьшить (и удалить если 0)
   const decrease = (id: string) => {
     setCartItems(items =>
       items
@@ -72,16 +77,22 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     setCartItems(items => items.filter(item => item.id !== id));
   };
 
+  // 🧹 очистить корзину (Checkout)
+  const clear = () => {
+    setCartItems([]);
+  };
+
   return (
     <CartContext.Provider
       value={{
         cartItems,
-        setCartItems,
         total,
-        remove,
-        decrease,
-        increase,
+        count,
         addItem,
+        increase,
+        decrease,
+        remove,
+        clear,
       }}
     >
       {children}

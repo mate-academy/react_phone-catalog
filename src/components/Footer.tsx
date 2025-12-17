@@ -1,7 +1,9 @@
 import React from 'react';
 import './Footer.scss';
+import { useLang } from '../context/LanguageContext';
 
 export const Footer: React.FC = () => {
+  const { lang, setLang } = useLang();
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -22,6 +24,12 @@ export const Footer: React.FC = () => {
           <a href="#contacts">CONTACTS</a>
           <a href="#rights">RIGHTS</a>
         </nav>
+
+        <div className="footer__lang">
+          <button onClick={() => setLang('en')}>EN</button>
+          <button onClick={() => setLang('ua')}>UA</button>
+          <p>Current {lang}</p>
+        </div>
 
         {/* Кнопка вверх */}
         <button

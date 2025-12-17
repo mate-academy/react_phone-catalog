@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { useFavorites } from '../context/FavoritesContext';
+import { useTheme } from '../context/ThemeContext';
 import './Header.scss';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { favorites } = useFavorites();
+  const { toggleTheme } = useTheme();
+  const count = favorites.length;
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
@@ -63,10 +68,13 @@ export const Header: React.FC = () => {
           </div>
         </nav>
 
+        <button onClick={toggleTheme}>🌙</button>
+
         {/* Icons + burger */}
         <div className="header__icons">
           <Link to="/favorites" className="icon">
             <img src="/img/icons/favourites.svg" alt="Favorites" />
+            {count > 0 && <span className="icon__badge">{count}</span>}
           </Link>
 
           <Link to="/cart" className="icon">

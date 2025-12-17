@@ -6,14 +6,14 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { App } from './App';
-import { HomePage } from './pages/HomePage';
-import { PhonesPage } from './pages/PhonesPage';
+import { HomePage } from './pages/HomePage/HomePage';
+import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { ProductDetailsPage } from './components/ProductDetailsPage';
-import { AccessoriesPage } from './pages/AccessoriesPage';
-import { TabletsPage } from './pages/TabletsPage';
-import { FavoritesPage } from './pages/FavoritesPage';
+import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
+import { TabletsPage } from './pages/TabletsPage/TabletsPage';
+import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 import { NotFoundPage } from './pages/NotFound';
-import { CartPage } from './pages/CartPage';
+import { CartPage } from './pages/CartPage/CartPage';
 
 export const Root = () => (
   <Router>

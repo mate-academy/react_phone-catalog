@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Banner.scss';
 
 const slides = [
@@ -35,6 +35,14 @@ export const Banner: React.FC = () => {
   // eslint-disable-next-line max-len
   const prevSlide = () =>
     setActive(prev => (prev - 1 + slides.length) % slides.length);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setActive(prev => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <section className="banner">

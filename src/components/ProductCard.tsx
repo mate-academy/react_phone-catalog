@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../types/Product';
 import './ProductCard.scss';
-import { useFavorites } from './FavoritesContext';
+import { useFavorites } from '../context/FavoritesContext';
 import { useCartContext } from '../context/CartContext';
 
 type Props = {
@@ -11,13 +11,16 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
-  const { setCartItems } = useCartContext();
-  const [isAdded, setIsAdded] = useState(false);
+  const { cartItems, addItem } = useCartContext();
+  /*const { setCartItems } = useCartContext();
+  const [isAdded, setIsAdded] = useState(false);*/
   const active = isFavorite(product.id);
+
+  const isInCart = cartItems.some(item => item.id === product.itemId);
 
   const imagePath = `/img/phones/${product.namespaceId}/${product.color}/00.webp`;
 
-  const handleAddClick = () => {
+  /*const handleAddClick = () => {
     setCartItems(prev => [
       ...prev,
       {
@@ -32,7 +35,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ]);
 
     setIsAdded(true);
-  };
+  };*/
 
   return (
     <div className="product-card" data-cy="product">
@@ -40,7 +43,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <img src={product.image || imagePath} alt={product.name} />
       </Link>
       <div className="product-card__content">
-        <p className="product-card__name">{product.name}</p>
+        <Link to={`/product/${product.itemId}`} className="product-card__name">
+          {product.name}
+        </Link>
 
         <div className="product-card__price">
           <span className="product-card__price-new">${product.price}</span>
@@ -69,10 +74,21 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className="product-card__buttons">
           <button
-            className={`product-card__button1 ${isAdded ? 'added' : ''}`}
-            onClick={handleAddClick}
+            className={`product-card__button1 ${isInCart ? 'added' : ''}`}
+            disabled={isInCart}
+            onClick={() =>
+              addItem({
+                id: product.itemId,
+                name: product.name,
+                image: product.image || imagePath,
+                price: product.price,
+                quantity: 1,
+                color: 'default',
+                capacity: 'default',
+              })
+            }
           >
-            {isAdded ? 'Added' : 'Add to cart'}
+            {isInCart ? 'Added' : 'Add to cart'}
           </button>
 
           <button

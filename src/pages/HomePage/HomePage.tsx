@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import './HomePage.scss';
-import { ProductList } from '../components/ProductList';
-import { Banner } from '../components/Banner';
-import { CategoryCard } from '../components/CategoryCard';
-import { getCategoryCounts } from '../utils/getCategoryCounts';
-import { Product } from '../types/Product';
+import { ProductList } from '../../components/ProductList';
+import { Banner } from '../../components/Banner';
+import { CategoryCard } from '../../components/CategoryCard';
+import { getCategoryCounts } from '../../utils/getCategoryCounts';
+import { Product } from '../../types/Product';
 
 export const HomePage: React.FC = () => {
   const trackRefNew = useRef<HTMLDivElement>(null);
