@@ -238,7 +238,7 @@ export const ItemCard: React.FC = () => {
           <div className="item-card__image">
             {productData?.images && productData.images.length > 0 && (
               <img
-                src={`../${productData.images[0]}`}
+                src={productData.images[0]}
                 alt="product image"
                 className="item-card__image__photo"
               />
@@ -249,7 +249,7 @@ export const ItemCard: React.FC = () => {
             {productData.images.map((image, ind) => (
               <div className="item-card__photo-previews__image" key={ind}>
                 <img
-                  src={`../${image}`}
+                  src={image}
                   className="item-card__photo-previews__image__photo"
                 />
               </div>
@@ -382,7 +382,7 @@ export const ItemCard: React.FC = () => {
             {productData.images.map((image, ind) => (
               <div className="item-card__photo-previews__image" key={ind}>
                 <img
-                  src={`../${image}`}
+                  src={image}
                   className="item-card__photo-previews__image__photo"
                 />
               </div>
@@ -392,7 +392,7 @@ export const ItemCard: React.FC = () => {
           <div className="item-card__image">
             {productData?.images && productData.images.length > 0 && (
               <img
-                src={`../${productData.images[0]}`}
+                src={productData.images[0]}
                 alt="product image"
                 className="item-card__image__photo"
               />
