@@ -3,9 +3,18 @@ import styles from './Footer.module.scss';
 import { Container } from '../Container';
 
 const footerLinks = [
-  { href: 'https://github.com/Nazarii84/react_phone-catalog', label: 'Github' },
-  { href: '#contacts', label: 'Contacts' },
-  { href: '#rights', label: 'Rights' },
+  {
+    href: 'https://github.com/Nazarii84/react_phone-catalog',
+    label: 'Github',
+  },
+  {
+    href: 'https://www.linkedin.com/in/nazarii-kaminskyi-16a090368/',
+    label: 'Contacts',
+  },
+  {
+    href: 'https://github.com/Nazarii84/react_phone-catalog',
+    label: 'Rights',
+  },
 ] as const;
 
 export const Footer = () => {

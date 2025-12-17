@@ -374,6 +374,88 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
       </section>
 
+      <div className={styles.bottomSections}>
+        <section className={styles.aboutSection}>
+          <h2 className={styles.sectionTitle}>About</h2>
+          <div className={styles.sectionDivider} />
+
+          <div className={styles.aboutContent}>
+            {product.description?.map(block => (
+              <article key={block.title}>
+                <h3 className={styles.aboutItemTitle}>{block.title}</h3>
+
+                {Array.isArray(block.text) ? (
+                  block.text.map(p => (
+                    <p key={p} className={styles.aboutItemText}>
+                      {p}
+                    </p>
+                  ))
+                ) : (
+                  <p className={styles.aboutItemText}>{block.text}</p>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.techSection}>
+          <h2 className={styles.sectionTitle}>Tech specs</h2>
+          <div className={styles.sectionDivider} />
+
+          <dl className={styles.techSpecs}>
+            <div className={styles.specItem}>
+              <dt className={styles.specTitle}>Screen</dt>
+              <dd className={styles.specValue}>{product.screen}</dd>
+            </div>
+
+            <div className={styles.specItem}>
+              <dt className={styles.specTitle}>Resolution</dt>
+              <dd className={styles.specValue}>{product.resolution}</dd>
+            </div>
+
+            <div className={styles.specItem}>
+              <dt className={styles.specTitle}>Processor</dt>
+              <dd className={styles.specValue}>{product.processor}</dd>
+            </div>
+
+            <div className={styles.specItem}>
+              <dt className={styles.specTitle}>RAM</dt>
+              <dd className={styles.specValue}>{product.ram}</dd>
+            </div>
+
+            {product.capacity && (
+              <div className={styles.specItem}>
+                <dt className={styles.specTitle}>Built in memory</dt>
+                <dd className={styles.specValue}>{product.capacity}</dd>
+              </div>
+            )}
+
+            {product.camera && (
+              <div className={styles.specItem}>
+                <dt className={styles.specTitle}>Camera</dt>
+                <dd className={styles.specValue}>{product.camera}</dd>
+              </div>
+            )}
+
+            {product.zoom && (
+              <div className={styles.specItem}>
+                <dt className={styles.specTitle}>Zoom</dt>
+                <dd className={styles.specValue}>{product.zoom}</dd>
+              </div>
+            )}
+
+            {product.cell && (
+              <div className={styles.specItem}>
+                <dt className={styles.specTitle}>Cell</dt>
+                <dd className={styles.specValue}>
+                  {product.cell.join?.(', ') ?? product.cell}
+                </dd>
+              </div>
+            )}
+          </dl>
+        </section>
+      </div>
+
       {suggested.length > 0 && (
         <section className={styles.suggestedSection}>
           <div className={styles.suggestedHeader}>
