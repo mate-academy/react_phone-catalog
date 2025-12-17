@@ -54,7 +54,7 @@ export const Dropdown = <T extends string | number>({
           className={styled['dropdown-btn']}
           onClick={() => setIsOpen(!isOpen)}
         >
-          {selected}
+          {t(`sortBy.${selected}`)}
           <span className={styled.arrow}>
             <img
               className={cn(styled.img, {

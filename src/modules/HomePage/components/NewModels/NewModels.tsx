@@ -4,7 +4,11 @@ import { getData } from '@Fetch';
 import { Products } from 'src/types/products';
 import { useTranslation } from 'react-i18next';
 
-export const NewModels = () => {
+type Props = {
+  onSetError: (e: boolean) => void;
+};
+
+export const NewModels: React.FC<Props> = ({ onSetError }) => {
   const [newModel, setNewModel] = useState<Products[]>([]);
   const [typeProducts, setTypeProducts] = useState<string>('');
 
@@ -20,23 +24,31 @@ export const NewModels = () => {
   );
 
   useEffect(() => {
-    getData<Products[]>('/products').then((products: Products[]) => {
-      const filtered = products.filter(
-        item =>
-          item.category === 'phones' &&
-          newModels.some(model => item.name.includes(model)),
-      );
+    onSetError(false);
 
-      const uniqueByColor = filtered.filter((item, index, arr) => {
-        return arr.findIndex(el => el.color === item.color) === index;
+    getData<Products[]>('/products')
+      .then((products: Products[]) => {
+        const filtered = products.filter(
+          item =>
+            item.category === 'phones' &&
+            newModels.some(model => item.name.includes(model)),
+        );
+
+        const uniqueByColor = filtered.filter((item, index, arr) => {
+          return arr.findIndex(el => el.color === item.color) === index;
+        });
+
+        setNewModel(
+          uniqueByColor.sort(a => (a.name.includes('iPhone 13 Pro') ? -1 : 1)),
+        );
+        setTypeProducts('phones');
+      })
+      .catch(error => {
+        onSetError(true);
+
+        throw error;
       });
-
-      setNewModel(
-        uniqueByColor.sort(a => (a.name.includes('iPhone 13 Pro') ? -1 : 1)),
-      );
-      setTypeProducts('phones');
-    });
-  }, [newModels]);
+  }, [newModels, onSetError]);
 
   const { t } = useTranslation();
 
