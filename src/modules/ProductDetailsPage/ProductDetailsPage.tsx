@@ -38,6 +38,7 @@ export const ProductDetailsPage: React.FC = () => {
   const navigate = useNavigate();
 
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { addToCart, removeFromCart, cart } = useCart();
 
   const [product, setProduct] = useState<PhoneDetails | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -67,8 +68,6 @@ export const ProductDetailsPage: React.FC = () => {
 
     refreshSuggested(allProducts, productId);
   }, [productId, allProducts]);
-
-  const { addToCart, cart } = useCart();
 
   const isInCart = !!productId && cart.some(item => item.id === productId);
 
@@ -152,20 +151,18 @@ export const ProductDetailsPage: React.FC = () => {
 
   const active = isFavorite(cardProduct);
 
-  const handleSuggestedPrev = () => {
+  const handleCartClick = () => {
     if (!productId) {
       return;
     }
 
-    refreshSuggested(allProducts, productId);
-  };
+    if (isInCart) {
+      removeFromCart(productId);
 
-  const handleSuggestedNext = () => {
-    if (!productId) {
       return;
     }
 
-    refreshSuggested(allProducts, productId);
+    addToCart(productId, cardProduct);
   };
 
   return (
@@ -324,17 +321,12 @@ export const ProductDetailsPage: React.FC = () => {
             <div className={styles.actions}>
               <button
                 type="button"
-                className={styles.addToCartButton}
-                disabled={isInCart}
-                onClick={() => {
-                  if (!productId || isInCart) {
-                    return;
-                  }
-
-                  addToCart(productId, cardProduct);
-                }}
+                className={`${styles.addToCartButton} ${
+                  isInCart ? styles.addToCartButtonInCart : ''
+                }`}
+                onClick={handleCartClick}
               >
-                {isInCart ? 'Added to cart' : 'Add to cart'}
+                {isInCart ? 'Remove from cart' : 'Add to cart'}
               </button>
 
               <button
@@ -382,68 +374,6 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
       </section>
 
-      <section className={styles.bottomSections}>
-        <div className={styles.aboutSection}>
-          <div className={styles.aboutHeader}>
-            <h2 className={styles.sectionTitle}>About</h2>
-            <div className={styles.sectionDivider} />
-          </div>
-
-          <div className={styles.aboutContent}>
-            {product.description.map(item => (
-              <article key={item.title} className={styles.aboutItem}>
-                <h3 className={styles.aboutItemTitle}>{item.title}</h3>
-                <p className={styles.aboutItemText}>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.techSection}>
-          <div className={styles.techHeader}>
-            <h2 className={styles.sectionTitle}>Tech specs</h2>
-            <div className={styles.sectionDivider} />
-          </div>
-
-          <dl className={styles.techSpecs}>
-            <div className={styles.specItem}>
-              <dt className={styles.specTitle}>Screen</dt>
-              <dd className={styles.specValue}>{product.screen}</dd>
-            </div>
-
-            <div className={styles.specItem}>
-              <dt className={styles.specTitle}>Resolution</dt>
-              <dd className={styles.specValue}>{product.resolution}</dd>
-            </div>
-
-            <div className={styles.specItem}>
-              <dt className={styles.specTitle}>Processor</dt>
-              <dd className={styles.specValue}>{product.processor}</dd>
-            </div>
-
-            <div className={styles.specItem}>
-              <dt className={styles.specTitle}>RAM</dt>
-              <dd className={styles.specValue}>{product.ram}</dd>
-            </div>
-
-            <div className={styles.specItem}>
-              <dt className={styles.specTitle}>Camera</dt>
-              <dd className={styles.specValue}>{product.camera}</dd>
-            </div>
-
-            <div className={styles.specItem}>
-              <dt className={styles.specTitle}>Zoom</dt>
-              <dd className={styles.specValue}>{product.zoom}</dd>
-            </div>
-
-            <div className={styles.specItem}>
-              <dt className={styles.specTitle}>Cell</dt>
-              <dd className={styles.specValue}>{product.cell.join(', ')}</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
-
       {suggested.length > 0 && (
         <section className={styles.suggestedSection}>
           <div className={styles.suggestedHeader}>
@@ -453,8 +383,7 @@ export const ProductDetailsPage: React.FC = () => {
               <button
                 type="button"
                 className={styles.suggestedArrow}
-                onClick={handleSuggestedPrev}
-                aria-label="Previous"
+                onClick={() => refreshSuggested(allProducts, productId!)}
                 disabled={allProducts.length === 0}
               >
                 ‹
@@ -463,8 +392,7 @@ export const ProductDetailsPage: React.FC = () => {
               <button
                 type="button"
                 className={styles.suggestedArrow}
-                onClick={handleSuggestedNext}
-                aria-label="Next"
+                onClick={() => refreshSuggested(allProducts, productId!)}
                 disabled={allProducts.length === 0}
               >
                 ›

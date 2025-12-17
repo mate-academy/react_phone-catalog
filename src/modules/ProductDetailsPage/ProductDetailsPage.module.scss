@@ -389,16 +389,14 @@
   }
 }
 
-.addToCartButton:disabled {
+.addToCartButtonInCart {
   background-color: #b4bdc3;
-  color: #fff;
-  cursor: default;
   box-shadow: none;
   transform: none;
 }
 
-.addToCartButton:disabled:hover {
-  background-color: #b4bdc3;
+.addToCartButtonInCart:hover {
+  background-color: #9fa4a7;
   box-shadow: none;
   transform: none;
 }
@@ -589,13 +587,14 @@
 
 .suggestedGrid {
   margin-top: 24px;
+  padding-top: 2px;
+  padding-bottom: 16px;
 
   display: flex;
   flex-wrap: nowrap;
   gap: 16px;
 
   overflow-x: auto;
-  padding-bottom: 8px;
 
   -ms-overflow-style: none;
   scrollbar-width: none;

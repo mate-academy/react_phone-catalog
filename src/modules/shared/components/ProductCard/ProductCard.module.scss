@@ -58,7 +58,6 @@
   font-size: 14px;
   line-height: 21px;
   color: #313237;
-
   min-height: 58px;
 }
 
@@ -143,16 +142,14 @@
   }
 }
 
-.addToCartButton:disabled {
+.addToCartButtonInCart {
   background-color: #b4bdc3;
-  color: #fff;
-  cursor: default;
   box-shadow: none;
   transform: none;
 }
 
-.addToCartButton:disabled:hover {
-  background-color: #b4bdc3;
+.addToCartButtonInCart:hover {
+  background-color: #9fa4a7;
   box-shadow: none;
   transform: none;
 }

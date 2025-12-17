@@ -28,7 +28,7 @@ The application supports sorting, pagination, searching, and data persistence vi
 
 ## 🔗 Preview
 
-- **Live preview:** https://nazarii84.github.io/react_phone-catalog/
+- **Live preview:** https://nazarii84.github.io/react_phone-catalog/#/
 - **GitHub repository:** https://github.com/Nazarii84/react_phone-catalog
 
 ---

@@ -57,12 +57,18 @@ export const ProductCard: React.FC<Props> = ({
   const { isFavorite, toggleFavorite } = useFavorites();
   const active = isFavorite(product);
 
-  const { addToCart, cart } = useCart();
+  const { addToCart, removeFromCart, cart } = useCart();
 
   const hasDiscount = product.fullPrice > product.price;
   const isInCart = cart.some(item => item.id === slug);
 
-  const handleAddToCart = () => {
+  const handleCartClick = () => {
+    if (isInCart) {
+      removeFromCart(slug);
+
+      return;
+    }
+
     addToCart(slug, {
       id: slug,
       name: product.name,
@@ -115,11 +121,12 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.buttons}>
         <button
           type="button"
-          className={styles.addToCartButton}
-          onClick={handleAddToCart}
-          disabled={isInCart}
+          className={`${styles.addToCartButton} ${
+            isInCart ? styles.addToCartButtonInCart : ''
+          }`}
+          onClick={handleCartClick}
         >
-          {isInCart ? 'Added to cart' : 'Add to cart'}
+          {isInCart ? 'Remove from cart' : 'Add to cart'}
         </button>
 
         <button
