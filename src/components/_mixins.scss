@@ -383,14 +383,19 @@
 @mixin goods {
   @include onScreen640 {
     margin-inline: 24px;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     row-gap: 40px;
     column-gap: 16px;
+
+    justify-self: center;
+    margin-inline: auto;
+    padding-inline: 24px;
   }
 
   @include onScreen1200 {
     margin-inline: 32px;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   @include onScreen1201 {

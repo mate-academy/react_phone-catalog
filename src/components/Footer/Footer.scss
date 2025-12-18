@@ -24,6 +24,11 @@
     display: flex;
     align-items: center;
 
+     &__item {
+        color: inherit;
+        text-decoration: none;
+      }
+
     &__list {
       padding: 0;
       margin: 0;
@@ -59,6 +64,7 @@
 
       text-decoration: none;
       color: #89939a;
+      cursor: pointer;
 
       @include hover(transform, scale(1.1));
     }
@@ -69,6 +75,7 @@
       align-items: center;
       width: 32px;
       height: 32px;
+      cursor: pointer;
 
       &__icon {
         width: 16px;

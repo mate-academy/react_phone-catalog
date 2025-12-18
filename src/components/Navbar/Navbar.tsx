@@ -23,9 +23,9 @@ export const Navbar = () => {
 
   return (
     <div className="top-bar" id="header">
-      <div className="logo">
+      <Link to={'/'} className="logo">
         <img src={logo} alt="Logo" className="logo__header" />
-      </div>
+      </Link>
 
       {isMobile ? (
         <div className="nav">

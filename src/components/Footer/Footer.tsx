@@ -17,6 +17,18 @@ export const Footer = () => {
 
   const { footerMenuList, cart, favourites } = context;
 
+  const getAdress = (item: string) => {
+    if (item === 'Github') {
+      return 'https://github.com/dmdamyan/react_phone-catalog';
+    }
+
+    if (item === 'Contacts') {
+      return 'mailto:dmitriignc@gmail.com';
+    }
+
+    return 'https://opensource.org/licenses/MIT';
+  };
+
   return pathname !== '/aside' ? (
     <div className={pathname === '/aside' ? 'burger-footer' : 'footer'}>
       <div className="footer__logo">
@@ -26,24 +38,41 @@ export const Footer = () => {
       <div className="footer__info">
         <ul className="footer__info__list">
           {footerMenuList.map(item => (
-            <li className="footer__info__item" key={item}>
-              {item}
+            <li key={item}>
+              <a
+                href={getAdress(item)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer__info__item"
+              >
+                {item}
+              </a>
             </li>
           ))}
         </ul>
       </div>
 
       <div className="footer__buttons">
-        <a href="#header" className="footer__buttons__text">
+        <div
+          className="footer__buttons__text"
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+          }}
+        >
           Back to top
-        </a>
+        </div>
 
-        <a href="#header" className="footer__buttons__slider-button">
+        <div
+          className="footer__buttons__slider-button"
+          onClick={() => {
+            window.scrollTo({ top: 0 });
+          }}
+        >
           <img
             src={sliderButton}
             className="footer__buttons__slider-button__icon"
           />
-        </a>
+        </div>
       </div>
     </div>
   ) : (
