@@ -1,51 +1,117 @@
-import React, { useRef, useMemo } from 'react';
-import './ProductsSlider.scss'; // Стилі (див. нижче)
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
+import { useRef, useState } from 'react';
+import cn from 'classnames';
+import { Navigation } from 'swiper/modules';
+import './ProductsSlider.scss';
 import { Product } from '@/types';
+import { Link } from 'react-router-dom';
+import { useCart } from '@/modules/CartFavContext/CartContext';
+import 'swiper/css';
+import { Button } from '@/components/ui/button/Button';
 
-// Допоміжний компонент картки (можна винести в окремий файл ProductCard.tsx)
-const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
+type SwRef = SwiperRef & {
+  slidePrev: VoidFunction;
+  slideNext: VoidFunction;
+};
+
+type Props = {
+  products: Product[];
+  title: string;
+  showDiscount?: boolean;
+};
+
+type ProductCardProps = {
+  item: Product;
+  showDiscount: boolean;
+};
+
+const ProductCard: React.FC<ProductCardProps> = ({ item, showDiscount }) => {
+  const {
+    isFavorite,
+    isInCart,
+    addToFavorites,
+    removeFromFavorites,
+    addToCart,
+  } = useCart();
+
+  if (!item) return null;
+
+  const fav = isFavorite(item.itemId || '');
+  const inCart = isInCart(item.itemId || '');
+
+  const handleCartClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!item) return;
+
+    addToCart(item.itemId);
+  };
+
+  const handleFav = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!item) return;
+
+    if (fav) {
+      removeFromFavorites(item.itemId || '');
+    } else {
+      addToFavorites(item.itemId);
+    }
+  };
   return (
     <div className="product-card">
-      <div className="product-card__image-wrapper">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="product-card__image"
-        />
-      </div>
+      <Link
+        to={`/${item.category}/${item.itemId}`}
+        className="product-card__image-wrapper"
+      >
+        <img src={item.image} alt={item.name} className="product-card__image" />
+      </Link>
 
-      <h3 className="product-card__title">{product.name}</h3>
+      <h3 className="product-card__title">{item.name}</h3>
 
       <div className="product-card__prices">
-        <span className="product-card__price">${product.price}</span>
-        <span className="product-card__full-price">${product.fullPrice}</span>
+        <span className="product-card__price">${item.price}</span>
+        {showDiscount && (
+          <span className="product-card__full-price">${item.fullPrice}</span>
+        )}
       </div>
 
       <div className="product-card__specs">
         <div className="spec-row">
           <span className="spec-label">Screen</span>
-          <span className="spec-value">{product.screen}</span>
+          <span className="spec-value">{item.screen}</span>
         </div>
         <div className="spec-row">
           <span className="spec-label">Capacity</span>
-          <span className="spec-value">{product.capacity}</span>
+          <span className="spec-value">{item.capacity}</span>
         </div>
         <div className="spec-row">
           <span className="spec-label">RAM</span>
-          <span className="spec-value">{product.ram}</span>
+          <span className="spec-value">{item.ram}</span>
         </div>
       </div>
 
       <div className="product-card__actions">
-        <button className="btn-add">Add to cart</button>
-        <button className="btn-fav">
+        <Button
+          onClick={handleCartClick}
+          fullWidth
+          variant={inCart ? 'outline' : 'primary'}
+        >
+          {inCart ? 'Added to Cart' : 'Add to Cart'}
+        </Button>
+        <button
+          className={cn('btn-fav', { 'btn-fav--added': fav })}
+          onClick={handleFav}
+        >
           {/* SVG для сердечка */}
           <svg
             width="16"
             height="16"
             viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
+            fill={'none'}
+            stroke={'currentColor'}
             strokeWidth="2"
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -56,66 +122,121 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   );
 };
 
-interface Props {
-  products: Product[];
-}
-
-export const ProductsSlider: React.FC<Props> = ({ products }) => {
-  const listRef = useRef<HTMLDivElement>(null);
-
-  // 1. Фільтруємо (тільки зі знижкою) та 2. Сортуємо за абсолютною величиною знижки
-  const hotProducts = useMemo(() => {
-    return products
-      .filter(p => p.fullPrice > p.price) // Тільки зі знижкою
-      .sort((a, b) => {
-        const discountA = a.fullPrice - a.price;
-        const discountB = b.fullPrice - b.price;
-        return discountB - discountA; // Спадання (найбільша знижка перша)
-      });
-  }, [products]);
-
-  // Логіка скролу
-  const scroll = (direction: 'left' | 'right') => {
-    if (listRef.current) {
-      const cardWidth = 288; // Приблизна ширина картки + gap (можна вираховувати динамічно)
-      const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
-
-      listRef.current.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  if (hotProducts.length === 0) return null;
+const NavButton: React.FC<{
+  direction: 'prev' | 'next';
+  onClick?: () => void;
+  disabled?: boolean;
+}> = ({ direction, onClick, disabled }) => {
+  return (
+    <button
+      className={cn(
+        'productsSlider__button',
+        `productsSlider__button--${direction}`,
+        { 'productsSlider__button--disabled': disabled },
+      )}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      <img
+        src={
+          direction === 'prev' ? 'img/arrow-left.svg' : 'img/arrow-right.svg'
+        }
+        alt={direction === 'prev' ? 'Previous' : 'Next'}
+      />
+    </button>
+  );
+};
+export const ProductsSlider: React.FC<Props> = ({
+  products,
+  title,
+  showDiscount = true,
+}) => {
+  const swiperRef = useRef<SwRef>();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const isDisabledPrev = activeIndex === 0;
+  const [isDisabledNext, setIsDisabledNext] = useState(false);
 
   return (
-    <section className="products-slider">
-      <div className="products-slider__header">
-        <h2 className="products-slider__title">Hot prices</h2>
-        <div className="products-slider__controls">
-          <button
-            className="nav-btn"
-            onClick={() => scroll('left')}
-            aria-label="Scroll left"
-          >
-            &lt;
-          </button>
-          <button
-            className="nav-btn"
-            onClick={() => scroll('right')}
-            aria-label="Scroll right"
-          >
-            &gt;
-          </button>
+    <div className="productsSlider">
+      {/* <div className="productsSlider__buttons">
+        <button
+          className={cn(
+            'productsSlider__button productsSlider__button-prev',
+            {
+              'productsSlider__button--disabled': isDisabledPrev,
+            },
+          )}
+          id={'bannerPrev'}
+          onClick={() => {
+            swiperRef.current?.slidePrev();
+          }}
+          disabled={isDisabledPrev}
+        >
+          <img src="img/icons/SliderLeft.svg" />
+        </button>
+        <button
+          className={cn(
+            'productsSlider__button productsSlider__button-next',
+            {
+              'productsSlider__button--disabled': isDisabledNext,
+            },
+          )}
+          id={'bannerNext'}
+          onClick={() => {
+            swiperRef.current?.slideNext();
+          }}
+          disabled={isDisabledNext}
+        >
+          <img src="img/icons/SliderRight.svg" />
+        </button>
+      </div> */}
+      <div className="productsSlider__header">
+        <h2 className="productsSlider__title">{title}</h2>
+        <div className="productsSlider__controls">
+          <NavButton direction="prev" disabled={isDisabledPrev} />
+          <NavButton direction="next" disabled={isDisabledNext} />
         </div>
       </div>
-
-      <div className="products-slider__list" ref={listRef}>
-        {hotProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
+      <Swiper
+        onSwiper={swiper => {
+          swiperRef.current = swiper as unknown as SwRef;
+        }}
+        onSlideChange={swiper => {
+          setActiveIndex(swiper.activeIndex);
+          setIsDisabledNext(swiper.isEnd);
+        }}
+        className="productsSlider__swiper"
+        spaceBetween={16}
+        slidesPerView={4}
+        modules={[Navigation]}
+        breakpoints={{
+          320: {
+            slidesPerView: 1.5,
+          },
+          550: {
+            slidesPerView: 2,
+          },
+          758: {
+            slidesPerView: 3,
+          },
+          940: {
+            slidesPerView: 3.5,
+          },
+          1199: {
+            slidesPerView: 4,
+          },
+        }}
+        navigation={{
+          nextEl: '.productsSlider__button--next',
+          prevEl: '.productsSlider__button--prev',
+        }}
+      >
+        {products.map((product, index) => (
+          <SwiperSlide key={index}>
+            <ProductCard item={product} showDiscount={showDiscount} />
+          </SwiperSlide>
         ))}
-      </div>
-    </section>
+      </Swiper>
+    </div>
   );
 };

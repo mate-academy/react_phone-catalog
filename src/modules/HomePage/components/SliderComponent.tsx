@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Product } from '@/types';
 import { SliderItem } from '../../shared/components/SliderItem/SliderItem';
 import styles from './SliderComponent.module.scss';
@@ -15,7 +15,10 @@ export const SliderComponent: React.FC<SliderComponentProps> = ({
   showDiscount = false,
 }) => {
   const [index, setIndex] = useState(0);
-
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+  let distance = 0;
   const next = () => {
     setIndex(prev => prev + 1);
   };
@@ -23,6 +26,25 @@ export const SliderComponent: React.FC<SliderComponentProps> = ({
   const prev = () => {
     setIndex(prev => prev - 1);
   };
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // Скидаємо попередній кінець
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return; // Ігноруємо, якщо немає початку чи кінця
+    distance = touchStart - touchEnd;
+  };
+  if (touchStart && touchEnd) {
+    listRef.current?.scrollBy({
+      left: distance,
+      behavior: 'smooth',
+    });
+  }
 
   // const visible = products.slice(index, index + 4);
 
@@ -117,12 +139,18 @@ export const SliderComponent: React.FC<SliderComponentProps> = ({
           </div>
         )}
       </div>
-      <div className={styles.SliderComponent__itemsContainer}>
+      <div
+        className={styles.SliderComponent__itemsContainer}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           className={styles.SliderComponent__itemsWrapper}
           style={{
-            transform: `translateX(calc(-${index * 25}% + ${index * 18}px))`,
+            transform: `translateX(calc(-${index * 25}% - ${index * 4}px))`,
           }}
+          ref={listRef}
         >
           {products.map(prod => (
             <SliderItem key={prod.id} item={prod} showDiscount={showDiscount} />

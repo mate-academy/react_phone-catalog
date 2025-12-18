@@ -20,7 +20,6 @@ export const Carousel: React.FC = () => {
 
   const next = () => {
     setActiveIndex(prev => (prev + 1) % slides.length);
-    console.log('next slide', new Date());
   };
   const prev = () =>
     setActiveIndex(prev => (prev - 1 + slides.length) % slides.length);

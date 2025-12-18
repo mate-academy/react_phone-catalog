@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Carousel } from './Carousel';
-import { SliderComponent } from './SliderComponent';
 import { Product } from '@/types';
 import productsList from '../../../../public/api/products.json';
 import { Link } from 'react-router-dom';
 import PageHeader from '@/modules/shared/components/PageHeader/PageHeader';
 import styles from './HomePage.module.scss';
 import { ProductsSlider } from './ProductsSlider';
+// import Swiper styles
+// import 'swiper/css';
+
 export const HomePage: React.FC = () => {
   const [products] = useState<Product[]>(productsList);
   const counters = {
@@ -38,7 +40,6 @@ export const HomePage: React.FC = () => {
   const newProducts = getRandomProducts(
     [...products].sort((a, b) => b.year - a.year),
   );
-console.log(newProducts);
 
   return (
     <>
@@ -48,8 +49,11 @@ console.log(newProducts);
         variant="homePage"
       />
       <Carousel />
-      {/* <SliderComponent products={newProducts} title="Brand new models" /> */}
-
+      <ProductsSlider
+        products={newProducts}
+        title="Brand new models"
+        showDiscount={false}
+      />
       <section className={styles.categorySection}>
         <h2 className={styles.categoryTitle}>Shop by Category</h2>
         <div className={styles.categoryGrid}>
@@ -94,8 +98,8 @@ console.log(newProducts);
           </Link>
         </div>
       </section>
-      <ProductsSlider products={products} />
-      {/* <SliderComponent products={hotProducts} title="Hot prices" showDiscount /> */}
+
+      <ProductsSlider products={hotProducts} title="Hot prices" />
     </>
   );
 };

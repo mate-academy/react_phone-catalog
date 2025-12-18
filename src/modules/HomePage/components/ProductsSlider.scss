@@ -4,8 +4,30 @@ $accent-color: #313237;
 $border-color: #e2e6e9;
 $bg-hover: #fafbfc;
 
-.products-slider {
+.productsSlider {
   margin-bottom: 80px;
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s;
+    user-select: none;
+
+    &:hover {
+      border-color: $text-primary;
+    }
+
+    &--disabled {
+      border: 1px solid $color-elements;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
 
   &__header {
     display: flex;
@@ -72,6 +94,11 @@ $bg-hover: #fafbfc;
 
   &:hover {
     box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+  }
+  &:hover &__image-wrapper {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9;
   }
 
   &__image-wrapper {
@@ -156,7 +183,18 @@ $bg-hover: #fafbfc;
       transition: background 0.3s;
 
       &:hover {
-        background: lighten($text-primary, 10%);
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
+
+      &--added {
+        color: $color-green;
+        background-color: #fff;
+        border: 1px solid $color-elements;
+
+        &:hover {
+          box-shadow: none;
+          cursor: default;
+        }
       }
     }
 
@@ -170,10 +208,21 @@ $bg-hover: #fafbfc;
       justify-content: center;
       cursor: pointer;
       color: $text-secondary;
+      transition:
+        border-color 0.3s,
+        color 0.3s;
+      flex-shrink: 0;
 
       &:hover {
         border-color: $text-primary;
         color: $text-primary;
+      }
+      &--added {
+        svg {
+          fill: $color-red;
+          stroke: $color-red;
+        }
+        
       }
     }
   }
@@ -185,7 +234,7 @@ $bg-hover: #fafbfc;
     flex: 0 0 212px; /* Вужчі картки на мобільному */
   }
 
-  .products-slider__title {
+  .productsSlider__title {
     font-size: 22px;
   }
 }
