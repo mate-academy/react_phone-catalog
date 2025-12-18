@@ -85,6 +85,14 @@ export const AccessoriesPage: React.FC = () => {
     setSearchParams(next);
   };
 
+  const query = searchParams.get('query') || '';
+
+  const filtered = useMemo(() => {
+    return sorted.filter(p =>
+      p.name.toLowerCase().includes(query.toLowerCase()),
+    );
+  }, [sorted, query]);
+
   return (
     <section className="accessories">
       <div className="container">
@@ -128,6 +136,21 @@ export const AccessoriesPage: React.FC = () => {
             </select>
           </div>
         </div>
+
+        {!loading && filtered.length === 0 ? (
+          <div className="products-empty">
+            <img
+              src="/img/icons/search.svg"
+              alt="Nothing found"
+              className="products-empty__icon"
+            />
+            <p className="products-empty__text">
+              There are no tablets matching the query
+            </p>
+          </div>
+        ) : (
+          <ProductList products={filtered} />
+        )}
 
         {isEmpty ? (
           <p className="accessories__empty">There are no accessories yet</p>

@@ -85,7 +85,7 @@ export const HomePage: React.FC = () => {
   return (
     <main className="home">
       <div className="container">
-        <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+        <h1 className="home__title">Product Catalog</h1>
 
         {/* Banner */}
         <Banner />

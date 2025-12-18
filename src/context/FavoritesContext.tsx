@@ -36,12 +36,12 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
-  // ❤️ проверка
+  //
   const isFavorite = (id: string) => {
     return favorites.some(p => p.id === id);
   };
 
-  // 🔢 количество
+  //
   const count = useMemo(() => favorites.length, [favorites]);
 
   return (

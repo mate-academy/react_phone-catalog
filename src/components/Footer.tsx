@@ -26,8 +26,12 @@ export const Footer: React.FC = () => {
         </nav>
 
         <div className="footer__lang">
-          <button onClick={() => setLang('en')}>EN</button>
-          <button onClick={() => setLang('ua')}>UA</button>
+          <button className="footer__lang-1" onClick={() => setLang('en')}>
+            EN
+          </button>
+          <button className="footer__lang-2" onClick={() => setLang('ua')}>
+            UA
+          </button>
           <p>Current {lang}</p>
         </div>
 

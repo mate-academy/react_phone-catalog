@@ -150,3 +150,30 @@
 
 
 }
+
+.footer__lang {
+  font-size: 12px;
+  font-weight: 600;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &-1{
+   border: solid 1px gray;
+   padding: 2px;
+   &:hover {
+      color: white;
+      background-color: #313237;
+  }
+  }
+
+  &-2{
+   border: solid 1px gray;
+   padding: 2px;
+   &:hover {
+      color: white;
+      background-color: #313237;
+  }
+  }
+}
