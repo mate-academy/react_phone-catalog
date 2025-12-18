@@ -17,11 +17,48 @@
     font-weight: 800;
     color: $main-text-color;
 
+    &__buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+
+
+      &__button {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        border: none;
+        background-color: $main-button-color;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+
+        &:hover {
+          background-color: $button-hover;
+        }
+
+        &:disabled {
+          border: 1px solid $button-border-disabled;
+          background-color: $main-background-color;
+        }
+
+        &__img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
   }
 
   &__container {
     display: flex;
     gap: 16px;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease;
   }
 
   &__item {
