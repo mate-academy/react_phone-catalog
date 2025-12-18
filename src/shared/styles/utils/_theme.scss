@@ -1,0 +1,22 @@
+$light-theme: (
+  'bg': #fff,
+  'text': #161616,
+);
+
+$dark-theme: (
+  'bg': #161616,
+  'text': #f4f4f4,
+);
+
+@mixin theme-vars($map) {
+  --color-bg: #{map-get($map, 'bg')};
+  --color-text: #{map-get($map, 'text')};
+}
+
+:root {
+  @include theme-vars($light-theme);
+}
+
+[data-theme='dark'] {
+  @include theme-vars($dark-theme);
+}

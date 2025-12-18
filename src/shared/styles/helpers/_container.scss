@@ -1,0 +1,11 @@
+.container {
+  box-sizing: border-box;
+
+  @include padding-inline;
+
+
+  @include on-desktop {
+    max-width: $desktop-min-width;
+    margin-inline: auto;
+  }
+}
