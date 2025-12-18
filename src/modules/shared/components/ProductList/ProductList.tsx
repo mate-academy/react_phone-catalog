@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from '@/types/Product';
-import { SliderItem } from '../SliderItem/SliderItem';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 type ProductsListProps = {
   products: Product[];
@@ -10,7 +10,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({ products }) => {
   return (
     <>
       {products.map(product => (
-        <SliderItem key={product.id} item={product} showDiscount={true} />
+        <ProductCard key={product.id} item={product} showDiscount={true} />
       ))}
     </>
   );

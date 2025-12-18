@@ -12,6 +12,12 @@ export const sortOptions = [
   { label: 'Alphabetically', value: 'title' },
   { label: 'Cheapest', value: 'price' },
 ];
+export const links = [
+  { path: '/', label: 'HOME' },
+  { path: '/phones', label: 'PHONES' },
+  { path: '/tablets', label: 'TABLETS' },
+  { path: '/accessories', label: 'ACCESSORIES' },
+];
 
 export const perPageOptions = [
   { label: '4', value: '4' },

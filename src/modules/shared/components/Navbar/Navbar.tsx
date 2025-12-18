@@ -5,22 +5,33 @@ import CartIcon from '/img/icons/cart.svg';
 import HeartIcon from '/img/icons/heart.svg';
 import burgerMenu from '/img/icons/burger-menu.svg';
 import { useCart } from '@/modules/CartFavContext/CartContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { links } from '../../../shared/components/utils/constants/constants';
 import Menu from '../Menu/Menu';
 export const Navbar = () => {
-  const links = [
-    { path: '/', label: 'HOME' },
-    { path: '/phones', label: 'PHONES' },
-    { path: '/tablets', label: 'TABLETS' },
-    { path: '/accessories', label: 'ACCESSORIES' },
-  ];
-
   const { totalCount, totalFavoritesCount } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuClick = () => {
-    setIsMenuOpen(prev=> !prev);
-  }
+    setIsMenuOpen(prev => !prev);
+  };
+  const handleMenuClose = () => {
+    setIsMenuOpen(false);
+  };
+  useEffect(() => {
+    if (isMenuOpen) {
+      // Блокуємо скрол
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Відновлюємо скрол (повертаємо дефолтне значення)
+      document.body.style.overflow = '';
+    }
+
+    // Функція очищення (cleanup), якщо компонент Navbar видалиться
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
   return (
     <>
       <header className={styles.header}>
@@ -83,7 +94,7 @@ export const Navbar = () => {
           </div>
         </nav>
       </header>
-      {isMenuOpen && <Menu onClose={handleMenuClick} />}
+      <Menu onClose={handleMenuClose} isMenuOpen={isMenuOpen} />
     </>
   );
 };
