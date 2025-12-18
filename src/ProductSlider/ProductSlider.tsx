@@ -38,10 +38,9 @@ export const ProductSlider = () => {
       <div className={styles.container__sliderContainer}>
         <h1>Welcome to Nice Gadgets store!</h1>
 
-        <button
-          className={styles.container__buttonPrev}
-          onClick={handlePrev}
-        ></button>
+        <button className={styles.container__buttonPrev} onClick={handlePrev}>
+          <span className={styles.container__arrow}>{'<'}</span>
+        </button>
 
         <div className={styles.container__listWrapper}>
           <div
@@ -56,10 +55,9 @@ export const ProductSlider = () => {
           </div>
         </div>
 
-        <button
-          className={styles.container__buttonNext}
-          onClick={handleNext}
-        ></button>
+        <button className={styles.container__buttonNext} onClick={handleNext}>
+          <span className={styles.container__arrow}>{'>'}</span>
+        </button>
 
         <ul className={styles.container__dotsBox}>
           {images.map((_, index) => (

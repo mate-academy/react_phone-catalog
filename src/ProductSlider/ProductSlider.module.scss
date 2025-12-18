@@ -40,6 +40,14 @@ body {
     font-size: 48px;
     line-height: 117%;
     margin: 56px 0;
+
+    @include on-tablet {
+      margin: 32px 0;
+    }
+    
+    @include on-phone {
+      margin: 24px 0;
+    }
   }
 
   &__sliderContainer {
@@ -59,6 +67,7 @@ body {
 
     @include on-phone {
       height: 100%;
+      padding-inline: 0px;
     }
   }
  
@@ -90,13 +99,14 @@ body {
   }
 
   &__buttonPrev {
-    background: url('/img/slider1/ButtonLeft.png') no-repeat center / contain;
+    background-color: #323542;
     border: none;
     width: 32px;
     height: 450px;
     grid-column: 1/2;
     cursor: pointer;
     opacity: 1;
+    border-radius: 5px;
 
     @include on-tablet {
       height: 189px;
@@ -108,13 +118,14 @@ body {
   }
 
   &__buttonNext {
-    background: url('/img/slider1/ButtonRight.png') no-repeat center / contain;
+    background-color: #323542;
     border: none;
     width: 32px;
     height: 450px;
     grid-column: -2/-1;
     cursor: pointer;
     opacity: 1;
+    border-radius: 5px;
 
     @include on-tablet {
       height: 189px;

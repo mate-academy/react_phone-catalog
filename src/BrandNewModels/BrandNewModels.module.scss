@@ -25,10 +25,12 @@
 }
 
 .modelsContainer {
-    padding-top: 400px;
+    margin-top: 400px;
     font-family: Mont, Arial, Helvetica, sans-serif;
     display: grid;
     grid-template-columns: repeat(24, 1fr);
+    padding-inline: 152px;
+    padding-bottom: 300px;
 
     &__title {
       color: #F1F2F9;
@@ -36,19 +38,70 @@
       font-size: 32px;
       line-height: 41px;
       letter-spacing: -1%;
-      grid-column: 2 / span 22;
+      grid-column: 1 / 10;
     }
 
     &__cards {
-      grid-column: 2 / span 22;
+      margin-top: 24px;
+      grid-column: 1 / -1;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
     }
 
+
     &__card {
+      width: 272px;
+      height: 506px;
+      background-color: #161827;
+      padding: 32px;
+    }
+
+    &__name {
+      margin: 8px 0;
+      color: #F1F2F9;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    &__price {
+      color: #F1F2F9;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      margin-bottom: 8px;
+    }
+
+    &__line {
       width: 100%;
-      height: auto;
+      height: 1px;
+      background-color: gray;
+    }
+
+    &__cardDescription {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 8px 0;
+    }
+    
+
+    &__CartAdd {
+      border: none;
+      background-color: #905BFF;
+      padding: 9.5px 39.5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__CartAddText {
+      color: #F1F2F9;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
     }
 
     img {
@@ -57,25 +110,127 @@
       object-fit: contain;
     }
 
-    &__buttonPrev {
-      background: transparent;
-      border: none;
+    &__buttonsContainer {
+      display: flex;
+      grid-column: 20/25;
+      gap: 16px;
     }
 
-    &__buttonPrevImg {
-      height: 32px;
-      width: 32px;
-      transform: rotate(180deg);
+    &__buttonPrev {
+      background-color: #0F1121;
+      border: 1px solid gray;
+      padding: 8px;
+
+      &:hover {
+        background-color: rgb(22, 2, 41);
+        cursor: pointer;
+      }
     }
 
     &__buttonNext {
-      background: transparent;
-      border: none;
+      background-color: #0F1121;
+      border: 1px solid gray;
+      padding: 8px;
+
+      &:hover {
+        background-color: rgb(22, 2, 41);
+        cursor: pointer;
+      }
     }
 
-    &__buttonNextImg {
-      height: 32px;
-      width: 32px;
+    &__arrow {
+      color: gray;
     }
-    
+
+    &__screen {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__screenT1 {
+      color: #75767F;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      margin-bottom: 8px;
+    }
+
+    &__screenT2 {
+      color: #F1F2F9;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+    }
+
+    &__capacity {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__capacityT1 {
+      color: #75767F;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      margin-bottom: 8px;
+    }
+
+    &__capacityT2 {
+      color: #F1F2F9;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+    }
+
+    &__Ram {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__RamT1 {
+      color: #75767F;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      margin-bottom: 8px;
+    }
+
+    &__RamT2 {
+      color: #F1F2F9;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+    }
+
+    &__buttonsBox {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__Icon {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background-color: #323542; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      img {
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
 }
