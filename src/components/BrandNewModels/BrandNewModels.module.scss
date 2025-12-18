@@ -1,0 +1,120 @@
+.new_models {
+  margin-block: 80px;
+
+  h3 {
+    margin: 0;
+  }
+
+  &__top_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 24px;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    font-weight: 800;
+    color: #F1F2F9;
+
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__item {
+    background-color: #161827;
+    width: 272px;
+    height: 506px;
+    color: #F1F2F9;
+
+    &__container {
+      padding: 32px;
+    }
+
+    &__img {
+      width: 208px;
+      height: 196px;
+      object-fit: contain;
+      padding-bottom: 8px;
+    }
+
+    &__name {
+      // font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      padding-bottom: 8px;
+      height: 58px;
+      // text-align: end;
+      margin: 0;
+    }
+
+    &__price {
+      font-size: 22px;
+      line-height: 1.4em;
+      padding-bottom: 8px;
+      margin: 0;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #3B3E4A;
+        padding-bottom: 8px;
+      }
+    }
+
+    &__description {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 8px;
+      font-size: 12px;
+      line-height: 1em;
+      font-weight: normal;
+
+      &__key {
+        margin: 0;
+        color: #89939A;
+      }
+
+      &__value {
+        margin: 0;
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 8px;
+      padding-top: 8px;
+
+      button {
+        cursor: pointer;
+      }
+
+      &__cart {
+        background-color: #905BFF;
+        border: none;
+        color: #F1F2F9;
+        width: 160px;
+        height: 40px;
+      }
+
+      &__fav {
+        height: 40px;
+        width: 40px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #323542;
+
+        &__icon {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}

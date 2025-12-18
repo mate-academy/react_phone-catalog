@@ -1,7 +1,7 @@
 .swiper {
   display: flex;
   height: 400px;
-  padding-inline: 152px;
+  // padding-inline: 152px;
 
   :global(.swiper-pagination) {
       position: absolute;
@@ -9,7 +9,7 @@
       width: 100%;
       text-align: center;
 
-      z-index: 10;
+      // z-index: 10;
     }
 
     :global(.swiper-pagination-bullet) {
@@ -40,10 +40,11 @@
 
   &__button {
     padding: 0;
-    width: 32px !important;
+    min-width: 32px;
     background-color: #323542;
     border: none;
     height: 100%;
+    // z-index: 20;
 
     &__arrow {
       align-items: center;
