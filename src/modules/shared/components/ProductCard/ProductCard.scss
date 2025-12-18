@@ -1,0 +1,144 @@
+.product-card {
+  flex: 0 0 272px; /* Фіксована ширина картки */
+  border: 1px solid $color-elements;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+  }
+  &:hover &__image-wrapper {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9;
+  }
+
+  &__image-wrapper {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-primary;
+    margin: 0 0 16px;
+    line-height: 21px;
+    height: 42px; /* Обмеження на 2 рядки */
+    overflow: hidden;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+    border-bottom: 1px solid $color-elements;
+    padding-bottom: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    color: $color-primary;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    font-weight: 500;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__specs {
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    .spec-label {
+      color: $color-secondary;
+    }
+    .spec-value {
+      color: $color-primary;
+      font-weight: 600;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto; /* Притискає кнопки до низу */
+
+    .btn-add {
+      flex: 1;
+      height: 40px;
+      background: $color-primary;
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      }
+
+      &--added {
+        color: $color-green;
+        background-color: #fff;
+        border: 1px solid $color-elements;
+
+        &:hover {
+          box-shadow: none;
+          cursor: default;
+        }
+      }
+    }
+
+    .btn-fav {
+      width: 40px;
+      height: 40px;
+      border: 1px solid $color-elements;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: $color-secondary;
+      transition:
+        color-elements 0.3s,
+        color 0.3s;
+      flex-shrink: 0;
+
+      &:hover {
+        color-elements: $color-primary;
+        color: $color-primary;
+      }
+      &--added {
+        svg {
+          fill: $color-red;
+          stroke: $color-red;
+        }
+
+      }
+    }
+  }
+}
