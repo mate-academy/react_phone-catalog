@@ -122,7 +122,10 @@ export const ProductCard: React.FC<Props> = ({ model, brandNewModels }) => {
               id => id === model.id,
             ),
           })}
-          onClick={handleAddToCart}
+          onClick={() => {
+            handleAddToCart();
+            window.scrollTo({ top: 0 });
+          }}
         >
           {Object.keys(cart).some(id => id === model.id)
             ? 'Added'
