@@ -15,7 +15,7 @@
     line-height: 41px;
     letter-spacing: -0.01em;
     font-weight: 800;
-    color: #F1F2F9;
+    color: $main-text-color;
 
   }
 
@@ -28,7 +28,7 @@
     background-color: #161827;
     width: 272px;
     height: 506px;
-    color: #F1F2F9;
+    color: $main-text-color;
 
     &__container {
       padding: 32px;
@@ -96,7 +96,7 @@
       &__cart {
         background-color: #905BFF;
         border: none;
-        color: #F1F2F9;
+        color: $main-text-color;
         width: 160px;
         height: 40px;
       }
@@ -108,7 +108,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #323542;
+        background-color: $main-button-color;
 
         &__icon {
           width: 16px;

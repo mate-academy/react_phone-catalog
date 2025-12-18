@@ -37,11 +37,11 @@
 
     &__item {
       text-decoration: none;
-      color: #F1F2F9;
+      color: $main-text-color;
       height: 100%;
 
       &:visited {
-        color: #F1F2F9;
+        color: $main-text-color;
       }
     }
   }

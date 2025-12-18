@@ -25,7 +25,7 @@
     }
 
     :global(.swiper-pagination-bullet-active) {
-      background-color: #F1F2F9;
+      background-color: $main-text-color;
     }
 
   &__slide {
@@ -41,7 +41,7 @@
   &__button {
     padding: 0;
     min-width: 32px;
-    background-color: #323542;
+    background-color: $main-button-color;
     border: none;
     height: 100%;
     // z-index: 20;
