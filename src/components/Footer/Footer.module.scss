@@ -6,6 +6,7 @@
   line-height: 11px;
   letter-spacing: 0.04em;
   padding-inline: 152px;
+  box-shadow: 0 -1px 0 0 $main-button-color;
 
   &__container {
     display: flex;
