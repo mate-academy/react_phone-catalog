@@ -1,0 +1,48 @@
+.icon {
+ // width: 48px;
+  //height: 48px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  margin: 16px;
+
+  box-sizing: border-box;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &__background {
+    border-left: 1px solid #E2E6E9;
+
+       //border-left: 1px solid red;
+  }
+
+  &--menu {
+    background-image: url(/img/icons/icon-burger-menu-2x.png);
+    width: 16px;
+    height: 16px;
+
+  }
+
+  &--shopping-bag-cart {
+    background-image: url(/img/icons/icon-shopping-bag-cart-2x.png);
+      width: 16px;
+      height: 16px;
+
+    }
+
+  &--favourites {
+    background-image: url(/img/icons/icon-favourites-2x.png);
+    width: 16px;
+    height: 16px;
+
+  }
+  
+  &--close {
+    background-image: url(/img/icons/icon-close-2x.png);
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -50,7 +50,8 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <h1 className="title">Product Catalog</h1>
+      <h1 className="visually-hidden">Product Catalog</h1>
+      <h3>Brand new models</h3>
       <div className="product-catalog">
         {loading && <div>Loading...</div>}
         {error && <div role="alert">Error: {error}</div>}

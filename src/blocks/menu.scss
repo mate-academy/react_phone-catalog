@@ -1,0 +1,29 @@
+.menu {
+  box-sizing: border-box;
+  background-color: $menu-background-color;
+  font-weight: 800;
+  font-size: 12px;
+
+  line-height: 11px;
+  letter-spacing: 4%;
+  text-transform: uppercase;
+
+  text-decoration: none;
+  color: #89939A;
+  overflow: auto; /* to scroll the menu if needed */
+  height: 100vh;
+
+  &__top {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    background-color: $menu-background-color;
+}
+
+  &__nav {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+
+}

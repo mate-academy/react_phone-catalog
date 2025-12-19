@@ -1,0 +1,36 @@
+
+.top-bar {
+  padding-block: 0;
+  border-bottom: 1px solid #E2E6E9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+
+  &__icons {
+    display: flex;
+    width: object-fit;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    width: 96px;
+    height: 48px;
+
+  @include on-desktop {
+      width: 96px;
+      height: 48px;
+
+  }
+
+
+  }
+}

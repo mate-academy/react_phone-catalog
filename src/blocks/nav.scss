@@ -1,0 +1,39 @@
+.nav {
+box-sizing: border-box;
+
+
+  &__link {
+    color: #89939A;
+    text-decoration: none;
+    position: relative;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+
+    padding-block: 8px;
+
+
+
+    &:hover {
+      border-bottom: 2px solid $active-menu-color;
+      color: $active-menu-color;
+    }
+
+    &:active {
+      color: #89939A;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center ;
+      box-sizing: border-box;
+  }
+}
