@@ -3,6 +3,7 @@ import styles from './HomePage.module.scss';
 import { PhoneSwiper } from "../Swiper/PhoneSwiper";
 import { BrandNewModels } from "../BrandNewModels/BrandNewModels";
 import { ByCategory } from "../Category/ByCategory";
+import { HotPrices } from "../HotPrices/HotPrices";
 
 export const HomePage:React.FC = () => {
   return (
@@ -13,6 +14,8 @@ export const HomePage:React.FC = () => {
       <BrandNewModels />
 
       <ByCategory />
+
+      <HotPrices />
     </main>
   )
 }
