@@ -1,0 +1,277 @@
+* {
+  border: none;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+
+.cartPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    cursor: pointer;
+    color: #313237;
+    font-size: 14px;
+    margin-bottom: 24px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: #313237;
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 24px;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 24px 80px 1fr 120px 80px;
+    align-items: center;
+    gap: 16px;
+
+    padding: 16px 24px;
+    border: 1px solid #e2e6e9;
+    border-radius: 8px;
+  }
+
+  &__itemRemove {
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    opacity: 0.6;
+
+    img {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  &__itemImage {
+    width: 80px;
+    height: 80px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__itemInfo {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #313237;
+  }
+
+  &__itemQuantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    button {
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid #b4bdc3;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.4;
+      }
+    }
+
+    span {
+      min-width: 28px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  &__itemPrice {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+
+
+  &__summary {
+    border: 1px solid #e2e6e9;
+    border-radius: 8px;
+    padding: 24px;
+    height: fit-content;
+  }
+
+  &__summaryTop {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &__summaryPrice {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__summaryCount {
+    font-size: 14px;
+    color: #89939a;
+  }
+
+  &__summaryBottom {
+    border-top: 1px solid #e2e6e9;
+    padding-top: 24px;
+  }
+
+  &__checkout {
+    width: 100%;
+    height: 48px;
+    background: #313237;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+
+
+ @media (max-width: 639px) {
+   padding: 24px 16px;
+
+   &__title {
+     font-size: 24px;
+     margin-bottom: 24px;
+   }
+
+   &__item {
+     grid-template-columns: 24px 64px 1fr;
+     grid-template-areas:
+       "remove image info"
+       ". quantity price";
+     row-gap: 12px;
+     padding: 16px;
+   }
+
+
+   &__itemRemove {
+     grid-area: remove;
+
+     width: 24px;
+     height: 24px;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     img {
+       width: 12px;
+       height: 12px;
+     }
+   }
+
+
+   &__itemImage {
+     grid-area: image;
+     width: 64px;
+     height: 64px;
+   }
+
+   &__itemInfo {
+     grid-area: info;
+     font-size: 13px;
+   }
+
+
+   &__itemQuantity {
+     grid-area: quantity;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+
+     button {
+       width: 32px;
+       height: 32px;
+
+       display: flex;
+       align-items: center;
+       justify-content: center;
+
+       border: 1px solid #b4bdc3;
+       background: #fff;
+
+       font-size: 18px;
+       font-weight: 600;
+       line-height: 1;
+
+       padding: 0;
+     }
+
+     span {
+       min-width: 28px;
+       text-align: center;
+       font-size: 14px;
+       font-weight: 600;
+     }
+   }
+
+
+   &__itemPrice {
+     grid-area: price;
+     font-size: 16px;
+     font-weight: 700;
+     text-align: right;
+   }
+
+
+   &__summary {
+     margin-top: 32px;
+     padding: 24px 16px;
+   }
+
+   &__summaryPrice {
+     font-size: 24px;
+   }
+ }
+}
