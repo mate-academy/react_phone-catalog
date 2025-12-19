@@ -14,6 +14,11 @@ $dark-theme: (
 }
 
 :root {
+  --icon-burger: url('/assets/icons/both_theme/burger.svg');
+  --icon-close: url('/assets/icons/both_theme/close.svg');
+  --icon-favorite: url('/assets/icons/both_theme/favourites-heart-like.svg');
+  --icon-cart: url('/assets/icons/both_theme/cart.svg');
+  --icon-cart-filled: url('../../images/icons/cart.svg');
   @include theme-vars($light-theme);
 }
 

@@ -1,11 +1,6 @@
 import classes from './Logo.module.scss';
-import logoSrc from '../../assets/icons/logo.svg';
-import { Link } from 'react-router-dom';
+import logoSrc from '/assets/icons/both_theme/logo.svg';
 
 export const Logo = () => {
-  return (
-    <Link to="/">
-      <img className={classes.logo} src={logoSrc} alt="Logo" />
-    </Link>
-  );
+  return <img className={classes.logo} src={logoSrc} alt="Logo" />;
 };

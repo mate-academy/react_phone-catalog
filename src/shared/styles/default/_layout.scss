@@ -8,29 +8,4 @@
     background: var(--color-bg);
     min-width: $phone-min-width;
   }
-
-  &__menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    height: 100vh;
-    z-index: 1000;
-    background-color: rgba(44, 44, 44, 0.95);
-    visibility: hidden;
-
-    transform: translateY(-100%);
-    transition: all 0.5s ease-in-out;
-    &--is-open {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-      overflow: hidden;
-    }
-  }
-
-  &:has(.page__menu--is-open) {
-    overflow: hidden;
-  }
 }

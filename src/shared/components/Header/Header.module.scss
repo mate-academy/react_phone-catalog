@@ -7,15 +7,26 @@
   display: flex;
   justify-content: space-between;
 
+  @include on-tablet {
+    justify-content: start;
+    row-gap: 16px;
+  }
+
   &__logo {
     padding-block: 13px;
     padding-inline: 16px;
-    flex: 1;
-
 
     @include on-desktop {
       padding-block: 18px;
       padding-inline: 24px;
     }
+  }
+
+
+  &__action_button {
+    padding-inline: 16px;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+    display: flex;
+    align-items: center;
   }
 }

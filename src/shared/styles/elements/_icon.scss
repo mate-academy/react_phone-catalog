@@ -1,0 +1,24 @@
+.icon {
+  display: block;
+  width: 16px;
+  aspect-ratio: 1;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  &--burger {
+    background-image: var(--icon-burger);
+  }
+
+  &--close {
+    background-image: var(--icon-close);
+  }
+
+  &--favorite {
+    background-image: var(--icon-favorite);
+  }
+
+  &--cart {
+    background-image: var(--icon-cart-filled);
+  }
+}

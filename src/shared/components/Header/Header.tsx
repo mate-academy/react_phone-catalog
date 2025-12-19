@@ -1,28 +1,20 @@
+import { Link } from 'react-router-dom';
 import { Logo } from '../Logo';
 import classes from './Header.module.scss';
+import { Navigation } from '../Navigation';
 
 export const Header = () => {
   return (
     <header className={classes.header}>
-      <div className={classes.header__left}>
-        <div className={classes.header__logo}>
-          <Logo />
-        </div>
-      </div>
-      <div className={classes.header__right}>
-        <div className={classes.header__logo}>
-          <Logo />
-        </div>
-      </div>
+      <Link to="/" className={classes.header__logo}>
+        <Logo />
+      </Link>
 
-      {/* <nav className="navigation__nav">
-        <ul className="navigation__list">
-          <li className="navigation__item">Home</li>
-          <li className="navigation__item">Catalog</li>
-          <li className="navigation__item">About</li>
-          <li className="navigation__item">Contacts</li>
-        </ul>
-      </nav> */}
+      <Navigation />
+
+      <div className={classes.header__action_button}>
+        <span className="icon icon--burger" />
+      </div>
     </header>
   );
 };
