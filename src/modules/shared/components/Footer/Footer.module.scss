@@ -1,28 +1,31 @@
+@use '@/styles/mixins.scss' as *;
+
 .footer {
   box-shadow: 0 -1px 0 0 $color-elements;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: flex-start;
 
-  // 1. Change fixed padding to relative padding for mobile first
   padding: 32px 16px;
   width: 100%;
+  gap: 32px;
 
-  // 2. Add Media Query for Desktop
-  @media (min-width: 1024px) {
-    padding: 32px 152px;
+  @include tablet {
+    padding: 32px;
+  }
+  @include desktop {
+    flex-direction: row;
+    align-items: center;
   }
 
-  // 3. Handle mobile layout (stack items vertically on phones)
-  @media (max-width: 640px) {
-    flex-direction: column;
-    row-gap: 24px;
+  @include big-desktop {
+    padding: 32px 152px;
   }
 
   &__logo {
     img {
       display: block;
-      // Prevent massive logos if the SVG lacks dimensions
       max-width: 100%;
     }
   }
@@ -35,7 +38,7 @@
       $uppercase-weight
     );
     color: $color-secondary;
-    transition: color 0.3s; // Smooth hover effect
+    transition: color 0.3s;
 
     &:hover {
       color: $color-primary;
@@ -44,28 +47,36 @@
 
   &__links {
     display: flex;
-          align-items: flex-start;
-
-    // Use 'gap' instead of 'column-gap' for better flex support
+    align-items: flex-start;
+    flex-direction: column;
     gap: 32px;
 
-    // Only use the huge 86px gap on large screens
-    @media (min-width: 1024px) {
-      gap: 86px;
-    }
-
-    // Stack links on very small screens? Optional.
-    @media (max-width: 400px) {
-      flex-direction: column;
-      gap: 16px;
+    @include desktop {
+      align-items: center;
+      flex-direction: row;
     }
   }
 
-  &__backtoTop {
+  &__backtoTopButton {
     display: flex;
     align-items: center;
     gap: 16px;
-    align-self: center
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    align-self: center;
+
+    @include tablet {
+      &:hover {
+        .footer__backtoTopText {
+          color: $color-primary;
+        }
+        .footer__backtoTopIcon {
+          border-color: $color-primary;
+        }
+      }
+    }
   }
 
   &__backtoTopText {
@@ -77,6 +88,7 @@
       $font-mont-semibold
     );
     color: $color-secondary;
+    transition: color 0.3s;
   }
 
   &__backtoTopIcon {
@@ -89,10 +101,5 @@
     align-items: center;
     cursor: pointer;
     transition: border-color 0.3s;
-    // Usually looks better than sharp corners
-
-    &:hover {
-      border-color: $color-primary;
-    }
   }
 }

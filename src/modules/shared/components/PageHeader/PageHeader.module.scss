@@ -1,6 +1,11 @@
+@use '@/styles/mixins' as *;
+
 .pageTitle {
   // margin: 56px 0;
-font-size: 32px;
+  font-size: 32px;
+  @include tablet {
+    font-size: 48px;
+  }
 
   &.pageTitleWithBreadcrumbs {
     margin-top: 40px;
@@ -15,7 +20,10 @@ font-size: 32px;
 }
 
 .headerWrapper--homePage {
-  margin: $spacing-lg 0;
+  margin: 24px 0;
+  @include tablet {
+    margin: 32px 0;
+  }
 }
 
 .headerWrapper--catalogPage {

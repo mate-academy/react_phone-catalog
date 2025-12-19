@@ -1,3 +1,5 @@
+@use '@/styles/mixins' as *;
+
 $text-primary: #313237;
 $text-secondary: #89939a;
 $accent-color: #313237;
@@ -5,19 +7,20 @@ $border-color: #e2e6e9;
 $bg-hover: #fafbfc;
 
 .productsSlider {
-  margin-bottom: 80px;
   &__button {
+    display: none;
     width: 32px;
     height: 32px;
     border: 1px solid $color-icons;
     background: #fff;
     cursor: pointer;
-    display: flex;
     align-items: center;
     justify-content: center;
     transition: border-color 0.3s;
     user-select: none;
-
+    @include desktop {
+      display: flex;
+    }
     &:hover {
       border-color: $text-primary;
     }
@@ -37,10 +40,12 @@ $bg-hover: #fafbfc;
   }
 
   &__title {
-    font-size: 32px;
+    font-size: 22px;
     font-weight: 800;
     color: $text-primary;
-    margin: 0;
+    @include tablet {
+      font-size: 32px;
+    }
   }
 
   &__controls {
@@ -84,14 +89,9 @@ $bg-hover: #fafbfc;
 
 /* Стилі картки */
 
-
 /* Адаптивність */
 @media (max-width: 640px) {
   .product-card {
     flex: 0 0 212px; /* Вужчі картки на мобільному */
-  }
-
-  .productsSlider__title {
-    font-size: 22px;
   }
 }

@@ -35,17 +35,17 @@ export const Footer: React.FC = () => {
         </Link>
       </div>
 
-      <div className={styles.footer__backtoTop}>
+      <button
+        className={styles.footer__backtoTopButton}
+        onClick={handleScrollTop}
+        aria-label="Scroll back to top" // Good for accessibility
+      >
         <span className={styles.footer__backtoTopText}>Back to top</span>
-        <button
-          className={styles.footer__backtoTopIcon}
-          onClick={handleScrollTop}
-          aria-label="Scroll back to top" // Good for accessibility
-        >
+        <div className={styles.footer__backtoTopIcon}>
           <img src={iconUp} alt="" />
-          {/* Empty alt because button has aria-label */}
-        </button>
-      </div>
+        </div>
+        {/* Empty alt because button has aria-label */}
+      </button>
     </footer>
   );
 };

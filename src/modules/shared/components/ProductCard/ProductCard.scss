@@ -1,5 +1,7 @@
+@use '@/styles/mixins.scss' as *;
+
 .product-card {
-  flex: 0 0 272px; /* Фіксована ширина картки */
+  flex: 0 0 272px;
   border: 1px solid $color-elements;
   padding: 24px;
   display: flex;
@@ -7,13 +9,15 @@
   background: #fff;
   transition: box-shadow 0.3s;
 
-  &:hover {
-    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
-  }
-  &:hover &__image-wrapper {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-    z-index: 9;
+  @include desktop {
+    &:hover {
+      box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    }
+    &:hover &__image-wrapper {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out;
+      z-index: 9;
+    }
   }
 
   &__image-wrapper {
@@ -34,7 +38,7 @@
     font-size: 14px;
     font-weight: 500;
     color: $color-primary;
-    margin: 0 0 16px;
+    margin: 0 0 8px;
     line-height: 21px;
     height: 42px; /* Обмеження на 2 рядки */
     overflow: hidden;
@@ -63,7 +67,7 @@
   }
 
   &__specs {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     font-size: 12px;
   }
 
@@ -77,7 +81,7 @@
     }
     .spec-value {
       color: $color-primary;
-      font-weight: 600;
+      font-weight: 700;
     }
   }
 
@@ -96,19 +100,21 @@
       font-size: 14px;
       cursor: pointer;
       transition: background 0.3s;
-
-      &:hover {
-        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      @include desktop {
+        &:hover {
+          box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+        }
       }
 
       &--added {
         color: $color-green;
         background-color: #fff;
         border: 1px solid $color-elements;
-
-        &:hover {
-          box-shadow: none;
-          cursor: default;
+        @include desktop {
+          &:hover {
+            box-shadow: none;
+            cursor: default;
+          }
         }
       }
     }
@@ -116,28 +122,30 @@
     .btn-fav {
       width: 40px;
       height: 40px;
-      border: 1px solid $color-elements;
+      border: 1px solid $color-icons;
       background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      color: $color-secondary;
+      color: $color-primary;
       transition:
-        color-elements 0.3s,
+        border-color 0.3s,
         color 0.3s;
       flex-shrink: 0;
 
-      &:hover {
-        color-elements: $color-primary;
-        color: $color-primary;
+      @include desktop {
+        &:hover {
+          border-color: $color-primary;
+          color: $color-primary;
+        }
       }
       &--added {
+        border-color: $color-elements;
         svg {
           fill: $color-red;
           stroke: $color-red;
         }
-
       }
     }
   }

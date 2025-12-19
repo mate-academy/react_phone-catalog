@@ -15,10 +15,11 @@
 .categoryGrid {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-
+  gap: 32px;
+  
   @include tablet {
     flex-direction: row;
+    gap: 16px;
   }
 }
 
@@ -61,7 +62,6 @@
 }
 
 .categoryTitle {
-  
   margin-bottom: 24px;
 }
 

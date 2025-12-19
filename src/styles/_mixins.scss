@@ -15,3 +15,8 @@
     @content;
   }
 }
+@mixin big-desktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}

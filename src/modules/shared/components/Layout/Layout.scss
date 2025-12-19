@@ -19,7 +19,13 @@
     padding: 0;
   }
   > section {
-    margin-bottom: 80px;
+    margin-bottom: 56px;
+    @include tablet {
+      margin-bottom: 64px;
+    }
+    @include desktop {
+      margin-bottom: 80px;
+    }
   }
 }
 

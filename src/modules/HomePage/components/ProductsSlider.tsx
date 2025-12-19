@@ -1,4 +1,4 @@
-import { Swiper,  SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState } from 'react';
 import cn from 'classnames';
 import { Navigation } from 'swiper/modules';
@@ -47,7 +47,7 @@ export const ProductsSlider: React.FC<Props> = ({
   const [isDisabledNext, setIsDisabledNext] = useState(false);
 
   return (
-    <div className="productsSlider">
+    <section className="productsSlider">
       <div className="productsSlider__header">
         <h2 className="productsSlider__title">{title}</h2>
         <div className="productsSlider__controls">
@@ -92,6 +92,6 @@ export const ProductsSlider: React.FC<Props> = ({
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </section>
   );
 };
