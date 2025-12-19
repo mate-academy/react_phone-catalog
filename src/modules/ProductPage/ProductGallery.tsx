@@ -46,47 +46,47 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ photos }) => {
 
   const hasPhotos = validPhotos.length > 0;
 
-  return (
-    <div className={styles.productGallery}>
-      <div className={styles.productGallery__thumbnails}>
-        {hasPhotos &&
-          validPhotos.map((photo, index) => (
-            <div
-              key={index}
-              className={cn(
-                styles.productGallery__thumbnail,
-                index === currentPhotoIndex &&
-                  styles.productGallery__thumbnail_active,
-              )}
-              onClick={() => setCurrentPhotoIndex(index)}
-            >
-              <img
-                className={styles.productGallery__thumbnailImage}
-                src={photo}
-                alt={`Product photo ${index + 1}`}
-                onError={() => handleImageError(index)}
-              />
-            </div>
-          ))}
-      </div>
-
-      <div className={styles.productGallery__mainPhoto}>
-        {hasPhotos ? (
-          <img
-            className={styles.productGallery__mainPhotoImage}
-            src={validPhotos[currentPhotoIndex]}
-            alt={`Product photo ${currentPhotoIndex + 1}`}
-            onError={() => handleImageError(currentPhotoIndex)}
-          />
-        ) : (
-          <div className={styles.productGallery__noPhoto}>
-            {/* Тут можеш зробити свій плейсхолдер / текст */}
-            No photos available
+return (
+  <div className={styles['product-gallery']}>
+    <div className={styles['product-gallery__thumbnails']}>
+      {hasPhotos &&
+        validPhotos.map((photo, index) => (
+          <div
+            key={index}
+            className={cn(
+              styles['product-gallery__thumbnail'],
+              index === currentPhotoIndex &&
+                styles['product-gallery__thumbnail--active']
+            )}
+            onClick={() => setCurrentPhotoIndex(index)}
+          >
+            <img
+              className={styles['product-gallery__thumbnail-image']}
+              src={photo}
+              alt={`Product photo ${index + 1}`}
+              onError={() => handleImageError(index)}
+            />
           </div>
-        )}
-      </div>
+        ))}
     </div>
-  );
+
+    <div className={styles['product-gallery__main-photo']}>
+      {hasPhotos ? (
+        <img
+          className={styles['product-gallery__main-photo-image']}
+          src={validPhotos[currentPhotoIndex]}
+          alt={`Product photo ${currentPhotoIndex + 1}`}
+          onError={() => handleImageError(currentPhotoIndex)}
+        />
+      ) : (
+        <div className={styles['product-gallery__no-photo']}>
+          {/* Custom placeholder text */}
+          No photos available
+        </div>
+      )}
+    </div>
+  </div>
+);
 };
 
 export default ProductGallery;

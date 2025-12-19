@@ -50,10 +50,12 @@ export const ProductsSlider: React.FC<Props> = ({
     <section className="productsSlider">
       <div className="productsSlider__header">
         <h2 className="productsSlider__title">{title}</h2>
-        <div className="productsSlider__controls">
-          <NavButton direction="prev" disabled={isDisabledPrev} />
-          <NavButton direction="next" disabled={isDisabledNext} />
-        </div>
+        {products.length > 0 && (
+          <div className="productsSlider__controls">
+            <NavButton direction="prev" disabled={isDisabledPrev} />
+            <NavButton direction="next" disabled={isDisabledNext} />
+          </div>
+        )}
       </div>
       <Swiper
         onSlideChange={swiper => {

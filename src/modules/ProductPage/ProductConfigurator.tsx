@@ -105,137 +105,143 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({
   };
 
   return (
-    <div className={styles.productConfigurator}>
-      <div className={styles.productConfigurator__controls}>
-        {/* COLORS */}
-        <div className={styles.productConfigurator__colorContainer}>
-          <span className={styles.productConfigurator__colorLabel}>
-            Available colors
-          </span>
+  <div className={styles['product-configurator']}>
+    <div className={styles['product-configurator__controls']}>
+      {/* COLORS */}
+      <div className={styles['product-configurator__color-container']}>
+        <span className={styles['product-configurator__color-label']}>
+          Available colors
+        </span>
 
-          <div className={styles.productConfigurator__colorOptions}>
-            {product.colorsAvailable.map(color => (
-              <div
-                key={color}
-                className={classNames(styles.productConfigurator__colorLayout, {
-                  [styles['productConfigurator__colorLayout--active']]:
+        <div className={styles['product-configurator__color-options']}>
+          {product.colorsAvailable.map((color) => (
+            <div
+              key={color}
+              className={classNames(
+                styles['product-configurator__color-layout'],
+                {
+                  [styles['product-configurator__color-layout--active']]:
                     selectedColor === color,
-                })}
-                onClick={() => updateSlug('color', color)}
-              >
-                <div
-                  className={styles.productConfigurator__colorOption}
-                  style={{ backgroundColor: COLOR_MAP[normalizeValue(color)] }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* CAPACITY */}
-        <div className={styles.productConfigurator__capacityContainer}>
-          <span className={styles.productConfigurator__capacityLabel}>
-            Select capacity
-          </span>
-
-          <div className={styles.productConfigurator__capacityOptions}>
-            {product.capacityAvailable.map(capacity => (
-              <button
-                key={capacity}
-                className={classNames(
-                  styles.productConfigurator__capacityOption,
-                  {
-                    [styles['productConfigurator__capacityOption--active']]:
-                      selectedCapacity === capacity,
-                  },
-                )}
-                onClick={() => updateSlug('capacity', capacity)}
-              >
-                {capacity}
-              </button>
-            ))}
-          </div>
+                }
+              )}
+              onClick={() => updateSlug('color', color)}
+            >
+              <div
+                className={styles['product-configurator__color-option']}
+                style={{ backgroundColor: COLOR_MAP[normalizeValue(color)] }}
+              />
+            </div>
+          ))}
         </div>
       </div>
-      <div className={styles.productConfigurator__buySection}>
-        {/* PRICE CONTAINER */}
-        <div className={styles.productConfigurator__priceContainer}>
-          <span className={styles.productConfigurator__priceDiscount}>
-            ${product.priceDiscount}
-          </span>
-          <span
-            className={styles.productConfigurator__priceRegular}
-            data-text={`$${product.priceRegular}`} // <--- Додаємо цей атрибут
-          >
-            ${product.priceRegular}
-          </span>
-        </div>
 
-        {/* ACTION BUTTONS */}
-        <div className={styles.productConfigurator__buttonContainer}>
-          <Button
-            onClick={handleCartClick}
-            fullWidth
-            variant={inCart ? 'outline' : 'primary'}
-          >
-            {inCart ? 'Added to Cart' : 'Add to Cart'}
-          </Button>
-          {/* <button
-            className={classNames(styles.productConfigurator__cartButton, {
-              [styles['productConfigurator__cartButton--added']]: inCart,
-            })}
-            onClick={handleCartClick}
-          >
-            {inCart ? 'Added to cart' : 'Add to cart'}
-          </button> */}
-          <button
-            className={styles.productConfigurator__favoriteButton}
-            onClick={handleFav}
-          >
-            <img
-              src={fav ? 'img/icons/red-heart.svg' : 'img/icons/heart.svg'}
-              alt="Favorite"
-            />
-          </button>
-        </div>
-      </div>
-      <div className={styles.productConfigurator__description}>
-        <div className={styles.productConfigurator__descriptionItem}>
-          <span className={styles.productConfigurator__descriptionLabel}>
-            Screen
-          </span>
-          <span className={styles.productConfigurator__descriptionValue}>
-            {product.screen}
-          </span>
-        </div>
+      {/* CAPACITY */}
+      <div className={styles['product-configurator__capacity-container']}>
+        <span className={styles['product-configurator__capacity-label']}>
+          Select capacity
+        </span>
 
-        <div className={styles.productConfigurator__descriptionItem}>
-          <span className={styles.productConfigurator__descriptionLabel}>
-            Resolution
-          </span>
-          <span className={styles.productConfigurator__descriptionValue}>
-            {product.resolution}
-          </span>
-        </div>
-
-        <div className={styles.productConfigurator__descriptionItem}>
-          <span className={styles.productConfigurator__descriptionLabel}>
-            Processor
-          </span>
-          <span className={styles.productConfigurator__descriptionValue}>
-            {product.processor}
-          </span>
-        </div>
-
-        <div className={styles.productConfigurator__descriptionItem}>
-          <span className={styles.productConfigurator__descriptionLabel}>
-            RAM
-          </span>
-          <span className={styles.productConfigurator__descriptionValue}>
-            {product.ram}
-          </span>
+        <div className={styles['product-configurator__capacity-options']}>
+          {product.capacityAvailable.map((capacity) => (
+            <button
+              key={capacity}
+              className={classNames(
+                styles['product-configurator__capacity-option'],
+                {
+                  [styles['product-configurator__capacity-option--active']]:
+                    selectedCapacity === capacity,
+                }
+              )}
+              onClick={() => updateSlug('capacity', capacity)}
+            >
+              {capacity}
+            </button>
+          ))}
         </div>
       </div>
     </div>
-  );
+
+    <div className={styles['product-configurator__buy-section']}>
+      {/* PRICE CONTAINER */}
+      <div className={styles['product-configurator__price-container']}>
+        <span className={styles['product-configurator__price-discount']}>
+          ${product.priceDiscount}
+        </span>
+        <span
+          className={styles['product-configurator__price-regular']}
+          data-text={`$${product.priceRegular}`}
+        >
+          ${product.priceRegular}
+        </span>
+      </div>
+
+      {/* ACTION BUTTONS */}
+      <div className={styles['product-configurator__button-container']}>
+        <Button
+          onClick={handleCartClick}
+          fullWidth
+          variant={inCart ? 'outline' : 'primary'}
+        >
+          {inCart ? 'Added to Cart' : 'Add to Cart'}
+        </Button>
+        {/* <button
+          className={classNames(styles['product-configurator__cart-button'], {
+            [styles['product-configurator__cart-button--added']]: inCart,
+          })}
+          onClick={handleCartClick}
+        >
+          {inCart ? 'Added to cart' : 'Add to cart'}
+        </button>
+        */}
+        <button
+          className={styles['product-configurator__favorite-button']}
+          onClick={handleFav}
+        >
+          <img
+            src={fav ? 'img/icons/red-heart.svg' : 'img/icons/heart.svg'}
+            alt="Favorite"
+          />
+        </button>
+      </div>
+    </div>
+
+    <div className={styles['product-configurator__description']}>
+      <div className={styles['product-configurator__description-item']}>
+        <span className={styles['product-configurator__description-label']}>
+          Screen
+        </span>
+        <span className={styles['product-configurator__description-value']}>
+          {product.screen}
+        </span>
+      </div>
+
+      <div className={styles['product-configurator__description-item']}>
+        <span className={styles['product-configurator__description-label']}>
+          Resolution
+        </span>
+        <span className={styles['product-configurator__description-value']}>
+          {product.resolution}
+        </span>
+      </div>
+
+      <div className={styles['product-configurator__description-item']}>
+        <span className={styles['product-configurator__description-label']}>
+          Processor
+        </span>
+        <span className={styles['product-configurator__description-value']}>
+          {product.processor}
+        </span>
+      </div>
+
+      <div className={styles['product-configurator__description-item']}>
+        <span className={styles['product-configurator__description-label']}>
+          RAM
+        </span>
+        <span className={styles['product-configurator__description-value']}>
+          {product.ram}
+        </span>
+      </div>
+    </div>
+  </div>
+);
 };

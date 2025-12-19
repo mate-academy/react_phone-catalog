@@ -2,9 +2,9 @@
 
 .pageTitle {
   // margin: 56px 0;
-  font-size: 32px;
+  font-size: 22px;
   @include tablet {
-    font-size: 48px;
+    font-size: 32px;
   }
 
   &.pageTitleWithBreadcrumbs {

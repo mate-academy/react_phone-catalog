@@ -13,6 +13,7 @@ import styles from './ProductPage.module.scss';
 import { recentlyViewedService } from '../shared/components/utils/RecentlyViewed/RecentlyViewed';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import { Loader } from '../shared/components/Loader';
+import { ProductsSlider } from '../HomePage/components/ProductsSlider';
 
 export const ProductPage: React.FC = () => {
   const { category, productSlug } = useParams();
@@ -69,7 +70,7 @@ export const ProductPage: React.FC = () => {
   return (
     <>
       {loading && (
-        <div className={styles.productPage__loader}>
+        <div className={styles['product-page__loader']}>
           <Loader />
         </div>
       )}
@@ -81,8 +82,8 @@ export const ProductPage: React.FC = () => {
             variant="productPage"
             extraContent={<BackButton label="Back" />}
           />
-          {/* FIXED: productPage__hero */}
-          <section className={styles.productPage__hero}>
+
+          <section className={styles['product-page__hero']}>
             {
               <>
                 <ProductGallery photos={product.images} />
@@ -98,17 +99,24 @@ export const ProductPage: React.FC = () => {
               </>
             }
           </section>
-          <section className={styles.productPage__details}>
-            <div className={styles.productPage__description}>
-              <h3 className={styles.productPage__descriptionTitle}>About</h3>
 
-              <div className={styles.productPage__descriptionText}>
+          <section className={styles['product-page__details']}>
+            <div className={styles['product-page__description']}>
+              <h3 className={styles['product-page__description-title']}>
+                About
+              </h3>
+
+              <div className={styles['product-page__description-text']}>
                 {product.description.map((block, index) => (
                   <div
                     key={index}
-                    className={styles.productPage__descriptionBlock}
+                    className={styles['product-page__description-block']}
                   >
-                    <h4 className={styles.productPage__descriptionBlockTitle}>
+                    <h4
+                      className={
+                        styles['product-page__description-block-title']
+                      }
+                    >
                       {block.title}
                     </h4>
 
@@ -116,7 +124,7 @@ export const ProductPage: React.FC = () => {
                       <p
                         key={pIndex}
                         className={
-                          styles.productPage__descriptionBlockParagraph
+                          styles['product-page__description-block-paragraph']
                         }
                       >
                         {paragraph}
@@ -127,21 +135,31 @@ export const ProductPage: React.FC = () => {
               </div>
             </div>
 
-            <div className={styles.productPage__specs}>
-              <h3 className={styles.productPage__specsTitle}>Tech specs</h3>
+            <div className={styles['product-page__specs']}>
+              <h3 className={styles['product-page__specs-title']}>
+                Tech specs
+              </h3>
 
-              <ul className={styles.productPage__specsList}>
+              <ul className={styles['product-page__specs-list']}>
                 {specsConfig.map(({ label, key, optional }) => {
                   const value = product[key];
 
                   if (optional && !value) return null;
 
                   return (
-                    <li key={key} className={styles.productPage__specsItem}>
-                      <span className={styles.productPage__specsItemLabel}>
+                    <li
+                      key={key}
+                      className={styles['product-page__specs-item']}
+                    >
+                      <span
+                        className={styles['product-page__specs-item-label']}
+                      >
                         {label}
                       </span>
-                      <span className={styles.productPage__specsItemValue}>
+                      <span
+                        className={styles['product-page__specs-item-value']}
+                        title={Array.isArray(value) ? value.join(', ') : value}
+                      >
                         {Array.isArray(value) ? value.join(', ') : value}
                       </span>
                     </li>
@@ -150,7 +168,7 @@ export const ProductPage: React.FC = () => {
               </ul>
             </div>
           </section>
-          <SliderComponent
+          <ProductsSlider
             products={suggestedProducts}
             title="You may also like"
             showDiscount

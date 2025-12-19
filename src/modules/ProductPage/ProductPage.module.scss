@@ -1,20 +1,39 @@
-.productPage {
+@use '@/styles/mixins.scss' as *;
+
+/* ============ BLOCK: PRODUCT PAGE ============ */
+.product-page {
   &__hero {
     display: flex;
-    gap: $spacing-lg;
+    flex-direction: column;
+    row-gap: 40px;
+
+    @include tablet {
+      flex-direction: row;
+      gap: $spacing-lg;
+    }
   }
+
   &__details {
     display: flex;
-    flex-direction: row;
-    column-gap: $spacing-lg;
+    flex-direction: column;
+    gap: $spacing-lg;
+
+    @include desktop {
+      flex-direction: row;
+    }
   }
+
   &__description {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     row-gap: 32px;
+    @include desktop {
+      width: 50%;
+    }
   }
-  &__descriptionTitle {
+
+  &__description-title {
     font-size: $h3-size;
     line-height: $h3-line;
     letter-spacing: $h3-track;
@@ -23,37 +42,46 @@
     padding-bottom: 16px;
     border-bottom: 1px solid $color-elements;
   }
-  &__descriptionText {
+
+  &__description-text {
     display: flex;
     flex-direction: column;
     row-gap: 32px;
   }
-  &__descriptionBlock {
+
+  &__description-block {
     display: flex;
     flex-direction: column;
     row-gap: 16px;
   }
-  &__descriptionBlockTitle {
+
+  &__description-block-title {
     font-size: $h4-size;
     line-height: $h4-line;
     letter-spacing: $h4-track;
     font-weight: 700;
     color: $color-primary;
   }
-  &__descriptionBlockParagraph {
+
+  &__description-block-paragraph {
     font-size: $body-size;
     line-height: $body-line;
     letter-spacing: $body-track;
     font-weight: 500;
     color: $color-secondary;
   }
+
   &__specs {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     row-gap: 32px;
+    @include desktop {
+      width: 50%;
+    }
   }
-  &__specsTitle {
+
+  &__specs-title {
     font-size: $h3-size;
     line-height: $h3-line;
     letter-spacing: $h3-track;
@@ -62,29 +90,43 @@
     padding-bottom: 16px;
     border-bottom: 1px solid $color-elements;
   }
-  &__specsList {
+
+  &__specs-list {
     display: flex;
     flex-direction: column;
     row-gap: $spacing-sm;
   }
-  &__specsItem {
+
+  &__specs-item {
     display: flex;
     justify-content: space-between;
   }
-  &__specsItemLabel {
+
+  &__specs-item-label {
     font-size: $body-size;
     line-height: $body-line;
     letter-spacing: $body-track;
     font-weight: 500;
     color: $color-secondary;
   }
-  &__specsItemValue {
+
+  &__specs-item-value {
     font-size: $body-size;
     line-height: $body-line;
     letter-spacing: $body-track;
     font-weight: 500;
     color: $color-primary;
+    /* Forces text to one line */
+    white-space: nowrap;
+    /* Hides the overflow */
+    overflow: hidden;
+    /* Adds "..." at the end */
+    text-overflow: ellipsis;
+    /* Ensure the container has a width or max-width context */
+    max-width: 75%;
+    display: block; /* or inline-block */
   }
+
   &__loader {
     display: flex;
     justify-content: center;
@@ -93,7 +135,8 @@
   }
 }
 
-.backBtn {
+/* ============ BLOCK: BACK BUTTON ============ */
+.back-button {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -109,20 +152,29 @@
   }
 }
 
-/* ============ PRODUCT GALLERY ============ */
+/* ============ BLOCK: PRODUCT GALLERY ============ */
 
-.productGallery {
+.product-gallery {
   display: flex;
+  flex-direction: column-reverse;
   gap: 16px;
-  width: 50%;
+  width: 100%;
+  @include tablet {
+    flex-direction: row;
+    // width: 50%;
+  }
 
   &__thumbnails {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row;
+    gap: 8px;
+    @include tablet {
+      flex-direction: column;
+      gap: 16px;
+    }
   }
 
-  &__thumbnailImage {
+  &__thumbnail-image {
     max-width: 66px;
     max-height: 66px;
     display: block;
@@ -130,8 +182,8 @@
   }
 
   &__thumbnail {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     display: flex;
     object-fit: cover;
     border: 1px solid $color-elements;
@@ -142,53 +194,52 @@
     &:hover {
       border-color: $color-primary;
     }
+
+    /* MODIFIER: Fixed single underscore to double dash */
+    &--active {
+      border-color: $color-primary;
+    }
   }
 
-  &__thumbnail_active {
-    border-color: $color-primary;
-  }
-
-  &__mainPhoto {
-    width: 464px;
-    height: 464px;
-    object-fit: cover;
+  &__main-photo {
+    width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start; // Aligns image to top in desktop mode
     justify-content: center;
   }
 
-  &__mainPhotoImage {
-    max-width: 442px;
-    max-height: 442px;
+  &__main-photo-image {
+    width: 100%;
+    height: auto;
     display: block;
-    padding: 11px;
+    // Optional: aspect-ratio prevents "Layout Shift" (jumping) while loading
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
   }
 }
 
-/* ============ PRODUCT CONFIGURATOR ============ */
+/* ============ BLOCK: PRODUCT CONFIGURATOR ============ */
 
-.productConfigurator {
+.product-configurator {
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 100%;
   row-gap: 32px;
 
   &__controls {
     display: flex;
     flex-direction: column;
-
     row-gap: 24px;
   }
 
-
   /* COLORS */
-  &__colorLabel {
+  &__color-label {
     font-size: $small-size;
     font-weight: 600;
     color: $color-secondary;
   }
 
-  &__colorContainer {
+  &__color-container {
     display: flex;
     flex-direction: column;
     row-gap: $spacing-sm;
@@ -196,12 +247,12 @@
     border-bottom: 1px solid $color-elements;
   }
 
-  &__colorOptions {
+  &__color-options {
     display: flex;
     gap: $spacing-sm;
   }
 
-  &__colorLayout {
+  &__color-layout {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,14 +276,14 @@
     }
   }
 
-  &__colorOption {
+  &__color-option {
     width: 28px;
     height: 28px;
     border-radius: 50%;
   }
 
   /* CAPACITY */
-  &__capacityContainer {
+  &__capacity-container {
     display: flex;
     flex-direction: column;
     row-gap: $spacing-sm;
@@ -240,18 +291,18 @@
     border-bottom: 1px solid $color-elements;
   }
 
-  &__capacityLabel {
+  &__capacity-label {
     font-size: $small-size;
     font-weight: 600;
     color: $color-secondary;
   }
 
-  &__capacityOptions {
+  &__capacity-options {
     display: flex;
     column-gap: $spacing-sm;
   }
 
-  &__capacityOption {
+  &__capacity-option {
     padding: 7px 8px 4px;
     font-size: $body-size;
     font-weight: 500;
@@ -273,18 +324,19 @@
   }
 
   /* PRICE */
-  &__buySection {
+  &__buy-section {
     display: flex;
     flex-direction: column;
     row-gap: 16px;
   }
 
-  &__priceContainer {
+  &__price-container {
     display: flex;
     align-items: center;
     column-gap: 8px;
   }
-  &__priceDiscount {
+
+  &__price-discount {
     font-size: $h2-size;
     letter-spacing: $h2-track;
     line-height: $h2-line;
@@ -292,38 +344,31 @@
     color: $color-primary;
   }
 
-  &__priceRegular {
-    // Базові стилі тексту (сірий)
+  &__price-regular {
     font-size: $h3-size;
     line-height: $h3-line;
     letter-spacing: $h3-track;
     font-weight: 500;
-    color: $color-secondary; // Сірий колір
+    color: $color-secondary;
 
-    // Важливі налаштування для позиціювання
     position: relative;
     display: inline-block;
-    text-decoration: none; // Прибираємо стандартне закреслення
+    text-decoration: none;
 
-    // Налаштування товщини лінії (змініть за бажанням)
     $line-height: 2px;
-    $line-color: $color-secondary; // Колір лінії (зазвичай такий же, як у тексту)
+    $line-color: $color-secondary;
     $center-pos: 47%;
-    // 1. Малюємо ЛІНІЮ (Середній шар)
+
     &::before {
       content: '';
       position: absolute;
       left: 0;
       width: 100%;
       height: $line-height;
-      background-color: $color-secondary; // Колір лінії
+      background-color: $color-secondary;
       z-index: 1;
-
-      // Позиціонування
       top: $center-pos;
-      transform: translateY(
-        -50%
-      ); // Центруємо саму лінію відносно точки $center-pos
+      transform: translateY(-50%);
     }
 
     &::after {
@@ -335,9 +380,6 @@
       height: 100%;
       color: #fff;
       z-index: 2;
-
-      // Складна формула, щоб "віконце" маски рухалося разом із лінією
-      // inset(top right bottom left)
       clip-path: inset(
         calc(#{$center-pos} - #{$line-height} / 2) 0
           calc(100% - (#{$center-pos} + #{$line-height} / 2)) 0
@@ -346,13 +388,12 @@
   }
 
   /* BOTTOM BUTTONS */
-  &__buttonContainer {
+  &__button-container {
     display: flex;
     column-gap: 8px;
-
   }
 
-  &__cartButton {
+  &__cart-button {
     background-color: $color-primary;
     flex: 1;
     height: 40px;
@@ -378,7 +419,7 @@
     }
   }
 
-  &__favoriteButton {
+  &__favorite-button {
     background: none;
     width: 40px;
     height: 40px;
@@ -398,16 +439,19 @@
     flex-direction: column;
     row-gap: $spacing-sm;
   }
-  &__descriptionItem {
+
+  &__description-item {
     display: flex;
     justify-content: space-between;
   }
-  &__descriptionLabel {
+
+  &__description-label {
     font-size: $small-size;
     font-weight: 600;
     color: $color-secondary;
   }
-  &__descriptionValue {
+
+  &__description-value {
     font-size: $small-size;
     font-weight: 600;
     color: $color-primary;
