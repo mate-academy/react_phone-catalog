@@ -36,7 +36,11 @@ export const Navbar = () => {
     <>
       <header className={styles.header}>
         <nav className={styles.navbar}>
-          <Link to="/" className={styles.navbar__logo}>
+          <Link
+            to="/"
+            className={styles.navbar__logo}
+            onClick={() => window.scrollTo({ top: 0 })}
+          >
             <img src={Logo} alt="MyShop Logo" />
           </Link>
           <ul className={styles.navbar__list}>
@@ -49,6 +53,7 @@ export const Navbar = () => {
                       ? `${styles.navbar__link} ${styles['navbar__link--active']}`
                       : styles.navbar__link
                   }
+                  onClick={() => window.scrollTo({ top: 0 })}
                 >
                   {label}
                 </NavLink>

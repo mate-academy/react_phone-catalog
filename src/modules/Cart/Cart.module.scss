@@ -1,6 +1,12 @@
+// Define Breakpoints (You can move these to a variables file)
+$tablet: 768px;
+$desktop: 1024px;
+@use '@/styles/mixins.scss' as *;
+
 .cartPage {
   &__container {
     position: relative;
+
     &--loading {
       display: flex;
       justify-content: center;
@@ -8,6 +14,7 @@
       margin-bottom: 0;
     }
   }
+
   &__loaderWrapper {
     width: 100%;
     min-height: calc(100vh - 168px);
@@ -15,9 +22,16 @@
     justify-content: center;
     align-items: center;
   }
+
   &__layout {
     display: flex;
-    gap: 20px;
+    flex-direction: column; // Stack vertically by default (Mobile First)
+    gap: 16px;
+
+    @include desktop {
+      flex-direction: row; // Switch to side-by-side on Tablet
+      align-items: flex-start;
+    }
   }
 
   &__empty {
@@ -27,38 +41,51 @@
     min-height: 400px;
     font-size: $h2-size;
     color: $color-secondary;
+    text-align: center;
   }
 
   &__checkoutBlock {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
     padding: 24px;
     border: 1px solid $color-elements;
-    flex: 1; /* 1. Забери всю вільну ширину */
-    align-self: flex-start;
-    align-items: center;
+
+    // Mobile: Full width
+    width: 100%;
+
+    // Desktop: Fixed width or percentage
+    @media (min-width: $desktop) {
+    }
+    @include desktop {
+      flex: 0 0 320px; // Don't grow, don't shrink, fixed 320px
+      position: sticky; // Optional: Makes checkout stick while scrolling
+      top: 80px;
+    }
 
     &PriceWrapper {
       width: 100%;
       display: flex;
       flex-direction: column;
-      row-gap: 8px;
+      row-gap: 0px;
       align-items: center;
-      padding-bottom: 24px;
+      padding-bottom: 16px;
       border-bottom: 1px solid $color-elements;
     }
+
     &Price {
-      font-size: $h2-size;
+      font-size: $h3-size;
       font-weight: 800;
-      line-height: $h2-line;
+      line-height: $h3-line;
     }
+
     &Amount {
       font-size: $body-size;
       font-weight: 500;
       line-height: $body-line;
       color: $color-secondary;
     }
+
     &Button {
       width: 100%;
       height: 48px;
@@ -72,6 +99,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: box-shadow 0.3s ease;
 
       &:hover {
         box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
@@ -84,41 +112,76 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%; // Ensure list takes full width
 }
 
-.cartItem {
-  display: flex;
-  align-items: center;
-  gap: 24px; // Можна зменшити до 16px на мобільних, якщо не влазить
-  padding: 24px;
-  border: 1px solid $color-elements;
+$tablet: 768px;
 
-  // 1. Кнопка видалення (хрестик)
+.cartItem {
+  // === MOBILE LAYOUT (Based on Screenshot) ===
+  display: grid;
+  // Columns: [CloseBtn ~24px] [Image 80px] [Name takes rest]
+  grid-template-columns: 24px 80px 1fr;
+
+  // Rows: [Top part] [Bottom part]
+  grid-template-rows: auto auto;
+
+  // Map the HTML elements to the grid locations
+  grid-template-areas: 'del img name' // Top row
+    'qty qty price'; // Bottom row (Qty spans across del and img columns)
+
+  gap: 16px; // Gap between elements
+  padding: 16px;
+  border: 1px solid $color-elements;
+  background-color: #fff;
+  align-items: center; // Vertically center items by default
+
+  // === DESKTOP LAYOUT (Reset to Flexbox) ===
+  @media (min-width: 640px) {
+    display: flex;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    grid-template-areas: none;
+    gap: 24px;
+    padding: 24px;
+    align-items: center;
+  }
+
+  // 1. Remove Button (Top Left)
   &__removeButton {
+    grid-area: del; // Assign to 'del' area
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; // Center the X icon
     background: transparent;
     border: none;
     cursor: pointer;
+
+    @media (min-width: $tablet) {
+      width: 16px; // Smaller on desktop per your original design
+      order: 1; // 1st item on desktop
+    }
+
+    svg {
+      display: block; // Removes extra line-height space
+    }
+  }
+
+  // 2. Image (Top Center)
+  &__imageWrapper {
+    grid-area: img; // Assign to 'img' area
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    // Важливо: фіксуємо розмір і забороняємо стискання
-    width: 16px;
-    flex-shrink: 0;
-    &:hover {
-      svg {
-        path {
-          fill: $color-primary;
-        }
-      }
+    @media (min-width: $tablet) {
+      order: 2; // 2nd item on desktop
     }
-  }
-
-  // 2. Картинка (вже добре, але додамо flex-shrink)
-  &__imageWrapper {
-    width: 80px;
-    height: 80px;
-    flex-shrink: 0; // Не даємо стискати картинку
 
     img {
       width: 100%;
@@ -127,75 +190,87 @@
     }
   }
 
-  // 3. Назва товару - це єдиний "гумовий" елемент
+  // 3. Name (Top Right)
   &__nameWrapper {
-    flex-grow: 1; // Займає весь вільний простір
-    // Якщо текст дуже довгий, він не розштовхає сусідів, а перенесеться
-    min-width: 336px;
+    grid-area: name; // Assign to 'name' area
+    align-self: flex-start; // Align text to the top of the cell
+
+    @media (min-width: $tablet) {
+      flex-grow: 1; // Take available space
+      order: 3;
+      display: flex;
+      align-self: center;
+    }
   }
 
-  // 4. Блок кількості
+  &__name {
+    font-size: $body-size;
+    font-weight: 500;
+    line-height: 1.4;
+    color: $color-primary;
+  }
+
+  // 4. Quantity Block (Bottom Left)
   &__quantityBlock {
+    grid-area: qty; // Assign to 'qty' area
+    // 'qty' spans the first two columns ("qty qty"), so it sits under X and Image
+
     display: flex;
     align-items: center;
-    justify-content: space-between; // Рівномірно розподіляє кнопки і цифру
+    justify-content: flex-start; // Align to the left
+    gap: 0; // Use internal margins or keep buttons touching
+    width: 96px; // Fixed width for the controls
+    margin-top: 8px; // Add space between image and buttons
 
-    // Важливо: Фіксуємо ширину всього блоку
-    width: 96px;
-    flex-shrink: 0; // Не даємо стискатись
-  }
-
-  &__quantity {
-    // Важливо: Щоб цифра не штовхала кнопки
-    width: 24px; // Фіксована ширина для тексту
-    text-align: center;
-    font-weight: 600;
+    @media (min-width: $tablet) {
+      order: 4;
+      margin-top: 0;
+    }
   }
 
   &__quantityButton {
     width: 32px;
     height: 32px;
-    border: 1px solid $color-icons;
-    background-color: $color-bg;
+    border: 1px solid $color-icons; // Ensure visible border
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
     cursor: pointer;
-    flex-shrink: 0; // Кнопка не сплющиться
-    svg {
-      path {
-        fill: $color-primary;
-      }
-    }
-    &:hover {
-      border-color: $color-primary;
-    }
+    color: $color-primary;
+
     &:disabled {
+      cursor: not-allowed;
+      color: $color-elements;
       border-color: $color-elements;
-      cursor: default;
-      svg {
-        path {
-          fill: $color-icons;
-        }
-      }
-      &:hover {
-        border-color: $color-elements;
-      }
     }
   }
 
-  // 5. Ціна
+  &__quantity {
+    width: 32px; // Match button width for symmetry
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  // 5. Price (Bottom Right)
   &__positionPriceWrapper {
-    // Важливо: Фіксуємо ширину для ціни
-    width: 80px; // Або 100px, залежно від максимальної ціни
-    flex-shrink: 0; // Забороняємо стискання
-    text-align: right; // Притискаємо цифри вправо, щоб вони росли вліво
+    display: flex;
+    justify-content: flex-end;
+    grid-area: price; // Assign to 'price' area
+    justify-self: end; // Push to the far right
+    align-self: flex-end; // Align to the bottom
+
+   @include tablet {
+      order: 5;
+      width: 80px; // Fixed width on desktop
+      align-self: center;
+    }
   }
 
   &__positionPrice {
-    display: block;
-    font-size: $h3-size;
-    font-weight: 800;
-    line-height: $h3-line;
+    font-size: 20px; // Make it bigger like the screenshot
+    font-weight: 700;
+    color: $color-primary;
   }
 }
