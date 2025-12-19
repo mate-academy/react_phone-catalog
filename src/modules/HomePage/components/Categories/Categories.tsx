@@ -1,0 +1,72 @@
+import { Product } from '@/types/Product';
+import React, { FC, useMemo } from 'react';
+
+import styles from './Categories.module.scss';
+import { ROUTES } from '@/constants/routes';
+import { CategoryUI } from '../../types/CategoryUI';
+import { CategoryCard } from '../CategoryCard';
+
+const categories: CategoryUI[] = [
+  {
+    title: 'Mobile phones',
+    type: 'phones',
+    preview: 'img/category-phones.webp',
+    path: ROUTES.PHONES,
+  },
+  {
+    title: 'Tablets',
+    type: 'tablets',
+    preview: 'img/category-tablets.webp',
+    path: ROUTES.TABLETS,
+  },
+  {
+    title: 'Accessories',
+    type: 'accessories',
+    preview: 'img/category-accessories.webp',
+    path: ROUTES.ACCESSORIES,
+  },
+];
+
+interface Props {
+  products: Product[];
+  isLoading?: boolean;
+}
+
+export const Categories: FC<Props> = React.memo(function Categories({
+  products,
+  isLoading = false,
+}) {
+  const categoriesWithCount: CategoryUI[] = useMemo(() => {
+    const countMap = products.reduce(
+      (acc, product) => {
+        const category = product.category;
+
+        acc[category] = (acc[category] || 0) + 1;
+
+        return acc;
+      },
+      {} as Record<string, number>,
+    );
+
+    return categories.map(category => {
+      return {
+        ...category,
+        count: countMap[category.type],
+      };
+    });
+  }, [products]);
+
+  return (
+    <div className="container">
+      <h2 className={styles.title}>Shop by category</h2>
+
+      <ul className={styles.categories}>
+        {categoriesWithCount.map(category => (
+          <li key={category.type} className={styles.categoryContainer}>
+            <CategoryCard category={category} isLoading={isLoading} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+});

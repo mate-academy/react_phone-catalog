@@ -1,0 +1,28 @@
+@use './globals';
+@use './resources' as *;
+@use './fonts';
+@use './normilize';
+@use 'typography';
+
+@use './container';
+
+body {
+  overflow: auto;
+  background-color: $white-color;
+  height: 100%;
+
+  &.active {
+    overflow: hidden;
+  }
+}
+
+.App {
+  min-height: 100vh;
+
+  @include flex-column;
+}
+
+.main {
+  height: 100%;
+  flex: 1;
+}

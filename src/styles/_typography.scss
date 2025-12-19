@@ -1,0 +1,59 @@
+@use './extend' as *;
+@use './mixins' as *;
+
+h1 {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0em;
+  }
+}
+
+h3 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0em;
+
+  @include on-mobile {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+
+  @include on-mobile {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+p {
+  @extend %body-text;
+}
+
+button {
+  @extend %button;
+}

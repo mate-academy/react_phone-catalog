@@ -1,0 +1,99 @@
+@use '@/styles/resources' as *;
+
+.button {
+  cursor: pointer;
+
+  @include transition(
+    (border-color, color, background-color),
+    $color-transition
+  );
+
+  @include flex-center;
+
+  &:disabled {
+    cursor: auto;
+  }
+}
+
+.primary {
+  background-color: $accent-color;
+  color: $white-color;
+  min-width: fit-content;
+  min-height: fit-content;
+
+  @include transition(box-shadow, $color-transition);
+
+  &.selected {
+    background-color: $white-color;
+    outline: 1px solid $elements-color;
+    color: $accent-color;
+  }
+
+  @include hover {
+    box-shadow: 0px 3px 13px 0px rgba($primary-color, 0.4);
+  }
+
+  &.small {
+    height: 40px;
+  }
+
+  &.large {
+    height: 48px;
+  }
+}
+
+.outline {
+  color: $primary-color;
+  border: 1px solid $elements-color;
+
+  @include body-text;
+
+  &.selected {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: $white-color;
+  }
+
+  @include hover {
+    border-color: $primary-color;
+  }
+}
+
+.onlyIcon {
+  svg {
+    fill: $primary-color;
+  }
+
+  &.small {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.large {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.selected {
+    background-color: $white-color;
+    border-color: $elements-color;
+    color: $secondary-accent-color;
+
+    svg {
+      fill: $secondary-accent-color;
+    }
+  }
+
+  @include hover {
+    border-color: $primary-color;
+  }
+
+  &:disabled {
+    border-color: $elements-color;
+    color: $elements-color;
+
+    svg {
+      fill: $elements-color;
+    }
+  }
+}

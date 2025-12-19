@@ -1,0 +1,28 @@
+@use './vars' as *;
+@use './mixins' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Mont, sans-serif;
+}
+
+body {
+  @include body-text;
+}
+
+button {
+  background: none;
+  border: 0;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}

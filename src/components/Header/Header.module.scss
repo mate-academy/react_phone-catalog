@@ -1,0 +1,90 @@
+@use '@/styles/resources' as *;
+
+.header {
+  background-color: $white-color;
+  height: $header-height;
+  gap: $main-gap;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid $elements-color;
+  z-index: 1000;
+
+  @include flex-between-center;
+
+  @include on-desktop {
+    gap: n-gap(1.5);
+  }
+}
+
+.headerLogo {
+  padding-inline: $main-gap;
+
+  @include on-desktop {
+    padding-inline: n-gap(1.5);
+  }
+}
+
+.headerNavigation {
+  display: none;
+  flex: 1;
+
+  @include on-tablet {
+    display: block;
+  }
+}
+
+.headerMenuBtn {
+  display: block;
+  width: $header-height;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  border-left: 1px solid $elements-color;
+
+  @include flex-center;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  &::before,
+  &::after,
+  span {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 2px;
+    background-color: $primary-color;
+    border-radius: 10px;
+    position: absolute;
+
+    @include transition((transform, opacity), $transition);
+  }
+
+  span {
+    opacity: 1;
+
+    @include transition(opacity, $transition);
+  }
+
+  &::before {
+    transform: translateY(-6px);
+  }
+
+  &::after {
+    transform: translateY(6px);
+  }
+}
+
+.headerMenuBtnActive {
+  span {
+    opacity: 0;
+  }
+
+  &::before {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  &::after {
+    transform: translateY(0) rotate(-45deg);
+  }
+}

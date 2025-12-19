@@ -1,0 +1,25 @@
+@use '@/styles/resources' as *;
+
+.sidebar {
+  position: fixed;
+  top: $header-height;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $white-color;
+  transform: translateX(-100%);
+  opacity: 0;
+  padding-top: 24px;
+  z-index: 1000;
+
+  @include transition((transform, opacity), $transition);
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.sidebarActive {
+  transform: translateX(0);
+  opacity: 1;
+}

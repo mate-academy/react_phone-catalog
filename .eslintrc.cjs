@@ -39,6 +39,7 @@ module.exports = {
   rules: {
     // JS
     'semi': 'off',
+    'import/extensions': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
     curly: [2, 'all'],

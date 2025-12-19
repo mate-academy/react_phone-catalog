@@ -1,0 +1,89 @@
+@use '@/styles/resources' as *;
+
+.footer {
+  border-top: 1px solid $elements-color;
+  padding-block: n-gap(2);
+  background-color: $white-color;
+  margin-top: 80px;
+}
+
+.footerContent {
+  row-gap: n-gap(2);
+
+  @include page-grid;
+
+  @include on-tablet {
+    align-items: center;
+  }
+}
+
+.logo {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}
+
+.contacts {
+  gap: $main-gap;
+  grid-column: 1 / -1;
+
+  @include flex-column;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}
+
+.contactsLink {
+  color: $secondary-color;
+
+  @include uppercase;
+  @include transition(color, $color-transition);
+
+  @include hover {
+    color: $primary-color;
+  }
+}
+
+.btnContainer {
+  grid-column: 1 / -1;
+  justify-self: center;
+  gap: $main-gap;
+
+  @include flex-center;
+
+  @include on-tablet {
+    justify-self: end;
+    grid-column: span 3;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}
+
+.btnText {
+  color: $secondary-color;
+  cursor: pointer;
+  gap: $main-gap;
+
+  @include flex-center;
+  @include small-text;
+  @include transition(color, $color-transition);
+
+  @include hover {
+    color: $primary-color;
+  }
+}

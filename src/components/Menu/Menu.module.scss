@@ -1,0 +1,95 @@
+@use '@/styles/resources' as *;
+
+.menu {
+  height: 100%;
+
+  @include flex-column;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.menuNavigation {
+  flex: 1;
+
+  ul {
+    gap: $main-gap;
+    align-items: center;
+
+    @include flex-column;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: n-gap(2);
+    }
+
+    @include on-desktop {
+      gap: n-gap(4);
+    }
+  }
+}
+
+.menuNavLink {
+  display: block;
+  color: $secondary-color;
+  @include uppercase;
+  @include transition(color, $color-transition);
+
+  @include animated-underline;
+  
+  @include on-mobile {
+    line-height: 25px;
+  }
+
+  @include on-tablet {
+    line-height: $header-height;
+  }
+
+  @include hover {
+    color: $primary-color;
+  }
+}
+
+.menuNavLinkActive {
+  color: $primary-color;
+
+  @include animated-underline-active;
+}
+
+.menuActions {
+  @include flex-between-center;
+}
+
+.menuActionLink {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding-block: 24px;
+  border-width: 1px 0 0 1px;
+  border-color: $elements-color;
+  border-style: solid;
+  position: relative;
+  color: $primary-color;
+
+  @include animated-underline;
+
+  @include on-tablet {
+    padding-block: 0;
+    width: $header-height;
+    aspect-ratio: 1 / 1;
+    border-width: 0 0 0 1px;
+
+    @include flex-center;
+  }
+
+  @include on-mobile {
+    .menuActionLink:first-child {
+      border-left: 0;
+    }
+  }
+}
+
+.menuActionLinkActive {
+  @include animated-underline-active;
+}

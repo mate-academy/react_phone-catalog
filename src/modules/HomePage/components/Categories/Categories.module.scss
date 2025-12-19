@@ -1,0 +1,23 @@
+@use '@/styles/resources' as *;
+
+.title {
+  margin-bottom: 24px;
+}
+
+.categories {
+  row-gap: n-gap(2);
+
+  @include page-grid;
+}
+
+.categoryContainer {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}

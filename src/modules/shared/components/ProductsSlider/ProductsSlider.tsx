@@ -1,0 +1,85 @@
+import React, { FC } from 'react';
+
+import { Product } from '@/types/Product';
+
+import { Button } from '../Button';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
+import { ProductCard } from '../ProductCard';
+import { ProductCardSkeleton } from '../ProductCardSkeleton';
+
+import styles from './ProductsSlider.module.scss';
+import classNames from 'classnames';
+
+import useEmblaCarousel from 'embla-carousel-react';
+import { useSliderPrevNextBtns } from '../../hooks/useSliderPrevNextBtns';
+
+interface Props {
+  title: string;
+  products: Product[];
+  isLoading?: boolean;
+}
+
+export const ProductsSlider: FC<Props> = React.memo(function ProductsSlider({
+  title,
+  products,
+  isLoading = false,
+}) {
+  const [sliderRef, sliderApi] = useEmblaCarousel({
+    skipSnaps: true,
+    duration: 30,
+    align: 'start',
+    active: !isLoading,
+    breakpoints: {
+      '(min-width: 1200px)': {
+        slidesToScroll: 4,
+      },
+    },
+  });
+  const { prevBtnDisabled, nextBtnDisabled, handleNext, handlePrev } =
+    useSliderPrevNextBtns(sliderApi);
+
+  return (
+    <div className={classNames(styles.wrapper, 'container')}>
+      <div className={classNames(styles.topBar)}>
+        <h2 className={styles.title}>{title}</h2>
+
+        <div className={styles.sliderBtns}>
+          <Button
+            variant="outline"
+            radius="50%"
+            isIconOnly
+            onClick={handlePrev}
+            isDisabled={prevBtnDisabled || isLoading}
+          >
+            <FaAngleLeft size={16} />
+          </Button>
+          <Button
+            variant="outline"
+            radius="50%"
+            isIconOnly
+            onClick={handleNext}
+            isDisabled={nextBtnDisabled || isLoading}
+          >
+            <FaAngleRight size={16} />
+          </Button>
+        </div>
+      </div>
+      <div className={styles.slider} ref={!isLoading ? sliderRef : null}>
+        <ul className={styles.sliderContainer}>
+          {isLoading &&
+            Array.from({ length: 4 }).map((_, index) => (
+              <li key={`product-${index}-loader`} className={styles.slide}>
+                <ProductCardSkeleton />
+              </li>
+            ))}
+          {!isLoading &&
+            products.map(product => (
+              <li key={product.id} className={styles.slide}>
+                <ProductCard product={product} />
+              </li>
+            ))}
+        </ul>
+      </div>
+    </div>
+  );
+});

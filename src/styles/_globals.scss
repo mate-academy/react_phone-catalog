@@ -1,0 +1,24 @@
+@use './mixins' as *;
+
+:root {
+  --header-height: 48px;
+  --page-hor-paddings: 16px;
+}
+
+@include on-tablet {
+  :root {
+    --page-hor-paddings: 24px;
+  }
+}
+
+@include on-desktop {
+  :root {
+    --header-height: 64px;
+  }
+}
+
+@include on-desktop {
+  :root {
+    --page-hor-paddings: 32px;
+  }
+}

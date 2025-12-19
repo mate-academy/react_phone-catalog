@@ -1,0 +1,34 @@
+@use '@/styles/resources' as *;
+
+.homeContent {
+  gap: 56px;
+
+  @include flex-column;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}
+
+.title {
+  padding-block: 24px;
+  color: $primary-color;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  @include on-desktop {
+    padding-block: 56px;
+  }
+}
+
+.sliderWrapper {
+  @include on-mobile {
+    padding-inline: 0 !important;
+  }
+}
