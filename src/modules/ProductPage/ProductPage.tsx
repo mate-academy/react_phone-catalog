@@ -88,14 +88,16 @@ export const ProductPage: React.FC = () => {
               <>
                 <ProductGallery photos={product.images} />
 
-                <ProductConfigurator
-                  product={product}
-                  setSelectedColor={setSelectedColor}
-                  selectedColor={selectedColor}
-                  setSelectedCapacity={setSelectedCapacity}
-                  selectedCapacity={selectedCapacity}
-                  foundProductFromProducts={foundProductFromProducts}
-                />
+                <div className={styles['product-page__container--wrapper']}>
+                  <ProductConfigurator
+                    product={product}
+                    setSelectedColor={setSelectedColor}
+                    selectedColor={selectedColor}
+                    setSelectedCapacity={setSelectedCapacity}
+                    selectedCapacity={selectedCapacity}
+                    foundProductFromProducts={foundProductFromProducts}
+                  />
+                </div>
               </>
             }
           </section>
