@@ -17,10 +17,12 @@ export const ProductCardShared: React.FC<Props> = ({
 }) => {
   const hasDiscount = product.fullPrice > product.price;
 
-  const { cart, addToCart, removeFromCart } = useCart();
-  const inCart = cart.some(item => item.id === product.id);
-  const { favorites, toggleFavorite } = useFavorites();
-  const isFav = favorites.some(item => item.id === product.id);
+  const { cart, addToCart, removeFromCart, createCartItemId } = useCart();
+  const cartItemId = createCartItemId(product);
+  const inCart = cart.some(item => item.cartItemId === cartItemId);
+
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const isFav = isFavorite(product);
 
   return (
     <>
@@ -37,7 +39,7 @@ export const ProductCardShared: React.FC<Props> = ({
           className={`${styles.card__addBtn} ${inCart ? styles.card__btn__disabled : ''}`}
           onClick={() => {
             if (inCart) {
-              removeFromCart(product.id);
+              removeFromCart(cartItemId);
             } else {
               addToCart(product);
             }
@@ -61,13 +63,13 @@ export const ProductCardShared: React.FC<Props> = ({
 
       <div className={styles.card__specs}>
         <dl>
-          <dt>Screen:</dt>
+          <dt>Screen</dt>
           <dd>{product.screen}</dd>
 
-          <dt>Capacity:</dt>
+          <dt>Capacity</dt>
           <dd>{product.capacity}</dd>
 
-          <dt>RAM:</dt>
+          <dt>RAM</dt>
           <dd>{product.ram}</dd>
         </dl>
       </div>

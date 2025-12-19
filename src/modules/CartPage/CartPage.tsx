@@ -36,7 +36,7 @@ export const CartPage = () => {
             ) : (
               <>
                 {cart.map(item => (
-                  <CartProduct key={item.id} item={item} />
+                  <CartProduct key={item.cartItemId} item={item} />
                 ))}
               </>
             )}

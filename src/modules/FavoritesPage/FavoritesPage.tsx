@@ -1,5 +1,5 @@
 import styles from './FavoritesPage.module.scss';
-import { useFavorites } from '../../contexts/FavoritesContext';
+import { FavoriteItem, useFavorites } from '../../contexts/FavoritesContext';
 import { ProductCard } from '../HomePage/componets/ProductCard';
 import { HomeBtn } from '../../components/HomeBtn';
 
@@ -20,8 +20,12 @@ export const FavoritesPage = () => {
         {favorites.length === 0 ? (
           <p className={styles.favorites_empty}>No favorite products yet</p>
         ) : (
-          favorites.map(product => (
-            <ProductCard product={product} key={product.id} />
+          favorites.map((product: FavoriteItem) => (
+            <ProductCard
+              key={product.favoriteItemId}
+              product={product}
+              showDiscount={product.showDiscount}
+            />
           ))
         )}
       </div>

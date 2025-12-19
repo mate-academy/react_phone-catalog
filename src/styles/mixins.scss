@@ -144,3 +144,17 @@
   line-height: 21px;
   color: $gray-white;
 }
+
+@mixin header-3 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  color: $gray-white;
+}
+
+@mixin header-4 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  color: $gray-white;
+}

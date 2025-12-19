@@ -1,55 +1,85 @@
-import React, { createContext, useEffect, useState, useContext } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product } from '../../types/Product';
 
-export type FavContextType = {
-  favorites: Product[];
-  toggleFavorite: (product: Product) => void;
-  totalFavorites: number;
+export type FavoriteItem = Product & {
+  favoriteItemId: string;
+  showDiscount: boolean;
 };
 
-const FavContext = createContext<FavContextType | undefined>(undefined);
+type FavoritesContextType = {
+  favorites: FavoriteItem[];
+  totalFavorites: number;
+  toggleFavorite: (product: Product, showDiscount?: boolean) => void;
+  isFavorite: (product: Product) => boolean;
+};
+
+const FavoritesContext = createContext<FavoritesContextType | undefined>(
+  undefined,
+);
+
+const generateFavoriteItemId = (product: Product) => {
+  return `${product.itemId}-${product.color}-${product.capacity}`;
+};
 
 export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [favorites, setFavorites] = useState<Product[]>(() => {
-    const saved = localStorage.getItem('favorites');
+  const [favorites, setFavorites] = useState<FavoriteItem[]>(() => {
+    const stored = localStorage.getItem('favorites');
 
-    return saved ? JSON.parse(saved) : [];
+    return stored ? JSON.parse(stored) : [];
   });
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const toggleFavorite = (product: Product) => {
-    setFavorites(prev => {
-      const exists = prev.find(item => item.id === product.id);
+  const toggleFavorite = (product: Product, showDiscount: boolean = false) => {
+    const favoriteItemId = generateFavoriteItemId(product);
 
-      if (exists) {
-        return prev.filter(item => item.id !== product.id);
+    setFavorites(prev => {
+      const existing = prev.find(f => f.favoriteItemId === favoriteItemId);
+
+      if (existing) {
+        return prev.filter(f => f.favoriteItemId !== favoriteItemId);
       }
 
-      return [...prev, product];
+      return [
+        ...prev,
+        {
+          ...product,
+          favoriteItemId,
+          showDiscount,
+        },
+      ];
     });
   };
 
-  const totalFavorites = favorites.length;
+  const isFavorite = (product: Product) => {
+    const favoriteItemId = generateFavoriteItemId(product);
+
+    return favorites.some(f => f.favoriteItemId === favoriteItemId);
+  };
 
   return (
-    <FavContext.Provider value={{ favorites, toggleFavorite, totalFavorites }}>
+    <FavoritesContext.Provider
+      value={{
+        favorites,
+        totalFavorites: favorites.length,
+        toggleFavorite,
+        isFavorite,
+      }}
+    >
       {children}
-    </FavContext.Provider>
+    </FavoritesContext.Provider>
   );
 };
 
 export const useFavorites = () => {
-  const context = useContext(FavContext);
+  const context = useContext(FavoritesContext);
 
   if (!context) {
-    {
-      throw new Error('useFavorites must be used within FavoritesProvider');
-    }
+    throw new Error('useFavorites must be used within FavoritesProvider');
   }
 
   return context;
