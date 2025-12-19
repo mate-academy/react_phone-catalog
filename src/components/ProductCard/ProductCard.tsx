@@ -61,7 +61,10 @@ export const ProductCard: React.FC<Props> = ({ model, brandNewModels }) => {
       })}
       key={model.id}
     >
-      <div className="product-card__photo">
+      <div
+        className="product-card__photo"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
         <Link to={`/${model.category}/${model.id}`}>
           <img src={model.images[0]} className="product-card__photo__image" />
         </Link>
@@ -122,10 +125,7 @@ export const ProductCard: React.FC<Props> = ({ model, brandNewModels }) => {
               id => id === model.id,
             ),
           })}
-          onClick={() => {
-            handleAddToCart();
-            window.scrollTo({ top: 0 });
-          }}
+          onClick={handleAddToCart}
         >
           {Object.keys(cart).some(id => id === model.id)
             ? 'Added'

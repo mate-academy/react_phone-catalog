@@ -6,7 +6,7 @@ import minus from '../../images/icons/minus.png';
 import plus from '../../images/icons/plus.png';
 import { useContext, useState } from 'react';
 import { DevicesContext } from '../../DevicesContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Cart = () => {
   const navigate = useNavigate();
@@ -160,16 +160,22 @@ export const Cart = () => {
                     />
                   </div>
 
-                  <div className="item__info__item-image">
+                  <Link
+                    to={`/${value.item.category}/${value.item.id}`}
+                    className="item__info__item-image"
+                  >
                     <img
                       src={value.item.images[0]}
                       className="item__info__item-image__photo"
                     />
-                  </div>
+                  </Link>
 
-                  <div className="item__info__item-title">
+                  <Link
+                    to={`/${value.item.category}/${value.item.id}`}
+                    className="item__info__item-title"
+                  >
                     {value.item.name}
-                  </div>
+                  </Link>
                 </div>
 
                 <div className="item__counter-price">
