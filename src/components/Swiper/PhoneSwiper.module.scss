@@ -1,6 +1,7 @@
 .swiper {
   display: flex;
   height: 400px;
+  width: 100%;
   // padding-inline: 152px;
 
   :global(.swiper-pagination) {
@@ -34,7 +35,7 @@
     &__img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
     }
   }
 

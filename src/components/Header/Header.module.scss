@@ -50,13 +50,13 @@
     &__item {
       height: 100%;
       text-decoration: none;
-      color: #75767F;
+      color: $secondary-text-color;
       display: flex;
       align-items: center;
       position: relative;
 
       &:visited {
-        color: #75767F;
+        color: $secondary-text-color;
       }
 
       &:hover {

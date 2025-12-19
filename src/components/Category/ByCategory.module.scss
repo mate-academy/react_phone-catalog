@@ -1,0 +1,69 @@
+.categories {
+  color: $main-text-color;
+
+  h2 {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    padding-bottom: 24px;
+    margin: 0;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+
+  }
+
+  &__item {
+    width: 368px;
+    text-decoration: none;
+    color: $main-text-color;
+
+    &__image {
+      width: 100%;
+      height: 368px;
+      overflow: hidden;
+      display: flex;
+      padding-left: 60px;
+      padding-top: 60px;
+      box-sizing: border-box;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      &__phones {
+        background-color: #6D6474;
+      }
+
+      &__tablets {
+        background-color: #8D8D92;
+      }
+
+      &__accessories {
+        background-color: #973D5F;
+      }
+    }
+
+    &__name {
+      padding-top: 24px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      padding-bottom: 4px;
+      margin: 0;
+    }
+
+    &__quantity {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: $secondary-text-color;
+      margin: 0;
+    }
+  }
+}

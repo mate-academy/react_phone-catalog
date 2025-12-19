@@ -2,6 +2,7 @@ import React from "react";
 import styles from './HomePage.module.scss';
 import { PhoneSwiper } from "../Swiper/PhoneSwiper";
 import { BrandNewModels } from "../BrandNewModels/BrandNewModels";
+import { ByCategory } from "../Category/ByCategory";
 
 export const HomePage:React.FC = () => {
   return (
@@ -10,6 +11,8 @@ export const HomePage:React.FC = () => {
       <PhoneSwiper/>
 
       <BrandNewModels />
+
+      <ByCategory />
     </main>
   )
 }

@@ -59,6 +59,7 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.4s ease;
+    will-change: transform;
   }
 
   &__item {
