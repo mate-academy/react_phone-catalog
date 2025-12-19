@@ -37,8 +37,7 @@ const Favorites: React.FC = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [favorites.length]); // Додали залежність, щоб при додаванні товару запит міг оновитися (опціонально)
-
+  }, []);
   const preparedFavorites = useMemo(
     () => products.filter(product => favorites.includes(product.itemId)),
     [products, favorites],
@@ -48,6 +47,7 @@ const Favorites: React.FC = () => {
     <div
       className={classNames(styles.favoritesPage__container, {
         [styles.favoritesPage__containerLoading]: loading,
+        [styles['favoritesPage__container--empty']]: products.length === 0,
       })}
     >
       {loading ? (

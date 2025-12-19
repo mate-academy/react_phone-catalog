@@ -1,11 +1,16 @@
 .customSelect {
   position: relative;
-  width: 200px;
+  width: 50%;
+  max-width: 200px;
   cursor: pointer;
   &__label {
     margin-bottom: 4px;
     font-size: $small-size;
     color: $color-secondary;
+  }
+  &__arrow{
+    flex-shrink: 0;
+    display: flex;
   }
   &__controls {
     display: flex;

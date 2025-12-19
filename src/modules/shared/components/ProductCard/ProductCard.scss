@@ -110,11 +110,10 @@
         color: $color-green;
         background-color: #fff;
         border: 1px solid $color-elements;
-        @include desktop {
-          &:hover {
-            box-shadow: none;
-            cursor: default;
-          }
+
+        &:hover {
+          box-shadow: none;
+          cursor: default;
         }
       }
     }

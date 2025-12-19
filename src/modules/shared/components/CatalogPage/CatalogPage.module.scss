@@ -1,9 +1,13 @@
 .catalog {
+  display: flex;
+  flex-direction: column;
   &__container {
-    display: flex;
-    column-gap: 16px;
+    display: grid;
+    /* Це ключовий рядок для адаптиву */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    column-gap: 16px; /* Відступи між картками */
     row-gap: 40px;
-    flex-wrap: wrap;
+    width: 100%;
 
     &--hasPagination {
       margin-bottom: 40px;
