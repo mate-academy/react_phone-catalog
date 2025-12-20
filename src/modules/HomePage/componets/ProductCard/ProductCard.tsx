@@ -29,6 +29,8 @@ export const ProductCard: React.FC<Props> = ({
 
   const base = import.meta.env.BASE_URL;
 
+  const imgUrl = base + product.image;
+
   return (
     <div className={styles.card}>
       <div className={styles.card_content}>
@@ -44,7 +46,7 @@ export const ProductCard: React.FC<Props> = ({
           className={styles.card_link}
         >
           <div className={styles.card_image}>
-            <img src={`${base}${product.image}`} alt={product.name} />
+            <img src={imgUrl} alt={product.name} />
           </div>
           <h3 className={styles.card__title}>{product.name}</h3>
           <div className={styles.card__prices}>
