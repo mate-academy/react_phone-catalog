@@ -27,7 +27,6 @@ export const FavouritesProvider = ({
 }) => {
   const [items, setItems] = useState<ProductBase[]>(() => {
     const saved = localStorage.getItem('favourites');
-
     return saved ? JSON.parse(saved) : [];
   });
 
@@ -35,6 +34,7 @@ export const FavouritesProvider = ({
     localStorage.setItem('favourites', JSON.stringify(items));
   }, [items]);
 
+  /** ✅ TOGGLE ПРАЦЮЄ ПО product.id */
   const toggle = (product: ProductBase) => {
     setItems(prev =>
       prev.some(p => p.id === product.id)
@@ -43,7 +43,9 @@ export const FavouritesProvider = ({
     );
   };
 
-  const isFavourite = (id: number) => items.some(p => p.id === id);
+
+  const isFavourite = (id: number) =>
+    items.some(p => p.id === id);
 
   return (
     <FavouritesContext.Provider

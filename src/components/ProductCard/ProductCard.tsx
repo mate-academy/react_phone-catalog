@@ -13,7 +13,7 @@ export const ProductCard: React.FC<Props> = ({
   product,
   isDiscounted = false,
 }) => {
-  const { addToCart, isInCart } = useCart();
+  const { addToCart, isInCart, removeFromCart } = useCart();
   const { toggle, isFavourite } = useFavourites();
 
   const cartKey = String(product.id);
@@ -68,17 +68,20 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className="card__actions" onClick={e => e.stopPropagation()}>
         <button
-          disabled={isInCart(cartKey)}
-          className={`card__add-to-cart-button ${
-            isInCart(cartKey) ? 'added' : ''
-          }`}
-          onClick={e => {
+          className={`card__add-to-cart-button ${isInCart(cartKey) ? "added" : ""}`}
+          onClick={(e) => {
             e.stopPropagation();
-            addToCart(cartProduct);
+
+            if (isInCart(cartKey)) {
+              removeFromCart(cartKey);
+            } else {
+              addToCart(cartProduct);
+            }
           }}
         >
-          {isInCart(cartKey) ? 'Added to cart' : 'Add to cart'}
+          {isInCart(cartKey) ? "Added to cart" : "Add to cart"}
         </button>
+
 
         <button
           className={`card__favourites-button ${

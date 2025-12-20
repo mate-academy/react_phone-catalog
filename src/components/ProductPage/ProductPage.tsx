@@ -9,6 +9,8 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { PhoneFull } from '../../types/PhoneFull';
 import { mapToProductBase } from '../../utils/mapToProductBase';
 import { ProductBase } from '../../types/ProductBase';
+import { useFavourites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 
 export const ProductPage = () => {
   const navigate = useNavigate();
@@ -65,7 +67,23 @@ export const ProductPage = () => {
       navigate(`/${newProduct.category}/${newProduct.id}`);
     }
   };
+  const { toggle, isFavourite } = useFavourites();
+  const { addToCart, removeFromCart, isInCart } = useCart();
 
+
+  const productBase: ProductBase = mapToProductBase(product);
+
+  const cartKey = String(productBase.id);
+  const cartProduct = {
+    id: String(productBase.id),
+    name: productBase.name,
+    price: productBase.price,
+    priceDiscount:
+      productBase.fullPrice > productBase.price
+        ? productBase.price
+        : undefined,
+    images: [productBase.image],
+  };
   return (
     <div className="productPage" key={product.id}>
       <div className="container">
@@ -150,11 +168,30 @@ export const ProductPage = () => {
             </div>
 
             <div className="productPage__actions">
-              <button className="productPage__add">Add to cart</button>
-
-              <button className="productPage__fav">
-                <img src="/img/Favourites.png" alt="fav" />
+              <button
+                className={`productPage__add ${isInCart(cartKey) ? 'added' : ''}`}
+                onClick={() => {
+                  if (isInCart(cartKey)) {
+                    removeFromCart(cartKey);
+                  } else {
+                    addToCart(cartProduct);
+                  }
+                }}
+              >
+                {isInCart(cartKey) ? 'Added to cart' : 'Add to cart'}
               </button>
+
+
+              <button
+                className={`card__favourites-button ${
+                  isFavourite(productBase.id) ? 'is-active' : ''
+                }`}
+                onClick={() => toggle(productBase)}
+              >
+                <span className="icon icon--favourite" />
+              </button>
+
+
             </div>
 
             <div className="productPage__shortSpecs">

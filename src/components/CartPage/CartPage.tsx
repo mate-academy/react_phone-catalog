@@ -28,7 +28,7 @@ export const CartPage = () => {
   return (
     <div className="cartPage">
       <button className="cartPage__back" onClick={() => navigate(-1)}>
-        <img src="/img/ChevronLeft.png" alt="back" />
+        <img src="img/ChevronLeft.png" alt="back" />
         Back
       </button>
 
@@ -54,7 +54,7 @@ export const CartPage = () => {
                     className="cartPage__itemRemove"
                     onClick={() => removeFromCart(item.id)}
                   >
-                    <img src="/img/Union.png" alt="remove" />
+                    <img src="img/Union.png" alt="remove" />
                   </button>
 
                   {image && (
