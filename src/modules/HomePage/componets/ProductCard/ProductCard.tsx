@@ -27,6 +27,8 @@ export const ProductCard: React.FC<Props> = ({
   const { toggleFavorite, isFavorite } = useFavorites();
   const isFav = isFavorite(product);
 
+  const base = import.meta.env.BASE_URL;
+
   return (
     <div className={styles.card}>
       <div className={styles.card_content}>
@@ -42,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({
           className={styles.card_link}
         >
           <div className={styles.card_image}>
-            <img src={product.image} alt={product.name} />
+            <img src={`${base}${product.image}`} alt={product.name} />
           </div>
           <h3 className={styles.card__title}>{product.name}</h3>
           <div className={styles.card__prices}>
