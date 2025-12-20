@@ -15,15 +15,18 @@ export const CartProduct: React.FC<Props> = ({ item }) => {
   const navigate = useNavigate();
 
   const handleClickProduct = () => {
-    navigate(`${item.product.category}${item.product.itemId}`, {
-      state: {
-        category: item.product.category,
-        name: item.product.name,
-        showDiscount: item.product.price,
-        color: item.product.color,
-        capacity: item.product.capacity,
+    navigate(
+      `${item.product.category}/${item.product.itemId}-${item.product.capacity}-${item.product.color}`,
+      {
+        state: {
+          category: item.product.category,
+          name: item.product.name,
+          showDiscount: item.product.price,
+          color: item.product.color,
+          capacity: item.product.capacity,
+        },
       },
-    });
+    );
   };
 
   const imgUrl =
