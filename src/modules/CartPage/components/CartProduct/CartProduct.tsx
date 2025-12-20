@@ -15,7 +15,7 @@ export const CartProduct: React.FC<Props> = ({ item }) => {
   const navigate = useNavigate();
 
   const handleClickProduct = () => {
-    navigate(`/${item.product.category}/${item.cartItemId}`, {
+    navigate(`/products/${item.product.itemId}`, {
       state: {
         category: item.product.category,
         name: item.product.name,
