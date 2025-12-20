@@ -18,7 +18,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 export const App = () => (
   <CartProvider>
     <FavoritesProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/react_phone-catalog/">
         <div className="App">
           <Header />
           <main className="app_content">
