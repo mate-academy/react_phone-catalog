@@ -7,9 +7,9 @@ import styles from './PicturesSlider.module.scss';
 
 export const PicturesSlider = () => {
   const images = [
-    './img/banner-accessories.png',
-    './img/banner-phones.png',
-    './img/banner-tablets.png',
+    '/img/banner-accessories.png',
+    '/img/banner-phones.png',
+    '/img/banner-tablets.png',
   ];
 
   return (
