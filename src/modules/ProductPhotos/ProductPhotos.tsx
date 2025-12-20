@@ -54,7 +54,7 @@ export const ProductPhotos: React.FC<Props> = ({ images }) => {
         {images.map((img, index) => (
           <div key={img} className={styles.photos_slide}>
             <img
-              src={`/${img}`}
+              src={`https://annaabramovaa.github.io/react_phone-catalog/${img}`}
               alt={`Product image ${index + 1}`}
               className={styles.photos_mainImg}
             />
@@ -78,7 +78,7 @@ export const ProductPhotos: React.FC<Props> = ({ images }) => {
                 ${isActive ? styles['photos_previewBox--active'] : ''}`}
               >
                 <img
-                  src={`/${img}`}
+                  src={`https://annaabramovaa.github.io/react_phone-catalog/${img}`}
                   alt={`Preview ${index + 1}`}
                   className={styles.photos_previewImg}
                 />

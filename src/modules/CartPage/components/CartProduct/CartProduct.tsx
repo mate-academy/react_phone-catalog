@@ -26,6 +26,9 @@ export const CartProduct: React.FC<Props> = ({ item }) => {
     });
   };
 
+  const imgUrl =
+    'https://annaabramovaa.github.io/react_phone-catalog/' + item.product.image;
+
   return (
     <div className={styles.cart_product}>
       <button
@@ -37,7 +40,7 @@ export const CartProduct: React.FC<Props> = ({ item }) => {
 
       <div className={styles.cart_product_left} onClick={handleClickProduct}>
         <img
-          src={item.product.image}
+          src={imgUrl}
           alt={item.product.name}
           className={styles.cart_product_img}
         />
