@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 export const HomePageSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const banners = ['img/Banner1.jpg', 'img/Banner2.jpg', 'img/Banner3.png'];
+  const banners = ['img/1.jpg', 'img/2.jpg', 'img/Banner3.png'];
 
   const next = () => {
     setActiveSlide(i => (i + 1 < banners.length ? i + 1 : 0));

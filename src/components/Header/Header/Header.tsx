@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import './Header.scss';
 import { useFavourites } from '../../../context/FavoritesContext';
+import { useCart } from '../../../context/CartContext';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { count } = useFavourites();
+  const { cartCount } = useCart();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -30,7 +32,7 @@ export const Header = () => {
           <div className="grid header__grid">
             <div className="header__left">
               <Link to="/">
-                <img src="img/Logo.png" alt="Logo" />
+                <img src="img/Logo.svg" alt="Logo" />
               </Link>
 
               <nav className="header__sections">
@@ -76,7 +78,7 @@ export const Header = () => {
               <div className="header__icons">
                 <Link to="/favorites" className="header__icon">
                   <img
-                    src="img/Heart_Header.png"
+                    src="img/Heart_Header.svg"
                     alt="liked"
                     className="header_heart"
                   />
@@ -85,7 +87,8 @@ export const Header = () => {
                 </Link>
 
                 <Link to="/cart" className="header_cart">
-                  <img src="img/Store_Header.png" alt="store" />
+                  <img src="img/Store_Header.svg" alt="store" />
+                  {cartCount > 0 && <span className="header__badge">{cartCount}</span>}
                 </Link>
               </div>
 

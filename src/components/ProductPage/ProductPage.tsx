@@ -27,6 +27,13 @@ export const ProductPage = () => {
     if (product?.images?.length) {
       setSelectedImg(`/${product.images[0]}`);
       setSliderIndex(0);
+
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     }
   }, [product]);
 
@@ -183,14 +190,12 @@ export const ProductPage = () => {
 
 
               <button
-                className={`card__favourites-button ${
-                  isFavourite(productBase.id) ? 'is-active' : ''
-                }`}
+                className={`productPage__favourites-button ${isFavourite(productBase.id) ? 'is-active' : ''
+                  }`}
                 onClick={() => toggle(productBase)}
               >
                 <span className="icon icon--favourite" />
               </button>
-
 
             </div>
 

@@ -34,7 +34,7 @@ export const ProductCard: React.FC<Props> = ({
         className="card__link-wrapper"
       >
         <img
-          src={`/${product.image}`}
+          src={`${product.image}`}
           alt={product.name}
           className="card__image"
         />
@@ -84,9 +84,8 @@ export const ProductCard: React.FC<Props> = ({
 
 
         <button
-          className={`card__favourites-button ${
-            isFavourite(product.id) ? 'is-active' : ''
-          }`}
+          className={`card__favourites-button ${isFavourite(product.id) ? 'is-active' : ''
+            }`}
           onClick={e => {
             e.stopPropagation();
             toggle(product);

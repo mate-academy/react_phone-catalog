@@ -104,6 +104,15 @@
     &:hover {
       background: #5f5f5f;
     }
+            &.added {
+              color: rgba(39, 174, 96, 1);
+              background-color: rgba(226, 230, 233, 1);
+            }
+
+            &:active {
+              color: rgba(39, 174, 96, 1);
+              background-color: rgba(226, 230, 233, 1);
+            }
   }
 
   &__favourites-button {
@@ -120,18 +129,18 @@
     .icon--favourite {
       width: 20px;
       height: 20px;
-      background-image: url('/img/favourite_default.png');
+      background-image: url('img/favourite_default.png');
       background-repeat: no-repeat;
       background-position: center;
       transition: background-image 0.3s;
     }
 
     &:hover .icon--favourite {
-      background-image: url('/img/favourite_hover.png');
+      background-image: url('img/favourite_hover.png');
     }
 
     &.is-active .icon--favourite {
-      background-image: url('/img/favourite_checked.png');
+      background-image: url('img/favourite_checked.png');
     }
 
     &:hover {
