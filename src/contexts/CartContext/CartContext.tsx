@@ -22,7 +22,7 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 const createCartItemId = (product: Product) => {
-  return `${product.itemId}`;
+  return `${product.itemId}-${product.capacity.toLowerCase()}-${product.color.toLowerCase()}`;
 };
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
