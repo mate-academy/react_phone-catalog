@@ -27,9 +27,8 @@ export const ProductCard: React.FC<Props> = ({
   const { toggleFavorite, isFavorite } = useFavorites();
   const isFav = isFavorite(product);
 
-  const base = import.meta.env.BASE_URL;
-
-  const imgUrl = base + product.image;
+  const imgUrl =
+    'https://annaabramovaa.github.io/react_phone-catalog/' + product.image;
 
   return (
     <div className={styles.card}>
