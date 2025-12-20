@@ -4,13 +4,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import styles from './PicturesSlider.module.scss';
+import bannerAccessories from '/img/banner-accessories.png';
+import bannerPhones from '/img/banner-phones.png';
+import bannerTablets from '/img/banner-tablets.png';
 
 export const PicturesSlider = () => {
-  const images = [
-    '/img/banner-accessories.png',
-    '/img/banner-phones.png',
-    '/img/banner-tablets.png',
-  ];
+  const images = [bannerAccessories, bannerPhones, bannerTablets];
 
   return (
     <>
