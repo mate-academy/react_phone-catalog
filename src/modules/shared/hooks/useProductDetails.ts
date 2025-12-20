@@ -39,7 +39,9 @@ export const useProductDetails = (
       setNotFound(false);
 
       try {
-        const response = await fetch(`/api/${category}.json`);
+        const response = await fetch(
+          `/react_phone-catalog/api/${category}.json`,
+        );
         const data: ProductDetails[] = await response.json();
 
         const found = data.find(p => p.id === productId);
