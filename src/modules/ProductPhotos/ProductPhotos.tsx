@@ -51,20 +51,27 @@ export const ProductPhotos: React.FC<Props> = ({ images }) => {
   return (
     <div className={styles.photos}>
       <div className={styles.photos_main} ref={sliderRef}>
-        {images.map((img, index) => (
-          <div key={img} className={styles.photos_slide}>
-            <img
-              src={`https://annaabramovaa.github.io/react_phone-catalog/${img}`}
-              alt={`Product image ${index + 1}`}
-              className={styles.photos_mainImg}
-            />
-          </div>
-        ))}
+        {images.map((img, index) => {
+          const imgUrl =
+            'https://annaabramovaa.github.io/react_phone-catalog/' + img;
+
+          return (
+            <div key={img} className={styles.photos_slide}>
+              <img
+                src={imgUrl}
+                alt={`Product image ${index + 1}`}
+                className={styles.photos_mainImg}
+              />
+            </div>
+          );
+        })}
       </div>
 
       <div className={styles.photos_previews}>
         {images.map((img, index) => {
           const isActive = index === activeIndex;
+          const imgUrl =
+            'https://annaabramovaa.github.io/react_phone-catalog/' + img;
 
           return (
             <button
@@ -78,7 +85,7 @@ export const ProductPhotos: React.FC<Props> = ({ images }) => {
                 ${isActive ? styles['photos_previewBox--active'] : ''}`}
               >
                 <img
-                  src={`https://annaabramovaa.github.io/react_phone-catalog/${img}`}
+                  src={imgUrl}
                   alt={`Preview ${index + 1}`}
                   className={styles.photos_previewImg}
                 />
