@@ -8,21 +8,23 @@ type Props = {
 type ProductsContextType = {
   products: ProductsState;
   setProducts: React.Dispatch<React.SetStateAction<ProductsState>>;
+  isLoad: boolean;
 };
 
-type ProductsState = {
+export type ProductsState = {
   accessories?: ProductFullInfo[];
   phones?: ProductFullInfo[];
   products?: ProductInfo[];
   tablets?: ProductFullInfo[];
 };
-
+/* eslint-disable @typescript-eslint/indent */
 export const ProductContext = React.createContext<
-ProductsContextType | undefined
+  ProductsContextType | undefined
 >(undefined);
 
 export const ProductContextProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<ProductsState | {}>({});
+  const [isLoad, setIsLoad] = useState(true);
 
   useEffect(() => {
     Promise.all([
@@ -30,18 +32,25 @@ export const ProductContextProvider: React.FC<Props> = ({ children }) => {
       fetch('/api/tablets.json').then(r => r.json()),
       fetch('/api/accessories.json').then(r => r.json()),
       fetch('/api/products.json').then(r => r.json()),
-    ]).then(([phones, tablets, accessories, allProducts]) => {
-      setProducts({
-        phones: phones,
-        tablets: tablets,
-        accessories: accessories,
-        products: allProducts,
+    ])
+      .then(([phones, tablets, accessories, allProducts]) => {
+        setProducts({
+          phones: phones,
+          tablets: tablets,
+          accessories: accessories,
+          products: allProducts,
+        });
+
+        setIsLoad(false);
+      })
+
+      .catch(error => {
+        throw new Error('Failed to load products:', error);
       });
-    });
   }, []);
 
   return (
-    <ProductContext.Provider value={{ products, setProducts }}>
+    <ProductContext.Provider value={{ products, setProducts, isLoad }}>
       {children}
     </ProductContext.Provider>
   );

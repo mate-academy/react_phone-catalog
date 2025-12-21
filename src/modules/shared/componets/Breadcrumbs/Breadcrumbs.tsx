@@ -22,7 +22,7 @@ export const BreadCrumbs = () => {
             {normalize(category)}
           </Link>
 
-          <p className={styles.product__link}>{productId}</p>
+          <p className={styles.product__link}>{normalize(productId)}</p>
         </>
       ) : (
         <p className={styles.category}>{normalize(res)}</p>

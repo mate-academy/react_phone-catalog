@@ -1,14 +1,11 @@
 
-@import '../../../Utills/variables.scss';
+@import '../../../Utills/variables';
 
 
 .nav {
   display: flex;
   justify-content: space-between;
-
-
   height: 100%;
-
   width: 100%;
 
 
@@ -40,7 +37,7 @@
   height: 100%;
   text-decoration: none;
   color: #89939a;
-  font-family: MontBold;
+  font-family: MontBold,sans-serif;
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 0.04em;
@@ -90,7 +87,7 @@
     justify-content: center;
     height: 48px;
     width: 64px;
-
+    text-decoration: none;
 
 
      @media (max-width: $mobile_width) {
@@ -135,9 +132,47 @@
 }
 
 
+.icon__wrapper{
+  position: relative;
+  height: 14px;
+  width: 16px;
+
+}
+
+
 .likesImg{
   height: 14px;
   width: 16px;
+  
+
+
+
+
+}
+
+
+
+.counter{
+  position: absolute;
+  top: -7px;
+  right: -9px;
+
+
+
+  
+  color: white;
+  width: 14px;
+  height: 14px;
+  background-color: #EB5757;
+  border-radius: 50%;
+  border: 2px solid white;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+
+  
 }
 
 .shopingBag{

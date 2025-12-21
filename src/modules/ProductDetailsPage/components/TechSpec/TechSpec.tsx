@@ -1,45 +1,64 @@
-import React from 'react';
-
-import styles from './TechSpec.module.scss';
-import { Capacity } from './Capacity/Capacity';
-import { Colors } from './Colors/Colors';
-import { Buttons } from '../../../shared/componets/ProductCard/Buttons';
 import { ProductFullInfo } from '../../../shared/Utills/types';
+import styles from './TechSpec.module.scss';
 
 type Props = {
-  product: ProductFullInfo | null;
+  selectedProduct: ProductFullInfo | null;
 };
 
-export const TechSpec: React.FC<Props> = ({ product }) => {
+export const TechSpec: React.FC<Props> = ({ selectedProduct }) => {
   return (
-    <section className={styles.techspec}>
-      <Colors colors={product?.colorsAvailable} />
+    <section className={styles.tech__spec}>
+      <h3>Tech specs</h3>
 
-      <Capacity capacityAviable={product?.capacityAvailable} />
+      <div className={styles.polosa}></div>
 
-      <div className={styles.price}>
-        <h3>${product?.priceDiscount}</h3>
-
-        <h3>${product?.priceRegular}</h3>
-      </div>
-
-      <Buttons />
-
-      <div className={styles.haracteristiki}>
+      <div className={styles.tech__spec__container}>
         <div>
-          <span>Screen</span>
-          <p>{product?.screen}</p>
+          <p>Screen</p>
+          <p>{selectedProduct?.screen}</p>
         </div>
 
         <div>
-          <span>Capacity</span>
-
-          <p>{product?.capacity}</p>
+          <p>Resolution</p>
+          <p>{selectedProduct?.resolution}</p>
         </div>
 
         <div>
-          <span>RAM</span>
-          <p>{product?.ram}</p>
+          <p>Processor</p>
+          <p>{selectedProduct?.processor}</p>
+        </div>
+
+        <div>
+          <p>RAM</p>
+          <p>{selectedProduct?.ram}</p>
+        </div>
+
+        <div>
+          <p>Built in memory</p>
+          <p>{selectedProduct?.capacity}</p>
+        </div>
+
+        <div>
+          <p>Camera</p>
+          <p>{selectedProduct?.camera}</p>
+        </div>
+
+        <div>
+          <p>Zoom</p>
+          <p>{selectedProduct?.zoom}</p>
+        </div>
+
+        <div>
+          <p>Cell</p>
+
+          <div className={styles.cell__container}>
+            {selectedProduct?.cell.map((c, i) => (
+              <p key={i}>
+                {c}
+                {i !== selectedProduct.cell.length - 1 && ','}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </section>

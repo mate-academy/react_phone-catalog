@@ -1,11 +1,18 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Aside.module.scss';
+import { useFavorites } from '../../../Utills/FavoritesContext';
+import { useProductInCart } from '../../../Utills/ShopingCartContext';
 
 type Props = {
   toggleMenu: () => void;
 };
 
 export const Aside: React.FC<Props> = ({ toggleMenu }) => {
+  const { favorites } = useFavorites();
+  const { state } = useProductInCart();
+
+  const totalImems = state.reduce((acum, elem) => acum + elem.quantity, 0);
+
   const getClassName = (base: string) => {
     return ({ isActive }: { isActive: boolean }) => {
       return isActive ? `${styles[base]} ${styles.active}` : styles[base];
@@ -30,17 +37,33 @@ export const Aside: React.FC<Props> = ({ toggleMenu }) => {
 
       <nav className={styles.nav}>
         <div className={styles.nav__links}>
-          <NavLink className={getClassName('nav__item')} to="/">
+          <NavLink
+            className={getClassName('nav__item')}
+            to="/"
+            onClick={toggleMenu}
+          >
             HOME
           </NavLink>
-          <NavLink className={getClassName('nav__item')} to="/phones">
+          <NavLink
+            className={getClassName('nav__item')}
+            to="/phones"
+            onClick={toggleMenu}
+          >
             PHONES
           </NavLink>
 
-          <NavLink className={getClassName('nav__item')} to="/tablets">
+          <NavLink
+            className={getClassName('nav__item')}
+            to="/tablets"
+            onClick={toggleMenu}
+          >
             TABLETS
           </NavLink>
-          <NavLink className={getClassName('nav__item')} to="/accesories">
+          <NavLink
+            className={getClassName('nav__item')}
+            to="/accesories"
+            onClick={toggleMenu}
+          >
             ACCESSORIES
           </NavLink>
         </div>
@@ -49,20 +72,36 @@ export const Aside: React.FC<Props> = ({ toggleMenu }) => {
           <NavLink
             to={'/favorites'}
             className={getClassName('container__link')}
+            onClick={toggleMenu}
           >
-            <img
-              src="img\imagess\Vector(Stroke).png"
-              alt=""
-              className={styles.likesImg}
-            />
+            <span className={styles.icon__wrapper}>
+              <img
+                src="img\imagess\Vector(Stroke).png"
+                alt=""
+                className={styles.likesImg}
+              />
+              {favorites.length > 0 && (
+                <span className={styles.counter}>{favorites.length}</span>
+              )}
+            </span>
           </NavLink>
 
-          <NavLink to={'/cart'} className={getClassName('container__link')}>
-            <img
-              src="img\imagess\Shopping bag (Cart).png"
-              alt=""
-              className={styles.shopingBag}
-            />
+          <NavLink
+            to={'/cart'}
+            className={getClassName('container__link')}
+            onClick={toggleMenu}
+          >
+            <span className={styles.icon__wrapper}>
+              <img
+                src="img\imagess\Shopping bag (Cart).png"
+                alt=""
+                className={styles.shopingBag}
+              />
+
+              {totalImems > 0 && (
+                <span className={styles.counter}>{totalImems}</span>
+              )}
+            </span>
           </NavLink>
         </div>
       </nav>

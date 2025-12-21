@@ -3,10 +3,16 @@
 .product__list {
   display: grid;
   gap: 16px;
-  column-gap: 16px;
-  width: 100%;
-  height: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(286px, 1fr));
+  grid-template-columns: 1fr;
+  justify-content: start;
 
 
+
+
+  @media (min-width: $mobile_width) {
+    grid-template-columns: repeat(auto-fit, minmax(286px, max-content));
+
+    
+  }
+  
 }

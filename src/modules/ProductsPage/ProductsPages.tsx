@@ -69,6 +69,10 @@ export const ProductsPages = () => {
   const firstProductIndex = lastProductIndex - elementOnPage;
   const current = productsToRender?.slice(firstProductIndex, lastProductIndex);
 
+  if (!productsToRender || productsToRender.length === 0) {
+    return <h1>There are no {category} yet</h1>;
+  }
+
   return (
     <div className={styles.phones__page}>
       <BreadCrumbs />

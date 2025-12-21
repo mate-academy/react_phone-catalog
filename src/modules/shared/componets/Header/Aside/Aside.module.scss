@@ -86,7 +86,7 @@
   height: 27px;
   width: fit-content;
   margin: 0 auto;
-  font-family: MontBold;
+  font-family: MontBold,sans-serif ;
   text-decoration: none;
   color: #89939a;
   font-size: 12px;
@@ -220,12 +220,50 @@
   }
 }
 
+.icon__wrapper{
+  position: relative;
+  height: 14px;
+  width: 16px;
+
+}
 
 
 .likesImg{
   height: 14px;
   width: 16px;
+  
+
+
+
+
 }
+
+
+
+.counter{
+  position: absolute;
+  top: -7px;
+  right: -9px;
+
+
+
+  
+  color: white;
+  width: 14px;
+  height: 14px;
+  background-color: #EB5757;
+  border-radius: 50%;
+  border: 2px solid white;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+
+  
+}
+
+
 
 .shopingBag{
   height: 14px;

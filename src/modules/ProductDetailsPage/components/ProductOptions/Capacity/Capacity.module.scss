@@ -2,9 +2,6 @@
 @import '../../../../shared/Utills/variables';
 
 .capacity{
-  border-bottom: 2px solid $gray_elements;
-
-
 
   & > p {
     margin: 0;
@@ -15,7 +12,6 @@
 
 
 .container{
-  margin-bottom: 24px;
   display: flex;
   gap: 8px;
 

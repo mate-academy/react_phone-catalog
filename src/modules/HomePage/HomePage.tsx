@@ -8,7 +8,7 @@ export const HomePage = () => {
   return (
     <div className={styles.homepage}>
       <h1 className={styles.hiden}>Product Catalog</h1>
-      <h1 className={styles.homepage__title}>Welcome to Nice Gadgets store!</h1>
+      
 
       <PictureSlider />
 

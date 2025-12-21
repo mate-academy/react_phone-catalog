@@ -20,7 +20,10 @@ export const Footer = () => {
       </Link>
 
       <div className={styles.container}>
-        <a href="#" className={styles.container__link}>
+        <a
+          href="https://github.com/RuslanKonoplya/react_phone-catalog"
+          className={styles.container__link}
+        >
           GITHUB
         </a>
 

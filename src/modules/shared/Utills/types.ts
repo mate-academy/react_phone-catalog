@@ -1,6 +1,6 @@
 export type ProductFullInfo = {
   id: string;
-  category: string;
+  category: 'phones' | 'tablets' | 'accessories';
   namespaceId: string;
   name: string;
   capacityAvailable: [];
@@ -22,7 +22,7 @@ export type ProductFullInfo = {
 
 export type ProductInfo = {
   id: string;
-  category: string;
+  category: 'phones' | 'tablets' | 'accessories';
   itemId: string;
   name: string;
   fullPrice: number;
