@@ -22,6 +22,7 @@ export interface ProductDetails {
   colorsAvailable: string[];
   namespaceId: string;
   category: 'phones' | 'tablets' | 'accessories';
+  year: number;
 }
 
 export interface ProductCapacityOption {
