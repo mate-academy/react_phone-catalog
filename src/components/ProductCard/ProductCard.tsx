@@ -91,7 +91,17 @@ export const ProductCard: React.FC<Props> = ({
             toggle(product);
           }}
         >
-          <span className="icon icon--favourite" />
+          <span className="icon icon--favourite">
+            <img
+              src={
+                isFavourite(product.id)
+                  ? 'img/favourite_checked.png'
+                  : 'img/favourite_default.png'
+              }
+              alt="Favourite"
+              className="icon__img"
+            />
+          </span>
         </button>
       </div>
     </div>

@@ -115,36 +115,35 @@
             }
   }
 
-    &__favourites-button {
-      width: 40px;
-      height: 40px;
-      border: 1px solid #e2e6e9;
-      background: #fff;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: border-color 0.3s;
-
-      .icon--favourite {
-        width: 20px;
-        height: 20px;
-        background-image: url('/react_phone-catalog/img/favourite_default.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        transition: background-image 0.3s;
-      }
-
-      &:hover .icon--favourite {
-        background-image: url('/react_phone-catalog/img/favourite_hover.png');
-      }
-
-      &.is-active .icon--favourite {
-        background-image: url('/react_phone-catalog/img/favourite_checked.png');
-      }
-
-      &:hover {
-        border-color: #313237;
-      }
+  &__favourites-button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e2e6e9;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.3s;
+    padding: 0;
+    line-height: 0;
+    .icon--favourite {
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: background-image 0.3s;
+        &:hover {
+            border-color: #313237;
+          }
     }
+
+
+    &:hover {
+      border-color: #313237;
+    }
+        .icon__img {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+  }
 }
