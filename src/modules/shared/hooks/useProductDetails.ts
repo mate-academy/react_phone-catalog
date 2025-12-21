@@ -64,13 +64,11 @@ export const useProductDetails = (
           return;
         }
 
-        const matchedProduct = productsData.find(
-          p => p.itemId === found.namespaceId,
-        );
+        const matchedProduct = productsData.find(p => p.itemId === found.id);
 
         const enrichedProduct: ProductDetails = {
           ...found,
-          databaseId: matchedProduct?.id,
+          databaseId: matchedProduct?.id ?? -1,
         };
 
         cache.current.set(cacheKey, enrichedProduct);

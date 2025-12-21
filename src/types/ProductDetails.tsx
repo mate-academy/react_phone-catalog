@@ -1,5 +1,5 @@
 export interface ProductDetails {
-  databaseId?: number;
+  databaseId: number;
   id: string;
   name: string;
   images: string[];
