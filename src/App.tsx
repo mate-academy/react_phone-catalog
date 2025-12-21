@@ -18,7 +18,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 export const App = () => (
   <CartProvider>
     <FavoritesProvider>
-      <HashRouter basename="/react_phone-catalog">
+      <HashRouter>
         <div className="App">
           <Header />
           <main className="app_content">
