@@ -24,7 +24,7 @@ export const CartProduct: React.FC<Props> = ({ item }) => {
       state: {
         category: item.product.category,
         name: item.product.name,
-        showDiscount: item.product.fullPrice,
+        showDiscount: false,
         color: item.product.color,
         capacity: item.product.capacity,
       },
