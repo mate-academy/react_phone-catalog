@@ -66,13 +66,10 @@ export const useProductDetails = (
 
         const matchedProduct = productsData.find(p => p.itemId === found.id);
 
-        const enrichedProduct: ProductDetails = {
-          ...found,
-          databaseId: matchedProduct?.id ?? -1,
-        };
+        found.databaseId = matchedProduct?.id ?? -1;
 
-        cache.current.set(cacheKey, enrichedProduct);
-        setProduct(enrichedProduct);
+        cache.current.set(cacheKey, found);
+        setProduct(found);
         setNotFound(false);
       } catch (e) {
         setError(true);

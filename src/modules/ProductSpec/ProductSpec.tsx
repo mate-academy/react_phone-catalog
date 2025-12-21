@@ -49,7 +49,7 @@ export const ProductSpec: React.FC<Props> = ({
   );
 
   const adaptedProduct: Product = {
-    id: Number(product.databaseId),
+    id: product.databaseId,
     // itemId: `${product.namespaceId}-${selectedCapacity}-${product.colorsAvailable[activeIndex]}`,
     itemId: product.id,
     name: product.name,
