@@ -13,7 +13,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <Link to="/" className={styles.footer__link}>
         <img
-          src="/img/imagess/Logo.png"
+          src="img/imagess/Logo.png"
           alt="logo"
           className={styles.footer__link__img}
         ></img>

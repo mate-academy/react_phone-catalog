@@ -28,10 +28,10 @@ export const ProductContextProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     Promise.all([
-      fetch('/api/phones.json').then(r => r.json()),
-      fetch('/api/tablets.json').then(r => r.json()),
-      fetch('/api/accessories.json').then(r => r.json()),
-      fetch('/api/products.json').then(r => r.json()),
+      fetch('api/phones.json').then(r => r.json()),
+      fetch('api/tablets.json').then(r => r.json()),
+      fetch('api/accessories.json').then(r => r.json()),
+      fetch('api/products.json').then(r => r.json()),
     ])
       .then(([phones, tablets, accessories, allProducts]) => {
         setProducts({
