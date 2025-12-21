@@ -116,7 +116,7 @@ export const ProductPage = () => {
           <div className="productPage__gallery">
             <div className="productPage__thumbnails">
               {product.images.map((img, i) => {
-                const path = `/${img}`;
+                const path = `${img}`;
 
                 return (
                   <img
