@@ -1,7 +1,7 @@
 @use '@/styles/resources' as *;
 
 .header {
-  background-color: $white-color;
+  background-color: $main-bg;
   height: $header-height;
   gap: $main-gap;
   position: sticky;

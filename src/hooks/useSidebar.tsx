@@ -9,7 +9,7 @@ export const useSidebar = () => {
     if (isOpen) {
       setIsOpen(false);
     }
-  }, [location, isOpen]);
+  }, [location]);
 
   useEffect(() => {
     if (isOpen) {

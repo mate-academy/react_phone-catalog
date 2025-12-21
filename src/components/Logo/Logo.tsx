@@ -1,12 +1,11 @@
-import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Logo.module.scss';
 
-export const Logo: FC = () => {
+export const Logo = () => {
   return (
     <Link to="/" className={styles.logo}>
-      <img src="img/Logo.png" alt="logo" />
+      <img src="img/dark-logo.png" alt="logo" />
     </Link>
   );
 };

@@ -58,6 +58,7 @@
   margin: 10px 5px;
   background-color: $elements-color;
   display: block;
+  border-radius: $radius;
   cursor: pointer;
 
   @include transition(background-color, $color-transition);

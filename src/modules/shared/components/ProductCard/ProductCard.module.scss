@@ -2,8 +2,8 @@
 
 .productCard {
   padding: 32px;
-  background-color: $white-color;
-  border: 1px solid $elements-color;
+  background-color: $card-bg;
+  border: 1px solid $card-border-color;
   border-radius: $radius;
   gap: 8px;
   position: relative;
@@ -71,6 +71,7 @@
   font-size: 22px;
   line-height: 31px;
   letter-spacing: 0em;
+  color: $primary-color;
 }
 
 .productOldPrice {
