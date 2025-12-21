@@ -22,7 +22,7 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const createCartItemId = (product: Product) => {
-  const baseId = product.itemId ?? product.itemId ?? product.id;
+  const baseId = product.itemId ?? product.id;
 
   return `${baseId}-${product.color}-${product.capacity}`;
 };
