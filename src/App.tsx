@@ -2,7 +2,7 @@ import './App.scss';
 import './styles/fonts.scss';
 import { Header } from './components/Header';
 
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { HomePage } from './modules/HomePage';
 import { Footer } from './components/Footer';
 import { CartPage } from './modules/CartPage';
@@ -18,7 +18,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 export const App = () => (
   <CartProvider>
     <FavoritesProvider>
-      <BrowserRouter basename="/react_phone-catalog">
+      <HashRouter basename="/react_phone-catalog">
         <div className="App">
           <Header />
           <main className="app_content">
@@ -46,7 +46,7 @@ export const App = () => (
           </main>
           <Footer className="footer" />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </FavoritesProvider>
   </CartProvider>
 );
