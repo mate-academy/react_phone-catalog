@@ -115,6 +115,15 @@ export const ProductDetailsPage = () => {
       return;
     }
 
+    setProduct(matchedProduct);
+    setImages(matchedProduct.images);
+    setProductName(updateProductName(matchedProduct, color, capacity));
+    setActiveColorIndex(
+      matchedProduct.colorsAvailable.findIndex(
+        c => c.toLowerCase() === color.toLowerCase(),
+      ),
+    );
+
     navigate(`/${category}/${matchedProduct.id}`, { replace: true });
   };
 
@@ -136,8 +145,21 @@ export const ProductDetailsPage = () => {
       return;
     }
 
+    setProduct(matchedProduct);
+    setImages(matchedProduct.images);
+    setProductName(updateProductName(matchedProduct, color, capacity));
+    setActiveCapacityIndex(
+      matchedProduct.capacityAvailable.findIndex(c => c === capacity),
+    );
+
     navigate(`/${category}/${matchedProduct.id}`, { replace: true });
   };
+
+  useEffect(() => {
+    if (!product) {
+      return;
+    }
+  }, [product]);
 
   if (!products.length) {
     return <Loader />;
