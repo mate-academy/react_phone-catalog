@@ -59,7 +59,7 @@ export const CartPage = () => {
 
                   {image && (
                     <div className="cartPage__itemImage">
-                      <img src={`/${image}`} alt={product.name} />
+                      <img src={`${image}`} alt={product.name} />
                     </div>
                   )}
 
