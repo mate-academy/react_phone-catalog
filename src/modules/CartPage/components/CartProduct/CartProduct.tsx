@@ -18,7 +18,7 @@ export const CartProduct: React.FC<Props> = ({ item }) => {
     str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
 
   const handleClickProduct = () => {
-    const productId = `${normalizeForUrlPart(item.product.itemId)}-${normalizeForUrlPart(item.product.capacity)}-${normalizeForUrlPart(item.product.color)}`;
+    const productId = `${normalizeForUrlPart(item.product.itemId)}`;
 
     navigate(`/${item.product.category}/${productId}`, {
       state: {
