@@ -21,8 +21,10 @@ type CartContextType = {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-const createCartItemId = (product: Product) => {
-  return `${product.id}-${product.color}-${product.capacity}`;
+export const createCartItemId = (product: Product) => {
+  const baseId = product.itemId ?? product.itemId ?? product.id;
+
+  return `${baseId}-${product.color}-${product.capacity}`;
 };
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({

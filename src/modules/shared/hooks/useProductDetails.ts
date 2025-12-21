@@ -50,7 +50,7 @@ export const useProductDetails = (
         const found = data.find(
           p =>
             p.namespaceId === productId ||
-            normalizeForUrlPart(p.name) === productId,
+            normalizeForUrlPart(p.id) === productId,
         );
 
         if (found) {
