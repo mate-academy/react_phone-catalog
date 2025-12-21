@@ -23,18 +23,18 @@ export const ProductPage = () => {
   const [selectedImg, setSelectedImg] = useState<string>('');
   const [sliderIndex, setSliderIndex] = useState(0);
 
+
   useEffect(() => {
-    if (product?.images?.length) {
+    if (product?.images.length) {
       setSelectedImg(`${product.images[0]}`);
       setSliderIndex(0);
-
-
+    }
       window.scrollTo({
         top: 0,
         left: 0,
         behavior: 'smooth',
       });
-    }
+
   }, [product]);
 
   if (!product || !itemId) {
@@ -117,7 +117,6 @@ export const ProductPage = () => {
             <div className="productPage__thumbnails">
               {product.images.map((img, i) => {
                 const path = `${img}`;
-
                 return (
                   <img
                     key={i}
