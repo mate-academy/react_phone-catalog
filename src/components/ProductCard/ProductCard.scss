@@ -129,18 +129,18 @@
     .icon--favourite {
       width: 20px;
       height: 20px;
-      background-image: url('react_phone-catalog/img/favourite_default.png');
+      background-image: url('react_phone-catalog/public/img/favourite_default.png');
       background-repeat: no-repeat;
       background-position: center;
       transition: background-image 0.3s;
     }
 
     &:hover .icon--favourite {
-      background-image: url('react_phone-catalog/img/favourite_hover.png');
+      background-image: url('react_phone-catalog/public/img/favourite_hover.png');
     }
 
     &.is-active .icon--favourite {
-      background-image: url('react_phone-catalog/img/favourite_checked.png');
+      background-image: url('react_phone-catalog/public/img/favourite_checked.png');
     }
 
     &:hover {
