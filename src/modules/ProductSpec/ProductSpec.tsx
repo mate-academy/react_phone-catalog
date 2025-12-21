@@ -48,7 +48,7 @@ export const ProductSpec: React.FC<Props> = ({
 
   const adaptedProduct: Product = {
     id: Number(product.id),
-    itemId: `${product.namespaceId}-${product.colorsAvailable[activeIndex]}-${selectedCapacity}`,
+    itemId: `${product.id}-${selectedCapacity}-${product.colorsAvailable[activeIndex]}`,
     name: product.name,
     category: product.category,
     fullPrice: capacityOption?.priceRegular ?? product.priceRegular,
