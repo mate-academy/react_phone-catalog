@@ -6,7 +6,9 @@
   top: 0;
   z-index: 100;
   background: #fff;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &__grid {
     display: flex;
     align-items: center;

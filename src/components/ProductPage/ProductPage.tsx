@@ -97,8 +97,8 @@ export const ProductPage = () => {
         <div className="grid productPage__grid">
           <div className="productPage__top">
             <div className="productPage__breadcrumbs">
-              <img src="/img/Home.png" alt="home" />
-              <img src="/img/ChevronRight.png" alt="arrow" />
+              <img src="img/Home.png" alt="home" />
+              <img src="img/ChevronRight.png" alt="arrow" />
               <span>{product.name}</span>
             </div>
 
@@ -106,7 +106,7 @@ export const ProductPage = () => {
               className="productPage__back"
               onClick={() => window.history.back()}
             >
-              <img src="/img/ChevronLeft.png" alt="back" />
+              <img src="img/ChevronLeft.png" alt="back" />
               Back
             </button>
           </div>
