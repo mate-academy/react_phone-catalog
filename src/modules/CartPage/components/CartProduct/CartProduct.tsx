@@ -14,19 +14,21 @@ export const CartProduct: React.FC<Props> = ({ item }) => {
   const { removeFromCart, increaseQty, decreaseQty } = useCart();
   const navigate = useNavigate();
 
+  const normalizeForUrlPart = (str: string) =>
+    str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
+
   const handleClickProduct = () => {
-    navigate(
-      `/${item.product.category}/${item.product.itemId}-${item.product.capacity}-${item.product.color}`,
-      {
-        state: {
-          category: item.product.category,
-          name: item.product.name,
-          showDiscount: item.product.price,
-          color: item.product.color,
-          capacity: item.product.capacity,
-        },
+    const productId = `${normalizeForUrlPart(item.product.itemId)}-${normalizeForUrlPart(item.product.capacity)}-${normalizeForUrlPart(item.product.color)}`;
+
+    navigate(`/${item.product.category}/${productId}`, {
+      state: {
+        category: item.product.category,
+        name: item.product.name,
+        showDiscount: item.product.price,
+        color: item.product.color,
+        capacity: item.product.capacity,
       },
-    );
+    });
   };
 
   const imgUrl =
