@@ -137,22 +137,12 @@ export const ProductDetailsPage = () => {
       return;
     }
 
-    const { capacity, color } = getColorAndCapacityFromUrl(productId, product);
-    const baseName = getBaseName(product.name, product.capacityAvailable);
+    const { capacity: initialCapacity, color: initialColor } =
+      getColorAndCapacityFromUrl(productId, product);
 
-    const canonicalId = `${normalizeForUrlPart(baseName)}-${normalizeForUrlPart(
-      capacity,
-    )}-${normalizeForUrlPart(color)}`;
-
-    if (productId !== canonicalId) {
-      navigate(`/${category}/${canonicalId}`, { replace: true });
-
-      return;
-    }
-
-    updateCapacity(capacity);
-    updateColor(color);
-  }, [product, productId, category, navigate, updateColor, updateCapacity]);
+    updateCapacity(initialCapacity);
+    updateColor(initialColor);
+  }, [product, productId, updateColor, updateCapacity]);
 
   const handleColorChange = (color: string) => {
     if (!product) {
