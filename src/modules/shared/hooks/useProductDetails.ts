@@ -12,6 +12,9 @@ export const useProductDetails = (
 
   const cache = useRef<Map<string, ProductDetails>>(new Map());
 
+  const normalizeForUrlPart = (str: string) =>
+    str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
+
   useEffect(() => {
     if (!productId || !category) {
       setProduct(null);
@@ -44,7 +47,11 @@ export const useProductDetails = (
         );
         const data: ProductDetails[] = await response.json();
 
-        const found = data.find(p => p.id === productId);
+        const found = data.find(
+          p =>
+            p.namespaceId === productId ||
+            normalizeForUrlPart(p.name) === productId,
+        );
 
         if (found) {
           cache.current.set(cacheKey, found);
