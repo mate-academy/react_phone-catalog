@@ -41,14 +41,15 @@ export const ProductSpec: React.FC<Props> = ({
   setActiveCapacityIndex,
   showDiscount,
 }) => {
-  const selectedCapacity = product.capacityAvailable[activeCapacityIndex];
+  const selectedCapacity =
+    product.capacityAvailable[activeCapacityIndex].toLowerCase();
   const capacityOption = product.capacityOptions?.find(
     option => option.capacity === selectedCapacity,
   );
 
   const adaptedProduct: Product = {
     id: Number(product.id),
-    itemId: `${product.namespaceId}-${product.colorsAvailable[activeIndex]}-${selectedCapacity}`,
+    itemId: `${product.namespaceId}-${selectedCapacity}-${product.colorsAvailable[activeIndex]}`,
     name: product.name,
     category: product.category,
     fullPrice: capacityOption?.priceRegular ?? product.priceRegular,
