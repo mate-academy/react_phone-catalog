@@ -13,8 +13,20 @@
   }
 
   &-slide {
-    width: auto;
-    flex-shrink: 0;
+    // width: auto;
+    // flex-shrink: 0;
+
+    //=================
+    width: 272px; 
+    height: 506px;
+    
+    // flex-shrink: 0 обязателен, чтобы слайды не сплющивались
+    flex-shrink: 0; 
+    
+    // Добавляем это, чтобы карточка внутри точно понимала границы
+    display: flex;
+    box-sizing: border-box;
+    //================
   }
 
   &__container {
@@ -46,54 +58,54 @@
 
 }
 
-.button {
-  display: block;
-  height: 32px;
-  width: 32px;
-  padding: 0;
-  border: 1px solid $gray-icons-placeholders;
-  border-radius: 50%;
-  background-color: inherit;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: all .3s ease;
+// .button {
+  // display: block;
+  // height: 32px;
+  // width: 32px;
+  // padding: 0;
+  // border: 1px solid $gray-icons-placeholders;
+  // border-radius: 50%;
+  // background-color: inherit;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // transition: all .3s ease;
 
-  &:hover {
-    cursor: pointer;
-  }
+  // &:hover {
+  //   cursor: pointer;
+  // }
 
-  &-prev {
-    background-image: url(../../assets/icons/arrow-right--default.svg);
-    transform: rotate(180deg);
+  // &-prev {
+  //   background-image: url(../../assets/icons/arrow-right--default.svg);
+  //   transform: rotate(180deg);
 
-    &:hover {
-      border-color: $gray-primary;
-    }
+  //   &:hover {
+  //     border-color: $gray-primary;
+  //   }
 
-    &--disabled {
-      background-image: url(../../assets/icons/arrow-right--disabled.svg);
-      border-color: $gray-elements;
+  //   &--disabled {
+  //     background-image: url(../../assets/icons/arrow-right--disabled.svg);
+  //     border-color: $gray-elements;
       
-      &:hover {
-        border-color: $gray-elements;
-      }
-    }
-  }
+  //     &:hover {
+  //       border-color: $gray-elements;
+  //     }
+  //   }
+  // }
   
-  &-next {
-    background-image: url(../../assets/icons/arrow-right--default.svg);
+  // &-next {
+  //   background-image: url(../../assets/icons/arrow-right--default.svg);
     
-    &:hover {
-      border-color: $gray-primary;
-    }
+  //   &:hover {
+  //     border-color: $gray-primary;
+  //   }
 
-    &--disabled {
-      background-image: url(../../assets/icons/arrow-right--disabled.svg);
-      border-color: $gray-elements;
+  //   &--disabled {
+  //     background-image: url(../../assets/icons/arrow-right--disabled.svg);
+  //     border-color: $gray-elements;
     
-      &:hover {
-        border-color: $gray-elements;
-      }
-    }
-  }
-}
+  //     &:hover {
+  //       border-color: $gray-elements;
+  //     }
+  //   }
+  // }
+// }

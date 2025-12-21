@@ -6,12 +6,13 @@ import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSwiper } from '../../components/ProductsSwiper/ProductsSwiper';
 import { GlobalContext } from '../../context/GlobalContext';
 import { ShopByCategory } from '../../components/ShopByCategory';
+import { ProductName } from '../../types/prodName';
 
 export const Homepage = () => {
   const { allProducts } = useContext(GlobalContext);
 
   const getLatestProducts = (
-    name: 'phones' | 'accessories' | 'tablets',
+    name: ProductName,
   ): Product[] => {
     return allProducts
       .filter(product => product.category === name)
@@ -24,13 +25,13 @@ export const Homepage = () => {
   };
 
   const newPhones = useMemo(() => {
-    return getLatestProducts('phones');
+    return getLatestProducts('phones' as ProductName);
   }, [allProducts]);
   const newTablets = useMemo(() => {
-    return getLatestProducts('tablets');
+    return getLatestProducts('tablets' as ProductName);
   }, [allProducts]);
   const newAccessories = useMemo(() => {
-    return getLatestProducts('accessories');
+    return getLatestProducts('accessories' as ProductName);
   }, [allProducts]);
 
   const latestProducts = [
@@ -70,7 +71,7 @@ export const Homepage = () => {
             {hotPriceProducts && (
               <ProductsSwiper
                 products={hotPriceProducts}
-                swiperId="hot"
+                discount={true}
                 title={'Hot prices'}
               />
             )}

@@ -1,0 +1,329 @@
+import './DetailsPage.scss';
+import details1 from '../../../dist/api/phones.json';
+
+import { NaviLine } from '../../components/NaviLine';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import classNames from 'classnames';
+import { Price } from '../../components/Price';
+import { CartButton } from '../../components/CartButton';
+import { FavButton } from '../../components/FavButton';
+import { ProductsSwiper } from '../../components/ProductsSwiper';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { ProductDetails } from '../../types/ProductDetails';
+import { getProductsDetails } from '../../utils/api';
+import { ProductName } from '../../types/prodName';
+import { Loader } from '../../components/Loader';
+
+const formatter = (str?: string | string[]) => {
+  if (!str) return '';
+
+  if (typeof(str) === 'string') {
+    const index = str.length - 2;
+  
+    return str.slice(0, index) + ' ' + str.slice(index);
+  }
+
+  return str.join(', ');
+}
+
+export const DetailsPage = () => {
+  const [prodDetail, setProdDetail] = useState<ProductDetails | null>(null);
+  const [prodDetails, setProdDetails] = useState<ProductDetails[]>([]);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [activePhoto, setActivePhoto] = useState(0);
+  const [prevPhoto, setPrevPhoto] = useState<number | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  
+  const { productId } = useParams();
+  const category = useLocation().pathname.split('/')[1];
+
+  useEffect(() => {
+    if (!category) {
+      setError('Category not found');
+      setIsLoading(false);
+      
+      return;
+    }
+
+    setIsLoading(true);
+    setError('');
+
+    const timeout = setTimeout(() => {
+      if (category) {
+        getProductsDetails(category as ProductName)
+          .then(productsDetailsFromServer => {
+            setProdDetails(productsDetailsFromServer);
+          })
+          .catch(e => {
+            setError(`
+              Error loading products. The product of category "${category}" not found. ${e.name}`);
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
+      }
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [category]);
+
+  useEffect(() => {
+    if (!productId || !prodDetails.length) {
+      return;
+    }
+
+    const currentProduct = prodDetails.find(
+      p => p.id === productId,
+    );
+
+    if (currentProduct) {
+      setProdDetail(currentProduct);
+      setError('');
+    } else {
+      setProdDetail(null);
+      setError('Product not found');
+    }
+  }, [productId, prodDetails]);
+
+  const getLink = useCallback((option: string, value: string) => {
+    if (!prodDetail) return null;
+
+    const {color, capacity, namespaceId} = prodDetail;
+    
+    const elem = prodDetails.find(d => {
+      const isNameMatch = d.namespaceId === namespaceId;
+
+      if (option === 'color') {
+        return isNameMatch && d.color === value && d.capacity === capacity;
+      }
+
+      if (option === 'capacity') {
+        return isNameMatch && d.capacity === value && d.color === color;
+      }
+
+      return false;
+    });
+
+    return elem?.id;
+  }, [prodDetail, prodDetails]);
+
+  const switchPhoto = (index: number) => {
+    if (index === activePhoto) return;
+
+    setPrevPhoto(activePhoto);
+    setActivePhoto(index);
+    setIsAnimating(true);
+
+    setTimeout(() => {
+      setIsAnimating(false);
+      setPrevPhoto(null);
+    }, 300);
+  };
+
+  const suggestedProducts = useMemo(() => {
+
+  }, []);
+
+  if (error) {
+    return <div className="container"><p style={{ color: 'red' }}>{error}</p></div>;
+  }
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!prodDetail) {
+    return <div className="container"><p>Product not found</p></div>;
+  }
+
+  return (
+    <>
+      <div className="details">
+        <div className="container">
+          <div className="details__content">
+            <div className="details__some-link">
+              <NaviLine link={`${category}/${prodDetail}`} />
+            </div>
+            <h1 className="details__title">{prodDetail.name}</h1>
+          
+            <div className="details__sections">
+              <section className="details__top">
+                <div className="details__preview">
+                  {prodDetail.images.map((pic, i) => (
+                    <div
+                      key={i}
+                      className={classNames(
+                        'details__preview-item',
+                        {'details__preview-item--active': i === activePhoto}
+                      )}
+                      onClick={() => {
+                        switchPhoto(i);
+                      }}
+                    >
+                      <img
+                        src={pic}
+                        alt="preview-photo"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="details__photo">
+                  {prevPhoto !== null && (
+                    <img
+                      key={`prev-${prevPhoto}`}
+                      src={prodDetail.images[prevPhoto]}
+                      className={classNames(
+                        'photo',
+                        { 'photo--fade-out': isAnimating }
+                      )}
+                      alt="previous"
+                    />
+                  )}
+                  <img
+                    key={activePhoto}
+                    src={prodDetail.images[activePhoto]}
+                    className={classNames(
+                      'photo',
+                      { 'photo--fade-in': isAnimating }
+                    )}
+                    alt="active"
+                  />
+                </div>
+
+                <div className="details__options">
+                  <div className="details__options-top">
+                    <div className="details__colors">
+                      <span className="details__colors-label">Available colors</span>
+                      <div className="details__color-items">
+                        {prodDetail.colorsAvailable.map((col, i) =>
+                          <Link
+                            key={i}
+                            to={`/${prodDetail.category}/${getLink('color', col)}`}
+                            className={classNames(
+                                'details__color-item',
+                                col === prodDetail.color
+                                  ? 'details__color-item--active'
+                                  : ''
+                            )}
+                          >
+                            <div
+                              style={{ "backgroundColor": col }}
+                            ></div>
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+              
+                    <span className="details__id">{`ID: ${prodDetail.id}`}</span>
+                  </div>
+
+                  <div className="details__capacity">
+                    <span className="details__capacity-label">Select capacity</span>
+                    <div className="details__capacity-items">
+                      {prodDetail.capacityAvailable.map((cap, i) =>
+                        <Link 
+                          key={i} 
+                          to={`/${prodDetail.category}/${getLink('capacity', cap)}`}
+                        >
+                          <span
+                            className={classNames(
+                              'details__capacity-item',
+                              cap === prodDetail.capacity
+                                ? 'details__capacity-item--active'
+                                : '',
+                            )}
+                          >
+                            {formatter(cap)}
+                          </span>
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+
+                  <Price
+                    price={{
+                      'fullPrice': prodDetail.priceRegular,
+                      'price': prodDetail.priceDiscount,
+                    }}
+                    discount={true}
+                    size='m'
+                  />
+
+                  <div className="details__buttons">
+                    <CartButton
+                      productId={prodDetail.id}
+                      size={'m'}
+                    />
+                    <FavButton
+                      productId={prodDetail.id}
+                      size={'m'}
+                    />
+                  </div>
+
+                  <div className="details__info">
+                    {(['screen', 'resolution', 'processor', 'ram'] as const).map(el => (
+                      <div key={el} className="details__info-item">
+                        {el === 'ram'
+                          ? <span>{el.toUpperCase()}</span>
+                          : <span>{el[0].toUpperCase() + el.slice(1)}</span>
+                        }
+                        <span>{formatter(prodDetail[el])}</span>
+                      </div>
+                    ))}
+
+                  </div>
+                </div>
+              </section>
+
+              <div className="flex-wrapper">
+                <section className="details__about">
+                  <h2>About</h2>
+                  {prodDetail.description.map((des, i) => (
+                    <div key={i} className="details__about-block">
+                      <p className="details__about-title">
+                        {des.title}
+                      </p>
+                      <p className="details__about-text">
+                        {des.text}
+                      </p>
+                    </div>
+                  ))}
+                </section>
+                
+                <section className="details__specs">
+                  <h2>Tech specs</h2>
+                  <div className="details__specs-items">
+                    {([
+                      'screen', 'resolution', 'processor', 'ram',
+                      'capacity', 'camera', 'zoom', 'cell',
+                    ] as const).map(el => (
+                      <div key={el} className="details__specs-item">
+                        {el === 'ram'
+                          ? <span>{el.toUpperCase()}</span>
+                          : el === 'capacity'
+                            ? <span>{'Built in memory'}</span>
+                            : <span>{el[0].toUpperCase() + el.slice(1)}</span>
+                        }
+                        <span>{formatter(prodDetail[el])}</span>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              </div>
+
+              <section className="details__swiper">
+                {/* <ProductsSwiper
+                  products={allProducts}
+                  discount={true}
+                  title={'You may also like'}
+                /> */}
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}

@@ -4,6 +4,17 @@ import logo from '../../assets/icons/Logo.svg';
 import { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { GlobalContext } from '../../context/GlobalContext';
+import { Link, NavLink } from 'react-router-dom';
+
+const getActiveLink = ({ isActive }: { isActive: boolean }) =>
+  classNames('header__link', { 'header__link--active': isActive });
+
+const navLinks = [
+  { page: 'home', path: '/' },
+  { page: 'phones', path: '/phones' },
+  { page: 'tablets', path: '/tablets' },
+  { page: 'accessories', path: '/accessories' },
+];
 
 export const Header = () => {
   const { favorites, cart } = useContext(GlobalContext);
@@ -12,9 +23,9 @@ export const Header = () => {
   return (
     <div className="header">
       <div className="header__body">
-        <a href="#" className="header__logo">
+        <Link to="/" className="header__logo">
           <img src={logo} alt="logo" />
-        </a>
+        </Link>
 
         <div
           className={classNames('header__wrapper', {
@@ -23,26 +34,16 @@ export const Header = () => {
         >
           <nav className="header__menu">
             <ul className="header__list">
-              <li>
-                <a href="#" className="header__link">
-                  home
-                </a>
+              {navLinks.map(link => (
+                <li key={link.page}>
+                  <NavLink
+                    to={link.path}
+                    className={getActiveLink}
+                  >
+                    {link.page}
+                  </NavLink>
               </li>
-              <li>
-                <a href="#" className="header__link">
-                  phones
-                </a>
-              </li>
-              <li>
-                <a href="#" className="header__link">
-                  tablets
-                </a>
-              </li>
-              <li>
-                <a href="#" className="header__link">
-                  accessories
-                </a>
-              </li>
+              ))}
             </ul>
           </nav>
 

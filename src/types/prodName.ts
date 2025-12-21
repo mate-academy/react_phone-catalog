@@ -1,5 +1,1 @@
-export enum ProductName {
-  phones = 'phones',
-  tablets = 'tablets',
-  accessories = 'accessories',
-}
+export type ProductName = 'phones' | 'tablets' | 'accessories';

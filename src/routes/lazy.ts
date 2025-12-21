@@ -7,7 +7,31 @@ export const HomePageLazy = lazy(() =>
 );
 
 export const ProductPageLazy = lazy(() =>
-  import('../pages//ProductPage/ProductPage').then(({ ProductPage }) => ({
+  import('../pages/ProductPage/ProductPage').then(({ ProductPage }) => ({
     default: ProductPage,
   })),
 );
+
+export const DetailsPageLazy = lazy(() =>
+  import('../pages/DetailsPage/DetailsPage').then(({ DetailsPage }) => ({
+    default: DetailsPage,
+  })),
+);
+
+// export const LazyShoppingCartPage = lazy(() =>
+//   import('../pages/CartPage').then(({ CartPage }) => ({
+//     default: ShoppingCartPage,
+//   })),
+// );
+
+// export const LazyFavoritesPage = lazy(() =>
+//   import('../pages/FavoritesPage').then(({ FavoritesPage }) => ({
+//     default: FavoritesPage,
+//   })),
+// );
+
+// export const LazyNotFoundPage = lazy(() =>
+//   import('../pages/NotFoundPage').then(({ NotFoundPage }) => ({
+//     default: NotFoundPage,
+//   })),
+// );

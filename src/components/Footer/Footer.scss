@@ -90,10 +90,6 @@
     background-image: url(../../assets/icons/arrow-right--default.svg);
     transform: rotate(-90deg);
 
-    &:hover {
-      border-color: $gray-primary;
-    }
-
     &-title {
       font-weight: 700;
       font-size: 12px;

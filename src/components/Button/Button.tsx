@@ -1,15 +1,25 @@
-import { forwardRef } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import './Button.scss';
+import classNames from 'classnames';
 
 type Props = {
   className?: string;
-  children?: React.ReactNode;
+  disabled?: boolean;
+  onClick?: () => void;
+  type?: 'button';
+  children?: ReactNode;
 };
 
 export const Button = forwardRef<HTMLButtonElement, Props>(
-  ({ className, children }, ref) => {
+  ({ className, disabled, onClick, type = 'button', children }, ref) => {
     return (
-      <button className={className} ref={ref}>
+      <button
+        ref={ref}
+        type={type}
+        disabled={disabled}
+        className={classNames('button', className)}
+        onClick={onClick}
+      >
         {children}
       </button>
     );

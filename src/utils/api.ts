@@ -1,3 +1,4 @@
+import { ProductName } from '../types/prodName';
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
@@ -19,6 +20,6 @@ export function getAllProducts(): Promise<Product[]> {
   return fetchProducts<Product[]>('./api/products.json');
 }
 
-export function getSpecificProducts(type: string): Promise<ProductDetails[]> {
+export function getProductsDetails(type: ProductName): Promise<ProductDetails[]> {
   return fetchProducts<ProductDetails[]>(`./api/${type}.json`);
 }

@@ -15,5 +15,41 @@
 
   &:hover {
     cursor: pointer;
+    border-color: $gray-primary;
+  }
+
+  &-prev {
+    background-image: url(../../assets/icons/arrow-right--default.svg);
+    transform: rotate(180deg);
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--disabled {
+      background-image: url(../../assets/icons/arrow-right--disabled.svg);
+      border-color: $gray-elements;
+      
+      &:hover {
+        border-color: $gray-elements;
+      }
+    }
+  }
+  
+  &-next {
+    background-image: url(../../assets/icons/arrow-right--default.svg);
+    
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--disabled {
+      background-image: url(../../assets/icons/arrow-right--disabled.svg);
+      border-color: $gray-elements;
+    
+      &:hover {
+        border-color: $gray-elements;
+      }
+    }
   }
 }

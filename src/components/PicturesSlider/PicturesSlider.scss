@@ -28,21 +28,12 @@
     transition: all 0.3s ease;
 
     &--left {
-      background-image: url(../../assets/icons/arrow-right--disabled.svg);
+      background-image: url(../../assets/icons/arrow-right--default.svg);
       transform: rotate(180deg);
-      
-      &:hover {
-        background-image: url(../../assets/icons/arrow-right--default.svg);
-        transform: rotate(180deg);
-      }
     }
 
     &--right {
-      background-image: url(../../assets/icons/arrow-right--disabled.svg);
-      
-      &:hover {
-        background-image: url(../../assets/icons/arrow-right--default.svg);
-      }
+      background-image: url(../../assets/icons/arrow-right--default.svg);
     }
 
     &:hover {
@@ -95,7 +86,7 @@
   }
 
   &__photo {
-    flex: 1 1 55%;    
+    flex: 1 1 55%;
     display: flex;
     position: relative;
     justify-content: center;

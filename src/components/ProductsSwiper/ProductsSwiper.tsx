@@ -12,13 +12,13 @@ import { Button } from '../Button/Button';
 
 type Props = {
   products: Product[];
-  swiperId?: string;
+  discount?: boolean;
   title: string;
 };
 
 export const ProductsSwiper: React.FC<Props> = ({
   products,
-  swiperId,
+  discount,
   title,
 }) => {
   const [isBeginning, setIsBeginning] = useState(true);
@@ -27,6 +27,8 @@ export const ProductsSwiper: React.FC<Props> = ({
 
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
+
+  const isDiscount = discount ? true : false;
 
   useEffect(() => {
     if (swiperInstance && prevRef.current && nextRef.current) {
@@ -43,14 +45,6 @@ export const ProductsSwiper: React.FC<Props> = ({
         <div className="swiper__topbar">
           <h2 className="swiper__title">{title}</h2>
           <div className="swiper__buttons">
-            {/* <button
-              ref={prevRef}
-              className={`
-                button
-                button-prev
-                ${isBeginning ? 'button-prev--disabled' : ''}
-              `}
-            /> */}
             <Button
               ref={prevRef}
               className={`
@@ -67,14 +61,6 @@ export const ProductsSwiper: React.FC<Props> = ({
                 ${isEnd ? 'button-next--disabled' : ''}
               `}
             />
-            {/* <button
-              ref={nextRef}
-              className={`
-                button
-                button-next
-                ${isEnd ? 'button-next--disabled' : ''}
-              `}
-            /> */}
           </div>
         </div>
 
@@ -95,7 +81,7 @@ export const ProductsSwiper: React.FC<Props> = ({
         >
           {products.map(product => (
             <SwiperSlide key={product.id}>
-              <ProductCard product={product} swiperId={swiperId} />
+              <ProductCard product={product} discount={isDiscount} />
             </SwiperSlide>
           ))}
         </Swiper>

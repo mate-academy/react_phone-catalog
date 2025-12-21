@@ -1,10 +1,108 @@
 @import '/src/utils/variables';
 @import '/src/utils/mixins';
 
-.productPage {
-  height: 300px;
-  width: 300px;
-  background-color: rgb(179, 181, 183);
-  @include adaptiv-value(margin-top, 74, 106, 1);
+.product-page {
+  &__content {
+    width: 100%;
+  }
 
+  &__navi-line {
+    gap: 8px;
+
+    @include adaptiv-value(margin-bottom, 24, 40, 1);
+  }
+
+  &__title {
+    font-weight: 800;
+    
+    @include adaptiv-value(font-size, 32, 48, 2);
+    @include adaptiv-value(line-height, 41, 56, 1);
+  }
+
+  &__desc {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-secondary;
+    
+    @include adaptiv-value(margin-bottom, 32, 40, 1);
+  }
+
+  &__drop-block {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    --columns: 4; 
+    column-gap: 16px;
+    row-gap: 40px;
+
+    @include page-grid;
+    
+    @media (max-width: 640px) {
+      .product-page__item {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @include on-tablet {
+      .product-page__item {
+        grid-column: span 6;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1199px) { 
+      .product-page__item {
+        grid-column: span 4; 
+      }
+    }
+
+    @include on-desktop {
+      .product-page__item {
+        grid-column: span 6;
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+
+    @include adaptiv-value(margin-top, 24, 40, 1);
+  }
+
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  height: 400px;
+  overflow: scroll;
+}
+
+.pag {
+  &__btn{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    border-color: $gray-elements;
+
+    &--left {
+      background-image: url(../../assets/icons/arrow-right--default.svg);
+      transform: rotate(180deg);
+    }
+
+    &--right {
+      background-image: url(../../assets/icons/arrow-right--default.svg);
+    }
+
+    &--active {
+      color: $gray-white;
+      background-color: $gray-primary;
+    }
+  }
 }

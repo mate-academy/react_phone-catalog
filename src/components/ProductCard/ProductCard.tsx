@@ -3,39 +3,36 @@ import { Product } from '../../types/Product';
 import './ProductCard.scss';
 import { GlobalContext } from '../../context/GlobalContext';
 import classNames from 'classnames';
+import { Price } from '../Price';
+import { CartButton } from '../CartButton';
+import { FavButton } from '../FavButton';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
-  swiperId?: string;
+  discount: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, swiperId }) => {
-  const { cart, addToCart, favorites, toggleFavorites } =
-    useContext(GlobalContext);
-
-  const isProductInCart = useMemo(() => {
-    return cart.some(cartItem => cartItem.product.itemId === product.itemId);
-  }, [cart, product.itemId]);
-
-  const isProductInFaforites = useMemo(() => {
-    return favorites.some(item => item.itemId === product.itemId);
-  }, [favorites, product.itemId]);
-
+export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   return (
-    <div className="card">
+    <Link
+      to={`/${product.category}/${product.itemId}`}
+      className="card"
+    >
       <div className="card__container">
         <div className="card__photo">
           <img src={product.image} alt="card-image" className="card__image" />
         </div>
         <p className="card__title">{product.name}</p>
-        <div className="card__price-block">
-          <span className="card__price">{`$ ${product.price}`}</span>
-          {swiperId && (
-            <span className="card__price card__price--old">
-              {`$ ${product.fullPrice}`}
-            </span>
-          )}
-        </div>
+
+        <Price
+          price={{
+            'fullPrice': product.fullPrice,
+            'price': product.price,
+          }}
+          discount={discount}
+        />
+
         <div className="card__specifications">
           <div className="card__block">
             <p className="card__param">Screen</p>
@@ -51,28 +48,16 @@ export const ProductCard: React.FC<Props> = ({ product, swiperId }) => {
           </div>
         </div>
         <div className="card__buttons">
-          <button
-            className={classNames('card__button-add', {
-              'card__button-add--selected': isProductInCart,
-            })}
-            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-              event.preventDefault();
-              addToCart(product);
-            }}
-          >
-            {isProductInCart ? 'Added' : 'Add to cart'}
-          </button>
-          <button
-            className={classNames('card__button-fav', {
-              'card__button-fav--selected': isProductInFaforites,
-            })}
-            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-              event.preventDefault();
-              toggleFavorites(product);
-            }}
+
+          <CartButton
+            productId={product.itemId}
+          />
+
+          <FavButton
+            productId={product.itemId}
           />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

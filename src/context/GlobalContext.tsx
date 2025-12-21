@@ -7,28 +7,27 @@ import React, {
 } from 'react';
 import { ReactNode, useState } from 'react';
 import { Product } from '../types/Product';
-import { Cart } from '../types/Cart';
 import { getAllProducts } from '../utils/api';
 
 type GlobalContextType = {
   allProducts: Product[];
   setAllProducts: Dispatch<SetStateAction<Product[]>>;
-  cart: Cart[];
-  setCart: Dispatch<SetStateAction<Cart[]>>;
-  favorites: Product[];
-  setFavorites: Dispatch<SetStateAction<Product[]>>;
-  addToCart: (product: Product) => void;
-  toggleFavorites: (product: Product) => void;
+  cart: string[];
+  setCart: Dispatch<SetStateAction<string[]>>;
+  addToCart: (productId: string) => void;
+  favorites: string[];
+  setFavorites: Dispatch<SetStateAction<string[]>>;
+  toggleFavorites: (productId: string) => void;
 };
 
 export const GlobalContext = createContext<GlobalContextType>({
   allProducts: [] as Product[],
   setAllProducts: () => {},
-  cart: [] as Cart[],
+  cart: [],
   setCart: () => {},
-  favorites: [] as Product[],
-  setFavorites: () => {},
   addToCart: () => {},
+  favorites: [],
+  setFavorites: () => {},
   toggleFavorites: () => {},
 });
 
@@ -38,50 +37,41 @@ type Props = {
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
-  const [cart, setCart] = useState<Cart[]>([]);
-  const [favorites, setFavorites] = useState<Product[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [cart, setCart] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
-    getAllProducts().then(productsFronServer =>
-      setAllProducts(productsFronServer),
-    );
+    getAllProducts()
+      .then(productsFronServer => setAllProducts(productsFronServer))
+      .catch(() => setErrorMessage('Products are not avaliable'));
   }, []);
 
-  const addToCart = (product: Product) => {
-    if (product) {
+  const addToCart = (productId: string) => {
+    if (productId) {
       const isProductInCart = cart.some(
-        cartItem => cartItem.product.itemId === product.itemId,
+        cartItem => cartItem === productId,
       );
 
-      if (!isProductInCart) {
-        const newCart = {
-          id: product.itemId,
-          product: product,
-          quantity: 1,
-        };
-
-        setCart(prev => [...prev, newCart]);
-      }
+      if (!isProductInCart) setCart(prev => [...prev, productId]);
     }
   };
 
-  const toggleFavorites = (product: Product) => {
-    if (product) {
+  const toggleFavorites = (productId: string) => {
+    if (productId) {
       const isProductInFavorites = favorites.some(
-        fav => fav.itemId === product.itemId,
+        fav => fav === productId,
       );
 
       setFavorites(prev => {
         if (!isProductInFavorites) {
-          return [...prev, product];
+          return [...prev, productId];
         } else {
-          return prev.filter(item => item.itemId !== product.itemId);
+          return prev.filter(item => item !== productId);
         }
       });
     }
   };
-
-  console.log(favorites);
 
   const data = useMemo(
     () => ({
@@ -89,9 +79,9 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       setAllProducts,
       cart,
       setCart,
+      addToCart,
       favorites,
       setFavorites,
-      addToCart,
       toggleFavorites,
     }),
     [
@@ -99,9 +89,9 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       setAllProducts,
       cart,
       setCart,
+      addToCart,
       favorites,
       setFavorites,
-      addToCart,
       toggleFavorites,
     ],
   );

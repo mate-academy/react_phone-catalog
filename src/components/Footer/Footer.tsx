@@ -34,6 +34,7 @@ export const Footer = () => {
             }}
           >
             <span className="footer__btn-title">Back to top</span>
+            
             <Button className="button footer__btn" />
           </div>
         </div>

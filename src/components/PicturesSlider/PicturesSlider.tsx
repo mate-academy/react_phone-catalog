@@ -83,7 +83,9 @@ export const PicturesSlider: React.FC<Props> = ({ latestProducts }) => {
                 alt="slider-product"
                 className={classNames(
                   'pictures-slider__img',
-                  currentSlide === index ? 'pictures-slider__img--active' : '',
+                  currentSlide === index
+                    ? 'pictures-slider__img--active'
+                    : '',
                 )}
               />
             ))}
