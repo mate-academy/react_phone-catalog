@@ -25,7 +25,7 @@ export const ProductPage = () => {
 
   useEffect(() => {
     if (product?.images?.length) {
-      setSelectedImg(`/${product.images[0]}`);
+      setSelectedImg(`${product.images[0]}`);
       setSliderIndex(0);
 
 
