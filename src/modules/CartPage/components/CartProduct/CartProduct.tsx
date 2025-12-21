@@ -18,17 +18,12 @@ export const CartProduct: React.FC<Props> = ({ item }) => {
     str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[()]/g, '');
 
   const handleClickProduct = () => {
-    const baseName = item.product.name
-      .replace(item.product.capacity, '')
-      .trim();
-
-    const productId = `${normalizeForUrlPart(baseName)}-${normalizeForUrlPart(
-      item.product.capacity,
-    )}-${normalizeForUrlPart(item.product.color)}`;
+    const productId = `${normalizeForUrlPart(item.product.itemId)}-${normalizeForUrlPart(item.product.capacity)}-${normalizeForUrlPart(item.product.color)}`;
 
     navigate(`/${item.product.category}/${productId}`, {
       state: {
         category: item.product.category,
+        name: item.product.name,
         showDiscount: item.product.price,
         color: item.product.color,
         capacity: item.product.capacity,
